@@ -28,7 +28,7 @@ import com.opus.piano.data.*
     var tab by rememberSaveable(workId, pieceId) { mutableIntStateOf(0) }
     var editor by rememberSaveable { mutableStateOf(false) }
     LaunchedEffect(sourceId) { sourceId?.let { catalogModel.loadWork(it) } }
-    val sessions = remember(library.sessions, personal, sourceId) { library.sessions.filter { (personal != null && it.pieceId == personal.id) || (sourceId != null && it.catalogWorkId == sourceId) } }
+    val sessions = remember(library.sessions, library.parts, personal, sourceId) { attributedSessions(library.sessions, library.parts).filter { (personal != null && it.pieceId == personal.id) || (sourceId != null && it.catalogWorkId == sourceId) } }
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         item { CatalogBack("The composition", back) }
         if (sourceId != null && page.loading) item { LinearProgressIndicator(Modifier.fillMaxWidth()) }
@@ -37,10 +37,10 @@ import com.opus.piano.data.*
             else item { Panel { SectionTitle("Composition unavailable"); Text("This work has no saved information on this device.", color = MaterialTheme.colorScheme.onSurfaceVariant) } }
         } else {
             item {
-                Text((work?.genre ?: personal?.genre.orEmpty()).ifBlank { "COMPOSITION" }.uppercase(), style = MaterialTheme.typography.labelSmall, color = Gold)
+                Text((work?.genre ?: personal?.genre.orEmpty()).ifBlank { "COMPOSITION" }.uppercase(), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
                 Spacer(Modifier.height(8.dp))
                 Text(title, style = MaterialTheme.typography.headlineMedium)
-                Text(composerName, style = MaterialTheme.typography.titleLarge, color = Gold)
+                Text(composerName, style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
                 if (composer != null) TextButton(onClick = { composerPage(composer.id) }) { Text("Explore composer") }
                 val metadata = listOf(work?.catalogLabel.orEmpty(), personal?.instrument.orEmpty(), composer?.epoch ?: personal?.musicalEra.orEmpty()).filter { it.isNotBlank() }
                 if (metadata.isNotEmpty()) Text(metadata.joinToString(" · "), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -55,7 +55,7 @@ import com.opus.piano.data.*
                     item { Panel {
                         SectionTitle("About the work")
                         Text(work?.subtitle?.ifBlank { null } ?: personal?.notes?.ifBlank { null } ?: "No sourced description or historical context is available for this composition.", color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        if (personal != null && work != null && personal.notes.isNotBlank() && personal.notes != work.subtitle) { Text("YOUR NOTES", style = MaterialTheme.typography.labelSmall, color = Gold); Text(personal.notes) }
+                        if (personal != null && work != null && personal.notes.isNotBlank() && personal.notes != work.subtitle) { Text("YOUR NOTES", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary); Text(personal.notes) }
                     } }
                     item { Panel {
                         MetadataLine("Catalogue", work?.catalogLabel.orEmpty())
@@ -78,7 +78,7 @@ import com.opus.piano.data.*
                         item { Panel {
                             SectionTitle("Your practice")
                             Choice("Learning status", LearningStatus.entries.map { it.label }, personal.status.label) { label -> model.save(personal.copy(status = LearningStatus.entries.first { it.label == label })) {} }
-                            Text("${sessions.size} completed sessions · ${sessions.sumOf { it.durationMillis } / 60000} minutes", color = Gold)
+                            Text("${sessions.size} completed sessions · ${sessions.sumOf { it.durationMillis } / 60000} minutes", color = MaterialTheme.colorScheme.primary)
                             Button(onClick = { practice(personal) }) { Text("Practice this piece") }
                             TextButton(onClick = { editor = true }) { Text("Edit your repertoire entry") }
                         } }
@@ -104,5 +104,5 @@ import com.opus.piano.data.*
     if (editor && personal != null) PieceEditor(personal, { editor = false }, model::save)
 }
 @Composable private fun MetadataLine(label: String, value: String) {
-    Column(verticalArrangement = Arrangement.spacedBy(3.dp)) { Text(label.uppercase(), style = MaterialTheme.typography.labelSmall, color = Gold); Text(value.ifBlank { "Not supplied" }, color = if (value.isBlank()) MaterialTheme.colorScheme.onSurfaceVariant else Ivory) }
+    Column(verticalArrangement = Arrangement.spacedBy(3.dp)) { Text(label.uppercase(), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary); Text(value.ifBlank { "Not supplied" }, color = if (value.isBlank()) MaterialTheme.colorScheme.onSurfaceVariant else Ivory) }
 }

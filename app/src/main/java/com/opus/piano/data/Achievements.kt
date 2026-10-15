@@ -60,13 +60,13 @@ object AchievementEngine {
         }
         return best
     }
-    fun facts(pieces: List<Piece>, sessions: List<PracticeSession>, catalog: CatalogSnapshot, legacyZone: ZoneId): AchievementFacts {
+    fun facts(pieces: List<Piece>, sessions: List<PracticeSession>, catalog: CatalogSnapshot, legacyZone: ZoneId, parts: List<SessionPart> = emptyList()): AchievementFacts {
         val works = catalog.works.associateBy { it.id }
         val composers = catalog.composers.associateBy { it.id }
         val byId = pieces.associateBy { it.id }
         val valid = sessions.filter(::valid)
         val byComposer = pieces.groupBy { ComposerIdentity.resolve(it, works) }
-        val baroque = valid.mapNotNull { s ->
+        val baroque = attributedSessions(valid, parts).filter { it.durationMillis >= 1000 }.mapNotNull { s ->
             val piece = byId[s.pieceId]
             val workId = s.catalogWorkId ?: piece?.catalogWorkId
             val composerId = s.composerId ?: workId?.let { works[it]?.composerId } ?: piece?.let { ComposerIdentity.resolve(it, works) }

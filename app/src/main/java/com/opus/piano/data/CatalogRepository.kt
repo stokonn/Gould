@@ -33,7 +33,7 @@ class CatalogHttp {
                 connection.connectTimeout = 12000
                 connection.readTimeout = 15000
                 connection.instanceFollowRedirects = false
-                connection.setRequestProperty("User-Agent", "Opus/0.5 (Android; com.opus.piano; piano practice catalogue)")
+                connection.setRequestProperty("User-Agent", "Goldberg/0.6.0 (Android; com.opus.piano; piano practice catalogue)")
                 connection.setRequestProperty("Accept", if (image) "image/*" else "application/json")
                 val code = connection.responseCode
                 if (code !in 200..299) throw IOException(if (code == 429) "Source is busy; please try again later." else "Source returned HTTP $code.")
@@ -194,12 +194,20 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
         val digest = MessageDigest.getInstance("SHA-256").digest(url.toByteArray()).joinToString("") { "%02x".format(it) }
         val directory = File(filesDir, "catalog-portraits").apply { mkdirs() }
         val file = File(directory, "$digest.img")
-        if (file.exists()) BitmapFactory.decodeFile(file.path)?.let { return@withContext it }
+        if (file.exists()) decodePortrait(file.readBytes())?.let { return@withContext it }
         val bytes = http.bytes(url, image = true)
-        val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size) ?: return@withContext null
+        val bitmap = decodePortrait(bytes) ?: return@withContext null
         val temporary = File.createTempFile("portrait-", ".tmp", directory)
         try { temporary.writeBytes(bytes); if (!temporary.renameTo(file)) throw IOException("Could not cache portrait") }
         finally { temporary.delete() }
         bitmap
     }
+}
+
+/** Decode source images to at most about 512 pixels per side before allocating pixel storage. */
+private fun decodePortrait(bytes: ByteArray): Bitmap? {
+    val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+    BitmapFactory.decodeByteArray(bytes, 0, bytes.size, bounds)
+    val options = BitmapFactory.Options().apply { inSampleSize = 1; while (maxOf(bounds.outWidth, bounds.outHeight) / inSampleSize > 512) inSampleSize *= 2 }
+    return BitmapFactory.decodeByteArray(bytes, 0, bytes.size, options)
 }

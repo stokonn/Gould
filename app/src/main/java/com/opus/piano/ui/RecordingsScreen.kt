@@ -76,12 +76,12 @@ import com.opus.piano.data.*
         items(items, key = { it.id }) { item ->
             Panel {
                 Text(item.title.ifBlank { StudyService.entries.firstOrNull { s -> s.name == item.platform }?.label ?: item.platform }, style = MaterialTheme.typography.titleMedium)
-                if (item.performer.isNotBlank()) Text(item.performer, color = Gold)
+                if (item.performer.isNotBlank()) Text(item.performer, color = MaterialTheme.colorScheme.primary)
                 Text("${item.platform.lowercase().replaceFirstChar { it.titlecase() }} · ${localDateTime(item.savedAt)}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Text(item.url, style = MaterialTheme.typography.bodySmall, maxLines = 2)
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     TextButton(onClick = { open(item.url) }) { Text("Open") }
-                    IconButton(onClick = { model.prefer(item.id) }) { Icon(if (item.preferred) Icons.Outlined.Star else Icons.Outlined.StarOutline, if (item.preferred) "Preferred interpretation" else "Mark preferred", tint = Gold) }
+                    IconButton(onClick = { model.prefer(item.id) }) { Icon(if (item.preferred) Icons.Outlined.Star else Icons.Outlined.StarOutline, if (item.preferred) "Preferred interpretation" else "Mark preferred", tint = MaterialTheme.colorScheme.primary) }
                     IconButton(onClick = { editingId = item.id; editor = true }) { Icon(Icons.Outlined.Edit, "Edit interpretation") }
                     IconButton(onClick = { deleting = item }) { Icon(Icons.Outlined.DeleteOutline, "Remove interpretation") }
                 }

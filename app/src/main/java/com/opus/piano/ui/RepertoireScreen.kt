@@ -28,10 +28,11 @@ import com.opus.piano.data.*
     var sort by rememberSaveable { mutableStateOf("Alphabetical") }
     var filters by rememberSaveable { mutableStateOf(false) }
     val works = remember(catalog.works) { catalog.works.associateBy { it.id } }
-    val eras = remember(state.pieces, catalog) { state.pieces.associate { it.id to pieceEra(it, catalog) } }
-    val genres = remember(state.pieces, catalog) { state.pieces.associate { it.id to pieceGenre(it, catalog) } }
-    val lastPractice = remember(state.sessions) { state.sessions.groupBy { it.pieceId }.mapValues { (_, s) -> s.maxOf { it.completedAt } } }
-    val practiceTotals = remember(state.sessions) { state.sessions.groupBy { it.pieceId }.mapValues { (_, s) -> s.sumOf { it.durationMillis } } }
+    val composerMap = remember(catalog.composers) { catalog.composers.associateBy { it.id } }
+    val eras = remember(state.pieces, works, composerMap) { state.pieces.associate { p -> p.id to p.musicalEra.ifBlank { composerMap[ComposerIdentity.resolve(p, works)]?.epoch.orEmpty() } } }
+    val genres = remember(state.pieces, works) { state.pieces.associate { p -> p.id to p.genre.ifBlank { works[p.catalogWorkId]?.genre.orEmpty() } } }
+    val lastPractice = remember(state.sessions, state.parts) { attributedSessions(state.sessions, state.parts).groupBy { it.pieceId }.mapValues { (_, s) -> s.maxOf { it.completedAt } } }
+    val practiceTotals = remember(state.sessions, state.parts) { attributedSessions(state.sessions, state.parts).groupBy { it.pieceId }.mapValues { (_, s) -> s.sumOf { it.durationMillis } } }
     val pieces = remember(state.pieces, query, status, composer, era, instrument, genre, sort, eras, genres, lastPractice, works) {
         val tokens = catalogText(query).split(' ').filter { it.isNotBlank() }
         val matches = state.pieces.filter { p ->
@@ -71,12 +72,12 @@ import com.opus.piano.data.*
         if (state.loading) item { LinearProgressIndicator(Modifier.fillMaxWidth()) }
         if (!state.loading && pieces.isEmpty()) item { Panel { SectionTitle(if (state.pieces.isEmpty()) "Your collection begins here" else "No matching compositions"); Text("Discover a work or add one manually. Change the filters to explore your collection.", color = MaterialTheme.colorScheme.onSurfaceVariant) } }
         items(pieces, key = { it.id }) { piece ->
-            Surface(onClick = { detail(piece.id) }, shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
+            Surface(modifier = Modifier.animateItem(), onClick = { detail(piece.id) }, shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
                 Column(Modifier.padding(horizontal = 16.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                             Text(piece.title, style = MaterialTheme.typography.titleMedium, maxLines = 2, overflow = TextOverflow.Ellipsis)
-                            Text(piece.composer, style = MaterialTheme.typography.bodyMedium, color = Gold)
+                            Text(piece.composer, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
                             works[piece.catalogWorkId]?.catalogLabel?.takeIf { it.isNotBlank() }?.let { Text(it, style = MaterialTheme.typography.bodySmall) }
                         }
                         Box {

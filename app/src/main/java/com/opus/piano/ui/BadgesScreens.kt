@@ -59,9 +59,11 @@ private fun localDate(timestamp: Long): String = DateTimeFormatter.ofLocalizedDa
         items(matches, key = { it.definition.id }) { badge ->
             Surface(onClick = { detail(badge.definition.id) }, shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
                 Column(Modifier.padding(12.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    MedalArtwork(badge, Modifier.size(100.dp))
+                    androidx.compose.animation.Crossfade(badge.unlocked, label = "Badge unlock") { unlocked ->
+                        MedalArtwork(badge.copy(unlockedAt = if (unlocked) badge.unlockedAt else null), Modifier.size(100.dp))
+                    }
                     Text(badge.definition.name, style = MaterialTheme.typography.titleMedium)
-                    Text(badge.definition.rarity.label, style = MaterialTheme.typography.labelSmall, color = if (badge.unlocked) Gold else MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text(badge.definition.rarity.label, style = MaterialTheme.typography.labelSmall, color = if (badge.unlocked) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant)
                     if (badge.unlocked) Text("Unlocked ${localDate(badge.unlockedAt!!)}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     else {
                         Text(badge.definition.requirement, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -86,7 +88,7 @@ private fun localDate(timestamp: Long): String = DateTimeFormatter.ofLocalizedDa
                         MedalArtwork(badge, Modifier.size(64.dp))
                         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
                             Text(badge.definition.name, style = MaterialTheme.typography.titleMedium)
-                            Text(badge.definition.rarity.label, color = Gold, style = MaterialTheme.typography.labelSmall)
+                            Text(badge.definition.rarity.label, color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelSmall)
                             Text(localDate(badge.unlockedAt!!), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
                     }
@@ -105,10 +107,10 @@ private fun localDate(timestamp: Long): String = DateTimeFormatter.ofLocalizedDa
         Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) { MedalArtwork(badge, Modifier.sizeIn(maxWidth = 224.dp, maxHeight = 224.dp).fillMaxWidth().aspectRatio(1f)) }
         Heading(badge.definition.rarity.label, badge.definition.name, badge.definition.description)
         Panel {
-            Text(if (badge.unlocked) "PERMANENTLY EARNED" else "TO UNLOCK", style = MaterialTheme.typography.labelSmall, color = Gold)
+            Text(if (badge.unlocked) "PERMANENTLY EARNED" else "TO UNLOCK", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
             Text(badge.definition.requirement)
             if (badge.unlocked) {
-                Text("Unlocked · ${localDateTime(badge.unlockedAt!!)}", color = Gold)
+                Text("Unlocked · ${localDateTime(badge.unlockedAt!!)}", color = MaterialTheme.colorScheme.primary)
                 Text("${ZoneId.systemDefault().id} · First verified unlock time", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             Text("Current recorded progress", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)

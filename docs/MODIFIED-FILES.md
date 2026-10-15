@@ -1,0 +1,50 @@
+# Goldberg 0.6 modified files
+
+Complete implementation inventory relative to the repository root. Changes remain local and uncommitted.
+
+- Added: `CHANGELOG.md`
+- Modified: `README.md`
+- Modified: `app/build.gradle.kts`
+- Added: `app/schemas/com.opus.piano.data.OpusDatabase/4.json`
+- Added: `app/src/androidTest/assets/schemas/3.json`
+- Modified: `app/src/androidTest/java/com/opus/piano/CatalogDatabaseTest.kt`
+- Modified: `app/src/androidTest/java/com/opus/piano/ExperiencePersistenceTest.kt`
+- Added: `app/src/androidTest/java/com/opus/piano/GoldbergPersistenceTest.kt`
+- Modified: `app/src/main/AndroidManifest.xml`
+- Modified: `app/src/main/java/com/opus/piano/MainActivity.kt`
+- Modified: `app/src/main/java/com/opus/piano/OpusApplication.kt`
+- Modified: `app/src/main/java/com/opus/piano/data/AchievementStore.kt`
+- Modified: `app/src/main/java/com/opus/piano/data/Achievements.kt`
+- Added: `app/src/main/java/com/opus/piano/data/BackupRepository.kt`
+- Modified: `app/src/main/java/com/opus/piano/data/CatalogRepository.kt`
+- Modified: `app/src/main/java/com/opus/piano/data/OpusDatabase.kt`
+- Added: `app/src/main/java/com/opus/piano/data/PersonalData.kt`
+- Added: `app/src/main/java/com/opus/piano/data/ProfileStatistics.kt`
+- Modified: `app/src/main/java/com/opus/piano/ui/BadgesScreens.kt`
+- Modified: `app/src/main/java/com/opus/piano/ui/CatalogScreens.kt`
+- Modified: `app/src/main/java/com/opus/piano/ui/ComposerScreen.kt`
+- Modified: `app/src/main/java/com/opus/piano/ui/CompositionScreen.kt`
+- Modified: `app/src/main/java/com/opus/piano/ui/MedalArtwork.kt`
+- Modified: `app/src/main/java/com/opus/piano/ui/OpusApp.kt`
+- Modified: `app/src/main/java/com/opus/piano/ui/OpusViewModel.kt`
+- Added: `app/src/main/java/com/opus/piano/ui/ProfileScreen.kt`
+- Added: `app/src/main/java/com/opus/piano/ui/ProfileViewModel.kt`
+- Modified: `app/src/main/java/com/opus/piano/ui/RecordingsScreen.kt`
+- Modified: `app/src/main/java/com/opus/piano/ui/RepertoireScreen.kt`
+- Modified: `app/src/main/java/com/opus/piano/ui/Theme.kt`
+- Added: `app/src/main/res/drawable/ic_goldberg_foreground.xml`
+- Added: `app/src/main/res/drawable/ic_goldberg_monochrome.xml`
+- Deleted: `app/src/main/res/drawable/ic_opus.xml`
+- Added: `app/src/main/res/mipmap-anydpi/ic_goldberg.xml`
+- Added: `app/src/main/res/values-v31/styles.xml`
+- Added: `app/src/main/res/values/colors.xml`
+- Modified: `app/src/main/res/values/styles.xml`
+- Added: `app/src/test/java/com/opus/piano/MultiPieceTest.kt`
+- Added: `app/src/test/java/com/opus/piano/ProfileStatisticsTest.kt`
+- Added: `docs/BACKUP.md`
+- Added: `docs/MODIFIED-FILES.md`
+- Added: `docs/OPUS-0.5.md`
+- Added: `docs/VERIFICATION-0.6.md`
+- Added: `scripts/build-apk.sh`
+- Modified: `scripts/check_migrations.py`
+- Modified: `settings.gradle.kts`

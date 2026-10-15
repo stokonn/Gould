@@ -38,7 +38,7 @@ import kotlinx.coroutines.CancellationException
     val profile = page.takeIf { it.id == id }?.profile
     val personal = remember(library.pieces, composer, snapshot) { if (composer == null) emptyList() else library.pieces.filter { pieceComposerMatches(it, composer, snapshot) } }
     val linked = remember(personal, works, composer) { if (composer == null) emptySet() else works.filter { alreadyAdded(it, composer, personal) }.map { it.id }.toSet() }
-    val time = remember(library.sessions, personal, snapshot, id) { library.sessions.filter { s -> if (s.composerId != null) s.composerId == id else sessionComposerId(s, library.pieces, snapshot) == id || s.pieceId in personal.map { p -> p.id } }.sumOf { it.durationMillis } }
+    val time = remember(library.sessions, library.parts, personal, snapshot, id) { attributedSessions(library.sessions, library.parts).filter { s -> if (s.composerId != null) s.composerId == id else sessionComposerId(s, library.pieces, snapshot) == id || s.pieceId in personal.map { p -> p.id } }.sumOf { it.durationMillis } }
     val matches = remember(works, query, genre, collection, sort, linked) {
         val tokens = catalogText(query).split(' ').filter { it.isNotBlank() }
         val found = works.filter { w -> tokens.all { catalogText("${w.title} ${w.catalogLabel} ${w.subtitle}").contains(it) } &&
@@ -56,7 +56,7 @@ import kotlinx.coroutines.CancellationException
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                         PortraitImage(profile?.portrait, model.repository, composer.name, portraitWidth)
                         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                            Text(composer.epoch.uppercase(), style = MaterialTheme.typography.labelSmall, color = Gold)
+                            Text(composer.epoch.uppercase(), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
                             Text(composer.name, style = MaterialTheme.typography.headlineMedium)
                             Text(composer.years, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             if (!profile?.origin.isNullOrBlank()) Text(profile!!.origin, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -87,7 +87,7 @@ import kotlinx.coroutines.CancellationException
                     item { SectionTitle("From your repertoire") }
                     if (personal.isEmpty()) item { Text("Add a work by ${composer.name} to start your own chapter.", color = MaterialTheme.colorScheme.onSurfaceVariant) }
                     items(personal.take(4), key = { "personal:${it.id}" }) { p ->
-                        Panel { Text(p.title, style = MaterialTheme.typography.titleMedium); Text(p.status.label, color = Gold, style = MaterialTheme.typography.bodySmall) }
+                        Panel { Text(p.title, style = MaterialTheme.typography.titleMedium); Text(p.status.label, color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.bodySmall) }
                     }
                     if (featured.isNotEmpty()) item { SectionTitle("Featured by Open Opus") }
                     items(featured, key = { "featured:${it.id}" }) { w -> WorkCard(w, composer, alreadyAdded(w, composer, library.pieces), w.id in adding, { workPage(w.id) }, { model.add(w, composer) }) }
@@ -108,7 +108,7 @@ import kotlinx.coroutines.CancellationException
                 2 -> {
                     item { SectionTitle("Biography"); Spacer(Modifier.height(8.dp)); Text(profile?.text?.ifBlank { null } ?: "No verified biography is available.", color = MaterialTheme.colorScheme.onSurfaceVariant) }
                     item { Panel {
-                        Text("HISTORICAL DETAILS", style = MaterialTheme.typography.labelSmall, color = Gold)
+                        Text("HISTORICAL DETAILS", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
                         Text("Era · ${composer.epoch.ifBlank { "Not supplied" }}")
                         Text("Born · ${profile?.birth?.ifBlank { null } ?: composer.birth.take(4).ifBlank { "Not supplied" }}")
                         Text("Died · ${profile?.death?.ifBlank { null } ?: composer.death.take(4).ifBlank { "Not supplied" }}")
@@ -126,7 +126,7 @@ import kotlinx.coroutines.CancellationException
 }
 
 @Composable internal fun SmallStatistic(value: String, label: String) {
-    Column(verticalArrangement = Arrangement.spacedBy(3.dp)) { Text(value, style = MaterialTheme.typography.titleLarge, color = Gold); Text(label, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+    Column(verticalArrangement = Arrangement.spacedBy(3.dp)) { Text(value, style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary); Text(label, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
 }
 @Composable private fun PortraitImage(portrait: Portrait?, repository: CatalogRepository, name: String, width: Int) {
     val bitmap by produceState<android.graphics.Bitmap?>(null, portrait?.url) {
@@ -134,7 +134,7 @@ import kotlinx.coroutines.CancellationException
     }
     Surface(Modifier.width(width.dp).height((width * 1.2f).dp), shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surfaceVariant) {
         if (bitmap != null) Image(bitmap!!.asImageBitmap(), "Portrait of $name. Attribution in About, Sources and credits.", contentScale = ContentScale.Crop)
-        else Box(contentAlignment = Alignment.Center) { Icon(Icons.Outlined.PersonOutline, "Portrait unavailable", tint = Gold, modifier = Modifier.size(38.dp)) }
+        else Box(contentAlignment = Alignment.Center) { Icon(Icons.Outlined.PersonOutline, "Portrait unavailable", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(38.dp)) }
     }
 }
 @Composable private fun ProfileCredits(profile: ComposerProfile?) {

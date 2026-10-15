@@ -7,8 +7,12 @@ import java.time.ZoneId
 
 /** Evaluation happens on relevant persisted mutations, never on timer ticks or application launches alone. */
 class AchievementStore(private val db: OpusDatabase, private val now: () -> Long = System::currentTimeMillis, private val zone: () -> ZoneId = ZoneId::systemDefault) {
-    val badges = combine(db.dao().observePieces(), db.dao().observeSessions(), db.catalogDao().composers(), db.catalogDao().works(), db.experienceDao().unlocks()) { pieces, sessions, composers, works, unlocks ->
-        AchievementEngine.evaluate(AchievementEngine.facts(pieces, sessions, CatalogSnapshot(composers, works), zone()), unlocks)
+    private val base = combine(db.dao().observePieces(), db.dao().observeSessions(), db.catalogDao().composers(), db.catalogDao().works(), db.experienceDao().unlocks()) { pieces, sessions, composers, works, unlocks ->
+        Pair(Triple(pieces, sessions, CatalogSnapshot(composers, works)), unlocks)
+    }.distinctUntilChanged().flowOn(Dispatchers.Default)
+    val badges = combine(base, db.personalDao().parts()) { data, parts ->
+        val (pieces, sessions, catalog) = data.first
+        AchievementEngine.evaluate(AchievementEngine.facts(pieces, sessions, catalog, zone(), parts), data.second)
     }.distinctUntilChanged().flowOn(Dispatchers.Default)
     suspend fun evaluate() = db.withTransaction { evaluateInTransaction() }
 
@@ -36,7 +40,7 @@ class AchievementStore(private val db: OpusDatabase, private val now: () -> Long
             if (session != old) db.dao().updateSession(session)
             session
         }
-        val facts = AchievementEngine.facts(pieces, sessions, catalog, evaluationZone)
+        val facts = AchievementEngine.facts(pieces, sessions, catalog, evaluationZone, db.personalDao().allParts())
         val newlyEarned = AchievementEngine.newlyEarned(facts, db.experienceDao().allUnlocks(), now())
         if (newlyEarned.isNotEmpty()) db.experienceDao().unlock(newlyEarned)
     }

@@ -1,113 +1,70 @@
-# Opus 0.5 — The Classical Experience
+# Goldberg 0.6.1 — Profile Reimagined
 
-An elegant classical-music practice journal for Android 8.0+ (API 26). Kotlin, Jetpack Compose, Material 3, Room, and MVVM. Application ID `com.opus.piano`; database `opus.db`; version name **0.5**, version code **2** (previous code 1). Existing signing configuration is unchanged.
+Goldberg is the next version of Opus, a private classical-music practice journal for Android 8.0+ (API 26). Built with Kotlin, Jetpack Compose, Material 3, Room and MVVM. No new dependencies, accounts, analytics or paid services.
 
-## What is implemented
+Upgrade identity stays **`com.opus.piano`**, database **`opus.db`**, version code **4** (Goldberg 0.6.0 used 3; Opus 0.5 used 2). Internal `Opus` class names and stable catalogue, repertoire and achievement identifiers remain compatible. Signing configuration is unchanged. Never uninstall or clear storage to upgrade. The debug APK is suitable for upgrading an installation signed with the same debug certificate; a differently signed distribution requires its original signing key.
 
-- **Home:** real practice statistics, seven-day activity chart, recent repertoire/sessions, and a compact Recently Unlocked badge shelf. No sample statistics.
-- **Repertoire:** compact composition rows, accent-insensitive search, learning progress, composer/era/instrument/genre/status filters, and alphabetical/composer/recent-addition/recent-practice sorting. Manual add/edit/delete is preserved. Optional musical metadata can be entered in the editor. Legacy entries without addition timestamps use their original row order as the sorting fallback; historical dates are not invented.
-- **Composers:** compact portrait beside an editorial heading, years, era, available birthplace/citizenship, sourced introduction with Read More, personal repertoire/mastery/practice statistics, Open Opus featured works where supplied, and Overview / Works / About tabs. The catalogue count comes from the loaded complete API list; partial data is labeled Works loaded. Works support search, genre/collection filters, title/catalogue sorting, and explicit increments of 40 rendered results. Attribution lives in About → Sources & credits.
-- **Composition details:** metadata, available source description and personal notes, Movements, Listen & Study, and Practice sections. Manual and catalogue compositions both have details. Existing status values are unchanged; **Performance ready** is the mastery state. Practice history is preserved and a piece can be selected for practice without replacing an unfinished session's focus.
-- **Listen & Study:** clearly labeled generated searches for Spotify, YouTube, IMSLP, and MuseScore, using encoded composer/title/catalogue/movement metadata. Saved links support URL, optional title/performer, inferred platform, save date, add/edit/open/remove, and one preferred interpretation per composition. Links are validated; preferred changes and edits are transactional. Save dates are preserved on edits. Catalogued compositions retain their saved interpretations across repertoire removal/re-addition.
-- **Practice:** start/pause/resume, save, discard confirmation, a responsive circular timer, process-recreation checkpoints, and source snapshots retained with new completed sessions. No microphone access or audio recording.
-- **Badges:** 16 permanent achievements, deterministic progress, four defined rarity levels, original vector medallions with milled rims, metallic relief, engraved musical motifs/monograms and laurel detailing. Responsive collection grid, category/lock filters, sorting, recently unlocked awards, and detail pages with localized exact verification dates/times. Locked medals are desaturated and never show an unlock date.
-- **Wrapped:** preserved preview with real saved weekly activity; monthly/yearly reflections remain a future feature.
+This is a **pre-release debug build**. Profile’s app bar places the GOLDBERG wordmark on the left and Settings on the right, without Search. Settings contains Appearance and Backup & Restore. Search remains available from Repertoire and other relevant screens. Bottom tabs select their root screen, dismiss search focus/keyboard, and do not resurrect a saved Search stack. Settings Back returns to the existing Profile state.
 
-No paid services, API keys, accounts, analytics, downloads of recordings, or new library dependencies were introduced. Practice, personal repertoire, recordings metadata, badges, and previously loaded catalogue information remain usable offline. New discoveries and external services require a connection. Repertoire, notes, recordings preferences and practice history are never uploaded. Android cloud backup remains disabled.
+Schema 4 and format-1 backups are unchanged from 0.6.0; no database migration is needed. The pre-existing local `RELEASE_NOTES.md` remains the 0.6.0 description. Current release notes are in [docs/RELEASE-0.6.1.md](docs/RELEASE-0.6.1.md).
+
+## Features
+
+- **Compact Profile:** circular avatar and display name, dedicated Edit Profile dialog, responsive lifetime statistic cards, current calendar-day streak, period activity charts, most-practiced works and expandable session history. Week means the last 7 days, month the last 30, year the last 365; all-time charts group older activity into at most 12 bins. History loads 20 visible sessions at a time.
+- **Badge showcase:** view up to five selected unlocked badges in a compact horizontal shelf; use Edit to select, reorder or remove badges, and tap badges for details. Selection and order persist locally and are backed up. The separate Badges destination retains all 16 achievements, filtering, progress, rarity and original first-verification dates.
+- **Multi-piece practice:** use the focus menu to select several repertoire pieces before starting, then tap a selected piece to switch. Add or remove pieces while running or paused. Free practice is always available. Every monotonic time interval belongs to exactly one active entry. Pauses add no time. Removing a piece retains its recorded time and notes in the saved summary. Notes are per piece within the session. Save once for one session; expand Session summary in history for all times and notes. Interrupted processes restore the last saved checkpoint as paused, without counting time while dead.
+- **Universal search:** the top search button opens categorized repertoire, composer and composition results. Repertoire matches respond immediately; catalogue discovery is debounced 350 ms. Search ignores accents, uses cached information offline and can discover additional catalogue results online. It does not imply that the entire remote catalogue is stored locally.
+- **Backup & restore:** the dedicated Settings screen uses Android’s Create/Open Document pickers. A complete, versioned JSON snapshot includes repertoire, sessions and per-piece notes/times, badge unlocks/showcase, username/avatar/theme, saved interpretation links and catalogue cache. Restore validates in an isolated in-memory Room database before offering a confirmation and validates again before an atomic replacement. Invalid files leave saved data intact. Restore replaces rather than merges, so repeating a restore does not duplicate rows. Export first if you want to keep the current journal. An active timer is discarded only after a confirmed, successful restore.
+- **Appearance:** Light, Dark and Follow system (System), persisted in Settings; high-contrast text, scalable typography and matching system-bar contrast. Android animation settings control motion. Navigation fades, repertoire item changes, addition confirmation, saved-session feedback and new badge notices remain lightweight.
+- **Identity:** warm ivory, geometric harpsichord keyboard adaptive icon, a separate monochrome mask for themed launchers, and the platform’s native Android 12+ splash. No splash activity, artificial delay or media assets.
+
+Existing repertoire editing, filters/sorting, sourced composer biographies/portraits/credits, composition details, recording/score searches, saved preferred interpretations, badge collection and Wrapped preview remain. Per-composition and composer practice statistics include multi-piece attribution. Global statistics, streaks and session achievements count the parent sessions once. The Baroque badge counts distinct works with at least one second of attributed practice.
+
+All personal data stays on the device unless the user exports a backup through their chosen document provider. Android automatic cloud backup remains disabled. Gallery access uses the system picker, without broad storage permissions. Avatars are copied as bounded JPEGs; the source gallery image is never modified. Exported backups are plain JSON, not encrypted. Store them privately.
 
 ## Build and checks
 
-`local.properties` contains the local Android SDK path (excluded from Git). On another machine, configure it for that SDK. The existing Gradle/AGP, SDK 36 and Java 17 bytecode configuration is preserved.
+Use the existing Android SDK 36, Java 17 bytecode target and pinned Gradle/AGP configuration. Configure `local.properties` for the local SDK.
 
 ```bash
-./gradlew assembleDebug
-./gradlew testDebugUnitTest lintDebug assembleDebugAndroidTest
+./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug
 python3 scripts/check_migrations.py
-# Requires an online emulator or connected device:
+# On a connected test device/emulator:
 ./gradlew connectedDebugAndroidTest
+# Build and copy to the requested local filename (does not publish):
+./scripts/build-apk.sh
 ```
 
-APK: `app/build/outputs/apk/debug/app-debug.apk`.
+Named APK: **`app/build/outputs/apk/debug/Goldberg-v0.6.1.apk`**. Standard Gradle output: `app/build/outputs/apk/debug/app-debug.apk`. Reports: `app/build/reports/tests/testDebugUnitTest/index.html`, `app/build/reports/lint-results-debug.html`, and (when executed) `app/build/reports/androidTests/connected/debug/index.html`.
 
-Lint report: `app/build/reports/lint-results-debug.html`.
+## Migration and backup contract
 
-Unit-test report: `app/build/reports/tests/testDebugUnitTest/index.html`.
+Room schema **4** retains the complete **1 → 2 → 3 → 4** upgrade chain. The new migration only adds:
 
-## Architecture and important files
+- `session_parts`, with a cascading foreign key to the parent session and an index on `sessionId`. Existing session rows are untouched. Each old session gets a matching part containing its original piece/title/duration and source snapshots. No foreign key to repertoire: deleting a repertoire piece preserves history.
+- `profile_settings`, a single local profile with username, bounded avatar bytes, theme and ordered showcase IDs. Missing settings mean default profile and System theme.
+- Indexes on `sessions.completedAt` and `sessions.pieceId`.
 
-| Area | Files | Responsibility |
-| --- | --- | --- |
-| Database | `data/OpusDatabase.kt`, `app/schemas/.../1.json`, `2.json`, `3.json` | Existing repertoire/session entities, safe incremental migrations and repository writes |
-| Catalogue | `data/CatalogRepository.kt`, `CatalogModels.kt`, `WikimediaProfile.kt` | Open Opus client, persistent cache, metadata, verified biographies and licensed portraits |
-| Music identity | `data/MusicMetadata.kt` | Stable composer identity, existing mastery status, conservative piano identification and metadata helpers |
-| Achievements | `data/Achievements.kt`, `AchievementStore.kt` | Extensible registry, pure facts/progress calculations, transactional permanent unlock persistence |
-| Recordings | `data/ExperienceData.kt`, `RecordingLinks.kt` | Room entities/DAO, recording transactions, supported URL validation and encoded service searches |
-| State and lifecycle | `ui/OpusViewModel.kt`, `CatalogViewModel.kt`, `ExperienceViewModel.kt`, `OpusApplication.kt` | Saved timer checkpoints, debounced discovery, observable badge/recording state and initial existing-data evaluation |
-| Screens | `ui/RepertoireScreen.kt`, `ComposerScreen.kt`, `CompositionScreen.kt`, `RecordingsScreen.kt`, `BadgesScreens.kt` | Compact archive, reference shelf, badge collection/details |
-| Visual system | `ui/Theme.kt`, `MedalArtwork.kt`, `OpusApp.kt` | Warm charcoal/ivory/gold design, native vector medals, shared components and five-destination navigation |
-| Tests | `src/test/.../AchievementEngineTest.kt`, `RecordingLinksTest.kt`, `CatalogTextTest.kt`; `src/androidTest/.../ExperiencePersistenceTest.kt`, `CatalogDatabaseTest.kt`, `DatabaseTest.kt` | Pure calculations, URL contracts, migrations, CRUD and disk-backed persistence |
+A completed session and its parts are inserted in one Room transaction together with achievement evaluation. Sum of part durations must equal the parent duration; negative durations are rejected. Existing unlock timestamps use insert-ignore semantics and remain permanent. Historical local-day/time-zone policy from Opus 0.5 remains unchanged.
 
-## Database migration and data preservation
+Backup format details are in [docs/BACKUP.md](docs/BACKUP.md). This first Goldberg backup format does not import arbitrary SQLite files or unsupported future schemas. Derived downloaded portrait files and an unfinished timer are excluded; saved biography/cache metadata and completed practice are included.
 
-Room advances from schema **2 to 3**, retaining the **1 → 2** migration for older installs. No destructive fallback or table drops are used. Original repertoire/session IDs, notes, statuses and durations remain intact.
+## Architecture
 
-- `pieces`: adds `createdAt` (default 0 = unavailable for legacy entries), and optional instrument, genre and musical-era strings. Existing status/difficulty encodings and catalogue links remain compatible.
-- `sessions`: adds nullable completion-day/time-zone and catalogue/composer source snapshots, plus a musical-era snapshot. Existing session timestamps/durations are unchanged.
-- `catalog_works`: adds cached popular/recommended flags so featured works use actual Open Opus classifications.
-- `saved_recordings`: new durable reference links keyed by `catalog:<Open Opus work ID>` or `piece:<local ID>`. No cascading deletion discards saved reference links.
-- `badge_unlocks`: new achievement ID and epoch-millisecond unlock timestamp. The DAO only inserts with **IGNORE on conflict**; there is no replacement/update path for unlock dates.
+| Area | Files under `app/src/main/java/com/opus/piano/` |
+| --- | --- |
+| Room/migrations and repository | `data/OpusDatabase.kt`, `data/PersonalData.kt`, exported schemas 1–4 |
+| Timer and attribution | `ui/OpusViewModel.kt`, `data/PersonalData.kt` |
+| Profile, appearance and file pickers | `ui/ProfileViewModel.kt`, `ui/ProfileScreen.kt`, `ui/Theme.kt` |
+| Validated snapshot backup | `data/BackupRepository.kt` |
+| Search/catalogue | `ui/CatalogScreens.kt`, `ui/CatalogViewModel.kt`, `data/CatalogRepository.kt` |
+| Badges and saved recordings | `data/Achievements.kt`, `data/AchievementStore.kt`, `data/ExperienceData.kt` |
+| Navigation and existing screens | `ui/OpusApp.kt`, repertoire/composer/composition/recordings/badges screens |
 
-The inspected v1/v2 schemas contain **no quest tables or quest history**. Quests was a UI-only placeholder. Only that user-facing destination was replaced; migration does not delete unknown or unrelated tables.
+[CHANGELOG.md](CHANGELOG.md) records the update. [docs/OPUS-0.5.md](docs/OPUS-0.5.md) preserves historical architecture, source licensing, achievement rules and earlier verification. Open Opus public-domain metadata and Wikipedia/Wikimedia/Wikidata source credits remain in the app. No screenshots existed in the project.
 
-## Achievement rules
+## Verification and limitations
 
-The registry defines a stable ID, name, description, category, rarity, original artwork reference, metric, target, requirement and units for each of the 16 requested achievements. All calculation logic is separate from rendering.
+See [docs/VERIFICATION-0.6.1.md](docs/VERIFICATION-0.6.1.md) for current results, measurements and remaining device checks. Host migration checks are SQLite checks against actual migration statements and exported Room schemas; they do not substitute for an Android upgrade test. Instrumentation covers upgrading a seeded 0.5 schema, disk reopening, multi-piece persistence, repeated restore into an existing journal, invalid backup rejection and original unlock/link retention.
 
-Evaluation runs in the same transaction as repertoire additions/edits/deletions and completed practice writes, and when newly changed catalogue metadata resolves musical identities. Identical cached catalogue rows are not rewritten or re-evaluated. Initial evaluation also runs on upgrade/startup against actual saved facts. Timer ticks, searches, application launches without qualifying data, and recording edits do not create achievement progress.
-
-Unlocks are permanent. Current progress can decrease when an entry is removed or edited, but already-earned medals and their original timestamps remain. Repertoire-growth/mastery thresholds count the current repertoire when verified. Data that was removed before the upgrade cannot be reconstructed. Existing eligible data is awarded at the **first verification timestamp**, not at an invented historical achievement date.
-
-Composer awards use Open Opus IDs **87** (Bach), **152** (Chopin), **196** (Mozart), verified against the API. Linked catalogue IDs take precedence over edited display names. Manual entries can use exact recognized full names (with accent normalization); ambiguous surnames such as “Bach” or “Mozart” alone are not assumed to identify one composer. Piano mastery requires an explicit piano/pianoforte title, description or instrument; the broad Keyboard genre is insufficient. Baroque practice requires five distinct identified works, not repeated sessions or free practice.
-
-### Streak policy
-
-A valid session has at least **1,000 ms** of recorded practice and a positive completion timestamp, matching the existing timer's save threshold. A valid practice day contains at least one such completed session. A session crossing midnight belongs to its **completion day**; launches and unsaved timers do not count.
-
-New sessions store the local completion date and zone ID. Once stored, traveling or changing the device time zone does not move past sessions between days. On initial evaluation, legacy sessions without this metadata receive a date derived from their actual completion timestamp using the upgrade-time zone; the original zone is not knowable. That date is then retained. Multiple sessions on the same date count once. Streak calculations use consecutive `LocalDate` values, so 23/25-hour daylight-saving days work correctly. Progress is the **longest recorded streak**, including a qualifying streak that ended before upgrading.
-
-## Catalogue, sources and licensing
-
-Open Opus remains the primary classical metadata source. Endpoints used: `/composer/list/pop.json`, `/omnisearch/{query}/{offset}.json`, `/work/list/composer/{id}/genre/all.json`, and `/work/detail/{id}.json`. Search uses 350 ms debounce and Unicode/diacritic normalization; responses and known records persist in Room. New discovery is only requested when the catalogue is opened. Search covers cached records offline, not the complete remote database. API search pagination uses the returned `next` offset. The anonymous bulk dump is not used because it lacks the work IDs required for reliable identity.
-
-Responses are reused for 7 days, verified composer profiles for 30 days, with explicit refresh controls and saved-data fallback on network errors. Portraits are persistently cached in app-private storage with bounded downloads and atomic file replacement. HTTPS requests have an identifying User-Agent, allowed hosts, timeouts, serialized access and bounded response sizes. Before broad distribution, add the maintainer's actual contact URL/email to the User-Agent in accordance with [Wikimedia guidance](https://www.mediawiki.org/wiki/Wikimedia_APIs/Access_policy).
-
-- [Open Opus documentation](https://github.com/openopus-org/openopus_api/blob/master/USAGE.md) and [licence](https://openopus.org/): public-domain metadata. Server GPL code is not bundled.
-- [Wikidata](https://www.wikidata.org/wiki/Help:Data_access): CC0 identity, precise life dates where supplied, birthplace and citizenship. A unique full-name/alias, birth-year and human-classification match is required before using an English Wikipedia sitelink. Ambiguous identities remain unavailable.
-- Wikipedia: complete available introductory text, initially collapsed to four lines. Article, contributor/history and the API-supplied licence links are in About → Sources & credits. The text is unchanged; missing biographies and historical context are not generated.
-- Portraits: verified Wikidata P18 → Commons image metadata. Only public-domain/CC0/CC BY/CC BY-SA images with author, source and no stated restrictions are used. Author, credit, source, licence and crop notice remain accessible. There is no arbitrary image search or stock composition artwork.
-- Badge medals: original app-native Canvas vectors, drawn locally without third-party imagery.
-
-## Listen & Study behavior
-
-Generated searches are explicitly labeled, not claimed to be verified recordings. Terms use available composer/title/catalogue/movement text and URL encoding. Service availability and access restrictions are controlled by Spotify, YouTube, IMSLP and MuseScore; Opus requires no authentication or service API keys. Links open with an Android `ACTION_VIEW` intent and report a missing handler gracefully.
-
-Saved interpretation URLs are user-provided references, not independently verified performances. Only HTTPS URLs from recognized service hosts and relevant recording/score paths are accepted; credential-bearing, unsupported-port, lookalike-host and search-only URLs are rejected. Platform is derived from the validated URL. Save dates and work association are immutable on edits; a preference change clears the previous preference in the same transaction. Removing a saved link never removes external content. Nothing is scraped, streamed inside Opus, or downloaded as media.
-
-## Verification for 0.5
-
-- `./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug`: successful. **18 JVM tests pass** (11 achievement/streak/identity tests, 4 recording/search-link tests, 3 catalogue normalization/key tests).
-- `python3 scripts/check_migrations.py`: both **v1 → v3 and v2 → v3 pass** against the actual migration SQL and exported schemas. Legacy data and catalogue cache survive, tables/indices/defaults match Room's v3 export, and repeated unlock insertion retains the first timestamp. This is a host SQLite check, not an Android Room runtime test.
-- Android test APK compiles. Tests cover existing CRUD/history, catalogue import duplication, v1/v2 migration, legacy-session date/source backfill, immutable unlocks after reopening, and saved interpretation editing/preference/removal after reopening. **Not executed on a device:** ADB reports no connected devices. No Android UI/runtime testing is claimed.
-- Lint: zero errors; remaining SDK/Gradle/dependency update notices are reported in the generated report. Existing pinned versions were retained.
-
-## Known limits and device acceptance checks
-
-Open Opus does not currently supply reliable movement lists or complete composition histories/instrumentation for every work. Those sections explicitly state when data is absent, and direct users to scores rather than inventing movements. Composer biographies show the sourced available introduction, not an internally scraped full encyclopedia article. Cached catalogue coverage and the source's metadata completeness limit offline discovery and metadata-based badge eligibility. Legacy addition dates and original session time zones cannot be recovered.
-
-On an emulator/device, check the following before distributing:
-
-1. Upgrade an existing install without uninstalling. Verify repertoire notes/statuses and session durations, then open Badges and restart to check permanent unlock times.
-2. Filter/sort repertoire, edit manual metadata, open a linked composer and work, add a work once, and verify duplicate prevention. Switch off connectivity and revisit loaded profiles and details.
-3. Start/pause/resume a session, rotate/navigate, finish and save. Cross midnight or simulate date/zone changes on a test device. Verify completion-day grouping and that a live timer's focus is never silently changed.
-4. Open all four service searches, save/edit/remove links and change the preferred interpretation. Restart and reopen the saved reference shelf.
-5. Inspect composer tabs, Read More, Sources & credits, large font sizes/small screens, TalkBack labels, bottom/system/keyboard insets, reduced motion, badge filtering and back navigation from every detail screen.
+Data flows still load complete saved session lists for aggregate statistics; visible history and catalogue rows are bounded/lazy, but extremely large journals may warrant paged database aggregation in a later measured update. No speculative database rewrite or new library was introduced. Native splash is provided on Android 12+; earlier Android versions use a matching launch-window background. Catalogue metadata completeness and external service availability remain source-dependent; Wrapped monthly/yearly storytelling is the existing future preview.

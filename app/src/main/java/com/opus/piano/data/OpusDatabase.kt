@@ -25,7 +25,7 @@ data class Piece(
 )
 
 // Snapshot titles preserve meaningful history when a repertoire piece is edited or deleted.
-@Entity(tableName = "sessions")
+@Entity(tableName = "sessions", indices = [Index("completedAt"), Index("pieceId")])
 data class PracticeSession(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val pieceId: Long?,
@@ -57,15 +57,26 @@ interface OpusDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE) suspend fun insertCatalogPiece(piece: Piece): Long
     @Upsert suspend fun save(piece: Piece)
     @Delete suspend fun delete(piece: Piece)
-    @Insert suspend fun insert(session: PracticeSession)
+    @Insert suspend fun insert(session: PracticeSession): Long
 }
-@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class], version = 3, exportSchema = true)
+@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class], version = 4, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class OpusDatabase : RoomDatabase() {
+    abstract fun personalDao(): PersonalDao
     abstract fun dao(): OpusDao
     abstract fun catalogDao(): CatalogDao
     abstract fun experienceDao(): ExperienceDao
     companion object {
+        val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("CREATE INDEX IF NOT EXISTS index_sessions_completedAt ON sessions(completedAt)")
+                db.execSQL("CREATE INDEX IF NOT EXISTS index_sessions_pieceId ON sessions(pieceId)")
+                db.execSQL("CREATE TABLE IF NOT EXISTS session_parts (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, sessionId INTEGER NOT NULL, pieceId INTEGER, title TEXT NOT NULL, composer TEXT NOT NULL, catalogWorkId TEXT, composerId TEXT, musicalEra TEXT NOT NULL, durationMillis INTEGER NOT NULL, notes TEXT NOT NULL, FOREIGN KEY(sessionId) REFERENCES sessions(id) ON UPDATE NO ACTION ON DELETE CASCADE)")
+                db.execSQL("CREATE INDEX IF NOT EXISTS index_session_parts_sessionId ON session_parts(sessionId)")
+                db.execSQL("INSERT INTO session_parts(sessionId, pieceId, title, composer, catalogWorkId, composerId, musicalEra, durationMillis, notes) SELECT s.id, s.pieceId, s.pieceTitle, COALESCE(p.composer, ''), s.catalogWorkId, s.composerId, s.musicalEra, s.durationMillis, '' FROM sessions s LEFT JOIN pieces p ON s.pieceId = p.id")
+                db.execSQL("CREATE TABLE IF NOT EXISTS profile_settings (id INTEGER NOT NULL PRIMARY KEY, username TEXT NOT NULL, avatar TEXT NOT NULL, theme TEXT NOT NULL, showcase TEXT NOT NULL)")
+            }
+        }
         val MIGRATION_2_3 = object : Migration(2, 3) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL("ALTER TABLE catalog_works ADD COLUMN popular INTEGER NOT NULL DEFAULT 0")
@@ -100,21 +111,34 @@ class OpusRepository(private val db: OpusDatabase, private val achievements: Ach
     private val dao = db.dao()
     val pieces = dao.observePieces()
     val sessions = dao.observeSessions()
+    val parts = db.personalDao().parts()
     suspend fun save(piece: Piece) = db.withTransaction {
         val existing = if (piece.id > 0) dao.piece(piece.id) else null
         dao.save(piece.copy(createdAt = existing?.createdAt ?: piece.createdAt.takeIf { it > 0 } ?: System.currentTimeMillis()))
         achievements.evaluateInTransaction()
     }
     suspend fun delete(piece: Piece) = db.withTransaction { dao.delete(piece); achievements.evaluateInTransaction() }
-    suspend fun complete(session: PracticeSession) = db.withTransaction {
+    suspend fun complete(session: PracticeSession, parts: List<SessionPart> = emptyList()) = db.withTransaction {
+        require(session.durationMillis >= 1000)
+        require(parts.isEmpty() || parts.sumOf { it.durationMillis } == session.durationMillis)
+        require(parts.all { it.durationMillis >= 0 })
         val piece = session.pieceId?.let { dao.piece(it) }
         val sourceId = piece?.catalogWorkId ?: session.catalogWorkId
         val work = sourceId?.let { db.catalogDao().work(it) }
         val composer = work?.composerId?.let { db.catalogDao().composer(it) }
         val zone = java.time.ZoneId.systemDefault()
-        dao.insert(session.copy(practiceDay = java.time.Instant.ofEpochMilli(session.completedAt).atZone(zone).toLocalDate().toString(),
+        val sessionId = dao.insert(session.copy(practiceDay = java.time.Instant.ofEpochMilli(session.completedAt).atZone(zone).toLocalDate().toString(),
             practiceZone = zone.id, catalogWorkId = sourceId, composerId = composer?.id ?: session.composerId,
             musicalEra = session.musicalEra.ifBlank { piece?.musicalEra.orEmpty() }.ifBlank { composer?.epoch.orEmpty() }))
+        val entries = parts.ifEmpty { listOf(SessionPart(pieceId = session.pieceId, title = session.pieceTitle, durationMillis = session.durationMillis)) }
+        db.personalDao().insertParts(entries.map { part ->
+            val p = part.pieceId?.let { dao.piece(it) }
+            val w = (part.catalogWorkId ?: p?.catalogWorkId)?.let { db.catalogDao().work(it) }
+            val c = w?.composerId?.let { db.catalogDao().composer(it) }
+            part.copy(id = 0, sessionId = sessionId, catalogWorkId = part.catalogWorkId ?: p?.catalogWorkId,
+                composerId = part.composerId ?: c?.id ?: p?.let { ComposerIdentity.resolve(it, emptyMap()) },
+                musicalEra = part.musicalEra.ifBlank { p?.musicalEra.orEmpty() }.ifBlank { c?.epoch.orEmpty() })
+        })
         achievements.evaluateInTransaction()
     }
 }

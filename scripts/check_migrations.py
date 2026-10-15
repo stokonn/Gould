@@ -18,14 +18,17 @@ def make_schema(connection, version):
     return schema
 
 
-for starting_version in (1, 2):
+for starting_version in (1, 2, 3):
     db = sqlite3.connect(":memory:")
     make_schema(db, starting_version)
     db.execute("INSERT INTO pieces(id, title, composer, difficulty, status, notes) VALUES(7, 'Legacy', 'Composer', 'ADVANCED', 'POLISHING', 'Keep notes')")
     db.execute("INSERT INTO sessions(id, pieceId, pieceTitle, startedAt, completedAt, durationMillis) VALUES(3, 7, 'Legacy', 1000, 61000, 60000)")
-    if starting_version == 2:
+    if starting_version >= 2:
         db.execute("INSERT INTO catalog_cache VALUES('retained', '{}', 123)")
-    for version in range(starting_version, 3):
+    if starting_version == 3:
+        db.execute("INSERT INTO badge_unlocks VALUES('first_piece', 123)")
+        db.execute("INSERT INTO saved_recordings VALUES(12, 'piece:7', 'https://youtu.be/abcdefghijk', 'Reference', 'Performer', 'YOUTUBE', 321, 1)")
+    for version in range(starting_version, 4):
         block = SOURCE.split(f"val MIGRATION_{version}_{version + 1} =", 1)[1].split("\n        }", 1)[0]
         statements = re.findall(r'db\.execSQL\("([^"]+)"\)', block)
         assert statements, f"Migration {version} not found"
@@ -34,14 +37,19 @@ for starting_version in (1, 2):
     assert db.execute("SELECT id, title, notes, status FROM pieces").fetchone() == (7, "Legacy", "Keep notes", "POLISHING")
     assert db.execute("SELECT id, durationMillis FROM sessions").fetchone() == (3, 60000)
     assert db.execute("SELECT createdAt, instrument, genre, musicalEra FROM pieces").fetchone() == (0, "", "", "")
-    if starting_version == 2:
+    if starting_version >= 2:
         assert db.execute("SELECT fetchedAt FROM catalog_cache WHERE cacheKey='retained'").fetchone() == (123,)
+    if starting_version == 3:
+        assert db.execute("SELECT unlockedAt FROM badge_unlocks WHERE achievementId='first_piece'").fetchone() == (123,)
+        assert db.execute("SELECT id, title, savedAt, preferred FROM saved_recordings").fetchone() == (12, 'Reference', 321, 1)
+    assert db.execute("SELECT sessionId, pieceId, title, durationMillis FROM session_parts").fetchone() == (3, 7, "Legacy", 60000)
+    assert db.execute("SELECT SUM(durationMillis) FROM session_parts").fetchone() == db.execute("SELECT SUM(durationMillis) FROM sessions").fetchone()
     expected = sqlite3.connect(":memory:")
-    for entity in make_schema(expected, 3)["entities"]:
+    for entity in make_schema(expected, 4)["entities"]:
         table = entity["tableName"]
         assert db.execute(f"PRAGMA table_info({table})").fetchall() == expected.execute(f"PRAGMA table_info({table})").fetchall(), table
         assert db.execute(f"PRAGMA index_list({table})").fetchall() == expected.execute(f"PRAGMA index_list({table})").fetchall(), table
     db.execute("INSERT OR IGNORE INTO badge_unlocks VALUES('first_piece', 123)")
     db.execute("INSERT OR IGNORE INTO badge_unlocks VALUES('first_piece', 999)")
     assert db.execute("SELECT unlockedAt FROM badge_unlocks").fetchone() == (123,)
-    print(f"PASS v{starting_version} → v3: legacy data retained, schema matches Room export, first timestamp retained")
+    print(f"PASS v{starting_version} → v4: legacy data retained, schema matches Room export, first timestamp retained")

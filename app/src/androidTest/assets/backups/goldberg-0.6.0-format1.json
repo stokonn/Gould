@@ -1,0 +1,71 @@
+{
+  "format": "goldberg-backup",
+  "version": 1,
+  "schema": 4,
+  "createdAt": 123,
+  "tables": {
+    "pieces": [
+      {
+        "id": 17,
+        "title": "Legacy Goldberg work",
+        "composer": "Johann Sebastian Bach",
+        "difficulty": "ADVANCED",
+        "status": "READY",
+        "notes": "Preserve original notes",
+        "catalogWorkId": null,
+        "createdAt": 123,
+        "instrument": "Piano",
+        "genre": "",
+        "musicalEra": "Baroque"
+      }
+    ],
+    "sessions": [
+      {
+        "id": 9,
+        "pieceId": 17,
+        "pieceTitle": "Legacy Goldberg work",
+        "startedAt": 1000,
+        "completedAt": 61000,
+        "durationMillis": 60000,
+        "practiceDay": "1970-01-01",
+        "practiceZone": "UTC",
+        "catalogWorkId": null,
+        "composerId": "87",
+        "musicalEra": "Baroque"
+      }
+    ],
+    "catalog_composers": [],
+    "catalog_works": [],
+    "catalog_cache": [],
+    "saved_recordings": [],
+    "badge_unlocks": [
+      {
+        "achievementId": "first_notes",
+        "unlockedAt": 123
+      }
+    ],
+    "session_parts": [
+      {
+        "id": 1,
+        "sessionId": 9,
+        "pieceId": 17,
+        "title": "Legacy Goldberg work",
+        "composer": "Johann Sebastian Bach",
+        "catalogWorkId": null,
+        "composerId": "87",
+        "musicalEra": "Baroque",
+        "durationMillis": 60000,
+        "notes": "Keep these session notes"
+      }
+    ],
+    "profile_settings": [
+      {
+        "id": 1,
+        "username": "Existing musician",
+        "avatar": "",
+        "theme": "Dark",
+        "showcase": "first_notes"
+      }
+    ]
+  }
+}
