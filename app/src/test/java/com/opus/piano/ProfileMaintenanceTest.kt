@@ -34,7 +34,7 @@ class ProfileMaintenanceTest {
     @Test fun settingsAndSearchSelectTheirOwningTabs() {
         assertEquals("HOME", selectedTab("HOME")); assertEquals("HOME", selectedTab("settings"))
         listOf("catalog", "catalog/work/87", "catalog/composer/87", "piece/1", "recordings/piece:1").forEach { assertEquals("REPERTOIRE", selectedTab(it)) }
-        assertEquals("BADGES", selectedTab("badge/first_notes")); assertEquals("PRACTICE", selectedTab("PRACTICE"))
+        assertEquals("HOME", selectedTab("badge/first_notes")); assertEquals("PRACTICE", selectedTab("PRACTICE"))
     }
     @Test fun showcaseOrderSurvivesReorderingRemovalAndLimitChecks() {
         val unlocked = (1..7).map { "badge$it" }.toSet()

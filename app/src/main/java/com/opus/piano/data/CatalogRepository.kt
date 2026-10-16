@@ -1,5 +1,7 @@
 package com.opus.piano.data
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import android.graphics.BitmapFactory
 import android.graphics.Bitmap
 import androidx.room.withTransaction
@@ -27,16 +29,16 @@ open class CatalogHttp {
         gate.withLock {
             val parsed = URL(url)
             val hosts = setOf("api.openopus.org", "www.wikidata.org", "en.wikipedia.org", "commons.wikimedia.org", "upload.wikimedia.org", "thumb.wikimedia.org")
-            require(parsed.protocol == "https" && parsed.host in hosts) { "Unsupported source" }
+            require(parsed.protocol == "https" && parsed.host in hosts) { L.s(R.string.msg_unsupported_source_edd7) }
             val connection = parsed.openConnection() as HttpURLConnection
             try {
                 connection.connectTimeout = 12000
                 connection.readTimeout = 15000
                 connection.instanceFollowRedirects = false
-                connection.setRequestProperty("User-Agent", "Goldberg/0.7.0 (Android; com.opus.piano; piano practice catalogue)")
+                connection.setRequestProperty("User-Agent", "Goldberg/0.9.0 (Android; com.opus.piano; piano practice catalogue)")
                 connection.setRequestProperty("Accept", if (image) "image/*" else "application/json")
                 val code = connection.responseCode
-                if (code !in 200..299) throw IOException(if (code == 429) "Source is busy; please try again later." else "Source returned HTTP $code.")
+                if (code !in 200..299) throw IOException(if (code == 429) L.s(R.string.msg_source_is_busy_please_try_again_later_b502) else L.s(R.string.msg_source_returned_http_code_e6c0, (code)))
                 val limit = if (image) 4 * 1024 * 1024 else 8 * 1024 * 1024
                 val result = java.io.ByteArrayOutputStream()
                 connection.inputStream.use { input ->
@@ -45,7 +47,7 @@ open class CatalogHttp {
                         currentCoroutineContext().ensureActive()
                         val read = input.read(buffer)
                         if (read < 0) break
-                        if (result.size() + read > limit) throw IOException("Response is too large.")
+                        if (result.size() + read > limit) throw IOException(L.s(R.string.msg_response_is_too_large_162e))
                         result.write(buffer, 0, read)
                     }
                 }
@@ -55,7 +57,7 @@ open class CatalogHttp {
     }
     open suspend fun json(url: String): JSONObject {
         val value = JSONObject(bytes(url).toString(Charsets.UTF_8))
-        if (value.has("error")) throw IOException("The source could not complete the request.")
+        if (value.has("error")) throw IOException(L.s(R.string.msg_the_source_could_not_complete_the_request_0279))
         return value
     }
 }
@@ -90,7 +92,7 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
     /** Only downloaded responses/images are disposable. Never delete normalized catalogue or personal tables. */
     suspend fun clearCache() = withContext(Dispatchers.IO) { cacheGate.withLock {
         db.openHelper.writableDatabase.execSQL("DELETE FROM catalog_cache")
-        portraitDirectory.listFiles()?.filter { it.isFile }?.forEach { check(it.delete()) { "Could not clear a cached portrait." } }
+        portraitDirectory.listFiles()?.filter { it.isFile }?.forEach { check(it.delete()) { L.s(R.string.msg_could_not_clear_a_cached_portrait_c3d6) } }
         db.invalidationTracker.refreshAsync()
     } }
     /** Wait for current downloads before replacing data; no old response can write across restore. */
@@ -161,14 +163,14 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
         try {
             val json = http.json("https://api.openopus.org/$path")
             val status = json.getJSONObject("status")
-            if (status.text("success") != "true" && status.text("error") != "Nothing found") throw IOException("Open Opus is temporarily unavailable.")
+            if (status.text("success") != "true" && status.text("error") != "Nothing found") throw IOException(L.s(R.string.msg_open_opus_is_temporarily_unavailable_47ca))
             val now = System.currentTimeMillis()
             // Parse and persist atomically. A failed refresh leaves the previous cache untouched.
             db.withTransaction { ingest(json); dao.putCache(CatalogCache(path, json.toString(), now)); trimResponses() }
             CatalogLoad(json, false, fetchedAt = now)
         } catch (cancelled: CancellationException) { throw cancelled }
         catch (error: Exception) {
-            if (cached == null) throw IOException("Unable to load Open Opus. Check your connection and try again.", error)
+            if (cached == null) throw IOException(L.s(R.string.msg_unable_to_load_open_opus_check_your_connecti_8d3d), error)
             CatalogLoad(JSONObject(cached.payload), true, "Refresh failed. Showing the saved catalogue.", cached.fetchedAt)
         }
     } }
@@ -220,7 +222,7 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
             CatalogLoad(profile, false, fetchedAt = now)
         } catch (cancelled: CancellationException) { throw cancelled }
         catch (error: Exception) {
-            if (cached == null) throw IOException("Biography and portrait could not be loaded. Catalogue works remain available.", error)
+            if (cached == null) throw IOException(L.s(R.string.msg_biography_and_portrait_could_not_be_loaded_c_af9d), error)
             CatalogLoad(profileFromJson(JSONObject(cached.payload)), true, "Showing the saved biography; refresh failed.", cached.fetchedAt)
         }
     } }
@@ -234,7 +236,7 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
         val bytes = http.bytes(url, image = true)
         val bitmap = decodePortrait(bytes) ?: return@withContext null
         val temporary = File.createTempFile("portrait-", ".tmp", directory)
-        try { temporary.writeBytes(bytes); if (!temporary.renameTo(file)) throw IOException("Could not cache portrait") }
+        try { temporary.writeBytes(bytes); if (!temporary.renameTo(file)) throw IOException(L.s(R.string.msg_could_not_cache_portrait_538e)) }
         finally { temporary.delete() }
         trimPortraits()
         bitmap

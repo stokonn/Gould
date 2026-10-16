@@ -1,3 +1,17 @@
+# 0.9.0 Beta — The Redesign Update
+
+- Unify Ivory/Nocturne colors, editorial typography, curated accents and global card styling.
+- Focus bottom navigation on Home, Repertoire, Practice and Profile; retain the complete badge collection inside Profile.
+- Add Balanced Home with hybrid free/piece practice start, two chosen credited-time metrics and distinct recently practiced pieces.
+- Improve repertoire search, persistent sorting/density, contextual add and compact piece details with attributed practice history.
+- Prioritize the timer, real Smart Practice states and anchored controls while retaining the existing background service and timing semantics.
+- Reorganize Settings into focused subpages; persist visual section order/visibility and provide a confirmed appearance-only reset.
+- Localize application UI, notifications and achievements into Czech and English with per-app language support and plural resources.
+- Introduce the original adaptive Classic Minimal Piano icon, night artwork and monochrome themed icon.
+- Retain application ID, compatible signing identity, Room schema 6, migration graph and supported format-1/format-2 backups.
+- Verify 52 JVM tests, clean APK/test compilation, lint (zero errors), host migration/legacy fixture/localization checks and the actual published 0.8 signing certificate. On-device checks remain unverified and disclosed for this beta.
+- Details: [release notes](docs/RELEASE-0.9.md), [verification](docs/VERIFICATION-0.9.md).
+
 # 0.8.0 Beta — Smart Practice
 
 - Add one authoritative practice coordinator, durable drafts, measured timing intervals and idempotent completion.

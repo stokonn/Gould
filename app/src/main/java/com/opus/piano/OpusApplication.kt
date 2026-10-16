@@ -8,10 +8,18 @@ import com.opus.piano.data.*
 class OpusApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        com.opus.piano.i18n.L.initialize(this)
         kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.IO).launch {
+            com.opus.piano.i18n.L.refresh()
             runCatching { com.opus.piano.reminders.ReminderScheduler(this@OpusApplication).schedule() }
         }
     }
+    override fun onConfigurationChanged(newConfig: android.content.res.Configuration) {
+        super.onConfigurationChanged(newConfig)
+        com.opus.piano.i18n.L.refresh()
+    }
+    val appearance by lazy { com.opus.piano.preferences.AppearanceStore(this) }
+    val practiceRequest = kotlinx.coroutines.flow.MutableStateFlow("")
     val openPractice = kotlinx.coroutines.flow.MutableStateFlow(0L)
     val database by lazy {
         Room.databaseBuilder(this, OpusDatabase::class.java, "opus.db")

@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import android.app.Application
 import android.net.Uri
 import android.graphics.Bitmap
@@ -24,8 +26,8 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
     fun smartSettings(sensitivity: Int, pause: Int) = edit { it.copy(sensitivity = sensitivity.coerceIn(0,100), pauseSeconds = pause.coerceIn(2,30)) }
     fun reminder(enabled: Boolean, hour: Int, minute: Int) = action { com.opus.piano.reminders.ReminderScheduler(getApplication()).configure(enabled,hour,minute) }
     fun csv(uri: Uri, parts: Boolean) = action {
-        getApplication<Application>().contentResolver.openOutputStream(uri,"wt")?.bufferedWriter(Charsets.UTF_8)?.use { CsvExportRepository(db).export(it,parts) } ?: error("Cannot write export.")
-        notice.value = "CSV exported."
+        getApplication<Application>().contentResolver.openOutputStream(uri,"wt")?.bufferedWriter(Charsets.UTF_8)?.use { CsvExportRepository(db).export(it,parts) } ?: error(L.s(R.string.msg_cannot_write_export_0170))
+        notice.value = L.s(R.string.msg_csv_exported_5f14)
     }
     fun curious() = action { db.experienceDao().unlock(listOf(BadgeUnlock("curious_pianist",System.currentTimeMillis()))) }
     val notice = MutableStateFlow<String?>(null)
@@ -37,7 +39,7 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
         busy.value = true
         viewModelScope.launch { try { withContext(Dispatchers.IO) { block() } }
             catch (c: CancellationException) { throw c }
-            catch (e: Exception) { notice.value = "Operation failed. Please retry. ${e.message.orEmpty().take(160)}" }
+            catch (e: Exception) { notice.value = L.s(R.string.msg_operation_failed_please_retry_e_message_orem_bb69, (e.message.orEmpty().take(160))) }
             finally { busy.value = false }
         }
     }
@@ -45,6 +47,10 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
         db.withTransaction { db.personalDao().saveSettings(change(db.personalDao().getSettings() ?: ProfileSettings())) }
     }
     fun username(value: String) = edit { it.copy(username = value.trim().take(80).ifBlank { "Musician" }) }
+    fun resetAppearance() = action {
+        db.withTransaction { val old=db.personalDao().getSettings() ?: ProfileSettings();db.personalDao().saveSettings(old.copy(theme="System",typography="Editorial",statistics="time,pieces,sessions,streak")) }
+        (getApplication<Application>() as OpusApplication).appearance.reset()
+    }
     fun theme(value: String) = edit { require(value in listOf("System", "Light", "Dark")); it.copy(theme = value) }
     fun showcase(ids: List<String>) = action {
         db.withTransaction {
@@ -60,17 +66,17 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
     fun clearCache() = action {
         val catalog = (getApplication<Application>() as OpusApplication).catalogRepository
         catalog.clearCache(); cacheUsage.value = catalog.cacheBytes()
-        notice.value = "Disposable cache cleared. Your journal and saved catalogue are preserved."
+        notice.value = L.s(R.string.msg_disposable_cache_cleared_your_journal_and_sa_18c6)
     }
     fun clearAvatar() = edit { it.copy(avatar = "") }
     fun avatar(uri: Uri) = action {
         val resolver = getApplication<Application>().contentResolver
-        val bytes = resolver.openInputStream(uri)?.use { it.readBytesLimited(16 * 1024 * 1024) } ?: error("Image unavailable.")
+        val bytes = resolver.openInputStream(uri)?.use { it.readBytesLimited(16 * 1024 * 1024) } ?: error(L.s(R.string.msg_image_unavailable_ad4c))
         val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
         BitmapFactory.decodeByteArray(bytes, 0, bytes.size, bounds)
-        require(bounds.outWidth > 0 && bounds.outHeight > 0) { "Unsupported image." }
+        require(bounds.outWidth > 0 && bounds.outHeight > 0) { L.s(R.string.msg_unsupported_image_80e4) }
         val options = BitmapFactory.Options().apply { inSampleSize = 1; while (maxOf(bounds.outWidth, bounds.outHeight) / inSampleSize > 512) inSampleSize *= 2 }
-        val image = BitmapFactory.decodeByteArray(bytes, 0, bytes.size, options) ?: error("Unsupported image.")
+        val image = BitmapFactory.decodeByteArray(bytes, 0, bytes.size, options) ?: error(L.s(R.string.msg_unsupported_image_80e4))
         val ratio = minOf(1f, 512f / maxOf(image.width, image.height))
         val scaled = Bitmap.createScaledBitmap(image, (image.width * ratio).toInt().coerceAtLeast(1), (image.height * ratio).toInt().coerceAtLeast(1), true)
         val output = ByteArrayOutputStream(); scaled.compress(Bitmap.CompressFormat.JPEG, 88, output)
@@ -79,26 +85,26 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
     }
     fun export(uri: Uri) = action {
         val raw = backup.export()
-        getApplication<Application>().contentResolver.openOutputStream(uri, "wt")?.use { it.write(raw.toByteArray()) } ?: error("Cannot write this file.")
-        notice.value = "Backup exported."
+        getApplication<Application>().contentResolver.openOutputStream(uri, "wt")?.use { it.write(raw.toByteArray()) } ?: error(L.s(R.string.msg_cannot_write_this_file_151a))
+        notice.value = L.s(R.string.msg_backup_exported_6f92)
     }
     fun inspect(uri: Uri) = action {
         pending = null; preview.value = null
-        val raw = getApplication<Application>().contentResolver.openInputStream(uri)?.use { it.readBytesLimited(BackupRepository.MAX_BYTES).toString(Charsets.UTF_8) } ?: error("Cannot read this file.")
+        val raw = getApplication<Application>().contentResolver.openInputStream(uri)?.use { it.readBytesLimited(BackupRepository.MAX_BYTES).toString(Charsets.UTF_8) } ?: error(L.s(R.string.msg_cannot_read_this_file_8312))
         val summary = backup.validate(raw)
         pending = raw; preview.value = summary
     }
     fun cancelRestore() { if (!busy.value) { preview.value = null; pending = null } }
     fun restore(done: () -> Unit) = action {
-        val raw = pending ?: error("Select a backup again.")
+        val raw = pending ?: error(L.s(R.string.msg_select_a_backup_again_ca8b))
         (getApplication<Application>() as OpusApplication).practice.replacing {
             (getApplication<Application>() as OpusApplication).catalogRepository.restoreJournal { backup.restore(raw) }
-        }; pending = null; preview.value = null; notice.value = "Backup restored."
+        }; pending = null; preview.value = null; notice.value = L.s(R.string.msg_backup_restored_52ad)
         withContext(Dispatchers.Main) { done() }
     }
 }
 private fun java.io.InputStream.readBytesLimited(limit: Int): ByteArray {
     val out = ByteArrayOutputStream(); val buffer = ByteArray(8192)
-    while (true) { val count = read(buffer); if (count < 0) break; require(out.size() + count <= limit) { "File is too large." }; out.write(buffer, 0, count) }
+    while (true) { val count = read(buffer); if (count < 0) break; require(out.size() + count <= limit) { L.s(R.string.msg_file_is_too_large_3801) }; out.write(buffer, 0, count) }
     return out.toByteArray()
 }

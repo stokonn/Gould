@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -47,8 +49,8 @@ import kotlinx.coroutines.CancellationException
     }
     LaunchedEffect(id) { model.loadComposer(id) }
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        item { CatalogBack("The composer's archive", back) }
-        if (composer == null) item { CatalogFeedback("This composer is not available on this device.") { model.loadComposer(id, true) } }
+        item { CatalogBack(L.s(R.string.msg_the_composer_s_archive_2190), back) }
+        if (composer == null) item { CatalogFeedback(L.s(R.string.composer_unavailable)) { model.loadComposer(id, true) } }
         else {
             item {
                 BoxWithConstraints {
@@ -64,7 +66,7 @@ import kotlinx.coroutines.CancellationException
                     }
                 }
             }
-            item { TabRow(tab, containerColor = MaterialTheme.colorScheme.background, contentColor = Gold) { listOf("Overview", "Works", "About").forEachIndexed { i, label -> Tab(tab == i, onClick = { tab = i }, text = { Text(label) }) } } }
+            item { TabRow(tab, containerColor = MaterialTheme.colorScheme.background, contentColor = Gold) { listOf("Overview", "Works", "About").forEachIndexed { i, label -> Tab(tab == i, onClick = { tab = i }, text = { Text(if(label=="About") L.s(R.string.msg_biography_53c2) else L.fixed(label)) }) } } }
             when (tab) {
                 0 -> {
                     item {
@@ -76,46 +78,46 @@ import kotlinx.coroutines.CancellationException
                         }
                     }
                     item {
-                        SectionTitle("A life in music")
+                        SectionTitle(L.s(R.string.msg_a_life_in_music_9319))
                         Spacer(Modifier.height(8.dp))
                         if (page.profileLoading) LinearProgressIndicator(Modifier.fillMaxWidth())
-                        Text(profile?.text?.ifBlank { null } ?: if (page.profileLoading) "Loading the introduction…" else "No verified biography is available.",
+                        Text(profile?.text?.ifBlank { null } ?: if (page.profileLoading) L.s(R.string.msg_loading_the_introduction_f296) else L.s(R.string.msg_no_verified_biography_is_available_8fab),
                             maxLines = if (expanded) Int.MAX_VALUE else 4, overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        if (!profile?.text.isNullOrBlank()) TextButton(onClick = { expanded = !expanded }) { Text(if (expanded) "Read less" else "Read more") }
-                        TextButton(onClick = { tab = 2 }) { Text("Sources & credits") }
+                        if (!profile?.text.isNullOrBlank()) TextButton(onClick = { expanded = !expanded }) { Text(if (expanded) L.s(R.string.msg_read_less_32ab) else L.s(R.string.msg_read_more_ad08)) }
+                        TextButton(onClick = { tab = 2 }) { Text(L.s(R.string.msg_sources_credits_874b)) }
                     }
-                    item { SectionTitle("From your repertoire") }
-                    if (personal.isEmpty()) item { Text("Add a work by ${composer.name} to start your own chapter.", color = MaterialTheme.colorScheme.onSurfaceVariant) }
+                    item { SectionTitle(L.s(R.string.msg_from_your_repertoire_f345)) }
+                    if (personal.isEmpty()) item { Text(L.s(R.string.msg_add_a_work_by_composer_name_to_start_your_ow_2f92, (composer.name)), color = MaterialTheme.colorScheme.onSurfaceVariant) }
                     items(personal.take(4), key = { "personal:${it.id}" }) { p ->
-                        Panel { Text(p.title, style = MaterialTheme.typography.titleMedium); Text(p.status.label, color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.bodySmall) }
+                        Panel { Text(p.title, style = MaterialTheme.typography.titleMedium); Text(L.fixed(p.status.label), color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.bodySmall) }
                     }
-                    if (featured.isNotEmpty()) item { SectionTitle("Featured by Open Opus") }
+                    if (featured.isNotEmpty()) item { SectionTitle(L.s(R.string.msg_featured_by_open_opus_7787)) }
                     items(featured, key = { "featured:${it.id}" }) { w -> WorkCard(w, composer, alreadyAdded(w, composer, library.pieces), w.id in adding, { workPage(w.id) }, { model.add(w, composer) }) }
-                    if (works.isNotEmpty()) item { OutlinedButton(onClick = { tab = 1 }) { Text("Explore ${works.size} loaded works") } }
+                    if (works.isNotEmpty()) item { OutlinedButton(onClick = { tab = 1 }) { Text(L.s(R.string.msg_explore_works_size_loaded_works_c20f, (works.size))) } }
                 }
                 1 -> {
-                    item { OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth(), singleLine = true, label = { Text("Find a composition") }) }
+                    item { OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth(), singleLine = true, label = { Text(L.s(R.string.msg_find_a_composition_bfc2)) }) }
                     item { FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Choice("Genre", listOf("All") + works.map { it.genre }.filter { it.isNotBlank() }.distinct().sorted(), genre) { genre = it }
-                        Choice("Collection", listOf("All", "In repertoire", "Not added"), collection) { collection = it }
-                        Choice("Sort", listOf("Title", "Catalogue"), sort) { sort = it }
+                        Choice(L.s(R.string.msg_genre_2aa3), listOf("All") + works.map { it.genre }.filter { it.isNotBlank() }.distinct().sorted(), genre) { genre = it }
+                        Choice(L.s(R.string.msg_collection_30c5), listOf("All", L.s(R.string.msg_in_repertoire_b185), "Not added"), collection) { collection = it }
+                        Choice(L.s(R.string.msg_sort_adc4), listOf("Title", L.s(R.string.msg_catalogue_5a24)), sort) { sort = it }
                     } }
                     if (page.loading) item { LinearProgressIndicator(Modifier.fillMaxWidth()) }
-                    if (!page.loading && matches.isEmpty()) item { Text("No works match this selection.", color = MaterialTheme.colorScheme.onSurfaceVariant) }
+                    if (!page.loading && matches.isEmpty()) item { Text(L.s(R.string.msg_no_works_match_this_selection_85cd), color = MaterialTheme.colorScheme.onSurfaceVariant) }
                     items(matches.take(limit), key = { it.id }) { w -> WorkCard(w, composer, alreadyAdded(w, composer, library.pieces), w.id in adding, { workPage(w.id) }, { model.add(w, composer) }) }
-                    if (matches.size > limit) item { OutlinedButton(onClick = { limit += 40 }) { Text("Show more works (${matches.size - limit} remaining)") } }
+                    if (matches.size > limit) item { OutlinedButton(onClick = { limit += 40 }) { Text(L.s(R.string.msg_show_more_works_matches_size_limit_remaining_2020, (matches.size - limit))) } }
                 }
                 2 -> {
-                    item { SectionTitle("Biography"); Spacer(Modifier.height(8.dp)); Text(profile?.text?.ifBlank { null } ?: "No verified biography is available.", color = MaterialTheme.colorScheme.onSurfaceVariant) }
+                    item { SectionTitle(L.s(R.string.msg_biography_53c2)); Spacer(Modifier.height(8.dp)); Text(profile?.text?.ifBlank { null } ?: L.s(R.string.msg_no_verified_biography_is_available_8fab), color = MaterialTheme.colorScheme.onSurfaceVariant) }
                     item { Panel {
-                        Text("HISTORICAL DETAILS", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
-                        Text("Era · ${composer.epoch.ifBlank { "Not supplied" }}")
-                        Text("Born · ${profile?.birth?.ifBlank { null } ?: composer.birth.take(4).ifBlank { "Not supplied" }}")
-                        Text("Died · ${profile?.death?.ifBlank { null } ?: composer.death.take(4).ifBlank { "Not supplied" }}")
-                        profile?.origin?.takeIf { it.isNotBlank() }?.let { Text("Birthplace / citizenship · $it") }
+                        Text(L.s(R.string.msg_historical_details_67be), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
+                        Text(L.s(R.string.msg_era_composer_epoch_ifblank_not_supplied_6765, (composer.epoch.ifBlank { L.fixed("Not supplied") })))
+                        Text(L.s(R.string.msg_born_profile_birth_ifblank_null_composer_bir_2f27, (profile?.birth?.ifBlank { null } ?: composer.birth.take(4).ifBlank { L.fixed("Not supplied") })))
+                        Text(L.s(R.string.msg_died_profile_death_ifblank_null_composer_dea_e1b2, (profile?.death?.ifBlank { null } ?: composer.death.take(4).ifBlank { L.fixed("Not supplied") })))
+                        profile?.origin?.takeIf { it.isNotBlank() }?.let { Text(L.s(R.string.msg_birthplace_citizenship_it_4edb, (it))) }
                     } }
                     item { ProfileCredits(profile) }
-                    item { CacheCaption(page.fetchedAt); TextButton(onClick = { model.loadComposer(id, true) }) { Text("Refresh composer") } }
+                    item { CacheCaption(page.fetchedAt); TextButton(onClick = { model.loadComposer(id, true) }) { Text(L.s(R.string.msg_refresh_composer_1c6b)) } }
                 }
             }
             page.error?.let { message -> item { CatalogFeedback(message) { model.loadComposer(id, true) } } }
@@ -126,34 +128,34 @@ import kotlinx.coroutines.CancellationException
 }
 
 @Composable internal fun SmallStatistic(value: String, label: String) {
-    Column(verticalArrangement = Arrangement.spacedBy(3.dp)) { Text(value, style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary); Text(label, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+    Column(verticalArrangement = Arrangement.spacedBy(3.dp)) { Text(value, style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary); Text(L.fixed(label), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
 }
 @Composable private fun PortraitImage(portrait: Portrait?, repository: CatalogRepository, name: String, width: Int) {
     val bitmap by produceState<android.graphics.Bitmap?>(null, portrait?.url) {
         if (portrait != null) try { value = repository.portrait(portrait.url) } catch (cancelled: CancellationException) { throw cancelled } catch (_: Exception) { value = null }
     }
     Surface(Modifier.width(width.dp).height((width * 1.2f).dp), shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surfaceVariant) {
-        if (bitmap != null) Image(bitmap!!.asImageBitmap(), "Portrait of $name. Attribution in About, Sources and credits.", contentScale = ContentScale.Crop)
-        else Box(contentAlignment = Alignment.Center) { Icon(Icons.Outlined.PersonOutline, "Portrait unavailable", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(38.dp)) }
+        if (bitmap != null) Image(bitmap!!.asImageBitmap(), L.s(R.string.msg_portrait_of_name_attribution_in_about_source_e948, (name)), contentScale = ContentScale.Crop)
+        else Box(contentAlignment = Alignment.Center) { Icon(Icons.Outlined.PersonOutline, L.s(R.string.msg_portrait_unavailable_6f4e), tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(38.dp)) }
     }
 }
 @Composable private fun ProfileCredits(profile: ComposerProfile?) {
     Panel {
-        SectionTitle("Sources & credits")
-        SourceLink("Catalogue metadata · Open Opus · public domain", "https://openopus.org/")
+        SectionTitle(L.s(R.string.msg_sources_credits_874b))
+        SourceLink(L.s(R.string.msg_catalogue_metadata_open_opus_public_domain_c841), "https://openopus.org/")
         if (profile != null) {
-            SourceLink("Biography · Wikipedia contributors", profile.articleUrl)
-            SourceLink("Article history & authors", if (profile.articleUrl.isBlank()) "" else "${profile.articleUrl}?action=history")
+            SourceLink(L.s(R.string.msg_biography_wikipedia_contributors_0d3b), profile.articleUrl)
+            SourceLink(L.s(R.string.msg_article_history_authors_89e1), if (profile.articleUrl.isBlank()) "" else "${profile.articleUrl}?action=history")
             SourceLink(profile.license, profile.licenseUrl)
-            SourceLink("Identity & dates · Wikidata · CC0", profile.wikidataUrl)
-            if (profile.text.isNotBlank()) Text("English Wikipedia introduction, unchanged.", style = MaterialTheme.typography.bodySmall)
+            SourceLink(L.s(R.string.msg_identity_dates_wikidata_cc0_f066), profile.wikidataUrl)
+            if (profile.text.isNotBlank()) Text(L.s(R.string.msg_english_wikipedia_introduction_unchanged_10f1), style = MaterialTheme.typography.bodySmall)
             profile.portrait?.let { p ->
                 HorizontalDivider()
                 Text(p.artist, style = MaterialTheme.typography.bodySmall)
                 if (p.credit.isNotBlank()) Text(p.credit, style = MaterialTheme.typography.bodySmall)
-                SourceLink("Portrait source · Wikimedia Commons", p.sourceUrl)
+                SourceLink(L.s(R.string.msg_portrait_source_wikimedia_commons_a86c), p.sourceUrl)
                 if (p.licenseUrl.isNotBlank()) SourceLink(p.license, p.licenseUrl) else Text(p.license)
-                Text("Portrait displayed as an editorial crop.", style = MaterialTheme.typography.bodySmall)
+                Text(L.s(R.string.msg_portrait_displayed_as_an_editorial_crop_cdaf), style = MaterialTheme.typography.bodySmall)
             }
         }
     }

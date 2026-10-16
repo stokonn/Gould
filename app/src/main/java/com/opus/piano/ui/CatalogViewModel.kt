@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -85,7 +87,7 @@ class CatalogViewModel(val repository: CatalogRepository, private val saved: Sav
             }
         } catch (cancelled: CancellationException) { throw cancelled }
         catch (_: Exception) {
-            _browse.update { it.copy(loading = false, cached = true, error = "Catalogue unavailable. Showing matching saved items; connect to the internet to discover more.") }
+            _browse.update { it.copy(loading = false, cached = true, error = L.s(R.string.msg_catalogue_unavailable_showing_matching_saved_c21f)) }
         }
     }
     fun loadComposer(id: String, force: Boolean = false) {
@@ -98,7 +100,7 @@ class CatalogViewModel(val repository: CatalogRepository, private val saved: Sav
                     val load = repository.composerWorks(id, force)
                     _composer.update { it.copy(loading = false, warning = load.warning, fetchedAt = load.fetchedAt, totalWorks = load.value) }
                 } catch (cancelled: CancellationException) { throw cancelled }
-                catch (_: Exception) { _composer.update { it.copy(loading = false, error = "Works could not be refreshed. Any saved works are shown below.") } }
+                catch (_: Exception) { _composer.update { it.copy(loading = false, error = L.s(R.string.msg_works_could_not_be_refreshed_any_saved_works_28ff)) } }
             }
             launch {
                 try {
@@ -106,13 +108,13 @@ class CatalogViewModel(val repository: CatalogRepository, private val saved: Sav
                         snapshot.first { data -> data.composers.any { it.id == id && it.birth.isNotBlank() } }.composers.first { it.id == id }
                     }
                     if (c == null) {
-                        _composer.update { it.copy(profileLoading = false, profileError = "A reliable birth year is needed to verify this biography. Refresh when online.") }
+                        _composer.update { it.copy(profileLoading = false, profileError = L.s(R.string.msg_a_reliable_birth_year_is_needed_to_verify_th_e648)) }
                         return@launch
                     }
                     val profile = repository.profile(c, force)
                     _composer.update { it.copy(profileLoading = false, profile = profile.value, profileError = profile.warning) }
                 } catch (cancelled: CancellationException) { throw cancelled }
-                catch (_: Exception) { _composer.update { it.copy(profileLoading = false, profileError = "Biography and portrait are unavailable. Please try again when online.") } }
+                catch (_: Exception) { _composer.update { it.copy(profileLoading = false, profileError = L.s(R.string.msg_biography_and_portrait_are_unavailable_pleas_7137)) } }
             }
         }
     }
@@ -124,7 +126,7 @@ class CatalogViewModel(val repository: CatalogRepository, private val saved: Sav
                 val load = repository.detail(id, force)
                 _work.update { it.copy(loading = false, warning = load.warning, fetchedAt = load.fetchedAt) }
             } catch (cancelled: CancellationException) { throw cancelled }
-            catch (_: Exception) { _work.update { it.copy(loading = false, error = "Full detail is unavailable. Showing saved information.") } }
+            catch (_: Exception) { _work.update { it.copy(loading = false, error = L.s(R.string.msg_full_detail_is_unavailable_showing_saved_inf_b632)) } }
         }
     }
     fun add(work: CatalogWork, composer: CatalogComposer) {
@@ -133,9 +135,9 @@ class CatalogViewModel(val repository: CatalogRepository, private val saved: Sav
         viewModelScope.launch {
             try {
                 val added = repository.add(work, composer)
-                _notice.value = if (added) "Added to your repertoire." else "This work is already in your repertoire."
+                _notice.value = if (added) L.s(R.string.added_repertoire) else L.s(R.string.already_repertoire)
             } catch (cancelled: CancellationException) { throw cancelled }
-            catch (_: Exception) { _notice.value = "Could not add this work. Please try again." }
+            catch (_: Exception) { _notice.value = L.s(R.string.msg_could_not_add_this_work_please_try_again_983e) }
             finally { _adding.update { it - work.id } }
         }
     }

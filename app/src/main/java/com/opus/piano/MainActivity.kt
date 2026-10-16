@@ -13,13 +13,14 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.opus.piano.ui.*
 
-class MainActivity : ComponentActivity() {
+class MainActivity : androidx.appcompat.app.AppCompatActivity() {
     override fun onNewIntent(intent: android.content.Intent) {
         super.onNewIntent(intent)
         if (intent.getBooleanExtra("practice",false)) (application as OpusApplication).openPractice.value = System.nanoTime()
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        com.opus.piano.i18n.L.refresh()
         if (intent.getBooleanExtra("practice",false)) (application as OpusApplication).openPractice.value = System.nanoTime()
         enableEdgeToEdge()
         setContent {
@@ -34,7 +35,8 @@ class MainActivity : ComponentActivity() {
             })
             val profile: ProfileViewModel = viewModel()
             val settings by profile.settings.collectAsStateWithLifecycle()
-            OpusTheme(settings.theme, settings.typography) {
+            val appearance by (application as OpusApplication).appearance.state.collectAsStateWithLifecycle()
+            OpusTheme(settings.theme, settings.typography, appearance) {
                 val light = androidx.compose.material3.MaterialTheme.colorScheme.background.luminance() > .5f
                 androidx.compose.runtime.SideEffect {
                     androidx.core.view.WindowCompat.getInsetsController(window, window.decorView).apply {

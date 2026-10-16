@@ -11,3 +11,7 @@ The available build signing identity currently produces that same fingerprint. O
 Before distribution compare the final candidate with authentic published 0.6.1 and 0.7 artifacts using scripts/verify-upgrade-signing.sh, verify signatures/package/version/code/checksum, then test an in-place upgrade on a dedicated populated test installation. Certificate equality alone does not prove runtime data preservation.
 
 Future builds must explicitly retain the verified signing identity. Keep the existing compatible private key outside Git and back it up encrypted in independent locations. Do not print passwords, embed credentials in scripts, generate a replacement release identity or rotate certificates without a separately approved migration. The explicitly authorized 0.8 beta waives runtime verification as a publication gate only; missing automated checks or signing compatibility still block publication. Runtime upgrades/data preservation remain publicly unverified. No key was generated, replaced or committed by this work.
+
+## Goldberg 0.9 verified artifact
+
+Version 0.9.0 / code 7 retains com.opus.piano. Android apksigner verified that the final named APK and the downloaded published v0.8.0 APK share certificate SHA-256 `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`. This remains the compatible Android Debug identity, not production signing; no certificate rotation is introduced. A real installation upgrade was not performed. See VERIFICATION-0.9.md for artifact SHA-256 and limitations.

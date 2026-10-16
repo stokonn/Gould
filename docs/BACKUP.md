@@ -11,3 +11,7 @@ Validation stages values in an isolated in-memory Room database, checking enums,
 Export reads portable data in one transaction. Restore validates again, then replaces portable tables and clears the unfinished draft in a single transaction. Device-local state is retained. The application coordinator stops capture and serializes mutations during replacement; catalogue downloads are serialized against restore. Failed replacement rolls back. Cache maintenance failure after successful replacement does not falsely report that old portable data was retained. Repeated import cannot accumulate duplicates.
 
 Restoration requires explicit replacement confirmation, including the unfinished-session warning. It does not merge journals, activate reminders or start microphone capture. Backups and CSV are unencrypted. Android automatic cloud backup remains disabled; keep independent copies. Cancelling a document picker does not change data. A selected cloud document provider may upload the file independently of Goldberg.
+
+## Goldberg 0.9 compatibility
+
+The redesign retains Room schema 6 and both supported backup formats without changing portable journal fields. New accent, card, section layout, metric and repertoire presentation preferences use a separate device-local appearance store and are intentionally outside portable backups. Appearance reset never replaces journal data. Existing profile/theme fields retain their prior backup behavior. Real-device restore execution remains unverified for this beta; host legacy-fixture and migration checks passed.

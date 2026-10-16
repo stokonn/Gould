@@ -1,5 +1,7 @@
 package com.opus.piano.audio
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import android.content.Context
 import android.media.*
 import kotlinx.coroutines.*
@@ -9,7 +11,7 @@ import kotlin.math.*
 /** Small synthesized plucks, no recordings or licensed sound assets. */
 class HarpsichordAudioEngine(context: Context) : AutoCloseable {
     val notice = kotlinx.coroutines.flow.MutableStateFlow<String?>(null)
-    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO + CoroutineExceptionHandler { _,_ -> notice.value = "Audio is unavailable on this device." })
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO + CoroutineExceptionHandler { _,_ -> notice.value = L.s(R.string.msg_audio_is_unavailable_on_this_device_0fa1) })
     private val notes = Channel<Int>(16)
     private val manager = context.getSystemService(AudioManager::class.java)
     private val attributes = AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_GAME).setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).build()
@@ -23,7 +25,7 @@ class HarpsichordAudioEngine(context: Context) : AutoCloseable {
             val audio = AudioTrack.Builder().setAudioAttributes(attributes).setAudioFormat(AudioFormat.Builder().setSampleRate(rate).setEncoding(AudioFormat.ENCODING_PCM_16BIT).setChannelMask(AudioFormat.CHANNEL_OUT_MONO).build()).setBufferSizeInBytes(maxOf(min,4096)).setTransferMode(AudioTrack.MODE_STREAM).build()
             track = audio
             try {
-                if (manager.requestAudioFocus(focus) != AudioManager.AUDIOFOCUS_REQUEST_GRANTED) { notice.value = "Audio is busy. Close and retry when other audio has stopped."; return@launch }
+                if (manager.requestAudioFocus(focus) != AudioManager.AUDIOFOCUS_REQUEST_GRANTED) { notice.value = L.s(R.string.msg_audio_is_busy_close_and_retry_when_other_aud_bd42); return@launch }
                 audio.play()
                 data class Voice(val frequency: Double, var age: Int = 0)
                 val voices = mutableListOf<Voice>()

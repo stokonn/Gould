@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import android.graphics.Typeface
 import androidx.compose.foundation.Canvas
 import androidx.compose.runtime.Composable
@@ -33,7 +35,7 @@ import kotlin.math.*
         BadgeRarity.EPIC -> Color(0xFF352A3C)
         BadgeRarity.LEGENDARY -> Color(0xFF46371F)
     }
-    Canvas(modifier.semantics { contentDescription = "${badge.definition.rarity.label} engraved ${badge.definition.name} medal, ${if (badge.unlocked) "unlocked" else "locked"}" }) {
+    Canvas(modifier.semantics { contentDescription = L.s(R.string.msg_badge_definition_rarity_label_engraved_badge_d417, (L.fixed(badge.definition.rarity.label)), (badge.definition.localizedName), (L.fixed(if (badge.unlocked) "unlocked" else "locked"))) }) {
         withTransform({ scale(size.width / 200f, size.height / 200f, Offset.Zero) }) {
             val center = Offset(100f, 100f)
             drawCircle(Color.Black.copy(alpha = .3f), 91f, Offset(100f, 104f))
@@ -107,7 +109,7 @@ import kotlin.math.*
                 }
             }
             drawLine(metal, Offset(78f, 136f), Offset(122f, 136f), .7f)
-            val inscription = if (badge.definition.metric == AchievementMetric.PRACTICE_MILLIS) "C · HOURS" else "PRACTICE · ${badge.definition.target}"
+            val inscription = if (badge.definition.metric == AchievementMetric.PRACTICE_MILLIS) "100 h" else "${L.fixed("Practice").uppercase()} · ${badge.definition.target}"
             drawContext.canvas.nativeCanvas.drawText(inscription, 100f, 150f, android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG).apply { color = light.toArgb(); textSize = 8f; textAlign = android.graphics.Paint.Align.CENTER; isSubpixelText = true; typeface = Typeface.create("serif", Typeface.NORMAL) })
             drawCircle(light, 2f, Offset(100f, 39f))
             drawLine(light, Offset(94f, 165f), Offset(106f, 159f), 1.5f)

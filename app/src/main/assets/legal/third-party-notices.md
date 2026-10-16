@@ -8,7 +8,7 @@ Catalogue data is supplied by Open Opus: https://openopus.org/ and https://githu
 
 The hidden harpsichord uses original mathematical synthesis; it contains no third-party audio recordings.
 
-Resolved runtime dependency inventory (including platform constraints), audited from cached Maven POM license metadata:
+Resolved runtime dependency inventory (including platform constraints), Goldberg 0.9 audit from cached Maven POM metadata:
 
 androidx.activity:activity:1.10.1 — The Apache Software License, Version 2.0
 androidx.activity:activity-compose:1.10.1 — The Apache Software License, Version 2.0
@@ -16,6 +16,8 @@ androidx.activity:activity-ktx:1.10.1 — The Apache Software License, Version 2
 androidx.annotation:annotation:1.9.1 — The Apache Software License, Version 2.0
 androidx.annotation:annotation-experimental:1.4.1 — The Apache Software License, Version 2.0
 androidx.annotation:annotation-jvm:1.9.1 — The Apache Software License, Version 2.0
+androidx.appcompat:appcompat:1.7.1 — The Apache Software License, Version 2.0
+androidx.appcompat:appcompat-resources:1.7.1 — The Apache Software License, Version 2.0
 androidx.arch.core:core-common:2.2.0 — The Apache Software License, Version 2.0
 androidx.arch.core:core-runtime:2.2.0 — The Apache Software License, Version 2.0
 androidx.autofill:autofill:1.0.0 — The Apache Software License, Version 2.0
@@ -61,14 +63,21 @@ androidx.concurrent:concurrent-futures:1.1.0 — The Apache Software License, Ve
 androidx.core:core:1.15.0 — The Apache Software License, Version 2.0
 androidx.core:core-ktx:1.15.0 — The Apache Software License, Version 2.0
 androidx.core:core-viewtree:1.0.0 — The Apache Software License, Version 2.0
+androidx.cursoradapter:cursoradapter:1.0.0 — The Apache Software License, Version 2.0
+androidx.customview:customview:1.0.0 — The Apache Software License, Version 2.0
 androidx.customview:customview-poolingcontainer:1.0.0 — The Apache Software License, Version 2.0
+androidx.drawerlayout:drawerlayout:1.0.0 — The Apache Software License, Version 2.0
 androidx.emoji2:emoji2:1.4.0 — The Apache Software License, Version 2.0
+androidx.emoji2:emoji2-views-helper:1.4.0 — The Apache Software License, Version 2.0
+androidx.fragment:fragment:1.5.4 — The Apache Software License, Version 2.0
 androidx.graphics:graphics-path:1.0.1 — The Apache Software License, Version 2.0
 androidx.interpolator:interpolator:1.0.0 — The Apache Software License, Version 2.0
 androidx.lifecycle:lifecycle-common:2.9.2 — The Apache Software License, Version 2.0
 androidx.lifecycle:lifecycle-common-java8:2.9.2 — The Apache Software License, Version 2.0
 androidx.lifecycle:lifecycle-common-jvm:2.9.2 — The Apache Software License, Version 2.0
+androidx.lifecycle:lifecycle-livedata:2.9.2 — The Apache Software License, Version 2.0
 androidx.lifecycle:lifecycle-livedata-core:2.9.2 — The Apache Software License, Version 2.0
+androidx.lifecycle:lifecycle-livedata-core-ktx:2.9.2 — The Apache Software License, Version 2.0
 androidx.lifecycle:lifecycle-process:2.9.2 — The Apache Software License, Version 2.0
 androidx.lifecycle:lifecycle-runtime:2.9.2 — The Apache Software License, Version 2.0
 androidx.lifecycle:lifecycle-runtime-android:2.9.2 — The Apache Software License, Version 2.0
@@ -83,6 +92,7 @@ androidx.lifecycle:lifecycle-viewmodel-compose-android:2.9.2 — The Apache Soft
 androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.2 — The Apache Software License, Version 2.0
 androidx.lifecycle:lifecycle-viewmodel-savedstate:2.9.2 — The Apache Software License, Version 2.0
 androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.9.2 — The Apache Software License, Version 2.0
+androidx.loader:loader:1.0.0 — The Apache Software License, Version 2.0
 androidx.navigation:navigation-common:2.9.3 — The Apache Software License, Version 2.0
 androidx.navigation:navigation-common-android:2.9.3 — The Apache Software License, Version 2.0
 androidx.navigation:navigation-compose:2.9.3 — The Apache Software License, Version 2.0
@@ -90,6 +100,7 @@ androidx.navigation:navigation-compose-android:2.9.3 — The Apache Software Lic
 androidx.navigation:navigation-runtime:2.9.3 — The Apache Software License, Version 2.0
 androidx.navigation:navigation-runtime-android:2.9.3 — The Apache Software License, Version 2.0
 androidx.profileinstaller:profileinstaller:1.4.0 — The Apache Software License, Version 2.0
+androidx.resourceinspection:resourceinspection-annotation:1.0.1 — The Apache Software License, Version 2.0
 androidx.room:room-common:2.7.2 — The Apache Software License, Version 2.0
 androidx.room:room-common-jvm:2.7.2 — The Apache Software License, Version 2.0
 androidx.room:room-ktx:2.7.2 — The Apache Software License, Version 2.0
@@ -106,8 +117,11 @@ androidx.sqlite:sqlite-framework:2.5.1 — The Apache Software License, Version 
 androidx.sqlite:sqlite-framework-android:2.5.1 — The Apache Software License, Version 2.0
 androidx.startup:startup-runtime:1.1.1 — The Apache Software License, Version 2.0
 androidx.tracing:tracing:1.2.0 — The Apache Software License, Version 2.0
+androidx.vectordrawable:vectordrawable:1.1.0 — The Apache Software License, Version 2.0
+androidx.vectordrawable:vectordrawable-animated:1.1.0 — The Apache Software License, Version 2.0
 androidx.versionedparcelable:versionedparcelable:1.1.1 — The Apache Software License, Version 2.0
-com.google.guava:listenablefuture:1.0 — Apache License 2.0 (guava-parent 26.0-android)
+androidx.viewpager:viewpager:1.0.0 — The Apache Software License, Version 2.0
+com.google.guava:listenablefuture:1.0 — Apache License 2.0 (guava-parent)
 org.jetbrains:annotations:23.0.0 — The Apache Software License, Version 2.0
 org.jetbrains.kotlin:kotlin-stdlib:2.2.10 — The Apache License, Version 2.0
 org.jetbrains.kotlin:kotlin-stdlib-common:2.2.10 — The Apache License, Version 2.0

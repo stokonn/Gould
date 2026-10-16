@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -33,7 +35,9 @@ import kotlinx.coroutines.withContext
 import java.time.*
 import java.time.format.DateTimeFormatter
 
-@Composable internal fun ProfileScreen(state: LibraryState, badges: List<BadgeProgress>, profile: ProfileViewModel, settingsAction: () -> Unit, badgeDetail: (String) -> Unit) {
+@OptIn(ExperimentalLayoutApi::class)
+@Composable internal fun ProfileScreen(state: LibraryState, badges: List<BadgeProgress>, profile: ProfileViewModel, settingsAction: () -> Unit, allBadges: () -> Unit, history: () -> Unit, badgeDetail: (String) -> Unit) {
+    val appearance=LocalAppearance.current
     val settings by profile.settings.collectAsStateWithLifecycle()
     val busy by profile.busy.collectAsStateWithLifecycle()
     var edit by rememberSaveable { mutableStateOf(false) }
@@ -65,81 +69,86 @@ import java.time.format.DateTimeFormatter
         item {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                 Surface(Modifier.size(64.dp), shape = CircleShape, color = MaterialTheme.colorScheme.surfaceVariant) {
-                    if (avatar != null) Image(avatar!!.asImageBitmap(), "Profile avatar", contentScale = ContentScale.Crop)
-                    else Icon(Icons.Outlined.Person, "Default avatar", Modifier.padding(16.dp))
+                    if (avatar != null) Image(avatar!!.asImageBitmap(), L.s(R.string.msg_profile_avatar_1671), contentScale = ContentScale.Crop)
+                    else Icon(Icons.Outlined.Person, L.s(R.string.msg_default_avatar_400b), Modifier.padding(16.dp))
                 }
                 Column(Modifier.weight(1f)) {
                     Text(settings.username, style = MaterialTheme.typography.titleLarge, maxLines = 2, overflow = TextOverflow.Ellipsis)
-                    TextButton(onClick = { edit = true }, contentPadding = PaddingValues(horizontal = 0.dp)) { Text("Edit Profile") }
+                    TextButton(onClick = { edit = true }, contentPadding = PaddingValues(horizontal = 0.dp)) { Text(L.s(R.string.msg_edit_profile_cd28)) }
                 }
                 IconButton(onClick = settingsAction) { Icon(Icons.Outlined.Settings, "Settings") }
             }
         }
+        item { FlowRow { TextButton(onClick=allBadges) { Text(L.s(R.string.msg_view_all_badges_06e1)) };TextButton(onClick=history) { Text(L.s(R.string.msg_practice_history_76e7)) } } }
         if (state.loading) item { EditorialSkeleton() }
         if (!state.loading) {
-        item {
-            val metrics = mapOf("time" to ("Total practice" to compactPracticeTime(lifetime)), "pieces" to ("Repertoire pieces" to state.pieces.size.toString()), "sessions" to ("Practice sessions" to state.sessions.count(AchievementEngine::valid).toString()), "streak" to ("Current streak" to "$streak ${if (streak == 1) "day" else "days"}"))
+        appearance.profileSections.filter { it !in appearance.hiddenProfile }.forEach { section -> when(section) {
+        "statistics" -> { item {
+            val metrics = mapOf("time" to ("Total practice" to localizedPracticeTime(lifetime)), "pieces" to ("Repertoire pieces" to state.pieces.size.toString()), "sessions" to ("Practice sessions" to state.sessions.count(AchievementEngine::valid).toString()), "streak" to ("Current streak" to L.quantity(R.plurals.days_count,streak)))
             val ordered = StatisticLayout.normalize(settings.statistics.split(','))
             val primary = metrics.getValue(ordered.first())
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(primary.first.uppercase(), style = MaterialTheme.typography.labelSmall, modifier = Modifier.weight(1f))
-                    TextButton(onClick = { customize = true }) { Text("Customize") }
+                    TextButton(onClick = { customize = true }) { Text(L.s(R.string.msg_customize_239d)) }
                 }
                 Text(primary.second, style = MaterialTheme.typography.displayMedium.copy(fontFamily = MaterialTheme.typography.bodyLarge.fontFamily), color = MaterialTheme.colorScheme.primary)
                 HorizontalDivider()
                 ordered.drop(1).forEach { id ->
                     val metric = metrics.getValue(id)
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                        Text(metric.first, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
+                        Text(L.fixed(metric.first), Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
                         Text(metric.second, style = MaterialTheme.typography.labelLarge)
                     }
                 }
             }
         }
-        item {
-            SectionTitle("Practice activity")
+        } "activity" -> { item {
+            SectionTitle(L.s(R.string.msg_practice_activity_767e))
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                listOf("Week", "Month", "Year", "All time").forEach { label -> FilterChip(period == label, { period = label; limit = 20 }, label = { Text(label) }) }
+                listOf("Week", "Month", "Year", "All time").forEach { label -> FilterChip(period == label, { period = label; limit = 20 }, label = { Text(L.fixed(label)) }) }
             }
-            Text("${compactPracticeTime(periodTime)} · ${filtered.size} ${if (filtered.size == 1) "session" else "sessions"}", style = MaterialTheme.typography.titleMedium)
-            Text(when (period) { "Week" -> "Last 7 days"; "Month" -> "Last 30 days"; "Year" -> "Last 365 days"; else -> "Your complete practice history" }, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(L.s(R.string.profile_period_summary,localizedPracticeTime(periodTime),L.quantity(R.plurals.sessions_count,filtered.count(AchievementEngine::valid))), style = MaterialTheme.typography.titleMedium)
+            Text(when (period) { "Week" -> L.s(R.string.msg_last_7_days_df83); "Month" -> L.s(R.string.msg_last_30_days_6b32); "Year" -> L.s(R.string.msg_last_365_days_254b); else -> L.s(R.string.msg_your_complete_practice_history_da91) }, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             Spacer(Modifier.height(12.dp))
             ActivityChart(filtered, period, today, zone)
         }
-        item {
+        } "badges" -> { item {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text("Badge showcase", style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
-                TextButton(onClick = { manage = true }) { Text("Edit") }
+                Text(L.s(R.string.msg_badge_showcase_6868), style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
+                TextButton(onClick = { manage = true }) { Text(L.s(R.string.msg_edit_5301)) }
             }
-            if (showcased.isEmpty()) Text("Make this space yours. Choose up to five earned badges using Edit.", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            if (showcased.isEmpty()) Text(L.s(R.string.msg_make_this_space_yours_choose_up_to_five_earn_1116), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             else LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 items(showcased, key = { it.definition.id }) { badge ->
                     Surface(onClick = { badgeDetail(badge.definition.id) }, shape = MaterialTheme.shapes.medium, modifier = Modifier.width(180.dp)) {
                         Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                            Text("NO. ${showcased.indexOf(badge) + 1}", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            Text(L.s(R.string.msg_no_showcased_indexof_badge_1_a87f, (showcased.indexOf(badge) + 1)), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             MedalArtwork(badge, Modifier.size(52.dp))
-                            Text(badge.definition.name, style = MaterialTheme.typography.titleLarge)
+                            Text(badge.definition.localizedName, style = MaterialTheme.typography.titleLarge)
                             Text(localDateTime(badge.unlockedAt!!), style = MaterialTheme.typography.bodySmall)
                         }
                     }
                 }
             }
         }
-        item { SectionTitle("Most practiced") }
-        if (totals.isEmpty()) item { Text("Save a practice session to see your most-played compositions here.", color = MaterialTheme.colorScheme.onSurfaceVariant) }
+        } "frequent" -> {
+        item { SectionTitle(L.s(R.string.msg_most_practiced_1b36)) }
+        if (totals.isEmpty()) item { Text(L.s(R.string.msg_save_a_practice_session_to_see_your_most_pla_c06c), color = MaterialTheme.colorScheme.onSurfaceVariant) }
         items(totals) { (title, time) ->
             Surface(shape = MaterialTheme.shapes.medium) {
                 Column(Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                     Text(title, style = MaterialTheme.typography.bodyLarge)
-                    Text(compactPracticeTime(time), color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelLarge)
+                    Text(localizedPracticeTime(time), color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelLarge)
                 }
             }
         }
-        item { SectionTitle("Session history") }
-        if (filtered.isEmpty()) item { Text("No sessions in this period yet. Your next practice will appear here.", color = MaterialTheme.colorScheme.onSurfaceVariant) }
+        } "history" -> {
+        item { SectionTitle(L.s(R.string.msg_session_history_d7e9)) }
+        if (filtered.isEmpty()) item { Text(L.s(R.string.msg_no_sessions_in_this_period_yet_your_next_pra_e36b), color = MaterialTheme.colorScheme.onSurfaceVariant) }
         items(filtered.take(limit), key = { "session:${it.id}" }) { SessionRow(it, partsBySession[it.id].orEmpty()) }
-        if (filtered.size > limit) item { OutlinedButton(onClick = { limit += 20 }) { Text("Show older sessions") } }
+        if (filtered.size > limit) item { OutlinedButton(onClick = { limit += 20 }) { Text(L.s(R.string.msg_show_older_sessions_97d8)) } }
+        } } }
         }
     }
     if (customize) StatisticsEditor(settings, busy, profile) { customize = false }
@@ -149,68 +158,68 @@ import java.time.format.DateTimeFormatter
 
 @Composable private fun StatisticsEditor(settings: ProfileSettings, busy: Boolean, profile: ProfileViewModel, dismiss: () -> Unit) {
     val ids = StatisticLayout.normalize(settings.statistics.split(','))
-    val names = mapOf("time" to "Total practice", "pieces" to "Repertoire pieces", "sessions" to "Practice sessions", "streak" to "Current streak")
-    AlertDialog(onDismissRequest = dismiss, title = { Text("Your statistics") }, text = {
+    val names = mapOf("time" to L.s(R.string.msg_total_practice_a63c), "pieces" to L.s(R.string.msg_repertoire_pieces_e09d), "sessions" to L.s(R.string.msg_practice_sessions_60c7), "streak" to L.s(R.string.msg_current_streak_2ff8))
+    AlertDialog(onDismissRequest = dismiss, title = { Text(L.s(R.string.msg_your_statistics_502c)) }, text = {
         Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            Text("The first metric is prominent. Use the arrows to order the supporting statistics.")
+            Text(L.s(R.string.msg_the_first_metric_is_prominent_use_the_arrows_1043))
             ids.forEachIndexed { index, id ->
-                Text("${if (index == 0) "Primary · " else ""}${names.getValue(id)}")
+                Text(L.s(R.string.msg_if_index_0_primary_else_names_getvalue_id_4c74, (if (index == 0) L.fixed("Primary · ") else ""), (names.getValue(id))))
                 Row {
-                    if (index > 0) TextButton(modifier = Modifier.weight(1f), enabled = !busy, onClick = { profile.statistics(listOf(id) + (ids - id)) }) { Text("Make primary") }
-                    IconButton(enabled = index > 0 && !busy, onClick = { val order = ids.toMutableList(); java.util.Collections.swap(order, index, index - 1); profile.statistics(order) }) { Icon(Icons.Outlined.ArrowUpward, "Move ${names[id]} earlier") }
-                    IconButton(enabled = index < ids.lastIndex && !busy, onClick = { val order = ids.toMutableList(); java.util.Collections.swap(order, index, index + 1); profile.statistics(order) }) { Icon(Icons.Outlined.ArrowDownward, "Move ${names[id]} later") }
+                    if (index > 0) TextButton(modifier = Modifier.weight(1f), enabled = !busy, onClick = { profile.statistics(listOf(id) + (ids - id)) }) { Text(L.s(R.string.msg_make_primary_81d3)) }
+                    IconButton(enabled = index > 0 && !busy, onClick = { val order = ids.toMutableList(); java.util.Collections.swap(order, index, index - 1); profile.statistics(order) }) { Icon(Icons.Outlined.ArrowUpward, L.s(R.string.msg_move_names_id_earlier_11d2, (names[id]))) }
+                    IconButton(enabled = index < ids.lastIndex && !busy, onClick = { val order = ids.toMutableList(); java.util.Collections.swap(order, index, index + 1); profile.statistics(order) }) { Icon(Icons.Outlined.ArrowDownward, L.s(R.string.msg_move_names_id_later_4339, (names[id]))) }
                 }
             }
         }
-    }, confirmButton = { TextButton(onClick = dismiss) { Text("Done") } })
+    }, confirmButton = { TextButton(onClick = dismiss) { Text(L.s(R.string.msg_done_e9b4)) } })
 }
 
 @Composable private fun EditProfile(settings: ProfileSettings, avatar: android.graphics.Bitmap?, busy: Boolean, profile: ProfileViewModel, dismiss: () -> Unit) {
     var name by rememberSaveable(settings.username) { mutableStateOf(settings.username) }
     val photo = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { it?.let(profile::avatar) }
-    AlertDialog(onDismissRequest = { if (!busy) dismiss() }, title = { Text("Edit Profile") }, text = {
+    AlertDialog(onDismissRequest = { if (!busy) dismiss() }, title = { Text(L.s(R.string.msg_edit_profile_cd28)) }, text = {
         Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Surface(Modifier.size(72.dp), shape = CircleShape) {
-                if (avatar != null) Image(avatar.asImageBitmap(), "Current avatar", contentScale = ContentScale.Crop)
-                else Icon(Icons.Outlined.Person, "Default avatar", Modifier.padding(16.dp))
+                if (avatar != null) Image(avatar.asImageBitmap(), L.s(R.string.msg_current_avatar_8634), contentScale = ContentScale.Crop)
+                else Icon(Icons.Outlined.Person, L.s(R.string.msg_default_avatar_400b), Modifier.padding(16.dp))
             }
-            OutlinedTextField(name, { name = it.take(80) }, label = { Text("Display name") }, singleLine = true, modifier = Modifier.fillMaxWidth())
-            Button(onClick = { profile.username(name) }, enabled = !busy && name.isNotBlank() && name.trim() != settings.username) { Text("Save name") }
-            OutlinedButton(onClick = { photo.launch("image/*") }, enabled = !busy) { Text("Choose avatar") }
-            if (settings.avatar.isNotBlank()) TextButton(onClick = profile::clearAvatar, enabled = !busy) { Text("Use default avatar") }
+            OutlinedTextField(name, { name = it.take(80) }, label = { Text(L.s(R.string.msg_display_name_c787)) }, singleLine = true, modifier = Modifier.fillMaxWidth())
+            Button(onClick = { profile.username(name) }, enabled = !busy && name.isNotBlank() && name.trim() != settings.username) { Text(L.s(R.string.msg_save_name_8ce6)) }
+            OutlinedButton(onClick = { photo.launch("image/*") }, enabled = !busy) { Text(L.s(R.string.msg_choose_avatar_7fa8)) }
+            if (settings.avatar.isNotBlank()) TextButton(onClick = profile::clearAvatar, enabled = !busy) { Text(L.s(R.string.msg_use_default_avatar_62c9)) }
             if (busy) LinearProgressIndicator(Modifier.fillMaxWidth())
         }
-    }, confirmButton = { TextButton(onClick = dismiss, enabled = !busy) { Text("Done") } })
+    }, confirmButton = { TextButton(onClick = dismiss, enabled = !busy) { Text(L.s(R.string.msg_done_e9b4)) } })
 }
 
 @Composable private fun ShowcaseEditor(settings: ProfileSettings, badges: List<BadgeProgress>, busy: Boolean, profile: ProfileViewModel, dismiss: () -> Unit) {
-    AlertDialog(onDismissRequest = dismiss, title = { Text("Edit showcase · ${settings.badgeIds.size}/5") }, text = {
+    AlertDialog(onDismissRequest = dismiss, title = { Text(L.s(R.string.msg_edit_showcase_settings_badgeids_size_5_872e, (settings.badgeIds.size))) }, text = {
         LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             items(settings.badgeIds, key = { "selected:$it" }) { id ->
                 val index = settings.badgeIds.indexOf(id)
                 Column {
                     Text(badges.firstOrNull { it.definition.id == id }?.definition?.name ?: id)
                     Row {
-                        IconButton(enabled = index > 0 && !busy, onClick = { val ids = settings.badgeIds.toMutableList(); java.util.Collections.swap(ids, index, index - 1); profile.showcase(ids) }) { Icon(Icons.Outlined.ArrowUpward, "Move badge earlier") }
-                        IconButton(enabled = index < settings.badgeIds.lastIndex && !busy, onClick = { val ids = settings.badgeIds.toMutableList(); java.util.Collections.swap(ids, index, index + 1); profile.showcase(ids) }) { Icon(Icons.Outlined.ArrowDownward, "Move badge later") }
-                        IconButton(enabled = !busy, onClick = { profile.showcase(settings.badgeIds - id) }) { Icon(Icons.Outlined.Close, "Remove badge from showcase") }
+                        IconButton(enabled = index > 0 && !busy, onClick = { val ids = settings.badgeIds.toMutableList(); java.util.Collections.swap(ids, index, index - 1); profile.showcase(ids) }) { Icon(Icons.Outlined.ArrowUpward, L.s(R.string.msg_move_badge_earlier_ba86)) }
+                        IconButton(enabled = index < settings.badgeIds.lastIndex && !busy, onClick = { val ids = settings.badgeIds.toMutableList(); java.util.Collections.swap(ids, index, index + 1); profile.showcase(ids) }) { Icon(Icons.Outlined.ArrowDownward, L.s(R.string.msg_move_badge_later_aa77)) }
+                        IconButton(enabled = !busy, onClick = { profile.showcase(settings.badgeIds - id) }) { Icon(Icons.Outlined.Close, L.s(R.string.msg_remove_badge_from_showcase_e306)) }
                     }
                 }
             }
             items(badges.filter { it.unlocked && it.definition.id !in settings.badgeIds }, key = { it.definition.id }) { badge ->
-                OutlinedButton(onClick = { profile.showcase(settings.badgeIds + badge.definition.id) }, enabled = !busy && settings.badgeIds.size < 5) { Text("Add ${badge.definition.name}") }
+                OutlinedButton(onClick = { profile.showcase(settings.badgeIds + badge.definition.id) }, enabled = !busy && settings.badgeIds.size < 5) { Text(L.s(R.string.msg_add_badge_definition_name_ca2c, (badge.definition.localizedName))) }
             }
-            if (badges.none { it.unlocked }) item { Text("Your earned badges will be available here after your first achievement.") }
+            if (badges.none { it.unlocked }) item { Text(L.s(R.string.msg_your_earned_badges_will_be_available_here_af_2f62)) }
         }
-    }, confirmButton = { TextButton(onClick = dismiss) { Text("Done") } })
+    }, confirmButton = { TextButton(onClick = dismiss) { Text(L.s(R.string.msg_done_e9b4)) } })
 }
 
 @Composable private fun ActivityChart(sessions: List<PracticeSession>, period: String, today: LocalDate, zone: ZoneId) {
     val bins = remember(sessions, period, today, zone) { activityBins(sessions, period, today, zone) }
     if (sessions.sumOf { it.durationMillis } == 0L) {
         Surface(shape = MaterialTheme.shapes.medium) { Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            Text("A fresh page", style = MaterialTheme.typography.titleMedium)
-            Text("No practice recorded in this period. Start a session when you’re ready.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(L.s(R.string.msg_a_fresh_page_7041), style = MaterialTheme.typography.titleMedium)
+            Text(L.s(R.string.msg_no_practice_recorded_in_this_period_start_a_68b4), color = MaterialTheme.colorScheme.onSurfaceVariant)
         } }
         return
     }
@@ -218,16 +227,16 @@ import java.time.format.DateTimeFormatter
     val fontScale = LocalDensity.current.fontScale
     Surface(shape = MaterialTheme.shapes.medium) {
         Column(Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            Text("Peak ${compactPracticeTime(peak)}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(L.s(R.string.msg_peak_compactpracticetime_peak_7989, (localizedPracticeTime(peak))), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             BoxWithConstraints {
                 val barWidth = maxOf(32.dp * fontScale, (maxWidth - 6.dp * (bins.size - 1)) / bins.size)
                 Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     bins.forEach { (label, time) ->
                         val display = when (period) {
-                            "Year", "All time" -> runCatching { YearMonth.parse(label).format(DateTimeFormatter.ofPattern("MMM\nyy")) }.getOrDefault(label)
+                            "Year", "All time" -> runCatching { YearMonth.parse(label).format(DateTimeFormatter.ofPattern("MMM\nyy").withLocale(L.locale)) }.getOrDefault(label)
                             else -> label
                         }
-                        Column(Modifier.width(barWidth).semantics(mergeDescendants = true) { contentDescription = "Period ending $label: ${duration(time)} practice" }, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Column(Modifier.width(barWidth).semantics(mergeDescendants = true) { contentDescription = L.s(R.string.msg_period_ending_label_duration_time_practice_ac3c, (label), (duration(time))) }, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             Box(Modifier.fillMaxWidth().height(100.dp).background(MaterialTheme.colorScheme.primary.copy(alpha = .05f), MaterialTheme.shapes.small), contentAlignment = Alignment.BottomCenter) {
                                 if (time > 0) Box(Modifier.fillMaxWidth().height(maxOf(2.dp, 100.dp * (time.toFloat() / peak))).background(MaterialTheme.colorScheme.primary, MaterialTheme.shapes.small))
                             }
@@ -236,7 +245,7 @@ import java.time.format.DateTimeFormatter
                     }
                 }
             }
-            Text(if (period == "Month") "Five-day totals · labels show the ending day" else if (period == "All time") "Grouped monthly totals · labels show the ending month" else if (period == "Year") "Monthly totals · includes partial boundary months" else "Daily totals", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(if (period == "Month") L.s(R.string.msg_five_day_totals_labels_show_the_ending_day_01e3) else if (period == "All time") L.s(R.string.msg_grouped_monthly_totals_labels_show_the_endin_1c56) else if (period == "Year") L.s(R.string.monthly_partial) else L.s(R.string.daily_totals), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
 }

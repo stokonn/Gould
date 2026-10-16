@@ -1,5 +1,7 @@
 package com.opus.piano.data
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import androidx.room.*
 import androidx.room.withTransaction
 import kotlinx.coroutines.flow.Flow
@@ -37,17 +39,17 @@ class RecordingRepository(private val db: OpusDatabase) {
     private val dao = db.experienceDao()
     val recordings = dao.recordings()
     suspend fun save(input: SavedRecording) = db.withTransaction {
-        val valid = RecordingLinks.validate(input.url) ?: throw IllegalArgumentException("Use a valid HTTPS recording or score URL from Spotify, YouTube, IMSLP or MuseScore.")
-        val old = if (input.id > 0) dao.recording(input.id) ?: throw IllegalArgumentException("This saved interpretation no longer exists.") else null
+        val valid = RecordingLinks.validate(input.url) ?: throw IllegalArgumentException(L.s(R.string.msg_use_a_valid_https_recording_or_score_url_fro_277c))
+        val old = if (input.id > 0) dao.recording(input.id) ?: throw IllegalArgumentException(L.s(R.string.msg_this_saved_interpretation_no_longer_exists_a499)) else null
         val key = old?.workKey ?: input.workKey
-        require(key.matches(Regex("(catalog|piece):[0-9]+"))) { "This composition is unavailable." }
-        require(dao.recordingsFor(key).none { it.id != input.id && it.url == valid.url }) { "This link is already saved for this composition." }
+        require(key.matches(Regex("(catalog|piece):[0-9]+"))) { L.s(R.string.msg_this_composition_is_unavailable_96a5) }
+        require(dao.recordingsFor(key).none { it.id != input.id && it.url == valid.url }) { L.s(R.string.msg_this_link_is_already_saved_for_this_composit_b0d8) }
         if (input.preferred) dao.clearPreferred(key)
         dao.saveRecording(input.copy(workKey = key, url = valid.url, platform = valid.platform.name,
             title = input.title.trim(), performer = input.performer.trim(), savedAt = old?.savedAt ?: System.currentTimeMillis()))
     }
     suspend fun prefer(id: Long) = db.withTransaction {
-        val recording = dao.recording(id) ?: throw IllegalArgumentException("This saved interpretation no longer exists.")
+        val recording = dao.recording(id) ?: throw IllegalArgumentException(L.s(R.string.msg_this_saved_interpretation_no_longer_exists_a499))
         dao.clearPreferred(recording.workKey); dao.prefer(id)
     }
     suspend fun remove(id: Long) = dao.removeRecording(id)

@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.opus.piano.data.*
@@ -21,34 +23,34 @@ class ExperienceViewModel(private val store: AchievementStore, private val recor
     private val badgeRevision = MutableStateFlow(0)
     private val recordingRevision = MutableStateFlow(0)
     val badges = badgeRevision.flatMapLatest {
-        store.badges.catch { _error.value = "Achievements could not be loaded. Try again."; emit(emptyList()) }
+        store.badges.catch { _error.value = L.s(R.string.msg_achievements_could_not_be_loaded_try_again_3d6d); emit(emptyList()) }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
     val recordings = recordingRevision.flatMapLatest {
         recordingRepository.recordings.onStart { _recordingsLoading.value = true }
             .onEach { _recordingsLoading.value = false; _recordingError.value = null }
-            .catch { _recordingsLoading.value = false; _recordingError.value = "Saved interpretations could not be loaded. Try again."; emit(emptyList()) }
+            .catch { _recordingsLoading.value = false; _recordingError.value = L.s(R.string.recordings_load_error); emit(emptyList()) }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
     init { viewModelScope.launch { kotlinx.coroutines.delay(750); retryEvaluation() } }
     fun retryEvaluation() = viewModelScope.launch {
         try { store.evaluate(); _error.value = null; badgeRevision.update { it + 1 } }
         catch (cancelled: CancellationException) { throw cancelled }
-        catch (_: Exception) { _error.value = "Achievements could not be verified. Your practice and repertoire are preserved. Try again." }
+        catch (_: Exception) { _error.value = L.s(R.string.msg_achievements_could_not_be_verified_your_prac_b6c3) }
     }
     fun retryRecordings() { recordingRevision.update { it + 1 } }
     fun saveRecording(recording: SavedRecording, done: (String?) -> Unit) = viewModelScope.launch {
         try { recordingRepository.save(recording); done(null) }
         catch (cancelled: CancellationException) { throw cancelled }
-        catch (error: Exception) { done(if (error is IllegalArgumentException) error.message else "Could not save this link. Please try again.") }
+        catch (error: Exception) { done(if (error is IllegalArgumentException) error.message else L.s(R.string.recordings_save_error)) }
     }
     fun prefer(id: Long) = viewModelScope.launch {
         try { recordingRepository.prefer(id) }
         catch (cancelled: CancellationException) { throw cancelled }
-        catch (_: Exception) { _notice.value = "Could not change the preferred interpretation. Please try again." }
+        catch (_: Exception) { _notice.value = L.s(R.string.msg_could_not_change_the_preferred_interpretatio_d21c) }
     }
     fun removeRecording(id: Long) = viewModelScope.launch {
         try { recordingRepository.remove(id) }
         catch (cancelled: CancellationException) { throw cancelled }
-        catch (_: Exception) { _notice.value = "Could not remove this interpretation. Please try again." }
+        catch (_: Exception) { _notice.value = L.s(R.string.msg_could_not_remove_this_interpretation_please_0553) }
     }
     fun dismissNotice() { _notice.value = null }
 }

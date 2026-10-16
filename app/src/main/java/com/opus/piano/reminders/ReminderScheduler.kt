@@ -1,5 +1,7 @@
 package com.opus.piano.reminders
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import android.app.*
 import android.content.*
 import androidx.core.app.NotificationCompat
@@ -40,7 +42,7 @@ class ReminderScheduler(private val context: Context) {
     }
     suspend fun deliver(generation: Long) {
         val manager = context.getSystemService(NotificationManager::class.java)
-        manager.createNotificationChannel(NotificationChannel("practice-reminders","Practice reminders",NotificationManager.IMPORTANCE_DEFAULT))
+        manager.createNotificationChannel(NotificationChannel("practice-reminders",L.s(R.string.msg_practice_reminders_f838),NotificationManager.IMPORTANCE_DEFAULT))
         app.database.withTransaction {
             val s = app.database.practiceDao().localNow() ?: return@withTransaction
             val now = ZonedDateTime.now(); val day = now.toLocalDate().toString()
@@ -49,7 +51,7 @@ class ReminderScheduler(private val context: Context) {
             app.database.practiceDao().local(s.copy(lastReminderDay = day))
             if (!app.practice.state.value.running && androidx.core.app.NotificationManagerCompat.from(context).areNotificationsEnabled()) {
                 val open = PendingIntent.getActivity(context,81,Intent(context,MainActivity::class.java).putExtra("practice",true).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
-                try { manager.notify(81,NotificationCompat.Builder(context,"practice-reminders").setSmallIcon(R.drawable.ic_goldberg_monochrome).setContentTitle("A little time at the piano").setContentText("Open Goldberg when you’re ready to practice.").setContentIntent(open).setAutoCancel(true).build()) } catch (_: SecurityException) { /* User controls notifications. */ }
+                try { manager.notify(81,NotificationCompat.Builder(context,"practice-reminders").setSmallIcon(R.drawable.ic_goldberg_monochrome).setContentTitle(L.s(R.string.msg_a_little_time_at_the_piano_4104)).setContentText(L.s(R.string.msg_open_goldberg_when_you_re_ready_to_practice_cf21)).setContentIntent(open).setAutoCancel(true).build()) } catch (_: SecurityException) { /* User controls notifications. */ }
             }
         }
         schedule()

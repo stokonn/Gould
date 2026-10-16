@@ -1,5 +1,7 @@
 package com.opus.piano.practice
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import android.os.SystemClock
 import com.opus.piano.data.*
 import kotlinx.coroutines.*
@@ -15,6 +17,7 @@ class PracticeCoordinator(private val repository: PracticeRepository) {
     private val engine = PracticeEngine()
     private val mutable = MutableStateFlow(engine.state)
     val state = mutable.asStateFlow()
+    val captureIssue = MutableStateFlow("")
     val notice = MutableStateFlow<String?>(null)
     private var checkpointAt = 0L
     private var notesChangedAt = 0L
@@ -27,12 +30,13 @@ class PracticeCoordinator(private val repository: PracticeRepository) {
         loaded.await()
         check(state.value.ready && !restoring && !state.value.running && state.value.status != "Review")
         engine.edit { it.copy(sensitivity = sensitivity.coerceIn(0,100), pauseSeconds = pause.coerceIn(2,30)) }
+        captureIssue.value=""
         start(true)
         state.value
     }
     private val loaded = scope.async {
         try { repository.recover() } catch (c: CancellationException) { throw c }
-        catch (_: Exception) { notice.value = "Unfinished practice could not be read. It has not been deleted."; throw IllegalStateException("Draft recovery failed") }
+        catch (_: Exception) { notice.value = L.s(R.string.msg_unfinished_practice_could_not_be_read_it_has_52f7); throw IllegalStateException("Draft recovery failed") }
     }
     init {
         scope.launch {
@@ -54,7 +58,7 @@ class PracticeCoordinator(private val repository: PracticeRepository) {
     private suspend fun guarded(block: suspend () -> Unit) {
         try { mutex.withLock { block() } }
         catch (c: CancellationException) { throw c }
-        catch (_: Exception) { notice.value = "Practice could not be persisted. Keep Goldberg open and retry before leaving." }
+        catch (_: Exception) { notice.value = L.s(R.string.msg_practice_could_not_be_persisted_keep_goldber_8615) }
     }
     fun command(block: suspend PracticeCoordinator.() -> Unit) {
         val expected = revision.get()
@@ -83,7 +87,7 @@ class PracticeCoordinator(private val repository: PracticeRepository) {
     suspend fun save() {
         if (state.value.status != "Review") return
         engine.edit { it.copy(saving = true) }; publish()
-        try { repository.complete(state.value); reset(); notice.value = "Session saved." }
+        try { repository.complete(state.value); reset(); notice.value = L.s(R.string.msg_session_saved_1cd0) }
         finally { engine.edit { it.copy(saving = false) }; publish() }
     }
     suspend fun evidence(token: String, execution: Long, likely: Boolean) = mutex.withLock {
@@ -92,7 +96,7 @@ class PracticeCoordinator(private val repository: PracticeRepository) {
     suspend fun interrupt(token: String, execution: Long) = mutex.withLock {
         if (state.value.token == token && state.value.execution == execution && state.value.running && state.value.smart) {
             engine.pause(now(), true); publish()
-            try { checkpoint() } catch (c: CancellationException) { throw c } catch (_: Exception) { notice.value = "Practice interrupted; latest checkpoint retained." }
+            try { checkpoint() } catch (c: CancellationException) { throw c } catch (_: Exception) { notice.value = L.s(R.string.msg_practice_interrupted_latest_checkpoint_retai_ee8b) }
         }
     }
     suspend fun <T> replacing(block: suspend () -> T): T = mutex.withLock {

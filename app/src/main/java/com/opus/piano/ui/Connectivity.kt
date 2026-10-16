@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network

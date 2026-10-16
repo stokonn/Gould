@@ -1,11 +1,13 @@
 package com.opus.piano.practice
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import com.opus.piano.data.*
 
 data class PracticeState(
     val token: String = "", val execution: Long = 0, val startedAt: Long = 0, val elapsed: Long = 0, val wallElapsed: Long = 0,
     val detectedActive: Long = 0, val mode: String = "Manual", val smart: Boolean = false,
-    val running: Boolean = false, val status: String = "Ready", val saving: Boolean = false,
+    val signal: String = "Ready", val running: Boolean = false, val status: String = "Ready", val saving: Boolean = false,
     val parts: List<SessionPart> = listOf(SessionPart()), val active: Int = 0,
     val removed: Set<Long> = emptySet(), val selected: Piece? = null,
     val notes: String = "", val reflection: String = "", val intervals: List<SessionInterval> = emptyList(),
@@ -48,7 +50,7 @@ class PracticeEngine(initial: PracticeState = PracticeState()) {
         if (previous != null && previous.partIndex == row.partIndex && previous.reason == row.reason && previous.endMillis == start) {
             rows[rows.lastIndex] = previous.copy(endMillis = row.endMillis, creditedMillis = Math.addExact(previous.creditedMillis, credit))
         } else rows += row
-        require(rows.size <= 100000) { "Session has too many timing changes. Finish this session before continuing." }
+        require(rows.size <= 100000) { L.s(R.string.msg_session_has_too_many_timing_changes_finish_t_5101) }
         state = state.copy(wallElapsed = row.endMillis, elapsed = Math.addExact(state.elapsed, credit),
             detectedActive = Math.addExact(state.detectedActive, if (state.smart) credit else 0),
             parts = if (credit > 0) charge(state.parts, state.active, credit) else state.parts, intervals = rows)
@@ -67,9 +69,10 @@ class PracticeEngine(initial: PracticeState = PracticeState()) {
                 // Bridge only a short, same-piece silence; never interruptions or long auto-pauses.
                 if (!playing && silence >= 0 && now - silence <= 750) bridge()
                 playing = true; silence = -1
-                state = state.copy(status = "Playing detected")
+                state = state.copy(status = "Playing detected", signal = "Playing detected")
             }
         } else {
+            state=state.copy(signal="Silence")
             if (playing) silence = now
             playing = false; candidate = -1
             if (silence < 0) silence = now
@@ -86,7 +89,7 @@ class PracticeEngine(initial: PracticeState = PracticeState()) {
         advance(now)
         state = state.copy(token = state.token.ifEmpty { token }, execution = Math.addExact(state.execution,1), startedAt = state.startedAt.takeIf { it > 0 } ?: wall,
             smart = smart, mode = if (state.token.isEmpty()) { if (smart) "Smart" else "Manual" } else if (state.smart != smart) "Mixed" else state.mode,
-            running = true, status = if (smart) "Listening" else "Practicing")
+            running = true, signal = if(smart) "Listening" else "Practicing", status = if (smart) "Listening" else "Practicing")
         clearDetection()
     }
     fun pause(now: Long, interrupted: Boolean = false) {

@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import android.os.SystemClock
 import androidx.lifecycle.*
 import com.opus.piano.data.*
@@ -15,7 +17,7 @@ class OpusViewModel(private val repository: OpusRepository, private val saved: S
         .distinctUntilChanged().flowOn(kotlinx.coroutines.Dispatchers.Default)
         .catch { error ->
             if (error is kotlinx.coroutines.CancellationException) throw error
-            practice.notice.value = "Saved journal could not be loaded. Restart Goldberg to retry. No stored data was removed."
+            practice.notice.value = L.s(R.string.msg_saved_journal_could_not_be_loaded_restart_go_cfce)
             emit(LibraryState(loading = false))
         }.stateIn(viewModelScope, SharingStarted.Eagerly, LibraryState())
     val timer = practice.state
@@ -32,11 +34,11 @@ class OpusViewModel(private val repository: OpusRepository, private val saved: S
     fun save(piece: Piece, done: (Boolean) -> Unit) = viewModelScope.launch {
         try { repository.save(piece.copy(title = piece.title.trim(), composer = piece.composer.trim(), notes = piece.notes.trim())); done(true) }
         catch (c: kotlinx.coroutines.CancellationException) { throw c }
-        catch (_: Exception) { practice.notice.value = "Could not save piece. Please try again."; done(false) }
+        catch (_: Exception) { practice.notice.value = L.s(R.string.msg_could_not_save_piece_please_try_again_1474); done(false) }
     }
     fun delete(piece: Piece) = viewModelScope.launch {
         try { repository.delete(piece) } catch (c: kotlinx.coroutines.CancellationException) { throw c }
-        catch (_: Exception) { practice.notice.value = "Could not delete piece. Please try again." }
+        catch (_: Exception) { practice.notice.value = L.s(R.string.msg_could_not_delete_piece_please_try_again_a18f) }
     }
     fun dismissMessage() { practice.notice.value = null }
 }

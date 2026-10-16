@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
@@ -11,16 +13,20 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.opus.piano.service.SmartPracticeService
 
-@Composable internal fun PracticeScreen(library: LibraryState, model: OpusViewModel, profile: ProfileViewModel) {
+@Composable internal fun PracticeScreen(library: LibraryState, model: OpusViewModel, profile: ProfileViewModel, motion: Boolean = true) {
     val timer by model.timer.collectAsStateWithLifecycle()
     val settings by profile.settings.collectAsStateWithLifecycle()
     val context = LocalContext.current
+    val app=context.applicationContext as com.opus.piano.OpusApplication
+    val request by app.practiceRequest.collectAsStateWithLifecycle()
+    val issue by model.practice.captureIssue.collectAsStateWithLifecycle()
     var smart by remember { mutableStateOf(timer.smart || settings.smartEnabled) }
     var privacy by remember { mutableStateOf(false) }
     var convert by remember { mutableStateOf(false) }
@@ -31,60 +37,82 @@ import com.opus.piano.service.SmartPracticeService
     }
     val permission = rememberLauncherForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
         if (result[Manifest.permission.RECORD_AUDIO] == true || ContextCompat.checkSelfPermission(context,Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) startSmart()
-        else model.practice.notice.value = "Microphone permission denied. Manual practice is available."
+        else { model.practice.captureIssue.value="PermissionDenied";model.practice.notice.value = L.s(R.string.msg_microphone_permission_denied_manual_practice_bac5) }
     }
     fun start() {
         if (smart) privacy = true else model.practice.command { start(false) }
     }
+    LaunchedEffect(request,timer.ready) {
+        if(request.isNotEmpty() && timer.ready) {
+            app.practiceRequest.value=""
+            if(timer.token.isEmpty()) {
+                if(request=="choose") choose=true
+                else if(settings.smartEnabled) { smart=true;privacy=true } else model.practice.command { start(false) }
+            }
+        }
+    }
     if (timer.status == "Review") { PracticeReviewScreen(timer,model); return }
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        Heading("ONE NOTE AT A TIME","Practice","Your piece, your pace.")
-        if (!timer.ready) { Text("Recovering your practice…"); return@Column }
-        Row { Switch(smart,{ value -> if (!timer.running) { smart = value; profile.smartPreference(value) } },enabled = !timer.running); Text("Smart Practice · experimental",Modifier.padding(12.dp)) }
-        Text(if (smart) "Local piano-like activity detection. Can mistake speech or recorded music for playing." else "Manual timing: you decide when practice starts and pauses.")
-        if (smart) {
-            var sensitivity by remember(settings.sensitivity) { mutableFloatStateOf(settings.sensitivity.toFloat()) }
-            Text("Sensitivity: ${sensitivity.toInt()}")
-            Slider(sensitivity,{ sensitivity = it },onValueChangeFinished = { profile.smartSettings(sensitivity.toInt(),settings.pauseSeconds) },valueRange = 0f..100f, enabled = !timer.running)
-            Choice("Auto-pause",(2..30).map { "$it seconds" },"${settings.pauseSeconds} seconds") { val seconds = it.substringBefore(' ').toInt(); profile.smartSettings(settings.sensitivity,seconds); model.practice.command { configure(settings.sensitivity,seconds) } }
+    Scaffold(bottomBar={
+        Column(Modifier.fillMaxWidth().padding(horizontal=20.dp,vertical=8.dp),verticalArrangement=Arrangement.spacedBy(4.dp)) {
+            Button(onClick={
+                if(timer.running) model.practice.command { pause() }
+                else if(timer.token.isNotEmpty() && timer.smart!=smart) convert=true else start()
+            },modifier=Modifier.fillMaxWidth().heightIn(min=52.dp),enabled=timer.ready && !timer.saving) { Text(if(timer.running) L.s(R.string.msg_pause_7819) else if(timer.token.isEmpty()) L.s(R.string.msg_start_practice_ae1b) else L.s(R.string.msg_resume_b3bd)) }
+            TextButton(onClick=model::finish,enabled=timer.token.isNotEmpty() || timer.notes.isNotBlank() || timer.parts.any { it.notes.isNotBlank() },modifier=Modifier.fillMaxWidth()) { Text(L.s(R.string.msg_finish_review_04ae)) }
         }
-        Panel {
-            Text(timer.parts[timer.active].title,style = MaterialTheme.typography.titleLarge)
-            Text(duration(timer.elapsed),style = MaterialTheme.typography.displaySmall)
-            Text("Credited practice · elapsed ${duration(timer.wallElapsed)}")
-            if (timer.mode != "Manual") Text("Detected active ${duration(timer.detectedActive)}")
-            Text(if (timer.running && timer.smart) "Microphone active · ${timer.status}" else timer.status)
-            Button(onClick = {
-                if (timer.running) model.practice.command { pause() }
-                else if (timer.token.isNotEmpty() && timer.smart != smart) convert = true else start()
-            },Modifier.fillMaxWidth(),enabled = !timer.saving) { Text(if (timer.running) "Pause" else "Start / resume") }
-            OutlinedButton(onClick = model::finish,enabled = timer.token.isNotEmpty() || timer.notes.isNotBlank() || timer.parts.any { it.notes.isNotBlank() }) { Text("Finish & review") }
-            if (timer.token.isNotEmpty()) TextButton(onClick = { discard = true }) { Text("Discard session") }
+    }) { padding ->
+    Column(Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState()).padding(20.dp),verticalArrangement=Arrangement.spacedBy(20.dp)) {
+        if(!timer.ready) { Text(L.s(R.string.msg_recovering_your_practice_e75c));return@Column }
+        Text(timer.parts[timer.active].displayTitle,style=MaterialTheme.typography.headlineMedium)
+        Text(duration(timer.elapsed),style=MaterialTheme.typography.displayLarge,fontFamily=MaterialTheme.typography.bodyLarge.fontFamily)
+        Text(L.s(R.string.msg_credited_practice_elapsed_duration_timer_wal_0c94, (duration(timer.wallElapsed))),style=MaterialTheme.typography.bodyMedium)
+        if(timer.mode!="Manual") Text(L.s(R.string.msg_detected_active_duration_timer_detectedactiv_764f, (duration(timer.detectedActive))))
+        ActivityIndicator(if(smart && issue.isNotEmpty()) issue else if(timer.running && timer.smart && timer.status!="Automatically paused") timer.signal else timer.status,timer.running && timer.smart,motion)
+        Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically) {
+            Switch(smart,{ value -> if(!timer.running) { smart=value;profile.smartPreference(value) } },enabled=!timer.running,modifier=Modifier.semantics { contentDescription=L.fixed("Smart Practice") })
+            Text(L.s(R.string.msg_smart_practice_experimental_34d8),Modifier.padding(start=12.dp))
         }
+        if(timer.token.isNotEmpty()) TextButton(onClick={discard=true}) { Text(L.s(R.string.msg_discard_session_38ed)) }
         Panel {
-            Text("PIECES IN THIS SESSION",style = MaterialTheme.typography.labelSmall)
-            OutlinedButton(onClick = { choose = true }) { Text("Select / add piece") }
+            Text(L.s(R.string.msg_pieces_in_this_session_6dbf),style = MaterialTheme.typography.labelSmall)
+            OutlinedButton(onClick = { choose = true }) { Text(L.s(R.string.msg_select_add_piece_3abf)) }
             DropdownMenu(choose,{ choose = false }) {
-                DropdownMenuItem(text = { Text("Free practice") },onClick = { model.select(null); choose = false })
+                DropdownMenuItem(text = { Text(L.s(R.string.msg_free_practice_524f)) },onClick = { model.select(null); choose = false })
                 library.pieces.forEach { piece -> DropdownMenuItem(text = { Text("${piece.title} · ${piece.composer}") },onClick = { model.select(piece); choose = false }) }
             }
             timer.parts.forEachIndexed { i,p -> if (p.pieceId !in timer.removed) {
                 Row {
-                    TextButton(onClick = { model.selectPart(i) },Modifier.weight(1f)) { Text("${if (i == timer.active) "▶ " else ""}${p.title} · ${duration(p.durationMillis)}") }
-                    if (p.pieceId != null) TextButton(onClick = { model.remove(i) }) { Text("Remove") }
+                    TextButton(onClick = { model.selectPart(i) },Modifier.weight(1f)) { Text(L.s(R.string.msg_if_i_timer_active_else_p_title_duration_p_du_9c1d, (if (i == timer.active) "▶ " else ""), (p.title), (duration(p.durationMillis)))) }
+                    if (p.pieceId != null) TextButton(onClick = { model.remove(i) }) { Text(L.s(R.string.msg_remove_e963)) }
                 }
-                if (i == timer.active) OutlinedTextField(p.notes,{ model.note(i,it) },label = { Text("Piece notes for this session") },modifier = Modifier.fillMaxWidth())
+                if (i == timer.active) OutlinedTextField(p.notes,{ model.note(i,it) },label = { Text(L.s(R.string.msg_piece_notes_for_this_session_3a65)) },modifier = Modifier.fillMaxWidth())
             } }
         }
-        OutlinedTextField(timer.notes,{ text -> model.practice.command { sessionNotes(text,state.value.reflection) } },label = { Text("Session notes") },modifier = Modifier.fillMaxWidth())
-        Text("Repertoire notes are separate. Session notes and time are checkpointed locally. Screen-off Smart Practice continues until you pause or stop.")
+        OutlinedTextField(timer.notes,{ text -> model.practice.command { sessionNotes(text,state.value.reflection) } },label = { Text(L.s(R.string.msg_session_notes_a84f)) },modifier = Modifier.fillMaxWidth())
+        Text(L.s(R.string.msg_repertoire_notes_are_separate_session_notes_97f9))
     }
-    if (privacy) AlertDialog(onDismissRequest = { privacy = false },title = { Text("Listen during practice?") },text = { Text("Goldberg analyzes ambient microphone sound locally, including while locked or in another app. No audio is stored or uploaded. A foreground service provides Pause and Stop controls. If notifications are blocked, use Goldberg or Android Active apps to stop. Detection is experimental.") },confirmButton = { TextButton(onClick = {
+    }
+    if (privacy) AlertDialog(onDismissRequest = { privacy = false },title = { Text(L.s(R.string.msg_listen_during_practice_cc91)) },text = { Text(L.s(R.string.msg_goldberg_analyzes_ambient_microphone_sound_l_7f65)) },confirmButton = { TextButton(onClick = {
         privacy = false
         val permissions = mutableListOf(Manifest.permission.RECORD_AUDIO)
         if (Build.VERSION.SDK_INT >= 33) permissions += Manifest.permission.POST_NOTIFICATIONS
         permission.launch(permissions.toTypedArray())
-    }) { Text("Enable listening") } },dismissButton = { TextButton(onClick = { privacy = false }) { Text("Cancel") } })
-    if (convert) AlertDialog(onDismissRequest = { convert = false },title = { Text("Change timing mode?") },text = { Text("This becomes a Mixed session. Existing credited time is retained; only future time uses the selected mode.") },confirmButton = { TextButton(onClick = { convert = false; start() }) { Text("Convert & continue") } },dismissButton = { TextButton(onClick = { convert = false }) { Text("Cancel") } })
-    if (discard) AlertDialog(onDismissRequest = { discard = false },title = { Text("Discard unfinished practice?") },text = { Text("This deletes the unfinished draft and its notes.") },confirmButton = { TextButton(onClick = { model.reset(); discard = false }) { Text("Discard") } },dismissButton = { TextButton(onClick = { discard = false }) { Text("Keep") } })
+    }) { Text(L.s(R.string.msg_enable_listening_d7de)) } },dismissButton = { TextButton(onClick = { privacy = false }) { Text(L.s(R.string.msg_cancel_77df)) } })
+    if (convert) AlertDialog(onDismissRequest = { convert = false },title = { Text(L.s(R.string.msg_change_timing_mode_38a6)) },text = { Text(L.s(R.string.msg_this_becomes_a_mixed_session_existing_credit_768a)) },confirmButton = { TextButton(onClick = { convert = false; start() }) { Text(L.s(R.string.msg_convert_continue_2747)) } },dismissButton = { TextButton(onClick = { convert = false }) { Text(L.s(R.string.msg_cancel_77df)) } })
+    if (discard) AlertDialog(onDismissRequest = { discard = false },title = { Text(L.s(R.string.msg_discard_unfinished_practice_c660)) },text = { Text(L.s(R.string.msg_this_deletes_the_unfinished_draft_and_its_no_875d)) },confirmButton = { TextButton(onClick = { model.reset(); discard = false }) { Text(L.s(R.string.msg_discard_36ff)) } },dismissButton = { TextButton(onClick = { discard = false }) { Text(L.s(R.string.msg_keep_466f)) } })
 }
+
+@Composable private fun ActivityIndicator(status:String,active:Boolean,motion:Boolean) {
+    val ink=MaterialTheme.colorScheme.primary
+    val muted=MaterialTheme.colorScheme.onSurfaceVariant
+    val playing=active && status=="Playing detected"
+    val level by androidx.compose.animation.core.animateFloatAsState(if(playing) 1f else 0f,androidx.compose.animation.core.tween(if(motion) 180 else 0),label="Detection state")
+    Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)) {
+        repeat(5) { index -> androidx.compose.foundation.Canvas(Modifier.width(4.dp).height(28.dp)) {
+            val h=(.2f+level*(if(index==2) .8f else .5f))*size.height
+            drawRoundRect(color=if(active) ink else muted,topLeft=androidx.compose.ui.geometry.Offset(0f,(size.height-h)/2),size=androidx.compose.ui.geometry.Size(size.width,h),cornerRadius=androidx.compose.ui.geometry.CornerRadius(4f))
+        } }
+        Text(L.fixed(statusLabel(status)),Modifier.padding(start=8.dp),style=MaterialTheme.typography.bodyMedium)
+    }
+}
+internal fun statusLabel(status:String)=when(status) { "PermissionDenied"->"Microphone permission denied";"Unavailable"->"Microphone unavailable";"DetectionError"->"Detection error";"Automatically paused"->"Silence · automatically paused";else->status }

@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.i18n.L
+import com.opus.piano.R
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
@@ -32,8 +34,8 @@ import java.time.format.DateTimeFormatter
 
 @Composable internal fun CatalogBack(label: String, back: () -> Unit) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        IconButton(onClick = back) { Icon(Icons.AutoMirrored.Outlined.ArrowBack, "Back") }
-        Text(label.uppercase(), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
+        IconButton(onClick = back) { Icon(Icons.AutoMirrored.Outlined.ArrowBack, L.s(R.string.msg_back_b52b)) }
+        Text(L.fixed(label).uppercase(), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
     }
 }
 @Composable internal fun CatalogFeedback(message: String, retry: () -> Unit) {
@@ -42,7 +44,7 @@ import java.time.format.DateTimeFormatter
             Icon(Icons.Outlined.CloudOff, null, tint = MaterialTheme.colorScheme.primary)
             Text(message, modifier = Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
         }
-        TextButton(onClick = retry) { Text("Try again") }
+        TextButton(onClick = retry) { Text(L.s(R.string.msg_try_again_042c)) }
     }
 }
 @Composable internal fun SourceLink(label: String, url: String) {
@@ -50,17 +52,17 @@ import java.time.format.DateTimeFormatter
     if (url.startsWith("https://")) TextButton(onClick = { try { uri.openUri(url) } catch (_: IllegalArgumentException) { } catch (_: android.content.ActivityNotFoundException) { } }) {
         Icon(Icons.AutoMirrored.Outlined.OpenInNew, null, Modifier.size(14.dp))
         Spacer(Modifier.width(8.dp))
-        Text(label)
+        Text(L.fixed(label))
     }
 }
 @Composable internal fun CacheCaption(at: Long) {
-    if (at > 0) Text("Saved on device · ${Instant.ofEpochMilli(at).atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("d MMM yyyy"))}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    if (at > 0) Text(L.s(R.string.msg_saved_on_device_instant_ofepochmilli_at_atzo_ab8d, (Instant.ofEpochMilli(at).atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("d MMM yyyy").withLocale(L.locale)))), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
 }
 internal fun alreadyAdded(work: CatalogWork, composer: CatalogComposer?, pieces: List<Piece>): Boolean = pieces.any {
     it.catalogWorkId == work.id || (it.catalogWorkId == null && catalogText(it.title) == catalogText(work.title) && catalogText(it.composer) == catalogText(composer?.name.orEmpty()))
 }
 
-@Composable fun CatalogScreen(model: CatalogViewModel, library: LibraryState, back: () -> Unit, composerPage: (String) -> Unit, workPage: (String) -> Unit, piecePage: (Long) -> Unit = {}) {
+@Composable fun CatalogScreen(model: CatalogViewModel, library: LibraryState, back: () -> Unit, composerPage: (String) -> Unit, workPage: (String) -> Unit, piecePage: (Long) -> Unit = {}, embedded: Boolean = false) {
     LaunchedEffect(Unit) { model.startBrowsing() }
     val state by model.browse.collectAsStateWithLifecycle()
     val results by model.results.collectAsStateWithLifecycle()
@@ -73,29 +75,29 @@ internal fun alreadyAdded(work: CatalogWork, composer: CatalogComposer?, pieces:
     }
     var limit by rememberSaveable(state.activeQuery) { mutableIntStateOf(40) }
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        item { CatalogBack("Your musical discoveries", back) }
-        item { Heading("OPEN OPUS COLLECTION", "Universal search", "Discover composers and works. Make the next piece part of your story.") }
+        if (!embedded) item { CatalogBack(L.s(R.string.msg_your_musical_discoveries_c39e), back) }
+        if (!embedded) item { Heading("", L.s(R.string.msg_catalogue_5a24), L.s(R.string.msg_search_repertoire_works_or_composers_0ff5)) }
         item {
-            OutlinedTextField(state.query, model::query, Modifier.fillMaxWidth(), label = { Text("Search repertoire, works or composers") },
-                placeholder = { Text("Title, composer or catalogue number") }, leadingIcon = { Icon(Icons.Outlined.Search, null) },
-                trailingIcon = { if (state.query.isNotEmpty()) IconButton(onClick = { model.query("") }) { Icon(Icons.Outlined.Close, "Clear search") } }, singleLine = true)
+            OutlinedTextField(state.query, model::query, Modifier.fillMaxWidth(), label = { Text(L.s(R.string.msg_search_repertoire_works_or_composers_0ff5)) },
+                placeholder = { Text(L.s(R.string.msg_title_composer_or_catalogue_number_bf09)) }, leadingIcon = { Icon(Icons.Outlined.Search, null) },
+                trailingIcon = { if (state.query.isNotEmpty()) IconButton(onClick = { model.query("") }) { Icon(Icons.Outlined.Close, L.s(R.string.msg_clear_search_6730)) } }, singleLine = true)
         }
         if (state.loading) item { LinearProgressIndicator(Modifier.fillMaxWidth()) }
         state.error?.let { message -> item { CatalogFeedback(message, model::refreshSearch) } }
         state.warning?.let { message -> item { CatalogFeedback(message, model::refreshSearch) } }
         item {
-            Text(if (state.query.isBlank()) "COMPOSERS IN YOUR SAVED CATALOGUE" else "SUGGESTIONS · SAVED & NEW DISCOVERIES", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
+            Text(if (state.query.isBlank()) L.s(R.string.msg_composers_in_your_saved_catalogue_bf6f) else L.s(R.string.msg_suggestions_saved_new_discoveries_6c53), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
             Spacer(Modifier.height(6.dp))
-            Text("Search ignores accents. Offline results include previously loaded information; connect to discover more. Catalogue titles are supplied by Open Opus in their original language.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(L.s(R.string.msg_search_ignores_accents_offline_results_inclu_3f32), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
-        if (repertoire.isNotEmpty()) item { SectionTitle("Your repertoire") }
+        if (repertoire.isNotEmpty()) item { SectionTitle(L.s(R.string.msg_your_repertoire_74de)) }
         items(repertoire.take(limit), key = { "piece:${it.id}" }) { piece ->
             OutlinedButton(onClick = { piecePage(piece.id) }, modifier = Modifier.fillMaxWidth()) { Text("${piece.title} · ${piece.composer}") }
         }
         if (results.composers.isNotEmpty()) {
-            item { SectionTitle("Composers") }
+            item { SectionTitle(L.s(R.string.msg_composers_707f)) }
             items(results.composers.take(limit), key = { "composer:${it.id}" }) { composer ->
-                Surface(onClick = { composerPage(composer.id) }, shape = RoundedCornerShape(24.dp), color = MaterialTheme.colorScheme.surface, border = BorderStroke(1.dp, Gold.copy(alpha = .1f))) {
+                Surface(onClick = { composerPage(composer.id) }, shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface, border = if(LocalAppearance.current.cards=="Outline") BorderStroke(1.dp,MaterialTheme.colorScheme.outlineVariant) else null) {
                     Row(Modifier.fillMaxWidth().padding(14.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                         Icon(Icons.Outlined.PersonOutline, null, tint = MaterialTheme.colorScheme.primary)
                         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(5.dp)) {
@@ -107,7 +109,7 @@ internal fun alreadyAdded(work: CatalogWork, composer: CatalogComposer?, pieces:
                 }
             }
         }
-        if (results.works.isNotEmpty()) item { SectionTitle("Works") }
+        if (results.works.isNotEmpty()) item { SectionTitle(L.s(R.string.msg_works_bb38)) }
         items(results.works.take(limit), key = { "work:${it.id}" }) { work ->
             WorkCard(work, composers[work.composerId], alreadyAdded(work, composers[work.composerId], library.pieces), work.id in adding,
                 { workPage(work.id) }, { composers[work.composerId]?.let { model.add(work, it) } })
@@ -115,13 +117,13 @@ internal fun alreadyAdded(work: CatalogWork, composer: CatalogComposer?, pieces:
         if (!state.loading && results.composers.isEmpty() && results.works.isEmpty() && repertoire.isEmpty()) item {
             Panel {
                 Icon(Icons.Outlined.LibraryMusic, null, tint = MaterialTheme.colorScheme.primary)
-                SectionTitle(if (state.error != null) "Your discoveries will live here" else "No matching music")
-                Text(if (state.error != null) "An internet connection is needed for your first catalogue discovery." else "Try a different title, composer, or catalogue number. A title may refer to several different works.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                SectionTitle(if (state.error != null) L.s(R.string.msg_your_discoveries_will_live_here_691a) else L.s(R.string.msg_no_matching_music_97fe))
+                Text(if (state.error != null) L.s(R.string.msg_an_internet_connection_is_needed_for_your_fi_eb85) else L.s(R.string.msg_try_a_different_title_composer_or_catalogue_16ea), color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
-        if (results.works.size > limit || results.composers.size > limit || repertoire.size > limit) item { OutlinedButton(onClick = { limit += 40 }) { Text("More saved suggestions") } }
-        if (state.next != null) item { Button(onClick = model::nextPage, enabled = !state.loading) { Text("Discover more results") } }
-        item { CacheCaption(state.fetchedAt); SourceLink("Catalogue: Open Opus · public domain", "https://openopus.org/") }
+        if (results.works.size > limit || results.composers.size > limit || repertoire.size > limit) item { OutlinedButton(onClick = { limit += 40 }) { Text(L.s(R.string.msg_more_saved_suggestions_d7e1)) } }
+        if (state.next != null) item { Button(onClick = model::nextPage, enabled = !state.loading) { Text(L.s(R.string.msg_discover_more_results_f817)) } }
+        item { CacheCaption(state.fetchedAt); SourceLink(L.s(R.string.msg_catalogue_open_opus_public_domain_36b6), "https://openopus.org/") }
     }
 }
 
@@ -131,11 +133,11 @@ internal fun alreadyAdded(work: CatalogWork, composer: CatalogComposer?, pieces:
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(5.dp)) {
                 Text(work.title, style = MaterialTheme.typography.titleMedium, maxLines = 2, overflow = TextOverflow.Ellipsis)
                 if (composer != null) Text(composer.name, color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.bodySmall)
-                Text(listOf(work.catalogLabel, work.genre, if (added) "In repertoire" else "").filter { it.isNotBlank() }.joinToString(" · "), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(listOf(work.catalogLabel, work.genre, if (added) L.s(R.string.msg_in_repertoire_b185) else "").filter { it.isNotBlank() }.joinToString(" · "), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             IconButton(onClick = add, enabled = !added && !adding && composer != null) {
                 if (adding) CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp)
-                else androidx.compose.animation.AnimatedContent(added, label = "Repertoire addition") { isAdded -> Icon(if (isAdded) Icons.Outlined.Check else Icons.Outlined.Add, if (added) "Already in repertoire" else "Add ${work.title} to repertoire", tint = if (isAdded) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.primary) }
+                else androidx.compose.animation.AnimatedContent(added, label = "Repertoire addition") { isAdded -> Icon(if (isAdded) Icons.Outlined.Check else Icons.Outlined.Add, if (added) "Already in repertoire" else L.s(R.string.msg_add_work_title_to_repertoire_326f, (work.title)), tint = if (isAdded) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.primary) }
             }
         }
     }
