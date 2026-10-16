@@ -29,7 +29,7 @@ import com.opus.piano.data.compactPracticeTime
             item {
                 Text("TIME WELL SPENT", style = MaterialTheme.typography.labelSmall)
                 Text(compactPracticeTime(state.summary.totalMillis), style = MaterialTheme.typography.displayMedium.copy(fontFamily = MaterialTheme.typography.bodyLarge.fontFamily), color = MaterialTheme.colorScheme.primary)
-                Text("${state.sessions.size} sessions · ${state.pieces.size} works in your repertoire", style = MaterialTheme.typography.bodyMedium)
+                Text("${state.sessions.count(com.opus.piano.data.AchievementEngine::valid)} sessions · ${state.pieces.size} works in your repertoire", style = MaterialTheme.typography.bodyMedium)
                 Spacer(Modifier.height(16.dp)); HorizontalDivider()
             }
             item {

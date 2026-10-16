@@ -17,7 +17,10 @@ data class SessionPart(
     val notes: String = ""
 )
 @Entity(tableName = "profile_settings")
-data class ProfileSettings(@PrimaryKey val id: Int = 1, val username: String = "Musician", val avatar: String = "", val theme: String = "System", val showcase: String = "", @ColumnInfo(defaultValue = "'Editorial'") val typography: String = "Editorial", @ColumnInfo(defaultValue = "'time,pieces,sessions,streak'") val statistics: String = "time,pieces,sessions,streak") {
+data class ProfileSettings(@PrimaryKey val id: Int = 1, val username: String = "Musician", val avatar: String = "", val theme: String = "System", val showcase: String = "", @ColumnInfo(defaultValue = "'Editorial'") val typography: String = "Editorial", @ColumnInfo(defaultValue = "'time,pieces,sessions,streak'") val statistics: String = "time,pieces,sessions,streak",
+    @ColumnInfo(defaultValue = "0") val smartEnabled: Boolean = false,
+    @ColumnInfo(defaultValue = "50") val sensitivity: Int = 50,
+    @ColumnInfo(defaultValue = "5") val pauseSeconds: Int = 5) {
     val badgeIds: List<String> get() = showcase.split(',').filter { it.isNotBlank() }.distinct().take(5)
 }
 object Showcase {

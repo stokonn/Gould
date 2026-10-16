@@ -49,7 +49,10 @@ import com.opus.piano.data.*
     }
     fun options(values: List<String>) = listOf("All") + values.filter { it.isNotBlank() }.distinctBy(::catalogText).sortedBy(::catalogText)
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        item { Heading("THE PERSONAL ARCHIVE", "Repertoire", "${state.pieces.size} compositions · ${state.pieces.count(::mastered)} performance ready") }
+        item { Row(verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) { Heading("THE PERSONAL ARCHIVE", "Repertoire", "${state.pieces.size} compositions · ${state.pieces.count(::mastered)} performance ready") }
+            IconButton(onClick = explore) { Icon(Icons.Outlined.Search, "Universal search") }
+        } }
         item { FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Button(onClick = explore) { Icon(Icons.Outlined.TravelExplore, null); Spacer(Modifier.width(6.dp)); Text("Discover") }
             OutlinedButton(onClick = { editingId = null; editor = true }) { Icon(Icons.Outlined.Add, null); Text("Add manually") }

@@ -1,29 +1,13 @@
-# Goldberg local backup format 1
+# Goldberg portable backups
 
-UTF-8 JSON, maximum 32 MiB. Root fields:
+Goldberg 0.8 exports `goldberg-backup`, format version 2, schema 6. UTF-8 JSON; maximum 32 MiB and 100,000 rows per portable table. All column names/types must match the exported Room schema. SQL and filesystem paths never come from a backup.
 
-```json
-{
-  "format": "goldberg-backup",
-  "version": 1,
-  "schema": 5,
-  "createdAt": 1792100000000,
-  "tables": {
-    "pieces": [], "sessions": [], "catalog_composers": [],
-    "catalog_works": [], "catalog_cache": [], "saved_recordings": [],
-    "badge_unlocks": [], "session_parts": [], "profile_settings": []
-  }
-}
-```
+Portable tables: pieces, sessions, catalog_composers, catalog_works, catalog_cache, saved_recordings, badge_unlocks, session_parts, profile_settings, session_intervals. IDs, original notes, historical practice dates/zones, profile/avatar, appearance, smart preferences, badge first timestamps and showcase order are preserved. Portrait files, practice_drafts and local_app_state (onboarding/reminder activation) are excluded.
 
-Each table array contains JSON objects with exactly the exported Room schema-5 column names. SQL INTEGER values are JSON integers, TEXT values strings, SQL NULL values JSON null. IDs are retained. `profile_settings.avatar` is base64 JPEG data (maximum 512 pixels per side); `showcase` is an ordered comma-separated list of at most five distinct unlocked achievement IDs. Profile theme is System, Light or Dark. Schema 5 adds `typography` (Editorial or System) and `statistics` (an ordered permutation of time,pieces,sessions,streak). Schema-4 format-1 backups from 0.6.0/0.6.1 remain accepted; missing new preference columns are converted to their defaults before validation. Older app versions cannot read schema-5 backups, so retain the original backup when upgrading. Session parts retain piece/composer/title/source snapshots and notes. The `practiceDay` and `practiceZone` fields retain original calendar grouping.
+Format-1/schema-4 and schema-5 backups from Goldberg 0.6/0.7 remain accepted. Explicit conversion adds empty session notes/reflection, Manual/Legacy timing semantics, null elapsed/detected measurements, and default Smart preferences; no historical duration is recomputed. Schema 4 additionally receives typography/statistic defaults. Unknown versions/tables/columns are rejected. Earlier apps cannot read format 2: retain original pre-upgrade backups.
 
-All nine tables are required, even when empty. Unknown tables/columns, missing columns, null required fields, bad enums/types, duplicate primary or unique keys, broken session-part foreign keys, negative or inconsistent durations, invalid dates/zones, invalid profiles/avatars and unsupported format/schema versions are rejected. Maximum 100,000 rows per table. Validation uses a fresh in-memory schema-5 Room database, then checks time totals and profile semantics. The original database is untouched during validation.
+Validation stages values in an isolated in-memory Room database, checking enums, keys, foreign keys, durations, overflow, dates/zones, profile/avatar, showcase and link constraints. New timing rows must be ordered/contiguous, bounded by elapsed time, use valid part indexes/reasons and reconcile to both session and per-piece credited totals. Detected time is required for Smart/Mixed and absent for Manual. Legacy unknown measurements are not invented.
 
-Export reads all tables in one transaction. Restore repeats validation and then deletes/reinserts the permitted tables in one transaction after user confirmation. Inserts use bound values and a fixed table/column allowlist; no SQL, filesystem path or executable statement comes from the file. Any failed import rolls back the entire replacement. Repeated replacement cannot accumulate duplicates. Restore does not merge journals or synthesize historical badge dates. First-verification times in the selected snapshot are retained exactly.
+Export reads portable data in one transaction. Restore validates again, then replaces portable tables and clears the unfinished draft in a single transaction. Device-local state is retained. The application coordinator stops capture and serializes mutations during replacement; catalogue downloads are serialized against restore. Failed replacement rolls back. Cache maintenance failure after successful replacement does not falsely report that old portable data was retained. Repeated import cannot accumulate duplicates.
 
-Statistics are reconstructed from completed session headers and piece entries. Catalogue biographies/metadata caches and saved links are included. Downloaded portrait image files are derived cache and excluded; they can be downloaded again. The avatar is included, independent of gallery URI grants. The unfinished timer, UI navigation and transient searches are excluded. No persistent preferences existed outside the Room database in Opus 0.5.
-
-Backups are not encrypted or uploaded automatically. A document provider chosen in the system picker may be a cloud provider. Cancelling either picker leaves local data unchanged. Exporting does not delete local data. Before replacement the confirmation shows repertoire/session/unlock counts and warns that current saved data will be replaced and an unfinished timer will be discarded on success.
-
-In 0.7, Settings restore is serialized with active catalogue downloads so a response already in flight cannot write across replacement. Room invalidation publishes a fresh transactional journal snapshot after replacement; derived summary caches are recomputed. Downloaded response and portrait budgets are reapplied after successful restore. Clear Cache deletes only `catalog_cache` rows and `files/catalog-portraits` files; it retains normalized catalogue tables as offline reference data and all personal tables. Reported usage is response-payload bytes plus portrait-file bytes, excluding database page overhead.
+Restoration requires explicit replacement confirmation, including the unfinished-session warning. It does not merge journals, activate reminders or start microphone capture. Backups and CSV are unencrypted. Android automatic cloud backup remains disabled; keep independent copies. Cancelling a document picker does not change data. A selected cloud document provider may upload the file independently of Goldberg.

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 # Required publication gate: compare actual APK certificates, never infer from signing configuration.
-[[ $# -eq 2 ]] || { echo 'Usage: verify-upgrade-signing.sh published-0.6.1.apk candidate-0.7.0.apk' >&2; exit 2; }
+[[ $# -eq 2 ]] || { echo 'Usage: verify-upgrade-signing.sh published.apk candidate.apk' >&2; exit 2; }
 sdk_path="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
 [[ -n "$sdk_path" ]] || { echo 'Set ANDROID_HOME to the installed SDK' >&2; exit 2; }
 signer="$sdk_path/build-tools/36.0.0/apksigner"

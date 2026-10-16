@@ -71,6 +71,11 @@ private enum class Destination(val label: String, val icon: ImageVector) {
     LaunchedEffect(library.loading) {
         if (!library.loading && !fullyDrawn) { (context as? android.app.Activity)?.reportFullyDrawn(); fullyDrawn = true }
     }
+    val openPractice by (context.applicationContext as com.opus.piano.OpusApplication).openPractice.collectAsStateWithLifecycle()
+    LaunchedEffect(openPractice) { if (openPractice > 0) nav.selectTopLevel("PRACTICE") }
+    val local by profile.local.collectAsStateWithLifecycle()
+    var replay by remember { mutableStateOf(false) }
+    if (local != null && (!local!!.onboardingDone || replay)) OnboardingScreen({ profile.finishOnboarding(); replay = false })
     val catalogNotice by catalog.notice.collectAsStateWithLifecycle()
     val experienceNotice by experience.notice.collectAsStateWithLifecycle()
     val catalogData by catalog.snapshot.collectAsStateWithLifecycle()
@@ -107,23 +112,15 @@ private enum class Destination(val label: String, val icon: ImageVector) {
             }
         }
     ) { padding ->
-        Column(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).imePadding(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Row(Modifier.widthIn(max = 840.dp).fillMaxWidth().padding(horizontal = 20.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text(when { current == Destination.OVERVIEW.name -> "Your journal"; current == PROFILE_ROUTE -> "Profile"; current == SETTINGS_ROUTE -> "Settings"; current.startsWith("catalog") -> "Discover"; current.startsWith("piece/") -> "Composition"; current.startsWith("badge/") -> "Badges"; current.startsWith("recordings/") -> "Recordings"; else -> Destination.entries.firstOrNull { it.name == current }?.label ?: "Journal" }, style = MaterialTheme.typography.titleLarge, letterSpacing = 2.sp, color = MaterialTheme.colorScheme.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f).padding(vertical = 12.dp))
-                if (current == Destination.HOME.name || current == Destination.OVERVIEW.name) {
-                    IconButton(onClick = { nav.navigate(SETTINGS_ROUTE) { launchSingleTop = true } }) { Icon(Icons.Outlined.Settings, "Settings") }
-                } else if (current != SETTINGS_ROUTE) {
-                    IconButton(onClick = { nav.navigate("catalog") { launchSingleTop = true } }) { Icon(Icons.Outlined.Search, "Universal search") }
-                }
-            }
+        Column(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)).imePadding(), horizontalAlignment = Alignment.CenterHorizontally) {
             NavHost(navController = nav, startDestination = Destination.OVERVIEW.name, modifier = Modifier.widthIn(max = 840.dp).fillMaxSize(),
                 enterTransition = { fadeIn(tween(if (motionScale == 0f) 0 else 220)) }, exitTransition = { fadeOut(tween(if (motionScale == 0f) 0 else 150)) }) {
                 composable(Destination.OVERVIEW.name) {
                     val settings by profile.settings.collectAsStateWithLifecycle()
                     JournalHome(library, settings.username, { nav.selectTopLevel(Destination.PRACTICE.name) }, { nav.selectTopLevel(Destination.REPERTOIRE.name) }, { nav.selectTopLevel(Destination.HOME.name) }, { nav.navigate(Destination.WRAPPED.name) })
                 }
-                composable(SETTINGS_ROUTE) { SettingsScreen(profile, model) { nav.popBackStack() } }
-                composable(Destination.HOME.name) { ProfileScreen(library, badges, profile) { nav.navigate("badge/$it") } }
+                composable(SETTINGS_ROUTE) { SettingsScreen(profile, model, { replay = true }) { nav.popBackStack() } }
+                composable(Destination.HOME.name) { ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }) { nav.navigate("badge/$it") } }
                 composable(Destination.REPERTOIRE.name) { RepertoireScreen(library, catalogData, model, { nav.navigate("catalog") { launchSingleTop = true } }, { nav.navigate("piece/$it") }) }
                 composable("catalog") { CatalogScreen(catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("catalog/work/$it") }, { nav.navigate("piece/$it") }) }
                 composable("catalog/composer/{id}") { route -> ComposerScreen(route.arguments?.getString("id").orEmpty(), catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/work/$it") }) }
@@ -143,7 +140,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                     RecordingsScreen(key, title ?: "Your musical reference shelf", experience) { nav.popBackStack() }
                 }
                 composable("badge/{id}") { route -> BadgeDetailScreen(route.arguments?.getString("id").orEmpty(), experience) { nav.popBackStack() } }
-                composable(Destination.PRACTICE.name) { Practice(library, model.timer.collectAsStateWithLifecycle().value, model, motionScale != 0f) }
+                composable(Destination.PRACTICE.name) { PracticeScreen(library, model, profile) }
                 composable(Destination.BADGES.name) { BadgesScreen(experience) { nav.navigate("badge/$it") } }
                 composable(Destination.WRAPPED.name) { ComingSoon(library, "Wrapped", "Your music.\nYour story.", "A thoughtful look back at your time at the piano. Monthly and yearly insights are coming in a future phase.", Icons.Outlined.Insights, listOf("Monthly reflections", "Your year at the piano", "Repertoire highlights")) }
             }
@@ -169,6 +166,8 @@ internal fun duration(millis: Long): String {
 }
 private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).atZone(ZoneId.systemDefault()).toLocalDate()
 @Composable internal fun SessionRow(session: PracticeSession, parts: List<SessionPart> = emptyList()) {
+    var editNotes by remember { mutableStateOf(false) }
+    if (editNotes) HistoricalReview(session, parts) { editNotes = false }
     var expanded by rememberSaveable(session.id) { mutableStateOf(false) }
     Panel {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -180,6 +179,7 @@ private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).
             }
             Text(duration(session.durationMillis), color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelLarge)
         }
+        TextButton(onClick = { editNotes = true }) { Text("Review & edit session notes") }
         if (parts.isNotEmpty()) {
             TextButton(onClick = { expanded = !expanded }) { Text(if (expanded) "Hide summary" else "Session summary") }
             if (expanded) parts.forEach { part ->
@@ -239,52 +239,6 @@ private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).
             }
         }
     }
-}
-@Composable private fun Practice(library: LibraryState, timer: TimerState, model: OpusViewModel, motion: Boolean) {
-    var resetDialog by remember { mutableStateOf(false) }
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp), verticalArrangement = Arrangement.spacedBy(24.dp)) {
-        Heading("One note at a time", "Practice", "Be present. Let the rest fall quiet.")
-        Text(timer.parts[timer.active].title, style = MaterialTheme.typography.titleLarge)
-        Panel {
-            Column(Modifier.fillMaxWidth().padding(vertical = 24.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(24.dp)) {
-                PracticeDial(timer, motion)
-                Button(onClick = model::toggle, enabled = !timer.saving, modifier = Modifier.fillMaxWidth().height(52.dp)) {
-                    Icon(if (timer.running) Icons.Outlined.Pause else Icons.Outlined.PlayArrow, null)
-                    Text(if (timer.running) " Pause" else if (timer.elapsed > 0) " Resume" else " Start practice")
-                }
-                OutlinedButton(onClick = model::finish, enabled = timer.elapsed >= 1000 && !timer.saving, modifier = Modifier.fillMaxWidth()) { Text(if (timer.saving) "Saving…" else "Finish & save session") }
-                if (timer.elapsed > 0 || timer.running) TextButton(onClick = { resetDialog = true }, enabled = !timer.saving) { Text("Discard session") }
-            }
-        }
-        Panel {
-            var expanded by remember { mutableStateOf(false) }
-            Text("TODAY’S FOCUS", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
-            Box {
-                OutlinedButton(onClick = { expanded = true }, enabled = !timer.saving) { Text(timer.parts[timer.active].title, Modifier.weight(1f), maxLines = 2, overflow = TextOverflow.Ellipsis); Icon(Icons.Outlined.ExpandMore, null) }
-                DropdownMenu(expanded, onDismissRequest = { expanded = false }) {
-                    DropdownMenuItem(text = { Text("Free practice") }, onClick = { model.select(null); expanded = false })
-                    library.pieces.forEach { piece -> DropdownMenuItem(text = { Text("${piece.title} · ${piece.composer}") }, onClick = { model.select(piece); expanded = false }) }
-                }
-            }
-            Text("Add pieces with the menu, then tap a piece to switch. Time is recorded for the active piece only.", style = MaterialTheme.typography.bodySmall)
-            timer.parts.forEachIndexed { index, part ->
-                if (part.pieceId !in timer.removed) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        TextButton(onClick = { model.selectPart(index) }, enabled = !timer.saving, modifier = Modifier.weight(1f)) { Text("${if (timer.active == index) "▶ " else ""}${part.title} · ${duration(part.durationMillis)}") }
-                        if (part.pieceId != null) IconButton(onClick = { model.remove(index) }, enabled = !timer.saving) { Icon(Icons.Outlined.Close, "Remove ${part.title} from active selection; retain recorded time") }
-                    }
-                    if (timer.active == index) OutlinedTextField(part.notes, { model.note(index, it) }, label = { Text("Notes for ${part.title}") }, enabled = !timer.saving, modifier = Modifier.fillMaxWidth())
-                }
-            }
-        }
-        Text("Time for scales, a tricky passage, or simply playing something you love. Your completed sessions stay on this device.", color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodyMedium)
-        SectionTitle("Last session")
-        AnimatedContent(library.sessions.firstOrNull(), transitionSpec = { fadeIn(tween(if (motion) 200 else 0)) togetherWith fadeOut(tween(if (motion) 120 else 0)) }, label = "Completed session") { session ->
-            if (session != null) SessionRow(session, library.parts.filter { it.sessionId == session.id })
-            else Text("Your completed practice will appear here.")
-        }
-    }
-    if (resetDialog) AlertDialog(onDismissRequest = { resetDialog = false }, title = { Text("Discard this session?") }, text = { Text("The current timer will be reset without saving.") }, confirmButton = { TextButton(onClick = { model.reset(); resetDialog = false }) { Text("Discard") } }, dismissButton = { TextButton(onClick = { resetDialog = false }) { Text("Keep practicing") } })
 }
 @Composable private fun ComingSoon(library: LibraryState, eyebrow: String, title: String, description: String, icon: ImageVector, features: List<String>) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp), verticalArrangement = Arrangement.spacedBy(28.dp)) {

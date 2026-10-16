@@ -37,7 +37,7 @@ class AchievementEngineTest {
         assertEquals(30L, measured[AchievementMetric.STREAK])
         assertEquals(25L, measured[AchievementMetric.PIANO_MASTERED])
         assertEquals(5L, measured[AchievementMetric.BAROQUE_PRACTICED])
-        assertEquals(AchievementRegistry.definitions.map { it.id }.toSet(), eligible(measured))
+        assertEquals(AchievementRegistry.definitions.filter { it.metric != AchievementMetric.DISCOVERY }.map { it.id }.toSet(), eligible(measured))
     }
     @Test fun collectionThresholdsAreExactAndMasteryUsesExistingReadyStatus() {
         listOf(1 to "first_piece", 10 to "growing_collection", 25 to "dedicated_collector", 50 to "grand_repertoire").forEach { (target, badge) ->

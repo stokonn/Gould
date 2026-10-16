@@ -14,12 +14,17 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.opus.piano.ui.*
 
 class MainActivity : ComponentActivity() {
+    override fun onNewIntent(intent: android.content.Intent) {
+        super.onNewIntent(intent)
+        if (intent.getBooleanExtra("practice",false)) (application as OpusApplication).openPractice.value = System.nanoTime()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (intent.getBooleanExtra("practice",false)) (application as OpusApplication).openPractice.value = System.nanoTime()
         enableEdgeToEdge()
         setContent {
             val model: OpusViewModel = viewModel(factory = viewModelFactory {
-                initializer { OpusViewModel((application as OpusApplication).repository, createSavedStateHandle()) }
+                initializer { OpusViewModel((application as OpusApplication).repository, createSavedStateHandle(), (application as OpusApplication).practice) }
             })
             val catalog: CatalogViewModel = viewModel(factory = viewModelFactory {
                 initializer { CatalogViewModel((application as OpusApplication).catalogRepository, createSavedStateHandle()) }

@@ -1,26 +1,18 @@
-# Goldberg 0.7.0 — Classical Editorial 🎹
+# Goldberg 0.8.0 Beta — Smart Practice
 
-Goldberg 0.7 introduces a redesigned interface inspired by classical music publications, alongside performance and usability improvements.
+Native Android journal for classical piano practice. Kotlin/Compose, Material 3 and Room; Android 8.0+ (API 26). Application ID `com.opus.piano` and local database `opus.db` are retained.
 
-### What's New
-- New Classical Editorial visual design
-- Cormorant Garamond and Inter typography
-- Faster startup and smarter caching
-- Improved offline experience
-- Customizable profile statistics
-- Enhanced badge showcase
-- Performance diagnostics and stability improvements
+The 0.8 candidate adds optional experimental piano-activity detection with screen-off microphone foreground operation, Smart Pause, durable drafts, Practice Review, editable session/piece notes, daily reminders, separate CSV exports, integrated screen headers, first-run guidance and Bach’s Secret.
 
-### Under the Hood
-- Database schema version 5
-- Improved cache management and invalidation
-- Additional automated tests
-- Compatibility work for existing user data
+**Beta pre-release.** Physical-device testing, screen-off microphone behavior, Android instrumentation execution, real installation upgrades, accessibility and battery behavior have **not yet been verified**. This beta is published with those limitations explicitly accepted; automated results do not establish on-device behavior.
 
-### Installation
-Download the APK below and install it on your Android device.
+[Download the GitHub Pre-release](https://github.com/stokonn/Opus/releases/tag/v0.8.0).
 
-**Note:** This is a pre-release. An in-place upgrade from Goldberg 0.6.1 has not yet been verified on a physical device. Back up your practice data before updating.
+- [Verification and remaining gates](docs/VERIFICATION-0.8.md)
+- [Smart Practice behavior and limitations](docs/SMART-PRACTICE.md)
+- [Backup compatibility](docs/BACKUP.md)
+- [CSV format](docs/CSV-EXPORT.md)
+- [Privacy](docs/PRIVACY.md) · [Licenses](docs/LICENSES.md) · [Signing](docs/SIGNING.md)
+- [Beta release description](docs/RELEASE-0.8.md)
 
-Version: 0.7.0  
-Version code: 5
+Before any update, export and retain a backup. Never uninstall to bypass a signature error. Microphone use and reminders are optional; no raw audio is stored or uploaded. New format-2 backups require 0.8 or later, while 0.6/0.7 format-1 imports remain supported.

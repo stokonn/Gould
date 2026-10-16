@@ -33,7 +33,7 @@ import kotlinx.coroutines.withContext
 import java.time.*
 import java.time.format.DateTimeFormatter
 
-@Composable internal fun ProfileScreen(state: LibraryState, badges: List<BadgeProgress>, profile: ProfileViewModel, badgeDetail: (String) -> Unit) {
+@Composable internal fun ProfileScreen(state: LibraryState, badges: List<BadgeProgress>, profile: ProfileViewModel, settingsAction: () -> Unit, badgeDetail: (String) -> Unit) {
     val settings by profile.settings.collectAsStateWithLifecycle()
     val busy by profile.busy.collectAsStateWithLifecycle()
     var edit by rememberSaveable { mutableStateOf(false) }
@@ -72,12 +72,13 @@ import java.time.format.DateTimeFormatter
                     Text(settings.username, style = MaterialTheme.typography.titleLarge, maxLines = 2, overflow = TextOverflow.Ellipsis)
                     TextButton(onClick = { edit = true }, contentPadding = PaddingValues(horizontal = 0.dp)) { Text("Edit Profile") }
                 }
+                IconButton(onClick = settingsAction) { Icon(Icons.Outlined.Settings, "Settings") }
             }
         }
         if (state.loading) item { EditorialSkeleton() }
         if (!state.loading) {
         item {
-            val metrics = mapOf("time" to ("Total practice" to compactPracticeTime(lifetime)), "pieces" to ("Repertoire pieces" to state.pieces.size.toString()), "sessions" to ("Practice sessions" to state.sessions.size.toString()), "streak" to ("Current streak" to "$streak ${if (streak == 1) "day" else "days"}"))
+            val metrics = mapOf("time" to ("Total practice" to compactPracticeTime(lifetime)), "pieces" to ("Repertoire pieces" to state.pieces.size.toString()), "sessions" to ("Practice sessions" to state.sessions.count(AchievementEngine::valid).toString()), "streak" to ("Current streak" to "$streak ${if (streak == 1) "day" else "days"}"))
             val ordered = StatisticLayout.normalize(settings.statistics.split(','))
             val primary = metrics.getValue(ordered.first())
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {

@@ -28,7 +28,7 @@ data class Piece(
 )
 
 // Snapshot titles preserve meaningful history when a repertoire piece is edited or deleted.
-@Entity(tableName = "sessions", indices = [Index("completedAt"), Index("pieceId")])
+@Entity(tableName = "sessions", indices = [Index("completedAt"), Index("pieceId"), Index(value = ["completionToken"], unique = true)])
 data class PracticeSession(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val pieceId: Long?,
@@ -40,7 +40,14 @@ data class PracticeSession(
     val practiceZone: String? = null,
     val catalogWorkId: String? = null,
     val composerId: String? = null,
-    @ColumnInfo(defaultValue = "''") val musicalEra: String = ""
+    @ColumnInfo(defaultValue = "''") val musicalEra: String = "",
+    val elapsedMillis: Long? = null,
+    val detectedActiveMillis: Long? = null,
+    @ColumnInfo(defaultValue = "'Manual'") val practiceMode: String = "Manual",
+    @ColumnInfo(defaultValue = "'Legacy'") val timingQuality: String = "Legacy",
+    @ColumnInfo(defaultValue = "''") val notes: String = "",
+    @ColumnInfo(defaultValue = "''") val reflection: String = "",
+    val completionToken: String? = null
 )
 class Converters {
     @TypeConverter fun status(value: String) = LearningStatus.valueOf(value)
@@ -62,14 +69,35 @@ interface OpusDao {
     @Delete suspend fun delete(piece: Piece)
     @Insert suspend fun insert(session: PracticeSession): Long
 }
-@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class], version = 5, exportSchema = true)
+@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class], version = 6, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class OpusDatabase : RoomDatabase() {
+    abstract fun practiceDao(): PracticeDao
     abstract fun personalDao(): PersonalDao
     abstract fun dao(): OpusDao
     abstract fun catalogDao(): CatalogDao
     abstract fun experienceDao(): ExperienceDao
     companion object {
+        val MIGRATION_5_6 = object : Migration(5, 6) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE sessions ADD COLUMN elapsedMillis INTEGER")
+                db.execSQL("ALTER TABLE sessions ADD COLUMN detectedActiveMillis INTEGER")
+                db.execSQL("ALTER TABLE sessions ADD COLUMN practiceMode TEXT NOT NULL DEFAULT 'Manual'")
+                db.execSQL("ALTER TABLE sessions ADD COLUMN timingQuality TEXT NOT NULL DEFAULT 'Legacy'")
+                db.execSQL("ALTER TABLE sessions ADD COLUMN notes TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE sessions ADD COLUMN reflection TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE sessions ADD COLUMN completionToken TEXT")
+                db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS index_sessions_completionToken ON sessions(completionToken)")
+                db.execSQL("ALTER TABLE profile_settings ADD COLUMN smartEnabled INTEGER NOT NULL DEFAULT 0")
+                db.execSQL("ALTER TABLE profile_settings ADD COLUMN sensitivity INTEGER NOT NULL DEFAULT 50")
+                db.execSQL("ALTER TABLE profile_settings ADD COLUMN pauseSeconds INTEGER NOT NULL DEFAULT 5")
+                db.execSQL("CREATE TABLE IF NOT EXISTS session_intervals (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, sessionId INTEGER NOT NULL, partIndex INTEGER NOT NULL, startMillis INTEGER NOT NULL, endMillis INTEGER NOT NULL, creditedMillis INTEGER NOT NULL, reason TEXT NOT NULL, FOREIGN KEY(sessionId) REFERENCES sessions(id) ON UPDATE NO ACTION ON DELETE CASCADE)")
+                db.execSQL("CREATE INDEX IF NOT EXISTS index_session_intervals_sessionId ON session_intervals(sessionId)")
+                db.execSQL("CREATE TABLE IF NOT EXISTS practice_drafts (id INTEGER NOT NULL PRIMARY KEY, payload TEXT NOT NULL, updatedAt INTEGER NOT NULL)")
+                db.execSQL("CREATE TABLE IF NOT EXISTS local_app_state (id INTEGER NOT NULL PRIMARY KEY, onboardingDone INTEGER NOT NULL, reminderEnabled INTEGER NOT NULL, reminderHour INTEGER NOT NULL, reminderMinute INTEGER NOT NULL, generation INTEGER NOT NULL, lastReminderDay TEXT NOT NULL)")
+                db.execSQL("INSERT INTO local_app_state VALUES(1,1,0,18,0,0,'')")
+            }
+        }
         val MIGRATION_4_5 = object : Migration(4, 5) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL("ALTER TABLE profile_settings ADD COLUMN typography TEXT NOT NULL DEFAULT 'Editorial'")
@@ -132,7 +160,7 @@ class OpusRepository(private val db: OpusDatabase, private val achievements: Ach
     }
     suspend fun delete(piece: Piece) = db.withTransaction { dao.delete(piece); achievements.evaluateInTransaction() }
     suspend fun complete(session: PracticeSession, parts: List<SessionPart> = emptyList()) = db.withTransaction {
-        require(session.durationMillis >= 1000)
+        require(session.durationMillis >= 0)
         require(parts.isEmpty() || parts.sumOf { it.durationMillis } == session.durationMillis)
         require(parts.all { it.durationMillis >= 0 })
         val piece = session.pieceId?.let { dao.piece(it) }

@@ -7,7 +7,7 @@ import java.time.ZoneId
 enum class BadgeCategory(val label: String) { PRACTICE("Practice"), REPERTOIRE("Repertoire"), COMPOSERS("Composers") }
 enum class BadgeRarity(val label: String) { COMMON("Common"), RARE("Rare"), EPIC("Epic"), LEGENDARY("Legendary") }
 enum class MedalArt { NOTE, LYRE, CALENDAR, PIANO, ARCHIVE, CROWN, CHOPIN, BACH, MOZART, BAROQUE }
-enum class AchievementMetric { SESSIONS, STREAK, PRACTICE_MILLIS, PIECES, MASTERED, PIANO_MASTERED, CHOPIN_PIECES, CHOPIN_MASTERED, BACH_PIECES, MOZART_PIECES, BAROQUE_PRACTICED }
+enum class AchievementMetric { DISCOVERY, SESSIONS, STREAK, PRACTICE_MILLIS, PIECES, MASTERED, PIANO_MASTERED, CHOPIN_PIECES, CHOPIN_MASTERED, BACH_PIECES, MOZART_PIECES, BAROQUE_PRACTICED }
 data class AchievementDefinition(
     val id: String, val name: String, val description: String, val category: BadgeCategory,
     val rarity: BadgeRarity, val artwork: MedalArt, val metric: AchievementMetric,
@@ -15,6 +15,7 @@ data class AchievementDefinition(
 )
 object AchievementRegistry {
     val definitions = listOf(
+        AchievementDefinition("curious_pianist", "The Curious Pianist", "Discover Bach’s Secret.", BadgeCategory.PRACTICE, BadgeRarity.RARE, MedalArt.BACH, AchievementMetric.DISCOVERY, 1, "Discover the hidden harpsichord in About.", "discoveries"),
         AchievementDefinition("first_notes", "First Notes", "The beginning of your musical journal.", BadgeCategory.PRACTICE, BadgeRarity.COMMON, MedalArt.NOTE, AchievementMetric.SESSIONS, 1, "Complete your first valid practice session.", "sessions"),
         AchievementDefinition("dedicated_musician", "Dedicated Musician", "Returning to the piano becomes a habit.", BadgeCategory.PRACTICE, BadgeRarity.COMMON, MedalArt.LYRE, AchievementMetric.SESSIONS, 10, "Complete 10 valid practice sessions.", "sessions"),
         AchievementDefinition("week_streak", "Week Streak", "A week with music in every day.", BadgeCategory.PRACTICE, BadgeRarity.RARE, MedalArt.CALENDAR, AchievementMetric.STREAK, 7, "Practice on 7 consecutive recorded local calendar days.", "consecutive days"),
@@ -90,7 +91,7 @@ object AchievementEngine {
     }
     fun evaluate(facts: AchievementFacts, unlocked: List<BadgeUnlock>): List<BadgeProgress> {
         val dates = unlocked.associate { it.achievementId to it.unlockedAt }
-        return AchievementRegistry.definitions.map { BadgeProgress(it, facts[it.metric], dates[it.id]) }
+        return AchievementRegistry.definitions.map { BadgeProgress(it, if (it.metric == AchievementMetric.DISCOVERY && dates[it.id] != null) 1 else facts[it.metric], dates[it.id]) }
     }
     fun newlyEarned(facts: AchievementFacts, unlocked: List<BadgeUnlock>, verifiedAt: Long): List<BadgeUnlock> =
         evaluate(facts, unlocked).filter { !it.unlocked && it.current >= it.definition.target }.map { BadgeUnlock(it.definition.id, verifiedAt) }

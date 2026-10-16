@@ -95,7 +95,7 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
     } }
     /** Wait for current downloads before replacing data; no old response can write across restore. */
     suspend fun restoreJournal(block: suspend () -> Unit) = withContext(Dispatchers.IO) { cacheGate.withLock {
-        block(); trimResponses(); trimPortraits()
+        block(); runCatching { trimResponses(); trimPortraits() }
     } }
 
     private val importLock = Mutex()

@@ -15,7 +15,7 @@ data class JournalSummary(
     val lastPractice: Map<Long?, Long> = emptyMap()
 )
 fun summarizeJournal(sessions: List<PracticeSession>, parts: List<SessionPart>): JournalSummary {
-    val attributed = attributedSessions(sessions, parts)
+    val attributed = attributedSessions(sessions.filter(AchievementEngine::valid), parts)
     val groups = attributed.groupBy { it.pieceId }
     return JournalSummary(sessions.sumOf { it.durationMillis }, attributed, parts.groupBy { it.sessionId },
         groups.mapValues { (_, rows) -> rows.sumOf { it.durationMillis } },

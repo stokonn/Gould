@@ -2,13 +2,23 @@ package com.opus.piano
 
 import android.app.Application
 import androidx.room.Room
+import kotlinx.coroutines.launch
 import com.opus.piano.data.*
 
 class OpusApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.IO).launch {
+            runCatching { com.opus.piano.reminders.ReminderScheduler(this@OpusApplication).schedule() }
+        }
+    }
+    val openPractice = kotlinx.coroutines.flow.MutableStateFlow(0L)
     val database by lazy {
         Room.databaseBuilder(this, OpusDatabase::class.java, "opus.db")
-            .addMigrations(OpusDatabase.MIGRATION_1_2, OpusDatabase.MIGRATION_2_3, OpusDatabase.MIGRATION_3_4, OpusDatabase.MIGRATION_4_5).build()
+            .addMigrations(OpusDatabase.MIGRATION_1_2, OpusDatabase.MIGRATION_2_3, OpusDatabase.MIGRATION_3_4, OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6).build()
     }
+    val practiceRepository by lazy { PracticeRepository(database, repository) }
+    val practice by lazy { com.opus.piano.practice.PracticeCoordinator(practiceRepository) }
     val achievements by lazy { AchievementStore(database) }
     val recordings by lazy { RecordingRepository(database) }
     val repository by lazy { OpusRepository(database, achievements) }

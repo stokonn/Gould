@@ -18,6 +18,16 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
     private val db = (app as OpusApplication).database
     private val backup = BackupRepository(app, db)
     val settings = db.personalDao().settings().map { it ?: ProfileSettings() }.stateIn(viewModelScope, SharingStarted.Eagerly, ProfileSettings())
+    val local = db.practiceDao().local().map { it ?: LocalAppState() }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
+    fun finishOnboarding() = action { db.withTransaction { db.practiceDao().local((db.practiceDao().localNow() ?: LocalAppState()).copy(onboardingDone = true)) } }
+    fun smartPreference(enabled: Boolean) = edit { it.copy(smartEnabled = enabled) }
+    fun smartSettings(sensitivity: Int, pause: Int) = edit { it.copy(sensitivity = sensitivity.coerceIn(0,100), pauseSeconds = pause.coerceIn(2,30)) }
+    fun reminder(enabled: Boolean, hour: Int, minute: Int) = action { com.opus.piano.reminders.ReminderScheduler(getApplication()).configure(enabled,hour,minute) }
+    fun csv(uri: Uri, parts: Boolean) = action {
+        getApplication<Application>().contentResolver.openOutputStream(uri,"wt")?.bufferedWriter(Charsets.UTF_8)?.use { CsvExportRepository(db).export(it,parts) } ?: error("Cannot write export.")
+        notice.value = "CSV exported."
+    }
+    fun curious() = action { db.experienceDao().unlock(listOf(BadgeUnlock("curious_pianist",System.currentTimeMillis()))) }
     val notice = MutableStateFlow<String?>(null)
     val busy = MutableStateFlow(false)
     val preview = MutableStateFlow<String?>(null)
@@ -27,7 +37,7 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
         busy.value = true
         viewModelScope.launch { try { withContext(Dispatchers.IO) { block() } }
             catch (c: CancellationException) { throw c }
-            catch (e: Exception) { notice.value = "Operation failed. Existing data is preserved. ${e.message.orEmpty().take(160)}" }
+            catch (e: Exception) { notice.value = "Operation failed. Please retry. ${e.message.orEmpty().take(160)}" }
             finally { busy.value = false }
         }
     }
@@ -81,7 +91,9 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
     fun cancelRestore() { if (!busy.value) { preview.value = null; pending = null } }
     fun restore(done: () -> Unit) = action {
         val raw = pending ?: error("Select a backup again.")
-        (getApplication<Application>() as OpusApplication).catalogRepository.restoreJournal { backup.restore(raw) }; pending = null; preview.value = null; notice.value = "Backup restored."
+        (getApplication<Application>() as OpusApplication).practice.replacing {
+            (getApplication<Application>() as OpusApplication).catalogRepository.restoreJournal { backup.restore(raw) }
+        }; pending = null; preview.value = null; notice.value = "Backup restored."
         withContext(Dispatchers.Main) { done() }
     }
 }

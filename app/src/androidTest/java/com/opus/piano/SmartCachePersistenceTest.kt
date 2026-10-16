@@ -92,7 +92,7 @@ class SmartCachePersistenceTest {
             sql.execSQL("INSERT INTO session_parts(id,sessionId,pieceId,title,composer,musicalEra,durationMillis,notes) VALUES(1,3,NULL,'Legacy practice','','',60000,'Keep notes')")
             sql.version = 4
         }
-        fun open() = Room.databaseBuilder(context, OpusDatabase::class.java, name).addMigrations(OpusDatabase.MIGRATION_4_5).build()
+        fun open() = Room.databaseBuilder(context, OpusDatabase::class.java, name).addMigrations(OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6).build()
         try {
             open().let { db -> try {
                 assertEquals("Editorial", db.personalDao().getSettings()!!.typography)

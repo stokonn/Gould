@@ -1,3 +1,14 @@
+# 0.8.0 Beta — Smart Practice
+
+- Add one authoritative practice coordinator, durable drafts, measured timing intervals and idempotent completion.
+- Add optional experimental local microphone activity detection with a microphone foreground service, locked-screen/background operation, sensitivity, Smart Pause and notification Pause/Stop.
+- Add Practice Review, elapsed/credited/detected time separation, session reflection and editable per-piece/session notes.
+- Add opt-in inexact reminders, separate spreadsheet-safe UTF-8 CSV reports, integrated content headers and skippable first-run onboarding that excludes upgrades.
+- Add Bach’s Secret with synthesized plucks and an insert-once Curious Pianist badge.
+- Add explicit schema 5 → 6 migration and format-2 backups with format-1/schema-4/5 conversion; preserve historical IDs, notes, dates, preferences and totals.
+- Add in-app privacy/license notices, runtime dependency audit and targeted regression tests.
+- Beta publication explicitly authorized with physical-device testing, screen-off microphone behavior, Android instrumentation execution, real installation upgrades, accessibility and battery behavior unverified. Automated results are preserved in docs/VERIFICATION-0.8.md.
+
 # 0.7.0 — Smart Cache & Classical Editorial (unpublished candidate)
 
 - Add bounded disposable response/portrait caches, usage display and safe Clear Cache.
