@@ -10,7 +10,7 @@ import org.json.JSONObject
 
 private data class BackupColumn(val name: String, val type: String, val required: Boolean)
 
-/** Format 1 is a complete schema-4 snapshot; SQL and file paths are never read from a backup. */
+/** Format 1 accepts schema-4 and schema-5 snapshots; SQL and file paths are never read from a backup. */
 class BackupRepository(private val context: Context, private val db: OpusDatabase) {
     companion object {
         const val MAX_BYTES = 32 * 1024 * 1024
@@ -19,7 +19,7 @@ class BackupRepository(private val context: Context, private val db: OpusDatabas
     suspend fun export(): String = withContext(Dispatchers.IO) {
         db.withTransaction {
             JSONObject().apply {
-                put("format", "goldberg-backup"); put("version", 1); put("schema", 4); put("createdAt", System.currentTimeMillis())
+                put("format", "goldberg-backup"); put("version", 1); put("schema", 5); put("createdAt", System.currentTimeMillis())
                 put("tables", JSONObject().apply { tables.forEach { table ->
                     val rows = JSONArray()
                     db.openHelper.writableDatabase.query("SELECT * FROM `$table`").use { c ->
@@ -35,8 +35,13 @@ class BackupRepository(private val context: Context, private val db: OpusDatabas
     private fun parse(raw: String): JSONObject {
         require(raw.toByteArray().size <= MAX_BYTES) { "Backup exceeds 32 MiB." }
         val root = JSONObject(raw)
-        require(root.getString("format") == "goldberg-backup" && root.get("version") == 1 && root.get("schema") == 4) { "Unsupported backup version." }
-        return root.getJSONObject("tables").also { require(it.keys().asSequence().toSet() == tables.toSet()) { "Incomplete backup." } }
+        require(root.getString("format") == "goldberg-backup" && root.get("version") == 1 && root.get("schema") in listOf(4, 5)) { "Unsupported backup version." }
+        return root.getJSONObject("tables").also {
+            require(it.keys().asSequence().toSet() == tables.toSet()) { "Incomplete backup." }
+            if (root.getInt("schema") == 4) it.getJSONArray("profile_settings").objects().forEach { row ->
+                row.put("typography", "Editorial"); row.put("statistics", "time,pieces,sessions,streak")
+            }
+        }
     }
     private fun insert(target: OpusDatabase, data: JSONObject) {
         val sql = target.openHelper.writableDatabase
@@ -77,6 +82,7 @@ class BackupRepository(private val context: Context, private val db: OpusDatabas
             val unlocks = stage.experienceDao().allUnlocks()
             require(unlocks.all { it.unlockedAt > 0 }) { "Invalid unlock date." }
             stage.personalDao().getSettings()?.let { p ->
+                require(p.typography in listOf("Editorial", "System") && StatisticLayout.valid(p.statistics)) { "Invalid appearance or statistics." }
                 require(p.id == 1 && p.username.length <= 80 && p.theme in listOf("System", "Light", "Dark")) { "Invalid profile." }
                 val ids = p.showcase.split(',').filter { it.isNotBlank() }
                 require(ids.size <= 5 && ids.distinct() == ids && ids.all { id -> unlocks.any { it.achievementId == id } }) { "Invalid badge showcase." }

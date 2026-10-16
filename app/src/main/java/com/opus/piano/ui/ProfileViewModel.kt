@@ -43,6 +43,15 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
             db.personalDao().saveSettings(old.copy(showcase = Showcase.select(ids, unlocked).joinToString(",")))
         }
     }
+    fun typography(value: String) = edit { require(value in listOf("Editorial", "System")); it.copy(typography = value) }
+    fun statistics(ids: List<String>) = edit { it.copy(statistics = StatisticLayout.normalize(ids).joinToString(",")) }
+    val cacheUsage = MutableStateFlow<Long?>(null)
+    fun measureCache() = action { cacheUsage.value = (getApplication<Application>() as OpusApplication).catalogRepository.cacheBytes() }
+    fun clearCache() = action {
+        val catalog = (getApplication<Application>() as OpusApplication).catalogRepository
+        catalog.clearCache(); cacheUsage.value = catalog.cacheBytes()
+        notice.value = "Disposable cache cleared. Your journal and saved catalogue are preserved."
+    }
     fun clearAvatar() = edit { it.copy(avatar = "") }
     fun avatar(uri: Uri) = action {
         val resolver = getApplication<Application>().contentResolver
@@ -72,7 +81,7 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
     fun cancelRestore() { if (!busy.value) { preview.value = null; pending = null } }
     fun restore(done: () -> Unit) = action {
         val raw = pending ?: error("Select a backup again.")
-        backup.restore(raw); pending = null; preview.value = null; notice.value = "Backup restored."
+        (getApplication<Application>() as OpusApplication).catalogRepository.restoreJournal { backup.restore(raw) }; pending = null; preview.value = null; notice.value = "Backup restored."
         withContext(Dispatchers.Main) { done() }
     }
 }

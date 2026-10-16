@@ -46,7 +46,7 @@ private fun localDate(timestamp: Long): String = DateTimeFormatter.ofLocalizedDa
                 SmallStatistic("${if (badges.isEmpty()) 0 else unlocked * 100 / badges.size}%", "Collection")
             }
         }
-        if (badges.isEmpty() && error == null) item(span = { GridItemSpan(maxLineSpan) }) { LinearProgressIndicator(Modifier.fillMaxWidth()) }
+        if (badges.isEmpty() && error == null) item(span = { GridItemSpan(maxLineSpan) }) { EditorialSkeleton() }
         if (unlocked > 0) item(span = { GridItemSpan(maxLineSpan) }) { RecentlyUnlocked(badges, detail) }
         item(span = { GridItemSpan(maxLineSpan) }) {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {

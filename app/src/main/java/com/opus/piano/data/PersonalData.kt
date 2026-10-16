@@ -17,7 +17,7 @@ data class SessionPart(
     val notes: String = ""
 )
 @Entity(tableName = "profile_settings")
-data class ProfileSettings(@PrimaryKey val id: Int = 1, val username: String = "Musician", val avatar: String = "", val theme: String = "System", val showcase: String = "") {
+data class ProfileSettings(@PrimaryKey val id: Int = 1, val username: String = "Musician", val avatar: String = "", val theme: String = "System", val showcase: String = "", @ColumnInfo(defaultValue = "'Editorial'") val typography: String = "Editorial", @ColumnInfo(defaultValue = "'time,pieces,sessions,streak'") val statistics: String = "time,pieces,sessions,streak") {
     val badgeIds: List<String> get() = showcase.split(',').filter { it.isNotBlank() }.distinct().take(5)
 }
 object Showcase {

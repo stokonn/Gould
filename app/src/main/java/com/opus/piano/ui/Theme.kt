@@ -4,6 +4,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import com.opus.piano.R
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
@@ -29,15 +31,26 @@ private val LightPalette = lightColorScheme(
     surface = Color(0xFFF2EDE3), onSurface = Color(0xFF211F1B),
     onSurfaceVariant = Color(0xFF555047), outline = Color(0xFF7C7468)
 )
-@Composable fun OpusTheme(theme: String = "System", content: @Composable () -> Unit) {
-    MaterialTheme(colorScheme = if (theme == "Dark" || (theme == "System" && androidx.compose.foundation.isSystemInDarkTheme())) Palette else LightPalette, typography = Typography(
-        headlineLarge = TextStyle(fontSize = 32.sp, lineHeight = 38.sp),
-        headlineMedium = TextStyle(fontSize = 28.sp, lineHeight = 34.sp),
-        titleLarge = TextStyle(fontSize = 21.sp, lineHeight = 27.sp),
-        labelSmall = TextStyle(fontSize = 11.sp, letterSpacing = 1.5.sp, fontWeight = FontWeight.Medium)
-    ), shapes = Shapes(
-        small = androidx.compose.foundation.shape.RoundedCornerShape(12.dp),
-        medium = androidx.compose.foundation.shape.RoundedCornerShape(20.dp),
-        large = androidx.compose.foundation.shape.RoundedCornerShape(28.dp)
-    ), content = content)
+private val EditorialSerif = FontFamily(Font(R.font.cormorant_garamond, FontWeight.Normal), Font(R.font.cormorant_garamond, FontWeight.Medium), Font(R.font.cormorant_garamond, FontWeight.SemiBold), Font(R.font.cormorant_garamond, FontWeight.Bold))
+private val EditorialSans = FontFamily(Font(R.font.inter, FontWeight.Normal), Font(R.font.inter, FontWeight.Medium), Font(R.font.inter, FontWeight.SemiBold), Font(R.font.inter, FontWeight.Bold))
+private fun journalTypography(system: Boolean): Typography {
+    val sans = if (system) FontFamily.Default else EditorialSans
+    val serif = if (system) FontFamily.Default else EditorialSerif
+    fun text(size: Int, height: Int, heading: Boolean = false, weight: FontWeight = FontWeight.Normal) =
+        TextStyle(fontFamily = if (heading) serif else sans, fontSize = size.sp, lineHeight = height.sp, fontWeight = weight)
+    return Typography(
+        displayLarge = text(56, 64, true), displayMedium = text(44, 52, true), displaySmall = text(36, 44, true),
+        headlineLarge = text(36, 44, true), headlineMedium = text(30, 38, true), headlineSmall = text(26, 34, true),
+        titleLarge = text(24, 32, true, FontWeight.Medium), titleMedium = text(17, 25, weight = FontWeight.Medium), titleSmall = text(15, 22, weight = FontWeight.Medium),
+        bodyLarge = text(16, 25), bodyMedium = text(14, 22), bodySmall = text(12, 18),
+        labelLarge = text(14, 20, weight = FontWeight.Medium), labelMedium = text(12, 18, weight = FontWeight.Medium), labelSmall = text(11, 16, weight = FontWeight.Medium)
+    )
+}
+@Composable fun OpusTheme(theme: String = "System", typography: String = "Editorial", content: @Composable () -> Unit) {
+    MaterialTheme(
+        colorScheme = if (theme == "Dark" || (theme == "System" && androidx.compose.foundation.isSystemInDarkTheme())) Palette else LightPalette,
+        typography = androidx.compose.runtime.remember(typography) { journalTypography(typography == "System") },
+        shapes = Shapes(small = androidx.compose.foundation.shape.RoundedCornerShape(4.dp), medium = androidx.compose.foundation.shape.RoundedCornerShape(10.dp), large = androidx.compose.foundation.shape.RoundedCornerShape(16.dp)),
+        content = content
+    )
 }

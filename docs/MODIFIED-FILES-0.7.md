@@ -1,0 +1,53 @@
+# Goldberg 0.7.0 modified files
+
+Complete tracked modifications and new source/documentation files relative to verified main `34821ea071734b1f1571b116b2e656e64c1a8587`. Build outputs and private signing material are excluded. Work remains uncommitted because the upgrade-signing gate fails.
+
+- `CHANGELOG.md`
+- `README.md`
+- `app/build.gradle.kts`
+- `app/schemas/com.opus.piano.data.OpusDatabase/5.json`
+- `app/src/androidTest/assets/schemas/4.json`
+- `app/src/androidTest/java/com/opus/piano/CatalogDatabaseTest.kt`
+- `app/src/androidTest/java/com/opus/piano/ExperiencePersistenceTest.kt`
+- `app/src/androidTest/java/com/opus/piano/GoldbergPersistenceTest.kt`
+- `app/src/androidTest/java/com/opus/piano/NavigationRegressionTest.kt`
+- `app/src/androidTest/java/com/opus/piano/SmartCachePersistenceTest.kt`
+- `app/src/main/AndroidManifest.xml`
+- `app/src/main/assets/licenses/CormorantGaramond-OFL.txt`
+- `app/src/main/assets/licenses/Inter-OFL.txt`
+- `app/src/main/java/com/opus/piano/MainActivity.kt`
+- `app/src/main/java/com/opus/piano/OpusApplication.kt`
+- `app/src/main/java/com/opus/piano/data/BackupRepository.kt`
+- `app/src/main/java/com/opus/piano/data/CatalogRepository.kt`
+- `app/src/main/java/com/opus/piano/data/OpusDatabase.kt`
+- `app/src/main/java/com/opus/piano/data/PerformanceDiagnostics.kt`
+- `app/src/main/java/com/opus/piano/data/PersonalData.kt`
+- `app/src/main/java/com/opus/piano/data/StatisticLayout.kt`
+- `app/src/main/java/com/opus/piano/ui/AppNavigation.kt`
+- `app/src/main/java/com/opus/piano/ui/BadgesScreens.kt`
+- `app/src/main/java/com/opus/piano/ui/CatalogViewModel.kt`
+- `app/src/main/java/com/opus/piano/ui/Connectivity.kt`
+- `app/src/main/java/com/opus/piano/ui/EditorialComponents.kt`
+- `app/src/main/java/com/opus/piano/ui/ExperienceViewModel.kt`
+- `app/src/main/java/com/opus/piano/ui/MedalArtwork.kt`
+- `app/src/main/java/com/opus/piano/ui/OpusApp.kt`
+- `app/src/main/java/com/opus/piano/ui/OpusViewModel.kt`
+- `app/src/main/java/com/opus/piano/ui/ProfileScreen.kt`
+- `app/src/main/java/com/opus/piano/ui/ProfileViewModel.kt`
+- `app/src/main/java/com/opus/piano/ui/RepertoireScreen.kt`
+- `app/src/main/java/com/opus/piano/ui/SettingsScreen.kt`
+- `app/src/main/java/com/opus/piano/ui/Theme.kt`
+- `app/src/main/res/font/cormorant_garamond.ttf`
+- `app/src/main/res/font/inter.ttf`
+- `app/src/test/java/com/opus/piano/SmartCacheTest.kt`
+- `docs/BACKUP.md`
+- `docs/MODIFIED-FILES-0.7.md`
+- `docs/PERFORMANCE-0.7.md`
+- `docs/RELEASE-0.7.md`
+- `docs/VERIFICATION-0.7.md`
+- `docs/fonts/CormorantGaramond-OFL.txt`
+- `docs/fonts/Inter-OFL.txt`
+- `docs/fonts/README.md`
+- `scripts/check_migrations.py`
+- `scripts/measure-startup.sh`
+- `scripts/verify-upgrade-signing.sh`

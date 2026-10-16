@@ -7,7 +7,7 @@ import com.opus.piano.data.*
 class OpusApplication : Application() {
     val database by lazy {
         Room.databaseBuilder(this, OpusDatabase::class.java, "opus.db")
-            .addMigrations(OpusDatabase.MIGRATION_1_2, OpusDatabase.MIGRATION_2_3, OpusDatabase.MIGRATION_3_4).build()
+            .addMigrations(OpusDatabase.MIGRATION_1_2, OpusDatabase.MIGRATION_2_3, OpusDatabase.MIGRATION_3_4, OpusDatabase.MIGRATION_4_5).build()
     }
     val achievements by lazy { AchievementStore(database) }
     val recordings by lazy { RecordingRepository(database) }

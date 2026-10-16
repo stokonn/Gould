@@ -1,3 +1,13 @@
+# 0.7.0 — Smart Cache & Classical Editorial (unpublished candidate)
+
+- Add bounded disposable response/portrait caches, usage display and safe Clear Cache.
+- Share transactional background journal summaries across screens; retain offline catalogue rows and retry visible failed pages after connectivity returns.
+- Introduce Classical Editorial typography, bundled Cormorant Garamond/Inter and a persistent System Font option.
+- Add a personal Home overview, compact repertoire, timer-first Practice, contextual navigation, numbered badge widgets and configurable profile statistics.
+- Add schema 4 → 5 preference migration and compatible schema-4 backup conversion; preserve historical records, badge dates and selections.
+- Add delayed static skeletons, startup/summary diagnostics, upgrade-signing checks and regression coverage.
+- Publication blocked: the current host debug key does not match the published 0.6.1 certificate. Device validation and runtime performance measurements remain outstanding.
+
 # Changelog
 
 ## Goldberg 0.6.1 — Profile Reimagined

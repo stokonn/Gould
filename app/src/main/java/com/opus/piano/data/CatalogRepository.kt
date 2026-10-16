@@ -21,9 +21,9 @@ internal fun JSONArray.objects(): List<JSONObject> = (0 until length()).mapNotNu
 internal fun encoded(value: String): String = URLEncoder.encode(value, "UTF-8").replace("+", "%20")
 
 /** Small HTTPS-only client. No credentials, tracking, or repertoire data leave the device. */
-class CatalogHttp {
+open class CatalogHttp {
     private val gate = Mutex()
-    suspend fun bytes(url: String, image: Boolean = false): ByteArray = withContext(Dispatchers.IO) {
+    open suspend fun bytes(url: String, image: Boolean = false): ByteArray = withContext(Dispatchers.IO) {
         gate.withLock {
             val parsed = URL(url)
             val hosts = setOf("api.openopus.org", "www.wikidata.org", "en.wikipedia.org", "commons.wikimedia.org", "upload.wikimedia.org", "thumb.wikimedia.org")
@@ -33,7 +33,7 @@ class CatalogHttp {
                 connection.connectTimeout = 12000
                 connection.readTimeout = 15000
                 connection.instanceFollowRedirects = false
-                connection.setRequestProperty("User-Agent", "Goldberg/0.6.0 (Android; com.opus.piano; piano practice catalogue)")
+                connection.setRequestProperty("User-Agent", "Goldberg/0.7.0 (Android; com.opus.piano; piano practice catalogue)")
                 connection.setRequestProperty("Accept", if (image) "image/*" else "application/json")
                 val code = connection.responseCode
                 if (code !in 200..299) throw IOException(if (code == 429) "Source is busy; please try again later." else "Source returned HTTP $code.")
@@ -53,7 +53,7 @@ class CatalogHttp {
             } finally { connection.disconnect() }
         }
     }
-    suspend fun json(url: String): JSONObject {
+    open suspend fun json(url: String): JSONObject {
         val value = JSONObject(bytes(url).toString(Charsets.UTF_8))
         if (value.has("error")) throw IOException("The source could not complete the request.")
         return value
@@ -61,7 +61,43 @@ class CatalogHttp {
 }
 
 class CatalogRepository(private val db: OpusDatabase, private val filesDir: File, private val http: CatalogHttp = CatalogHttp(), private val achievements: AchievementStore = AchievementStore(db)) {
+    private val cacheGate = Mutex()
     private val dao = db.catalogDao()
+    companion object {
+        const val PORTRAIT_LIMIT = 32L * 1024 * 1024
+        const val RESPONSE_LIMIT = 16L * 1024 * 1024
+    }
+    private val portraitDirectory get() = File(filesDir, "catalog-portraits")
+    private fun trimPortraits() {
+        val files = portraitDirectory.listFiles()?.filter { it.isFile }?.sortedBy { it.lastModified() }.orEmpty()
+        var bytes = files.sumOf { it.length() }
+        files.forEach { if (bytes > PORTRAIT_LIMIT) { val size = it.length(); if (it.delete()) bytes -= size } }
+    }
+    private fun responseBytes(): Long = db.openHelper.readableDatabase.query("SELECT COALESCE(SUM(length(CAST(payload AS BLOB))), 0) FROM catalog_cache").use { it.moveToFirst(); it.getLong(0) }
+    private fun trimResponses() {
+        val sql = db.openHelper.writableDatabase
+        var bytes = responseBytes()
+        if (bytes <= RESPONSE_LIMIT) return
+        val victims = mutableListOf<String>()
+        sql.query("SELECT cacheKey, length(CAST(payload AS BLOB)) FROM catalog_cache ORDER BY fetchedAt, cacheKey").use { rows ->
+            while (bytes > RESPONSE_LIMIT && rows.moveToNext()) { victims += rows.getString(0); bytes -= rows.getLong(1) }
+        }
+        victims.forEach { sql.execSQL("DELETE FROM catalog_cache WHERE cacheKey = ?", arrayOf(it)) }
+    }
+    suspend fun cacheBytes(): Long = withContext(Dispatchers.IO) { cacheGate.withLock {
+        (portraitDirectory.listFiles()?.sumOf { it.length() } ?: 0L) + responseBytes()
+    } }
+    /** Only downloaded responses/images are disposable. Never delete normalized catalogue or personal tables. */
+    suspend fun clearCache() = withContext(Dispatchers.IO) { cacheGate.withLock {
+        db.openHelper.writableDatabase.execSQL("DELETE FROM catalog_cache")
+        portraitDirectory.listFiles()?.filter { it.isFile }?.forEach { check(it.delete()) { "Could not clear a cached portrait." } }
+        db.invalidationTracker.refreshAsync()
+    } }
+    /** Wait for current downloads before replacing data; no old response can write across restore. */
+    suspend fun restoreJournal(block: suspend () -> Unit) = withContext(Dispatchers.IO) { cacheGate.withLock {
+        block(); trimResponses(); trimPortraits()
+    } }
+
     private val importLock = Mutex()
     val snapshot = combine(dao.composers(), dao.works()) { composers, works -> CatalogSnapshot(composers, works) }
 
@@ -115,11 +151,11 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
         }
     }
 
-    private suspend fun openOpus(path: String, force: Boolean = false): CatalogLoad<JSONObject> = withContext(Dispatchers.IO) {
+    private suspend fun openOpus(path: String, force: Boolean = false): CatalogLoad<JSONObject> = withContext(Dispatchers.IO) { cacheGate.withLock {
         val cached = dao.cache(path)
         if (!force && cached != null && System.currentTimeMillis() - cached.fetchedAt < 7 * 86400000L) {
             val json = JSONObject(cached.payload)
-            ingest(json)
+            // Normalized rows were committed atomically with this response; do not replay them on every hit.
             return@withContext CatalogLoad(json, true, fetchedAt = cached.fetchedAt)
         }
         try {
@@ -128,14 +164,14 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
             if (status.text("success") != "true" && status.text("error") != "Nothing found") throw IOException("Open Opus is temporarily unavailable.")
             val now = System.currentTimeMillis()
             // Parse and persist atomically. A failed refresh leaves the previous cache untouched.
-            db.withTransaction { ingest(json); dao.putCache(CatalogCache(path, json.toString(), now)) }
+            db.withTransaction { ingest(json); dao.putCache(CatalogCache(path, json.toString(), now)); trimResponses() }
             CatalogLoad(json, false, fetchedAt = now)
         } catch (cancelled: CancellationException) { throw cancelled }
         catch (error: Exception) {
             if (cached == null) throw IOException("Unable to load Open Opus. Check your connection and try again.", error)
             CatalogLoad(JSONObject(cached.payload), true, "Refresh failed. Showing the saved catalogue.", cached.fetchedAt)
         }
-    }
+    } }
 
     suspend fun featured(force: Boolean = false) = openOpus("composer/list/pop.json", force)
     suspend fun search(query: String, offset: Int = 0, force: Boolean = false): CatalogLoad<Int?> {
@@ -172,7 +208,7 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
         }
     }
 
-    suspend fun profile(c: CatalogComposer, force: Boolean = false): CatalogLoad<ComposerProfile> = withContext(Dispatchers.IO) {
+    suspend fun profile(c: CatalogComposer, force: Boolean = false): CatalogLoad<ComposerProfile> = withContext(Dispatchers.IO) { cacheGate.withLock {
         val key = "profile:${c.id}"
         val cached = dao.cache(key)
         if (!force && cached != null && JSONObject(cached.payload).optInt("profileVersion") >= 5 && System.currentTimeMillis() - cached.fetchedAt < 30 * 86400000L)
@@ -180,28 +216,29 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
         try {
             val profile = WikimediaProfile(http).load(c)
             val now = System.currentTimeMillis()
-            dao.putCache(CatalogCache(key, profileToJson(profile).toString(), now))
+            dao.putCache(CatalogCache(key, profileToJson(profile).toString(), now)); trimResponses()
             CatalogLoad(profile, false, fetchedAt = now)
         } catch (cancelled: CancellationException) { throw cancelled }
         catch (error: Exception) {
             if (cached == null) throw IOException("Biography and portrait could not be loaded. Catalogue works remain available.", error)
             CatalogLoad(profileFromJson(JSONObject(cached.payload)), true, "Showing the saved biography; refresh failed.", cached.fetchedAt)
         }
-    }
+    } }
 
     /** App-private persistent portrait cache, never part of repertoire or uploaded. */
-    suspend fun portrait(url: String): Bitmap? = withContext(Dispatchers.IO) {
+    suspend fun portrait(url: String): Bitmap? = withContext(Dispatchers.IO) { cacheGate.withLock {
         val digest = MessageDigest.getInstance("SHA-256").digest(url.toByteArray()).joinToString("") { "%02x".format(it) }
-        val directory = File(filesDir, "catalog-portraits").apply { mkdirs() }
+        val directory = portraitDirectory.apply { mkdirs() }
         val file = File(directory, "$digest.img")
-        if (file.exists()) decodePortrait(file.readBytes())?.let { return@withContext it }
+        if (file.exists()) decodePortrait(file.readBytes())?.let { file.setLastModified(System.currentTimeMillis()); return@withContext it }
         val bytes = http.bytes(url, image = true)
         val bitmap = decodePortrait(bytes) ?: return@withContext null
         val temporary = File.createTempFile("portrait-", ".tmp", directory)
         try { temporary.writeBytes(bytes); if (!temporary.renameTo(file)) throw IOException("Could not cache portrait") }
         finally { temporary.delete() }
+        trimPortraits()
         bitmap
-    }
+    } }
 }
 
 /** Decode source images to at most about 512 pixels per side before allocating pixel storage. */

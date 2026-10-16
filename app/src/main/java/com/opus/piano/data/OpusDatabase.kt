@@ -1,5 +1,8 @@
 package com.opus.piano.data
 
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.distinctUntilChanged
+
 import androidx.room.*
 import androidx.room.withTransaction
 import kotlinx.coroutines.flow.Flow
@@ -59,7 +62,7 @@ interface OpusDao {
     @Delete suspend fun delete(piece: Piece)
     @Insert suspend fun insert(session: PracticeSession): Long
 }
-@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class], version = 4, exportSchema = true)
+@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class], version = 5, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class OpusDatabase : RoomDatabase() {
     abstract fun personalDao(): PersonalDao
@@ -67,6 +70,12 @@ abstract class OpusDatabase : RoomDatabase() {
     abstract fun catalogDao(): CatalogDao
     abstract fun experienceDao(): ExperienceDao
     companion object {
+        val MIGRATION_4_5 = object : Migration(4, 5) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE profile_settings ADD COLUMN typography TEXT NOT NULL DEFAULT 'Editorial'")
+                db.execSQL("ALTER TABLE profile_settings ADD COLUMN statistics TEXT NOT NULL DEFAULT 'time,pieces,sessions,streak'")
+            }
+        }
         val MIGRATION_3_4 = object : Migration(3, 4) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL("CREATE INDEX IF NOT EXISTS index_sessions_completedAt ON sessions(completedAt)")
@@ -112,6 +121,10 @@ class OpusRepository(private val db: OpusDatabase, private val achievements: Ach
     val pieces = dao.observePieces()
     val sessions = dao.observeSessions()
     val parts = db.personalDao().parts()
+    // One transactional snapshot avoids pairing newly restored sessions with old attribution rows.
+    val journal = db.invalidationTracker.createFlow("pieces", "sessions", "session_parts").map {
+        db.withTransaction { Triple(dao.allPieces(), dao.allSessions(), db.personalDao().allParts()) }
+    }.distinctUntilChanged()
     suspend fun save(piece: Piece) = db.withTransaction {
         val existing = if (piece.id > 0) dao.piece(piece.id) else null
         dao.save(piece.copy(createdAt = existing?.createdAt ?: piece.createdAt.takeIf { it > 0 } ?: System.currentTimeMillis()))

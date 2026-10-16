@@ -139,5 +139,12 @@ class CatalogViewModel(val repository: CatalogRepository, private val saved: Sav
             finally { _adding.update { it - work.id } }
         }
     }
+    fun retryVisible(route: String) {
+        when {
+            route == "catalog" && _browse.value.error != null && !_browse.value.loading -> query(_browse.value.query)
+            route.startsWith("catalog/composer/") && !_composer.value.loading && (_composer.value.error != null || _composer.value.profileError != null) -> loadComposer(route.substringAfterLast('/'))
+            route.startsWith("catalog/work/") && !_work.value.loading && _work.value.error != null -> loadWork(route.substringAfterLast('/'))
+        }
+    }
     fun dismissNotice() { _notice.value = null }
 }

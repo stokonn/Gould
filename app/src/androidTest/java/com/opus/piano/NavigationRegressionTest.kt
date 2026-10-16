@@ -18,15 +18,17 @@ import org.junit.runner.RunWith
 /** Uses the real Compose navigator and production tab-switch helper; never edits personal data. */
 @RunWith(AndroidJUnit4::class)
 class NavigationRegressionTest {
-    @Test fun searchProfileSettingsAndRepeatedTabSwitchesKeepBackStackCorrect() {
+    @Test fun searchProfileSettingsAndRepeatedTabSwitchesKeepBackStackCorrect() = verifyNavigation("HOME")
+    @Test fun homeOverviewKeepsProfileSettingsAndSearchBackStacksCorrect() = verifyNavigation("OVERVIEW")
+    private fun verifyNavigation(start: String) {
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         lateinit var nav: NavHostController
         ActivityScenario.launch(MainActivity::class.java).use { scenario ->
             scenario.onActivity { activity -> activity.setContent {
                 val controller = rememberNavController()
                 SideEffect { nav = controller }
-                NavHost(controller, startDestination = "HOME", enterTransition = { EnterTransition.None }, exitTransition = { ExitTransition.None }) {
-                    listOf("HOME", "REPERTOIRE", "PRACTICE", "BADGES", "WRAPPED", "catalog", "settings").forEach { route -> composable(route) { Text(route) } }
+                NavHost(controller, startDestination = start, enterTransition = { EnterTransition.None }, exitTransition = { ExitTransition.None }) {
+                    listOf("OVERVIEW", "HOME", "REPERTOIRE", "PRACTICE", "BADGES", "WRAPPED", "catalog", "settings").forEach { route -> composable(route) { Text(route) } }
                 }
             } }
             instrumentation.waitForIdleSync()
@@ -49,6 +51,7 @@ class NavigationRegressionTest {
                 step("BADGES") { nav.selectTopLevel("BADGES") }
                 step("HOME") { nav.selectTopLevel("HOME") }
             }
+            if (start == "OVERVIEW") step("OVERVIEW") { nav.selectTopLevel("OVERVIEW") }
             instrumentation.runOnMainSync { assertNull(nav.previousBackStackEntry) }
         }
     }

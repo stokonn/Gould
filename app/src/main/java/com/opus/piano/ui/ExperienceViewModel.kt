@@ -28,7 +28,7 @@ class ExperienceViewModel(private val store: AchievementStore, private val recor
             .onEach { _recordingsLoading.value = false; _recordingError.value = null }
             .catch { _recordingsLoading.value = false; _recordingError.value = "Saved interpretations could not be loaded. Try again."; emit(emptyList()) }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
-    init { retryEvaluation() }
+    init { viewModelScope.launch { kotlinx.coroutines.delay(750); retryEvaluation() } }
     fun retryEvaluation() = viewModelScope.launch {
         try { store.evaluate(); _error.value = null; badgeRevision.update { it + 1 } }
         catch (cancelled: CancellationException) { throw cancelled }

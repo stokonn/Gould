@@ -26,6 +26,7 @@ import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.repeatOnLifecycle
 import com.opus.piano.data.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -36,6 +37,7 @@ import java.time.format.DateTimeFormatter
     val settings by profile.settings.collectAsStateWithLifecycle()
     val busy by profile.busy.collectAsStateWithLifecycle()
     var edit by rememberSaveable { mutableStateOf(false) }
+    var customize by rememberSaveable { mutableStateOf(false) }
     var manage by rememberSaveable { mutableStateOf(false) }
     var period by rememberSaveable { mutableStateOf("Week") }
     var limit by rememberSaveable { mutableIntStateOf(20) }
@@ -45,14 +47,19 @@ import java.time.format.DateTimeFormatter
             android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
         }.getOrNull() }
     }
-    val today = LocalDate.now()
+    val lifecycle = androidx.lifecycle.compose.LocalLifecycleOwner.current.lifecycle
+    val today by produceState(LocalDate.now(), lifecycle) {
+        lifecycle.repeatOnLifecycle(androidx.lifecycle.Lifecycle.State.STARTED) {
+            while (true) { value = LocalDate.now(); kotlinx.coroutines.delay(60_000) }
+        }
+    }
     val zone = ZoneId.systemDefault()
     val filtered = remember(state.sessions, period, today, zone) { profilePeriod(state.sessions, period, today, zone) }
-    val lifetime = remember(state.sessions) { state.sessions.sumOf { it.durationMillis } }
+    val lifetime = state.summary.totalMillis
     val periodTime = remember(filtered) { filtered.sumOf { it.durationMillis } }
     val streak = remember(state.sessions, today, zone) { currentPracticeStreak(state.sessions, today, zone) }
-    val partsBySession = remember(state.parts) { state.parts.groupBy { it.sessionId } }
-    val totals = remember(filtered, state.parts) { attributedSessions(filtered, state.parts).groupBy { it.catalogWorkId?.let { id -> "catalog:$id" } ?: it.pieceId?.let { id -> "piece:$id" } ?: "free" }.values.map { entries -> entries.first().pieceTitle to entries.sumOf { it.durationMillis } }.sortedByDescending { it.second }.take(5) }
+    val partsBySession = state.summary.partsBySession
+    val totals = remember(filtered, state.summary.attributed) { val ids = filtered.map { it.id }.toSet(); state.summary.attributed.filter { it.id in ids }.groupBy { it.catalogWorkId?.let { id -> "catalog:$id" } ?: it.pieceId?.let { id -> "piece:$id" } ?: "free" }.values.map { entries -> entries.first().pieceTitle to entries.sumOf { it.durationMillis } }.sortedByDescending { it.second }.take(5) }
     val showcased = remember(settings.badgeIds, badges) { settings.badgeIds.mapNotNull { id -> badges.firstOrNull { it.definition.id == id && it.unlocked } } }
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(horizontal = 20.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(20.dp)) {
         item {
@@ -67,8 +74,28 @@ import java.time.format.DateTimeFormatter
                 }
             }
         }
-        if (state.loading) item { LinearProgressIndicator(Modifier.fillMaxWidth()) }
-        item { StatisticCards(listOf("Total practice" to compactPracticeTime(lifetime), "Repertoire pieces" to state.pieces.size.toString(), "Practice sessions" to state.sessions.size.toString(), "Current streak" to "$streak ${if (streak == 1) "day" else "days"}")) }
+        if (state.loading) item { EditorialSkeleton() }
+        if (!state.loading) {
+        item {
+            val metrics = mapOf("time" to ("Total practice" to compactPracticeTime(lifetime)), "pieces" to ("Repertoire pieces" to state.pieces.size.toString()), "sessions" to ("Practice sessions" to state.sessions.size.toString()), "streak" to ("Current streak" to "$streak ${if (streak == 1) "day" else "days"}"))
+            val ordered = StatisticLayout.normalize(settings.statistics.split(','))
+            val primary = metrics.getValue(ordered.first())
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(primary.first.uppercase(), style = MaterialTheme.typography.labelSmall, modifier = Modifier.weight(1f))
+                    TextButton(onClick = { customize = true }) { Text("Customize") }
+                }
+                Text(primary.second, style = MaterialTheme.typography.displayMedium.copy(fontFamily = MaterialTheme.typography.bodyLarge.fontFamily), color = MaterialTheme.colorScheme.primary)
+                HorizontalDivider()
+                ordered.drop(1).forEach { id ->
+                    val metric = metrics.getValue(id)
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                        Text(metric.first, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
+                        Text(metric.second, style = MaterialTheme.typography.labelLarge)
+                    }
+                }
+            }
+        }
         item {
             SectionTitle("Practice activity")
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -87,10 +114,12 @@ import java.time.format.DateTimeFormatter
             if (showcased.isEmpty()) Text("Make this space yours. Choose up to five earned badges using Edit.", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             else LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 items(showcased, key = { it.definition.id }) { badge ->
-                    Surface(onClick = { badgeDetail(badge.definition.id) }, shape = MaterialTheme.shapes.medium, modifier = Modifier.width(112.dp)) {
-                        Column(Modifier.padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                            MedalArtwork(badge, Modifier.size(64.dp))
-                            Text(badge.definition.name, style = MaterialTheme.typography.labelMedium)
+                    Surface(onClick = { badgeDetail(badge.definition.id) }, shape = MaterialTheme.shapes.medium, modifier = Modifier.width(180.dp)) {
+                        Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Text("NO. ${showcased.indexOf(badge) + 1}", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            MedalArtwork(badge, Modifier.size(52.dp))
+                            Text(badge.definition.name, style = MaterialTheme.typography.titleLarge)
+                            Text(localDateTime(badge.unlockedAt!!), style = MaterialTheme.typography.bodySmall)
                         }
                     }
                 }
@@ -110,28 +139,29 @@ import java.time.format.DateTimeFormatter
         if (filtered.isEmpty()) item { Text("No sessions in this period yet. Your next practice will appear here.", color = MaterialTheme.colorScheme.onSurfaceVariant) }
         items(filtered.take(limit), key = { "session:${it.id}" }) { SessionRow(it, partsBySession[it.id].orEmpty()) }
         if (filtered.size > limit) item { OutlinedButton(onClick = { limit += 20 }) { Text("Show older sessions") } }
+        }
     }
+    if (customize) StatisticsEditor(settings, busy, profile) { customize = false }
     if (edit) EditProfile(settings, avatar, busy, profile) { edit = false }
     if (manage) ShowcaseEditor(settings, badges, busy, profile) { manage = false }
 }
 
-@Composable private fun StatisticCards(metrics: List<Pair<String, String>>) {
-    val fontScale = LocalDensity.current.fontScale
-    BoxWithConstraints {
-        val columns = if (maxWidth >= 280.dp && fontScale < 1.5f) 2 else 1
-        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            metrics.chunked(columns).forEach { row ->
-                Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    row.forEach { (label, value) -> Surface(Modifier.weight(1f), shape = MaterialTheme.shapes.medium) {
-                        Column(Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                            Text(value, style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
-                            Text(label, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        }
-                    } }
+@Composable private fun StatisticsEditor(settings: ProfileSettings, busy: Boolean, profile: ProfileViewModel, dismiss: () -> Unit) {
+    val ids = StatisticLayout.normalize(settings.statistics.split(','))
+    val names = mapOf("time" to "Total practice", "pieces" to "Repertoire pieces", "sessions" to "Practice sessions", "streak" to "Current streak")
+    AlertDialog(onDismissRequest = dismiss, title = { Text("Your statistics") }, text = {
+        Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            Text("The first metric is prominent. Use the arrows to order the supporting statistics.")
+            ids.forEachIndexed { index, id ->
+                Text("${if (index == 0) "Primary · " else ""}${names.getValue(id)}")
+                Row {
+                    if (index > 0) TextButton(modifier = Modifier.weight(1f), enabled = !busy, onClick = { profile.statistics(listOf(id) + (ids - id)) }) { Text("Make primary") }
+                    IconButton(enabled = index > 0 && !busy, onClick = { val order = ids.toMutableList(); java.util.Collections.swap(order, index, index - 1); profile.statistics(order) }) { Icon(Icons.Outlined.ArrowUpward, "Move ${names[id]} earlier") }
+                    IconButton(enabled = index < ids.lastIndex && !busy, onClick = { val order = ids.toMutableList(); java.util.Collections.swap(order, index, index + 1); profile.statistics(order) }) { Icon(Icons.Outlined.ArrowDownward, "Move ${names[id]} later") }
                 }
             }
         }
-    }
+    }, confirmButton = { TextButton(onClick = dismiss) { Text("Done") } })
 }
 
 @Composable private fun EditProfile(settings: ProfileSettings, avatar: android.graphics.Bitmap?, busy: Boolean, profile: ProfileViewModel, dismiss: () -> Unit) {

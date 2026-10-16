@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
             })
             val profile: ProfileViewModel = viewModel()
             val settings by profile.settings.collectAsStateWithLifecycle()
-            OpusTheme(settings.theme) {
+            OpusTheme(settings.theme, settings.typography) {
                 val light = androidx.compose.material3.MaterialTheme.colorScheme.background.luminance() > .5f
                 androidx.compose.runtime.SideEffect {
                     androidx.core.view.WindowCompat.getInsetsController(window, window.decorView).apply {

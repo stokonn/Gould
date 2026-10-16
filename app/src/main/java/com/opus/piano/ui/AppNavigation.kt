@@ -15,7 +15,7 @@ internal fun NavHostController.selectTopLevel(route: String) {
     // A tab tap selects its root, never a saved Search/detail stack associated with that root.
     if (popBackStack(route, false)) return
     navigate(route) {
-        popUpTo(PROFILE_ROUTE)
+        popUpTo(graph.startDestinationId)
         launchSingleTop = true
     }
 }

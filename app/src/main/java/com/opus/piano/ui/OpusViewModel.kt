@@ -7,13 +7,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-data class LibraryState(val pieces: List<Piece> = emptyList(), val sessions: List<PracticeSession> = emptyList(), val loading: Boolean = true, val parts: List<SessionPart> = emptyList())
+data class LibraryState(val pieces: List<Piece> = emptyList(), val sessions: List<PracticeSession> = emptyList(), val loading: Boolean = true, val parts: List<SessionPart> = emptyList(), val summary: JournalSummary = JournalSummary())
 data class TimerState(val elapsed: Long = 0, val running: Boolean = false, val selected: Piece? = null, val saving: Boolean = false,
     val parts: List<SessionPart> = listOf(SessionPart()), val active: Int = 0, val removed: Set<Long> = emptySet())
 
 class OpusViewModel(private val repository: OpusRepository, private val saved: SavedStateHandle) : ViewModel() {
-    val library = combine(repository.pieces, repository.sessions, repository.parts) { pieces, sessions, parts -> LibraryState(pieces, sessions, false, parts) }
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), LibraryState())
+    val library = repository.journal.map { (pieces, sessions, parts) -> LibraryState(pieces, sessions, false, parts, traceOperation("Journal.summary") { summarizeJournal(sessions, parts) }) }
+        .distinctUntilChanged().flowOn(kotlinx.coroutines.Dispatchers.Default)
+        .stateIn(viewModelScope, SharingStarted.Eagerly, LibraryState())
     private fun restored(): TimerState = runCatching {
         val raw = saved.get<String>("timerParts")
         if (raw == null) {

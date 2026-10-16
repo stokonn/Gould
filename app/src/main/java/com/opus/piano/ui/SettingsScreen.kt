@@ -17,6 +17,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
     val preview by profile.preview.collectAsStateWithLifecycle()
     val export = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { it?.let(profile::export) }
     val restore = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { it?.let(profile::inspect) }
+    val usage by profile.cacheUsage.collectAsStateWithLifecycle()
+    LaunchedEffect(Unit) { profile.measureCache() }
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         item { CatalogBack("Settings", back) }
         item { Panel {
@@ -28,17 +30,34 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
                     }
                 }
             }
-            Text("Uses your device fonts and text size. Motion follows Android animation settings.", style = MaterialTheme.typography.bodySmall)
+            Text("Text size and motion follow Android accessibility settings.", style = MaterialTheme.typography.bodySmall)
+        } }
+        item { Panel {
+            SectionTitle("Typography")
+            listOf("Editorial" to "Goldberg Typography", "System" to "System Font").forEach { (id, label) ->
+                Surface(onClick = { profile.typography(id) }, enabled = !busy, modifier = Modifier.semantics { selected = settings.typography == id; role = Role.RadioButton }) {
+                    Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                        RadioButton(settings.typography == id, null); Spacer(Modifier.width(12.dp)); Text(label)
+                    }
+                }
+            }
+            Text("Cormorant Garamond headings with Inter text, or your device’s system font.", style = MaterialTheme.typography.bodySmall)
+        } }
+        item { Panel {
+            SectionTitle("Cache Management")
+            Text(usage?.let { "Disposable downloads: %.1f MiB".format(it / 1048576.0) } ?: "Measuring downloaded cache…")
+            Text("Clearing removes downloaded images and response copies. Practice history, repertoire, badge dates, profile settings and the saved catalogue remain on this device.", style = MaterialTheme.typography.bodySmall)
+            OutlinedButton(onClick = profile::clearCache, enabled = !busy) { Text("Clear Cache") }
         } }
         item { Panel {
             SectionTitle("Backup & Restore")
             Text("Keep a local copy of your journal, profile and showcase. Restoring replaces the current saved data; export a backup first.")
             Button(onClick = { export.launch("Goldberg-backup.json") }, enabled = !busy) { Text("Export backup") }
             OutlinedButton(onClick = { restore.launch(arrayOf("application/json", "text/plain", "application/octet-stream")) }, enabled = !busy) { Text("Import backup") }
-            Text("Version 1 backups from Goldberg 0.6.0 remain compatible. Backups are not encrypted.", style = MaterialTheme.typography.bodySmall)
+            Text("Version 1 backups from 0.6.0 and 0.6.1 remain compatible. Backups are not encrypted.", style = MaterialTheme.typography.bodySmall)
             if (busy) LinearProgressIndicator(Modifier.fillMaxWidth())
         } }
-        item { Text("Goldberg 0.6.1 · Profile Reimagined", style = MaterialTheme.typography.labelMedium) }
+        item { Panel { SectionTitle("About"); Text("Goldberg 0.7.0 · Smart Cache & Classical Editorial"); Text("Cormorant Garamond & Inter · SIL Open Font License 1.1", style = MaterialTheme.typography.bodySmall) } }
     }
     preview?.let { summary ->
         val timer by model.timer.collectAsStateWithLifecycle()

@@ -107,7 +107,7 @@ import kotlin.math.*
                 }
             }
             drawLine(metal, Offset(78f, 136f), Offset(122f, 136f), .7f)
-            val inscription = if (badge.definition.metric == AchievementMetric.PRACTICE_MILLIS) "C · HOURS" else "GOLDBERG · ${badge.definition.target}"
+            val inscription = if (badge.definition.metric == AchievementMetric.PRACTICE_MILLIS) "C · HOURS" else "PRACTICE · ${badge.definition.target}"
             drawContext.canvas.nativeCanvas.drawText(inscription, 100f, 150f, android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG).apply { color = light.toArgb(); textSize = 8f; textAlign = android.graphics.Paint.Align.CENTER; isSubpixelText = true; typeface = Typeface.create("serif", Typeface.NORMAL) })
             drawCircle(light, 2f, Offset(100f, 39f))
             drawLine(light, Offset(94f, 165f), Offset(106f, 159f), 1.5f)
