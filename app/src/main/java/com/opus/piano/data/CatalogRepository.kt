@@ -171,7 +171,7 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
         } catch (cancelled: CancellationException) { throw cancelled }
         catch (error: Exception) {
             if (cached == null) throw IOException(L.s(R.string.msg_unable_to_load_open_opus_check_your_connecti_8d3d), error)
-            CatalogLoad(JSONObject(cached.payload), true, "Refresh failed. Showing the saved catalogue.", cached.fetchedAt)
+            CatalogLoad(JSONObject(cached.payload), true, L.s(R.string.catalogue_saved_refresh_failed), cached.fetchedAt)
         }
     } }
 
@@ -223,7 +223,7 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
         } catch (cancelled: CancellationException) { throw cancelled }
         catch (error: Exception) {
             if (cached == null) throw IOException(L.s(R.string.msg_biography_and_portrait_could_not_be_loaded_c_af9d), error)
-            CatalogLoad(profileFromJson(JSONObject(cached.payload)), true, "Showing the saved biography; refresh failed.", cached.fetchedAt)
+            CatalogLoad(profileFromJson(JSONObject(cached.payload)), true, L.s(R.string.biography_saved_refresh_failed), cached.fetchedAt)
         }
     } }
 

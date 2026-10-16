@@ -66,7 +66,7 @@ import kotlinx.coroutines.CancellationException
                     }
                 }
             }
-            item { TabRow(tab, containerColor = MaterialTheme.colorScheme.background, contentColor = Gold) { listOf("Overview", "Works", "About").forEachIndexed { i, label -> Tab(tab == i, onClick = { tab = i }, text = { Text(if(label=="About") L.s(R.string.msg_biography_53c2) else L.fixed(label)) }) } } }
+            item { TabRow(tab, containerColor = MaterialTheme.colorScheme.background, contentColor = MaterialTheme.colorScheme.primary) { listOf("Overview", "Works", "About").forEachIndexed { i, label -> Tab(tab == i, onClick = { tab = i }, text = { Text(if(label=="About") L.s(R.string.msg_biography_53c2) else L.fixed(label)) }) } } }
             when (tab) {
                 0 -> {
                     item {

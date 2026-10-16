@@ -15,7 +15,7 @@ import com.opus.piano.data.*
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable fun CompositionScreen(workId: String?, pieceId: Long?, catalogModel: CatalogViewModel, experience: ExperienceViewModel,
-    library: LibraryState, model: OpusViewModel, back: () -> Unit, composerPage: (String) -> Unit, recordingsPage: (String) -> Unit, practice: (Piece) -> Unit) {
+    library: LibraryState, model: OpusViewModel, back: () -> Unit, composerPage: (String) -> Unit, recordingsPage: (String) -> Unit, history: (Long?, String?) -> Unit, practice: (Piece) -> Unit) {
     val snapshot by catalogModel.snapshot.collectAsStateWithLifecycle()
     val page by catalogModel.work.collectAsStateWithLifecycle()
     val recordings by experience.recordings.collectAsStateWithLifecycle()
@@ -67,7 +67,7 @@ import com.opus.piano.data.*
                         Text(localizedPracticeTime(sessions.sumOf { it.durationMillis }))
                         Text(L.quantity(R.plurals.sessions_count,sessions.size))
                         sessions.firstOrNull()?.let { Text(localDateTime(it.completedAt)) }
-                        TextButton(onClick={tab=3}) { Text(L.s(R.string.msg_practice_history_76e7)) }
+                        TextButton(onClick={history(personal?.id,sourceId)}) { Text(L.s(R.string.msg_practice_history_76e7)) }
                     }
                     item { Column(verticalArrangement=Arrangement.spacedBy(6.dp)) {
                         MetadataLine("Genre", personal?.genre?.ifBlank { work?.genre.orEmpty() } ?: work?.genre.orEmpty())
@@ -89,19 +89,19 @@ import com.opus.piano.data.*
                         item { Panel {
                             SectionTitle(L.s(R.string.msg_your_practice_e682))
                             Choice(L.s(R.string.msg_learning_status_30b8), LearningStatus.entries.map { it.label }, personal.status.label) { label -> model.save(personal.copy(status = LearningStatus.entries.first { it.label == label })) {} }
-                            Text(L.s(R.string.msg_sessions_size_completed_sessions_sessions_su_05a0, (sessions.size), (sessions.sumOf { it.durationMillis } / 60000)), color = MaterialTheme.colorScheme.primary)
+                            Text("${L.quantity(R.plurals.sessions_count,sessions.size)} · ${localizedPracticeTime(sessions.sumOf { it.durationMillis })}", color = MaterialTheme.colorScheme.primary)
                             Button(onClick = { practice(personal) }) { Text(L.s(R.string.msg_practice_this_piece_d355)) }
                             TextButton(onClick = { editor = true }) { Text(L.s(R.string.msg_edit_your_repertoire_entry_4636)) }
                         } }
                     }
                     item { SectionTitle(L.s(R.string.msg_practice_history_4d00)) }
                     if (sessions.isEmpty()) item { Text(L.s(R.string.msg_no_completed_sessions_for_this_composition_y_1b30), color = MaterialTheme.colorScheme.onSurfaceVariant) }
-                    items(sessions.take(30), key = { it.id }) { attributed ->
+                    items(sessions.take(3), key = { it.id }) { attributed ->
                         Text("${L.fixed("My Practice")} · ${localizedPracticeTime(attributed.durationMillis)}",style=MaterialTheme.typography.labelLarge)
                         val parent=library.sessions.first { it.id==attributed.id }
                         SessionRow(parent, library.summary.partsBySession[parent.id].orEmpty())
                     }
-                    if (sessions.size > 30) item { Text(L.s(R.string.msg_showing_the_30_most_recent_sessions_of_sessi_304f, (sessions.size)), style = MaterialTheme.typography.bodySmall) }
+                    item { TextButton(onClick={history(personal?.id,sourceId)}) { Text(L.s(R.string.msg_practice_history_76e7)) } }
                 }
             }
             if (personal == null && work != null && composer != null) item {

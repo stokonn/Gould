@@ -23,7 +23,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.Locale
 
-internal fun localDateTime(timestamp: Long): String = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(L.locale).withZone(ZoneId.systemDefault()).format(Instant.ofEpochMilli(timestamp))
+internal fun localDateTime(timestamp: Long): String = com.opus.piano.i18n.JournalFormatting.dateTime(timestamp,L.locale,ZoneId.systemDefault())
 private fun localDate(timestamp: Long): String = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(L.locale).withZone(ZoneId.systemDefault()).format(Instant.ofEpochMilli(timestamp))
 
 @OptIn(ExperimentalLayoutApi::class)

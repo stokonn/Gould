@@ -29,7 +29,7 @@ import com.opus.piano.preferences.*
     Choice(L.s(R.string.msg_sort_adc4),AppearanceRules.sorts,a.sort) { value->store.edit { it.copy(sort=value) } }
     SectionTitle(L.s(R.string.msg_profile_layout_5879))
     Text(L.s(R.string.msg_identity_settings_history_and_badge_navigati_abb8))
-    SectionEditor(a.profileSections,a.hiddenProfile,{id->store.edit { it.copy(hiddenProfile=if(id in it.hiddenProfile) it.hiddenProfile-id else it.hiddenProfile+id) }},{id,d->store.edit { it.copy(profileSections=AppearanceRules.move(it.profileSections,id,d)) }})
+    SectionEditor(a.profileSections.filter { it != "history" },a.hiddenProfile,{id->store.edit { it.copy(hiddenProfile=if(id in it.hiddenProfile) it.hiddenProfile-id else it.hiddenProfile+id) }},{id,d->store.edit { it.copy(profileSections=AppearanceRules.move(it.profileSections,id,d)) }})
     OutlinedButton(onClick={reset=true}) { Text(L.s(R.string.msg_reset_appearance_6a59)) }
     if(reset) AlertDialog(onDismissRequest={reset=false},title={Text(L.s(R.string.msg_reset_appearance_fa24))},text={Text(L.s(R.string.msg_reset_visual_preferences_only_your_profile_p_cec0))},confirmButton={TextButton(onClick={profile.resetAppearance();reset=false}) { Text(L.s(R.string.msg_reset_44c5)) }},dismissButton={TextButton(onClick={reset=false}) { Text(L.s(R.string.msg_cancel_77df)) }})
 }

@@ -5,15 +5,17 @@ import com.opus.piano.practice.PracticeState
 import org.json.JSONArray
 import org.json.JSONObject
 
-class PracticeRepository(private val db: OpusDatabase, private val journal: OpusRepository) {
-    suspend fun recover(): PracticeState? = db.practiceDao().draft()?.let {
+class PracticeRepository(private val db: OpusDatabase, private val journal: OpusRepository) : com.opus.piano.practice.PracticePersistence {
+    override suspend fun recoveryData(): String? = db.practiceDao().draft()?.payload
+    override suspend fun recover(): PracticeState? = db.practiceDao().draft()?.let {
         decode(it.payload).let { s -> s.copy(running = false, status = if (s.status == "Review") "Review" else "Interrupted", timingQuality = "Incomplete", ready = true) }
     }
-    suspend fun checkpoint(state: PracticeState) {
+    override suspend fun checkpoint(state: PracticeState) {
         db.practiceDao().checkpoint(PracticeDraft(payload = encode(state), updatedAt = System.currentTimeMillis()))
     }
-    suspend fun clear() = db.practiceDao().clearDraft()
-    suspend fun complete(s: PracticeState): Long = db.withTransaction {
+    override suspend fun clear() = db.practiceDao().clearDraft()
+    override suspend fun complete(state: PracticeState): Long = db.withTransaction {
+        val s = state
         db.practiceDao().completed(s.token)?.let { db.practiceDao().clearDraft(); return@withTransaction it.id }
         val parts = s.parts // Keep note-only entries and their stable interval indexes.
         journal.complete(PracticeSession(pieceId = null, pieceTitle = parts.filter { it.durationMillis > 0 || it.notes.isNotBlank() }.joinToString(" · ") { it.title }.ifBlank { "Practice notes" },

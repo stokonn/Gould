@@ -130,14 +130,12 @@ internal fun alreadyAdded(work: CatalogWork, composer: CatalogComposer?, pieces:
 @Composable internal fun WorkCard(work: CatalogWork, composer: CatalogComposer?, added: Boolean, adding: Boolean, open: () -> Unit, add: () -> Unit) {
     Surface(onClick = open, shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
         Row(Modifier.fillMaxWidth().padding(start = 16.dp, top = 10.dp, bottom = 10.dp, end = 4.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                Text(work.title, style = MaterialTheme.typography.titleMedium, maxLines = 2, overflow = TextOverflow.Ellipsis)
-                if (composer != null) Text(composer.name, color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.bodySmall)
-                Text(listOf(work.catalogLabel, work.genre, if (added) L.s(R.string.msg_in_repertoire_b185) else "").filter { it.isNotBlank() }.joinToString(" · "), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            }
+            PieceRowContent(work.title,composer?.name.orEmpty(),
+                listOf(work.catalogLabel.takeUnless { catalogText(work.title).contains(catalogText(it)) }.orEmpty(),work.genre,if(added) L.s(R.string.msg_in_repertoire_b185) else "").filter { it.isNotBlank() }.joinToString(" · "),
+                Modifier.weight(1f))
             IconButton(onClick = add, enabled = !added && !adding && composer != null) {
                 if (adding) CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp)
-                else androidx.compose.animation.AnimatedContent(added, label = "Repertoire addition") { isAdded -> Icon(if (isAdded) Icons.Outlined.Check else Icons.Outlined.Add, if (added) "Already in repertoire" else L.s(R.string.msg_add_work_title_to_repertoire_326f, (work.title)), tint = if (isAdded) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.primary) }
+                else androidx.compose.animation.AnimatedContent(added, label = "Repertoire addition") { isAdded -> Icon(if (isAdded) Icons.Outlined.Check else Icons.Outlined.Add, if (added) L.s(R.string.msg_already_in_repertoire_eac8) else L.s(R.string.msg_add_work_title_to_repertoire_326f, (work.title)), tint = if (isAdded) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.primary) }
             }
         }
     }

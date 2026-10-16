@@ -1,0 +1,49 @@
+# Goldberg 0.9.1 changed files
+
+- `CHANGELOG.md`
+- `README.md`
+- `app/build.gradle.kts`
+- `app/src/main/AndroidManifest.xml`
+- `app/src/main/java/com/opus/piano/data/CatalogRepository.kt`
+- `app/src/main/java/com/opus/piano/data/PracticeData.kt`
+- `app/src/main/java/com/opus/piano/data/PracticeRepository.kt`
+- `app/src/main/java/com/opus/piano/i18n/JournalFormatting.kt`
+- `app/src/main/java/com/opus/piano/practice/PracticeCoordinator.kt`
+- `app/src/main/java/com/opus/piano/practice/PracticePersistence.kt`
+- `app/src/main/java/com/opus/piano/service/SmartPracticeService.kt`
+- `app/src/main/java/com/opus/piano/ui/BadgesScreens.kt`
+- `app/src/main/java/com/opus/piano/ui/BalancedHome.kt`
+- `app/src/main/java/com/opus/piano/ui/CatalogScreens.kt`
+- `app/src/main/java/com/opus/piano/ui/ComposerScreen.kt`
+- `app/src/main/java/com/opus/piano/ui/CompositionScreen.kt`
+- `app/src/main/java/com/opus/piano/ui/CustomizePanel.kt`
+- `app/src/main/java/com/opus/piano/ui/EditorialComponents.kt`
+- `app/src/main/java/com/opus/piano/ui/OpusApp.kt`
+- `app/src/main/java/com/opus/piano/ui/PracticeHistoryScreen.kt`
+- `app/src/main/java/com/opus/piano/ui/PracticeReviewScreen.kt`
+- `app/src/main/java/com/opus/piano/ui/PracticeScreen.kt`
+- `app/src/main/java/com/opus/piano/ui/ProfileScreen.kt`
+- `app/src/main/java/com/opus/piano/ui/RecordingsScreen.kt`
+- `app/src/main/java/com/opus/piano/ui/RepertoireScreen.kt`
+- `app/src/main/java/com/opus/piano/ui/Theme.kt`
+- `app/src/main/res/drawable-night-nodpi/ic_goldberg_classic_foreground.png`
+- `app/src/main/res/drawable-nodpi/ic_goldberg_classic_foreground.png`
+- `app/src/main/res/drawable-nodpi/ic_goldberg_classic_monochrome.png`
+- `app/src/main/res/mipmap-anydpi/ic_goldberg.xml`
+- `app/src/main/res/values-cs/strings.xml`
+- `app/src/main/res/values-v31/styles.xml`
+- `app/src/main/res/values/strings.xml`
+- `app/src/test/java/com/opus/piano/JournalFormattingTest.kt`
+- `app/src/test/java/com/opus/piano/PracticeFailureTest.kt`
+- `docs/MODIFIED-FILES-0.9.1.md`
+- `docs/RELEASE-0.9.1.md`
+- `docs/TESTED-SOURCE-0.9.1.json`
+- `docs/VERIFICATION-0.9.1.md`
+- `docs/icon-0.9.1/README_CZ.txt`
+- `docs/icon-0.9.1/goldberg_foreground_dark.svg`
+- `docs/icon-0.9.1/goldberg_foreground_light.svg`
+- `docs/icon-0.9.1/goldberg_monochrome.svg`
+- `scripts/check_history_paging.py`
+- `scripts/verify_quality_apk.py`
+
+The pre-existing untracked RELEASE_NOTES.md is unchanged and excluded.

@@ -35,8 +35,8 @@ private fun journalTypography(system: Boolean): Typography {
         TextStyle(fontFeatureSettings = "tnum", fontFamily = if (heading) serif else sans, fontSize = size.sp, lineHeight = height.sp, fontWeight = weight)
     return Typography(
         displayLarge = text(44, 52), displayMedium = text(38, 46), displaySmall = text(32, 40),
-        headlineLarge = text(32, 40, true), headlineMedium = text(28, 36, true), headlineSmall = text(26, 34, true),
-        titleLarge = text(24, 32, true, FontWeight.Medium), titleMedium = text(17, 25, weight = FontWeight.Medium), titleSmall = text(15, 22, weight = FontWeight.Medium),
+        headlineLarge = text(28, 36, true), headlineMedium = text(26, 34, true), headlineSmall = text(24, 32, true),
+        titleLarge = text(22, 30, true, FontWeight.Medium), titleMedium = text(17, 25, weight = FontWeight.Medium), titleSmall = text(15, 22, weight = FontWeight.Medium),
         bodyLarge = text(16, 25), bodyMedium = text(14, 22), bodySmall = text(12, 18),
         labelLarge = text(14, 20, weight = FontWeight.Medium), labelMedium = text(12, 18, weight = FontWeight.Medium), labelSmall = text(11, 16, weight = FontWeight.Medium)
     )

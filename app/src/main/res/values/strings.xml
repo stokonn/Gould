@@ -694,4 +694,15 @@
   <string name="daily_totals">Daily totals</string>
   <string name="preferred_interpretation">Preferred interpretation</string>
   <string name="label_instrumentation">Instrumentation</string>
+    <string name="practice_request_unavailable">Practice is not ready for this action. Open Practice and retry.</string>
+    <string name="practice_start_failed">Practice could not start because the draft could not be saved. Retry when storage is available.</string>
+    <string name="practice_unsaved">Changes are not saved. Keep Goldberg open and retry saving.</string>
+    <string name="recovery_export">Export original recovery data</string>
+    <string name="recovery_failed">Your unfinished practice could not be recovered. The original data is preserved. Retry, or export it before starting fresh.</string>
+    <string name="recovery_fresh">Start fresh after export</string>
+    <string name="recovery_confirm">The exported file contains the original recovery data. Clear this draft and start a fresh session? Keep the exported file for recovery.</string>
+    <string name="practice_expand">Pieces &amp; notes</string>
+<string name="practice_retry">Retry</string>
+<string name="catalogue_saved_refresh_failed">Refresh failed. Showing the saved catalogue.</string>
+<string name="biography_saved_refresh_failed">Showing the saved biography; refresh failed.</string>
 </resources>

@@ -10,20 +10,23 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.window.Dialog
 import com.opus.piano.OpusApplication
 import com.opus.piano.data.*
 import kotlinx.coroutines.*
 
 @Composable internal fun PracticeReviewScreen(timer: TimerState, model: OpusViewModel) {
+    val unsaved by model.practice.unsaved.collectAsStateWithLifecycle()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(20.dp),verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Heading(L.s(R.string.msg_a_moment_to_reflect_6277),L.s(R.string.msg_practice_review_6b11),L.s(R.string.msg_your_draft_is_saved_locally_until_you_save_o_0e7a))
+        if (unsaved) { Text(L.s(R.string.practice_unsaved),color=MaterialTheme.colorScheme.error);TextButton(onClick={model.practice.retryPersistence()}) { Text(L.s(R.string.practice_retry)) } }
         Text(L.s(R.string.msg_elapsed_duration_timer_wallelapsed_credited_b95d, (duration(timer.wallElapsed)), (duration(timer.elapsed))))
         if (timer.mode != "Manual") Text(L.s(R.string.msg_detected_active_duration_timer_detectedactiv_5cb7, (duration(timer.detectedActive)), (L.fixed(timer.mode))))
         Text(L.s(R.string.msg_timing_timer_timingquality_0713, (L.fixed(timer.timingQuality))))
-        timer.intervals.filter { it.creditedMillis == 0L }.groupBy { it.reason }.forEach { (reason,rows) -> Text(L.s(R.string.msg_reason_duration_rows_sumof_it_endmillis_it_s_13b7, (reason), (duration(rows.sumOf { it.endMillis-it.startMillis })))) }
+        timer.intervals.filter { it.creditedMillis == 0L }.groupBy { it.reason }.forEach { (reason,rows) -> Text(L.s(R.string.msg_reason_duration_rows_sumof_it_endmillis_it_s_13b7, (L.fixed(reason)), (duration(rows.sumOf { it.endMillis-it.startMillis })))) }
         timer.parts.forEachIndexed { i,p ->
-            Text("${p.title} · ${duration(p.durationMillis)}")
+            Text("${p.displayTitle} · ${duration(p.durationMillis)}")
             OutlinedTextField(p.notes,{ model.note(i,it) },label = { Text(L.s(R.string.msg_piece_session_notes_ce2f)) },modifier = Modifier.fillMaxWidth())
         }
         OutlinedTextField(timer.notes,{ text -> model.practice.command { sessionNotes(text,state.value.reflection) } },label = { Text(L.s(R.string.msg_session_notes_a84f)) },modifier = Modifier.fillMaxWidth())
@@ -50,9 +53,9 @@ import kotlinx.coroutines.*
                 Text(L.s(R.string.msg_credited_duration_session_durationmillis_ses_1cd0, (duration(session.durationMillis)), (L.fixed(session.practiceMode))))
                 Text(session.elapsedMillis?.let { L.s(R.string.msg_elapsed_duration_it_session_timingquality_abc4, (duration(it)), (L.fixed(session.timingQuality))) } ?: L.s(R.string.msg_elapsed_and_detected_time_were_not_measured_79ee))
                 session.detectedActiveMillis?.let { Text(L.s(R.string.msg_detected_active_duration_it_c417, (duration(it)))) }
-                intervals.filter { it.creditedMillis == 0L }.groupBy { it.reason }.forEach { (reason,rows) -> Text(L.s(R.string.msg_reason_duration_rows_sumof_it_endmillis_it_s_13b7, (reason), (duration(rows.sumOf { it.endMillis-it.startMillis })))) }
+                intervals.filter { it.creditedMillis == 0L }.groupBy { it.reason }.forEach { (reason,rows) -> Text(L.s(R.string.msg_reason_duration_rows_sumof_it_endmillis_it_s_13b7, (L.fixed(reason)), (duration(rows.sumOf { it.endMillis-it.startMillis })))) }
                 parts.forEachIndexed { i,p ->
-                    Text("${p.title} · ${duration(p.durationMillis)}")
+                    Text("${p.displayTitle} · ${duration(p.durationMillis)}")
                     OutlinedTextField(p.notes,{ text -> parts = parts.mapIndexed { j,row -> if (i==j) row.copy(notes=text.take(10000)) else row } },label = { Text(L.s(R.string.msg_piece_session_notes_ce2f)) })
                 }
                 OutlinedTextField(notes,{ notes=it.take(10000) },label = { Text(L.s(R.string.msg_session_notes_a84f)) })

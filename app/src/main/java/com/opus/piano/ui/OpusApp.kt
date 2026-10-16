@@ -121,9 +121,9 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 composable(Destination.OVERVIEW.name) {
                     val settings by profile.settings.collectAsStateWithLifecycle()
                     BalancedHome(library, settings.username, {
-                        if (model.timer.value.token.isEmpty()) { model.select(null); (context.applicationContext as com.opus.piano.OpusApplication).practiceRequest.value = "start" }
+                        if (model.timer.value.token.isEmpty()) model.practice.command { if (state.value.token.isEmpty()) { select(null); (context.applicationContext as com.opus.piano.OpusApplication).practiceRequest.value = "start" } else notice.value=L.s(R.string.pending_session) } else model.practice.notice.value=L.s(R.string.pending_session)
                         nav.selectTopLevel("PRACTICE")
-                    }, { if (model.timer.value.token.isEmpty()) (context.applicationContext as com.opus.piano.OpusApplication).practiceRequest.value = "choose"; nav.selectTopLevel("PRACTICE") }, { nav.navigate("piece/$it") }, { nav.navigate("history") })
+                    }, { (context.applicationContext as com.opus.piano.OpusApplication).practiceRequest.value = "choose"; nav.selectTopLevel("PRACTICE") }, { nav.navigate("piece/$it") }, { nav.navigate("history") })
                 }
                 composable(SETTINGS_ROUTE) { SettingsScreen(profile, model, { replay = true }) { nav.popBackStack() } }
                 composable(Destination.HOME.name) { ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }) { nav.navigate("badge/$it") } }
@@ -143,23 +143,21 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 composable("catalog") { CatalogScreen(catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("catalog/work/$it") }, { nav.navigate("piece/$it") }) }
                 composable("catalog/composer/{id}") { route -> ComposerScreen(route.arguments?.getString("id").orEmpty(), catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/work/$it") }) }
                 composable("catalog/work/{id}") { route ->
-                    CompositionScreen(route.arguments?.getString("id"), null, catalog, experience, library, model, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("recordings/$it") }) { piece ->
+                    CompositionScreen(route.arguments?.getString("id"), null, catalog, experience, library, model, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("recordings/$it") }, { id, source -> if (id != null) nav.navigate("history/piece/$id") else if (source != null) nav.navigate("history/catalog/${android.net.Uri.encode(source)}") }) { piece ->
                         if (model.timer.value.token.isNotEmpty()) {
                             model.practice.notice.value=L.s(R.string.pending_session)
                         } else {
-                            model.select(piece)
-                            (context.applicationContext as com.opus.piano.OpusApplication).practiceRequest.value="start"
+                            model.practice.command { if (state.value.token.isEmpty()) { select(piece); (context.applicationContext as com.opus.piano.OpusApplication).practiceRequest.value="start" } else notice.value=L.s(R.string.pending_session) }
                         }
                         nav.navigate(Destination.PRACTICE.name) { launchSingleTop = true }
                     }
                 }
                 composable("piece/{id}") { route ->
-                    CompositionScreen(null, route.arguments?.getString("id")?.toLongOrNull(), catalog, experience, library, model, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("recordings/$it") }) { piece ->
+                    CompositionScreen(null, route.arguments?.getString("id")?.toLongOrNull(), catalog, experience, library, model, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("recordings/$it") }, { id, source -> if (id != null) nav.navigate("history/piece/$id") else if (source != null) nav.navigate("history/catalog/${android.net.Uri.encode(source)}") }) { piece ->
                         if (model.timer.value.token.isNotEmpty()) {
                             model.practice.notice.value=L.s(R.string.pending_session)
                         } else {
-                            model.select(piece)
-                            (context.applicationContext as com.opus.piano.OpusApplication).practiceRequest.value="start"
+                            model.practice.command { if (state.value.token.isEmpty()) { select(piece); (context.applicationContext as com.opus.piano.OpusApplication).practiceRequest.value="start" } else notice.value=L.s(R.string.pending_session) }
                         }
                         nav.navigate(Destination.PRACTICE.name) { launchSingleTop = true }
                     }
@@ -169,8 +167,9 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                     val title = if (key.startsWith("catalog:")) catalogData.works.firstOrNull { it.id == key.substringAfter(':') }?.title else library.pieces.firstOrNull { it.id.toString() == key.substringAfter(':') }?.title
                     RecordingsScreen(key, title ?: L.s(R.string.reference_shelf), experience) { nav.popBackStack() }
                 }
-                composable("history") { PracticeHistoryScreen(library, { nav.popBackStack() }) }
-                composable("history/piece/{id}") { e -> PracticeHistoryScreen(library, { nav.popBackStack() }, e.arguments?.getString("id")?.toLongOrNull()) }
+                composable("history") { PracticeHistoryScreen({ nav.popBackStack() }) }
+                composable("history/piece/{id}") { e -> PracticeHistoryScreen({ nav.popBackStack() }, e.arguments?.getString("id")?.toLongOrNull()) }
+                composable("history/catalog/{id}") { e -> PracticeHistoryScreen({ nav.popBackStack() }, catalogId=e.arguments?.getString("id")) }
                 composable("badge/{id}") { route -> BadgeDetailScreen(route.arguments?.getString("id").orEmpty(), experience) { nav.popBackStack() } }
                 composable(Destination.PRACTICE.name) { PracticeScreen(library, model, profile, motionScale != 0f) }
                 composable(Destination.BADGES.name) { BadgesScreen(experience) { nav.navigate("badge/$it") } }
@@ -191,13 +190,21 @@ private enum class Destination(val label: String, val icon: ImageVector) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp), content = content)
     }
 }
+/** Shared compact text layout for Home, repertoire and catalogue rows. */
+@Composable internal fun PieceRowContent(title: String, composer: String, metadata: String = "", modifier: Modifier = Modifier) {
+    Column(modifier, verticalArrangement=Arrangement.spacedBy(JournalSpace.tiny)) {
+        Text(title,style=MaterialTheme.typography.titleMedium,maxLines=3,overflow=TextOverflow.Ellipsis)
+        if (composer.isNotBlank()) Text(composer,style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
+        if (metadata.isNotBlank()) Text(metadata,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+    }
+}
 @Composable internal fun SectionTitle(title: String) { Text(title, style = MaterialTheme.typography.titleLarge) }
 internal fun duration(millis: Long): String {
     val seconds = millis / 1000
     return "%02d:%02d:%02d".format(seconds / 3600, seconds / 60 % 60, seconds % 60)
 }
 private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).atZone(ZoneId.systemDefault()).toLocalDate()
-@Composable internal fun SessionRow(session: PracticeSession, parts: List<SessionPart> = emptyList()) {
+@Composable internal fun SessionRow(session: PracticeSession, parts: List<SessionPart> = emptyList(), displayMillis: Long = session.durationMillis) {
     var editNotes by remember { mutableStateOf(false) }
     if (editNotes) HistoricalReview(session, parts) { editNotes = false }
     var expanded by rememberSaveable(session.id) { mutableStateOf(false) }
@@ -206,16 +213,16 @@ private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).
             Icon(Icons.Outlined.MusicNote, null, tint = MaterialTheme.colorScheme.primary)
             Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {
-                Text(session.pieceTitle, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(if (parts.isNotEmpty()) parts.filter { it.durationMillis > 0 || it.notes.isNotBlank() }.joinToString(" · ") { it.displayTitle }.ifBlank { session.pieceTitle } else if (session.pieceId == null && session.pieceTitle == "Free practice") L.fixed("Free practice") else session.pieceTitle, maxLines = 2, overflow = TextOverflow.Ellipsis)
                 Text(Instant.ofEpochMilli(session.completedAt).atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("d MMM · HH:mm").withLocale(L.locale)), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
-            Text(duration(session.durationMillis), color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelLarge)
+            Text(duration(displayMillis), color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelLarge)
         }
         TextButton(onClick = { editNotes = true }) { Text(L.s(R.string.msg_review_edit_session_notes_c195)) }
         if (parts.isNotEmpty()) {
             TextButton(onClick = { expanded = !expanded }) { Text(if (expanded) L.s(R.string.msg_hide_summary_c10e) else L.s(R.string.msg_session_summary_f941)) }
             if (expanded) parts.forEach { part ->
-                Text("${part.title} · ${duration(part.durationMillis)}")
+                Text("${part.displayTitle} · ${duration(part.durationMillis)}")
                 if (part.notes.isNotBlank()) Text(part.notes, style = MaterialTheme.typography.bodyMedium)
             }
         }
@@ -242,7 +249,7 @@ private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).
     var metadataOpen by rememberSaveable { mutableStateOf(false) }
     var saving by remember { mutableStateOf(false) }
     Dialog(onDismissRequest = { if (!saving) dismiss() }) {
-        Surface(shape = RoundedCornerShape(24.dp)) {
+        Surface(shape = MaterialTheme.shapes.large) {
             Column(Modifier.imePadding().verticalScroll(rememberScrollState()).padding(24.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
                 Text(L.s(R.string.msg_your_repertoire_a31f), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
                 SectionTitle(if (piece == null) L.s(R.string.msg_a_new_beginning_a8c8) else L.s(R.string.msg_refine_the_details_d143))
@@ -302,7 +309,7 @@ private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).
     }
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text(L.s(R.string.msg_learning_stage_piece_status_label_3e17, (piece.status.label)), color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelMedium)
-        LinearProgressIndicator(progress = { progress }, modifier = Modifier.fillMaxWidth().height(3.dp), color = MaterialTheme.colorScheme.primary, trackColor = Gold.copy(alpha = .12f))
+        LinearProgressIndicator(progress = { progress }, modifier = Modifier.fillMaxWidth().height(3.dp), color = MaterialTheme.colorScheme.primary, trackColor = MaterialTheme.colorScheme.primary.copy(alpha = .12f))
     }
 }
 
@@ -323,7 +330,7 @@ private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).
                     contentDescription = L.s(R.string.msg_day_format_datetimeformatter_ofpattern_eeee_a1cb, (day.format(DateTimeFormatter.ofPattern("EEEE, d MMMM").withLocale(L.locale))), (totals[index] / 60000))
                 }, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Box(Modifier.fillMaxWidth().height(88.dp), contentAlignment = Alignment.BottomCenter) {
-                        Box(Modifier.widthIn(max = 30.dp).fillMaxWidth().height(88.dp).background(Gold.copy(alpha = .04f), RoundedCornerShape(8.dp)))
+                        Box(Modifier.widthIn(max = 30.dp).fillMaxWidth().height(88.dp).background(MaterialTheme.colorScheme.primary.copy(alpha = .04f), RoundedCornerShape(8.dp)))
                         Box(Modifier.widthIn(max = 30.dp).fillMaxWidth().height((4 + 84 * totals[index].toFloat() / peak).dp)
                             .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(8.dp)))
                     }

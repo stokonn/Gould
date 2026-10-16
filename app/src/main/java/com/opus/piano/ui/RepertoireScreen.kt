@@ -50,7 +50,7 @@ import com.opus.piano.data.*
     fun options(values: List<String>) = listOf("All") + values.filter { it.isNotBlank() }.distinctBy(::catalogText).sortedBy(::catalogText)
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item { Row(verticalAlignment=Alignment.CenterVertically) {
-            Text(L.s(R.string.msg_my_pieces_f17b),style=MaterialTheme.typography.headlineMedium,modifier=Modifier.weight(1f))
+            Spacer(Modifier.weight(1f))
             Box { IconButton(onClick={addMenu=true}) { Icon(Icons.Outlined.Add,L.s(R.string.msg_add_piece_2cfc)) }
                 DropdownMenu(addMenu,{addMenu=false}) {
                     DropdownMenuItem(text={Text(L.s(R.string.msg_discover_in_catalogue_28f0))},onClick={addMenu=false;explore()})
@@ -74,16 +74,14 @@ import com.opus.piano.data.*
             }
         }
         if (state.loading) item { EditorialSkeleton() }
-        if (!state.loading && pieces.isEmpty()) item { Panel { SectionTitle(if (state.pieces.isEmpty()) L.s(R.string.msg_your_collection_begins_here_ca6c) else L.s(R.string.msg_no_matching_compositions_391a)); Text(L.s(R.string.msg_discover_a_work_or_add_one_manually_change_t_fb4a), color = MaterialTheme.colorScheme.onSurfaceVariant) } }
+        if (!state.loading && pieces.isEmpty()) item { Panel { SectionTitle(if (state.pieces.isEmpty()) L.s(R.string.msg_your_collection_begins_here_ca6c) else L.s(R.string.msg_no_matching_compositions_391a)); Text(L.s(R.string.msg_discover_a_work_or_add_one_manually_change_t_fb4a), color = MaterialTheme.colorScheme.onSurfaceVariant); TextButton(onClick=explore) { Text(L.s(R.string.msg_discover_in_catalogue_28f0)) } } }
         items(pieces, key = { it.id }) { piece ->
             Surface(modifier = Modifier.animateItem(), onClick = { detail(piece.id) }, shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.background) {
                 Column(Modifier.padding(horizontal = 12.dp, vertical = if(appearance.density=="Compact") 8.dp else 18.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                            Text(piece.title, style = MaterialTheme.typography.titleLarge, maxLines = 5, overflow = TextOverflow.Ellipsis)
-                            Text(piece.composer, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
-                            works[piece.catalogWorkId]?.catalogLabel?.takeIf { it.isNotBlank() && !catalogText(piece.title).contains(catalogText(it)) }?.let { Text(it, style = MaterialTheme.typography.bodySmall) }
-                        }
+                        PieceRowContent(piece.title,piece.composer,
+                            works[piece.catalogWorkId]?.catalogLabel?.takeIf { it.isNotBlank() && !catalogText(piece.title).contains(catalogText(it)) }.orEmpty(),
+                            Modifier.weight(1f))
                         Box {
                             var expanded by remember { mutableStateOf(false) }
                             IconButton(onClick = { expanded = true }) { Icon(Icons.Outlined.MoreVert, L.s(R.string.msg_actions_for_piece_title_311c, (piece.title))) }
@@ -94,7 +92,7 @@ import com.opus.piano.data.*
                         }
                     }
                     Text("${L.fixed(piece.status.label)}${practiceTotals[piece.id]?.let { " · ${L.quantity(R.plurals.minutes_count,(it/60000).toInt())}" }.orEmpty()}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    LinearProgressIndicator(progress = { learningProgress(piece.status) }, modifier = Modifier.fillMaxWidth().height(2.dp), trackColor = Gold.copy(alpha = .1f))
+                    LinearProgressIndicator(progress = { learningProgress(piece.status) }, modifier = Modifier.fillMaxWidth().height(2.dp), trackColor = MaterialTheme.colorScheme.primary.copy(alpha = .1f))
                 }
             }
         }

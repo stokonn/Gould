@@ -44,7 +44,7 @@ import com.opus.piano.data.*
         Text(L.s(R.string.msg_search_performances_and_scores_e56b), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             StudyService.entries.forEach { service ->
-                val tint = when (service) { StudyService.SPOTIFY -> Color(0xFF8DB99B); StudyService.YOUTUBE -> Color(0xFFCD9990); StudyService.IMSLP -> Gold; StudyService.MUSESCORE -> Color(0xFF9AACCB) }
+                val tint = MaterialTheme.colorScheme.primary
                 OutlinedButton(onClick = { open(RecordingLinks.search(service, composer, title, catalogue)) }) {
                     Icon(if (service == StudyService.SPOTIFY || service == StudyService.YOUTUBE) Icons.Outlined.PlayCircleOutline else Icons.AutoMirrored.Outlined.MenuBook, null, tint = tint, modifier = Modifier.size(18.dp))
                     Spacer(Modifier.width(6.dp)); Text(service.label, color = tint)
@@ -84,7 +84,7 @@ import com.opus.piano.data.*
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     TextButton(onClick = { open(item.url) }) { Text(L.s(R.string.msg_open_cf9b)) }
                     IconButton(onClick = { model.prefer(item.id) }) { Icon(if (item.preferred) Icons.Outlined.Star else Icons.Outlined.StarOutline, if (item.preferred) L.s(R.string.preferred_interpretation) else L.s(R.string.msg_mark_preferred_cbfe), tint = MaterialTheme.colorScheme.primary) }
-                    IconButton(onClick = { editingId = item.id; editor = true }) { Icon(Icons.Outlined.Edit, "Edit interpretation") }
+                    IconButton(onClick = { editingId = item.id; editor = true }) { Icon(Icons.Outlined.Edit, L.s(R.string.msg_edit_interpretation_6f23)) }
                     IconButton(onClick = { deleting = item }) { Icon(Icons.Outlined.DeleteOutline, L.s(R.string.msg_remove_interpretation_019c)) }
                 }
                 Text(L.s(R.string.msg_user_saved_link_not_independently_verified_bf46), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)

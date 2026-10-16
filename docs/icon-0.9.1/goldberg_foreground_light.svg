@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="108" height="108">
+    <defs>
+     <linearGradient id="lid" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C99750"/><stop offset="0.45" stop-color="#F1D3A0"/><stop offset="1" stop-color="#C99750"/></linearGradient>
+     <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FBE1B4"/><stop offset="0.36" stop-color="#C48C43"/><stop offset="0.72" stop-color="#F8CF80"/><stop offset="1" stop-color="#8D5A2E"/></linearGradient>
+     <linearGradient id="whitekey" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#FFF6D9"/><stop offset="0.75" stop-color="#FFF8EA"/><stop offset="1" stop-color="#D9CAB6"/></linearGradient>
+     <linearGradient id="blackkey" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#080808"/><stop offset="0.38" stop-color="#29231F"/><stop offset="0.9" stop-color="#050505"/></linearGradient>
+     <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="white" stop-opacity="0.18"/><stop offset="0.7" stop-color="white" stop-opacity="0"/></linearGradient>
+     <clipPath id="keyboard"><path d="M32 54 H71 Q79 54 79 63 V73 Q79 79 73 79 H35 Q29 79 29 72 V56 Z"/></clipPath>
+    </defs>
+    <!-- piano outer grand contour and subtle shadow -->
+    <path d="M32 32 Q39 30 44 34 Q48 36 52 43 C56 48 62 52 70 53 Q80 54 80 64 V73 Q80 81 72 81 H35 Q28 81 28 73 V37 Q28 33 32 32 Z" fill="#000000" opacity="0.10" transform="translate(0.8 1.1)"/>
+    <path d="M32 32 Q39 30 44 34 Q48 36 52 43 C56 48 62 52 70 53 Q80 54 80 64 V73 Q80 81 72 81 H35 Q28 81 28 73 V37 Q28 33 32 32 Z" fill="url(#edge)"/>
+    <path d="M33 34 Q40 32 44 36 C50 42 56 53 70 54 H71 Q78 55 78 64 V72 Q78 79 72 79 H35 Q30 79 30 73 V38 Q30 35 33 34 Z" fill="url(#lid)"/>
+    <!-- piano keyboard cream base -->
+    <path d="M30 54 H72 Q78 55 78 63 V73 Q78 79 72 79 H35 Q30 79 30 73 Z" fill="url(#whitekey)"/>
+    <g clip-path="url(#keyboard)" stroke="#7A4F2E" stroke-width="0.55">
+      <path d="M36.9 54 V79 M43.5 54 V79 M50.2 54 V79 M56.9 54 V79 M63.6 54 V79 M70.3 54 V79"/>
+    </g>
+    <path d="M30 54 H71 Q78 54 78 62" fill="none" stroke="#A66F34" stroke-width="1.15"/>
+    <!-- harpsichord's grouped black keys -->
+    <g fill="url(#blackkey)" stroke="#A17642" stroke-width="0.4">
+      <path d="M34.6 54 H39.1 V66.8 Q39.1 67.8 38.1 67.8 H35.6 Q34.6 67.8 34.6 66.8 Z"/>
+      <path d="M41.3 54 H45.8 V66.8 Q45.8 67.8 44.8 67.8 H42.3 Q41.3 67.8 41.3 66.8 Z"/>
+      <path d="M54.8 54 H59.3 V66.8 Q59.3 67.8 58.3 67.8 H55.8 Q54.8 67.8 54.8 66.8 Z"/>
+      <path d="M61.5 54 H66 V66.8 Q66 67.8 65 67.8 H62.5 Q61.5 67.8 61.5 66.8 Z"/>
+    </g>
+    <path d="M34.7 54 H38.9 M41.5 54 H45.6 M55 54 H59.1 M61.7 54 H65.8" stroke="#E0B77C" stroke-opacity="0.65" stroke-width="0.5"/>
+    <path d="M32 34 Q40 32 45 37 C53 48 60 53 70 54" fill="none" stroke="#FFE0AB" stroke-width="0.65" opacity="0.9"/>
+    <!-- soft 1E glass highlight integrated subtly without a baked icon square -->
+    <path d="M33 35 Q44 32 51 44 C55 49 59 51 64 52 Q49 52 31 66 V39 Z" fill="url(#glass)"/>
+    </svg>

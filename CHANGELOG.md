@@ -1,3 +1,10 @@
+# 0.9.1 Beta — The Quality Update
+
+- Durable practice startup, retryable failed recovery with unchanged-data export and separate fresh-session confirmation, bounded note checkpoints and explicit unsaved-state retry.
+- Compact shared typography and piece rows, collapsed Practice editing, dedicated Profile history, incremental database history with piece/catalogue attribution and Back navigation.
+- Czech/English display, accessibility-label and count fixes; theme-aware study controls; supplied Classic Piano adaptive, monochrome and splash artwork.
+- Schema 6 and compatible package/signing identity retained. Physical-device verification is waived for this Beta and remains unexecuted; see docs/RELEASE-0.9.1.md and docs/VERIFICATION-0.9.1.md.
+
 # 0.9.0 Beta — The Redesign Update
 
 - Unify Ivory/Nocturne colors, editorial typography, curated accents and global card styling.

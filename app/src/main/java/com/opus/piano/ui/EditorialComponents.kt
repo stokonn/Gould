@@ -31,7 +31,7 @@ import com.opus.piano.data.compactPracticeTime
             item {
                 Text(L.s(R.string.msg_time_well_spent_a467), style = MaterialTheme.typography.labelSmall)
                 Text(localizedPracticeTime(state.summary.totalMillis), style = MaterialTheme.typography.displayMedium.copy(fontFamily = MaterialTheme.typography.bodyLarge.fontFamily), color = MaterialTheme.colorScheme.primary)
-                Text(L.s(R.string.msg_state_sessions_count_com_opus_piano_data_ach_7ea4, (state.sessions.count(com.opus.piano.data.AchievementEngine::valid)), (state.pieces.size)), style = MaterialTheme.typography.bodyMedium)
+                Text("${L.quantity(R.plurals.sessions_count,state.sessions.count(com.opus.piano.data.AchievementEngine::valid))} · ${L.quantity(R.plurals.pieces_count,state.pieces.size)}", style = MaterialTheme.typography.bodyMedium)
                 Spacer(Modifier.height(16.dp)); HorizontalDivider()
             }
             item {

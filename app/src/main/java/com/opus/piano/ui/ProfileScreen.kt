@@ -63,8 +63,8 @@ import java.time.format.DateTimeFormatter
     val periodTime = remember(filtered) { filtered.sumOf { it.durationMillis } }
     val streak = remember(state.sessions, today, zone) { currentPracticeStreak(state.sessions, today, zone) }
     val partsBySession = state.summary.partsBySession
-    val totals = remember(filtered, state.summary.attributed) { val ids = filtered.map { it.id }.toSet(); state.summary.attributed.filter { it.id in ids }.groupBy { it.catalogWorkId?.let { id -> "catalog:$id" } ?: it.pieceId?.let { id -> "piece:$id" } ?: "free" }.values.map { entries -> entries.first().pieceTitle to entries.sumOf { it.durationMillis } }.sortedByDescending { it.second }.take(5) }
-    val showcased = remember(settings.badgeIds, badges) { settings.badgeIds.mapNotNull { id -> badges.firstOrNull { it.definition.id == id && it.unlocked } } }
+    val totals = remember(filtered, state.summary.attributed) { val ids = filtered.map { it.id }.toSet(); state.summary.attributed.filter { it.id in ids }.groupBy { it.catalogWorkId?.let { id -> "catalog:$id" } ?: it.pieceId?.let { id -> "piece:$id" } ?: "free" }.values.map { entries -> (if (entries.first().pieceId == null && entries.first().catalogWorkId == null && entries.first().pieceTitle == "Free practice") L.fixed("Free practice") else entries.first().pieceTitle) to entries.sumOf { it.durationMillis } }.sortedByDescending { it.second }.take(5) }
+    val showcased = remember(settings.badgeIds, badges) { settings.badgeIds.take(5).mapNotNull { id -> badges.firstOrNull { it.definition.id == id && it.unlocked } } }
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(horizontal = 20.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(20.dp)) {
         item {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(14.dp)) {
@@ -76,20 +76,20 @@ import java.time.format.DateTimeFormatter
                     Text(settings.username, style = MaterialTheme.typography.titleLarge, maxLines = 2, overflow = TextOverflow.Ellipsis)
                     TextButton(onClick = { edit = true }, contentPadding = PaddingValues(horizontal = 0.dp)) { Text(L.s(R.string.msg_edit_profile_cd28)) }
                 }
-                IconButton(onClick = settingsAction) { Icon(Icons.Outlined.Settings, "Settings") }
+                IconButton(onClick = settingsAction) { Icon(Icons.Outlined.Settings, L.fixed("Settings")) }
             }
         }
         item { FlowRow { TextButton(onClick=allBadges) { Text(L.s(R.string.msg_view_all_badges_06e1)) };TextButton(onClick=history) { Text(L.s(R.string.msg_practice_history_76e7)) } } }
         if (state.loading) item { EditorialSkeleton() }
         if (!state.loading) {
-        appearance.profileSections.filter { it !in appearance.hiddenProfile }.forEach { section -> when(section) {
+        appearance.profileSections.filter { it !in appearance.hiddenProfile && it != "history" }.forEach { section -> when(section) {
         "statistics" -> { item {
             val metrics = mapOf("time" to ("Total practice" to localizedPracticeTime(lifetime)), "pieces" to ("Repertoire pieces" to state.pieces.size.toString()), "sessions" to ("Practice sessions" to state.sessions.count(AchievementEngine::valid).toString()), "streak" to ("Current streak" to L.quantity(R.plurals.days_count,streak)))
             val ordered = StatisticLayout.normalize(settings.statistics.split(','))
             val primary = metrics.getValue(ordered.first())
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(primary.first.uppercase(), style = MaterialTheme.typography.labelSmall, modifier = Modifier.weight(1f))
+                    Text(L.fixed(primary.first).uppercase(L.locale), style = MaterialTheme.typography.labelSmall, modifier = Modifier.weight(1f))
                     TextButton(onClick = { customize = true }) { Text(L.s(R.string.msg_customize_239d)) }
                 }
                 Text(primary.second, style = MaterialTheme.typography.displayMedium.copy(fontFamily = MaterialTheme.typography.bodyLarge.fontFamily), color = MaterialTheme.colorScheme.primary)
@@ -143,11 +143,6 @@ import java.time.format.DateTimeFormatter
                 }
             }
         }
-        } "history" -> {
-        item { SectionTitle(L.s(R.string.msg_session_history_d7e9)) }
-        if (filtered.isEmpty()) item { Text(L.s(R.string.msg_no_sessions_in_this_period_yet_your_next_pra_e36b), color = MaterialTheme.colorScheme.onSurfaceVariant) }
-        items(filtered.take(limit), key = { "session:${it.id}" }) { SessionRow(it, partsBySession[it.id].orEmpty()) }
-        if (filtered.size > limit) item { OutlinedButton(onClick = { limit += 20 }) { Text(L.s(R.string.msg_show_older_sessions_97d8)) } }
         } } }
         }
     }
@@ -198,7 +193,7 @@ import java.time.format.DateTimeFormatter
             items(settings.badgeIds, key = { "selected:$it" }) { id ->
                 val index = settings.badgeIds.indexOf(id)
                 Column {
-                    Text(badges.firstOrNull { it.definition.id == id }?.definition?.name ?: id)
+                    Text(badges.firstOrNull { it.definition.id == id }?.definition?.localizedName ?: id)
                     Row {
                         IconButton(enabled = index > 0 && !busy, onClick = { val ids = settings.badgeIds.toMutableList(); java.util.Collections.swap(ids, index, index - 1); profile.showcase(ids) }) { Icon(Icons.Outlined.ArrowUpward, L.s(R.string.msg_move_badge_earlier_ba86)) }
                         IconButton(enabled = index < settings.badgeIds.lastIndex && !busy, onClick = { val ids = settings.badgeIds.toMutableList(); java.util.Collections.swap(ids, index, index + 1); profile.showcase(ids) }) { Icon(Icons.Outlined.ArrowDownward, L.s(R.string.msg_move_badge_later_aa77)) }
@@ -231,12 +226,13 @@ import java.time.format.DateTimeFormatter
             BoxWithConstraints {
                 val barWidth = maxOf(32.dp * fontScale, (maxWidth - 6.dp * (bins.size - 1)) / bins.size)
                 Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    bins.forEach { (label, time) ->
+                    bins.forEachIndexed { index, (label, time) ->
                         val display = when (period) {
                             "Year", "All time" -> runCatching { YearMonth.parse(label).format(DateTimeFormatter.ofPattern("MMM\nyy").withLocale(L.locale)) }.getOrDefault(label)
+                            "Week" -> com.opus.piano.i18n.JournalFormatting.weekday(today.minusDays((6-index).toLong()),L.locale)
                             else -> label
                         }
-                        Column(Modifier.width(barWidth).semantics(mergeDescendants = true) { contentDescription = L.s(R.string.msg_period_ending_label_duration_time_practice_ac3c, (label), (duration(time))) }, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Column(Modifier.width(barWidth).semantics(mergeDescendants = true) { contentDescription = L.s(R.string.msg_period_ending_label_duration_time_practice_ac3c, (display), (duration(time))) }, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             Box(Modifier.fillMaxWidth().height(100.dp).background(MaterialTheme.colorScheme.primary.copy(alpha = .05f), MaterialTheme.shapes.small), contentAlignment = Alignment.BottomCenter) {
                                 if (time > 0) Box(Modifier.fillMaxWidth().height(maxOf(2.dp, 100.dp * (time.toFloat() / peak))).background(MaterialTheme.colorScheme.primary, MaterialTheme.shapes.small))
                             }

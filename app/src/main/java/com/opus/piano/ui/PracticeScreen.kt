@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.opus.piano.service.SmartPracticeService
@@ -32,6 +33,27 @@ import com.opus.piano.service.SmartPracticeService
     var convert by remember { mutableStateOf(false) }
     var discard by remember { mutableStateOf(false) }
     var choose by remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(false) }
+    val failedRecovery by model.practice.recoveryFailed.collectAsStateWithLifecycle()
+    val unsaved by model.practice.unsaved.collectAsStateWithLifecycle()
+    val scope = rememberCoroutineScope()
+    var exported by remember { mutableStateOf<String?>(null) }
+    var fresh by remember { mutableStateOf(false) }
+    val export = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri ->
+        if (uri != null) scope.launch {
+            try {
+                val raw = requireNotNull(model.practice.recoveryData())
+                kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+                    requireNotNull(context.contentResolver.openOutputStream(uri, "wt")).bufferedWriter().use { it.write(raw) }
+                }
+                exported = raw
+            } catch (c: kotlinx.coroutines.CancellationException) { throw c }
+            catch (_: Exception) { model.practice.notice.value = L.s(R.string.practice_unsaved) }
+        }
+    }
+    if (fresh) AlertDialog(onDismissRequest={fresh=false},title={Text(L.s(R.string.recovery_fresh))},text={Text(L.s(R.string.recovery_confirm))},
+        confirmButton={TextButton(onClick={exported?.let { model.practice.freshAfterExport(it) };fresh=false}) { Text(L.s(R.string.recovery_fresh)) }},
+        dismissButton={TextButton(onClick={fresh=false}) { Text(L.s(R.string.msg_cancel_77df)) }})
     fun startSmart() {
         SmartPracticeService.start(context)
     }
@@ -42,18 +64,21 @@ import com.opus.piano.service.SmartPracticeService
     fun start() {
         if (smart) privacy = true else model.practice.command { start(false) }
     }
-    LaunchedEffect(request,timer.ready) {
-        if(request.isNotEmpty() && timer.ready) {
+    LaunchedEffect(request,timer.ready,failedRecovery) {
+        if(request.isNotEmpty() && (timer.ready || failedRecovery)) {
             app.practiceRequest.value=""
-            if(timer.token.isEmpty()) {
-                if(request=="choose") choose=true
-                else if(settings.smartEnabled) { smart=true;privacy=true } else model.practice.command { start(false) }
+            when {
+                failedRecovery || timer.status == "Review" -> model.practice.notice.value=L.s(R.string.practice_request_unavailable)
+                request=="choose" -> { expanded=true;choose=true }
+                timer.token.isNotEmpty() -> model.practice.notice.value=L.s(R.string.pending_session)
+                settings.smartEnabled -> { smart=true;privacy=true }
+                else -> model.practice.command { start(false) }
             }
         }
     }
     if (timer.status == "Review") { PracticeReviewScreen(timer,model); return }
     Scaffold(bottomBar={
-        Column(Modifier.fillMaxWidth().padding(horizontal=20.dp,vertical=8.dp),verticalArrangement=Arrangement.spacedBy(4.dp)) {
+        Column(Modifier.fillMaxWidth().imePadding().padding(horizontal=20.dp,vertical=8.dp),verticalArrangement=Arrangement.spacedBy(4.dp)) {
             Button(onClick={
                 if(timer.running) model.practice.command { pause() }
                 else if(timer.token.isNotEmpty() && timer.smart!=smart) convert=true else start()
@@ -62,7 +87,18 @@ import com.opus.piano.service.SmartPracticeService
         }
     }) { padding ->
     Column(Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState()).padding(20.dp),verticalArrangement=Arrangement.spacedBy(20.dp)) {
+        if (failedRecovery) {
+            Text(L.s(R.string.recovery_failed))
+            Button(onClick={model.practice.retryRecovery()}) { Text(L.s(R.string.practice_retry)) }
+            OutlinedButton(onClick={export.launch("Goldberg-recovery.json")}) { Text(L.s(R.string.recovery_export)) }
+            if (exported != null) TextButton(onClick={fresh=true}) { Text(L.s(R.string.recovery_fresh)) }
+            return@Column
+        }
         if(!timer.ready) { Text(L.s(R.string.msg_recovering_your_practice_e75c));return@Column }
+        if (unsaved) {
+            Text(L.s(R.string.practice_unsaved), color=MaterialTheme.colorScheme.error)
+            TextButton(onClick={model.practice.retryPersistence()}) { Text(L.s(R.string.practice_retry)) }
+        }
         Text(timer.parts[timer.active].displayTitle,style=MaterialTheme.typography.headlineMedium)
         Text(duration(timer.elapsed),style=MaterialTheme.typography.displayLarge,fontFamily=MaterialTheme.typography.bodyLarge.fontFamily)
         Text(L.s(R.string.msg_credited_practice_elapsed_duration_timer_wal_0c94, (duration(timer.wallElapsed))),style=MaterialTheme.typography.bodyMedium)
@@ -73,6 +109,8 @@ import com.opus.piano.service.SmartPracticeService
             Text(L.s(R.string.msg_smart_practice_experimental_34d8),Modifier.padding(start=12.dp))
         }
         if(timer.token.isNotEmpty()) TextButton(onClick={discard=true}) { Text(L.s(R.string.msg_discard_session_38ed)) }
+        TextButton(onClick={expanded=!expanded}) { Text(L.s(R.string.practice_expand)) }
+        if (expanded) {
         Panel {
             Text(L.s(R.string.msg_pieces_in_this_session_6dbf),style = MaterialTheme.typography.labelSmall)
             OutlinedButton(onClick = { choose = true }) { Text(L.s(R.string.msg_select_add_piece_3abf)) }
@@ -82,7 +120,7 @@ import com.opus.piano.service.SmartPracticeService
             }
             timer.parts.forEachIndexed { i,p -> if (p.pieceId !in timer.removed) {
                 Row {
-                    TextButton(onClick = { model.selectPart(i) },Modifier.weight(1f)) { Text(L.s(R.string.msg_if_i_timer_active_else_p_title_duration_p_du_9c1d, (if (i == timer.active) "▶ " else ""), (p.title), (duration(p.durationMillis)))) }
+                    TextButton(onClick = { model.selectPart(i) },Modifier.weight(1f)) { Text(L.s(R.string.msg_if_i_timer_active_else_p_title_duration_p_du_9c1d, (if (i == timer.active) "▶ " else ""), (p.displayTitle), (duration(p.durationMillis)))) }
                     if (p.pieceId != null) TextButton(onClick = { model.remove(i) }) { Text(L.s(R.string.msg_remove_e963)) }
                 }
                 if (i == timer.active) OutlinedTextField(p.notes,{ model.note(i,it) },label = { Text(L.s(R.string.msg_piece_notes_for_this_session_3a65)) },modifier = Modifier.fillMaxWidth())
@@ -90,6 +128,7 @@ import com.opus.piano.service.SmartPracticeService
         }
         OutlinedTextField(timer.notes,{ text -> model.practice.command { sessionNotes(text,state.value.reflection) } },label = { Text(L.s(R.string.msg_session_notes_a84f)) },modifier = Modifier.fillMaxWidth())
         Text(L.s(R.string.msg_repertoire_notes_are_separate_session_notes_97f9))
+        }
     }
     }
     if (privacy) AlertDialog(onDismissRequest = { privacy = false },title = { Text(L.s(R.string.msg_listen_during_practice_cc91)) },text = { Text(L.s(R.string.msg_goldberg_analyzes_ambient_microphone_sound_l_7f65)) },confirmButton = { TextButton(onClick = {

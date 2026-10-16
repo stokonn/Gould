@@ -18,6 +18,17 @@ interface PracticeDao {
     @Upsert suspend fun checkpoint(value: PracticeDraft)
     @Query("DELETE FROM practice_drafts") suspend fun clearDraft()
     @Query("SELECT * FROM sessions WHERE completionToken=:token") suspend fun completed(token: String): PracticeSession?
+    @Query("""SELECT * FROM sessions s WHERE
+        (s.completedAt < :beforeTime OR (s.completedAt = :beforeTime AND s.id < :beforeId))
+        AND ((:pieceId IS NULL AND :catalogId IS NULL) OR
+            EXISTS (SELECT 1 FROM session_parts p WHERE p.sessionId=s.id
+                AND ((:pieceId IS NOT NULL AND p.pieceId=:pieceId) OR (:catalogId IS NOT NULL AND p.catalogWorkId=:catalogId))) OR
+            (NOT EXISTS (SELECT 1 FROM session_parts p WHERE p.sessionId=s.id) AND
+                ((:pieceId IS NOT NULL AND s.pieceId=:pieceId) OR (:catalogId IS NOT NULL AND s.catalogWorkId=:catalogId))))
+        ORDER BY s.completedAt DESC, s.id DESC LIMIT :limit""")
+    suspend fun historyPage(pieceId: Long?, catalogId: String?, beforeTime: Long, beforeId: Long, limit: Int): List<PracticeSession>
+    @Query("SELECT * FROM session_parts WHERE sessionId IN (:ids) ORDER BY sessionId,id")
+    suspend fun historyParts(ids: List<Long>): List<SessionPart>
     @Query("SELECT * FROM sessions WHERE id=:id") suspend fun session(id: Long): PracticeSession?
     @Query("SELECT * FROM session_intervals WHERE sessionId=:id ORDER BY startMillis,id") suspend fun intervals(id: Long): List<SessionInterval>
     @Query("SELECT * FROM session_intervals ORDER BY sessionId,startMillis,id") suspend fun allIntervals(): List<SessionInterval>

@@ -698,4 +698,15 @@
   <string name="daily_totals">Denní součty</string>
   <string name="preferred_interpretation">Oblíbená interpretace</string>
   <string name="label_instrumentation">Obsazení</string>
+    <string name="practice_request_unavailable">Cvičení není na tuto akci připraveno. Otevřete Cvičení a zkuste to znovu.</string>
+    <string name="practice_start_failed">Cvičení nelze spustit, protože se nepodařilo uložit koncept. Zkuste to znovu, až bude úložiště dostupné.</string>
+    <string name="practice_unsaved">Změny nejsou uložené. Nechte Goldberg otevřený a zkuste uložení znovu.</string>
+    <string name="recovery_export">Exportovat původní data obnovy</string>
+    <string name="recovery_failed">Rozpracované cvičení se nepodařilo obnovit. Původní data jsou zachována. Zkuste obnovu znovu nebo data exportujte před novým začátkem.</string>
+    <string name="recovery_fresh">Začít znovu po exportu</string>
+    <string name="recovery_confirm">Exportovaný soubor obsahuje původní data obnovy. Vymazat tento koncept a začít nové cvičení? Exportovaný soubor si ponechte pro obnovu.</string>
+    <string name="practice_expand">Skladby a poznámky</string>
+<string name="practice_retry">Zkusit znovu</string>
+<string name="catalogue_saved_refresh_failed">Aktualizace se nezdařila. Zobrazuje se uložený katalog.</string>
+<string name="biography_saved_refresh_failed">Zobrazuje se uložený životopis; aktualizace se nezdařila.</string>
 </resources>

@@ -50,7 +50,7 @@ class SmartPracticeService : Service() {
                     withContext(NonCancellable) { practice.interrupt(token,execution) }
                     stopForeground(STOP_FOREGROUND_REMOVE)
                     val finalState = practice.state.value
-                    if (androidx.core.app.NotificationManagerCompat.from(this@SmartPracticeService).areNotificationsEnabled()) {
+                    if (token.isNotEmpty() && androidx.core.app.NotificationManagerCompat.from(this@SmartPracticeService).areNotificationsEnabled()) {
                         val open = PendingIntent.getActivity(this@SmartPracticeService,0,Intent(this@SmartPracticeService,MainActivity::class.java).putExtra("practice",true).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
                         val text = if (finalState.status == "Review") L.fixed("Session ready to review") else L.s(R.string.notification_resume,L.fixed(finalState.status))
                         try { manager.notify(ID,NotificationCompat.Builder(this@SmartPracticeService,CHANNEL).setSmallIcon(com.opus.piano.R.drawable.ic_goldberg_monochrome).setContentTitle(L.s(R.string.msg_goldberg_smart_practice_73e7)).setContentText(text).setContentIntent(open).setAutoCancel(true).setSilent(true).build()) } catch (_: SecurityException) { /* Respect notification denial. */ }
