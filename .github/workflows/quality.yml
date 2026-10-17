@@ -20,8 +20,11 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Required Android SDK packages
-        run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+      - name: Set up required Android SDK packages
+        uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
+        with:
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
+          log-accepted-android-sdk-licenses: false
       - name: Build, JVM tests, instrumentation compilation and lint
         run: ./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1
       - name: Host data and policy checks
