@@ -1,0 +1,51 @@
+{
+  "project": "https://github.com/users/stokonn/projects/2",
+  "milestone": 2,
+  "issues": [
+    {
+      "title": "0.10: Shared editorial design and four-tab navigation",
+      "url": "https://github.com/stokonn/Goldberg/issues/19",
+      "state": "open"
+    },
+    {
+      "title": "0.10: Home reference redesign",
+      "url": "https://github.com/stokonn/Goldberg/issues/20",
+      "state": "open"
+    },
+    {
+      "title": "0.10: Repertoire controls and pinned composers",
+      "url": "https://github.com/stokonn/Goldberg/issues/21",
+      "state": "open"
+    },
+    {
+      "title": "0.10: Profile reference and local artist autocomplete",
+      "url": "https://github.com/stokonn/Goldberg/issues/22",
+      "state": "open"
+    },
+    {
+      "title": "0.10: Google profile import reliability",
+      "url": "https://github.com/stokonn/Goldberg/issues/23",
+      "state": "open"
+    },
+    {
+      "title": "0.10: Completed-session piece associations and data compatibility",
+      "url": "https://github.com/stokonn/Goldberg/issues/24",
+      "state": "open"
+    },
+    {
+      "title": "0.10: Compact grouped Settings",
+      "url": "https://github.com/stokonn/Goldberg/issues/25",
+      "state": "open"
+    },
+    {
+      "title": "0.10: CZ/EN accessibility and emulator visual approval",
+      "url": "https://github.com/stokonn/Goldberg/issues/26",
+      "state": "open"
+    },
+    {
+      "title": "0.10: Goldberg 0.10 verification and release",
+      "url": "https://github.com/stokonn/Goldberg/issues/27",
+      "state": "open"
+    }
+  ]
+}

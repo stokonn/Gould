@@ -15,9 +15,12 @@ object PracticeInsights {
             }
         }
     }
-    fun forPiece(sessions:List<PracticeSession>,parts:List<SessionPart>,pieceId:Long?,catalogId:String?):List<PracticeSession> =
-        attributedSessions(sessions.filter(AchievementEngine::valid),parts).filter { (pieceId!=null && it.pieceId==pieceId)||(catalogId!=null && it.catalogWorkId==catalogId) }
-            .groupBy { it.id }.map { (_,rows) -> rows.first().copy(durationMillis=rows.sumOf { it.durationMillis }) }.sortedByDescending { it.completedAt }
+    fun forPiece(sessions:List<PracticeSession>,parts:List<SessionPart>,pieceId:Long?,catalogId:String?,links:List<SessionPieceLink> = emptyList()):List<PracticeSession> {
+        val measured=attributedSessions(sessions.filter(AchievementEngine::valid),parts).filter { (pieceId!=null && it.pieceId==pieceId)||(catalogId!=null && it.catalogWorkId==catalogId) }
+            .groupBy {it.id}.map {(_,rows)->rows.first().copy(durationMillis=rows.sumOf {it.durationMillis})}
+        val annotated=links.filter {(pieceId!=null && it.pieceId==pieceId)||(catalogId!=null && it.catalogWorkId==catalogId)}.mapNotNull {link->sessions.firstOrNull {it.id==link.sessionId}?.copy(durationMillis=0)}
+        return (measured+annotated).distinctBy {it.id}.sortedWith(compareByDescending<PracticeSession> {it.completedAt}.thenByDescending {it.id})
+    }
     fun recent(pieces:List<Piece>,sessions:List<PracticeSession>,parts:List<SessionPart>):List<Piece> {
         val times=attributedSessions(sessions.filter(AchievementEngine::valid),parts).filter { it.durationMillis>0 }.groupBy { it.pieceId }
             .mapValues { (_,v)->v.maxOf { it.completedAt } }

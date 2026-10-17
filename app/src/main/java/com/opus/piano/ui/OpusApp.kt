@@ -106,7 +106,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 listOf(Destination.OVERVIEW, Destination.REPERTOIRE, Destination.PRACTICE, Destination.HOME).forEach { destination ->
                     NavigationBarItem(colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = MaterialTheme.colorScheme.primary, selectedTextColor = MaterialTheme.colorScheme.primary,
-                        indicatorColor = MaterialTheme.colorScheme.primary.copy(alpha = .12f),
+                        indicatorColor = androidx.compose.ui.graphics.Color.Transparent,
                         unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
                         unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant), selected = (if (current == SETTINGS_ROUTE) selectedTab(nav.previousBackStackEntry?.destination?.route ?: PROFILE_ROUTE) else selectedTab(current)) == destination.name, onClick = {
                         focus.clearFocus()
@@ -122,7 +122,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 enterTransition = { fadeIn(tween(if (motionScale == 0f) 0 else 220)) }, exitTransition = { fadeOut(tween(if (motionScale == 0f) 0 else 150)) }) {
                 composable(Destination.OVERVIEW.name) {
                     val settings by profile.settings.collectAsStateWithLifecycle()
-                    BalancedHome(library, settings.username, { nav.navigate("piece/$it") }, { nav.navigate("history") })
+                    BalancedHome(library, settings.username, { nav.navigate("piece/$it") }, { nav.navigate("history") }, {nav.navigate(SETTINGS_ROUTE)})
                 }
                 composable(SETTINGS_ROUTE) { SettingsScreen(profile, model, { replay = true }) { nav.popBackStack() } }
                 composable(Destination.HOME.name) { ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }) { nav.navigate("badge/$it") } }
@@ -134,13 +134,13 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                             FilterChip(catalogue,{catalogue=true},label={Text(L.s(R.string.msg_catalogue_5a24))})
                         }
                         Box(Modifier.weight(1f)) {
-                            if(catalogue) CatalogScreen(catalog,library,{catalogue=false},{nav.navigate("catalog/composer/$it")},{nav.navigate("catalog/work/$it")},{nav.navigate("piece/$it")},embedded=true)
-                            else RepertoireScreen(library,catalogData,model,{catalogue=true},{nav.navigate("piece/$it")})
+                            if(catalogue) CatalogScreen(catalog,library,{catalogue=false},{nav.navigate("catalog/composer/$it")},{nav.navigate("catalog/work/$it")},{nav.navigate("piece/$it")},embedded=true,profile=profile)
+                            else RepertoireScreen(library,catalogData,model,{catalogue=true},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")})
                         }
                     }
                 }
-                composable("catalog") { CatalogScreen(catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("catalog/work/$it") }, { nav.navigate("piece/$it") }) }
-                composable("catalog/composer/{id}") { route -> ComposerScreen(route.arguments?.getString("id").orEmpty(), catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/work/$it") }) }
+                composable("catalog") { CatalogScreen(catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("catalog/work/$it") }, { nav.navigate("piece/$it") },profile=profile) }
+                composable("catalog/composer/{id}") { route -> ComposerScreen(route.arguments?.getString("id").orEmpty(), catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/work/$it") },identity=profile) }
                 composable("catalog/work/{id}") { route ->
                     CompositionScreen(route.arguments?.getString("id"), null, catalog, experience, library, model, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("recordings/$it") }, { id, source -> if (id != null) nav.navigate("history/piece/$id") else if (source != null) nav.navigate("history/catalog/${android.net.Uri.encode(source)}") }) { piece ->
                         model.practice.command {
@@ -181,9 +181,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
     }
 }
 @Composable internal fun Panel(modifier: Modifier = Modifier, content: @Composable ColumnScope.() -> Unit) {
-    Surface(modifier.fillMaxWidth(), shape = MaterialTheme.shapes.medium, border = if (LocalAppearance.current.cards == "Outline") BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant) else null, color = MaterialTheme.colorScheme.surface) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp), content = content)
-    }
+    JournalCard(modifier,content=content)
 }
 /** Shared compact text layout for Home, repertoire and catalogue rows. */
 @Composable internal fun PieceRowContent(title: String, composer: String, metadata: String = "", modifier: Modifier = Modifier) {
@@ -199,7 +197,7 @@ internal fun duration(millis: Long): String {
     return "%02d:%02d:%02d".format(seconds / 3600, seconds / 60 % 60, seconds % 60)
 }
 private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).atZone(ZoneId.systemDefault()).toLocalDate()
-@Composable internal fun SessionRow(session: PracticeSession, parts: List<SessionPart> = emptyList(), displayMillis: Long = session.durationMillis) {
+@Composable internal fun SessionRow(session: PracticeSession, parts: List<SessionPart> = emptyList(), displayMillis: Long = session.durationMillis, untimed:Boolean=false) {
     var editNotes by remember { mutableStateOf(false) }
     if (editNotes) HistoricalReview(session, parts) { editNotes = false }
     val title = if (parts.isNotEmpty()) parts.filter { it.durationMillis > 0 || it.notes.isNotBlank() }
@@ -217,16 +215,16 @@ private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).
                     .format(DateTimeFormatter.ofPattern("d MMM · HH:mm").withLocale(L.locale)),
                     style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
-            Text(duration(displayMillis), color = MaterialTheme.colorScheme.primary,
+            Text(if(untimed) L.s(R.string.ui010_untimed_short) else duration(displayMillis), color = MaterialTheme.colorScheme.primary,
                 style = MaterialTheme.typography.labelLarge.copy(fontFeatureSettings = "tnum"))
             Icon(Icons.Outlined.ChevronRight, null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
 }
-@Composable internal fun Choice(label: String, options: List<String>, selected: String, translateOptions: Boolean = true, choose: (String) -> Unit) {
+@Composable internal fun Choice(label: String, options: List<String>, selected: String, translateOptions: Boolean = true, modifier: Modifier = Modifier, choose: (String) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     Box {
-        JournalSecondaryButton(onClick = { expanded = true }) { Text("${L.fixed(label)}: ${if(translateOptions || selected=="All") L.fixed(selected) else selected}", Modifier.weight(1f, fill = false), maxLines = 2, overflow = TextOverflow.Ellipsis); Icon(Icons.Outlined.ExpandMore, null) }
+        JournalSecondaryButton(onClick = { expanded = true },modifier=modifier) { Text("${L.fixed(label)}: ${if(translateOptions || selected=="All") L.fixed(selected) else selected}", Modifier.weight(1f, fill = false), maxLines = 2, overflow = TextOverflow.Ellipsis); Icon(Icons.Outlined.ExpandMore, null) }
         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
             options.forEach { option -> DropdownMenuItem(text = { Text(if(translateOptions || option=="All") L.fixed(option) else option, maxLines = 3, overflow = TextOverflow.Ellipsis) }, onClick = { choose(option); expanded = false }) }
         }

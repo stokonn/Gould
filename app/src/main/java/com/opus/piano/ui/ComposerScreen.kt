@@ -24,7 +24,8 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalLayoutApi::class)
-@Composable fun ComposerScreen(id: String, model: CatalogViewModel, library: LibraryState, back: () -> Unit, workPage: (String) -> Unit) {
+@Composable fun ComposerScreen(id: String, model: CatalogViewModel, library: LibraryState, back: () -> Unit, workPage: (String) -> Unit, identity:ProfileViewModel) {
+    val favorites by identity.favoriteComposers.collectAsState()
     val snapshot by model.snapshot.collectAsStateWithLifecycle()
     val page by model.composer.collectAsStateWithLifecycle()
     val adding by model.adding.collectAsStateWithLifecycle()
@@ -63,6 +64,7 @@ import kotlinx.coroutines.launch
                             Text(L.fixed(composer.epoch).uppercase(L.locale), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
                             Text(composer.name, style = MaterialTheme.typography.headlineMedium)
                             Text(composer.years, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            ComposerFavoriteButton(composer,favorites.any {it.composerId==id},identity::favoriteComposer)
                             if (!profile?.origin.isNullOrBlank()) Text(profile!!.origin, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
                     }

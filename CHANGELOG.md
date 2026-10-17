@@ -1,3 +1,12 @@
+# Goldberg 0.10 — The Definitive UI/UX Redesign
+
+- Refine Home, Repertoire, Practice, Profile and Settings while retaining four-tab navigation and appearance customization.
+- Add locally pinned composer favorites, local Favorite Artist autocomplete and safe editing of completed-session piece lists without inventing credited time.
+- Additive schema 8 and backup format 4 retain import compatibility with formats 1–3.
+- 72 JVM tests and 36 executed emulator instrumentation tests pass; migration, backup, history and localization checks pass. Lint has zero errors and 78 warnings.
+- Google sign-in, name/avatar import with consent, manual override preservation, restart, sign-out/account switching and local-data preservation passed owner-reported manual verification on a Samsung Galaxy A55. Codex did not test on a physical phone. The owner waived screenshot review; small visual differences are tracked for possible 0.10.1 refinement.
+- Full notes and limitations: [release notes](docs/RELEASE-0.10.md) and [verification](docs/VERIFICATION-0.10.md).
+
 # 0.9.2 — Final Redesign
 
 - Editorial theme tokens and shared controls; compact Home, Repertoire, Profile and Settings.

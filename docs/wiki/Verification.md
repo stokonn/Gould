@@ -40,3 +40,7 @@ APK SHA-256: `7470fe7b477678946040df452813fc47708489883543bb3ea57bb2148bab4e7f`.
 Signing SHA-256: `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`.
 
 [Home](Home) · [Developer Guide](Developer-Guide) · [Settings](Settings-and-Customization)
+
+## Goldberg 0.10
+
+See [Goldberg 0.10 Verification](Verification-0.10) for the release build, automated checks, screenshots and owner-reported Google results. The 0.9.2 verification above remains historical and release-specific.

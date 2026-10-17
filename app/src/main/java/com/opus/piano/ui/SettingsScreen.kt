@@ -26,6 +26,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
     val app=context.applicationContext as com.opus.piano.OpusApplication
     val scope=rememberCoroutineScope()
     val metered by app.media.cellular.collectAsStateWithLifecycle()
+    var replaceIdentity by remember {mutableStateOf<String?>(null)}
     var tux by remember {mutableStateOf(false)}
     var legal by remember { mutableStateOf(false) }
     var secret by remember { mutableStateOf(false) }
@@ -45,20 +46,38 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
     val restore = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { it?.let(profile::inspect) }
     val usage by profile.cacheUsage.collectAsStateWithLifecycle()
     LaunchedEffect(Unit) { profile.measureCache() }
+    replaceIdentity?.let {kind -> AlertDialog(onDismissRequest={replaceIdentity=null},title={Text(L.s(if(kind=="name") R.string.ui010_google_name else R.string.ui010_google_photo))},text={Text(L.s(R.string.ui010_identity_confirm))},confirmButton={JournalTextButton(onClick={if(kind=="name") profile.useGoogleName() else profile.replaceGooglePhoto();replaceIdentity=null}) {Text(L.s(R.string.ui010_apply))}},dismissButton={JournalTextButton(onClick={replaceIdentity=null}) {Text(L.s(R.string.ui010_keep_local))}})}
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         item { CatalogBack(if(page.isEmpty()) L.s(R.string.msg_settings_c7f7) else page) { if(page.isEmpty()) back() else page="" } }
         if(page.isEmpty()) {
-            listOf("Appearance & Customize","Language","Smart Practice","Reminders","Data & Storage","Privacy & Permissions","About").forEach { name ->
-                item { SettingsRow(L.fixed(name),action={page=name},trailing={Text("›")});HorizontalDivider(color=MaterialTheme.colorScheme.outlineVariant) }
-            }
+            listOf(
+                R.string.google_account to listOf("Google"),
+                R.string.msg_appearance_41de to listOf("Appearance & Customize","Language"),
+                R.string.msg_smart_practice_1d73 to listOf("Smart Practice","Reminders"),
+                R.string.ui010_data_storage to listOf("Data & Storage","Privacy & Permissions"),
+                R.string.ui010_about_app to listOf("About")
+            ).forEach { (heading,names) -> item {
+                Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
+                    CompactSection(L.s(heading))
+                    JournalCard(padding=PaddingValues(2.dp)) {
+                        names.forEachIndexed {i,name ->
+                            SettingsRow(if(name=="Google") L.s(R.string.google_account) else L.fixed(name),action={page=name},trailing={Text("›",color=MaterialTheme.colorScheme.primary)})
+                            if(i<names.lastIndex) HorizontalDivider(Modifier.padding(horizontal=12.dp),color=MaterialTheme.colorScheme.outlineVariant.copy(alpha=.5f))
+                        }
+                    }
+                }
+            }}
         }
-        if(page.isEmpty()) item { SettingsRow(L.s(R.string.google_account),action={page="Google"}) }
         when(page) {
             "Google" -> item {
                 Text(L.s(R.string.google_identity_only),style=MaterialTheme.typography.bodyMedium)
                 if(googleAccount == null) JournalPrimaryButton(enabled=!busy,onClick={profile.googleSignIn(context)}) {Text(L.s(R.string.google_sign_in))}
                 else {
                     Text(googleAccount.orEmpty(),style=MaterialTheme.typography.bodyMedium)
+                    Text(L.s(R.string.ui010_identity_explanation),style=MaterialTheme.typography.bodySmall)
+                    JournalSecondaryButton(enabled=!busy,onClick={replaceIdentity="name"}) {Text(L.s(R.string.ui010_google_name))}
+                    JournalSecondaryButton(enabled=!busy,onClick={replaceIdentity="photo"}) {Text(L.s(R.string.ui010_google_photo))}
+                    Text(L.s(R.string.ui010_photo_consent),style=MaterialTheme.typography.bodySmall)
                     JournalSecondaryButton(enabled=!busy,onClick=profile::googleSignOut) {Text(L.s(R.string.google_sign_out))}
                 }
             }
@@ -171,7 +190,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
                     if (model.timer.value.running) profile.notice.value=L.s(R.string.msg_pause_practice_before_opening_bach_s_secret_9404)
                     else { secret=true; profile.curious() }
                 }
-            }) { Text(L.s(R.string.version_092)) }
+            }) { Text(L.s(R.string.version_010)) }
             JournalTextButton(onClick = onboarding) { Text(L.s(R.string.msg_revisit_introduction_caf0)) }
             JournalTextButton(onClick = { legal=true }) { Text(L.s(R.string.msg_privacy_licenses_2fee)) }
         } }            }

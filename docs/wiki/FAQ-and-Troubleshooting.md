@@ -12,7 +12,7 @@
 
 **The quotation did not download.** The exactly-ten bundled verified library remains available offline. Selection is stable for the local calendar day. No anonymous replacement quote is invented.
 
-**My new backup will not import into an old app.** Format 3/schema 7 is for 0.9.2 and later. Older formats remain readable by the new version; older app readers do not support the new format. Keep previous backups.
+**My new backup will not import into an old app.** Format 4/schema 8 is for 0.10 and later. Goldberg 0.10 can import formats 1–3; older app versions do not support format 4. Keep previous backups.
 
 **Who tested the owner's phone?** The owner personally reported the Google scenarios in [Verification](Verification). Codex performs no physical-phone operations. Automated and emulator results are recorded separately.
 

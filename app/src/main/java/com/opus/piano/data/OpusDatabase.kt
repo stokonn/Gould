@@ -69,15 +69,22 @@ interface OpusDao {
     @Delete suspend fun delete(piece: Piece)
     @Insert suspend fun insert(session: PracticeSession): Long
 }
-@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class, RecoveryArchive::class], version = 7, exportSchema = true)
+@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class, RecoveryArchive::class, SessionPieceLink::class, FavoriteComposer::class], version = 8, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class OpusDatabase : RoomDatabase() {
+    abstract fun journalEditsDao(): JournalEditsDao
     abstract fun practiceDao(): PracticeDao
     abstract fun personalDao(): PersonalDao
     abstract fun dao(): OpusDao
     abstract fun catalogDao(): CatalogDao
     abstract fun experienceDao(): ExperienceDao
     companion object {
+        val MIGRATION_7_8 = object : Migration(7, 8) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("CREATE TABLE IF NOT EXISTS session_piece_links (sessionId INTEGER NOT NULL, pieceId INTEGER NOT NULL, title TEXT NOT NULL, composer TEXT NOT NULL, catalogWorkId TEXT, composerId TEXT, musicalEra TEXT NOT NULL, addedAt INTEGER NOT NULL, PRIMARY KEY(sessionId,pieceId), FOREIGN KEY(sessionId) REFERENCES sessions(id) ON UPDATE NO ACTION ON DELETE CASCADE)")
+                db.execSQL("CREATE TABLE IF NOT EXISTS favorite_composers (composerId TEXT NOT NULL PRIMARY KEY, addedAt INTEGER NOT NULL)")
+            }
+        }
         val MIGRATION_6_7 = object : Migration(6, 7) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL("ALTER TABLE profile_settings ADD COLUMN favoriteArtist TEXT NOT NULL DEFAULT ''")
@@ -159,8 +166,8 @@ class OpusRepository(private val db: OpusDatabase, private val achievements: Ach
     val sessions = dao.observeSessions()
     val parts = db.personalDao().parts()
     // One transactional snapshot avoids pairing newly restored sessions with old attribution rows.
-    val journal = db.invalidationTracker.createFlow("pieces", "sessions", "session_parts").map {
-        db.withTransaction { Triple(dao.allPieces(), dao.allSessions(), db.personalDao().allParts()) }
+    val journal = db.invalidationTracker.createFlow("pieces", "sessions", "session_parts", "session_piece_links").map {
+        db.withTransaction { JournalSnapshot(dao.allPieces(), dao.allSessions(), db.personalDao().allParts(),db.journalEditsDao().allLinks()) }
     }.distinctUntilChanged()
     suspend fun save(piece: Piece) = db.withTransaction {
         val existing = if (piece.id > 0) dao.piece(piece.id) else null
@@ -192,3 +199,5 @@ class OpusRepository(private val db: OpusDatabase, private val achievements: Ach
         achievements.evaluateInTransaction()
     }
 }
+
+data class JournalSnapshot(val pieces:List<Piece>,val sessions:List<PracticeSession>,val parts:List<SessionPart>,val links:List<SessionPieceLink>)

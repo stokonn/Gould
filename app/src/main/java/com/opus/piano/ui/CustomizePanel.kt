@@ -16,15 +16,16 @@ import com.opus.piano.preferences.*
     val a=LocalAppearance.current
     val store=(LocalContext.current.applicationContext as OpusApplication).appearance
     var reset by remember { mutableStateOf(false) }
-    Choice(L.s(R.string.msg_accent_color_e495),AppearanceRules.accents,a.accent) { value->store.edit { it.copy(accent=value) } }
-    Choice(L.s(R.string.msg_card_style_f910),listOf("Soft","Outline","Open"),a.cards) { value->store.edit { it.copy(cards=value) } }
-    SectionTitle(L.s(R.string.msg_home_layout_e196))
-    Text(L.s(R.string.home_layout_fixed),style=MaterialTheme.typography.bodySmall)
-    SectionTitle(L.s(R.string.msg_repertoire_presentation_3f78))
-    Choice(L.s(R.string.msg_density_f916),listOf("Compact","Comfortable"),a.density) { value->store.edit { it.copy(density=value) } }
-    Choice(L.s(R.string.msg_sort_adc4),AppearanceRules.sorts,a.sort) { value->store.edit { it.copy(sort=value) } }
-    SectionTitle(L.s(R.string.msg_profile_layout_5879))
-    Text(L.s(R.string.profile_layout_edit_hint),style=MaterialTheme.typography.bodySmall)
+    JournalCard {
+        CompactSection(L.s(R.string.ui010_color_and_surfaces))
+        Choice(L.s(R.string.msg_accent_color_e495),AppearanceRules.accents,a.accent,modifier=Modifier.fillMaxWidth()) { value->store.edit { it.copy(accent=value) } }
+        Choice(L.s(R.string.msg_card_style_f910),listOf("Soft","Outline","Open"),a.cards,modifier=Modifier.fillMaxWidth()) { value->store.edit { it.copy(cards=value) } }
+    }
+    JournalCard {
+        CompactSection(L.s(R.string.ui010_repertoire_display))
+        Choice(L.s(R.string.msg_density_f916),listOf("Compact","Comfortable"),a.density,modifier=Modifier.fillMaxWidth()) { value->store.edit { it.copy(density=value) } }
+        Choice(L.s(R.string.msg_sort_adc4),AppearanceRules.sorts,a.sort,modifier=Modifier.fillMaxWidth()) { value->store.edit { it.copy(sort=value) } }
+    }
     JournalSecondaryButton(onClick={reset=true}) { Text(L.s(R.string.msg_reset_appearance_6a59)) }
     if(reset) AlertDialog(onDismissRequest={reset=false},title={Text(L.s(R.string.msg_reset_appearance_fa24))},text={Text(L.s(R.string.msg_reset_visual_preferences_only_your_profile_p_cec0))},confirmButton={JournalTextButton(onClick={profile.resetAppearance();reset=false}) { Text(L.s(R.string.msg_reset_44c5)) }},dismissButton={JournalTextButton(onClick={reset=false}) { Text(L.s(R.string.msg_cancel_77df)) }})
 }

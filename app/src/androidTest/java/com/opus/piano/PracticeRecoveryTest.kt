@@ -29,7 +29,7 @@ class PracticeRecoveryTest {
             assertEquals(1,db.dao().allSessions().size);assertNull(db.practiceDao().draft())
             repo().editNotes(id,"Edited","Reflection",db.personalDao().allParts())
             val raw=BackupRepository(context,db).export()
-            assertEquals(3,org.json.JSONObject(raw).getInt("version"))
+            assertEquals(4,org.json.JSONObject(raw).getInt("version"))
             BackupRepository(context,db).restore(raw)
             assertEquals("Edited",db.dao().allSessions().single().notes)
             assertEquals(3000L,db.personalDao().allParts().sumOf { it.durationMillis })

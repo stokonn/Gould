@@ -5,6 +5,7 @@ import com.opus.piano.R
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
@@ -35,71 +36,109 @@ import kotlinx.coroutines.withContext
 import java.time.*
 import java.time.format.DateTimeFormatter
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable internal fun ProfileScreen(state: LibraryState, badges: List<BadgeProgress>, profile: ProfileViewModel, settingsAction: () -> Unit, allBadges: () -> Unit, history: () -> Unit, badgeDetail: (String) -> Unit) {
     val settings by profile.settings.collectAsStateWithLifecycle()
     val busy by profile.busy.collectAsStateWithLifecycle()
     val googleAccount by profile.googleAccount.collectAsStateWithLifecycle()
-    val identityContext = androidx.compose.ui.platform.LocalContext.current
-    LaunchedEffect(googleAccount) { if(googleAccount != null) profile.refreshGooglePhoto() }
-    var edit by rememberSaveable { mutableStateOf(false) }
-    var customize by rememberSaveable { mutableStateOf(false) }
-    val avatar by produceState<android.graphics.Bitmap?>(null,settings.avatar) {
-        value=withContext(Dispatchers.Default) { runCatching {
-            val bytes=android.util.Base64.decode(settings.avatar,android.util.Base64.DEFAULT)
-            android.graphics.BitmapFactory.decodeByteArray(bytes,0,bytes.size)
-        }.getOrNull() }
-    }
-    val app=androidx.compose.ui.platform.LocalContext.current.applicationContext as com.opus.piano.OpusApplication
+    val context=androidx.compose.ui.platform.LocalContext.current
+    val app=context.applicationContext as com.opus.piano.OpusApplication
+    val metered by app.media.cellular.collectAsStateWithLifecycle()
+    LaunchedEffect(googleAccount,metered) {if(googleAccount!=null) profile.refreshGooglePhoto()}
+    var edit by rememberSaveable {mutableStateOf(false)}
+    var artistEdit by rememberSaveable {mutableStateOf(false)}
+    val avatar by produceState<android.graphics.Bitmap?>(null,settings.avatar) {value=withContext(Dispatchers.Default) {runCatching {val bytes=android.util.Base64.decode(settings.avatar,android.util.Base64.DEFAULT);android.graphics.BitmapFactory.decodeByteArray(bytes,0,bytes.size)}.getOrNull()}}
     val catalog by app.catalogRepository.snapshot.collectAsStateWithLifecycle(CatalogSnapshot(emptyList(),emptyList()))
-    val artist=catalog.composers.firstOrNull { catalogText(it.name)==catalogText(settings.favoriteArtist) }
+    val artist=catalog.composers.firstOrNull {catalogText(it.name)==catalogText(settings.favoriteArtist)}
     val showcased=settings.badgeIds.mapNotNull {id->badges.firstOrNull {it.definition.id==id && it.unlocked}}.take(5)
-    JournalViewport {
-        Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
-            Surface(onClick={edit=true},modifier=Modifier.size(80.dp),shape=CircleShape,color=MaterialTheme.colorScheme.surfaceVariant) {
-                if(avatar!=null) Image(avatar!!.asImageBitmap(),L.s(R.string.msg_profile_avatar_1671),contentScale=ContentScale.Crop)
-                else Icon(Icons.Outlined.Person,L.s(R.string.msg_default_avatar_400b),Modifier.padding(18.dp))
+    val fontScale=LocalDensity.current.fontScale
+    JournalViewport(spacing=12.dp) {
+        EditorialHeader(L.fixed("Profile"),L.s(R.string.ui010_musical_journey),actions={
+            IconButton(onClick=allBadges) {Icon(Icons.Outlined.EmojiEvents,L.s(R.string.msg_badges_2c57),tint=MaterialTheme.colorScheme.primary)}
+            IconButton(onClick=settingsAction) {Icon(Icons.Outlined.Settings,L.fixed("Settings"),tint=MaterialTheme.colorScheme.primary)}
+        })
+        JournalCard(padding=PaddingValues(14.dp)) {
+            Row(Modifier.padding(top=6.dp,bottom=6.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(16.dp)) {
+                Box {
+                    Surface(onClick={edit=true},modifier=Modifier.size(88.dp),shape=CircleShape,color=MaterialTheme.colorScheme.primary.copy(alpha=.1f),border=androidx.compose.foundation.BorderStroke(2.dp,MaterialTheme.colorScheme.primary.copy(alpha=.35f))) {
+                        if(avatar!=null) Image(avatar!!.asImageBitmap(),L.s(R.string.msg_profile_avatar_1671),contentScale=ContentScale.Crop)
+                        else Icon(Icons.Outlined.Person,L.s(R.string.msg_default_avatar_400b),Modifier.padding(20.dp),tint=MaterialTheme.colorScheme.primary)
+                    }
+                    IconButton(onClick={edit=true},modifier=Modifier.align(Alignment.BottomEnd).size(48.dp)) {Surface(shape=CircleShape,color=MaterialTheme.colorScheme.surfaceVariant) {Icon(Icons.Outlined.Edit,L.s(R.string.msg_edit_profile_cd28),Modifier.size(32.dp).padding(7.dp))}}
+                }
+                Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(8.dp)) {
+                    Text(settings.username,style=MaterialTheme.typography.headlineMedium,maxLines=3,overflow=TextOverflow.Ellipsis)
+                    if(settings.favoriteEra.isNotBlank()) Surface(shape=MaterialTheme.shapes.small,color=MaterialTheme.colorScheme.surfaceVariant) {Text(settings.favoriteEra,Modifier.padding(horizontal=10.dp,vertical=5.dp),style=MaterialTheme.typography.bodySmall)}
+                    if(googleAccount==null) JournalTextButton(enabled=!busy,onClick={profile.googleSignIn(context)},contentPadding=PaddingValues(0.dp)) {Text(L.s(R.string.google_sign_in),style=MaterialTheme.typography.labelMedium)}
+                }
             }
-            Column(Modifier.weight(1f)) {
-                Text(L.fixed("Profile"),style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.primary)
-                JournalTextButton(onClick={edit=true},contentPadding=PaddingValues(0.dp)) {Text(settings.username,style=MaterialTheme.typography.headlineMedium,maxLines=2,overflow=TextOverflow.Ellipsis)}
-            }
-            Column {
-                Row {IconButton(onClick=allBadges) {Icon(Icons.Outlined.EmojiEvents,L.s(R.string.msg_badges_2c57))};IconButton(onClick=settingsAction) {Icon(Icons.Outlined.Settings,L.fixed("Settings"))}}
+            val metrics=mapOf("time" to (localizedPracticeTime(state.summary.totalMillis) to L.fixed("Total practice")),"pieces" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(state.pieces.size) to L.fixed("Repertoire pieces")),"sessions" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(state.sessions.count(AchievementEngine::valid)) to L.fixed("Practice sessions")),"streak" to (L.quantity(R.plurals.days_count,currentPracticeStreak(state.sessions,LocalDate.now(),ZoneId.systemDefault())) to L.fixed("Current streak")))
+            BoxWithConstraints {
+                val columns=if(maxWidth<300.dp || fontScale>1.15f) 2 else 4
+                Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
+                    StatisticLayout.normalize(settings.statistics.split(',')).chunked(columns).forEach {row->
+                    Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(7.dp)) {row.forEach {id->
+                            Surface(Modifier.weight(1f).fillMaxHeight().heightIn(min=84.dp),shape=MaterialTheme.shapes.small,color=MaterialTheme.colorScheme.surface,border=androidx.compose.foundation.BorderStroke(1.dp,MaterialTheme.colorScheme.outlineVariant.copy(alpha=.4f))) {
+                                Column(Modifier.fillMaxHeight().padding(horizontal=6.dp,vertical=10.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(4.dp)) {
+                                    Text(metrics.getValue(id).first,style=MaterialTheme.typography.bodyLarge.copy(fontWeight=androidx.compose.ui.text.font.FontWeight.SemiBold,fontFeatureSettings="tnum"),maxLines=1,softWrap=false,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
+                                    Text(metrics.getValue(id).second,style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
+                                }
+                            }
+                        }}
+                    }
+                }
             }
         }
-        if(googleAccount == null) JournalTextButton(enabled=!busy,onClick={profile.googleSignIn(identityContext)},contentPadding=PaddingValues(0.dp)) {Text(L.s(R.string.google_sign_in))}
-        val metrics=mapOf(
-            "time" to (localizedPracticeTime(state.summary.totalMillis) to L.fixed("Total practice")),
-            "pieces" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(state.pieces.size) to L.fixed("Repertoire pieces")),
-            "sessions" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(state.sessions.count(AchievementEngine::valid)) to L.fixed("Practice sessions")),
-            "streak" to (L.quantity(R.plurals.days_count,currentPracticeStreak(state.sessions,LocalDate.now(),ZoneId.systemDefault())) to L.fixed("Current streak")))
-        Column(verticalArrangement=Arrangement.spacedBy(12.dp)) {
-            StatisticLayout.normalize(settings.statistics.split(',')).take(4).chunked(2).forEach {pair->
-                Row(horizontalArrangement=Arrangement.spacedBy(12.dp)) {pair.forEach {id->val value=metrics.getValue(id);MetricTile(value.first,value.second,Modifier.weight(1f))}}
+        Column(verticalArrangement=Arrangement.spacedBy(5.dp)) {
+            CompactSection(L.s(R.string.favorite_artist),L.s(R.string.msg_edit_5301)) {artistEdit=true}
+            JournalCard(Modifier.clickable(role=Role.Button) {artistEdit=true}) {
+                Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+                    ComposerPortrait(artist,Modifier.size(width=52.dp,height=64.dp))
+                    Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(4.dp)) {
+                        Text(settings.favoriteArtist.ifBlank {L.s(R.string.ui010_select_artist)},style=MaterialTheme.typography.titleMedium)
+                        artist?.let {Text(listOf(L.fixed(it.epoch),it.years).filter {it.isNotBlank()}.joinToString(" · "),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
+                    }
+                    Icon(Icons.Outlined.ChevronRight,null,Modifier.size(20.dp),tint=MaterialTheme.colorScheme.primary)
+                }
+                if(settings.favoritePiece.isNotBlank()) {HorizontalDivider(color=MaterialTheme.colorScheme.outlineVariant.copy(alpha=.4f));Text(L.s(R.string.favorite_piece)+" · "+settings.favoritePiece,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
             }
         }
-        Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
-            ComposerPortrait(artist)
-            Column(Modifier.weight(1f)) {
-                Text(L.s(R.string.favorite_artist),style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
-                Text(settings.favoriteArtist.ifBlank {L.s(R.string.not_selected)},style=MaterialTheme.typography.bodyLarge)
-                Text(listOf(settings.favoritePiece,settings.favoriteEra).filter {it.isNotBlank()}.joinToString(" · ").ifBlank {L.s(R.string.profile_favorites_hint)},style=MaterialTheme.typography.bodySmall,maxLines=3)
-            }
+        Column(verticalArrangement=Arrangement.spacedBy(5.dp)) {
+            CompactSection(L.s(R.string.ui010_about_me),L.s(R.string.msg_edit_5301)) {edit=true}
+            JournalCard {Text(settings.biography.ifBlank {L.s(R.string.ui010_add_bio)},style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)}
         }
-        if(settings.biography.isNotBlank()) Text(settings.biography,style=MaterialTheme.typography.bodyMedium,maxLines=3,overflow=TextOverflow.Ellipsis)
         Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
-            Text(L.s(R.string.msg_badge_showcase_6868),style=MaterialTheme.typography.titleMedium)
+            CompactSection(L.s(R.string.msg_badge_showcase_6868))
             if(showcased.isEmpty()) Text(L.s(R.string.showcase_collection_hint),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
-            else Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)) {
-                showcased.forEach {badge->Surface(onClick={badgeDetail(badge.definition.id)},modifier=Modifier.weight(1f),color=MaterialTheme.colorScheme.background) {
-                    Column(Modifier.padding(vertical=4.dp).heightIn(min=48.dp),horizontalAlignment=Alignment.CenterHorizontally) {MedalArtwork(badge,Modifier.size(40.dp));Text(badge.definition.localizedName,style=MaterialTheme.typography.labelSmall,maxLines=2,overflow=TextOverflow.Ellipsis)}
-                }}
-            }
+            else Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(10.dp)) {showcased.forEach {badge->
+                Surface(onClick={badgeDetail(badge.definition.id)},modifier=Modifier.size(54.dp).semantics {contentDescription=badge.definition.localizedName+" · "+localDateTime(badge.unlockedAt ?: 0)},shape=CircleShape,color=MaterialTheme.colorScheme.surface,border=androidx.compose.foundation.BorderStroke(1.dp,MaterialTheme.colorScheme.primary.copy(alpha=.35f))) {MedalArtwork(badge,Modifier.padding(4.dp))}
+            }}
         }
-        JournalTextButton(onClick=history,contentPadding=PaddingValues(0.dp)) {Text(L.s(R.string.msg_practice_history_76e7))}
+        JournalTextButton(onClick=history,contentPadding=PaddingValues(0.dp)) {Text(L.s(R.string.msg_practice_history_76e7),style=MaterialTheme.typography.labelMedium)}
     }
     if(edit) EditProfile(settings,avatar,busy,profile) {edit=false}
-    if(customize) StatisticsEditor(settings,busy,profile) {customize=false}
+    if(artistEdit) {
+        var value by rememberSaveable {mutableStateOf(settings.favoriteArtist)}
+        AlertDialog(onDismissRequest={artistEdit=false},title={Text(L.s(R.string.favorite_artist))},text={ArtistAutocomplete(value,{value=it})},confirmButton={JournalPrimaryButton(enabled=!busy,onClick={profile.favoriteArtist(value);artistEdit=false}) {Text(L.s(R.string.msg_save_efc0))}},dismissButton={JournalTextButton(onClick={artistEdit=false}) {Text(L.s(R.string.msg_cancel_77df))}})
+    }
+}
+
+@Composable internal fun ArtistAutocomplete(value:String,change:(String)->Unit) {
+    val app=androidx.compose.ui.platform.LocalContext.current.applicationContext as com.opus.piano.OpusApplication
+    val catalog by app.catalogRepository.snapshot.collectAsStateWithLifecycle(CatalogSnapshot(emptyList(),emptyList()))
+    var expanded by remember {mutableStateOf(false)}
+    val matches=remember(value,catalog.composers) {composerSuggestions(catalog.composers,value)}
+    Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
+        OutlinedTextField(value,{change(it.take(120));expanded=true},label={Text(L.s(R.string.favorite_artist))},leadingIcon={Icon(Icons.Outlined.Search,null)},modifier=Modifier.fillMaxWidth(),singleLine=true)
+        if(expanded && value.isNotBlank()) {
+            if(matches.isEmpty()) Text(L.s(R.string.ui010_local_no_match),style=MaterialTheme.typography.bodySmall)
+            else Column(Modifier.heightIn(max=240.dp).verticalScroll(rememberScrollState())) {matches.forEach {composer->
+                Surface(onClick={change(composer.name);expanded=false},color=MaterialTheme.colorScheme.surface) {
+                    Row(Modifier.fillMaxWidth().heightIn(min=60.dp).padding(6.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)) {ComposerPortrait(composer);Text(composer.name,style=MaterialTheme.typography.bodyMedium)}
+                }
+            }}
+        }
+    }
 }
 
 @Composable private fun StatisticsEditor(settings: ProfileSettings, busy: Boolean, profile: ProfileViewModel, dismiss: () -> Unit) {
@@ -139,7 +178,7 @@ import java.time.format.DateTimeFormatter
             JournalPrimaryButton(onClick = { profile.username(name) }, enabled = !busy && name.isNotBlank() && name.trim() != settings.username) { Text(L.s(R.string.msg_save_name_8ce6)) }
             JournalSecondaryButton(onClick = { photo.launch("image/*") }, enabled = !busy) { Text(L.s(R.string.msg_choose_avatar_7fa8)) }
             if (settings.avatar.isNotBlank()) JournalTextButton(onClick = profile::clearAvatar, enabled = !busy) { Text(L.s(R.string.msg_use_default_avatar_62c9)) }
-            OutlinedTextField(artist,{artist=it.take(120)},label={Text(L.s(R.string.favorite_artist))},modifier=Modifier.fillMaxWidth())
+            ArtistAutocomplete(artist,{artist=it})
             OutlinedTextField(piece,{piece=it.take(240)},label={Text(L.s(R.string.favorite_piece))},modifier=Modifier.fillMaxWidth())
             OutlinedTextField(era,{era=it.take(80)},label={Text(L.s(R.string.favorite_era))},modifier=Modifier.fillMaxWidth())
             OutlinedTextField(bio,{bio=it.take(400)},label={Text(L.s(R.string.musical_bio))},modifier=Modifier.fillMaxWidth())

@@ -62,7 +62,8 @@ internal fun alreadyAdded(work: CatalogWork, composer: CatalogComposer?, pieces:
     it.catalogWorkId == work.id || (it.catalogWorkId == null && catalogText(it.title) == catalogText(work.title) && catalogText(it.composer) == catalogText(composer?.name.orEmpty()))
 }
 
-@Composable fun CatalogScreen(model: CatalogViewModel, library: LibraryState, back: () -> Unit, composerPage: (String) -> Unit, workPage: (String) -> Unit, piecePage: (Long) -> Unit = {}, embedded: Boolean = false) {
+@Composable fun CatalogScreen(model: CatalogViewModel, library: LibraryState, back: () -> Unit, composerPage: (String) -> Unit, workPage: (String) -> Unit, piecePage: (Long) -> Unit = {}, embedded: Boolean = false, profile:ProfileViewModel) {
+    val favorites by profile.favoriteComposers.collectAsState()
     LaunchedEffect(Unit) { model.startBrowsing() }
     val state by model.browse.collectAsStateWithLifecycle()
     val results by model.results.collectAsStateWithLifecycle()
@@ -82,6 +83,7 @@ internal fun alreadyAdded(work: CatalogWork, composer: CatalogComposer?, pieces:
                 placeholder = { Text(L.s(R.string.msg_title_composer_or_catalogue_number_bf09)) }, leadingIcon = { Icon(Icons.Outlined.Search, null) },
                 trailingIcon = { if (state.query.isNotEmpty()) IconButton(onClick = { model.query("") }) { Icon(Icons.Outlined.Close, L.s(R.string.msg_clear_search_6730)) } }, singleLine = true)
         }
+        if(favorites.isNotEmpty()) item {FavoriteComposerStrip(snapshot,favorites,composerPage,profile::favoriteComposer)}
         if (state.loading) item { LinearProgressIndicator(Modifier.fillMaxWidth()) }
         state.error?.let { message -> item { CatalogFeedback(message, model::refreshSearch) } }
         state.warning?.let { message -> item { CatalogFeedback(message, model::refreshSearch) } }
@@ -99,12 +101,12 @@ internal fun alreadyAdded(work: CatalogWork, composer: CatalogComposer?, pieces:
             items(results.composers.take(limit), key = { "composer:${it.id}" }) { composer ->
                 Surface(onClick = { composerPage(composer.id) }, shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface, border = if(LocalAppearance.current.cards=="Outline") BorderStroke(1.dp,MaterialTheme.colorScheme.outlineVariant) else null) {
                     Row(Modifier.fillMaxWidth().padding(14.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                        Icon(Icons.Outlined.PersonOutline, null, tint = MaterialTheme.colorScheme.primary)
+                        ComposerPortrait(composer)
                         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(5.dp)) {
                             Text(composer.name, style = MaterialTheme.typography.titleMedium)
                             Text("${composer.years} · ${L.fixed(composer.epoch)}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
-                        Icon(Icons.Outlined.ChevronRight, null, tint = MaterialTheme.colorScheme.primary)
+                        ComposerFavoriteButton(composer,favorites.any {it.composerId==composer.id},profile::favoriteComposer)
                     }
                 }
             }

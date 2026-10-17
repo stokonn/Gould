@@ -4,7 +4,7 @@ import re
 import sqlite3
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
-schema=json.loads((root/'app/schemas/com.opus.piano.data.OpusDatabase/6.json').read_text())['database']
+schema=json.loads((root/'app/schemas/com.opus.piano.data.OpusDatabase/8.json').read_text())['database']
 db=sqlite3.connect(':memory:')
 for entity in schema['entities']:
     db.execute(entity['createSql'].replace('${TABLE_NAME}',entity['tableName']))
@@ -31,3 +31,10 @@ for piece,catalog in [(None,None),(7,None),(None,'work-7'),(7,'work-7')]:
     db.execute('DELETE FROM sessions WHERE id=200')
 assert db.execute(sql,dict(pieceId=99,catalogId=None,beforeTime=2**63-1,beforeId=2**63-1,limit=30)).fetchall()==[]
 print('PASS: 106 sessions across 4 pages, equal timestamps, duplicate parts, legacy attribution, catalogue filtering, newer insert and empty result')
+
+# Untimed associations include legacy sessions once, without changing recorded totals.
+db.execute("INSERT INTO session_piece_links VALUES(106,99,'Added later','Composer',NULL,NULL,'',123)")
+rows=db.execute(sql,dict(pieceId=99,catalogId=None,beforeTime=2**63-1,beforeId=2**63-1,limit=30)).fetchall()
+assert [row[0] for row in rows]==[106]
+assert db.execute('SELECT durationMillis FROM sessions WHERE id=106').fetchone()[0]==60000
+print('PASS: untimed legacy association visible once; original time unchanged')

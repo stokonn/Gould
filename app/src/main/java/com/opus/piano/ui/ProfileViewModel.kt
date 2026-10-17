@@ -20,6 +20,9 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
     private val db = (app as OpusApplication).database
     private val identity = (app as OpusApplication).identity
     val googleAccount = identity.account
+    val favoriteComposers=db.journalEditsDao().favorites().stateIn(viewModelScope,SharingStarted.Eagerly,emptyList())
+    fun favoriteComposer(id:String,selected:Boolean) {viewModelScope.launch {try {JournalEdits(db).favorite(id,selected)} catch(c:CancellationException) {throw c} catch(_:Exception) {notice.value=L.s(R.string.ui010_favorite_failed)}}}
+    fun favoriteArtist(value:String)=edit {it.copy(favoriteArtist=value.trim().take(120))}
     fun googleSignIn(context: android.content.Context) {
         if (busy.value) return
         busy.value = true
@@ -33,6 +36,8 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
                 notice.value = L.s(R.string.google_signed_in)
             } catch (e: androidx.credentials.exceptions.GetCredentialCancellationException) {
                 notice.value = L.s(R.string.google_cancelled)
+            } catch (e: androidx.credentials.exceptions.NoCredentialException) {
+                notice.value = L.s(R.string.google_no_credential)
             } catch (e: CancellationException) { throw e }
             catch (e: Exception) { notice.value = L.s(R.string.google_failed) }
             finally { busy.value = false }
@@ -48,6 +53,8 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
             finally { busy.value = false }
         }
     }
+    fun useGoogleName()=action {identity.useGoogleName()}
+    fun replaceGooglePhoto()=action {check((getApplication<Application>() as OpusApplication).media.allowed());check(identity.photo()!=null);identity.importPhoto(replaceExisting=true) {(getApplication<Application>() as OpusApplication).media.allowed()}}
     fun refreshGooglePhoto() = action { identity.importPhoto { (getApplication<Application>() as OpusApplication).media.allowed() } }
     private val backup = BackupRepository(app, db)
     val settings = db.personalDao().settings().map { it ?: ProfileSettings() }.stateIn(viewModelScope, SharingStarted.Eagerly, ProfileSettings())

@@ -18,7 +18,7 @@ import com.opus.piano.i18n.L
 import com.opus.piano.R
 import kotlinx.coroutines.CancellationException
 
-@Composable internal fun ComposerPortrait(composer: CatalogComposer?, modifier: Modifier = Modifier.size(40.dp)) {
+@Composable internal fun ComposerPortrait(composer: CatalogComposer?, modifier: Modifier = Modifier.size(width=44.dp,height=54.dp)) {
     val app=LocalContext.current.applicationContext as OpusApplication
     val consent by app.media.cellular.collectAsState()
     var credit by remember(composer?.id) { mutableStateOf<com.opus.piano.data.Portrait?>(null) }
@@ -29,7 +29,7 @@ import kotlinx.coroutines.CancellationException
         } catch(c:CancellationException) { throw c } catch(_:Exception) { value=null }
     }
     var details by remember { mutableStateOf(false) }
-    Surface(onClick={if(credit!=null) details=true},modifier=modifier,shape=CircleShape,color=MaterialTheme.colorScheme.surfaceVariant) {
+    Surface(onClick={if(credit!=null) details=true},modifier=modifier,shape=androidx.compose.foundation.shape.RoundedCornerShape(10.dp),color=MaterialTheme.colorScheme.surfaceVariant) {
         if(bitmap!=null) Image(bitmap!!.asImageBitmap(),composer?.name,contentScale=ContentScale.Crop)
         else Icon(Icons.Outlined.PersonOutline,L.s(R.string.msg_portrait_unavailable_6f4e),Modifier.padding(8.dp))
     }

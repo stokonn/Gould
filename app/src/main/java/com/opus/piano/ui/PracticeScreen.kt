@@ -99,11 +99,16 @@ import com.opus.piano.service.SmartPracticeService
             Text(L.s(R.string.practice_unsaved), color=MaterialTheme.colorScheme.error)
             JournalTextButton(onClick={model.practice.retryPersistence()}) { Text(L.s(R.string.practice_retry)) }
         }
+        EditorialHeader(L.fixed("Practice"))
+        JournalCard {
+            Column(Modifier.fillMaxWidth().padding(vertical=16.dp),horizontalAlignment=androidx.compose.ui.Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(12.dp)) {
         Text(timer.parts[timer.active].displayTitle,style=MaterialTheme.typography.headlineMedium)
         Text(duration(timer.elapsed),style=MaterialTheme.typography.displayLarge,fontFamily=MaterialTheme.typography.bodyLarge.fontFamily)
         Text(L.s(R.string.msg_credited_practice_elapsed_duration_timer_wal_0c94, (duration(timer.wallElapsed))),style=MaterialTheme.typography.bodyMedium)
         if(timer.mode!="Manual") Text(L.s(R.string.msg_detected_active_duration_timer_detectedactiv_764f, (duration(timer.detectedActive))))
         ActivityIndicator(if(smart && issue.isNotEmpty()) issue else if(timer.running && timer.smart && timer.status!="Automatically paused") timer.signal else timer.status,timer.running && timer.smart,motion)
+            }
+        }
         Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically) {
             Switch(smart,{ value -> if(!timer.running) { smart=value;profile.smartPreference(value) } },enabled=!timer.running,modifier=Modifier.semantics { contentDescription=L.fixed("Smart Practice") })
             Text(L.s(R.string.msg_smart_practice_experimental_34d8),Modifier.padding(start=12.dp))

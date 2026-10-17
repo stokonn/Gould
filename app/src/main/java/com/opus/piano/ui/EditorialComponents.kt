@@ -22,33 +22,3 @@ import com.opus.piano.data.compactPracticeTime
         }
     }
 }
-
-@Composable internal fun JournalHome(state: LibraryState, name: String, practice: () -> Unit, repertoire: () -> Unit, profile: () -> Unit, wrapped: () -> Unit) {
-    LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(24.dp), verticalArrangement = Arrangement.spacedBy(24.dp)) {
-        item { Heading(L.s(R.string.msg_your_practice_journal_d0b0), L.s(R.string.msg_welcome_name_5c46, (name)), L.s(R.string.msg_a_little_time_at_the_piano_a_lasting_musical_9009)) }
-        if (state.loading) item { EditorialSkeleton() }
-        else {
-            item {
-                Text(L.s(R.string.msg_time_well_spent_a467), style = MaterialTheme.typography.labelSmall)
-                Text(localizedPracticeTime(state.summary.totalMillis), style = MaterialTheme.typography.displayMedium.copy(fontFamily = MaterialTheme.typography.bodyLarge.fontFamily), color = MaterialTheme.colorScheme.primary)
-                Text("${L.quantity(R.plurals.sessions_count,state.sessions.count(com.opus.piano.data.AchievementEngine::valid))} · ${L.quantity(R.plurals.pieces_count,state.pieces.size)}", style = MaterialTheme.typography.bodyMedium)
-                Spacer(Modifier.height(16.dp)); HorizontalDivider()
-            }
-            item {
-                JournalPrimaryButton(onClick = practice, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text(L.s(R.string.msg_begin_practice_c5a7)) }
-                JournalTextButton(onClick = repertoire) { Text(L.s(R.string.msg_open_your_repertoire_a1aa)) }
-            }
-            item {
-                SectionTitle(L.s(R.string.msg_the_latest_entry_4499))
-                Spacer(Modifier.height(12.dp))
-                state.sessions.firstOrNull()?.let { SessionRow(it, state.summary.partsBySession[it.id].orEmpty()) }
-                    ?: Text(L.s(R.string.msg_your_first_completed_session_will_begin_the_bbf1), style = MaterialTheme.typography.bodyMedium)
-            }
-            item {
-                HorizontalDivider(); Spacer(Modifier.height(12.dp))
-                JournalTextButton(onClick = profile) { Text(L.s(R.string.msg_your_profile_achievements_b225)) }
-                JournalTextButton(onClick = wrapped) { Text(L.s(R.string.msg_wrapped_preview_fbae)) }
-            }
-        }
-    }
-}

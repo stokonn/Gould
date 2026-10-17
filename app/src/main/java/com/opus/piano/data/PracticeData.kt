@@ -25,6 +25,8 @@ interface PracticeDao {
     @Query("""SELECT * FROM sessions s WHERE
         (s.completedAt < :beforeTime OR (s.completedAt = :beforeTime AND s.id < :beforeId))
         AND ((:pieceId IS NULL AND :catalogId IS NULL) OR
+            EXISTS (SELECT 1 FROM session_piece_links l WHERE l.sessionId=s.id AND
+                ((:pieceId IS NOT NULL AND l.pieceId=:pieceId) OR (:catalogId IS NOT NULL AND l.catalogWorkId=:catalogId))) OR
             EXISTS (SELECT 1 FROM session_parts p WHERE p.sessionId=s.id
                 AND ((:pieceId IS NOT NULL AND p.pieceId=:pieceId) OR (:catalogId IS NOT NULL AND p.catalogWorkId=:catalogId))) OR
             (NOT EXISTS (SELECT 1 FROM session_parts p WHERE p.sessionId=s.id) AND

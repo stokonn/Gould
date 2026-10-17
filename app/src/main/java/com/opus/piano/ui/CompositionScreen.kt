@@ -31,7 +31,7 @@ import com.opus.piano.data.*
     var tab by rememberSaveable(workId, pieceId) { mutableIntStateOf(0) }
     var editor by rememberSaveable { mutableStateOf(false) }
     LaunchedEffect(sourceId) { sourceId?.let { catalogModel.loadWork(it) } }
-    val sessions=remember(library.sessions,library.parts,personal,sourceId) { PracticeInsights.forPiece(library.sessions,library.parts,personal?.id,sourceId) }
+    val sessions=remember(library.sessions,library.parts,library.links,personal,sourceId) { PracticeInsights.forPiece(library.sessions,library.parts,personal?.id,sourceId,library.links) }
 
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         item { CatalogBack(L.s(R.string.msg_the_composition_53cf), back) }

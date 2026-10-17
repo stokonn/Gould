@@ -9,11 +9,11 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-data class LibraryState(val pieces: List<Piece> = emptyList(), val sessions: List<PracticeSession> = emptyList(), val loading: Boolean = true, val parts: List<SessionPart> = emptyList(), val summary: JournalSummary = JournalSummary())
+data class LibraryState(val pieces: List<Piece> = emptyList(), val sessions: List<PracticeSession> = emptyList(), val loading: Boolean = true, val parts: List<SessionPart> = emptyList(), val summary: JournalSummary = JournalSummary(), val links:List<SessionPieceLink> = emptyList())
 typealias TimerState = com.opus.piano.practice.PracticeState
 
 class OpusViewModel(private val repository: OpusRepository, private val saved: SavedStateHandle, val practice: com.opus.piano.practice.PracticeCoordinator) : ViewModel() {
-    val library = repository.journal.map { (pieces, sessions, parts) -> LibraryState(pieces, sessions, false, parts, traceOperation("Journal.summary") { summarizeJournal(sessions, parts) }) }
+    val library = repository.journal.map { (pieces, sessions, parts, links) -> LibraryState(pieces, sessions, false, parts, traceOperation("Journal.summary") { summarizeJournal(sessions, parts) },links) }
         .distinctUntilChanged().flowOn(kotlinx.coroutines.Dispatchers.Default)
         .catch { error ->
             if (error is kotlinx.coroutines.CancellationException) throw error

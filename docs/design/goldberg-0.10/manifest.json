@@ -1,0 +1,17 @@
+{
+  "version": "0.10",
+  "source": "Generated visual mockups from conversation",
+  "purpose": "Codex design references only",
+  "primary": [
+    "screens/01_HOME_APPROVED.png",
+    "screens/02_PROFILE_APPROVED.png"
+  ],
+  "secondary": [
+    "screens/03_REPERTOIRE_REFERENCE.png",
+    "screens/04_COMPLETED_SESSION_EDIT_REFERENCE.png",
+    "screens/05_SETTINGS_REFERENCE.png",
+    "screens/06_PRACTICE_REFERENCE.png",
+    "screens/07_FAVORITE_ARTIST_AUTOCOMPLETE_DETAIL.png"
+  ],
+  "reference_rules": "See README.md. App source code and real data take precedence over placeholder copy."
+}

@@ -12,16 +12,16 @@ import org.json.JSONObject
 
 private data class BackupColumn(val name: String, val type: String, val required: Boolean)
 
-/** Format 3/schema 7 adds personalization and recovery archives; formats 1/2 remain importable. */
+/** Format 4/schema 8 adds untimed history associations and composer favorites; formats 1/2/3 remain importable. */
 class BackupRepository(private val context: Context, private val db: OpusDatabase) {
     companion object {
         const val MAX_BYTES = 32 * 1024 * 1024
-        val tables = listOf("pieces", "sessions", "catalog_composers", "catalog_works", "catalog_cache", "saved_recordings", "badge_unlocks", "session_parts", "profile_settings", "session_intervals", "practice_recovery_archives")
+        val tables = listOf("pieces", "sessions", "catalog_composers", "catalog_works", "catalog_cache", "saved_recordings", "badge_unlocks", "session_parts", "profile_settings", "session_intervals", "practice_recovery_archives", "session_piece_links", "favorite_composers")
     }
     suspend fun export(): String = withContext(Dispatchers.IO) {
         db.withTransaction {
             JSONObject().apply {
-                put("format", "goldberg-backup"); put("version", 3); put("schema", 7); put("createdAt", System.currentTimeMillis())
+                put("format", "goldberg-backup"); put("version", 4); put("schema", 8); put("createdAt", System.currentTimeMillis())
                 put("tables", JSONObject().apply { tables.forEach { table ->
                     val rows = JSONArray()
                     db.openHelper.writableDatabase.query("SELECT * FROM `$table`").use { c ->
@@ -37,9 +37,15 @@ class BackupRepository(private val context: Context, private val db: OpusDatabas
     private fun parse(raw: String): JSONObject {
         require(raw.toByteArray().size <= MAX_BYTES) { L.s(R.string.msg_backup_exceeds_32_mib_046e) }
         val root = JSONObject(raw)
-        require(root.getString("format") == "goldberg-backup" && ((root.get("version") == 1 && root.get("schema") in listOf(4, 5)) || (root.get("version") == 2 && root.get("schema") == 6) || (root.get("version") == 3 && root.get("schema") == 7))) { L.s(R.string.unsupported_backup) }
+        require(root.getString("format") == "goldberg-backup" && ((root.get("version") == 1 && root.get("schema") in listOf(4, 5)) || (root.get("version") == 2 && root.get("schema") == 6) || (root.get("version") == 3 && root.get("schema") == 7) || (root.get("version") == 4 && root.get("schema") == 8))) { L.s(R.string.unsupported_backup) }
         return root.getJSONObject("tables").also {
-            require(it.keys().asSequence().toSet() == (if (root.getInt("schema") < 6) tables.dropLast(2) else if (root.getInt("schema") == 6) tables.dropLast(1) else tables).toSet()) { L.s(R.string.msg_incomplete_backup_bf05) }
+            val originalTables=tables.filterNot { table ->
+                (root.getInt("schema")<8 && table in listOf("session_piece_links","favorite_composers")) ||
+                (root.getInt("schema")<7 && table=="practice_recovery_archives") ||
+                (root.getInt("schema")<6 && table=="session_intervals")
+            }
+            require(it.keys().asSequence().toSet()==originalTables.toSet()) {L.s(R.string.msg_incomplete_backup_bf05)}
+            if(root.getInt("schema")<8) {it.put("session_piece_links",JSONArray());it.put("favorite_composers",JSONArray())}
             if (root.getInt("schema") < 7) {
                 it.put("practice_recovery_archives", JSONArray())
                 it.getJSONArray("profile_settings").objects().forEach { row ->
@@ -95,7 +101,7 @@ class BackupRepository(private val context: Context, private val db: OpusDatabas
             val parts = stage.personalDao().allParts()
             require(parts.all { it.id > 0 && it.durationMillis >= 0 }) { L.s(R.string.msg_invalid_piece_time_7785) }
             val grouped = parts.groupBy { it.sessionId }
-            require(sessions.all { s -> grouped[s.id]?.fold(0L) { total, p -> Math.addExact(total, p.durationMillis) } == s.durationMillis }) { L.s(R.string.msg_session_time_does_not_match_piece_times_2ac7) }
+            require(sessions.all { s -> (grouped[s.id]?.fold(0L) { total, p -> Math.addExact(total, p.durationMillis) } == s.durationMillis) || (grouped[s.id]==null && s.timingQuality=="Legacy") }) { L.s(R.string.msg_session_time_does_not_match_piece_times_2ac7) }
             val intervals = stage.practiceDao().allIntervals().groupBy { it.sessionId }
             sessions.forEach { session ->
                 val entries = grouped[session.id].orEmpty()
@@ -124,6 +130,13 @@ class BackupRepository(private val context: Context, private val db: OpusDatabas
                 }
             }
             stage.practiceDao().archives().forEach { require(it.payload.length <= 16*1024*1024 && it.updatedAt>=0 && it.archivedAt>0) }
+            stage.journalEditsDao().allLinks().forEach { link ->
+                val session=requireNotNull(sessions.firstOrNull {it.id==link.sessionId})
+                require(link.pieceId>0 && link.title.isNotBlank() && link.addedAt>=0)
+                require(grouped[session.id].orEmpty().none {it.pieceId==link.pieceId || (link.catalogWorkId!=null && it.catalogWorkId==link.catalogWorkId)})
+                require(grouped[session.id]!=null || (session.pieceId!=link.pieceId && (link.catalogWorkId==null || session.catalogWorkId!=link.catalogWorkId)))
+            }
+            stage.journalEditsDao().allFavorites().forEach {require(it.composerId.isNotBlank() && it.composerId.length<=160 && it.addedAt>=0)}
             val profileRows = data.getJSONArray("profile_settings")
             require(profileRows.objects().all { it.getInt("smartEnabled") in 0..1 }) { L.s(R.string.msg_invalid_smart_preference_358b) }
             require(profileRows.length() <= 1 && (profileRows.length() == 0 || profileRows.getJSONObject(0).getInt("id") == 1)) { L.s(R.string.msg_invalid_profile_record_4521) }

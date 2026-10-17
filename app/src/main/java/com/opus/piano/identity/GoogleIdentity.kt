@@ -53,13 +53,20 @@ class GoogleIdentity(private val context: Context, private val db: OpusDatabase)
         }
         // Keep the local nickname, avatar, favorites and all journal data.
     }
-    suspend fun importPhoto(allowed: () -> Boolean) = lock.withLock {
+    fun googleName():String?=prefs.getString("google-name",null)
+    suspend fun useGoogleName()=lock.withLock {withContext(Dispatchers.IO) {
+        check(account.value!=null)
+        val name=requireNotNull(googleName()?.trim()?.take(80)?.takeIf {it.isNotBlank()})
+        db.withTransaction {val current=db.personalDao().getSettings() ?: ProfileSettings();db.personalDao().saveSettings(current.copy(username=name))}
+        check(prefs.edit().putBoolean("manual-name",false).commit())
+    }}
+    suspend fun importPhoto(replaceExisting:Boolean=false, allowed: () -> Boolean) = lock.withLock {
         withContext(Dispatchers.IO) {
             val url = photo()?.let { java.net.URI(it) } ?: return@withContext
             if (account.value == null || !allowed() || url.scheme != "https" ||
                 !(url.host == "googleusercontent.com" || url.host?.endsWith(".googleusercontent.com") == true)) return@withContext
             val initial = db.personalDao().getSettings() ?: ProfileSettings()
-            if (!mayImportAvatar(initial.avatar)) return@withContext
+            if (!replaceExisting && !mayImportAvatar(initial.avatar)) return@withContext
             val connection = url.toURL().openConnection() as javax.net.ssl.HttpsURLConnection
             connection.connectTimeout = 8000; connection.readTimeout = 8000; connection.instanceFollowRedirects = false
             val bytes = try {
@@ -73,13 +80,13 @@ class GoogleIdentity(private val context: Context, private val db: OpusDatabase)
                     out.toByteArray()
                 }
             } finally { connection.disconnect() }
-            val bitmap = decodeGoogleAvatar(bytes) ?: return@withContext
+            val bitmap = requireNotNull(decodeGoogleAvatar(bytes))
             val output = java.io.ByteArrayOutputStream()
             try { bitmap.compress(android.graphics.Bitmap.CompressFormat.JPEG, 88, output) } finally { bitmap.recycle() }
             check(allowed())
             db.withTransaction {
                 val current = db.personalDao().getSettings() ?: ProfileSettings()
-                if (mayImportAvatar(current.avatar)) db.personalDao().saveSettings(current.copy(avatar = android.util.Base64.encodeToString(output.toByteArray(), android.util.Base64.NO_WRAP)))
+                if (current.avatar==initial.avatar && (replaceExisting || mayImportAvatar(current.avatar))) db.personalDao().saveSettings(current.copy(avatar = android.util.Base64.encodeToString(output.toByteArray(), android.util.Base64.NO_WRAP)))
             }
         }
     }

@@ -8,6 +8,6 @@ Choose Czech, English or the system language and your preferred appearance. Add 
 
 Smart Practice is optional and experimental. Microphone permission is requested when listening is enabled. Denying it leaves manual practice available. The app does not upload recordings for detection. Interrupted drafts should be recovered before starting a different session.
 
-Google identity is optional. The 0.9.2 source integrates Credential Manager with the supplied Web client ID; the owner reports successful real Google authentication on a Samsung Galaxy A55. That was the owner’s manual test, not Codex testing. The owner individually confirmed all six Google identity scenarios: PASS — owner-reported manual verification. See [Verification](Verification) for exact observations and evidence boundaries. Local nickname/avatar editing works without an account. Signing in does not provide cloud backup or synchronization.
+Google identity is optional. Goldberg 0.10 integrates Credential Manager with the supplied Web client ID. The owner reports that sign-in, name/avatar import with consent, manual override preservation, restart persistence, sign-out/account switching and local-data preservation passed on a Samsung Galaxy A55. This was owner-performed manual testing, not Codex testing. See [Goldberg 0.10 Verification](Verification-0.10) for evidence boundaries. Local nickname/avatar editing works without an account. Signing in does not provide cloud backup or synchronization.
 
 [Home](Home) · [User Guide](User-Guide)

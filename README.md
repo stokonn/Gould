@@ -2,19 +2,21 @@
 
 A native Android piano practice journal built with Kotlin, Jetpack Compose, Material 3 and Room. Android 8.0+; English and Czech; light and dark themes. Your journal stays local.
 
-**Goldberg [0.9.2](https://github.com/stokonn/Goldberg/releases/tag/v0.9.2)** — an editorial piano-practice journal with optional Google profile identity.
+**Goldberg [0.10](https://github.com/stokonn/Goldberg/releases/tag/v0.10)** — the editorial redesign of the local piano-practice journal, with optional Google profile identity.
 
 [Download](https://github.com/stokonn/Goldberg/releases) · [Official Wiki](https://github.com/stokonn/Goldberg/wiki) · [Issues](https://github.com/stokonn/Goldberg/issues) · [Development Project](https://github.com/users/stokonn/projects/2) (authorized collaborators)
 
 - Durable manual and experimental Smart Practice, multi-piece sessions, notes and review.
 - Local repertoire, catalogue information, paged history and per-piece accounting.
 - Profile, earned badges and a five-badge showcase.
+- Weekly activity, local composer favorites and searchable Favorite Artist selection.
+- Post-session piece-list edits that preserve recorded session time.
 - Portable backups, restore, CSV exports and optional reminders.
 - Classic Piano branding and Bach’s Secret.
 
-![Goldberg Home](docs/wiki/images/home-development.png)
+![Goldberg 0.10 Home](docs/wiki/images/goldberg-0.10-home.png)
 
-Before updating, export a backup. Never uninstall to bypass a signing error. Google identity does not synchronize practice data. Google sign-in, display-name/avatar import, nickname preservation, restart, sign-out and switching passed owner-reported manual verification on a Galaxy A55. Codex performed no physical-phone testing. See [verification evidence](docs/VERIFICATION-0.9.2.md).
+Before updating, export a backup. Install over an existing Goldberg version; never uninstall to bypass a signing error. Google identity does not synchronize practice data. For 0.10, sign-in, display-name/avatar import, manual override preservation, restart persistence, sign-out, account switching and local-data preservation passed owner-reported manual verification on a Galaxy A55. Codex performed no physical-phone testing. See [0.10 verification evidence](docs/VERIFICATION-0.10.md) and [release notes](docs/RELEASE-0.10.md).
 
 ## Development
 

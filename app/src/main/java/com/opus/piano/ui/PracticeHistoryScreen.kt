@@ -43,8 +43,8 @@ import kotlinx.coroutines.CancellationException
             val entries=parts[s.id].orEmpty()
             val focused=if ((pieceId!=null || catalogId!=null) && entries.isNotEmpty()) entries.filter {
                 (pieceId!=null && it.pieceId==pieceId) || (catalogId!=null && it.catalogWorkId==catalogId)
-            }.sumOf { it.durationMillis } else s.durationMillis
-            SessionRow(s,entries,focused)
+            }.sumOf { it.durationMillis } else if(pieceId==null && catalogId==null || pieceId!=null && s.pieceId==pieceId || catalogId!=null && s.catalogWorkId==catalogId) s.durationMillis else 0L
+            SessionRow(s,entries,focused,untimed=(pieceId!=null || catalogId!=null) && focused==0L)
         }
         if(loading) item { LinearProgressIndicator(Modifier.fillMaxWidth()) }
         if(failed) item { Text(L.s(R.string.msg_saved_journal_could_not_be_loaded_restart_go_cfce));JournalTextButton(onClick={request++}) { Text(L.s(R.string.practice_retry)) } }

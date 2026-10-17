@@ -17,7 +17,8 @@ import androidx.compose.ui.unit.dp
 import com.opus.piano.data.*
 
 @OptIn(ExperimentalLayoutApi::class, androidx.compose.foundation.ExperimentalFoundationApi::class)
-@Composable internal fun RepertoireScreen(state: LibraryState, catalog: CatalogSnapshot, model: OpusViewModel, explore: () -> Unit, detail: (Long) -> Unit) {
+@Composable internal fun RepertoireScreen(state: LibraryState, catalog: CatalogSnapshot, model: OpusViewModel, explore: () -> Unit, detail: (Long) -> Unit, profile: ProfileViewModel, composerPage:(String)->Unit) {
+    val favorites by profile.favoriteComposers.collectAsState()
     val appearance=LocalAppearance.current
     val store=(androidx.compose.ui.platform.LocalContext.current.applicationContext as com.opus.piano.OpusApplication).appearance
     var addMenu by remember { mutableStateOf(false) }
@@ -59,9 +60,17 @@ import com.opus.piano.data.*
             }
         } } }
         item {
-            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                JournalSecondaryButton(onClick = { filters = !filters }) { Icon(Icons.Outlined.Tune, null); Text(L.s(R.string.msg_filters_96e5)) }
-                Choice(L.s(R.string.msg_sort_adc4), listOf("Alphabetical", "Composer", "Recently added", "Recently practiced"), sort) { store.edit { a -> a.copy(sort=it) } }
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                var sorting by remember { mutableStateOf(false) }
+                Box(Modifier.weight(1f)) {
+                    JournalSecondaryButton(onClick={sorting=true},modifier=Modifier.fillMaxWidth()) { Icon(Icons.Outlined.Sort,null); Text(L.s(R.string.msg_sort_adc4)) }
+                    DropdownMenu(sorting,{sorting=false}) {
+                        listOf("Alphabetical","Composer","Recently added","Recently practiced").forEach { option ->
+                            DropdownMenuItem(text={Text(L.fixed(option))},onClick={store.edit {it.copy(sort=option)};sorting=false},leadingIcon={if(sort==option) Icon(Icons.Outlined.Check,null)})
+                        }
+                    }
+                }
+                JournalSecondaryButton(onClick = { filters = !filters },modifier=Modifier.weight(1f)) { Icon(Icons.Outlined.Tune, null); Text(L.s(R.string.msg_filters_96e5)) }
             }
             if (filters) FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 Choice(L.s(R.string.msg_status_bae7), listOf("All") + LearningStatus.entries.map { it.label }, status) { status = it }
@@ -72,10 +81,11 @@ import com.opus.piano.data.*
                 JournalTextButton(onClick = { status = "All"; composer = "All"; era = "All"; instrument = "All"; genre = "All"; query = "" }) { Text(L.s(R.string.msg_clear_filters_4122)) }
             }
         }
+        if(favorites.isNotEmpty()) item { FavoriteComposerStrip(catalog,favorites,composerPage,profile::favoriteComposer) }
         if (state.loading) item { EditorialSkeleton() }
         if (!state.loading && pieces.isEmpty()) item { Panel { SectionTitle(if (state.pieces.isEmpty()) L.s(R.string.msg_your_collection_begins_here_ca6c) else L.s(R.string.msg_no_matching_compositions_391a)); Text(L.s(R.string.msg_discover_a_work_or_add_one_manually_change_t_fb4a), color = MaterialTheme.colorScheme.onSurfaceVariant); JournalTextButton(onClick=explore) { Text(L.s(R.string.msg_discover_in_catalogue_28f0)) } } }
         items(pieces, key = { it.id }) { piece ->
-            Surface(modifier = Modifier.animateItem(), onClick = { detail(piece.id) }, shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.background) {
+            Surface(modifier = Modifier.animateItem(), onClick = { detail(piece.id) }, shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.surface) {
                 Column(Modifier.padding(horizontal = 12.dp, vertical = if(appearance.density=="Compact") 8.dp else 12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)) {
                         ComposerPortrait(composerMap[ComposerIdentity.resolve(piece,works)])

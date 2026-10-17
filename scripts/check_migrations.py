@@ -18,7 +18,7 @@ def make_schema(connection, version):
     return schema
 
 
-for starting_version in (1, 2, 3, 4, 5, 6):
+for starting_version in (1, 2, 3, 4, 5, 6, 7):
     db = sqlite3.connect(":memory:")
     db.execute("PRAGMA foreign_keys = ON")
     make_schema(db, starting_version)
@@ -32,10 +32,10 @@ for starting_version in (1, 2, 3, 4, 5, 6):
     if starting_version >= 4:
         db.execute("INSERT INTO session_parts(sessionId,pieceId,title,composer,musicalEra,durationMillis,notes) VALUES(3,7,'Legacy','Composer','',60000,'')")
         db.execute("INSERT INTO profile_settings(id,username,avatar,theme,showcase) VALUES(1,'Existing musician','','Dark','first_piece')")
-    if starting_version == 6:
+    if starting_version >= 6:
         db.execute("INSERT INTO local_app_state VALUES(1,1,0,18,0,4,'2026-10-15')")
         db.execute("INSERT INTO practice_drafts VALUES(1,'unchanged original draft',123)")
-    for version in range(starting_version, 7):
+    for version in range(starting_version, 8):
         block = SOURCE.split(f"val MIGRATION_{version}_{version + 1} =", 1)[1].split("\n        }", 1)[0]
         statements = re.findall(r'db\.execSQL\("([^"]+)"\)', block)
         assert statements, f"Migration {version} not found"
@@ -54,11 +54,11 @@ for starting_version in (1, 2, 3, 4, 5, 6):
     if starting_version >= 4:
         assert db.execute("SELECT username,theme,showcase,typography,statistics FROM profile_settings").fetchone() == ('Existing musician','Dark','first_piece','Editorial','time,pieces,sessions,streak')
     if starting_version >= 4: assert db.execute("SELECT favoriteArtist,favoritePiece,favoriteEra,biography FROM profile_settings").fetchone() == ('','','','')
-    if starting_version == 6:
+    if starting_version >= 6:
         assert db.execute("SELECT payload,updatedAt FROM practice_drafts WHERE id=1").fetchone() == ('unchanged original draft',123)
         assert db.execute("SELECT generation,lastReminderDay FROM local_app_state").fetchone() == (4,'2026-10-15')
     expected = sqlite3.connect(":memory:")
-    for entity in make_schema(expected, 7)["entities"]:
+    for entity in make_schema(expected, 8)["entities"]:
         table = entity["tableName"]
         assert db.execute(f"PRAGMA table_info({table})").fetchall() == expected.execute(f"PRAGMA table_info({table})").fetchall(), table
         assert db.execute(f"PRAGMA index_list({table})").fetchall() == expected.execute(f"PRAGMA index_list({table})").fetchall(), table
@@ -69,4 +69,4 @@ for starting_version in (1, 2, 3, 4, 5, 6):
     db.execute("INSERT OR IGNORE INTO badge_unlocks VALUES('first_piece', 123)")
     db.execute("INSERT OR IGNORE INTO badge_unlocks VALUES('first_piece', 999)")
     assert db.execute("SELECT unlockedAt FROM badge_unlocks").fetchone() == (123,)
-    print(f"PASS v{starting_version} → v7: legacy data retained, schema matches Room export, first timestamp retained")
+    print(f"PASS v{starting_version} → v8: legacy data retained, schema matches Room export, first timestamp retained")

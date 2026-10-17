@@ -1,14 +1,13 @@
 # Google profile identity — configuration and verification
 
-The owner supplied the real public Web client ID `355619842126-042mfov62elelsi87maol41oe8pva3el.apps.googleusercontent.com` and reports an Android client registered for `com.opus.piano`. Credential Manager and Google ID are integrated for optional local profile identity. No OAuth secret, token persistence, cloud backup or practice synchronization is introduced. The owner now reports successful real Google authentication on a Samsung Galaxy A55 following an in-place install. This is user-reported manual evidence, not testing performed by Codex. Cloud Console settings were not independently inspected.
+The owner supplied the public Web client ID `355619842126-042mfov62elelsi87maol41oe8pva3el.apps.googleusercontent.com` and configured an Android OAuth client for `com.opus.piano`. Credential Manager and Google ID are integrated for optional local profile identity. No OAuth client secret, token persistence, cloud backup or practice synchronization is introduced. For the 0.10 candidate, the owner reports successful sign-in, display-name/avatar import after consent, preservation of manual nickname/avatar overrides, restart persistence, sign-out/account switching and local practice-data preservation on a Samsung Galaxy A55. This is owner-reported manual evidence, not Codex testing. The Google Cloud Console settings and signing registration were not independently inspected.
 
-## Configuration the owner must provide
+## OAuth configuration notes
 
-1. Create/select a Google Cloud project and configure its OAuth consent screen, application name, support email, authorized domain/privacy information, audience and test users as applicable. Enable Google account identity for the intended audience.
-2. Create an Android OAuth client for package `com.opus.piano`. Register the SHA-1 certificate fingerprint of the compatible signing key: `4F:BB:35:7F:14:74:0D:B3:6F:CE:48:67:27:50:75:57:D4:E3:C4:20`. Verify it independently with apksigner against the actual APK. The trusted SHA-256 is `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`. Never create/rotate a key or uninstall an existing app to work around OAuth/signature problems.
-3. Create the Web OAuth client ID required by Android Credential Manager's Sign in with Google ID-token request. Supply the real public server/client ID through an appropriate build configuration. A client ID is public; a client secret must never enter the APK or Git.
-4. Confirm that the selected Android and Web clients belong to the intended project. Configure test accounts and publish consent appropriately when ready. Supply the real client ID, project identity and authorized signing confirmation to implementation.
-5. Complete integration with the supported Android Credential Manager + Google ID libraries, inspect the returned Google credential type and reject malformed responses. Do not introduce Firebase/cloud synchronization solely for profile identity. Where token authenticity must be trusted beyond local UI, validate the token with a trusted backend; decoding a JWT is not verification.
+1. The owner has supplied the public Web OAuth client ID and reports creating the Android OAuth client for `com.opus.piano`; successful owner-reported 0.10 sign-in is documented above. The owner should maintain the consent screen audience/test-user configuration in their Google Cloud project.
+2. The intended Android signing SHA-1 is `4F:BB:35:7F:14:74:0D:B3:6F:CE:48:67:27:50:75:57:D4:E3:C4:20`. The trusted certificate SHA-256 is `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`. The final APK fingerprint is checked locally; Cloud Console registration cannot be independently inspected here. Never rotate the key or uninstall to work around OAuth/signature problems.
+3. The Web client ID is public and configured in the Android Credential Manager Google ID-token request. Never put a client secret in the APK or Git.
+4. Do not introduce Firebase/cloud synchronization solely for profile identity. Where token authenticity must be trusted beyond local UI, validate it with a trusted backend; decoding a JWT is not verification.
 
 ## Required behavior for integration
 
@@ -16,7 +15,7 @@ The owner supplied the real public Web client ID `355619842126-042mfov62elelsi87
 - After a valid result, ask before replacing an existing manually chosen avatar or nickname. Import the account's display name/avatar as identity defaults; keep explicit manual overrides separate. No persistent connected-status card on Profile.
 - Settings exposes account management/sign-out. Sign-out clears the credential session/account binding, not the local journal, manually chosen nickname/avatar, favorites or biography. Account switches must not overwrite existing manual choices without confirmation.
 - Download a Google avatar only with network/media consent; never treat sign-in as metered-image consent. Do not log tokens, account emails or identifiers unnecessarily.
-- Verify sign-in, cancellation, failure, sign-out, avatar/name defaults, manual overrides, restart, account switching and signed-out operation on an emulator with Google Play services after real client setup. Only individually observed provider behaviors may be reported as passed; current evidence is separated in MANUAL-VERIFICATION-0.9.2.md.
+- Codex's emulator flow reached Google account entry but was not authenticated because the emulator had no test account configured; no credentials were entered. Do not call this an authentication pass. Separately, the six owner-observed 0.10 physical-device results listed above are `PASS — owner-reported manual verification`; they were not run by Codex.
 
 Official implementation references (review again when wiring the real client):
 - [Credential Manager and Sign in with Google](https://developer.android.com/identity/sign-in/credential-manager-siwg)
@@ -34,7 +33,7 @@ Settings offers sign-out; sign out then sign in to choose another account. Provi
 
 ## Signing registration
 
-Both the existing published 0.9.1 APK and the local debug candidate use the same compatible certificate when built with the current signing configuration. Register SHA-1 `4F:BB:35:7F:14:74:0D:B3:6F:CE:48:67:27:50:75:57:D4:E3:C4:20` for package `com.opus.piano` in the same Cloud project as the Web client. No additional Android client is needed unless a future release uses a different certificate; register that actual certificate before distributing it. The app does not have access to verify your Google Cloud Console registrations.
+The published 0.9.2 APK and Goldberg 0.10 candidate use the same compatible certificate under the repository signing configuration. Register SHA-1 `4F:BB:35:7F:14:74:0D:B3:6F:CE:48:67:27:50:75:57:D4:E3:C4:20` for package `com.opus.piano` in the same Cloud project as the Web client. No additional Android client is needed unless a future release uses a different certificate; register that actual certificate before distributing it. The app does not have access to verify your Google Cloud Console registrations.
 
 
 ## Avatar decoder regression

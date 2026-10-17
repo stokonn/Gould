@@ -6,6 +6,7 @@
 - [Developer Guide](Developer-Guide)
 - [FAQ & Troubleshooting](FAQ-and-Troubleshooting)
 - [Changelog & Roadmap](Changelog-and-Roadmap)
+- [Goldberg 0.10 Verification](Verification-0.10)
 - [Credits & Licenses](Credits-and-Licenses)
 
 - [Verification status](Verification)

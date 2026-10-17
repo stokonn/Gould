@@ -26,7 +26,7 @@ class OpusApplication : Application() {
     val openPractice = kotlinx.coroutines.flow.MutableStateFlow(0L)
     val database by lazy {
         Room.databaseBuilder(this, OpusDatabase::class.java, "opus.db")
-            .addMigrations(OpusDatabase.MIGRATION_1_2, OpusDatabase.MIGRATION_2_3, OpusDatabase.MIGRATION_3_4, OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6, OpusDatabase.MIGRATION_6_7).build()
+            .addMigrations(OpusDatabase.MIGRATION_1_2, OpusDatabase.MIGRATION_2_3, OpusDatabase.MIGRATION_3_4, OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6, OpusDatabase.MIGRATION_6_7, OpusDatabase.MIGRATION_7_8).build()
     }
     val practiceRepository by lazy { PracticeRepository(database, repository) }
     val practice by lazy { com.opus.piano.practice.PracticeCoordinator(practiceRepository) }

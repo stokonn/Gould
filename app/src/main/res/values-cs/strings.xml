@@ -751,6 +751,7 @@
     <string name="google_sign_out">Odhlásit se</string>
     <string name="google_identity_only">Volitelná identita profilu. Údaje o cvičení zůstávají v tomto zařízení. Odhlášení zachová místní profil.</string>
     <string name="google_cancelled">Přihlášení zrušeno. Místní profil se nezměnil.</string>
+    <string name="google_no_credential">Není dostupný žádný účet Google. Přidejte účet nebo to zkuste znovu. Místní profil se nezměnil.</string>
     <string name="google_failed">Přihlášení Google není dostupné. Zkontrolujte připojení, účet Google a nastavení aplikace a zkuste to znovu. Deník se nezměnil.</string>
     <string name="google_signed_in">Účet Google přidán. Vlastní přezdívka zůstává zachována.</string>
     <string name="google_web_client_id" translatable="false">355619842126-042mfov62elelsi87maol41oe8pva3el.apps.googleusercontent.com</string>
@@ -775,4 +776,38 @@
     <string name="label_available">Dostupné</string>
     <string name="era_medieval">Středověk</string>
     <string name="era_renaissance">Renesance</string>
+    <string name="ui010_morning">Dobré ráno</string>
+    <string name="ui010_afternoon">Dobré odpoledne</string>
+    <string name="ui010_evening">Dobrý večer</string>
+    <string name="ui010_pianist">Pianisto</string>
+    <string name="ui010_home_support">Trocha hudby každý den.</string>
+    <string name="ui010_read_quote">Přečíst celý citát</string>
+    <string name="ui010_weekly_activity">Týdenní aktivita</string>
+    <string name="ui010_musical_journey">Vaše hudební cesta</string>
+    <string name="ui010_select_artist">Vybrat oblíbeného skladatele</string>
+    <string name="ui010_about_me">O mně</string>
+    <string name="ui010_add_bio">Napište pár slov o své hudbě.</string>
+    <string name="ui010_local_no_match">V místním katalogu není shoda. Můžete ponechat vlastní text.</string>
+    <string name="ui010_favorite_failed">Výběr skladatele se nepodařilo uložit. Zkuste to znovu.</string>
+    <string name="ui010_pin">Připnout %1$s do repertoáru</string>
+    <string name="ui010_unpin">Odepnout %1$s z repertoáru</string>
+    <string name="ui010_favorite_composers">Oblíbení skladatelé</string>
+    <string name="ui010_edit_session">Upravit cvičení</string>
+    <string name="ui010_edit_failed">Změnu se nepodařilo uložit. Zkuste to znovu.</string>
+    <string name="ui010_untimed">Přidáno po cvičení · čas není přiřazen</string>
+    <string name="ui010_untimed_short">Bez času</string>
+    <string name="ui010_remove">Odebrat</string>
+    <string name="ui010_edit_explanation">Přidané skladby se zobrazí v historii bez dalšího započteného času. Naměřené časy, celková délka a původní poznámky zůstanou zachovány.</string>
+    <string name="ui010_about_app">O aplikaci Goldberg</string>
+    <string name="ui010_data_storage">Data a úložiště</string>
+    <string name="ui010_identity_explanation">Vlastní přezdívka a avatar mají přednost. Následující volby použijte jen pro nahrazení údaji tohoto účtu Google. Data cvičení se nikdy nesynchronizují.</string>
+    <string name="ui010_google_name">Použít jméno z Googlu</string>
+    <string name="ui010_google_photo">Importovat profilový obrázek z Googlu</string>
+    <string name="ui010_photo_consent">Import obrázku vyžaduje povolenou síť. Mobilní stahování lze povolit v sekci Data a úložiště.</string>
+    <string name="ui010_identity_confirm">Nahradit tento místní profilový údaj údajem aktuálního účtu Google? Historie cvičení a ostatní nastavení profilu zůstanou zachovány.</string>
+    <string name="ui010_apply">Použít</string>
+    <string name="ui010_keep_local">Ponechat místní profil</string>
+    <string name="version_010">Goldberg 0.10</string>
+    <string name="ui010_color_and_surfaces">Barvy a karty</string>
+    <string name="ui010_repertoire_display">Zobrazení repertoáru</string>
 </resources>
