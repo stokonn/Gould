@@ -5,47 +5,53 @@
     {
       "title": "0.10: Shared editorial design and four-tab navigation",
       "url": "https://github.com/stokonn/Goldberg/issues/19",
-      "state": "open"
+      "state": "closed"
     },
     {
       "title": "0.10: Home reference redesign",
       "url": "https://github.com/stokonn/Goldberg/issues/20",
-      "state": "open"
+      "state": "closed"
     },
     {
       "title": "0.10: Repertoire controls and pinned composers",
       "url": "https://github.com/stokonn/Goldberg/issues/21",
-      "state": "open"
+      "state": "closed"
     },
     {
       "title": "0.10: Profile reference and local artist autocomplete",
       "url": "https://github.com/stokonn/Goldberg/issues/22",
-      "state": "open"
+      "state": "closed"
     },
     {
       "title": "0.10: Google profile import reliability",
       "url": "https://github.com/stokonn/Goldberg/issues/23",
-      "state": "open"
+      "state": "closed"
     },
     {
       "title": "0.10: Completed-session piece associations and data compatibility",
       "url": "https://github.com/stokonn/Goldberg/issues/24",
-      "state": "open"
+      "state": "closed"
     },
     {
       "title": "0.10: Compact grouped Settings",
       "url": "https://github.com/stokonn/Goldberg/issues/25",
-      "state": "open"
+      "state": "closed"
     },
     {
-      "title": "0.10: CZ/EN accessibility and emulator visual approval",
+      "title": "0.10: Localization, accessibility and visual QA",
       "url": "https://github.com/stokonn/Goldberg/issues/26",
-      "state": "open"
+      "state": "closed"
     },
     {
       "title": "0.10: Goldberg 0.10 verification and release",
       "url": "https://github.com/stokonn/Goldberg/issues/27",
-      "state": "open"
+      "state": "closed"
     }
-  ]
+  ],
+  "release": "https://github.com/stokonn/Goldberg/releases/tag/v0.10",
+  "source_commit": "7b5874e8ffd2d01eec8de9ad58cf64e195cf0a5b",
+  "wiki": "https://github.com/stokonn/Goldberg/wiki",
+  "release_asset": "Goldberg-v0.10.apk",
+  "apk_sha256": "20a5962cba89075a0d998b156097ddff86a22de1a0a2ac8ef636a8ff963e73d3",
+  "wiki_commit": "fc08c63f9e53cdfc6c98687630a768b2dd672ca6"
 }

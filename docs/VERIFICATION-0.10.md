@@ -1,16 +1,18 @@
 # Goldberg 0.10 — verification and visual review
 
-Status: implementation and available host/emulator checks are complete. The owner explicitly waived personal screenshot review and authorized release at their discretion; minor differences below are candidates for 0.10.1. The owner has now also reported successful manual Google identity verification on the 0.10 candidate. These are owner-reported physical-device results, not Codex tests. No physical phone was accessed by an agent.
+Status: **published as the normal Goldberg 0.10 GitHub Release** at https://github.com/stokonn/Goldberg/releases/tag/v0.10. The annotated `v0.10` tag points to source commit `7b5874e8ffd2d01eec8de9ad58cf64e195cf0a5b` on `main`. The owner explicitly waived personal screenshot review; minor differences below are candidates for 0.10.1. Google identity results are owner-reported manual verification, not Codex tests. No physical phone was accessed by an agent.
 
 ## Source and artifact
 
 - Branch: `feature/goldberg-0.10`; based on published v0.9.2 commit `78fd88fbf4ead8772b87d2b986807a381241b7dd`.
 - APK: `app/build/outputs/apk/debug/app-debug.apk`.
+- Published asset: `Goldberg-v0.10.apk`; downloaded release bytes were compared against the tested artifact.
 - Metadata: `com.opus.piano`, version `0.10`, code `10`.
 - Final APK SHA-256: `20a5962cba89075a0d998b156097ddff86a22de1a0a2ac8ef636a8ff963e73d3`.
 - APK signing certificate SHA-256: `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`, matching the trusted 0.9.2 identity.
 - Debug and instrumentation APKs installed successfully on the explicitly targeted emulator `emulator-5582`. The reference package remains under `docs/design/` and is not an app resource.
 - Unrelated `RELEASE_NOTES.md` is preserved unchanged.
+- The release asset API reports the same SHA-256; `cmp` of the downloaded APK and local artifact passed.
 
 ## Checks actually run
 

@@ -36,6 +36,6 @@ Google: preserve overrides by default; show why local values were kept and offer
 - [x] Actual emulator screenshots and written comparisons/deviations against approved references, including selected autocomplete suggestion and normal keyboard IME.
 - [x] Prepare English Wiki/changelog and screenshot evidence locally; owner waived personal screenshot review.
 - [x] Owner-reported manual verification on the Goldberg 0.10 candidate: sign-in, name/avatar import with consent, preservation of manual overrides, authenticated restart, sign-out/account switching and local practice-data preservation all passed on the Samsung Galaxy A55. This is explicitly not Codex device testing.
-- [ ] Rerun mandatory quality gates and complete authenticated GitHub publication; verify remote artifacts.
+- [x] Rerun mandatory quality gates, publish Wiki and synchronize Issues/Project, commit/push, and publish the verified GitHub Release; compare the downloaded asset digest.
 
-The owner explicitly waived personal screenshot approval for this release; small visual differences are documented for possible 0.10.1 work. Record the six 0.10 authentication checks only as owner-reported manual verification. Target 0.10/code 10 subject to final local quality and remote publication checks; application ID and compatible signing remain unchanged.
+The owner explicitly waived personal screenshot approval for this release; small visual differences are documented for possible 0.10.1 work. Record the six 0.10 authentication checks only as owner-reported manual verification. Goldberg 0.10/code 10 is published from main at tag `v0.10`; application ID and compatible signing remain unchanged.

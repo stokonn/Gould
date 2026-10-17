@@ -1,6 +1,6 @@
 # Goldberg 0.10 — Verification
 
-Goldberg 0.10 was built as package `com.opus.piano`, version `0.10`, version code `10`. The APK uses the trusted compatible certificate. APK SHA-256: `20a5962cba89075a0d998b156097ddff86a22de1a0a2ac8ef636a8ff963e73d3`.
+Goldberg 0.10 is published as a normal [GitHub Release](https://github.com/stokonn/Goldberg/releases/tag/v0.10). The APK was built as package `com.opus.piano`, version `0.10`, version code `10`. The APK uses the trusted compatible certificate. Its uploaded bytes were downloaded and compared against the tested local artifact. APK SHA-256: `20a5962cba89075a0d998b156097ddff86a22de1a0a2ac8ef636a8ff963e73d3`.
 
 ## Automated and emulator checks
 
