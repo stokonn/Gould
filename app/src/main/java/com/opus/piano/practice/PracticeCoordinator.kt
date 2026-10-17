@@ -75,7 +75,7 @@ class PracticeCoordinator(
     fun freshAfterExport(exported: String): Job = scope.launch {
         guarded {
             check(recoveryFailed.value && repository.recoveryData() == exported)
-            repository.clear()
+            repository.archiveRecovery(exported)
             revision.incrementAndGet()
             engine.replace(PracticeState(ready = true), now())
             recoveryFailed.value = false; publish()

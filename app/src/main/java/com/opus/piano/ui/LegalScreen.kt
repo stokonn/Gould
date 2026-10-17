@@ -21,7 +21,7 @@ import kotlinx.coroutines.*
     Dialog(onDismissRequest = close) { Surface(shape = MaterialTheme.shapes.medium) {
         Column(Modifier.verticalScroll(rememberScrollState()).padding(20.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {
             SectionTitle(L.s(R.string.msg_privacy_licenses_2fee)); Text(L.s(R.string.privacy_text));Text(L.s(R.string.copyright_notices));Text(content,style=MaterialTheme.typography.bodySmall)
-            TextButton(onClick=close) { Text(L.s(R.string.msg_close_bbfa)) }
+            JournalTextButton(onClick=close) { Text(L.s(R.string.msg_close_bbfa)) }
         }
     } }
 }

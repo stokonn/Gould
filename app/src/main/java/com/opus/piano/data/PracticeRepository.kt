@@ -6,6 +6,12 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 class PracticeRepository(private val db: OpusDatabase, private val journal: OpusRepository) : com.opus.piano.practice.PracticePersistence {
+    override suspend fun archiveRecovery(expected: String) = db.withTransaction {
+        val original = requireNotNull(db.practiceDao().draft())
+        check(original.payload == expected)
+        db.practiceDao().archive(RecoveryArchive(payload=original.payload, updatedAt=original.updatedAt, archivedAt=System.currentTimeMillis()))
+        db.practiceDao().clearDraft()
+    }
     override suspend fun recoveryData(): String? = db.practiceDao().draft()?.payload
     override suspend fun recover(): PracticeState? = db.practiceDao().draft()?.let {
         decode(it.payload).let { s -> s.copy(running = false, status = if (s.status == "Review") "Review" else "Interrupted", timingQuality = "Incomplete", ready = true) }
@@ -74,7 +80,7 @@ class PracticeRepository(private val db: OpusDatabase, private val journal: Opus
             }
             if (rows.isNotEmpty()) {
                 require(rows.fold(0L) { a, r -> Math.addExact(a, r.creditedMillis) } == credited && previous == elapsed)
-                require(rows.filter { it.reason == "Detected" }.sumOf { it.creditedMillis } == (detected ?: 0))
+                require(rows.filter { it.reason == "Detected" }.sumOf { it.creditedMillis } == (detected ?: 0L))
             }
         }
     }

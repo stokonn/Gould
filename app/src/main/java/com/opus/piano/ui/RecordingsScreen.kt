@@ -45,7 +45,7 @@ import com.opus.piano.data.*
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             StudyService.entries.forEach { service ->
                 val tint = MaterialTheme.colorScheme.primary
-                OutlinedButton(onClick = { open(RecordingLinks.search(service, composer, title, catalogue)) }) {
+                JournalSecondaryButton(onClick = { open(RecordingLinks.search(service, composer, title, catalogue)) }) {
                     Icon(if (service == StudyService.SPOTIFY || service == StudyService.YOUTUBE) Icons.Outlined.PlayCircleOutline else Icons.AutoMirrored.Outlined.MenuBook, null, tint = tint, modifier = Modifier.size(18.dp))
                     Spacer(Modifier.width(6.dp)); Text(service.label, color = tint)
                 }
@@ -53,9 +53,9 @@ import com.opus.piano.data.*
         }
         Text(L.s(R.string.msg_generated_searches_not_verified_recordings_a_0e42), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         recordings.firstOrNull { it.preferred }?.let { recording ->
-            OutlinedButton(onClick = { open(recording.url) }) { Icon(Icons.Outlined.StarOutline, null); Text(L.s(R.string.msg_recording_title_ifblank_preferred_interpreta_0716, (recording.title.ifBlank { L.s(R.string.preferred_interpretation) }))) }
+            JournalSecondaryButton(onClick = { open(recording.url) }) { Icon(Icons.Outlined.StarOutline, null); Text(L.s(R.string.msg_recording_title_ifblank_preferred_interpreta_0716, (recording.title.ifBlank { L.s(R.string.preferred_interpretation) }))) }
         }
-        Button(onClick = { manage(key) }) { Text(L.s(R.string.msg_saved_interpretations_recordings_size_499b, (recordings.size))) }
+        JournalPrimaryButton(onClick = { manage(key) }) { Text(L.s(R.string.msg_saved_interpretations_recordings_size_499b, (recordings.size))) }
     }
 }
 
@@ -71,7 +71,7 @@ import com.opus.piano.data.*
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item { CatalogBack(L.s(R.string.msg_listen_study_0d87), back) }
         item { Heading(L.s(R.string.msg_your_reference_shelf_67ea), L.s(R.string.msg_saved_interpretations_b15d), title) }
-        item { Button(onClick = { editingId = null; editor = true }) { Icon(Icons.Outlined.Add, null); Text(L.s(R.string.msg_add_a_link_56e6)) } }
+        item { JournalPrimaryButton(onClick = { editingId = null; editor = true }) { Icon(Icons.Outlined.Add, null); Text(L.s(R.string.msg_add_a_link_56e6)) } }
         if (loading) item { LinearProgressIndicator(Modifier.fillMaxWidth()) }
         error?.let { message -> item { CatalogFeedback(message, model::retryRecordings) } }
         if (!loading && error == null && items.isEmpty()) item { Panel { SectionTitle(L.s(R.string.msg_find_an_interpretation_worth_returning_to_0033)); Text(L.s(R.string.msg_save_a_performance_or_score_link_then_choose_b1cc), color = MaterialTheme.colorScheme.onSurfaceVariant) } }
@@ -82,7 +82,7 @@ import com.opus.piano.data.*
                 Text("${item.platform.lowercase().replaceFirstChar { it.titlecase() }} · ${localDateTime(item.savedAt)}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Text(item.url, style = MaterialTheme.typography.bodySmall, maxLines = 2)
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    TextButton(onClick = { open(item.url) }) { Text(L.s(R.string.msg_open_cf9b)) }
+                    JournalTextButton(onClick = { open(item.url) }) { Text(L.s(R.string.msg_open_cf9b)) }
                     IconButton(onClick = { model.prefer(item.id) }) { Icon(if (item.preferred) Icons.Outlined.Star else Icons.Outlined.StarOutline, if (item.preferred) L.s(R.string.preferred_interpretation) else L.s(R.string.msg_mark_preferred_cbfe), tint = MaterialTheme.colorScheme.primary) }
                     IconButton(onClick = { editingId = item.id; editor = true }) { Icon(Icons.Outlined.Edit, L.s(R.string.msg_edit_interpretation_6f23)) }
                     IconButton(onClick = { deleting = item }) { Icon(Icons.Outlined.DeleteOutline, L.s(R.string.msg_remove_interpretation_019c)) }
@@ -92,7 +92,7 @@ import com.opus.piano.data.*
         }
     }
     if (editor) RecordingEditor(key, items.firstOrNull { it.id == editingId }, { editor = false }, model)
-    deleting?.let { item -> AlertDialog(onDismissRequest = { deleting = null }, title = { Text(L.s(R.string.msg_remove_saved_interpretation_0280)) }, text = { Text(L.s(R.string.msg_the_external_recording_or_score_is_unaffecte_f26a)) }, confirmButton = { TextButton(onClick = { model.removeRecording(item.id); deleting = null }) { Text(L.s(R.string.msg_remove_e963)) } }, dismissButton = { TextButton(onClick = { deleting = null }) { Text(L.s(R.string.msg_cancel_77df)) } }) }
+    deleting?.let { item -> AlertDialog(onDismissRequest = { deleting = null }, title = { Text(L.s(R.string.msg_remove_saved_interpretation_0280)) }, text = { Text(L.s(R.string.msg_the_external_recording_or_score_is_unaffecte_f26a)) }, confirmButton = { JournalTextButton(onClick = { model.removeRecording(item.id); deleting = null }) { Text(L.s(R.string.msg_remove_e963)) } }, dismissButton = { JournalTextButton(onClick = { deleting = null }) { Text(L.s(R.string.msg_cancel_77df)) } }) }
 }
 @Composable private fun RecordingEditor(key: String, old: SavedRecording?, dismiss: () -> Unit, model: ExperienceViewModel) {
     var url by rememberSaveable { mutableStateOf(old?.url.orEmpty()) }
@@ -112,8 +112,8 @@ import com.opus.piano.data.*
                 Row(verticalAlignment = Alignment.CenterVertically) { Checkbox(preferred, { preferred = it }); Text(L.s(R.string.msg_preferred_interpretation_4800)) }
                 error?.let { Text(it, color = MaterialTheme.colorScheme.error) }
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    TextButton(onClick = dismiss, enabled = !saving) { Text(L.s(R.string.msg_cancel_77df)) }
-                    Button(onClick = {
+                    JournalTextButton(onClick = dismiss, enabled = !saving) { Text(L.s(R.string.msg_cancel_77df)) }
+                    JournalPrimaryButton(onClick = {
                         saving = true
                         model.saveRecording(SavedRecording(old?.id ?: 0, key, url, title, performer, valid!!.platform.name, old?.savedAt ?: 0, preferred)) { failure ->
                             saving = false

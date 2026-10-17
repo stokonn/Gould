@@ -83,7 +83,7 @@ class SmartCachePersistenceTest {
             for (i in 0 until entities.length()) {
                 val entity = entities.getJSONObject(i)
                 sql.execSQL(entity.getString("createSql").replace("\${TABLE_NAME}", entity.getString("tableName")))
-                val indices = entity.getJSONArray("indices")
+                val indices = (entity.optJSONArray("indices") ?: org.json.JSONArray())
                 for (j in 0 until indices.length()) sql.execSQL(indices.getJSONObject(j).getString("createSql").replace("\${TABLE_NAME}", entity.getString("tableName")))
             }
             sql.execSQL("INSERT INTO profile_settings VALUES(1,'Legacy musician','','Dark','first_notes')")
@@ -92,7 +92,7 @@ class SmartCachePersistenceTest {
             sql.execSQL("INSERT INTO session_parts(id,sessionId,pieceId,title,composer,musicalEra,durationMillis,notes) VALUES(1,3,NULL,'Legacy practice','','',60000,'Keep notes')")
             sql.version = 4
         }
-        fun open() = Room.databaseBuilder(context, OpusDatabase::class.java, name).addMigrations(OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6).build()
+        fun open() = Room.databaseBuilder(context, OpusDatabase::class.java, name).addMigrations(OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6, OpusDatabase.MIGRATION_6_7).build()
         try {
             open().let { db -> try {
                 assertEquals("Editorial", db.personalDao().getSettings()!!.typography)

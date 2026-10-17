@@ -23,17 +23,26 @@ class NavigationRegressionTest {
     private fun verifyNavigation(start: String) {
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         lateinit var nav: NavHostController
+        val composed=java.util.concurrent.CountDownLatch(1)
         ActivityScenario.launch(MainActivity::class.java).use { scenario ->
             scenario.onActivity { activity -> activity.setContent {
                 val controller = rememberNavController()
-                SideEffect { nav = controller }
+                SideEffect { nav = controller;composed.countDown() }
                 NavHost(controller, startDestination = start, enterTransition = { EnterTransition.None }, exitTransition = { ExitTransition.None }) {
                     listOf("OVERVIEW", "HOME", "REPERTOIRE", "PRACTICE", "BADGES", "WRAPPED", "catalog", "settings").forEach { route -> composable(route) { Text(route) } }
                 }
             } }
+            assertTrue("Navigation composition did not initialize",composed.await(10,java.util.concurrent.TimeUnit.SECONDS))
             instrumentation.waitForIdleSync()
             fun step(route: String, action: () -> Unit) {
                 instrumentation.runOnMainSync { action() }
+                val rendered=java.util.concurrent.CountDownLatch(1)
+                instrumentation.runOnMainSync {
+                    android.view.Choreographer.getInstance().postFrameCallback {
+                        android.view.Choreographer.getInstance().postFrameCallback {rendered.countDown()}
+                    }
+                }
+                assertTrue("Navigation frame did not settle",rendered.await(10,java.util.concurrent.TimeUnit.SECONDS))
                 instrumentation.waitForIdleSync()
                 instrumentation.runOnMainSync { assertEquals(route, nav.currentDestination?.route) }
             }

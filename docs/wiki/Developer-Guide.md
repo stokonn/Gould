@@ -1,0 +1,38 @@
+# Developer Guide
+
+Goldberg is the existing Kotlin/Jetpack Compose/Material 3 app in the stokonn/Goldberg repository. Legacy stokonn/Opus links redirect. The Android app module is app/, package/namespace com.opus.piano, database opus.db. The Compose plugin uses Kotlin 2.2.10, AGP 9.1.0, KSP 2.3.12 and Gradle wrapper 9.3.1; compile/target SDK 36, min SDK 26, JVM target 17. Use a compatible installed JDK and Android SDK.
+
+PracticeCoordinator is the application-scoped serialized practice owner. PracticeEngine handles monotonic accounting; Room repositories persist checkpoints and complete sessions idempotently. UI/service must not own independent timers. Preserve the initial durable-start gate and no-auto-capture recovery policy. Schema 7 adds profile personalization and preserved recovery archives via explicit 6→7 migration. Migrations and historical Room schemas remain under app/schemas. Backup format 3 retains readers for older portable formats; do not change these contracts silently.
+
+CatalogRepository uses bounded, allowlisted HTTPS responses and separate disposable media. MediaPreferences supplies metered consent. DailyQuotes bundles exactly ten sourced public-domain excerpts and uses stable local-day selection plus a once-daily bounded verification/cache request. No speculative catalogue expansion or new cloud data model is introduced.
+
+Build and check:
+
+```
+./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1
+python3 scripts/check_migrations.py
+python3 scripts/check_backup_fixtures.py
+python3 scripts/check_localization.py
+python3 scripts/check_history_paging.py
+python3 scripts/check_agent_policy.py
+```
+
+JVM tests and host SQLite checks are distinct from Android instrumentation. Compiling an instrumentation APK is not test execution. UI acceptance includes actual emulator rendering across size/theme/font scales, relevant network scenarios and seeded in-place upgrade. Never target the owner's physical phone. Every ADB invocation must name an emulator serial explicitly.
+
+## Google local identity
+
+`identity/GoogleIdentity.kt` owns optional Credential Manager requests and device-local identity selection. The public Web client ID is a non-secret string resource. Credentials 1.5.0 and Google ID 1.1.1 are selected for the existing Kotlin compiler; Google ID 1.2.1 requires incompatible Kotlin metadata and is not used. Tokens are never persisted. `IdentityPolicy` protects legacy/manual nicknames; local avatars and media consent remain authoritative. This is not backend authorization or journal synchronization. Read docs/GOOGLE-IDENTITY-SETUP.md before changing signing or identity configuration.
+
+## AI coding agents
+
+AGENTS.md is the canonical permanent policy for Codex, Claude Code, Gemini CLI, Cursor and GitHub Copilot. Claude's CLAUDE.md imports @AGENTS.md; GEMINI.md imports @./AGENTS.md; Cursor uses .cursor/rules/goldberg.mdc with alwaysApply: true and an explicit read requirement; Copilot uses .github/copilot-instructions.md pointing to the canonical file. Update policy only in AGENTS.md, and keep tool adapters thin.
+
+Official syntax references: [Codex](https://developers.openai.com/codex/guides/agents-md/), [Claude](https://code.claude.com/docs/en/memory), [Gemini](https://geminicli.com/docs/cli/gemini-md/), [Cursor](https://cursor.com/docs/rules), [Copilot](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions). File references do not universally inline content; agents must explicitly read the canonical file if necessary. Gemini/Claude/Cursor executables were not installed in this environment; no runtime compatibility test is claimed. Copilot loading depends on its client settings and remains unverified. Codex is the active development agent.
+
+## Permanent GitHub workflow
+
+Reuse the [Goldberg Development Project](https://github.com/users/stokonn/projects/2) across versions and organize Issues by milestone. Its Board view is grouped by Status; it remains private to authorized accounts. Update statuses truthfully and close only verified tasks. Maintain the English Wiki from docs/wiki and keep its navigation/screenshot evidence current. AGENTS.md authorizes automatic commit/push/release only after all mandatory acceptance gates pass, including source/artifact/version/signing checks. These instruction files are behavioral policy, not a GitHub branch-protection enforcement mechanism. Missing permissions or an uninitialized Wiki remain reported blockers; never claim remote operations succeeded without checking the API.
+
+Do not invoke old release scripts blindly. A successful compile alone cannot authorize publication. Keep the current compatible signing key, compare actual APK certificates, publish only a new nonconflicting annotated version tag and verify the uploaded asset digest.
+
+[Home](Home) · [Credits](Credits-and-Licenses)

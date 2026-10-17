@@ -19,7 +19,14 @@ class AppLanguageTest {
         ActivityScenario.launch(MainActivity::class.java).use { scenario ->
             try {
                 scenario.onActivity { AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("cs")) }
-                instrumentation.waitForIdleSync()
+                val deadline=android.os.SystemClock.elapsedRealtime()+10000
+                var ready=false
+                while(!ready && android.os.SystemClock.elapsedRealtime()<deadline) {
+                    instrumentation.waitForIdleSync()
+                    scenario.onActivity {ready=it.resources.configuration.locales[0].language=="cs"}
+                    if(!ready) Thread.sleep(100)
+                }
+                assertTrue("Locale recreation did not apply Czech resources",ready)
                 scenario.onActivity { activity ->
                     assertEquals("cs",AppCompatDelegate.getApplicationLocales()[0]?.language)
                     assertEquals("2 skladby",activity.resources.getQuantityString(R.plurals.pieces_count,2,2))

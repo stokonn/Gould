@@ -1,3 +1,19 @@
+# 0.9.2 — Final Redesign
+
+- Editorial theme tokens and shared controls; compact Home, Repertoire, Profile and Settings.
+- Real daily activity overview, ten sourced offline quotations and bounded daily source/cache access.
+- One Practice start destination; explicit archival of unchanged failed-recovery data.
+- Profile favorites/biography, reusable licensed composer portraits and metered-media consent.
+- Optional Credential Manager Google identity with manual nickname/avatar preservation; sign-in, display-name/avatar import, nickname preservation, restart, switching and sign-out passed owner-reported manual verification on a Galaxy A55.
+- Fix Google-avatar sampling initialization; add an Android regression for small and bounded large image decoding.
+- Connected harpsichord keyboard and offline logo-long-press terminal easter egg.
+- Correct keyboard-inset ownership across Practice and nested editors; show recorded Free Practice on Home instead of a first-session empty message.
+- Fix Czech composer collection/sort identifiers and translate standard catalogue metadata without rewriting stored user content.
+- Explicit schema 6→7 migration, backup format 3 with older format readers, new regression checks.
+- Permanent agent policy, GitHub tracking and English Wiki.
+
+Verified with 70 JVM tests, 31 executed emulator tests and host data/localization/APK checks. Lint: zero errors/57 warnings. Owner-reported Google results are distinct from automated evidence. See docs/RELEASE-0.9.2.md and docs/VERIFICATION-0.9.2.md for upgrade instructions, evidence and limitations.
+
 # 0.9.1 Beta — The Quality Update
 
 - Durable practice startup, retryable failed recovery with unchanged-data export and separate fresh-session confirmation, bounded note checkpoints and explicit unsaved-state retry.

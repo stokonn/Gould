@@ -6,7 +6,7 @@ plugins {
 android {
     namespace = "com.opus.piano"
     compileSdk = 36
-    defaultConfig { applicationId = "com.opus.piano"; minSdk = 26; targetSdk = 36; versionCode = 8; versionName = "0.9.1"; testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
+    defaultConfig { applicationId = "com.opus.piano"; minSdk = 26; targetSdk = 36; versionCode = 9; versionName = "0.9.2"; testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
     buildFeatures { compose = true }
     bundle { language { enableSplit = false } }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
@@ -14,6 +14,9 @@ android {
 kotlin { compilerOptions { jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17) } }
 ksp { arg("room.schemaLocation", "$projectDir/schemas") }
 dependencies {
+    implementation("androidx.credentials:credentials:1.5.0")
+    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation(platform("androidx.compose:compose-bom:2025.08.01"))
     implementation("androidx.activity:activity-compose:1.10.1")

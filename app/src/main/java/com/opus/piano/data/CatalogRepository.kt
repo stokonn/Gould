@@ -23,10 +23,11 @@ internal fun JSONArray.objects(): List<JSONObject> = (0 until length()).mapNotNu
 internal fun encoded(value: String): String = URLEncoder.encode(value, "UTF-8").replace("+", "%20")
 
 /** Small HTTPS-only client. No credentials, tracking, or repertoire data leave the device. */
-open class CatalogHttp {
+open class CatalogHttp(private val imageAllowed: () -> Boolean = { false }) {
     private val gate = Mutex()
     open suspend fun bytes(url: String, image: Boolean = false): ByteArray = withContext(Dispatchers.IO) {
         gate.withLock {
+            if(image) check(imageAllowed()) { L.s(R.string.media_consent_needed) }
             val parsed = URL(url)
             val hosts = setOf("api.openopus.org", "www.wikidata.org", "en.wikipedia.org", "commons.wikimedia.org", "upload.wikimedia.org", "thumb.wikimedia.org")
             require(parsed.protocol == "https" && parsed.host in hosts) { L.s(R.string.msg_unsupported_source_edd7) }
@@ -35,7 +36,7 @@ open class CatalogHttp {
                 connection.connectTimeout = 12000
                 connection.readTimeout = 15000
                 connection.instanceFollowRedirects = false
-                connection.setRequestProperty("User-Agent", "Goldberg/0.9.0 (Android; com.opus.piano; piano practice catalogue)")
+                connection.setRequestProperty("User-Agent", "Goldberg/0.9.2 (Android; com.opus.piano; piano practice catalogue)")
                 connection.setRequestProperty("Accept", if (image) "image/*" else "application/json")
                 val code = connection.responseCode
                 if (code !in 200..299) throw IOException(if (code == 429) L.s(R.string.msg_source_is_busy_please_try_again_later_b502) else L.s(R.string.msg_source_returned_http_code_e6c0, (code)))
@@ -45,6 +46,7 @@ open class CatalogHttp {
                     val buffer = ByteArray(8192)
                     while (true) {
                         currentCoroutineContext().ensureActive()
+                        if(image) check(imageAllowed()) {L.s(R.string.media_consent_needed)}
                         val read = input.read(buffer)
                         if (read < 0) break
                         if (result.size() + read > limit) throw IOException(L.s(R.string.msg_response_is_too_large_162e))
@@ -62,7 +64,8 @@ open class CatalogHttp {
     }
 }
 
-class CatalogRepository(private val db: OpusDatabase, private val filesDir: File, private val http: CatalogHttp = CatalogHttp(), private val achievements: AchievementStore = AchievementStore(db)) {
+class CatalogRepository(private val db: OpusDatabase, private val filesDir: File, http: CatalogHttp? = null, private val achievements: AchievementStore = AchievementStore(db), private val mediaAllowed: () -> Boolean = { false }) {
+    private val http = http ?: CatalogHttp(mediaAllowed)
     private val cacheGate = Mutex()
     private val dao = db.catalogDao()
     companion object {
@@ -210,13 +213,15 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
         }
     }
 
-    suspend fun profile(c: CatalogComposer, force: Boolean = false): CatalogLoad<ComposerProfile> = withContext(Dispatchers.IO) { cacheGate.withLock {
+    suspend fun profile(c: CatalogComposer, force: Boolean = false, download: Boolean = false): CatalogLoad<ComposerProfile> = withContext(Dispatchers.IO) { cacheGate.withLock {
         val key = "profile:${c.id}"
         val cached = dao.cache(key)
         if (!force && cached != null && JSONObject(cached.payload).optInt("profileVersion") >= 5 && System.currentTimeMillis() - cached.fetchedAt < 30 * 86400000L)
             return@withContext CatalogLoad(profileFromJson(JSONObject(cached.payload)), true, fetchedAt = cached.fetchedAt)
+        if (!download || !mediaAllowed()) return@withContext CatalogLoad(cached?.let { profileFromJson(JSONObject(it.payload)) } ?: ComposerProfile(), true, fetchedAt=cached?.fetchedAt ?: 0)
         try {
             val profile = WikimediaProfile(http).load(c)
+            check(mediaAllowed()) {L.s(R.string.media_consent_needed)}
             val now = System.currentTimeMillis()
             dao.putCache(CatalogCache(key, profileToJson(profile).toString(), now)); trimResponses()
             CatalogLoad(profile, false, fetchedAt = now)
@@ -227,13 +232,35 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
         }
     } }
 
+    suspend fun removeSupplement(id: String) = withContext(Dispatchers.IO) { cacheGate.withLock {
+        val key="profile:$id"
+        val saved=dao.cache(key)
+        saved?.let {profileFromJson(JSONObject(it.payload)).portrait}?.let {p->
+            val digest=MessageDigest.getInstance("SHA-256").digest(p.url.toByteArray()).joinToString("") {"%02x".format(it)}
+            val image=File(portraitDirectory,"$digest.img")
+            if(image.exists()) check(image.delete())
+        }
+        db.openHelper.writableDatabase.execSQL("DELETE FROM catalog_cache WHERE cacheKey=?",arrayOf(key))
+    } }
+    suspend fun smallPortrait(c: CatalogComposer): Portrait? = withContext(Dispatchers.IO) { cacheGate.withLock {
+        val key="small-portrait:${c.id}"
+        val cached=dao.cache(key)
+        if (cached != null && System.currentTimeMillis()-cached.fetchedAt<30L*86400000) return@withContext profileFromJson(JSONObject(cached.payload)).portrait
+        if (!mediaAllowed()) return@withContext cached?.let { profileFromJson(JSONObject(it.payload)).portrait }
+        val profile=WikimediaProfile(http).load(c, portraitOnly=true)
+        if (!mediaAllowed()) return@withContext null
+        dao.putCache(CatalogCache(key,profileToJson(profile).toString(),System.currentTimeMillis()));trimResponses()
+        profile.portrait
+    } }
     /** App-private persistent portrait cache, never part of repertoire or uploaded. */
     suspend fun portrait(url: String): Bitmap? = withContext(Dispatchers.IO) { cacheGate.withLock {
         val digest = MessageDigest.getInstance("SHA-256").digest(url.toByteArray()).joinToString("") { "%02x".format(it) }
         val directory = portraitDirectory.apply { mkdirs() }
         val file = File(directory, "$digest.img")
         if (file.exists()) decodePortrait(file.readBytes())?.let { file.setLastModified(System.currentTimeMillis()); return@withContext it }
+        if (!mediaAllowed()) return@withContext null
         val bytes = http.bytes(url, image = true)
+        if (!mediaAllowed()) return@withContext null
         val bitmap = decodePortrait(bytes) ?: return@withContext null
         val temporary = File.createTempFile("portrait-", ".tmp", directory)
         try { temporary.writeBytes(bytes); if (!temporary.renameTo(file)) throw IOException(L.s(R.string.msg_could_not_cache_portrait_538e)) }

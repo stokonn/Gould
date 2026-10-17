@@ -18,6 +18,37 @@ import java.io.ByteArrayOutputStream
 
 class ProfileViewModel(app: Application) : AndroidViewModel(app) {
     private val db = (app as OpusApplication).database
+    private val identity = (app as OpusApplication).identity
+    val googleAccount = identity.account
+    fun googleSignIn(context: android.content.Context) {
+        if (busy.value) return
+        busy.value = true
+        viewModelScope.launch {
+            try {
+                identity.signIn(context)
+                // A photo failure must not undo a successful account selection.
+                try { identity.importPhoto { (getApplication<Application>() as OpusApplication).media.allowed() } }
+                catch (e: CancellationException) { throw e }
+                catch (_: Exception) { /* Keep successful identity when optional picture is unavailable. */ }
+                notice.value = L.s(R.string.google_signed_in)
+            } catch (e: androidx.credentials.exceptions.GetCredentialCancellationException) {
+                notice.value = L.s(R.string.google_cancelled)
+            } catch (e: CancellationException) { throw e }
+            catch (e: Exception) { notice.value = L.s(R.string.google_failed) }
+            finally { busy.value = false }
+        }
+    }
+    fun googleSignOut() {
+        if (busy.value) return
+        busy.value = true
+        viewModelScope.launch {
+            try { identity.signOut() }
+            catch (e: CancellationException) { throw e }
+            catch (e: Exception) { notice.value = L.s(R.string.google_failed) }
+            finally { busy.value = false }
+        }
+    }
+    fun refreshGooglePhoto() = action { identity.importPhoto { (getApplication<Application>() as OpusApplication).media.allowed() } }
     private val backup = BackupRepository(app, db)
     val settings = db.personalDao().settings().map { it ?: ProfileSettings() }.stateIn(viewModelScope, SharingStarted.Eagerly, ProfileSettings())
     val local = db.practiceDao().local().map { it ?: LocalAppState() }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
@@ -46,7 +77,10 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
     private fun edit(change: (ProfileSettings) -> ProfileSettings) = action {
         db.withTransaction { db.personalDao().saveSettings(change(db.personalDao().getSettings() ?: ProfileSettings())) }
     }
-    fun username(value: String) = edit { it.copy(username = value.trim().take(80).ifBlank { "Musician" }) }
+    fun personalization(artist: String, piece: String, era: String, bio: String) = edit {
+        it.copy(favoriteArtist=artist.trim().take(120), favoritePiece=piece.trim().take(240), favoriteEra=era.trim().take(80), biography=bio.trim().take(400))
+    }
+    fun username(value: String) = edit { identity.manualName(); it.copy(username = value.trim().take(80).ifBlank { "Musician" }) }
     fun resetAppearance() = action {
         db.withTransaction { val old=db.personalDao().getSettings() ?: ProfileSettings();db.personalDao().saveSettings(old.copy(theme="System",typography="Editorial",statistics="time,pieces,sessions,streak")) }
         (getApplication<Application>() as OpusApplication).appearance.reset()
@@ -68,8 +102,9 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
         catalog.clearCache(); cacheUsage.value = catalog.cacheBytes()
         notice.value = L.s(R.string.msg_disposable_cache_cleared_your_journal_and_sa_18c6)
     }
-    fun clearAvatar() = edit { it.copy(avatar = "") }
+    fun clearAvatar() = edit { identity.manualAvatar(); it.copy(avatar = "") }
     fun avatar(uri: Uri) = action {
+        identity.manualAvatar()
         val resolver = getApplication<Application>().contentResolver
         val bytes = resolver.openInputStream(uri)?.use { it.readBytesLimited(16 * 1024 * 1024) } ?: error(L.s(R.string.msg_image_unavailable_ad4c))
         val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }

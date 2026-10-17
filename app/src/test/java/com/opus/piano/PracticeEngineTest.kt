@@ -64,4 +64,8 @@ class PracticeEngineTest {
         val bad=listOf(SessionInterval(partIndex=0,startMillis=0,endMillis=1000,creditedMillis=1000,reason="Detected"))
         assertThrows(IllegalArgumentException::class.java) { PracticeRepository.validateTiming(500,1000,500,"Smart",bad,1) }
     }
+    @Test fun manualTimingWithIntervalsUsesLongZeroForAbsentDetection() {
+        val rows=listOf(SessionInterval(partIndex=0,startMillis=0,endMillis=60000,creditedMillis=60000,reason="Manual"))
+        PracticeRepository.validateTiming(60000,60000,null,"Manual",rows,1)
+    }
 }

@@ -18,17 +18,20 @@ class OpusApplication : Application() {
         super.onConfigurationChanged(newConfig)
         com.opus.piano.i18n.L.refresh()
     }
+    val identity by lazy { com.opus.piano.identity.GoogleIdentity(this, database) }
+    val media by lazy { com.opus.piano.preferences.MediaPreferences(this) }
+    val quotes by lazy { com.opus.piano.data.DailyQuotes(this) }
     val appearance by lazy { com.opus.piano.preferences.AppearanceStore(this) }
     val practiceRequest = kotlinx.coroutines.flow.MutableStateFlow("")
     val openPractice = kotlinx.coroutines.flow.MutableStateFlow(0L)
     val database by lazy {
         Room.databaseBuilder(this, OpusDatabase::class.java, "opus.db")
-            .addMigrations(OpusDatabase.MIGRATION_1_2, OpusDatabase.MIGRATION_2_3, OpusDatabase.MIGRATION_3_4, OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6).build()
+            .addMigrations(OpusDatabase.MIGRATION_1_2, OpusDatabase.MIGRATION_2_3, OpusDatabase.MIGRATION_3_4, OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6, OpusDatabase.MIGRATION_6_7).build()
     }
     val practiceRepository by lazy { PracticeRepository(database, repository) }
     val practice by lazy { com.opus.piano.practice.PracticeCoordinator(practiceRepository) }
     val achievements by lazy { AchievementStore(database) }
     val recordings by lazy { RecordingRepository(database) }
     val repository by lazy { OpusRepository(database, achievements) }
-    val catalogRepository by lazy { CatalogRepository(database, filesDir, achievements = achievements) }
+    val catalogRepository by lazy { CatalogRepository(database, filesDir, achievements = achievements, mediaAllowed = { media.allowed() }) }
 }

@@ -1,0 +1,5 @@
+---
+description: Canonical Goldberg development policy
+alwaysApply: true
+---
+Before working, read and follow the repository-root @AGENTS.md in full. It is the single source of project policy for every version. File references are not guaranteed to inline their contents: explicitly read it with your tools. Keep this adapter thin; update AGENTS.md for policy changes. Respect higher-priority security rules and newer owner instructions.

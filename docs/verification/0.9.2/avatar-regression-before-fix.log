@@ -1,0 +1,19 @@
+
+com.opus.piano.GoogleIdentityPersistenceTest:
+Error in googleAvatarDecodePreservesSmallImagesAndBoundsLargeImages(com.opus.piano.GoogleIdentityPersistenceTest):
+java.lang.ArithmeticException: divide by zero
+	at com.opus.piano.identity.GoogleIdentityKt.decodeGoogleAvatar(GoogleIdentity.kt:103)
+	at com.opus.piano.GoogleIdentityPersistenceTest.googleAvatarDecodePreservesSmallImagesAndBoundsLargeImages(GoogleIdentityPersistenceTest.kt:24)
+
+
+Time: 0.011
+There was 1 failure:
+1) googleAvatarDecodePreservesSmallImagesAndBoundsLargeImages(com.opus.piano.GoogleIdentityPersistenceTest)
+java.lang.ArithmeticException: divide by zero
+	at com.opus.piano.identity.GoogleIdentityKt.decodeGoogleAvatar(GoogleIdentity.kt:103)
+	at com.opus.piano.GoogleIdentityPersistenceTest.googleAvatarDecodePreservesSmallImagesAndBoundsLargeImages(GoogleIdentityPersistenceTest.kt:24)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+

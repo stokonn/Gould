@@ -133,3 +133,7 @@ org.jetbrains.kotlinx:kotlinx-serialization-bom:1.7.3 — The Apache Software Li
 org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.3 — The Apache Software License, Version 2.0
 org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.7.3 — The Apache Software License, Version 2.0
 org.jspecify:jspecify:1.0.0 — The Apache License, Version 2.0
+
+Goldberg 0.9.2 identity integration adds AndroidX Credentials and Credentials Play Services Auth 1.5.0 (Apache License 2.0), and Google ID 1.1.1. Google ID and Google Play services artifacts are distributed under the Android Software Development Kit License: https://developer.android.com/studio/terms.html . They are not represented as Apache-licensed AndroidX code. Optional Google account identity uses Google's services; it does not synchronize the journal.
+
+Daily quotations use short excerpts from Robert Schumann, Advice to Young Musicians, Henry Hugo Pierson translation (1860), Project Gutenberg ebook 28219: https://www.gutenberg.org/ebooks/28219 . Czech translations are Goldberg's own renderings. See the English Wiki for provenance and regional copyright considerations.

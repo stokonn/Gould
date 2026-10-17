@@ -10,7 +10,9 @@ from PIL import Image
 
 root=Path(__file__).resolve().parents[1]
 sdk=Path('/home/stokonn/Android/Sdk/build-tools/36.0.0')
-baseline,candidate=map(Path,sys.argv[1:])
+baseline,candidate=map(Path,sys.argv[1:3])
+expected_version=sys.argv[3] if len(sys.argv)>3 else "0.9.1"
+expected_code=int(sys.argv[4]) if len(sys.argv)>4 else 8
 trusted='53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e'
 def cert(path):
     result=subprocess.check_output([str(sdk/'apksigner'),'verify','--print-certs',str(path)],text=True)
@@ -21,7 +23,7 @@ def metadata(path):
 old,new=metadata(baseline),metadata(candidate)
 assert "name='com.opus.piano'" in old and "name='com.opus.piano'" in new
 old_code=int(re.search(r"versionCode='(\d+)'",old).group(1))
-assert old_code<8 and "versionCode='8'" in new and "versionName='0.9.1'" in new
+assert old_code<expected_code and f"versionCode='{expected_code}'" in new and f"versionName='{expected_version}'" in new
 with zipfile.ZipFile(candidate) as apk:
     assert apk.testzip() is None,'BLOCKED: invalid archive'
     for qualifier,resource in [('drawable-nodpi','ic_goldberg_classic_foreground.png'),('drawable-night-nodpi','ic_goldberg_classic_foreground.png'),('drawable-nodpi','ic_goldberg_classic_monochrome.png')]:
@@ -41,6 +43,6 @@ with zipfile.ZipFile(candidate) as apk:
                     assert (x-216)**2+(y-216)**2<=144**2,'BLOCKED: adaptive circle clipping'
         print('PASS: packaged transparent artwork and circular/rounded-square bounds:',matches[0])
     assert any(n.endswith('/ic_goldberg.xml') and '/mipmap-' in n for n in apk.namelist())
-print('PASS: com.opus.piano 0.9.1 (8), published baseline code',old_code)
+print(f'PASS: com.opus.piano {expected_version} ({expected_code}), published baseline code',old_code)
 print('Signing SHA-256:',trusted)
 print('APK SHA-256:',hashlib.sha256(candidate.read_bytes()).hexdigest())

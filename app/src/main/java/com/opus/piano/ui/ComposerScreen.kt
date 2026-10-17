@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.opus.piano.data.*
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable fun ComposerScreen(id: String, model: CatalogViewModel, library: LibraryState, back: () -> Unit, workPage: (String) -> Unit) {
@@ -30,6 +31,7 @@ import kotlinx.coroutines.CancellationException
     val composer = snapshot.composers.firstOrNull { it.id == id }
     val works = remember(snapshot.works, id) { snapshot.works.filter { it.composerId == id } }
     val featured = remember(works) { works.filter { it.popular || it.recommended }.take(3) }
+    val scope=rememberCoroutineScope()
     var tab by rememberSaveable(id) { mutableIntStateOf(0) }
     var expanded by rememberSaveable(id) { mutableStateOf(false) }
     var query by rememberSaveable(id) { mutableStateOf("") }
@@ -58,13 +60,20 @@ import kotlinx.coroutines.CancellationException
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                         PortraitImage(profile?.portrait, model.repository, composer.name, portraitWidth)
                         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                            Text(composer.epoch.uppercase(), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
+                            Text(L.fixed(composer.epoch).uppercase(L.locale), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
                             Text(composer.name, style = MaterialTheme.typography.headlineMedium)
                             Text(composer.years, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             if (!profile?.origin.isNullOrBlank()) Text(profile!!.origin, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
                     }
                 }
+            }
+            item {
+                val app=androidx.compose.ui.platform.LocalContext.current.applicationContext as com.opus.piano.OpusApplication
+                val allowed by app.media.cellular.collectAsStateWithLifecycle()
+                JournalTextButton(onClick={if(app.media.allowed()) model.loadComposer(id,true,download=true) else model.repository.let { app.practice.notice.value=L.s(R.string.media_consent_needed) }}) {Text(L.s(if(profile?.portrait!=null || !profile?.text.isNullOrBlank()) R.string.refresh_supplement else R.string.download_supplement))}
+                if(profile?.portrait!=null || !profile?.text.isNullOrBlank()) JournalTextButton(onClick={scope.launch {try {model.repository.removeSupplement(id);model.loadComposer(id)} catch(c:CancellationException) {throw c} catch(_:Exception) {app.practice.notice.value=L.s(R.string.media_remove_failed)}}}) {Text(L.s(R.string.remove_supplement))}
+                if(page.profileLoading) {LinearProgressIndicator(Modifier.fillMaxWidth());JournalTextButton(onClick=model::cancelSupplement) {Text(L.s(R.string.msg_cancel_77df))}}
             }
             item { TabRow(tab, containerColor = MaterialTheme.colorScheme.background, contentColor = MaterialTheme.colorScheme.primary) { listOf("Overview", "Works", "About").forEachIndexed { i, label -> Tab(tab == i, onClick = { tab = i }, text = { Text(if(label=="About") L.s(R.string.msg_biography_53c2) else L.fixed(label)) }) } } }
             when (tab) {
@@ -74,7 +83,7 @@ import kotlinx.coroutines.CancellationException
                             SmallStatistic("${page.totalWorks ?: works.size}", if (page.totalWorks == null) "Works loaded" else "Catalogued works")
                             SmallStatistic("${personal.size}", "In repertoire")
                             SmallStatistic("${personal.count(::mastered)}", "Mastered")
-                            SmallStatistic("${time / 60000} min", "Practiced")
+                            SmallStatistic(localizedPracticeTime(time), "Practiced")
                         }
                     }
                     item {
@@ -83,8 +92,8 @@ import kotlinx.coroutines.CancellationException
                         if (page.profileLoading) LinearProgressIndicator(Modifier.fillMaxWidth())
                         Text(profile?.text?.ifBlank { null } ?: if (page.profileLoading) L.s(R.string.msg_loading_the_introduction_f296) else L.s(R.string.msg_no_verified_biography_is_available_8fab),
                             maxLines = if (expanded) Int.MAX_VALUE else 4, overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        if (!profile?.text.isNullOrBlank()) TextButton(onClick = { expanded = !expanded }) { Text(if (expanded) L.s(R.string.msg_read_less_32ab) else L.s(R.string.msg_read_more_ad08)) }
-                        TextButton(onClick = { tab = 2 }) { Text(L.s(R.string.msg_sources_credits_874b)) }
+                        if (!profile?.text.isNullOrBlank()) JournalTextButton(onClick = { expanded = !expanded }) { Text(if (expanded) L.s(R.string.msg_read_less_32ab) else L.s(R.string.msg_read_more_ad08)) }
+                        JournalTextButton(onClick = { tab = 2 }) { Text(L.s(R.string.msg_sources_credits_874b)) }
                     }
                     item { SectionTitle(L.s(R.string.msg_from_your_repertoire_f345)) }
                     if (personal.isEmpty()) item { Text(L.s(R.string.msg_add_a_work_by_composer_name_to_start_your_ow_2f92, (composer.name)), color = MaterialTheme.colorScheme.onSurfaceVariant) }
@@ -93,31 +102,31 @@ import kotlinx.coroutines.CancellationException
                     }
                     if (featured.isNotEmpty()) item { SectionTitle(L.s(R.string.msg_featured_by_open_opus_7787)) }
                     items(featured, key = { "featured:${it.id}" }) { w -> WorkCard(w, composer, alreadyAdded(w, composer, library.pieces), w.id in adding, { workPage(w.id) }, { model.add(w, composer) }) }
-                    if (works.isNotEmpty()) item { OutlinedButton(onClick = { tab = 1 }) { Text(L.s(R.string.msg_explore_works_size_loaded_works_c20f, (works.size))) } }
+                    if (works.isNotEmpty()) item { JournalSecondaryButton(onClick = { tab = 1 }) { Text(L.s(R.string.msg_explore_works_size_loaded_works_c20f, (works.size))) } }
                 }
                 1 -> {
                     item { OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth(), singleLine = true, label = { Text(L.s(R.string.msg_find_a_composition_bfc2)) }) }
                     item { FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Choice(L.s(R.string.msg_genre_2aa3), listOf("All") + works.map { it.genre }.filter { it.isNotBlank() }.distinct().sorted(), genre) { genre = it }
-                        Choice(L.s(R.string.msg_collection_30c5), listOf("All", L.s(R.string.msg_in_repertoire_b185), "Not added"), collection) { collection = it }
-                        Choice(L.s(R.string.msg_sort_adc4), listOf("Title", L.s(R.string.msg_catalogue_5a24)), sort) { sort = it }
+                        Choice(L.s(R.string.msg_collection_30c5), listOf("All", "In repertoire", "Not added"), collection) { collection = it }
+                        Choice(L.s(R.string.msg_sort_adc4), listOf("Title", "Catalogue"), sort) { sort = it }
                     } }
                     if (page.loading) item { LinearProgressIndicator(Modifier.fillMaxWidth()) }
                     if (!page.loading && matches.isEmpty()) item { Text(L.s(R.string.msg_no_works_match_this_selection_85cd), color = MaterialTheme.colorScheme.onSurfaceVariant) }
                     items(matches.take(limit), key = { it.id }) { w -> WorkCard(w, composer, alreadyAdded(w, composer, library.pieces), w.id in adding, { workPage(w.id) }, { model.add(w, composer) }) }
-                    if (matches.size > limit) item { OutlinedButton(onClick = { limit += 40 }) { Text(L.s(R.string.msg_show_more_works_matches_size_limit_remaining_2020, (matches.size - limit))) } }
+                    if (matches.size > limit) item { JournalSecondaryButton(onClick = { limit += 40 }) { Text(L.s(R.string.msg_show_more_works_matches_size_limit_remaining_2020, (matches.size - limit))) } }
                 }
                 2 -> {
                     item { SectionTitle(L.s(R.string.msg_biography_53c2)); Spacer(Modifier.height(8.dp)); Text(profile?.text?.ifBlank { null } ?: L.s(R.string.msg_no_verified_biography_is_available_8fab), color = MaterialTheme.colorScheme.onSurfaceVariant) }
                     item { Panel {
                         Text(L.s(R.string.msg_historical_details_67be), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
-                        Text(L.s(R.string.msg_era_composer_epoch_ifblank_not_supplied_6765, (composer.epoch.ifBlank { L.fixed("Not supplied") })))
+                        Text(L.s(R.string.msg_era_composer_epoch_ifblank_not_supplied_6765, (L.fixed(composer.epoch).ifBlank { L.fixed("Not supplied") })))
                         Text(L.s(R.string.msg_born_profile_birth_ifblank_null_composer_bir_2f27, (profile?.birth?.ifBlank { null } ?: composer.birth.take(4).ifBlank { L.fixed("Not supplied") })))
                         Text(L.s(R.string.msg_died_profile_death_ifblank_null_composer_dea_e1b2, (profile?.death?.ifBlank { null } ?: composer.death.take(4).ifBlank { L.fixed("Not supplied") })))
                         profile?.origin?.takeIf { it.isNotBlank() }?.let { Text(L.s(R.string.msg_birthplace_citizenship_it_4edb, (it))) }
                     } }
                     item { ProfileCredits(profile) }
-                    item { CacheCaption(page.fetchedAt); TextButton(onClick = { model.loadComposer(id, true) }) { Text(L.s(R.string.msg_refresh_composer_1c6b)) } }
+                    item { CacheCaption(page.fetchedAt); JournalTextButton(onClick = { model.loadComposer(id, true) }) { Text(L.s(R.string.msg_refresh_composer_1c6b)) } }
                 }
             }
             page.error?.let { message -> item { CatalogFeedback(message) { model.loadComposer(id, true) } } }
@@ -128,7 +137,7 @@ import kotlinx.coroutines.CancellationException
 }
 
 @Composable internal fun SmallStatistic(value: String, label: String) {
-    Column(verticalArrangement = Arrangement.spacedBy(3.dp)) { Text(value, style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary); Text(L.fixed(label), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+    Column(verticalArrangement = Arrangement.spacedBy(3.dp)) { Text(value, style = MaterialTheme.typography.titleMedium.copy(fontSize = MaterialTheme.typography.titleLarge.fontSize, lineHeight = MaterialTheme.typography.titleLarge.lineHeight, fontFeatureSettings = "tnum"), color = MaterialTheme.colorScheme.primary); Text(L.fixed(label), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
 }
 @Composable private fun PortraitImage(portrait: Portrait?, repository: CatalogRepository, name: String, width: Int) {
     val bitmap by produceState<android.graphics.Bitmap?>(null, portrait?.url) {

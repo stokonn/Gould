@@ -27,7 +27,7 @@ for path in sorted((root / 'app/src/androidTest/assets/backups').glob('*.json'))
             columns = list(row)
             db.execute(f'INSERT INTO {table} ({",".join(columns)}) VALUES ({",".join("?" for _ in columns)})', list(row.values()))
         originals[table] = rows
-    for old in range(version, 6):
+    for old in range(version, 7):
         block = source.split(f'val MIGRATION_{old}_{old+1} =', 1)[1].split('\n        }', 1)[0]
         for sql in re.findall(r'db\.execSQL\("([^"]+)"\)', block):
             db.execute(sql)
@@ -39,4 +39,4 @@ for path in sorted((root / 'app/src/androidTest/assets/backups').glob('*.json'))
         for row in rows:
             assert any(all(value == candidate[column] for column, value in row.items()) for candidate in actual), (table, row)
     assert db.execute('SELECT SUM(durationMillis) FROM sessions').fetchone()[0] == db.execute('SELECT SUM(durationMillis) FROM session_parts').fetchone()[0]
-    print(f'PASS {path.name}: schema {version} → 6, every original portable field retained')
+    print(f'PASS {path.name}: schema {version} → 7, every original portable field retained')

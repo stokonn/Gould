@@ -35,8 +35,8 @@ import com.opus.piano.data.compactPracticeTime
                 Spacer(Modifier.height(16.dp)); HorizontalDivider()
             }
             item {
-                Button(onClick = practice, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text(L.s(R.string.msg_begin_practice_c5a7)) }
-                TextButton(onClick = repertoire) { Text(L.s(R.string.msg_open_your_repertoire_a1aa)) }
+                JournalPrimaryButton(onClick = practice, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text(L.s(R.string.msg_begin_practice_c5a7)) }
+                JournalTextButton(onClick = repertoire) { Text(L.s(R.string.msg_open_your_repertoire_a1aa)) }
             }
             item {
                 SectionTitle(L.s(R.string.msg_the_latest_entry_4499))
@@ -46,8 +46,8 @@ import com.opus.piano.data.compactPracticeTime
             }
             item {
                 HorizontalDivider(); Spacer(Modifier.height(12.dp))
-                TextButton(onClick = profile) { Text(L.s(R.string.msg_your_profile_achievements_b225)) }
-                TextButton(onClick = wrapped) { Text(L.s(R.string.msg_wrapped_preview_fbae)) }
+                JournalTextButton(onClick = profile) { Text(L.s(R.string.msg_your_profile_achievements_b225)) }
+                JournalTextButton(onClick = wrapped) { Text(L.s(R.string.msg_wrapped_preview_fbae)) }
             }
         }
     }

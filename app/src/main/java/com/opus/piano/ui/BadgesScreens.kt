@@ -27,8 +27,12 @@ internal fun localDateTime(timestamp: Long): String = com.opus.piano.i18n.Journa
 private fun localDate(timestamp: Long): String = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(L.locale).withZone(ZoneId.systemDefault()).format(Instant.ofEpochMilli(timestamp))
 
 @OptIn(ExperimentalLayoutApi::class)
-@Composable fun BadgesScreen(model: ExperienceViewModel, detail: (String) -> Unit) {
+@Composable fun BadgesScreen(model: ExperienceViewModel, profile: ProfileViewModel, detail: (String) -> Unit) {
     val badges by model.badges.collectAsStateWithLifecycle()
+    val settings by profile.settings.collectAsStateWithLifecycle()
+    val busy by profile.busy.collectAsStateWithLifecycle()
+    var manage by rememberSaveable { mutableStateOf(false) }
+    if(manage) ShowcaseEditor(settings,badges,busy,profile) {manage=false}
     val error by model.error.collectAsStateWithLifecycle()
     var filter by rememberSaveable { mutableStateOf("All") }
     var sort by rememberSaveable { mutableStateOf("Collection") }
@@ -49,6 +53,7 @@ private fun localDate(timestamp: Long): String = DateTimeFormatter.ofLocalizedDa
             }
         }
         if (badges.isEmpty() && error == null) item(span = { GridItemSpan(maxLineSpan) }) { EditorialSkeleton() }
+        item(span = { GridItemSpan(maxLineSpan) }) { JournalTextButton(onClick={manage=true}) {Text(L.s(R.string.manage_showcase))} }
         if (unlocked > 0) item(span = { GridItemSpan(maxLineSpan) }) { RecentlyUnlocked(badges, detail) }
         item(span = { GridItemSpan(maxLineSpan) }) {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {

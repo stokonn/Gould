@@ -22,8 +22,8 @@ import androidx.compose.ui.window.Dialog
         Column(Modifier.verticalScroll(rememberScrollState()).padding(24.dp),verticalArrangement = Arrangement.spacedBy(20.dp)) {
             Text(L.s(R.string.msg_welcome_to_goldberg_page_1_3_4211, (page+1)),style = MaterialTheme.typography.labelSmall)
             Heading(L.s(R.string.msg_a_little_practice_0328),L.fixed(pages[page].first),pages[page].second)
-            Button(onClick = { if (page==2) done() else page++ }) { Text(if (page==2) L.s(R.string.msg_begin_c365) else L.s(R.string.msg_continue_2e02)) }
-            TextButton(onClick = done) { Text(L.s(R.string.msg_skip_3da4)) }
+            JournalPrimaryButton(onClick = { if (page==2) done() else page++ }) { Text(if (page==2) L.s(R.string.msg_begin_c365) else L.s(R.string.msg_continue_2e02)) }
+            JournalTextButton(onClick = done) { Text(L.s(R.string.msg_skip_3da4)) }
         }
     } }
 }

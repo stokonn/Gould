@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.opus.piano.data.*
 
-@OptIn(ExperimentalLayoutApi::class)
+@OptIn(ExperimentalLayoutApi::class, androidx.compose.foundation.ExperimentalFoundationApi::class)
 @Composable internal fun RepertoireScreen(state: LibraryState, catalog: CatalogSnapshot, model: OpusViewModel, explore: () -> Unit, detail: (Long) -> Unit) {
     val appearance=LocalAppearance.current
     val store=(androidx.compose.ui.platform.LocalContext.current.applicationContext as com.opus.piano.OpusApplication).appearance
@@ -49,19 +49,18 @@ import com.opus.piano.data.*
     }
     fun options(values: List<String>) = listOf("All") + values.filter { it.isNotBlank() }.distinctBy(::catalogText).sortedBy(::catalogText)
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        item { Row(verticalAlignment=Alignment.CenterVertically) {
-            Spacer(Modifier.weight(1f))
+        stickyHeader { Surface(color=MaterialTheme.colorScheme.background) { Row(Modifier.fillMaxWidth().padding(bottom=8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+            OutlinedTextField(query, { query = it }, Modifier.weight(1f), label = { Text(L.s(R.string.msg_search_your_repertoire_556a)) }, leadingIcon = { Icon(Icons.Outlined.Search, null) }, singleLine = true)
             Box { IconButton(onClick={addMenu=true}) { Icon(Icons.Outlined.Add,L.s(R.string.msg_add_piece_2cfc)) }
                 DropdownMenu(addMenu,{addMenu=false}) {
                     DropdownMenuItem(text={Text(L.s(R.string.msg_discover_in_catalogue_28f0))},onClick={addMenu=false;explore()})
                     DropdownMenuItem(text={Text(L.s(R.string.msg_add_manually_a1d9))},onClick={addMenu=false;editingId=null;editor=true})
                 }
             }
-        } }
-        item { OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth(), label = { Text(L.s(R.string.msg_search_your_repertoire_556a)) }, leadingIcon = { Icon(Icons.Outlined.Search, null) }, singleLine = true) }
+        } } }
         item {
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                OutlinedButton(onClick = { filters = !filters }) { Icon(Icons.Outlined.Tune, null); Text(L.s(R.string.msg_filters_96e5)) }
+                JournalSecondaryButton(onClick = { filters = !filters }) { Icon(Icons.Outlined.Tune, null); Text(L.s(R.string.msg_filters_96e5)) }
                 Choice(L.s(R.string.msg_sort_adc4), listOf("Alphabetical", "Composer", "Recently added", "Recently practiced"), sort) { store.edit { a -> a.copy(sort=it) } }
             }
             if (filters) FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -70,15 +69,16 @@ import com.opus.piano.data.*
                 Choice(L.s(R.string.msg_era_f37a), options(eras.values.toList()), era, translateOptions=false) { era = it }
                 Choice(L.s(R.string.msg_instrument_f05f), options(state.pieces.map { it.instrument }), instrument, translateOptions=false) { instrument = it }
                 Choice(L.s(R.string.msg_genre_2aa3), options(genres.values.toList()), genre, translateOptions=false) { genre = it }
-                TextButton(onClick = { status = "All"; composer = "All"; era = "All"; instrument = "All"; genre = "All"; query = "" }) { Text(L.s(R.string.msg_clear_filters_4122)) }
+                JournalTextButton(onClick = { status = "All"; composer = "All"; era = "All"; instrument = "All"; genre = "All"; query = "" }) { Text(L.s(R.string.msg_clear_filters_4122)) }
             }
         }
         if (state.loading) item { EditorialSkeleton() }
-        if (!state.loading && pieces.isEmpty()) item { Panel { SectionTitle(if (state.pieces.isEmpty()) L.s(R.string.msg_your_collection_begins_here_ca6c) else L.s(R.string.msg_no_matching_compositions_391a)); Text(L.s(R.string.msg_discover_a_work_or_add_one_manually_change_t_fb4a), color = MaterialTheme.colorScheme.onSurfaceVariant); TextButton(onClick=explore) { Text(L.s(R.string.msg_discover_in_catalogue_28f0)) } } }
+        if (!state.loading && pieces.isEmpty()) item { Panel { SectionTitle(if (state.pieces.isEmpty()) L.s(R.string.msg_your_collection_begins_here_ca6c) else L.s(R.string.msg_no_matching_compositions_391a)); Text(L.s(R.string.msg_discover_a_work_or_add_one_manually_change_t_fb4a), color = MaterialTheme.colorScheme.onSurfaceVariant); JournalTextButton(onClick=explore) { Text(L.s(R.string.msg_discover_in_catalogue_28f0)) } } }
         items(pieces, key = { it.id }) { piece ->
             Surface(modifier = Modifier.animateItem(), onClick = { detail(piece.id) }, shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.background) {
-                Column(Modifier.padding(horizontal = 12.dp, vertical = if(appearance.density=="Compact") 8.dp else 18.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.padding(horizontal = 12.dp, vertical = if(appearance.density=="Compact") 8.dp else 12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    Row(verticalAlignment = Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                        ComposerPortrait(composerMap[ComposerIdentity.resolve(piece,works)])
                         PieceRowContent(piece.title,piece.composer,
                             works[piece.catalogWorkId]?.catalogLabel?.takeIf { it.isNotBlank() && !catalogText(piece.title).contains(catalogText(it)) }.orEmpty(),
                             Modifier.weight(1f))
@@ -98,5 +98,5 @@ import com.opus.piano.data.*
         }
     }
     if (editor) PieceEditor(state.pieces.firstOrNull { it.id == editingId }, { editor = false }, model::save)
-    deleting?.let { p -> AlertDialog(onDismissRequest = { deleting = null }, title = { Text(L.s(R.string.msg_delete_piece_1c9a)) }, text = { Text(L.s(R.string.msg_remove_p_title_your_completed_practice_histo_32b9, (p.title))) }, confirmButton = { TextButton(onClick = { model.delete(p); deleting = null }) { Text(L.s(R.string.msg_delete_f6fd)) } }, dismissButton = { TextButton(onClick = { deleting = null }) { Text(L.s(R.string.msg_keep_piece_c264)) } }) }
+    deleting?.let { p -> AlertDialog(onDismissRequest = { deleting = null }, title = { Text(L.s(R.string.msg_delete_piece_1c9a)) }, text = { Text(L.s(R.string.msg_remove_p_title_your_completed_practice_histo_32b9, (p.title))) }, confirmButton = { JournalTextButton(onClick = { model.delete(p); deleting = null }) { Text(L.s(R.string.msg_delete_f6fd)) } }, dismissButton = { JournalTextButton(onClick = { deleting = null }) { Text(L.s(R.string.msg_keep_piece_c264)) } }) }
 }

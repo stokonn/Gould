@@ -24,7 +24,7 @@ class Goldberg08MigrationTest {
             for (i in 0 until entities.length()) {
                 val entity=entities.getJSONObject(i)
                 old.execSQL(entity.getString("createSql").replace("\${TABLE_NAME}",entity.getString("tableName")))
-                val indices=entity.getJSONArray("indices")
+                val indices=(entity.optJSONArray("indices") ?: org.json.JSONArray())
                 for (j in 0 until indices.length()) old.execSQL(indices.getJSONObject(j).getString("createSql").replace("\${TABLE_NAME}",entity.getString("tableName")))
             }
             old.execSQL("INSERT INTO pieces(id,title,composer,difficulty,status,notes) VALUES(7,'Legacy','Bach','ADVANCED','POLISHING','repertoire notes')")
@@ -34,7 +34,7 @@ class Goldberg08MigrationTest {
             old.execSQL("INSERT INTO profile_settings VALUES(1,'Musician','','Dark','first_piece','System','streak,time,pieces,sessions')")
             old.version=5
         }
-        val db=Room.databaseBuilder(context,OpusDatabase::class.java,name).addMigrations(OpusDatabase.MIGRATION_5_6).build()
+        val db=Room.databaseBuilder(context,OpusDatabase::class.java,name).addMigrations(OpusDatabase.MIGRATION_5_6, OpusDatabase.MIGRATION_6_7).build()
         try {
             val session=db.dao().allSessions().single()
             assertEquals(3L,session.id);assertEquals(60000L,session.durationMillis);assertNull(session.elapsedMillis)

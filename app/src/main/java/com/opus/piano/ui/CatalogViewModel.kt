@@ -90,7 +90,8 @@ class CatalogViewModel(val repository: CatalogRepository, private val saved: Sav
             _browse.update { it.copy(loading = false, cached = true, error = L.s(R.string.msg_catalogue_unavailable_showing_matching_saved_c21f)) }
         }
     }
-    fun loadComposer(id: String, force: Boolean = false) {
+    fun cancelSupplement() { composerJob?.cancel();_composer.update {it.copy(profileLoading=false,loading=false)} }
+    fun loadComposer(id: String, force: Boolean = false, download: Boolean = false) {
         composerJob?.cancel()
         _composer.value = ComposerPageState(id)
         composerJob = viewModelScope.launch {
@@ -111,7 +112,7 @@ class CatalogViewModel(val repository: CatalogRepository, private val saved: Sav
                         _composer.update { it.copy(profileLoading = false, profileError = L.s(R.string.msg_a_reliable_birth_year_is_needed_to_verify_th_e648)) }
                         return@launch
                     }
-                    val profile = repository.profile(c, force)
+                    val profile = repository.profile(c, force, download)
                     _composer.update { it.copy(profileLoading = false, profile = profile.value, profileError = profile.warning) }
                 } catch (cancelled: CancellationException) { throw cancelled }
                 catch (_: Exception) { _composer.update { it.copy(profileLoading = false, profileError = L.s(R.string.msg_biography_and_portrait_are_unavailable_pleas_7137)) } }

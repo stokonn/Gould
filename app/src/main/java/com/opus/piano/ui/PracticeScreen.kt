@@ -52,8 +52,8 @@ import com.opus.piano.service.SmartPracticeService
         }
     }
     if (fresh) AlertDialog(onDismissRequest={fresh=false},title={Text(L.s(R.string.recovery_fresh))},text={Text(L.s(R.string.recovery_confirm))},
-        confirmButton={TextButton(onClick={exported?.let { model.practice.freshAfterExport(it) };fresh=false}) { Text(L.s(R.string.recovery_fresh)) }},
-        dismissButton={TextButton(onClick={fresh=false}) { Text(L.s(R.string.msg_cancel_77df)) }})
+        confirmButton={JournalTextButton(onClick={exported?.let { model.practice.freshAfterExport(it) };fresh=false}) { Text(L.s(R.string.recovery_fresh)) }},
+        dismissButton={JournalTextButton(onClick={fresh=false}) { Text(L.s(R.string.msg_cancel_77df)) }})
     fun startSmart() {
         SmartPracticeService.start(context)
     }
@@ -78,26 +78,26 @@ import com.opus.piano.service.SmartPracticeService
     }
     if (timer.status == "Review") { PracticeReviewScreen(timer,model); return }
     Scaffold(bottomBar={
-        Column(Modifier.fillMaxWidth().imePadding().padding(horizontal=20.dp,vertical=8.dp),verticalArrangement=Arrangement.spacedBy(4.dp)) {
-            Button(onClick={
+        Column(Modifier.fillMaxWidth().padding(horizontal=20.dp,vertical=8.dp),verticalArrangement=Arrangement.spacedBy(4.dp)) {
+            JournalPrimaryButton(onClick={
                 if(timer.running) model.practice.command { pause() }
                 else if(timer.token.isNotEmpty() && timer.smart!=smart) convert=true else start()
             },modifier=Modifier.fillMaxWidth().heightIn(min=52.dp),enabled=timer.ready && !timer.saving) { Text(if(timer.running) L.s(R.string.msg_pause_7819) else if(timer.token.isEmpty()) L.s(R.string.msg_start_practice_ae1b) else L.s(R.string.msg_resume_b3bd)) }
-            TextButton(onClick=model::finish,enabled=timer.token.isNotEmpty() || timer.notes.isNotBlank() || timer.parts.any { it.notes.isNotBlank() },modifier=Modifier.fillMaxWidth()) { Text(L.s(R.string.msg_finish_review_04ae)) }
+            JournalTextButton(onClick=model::finish,enabled=timer.token.isNotEmpty() || timer.notes.isNotBlank() || timer.parts.any { it.notes.isNotBlank() },modifier=Modifier.fillMaxWidth()) { Text(L.s(R.string.msg_finish_review_04ae)) }
         }
     }) { padding ->
-    Column(Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState()).padding(20.dp),verticalArrangement=Arrangement.spacedBy(20.dp)) {
+    Column(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).verticalScroll(rememberScrollState()).padding(20.dp),verticalArrangement=Arrangement.spacedBy(20.dp)) {
         if (failedRecovery) {
             Text(L.s(R.string.recovery_failed))
-            Button(onClick={model.practice.retryRecovery()}) { Text(L.s(R.string.practice_retry)) }
-            OutlinedButton(onClick={export.launch("Goldberg-recovery.json")}) { Text(L.s(R.string.recovery_export)) }
-            if (exported != null) TextButton(onClick={fresh=true}) { Text(L.s(R.string.recovery_fresh)) }
+            JournalPrimaryButton(onClick={model.practice.retryRecovery()}) { Text(L.s(R.string.practice_retry)) }
+            JournalSecondaryButton(onClick={export.launch("Goldberg-recovery.json")}) { Text(L.s(R.string.recovery_export)) }
+            if (exported != null) JournalTextButton(onClick={fresh=true}) { Text(L.s(R.string.recovery_fresh)) }
             return@Column
         }
         if(!timer.ready) { Text(L.s(R.string.msg_recovering_your_practice_e75c));return@Column }
         if (unsaved) {
             Text(L.s(R.string.practice_unsaved), color=MaterialTheme.colorScheme.error)
-            TextButton(onClick={model.practice.retryPersistence()}) { Text(L.s(R.string.practice_retry)) }
+            JournalTextButton(onClick={model.practice.retryPersistence()}) { Text(L.s(R.string.practice_retry)) }
         }
         Text(timer.parts[timer.active].displayTitle,style=MaterialTheme.typography.headlineMedium)
         Text(duration(timer.elapsed),style=MaterialTheme.typography.displayLarge,fontFamily=MaterialTheme.typography.bodyLarge.fontFamily)
@@ -108,20 +108,20 @@ import com.opus.piano.service.SmartPracticeService
             Switch(smart,{ value -> if(!timer.running) { smart=value;profile.smartPreference(value) } },enabled=!timer.running,modifier=Modifier.semantics { contentDescription=L.fixed("Smart Practice") })
             Text(L.s(R.string.msg_smart_practice_experimental_34d8),Modifier.padding(start=12.dp))
         }
-        if(timer.token.isNotEmpty()) TextButton(onClick={discard=true}) { Text(L.s(R.string.msg_discard_session_38ed)) }
-        TextButton(onClick={expanded=!expanded}) { Text(L.s(R.string.practice_expand)) }
+        if(timer.token.isNotEmpty()) JournalTextButton(onClick={discard=true}) { Text(L.s(R.string.msg_discard_session_38ed)) }
+        JournalTextButton(onClick={expanded=!expanded}) { Text(L.s(R.string.practice_expand)) }
         if (expanded) {
         Panel {
             Text(L.s(R.string.msg_pieces_in_this_session_6dbf),style = MaterialTheme.typography.labelSmall)
-            OutlinedButton(onClick = { choose = true }) { Text(L.s(R.string.msg_select_add_piece_3abf)) }
+            JournalSecondaryButton(onClick = { choose = true }) { Text(L.s(R.string.msg_select_add_piece_3abf)) }
             DropdownMenu(choose,{ choose = false }) {
                 DropdownMenuItem(text = { Text(L.s(R.string.msg_free_practice_524f)) },onClick = { model.select(null); choose = false })
                 library.pieces.forEach { piece -> DropdownMenuItem(text = { Text("${piece.title} · ${piece.composer}") },onClick = { model.select(piece); choose = false }) }
             }
             timer.parts.forEachIndexed { i,p -> if (p.pieceId !in timer.removed) {
                 Row {
-                    TextButton(onClick = { model.selectPart(i) },Modifier.weight(1f)) { Text(L.s(R.string.msg_if_i_timer_active_else_p_title_duration_p_du_9c1d, (if (i == timer.active) "▶ " else ""), (p.displayTitle), (duration(p.durationMillis)))) }
-                    if (p.pieceId != null) TextButton(onClick = { model.remove(i) }) { Text(L.s(R.string.msg_remove_e963)) }
+                    JournalTextButton(onClick = { model.selectPart(i) },Modifier.weight(1f)) { Text(L.s(R.string.msg_if_i_timer_active_else_p_title_duration_p_du_9c1d, (if (i == timer.active) "▶ " else ""), (p.displayTitle), (duration(p.durationMillis)))) }
+                    if (p.pieceId != null) JournalTextButton(onClick = { model.remove(i) }) { Text(L.s(R.string.msg_remove_e963)) }
                 }
                 if (i == timer.active) OutlinedTextField(p.notes,{ model.note(i,it) },label = { Text(L.s(R.string.msg_piece_notes_for_this_session_3a65)) },modifier = Modifier.fillMaxWidth())
             } }
@@ -131,14 +131,14 @@ import com.opus.piano.service.SmartPracticeService
         }
     }
     }
-    if (privacy) AlertDialog(onDismissRequest = { privacy = false },title = { Text(L.s(R.string.msg_listen_during_practice_cc91)) },text = { Text(L.s(R.string.msg_goldberg_analyzes_ambient_microphone_sound_l_7f65)) },confirmButton = { TextButton(onClick = {
+    if (privacy) AlertDialog(onDismissRequest = { privacy = false },title = { Text(L.s(R.string.msg_listen_during_practice_cc91)) },text = { Text(L.s(R.string.msg_goldberg_analyzes_ambient_microphone_sound_l_7f65)) },confirmButton = { JournalTextButton(onClick = {
         privacy = false
         val permissions = mutableListOf(Manifest.permission.RECORD_AUDIO)
         if (Build.VERSION.SDK_INT >= 33) permissions += Manifest.permission.POST_NOTIFICATIONS
         permission.launch(permissions.toTypedArray())
-    }) { Text(L.s(R.string.msg_enable_listening_d7de)) } },dismissButton = { TextButton(onClick = { privacy = false }) { Text(L.s(R.string.msg_cancel_77df)) } })
-    if (convert) AlertDialog(onDismissRequest = { convert = false },title = { Text(L.s(R.string.msg_change_timing_mode_38a6)) },text = { Text(L.s(R.string.msg_this_becomes_a_mixed_session_existing_credit_768a)) },confirmButton = { TextButton(onClick = { convert = false; start() }) { Text(L.s(R.string.msg_convert_continue_2747)) } },dismissButton = { TextButton(onClick = { convert = false }) { Text(L.s(R.string.msg_cancel_77df)) } })
-    if (discard) AlertDialog(onDismissRequest = { discard = false },title = { Text(L.s(R.string.msg_discard_unfinished_practice_c660)) },text = { Text(L.s(R.string.msg_this_deletes_the_unfinished_draft_and_its_no_875d)) },confirmButton = { TextButton(onClick = { model.reset(); discard = false }) { Text(L.s(R.string.msg_discard_36ff)) } },dismissButton = { TextButton(onClick = { discard = false }) { Text(L.s(R.string.msg_keep_466f)) } })
+    }) { Text(L.s(R.string.msg_enable_listening_d7de)) } },dismissButton = { JournalTextButton(onClick = { privacy = false }) { Text(L.s(R.string.msg_cancel_77df)) } })
+    if (convert) AlertDialog(onDismissRequest = { convert = false },title = { Text(L.s(R.string.msg_change_timing_mode_38a6)) },text = { Text(L.s(R.string.msg_this_becomes_a_mixed_session_existing_credit_768a)) },confirmButton = { JournalTextButton(onClick = { convert = false; start() }) { Text(L.s(R.string.msg_convert_continue_2747)) } },dismissButton = { JournalTextButton(onClick = { convert = false }) { Text(L.s(R.string.msg_cancel_77df)) } })
+    if (discard) AlertDialog(onDismissRequest = { discard = false },title = { Text(L.s(R.string.msg_discard_unfinished_practice_c660)) },text = { Text(L.s(R.string.msg_this_deletes_the_unfinished_draft_and_its_no_875d)) },confirmButton = { JournalTextButton(onClick = { model.reset(); discard = false }) { Text(L.s(R.string.msg_discard_36ff)) } },dismissButton = { JournalTextButton(onClick = { discard = false }) { Text(L.s(R.string.msg_keep_466f)) } })
 }
 
 @Composable private fun ActivityIndicator(status:String,active:Boolean,motion:Boolean) {

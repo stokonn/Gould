@@ -12,16 +12,16 @@ import org.json.JSONObject
 
 private data class BackupColumn(val name: String, val type: String, val required: Boolean)
 
-/** Format 2 exports schema 6; legacy format-1 schemas 4/5 convert before isolated validation. */
+/** Format 3/schema 7 adds personalization and recovery archives; formats 1/2 remain importable. */
 class BackupRepository(private val context: Context, private val db: OpusDatabase) {
     companion object {
         const val MAX_BYTES = 32 * 1024 * 1024
-        val tables = listOf("pieces", "sessions", "catalog_composers", "catalog_works", "catalog_cache", "saved_recordings", "badge_unlocks", "session_parts", "profile_settings", "session_intervals")
+        val tables = listOf("pieces", "sessions", "catalog_composers", "catalog_works", "catalog_cache", "saved_recordings", "badge_unlocks", "session_parts", "profile_settings", "session_intervals", "practice_recovery_archives")
     }
     suspend fun export(): String = withContext(Dispatchers.IO) {
         db.withTransaction {
             JSONObject().apply {
-                put("format", "goldberg-backup"); put("version", 2); put("schema", 6); put("createdAt", System.currentTimeMillis())
+                put("format", "goldberg-backup"); put("version", 3); put("schema", 7); put("createdAt", System.currentTimeMillis())
                 put("tables", JSONObject().apply { tables.forEach { table ->
                     val rows = JSONArray()
                     db.openHelper.writableDatabase.query("SELECT * FROM `$table`").use { c ->
@@ -37,9 +37,15 @@ class BackupRepository(private val context: Context, private val db: OpusDatabas
     private fun parse(raw: String): JSONObject {
         require(raw.toByteArray().size <= MAX_BYTES) { L.s(R.string.msg_backup_exceeds_32_mib_046e) }
         val root = JSONObject(raw)
-        require(root.getString("format") == "goldberg-backup" && ((root.get("version") == 1 && root.get("schema") in listOf(4, 5)) || (root.get("version") == 2 && root.get("schema") == 6))) { L.s(R.string.unsupported_backup) }
+        require(root.getString("format") == "goldberg-backup" && ((root.get("version") == 1 && root.get("schema") in listOf(4, 5)) || (root.get("version") == 2 && root.get("schema") == 6) || (root.get("version") == 3 && root.get("schema") == 7))) { L.s(R.string.unsupported_backup) }
         return root.getJSONObject("tables").also {
-            require(it.keys().asSequence().toSet() == (if (root.getInt("schema") < 6) tables.dropLast(1) else tables).toSet()) { L.s(R.string.msg_incomplete_backup_bf05) }
+            require(it.keys().asSequence().toSet() == (if (root.getInt("schema") < 6) tables.dropLast(2) else if (root.getInt("schema") == 6) tables.dropLast(1) else tables).toSet()) { L.s(R.string.msg_incomplete_backup_bf05) }
+            if (root.getInt("schema") < 7) {
+                it.put("practice_recovery_archives", JSONArray())
+                it.getJSONArray("profile_settings").objects().forEach { row ->
+                    listOf("favoriteArtist", "favoritePiece", "favoriteEra", "biography").forEach { name -> row.put(name, "") }
+                }
+            }
             if (root.getInt("schema") < 6) {
                 it.put("session_intervals", JSONArray())
                 it.getJSONArray("sessions").objects().forEach { row ->
@@ -103,6 +109,7 @@ class BackupRepository(private val context: Context, private val db: OpusDatabas
             val unlocks = stage.experienceDao().allUnlocks()
             require(unlocks.all { it.unlockedAt > 0 }) { L.s(R.string.msg_invalid_unlock_date_c907) }
             stage.personalDao().getSettings()?.let { p ->
+                require(p.favoriteArtist.length<=120 && p.favoritePiece.length<=240 && p.favoriteEra.length<=80 && p.biography.length<=400)
                 require(p.sensitivity in 0..100 && p.pauseSeconds in 2..30)
                 require(p.typography in listOf("Editorial", "System") && StatisticLayout.valid(p.statistics)) { L.s(R.string.msg_invalid_appearance_or_statistics_3f1e) }
                 require(p.id == 1 && p.username.length <= 80 && p.theme in listOf("System", "Light", "Dark")) { L.s(R.string.msg_invalid_profile_e51c) }
@@ -116,6 +123,7 @@ class BackupRepository(private val context: Context, private val db: OpusDatabas
                     require(bounds.outWidth in 1..512 && bounds.outHeight in 1..512) { L.s(R.string.msg_invalid_avatar_bb11) }
                 }
             }
+            stage.practiceDao().archives().forEach { require(it.payload.length <= 16*1024*1024 && it.updatedAt>=0 && it.archivedAt>0) }
             val profileRows = data.getJSONArray("profile_settings")
             require(profileRows.objects().all { it.getInt("smartEnabled") in 0..1 }) { L.s(R.string.msg_invalid_smart_preference_358b) }
             require(profileRows.length() <= 1 && (profileRows.length() == 0 || profileRows.getJSONObject(0).getInt("id") == 1)) { L.s(R.string.msg_invalid_profile_record_4521) }

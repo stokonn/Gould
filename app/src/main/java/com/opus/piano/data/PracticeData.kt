@@ -12,10 +12,14 @@ data class PracticeDraft(@PrimaryKey val id: Int = 1, val payload: String, val u
 data class LocalAppState(@PrimaryKey val id: Int = 1, val onboardingDone: Boolean = false,
     val reminderEnabled: Boolean = false, val reminderHour: Int = 18, val reminderMinute: Int = 0,
     val generation: Long = 0, val lastReminderDay: String = "")
+@Entity(tableName = "practice_recovery_archives")
+data class RecoveryArchive(@PrimaryKey(autoGenerate = true) val id: Long = 0, val payload: String, val updatedAt: Long, val archivedAt: Long)
 @Dao
 interface PracticeDao {
     @Query("SELECT * FROM practice_drafts WHERE id=1") suspend fun draft(): PracticeDraft?
     @Upsert suspend fun checkpoint(value: PracticeDraft)
+    @Insert suspend fun archive(value: RecoveryArchive)
+    @Query("SELECT * FROM practice_recovery_archives ORDER BY id") suspend fun archives(): List<RecoveryArchive>
     @Query("DELETE FROM practice_drafts") suspend fun clearDraft()
     @Query("SELECT * FROM sessions WHERE completionToken=:token") suspend fun completed(token: String): PracticeSession?
     @Query("""SELECT * FROM sessions s WHERE

@@ -1,0 +1,11 @@
+PASS v1 → v7: legacy data retained, schema matches Room export, first timestamp retained
+PASS v2 → v7: legacy data retained, schema matches Room export, first timestamp retained
+PASS v3 → v7: legacy data retained, schema matches Room export, first timestamp retained
+PASS v4 → v7: legacy data retained, schema matches Room export, first timestamp retained
+PASS v5 → v7: legacy data retained, schema matches Room export, first timestamp retained
+PASS v6 → v7: legacy data retained, schema matches Room export, first timestamp retained
+PASS goldberg-0.6.0-format1.json: schema 4 → 7, every original portable field retained
+PASS goldberg-0.9.1-format2.json: schema 6 → 7, every original portable field retained
+PASS: 106 sessions across 4 pages, equal timestamps, duplicate parts, legacy attribution, catalogue filtering, newer insert and empty result
+PASS: 755 English/Czech resources, matching placeholders, Czech plural forms and declared locales
+PASS: canonical policy, thin agent references, Cursor frontmatter and local Wiki navigation; runtime agent loading NOT TESTED

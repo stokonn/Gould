@@ -1,0 +1,16 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::loadLibrary has been called by org.conscrypt.NativeLibraryUtil in an unnamed module (file:/home/stokonn/Android/Sdk/build-tools/36.0.0/lib/apksigner.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::loadLibrary has been called by org.conscrypt.NativeLibraryUtil in an unnamed module (file:/home/stokonn/Android/Sdk/build-tools/36.0.0/lib/apksigner.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+PASS: packaged transparent artwork and circular/rounded-square bounds: res/drawable-nodpi-v4/ic_goldberg_classic_foreground.png
+PASS: packaged transparent artwork and circular/rounded-square bounds: res/drawable-night-nodpi-v8/ic_goldberg_classic_foreground.png
+PASS: packaged transparent artwork and circular/rounded-square bounds: res/drawable-nodpi-v4/ic_goldberg_classic_monochrome.png
+PASS: com.opus.piano 0.9.2 (9), published baseline code 8
+Signing SHA-256: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+APK SHA-256: 7470fe7b477678946040df452813fc47708489883543bb3ea57bb2148bab4e7f

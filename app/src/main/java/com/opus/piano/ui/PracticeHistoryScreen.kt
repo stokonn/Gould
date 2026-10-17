@@ -47,7 +47,7 @@ import kotlinx.coroutines.CancellationException
             SessionRow(s,entries,focused)
         }
         if(loading) item { LinearProgressIndicator(Modifier.fillMaxWidth()) }
-        if(failed) item { Text(L.s(R.string.msg_saved_journal_could_not_be_loaded_restart_go_cfce));TextButton(onClick={request++}) { Text(L.s(R.string.practice_retry)) } }
-        else if(more && !loading) item { TextButton(onClick={request++}) { Text(L.s(R.string.msg_show_older_sessions_97d8)) } }
+        if(failed) item { Text(L.s(R.string.msg_saved_journal_could_not_be_loaded_restart_go_cfce));JournalTextButton(onClick={request++}) { Text(L.s(R.string.practice_retry)) } }
+        else if(more && !loading) item { JournalTextButton(onClick={request++}) { Text(L.s(R.string.msg_show_older_sessions_97d8)) } }
     }
 }

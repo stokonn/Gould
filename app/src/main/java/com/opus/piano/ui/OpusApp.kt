@@ -97,10 +97,12 @@ private enum class Destination(val label: String, val icon: ImageVector) {
     LaunchedEffect(message) { message?.let { snackbar.showSnackbar(it); model.dismissMessage() } }
     LaunchedEffect(catalogNotice) { catalogNotice?.let { snackbar.showSnackbar(it); catalog.dismissNotice() } }
     LaunchedEffect(experienceNotice) { experienceNotice?.let { snackbar.showSnackbar(it); experience.dismissNotice() } }
+    // Apply keyboard avoidance once, before measuring navigation and child screens.
     Scaffold(
+        modifier = Modifier.imePadding(),
         snackbarHost = { SnackbarHost(snackbar) },
         bottomBar = {
-            NavigationBar(modifier = Modifier.imePadding(), containerColor = MaterialTheme.colorScheme.surface, tonalElevation = 0.dp) {
+            NavigationBar(containerColor = MaterialTheme.colorScheme.surface, tonalElevation = 0.dp) {
                 listOf(Destination.OVERVIEW, Destination.REPERTOIRE, Destination.PRACTICE, Destination.HOME).forEach { destination ->
                     NavigationBarItem(colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = MaterialTheme.colorScheme.primary, selectedTextColor = MaterialTheme.colorScheme.primary,
@@ -115,15 +117,12 @@ private enum class Destination(val label: String, val icon: ImageVector) {
             }
         }
     ) { padding ->
-        Column(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)).imePadding(), horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)), horizontalAlignment = Alignment.CenterHorizontally) {
             NavHost(navController = nav, startDestination = Destination.OVERVIEW.name, modifier = Modifier.widthIn(max = 840.dp).fillMaxSize(),
                 enterTransition = { fadeIn(tween(if (motionScale == 0f) 0 else 220)) }, exitTransition = { fadeOut(tween(if (motionScale == 0f) 0 else 150)) }) {
                 composable(Destination.OVERVIEW.name) {
                     val settings by profile.settings.collectAsStateWithLifecycle()
-                    BalancedHome(library, settings.username, {
-                        if (model.timer.value.token.isEmpty()) model.practice.command { if (state.value.token.isEmpty()) { select(null); (context.applicationContext as com.opus.piano.OpusApplication).practiceRequest.value = "start" } else notice.value=L.s(R.string.pending_session) } else model.practice.notice.value=L.s(R.string.pending_session)
-                        nav.selectTopLevel("PRACTICE")
-                    }, { (context.applicationContext as com.opus.piano.OpusApplication).practiceRequest.value = "choose"; nav.selectTopLevel("PRACTICE") }, { nav.navigate("piece/$it") }, { nav.navigate("history") })
+                    BalancedHome(library, settings.username, { nav.navigate("piece/$it") }, { nav.navigate("history") })
                 }
                 composable(SETTINGS_ROUTE) { SettingsScreen(profile, model, { replay = true }) { nav.popBackStack() } }
                 composable(Destination.HOME.name) { ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }) { nav.navigate("badge/$it") } }
@@ -144,20 +143,16 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 composable("catalog/composer/{id}") { route -> ComposerScreen(route.arguments?.getString("id").orEmpty(), catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/work/$it") }) }
                 composable("catalog/work/{id}") { route ->
                     CompositionScreen(route.arguments?.getString("id"), null, catalog, experience, library, model, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("recordings/$it") }, { id, source -> if (id != null) nav.navigate("history/piece/$id") else if (source != null) nav.navigate("history/catalog/${android.net.Uri.encode(source)}") }) { piece ->
-                        if (model.timer.value.token.isNotEmpty()) {
-                            model.practice.notice.value=L.s(R.string.pending_session)
-                        } else {
-                            model.practice.command { if (state.value.token.isEmpty()) { select(piece); (context.applicationContext as com.opus.piano.OpusApplication).practiceRequest.value="start" } else notice.value=L.s(R.string.pending_session) }
+                        model.practice.command {
+                            if (state.value.token.isEmpty()) select(piece) else notice.value=L.s(R.string.pending_session)
                         }
                         nav.navigate(Destination.PRACTICE.name) { launchSingleTop = true }
                     }
                 }
                 composable("piece/{id}") { route ->
                     CompositionScreen(null, route.arguments?.getString("id")?.toLongOrNull(), catalog, experience, library, model, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("recordings/$it") }, { id, source -> if (id != null) nav.navigate("history/piece/$id") else if (source != null) nav.navigate("history/catalog/${android.net.Uri.encode(source)}") }) { piece ->
-                        if (model.timer.value.token.isNotEmpty()) {
-                            model.practice.notice.value=L.s(R.string.pending_session)
-                        } else {
-                            model.practice.command { if (state.value.token.isEmpty()) { select(piece); (context.applicationContext as com.opus.piano.OpusApplication).practiceRequest.value="start" } else notice.value=L.s(R.string.pending_session) }
+                        model.practice.command {
+                            if (state.value.token.isEmpty()) select(piece) else notice.value=L.s(R.string.pending_session)
                         }
                         nav.navigate(Destination.PRACTICE.name) { launchSingleTop = true }
                     }
@@ -172,7 +167,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 composable("history/catalog/{id}") { e -> PracticeHistoryScreen({ nav.popBackStack() }, catalogId=e.arguments?.getString("id")) }
                 composable("badge/{id}") { route -> BadgeDetailScreen(route.arguments?.getString("id").orEmpty(), experience) { nav.popBackStack() } }
                 composable(Destination.PRACTICE.name) { PracticeScreen(library, model, profile, motionScale != 0f) }
-                composable(Destination.BADGES.name) { BadgesScreen(experience) { nav.navigate("badge/$it") } }
+                composable(Destination.BADGES.name) { BadgesScreen(experience, profile) { nav.navigate("badge/$it") } }
                 composable(Destination.WRAPPED.name) { ComingSoon(library, "Wrapped", "Your music.\nYour story.", L.s(R.string.future_wrapped), Icons.Outlined.Insights, listOf("Monthly reflections", "Your year at the piano", "Repertoire highlights")) }
             }
         }
@@ -207,31 +202,31 @@ private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).
 @Composable internal fun SessionRow(session: PracticeSession, parts: List<SessionPart> = emptyList(), displayMillis: Long = session.durationMillis) {
     var editNotes by remember { mutableStateOf(false) }
     if (editNotes) HistoricalReview(session, parts) { editNotes = false }
-    var expanded by rememberSaveable(session.id) { mutableStateOf(false) }
-    Panel {
-        Row(verticalAlignment = Alignment.CenterVertically) {
+    val title = if (parts.isNotEmpty()) parts.filter { it.durationMillis > 0 || it.notes.isNotBlank() }
+        .joinToString(" · ") { it.displayTitle }.ifBlank { session.pieceTitle }
+        else if (session.pieceId == null && session.pieceTitle == "Free practice") L.fixed("Free practice") else session.pieceTitle
+    Surface(onClick = { editNotes = true }, modifier = Modifier.fillMaxWidth().semantics {
+        contentDescription = L.s(R.string.msg_review_edit_session_notes_c195)
+    }, shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
+        Row(Modifier.heightIn(min = 56.dp).padding(12.dp), verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             Icon(Icons.Outlined.MusicNote, null, tint = MaterialTheme.colorScheme.primary)
-            Spacer(Modifier.width(12.dp))
-            Column(Modifier.weight(1f)) {
-                Text(if (parts.isNotEmpty()) parts.filter { it.durationMillis > 0 || it.notes.isNotBlank() }.joinToString(" · ") { it.displayTitle }.ifBlank { session.pieceTitle } else if (session.pieceId == null && session.pieceTitle == "Free practice") L.fixed("Free practice") else session.pieceTitle, maxLines = 2, overflow = TextOverflow.Ellipsis)
-                Text(Instant.ofEpochMilli(session.completedAt).atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("d MMM · HH:mm").withLocale(L.locale)), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text(title, style = MaterialTheme.typography.titleMedium, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                Text(Instant.ofEpochMilli(session.completedAt).atZone(ZoneId.systemDefault())
+                    .format(DateTimeFormatter.ofPattern("d MMM · HH:mm").withLocale(L.locale)),
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
-            Text(duration(displayMillis), color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelLarge)
-        }
-        TextButton(onClick = { editNotes = true }) { Text(L.s(R.string.msg_review_edit_session_notes_c195)) }
-        if (parts.isNotEmpty()) {
-            TextButton(onClick = { expanded = !expanded }) { Text(if (expanded) L.s(R.string.msg_hide_summary_c10e) else L.s(R.string.msg_session_summary_f941)) }
-            if (expanded) parts.forEach { part ->
-                Text("${part.displayTitle} · ${duration(part.durationMillis)}")
-                if (part.notes.isNotBlank()) Text(part.notes, style = MaterialTheme.typography.bodyMedium)
-            }
+            Text(duration(displayMillis), color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.labelLarge.copy(fontFeatureSettings = "tnum"))
+            Icon(Icons.Outlined.ChevronRight, null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
 }
 @Composable internal fun Choice(label: String, options: List<String>, selected: String, translateOptions: Boolean = true, choose: (String) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     Box {
-        OutlinedButton(onClick = { expanded = true }) { Text("${L.fixed(label)}: ${if(translateOptions || selected=="All") L.fixed(selected) else selected}", Modifier.weight(1f, fill = false), maxLines = 2, overflow = TextOverflow.Ellipsis); Icon(Icons.Outlined.ExpandMore, null) }
+        JournalSecondaryButton(onClick = { expanded = true }) { Text("${L.fixed(label)}: ${if(translateOptions || selected=="All") L.fixed(selected) else selected}", Modifier.weight(1f, fill = false), maxLines = 2, overflow = TextOverflow.Ellipsis); Icon(Icons.Outlined.ExpandMore, null) }
         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
             options.forEach { option -> DropdownMenuItem(text = { Text(if(translateOptions || option=="All") L.fixed(option) else option, maxLines = 3, overflow = TextOverflow.Ellipsis) }, onClick = { choose(option); expanded = false }) }
         }
@@ -258,7 +253,7 @@ private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).
                 Choice(L.s(R.string.msg_difficulty_7945), Difficulty.entries.map { it.label }, difficulty.label) { label -> difficulty = Difficulty.entries.first { it.label == label } }
                 Choice(L.s(R.string.msg_status_bae7), LearningStatus.entries.map { it.label }, status.label) { label -> status = LearningStatus.entries.first { it.label == label } }
                 OutlinedTextField(notes, { notes = it }, label = { Text(L.s(R.string.msg_notes_optional_4d56)) }, minLines = 3, modifier = Modifier.fillMaxWidth())
-                TextButton(onClick = { metadataOpen = !metadataOpen }) { Text(if (metadataOpen) L.s(R.string.msg_hide_musical_metadata_2704) else L.s(R.string.msg_musical_metadata_optional_ff79)) }
+                JournalTextButton(onClick = { metadataOpen = !metadataOpen }) { Text(if (metadataOpen) L.s(R.string.msg_hide_musical_metadata_2704) else L.s(R.string.msg_musical_metadata_optional_ff79)) }
                 if (metadataOpen) {
                     OutlinedTextField(instrument, { instrument = it }, label = { Text(L.s(R.string.msg_instrument_f05f)) }, singleLine = true, modifier = Modifier.fillMaxWidth())
                     OutlinedTextField(genre, { genre = it }, label = { Text(L.s(R.string.msg_genre_2aa3)) }, singleLine = true, modifier = Modifier.fillMaxWidth())
@@ -266,8 +261,8 @@ private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).
                 }
                 Text(L.s(R.string.msg_required_2d1f), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    TextButton(onClick = dismiss, enabled = !saving) { Text(L.s(R.string.msg_cancel_77df)) }
-                    Button(enabled = title.isNotBlank() && composer.isNotBlank() && !saving, onClick = {
+                    JournalTextButton(onClick = dismiss, enabled = !saving) { Text(L.s(R.string.msg_cancel_77df)) }
+                    JournalPrimaryButton(enabled = title.isNotBlank() && composer.isNotBlank() && !saving, onClick = {
                         saving = true
                         save(Piece(piece?.id ?: 0, title, composer, difficulty, status, notes, piece?.catalogWorkId, piece?.createdAt ?: 0, instrument.trim(), genre.trim(), era.trim())) { success ->
                             saving = false

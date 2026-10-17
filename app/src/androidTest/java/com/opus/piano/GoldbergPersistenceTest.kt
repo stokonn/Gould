@@ -24,7 +24,7 @@ class GoldbergPersistenceTest {
             for (i in 0 until entities.length()) {
                 val e = entities.getJSONObject(i)
                 old.execSQL(e.getString("createSql").replace("\${TABLE_NAME}", e.getString("tableName")))
-                val indices = e.getJSONArray("indices")
+                val indices = (e.optJSONArray("indices") ?: org.json.JSONArray())
                 for (j in 0 until indices.length()) old.execSQL(indices.getJSONObject(j).getString("createSql").replace("\${TABLE_NAME}", e.getString("tableName")))
             }
             old.execSQL("INSERT INTO pieces(id,title,composer,difficulty,status,notes) VALUES(17,'Legacy','Bach','ADVANCED','READY','Retain me')")
@@ -33,7 +33,7 @@ class GoldbergPersistenceTest {
             old.execSQL("INSERT INTO saved_recordings VALUES(5,'piece:17','https://youtu.be/abcdefghijk','','','YOUTUBE',123,1)")
             old.version = 3
         }
-        val db: OpusDatabase = Room.databaseBuilder(context, OpusDatabase::class.java, name).addMigrations(OpusDatabase.MIGRATION_3_4, OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6).build()
+        val db: OpusDatabase = Room.databaseBuilder(context, OpusDatabase::class.java, name).addMigrations(OpusDatabase.MIGRATION_3_4, OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6, OpusDatabase.MIGRATION_6_7).build()
         try {
             assertEquals("Retain me", db.dao().piece(17)!!.notes)
             assertEquals(10000L, db.dao().allSessions().single().durationMillis)

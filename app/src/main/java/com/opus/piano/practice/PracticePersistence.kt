@@ -6,5 +6,6 @@ interface PracticePersistence {
     suspend fun checkpoint(state: PracticeState)
     suspend fun clear()
     suspend fun complete(state: PracticeState): Long
+    suspend fun archiveRecovery(expected: String)
     suspend fun recoveryData(): String?
 }

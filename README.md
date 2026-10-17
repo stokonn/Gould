@@ -1,20 +1,31 @@
-# Goldberg 0.9.1 Beta — The Quality Update
+# Goldberg
 
-Native Android journal for classical piano practice. Kotlin/Compose, Material 3 and Room; Android 8.0+ (API 26). Application ID `com.opus.piano` and local database `opus.db` are retained.
+A native Android piano practice journal built with Kotlin, Jetpack Compose, Material 3 and Room. Android 8.0+; English and Czech; light and dark themes. Your journal stays local.
 
-The 0.9.1 beta strengthens practice startup and recovery, adds database-paged history and approved Classic Piano artwork, and unifies Ivory and Nocturne styling, four main destinations, Balanced Home, cleaner repertoire and practice screens, customizable layouts and English/Czech localization. It preserves experimental Smart Practice, screen-off microphone foreground operation, durable sessions, reviews, notes, reminders, CSV exports and Bach’s Secret.
+**Goldberg [0.9.2](https://github.com/stokonn/Goldberg/releases/tag/v0.9.2)** — an editorial piano-practice journal with optional Google profile identity.
 
-**Beta pre-release.** Physical-device testing, screen-off microphone behavior, Android instrumentation execution, real installation upgrades, accessibility and battery behavior have **not yet been verified**. This beta is published with those limitations explicitly accepted; automated results do not establish on-device behavior.
+[Download](https://github.com/stokonn/Goldberg/releases) · [Official Wiki](https://github.com/stokonn/Goldberg/wiki) · [Issues](https://github.com/stokonn/Goldberg/issues) · [Development Project](https://github.com/users/stokonn/projects/2) (authorized collaborators)
 
-[Download the GitHub Pre-release](https://github.com/stokonn/Opus/releases/tag/v0.9.1).
+- Durable manual and experimental Smart Practice, multi-piece sessions, notes and review.
+- Local repertoire, catalogue information, paged history and per-piece accounting.
+- Profile, earned badges and a five-badge showcase.
+- Portable backups, restore, CSV exports and optional reminders.
+- Classic Piano branding and Bach’s Secret.
 
-- [Verification and remaining gates](docs/VERIFICATION-0.9.1.md)
-- [Design, architecture and compatibility](docs/DESIGN-0.9.md)
-- [Changed files](docs/MODIFIED-FILES-0.9.1.md)
-- [Smart Practice behavior and limitations](docs/SMART-PRACTICE.md)
-- [Backup compatibility](docs/BACKUP.md)
-- [CSV format](docs/CSV-EXPORT.md)
-- [Privacy](docs/PRIVACY.md) · [Licenses](docs/LICENSES.md) · [Signing](docs/SIGNING.md)
-- [Beta release description](docs/RELEASE-0.9.1.md)
+![Goldberg Home](docs/wiki/images/home-development.png)
 
-Before any update, export and retain a backup. Never uninstall to bypass a signature error. Microphone use and reminders are optional; no raw audio is stored or uploaded. New format-2 backups require 0.8 or later, while 0.6/0.7 format-1 imports remain supported.
+Before updating, export a backup. Never uninstall to bypass a signing error. Google identity does not synchronize practice data. Google sign-in, display-name/avatar import, nickname preservation, restart, sign-out and switching passed owner-reported manual verification on a Galaxy A55. Codex performed no physical-phone testing. See [verification evidence](docs/VERIFICATION-0.9.2.md).
+
+## Development
+
+Read [AGENTS.md](AGENTS.md) for the canonical development and release policy, [the Developer Guide](docs/wiki/Developer-Guide.md) for architecture and AI-agent integrations, and [the 0.9.2 implementation checklist](docs/PLAN-0.9.2.md). Use the existing Gradle wrapper, JDK 17-compatible toolchain and Android SDK 36:
+
+```sh
+./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1
+```
+
+Build artifacts are under `app/build/outputs/apk/`. Compilation is not device verification. Mandatory quality, data-compatibility, rendered-UI and signing checks must pass before the automatic release workflow. Use emulators only; never target the owner's physical phone. The GitHub quality workflow runs host checks; compatible release signing and emulator/owner acceptance remain separate gates. Local and remote CI results are recorded separately.
+
+[Signing](docs/SIGNING.md) · [Backup](docs/BACKUP.md) · [Google configuration](docs/GOOGLE-IDENTITY-SETUP.md) · [Changelog](CHANGELOG.md) · [Licenses](docs/LICENSES.md)
+
+created by stokonn with love <3

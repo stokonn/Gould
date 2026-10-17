@@ -16,6 +16,8 @@ class PracticeFailureTest {
         override suspend fun checkpoint(state: PracticeState) { check(!failWrite); draft=state; writes++ }
         override suspend fun clear() { draft=null }
         override suspend fun complete(state: PracticeState): Long { check(!failWrite); draft=null; return 1 }
+        var archived: String? = null
+        override suspend fun archiveRecovery(expected: String) { check(!failWrite); archived=expected; draft=null }
         override suspend fun recoveryData() = "unchanged-original"
     }
     private suspend fun ready(c: PracticeCoordinator) = withTimeout(3000) { c.state.first { it.ready } }
@@ -76,6 +78,7 @@ class PracticeFailureTest {
         assertTrue(c.recoveryFailed.value); assertFalse(c.state.value.ready)
         val original=requireNotNull(c.recoveryData())
         c.freshAfterExport(original).join()
+        assertEquals(original,s.archived)
         assertFalse(c.recoveryFailed.value); assertTrue(c.state.value.ready)
         assertFalse(c.state.value.running); c.close()
     }
@@ -84,5 +87,12 @@ class PracticeFailureTest {
         withTimeout(3000) { c.recoveryFailed.first { it } }
         try { c.replacing { fail("Must not run replacement") }; fail() } catch (_: IllegalStateException) { }
         assertEquals(0,s.writes); assertEquals("unchanged-original",c.recoveryData()); c.close()
+    }
+    @Test fun failedArchiveCannotReplaceTheOriginalRecoveryDraft() = runBlocking {
+        val s=Store();s.failRead=true;val c=coordinator(s)
+        withTimeout(3000) {c.recoveryFailed.first {it}}
+        s.failWrite=true;c.freshAfterExport(requireNotNull(c.recoveryData())).join()
+        assertTrue(c.recoveryFailed.value);assertFalse(c.state.value.ready)
+        assertEquals("unchanged-original",c.recoveryData());assertNull(s.archived);c.close()
     }
 }

@@ -1,0 +1,22 @@
+
+com.opus.piano.AppLanguageTest:.
+com.opus.piano.CatalogDatabaseTest:..
+com.opus.piano.DatabaseTest:.
+com.opus.piano.ExperiencePersistenceTest:..
+com.opus.piano.Goldberg08MigrationTest:.
+com.opus.piano.GoldbergPersistenceTest:..
+com.opus.piano.GoogleIdentityPersistenceTest:..
+com.opus.piano.NavigationRegressionTest:..
+com.opus.piano.PracticeCoordinatorTest:...
+com.opus.piano.PracticeRecoveryTest:..
+com.opus.piano.PracticeServicePolicyTest:..
+com.opus.piano.ProfileCompatibilityTest:.
+com.opus.piano.Quality092PersistenceTest:....
+com.opus.piano.RedesignPersistenceTest:..
+com.opus.piano.SmartCachePersistenceTest:....
+
+Time: 15.24
+
+OK (31 tests)
+
+

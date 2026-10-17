@@ -44,12 +44,12 @@ import java.time.format.DateTimeFormatter
             Icon(Icons.Outlined.CloudOff, null, tint = MaterialTheme.colorScheme.primary)
             Text(message, modifier = Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
         }
-        TextButton(onClick = retry) { Text(L.s(R.string.msg_try_again_042c)) }
+        JournalTextButton(onClick = retry) { Text(L.s(R.string.msg_try_again_042c)) }
     }
 }
 @Composable internal fun SourceLink(label: String, url: String) {
     val uri = LocalUriHandler.current
-    if (url.startsWith("https://")) TextButton(onClick = { try { uri.openUri(url) } catch (_: IllegalArgumentException) { } catch (_: android.content.ActivityNotFoundException) { } }) {
+    if (url.startsWith("https://")) JournalTextButton(onClick = { try { uri.openUri(url) } catch (_: IllegalArgumentException) { } catch (_: android.content.ActivityNotFoundException) { } }) {
         Icon(Icons.AutoMirrored.Outlined.OpenInNew, null, Modifier.size(14.dp))
         Spacer(Modifier.width(8.dp))
         Text(L.fixed(label))
@@ -92,7 +92,7 @@ internal fun alreadyAdded(work: CatalogWork, composer: CatalogComposer?, pieces:
         }
         if (repertoire.isNotEmpty()) item { SectionTitle(L.s(R.string.msg_your_repertoire_74de)) }
         items(repertoire.take(limit), key = { "piece:${it.id}" }) { piece ->
-            OutlinedButton(onClick = { piecePage(piece.id) }, modifier = Modifier.fillMaxWidth()) { Text("${piece.title} · ${piece.composer}") }
+            JournalSecondaryButton(onClick = { piecePage(piece.id) }, modifier = Modifier.fillMaxWidth()) { Text("${piece.title} · ${piece.composer}") }
         }
         if (results.composers.isNotEmpty()) {
             item { SectionTitle(L.s(R.string.msg_composers_707f)) }
@@ -102,7 +102,7 @@ internal fun alreadyAdded(work: CatalogWork, composer: CatalogComposer?, pieces:
                         Icon(Icons.Outlined.PersonOutline, null, tint = MaterialTheme.colorScheme.primary)
                         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(5.dp)) {
                             Text(composer.name, style = MaterialTheme.typography.titleMedium)
-                            Text("${composer.years} · ${composer.epoch}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            Text("${composer.years} · ${L.fixed(composer.epoch)}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
                         Icon(Icons.Outlined.ChevronRight, null, tint = MaterialTheme.colorScheme.primary)
                     }
@@ -121,8 +121,8 @@ internal fun alreadyAdded(work: CatalogWork, composer: CatalogComposer?, pieces:
                 Text(if (state.error != null) L.s(R.string.msg_an_internet_connection_is_needed_for_your_fi_eb85) else L.s(R.string.msg_try_a_different_title_composer_or_catalogue_16ea), color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
-        if (results.works.size > limit || results.composers.size > limit || repertoire.size > limit) item { OutlinedButton(onClick = { limit += 40 }) { Text(L.s(R.string.msg_more_saved_suggestions_d7e1)) } }
-        if (state.next != null) item { Button(onClick = model::nextPage, enabled = !state.loading) { Text(L.s(R.string.msg_discover_more_results_f817)) } }
+        if (results.works.size > limit || results.composers.size > limit || repertoire.size > limit) item { JournalSecondaryButton(onClick = { limit += 40 }) { Text(L.s(R.string.msg_more_saved_suggestions_d7e1)) } }
+        if (state.next != null) item { JournalPrimaryButton(onClick = model::nextPage, enabled = !state.loading) { Text(L.s(R.string.msg_discover_more_results_f817)) } }
         item { CacheCaption(state.fetchedAt); SourceLink(L.s(R.string.msg_catalogue_open_opus_public_domain_36b6), "https://openopus.org/") }
     }
 }
@@ -130,8 +130,9 @@ internal fun alreadyAdded(work: CatalogWork, composer: CatalogComposer?, pieces:
 @Composable internal fun WorkCard(work: CatalogWork, composer: CatalogComposer?, added: Boolean, adding: Boolean, open: () -> Unit, add: () -> Unit) {
     Surface(onClick = open, shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
         Row(Modifier.fillMaxWidth().padding(start = 16.dp, top = 10.dp, bottom = 10.dp, end = 4.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            ComposerPortrait(composer)
             PieceRowContent(work.title,composer?.name.orEmpty(),
-                listOf(work.catalogLabel.takeUnless { catalogText(work.title).contains(catalogText(it)) }.orEmpty(),work.genre,if(added) L.s(R.string.msg_in_repertoire_b185) else "").filter { it.isNotBlank() }.joinToString(" · "),
+                listOf(work.catalogLabel.takeUnless { catalogText(work.title).contains(catalogText(it)) }.orEmpty(),L.fixed(work.genre),if(added) L.s(R.string.msg_in_repertoire_b185) else "").filter { it.isNotBlank() }.joinToString(" · "),
                 Modifier.weight(1f))
             IconButton(onClick = add, enabled = !added && !adding && composer != null) {
                 if (adding) CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp)

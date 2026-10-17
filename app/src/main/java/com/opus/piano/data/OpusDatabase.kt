@@ -69,7 +69,7 @@ interface OpusDao {
     @Delete suspend fun delete(piece: Piece)
     @Insert suspend fun insert(session: PracticeSession): Long
 }
-@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class], version = 6, exportSchema = true)
+@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class, RecoveryArchive::class], version = 7, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class OpusDatabase : RoomDatabase() {
     abstract fun practiceDao(): PracticeDao
@@ -78,6 +78,15 @@ abstract class OpusDatabase : RoomDatabase() {
     abstract fun catalogDao(): CatalogDao
     abstract fun experienceDao(): ExperienceDao
     companion object {
+        val MIGRATION_6_7 = object : Migration(6, 7) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE profile_settings ADD COLUMN favoriteArtist TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE profile_settings ADD COLUMN favoritePiece TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE profile_settings ADD COLUMN favoriteEra TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE profile_settings ADD COLUMN biography TEXT NOT NULL DEFAULT ''")
+                db.execSQL("CREATE TABLE IF NOT EXISTS practice_recovery_archives (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, payload TEXT NOT NULL, updatedAt INTEGER NOT NULL, archivedAt INTEGER NOT NULL)")
+            }
+        }
         val MIGRATION_5_6 = object : Migration(5, 6) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL("ALTER TABLE sessions ADD COLUMN elapsedMillis INTEGER")

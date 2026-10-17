@@ -20,7 +20,7 @@ import kotlinx.coroutines.*
     val unsaved by model.practice.unsaved.collectAsStateWithLifecycle()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(20.dp),verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Heading(L.s(R.string.msg_a_moment_to_reflect_6277),L.s(R.string.msg_practice_review_6b11),L.s(R.string.msg_your_draft_is_saved_locally_until_you_save_o_0e7a))
-        if (unsaved) { Text(L.s(R.string.practice_unsaved),color=MaterialTheme.colorScheme.error);TextButton(onClick={model.practice.retryPersistence()}) { Text(L.s(R.string.practice_retry)) } }
+        if (unsaved) { Text(L.s(R.string.practice_unsaved),color=MaterialTheme.colorScheme.error);JournalTextButton(onClick={model.practice.retryPersistence()}) { Text(L.s(R.string.practice_retry)) } }
         Text(L.s(R.string.msg_elapsed_duration_timer_wallelapsed_credited_b95d, (duration(timer.wallElapsed)), (duration(timer.elapsed))))
         if (timer.mode != "Manual") Text(L.s(R.string.msg_detected_active_duration_timer_detectedactiv_5cb7, (duration(timer.detectedActive)), (L.fixed(timer.mode))))
         Text(L.s(R.string.msg_timing_timer_timingquality_0713, (L.fixed(timer.timingQuality))))
@@ -32,8 +32,8 @@ import kotlinx.coroutines.*
         OutlinedTextField(timer.notes,{ text -> model.practice.command { sessionNotes(text,state.value.reflection) } },label = { Text(L.s(R.string.msg_session_notes_a84f)) },modifier = Modifier.fillMaxWidth())
         OutlinedTextField(timer.reflection,{ text -> model.practice.command { sessionNotes(state.value.notes,text) } },label = { Text(L.s(R.string.msg_reflection_optional_8d70)) },modifier = Modifier.fillMaxWidth())
         if (timer.elapsed < 1000) Text(L.s(R.string.msg_notes_only_entry_this_will_not_count_toward_d840))
-        Button(onClick = model::saveSession,enabled = !timer.saving) { Text(if (timer.saving) L.s(R.string.msg_saving_56a2) else L.s(R.string.msg_save_session_8c74)) }
-        TextButton(onClick = { model.practice.command { pause() } },enabled = !timer.saving) { Text(L.s(R.string.msg_return_to_paused_practice_a77c)) }
+        JournalPrimaryButton(onClick = model::saveSession,enabled = !timer.saving) { Text(if (timer.saving) L.s(R.string.msg_saving_56a2) else L.s(R.string.msg_save_session_8c74)) }
+        JournalTextButton(onClick = { model.practice.command { pause() } },enabled = !timer.saving) { Text(L.s(R.string.msg_return_to_paused_practice_a77c)) }
     }
 }
 @Composable internal fun HistoricalReview(session: PracticeSession, original: List<SessionPart>, close: () -> Unit) {
@@ -61,13 +61,13 @@ import kotlinx.coroutines.*
                 OutlinedTextField(notes,{ notes=it.take(10000) },label = { Text(L.s(R.string.msg_session_notes_a84f)) })
                 OutlinedTextField(reflection,{ reflection=it.take(10000) },label = { Text(L.s(R.string.msg_reflection_fda0)) })
                 error?.let { Text(it) }
-                Button(enabled = !busy,onClick = { busy=true; scope.launch {
+                JournalPrimaryButton(enabled = !busy,onClick = { busy=true; scope.launch {
                     try { app.practiceRepository.editNotes(session.id,notes,reflection,parts); close() }
                     catch (c: CancellationException) { throw c }
                     catch (_: Exception) { error=L.s(R.string.msg_notes_could_not_be_saved_please_retry_825a) }
                     finally { busy=false }
                 } }) { Text(L.s(R.string.msg_save_notes_ea7d)) }
-                TextButton(onClick = close,enabled = !busy) { Text(L.s(R.string.msg_close_bbfa)) }
+                JournalTextButton(onClick = close,enabled = !busy) { Text(L.s(R.string.msg_close_bbfa)) }
             }
         }
     }

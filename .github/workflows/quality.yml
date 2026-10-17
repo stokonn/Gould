@@ -1,0 +1,36 @@
+name: Goldberg quality checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  host-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Required Android SDK packages
+        run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+      - name: Build, JVM tests, instrumentation compilation and lint
+        run: ./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1
+      - name: Host data and policy checks
+        run: |
+          python3 scripts/check_migrations.py
+          python3 scripts/check_backup_fixtures.py
+          python3 scripts/check_localization.py
+          python3 scripts/check_history_paging.py
+          python3 scripts/check_agent_policy.py
+          git diff --exit-code -- app/schemas
+# This workflow never publishes APKs signed with a runner-generated key.
+# Emulator/UI/upgrade/signing acceptance and compatible release publication follow AGENTS.md.

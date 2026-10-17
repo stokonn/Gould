@@ -36,7 +36,7 @@ class ExperiencePersistenceTest {
             old.execSQL("INSERT INTO catalog_cache VALUES ('retained', '{}', 123)")
             old.version = 2
         }
-        fun open() = Room.databaseBuilder(context, OpusDatabase::class.java, name).addMigrations(OpusDatabase.MIGRATION_2_3, OpusDatabase.MIGRATION_3_4, OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6).build()
+        fun open() = Room.databaseBuilder(context, OpusDatabase::class.java, name).addMigrations(OpusDatabase.MIGRATION_2_3, OpusDatabase.MIGRATION_3_4, OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6, OpusDatabase.MIGRATION_6_7).build()
         var db = open()
         try {
             assertEquals("Keep notes", db.dao().allPieces().single().notes)
