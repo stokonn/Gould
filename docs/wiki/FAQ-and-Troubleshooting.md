@@ -1,6 +1,6 @@
 # FAQ & Troubleshooting
 
-**Can I use Goldberg without Google?** Yes. Local profiles and practice do not require an account. The 0.9.2 Google integration is under verification; the owner reports successful Google authentication on a Samsung Galaxy A55, performed manually by the owner. The owner individually confirmed all six Google identity scenarios: PASS — owner-reported manual verification. See [Verification](Verification) for exact observations and evidence boundaries.
+**Can I use Goldberg without Google?** Yes. Local profiles and practice do not require an account. The owner reports successful Google authentication on a Samsung Galaxy A55, performed manually by the owner. The owner individually confirmed all six Google identity scenarios: PASS — owner-reported manual verification. See [Verification](Verification) for exact observations and evidence boundaries.
 
 **Does Google mean cloud backup?** No. No practice synchronization is implemented. Export portable backups yourself.
 

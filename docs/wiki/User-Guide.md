@@ -2,7 +2,7 @@
 
 ## Home
 
-Published 0.9.1 shows configurable metrics and recent pieces. The developing 0.9.2 redesign shows today's practice, current streak, seven local calendar days, a daily sourced music quotation and recent pieces. It removes practice-start actions from Home. Zero activity is not drawn as a practice bar. Sessions use their recorded local practice day, consistently with historical statistics.
+Goldberg 0.9.2 shows today's practice, current streak, seven local calendar days, a daily sourced music quotation and recent pieces. It removes practice-start actions from Home. Zero activity is not drawn as a practice bar. Sessions use their recorded local practice day, consistently with historical statistics.
 
 ## Repertoire and catalogue
 
