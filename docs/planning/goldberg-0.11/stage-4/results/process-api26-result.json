@@ -1,0 +1,30 @@
+{
+  "serial": "emulator-5584",
+  "api": "26",
+  "cases": [
+    {
+      "phase": "before_commit",
+      "actualTermination": "expected, not a passed test",
+      "restartVerification": "passed",
+      "terminatedLogSha256": "063a21fa934aacd6d18ccea13d523712ea248e3cd0e9ffa8704dd18fb974e53b"
+    },
+    {
+      "phase": "after_commit",
+      "actualTermination": "expected, not a passed test",
+      "restartVerification": "passed",
+      "terminatedLogSha256": "063a21fa934aacd6d18ccea13d523712ea248e3cd0e9ffa8704dd18fb974e53b"
+    },
+    {
+      "phase": "after_preferences",
+      "actualTermination": "expected, not a passed test",
+      "restartVerification": "passed",
+      "terminatedLogSha256": "063a21fa934aacd6d18ccea13d523712ea248e3cd0e9ffa8704dd18fb974e53b"
+    },
+    {
+      "phase": "before_ack",
+      "actualTermination": "expected, not a passed test",
+      "restartVerification": "passed",
+      "terminatedLogSha256": "063a21fa934aacd6d18ccea13d523712ea248e3cd0e9ffa8704dd18fb974e53b"
+    }
+  ]
+}

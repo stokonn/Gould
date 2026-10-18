@@ -18,6 +18,7 @@ parser.add_argument('--baseline-version', default='0.10')
 parser.add_argument('--baseline-schema', type=int, help='Require a genuinely older initialized schema before seeding')
 parser.add_argument('--expected-schema', type=int, default=8)
 parser.add_argument('--offline', action='store_true')
+parser.add_argument('--offline-preconfigured', action='store_true', help='Require no default network after a Settings UI transition, without privileged Wi-Fi commands')
 parser.add_argument('--startup-runs', type=int, choices=range(0,31), default=0, help='Optional matched warm cold-process launch samples, not first-install startup')
 parser.add_argument('--candidate', type=Path, required=True)
 parser.add_argument('--output', type=Path, required=True)
@@ -47,11 +48,14 @@ def snapshot(name):
     db = sqlite3.connect(path)
     db.execute('PRAGMA wal_checkpoint(TRUNCATE)')
     return path, db
-print(adb('install', '-r', '-d', str(a.baseline)).decode().strip(), flush=True)
-assert re.search(rb'versionName='+re.escape(a.baseline_version.encode())+rb'\s', adb('shell','dumpsys','package','com.opus.piano'))
+if a.offline_preconfigured:
+    assert not a.offline, 'Choose one offline setup mode'
+    assert re.search(r'Active default network:\s*(?:none|null|-1)(?:\s|$)',adb('shell','dumpsys','connectivity').decode(),re.I), 'Preconfigured offline state not verified'
 if a.offline:
     adb('shell','svc','wifi','disable')
     adb('shell','svc','data','disable')
+print(adb('install', '-r', '-d', str(a.baseline)).decode().strip(), flush=True)
+assert re.search(rb'versionName='+re.escape(a.baseline_version.encode())+rb'\s', adb('shell','dumpsys','package','com.opus.piano'))
 launch()
 path, db = snapshot('seed')
 if a.baseline_schema is not None:
@@ -135,7 +139,9 @@ if a.expected_schema >= 9:
     bridge = {'identities': len(identities), 'anchors': final_db.execute('SELECT count(*) FROM personal_catalogue_anchors').fetchone()[0]}
     assert bridge['anchors'] >= len(before['pieces']) + len(before['sessions'])
 final_db.close()
-result = {'baselineVersion': a.baseline_version, 'baselineSchemaVerified': a.baseline_schema, 'personalSchema': a.expected_schema,
+if a.offline or a.offline_preconfigured:
+    assert re.search(r'Active default network:\s*(?:none|null|-1)(?:\s|$)',adb('shell','dumpsys','connectivity').decode(),re.I), 'Offline state changed during upgrade'
+result = {'baselineVersion': a.baseline_version, 'baselineSchemaVerified': a.baseline_schema, 'offlineVerified': a.offline or a.offline_preconfigured, 'personalSchema': a.expected_schema,
           'baselineApkSha256': hashlib.sha256(a.baseline.read_bytes()).hexdigest(),
           'candidateApkSha256': hashlib.sha256(a.candidate.read_bytes()).hexdigest(),
           'serial': a.serial, 'originalRowsUnchanged': True, 'preferencesUnchanged': True,

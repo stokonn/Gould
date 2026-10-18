@@ -1,0 +1,97 @@
+# Goldberg 0.11 Stage4 — resumed WIP verification checkpoint
+
+**Not complete and not a release.** Branch `feature/goldberg-0.11-stage-4`; resumed source checkpoint `9daadb3e47d62eef87f650d9ff068787ccbcf77b`, based on previous WIP `72a27cbfad530f0ec2db1b73c425c35c33257e4a` / implementation `435600ca13ead3cfa3cf8827128f805bbb7a59cd`. All descend from verified Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`. No main merge, tag, Release, APK publication, Stage5, cloud, paid infrastructure or physical device operation.
+
+## Implementation and checkpoint status
+
+| Checkpoint | Actual resumed implementation | Status / remaining |
+|---|---|---|
+|4A|Separate adapters; reviewed narrow core relationship projection; typed lookups; bounded cancellable transport; JSON errors, Retry-After/backoff; conditional public metadata cache; realistic synthetic fixtures and stopped-on-throttle probes.|Partial. Live MusicBrainz/Wikidata acceptance blocked/unverified; reviewed redirect flow and further adversarial coverage remain.|
+|4B|Per-record hash-bound source observations; immutable original assertions; unresolved candidates; pending/quarantined typed edges; no names/score reconciliation; explicit verified cross-IDs; catalogue-only validation.|Partial. Conflicting/reverse-order cross-ID revisions and bounded candidate/diagnostic retention need further work.|
+|4C|Indexed alias/credit intersections; catalogue-number normalization; bounded one-edit retrieval; generation/query/category/filter/sort/UUID-bound v2 cursor; local-first independent fan-out; persisted projected response cache with monotonic LRU access index, freshness/304/no-store/coalescing/stale failures; local artist/period filters.|Partial. Provider continuation paging, full revision/normalized-catalogue eviction, low-battery policy and broader relevance/performance work remain.50k search latency needs investigation.|
+|4D|Five tabs; Discover local landing/history/search; uncertainty/source states; linked details; explicit small rights-checked portrait path/credits; verified recording Spotify destinations; licensed plain-text biographies; preferred CZ/EN naming; correction proposal SAF export; transient raw search input and stale-page guards.|Partial. Real licensed portrait rendering, fallback language/revision UX, richer errors/diagnostics, complete accessibility/restoration and visual acceptance remain.|
+|4E|Optional verified links preserve personal UUIDs and manual edits; existing/legacy links prevent duplicates; grouped selected parts retain durable snapshots or explicitly create separate entries; recordings never create practice entries.|Partial. Targeted safety and portable v5 regressions pass on both APIs; complete final integration acceptance remains.|
+|4F|Frozen build/JVM/lint, host checks, actual Android regression execution and synthetic performance/artifact checks.|Incomplete. See results below; no final Stage4 acceptance claim.|
+
+## Architecture and compatibility
+
+`DiscoverRepository` owns explicit catalogue actions over provider-independent `ProviderClient`/transport and adapter projection. `LocalCatalogueStore` serializes independent catalogue access; no cross-database atomicity or personal metadata rewrite is claimed. Response cache stores only projected public content; hashed request keys exclude raw search URLs/text from persisted envelopes. Failed refresh preserves older accepted observations with a separate failure state. Sources, original values, language, license, attribution, revision/hash and timestamps remain available. Search equivalence is never identity evidence.
+
+**Personal schema10, catalogue schema1, backup v5/readers1–4 unchanged. No new migration.** Historical exports remain unchanged. Catalogue state/DAO additions and optional-link evidence are versioned in [contract extensions](CONTRACT-EXTENSIONS.md), without silently changing Stage2 historical contracts. The personal registry/anchors, snapshots, sessions, raw drafts/archives and completion/preference replay remain authoritative. New source acquisition/cache clearing never deletes personal files. The owner’s untracked `RELEASE_NOTES.md` remains excluded; SHA256 `db920f0b1ff88579b6bea9f9da567af16e6db0c7ce5b6439781ca1754fcd4b9b`.
+
+## Verification actually executed
+
+Frozen candidate command:
+
+```sh
+GRADLE_USER_HOME=/tmp/goldberg-gradle-home ./gradlew --offline assembleDebug assembleDebugAndroidTest testDebugUnitTest lintDebug --no-daemon --max-workers=1
+```
+
+Passed:90 JVM tests,0 failures/errors; lint0 errors/94 warnings; APK and instrumentation APK compiled. Latest log [checkpoint-fixed-build.log](results/checkpoint-fixed-build.log). A preceding new-test compile failed on two incorrect API names; corrected without weakening checks, original log retained. Earlier internal FIR lint failure during concurrent edits was resolved by freezing source for builds, not suppressing lint.
+
+Host checks passed: `python3 scripts/check_migrations.py`, `check_backup_fixtures.py`, `docs/planning/goldberg-0.11/stage-3b/check_fixtures.py`, `scripts/check_localization.py` (882 matching resources), `check_history_paging.py`, `check_agent_policy.py`; `git diff --exit-code -- app/schemas`; whitespace checks. These include host DDL checks; actual Android migration cases are in the executed suite.
+
+Every ADB operation targets an explicitly identified qemu/API-verified emulator. Full execution command (repeat with the verified API37 serial):
+
+```sh
+/home/stokonn/Android/Sdk/platform-tools/adb -s emulator-5584 shell am instrument -w -r com.opus.piano.test/androidx.test.runner.AndroidJUnitRunner
+```
+
+Latest API26 full suite: **105/105 passed**. Two entries are argument-driven process-death probe methods that return without phase arguments; actual process termination/restart is separately executed. API26 four actual phases (`before_commit`, `after_commit`, `after_preferences`, `before_ack`) each terminated as intended and passed a separate-process restart verification. API37 current-UI-candidate full execution: **105/105 passed**. All four actual process terminations and separate restart verifications also passed on API37. Both genuine seeded upgrades have now passed, as detailed below.
+
+Earlier combined26 Stage4 tests passed on each API. The first combined run exposed an API26 LRU ordering failure; an explicit persisted monotonic access index fixed filesystem timestamp precision. Earlier full101-entry runs each passed100/failed1 due to the pre-Stage4 automatic portrait expectation. The updated test asserts zero default requests, explicit download, cached offline access and consent revocation. Both earlier failures and subsequent passing evidence remain in [results](results).
+
+## Performance and artifact
+
+API26 latest105-entry candidate measurement,21 samples at each scale:
+
+| Rows | Median ms | p95 ms | Catalogue bytes |
+|---:|---:|---:|---:|
+|1,000|10.67|11.47|1,060,864|
+|10,000|48.79|59.64|7,323,648|
+|50,000|254.93|270.44|35,536,896|
+
+Journal readiness under50k catalogue activity19.57ms;301ms session credit reconciled exactly once. Small synthetic homogeneous metadata; no physical-device inference. Java heap delta is noisy and excludes native/SQLite allocations. Initial separate run was slower; preserve both vectors, investigate50k relevance query cost rather than claiming universal thresholds. API37 current-UI catalogue measurements:1k median7.67/p95 8.54ms;10k38.65/40.12ms;50k188.36/197.89ms. DB sizes match the API26 fixture. Journal ready under50k load9.52ms;301ms saved credit reconciled exactly once. Raw vectors: `results/performance-ui-api37.json`. Five matched initialized cold-process startup samples:API26 baseline median687ms/current-backend704ms; API37 baseline median2314ms/current-UI2002ms. API37 samples trend down during warm-up, so no startup improvement is inferred. Five samples do not establish stablep95 or satisfy a marginal-regression investigation requiring30 comparable samples; idlePSS/native/frame traces remain unexecuted.
+
+Local verification artifact `app/build/outputs/apk/debug/app-debug.apk`: package `com.opus.piano`, version0.10.1/code11, SHA256 `67594aadc1deac61c70bfed954203a4d3eaf8388526a7da83c7bde044e70f861`, trusted signing certificate `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`. [Frozen source/artifact manifest](results/checkpoint-artifact-source.json) covers compiled source hashes and both APKs. No source change followed the successful frozen build.
+
+`verify-upgrade-signing.sh` passed against retained0.10.1. Release-specific `verify_quality_apk.py` rejects a same-version0.10.1 comparison at its strict version-increase assertion; that failed invocation is not passed. The unchanged checker then passed package/version/ZIP/artwork/trusted signing using the retained0.10/code10 baseline, matching the established Stage3B verification procedure. This does not substitute for the seeded0.10.1 upgrade.
+
+## API compliance and external limitations
+
+See [current official sources and bounded probes](API-EVIDENCE.md). Open Opus and EN/CS Wikipedia returned valid response shapes; Wikidata returned JSONmaxlag/Retry-After and was stopped; MusicBrainz was skipped after documentation429. No fixture constitutes verified real-world identity mapping. Commons’ probed public-domain label lacked accepted rights and was blocked without image download. App spacing is conservative client policy, not a guarantee about upstream shared-IP quotas. Unsupported metadata rights remain denied; no MusicBrainz derived annotations/tags/ratings/cover art are enabled. Real licensed portrait acceptance remains open.
+
+## Tracking and next action
+
+Issue31 and milestone4 remain open; existing Project2 item is **In Progress**. No duplicate tracking resources. English Wiki remains at the previously verified Stage3B state; Stage4 is not advertised as complete. Pushed9daadb3 source CI: https://github.com/stokonn/Goldberg/actions/runs/39164659852 **passed**. Later UI/documentation checkpoint CI must also be verified after push.
+
+Continue the current safe emulator/upgrade checks, retain all results, then provider cursor continuation and bounded identity/candidate/revision retention. Complete licensed media/live source acceptance, full UI/navigation/restoration/CZ/EN/theme/font inspection and final acceptance before marking4A–4F complete. Do not restart completed work or repeat unchanged expensive suites without a new reason. Verify this branch/HEAD/worktree and owner-file hash before resuming.
+
+created by stokonn with love <3
+
+## Verified follow-up after actual renders
+
+Actual API26 screenshots found the legacy Library/Knihovna labels and an unconditional verified-source notice for observed local snapshots. Both were corrected. Only those three presentation/resource files differ from the105-entry API26 backend candidate. The targeted `assembleDebug assembleDebugAndroidTest lintDebug` build passed (0 lint errors/94 warnings), and **29 API26 catalogue/graph/cache/link-backup/transport/navigation tests passed** after installation. JVM90 results from the unchanged core remain relevant; remote CI will rerun them for the final pushed UI source. Do not claim105 entries executed on this exact APK on API26.
+
+Current verification APK SHA256 `1dd7e3339f40998b3880c5fc3d2c07f9cb2c2ecad0b396d9365fe7d12737f2ee`; package/version/signer unchanged. Installed API26 APK hash matched. [Current UI source/artifact manifest](results/checkpoint-ui-artifact-source.json) is separate from the preserved9daadb3 artifact manifest. Current signing/ZIP/package/artwork checks pass; see `results/ui-signing.log` and `ui-artifact-check.log`.
+
+[Actual screenshots and inspection limits](UI-VERIFICATION.md) include API26 EN Nocturne/Ivory and current CZ Ivory at1×/1.5×, corrected detail uncertainty, wrapped categories and visible five tabs. No complete screen-reader/restoration/portrait/all-detail acceptance is claimed. The unreadable seeded draft remained retained and the UI explicitly says it was not deleted. RECORD_AUDIO app-ops returned `No operations.`
+
+Both fresh disposable upgrade AVDs verified original schema8 before seeding, then performed trusted signed `install -r` upgrades to schema10; **37 original sessions and compared critical rows/preferences unchanged**,113 anchors and FKs valid. API26 direct upgrade artifact was67594a…, followed by the UI-only1dd7e3… update; API37 direct upgrade used current1dd7e3… artifact. No uninstall/recreation/signature bypass. Structured results `results/upgrade-api26.json` / `upgrade-api37.json` include exact artifact hashes and raw startup samples.
+
+Commands:
+
+```sh
+python3 scripts/verify_emulator_upgrade.py --serial emulator-5584 --baseline .gradle/release-artifacts/Goldberg-v0.10.1.apk --baseline-version 0.10.1 --baseline-schema 8 --expected-schema 10 --candidate app/build/outputs/apk/debug/app-debug.apk --output /tmp/goldberg-stage4-upgrade-api26 --seed-disposable --offline-preconfigured --startup-runs 5
+python3 scripts/verify_emulator_upgrade.py --serial emulator-5582 --baseline .gradle/release-artifacts/Goldberg-v0.10.1.apk --baseline-version 0.10.1 --baseline-schema 8 --expected-schema 10 --candidate app/build/outputs/apk/debug/app-debug.apk --output /tmp/goldberg-stage4-upgrade-api37 --seed-disposable --offline --startup-runs 5
+```
+
+API26 shell Wi-Fi control was denied `CHANGE_WIFI_STATE` and returned137; failed attempts were preserved, not treated as upgrades. An initial multi-command diagnosis mistakenly exposed only the final command's success; isolated Wi-Fi execution and Android SecurityException proved the restriction. Wi-Fi was disabled through the ordinary emulator Settings UI; `Active default network: none` was asserted before/after the upgrade. The helper's explicit `--offline-preconfigured` mode verifies this state without granting privileges or weakening assertions. API37's ordinary offline commands succeeded.2GiB fresh API37 boot was stopped under host contention;4GiB sequential boot succeeded. Retained AVDs and all owner files remain intact.
+
+## Latest verification and resumable boundary
+
+API37 full current-UI suite passed105/105 (`results/full-ui-api37.log`); both APIs passed all four actual crash/restart phases (`results/process-api*-result.json`). [Structured verification matrix](results/resume-verification.json) distinguishes artifacts, commands/results and remaining requirements. API37 installed APK hash matches current1dd7e3…; app-op mode is `RECORD_AUDIO: ignore`, while API26 reported `No operations.` These observations do not claim physical-device or acoustic verification.
+
+Current compiler/JVM/lint/targeted/full Android checks have no unresolved failure in their stated scopes. Previous failures and exact fixes remain in this ledger; mandatory product/provider/media/performance/UI acceptance is still incomplete. Next implementation: provider continuation with query/category/language/generation/sort/tie-breaker binding, deterministic local-plus-online paging and stale/cancelled ownership tests. Then complete bounded candidate/diagnostic/accepted-revision retention and the remaining4A–4F rows. Do not repeat the full expensive unchanged suite without a relevant new change.
+
+[Changed-file inventory](CHANGED-FILES.md) lists all Stage4 paths including initial WIP work. Final pushed checkpoint SHA and CI result are recorded in the owner report and Issue31; identify the local checkpoint by `git log -1` after this file is committed. Both completed test emulators were stopped without deleting their data/configs. Owner RELEASE_NOTES.md remains untracked/unchanged. This is a safe resumable WIP boundary, not Stage4 completion or release readiness.

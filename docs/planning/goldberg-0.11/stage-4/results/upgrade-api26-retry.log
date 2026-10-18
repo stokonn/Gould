@@ -1,0 +1,18 @@
+Performing Streamed Install
+Success
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Opus/scripts/verify_emulator_upgrade.py", line 53, in <module>
+    adb('shell','svc','wifi','disable')
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Opus/scripts/verify_emulator_upgrade.py", line 30, in adb
+    return subprocess.check_output(base + list(args), **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/subprocess.py", line 473, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               **kwargs).stdout
+               ^^^^^^^^^
+  File "/usr/lib64/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['/home/stokonn/Android/Sdk/platform-tools/adb', '-s', 'emulator-5584', 'shell', 'svc', 'wifi', 'disable']' returned non-zero exit status 137.

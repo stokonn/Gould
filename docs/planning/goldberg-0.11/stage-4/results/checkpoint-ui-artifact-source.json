@@ -1,0 +1,787 @@
+{
+  "baseHead": "72a27cbfad530f0ec2db1b73c425c35c33257e4a",
+  "package": "com.opus.piano",
+  "versionName": "0.10.1",
+  "versionCode": 11,
+  "certificateSha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+  "artifacts": [
+    {
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 23695327,
+      "sha256": "1dd7e3339f40998b3880c5fc3d2c07f9cb2c2ecad0b396d9365fe7d12737f2ee"
+    },
+    {
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 781026,
+      "sha256": "33c9f114aa0c4cefe8f0d12d68ceb29ddea151583b9a23439077aae771e3377c"
+    }
+  ],
+  "sources": [
+    {
+      "path": "app/build.gradle.kts",
+      "sha256": "5c629aa5fe9cd15c3fbb250d3dc2bcbce8b22fcf08c5a1315e75c8021c8b0c4c"
+    },
+    {
+      "path": "app/src/androidTest/assets/backups/goldberg-0.6.0-format1.json",
+      "sha256": "02dbc9da1513389cf2080a55daa6511f485d2e9f857026740ac65df5c49189cc"
+    },
+    {
+      "path": "app/src/androidTest/assets/backups/goldberg-0.9.1-format2.json",
+      "sha256": "3644f68ed1a1d504319fb69145a19a452d8ee967e64eeb5e5f2d41b6ad87e3a7"
+    },
+    {
+      "path": "app/src/androidTest/assets/backups/goldberg-0.9.2-format3.json",
+      "sha256": "ca356ab95117dfc3bf9b0327d56457c5f5000c18a18d023b9ebeac4e106cebd3"
+    },
+    {
+      "path": "app/src/androidTest/assets/schemas/1.json",
+      "sha256": "f743ee92b1144f5258e4d386b916837ba76bfc490cb5d6971b0dab71a9a71ee6"
+    },
+    {
+      "path": "app/src/androidTest/assets/schemas/2.json",
+      "sha256": "27c7e0ac790d796e4f5ba922d87ad847e29c38900257ed79d1ef7433e6f9acfa"
+    },
+    {
+      "path": "app/src/androidTest/assets/schemas/3.json",
+      "sha256": "e7f1ca20a7834cc8eb030c907cb93c4d8b6fc2d7d5d70f0549ba74eb7a5a2dcb"
+    },
+    {
+      "path": "app/src/androidTest/assets/schemas/4.json",
+      "sha256": "3a11fda8787b6c0b41764fea79eed301bf69b5a0c4fcb4dd24b3032e3755528d"
+    },
+    {
+      "path": "app/src/androidTest/assets/schemas/5.json",
+      "sha256": "1b6c6f1fb7e4d57e626cd3df036d9b35abc0f086dc21279d399de213d9d27c6f"
+    },
+    {
+      "path": "app/src/androidTest/assets/schemas/6.json",
+      "sha256": "d6415057544e85f96d162a80206ce0961e0772d387bd7678eb7815bec898c0f8"
+    },
+    {
+      "path": "app/src/androidTest/assets/schemas/7.json",
+      "sha256": "9d6170f364b8034920380937d5b992470a69c3a2085a173f5fa653638ff7d46e"
+    },
+    {
+      "path": "app/src/androidTest/assets/schemas/8.json",
+      "sha256": "1964b0c0c75c1c19de0e3e6636946365b5bd6252f4824dc990492a00c14fb5bf"
+    },
+    {
+      "path": "app/src/androidTest/assets/schemas/9.json",
+      "sha256": "6314909d59d6e806bdf7790b3ee58899c1bd70cd04b11c99548f4188cc1cf698"
+    },
+    {
+      "path": "app/src/androidTest/assets/stage3a/catalogue.json",
+      "sha256": "0affe29628046cb68131aff3a830c6c8b436d4f958bf1a14d539f47f5fe6a560"
+    },
+    {
+      "path": "app/src/androidTest/assets/stage3b/README.md",
+      "sha256": "4c3bd04e1b167eafbf75b644fcf530897cb2b357b1bf93951b3f01612e7a9cab"
+    },
+    {
+      "path": "app/src/androidTest/assets/stage3b/full-v5.json",
+      "sha256": "3687fdaa257cf085085782544e5557e2d464c45f88b92d8e23b057b79f31087f"
+    },
+    {
+      "path": "app/src/androidTest/assets/stage3b/historical-format4.json",
+      "sha256": "096129c7d9fc269c244883732954227eecaf8f54a1bdeeb6aeed3f2a8d2628e8"
+    },
+    {
+      "path": "app/src/androidTest/assets/stage3b/minimal-v5.json",
+      "sha256": "e88f2bdaef69ab7a92a85879639a079944624519163721d9dc8c6adbb07c3f57"
+    },
+    {
+      "path": "app/src/androidTest/assets/stage3b/unknown-v5.json",
+      "sha256": "4117c63786344812f39bbf4a6b32a5188fbbef52ca3d30e76f5d057fe1136c37"
+    },
+    {
+      "path": "app/src/androidTest/assets/stage4/README.md",
+      "sha256": "f7d5363ef438163d1a5082f644b3811f8951eb5b24c759bfc3de7f2ed287be8b"
+    },
+    {
+      "path": "app/src/androidTest/assets/stage4/musicbrainz-arrangement.json",
+      "sha256": "c69d16ab7bc23de57d610b571b7adad432b0e4204c6e9348dd2ae5067b67bf65"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/AppLanguageTest.kt",
+      "sha256": "d8435f0b7b0332d42abdc484a523985e16a2e9577b7cdd258b4ac5246c3f3b9b"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/CatalogDatabaseTest.kt",
+      "sha256": "e148d9c70add677d3c1394f92aa93d0483aaddda0896fba36a6c42ecd5022850"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/DatabaseTest.kt",
+      "sha256": "9ee727e98a9e860e4f9acb6a08029ec370208b1b4c6983fc97637af00060aed3"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/ExperiencePersistenceTest.kt",
+      "sha256": "54d892fefc9d9dd1476c6cc10037776cf9042908704bc3ae2c0cd09a764685dd"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Goldberg08MigrationTest.kt",
+      "sha256": "15048ebe0f87abc5a6c1cc7f23738218246e4a52414e009bf5a3e6e5dd4c8366"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/GoldbergPersistenceTest.kt",
+      "sha256": "63a5dc8993f49c47821c3dc9b5be3289cc4db89af5d20b69a39cd2e53e1aa719"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/GoogleIdentityPersistenceTest.kt",
+      "sha256": "da233b731dd937de754a6f60d6625cbddf9f606b9e36e12863319e5c660e6dbf"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/NavigationRegressionTest.kt",
+      "sha256": "2fe4a245adcaee9e0717fd0919b0937cf3bd8138b05169c6540316b0636969b1"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/PracticeCoordinatorTest.kt",
+      "sha256": "fc216fe8530920d5ef23d8de133287aee43ad3aa54254ce111f29a9997dd0f9b"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/PracticeRecoveryTest.kt",
+      "sha256": "cf0fe965ecb0387609c764f03737fc0292e319693e1b7f3d75f78928454088d1"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/PracticeServicePolicyTest.kt",
+      "sha256": "77b39c313670a895861a3527d3afeb0fa031437d83e8692811443164f4c52095"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/ProfileCompatibilityTest.kt",
+      "sha256": "dddc65093def16431e1456d24895d322cd7425f37ea4baab71696c9668bd3322"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Quality092PersistenceTest.kt",
+      "sha256": "d9a88fe6103985a8e036241e73a93d01fa1bbe6ad00fd1e1bc102c532a6d3fb1"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Redesign010PersistenceTest.kt",
+      "sha256": "7cd6583242a04b257c65cabbff59298576f833a246c794ebe89fb2b55573cd18"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/RedesignPersistenceTest.kt",
+      "sha256": "8ec5a44944d9c485899cb69484d77b5146e85ba4ccd8646b4d408535b153a0bb"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/SmartCachePersistenceTest.kt",
+      "sha256": "59657e5622d80eb565c671f505045bee8596781e5f61d90155307a3141775a13"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage3aBackupTest.kt",
+      "sha256": "576d1c13ebb10cb6945b4760e9eea6a88bdfe86184b3f225f40d65b3bcac2c8c"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage3aCatalogueTest.kt",
+      "sha256": "59cd1623ec056af37de135bfb4e905db85df570721b2051b4ab1aaea75597c42"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage3aMigrationTest.kt",
+      "sha256": "8d2ce8790e25cba59ae4090921fa7f9a663f700054f5f3c58d75891ee535947b"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage3aPerformanceTest.kt",
+      "sha256": "28cbefa0014ebe03ed07117be1ca2fbecfec7309a7a245a81c703888dcd5a009"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage3bBackupTest.kt",
+      "sha256": "bb8328d6964df0710f91755b598cf1fada6895715a0b2b5a126061bad658b600"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage3bProcessDeathTest.kt",
+      "sha256": "978abc1ada341ae6b3b3cd83d99a2346ba5034cc61bd22225ab4b2c2e302565d"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage4CatalogueTest.kt",
+      "sha256": "ab41630942674e97ec7fcfe394b00603fa0ba974fda36d45d960b2e7e4cc147c"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage4GraphTest.kt",
+      "sha256": "63d0235c07bc3f010bad84671290c923fc957215790d9a432aa89eab7d67e76f"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage4ProviderCacheTest.kt",
+      "sha256": "c02cc6aeb594cc39d75e1edf4badd6f0b6ad07b612ce78f30267ff00e402593b"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage4SafetyTest.kt",
+      "sha256": "f0d3acec960cf41b328412c8dd90db02a6119fb9dc09b070ed9d105a1b1cefc5"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage4SearchVerificationTest.kt",
+      "sha256": "d85fbf08e2ded1134b8a243ef4bb2200cab3eef6b4ac39154ddeaf048569c013"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage4TransportTest.kt",
+      "sha256": "8db9ce0d9171eed1f49ad5a073fb4726efe42dba8621076354412b193189932f"
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "sha256": "0980896976f167ce31ece510d62d0f5062f8b2470298976469af1d4c8a2d4a97"
+    },
+    {
+      "path": "app/src/main/assets/legal/privacy.md",
+      "sha256": "ccea2fc3b89a0d3f3bdca24a4a1dfcbde258d7f53d21f88aac7fff7ac1230ad0"
+    },
+    {
+      "path": "app/src/main/assets/legal/third-party-notices.md",
+      "sha256": "2d65a1219f5739e10b83a429a324ca18c2fd9885511043e92b3d3754c1f5a710"
+    },
+    {
+      "path": "app/src/main/assets/licenses/Apache-2.0.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "app/src/main/assets/licenses/CormorantGaramond-OFL.txt",
+      "sha256": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956"
+    },
+    {
+      "path": "app/src/main/assets/licenses/Inter-OFL.txt",
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/MainActivity.kt",
+      "sha256": "e1c6e4767d8cbc5bd7c9f065f8342fd09318071554022bb64f5a5eac4ed4179e"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/OpusApplication.kt",
+      "sha256": "65fa53715795e6c343ca75a64d0556633463f27ef15a1b904de355d5a16ac16d"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/audio/HarpsichordAudioEngine.kt",
+      "sha256": "d12585644c1575102fe2d46d58065842a0ca62e06f73721b962ff31e1d4e86bc"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/audio/MicrophoneController.kt",
+      "sha256": "a17e2b167881998c32576431d4123bd7b9633a0f442519a67cb462c5dcf3953e"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/audio/PianoActivityDetector.kt",
+      "sha256": "3cc6d10d3cb40ef858dac1c4ada2a6ed0dd28c5e7f5b9904ec2b67f0fe43142d"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/AchievementStore.kt",
+      "sha256": "5cdd0be79cca8cd3c821539c964d850314428fa67d7af8fb97bce533f93cebe3"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/Achievements.kt",
+      "sha256": "5b98fe94a303a833efa08c4479f0ba2a0c4993ab1a8839e1a76c162eef3aa750"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/BackupRepository.kt",
+      "sha256": "ce7d597d34bf9612ebe8b82ca8d3af9d78a0d76990d9c598102bf18e98f3f9f0"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/BackupState.kt",
+      "sha256": "51f6b7e0db84a812e55441c8f21fee0687aaf763e3061b54a3e463b216ac68d3"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/BadgeLocalization.kt",
+      "sha256": "1788a5edc39ad8d0c26e8637b9a509a0e5dbb10e3300b3aae4c233f4ec05a123"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/CatalogModels.kt",
+      "sha256": "e122bc9566a6573e1150068323ffca87661e1332e8d8a73f709c15506a44e2d7"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/CatalogRepository.kt",
+      "sha256": "52cec7573764dc51afc12c95981cc6527f822d9944f711df14e2355d10319c79"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/CsvExportRepository.kt",
+      "sha256": "9eea0484c4b069abb1e0651f0d49fd67e2c8dcdffe4c9f353d7b25ef35f7b58d"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/DailyQuotes.kt",
+      "sha256": "3f7a033426e0b3e5ae3f45dfc4252b8e2f3e4f885fef05c24cd4faf317e31c5d"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/ExperienceData.kt",
+      "sha256": "fccdd79736544931009ac3c1fa0e14cebe2f8dc0de3c9bbe051146d38bfefc14"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/JournalEdits.kt",
+      "sha256": "e1d9cc168b74c892274c1f8bb9b8644b08c54c751a36aab22ed1a89b6514cfc5"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/MusicMetadata.kt",
+      "sha256": "eaee273fa18a58eca97832645e06c01b9e5043c9e4ddecc3a0c212d2eb1e6630"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/OpusDatabase.kt",
+      "sha256": "08b4204c25a975cd4dbffbfb27fb6c6a6a86702296185b52e2c505db2613625b"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/PerformanceDiagnostics.kt",
+      "sha256": "c8dc0cf7ebbbc181df8d07c981687e06ca821f75e85c0891c160526bbcbfa865"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/PersonalCatalogueBridge.kt",
+      "sha256": "5708aa81a3fe58ee4c59c816826e499b08864b59424f77aa231af3bdd9a674c4"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/PersonalData.kt",
+      "sha256": "f95020f011840efa90dac57eaeb9f7d570e1c91bfff686189a04d00139b81bc3"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/PracticeData.kt",
+      "sha256": "bb2cd7e3ab62583e42f2ec47545af67d2c2faaa33878ab2678aee08cdc23e71a"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/PracticeInsights.kt",
+      "sha256": "a54c249660f5225addabc1cd54eae38817827a4a333ca119267b2872719e94d4"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/PracticeRepository.kt",
+      "sha256": "cf5f90c7e2d5177245c34d7530678e756fb6195f30dc466cb810afbe95ad5f81"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/ProfileStatistics.kt",
+      "sha256": "b0281ad92854be58b604136fd6b0708318e9abbf6ffef360b8a8cf6f2fd09099"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/RecordingLinks.kt",
+      "sha256": "dd3fd9fc054974659d61adc0dfeb022cd3d2eb9444a2a77f71b0de4eeba50ca3"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/StatisticLayout.kt",
+      "sha256": "1a7eb5ffdf919f1629ad577a7b212402d400cbf6047f0f91d400799f0b47eb32"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/WikimediaProfile.kt",
+      "sha256": "54d5fbd13f57a548f4e3aeb7a1e5dde3bd0bcbe413957b03cf9824329e5f3d52"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/backup/BackupFiles.kt",
+      "sha256": "4592b2e1d144ad792600f4991df33a4807775bb5f574fca8c44b00e22b541bd8"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/backup/BackupJson.kt",
+      "sha256": "066eb8683cd9ffa5ef6514d8b5ec19583eaf6b17d99d9dd97c7a6959ad92d45e"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/backup/HistoricalBackup.kt",
+      "sha256": "02b6d4bd3ec11a78c4d586cdd32cc3f8e573407e43ba171f83484c39e0854521"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/backup/PortablePreferences.kt",
+      "sha256": "6a254aec1d6cecd30db177c17ae66712eeec2a65370884f2b0941ff632e158e6"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueCandidates.kt",
+      "sha256": "ab4025aa4d5103f13108e531c0c8549834b54baa4b501feb5349eb99918bd797"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueDatabase.kt",
+      "sha256": "d119b0fcba578be709f5092d8c65aad2d2dc00706d641680d0f13c626bce4874"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueEdges.kt",
+      "sha256": "c563cacd534b66ad208e46b5d9bcb771b071354fadaa8e21349357fc4f6a0062"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueIngestion.kt",
+      "sha256": "76ad59406e8c68e98c108099c3107634abaf4ca25e73d9a536e0cf3e713a7006"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueModels.kt",
+      "sha256": "a3898b1c3f80f0626c15744c24658f13902817382874a04b9824b4096b91e5c8"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CataloguePortraits.kt",
+      "sha256": "4fa1b9f47fb6268b43930167427859ce3d207c86e5ce3baffb7eea429e4c1cb8"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CataloguePresentation.kt",
+      "sha256": "e1e0d7e007dd0780ac502e5a27dfb296f43b9c5fdb41aefe062baf00efb0d08b"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueRepertoire.kt",
+      "sha256": "7655ab9f157bc931b7ac3260e9d702f2ce2171f1ae1c2a64a592059e477c4f55"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueRepository.kt",
+      "sha256": "2a1cb1144b65368e414afddad86b6e00541f37429edacbe1add3659d4ea55804"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueSearch.kt",
+      "sha256": "d33dc7b316cebf59854029d621705abbd055c88c2ae92fbc175d751af3912df9"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueStorage.kt",
+      "sha256": "212f4d8cda420a9ce1ed3f8f9485813542c0182019ebb5f56810b0b54b7baded"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueValidation.kt",
+      "sha256": "ac4ba0ac62a8a809ff167a2ff17dde5edd8404b6e1bc0a048571bb96d4480c7d"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/DiscoverRepository.kt",
+      "sha256": "b684f0ddc13e7c29a5f73eca11b7a2252254af09ab16f30862458c6e36f96f41"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/LocalCatalogueStore.kt",
+      "sha256": "df4c76700d8e8b5a11c6508e6b49998698ec5cb46b5698e4885c7c74a78533c7"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/PreservingOpenHelperFactory.kt",
+      "sha256": "db9cc0783aa85d13098cb9bd7097106e667bd85db6355263da5f71bf3afbd4c7"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/CommonsAdapter.kt",
+      "sha256": "c08919c4bdf309d3f0f314836beb955635b08a271901aac650ca067c6f839a66"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/MusicBrainzAdapter.kt",
+      "sha256": "fb9b00f3cc857e6e4431a9fe371787cf52a082e10edee0986193760ec6f1eab5"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/OpenOpusAdapter.kt",
+      "sha256": "7d0d78dd06c13b8c7c60b1c426a8e5af7fe04067a6025d7ab6b33f3890f34c77"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/ProviderCache.kt",
+      "sha256": "5fa2cbbdf36c20707373a7b8152505549737d2612c8eaaef0e5adfd200daaa14"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/ProviderContract.kt",
+      "sha256": "f18f513bbdf607db73cb64ff586e5ceebdc8bdf9736ec5ac517adc6acedc89a7"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/ProviderTransport.kt",
+      "sha256": "30844df27ca7a8c596ddcb4b1b987caf96933c95adcbfab6ade5c647a22882f0"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/WikidataAdapter.kt",
+      "sha256": "cc588c98ef4e9565b8093b641052cfed32fd82562040dbdd9c3bf9d7089ca62d"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/WikipediaAdapter.kt",
+      "sha256": "caebbd3ab980ec8f296e0f44c9d59a523ae9b338c52a3d285a9d4870f093029e"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/i18n/JournalFormatting.kt",
+      "sha256": "05ae7d462f1db7648ae1e9bb2b5759d2470d26a3ca7fd531f7c1ee5fadf72cbd"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/i18n/L.kt",
+      "sha256": "44bbd47c5cbdbf3e4a065483a1810a11ca3fcddaf55cb7a5f067adceac046b77"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/identity/GoogleIdentity.kt",
+      "sha256": "79082332668c8da3a028ee25d4e7fecfe5302cefe2b7cee461edfb6a63cb4b0a"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/practice/PracticeCoordinator.kt",
+      "sha256": "537aca3f28f2c56b64126b5d79710dc87741d71104e1c1c57fd791b5b5cbc62e"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/practice/PracticeEngine.kt",
+      "sha256": "3d3b698e33b237a7ec16a990a0532f4056b827611680e0822855238339d33d39"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/practice/PracticePersistence.kt",
+      "sha256": "117752070e74cb32b96232d71d12a1fb121227c28622050dfff3e9e3b293d425"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/preferences/AppearanceStore.kt",
+      "sha256": "1890c00136a829b097a5133fe632449c9d014386d8ca46a894b19b8ed5ccfb70"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/preferences/MediaPreferences.kt",
+      "sha256": "f98b6e567283e2330b6d180afee00592b75720a10c98380ece9aa601cd1ea439"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/reminders/ReminderScheduler.kt",
+      "sha256": "301c4a13b9dde13c41bbcee1ccfe7e4ab871ca3fac381c6947cbe3b49a174dcd"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/service/SmartPracticeService.kt",
+      "sha256": "37aa5bbef3a173f29215406df954c08e89cf6297eced12a3c5955338cab7aa2d"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/AppNavigation.kt",
+      "sha256": "ee05de9ce88917542334fc904c42def423f2ffb16271da9b5905d3db5a6a4899"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/BadgesScreens.kt",
+      "sha256": "adda9212f6a39b760ae85a7d66f1d06bb2e76bf61f4c00a96277925317733543"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/BalancedHome.kt",
+      "sha256": "21727870aeaaccb6e84c19d3d8581365820f2dd85038d1549c80bfc9532ef1aa"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/CatalogScreens.kt",
+      "sha256": "dd06bb4a000f873cb7ad4a26c3bff31ce83f0eb5720a6602125cb0e4e1e3e262"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/CatalogViewModel.kt",
+      "sha256": "b2dd004b5102ef1faf2f7553fee6ed9c9f0ded271b76784c34916f5d3ca43433"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/ComposerFavorites.kt",
+      "sha256": "3a4723935680bdabf43ca86fd0fb228ae8ffa10e0bb52e70ec0629087f6d7c08"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/ComposerPortrait.kt",
+      "sha256": "1bbbc9ade153d7fc91c587b35f8885a96508efc9074ed5314c4452aa069d51d1"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/ComposerScreen.kt",
+      "sha256": "496ca7dc7c3c000930ddacc7d43242ac436c8bb15019238f6631cd68e7db0d55"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/CompositionScreen.kt",
+      "sha256": "d5e71db2eb3571419c63956ce3940b81a5f247bfe707261788a182fa8fca6af5"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/Connectivity.kt",
+      "sha256": "f393fcadf856e0dcfff4f5f5f83690c3baa70e1d567a75201e24be4fe0a06913"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/CustomizePanel.kt",
+      "sha256": "f440e125c1b301cb01496a5bd30865167e76c193ecea3e0020264e34e6807d10"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/DiscoverScreen.kt",
+      "sha256": "dbb68d1a51fffa716980bf4512d3812272a396521914b9f38ae7dc734f7bc74a"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/EditorialComponents.kt",
+      "sha256": "d2d3751e0ae9dbb490f4cc95e156972d91e1d6c208147ca82c639a097aa61093"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/ExperienceViewModel.kt",
+      "sha256": "c18a20dad15874dca03c75eb809aa6840507824d66171f757482b8cd1ea076c0"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/HarpsichordScreen.kt",
+      "sha256": "1bd9e91ede73585a0b31319109305194387ecae101eb59c6adb4b2310f41be90"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/JournalComponents.kt",
+      "sha256": "2638e2ed2b6153e580511f2a1be1659c79744d3f5b38461e5e4bf3ffbb39ffd1"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/LegalScreen.kt",
+      "sha256": "83374e05c879c47f21496a012e6df5b62f41aad536726d432a83189d67c34247"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/LocalizedFormatting.kt",
+      "sha256": "160a15dfd48624edba47c28e43398d277279eb028f594e8baee8ec401c0ccb81"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/MedalArtwork.kt",
+      "sha256": "b235e07a70d780995279986a0e7c34ec91dc6680b52763850966dce4d36f30d7"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/OnboardingScreen.kt",
+      "sha256": "207bf2668f7f64b40f077c131c22b27bab3ef891be54d34c58f740cbbea9cfef"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/OpusApp.kt",
+      "sha256": "edb57eb31564922f46cee6172c06f3524d112ee15ea974eeab4735bb698c1381"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/OpusViewModel.kt",
+      "sha256": "ebad7862720a3e6fc440ff296bf2b1a16b7251e254a85b43165ff48388961e69"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/PracticeHistoryScreen.kt",
+      "sha256": "84079f7b8d0c0c023e5330c07dfe3204d947147f2aea61ee0e78a9fd7e092a61"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/PracticeReviewScreen.kt",
+      "sha256": "0425a068d9e4c56f4c8d96b86e3479a6261851badb72f1fc7ff17fb763543f36"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/PracticeScreen.kt",
+      "sha256": "d89fcd584ba52eeb950e39f19077fba3c1015fad89d7672834bc6fb7688d2b58"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/ProfileScreen.kt",
+      "sha256": "c27d6184a907845f68a6855a4eedfeb8a243f0800f61b1f0389830e585e0d696"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/ProfileViewModel.kt",
+      "sha256": "3ffbbbd126ac52111c8f8015fe5359e920aa4c148c65f7a28420b4bdc51d20e8"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/RecordingsScreen.kt",
+      "sha256": "16589e036fd67684c1f16b18633dbfdafe7a296d8a1e5a7fecdd601a38352685"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/RepertoireScreen.kt",
+      "sha256": "b1f5f681051542e4865a87ffdcffe955cc6dff1c120a8666a218ecb08fe3a244"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/SettingsScreen.kt",
+      "sha256": "9799de397663cdb7e45755d6b84bb5c1f7187dd24e1c0f8031489d5d0202c3a5"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/Theme.kt",
+      "sha256": "7ed3058ea86ba61b6b4814179c44d069a27a295a9c721f84dee364618e54fee9"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/TuxScreen.kt",
+      "sha256": "6b5f32e38f81431691afd476e3dd619ddb5712e1f35997eb14219397c749fc7c"
+    },
+    {
+      "path": "app/src/main/res/drawable-night-nodpi/ic_goldberg_classic_foreground.png",
+      "sha256": "49dc25a627b7de1dacb54998e1eef2093aa680f535bb6055c196ca05f0e3a0bc"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/ic_goldberg_classic_foreground.png",
+      "sha256": "c1ef353d9f7d987a88f75c19b7f9e2a894c1ef621ee7c59420886650c67c0526"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/ic_goldberg_classic_monochrome.png",
+      "sha256": "f710ac9ca128f1b8f2f1fa1b03c630e2bcf7d0ca6796e5cafa9d54b15251f837"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_goldberg_monochrome.xml",
+      "sha256": "40c2d1cdfa782e2adbb9fe397b11e80b819e3d1dc52d67352e5bf6ba2375bc12"
+    },
+    {
+      "path": "app/src/main/res/font/cormorant_garamond.ttf",
+      "sha256": "b20b7d9626dd956b2c5e558692ad328b1f19e3275e2782db4fa07670d83f35e0"
+    },
+    {
+      "path": "app/src/main/res/font/inter.ttf",
+      "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031"
+    },
+    {
+      "path": "app/src/main/res/mipmap-anydpi/ic_goldberg.xml",
+      "sha256": "e21bb9cd8cc815b2a068b707b5f64f4befb562459125d79ea4b03a0fa9431016"
+    },
+    {
+      "path": "app/src/main/res/values-cs/strings.xml",
+      "sha256": "02c0f2f638d893d86de6ded2085b3b517d8de34470dc22899d6b4054d3af6ea8"
+    },
+    {
+      "path": "app/src/main/res/values-night/colors.xml",
+      "sha256": "280b8a58f09c1c76d17c5f6aa431958ac74d2bdf83360bda059d4b30c539a532"
+    },
+    {
+      "path": "app/src/main/res/values-v31/styles.xml",
+      "sha256": "23c58897febec984ba909776efc4401d1aac7b625866e577fcf36715c931c0fb"
+    },
+    {
+      "path": "app/src/main/res/values/colors.xml",
+      "sha256": "e67546374d8994d59ab53a89a36ccd1227ca2f01b1e22fd1a15f2b87700d56f6"
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "sha256": "ef427db21f97ac641c9d78662a10b687bf3a46b36dea1c9bbf6f54030b3e8361"
+    },
+    {
+      "path": "app/src/main/res/values/styles.xml",
+      "sha256": "3fa0c75636efe0d79130c0af9139c291a5fb3d84c06b83e82659a65dc6528935"
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "83000b857bf6c8c902233333bdbd441e7db015d6f58dc7b60d5d485ade0165f7"
+    },
+    {
+      "path": "app/src/main/res/xml/locales_config.xml",
+      "sha256": "d94aefebf163f8deea7352762b9fe75a0b50e7fbc49bbd08044facb7778e407c"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/AchievementEngineTest.kt",
+      "sha256": "09ce58033d2dcbaf7a52ac39f41cf4e41c3006a7261699fb98fbb26b61db06dd"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/CatalogTextTest.kt",
+      "sha256": "d000cddc4fcaf3f84f2fa694c83cdd3b766eb8f593bd9debeb269bcdcb6e08d2"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/CsvExportTest.kt",
+      "sha256": "d6d40f3e34bb039975fd3fd9eec8a91593fb3756dfbef8173a5179f13ac0fafb"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/GoogleIdentityPolicyTest.kt",
+      "sha256": "45dd9ec06ed60ea35db69bc60d68121758ef0b6ee4d647f8ea8e320e242c02a8"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/JournalFormattingTest.kt",
+      "sha256": "b384cbea738f70c372c79aee27c5bfc194178d3cbc7ac7198bf0f73d68c33134"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/MultiPieceTest.kt",
+      "sha256": "3612806538c3dbeec9d379e59af3a2ddb70aa9691cbc86425033f531ba57d262"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/PianoActivityDetectorTest.kt",
+      "sha256": "eed7207780bc53ce7fafc3917bf43ded1b2af3c764814dae9a9ff9a542245b52"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/Polish101Test.kt",
+      "sha256": "bc13dee2c0760426864a0654f96dc31f6fbdae94d5b22eb834c70b3ecda54a86"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/PracticeEngineTest.kt",
+      "sha256": "47f42a4539b2d88086e5070d570c61180aefa5980217a56c89e32f88a3128209"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/PracticeFailureTest.kt",
+      "sha256": "818d89fab6a8d9c39a4d8fe94b27af4ae70d961bddc56bb8d189509b8f1082ec"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/ProfileMaintenanceTest.kt",
+      "sha256": "85443d74303f777b177eb81caf141fa122440d81f49dbac0e88dbb2b957c0d27"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/ProfileStatisticsTest.kt",
+      "sha256": "5bee1230882b171867331b31ddbee86244d4d48b4a84648c6f4026853c231e7b"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/Quality092Test.kt",
+      "sha256": "ca453ae546546669c7b5141b7b32670584258b0aee0a89a9fc4bfc7d461ea52c"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/RecordingLinksTest.kt",
+      "sha256": "3ff4d7f84171a559dfc76ab657bd56c4a91fca01301f32fa91c4dcb988893dcd"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/Redesign010Test.kt",
+      "sha256": "d6f09033ef66c6140d2f99da9d4def0b1ad0eed9e3763f5f88574ba67c2341a3"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/RedesignTest.kt",
+      "sha256": "7fb05164b23f2a9b6bd81ea3eb27f29700aab4571778f5c4ba7478861300aeb9"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/ReminderScheduleTest.kt",
+      "sha256": "d4ba61570bad5ee760c8464959bfe7ad89b4b409b87f8768b4ead723763474dc"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/SmartCacheTest.kt",
+      "sha256": "9e158d8a77618e930c74bcf2f42540c314b7233ce7847f8e32478a3e79f83a9e"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/data/catalogue/CatalogueQueryTest.kt",
+      "sha256": "a686b19fe5165e4404531826f5229c8dc50711d9ae8ce8db26554a0797cfd7e3"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/data/catalogue/SearchContractTest.kt",
+      "sha256": "3eff96908848fbf404b0898420ef0c480e3648faf32d8c2b4fe377f36b9f3041"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/data/catalogue/providers/ProviderProjectionTest.kt",
+      "sha256": "97ca6fa4f916e352fa302833b6546a403e86b21edbe02708e323532159b5e56a"
+    },
+    {
+      "path": "build.gradle.kts",
+      "sha256": "89bcaa262aca08c94305dec3f6f83cce2d649b867185af735912e91b462a21f4"
+    },
+    {
+      "path": "gradle.properties",
+      "sha256": "e43a00491832254a35cf5a979ef6de17f78c4e159d446be39319d2e3d3e46325"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "sha256": "0a4df23ff961d3f5a203bd2a163d49b0a78840d123ad9065c37dbb89f38d7258"
+    }
+  ],
+  "limitation": "Manifest of frozen compiled sources and verification artifacts, not Stage4 completion or publication",
+  "sourceCheckpoint": "9daadb3e47d62eef87f650d9ff068787ccbcf77b plus three reviewed UI/label corrections"
+}

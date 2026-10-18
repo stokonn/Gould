@@ -34,11 +34,11 @@ Recovered exact72a27cb local/remote state; final WIP CI passed (run39154044750).
 - [x] Latest prior frozen builds:90 JVM tests and zero lint errors;94 warnings retained.
 - [x] Host migration/backup/locale/paging/policy checks; schemas still personal10/catalogue1.
 - [x] API26 first1k/10k/50k measurement and practice credit reconciliation; raw evidence retained.
-- [ ] Latest portable-v5 link/recovery test and period-filter fixture execution.
-- [ ] Clean full final Android suite (previous101-test runs each had one now-corrected expectation failure).
+- [x] Portable-v5 link/recovery and period-filter fixture executed on both APIs.
+- [x] API26 backend105/105; API26 presentation follow-up29/29; API37 currentUI105/105. Both actual crash/restart matrices passed. Exact per-artifact evidence is in RESUME-CHECKPOINT.md.
 - [ ] Provider paging, redirected/conflicting identity handling, candidate/accepted-revision retention policy.
 - [ ] Live licensed portrait acceptance and full language/filter/error UI acceptance.
-- [ ] Seeded genuine schema8 baseline0.10.1 upgrade, process-death regressions and current screenshots.
+- [x] Genuine schema8 baseline upgrades, actual process-death regressions and inspected current screenshots recorded; full visual acceptance still pending.
 - [ ] Final source/artifact validation, pushed implementation CI and accurate tracking/Wiki.
 
 Earlier progress paragraphs are historical, not current completion claims.4A–4F remain incomplete.

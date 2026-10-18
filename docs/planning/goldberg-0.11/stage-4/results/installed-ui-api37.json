@@ -1,0 +1,7 @@
+{
+  "serial": "emulator-5582",
+  "api": 37,
+  "qemu": "1",
+  "installedApkSha256": "1dd7e3339f40998b3880c5fc3d2c07f9cb2c2ecad0b396d9365fe7d12737f2ee",
+  "recordAudioAppOps": "Uid mode: RECORD_AUDIO: ignore"
+}

@@ -1,0 +1,77 @@
+{
+  "status": "WIP_NOT_COMPLETE",
+  "branch": "feature/goldberg-0.11-stage-4",
+  "verifiedSourceCheckpoint": "9daadb3e47d62eef87f650d9ff068787ccbcf77b",
+  "subsequentAppChanges": [
+    "CZ/EN Repertoire labels",
+    "observed identity notice remains unverified"
+  ],
+  "jvm": {
+    "tests": 90,
+    "failures": 0,
+    "errors": 0,
+    "scope": "frozen backend build; unchanged core after presentation-only fixes"
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 94
+  },
+  "android": [
+    {
+      "api": 26,
+      "artifactSha256": "67594aadc1deac61c70bfed954203a4d3eaf8388526a7da83c7bde044e70f861",
+      "tests": 105,
+      "failures": 0
+    },
+    {
+      "api": 26,
+      "artifactSha256": "1dd7e3339f40998b3880c5fc3d2c07f9cb2c2ecad0b396d9365fe7d12737f2ee",
+      "tests": 29,
+      "failures": 0,
+      "scope": "targeted after presentation-only fixes"
+    },
+    {
+      "api": 37,
+      "artifactSha256": "1dd7e3339f40998b3880c5fc3d2c07f9cb2c2ecad0b396d9365fe7d12737f2ee",
+      "tests": 105,
+      "failures": 0
+    }
+  ],
+  "ordinarySuiteCaveat": "Two phase-driven methods return without arguments. Four real process terminations and four separate restart verifications executed per API; termination itself is not a passed test.",
+  "processDeath": {
+    "26": 4,
+    "37": 4
+  },
+  "signedSeededUpgrades": {
+    "26": "passed direct 0.10.1 schema8 to backend candidate, then UI-only update",
+    "37": "passed direct 0.10.1 schema8 to current UI candidate"
+  },
+  "schemas": {
+    "personal": 10,
+    "catalogue": 1,
+    "backup": 5,
+    "historicalReaders": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "ownerReleaseNotes": {
+    "included": false,
+    "sha256": "db920f0b1ff88579b6bea9f9da567af16e6db0c7ce5b6439781ca1754fcd4b9b"
+  },
+  "sourceCheckpointCI": {
+    "url": "https://github.com/stokonn/Goldberg/actions/runs/39164659852",
+    "conclusion": "success"
+  },
+  "remaining": [
+    "provider continuation bound to search cursors",
+    "conflicting/reverse-order verified identity and global candidate/diagnostic/revision retention",
+    "cancelled coalescing owner with already-waiting successor coverage",
+    "licensed portrait live acceptance, language fallback and full linked-detail UI",
+    "50k relevance query investigation, dynamic critical export reserve and native/PSS/frame profiling",
+    "full UI accessibility/restoration/detail/network acceptance",
+    "current UI follow-up commit/push and clean final CI, tracking/documentation"
+  ]
+}

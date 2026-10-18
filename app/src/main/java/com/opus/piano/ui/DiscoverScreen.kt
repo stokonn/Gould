@@ -210,7 +210,7 @@ import org.json.JSONObject
             if(data.identities.any {it.provider=="musicbrainz"})item {
                 TextButton(onClick={scope.launch {supplementSources=listOf(app.discover.refreshMetadata(data));detail=(app.discover.detail(id) as? CatalogueAccess.Available)?.value}}){Text(L.s(R.string.discover_refresh_metadata))}
             }
-            item {Text(L.s(R.string.discover_identity_notice),style=MaterialTheme.typography.bodySmall)}
+            item {Text(L.s(if(data.identities.any {it.reviewState=="reviewed"})R.string.discover_identity_notice else R.string.discover_candidate),style=MaterialTheme.typography.bodySmall)}
             if(data.entity.kind in setOf("work","arrangement") && data.identities.any {it.reviewState=="reviewed"}) {
                 val parts=data.relationships.filter {it.first.type=="part" && it.first.toId==id}
                 if(parts.isNotEmpty()) {

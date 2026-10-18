@@ -1,20 +1,35 @@
-# Stage4 WIP changed files
+# Stage4 changed paths at resumed WIP checkpoint
 
-Owner RELEASE_NOTES.md excluded. No schema exports, backup fixtures, signing files or app version changed.
+Compared with verified Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes original435600c/72a27cb work and resumed implementation/evidence. Owner RELEASE_NOTES.md, private backup files, signing material and generated APKs are excluded.
 
+- `app/src/androidTest/assets/stage4/README.md`
+- `app/src/androidTest/assets/stage4/musicbrainz-arrangement.json`
+- `app/src/androidTest/java/com/opus/piano/Quality092PersistenceTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4CatalogueTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage4GraphTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage4ProviderCacheTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage4SafetyTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage4SearchVerificationTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage4TransportTest.kt`
 - `app/src/main/java/com/opus/piano/OpusApplication.kt`
 - `app/src/main/java/com/opus/piano/data/CatalogRepository.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/CatalogueCandidates.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueDatabase.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/CatalogueEdges.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueIngestion.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/CataloguePortraits.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/CataloguePresentation.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueRepertoire.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueRepository.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueSearch.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueStorage.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/CatalogueValidation.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/DiscoverRepository.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/LocalCatalogueStore.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/providers/CommonsAdapter.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/providers/MusicBrainzAdapter.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/providers/OpenOpusAdapter.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/providers/ProviderCache.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/providers/ProviderContract.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/providers/ProviderTransport.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/providers/WikidataAdapter.kt`
@@ -30,14 +45,88 @@ Owner RELEASE_NOTES.md excluded. No schema exports, backup fixtures, signing fil
 - `docs/planning/goldberg-0.11/stage-4/API-EVIDENCE.md`
 - `docs/planning/goldberg-0.11/stage-4/CHANGED-FILES.md`
 - `docs/planning/goldberg-0.11/stage-4/CHECKLIST.md`
+- `docs/planning/goldberg-0.11/stage-4/CONTRACT-EXTENSIONS.md`
 - `docs/planning/goldberg-0.11/stage-4/PROGRESS.md`
-- `docs/planning/goldberg-0.11/stage-4/results/initial-build.log`
-- `docs/planning/goldberg-0.11/stage-4/results/local-checks.json`
-- `docs/planning/goldberg-0.11/stage-4/results/source-files.json`
-- `docs/planning/goldberg-0.11/stage-4/results/targeted-build.log`
-
+- `docs/planning/goldberg-0.11/stage-4/RESUME-CHECKPOINT.md`
+- `docs/planning/goldberg-0.11/stage-4/UI-VERIFICATION.md`
+- `docs/planning/goldberg-0.11/stage-4/probe_providers.py`
+- `docs/planning/goldberg-0.11/stage-4/results/artifact-check.log`
+- `docs/planning/goldberg-0.11/stage-4/results/cache-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/cache-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/checkpoint-artifact-source.json`
+- `docs/planning/goldberg-0.11/stage-4/results/checkpoint-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/checkpoint-fixed-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/checkpoint-ui-artifact-source.json`
 - `docs/planning/goldberg-0.11/stage-4/results/checkpoint.json`
-
-The follow-up evidence commit updates this inventory and PROGRESS.md, with no production/test/resource changes.
+- `docs/planning/goldberg-0.11/stage-4/results/combined-after-lru-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/combined-after-lru-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/combined-before-lru-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/combined-before-lru-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/filter-perf-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/full-before-explicit-test-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/full-before-explicit-test-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/full-checkpoint-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/full-ui-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/graph-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/graph-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/initial-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/installed-ui-api37.json`
+- `docs/planning/goldberg-0.11/stage-4/results/local-checks.json`
+- `docs/planning/goldberg-0.11/stage-4/results/lru-license-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/performance-checkpoint-api26.json`
+- `docs/planning/goldberg-0.11/stage-4/results/performance-initial-api26.json`
+- `docs/planning/goldberg-0.11/stage-4/results/performance-ui-api37.json`
+- `docs/planning/goldberg-0.11/stage-4/results/period-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-after_commit-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-after_commit-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-after_preferences-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-after_preferences-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-before_ack-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-before_ack-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-before_commit-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-before_commit-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api26-result.json`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api37-result-after_commit-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api37-result-after_commit-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api37-result-after_preferences-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api37-result-after_preferences-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api37-result-before_ack-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api37-result-before_ack-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api37-result-before_commit-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api37-result-before_commit-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/process-api37-result.json`
+- `docs/planning/goldberg-0.11/stage-4/results/provider-probes.json`
+- `docs/planning/goldberg-0.11/stage-4/results/recovered-worktree.json`
+- `docs/planning/goldberg-0.11/stage-4/results/resume-baseline.json`
+- `docs/planning/goldberg-0.11/stage-4/results/resume-checkpoint-source.json`
+- `docs/planning/goldberg-0.11/stage-4/results/resume-initial-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/resume-initial-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/resume-verification.json`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/api26-en-ivory-discover.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/api26-en-ivory-large-discover.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/api26-en-ivory-large-tabs.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/api26-en-ivory-work.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/api26-en-nocturne-discover.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/api26-ui-fixed-cs-ivory-discover.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/api26-ui-fixed-cs-ivory-work.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/api26-ui-fixed-cs-large-tabs.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/api37-ui-en-nocturne-discover.png`
+- `docs/planning/goldberg-0.11/stage-4/results/search-initial-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/source-files.json`
+- `docs/planning/goldberg-0.11/stage-4/results/sourcefix-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/sourcefix-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/targeted-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/ui-artifact-check.log`
+- `docs/planning/goldberg-0.11/stage-4/results/ui-review-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/ui-signing.log`
+- `docs/planning/goldberg-0.11/stage-4/results/ui-targeted-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/upgrade-api26-retry.log`
+- `docs/planning/goldberg-0.11/stage-4/results/upgrade-api26-sequenced.log`
+- `docs/planning/goldberg-0.11/stage-4/results/upgrade-api26-ui-offline.log`
+- `docs/planning/goldberg-0.11/stage-4/results/upgrade-api26.json`
+- `docs/planning/goldberg-0.11/stage-4/results/upgrade-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/upgrade-api37.json`
+- `docs/planning/goldberg-0.11/stage-4/results/upgrade-api37.log`
+- `scripts/verify_emulator_upgrade.py`
 
 created by stokonn with love <3
