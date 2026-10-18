@@ -26,6 +26,11 @@ import com.opus.piano.service.SmartPracticeService
     val settings by profile.settings.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val app=context.applicationContext as com.opus.piano.OpusApplication
+    val completedId by model.practice.completedSession.collectAsStateWithLifecycle()
+    val completedSession by produceState<com.opus.piano.data.PracticeSession?>(null,completedId) {
+        value=completedId?.let {app.database.practiceDao().session(it)}
+    }
+    completedSession?.let {HistoricalReview(it,emptyList(),completion=true) {model.practice.dismissCompletion()}}
     val request by app.practiceRequest.collectAsStateWithLifecycle()
     val issue by model.practice.captureIssue.collectAsStateWithLifecycle()
     var smart by remember { mutableStateOf(timer.smart || settings.smartEnabled) }
@@ -128,10 +133,8 @@ import com.opus.piano.service.SmartPracticeService
                     JournalTextButton(onClick = { model.selectPart(i) },Modifier.weight(1f)) { Text(L.s(R.string.msg_if_i_timer_active_else_p_title_duration_p_du_9c1d, (if (i == timer.active) "▶ " else ""), (p.displayTitle), (duration(p.durationMillis)))) }
                     if (p.pieceId != null) JournalTextButton(onClick = { model.remove(i) }) { Text(L.s(R.string.msg_remove_e963)) }
                 }
-                if (i == timer.active) OutlinedTextField(p.notes,{ model.note(i,it) },label = { Text(L.s(R.string.msg_piece_notes_for_this_session_3a65)) },modifier = Modifier.fillMaxWidth())
             } }
         }
-        OutlinedTextField(timer.notes,{ text -> model.practice.command { sessionNotes(text,state.value.reflection) } },label = { Text(L.s(R.string.msg_session_notes_a84f)) },modifier = Modifier.fillMaxWidth())
         Text(L.s(R.string.msg_repertoire_notes_are_separate_session_notes_97f9))
         }
     }

@@ -76,7 +76,7 @@
   <string name="label_recently_practiced">Recently practiced</string>
   <string name="label_recently_unlocked">Recently unlocked</string>
   <string name="label_reminders">Reminders</string>
-  <string name="label_repertoire">Repertoire</string>
+  <string name="label_repertoire">Library</string>
   <string name="label_repertoire_highlights">Repertoire highlights</string>
   <string name="label_repertoire_pieces">Repertoire pieces</string>
   <string name="label_review">Review</string>
@@ -701,7 +701,7 @@
     <string name="recovery_failed">Your unfinished practice could not be recovered. The original data is preserved. Retry, or export it before starting fresh.</string>
     <string name="recovery_fresh">Archive original &amp; start fresh</string>
     <string name="recovery_confirm">The original recovery data will be preserved in a separate local archive and your exported file. Start a fresh session? This does not delete the archived original.</string>
-    <string name="practice_expand">Pieces &amp; notes</string>
+    <string name="practice_expand">Pieces played</string>
 <string name="practice_retry">Retry</string>
 <string name="catalogue_saved_refresh_failed">Refresh failed. Showing the saved catalogue.</string>
 <string name="biography_saved_refresh_failed">Showing the saved biography; refresh failed.</string>
@@ -806,4 +806,18 @@
     <string name="version_010">Goldberg 0.10</string>
     <string name="ui010_color_and_surfaces">Color &amp; cards</string>
     <string name="ui010_repertoire_display">Repertoire display</string>
+    <string name="ui101_my_repertoire">My Repertoire</string>
+    <string name="ui101_completed">Practice completed!</string>
+    <string name="ui101_add_played">Add pieces played</string>
+    <string name="ui101_add_note">Add note</string>
+    <string name="ui101_session_note">Note to session</string>
+    <string name="ui101_piece_note">Note to piece</string>
+    <string name="ui101_no_measured_piece">No timed piece in this session. Add a session note; repertoire notes remain available in Library.</string>
+    <string name="ui101_done">Done</string>
+    <string name="ui101_version">Version %1$s</string>
+    <string name="ui101_preview">Preview</string>
+<string name="ui101_pieces_count">Pieces played: %1$d</string>
+<string name="ui101_link_note_hint">Notes for an untimed added piece are labeled with its title in the session note. No practice time is added.</string>
+<string name="ui101_note_limit">Notes could not be saved. Keep the combined session note within 10,000 characters, then retry. Your input remains here.</string>
+<string name="ui101_search">Search Library</string>
 </resources>

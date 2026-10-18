@@ -2,7 +2,7 @@
 
 A native Android piano practice journal built with Kotlin, Jetpack Compose, Material 3 and Room. Android 8.0+; English and Czech; light and dark themes. Your journal stays local.
 
-**Goldberg [0.10](https://github.com/stokonn/Goldberg/releases/tag/v0.10)** — the editorial redesign of the local piano-practice journal, with optional Google profile identity.
+**Goldberg 0.10.1 — Final Redesign Polish** refines the integrated Library, saved-session completion, Profile, About and appearance previews. See [release notes](docs/RELEASE-0.10.1.md) and [verification](docs/VERIFICATION-0.10.1.md).
 
 [Download](https://github.com/stokonn/Goldberg/releases) · [Official Wiki](https://github.com/stokonn/Goldberg/wiki) · [Issues](https://github.com/stokonn/Goldberg/issues) · [Development Project](https://github.com/users/stokonn/projects/2) (authorized collaborators)
 
@@ -14,13 +14,13 @@ A native Android piano practice journal built with Kotlin, Jetpack Compose, Mate
 - Portable backups, restore, CSV exports and optional reminders.
 - Classic Piano branding and Bach’s Secret.
 
-![Goldberg 0.10 Home](docs/wiki/images/goldberg-0.10-home.png)
+![Goldberg 0.10.1 Profile](docs/wiki/images/goldberg-0.10.1-profile.png)
 
 Before updating, export a backup. Install over an existing Goldberg version; never uninstall to bypass a signing error. Google identity does not synchronize practice data. For 0.10, sign-in, display-name/avatar import, manual override preservation, restart persistence, sign-out, account switching and local-data preservation passed owner-reported manual verification on a Galaxy A55. Codex performed no physical-phone testing. See [0.10 verification evidence](docs/VERIFICATION-0.10.md) and [release notes](docs/RELEASE-0.10.md).
 
 ## Development
 
-Read [AGENTS.md](AGENTS.md) for the canonical development and release policy, [the Developer Guide](docs/wiki/Developer-Guide.md) for architecture and AI-agent integrations, and [the 0.9.2 implementation checklist](docs/PLAN-0.9.2.md). Use the existing Gradle wrapper, JDK 17-compatible toolchain and Android SDK 36:
+Read [AGENTS.md](AGENTS.md) for the canonical development and release policy, [the Developer Guide](docs/wiki/Developer-Guide.md) for architecture and AI-agent integrations, and [the 0.10.1 implementation checklist](docs/PLAN-0.10.1.md). Use the existing Gradle wrapper, JDK 17-compatible toolchain and Android SDK 36:
 
 ```sh
 ./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1

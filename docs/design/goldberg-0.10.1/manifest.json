@@ -1,0 +1,45 @@
+{
+  "project": "Goldberg",
+  "release": "0.10.1",
+  "next_planned": "0.11 Database Update",
+  "created_utc": "2026-10-17",
+  "private_references": true,
+  "status": "Approved layout with secondary styling references",
+  "images": [
+    {
+      "name": "01_HOME_APPROVED.png",
+      "bytes": 1337163,
+      "sha256": "d85a1b79a621421e2cf2a49a132bdfd52257b225b5a86df868a3c67b2380a217"
+    },
+    {
+      "name": "02_LIBRARY_APPROVED.png",
+      "bytes": 1407416,
+      "sha256": "a0cafab341dc086dd080657f51d392f838a2f33fe549a6ffc8c7035ea85efa42"
+    },
+    {
+      "name": "03_PRACTICE_COMPLETION_STYLE_REFERENCE.png",
+      "bytes": 1261587,
+      "sha256": "fcdd6122200ca530e54d0ec81e048ace91f1a6238928af00a509e19de58073f6"
+    },
+    {
+      "name": "04_ABOUT_THREE_ACTIONS_APPROVED.png",
+      "bytes": 1222223,
+      "sha256": "95edd8c7dac7444f0c3bb10eea9da29929a6cf39e05af9a86e2fab75e0460eeb"
+    },
+    {
+      "name": "05_APPEARANCE_PREVIEWS_INSPIRATION.png",
+      "bytes": 1581198,
+      "sha256": "f86883e3f7796a4f4e55ff7857209e207aa1c9470bab41989b5c64fd33cec773"
+    },
+    {
+      "name": "06_APPEARANCE_ALTERNATIVE_INSPIRATION.png",
+      "bytes": 1524124,
+      "sha256": "06d665cc52613624b55a5befd6112a65c72d37dd9973a2b880bbe38e9bcf3f8b"
+    },
+    {
+      "name": "07_TUX_ORIGINAL_APPEARANCE_PRESERVE.png",
+      "bytes": 53857,
+      "sha256": "c52ca945c3b2e886a2dd2ac2944966842bb63baba16041472bdaac70577b23ee"
+    }
+  ]
+}

@@ -1,3 +1,7 @@
+# Current verification
+
+See [Goldberg 0.10.1 verification](Verification-0.10.1) for the current release. Prior results below remain historical evidence.
+
 # Verification — Goldberg 0.9.2
 
 Application acceptance review passes. The normal [Goldberg 0.9.2 release](https://github.com/stokonn/Goldberg/releases/tag/v0.9.2) uses the verified compatible APK. A build alone was not used as release acceptance.

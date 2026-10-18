@@ -4,3 +4,7 @@ local.properties
 **/build/
 .idea/
 *.iml
+# Private owner design references; never stage or distribute.
+docs/design/goldberg-0.10.1/references/
+# Regenerable Python verification bytecode.
+__pycache__/

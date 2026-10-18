@@ -46,6 +46,7 @@ import java.time.format.DateTimeFormatter
     val metered by app.media.cellular.collectAsStateWithLifecycle()
     LaunchedEffect(googleAccount,metered) {if(googleAccount!=null) profile.refreshGooglePhoto()}
     var edit by rememberSaveable {mutableStateOf(false)}
+    var showcaseEdit by rememberSaveable {mutableStateOf(false)}
     var artistEdit by rememberSaveable {mutableStateOf(false)}
     val avatar by produceState<android.graphics.Bitmap?>(null,settings.avatar) {value=withContext(Dispatchers.Default) {runCatching {val bytes=android.util.Base64.decode(settings.avatar,android.util.Base64.DEFAULT);android.graphics.BitmapFactory.decodeByteArray(bytes,0,bytes.size)}.getOrNull()}}
     val catalog by app.catalogRepository.snapshot.collectAsStateWithLifecycle(CatalogSnapshot(emptyList(),emptyList()))
@@ -53,12 +54,12 @@ import java.time.format.DateTimeFormatter
     val showcased=settings.badgeIds.mapNotNull {id->badges.firstOrNull {it.definition.id==id && it.unlocked}}.take(5)
     val fontScale=LocalDensity.current.fontScale
     JournalViewport(spacing=12.dp) {
-        EditorialHeader(L.fixed("Profile"),L.s(R.string.ui010_musical_journey),actions={
+        EditorialHeader(L.fixed("Profile"),actions={
             IconButton(onClick=allBadges) {Icon(Icons.Outlined.EmojiEvents,L.s(R.string.msg_badges_2c57),tint=MaterialTheme.colorScheme.primary)}
             IconButton(onClick=settingsAction) {Icon(Icons.Outlined.Settings,L.fixed("Settings"),tint=MaterialTheme.colorScheme.primary)}
         })
-        JournalCard(padding=PaddingValues(14.dp)) {
-            Row(Modifier.padding(top=6.dp,bottom=6.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(16.dp)) {
+        JournalCard(padding=PaddingValues(10.dp)) {
+            Row(Modifier.padding(top=2.dp,bottom=4.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(16.dp)) {
                 Box {
                     Surface(onClick={edit=true},modifier=Modifier.size(88.dp),shape=CircleShape,color=MaterialTheme.colorScheme.primary.copy(alpha=.1f),border=androidx.compose.foundation.BorderStroke(2.dp,MaterialTheme.colorScheme.primary.copy(alpha=.35f))) {
                         if(avatar!=null) Image(avatar!!.asImageBitmap(),L.s(R.string.msg_profile_avatar_1671),contentScale=ContentScale.Crop)
@@ -68,6 +69,7 @@ import java.time.format.DateTimeFormatter
                 }
                 Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(8.dp)) {
                     Text(settings.username,style=MaterialTheme.typography.headlineMedium,maxLines=3,overflow=TextOverflow.Ellipsis)
+                    Text(settings.biography.ifBlank {L.s(R.string.ui010_add_bio)},Modifier.fillMaxWidth().clickable {edit=true},style=MaterialTheme.typography.bodySmall,textAlign=androidx.compose.ui.text.style.TextAlign.Center,color=MaterialTheme.colorScheme.onSurfaceVariant)
                     if(settings.favoriteEra.isNotBlank()) Surface(shape=MaterialTheme.shapes.small,color=MaterialTheme.colorScheme.surfaceVariant) {Text(settings.favoriteEra,Modifier.padding(horizontal=10.dp,vertical=5.dp),style=MaterialTheme.typography.bodySmall)}
                     if(googleAccount==null) JournalTextButton(enabled=!busy,onClick={profile.googleSignIn(context)},contentPadding=PaddingValues(0.dp)) {Text(L.s(R.string.google_sign_in),style=MaterialTheme.typography.labelMedium)}
                 }
@@ -78,8 +80,8 @@ import java.time.format.DateTimeFormatter
                 Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
                     StatisticLayout.normalize(settings.statistics.split(',')).chunked(columns).forEach {row->
                     Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(7.dp)) {row.forEach {id->
-                            Surface(Modifier.weight(1f).fillMaxHeight().heightIn(min=84.dp),shape=MaterialTheme.shapes.small,color=MaterialTheme.colorScheme.surface,border=androidx.compose.foundation.BorderStroke(1.dp,MaterialTheme.colorScheme.outlineVariant.copy(alpha=.4f))) {
-                                Column(Modifier.fillMaxHeight().padding(horizontal=6.dp,vertical=10.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(4.dp)) {
+                            Surface(Modifier.weight(1f).fillMaxHeight().heightIn(min=76.dp),shape=MaterialTheme.shapes.small,color=MaterialTheme.colorScheme.surface,border=androidx.compose.foundation.BorderStroke(1.dp,MaterialTheme.colorScheme.outlineVariant.copy(alpha=.4f))) {
+                                Column(Modifier.fillMaxHeight().padding(horizontal=6.dp,vertical=8.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(4.dp)) {
                                     Text(metrics.getValue(id).first,style=MaterialTheme.typography.bodyLarge.copy(fontWeight=androidx.compose.ui.text.font.FontWeight.SemiBold,fontFeatureSettings="tnum"),maxLines=1,softWrap=false,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
                                     Text(metrics.getValue(id).second,style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
                                 }
@@ -90,7 +92,7 @@ import java.time.format.DateTimeFormatter
             }
         }
         Column(verticalArrangement=Arrangement.spacedBy(5.dp)) {
-            CompactSection(L.s(R.string.favorite_artist),L.s(R.string.msg_edit_5301)) {artistEdit=true}
+            CompactSection(L.s(R.string.favorite_artist))
             JournalCard(Modifier.clickable(role=Role.Button) {artistEdit=true}) {
                 Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
                     ComposerPortrait(artist,Modifier.size(width=52.dp,height=64.dp))
@@ -103,19 +105,18 @@ import java.time.format.DateTimeFormatter
                 if(settings.favoritePiece.isNotBlank()) {HorizontalDivider(color=MaterialTheme.colorScheme.outlineVariant.copy(alpha=.4f));Text(L.s(R.string.favorite_piece)+" · "+settings.favoritePiece,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
             }
         }
-        Column(verticalArrangement=Arrangement.spacedBy(5.dp)) {
-            CompactSection(L.s(R.string.ui010_about_me),L.s(R.string.msg_edit_5301)) {edit=true}
-            JournalCard {Text(settings.biography.ifBlank {L.s(R.string.ui010_add_bio)},style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)}
-        }
         Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
-            CompactSection(L.s(R.string.msg_badge_showcase_6868))
+            Row(verticalAlignment=Alignment.CenterVertically) {
+                Box(Modifier.weight(1f)) {CompactSection(L.s(R.string.msg_badge_showcase_6868))}
+                IconButton(onClick={showcaseEdit=true}) {Icon(Icons.Outlined.Add,L.s(R.string.msg_badge_showcase_6868))}
+            }
             if(showcased.isEmpty()) Text(L.s(R.string.showcase_collection_hint),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
             else Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(10.dp)) {showcased.forEach {badge->
-                Surface(onClick={badgeDetail(badge.definition.id)},modifier=Modifier.size(54.dp).semantics {contentDescription=badge.definition.localizedName+" · "+localDateTime(badge.unlockedAt ?: 0)},shape=CircleShape,color=MaterialTheme.colorScheme.surface,border=androidx.compose.foundation.BorderStroke(1.dp,MaterialTheme.colorScheme.primary.copy(alpha=.35f))) {MedalArtwork(badge,Modifier.padding(4.dp))}
+                Surface(onClick={badgeDetail(badge.definition.id)},modifier=Modifier.size(72.dp).semantics {contentDescription=badge.definition.localizedName+" · "+localDateTime(badge.unlockedAt ?: 0)},shape=CircleShape,color=MaterialTheme.colorScheme.surface,border=androidx.compose.foundation.BorderStroke(1.dp,MaterialTheme.colorScheme.primary.copy(alpha=.35f))) {MedalArtwork(badge,Modifier.padding(4.dp))}
             }}
         }
-        JournalTextButton(onClick=history,contentPadding=PaddingValues(0.dp)) {Text(L.s(R.string.msg_practice_history_76e7),style=MaterialTheme.typography.labelMedium)}
     }
+    if(showcaseEdit) ShowcaseEditor(settings,badges,busy,profile) {showcaseEdit=false}
     if(edit) EditProfile(settings,avatar,busy,profile) {edit=false}
     if(artistEdit) {
         var value by rememberSaveable {mutableStateOf(settings.favoriteArtist)}

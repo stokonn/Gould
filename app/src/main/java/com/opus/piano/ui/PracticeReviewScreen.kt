@@ -27,18 +27,19 @@ import kotlinx.coroutines.*
         if (timer.mode != "Manual") Text(L.s(R.string.msg_detected_active_duration_timer_detectedactiv_5cb7, (duration(timer.detectedActive)), (L.fixed(timer.mode))))
         Text(L.s(R.string.msg_timing_timer_timingquality_0713, (L.fixed(timer.timingQuality))))
         timer.intervals.filter { it.creditedMillis == 0L }.groupBy { it.reason }.forEach { (reason,rows) -> Text(L.s(R.string.msg_reason_duration_rows_sumof_it_endmillis_it_s_13b7, (L.fixed(reason)), (duration(rows.sumOf { it.endMillis-it.startMillis })))) }
-        timer.parts.forEachIndexed { i,p ->
+        timer.parts.forEach {p ->
             Text("${p.displayTitle} · ${duration(p.durationMillis)}")
-            OutlinedTextField(p.notes,{ model.note(i,it) },label = { Text(L.s(R.string.msg_piece_session_notes_ce2f)) },modifier = Modifier.fillMaxWidth())
+            if(p.notes.isNotBlank()) Text(p.notes,style=MaterialTheme.typography.bodySmall)
         }
-        OutlinedTextField(timer.notes,{ text -> model.practice.command { sessionNotes(text,state.value.reflection) } },label = { Text(L.s(R.string.msg_session_notes_a84f)) },modifier = Modifier.fillMaxWidth())
-        OutlinedTextField(timer.reflection,{ text -> model.practice.command { sessionNotes(state.value.notes,text) } },label = { Text(L.s(R.string.msg_reflection_optional_8d70)) },modifier = Modifier.fillMaxWidth())
+        if(timer.notes.isNotBlank()) Text(timer.notes)
+        if(timer.reflection.isNotBlank()) Text(timer.reflection)
         if (timer.elapsed < 1000) Text(L.s(R.string.msg_notes_only_entry_this_will_not_count_toward_d840))
         JournalPrimaryButton(onClick = model::saveSession,enabled = !timer.saving) { Text(if (timer.saving) L.s(R.string.msg_saving_56a2) else L.s(R.string.msg_save_session_8c74)) }
         JournalTextButton(onClick = { model.practice.command { pause() } },enabled = !timer.saving) { Text(L.s(R.string.msg_return_to_paused_practice_a77c)) }
     }
 }
-@Composable internal fun HistoricalReview(session: PracticeSession, original: List<SessionPart>, close: () -> Unit) {
+@OptIn(ExperimentalLayoutApi::class)
+@Composable internal fun HistoricalReview(session: PracticeSession, original: List<SessionPart>, completion:Boolean=false, close: () -> Unit) {
     val app = LocalContext.current.applicationContext as OpusApplication
     val catalog by app.catalogRepository.snapshot.collectAsStateWithLifecycle(CatalogSnapshot(emptyList(),emptyList()))
     val scope = rememberCoroutineScope()
@@ -51,6 +52,10 @@ import kotlinx.coroutines.*
     var busy by remember { mutableStateOf(false) }
     var loaded by remember { mutableStateOf(false) }
     var request by remember { mutableIntStateOf(0) }
+    var noteEditor by remember {mutableStateOf(!completion)}
+    var linkedNote by remember {mutableStateOf("")}
+    var linkedTitle by remember {mutableStateOf<String?>(null)}
+    var pieceNote by remember {mutableStateOf(false)}
     var adding by remember { mutableStateOf(false) }
     var query by remember { mutableStateOf("") }
     var error by remember { mutableStateOf<String?>(null) }
@@ -72,20 +77,20 @@ import kotlinx.coroutines.*
     Dialog(onDismissRequest = { if (!busy) close() },properties=androidx.compose.ui.window.DialogProperties(usePlatformDefaultWidth=false)) {
         Surface(shape = MaterialTheme.shapes.medium,modifier=Modifier.fillMaxWidth().padding(12.dp)) {
             Column(Modifier.heightIn(max=760.dp).verticalScroll(rememberScrollState()).padding(20.dp),verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                EditorialHeader(L.s(R.string.ui010_edit_session),back=close)
+                EditorialHeader(L.s(if(completion) R.string.ui101_completed else R.string.ui010_edit_session),back=close)
+                if(completion) Text(L.s(R.string.msg_session_saved_1cd0))
                 if(!loaded) {
                     if(error==null) LinearProgressIndicator(Modifier.fillMaxWidth())
                     else {Text(error!!);JournalTextButton(onClick={request++}) {Text(L.s(R.string.practice_retry))}}
                 }
                 current?.let { saved ->
                     Text(duration(saved.durationMillis),style=MaterialTheme.typography.headlineLarge,color=MaterialTheme.colorScheme.primary)
-                    Text(L.s(R.string.msg_credited_duration_session_durationmillis_ses_1cd0,duration(saved.durationMillis),L.fixed(saved.practiceMode)),style=MaterialTheme.typography.bodySmall)
-                    CompactSection(L.s(R.string.msg_my_pieces_f17b))
+                    if(!completion) Text(L.s(R.string.msg_credited_duration_session_durationmillis_ses_1cd0,duration(saved.durationMillis),L.fixed(saved.practiceMode)),style=MaterialTheme.typography.bodySmall)
+                    CompactSection(L.s(R.string.ui101_pieces_count,(parts.mapNotNull {it.pieceId}.toSet()+links.map {it.pieceId}+listOfNotNull(saved.pieceId)).size))
                     if(parts.isEmpty()) Text("${saved.pieceTitle} · ${duration(saved.durationMillis)}")
-                    parts.forEachIndexed {i,p ->
+                    parts.forEach {p ->
                         JournalCard {
                             Text("${p.displayTitle} · ${duration(p.durationMillis)}",style=MaterialTheme.typography.titleMedium)
-                            OutlinedTextField(p.notes,{text->parts=parts.mapIndexed {j,row->if(i==j) row.copy(notes=text.take(10000)) else row}},label={Text(L.s(R.string.msg_piece_session_notes_ce2f))},modifier=Modifier.fillMaxWidth())
                         }
                     }
                     links.forEach {link->JournalCard {Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically) {
@@ -93,7 +98,7 @@ import kotlinx.coroutines.*
                         JournalTextButton(enabled=!busy,onClick={modify {JournalEdits(app.database).removePiece(saved.id,link.pieceId)}}) {Text(L.s(R.string.ui010_remove))}
                     }}}
                     Text(L.s(R.string.ui010_edit_explanation),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
-                    JournalSecondaryButton(enabled=!busy,onClick={adding=!adding}) {Text(L.s(R.string.msg_add_piece_2cfc))}
+                    JournalSecondaryButton(modifier=Modifier.fillMaxWidth(),enabled=!busy,onClick={adding=!adding}) {Text(L.s(R.string.ui101_add_played))}
                     if(adding) {
                         OutlinedTextField(query,{query=it},label={Text(L.s(R.string.msg_search_your_repertoire_556a))},modifier=Modifier.fillMaxWidth())
                         val candidates=pieces.filter {p-> parts.none {it.pieceId==p.id || (p.catalogWorkId!=null && it.catalogWorkId==p.catalogWorkId)} && links.none {it.pieceId==p.id || (p.catalogWorkId!=null && it.catalogWorkId==p.catalogWorkId)} && (parts.isNotEmpty() || (saved.pieceId!=p.id && (p.catalogWorkId==null || saved.catalogWorkId!=p.catalogWorkId))) && catalogText(p.title+" "+p.composer).contains(catalogText(query))}
@@ -106,13 +111,30 @@ import kotlinx.coroutines.*
                         }}}
                         if(candidates.isEmpty()) Text(L.s(R.string.msg_no_matching_compositions_391a))
                     }
-                    OutlinedTextField(notes,{notes=it.take(10000)},label={Text(L.s(R.string.msg_session_notes_a84f))},modifier=Modifier.fillMaxWidth())
-                    OutlinedTextField(reflection,{reflection=it.take(10000)},label={Text(L.s(R.string.msg_reflection_fda0))},modifier=Modifier.fillMaxWidth())
+                    JournalSecondaryButton(modifier=Modifier.fillMaxWidth(),onClick={noteEditor=!noteEditor}) {Text(L.s(R.string.ui101_add_note))}
+                    if(noteEditor) {
+                    FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+                        FilterChip(!pieceNote,{pieceNote=false},label={Text(L.s(R.string.ui101_session_note))})
+                        FilterChip(pieceNote,{pieceNote=true},label={Text(L.s(R.string.ui101_piece_note))})
+                    }
+                    if(pieceNote) {
+                        parts.forEachIndexed {i,p->
+                            OutlinedTextField(p.notes,{text->parts=parts.mapIndexed {j,row->if(i==j) row.copy(notes=text.take(10000)) else row}},label={Text(p.displayTitle)},modifier=Modifier.fillMaxWidth())
+                        }
+                        links.forEach {link->FilterChip(linkedTitle==link.title,{linkedTitle=link.title},label={Text(link.title)})}
+                        if(linkedTitle!=null) {
+                            Text(L.s(R.string.ui101_link_note_hint),style=MaterialTheme.typography.bodySmall)
+                            OutlinedTextField(linkedNote,{linkedNote=it.take(5000)},label={Text(linkedTitle.orEmpty())},modifier=Modifier.fillMaxWidth())
+                        } else if(parts.none {it.pieceId!=null}) Text(L.s(R.string.ui101_no_measured_piece))
+                    }
+                    if(!pieceNote) OutlinedTextField(notes,{notes=it.take(10000)},label={Text(L.s(R.string.msg_session_notes_a84f))},modifier=Modifier.fillMaxWidth())
+                    if(!pieceNote) OutlinedTextField(reflection,{reflection=it.take(10000)},label={Text(L.s(R.string.msg_reflection_fda0))},modifier=Modifier.fillMaxWidth())
+                    }
                     intervals.filter {it.creditedMillis==0L}.groupBy {it.reason}.forEach {(reason,rows)->Text(L.s(R.string.msg_reason_duration_rows_sumof_it_endmillis_it_s_13b7,L.fixed(reason),duration(rows.sumOf {it.endMillis-it.startMillis})),style=MaterialTheme.typography.bodySmall)}
                     error?.let {Text(it,color=MaterialTheme.colorScheme.error)}
-                    JournalPrimaryButton(enabled=loaded && !busy,onClick={busy=true;scope.launch {try {app.practiceRepository.editNotes(saved.id,notes,reflection,parts);close()} catch(c:CancellationException) {throw c} catch(_:Exception) {error=L.s(R.string.msg_notes_could_not_be_saved_please_retry_825a)} finally {busy=false}}}) {Text(L.s(R.string.msg_save_notes_ea7d))}
+                    JournalPrimaryButton(modifier=Modifier.fillMaxWidth(),enabled=loaded && !busy,onClick={busy=true;scope.launch {try {app.practiceRepository.editNotes(saved.id,appendPieceAnnotation(notes,linkedTitle,linkedNote),reflection,parts);close()} catch(c:CancellationException) {throw c} catch(_:Exception) {error=L.s(R.string.ui101_note_limit)} finally {busy=false}}}) {Text(L.s(if(completion) R.string.ui101_done else R.string.msg_save_notes_ea7d))}
                 }
-                JournalTextButton(onClick=close,enabled=!busy) {Text(L.s(R.string.msg_close_bbfa))}
+                if(!completion) JournalTextButton(onClick=close,enabled=!busy) {Text(L.s(R.string.msg_close_bbfa))}
             }
         }
     }

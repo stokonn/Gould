@@ -127,17 +127,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 composable(SETTINGS_ROUTE) { SettingsScreen(profile, model, { replay = true }) { nav.popBackStack() } }
                 composable(Destination.HOME.name) { ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }) { nav.navigate("badge/$it") } }
                 composable(Destination.REPERTOIRE.name) {
-                    var catalogue by rememberSaveable { mutableStateOf(false) }
-                    Column {
-                        Row(Modifier.fillMaxWidth().padding(horizontal=20.dp),horizontalArrangement=Arrangement.spacedBy(12.dp)) {
-                            FilterChip(!catalogue,{catalogue=false},label={Text(L.s(R.string.msg_my_pieces_f17b))})
-                            FilterChip(catalogue,{catalogue=true},label={Text(L.s(R.string.msg_catalogue_5a24))})
-                        }
-                        Box(Modifier.weight(1f)) {
-                            if(catalogue) CatalogScreen(catalog,library,{catalogue=false},{nav.navigate("catalog/composer/$it")},{nav.navigate("catalog/work/$it")},{nav.navigate("piece/$it")},embedded=true,profile=profile)
-                            else RepertoireScreen(library,catalogData,model,{catalogue=true},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")})
-                        }
-                    }
+                    RepertoireScreen(library,catalogData,model,{nav.navigate("catalog")},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")},catalog,{nav.navigate("catalog/work/$it")})
                 }
                 composable("catalog") { CatalogScreen(catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("catalog/work/$it") }, { nav.navigate("piece/$it") },profile=profile) }
                 composable("catalog/composer/{id}") { route -> ComposerScreen(route.arguments?.getString("id").orEmpty(), catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/work/$it") },identity=profile) }

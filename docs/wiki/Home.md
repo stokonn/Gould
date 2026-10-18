@@ -2,7 +2,7 @@
 
 Goldberg is a native Android music journal for classical pianists, created by stokonn. It combines a personal repertoire, manual and experimental Smart Practice timing, multi-piece session review, statistics and earned badges.
 
-The current release is [Goldberg 0.10](https://github.com/stokonn/Goldberg/releases/tag/v0.10). It refines the editorial interface, local composer favorites, Favorite Artist selection and historical session editing while preserving the existing practice journal. Google identity is optional profile identity, not cloud practice synchronization.
+The current release is [Goldberg 0.10.1](https://github.com/stokonn/Goldberg/releases/tag/v0.10.1). It refines the editorial interface, local composer favorites, Favorite Artist selection and historical session editing while preserving the existing practice journal. Google identity is optional profile identity, not cloud practice synchronization.
 
 Start with [Getting Started](Getting-Started), then read the [User Guide](User-Guide). See [Settings & Customization](Settings-and-Customization), [FAQ & Troubleshooting](FAQ-and-Troubleshooting), [Developer Guide](Developer-Guide), [Changelog & Roadmap](Changelog-and-Roadmap) and [Credits & Licenses](Credits-and-Licenses).
 
@@ -10,7 +10,19 @@ Screenshots are added only after actual emulator capture and inspection. No illu
 
 created by stokonn with love <3
 
-## Development screenshots
+## Goldberg 0.10.1 emulator captures
+
+These inspected captures use a generic local identity. No private reference images or new third-party portrait files are published here.
+
+![Goldberg 0.10.1 Profile](images/goldberg-0.10.1-profile.png)
+
+![Goldberg 0.10.1 About](images/goldberg-0.10.1-about.png)
+
+![Goldberg 0.10.1 Appearance](images/goldberg-0.10.1-appearance.png)
+
+![Goldberg 0.10.1 Tux](images/goldberg-0.10.1-tux.png)
+
+## Historical development screenshots
 
 These are actual emulator captures of the 0.10 verification build, using controlled test data. They are not physical-device verification. The Google scenarios reported below were manually tested by the owner.
 

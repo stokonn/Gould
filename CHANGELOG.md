@@ -1,3 +1,11 @@
+# Goldberg 0.10.1 — Final Redesign Polish
+
+- Refine Home, unified Library, saved-session completion, Profile, About, Tux and live appearance previews.
+- Preserve package/signing identity, schema 8, backup format 4 and measured session accounting.
+- Correct optional-Google privacy notices and record licensing/privacy applicability findings.
+- Prepare the planning-only 0.11 Database Update proposal.
+- [Release notes](docs/RELEASE-0.10.1.md) · [verification](docs/VERIFICATION-0.10.1.md).
+
 # Goldberg 0.10 — The Definitive UI/UX Redesign
 
 - Refine Home, Repertoire, Practice, Profile and Settings while retaining four-tab navigation and appearance customization.

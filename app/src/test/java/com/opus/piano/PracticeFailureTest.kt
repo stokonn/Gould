@@ -22,6 +22,23 @@ class PracticeFailureTest {
     }
     private suspend fun ready(c: PracticeCoordinator) = withTimeout(3000) { c.state.first { it.ready } }
     private fun coordinator(s: Store, time: () -> Long = { 1000L }) = PracticeCoordinator(s, time, { "error:$it" })
+    @Test fun completionPublishedOnlyAfterSuccessfulSaveAndNeverTwice() = runBlocking {
+        val store=Store();val coordinator=coordinator(store);ready(coordinator)
+        coordinator.command {start(false);review()}.join()
+        store.failWrite=true
+        coordinator.command {save()}.join()
+        assertNull(coordinator.completedSession.value)
+        assertEquals("Review",coordinator.state.value.status)
+        assertNotNull(store.draft)
+        store.failWrite=false
+        coordinator.command {save()}.join()
+        assertEquals(1L,coordinator.completedSession.value)
+        assertFalse(coordinator.state.value.running)
+        coordinator.dismissCompletion()
+        coordinator.command {save()}.join()
+        assertNull(coordinator.completedSession.value)
+        coordinator.close()
+    }
     @Test fun failedManualStartupNeverPublishesRunningOrReplacesDraft() = runBlocking {
         val s=Store(); val c=coordinator(s); ready(c)
         c.command { select(com.opus.piano.data.Piece(7,"Original","Bach")) }.join()

@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.Image
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.core.graphics.drawable.toBitmap
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
@@ -17,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.semantics.*
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
-@OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
+@OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class,ExperimentalLayoutApi::class)
 @Composable internal fun SettingsScreen(profile: ProfileViewModel, model: OpusViewModel, onboarding: () -> Unit, back: () -> Unit) {
     var page by androidx.compose.runtime.saveable.rememberSaveable { mutableStateOf("") }
     androidx.activity.compose.BackHandler(page.isNotEmpty()) { page="" }
@@ -92,6 +94,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
                     }
                 }
             }
+            AppearancePreview(settings.theme,settings.typography)
             Text(L.s(R.string.msg_text_size_and_motion_follow_android_accessib_8163), style = MaterialTheme.typography.bodySmall)
         } }
         item { Panel {
@@ -103,6 +106,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
                     }
                 }
             }
+            AppearancePreview(settings.theme,settings.typography)
             Text(L.s(R.string.msg_cormorant_garamond_headings_with_inter_text_21da), style = MaterialTheme.typography.bodySmall)
         } }
         item { CustomizePanel(profile) }
@@ -178,10 +182,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
                 JournalTextButton(onClick={legal=true}) { Text(L.s(R.string.msg_privacy_licenses_2fee)) }
             } }
             "About" -> {
-        item { Panel {
-            Image(painterResource(R.drawable.ic_goldberg_classic_foreground),L.s(R.string.goldberg_logo),Modifier.size(80.dp).combinedClickable(onClick={},onLongClick={tux=true}))
-
-            SectionTitle(L.s(R.string.msg_about_6b21))
+        item { Column(Modifier.fillMaxWidth(),horizontalAlignment=androidx.compose.ui.Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(16.dp)) {
+            val icon by produceState<android.graphics.Bitmap?>(null) {value=kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Default) {
+                context.packageManager.getApplicationIcon(context.packageName).toBitmap(192,192)
+            }}
+            icon?.let {Image(it.asImageBitmap(),L.s(R.string.goldberg_logo),Modifier.size(136.dp).combinedClickable(onClick={},onLongClick={tux=true}))}
+            Text("Goldberg",style=MaterialTheme.typography.headlineLarge)
             JournalTextButton(onClick = {
                 val now = android.os.SystemClock.elapsedRealtime()
                 taps = if (now-lastTap <= 1500) taps+1 else 1; lastTap=now
@@ -190,9 +196,21 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
                     if (model.timer.value.running) profile.notice.value=L.s(R.string.msg_pause_practice_before_opening_bach_s_secret_9404)
                     else { secret=true; profile.curious() }
                 }
-            }) { Text(L.s(R.string.version_010)) }
-            JournalTextButton(onClick = onboarding) { Text(L.s(R.string.msg_revisit_introduction_caf0)) }
-            JournalTextButton(onClick = { legal=true }) { Text(L.s(R.string.msg_privacy_licenses_2fee)) }
+            }) { Text(L.s(R.string.ui101_version,remember {context.packageManager.getPackageInfo(context.packageName,0).versionName.orEmpty()})) }
+            Text(L.s(R.string.ui010_home_support),style=MaterialTheme.typography.titleLarge,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
+            BoxWithConstraints {
+                val stacked=maxWidth<340.dp || androidx.compose.ui.platform.LocalDensity.current.fontScale>1.15f
+                val actions:@Composable ()->Unit={
+                    JournalSecondaryButton(onClick=onboarding,modifier=if(stacked) Modifier.fillMaxWidth() else Modifier.width(this.maxWidth/3-6.dp).heightIn(min=64.dp),contentPadding=PaddingValues(8.dp)) {Text(L.s(R.string.msg_revisit_introduction_caf0),textAlign=androidx.compose.ui.text.style.TextAlign.Center)}
+                    val uri=androidx.compose.ui.platform.LocalUriHandler.current
+                    JournalSecondaryButton(onClick={try {uri.openUri("https://github.com/stokonn/Goldberg")} catch(_:android.content.ActivityNotFoundException) {}},modifier=if(stacked) Modifier.fillMaxWidth() else Modifier.width(this.maxWidth/3-6.dp).heightIn(min=64.dp),contentPadding=PaddingValues(8.dp)) {Text("GitHub")}
+                    JournalSecondaryButton(onClick={legal=true},modifier=if(stacked) Modifier.fillMaxWidth() else Modifier.width(this.maxWidth/3-6.dp).heightIn(min=64.dp),contentPadding=PaddingValues(8.dp)) {Text(L.s(R.string.msg_privacy_licenses_2fee),textAlign=androidx.compose.ui.text.style.TextAlign.Center)}
+                }
+                if(stacked) Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {actions()}
+                else Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {actions()}
+            }
+            Text("created by stokonn with love <3",style=MaterialTheme.typography.bodySmall)
+
         } }            }
         }
     }

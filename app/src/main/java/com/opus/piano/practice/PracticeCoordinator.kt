@@ -22,6 +22,9 @@ class PracticeCoordinator(
     private val mutable = MutableStateFlow(engine.state)
     val state = mutable.asStateFlow()
     val captureIssue = MutableStateFlow("")
+    private val completed = MutableStateFlow<Long?>(null)
+    val completedSession = completed.asStateFlow()
+    fun dismissCompletion() { completed.value = null }
     val notice = MutableStateFlow<String?>(null)
     private var checkpointAt = 0L
     private var notesChangedAt = 0L
@@ -143,11 +146,11 @@ class PracticeCoordinator(
         if (index == state.value.active) select(null)
         engine.edit { it.copy(removed = it.removed + part.pieceId) }; publish(); checkpoint()
     }
-    suspend fun reset() { releaseCapture?.invoke(); repository.clear(); revision.incrementAndGet(); notesDirty = false; dirtySince = null; unsaved.value = false; engine.replace(PracticeState(ready = true), now()); publish() }
+    suspend fun reset() { completed.value=null; releaseCapture?.invoke(); repository.clear(); revision.incrementAndGet(); notesDirty = false; dirtySince = null; unsaved.value = false; engine.replace(PracticeState(ready = true), now()); publish() }
     suspend fun save() {
         if (state.value.status != "Review") return
         engine.edit { it.copy(saving = true) }; publish()
-        try { repository.complete(state.value); reset(); notice.value = message(R.string.msg_session_saved_1cd0) }
+        try { val id=repository.complete(state.value); reset(); completed.value=id; notice.value = message(R.string.msg_session_saved_1cd0) }
         finally { engine.edit { it.copy(saving = false) }; publish() }
     }
     suspend fun evidence(token: String, execution: Long, likely: Boolean) = mutex.withLock {
@@ -167,6 +170,7 @@ class PracticeCoordinator(
         try {
             releaseCapture?.invoke(); engine.pause(now()); publish(); checkpoint()
             val result = block()
+            completed.value=null
             repository.clear(); notesDirty = false; dirtySince = null; unsaved.value = false; engine.replace(PracticeState(ready = true), now()); publish()
             result
         } finally { restoring = false }

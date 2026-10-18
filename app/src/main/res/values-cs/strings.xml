@@ -76,7 +76,7 @@
   <string name="label_recently_practiced">Naposledy hrané</string>
   <string name="label_recently_unlocked">Naposledy získané</string>
   <string name="label_reminders">Připomínky</string>
-  <string name="label_repertoire">Repertoár</string>
+  <string name="label_repertoire">Knihovna</string>
   <string name="label_repertoire_highlights">To nejlepší z repertoáru</string>
   <string name="label_repertoire_pieces">Skladby v repertoáru</string>
   <string name="label_review">Shrnutí</string>
@@ -705,7 +705,7 @@
     <string name="recovery_failed">Rozpracované cvičení se nepodařilo obnovit. Původní data jsou zachována. Zkuste obnovu znovu nebo data exportujte před novým začátkem.</string>
     <string name="recovery_fresh">Archivovat originál a začít znovu</string>
     <string name="recovery_confirm">Původní data obnovy zůstanou zachována v samostatném místním archivu i v exportovaném souboru. Začít nové cvičení? Archivovaný originál nebude odstraněn.</string>
-    <string name="practice_expand">Skladby a poznámky</string>
+    <string name="practice_expand">Hrané skladby</string>
 <string name="practice_retry">Zkusit znovu</string>
 <string name="catalogue_saved_refresh_failed">Aktualizace se nezdařila. Zobrazuje se uložený katalog.</string>
 <string name="biography_saved_refresh_failed">Zobrazuje se uložený životopis; aktualizace se nezdařila.</string>
@@ -810,4 +810,18 @@
     <string name="version_010">Goldberg 0.10</string>
     <string name="ui010_color_and_surfaces">Barvy a karty</string>
     <string name="ui010_repertoire_display">Zobrazení repertoáru</string>
+    <string name="ui101_my_repertoire">Můj repertoár</string>
+    <string name="ui101_completed">Cvičení dokončeno!</string>
+    <string name="ui101_add_played">Přidat hrané skladby</string>
+    <string name="ui101_add_note">Přidat poznámku</string>
+    <string name="ui101_session_note">Poznámka ke cvičení</string>
+    <string name="ui101_piece_note">Poznámka ke skladbě</string>
+    <string name="ui101_no_measured_piece">Toto cvičení nemá měřenou skladbu. Přidejte poznámku ke cvičení; repertoárové poznámky zůstávají v Knihovně.</string>
+    <string name="ui101_done">Hotovo</string>
+    <string name="ui101_version">Verze %1$s</string>
+    <string name="ui101_preview">Náhled</string>
+<string name="ui101_pieces_count">Hrané skladby: %1$d</string>
+<string name="ui101_link_note_hint">Poznámka k dodatečně přidané skladbě se uloží s jejím názvem do poznámky ke cvičení. Čas cvičení se nezmění.</string>
+<string name="ui101_note_limit">Poznámky se nepodařilo uložit. Celková poznámka ke cvičení musí mít nejvýše 10 000 znaků. Zkuste to znovu; text zůstává zde.</string>
+<string name="ui101_search">Hledat v knihovně</string>
 </resources>

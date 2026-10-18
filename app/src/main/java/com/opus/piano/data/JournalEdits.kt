@@ -44,3 +44,11 @@ fun composerSuggestions(composers:List<CatalogComposer>,query:String):List<Catal
     if(tokens.isEmpty()) return emptyList()
     return composers.filter {c->tokens.all {catalogText(c.name).contains(it)}}.sortedBy {catalogText(it.name)}.take(8)
 }
+
+/** Untimed annotations live in the existing session note; never truncate existing or new text. */
+fun appendPieceAnnotation(original:String,title:String?,annotation:String):String {
+    if(title==null || annotation.isBlank()) return original
+    val combined=listOf(original.takeIf {it.isNotEmpty()}, "$title:\n$annotation").filterNotNull().joinToString("\n\n")
+    require(combined.length<=10000) {"Session note exceeds 10000 characters"}
+    return combined
+}

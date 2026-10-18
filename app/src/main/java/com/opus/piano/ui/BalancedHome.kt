@@ -35,11 +35,10 @@ import java.time.*
         val availableWidth=maxWidth
         val recentLimit=if(maxHeight>=720.dp && fontScale<=1.15f) 3 else 2
         JournalViewport {
-            Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.End) {IconButton(onClick=settings) {Icon(Icons.Outlined.Settings,L.fixed("Settings"),tint=MaterialTheme.colorScheme.primary)}}
             val greeting:@Composable ()->Unit={Column(verticalArrangement=Arrangement.spacedBy(4.dp)) {
-                Text(L.s(when(LocalTime.now().hour) {in 5..11->R.string.ui010_morning;in 12..17->R.string.ui010_afternoon;else->R.string.ui010_evening}),style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
-                Text(name.takeUnless {it.isBlank()||it=="Musician"} ?: L.s(R.string.ui010_pianist),style=MaterialTheme.typography.headlineLarge,maxLines=2,overflow=TextOverflow.Ellipsis)
-                Text(L.s(R.string.ui010_home_support),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(L.s(when(LocalTime.now().hour) {in 5..11->R.string.ui010_morning;in 12..17->R.string.ui010_afternoon;else->R.string.ui010_evening}),style=MaterialTheme.typography.bodyMedium.copy(fontSize=MaterialTheme.typography.bodyMedium.fontSize * 1.06f),color=MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(name.takeUnless {it.isBlank()||it=="Musician"} ?: L.s(R.string.ui010_pianist),style=MaterialTheme.typography.headlineLarge.copy(fontSize=MaterialTheme.typography.headlineLarge.fontSize * 1.04f),maxLines=2,overflow=TextOverflow.Ellipsis)
+                Text(L.s(R.string.ui010_home_support),style=MaterialTheme.typography.bodySmall.copy(fontSize=MaterialTheme.typography.bodySmall.fontSize * 1.06f),color=MaterialTheme.colorScheme.onSurfaceVariant)
             }}
             val quotation:@Composable ()->Unit={JournalCard(Modifier.clickable(onClickLabel=L.s(R.string.ui010_read_quote),role=Role.Button) {quoteExpanded=true},padding=PaddingValues(12.dp)) {
                 Row(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
