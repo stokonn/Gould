@@ -1,0 +1,56 @@
+{
+  "status": "WIP targeted build passed; Stage4 acceptance incomplete",
+  "fullCommand": "GRADLE_USER_HOME=/tmp/goldberg-gradle-home ./gradlew --offline assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1",
+  "initialFullResult": "failed at lint only: 2 LocalContextConfigurationRead errors, corrected; 92 warnings",
+  "targetedCommand": "GRADLE_USER_HOME=/tmp/goldberg-gradle-home ./gradlew --offline assembleDebug lintDebug --no-daemon --max-workers=1",
+  "targetedResult": "BUILD SUCCESSFUL in 1m 38s",
+  "jvm": {
+    "tests": 89,
+    "suites": 21,
+    "failures": 0,
+    "errors": 0,
+    "timing": "full invocation before UI-only LocalConfiguration lint fix; data/tests unchanged"
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 92
+  },
+  "instrumentation": "compiled only; zero Stage4 emulator executions",
+  "schema": {
+    "personal": 10,
+    "catalogue": 1,
+    "changedExports": false
+  },
+  "apk": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "preservedPath": ".gradle/stage4-wip/Goldberg-stage4-wip.apk",
+    "sha256": "69c169712653832c2e9dc299415ca08fb3c8c2428f6914d789abfcb38bcf3065",
+    "package": "com.opus.piano",
+    "versionName": "0.10.1",
+    "versionCode": 11,
+    "certificateSha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+    "zipIntegrity": "passed",
+    "signedSeededUpgrade": "not executed"
+  },
+  "hostChecks": [
+    "check_localization.py: 860 resource parity passed",
+    "check_migrations.py: schemas1\u20139 to10 host DDL passed",
+    "check_backup_fixtures.py: historical fixtures passed",
+    "stage-3b/check_fixtures.py: three v5 fixture hashes passed",
+    "check_history_paging.py: passed",
+    "check_agent_policy.py: passed",
+    "git diff --exit-code -- app/schemas: passed",
+    "git diff --check: passed"
+  ],
+  "unexecuted": [
+    "API26/API37 instrumentation",
+    "rendered UI/screenshots/accessibility",
+    "seeded signed0.10.1 upgrade",
+    "Stage4 live provider probes",
+    "Stage4 performance measurements",
+    "full source/artifact/resource acceptance",
+    "final clean remote CI acceptance",
+    "Wiki synchronization"
+  ],
+  "ownerNotesSha256": "db920f0b1ff88579b6bea9f9da567af16e6db0c7ce5b6439781ca1754fcd4b9b"
+}

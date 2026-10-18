@@ -2,9 +2,31 @@ package com.opus.piano.data.catalogue
 
 import androidx.room.withTransaction
 
-/** Local contracts only; no provider requests, practice writes or downloadable content. */
+/** Catalogue-only repository. No personal or practice writes. */
 class CatalogueRepository(private val db: CatalogueDatabase) {
     private val dao = db.dao()
+    internal suspend fun ingest(result:com.opus.piano.data.catalogue.providers.ProviderResult)=CatalogueIngestion(db).accept(result)
+    internal suspend fun supplement(id:String,result:com.opus.piano.data.catalogue.providers.ProviderResult)=db.withTransaction {
+        require(result.license=="CC-BY-SA-4.0" && result.request.provider=="wikipedia" && dao.entity(id)!=null)
+        val key="document:"+id+":"+result.hash
+        if(dao.state(key)!=null)return@withTransaction
+        val source=CatalogueSource(java.util.UUID.randomUUID().toString(),"wikipedia",result.request.externalId.orEmpty(),result.records.single().fields.first {it.field=="article_revision"}.value,result.hash,result.observedAt,result.request.url)
+        addSource(source)
+        val rights=CatalogueRights(java.util.UUID.randomUUID().toString(),result.license,result.licenseUrl,"Wikipedia contributors — "+result.request.url,"approved","Plain-text excerpt, truncated")
+        addRights(rights)
+        for(field in result.records.single().fields) addAssertion(CatalogueAssertion(java.util.UUID.randomUUID().toString(),id,field.field,org.json.JSONObject().put("value",field.value).put("language",field.language).toString(),source.id,rights.id,dao.assertions(id,field.field).isEmpty()))
+        dao.state(CatalogueState(key,"ready"))
+    }
+    suspend fun generation():String=dao.state("generation")?.value ?: "initial"
+    suspend fun assertions(id:String)=dao.assertions(id)
+    suspend fun identities(id:String)=dao.identities(id)
+    suspend fun source(id:String)=dao.source(id)
+    suspend fun rights(id:String)=dao.rights(id)
+    suspend fun linked(id:String)=dao.allRelationships(id)
+    suspend fun state(key:String)=dao.state(key)?.value
+    suspend fun state(key:String,value:String)=dao.state(CatalogueState(key,value))
+    internal suspend fun queryEntities(query:androidx.sqlite.db.SupportSQLiteQuery)=dao.queryEntities(query)
+
     suspend fun entity(id: String): CatalogueEntity? { CatalogueValidation.uuid(id); return dao.entity(id) }
     suspend fun page(kind: String? = null, after: String = "", limit: Int = 40): List<CatalogueEntity> {
         bounds(kind, after, limit); return dao.page(kind, after, limit)

@@ -46,7 +46,7 @@ import java.time.format.DateTimeFormatter
 
 private enum class Destination(val label: String, val icon: ImageVector) {
     OVERVIEW("Home", Icons.Outlined.Home), HOME("Profile", Icons.Outlined.Person), REPERTOIRE("Repertoire", Icons.Outlined.LibraryMusic),
-    PRACTICE("Practice", Icons.Outlined.Piano), BADGES("Badges", Icons.Outlined.EmojiEvents), WRAPPED("Wrapped", Icons.Outlined.Insights)
+    DISCOVER("Discover", Icons.Outlined.Explore), PRACTICE("Practice", Icons.Outlined.Piano), BADGES("Badges", Icons.Outlined.EmojiEvents), WRAPPED("Wrapped", Icons.Outlined.Insights)
 }
 @Composable fun OpusApp(model: OpusViewModel, catalog: CatalogViewModel, experience: ExperienceViewModel, profile: ProfileViewModel) {
     val context = LocalContext.current
@@ -103,7 +103,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
         snackbarHost = { SnackbarHost(snackbar) },
         bottomBar = {
             NavigationBar(containerColor = MaterialTheme.colorScheme.surface, tonalElevation = 0.dp) {
-                listOf(Destination.OVERVIEW, Destination.REPERTOIRE, Destination.PRACTICE, Destination.HOME).forEach { destination ->
+                listOf(Destination.OVERVIEW, Destination.REPERTOIRE, Destination.DISCOVER, Destination.PRACTICE, Destination.HOME).forEach { destination ->
                     NavigationBarItem(colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = MaterialTheme.colorScheme.primary, selectedTextColor = MaterialTheme.colorScheme.primary,
                         indicatorColor = androidx.compose.ui.graphics.Color.Transparent,
@@ -112,7 +112,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                         focus.clearFocus()
                         keyboard?.hide()
                         nav.selectTopLevel(destination.name)
-                    }, icon = { Icon(destination.icon, contentDescription = null) }, label = { Text(L.fixed(destination.label), style = MaterialTheme.typography.labelSmall, maxLines = 2) })
+                    }, icon = { Icon(destination.icon, contentDescription = null) }, label = { Text(if(destination==Destination.DISCOVER)L.s(R.string.discover) else L.fixed(destination.label), style = MaterialTheme.typography.labelSmall, maxLines = 2) })
                 }
             }
         }
@@ -127,8 +127,10 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 composable(SETTINGS_ROUTE) { SettingsScreen(profile, model, { replay = true }) { nav.popBackStack() } }
                 composable(Destination.HOME.name) { ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }) { nav.navigate("badge/$it") } }
                 composable(Destination.REPERTOIRE.name) {
-                    RepertoireScreen(library,catalogData,model,{nav.navigate("catalog")},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")},catalog,{nav.navigate("catalog/work/$it")})
+                    RepertoireScreen(library,catalogData,model,{nav.selectTopLevel("DISCOVER")},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")},catalog,{nav.navigate("catalog/work/$it")})
                 }
+                composable(Destination.DISCOVER.name) { DiscoverScreen { nav.navigate("discover/entity/$it") } }
+                composable("discover/entity/{id}") { route -> DiscoverDetailScreen(route.arguments?.getString("id").orEmpty(), {nav.popBackStack()}, {nav.navigate("discover/entity/$it")}, {nav.navigate("piece/$it")}) }
                 composable("catalog") { CatalogScreen(catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("catalog/work/$it") }, { nav.navigate("piece/$it") },profile=profile) }
                 composable("catalog/composer/{id}") { route -> ComposerScreen(route.arguments?.getString("id").orEmpty(), catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/work/$it") },identity=profile) }
                 composable("catalog/work/{id}") { route ->

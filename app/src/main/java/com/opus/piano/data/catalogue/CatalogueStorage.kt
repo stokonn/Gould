@@ -1,0 +1,19 @@
+package com.opus.piano.data.catalogue
+
+import android.content.Context
+import java.io.File
+
+/** Guards cover only the disposable catalogue, never opus.db or external backup paths. */
+class CatalogueStorage(context:Context) {
+    private val directory=context.getDatabasePath(CatalogueDatabase.FILENAME).parentFile!!
+    private val media=File(context.cacheDir,"catalogue-stage4")
+    data class Usage(val databaseBytes:Long,val mediaBytes:Long,val freeBytes:Long)
+    fun usage():Usage=Usage(directory.listFiles()?.filter {it.name==CatalogueDatabase.FILENAME || it.name.startsWith(CatalogueDatabase.FILENAME+".") || it.name.startsWith(CatalogueDatabase.FILENAME+"-")}?.sumOf {it.length()} ?: 0,media.listFiles()?.sumOf {it.length()} ?: 0,directory.usableSpace)
+    fun admits(estimatedBytes:Long):Boolean {val u=usage();return estimatedBytes in 0..MAX_RESPONSE && u.databaseBytes+u.mediaBytes+estimatedBytes<=MAX_TOTAL && u.freeBytes-estimatedBytes>=FREE_RESERVE}
+    fun trimMedia(now:Long=System.currentTimeMillis()) {
+        val files=media.listFiles()?.filter {it.isFile}?.sortedBy {it.lastModified()}.orEmpty()
+        var size=files.sumOf {it.length()}
+        files.forEach {file->if(size>MAX_MEDIA || now-file.lastModified()>MAX_AGE){val bytes=file.length();if(file.delete())size-=bytes}}
+    }
+    companion object {const val MAX_TOTAL=256L*1024*1024;const val MAX_MEDIA=16L*1024*1024;const val MAX_RESPONSE=2L*1024*1024;const val FREE_RESERVE=128L*1024*1024;const val MAX_AGE=30L*86400000}
+}

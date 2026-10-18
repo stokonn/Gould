@@ -246,19 +246,18 @@ class CatalogRepository(private val db: OpusDatabase, private val filesDir: File
         val key="small-portrait:${c.id}"
         val cached=dao.cache(key)
         if (cached != null && System.currentTimeMillis()-cached.fetchedAt<30L*86400000) return@withContext profileFromJson(JSONObject(cached.payload)).portrait
-        if (!mediaAllowed()) return@withContext cached?.let { profileFromJson(JSONObject(it.payload)).portrait }
-        val profile=WikimediaProfile(http).load(c, portraitOnly=true)
-        if (!mediaAllowed()) return@withContext null
-        dao.putCache(CatalogCache(key,profileToJson(profile).toString(),System.currentTimeMillis()));trimResponses()
-        profile.portrait
+        // Rendering personal repertoire never initiates provider discovery. Explicit supplement
+        // loading populates the profile/portrait cache; missing images remain an offline fallback.
+        cached?.let { profileFromJson(JSONObject(it.payload)).portrait }
+
     } }
     /** App-private persistent portrait cache, never part of repertoire or uploaded. */
-    suspend fun portrait(url: String): Bitmap? = withContext(Dispatchers.IO) { cacheGate.withLock {
+    suspend fun portrait(url: String, explicit: Boolean = false): Bitmap? = withContext(Dispatchers.IO) { cacheGate.withLock {
         val digest = MessageDigest.getInstance("SHA-256").digest(url.toByteArray()).joinToString("") { "%02x".format(it) }
         val directory = portraitDirectory.apply { mkdirs() }
         val file = File(directory, "$digest.img")
         if (file.exists()) decodePortrait(file.readBytes())?.let { file.setLastModified(System.currentTimeMillis()); return@withContext it }
-        if (!mediaAllowed()) return@withContext null
+        if (!explicit || !mediaAllowed()) return@withContext null
         val bytes = http.bytes(url, image = true)
         if (!mediaAllowed()) return@withContext null
         val bitmap = decodePortrait(bytes) ?: return@withContext null

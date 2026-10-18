@@ -1,0 +1,31 @@
+{
+  "baseline": "9ae8d33e113feba531cdfa8558f0505cd4205749",
+  "note": "Changed source/test/resource hashes for WIP; not full final Stage4 artifact acceptance",
+  "files": {
+    "app/src/androidTest/java/com/opus/piano/Stage4CatalogueTest.kt": "b0539f47cc496c25e5cf0307c3cbd72536f091e515baf84e9dae7929074bd744",
+    "app/src/main/java/com/opus/piano/OpusApplication.kt": "fbe6e2f1227c3d7dcf97f17879e1c2e879632afa503d90f8436beca6236b9181",
+    "app/src/main/java/com/opus/piano/data/CatalogRepository.kt": "52cec7573764dc51afc12c95981cc6527f822d9944f711df14e2355d10319c79",
+    "app/src/main/java/com/opus/piano/data/catalogue/CatalogueDatabase.kt": "c72862e99105bc547754dc1609c6b7bf70d0d866ec57a7d72aa57de17e02daa2",
+    "app/src/main/java/com/opus/piano/data/catalogue/CatalogueIngestion.kt": "a71ccd9c879986919f5a2fea68a92dbc5c22cb91cfc83ebd5496ef18c0ec3da1",
+    "app/src/main/java/com/opus/piano/data/catalogue/CatalogueRepertoire.kt": "38b91fe2739c33d7e305eaa72149118348138718b44e2d433ac17e97604167a6",
+    "app/src/main/java/com/opus/piano/data/catalogue/CatalogueRepository.kt": "b0391643037259fe1a8c126ebcaa89959bb80ef115924f78f9959c9f679e6dec",
+    "app/src/main/java/com/opus/piano/data/catalogue/CatalogueSearch.kt": "a02fa31b3e10558015bfada62a564729a25e0445d751dd639da1c7b7651c5c3c",
+    "app/src/main/java/com/opus/piano/data/catalogue/CatalogueStorage.kt": "79be7d950fb16b977403fcdd63641b31ca9ebe0c0838ea37cf671c678e3926ba",
+    "app/src/main/java/com/opus/piano/data/catalogue/DiscoverRepository.kt": "fa8b074c03e7a4d79c33ddf05b343a7ebc4bde42aa5a0792f8be728e22c3f304",
+    "app/src/main/java/com/opus/piano/data/catalogue/providers/CommonsAdapter.kt": "c08919c4bdf309d3f0f314836beb955635b08a271901aac650ca067c6f839a66",
+    "app/src/main/java/com/opus/piano/data/catalogue/providers/MusicBrainzAdapter.kt": "3b1f9003e8b7e3e04b20ebd0d1d75e1a08d2ab16a4911305eec5dece1ed7234f",
+    "app/src/main/java/com/opus/piano/data/catalogue/providers/OpenOpusAdapter.kt": "7d0d78dd06c13b8c7c60b1c426a8e5af7fe04067a6025d7ab6b33f3890f34c77",
+    "app/src/main/java/com/opus/piano/data/catalogue/providers/ProviderContract.kt": "1436f9888fd7c55a445c03254f4ceaf4739fcc0a8cfa7e99f60c050938504f7f",
+    "app/src/main/java/com/opus/piano/data/catalogue/providers/ProviderTransport.kt": "62d471f07189df1fda5141f9027bb52264b6eaeacbbcf0ac2ab781f29ff9cad5",
+    "app/src/main/java/com/opus/piano/data/catalogue/providers/WikidataAdapter.kt": "f8a7a99b36d78ca789a67dc383be425bc3fa503c9ba8ca689d27615edebac2e1",
+    "app/src/main/java/com/opus/piano/data/catalogue/providers/WikipediaAdapter.kt": "945eb74dae2bdd45e1e4647cab9f1133d38136cc90ad01759510eba3ba83526d",
+    "app/src/main/java/com/opus/piano/ui/AppNavigation.kt": "ee05de9ce88917542334fc904c42def423f2ffb16271da9b5905d3db5a6a4899",
+    "app/src/main/java/com/opus/piano/ui/CompositionScreen.kt": "d5e71db2eb3571419c63956ce3940b81a5f247bfe707261788a182fa8fca6af5",
+    "app/src/main/java/com/opus/piano/ui/DiscoverScreen.kt": "e8ca5703315d2637f2dd822bc44f704ec8a342f04f691b78c208bf10efd7a832",
+    "app/src/main/java/com/opus/piano/ui/OpusApp.kt": "edb57eb31564922f46cee6172c06f3524d112ee15ea974eeab4735bb698c1381",
+    "app/src/main/res/values-cs/strings.xml": "2db5e0f42fed3d8eeef2889abbd059859e3262d77e114c6b33e6d6e95ada8594",
+    "app/src/main/res/values/strings.xml": "47d2ff45c8d4ff73af81f94d1a91d77438f9c51e61ea196632c9f0b16c27a897",
+    "app/src/test/java/com/opus/piano/data/catalogue/SearchContractTest.kt": "3eff96908848fbf404b0898420ef0c480e3648faf32d8c2b4fe377f36b9f3041",
+    "app/src/test/java/com/opus/piano/data/catalogue/providers/ProviderProjectionTest.kt": "28e50014c572de216a9495d60137968eda54ebdfff677bef13cb3e23f7b0a866"
+  }
+}

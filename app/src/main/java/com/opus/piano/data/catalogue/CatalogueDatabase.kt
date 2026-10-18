@@ -32,6 +32,13 @@ internal interface CatalogueDao {
     @Query("SELECT DISTINCT e.* FROM alias_fts JOIN aliases a ON a.rowid=alias_fts.rowid JOIN entities e ON e.id=a.entityId WHERE alias_fts MATCH :query AND e.id > :after AND e.status='active' AND (:kind IS NULL OR e.kind=:kind) ORDER BY e.id LIMIT :limit") suspend fun search(query: String, kind: String?, after: String, limit: Int): List<CatalogueEntity>
     @Query("SELECT * FROM redirect_revisions WHERE sourceId = :id ORDER BY revision DESC LIMIT 1") suspend fun redirect(id: String): CatalogueRedirect?
     @Query("SELECT * FROM external_identities WHERE provider = :provider AND providerKind = :kind AND externalId = :id") suspend fun identity(provider: String, kind: String, id: String): CatalogueExternalIdentity?
+    @Query("SELECT * FROM assertions WHERE entityId=:id AND (:field IS NULL OR field=:field) ORDER BY field, selected DESC, id LIMIT 200") suspend fun assertions(id:String,field:String?=null):List<CatalogueAssertion>
+    @Query("SELECT EXISTS(SELECT 1 FROM aliases WHERE entityId=:id AND language=:language AND value=:value)") suspend fun hasAlias(id:String,language:String,value:String):Boolean
+    @Query("SELECT EXISTS(SELECT 1 FROM relationships WHERE fromId=:from AND toId=:to AND type=:type)") suspend fun hasEdge(from:String,to:String,type:String):Boolean
+    @Query("SELECT * FROM sources WHERE id=:id") suspend fun source(id:String):CatalogueSource?
+    @Query("SELECT * FROM external_identities WHERE entityId=:id ORDER BY provider,providerKind,externalId LIMIT 40") suspend fun identities(id:String):List<CatalogueExternalIdentity>
+    @Query("SELECT * FROM relationships WHERE fromId=:id OR toId=:id ORDER BY type,medium,position,id LIMIT :limit") suspend fun allRelationships(id:String,limit:Int=100):List<CatalogueRelationship>
+    @androidx.room.RawQuery suspend fun queryEntities(query:androidx.sqlite.db.SupportSQLiteQuery):List<CatalogueEntity>
     @Update suspend fun updateIdentity(row: CatalogueExternalIdentity)
     @Query("SELECT * FROM rights WHERE id = :id") suspend fun rights(id: String): CatalogueRights?
     @Query("SELECT * FROM catalogue_state WHERE `key` = :key") suspend fun state(key: String): CatalogueState?
