@@ -31,6 +31,7 @@ jobs:
         run: |
           python3 scripts/check_migrations.py
           python3 scripts/check_backup_fixtures.py
+          python3 docs/planning/goldberg-0.11/stage-3b/check_fixtures.py
           python3 scripts/check_localization.py
           python3 scripts/check_history_paging.py
           python3 scripts/check_agent_policy.py

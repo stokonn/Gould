@@ -26,7 +26,7 @@ def add_bridge_ddl(db):
         db.execute(statement)
 
 
-for starting_version in (1, 2, 3, 4, 5, 6, 7, 8):
+for starting_version in (1, 2, 3, 4, 5, 6, 7, 8, 9):
     db = sqlite3.connect(":memory:")
     db.execute("PRAGMA foreign_keys = ON")
     make_schema(db, starting_version)
@@ -66,8 +66,11 @@ for starting_version in (1, 2, 3, 4, 5, 6, 7, 8):
         assert db.execute("SELECT payload,updatedAt FROM practice_drafts WHERE id=1").fetchone() == ('unchanged original draft',123)
         assert db.execute("SELECT generation,lastReminderDay FROM local_app_state").fetchone() == (4,'2026-10-15')
     add_bridge_ddl(db)
+    backup_source=(ROOT / "app/src/main/java/com/opus/piano/data/BackupState.kt").read_text()
+    for sql in re.findall(r'"(CREATE [^"\n]+)"',backup_source.split('val ddl=listOf(',1)[1].split('\n    )',1)[0]):
+        db.execute(sql)
     expected = sqlite3.connect(":memory:")
-    for entity in make_schema(expected, 9)["entities"]:
+    for entity in make_schema(expected, 10)["entities"]:
         table = entity["tableName"]
         assert db.execute(f"PRAGMA table_info({table})").fetchall() == expected.execute(f"PRAGMA table_info({table})").fetchall(), table
         assert db.execute(f"PRAGMA index_list({table})").fetchall() == expected.execute(f"PRAGMA index_list({table})").fetchall(), table
@@ -78,4 +81,4 @@ for starting_version in (1, 2, 3, 4, 5, 6, 7, 8):
     db.execute("INSERT OR IGNORE INTO badge_unlocks VALUES('first_piece', 123)")
     db.execute("INSERT OR IGNORE INTO badge_unlocks VALUES('first_piece', 999)")
     assert db.execute("SELECT unlockedAt FROM badge_unlocks").fetchone() == (123,)
-    print(f"PASS v{starting_version} → v9 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests")
+    print(f"PASS v{starting_version} → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests")

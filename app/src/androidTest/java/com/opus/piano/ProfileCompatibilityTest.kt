@@ -31,7 +31,7 @@ class ProfileCompatibilityTest {
             for (theme in listOf("Light", "Dark", "System")) {
                 db.personalDao().saveSettings(profile.copy(theme = theme))
                 assertEquals(profile.copy(theme = theme), db.personalDao().getSettings())
-                val exported = backup.export()
+                val exported = backup.exportLegacy()
                 backup.restore(exported)
                 assertEquals(theme, db.personalDao().getSettings()!!.theme)
                 assertEquals(listOf("first_notes"), db.personalDao().getSettings()!!.badgeIds)

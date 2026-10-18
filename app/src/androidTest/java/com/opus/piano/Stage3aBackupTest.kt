@@ -22,7 +22,7 @@ class Stage3aBackupTest {
             for(file in listOf("goldberg-0.6.0-format1.json","goldberg-0.9.1-format2.json","goldberg-0.9.2-format3.json")) {
                 val input=inst.context.assets.open("backups/$file").bufferedReader().use {it.readText()}
                 backup.validate(input);backup.restore(input)
-                val exported=JSONObject(backup.export())
+                val exported=JSONObject(backup.exportLegacy())
                 assertEquals(4,exported.getInt("version"));assertEquals(8,exported.getInt("schema"))
                 val original=JSONObject(input).getJSONObject("tables");val actual=exported.getJSONObject("tables")
                 original.keys().forEach { table ->
@@ -41,7 +41,7 @@ class Stage3aBackupTest {
             db.dao().save(Piece(id=900,title="First manual journal",composer="User"))
             val first=db.personalCatalogueDao().anchors("piece","900").single()
             val firstUuid=db.personalCatalogueDao().identity(first.identityKey)!!.canonicalId
-            val raw=JSONObject(backup.export());val pieces=raw.getJSONObject("tables").getJSONArray("pieces")
+            val raw=JSONObject(backup.exportLegacy());val pieces=raw.getJSONObject("tables").getJSONArray("pieces")
             for(i in 0 until pieces.length()) if(pieces.getJSONObject(i).getLong("id")==900L) pieces.getJSONObject(i).put("title","Different imported journal")
             backup.restore(raw.toString())
             val second=db.personalCatalogueDao().anchors("piece","900").single()
@@ -50,17 +50,17 @@ class Stage3aBackupTest {
             assertNotNull(db.personalCatalogueDao().identity(first.identityKey)) // preserve prior identity evidence
         } finally {db.close();context.deleteDatabase(name)}
     }
-    @Test fun legacyRestoreRejectsUnfinishedRecoveryWithoutChangingBytes()=runBlocking {
+    @Test fun legacyRestorePreservesUnfinishedRecoveryWithoutChangingBytes()=runBlocking {
         val context=InstrumentationRegistry.getInstrumentation().targetContext
         val name="stage3a-restore-draft-${UUID.randomUUID()}.db"
         val db=Room.databaseBuilder(context,OpusDatabase::class.java,name).addCallback(PersonalCatalogueBridge.callback).build()
         try {
             db.dao().save(Piece(id=1,title="Keep",composer="User",notes="Keep notes"))
-            val backup=BackupRepository(context,db);val raw=backup.export()
+            val backup=BackupRepository(context,db);val raw=backup.exportLegacy()
             val original="Unparseable original\nŽ\u0000raw";db.practiceDao().checkpoint(PracticeDraft(payload=original,updatedAt=123))
-            assertTrue(runCatching {backup.restore(raw)}.isFailure)
-            assertEquals(original,db.practiceDao().draft()!!.payload)
-            assertEquals(123,db.practiceDao().draft()!!.updatedAt.toInt())
+            backup.restore(raw)
+            assertNull(db.practiceDao().draft())
+            assertTrue(db.backupStateDao().evidence().any {it.rawBytes.contentEquals(original.toByteArray()) && it.updatedAt==123L})
             assertEquals("Keep notes",db.dao().piece(1)!!.notes)
         } finally {db.close();context.deleteDatabase(name)}
     }

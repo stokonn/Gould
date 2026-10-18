@@ -80,7 +80,7 @@ class Stage3aMigrationTest {
         val original=seed(name,version)
         var db=open(name)
         try {
-            assertEquals(9,db.openHelper.writableDatabase.version)
+            assertEquals(10,db.openHelper.writableDatabase.version)
             db.openHelper.readableDatabase.query("PRAGMA foreign_key_check").use { assertFalse(it.moveToFirst()) }
             SQLiteDatabase.openDatabase(context.getDatabasePath(name).path,null,SQLiteDatabase.OPEN_READONLY).use { sql ->
                 original.forEach { (table,data) -> assertEquals("v$version $table original bytes",data.second,snapshot(sql,table,data.first)) }
@@ -111,10 +111,31 @@ class Stage3aMigrationTest {
     @Test fun schema6()=migrate(6)
     @Test fun schema7()=migrate(7)
     @Test fun schema8()=migrate(8)
+    @Test fun schema9PreservesExistingUuidRegistryAndSeedsCompletionEvidence()=runBlocking {
+        val name="stage3b-v9-${UUID.randomUUID()}.db"
+        val original=seed(name,9);val uuid=UUID.randomUUID().toString();val scope=UUID.randomUUID().toString()
+        SQLiteDatabase.openDatabase(context.getDatabasePath(name).path,null,SQLiteDatabase.OPEN_READWRITE).use { sql ->
+            sql.execSQL("INSERT INTO personal_catalogue_state VALUES(1,?)",arrayOf(scope))
+            sql.execSQL("INSERT INTO personal_catalogue_identities VALUES('legacy:work:87',?,'work','openopus','87','original evidence')",arrayOf(uuid))
+            sql.execSQL("INSERT INTO personal_catalogue_anchors VALUES('piece','7','work','legacy:work:87','Original title','Original creator','87','original evidence')")
+        }
+        val db=open(name)
+        try {
+            assertEquals(10,db.openHelper.writableDatabase.version)
+            assertEquals(uuid,db.personalCatalogueDao().identity("legacy:work:87")!!.canonicalId)
+            assertEquals(scope,db.personalCatalogueDao().scope()!!.scope)
+            assertEquals("Original title",db.personalCatalogueDao().anchors("piece","7").single().originalTitle)
+            assertEquals(60000L,db.backupStateDao().completed("one-credit-only").single().durationMillis)
+            SQLiteDatabase.openDatabase(context.getDatabasePath(name).path,null,SQLiteDatabase.OPEN_READONLY).use { sql ->
+                original.filterKeys{!it.startsWith("personal_catalogue_")}.forEach{(table,data)->assertEquals("schema9 $table bytes",data.second,snapshot(sql,table,data.first))}
+            }
+            db.openHelper.readableDatabase.query("PRAGMA foreign_key_check").use{assertFalse(it.moveToFirst())}
+        } finally {db.close();context.deleteDatabase(name)}
+    }
     @Test fun failureRollsBackPersonalMigration() {
         val name="stage3a-failed-${UUID.randomUUID()}.db";seed(name,8)
         val failing=object:Migration(8,9) { override fun migrate(db:SupportSQLiteDatabase) { OpusDatabase.MIGRATION_8_9.migrate(db);error("Injected migration interruption") } }
-        val db=Room.databaseBuilder(context,OpusDatabase::class.java,name).addMigrations(failing).build()
+        val db=Room.databaseBuilder(context,OpusDatabase::class.java,name).addMigrations(failing,OpusDatabase.MIGRATION_9_10).build()
         try {
             assertTrue(runCatching { db.openHelper.writableDatabase }.isFailure)
             SQLiteDatabase.openDatabase(context.getDatabasePath(name).path,null,SQLiteDatabase.OPEN_READONLY).use { old ->

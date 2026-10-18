@@ -71,7 +71,16 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
     val notice = MutableStateFlow<String?>(null)
     val busy = MutableStateFlow(false)
     val preview = MutableStateFlow<String?>(null)
-    private var pending: String? = null
+    private var pending: java.io.File? = null
+    val restoreState=db.backupStateDao().observeState().stateIn(viewModelScope,SharingStarted.Eagerly,null)
+    fun retryRestoreSettings()=backupAction {backup.replayPendingPreferences()}
+    private fun backupAction(block:suspend()->Unit)=action {
+        try {block()} catch(c:CancellationException){throw c} catch(e:Exception) {
+            val message=if(db.backupStateDao().state()?.status=="pending") R.string.backup_v5_pending
+                else if(e is java.io.IOException) R.string.backup_storage_failed else R.string.backup_validation_failed
+            throw IllegalStateException(L.s(message),e)
+        }
+    }
     private fun action(block: suspend () -> Unit) {
         if (busy.value) return
         busy.value = true
@@ -125,24 +134,23 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
         if (scaled !== image) image.recycle(); scaled.recycle()
         db.withTransaction { val old = db.personalDao().getSettings() ?: ProfileSettings(); db.personalDao().saveSettings(old.copy(avatar = Base64.encodeToString(output.toByteArray(), Base64.NO_WRAP))) }
     }
-    fun export(uri: Uri) = action {
-        val raw = backup.export()
-        getApplication<Application>().contentResolver.openOutputStream(uri, "wt")?.use { it.write(raw.toByteArray()) } ?: error(L.s(R.string.msg_cannot_write_this_file_151a))
+    fun export(uri: Uri) = backupAction {
+        val file = backup.exportSnapshot()
+        getApplication<Application>().contentResolver.openOutputStream(uri, "wt")?.use { out->file.inputStream().use {it.copyTo(out)} } ?: error(L.s(R.string.msg_cannot_write_this_file_151a))
         notice.value = L.s(R.string.msg_backup_exported_6f92)
     }
-    fun inspect(uri: Uri) = action {
+    fun inspect(uri: Uri) = backupAction {
         pending = null; preview.value = null
-        val raw = getApplication<Application>().contentResolver.openInputStream(uri)?.use { it.readBytesLimited(BackupRepository.MAX_BYTES).toString(Charsets.UTF_8) } ?: error(L.s(R.string.msg_cannot_read_this_file_8312))
+        val raw = getApplication<Application>().contentResolver.openInputStream(uri)?.use { backup.receive(it) } ?: error(L.s(R.string.msg_cannot_read_this_file_8312))
         val summary = backup.validate(raw)
         pending = raw; preview.value = summary
     }
     fun cancelRestore() { if (!busy.value) { preview.value = null; pending = null } }
-    fun restore(done: () -> Unit) = action {
+    fun restore() = backupAction {
         val raw = pending ?: error(L.s(R.string.msg_select_a_backup_again_ca8b))
-        (getApplication<Application>() as OpusApplication).practice.replacing {
+        (getApplication<Application>() as OpusApplication).practice.replacing(preservesRecovery=true) {
             (getApplication<Application>() as OpusApplication).catalogRepository.restoreJournal { backup.restore(raw) }
         }; pending = null; preview.value = null; notice.value = L.s(R.string.msg_backup_restored_52ad)
-        withContext(Dispatchers.Main) { done() }
     }
 }
 private fun java.io.InputStream.readBytesLimited(limit: Int): ByteArray {

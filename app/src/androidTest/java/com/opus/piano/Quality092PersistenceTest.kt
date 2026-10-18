@@ -26,7 +26,7 @@ class Quality092PersistenceTest {
             val settings=ProfileSettings(username="Local nickname",avatar="",showcase="",favoriteArtist="Johann Sebastian Bach",favoritePiece="User's piece",favoriteEra="Baroque",biography="My unchanged text")
             db.personalDao().saveSettings(settings)
             val backup=BackupRepository(context,db)
-            val raw=backup.export();assertTrue(raw.contains("\"version\":4"))
+            val raw=backup.exportLegacy();assertTrue(raw.contains("\"version\":4"))
             backup.restore(raw)
             assertEquals(settings,db.personalDao().getSettings());assertEquals(original,db.practiceDao().archives().single().payload)
             CatalogRepository(db,context.cacheDir).clearCache()

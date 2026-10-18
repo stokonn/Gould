@@ -1,0 +1,89 @@
+{
+  "format": "goldberg-backup",
+  "version": 5,
+  "journalSchema": 10,
+  "createdAt": 1792320000000,
+  "sections": {
+    "journal": {
+      "version": 1,
+      "data": {
+        "pieces": [],
+        "sessions": [],
+        "catalog_composers": [],
+        "catalog_works": [],
+        "saved_recordings": [],
+        "badge_unlocks": [],
+        "session_parts": [],
+        "profile_settings": [],
+        "session_intervals": [],
+        "session_piece_links": [],
+        "favorite_composers": []
+      },
+      "sha256": "92b06394cd3878cbf371151f2692545828c11d9346211e42c59ca206c881a28e"
+    },
+    "identities": {
+      "version": 1,
+      "data": {
+        "personal_catalogue_identities": [],
+        "personal_catalogue_anchors": [],
+        "personal_catalogue_state": [
+          {
+            "id": 1,
+            "scope": "9b63fa30-1046-5f20-9fb4-17e2cd8543da"
+          }
+        ]
+      },
+      "sha256": "c929dba890c0980354d0a7ec0e7c8e30dbb02134f9767f6165a0e63bdd0d638d"
+    },
+    "preferences": {
+      "version": 1,
+      "data": {
+        "appearance": {
+          "accent": "Slate",
+          "cards": "Outline",
+          "homeSections": [
+            "recent",
+            "statistics"
+          ],
+          "hiddenHome": [],
+          "metrics": [
+            "week",
+            "streak"
+          ],
+          "profileSections": [
+            "badges",
+            "statistics",
+            "activity",
+            "frequent",
+            "history"
+          ],
+          "hiddenProfile": [
+            "history"
+          ],
+          "density": "Compact",
+          "sort": "Composer"
+        },
+        "locale": "cs",
+        "previousMeteredConsent": true,
+        "local": {
+          "onboardingDone": true,
+          "reminderEnabled": true,
+          "reminderHour": 19,
+          "reminderMinute": 15
+        }
+      },
+      "sha256": "357843afd7032eb7b12df1e42d9489c5d74d34910cbcb11d5b86c25caba01575"
+    },
+    "recovery": {
+      "version": 1,
+      "data": {
+        "drafts": [],
+        "archives": [],
+        "evidence": [],
+        "completions": []
+      },
+      "sha256": "8066737234c9af4560480e355e8af9ff340e078b1ebdf38b9a58c8764e5fb1ec"
+    }
+  },
+  "sha256": "4be7d785ffa1591e3952f39643db04430914bb36e8a58fa90e573eb5275dc690"
+}

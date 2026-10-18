@@ -61,6 +61,7 @@ class PracticeCoordinator(
         }
     }
     private suspend fun recover() {
+        engine.replace(PracticeState(ready=false),now());publish()
         try {
             val recovered = repository.recover() ?: PracticeState(ready = true)
             engine.replace(recovered.copy(running = false), now())
@@ -74,6 +75,14 @@ class PracticeCoordinator(
     }
     fun retryRecovery(): Job = scope.launch { initialized.await(); mutex.withLock { if (recoveryFailed.value) recover() } }
     suspend fun recoveryData(): String? = mutex.withLock { check(recoveryFailed.value); repository.recoveryData() }
+    suspend fun recoveryBytes():ByteArray?=mutex.withLock {check(recoveryFailed.value);repository.recoveryBytes()}
+    fun freshAfterExport(exported:ByteArray):Job=scope.launch {
+        guarded {
+            check(recoveryFailed.value && repository.recoveryBytes()?.contentEquals(exported)==true)
+            repository.archiveRecoveryBytes(exported);revision.incrementAndGet()
+            engine.replace(PracticeState(ready=true),now());recoveryFailed.value=false;publish()
+        }
+    }
     /** Only called after a successful user-controlled export and a separate confirmation. */
     fun freshAfterExport(exported: String): Job = scope.launch {
         guarded {
@@ -162,18 +171,27 @@ class PracticeCoordinator(
             try { checkpoint() } catch (c: CancellationException) { throw c } catch (_: Exception) { notice.value = message(R.string.msg_practice_interrupted_latest_checkpoint_retai_ee8b) }
         }
     }
-    suspend fun <T> replacing(block: suspend () -> T): T {
+    /** preservesRecovery is only for BackupRepository's tested snapshot + journal transaction.
+     * Ordinary replacements remain forbidden when the original draft cannot be decoded. */
+    suspend fun <T> replacing(preservesRecovery:Boolean=false, block: suspend () -> T): T {
         initialized.await()
         return mutex.withLock {
-        check(state.value.ready && !recoveryFailed.value)
-        restoring = true; revision.incrementAndGet()
+        check(!recoveryFailed.value || preservesRecovery)
+        restoring = true;revision.incrementAndGet()
         try {
-            releaseCapture?.invoke(); engine.pause(now()); publish(); checkpoint()
-            val result = block()
-            completed.value=null
-            repository.clear(); notesDirty = false; dirtySince = null; unsaved.value = false; engine.replace(PracticeState(ready = true), now()); publish()
-            result
-        } finally { restoring = false }
+            releaseCapture?.invoke()
+            if(!recoveryFailed.value){
+                val checkpointNeeded=engine.state.token.isNotBlank() || notesDirty || repository.recoveryBytes()!=null
+                engine.pause(now());publish();if(checkpointNeeded)checkpoint()
+            }
+            block()
+        } finally {
+            withContext(NonCancellable) {
+                completed.value=null;notesDirty=false;dirtySince=null;unsaved.value=false
+                recover() // Reload either the rolled-back original or the committed imported draft.
+                restoring=false
+            }
+        }
         }
     }
 }

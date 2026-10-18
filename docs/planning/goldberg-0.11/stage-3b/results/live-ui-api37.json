@@ -1,0 +1,22 @@
+{
+  "api": 37,
+  "serial": "emulator-5582",
+  "realUiImport": "passed offline via Android document picker",
+  "journalSchema": 10,
+  "sessions": 2,
+  "creditMillis": 8000,
+  "preferenceState": "applied",
+  "locale": "cs",
+  "accent": "Slate",
+  "cellularConsent": false,
+  "microphonePermission": false,
+  "smartPracticeServiceRunning": false,
+  "draftBytesUnchanged": true,
+  "destinationDraftRetained": true,
+  "previousSnapshotSessions": 37,
+  "realUiExport": "passed offline through Downloads document provider",
+  "exportBytes": 53997,
+  "exportSha256": "79e21cc1ca5b313a9d64a5d960c3d864d6aa3723c393baa338160a8aa5797304",
+  "exportRawDraftUnchanged": true,
+  "lightThemeUiSelection": true
+}

@@ -33,6 +33,7 @@ object AppearanceRules {
 class AppearanceStore(context: Context) {
     private val scope=CoroutineScope(SupervisorJob()+Dispatchers.IO)
     private val gate=Mutex()
+    private val generation=java.util.concurrent.atomic.AtomicLong()
     private val prefs=context.getSharedPreferences("goldberg-appearance",Context.MODE_PRIVATE)
     private val mutable=MutableStateFlow(Appearance())
     val state=mutable.asStateFlow()
@@ -44,7 +45,8 @@ class AppearanceStore(context: Context) {
             profileSections=list("profile",d.profileSections),hiddenProfile=list("profileHidden",emptyList()).toSet(),
             density=prefs.getString("density",d.density)!!,sort=prefs.getString("sort",d.sort)!!))
     } }
-    fun edit(change: (Appearance)->Appearance) { scope.launch { loaded.await();gate.withLock {
+    fun edit(change: (Appearance)->Appearance) { val expected=generation.get();scope.launch { loaded.await();gate.withLock {
+        if(expected!=generation.get()) return@withLock
         val a=AppearanceRules.normalize(change(mutable.value))
         check(prefs.edit().putString("accent",a.accent).putString("cards",a.cards).putString("home",a.homeSections.joinToString(","))
             .putString("homeHidden",a.hiddenHome.joinToString(",")).putString("metrics",a.metrics.joinToString(","))
@@ -52,5 +54,11 @@ class AppearanceStore(context: Context) {
             .putString("density",a.density).putString("sort",a.sort).commit())
         mutable.value=a
     } } }
+    suspend fun restore(a:Appearance) {
+        generation.incrementAndGet();loaded.await();gate.withLock {
+            com.opus.piano.data.backup.PortablePreferences.writeAppearance(prefs,a)
+            mutable.value=a
+        }
+    }
     fun reset()=edit { Appearance() }
 }

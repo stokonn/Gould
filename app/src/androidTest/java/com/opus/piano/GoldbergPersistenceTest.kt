@@ -57,7 +57,7 @@ class GoldbergPersistenceTest {
             assertEquals(9000L, db.personalDao().allParts().sumOf { it.durationMillis })
             assertEquals("Slow passage", db.personalDao().allParts().first().notes)
             val backup = BackupRepository(context, db)
-            val raw = backup.export()
+            val raw = backup.exportLegacy()
             backup.validate(raw)
             db.dao().save(Piece(id = 3, title = "After backup", composer = "Composer"))
             backup.restore(raw); backup.restore(raw)
@@ -66,7 +66,7 @@ class GoldbergPersistenceTest {
             assertEquals(2, db.personalDao().allParts().size)
             assertEquals("first_notes", db.personalDao().getSettings()!!.showcase)
             assertEquals("Light", db.personalDao().getSettings()!!.theme)
-            val before = backup.export()
+            val before = backup.exportLegacy()
             for (bad in listOf("broken", JSONObject(raw).put("version", 99).toString(), JSONObject(raw).apply { getJSONObject("tables").getJSONArray("session_parts").getJSONObject(0).put("durationMillis", -1) }.toString())) {
                 var rejected = false
                 try { backup.restore(bad) } catch (_: Exception) { rejected = true }

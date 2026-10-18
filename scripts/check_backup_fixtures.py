@@ -34,6 +34,9 @@ for path in sorted((root / 'app/src/androidTest/assets/backups').glob('*.json'))
     bridge = (root / 'app/src/main/java/com/opus/piano/data/PersonalCatalogueBridge.kt').read_text()
     for sql in re.findall(r'"(CREATE [^"\n]+)"', bridge.split('val create = listOf(',1)[1].split('\n    )',1)[0]):
         db.execute(sql)
+    backup_source=(root/'app/src/main/java/com/opus/piano/data/BackupState.kt').read_text()
+    for sql in re.findall(r'"(CREATE [^"\n]+)"',backup_source.split('val ddl=listOf(',1)[1].split('\n    )',1)[0]):
+        db.execute(sql)
     assert db.execute('PRAGMA foreign_key_check').fetchall() == []
     db.row_factory = sqlite3.Row
     for table, rows in originals.items():
@@ -42,4 +45,4 @@ for path in sorted((root / 'app/src/androidTest/assets/backups').glob('*.json'))
         for row in rows:
             assert any(all(value == candidate[column] for column, value in row.items()) for candidate in actual), (table, row)
     assert db.execute('SELECT SUM(durationMillis) FROM sessions').fetchone()[0] == db.execute('SELECT SUM(durationMillis) FROM session_parts').fetchone()[0]
-    print(f'PASS {path.name}: schema {version} → 9 DDL, every original portable field retained')
+    print(f'PASS {path.name}: schema {version} → 10 DDL, every original portable field retained')

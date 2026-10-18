@@ -66,3 +66,7 @@ The owner's subsequent Stage 2 instruction settles music semantics/UUIDs, separa
 ## Stage 3A continuation
 
 The separately authorized [Stage 3A implementation](stage-3a/README.md) adds local persistence on its dedicated branch: journal schema9 anchors and independent catalogue schema1, with automated Android preservation checks. This is unreleased branch work; production remains0.10.1. Stage 3B backup v5 and Stage 4 provider/search integration are not implemented by this checkpoint.
+
+## Stage 3B continuation
+
+The separately authorized [portable backup and recovery implementation](stage-3b/README.md) adds personal schema10 and portable format5 on its dedicated development branch. See its verification ledger for executed results and limitations. Production stays0.10.1; catalogue schema1 stays optional. No Stage4/provider/cloud work, release or merge is implied.

@@ -1,0 +1,589 @@
+{
+  "format": "goldberg-backup",
+  "version": 5,
+  "journalSchema": 10,
+  "createdAt": 1792320000000,
+  "sections": {
+    "journal": {
+      "version": 1,
+      "data": {
+        "pieces": [
+          {
+            "id": 7,
+            "title": "Fixture source work",
+            "composer": "Authored fixture creator",
+            "difficulty": "INTERMEDIATE",
+            "status": "LEARNING",
+            "notes": "Original notes – žluťoučká",
+            "catalogWorkId": "100",
+            "createdAt": 0,
+            "instrument": "",
+            "genre": "",
+            "musicalEra": ""
+          },
+          {
+            "id": 8,
+            "title": "Fixture piano arrangement",
+            "composer": "Authored fixture creator",
+            "difficulty": "INTERMEDIATE",
+            "status": "LEARNING",
+            "notes": "Original notes – žluťoučká",
+            "catalogWorkId": null,
+            "createdAt": 0,
+            "instrument": "",
+            "genre": "",
+            "musicalEra": ""
+          },
+          {
+            "id": 9,
+            "title": "Fixture selectable movement",
+            "composer": "Authored fixture creator",
+            "difficulty": "INTERMEDIATE",
+            "status": "LEARNING",
+            "notes": "Original notes – žluťoučká",
+            "catalogWorkId": null,
+            "createdAt": 0,
+            "instrument": "",
+            "genre": "",
+            "musicalEra": ""
+          },
+          {
+            "id": 10,
+            "title": "Fixture two-source medley",
+            "composer": "Authored fixture creator",
+            "difficulty": "INTERMEDIATE",
+            "status": "LEARNING",
+            "notes": "Original notes – žluťoučká",
+            "catalogWorkId": null,
+            "createdAt": 0,
+            "instrument": "",
+            "genre": "",
+            "musicalEra": ""
+          }
+        ],
+        "sessions": [
+          {
+            "id": 3,
+            "pieceId": null,
+            "pieceTitle": "Arrangement · Movement · Medley",
+            "startedAt": 1000,
+            "completedAt": 4000,
+            "durationMillis": 3000,
+            "practiceDay": "1970-01-01",
+            "practiceZone": "UTC",
+            "catalogWorkId": null,
+            "composerId": null,
+            "musicalEra": "",
+            "elapsedMillis": 3000,
+            "detectedActiveMillis": null,
+            "practiceMode": "Manual",
+            "timingQuality": "Measured",
+            "notes": "Session notes",
+            "reflection": "Keep reflection",
+            "completionToken": "completed-fixture"
+          },
+          {
+            "id": 4,
+            "pieceId": 7,
+            "pieceTitle": "Historic original snapshot",
+            "startedAt": 5000,
+            "completedAt": 10000,
+            "durationMillis": 5000,
+            "practiceDay": null,
+            "practiceZone": null,
+            "catalogWorkId": "100",
+            "composerId": "87",
+            "musicalEra": "",
+            "elapsedMillis": null,
+            "detectedActiveMillis": null,
+            "practiceMode": "Manual",
+            "timingQuality": "Legacy",
+            "notes": "",
+            "reflection": "",
+            "completionToken": null
+          }
+        ],
+        "catalog_composers": [
+          {
+            "id": "87",
+            "name": "Authored fixture creator",
+            "birth": "",
+            "death": "",
+            "epoch": ""
+          }
+        ],
+        "catalog_works": [
+          {
+            "id": "100",
+            "composerId": "87",
+            "title": "Fixture source work",
+            "subtitle": "",
+            "genre": "Keyboard",
+            "searchTerms": "fixture",
+            "catalogue": "",
+            "catalogueNumber": "",
+            "musicalKey": "",
+            "popular": 0,
+            "recommended": 0
+          }
+        ],
+        "saved_recordings": [
+          {
+            "id": 12,
+            "workKey": "catalog:100",
+            "url": "https://youtu.be/abcdefghijk",
+            "title": "Fixture reference",
+            "performer": "Authored performer",
+            "platform": "YOUTUBE",
+            "savedAt": 321,
+            "preferred": 1
+          }
+        ],
+        "badge_unlocks": [
+          {
+            "achievementId": "first_notes",
+            "unlockedAt": 123
+          }
+        ],
+        "session_parts": [
+          {
+            "id": 1,
+            "sessionId": 3,
+            "pieceId": 8,
+            "title": "Arrangement",
+            "composer": "Original creator",
+            "catalogWorkId": null,
+            "composerId": null,
+            "musicalEra": "",
+            "durationMillis": 1000,
+            "notes": "Part notes"
+          },
+          {
+            "id": 2,
+            "sessionId": 3,
+            "pieceId": 9,
+            "title": "Movement",
+            "composer": "Original creator",
+            "catalogWorkId": null,
+            "composerId": null,
+            "musicalEra": "",
+            "durationMillis": 1500,
+            "notes": "Part notes"
+          },
+          {
+            "id": 3,
+            "sessionId": 3,
+            "pieceId": 10,
+            "title": "Medley",
+            "composer": "Original creator",
+            "catalogWorkId": null,
+            "composerId": null,
+            "musicalEra": "",
+            "durationMillis": 500,
+            "notes": "Part notes"
+          },
+          {
+            "id": 4,
+            "sessionId": 4,
+            "pieceId": 7,
+            "title": "Historical source snapshot",
+            "composer": "Original",
+            "catalogWorkId": "100",
+            "composerId": "87",
+            "musicalEra": "",
+            "durationMillis": 5000,
+            "notes": "Historic notes"
+          }
+        ],
+        "profile_settings": [
+          {
+            "id": 1,
+            "username": "Fixture musician",
+            "avatar": "",
+            "theme": "Dark",
+            "showcase": "first_notes",
+            "typography": "Editorial",
+            "statistics": "streak,time,pieces,sessions",
+            "smartEnabled": 1,
+            "sensitivity": 55,
+            "pauseSeconds": 3,
+            "favoriteArtist": "",
+            "favoritePiece": "",
+            "favoriteEra": "",
+            "biography": "Authored fixture biography"
+          }
+        ],
+        "session_intervals": [
+          {
+            "id": 1,
+            "sessionId": 3,
+            "partIndex": 0,
+            "startMillis": 0,
+            "endMillis": 1000,
+            "creditedMillis": 1000,
+            "reason": "Manual"
+          },
+          {
+            "id": 2,
+            "sessionId": 3,
+            "partIndex": 1,
+            "startMillis": 1000,
+            "endMillis": 2500,
+            "creditedMillis": 1500,
+            "reason": "Manual"
+          },
+          {
+            "id": 3,
+            "sessionId": 3,
+            "partIndex": 2,
+            "startMillis": 2500,
+            "endMillis": 3000,
+            "creditedMillis": 500,
+            "reason": "Manual"
+          }
+        ],
+        "session_piece_links": [
+          {
+            "sessionId": 3,
+            "pieceId": 7,
+            "title": "Untimed source",
+            "composer": "Original",
+            "catalogWorkId": "100",
+            "composerId": "87",
+            "musicalEra": "",
+            "addedAt": 123
+          }
+        ],
+        "favorite_composers": [
+          {
+            "composerId": "87",
+            "addedAt": 444
+          }
+        ]
+      },
+      "sha256": "e867efa47e871a54d21d77812c58d6f755ee9f16d2abad11ac14fca037730d11"
+    },
+    "identities": {
+      "version": 1,
+      "data": {
+        "personal_catalogue_identities": [
+          {
+            "identityKey": "legacy:work:100",
+            "canonicalId": "31c3b63e-f046-5bb6-90e5-15d6ec9ca01b",
+            "kind": "work",
+            "provider": "openopus",
+            "legacyId": "100",
+            "evidence": "Authored synthetic fixture; not a verified provider match"
+          },
+          {
+            "identityKey": "legacy:artist:87",
+            "canonicalId": "5ee1b022-efba-5d56-a77a-1c06c5ed224c",
+            "kind": "artist",
+            "provider": "openopus",
+            "legacyId": "87",
+            "evidence": "Authored synthetic fixture; not a verified provider match"
+          },
+          {
+            "identityKey": "local:9c872d47-f456-50a4-933b-94799cb30b53:piece:8",
+            "canonicalId": "374f327f-be3a-5f03-af15-3cb56a4692de",
+            "kind": "arrangement",
+            "provider": "local",
+            "legacyId": null,
+            "evidence": "Authored synthetic fixture; not a verified provider match"
+          },
+          {
+            "identityKey": "local:9c872d47-f456-50a4-933b-94799cb30b53:piece:9",
+            "canonicalId": "264724b8-22a5-51cc-bd35-1aee9a18456f",
+            "kind": "work",
+            "provider": "local",
+            "legacyId": null,
+            "evidence": "Authored synthetic fixture; not a verified provider match"
+          },
+          {
+            "identityKey": "local:9c872d47-f456-50a4-933b-94799cb30b53:piece:10",
+            "canonicalId": "a1804824-1dd7-5e66-aca7-f7a5f9825efd",
+            "kind": "work",
+            "provider": "local",
+            "legacyId": null,
+            "evidence": "Authored synthetic fixture; not a verified provider match"
+          },
+          {
+            "identityKey": "local:9c872d47-f456-50a4-933b-94799cb30b53:session:3",
+            "canonicalId": "2c606dac-0c17-5017-aa57-a727068ab8be",
+            "kind": "work",
+            "provider": "local",
+            "legacyId": null,
+            "evidence": "Authored synthetic fixture; not a verified provider match"
+          }
+        ],
+        "personal_catalogue_anchors": [
+          {
+            "ownerType": "piece",
+            "ownerId": "7",
+            "role": "work",
+            "identityKey": "legacy:work:100",
+            "originalTitle": "Fixture source work",
+            "originalCreator": "Original creator",
+            "legacyId": "100",
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "piece",
+            "ownerId": "8",
+            "role": "work",
+            "identityKey": "local:9c872d47-f456-50a4-933b-94799cb30b53:piece:8",
+            "originalTitle": "Fixture piano arrangement",
+            "originalCreator": "Original creator",
+            "legacyId": null,
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "piece",
+            "ownerId": "9",
+            "role": "work",
+            "identityKey": "local:9c872d47-f456-50a4-933b-94799cb30b53:piece:9",
+            "originalTitle": "Fixture selectable movement",
+            "originalCreator": "Original creator",
+            "legacyId": null,
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "piece",
+            "ownerId": "10",
+            "role": "work",
+            "identityKey": "local:9c872d47-f456-50a4-933b-94799cb30b53:piece:10",
+            "originalTitle": "Fixture two-source medley",
+            "originalCreator": "Original creator",
+            "legacyId": null,
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "session",
+            "ownerId": "3",
+            "role": "work",
+            "identityKey": "local:9c872d47-f456-50a4-933b-94799cb30b53:session:3",
+            "originalTitle": "Original session title",
+            "originalCreator": "Original creator",
+            "legacyId": null,
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "session",
+            "ownerId": "4",
+            "role": "work",
+            "identityKey": "legacy:work:100",
+            "originalTitle": "Historic original snapshot",
+            "originalCreator": "Original creator",
+            "legacyId": "100",
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "session",
+            "ownerId": "4",
+            "role": "artist",
+            "identityKey": "legacy:artist:87",
+            "originalTitle": "Original creator",
+            "originalCreator": "Original creator",
+            "legacyId": "87",
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "part",
+            "ownerId": "1",
+            "role": "work",
+            "identityKey": "local:9c872d47-f456-50a4-933b-94799cb30b53:piece:8",
+            "originalTitle": "Arrangement",
+            "originalCreator": "Original creator",
+            "legacyId": null,
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "part",
+            "ownerId": "2",
+            "role": "work",
+            "identityKey": "local:9c872d47-f456-50a4-933b-94799cb30b53:piece:9",
+            "originalTitle": "Movement",
+            "originalCreator": "Original creator",
+            "legacyId": null,
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "part",
+            "ownerId": "3",
+            "role": "work",
+            "identityKey": "local:9c872d47-f456-50a4-933b-94799cb30b53:piece:10",
+            "originalTitle": "Medley",
+            "originalCreator": "Original creator",
+            "legacyId": null,
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "part",
+            "ownerId": "4",
+            "role": "work",
+            "identityKey": "legacy:work:100",
+            "originalTitle": "Historical source snapshot",
+            "originalCreator": "Original creator",
+            "legacyId": "100",
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "part",
+            "ownerId": "4",
+            "role": "artist",
+            "identityKey": "legacy:artist:87",
+            "originalTitle": "Original creator",
+            "originalCreator": "Original creator",
+            "legacyId": "87",
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "link",
+            "ownerId": "3:7",
+            "role": "work",
+            "identityKey": "legacy:work:100",
+            "originalTitle": "Untimed source",
+            "originalCreator": "Original creator",
+            "legacyId": "100",
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "link",
+            "ownerId": "3:7",
+            "role": "artist",
+            "identityKey": "legacy:artist:87",
+            "originalTitle": "Original creator",
+            "originalCreator": "Original creator",
+            "legacyId": "87",
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "favorite",
+            "ownerId": "87",
+            "role": "artist",
+            "identityKey": "legacy:artist:87",
+            "originalTitle": "Original creator",
+            "originalCreator": "Original creator",
+            "legacyId": "87",
+            "evidence": "Authored original snapshot"
+          },
+          {
+            "ownerType": "recording",
+            "ownerId": "12",
+            "role": "work",
+            "identityKey": "legacy:work:100",
+            "originalTitle": "Fixture reference",
+            "originalCreator": "Original creator",
+            "legacyId": "100",
+            "evidence": "Authored original snapshot"
+          }
+        ],
+        "personal_catalogue_state": [
+          {
+            "id": 1,
+            "scope": "9c872d47-f456-50a4-933b-94799cb30b53"
+          }
+        ]
+      },
+      "sha256": "732420e0fba3e9f12d51e9678ec3d9d21e3629b4a3f57e42f1f41dd7057fdd03"
+    },
+    "preferences": {
+      "version": 1,
+      "data": {
+        "appearance": {
+          "accent": "Slate",
+          "cards": "Outline",
+          "homeSections": [
+            "recent",
+            "statistics"
+          ],
+          "hiddenHome": [],
+          "metrics": [
+            "week",
+            "streak"
+          ],
+          "profileSections": [
+            "badges",
+            "statistics",
+            "activity",
+            "frequent",
+            "history"
+          ],
+          "hiddenProfile": [
+            "history"
+          ],
+          "density": "Compact",
+          "sort": "Composer"
+        },
+        "locale": "cs",
+        "previousMeteredConsent": true,
+        "local": {
+          "onboardingDone": true,
+          "reminderEnabled": true,
+          "reminderHour": 19,
+          "reminderMinute": 15
+        }
+      },
+      "sha256": "357843afd7032eb7b12df1e42d9489c5d74d34910cbcb11d5b86c25caba01575"
+    },
+    "recovery": {
+      "version": 1,
+      "data": {
+        "drafts": [
+          {
+            "rawBase64": "ewogICJ2ZXJzaW9uIjogMSwKICAiZXhlY3V0aW9uIjogNzcsCiAgInRva2VuIjogImFjdGl2ZS1maXh0dXJlIiwKICAic3RhcnQiOiAxMDAwMCwKICAiY3JlZGl0ZWQiOiAxNTAwLAogICJlbGFwc2VkIjogMjAwMCwKICAiZGV0ZWN0ZWQiOiAwLAogICJtb2RlIjogIk1hbnVhbCIsCiAgInNtYXJ0IjogZmFsc2UsCiAgImFjdGl2ZSI6IDEsCiAgIm5vdGVzIjogIktlZXAgZHJhZnQgc2Vzc2lvbiBub3RlcyIsCiAgInJlZmxlY3Rpb24iOiAiT3JpZ2luYWwgcmVmbGVjdGlvbiIsCiAgInNlbnNpdGl2aXR5IjogNTUsCiAgInBhdXNlIjogMywKICAic3RhdHVzIjogIk1hbnVhbGx5IHBhdXNlZCIsCiAgInF1YWxpdHkiOiAiTWVhc3VyZWQiLAogICJyZW1vdmVkIjogW10sCiAgInBhcnRzIjogWwogICAgewogICAgICAicGllY2UiOiA4LAogICAgICAidGl0bGUiOiAiQXJyYW5nZW1lbnQiLAogICAgICAiY29tcG9zZXIiOiAiT3JpZ2luYWwgY3JlYXRvciIsCiAgICAgICJjYXRhbG9nIjogbnVsbCwKICAgICAgImVyYSI6ICIiLAogICAgICAiZHVyYXRpb24iOiA1MDAsCiAgICAgICJub3RlcyI6ICJLZWVwIGRyYWZ0IG5vdGUiCiAgICB9LAogICAgewogICAgICAicGllY2UiOiA5LAogICAgICAidGl0bGUiOiAiTW92ZW1lbnQiLAogICAgICAiY29tcG9zZXIiOiAiT3JpZ2luYWwgY3JlYXRvciIsCiAgICAgICJjYXRhbG9nIjogbnVsbCwKICAgICAgImVyYSI6ICIiLAogICAgICAiZHVyYXRpb24iOiAxMDAwLAogICAgICAibm90ZXMiOiAiS2VlcCBkcmFmdCBub3RlIgogICAgfQogIF0sCiAgImludGVydmFscyI6IFsKICAgIHsKICAgICAgInBhcnQiOiAwLAogICAgICAic3RhcnQiOiAwLAogICAgICAiZW5kIjogNTAwLAogICAgICAiY3JlZGl0IjogNTAwLAogICAgICAicmVhc29uIjogIk1hbnVhbCIKICAgIH0sCiAgICB7CiAgICAgICJwYXJ0IjogMSwKICAgICAgInN0YXJ0IjogNTAwLAogICAgICAiZW5kIjogMTUwMCwKICAgICAgImNyZWRpdCI6IDEwMDAsCiAgICAgICJyZWFzb24iOiAiTWFudWFsIgogICAgfSwKICAgIHsKICAgICAgInBhcnQiOiAxLAogICAgICAic3RhcnQiOiAxNTAwLAogICAgICAiZW5kIjogMjAwMCwKICAgICAgImNyZWRpdCI6IDAsCiAgICAgICJyZWFzb24iOiAiTWFudWFsUGF1c2UiCiAgICB9CiAgXQp9Cg==",
+            "sha256": "7cfe8bbf7ab7142407b08f98b2c62dd3d3a10632697807aeafdbe35060f614d7",
+            "updatedAt": 777,
+            "id": 1
+          }
+        ],
+        "archives": [
+          {
+            "rawBase64": "T3JpZ2luYWwgdW5rbm93biBmb3JtYXQge3Y6OTl9Cg==",
+            "sha256": "a570408aa11821cefba11f7dc65a3a52151427b84ad14e1b0791a82f86d6f031",
+            "updatedAt": 777,
+            "id": 1,
+            "archivedAt": 888
+          },
+          {
+            "rawBase64": "/wB1bmFsdGVyZWQgcmVjb3ZlcnkgYnl0ZXM=",
+            "sha256": "4e1ef26019abac9565e11e55326df4c36ef00e94c2524b47df5207965804195e",
+            "updatedAt": 777,
+            "id": 2,
+            "archivedAt": 999
+          }
+        ],
+        "evidence": [
+          {
+            "rawBase64": "QXV0aG9yZWQgb3BhcXVlIGV2aWRlbmNl",
+            "sha256": "c02629fa5d060b8fb3b3ad303fca978b9fd51e891481b09577175d2ec2feb624",
+            "updatedAt": 777,
+            "id": "a96f44522275024342f760aa5660907dce7b896fa9122b05ef9c38608cc50f14",
+            "archivedAt": 999,
+            "origin": "authored-fixture",
+            "classification": "unreadable",
+            "completionToken": null
+          },
+          {
+            "rawBase64": "//4AZXZpZGVuY2U=",
+            "sha256": "d0b06cbd674222fae0e62c8aa90960b287ed4b205e7c1c9e1ada64527b63681c",
+            "updatedAt": 777,
+            "id": "5108deb71ee1d00d8e14ad48f2ddee3dca264528a5ae802ac5a682ee11ecc0d7",
+            "archivedAt": 999,
+            "origin": "authored-fixture",
+            "classification": "unreadable",
+            "completionToken": null
+          }
+        ],
+        "completions": [
+          {
+            "token": "completed-fixture",
+            "durationMillis": 3000
+          }
+        ]
+      },
+      "sha256": "b66ba91cb3d833a9f50310664d207dc95ce8a4c84996d205cd0f8a70dbaeb0b1"
+    }
+  },
+  "sha256": "d84e9198ce35dca65d9cf8d7bc13c903c92944d3769d731acc2816357574e58d"
+}

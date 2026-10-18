@@ -73,3 +73,7 @@ Owner instructions now settle D1/D2/D3/D6 and authorize measured D7/D9 proposals
 ## Owner-directed Stage 3 split
 
 Stage 3A implements only the safe local persistence bridge and separate catalogue; see [implementation and evidence](stage-3a/README.md). Stage 3B remains a separately instructed portable-backup v5/settings/recovery project. The historical combined Stage 3 acceptance criteria above are therefore not all claimed complete by Stage 3A. Preserve format1–4 compatibility and schema9 UUID anchors before implementing v5. Do not start Stage 3B or Stage 4 automatically.
+
+## Stage 3B implementation checkpoint
+
+The owner separately authorized [portable v5 and safe recovery](stage-3b/README.md). This branch adds the additive9→10 personal migration, format1–4 readers, UUID/settings/raw-recovery portability, completion evidence and durable preference replay. Acceptance is recorded in its own verification ledger. Stage4 remains a separate future instruction, with no automatic continuation, provider adapter, cloud deployment, main merge or release.

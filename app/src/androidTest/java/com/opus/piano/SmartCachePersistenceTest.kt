@@ -52,7 +52,7 @@ class SmartCachePersistenceTest {
             db.catalogDao().putCache(CatalogCache("copy", "{}", 1))
             val portraits = File(directory, "catalog-portraits").apply { mkdirs() }
             File(portraits, "portrait.img").writeBytes(ByteArray(256))
-            val before = BackupRepository(context, db).export()
+            val before = BackupRepository(context, db).exportLegacy()
             val unlocks = db.experienceDao().allUnlocks()
             val cache = CatalogRepository(db, directory)
             assertTrue(cache.cacheBytes() > 0)

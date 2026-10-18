@@ -51,10 +51,16 @@ class LocalCatalogueStore(
     /** At most 128 journal-owned identities per call. Progress and copied records commit together.
      * A new pass after completion picks up later personal rows; no journal refresh is triggered. */
     suspend fun initialize(): CatalogueAccess<Boolean> = withContext(Dispatchers.IO) {
-        lock.withLock { attempt { copyBatch(open()) } }
+        lock.withLock { attempt {
+            val db=open()
+            val scope=personal.personalCatalogueDao().scope()?.scope.orEmpty()
+            val previous=db.dao().state("personal_scope")?.value
+            if(previous!=null && previous!=scope){rebuildUnlocked();true}else copyBatch(db)
+        } }
     }
     private suspend fun copyBatch(db: CatalogueDatabase): Boolean {
         val dao = db.dao()
+        val scope=personal.personalCatalogueDao().scope()?.scope.orEmpty()
         val after = dao.state("copy_cursor")?.value.orEmpty()
         val rows = personal.personalCatalogueDao().identities(after, 128)
         db.withTransaction {
@@ -69,13 +75,20 @@ class LocalCatalogueStore(
                     when(identity.kind) {
                         "work" -> repository.add(root,CatalogueWork(root.id))
                         "artist" -> repository.add(root,CatalogueArtist(root.id,sortName=title))
-                        else -> error("Unsupported legacy identity kind")
+                        "arrangement" -> repository.add(root,CatalogueArrangement(root.id))
+                        "album" -> repository.add(root,CatalogueAlbum(root.id))
+                        "release" -> repository.add(root,CatalogueRelease(root.id))
+                        "recording" -> repository.add(root,CatalogueRecording(root.id))
+                        "collection" -> repository.add(root,CatalogueCollection(root.id))
+                        else -> error("Unsupported personal identity kind")
                     }
                     if(identity.legacyId != null && identity.provider == "openopus") {
                         repository.map(CatalogueExternalIdentity("openopus",if(identity.kind=="artist") "composer" else "work",identity.legacyId,identity.canonicalId,identity.evidence,"observed"))
                     }
                 }
             }
+            check(personal.personalCatalogueDao().scope()?.scope.orEmpty()==scope){"Journal changed during catalogue copy"}
+            dao.state(CatalogueState("personal_scope",scope))
             dao.state(CatalogueState("copy_cursor", if(rows.size < 128) "" else rows.last().identityKey))
         }
         return rows.size < 128
@@ -83,7 +96,9 @@ class LocalCatalogueStore(
     /** Explicit retry/rebuild, never a destructive migration or automatic corruption handler.
      * Retain old/failed generations and sidecars. Publish only after the candidate validates. */
     suspend fun rebuild(): CatalogueAccess<Unit> = withContext(Dispatchers.IO) {
-        lock.withLock { attempt {
+        lock.withLock { attempt {rebuildUnlocked()} }
+    }
+    private suspend fun rebuildUnlocked() {
             val candidateName = "$name.${UUID.randomUUID()}"
             val candidate = opener(candidateName)
             try {
@@ -97,7 +112,6 @@ class LocalCatalogueStore(
                 catch(e: Exception) { pointer.failWrite(stream); throw e }
                 opened?.close(); opened = candidate
             } catch(e: Exception) { candidate.close(); throw e }
-        } }
     }
     suspend fun close() = withContext(Dispatchers.IO) { lock.withLock { opened?.close(); opened = null } }
 }

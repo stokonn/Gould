@@ -8,4 +8,6 @@ interface PracticePersistence {
     suspend fun complete(state: PracticeState): Long
     suspend fun archiveRecovery(expected: String)
     suspend fun recoveryData(): String?
+    suspend fun recoveryBytes(): ByteArray? = recoveryData()?.toByteArray(Charsets.UTF_8)
+    suspend fun archiveRecoveryBytes(expected: ByteArray) = archiveRecovery(expected.toString(Charsets.UTF_8))
 }

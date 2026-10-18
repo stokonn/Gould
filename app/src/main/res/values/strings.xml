@@ -263,7 +263,7 @@
   <string name="msg_five_day_totals_labels_show_the_ending_day_01e3">Five-day totals · labels show the ending day</string>
   <string name="msg_follow_system_1b16">Follow system</string>
   <string name="msg_for_now_make_music_your_practice_sessions_ar_474c">For now, make music. Your practice sessions are already being saved for the journey ahead.</string>
-  <string name="msg_format_1_backups_from_0_6_and_0_7_remain_imp_8590">Format-1 backups from 0.6 and 0.7 remain importable. New backups use format 2. Backups are not encrypted.</string>
+  <string name="msg_format_1_backups_from_0_6_and_0_7_remain_imp_8590">Backup formats 1–4 remain importable. New backups use format 5. Backups are not encrypted.</string>
   <string name="msg_free_practice_524f">Free practice</string>
   <string name="msg_from_your_repertoire_f345">From your repertoire</string>
   <string name="msg_full_detail_is_unavailable_showing_saved_inf_b632">Full detail is unavailable. Showing saved information.</string>
@@ -491,7 +491,7 @@
   <string name="msg_statistics_export_f996">Statistics export</string>
   <string name="msg_status_bae7">Status</string>
   <string name="msg_suggestions_saved_new_discoveries_6c53">SUGGESTIONS · SAVED &amp; NEW DISCOVERIES</string>
-  <string name="msg_summary_n_nall_current_saved_data_will_be_re_4d42">%1$s\n\nAll current saved data will be replaced. Export a backup first. Any unfinished timer will be discarded only after a successful restore.%2$s</string>
+  <string name="msg_summary_n_nall_current_saved_data_will_be_re_4d42">%1$s\n\nThe journal will be replaced. A complete local snapshot and original recovery data will be retained before replacement. Imported practice stays paused.%2$s</string>
   <string name="msg_system_font_53af">System Font</string>
   <string name="msg_take_a_breath_a71f">TAKE A BREATH</string>
   <string name="msg_text_size_and_motion_follow_android_accessib_8163">Text size and motion follow Android accessibility settings.</string>
@@ -667,7 +667,7 @@
   <string name="recordings_load_error">Saved interpretations could not be loaded. Try again.</string>
   <string name="recordings_save_error">Could not save this link. Please try again.</string>
   <string name="pending_session">You already have an unfinished session. It will be shown without creating another.</string>
-  <string name="pref_backup_note">Visual customization and language stay on this device and survive app updates; portable backups retain the existing profile and journal contract.</string>
+  <string name="pref_backup_note">Portable v5 backups include visual customization and language; mobile-data consent and Android permissions must be chosen on this device.</string>
   <string name="note_0">C</string>
   <string name="note_1">C sharp</string>
   <string name="note_2">D</string>
@@ -820,4 +820,9 @@
 <string name="ui101_link_note_hint">Notes for an untimed added piece are labeled with its title in the session note. No practice time is added.</string>
 <string name="ui101_note_limit">Notes could not be saved. Keep the combined session note within 10,000 characters, then retry. Your input remains here.</string>
 <string name="ui101_search">Search Library</string>
+  <string name="backup_v5_note">Version 5 preserves your journal, catalogue identities, settings and original recovery data. Imported practice stays paused; mobile-data permission must be chosen again.</string>
+  <string name="backup_v5_pending">Your journal has been restored. Some settings still need to be applied. Retry below; do not import the journal again.</string>
+  <string name="backup_v5_retry">Retry restoring settings</string>
+  <string name="backup_storage_failed">Backup file could not be written or read. Check free storage and file access. Original recovery copies are retained.</string>
+  <string name="backup_validation_failed">Backup could not be processed. Use a valid supported backup up to 32 MiB. No personal data is truncated; original recovery copies are retained.</string>
 </resources>

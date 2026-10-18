@@ -80,6 +80,8 @@ def values(name):
     excluded = {'android_metadata', 'room_master_table', 'sqlite_sequence', 'catalog_cache', 'catalog_composers', 'catalog_works'}
     if a.expected_schema >= 9:
         excluded.update({'personal_catalogue_identities','personal_catalogue_anchors','personal_catalogue_state'})
+    if a.expected_schema >= 10:
+        excluded.update({'backup_restore_state','recovery_evidence','practice_completion_evidence'})
     tables = sorted(r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'") if r[0] not in excluded)
     data = {t: conn.execute(f'SELECT * FROM {t} ORDER BY rowid').fetchall() for t in tables}
     conn.close()

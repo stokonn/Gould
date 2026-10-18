@@ -42,14 +42,14 @@ import com.opus.piano.service.SmartPracticeService
     val failedRecovery by model.practice.recoveryFailed.collectAsStateWithLifecycle()
     val unsaved by model.practice.unsaved.collectAsStateWithLifecycle()
     val scope = rememberCoroutineScope()
-    var exported by remember { mutableStateOf<String?>(null) }
+    var exported by remember { mutableStateOf<ByteArray?>(null) }
     var fresh by remember { mutableStateOf(false) }
     val export = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri ->
         if (uri != null) scope.launch {
             try {
-                val raw = requireNotNull(model.practice.recoveryData())
+                val raw = requireNotNull(model.practice.recoveryBytes())
                 kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
-                    requireNotNull(context.contentResolver.openOutputStream(uri, "wt")).bufferedWriter().use { it.write(raw) }
+                    requireNotNull(context.contentResolver.openOutputStream(uri, "wt")).use { it.write(raw) }
                 }
                 exported = raw
             } catch (c: kotlinx.coroutines.CancellationException) { throw c }

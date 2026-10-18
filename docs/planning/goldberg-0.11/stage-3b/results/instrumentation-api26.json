@@ -1,0 +1,11 @@
+{
+  "api": 26,
+  "serial": "emulator-5584",
+  "suiteEntries": 75,
+  "failures": 0,
+  "seconds": 61.003,
+  "log": "/tmp/goldberg011-stage3b-final-api26-suite.log",
+  "logSha256": "cec2122022b4063cc7e38f5e9ccfdba58b5f11d1ab3cd41e9deb4c08c8850f38",
+  "offline": "Active default network: none",
+  "note": "Two probe entrypoints intentionally return without phase arguments in the full suite; four actual process death/restart pairs executed separately."
+}

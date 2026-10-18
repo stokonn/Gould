@@ -22,7 +22,7 @@ class Redesign010PersistenceTest {
             val edits=JournalEdits(db);edits.favorite("1",true);edits.favorite("1",true);edits.favorite("2",true)
             assertEquals(2,db.journalEditsDao().allFavorites().size)
             assertEquals(profile,db.personalDao().getSettings())
-            val backup=BackupRepository(context,db);backup.restore(backup.export())
+            val backup=BackupRepository(context,db);backup.restore(backup.exportLegacy())
             assertEquals(2,db.journalEditsDao().allFavorites().size);assertEquals(profile,db.personalDao().getSettings())
             edits.favorite("1",false);assertEquals(listOf("2"),db.journalEditsDao().allFavorites().map {it.composerId})
             try {edits.favorite("missing",true);fail()} catch(_:IllegalArgumentException) {}
@@ -47,7 +47,7 @@ class Redesign010PersistenceTest {
             assertEquals("Existing manual artist",db.personalDao().getSettings()!!.favoriteArtist)
             assertEquals(123456789L,db.experienceDao().allUnlocks().first {it.achievementId=="first_notes"}.unlockedAt)
             assertTrue(db.journalEditsDao().allLinks().isEmpty());assertTrue(db.journalEditsDao().allFavorites().isEmpty())
-            assertEquals(9,db.openHelper.writableDatabase.version)
+            assertEquals(10,db.openHelper.writableDatabase.version)
         } finally {db.close();context.deleteDatabase(name)}
     }
     @Test fun omittedPieceIsIdempotentUntimedAndDoesNotChangeOriginalJournal() = runBlocking {
@@ -80,7 +80,7 @@ class Redesign010PersistenceTest {
             val before=db.practiceDao().session(id)
             JournalEdits(db).addPiece(id,2)
             assertTrue(db.personalDao().allParts().isEmpty())
-            val backup=BackupRepository(context,db);val raw=backup.export();backup.restore(raw)
+            val backup=BackupRepository(context,db);val raw=backup.exportLegacy();backup.restore(raw)
             assertEquals(before,db.practiceDao().session(id));assertEquals(1,db.journalEditsDao().allLinks().size)
             assertEquals(0,db.personalDao().allParts().size)
         } finally { db.close() }

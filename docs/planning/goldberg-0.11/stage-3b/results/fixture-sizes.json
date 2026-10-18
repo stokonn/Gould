@@ -1,0 +1,26 @@
+[
+  {
+    "file": "full-v5.json",
+    "bytes": 20498,
+    "sha256": "3687fdaa257cf085085782544e5557e2d464c45f88b92d8e23b057b79f31087f",
+    "pieces": 4,
+    "sessions": 2,
+    "creditMillis": 8000
+  },
+  {
+    "file": "minimal-v5.json",
+    "bytes": 2283,
+    "sha256": "e88f2bdaef69ab7a92a85879639a079944624519163721d9dc8c6adbb07c3f57",
+    "pieces": 0,
+    "sessions": 0,
+    "creditMillis": 0
+  },
+  {
+    "file": "unknown-v5.json",
+    "bytes": 19006,
+    "sha256": "4117c63786344812f39bbf4a6b32a5188fbbef52ca3d30e76f5d057fe1136c37",
+    "pieces": 4,
+    "sessions": 2,
+    "creditMillis": 8000
+  }
+]

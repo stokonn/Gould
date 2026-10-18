@@ -21,6 +21,7 @@ data class PersonalCatalogueState(@PrimaryKey val id: Int = 1, val scope: String
 
 @Dao
 interface PersonalCatalogueDao {
+    @Query("SELECT * FROM personal_catalogue_state WHERE id=1") suspend fun scope():PersonalCatalogueState?
     @Query("SELECT * FROM personal_catalogue_anchors WHERE ownerType = :type AND ownerId = :id ORDER BY role")
     suspend fun anchors(type: String, id: String): List<PersonalCatalogueAnchor>
     @Query("SELECT * FROM personal_catalogue_identities WHERE identityKey = :key")
@@ -55,9 +56,14 @@ object PersonalCatalogueBridge {
     )
     private val seedView = "CREATE VIEW IF NOT EXISTS personal_catalogue_seed AS SELECT ownerType,ownerId,role,legacyId,title,creator, CASE WHEN role='work' AND pieceId IS NOT NULL AND COALESCE(legacyId,'')='' AND COALESCE((SELECT catalogWorkId FROM pieces WHERE id=pieceId),'')<>'' THEN 'legacy:work:'||(SELECT catalogWorkId FROM pieces WHERE id=pieceId) WHEN legacyId IS NOT NULL AND legacyId <> '' THEN 'legacy:'||role||':'||legacyId ELSE 'local:'||(SELECT scope FROM personal_catalogue_state WHERE id=1)||':'||CASE WHEN pieceId IS NOT NULL THEN 'piece:'||pieceId ELSE ownerType||':'||ownerId END END identityKey FROM (" + sources.joinToString(" UNION ALL ") + ")"
     private fun seed(where: String = "1") = listOf(
-        "INSERT OR IGNORE INTO personal_catalogue_identities(identityKey,canonicalId,kind,provider,legacyId,evidence) SELECT identityKey,$UUID_SQL,role,CASE WHEN legacyId IS NULL OR legacyId='' THEN 'local' WHEN legacyId NOT GLOB '*[^0-9]*' THEN 'openopus' ELSE 'legacy' END,legacyId,'legacy-personal-snapshot;rights-unreviewed' FROM personal_catalogue_seed WHERE ($where) AND NOT EXISTS(SELECT 1 FROM personal_catalogue_identities i WHERE i.identityKey=personal_catalogue_seed.identityKey)",
+        "INSERT OR IGNORE INTO personal_catalogue_identities(identityKey,canonicalId,kind,provider,legacyId,evidence) SELECT identityKey,$UUID_SQL,role,CASE WHEN legacyId IS NULL OR legacyId='' THEN 'local' WHEN legacyId NOT GLOB '*[^0-9]*' THEN 'openopus' ELSE 'legacy' END,legacyId,'legacy-personal-snapshot;rights-unreviewed' FROM personal_catalogue_seed WHERE ($where) AND NOT EXISTS(SELECT 1 FROM personal_catalogue_identities i WHERE i.identityKey=personal_catalogue_seed.identityKey) AND NOT EXISTS(SELECT 1 FROM personal_catalogue_anchors a WHERE a.ownerType=personal_catalogue_seed.ownerType AND a.ownerId=personal_catalogue_seed.ownerId AND a.role=personal_catalogue_seed.role)",
         "INSERT OR IGNORE INTO personal_catalogue_anchors SELECT ownerType,ownerId,role,identityKey,title,creator,legacyId,'original-personal-snapshot;rights-unreviewed' FROM personal_catalogue_seed WHERE ($where) AND NOT EXISTS(SELECT 1 FROM personal_catalogue_anchors a WHERE a.ownerType=personal_catalogue_seed.ownerType AND a.ownerId=personal_catalogue_seed.ownerId AND a.role=personal_catalogue_seed.role)"
     )
+    fun suspendCapture(db: SupportSQLiteDatabase) {
+        listOf("pieces","sessions","session_parts","session_piece_links","favorite_composers","saved_recordings").forEach { table ->
+            listOf("INSERT","UPDATE").forEach { event -> db.execSQL("DROP TRIGGER IF EXISTS personal_anchor_${table}_$event") }
+        }
+    }
     fun install(db: SupportSQLiteDatabase) {
         create.forEach { db.execSQL(it) }
         db.execSQL("INSERT OR IGNORE INTO personal_catalogue_state SELECT 1,$UUID_SQL")
@@ -68,6 +74,24 @@ object PersonalCatalogueBridge {
             // First capture wins: personal snapshots never change during catalogue reconciliation.
             listOf("INSERT", "UPDATE").forEach { event ->
                 db.execSQL("CREATE TRIGGER IF NOT EXISTS personal_anchor_${table}_$event AFTER $event ON $table BEGIN " + seed("ownerType='$owner' AND ownerId=($key)").joinToString("; ") + "; END")
+            }
+        }
+    }
+    /** A fresh restored SQLite sequence must not reuse retained/tombstoned owner IDs. */
+    fun reserveRestoredOwnerIds(db:SupportSQLiteDatabase) {
+        for((table,owner) in listOf("pieces" to "piece","sessions" to "session","session_parts" to "part","saved_recordings" to "recording")) {
+            var high=0L
+            db.query("SELECT ownerId FROM personal_catalogue_anchors WHERE ownerType=?",arrayOf(owner)).use{c->
+                while(c.moveToNext())c.getString(0).toLongOrNull()?.takeIf{it>high}?.let{high=it}
+            }
+            if(table=="pieces") {
+                db.query("SELECT pieceId FROM sessions UNION ALL SELECT pieceId FROM session_parts UNION ALL SELECT pieceId FROM session_piece_links").use{c->while(c.moveToNext())if(!c.isNull(0))high=maxOf(high,c.getLong(0))}
+                db.query("SELECT substr(workKey,7) FROM saved_recordings WHERE workKey LIKE 'piece:%'").use{c->while(c.moveToNext())c.getString(0).toLongOrNull()?.let{high=maxOf(high,it)}}
+            }
+            val current=db.query("SELECT seq FROM sqlite_sequence WHERE name=?",arrayOf(table)).use{c->if(c.moveToFirst())c.getLong(0) else null}
+            if(high>0 && (current==null || current<high)) {
+                if(current==null)db.execSQL("INSERT INTO sqlite_sequence(name,seq) VALUES(?,?)",arrayOf(table,high))
+                else db.execSQL("UPDATE sqlite_sequence SET seq=? WHERE name=?",arrayOf(high,table))
             }
         }
     }

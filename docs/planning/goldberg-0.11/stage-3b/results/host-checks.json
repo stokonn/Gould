@@ -1,0 +1,53 @@
+[
+  {
+    "command": "python3 scripts/check_migrations.py",
+    "exitCode": 0,
+    "lastLine": "PASS v9 \u2192 v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests",
+    "outputSha256": "2683781d9410ad99f7634585601998139ec4b944eac46ce57c400c71c7b60aa6"
+  },
+  {
+    "command": "python3 scripts/check_backup_fixtures.py",
+    "exitCode": 0,
+    "lastLine": "PASS goldberg-0.9.2-format3.json: schema 7 \u2192 10 DDL, every original portable field retained",
+    "outputSha256": "c23f2f40581ef10309656bde7231951d9b70ff3869606898d72e744dff54db4e"
+  },
+  {
+    "command": "python3 scripts/check_localization.py",
+    "exitCode": 0,
+    "lastLine": "PASS: 809 English/Czech resources, matching placeholders, Czech plural forms and declared locales",
+    "outputSha256": "f8601ccbb57ca7c65fef4230dab257a03ecf2cdec68ca0f442b8abc443ad87a3"
+  },
+  {
+    "command": "python3 scripts/check_history_paging.py",
+    "exitCode": 0,
+    "lastLine": "PASS: untimed legacy association visible once; original time unchanged",
+    "outputSha256": "230d3f7596e00d9295a1a11890eddeb7bd82b4d4fcfb0db5a47e2d1b79d6ac78"
+  },
+  {
+    "command": "python3 scripts/check_agent_policy.py",
+    "exitCode": 0,
+    "lastLine": "PASS: canonical policy, thin agent references, Cursor frontmatter and local Wiki navigation; runtime agent loading NOT TESTED",
+    "outputSha256": "a8d9aed2cee3751fe47bb59393012b73900212cb963edd81f04e0b9cc307c4bb"
+  },
+  {
+    "command": "python3 docs/planning/goldberg-0.11/stage-3b/check_fixtures.py",
+    "exitCode": 0,
+    "lastLine": "PASS {\"file\": \"unknown-v5.json\", \"bytes\": 19006, \"sha256\": \"4117c63786344812f39bbf4a6b32a5188fbbef52ca3d30e76f5d057fe1136c37\", \"pieces\": 4, \"sessions\": 2, \"creditMillis\": 8000}",
+    "outputSha256": "d2bc84e27346763a3d49ee2995cead20e6dce58ff28cbcc5da53716f67cef886"
+  },
+  {
+    "command": "python3 docs/planning/goldberg-0.11/stage-3b/verify_stage.py",
+    "exitCode": 0,
+    "lastLine": "PASS Stage3A ancestry, 26 protected paths, 174 source/test/schema hashes, both APKs, 16 links and owner release draft",
+    "outputSha256": "8ac27d7119a16cfac5f7cc6db2e93d4ddda4d585db6dcb7c5a2c85d39f4b95ea"
+  },
+  {
+    "command": "Gradle testDebugUnitTest",
+    "result": {
+      "tests": 78,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  }
+]

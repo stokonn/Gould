@@ -1,0 +1,15 @@
+{
+  "baselineVersion": "0.10.1",
+  "personalSchema": 10,
+  "baselineApkSha256": "854bbfebf617ec920df60d181a12e0dcbd2fed10052f2479903a78a290cef312",
+  "candidateApkSha256": "14b19f8085f7a9dca189e80e6743e082c8add732cd31fec5a675c9f07d682f4a",
+  "serial": "emulator-5582",
+  "originalRowsUnchanged": true,
+  "preferencesUnchanged": true,
+  "bridge": {
+    "identities": 3,
+    "anchors": 113
+  },
+  "sessions": 37,
+  "foreignKeys": "pass"
+}

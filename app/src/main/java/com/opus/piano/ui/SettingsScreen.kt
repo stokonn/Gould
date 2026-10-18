@@ -27,6 +27,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
     val local by profile.local.collectAsStateWithLifecycle()
     val app=context.applicationContext as com.opus.piano.OpusApplication
     val scope=rememberCoroutineScope()
+    val restoreState by profile.restoreState.collectAsStateWithLifecycle()
     val metered by app.media.cellular.collectAsStateWithLifecycle()
     var replaceIdentity by remember {mutableStateOf<String?>(null)}
     var tux by remember {mutableStateOf(false)}
@@ -115,7 +116,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
                 SectionTitle(L.s(R.string.msg_language_89b8))
                 val current=androidx.appcompat.app.AppCompatDelegate.getApplicationLocales().toLanguageTags()
                 listOf("" to L.s(R.string.msg_follow_system_1b16),"cs" to L.s(R.string.msg_e_tina_a56c),"en" to L.s(R.string.msg_english_649d)).forEach { (tag,label) ->
-                    JournalTextButton(onClick={androidx.appcompat.app.AppCompatDelegate.setApplicationLocales(androidx.core.os.LocaleListCompat.forLanguageTags(tag))}) { RadioButton(current==tag,null);Text(L.fixed(label)) }
+                    JournalTextButton(onClick={scope.launch {app.portablePreferences.selectLocale(tag)}}) { RadioButton(current==tag,null);Text(L.fixed(label)) }
                 }
             } }
             "Smart Practice" -> item { Panel {
@@ -159,7 +160,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
             Text(L.s(R.string.msg_keep_a_local_copy_of_your_journal_profile_an_8f6d))
             JournalPrimaryButton(onClick = { export.launch("Goldberg-backup.json") }, enabled = !busy) { Text(L.s(R.string.msg_export_backup_6043)) }
             JournalSecondaryButton(onClick = { restore.launch(arrayOf("application/json", "text/plain", "application/octet-stream")) }, enabled = !busy) { Text(L.s(R.string.msg_import_backup_1b40)) }
-            Text(L.s(R.string.pref_backup_note))
+            Text(L.s(R.string.backup_v5_note))
+            if(restoreState?.status=="pending") {
+                Text(L.s(R.string.backup_v5_pending))
+                JournalSecondaryButton(onClick=profile::retryRestoreSettings,enabled=!busy){Text(L.s(R.string.backup_v5_retry))}
+            }
             Text(L.s(R.string.msg_format_1_backups_from_0_6_and_0_7_remain_imp_8590), style = MaterialTheme.typography.bodySmall)
             if (busy) LinearProgressIndicator(Modifier.fillMaxWidth())
         } }
@@ -220,7 +225,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
     preview?.let { summary ->
         val timer by model.timer.collectAsStateWithLifecycle()
         AlertDialog(onDismissRequest = profile::cancelRestore, title = { Text(L.s(R.string.msg_replace_this_device_s_journal_ff1d)) }, text = { Text(L.s(R.string.msg_summary_n_nall_current_saved_data_will_be_re_4d42, (summary), (if (timer.elapsed > 0 || timer.running) L.fixed(" You have an unfinished session.") else ""))) },
-            confirmButton = { JournalTextButton(enabled = !busy && !timer.saving, onClick = { profile.restore(model::reset) }) { Text(L.s(R.string.msg_replace_restore_4066)) } },
+            confirmButton = { JournalTextButton(enabled = !busy && !timer.saving, onClick = { profile.restore() }) { Text(L.s(R.string.msg_replace_restore_4066)) } },
             dismissButton = { JournalTextButton(enabled = !busy, onClick = profile::cancelRestore) { Text(L.s(R.string.msg_cancel_77df)) } })
     }
 }

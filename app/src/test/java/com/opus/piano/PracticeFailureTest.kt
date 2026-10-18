@@ -18,7 +18,7 @@ class PracticeFailureTest {
         override suspend fun complete(state: PracticeState): Long { check(!failWrite); draft=null; return 1 }
         var archived: String? = null
         override suspend fun archiveRecovery(expected: String) { check(!failWrite); archived=expected; draft=null }
-        override suspend fun recoveryData() = "unchanged-original"
+        override suspend fun recoveryData() = if(failRead || draft!=null) "unchanged-original" else null
     }
     private suspend fun ready(c: PracticeCoordinator) = withTimeout(3000) { c.state.first { it.ready } }
     private fun coordinator(s: Store, time: () -> Long = { 1000L }) = PracticeCoordinator(s, time, { "error:$it" })
@@ -112,4 +112,13 @@ class PracticeFailureTest {
         assertTrue(c.recoveryFailed.value);assertFalse(c.state.value.ready)
         assertEquals("unchanged-original",c.recoveryData());assertNull(s.archived);c.close()
     }
+    @Test fun failedRestoreFromIdleDoesNotFabricateARecoveryDraft()=runBlocking {
+        val s=Store();val c=coordinator(s);ready(c)
+        try {
+            try {c.replacing(preservesRecovery=true){error("Staging rejected")};fail()}catch(_:IllegalStateException){}
+            assertEquals(0,s.writes);assertNull(s.draft);assertFalse(c.recoveryFailed.value)
+            assertTrue(c.state.value.ready);assertFalse(c.state.value.running)
+        } finally {c.close()}
+    }
+
 }

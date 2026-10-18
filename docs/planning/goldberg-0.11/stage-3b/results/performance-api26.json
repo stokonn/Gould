@@ -1,0 +1,13 @@
+{
+  "api": 26,
+  "sessions": 1002,
+  "sessionNoteBytes": 1024000,
+  "rawEvidenceBytes": 2101248,
+  "backupBytes": 4837707,
+  "exportMillis": 569,
+  "validationMillis": 2324,
+  "restoreMillis": 4411,
+  "repeatRestoreMillis": 4581,
+  "beforePssKiB": 120494,
+  "afterPssKiB": 148974
+}
