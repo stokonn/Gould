@@ -11,7 +11,7 @@
 
 **[0.9.2 — Final Redesign](https://github.com/stokonn/Goldberg/releases/tag/v0.9.2)** establishes the unified design, daily Home activity/quotes, compact repertoire/profile/settings, single Practice entry, preserved recovery archives, explicit metered-media controls and keyboard/Tux easter eggs. Optional Google identity passed the six owner-reported manual scenarios; Codex did not perform phone testing. Seventy JVM and 31 executed Android tests pass, with migration/backup/localization/APK verification. See [Verification](Verification) for limitations. The permanent private Project and version milestones track maintenance and future work.
 
-Goldberg 0.10.1 delivers the approved Final Redesign Polish. See [Verification](Verification). Goldberg 0.11 — Database Update is planning-only: catalogue quality, source licensing, search/offline behavior and safe migration/backup strategy require scope review. No database expansion, cloud sync or social features are implemented or implied.
+Goldberg 0.10.1 delivers the approved Final Redesign Polish. See [Verification](Verification). Goldberg 0.11 — The Music Database Update is in Stage 1 architecture planning. Its approved target includes multi-genre catalogue integrations, sourced encyclopedias, offline bundles and moderated contributions with Android/Web Admin under a strict zero-cost cloud budget. None is implemented by Stage 1, and practice cloud synchronization is not part of that approval. The [planning package](https://github.com/stokonn/Goldberg/blob/planning/goldberg-0.11-stage-1/docs/planning/goldberg-0.11/README.md) records the source audit, recommendations and decisions required before later stages.
 
 
 [Home](Home) · [Developer Guide](Developer-Guide)

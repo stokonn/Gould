@@ -26,3 +26,9 @@ Decisions: intended catalogue size; supported instruments; movement granularity;
 Acceptance proposal: deterministic source provenance; accent-insensitive title/composer/catalogue search; bounded paging; zero silent personal-data merges; offline personal-library access; all old backup fixtures and migration paths pass; seeded upgrade preserves exact IDs/totals/notes/drafts/favorites; catalogue failures remain retryable; measured query/first-open performance does not regress beyond an owner-approved budget. Add adversarial duplicates, missing IDs, interrupted imports and rollback tests. No 0.11 branch is created until implementation is authorized.
 
 created by stokonn with love <3
+
+## Stage 1 reconciliation — 2026-10-18
+
+The owner has now approved the broader **Goldberg 0.11 — The Music Database Update** product architecture: multi-genre catalogue; Open Opus, MusicBrainz and Wikimedia integration; linked works/arrangements/artists/albums/recordings/collections; sourced encyclopedias; All/Works/Artists/Albums/Lists search; offline bundles/Smart Cache 2.0; explicit mobile-data permission; moderated Google-authenticated suggestions; Android/Web Admin sharing a secured managed service with a strict 0 CZK monthly budget. These are target requirements, not shipped features.
+
+[Stage 1 architecture and readiness package](planning/goldberg-0.11/README.md) audits actual schema 8/source, preserves the original investigation and data-safety goals above, and adds contracts, free-tier/legal/security constraints, unresolved decisions and independent stages. Earlier statements that scope was wholly undecided or that no 0.11 branch would exist are historical: a dedicated **documentation-only planning branch** is now authorized. Implementation, physical schema selection, provisioning and release still require subsequent stage instructions. No Stage 2 work begins automatically; no main merge or release occurs in Stage 1.

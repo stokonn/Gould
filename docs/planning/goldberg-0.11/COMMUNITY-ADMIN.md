@@ -1,0 +1,49 @@
+# Proposed submissions, authorization and Admin architecture
+
+**Design only.** No remote session, submission service, role table, Android Admin or Web Admin exists in the audited app. Backend choice remains open; both Admin clients must use the same server-enforced rules and audit trail. Local journal use requires no account.
+
+## Authentication boundary
+
+Keep the existing optional local Google profile feature. Entering community features must explicitly explain sending the selected identity credential and the proposed catalogue contribution to the service. Do not upload practice notes, repertoire, microphone evidence, local avatar or a full portable backup. Current SharedPreferences account/name strings are untrusted presentation state and grant no role.
+
+For the recommended Supabase variant, exchange the fresh Google credential through managed Auth's supported ID-token flow; verify configured audience/nonce semantics in integration tests. Managed sessions authorize a restricted API/PostgreSQL boundary; access tokens are verified by the server, not by trusting decoded JWT JSON on clients. [Google provider setup](https://supabase.com/docs/guides/auth/social-login/auth-google). Keep provider secrets/service credentials only in server-managed secrets; public client IDs and publishable keys are not authorization.
+
+For Workers/D1, design a server-issued one-time challenge bound to the app/browser sign-in attempt, verify Google signature with cached rotating keys, allowed algorithm/kid, issuer/audience/expiry and nonce, then issue a short-lived revocable service session. Cache key material according to provider headers; unknown-key/expired-cache failures deny authorization. Stable identity is verified issuer+subject, not mutable email or device preference. [Google verification requirements](https://developers.google.com/identity/gsi/web/guides/verify-google-id-token), [Workers cryptography support](https://developers.cloudflare.com/workers/runtime-apis/web-crypto/). This requires security-reviewed library selection and measured free-tier CPU; do not implement custom cryptographic primitives. An API tokenInfo call is not a production authorization design.
+
+Browser login requires exact redirect/origin allowlists, state/PKCE where applicable, nonce and CSRF protection. Prefer a same-origin secure HttpOnly/SameSite cookie session with CSRF tokens for a BFF design; a static SPA alternative must use managed Auth, CSP, carefully bounded session persistence and explicit XSS threat tests. Do not pretend a static SPA has server-only HttpOnly credential storage. Select one flow in Stage 2/6. Android service tokens use platform-protected storage and are excluded from portable exports. Sign-out revokes service sessions/clears tokens; role removal or suspension is effective server-side without trusting stale UI claims. Offline draft editing never authorizes remote publishing.
+
+## Roles and server data
+
+| Principal | Allowed operations |
+|---|---|
+| Public reader | Published approved overlay/revisions only, bounded pages. No pending submissions, identities, roles or audit details. |
+| Authenticated contributor | Create own draft/submission; view own status/review reason; revise own returned/draft item. Cannot set author/status/approval/role or enumerate other pending work. |
+| Moderator | Read pending queue and evidence; request changes/reject/approve through transaction API if permitted; no infrastructure secrets or role assignment. |
+| Administrator | Moderator actions plus controlled roles/suspensions and catalogue quarantine/rollback; cannot edit the append-only audit log through client endpoints. |
+| Deployment operator | Secret/config/export/restore management outside both clients; owner-controlled, least privilege, no credentials in APK/web bundle. |
+
+Proposed relational tables: `principals`, `role_grants`, `submissions`, `submission_revisions`, `review_events`, `published_entities`, `published_revisions`, `identity_mappings`, `abuse_limits` and session/challenge state if using custom auth. Schema is conceptual. Store minimal stable subject, timestamps, moderation state and contribution provenance, not Google photo/profile history. Separate private moderation tables from public read projections. Define account deletion/pseudonymization and contribution-license retention before collection; public provenance must not expose Google subject/email/IP.
+
+Use deny-by-default Row Level Security for all exposed Supabase tables. Explicit WITH CHECK and read/update constraints prevent user-supplied author/status fields; direct client writes to approval/roles/audit/publication tables are denied. Role lookup uses trusted grants, not user-editable metadata. Security-definer functions need fixed search_path, revoked default execution and explicit authorization. Service-role credentials bypass RLS and therefore never reach either client. [RLS guidance](https://supabase.com/docs/guides/database/postgres/row-level-security). For D1 there is no PostgreSQL RLS: all access goes through a Worker with prepared queries and explicit row/role authorization; no database binding or account REST token reaches clients.
+
+## Moderation lifecycle and API contract
+
+Proposed transitions: local draft → submitted → in_review → approved / rejected / changes_requested; changes_requested → revised submission; author withdrawal before approval; published content may later be superseded/quarantined with reason. Revisions are immutable. An edit must identify the entity and expected catalogue revision; stale proposals cannot overwrite newer approvals. No automatic approval, source write-back or unreviewed bulk import.
+
+Proposed API surface (names provisional): `POST /session`, `DELETE /session`, `GET /me/capabilities`, `POST /submissions`, `GET /submissions/mine`, `POST /submissions/{id}/revisions`, `GET /admin/queue`, `POST /admin/submissions/{id}/decisions`, `GET /catalogue/changes?cursor=...`. Request envelopes have schemaVersion, expectedRevision and idempotencyKey. Bound text/URL/page/dependency counts and response size. Reject unknown fields instead of mass-assigning objects. Cursor pagination is deterministic. Validation errors are separate from 401/403/409/429 and unavailable service; retries preserve draft/idempotency and never generate a second publication.
+
+Approval is one database transaction: authorize role and suspension, compare expected revision/state, validate source and license evidence, create new published revision/mapping, advance submission status, append audit event and change-feed entry. A concurrent reviewer gets conflict and reloads. Audit event contains actor internal ID, action, target/revision, before/after hashes, reason, time and request ID, without bearer tokens or journal data. This is application append-only evidence, not a claim of tamper-proof storage against the cloud owner. Export/checkpoint periodically and test restore. Corrections use a new revision and reversible redirect/tombstone, not deletion of historical attribution or personal data.
+
+Initially accept structured metadata/approved source URLs and contributor-authored short text only; no file uploads or arbitrary HTML. Submission terms require rights to contributions and an explicit intended license (proposed CC0 structured facts; separately labeled compatible text license). They cannot relicense copied Wikipedia prose by ticking a box. Reviewers verify entity type, duplicates, identity, sources, conflicting claims and media rights. External fetching is allowlisted/size bounded and blocks private network/redirect SSRF; do not offer a general proxy.
+
+Proposed conservative abuse controls: authenticated write quotas per principal plus coarse IP throttling with short retention, max pending count, bounded payload/dependency size, no automated bulk submission, no anonymous write endpoint, atomic quota accounting and a server kill switch. Exact caps are tunable in [CLOUD.md](CLOUD.md); burst/distributed abuse can still consume provider quotas, so graceful service denial is a required outcome. Attestation/CAPTCHA may supplement but never replace auth/authorization; no paid anti-abuse product is assumed.
+
+## Android and Web Admin
+
+Android Admin is a role-gated navigation destination or separately built client (packaging is an owner decision), using existing editorial Compose components. Hidden navigation is convenience only; unauthorized API calls always fail. Reuse authenticated repository interfaces, not direct privileged database connections. Show pending diff, sources, licenses, conflicts, reviewer reason and revision; require explicit approve/reject action. Failed requests remain retryable and do not display false success. No direct access to users' private journals.
+
+Web Admin can be a small static TypeScript frontend on a free provider subdomain, no paid domain/SSR dependency assumed. Framework choice is deferred until the auth/session decision. Match Goldberg colors/typography/accessible controls; no new app visual redesign. Both clients share a versioned API schema, role capabilities, form validation rules and the same server decision endpoint. Keep API fixtures and contract tests reusable; Kotlin and web UI code need not be identical.
+
+Required threat tests: unsigned/expired/wrong-audience/replayed credentials; client role injection; cross-user submission reads/edits; stolen/stale sessions; revoked moderator; direct REST/RPC privilege escalation; malformed/source-injected HTML/URLs; CSRF/CORS errors; race approval; duplicate idempotency keys; quota exhaustion; audit-write tampering and missing-transaction rollback. Validate privacy notice/controller contact, processing region/transfers, retention, export/delete route and audience/minor policy before public collection. These are [decisions](STAGES.md), not newly deployed consent infrastructure.
+
+created by stokonn with love <3
