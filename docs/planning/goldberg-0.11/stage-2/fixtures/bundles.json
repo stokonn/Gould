@@ -1,0 +1,214 @@
+[
+  {
+    "bundleId": "e046f374-b4a5-5f9e-9eef-c66de3f98a41",
+    "contractVersion": 1,
+    "dependencies": [
+      "502106b9-d78d-56c3-a793-e85be50a913e"
+    ],
+    "entityId": "6e37c82a-260e-5375-8d92-429f75e599f0",
+    "kind": "work",
+    "language": "en",
+    "metadataSnapshot": [
+      {
+        "genre": "classical",
+        "id": "6e37c82a-260e-5375-8d92-429f75e599f0",
+        "key": "work-classical",
+        "kind": "work",
+        "revision": 1,
+        "status": "active",
+        "title": "Fixture classical study",
+        "workType": "composition"
+      }
+    ],
+    "objects": [
+      {
+        "attribution": "Goldberg authored fixture",
+        "bytes": 4370,
+        "id": "metadata",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "mime": "application/json",
+        "relativePath": "objects/2860f9237f773ad23375fef0e537468d804b147c11775de4ee8dc5c885b19d50",
+        "reviewState": "approved",
+        "sha256": "2860f9237f773ad23375fef0e537468d804b147c11775de4ee8dc5c885b19d50",
+        "sourceRevision": "fixture-v1",
+        "sourceUrl": "https://github.com/stokonn/Goldberg",
+        "transformations": []
+      },
+      {
+        "attribution": "Goldberg Stage 2 authored fixture; not a biography",
+        "bytes": 461,
+        "id": "en-document",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "mime": "application/json",
+        "relativePath": "objects/6ca933ca8b92859dfa7873a4e91f4033d26ae5f835677740fc4d78003d9c67e8",
+        "reviewState": "approved",
+        "sha256": "6ca933ca8b92859dfa7873a4e91f4033d26ae5f835677740fc4d78003d9c67e8",
+        "sourceRevision": "fixture-v1",
+        "sourceUrl": "https://github.com/stokonn/Goldberg",
+        "transformations": []
+      }
+    ],
+    "previousReadyRevision": null,
+    "revision": "fixture-v1"
+  },
+  {
+    "bundleId": "884708bd-7c4f-5dda-92e4-7258c674b317",
+    "contractVersion": 1,
+    "dependencies": [
+      "502106b9-d78d-56c3-a793-e85be50a913e"
+    ],
+    "entityId": "346302d1-6027-5533-a673-5c80c2e85f0c",
+    "kind": "artist",
+    "language": "en",
+    "metadataSnapshot": [
+      {
+        "artistType": "person",
+        "id": "346302d1-6027-5533-a673-5c80c2e85f0c",
+        "key": "person-a",
+        "kind": "artist",
+        "revision": 1,
+        "status": "active",
+        "title": "Alex Example"
+      }
+    ],
+    "objects": [
+      {
+        "attribution": "Goldberg authored fixture",
+        "bytes": 4370,
+        "id": "metadata",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "mime": "application/json",
+        "relativePath": "objects/2860f9237f773ad23375fef0e537468d804b147c11775de4ee8dc5c885b19d50",
+        "reviewState": "approved",
+        "sha256": "2860f9237f773ad23375fef0e537468d804b147c11775de4ee8dc5c885b19d50",
+        "sourceRevision": "fixture-v1",
+        "sourceUrl": "https://github.com/stokonn/Goldberg",
+        "transformations": []
+      },
+      {
+        "attribution": "Goldberg Stage 2 authored fixture; not a biography",
+        "bytes": 461,
+        "id": "en-document",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "mime": "application/json",
+        "relativePath": "objects/6ca933ca8b92859dfa7873a4e91f4033d26ae5f835677740fc4d78003d9c67e8",
+        "reviewState": "approved",
+        "sha256": "6ca933ca8b92859dfa7873a4e91f4033d26ae5f835677740fc4d78003d9c67e8",
+        "sourceRevision": "fixture-v1",
+        "sourceUrl": "https://github.com/stokonn/Goldberg",
+        "transformations": []
+      }
+    ],
+    "previousReadyRevision": null,
+    "revision": "fixture-v1"
+  },
+  {
+    "bundleId": "1f6c0bfd-bc97-50a1-92e2-ac210ee330e9",
+    "contractVersion": 1,
+    "dependencies": [
+      "502106b9-d78d-56c3-a793-e85be50a913e"
+    ],
+    "entityId": "42744ffd-526b-515f-86ef-1d4f6250f6d5",
+    "kind": "album",
+    "language": "en",
+    "metadataSnapshot": [
+      {
+        "albumType": "album",
+        "id": "42744ffd-526b-515f-86ef-1d4f6250f6d5",
+        "key": "album-album",
+        "kind": "album",
+        "revision": 1,
+        "status": "active",
+        "title": "Fixture album"
+      }
+    ],
+    "objects": [
+      {
+        "attribution": "Goldberg authored fixture",
+        "bytes": 4370,
+        "id": "metadata",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "mime": "application/json",
+        "relativePath": "objects/2860f9237f773ad23375fef0e537468d804b147c11775de4ee8dc5c885b19d50",
+        "reviewState": "approved",
+        "sha256": "2860f9237f773ad23375fef0e537468d804b147c11775de4ee8dc5c885b19d50",
+        "sourceRevision": "fixture-v1",
+        "sourceUrl": "https://github.com/stokonn/Goldberg",
+        "transformations": []
+      },
+      {
+        "attribution": "Goldberg Stage 2 authored fixture; not a biography",
+        "bytes": 461,
+        "id": "en-document",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "mime": "application/json",
+        "relativePath": "objects/6ca933ca8b92859dfa7873a4e91f4033d26ae5f835677740fc4d78003d9c67e8",
+        "reviewState": "approved",
+        "sha256": "6ca933ca8b92859dfa7873a4e91f4033d26ae5f835677740fc4d78003d9c67e8",
+        "sourceRevision": "fixture-v1",
+        "sourceUrl": "https://github.com/stokonn/Goldberg",
+        "transformations": []
+      }
+    ],
+    "previousReadyRevision": null,
+    "revision": "fixture-v1"
+  },
+  {
+    "bundleId": "43671d0d-275c-52cc-b284-f57ddc7f38d1",
+    "contractVersion": 1,
+    "dependencies": [
+      "502106b9-d78d-56c3-a793-e85be50a913e"
+    ],
+    "entityId": "5eef2b52-bd94-5319-82e8-59624dcbb676",
+    "kind": "collection",
+    "language": "en",
+    "metadataSnapshot": [
+      {
+        "id": "5eef2b52-bd94-5319-82e8-59624dcbb676",
+        "key": "collection",
+        "kind": "collection",
+        "revision": 1,
+        "status": "active",
+        "title": "Fixture personal list"
+      }
+    ],
+    "objects": [
+      {
+        "attribution": "Goldberg authored fixture",
+        "bytes": 4370,
+        "id": "metadata",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "mime": "application/json",
+        "relativePath": "objects/2860f9237f773ad23375fef0e537468d804b147c11775de4ee8dc5c885b19d50",
+        "reviewState": "approved",
+        "sha256": "2860f9237f773ad23375fef0e537468d804b147c11775de4ee8dc5c885b19d50",
+        "sourceRevision": "fixture-v1",
+        "sourceUrl": "https://github.com/stokonn/Goldberg",
+        "transformations": []
+      },
+      {
+        "attribution": "Goldberg Stage 2 authored fixture; not a biography",
+        "bytes": 461,
+        "id": "en-document",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "mime": "application/json",
+        "relativePath": "objects/6ca933ca8b92859dfa7873a4e91f4033d26ae5f835677740fc4d78003d9c67e8",
+        "reviewState": "approved",
+        "sha256": "6ca933ca8b92859dfa7873a4e91f4033d26ae5f835677740fc4d78003d9c67e8",
+        "sourceRevision": "fixture-v1",
+        "sourceUrl": "https://github.com/stokonn/Goldberg",
+        "transformations": []
+      }
+    ],
+    "previousReadyRevision": null,
+    "revision": "fixture-v1"
+  }
+]

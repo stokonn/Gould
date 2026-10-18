@@ -15,3 +15,5 @@ Goldberg 0.10.1 delivers the approved Final Redesign Polish. See [Verification](
 
 
 [Home](Home) · [Developer Guide](Developer-Guide)
+
+Goldberg 0.11 [Stage 2 research and contracts](https://github.com/stokonn/Goldberg/blob/planning/goldberg-0.11-stage-2/docs/planning/goldberg-0.11/stage-2/README.md) specifies separate catalogue storage, typed identities, licensed fixtures, offline/backup safety and measured performance budgets. These are planning artifacts and isolated research tools, not installed features; Stage 3 implementation has not begun.

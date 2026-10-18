@@ -1,0 +1,612 @@
+{
+  "requests": [
+    {
+      "provider": "wikidata",
+      "key": "wd-search-classical",
+      "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Goldberg+Variations&language=en&type=item&limit=3&format=json&maxlag=5",
+      "at": "2026-10-18T10:32:34.908520+00:00",
+      "status": 200,
+      "bytes": 472,
+      "sha256": "5ef62d8c455f6b4f424f79e505e65f3fd806787a04f5ac3dabfb5e70a97e5bec",
+      "headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "472",
+        "Cache-Control": "private, must-revalidate, max-age=0"
+      },
+      "elapsed_ms": 306.935,
+      "api_error": "maxlag"
+    },
+    {
+      "provider": "musicbrainz",
+      "key": "mb-search-classical",
+      "url": "https://musicbrainz.org/ws/2/work/?query=work%3A%22Goldberg+Variations%22&limit=3&fmt=json",
+      "at": "2026-10-18T10:32:35.215485+00:00",
+      "status": 200,
+      "bytes": 5084,
+      "sha256": "c184c1167ad21d82af133c7829f0e211581748aa29de1b510a373723d00f5020",
+      "headers": {
+        "ETag": "\"NzkwNzMyMDAwMDAwMDAwMFNvbHI=\"",
+        "Last-Modified": "Sun, 18 Oct 2026 10:31:23 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "5084",
+        "Cache-Control": null
+      },
+      "elapsed_ms": 150.08
+    },
+    {
+      "provider": "wikidata",
+      "key": "wd-search-jazz",
+      "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Take+Five&language=en&type=item&limit=3&format=json&maxlag=5",
+      "at": "2026-10-18T10:32:37.908526+00:00",
+      "status": 200,
+      "bytes": 472,
+      "sha256": "171b6246b0464168d76cc660f2ffe5052998e75166aa176f25224ddf7d6ab2be",
+      "headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "472",
+        "Cache-Control": "private, must-revalidate, max-age=0"
+      },
+      "elapsed_ms": 279.202,
+      "api_error": "maxlag"
+    },
+    {
+      "provider": "musicbrainz",
+      "key": "mb-search-jazz",
+      "url": "https://musicbrainz.org/ws/2/work/?query=work%3A%22Take+Five%22&limit=3&fmt=json",
+      "at": "2026-10-18T10:32:38.215600+00:00",
+      "status": 200,
+      "bytes": 56159,
+      "sha256": "58d01d9d1c12b42828f087d701d073b18c7abb8599569b7868b1bc53784b04c5",
+      "headers": {
+        "ETag": "\"ODBmMzEyMDAwMDAwMDAwMFNvbHI=\"",
+        "Last-Modified": "Sun, 18 Oct 2026 10:31:23 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": null,
+        "Cache-Control": null
+      },
+      "elapsed_ms": 178.945
+    },
+    {
+      "provider": "wikidata",
+      "key": "wd-search-blues",
+      "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Saint+Louis+Blues&language=en&type=item&limit=3&format=json&maxlag=5",
+      "at": "2026-10-18T10:32:40.908628+00:00",
+      "status": 200,
+      "bytes": 472,
+      "sha256": "e0902299447a0d77065c30ad4eca9f87fb8ec9da64a115bc7e26ff05e5319356",
+      "headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "472",
+        "Cache-Control": "private, must-revalidate, max-age=0"
+      },
+      "elapsed_ms": 311.935,
+      "api_error": "maxlag"
+    },
+    {
+      "provider": "musicbrainz",
+      "key": "mb-search-blues",
+      "url": "https://musicbrainz.org/ws/2/work/?query=work%3A%22Saint+Louis+Blues%22&limit=3&fmt=json",
+      "at": "2026-10-18T10:32:41.220700+00:00",
+      "status": 200,
+      "bytes": 12337,
+      "sha256": "3c61af37ee4df18b38009a65881390ef79ef9b529b981b663c335b1f83d6babe",
+      "headers": {
+        "ETag": "\"NGM4MGIyMDAwMDAwMDAwMFNvbHI=\"",
+        "Last-Modified": "Sun, 18 Oct 2026 10:31:23 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "12337",
+        "Cache-Control": null
+      },
+      "elapsed_ms": 102.824
+    },
+    {
+      "provider": "wikidata",
+      "key": "wd-search-pop",
+      "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Yesterday&language=en&type=item&limit=3&format=json&maxlag=5",
+      "at": "2026-10-18T10:32:43.908699+00:00",
+      "status": 200,
+      "bytes": 472,
+      "sha256": "e7ee8ea0292963d304642e4849371bfc5f689c0e7832ae158a9cf881b1d35bd9",
+      "headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "472",
+        "Cache-Control": "private, must-revalidate, max-age=0"
+      },
+      "elapsed_ms": 313.244,
+      "api_error": "maxlag"
+    },
+    {
+      "provider": "musicbrainz",
+      "key": "mb-search-pop",
+      "url": "https://musicbrainz.org/ws/2/work/?query=work%3A%22Yesterday%22&limit=3&fmt=json",
+      "at": "2026-10-18T10:32:44.222112+00:00",
+      "status": 200,
+      "bytes": 248068,
+      "sha256": "5fab4963311fd52a67ed0cf3564e2da69ab297dff4e661bd648b3e00f9a662e0",
+      "headers": {
+        "ETag": "\"NGM4MGIyMDAwMDAwMDAwMFNvbHI=\"",
+        "Last-Modified": "Sun, 18 Oct 2026 10:31:23 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": null,
+        "Cache-Control": null
+      },
+      "elapsed_ms": 348.616
+    },
+    {
+      "provider": "wikidata",
+      "key": "wd-search-rock",
+      "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Bohemian+Rhapsody&language=en&type=item&limit=3&format=json&maxlag=5",
+      "at": "2026-10-18T10:32:46.908774+00:00",
+      "status": 200,
+      "bytes": 472,
+      "sha256": "0ebb7465e485b2d1a4ebf7327c53c72d57df0a457e4344976efcdfa4d47fcf89",
+      "headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "472",
+        "Cache-Control": "private, must-revalidate, max-age=0"
+      },
+      "elapsed_ms": 304.79,
+      "api_error": "maxlag"
+    },
+    {
+      "provider": "musicbrainz",
+      "key": "mb-search-rock",
+      "url": "https://musicbrainz.org/ws/2/work/?query=work%3A%22Bohemian+Rhapsody%22&limit=3&fmt=json",
+      "at": "2026-10-18T10:32:47.222264+00:00",
+      "status": 200,
+      "bytes": 93973,
+      "sha256": "76e873ca945c971529ed26e1e04678a3418bd54b1b697d71c2bc5ce89e2862c3",
+      "headers": {
+        "ETag": "\"MWNlZTUyMDAwMDAwMDAwMFNvbHI=\"",
+        "Last-Modified": "Sun, 18 Oct 2026 10:31:23 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": null,
+        "Cache-Control": null
+      },
+      "elapsed_ms": 219.324
+    },
+    {
+      "provider": "wikidata",
+      "key": "wd-search-film",
+      "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Hedwig+theme&language=en&type=item&limit=3&format=json&maxlag=5",
+      "at": "2026-10-18T10:32:49.909051+00:00",
+      "status": 200,
+      "bytes": 472,
+      "sha256": "79a5b300da8b013b6baf7b6ec6d79a988c59d5f64be08354e454fa4a716eb879",
+      "headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "472",
+        "Cache-Control": "private, must-revalidate, max-age=0"
+      },
+      "elapsed_ms": 304.952,
+      "api_error": "maxlag"
+    },
+    {
+      "provider": "musicbrainz",
+      "key": "mb-search-film",
+      "url": "https://musicbrainz.org/ws/2/work/?query=work%3A%22Hedwig+theme%22&limit=3&fmt=json",
+      "at": "2026-10-18T10:32:50.222288+00:00",
+      "status": 200,
+      "bytes": 14550,
+      "sha256": "0b569efaff1f79cdc226b2491dda1b2a22edfa4c8ed78b0e08b11e9ae43da820",
+      "headers": {
+        "ETag": "\"MTNkZjEyMDAwMDAwMDAwMFNvbHI=\"",
+        "Last-Modified": "Sun, 18 Oct 2026 10:31:23 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "14550",
+        "Cache-Control": null
+      },
+      "elapsed_ms": 128.645
+    },
+    {
+      "provider": "wikidata",
+      "key": "wd-search-game",
+      "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Zelda+lullaby&language=en&type=item&limit=3&format=json&maxlag=5",
+      "at": "2026-10-18T10:32:52.909337+00:00",
+      "status": 200,
+      "bytes": 472,
+      "sha256": "6e18458d8e45e8bb1d63be9637c1fbafbc813132c2972bcd117afbbd6da3514d",
+      "headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "472",
+        "Cache-Control": "private, must-revalidate, max-age=0"
+      },
+      "elapsed_ms": 316.228,
+      "api_error": "maxlag"
+    },
+    {
+      "provider": "musicbrainz",
+      "key": "mb-search-game",
+      "url": "https://musicbrainz.org/ws/2/work/?query=work%3A%22Zelda+lullaby%22&limit=3&fmt=json",
+      "at": "2026-10-18T10:32:53.225812+00:00",
+      "status": 200,
+      "bytes": 5281,
+      "sha256": "f74650bd1f5920bbd2184eb719a0ae2e7fb6e17bd9594f2aeaea211c85b7688e",
+      "headers": {
+        "ETag": "\"NTI5MzMyMDAwMDAwMDAwMFNvbHI=\"",
+        "Last-Modified": "Sun, 18 Oct 2026 10:31:23 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "5281",
+        "Cache-Control": null
+      },
+      "elapsed_ms": 90.293
+    },
+    {
+      "provider": "wikidata",
+      "key": "wd-search-folk",
+      "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Greensleeves&language=en&type=item&limit=3&format=json&maxlag=5",
+      "at": "2026-10-18T10:32:55.909436+00:00",
+      "status": 200,
+      "bytes": 472,
+      "sha256": "6a41e85387c8a98f522b86d732e79b8922702fb33f04cab313bd2be381238873",
+      "headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "472",
+        "Cache-Control": "private, must-revalidate, max-age=0"
+      },
+      "elapsed_ms": 341.618,
+      "api_error": "maxlag"
+    },
+    {
+      "provider": "musicbrainz",
+      "key": "mb-search-folk",
+      "url": "https://musicbrainz.org/ws/2/work/?query=work%3A%22Greensleeves%22&limit=3&fmt=json",
+      "at": "2026-10-18T10:32:56.251252+00:00",
+      "status": 200,
+      "bytes": 74221,
+      "sha256": "92f8d8de5795be9f51f5d3f0b8d0b8610d2af7d8aff421bd95090ef17f068436",
+      "headers": {
+        "ETag": "\"MTFhZDMyMDAwMDAwMDAwMFNvbHI=\"",
+        "Last-Modified": "Sun, 18 Oct 2026 10:32:52 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": null,
+        "Cache-Control": null
+      },
+      "elapsed_ms": 190.58
+    },
+    {
+      "provider": "openopus",
+      "key": "oo-classical",
+      "url": "https://api.openopus.org/omnisearch/goldberg/0.json",
+      "at": "2026-10-18T10:32:56.442047+00:00",
+      "status": 200,
+      "bytes": 801,
+      "sha256": "c4cf7664f44923eb56a546042a86761739eb01baa2932d40830b9446214108d2",
+      "headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "application/json",
+        "Content-Length": null,
+        "Cache-Control": "max-age=3600, public"
+      },
+      "elapsed_ms": 469.007
+    },
+    {
+      "provider": "openopus",
+      "key": "oo-pop",
+      "url": "https://api.openopus.org/omnisearch/yesterday/0.json",
+      "at": "2026-10-18T10:32:59.442358+00:00",
+      "status": 200,
+      "bytes": 810,
+      "sha256": "6fa9eac4ae4ff23ea4542b31049cce522b75fe0d17e2bacbadfd9fa9b6dc883b",
+      "headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "application/json",
+        "Content-Length": null,
+        "Cache-Control": "max-age=3600, public"
+      },
+      "elapsed_ms": 354.48
+    },
+    {
+      "provider": "wikipedia-en",
+      "key": "wp-summary-en",
+      "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Johann_Sebastian_Bach",
+      "at": "2026-10-18T10:32:59.797068+00:00",
+      "status": 200,
+      "bytes": 3499,
+      "sha256": "48f17647ca96521350ed6a5366447069978517d52d26a5f3b24b42a308effa22",
+      "headers": {
+        "ETag": "W/\"1380548329/90f4bac0-ca78-11f1-97cc-c90a4a9ba39f\"",
+        "Last-Modified": null,
+        "Content-Type": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Summary/1.5.0\"",
+        "Content-Length": "3499",
+        "Cache-Control": "s-maxage=1209600, max-age=300"
+      },
+      "elapsed_ms": 152.181
+    },
+    {
+      "provider": "wikipedia-en",
+      "key": "wp-revision-en",
+      "url": "https://en.wikipedia.org/w/api.php?action=query&titles=Johann+Sebastian+Bach&prop=info%7Crevisions&rvprop=ids%7Ctimestamp&inprop=url&meta=siteinfo&siprop=rightsinfo&format=json&formatversion=2&maxlag=5",
+      "at": "2026-10-18T10:33:02.797215+00:00",
+      "status": 200,
+      "bytes": 716,
+      "sha256": "665f9f8fbe1b1040b21c892803d4b9fee550951dd2b5ca283c2030ecda992e63",
+      "headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "716",
+        "Cache-Control": "private, must-revalidate, max-age=0"
+      },
+      "elapsed_ms": 399.197
+    },
+    {
+      "provider": "wikipedia-cs",
+      "key": "wp-summary-cs",
+      "url": "https://cs.wikipedia.org/api/rest_v1/page/summary/Johann_Sebastian_Bach",
+      "at": "2026-10-18T10:33:03.196581+00:00",
+      "status": 200,
+      "bytes": 2501,
+      "sha256": "7f71304a264630d4e738dccdef8da9f35bb81eebb1b7ab1bd3d282b5a3e1288e",
+      "headers": {
+        "ETag": "W/\"25698610/722858c0-ca2a-11f1-a325-27f065b972cd\"",
+        "Last-Modified": null,
+        "Content-Type": "application/json; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/Summary/1.5.0\"",
+        "Content-Length": "2501",
+        "Cache-Control": "s-maxage=1209600, max-age=300"
+      },
+      "elapsed_ms": 242.872
+    },
+    {
+      "provider": "wikipedia-cs",
+      "key": "wp-revision-cs",
+      "url": "https://cs.wikipedia.org/w/api.php?action=query&titles=Johann+Sebastian+Bach&prop=info%7Crevisions&rvprop=ids%7Ctimestamp&inprop=url&meta=siteinfo&siprop=rightsinfo&format=json&formatversion=2&maxlag=5",
+      "at": "2026-10-18T10:33:06.196722+00:00",
+      "status": 200,
+      "bytes": 456,
+      "sha256": "0b54a9e3676ca84a4cfd926eb47c665a2a13bd32c40071a5a3048a14b20095ee",
+      "headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "456",
+        "Cache-Control": "private, must-revalidate, max-age=0"
+      },
+      "elapsed_ms": 277.915,
+      "api_error": "maxlag"
+    },
+    {
+      "provider": "commons",
+      "key": "commons-metadata",
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&titles=File%3AJohann+Sebastian+Bach.jpg&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize%7Csha1%7Cmime%7Ctimestamp&iiurlwidth=480&format=json&formatversion=2&maxlag=5",
+      "at": "2026-10-18T10:33:06.474915+00:00",
+      "status": 200,
+      "bytes": 4219,
+      "sha256": "74950ed498bb92b69b34441f139a2ffbe58253da572831c55b0eef8809872ff8",
+      "headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": null,
+        "Cache-Control": "max-age=3600, s-maxage=3600, public"
+      },
+      "elapsed_ms": 312.956
+    }
+  ],
+  "coverage": [
+    {
+      "genre": "classical",
+      "query": "Goldberg Variations",
+      "wikidata_candidates": [],
+      "musicbrainz_candidates": [
+        {
+          "id": "04a4f3ae-2857-452b-aa6e-96960c0a53d7",
+          "title": "New Goldberg Variations"
+        },
+        {
+          "id": "72b1be83-40ff-46ef-ad13-b3fecdc474e7",
+          "title": "New Goldberg Variations"
+        },
+        {
+          "id": "bcaac927-da8f-4370-9683-0cf8ebe6a16f",
+          "title": "Goldberg Variations, BWV 988: Aria"
+        }
+      ],
+      "wikidata_status": "unavailable_maxlag",
+      "candidate_hit_is_verified_coverage": false
+    },
+    {
+      "genre": "jazz",
+      "query": "Take Five",
+      "wikidata_candidates": [],
+      "musicbrainz_candidates": [
+        {
+          "id": "df0b884d-84f5-45f0-9083-3fb539fa4700",
+          "title": "Take Five"
+        },
+        {
+          "id": "2bbcaaa8-2d91-3fb3-884b-830581b3c895",
+          "title": "Take Five"
+        },
+        {
+          "id": "f1862276-b7f5-471c-a557-b5a864ef20b8",
+          "title": "Take Five"
+        }
+      ],
+      "wikidata_status": "unavailable_maxlag",
+      "candidate_hit_is_verified_coverage": false
+    },
+    {
+      "genre": "blues",
+      "query": "Saint Louis Blues",
+      "wikidata_candidates": [],
+      "musicbrainz_candidates": [
+        {
+          "id": "66b25237-fc01-40cf-961a-348cb55f1f3e",
+          "title": "Saint Louis Blues (Live)"
+        },
+        {
+          "id": "efb753b7-921e-4e13-baf8-a5674724a31c",
+          "title": "Boogie Woogie on Saint Louis Blues"
+        }
+      ],
+      "wikidata_status": "unavailable_maxlag",
+      "candidate_hit_is_verified_coverage": false
+    },
+    {
+      "genre": "pop",
+      "query": "Yesterday",
+      "wikidata_candidates": [],
+      "musicbrainz_candidates": [
+        {
+          "id": "0c80db24-389e-3620-8e0b-84dc2b7c009a",
+          "title": "Yesterday"
+        },
+        {
+          "id": "97b0429d-21ca-4b7e-9523-b3bb5beecc9b",
+          "title": "Yesterday"
+        },
+        {
+          "id": "b79a218f-57b1-4156-a76a-e46c4de668e1",
+          "title": "Yesterday's Papers"
+        }
+      ],
+      "wikidata_status": "unavailable_maxlag",
+      "candidate_hit_is_verified_coverage": false
+    },
+    {
+      "genre": "rock",
+      "query": "Bohemian Rhapsody",
+      "wikidata_candidates": [],
+      "musicbrainz_candidates": [
+        {
+          "id": "41c94a08-a551-3c86-bb17-d9a52e3a618b",
+          "title": "Bohemian Rhapsody"
+        },
+        {
+          "id": "6c8c1ee3-0c88-42d2-908c-47748c702136",
+          "title": "Bohemian Rhapsody"
+        },
+        {
+          "id": "660e678b-f1e3-4136-a471-965cd8496bb0",
+          "title": "Bohemian Rhapsody"
+        }
+      ],
+      "wikidata_status": "unavailable_maxlag",
+      "candidate_hit_is_verified_coverage": false
+    },
+    {
+      "genre": "film",
+      "query": "Hedwig theme",
+      "wikidata_candidates": [],
+      "musicbrainz_candidates": [
+        {
+          "id": "f703d0b7-2fff-3d41-a5e8-3a1e5ff69883",
+          "title": "Hedwig’s Theme"
+        },
+        {
+          "id": "2bac20f0-bbe6-4612-97d8-3b6b44c103a5",
+          "title": "Hedwig’s Theme / Harry’s Wondrous World"
+        },
+        {
+          "id": "33633b21-f033-4125-91ee-33d270d36176",
+          "title": "Hedwig's Theme: From Harry Potter and the Sorcerer's Stone"
+        }
+      ],
+      "wikidata_status": "unavailable_maxlag",
+      "candidate_hit_is_verified_coverage": false
+    },
+    {
+      "genre": "game",
+      "query": "Zelda lullaby",
+      "wikidata_candidates": [],
+      "musicbrainz_candidates": [
+        {
+          "id": "cdbb52b2-1568-48dd-81d6-21afde6919e6",
+          "title": "Zelda’s Lullaby"
+        },
+        {
+          "id": "35b01525-b8b3-43ae-b1f2-e0330b634cc7",
+          "title": "Zelda's Lullaby"
+        },
+        {
+          "id": "898141ec-0d94-4e4b-bb5e-2b4d22e3d23f",
+          "title": "Zelda’s Lullaby"
+        }
+      ],
+      "wikidata_status": "unavailable_maxlag",
+      "candidate_hit_is_verified_coverage": false
+    },
+    {
+      "genre": "folk",
+      "query": "Greensleeves",
+      "wikidata_candidates": [],
+      "musicbrainz_candidates": [
+        {
+          "id": "0bb7d2ad-0a44-3b73-bbbc-5eed6e3b0117",
+          "title": "Greensleeves"
+        },
+        {
+          "id": "e674e7bc-da4a-32df-ac3a-b2397f0c391d",
+          "title": "Greensleeves"
+        },
+        {
+          "id": "a3d303a4-b11c-3e57-b27d-53e0a5fecf68",
+          "title": "Greensleeves"
+        }
+      ],
+      "wikidata_status": "unavailable_maxlag",
+      "candidate_hit_is_verified_coverage": false
+    }
+  ],
+  "rest": [
+    {
+      "language": "en",
+      "url": "https://en.wikipedia.org/w/rest.php/v1/page/Johann_Sebastian_Bach/with_html",
+      "status": 200,
+      "bytes": 1171228,
+      "html_utf8_bytes": 1092181,
+      "revision": {
+        "id": 1380548329,
+        "timestamp": "2026-10-16T11:52:02Z"
+      },
+      "license": {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+        "title": "Creative Commons Attribution-Share Alike 4.0"
+      },
+      "etag": "W/\"1380548329/1152cea3-ca8e-11f1-8303-ff8202861643/view/html\"",
+      "cache_control": "max-age=5",
+      "elapsed_ms": 1027.987
+    },
+    {
+      "language": "cs",
+      "url": "https://cs.wikipedia.org/w/rest.php/v1/page/Johann_Sebastian_Bach/with_html",
+      "status": 200,
+      "bytes": 201707,
+      "html_utf8_bytes": 189470,
+      "revision": {
+        "id": 25698610,
+        "timestamp": "2026-02-24T07:58:55Z"
+      },
+      "license": {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/deed.cs",
+        "title": "Creative Commons Attribution-Share Alike 4.0"
+      },
+      "etag": "W/\"25698610/71b02a5f-ca2a-11f1-9467-f3aa5c57d932/view/html\"",
+      "cache_control": "max-age=5",
+      "elapsed_ms": 697.038
+    }
+  ],
+  "raw_bodies_committed": false,
+  "article_text_committed": false,
+  "image_bytes_downloaded": false,
+  "note": "Initial exploratory loop did not stop on HTTP200 maxlag; eight distinct WD queries returned maxlag. Corrected collector now stops provider on any overload API error; no retry/bypass."
+}

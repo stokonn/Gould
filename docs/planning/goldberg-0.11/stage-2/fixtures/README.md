@@ -1,0 +1,10 @@
+# Fixture provenance and rights
+
+- `catalogue.json`: 26 deliberately fictional authored entities across eight sampling strata, with collision/arrangement/movement/part/medley/mashup/group/edition/recording/alias/redirect cases. All person names and musical titles prefixed Fixture or Example are test constructs, not encyclopedia facts. Deterministic UUIDv5 is restricted to this test namespace.
+- `bundles.json`: authored manifest examples sharing dependencies, not actual downloaded provider bundles. Hashes/sizes refer to generated canonical fixture bytes.
+- `backup-v5-envelope.json`: authored minimal envelope/timing/anchor/preferences/recovery example, not a complete Room row fixture or implemented backup. Historical fixtures remain in app/src/androidTest/assets/backups and are read in place.
+- `provider-facts.json`: small real CC0 factual projection: 23 observed MusicBrainz work-ID/title candidates and one Open Opus work with composer facts. Explicit source URLs and response hashes retained. Sampling category is a query stratum, not verified genre; no cross-source equivalence or original/arrangement classification is invented. No tags/ratings/annotations/article text/media binaries.
+
+To the extent copyright applies, the newly authored fictional fixture data is dedicated to the public domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). This dedication does not relicense application code, other documentation or third-party material. Real facts follow provider CC0 dedications described in ../SOURCE-RESEARCH.md and machine-readable field policy. Attribution/source evidence is retained even where CC0 does not require it.
+
+Deterministic regeneration: `python3 docs/planning/goldberg-0.11/stage-2/research.py generate`. This changes only the three authored JSON fixtures, not provider observations. Tests require no network. Raw provider responses/article bodies are intentionally outside Git under /tmp; reproducing a future live probe will return different revisions and is not deterministic fixture generation.

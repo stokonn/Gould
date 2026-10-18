@@ -65,3 +65,7 @@ Update English Wiki/user/installation/developer/FAQ/changelog/credits with verif
 Each stage report identifies input commit, changed paths, data/architecture effects, exact checks/results, failures and unexecuted checks, license/privacy implications, cost/infra state, next dependency and branch/commit. Keep unfinished implementation issues open. Stages are independently reviewable; backend work may remain blocked while a separately authorized local stage proceeds, but no silent omission of approved final product scope. Re-read canonical policy and permanent maintenance ledger; preserve all historical evidence and unrelated work.
 
 created by stokonn with love <3
+
+## Stage 2 decision reconciliation — 2026-10-18
+
+Owner instructions now settle D1/D2/D3/D6 and authorize measured D7/D9 proposals. Read the [updated decision register and Stage 3 prerequisites](stage-2/READINESS.md) before applying the historical Stage 1 decision table. The catalogue is designed as a separate database with durable personal references in opus.db; future portable backups include safe paused recovery/settings. D4/D5/D8 remain later cloud/Admin gates. Stage 2 is isolated research and specifications only; Stage 3 requires a separate instruction.

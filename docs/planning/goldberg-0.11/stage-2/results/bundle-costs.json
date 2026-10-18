@@ -1,0 +1,29 @@
+{
+  "article_samples": [
+    {
+      "language": "en",
+      "response_bytes": 1171228,
+      "html_bytes": 1092181,
+      "response_gzip_bytes_local_estimate": 180372,
+      "response_sha256": "c80bd1993ba5edba9bec10b511056c7323f9c1fad6428dfea54693c9b2a1c6df",
+      "article_body_committed": false
+    },
+    {
+      "language": "cs",
+      "response_bytes": 201707,
+      "html_bytes": 189470,
+      "response_gzip_bytes_local_estimate": 34381,
+      "response_sha256": "36979773d11ea9f757d50a60bc2eee6c8667b7e18510ee7a006361a0f611e393",
+      "article_body_committed": false
+    }
+  ],
+  "commons_original_metadata_bytes": 630150,
+  "commons_original_downloaded": false,
+  "commons_thumbnail_bytes": "unknown; no image bytes requested",
+  "median_cc0_projection_bytes": 383.0,
+  "model_reference_bundle_bytes": 2041385,
+  "model_assumptions": "both article JSON bodies + one ORIGINAL image size from metadata (not downloaded/rights-approved) + 100 median projected fact records; excludes future manifest/index/decoder overhead, no measured completed download",
+  "reference_100_bundles_bytes_no_dedup": 204138500,
+  "reference_two_bundles_shared_objects_bytes": 2041385,
+  "reference_two_bundles_without_dedup_bytes": 4082770
+}

@@ -1,0 +1,211 @@
+{
+  "contractVersion": 1,
+  "default": "deny unlisted fields and content",
+  "reviewedAt": "2026-10-18",
+  "rules": [
+    {
+      "provider": "openopus",
+      "license": "CC0-1.0",
+      "evidence": "https://openopus.org/",
+      "allow": {
+        "composer": [
+          "id",
+          "name",
+          "complete_name",
+          "birth",
+          "death",
+          "epoch"
+        ],
+        "work": [
+          "id",
+          "title",
+          "subtitle",
+          "genre",
+          "catalogue",
+          "catalogue_number",
+          "key",
+          "popular",
+          "recommended",
+          "searchterms"
+        ]
+      },
+      "block": [
+        "portrait bytes without independent rights review",
+        "arbitrary linked text"
+      ],
+      "revision": "response SHA-256 plus retrieval time; upstream API version is not a record revision"
+    },
+    {
+      "provider": "musicbrainz",
+      "license": "CC0-1.0",
+      "evidence": "https://musicbrainz.org/doc/MusicBrainz_Database/Download",
+      "evidenceRevision": "WikiDocs transclusion 77812; core mbdump vs derived tables",
+      "allow": {
+        "work": [
+          "id",
+          "title",
+          "type",
+          "iswcs",
+          "language",
+          "languages"
+        ],
+        "artist": [
+          "id",
+          "name",
+          "sort-name",
+          "type",
+          "gender",
+          "country",
+          "life-span",
+          "aliases.name",
+          "aliases.sort-name",
+          "aliases.locale",
+          "aliases.type"
+        ],
+        "release-group": [
+          "id",
+          "title",
+          "primary-type",
+          "secondary-types",
+          "first-release-date",
+          "artist-credit"
+        ],
+        "release": [
+          "id",
+          "title",
+          "date",
+          "country",
+          "barcode",
+          "status",
+          "release-group",
+          "media.position",
+          "media.tracks.number",
+          "media.tracks.position",
+          "media.tracks.title",
+          "media.tracks.recording.id"
+        ],
+        "recording": [
+          "id",
+          "title",
+          "length",
+          "isrcs",
+          "artist-credit"
+        ],
+        "series": [
+          "id",
+          "name",
+          "type"
+        ]
+      },
+      "block": [
+        "tags",
+        "user-tags",
+        "genres and genre-to-entity associations",
+        "ratings",
+        "user-ratings",
+        "annotations",
+        "edit history",
+        "editor identities",
+        "cover-art/event-art mappings and images",
+        "unknown nested fields"
+      ],
+      "nestedPolicy": "artist-credit permits only core artist id/name, credited name and joinphrase; nested other objects are projected through their own entity allowlist; no recursive pass-through",
+      "revision": "response SHA-256 plus observed time unless explicit provider revision is supplied; created timestamp is not an entity revision"
+    },
+    {
+      "provider": "wikidata",
+      "license": "CC0-1.0",
+      "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+      "allow": {
+        "entity": [
+          "id",
+          "lastrevid",
+          "labels",
+          "aliases",
+          "descriptions",
+          "claims.mainsnak",
+          "claims.qualifiers",
+          "claims.references",
+          "claims.rank",
+          "sitelinks"
+        ]
+      },
+      "block": [
+        "non-entity namespace prose",
+        "linked article/media bytes without separate rights"
+      ],
+      "revision": "lastrevid plus response hash; preserve claim rank, date precision and reference IDs"
+    },
+    {
+      "provider": "wikipedia",
+      "license": "CC-BY-SA-4.0 with edition/import exceptions",
+      "evidence": "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use",
+      "allow": {
+        "document": [
+          "page.id",
+          "title",
+          "latest.id",
+          "latest.timestamp",
+          "license.url",
+          "license.title",
+          "html sanitized to text",
+          "canonical/history/revision URLs"
+        ]
+      },
+      "required": [
+        "language",
+        "immutable revision identity",
+        "content SHA-256",
+        "source/history attribution",
+        "license URL",
+        "adaptation notice",
+        "review state"
+      ],
+      "block": [
+        "unverified license",
+        "summary image bytes",
+        "arbitrary scripts/styles/remote resource loads",
+        "unlabeled translation"
+      ],
+      "revision": "prefer revision/{id}/with_html or page/with_html with returned latest.id and a hash bound to that body"
+    },
+    {
+      "provider": "commons",
+      "license": "per-file only",
+      "evidence": "https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia",
+      "allow": {
+        "metadata": [
+          "imageinfo.url",
+          "imageinfo.descriptionurl",
+          "imageinfo.thumburl",
+          "imageinfo.sha1",
+          "imageinfo.size",
+          "imageinfo.width",
+          "imageinfo.height",
+          "imageinfo.mime",
+          "imageinfo.timestamp",
+          "extmetadata.Artist",
+          "extmetadata.Credit",
+          "extmetadata.LicenseShortName",
+          "extmetadata.LicenseUrl",
+          "extmetadata.Restrictions"
+        ]
+      },
+      "required": [
+        "author",
+        "source file page and file revision/hash",
+        "license identifier/version/URL or verified public-domain basis",
+        "restriction review",
+        "transformation notice"
+      ],
+      "block": [
+        "fair use",
+        "NC",
+        "ND",
+        "unknown or missing rights evidence",
+        "unreviewed public-domain label alone"
+      ],
+      "revision": "file timestamp+SHA1 source identity plus downloaded SHA256; extmetadata observation hash retained"
+    }
+  ]
+}

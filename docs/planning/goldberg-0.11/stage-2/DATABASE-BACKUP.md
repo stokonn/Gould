@@ -1,0 +1,59 @@
+# Physical separation and lossless migration/backup specification
+
+**Design only. No production Room schema, migration or backup reader/writer changed.** [catalogue-research.sql](catalogue-research.sql) runs only on temporary host databases. It is a testable relational proposal, not a Room export or ready-to-apply migration.
+
+## Stores and ownership
+
+| Store | Authoritative contents / lifecycle |
+|---|---|
+| `opus.db` | Existing personal journal/profile/repertoire/drafts/archives/badges/favorites/saved links; new personal catalogue anchors and restoration state only when separately implemented. Never recreate or destructively migrate. |
+| Proposed `goldberg-catalogue.db` | Normalized entity subtypes, relationships/credits, typed provider identities/redirects, aliases/B-tree/FTS4 indexes, source records/assertions/rights and derived document/media indexes. Rebuildable from licensed providers, curated overlay and retained local snapshots. Initial catalogue schema v1 is separate from opus.db version. |
+| App-private `offline/` | Versioned ready manifests, progress journal, rights snapshots, hash-addressed objects and atomic ready pointers. User-requested pins survive generic cache clear or catalogue rebuild. These files are downloadable content, not journal. |
+| App-private cache/staging | Bounded raw responses and opportunistic thumbnails/temp downloads. Disposable after generation-safe reconciliation. No portable-backup dependency. |
+| Existing preferences | Retain current stores during upgrade; a versioned allowlisted portable snapshot adds appearance/locale/desired reminder/Smart settings. Runtime permission/token/identity secrets stay device-local. |
+
+No cross-file SQLite FK, ATTACH transaction or distributed commit is assumed between the two databases, files and SharedPreferences. Journal always renders without catalogue open. A stable catalogue anchor in opus.db contains personal owner kind/id, catalogue UUID/kind, legacy provider keys, original title/creator snapshot and minimal source/rights evidence. Preserve original Piece.id and existing numeric strings; no mandatory live catalogue reference. Recordings/favorites/session snapshots can retain their legacy identifiers alongside optional typed anchor mappings. Never cascade delete personal rows because an entity disappears. A catalogue redirect changes resolution, not the anchor snapshot or practice accounting.
+
+Schema proposal: typed entity root with `(id,kind)` uniqueness and subtype composite FKs prevents work/artist confusion; ordered part/source/arrangement/credit/track/collection joins; unique provider-kind-ID; immutable source and rights rows; per-field assertions; language/revision-keyed documents; content-addressed media. B-tree aliases support prefixes, FTS4 supports token prefixes and existing SQLite compatibility. FTS is a derived index maintained in the same catalogue transaction; unique entity-result dedup and stable paging are repository responsibilities. Validate relationship kind, graph cycles and approved rights before commit: the host DDL alone does not enforce them all. API 26 Android FTS4/Unicode behavior and Room integration must be tested in Stage 3; host SQLite availability is not Android proof.
+
+## Migration protocol to implement in Stage 3
+
+1. Seed exact schema 8 journal, old drafts v1, backup formats 1–4 and existing preference values in a disposable emulator. Export/hash every critical row/byte before changes. Include removed catalogue rows, two arrangements, untimed links, note-only parts and manual pieces.
+2. Add only required personal anchor/restoration tables/columns transactionally in opus.db. Select the next personal schema number at implementation time (currently8). Keep all historical migration paths and no destructive fallback. No provider calls, new clock or microphone in migration.
+3. Capture existing numeric work/composer IDs, original personal snapshots and legacy saved-recording keys into anchors with stable opaque catalogue UUIDs. UUID allocation for legacy keys is stored once in a durable personal identity registry, not regenerated from title or an ephemeral cache. One provider key can be referenced by many personal rows; arrangements use distinct personal pieces/anchors without assigning a second legacy catalogWorkId that violates the existing unique index.
+4. Preserve existing catalog_composers/catalog_works/catalog_cache tables in opus.db during the initial bridge. They are compatibility data for old readers/tests; do not drop or bulk-move them in the first migration. Lazy copy validated metadata to the separate catalogue DB outside the personal migration, idempotently by stored mapping, then checkpoint catalogue generation. Future removal needs its own proven migration/backup plan. Partial copy is retryable; personal use is not blocked.
+5. Catalogue DB corruption/rebuild swaps a new generation only after validation and reindexes offline manifests/anchors. UUIDs referenced personally come from the durable registry; fetches cannot remint them. Preserve old generation until the replacement is usable and no reader holds it. Failure rolls back the catalogue copy only, never journals or drafts.
+6. Imported catalogue metadata must not invoke AchievementStore to rewrite session snapshots. Preserve historical badge semantics and backfill behavior through explicit compatibility queries where required; measure any personal reconciliation separately. Original dates/times/credit remain unchanged. Manual title/composer overrides remain authoritative.
+
+Practice credit is session-authoritative: measured parts reconcile exactly once with session.durationMillis; untimed links earn zero. Parent/movement/medley/arrangement aggregates are alternative views of the same measured entries and must not be added together as independent global totals. Provider recording lengths, number of source works and bundle dependencies never add credit.
+
+## Extended portable backup envelope v5 proposal
+
+Current readers 1–4 remain byte/field compatible. Propose new format version5 only when implementing the extra portable fields, with a separate journalSchema field. A v5 export contains: existing critical journal tables and personal anchors/legacy identity registry; allowlisted preference snapshot (theme/fonts/statistics/accent/cards/layout/density/sort/locale, desired reminder and Smart configuration); active recovery raw payload+format+hash+completion token+credited time; recovery archives; format/section versions/hashes and creation metadata. Catalogue DB, downloads, pending network sessions and raw cache are not required. v4 cache tables remain accepted on import and become optional bridge data, never silently discarded from an old file before validation.
+
+[backup-v5-envelope.json](fixtures/backup-v5-envelope.json) is a **small contract example**, not a complete Room import fixture: its journal rows deliberately show only timing/key fields. [research.py](research.py) validates envelope/timing and an atomic file publication model; it does not claim an Android restore implementation. Stage 3 must create complete golden v5 Room-compatible fixtures using every field from actual schema and test parser/size limits. Existing three historical fixture files are reused unchanged, not duplicated.
+
+Do not blindly serialize SharedPreferences. Export only documented user choices, excluding Google account/email/photo URL/tokens/refresh tokens/admin roles/challenges, quote cache IDs, device generation and Android permission grants. A restored mobile-consent preference is a recorded prior choice, **inactive until explicit destination-device confirmation**. Restore desired reminders without assuming notification permission; schedule only after platform checks. Preserve avatar/profile data as critical, not disposable media. Keep the existing 32 MiB historical reader bound; measure v5 critical payload sizes before choosing a new upper limit. Stream/hash exports where practical, never trim drafts/notes to fit. Oversize failure leaves the original exportable data and explains the exact limit.
+
+Drafts: export the exact original checkpoint bytes and version, including unreadable payloads as opaque recoverable archives. Import always paused with new execution identity and no microphone. If completionToken already exists among imported sessions, retain original draft bytes in an archive and classify already_completed instead of resuming/double-crediting. If token/timing conflicts, preserve both evidence payloads and block automatic completion; never guess a duration or delete one. Repeated restore replaces exactly under explicit confirmation, not duplicate insertion. An unfinished destination draft must be checkpointed and independently preserved/exportable before replacement; confirmation to restore another journal is not blanket consent to discard original recovery bytes.
+
+## Multi-store restore and failure matrix
+
+Validate all sections, hashes, sizes, preference enums, timing/relationship invariants and versions in isolated memory/temp storage **before** replacing anything. Pause practice capture/download writers, increment generation and archive the current destination recovery payload before accepted replacement. One opus.db transaction replaces critical tables and stores a validated pending-preference-application record. If it fails, every old personal row/draft remains usable.
+
+Preferences cannot join that transaction: apply the allowlisted snapshot idempotently after commit, record its generation/hash in opus.db, then acknowledge completion. Crash before preference application must retry it rather than report complete; crash after preferences but before acknowledgement applies the same values again. Never roll back a committed journal by deleting it. Catalogue reconstruction is optional/lazy; failure shows saved snapshots and retry. Android locale/reminder side effects occur only after authoritative personal commit and successful platform checks. No network/OS permission prompt is a precondition to recovering notes.
+
+| Future regression | Required result/evidence |
+|---|---|
+| Every personal schema 1–8→new, SQLite WAL checkpoint fixture, repeated open | Exact original IDs/notes/dates/credit/profile/prefs/draft bytes retained; Room validates schema and FKs. |
+| Format1/schema 4–5, format 2/schema 6, format 3/schema 7, format 4/schema 8 | Every old portable field retained with documented defaults for newly portable preferences/draft fields; original input unchanged. |
+| v5 full and minimal/manual/no-catalogue fixture | Exact round trip, safe missing optional source data, original strings preserved. |
+| Same token completed+draft / duplicate completion / medley+movement attribution | One completed session/credit; preserved recovery evidence; no parent/source double-counting. |
+| Malformed/truncated/oversize/unknown-version/invalid-enum/foreign-link input | Reject before replacement, unchanged source and destination export/retry. |
+| Crash before/after each journal/prefs/catalogue/file phase | Recoverable old or committed new journal; explicit pending state; no destructive repair or half-claimed success. |
+| Cache clear/catalogue deletion/rebuild/offline removal | All personal anchors and original snapshots usable; pinned manifests preserved unless explicitly removed. |
+| Account switch/sign-out/absent Google | Local backup/recovery unaffected; no credentials/roles revived. |
+
+Older APKs generally cannot open a newer personal Room schema. Do not offer downgrade by uninstalling; retain a compatible pre-upgrade export and exact trusted signed APK, with a separately reviewed recovery procedure. This stage specifies tests; actual Room migration, v5 parser, preference restore and emulator upgrade execution belong to Stage 3, not this research branch.
+
+created by stokonn with love <3

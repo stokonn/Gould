@@ -58,3 +58,7 @@ This is a logical diagram, not new deployable infrastructure. Reuse OpusApplicat
 - [ ] Owner resolves applicable decisions and separately instructs Stage 2. **Do not start automatically.**
 
 created by stokonn with love <3
+
+## Stage 2 continuation — 2026-10-18
+
+The owner's subsequent Stage 2 instruction settles music semantics/UUIDs, separate catalogue storage, extended settings/draft backups, Czech/English fallback and measured storage/performance research. The [Stage 2 package](stage-2/README.md) refines these into contracts, fixtures, source observations and measurements. Stage 1 text above remains historical evidence; its open local-design choices are superseded by the Stage 2 decision register. No Stage 3 implementation, main merge, cloud deployment or release follows automatically.

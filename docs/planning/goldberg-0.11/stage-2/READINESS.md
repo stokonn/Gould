@@ -1,0 +1,71 @@
+# Stage 2 verification and Stage 3 readiness
+
+Status: **Stage 2 research/contracts complete; Stage 3 not started.** Base Stage 1 commit `c3d5e03b9a4936d8db393df664af209a8853c767`; production baseline source `556970ab7407ec6986e3678657adbd2168516468`. Work stays on planning/goldberg-0.11-stage-2, with no main merge/tag/release or cloud changes. The final pushed commit and GitHub evidence are attached to existing issue31 rather than a self-referential hash in this document.
+
+## Delivered scope
+
+| Requirement | Evidence / limit |
+|---|---|
+| Logical identity/music model | CONTRACTS.md and contracts.json: opaque UUIDs, typed reversible mappings, independent arrangements/movements/parts/medleys/mashups, credited artists, album/EP/single/soundtrack, release/recording/collection distinctions. |
+| Physical separation/schema | DATABASE-BACKUP.md and catalogue-research.sql: protected opus.db anchors, separate regenerable catalogue, persistent offline manifests, typed FK proposal, B-tree/FTS4; no Room migration implemented. |
+| Adapter/search/provenance | Version1 envelopes, explicit field projection, independent provider errors, revision/rights association, deterministic generation-bound cursors and language fallback. |
+| Licensed fixtures | 26 authored fictional entities; 25 named adversarial/semantic scenarios;24 real CC0 ID/title projections; authored EN/CZ text and four shared-dependency manifests; no real article/media content committed. |
+| Source coverage and cost |25 bounded API requests; query-stratum retrieval observations, unavailable Wikidata/maxlag, two licensed revision-bearing REST documents measured locally; no claim of verified canonical cross-provider mapping. |
+| Backup/migration safety | Extended-v5 envelope and detailed old-format/new-schema/crash/token/settings/draft test matrix. Minimal fixture is not a full Room backup. |
+| Performance |1k/10k/50k host scales, 10k-session journal query baseline, five identified emulator launches/PSS, index footprint and explicitly modeled bundle cost; proposed measured guardrails. |
+| Workflow |Existing issue31/milestone4/Goldberg Development reused, English Wiki planning-only link; unrelated RELEASE_NOTES.md preserved and no physical device. |
+
+## Exact executed verification
+
+```sh
+python3 docs/planning/goldberg-0.11/stage-2/research.py generate
+python3 docs/planning/goldberg-0.11/stage-2/research.py check
+python3 docs/planning/goldberg-0.11/stage-2/research.py bench --output docs/planning/goldberg-0.11/stage-2/results/host-benchmark.json
+python3 -m py_compile docs/planning/goldberg-0.11/stage-2/research.py docs/planning/goldberg-0.11/stage-2/collect_sources.py docs/planning/goldberg-0.11/stage-2/measure_emulator.py
+GRADLE_USER_HOME=/tmp/goldberg-gradle-home ./gradlew --offline assembleDebug assembleDebugAndroidTest lintDebug testDebugUnitTest --rerun --no-daemon --max-workers=1
+python3 scripts/check_migrations.py
+python3 scripts/check_backup_fixtures.py
+python3 scripts/check_history_paging.py
+python3 scripts/check_localization.py
+python3 scripts/check_agent_policy.py
+python3 docs/planning/goldberg-0.11/stage-2/verify_stage.py
+```
+
+- **49 isolated contract checks pass**: invalid IDs/namespaces/relationship kinds/cycles/positions; typed FK rejection; adapter/search shape/error states; denied rights/missing attribution; EN/CZ fallback; bundle path/rights/hash/atomic-ready publication; portable-envelope validation/timing/token reconciliation model; historical fixture readability. These are research models, not tests of unimplemented Android v5 restore/cache behavior.
+- Host benchmarks completed on generated databases; each query31 samples (journal full snapshot 11). Saved results are observations, not deterministic timing expectations. Fixture regeneration is byte deterministic; provider retrievals and performance results intentionally are not.
+- Emulator measurements ran only on explicitly verified **emulator-5582**, API 37 x86_64: five process launches/meminfo; exact installed maintenance APK digest recorded. No install, wipe, instrumentation suite execution or acoustic test during Stage 2.
+- Gradle **BUILD SUCCESSFUL in 13 s**, 83 tasks (2 executed/81 up-to-date); JVM task explicitly rerun: **75 tests, 0 failures/errors/skips**. Other build/instrumentation assembly/lint tasks reused unchanged source outputs; not a clean rebuild. Lint reports **0 errors/fatal, 83 existing warnings**. Log `/tmp/goldberg011-stage2-gradle.log`.
+- Host historical migrations1–7→8, three backup fixtures, history 106 sessions/four pages/untimed links, localization 804 CZ/EN resources and canonical policy/Wiki checks pass. Host SQL is not Android Room migration execution. Agent runtime loading is untested.
+- Verification covered 11 JSON documents and 38 local links, deterministic fixture/hash, research-only changed-path and protected-note/APK checks; all pass; production app/Room exports/Gradle/CI/scripts unchanged. Private refs and generated bytecode are excluded. No new app-source license is invented.
+
+## Explicit limitations and recovered failures
+
+Initial Wikidata probes saw HTTP200/maxlag but the exploratory loop did not stop until its eight distinct planned queries were exhausted; collector corrected, all errors preserved. No further overload retry/bypass. MusicBrainz primary Data_License/Database opens were429; the accessible primary Download page resolved the core/derived license split. Czech Action metadata was unavailable; the separately documented REST response succeeded with its own license/revision. Raw article bodies remain local and no image bytes were fetched. These are not falsely labeled verified cross-source matches or complete provider integration.
+
+Unexecuted future gates: actual Android separate Room DB/FTS4 compatibility on minSdk26; schema 8→new and all old paths in Room; v5 full parser/export/restore/preference crash recovery; timer fairness under catalogue load; real bundle streaming/decode/resume/low-space/device-network transitions; UI rendering/localization changes; live Google/backend auth, quota/security and restore drills; broader genre/artist/release/recording quality sample. They belong to later stages and block corresponding implementation/release acceptance, not this research handoff. No physical-device tests are requested or performed.
+
+## Decision register after owner instructions
+
+| Decision | Status / next dependency |
+|---|---|
+| D1 semantics | **Resolved**: all approved genres remain; independent selectable movements/parts and distinct arrangements/medleys/mashups; Albums includes labeled albums/EPs/singles/soundtracks. Sample strata do not limit product coverage. |
+| D2 IDs | **Resolved**: opaque internal UUIDs, retained numeric legacy keys, evidence-based reversible same-kind mappings; never rewrite personal history. |
+| D3 storage/backups | **Resolved design**: separate goldberg-catalogue.db; opus.db authoritative with durable anchors/registry; portable settings and paused raw drafts; readers 1–4 retained, v5 proposed. Actual Room schema number chosen routinely in Stage 3 after checking current head; no extra owner decision needed for that numbering. |
+| D6 language/rights | **Resolved policy**: verified Czech or English, English fallback, default-deny field/license projection, returned revision binding. Live Wikidata unavailable and unsupported license/field cases remain operational gates, not a reason to fabricate or relax rights. |
+| D7 storage/consent | **Resolved direction**, measured provisional 256 MiB limit/8 MiB large-job prompt/dynamic reserve proposed in MEASUREMENTS.md. Configurable, approval-bound metered work, no automatic mobile downloads. Wider sample/Android measurements tune these in Stage 5; no mandatory owner choice needed to start local persistence. |
+| D9 performance | **Measured/proposed**: host budgets, lazy startup and matched-emulator regression guards documented. They are not physical-phone guarantees; Stage 3/4/5 must validate actual implementation and broaden sample. |
+| D4 backend | **Unresolved for Stage 6**: Supabase pause/restriction acceptance versus a proven Workers/D1 alternative; strict0 CZK immutable. No local Stage 3 dependency or provisioning permission. |
+| D5 community operation | **Unresolved before collection**: named controller/operator/contact, moderation/retention/rights route, audience/minors/region/transfers and contribution terms. No cloud collection occurs in Stage 2. |
+| D8 Admin | **Unresolved for Stage 6/7**: Android packaging, browser auth/session flow, trusted moderator bootstrap/recovery. Same secured backend requirement remains. |
+
+## Exact Stage 3 prerequisites and exit gates
+
+1. Receive a separate owner instruction to implement Stage 3 on a branch containing this verified Stage 2 commit. Re-read canonical/maintenance rules and verify no intervening production schema changes. Do not begin automatically.
+2. Implement only local persistence/compatibility scope: additive opus.db anchors/identity registry/pending preference restore; independent catalogue schema/DAOs/FTS; compatibility bridge. Preserve IDs/keys/certificate/draft bytes; no network in migration, no removal of legacy tables in the first bridge, no cloud work.
+3. Create full valid v5 fixtures (the Stage 2 envelope is insufficient), retain historical readers 1–4, and execute the DATABASE-BACKUP.md failure matrix in Room/emulator. Preserve destination recovery before replacement; checkpoint+WAL-safe fixture handling; completion-token idempotency; no microphone auto-resume.
+4. Prove catalogue deletion/rebuild and failed copy leave personal repertoire/history/favorites/notes/profile/prefs/recovery usable offline. Test minSdk26 FTS behavior, typed graph invariants, journal-first startup and download/restore generation exclusion.
+5. Run required JVM/migration/backup/localization/lint/build and actual emulator tests/seeded in-place upgrade applicable to production changes, plus source/APK integrity if building a candidate. Report host versus emulator results distinctly. Keep later source/UI/cloud work gated and stop after the instructed stage.
+
+**Readiness conclusion:** local Stage 3 has an actionable, bounded design and fixtures with no unresolved owner product decision blocking its start. Implementation and compatibility acceptance remain unperformed; a future release is not authorized by this conclusion. D4/D5/D8 and broader source verification remain later-stage gates.
+
+created by stokonn with love <3

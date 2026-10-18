@@ -1,0 +1,38 @@
+{
+  "contractVersion": 1,
+  "fictional": true,
+  "license": "CC0-1.0",
+  "adapter": {
+    "contractVersion": 1,
+    "requestId": "b2dfaf5a-d680-4c7b-b8b7-e131320b85fc",
+    "provider": "fixture-a",
+    "providerKind": "work",
+    "externalId": "87",
+    "observedAt": "2026-10-18T00:00:00Z",
+    "revision": "sha256:fixture",
+    "rights": [],
+    "data": [],
+    "state": "unavailable",
+    "error": {
+      "code": "maxlag",
+      "retryAfterUtc": "2026-10-18T00:01:00Z",
+      "detailCode": "provider_lag"
+    }
+  },
+  "search": {
+    "contractVersion": 1,
+    "queryId": "b2dfaf5a-d680-4c7b-b8b7-e131320b85fc",
+    "query": "fixture",
+    "category": "works",
+    "items": [],
+    "sources": [
+      {
+        "provider": "fixture-a",
+        "state": "unavailable",
+        "fetchedAt": null,
+        "error": "maxlag"
+      }
+    ],
+    "nextCursor": null
+  }
+}

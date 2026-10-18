@@ -1,0 +1,132 @@
+{
+  "contract": "goldberg-catalogue-contract",
+  "version": 1,
+  "uuid": "RFC 9562 UUID opaque; production generated UUIDv4; fixtures UUIDv5 in test namespace only",
+  "entityKinds": [
+    "work",
+    "arrangement",
+    "artist",
+    "album",
+    "release",
+    "recording",
+    "collection"
+  ],
+  "workTypes": [
+    "composition",
+    "movement",
+    "part",
+    "medley",
+    "mashup"
+  ],
+  "albumTypes": [
+    "album",
+    "ep",
+    "single",
+    "soundtrack"
+  ],
+  "searchCategories": [
+    "all",
+    "works",
+    "artists",
+    "albums",
+    "lists"
+  ],
+  "languages": [
+    "cs",
+    "en"
+  ],
+  "fallbackLanguage": "en",
+  "providerStates": [
+    "fresh",
+    "cached",
+    "stale",
+    "missing",
+    "unavailable",
+    "rate_limited",
+    "invalid",
+    "blocked_rights"
+  ],
+  "bundleStates": [
+    "queued",
+    "waiting_for_policy",
+    "downloading",
+    "validating",
+    "installing",
+    "ready",
+    "paused",
+    "failed_retryable",
+    "quarantined"
+  ],
+  "adapterRequired": [
+    "contractVersion",
+    "requestId",
+    "provider",
+    "providerKind",
+    "externalId",
+    "observedAt",
+    "revision",
+    "rights",
+    "data",
+    "state"
+  ],
+  "searchRequired": [
+    "contractVersion",
+    "queryId",
+    "query",
+    "category",
+    "items",
+    "sources",
+    "nextCursor"
+  ],
+  "provenanceRequired": [
+    "provider",
+    "recordId",
+    "revision",
+    "sourceUrl",
+    "retrievedAt",
+    "payloadSha256",
+    "license",
+    "licenseUrl",
+    "attribution",
+    "reviewState"
+  ],
+  "bundleRequired": [
+    "contractVersion",
+    "bundleId",
+    "kind",
+    "entityId",
+    "revision",
+    "language",
+    "objects",
+    "dependencies",
+    "metadataSnapshot",
+    "previousReadyRevision"
+  ],
+  "backupRequired": [
+    "format",
+    "version",
+    "journalSchema",
+    "journalTables",
+    "personalCatalogueAnchors",
+    "preferences",
+    "recovery"
+  ],
+  "backupProposedVersion": 5,
+  "backupAcceptedVersions": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "consent": {
+    "automatic": "validated unmetered Wi-Fi only",
+    "metered": "explicit per-job approval bound to manifest hash and estimated bytes; optional durable preference never implied",
+    "revocation": "pause before next read/chunk; previous ready revision remains"
+  },
+  "revision": {
+    "immutable": "provider revision ID or content SHA-256 plus observedAt for unversioned providers",
+    "conflict": "retain assertions; no rewrite of personal snapshots"
+  },
+  "unknownFields": "reject contract major version; ignore explicitly optional additive fields; rights default deny"
+}

@@ -1,0 +1,63 @@
+{
+  "format": "goldberg-backup",
+  "journalSchema": 8,
+  "journalTables": {
+    "session_parts": [
+      {
+        "durationMillis": 3000,
+        "notes": "Preserve",
+        "pieceId": 7,
+        "sessionId": 1,
+        "title": "Keep original"
+      }
+    ],
+    "session_piece_links": [
+      {
+        "pieceId": 8,
+        "sessionId": 1,
+        "title": "Untimed"
+      }
+    ],
+    "sessions": [
+      {
+        "completionToken": "fixture-completion",
+        "durationMillis": 3000,
+        "id": 1
+      }
+    ]
+  },
+  "personalCatalogueAnchors": [
+    {
+      "composer": "Original personal composer",
+      "entityId": "6e37c82a-260e-5375-8d92-429f75e599f0",
+      "legacyOpenOpusId": "10074",
+      "pieceId": 7,
+      "title": "Original personal title"
+    }
+  ],
+  "preferences": {
+    "appearance": {
+      "accent": "Slate",
+      "cards": "Outline",
+      "density": "Compact"
+    },
+    "locale": "cs",
+    "media": {
+      "meteredConsent": false
+    }
+  },
+  "recovery": {
+    "archives": [
+      {
+        "rawPayload": "unchanged malformed original"
+      }
+    ],
+    "completionToken": "fixture-completion",
+    "creditMillis": 3000,
+    "draftFormat": 1,
+    "executionMustRestart": true,
+    "rawPayload": "{\"version\":1,\"token\":\"fixture-completion\",\"credited\":3000}",
+    "state": "paused"
+  },
+  "version": 5
+}

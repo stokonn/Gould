@@ -1,0 +1,422 @@
+{
+  "aliases": [
+    {
+      "entityId": "6e37c82a-260e-5375-8d92-429f75e599f0",
+      "language": "cs",
+      "normalized": "zlutoucka skladba",
+      "value": "Žluťoučká skladba"
+    },
+    {
+      "entityId": "6e37c82a-260e-5375-8d92-429f75e599f0",
+      "language": "en",
+      "normalized": "fixture classical study",
+      "value": "Fixture classical study"
+    },
+    {
+      "entityId": "6e37c82a-260e-5375-8d92-429f75e599f0",
+      "language": "ja",
+      "normalized": "試験作品",
+      "value": "試験作品"
+    }
+  ],
+  "cases": [
+    "namesake_people",
+    "group_not_person",
+    "two_arrangements",
+    "selectable_movement",
+    "selectable_part",
+    "medley_two_sources",
+    "mashup_two_sources",
+    "unicode_alias",
+    "provider_id_collision",
+    "reversible_redirect",
+    "redirect_cycle_rejected",
+    "wrong_kind_merge_rejected",
+    "missing_id",
+    "conflicting_revision",
+    "studio_live",
+    "release_editions",
+    "albums_ep_single_soundtrack",
+    "duplicate_collection_position_rejected",
+    "denied_license",
+    "missing_attribution",
+    "cs_fallback_en",
+    "failed_bundle_update",
+    "metered_consent_revoked",
+    "draft_idempotency",
+    "historical_backup_readers"
+  ],
+  "contractVersion": 1,
+  "documents": [
+    {
+      "attribution": "Goldberg Stage 2 authored fixture; not a biography",
+      "contentSha256": "3c9e26ababa08dbd58d08bf49bdc7d46f74f0d5a883f3bc354b82ade3c0943a7",
+      "entityId": "6e37c82a-260e-5375-8d92-429f75e599f0",
+      "id": "502106b9-d78d-56c3-a793-e85be50a913e",
+      "language": "en",
+      "license": "CC0-1.0",
+      "reviewState": "approved",
+      "revision": "fixture-v1",
+      "sourceUrl": "https://github.com/stokonn/Goldberg",
+      "text": "Synthetic music reference text for contract tests; no real-world claim."
+    },
+    {
+      "attribution": "Goldberg Stage 2 authored fixture; not a biography",
+      "contentSha256": "81efe77b0fe35a397d51f732526a30c3a39632579d8c5f20d76f759982346010",
+      "entityId": "6e37c82a-260e-5375-8d92-429f75e599f0",
+      "id": "825c97d1-2880-53d4-a595-e5cbb608bbc6",
+      "language": "cs",
+      "license": "CC0-1.0",
+      "reviewState": "approved",
+      "revision": "fixture-v1",
+      "sourceUrl": "https://github.com/stokonn/Goldberg",
+      "text": "Syntetický hudební text pro testy kontraktu; nejde o skutečný životopis."
+    }
+  ],
+  "entities": [
+    {
+      "genre": "classical",
+      "id": "6e37c82a-260e-5375-8d92-429f75e599f0",
+      "key": "work-classical",
+      "kind": "work",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture classical study",
+      "workType": "composition"
+    },
+    {
+      "genre": "jazz",
+      "id": "56320fe0-3f70-55af-b723-8519477bf34c",
+      "key": "work-jazz",
+      "kind": "work",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture jazz study",
+      "workType": "composition"
+    },
+    {
+      "genre": "blues",
+      "id": "e84608fd-3187-50ca-8c0e-a5b5e892779d",
+      "key": "work-blues",
+      "kind": "work",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture blues study",
+      "workType": "composition"
+    },
+    {
+      "genre": "pop",
+      "id": "49da239c-2457-5479-aefb-027fc808cc58",
+      "key": "work-pop",
+      "kind": "work",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture pop study",
+      "workType": "composition"
+    },
+    {
+      "genre": "rock",
+      "id": "6ad65750-512c-5666-bb9c-6176cd18ea81",
+      "key": "work-rock",
+      "kind": "work",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture rock study",
+      "workType": "composition"
+    },
+    {
+      "genre": "film",
+      "id": "55ecd549-3be2-51c2-ba9f-e617db3158d0",
+      "key": "work-film",
+      "kind": "work",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture film study",
+      "workType": "composition"
+    },
+    {
+      "genre": "game",
+      "id": "8993daed-6cbe-5926-81eb-37f3938368d9",
+      "key": "work-game",
+      "kind": "work",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture game study",
+      "workType": "composition"
+    },
+    {
+      "genre": "folk",
+      "id": "daa4306c-78c2-561c-81f0-34a3fe60ecd7",
+      "key": "work-folk",
+      "kind": "work",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture folk study",
+      "workType": "composition"
+    },
+    {
+      "id": "3ba816d8-799f-51d6-af8d-cbe7bdccd21e",
+      "key": "movement-1",
+      "kind": "work",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture movement I",
+      "workType": "movement"
+    },
+    {
+      "id": "fde1417a-3992-5865-bf02-95821a22c78e",
+      "key": "movement-2",
+      "kind": "work",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture movement II",
+      "workType": "part"
+    },
+    {
+      "id": "1a617d99-0750-5439-ae7c-10e45a857683",
+      "key": "medley",
+      "kind": "work",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture medley",
+      "workType": "medley"
+    },
+    {
+      "id": "5f55d6ee-1973-510e-9f01-66835d012c68",
+      "key": "mashup",
+      "kind": "work",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture mashup",
+      "workType": "mashup"
+    },
+    {
+      "id": "e7e71ce1-971d-5d08-8cf9-ec87a79b29b9",
+      "instrumentation": "piano",
+      "key": "arr-simple",
+      "kind": "arrangement",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture piano arrangement A"
+    },
+    {
+      "id": "3d118508-59a7-55ab-ac2a-e392d26d3451",
+      "instrumentation": "piano duet",
+      "key": "arr-duet",
+      "kind": "arrangement",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture piano arrangement B"
+    },
+    {
+      "artistType": "person",
+      "id": "346302d1-6027-5533-a673-5c80c2e85f0c",
+      "key": "person-a",
+      "kind": "artist",
+      "revision": 1,
+      "status": "active",
+      "title": "Alex Example"
+    },
+    {
+      "artistType": "person",
+      "id": "825930d9-b619-5ba6-973a-830930a763ea",
+      "key": "person-b",
+      "kind": "artist",
+      "revision": 1,
+      "status": "active",
+      "title": "Alex Example"
+    },
+    {
+      "artistType": "group",
+      "id": "8358533a-7d36-5c07-ab7f-0be07a4fcb55",
+      "key": "group",
+      "kind": "artist",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture Ensemble"
+    },
+    {
+      "albumType": "album",
+      "id": "42744ffd-526b-515f-86ef-1d4f6250f6d5",
+      "key": "album-album",
+      "kind": "album",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture album"
+    },
+    {
+      "albumType": "ep",
+      "id": "08b05c69-35ac-540a-8672-a734a31ff7e7",
+      "key": "album-ep",
+      "kind": "album",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture ep"
+    },
+    {
+      "albumType": "single",
+      "id": "4f83815d-f483-56a3-9da1-f37035d9135a",
+      "key": "album-single",
+      "kind": "album",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture single"
+    },
+    {
+      "albumType": "soundtrack",
+      "id": "a496c4e2-13db-5c71-a2d2-c51357703eb5",
+      "key": "album-soundtrack",
+      "kind": "album",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture soundtrack"
+    },
+    {
+      "albumId": "42744ffd-526b-515f-86ef-1d4f6250f6d5",
+      "id": "d7a2cc65-a4d5-5a90-8a8d-1e03cf153a4d",
+      "key": "edition-0",
+      "kind": "release",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture edition 0"
+    },
+    {
+      "albumId": "42744ffd-526b-515f-86ef-1d4f6250f6d5",
+      "id": "743a9cce-89fa-56de-aea0-35a0fbf18b1a",
+      "key": "edition-1",
+      "kind": "release",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture edition 1"
+    },
+    {
+      "durationMs": 180000,
+      "id": "767efc3c-6530-50fa-a04d-bc1eaa39ffb3",
+      "key": "recording-0",
+      "kind": "recording",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture studio"
+    },
+    {
+      "durationMs": 180000,
+      "id": "30662fff-3c80-5fdc-a03d-fe481fd943e3",
+      "key": "recording-1",
+      "kind": "recording",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture live"
+    },
+    {
+      "id": "5eef2b52-bd94-5319-82e8-59624dcbb676",
+      "key": "collection",
+      "kind": "collection",
+      "revision": 1,
+      "status": "active",
+      "title": "Fixture personal list"
+    }
+  ],
+  "fictional": true,
+  "identities": [
+    {
+      "entityId": "6e37c82a-260e-5375-8d92-429f75e599f0",
+      "evidence": "authored deterministic fixture",
+      "externalId": "87",
+      "provider": "fixture-a",
+      "providerKind": "work",
+      "state": "reviewed"
+    },
+    {
+      "entityId": "56320fe0-3f70-55af-b723-8519477bf34c",
+      "evidence": "different source namespace",
+      "externalId": "87",
+      "provider": "fixture-b",
+      "providerKind": "work",
+      "state": "reviewed"
+    }
+  ],
+  "license": "CC0-1.0",
+  "redirects": [
+    {
+      "evidence": "synthetic reversible reviewed redirect",
+      "from": "e84608fd-3187-50ca-8c0e-a5b5e892779d",
+      "revision": 1,
+      "to": "56320fe0-3f70-55af-b723-8519477bf34c"
+    }
+  ],
+  "relations": [
+    {
+      "from": "6e37c82a-260e-5375-8d92-429f75e599f0",
+      "position": 0,
+      "to": "3ba816d8-799f-51d6-af8d-cbe7bdccd21e",
+      "type": "part"
+    },
+    {
+      "from": "6e37c82a-260e-5375-8d92-429f75e599f0",
+      "position": 1,
+      "to": "fde1417a-3992-5865-bf02-95821a22c78e",
+      "type": "part"
+    },
+    {
+      "from": "1a617d99-0750-5439-ae7c-10e45a857683",
+      "to": "6e37c82a-260e-5375-8d92-429f75e599f0",
+      "type": "medley_source"
+    },
+    {
+      "from": "1a617d99-0750-5439-ae7c-10e45a857683",
+      "to": "56320fe0-3f70-55af-b723-8519477bf34c",
+      "type": "medley_source"
+    },
+    {
+      "from": "5f55d6ee-1973-510e-9f01-66835d012c68",
+      "to": "6e37c82a-260e-5375-8d92-429f75e599f0",
+      "type": "mashup_source"
+    },
+    {
+      "from": "5f55d6ee-1973-510e-9f01-66835d012c68",
+      "to": "56320fe0-3f70-55af-b723-8519477bf34c",
+      "type": "mashup_source"
+    },
+    {
+      "from": "e7e71ce1-971d-5d08-8cf9-ec87a79b29b9",
+      "to": "49da239c-2457-5479-aefb-027fc808cc58",
+      "type": "arrangement_source"
+    },
+    {
+      "from": "3d118508-59a7-55ab-ac2a-e392d26d3451",
+      "to": "49da239c-2457-5479-aefb-027fc808cc58",
+      "type": "arrangement_source"
+    },
+    {
+      "from": "767efc3c-6530-50fa-a04d-bc1eaa39ffb3",
+      "to": "e7e71ce1-971d-5d08-8cf9-ec87a79b29b9",
+      "type": "performs"
+    },
+    {
+      "from": "30662fff-3c80-5fdc-a03d-fe481fd943e3",
+      "to": "e7e71ce1-971d-5d08-8cf9-ec87a79b29b9",
+      "type": "performs"
+    },
+    {
+      "from": "5eef2b52-bd94-5319-82e8-59624dcbb676",
+      "memberId": "9fed2081-0f90-5df5-822e-0e101b6508fc",
+      "position": 0,
+      "to": "6e37c82a-260e-5375-8d92-429f75e599f0",
+      "type": "member"
+    },
+    {
+      "from": "5eef2b52-bd94-5319-82e8-59624dcbb676",
+      "memberId": "cafd5c7a-057d-5253-b1b1-c82bac094384",
+      "position": 1,
+      "to": "e7e71ce1-971d-5d08-8cf9-ec87a79b29b9",
+      "type": "member"
+    },
+    {
+      "from": "5eef2b52-bd94-5319-82e8-59624dcbb676",
+      "memberId": "7c808cce-7547-546f-876c-2fec642ee371",
+      "position": 2,
+      "to": "42744ffd-526b-515f-86ef-1d4f6250f6d5",
+      "type": "member"
+    }
+  ]
+}

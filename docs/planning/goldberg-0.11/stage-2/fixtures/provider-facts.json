@@ -1,0 +1,273 @@
+{
+  "contractVersion": 1,
+  "license": "CC0-1.0",
+  "note": "Small factual CC0 projections only; query categories are research grouping, not provider-verified genre; no asserted cross-source equivalence. Authored synthetic fixtures are separate.",
+  "records": [
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "66b25237-fc01-40cf-961a-348cb55f1f3e",
+      "title": "Saint Louis Blues (Live)",
+      "sourceUrl": "https://musicbrainz.org/work/66b25237-fc01-40cf-961a-348cb55f1f3e",
+      "sourceResponseSha256": "3c61af37ee4df18b38009a65881390ef79ef9b529b981b663c335b1f83d6babe",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "blues"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "efb753b7-921e-4e13-baf8-a5674724a31c",
+      "title": "Boogie Woogie on Saint Louis Blues",
+      "sourceUrl": "https://musicbrainz.org/work/efb753b7-921e-4e13-baf8-a5674724a31c",
+      "sourceResponseSha256": "3c61af37ee4df18b38009a65881390ef79ef9b529b981b663c335b1f83d6babe",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "blues"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "04a4f3ae-2857-452b-aa6e-96960c0a53d7",
+      "title": "New Goldberg Variations",
+      "sourceUrl": "https://musicbrainz.org/work/04a4f3ae-2857-452b-aa6e-96960c0a53d7",
+      "sourceResponseSha256": "c184c1167ad21d82af133c7829f0e211581748aa29de1b510a373723d00f5020",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "classical"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "72b1be83-40ff-46ef-ad13-b3fecdc474e7",
+      "title": "New Goldberg Variations",
+      "sourceUrl": "https://musicbrainz.org/work/72b1be83-40ff-46ef-ad13-b3fecdc474e7",
+      "sourceResponseSha256": "c184c1167ad21d82af133c7829f0e211581748aa29de1b510a373723d00f5020",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "classical"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "bcaac927-da8f-4370-9683-0cf8ebe6a16f",
+      "title": "Goldberg Variations, BWV 988: Aria",
+      "sourceUrl": "https://musicbrainz.org/work/bcaac927-da8f-4370-9683-0cf8ebe6a16f",
+      "sourceResponseSha256": "c184c1167ad21d82af133c7829f0e211581748aa29de1b510a373723d00f5020",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "classical"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "f703d0b7-2fff-3d41-a5e8-3a1e5ff69883",
+      "title": "Hedwig’s Theme",
+      "sourceUrl": "https://musicbrainz.org/work/f703d0b7-2fff-3d41-a5e8-3a1e5ff69883",
+      "sourceResponseSha256": "0b569efaff1f79cdc226b2491dda1b2a22edfa4c8ed78b0e08b11e9ae43da820",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "film"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "2bac20f0-bbe6-4612-97d8-3b6b44c103a5",
+      "title": "Hedwig’s Theme / Harry’s Wondrous World",
+      "sourceUrl": "https://musicbrainz.org/work/2bac20f0-bbe6-4612-97d8-3b6b44c103a5",
+      "sourceResponseSha256": "0b569efaff1f79cdc226b2491dda1b2a22edfa4c8ed78b0e08b11e9ae43da820",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "film"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "33633b21-f033-4125-91ee-33d270d36176",
+      "title": "Hedwig's Theme: From Harry Potter and the Sorcerer's Stone",
+      "sourceUrl": "https://musicbrainz.org/work/33633b21-f033-4125-91ee-33d270d36176",
+      "sourceResponseSha256": "0b569efaff1f79cdc226b2491dda1b2a22edfa4c8ed78b0e08b11e9ae43da820",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "film"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "0bb7d2ad-0a44-3b73-bbbc-5eed6e3b0117",
+      "title": "Greensleeves",
+      "sourceUrl": "https://musicbrainz.org/work/0bb7d2ad-0a44-3b73-bbbc-5eed6e3b0117",
+      "sourceResponseSha256": "92f8d8de5795be9f51f5d3f0b8d0b8610d2af7d8aff421bd95090ef17f068436",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "folk"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "e674e7bc-da4a-32df-ac3a-b2397f0c391d",
+      "title": "Greensleeves",
+      "sourceUrl": "https://musicbrainz.org/work/e674e7bc-da4a-32df-ac3a-b2397f0c391d",
+      "sourceResponseSha256": "92f8d8de5795be9f51f5d3f0b8d0b8610d2af7d8aff421bd95090ef17f068436",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "folk"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "a3d303a4-b11c-3e57-b27d-53e0a5fecf68",
+      "title": "Greensleeves",
+      "sourceUrl": "https://musicbrainz.org/work/a3d303a4-b11c-3e57-b27d-53e0a5fecf68",
+      "sourceResponseSha256": "92f8d8de5795be9f51f5d3f0b8d0b8610d2af7d8aff421bd95090ef17f068436",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "folk"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "cdbb52b2-1568-48dd-81d6-21afde6919e6",
+      "title": "Zelda’s Lullaby",
+      "sourceUrl": "https://musicbrainz.org/work/cdbb52b2-1568-48dd-81d6-21afde6919e6",
+      "sourceResponseSha256": "f74650bd1f5920bbd2184eb719a0ae2e7fb6e17bd9594f2aeaea211c85b7688e",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "game"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "35b01525-b8b3-43ae-b1f2-e0330b634cc7",
+      "title": "Zelda's Lullaby",
+      "sourceUrl": "https://musicbrainz.org/work/35b01525-b8b3-43ae-b1f2-e0330b634cc7",
+      "sourceResponseSha256": "f74650bd1f5920bbd2184eb719a0ae2e7fb6e17bd9594f2aeaea211c85b7688e",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "game"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "898141ec-0d94-4e4b-bb5e-2b4d22e3d23f",
+      "title": "Zelda’s Lullaby",
+      "sourceUrl": "https://musicbrainz.org/work/898141ec-0d94-4e4b-bb5e-2b4d22e3d23f",
+      "sourceResponseSha256": "f74650bd1f5920bbd2184eb719a0ae2e7fb6e17bd9594f2aeaea211c85b7688e",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "game"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "df0b884d-84f5-45f0-9083-3fb539fa4700",
+      "title": "Take Five",
+      "sourceUrl": "https://musicbrainz.org/work/df0b884d-84f5-45f0-9083-3fb539fa4700",
+      "sourceResponseSha256": "58d01d9d1c12b42828f087d701d073b18c7abb8599569b7868b1bc53784b04c5",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "jazz"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "2bbcaaa8-2d91-3fb3-884b-830581b3c895",
+      "title": "Take Five",
+      "sourceUrl": "https://musicbrainz.org/work/2bbcaaa8-2d91-3fb3-884b-830581b3c895",
+      "sourceResponseSha256": "58d01d9d1c12b42828f087d701d073b18c7abb8599569b7868b1bc53784b04c5",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "jazz"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "f1862276-b7f5-471c-a557-b5a864ef20b8",
+      "title": "Take Five",
+      "sourceUrl": "https://musicbrainz.org/work/f1862276-b7f5-471c-a557-b5a864ef20b8",
+      "sourceResponseSha256": "58d01d9d1c12b42828f087d701d073b18c7abb8599569b7868b1bc53784b04c5",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "jazz"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "0c80db24-389e-3620-8e0b-84dc2b7c009a",
+      "title": "Yesterday",
+      "sourceUrl": "https://musicbrainz.org/work/0c80db24-389e-3620-8e0b-84dc2b7c009a",
+      "sourceResponseSha256": "5fab4963311fd52a67ed0cf3564e2da69ab297dff4e661bd648b3e00f9a662e0",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "pop"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "97b0429d-21ca-4b7e-9523-b3bb5beecc9b",
+      "title": "Yesterday",
+      "sourceUrl": "https://musicbrainz.org/work/97b0429d-21ca-4b7e-9523-b3bb5beecc9b",
+      "sourceResponseSha256": "5fab4963311fd52a67ed0cf3564e2da69ab297dff4e661bd648b3e00f9a662e0",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "pop"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "b79a218f-57b1-4156-a76a-e46c4de668e1",
+      "title": "Yesterday's Papers",
+      "sourceUrl": "https://musicbrainz.org/work/b79a218f-57b1-4156-a76a-e46c4de668e1",
+      "sourceResponseSha256": "5fab4963311fd52a67ed0cf3564e2da69ab297dff4e661bd648b3e00f9a662e0",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "pop"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "41c94a08-a551-3c86-bb17-d9a52e3a618b",
+      "title": "Bohemian Rhapsody",
+      "sourceUrl": "https://musicbrainz.org/work/41c94a08-a551-3c86-bb17-d9a52e3a618b",
+      "sourceResponseSha256": "76e873ca945c971529ed26e1e04678a3418bd54b1b697d71c2bc5ce89e2862c3",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "rock"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "6c8c1ee3-0c88-42d2-908c-47748c702136",
+      "title": "Bohemian Rhapsody",
+      "sourceUrl": "https://musicbrainz.org/work/6c8c1ee3-0c88-42d2-908c-47748c702136",
+      "sourceResponseSha256": "76e873ca945c971529ed26e1e04678a3418bd54b1b697d71c2bc5ce89e2862c3",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "rock"
+    },
+    {
+      "provider": "musicbrainz",
+      "providerKind": "work",
+      "externalId": "660e678b-f1e3-4136-a471-965cd8496bb0",
+      "title": "Bohemian Rhapsody",
+      "sourceUrl": "https://musicbrainz.org/work/660e678b-f1e3-4136-a471-965cd8496bb0",
+      "sourceResponseSha256": "76e873ca945c971529ed26e1e04678a3418bd54b1b697d71c2bc5ce89e2862c3",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "rock"
+    },
+    {
+      "provider": "openopus",
+      "providerKind": "work",
+      "externalId": "10074",
+      "title": "Goldberg Variations, BWV.988 ",
+      "composerId": "87",
+      "composer": "Johann Sebastian Bach",
+      "sourceUrl": "https://api.openopus.org/work/detail/10074.json",
+      "sourceResponseSha256": "c4cf7664f44923eb56a546042a86761739eb01baa2932d40830b9446214108d2",
+      "license": "CC0-1.0",
+      "mappingState": "observed_candidate",
+      "sampleQueryCategory": "classical"
+    }
+  ]
+}
