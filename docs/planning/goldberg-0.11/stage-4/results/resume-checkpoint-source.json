@@ -1,0 +1,201 @@
+{
+  "baseHead": "72a27cbfad530f0ec2db1b73c425c35c33257e4a",
+  "files": [
+    {
+      "path": "app/src/androidTest/assets/stage4/README.md",
+      "bytes": 260,
+      "sha256": "f7d5363ef438163d1a5082f644b3811f8951eb5b24c759bfc3de7f2ed287be8b"
+    },
+    {
+      "path": "app/src/androidTest/assets/stage4/musicbrainz-arrangement.json",
+      "bytes": 759,
+      "sha256": "c69d16ab7bc23de57d610b571b7adad432b0e4204c6e9348dd2ae5067b67bf65"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Quality092PersistenceTest.kt",
+      "bytes": 6045,
+      "sha256": "d9a88fe6103985a8e036241e73a93d01fa1bbe6ad00fd1e1bc102c532a6d3fb1"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage4CatalogueTest.kt",
+      "bytes": 8449,
+      "sha256": "ab41630942674e97ec7fcfe394b00603fa0ba974fda36d45d960b2e7e4cc147c"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage4GraphTest.kt",
+      "bytes": 6475,
+      "sha256": "63d0235c07bc3f010bad84671290c923fc957215790d9a432aa89eab7d67e76f"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage4ProviderCacheTest.kt",
+      "bytes": 6418,
+      "sha256": "c02cc6aeb594cc39d75e1edf4badd6f0b6ad07b612ce78f30267ff00e402593b"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage4SafetyTest.kt",
+      "bytes": 9166,
+      "sha256": "f0d3acec960cf41b328412c8dd90db02a6119fb9dc09b070ed9d105a1b1cefc5"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage4SearchVerificationTest.kt",
+      "bytes": 8633,
+      "sha256": "d85fbf08e2ded1134b8a243ef4bb2200cab3eef6b4ac39154ddeaf048569c013"
+    },
+    {
+      "path": "app/src/androidTest/java/com/opus/piano/Stage4TransportTest.kt",
+      "bytes": 3430,
+      "sha256": "8db9ce0d9171eed1f49ad5a073fb4726efe42dba8621076354412b193189932f"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/OpusApplication.kt",
+      "bytes": 3301,
+      "sha256": "65fa53715795e6c343ca75a64d0556633463f27ef15a1b904de355d5a16ac16d"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueCandidates.kt",
+      "bytes": 2106,
+      "sha256": "ab4025aa4d5103f13108e531c0c8549834b54baa4b501feb5349eb99918bd797"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueDatabase.kt",
+      "bytes": 6793,
+      "sha256": "d119b0fcba578be709f5092d8c65aad2d2dc00706d641680d0f13c626bce4874"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueEdges.kt",
+      "bytes": 2821,
+      "sha256": "c563cacd534b66ad208e46b5d9bcb771b071354fadaa8e21349357fc4f6a0062"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueIngestion.kt",
+      "bytes": 8687,
+      "sha256": "76ad59406e8c68e98c108099c3107634abaf4ca25e73d9a536e0cf3e713a7006"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CataloguePortraits.kt",
+      "bytes": 5777,
+      "sha256": "4fa1b9f47fb6268b43930167427859ce3d207c86e5ce3baffb7eea429e4c1cb8"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CataloguePresentation.kt",
+      "bytes": 2333,
+      "sha256": "e1e0d7e007dd0780ac502e5a27dfb296f43b9c5fdb41aefe062baf00efb0d08b"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueRepertoire.kt",
+      "bytes": 4685,
+      "sha256": "7655ab9f157bc931b7ac3260e9d702f2ce2171f1ae1c2a64a592059e477c4f55"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueRepository.kt",
+      "bytes": 8831,
+      "sha256": "2a1cb1144b65368e414afddad86b6e00541f37429edacbe1add3659d4ea55804"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueSearch.kt",
+      "bytes": 6037,
+      "sha256": "d33dc7b316cebf59854029d621705abbd055c88c2ae92fbc175d751af3912df9"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueStorage.kt",
+      "bytes": 1529,
+      "sha256": "212f4d8cda420a9ce1ed3f8f9485813542c0182019ebb5f56810b0b54b7baded"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/CatalogueValidation.kt",
+      "bytes": 6882,
+      "sha256": "ac4ba0ac62a8a809ff167a2ff17dde5edd8404b6e1bc0a048571bb96d4480c7d"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/DiscoverRepository.kt",
+      "bytes": 12978,
+      "sha256": "b684f0ddc13e7c29a5f73eca11b7a2252254af09ab16f30862458c6e36f96f41"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/LocalCatalogueStore.kt",
+      "bytes": 7002,
+      "sha256": "df4c76700d8e8b5a11c6508e6b49998698ec5cb46b5698e4885c7c74a78533c7"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/MusicBrainzAdapter.kt",
+      "bytes": 10375,
+      "sha256": "fb9b00f3cc857e6e4431a9fe371787cf52a082e10edee0986193760ec6f1eab5"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/ProviderCache.kt",
+      "bytes": 8823,
+      "sha256": "5fa2cbbdf36c20707373a7b8152505549737d2612c8eaaef0e5adfd200daaa14"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/ProviderContract.kt",
+      "bytes": 4074,
+      "sha256": "f18f513bbdf607db73cb64ff586e5ceebdc8bdf9736ec5ac517adc6acedc89a7"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/ProviderTransport.kt",
+      "bytes": 12122,
+      "sha256": "30844df27ca7a8c596ddcb4b1b987caf96933c95adcbfab6ade5c647a22882f0"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/WikidataAdapter.kt",
+      "bytes": 6159,
+      "sha256": "cc588c98ef4e9565b8093b641052cfed32fd82562040dbdd9c3bf9d7089ca62d"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/data/catalogue/providers/WikipediaAdapter.kt",
+      "bytes": 1359,
+      "sha256": "caebbd3ab980ec8f296e0f44c9d59a523ae9b338c52a3d285a9d4870f093029e"
+    },
+    {
+      "path": "app/src/main/java/com/opus/piano/ui/DiscoverScreen.kt",
+      "bytes": 21692,
+      "sha256": "d5572bbac455d560645e185f85edf697e3a096b7ec991cb8b683e1c9e73908bd"
+    },
+    {
+      "path": "app/src/main/res/values-cs/strings.xml",
+      "bytes": 78970,
+      "sha256": "b881696e1dcf37e6eef99ac9386868cbaaa2fc25a74a534c9372a09c4cb8b7b7"
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "bytes": 76377,
+      "sha256": "a3ddfc1423be28ad555f096c20e576c31796d96ca4e6be59ace0c4c061cd73c1"
+    },
+    {
+      "path": "app/src/test/java/com/opus/piano/data/catalogue/providers/ProviderProjectionTest.kt",
+      "bytes": 5990,
+      "sha256": "97ca6fa4f916e352fa302833b6546a403e86b21edbe02708e323532159b5e56a"
+    },
+    {
+      "path": "docs/planning/goldberg-0.11/stage-4/API-EVIDENCE.md",
+      "bytes": 6537,
+      "sha256": "3d03f29215181d4b13467737e6b8ff4fe70b14acd01410b77dd713e55f9ffb88"
+    },
+    {
+      "path": "docs/planning/goldberg-0.11/stage-4/CHECKLIST.md",
+      "bytes": 2947,
+      "sha256": "4f682892be535cf7c7987bf913f201c6a294258bf87125767e4ff207f19bf14f"
+    },
+    {
+      "path": "docs/planning/goldberg-0.11/stage-4/CONTRACT-EXTENSIONS.md",
+      "bytes": 4373,
+      "sha256": "49fa203efd304c717f81ee71d2f47337c55fd0efc7258fc49f9c33030dbb9398"
+    },
+    {
+      "path": "docs/planning/goldberg-0.11/stage-4/PROGRESS.md",
+      "bytes": 21095,
+      "sha256": "abf4367a0d7de4b840c0a7ff97052ba5de556e1598845ac8df323a030fa80c9d"
+    },
+    {
+      "path": "docs/planning/goldberg-0.11/stage-4/probe_providers.py",
+      "bytes": 4848,
+      "sha256": "47241fca167783243b51a189c693a87ddcbbb3ef1eb0e13a8b44786e7b201566"
+    },
+    {
+      "path": "scripts/verify_emulator_upgrade.py",
+      "bytes": 8075,
+      "sha256": "2850c5adc98fb269def3e72aed680e25c7247371aaa9db079736f986a60ebd8e"
+    }
+  ],
+  "ownerReleaseNotesExcluded": true
+}

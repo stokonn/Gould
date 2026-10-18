@@ -7,19 +7,23 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 /** All inputs are catalogue actions, never personal objects. No adapter receives a journal. */
-data class ProviderRequest(val url: String, val provider: String, val kind: String, val externalId: String? = null)
+data class ProviderRequest(val url: String, val provider: String, val kind: String, val externalId: String? = null, val headers:Map<String,String> = emptyMap())
 data class ProviderResponse(val code: Int, val body: ByteArray, val headers: Map<String,String> = emptyMap())
+class BlockedRightsException:IllegalArgumentException("Unverified content rights")
 enum class SourceState { FRESH, CACHED, STALE, MISSING, UNAVAILABLE, RATE_LIMITED, INVALID, BLOCKED_RIGHTS }
 data class FieldValue(val field: String, val value: String, val language: String = "und")
 data class ProviderRecord(val providerKind: String, val externalId: String, val kind: String, val title: String,
     val fields: List<FieldValue> = emptyList(), val aliases: List<Pair<String,String>> = emptyList(),
-    val subtype: String = "", val credits: List<ProviderCredit> = emptyList())
+    val subtype: String = "", val credits: List<ProviderCredit> = emptyList(),
+    val classificationPending:Boolean=false, val relationships:List<ProviderEdge> = emptyList())
+data class ProviderReference(val providerKind:String,val externalId:String,val kind:String,val title:String,val subtype:String="")
+data class ProviderEdge(val type:String,val from:ProviderReference,val to:ProviderReference,val position:Int=0,val medium:Int=1,val role:String="")
 data class ProviderCredit(val id: String, val name: String, val role: String)
 data class ProviderCandidate(val id:String,val title:String,val description:String)
 data class ProviderResult(val request: ProviderRequest, val state: SourceState, val records: List<ProviderRecord> = emptyList(),
     val revision: String = "", val hash: String = "", val observedAt: String = Instant.now().toString(),
     val retryAfterMillis: Long = 0, val error: String? = null, val license: String = "CC0-1.0",
-    val licenseUrl: String = "https://creativecommons.org/publicdomain/zero/1.0/", val candidates:List<ProviderCandidate> = emptyList(), val supplement:Map<String,Any?> = emptyMap())
+    val licenseUrl: String = "https://creativecommons.org/publicdomain/zero/1.0/", val candidates:List<ProviderCandidate> = emptyList(), val supplement:Map<String,Any?> = emptyMap(), val refreshState:SourceState?=null)
 interface ProviderAdapter {
     val id: String
     val intervalMillis: Long

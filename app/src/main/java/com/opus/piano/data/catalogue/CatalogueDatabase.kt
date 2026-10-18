@@ -35,13 +35,18 @@ internal interface CatalogueDao {
     @Query("SELECT * FROM assertions WHERE entityId=:id AND (:field IS NULL OR field=:field) ORDER BY field, selected DESC, id LIMIT 200") suspend fun assertions(id:String,field:String?=null):List<CatalogueAssertion>
     @Query("SELECT EXISTS(SELECT 1 FROM aliases WHERE entityId=:id AND language=:language AND value=:value)") suspend fun hasAlias(id:String,language:String,value:String):Boolean
     @Query("SELECT EXISTS(SELECT 1 FROM relationships WHERE fromId=:from AND toId=:to AND type=:type)") suspend fun hasEdge(from:String,to:String,type:String):Boolean
+    @Query("SELECT * FROM sources WHERE provider=:provider AND recordId=:recordId AND revision=:revision LIMIT 1") suspend fun sourceObservation(provider:String,recordId:String,revision:String):CatalogueSource?
     @Query("SELECT * FROM sources WHERE id=:id") suspend fun source(id:String):CatalogueSource?
     @Query("SELECT * FROM external_identities WHERE entityId=:id ORDER BY provider,providerKind,externalId LIMIT 40") suspend fun identities(id:String):List<CatalogueExternalIdentity>
     @Query("SELECT * FROM relationships WHERE fromId=:id OR toId=:id ORDER BY type,medium,position,id LIMIT :limit") suspend fun allRelationships(id:String,limit:Int=100):List<CatalogueRelationship>
+    @Query("SELECT normalized FROM aliases WHERE normalized>=:prefix AND normalized<:upper ORDER BY normalized LIMIT 200") suspend fun aliasPrefix(prefix:String,upper:String):List<String>
+    @Query("SELECT DISTINCT valueJson FROM assertions WHERE field='epoch' AND selected=1 ORDER BY valueJson LIMIT 40") suspend fun availablePeriods():List<String>
     @androidx.room.RawQuery suspend fun queryEntities(query:androidx.sqlite.db.SupportSQLiteQuery):List<CatalogueEntity>
     @Update suspend fun updateIdentity(row: CatalogueExternalIdentity)
     @Query("SELECT * FROM rights WHERE id = :id") suspend fun rights(id: String): CatalogueRights?
     @Query("SELECT * FROM catalogue_state WHERE `key` = :key") suspend fun state(key: String): CatalogueState?
+    @Query("SELECT * FROM catalogue_state WHERE `key` LIKE :pattern ORDER BY `key` LIMIT :limit") suspend fun states(pattern:String,limit:Int):List<CatalogueState>
+    @Query("DELETE FROM catalogue_state WHERE `key`=:key") suspend fun removeState(key:String)
     @Upsert suspend fun state(row: CatalogueState)
 }
 @Database(entities = [CatalogueEntity::class, CatalogueWork::class, CatalogueArrangement::class, CatalogueArtist::class, CatalogueAlbum::class, CatalogueRelease::class, CatalogueRecording::class, CatalogueCollection::class, CatalogueRelationship::class, CatalogueExternalIdentity::class, CatalogueIdentityRevision::class, CatalogueRedirect::class, CatalogueAlias::class, CatalogueAliasFts::class, CatalogueSource::class, CatalogueRights::class, CatalogueAssertion::class, CatalogueDocument::class, CatalogueMedia::class, CatalogueState::class], version = 1, exportSchema = true)

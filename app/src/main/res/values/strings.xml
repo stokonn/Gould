@@ -876,4 +876,26 @@
     <string name="discover_invalid">Invalid source response</string>
     <string name="discover_unavailable">Source unavailable; saved results retained</string>
     <string name="discover_load_encyclopedia">Load sourced biography and portrait information</string>
+    <string name="discover_candidate">Unresolved catalogue candidate — type and relationships require verification</string>
+    <string name="discover_verify_candidate">Load and verify catalogue detail</string>
+    <string name="discover_refresh_metadata">Load or refresh linked catalogue metadata</string>
+    <string name="discover_listen">Open verified listening link</string>
+    <string name="discover_clear_cache">Clear disposable response cache</string>
+    <string name="discover_cache_consequences">Clearing responses keeps accepted catalogue metadata, repertoire, practice history and recovery data. A later online action may fetch metadata again.</string>
+    <string name="discover_portrait_description">Licensed artist portrait</string>
+    <string name="discover_portrait_unavailable">Portrait unavailable; sourced text and saved metadata remain usable.</string>
+    <string name="discover_conflict_notice">Sources contain conflicting metadata. Review the evidence below before treating a value as certain.</string>
+    <string name="discover_selection_conflict">This work already has a different saved part selection. Open the existing entry, or explicitly add parts separately.</string>
+    <string name="discover_open_existing">Open existing repertoire entry</string>
+    <string name="discover_correction">Prepare a local metadata correction</string>
+    <string name="discover_correction_field">Field to correct</string>
+    <string name="discover_correction_value">Proposed value</string>
+    <string name="discover_correction_reason">Reason and evidence</string>
+    <string name="discover_correction_private">Export only. Nothing is submitted to a provider or community service.</string>
+    <string name="discover_correction_export">Export correction with source evidence</string>
+    <string name="discover_correction_saved">Local correction exported</string>
+    <string name="discover_license">Content license</string>
+    <string name="discover_filters">Filters</string>
+    <string name="discover_any_artist">Any artist or composer</string>
+    <string name="discover_any_period">Any period</string>
 </resources>

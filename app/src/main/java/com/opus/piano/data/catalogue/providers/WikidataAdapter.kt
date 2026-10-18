@@ -23,7 +23,7 @@ class WikidataAdapter : ProviderAdapter {
         val fields=mutableListOf<FieldValue>()
         for(language in listOf("cs","en")) {
             val label=entity.obj("labels").obj(language).text("value")
-            if(label.isNotBlank())aliases+=language to label
+            if(label.isNotBlank()){aliases+=language to label;fields+=FieldValue("preferred_name",label,language)}
             aliases+=entity.obj("aliases").rows(language).mapNotNull {it.text("value").takeIf {v->v.isNotBlank()}?.let {v->language to v}}
             entity.obj("descriptions").obj(language).text("value").takeIf {it.isNotBlank()}?.let {fields+=FieldValue("description",it,language)}
             val site=entity.obj("sitelinks").obj(language+"wiki")
@@ -37,7 +37,7 @@ class WikidataAdapter : ProviderAdapter {
         for(property in listOf("P18","P31","P86","P50","P136","P528","P571")+mapping.map {it.first}) {
             claims.rows(property).forEach {claim->
                 val safe=claim.filterKeys {it in setOf("id","rank","mainsnak","qualifiers","qualifiers-order","references","type")}
-                fields+=FieldValue("claim:$property",JsonProjection.write(safe))
+                fields+=FieldValue("claim:$property",JsonProjection.write(WikidataProjection.claim(safe)))
                 if(property=="P18" && claim.text("rank")!="deprecated")claim.obj("mainsnak").obj("datavalue").text("value").takeIf {it.isNotBlank()}?.let {fields+=FieldValue("commons_file","File:$it")}
             }
         }
@@ -47,4 +47,21 @@ class WikidataAdapter : ProviderAdapter {
 }
 internal object JsonProjection {
     fun write(value:Any?):String=when(value){null->"null";is String->"\""+value.flatMap {c->when(c){'"'->"\\\"";'\\'->"\\\\";'\n'->"\\n";'\r'->"\\r";'\t'->"\\t";else->if(c<' ')"\\u%04x".format(c.code) else c.toString()}.toList()}.joinToString("")+"\"";is Number,is Boolean->value.toString();is Map<*,*>->value.entries.sortedBy {it.key.toString()}.joinToString(",","{","}"){write(it.key.toString())+":"+write(it.value)};is List<*>->value.joinToString(",","[","]"){write(it)};else->error("Unsupported JSON")}
+}
+
+/** Nested claims are projected explicitly; unknown datatypes and keys never pass through. */
+internal object WikidataProjection {
+    private fun snak(raw:Map<String,Any?>):Map<String,Any?> {
+        val allowed=raw.filterKeys {it in setOf("snaktype","property","datatype")}.toMutableMap()
+        val data=raw.obj("datavalue");val type=data.text("type")
+        val value=data["value"]
+        if(type in setOf("string","wikibase-entityid","monolingualtext","time","quantity","globecoordinate")) {
+            val projected=if(value is Map<*,*>)value.filterKeys {it in setOf("entity-type","numeric-id","id","language","text","time","timezone","before","after","precision","calendarmodel","amount","unit","upperBound","lowerBound","latitude","longitude","altitude","globe")} else value.takeIf {it is String || it is Number}
+            if(projected!=null)allowed["datavalue"]=mapOf("type" to type,"value" to projected)
+        }
+        return allowed
+    }
+    private fun snaks(raw:Map<String,Any?>)=raw.filterKeys {it.matches(Regex("P[1-9][0-9]*"))}.mapValues {(key,_)->raw.rows(key).map {snak(it)}}
+    fun claim(raw:Map<String,Any?>):Map<String,Any?> = mapOf("id" to raw.text("id"),"rank" to raw.text("rank"),"mainsnak" to snak(raw.obj("mainsnak")),"qualifiers" to snaks(raw.obj("qualifiers")),
+        "references" to raw.rows("references").map {mapOf("hash" to it.text("hash"),"snaks" to snaks(it.obj("snaks")))})
 }

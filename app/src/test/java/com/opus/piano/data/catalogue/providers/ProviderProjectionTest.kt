@@ -56,4 +56,10 @@ class ProviderProjectionTest {
         val adapter=WikipediaAdapter();assertFalse(adapter.licensedDocument(mapOf("html" to "<p>text</p>")))
         assertTrue(adapter.licensedDocument(mapOf("html" to "<p>Authored fixture</p>","latest" to mapOf("id" to 12),"license" to mapOf("url" to "https://creativecommons.org/licenses/by-sa/4.0/"))))
     }
+    @Test fun wikipediaRecognizesVerifiedEditionDeedsButRejectsOtherLicensesAndHosts() {
+        val adapter=WikipediaAdapter()
+        for(suffix in listOf("","/","/deed.en","/deed.cs"))assertTrue(adapter.licensedDocument(mapOf("html" to "<p>Fixture</p>","latest" to mapOf("id" to 12),"license" to mapOf("url" to "https://creativecommons.org/licenses/by-sa/4.0"+suffix))))
+        for(url in listOf("https://creativecommons.org.attacker.example/licenses/by-sa/4.0/","https://creativecommons.org/licenses/by-nc/4.0/","https://creativecommons.org/licenses/by-sa/4.0/deed.en?redirect=unknown"))assertFalse(adapter.licensedDocument(mapOf("html" to "fixture","latest" to mapOf("id" to 12),"license" to mapOf("url" to url))))
+    }
+
 }

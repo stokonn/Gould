@@ -20,12 +20,12 @@ data class SearchFilter(val category:String="all",val artistId:String?=null,val 
     val kinds get()=when(category){"works"->listOf("work","arrangement");"artists"->listOf("artist");"albums"->listOf("album");"lists"->listOf("collection");else->listOf("work","arrangement","artist","album","collection")}
 }
 data class SearchCursor(val queryHash:String,val generation:String,val lastRank:Int,val lastId:String) {
-    fun encode()=Base64.getUrlEncoder().withoutPadding().encodeToString(listOf("1",queryHash,generation,"relevance-id",lastRank.toString(),lastId).joinToString("|").toByteArray())
+    fun encode()=Base64.getUrlEncoder().withoutPadding().encodeToString(listOf("2",queryHash,generation,"relevance-id-v2",lastRank.toString(),lastId).joinToString("|").toByteArray())
     companion object {
         fun decode(value:String,hash:String,generation:String):SearchCursor {
             require(value.length<=1024)
             val parts=String(Base64.getUrlDecoder().decode(value),Charsets.UTF_8).split('|')
-            require(parts.size==6 && parts[0]=="1" && parts[1]==hash && parts[2]==generation && parts[3]=="relevance-id") {"Stale or incompatible search cursor"}
+            require(parts.size==6 && parts[0]=="2" && parts[1]==hash && parts[2]==generation && parts[3]=="relevance-id-v2") {"Stale or incompatible search cursor"}
             CatalogueValidation.uuid(parts[5]);return SearchCursor(hash,generation,parts[4].toInt().also {require(it in 0..3)},parts[5])
         }
     }
@@ -45,11 +45,24 @@ internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFi
     var where="e.status='active' AND e.kind IN ($placeholders)"
     args.addAll(filter.kinds)
     if(normalized.isNotBlank()) {
-        where+=" AND e.id IN (SELECT a.entityId FROM alias_fts JOIN aliases a ON a.rowid=alias_fts.rowid WHERE alias_fts MATCH ?)"
-        args+=CatalogueValidation.query(normalized)
+        for(token in normalized.split(' ').filter {it.isNotBlank()}.take(8)) {
+            val alternatives=if(token.length in 4..40)aliasPrefix(token.take(2)).flatMap {it.split(' ')}.distinct().filter {it!=token && SearchText.near(token,it)}.sorted().take(3) else emptyList()
+            val match=(listOf(token)+alternatives).joinToString(" OR "){CatalogueValidation.query(it)}
+            // Tokens may match different aliases/credits of the same entity. At most8 indexed
+            // intersections and200 prefix rows/token; fuzzy matching never merges identities.
+            where+=" AND e.id IN (SELECT a.entityId FROM alias_fts JOIN aliases a ON a.rowid=alias_fts.rowid WHERE alias_fts MATCH ?)"
+            args+=match
+        }
     }
     if(filter.artistId!=null){where+=" AND e.id IN (SELECT fromId FROM relationships WHERE type='credit' AND toId=?)";args+=filter.artistId}
-    if(filter.period!=null){where+=" AND e.id IN (SELECT entityId FROM assertions WHERE field='epoch' AND valueJson LIKE ?)";args+="%${filter.period.replace("%","").replace("_","")}%"}
+    if(filter.period!=null) {
+        // Open Opus supplies a composer's period, so include explicitly credited works too.
+        // Match a complete projected field value, not a substring of another period label.
+        val fragment="\"value\":"+org.json.JSONObject.quote(filter.period)
+        val pattern="%"+fragment.replace("\\","\\\\").replace("%","\\%").replace("_","\\_")+"%"
+        where+=" AND (e.id IN (SELECT entityId FROM assertions WHERE field='epoch' AND selected=1 AND valueJson LIKE ? ESCAPE '\\') OR e.id IN (SELECT r.fromId FROM relationships r JOIN assertions a ON a.entityId=r.toId WHERE r.type='credit' AND a.field='epoch' AND a.selected=1 AND a.valueJson LIKE ? ESCAPE '\\'))"
+        args+=pattern;args+=pattern
+    }
     var sql="SELECT * FROM (SELECT e.*, $rank AS searchRank FROM entities e WHERE $where)"
     if(after!=null){sql+=" WHERE searchRank > ? OR (searchRank=? AND id>?)";args+=after.lastRank;args+=after.lastRank;args+=after.lastId}
     sql+=" ORDER BY searchRank,id LIMIT ?";args+=limit+1

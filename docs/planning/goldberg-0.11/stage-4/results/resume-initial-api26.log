@@ -1,0 +1,417 @@
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+com.opus.piano.Stage4CatalogueTest:
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=providerPartialSuccessAndJsonOverloadRemainIndependent
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=providerPartialSuccessAndJsonOverloadRemainIndependent
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=repeatedProviderImportKeepsIdentityAndContradictionsWithoutPersonalWrites
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+Error in repeatedProviderImportKeepsIdentityAndContradictionsWithoutPersonalWrites(com.opus.piano.Stage4CatalogueTest):
+android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: sources.provider, sources.recordId, sources.revision (code 2067)
+	at android.database.sqlite.SQLiteConnection.nativeExecute(Native Method)
+	at android.database.sqlite.SQLiteConnection.execute(SQLiteConnection.java:555)
+	at android.database.sqlite.SQLiteSession.execute(SQLiteSession.java:619)
+	at android.database.sqlite.SQLiteStatement.execute(SQLiteStatement.java:44)
+	at androidx.sqlite.db.framework.FrameworkSQLiteStatement.execute(FrameworkSQLiteStatement.android.kt:30)
+	at androidx.room.driver.SupportSQLiteStatement$SupportOtherAndroidSQLiteStatement.step(SupportSQLiteStatement.android.kt:415)
+	at androidx.room.EntityInsertAdapter.insert(EntityInsertAdapter.kt:59)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl.insert$lambda$13(CatalogueDao_Impl.kt:491)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl$$ExternalSyntheticLambda34.invoke(D8$$SyntheticClass:0)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invokeSuspend(DBUtil.kt:61)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invoke(Unknown Source:8)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invoke(Unknown Source:4)
+	at androidx.room.driver.SupportSQLitePooledConnection.transaction(SupportSQLiteConnectionPool.android.kt:83)
+	at androidx.room.driver.SupportSQLitePooledConnection.withTransaction(SupportSQLiteConnectionPool.android.kt:66)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invokeSuspend(DBUtil.kt:59)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invoke(Unknown Source:8)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invoke(Unknown Source:4)
+	at androidx.room.driver.SupportSQLiteConnectionPool.useConnection(SupportSQLiteConnectionPool.android.kt:42)
+	at androidx.room.RoomConnectionManager.useConnection(RoomConnectionManager.android.kt:126)
+	at androidx.room.RoomDatabase.useConnection$room_runtime_release(RoomDatabase.android.kt:593)
+	at androidx.room.util.DBUtil__DBUtil_androidKt.performSuspending(DBUtil.android.kt:249)
+	at androidx.room.util.DBUtil.performSuspending(Unknown Source:1)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl.insert(CatalogueDao_Impl.kt:489)
+	at com.opus.piano.data.catalogue.CatalogueRepository.addSource(CatalogueRepository.kt:114)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invokeSuspend(CatalogueIngestion.kt:20)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invoke(Unknown Source:8)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invoke(Unknown Source:2)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invokeSuspend(RoomDatabase.android.kt:2001)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invoke(Unknown Source:8)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invoke(Unknown Source:2)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invokeSuspend(RoomDatabase.android.kt:2015)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invoke(Unknown Source:8)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invoke(Unknown Source:4)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:61)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source:1)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1$1.invokeSuspend(RoomDatabase.android.kt:2048)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1.run(RoomDatabase.android.kt:2045)
+	at androidx.room.TransactionExecutor.execute$lambda$1$lambda$0(TransactionExecutor.android.kt:38)
+	at androidx.room.TransactionExecutor$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+	at java.lang.Thread.run(Thread.java:764)
+
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=repeatedProviderImportKeepsIdentityAndContradictionsWithoutPersonalWrites
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: stack=android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: sources.provider, sources.recordId, sources.revision (code 2067)
+	at android.database.sqlite.SQLiteConnection.nativeExecute(Native Method)
+	at android.database.sqlite.SQLiteConnection.execute(SQLiteConnection.java:555)
+	at android.database.sqlite.SQLiteSession.execute(SQLiteSession.java:619)
+	at android.database.sqlite.SQLiteStatement.execute(SQLiteStatement.java:44)
+	at androidx.sqlite.db.framework.FrameworkSQLiteStatement.execute(FrameworkSQLiteStatement.android.kt:30)
+	at androidx.room.driver.SupportSQLiteStatement$SupportOtherAndroidSQLiteStatement.step(SupportSQLiteStatement.android.kt:415)
+	at androidx.room.EntityInsertAdapter.insert(EntityInsertAdapter.kt:59)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl.insert$lambda$13(CatalogueDao_Impl.kt:491)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl$$ExternalSyntheticLambda34.invoke(D8$$SyntheticClass:0)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invokeSuspend(DBUtil.kt:61)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invoke(Unknown Source:8)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invoke(Unknown Source:4)
+	at androidx.room.driver.SupportSQLitePooledConnection.transaction(SupportSQLiteConnectionPool.android.kt:83)
+	at androidx.room.driver.SupportSQLitePooledConnection.withTransaction(SupportSQLiteConnectionPool.android.kt:66)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invokeSuspend(DBUtil.kt:59)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invoke(Unknown Source:8)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invoke(Unknown Source:4)
+	at androidx.room.driver.SupportSQLiteConnectionPool.useConnection(SupportSQLiteConnectionPool.android.kt:42)
+	at androidx.room.RoomConnectionManager.useConnection(RoomConnectionManager.android.kt:126)
+	at androidx.room.RoomDatabase.useConnection$room_runtime_release(RoomDatabase.android.kt:593)
+	at androidx.room.util.DBUtil__DBUtil_androidKt.performSuspending(DBUtil.android.kt:249)
+	at androidx.room.util.DBUtil.performSuspending(Unknown Source:1)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl.insert(CatalogueDao_Impl.kt:489)
+	at com.opus.piano.data.catalogue.CatalogueRepository.addSource(CatalogueRepository.kt:114)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invokeSuspend(CatalogueIngestion.kt:20)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invoke(Unknown Source:8)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invoke(Unknown Source:2)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invokeSuspend(RoomDatabase.android.kt:2001)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invoke(Unknown Source:8)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invoke(Unknown Source:2)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invokeSuspend(RoomDatabase.android.kt:2015)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invoke(Unknown Source:8)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invoke(Unknown Source:4)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:61)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source:1)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1$1.invokeSuspend(RoomDatabase.android.kt:2048)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1.run(RoomDatabase.android.kt:2045)
+	at androidx.room.TransactionExecutor.execute$lambda$1$lambda$0(TransactionExecutor.android.kt:38)
+	at androidx.room.TransactionExecutor$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+	at java.lang.Thread.run(Thread.java:764)
+
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=explicitCrossIdEvidenceReconcilesButNamesDoNot
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+Error in explicitCrossIdEvidenceReconcilesButNamesDoNot(com.opus.piano.Stage4CatalogueTest):
+android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: sources.provider, sources.recordId, sources.revision (code 2067)
+	at android.database.sqlite.SQLiteConnection.nativeExecute(Native Method)
+	at android.database.sqlite.SQLiteConnection.execute(SQLiteConnection.java:555)
+	at android.database.sqlite.SQLiteSession.execute(SQLiteSession.java:619)
+	at android.database.sqlite.SQLiteStatement.execute(SQLiteStatement.java:44)
+	at androidx.sqlite.db.framework.FrameworkSQLiteStatement.execute(FrameworkSQLiteStatement.android.kt:30)
+	at androidx.room.driver.SupportSQLiteStatement$SupportOtherAndroidSQLiteStatement.step(SupportSQLiteStatement.android.kt:415)
+	at androidx.room.EntityInsertAdapter.insert(EntityInsertAdapter.kt:59)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl.insert$lambda$13(CatalogueDao_Impl.kt:491)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl$$ExternalSyntheticLambda34.invoke(D8$$SyntheticClass:0)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invokeSuspend(DBUtil.kt:61)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invoke(Unknown Source:8)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invoke(Unknown Source:4)
+	at androidx.room.driver.SupportSQLitePooledConnection.transaction(SupportSQLiteConnectionPool.android.kt:83)
+	at androidx.room.driver.SupportSQLitePooledConnection.withTransaction(SupportSQLiteConnectionPool.android.kt:66)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invokeSuspend(DBUtil.kt:59)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invoke(Unknown Source:8)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invoke(Unknown Source:4)
+	at androidx.room.driver.SupportSQLiteConnectionPool.useConnection(SupportSQLiteConnectionPool.android.kt:42)
+	at androidx.room.RoomConnectionManager.useConnection(RoomConnectionManager.android.kt:126)
+	at androidx.room.RoomDatabase.useConnection$room_runtime_release(RoomDatabase.android.kt:593)
+	at androidx.room.util.DBUtil__DBUtil_androidKt.performSuspending(DBUtil.android.kt:249)
+	at androidx.room.util.DBUtil.performSuspending(Unknown Source:1)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl.insert(CatalogueDao_Impl.kt:489)
+	at com.opus.piano.data.catalogue.CatalogueRepository.addSource(CatalogueRepository.kt:114)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invokeSuspend(CatalogueIngestion.kt:20)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invoke(Unknown Source:8)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invoke(Unknown Source:2)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invokeSuspend(RoomDatabase.android.kt:2001)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invoke(Unknown Source:8)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invoke(Unknown Source:2)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invokeSuspend(RoomDatabase.android.kt:2015)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invoke(Unknown Source:8)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invoke(Unknown Source:4)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:61)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source:1)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1$1.invokeSuspend(RoomDatabase.android.kt:2048)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1.run(RoomDatabase.android.kt:2045)
+	at androidx.room.TransactionExecutor.execute$lambda$1$lambda$0(TransactionExecutor.android.kt:38)
+	at androidx.room.TransactionExecutor$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+	at java.lang.Thread.run(Thread.java:764)
+
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=explicitCrossIdEvidenceReconcilesButNamesDoNot
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: stack=android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: sources.provider, sources.recordId, sources.revision (code 2067)
+	at android.database.sqlite.SQLiteConnection.nativeExecute(Native Method)
+	at android.database.sqlite.SQLiteConnection.execute(SQLiteConnection.java:555)
+	at android.database.sqlite.SQLiteSession.execute(SQLiteSession.java:619)
+	at android.database.sqlite.SQLiteStatement.execute(SQLiteStatement.java:44)
+	at androidx.sqlite.db.framework.FrameworkSQLiteStatement.execute(FrameworkSQLiteStatement.android.kt:30)
+	at androidx.room.driver.SupportSQLiteStatement$SupportOtherAndroidSQLiteStatement.step(SupportSQLiteStatement.android.kt:415)
+	at androidx.room.EntityInsertAdapter.insert(EntityInsertAdapter.kt:59)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl.insert$lambda$13(CatalogueDao_Impl.kt:491)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl$$ExternalSyntheticLambda34.invoke(D8$$SyntheticClass:0)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invokeSuspend(DBUtil.kt:61)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invoke(Unknown Source:8)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invoke(Unknown Source:4)
+	at androidx.room.driver.SupportSQLitePooledConnection.transaction(SupportSQLiteConnectionPool.android.kt:83)
+	at androidx.room.driver.SupportSQLitePooledConnection.withTransaction(SupportSQLiteConnectionPool.android.kt:66)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invokeSuspend(DBUtil.kt:59)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invoke(Unknown Source:8)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invoke(Unknown Source:4)
+	at androidx.room.driver.SupportSQLiteConnectionPool.useConnection(SupportSQLiteConnectionPool.android.kt:42)
+	at androidx.room.RoomConnectionManager.useConnection(RoomConnectionManager.android.kt:126)
+	at androidx.room.RoomDatabase.useConnection$room_runtime_release(RoomDatabase.android.kt:593)
+	at androidx.room.util.DBUtil__DBUtil_androidKt.performSuspending(DBUtil.android.kt:249)
+	at androidx.room.util.DBUtil.performSuspending(Unknown Source:1)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl.insert(CatalogueDao_Impl.kt:489)
+	at com.opus.piano.data.catalogue.CatalogueRepository.addSource(CatalogueRepository.kt:114)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invokeSuspend(CatalogueIngestion.kt:20)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invoke(Unknown Source:8)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invoke(Unknown Source:2)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invokeSuspend(RoomDatabase.android.kt:2001)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invoke(Unknown Source:8)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invoke(Unknown Source:2)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invokeSuspend(RoomDatabase.android.kt:2015)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invoke(Unknown Source:8)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invoke(Unknown Source:4)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:61)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source:1)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1$1.invokeSuspend(RoomDatabase.android.kt:2048)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1.run(RoomDatabase.android.kt:2045)
+	at androidx.room.TransactionExecutor.execute$lambda$1$lambda$0(TransactionExecutor.android.kt:38)
+	at androidx.room.TransactionExecutor$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+	at java.lang.Thread.run(Thread.java:764)
+
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=hostileJsonDepthDuplicateKeysAndOversizeRejected
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=hostileJsonDepthDuplicateKeysAndOversizeRejected
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=stablePagingRejectsOldGenerationAndDoesNotOverlap
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=stablePagingRejectsOldGenerationAndDoesNotOverlap
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=openingDiscoverAndOfflineSearchSendNothing
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=openingDiscoverAndOfflineSearchSendNothing
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=repertoireDuplicateAddPreservesUuidManualEditsHistoryAndRawDraft
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=repertoireDuplicateAddPreservesUuidManualEditsHistoryAndRawDraft
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 2.183
+There were 2 failures:
+1) repeatedProviderImportKeepsIdentityAndContradictionsWithoutPersonalWrites(com.opus.piano.Stage4CatalogueTest)
+android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: sources.provider, sources.recordId, sources.revision (code 2067)
+	at android.database.sqlite.SQLiteConnection.nativeExecute(Native Method)
+	at android.database.sqlite.SQLiteConnection.execute(SQLiteConnection.java:555)
+	at android.database.sqlite.SQLiteSession.execute(SQLiteSession.java:619)
+	at android.database.sqlite.SQLiteStatement.execute(SQLiteStatement.java:44)
+	at androidx.sqlite.db.framework.FrameworkSQLiteStatement.execute(FrameworkSQLiteStatement.android.kt:30)
+	at androidx.room.driver.SupportSQLiteStatement$SupportOtherAndroidSQLiteStatement.step(SupportSQLiteStatement.android.kt:415)
+	at androidx.room.EntityInsertAdapter.insert(EntityInsertAdapter.kt:59)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl.insert$lambda$13(CatalogueDao_Impl.kt:491)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl$$ExternalSyntheticLambda34.invoke(D8$$SyntheticClass:0)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invokeSuspend(DBUtil.kt:61)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invoke(Unknown Source:8)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invoke(Unknown Source:4)
+	at androidx.room.driver.SupportSQLitePooledConnection.transaction(SupportSQLiteConnectionPool.android.kt:83)
+	at androidx.room.driver.SupportSQLitePooledConnection.withTransaction(SupportSQLiteConnectionPool.android.kt:66)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invokeSuspend(DBUtil.kt:59)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invoke(Unknown Source:8)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invoke(Unknown Source:4)
+	at androidx.room.driver.SupportSQLiteConnectionPool.useConnection(SupportSQLiteConnectionPool.android.kt:42)
+	at androidx.room.RoomConnectionManager.useConnection(RoomConnectionManager.android.kt:126)
+	at androidx.room.RoomDatabase.useConnection$room_runtime_release(RoomDatabase.android.kt:593)
+	at androidx.room.util.DBUtil__DBUtil_androidKt.performSuspending(DBUtil.android.kt:249)
+	at androidx.room.util.DBUtil.performSuspending(Unknown Source:1)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl.insert(CatalogueDao_Impl.kt:489)
+	at com.opus.piano.data.catalogue.CatalogueRepository.addSource(CatalogueRepository.kt:114)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invokeSuspend(CatalogueIngestion.kt:20)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invoke(Unknown Source:8)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invoke(Unknown Source:2)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invokeSuspend(RoomDatabase.android.kt:2001)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invoke(Unknown Source:8)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invoke(Unknown Source:2)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invokeSuspend(RoomDatabase.android.kt:2015)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invoke(Unknown Source:8)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invoke(Unknown Source:4)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:61)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source:1)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1$1.invokeSuspend(RoomDatabase.android.kt:2048)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1.run(RoomDatabase.android.kt:2045)
+	at androidx.room.TransactionExecutor.execute$lambda$1$lambda$0(TransactionExecutor.android.kt:38)
+	at androidx.room.TransactionExecutor$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+	at java.lang.Thread.run(Thread.java:764)
+2) explicitCrossIdEvidenceReconcilesButNamesDoNot(com.opus.piano.Stage4CatalogueTest)
+android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: sources.provider, sources.recordId, sources.revision (code 2067)
+	at android.database.sqlite.SQLiteConnection.nativeExecute(Native Method)
+	at android.database.sqlite.SQLiteConnection.execute(SQLiteConnection.java:555)
+	at android.database.sqlite.SQLiteSession.execute(SQLiteSession.java:619)
+	at android.database.sqlite.SQLiteStatement.execute(SQLiteStatement.java:44)
+	at androidx.sqlite.db.framework.FrameworkSQLiteStatement.execute(FrameworkSQLiteStatement.android.kt:30)
+	at androidx.room.driver.SupportSQLiteStatement$SupportOtherAndroidSQLiteStatement.step(SupportSQLiteStatement.android.kt:415)
+	at androidx.room.EntityInsertAdapter.insert(EntityInsertAdapter.kt:59)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl.insert$lambda$13(CatalogueDao_Impl.kt:491)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl$$ExternalSyntheticLambda34.invoke(D8$$SyntheticClass:0)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invokeSuspend(DBUtil.kt:61)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invoke(Unknown Source:8)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1$1.invoke(Unknown Source:4)
+	at androidx.room.driver.SupportSQLitePooledConnection.transaction(SupportSQLiteConnectionPool.android.kt:83)
+	at androidx.room.driver.SupportSQLitePooledConnection.withTransaction(SupportSQLiteConnectionPool.android.kt:66)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invokeSuspend(DBUtil.kt:59)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invoke(Unknown Source:8)
+	at androidx.room.util.DBUtil__DBUtil_androidKt$performSuspending$lambda$1$$inlined$internalPerform$1.invoke(Unknown Source:4)
+	at androidx.room.driver.SupportSQLiteConnectionPool.useConnection(SupportSQLiteConnectionPool.android.kt:42)
+	at androidx.room.RoomConnectionManager.useConnection(RoomConnectionManager.android.kt:126)
+	at androidx.room.RoomDatabase.useConnection$room_runtime_release(RoomDatabase.android.kt:593)
+	at androidx.room.util.DBUtil__DBUtil_androidKt.performSuspending(DBUtil.android.kt:249)
+	at androidx.room.util.DBUtil.performSuspending(Unknown Source:1)
+	at com.opus.piano.data.catalogue.CatalogueDao_Impl.insert(CatalogueDao_Impl.kt:489)
+	at com.opus.piano.data.catalogue.CatalogueRepository.addSource(CatalogueRepository.kt:114)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invokeSuspend(CatalogueIngestion.kt:20)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invoke(Unknown Source:8)
+	at com.opus.piano.data.catalogue.CatalogueIngestion$accept$2.invoke(Unknown Source:2)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invokeSuspend(RoomDatabase.android.kt:2001)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invoke(Unknown Source:8)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransaction$2.invoke(Unknown Source:2)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invokeSuspend(RoomDatabase.android.kt:2015)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invoke(Unknown Source:8)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$withTransactionContext$transactionBlock$1.invoke(Unknown Source:4)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:61)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source:1)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1$1.invokeSuspend(RoomDatabase.android.kt:2048)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at androidx.room.RoomDatabaseKt__RoomDatabase_androidKt$startTransactionCoroutine$2$1.run(RoomDatabase.android.kt:2045)
+	at androidx.room.TransactionExecutor.execute$lambda$1$lambda$0(TransactionExecutor.android.kt:38)
+	at androidx.room.TransactionExecutor$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+	at java.lang.Thread.run(Thread.java:764)
+
+FAILURES!!!
+Tests run: 7,  Failures: 2
+
+
+INSTRUMENTATION_CODE: -1

@@ -1,0 +1,27 @@
+{
+  "branch": "feature/goldberg-0.11-stage-4",
+  "head": "72a27cbfad530f0ec2db1b73c425c35c33257e4a",
+  "remoteHeadMatched": true,
+  "ci": {
+    "url": "https://github.com/stokonn/Goldberg/actions/runs/39154044750",
+    "conclusion": "success"
+  },
+  "emulators": {
+    "emulator-5582": {
+      "qemu": "1",
+      "api": 37,
+      "bootCompleted": "1"
+    },
+    "emulator-5584": {
+      "qemu": "1",
+      "api": 26,
+      "bootCompleted": "1"
+    }
+  },
+  "initialTests": {
+    "perApi": 7,
+    "failures": 2,
+    "cause": "source uniqueness assumes provider revision alone implies identical payload; conflicting revisions must retain hash-bound observations"
+  },
+  "ownerNotesSha256": "db920f0b1ff88579b6bea9f9da567af16e6db0c7ce5b6439781ca1754fcd4b9b"
+}

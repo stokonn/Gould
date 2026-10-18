@@ -22,3 +22,23 @@ All4A–4F remain incomplete. See [actual implementation, checks and next action
 2026-10-18: Verified baseline/worktree/ancestry, created exact-baseline branch; read policies/contracts/readiness/source research. Inspected issue31 (open), milestone4 (open), Project2 (Backlog), existing releases. Initial sandbox GitHub access failed; approved network inspection succeeded. Implementation in progress.
 
 created by stokonn with love <3
+
+## Resumed implementation
+
+Recovered exact72a27cb local/remote state; final WIP CI passed (run39154044750). Initial seven Android tests executed on qemu-verified API26/emulator-5584 and API37/emulator-5582:5 passed/2 failed on each, revealing source revision collisions. Fixed typed per-record hash-bound observations and cancellation cleanup; reran all7: **7 passed on each API**. Graphics startup with swiftshader_indirect crashed; previously verified swangle booted both disposable emulators successfully. No physical device used. Continuing typed candidates/relationships and search/cache;4A–4F remain incomplete.
+
+### Verified during resumed work (partial gates only)
+
+- [x] Original7 Android tests executed/fixed; combined26 Stage4 tests passed on API26/API37.
+- [x] Typed graph/search and persistent-cache/cancellation/rights regression tests executed.
+- [x] Latest prior frozen builds:90 JVM tests and zero lint errors;94 warnings retained.
+- [x] Host migration/backup/locale/paging/policy checks; schemas still personal10/catalogue1.
+- [x] API26 first1k/10k/50k measurement and practice credit reconciliation; raw evidence retained.
+- [ ] Latest portable-v5 link/recovery test and period-filter fixture execution.
+- [ ] Clean full final Android suite (previous101-test runs each had one now-corrected expectation failure).
+- [ ] Provider paging, redirected/conflicting identity handling, candidate/accepted-revision retention policy.
+- [ ] Live licensed portrait acceptance and full language/filter/error UI acceptance.
+- [ ] Seeded genuine schema8 baseline0.10.1 upgrade, process-death regressions and current screenshots.
+- [ ] Final source/artifact validation, pushed implementation CI and accurate tracking/Wiki.
+
+Earlier progress paragraphs are historical, not current completion claims.4A–4F remain incomplete.

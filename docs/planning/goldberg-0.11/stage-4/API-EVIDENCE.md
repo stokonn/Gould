@@ -13,3 +13,13 @@ Reviewed2026-10-18 using official web documentation before adding transport. No 
 Transport rejects redirects rather than silently forwarding across hosts. Conditional GET/304, documented redirect following and accepted-revision cache policy need follow-up. Timeouts are bounded and JSON/response size is capped2MiB; these are client choices, not provider content guarantees. Oversized article rejection must retain saved content. No paid AI, tracker, backend account or provider credentials were introduced.
 
 created by stokonn with love <3
+
+## Resumed implementation evidence (supersedes the initial WIP limitations above)
+
+The bounded script `probe_providers.py` executed explicit synthetic/public metadata requests; structured results are in `results/provider-probes.json`. Open Opus returned HTTP200 with two rows. Wikipedia EN/CS returned HTTP200 with immutable revision IDs and CC-BY-SA-4.0 URLs ending in `/deed.en` and `/deed.cs`; the adapter now accepts those exact reviewed URL forms, with host/scheme/path checks. These are endpoint observations, not certified music identity mappings. Wikidata returned HTTP200 JSON `maxlag` plus Retry-After5; the script stopped that source without retry. MusicBrainz was skipped after official documentation returned429. Do not claim successful live acceptance for those two sources.
+
+Commons metadata returned a public-domain label without a matching verified license URL for the probed image. Rights were blocked and no image bytes were fetched. The image was also larger than the implemented512KiB single-image cap. This is evidence that the gate rejects insufficient rights, not successful portrait acceptance.
+
+Transport/cache now implement conditional ETag/Last-Modified requests,304 renewal, bounded per-provider coalescing, Retry-After/backoff and persistent projected responses. Cache failure preserves older accepted records and reports a separate refresh failure. Original observation timestamps/revisions are retained. HTTP redirects are still safely rejected; a reviewed identity-aware redirect flow is unfinished. Wikipedia licenses beyond the exact CC-BY-SA-4.0 gate remain blocked. Commons permits only reviewed file-specific CC-BY/CC-BY-SA3/4 metadata plus verified original-file SHA1 before rendering a small explicit download. Successful real licensed-portrait rendering remains unverified.
+
+MusicBrainz relationship projection and its narrow core-field extension are recorded in `CONTRACT-EXTENSIONS.md`; no derived annotation/rating/tag/cover-art expansion is authorized. Synthetic fixtures test typed work/arrangement/part/performance/release relationships and exact Spotify recording destinations. They must not be presented as real-world provider identity certification.

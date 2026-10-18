@@ -1,0 +1,428 @@
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+com.opus.piano.Stage4CatalogueTest:
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=providerPartialSuccessAndJsonOverloadRemainIndependent
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=providerPartialSuccessAndJsonOverloadRemainIndependent
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=repeatedProviderImportKeepsIdentityAndContradictionsWithoutPersonalWrites
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=repeatedProviderImportKeepsIdentityAndContradictionsWithoutPersonalWrites
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=explicitCrossIdEvidenceReconcilesButNamesDoNot
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=explicitCrossIdEvidenceReconcilesButNamesDoNot
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=hostileJsonDepthDuplicateKeysAndOversizeRejected
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=hostileJsonDepthDuplicateKeysAndOversizeRejected
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=stablePagingRejectsOldGenerationAndDoesNotOverlap
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=stablePagingRejectsOldGenerationAndDoesNotOverlap
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=openingDiscoverAndOfflineSearchSendNothing
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=openingDiscoverAndOfflineSearchSendNothing
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=repertoireDuplicateAddPreservesUuidManualEditsHistoryAndRawDraft
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=repertoireDuplicateAddPreservesUuidManualEditsHistoryAndRawDraft
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4CatalogueTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+com.opus.piano.Stage4GraphTest:
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=searchCandidateCannotBeAddedBeforeTypedLookupAndArrangementKeepsIdentity
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4GraphTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=searchCandidateCannotBeAddedBeforeTypedLookupAndArrangementKeepsIdentity
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4GraphTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=partsOrderAndRecordingPerformanceAreDifferentEdges
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4GraphTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=partsOrderAndRecordingPerformanceAreDifferentEdges
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4GraphTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=streamingLinksAreBoundToRecordingAndExactPlatformDestination
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4GraphTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=streamingLinksAreBoundToRecordingAndExactPlatformDestination
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4GraphTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=aliasesCreditsCatalogueNumbersAndBoundedTypoRetrieval
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4GraphTest
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=aliasesCreditsCatalogueNumbersAndBoundedTypoRetrieval
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4GraphTest
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=linkedReleaseTrackProjectionDropsUnknownNestedRightsFields
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4GraphTest
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=linkedReleaseTrackProjectionDropsUnknownNestedRightsFields
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4GraphTest
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+com.opus.piano.Stage4ProviderCacheTest:
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=noStoreDoesNotPersistAndNoCacheRequiresRevalidation
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=noStoreDoesNotPersistAndNoCacheRequiresRevalidation
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=failedRefreshRetainsAcceptedRevisionAndHonorsBackoff
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=failedRefreshRetainsAcceptedRevisionAndHonorsBackoff
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=invalidRightsAndJsonErrorsNeverBecomeSuccessfulEmptyContent
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=invalidRightsAndJsonErrorsNeverBecomeSuccessfulEmptyContent
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=corruptCacheIsDisposableAndDoesNotHideValidProviderData
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=corruptCacheIsDisposableAndDoesNotHideValidProviderData
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=concurrentCallsCoalesceAndCancelledOwnerDoesNotPoisonLaterRequests
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=concurrentCallsCoalesceAndCancelledOwnerDoesNotPoisonLaterRequests
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=projectedCacheIsPersistentPrivateBoundedAndConditionallyRevalidated
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=projectedCacheIsPersistentPrivateBoundedAndConditionallyRevalidated
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+com.opus.piano.Stage4SafetyTest:
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=groupedPartsSnapshotAndExplicitSeparateEntriesNeverCreatePracticeCredit
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4SafetyTest
+INSTRUMENTATION_STATUS: current=19
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=groupedPartsSnapshotAndExplicitSeparateEntriesNeverCreatePracticeCredit
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4SafetyTest
+INSTRUMENTATION_STATUS: current=19
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=arrangementPersonalUuidIsIndependentAndLegacyOpenOpusPieceIsNotDuplicated
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4SafetyTest
+INSTRUMENTATION_STATUS: current=20
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=arrangementPersonalUuidIsIndependentAndLegacyOpenOpusPieceIsNotDuplicated
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4SafetyTest
+INSTRUMENTATION_STATUS: current=20
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=portraitDecoderRejectsUnsupportedAndOversizedContent
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4SafetyTest
+INSTRUMENTATION_STATUS: current=21
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=portraitDecoderRejectsUnsupportedAndOversizedContent
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4SafetyTest
+INSTRUMENTATION_STATUS: current=21
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=correctionExportContainsOnlyCatalogueEvidenceAndRemainsUnsubmitted
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4SafetyTest
+INSTRUMENTATION_STATUS: current=22
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=correctionExportContainsOnlyCatalogueEvidenceAndRemainsUnsubmitted
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4SafetyTest
+INSTRUMENTATION_STATUS: current=22
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4SafetyTest
+INSTRUMENTATION_STATUS: current=23
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+Error in persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles(com.opus.piano.Stage4SafetyTest):
+java.lang.AssertionError: expected null, but was:<CachedProviderValue(result=ProviderResult(request=ProviderRequest(url=https://api.openopus.org/omnisearch/query2/0.json, provider=openopus, kind=search, externalId=null, headers={}), state=FRESH, records=[ProviderRecord(providerKind=work, externalId=1, kind=work, title=Authored 1, fields=[], aliases=[], subtype=, credits=[], classificationPending=false, relationships=[])], revision=1, hash=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, observedAt=2026-10-18T20:28:38.987Z, retryAfterMillis=0, error=null, license=CC0-1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, candidates=[], supplement={}, refreshState=null), expiresAt=101100, etag=null, lastModified=null)>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotNull(Assert.java:756)
+	at org.junit.Assert.assertNull(Assert.java:738)
+	at org.junit.Assert.assertNull(Assert.java:748)
+	at com.opus.piano.Stage4SafetyTest$persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles$1.invokeSuspend(Stage4SafetyTest.kt:71)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.opus.piano.Stage4SafetyTest.persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles(Stage4SafetyTest.kt:64)
+
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4SafetyTest
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: expected null, but was:<CachedProviderValue(result=ProviderResult(request=ProviderRequest(url=https://api.openopus.org/omnisearch/query2/0.json, provider=openopus, kind=search, externalId=null, headers={}), state=FRESH, records=[ProviderRecord(providerKind=work, externalId=1, kind=work, title=Authored 1, fields=[], aliases=[], subtype=, credits=[], classificationPending=false, relationships=[])], revision=1, hash=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, observedAt=2026-10-18T20:28:38.987Z, retryAfterMillis=0, error=null, license=CC0-1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, candidates=[], supplement={}, refreshState=null), expiresAt=101100, etag=null, lastModified=null)>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotNull(Assert.java:756)
+	at org.junit.Assert.assertNull(Assert.java:738)
+	at org.junit.Assert.assertNull(Assert.java:748)
+	at com.opus.piano.Stage4SafetyTest$persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles$1.invokeSuspend(Stage4SafetyTest.kt:71)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.opus.piano.Stage4SafetyTest.persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles(Stage4SafetyTest.kt:64)
+
+INSTRUMENTATION_STATUS: current=23
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+com.opus.piano.Stage4TransportTest:
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=redirectsAndUnexpectedHostsDoNotBecomeContentOrForwardCredentials
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4TransportTest
+INSTRUMENTATION_STATUS: current=24
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=redirectsAndUnexpectedHostsDoNotBecomeContentOrForwardCredentials
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4TransportTest
+INSTRUMENTATION_STATUS: current=24
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=oversizedStreamsAndNetworkPolicyRevocationFailBeforeAcceptance
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4TransportTest
+INSTRUMENTATION_STATUS: current=25
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=oversizedStreamsAndNetworkPolicyRevocationFailBeforeAcceptance
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4TransportTest
+INSTRUMENTATION_STATUS: current=25
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=cancellationClosesBlockingReadWithoutWaitingForSocketTimeout
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4TransportTest
+INSTRUMENTATION_STATUS: current=26
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=26
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=cancellationClosesBlockingReadWithoutWaitingForSocketTimeout
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4TransportTest
+INSTRUMENTATION_STATUS: current=26
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 5.331
+There was 1 failure:
+1) persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles(com.opus.piano.Stage4SafetyTest)
+java.lang.AssertionError: expected null, but was:<CachedProviderValue(result=ProviderResult(request=ProviderRequest(url=https://api.openopus.org/omnisearch/query2/0.json, provider=openopus, kind=search, externalId=null, headers={}), state=FRESH, records=[ProviderRecord(providerKind=work, externalId=1, kind=work, title=Authored 1, fields=[], aliases=[], subtype=, credits=[], classificationPending=false, relationships=[])], revision=1, hash=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, observedAt=2026-10-18T20:28:38.987Z, retryAfterMillis=0, error=null, license=CC0-1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, candidates=[], supplement={}, refreshState=null), expiresAt=101100, etag=null, lastModified=null)>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotNull(Assert.java:756)
+	at org.junit.Assert.assertNull(Assert.java:738)
+	at org.junit.Assert.assertNull(Assert.java:748)
+	at com.opus.piano.Stage4SafetyTest$persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles$1.invokeSuspend(Stage4SafetyTest.kt:71)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.opus.piano.Stage4SafetyTest.persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles(Stage4SafetyTest.kt:64)
+
+FAILURES!!!
+Tests run: 26,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

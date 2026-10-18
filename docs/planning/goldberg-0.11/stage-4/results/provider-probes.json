@@ -1,0 +1,83 @@
+{
+  "scope": "five bounded public nonpersonal metadata requests; no article/image bytes retained; no identity equivalence certified",
+  "musicbrainz": {
+    "state": "not_probed",
+    "reason": "Current primary-document review returned HTTP429; stop rather than retry the throttled source."
+  },
+  "requests": [
+    {
+      "provider": "openopus",
+      "url": "https://api.openopus.org/omnisearch/Goldberg/0.json",
+      "fixtureAction": "authored public compatibility probe, never a personal search",
+      "http": 200,
+      "retryAfter": null,
+      "bytes": 801,
+      "state": "valid_json_shape_requires_adapter_acceptance",
+      "sha256": "0937cd005de6a0fa74d684059ad94500162ea57ef17500d12f3cf23c0b5d5235",
+      "resultCount": 2,
+      "statusSuccess": "true",
+      "durationMillis": 471.98
+    },
+    {
+      "provider": "wikidata",
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&maxlag=5&ids=Q1339&props=labels%7Cclaims&languages=en%7Ccs",
+      "fixtureAction": "authored public compatibility probe, never a personal search",
+      "http": 200,
+      "retryAfter": "5",
+      "bytes": 502,
+      "providerError": "maxlag",
+      "state": "rate_limited",
+      "durationMillis": 454.1
+    },
+    {
+      "provider": "wikipedia",
+      "url": "https://en.wikipedia.org/w/rest.php/v1/page/Johann_Sebastian_Bach/with_html",
+      "fixtureAction": "authored public compatibility probe, never a personal search",
+      "http": 200,
+      "retryAfter": null,
+      "bytes": 1171228,
+      "state": "valid_json_shape_requires_adapter_acceptance",
+      "sha256": "c80bd1993ba5edba9bec10b511056c7323f9c1fad6428dfea54693c9b2a1c6df",
+      "revision": 1380548329,
+      "license": {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+        "title": "Creative Commons Attribution-Share Alike 4.0"
+      },
+      "htmlBytes": 1092181,
+      "durationMillis": 619.72
+    },
+    {
+      "provider": "wikipedia",
+      "url": "https://cs.wikipedia.org/w/rest.php/v1/page/Johann_Sebastian_Bach/with_html",
+      "fixtureAction": "authored public compatibility probe, never a personal search",
+      "http": 200,
+      "retryAfter": null,
+      "bytes": 201707,
+      "state": "valid_json_shape_requires_adapter_acceptance",
+      "sha256": "36979773d11ea9f757d50a60bc2eee6c8667b7e18510ee7a006361a0f611e393",
+      "revision": 25698610,
+      "license": {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/deed.cs",
+        "title": "Creative Commons Attribution-Share Alike 4.0"
+      },
+      "htmlBytes": 189470,
+      "durationMillis": 1416.14
+    },
+    {
+      "provider": "commons",
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2&maxlag=5&prop=imageinfo&iiprop=url%7Csha1%7Csize%7Cmime%7Ctimestamp%7Cextmetadata&iiurlwidth=320&titles=File%3AJohann_Sebastian_Bach.jpg",
+      "fixtureAction": "authored public compatibility probe, never a personal search",
+      "http": 200,
+      "retryAfter": null,
+      "bytes": 4334,
+      "state": "valid_json_shape_requires_adapter_acceptance",
+      "sha256": "5be236a7b989b01da591c5cad6c6b8e23d711d6720402de75e74ac0e324b10f1",
+      "fileSha1": "5b768a90bed6c8f6c627fb37890627ca21a28ac5",
+      "fileBytes": 630150,
+      "licenseName": "Public domain",
+      "licenseUrl": null,
+      "imageDownloaded": false,
+      "durationMillis": 344.36
+    }
+  ]
+}

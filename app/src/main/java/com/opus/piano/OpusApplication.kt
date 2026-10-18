@@ -33,10 +33,13 @@ class OpusApplication : Application() {
     }
     // Optional: never referenced by journal/recovery startup or existing legacy Library paths.
     val localCatalogue by lazy { com.opus.piano.data.catalogue.LocalCatalogueStore(this, database) }
+    val catalogueStorage by lazy { com.opus.piano.data.catalogue.CatalogueStorage(this) }
+    val providerCache by lazy { com.opus.piano.data.catalogue.providers.FileProviderCache(java.io.File(cacheDir,"catalogue-stage4/responses")) }
     val discover by lazy {
         com.opus.piano.data.catalogue.DiscoverRepository(localCatalogue,
-            com.opus.piano.data.catalogue.providers.ProviderClient(com.opus.piano.data.catalogue.providers.HttpsProviderTransport { media.allowed() }, { media.allowed() }), { media.allowed() })
+            com.opus.piano.data.catalogue.providers.ProviderClient(com.opus.piano.data.catalogue.providers.HttpsProviderTransport { media.allowed() }, { media.allowed() }, cache=providerCache), { media.allowed() }, catalogueStorage)
     }
+    val cataloguePortraits by lazy { com.opus.piano.data.catalogue.CataloguePortraits(java.io.File(cacheDir,"catalogue-stage4/portraits")) { media.allowed() } }
     val discoverHistory by lazy { com.opus.piano.data.catalogue.DiscoverHistory(this) }
     val catalogueRepertoire by lazy { com.opus.piano.data.catalogue.CatalogueRepertoire(database) }
     val practiceRepository by lazy { PracticeRepository(database, repository) }

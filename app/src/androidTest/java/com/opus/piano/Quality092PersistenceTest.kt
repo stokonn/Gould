@@ -63,13 +63,14 @@ class Quality092PersistenceTest {
         try {
             val url="https://upload.wikimedia.org/test-licensed-portrait.png"
             assertNull(repository.portrait(url));assertEquals(0,requests)
-            allowed=true;assertNotNull(repository.portrait(url));assertNotNull(repository.portrait(url));assertEquals(1,requests)
+            allowed=true;assertNull(repository.portrait(url));assertEquals(0,requests)
+            assertNotNull(repository.portrait(url,explicit=true));assertNotNull(repository.portrait(url));assertEquals(1,requests)
             allowed=false;assertNotNull(repository.portrait(url));assertEquals(1,requests)
             repository.clearCache();assertNull(repository.portrait(url));assertEquals(1,requests)
             allowed=true;failDownload=true
-            try {repository.portrait(url);fail()} catch(_:java.io.IOException) {}
+            try {repository.portrait(url,explicit=true);fail()} catch(_:java.io.IOException) {}
             assertEquals(0,repository.cacheBytes())
-            failDownload=false;revoke=true;assertNull(repository.portrait(url));assertEquals(0,repository.cacheBytes())
+            failDownload=false;revoke=true;assertNull(repository.portrait(url,explicit=true));assertEquals(0,repository.cacheBytes())
         } finally {db.close();directory.deleteRecursively()}
     }
     @Test fun formatTwoSchemaSixBackupKeepsAllOriginalFieldsAndAddsSafeDefaults()=runBlocking {

@@ -17,14 +17,19 @@ class CatalogueRepository(private val db: CatalogueDatabase) {
         for(field in result.records.single().fields) addAssertion(CatalogueAssertion(java.util.UUID.randomUUID().toString(),id,field.field,org.json.JSONObject().put("value",field.value).put("language",field.language).toString(),source.id,rights.id,dao.assertions(id,field.field).isEmpty()))
         dao.state(CatalogueState(key,"ready"))
     }
+    suspend fun states(prefix:String,limit:Int=200)=dao.states(prefix.replace("%","").replace("_","")+"%",limit.coerceIn(1,200))
+    suspend fun removeState(key:String)=dao.removeState(key)
     suspend fun generation():String=dao.state("generation")?.value ?: "initial"
     suspend fun assertions(id:String)=dao.assertions(id)
+    suspend fun providerIdentity(provider:String,kind:String,id:String)=dao.identity(provider,kind,id)
     suspend fun identities(id:String)=dao.identities(id)
     suspend fun source(id:String)=dao.source(id)
     suspend fun rights(id:String)=dao.rights(id)
     suspend fun linked(id:String)=dao.allRelationships(id)
     suspend fun state(key:String)=dao.state(key)?.value
     suspend fun state(key:String,value:String)=dao.state(CatalogueState(key,value))
+    internal suspend fun aliasPrefix(prefix:String)=dao.aliasPrefix(prefix,prefix+"\uffff")
+    internal suspend fun availablePeriods()=dao.availablePeriods().mapNotNull {runCatching {org.json.JSONObject(it).getString("value").takeIf {v->v.isNotBlank() && v.length<=80}}.getOrNull()}.distinct()
     internal suspend fun queryEntities(query:androidx.sqlite.db.SupportSQLiteQuery)=dao.queryEntities(query)
 
     suspend fun entity(id: String): CatalogueEntity? { CatalogueValidation.uuid(id); return dao.entity(id) }

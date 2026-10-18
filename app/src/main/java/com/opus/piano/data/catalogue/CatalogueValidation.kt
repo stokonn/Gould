@@ -10,7 +10,7 @@ internal object CatalogueValidation {
     val kinds = setOf("work", "arrangement", "artist", "album", "release", "recording", "collection")
     fun uuid(value: String) { require(UUID.fromString(value).toString() == value) { "Noncanonical UUID" } }
     fun normalized(value: String): String = Normalizer.normalize(value, Normalizer.Form.NFD)
-        .replace(Regex("\\p{M}+"), "").lowercase(Locale.ROOT).replace(Regex("[^\\p{L}\\p{N}]+"), " ").trim()
+        .replace(Regex("\\p{M}+"), "").lowercase(Locale.ROOT).replace(Regex("[^\\p{L}\\p{N}]+"), " ").replace(Regex("([a-z])([0-9])"),"$1 $2").trim()
     fun query(value: String): String = normalized(value.take(512)).split(' ').filter { it.isNotBlank() }.take(8).joinToString(" ") { "\"$it*\"" }
     fun install(db: SupportSQLiteDatabase) {
         var guardId = 0

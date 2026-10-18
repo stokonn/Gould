@@ -1,5 +1,7 @@
 # Stage 4 — WIP implementation checkpoint
 
+**Stage4 remains WIP. Read the appended resumed-work sections for current results; earlier checkpoint paragraphs describe the original72a27cb state and are preserved as history. No completion/release is claimed.**
+
 **Incomplete. Not a Stage 4 acceptance checkpoint or a release candidate.** The owner requested a resumable WIP checkpoint as the session approached its usage limit. No main merge, tag, Release, APK upload, Stage5 work, cloud service or paid infrastructure is authorized or performed.
 
 ## Baseline and branch
@@ -106,3 +108,34 @@ Read this checkpoint and `CHECKLIST.md`, verify current HEAD/worktree/remote, pr
 11. Finish artifact ZIP/resources/source identity, clean final remote CI and documentation/tracking/English Wiki synchronization. Do not close Issue31 or mark Stage4 complete before all mandatory gates pass.
 
 created by stokonn with love <3
+
+
+## Resumed work — current verification boundary
+
+The owner resumed Stage4 on the exact72a27cb branch. Remote CI for that HEAD passed: https://github.com/stokonn/Goldberg/actions/runs/39154044750 . Source435600c and documentation72a27cb were inspected. All subsequent modified/untracked source/test/evidence files are preserved, including owner RELEASE_NOTES.md unchanged/untracked. `results/recovered-worktree.json` records hashes; it is an inventory, not a final source/artifact acceptance claim.
+
+Executed on qemu/API-verified disposable emulators: API26 `emulator-5584`, API37 `emulator-5582`. Original7 tests initially failed2 on each due to a real source revision/hash uniqueness bug. Fixed per-record source observations, retained original revision plus payload hash, and cancellation cleanup. All7 then passed on both. Expanded graph/search tests: **12 passed on each API** (`results/graph-api*.log`). Persistent cache tests: **6 passed on each API** (`results/cache-api*.log`). These were targeted runs on successive built candidates; they are not a final combined suite or full regression acceptance.
+
+Added typed unresolved candidates and explicit lookup, provider-proven structural/derivation/performance/edition/track projection, pending/quarantined edges, original-query-free public source URLs/hash-only request keys, FTS intersections across aliases/credits and bounded one-edit candidate matching. Added persistent projected response cache with conditional ETag/304, freshness/no-store/no-cache handling, stale accepted data after failure, per-provider overload backoff, coalescing/cancellation and LRU/age budgets. Contract extensions are documented in CONTRACT-EXTENSIONS.md. Catalogue/personal schemas remain1/10.
+
+Latest source also adds explicit small, rights-checked, original-image hash-verified portrait loading/credits; local correction SAF export; multilingual preferred names; metadata conflict notices; legacy repertoire duplicate checks; grouped part snapshots and selection-conflict reporting; independent arrangement personal UUIDs. New Stage4SafetyTest/Stage4TransportTest are authored. These latest paths await combined execution. A constructor lambda compilation error was corrected; the interrupted integrated/safety runs had no successful terminal result and must not be called passed. The interrupted Gradle/emulator processes were confirmed absent before restarting a single recovered build, logged at `/tmp/goldberg-stage4-recovered-build.log`; emulator37 restarted with the retained AVD/swangle settings. No reset/clean/uninstall/owner-file overwrite occurred.
+
+Remaining priorities: complete the combined26-test catalogue/graph/cache/safety/transport run on both APIs after latest source compiles; fix any failures; then provider continuation/filter UI, complete identity/candidate bounds/diagnostics, licensed media/live probe acceptance, actual UI/locale/font/theme review,1k/10k/50k performance, full API26/API37 regression/upgrade/backup/recovery/source-artifact checks and final clean CI/docs/tracking. No Stage4 completion, merge, tag, release, Stage5 or paid/cloud work is claimed or authorized.
+
+### Latest executed regression boundary
+
+Frozen command `GRADLE_USER_HOME=/tmp/goldberg-gradle-home ./gradlew --offline assembleDebug assembleDebugAndroidTest testDebugUnitTest lintDebug --no-daemon --max-workers=1` passed after the cache-access index and Wikipedia license URL fixes: **90 JVM tests,0 failures/errors; lint0 errors/94 warnings**. `results/lru-license-build.log` records the build. Catalogue schema1 and personal schema10 exports remain unchanged.
+
+Combined Stage4 catalogue/graph/cache/safety/transport26-test execution: first API37 passed26, API26 passed25/failed1 on access-order eviction. API26 filesystem timestamps had insufficient precision; explicit monotonic persisted access indexing fixed it. The next combined execution passed **26/26 on both APIs** (`results/combined-after-lru-api*.log`). Earlier failure logs are retained.
+
+Full Android regression execution then ran **101 tests on each API:100 passed/1 failed**. Both failures were Quality092PersistenceTest's old expectation of an automatic portrait download. Stage4 intentionally defaults that path to cache-only. The test has been updated to assert zero automatic requests, then exercise explicit download, cached offline reads and mid-download consent revocation. This updated test is awaiting rebuild/execution; do not claim the101-test suite passed yet. Existing migrations/backup/recovery/practice tests reported no other failure in those runs.
+
+Host checks rerun: migration1–9→10 DDL; historical backup fixtures; full/minimal/unknown v5 fixture checks; history paging; policy/Wiki-navigation; localization **882 matching CZ/EN resources**; unchanged schema exports; whitespace checks passed. Latest unbuilt source additionally adds bounded local artist/period filter controls, stale-pagination UI guards, authored relevance/history and1k/10k/50k measurement tests. These new paths are not yet verified. The next frozen build log is `/tmp/goldberg-stage4-filter-perf-build.log`.
+
+### Search/filter follow-up
+
+Filter/performance build passed (90 JVM, no failures/errors; lint no errors/94 warnings), then API26 executed the three new search/history/measurement cases and four Quality092 cases: **7 passed** (`results/search-initial-api26.log`). These tests executed against the filter build before the period-credit follow-up. The period-credit build subsequently passed compilation/JVM/lint. Latest frozen build additionally removes raw queries from Compose saved-state persistence and adds a portable-v5 optional-link/grouped-snapshot/UUID/raw-recovery regression; that latest case is not yet executed.
+
+Actual first API26 measurement:1k median16.23/p95 26.56ms,10k median49.27/p95 52.22ms,50k median308.23/p95 326.21ms. DB sizes1,060,864 /7,323,648 /35,536,896 bytes. Journal ready under50k catalogue load47.38ms; saved302ms reconciled exactly once. Raw21-sample vectors and noisy Java heap deltas are in `results/performance-initial-api26.json`. The50k latency is an investigation target; this is not a physical-device or worst-case memory claim. No forced GC/native memory trace/startup comparison yet.
+
+Trusted certificate compatibility rechecked successfully against retained0.10.1. The release-specific `verify_quality_apk.py ... 0.10.1 11` failed its strict `old_code < expected_code` assertion because Stage4 intentionally does not bump published versions; its other post-version resource checks were not reached. Do not call that script passed or bump a version to satisfy a release-only rule. Verification APK package/version/ZIP/resources must be checked separately. Upgrade helper now accepts `--baseline-schema` to prevent a previously upgraded emulator DB from masquerading as a genuine initialized old baseline; fresh isolated AVD configs were created for the upcoming seeded upgrade, not yet booted.

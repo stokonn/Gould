@@ -15,8 +15,10 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--serial', required=True)
 parser.add_argument('--baseline', type=Path, required=True)
 parser.add_argument('--baseline-version', default='0.10')
+parser.add_argument('--baseline-schema', type=int, help='Require a genuinely older initialized schema before seeding')
 parser.add_argument('--expected-schema', type=int, default=8)
 parser.add_argument('--offline', action='store_true')
+parser.add_argument('--startup-runs', type=int, choices=range(0,31), default=0, help='Optional matched warm cold-process launch samples, not first-install startup')
 parser.add_argument('--candidate', type=Path, required=True)
 parser.add_argument('--output', type=Path, required=True)
 parser.add_argument('--seed-disposable', action='store_true', required=True)
@@ -52,6 +54,8 @@ if a.offline:
     adb('shell','svc','data','disable')
 launch()
 path, db = snapshot('seed')
+if a.baseline_schema is not None:
+    assert db.execute('PRAGMA user_version').fetchone()[0] == a.baseline_schema, 'Baseline data was not initialized with the expected original schema; use a fresh disposable emulator'
 fixture = json.loads((Path(__file__).resolve().parents[1] / 'app/src/androidTest/assets/backups/goldberg-0.9.2-format3.json').read_text())['tables']
 # Test-only replacement is explicit and limited to the verified disposable emulator.
 for table in reversed(list(fixture)):
@@ -92,6 +96,17 @@ prefs_path.write_text('<?xml version="1.0" encoding="utf-8"?><map><string name="
 adb('push',str(prefs_path),'/data/local/tmp/goldberg-appearance.xml')
 adb('shell','run-as','com.opus.piano','mkdir','-p','shared_prefs')
 adb('shell','run-as','com.opus.piano','cp','/data/local/tmp/goldberg-appearance.xml','shared_prefs/goldberg-appearance.xml')
+def startup_samples():
+    samples=[]
+    for _ in range(a.startup_runs):
+        stop()
+        output=adb('shell','am','start','-W','-n','com.opus.piano/.MainActivity').decode()
+        match=re.search(r'^TotalTime:\s*(\d+)',output,re.M)
+        assert match, 'Missing actual activity launch timing'
+        samples.append(int(match.group(1)))
+        time.sleep(2)
+    return samples
+
 def preference_hashes():
     hashes={}
     for name in ['goldberg-appearance','goldberg-media','goldberg-identity']:
@@ -100,10 +115,12 @@ def preference_hashes():
     return hashes
 # Let 0.10 itself perform its normal metadata/badge backfill on the legacy fixture.
 launch()
+baseline_startup=startup_samples()
 prefs_before=preference_hashes()
 before = values('before')
 print(adb('install', '-r', str(a.candidate)).decode().strip(), flush=True)
 launch()
+candidate_startup=startup_samples()
 after = values('after')
 assert prefs_before==preference_hashes(), 'Appearance/media/identity preferences changed'
 assert before == after, 'Persistent data changed: ' + ', '.join(t for t in before if before[t] != after.get(t))
@@ -118,10 +135,11 @@ if a.expected_schema >= 9:
     bridge = {'identities': len(identities), 'anchors': final_db.execute('SELECT count(*) FROM personal_catalogue_anchors').fetchone()[0]}
     assert bridge['anchors'] >= len(before['pieces']) + len(before['sessions'])
 final_db.close()
-result = {'baselineVersion': a.baseline_version, 'personalSchema': a.expected_schema,
+result = {'baselineVersion': a.baseline_version, 'baselineSchemaVerified': a.baseline_schema, 'personalSchema': a.expected_schema,
           'baselineApkSha256': hashlib.sha256(a.baseline.read_bytes()).hexdigest(),
           'candidateApkSha256': hashlib.sha256(a.candidate.read_bytes()).hexdigest(),
           'serial': a.serial, 'originalRowsUnchanged': True, 'preferencesUnchanged': True,
-          'bridge': bridge, 'sessions': len(before['sessions']), 'foreignKeys': 'pass'}
+          'bridge': bridge, 'sessions': len(before['sessions']), 'foreignKeys': 'pass',
+          'startupTotalTimeMs': {'baseline': baseline_startup, 'candidate': candidate_startup, 'caveat': 'Small emulator samples; cold process after initialization, not install/start-to-usable or device guarantee'}}
 (a.output/'result.json').write_text(json.dumps(result,indent=2)+'\n')
 print(f'PASS: exact persistent-table equality after {a.baseline_version} upgrade; {len(before["sessions"])} sessions, notes, profile, badges, repertoire, recovery archive, draft bytes and preferences retained')

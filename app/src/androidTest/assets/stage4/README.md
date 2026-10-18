@@ -1,0 +1,1 @@
+Stage4 authored adversarial provider fixtures, dedicated to CC0-1.0. IDs, names, relationships and revisions are fictional, not real provider identity evidence. Response shapes mirror reviewed public API contracts. No downloaded prose/images or personal data.

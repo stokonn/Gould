@@ -880,4 +880,26 @@
     <string name="discover_invalid">Neplatná odpověď zdroje</string>
     <string name="discover_unavailable">Zdroj není dostupný; uložené výsledky zachovány</string>
     <string name="discover_load_encyclopedia">Načíst biografii a informace o portrétu ze zdrojů</string>
+    <string name="discover_candidate">Neověřený kandidát katalogu — typ a vztahy vyžadují ověření</string>
+    <string name="discover_verify_candidate">Načíst a ověřit detail katalogu</string>
+    <string name="discover_refresh_metadata">Načíst nebo obnovit související metadata katalogu</string>
+    <string name="discover_listen">Otevřít ověřený odkaz k poslechu</string>
+    <string name="discover_clear_cache">Vymazat dočasnou mezipaměť odpovědí</string>
+    <string name="discover_cache_consequences">Vymazání odpovědí zachová přijatá metadata katalogu, repertoár, historii cvičení a data obnovy. Pozdější online akce může metadata znovu načíst.</string>
+    <string name="discover_portrait_description">Licencovaný portrét umělce</string>
+    <string name="discover_portrait_unavailable">Portrét není dostupný; text se zdrojem a uložená metadata zůstávají použitelná.</string>
+    <string name="discover_conflict_notice">Zdroje obsahují rozporná metadata. Před přijetím hodnoty jako jisté zkontrolujte níže uvedené důkazy.</string>
+    <string name="discover_selection_conflict">Toto dílo již má jiný uložený výběr částí. Otevřete stávající položku, nebo výslovně přidejte části samostatně.</string>
+    <string name="discover_open_existing">Otevřít stávající položku repertoáru</string>
+    <string name="discover_correction">Připravit místní opravu metadat</string>
+    <string name="discover_correction_field">Pole k opravě</string>
+    <string name="discover_correction_value">Navrhovaná hodnota</string>
+    <string name="discover_correction_reason">Důvod a důkazy</string>
+    <string name="discover_correction_private">Pouze export. Nic se neodesílá zdroji ani komunitní službě.</string>
+    <string name="discover_correction_export">Exportovat opravu s důkazy ze zdrojů</string>
+    <string name="discover_correction_saved">Místní oprava byla exportována</string>
+    <string name="discover_license">Licence obsahu</string>
+    <string name="discover_filters">Filtry</string>
+    <string name="discover_any_artist">Libovolný interpret nebo skladatel</string>
+    <string name="discover_any_period">Libovolné období</string>
 </resources>

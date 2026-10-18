@@ -15,6 +15,7 @@ import java.util.UUID
 
 sealed interface CatalogueAccess<out T> {
     data class Available<T>(val value: T) : CatalogueAccess<T>
+    data class Rejected(val reason:String="invalid_catalogue_request") : CatalogueAccess<Nothing>
     data class Unavailable(val reason: String = "local_catalogue_unavailable") : CatalogueAccess<Nothing>
 }
 
@@ -41,7 +42,9 @@ class LocalCatalogueStore(
     }
     private suspend fun <T> attempt(block: suspend () -> T): CatalogueAccess<T> = try {
         CatalogueAccess.Available(block())
-    } catch(e: CancellationException) { throw e } catch (_: Exception) {
+    } catch(e: CancellationException) { throw e } catch (_: IllegalArgumentException) {
+        CatalogueAccess.Rejected()
+    } catch (_: Exception) {
         runCatching { opened?.close() }; opened = null
         CatalogueAccess.Unavailable()
     }

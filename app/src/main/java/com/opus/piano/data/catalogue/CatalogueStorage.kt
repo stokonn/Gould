@@ -8,7 +8,7 @@ class CatalogueStorage(context:Context) {
     private val directory=context.getDatabasePath(CatalogueDatabase.FILENAME).parentFile!!
     private val media=File(context.cacheDir,"catalogue-stage4")
     data class Usage(val databaseBytes:Long,val mediaBytes:Long,val freeBytes:Long)
-    fun usage():Usage=Usage(directory.listFiles()?.filter {it.name==CatalogueDatabase.FILENAME || it.name.startsWith(CatalogueDatabase.FILENAME+".") || it.name.startsWith(CatalogueDatabase.FILENAME+"-")}?.sumOf {it.length()} ?: 0,media.listFiles()?.sumOf {it.length()} ?: 0,directory.usableSpace)
+    fun usage():Usage=Usage(directory.listFiles()?.filter {it.name==CatalogueDatabase.FILENAME || it.name.startsWith(CatalogueDatabase.FILENAME+".") || it.name.startsWith(CatalogueDatabase.FILENAME+"-")}?.sumOf {it.length()} ?: 0,media.walkTopDown().maxDepth(3).filter {it.isFile}.sumOf {it.length()},directory.usableSpace)
     fun admits(estimatedBytes:Long):Boolean {val u=usage();return estimatedBytes in 0..MAX_RESPONSE && u.databaseBytes+u.mediaBytes+estimatedBytes<=MAX_TOTAL && u.freeBytes-estimatedBytes>=FREE_RESERVE}
     fun trimMedia(now:Long=System.currentTimeMillis()) {
         val files=media.listFiles()?.filter {it.isFile}?.sortedBy {it.lastModified()}.orEmpty()
