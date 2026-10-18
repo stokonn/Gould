@@ -1,6 +1,6 @@
 # Stage 3B verification — 2026-10-18
 
-Local mandatory acceptance passed on the final production source. Git commit/push and remote CI are recorded at the final checkpoint below. This is unreleased development; production remains0.10.1. No merge, tag, release, cloud service or Stage4 work.
+All mandatory local acceptance and clean implementation CI passed on the final production source. Commit/push and GitHub/Wiki details are recorded in [the completion checkpoint](CHECKPOINT.md). This is unreleased development; production remains0.10.1. No merge, tag, release, cloud service or Stage4 work.
 
 ## Source and protected state
 
@@ -96,6 +96,6 @@ Bounded parsing/output (32MiB input/output, depth24,500,000 nodes,100,000 rows/t
 
 ## Final checkpoint
 
-Local mandatory gates passed. Branch commit/push, clean remote CI and synchronized tracking/Wiki are recorded in the final report; no release or main merge is authorized by this checkpoint. Stage4 requires a separate instruction.
+Implementation c431e9725f9ff601c1d3ed69a5d6b57a2b69eab7 is pushed; clean CI39142964764 passed, Wiki f1e3f78f0923551317ea2cc5a4226f5f74753416 synchronized, Issue31/milestone4 remain open and Project2 is Backlog. See [checkpoint](CHECKPOINT.md). No release/main merge; Stage4 requires a separate instruction.
 
 created by stokonn with love <3

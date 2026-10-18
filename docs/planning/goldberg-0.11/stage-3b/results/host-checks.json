@@ -38,8 +38,8 @@
   {
     "command": "python3 docs/planning/goldberg-0.11/stage-3b/verify_stage.py",
     "exitCode": 0,
-    "lastLine": "PASS Stage3A ancestry, 26 protected paths, 174 source/test/schema hashes, both APKs, 16 links and owner release draft",
-    "outputSha256": "8ac27d7119a16cfac5f7cc6db2e93d4ddda4d585db6dcb7c5a2c85d39f4b95ea"
+    "lastLine": "PASS Stage3A ancestry, 26 protected paths, 174 source/test/schema hashes, both APKs, 25 links and owner release draft",
+    "outputSha256": "0b3d078a9c48c28174d891f2433dd58e1cb9f08b6d31b7658474462d21ca830f"
   },
   {
     "command": "Gradle testDebugUnitTest",

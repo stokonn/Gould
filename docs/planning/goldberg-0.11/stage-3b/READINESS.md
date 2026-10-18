@@ -1,6 +1,6 @@
 # Stage 3B acceptance and handoff
 
-Status: implementation and all local mandatory verification complete:78 JVM tests,75 suite entries on each API26/API37, all eight actual process-death/restart cases and both seeded upgrades passed. Publication/tracking checkpoint is finalized separately; no merge/release or automatic Stage4 continuation.
+Status: implementation and all local mandatory verification complete:78 JVM tests,75 suite entries on each API26/API37, all eight actual process-death/restart cases and both seeded upgrades passed. Publication/tracking are verified in [the completion checkpoint](CHECKPOINT.md); no merge/release or automatic Stage4 continuation.
 
 ## Compatibility conclusions
 

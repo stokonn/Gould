@@ -1,0 +1,26 @@
+{
+  "status": "verified implementation complete; no merge/release",
+  "branch": "feature/goldberg-0.11-stage-3b",
+  "implementationCommit": "c431e9725f9ff601c1d3ed69a5d6b57a2b69eab7",
+  "implementationCi": {
+    "url": "https://github.com/stokonn/Goldberg/actions/runs/39142964764",
+    "conclusion": "success"
+  },
+  "wiki": {
+    "url": "https://github.com/stokonn/Goldberg/wiki/Developer-Guide",
+    "commit": "f1e3f78f0923551317ea2cc5a4226f5f74753416"
+  },
+  "issue": {
+    "number": 31,
+    "state": "OPEN",
+    "comment": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6252077129"
+  },
+  "milestone": {
+    "number": 4,
+    "state": "open"
+  },
+  "project": {
+    "number": 2,
+    "itemStatus": "Backlog"
+  }
+}

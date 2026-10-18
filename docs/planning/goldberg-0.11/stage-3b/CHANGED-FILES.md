@@ -44,6 +44,7 @@ Production persistence/recovery integration, required backup UI status/copy, tes
 - `docs/planning/goldberg-0.11/README.md`
 - `docs/planning/goldberg-0.11/STAGES.md`
 - `docs/planning/goldberg-0.11/stage-3b/CHANGED-FILES.md`
+- `docs/planning/goldberg-0.11/stage-3b/CHECKPOINT.md`
 - `docs/planning/goldberg-0.11/stage-3b/IMPLEMENTATION.md`
 - `docs/planning/goldberg-0.11/stage-3b/READINESS.md`
 - `docs/planning/goldberg-0.11/stage-3b/README.md`
@@ -52,6 +53,7 @@ Production persistence/recovery integration, required backup UI status/copy, tes
 - `docs/planning/goldberg-0.11/stage-3b/fixtures.py`
 - `docs/planning/goldberg-0.11/stage-3b/process_death.py`
 - `docs/planning/goldberg-0.11/stage-3b/results/fixture-sizes.json`
+- `docs/planning/goldberg-0.11/stage-3b/results/github-checkpoint.json`
 - `docs/planning/goldberg-0.11/stage-3b/results/host-checks.json`
 - `docs/planning/goldberg-0.11/stage-3b/results/instrumentation-api26.json`
 - `docs/planning/goldberg-0.11/stage-3b/results/instrumentation-api37.json`

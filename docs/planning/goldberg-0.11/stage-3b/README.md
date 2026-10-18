@@ -10,7 +10,7 @@ Implemented and locally verified on `feature/goldberg-0.11-stage-3b`, descending
 - [x] Add full/minimal golden fixtures and corruption/crash/size/atomic-publication tests.
 - [x] Run build/JVM/lint/host checks and complete sequential API26/API37 instrumentation, seeded upgrade/offline/process-death checks.
 - [x] Document implementation, exact executed verification and Stage4 prerequisites.
-- [ ] Finish existing GitHub/Wiki synchronization and verified branch publication checkpoint.
+- [x] Finish existing GitHub/Wiki synchronization and verified implementation branch publication; see [checkpoint](CHECKPOINT.md).
 
 Stop after Stage 3B. Stage 4 requires a separate instruction.
 
