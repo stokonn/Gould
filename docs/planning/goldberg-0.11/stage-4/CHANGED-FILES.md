@@ -36,6 +36,8 @@ Owner RELEASE_NOTES.md excluded. No schema exports, backup fixtures, signing fil
 - `docs/planning/goldberg-0.11/stage-4/results/source-files.json`
 - `docs/planning/goldberg-0.11/stage-4/results/targeted-build.log`
 
-Checkpoint status JSON added by the follow-up evidence commit is also part of this WIP.
+- `docs/planning/goldberg-0.11/stage-4/results/checkpoint.json`
+
+The follow-up evidence commit updates this inventory and PROGRESS.md, with no production/test/resource changes.
 
 created by stokonn with love <3

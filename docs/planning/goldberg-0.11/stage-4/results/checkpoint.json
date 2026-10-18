@@ -1,0 +1,42 @@
+{
+  "status": "INCOMPLETE \u2014 owner-requested resumable WIP",
+  "branch": "feature/goldberg-0.11-stage-4",
+  "baseline": "9ae8d33e113feba531cdfa8558f0505cd4205749",
+  "wipSourceCommit": "435600ca13ead3cfa3cf8827128f805bbb7a59cd",
+  "confirmedRemoteSourceHead": "435600ca13ead3cfa3cf8827128f805bbb7a59cd",
+  "sourceUrl": "https://github.com/stokonn/Goldberg/commit/435600ca13ead3cfa3cf8827128f805bbb7a59cd",
+  "branchUrl": "https://github.com/stokonn/Goldberg/tree/feature/goldberg-0.11-stage-4",
+  "ci": {
+    "status": "source WIP in_progress at checkpoint; final documentation push requires a fresh CI check",
+    "sourceRunUrl": "https://github.com/stokonn/Goldberg/actions/runs/39153982728",
+    "sourceRunHead": "435600ca13ead3cfa3cf8827128f805bbb7a59cd",
+    "branchRunsUrl": "https://github.com/stokonn/Goldberg/actions?query=branch%3Afeature%2Fgoldberg-0.11-stage-4",
+    "acceptanceClaim": false
+  },
+  "checkpoints": {
+    "4A": "incomplete",
+    "4B": "incomplete",
+    "4C": "incomplete",
+    "4D": "incomplete",
+    "4E": "incomplete",
+    "4F": "incomplete"
+  },
+  "localVerification": "results/local-checks.json",
+  "changedFileInventory": "../CHANGED-FILES.md",
+  "nextAction": "Verify remote HEAD/CI, then execute targeted Stage4CatalogueTest on an explicitly identified disposable emulator with qemu/API verified; continue unresolved4A\u20134F requirements from PROGRESS.md.",
+  "tracking": {
+    "issue": "https://github.com/stokonn/Goldberg/issues/31",
+    "issueState": "OPEN",
+    "milestone": "https://github.com/stokonn/Goldberg/milestone/4",
+    "project": "https://github.com/users/stokonn/projects/2",
+    "projectStatusAtInspection": "Backlog",
+    "wiki": "unchanged; no Stage4 verified feature documentation published"
+  },
+  "ownerFile": {
+    "path": "RELEASE_NOTES.md",
+    "tracked": false,
+    "sha256": "db920f0b1ff88579b6bea9f9da567af16e6db0c7ce5b6439781ca1754fcd4b9b"
+  },
+  "prohibitedActionsPerformed": [],
+  "note": "A subsequent documentation-only commit stores this record; its exact HEAD is available with git rev-parse HEAD and in the owner handoff. No history rewriting."
+}

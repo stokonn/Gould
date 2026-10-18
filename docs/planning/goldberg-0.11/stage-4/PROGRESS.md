@@ -10,7 +10,7 @@
 - Stage3B implementation `c431e9725f9ff601c1d3ed69a5d6b57a2b69eab7` is an ancestor; branch created directly from the expected HEAD.
 - Initial worktree: only unrelated untracked `RELEASE_NOTES.md`. Its SHA256 remains `db920f0b1ff88579b6bea9f9da567af16e6db0c7ce5b6439781ca1754fcd4b9b`.
 - Issue31/milestone4 remain open. Existing Goldberg Development Project2 was inspected (Backlog). No duplicate tracking resources created; no completion claim posted.
-- The exact WIP source commit and final remote status are recorded in `results/checkpoint.json` after the source checkpoint commit.
+- WIP source commit **`435600ca13ead3cfa3cf8827128f805bbb7a59cd`** was pushed and verified against `git ls-remote` on the Stage4 branch. `results/checkpoint.json` records the source checkpoint and pending CI; this follow-up documentation commit changes no production/test/resource source. Final documentation HEAD is reported in the owner handoff. No Stage4 completion claim.
 
 ## Implemented so far
 
