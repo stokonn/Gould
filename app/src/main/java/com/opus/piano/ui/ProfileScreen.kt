@@ -6,13 +6,11 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -29,12 +27,10 @@ import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.repeatOnLifecycle
 import com.opus.piano.data.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.time.*
-import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable internal fun ProfileScreen(state: LibraryState, badges: List<BadgeProgress>, profile: ProfileViewModel, settingsAction: () -> Unit, allBadges: () -> Unit, history: () -> Unit, badgeDetail: (String) -> Unit) {
@@ -210,41 +206,4 @@ import java.time.format.DateTimeFormatter
             if (badges.none { it.unlocked }) item { Text(L.s(R.string.msg_your_earned_badges_will_be_available_here_af_2f62)) }
         }
     }, confirmButton = { JournalTextButton(onClick = dismiss) { Text(L.s(R.string.msg_done_e9b4)) } })
-}
-
-@Composable private fun ActivityChart(sessions: List<PracticeSession>, period: String, today: LocalDate, zone: ZoneId) {
-    val bins = remember(sessions, period, today, zone) { activityBins(sessions, period, today, zone) }
-    if (sessions.sumOf { it.durationMillis } == 0L) {
-        Surface(shape = MaterialTheme.shapes.medium) { Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            Text(L.s(R.string.msg_a_fresh_page_7041), style = MaterialTheme.typography.titleMedium)
-            Text(L.s(R.string.msg_no_practice_recorded_in_this_period_start_a_68b4), color = MaterialTheme.colorScheme.onSurfaceVariant)
-        } }
-        return
-    }
-    val peak = bins.maxOf { it.second }.coerceAtLeast(1L)
-    val fontScale = LocalDensity.current.fontScale
-    Surface(shape = MaterialTheme.shapes.medium) {
-        Column(Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            Text(L.s(R.string.msg_peak_compactpracticetime_peak_7989, (localizedPracticeTime(peak))), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            BoxWithConstraints {
-                val barWidth = maxOf(32.dp * fontScale, (maxWidth - 6.dp * (bins.size - 1)) / bins.size)
-                Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    bins.forEachIndexed { index, (label, time) ->
-                        val display = when (period) {
-                            "Year", "All time" -> runCatching { YearMonth.parse(label).format(DateTimeFormatter.ofPattern("MMM\nyy").withLocale(L.locale)) }.getOrDefault(label)
-                            "Week" -> com.opus.piano.i18n.JournalFormatting.weekday(today.minusDays((6-index).toLong()),L.locale)
-                            else -> label
-                        }
-                        Column(Modifier.width(barWidth).semantics(mergeDescendants = true) { contentDescription = L.s(R.string.msg_period_ending_label_duration_time_practice_ac3c, (display), (duration(time))) }, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                            Box(Modifier.fillMaxWidth().height(100.dp).background(MaterialTheme.colorScheme.primary.copy(alpha = .05f), MaterialTheme.shapes.small), contentAlignment = Alignment.BottomCenter) {
-                                if (time > 0) Box(Modifier.fillMaxWidth().height(maxOf(2.dp, 100.dp * (time.toFloat() / peak))).background(MaterialTheme.colorScheme.primary, MaterialTheme.shapes.small))
-                            }
-                            Text(display, style = MaterialTheme.typography.labelSmall, textAlign = androidx.compose.ui.text.style.TextAlign.Center)
-                        }
-                    }
-                }
-            }
-            Text(if (period == "Month") L.s(R.string.msg_five_day_totals_labels_show_the_ending_day_01e3) else if (period == "All time") L.s(R.string.msg_grouped_monthly_totals_labels_show_the_endin_1c56) else if (period == "Year") L.s(R.string.monthly_partial) else L.s(R.string.daily_totals), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        }
-    }
 }

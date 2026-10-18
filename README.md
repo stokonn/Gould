@@ -16,11 +16,11 @@ A native Android piano practice journal built with Kotlin, Jetpack Compose, Mate
 
 ![Goldberg 0.10.1 Profile](docs/wiki/images/goldberg-0.10.1-profile.png)
 
-Before updating, export a backup. Install over an existing Goldberg version; never uninstall to bypass a signing error. Google identity does not synchronize practice data. For 0.10, sign-in, display-name/avatar import, manual override preservation, restart persistence, sign-out, account switching and local-data preservation passed owner-reported manual verification on a Galaxy A55. Codex performed no physical-phone testing. See [0.10 verification evidence](docs/VERIFICATION-0.10.md) and [release notes](docs/RELEASE-0.10.md).
+Before updating, export a backup. Install over an existing Goldberg version; never uninstall to bypass a signing error. Google identity does not synchronize practice data. See [0.10.1 verification evidence](docs/VERIFICATION-0.10.1.md) and [release notes](docs/RELEASE-0.10.1.md). Historical provider verification remains in the older release ledgers.
 
 ## Development
 
-Read [AGENTS.md](AGENTS.md) for the canonical development and release policy, [the Developer Guide](docs/wiki/Developer-Guide.md) for architecture and AI-agent integrations, and [the 0.10.1 implementation checklist](docs/PLAN-0.10.1.md). Use the existing Gradle wrapper, JDK 17-compatible toolchain and Android SDK 36:
+Read [AGENTS.md](AGENTS.md) for the canonical development and release policy, [the Developer Guide](docs/wiki/Developer-Guide.md) for architecture and AI-agent integrations, and [the 0.10.1 implementation checklist](docs/PLAN-0.10.1.md). Read [the permanent maintenance ledger](docs/maintenance/LEGACY-CLEANUP.md) before cleanup or development. Use the existing Gradle wrapper, JDK 17-compatible toolchain and Android SDK 36:
 
 ```sh
 ./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1

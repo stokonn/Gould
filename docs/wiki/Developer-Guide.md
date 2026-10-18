@@ -40,3 +40,7 @@ Do not invoke old release scripts blindly. A successful compile alone cannot aut
 ## Goldberg 0.10 development
 
 Goldberg 0.10 is released. The owner waived personal screenshot review and reports the six Google identity scenarios as manual PASS; these results are not Codex physical-device tests. The repository's [implementation plan](https://github.com/stokonn/Goldberg/blob/main/docs/PLAN-0.10.md) and [verification ledger](https://github.com/stokonn/Goldberg/blob/main/docs/VERIFICATION-0.10.md) retain the detailed evidence. Future work belongs in approved milestones and is not inferred from this release.
+
+## Permanent repository maintenance
+
+Before development or cleanup, read root AGENTS.md and the [permanent maintenance ledger](https://github.com/stokonn/Goldberg/blob/main/docs/maintenance/LEGACY-CLEANUP.md). It records proven unused components, protected compatibility files, branch decisions, measured storage and verification. Finish release verification before substantial cleanup; preserve historical schemas, fixtures, attribution and upgrade identities.

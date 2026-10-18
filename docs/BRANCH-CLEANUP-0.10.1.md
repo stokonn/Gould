@@ -14,3 +14,5 @@ Default branch: main. No open PRs at baseline audit. No branch has been deleted.
 | origin/feature/goldberg-0.9.2 | `78fd88fbf4ead8772b87d2b986807a381241b7dd` | 0 | Retained pending verified 0.10.1 integration |
 
 Current feature/goldberg-0.10.1 and main are retained. Recheck remote refs, open PRs and workflow references immediately before any deletion. Use normal local branch deletion and explicit remote branch refs only; never force-delete.
+
+Final post-release outcomes are recorded in [the permanent maintenance ledger](maintenance/LEGACY-CLEANUP.md). The table above remains the pre-release audit snapshot; do not maintain competing version-specific cleanup policies.

@@ -10,8 +10,8 @@ Baseline inspected: main/origin/main `6bde1ad`, published v0.10 `7b5874e`; three
 - [x] Run JVM/instrumentation, migration/backup/localization/paging checks, lint and build.
 - [x] Seed v0.10 emulator, upgrade in place, inspect impacted screens in both themes/large fonts and validate interactions.
 - [x] Verify APK identity, signer, ZIP, hash and exact tested source.
-- [ ] Commit/integrate/publish verified release; then synchronize final release status in tracking/Wiki.
-- [ ] After successful publication, perform separately committed universal maintenance and add the permanent maintenance ledger/policy.
+- [x] Commit/integrate/publish verified release; then synchronize final release status in tracking/Wiki.
+- [x] After successful publication, perform universal maintenance and add the permanent maintenance ledger/policy; verified independently for a separate maintenance commit.
 
 No reference image may be staged, packaged or published. No physical-device operations. No database schema or backup format change is planned. Active checkout remains /home/stokonn/Projects/Opus.
 
