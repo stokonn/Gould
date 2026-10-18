@@ -34,7 +34,7 @@ class Goldberg08MigrationTest {
             old.execSQL("INSERT INTO profile_settings VALUES(1,'Musician','','Dark','first_piece','System','streak,time,pieces,sessions')")
             old.version=5
         }
-        val db=Room.databaseBuilder(context,OpusDatabase::class.java,name).addMigrations(OpusDatabase.MIGRATION_5_6, OpusDatabase.MIGRATION_6_7, OpusDatabase.MIGRATION_7_8).build()
+        val db=Room.databaseBuilder(context,OpusDatabase::class.java,name).addMigrations(*OpusDatabase.ALL_MIGRATIONS).addCallback(PersonalCatalogueBridge.callback).build()
         try {
             val session=db.dao().allSessions().single()
             assertEquals(3L,session.id);assertEquals(60000L,session.durationMillis);assertNull(session.elapsedMillis)

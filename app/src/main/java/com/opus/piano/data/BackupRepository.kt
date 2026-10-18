@@ -152,6 +152,9 @@ class BackupRepository(private val context: Context, private val db: OpusDatabas
         validate(raw)
         val data = parse(raw)
         db.withTransaction {
+            require(db.practiceDao().draft() == null) { L.s(R.string.pending_session) }
+            PersonalCatalogueBridge.install(db.openHelper.writableDatabase)
+            PersonalCatalogueBridge.prepareLegacyRestore(db.openHelper.writableDatabase)
             tables.asReversed().forEach { db.openHelper.writableDatabase.execSQL("DELETE FROM `$it`") }
             insert(db, data)
             db.practiceDao().clearDraft()

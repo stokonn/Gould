@@ -33,17 +33,27 @@ class NavigationRegressionTest {
                 }
             } }
             assertTrue("Navigation composition did not initialize",composed.await(10,java.util.concurrent.TimeUnit.SECONDS))
-            instrumentation.waitForIdleSync()
+            // Two scheduled frames do not prove NavHost finished disposing an outgoing
+            // entry (notably on API37). Wait for the real navigator/lifecycle state.
+            fun settled(route: String) {
+                val deadline=android.os.SystemClock.uptimeMillis()+10_000
+                var ready=false
+                while(!ready && android.os.SystemClock.uptimeMillis()<deadline) {
+                    instrumentation.waitForIdleSync()
+                    instrumentation.runOnMainSync {
+                        val current=nav.currentBackStackEntry
+                        ready=nav.currentDestination?.route==route &&
+                            current?.lifecycle?.currentState==androidx.lifecycle.Lifecycle.State.RESUMED &&
+                            nav.visibleEntries.value.all {it===current}
+                    }
+                    if(!ready) Thread.sleep(16)
+                }
+                assertTrue("Navigation entry did not settle: $route",ready)
+            }
+            settled(start)
             fun step(route: String, action: () -> Unit) {
                 instrumentation.runOnMainSync { action() }
-                val rendered=java.util.concurrent.CountDownLatch(1)
-                instrumentation.runOnMainSync {
-                    android.view.Choreographer.getInstance().postFrameCallback {
-                        android.view.Choreographer.getInstance().postFrameCallback {rendered.countDown()}
-                    }
-                }
-                assertTrue("Navigation frame did not settle",rendered.await(10,java.util.concurrent.TimeUnit.SECONDS))
-                instrumentation.waitForIdleSync()
+                settled(route)
                 instrumentation.runOnMainSync { assertEquals(route, nav.currentDestination?.route) }
             }
             repeat(3) {

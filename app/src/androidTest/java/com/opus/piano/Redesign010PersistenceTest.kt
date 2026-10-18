@@ -39,7 +39,7 @@ class Redesign010PersistenceTest {
             tables.keys().forEach {table->val rows=tables.getJSONArray(table);for(i in 0 until rows.length()) {val row=rows.getJSONObject(i);val keys=row.keys().asSequence().toList();old.execSQL("INSERT INTO `$table` (${keys.joinToString()}) VALUES (${keys.joinToString {"?"}})",keys.map {key->row.get(key).let {if(it===org.json.JSONObject.NULL) null else it}}.toTypedArray())}}
             old.execSQL("INSERT INTO practice_drafts VALUES(1,'unchanged recovery payload',123)");old.execSQL("INSERT INTO local_app_state VALUES(1,1,0,18,0,0,'')");old.version=7
         }
-        val db=Room.databaseBuilder(context,OpusDatabase::class.java,name).addMigrations(OpusDatabase.MIGRATION_7_8).build()
+        val db=Room.databaseBuilder(context,OpusDatabase::class.java,name).addMigrations(*OpusDatabase.ALL_MIGRATIONS).addCallback(PersonalCatalogueBridge.callback).build()
         try {
             assertEquals(37,db.dao().allSessions().size);assertEquals(2220000L,db.dao().allSessions().sumOf {it.durationMillis})
             assertEquals("unchanged recovery payload",db.practiceDao().draft()!!.payload)
@@ -47,7 +47,7 @@ class Redesign010PersistenceTest {
             assertEquals("Existing manual artist",db.personalDao().getSettings()!!.favoriteArtist)
             assertEquals(123456789L,db.experienceDao().allUnlocks().first {it.achievementId=="first_notes"}.unlockedAt)
             assertTrue(db.journalEditsDao().allLinks().isEmpty());assertTrue(db.journalEditsDao().allFavorites().isEmpty())
-            assertEquals(8,db.openHelper.writableDatabase.version)
+            assertEquals(9,db.openHelper.writableDatabase.version)
         } finally {db.close();context.deleteDatabase(name)}
     }
     @Test fun omittedPieceIsIdempotentUntimedAndDoesNotChangeOriginalJournal() = runBlocking {

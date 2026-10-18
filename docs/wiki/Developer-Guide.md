@@ -44,3 +44,15 @@ Goldberg 0.10 is released. The owner waived personal screenshot review and repor
 ## Permanent repository maintenance
 
 Before development or cleanup, read root AGENTS.md and the [permanent maintenance ledger](https://github.com/stokonn/Goldberg/blob/main/docs/maintenance/LEGACY-CLEANUP.md). It records proven unused components, protected compatibility files, branch decisions, measured storage and verification. Finish release verification before substantial cleanup; preserve historical schemas, fixtures, attribution and upgrade identities.
+
+## Goldberg 0.11 Stage 3A development checkpoint
+
+The published application remains Goldberg 0.10.1. On the dedicated [Stage 3A branch](https://github.com/stokonn/Goldberg/tree/feature/goldberg-0.11-stage-3a), the verified persistence implementation adds personal Room schema 9 and a separate catalogue Room schema 1. This is unreleased development work; no Library redesign, new provider integration, downloads or backend is implied.
+
+`opus.db` remains authoritative. Explicit migration 8→9 retains all legacy tables and adds a durable UUID registry, original personal snapshots and journal scope. Original Piece IDs, numeric Open Opus keys, session timing/tokens, notes, recovery bytes, profile, favorite dates and recording links remain intact. The optional `goldberg-catalogue.db` has typed entities/relationships, aliases/FTS4, provenance/rights and reversible mapping evidence. Catalogue opening and bounded local reconstruction are lazy and independent of practice startup; failed generations are preserved and rebuilt through a validated generation pointer.
+
+Actual API 26 and API 37 emulator suites cover historical migrations 1–8, rollback, catalogue corruption/deletion/rebuild, FTS4, timing/recovery and legacy backup compatibility. A seeded signed upgrade from 0.10.1 preserved 37 sessions and critical data offline. See the [verification ledger](https://github.com/stokonn/Goldberg/blob/feature/goldberg-0.11-stage-3a/docs/planning/goldberg-0.11/stage-3a/VERIFICATION.md) for exact results, source/APK identity, performance and limitations.
+
+Portable exports still use format 4/schema 8 with readers 1–4. They do not yet carry the new UUID registry, portable settings or active drafts across installations. An unfinished destination draft blocks replacement before deletion. Stage 3B must separately implement backup v5 and tested multi-store recovery. Never open a newer personal schema with an old APK or uninstall to bypass incompatibility. Keep all historical schemas and fixtures.
+
+created by stokonn with love <3

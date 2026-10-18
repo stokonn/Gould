@@ -14,6 +14,9 @@ import time
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--serial', required=True)
 parser.add_argument('--baseline', type=Path, required=True)
+parser.add_argument('--baseline-version', default='0.10')
+parser.add_argument('--expected-schema', type=int, default=8)
+parser.add_argument('--offline', action='store_true')
 parser.add_argument('--candidate', type=Path, required=True)
 parser.add_argument('--output', type=Path, required=True)
 parser.add_argument('--seed-disposable', action='store_true', required=True)
@@ -43,7 +46,10 @@ def snapshot(name):
     db.execute('PRAGMA wal_checkpoint(TRUNCATE)')
     return path, db
 print(adb('install', '-r', '-d', str(a.baseline)).decode().strip(), flush=True)
-assert b'versionName=0.10\r' in adb('shell', 'dumpsys', 'package', 'com.opus.piano') or b'versionName=0.10\n' in adb('shell', 'dumpsys', 'package', 'com.opus.piano')
+assert re.search(rb'versionName='+re.escape(a.baseline_version.encode())+rb'\s', adb('shell','dumpsys','package','com.opus.piano'))
+if a.offline:
+    adb('shell','svc','wifi','disable')
+    adb('shell','svc','data','disable')
 launch()
 path, db = snapshot('seed')
 fixture = json.loads((Path(__file__).resolve().parents[1] / 'app/src/androidTest/assets/backups/goldberg-0.9.2-format3.json').read_text())['tables']
@@ -72,6 +78,8 @@ for suffix in ['-wal', '-shm']:
 def values(name):
     _, conn = snapshot(name)
     excluded = {'android_metadata', 'room_master_table', 'sqlite_sequence', 'catalog_cache', 'catalog_composers', 'catalog_works'}
+    if a.expected_schema >= 9:
+        excluded.update({'personal_catalogue_identities','personal_catalogue_anchors','personal_catalogue_state'})
     tables = sorted(r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'") if r[0] not in excluded)
     data = {t: conn.execute(f'SELECT * FROM {t} ORDER BY rowid').fetchall() for t in tables}
     conn.close()
@@ -97,4 +105,21 @@ launch()
 after = values('after')
 assert prefs_before==preference_hashes(), 'Appearance/media/identity preferences changed'
 assert before == after, 'Persistent data changed: ' + ', '.join(t for t in before if before[t] != after.get(t))
-print('PASS: exact persistent-table equality after 0.10 upgrade, including 37 sessions, notes, profile, badges, repertoire, recovery archive and unfinished draft')
+_, final_db = snapshot('validated')
+assert final_db.execute('PRAGMA user_version').fetchone()[0] == a.expected_schema
+assert final_db.execute('PRAGMA foreign_key_check').fetchall() == []
+bridge = None
+if a.expected_schema >= 9:
+    import uuid
+    identities = final_db.execute('SELECT canonicalId FROM personal_catalogue_identities').fetchall()
+    assert identities and all(uuid.UUID(row[0]).version == 4 for row in identities)
+    bridge = {'identities': len(identities), 'anchors': final_db.execute('SELECT count(*) FROM personal_catalogue_anchors').fetchone()[0]}
+    assert bridge['anchors'] >= len(before['pieces']) + len(before['sessions'])
+final_db.close()
+result = {'baselineVersion': a.baseline_version, 'personalSchema': a.expected_schema,
+          'baselineApkSha256': hashlib.sha256(a.baseline.read_bytes()).hexdigest(),
+          'candidateApkSha256': hashlib.sha256(a.candidate.read_bytes()).hexdigest(),
+          'serial': a.serial, 'originalRowsUnchanged': True, 'preferencesUnchanged': True,
+          'bridge': bridge, 'sessions': len(before['sessions']), 'foreignKeys': 'pass'}
+(a.output/'result.json').write_text(json.dumps(result,indent=2)+'\n')
+print(f'PASS: exact persistent-table equality after {a.baseline_version} upgrade; {len(before["sessions"])} sessions, notes, profile, badges, repertoire, recovery archive, draft bytes and preferences retained')

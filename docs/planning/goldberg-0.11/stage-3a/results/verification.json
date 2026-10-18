@@ -1,0 +1,32 @@
+{
+  "baseCommit": "d6049add3e46399d8f48afcb2aaa03422ebe0017",
+  "jvm": {
+    "tests": 77,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 83
+  },
+  "instrumentation": {
+    "26": {
+      "tests": 53,
+      "failures": 0,
+      "durationSeconds": 36.596,
+      "log": "/tmp/goldberg011-stage3a-final-api26-settled.log",
+      "logSha256": "8e56b9aee7a23c880a2f0aa6b396e8d97a856ae1765ffd86ec0444ae82ad6c96"
+    },
+    "37": {
+      "tests": 53,
+      "failures": 0,
+      "durationSeconds": 31.017,
+      "log": "/tmp/goldberg011-stage3a-final-api37-settled.log",
+      "logSha256": "0d661904f86823aeb7fb75ece5b9c0d75c1cde2e7a974170659fcc0e7f259b55"
+    }
+  },
+  "personalSchema": 9,
+  "catalogueSchema": 1,
+  "released": false
+}

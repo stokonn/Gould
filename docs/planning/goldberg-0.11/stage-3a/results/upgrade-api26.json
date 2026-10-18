@@ -1,0 +1,16 @@
+{
+  "baselineVersion": "0.10.1",
+  "personalSchema": 9,
+  "baselineApkSha256": "854bbfebf617ec920df60d181a12e0dcbd2fed10052f2479903a78a290cef312",
+  "candidateApkSha256": "e77c832cccd419ae0c34efc70f5539accd7e0645097ad1d72b0c33f48f0d2abd",
+  "serial": "emulator-5584",
+  "originalRowsUnchanged": true,
+  "preferencesUnchanged": true,
+  "bridge": {
+    "identities": 3,
+    "anchors": 113
+  },
+  "sessions": 37,
+  "foreignKeys": "pass",
+  "network": "Offline: Android connectivity reports no active default network or current networks"
+}

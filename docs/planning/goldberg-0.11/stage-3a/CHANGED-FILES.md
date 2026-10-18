@@ -1,0 +1,49 @@
+# Stage 3A changed files
+
+Intended branch changes relative to Stage 2; no production UI/Gradle/manifest/signing edit. Historical exports remain unchanged; schema6/8 Android asset copies are deliberate migration fixtures. Unrelated `RELEASE_NOTES.md` is excluded.
+
+- `app/schemas/com.opus.piano.data.OpusDatabase/9.json`
+- `app/schemas/com.opus.piano.data.catalogue.CatalogueDatabase/1.json`
+- `app/src/androidTest/assets/schemas/6.json`
+- `app/src/androidTest/assets/schemas/8.json`
+- `app/src/androidTest/assets/stage3a/catalogue.json`
+- `app/src/androidTest/java/com/opus/piano/CatalogDatabaseTest.kt`
+- `app/src/androidTest/java/com/opus/piano/ExperiencePersistenceTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Goldberg08MigrationTest.kt`
+- `app/src/androidTest/java/com/opus/piano/GoldbergPersistenceTest.kt`
+- `app/src/androidTest/java/com/opus/piano/NavigationRegressionTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Redesign010PersistenceTest.kt`
+- `app/src/androidTest/java/com/opus/piano/SmartCachePersistenceTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage3aBackupTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage3aCatalogueTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage3aMigrationTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage3aPerformanceTest.kt`
+- `app/src/main/java/com/opus/piano/OpusApplication.kt`
+- `app/src/main/java/com/opus/piano/data/BackupRepository.kt`
+- `app/src/main/java/com/opus/piano/data/OpusDatabase.kt`
+- `app/src/main/java/com/opus/piano/data/PersonalCatalogueBridge.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/CatalogueDatabase.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/CatalogueModels.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/CatalogueRepository.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/CatalogueValidation.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/LocalCatalogueStore.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/PreservingOpenHelperFactory.kt`
+- `app/src/test/java/com/opus/piano/data/catalogue/CatalogueQueryTest.kt`
+- `docs/planning/goldberg-0.11/README.md`
+- `docs/planning/goldberg-0.11/STAGES.md`
+- `docs/planning/goldberg-0.11/stage-3a/CHANGED-FILES.md`
+- `docs/planning/goldberg-0.11/stage-3a/IMPLEMENTATION.md`
+- `docs/planning/goldberg-0.11/stage-3a/READINESS.md`
+- `docs/planning/goldberg-0.11/stage-3a/README.md`
+- `docs/planning/goldberg-0.11/stage-3a/VERIFICATION.md`
+- `docs/planning/goldberg-0.11/stage-3a/results/performance-api26.json`
+- `docs/planning/goldberg-0.11/stage-3a/results/performance-api37.json`
+- `docs/planning/goldberg-0.11/stage-3a/results/source-artifact.json`
+- `docs/planning/goldberg-0.11/stage-3a/results/startup-api37.json`
+- `docs/planning/goldberg-0.11/stage-3a/results/upgrade-api26.json`
+- `docs/planning/goldberg-0.11/stage-3a/results/verification.json`
+- `docs/planning/goldberg-0.11/stage-3a/verify_stage.py`
+- `docs/wiki/Developer-Guide.md`
+- `scripts/check_backup_fixtures.py`
+- `scripts/check_migrations.py`
+- `scripts/verify_emulator_upgrade.py`

@@ -69,3 +69,7 @@ created by stokonn with love <3
 ## Stage 2 decision reconciliation — 2026-10-18
 
 Owner instructions now settle D1/D2/D3/D6 and authorize measured D7/D9 proposals. Read the [updated decision register and Stage 3 prerequisites](stage-2/READINESS.md) before applying the historical Stage 1 decision table. The catalogue is designed as a separate database with durable personal references in opus.db; future portable backups include safe paused recovery/settings. D4/D5/D8 remain later cloud/Admin gates. Stage 2 is isolated research and specifications only; Stage 3 requires a separate instruction.
+
+## Owner-directed Stage 3 split
+
+Stage 3A implements only the safe local persistence bridge and separate catalogue; see [implementation and evidence](stage-3a/README.md). Stage 3B remains a separately instructed portable-backup v5/settings/recovery project. The historical combined Stage 3 acceptance criteria above are therefore not all claimed complete by Stage 3A. Preserve format1–4 compatibility and schema9 UUID anchors before implementing v5. Do not start Stage 3B or Stage 4 automatically.

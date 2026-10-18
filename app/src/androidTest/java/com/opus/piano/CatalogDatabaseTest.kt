@@ -30,7 +30,7 @@ class CatalogDatabaseTest {
             legacy.execSQL("INSERT INTO sessions VALUES (3, 7, 'Legacy piece', 1000, 61000, 60000)")
             legacy.version = 1
         }
-        val db = Room.databaseBuilder(context, OpusDatabase::class.java, name).addMigrations(OpusDatabase.MIGRATION_1_2, OpusDatabase.MIGRATION_2_3, OpusDatabase.MIGRATION_3_4, OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6, OpusDatabase.MIGRATION_6_7, OpusDatabase.MIGRATION_7_8).build()
+        val db = Room.databaseBuilder(context, OpusDatabase::class.java, name).addMigrations(*OpusDatabase.ALL_MIGRATIONS).addCallback(PersonalCatalogueBridge.callback).build()
         try {
             val piece = db.dao().observePieces().first().single()
             assertEquals(7L, piece.id)

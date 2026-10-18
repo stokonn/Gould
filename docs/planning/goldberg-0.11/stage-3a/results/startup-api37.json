@@ -1,0 +1,38 @@
+{
+  "serial": "emulator-5582",
+  "emulator": true,
+  "package": "com.opus.piano",
+  "version": "0.10.1",
+  "code": 11,
+  "installed_apk_sha256": "e77c832cccd419ae0c34efc70f5539accd7e0645097ad1d72b0c33f48f0d2abd",
+  "api": "37",
+  "abi": "x86_64",
+  "method": "five force-stopped process launches; existing disposable emulator data; no install, cold boot or disk cache flush",
+  "runs": [
+    {
+      "TotalTime": 1426,
+      "WaitTime": 1427,
+      "pss_kib": 131742
+    },
+    {
+      "TotalTime": 1520,
+      "WaitTime": 1553,
+      "pss_kib": 131524
+    },
+    {
+      "TotalTime": 1611,
+      "WaitTime": 1675,
+      "pss_kib": 131597
+    },
+    {
+      "TotalTime": 1542,
+      "WaitTime": 1612,
+      "pss_kib": 131467
+    },
+    {
+      "TotalTime": 1597,
+      "WaitTime": 1599,
+      "pss_kib": 131439
+    }
+  ]
+}

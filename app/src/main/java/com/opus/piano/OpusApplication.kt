@@ -26,8 +26,10 @@ class OpusApplication : Application() {
     val openPractice = kotlinx.coroutines.flow.MutableStateFlow(0L)
     val database by lazy {
         Room.databaseBuilder(this, OpusDatabase::class.java, "opus.db")
-            .addMigrations(OpusDatabase.MIGRATION_1_2, OpusDatabase.MIGRATION_2_3, OpusDatabase.MIGRATION_3_4, OpusDatabase.MIGRATION_4_5, OpusDatabase.MIGRATION_5_6, OpusDatabase.MIGRATION_6_7, OpusDatabase.MIGRATION_7_8).build()
+            .addMigrations(*OpusDatabase.ALL_MIGRATIONS).addCallback(PersonalCatalogueBridge.callback).build()
     }
+    // Optional: never referenced by journal/recovery startup or existing legacy Library paths.
+    val localCatalogue by lazy { com.opus.piano.data.catalogue.LocalCatalogueStore(this, database) }
     val practiceRepository by lazy { PracticeRepository(database, repository) }
     val practice by lazy { com.opus.piano.practice.PracticeCoordinator(practiceRepository) }
     val achievements by lazy { AchievementStore(database) }
