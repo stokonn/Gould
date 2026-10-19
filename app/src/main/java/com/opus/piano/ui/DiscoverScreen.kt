@@ -40,6 +40,9 @@ import org.json.JSONObject
     var artistMenu by remember {mutableStateOf(false)}
     var periodMenu by remember {mutableStateOf(false)}
     var paging by remember {mutableStateOf(false)}
+    var pageJob by remember {mutableStateOf<Job?>(null)}
+    var searchEpoch by remember {mutableLongStateOf(0L)}
+    var limitReached by remember {mutableStateOf(false)}
     val filter=SearchFilter(category,artistId,period)
     val searchKey=listOf(query,category,artistId,period,active.toString(),online.toString())
     val currentSearchKey by rememberUpdatedState(searchKey)
@@ -56,19 +59,19 @@ import org.json.JSONObject
     val scope=rememberCoroutineScope()
     val language=LocalConfiguration.current.locales[0].language.let {if(it=="cs")"cs" else "en"}
     LaunchedEffect(query,category,artistId,period,active,online,revision,language) {
-        paging=false;sources=emptyList();candidates=emptyList()
+        pageJob?.cancel();searchEpoch++;paging=false;limitReached=false;sources=emptyList();candidates=emptyList()
         error=false;loading=true
         cacheBytes=app.providerCache.bytes()
         try {
             if(!active) {rows=app.discover.landing().items;cursor=null;sources=emptyList()}
             else {
                 val localOrder=linkedMapOf<String,CatalogueEntity>()
-                app.discover.search(query,filter,language,false).collect {result->rows=result.page.items;cursor=result.page.nextCursor;candidates=result.candidates;rows.forEach {localOrder[it.id]=it}}
+                app.discover.search(query,filter,language,false).collect {result->rows=result.page.items;cursor=result.continuation;candidates=result.candidates;limitReached=result.limitReached;rows.forEach {localOrder[it.id]=it}}
                 if(online) {
                     delay(400)
                     app.discover.search(query,filter,language,true).collect {result->
                         result.page.items.forEach {localOrder[it.id]=it}
-                        rows=localOrder.values.take(100).toList();cursor=result.page.nextCursor;sources=result.sources;candidates=result.candidates
+                        rows=localOrder.values.take(500).toList();cursor=result.continuation;sources=result.sources;candidates=result.candidates;limitReached=result.limitReached
                     }
                 }
             }
@@ -112,8 +115,8 @@ import org.json.JSONObject
         }
         if(loading)item {LinearProgressIndicator(Modifier.fillMaxWidth())}
         if(error)item {Text(L.s(R.string.discover_error));TextButton({revision++}){Text(L.s(R.string.discover_retry))}}
-        items(sources,key={"source:"+it.provider}) {source->
-            Text(source.provider+" · "+sourceLabel(source.state)+(source.refreshState?.let {" · "+sourceLabel(it)} ?: ""),style=MaterialTheme.typography.bodySmall)
+        items(sources,key={"source:"+it.provider+":"+it.requestKind}) {source->
+            Text(source.provider+(source.requestKind?.let {" · "+sourceKindLabel(it)} ?: "")+" · "+sourceLabel(source.state)+(source.refreshState?.let {" · "+sourceLabel(it)} ?: ""),style=MaterialTheme.typography.bodySmall)
             if(source.state !in setOf(SourceState.FRESH,SourceState.CACHED))TextButton({revision++}){Text(L.s(R.string.discover_retry))}
         }
         if(rows.isEmpty() && !loading)item {Text(L.s(R.string.discover_empty))}
@@ -122,16 +125,18 @@ import org.json.JSONObject
             Text(L.s(R.string.discover_candidate),style=MaterialTheme.typography.labelSmall)
             CatalogueRow(CatalogueEntity(candidate.id,candidate.kindHint,candidate.title,status="quarantined")){open(candidate.id)}
         }
-        if(cursor!=null)item {TextButton(enabled=!paging,onClick={
+        if(limitReached)item {Text(L.s(R.string.discover_refine_search))}
+        if(cursor!=null)item {TextButton(enabled=!paging && !loading,onClick={
             val next=cursor ?: return@TextButton
-            val requestedKey=searchKey;val requestedQuery=query;val requestedFilter=filter
+            val requestedKey=searchKey;val requestedEpoch=searchEpoch;val requestedQuery=query;val requestedFilter=filter;val requestedOnline=online
             paging=true
-            scope.launch {
+            pageJob=scope.launch {
                 try {
-                    val page=app.discover.page(requestedQuery,requestedFilter,next)
-                    if(currentSearchKey==requestedKey){rows=(rows+page.items).distinctBy {it.id};cursor=page.nextCursor}
-                } catch(e:CancellationException){throw e}catch(_:Exception){if(currentSearchKey==requestedKey){cursor=null;error=true}}
-                finally {if(currentSearchKey==requestedKey)paging=false}
+                    val result=app.discover.continueSearch(requestedQuery,requestedFilter,language,requestedOnline,next)
+                    val page=result.page
+                    if(searchEpoch==requestedEpoch && currentSearchKey==requestedKey){rows=(rows+page.items).distinctBy {it.id};cursor=result.continuation;candidates=(candidates+result.candidates).distinctBy {it.id};sources=result.sources;limitReached=result.limitReached}
+                } catch(e:CancellationException){throw e}catch(_:Exception){if(searchEpoch==requestedEpoch && currentSearchKey==requestedKey){cursor=null;error=true}}
+                finally {if(searchEpoch==requestedEpoch && currentSearchKey==requestedKey)paging=false}
             }
         }){Text(L.s(R.string.discover_more))}}
         if(!active && recent.isNotEmpty()) {
@@ -261,6 +266,8 @@ import org.json.JSONObject
     }
 }
 private fun categoryLabel(key:String)=L.s(when(key){"works"->R.string.discover_works;"artists"->R.string.discover_artists;"albums"->R.string.discover_albums;"lists"->R.string.discover_lists;else->R.string.discover_all})
-private fun kindLabel(key:String)=L.s(when(key){"work"->R.string.discover_work;"arrangement"->R.string.discover_arrangement;"artist"->R.string.discover_artist;"album"->R.string.discover_album;"release"->R.string.discover_release;"recording"->R.string.discover_recording;else->R.string.discover_collection})
+private fun kindLabel(key:String)=L.s(when(key){"work"->R.string.discover_work;"arrangement"->R.string.discover_arrangement;"artist"->R.string.discover_artist;"album"->R.string.discover_album;"release"->R.string.discover_release;"recording"->R.string.discover_recording;"collection"->R.string.discover_collection;else->R.string.discover_unknown_entity})
 private fun relationLabel(key:String)=L.s(when(key){"part"->R.string.discover_part_relation;"credit"->R.string.discover_credit_relation;"performance"->R.string.discover_performance_relation;else->R.string.discover_related})
 private fun sourceLabel(state:SourceState)=L.s(when(state){SourceState.FRESH->R.string.discover_fresh;SourceState.CACHED->R.string.discover_cached;SourceState.STALE->R.string.discover_stale;SourceState.RATE_LIMITED->R.string.discover_rate_limited;SourceState.BLOCKED_RIGHTS->R.string.discover_blocked;SourceState.MISSING->R.string.discover_missing;SourceState.INVALID->R.string.discover_invalid;else->R.string.discover_unavailable})
+
+private fun sourceKindLabel(kind:String)=when(kind){"search"->L.s(R.string.discover_all);"release-group"->L.s(R.string.discover_albums);"series"->L.s(R.string.discover_lists);else->kindLabel(kind)}

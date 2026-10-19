@@ -5,6 +5,21 @@ import org.junit.Test
 
 class ProviderProjectionTest {
     private val mbid="12345678-1234-4234-8234-123456789abc"
+    @Test fun providerContinuationRequiresExplicitProgressingBoundedEvidence() {
+        val opus=OpenOpusAdapter();val first=opus.search("Authored","works","en").single()
+        assertEquals(20,opus.nextOffset(first,mapOf("next" to 20)))
+        assertNull(opus.nextOffset(first,mapOf("status" to mapOf("rows" to 9999))))
+        assertTrue(runCatching {opus.nextOffset(first,mapOf("next" to mapOf("nested" to 20)))}.isFailure)
+        assertTrue(runCatching {opus.nextOffset(first,mapOf("next" to 0))}.isFailure)
+        assertTrue(runCatching {opus.nextOffset(first,mapOf("next" to 10001))}.isFailure)
+        val mb=MusicBrainzAdapter();val request=mb.search("Authored","artists","en",20).single()
+        assertEquals(20,request.offset)
+        assertEquals(22,mb.nextOffset(request,mapOf("artist-count" to 25,"artist-offset" to 20,"artists" to listOf(mapOf("id" to mbid),mapOf("id" to mbid)))))
+        assertTrue(runCatching {mb.nextOffset(request,mapOf("artist-count" to 25,"artist-offset" to 0))}.isFailure)
+        val wd=WikidataAdapter();val candidate=wd.search("Authored","all","cs",3).single()
+        assertTrue(candidate.url.contains("continue=3"));assertEquals(6,wd.nextOffset(candidate,mapOf("search-continue" to 6)))
+        assertTrue(runCatching {wd.nextOffset(candidate,mapOf("search-continue" to 3.5))}.isFailure)
+    }
     @Test fun musicBrainzProjectsOnlyAllowedScalarFieldsAndAliases() {
         val adapter=MusicBrainzAdapter();val request=adapter.search("Björk","artists","cs").single()
         assertTrue(request.url.contains("limit=20"));assertFalse(request.url.contains("inc=tags"))

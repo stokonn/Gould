@@ -4,8 +4,10 @@ package com.opus.piano.data.catalogue.providers
 class WikidataAdapter : ProviderAdapter {
     override val id="wikidata"
     override val intervalMillis=1200L
-    override fun search(query:String,category:String,language:String,offset:Int)=if(category=="lists")emptyList() else listOf(candidates(query,language))
-    fun candidates(query:String,language:String)=ProviderRequest("https://www.wikidata.org/w/api.php?action=wbsearchentities&format=json&maxlag=5&limit=3&language=${if(language=="cs")"cs" else "en"}&search=${enc(query)}",id,"candidate")
+    override fun search(query:String,category:String,language:String,offset:Int)=if(category=="lists")emptyList() else listOf(candidates(query,language,offset))
+    fun candidates(query:String,language:String,offset:Int=0):ProviderRequest {require(offset in 0..10000);return ProviderRequest("https://www.wikidata.org/w/api.php?action=wbsearchentities&format=json&maxlag=5&limit=3&language=${if(language=="cs")"cs" else "en"}&search=${enc(query)}&continue=$offset",id,"candidate",offset=offset)}
+    override fun nextOffset(request:ProviderRequest,root:Map<String,Any?>):Int? =
+        if(request.kind=="candidate")nextPage(root["search-continue"],request.offset) else null
     fun lookup(qid:String):ProviderRequest {require(qid.matches(Regex("Q[1-9][0-9]{0,15}")));return ProviderRequest("https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&maxlag=5&ids=$qid&props=labels%7Caliases%7Cdescriptions%7Cclaims%7Csitelinks&languages=cs%7Cen",id,"entity",qid)}
     override fun parse(request:ProviderRequest,root:Map<String,Any?>):List<ProviderRecord> {
         if(request.kind=="candidate")return emptyList()

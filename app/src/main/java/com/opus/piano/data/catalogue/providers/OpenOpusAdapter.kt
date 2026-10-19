@@ -3,8 +3,11 @@ package com.opus.piano.data.catalogue.providers
 class OpenOpusAdapter : ProviderAdapter {
     override val id="openopus"
     override val intervalMillis=1200L // upstream publishes no numeric SLA; conservative serialized reads
-    override fun search(query:String,category:String,language:String,offset:Int)=
-        if(category in setOf("all","works","artists")) listOf(ProviderRequest("https://api.openopus.org/omnisearch/${enc(query)}/$offset.json",id,"search")) else emptyList()
+    override fun search(query:String,category:String,language:String,offset:Int):List<ProviderRequest> {
+        require(offset in 0..10000)
+        return if(category in setOf("all","works","artists")) listOf(ProviderRequest("https://api.openopus.org/omnisearch/${enc(query)}/$offset.json",id,"search",offset=offset)) else emptyList()
+    }
+    override fun nextOffset(request:ProviderRequest,root:Map<String,Any?>):Int?=nextPage(root["next"],request.offset)
     override fun parse(request:ProviderRequest,root:Map<String,Any?>):List<ProviderRecord> {
         require(root.obj("status").text("success")=="true")
         fun artist(c:Map<String,Any?>):ProviderRecord? {

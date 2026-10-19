@@ -10,7 +10,16 @@ class MusicBrainzAdapter : ProviderAdapter {
         require(offset in 0..10000)
         val kinds=when(category){"works"->listOf("work");"artists"->listOf("artist");"albums"->listOf("release-group");"lists"->listOf("series");else->listOf("work","artist","release-group")}
         val literal="\""+query.replace("\\","\\\\").replace("\"","\\\"")+"\""
-        return kinds.map {ProviderRequest("https://musicbrainz.org/ws/2/$it/?query=${enc(literal)}&fmt=json&limit=20&offset=$offset",id,it)}
+        return kinds.map {ProviderRequest("https://musicbrainz.org/ws/2/$it/?query=${enc(literal)}&fmt=json&limit=20&offset=$offset",id,it,offset=offset)}
+    }
+    override fun nextOffset(request:ProviderRequest,root:Map<String,Any?>):Int? {
+        if(request.externalId!=null || !root.containsKey(request.kind+"-count"))return null
+        val count=pageInteger(root[request.kind+"-count"])
+        val offset=root[request.kind+"-offset"]?.let(::pageInteger) ?: request.offset
+        require(offset==request.offset)
+        val rows=root.rows(plurals[request.kind] ?: return null).size
+        if(rows==0 || offset+rows>=count)return null
+        return (offset+rows).takeIf {it<=10000}
     }
     fun lookup(kind:String,externalId:String):ProviderRequest {
         require(kind in plurals && validId(externalId))

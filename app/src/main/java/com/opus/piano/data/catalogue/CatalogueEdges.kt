@@ -12,9 +12,10 @@ internal class CatalogueEdges(private val db:CatalogueDatabase) {
         for(edge in result.records.flatMap {it.relationships}.take(100)) {
             fun ref(r:ProviderReference)=JSONObject().put("providerKind",r.providerKind).put("externalId",r.externalId)
             val value=JSONObject().put("provider",result.request.provider).put("from",ref(edge.from)).put("to",ref(edge.to)).put("type",edge.type).put("position",edge.position).put("medium",edge.medium).put("role",edge.role)
-                .put("evidenceHash",result.hash).put("observedAt",result.observedAt)
+                .put("evidenceHash",result.hash)
             val key="pending-edge:"+SearchText.hash(value.toString())
-            repo.state(key,value.toString())
+            value.put("observedAt",result.observedAt)
+            repo.boundedState("pending-edge:",key,value.toString())
         }
         for(pending in repo.states("pending-edge:",200)) {
             val o=JSONObject(pending.value);val provider=o.getString("provider")
@@ -34,7 +35,7 @@ internal class CatalogueEdges(private val db:CatalogueDatabase) {
                 repo.removeState(pending.key)
             } catch(_:android.database.sqlite.SQLiteConstraintException) {
                 // Invalid/cyclic/competing assertions remain exportable diagnostics, not accepted edges.
-                repo.state("diagnostic:"+pending.key,o.put("state","quarantined_relationship").toString());repo.removeState(pending.key)
+                repo.boundedState("diagnostic:","diagnostic:"+pending.key,o.put("state","quarantined_relationship").toString());repo.removeState(pending.key)
             }
         }
     }

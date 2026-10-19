@@ -51,18 +51,18 @@ class FileProviderCache(private val directory:File,private val now:()->Long=Syst
         try {
             require(atomic.baseFile.length() in 1..ProviderJson.MAX_BYTES.toLong())
             val envelope=JSONObject(atomic.openRead().use {it.readBytes().also {b->require(b.size<=ProviderJson.MAX_BYTES)}.toString(Charsets.UTF_8)})
-            require(envelope.getInt("version")==2)
+            val version=envelope.getInt("version");require(version in 2..3)
             val raw=envelope.getString("payload");require(sha(raw.toByteArray())==envelope.getString("sha256"))
             val value=CacheProjection.decode(request,JSONObject(raw))
             require(now()-accessed(atomic.baseFile)<=30L*86400000)
-            touch(atomic.baseFile);value
+            touch(atomic.baseFile);if(version==2)value.copy(expiresAt=0,etag=null,lastModified=null) else value
         }catch(_:Exception){atomic.delete();null}
     }}
     override suspend fun write(request:ProviderRequest,value:CachedProviderValue)=withContext(Dispatchers.IO) {mutex.withLock {
         require(value.result.state==SourceState.FRESH)
         directory.mkdirs()
         val payload=CacheProjection.encode(value).toString()
-        val bytes=JSONObject().put("version",2).put("payload",payload).put("sha256",sha(payload.toByteArray())).toString().toByteArray()
+        val bytes=JSONObject().put("version",3).put("payload",payload).put("sha256",sha(payload.toByteArray())).toString().toByteArray()
         if(bytes.size>ProviderJson.MAX_BYTES || directory.usableSpace-bytes.size<128L*1024*1024)return@withLock
         val atomic=AtomicFile(file(request));val stream=atomic.startWrite()
         try {stream.write(bytes);atomic.finishWrite(stream);touch(atomic.baseFile)}catch(e:Exception){atomic.failWrite(stream);throw e}
@@ -93,7 +93,7 @@ internal object CacheProjection {
         return JSONObject().put("provider",result.request.provider).put("records",JSONArray(records)).put("revision",result.revision).put("hash",result.hash).put("observedAt",result.observedAt)
             .put("expiresAt",value.expiresAt).put("etag",value.etag ?: JSONObject.NULL).put("lastModified",value.lastModified ?: JSONObject.NULL)
             .put("license",result.license).put("licenseUrl",result.licenseUrl).put("candidates",JSONArray(result.candidates.map {JSONObject().put("id",it.id).put("title",it.title).put("description",it.description)}))
-            .put("supplement",JSONObject(result.supplement))
+            .put("nextOffset",result.nextOffset ?: JSONObject.NULL).put("supplement",JSONObject(result.supplement))
     }
     fun decode(request:ProviderRequest,o:JSONObject):CachedProviderValue {
         require(o.getString("provider")==request.provider && o.getString("hash").matches(Regex("[0-9a-f]{64}")))
@@ -104,6 +104,7 @@ internal object CacheProjection {
             rows(r.getJSONArray("relationships")).map {ProviderEdge(it.getString("type"),reference(it.getJSONObject("from")),reference(it.getJSONObject("to")),it.getInt("position"),it.getInt("medium"),it.getString("role"))})}
         val supplement=ProviderJson.parse(o.getJSONObject("supplement").toString().toByteArray())
         val result=ProviderResult(request,SourceState.FRESH,records,o.getString("revision"),o.getString("hash"),o.getString("observedAt"),license=o.getString("license"),licenseUrl=o.getString("licenseUrl"),
+            nextOffset=if(o.isNull("nextOffset"))null else nextPage(o.get("nextOffset"),request.offset),
             candidates=rows(o.getJSONArray("candidates")).map {ProviderCandidate(it.getString("id"),it.getString("title"),it.getString("description"))},supplement=supplement)
         return CachedProviderValue(result,o.getLong("expiresAt"),if(o.isNull("etag"))null else o.getString("etag"),if(o.isNull("lastModified"))null else o.getString("lastModified"))
     }

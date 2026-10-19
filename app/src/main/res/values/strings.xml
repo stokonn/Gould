@@ -898,4 +898,6 @@
     <string name="discover_filters">Filters</string>
     <string name="discover_any_artist">Any artist or composer</string>
     <string name="discover_any_period">Any period</string>
+    <string name="discover_refine_search">Result limit reached. Refine your search to explore more music.</string>
+    <string name="discover_unknown_entity">Unverified entity</string>
 </resources>

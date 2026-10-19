@@ -902,4 +902,6 @@
     <string name="discover_filters">Filtry</string>
     <string name="discover_any_artist">Libovolný interpret nebo skladatel</string>
     <string name="discover_any_period">Libovolné období</string>
+    <string name="discover_refine_search">Byl dosažen limit výsledků. Pro další hudbu upřesněte hledání.</string>
+    <string name="discover_unknown_entity">Neověřená položka</string>
 </resources>

@@ -18,6 +18,38 @@ class Stage4ProviderCacheTest {
     private val request=adapter.search("raw-private-query-marker","works","en").single()
     private val body="""{"status":{"success":"true"},"results":[{"work":{"id":"1","title":"Authored fixture"}}]}""".toByteArray()
     private fun directory()=File(context.cacheDir,"stage4-test-${UUID.randomUUID()}").apply {mkdirs()}
+    @Test fun waitingSuccessorCanTakeOverCancelledOwnerExactlyOnce()=runBlocking {
+        val started=CompletableDeferred<Unit>();val calls=AtomicInteger()
+        val client=ProviderClient(ProviderTransport {
+            if(calls.incrementAndGet()==1){started.complete(Unit);awaitCancellation()} else ProviderResponse(200,body)
+        },{true})
+        val owner=launch {client.fetch(adapter,request)};started.await()
+        val successor=async {client.fetch(adapter,request)}
+        yield();delay(50);owner.cancelAndJoin()
+        assertEquals(SourceState.FRESH,withTimeout(5000){successor.await()}.state)
+        assertEquals(2,calls.get())
+    }
+    @Test fun legacyCacheForcesUnconditionalRefreshAndRejectsUnsolicitedNotModified()=runBlocking {
+        val directory=directory();val cache=FileProviderCache(directory);var calls=0
+        val initial=ProviderClient(ProviderTransport {ProviderResponse(200,body,mapOf("ETag" to "legacy-etag","Cache-Control" to "max-age=3600"))},{true},cache=cache)
+        try {
+            initial.fetch(adapter,request)
+            val file=directory.listFiles()!!.single {it.name.matches(Regex("[0-9a-f]{64}\\.json"))}
+            val envelope=org.json.JSONObject(file.readText());val payload=org.json.JSONObject(envelope.getString("payload"))
+            payload.remove("nextOffset");val raw=payload.toString()
+            envelope.put("version",2).put("payload",raw).put("sha256",sha(raw.toByteArray()));file.writeText(envelope.toString())
+            val reopened=FileProviderCache(directory)
+            val offline=ProviderClient(ProviderTransport {error("No offline request")},{false},cache=reopened)
+            assertEquals(SourceState.STALE,offline.fetch(adapter,request).state)
+            val refresh=ProviderClient(ProviderTransport {r->calls++;assertTrue(r.headers.isEmpty());ProviderResponse(304,byteArrayOf())},{true},cache=reopened)
+            val rejected=refresh.fetch(adapter,request)
+            assertEquals(SourceState.STALE,rejected.state);assertEquals(SourceState.INVALID,rejected.refreshState)
+            assertEquals("unexpected_not_modified",rejected.error);assertEquals(1,calls)
+            assertEquals("Authored fixture",rejected.records.single().title)
+            val empty=ProviderClient(ProviderTransport {ProviderResponse(304,byteArrayOf())},{true})
+            assertEquals(SourceState.INVALID,empty.fetch(adapter,request).state)
+        }finally {directory.deleteRecursively()}
+    }
     @Test fun projectedCacheIsPersistentPrivateBoundedAndConditionallyRevalidated()=runBlocking {
         val directory=directory();var now=100000L;val cache=FileProviderCache(directory,{now})
         var calls=0;var conditional:String?=null

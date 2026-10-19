@@ -32,8 +32,9 @@ data class SearchCursor(val queryHash:String,val generation:String,val lastRank:
 }
 data class CatalogueSearchPage(val items:List<CatalogueEntity>,val nextCursor:String?,val generation:String)
 
-internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFilter=SearchFilter(),cursor:String?=null,limit:Int=40):CatalogueSearchPage {
-    require(query.length<=256 && limit in 1..40)
+internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFilter=SearchFilter(),cursor:String?=null,limit:Int=40,excluded:Set<String> = emptySet()):CatalogueSearchPage {
+    require(query.length<=256 && limit in 1..40 && excluded.size<=500)
+    excluded.forEach {CatalogueValidation.uuid(it)}
     val normalized=SearchText.normalize(query);val generation=generation()
     val binding=SearchText.hash("$normalized|${filter.category}|${filter.artistId}|${filter.period}")
     val after=cursor?.let {SearchCursor.decode(it,binding,generation)}
@@ -44,6 +45,7 @@ internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFi
     args+=normalized;args+="$normalized%"
     var where="e.status='active' AND e.kind IN ($placeholders)"
     args.addAll(filter.kinds)
+    if(excluded.isNotEmpty()){where+=" AND e.id NOT IN (${excluded.joinToString(","){"?"}})";args.addAll(excluded.sorted())}
     if(normalized.isNotBlank()) {
         for(token in normalized.split(' ').filter {it.isNotBlank()}.take(8)) {
             val alternatives=if(token.length in 4..40)aliasPrefix(token.take(2)).flatMap {it.split(' ')}.distinct().filter {it!=token && SearchText.near(token,it)}.sorted().take(3) else emptyList()

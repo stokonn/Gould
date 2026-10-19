@@ -81,19 +81,26 @@ class ProviderClient(private val transport:ProviderTransport, private val permit
     private val gates=ConcurrentHashMap<String,Gate>()
     private val flights=Mutex()
     private val inFlight=mutableMapOf<String,CompletableDeferred<ProviderResult>>()
-    suspend fun fetch(adapter:ProviderAdapter,request:ProviderRequest,force:Boolean=false):ProviderResult {
+    suspend fun fetch(adapter:ProviderAdapter,request:ProviderRequest,force:Boolean=false):ProviderResult=coordinated(adapter,request,force,true)
+    private suspend fun coordinated(adapter:ProviderAdapter,request:ProviderRequest,force:Boolean,rejoin:Boolean):ProviderResult {
         require(adapter.id==request.provider)
         val saved=try {cache?.read(request)}catch(e:CancellationException){throw e}catch(_:Exception){null}
         if(!force && saved!=null && saved.expiresAt>now())return saved.result.copy(request=request,state=SourceState.CACHED)
         if(!permitted())return saved?.result?.copy(request=request,state=SourceState.STALE,error="network_policy",refreshState=SourceState.UNAVAILABLE) ?: ProviderResult(request,SourceState.UNAVAILABLE,error="network_policy")
         val (pending,owner)=flights.withLock {inFlight[request.url]?.let {it to false} ?: (CompletableDeferred<ProviderResult>().also {inFlight[request.url]=it} to true)}
-        if(!owner)return pending.await()
+        if(!owner)return try {pending.await()}catch(e:CancellationException) {
+            currentCoroutineContext().ensureActive()
+            flights.withLock {if(inFlight[request.url]===pending)inFlight.remove(request.url)}
+            if(rejoin)coordinated(adapter,request,force,false)
+            else saved?.result?.copy(request=request,state=SourceState.STALE,error="cancelled_shared_owner",refreshState=SourceState.UNAVAILABLE)
+                ?: ProviderResult(request,SourceState.UNAVAILABLE,error="cancelled_shared_owner")
+        }
         try {val result=withContext(Dispatchers.IO){execute(adapter,request,saved)}
             val output=if(result.state !in setOf(SourceState.FRESH,SourceState.CACHED) && saved!=null)
                 saved.result.copy(request=request,state=SourceState.STALE,error=result.error,retryAfterMillis=result.retryAfterMillis,refreshState=result.state) else result
             pending.complete(output);return output}
         catch(e:Throwable){pending.completeExceptionally(e);throw e}
-        finally {withContext(NonCancellable) {flights.withLock {inFlight.remove(request.url)}}}
+        finally {withContext(NonCancellable) {flights.withLock {if(inFlight[request.url]===pending)inFlight.remove(request.url)}}}
     }
     suspend fun clearCache(){cache?.clear()}
     private suspend fun execute(adapter:ProviderAdapter,request:ProviderRequest,saved:CachedProviderValue?):ProviderResult {
@@ -115,7 +122,7 @@ class ProviderClient(private val transport:ProviderTransport, private val permit
                     val freshness=if(cacheControl.contains("no-cache"))0L else Regex("(?:^|,)\\s*max-age=([0-9]+)").find(cacheControl)?.groupValues?.get(1)?.toLongOrNull()?.coerceAtMost(86400)?.times(1000) ?: 86400000L
                     if(response.code==304) {
                         gate.overloads=0
-                        if(saved==null)return@withLock ProviderResult(request,SourceState.INVALID,error="unexpected_not_modified")
+                        if(saved==null || conditional.headers.isEmpty())return@withLock ProviderResult(request,SourceState.INVALID,error="unexpected_not_modified")
                         try {if(cacheControl.contains("no-store"))cache?.remove(request) else cache?.write(request,saved.copy(expiresAt=now()+freshness))}catch(e:CancellationException){throw e}catch(_:Exception){}
                         return@withLock saved.result.copy(request=request,state=SourceState.CACHED)
                     }
@@ -134,6 +141,7 @@ class ProviderClient(private val transport:ProviderTransport, private val permit
                     gate.overloads=0
                     val hash=sha(response.body)
                     val result=ProviderResult(request,SourceState.FRESH,adapter.parse(request,root),hash,hash,
+                        nextOffset=adapter.nextOffset(request,root),
                         candidates=if(adapter is WikidataAdapter && request.kind=="candidate")adapter.observations(root) else emptyList(),
                         supplement=when(adapter){is WikipediaAdapter->adapter.project(root);is CommonsAdapter->adapter.project(root);else->emptyMap()},
                         license=if(adapter is WikipediaAdapter)"CC-BY-SA-4.0" else if(adapter is CommonsAdapter)"per-file" else "CC0-1.0",

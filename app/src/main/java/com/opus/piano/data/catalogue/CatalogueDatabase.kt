@@ -46,6 +46,8 @@ internal interface CatalogueDao {
     @Query("SELECT * FROM rights WHERE id = :id") suspend fun rights(id: String): CatalogueRights?
     @Query("SELECT * FROM catalogue_state WHERE `key` = :key") suspend fun state(key: String): CatalogueState?
     @Query("SELECT * FROM catalogue_state WHERE `key` LIKE :pattern ORDER BY `key` LIMIT :limit") suspend fun states(pattern:String,limit:Int):List<CatalogueState>
+    @Query("SELECT COUNT(*) FROM catalogue_state WHERE `key` LIKE :pattern") suspend fun stateCount(pattern:String):Int
+    @Query("SELECT item.* FROM catalogue_state item LEFT JOIN catalogue_state access ON access.`key`='access:'||item.`key` WHERE item.`key` LIKE :pattern ORDER BY COALESCE(access.value,'0000000000000000000'),item.`key` LIMIT :limit") suspend fun oldestStates(pattern:String,limit:Int):List<CatalogueState>
     @Query("DELETE FROM catalogue_state WHERE `key`=:key") suspend fun removeState(key:String)
     @Upsert suspend fun state(row: CatalogueState)
 }

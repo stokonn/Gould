@@ -7,7 +7,7 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 /** All inputs are catalogue actions, never personal objects. No adapter receives a journal. */
-data class ProviderRequest(val url: String, val provider: String, val kind: String, val externalId: String? = null, val headers:Map<String,String> = emptyMap())
+data class ProviderRequest(val url: String, val provider: String, val kind: String, val externalId: String? = null, val headers:Map<String,String> = emptyMap(), val offset:Int=0)
 data class ProviderResponse(val code: Int, val body: ByteArray, val headers: Map<String,String> = emptyMap())
 class BlockedRightsException:IllegalArgumentException("Unverified content rights")
 enum class SourceState { FRESH, CACHED, STALE, MISSING, UNAVAILABLE, RATE_LIMITED, INVALID, BLOCKED_RIGHTS }
@@ -23,12 +23,13 @@ data class ProviderCandidate(val id:String,val title:String,val description:Stri
 data class ProviderResult(val request: ProviderRequest, val state: SourceState, val records: List<ProviderRecord> = emptyList(),
     val revision: String = "", val hash: String = "", val observedAt: String = Instant.now().toString(),
     val retryAfterMillis: Long = 0, val error: String? = null, val license: String = "CC0-1.0",
-    val licenseUrl: String = "https://creativecommons.org/publicdomain/zero/1.0/", val candidates:List<ProviderCandidate> = emptyList(), val supplement:Map<String,Any?> = emptyMap(), val refreshState:SourceState?=null)
+    val licenseUrl: String = "https://creativecommons.org/publicdomain/zero/1.0/", val candidates:List<ProviderCandidate> = emptyList(), val supplement:Map<String,Any?> = emptyMap(), val refreshState:SourceState?=null, val nextOffset:Int?=null)
 interface ProviderAdapter {
     val id: String
     val intervalMillis: Long
     fun search(query: String, category: String, language: String, offset: Int = 0): List<ProviderRequest>
     fun parse(request: ProviderRequest, root: Map<String,Any?>): List<ProviderRecord>
+    fun nextOffset(request:ProviderRequest,root:Map<String,Any?>):Int?=null
 }
 internal fun enc(value: String) = URLEncoder.encode(value,"UTF-8").replace("+","%20")
 internal fun Map<String,Any?>.text(key:String):String = (this[key] as? String)?.take(4096).orEmpty()
@@ -50,4 +51,15 @@ object ProviderErrors {
             else -> null
         }
     }
+}
+
+/** Reject malformed or non-progressing continuation rather than guessing another request. */
+internal fun pageInteger(value:Any?):Int {
+    val n=value as? Number ?: throw IllegalArgumentException("Invalid provider page integer")
+    require(n.toDouble().isFinite() && n.toDouble()==n.toLong().toDouble() && n.toLong() in 0..Int.MAX_VALUE.toLong())
+    return n.toInt()
+}
+internal fun nextPage(value:Any?,offset:Int):Int? {
+    if(value==null || value==false)return null
+    return pageInteger(value).also {require(it>offset && it<=10000)}
 }

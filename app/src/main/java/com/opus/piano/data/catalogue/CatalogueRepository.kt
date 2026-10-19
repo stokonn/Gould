@@ -18,7 +18,9 @@ class CatalogueRepository(private val db: CatalogueDatabase) {
         dao.state(CatalogueState(key,"ready"))
     }
     suspend fun states(prefix:String,limit:Int=200)=dao.states(prefix.replace("%","").replace("_","")+"%",limit.coerceIn(1,200))
-    suspend fun removeState(key:String)=dao.removeState(key)
+    suspend fun removeState(key:String){dao.removeState(key);if(CatalogueObservationCache.prefixes.any {key.startsWith(it)})dao.removeState("access:$key")}
+    internal suspend fun boundedState(prefix:String,key:String,value:String,maxEntries:Int=200)=CatalogueObservationCache(db).put(prefix,key,value,maxEntries=maxEntries)
+    internal suspend fun touchObservation(key:String)=CatalogueObservationCache(db).touch(key)
     suspend fun generation():String=dao.state("generation")?.value ?: "initial"
     suspend fun assertions(id:String)=dao.assertions(id)
     suspend fun providerIdentity(provider:String,kind:String,id:String)=dao.identity(provider,kind,id)
