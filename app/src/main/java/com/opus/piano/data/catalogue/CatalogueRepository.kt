@@ -22,6 +22,7 @@ class CatalogueRepository(private val db: CatalogueDatabase) {
     internal suspend fun boundedState(prefix:String,key:String,value:String,maxEntries:Int=200)=CatalogueObservationCache(db).put(prefix,key,value,maxEntries=maxEntries)
     internal suspend fun touchObservation(key:String)=CatalogueObservationCache(db).touch(key)
     suspend fun generation():String=dao.state("generation")?.value ?: "initial"
+    internal suspend fun workType(id:String)=dao.workType(id)
     suspend fun assertions(id:String)=dao.assertions(id)
     suspend fun providerIdentity(provider:String,kind:String,id:String)=dao.identity(provider,kind,id)
     suspend fun identities(id:String)=dao.identities(id)

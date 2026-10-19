@@ -26,6 +26,7 @@ internal interface CatalogueDao {
     @Insert(onConflict = OnConflictStrategy.ABORT) suspend fun insert(row: CatalogueDocument)
     @Insert(onConflict = OnConflictStrategy.ABORT) suspend fun insert(row: CatalogueMedia)
     @Insert(onConflict = OnConflictStrategy.ABORT) suspend fun insert(row: CatalogueState)
+    @Query("SELECT workType FROM works WHERE id=:id") suspend fun workType(id:String):String?
     @Query("SELECT * FROM entities WHERE id = :id") suspend fun entity(id: String): CatalogueEntity?
     @Query("SELECT * FROM relationships WHERE fromId = :id ORDER BY type, medium, position, id LIMIT :limit") suspend fun relationships(id: String, limit: Int): List<CatalogueRelationship>
     @Query("SELECT e.* FROM entities e WHERE e.id > :after AND (:kind IS NULL OR e.kind = :kind) ORDER BY e.id LIMIT :limit") suspend fun page(kind: String?, after: String, limit: Int): List<CatalogueEntity>

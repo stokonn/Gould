@@ -51,3 +51,7 @@ Earlier progress paragraphs are historical, not current completion claims.4A–4
 - [x] API37 targeted execution of new paging/cache changes:19/19 passed. Final whole-stage acceptance still open.
 
 Immutable accepted source/assertion retention must not be weakened to satisfy cache budgets. See the current recovery ledger for exact source/artifact scopes and failures.
+
+- [x] Sourced language fallback/own document revision, approved evidence gate and actual movement detail subtype: five document fixtures passed on both APIs as part of30-test matrix.
+- [x] Rejected relationship preserves composition subtype and accepted identity: adversarial graph regression passed on both APIs.
+- [ ] Final licensed portraits, identity/lifecycle/performance/UI and full artifact acceptance; all4A–4F remain open.

@@ -154,24 +154,33 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
         require(language in setOf("cs","en"))
         if(!permitted())return listOf(SearchSource("wikipedia",SourceState.UNAVAILABLE,"network_policy"))
         val wiki=WikipediaAdapter();val commons=CommonsAdapter();val states=mutableListOf<SearchSource>()
-        fun field(name:String,lang:String?=null)=detail.assertions.firstOrNull {row->row.assertion.field==name && (lang==null || org.json.JSONObject(row.assertion.valueJson).optString("language")==lang)}?.let {org.json.JSONObject(it.assertion.valueJson).optString("value")}
-        val title=field("wikipedia_title",language) ?: field("wikipedia_title","en")
-        val selectedLanguage=if(field("wikipedia_title",language)!=null)language else "en"
-        if(title!=null) {
+        fun field(name:String,lang:String?=null)=detail.assertions.firstOrNull {row->row.rights.reviewState=="approved" && row.source.provider=="wikidata" && row.assertion.field==name && (lang==null || org.json.JSONObject(row.assertion.valueJson).optString("language")==lang)}?.let {org.json.JSONObject(it.assertion.valueJson).optString("value")}
+        val titles=listOf(language,"en").distinct().mapNotNull {lang->field("wikipedia_title",lang)?.let {lang to it}}
+        var fallbackReason=if(titles.firstOrNull()?.first!=language)"requested_language_title_missing" else ""
+        for((selectedLanguage,title) in titles) {
+            if(!permitted())break
             val result=client.fetch(wiki,wiki.document(title,selectedLanguage))
+            states+=SearchSource(wiki.id,result.state,result.error,result.refreshState,"document:$selectedLanguage")
             if(usable(result.state) && result.supplement.isNotEmpty()) {
                 val raw=result.supplement["html"] as? String ?: ""
-                // No WebView or network-capable renderer. Remove executable/style content before extraction.
+                // No WebView or network-capable renderer; extraction runs away from the UI thread.
                 val text=withContext(Dispatchers.Default){
                     val stripped=raw.replace(Regex("(?is)<(script|style|noscript)[^>]*>.*?</\\1>"),"")
                     val paragraphs=Regex("(?is)<p\\b[^>]*>.*?</p>").findAll(stripped).take(20).joinToString("\n"){it.value}
                     android.text.Html.fromHtml(paragraphs,android.text.Html.FROM_HTML_MODE_LEGACY).toString().trim().take(2000)
                 }
-                val revision=result.supplement["revision"].toString()
-                val record=ProviderRecord("document",title,"artist",title,listOf(FieldValue("biography",text,selectedLanguage),FieldValue("article_revision",revision),FieldValue("article_revision_url","https://$selectedLanguage.wikipedia.org/w/index.php?oldid=$revision"),FieldValue("article_history","https://$selectedLanguage.wikipedia.org/w/index.php?title=${com.opus.piano.data.encoded(title)}&action=history"),FieldValue("adaptation","Plain-text excerpt; truncated to 2000 characters")))
-                store.access {it.supplement(detail.entity.id,result.copy(records=listOf(record),license="CC-BY-SA-4.0",licenseUrl="https://creativecommons.org/licenses/by-sa/4.0/"))}
-            }
-            states+=SearchSource(wiki.id,result.state,result.error)
+                if(text.isNotBlank()) {
+                    val revision=result.supplement["revision"].toString()
+                    val record=ProviderRecord("document",title,"artist",title,listOf(FieldValue("biography",text,selectedLanguage),FieldValue("article_revision",revision),FieldValue("article_revision_url","https://$selectedLanguage.wikipedia.org/w/index.php?oldid=$revision"),FieldValue("article_history","https://$selectedLanguage.wikipedia.org/w/index.php?title=${com.opus.piano.data.encoded(title)}&action=history"),FieldValue("adaptation","Plain-text excerpt; truncated to 2000 characters"),FieldValue("document_requested_language",language),FieldValue("document_fallback_reason",fallbackReason)))
+                    val stored=if(canStore())store.access {it.supplement(detail.entity.id,result.copy(records=listOf(record),license="CC-BY-SA-4.0",licenseUrl="https://creativecommons.org/licenses/by-sa/4.0/"))} else null
+                    if(stored !is CatalogueAccess.Available)states[states.lastIndex]=SearchSource(wiki.id,SourceState.UNAVAILABLE,"storage_budget",requestKind="document:$selectedLanguage")
+                    break
+                }
+                states[states.lastIndex]=SearchSource(wiki.id,SourceState.MISSING,"empty_excerpt",requestKind="document:$selectedLanguage")
+                fallbackReason="requested_language_excerpt_empty"
+            } else fallbackReason="requested_language_"+result.state.name.lowercase(java.util.Locale.ROOT)
+            // A provider-wide outage/overload must not trigger more calls to another edition.
+            if(result.state in setOf(SourceState.RATE_LIMITED,SourceState.UNAVAILABLE) || result.refreshState in setOf(SourceState.RATE_LIMITED,SourceState.UNAVAILABLE))break
         }
         val file=field("commons_file")
         if(file!=null) {
@@ -186,13 +195,13 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
     }
     suspend fun detail(id:String)=store.access {repo->repo.entity(id)?.let {entity->
         val relationships=repo.linked(id)
-        DiscoverDetail(entity,repo.identities(id),repo.assertions(id).mapNotNull {a->val source=repo.source(a.sourceId);val rights=repo.rights(a.rightsId);if(source!=null && rights!=null)SourcedAssertion(a,source,rights) else null},relationships.mapNotNull {edge->repo.entity(if(edge.fromId==id)edge.toId else edge.fromId)?.let {edge to it}})
+        DiscoverDetail(entity,repo.identities(id),repo.assertions(id).mapNotNull {a->val source=repo.source(a.sourceId);val rights=repo.rights(a.rightsId);if(source!=null && rights!=null)SourcedAssertion(a,source,rights) else null},relationships.mapNotNull {edge->repo.entity(if(edge.fromId==id)edge.toId else edge.fromId)?.let {edge to it}},repo.workType(id))
     }}
     companion object {const val FRESH_MILLIS=24*60*60*1000L}
 }
 data class SourcedAssertion(val assertion:CatalogueAssertion,val source:CatalogueSource,val rights:CatalogueRights)
 data class DiscoverFilters(val artists:List<CatalogueEntity> = emptyList(),val periods:List<String> = emptyList())
-data class DiscoverDetail(val entity:CatalogueEntity,val identities:List<CatalogueExternalIdentity>,val assertions:List<SourcedAssertion>,val relationships:List<Pair<CatalogueRelationship,CatalogueEntity>>)
+data class DiscoverDetail(val entity:CatalogueEntity,val identities:List<CatalogueExternalIdentity>,val assertions:List<SourcedAssertion>,val relationships:List<Pair<CatalogueRelationship,CatalogueEntity>>,val workType:String?=null)
 
 /** History contains opaque entity IDs only, no raw queries; separate from journal/backups. */
 class DiscoverHistory(context:Context,private val preferenceName:String="goldberg-discover-history") {

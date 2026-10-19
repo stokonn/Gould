@@ -40,6 +40,24 @@ class Stage4GraphTest {
             assertTrue(edges.any {it.type=="credit"})
         } finally {db.close();context.deleteDatabase(name)}
     }
+    @Test fun quarantinedConflictingParentPositionCannotPromoteACompositionToPart()=runBlocking {
+        val name="stage4-rejected-part-${id()}";val db=CatalogueDatabase.builder(context,name).build();val repo=CatalogueRepository(db)
+        try {
+            val external=List(3){id()};val records=external.mapIndexed {index,key->ProviderRecord("work",key,"work","Authored $index")}
+            val request=ProviderRequest("https://musicbrainz.org/ws/2/work/${external[0]}","musicbrainz","work",external[0])
+            repo.ingest(ProviderResult(request,SourceState.FRESH,records,"1","a".repeat(64)))
+            val local=external.map {repo.providerIdentity("musicbrainz","work",it)!!.entityId}
+            db.openHelper.writableDatabase.execSQL("UPDATE works SET workType='part' WHERE id=?",arrayOf(local[1]))
+            repo.relate(CatalogueRelationship(id(),"part",local[1],"work",local[0],"work",position=0))
+            fun ref(index:Int)=ProviderReference("work",external[index],"work",records[index].title)
+            val changed=records[2].copy(relationships=listOf(ProviderEdge("part",ref(2),ref(0),0)))
+            repo.ingest(ProviderResult(request,SourceState.FRESH,listOf(changed),"2","b".repeat(64)))
+            assertEquals("composition",repo.workType(local[2]))
+            assertTrue(repo.linked(local[2]).none {it.type=="part"})
+            assertEquals(1,repo.states("diagnostic:").size)
+            assertEquals(local[2],repo.providerIdentity("musicbrainz","work",external[2])!!.entityId)
+        }finally {db.close();context.deleteDatabase(name)}
+    }
     @Test fun partsOrderAndRecordingPerformanceAreDifferentEdges() {
         val adapter=MusicBrainzAdapter();val parent=id();val child=id();val recording=id()
         val root=mapOf("id" to parent,"title" to "Suite","relations" to listOf(mapOf("type" to "parts","type-id" to MusicBrainzAdapter.PARTS,"direction" to "forward","target-type" to "work","ordering-key" to 2,"attributes" to listOf("movement"),"work" to mapOf("id" to child,"title" to "Second movement"))))

@@ -203,7 +203,7 @@ import org.json.JSONObject
         }
         if(loaded && data==null && candidate==null)item {Text(L.s(R.string.discover_missing))}
         if(data!=null) {
-            item {Text(CataloguePresentation.title(data,language),style=MaterialTheme.typography.headlineLarge,modifier=Modifier.semantics {heading()});Text(kindLabel(data.entity.kind))}
+            item {Text(CataloguePresentation.title(data,language),style=MaterialTheme.typography.headlineLarge,modifier=Modifier.semantics {heading()});Text(kindLabel(data.workType ?: data.entity.kind))}
             portrait?.let {bitmap->item {Image(bitmap.asImageBitmap(),contentDescription=L.s(R.string.discover_portrait_description),modifier=Modifier.fillMaxWidth().heightIn(max=240.dp))}}
             if(portrait!=null && portraitCredit!=null)item {
                 val credit=portraitCredit!!;val metadata=credit.getJSONObject("extmetadata")
@@ -242,7 +242,7 @@ import org.json.JSONObject
                     if(metadata!=null)try {if(app.cataloguePortraits.download(id,metadata)){portrait=app.cataloguePortraits.read(id);portraitCredit=app.cataloguePortraits.credits(id)};portraitCredit=app.cataloguePortraits.credits(id)}catch(e:CancellationException){throw e}catch(_:Exception){notice=L.s(R.string.discover_portrait_unavailable)}
                     detail=(app.discover.detail(id) as? CatalogueAccess.Available)?.value}}){Text(L.s(R.string.discover_load_encyclopedia))}
             }
-            items(supplementSources,key={"supplement:"+it.provider}) {Text(it.provider+" · "+sourceLabel(it.state))}
+            items(supplementSources,key={"supplement:"+it.provider+":"+it.requestKind.orEmpty()}) {Text(it.provider+" · "+it.requestKind.orEmpty().substringAfter(':')+" · "+sourceLabel(it.state))}
             item {Text(L.s(R.string.discover_sources),style=MaterialTheme.typography.titleLarge)}
             item {TextButton({correction=!correction}){Text(L.s(R.string.discover_correction))}}
             if(correction)item {
@@ -266,7 +266,7 @@ import org.json.JSONObject
     }
 }
 private fun categoryLabel(key:String)=L.s(when(key){"works"->R.string.discover_works;"artists"->R.string.discover_artists;"albums"->R.string.discover_albums;"lists"->R.string.discover_lists;else->R.string.discover_all})
-private fun kindLabel(key:String)=L.s(when(key){"work"->R.string.discover_work;"arrangement"->R.string.discover_arrangement;"artist"->R.string.discover_artist;"album"->R.string.discover_album;"release"->R.string.discover_release;"recording"->R.string.discover_recording;"collection"->R.string.discover_collection;else->R.string.discover_unknown_entity})
+private fun kindLabel(key:String)=L.s(when(key){"work","composition"->R.string.discover_work;"movement"->R.string.discover_movement;"part"->R.string.discover_part;"medley"->R.string.discover_medley;"mashup"->R.string.discover_mashup;"arrangement"->R.string.discover_arrangement;"artist"->R.string.discover_artist;"album"->R.string.discover_album;"release"->R.string.discover_release;"recording"->R.string.discover_recording;"collection"->R.string.discover_collection;else->R.string.discover_unknown_entity})
 private fun relationLabel(key:String)=L.s(when(key){"part"->R.string.discover_part_relation;"credit"->R.string.discover_credit_relation;"performance"->R.string.discover_performance_relation;else->R.string.discover_related})
 private fun sourceLabel(state:SourceState)=L.s(when(state){SourceState.FRESH->R.string.discover_fresh;SourceState.CACHED->R.string.discover_cached;SourceState.STALE->R.string.discover_stale;SourceState.RATE_LIMITED->R.string.discover_rate_limited;SourceState.BLOCKED_RIGHTS->R.string.discover_blocked;SourceState.MISSING->R.string.discover_missing;SourceState.INVALID->R.string.discover_invalid;else->R.string.discover_unavailable})
 

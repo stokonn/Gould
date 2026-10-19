@@ -73,5 +73,7 @@
     "50k relevance query investigation, dynamic critical export reserve and native/PSS/frame profiling",
     "full UI accessibility/restoration/detail/network acceptance",
     "current UI follow-up commit/push and clean final CI, tracking/documentation"
-  ]
+  ],
+  "historicalScopeNotice": "This matrix describes the earlier9daadb3/UI artifacts only. Newer source-specific results are in evidence-guard-source.json and RESUME-CHECKPOINT.md.",
+  "latestFollowUp": "evidence-guard-source.json"
 }

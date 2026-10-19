@@ -25,6 +25,7 @@ internal class CatalogueEdges(private val db:CatalogueDatabase) {
             val a=dao.entity(fromIdentity.entityId) ?: continue;val b=dao.entity(toIdentity.entityId) ?: continue
             if(dao.hasEdge(a.id,b.id,o.getString("type"))){repo.removeState(pending.key);continue}
             val type=o.getString("type")
+            val previousWorkType=if(type=="part")dao.workType(a.id) else null
             if(type=="part") {
                 // Only a parser with explicit structural evidence creates this edge.
                 db.openHelper.writableDatabase.execSQL("UPDATE works SET workType='part' WHERE id=? AND workType='composition'",arrayOf(a.id))
@@ -34,6 +35,8 @@ internal class CatalogueEdges(private val db:CatalogueDatabase) {
                     arrayOf<Any?>(UUID.randomUUID().toString(),type,a.id,a.kind,b.id,b.kind,o.getInt("position"),o.getInt("medium"),o.getString("role"),"",fromIdentity.sourceId))
                 repo.removeState(pending.key)
             } catch(_:android.database.sqlite.SQLiteConstraintException) {
+                // A rejected relation cannot leave behind its tentative subtype promotion.
+                if(previousWorkType=="composition")db.openHelper.writableDatabase.execSQL("UPDATE works SET workType='composition' WHERE id=? AND workType='part'",arrayOf(a.id))
                 // Invalid/cyclic/competing assertions remain exportable diagnostics, not accepted edges.
                 repo.boundedState("diagnostic:","diagnostic:"+pending.key,o.put("state","quarantined_relationship").toString());repo.removeState(pending.key)
             }

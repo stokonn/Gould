@@ -1,11 +1,12 @@
 # Stage4 changed paths at resumed WIP checkpoint
 
-Compared with verified Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes original implementation and all resumed source/evidence. Owner RELEASE_NOTES.md, private backups, signing material and generated APKs are excluded. This inventory does not imply every acceptance gate passed.
+Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes all original/resumed source and evidence. Owner RELEASE_NOTES.md, private backups, signing material and generated APKs excluded. This inventory does not imply full acceptance.
 
 - `app/src/androidTest/assets/stage4/README.md`
 - `app/src/androidTest/assets/stage4/musicbrainz-arrangement.json`
 - `app/src/androidTest/java/com/opus/piano/Quality092PersistenceTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4CatalogueTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage4DocumentTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4GraphTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4ObservationCacheTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4PagingTest.kt`
@@ -58,6 +59,10 @@ Compared with verified Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; inclu
 - `docs/planning/goldberg-0.11/stage-4/probe_providers.py`
 - `docs/planning/goldberg-0.11/stage-4/results/artifact-check.log`
 - `docs/planning/goldberg-0.11/stage-4/results/bounded-search-api26-initial-failure.log`
+- `docs/planning/goldberg-0.11/stage-4/results/bounded-search-fixed-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/bounded-search-fixed-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/bounded-search-fixed-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/bounded-search-fixed-source.json`
 - `docs/planning/goldberg-0.11/stage-4/results/cache-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/cache-api37.log`
 - `docs/planning/goldberg-0.11/stage-4/results/checkpoint-artifact-source.json`
@@ -69,6 +74,16 @@ Compared with verified Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; inclu
 - `docs/planning/goldberg-0.11/stage-4/results/combined-after-lru-api37.log`
 - `docs/planning/goldberg-0.11/stage-4/results/combined-before-lru-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/combined-before-lru-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/document-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/document-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/document-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/document-source.json`
+- `docs/planning/goldberg-0.11/stage-4/results/evidence-guard-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/evidence-guard-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/evidence-guard-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/evidence-guard-package.log`
+- `docs/planning/goldberg-0.11/stage-4/results/evidence-guard-signing.log`
+- `docs/planning/goldberg-0.11/stage-4/results/evidence-guard-source.json`
 - `docs/planning/goldberg-0.11/stage-4/results/filter-perf-build.log`
 - `docs/planning/goldberg-0.11/stage-4/results/full-before-explicit-test-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/full-before-explicit-test-api37.log`
