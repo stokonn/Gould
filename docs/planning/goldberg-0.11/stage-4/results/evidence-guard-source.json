@@ -242,5 +242,6 @@
   "versionCode": 11,
   "signingSha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
   "ownerReleaseNotesSha256": "db920f0b1ff88579b6bea9f9da567af16e6db0c7ce5b6439781ca1754fcd4b9b",
-  "finalWholeStageAcceptance": "not_executed_on_this_artifact"
+  "finalWholeStageAcceptance": "not_executed_on_this_artifact",
+  "verifiedSourceCommit": "1a6dab1327940e0b902ee6846b60604a62c3d4ee"
 }

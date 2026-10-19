@@ -1,5 +1,8 @@
 # Goldberg 0.11 Stage4 — resumed WIP verification checkpoint
 
+> Latest tested implementation commit: `1a6dab1327940e0b902ee6846b60604a62c3d4ee`. Later checkpoint documentation may follow without changing app source. Read the latest sections below and inspect actual local/remote HEAD; Stage4 is NOT complete.
+
+
 **Not complete and not a release.** Branch `feature/goldberg-0.11-stage-4`; resumed source checkpoint `9daadb3e47d62eef87f650d9ff068787ccbcf77b`, based on previous WIP `72a27cbfad530f0ec2db1b73c425c35c33257e4a` / implementation `435600ca13ead3cfa3cf8827128f805bbb7a59cd`. All descend from verified Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`. No main merge, tag, Release, APK publication, Stage5, cloud, paid infrastructure or physical device operation.
 
 ## Implementation and checkpoint status
@@ -164,3 +167,5 @@ New work actually implemented/verified: explicit provider continuation and stabl
 This is a resumable WIP checkpoint due session context budget, not product completion. Continue authorized implementation from latest HEAD; checkpoint/green CI alone is not a reason to stop while capacity remains.
 
 Prior pushed `d67982ebe7c2323bcafd24bf5c8b66f2b3f81037` CI **passed**: https://github.com/stokonn/Goldberg/actions/runs/39185227123 . New document/graph source is newer; do not transfer that remote result to it. Final cheap host checks (migration1–9→10, historical backup fixtures, Stage3Bv5 fixture hashes,888 CZ/EN resources, journal paging, policy, unchanged schema exports/whitespace) all passed. Both test emulators are now stopped, with their AVD data/configs preserved. Local APK/testAPK copies are retained under ignored `.gradle/stage4-wip/Goldberg-stage4-evidence-guard*.apk`.
+
+Verified implementation source commit: `1a6dab1327940e0b902ee6846b60604a62c3d4ee` on `feature/goldberg-0.11-stage-4`. Source/artifact hashes are in `results/evidence-guard-source.json`. The following documentation-only checkpoint records this exact source identity; final branch HEAD/CI are also recorded in the owner report, Issue31 and ignored `.gradle/stage4-wip/resume-latest.json`. No further app source change followed verification.
