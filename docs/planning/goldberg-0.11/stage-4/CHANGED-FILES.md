@@ -249,3 +249,4 @@ Compared with Stage3B9ae8d33e113feba531cdfa8558f0505cd4205749; source and exact-
 - `docs/planning/goldberg-0.11/stage-4/results/upgrade-api37.log`
 - `docs/wiki/Developer-Guide.md`
 - `scripts/verify_emulator_upgrade.py`
+- `docs/planning/goldberg-0.11/stage-4/results/safe-targeted-api37.log`

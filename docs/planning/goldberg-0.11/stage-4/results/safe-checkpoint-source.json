@@ -223,12 +223,13 @@
       "Warning": 95
     },
     "API26": "26/26 targeted tests passed,11.410s: storage/scope refusal, portraits, Stage3A catalogue, lifecycle/documents, DiscoverNavigation, private filtering, foreign-scope restore",
-    "API37": "not executed against current source"
+    "API37": "26/26 targeted storage/scope/portrait/catalogue/lifecycle/document/navigation/private-filter/foreign-scope restore regressions passed,13.457s; executed sequentially after API26 shutdown"
   },
   "limitations": [
     "Not Stage4 acceptance",
     "Older snapshot-source c899 APK passed full141/141 on both APIs, all8 actual process deaths/restarts and API37 seeded upgrade; not evidence for this newer APK",
     "Full current suites/process deaths/fresh signed upgrades on both APIs and UI/accessibility/startup/memory/storage acceptance remain pending",
     "Interrupted build/emulator attempts preserved separately; sequential execution required"
-  ]
+  ],
+  "implementationCommit": "1ae6a8e23e9b5de99620930c6f0655bdc1970160"
 }

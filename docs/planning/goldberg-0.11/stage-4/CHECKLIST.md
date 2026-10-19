@@ -100,3 +100,6 @@ See the newest RESUME-CHECKPOINT section and results/checkpoint-source.json. Ear
 - [ ] Final actual UI/accessibility/restoration/privacy, native memory/startup/storage/performance and4A–4F acceptance.
 
 Stage4 only; accidental Stage1 prompts are superseded. Temporary review worktree and RELEASE_NOTES.md retained. Exact next commands/source/artifacts/limits: newest RESUME-CHECKPOINT section and results/safe-checkpoint-source.json.
+
+- [x] Current source1ae6a8e/API37 affected runtime matrix26/26 passed13.457s after API26 was stopped. Same current APKs, sequential verification; results/safe-targeted-api37.log.
+- [ ] Final full suites, fresh signed seeded upgrades, actual process-death, UI/accessibility/privacy/performance/storage acceptance on final source; Stage4 INCOMPLETE.
