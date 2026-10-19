@@ -57,6 +57,26 @@ class Stage4PortraitTest {
             manifest.writeText(saved);File(directory,credit.getString("downloadSha256")+".img").writeBytes(byteArrayOf(1,2,3));assertNull(portraits.read(key))
         }finally {directory.deleteRecursively()}
     }
+    @Test fun displayedSnapshotRetainsItsOwnAttributionAcrossRefreshAndRejectsUnverifiedCredits()=runBlocking {
+        val directory=File(context.cacheDir,"stage4-portrait-${id()}");val key=id();val bytes=image()
+        val portraits=CataloguePortraits(directory,reserveBytes={0},connect={connection(bytes)}){true}
+        try {
+            assertTrue(portraits.download(key,metadata(bytes)))
+            val original=portraits.snapshot(key)!!
+            val replacement=metadata(bytes).put("timestamp","2026-10-20T00:00:00Z")
+            replacement.getJSONObject("extmetadata").getJSONObject("Credit").put("value","Revised source credit")
+            assertTrue(portraits.download(key,replacement))
+            val refreshed=portraits.snapshot(key)!!
+            assertTrue(original.credits.getString("displayAttribution").contains("Authored source credit"))
+            assertFalse(original.credits.getString("displayAttribution").contains("Revised source credit"))
+            assertTrue(refreshed.credits.getString("displayAttribution").contains("Revised source credit"))
+            assertEquals(12,original.bitmap.width);assertEquals(16,refreshed.bitmap.height)
+            original.bitmap.recycle();refreshed.bitmap.recycle()
+            val manifest=File(directory,"$key.json");val bad=JSONObject(manifest.readText())
+            bad.getJSONObject("extmetadata").getJSONObject("LicenseShortName").put("value","CC BY-NC 4.0")
+            manifest.writeText(bad.toString());assertNull(portraits.snapshot(key));assertNull(portraits.credits(key))
+        }finally {directory.deleteRecursively()}
+    }
     @Test fun changedLengthDimensionsMimeOrRevisionNeverPublishesAndFailedRefreshKeepsPriorPortrait()=runBlocking {
         val directory=File(context.cacheDir,"stage4-portrait-${id()}");val key=id();val bytes=image()
         val portraits=CataloguePortraits(directory,reserveBytes={0},connect={connection(bytes)}){true}
@@ -70,12 +90,15 @@ class Stage4PortraitTest {
         }finally {directory.deleteRecursively()}
     }
     @Test fun missingConsentBlocksTransferAndInsufficientReserveCannotReplaceSavedPortrait()=runBlocking {
-        val directory=File(context.cacheDir,"stage4-portrait-${id()}");val key=id();val bytes=image();var calls=0;var permitted=false;var reserve=0L
-        val portraits=CataloguePortraits(directory,reserveBytes={reserve},connect={calls++;connection(bytes)}){permitted}
+        val directory=File(context.cacheDir,"stage4-portrait-${id()}");val key=id();val bytes=image();var calls=0;var permitted=false;var reserve=0L;var admitted=true
+        val portraits=CataloguePortraits(directory,reserveBytes={reserve},connect={calls++;connection(bytes)},intake=com.opus.piano.data.catalogue.CatalogueIntake {admitted}){permitted}
         try {
             assertFalse(portraits.download(key,metadata(bytes)));assertEquals(0,calls)
             permitted=true;assertTrue(portraits.download(key,metadata(bytes)))
-            val before=File(directory,"$key.json").readText();reserve=Long.MAX_VALUE
+            val before=File(directory,"$key.json").readText();admitted=false
+            assertTrue(runCatching {portraits.download(key,metadata(bytes))}.isFailure)
+            assertEquals(before,File(directory,"$key.json").readText());assertNotNull(portraits.snapshot(key))
+            admitted=true;reserve=Long.MAX_VALUE
             assertTrue(runCatching {portraits.download(key,metadata(bytes))}.isFailure)
             assertEquals(before,File(directory,"$key.json").readText());assertNotNull(portraits.read(key))
         }finally {directory.deleteRecursively()}

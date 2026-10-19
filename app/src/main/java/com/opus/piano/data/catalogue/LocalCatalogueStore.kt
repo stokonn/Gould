@@ -25,6 +25,7 @@ class LocalCatalogueStore(
     context: Context,
     private val personal: OpusDatabase,
     private val name: String = CatalogueDatabase.FILENAME,
+    private val intake: CatalogueIntake? = null,
     private val opener: (String) -> CatalogueDatabase = { CatalogueDatabase.builder(context, it).build() }
 ) {
     private val directory = context.getDatabasePath(name).parentFile!!
@@ -49,7 +50,13 @@ class LocalCatalogueStore(
         CatalogueAccess.Unavailable()
     }
     suspend fun <T> access(block: suspend (CatalogueRepository) -> T): CatalogueAccess<T> = withContext(Dispatchers.IO) {
-        lock.withLock { attempt { block(CatalogueRepository(open())) } }
+        lock.withLock { attempt {
+            val db=open()
+            val scope=personal.personalCatalogueDao().scope()?.scope.orEmpty()
+            val indexedScope=db.dao().state("personal_scope")?.value
+            require(indexedScope==null || indexedScope==scope){"Catalogue belongs to a different journal scope"}
+            block(CatalogueRepository(db))
+        } }
     }
     /** At most 128 journal-owned identities per call. Progress and copied records commit together.
      * A new pass after completion picks up later personal rows; no journal refresh is triggered. */
@@ -58,7 +65,7 @@ class LocalCatalogueStore(
             val db=open()
             val scope=personal.personalCatalogueDao().scope()?.scope.orEmpty()
             val previous=db.dao().state("personal_scope")?.value
-            if(previous!=null && previous!=scope){rebuildUnlocked();true}else copyBatch(db)
+            if(previous!=null && previous!=scope){rebuildUnlocked();true}else admitted(CatalogueStorage.MAX_INTAKE){copyBatch(db)}
         } }
     }
     private suspend fun copyBatch(db: CatalogueDatabase): Boolean {
@@ -101,7 +108,16 @@ class LocalCatalogueStore(
     suspend fun rebuild(): CatalogueAccess<Unit> = withContext(Dispatchers.IO) {
         lock.withLock { attempt {rebuildUnlocked()} }
     }
+    private suspend fun <T> admitted(bytes:Long,write:suspend ()->T):T =
+        if(intake==null)write() else intake.commit(bytes,write)
     private suspend fun rebuildUnlocked() {
+        val active=selected()
+        val existing=directory.listFiles().orEmpty().filter {it.isFile && (it.name==active || it.name.startsWith("$active-"))}
+            .fold(0L){total,file->(total+file.length().coerceAtMost(CatalogueStorage.MAX_TOTAL)).coerceAtMost(CatalogueStorage.MAX_TOTAL)}
+        // Keep the original generation, staging, rebuilt indexes and journal headroom together.
+        admitted(existing*3+CatalogueStorage.MAX_INTAKE){rebuildGeneration()}
+    }
+    private suspend fun rebuildGeneration() {
             val candidateName = "$name.${UUID.randomUUID()}"
             val candidate = opener(candidateName)
             try {

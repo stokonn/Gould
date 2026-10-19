@@ -89,3 +89,14 @@ These are partial verified milestones, not completed4A–4F. Current source/arti
 - [ ] Complete remaining4A–4F requirements and final source/artifact/CI acceptance.
 
 See the newest RESUME-CHECKPOINT section and results/checkpoint-source.json. Earlier green checkpoints are partial evidence only.
+
+## Current safe storage/scope checkpoint — Stage4 INCOMPLETE
+
+- [x] Portrait snapshot revision/credit consistency and shared cache/catalogue admission implemented; copy/rebuild refusal and post-restore scope isolation now covered.
+- [x] Current96 JVM passed; both APKs; lint0errors95warnings;920 locales and host checks; signing/package/ZIP checks passed.
+- [x] Current API26 affected matrix26/26 passed, including DiscoverNavigationTest and original corruption/foreign-scope restore cases.
+- [x] Earlier c899eb5 full141/141 on both APIs,8 actual process deaths and API37 seeded upgrade preserved as separate historical evidence.
+- [ ] Current API37 runtime, final full suites/process deaths/fresh signed upgrades on BOTH APIs.
+- [ ] Final actual UI/accessibility/restoration/privacy, native memory/startup/storage/performance and4A–4F acceptance.
+
+Stage4 only; accidental Stage1 prompts are superseded. Temporary review worktree and RELEASE_NOTES.md retained. Exact next commands/source/artifacts/limits: newest RESUME-CHECKPOINT section and results/safe-checkpoint-source.json.

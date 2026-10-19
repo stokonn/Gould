@@ -19,7 +19,8 @@ interface ProviderCache {
 }
 class FileProviderCache(private val directory:File,private val now:()->Long=System::currentTimeMillis,
     private val byteBudget:Long=32L*1024*1024,private val maxEntries:Int=200,
-    private val reserveBytes:()->Long={128L*1024*1024}):ProviderCache {
+    private val reserveBytes:()->Long={128L*1024*1024},
+    private val intake:com.opus.piano.data.catalogue.CatalogueIntake=com.opus.piano.data.catalogue.CatalogueIntake()):ProviderCache {
     private val mutex=Mutex()
     private val accessFile=AtomicFile(File(directory,"access.json"))
     private var accessTimes:MutableMap<String,Long>?=null
@@ -65,9 +66,13 @@ class FileProviderCache(private val directory:File,private val now:()->Long=Syst
         val payload=CacheProjection.encode(value).toString()
         val bytes=JSONObject().put("version",3).put("payload",payload).put("sha256",sha(payload.toByteArray())).toString().toByteArray()
         if(bytes.size>ProviderJson.MAX_BYTES || !com.opus.piano.data.catalogue.CatalogueBudget.fits(directory.usableSpace,bytes.size.toLong(),reserveBytes()))return@withLock
-        val atomic=AtomicFile(file(request));val stream=atomic.startWrite()
-        try {stream.write(bytes);atomic.finishWrite(stream);touch(atomic.baseFile)}catch(e:Exception){atomic.failWrite(stream);throw e}
-        trim()
+        intake.commit(bytes.size.toLong()+65536) {
+            // Recheck the changing critical-data reserve after other publications finish.
+            require(com.opus.piano.data.catalogue.CatalogueBudget.fits(directory.usableSpace,bytes.size.toLong()+65536,reserveBytes()))
+            val atomic=AtomicFile(file(request));val stream=atomic.startWrite()
+            try {stream.write(bytes);atomic.finishWrite(stream);touch(atomic.baseFile)}catch(e:Exception){atomic.failWrite(stream);throw e}
+            trim()
+        }
     }}
     private fun trim() {
         val files=owned().sortedWith(compareBy<File> {accessed(it)}.thenBy {it.name})

@@ -18,9 +18,8 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
     private suspend fun canStore(bytes:Long=CatalogueStorage.MAX_RESPONSE)=withContext(Dispatchers.IO){storage?.admits(bytes) ?: true}
     /** Admission and commit share the store lock: parallel providers cannot spend the same space. */
     private suspend fun <T> intake(block:suspend (CatalogueRepository)->T):CatalogueAccess<T> = store.access {repo->
-        require(storage?.admits(CatalogueStorage.MAX_INTAKE)!=false){"Catalogue storage budget"}
-        currentCoroutineContext().ensureActive()
-        block(repo)
+        if(storage!=null)storage.intake.commit(CatalogueStorage.MAX_INTAKE){block(repo)}
+        else {currentCoroutineContext().ensureActive();block(repo)}
     }
     suspend fun portraitMetadata(id:String):org.json.JSONObject? = (store.access {it.state("portrait:$id")?.let {value->org.json.JSONObject(value)}} as? CatalogueAccess.Available)?.value
     suspend fun clearResponseCache(){client.clearCache()}

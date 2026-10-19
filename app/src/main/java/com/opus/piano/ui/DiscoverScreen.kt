@@ -179,8 +179,9 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     var separate by rememberSaveable(id){mutableStateOf(false)}
     var notice by remember {mutableStateOf<String?>(null)}
     var existingPiece by remember {mutableStateOf<Long?>(null)}
-    var portraitCredit by remember(id){mutableStateOf<JSONObject?>(null)}
-    var portrait by remember(id){mutableStateOf<android.graphics.Bitmap?>(null)}
+    var portraitSnapshot by remember(id){mutableStateOf<com.opus.piano.data.catalogue.CataloguePortraits.Snapshot?>(null)}
+    val portrait=portraitSnapshot?.bitmap
+    val portraitCredit=portraitSnapshot?.credits
     var correction by rememberSaveable(id){mutableStateOf(false)}
     var correctionField by rememberSaveable(id){mutableStateOf("")}
     var correctionValue by rememberSaveable(id){mutableStateOf("")}
@@ -196,7 +197,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     }
     LaunchedEffect(id) {
         detail=(app.discover.detail(id) as? CatalogueAccess.Available)?.value;candidate=if(detail==null)app.discover.candidate(id) else null;loaded=true
-        if(detail!=null){val canonical=detail!!.entity.id;withContext(Dispatchers.IO){app.discoverHistory.opened(id)};portrait=app.cataloguePortraits.read(canonical);portraitCredit=app.cataloguePortraits.credits(canonical)}
+        if(detail!=null){val canonical=detail!!.entity.id;withContext(Dispatchers.IO){app.discoverHistory.opened(id)};portraitSnapshot=app.cataloguePortraits.snapshot(canonical)}
     }
     LazyColumn(contentPadding=PaddingValues(20.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {
         item {TextButton(back){Text(L.s(R.string.discover_back))}}
@@ -261,7 +262,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
                 TextButton(onClick={scope.launch {supplementSources=app.discover.supplement(data,language)
                     val canonical=data.entity.id
                     val metadata=app.discover.portraitMetadata(canonical)
-                    if(metadata!=null)try {if(app.cataloguePortraits.download(canonical,metadata)){portrait=app.cataloguePortraits.read(canonical);portraitCredit=app.cataloguePortraits.credits(canonical)};portraitCredit=app.cataloguePortraits.credits(canonical)}catch(e:CancellationException){throw e}catch(_:Exception){notice=L.s(R.string.discover_portrait_unavailable)}
+                    if(metadata!=null)try {if(app.cataloguePortraits.download(canonical,metadata)){portraitSnapshot=app.cataloguePortraits.snapshot(canonical)}}catch(e:CancellationException){throw e}catch(_:Exception){notice=L.s(R.string.discover_portrait_unavailable)}
                     detail=(app.discover.detail(id) as? CatalogueAccess.Available)?.value}}){Text(L.s(R.string.discover_load_encyclopedia))}
             }
             items(supplementSources,key={"supplement:"+it.provider+":"+it.requestKind.orEmpty()}) {Text(it.provider+" · "+it.requestKind.orEmpty().substringAfter(':')+" · "+sourceLabel(it.state))}

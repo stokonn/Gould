@@ -1,0 +1,4 @@
+PASS actual process death/restart: before_commit
+PASS actual process death/restart: after_commit
+PASS actual process death/restart: after_preferences
+PASS actual process death/restart: before_ack

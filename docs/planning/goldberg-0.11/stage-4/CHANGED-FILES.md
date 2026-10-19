@@ -1,6 +1,6 @@
-# Stage4 changed paths at owner-requested WIP checkpoint
+# Stage4 changed paths at safe storage/scope WIP checkpoint
 
-Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; source and evidence included. Owner RELEASE_NOTES.md, private backups, signing material and generated APKs excluded. Stage4 is INCOMPLETE; this inventory is not acceptance evidence.
+Compared with Stage3B9ae8d33e113feba531cdfa8558f0505cd4205749; source and exact-scoped evidence included. Owner RELEASE_NOTES.md, private snapshots, signing material, APKs and temporary worktrees excluded. Stage4 INCOMPLETE.
 
 - `app/src/androidTest/assets/stage4/README.md`
 - `app/src/androidTest/assets/stage4/musicbrainz-arrangement.json`
@@ -20,6 +20,7 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; source and evi
 - `app/src/androidTest/java/com/opus/piano/Stage4ProviderCacheTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4SafetyTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4SearchVerificationTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage4StorageAdmissionTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4TransportTest.kt`
 - `app/src/main/java/com/opus/piano/OpusApplication.kt`
 - `app/src/main/java/com/opus/piano/data/CatalogRepository.kt`
@@ -28,6 +29,7 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; source and evi
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueDatabase.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueEdges.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueIngestion.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/CatalogueIntake.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueObservationCache.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CataloguePortraits.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CataloguePresentation.kt`
@@ -57,6 +59,7 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; source and evi
 - `app/src/main/res/values-cs/strings.xml`
 - `app/src/main/res/values/strings.xml`
 - `app/src/test/java/com/opus/piano/data/catalogue/CatalogueBudgetTest.kt`
+- `app/src/test/java/com/opus/piano/data/catalogue/CatalogueIntakeTest.kt`
 - `app/src/test/java/com/opus/piano/data/catalogue/SearchContractTest.kt`
 - `app/src/test/java/com/opus/piano/data/catalogue/providers/ProviderProjectionTest.kt`
 - `docs/planning/goldberg-0.11/stage-4/API-EVIDENCE.md`
@@ -173,6 +176,13 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; source and evi
 - `docs/planning/goldberg-0.11/stage-4/results/resume-initial-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/resume-initial-api37.log`
 - `docs/planning/goldberg-0.11/stage-4/results/resume-verification.json`
+- `docs/planning/goldberg-0.11/stage-4/results/resumed-full-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/safe-apk-quality.log`
+- `docs/planning/goldberg-0.11/stage-4/results/safe-checkpoint-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/safe-checkpoint-source.json`
+- `docs/planning/goldberg-0.11/stage-4/results/safe-signing.log`
+- `docs/planning/goldberg-0.11/stage-4/results/safe-targeted-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/scope-storage-build-interrupted.log`
 - `docs/planning/goldberg-0.11/stage-4/results/screenshots/api26-en-ivory-discover.png`
 - `docs/planning/goldberg-0.11/stage-4/results/screenshots/api26-en-ivory-large-discover.png`
 - `docs/planning/goldberg-0.11/stage-4/results/screenshots/api26-en-ivory-large-tabs.png`
@@ -189,9 +199,40 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; source and evi
 - `docs/planning/goldberg-0.11/stage-4/results/screenshots/lifecycle-cs-ivory-portrait-credits.png`
 - `docs/planning/goldberg-0.11/stage-4/results/screenshots/lifecycle-cs-ivory-portrait.png`
 - `docs/planning/goldberg-0.11/stage-4/results/search-initial-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/shared-intake-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/shared-intake-source.json`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-apk-quality.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-full-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-full-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api26-result-after_commit-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api26-result-after_commit-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api26-result-after_preferences-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api26-result-after_preferences-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api26-result-before_ack-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api26-result-before_ack-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api26-result-before_commit-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api26-result-before_commit-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api26.json`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api37-result-after_commit-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api37-result-after_commit-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api37-result-after_preferences-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api37-result-after_preferences-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api37-result-before_ack-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api37-result-before_ack-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api37-result-before_commit-terminated.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api37-result-before_commit-verified.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api37.json`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-process-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-signing.log`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-source.json`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-upgrade-api37.json`
+- `docs/planning/goldberg-0.11/stage-4/results/snapshot-upgrade-api37.log`
 - `docs/planning/goldberg-0.11/stage-4/results/source-files.json`
 - `docs/planning/goldberg-0.11/stage-4/results/sourcefix-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/sourcefix-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/storage-boundary-build-interrupted.log`
 - `docs/planning/goldberg-0.11/stage-4/results/targeted-build.log`
 - `docs/planning/goldberg-0.11/stage-4/results/ui-accessibility-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/ui-accessibility-build.log`

@@ -75,3 +75,13 @@ Effective local redirects are now honored by Discover detail resolution and sear
 Repertoire filtering now has a saved-only Flow separate from legacy online browse state/SavedStateHandle. Entering/typing/resetting the local view cannot dispatch a catalogue query. Explicit Discover and legacy catalogue actions remain separate. The source audit and executed zero-HTTP regression are recorded in NETWORK-AUDIT.md.
 
 Readable accepted ledgers remain preserved through same-journal rebuilds. A known-corruption-only explicit rebuild retains the original generation/sidecars and records its filename in retained_corrupt_generation before publishing a fresh validated generation. This does not claim that unreadable accepted records were recovered into that new index. Unsupported schemas, storage errors and other unknown failures do not enter this corruption exception path. The original unchanged-data bytes remain available; no automatic deletion/recreation occurs.
+
+## Revision7 — shared admission, scope isolation and portrait snapshots
+
+Application-scoped CatalogueIntake serializes accepted ingestion, response-cache and portrait publication, personal-index copy batches and explicit rebuild staging. Admission is rechecked after acquiring the shared lock, with cancellation honored before writes. Cache/image publication estimates include64KiB for manifest/access staging; a normal accepted/copy batch reserves16MiB. Rebuild estimates3× active generation/sidecar bytes plus16MiB, preserving existing generations and critical-data reserve. These are conservative client admission estimates, not an exact bound on every SQLite/filesystem amplification. Refusal never evicts accepted evidence or personal rows. Optional cache failure does not turn valid provider data into a source failure.
+
+Catalogue reads now reject a persisted personal_scope different from the active journal scope, including when low space prevents a post-restore rebuild. The previous generation remains retained; a denied rebuild cannot expose its snapshots as the new journal's index. No personal database migration, recreation or backup-format change.
+
+CataloguePortraits.snapshot resolves image bytes and plain-text attribution from the same verified manifest under the existing portrait mutex. Discover publishes them through one state value. Separate legacy read/credits accessors remain, but the UI cannot combine different refreshed revisions. Approved-license rules and original-byte verification remain unchanged.
+
+Execution evidence is in the newest recovery section and per-source manifests. Earlier c899eb5 full suites/upgrades/process deaths do not verify this newer shared-admission/scope source.

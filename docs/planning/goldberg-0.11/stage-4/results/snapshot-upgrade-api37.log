@@ -1,0 +1,7 @@
+Performing Streamed Install
+Success
+.gradle/stage4-wip/snapshot-upgrade-api37/seed.db: 1 file pushed, 0 skipped. 199.9 MB/s (147456 bytes in 0.001s)
+.gradle/stage4-wip/snapshot-upgrade-api37/goldberg-appearance.xml: 1 file pushed, 0 skipped. 2.5 MB/s (198 bytes in 0.000s)
+Performing Streamed Install
+Success
+PASS: exact persistent-table equality after 0.10.1 upgrade; 37 sessions, notes, profile, badges, repertoire, recovery archive, draft bytes and preferences retained

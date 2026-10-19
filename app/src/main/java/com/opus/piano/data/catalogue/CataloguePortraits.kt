@@ -16,7 +16,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
 /** Explicit tiny portrait requests only. No image URL is used without file-specific rights. */
-class CataloguePortraits(private val directory:File,private val reserveBytes:()->Long={128L*1024*1024},private val connect:(URL)->HttpURLConnection={it.openConnection() as HttpURLConnection},private val permitted:()->Boolean) {
+class CataloguePortraits(private val directory:File,private val reserveBytes:()->Long={128L*1024*1024},private val connect:(URL)->HttpURLConnection={it.openConnection() as HttpURLConnection},private val intake:CatalogueIntake=CatalogueIntake(),private val permitted:()->Boolean) {
     private val gate=Mutex()
     private fun hash(bytes:ByteArray)=MessageDigest.getInstance("SHA-256").digest(bytes).joinToString(""){"%02x".format(it)}
     private fun key(id:String):String {CatalogueValidation.uuid(id);return id}
@@ -52,17 +52,24 @@ class CataloguePortraits(private val directory:File,private val reserveBytes:()-
             require(bounds.outWidth.toLong()==metadata.getLong("width") && bounds.outHeight.toLong()==metadata.getLong("height") && bounds.outMimeType==metadata.getString("mime"))
             require(decode(bytes)?.also {it.recycle()}!=null)
             currentCoroutineContext().ensureActive();check(permitted())
-            directory.mkdirs();require(CatalogueBudget.fits(directory.usableSpace,bytes.size.toLong(),reserveBytes()))
-            val revision=hash(bytes);val image=AtomicFile(File(directory,revision+".img"));val stream=image.startWrite()
-            try {stream.write(bytes);image.finishWrite(stream)}catch(e:Exception){image.failWrite(stream);throw e}
-            val manifest=metadata.put("downloadSha256",revision).put("bytes",bytes.size).put("transformation","Original file; display scaling only, no crop")
-            val pointer=AtomicFile(File(directory,key(id)+".json"));val written=pointer.startWrite()
-            try {written.write(manifest.toString().toByteArray());pointer.finishWrite(written)}catch(e:Exception){pointer.failWrite(written);throw e}
-            trim();true
+            directory.mkdirs()
+            intake.commit(bytes.size.toLong()+65536) {
+                require(CatalogueBudget.fits(directory.usableSpace,bytes.size.toLong()+65536,reserveBytes()))
+                currentCoroutineContext().ensureActive();check(permitted())
+                val revision=hash(bytes);val image=AtomicFile(File(directory,revision+".img"));val stream=image.startWrite()
+                try {stream.write(bytes);image.finishWrite(stream)}catch(e:Exception){image.failWrite(stream);throw e}
+                val manifest=metadata.put("downloadSha256",revision).put("bytes",bytes.size).put("transformation","Original file; display scaling only, no crop")
+                val pointer=AtomicFile(File(directory,key(id)+".json"));val written=pointer.startWrite()
+                try {written.write(manifest.toString().toByteArray());pointer.finishWrite(written)}catch(e:Exception){pointer.failWrite(written);throw e}
+                trim();true
+            }
         } finally {cancellation.cancel();connection.disconnect()}
     }
-    suspend fun read(id:String):Bitmap?=gate.withLock {readOriginal(id)}
-    private suspend fun readOriginal(id:String):Bitmap?=withContext(Dispatchers.IO) {
+    data class Snapshot(val bitmap:Bitmap,val credits:JSONObject)
+    /** Resolve bytes and attribution under one lock from the same verified manifest revision. */
+    suspend fun snapshot(id:String):Snapshot?=gate.withLock {readOriginal(id)}
+    suspend fun read(id:String):Bitmap?=snapshot(id)?.bitmap
+    private suspend fun readOriginal(id:String):Snapshot?=withContext(Dispatchers.IO) {
         try {
             val manifest=AtomicFile(File(directory,key(id)+".json"));if(!manifest.baseFile.exists())return@withContext null
             require(manifest.baseFile.length()<=65536)
@@ -71,20 +78,20 @@ class CataloguePortraits(private val directory:File,private val reserveBytes:()-
             @Suppress("UNCHECKED_CAST") val rights=tree["extmetadata"] as? Map<String,Any?> ?: return@withContext null
             require(CommonsAdapter().approved(rights))
             val file=File(directory,digest+".img");require(file.length() in 1..MAX_BYTES.toLong())
-            val bytes=file.readBytes();require(hash(bytes)==digest);val now=System.currentTimeMillis();manifest.baseFile.setLastModified(now);file.setLastModified(now);decode(bytes)
+            val bytes=file.readBytes();require(hash(bytes)==digest);val now=System.currentTimeMillis();manifest.baseFile.setLastModified(now);file.setLastModified(now)
+            val bitmap=decode(bytes) ?: return@withContext null
+            Snapshot(bitmap,displayCredits(o))
         }catch(e:CancellationException){throw e}catch(_:Exception){null}
     }
-    suspend fun credits(id:String):JSONObject?=withContext(Dispatchers.IO) {
-        runCatching {
-            val file=File(directory,key(id)+".json");require(file.length() in 1..65536)
-            val metadata=JSONObject(file.readText());val fields=metadata.getJSONObject("extmetadata")
-            val display=CommonsAdapter.attributionFields.filter {it !in setOf("LicenseUrl","Restrictions","AttributionRequired","Copyrighted")}.mapNotNull {key->
-                fields.optJSONObject(key)?.optString("value")?.takeIf {it.isNotBlank()}?.let {value->
-                    android.text.Html.fromHtml(value,android.text.Html.FROM_HTML_MODE_LEGACY).toString().trim()
-                }
-            }.filter {it.isNotBlank()}.distinct().joinToString("\n")
-            metadata.put("displayAttribution",display)
-        }.getOrNull()
+    suspend fun credits(id:String):JSONObject?=snapshot(id)?.let {it.bitmap.recycle();it.credits}
+    private fun displayCredits(metadata:JSONObject):JSONObject {
+        val fields=metadata.getJSONObject("extmetadata")
+        val display=CommonsAdapter.attributionFields.filter {it !in setOf("LicenseUrl","Restrictions","AttributionRequired","Copyrighted")}.mapNotNull {key->
+            fields.optJSONObject(key)?.optString("value")?.takeIf {it.isNotBlank()}?.let {value->
+                android.text.Html.fromHtml(value,android.text.Html.FROM_HTML_MODE_LEGACY).toString().trim()
+            }
+        }.filter {it.isNotBlank()}.distinct().joinToString("\n")
+        return metadata.put("displayAttribution",display)
     }
     private fun trim() {
         val files=directory.listFiles()?.filter {it.isFile && it.name.matches(Regex("(?:[a-f0-9]{64}\\.img|[a-f0-9-]{36}\\.json)"))}?.sortedBy {it.lastModified()}.orEmpty()

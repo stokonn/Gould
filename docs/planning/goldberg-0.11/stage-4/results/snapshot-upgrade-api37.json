@@ -1,0 +1,22 @@
+{
+  "baselineVersion": "0.10.1",
+  "baselineSchemaVerified": 8,
+  "offlineVerified": true,
+  "personalSchema": 10,
+  "baselineApkSha256": "854bbfebf617ec920df60d181a12e0dcbd2fed10052f2479903a78a290cef312",
+  "candidateApkSha256": "c899eb518138b54473935f8da2e82eb19a136184aeef582dbb23cee7dec10c94",
+  "serial": "emulator-5586",
+  "originalRowsUnchanged": true,
+  "preferencesUnchanged": true,
+  "bridge": {
+    "identities": 3,
+    "anchors": 113
+  },
+  "sessions": 37,
+  "foreignKeys": "pass",
+  "startupTotalTimeMs": {
+    "baseline": [],
+    "candidate": [],
+    "caveat": "Small emulator samples; cold process after initialization, not install/start-to-usable or device guarantee"
+  }
+}
