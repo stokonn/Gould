@@ -902,6 +902,8 @@
     <string name="discover_any_period">Any period</string>
     <string name="discover_refine_search">Result limit reached. Refine your search to explore more music.</string>
     <string name="discover_unknown_entity">Unverified entity</string>
+    <string name="discover_unnamed_artist">Unnamed artist</string>
+    <string name="discover_unnamed_entry">Unnamed catalogue entry</string>
     <string name="discover_movement">Movement</string>
     <string name="discover_part">Part</string>
     <string name="discover_medley">Medley</string>

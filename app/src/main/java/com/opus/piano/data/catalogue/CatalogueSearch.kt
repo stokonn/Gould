@@ -30,7 +30,9 @@ data class SearchCursor(val queryHash:String,val generation:String,val lastRank:
         }
     }
 }
-data class CatalogueSearchPage(val items:List<CatalogueEntity>,val nextCursor:String?,val generation:String)
+/** Work subtype (movement/part/medley/mashup/composition) travels with the page so rows can
+ *  label results accurately without a per-row query. Disposable display data, not identity. */
+data class CatalogueSearchPage(val items:List<CatalogueEntity>,val nextCursor:String?,val generation:String,val workTypes:Map<String,String> = emptyMap())
 
 internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFilter=SearchFilter(),cursor:String?=null,limit:Int=40,excluded:Set<String> = emptySet()):CatalogueSearchPage {
     require(query.length<=256 && limit in 1..40 && excluded.size<=500)
@@ -83,5 +85,7 @@ internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFi
         val prefix=exact || queryEntities(SimpleSQLiteQuery("SELECT e.* FROM entities e JOIN aliases a ON a.entityId=e.id WHERE e.id=? AND a.normalized LIKE ? LIMIT 1",arrayOf(last.id,"$normalized%"))).isNotEmpty()
         SearchCursor(binding,generation,if(exact)0 else if(prefix)1 else 2,last.id).encode()
     } else null
-    return CatalogueSearchPage(page,next,generation)
+    val workIds=page.filter {it.kind=="work"}.map {it.id}
+    val subtypes=workTypes(workIds).associate {it.id to it.workType}
+    return CatalogueSearchPage(page,next,generation,subtypes)
 }

@@ -55,6 +55,8 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     val currentSearchKey by rememberUpdatedState(searchKey)
     var rows by remember {mutableStateOf(emptyList<CatalogueEntity>())}
     var recent by remember {mutableStateOf(emptyList<CatalogueEntity>())}
+    var workTypes by remember {mutableStateOf(emptyMap<String,String>())}
+    var recentTypes by remember {mutableStateOf(emptyMap<String,String>())}
     var sources by remember {mutableStateOf(emptyList<SearchSource>())}
     var candidates by remember {mutableStateOf(emptyList<CatalogueCandidate>())}
     var cursor by remember {mutableStateOf<String?>(null)}
@@ -70,20 +72,22 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
         error=false;loading=true
         cacheBytes=app.providerCache.bytes()
         try {
-            if(!active) {rows=app.discover.landing().items;cursor=null;sources=emptyList()}
+            if(!active) {val page=app.discover.landing();rows=page.items;workTypes=page.workTypes;cursor=null;sources=emptyList()}
             else {
                 val localOrder=linkedMapOf<String,CatalogueEntity>()
-                app.discover.search(query,filter,language,false).collect {result->rows=result.page.items;cursor=result.continuation;candidates=result.candidates;limitReached=result.limitReached;rows.forEach {localOrder[it.id]=it}}
+                app.discover.search(query,filter,language,false).collect {result->rows=result.page.items;workTypes=result.page.workTypes;cursor=result.continuation;candidates=result.candidates;limitReached=result.limitReached;rows.forEach {localOrder[it.id]=it}}
                 if(online) {
                     delay(400)
                     app.discover.search(query,filter,language,true).collect {result->
                         result.page.items.forEach {localOrder[it.id]=it}
+                        workTypes=workTypes+result.page.workTypes
                         rows=localOrder.values.take(500).toList();cursor=result.continuation;sources=result.sources;candidates=result.candidates;limitReached=result.limitReached
                     }
                 }
             }
             availableFilters=app.discover.filters()
-            recent=withContext(Dispatchers.IO){app.discoverHistory.entries().mapNotNull {id->(app.discover.detail(id) as? CatalogueAccess.Available)?.value?.entity}}
+            val opened=withContext(Dispatchers.IO){app.discoverHistory.entries().mapNotNull {id->(app.discover.detail(id) as? CatalogueAccess.Available)?.value}}
+            recent=opened.map {it.entity};recentTypes=opened.mapNotNull {detail->detail.workType?.let {detail.entity.id to it}}.toMap()
         } catch(e:CancellationException){throw e} catch(_:Exception){error=true} finally {loading=false}
     }
     LazyColumn(contentPadding=PaddingValues(20.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {
@@ -105,10 +109,10 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
             TextButton({filtersExpanded=!filtersExpanded}){Text(L.s(R.string.discover_filters))}
             if(filtersExpanded) {
                 Box {
-                    TextButton({artistMenu=true}){Text(availableFilters.artists.firstOrNull {it.id==artistId}?.title ?: L.s(R.string.discover_any_artist))}
+                    TextButton({artistMenu=true}){Text(availableFilters.artists.firstOrNull {it.id==artistId}?.let {shownTitle("artist",it.title)} ?: L.s(R.string.discover_any_artist))}
                     DropdownMenu(artistMenu,{artistMenu=false}) {
                         DropdownMenuItem(text={Text(L.s(R.string.discover_any_artist))},onClick={artistId=null;artistMenu=false;active=true})
-                        availableFilters.artists.forEach {artist->DropdownMenuItem(text={Text(artist.title)},onClick={artistId=artist.id;artistMenu=false;active=true})}
+                        availableFilters.artists.forEach {artist->DropdownMenuItem(text={Text(shownTitle("artist",artist.title))},onClick={artistId=artist.id;artistMenu=false;active=true})}
                     }
                 }
                 Box {
@@ -127,7 +131,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
             if(source.state !in setOf(SourceState.FRESH,SourceState.CACHED))TextButton({revision++}){Text(L.s(R.string.discover_retry))}
         }
         if(rows.isEmpty() && !loading)item {Text(L.s(R.string.discover_empty))}
-        items(rows,key={it.id}) {entity->CatalogueRow(entity){open(entity.id)}}
+        items(rows,key={it.id}) {entity->CatalogueRow(entity,workTypes[entity.id]){open(entity.id)}}
         items(candidates.filterNot {candidate->rows.any {it.id==candidate.id}},key={"candidate:"+it.id}) {candidate->
             Text(L.s(R.string.discover_candidate),style=MaterialTheme.typography.labelSmall)
             CatalogueRow(CatalogueEntity(candidate.id,candidate.kindHint,candidate.title,status="quarantined")){open(candidate.id)}
@@ -141,14 +145,14 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
                 try {
                     val result=app.discover.continueSearch(requestedQuery,requestedFilter,language,requestedOnline,next)
                     val page=result.page
-                    if(searchEpoch==requestedEpoch && currentSearchKey==requestedKey){rows=(rows+page.items).distinctBy {it.id};cursor=result.continuation;candidates=(candidates+result.candidates).distinctBy {it.id};sources=result.sources;limitReached=result.limitReached}
+                    if(searchEpoch==requestedEpoch && currentSearchKey==requestedKey){rows=(rows+page.items).distinctBy {it.id};workTypes=workTypes+page.workTypes;cursor=result.continuation;candidates=(candidates+result.candidates).distinctBy {it.id};sources=result.sources;limitReached=result.limitReached}
                 } catch(e:CancellationException){throw e}catch(_:Exception){if(searchEpoch==requestedEpoch && currentSearchKey==requestedKey){cursor=null;error=true}}
                 finally {if(searchEpoch==requestedEpoch && currentSearchKey==requestedKey)paging=false}
             }
         }){Text(L.s(R.string.discover_more))}}
         if(!active && recent.isNotEmpty()) {
             item {Text(L.s(R.string.discover_recent),style=MaterialTheme.typography.titleLarge,modifier=Modifier.semantics {heading()})}
-            items(recent,key={"recent:"+it.id}) {entity->CatalogueRow(entity){open(entity.id)};TextButton({scope.launch {withContext(Dispatchers.IO){app.discoverHistory.remove(entity.id)};recent=recent.filterNot {it.id==entity.id}}}){Text(L.s(R.string.discover_remove))}}
+            items(recent,key={"recent:"+it.id}) {entity->CatalogueRow(entity,recentTypes[entity.id]){open(entity.id)};TextButton({scope.launch {withContext(Dispatchers.IO){app.discoverHistory.remove(entity.id)};recent=recent.filterNot {it.id==entity.id}}}){Text(L.s(R.string.discover_remove))}}
         }
         item {
             HorizontalDivider()
@@ -160,10 +164,10 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
         item {TextButton({scope.launch {withContext(Dispatchers.IO){app.discoverHistory.clear()};recent=emptyList()}}){Text(L.s(R.string.discover_clear_history))}}
     }
 }
-@Composable private fun CatalogueRow(entity:CatalogueEntity,onClick:()->Unit) {
+@Composable private fun CatalogueRow(entity:CatalogueEntity,workType:String?=null,onClick:()->Unit) {
     JournalCard(Modifier.fillMaxWidth().clickable(onClick=onClick)) {Column(Modifier.padding(12.dp)) {
-        Text(entity.title,style=MaterialTheme.typography.titleMedium)
-        Text(kindLabel(entity.kind),style=MaterialTheme.typography.bodySmall)
+        Text(shownTitle(entity.kind,entity.title),style=MaterialTheme.typography.titleMedium)
+        Text(kindLabel(workType ?: entity.kind),style=MaterialTheme.typography.bodySmall)
     }}
 }
 @Composable internal fun DiscoverDetailScreen(id:String,back:()->Unit,open:(String)->Unit,openPiece:(Long)->Unit) {
@@ -212,7 +216,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
         }
         if(loaded && data==null && candidate==null)item {Text(L.s(R.string.discover_missing))}
         if(data!=null) {
-            item {Text(CataloguePresentation.title(data,language),style=MaterialTheme.typography.headlineLarge,modifier=Modifier.semantics {heading()});Text(kindLabel(data.workType ?: data.entity.kind))}
+            item {Text(shownTitle(data.entity.kind,CataloguePresentation.title(data,language)),style=MaterialTheme.typography.headlineLarge,modifier=Modifier.semantics {heading()});Text(kindLabel(data.workType ?: data.entity.kind))}
             biography?.let {row->item {
                 val body=JSONObject(row.assertion.valueJson)
                 Text(body.getString("value"),style=MaterialTheme.typography.bodyLarge)
@@ -257,7 +261,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
             }
             notice?.let {item {Text(it)}}
             existingPiece?.let {piece->item {TextButton({openPiece(piece)}){Text(L.s(R.string.discover_open_existing))}}}
-            items(data.relationships,key={"edge:"+it.first.id}) {(edge,entity)->Text(relationLabel(edge.type),style=MaterialTheme.typography.labelSmall);CatalogueRow(entity){open(entity.id)}}
+            items(data.relationships,key={"edge:"+it.first.id}) {(edge,entity)->Text(relationLabel(edge.type),style=MaterialTheme.typography.labelSmall);CatalogueRow(entity,data.workTypes[entity.id]){open(entity.id)}}
             if(data.assertions.any {it.assertion.field in setOf("wikipedia_title","commons_file")})item {
                 TextButton(onClick={scope.launch {supplementSources=app.discover.supplement(data,language)
                     val canonical=data.entity.id
@@ -294,6 +298,8 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     }
 }
 private fun categoryLabel(key:String)=L.s(when(key){"works"->R.string.discover_works;"artists"->R.string.discover_artists;"albums"->R.string.discover_albums;"lists"->R.string.discover_lists;else->R.string.discover_all})
+/** Legacy numeric/opaque fallbacks render as a localized unnamed label, never as an invented name. */
+private fun shownTitle(kind:String,title:String)=if(CataloguePresentation.unnamed(kind,title))L.s(if(kind=="artist")R.string.discover_unnamed_artist else R.string.discover_unnamed_entry) else title
 private fun fieldLabel(key:String)=L.s(when(key) {
     "title"->R.string.discover_field_title;"alias"->R.string.discover_field_alias;"preferred_name"->R.string.discover_field_name
     "biography"->R.string.discover_field_biography;"description"->R.string.discover_field_description

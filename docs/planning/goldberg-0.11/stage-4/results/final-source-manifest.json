@@ -1,0 +1,80 @@
+{
+  "status": "final-verification-candidate",
+  "baseHead": "357b3dd",
+  "branch": "feature/goldberg-0.11-stage-4",
+  "source": {
+    "modified": [
+      "app/src/androidTest/java/com/opus/piano/Stage4SearchVerificationTest.kt",
+      "app/src/main/java/com/opus/piano/data/catalogue/CatalogueDatabase.kt",
+      "app/src/main/java/com/opus/piano/data/catalogue/CataloguePresentation.kt",
+      "app/src/main/java/com/opus/piano/data/catalogue/CatalogueRepository.kt",
+      "app/src/main/java/com/opus/piano/data/catalogue/CatalogueSearch.kt",
+      "app/src/main/java/com/opus/piano/data/catalogue/DiscoverRepository.kt",
+      "app/src/main/java/com/opus/piano/ui/DiscoverScreen.kt",
+      "app/src/main/res/values-cs/strings.xml",
+      "app/src/main/res/values/strings.xml"
+    ],
+    "new": [
+      "app/src/test/java/com/opus/piano/data/catalogue/CataloguePresentationTest.kt"
+    ]
+  },
+  "artifacts": {
+    "appApk": {
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "ac1ad27a5c42ec8f30a306c522943575183e2f5f4d9e41baef8f394d333aa3f4"
+    },
+    "testApk": {
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "sha256": "2057f10d07afe9c846266be38939879143598903e57ed89e5f672400900f2344"
+    },
+    "package": "com.opus.piano",
+    "versionName": "0.10.1",
+    "versionCode": 11,
+    "signingCertSha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e"
+  },
+  "verification": {
+    "host": {
+      "jvmTests": "97 tests, 0 failures",
+      "lint": "0 errors, 95 warnings",
+      "migrations": "PASS 1-9 to 10",
+      "backupFixtures": "PASS",
+      "stage3bV5Fixtures": "PASS",
+      "localization": "PASS 922 CZ/EN keys",
+      "historyPaging": "PASS",
+      "upgradeSigning": "PASS (trusted cert match)",
+      "qualityApkArtwork": "PASS (cert, zip, artwork, circle bounds)",
+      "schemasUnchanged": "PASS app/schemas identical"
+    },
+    "api26": {
+      "fullSuite": "OK (143 tests)",
+      "processDeath": "PASS all 4 phases",
+      "seededUpgrade": "PASS exact persistent-table equality (37 sessions)",
+      "performance": "1k median 11.97ms p95 13.43; 10k 19.83/20.73; 50k 51.98/53.99; journalReady 30.80ms"
+    },
+    "api37": {
+      "fullSuite": "OK (143 tests)",
+      "processDeath": "PASS all 4 phases",
+      "seededUpgrade": "PASS exact persistent-table equality (37 sessions)",
+      "performance": "1k median 7.21ms p95 11.52; 10k 12.13/16.07; 50k 31.48/32.35; journalReady 12.76ms"
+    },
+    "ui": {
+      "api26": "16 screenshots inspected: subtype labels, unnamed-artist EN/CZ, portrait+CC BY-SA credits, font 1.5 nav, CZ/Ivory round",
+      "api37": "landing/search/detail screenshots inspected"
+    }
+  },
+  "productFixes": [
+    "Search/landing/detail row subtype labels via workTypes map (no more generic Work label for movements/parts)",
+    "Numeric legacy artist placeholder: digit-only artist names render localized Unnamed artist / Um\u011blec bez jm\u00e9na (digit rule restricted to artist kind, titles like 1984 preserved)"
+  ],
+  "limitations": [
+    "verify_quality_apk.py asserts version progression (old_code < expected_code); Stage 4 is intentionally version-neutral (0.10.1/code 11) so remaining checks (cert/zip/artwork) were executed directly",
+    "Wikidata maxlag and MusicBrainz 429 stop recorded; no new provider probing performed",
+    "API26 svc wifi denied (CHANGE_WIFI_STATE); airplane mode via Settings UI used for offline state",
+    "Owner physical phone never used; all checks on explicitly identified emulators 5584/5586/5590/5592"
+  ],
+  "releaseNotesOwnerFile": {
+    "path": "RELEASE_NOTES.md",
+    "sha256": "db920f0b1ff88579b6bea9f9da567af16e6db0c7ce5b6439781ca1754fcd4b9b",
+    "preserved": true
+  }
+}

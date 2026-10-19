@@ -250,3 +250,20 @@ Compared with Stage3B9ae8d33e113feba531cdfa8558f0505cd4205749; source and exact-
 - `docs/wiki/Developer-Guide.md`
 - `scripts/verify_emulator_upgrade.py`
 - `docs/planning/goldberg-0.11/stage-4/results/safe-targeted-api37.log`
+
+## Final Stage4 acceptance additions
+- `app/src/main/java/com/opus/piano/data/catalogue/CatalogueDatabase.kt` (workTypes DAO)
+- `app/src/main/java/com/opus/piano/data/catalogue/CatalogueRepository.kt` (workTypes accessor)
+- `app/src/main/java/com/opus/piano/data/catalogue/CatalogueSearch.kt` (per-page workTypes map)
+- `app/src/main/java/com/opus/piano/data/catalogue/DiscoverRepository.kt` (related-row workTypes)
+- `app/src/main/java/com/opus/piano/data/catalogue/CataloguePresentation.kt` (unnamed() placeholder rule)
+- `app/src/main/java/com/opus/piano/ui/DiscoverScreen.kt` (subtype labels + shownTitle wiring)
+- `app/src/main/res/values/strings.xml` / `values-cs/strings.xml` (discover_unnamed_artist/entry)
+- `app/src/test/java/com/opus/piano/data/catalogue/CataloguePresentationTest.kt` (new)
+- `app/src/androidTest/java/com/opus/piano/Stage4SearchVerificationTest.kt` (subtype regression)
+- `docs/planning/goldberg-0.11/stage-4/results/final-source-manifest.json` (new)
+- `docs/planning/goldberg-0.11/stage-4/results/final-*.log`, `final-process-*.json` + phase logs
+- `docs/planning/goldberg-0.11/stage-4/results/final-evidence/`, `final-screens/`, `final-upgrade-api26/`, `final-upgrade-api37/`
+- `docs/planning/goldberg-0.11/stage-4/{RESUME-CHECKPOINT,CHECKLIST,PROGRESS,UI-VERIFICATION,CHANGED-FILES}.md` (append-only ledger updates)
+
+Created by stokonn with love <3

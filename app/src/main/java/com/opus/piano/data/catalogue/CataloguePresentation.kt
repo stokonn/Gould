@@ -4,6 +4,14 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 object CataloguePresentation {
+    /** A numeric legacy identifier or opaque key is never presented as an invented name.
+     *  Digits alone only qualify for artists (e.g. a legacy composer id), so numeric-looking
+     *  real titles such as an album named "1984" are preserved. */
+    fun unnamed(kind:String,title:String):Boolean {
+        val value=title.trim()
+        return value.isEmpty() || runCatching {CatalogueValidation.uuid(value)}.isSuccess ||
+            (kind=="artist" && value.length in 1..12 && value.all {it.isDigit()})
+    }
     /** Presentation selects an approved source language, never translates or rewrites evidence. */
     fun biography(detail:DiscoverDetail,language:String):SourcedAssertion? {
         require(language in setOf("cs","en"))

@@ -204,14 +204,16 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
     }
     suspend fun detail(id:String)=store.access {repo->repo.resolve(id)?.let {entity->
         val resolved=entity.id
-        val relationships=repo.linked(resolved)
-        DiscoverDetail(entity,repo.identities(resolved),repo.assertions(resolved).mapNotNull {a->val source=repo.source(a.sourceId);val rights=repo.rights(a.rightsId);if(source!=null && rights!=null)SourcedAssertion(a,source,rights) else null},relationships.mapNotNull {edge->repo.entity(if(edge.fromId==resolved)edge.toId else edge.fromId)?.let {edge to it}},repo.workType(resolved))
+        val related=repo.linked(resolved).mapNotNull {edge->repo.entity(if(edge.fromId==resolved)edge.toId else edge.fromId)?.let {edge to it}}
+        // Related subtype labels come from the same read; no extra store access from the UI.
+        val relatedTypes=related.mapNotNull {(_,linked)->if(linked.kind=="work")repo.workType(linked.id)?.let {linked.id to it}else null}.toMap()
+        DiscoverDetail(entity,repo.identities(resolved),repo.assertions(resolved).mapNotNull {a->val source=repo.source(a.sourceId);val rights=repo.rights(a.rightsId);if(source!=null && rights!=null)SourcedAssertion(a,source,rights) else null},related,repo.workType(resolved),relatedTypes)
     }}
     companion object {const val FRESH_MILLIS=24*60*60*1000L}
 }
 data class SourcedAssertion(val assertion:CatalogueAssertion,val source:CatalogueSource,val rights:CatalogueRights)
 data class DiscoverFilters(val artists:List<CatalogueEntity> = emptyList(),val periods:List<String> = emptyList())
-data class DiscoverDetail(val entity:CatalogueEntity,val identities:List<CatalogueExternalIdentity>,val assertions:List<SourcedAssertion>,val relationships:List<Pair<CatalogueRelationship,CatalogueEntity>>,val workType:String?=null)
+data class DiscoverDetail(val entity:CatalogueEntity,val identities:List<CatalogueExternalIdentity>,val assertions:List<SourcedAssertion>,val relationships:List<Pair<CatalogueRelationship,CatalogueEntity>>,val workType:String?=null,val workTypes:Map<String,String> = emptyMap())
 
 /** History contains opaque entity IDs only, no raw queries; separate from journal/backups. */
 class DiscoverHistory(context:Context,private val preferenceName:String="goldberg-discover-history") {

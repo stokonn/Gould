@@ -85,3 +85,13 @@ Catalogue reads now reject a persisted personal_scope different from the active 
 CataloguePortraits.snapshot resolves image bytes and plain-text attribution from the same verified manifest under the existing portrait mutex. Discover publishes them through one state value. Separate legacy read/credits accessors remain, but the UI cannot combine different refreshed revisions. Approved-license rules and original-byte verification remain unchanged.
 
 Execution evidence is in the newest recovery section and per-source manifests. Earlier c899eb5 full suites/upgrades/process deaths do not verify this newer shared-admission/scope source.
+
+## Revision8 — subtype presentation labels and unnamed-entity placeholders
+
+Each local search page and each landing/related-detail row now carries the accepted work subtype for its own page of results, resolved from the persisted catalogue kind via a per-page `workTypes` map (DAO `workTypes(ids)`), so movements/parts/editions display their real subtype instead of a generic label. This is a read-path presentation projection only: no schema, identity, accepted-assertion or paging contract changes, and unresolved candidates keep their own opaque hint semantics. Detail headlines and filter dropdowns render the same per-page subtype.
+
+A numeric-only legacy creator name (e.g. `87`) is presented as the localized unnamed-entity placeholder (`Unnamed artist`/`Umělec bez jména`) through `CataloguePresentation.unnamed()`. The digit rule applies only to the artist kind, so numeric titles such as `1984` remain verbatim. The stored value is never rewritten; the placeholder is display-only and reversible with a real name.
+
+Verification: JVM `CataloguePresentationTest` (placeholder rule incl. numeric-title preservation), Android `Stage4SearchVerificationTest.searchPagesCarryWorkSubtypesForAccurateRowLabels`, and inspected screenshots in `results/final-screens/` on both APIs in EN/CZ and Ivory/Nocturne at 1.0/1.5 font.
+
+Created by stokonn with love <3

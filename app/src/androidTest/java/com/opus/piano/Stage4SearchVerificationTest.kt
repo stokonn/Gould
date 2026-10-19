@@ -58,6 +58,36 @@ class Stage4SearchVerificationTest {
             assertTrue(runCatching {repo.searchPage("Goldberg",SearchFilter(period="Baroque"),paged.nextCursor)}.isFailure)
         } finally {db.close();context.deleteDatabase(name)}
     }
+    /** Row labels must distinguish movement/part/medley/mashup subtypes without a per-row query. */
+    @Test fun searchPagesCarryWorkSubtypesForAccurateRowLabels()=runBlocking {
+        val name="stage4-subtypes-${id()}";val db=CatalogueDatabase.builder(context,name).build();val repo=CatalogueRepository(db)
+        try {
+            val records=listOf(
+                ProviderRecord("work","301","work","Prelude in C Major",subtype="movement"),
+                ProviderRecord("work","302","work","Canon in D"),
+                ProviderRecord("arrangement","303","arrangement","Canon Jazz Arrangement")
+            )
+            repo.ingest(ProviderResult(ProviderRequest("https://api.openopus.org/fixture","openopus","search"),SourceState.FRESH,records,"1","7".repeat(64)))
+            val movement=repo.providerIdentity("openopus","work","301")!!.entityId
+            val canon=repo.providerIdentity("openopus","work","302")!!.entityId
+            val arrangement=repo.providerIdentity("openopus","arrangement","303")!!.entityId
+            val movementPage=repo.searchPage("prelude c major")
+            assertEquals(listOf(movement),movementPage.items.map {it.id})
+            assertEquals("movement",movementPage.workTypes[movement])
+            val canonPage=repo.searchPage("canon")
+            assertEquals(listOf(canon,arrangement).sorted(),canonPage.items.map {it.id}.sorted())
+            assertEquals("composition",canonPage.workTypes[canon])
+            // Arrangements are their own kind; the subtype map covers only works rows.
+            assertFalse(canonPage.workTypes.containsKey(arrangement))
+            // Provider-independent local continuation keeps carrying subtype labels.
+            val firstPage=repo.searchPage("canon",limit=1)
+            val nextPage=repo.searchPage("canon",cursor=requireNotNull(firstPage.nextCursor),limit=1)
+            assertEquals(1,firstPage.items.size);assertEquals(1,nextPage.items.size)
+            assertNotEquals(firstPage.items.single().id,nextPage.items.single().id)
+            val workPage=listOf(firstPage,nextPage).first {page->page.items.single().kind=="work"}
+            assertEquals("composition",workPage.workTypes[workPage.items.single().id])
+        } finally {db.close();context.deleteDatabase(name)}
+    }
     @Test fun historyIsBoundedOptionalAndIndependentOfJournal() {
         val prefs="stage4-history-${id()}";val history=DiscoverHistory(context,prefs)
         try {

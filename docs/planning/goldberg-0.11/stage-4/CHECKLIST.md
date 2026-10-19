@@ -103,3 +103,16 @@ Stage4 only; accidental Stage1 prompts are superseded. Temporary review worktree
 
 - [x] Current source1ae6a8e/API37 affected runtime matrix26/26 passed13.457s after API26 was stopped. Same current APKs, sequential verification; results/safe-targeted-api37.log.
 - [ ] Final full suites, fresh signed seeded upgrades, actual process-death, UI/accessibility/privacy/performance/storage acceptance on final source; Stage4 INCOMPLETE.
+
+- [x] Two 4D product gaps fixed and regression-tested: per-page workTypes subtype labels (search/landing/detail rows and headline) and localized unnamed-artist placeholder for numeric legacy artist names (artist-kind only; numeric titles preserved). JVM CataloguePresentationTest + Android Stage4SearchVerificationTest subtype test.
+- [x] Frozen candidate: app ac1ad27a5c42ec8f30a306c522943575183e2f5f4d9e41baef8f394d333aa3f4, test 2057f10d07afe9c846266be38939879143598903e57ed89e5f672400900f2344; 97 JVM/0 failures; lint 0 errors/95 warnings; 0.10.1/code 11 and trusted signer unchanged; results/final-source-manifest.json + final-subtype-build.log.
+- [x] API26 full suite OK (143 tests) with device-path fixtures; API37 full suite OK (143 tests).
+- [x] Actual process death all 4 phases PASS on both APIs (final-process-api26.json, final-process-api37.json).
+- [x] Genuine fresh seeded signed 0.10.1/schema8→10 offline upgrades PASS on both APIs with exact persistent-table equality (37 sessions/notes/profile/badges/repertoire/recovery/drafts/preferences retained); virgin API37 baseline AVD created config-only; API26 offline via airplane mode because svc wifi denied.
+- [x] Performance evidence both APIs (final-evidence/): API26 1k 11.97/13.43, 10k 19.83/20.73, 50k 51.98/53.99, journalReady 30.80ms; API37 1k 7.21/11.52, 10k 12.13/16.07, 50k 31.48/32.35, journalReady 12.76ms; single credit reconciled on both.
+- [x] Final UI actually inspected (16 screenshots, final-screens/): subtype labels EN/CZ, unnamed-artist EN/CZ, licensed portrait + CC BY-SA credits, font 1.5 nav wrap, full CZ/Ivory round both APIs.
+- [x] Host gates: migrations/backup/stage3b v5/localization 922 keys/history paging/policy/schemas/whitespace; upgrade-signing PASS; quality-APK cert/zip/artwork PASS (version-progression assertion inapplicable to version-neutral build).
+- [ ] Final CI on the documentation commit head; Wiki/Issue31/Project sync after push.
+- [ ] Stage4 INCOMPLETE until final pushed-HEAD CI is verified and 4A–4F acceptance is recorded; no Stage5/PMP/main merge/tag/release/publication.
+
+Created by stokonn with love <3

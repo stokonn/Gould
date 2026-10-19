@@ -30,6 +30,7 @@ class CatalogueRepository(private val db: CatalogueDatabase) {
     internal suspend fun touchObservation(key:String)=CatalogueObservationCache(db).touch(key)
     suspend fun generation():String=dao.state("generation")?.value ?: "initial"
     internal suspend fun workType(id:String)=dao.workType(id)
+    internal suspend fun workTypes(ids:List<String>)=if(ids.isEmpty())emptyList() else dao.workTypes(ids)
     suspend fun assertions(id:String)=dao.assertions(id)
     suspend fun providerIdentity(provider:String,kind:String,id:String)=dao.identity(provider,kind,id)
     suspend fun identities(id:String)=dao.identities(id)
