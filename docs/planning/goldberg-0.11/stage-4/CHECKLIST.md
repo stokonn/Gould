@@ -42,3 +42,12 @@ Recovered exact72a27cb local/remote state; final WIP CI passed (run39154044750).
 - [ ] Final source/artifact validation, pushed implementation CI and accurate tracking/Wiki.
 
 Earlier progress paragraphs are historical, not current completion claims.4A–4F remain incomplete.
+
+### Paging/cache follow-up (partial checkpoints)
+
+- [x] Explicit provider continuation, opaque process-local bound cursors, replay/concurrency/generation/privacy tests: verified in pushed4891cbd,91 JVM and16 targeted API26 tests.
+- [x] Unresolved candidate/pending-edge/diagnostic200-per-prefix eviction, protected accepted rows and legacy-cache tests: same targeted checkpoint.
+- [x] Expanded initial40-row multi-source bound and dynamic critical-storage reserve:93 JVM/0 failures,19 targeted tests passed on each API; malformed JSON classification fixed without changing the failed assertion.
+- [x] API37 targeted execution of new paging/cache changes:19/19 passed. Final whole-stage acceptance still open.
+
+Immutable accepted source/assertion retention must not be weakened to satisfy cache budgets. See the current recovery ledger for exact source/artifact scopes and failures.

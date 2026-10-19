@@ -1,22 +1,26 @@
 # Stage4 changed paths at resumed WIP checkpoint
 
-Compared with verified Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes original435600c/72a27cb work and resumed implementation/evidence. Owner RELEASE_NOTES.md, private backup files, signing material and generated APKs are excluded.
+Compared with verified Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes original implementation and all resumed source/evidence. Owner RELEASE_NOTES.md, private backups, signing material and generated APKs are excluded. This inventory does not imply every acceptance gate passed.
 
 - `app/src/androidTest/assets/stage4/README.md`
 - `app/src/androidTest/assets/stage4/musicbrainz-arrangement.json`
 - `app/src/androidTest/java/com/opus/piano/Quality092PersistenceTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4CatalogueTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4GraphTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage4ObservationCacheTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage4PagingTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4ProviderCacheTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4SafetyTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4SearchVerificationTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4TransportTest.kt`
 - `app/src/main/java/com/opus/piano/OpusApplication.kt`
 - `app/src/main/java/com/opus/piano/data/CatalogRepository.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/CatalogueBudget.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueCandidates.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueDatabase.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueEdges.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueIngestion.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/CatalogueObservationCache.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CataloguePortraits.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CataloguePresentation.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueRepertoire.kt`
@@ -24,6 +28,7 @@ Compared with verified Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; inclu
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueSearch.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueStorage.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/CatalogueValidation.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/DiscoverPaging.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/DiscoverRepository.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/LocalCatalogueStore.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/providers/CommonsAdapter.kt`
@@ -40,6 +45,7 @@ Compared with verified Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; inclu
 - `app/src/main/java/com/opus/piano/ui/OpusApp.kt`
 - `app/src/main/res/values-cs/strings.xml`
 - `app/src/main/res/values/strings.xml`
+- `app/src/test/java/com/opus/piano/data/catalogue/CatalogueBudgetTest.kt`
 - `app/src/test/java/com/opus/piano/data/catalogue/SearchContractTest.kt`
 - `app/src/test/java/com/opus/piano/data/catalogue/providers/ProviderProjectionTest.kt`
 - `docs/planning/goldberg-0.11/stage-4/API-EVIDENCE.md`
@@ -51,6 +57,7 @@ Compared with verified Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; inclu
 - `docs/planning/goldberg-0.11/stage-4/UI-VERIFICATION.md`
 - `docs/planning/goldberg-0.11/stage-4/probe_providers.py`
 - `docs/planning/goldberg-0.11/stage-4/results/artifact-check.log`
+- `docs/planning/goldberg-0.11/stage-4/results/bounded-search-api26-initial-failure.log`
 - `docs/planning/goldberg-0.11/stage-4/results/cache-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/cache-api37.log`
 - `docs/planning/goldberg-0.11/stage-4/results/checkpoint-artifact-source.json`
@@ -73,10 +80,14 @@ Compared with verified Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; inclu
 - `docs/planning/goldberg-0.11/stage-4/results/installed-ui-api37.json`
 - `docs/planning/goldberg-0.11/stage-4/results/local-checks.json`
 - `docs/planning/goldberg-0.11/stage-4/results/lru-license-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/paging-observation-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/paging-observation-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/paging-observation-source.json`
 - `docs/planning/goldberg-0.11/stage-4/results/performance-checkpoint-api26.json`
 - `docs/planning/goldberg-0.11/stage-4/results/performance-initial-api26.json`
 - `docs/planning/goldberg-0.11/stage-4/results/performance-ui-api37.json`
 - `docs/planning/goldberg-0.11/stage-4/results/period-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/portrait-metadata-probe.json`
 - `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-after_commit-terminated.log`
 - `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-after_commit-verified.log`
 - `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-after_preferences-terminated.log`

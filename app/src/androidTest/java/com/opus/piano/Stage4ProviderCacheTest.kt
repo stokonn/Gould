@@ -50,6 +50,17 @@ class Stage4ProviderCacheTest {
             assertEquals(SourceState.INVALID,empty.fetch(adapter,request).state)
         }finally {directory.deleteRecursively()}
     }
+    @Test fun invalidJsonIsNotRetriedButTransportFailuresRemainUnavailable()=runBlocking {
+        val fast=object:ProviderAdapter by OpenOpusAdapter(){override val intervalMillis=0L}
+        for(bytes in listOf("not JSON".toByteArray(),"[]".toByteArray(),"{\"results\":".toByteArray(),byteArrayOf(123,34,120,34,58,34,0xc3.toByte(),34,125))) {
+            var calls=0
+            val client=ProviderClient(ProviderTransport {calls++;ProviderResponse(200,bytes)},{true})
+            assertEquals(SourceState.INVALID,client.fetch(fast,request).state);assertEquals(1,calls)
+        }
+        var calls=0
+        val client=ProviderClient(ProviderTransport {calls++;throw java.io.IOException("Authored connection failure")},{true})
+        assertEquals(SourceState.UNAVAILABLE,client.fetch(fast,request).state);assertEquals(2,calls)
+    }
     @Test fun projectedCacheIsPersistentPrivateBoundedAndConditionallyRevalidated()=runBlocking {
         val directory=directory();var now=100000L;val cache=FileProviderCache(directory,{now})
         var calls=0;var conditional:String?=null

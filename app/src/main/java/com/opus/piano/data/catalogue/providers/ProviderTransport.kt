@@ -16,10 +16,13 @@ fun interface ProviderTransport { suspend fun get(request:ProviderRequest):Provi
 
 /** Strict bounded JSON, including depth/count/string limits before creating provider objects. */
 object ProviderJson {
-    fun parse(bytes:ByteArray):Map<String,Any?> {
+    fun parse(bytes:ByteArray):Map<String,Any?> = try {decode(bytes)}
+        catch(e:java.io.IOException){throw IllegalArgumentException("Invalid provider JSON encoding or syntax",e)}
+        catch(e:IllegalStateException){throw IllegalArgumentException("Invalid provider JSON structure",e)}
+    private fun decode(bytes:ByteArray):Map<String,Any?> {
         require(bytes.size<=MAX_BYTES)
         var count=0
-        JsonReader(InputStreamReader(ByteArrayInputStream(bytes),Charsets.UTF_8)).use { reader ->
+        JsonReader(InputStreamReader(ByteArrayInputStream(bytes),Charsets.UTF_8.newDecoder().onMalformedInput(java.nio.charset.CodingErrorAction.REPORT).onUnmappableCharacter(java.nio.charset.CodingErrorAction.REPORT))).use { reader ->
             reader.isLenient=false
             fun value(depth:Int):Any? {
                 require(depth<=32 && ++count<=100000)

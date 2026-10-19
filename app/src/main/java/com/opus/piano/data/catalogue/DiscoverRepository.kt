@@ -76,14 +76,14 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
                     try {
                         states[sourceKey(source)]=source
                         if(usable(result.state))result.nextOffset?.let {positions[adapter.id+":"+request.kind]=ProviderPosition(adapter.id,request.kind,it)}
-                        val page=local(query,filter);page.items.forEach {items[it.id]=it}
+                        val page=local(query,filter);page.items.forEach {if(items.size<40 || it.id in items)items[it.id]=it}
                         send(DiscoverSearch(id,page.copy(items=items.values.toList()),orderedSources(states.values),candidates(query,filter)))
                     }finally {emission.unlock()}
                     if(result.state==SourceState.RATE_LIMITED)break
                 }
             }}
         }
-        val page=local(query,filter);page.items.forEach {items[it.id]=it}
+        val page=local(query,filter);page.items.forEach {if(items.size<40 || it.id in items)items[it.id]=it}
         val candidates=candidates(query,filter)
         val frame=DiscoverFrame(DiscoverPaging.binding(query,filter,language,online),id,page.generation,items.keys.lastOrNull(),items.keys.toSet(),candidates.map {it.id}.toSet(),positions.values.toList(),orderedSources(states.values))
         send(finish(query,filter,frame,page.copy(items=items.values.toList()),candidates))

@@ -6,10 +6,16 @@ import java.io.File
 /** Guards cover only the disposable catalogue, never opus.db or external backup paths. */
 class CatalogueStorage(context:Context) {
     private val directory=context.getDatabasePath(CatalogueDatabase.FILENAME).parentFile!!
+    private val criticalBackups=File(context.filesDir,"personal-backups")
     private val media=File(context.cacheDir,"catalogue-stage4")
     data class Usage(val databaseBytes:Long,val mediaBytes:Long,val freeBytes:Long)
     fun usage():Usage=Usage(directory.listFiles()?.filter {it.name==CatalogueDatabase.FILENAME || it.name.startsWith(CatalogueDatabase.FILENAME+".") || it.name.startsWith(CatalogueDatabase.FILENAME+"-")}?.sumOf {it.length()} ?: 0,media.walkTopDown().maxDepth(3).filter {it.isFile}.sumOf {it.length()},directory.usableSpace)
-    fun admits(estimatedBytes:Long):Boolean {val u=usage();return estimatedBytes in 0..MAX_RESPONSE && u.databaseBytes+u.mediaBytes+estimatedBytes<=MAX_TOTAL && u.freeBytes-estimatedBytes>=FREE_RESERVE}
+    fun requiredReserve():Long {
+        val personal=directory.listFiles()?.filter {it.name in setOf("opus.db","opus.db-wal","opus.db-shm","opus.db-journal")}?.sumOf {it.length()} ?: 0L
+        val backups=criticalBackups.listFiles()?.filter {it.isFile}?.sumOf {it.length()} ?: 0L
+        return CatalogueBudget.reserve(personal,backups)
+    }
+    fun admits(estimatedBytes:Long):Boolean {val u=usage();return estimatedBytes in 0..MAX_RESPONSE && u.databaseBytes+u.mediaBytes+estimatedBytes<=MAX_TOTAL && CatalogueBudget.fits(u.freeBytes,estimatedBytes,requiredReserve())}
     fun trimMedia(now:Long=System.currentTimeMillis()) {
         val files=media.listFiles()?.filter {it.isFile}?.sortedBy {it.lastModified()}.orEmpty()
         var size=files.sumOf {it.length()}

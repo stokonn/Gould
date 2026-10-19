@@ -83,6 +83,46 @@ class Stage4PagingTest {
             assertEquals(1,calls.get());assertTrue(repository.landing().items.isNotEmpty())
         }
     }
+    @Test fun multipleEndpointsAppendAtMostFortyAndPageUnseenLocalRowsWithoutRefetch()=runBlocking {
+        environment {store->
+            val multi=object:ProviderAdapter by OpenOpusAdapter() {
+                override val intervalMillis=0L
+                override fun search(query:String,category:String,language:String,offset:Int)=listOf(0,20,40).map {start->
+                    ProviderRequest("https://api.openopus.org/omnisearch/Authored/$start.json",id,"source-$start",offset=start)
+                }
+            }
+            val calls=AtomicInteger()
+            val repository=DiscoverRepository(store,ProviderClient(ProviderTransport {r->calls.incrementAndGet();
+                val rows=JSONArray((1..20).map {n->JSONObject().put("work",JSONObject().put("id",(r.offset+n).toString()).put("title","Authored work ${r.offset+n}"))})
+                ProviderResponse(200,JSONObject().put("status",JSONObject().put("success","true")).put("results",rows).toString().toByteArray())
+            },{true}),{true},adapters=listOf(multi))
+            val emissions=repository.search("Authored",SearchFilter("works"),"en",true).toList()
+            assertTrue(emissions.all {it.page.items.size<=40});assertEquals(40,emissions.last().page.items.size)
+            val last=emissions.last();val next=repository.continueSearch("Authored",SearchFilter("works"),"en",true,last.continuation!!)
+            assertEquals(20,next.page.items.size);assertEquals(3,calls.get());assertNull(next.continuation)
+            assertTrue(last.page.items.map {it.id}.intersect(next.page.items.map {it.id}.toSet()).isEmpty())
+        }
+    }
+    @Test fun invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider()=runBlocking {
+        environment {store->
+            val adapter=object:ProviderAdapter by MusicBrainzAdapter() {override val intervalMillis=0L}
+            val artist=id();val album=id()
+            val repository=DiscoverRepository(store,ProviderClient(ProviderTransport {r->
+                val value=when(r.kind){
+                    "work"->"not JSON"
+                    "artist"->JSONObject().put("artists",JSONArray().put(JSONObject().put("id",artist).put("name","Authored artist"))).toString()
+                    else->JSONObject().put("release-groups",JSONArray().put(JSONObject().put("id",album).put("title","Authored album"))).toString()
+                }
+                ProviderResponse(200,value.toByteArray())
+            },{true}),{true},adapters=listOf(adapter))
+            val result=repository.search("Authored",SearchFilter(),"en",true).toList().last()
+            assertEquals(3,result.sources.size)
+            assertEquals(SourceState.INVALID,result.sources.single {it.requestKind=="work"}.state)
+            assertEquals(SourceState.FRESH,result.sources.single {it.requestKind=="artist"}.state)
+            assertEquals(SourceState.FRESH,result.sources.single {it.requestKind=="release-group"}.state)
+            assertEquals(setOf("artist","album"),result.page.items.map {it.kind}.toSet())
+        }
+    }
     @Test fun opaquePagingStateExpiresAndEvictsOnlyTransientSessions()=runBlocking {
         var time=0L;val paging=DiscoverPaging {time}
         fun frame(query:String)=DiscoverFrame(query,id(),"generation",null,emptySet(),emptySet(),emptyList(),emptyList())

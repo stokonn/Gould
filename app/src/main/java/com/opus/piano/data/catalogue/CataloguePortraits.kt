@@ -14,7 +14,7 @@ import java.net.URL
 import java.security.MessageDigest
 
 /** Explicit tiny portrait requests only. No image URL is used without file-specific rights. */
-class CataloguePortraits(private val directory:File,private val permitted:()->Boolean) {
+class CataloguePortraits(private val directory:File,private val reserveBytes:()->Long={128L*1024*1024},private val permitted:()->Boolean) {
     private fun hash(bytes:ByteArray)=MessageDigest.getInstance("SHA-256").digest(bytes).joinToString(""){"%02x".format(it)}
     private fun key(id:String):String {CatalogueValidation.uuid(id);return id}
     suspend fun download(id:String,metadata:JSONObject):Boolean=withContext(Dispatchers.IO) {
@@ -39,7 +39,7 @@ class CataloguePortraits(private val directory:File,private val permitted:()->Bo
             val sourceHash=MessageDigest.getInstance("SHA-1").digest(bytes).joinToString(""){"%02x".format(it)}
             require(sourceHash==metadata.getString("sha1")) {"Source image revision changed"}
             require(decode(bytes)!=null)
-            directory.mkdirs();require(directory.usableSpace-bytes.size>=128L*1024*1024)
+            directory.mkdirs();require(CatalogueBudget.fits(directory.usableSpace,bytes.size.toLong(),reserveBytes()))
             val revision=hash(bytes);val image=AtomicFile(File(directory,revision+".img"));val stream=image.startWrite()
             try {stream.write(bytes);image.finishWrite(stream)}catch(e:Exception){image.failWrite(stream);throw e}
             val manifest=metadata.put("downloadSha256",revision).put("bytes",bytes.size).put("transformation","Original file; display scaling only, no crop")
@@ -54,7 +54,7 @@ class CataloguePortraits(private val directory:File,private val permitted:()->Bo
             require(manifest.baseFile.length()<=65536)
             val o=JSONObject(manifest.openRead().use {it.bufferedReader().readText()});val digest=o.getString("downloadSha256");require(digest.matches(Regex("[a-f0-9]{64}")))
             val file=File(directory,digest+".img");require(file.length() in 1..MAX_BYTES.toLong())
-            val bytes=file.readBytes();require(hash(bytes)==digest);manifest.baseFile.setLastModified(System.currentTimeMillis());decode(bytes)
+            val bytes=file.readBytes();require(hash(bytes)==digest);val now=System.currentTimeMillis();manifest.baseFile.setLastModified(now);file.setLastModified(now);decode(bytes)
         }catch(e:CancellationException){throw e}catch(_:Exception){null}
     }
     suspend fun credits(id:String):JSONObject?=withContext(Dispatchers.IO) {

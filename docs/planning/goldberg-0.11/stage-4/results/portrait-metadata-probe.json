@@ -1,0 +1,43 @@
+{
+  "scope": "One explicit public portrait-metadata probe; no identity mapping and no image download",
+  "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2&maxlag=5&prop=imageinfo&iiprop=url%7Csha1%7Csize%7Cmime%7Ctimestamp%7Cextmetadata&titles=File%3ASteve+Reich.jpg",
+  "http": 200,
+  "retryAfter": null,
+  "bytes": 7291,
+  "error": null,
+  "state": "metadata_only_not_adapter_verified",
+  "sha256": "2afeb8690bef25cd5e50b6929dd1e3e2d7c025284330fc34ed38c75b257213f0",
+  "info": {
+    "descriptionurl": "https://commons.wikimedia.org/wiki/File:Steve_Reich.jpg",
+    "sha1": "153ea67b261690c823bd6d4f3ae5a1e4c279e136",
+    "size": 118574,
+    "width": 600,
+    "height": 502,
+    "mime": "image/jpeg",
+    "timestamp": "2009-03-01T10:38:47Z"
+  },
+  "rights": {
+    "Artist": {
+      "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/45093297@N00\">Ian Oliver</a>",
+      "source": "commons-desc-page"
+    },
+    "Credit": {
+      "value": "originally posted to <b><a href=\"//commons.wikimedia.org/wiki/Flickr\" class=\"mw-redirect\" title=\"Flickr\">Flickr</a></b> as <a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/45093297@N00/237579915\">Steve Reich</a>",
+      "source": "commons-desc-page"
+    },
+    "LicenseShortName": {
+      "value": "CC BY 2.0",
+      "source": "commons-desc-page",
+      "hidden": ""
+    },
+    "LicenseUrl": {
+      "value": "https://creativecommons.org/licenses/by/2.0",
+      "source": "commons-desc-page"
+    },
+    "Restrictions": {
+      "value": "",
+      "source": "commons-desc-page",
+      "hidden": ""
+    }
+  }
+}

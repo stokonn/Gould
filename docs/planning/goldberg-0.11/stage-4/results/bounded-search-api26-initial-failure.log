@@ -1,0 +1,323 @@
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+com.opus.piano.Stage4PagingTest:
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+Error in invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider(com.opus.piano.Stage4PagingTest):
+java.lang.AssertionError: expected:<INVALID> but was:<UNAVAILABLE>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.opus.piano.Stage4PagingTest$invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider$1$1.invokeSuspend(Stage4PagingTest.kt:120)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:28)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:99)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:46)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.opus.piano.Stage4PagingTest.invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider(Stage4PagingTest.kt:106)
+
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: expected:<INVALID> but was:<UNAVAILABLE>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.opus.piano.Stage4PagingTest$invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider$1$1.invokeSuspend(Stage4PagingTest.kt:120)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:28)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:99)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:46)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.opus.piano.Stage4PagingTest.invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider(Stage4PagingTest.kt:106)
+
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=providerContinuationReplaysWithoutDuplicatesAndRejectsOtherQueryLanguageCategoryOrGeneration
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=providerContinuationReplaysWithoutDuplicatesAndRejectsOtherQueryLanguageCategoryOrGeneration
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=multipleEndpointsAppendAtMostFortyAndPageUnseenLocalRowsWithoutRefetch
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=multipleEndpointsAppendAtMostFortyAndPageUnseenLocalRowsWithoutRefetch
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=externalGenerationChangeRejectsBeforeSendingProviderQuery
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=externalGenerationChangeRejectsBeforeSendingProviderQuery
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=revokedNetworkPolicyNeverSendsContinuation
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=revokedNetworkPolicyNeverSendsContinuation
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=localPagingAndConcurrentContinuationStayBoundedAndNetworkFree
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=localPagingAndConcurrentContinuationStayBoundedAndNetworkFree
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=opaquePagingStateExpiresAndEvictsOnlyTransientSessions
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=opaquePagingStateExpiresAndEvictsOnlyTransientSessions
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4PagingTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+com.opus.piano.Stage4ProviderCacheTest:
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=noStoreDoesNotPersistAndNoCacheRequiresRevalidation
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=noStoreDoesNotPersistAndNoCacheRequiresRevalidation
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=failedRefreshRetainsAcceptedRevisionAndHonorsBackoff
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=failedRefreshRetainsAcceptedRevisionAndHonorsBackoff
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=invalidRightsAndJsonErrorsNeverBecomeSuccessfulEmptyContent
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=invalidRightsAndJsonErrorsNeverBecomeSuccessfulEmptyContent
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=corruptCacheIsDisposableAndDoesNotHideValidProviderData
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=corruptCacheIsDisposableAndDoesNotHideValidProviderData
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=legacyCacheForcesUnconditionalRefreshAndRejectsUnsolicitedNotModified
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=legacyCacheForcesUnconditionalRefreshAndRejectsUnsolicitedNotModified
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=waitingSuccessorCanTakeOverCancelledOwnerExactlyOnce
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=waitingSuccessorCanTakeOverCancelledOwnerExactlyOnce
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=concurrentCallsCoalesceAndCancelledOwnerDoesNotPoisonLaterRequests
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=concurrentCallsCoalesceAndCancelledOwnerDoesNotPoisonLaterRequests
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=projectedCacheIsPersistentPrivateBoundedAndConditionallyRevalidated
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=projectedCacheIsPersistentPrivateBoundedAndConditionallyRevalidated
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ProviderCacheTest
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+com.opus.piano.Stage4ObservationCacheTest:
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=legacyRowsAreBoundedAndEvictionCountsSaturateWithoutOverflow
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ObservationCacheTest
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=legacyRowsAreBoundedAndEvictionCountsSaturateWithoutOverflow
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ObservationCacheTest
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=leastRecentlyAccessedObservationsEvictWithoutTouchingAcceptedRows
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ObservationCacheTest
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=leastRecentlyAccessedObservationsEvictWithoutTouchingAcceptedRows
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ObservationCacheTest
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=protectedPrefixesAndOversizedValuesCannotEnterEvictionPath
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ObservationCacheTest
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: numtests=18
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: test=protectedPrefixesAndOversizedValuesCannotEnterEvictionPath
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage4ObservationCacheTest
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 9.671
+There was 1 failure:
+1) invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider(com.opus.piano.Stage4PagingTest)
+java.lang.AssertionError: expected:<INVALID> but was:<UNAVAILABLE>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.opus.piano.Stage4PagingTest$invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider$1$1.invokeSuspend(Stage4PagingTest.kt:120)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:28)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:99)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:46)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.opus.piano.Stage4PagingTest.invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider(Stage4PagingTest.kt:106)
+
+FAILURES!!!
+Tests run: 18,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
