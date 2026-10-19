@@ -18,9 +18,7 @@ import com.opus.piano.data.*
 
 @OptIn(ExperimentalLayoutApi::class, androidx.compose.foundation.ExperimentalFoundationApi::class)
 @Composable internal fun RepertoireScreen(state: LibraryState, catalog: CatalogSnapshot, model: OpusViewModel, explore: () -> Unit, detail: (Long) -> Unit, profile: ProfileViewModel, composerPage:(String)->Unit, catalogModel:CatalogViewModel, workPage:(String)->Unit) {
-    LaunchedEffect(Unit) {catalogModel.startBrowsing()}
-    val browse by catalogModel.browse.collectAsState()
-    val results by catalogModel.results.collectAsState()
+    val results by catalogModel.savedResults.collectAsState()
     val adding by catalogModel.adding.collectAsState()
     var mine by rememberSaveable {mutableStateOf(false)}
     var limit by rememberSaveable {mutableIntStateOf(40)}
@@ -32,6 +30,7 @@ import com.opus.piano.data.*
     var editor by rememberSaveable { mutableStateOf(false) }
     var deleting by remember { mutableStateOf<Piece?>(null) }
     var query by rememberSaveable { mutableStateOf("") }
+    LaunchedEffect(query) {catalogModel.filterSaved(query)}
     var difficulty by rememberSaveable {mutableStateOf("All")}
     var status by rememberSaveable { mutableStateOf("All") }
     var composer by rememberSaveable { mutableStateOf("All") }
@@ -59,7 +58,7 @@ import com.opus.piano.data.*
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item {EditorialHeader(L.s(R.string.label_repertoire))}
         stickyHeader { Surface(color=MaterialTheme.colorScheme.background) { Row(Modifier.fillMaxWidth().padding(bottom=8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {
-            OutlinedTextField(query, { query = it; catalogModel.query(it); limit=40 }, Modifier.weight(1f), label = { Text(L.s(R.string.ui101_search),maxLines=1,overflow=TextOverflow.Ellipsis) }, leadingIcon = { Icon(Icons.Outlined.Search, null) }, singleLine = true,shape=androidx.compose.foundation.shape.RoundedCornerShape(14.dp))
+            OutlinedTextField(query, { query = it; limit=40 }, Modifier.weight(1f), label = { Text(L.s(R.string.ui101_search),maxLines=1,overflow=TextOverflow.Ellipsis) }, leadingIcon = { Icon(Icons.Outlined.Search, null) }, singleLine = true,shape=androidx.compose.foundation.shape.RoundedCornerShape(14.dp))
             Box { IconButton(onClick={addMenu=true}) { Icon(Icons.Outlined.Add,L.s(R.string.msg_add_piece_2cfc)) }
                 DropdownMenu(addMenu,{addMenu=false}) {
                     DropdownMenuItem(text={Text(L.s(R.string.msg_discover_in_catalogue_28f0))},onClick={addMenu=false;explore()})
@@ -67,6 +66,7 @@ import com.opus.piano.data.*
                 }
             }
         } } }
+        item {Text(L.s(R.string.repertoire_saved_search),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
         item {
             FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
                 FilterChip(!mine,{mine=false},label={Text(L.fixed("All"))},shape=androidx.compose.foundation.shape.RoundedCornerShape(14.dp))
@@ -91,7 +91,7 @@ import com.opus.piano.data.*
                 Choice(L.s(R.string.msg_era_f37a), options(eras.values.toList()), era, translateOptions=false) { era = it }
                 Choice(L.s(R.string.msg_instrument_f05f), options(state.pieces.map { it.instrument }), instrument, translateOptions=false) { instrument = it }
                 Choice(L.s(R.string.msg_genre_2aa3), options(genres.values.toList()), genre, translateOptions=false) { genre = it }
-                JournalTextButton(onClick = { difficulty="All"; status = "All"; composer = "All"; era = "All"; instrument = "All"; genre = "All"; query = "";catalogModel.query("");limit=40 }) { Text(L.s(R.string.msg_clear_filters_4122)) }
+                JournalTextButton(onClick = { difficulty="All"; status = "All"; composer = "All"; era = "All"; instrument = "All"; genre = "All"; query = "";limit=40 }) { Text(L.s(R.string.msg_clear_filters_4122)) }
             }
         }
         if(favorites.isNotEmpty()) item { FavoriteComposerStrip(catalog,favorites,composerPage,profile::favoriteComposer) }
@@ -120,9 +120,6 @@ import com.opus.piano.data.*
             }
         }
         if(!mine) {
-            if(browse.loading) item {LinearProgressIndicator(Modifier.fillMaxWidth())}
-            browse.error?.let {message->item {CatalogFeedback(message,catalogModel::refreshSearch)}}
-            browse.warning?.let {message->item {CatalogFeedback(message,catalogModel::refreshSearch)}}
             val browsingWorks=if(query.isBlank() && (composer!="All" || era!="All" || genre!="All")) catalog.works else results.works
             val visibleComposers=if(difficulty=="All" && status=="All" && instrument=="All" && genre=="All") results.composers.filter {author->
                 (composer=="All" || catalogText(author.name)==catalogText(composer)) && (era=="All" || catalogText(author.epoch)==catalogText(era))
@@ -145,10 +142,10 @@ import com.opus.piano.data.*
                     }
                 }
             }
-            if(!browse.loading && pieces.isEmpty() && available.isEmpty() && visibleComposers.isEmpty()) item {
+            if(pieces.isEmpty() && available.isEmpty() && visibleComposers.isEmpty()) item {
                 JournalEmpty(L.s(R.string.msg_no_matching_compositions_391a),L.s(R.string.msg_try_a_different_title_composer_or_catalogue_16ea))
             }
-            if(browse.next!=null) item {JournalSecondaryButton(onClick=catalogModel::nextPage,enabled=!browse.loading) {Text(L.s(R.string.msg_discover_more_results_f817))}}
+            item {JournalTextButton(onClick=explore) {Text(L.s(R.string.msg_discover_in_catalogue_28f0))}}
         }
 
     }

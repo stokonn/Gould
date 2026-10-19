@@ -24,7 +24,7 @@ class CatalogViewModel(val repository: CatalogRepository, private val saved: Sav
     val snapshot = repository.snapshot.stateIn(viewModelScope, SharingStarted.Eagerly, CatalogSnapshot(emptyList(), emptyList()))
     private val _browse = MutableStateFlow(CatalogBrowseState(query = saved["catalogQuery"] ?: ""))
     val browse = _browse.asStateFlow()
-    val results = combine(snapshot, browse.map { it.activeQuery }.distinctUntilChanged()) { data, query ->
+    private fun matching(query:Flow<String>) = combine(snapshot, query.distinctUntilChanged()) { data, query ->
         withContext(Dispatchers.Default) {
             val tokens = catalogText(query).split(' ').filter { it.isNotBlank() }
             val composersById = data.composers.associateBy { it.id }
@@ -37,6 +37,11 @@ class CatalogViewModel(val repository: CatalogRepository, private val saved: Sav
             )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), CatalogResults())
+    val results=matching(browse.map {it.activeQuery})
+    private val savedQuery=MutableStateFlow("")
+    val savedResults=matching(savedQuery)
+    /** Personal repertoire filtering never enters the online query or SavedStateHandle. */
+    fun filterSaved(value:String) {savedQuery.value=value}
     private val _composer = MutableStateFlow(ComposerPageState())
     val composer = _composer.asStateFlow()
     private val _work = MutableStateFlow(WorkPageState())

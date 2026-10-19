@@ -1,0 +1,57 @@
+{
+  "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2&maxlag=5&prop=imageinfo&iiprop=url%7Csha1%7Csize%7Cmime%7Ctimestamp%7Cextmetadata&titles=File%3APortrait+of+Chinese+music+composer+Hwang+Yau-tai.jpg",
+  "http": 200,
+  "retryAfter": null,
+  "imageDownloaded": false,
+  "bytes": 2237,
+  "error": null,
+  "metadata": [
+    {
+      "pageid": 61645445,
+      "ns": 6,
+      "title": "File:Portrait of Chinese music composer Hwang Yau-tai.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "timestamp": "2017-08-13T00:31:58Z",
+          "size": 472297,
+          "width": 1764,
+          "height": 1152,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Portrait_of_Chinese_music_composer_Hwang_Yau-tai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Portrait_of_Chinese_music_composer_Hwang_Yau-tai.jpg",
+          "sha1": "79ee16d1d6192e6f24687f59d26a5dd3ab922fab",
+          "extmetadata": {
+            "ObjectName": {
+              "value": "Portrait of Chinese music composer Hwang Yau-tai"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>"
+            },
+            "Artist": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:Edmunddantes\" title=\"User:Edmunddantes\">Nancy Wong</a>"
+            },
+            "LicenseShortName": {
+              "value": "CC BY-SA 4.0"
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution-Share Alike 4.0"
+            },
+            "AttributionRequired": {
+              "value": "true"
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by-sa/4.0"
+            },
+            "Copyrighted": {
+              "value": "True"
+            },
+            "Restrictions": {
+              "value": ""
+            }
+          },
+          "mime": "image/jpeg"
+        }
+      ]
+    }
+  ]
+}

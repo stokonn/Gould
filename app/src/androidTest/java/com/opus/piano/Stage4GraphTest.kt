@@ -89,4 +89,19 @@ class Stage4GraphTest {
         assertFalse(ListeningDestination.accepts("https://user:password@open.spotify.com/track/1234567890123456789012","recording"))
         assertFalse(ListeningDestination.accepts("http://open.spotify.com/track/1234567890123456789012","recording"))
     }
+    @Test fun newRelationshipUsesItsOwnObservationRatherThanTheOriginalIdentitySource()=runBlocking {
+        val name="stage4-edge-source-${id()}";val db=CatalogueDatabase.builder(context,name).build();val repo=CatalogueRepository(db)
+        try {
+            val recording=ProviderRecord("recording",id(),"recording","Authored recording")
+            val work=ProviderRecord("work",id(),"work","Authored work")
+            val request=ProviderRequest("https://musicbrainz.org/ws/2/recording/${recording.externalId}","musicbrainz","recording",recording.externalId)
+            repo.ingest(ProviderResult(request,SourceState.FRESH,listOf(recording,work),"1","a".repeat(64)))
+            val edge=ProviderEdge("performance",ProviderReference("recording",recording.externalId,"recording",recording.title),ProviderReference("work",work.externalId,"work",work.title))
+            repo.ingest(ProviderResult(request,SourceState.FRESH,listOf(recording.copy(relationships=listOf(edge))),"2","b".repeat(64)))
+            val local=repo.providerIdentity("musicbrainz","recording",recording.externalId)!!
+            val accepted=repo.linked(local.entityId).single {it.type=="performance"}
+            assertEquals("b".repeat(64),repo.source(accepted.sourceId!!)!!.payloadSha256)
+            assertEquals("a".repeat(64),repo.source(local.sourceId!!)!!.payloadSha256)
+        }finally {db.close();context.deleteDatabase(name)}
+    }
 }

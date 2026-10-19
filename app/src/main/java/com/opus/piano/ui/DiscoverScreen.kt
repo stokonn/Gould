@@ -16,6 +16,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.opus.piano.OpusApplication
@@ -26,12 +27,18 @@ import com.opus.piano.data.catalogue.providers.SourceState
 import kotlinx.coroutines.*
 import org.json.JSONObject
 
+/** Nav-entry memory only. Queries survive detail/Back and recreation, never process storage. */
+internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
+    var query by mutableStateOf("")
+    var online by mutableStateOf(false)
+}
 @Composable internal fun DiscoverScreen(open:(String)->Unit) {
     val app=LocalContext.current.applicationContext as OpusApplication
     // Raw catalogue queries are transient; exclude them from persisted saved state.
-    var query by remember {mutableStateOf("")}
+    val session:DiscoverSearchSession=androidx.lifecycle.viewmodel.compose.viewModel()
+    val query=session.query
     var active by rememberSaveable {mutableStateOf(false)}
-    var online by remember {mutableStateOf(false)}
+    val online=session.online
     var category by rememberSaveable {mutableStateOf("all")}
     var artistId by rememberSaveable {mutableStateOf<String?>(null)}
     var period by rememberSaveable {mutableStateOf<String?>(null)}
@@ -81,9 +88,9 @@ import org.json.JSONObject
     }
     LazyColumn(contentPadding=PaddingValues(20.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {
         item {Heading(L.s(R.string.discover),L.s(R.string.discover_explore),L.s(R.string.discover_privacy))}
-        item {OutlinedTextField(query,{query=it;active=true},label={Text(L.s(R.string.discover_search))},singleLine=true,modifier=Modifier.fillMaxWidth())}
+        item {OutlinedTextField(query,{session.query=it;active=true},label={Text(L.s(R.string.discover_search))},singleLine=true,modifier=Modifier.fillMaxWidth())}
         item {Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)) {
-            Checkbox(online,{online=it;active=true});Text(L.s(R.string.discover_online),modifier=Modifier.weight(1f))
+            Checkbox(online,{session.online=it;active=true},modifier=Modifier.semantics {contentDescription=L.s(R.string.discover_online)});Text(L.s(R.string.discover_online),modifier=Modifier.weight(1f))
         }}
         item {Text(L.s(if(app.media.allowed())R.string.discover_network_ready else R.string.discover_offline),style=MaterialTheme.typography.bodySmall)}
         // Wrap categories instead of compressing five text controls at large font sizes.
@@ -189,7 +196,7 @@ import org.json.JSONObject
     }
     LaunchedEffect(id) {
         detail=(app.discover.detail(id) as? CatalogueAccess.Available)?.value;candidate=if(detail==null)app.discover.candidate(id) else null;loaded=true
-        if(detail!=null){withContext(Dispatchers.IO){app.discoverHistory.opened(id)};portrait=app.cataloguePortraits.read(id);portraitCredit=app.cataloguePortraits.credits(id)}
+        if(detail!=null){val canonical=detail!!.entity.id;withContext(Dispatchers.IO){app.discoverHistory.opened(id)};portrait=app.cataloguePortraits.read(canonical);portraitCredit=app.cataloguePortraits.credits(canonical)}
     }
     LazyColumn(contentPadding=PaddingValues(20.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {
         item {TextButton(back){Text(L.s(R.string.discover_back))}}
@@ -207,7 +214,8 @@ import org.json.JSONObject
             portrait?.let {bitmap->item {Image(bitmap.asImageBitmap(),contentDescription=L.s(R.string.discover_portrait_description),modifier=Modifier.fillMaxWidth().heightIn(max=240.dp))}}
             if(portrait!=null && portraitCredit!=null)item {
                 val credit=portraitCredit!!;val metadata=credit.getJSONObject("extmetadata")
-                Text(metadata.getJSONObject("Artist").getString("value")+" · "+metadata.getJSONObject("LicenseShortName").getString("value"),style=MaterialTheme.typography.bodySmall)
+                Text(credit.optString("displayAttribution"),style=MaterialTheme.typography.bodySmall)
+                Text(L.s(R.string.discover_portrait_original),style=MaterialTheme.typography.bodySmall)
                 TextButton({uri.openUri(credit.getString("descriptionurl"))}){Text(L.s(R.string.discover_source_link))}
                 TextButton({uri.openUri(metadata.getJSONObject("LicenseUrl").getString("value"))}){Text(L.s(R.string.discover_license))}
             }
@@ -217,11 +225,11 @@ import org.json.JSONObject
             }
             item {Text(L.s(if(data.identities.any {it.reviewState=="reviewed"})R.string.discover_identity_notice else R.string.discover_candidate),style=MaterialTheme.typography.bodySmall)}
             if(data.entity.kind in setOf("work","arrangement") && data.identities.any {it.reviewState=="reviewed"}) {
-                val parts=data.relationships.filter {it.first.type=="part" && it.first.toId==id}
+                val parts=data.relationships.filter {it.first.type=="part" && it.first.toId==data.entity.id}
                 if(parts.isNotEmpty()) {
                     item {Text(L.s(R.string.discover_parts_choice))}
-                    items(parts,key={"select:"+it.first.id}) {(_,part)->Row {Checkbox(part.id in selection,{checked->selection=if(checked)selection+part.id else selection-part.id});Text(part.title)}}
-                    if(selection.isNotEmpty())item {Row {Checkbox(separate,{separate=it});Text(L.s(R.string.discover_separate))}}
+                    items(parts,key={"select:"+it.first.id}) {(_,part)->Row {Checkbox(part.id in selection,{checked->selection=if(checked)selection+part.id else selection-part.id},modifier=Modifier.semantics {contentDescription=part.title});Text(part.title)}}
+                    if(selection.isNotEmpty())item {Row {Checkbox(separate,{separate=it},modifier=Modifier.semantics {contentDescription=L.s(R.string.discover_separate)});Text(L.s(R.string.discover_separate))}}
                 }
                 item {Button(enabled=!adding,onClick={adding=true;scope.launch {
                     try {
@@ -238,8 +246,9 @@ import org.json.JSONObject
             items(data.relationships,key={"edge:"+it.first.id}) {(edge,entity)->Text(relationLabel(edge.type),style=MaterialTheme.typography.labelSmall);CatalogueRow(entity){open(entity.id)}}
             if(data.assertions.any {it.assertion.field in setOf("wikipedia_title","commons_file")})item {
                 TextButton(onClick={scope.launch {supplementSources=app.discover.supplement(data,language)
-                    val metadata=app.discover.portraitMetadata(id)
-                    if(metadata!=null)try {if(app.cataloguePortraits.download(id,metadata)){portrait=app.cataloguePortraits.read(id);portraitCredit=app.cataloguePortraits.credits(id)};portraitCredit=app.cataloguePortraits.credits(id)}catch(e:CancellationException){throw e}catch(_:Exception){notice=L.s(R.string.discover_portrait_unavailable)}
+                    val canonical=data.entity.id
+                    val metadata=app.discover.portraitMetadata(canonical)
+                    if(metadata!=null)try {if(app.cataloguePortraits.download(canonical,metadata)){portrait=app.cataloguePortraits.read(canonical);portraitCredit=app.cataloguePortraits.credits(canonical)};portraitCredit=app.cataloguePortraits.credits(canonical)}catch(e:CancellationException){throw e}catch(_:Exception){notice=L.s(R.string.discover_portrait_unavailable)}
                     detail=(app.discover.detail(id) as? CatalogueAccess.Available)?.value}}){Text(L.s(R.string.discover_load_encyclopedia))}
             }
             items(supplementSources,key={"supplement:"+it.provider+":"+it.requestKind.orEmpty()}) {Text(it.provider+" · "+it.requestKind.orEmpty().substringAfter(':')+" · "+sourceLabel(it.state))}

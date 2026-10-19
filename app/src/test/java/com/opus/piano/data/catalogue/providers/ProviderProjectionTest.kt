@@ -16,6 +16,10 @@ class ProviderProjectionTest {
         assertEquals(20,request.offset)
         assertEquals(22,mb.nextOffset(request,mapOf("artist-count" to 25,"artist-offset" to 20,"artists" to listOf(mapOf("id" to mbid),mapOf("id" to mbid)))))
         assertTrue(runCatching {mb.nextOffset(request,mapOf("artist-count" to 25,"artist-offset" to 0))}.isFailure)
+        assertEquals(21,mb.nextOffset(request,mapOf("count" to 25,"offset" to 20,"artists" to listOf(mapOf("id" to mbid)))))
+        assertTrue(runCatching {mb.nextOffset(request,mapOf("count" to 25,"offset" to 0))}.isFailure)
+        assertTrue(runCatching {mb.nextOffset(request,mapOf("count" to 25,"artist-count" to 26,"offset" to 20))}.isFailure)
+        assertTrue(runCatching {mb.nextOffset(request,mapOf("count" to 25,"offset" to 20,"artist-offset" to 0))}.isFailure)
         val wd=WikidataAdapter();val candidate=wd.search("Authored","all","cs",3).single()
         assertTrue(candidate.url.contains("continue=3"));assertEquals(6,wd.nextOffset(candidate,mapOf("search-continue" to 6)))
         assertTrue(runCatching {wd.nextOffset(candidate,mapOf("search-continue" to 3.5))}.isFailure)
@@ -66,6 +70,15 @@ class ProviderProjectionTest {
         assertFalse(adapter.approved(meta("Public domain","")));assertFalse(adapter.approved(meta("CC BY-NC 4.0","https://creativecommons.org/licenses/by-nc/4.0/")))
         assertTrue(adapter.approved(meta("CC BY-SA 4.0","https://creativecommons.org/licenses/by-sa/4.0/")))
         assertFalse(adapter.approved(meta("CC BY-SA 4.0","https://creativecommons.org/licenses/by/3.0/")))
+    }
+    @Test fun commonsProjectionRetainsSuppliedAttributionWithoutOpeningTheLicenseAllowlist() {
+        val metadata=mapOf("Artist" to mapOf("value" to "Authored creator","unreviewed" to "BLOCKED"),"ObjectName" to mapOf("value" to "Authored portrait title"),"Credit" to mapOf("value" to "Authored source credit"),"Copyright" to mapOf("value" to "Authored copyright notice"),"UsageTerms" to mapOf("value" to "Attribution-ShareAlike"),"LicenseShortName" to mapOf("value" to "CC BY-SA 4.0"),"LicenseUrl" to mapOf("value" to "https://creativecommons.org/licenses/by-sa/4.0/"),"Unreviewed" to mapOf("value" to "BLOCKED"))
+        val adapter=CommonsAdapter()
+        val root=mapOf("query" to mapOf("pages" to listOf(mapOf("imageinfo" to listOf(mapOf("sha1" to "a".repeat(40),"descriptionurl" to "https://commons.wikimedia.org/wiki/File:Authored.jpg","extmetadata" to metadata))))))
+        val projected=adapter.project(root).toString()
+        for(value in listOf("Authored creator","Authored portrait title","Authored source credit","Authored copyright notice"))assertTrue(value,projected.contains(value))
+        assertFalse(projected.contains("BLOCKED"))
+        assertFalse(adapter.approved(metadata+("LicenseShortName" to mapOf("value" to "CC BY 2.0"))))
     }
     @Test fun wikipediaRequiresBodyBoundRevisionAndLicense() {
         val adapter=WikipediaAdapter();assertFalse(adapter.licensedDocument(mapOf("html" to "<p>text</p>")))

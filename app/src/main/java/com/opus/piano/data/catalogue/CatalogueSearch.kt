@@ -44,15 +44,19 @@ internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFi
     val rank="CASE WHEN EXISTS(SELECT 1 FROM aliases ax WHERE ax.entityId=e.id AND ax.normalized=?) THEN 0 WHEN EXISTS(SELECT 1 FROM aliases ax WHERE ax.entityId=e.id AND ax.normalized LIKE ? ESCAPE '\\') THEN 1 ELSE 2 END"
     args+=normalized;args+="$normalized%"
     var where="e.status='active' AND e.kind IN ($placeholders)"
+    where+=" AND NOT EXISTS(SELECT 1 FROM redirect_revisions rr WHERE rr.sourceId=e.id AND rr.targetId IS NOT NULL AND rr.revision=(SELECT MAX(latest.revision) FROM redirect_revisions latest WHERE latest.sourceId=e.id))"
     args.addAll(filter.kinds)
     if(excluded.isNotEmpty()){where+=" AND e.id NOT IN (${excluded.joinToString(","){"?"}})";args.addAll(excluded.sorted())}
     if(normalized.isNotBlank()) {
-        for(token in normalized.split(' ').filter {it.isNotBlank()}.take(8)) {
+        val matches=normalized.split(' ').filter {it.isNotBlank()}.take(8).map {token->
             val alternatives=if(token.length in 4..40)aliasPrefix(token.take(2)).flatMap {it.split(' ')}.distinct().filter {it!=token && SearchText.near(token,it)}.sorted().take(3) else emptyList()
-            val match=(listOf(token)+alternatives).joinToString(" OR "){CatalogueValidation.query(it)}
-            // Tokens may match different aliases/credits of the same entity. At most8 indexed
-            // intersections and200 prefix rows/token; fuzzy matching never merges identities.
-            where+=" AND e.id IN (SELECT a.entityId FROM alias_fts JOIN aliases a ON a.rowid=alias_fts.rowid WHERE alias_fts MATCH ?)"
+            (listOf(token)+alternatives).joinToString(" OR "){CatalogueValidation.query(it)}
+        }.distinct().map {it to postingCount(it)}.sortedBy {it.second}.map {it.first}
+        for((index,match) in matches.withIndex()) {
+            // Anchor on the smallest FTS postings list. Remaining terms intersect alias rowids
+            // for that entity, preserving matches across different aliases and artist credits.
+            where+=if(index==0)" AND e.id IN (SELECT a.entityId FROM alias_fts JOIN aliases a ON a.rowid=alias_fts.rowid WHERE alias_fts MATCH ?)"
+                else " AND EXISTS(SELECT 1 FROM aliases a WHERE a.entityId=e.id AND a.rowid IN (SELECT rowid FROM alias_fts WHERE alias_fts MATCH ?))"
             args+=match
         }
     }
@@ -65,7 +69,9 @@ internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFi
         where+=" AND (e.id IN (SELECT entityId FROM assertions WHERE field='epoch' AND selected=1 AND valueJson LIKE ? ESCAPE '\\') OR e.id IN (SELECT r.fromId FROM relationships r JOIN assertions a ON a.entityId=r.toId WHERE r.type='credit' AND a.field='epoch' AND a.selected=1 AND a.valueJson LIKE ? ESCAPE '\\'))"
         args+=pattern;args+=pattern
     }
-    var sql="SELECT * FROM (SELECT e.*, $rank AS searchRank FROM entities e WHERE $where)"
+    // For a token query the anchor provides IDs; do not scan every entity of each broad kind.
+    val index=if(normalized.isNotBlank())" INDEXED BY sqlite_autoindex_entities_1" else ""
+    var sql="SELECT * FROM (SELECT e.*, $rank AS searchRank FROM entities e$index WHERE $where)"
     if(after!=null){sql+=" WHERE searchRank > ? OR (searchRank=? AND id>?)";args+=after.lastRank;args+=after.lastRank;args+=after.lastId}
     sql+=" ORDER BY searchRank,id LIMIT ?";args+=limit+1
     val rows=queryEntities(SimpleSQLiteQuery(sql,args.toTypedArray()))

@@ -19,16 +19,13 @@ internal class CatalogueIngestion(private val db:CatalogueDatabase) {
         if(result.state!=SourceState.FRESH)return@withTransaction emptyList()
         require(result.license=="CC0-1.0")
         val repo=CatalogueRepository(db)
-        val sourceKey=SearchText.hash("${result.request.provider}:${result.request.url}:${result.hash}")
-        val previous=dao.state("source:$sourceKey")
-        if(previous!=null)return@withTransaction result.records.mapNotNull {dao.identity(result.request.provider,it.providerKind,it.externalId)?.entityId}
         val recordSources=mutableMapOf<Pair<String,String>,CatalogueSource>()
-        val rights=CatalogueRights(uuid(),result.license,result.licenseUrl,result.request.provider+" metadata","approved")
-        repo.addRights(rights)
+        var acceptedRights:CatalogueRights?=null
+        suspend fun rights():CatalogueRights=acceptedRights ?: CatalogueRights(uuid(),result.license,result.licenseUrl,result.request.provider+" metadata","approved").also {repo.addRights(it);acceptedRights=it}
         val ids=mutableListOf<String>()
         for(record in result.records.take(100)) {
             val musicIdentity=record.fields.singleOrNull {it.field=="verified_musicbrainz_identity"}?.value?.split('/')
-            if(record.classificationPending || result.request.provider=="wikidata" && record.kind=="work" && musicIdentity?.size==2 && dao.identity("musicbrainz",musicIdentity[0],musicIdentity[1])==null) {
+            if(record.classificationPending || result.request.provider=="wikidata" && record.kind=="work" && musicIdentity?.size==2 && dao.identity("musicbrainz",musicIdentity[0],musicIdentity[1])==null && dao.identity("wikidata",record.providerKind,record.externalId)==null) {
                 repo.observeCandidate(result,record);continue
             }
             val source=CatalogueSource(uuid(),result.request.provider,record.providerKind+":"+record.externalId,
@@ -42,6 +39,26 @@ internal class CatalogueIngestion(private val db:CatalogueDatabase) {
             val identity=dao.identity(result.request.provider,record.providerKind,record.externalId)
             val cross=record.fields.singleOrNull {it.field=="verified_musicbrainz_identity"}?.value?.split('/')
             val verifiedCross=if(result.request.provider=="wikidata" && cross?.size==2)dao.identity("musicbrainz",cross[0],cross[1]) else null
+            val originalClaim=identity?.let {dao.assertions(it.entityId,"verified_musicbrainz_identity").firstOrNull {a->a.selected}?.valueJson?.let {raw->JSONObject(raw).optString("value")}}
+            val crossConflict=identity!=null && result.request.provider=="wikidata" && cross?.size==2 && (
+                originalClaim!=null && originalClaim!=cross.joinToString("/") ||
+                verifiedCross!=null && repo.resolve(identity.entityId)?.id!=repo.resolve(verifiedCross.entityId)?.id)
+            if(crossConflict) {
+                // Preserve the contradictory claim as accepted evidence, without retargeting either
+                // identity or applying its labels/credits to the previously accepted entity.
+                val payload=JSONObject().put("value",cross!!.joinToString("/")).put("language","und")
+                    .put("reason","contradictory_cross_identity").put("providerRevision",result.revision)
+                    .put("projectedRecord",JsonProjection.write(mapOf("title" to record.title,"kind" to record.kind,"subtype" to record.subtype,
+                        "fields" to record.fields.map {mapOf("field" to it.field,"value" to it.value,"language" to it.language)},
+                        "aliases" to record.aliases.map {mapOf("language" to it.first,"value" to it.second)},
+                        "credits" to record.credits.map {mapOf("id" to it.id,"name" to it.name,"role" to it.role)},
+                        "relationships" to record.relationships.map {mapOf("type" to it.type,"fromKind" to it.from.providerKind,"fromId" to it.from.externalId,"toKind" to it.to.providerKind,"toId" to it.to.externalId,"position" to it.position,"medium" to it.medium,"role" to it.role)}))).toString()
+                if(!dao.hasAssertionValue(identity!!.entityId,"identity_conflict",observed.id,payload))
+                    repo.addAssertion(CatalogueAssertion(uuid(),identity.entityId,"identity_conflict",payload,observed.id,rights().id,false))
+                repo.observeCandidate(result,record,"contradictory_cross_identity")
+                recordSources.remove(record.providerKind to record.externalId)
+                continue
+            }
             if(verifiedCross!=null && dao.entity(verifiedCross.entityId)?.kind!=record.kind) {
                 repo.observeCandidate(result,record,"typed_identity_conflict");recordSources.remove(record.providerKind to record.externalId);continue
             }
@@ -72,8 +89,8 @@ internal class CatalogueIngestion(private val db:CatalogueDatabase) {
             for(field in fields) {
                 val payload=JSONObject().put("value",field.value).put("language",field.language).put("confidence","provider_assertion").put("reviewState","source_verified").put("providerRevision",result.revision).toString()
                 // First accepted value remains selected; contradictions are retained and visible.
-                val selected=dao.assertions(id,field.field).isEmpty()
-                if(dao.assertions(id,field.field).none {it.sourceId==observed.id})repo.addAssertion(CatalogueAssertion(uuid(),id,field.field,payload,observed.id,rights.id,selected))
+                val selected=!dao.hasAssertion(id,field.field)
+                if(!dao.hasAssertionValue(id,field.field,observed.id,payload))repo.addAssertion(CatalogueAssertion(uuid(),id,field.field,payload,observed.id,rights().id,selected))
             }
             val aliases=record.aliases+listOf("und" to (record.title+" "+record.credits.joinToString(" "){it.name}+" "+record.fields.filter {it.field in setOf("catalogue","catalogue_number","searchterms","subtitle")}.joinToString(" "){it.value}))
             for((language,value) in aliases.distinct())if(value.isNotBlank() && !dao.hasAlias(id,language,value))repo.addAlias(CatalogueAlias(entityId=id,language=language,value=value,normalized=CatalogueValidation.normalized(value)))
@@ -93,8 +110,7 @@ internal class CatalogueIngestion(private val db:CatalogueDatabase) {
                 if(!dao.hasEdge(from,target,"credit"))repo.relate(CatalogueRelationship(uuid(),"credit",from,record.kind,target,"artist",position,role=credit.role,creditedAs=credit.name,sourceId=observed.id))
             }
         }
-        CatalogueEdges(db).ingest(result)
-        dao.state(CatalogueState("source:$sourceKey","accepted"))
+        CatalogueEdges(db).ingest(result.copy(records=result.records.filter {recordSources.containsKey(it.providerKind to it.externalId)}))
         dao.state(CatalogueState("generation",uuid()))
         ids
     }

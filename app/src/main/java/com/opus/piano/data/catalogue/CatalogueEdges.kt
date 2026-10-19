@@ -9,10 +9,11 @@ internal class CatalogueEdges(private val db:CatalogueDatabase) {
     private val dao=db.dao()
     suspend fun ingest(result:ProviderResult) {
         val repo=CatalogueRepository(db)
-        for(edge in result.records.flatMap {it.relationships}.take(100)) {
+        for((record,edge) in result.records.flatMap {record->record.relationships.map {record to it}}.take(100)) {
             fun ref(r:ProviderReference)=JSONObject().put("providerKind",r.providerKind).put("externalId",r.externalId)
             val value=JSONObject().put("provider",result.request.provider).put("from",ref(edge.from)).put("to",ref(edge.to)).put("type",edge.type).put("position",edge.position).put("medium",edge.medium).put("role",edge.role)
                 .put("evidenceHash",result.hash)
+            dao.sourceObservation(result.request.provider,record.providerKind+":"+record.externalId,result.revision+"|sha256="+result.hash)?.let {value.put("sourceId",it.id)}
             val key="pending-edge:"+SearchText.hash(value.toString())
             value.put("observedAt",result.observedAt)
             repo.boundedState("pending-edge:",key,value.toString())
@@ -32,7 +33,7 @@ internal class CatalogueEdges(private val db:CatalogueDatabase) {
             }
             try {
                 db.openHelper.writableDatabase.execSQL("INSERT INTO relationships(id,type,fromId,fromKind,toId,toKind,position,medium,role,creditedAs,sourceId) VALUES(?,?,?,?,?,?,?,?,?,?,?)",
-                    arrayOf<Any?>(UUID.randomUUID().toString(),type,a.id,a.kind,b.id,b.kind,o.getInt("position"),o.getInt("medium"),o.getString("role"),"",fromIdentity.sourceId))
+                    arrayOf<Any?>(UUID.randomUUID().toString(),type,a.id,a.kind,b.id,b.kind,o.getInt("position"),o.getInt("medium"),o.getString("role"),"",o.optString("sourceId").takeIf {it.isNotBlank()} ?: fromIdentity.sourceId))
                 repo.removeState(pending.key)
             } catch(_:android.database.sqlite.SQLiteConstraintException) {
                 // A rejected relation cannot leave behind its tentative subtype promotion.

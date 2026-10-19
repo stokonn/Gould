@@ -826,6 +826,7 @@
   <string name="backup_storage_failed">Backup file could not be written or read. Check free storage and file access. Original recovery copies are retained.</string>
   <string name="backup_validation_failed">Backup could not be processed. Use a valid supported backup up to 32 MiB. No personal data is truncated; original recovery copies are retained.</string>
     <string name="discover">Discover</string>
+    <string name="repertoire_saved_search">Search your repertoire and saved catalogue here. Use Discover for online searches.</string>
     <string name="discover_explore">Explore music</string>
     <string name="discover_privacy">Browse saved music offline. Only an active online catalogue search sends your query to music providers.</string>
     <string name="discover_search">Search names, artists or catalogue numbers</string>
@@ -883,6 +884,7 @@
     <string name="discover_clear_cache">Clear disposable response cache</string>
     <string name="discover_cache_consequences">Clearing responses keeps accepted catalogue metadata, repertoire, practice history and recovery data. A later online action may fetch metadata again.</string>
     <string name="discover_portrait_description">Licensed artist portrait</string>
+    <string name="discover_portrait_original">Original file; scaled for display, without cropping.</string>
     <string name="discover_portrait_unavailable">Portrait unavailable; sourced text and saved metadata remain usable.</string>
     <string name="discover_conflict_notice">Sources contain conflicting metadata. Review the evidence below before treating a value as certain.</string>
     <string name="discover_selection_conflict">This work already has a different saved part selection. Open the existing entry, or explicitly add parts separately.</string>

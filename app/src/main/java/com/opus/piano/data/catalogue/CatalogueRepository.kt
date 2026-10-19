@@ -8,13 +8,20 @@ class CatalogueRepository(private val db: CatalogueDatabase) {
     internal suspend fun ingest(result:com.opus.piano.data.catalogue.providers.ProviderResult)=CatalogueIngestion(db).accept(result)
     internal suspend fun supplement(id:String,result:com.opus.piano.data.catalogue.providers.ProviderResult)=db.withTransaction {
         require(result.license=="CC-BY-SA-4.0" && result.request.provider=="wikipedia" && dao.entity(id)!=null)
-        val key="document:"+id+":"+result.hash
+        val record=result.records.single()
+        val language=record.fields.single {it.field=="biography"}.language
+        require(language in setOf("cs","en"))
+        val recordId="$language:"+result.request.externalId.orEmpty()
+        val revision=record.fields.first {it.field=="article_revision"}.value+"|sha256="+result.hash
+        val key="document:"+id+":"+com.opus.piano.data.catalogue.SearchText.hash("$recordId|$revision|"+record.fields.toString())
         if(dao.state(key)!=null)return@withTransaction
-        val source=CatalogueSource(java.util.UUID.randomUUID().toString(),"wikipedia",result.request.externalId.orEmpty(),result.records.single().fields.first {it.field=="article_revision"}.value,result.hash,result.observedAt,result.request.url)
-        addSource(source)
+        val source=dao.sourceObservation("wikipedia",recordId,revision) ?: CatalogueSource(java.util.UUID.randomUUID().toString(),"wikipedia",recordId,revision,result.hash,result.observedAt,result.request.url).also {addSource(it)}
         val rights=CatalogueRights(java.util.UUID.randomUUID().toString(),result.license,result.licenseUrl,"Wikipedia contributors — "+result.request.url,"approved","Plain-text excerpt, truncated")
         addRights(rights)
-        for(field in result.records.single().fields) addAssertion(CatalogueAssertion(java.util.UUID.randomUUID().toString(),id,field.field,org.json.JSONObject().put("value",field.value).put("language",field.language).toString(),source.id,rights.id,dao.assertions(id,field.field).isEmpty()))
+        for(field in record.fields) {
+            val payload=org.json.JSONObject().put("value",field.value).put("language",field.language).toString()
+            if(!dao.hasAssertionValue(id,field.field,source.id,payload))addAssertion(CatalogueAssertion(java.util.UUID.randomUUID().toString(),id,field.field,payload,source.id,rights.id,!dao.hasAssertion(id,field.field)))
+        }
         dao.state(CatalogueState(key,"ready"))
     }
     suspend fun states(prefix:String,limit:Int=200)=dao.states(prefix.replace("%","").replace("_","")+"%",limit.coerceIn(1,200))
@@ -34,6 +41,7 @@ class CatalogueRepository(private val db: CatalogueDatabase) {
     internal suspend fun aliasPrefix(prefix:String)=dao.aliasPrefix(prefix,prefix+"\uffff")
     internal suspend fun availablePeriods()=dao.availablePeriods().mapNotNull {runCatching {org.json.JSONObject(it).getString("value").takeIf {v->v.isNotBlank() && v.length<=80}}.getOrNull()}.distinct()
     internal suspend fun queryEntities(query:androidx.sqlite.db.SupportSQLiteQuery)=dao.queryEntities(query)
+    internal fun postingCount(match:String):Long=db.openHelper.readableDatabase.query("SELECT COUNT(*) FROM alias_fts WHERE alias_fts MATCH ?",arrayOf(match)).use {it.moveToFirst();it.getLong(0)}
 
     suspend fun entity(id: String): CatalogueEntity? { CatalogueValidation.uuid(id); return dao.entity(id) }
     suspend fun page(kind: String? = null, after: String = "", limit: Int = 40): List<CatalogueEntity> {
@@ -90,7 +98,8 @@ class CatalogueRepository(private val db: CatalogueDatabase) {
         require(row.revision == (previous?.revision ?: 0) + 1)
         require(previous == null || dao.entity(previous.entityId)?.kind == target.kind)
         if (previous != null && previous.entityId != row.entityId) require(row.reviewState == "reviewed")
-        dao.insert(CatalogueIdentityRevision(row.provider,row.providerKind,row.externalId,row.revision,row.entityId,row.evidence,row.reviewState))
+        val evidence=row.evidence+(row.sourceId?.let {"; accepted source:$it"} ?: "")
+        dao.insert(CatalogueIdentityRevision(row.provider,row.providerKind,row.externalId,row.revision,row.entityId,evidence,row.reviewState))
         if(previous == null) dao.insert(row) else dao.updateIdentity(row)
     }
     suspend fun redirect(row: CatalogueRedirect) = db.withTransaction {
@@ -108,11 +117,12 @@ class CatalogueRepository(private val db: CatalogueDatabase) {
             }
         }
         dao.insert(row) // null target is a new, auditable reversal; old evidence remains
+        dao.state(CatalogueState("generation",java.util.UUID.randomUUID().toString()))
     }
     suspend fun resolve(id: String): CatalogueEntity? {
         CatalogueValidation.uuid(id)
         var current = id; val visited = mutableSetOf<String>()
-        repeat(64) {
+        repeat(65) {
             check(visited.add(current))
             val redirect = dao.redirect(current)?.targetId ?: return dao.entity(current)
             current = redirect

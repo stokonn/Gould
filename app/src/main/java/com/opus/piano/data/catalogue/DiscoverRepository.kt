@@ -16,6 +16,12 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
     private val paging=DiscoverPaging(now)
     private fun usable(state:SourceState)=state in setOf(SourceState.FRESH,SourceState.CACHED,SourceState.STALE)
     private suspend fun canStore(bytes:Long=CatalogueStorage.MAX_RESPONSE)=withContext(Dispatchers.IO){storage?.admits(bytes) ?: true}
+    /** Admission and commit share the store lock: parallel providers cannot spend the same space. */
+    private suspend fun <T> intake(block:suspend (CatalogueRepository)->T):CatalogueAccess<T> = store.access {repo->
+        require(storage?.admits(CatalogueStorage.MAX_INTAKE)!=false){"Catalogue storage budget"}
+        currentCoroutineContext().ensureActive()
+        block(repo)
+    }
     suspend fun portraitMetadata(id:String):org.json.JSONObject? = (store.access {it.state("portrait:$id")?.let {value->org.json.JSONObject(value)}} as? CatalogueAccess.Available)?.value
     suspend fun clearResponseCache(){client.clearCache()}
     private suspend fun local(query:String,filter:SearchFilter,cursor:String?=null,excluded:Set<String> = emptySet(),limit:Int=40):CatalogueSearchPage =
@@ -40,14 +46,17 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
             for(candidate in result.candidates.take(3)) {
                 if(canStore(8192))store.access {repo->repo.observeCandidate(result,ProviderRecord("entity",candidate.id,"unknown",candidate.title),"unverified_music_identity")}
                 val typed=client.fetch(adapter,adapter.lookup(candidate.id))
-                if(usable(typed.state) && typed.records.isNotEmpty() && canStore())store.access {it.ingest(typed.copy(state=SourceState.FRESH))}
+                if(usable(typed.state) && typed.records.isNotEmpty()) {
+                    if(intake {it.ingest(typed.copy(state=SourceState.FRESH))} !is CatalogueAccess.Available)
+                        source=combine(source,SearchSource(adapter.id,SourceState.UNAVAILABLE,"storage_budget"))
+                }
                 source=combine(source,SearchSource(adapter.id,typed.state,typed.error,typed.refreshState))
                 if(typed.state==SourceState.RATE_LIMITED)break
             }
         }
         if(usable(result.state)) {
             if(canStore()) {
-                val accepted=store.access {it.ingest(result.copy(state=SourceState.FRESH))}
+                val accepted=intake {it.ingest(result.copy(state=SourceState.FRESH))}
                 if(accepted !is CatalogueAccess.Available)source=SearchSource(adapter.id,SourceState.UNAVAILABLE,"storage")
             } else source=SearchSource(adapter.id,SourceState.UNAVAILABLE,"storage_budget")
         }
@@ -133,22 +142,23 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
             if(cross.size!=2)return null
             val mb=MusicBrainzAdapter();val typed=client.fetch(mb,mb.lookup(cross[0],cross[1]))
             if(!usable(typed.state))return null
-            store.access {repo->repo.ingest(typed.copy(state=SourceState.FRESH));repo.ingest(observed.copy(state=SourceState.FRESH))}
-            return (store.access {it.providerIdentity("musicbrainz",cross[0],cross[1])?.entityId} as? CatalogueAccess.Available)?.value
+            val accepted=intake {repo->repo.ingest(typed.copy(state=SourceState.FRESH));repo.ingest(observed.copy(state=SourceState.FRESH))}
+            if(accepted !is CatalogueAccess.Available)return null
+            return accepted.value.singleOrNull()
         }
         if(candidate.provider!="musicbrainz")return null
         val adapter=MusicBrainzAdapter()
         val result=client.fetch(adapter,adapter.lookup(candidate.providerKind,candidate.externalId))
         if(!usable(result.state))return null
-        store.access {it.ingest(result.copy(state=SourceState.FRESH))}
+        if(intake {it.ingest(result.copy(state=SourceState.FRESH))} !is CatalogueAccess.Available)return null
         return (store.access {it.providerIdentity(candidate.provider,candidate.providerKind,candidate.externalId)?.entityId} as? CatalogueAccess.Available)?.value
     }
     suspend fun refreshMetadata(detail:DiscoverDetail):SearchSource {
         val identity=detail.identities.firstOrNull {it.provider=="musicbrainz"} ?: return SearchSource("musicbrainz",SourceState.MISSING)
         if(!permitted())return SearchSource("musicbrainz",SourceState.UNAVAILABLE,"network_policy")
         val adapter=MusicBrainzAdapter();val result=client.fetch(adapter,adapter.lookup(identity.providerKind,identity.externalId),force=true)
-        val stored=if(usable(result.state))store.access {it.ingest(result.copy(state=SourceState.FRESH))} else null
-        return SearchSource("musicbrainz",if(stored is CatalogueAccess.Unavailable)SourceState.UNAVAILABLE else result.state,result.error)
+        val stored=if(usable(result.state))intake {it.ingest(result.copy(state=SourceState.FRESH))} else null
+        return SearchSource("musicbrainz",if(usable(result.state) && stored !is CatalogueAccess.Available)SourceState.UNAVAILABLE else result.state,if(usable(result.state) && stored !is CatalogueAccess.Available)"storage_budget" else result.error)
     }
     suspend fun supplement(detail:DiscoverDetail,language:String):List<SearchSource> {
         require(language in setOf("cs","en"))
@@ -172,7 +182,7 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
                 if(text.isNotBlank()) {
                     val revision=result.supplement["revision"].toString()
                     val record=ProviderRecord("document",title,"artist",title,listOf(FieldValue("biography",text,selectedLanguage),FieldValue("article_revision",revision),FieldValue("article_revision_url","https://$selectedLanguage.wikipedia.org/w/index.php?oldid=$revision"),FieldValue("article_history","https://$selectedLanguage.wikipedia.org/w/index.php?title=${com.opus.piano.data.encoded(title)}&action=history"),FieldValue("adaptation","Plain-text excerpt; truncated to 2000 characters"),FieldValue("document_requested_language",language),FieldValue("document_fallback_reason",fallbackReason)))
-                    val stored=if(canStore())store.access {it.supplement(detail.entity.id,result.copy(records=listOf(record),license="CC-BY-SA-4.0",licenseUrl="https://creativecommons.org/licenses/by-sa/4.0/"))} else null
+                    val stored=if(canStore())intake {it.supplement(detail.entity.id,result.copy(records=listOf(record),license="CC-BY-SA-4.0",licenseUrl="https://creativecommons.org/licenses/by-sa/4.0/"))} else null
                     if(stored !is CatalogueAccess.Available)states[states.lastIndex]=SearchSource(wiki.id,SourceState.UNAVAILABLE,"storage_budget",requestKind="document:$selectedLanguage")
                     break
                 }
@@ -193,9 +203,10 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
         }
         return states
     }
-    suspend fun detail(id:String)=store.access {repo->repo.entity(id)?.let {entity->
-        val relationships=repo.linked(id)
-        DiscoverDetail(entity,repo.identities(id),repo.assertions(id).mapNotNull {a->val source=repo.source(a.sourceId);val rights=repo.rights(a.rightsId);if(source!=null && rights!=null)SourcedAssertion(a,source,rights) else null},relationships.mapNotNull {edge->repo.entity(if(edge.fromId==id)edge.toId else edge.fromId)?.let {edge to it}},repo.workType(id))
+    suspend fun detail(id:String)=store.access {repo->repo.resolve(id)?.let {entity->
+        val resolved=entity.id
+        val relationships=repo.linked(resolved)
+        DiscoverDetail(entity,repo.identities(resolved),repo.assertions(resolved).mapNotNull {a->val source=repo.source(a.sourceId);val rights=repo.rights(a.rightsId);if(source!=null && rights!=null)SourcedAssertion(a,source,rights) else null},relationships.mapNotNull {edge->repo.entity(if(edge.fromId==resolved)edge.toId else edge.fromId)?.let {edge to it}},repo.workType(resolved))
     }}
     companion object {const val FRESH_MILLIS=24*60*60*1000L}
 }

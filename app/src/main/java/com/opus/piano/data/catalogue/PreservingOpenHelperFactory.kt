@@ -4,6 +4,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.sqlite.db.SupportSQLiteOpenHelper
 import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory
 
+internal class PreservedCatalogueCorruption : android.database.sqlite.SQLiteException("Catalogue generation corrupt; retained for explicit rebuild")
+
 /** Do not let the framework corruption handler delete a catalogue generation implicitly. */
 internal class PreservingOpenHelperFactory : SupportSQLiteOpenHelper.Factory {
     override fun create(configuration: SupportSQLiteOpenHelper.Configuration): SupportSQLiteOpenHelper {
@@ -14,7 +16,7 @@ internal class PreservingOpenHelperFactory : SupportSQLiteOpenHelper.Factory {
             override fun onUpgrade(db: SupportSQLiteDatabase, oldVersion: Int, newVersion: Int) = delegate.onUpgrade(db, oldVersion, newVersion)
             override fun onDowngrade(db: SupportSQLiteDatabase, oldVersion: Int, newVersion: Int) = delegate.onDowngrade(db, oldVersion, newVersion)
             override fun onOpen(db: SupportSQLiteDatabase) = delegate.onOpen(db)
-            override fun onCorruption(db: SupportSQLiteDatabase) { throw android.database.sqlite.SQLiteException("Catalogue generation corrupt; retained for explicit rebuild") }
+            override fun onCorruption(db: SupportSQLiteDatabase) { throw PreservedCatalogueCorruption() }
         }
         return FrameworkSQLiteOpenHelperFactory().create(SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
             .name(configuration.name).callback(callback).build())

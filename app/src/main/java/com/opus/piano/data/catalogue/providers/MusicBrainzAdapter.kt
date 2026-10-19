@@ -13,9 +13,16 @@ class MusicBrainzAdapter : ProviderAdapter {
         return kinds.map {ProviderRequest("https://musicbrainz.org/ws/2/$it/?query=${enc(literal)}&fmt=json&limit=20&offset=$offset",id,it,offset=offset)}
     }
     override fun nextOffset(request:ProviderRequest,root:Map<String,Any?>):Int? {
-        if(request.externalId!=null || !root.containsKey(request.kind+"-count"))return null
-        val count=pageInteger(root[request.kind+"-count"])
-        val offset=root[request.kind+"-offset"]?.let(::pageInteger) ?: request.offset
+        if(request.externalId!=null)return null
+        // Search JSON uses count/offset; typed browse-style envelopes remain compatible.
+        // Contradictory envelopes are invalid rather than selecting a convenient continuation.
+        val counts=listOf("count",request.kind+"-count").filter {root.containsKey(it)}.map {pageInteger(root[it])}.distinct()
+        if(counts.isEmpty())return null
+        require(counts.size==1)
+        val count=counts.single()
+        val offsets=listOf("offset",request.kind+"-offset").filter {root.containsKey(it)}.map {pageInteger(root[it])}.distinct()
+        require(offsets.size<=1)
+        val offset=offsets.singleOrNull() ?: request.offset
         require(offset==request.offset)
         val rows=root.rows(plurals[request.kind] ?: return null).size
         if(rows==0 || offset+rows>=count)return null

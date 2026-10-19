@@ -12,21 +12,29 @@ import java.io.ByteArrayOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
 import java.security.MessageDigest
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 /** Explicit tiny portrait requests only. No image URL is used without file-specific rights. */
-class CataloguePortraits(private val directory:File,private val reserveBytes:()->Long={128L*1024*1024},private val permitted:()->Boolean) {
+class CataloguePortraits(private val directory:File,private val reserveBytes:()->Long={128L*1024*1024},private val connect:(URL)->HttpURLConnection={it.openConnection() as HttpURLConnection},private val permitted:()->Boolean) {
+    private val gate=Mutex()
     private fun hash(bytes:ByteArray)=MessageDigest.getInstance("SHA-256").digest(bytes).joinToString(""){"%02x".format(it)}
     private fun key(id:String):String {CatalogueValidation.uuid(id);return id}
-    suspend fun download(id:String,metadata:JSONObject):Boolean=withContext(Dispatchers.IO) {
+    suspend fun download(id:String,metadata:JSONObject):Boolean=gate.withLock {downloadOriginal(id,JSONObject(metadata.toString()))}
+    private suspend fun downloadOriginal(id:String,metadata:JSONObject):Boolean=withContext(Dispatchers.IO) {
+        key(id)
+        require(metadata.toString().toByteArray().size<=60000)
         val tree=ProviderJson.parse(metadata.toString().toByteArray())
         @Suppress("UNCHECKED_CAST") val rights=tree["extmetadata"] as? Map<String,Any?> ?: return@withContext false
         require(CommonsAdapter().approved(rights))
         require(metadata.optString("sha1").matches(Regex("[0-9a-f]{40}")) && metadata.optString("timestamp").isNotBlank())
-        val source=URL(metadata.getString("descriptionurl"));require(source.protocol=="https" && source.host=="commons.wikimedia.org" && source.path.startsWith("/wiki/File:"))
+        val source=URL(metadata.getString("descriptionurl"));require(source.protocol=="https" && source.host=="commons.wikimedia.org" && source.port in setOf(-1,443) && source.userInfo==null && source.path.startsWith("/wiki/File:"))
         require(metadata.optLong("size") in 1..MAX_BYTES.toLong())
+        val width=metadata.getLong("width");val height=metadata.getLong("height")
+        require(width>0 && height>0 && height<=1024*1024 && width<=1024*1024/height)
         val url=URL(metadata.getString("url"));require(url.protocol=="https" && url.host=="upload.wikimedia.org" && url.port in setOf(-1,443) && url.userInfo==null)
         if(!permitted())return@withContext false
-        val connection=url.openConnection() as HttpURLConnection
+        val connection=connect(url)
         val cancellation=CoroutineScope(currentCoroutineContext()).launch(Dispatchers.IO,start=CoroutineStart.UNDISPATCHED){try{awaitCancellation()}finally{connection.disconnect()}}
         try {
             connection.connectTimeout=10000;connection.readTimeout=10000;connection.instanceFollowRedirects=false
@@ -36,9 +44,14 @@ class CataloguePortraits(private val directory:File,private val reserveBytes:()-
             val out=ByteArrayOutputStream()
             connection.inputStream.use {input->val buffer=ByteArray(8192);while(true){currentCoroutineContext().ensureActive();check(permitted());val read=input.read(buffer);if(read<0)break;require(out.size()+read<=MAX_BYTES);out.write(buffer,0,read)}}
             val bytes=out.toByteArray()
+            require(bytes.size.toLong()==metadata.getLong("size")) {"Source image length changed"}
             val sourceHash=MessageDigest.getInstance("SHA-1").digest(bytes).joinToString(""){"%02x".format(it)}
             require(sourceHash==metadata.getString("sha1")) {"Source image revision changed"}
-            require(decode(bytes)!=null)
+            val bounds=BitmapFactory.Options().apply {inJustDecodeBounds=true}
+            BitmapFactory.decodeByteArray(bytes,0,bytes.size,bounds)
+            require(bounds.outWidth.toLong()==metadata.getLong("width") && bounds.outHeight.toLong()==metadata.getLong("height") && bounds.outMimeType==metadata.getString("mime"))
+            require(decode(bytes)?.also {it.recycle()}!=null)
+            currentCoroutineContext().ensureActive();check(permitted())
             directory.mkdirs();require(CatalogueBudget.fits(directory.usableSpace,bytes.size.toLong(),reserveBytes()))
             val revision=hash(bytes);val image=AtomicFile(File(directory,revision+".img"));val stream=image.startWrite()
             try {stream.write(bytes);image.finishWrite(stream)}catch(e:Exception){image.failWrite(stream);throw e}
@@ -48,17 +61,30 @@ class CataloguePortraits(private val directory:File,private val reserveBytes:()-
             trim();true
         } finally {cancellation.cancel();connection.disconnect()}
     }
-    suspend fun read(id:String):Bitmap?=withContext(Dispatchers.IO) {
+    suspend fun read(id:String):Bitmap?=gate.withLock {readOriginal(id)}
+    private suspend fun readOriginal(id:String):Bitmap?=withContext(Dispatchers.IO) {
         try {
             val manifest=AtomicFile(File(directory,key(id)+".json"));if(!manifest.baseFile.exists())return@withContext null
             require(manifest.baseFile.length()<=65536)
             val o=JSONObject(manifest.openRead().use {it.bufferedReader().readText()});val digest=o.getString("downloadSha256");require(digest.matches(Regex("[a-f0-9]{64}")))
+            val tree=ProviderJson.parse(o.toString().toByteArray())
+            @Suppress("UNCHECKED_CAST") val rights=tree["extmetadata"] as? Map<String,Any?> ?: return@withContext null
+            require(CommonsAdapter().approved(rights))
             val file=File(directory,digest+".img");require(file.length() in 1..MAX_BYTES.toLong())
             val bytes=file.readBytes();require(hash(bytes)==digest);val now=System.currentTimeMillis();manifest.baseFile.setLastModified(now);file.setLastModified(now);decode(bytes)
         }catch(e:CancellationException){throw e}catch(_:Exception){null}
     }
     suspend fun credits(id:String):JSONObject?=withContext(Dispatchers.IO) {
-        runCatching {val file=File(directory,key(id)+".json");require(file.length() in 1..65536);JSONObject(file.readText())}.getOrNull()
+        runCatching {
+            val file=File(directory,key(id)+".json");require(file.length() in 1..65536)
+            val metadata=JSONObject(file.readText());val fields=metadata.getJSONObject("extmetadata")
+            val display=CommonsAdapter.attributionFields.filter {it !in setOf("LicenseUrl","Restrictions","AttributionRequired","Copyrighted")}.mapNotNull {key->
+                fields.optJSONObject(key)?.optString("value")?.takeIf {it.isNotBlank()}?.let {value->
+                    android.text.Html.fromHtml(value,android.text.Html.FROM_HTML_MODE_LEGACY).toString().trim()
+                }
+            }.filter {it.isNotBlank()}.distinct().joinToString("\n")
+            metadata.put("displayAttribution",display)
+        }.getOrNull()
     }
     private fun trim() {
         val files=directory.listFiles()?.filter {it.isFile && it.name.matches(Regex("(?:[a-f0-9]{64}\\.img|[a-f0-9-]{36}\\.json)"))}?.sortedBy {it.lastModified()}.orEmpty()

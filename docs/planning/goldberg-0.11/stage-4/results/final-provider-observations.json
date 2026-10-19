@@ -1,0 +1,74 @@
+{
+  "scope": "bounded public shape observations; no identity merge or Android transport certification",
+  "requests": [
+    {
+      "provider": "musicbrainz",
+      "url": "https://musicbrainz.org/ws/2/artist/?query=artist%3A%22Johann+Sebastian+Bach%22&fmt=json&limit=1&offset=0",
+      "observedAt": "2026-10-19T04:59:48.219679+00:00",
+      "http": 200,
+      "retryAfter": null,
+      "bytes": 9483,
+      "state": "valid_json_shape_requires_adapter_acceptance",
+      "sha256": "29eca4e9c56efb320667d0d27ea926c026e7c9cb1868556a2b395006909a5065",
+      "count": 3,
+      "artistCount": 1,
+      "typedIds": [
+        "24f1766e-9635-4d58-a4d4-9413f9f98a4c"
+      ]
+    },
+    {
+      "provider": "wikidata",
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&maxlag=5&ids=Q1339&props=labels%7Cclaims&languages=cs%7Cen",
+      "observedAt": "2026-10-19T04:59:49.571641+00:00",
+      "http": 200,
+      "retryAfter": "5",
+      "bytes": 502,
+      "providerError": "maxlag",
+      "state": "rate_limited_stop"
+    },
+    {
+      "provider": "openopus",
+      "url": "https://api.openopus.org/omnisearch/Goldberg/0.json",
+      "observedAt": "2026-10-19T04:59:51.057751+00:00",
+      "http": 200,
+      "retryAfter": null,
+      "bytes": 799,
+      "state": "valid_json_shape_requires_adapter_acceptance",
+      "sha256": "675e1cf221ba62a105d40f5ef12486203dc6ca2adf6cc8c98a7277d7ae9725b2",
+      "resultCount": 2,
+      "statusSuccess": "true"
+    },
+    {
+      "provider": "wikipedia",
+      "url": "https://en.wikipedia.org/w/rest.php/v1/page/Michael_Seltenreich/with_html",
+      "observedAt": "2026-10-19T04:59:52.721762+00:00",
+      "http": 200,
+      "retryAfter": null,
+      "bytes": 67279,
+      "state": "valid_json_shape_requires_adapter_acceptance",
+      "sha256": "bf5d3c0cd029abbee179bd07c856b6f7c8d5d2590b0e48825f022b0d8dc59782",
+      "revision": 1339631819,
+      "license": {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+        "title": "Creative Commons Attribution-Share Alike 4.0"
+      },
+      "htmlBytes": 63099
+    },
+    {
+      "provider": "wikipedia",
+      "url": "https://cs.wikipedia.org/w/rest.php/v1/page/Johann_Sebastian_Bach/with_html",
+      "observedAt": "2026-10-19T04:59:54.983997+00:00",
+      "http": 200,
+      "retryAfter": null,
+      "bytes": 201707,
+      "state": "valid_json_shape_requires_adapter_acceptance",
+      "sha256": "36979773d11ea9f757d50a60bc2eee6c8667b7e18510ee7a006361a0f611e393",
+      "revision": 25698610,
+      "license": {
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/deed.cs",
+        "title": "Creative Commons Attribution-Share Alike 4.0"
+      },
+      "htmlBytes": 189470
+    }
+  ]
+}

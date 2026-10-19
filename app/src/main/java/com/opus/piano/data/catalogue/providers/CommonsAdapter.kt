@@ -12,12 +12,17 @@ class CommonsAdapter : ProviderAdapter {
         if(!approved(metadata))return mapOf("blocked" to true)
         require(info.text("sha1").isNotBlank() && info.text("descriptionurl").startsWith("https://commons.wikimedia.org/wiki/File:"))
         return info.filterKeys {it in setOf("url","descriptionurl","thumburl","sha1","size","width","height","mime","timestamp")} +
-            ("extmetadata" to metadata.filterKeys {it in setOf("Artist","Credit","LicenseShortName","LicenseUrl","Restrictions")})
+            ("extmetadata" to attributionFields.mapNotNull {key->metadata.obj(key).text("value").takeIf {it.isNotBlank()}?.let {key to mapOf("value" to it)}}.toMap())
     }
     fun approved(metadata:Map<String,Any?>):Boolean {
         fun value(key:String)=metadata.obj(key).text("value")
         val license=value("LicenseShortName");val url=value("LicenseUrl").trimEnd('/')
         val expected=mapOf("CC BY 4.0" to "https://creativecommons.org/licenses/by/4.0","CC BY-SA 4.0" to "https://creativecommons.org/licenses/by-sa/4.0","CC BY 3.0" to "https://creativecommons.org/licenses/by/3.0","CC BY-SA 3.0" to "https://creativecommons.org/licenses/by-sa/3.0")
         return value("Artist").isNotBlank() && value("Restrictions").isBlank() && expected[license]==url
+    }
+    companion object {
+        // Retain supplied credit/title/copyright and license notices, excluding unrelated prose
+        // and unreviewed nested keys. The exact license/version allowlist remains unchanged.
+        val attributionFields=listOf("ObjectName","Artist","Credit","Attribution","AttributionRequired","Copyright","Copyrighted","UsageTerms","LicenseShortName","LicenseUrl","Restrictions")
     }
 }

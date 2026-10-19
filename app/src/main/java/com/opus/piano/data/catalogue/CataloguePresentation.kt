@@ -9,7 +9,7 @@ object CataloguePresentation {
         fun preferred(lang:String)=names.filter {JSONObject(it.assertion.valueJson).optString("language")==lang}.maxByOrNull {it.source.retrievedAt}?.let {JSONObject(it.assertion.valueJson).getString("value")}
         return preferred(language) ?: preferred("en") ?: detail.entity.title
     }
-    fun conflicts(detail:DiscoverDetail):List<String> = detail.assertions.filter {it.assertion.field in setOf("catalogue","catalogue_number","durationMillis","birth","death")}.groupBy {it.assertion.field to JSONObject(it.assertion.valueJson).optString("language")}
+    fun conflicts(detail:DiscoverDetail):List<String> = detail.assertions.filter {it.assertion.field=="identity_conflict"}.map {it.assertion.field}.distinct()+detail.assertions.filter {it.assertion.field in setOf("catalogue","catalogue_number","durationMillis","birth","death")}.groupBy {it.assertion.field to JSONObject(it.assertion.valueJson).optString("language")}
         .filterValues {rows->rows.map {SearchText.normalize(JSONObject(it.assertion.valueJson).optString("value"))}.distinct().size>1}.keys.map {it.first}.distinct()
     /** Catalogue-only export; this function cannot access personal history/preferences/recovery. */
     fun correction(detail:DiscoverDetail,field:String,proposed:String,reason:String):String {

@@ -1,0 +1,74 @@
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage3aCatalogueTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.opus.piano.Stage3aCatalogueTest:
+INSTRUMENTATION_STATUS: test=catalogueFailureDeletionRebuildAndJournalOffline
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.opus.piano.Stage3aCatalogueTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: expected:<Available(value=kotlin.Unit)> but was:<Unavailable(reason=local_catalogue_unavailable)>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.opus.piano.Stage3aCatalogueTest$catalogueFailureDeletionRebuildAndJournalOffline$1.invokeSuspend(Stage3aCatalogueTest.kt:132)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(dex-id-1c256f012426238c1ecf8dbb1f86465897a69963:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(dex-id-1c256f012426238c1ecf8dbb1f86465897a69963:1)
+	at com.opus.piano.Stage3aCatalogueTest.catalogueFailureDeletionRebuildAndJournalOffline(Stage3aCatalogueTest.kt:110)
+
+INSTRUMENTATION_STATUS: stream=
+Error in catalogueFailureDeletionRebuildAndJournalOffline(com.opus.piano.Stage3aCatalogueTest):
+java.lang.AssertionError: expected:<Available(value=kotlin.Unit)> but was:<Unavailable(reason=local_catalogue_unavailable)>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.opus.piano.Stage3aCatalogueTest$catalogueFailureDeletionRebuildAndJournalOffline$1.invokeSuspend(Stage3aCatalogueTest.kt:132)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(dex-id-1c256f012426238c1ecf8dbb1f86465897a69963:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(dex-id-1c256f012426238c1ecf8dbb1f86465897a69963:1)
+	at com.opus.piano.Stage3aCatalogueTest.catalogueFailureDeletionRebuildAndJournalOffline(Stage3aCatalogueTest.kt:110)
+
+INSTRUMENTATION_STATUS: test=catalogueFailureDeletionRebuildAndJournalOffline
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 1.212
+There was 1 failure:
+1) catalogueFailureDeletionRebuildAndJournalOffline(com.opus.piano.Stage3aCatalogueTest)
+java.lang.AssertionError: expected:<Available(value=kotlin.Unit)> but was:<Unavailable(reason=local_catalogue_unavailable)>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.opus.piano.Stage3aCatalogueTest$catalogueFailureDeletionRebuildAndJournalOffline$1.invokeSuspend(Stage3aCatalogueTest.kt:132)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:277)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(dex-id-1c256f012426238c1ecf8dbb1f86465897a69963:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(dex-id-1c256f012426238c1ecf8dbb1f86465897a69963:1)
+	at com.opus.piano.Stage3aCatalogueTest.catalogueFailureDeletionRebuildAndJournalOffline(Stage3aCatalogueTest.kt:110)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

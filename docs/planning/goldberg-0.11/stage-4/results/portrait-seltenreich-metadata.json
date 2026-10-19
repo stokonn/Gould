@@ -1,0 +1,57 @@
+{
+  "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2&maxlag=5&prop=imageinfo&iiprop=url%7Csha1%7Csize%7Cmime%7Ctimestamp%7Cextmetadata&titles=File%3AComposer%2C+Michael+Seltenreich+in+Central+Park%2C+New+York.jpg",
+  "http": 200,
+  "retryAfter": null,
+  "imageDownloaded": false,
+  "bytes": 2207,
+  "error": null,
+  "metadata": [
+    {
+      "pageid": 73874018,
+      "ns": 6,
+      "title": "File:Composer, Michael Seltenreich in Central Park, New York.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "timestamp": "2018-10-25T22:12:50Z",
+          "size": 134300,
+          "width": 640,
+          "height": 960,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Composer%2C_Michael_Seltenreich_in_Central_Park%2C_New_York.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Composer,_Michael_Seltenreich_in_Central_Park,_New_York.jpg",
+          "sha1": "1c0582ca5d728ed1f59bb5d132043defeb5fc044",
+          "extmetadata": {
+            "ObjectName": {
+              "value": "Composer, Michael Seltenreich in Central Park, New York"
+            },
+            "Credit": {
+              "value": "Photo shoot commissioned by Michael Seltenreich (in the photo). The author (photographer) waived all rights in writing."
+            },
+            "Artist": {
+              "value": "Dennis Christians"
+            },
+            "LicenseShortName": {
+              "value": "CC BY-SA 4.0"
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution-Share Alike 4.0"
+            },
+            "AttributionRequired": {
+              "value": "true"
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by-sa/4.0"
+            },
+            "Copyrighted": {
+              "value": "True"
+            },
+            "Restrictions": {
+              "value": ""
+            }
+          },
+          "mime": "image/jpeg"
+        }
+      ]
+    }
+  ]
+}

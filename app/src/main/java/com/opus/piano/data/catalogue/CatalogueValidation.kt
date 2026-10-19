@@ -12,6 +12,14 @@ internal object CatalogueValidation {
     fun normalized(value: String): String = Normalizer.normalize(value, Normalizer.Form.NFD)
         .replace(Regex("\\p{M}+"), "").lowercase(Locale.ROOT).replace(Regex("[^\\p{L}\\p{N}]+"), " ").replace(Regex("([a-z])([0-9])"),"$1 $2").trim()
     fun query(value: String): String = normalized(value.take(512)).split(' ').filter { it.isNotBlank() }.take(8).joinToString(" ") { "\"$it*\"" }
+    /** Additive guards also apply to existing schema1 databases; no stored evidence is rewritten. */
+    fun installEvidenceGuards(db:SupportSQLiteDatabase) {
+        listOf("assertions", "documents").forEach { table ->
+            listOf("UPDATE", "DELETE").forEach { event ->
+                db.execSQL("CREATE TRIGGER IF NOT EXISTS immutable_${table}_$event BEFORE $event ON $table BEGIN SELECT RAISE(ABORT,'Immutable catalogue evidence'); END")
+            }
+        }
+    }
     fun install(db: SupportSQLiteDatabase) {
         var guardId = 0
         fun guard(table: String, condition: String) {

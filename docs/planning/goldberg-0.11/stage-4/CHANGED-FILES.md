@@ -1,15 +1,21 @@
 # Stage4 changed paths at resumed WIP checkpoint
 
-Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes all original/resumed source and evidence. Owner RELEASE_NOTES.md, private backups, signing material and generated APKs excluded. This inventory does not imply full acceptance.
+Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes original/resumed source and evidence. Owner RELEASE_NOTES.md, private backups, signing material and generated APKs excluded. This inventory does not imply full acceptance.
 
 - `app/src/androidTest/assets/stage4/README.md`
 - `app/src/androidTest/assets/stage4/musicbrainz-arrangement.json`
+- `app/src/androidTest/java/com/opus/piano/DiscoverNavigationTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Quality092PersistenceTest.kt`
+- `app/src/androidTest/java/com/opus/piano/RepertoireSearchPrivacyTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4CatalogueTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4DocumentTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage4EvidenceLifecycleTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage4ExternalPortraitTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage4ExternalProviderTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4GraphTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4ObservationCacheTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4PagingTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage4PortraitTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4ProviderCacheTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4SafetyTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4SearchVerificationTest.kt`
@@ -32,6 +38,7 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes all o
 - `app/src/main/java/com/opus/piano/data/catalogue/DiscoverPaging.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/DiscoverRepository.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/LocalCatalogueStore.kt`
+- `app/src/main/java/com/opus/piano/data/catalogue/PreservingOpenHelperFactory.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/providers/CommonsAdapter.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/providers/MusicBrainzAdapter.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/providers/OpenOpusAdapter.kt`
@@ -41,9 +48,11 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes all o
 - `app/src/main/java/com/opus/piano/data/catalogue/providers/WikidataAdapter.kt`
 - `app/src/main/java/com/opus/piano/data/catalogue/providers/WikipediaAdapter.kt`
 - `app/src/main/java/com/opus/piano/ui/AppNavigation.kt`
+- `app/src/main/java/com/opus/piano/ui/CatalogViewModel.kt`
 - `app/src/main/java/com/opus/piano/ui/CompositionScreen.kt`
 - `app/src/main/java/com/opus/piano/ui/DiscoverScreen.kt`
 - `app/src/main/java/com/opus/piano/ui/OpusApp.kt`
+- `app/src/main/java/com/opus/piano/ui/RepertoireScreen.kt`
 - `app/src/main/res/values-cs/strings.xml`
 - `app/src/main/res/values/strings.xml`
 - `app/src/test/java/com/opus/piano/data/catalogue/CatalogueBudgetTest.kt`
@@ -53,9 +62,11 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes all o
 - `docs/planning/goldberg-0.11/stage-4/CHANGED-FILES.md`
 - `docs/planning/goldberg-0.11/stage-4/CHECKLIST.md`
 - `docs/planning/goldberg-0.11/stage-4/CONTRACT-EXTENSIONS.md`
+- `docs/planning/goldberg-0.11/stage-4/NETWORK-AUDIT.md`
 - `docs/planning/goldberg-0.11/stage-4/PROGRESS.md`
 - `docs/planning/goldberg-0.11/stage-4/RESUME-CHECKPOINT.md`
 - `docs/planning/goldberg-0.11/stage-4/UI-VERIFICATION.md`
+- `docs/planning/goldberg-0.11/stage-4/probe_final_providers.py`
 - `docs/planning/goldberg-0.11/stage-4/probe_providers.py`
 - `docs/planning/goldberg-0.11/stage-4/results/artifact-check.log`
 - `docs/planning/goldberg-0.11/stage-4/results/bounded-search-api26-initial-failure.log`
@@ -85,6 +96,10 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes all o
 - `docs/planning/goldberg-0.11/stage-4/results/evidence-guard-signing.log`
 - `docs/planning/goldberg-0.11/stage-4/results/evidence-guard-source.json`
 - `docs/planning/goldberg-0.11/stage-4/results/filter-perf-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/final-lifecycle-api37-artifacts.json`
+- `docs/planning/goldberg-0.11/stage-4/results/final-lifecycle-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/final-lifecycle-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/final-provider-observations.json`
 - `docs/planning/goldberg-0.11/stage-4/results/full-before-explicit-test-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/full-before-explicit-test-api37.log`
 - `docs/planning/goldberg-0.11/stage-4/results/full-checkpoint-api26.log`
@@ -93,8 +108,18 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes all o
 - `docs/planning/goldberg-0.11/stage-4/results/graph-api37.log`
 - `docs/planning/goldberg-0.11/stage-4/results/initial-build.log`
 - `docs/planning/goldberg-0.11/stage-4/results/installed-ui-api37.json`
+- `docs/planning/goldberg-0.11/stage-4/results/lifecycle-apk-quality.log`
+- `docs/planning/goldberg-0.11/stage-4/results/lifecycle-initial-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/lifecycle-media-search-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/lifecycle-media-search-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/lifecycle-performance-api26.json`
+- `docs/planning/goldberg-0.11/stage-4/results/lifecycle-signing.log`
+- `docs/planning/goldberg-0.11/stage-4/results/lifecycle-source.json`
 - `docs/planning/goldberg-0.11/stage-4/results/local-checks.json`
 - `docs/planning/goldberg-0.11/stage-4/results/lru-license-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/navigation-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/navigation-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/navigation-source.json`
 - `docs/planning/goldberg-0.11/stage-4/results/paging-observation-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/paging-observation-build.log`
 - `docs/planning/goldberg-0.11/stage-4/results/paging-observation-source.json`
@@ -102,7 +127,11 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes all o
 - `docs/planning/goldberg-0.11/stage-4/results/performance-initial-api26.json`
 - `docs/planning/goldberg-0.11/stage-4/results/performance-ui-api37.json`
 - `docs/planning/goldberg-0.11/stage-4/results/period-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/portrait-allowlist-probe.json`
 - `docs/planning/goldberg-0.11/stage-4/results/portrait-metadata-probe.json`
+- `docs/planning/goldberg-0.11/stage-4/results/portrait-original-verification.json`
+- `docs/planning/goldberg-0.11/stage-4/results/portrait-seltenreich-metadata.json`
+- `docs/planning/goldberg-0.11/stage-4/results/privacy-matrix-api37.log`
 - `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-after_commit-terminated.log`
 - `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-after_commit-verified.log`
 - `docs/planning/goldberg-0.11/stage-4/results/process-api26-result-after_preferences-terminated.log`
@@ -121,8 +150,19 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes all o
 - `docs/planning/goldberg-0.11/stage-4/results/process-api37-result-before_commit-terminated.log`
 - `docs/planning/goldberg-0.11/stage-4/results/process-api37-result-before_commit-verified.log`
 - `docs/planning/goldberg-0.11/stage-4/results/process-api37-result.json`
+- `docs/planning/goldberg-0.11/stage-4/results/provider-native-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/provider-native-api37.log`
 - `docs/planning/goldberg-0.11/stage-4/results/provider-probes.json`
+- `docs/planning/goldberg-0.11/stage-4/results/provider-shape-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/public-portrait-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/public-portrait-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/query-after-api26.json`
+- `docs/planning/goldberg-0.11/stage-4/results/query-before-api26.json`
+- `docs/planning/goldberg-0.11/stage-4/results/rebuild-compatibility-initial-failure-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/rebuild-fixed-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/rebuild-fixed-build.log`
 - `docs/planning/goldberg-0.11/stage-4/results/recovered-worktree.json`
+- `docs/planning/goldberg-0.11/stage-4/results/repertoire-privacy-build.log`
 - `docs/planning/goldberg-0.11/stage-4/results/resume-baseline.json`
 - `docs/planning/goldberg-0.11/stage-4/results/resume-checkpoint-source.json`
 - `docs/planning/goldberg-0.11/stage-4/results/resume-initial-api26.log`
@@ -137,6 +177,12 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes all o
 - `docs/planning/goldberg-0.11/stage-4/results/screenshots/api26-ui-fixed-cs-ivory-work.png`
 - `docs/planning/goldberg-0.11/stage-4/results/screenshots/api26-ui-fixed-cs-large-tabs.png`
 - `docs/planning/goldberg-0.11/stage-4/results/screenshots/api37-ui-en-nocturne-discover.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/lifecycle-api37-en-nocturne-large-credits.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/lifecycle-api37-en-nocturne-large-discover.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/lifecycle-api37-en-nocturne-large-portrait.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/lifecycle-cs-ivory-discover.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/lifecycle-cs-ivory-portrait-credits.png`
+- `docs/planning/goldberg-0.11/stage-4/results/screenshots/lifecycle-cs-ivory-portrait.png`
 - `docs/planning/goldberg-0.11/stage-4/results/search-initial-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/source-files.json`
 - `docs/planning/goldberg-0.11/stage-4/results/sourcefix-api26.log`
@@ -153,6 +199,7 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes all o
 - `docs/planning/goldberg-0.11/stage-4/results/upgrade-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/upgrade-api37.json`
 - `docs/planning/goldberg-0.11/stage-4/results/upgrade-api37.log`
+- `docs/wiki/Developer-Guide.md`
 - `scripts/verify_emulator_upgrade.py`
 
 created by stokonn with love <3

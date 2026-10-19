@@ -34,6 +34,8 @@ internal interface CatalogueDao {
     @Query("SELECT * FROM redirect_revisions WHERE sourceId = :id ORDER BY revision DESC LIMIT 1") suspend fun redirect(id: String): CatalogueRedirect?
     @Query("SELECT * FROM external_identities WHERE provider = :provider AND providerKind = :kind AND externalId = :id") suspend fun identity(provider: String, kind: String, id: String): CatalogueExternalIdentity?
     @Query("SELECT * FROM assertions WHERE entityId=:id AND (:field IS NULL OR field=:field) ORDER BY field, selected DESC, id LIMIT 200") suspend fun assertions(id:String,field:String?=null):List<CatalogueAssertion>
+    @Query("SELECT EXISTS(SELECT 1 FROM assertions WHERE entityId=:id AND field=:field)") suspend fun hasAssertion(id:String,field:String):Boolean
+    @Query("SELECT EXISTS(SELECT 1 FROM assertions WHERE entityId=:id AND field=:field AND sourceId=:source AND valueJson=:value)") suspend fun hasAssertionValue(id:String,field:String,source:String,value:String):Boolean
     @Query("SELECT EXISTS(SELECT 1 FROM aliases WHERE entityId=:id AND language=:language AND value=:value)") suspend fun hasAlias(id:String,language:String,value:String):Boolean
     @Query("SELECT EXISTS(SELECT 1 FROM relationships WHERE fromId=:from AND toId=:to AND type=:type)") suspend fun hasEdge(from:String,to:String,type:String):Boolean
     @Query("SELECT * FROM sources WHERE provider=:provider AND recordId=:recordId AND revision=:revision LIMIT 1") suspend fun sourceObservation(provider:String,recordId:String,revision:String):CatalogueSource?
@@ -64,6 +66,7 @@ abstract class CatalogueDatabase : RoomDatabase() {
                 .openHelperFactory(PreservingOpenHelperFactory())
         private object Validation : Callback() {
             override fun onCreate(db: SupportSQLiteDatabase) { CatalogueValidation.install(db) }
+            override fun onOpen(db: SupportSQLiteDatabase) { CatalogueValidation.installEvidenceGuards(db) }
         }
     }
 }

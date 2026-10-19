@@ -55,3 +55,26 @@ Immutable accepted source/assertion retention must not be weakened to satisfy ca
 - [x] Sourced language fallback/own document revision, approved evidence gate and actual movement detail subtype: five document fixtures passed on both APIs as part of30-test matrix.
 - [x] Rejected relationship preserves composition subtype and accepted identity: adversarial graph regression passed on both APIs.
 - [ ] Final licensed portraits, identity/lifecycle/performance/UI and full artifact acceptance; all4A–4F remain open.
+
+### Final continuation from cb753c3 — implementation checklist
+
+- [ ] Retain every distinct same-field assertion and edition-bound document source; immutable guards on reopen.
+- [ ] Replay pending identities after typed evidence arrives; retain contradictory claims without merging/retargeting identities.
+- [ ] Serialize storage admission with accepted intake; retain accepted ledger through same-journal catalogue rebuild.
+- [ ] Execute new lifecycle/concurrency/cancellation/rebuild regression matrix on both emulator APIs.
+- [ ] Investigate indexed ranking cost at50k, then measure any change on comparable fixtures.
+- [ ] Complete strict portrait attribution/media verification and real UI/accessibility/privacy acceptance.
+- [ ] Execute final full acceptance and exact-HEAD CI; all4A–4F remain open meanwhile.
+
+### Evidence/media/privacy checkpoint verified on both APIs
+
+- [x] Distinct immutable assertions and edition-bound shared document observations; multiple field values/languages retained.
+- [x] Reverse pending-work replay, durable contradictory claims, quarantined graph isolation and exact relationship source evidence.
+- [x] Readable-ledger rebuild/FTS, explicit known-corruption rebuild with original bytes retained, redirects/reversal/cursor invalidation.
+- [x] Separate saved-only Repertoire filtering; zero HTTP and unchanged online query state regression.
+- [x] Original per-file portrait representation/rights/credit checks; actual licensed original verified offline on both APIs.
+- [x] Current JVM94/APKs/lint; targeted API26 53/53 and API37 50/50; external portrait separately1/1 each.
+- [x] Native parsing of captured real MusicBrainz/Open Opus/Wikipedia responses; actual count/offset paging fix with malformed-envelope regressions.
+- [ ] Full final suites, process-death/restart, seeded0.10.1 upgrades against final APK; comprehensive UI/storage/native/startup acceptance and final exact-HEAD CI.
+
+These are partial verified milestones, not completed4A–4F. Current source/artifact identity and limits are in results/lifecycle-source.json. Final-acceptance source may be newer after further UI work.

@@ -830,6 +830,7 @@
   <string name="backup_storage_failed">Soubor zálohy nelze zapsat nebo přečíst. Zkontrolujte volné místo a přístup k souboru. Původní kopie pro obnovu zůstávají zachovány.</string>
   <string name="backup_validation_failed">Zálohu nelze zpracovat. Použijte platnou podporovanou zálohu do 32 MiB. Osobní data se nezkracují; původní kopie pro obnovu zůstávají zachovány.</string>
     <string name="discover">Objevovat</string>
+    <string name="repertoire_saved_search">Zde hledáte v repertoáru a uloženém katalogu. Pro online hledání použijte Objevovat.</string>
     <string name="discover_explore">Objevujte hudbu</string>
     <string name="discover_privacy">Procházejte uloženou hudbu offline. Pouze aktivní online hledání v katalogu odešle dotaz hudebním zdrojům.</string>
     <string name="discover_search">Hledat názvy, umělce nebo katalogová čísla</string>
@@ -887,6 +888,7 @@
     <string name="discover_clear_cache">Vymazat dočasnou mezipaměť odpovědí</string>
     <string name="discover_cache_consequences">Vymazání odpovědí zachová přijatá metadata katalogu, repertoár, historii cvičení a data obnovy. Pozdější online akce může metadata znovu načíst.</string>
     <string name="discover_portrait_description">Licencovaný portrét umělce</string>
+    <string name="discover_portrait_original">Původní soubor; zmenšený pro zobrazení, bez ořezu.</string>
     <string name="discover_portrait_unavailable">Portrét není dostupný; text se zdrojem a uložená metadata zůstávají použitelná.</string>
     <string name="discover_conflict_notice">Zdroje obsahují rozporná metadata. Před přijetím hodnoty jako jisté zkontrolujte níže uvedené důkazy.</string>
     <string name="discover_selection_conflict">Toto dílo již má jiný uložený výběr částí. Otevřete stávající položku, nebo výslovně přidejte části samostatně.</string>

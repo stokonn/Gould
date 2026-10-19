@@ -15,11 +15,11 @@ class CatalogueStorage(context:Context) {
         val backups=criticalBackups.listFiles()?.filter {it.isFile}?.sumOf {it.length()} ?: 0L
         return CatalogueBudget.reserve(personal,backups)
     }
-    fun admits(estimatedBytes:Long):Boolean {val u=usage();return estimatedBytes in 0..MAX_RESPONSE && u.databaseBytes+u.mediaBytes+estimatedBytes<=MAX_TOTAL && CatalogueBudget.fits(u.freeBytes,estimatedBytes,requiredReserve())}
+    fun admits(estimatedBytes:Long):Boolean {val u=usage();return estimatedBytes in 0..MAX_INTAKE && u.databaseBytes<=MAX_TOTAL-u.mediaBytes-estimatedBytes && CatalogueBudget.fits(u.freeBytes,estimatedBytes,requiredReserve())}
     fun trimMedia(now:Long=System.currentTimeMillis()) {
         val files=media.listFiles()?.filter {it.isFile}?.sortedBy {it.lastModified()}.orEmpty()
         var size=files.sumOf {it.length()}
         files.forEach {file->if(size>MAX_MEDIA || now-file.lastModified()>MAX_AGE){val bytes=file.length();if(file.delete())size-=bytes}}
     }
-    companion object {const val MAX_TOTAL=256L*1024*1024;const val MAX_MEDIA=16L*1024*1024;const val MAX_RESPONSE=2L*1024*1024;const val FREE_RESERVE=128L*1024*1024;const val MAX_AGE=30L*86400000}
+    companion object {const val MAX_TOTAL=256L*1024*1024;const val MAX_MEDIA=16L*1024*1024;const val MAX_RESPONSE=2L*1024*1024;const val MAX_INTAKE=8*MAX_RESPONSE;const val FREE_RESERVE=128L*1024*1024;const val MAX_AGE=30L*86400000}
 }

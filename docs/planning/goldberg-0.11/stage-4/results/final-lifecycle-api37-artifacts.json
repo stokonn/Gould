@@ -1,0 +1,14 @@
+{
+  "status": "WIP targeted API37 43/43 before later local-Repertoire privacy change",
+  "artifacts": {
+    "app/build/outputs/apk/debug/app-debug.apk": "c7388b0ce2e353319b65a1a21e3d3f4d2f812b3fed32040de25d0d36da0f4e87",
+    "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk": "12a4db1cba8742789523a70d07fc7da78b772a36e729f7e0afebb66dc188d717"
+  },
+  "log": "final-lifecycle-api37.log",
+  "newerUnverifiedFiles": [
+    "CatalogViewModel.kt",
+    "RepertoireScreen.kt",
+    "RepertoireSearchPrivacyTest.kt",
+    "CZ/EN repertoire_saved_search strings"
+  ]
+}
