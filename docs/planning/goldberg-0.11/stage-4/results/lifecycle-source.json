@@ -223,5 +223,6 @@
     "Wikidata maxlag; MusicBrainz documentation429 stopped probing",
     "Large-font Repertoire navigation label wraps awkwardly",
     "Full UI/localization/accessibility/storage/native-startup acceptance remains open"
-  ]
+  ],
+  "implementationCommit": "ef079507e53e7b71b217bd9434189856c53e6be3"
 }

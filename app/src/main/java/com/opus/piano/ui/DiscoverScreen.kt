@@ -202,6 +202,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
         item {TextButton(back){Text(L.s(R.string.discover_back))}}
         if(!loaded)item {LinearProgressIndicator(Modifier.fillMaxWidth())}
         val data=detail
+        val biography=data?.let {CataloguePresentation.biography(it,language)}
         if(loaded && data==null && candidate!=null)item {
             Text(candidate!!.title,style=MaterialTheme.typography.headlineLarge)
             Text(L.s(R.string.discover_candidate))
@@ -211,6 +212,18 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
         if(loaded && data==null && candidate==null)item {Text(L.s(R.string.discover_missing))}
         if(data!=null) {
             item {Text(CataloguePresentation.title(data,language),style=MaterialTheme.typography.headlineLarge,modifier=Modifier.semantics {heading()});Text(kindLabel(data.workType ?: data.entity.kind))}
+            biography?.let {row->item {
+                val body=JSONObject(row.assertion.valueJson)
+                Text(body.getString("value"),style=MaterialTheme.typography.bodyLarge)
+                Text(L.s(R.string.discover_document_language,body.getString("language")),style=MaterialTheme.typography.bodySmall)
+                if(body.getString("language")!=language)Text(L.s(R.string.discover_biography_fallback),style=MaterialTheme.typography.bodySmall)
+                Text(row.rights.attribution,style=MaterialTheme.typography.bodySmall)
+                TextButton({uri.openUri(row.rights.licenseUrl)}){Text(L.s(R.string.discover_license))}
+                val revision=data.assertions.firstOrNull {it.assertion.sourceId==row.source.id && it.assertion.field=="article_revision_url"}
+                    ?.let {JSONObject(it.assertion.valueJson).optString("value")}
+                    ?.takeIf {it.matches(Regex("https://(en|cs)\\.wikipedia\\.org/w/index\\.php\\?oldid=[0-9]+"))}
+                TextButton({uri.openUri(revision ?: row.source.sourceUrl)}){Text(L.s(R.string.discover_source_link))}
+            }}
             portrait?.let {bitmap->item {Image(bitmap.asImageBitmap(),contentDescription=L.s(R.string.discover_portrait_description),modifier=Modifier.fillMaxWidth().heightIn(max=240.dp))}}
             if(portrait!=null && portraitCredit!=null)item {
                 val credit=portraitCredit!!;val metadata=credit.getJSONObject("extmetadata")
@@ -261,9 +274,14 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
                 Text(L.s(R.string.discover_correction_private),style=MaterialTheme.typography.bodySmall)
                 TextButton(enabled=correctionField.isNotBlank() && correctionValue.isNotBlank() && correctionReason.isNotBlank(),onClick={scope.launch {correctionExport=withContext(Dispatchers.Default){CataloguePresentation.correction(data,correctionField,correctionValue,correctionReason)};exportCorrection.launch("Goldberg-catalogue-correction.json")}}){Text(L.s(R.string.discover_correction_export))}
             }
-            items(data.assertions.filterNot {it.assertion.field.startsWith("claim:")},key={it.assertion.id}) {assertion->
+            items(data.assertions.filterNot {it.assertion.field.startsWith("claim:") || it.assertion.id==biography?.assertion?.id},key={it.assertion.id}) {assertion->
                 val json=runCatching {JSONObject(assertion.assertion.valueJson)}.getOrNull()
-                Text(assertion.assertion.field+": "+(json?.optString("value") ?: assertion.assertion.valueJson),style=MaterialTheme.typography.bodyMedium)
+                val value=when(assertion.assertion.field) {
+                    "document_fallback_reason"->if(json?.optString("value").isNullOrBlank())L.s(R.string.discover_requested_language_available) else L.s(R.string.discover_biography_fallback)
+                    "adaptation"->L.s(R.string.discover_excerpt_notice)
+                    else->json?.optString("value") ?: assertion.assertion.valueJson
+                }
+                Text(fieldLabel(assertion.assertion.field)+": "+value,style=MaterialTheme.typography.bodyMedium)
                 Text(assertion.source.provider+" · "+json?.optString("language").orEmpty()+" · "+assertion.rights.license+" · "+assertion.source.retrievedAt,style=MaterialTheme.typography.bodySmall)
                 if(assertion.assertion.field=="listening_url" && com.opus.piano.data.catalogue.providers.ListeningDestination.accepts(json?.optString("value").orEmpty(),data.entity.kind))
                     TextButton({uri.openUri(json!!.getString("value"))}){Text(L.s(R.string.discover_listen))}
@@ -275,6 +293,19 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     }
 }
 private fun categoryLabel(key:String)=L.s(when(key){"works"->R.string.discover_works;"artists"->R.string.discover_artists;"albums"->R.string.discover_albums;"lists"->R.string.discover_lists;else->R.string.discover_all})
+private fun fieldLabel(key:String)=L.s(when(key) {
+    "title"->R.string.discover_field_title;"alias"->R.string.discover_field_alias;"preferred_name"->R.string.discover_field_name
+    "biography"->R.string.discover_field_biography;"description"->R.string.discover_field_description
+    "wikipedia_title"->R.string.discover_field_article;"commons_file","portrait_source"->R.string.discover_field_portrait
+    "article_revision","wikidata_revision"->R.string.discover_field_revision;"article_revision_url"->R.string.discover_field_revision_link;"article_history"->R.string.discover_field_history
+    "document_requested_language"->R.string.discover_field_requested_language;"document_fallback_reason"->R.string.discover_field_fallback;"adaptation"->R.string.discover_field_adaptation
+    "identity_conflict"->R.string.discover_field_identity_conflict;"verified_musicbrainz_identity"->R.string.discover_field_musicbrainz
+    "catalogue","catalogue_number"->R.string.discover_field_catalogue;"epoch"->R.string.discover_field_period;"genre"->R.string.discover_field_genre
+    "birth"->R.string.discover_field_birth;"death"->R.string.discover_field_death;"durationMillis"->R.string.discover_field_duration
+    "country"->R.string.discover_field_country;"date","first-release-date"->R.string.discover_field_date;"type","primary-type"->R.string.discover_field_type
+    "sort-name"->R.string.discover_field_sort_name;"listening_url"->R.string.discover_listen
+    else->R.string.discover_field_evidence
+})
 private fun kindLabel(key:String)=L.s(when(key){"work","composition"->R.string.discover_work;"movement"->R.string.discover_movement;"part"->R.string.discover_part;"medley"->R.string.discover_medley;"mashup"->R.string.discover_mashup;"arrangement"->R.string.discover_arrangement;"artist"->R.string.discover_artist;"album"->R.string.discover_album;"release"->R.string.discover_release;"recording"->R.string.discover_recording;"collection"->R.string.discover_collection;else->R.string.discover_unknown_entity})
 private fun relationLabel(key:String)=L.s(when(key){"part"->R.string.discover_part_relation;"credit"->R.string.discover_credit_relation;"performance"->R.string.discover_performance_relation;else->R.string.discover_related})
 private fun sourceLabel(state:SourceState)=L.s(when(state){SourceState.FRESH->R.string.discover_fresh;SourceState.CACHED->R.string.discover_cached;SourceState.STALE->R.string.discover_stale;SourceState.RATE_LIMITED->R.string.discover_rate_limited;SourceState.BLOCKED_RIGHTS->R.string.discover_blocked;SourceState.MISSING->R.string.discover_missing;SourceState.INVALID->R.string.discover_invalid;else->R.string.discover_unavailable})

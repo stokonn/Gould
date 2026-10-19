@@ -4,6 +4,16 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 object CataloguePresentation {
+    /** Presentation selects an approved source language, never translates or rewrites evidence. */
+    fun biography(detail:DiscoverDetail,language:String):SourcedAssertion? {
+        require(language in setOf("cs","en"))
+        val rows=detail.assertions.filter {it.assertion.field=="biography" && it.rights.reviewState=="approved" && it.source.provider=="wikipedia"}
+        for(selected in listOf(language,"en").distinct()) {
+            rows.filter {JSONObject(it.assertion.valueJson).optString("language")==selected && JSONObject(it.assertion.valueJson).optString("value").isNotBlank()}
+                .maxWithOrNull(compareBy<SourcedAssertion> {runCatching {java.time.Instant.parse(it.source.retrievedAt).toEpochMilli()}.getOrDefault(Long.MIN_VALUE)}.thenBy {it.source.id}.thenBy {it.assertion.id})?.let {return it}
+        }
+        return null
+    }
     fun title(detail:DiscoverDetail,language:String):String {
         val names=detail.assertions.filter {it.assertion.field=="preferred_name" && it.rights.reviewState=="approved"}
         fun preferred(lang:String)=names.filter {JSONObject(it.assertion.valueJson).optString("language")==lang}.maxByOrNull {it.source.retrievedAt}?.let {JSONObject(it.assertion.valueJson).getString("value")}

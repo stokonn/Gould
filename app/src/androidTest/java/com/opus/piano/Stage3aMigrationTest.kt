@@ -18,6 +18,18 @@ import java.util.UUID
 class Stage3aMigrationTest {
     private val instrumentation = InstrumentationRegistry.getInstrumentation()
     private val context = instrumentation.targetContext
+    /** Discover may already have a real catalogue. Migrations must preserve its durable files,
+     * or leave them absent when absent, rather than relying on an empty application sandbox. */
+    private fun catalogueSnapshot():Map<String,String> {
+        val base=com.opus.piano.data.catalogue.CatalogueDatabase.FILENAME
+        return context.getDatabasePath(base).parentFile!!.listFiles().orEmpty()
+            .filter {it.isFile && (it.name==base || it.name.startsWith("$base.") || it.name.startsWith("$base-")) && !it.name.endsWith("-shm")}
+            .associate {file->
+                val digest=java.security.MessageDigest.getInstance("SHA-256")
+                file.inputStream().use {input->val buffer=ByteArray(8192);while(true){val count=input.read(buffer);if(count<0)break;digest.update(buffer,0,count)}}
+                file.name to digest.digest().joinToString(""){"%02x".format(it)}
+            }
+    }
     private fun seed(name: String, version: Int): Map<String, Pair<List<String>, List<List<String?>>>> {
         val schema = JSONObject(instrumentation.context.assets.open("schemas/$version.json").bufferedReader().use { it.readText() }).getJSONObject("database")
         context.getDatabasePath(name).parentFile!!.mkdirs()
@@ -76,6 +88,7 @@ class Stage3aMigrationTest {
     private fun snapshot(db: SQLiteDatabase,table: String,columns: List<String>) = db.rawQuery("SELECT ${columns.joinToString { "CASE WHEN `$it` IS NULL THEN NULL ELSE typeof(`$it`)||':'||hex(`$it`) END" }} FROM `$table` ORDER BY rowid",null).use { c -> buildList { while(c.moveToNext()) add(columns.indices.map { if(c.isNull(it)) null else c.getString(it) }) } }
     private fun open(name: String) = Room.databaseBuilder(context,OpusDatabase::class.java,name).addMigrations(*OpusDatabase.ALL_MIGRATIONS).addCallback(PersonalCatalogueBridge.callback).build()
     private fun migrate(version: Int) = runBlocking {
+        val catalogueBefore=catalogueSnapshot()
         val name="stage3a-v$version-${UUID.randomUUID()}.db"
         val original=seed(name,version)
         var db=open(name)
@@ -100,7 +113,7 @@ class Stage3aMigrationTest {
             db.close();db=open(name)
             assertEquals(uuid,db.personalCatalogueDao().identity(piece.identityKey)!!.canonicalId)
             assertEquals("do not edit original notes",db.dao().piece(7)!!.notes)
-            assertFalse(context.getDatabasePath("goldberg-catalogue.db").exists())
+            assertEquals("Personal migration must not create or change durable catalogue generations",catalogueBefore,catalogueSnapshot())
         } finally { db.close();context.deleteDatabase(name) }
     }
     @Test fun schema1()=migrate(1)

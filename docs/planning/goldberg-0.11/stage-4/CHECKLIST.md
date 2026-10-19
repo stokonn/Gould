@@ -78,3 +78,14 @@ Immutable accepted source/assertion retention must not be weakened to satisfy ca
 - [ ] Full final suites, process-death/restart, seeded0.10.1 upgrades against final APK; comprehensive UI/storage/native/startup acceptance and final exact-HEAD CI.
 
 These are partial verified milestones, not completed4A–4F. Current source/artifact identity and limits are in results/lifecycle-source.json. Final-acceptance source may be newer after further UI work.
+
+## Latest owner-requested WIP checkpoint — INCOMPLETE
+
+- [x] ef07950 pushed; exact CI39202906405 passed; Wiki synchronized; Issue31/Project2 still In Progress.
+- [x] New UI/biography source built;94 JVM passed; lint0errors/94warnings;920 CZ/EN keys and host checks passed.
+- [x] Corrected migration isolation preserves existing durable catalogue hashes; current API26 targeted25/25 passed, including DiscoverNavigationTest and zero-HTTP private filtering.
+- [x] Previous full API26 failure log retained:130 passed/8 failed/2 skipped; corrected cases rerun targeted.
+- [ ] Full suites, API37 newer UI, actual new screenshots/accessibility, phased process death and fresh final signed0.10.1 upgrades on both APIs.
+- [ ] Complete remaining4A–4F requirements and final source/artifact/CI acceptance.
+
+See the newest RESUME-CHECKPOINT section and results/checkpoint-source.json. Earlier green checkpoints are partial evidence only.

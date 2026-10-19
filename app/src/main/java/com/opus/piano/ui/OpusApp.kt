@@ -112,7 +112,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                         focus.clearFocus()
                         keyboard?.hide()
                         nav.selectTopLevel(destination.name)
-                    }, icon = { Icon(destination.icon, contentDescription = null) }, label = { Text(if(destination==Destination.DISCOVER)L.s(R.string.discover) else L.fixed(destination.label), style = MaterialTheme.typography.labelSmall, maxLines = 2) })
+                    }, icon = { Icon(destination.icon, contentDescription = null) }, label = { Text(if(destination==Destination.DISCOVER)L.s(R.string.discover) else L.fixed(destination.label), style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis) })
                 }
             }
         }

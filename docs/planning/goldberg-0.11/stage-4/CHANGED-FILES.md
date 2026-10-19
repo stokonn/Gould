@@ -1,12 +1,13 @@
-# Stage4 changed paths at resumed WIP checkpoint
+# Stage4 changed paths at owner-requested WIP checkpoint
 
-Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes original/resumed source and evidence. Owner RELEASE_NOTES.md, private backups, signing material and generated APKs excluded. This inventory does not imply full acceptance.
+Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; source and evidence included. Owner RELEASE_NOTES.md, private backups, signing material and generated APKs excluded. Stage4 is INCOMPLETE; this inventory is not acceptance evidence.
 
 - `app/src/androidTest/assets/stage4/README.md`
 - `app/src/androidTest/assets/stage4/musicbrainz-arrangement.json`
 - `app/src/androidTest/java/com/opus/piano/DiscoverNavigationTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Quality092PersistenceTest.kt`
 - `app/src/androidTest/java/com/opus/piano/RepertoireSearchPrivacyTest.kt`
+- `app/src/androidTest/java/com/opus/piano/Stage3aMigrationTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4CatalogueTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4DocumentTest.kt`
 - `app/src/androidTest/java/com/opus/piano/Stage4EvidenceLifecycleTest.kt`
@@ -76,9 +77,12 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes origi
 - `docs/planning/goldberg-0.11/stage-4/results/bounded-search-fixed-source.json`
 - `docs/planning/goldberg-0.11/stage-4/results/cache-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/cache-api37.log`
+- `docs/planning/goldberg-0.11/stage-4/results/checkpoint-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/checkpoint-artifact-source.json`
 - `docs/planning/goldberg-0.11/stage-4/results/checkpoint-build.log`
 - `docs/planning/goldberg-0.11/stage-4/results/checkpoint-fixed-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/checkpoint-migration-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/checkpoint-source.json`
 - `docs/planning/goldberg-0.11/stage-4/results/checkpoint-ui-artifact-source.json`
 - `docs/planning/goldberg-0.11/stage-4/results/checkpoint.json`
 - `docs/planning/goldberg-0.11/stage-4/results/combined-after-lru-api26.log`
@@ -109,6 +113,7 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes origi
 - `docs/planning/goldberg-0.11/stage-4/results/initial-build.log`
 - `docs/planning/goldberg-0.11/stage-4/results/installed-ui-api37.json`
 - `docs/planning/goldberg-0.11/stage-4/results/lifecycle-apk-quality.log`
+- `docs/planning/goldberg-0.11/stage-4/results/lifecycle-full-api26-initial-failure.log`
 - `docs/planning/goldberg-0.11/stage-4/results/lifecycle-initial-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/lifecycle-media-search-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/lifecycle-media-search-build.log`
@@ -188,6 +193,8 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes origi
 - `docs/planning/goldberg-0.11/stage-4/results/sourcefix-api26.log`
 - `docs/planning/goldberg-0.11/stage-4/results/sourcefix-api37.log`
 - `docs/planning/goldberg-0.11/stage-4/results/targeted-build.log`
+- `docs/planning/goldberg-0.11/stage-4/results/ui-accessibility-api26.log`
+- `docs/planning/goldberg-0.11/stage-4/results/ui-accessibility-build.log`
 - `docs/planning/goldberg-0.11/stage-4/results/ui-artifact-check.log`
 - `docs/planning/goldberg-0.11/stage-4/results/ui-review-build.log`
 - `docs/planning/goldberg-0.11/stage-4/results/ui-signing.log`
@@ -201,5 +208,3 @@ Compared with Stage3B `9ae8d33e113feba531cdfa8558f0505cd4205749`; includes origi
 - `docs/planning/goldberg-0.11/stage-4/results/upgrade-api37.log`
 - `docs/wiki/Developer-Guide.md`
 - `scripts/verify_emulator_upgrade.py`
-
-created by stokonn with love <3

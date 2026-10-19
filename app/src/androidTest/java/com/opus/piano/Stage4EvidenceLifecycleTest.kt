@@ -102,6 +102,13 @@ class Stage4EvidenceLifecycleTest {
                 assertEquals(setOf("cs","en"),biographies.map {JSONObject(it.valueJson).getString("language")}.toSet())
                 assertEquals(2,biographies.size)
                 for(b in biographies)assertTrue(repo.source(b.sourceId)!!.sourceUrl.startsWith("https://"+JSONObject(b.valueJson).getString("language")+"."))
+                val sourced=repo.assertions(artist).map {SourcedAssertion(it,repo.source(it.sourceId)!!,repo.rights(it.rightsId)!!)}
+                val detail=DiscoverDetail(repo.entity(artist)!!,repo.identities(artist),sourced,emptyList())
+                assertTrue(CataloguePresentation.biography(detail,"cs")!!.source.sourceUrl.startsWith("https://cs."))
+                // English must work even though Czech was accepted/selected first.
+                assertTrue(CataloguePresentation.biography(detail,"en")!!.source.sourceUrl.startsWith("https://en."))
+                val blocked=detail.copy(assertions=sourced.map {if(JSONObject(it.assertion.valueJson).optString("language")=="cs")it.copy(rights=it.rights.copy(reviewState="blocked")) else it})
+                assertTrue(CataloguePresentation.biography(blocked,"cs")!!.source.sourceUrl.startsWith("https://en."))
             }
         }
     }
