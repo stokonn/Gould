@@ -1,0 +1,287 @@
+10-20 23:04:55.387  4034  4122 I TestRunner: started: savedInterpretationsRetainDatesAndPreferenceAndSupportEditsAndRemoval(com.opus.piano.ExperiencePersistenceTest)
+10-20 23:04:55.388  2217  2324 I NearbySharing: A new client has bound to the NearbySharingService ClientBridge for calling package com.google.android.gms and PID 2303
+10-20 23:04:55.393   643   768 I ImeTracker: com.google.android.apps.nexuslauncher:d4bcb48f: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+10-20 23:04:55.401  1252  1252 D SsBaseTemplateCard: No text view can be set up
+10-20 23:04:55.401  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:55.401  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:55.401  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:55.401  1252  1252 I SsBaseTemplateCard: Secondary card pane is null
+10-20 23:04:55.404  4230  4230 D VRI[InstrumentationActivityInvoker$EmptyActivity]: visibilityChanged oldVisibility=true newVisibility=false
+10-20 23:04:55.407  1236  1236 D wpa_supplicant: nl80211: Drv Event 34 (NL80211_CMD_NEW_SCAN_RESULTS) received for wlan0
+10-20 23:04:55.407  1236  1236 D wpa_supplicant: wlan0: nl80211: New scan results available
+10-20 23:04:55.407  1236  1236 D wpa_supplicant: nl80211: Scan probed for SSID ''
+10-20 23:04:55.407  1236  1236 D wpa_supplicant: nl80211: Scan included frequencies: 2437
+10-20 23:04:55.407  1236  1236 D wpa_supplicant: wlan0: Event SCAN_RESULTS (3) received
+10-20 23:04:55.414  1488  1488 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():2043
+10-20 23:04:55.422  1488  1488 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():100 repeatCheckTimes = 0, locked = false
+10-20 23:04:55.422  1488  1488 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1293 onStartInput(EditorInfo{EditorInfo{packageName=com.google.android.apps.nexuslauncher, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: EmojiCompatManager.getEmojiCompatIfLoaded():343 EmojiCompat.init() was never called.
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: java.lang.IllegalStateException: EmojiCompat is not initialized. Please call EmojiCompat.init() first
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at asx.p(PG:6)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at axb.b(PG:13)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at jnr.b(PG:2)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at jnr.c(PG:4)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at jnr.f(PG:3)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at jnx.c(PG:3)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at kif.cz(PG:47)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at lhl.run(PG:1025)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at jaf.execute(PG:12)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at nco.v(PG:13)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at lhn.m(PG:96)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at lhn.k(PG:25)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at kgn.onStartInput(PG:250)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at android.inputmethodservice.InputMethodService.doStartInput(InputMethodService.java:3521)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at android.inputmethodservice.InputMethodService$InputMethodImpl.startInput(InputMethodService.java:879)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at android.inputmethodservice.InputMethodService$InputMethodImpl.dispatchStartInput(InputMethodService.java:908)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at android.inputmethodservice.IInputMethodWrapper.executeMessage(IInputMethodWrapper.java:201)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at com.android.internal.os.HandlerCaller$MyHandler.handleMessage(HandlerCaller.java:44)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at android.os.Handler.dispatchMessage(Handler.java:110)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at android.os.Looper.loopOnce(Looper.java:248)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at android.os.Looper.loop(Looper.java:338)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at android.app.ActivityThread.main(ActivityThread.java:9067)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at java.lang.reflect.Method.invoke(Native Method)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+10-20 23:04:55.422  1488  1488 I EmojiCompatManager: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+10-20 23:04:55.429  1236  1236 D wpa_supplicant: nl80211: Received scan results (1 BSSes)
+10-20 23:04:55.429  1236  1236 D wpa_supplicant: nl80211: Scan results indicate BSS status with 02:15:b2:00:00:01 as associated
+10-20 23:04:55.451  1488  1488 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():100 repeatCheckTimes = 1, locked = false
+10-20 23:04:55.452  1488  1488 W NotificationCenter: NotificationCenter$NotificationQueue.notifyPendingNotificationsOnExecutor():877 Heavy notify work detected on UI thread: [kig->ilu, kig->ilu, kig->ilu, kig->fro, kig->ilu, kig->ilu, kig->fcb, kig->ilu, kig->lux, kig->ilu, kig->ilu, kig->imt, kig->ilu, kig->ilu, kig->khc, kig->jnx, kig->khg] takes 29ms
+10-20 23:04:55.455  1252  1252 D InsetsController: hide(ime(), fromIme=false)
+10-20 23:04:55.455  1252  1252 I ImeTracker: com.google.android.apps.nexuslauncher:d4bcb48f: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+10-20 23:04:55.472   643  1846 I ImeTracker: system_server:b15fc85a: onRequestHide at ORIGIN_SERVER reason IME_REQUESTED_CHANGED_LISTENER fromUser false
+10-20 23:04:55.485  2303  3986 I TelephonySpamInit: On boot completed TelephonySpam module initialized [CONTEXT service_id=150 ]
+10-20 23:04:55.492  1488  1488 W NotificationCenter: NotificationCenter$NotificationQueue.notifyPendingNotificationsOnExecutor():877 Heavy notify work detected on UI thread: [kig->jjs] takes 40ms
+10-20 23:04:55.518  2303  3986 I TelephonySpamInit: onModuleUpdated TelephonySpam module initialized [CONTEXT service_id=150 ]
+10-20 23:04:55.518  2303  3986 I SpamListSync: scheduleSyncTasks [CONTEXT service_id=150 ]
+10-20 23:04:55.518  2303  3986 I SpamListSync: schedulePeriodicTask [CONTEXT service_id=150 ]
+10-20 23:04:55.518  2303  3986 I SpamListSync: scheduleOneTimeTask [CONTEXT service_id=150 ]
+10-20 23:04:55.531  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312df8fd8) locale list changing from [] to [en-US]
+10-20 23:04:55.537   643  1859 D WifiNl80211Manager: Scan result ready event
+10-20 23:04:55.537   643  1859 D WifiNative: Scan result ready event
+10-20 23:04:55.562  1236  1236 D wpa_supplicant: wlan0: BSS: Start scan result update 5
+10-20 23:04:55.562  1236  1236 D wpa_supplicant: BSS: last_scan_res_used=1/32
+10-20 23:04:55.562  1236  1236 D wpa_supplicant: wlan0: New scan results available (own=0 ext=1)
+10-20 23:04:55.563  1236  1236 D wpa_supplicant: wlan0: Do not use results from externally requested scan operation for network selection
+10-20 23:04:55.563  1236  1236 D wpa_supplicant: p2p-dev-wlan0: Updating scan results from sibling
+10-20 23:04:55.563  1236  1236 D wpa_supplicant: nl80211: Received scan results (1 BSSes)
+10-20 23:04:55.563  1236  1236 D wpa_supplicant: p2p-dev-wlan0: BSS: Start scan result update 5
+10-20 23:04:55.563  1236  1236 D wpa_supplicant: BSS: last_scan_res_used=1/32
+10-20 23:04:55.563  1236  1236 D wpa_supplicant: p2p-dev-wlan0: New scan results available (own=0 ext=1)
+10-20 23:04:55.563  1236  1236 D wpa_supplicant: p2p-dev-wlan0: Do not use results from externally requested scan operation for network selection
+10-20 23:04:55.571  1818  4341 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/08202014-metadata.txt via provider delete
+10-20 23:04:55.573  2303  2848 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+10-20 23:04:55.573  2303  2848 I GmsDebugLogger: [83] 1 [mlkit.barcode.ui]
+10-20 23:04:55.577  1598  3352 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/08202014-metadata.txt: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/08202014-metadata.txt
+10-20 23:04:55.593   643   918 D WifiNl80211Manager: get 1 scan results from wificond
+10-20 23:04:55.605   643   918 D WifiNative: get 1 scan results from wificond
+10-20 23:04:55.612  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312dfc818) locale list changing from [] to [en-US]
+10-20 23:04:55.614  2217  2324 I WifiScanner: onFullResults
+10-20 23:04:55.621   643   918 I WifiScanningService: singleScanResults: ClientInfo[uid=1000, package=null, attributionTag=null, com.android.server.wifi.scanner.WifiScannerInternal$ScanListener@1177504],results=1
+10-20 23:04:55.621   643   918 I WifiScanningService: singleScanResults listener: ClientInfo[uid=1000, package=android, attributionTag=null, com.android.server.wifi.scanner.WifiScannerInternal$ScanListener@df40298],results=1
+10-20 23:04:55.621   643   918 I WifiScanningService: singleScanResults listener: ClientInfo[uid=1000, package=android, attributionTag=null, com.android.server.wifi.scanner.WifiScannerInternal$ScanListener@1a165d1],results=1
+10-20 23:04:55.621   643   918 I WifiScanningService: singleScanResults listener: ClientInfo[uid=1000, package=android, attributionTag=null, com.android.server.wifi.scanner.WifiScannerInternal$ScanListener@528714b],results=1
+10-20 23:04:55.621   643   918 I WifiScanningService: singleScanResults listener: ClientInfo[uid=10147, package=com.google.android.gms, attributionTag=network_location_provider, android.net.wifi.IWifiScannerListener$Stub$Proxy@f63beb8],results=1
+10-20 23:04:55.621   643   918 I WifiScanningService: Unregistering listener= com.android.server.wifi.scanner.WifiScannerInternal$ScanListener@1177504 uid=1000 packageName=null workSource=WorkSource{1000}
+10-20 23:04:55.623  2303  3918 I GmsThreadNetwork: [ThreadNetworkModuleInitIntentOperation] Initializing runtime states: 2 [CONTEXT service_id=305 ]
+10-20 23:04:55.623  3883  3885 I AidlLazyServiceRegistrar: Process has 0 (of 1 available) client(s) in use after notification artd has clients: 0
+10-20 23:04:55.623  3883  3885 I AidlLazyServiceRegistrar: Trying to shut down the service. No clients in use for any service in process.
+10-20 23:04:55.624   643   670 I ImeTracker: system_server:b15fc85a: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-20 23:04:55.643  4230  4230 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.app.Activity$$ExternalSyntheticLambda0@b6c15f6
+10-20 23:04:55.658  4230  4230 D ViewRootImpl: Skipping stats log for color mode
+10-20 23:04:55.660   643   914 D WifiScanRequestProxy: Scan results received
+10-20 23:04:55.660   643   914 D WifiScanRequestProxy: Received 1 scan results
+10-20 23:04:55.680  3883  3885 I AidlLazyServiceRegistrar: Unregistered all clients and exiting
+10-20 23:04:55.708  1610  2641 I AiAiEcho: Settings changed for uri: content://settings/secure/com.google.android.gms.tapandpay.tokenization.CACHED_BACKUP_STATUS
+10-20 23:04:55.766  1252  1252 D RecentsView: onTaskRemoved: 11, not handling task stack changes
+10-20 23:04:55.766  1638  2079 I bbax    : (REDACTED) getHotwordActive::active query: %s, watch: %s, devices connected: %s
+10-20 23:04:55.767  1610  1917 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-20 23:04:55.767  1610  1917 I AiAiEcho: EchoTargets:
+10-20 23:04:55.767  1610  1917 I AiAiEcho: Filtered by AiAi flag check:
+10-20 23:04:55.767  1610  1917 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-20 23:04:55.768  1610  1917 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-20 23:04:55.768  1610  1917 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-20 23:04:55.768  1610  1917 I AiAiEcho: EchoTargets:
+10-20 23:04:55.768  1610  1917 I AiAiEcho: Filtered by AiAi flag check:
+10-20 23:04:55.768  1610  1917 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-20 23:04:55.768  1610  1917 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-20 23:04:55.768  1252  1252 D RecentsView: onTaskRemoved: 11, not handling task stack changes
+10-20 23:04:55.773   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:04:55.773   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:04:55.773   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={10134} in 1ms
+10-20 23:04:55.786  1598  3352 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 209ms, 0 inserts 0 updates 0 deletes
+10-20 23:04:55.811  1610  1917 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+10-20 23:04:55.813  1252  1252 D SsBaseTemplateCard: No text view can be set up
+10-20 23:04:55.813  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:55.813  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:55.813  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:55.813  1252  1252 I SsBaseTemplateCard: Secondary card pane is null
+10-20 23:04:55.815  1704  1995 D WM-GreedyScheduler: Constraints met: Scheduling work ID WorkGenerationalId(workSpecId=878e7c03-e287-4474-8882-e0d78543bd32, generation=0)
+10-20 23:04:55.816  1704  1995 D WM-Processor: kug: processing WorkGenerationalId(workSpecId=878e7c03-e287-4474-8882-e0d78543bd32, generation=0)
+10-20 23:04:55.816  1610  1917 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+10-20 23:04:55.817  1006  1006 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+10-20 23:04:55.822  2303  3918 I GmsThreadNetwork: [ThreadNetworkModuleInitIntentOperation] Enable component com.google.android.gms.threadnetwork.credentials.ui.ShareCredentialsActivity [CONTEXT service_id=305 ]
+10-20 23:04:55.827   643   914 I HalDevMgr: bestIfaceCreationProposal is null, requestIface=STA, existingIface=[name=wlan0 type=STA]
+10-20 23:04:55.830   643   914 V WifiConnectivityManager: AllSingleScanListener onResults: start network selection
+10-20 23:04:55.833  2303  3918 I GmsThreadNetwork: [BorderRouterSynchronizer] Scheduled periodic Border Router sync task: PeriodicBrSync [CONTEXT service_id=305 ]
+10-20 23:04:55.833  2303  3918 W GmsThreadNetwork: [ThreadNetworkModuleInitIntentOperation] Skip joining preferred or random network: flag disabled [CONTEXT service_id=305 ]
+10-20 23:04:55.836   643   914 V WifiConfigManager: getSavedNetworkFromScanResult Found "AndroidWifi"NONE for AndroidWifi[[ESS]]
+10-20 23:04:55.842   643   914 D WifiNetworkSelector: Current connected network: 0
+10-20 23:04:55.843   643   914 D WifiNetworkSelector: wlan0: Current connected network already sufficient. Skip network selection.
+10-20 23:04:55.845   643   914 V WifiLastResortWatchdog: updateAvailableNetworks: size = 0
+10-20 23:04:55.845   643   914 V WifiLastResortWatchdog: mWatchdogFeatureEnabled: true
+10-20 23:04:55.845   643   914 V WifiLastResortWatchdog: mWatchdogAllowedToTrigger: true
+10-20 23:04:55.845   643   914 V WifiLastResortWatchdog: mRecentAvailableNetworks: 1
+10-20 23:04:55.845   643   914 V WifiLastResortWatchdog:  02:15:b2:00:00:01: "AndroidWifi" HasEverConnected: false, Failures: {Assoc: 0, Auth: 0, Dhcp: 0}, Age: 4
+10-20 23:04:55.845   643   914 V WifiLastResortWatchdog: mSsidFailureCount:
+10-20 23:04:55.845   643   914 V WifiLastResortWatchdog: "AndroidWifi": 1, HasEverConnected: false, Failures: {Assoc: 0, Auth: 0, Dhcp: 0}
+10-20 23:04:55.846   643   914 V WifiConnectivityManager: AllSingleScanListener:  No candidates
+10-20 23:04:55.849  2303  3918 I Thunderbird: Refreshing ThunderbirdSettings state: true [CONTEXT service_id=226 ]
+10-20 23:04:55.853  2217  4228 I TapAndPay: Wallet proto service is not available [CONTEXT service_id=79 ]
+10-20 23:04:55.859  2303  2649 I Checkin : [AndroidCheckinProtoModule] Checkin reason type: 1 attempt count: 1.
+10-20 23:04:55.861  2303  3918 I ActiveUnlock_FeatureEna: enableSetupEnhancements: true isAllowlisted: false hash: 7984DE9EEFC53253D0A8B7E4F972A04B1ED2E77C1F8AFD2BF2B94E6EB2D160CA
+10-20 23:04:55.872  2303  3918 W ChimeraUtils: Module com.google.android.gms.activeunlock_primary missing resource null(0)
+10-20 23:04:55.877  2303  3918 I ActiveUnlock_FeatureEna: enableSetupEnhancements: true isAllowlisted: false hash: 7984DE9EEFC53253D0A8B7E4F972A04B1ED2E77C1F8AFD2BF2B94E6EB2D160CA
+10-20 23:04:55.885  1818  4341 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/08202014-pins.txt via provider delete
+10-20 23:04:55.904  2303  2848 I Trustlet_Onbody: onbodyAlreadySet: false [CONTEXT service_id=294 ]
+10-20 23:04:55.906  2303  2848 I Trustlet_Onbody: isOnbodySuggestionEnabledByPhenotype: false [CONTEXT service_id=294 ]
+10-20 23:04:55.907  2303  2848 I Trustlet_Onbody: isTrustAgentEnabled: ggeg@b830de5[status=SUCCESS, result=[true]] [CONTEXT service_id=294 ]
+10-20 23:04:55.908  2303  2848 I Trustlet_Onbody: Trustlet onbody is supported. [CONTEXT service_id=294 ]
+10-20 23:04:55.908  1610  2641 I AiAiEcho: Settings changed for uri: content://settings/secure/active_unlock_provider
+10-20 23:04:55.909  2303  2848 I Trustlet_Onbody: isSupported: true [CONTEXT service_id=294 ]
+10-20 23:04:55.909  2303  2848 I Trustlet_Onbody: isChromeOsDevice: false [CONTEXT service_id=294 ]
+10-20 23:04:55.909  1610  2620 I AiAiEcho: Settings changed for uri: content://settings/secure/active_unlock_target
+10-20 23:04:55.913   643   772 I system_server: AssetManager2(0x7ef312dfddf8) locale list changing from [] to [en-US]
+10-20 23:04:55.917   643   670 I system_server: AssetManager2(0x7ef312e11fd8) locale list changing from [] to [en-US]
+10-20 23:04:55.924  1020  2413 I PermissionControllerServiceImpl: Updating user sensitive for uid 10147
+10-20 23:04:55.925   643   670 I system_server: AssetManager2(0x7ef312e025d8) locale list changing from [] to [en-US]
+10-20 23:04:55.927  1610  1917 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-20 23:04:55.927  1610  1917 I AiAiEcho: EchoTargets:
+10-20 23:04:55.927  1610  1917 I AiAiEcho: Filtered by AiAi flag check:
+10-20 23:04:55.927  1610  1917 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-20 23:04:55.927  1610  1917 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-20 23:04:55.934   643   769 I system_server: AssetManager2(0x7ef312e06138) locale list changing from [] to [en-US]
+10-20 23:04:55.937  1610  1917 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-20 23:04:55.938  1610  1917 I AiAiEcho: EchoTargets:
+10-20 23:04:55.938  1610  1917 I AiAiEcho: Filtered by AiAi flag check:
+10-20 23:04:55.938  1610  1917 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-20 23:04:55.941  1610  1917 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-20 23:04:55.944  1610  1917 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-20 23:04:55.955  1610  1917 I AiAiEcho: EchoTargets:
+10-20 23:04:55.955  1610  1917 I AiAiEcho: Filtered by AiAi flag check:
+10-20 23:04:55.955  1610  1917 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-20 23:04:55.958  1610  1917 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-20 23:04:55.965  1610  1917 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-20 23:04:55.969  1610  1917 I AiAiEcho: EchoTargets:
+10-20 23:04:55.969  1610  1917 I AiAiEcho: Filtered by AiAi flag check:
+10-20 23:04:55.969  1610  1917 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-20 23:04:55.970  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312df76d8) locale list changing from [] to [en-US]
+10-20 23:04:55.970  1610  1917 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-20 23:04:55.973  1610  1917 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+10-20 23:04:55.974  1252  1252 D SsBaseTemplateCard: No text view can be set up
+10-20 23:04:55.974  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:55.974  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:55.974  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:55.974  1252  1252 I SsBaseTemplateCard: Secondary card pane is null
+10-20 23:04:55.975  1610  1917 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+10-20 23:04:55.975  1006  1006 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+10-20 23:04:55.976  1610  1917 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+10-20 23:04:55.977  1610  1917 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+10-20 23:04:55.977  1006  1006 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+10-20 23:04:55.978  1252  1252 D SsBaseTemplateCard: No text view can be set up
+10-20 23:04:55.978  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:55.978  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:55.978  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:55.978  1252  1252 I SsBaseTemplateCard: Secondary card pane is null
+10-20 23:04:55.981  2303  2766 I AppLinksAsyncVerifierV2: Verification result: checking for a statement with source https://g.co, relation delegate_permission/common.handle_all_urls, and target com.android.wallpaper --> false. [CONTEXT service_id=244 ]
+10-20 23:04:55.986   643   675 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:04:55.986  1252  1276 D PackageUpdatedTask: Package updated: mOp=UPDATE packages=[com.google.android.gms], user=UserHandle{0}
+10-20 23:04:55.992  2303  2485 W Pay     : Active account was null, notification task will be cancelled. [CONTEXT service_id=198 ]
+10-20 23:04:55.992  2303  3915 I AppLinksHostsVerifierV2: Adding relation extensions for host: g.co [CONTEXT service_id=244 ]
+10-20 23:04:55.992  2303  3915 I AppLinksHostsVerifierV2: Verification com.android.wallpaper complete. Successful hosts: . Failed hosts: g.co. Error hosts: . [CONTEXT service_id=244 ]
+10-20 23:04:55.993  1252  1276 W AllAppsList: updatePackage: no Activities matched updated package, removing any AppInfo with package=com.google.android.gms, user=UserHandle{0}
+10-20 23:04:55.994  1610  2397 I AiAiEcho: AppIndexer Package:[com.google.android.gms] UserProfile:[0] Enabled:[true].
+10-20 23:04:55.994  1610  2397 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.gms], userId:[0], reason:[package is updated.].
+10-20 23:04:55.997  2303  3915 I AppLinksRequestHandler: Updating url filtering rules for com.android.wallpaper: {g.co=[]} [CONTEXT service_id=244 ]
+10-20 23:04:55.998  2217  4354 I UsageReportingOptionsSt: User 0 is opted-in? false [CONTEXT service_id=41 ]
+10-20 23:04:55.999  2217  4354 I UsageReportingOptionsSt: Updating global setting to unknown [CONTEXT service_id=41 ]
+10-20 23:04:56.001  1598  3352 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/08202014-pins.txt: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/08202014-pins.txt
+10-20 23:04:56.003  1598  3352 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 2ms, 0 inserts 0 updates 0 deletes
+10-20 23:04:56.005  2303  3986 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+10-20 23:04:56.008  2303  2790 E ZappPhoneskyConn: Unable to bind to Phonesky
+10-20 23:04:56.008  2303  2790 I GmsDebugLogger: [76]
+10-20 23:04:56.010   643   772 I system_server: AssetManager2(0x7ef312df6d78) locale list changing from [] to [en-US]
+10-20 23:04:56.011   643   772 I system_server: AssetManager2(0x7ef312dfa298) locale list changing from [] to [en-US]
+10-20 23:04:56.015  1704  1704 D WM-WorkerWrapper: Starting work for com.google.apps.tiktok.contrib.work.TikTokListenableWorker
+10-20 23:04:56.016  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312dfabf8) locale list changing from [] to [en-US]
+10-20 23:04:56.016  2303  3915 I AppLinksModuleInit: Rerunning all WIP verifications [CONTEXT service_id=244 ]
+10-20 23:04:56.019  2303  3915 I AppLinksRequestHandler: Processing 0 WIP requests. [CONTEXT service_id=244 ]
+10-20 23:04:56.019  2303  3915 I AppLinksModuleInit: Scheduling periodic verification update. [CONTEXT service_id=244 ]
+10-20 23:04:56.020  1704  1704 E fcpw$a  : Duplicate trace
+10-20 23:04:56.020  1704  1704 E fcpw$a  : fcll: Starting new trace ProcessWebDataPrefillerWorker#startWork when already associated with a trace. For more help, see http://go/tiktok-tracing#fixing-duplicate-trace-issues
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fcqb.g(PG:51)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fcqb.a(PG:7)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fcpj.e(PG:13)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at enip.b(PG:5)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fbhc.a(PG:13)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fcqs.a(PG:13)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fcqs.a(PG:13)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fmry.a(PG:3)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fmrb.run(PG:19)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fmsa.run(PG:5)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fmpq.execute(PG:1)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fmsc.u(PG:6)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fckl.a(PG:77)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fbhw.e(PG:50)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at fbhd.b(PG:17)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at com.google.apps.tiktok.contrib.work.TikTokListenableWorker.d(PG:72)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at kwf.b(PG:96)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at gcdz.s(PG:12)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at gcnf.run(PG:110)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at android.os.Handler.handleCallback(Handler.java:995)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at android.os.Handler.dispatchMessage(Handler.java:103)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at android.os.Looper.loopOnce(Looper.java:248)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at android.os.Looper.loop(Looper.java:338)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at android.app.ActivityThread.main(ActivityThread.java:9067)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at java.lang.reflect.Method.invoke(Native Method)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 	Suppressed: fcrl:
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 		at tk_trace.NoAccountWorkerFactory startWork()(Unknown Source:0)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 		at tk_trace.com.google.android.libraries.search.integrations.web.migration.ProcessWebDataPrefillerWorker startWork()(Unknown Source:0)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 		at tk_trace.com.google.android.libraries.search.integrations.web.migration.ProcessWebDataPrefillerWorker startWork()(Unknown Source:0)
+10-20 23:04:56.020  1704  1704 E fcpw$a  : 		at tk_trace.WorkManager:TikTokListenableWorker startWork(Unknown Source:0)
+10-20 23:04:56.022  2217  3853 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 1008 uptime_millis: 1008 exec_start_elapsed_seconds: 120 [CONTEXT service_id=218 ]
+10-20 23:04:56.022  2303  3915 I AppLinksVerUpdate: Verification update scheduled. [CONTEXT service_id=244 ]
+10-20 23:04:56.023  2303  3915 I AppLinksModuleInit: Scheduling regular retry verifications. [CONTEXT service_id=244 ]
+10-20 23:04:56.023  2303  3915 I AppLinksVerRegularRetry: Retries scheduled. [CONTEXT service_id=244 ]
+10-20 23:04:56.034  2303  2790 E ZappPhoneskyConn: Unable to bind to Phonesky
+10-20 23:04:56.035  2303  2790 E DynamicModuleDownloader: Zapp module request failed: null
+10-20 23:04:56.037   643   979 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10146, packageName = null, attributionTag = null, token = android.os.Binder@a425a3b, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-20 23:04:56.047   449   449 D Zygote  : Forked child process 4357
+10-20 23:04:56.057  2303  3915 I Wear_Controller: Wearable module requires a companion app to be installed.
+10-20 23:04:56.057  2303  3915 I Wear_Controller: onStartup - Wear is not available on this device.
+10-20 23:04:56.069  4357  4357 I chbox:googleapp: Using CollectorTypeCMC GC.
+10-20 23:04:56.069  4357  4357 W chbox:googleapp: Unexpected CPU variant for x86: x86_64.
+10-20 23:04:56.069  4357  4357 W chbox:googleapp: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
+10-20 23:04:56.071  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312dfa5b8) locale list changing from [] to [en-US]
+10-20 23:04:56.073  4357  4357 E chbox:googleapp: Not starting debugger since process cannot load the jdwp agent.
+10-20 23:04:56.074  1610  2641 I AiAiEcho: Settings changed for uri: content://settings/secure/mandatory_biometrics_requirements_satisfied
+10-20 23:04:56.075  1610  1917 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-20 23:04:56.075  1610  1917 I AiAiEcho: EchoTargets:
+10-20 23:04:56.075  1610  1917 I AiAiEcho: Filtered by AiAi flag check:
+10-20 23:04:56.075  1610  1917 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-20 23:04:56.076  1610  1917 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-20 23:04:56.076  1610  1917 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-20 23:04:56.076  1610  1917 I AiAiEcho: EchoTargets:
+10-20 23:04:56.076  1610  1917 I AiAiEcho: Filtered by AiAi flag check:
+10-20 23:04:56.076  1610  1917 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-20 23:04:56.076  1610  1917 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-20 23:04:56.076  1610  1917 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+10-20 23:04:56.076  1610  1917 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+10-20 23:04:56.077  1006  1006 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+10-20 23:04:56.078  1252  1252 D SsBaseTemplateCard: No text view can be set up
+10-20 23:04:56.078  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:56.078  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:56.078  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:04:56.078  1252  1252 I SsBaseTemplateCard: Secondary card pane is null
+10-20 23:04:56.083  4034  4122 I TestRunner: finished: savedInterpretationsRetainDatesAndPreferenceAndSupportEditsAndRemoval(com.opus.piano.ExperiencePersistenceTest)

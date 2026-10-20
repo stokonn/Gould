@@ -1,0 +1,2 @@
+10-20 23:05:46.020  4034  4122 I TestRunner: started: identicalDocumentBodiesInDifferentEditionsAndEntitiesRetainTheirOwnSources(com.opus.piano.Stage4EvidenceLifecycleTest)
+10-20 23:05:46.054  4034  4122 I TestRunner: finished: identicalDocumentBodiesInDifferentEditionsAndEntitiesRetainTheirOwnSources(com.opus.piano.Stage4EvidenceLifecycleTest)

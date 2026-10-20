@@ -1,0 +1,25 @@
+10-20 23:04:57.933  4034  4122 I TestRunner: started: googleAvatarDecodePreservesSmallImagesAndBoundsLargeImages(com.opus.piano.GoogleIdentityPersistenceTest)
+10-20 23:04:57.938  4452  4486 W cr_AWNetworkFetcherTask: IOException during downloadToFile.
+10-20 23:04:57.938  4452  4486 W cr_AWNetworkFetcherTask: java.io.IOException: Cleartext HTTP traffic to edgedl.me.gvt1.com not permitted
+10-20 23:04:57.938  4452  4486 W cr_AWNetworkFetcherTask: 	at com.android.okhttp.HttpHandler$CleartextURLFilter.checkURLPermitted(HttpHandler.java:127)
+10-20 23:04:57.938  4452  4486 W cr_AWNetworkFetcherTask: 	at com.android.okhttp.internal.huc.HttpURLConnectionImpl.execute(HttpURLConnectionImpl.java:462)
+10-20 23:04:57.938  4452  4486 W cr_AWNetworkFetcherTask: 	at com.android.okhttp.internal.huc.HttpURLConnectionImpl.getResponse(HttpURLConnectionImpl.java:411)
+10-20 23:04:57.938  4452  4486 W cr_AWNetworkFetcherTask: 	at com.android.okhttp.internal.huc.HttpURLConnectionImpl.getResponseCode(HttpURLConnectionImpl.java:542)
+10-20 23:04:57.938  4452  4486 W cr_AWNetworkFetcherTask: 	at org.chromium.android_webview.nonembedded.NetworkFetcherTask.download(chromium-TrichromeWebViewGoogle6432.aab-stable-694313738:58)
+10-20 23:04:57.938  4034  4122 W HWUI    : Image decoding logging dropped!
+10-20 23:04:57.940   446  4497 I resolv  : GetAddrInfoHandler::run: {100 100 100 983140 10166 0}
+10-20 23:04:57.942   446  4498 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-20 23:04:57.942   446  4499 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-20 23:04:57.946   446  4498 I resolv  : res_nsend: used send_dg 64 terrno: 0
+10-20 23:04:57.946   446  4498 I resolv  : doQuery: rcode=0, ancount=1, return value=64
+10-20 23:04:57.949   446  4499 I resolv  : res_nsend: used send_dg 52 terrno: 0
+10-20 23:04:57.949   446  4499 I resolv  : doQuery: rcode=0, ancount=1, return value=52
+10-20 23:04:57.984  2217  2371 I FontLog : Received query name=Google Sans&weight=500&besteffort=false, URI content://com.google.android.gms.fonts [CONTEXT service_id=132 ]
+10-20 23:04:57.995   643   657 I system_server: Background concurrent mark compact GC freed 23MB AllocSpace bytes, 45(972KB) LOS objects, 45% free, 28MB/52MB, paused 642us,1.560ms total 192.653ms
+10-20 23:04:58.001  2217  2388 I RegisterSyncOperation: Not retrying registerSync since Sync__retry_register_sync is false [CONTEXT service_id=51 ]
+10-20 23:04:58.003  2217  2371 I FontLog : Query [name=Google Sans&weight=500&besteffort=false] resolved to {Google Sans, wdth 100.0, wght 500, ital 0.0, bestEffort false}, isVf false} [CONTEXT service_id=132 ]
+10-20 23:04:58.005  2217  2371 I FontLog : Font PFD returned from cache for {Google Sans, wdth 100.0, wght 500, ital 0.0, bestEffort false}, isVf false} [CONTEXT service_id=132 ]
+10-20 23:04:58.006  2217  2371 I FontLog : Fetch {Google Sans, wdth 100.0, wght 500, ital 0.0, bestEffort false}, isVf false} end status Status{statusCode=SUCCESS, resolution=null} [CONTEXT service_id=132 ]
+10-20 23:04:58.020  2217  2371 I FontLog : Pulling font file for id = 14, cache size = 14 [CONTEXT service_id=132 ]
+10-20 23:04:58.027  4034  4122 W HWUI    : Image decoding logging dropped!
+10-20 23:04:58.027  4034  4122 I TestRunner: finished: googleAvatarDecodePreservesSmallImagesAndBoundsLargeImages(com.opus.piano.GoogleIdentityPersistenceTest)

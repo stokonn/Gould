@@ -1,0 +1,4 @@
+10-20 23:05:11.412  4034  4122 I TestRunner: started: failedRestoreKeepsThePausedDraft(com.opus.piano.PracticeCoordinatorTest)
+10-20 23:05:11.420  1488  2060 I DownloadManager: DownloadManager$3.onProgress():514 Downloading __SP_transformer_concept with size 770048
+10-20 23:05:11.437  1488  2060 I DownloadManager: DownloadManager$3.onProgress():514 Downloading __KLP_delight__en-840 with size 1015808
+10-20 23:05:11.459  4034  4122 I TestRunner: finished: failedRestoreKeepsThePausedDraft(com.opus.piano.PracticeCoordinatorTest)

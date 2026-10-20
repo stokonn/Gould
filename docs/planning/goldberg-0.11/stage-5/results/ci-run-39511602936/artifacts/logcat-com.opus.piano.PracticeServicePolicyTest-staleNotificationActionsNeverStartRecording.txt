@@ -1,0 +1,4 @@
+10-20 23:05:12.348  4034  4122 I TestRunner: started: staleNotificationActionsNeverStartRecording(com.opus.piano.PracticeServicePolicyTest)
+10-20 23:05:12.356  2217  2735 I .gms.persistent: AssetManager2(0x7ef312df3e98) locale list changing from [] to [en-US]
+10-20 23:05:12.368  2303  2303 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.service.START xflg=0x4 pkg=com.google.android.gms }
+10-20 23:05:12.369  4034  4122 I TestRunner: finished: staleNotificationActionsNeverStartRecording(com.opus.piano.PracticeServicePolicyTest)

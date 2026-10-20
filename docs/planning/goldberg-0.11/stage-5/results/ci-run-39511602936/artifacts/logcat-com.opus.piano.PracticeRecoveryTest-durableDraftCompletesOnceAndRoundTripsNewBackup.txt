@@ -1,0 +1,76 @@
+10-20 23:05:12.079  4034  4122 I TestRunner: started: durableDraftCompletesOnceAndRoundTripsNewBackup(com.opus.piano.PracticeRecoveryTest)
+10-20 23:05:12.079   643   657 I system_server: NativeAlloc concurrent mark compact GC freed 21MB AllocSpace bytes, 19(420KB) LOS objects, 44% free, 29MB/53MB, paused 1.311ms,23.897ms total 557.064ms
+10-20 23:05:12.104  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e0c538) locale list changing from [] to [en-US]
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: ylk: java.lang.reflect.InvocationTargetException
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at yll.c(PG:55)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at xws.w(PG:78)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at xws.e(PG:90)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at xwp.a(PG:34)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at mpd.M(PG:25)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at qmu.d(PG:34)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at qmf.e(PG:7)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at mpg.a(PG:11)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at acgy.h(PG:7)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at qmv.run(PG:9)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at xho.execute(PG:1)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at qmx.onPropertiesChanged(PG:47)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at android.provider.DeviceConfig.lambda$handleChange$1(DeviceConfig.java:1796)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at android.provider.DeviceConfig$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at xjo.a(PG:3)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at xir.run(PG:19)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at xjp.run(PG:5)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:348)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at hxw.run(PG:221)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: Caused by: java.lang.reflect.InvocationTargetException
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at java.lang.reflect.Method.invoke(Native Method)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at yll.c(PG:48)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	... 24 more
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: Caused by: java.lang.IllegalStateException: No underlying SoundTriggerModule available
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	at android.media.soundtrigger.SoundTriggerManager.deleteModel(SoundTriggerManager.java:265)
+10-20 23:05:12.108  1610  1945 E AmbientMusicServiceMana: 	... 26 more
+10-20 23:05:12.109  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e0a5f8) locale list changing from [] to [en-US]
+10-20 23:05:12.117  1610  1945 I AiAiTextClassifier: [ResourceDownloaderImpl]: downloadResource: Another download of kg_collections_table is in progress.
+10-20 23:05:12.118  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e06138) locale list changing from [] to [en-US]
+10-20 23:05:12.119  1610  1635 I AiAiEcho: Settings changed for uri: content://settings/secure/now_playing_enabled
+10-20 23:05:12.134  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e0cb78) locale list changing from [] to [en-US]
+10-20 23:05:12.140  1610  1917 W HWUI    : Image decoding logging dropped!
+10-20 23:05:12.141  1610  1917 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-20 23:05:12.141  1610  1917 I AiAiEcho: EchoTargets:
+10-20 23:05:12.141  1610  1917 I AiAiEcho: Filtered by AiAi flag check:
+10-20 23:05:12.141  1610  1917 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-20 23:05:12.141  1610  1917 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-20 23:05:12.142  1610  1917 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-20 23:05:12.142  1610  1917 I AiAiEcho: EchoTargets:
+10-20 23:05:12.142  1610  1917 I AiAiEcho: Filtered by AiAi flag check:
+10-20 23:05:12.142  1610  1917 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-20 23:05:12.142  1610  1917 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-20 23:05:12.143  1610  1917 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+10-20 23:05:12.143  1610  1917 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+10-20 23:05:12.144  1006  1006 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+10-20 23:05:12.145  1252  1252 D SsBaseTemplateCard: No text view can be set up
+10-20 23:05:12.145  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:05:12.145  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:05:12.145  1252  1252 D SsBaseTemplateCard: Passed-in item info is null
+10-20 23:05:12.145  1252  1252 I SsBaseTemplateCard: Secondary card pane is null
+10-20 23:05:12.151  1704  1995 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=f00609c5-cfcc-4939-9b41-817365d7f66d, tags={ com.google.apps.tiktok.contrib.work.TikTokListenableWorker,TikTokWorker#com.google.android.libraries.mdi.download.workmanager.tiktok.TikTokPeriodicWorker } ]
+10-20 23:05:12.154  1704  1704 D WM-Processor: kug f00609c5-cfcc-4939-9b41-817365d7f66d executed; reschedule = false
+10-20 23:05:12.154  1704  1704 D WM-GreedyScheduler: Stopping tracking for WorkGenerationalId(workSpecId=f00609c5-cfcc-4939-9b41-817365d7f66d, generation=0)
+10-20 23:05:12.155  1704  1704 D WM-SystemJobService: f00609c5-cfcc-4939-9b41-817365d7f66d executed on JobScheduler
+10-20 23:05:12.163  1704  1994 D WM-GreedyScheduler: Cancelling work ID f00609c5-cfcc-4939-9b41-817365d7f66d
+10-20 23:05:12.165  1704  1994 D WM-SystemJobScheduler: Scheduling work ID f00609c5-cfcc-4939-9b41-817365d7f66dJob ID 9
+10-20 23:05:12.168  1704  1994 D WM-GreedyScheduler: Ignoring {WorkSpec: 1c3de8da-65a7-4ed4-8109-4e8221fa7fa0}. Requires device idle.
+10-20 23:05:12.168  1704  1994 D WM-BrdcstRcvrCnstrntTrc: kym: unregistering receiver
+10-20 23:05:12.180  1704  1994 D WM-NetworkStateTracker: Unregistering network callback
+10-20 23:05:12.180  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e0ce98) locale list changing from [] to [en-US]
+10-20 23:05:12.189  2535  2535 E tflite  : third_party/tensorflow/lite/core/subgraph.cc:1062 tensor.data.raw != nullptr was not true.
+10-20 23:05:12.204  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e06458) locale list changing from [] to [en-US]
+10-20 23:05:12.216  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e09338) locale list changing from [] to [en-US]
+10-20 23:05:12.294  2217  2735 I .gms.persistent: AssetManager2(0x7ef312df28b8) locale list changing from [] to [en-US]
+10-20 23:05:12.314  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e0a2d8) locale list changing from [] to [en-US]
+10-20 23:05:12.345  4034  4122 I TestRunner: finished: durableDraftCompletesOnceAndRoundTripsNewBackup(com.opus.piano.PracticeRecoveryTest)

@@ -1,0 +1,4 @@
+10-20 23:05:15.356  4034  4122 I TestRunner: started: czechPluralResourcesAndEnglishFallbackAreRealAndroidResources(com.opus.piano.RedesignPersistenceTest)
+10-20 23:05:15.358  4034  4122 I com.opus.piano: AssetManager2(0x7ef312e03258) locale list changing from [] to [cs]
+10-20 23:05:15.358  4034  4122 I com.opus.piano: AssetManager2(0x7ef312e0d1b8) locale list changing from [] to [en]
+10-20 23:05:15.359  4034  4122 I TestRunner: finished: czechPluralResourcesAndEnglishFallbackAreRealAndroidResources(com.opus.piano.RedesignPersistenceTest)

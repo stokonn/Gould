@@ -1,0 +1,304 @@
+10-20 23:05:16.273  4034  4122 I TestRunner: started: clearingDownloadsPreservesJournalCatalogueUnlocksAndPreferences(com.opus.piano.SmartCachePersistenceTest)
+10-20 23:05:16.279  3655  3655 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=7773bc9f-5aae-4230-aaa0-2768144d2821, generation=0)
+10-20 23:05:16.280  3655  3777 D MddListenableWorkerFactory: createWorker for class: com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim
+10-20 23:05:16.286  3655  3655 D WM-WorkerWrapper: Starting work for com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim
+10-20 23:05:16.289  3655  4087 D WM-Processor: Work WorkGenerationalId(workSpecId=7773bc9f-5aae-4230-aaa0-2768144d2821, generation=0) is already enqueued for processing
+10-20 23:05:16.299  3655  4087 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=7773bc9f-5aae-4230-aaa0-2768144d2821, tags={ com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim,data_upgrade- } ]
+10-20 23:05:16.301  3655  3803 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false] [CONTEXT thread_id=62 ]
+10-20 23:05:16.304  3655  3655 D WM-Processor: pst 7773bc9f-5aae-4230-aaa0-2768144d2821 executed; reschedule = false
+10-20 23:05:16.304  3655  3655 D WM-SystemJobService: 7773bc9f-5aae-4230-aaa0-2768144d2821 executed on JobScheduler
+10-20 23:05:16.312  3655  3849 D WM-GreedyScheduler: Cancelling work ID 7773bc9f-5aae-4230-aaa0-2768144d2821
+10-20 23:05:16.315  3655  3849 D WM-GreedyScheduler: Ignoring {WorkSpec: 0fe54e10-28cb-4ad0-823c-a340f3c0657c}. Requires device idle.
+10-20 23:05:16.315  3655  3849 D WM-GreedyScheduler: Ignoring {WorkSpec: 013a35ea-bb8c-414f-9a5c-af2c0d1fe6db}. Requires device idle.
+10-20 23:05:16.318  3655  3803 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=62 ]
+10-20 23:05:16.320  3655  3803 I BugleRcsProvisioning: RcsAvailability configuration availability and enabled status: simId: redacted-pii:sim_id[chars:20,last3:897], SipConnectionType: DUAL_REG, isConfigurationAvailableAndEnabled: false
+10-20 23:05:16.321  3655  3768 I ForwardSyncCache: reclaimMemory: Clearing caches
+10-20 23:05:16.322  3655  3768 W BugleSpam: trimming memory: closing msg model.
+10-20 23:05:16.322  3655  3768 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+10-20 23:05:16.324  3655  3803 I BugleRcsProvisioning: Checking isConfigServerUrlAvailable with simId: redacted-pii:sim_id[chars:20,last3:897],
+10-20 23:05:16.327  3655  3803 I BugleRcsEngine: getConfigServerUrl with simId: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=62 ]
+10-20 23:05:16.332  3655  3803 I BugleRcsEngine: Using config server URL from chgq [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=62 ]
+10-20 23:05:16.362  2217  2224 W .gms.persistent: Suspending all threads took: 28.384ms
+10-20 23:05:16.431  3655  3803 I BugleRcsProvisioning: RcsAvailability: Subscription Id: 1, simId: redacted-pii:sim_id[chars:20,last3:897], sipConnectionType: DUAL_REG, isRcsAvailable: false
+10-20 23:05:16.432  3655  3803 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=62 ]
+10-20 23:05:16.440  3655  3803 I BugleRcsProvisioning: updateAvailabilityForRcsProvisioningId. SimId: redacted-pii:sim_id[chars:20,last3:897], currentAvailability: 2, newAvailability: 10, hint: CSLIB_PHENOTYPE_UPDATE
+10-20 23:05:16.452  3655  3803 I RcsProvisioningManager: Receive onRcsAvailabilityUpdate, SIM = redacted-pii:sim_id[chars:20,last3:897], availability = RcsAvailability{mAvailability=CARRIER_SETUP_PENDING (Carrier RCS is not set up)}
+10-20 23:05:16.459  3655  3849 I RcsProvisioningManager: Cannot notify RcsVerifiedPhoneNumberListener because current availability is CARRIER_SETUP_PENDING instead of AVAILABLE.
+10-20 23:05:16.460  3655  4087 I RcsProvisioningManager: CommonRcsProvisioningChangeListenerHandler.notifyListener : Notify RcsProvisioningChangeListener chop@e7ba69d onRcsProvisioningChange, SIM = redacted-pii:sim_id[chars:35,last3:97)], available rcs provisioning ids  =
+10-20 23:05:16.468  3655  3777 I RcsProvisioningManager: AvailabilityObserver.onUpdate : Notify RcsAvailabilityListener crrt@3f41561 onRcsAvailabilityUpdate, SIM = redacted-pii:sim_id[chars:20,last3:897], availability = 10
+10-20 23:05:16.469  3655  3804 I BugleTransport: Retrieved RCS available simIds: []
+10-20 23:05:16.470  3655  3849 I RcsProvisioningManager: CommonRcsProvisioningChangeListenerHandler.notifyListener : Notify RcsProvisioningChangeListener deym@2a78174 onRcsProvisioningChange, SIM = redacted-pii:sim_id[chars:35,last3:97)], available rcs provisioning ids  =
+10-20 23:05:16.471  3655  4087 I BugleRcsProvisioning: scheduleProvisioningForEligibleSims
+10-20 23:05:16.474  3655  3847 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : availability is updated to Carrier RCS is not set up, lastAvailabilityLocal is RCS is disabled for this carrier by Google, simId hash = 8233018065341670324, simId = redacted-pii:sim_id[chars:20,last3:897], isPev3Enabled = true
+10-20 23:05:16.482  3655  3777 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: TACHYGRAM.
+10-20 23:05:16.486  3655  3849 I cnab    : scheduleProvisioningForEligibleSims: operationTrigger: 2 bugle trigger event: 9
+10-20 23:05:16.486  3655  3849 I cnab    : scheduleProvisioningForAllEligibleSims: operationTrigger: 2 bugle trigger event: 9
+10-20 23:05:16.487  3655  3661 W .apps.messaging: Suspending all threads took: 6.701ms
+10-20 23:05:16.493  3655  4088 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: SINGLE_REGISTRATION.
+10-20 23:05:16.494  3655  3803 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: DUAL_REGISTRATION.
+10-20 23:05:16.527  3655  3777 W RcsClientLib: Service is deprecated skipping connection attempt: RcsEngineLifecycleServiceV2
+10-20 23:05:16.542  3655  3841 E BugleRcs: RcsEngineLifecycleManagerV2: RcsServiceConnectionException was raised while waiting to connect to RcsEngineLifecycleServiceV2
+10-20 23:05:16.542  3655  3841 E BugleRcs: cumf: RcsServiceConnectionException:com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2:UNKNOWN
+10-20 23:05:16.542  3655  3841 E BugleRcs: 	at culm.a(PG:54)
+10-20 23:05:16.542  3655  3841 E BugleRcs: 	at kho.a(PG:19)
+10-20 23:05:16.542  3655  3841 E BugleRcs: 	at culn.a(PG:14)
+10-20 23:05:16.542  3655  3841 E BugleRcs: 	at elsk.a(PG:13)
+10-20 23:05:16.542  3655  3841 E BugleRcs: 	at esfd.a(PG:3)
+10-20 23:05:16.542  3655  3841 E BugleRcs: 	at eseb.run(PG:19)
+10-20 23:05:16.542  3655  3841 E BugleRcs: 	at esff.run(PG:5)
+10-20 23:05:16.542  3655  3841 E BugleRcs: 	at dubu.run(PG:7)
+10-20 23:05:16.542  3655  3841 E BugleRcs: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:05:16.542  3655  3841 E BugleRcs: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:05:16.542  3655  3841 E BugleRcs: 	at dubb.run(PG:6)
+10-20 23:05:16.542  3655  3841 E BugleRcs: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:05:16.542  3655  3841 E BugleRcs: 	at ducv.run(PG:61)
+10-20 23:05:16.544  3655  3847 I BugleRcsEngine: getRcsProvisioningGoogleTosConfiguration # cmrh@5d5fcd, consentState = 0, ServerUpdateTime = 0 [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=67 ]
+10-20 23:05:16.546  2303  2309 W System  : A resource failed to call SQLiteConnectionPool.close.
+10-20 23:05:16.546  2303  2309 W SQLiteConnectionPool: A SQLiteConnection object for database '/data/user/0/com.google.android.gms/databases/backup_d2d_restore_app_info.db' was leaked!  Please fix your application to end transactions in progress properly and to close the database when it is no longer needed.
+10-20 23:05:16.546  2303  2309 W System  : A resource failed to call SQLiteConnection.close.
+10-20 23:05:16.547  2303  2309 W SQLiteConnectionPool: A SQLiteConnection object for database '/data/user/0/com.google.android.gms/databases/backup_d2d_restore_app_info.db' was leaked!  Please fix your application to end transactions in progress properly and to close the database when it is no longer needed.
+10-20 23:05:16.547  2303  2309 W System  : A resource failed to call SQLiteConnection.close.
+10-20 23:05:16.562  3655  4086 I cnab    : scheduleProvisioningForRcsProvisioningId: rcsProvisioningId: redacted-pii:sim_id[chars:20,last3:897] operationTrigger: 2 bugle trigger event: 9
+10-20 23:05:16.565  3655  3766 W RcsClientLib: Service is deprecated skipping connection attempt: RcsEngineLifecycleServiceV2
+10-20 23:05:16.570  3655  3846 E BugleRcs: RcsEngineLifecycleManagerV2: RcsServiceConnectionException was raised while waiting to connect to RcsEngineLifecycleServiceV2
+10-20 23:05:16.570  3655  3846 E BugleRcs: cumf: RcsServiceConnectionException:com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2:UNKNOWN
+10-20 23:05:16.570  3655  3846 E BugleRcs: 	at culm.a(PG:54)
+10-20 23:05:16.570  3655  3846 E BugleRcs: 	at kho.a(PG:19)
+10-20 23:05:16.570  3655  3846 E BugleRcs: 	at culn.a(PG:14)
+10-20 23:05:16.570  3655  3846 E BugleRcs: 	at elsk.a(PG:13)
+10-20 23:05:16.570  3655  3846 E BugleRcs: 	at esfd.a(PG:3)
+10-20 23:05:16.570  3655  3846 E BugleRcs: 	at eseb.run(PG:19)
+10-20 23:05:16.570  3655  3846 E BugleRcs: 	at esff.run(PG:5)
+10-20 23:05:16.570  3655  3846 E BugleRcs: 	at dubu.run(PG:7)
+10-20 23:05:16.570  3655  3846 E BugleRcs: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:05:16.570  3655  3846 E BugleRcs: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:05:16.570  3655  3846 E BugleRcs: 	at dubb.run(PG:6)
+10-20 23:05:16.570  3655  3846 E BugleRcs: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:05:16.570  3655  3846 E BugleRcs: 	at ducv.run(PG:61)
+10-20 23:05:16.588  3655  4086 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false] [CONTEXT thread_id=104 ]
+10-20 23:05:16.588  3655  4086 I cnab    : RcsProvisioningTrigger: DR is active, initializing DR provisioning. DUAL_REG
+10-20 23:05:16.589  3655  3766 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false] [CONTEXT thread_id=48 ]
+10-20 23:05:16.592  3655  3847 I BugleRcsProvisioning: RcsProvisioningTrigger: Should not schedule Revoke Google Consent Task because both the consent types are empty in the Storage
+10-20 23:05:16.605  3655  3766 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=48 ]
+10-20 23:05:16.613  3655  4088 I BugleRcsProvisioning: RcsProvisioningTrigger: Did not schedule RevokeGoogleConsentTask
+10-20 23:05:16.618  3655  3847 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=67 ]
+10-20 23:05:16.622  3655  3766 I BugleRcsEngine: Scheduled provisioning task with 0 seconds delay, KEEP policy, trigger is CSLIB_PHENOTYPE_UPDATE, workerId is 9de8473d-00a8-4fd3-8b06-0aa2a8f60f30, simId is redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="provisioning" thread_id=48 ]
+10-20 23:05:16.624  3655  3847 I BugleClearcutLogger: qosTierResolver for LOG_SPEC_LEGACY_LOGGING is null. Using DEFAULT QoS tier as there's no specific QoS configuration for this log spec.
+10-20 23:05:16.626  3655  3847 I RcsProvisioningManager: Receive onRcsAvailabilityUpdate, SIM = redacted-pii:sim_id[chars:20,last3:897], availability = RcsAvailability{mAvailability=CARRIER_SETUP_PENDING (Carrier RCS is not set up)}
+10-20 23:05:16.626  2217  2735 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:5 exec_start_elapsed_seconds: 142 [CONTEXT service_id=218 ]
+10-20 23:05:16.632  3655  4087 I RcsProvisioningManager: Cannot notify RcsVerifiedPhoneNumberListener because current availability is CARRIER_SETUP_PENDING instead of AVAILABLE.
+10-20 23:05:16.632  3655  4088 I RcsProvisioningManager: AvailabilityObserver.onUpdate : Notify RcsAvailabilityListener crrt@3f41561 onRcsAvailabilityUpdate, SIM = redacted-pii:sim_id[chars:20,last3:897], availability = 10
+10-20 23:05:16.639  3655  4087 I RcsProvisioningManager: CommonRcsProvisioningChangeListenerHandler.notifyListener : Notify RcsProvisioningChangeListener deym@2a78174 onRcsProvisioningChange, SIM = redacted-pii:sim_id[chars:35,last3:97)], available rcs provisioning ids  =
+10-20 23:05:16.641  3655  3777 I RcsProvisioningManager: CommonRcsProvisioningChangeListenerHandler.notifyListener : Notify RcsProvisioningChangeListener chop@e7ba69d onRcsProvisioningChange, SIM = redacted-pii:sim_id[chars:35,last3:97)], available rcs provisioning ids  =
+10-20 23:05:16.642  3655  4086 I BugleTransport: Retrieved RCS available simIds: []
+10-20 23:05:16.642  3655  3766 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: SINGLE_REGISTRATION.
+10-20 23:05:16.643  3655  3777 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: TACHYGRAM.
+10-20 23:05:16.648  3655  3849 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: DUAL_REGISTRATION.
+10-20 23:05:16.648  3655  4088 W RcsClientLib: Service is deprecated skipping connection attempt: RcsEngineLifecycleServiceV2
+10-20 23:05:16.649  3655  3841 E BugleRcs: RcsEngineLifecycleManagerV2: RcsServiceConnectionException was raised while waiting to connect to RcsEngineLifecycleServiceV2
+10-20 23:05:16.649  3655  3841 E BugleRcs: cumf: RcsServiceConnectionException:com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2:UNKNOWN
+10-20 23:05:16.649  3655  3841 E BugleRcs: 	at culm.a(PG:54)
+10-20 23:05:16.649  3655  3841 E BugleRcs: 	at kho.a(PG:19)
+10-20 23:05:16.649  3655  3841 E BugleRcs: 	at culn.a(PG:14)
+10-20 23:05:16.649  3655  3841 E BugleRcs: 	at elsk.a(PG:13)
+10-20 23:05:16.649  3655  3841 E BugleRcs: 	at esfd.a(PG:3)
+10-20 23:05:16.649  3655  3841 E BugleRcs: 	at eseb.run(PG:19)
+10-20 23:05:16.649  3655  3841 E BugleRcs: 	at esff.run(PG:5)
+10-20 23:05:16.649  3655  3841 E BugleRcs: 	at dubu.run(PG:7)
+10-20 23:05:16.649  3655  3841 E BugleRcs: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:05:16.649  3655  3841 E BugleRcs: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:05:16.649  3655  3841 E BugleRcs: 	at dubb.run(PG:6)
+10-20 23:05:16.649  3655  3841 E BugleRcs: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:05:16.649  3655  3841 E BugleRcs: 	at ducv.run(PG:61)
+10-20 23:05:16.655  3655  4086 W RcsClientLib: Service is deprecated skipping connection attempt: RcsEngineLifecycleServiceV2
+10-20 23:05:16.658  3655  3847 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=67 ]
+10-20 23:05:16.659  3655  3847 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : isPreviousDisabled = true, isCurrentDisabled = false, config[simId:redacted-pii:sim_id[chars:20,last3:897]] = [Type: 0, Version: 0, Validity: 0, Last updated: 0, Remaining validity: 0, Reconfiguration requested: false, Messaging technology: SIMPLE_IM, rcsVolteSingleRegistration: falseInvalid configreason: INVALID_CONFIG_REASON_UNSPECIFIED], hasToken: false, isValidAndUpdated: false
+10-20 23:05:16.659  3655  3847 I BugleRcsProvisioning: RcsProvisioningTrigger: Schedule KEEP provision when trigger configuration not valid
+10-20 23:05:16.659  3655  3847 I BugleRcsProvisioning: scheduleProvisioningForRcsProvisioningId rcsProvisioningId: redacted-pii:sim_id[chars:35,last3:97)], provisioningTriggerEvent: 9
+10-20 23:05:16.660  3655  3846 E BugleRcs: RcsEngineLifecycleManagerV2: RcsServiceConnectionException was raised while waiting to connect to RcsEngineLifecycleServiceV2
+10-20 23:05:16.660  3655  3846 E BugleRcs: cumf: RcsServiceConnectionException:com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2:UNKNOWN
+10-20 23:05:16.660  3655  3846 E BugleRcs: 	at culm.a(PG:54)
+10-20 23:05:16.660  3655  3846 E BugleRcs: 	at kho.a(PG:19)
+10-20 23:05:16.660  3655  3846 E BugleRcs: 	at culn.a(PG:14)
+10-20 23:05:16.660  3655  3846 E BugleRcs: 	at elsk.a(PG:13)
+10-20 23:05:16.660  3655  3846 E BugleRcs: 	at esfd.a(PG:3)
+10-20 23:05:16.660  3655  3846 E BugleRcs: 	at eseb.run(PG:19)
+10-20 23:05:16.660  3655  3846 E BugleRcs: 	at esff.run(PG:5)
+10-20 23:05:16.660  3655  3846 E BugleRcs: 	at dubu.run(PG:7)
+10-20 23:05:16.660  3655  3846 E BugleRcs: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:05:16.660  3655  3846 E BugleRcs: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:05:16.660  3655  3846 E BugleRcs: 	at dubb.run(PG:6)
+10-20 23:05:16.660  3655  3846 E BugleRcs: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:05:16.660  3655  3846 E BugleRcs: 	at ducv.run(PG:61)
+10-20 23:05:16.661  2217  4654 I AppDoctorConfigChanged: Refreshing configuration on flag commit.
+10-20 23:05:16.670  3655  4088 I cnab    : scheduleProvisioningForRcsProvisioningId: rcsProvisioningId: redacted-pii:sim_id[chars:20,last3:897] operationTrigger: 6 bugle trigger event: 9
+10-20 23:05:16.670  3655  4088 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false] [CONTEXT thread_id=106 ]
+10-20 23:05:16.671  3655  4088 I cnab    : RcsProvisioningTrigger: DR is active, initializing DR provisioning. DUAL_REG
+10-20 23:05:16.672  3655  3847 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false] [CONTEXT thread_id=67 ]
+10-20 23:05:16.680  3655  3847 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=67 ]
+10-20 23:05:16.682  3655  3847 I BugleRcsEngine: Scheduled provisioning task with 0 seconds delay, KEEP policy, trigger is CSLIB_PHENOTYPE_UPDATE, workerId is 57720365-7b4d-4bc5-b0b1-89c070b9daf8, simId is redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="provisioning" thread_id=67 ]
+10-20 23:05:16.688  3655  3804 W JobInfo : Requested important-while-foreground flag for job1021 is ignored and takes no effect
+10-20 23:05:16.688  3655  3804 D WM-SystemJobScheduler: Scheduling work ID c2a7fc1b-4ade-4083-9428-2829c67a95cfJob ID 1021
+10-20 23:05:16.695  3655  3804 D WM-GreedyScheduler: Ignoring {WorkSpec: 0fe54e10-28cb-4ad0-823c-a340f3c0657c}. Requires device idle.
+10-20 23:05:16.695  3655  3804 D WM-GreedyScheduler: Ignoring {WorkSpec: 013a35ea-bb8c-414f-9a5c-af2c0d1fe6db}. Requires device idle.
+10-20 23:05:16.695  3655  3804 D WM-GreedyScheduler: Starting tracking for c2a7fc1b-4ade-4083-9428-2829c67a95cf
+10-20 23:05:16.697  3655  3655 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=c2a7fc1b-4ade-4083-9428-2829c67a95cf, generation=0)
+10-20 23:05:16.714  3655  3847 D WM-Processor: pst: processing WorkGenerationalId(workSpecId=c2a7fc1b-4ade-4083-9428-2829c67a95cf, generation=0)
+10-20 23:05:16.714  3655  4088 D MddListenableWorkerFactory: createWorker for class: com.google.android.apps.messaging.shared.rcsprovisioning.RcsProvisioningListenableWorker
+10-20 23:05:16.756   643   675 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:16.763  3655  3655 D WM-WorkerWrapper: Starting work for com.google.android.apps.messaging.shared.rcsprovisioning.RcsProvisioningListenableWorker
+10-20 23:05:16.764  3655  3655 I BugleRcsWorker: [seqId=0][workId=9de8473d-00a8-4fd3-8b06-0aa2a8f60f30] RCS provisioning task has started
+10-20 23:05:16.771  3655  4088 D WM-ConstraintTracker: pxn: initial state = NetworkState(isConnected=true, isValidated=true, isMetered=false, isNotRoaming=true)
+10-20 23:05:16.771  3655  4088 D WM-NetworkStateTracker: Registering network callback
+10-20 23:05:16.776   643  1206 D ConnectivityService: requestNetwork for uid/pid:10145/3655 activeRequest: null callbackRequest: 173 [NetworkRequest [ TRACK_DEFAULT id=174, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10145 RequestorUid: 10145 RequestorPkg: com.google.android.apps.messaging UnderlyingNetworks: Null] ], NetworkRequest [ REQUEST id=175, [ Transports: SATELLITE Capabilities: INTERNET&TRUSTED&NOT_VCN_MANAGED Uid: 10145 RequestorUid: 10145 RequestorPkg: com.google.android.apps.messaging UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647 isUidTracked: false declaredMethods: AVAIL|LOST|NC
+10-20 23:05:16.780  3655  3849 D WM-GreedyScheduler: Constraints met: Scheduling work ID WorkGenerationalId(workSpecId=c2a7fc1b-4ade-4083-9428-2829c67a95cf, generation=0)
+10-20 23:05:16.781  3655  4088 D WM-Processor: Work WorkGenerationalId(workSpecId=c2a7fc1b-4ade-4083-9428-2829c67a95cf, generation=0) is already enqueued for processing
+10-20 23:05:16.782   643   920 D ConnectivityService: NetReassign [174 : null → 100] [c 1] [a 1] [i 3]
+10-20 23:05:16.782  3655  4279 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=12000Kbps LinkDnBandwidth>=30000Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 54Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Frequency: 2437MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -50 UnderlyingNetworks: Null]
+10-20 23:05:16.783  3655  3847 I BugleRcsWorker: [seqId=0][workId=9de8473d-00a8-4fd3-8b06-0aa2a8f60f30] Starting StateMachine, trigger is CSLIB_PHENOTYPE_UPDATE
+10-20 23:05:16.783  3655  3847 I BugleRcsEngine: start PEv2, trigger is CSLIB_PHENOTYPE_UPDATE, workerId is 9de8473d-00a8-4fd3-8b06-0aa2a8f60f30 [null] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=67 ]
+10-20 23:05:16.786  3655  3847 I BugleRcsEngine: Created new RcsProvisioningProtoDataStorage for sim redacted-pii:sim_id[chars:20,last3:897] [CONTEXT thread_id=67 ]
+10-20 23:05:16.792  3655  3847 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=67 ]
+10-20 23:05:16.793  3655  3847 I BugleRcsEngine: start [null] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=67 ]
+10-20 23:05:16.800  3655  4682 I BugleRcsEngine: Enter EnabledState [null] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.800  3655  3849 I StateMachineV2: State transition requested, from null to 1
+10-20 23:05:16.802  3655  3849 I StateMachineV2: Pretend entering dkii@248324e
+10-20 23:05:16.802  3655  3849 I StateMachineV2: Initialized StateMachineV2 to 1
+10-20 23:05:16.811  3655  4682 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=120 ]
+10-20 23:05:16.813  3655  4682 I StateMachineV2: Queuing delayed 9 for PT5M
+10-20 23:05:16.818  2303  4635 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:16.818  2303  4634 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:16.818  2303  4634 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:16.818  2303  4634 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:16.818  2303  4634 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:16.823  2303  4647 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:16.824  2217  4162 I PTCommittedOperation: Receive new configuration for com.google.android.gms.firebase.auth
+10-20 23:05:16.830  3655  4682 I BugleRcsEngine: Sending ProvisioningEvent to Bugle [Send Provisioning Session ID (18)], redacted-pii:[chars:97] [CONTEXT thread_id=120 ]
+10-20 23:05:16.831  3655  4682 I BugleRcsEngine: Broadcasting provisioning intent com.google.android.ims.provisioning.engine.provisioningEventAction to Bugle with extras redacted-pii:[chars:255] from source PROVISIONING_EVENT [CONTEXT log_prefix="EngineBroadcaster" thread_id=120 ]
+10-20 23:05:16.834  2303  4634 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:16.836  2217  2737 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:5 result: 1 elapsed_millis: 225 uptime_millis: 225 exec_start_elapsed_seconds: 142 [CONTEXT service_id=218 ]
+10-20 23:05:16.842  2303  4647 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:16.842  2303  4647 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.firebase.auth [CONTEXT service_id=340 ]
+10-20 23:05:16.846  2217  4274 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:16.856  3655  4682 I BugleRcsEngine: Start a new provisioning session [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.856  3655  4682 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=120 ]
+10-20 23:05:16.861  2217  2223 W .gms.persistent: Missing inline cache for java.lang.Object axms.next()
+10-20 23:05:16.861  2217  2223 W .gms.persistent: Missing inline cache for java.lang.Object axms.next()
+10-20 23:05:16.861  2217  2223 W .gms.persistent: Missing inline cache for java.lang.Object axms.next()
+10-20 23:05:16.861  2217  2223 W .gms.persistent: Missing inline cache for java.lang.Object axms.next()
+10-20 23:05:16.861  2217  2223 W .gms.persistent: Missing inline cache for java.lang.Object axms.next()
+10-20 23:05:16.861  2217  2223 W .gms.persistent: Missing inline cache for java.lang.Object axms.next()
+10-20 23:05:16.861  2217  2223 W .gms.persistent: Missing inline cache for java.lang.Object axms.next()
+10-20 23:05:16.861  2217  2223 W .gms.persistent: Missing inline cache for java.lang.Object axms.next()
+10-20 23:05:16.866  3655  3847 I BugleRcsProvisioning: RcsProvisioningEventReceiver: Received ProvisioningEvent: Send Provisioning Session ID
+10-20 23:05:16.867  3655  3847 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.receiver.RcsProvisioningEventReceiver@d794686
+10-20 23:05:16.877  2303  4642 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:16.878  2303  4642 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:16.878  2303  4642 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:16.878  2303  4642 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:16.878  2303  4642 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:16.896  3655  4682 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false] [CONTEXT thread_id=120 ]
+10-20 23:05:16.902  3655  4682 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=120 ]
+10-20 23:05:16.902  3655  4682 I BugleRcsProvisioning: RcsAvailability configuration availability and enabled status: simId: redacted-pii:sim_id[chars:20,last3:897], SipConnectionType: DUAL_REG, isConfigurationAvailableAndEnabled: false
+10-20 23:05:16.903  3655  4682 I BugleRcsProvisioning: Checking isConfigServerUrlAvailable with simId: redacted-pii:sim_id[chars:20,last3:897],
+10-20 23:05:16.903  3655  4682 I BugleRcsEngine: getConfigServerUrl with simId: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=120 ]
+10-20 23:05:16.903  3655  4682 I BugleRcsEngine: Using config server URL from chgq [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=120 ]
+10-20 23:05:16.908  3655  4682 I BugleRcsProvisioning: RcsAvailability: Subscription Id: 1, simId: redacted-pii:sim_id[chars:20,last3:897], sipConnectionType: DUAL_REG, isRcsAvailable: false
+10-20 23:05:16.911  3655  4682 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=120 ]
+10-20 23:05:16.911  3655  4682 I BugleRcsProvisioning: updateAvailabilityForRcsProvisioningId. SimId: redacted-pii:sim_id[chars:20,last3:897], currentAvailability: 10, newAvailability: 10, hint: NO_HINT
+10-20 23:05:16.920  3655  4682 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=120 ]
+10-20 23:05:16.920  3655  4682 I BugleRcsEngine: transitionViaMessage, srcState=EnabledState, destState = CheckPreconditionsState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.921  3655  4682 I BugleRcsEngine: Sending ProvisioningEvent to Bugle [Update provisioning status (11)], redacted-pii:[chars:85] [CONTEXT thread_id=120 ]
+10-20 23:05:16.921  3655  4682 I BugleRcsEngine: Broadcasting provisioning intent com.google.android.ims.provisioning.engine.provisioningEventAction to Bugle with extras redacted-pii:[chars:243] from source PROVISIONING_EVENT [CONTEXT log_prefix="EngineBroadcaster" thread_id=120 ]
+10-20 23:05:16.925  3655  3847 I StateMachineV2: State transition requested, from 1 to 14
+10-20 23:05:16.925  3655  3847 I StateMachineV2: Pretend entering dkib@e655f6f
+10-20 23:05:16.927  3655  3804 I StateMachineV2: Pretend sent message 2004 to dkib@e655f6f
+10-20 23:05:16.927  3655  3849 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : availability is updated to Carrier RCS is not set up, lastAvailabilityLocal is Carrier RCS is not set up, simId hash = 8233018065341670324, simId = redacted-pii:sim_id[chars:20,last3:897], isPev3Enabled = true
+10-20 23:05:16.934  3655  4682 I BugleRcsEngine: EnabledState: Transition to check preconditions [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.936  3655  4682 W StateMachineV2: Current state 14 and its parents requested to transition to more than 1 state. Requests: [(1, 14), (14, 14)]
+10-20 23:05:16.939  3655  4682 I BugleRcsEngine: transitionTo: destState=CheckPreconditionsState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.939  3655  4682 I BugleRcsEngine: onTransitionRequested EnabledState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.939  3655  4682 I BugleRcsEngine: Enter CheckPreconditionsState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.942  3655  3849 I StateMachineV2: Ignoring transitioning request to 14, state machine is already at that state
+10-20 23:05:16.950  3655  4682 I StateMachineV2: Queuing delayed 9 for PT5M
+10-20 23:05:16.952  3655  4682 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=120 ]
+10-20 23:05:16.954  3655  3849 I BugleRcsProvisioning: RcsProvisioningEventReceiver: Received ProvisioningEvent: Update provisioning status
+10-20 23:05:16.959  3655  3849 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.receiver.RcsProvisioningEventReceiver@835b70d
+10-20 23:05:16.962  3655  4682 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=120 ]
+10-20 23:05:16.963  3655  4682 I BugleRcsEngine: transitionViaMessage, srcState=CheckPreconditionsState, destState = ReadyState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.963  3655  4682 W StateMachineV2: Current state 14 and its parents requested to transition to more than 1 state. Requests: [(1, 14), (14, 14), (14, 3)]
+10-20 23:05:16.963  3655  4682 I BugleRcsEngine: CheckPreconditionsState: Transition to ready [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.963  3655  4682 W StateMachineV2: Current state 14 and its parents requested to transition to more than 1 state. Requests: [(1, 14), (14, 14), (14, 3), (14, 3)]
+10-20 23:05:16.963  3655  4682 I BugleRcsEngine: transitionTo: destState=ReadyState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.964  3655  4682 I BugleRcsEngine: onTransitionRequested CheckPreconditionsState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.964  3655  4682 I BugleRcsEngine: Exit CheckPreconditionsState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.964  3655  4682 I BugleRcsEngine: Exit EnabledState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.964  3655  4682 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=120 ]
+10-20 23:05:16.964  3655  4682 I BugleRcsEngine: Enter InProgressState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.979  3655  3804 I StateMachineV2: State transition requested, from 14 to 3
+10-20 23:05:16.979  3655  3804 I StateMachineV2: Pretend exiting dkib@e655f6f
+10-20 23:05:16.979  3655  3804 I StateMachineV2: Pretend exiting dkii@248324e
+10-20 23:05:16.980  3655  3804 I StateMachineV2: Pretend entering dkio@b943d26
+10-20 23:05:16.980  3655  3804 I StateMachineV2: Pretend entering dkiq@87705b2
+10-20 23:05:16.981  3655  4682 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=120 ]
+10-20 23:05:16.981  3655  4682 I StateMachineV2: Queuing delayed 9 for PT5M
+10-20 23:05:16.981  3655  4682 I BugleRcsEngine: Enter ReadyState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:16.987  3655  3847 I StateMachineV2: Pretend sent message 2005 to dkiq@87705b2
+10-20 23:05:16.988  3655  4682 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=120 ]
+10-20 23:05:16.988  3655  4682 I StateMachineV2: Queuing delayed 9 for PT5M
+10-20 23:05:16.991  2217  3853 I AppDoctorManager: Updating appdoctor Uri Permissions. [CONTEXT service_id=256 ]
+10-20 23:05:16.992  3655  3804 I StateMachineV2: Ignoring transitioning request to 3, state machine is already at that state
+10-20 23:05:17.001  2217  3853 I AppDoctorManager: Granting access to 'com.google.android.gms' [CONTEXT service_id=256 ]
+10-20 23:05:17.003  3655  4682 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=120 ]
+10-20 23:05:17.011  4034  4042 W com.opus.piano: Suspending all threads took: 25.818ms
+10-20 23:05:17.014  3655  4682 I BugleRcsEngine: transitionViaMessage, srcState=ReadyState, destState = RequestWithImsiState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.014  3655  4682 W StateMachineV2: Current state 3 and its parents requested to transition to more than 1 state. Requests: [(1, 14), (14, 14), (14, 3), (14, 3), (3, 19)]
+10-20 23:05:17.014  3655  4682 I BugleRcsEngine: ReadyState: Transition to request with imsi [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.015  3655  4682 W StateMachineV2: Current state 3 and its parents requested to transition to more than 1 state. Requests: [(1, 14), (14, 14), (14, 3), (14, 3), (3, 19), (3, 19)]
+10-20 23:05:17.015  3655  4682 I BugleRcsEngine: transitionTo: destState=RequestWithImsiState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.015  3655  4682 I BugleRcsEngine: onTransitionRequested ReadyState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.015  3655  4682 I BugleRcsEngine: Exit ReadyState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.016  3655  4682 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=120 ]
+10-20 23:05:17.022  3655  3849 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=69 ]
+10-20 23:05:17.025  3655  4682 I BugleRcsEngine: Enter RequestWithImsiState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.026  3655  3804 I StateMachineV2: State transition requested, from 3 to 19
+10-20 23:05:17.026  3655  3804 I StateMachineV2: Pretend exiting dkiq@87705b2
+10-20 23:05:17.026  3655  3804 I StateMachineV2: Pretend entering dkiu@343e6b9
+10-20 23:05:17.030  3655  3849 I StateMachineV2: Pretend sent message 2007 to dkiu@343e6b9
+10-20 23:05:17.030  3655  3804 I StateMachineV2: Ignoring transitioning request to 19, state machine is already at that state
+10-20 23:05:17.039  3655  4682 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=120 ]
+10-20 23:05:17.039  3655  4682 I StateMachineV2: Queuing delayed 9 for PT5M
+10-20 23:05:17.051  3655  4682 I BugleRcsEngine: getConfigServerUrl with simId: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=120 ]
+10-20 23:05:17.051  3655  4682 I BugleRcsEngine: Using config server URL from chgq [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=120 ]
+10-20 23:05:17.055  3655  4682 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=120 ]
+10-20 23:05:17.073  3655  4682 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=120 ]
+10-20 23:05:17.074  3655  4682 W BugleRcsEngine: Could not retrieve MSISDN from configuration. Configuration is empty. [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.076  3655  4682 W BugleRcsEngine: Skipping adding Tachyon identity key to request. Null/empty RCS msisdn from configuration for sim ID: redacted-pii:sim_id[chars:20,last3:897]. [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.086  3655  3804 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=63 ]
+10-20 23:05:17.204  3240  3547 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+10-20 23:05:17.204  3240  3547 W libc    : Access denied finding property "service.adb.tls.port"
+10-20 23:05:17.200  3240  3240 W binder:3240_5: type=1400 audit(0.0:52): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=338 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+10-20 23:05:17.220   643   979 D FileUtils: Rounded bytes from 2593067008 to 4000000000
+10-20 23:05:17.236  2217  3853 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 142 [CONTEXT service_id=218 ]
+10-20 23:05:17.200  3240  3240 W binder:3240_5: type=1400 audit(0.0:53): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=63 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+10-20 23:05:17.281   446   476 I netd    : tetherGetStats() -> {[]} <1.33ms>
+10-20 23:05:17.290   446  4685 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10147 0}
+10-20 23:05:17.300   446   476 I netd    : bandwidthSetGlobalAlert(2097152) <0.08ms>
+10-20 23:05:17.306   446   476 I netd    : bandwidthRemoveInterfaceQuota(eth0) <4.16ms>
+10-20 23:05:17.312   446   476 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.43ms>
+10-20 23:05:17.315  3655  4682 E BugleRcsEngine: Could not create DroidGuard token creation event [CONTEXT log_prefix="DroidGuardLogger" thread_id=120 ]
+10-20 23:05:17.319  3655  4682 I BugleRcsEngine: RequestWithImsiState: event Send config request [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.319  3655  4682 I BugleRcsEngine: InProgressState: event Send config request [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.320  3655  4682 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=120 ]
+10-20 23:05:17.320  3655  3849 I StateMachineV2: Pretend sent message 7 to dkiu@343e6b9
+10-20 23:05:17.325  3655  3804 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=63 ]
+10-20 23:05:17.328  2217  2737 I TapAndPay: Sending QUICK_ACCESS_WALLET_STATE_CHANGED broadcast to wallet app. [CONTEXT service_id=79 ]
+10-20 23:05:17.328   446  4686 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10145 0}
+10-20 23:05:17.328   446  4687 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-20 23:05:17.329   446  4688 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-20 23:05:17.338   446  4687 I resolv  : res_nsend: used send_dg 76 terrno: 0
+10-20 23:05:17.338   446  4687 I resolv  : doQuery: rcode=0, ancount=1, return value=76
+10-20 23:05:17.344   446  4688 I resolv  : res_nsend: used send_dg 64 terrno: 0
+10-20 23:05:17.344   446  4688 I resolv  : doQuery: rcode=0, ancount=1, return value=64
+10-20 23:05:17.371  2217  4228 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 199 uptime_millis: 199 exec_start_elapsed_seconds: 142 [CONTEXT service_id=218 ]
+10-20 23:05:17.448  4034  4122 I TestRunner: finished: clearingDownloadsPreservesJournalCatalogueUnlocksAndPreferences(com.opus.piano.SmartCachePersistenceTest)

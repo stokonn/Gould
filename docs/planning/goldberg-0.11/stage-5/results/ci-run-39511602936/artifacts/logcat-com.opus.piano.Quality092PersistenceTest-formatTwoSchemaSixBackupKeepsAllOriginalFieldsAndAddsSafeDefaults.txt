@@ -1,0 +1,28 @@
+10-20 23:05:13.763  4034  4122 I TestRunner: started: formatTwoSchemaSixBackupKeepsAllOriginalFieldsAndAddsSafeDefaults(com.opus.piano.Quality092PersistenceTest)
+10-20 23:05:13.820  2217  2735 I PhenotypeResourceReader: unable to find any Phenotype resource metadata for com.google.android.feedback
+10-20 23:05:13.836  2217  2735 I .gms.persistent: AssetManager2(0x7ef312de95d8) locale list changing from [] to [en-US]
+10-20 23:05:13.904  1610  1943 I SP.AiAi : Scheduling: download stopped, 0 started, 0 paused, 5 scheduled, 5 pending: manifests:kg_collections_table-21051103 * {W:C:I:l, bg}, manifests:spelling_correction-22110320 * {W:C:I:l, bg}, manifests:text-classifier-annotator-272525175 * {W:C:I:l, bg}, manifests:text-classifier-actions-1140547708 * {W:C:I:l, bg}, manifests:text-classifier-langid-1941001461 * {W:C:I:l, bg}
+10-20 23:05:13.930  2303  4525 V Backup  : [CustomDownloadSchedulingIO] Received Action: com.google.android.gms.phenotype.com.google.android.gms.backup.COMMITTED
+10-20 23:05:13.930  2303  4525 V Backup  : [CustomDownloadSchedulingIO] customBackupDownloadEnableSuwTriggerWithGmsUpdateCheck flag on
+10-20 23:05:13.930  2303  4636 V Backup  : [G1ModuleInitIntentOperation] Flags updated
+10-20 23:05:13.930  2303  4636 V Backup  : [G1ModuleInitIntentOperation] Running restore operation is disabled by flag
+10-20 23:05:13.933  2303  4643 V Backup  : [GmsBackupSchedulerIO] Phenotype updated, attempting to schedule backup tasks
+10-20 23:05:13.935  2303  4636 W ChimeraUtils: Module com.google.android.gms.backup_g1 missing resource null(0)
+10-20 23:05:13.936  2303  4643 V Backup  : [RequireWifiAndChargingBackupTask] Scheduled
+10-20 23:05:13.936  2303  4643 V Backup  : [RequireIdleWifiAndChargingBackupTask] Scheduled
+10-20 23:05:13.938  2303  4643 D Backup  : [KeyValueSchedulerFrequencySetter] Target value already set: key_value_backup_interval_milliseconds=43200000
+10-20 23:05:13.951  2303  2303 I NearbySharing: SharingTileService destroyed
+10-20 23:05:13.956  2303  4636 W ChimeraUtils: Module com.google.android.gms.backup_g1 missing resource null(0)
+10-20 23:05:13.958  2303  4636 W ChimeraUtils: Module com.google.android.gms.backup_g1 missing resource null(0)
+10-20 23:05:13.973  2217  2735 I .gms.persistent: AssetManager2(0x7ef312e01958) locale list changing from [] to [en-US]
+10-20 23:05:13.978   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:05:13.979   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:05:13.979   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={10160} in 0ms
+10-20 23:05:13.984  1610  2109 I SP.AiAi : Registering captions_i18n_v0_mandatory.20240825, url: null, constraints: *:b:u:l, flags: *, requested: 20240825, current: 20210623
+10-20 23:05:13.989   643   643 D SdkSandboxManager: Property sdksandbox_next_activity_allowlist is empty.
+10-20 23:05:13.989   643   643 D SdkSandboxManager: Property sdksandbox_next_contentprovider_allowlist is empty.
+10-20 23:05:13.989   643   643 D SdkSandboxManager: Property sdksandbox_activity_allowlist_per_targetSdkVersion is empty.
+10-20 23:05:13.989   643   643 D SdkSandboxManager: Property contentprovider_allowlist_per_targetSdkVersion is empty.
+10-20 23:05:13.990   643   643 D SdkSandboxManager: Property services_allowlist_per_targetSdkVersion is empty.
+10-20 23:05:13.999  1610  2109 I SP.AiAi : Registering captions_i18n_v0_en-US.20240825, url: null, constraints: *:b:u:l, flags: *, requested: 20240825, current: 20210623
+10-20 23:05:14.032  4034  4122 I TestRunner: finished: formatTwoSchemaSixBackupKeepsAllOriginalFieldsAndAddsSafeDefaults(com.opus.piano.Quality092PersistenceTest)

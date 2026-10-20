@@ -1,0 +1,6 @@
+10-20 23:05:47.446  4034  4122 I TestRunner: started: displayedSnapshotRetainsItsOwnAttributionAcrossRefreshAndRejectsUnverifiedCredits(com.opus.piano.Stage4PortraitTest)
+10-20 23:05:47.448  4034  4120 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.451  4034  4123 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.452  4034  4120 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.455  4034  4123 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.457  4034  4122 I TestRunner: finished: displayedSnapshotRetainsItsOwnAttributionAcrossRefreshAndRejectsUnverifiedCredits(com.opus.piano.Stage4PortraitTest)

@@ -1,0 +1,2 @@
+10-20 23:05:46.376  4034  4122 I TestRunner: started: quarantinedConflictingParentPositionCannotPromoteACompositionToPart(com.opus.piano.Stage4GraphTest)
+10-20 23:05:46.416  4034  4122 I TestRunner: finished: quarantinedConflictingParentPositionCannotPromoteACompositionToPart(com.opus.piano.Stage4GraphTest)

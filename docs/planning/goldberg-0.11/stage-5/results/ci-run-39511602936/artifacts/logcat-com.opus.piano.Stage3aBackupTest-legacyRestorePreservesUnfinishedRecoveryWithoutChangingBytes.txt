@@ -1,0 +1,7 @@
+10-20 23:05:18.089  4034  4122 I TestRunner: started: legacyRestorePreservesUnfinishedRecoveryWithoutChangingBytes(com.opus.piano.Stage3aBackupTest)
+10-20 23:05:18.135  2217  2737 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:7 exec_start_elapsed_seconds: 143 [CONTEXT service_id=218 ]
+10-20 23:05:18.140  2303  4272 W Pay     : Active account was null, notification task will be cancelled. [CONTEXT service_id=198 ]
+10-20 23:05:18.145  2303  4272 I Pay     : [SeTosMigration] walletJpEligibility is not enabled [CONTEXT service_id=198 ]
+10-20 23:05:18.153  2303  4272 I Pay     : Wallet install state NOT_INSTALLED [CONTEXT service_id=198 ]
+10-20 23:05:18.155  2303  4272 I Pay     : Migration flag not enabled. [CONTEXT service_id=198 ]
+10-20 23:05:18.167  4034  4122 I TestRunner: finished: legacyRestorePreservesUnfinishedRecoveryWithoutChangingBytes(com.opus.piano.Stage3aBackupTest)

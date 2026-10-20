@@ -1,0 +1,13 @@
+10-20 23:05:32.987  4034  4122 I TestRunner: started: malformedDraftTimingIsPreservedRatherThanInvented(com.opus.piano.Stage3bBackupTest)
+10-20 23:05:32.990   643   675 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:33.050   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:05:33.053   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:05:33.053   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={10186} in 3ms
+10-20 23:05:33.054   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:05:33.055   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:05:33.055   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={20186} in 0ms
+10-20 23:05:33.056  2303  2303 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.chimera.container.moduleinstall.ModuleInstallService.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsApiService }
+10-20 23:05:33.057  2303  2303 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.ocr.service.internal.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+10-20 23:05:33.142  2217  2217 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.tapandpay.service.BIND dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.PersistentApiService }
+10-20 23:05:33.505  2303  4697 I GMS_MM_Logger: Memory Metric Logging not allowed. Stopping.
+10-20 23:05:33.607  4034  4122 I TestRunner: finished: malformedDraftTimingIsPreservedRatherThanInvented(com.opus.piano.Stage3bBackupTest)

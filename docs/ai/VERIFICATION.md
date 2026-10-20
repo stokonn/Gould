@@ -2,6 +2,27 @@
 
 Honest executed vs not-executed record. Only rows marked **EXECUTED** were actually run.
 
+## Executed — third CI dispatch: real application tests (2026-10-20/21)
+
+Attempt 3 (after documentation-first sync of the run-2 diagnosis): PR #34 merged
+workflow-only (`816d142`), run 39511602936 @ `9b80d65` monitored to completion.
+Evidence: `docs/planning/goldberg-0.11/stage-5/results/ci-run-39511602936/`.
+
+| # | Command / action | Result |
+|---|---|---|
+| 1 | PR #34 pre-merge diff check + merge + post-merge diff | **EXECUTED** — workflow-only (1 file, +42/−35); merged as `816d142`; re-verified. |
+| 2 | `gh workflow run … --ref feature/goldberg-0.11-stage-5` → [run 39511602936](https://github.com/stokonn/Goldberg/actions/runs/39511602936), monitored to completion | **EXECUTED** — headSha `9b80d65…` verified; materialize steps ✓; both scripts executed as single bash processes on booted emulators (boot ≈43 s). |
+| 3 | Full connected instrumentation suite on API 36 emulator (`connectedDebugAndroidTest`) | **EXECUTED — 177 tests: 162 passed, 13 failed (all assertion `-2`, 0 errors), 2 skipped.** All Stage 1–4 suites passed on-device; failures only in Stage5BundleJobRunnerTest (6), Stage5BundleStoreTest (2), Stage5BundleWorkerTest (5). Full stacks + per-test logcats preserved. |
+| 4 | Seeded in-place upgrade acceptance (job 5.11) | **EXECUTED — the upgrade validation itself PASSED on the emulator** (baseline install/launch/schema, seed push, candidate install/launch, prefs unchanged, `before == after`, `PRAGMA user_version`/`foreign_key_check`, UUID-v4 bridge); the **final** offline-state assertion (`verify_emulator_upgrade.py:143`) failed: an active default network was still reported after the disables. |
+| 5 | Signing evidence (job 5.11 step 11) | **EXECUTED — passed** again with full diagnostics. |
+
+### Not executed — this session (no claim)
+
+- Root-cause determination for the 13 instrumentation failures and the 5.11 offline
+  assertion (signatures recorded; code-level triage in progress).
+- Any re-dispatch of the workflow (forbidden until a meaningful, verified fix exists).
+- Physical-device execution; production-credential signing (by design).
+
 ## Executed — second CI dispatch + execution-model fix (2026-10-20, sixth session)
 
 Owner-approved attempt 2: merge PR #33, dispatch against `5cdc0d6`, monitor both jobs,

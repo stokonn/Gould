@@ -1,0 +1,7 @@
+10-20 23:05:47.396  4034  4122 I TestRunner: started: missingConsentBlocksTransferAndInsufficientReserveCannotReplaceSavedPortrait(com.opus.piano.Stage4PortraitTest)
+10-20 23:05:47.400  4034  4123 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.403  4034  4120 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.405  4034  4120 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.406  4034  4123 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.408  4034  4123 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.409  4034  4122 I TestRunner: finished: missingConsentBlocksTransferAndInsufficientReserveCannotReplaceSavedPortrait(com.opus.piano.Stage4PortraitTest)

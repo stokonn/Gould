@@ -1,0 +1,27 @@
+10-20 23:04:56.491  4034  4122 I TestRunner: started: schemaFiveMigrationKeepsHistoryAndSkipsOnboarding(com.opus.piano.Goldberg08MigrationTest)
+10-20 23:04:56.496  2303  2790 I ChangeFmdSettings: FMD on [CONTEXT service_id=284 ]
+10-20 23:04:56.520  2217  2217 I GCoreUlr: Unbound from all signal providers.
+10-20 23:04:56.520  2217  2217 I GCoreUlr: Stopping handler for UlrDispSvcFast
+10-20 23:04:56.521  2217  2217 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.nearby.presence.service.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps }
+10-20 23:04:56.532  4357  4380 I enim    : ProcessWebDataPrefillerServiceImpl#prefillWebData started
+10-20 23:04:56.534  2217  4228 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gcm.gmsproc.GcmInGmsTaskService started execution. cause:5 exec_start_elapsed_seconds: 121 [CONTEXT service_id=218 ]
+10-20 23:04:56.557  4357  4382 D nativeloader: Load /product/priv-app/Velvet/Velvet.apk!/lib/x86_64/libmappedcountercacheversionjni.so using class loader ns product-clns-10 (caller=/product/priv-app/Velvet/Velvet.apk!classes2.dex): ok
+10-20 23:04:56.557  2217  2224 W .gms.persistent: Suspending all threads took: 9.560ms
+10-20 23:04:56.565  2217  4228 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gcm.gmsproc.GcmInGmsTaskService finished executing. cause:5 result: 1 elapsed_millis: 148 uptime_millis: 148 exec_start_elapsed_seconds: 121 [CONTEXT service_id=218 ]
+10-20 23:04:56.574  2303  2485 W Pay     : Active account was null, notification task will be cancelled. [CONTEXT service_id=198 ]
+10-20 23:04:56.574  2303  2485 W Pay     : [eMoney card recovery task] exiting without init: active tapandpay account not found! [CONTEXT service_id=198 ]
+10-20 23:04:56.580  2217  2388 I .gms.persistent: IncrementDisableThreadFlip blocked for 12.123ms
+10-20 23:04:56.589   446  4383 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10147 0}
+10-20 23:04:56.589   446  4384 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-20 23:04:56.589   446  4384 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7982f60c6350
+10-20 23:04:56.589   446  4384 I resolv  : doQuery: rcode=0, ancount=8, return value=264
+10-20 23:04:56.589   446  4385 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-20 23:04:56.589   446  4385 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7981f60c9710
+10-20 23:04:56.589   446  4385 I resolv  : doQuery: rcode=0, ancount=8, return value=168
+10-20 23:04:56.595  4357  4382 D CompatChangeReporter: Compat change id reported: 312399441; UID 10146; state: ENABLED
+10-20 23:04:56.598  2303  2649 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-20 23:04:56.598  2303  2649 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@252635038@25.26.35 (260800-783060121):204)
+10-20 23:04:56.598  2303  2649 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@252635038@25.26.35 (260800-783060121):4)
+10-20 23:04:56.636  2303  2485 W Pay     : Active account was null, notification task will be cancelled. [CONTEXT service_id=198 ]
+10-20 23:04:56.637  2303  2485 W Pay     : [eMoney txn sync] exiting without init: active tapandpay account not found! [CONTEXT service_id=198 ]
+10-20 23:04:56.647  4034  4122 I TestRunner: finished: schemaFiveMigrationKeepsHistoryAndSkipsOnboarding(com.opus.piano.Goldberg08MigrationTest)

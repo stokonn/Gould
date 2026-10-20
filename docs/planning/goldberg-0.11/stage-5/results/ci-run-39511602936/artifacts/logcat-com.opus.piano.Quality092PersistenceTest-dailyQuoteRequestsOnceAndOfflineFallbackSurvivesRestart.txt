@@ -1,0 +1,3 @@
+10-20 23:05:13.544  4034  4122 I TestRunner: started: dailyQuoteRequestsOnceAndOfflineFallbackSurvivesRestart(com.opus.piano.Quality092PersistenceTest)
+10-20 23:05:13.573  1610  1943 I SP.AiAi : <==== Finishing job {W:b:u:l, bg}, 581 ms. elapsed since start
+10-20 23:05:13.584  4034  4122 I TestRunner: finished: dailyQuoteRequestsOnceAndOfflineFallbackSurvivesRestart(com.opus.piano.Quality092PersistenceTest)

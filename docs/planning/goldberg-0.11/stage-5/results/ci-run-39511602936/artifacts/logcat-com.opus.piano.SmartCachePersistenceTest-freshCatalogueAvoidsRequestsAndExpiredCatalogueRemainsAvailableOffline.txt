@@ -1,0 +1,59 @@
+10-20 23:05:16.155  4034  4122 I TestRunner: started: freshCatalogueAvoidsRequestsAndExpiredCatalogueRemainsAvailableOffline(com.opus.piano.SmartCachePersistenceTest)
+10-20 23:05:16.160  3655  3746 I BugleRcsProvisioning: RcsProvisioningTrigger: onCsLibPhenotypeUpdated, enableProvisioningTaskInBugle = true
+10-20 23:05:16.160  3655  3746 I BugleRcsProvisioning: RcsProvisioningTrigger: updateAvailabilityForAllSimsAsync : hint = CSLIB_PHENOTYPE_UPDATE logTriggerEvent = true
+10-20 23:05:16.161  3655  3746 I Bugle   : RcsAvailabilityUtilForProvisioningEngineV2: updateAvailabilityForAllSimsAsync, hint: CSLIB_PHENOTYPE_UPDATE
+10-20 23:05:16.161  3655  3746 I BugleRcsProvisioning: updateAvailabilityForAllSimsAsync: scheduling updateAvailabilityForRcsProvisioningId call. Hint: CSLIB_PHENOTYPE_UPDATE, enableWelcomePopupWithoutGoogleTos: false, reshowSuccessPopup: false
+10-20 23:05:16.166  3655  4088 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=106 ]
+10-20 23:05:16.167  3655  3803 I BugleRcsProvisioning: updateRcsAvailabilityForDefaultCallSim: hint: CSLIB_PHENOTYPE_UPDATE, canReshowWelcomeMessage: false
+10-20 23:05:16.168  3655  3849 I BugleRcsProvisioning: BugleSystemBindingManager: onBuglePhenotypeFlagChanged
+10-20 23:05:16.170  3655  3746 I BugleRcsEngine: SystemBinding enabled: true [CONTEXT log_prefix="SystemBindingManager" thread_id=43 ]
+10-20 23:05:16.171  3655  3746 I BugleRcsEngine: System Binding updated [CONTEXT thread_id=43 ]
+10-20 23:05:16.179  3655  3770 I BugleRcsEngine: SystemBinding enabled: true [CONTEXT log_prefix="SystemBindingManager" thread_id=52 ]
+10-20 23:05:16.180  3655  3804 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=63 ]
+10-20 23:05:16.180  3655  4088 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=106 ]
+10-20 23:05:16.180  3655  3851 I BugleRcsEngine: System Binding updated [CONTEXT thread_id=71 ]
+10-20 23:05:16.183  3655  4087 I BugleTransport: Retrieved RCS available simIds: []
+10-20 23:05:16.184  3655  3777 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: TACHYGRAM.
+10-20 23:05:16.186  3655  3804 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: DUAL_REGISTRATION.
+10-20 23:05:16.197  3655  3847 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=67 ]
+10-20 23:05:16.197  3655  3766 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: SINGLE_REGISTRATION.
+10-20 23:05:16.197  3655  3847 W RcsClientLib: Service is deprecated skipping connection attempt: RcsEngineLifecycleServiceV2
+10-20 23:05:16.201  3655  4087 W RcsClientLib: Service is deprecated skipping connection attempt: RcsEngineLifecycleServiceV2
+10-20 23:05:16.207  3655  3841 I BugleDataModel: 2 not running because already up to date, upgradeCommand: EXECUTE_UPGRADE, version: 2
+10-20 23:05:16.211  3655  3841 E BugleRcs: RcsEngineLifecycleManagerV2: RcsServiceConnectionException was raised while waiting to connect to RcsEngineLifecycleServiceV2
+10-20 23:05:16.211  3655  3841 E BugleRcs: cumf: RcsServiceConnectionException:com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2:UNKNOWN
+10-20 23:05:16.211  3655  3841 E BugleRcs: 	at culm.a(PG:54)
+10-20 23:05:16.211  3655  3841 E BugleRcs: 	at kho.a(PG:19)
+10-20 23:05:16.211  3655  3841 E BugleRcs: 	at culn.a(PG:14)
+10-20 23:05:16.211  3655  3841 E BugleRcs: 	at elsk.a(PG:13)
+10-20 23:05:16.211  3655  3841 E BugleRcs: 	at esfd.a(PG:3)
+10-20 23:05:16.211  3655  3841 E BugleRcs: 	at eseb.run(PG:19)
+10-20 23:05:16.211  3655  3841 E BugleRcs: 	at esff.run(PG:5)
+10-20 23:05:16.211  3655  3841 E BugleRcs: 	at dubu.run(PG:7)
+10-20 23:05:16.211  3655  3841 E BugleRcs: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:05:16.211  3655  3841 E BugleRcs: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:05:16.211  3655  3841 E BugleRcs: 	at dubb.run(PG:6)
+10-20 23:05:16.211  3655  3841 E BugleRcs: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:05:16.211  3655  3841 E BugleRcs: 	at ducv.run(PG:61)
+10-20 23:05:16.211  3655  3846 E BugleRcs: RcsEngineLifecycleManagerV2: RcsServiceConnectionException was raised while waiting to connect to RcsEngineLifecycleServiceV2
+10-20 23:05:16.211  3655  3846 E BugleRcs: cumf: RcsServiceConnectionException:com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2:UNKNOWN
+10-20 23:05:16.211  3655  3846 E BugleRcs: 	at culm.a(PG:54)
+10-20 23:05:16.211  3655  3846 E BugleRcs: 	at kho.a(PG:19)
+10-20 23:05:16.211  3655  3846 E BugleRcs: 	at culn.a(PG:14)
+10-20 23:05:16.211  3655  3846 E BugleRcs: 	at elsk.a(PG:13)
+10-20 23:05:16.211  3655  3846 E BugleRcs: 	at esfd.a(PG:3)
+10-20 23:05:16.211  3655  3846 E BugleRcs: 	at eseb.run(PG:19)
+10-20 23:05:16.211  3655  3846 E BugleRcs: 	at esff.run(PG:5)
+10-20 23:05:16.211  3655  3846 E BugleRcs: 	at dubu.run(PG:7)
+10-20 23:05:16.211  3655  3846 E BugleRcs: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:05:16.211  3655  3846 E BugleRcs: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:05:16.211  3655  3846 E BugleRcs: 	at dubb.run(PG:6)
+10-20 23:05:16.211  3655  3846 E BugleRcs: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:05:16.211  3655  3846 E BugleRcs: 	at ducv.run(PG:61)
+10-20 23:05:16.215  3655  3846 I BugleDataModel: 3 not running because already up to date, upgradeCommand: EXECUTE_UPGRADE, version: 2
+10-20 23:05:16.225  3655  3849 I BugleSatellite: Processing Phenotype flag changes.
+10-20 23:05:16.228  3655  4087 I BugleSatellite: Reporting to Telephony: SMS supported = false
+10-20 23:05:16.243  3655  3746 I ForwardSyncCache: reclaimMemory: Clearing caches
+10-20 23:05:16.244  3655  3746 W BugleSpam: trimming memory: closing msg model.
+10-20 23:05:16.245  3655  3847 W JobInfo : Requested important-while-foreground flag for job1020 is ignored and takes no effect
+10-20 23:05:16.250  4034  4122 I TestRunner: finished: freshCatalogueAvoidsRequestsAndExpiredCatalogueRemainsAvailableOffline(com.opus.piano.SmartCachePersistenceTest)

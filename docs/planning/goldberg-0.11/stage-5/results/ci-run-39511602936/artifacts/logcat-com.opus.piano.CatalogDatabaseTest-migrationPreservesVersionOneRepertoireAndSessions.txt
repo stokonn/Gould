@@ -1,0 +1,79 @@
+10-20 23:04:50.046  4034  4122 I TestRunner: started: migrationPreservesVersionOneRepertoireAndSessions(com.opus.piano.CatalogDatabaseTest)
+10-20 23:04:50.054  2303  3933 W IntrusionDetection: EnableIntrusiondetectionModule flag is off.
+10-20 23:04:50.061  2303  2649 I SystemUpdate: [Execution,InstallationIntentOperation] Received intent: Intent { act=com.google.android.gms.update.INSTALL_UPDATE cat=[targeted_intent_op_prefix:.update.execution.InstallationIntentOperation] xflg=0x4 cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+10-20 23:04:50.061  2303  2649 I SystemUpdate: [Execution,ExecutionManager] Start action execution: finished-execution
+10-20 23:04:50.061  2303  2649 I SystemUpdate: [Execution,ExecutionManager] Action finished-execution executed for 0.00 seconds.
+10-20 23:04:50.070  2303  2649 I Auth    : [SupervisedAccountIntentOperationV2] onHandleIntent: android.intent.action.BOOT_COMPLETED [CONTEXT service_id=42 ]
+10-20 23:04:50.080   643  1108 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.WALLET
+10-20 23:04:50.082   643  1108 W SignedPackage: Cannot get ApplicationInfo for package: com.google.android.devicelockcontroller
+10-20 23:04:50.103  2303  3982 I adservices: Schedule privacy sandbox mendel properties daily job
+10-20 23:04:50.106  2303  3982 W Auth    : [PubsubPeriodicSyncherRuntimeInit] Initializing periodic tasks, IntentAction=android.intent.action.BOOT_COMPLETED, InitRuntimeState=2
+10-20 23:04:50.109  3655  4086 I BugleTransport: Retrieved RCS available simIds: []
+10-20 23:04:50.110  3655  3910 I BugleRcsProvisioning: RcsProvisioningTrigger: System bound to :rcs process. Schedule provisioning.
+10-20 23:04:50.110  3655  3766 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: DUAL_REGISTRATION.
+10-20 23:04:50.111  3655  3908 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: TACHYGRAM.
+10-20 23:04:50.111  3655  3850 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: SINGLE_REGISTRATION.
+10-20 23:04:50.111  3655  4086 I RcsClientLib: Connecting RcsEngineLifecycleServiceV2
+10-20 23:04:50.112  3655  3908 I RcsClientLib: Connecting RcsEngineLifecycleServiceV2
+10-20 23:04:50.113  3655  4086 W RcsClientLib: No CS.apk RCS service found. Is RCS running in Bugle?
+10-20 23:04:50.114  3655  3908 W RcsClientLib: No CS.apk RCS service found. Is RCS running in Bugle?
+10-20 23:04:50.115  3655  4086 I RcsClientLib: shouldUseCarrierServicesJibeService: false, CarrierServices rcs service found: false
+10-20 23:04:50.122  3655  3908 I RcsClientLib: shouldUseCarrierServicesJibeService: false, CarrierServices rcs service found: false
+10-20 23:04:50.124  2217  2217 I PersonalSafety: ConnectivityProtectionLockingIntentOperation: cancelled task [CONTEXT service_id=310 ]
+10-20 23:04:50.125  3655  3850 I RcsClientLib: com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2 connected
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: Actively accessing legacy Rcs services [CONTEXT log_prefix="JibeServiceBase<IRcsEngineController>" thread_id=66 ]
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: java.lang.RuntimeException
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at eimo.a(PG:14)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2.stopAllRcsTransportsExcept(PG:4)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at ckzg.a(PG:8)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at ckze.call(PG:5)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at eluo.a(PG:3)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at elsk.a(PG:13)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at esfd.a(PG:3)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at eseb.run(PG:19)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at esff.run(PG:5)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at dubu.run(PG:7)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at eosd.run(PG:44)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at duem.run(PG:18)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at dubc.run(PG:8)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:50.127  3655  3841 W BugleRcsEngine: 	at ducv.run(PG:61)
+10-20 23:04:50.128  3945  3960 I BugleRcsEngine: stopAllRcsTransportsExcept: ignoring stopping the RcsEngine. RcsEngine is still running [CONTEXT log_prefix="RcsEngineProxyImpl:[e95cd8ef-f765]" thread_id=37 ]
+10-20 23:04:50.128  3655  3908 I RcsClientLib: com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2 connected
+10-20 23:04:50.129  3655  3841 I RcsClientLib: Disconnecting RcsEngineLifecycleServiceV2
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: Actively accessing legacy Rcs services [CONTEXT log_prefix="JibeServiceBase<IRcsEngineController>" thread_id=65 ]
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: java.lang.RuntimeException
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at eimo.a(PG:14)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2.stopAllRcsTransportsExcept(PG:4)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at ckzg.a(PG:8)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at ckze.call(PG:5)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at eluo.a(PG:3)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at elsk.a(PG:13)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at esfd.a(PG:3)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at eseb.run(PG:19)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at esff.run(PG:5)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at dubu.run(PG:7)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at eosd.run(PG:44)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at duem.run(PG:18)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at dubc.run(PG:8)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:50.130  3655  3846 W BugleRcsEngine: 	at ducv.run(PG:61)
+10-20 23:04:50.133  3945  4199 I BugleRcsEngine: stopAllRcsTransportsExcept: ignoring stopping the RcsEngine. RcsEngine is still running [CONTEXT log_prefix="RcsEngineProxyImpl:[e95cd8ef-f765]" thread_id=66 ]
+10-20 23:04:50.133  3655  3841 I RcsClientLib: Disconnecting RcsEngineLifecycleServiceV2
+10-20 23:04:50.137  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312df1918) locale list changing from [] to [en-US]
+10-20 23:04:50.137  3655  3910 I BugleClearcutLogger: qosTierResolver for LOG_SPEC_LEGACY_LOGGING is null. Using DEFAULT QoS tier as there's no specific QoS configuration for this log spec.
+10-20 23:04:50.138  3655  3910 I BugleRcsProvisioning: scheduleProvisioningForEligibleSims
+10-20 23:04:50.140  3655  3908 I cnab    : scheduleProvisioningForEligibleSims: operationTrigger: 4 bugle trigger event: 17
+10-20 23:04:50.140  3655  3910 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.rcsprovisioning.RcsProvisioningBroadcastReceiver@261e08
+10-20 23:04:50.143  3655  3908 I cnab    : scheduleProvisioningForAllEligibleSims: operationTrigger: 4 bugle trigger event: 17
+10-20 23:04:50.156  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312dec4b8) locale list changing from [] to [en-US]
+10-20 23:04:50.159  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312dece18) locale list changing from [] to [en-US]
+10-20 23:04:50.164  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312de92b8) locale list changing from [] to [en-US]
+10-20 23:04:50.166  2303  2307 W gle.android.gms: Suspending all threads took: 44.906ms
+10-20 23:04:50.170  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312de7698) locale list changing from [] to [en-US]
+10-20 23:04:50.182  1638  1673 I hbox:interactor: AssetManager2(0x7ef312de3e58) locale list changing from [] to [en-US]
+10-20 23:04:50.183  3655  3803 I BugleSimStateTracker: allNewlyBuiltSimSubscriptionInfos (simId, loggableGuid): [(redacted-pii:sim_id[chars:20,last3:897], fb15fce9-3ea0-4c40-9acc-30af098b5492)]
+10-20 23:04:50.183  3655  3803 I BugleSimStateTracker: Storing updatedSimSubscriptionInfos: [(redacted-pii:sim_id[chars:20,last3:897], fb15fce9-3ea0-4c40-9acc-30af098b5492)]
+10-20 23:04:50.185  3655  3803 I BugleSimStateTracker: Default call SIM changed. Broadcasting SIM SWAP. Old simId redacted-pii:sim_id[chars:0,last3:], new simId: redacted-pii:sim_id[chars:20,last3:897]
+10-20 23:04:50.185  3655  3803 I BugleRcsEngine: Broadcasting provisioning intent rcs.intent.action.rcsSimSwap to Bugle with extras redacted-pii:[chars:136] from source SIM_STATE_TRACKER [CONTEXT log_prefix="EngineBroadcaster" thread_id=62 ]
+10-20 23:04:50.186  4034  4122 I TestRunner: finished: migrationPreservesVersionOneRepertoireAndSessions(com.opus.piano.CatalogDatabaseTest)

@@ -1,0 +1,96 @@
+10-20 23:04:50.497  4034  4122 I TestRunner: started: repertoireCrudAndHistorySurviveReopening(com.opus.piano.DatabaseTest)
+10-20 23:04:50.505  3655  3766 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : availability is updated to RCS is disabled for this carrier by Google, lastAvailabilityLocal is RCS is disabled for this carrier by Google, simId hash = 8233018065341670324, simId = redacted-pii:sim_id[chars:20,last3:897], isPev3Enabled = true
+10-20 23:04:50.506  3655  3846 D nativeloader: Load /product/priv-app/PrebuiltBugle/PrebuiltBugle.apk!/lib/x86_64/libcronet.135.0.7012.3.so using class loader ns product-clns-10 (caller=/product/priv-app/PrebuiltBugle/PrebuiltBugle.apk!classes6.dex): ok
+10-20 23:04:50.510  1638  2080 I tol     : Disconnecting from SysUi, VM not enabled [IVR-C]
+10-20 23:04:50.514  1638  2080 I tog     : No binding to unbind [IVR-C]
+10-20 23:04:50.514  1638  2080 I tog     : Disconnected from SysUi [IVR-C]
+10-20 23:04:50.515   643  1842 D ConnectivityService: requestNetwork for uid/pid:10145/3655 activeRequest: null callbackRequest: 151 [NetworkRequest [ TRACK_DEFAULT id=152, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10145 RequestorUid: 10145 RequestorPkg: com.google.android.apps.messaging UnderlyingNetworks: Null] ], NetworkRequest [ REQUEST id=153, [ Transports: SATELLITE Capabilities: INTERNET&TRUSTED&NOT_VCN_MANAGED Uid: 10145 RequestorUid: 10145 RequestorPkg: com.google.android.apps.messaging UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647 isUidTracked: false declaredMethods: AVAIL|LOST|NC|LP
+10-20 23:04:50.515  1638  2080 I tkr     : (REDACTED) Nga on-device enabled based on TNG:MA active state: %b
+10-20 23:04:50.519   643  1108 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.WALLET
+10-20 23:04:50.529  2303  2485 I gle.android.gms: AssetManager2(0x7ef312e04518) locale list changing from [] to [en-US]
+10-20 23:04:50.534   643  1108 I system_server: AssetManager2(0x7ef312e11038) locale list changing from [] to [en-US]
+10-20 23:04:50.536  2303  2485 I gle.android.gms: AssetManager2(0x7ef312e04518) locale list changing from [] to [en-US]
+10-20 23:04:50.537  3655  3846 I cn_CronetLibraryLoader: Cronet version: 135.0.7012.3, arch: x86_64
+10-20 23:04:50.541  1638  2002 I egej    : setUiHints: finished successfully
+10-20 23:04:50.542  3655  3846 I RpcModule: Number of headers in RPC request: 3
+10-20 23:04:50.542  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312de8958) locale list changing from [] to [en-US]
+10-20 23:04:50.546  2303  2485 I gle.android.gms: AssetManager2(0x7ef312e04518) locale list changing from [] to [en-US]
+10-20 23:04:50.548  2303  2485 I gle.android.gms: AssetManager2(0x7ef312e04518) locale list changing from [] to [en-US]
+10-20 23:04:50.549  2303  2485 I gle.android.gms: AssetManager2(0x7ef312e04518) locale list changing from [] to [en-US]
+10-20 23:04:50.549  2303  2485 I gle.android.gms: AssetManager2(0x7ef312e04518) locale list changing from [] to [en-US]
+10-20 23:04:50.551  3655  3846 I BugleClearcutLogger: qosTierResolver for LOG_SPEC_LEGACY_LOGGING is null. Using DEFAULT QoS tier as there's no specific QoS configuration for this log spec.
+10-20 23:04:50.554   643   920 D ConnectivityService: NetReassign [152 : null → 100] [c 0] [a 33] [i 0]
+10-20 23:04:50.563  1638  2080 I thn     : Initialize
+10-20 23:04:50.563  1638  2080 I tol     : Subscribing to eligibility updates [IVR-C]
+10-20 23:04:50.564   643  1108 W SignedPackage: Cannot get ApplicationInfo for package: com.google.android.devicelockcontroller
+10-20 23:04:50.566  3655  3846 I RpcManager: [fad4ebd9-ccbd-4b69-b209-5803242ceaff] making getConfiguration request, workRequestId:8344fd0c-1ba9-4b41-8904-9654ec4d1431
+10-20 23:04:50.567  3655  3846 I BugleClearcutLogger: qosTierResolver for LOG_SPEC_LEGACY_LOGGING is null. Using DEFAULT QoS tier as there's no specific QoS configuration for this log spec.
+10-20 23:04:50.573   643   920 D ConnectivityService: NetReassign [no changes] [c 0] [a 18] [i 1]
+10-20 23:04:50.576  2217  2735 W .gms.persistent: Long monitor contention with owner netscheduler-queue-handler (2854) at void egim.o(int)(:com.google.android.gms@252635038@25.26.35 (260800-783060121):25) waiters=0 in void egim.t(boolean, ciws) for 439ms
+10-20 23:04:50.577  2217  2217 I ProximityAuth: [PhoneHubService] Handling intent for PhoneHubChimeraService.
+10-20 23:04:50.577  2303  2649 I RecoverableKeyStoreGms: [RecoverableKeyStoreGmsInitOperation] Setting vault handle
+10-20 23:04:50.581  2303  2485 I gle.android.gms: AssetManager2(0x7ef312e01958) locale list changing from [] to [en-US]
+10-20 23:04:50.586  1638  2080 I tol     : Disconnecting from SysUi, flag disabled [IVR-C]
+10-20 23:04:50.586  1638  2080 I tol     : (REDACTED) Disconnecting from SysUi, dictation ineligible. hasSubscribed=%s [IVR-C]
+10-20 23:04:50.586  1638  2080 I tol     : Disconnecting from SysUi, VM not enabled [IVR-C]
+10-20 23:04:50.588  2217  2423 I ProximityAuth: [PhoneHubService] No enabled account, stopping service
+10-20 23:04:50.590  2217  2217 I ProximityAuth: [PhoneHubService] Destroying PhoneHubChimeraService.
+10-20 23:04:50.590  2217  2217 W ProximityAuth: [PhoneHubNotificationProcessor] shutdown(): context is null.
+10-20 23:04:50.591  2217  2217 I ProximityAuth: [PhoneHubService] All devices have disconnected. Performing cleanup...
+10-20 23:04:50.591  2303  2485 I gle.android.gms: AssetManager2(0x7ef312e01958) locale list changing from [] to [en-US]
+10-20 23:04:50.591  2217  2217 W ChimeraUtils: Module com.google.android.gms.auth_proximity missing resource null(0)
+10-20 23:04:50.590  1638  2080 I tog     : No binding to unbind [IVR-C]
+10-20 23:04:50.591  1638  2080 I tog     : Disconnected from SysUi [IVR-C]
+10-20 23:04:50.592  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312df2bd8) locale list changing from [] to [en-US]
+10-20 23:04:50.593   643  1206 I RecoverableKeyStoreMgr: Initialized server params.
+10-20 23:04:50.594  2303  3918 W ChimeraUtils: Module com.google.android.gms.advancedprotection missing resource null(0)
+10-20 23:04:50.595   643  1858 D ContextHubService: Added callback, total callbacks 5
+10-20 23:04:50.596  1638  2080 I wqn     : (REDACTED) stopListening(%s, %s)
+10-20 23:04:50.601  2303  2485 I ChimeraCfgMgr: Features changed, regenerating config
+10-20 23:04:50.609   446  4289 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10147 0}
+10-20 23:04:50.609   643  1206 I RecoverySnapshotLstnrs: Registered listener for agent with uid 10147
+10-20 23:04:50.612  1638  2080 I tkr     : (REDACTED) Nga on-device enabled based on TNG:MA active state: %b
+10-20 23:04:50.623   446  4291 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10147 0}
+10-20 23:04:50.623   446  4292 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-20 23:04:50.623   446  4292 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7982160cd310
+10-20 23:04:50.623   446  4292 I resolv  : doQuery: rcode=0, ancount=1, return value=61
+10-20 23:04:50.623   446  4293 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-20 23:04:50.623   446  4293 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7982160cd790
+10-20 23:04:50.623   446  4293 I resolv  : doQuery: rcode=0, ancount=1, return value=49
+10-20 23:04:50.625   446  4294 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10145 0}
+10-20 23:04:50.626   446  4295 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-20 23:04:50.626   446  4296 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-20 23:04:50.628   643  1724 D FileUtils: Rounded bytes from 2593067008 to 4000000000
+10-20 23:04:50.635   643  1206 D FileUtils: Rounded bytes from 2593067008 to 4000000000
+10-20 23:04:50.642  1704  2010 D CompatChangeReporter: Compat change id reported: 352594277; UID 10146; state: ENABLED
+10-20 23:04:50.643   446  4295 I resolv  : res_nsend: used send_dg 279 terrno: 0
+10-20 23:04:50.643   446  4295 I resolv  : doQuery: rcode=0, ancount=8, return value=279
+10-20 23:04:50.646   643   657 I system_server: Background concurrent mark compact GC freed 33MB AllocSpace bytes, 80(1660KB) LOS objects, 41% free, 33MB/57MB, paused 10.679ms,4.025ms total 1.419s
+10-20 23:04:50.648   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:04:50.648   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:04:50.649   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={10105} in 3ms
+10-20 23:04:50.654   446  4296 I resolv  : res_nsend: used send_dg 183 terrno: 0
+10-20 23:04:50.655   446  4296 I resolv  : doQuery: rcode=0, ancount=8, return value=183
+10-20 23:04:50.666  1638  2002 I bimr    : (REDACTED) #FCF: Managed profile check status : %s
+10-20 23:04:50.666  1638  2002 I bimp    : (REDACTED) #FCF: Demo mode check status : %s
+10-20 23:04:50.666  1638  2002 I bipj    : (REDACTED) #FCF evaluate: %s
+10-20 23:04:50.666  1638  2002 I bipj    : (REDACTED) TngMaStatusChecker#evaluateInternal completed in %s millis
+10-20 23:04:50.677  1638  2080 I bosm    : OptInSetting is UNKNOWN or UNRECOGNIZED [CONTEXT ratelimit_period="10 SECONDS" skipped=20 ]
+10-20 23:04:50.679  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312def9d8) locale list changing from [] to [en-US]
+10-20 23:04:50.681   643   658 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+10-20 23:04:50.682  1638  2080 I bxxg    : (REDACTED) getInitialSimplifiedOobeViaDeeplinkUser: %b
+10-20 23:04:50.682  1638  2080 I bosm    : (REDACTED) isDeeplinkEnabled %s, isInitialSimplifiedOobeViaDeeplinkUser %s
+10-20 23:04:50.682  1638  2080 I bosm    : #getOobeStatus: BeforeOobe [CONTEXT ratelimit_period="10 SECONDS" skipped=20 ]
+10-20 23:04:50.682  1638  2080 I biqq    : User not OptedIn. Skipping Eligibility Checks.
+10-20 23:04:50.682  1638  2080 I bioy    : Robin is not eligible or not opted-in
+10-20 23:04:50.683  1638  2080 I bioy    : Headphone voice queries disabled: HEADPHONE_VOICE_QUERIES flag not enabled
+10-20 23:04:50.683  1638  2080 I bioy    : (REDACTED) Headphone Integration status: %s
+10-20 23:04:50.694  1252  1252 W InteractionJankMonitor: CUJ cancelled due to timeout, CUJ=LAUNCHER_APP_CLOSE_TO_HOME_FALLBACK
+10-20 23:04:50.695  1704  2010 I bdnr    : Dictation is disabled, cannot start dictation [SD]
+10-20 23:04:50.709  1020  2413 I PermissionControllerServiceImpl: Updating user sensitive for uid 10147
+10-20 23:04:50.710   643   670 I system_server: AssetManager2(0x7ef312de31d8) locale list changing from [] to [en-US]
+10-20 23:04:50.711   643   670 I system_server: AssetManager2(0x7ef312e07a38) locale list changing from [] to [en-US]
+10-20 23:04:50.726  2927  3007 D WM-DelayedWorkTracker: Scheduling work d48d2fde-bd98-42ca-b916-32b933e60da9
+10-20 23:04:50.727  2303  3989 I NewModuleComplete: Received com.google.android.chimera.IntentOperation.NEW_MODULE(com.google.android.gms.chimera.GmsIntentOperationService,1,true)
+10-20 23:04:50.728  2927  3007 D WM-GreedyScheduler: Starting tracking for d48d2fde-bd98-42ca-b916-32b933e60da9
+10-20 23:04:50.732  4034  4122 I TestRunner: finished: repertoireCrudAndHistorySurviveReopening(com.opus.piano.DatabaseTest)

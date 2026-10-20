@@ -1,0 +1,52 @@
+10-20 23:05:14.036  4034  4122 I TestRunner: started: legacyRecordAndNotesSurviveAssociationAndBackupRoundTrip(com.opus.piano.Redesign010PersistenceTest)
+10-20 23:05:14.048  1610  2109 I SP.AiAi : Successfully got manifest for captions_i18n_v0_mandatory-manifest: manifests:captions_i18n_v0_mandatory-20240825
+10-20 23:05:14.054  2217  2735 I .gms.persistent: AssetManager2(0x7ef312df3e98) locale list changing from [] to [en-US]
+10-20 23:05:14.066  1610  3239 I AiAiCaptions: downloadSuperpack(): Successfully loaded embedded manifest of superpack 'captions_i18n_v0_mandatory' (version 20240825)
+10-20 23:05:14.084  2303  4525 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:14.086  2303  4635 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:14.087  2303  4635 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:14.087  2303  4635 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:14.089  2303  4635 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:14.091  2303  4525 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:14.093  2303  4641 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:14.093  2303  4644 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:14.093  2303  4644 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.geotimezone [CONTEXT service_id=340 ]
+10-20 23:05:14.095  2303  4643 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:14.095  2303  4643 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:14.095  2303  4643 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:14.095  2303  4643 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:14.095  2303  4643 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:14.097  2217  2471 I PTCommittedOperation: Receive new configuration for com.google.android.gms.geotimezone
+10-20 23:05:14.097  2217  2471 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:14.114  1610  2109 I SP.AiAi : Syncing captions_i18n_v0_mandatory (20240825) with slices: [{sound_recognition_v7, W:b:u:l, bg}, {emotion_recognition_v4, W:b:u:l, bg}], metadata: false
+10-20 23:05:14.123  1610  2109 I SP.AiAi : Successfully got manifest for captions_i18n_v0_en-US-manifest: manifests:captions_i18n_v0_en-US-20240825
+10-20 23:05:14.246  2303  2323 I fkev    : Shared storage file not found for com.google.android.gms.usagereporting
+10-20 23:05:14.246  2303  2323 I fkev    : Unable to retrieve flag snapshot for com.google.android.gms.usagereporting, using defaults.
+10-20 23:05:14.273   643   661 D FileUtils: Rounded bytes from 2593067008 to 4000000000
+10-20 23:05:14.298  1610  2109 I SP.AiAi : Scheduling job with delay of 0s for {W:b:u:l, bg}, 1 candidates
+10-20 23:05:14.304  2303  4643 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:14.305  2303  4643 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:14.307  2303  4643 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:14.308  2303  4643 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:14.310  2303  4643 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:14.310  2303  4645 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:14.313  2303  4645 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:14.313  2303  4645 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.libraries.consentverifier#com.google.android.gms [CONTEXT service_id=340 ]
+10-20 23:05:14.314  2303  4641 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:14.316  2303  4641 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:14.318  2303  4641 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:14.318  2303  4641 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:14.318  2303  4641 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:14.318  2303  4641 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:14.319  2217  4651 I PTCommittedOperation: Receive new configuration for com.google.android.libraries.consentverifier#com.google.android.gms
+10-20 23:05:14.319  2217  4652 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:14.326  1610  1610 I SP.AiAi : ====> Starting job {W:b:u:l, bg}
+10-20 23:05:14.329  2217  2451 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService started execution. cause:4 exec_start_elapsed_seconds: 139 [CONTEXT service_id=218 ]
+10-20 23:05:14.330  2217  4228 I TapAndPay: deviceSupportsHce has detected emulator [CONTEXT service_id=79 ]
+10-20 23:05:14.333  1610  2109 I SP.AiAi : Scheduling: download registered, 0 started, 0 paused, 1 scheduled, 6 pending: manifests:kg_collections_table-21051103 {W:C:I:l, bg}, manifests:spelling_correction-22110320 {W:C:I:l, bg}, manifests:text-classifier-annotator-272525175 {W:C:I:l, bg}, manifests:text-classifier-actions-1140547708 {W:C:I:l, bg}, manifests:text-classifier-langid-1941001461 {W:C:I:l, bg}, captions_i18n_v0_mandatory:sound_recognition_v7 * {W:b:u:l, bg}
+10-20 23:05:14.349  1610  2109 I SP.AiAi : Scheduling job with delay of 0s for {W:b:u:l, bg}, 2 candidates
+10-20 23:05:14.355  1610  2109 I SP.AiAi : Scheduling: download registered, 0 started, 0 paused, 2 scheduled, 7 pending: manifests:kg_collections_table-21051103 {W:C:I:l, bg}, manifests:spelling_correction-22110320 {W:C:I:l, bg}, manifests:text-classifier-annotator-272525175 {W:C:I:l, bg}, manifests:text-classifier-actions-1140547708 {W:C:I:l, bg}, manifests:text-classifier-langid-1941001461 {W:C:I:l, bg}, captions_i18n_v0_mandatory:sound_recognition_v7 * {W:b:u:l, bg}, captions_i18n_v0_mandatory:emotion_recognition_v4 * {W:b:u:l, bg}
+10-20 23:05:14.359  1610  3239 I AiAiCaptions: downloadSuperpack(): Successfully loaded embedded manifest of superpack 'captions_i18n_v0_en-US' (version 20240825)
+10-20 23:05:14.367  2217  4228 I .gms.persistent: AssetManager2(0x7ef312df0978) locale list changing from [] to [en-US]
+10-20 23:05:14.376  2217  4228 I TapAndPay: NfcAdapter is null while obtaining CardEmulation instance. [CONTEXT service_id=79 ]
+10-20 23:05:14.389  4034  4122 I TestRunner: finished: legacyRecordAndNotesSurviveAssociationAndBackupRoundTrip(com.opus.piano.Redesign010PersistenceTest)

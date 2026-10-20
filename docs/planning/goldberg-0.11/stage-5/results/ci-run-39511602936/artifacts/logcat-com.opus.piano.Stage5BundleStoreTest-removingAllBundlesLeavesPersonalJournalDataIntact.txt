@@ -1,0 +1,2 @@
+10-20 23:06:22.811  4034  4122 I TestRunner: started: removingAllBundlesLeavesPersonalJournalDataIntact(com.opus.piano.Stage5BundleStoreTest)
+10-20 23:06:22.832  4034  4122 I TestRunner: finished: removingAllBundlesLeavesPersonalJournalDataIntact(com.opus.piano.Stage5BundleStoreTest)

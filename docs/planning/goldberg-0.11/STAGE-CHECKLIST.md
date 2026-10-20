@@ -371,8 +371,39 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
     assertions, 5× startup, trap; 25 deep `emulator-5554` adb calls prove persistence);
     negative guard test propagates exit 1. Canned stubs validate the execution
     model only — application assertions are verified solely by the real CI run.
-  - **STOPPED before merge/dispatch of attempt 3** pending the established
-    pre-dispatch documentation. Tasks 5.10–5.13 remain open.
+  - **Attempt 3 launch (2026-10-21, documentation-first):** workflow-only PR #34 merged
+    to `main` as `816d142` (pre-merge `gh pr diff 34 --name-only` = workflow file only,
+    +42/−35; post-merge `git diff a4a9509 origin/main` re-verified workflow-only; PR
+    branch byte-identical to the Stage 5 workflow copy); dispatched against Stage 5
+    checkpoint `9b80d65` (headSha verified).
+  - **Attempt 3 result (2026-10-20/21, [run 39511602936](https://github.com/stokonn/Goldberg/actions/runs/39511602936)
+    @ `9b80d65): FIRST RUN TO EXECUTE REAL APPLICATION TESTS — CI pipeline now works
+    end-to-end** (materialize steps ✓, both scripts ran as single bash processes on
+    booted emulators, `connectedDebugAndroidTest` executed). Evidence:
+    `docs/planning/goldberg-0.11/stage-5/results/ci-run-39511602936/`
+    (raw logs SHA-256 `6e93fdd4…1ba11`, 253 artifacts incl. per-test logcats).
+  - **5.10 — EXECUTED, FAILED: 177 tests, 162 passed, 13 failed, 0 errors, 2 skipped.**
+    All Stage 1–4 suites passed on-device; failures all in 3 Stage 5 classes:
+    Stage5BundleJobRunnerTest (6: concurrent shared dependency, interrupted download/
+    refresh retry, corrupt source/stored blob, consent revocation mid-stream),
+    Stage5BundleStoreTest (2: interrupted refresh atomic promote, reopen survival),
+    Stage5BundleWorkerTest (5: queued bundle, offline retry, transport retry, cancelled
+    job, missing metered consent — all `got Failure {mOutputData=Data {}}`). Observed
+    signatures include on-device `Retryable(error=integrity/transport)`,
+    `Integer<22> vs Long<22>` JSON type coercion, `List has more than one element`.
+    Root causes NOT yet determined — code-level triage in progress; no assertion
+    weakened.
+  - **5.11 — EXECUTED, FAILED at the FINAL offline-state assertion only
+    (`verify_emulator_upgrade.py:143`, 'Offline state changed during upgrade').**
+    Everything before it PASSED on the emulator: baseline install + launch + schema
+    verify, seed push, candidate install + launch, prefs unchanged, `before == after`
+    persistent-data equality, `PRAGMA user_version` = expected schema,
+    `foreign_key_check` clean, UUID-v4 identity bridge — **the seeded in-place upgrade
+    from v0.10.1 with full data preservation is verified working on the emulator.**
+    Offline-signature assumption on API 36 to be investigated (capture dumpsys output;
+    do not weaken).
+  - **Gate held:** diagnosis + documentation recorded BEFORE any re-dispatch; no new
+    dispatch started. Tasks 5.10–5.13 remain open; Stage 5 IN PROGRESS.
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,

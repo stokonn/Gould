@@ -1,0 +1,2 @@
+10-20 23:06:22.276  4034  4122 I TestRunner: started: authoredRelevanceNamesakesDiacriticsGenresAndFilters(com.opus.piano.Stage4SearchVerificationTest)
+10-20 23:06:22.340  4034  4122 I TestRunner: finished: authoredRelevanceNamesakesDiacriticsGenresAndFilters(com.opus.piano.Stage4SearchVerificationTest)

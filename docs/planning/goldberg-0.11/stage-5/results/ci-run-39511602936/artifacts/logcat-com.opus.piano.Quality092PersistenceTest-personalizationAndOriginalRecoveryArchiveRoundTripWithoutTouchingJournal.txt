@@ -1,0 +1,14 @@
+10-20 23:05:13.586  4034  4122 I TestRunner: started: personalizationAndOriginalRecoveryArchiveRoundTripWithoutTouchingJournal(com.opus.piano.Quality092PersistenceTest)
+10-20 23:05:13.589  1610  1943 I SP.AiAi : Download stopped: manifests:captions_i18n_v0_background-20240825, succeeded, size: 19929
+10-20 23:05:13.613  2217  2735 I PhenotypeResourceReader: unable to find any Phenotype resource metadata for com.google.android.gsf
+10-20 23:05:13.617  2217  2735 I PhenotypeResourceReader: unable to find any Phenotype resource metadata for com.google.android.tag
+10-20 23:05:13.620  2217  2735 I .gms.persistent: AssetManager2(0x7ef312dfa298) locale list changing from [] to [en-US]
+10-20 23:05:13.670  1006  1129 E FrameTracker: force finish cuj, time out: J<DEFAULT_TASK_TO_TASK_ANIMATION>
+10-20 23:05:13.676  2217  2735 I .gms.persistent: AssetManager2(0x7ef312e0c858) locale list changing from [] to [en-US]
+10-20 23:05:13.726  2217  2735 I PhenotypeResourceReader: unable to find any Phenotype resource metadata for com.google.android.apps.nexuslauncher
+10-20 23:05:13.737  1610  1943 I SP.AiAi : Scheduling job with delay of 0s for {W:C:I:l, bg}, 5 candidates
+10-20 23:05:13.742  1610  2109 I SP.AiAi : Successfully got manifest for captions_i18n_v0_background-manifest: manifests:captions_i18n_v0_background-20240825
+10-20 23:05:13.749  1610  3239 I AiAiCaptions: loadManifest(): Successfully loaded embedded manifest of superpack 'captions_i18n_v0_background' (version 20240825)
+10-20 23:05:13.750  1610  2415 I AiAiCaptions: generateAndDownloadSuperpack(): Successfully created manifest of superpack 'captions_i18n_v0_mandatory' (version 20240825), starting to download. Packs to skip:
+10-20 23:05:13.751  1610  2415 I AiAiCaptions: generateAndDownloadSuperpack(): Successfully created manifest of superpack 'captions_i18n_v0_en-US' (version 20240825), starting to download. Packs to skip:
+10-20 23:05:13.762  4034  4122 I TestRunner: finished: personalizationAndOriginalRecoveryArchiveRoundTripWithoutTouchingJournal(com.opus.piano.Quality092PersistenceTest)

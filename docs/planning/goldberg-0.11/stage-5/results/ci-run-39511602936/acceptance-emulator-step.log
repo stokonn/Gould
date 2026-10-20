@@ -1,0 +1,243 @@
+﻿2026-10-20T23:01:33.2929785Z ##[group]Run reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d
+2026-10-20T23:01:33.2930057Z with:
+2026-10-20T23:01:33.2930182Z   api-level: 36
+2026-10-20T23:01:33.2930301Z   target: google_apis
+2026-10-20T23:01:33.2930420Z   arch: x86_64
+2026-10-20T23:01:33.2930533Z   profile: pixel_6
+2026-10-20T23:01:33.2930651Z   avd-name: stage5-ci
+2026-10-20T23:01:33.2930788Z   disable-animations: true
+2026-10-20T23:01:33.2931058Z   emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+2026-10-20T23:01:33.2931361Z   script: bash "$RUNNER_TEMP/stage5-acceptance.sh"
+2026-10-20T23:01:33.2931528Z   cores: 2
+2026-10-20T23:01:33.2931645Z   force-avd-creation: true
+2026-10-20T23:01:33.2931782Z   emulator-boot-timeout: 600
+2026-10-20T23:01:33.2931919Z   emulator-port: 5554
+2026-10-20T23:01:33.2932051Z   disable-spellchecker: false
+2026-10-20T23:01:33.2932197Z   disable-linux-hw-accel: auto
+2026-10-20T23:01:33.2932342Z   enable-hw-keyboard: false
+2026-10-20T23:01:33.2932497Z   channel: stable
+2026-10-20T23:01:33.2932610Z env:
+2026-10-20T23:01:33.2932778Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-20T23:01:33.2933046Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-20T23:01:33.2933266Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-10-20T23:01:33.2933570Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-10-20T23:01:33.2933728Z ##[endgroup]
+2026-10-20T23:01:33.3313078Z ##[group]Configure emulator
+2026-10-20T23:01:33.3314062Z API level: 36
+2026-10-20T23:01:33.3314365Z System image API level: 36
+2026-10-20T23:01:33.3314631Z target: google_apis
+2026-10-20T23:01:33.3314877Z CPU architecture: x86_64
+2026-10-20T23:01:33.3319912Z Hardware profile: pixel_6
+2026-10-20T23:01:33.3324422Z Cores: 2
+2026-10-20T23:01:33.3324623Z RAM size: 
+2026-10-20T23:01:33.3324741Z Heap size: 
+2026-10-20T23:01:33.3324886Z SD card path or size: 
+2026-10-20T23:01:33.3325021Z Disk size: 
+2026-10-20T23:01:33.3325181Z AVD name: stage5-ci
+2026-10-20T23:01:33.3325327Z force avd creation: true
+2026-10-20T23:01:33.3325484Z Emulator boot timeout: 600
+2026-10-20T23:01:33.3325630Z emulator port: 5554
+2026-10-20T23:01:33.3325954Z emulator options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+2026-10-20T23:01:33.3326259Z disable animations: true
+2026-10-20T23:01:33.3326425Z disable spellchecker: false
+2026-10-20T23:01:33.3326602Z disable Linux hardware acceleration: false
+2026-10-20T23:01:33.3326790Z enable hardware keyboard: false
+2026-10-20T23:01:33.3326942Z Channel: 0 (stable)
+2026-10-20T23:01:33.3327060Z Script:
+2026-10-20T23:01:33.3327208Z bash "$RUNNER_TEMP/stage5-acceptance.sh"
+2026-10-20T23:01:33.3327392Z Pre emulator launch script:
+2026-10-20T23:01:33.3327661Z ##[endgroup]
+2026-10-20T23:01:33.3328055Z ##[group]Install Android SDK
+2026-10-20T23:01:33.3348904Z [command]/usr/bin/sh -c \yes | sdkmanager --licenses > /dev/null
+2026-10-20T23:01:38.5088782Z Installing latest build tools, platform tools, and platform.
+2026-10-20T23:01:38.5098228Z [command]/usr/bin/sh -c \sdkmanager --install 'build-tools;37.0.0' platform-tools 'platforms;android-36'> /dev/null
+2026-10-20T23:01:39.5295687Z Installing latest emulator.
+2026-10-20T23:01:39.5305145Z [command]/usr/bin/sh -c \sdkmanager --install emulator --channel=0 > /dev/null
+2026-10-20T23:01:48.8324170Z Installing system images.
+2026-10-20T23:01:48.8332546Z [command]/usr/bin/sh -c \sdkmanager --install 'system-images;android-36;google_apis;x86_64' --channel=0 > /dev/null
+2026-10-20T23:03:09.3884877Z ##[endgroup]
+2026-10-20T23:03:09.3888133Z ##[group]Create AVD
+2026-10-20T23:03:09.3889264Z Creating AVD.
+2026-10-20T23:03:09.3905512Z [command]/usr/bin/sh -c \echo no | avdmanager create avd --force -n stage5-ci --package 'system-images;android-36;google_apis;x86_64' --device 'pixel_6'
+2026-10-20T23:03:09.9210837Z Loading local repository...                                                     
+2026-10-20T23:03:09.9220166Z [=========                              ] 25% Loading local repository...       
+2026-10-20T23:03:09.9221544Z [=========                              ] 25% Fetch remote repository...        
+2026-10-20T23:03:09.9221922Z [=======================================] 100% Fetch remote repository...       
+2026-10-20T23:03:10.7165441Z Auto-selecting single ABI x86_64
+2026-10-20T23:03:10.9753538Z [command]/usr/bin/sh -c \printf 'hw.cpu.ncore=2\n' >> /home/runner/.android/avd/stage5-ci.avd/config.ini
+2026-10-20T23:03:10.9772424Z ##[endgroup]
+2026-10-20T23:03:10.9774202Z ##[group]Launch Emulator
+2026-10-20T23:03:10.9774469Z Starting emulator.
+2026-10-20T23:03:10.9786038Z [command]/usr/bin/sh -c \/usr/local/lib/android/sdk/emulator/emulator -port 5554 -avd stage5-ci -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot &
+2026-10-20T23:03:10.9877298Z INFO         | Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+2026-10-20T23:03:10.9877598Z INFO         | Graphics backend: gfxstream
+2026-10-20T23:03:10.9877962Z INFO         | Found systemPath /usr/local/lib/android/sdk/system-images/android-36/google_apis/x86_64/
+2026-10-20T23:03:11.0250235Z INFO         | Saving last run QEMU version for the AVD to 2
+2026-10-20T23:03:11.0250990Z INFO         | Guest usage of host flag 'VulkanVirtualQueue' will be ignored.
+2026-10-20T23:03:11.0251638Z INFO         | Increasing RAM size to 2560MB
+2026-10-20T23:03:11.0252389Z INFO         | Guest GLES Driver: Auto (ext controls)
+2026-10-20T23:03:11.0252947Z INFO         | emuglConfig_init: vulkan_mode_selected:swiftshader gles_mode_selected:swiftshader
+2026-10-20T23:03:11.0253444Z INFO         | Checking system compatibility:
+2026-10-20T23:03:11.0253800Z INFO         |   Checking: hasSufficientDiskSpace
+2026-10-20T23:03:11.0254248Z INFO         |      Ok: Disk space requirements to run avd: `stage5-ci` are met
+2026-10-20T23:03:11.0254656Z INFO         |   Checking: hasSufficientHwGpu
+2026-10-20T23:03:11.0255066Z INFO         |      Ok: Hardware GPU compatibility checks are not required
+2026-10-20T23:03:11.0255474Z INFO         |   Checking: hasSufficientSystem
+2026-10-20T23:03:11.0255893Z INFO         |      Ok: System requirements to run avd: `stage5-ci` are met
+2026-10-20T23:03:11.0256865Z WARNING      | Feature QuickbootFileBacked is disabled due to stability issues, if you really want that, the environment variable ANDROID_EMU_FORCE_QUICKBOOT_FILE_BACKED need to set to 1
+2026-10-20T23:03:12.0163839Z ERROR        | Unable to connect to adb daemon on port: 5037
+2026-10-20T23:03:12.0189298Z INFO         | Storing crashdata in: /tmp/android-runner/emu-crash-37.2.12.db, detection is enabled for process: 3666
+2026-10-20T23:03:12.0189976Z INFO         | Initializing gfxstream backend
+2026-10-20T23:03:12.0198741Z INFO         | startOpenglesRendererImpl: gpu info
+2026-10-20T23:03:12.0198925Z INFO         | 
+2026-10-20T23:03:12.0201399Z INFO         | initIcdPaths: ICD set to 'swiftshader', using Swiftshader ICD
+2026-10-20T23:03:12.0202096Z INFO         | Setting ICD filenames for the loader = /usr/local/lib/android/sdk/emulator/lib64/vulkan/vk_swiftshader_icd.json
+2026-10-20T23:03:12.0202832Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so]
+2026-10-20T23:03:12.0203504Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so.1]
+2026-10-20T23:03:12.0204041Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so]
+2026-10-20T23:03:12.0204977Z INFO         | Added library: /usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so
+2026-10-20T23:03:12.0239829Z INFO         | Selecting Vulkan device: SwiftShader Device (Subzero), Version: 1.3.0
+2026-10-20T23:03:12.0240234Z INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+2026-10-20T23:03:12.0638124Z INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+2026-10-20T23:03:12.0663609Z INFO         | SharedLibrary::open for [libX11]
+2026-10-20T23:03:12.0664391Z WARNING      | Could not open libX11.so, try libX11.so.6
+2026-10-20T23:03:12.0664794Z INFO         | SharedLibrary::open for [libX11.so.6]
+2026-10-20T23:03:12.0665174Z INFO         | SharedLibrary::open for [libX11-xcb]
+2026-10-20T23:03:12.0665592Z WARNING      | Could not open libX11-xcb.so, try libX11-xcb.so.1
+2026-10-20T23:03:12.0665979Z INFO         | SharedLibrary::open for [libX11-xcb.so.1]
+2026-10-20T23:03:12.0742448Z INFO         | Initializing VkEmulation features:
+2026-10-20T23:03:12.0750194Z INFO         |     glInteropSupported: false
+2026-10-20T23:03:12.0750570Z INFO         |     useDeferredCommands: true
+2026-10-20T23:03:12.0750921Z INFO         |     createResourceWithRequirements: true
+2026-10-20T23:03:12.0751268Z INFO         |     useVulkanComposition: false
+2026-10-20T23:03:12.0751508Z INFO         |     useVulkanNativeSwapchain: false
+2026-10-20T23:03:12.0751717Z INFO         |     enable guestRenderDoc: false
+2026-10-20T23:03:12.0751947Z INFO         |     ASTC LDR emulation mode: Gpu
+2026-10-20T23:03:12.0752179Z INFO         |     enable ETC2 emulation: true
+2026-10-20T23:03:12.0752496Z INFO         |     enable Ycbcr emulation: false
+2026-10-20T23:03:12.0752802Z INFO         |     guestVulkanOnly: false
+2026-10-20T23:03:12.0753129Z INFO         |     useDedicatedAllocations: false
+2026-10-20T23:03:12.0753800Z INFO         |     guestVulkanMaxApiVersion: 1.3.0
+2026-10-20T23:03:12.0754140Z INFO         |     enableProtectedMemoryEmulation: false
+2026-10-20T23:03:12.0756332Z INFO         | Graphics Adapter Vendor Google (Google Inc.)
+2026-10-20T23:03:12.0757389Z INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (Google SwiftShader)
+2026-10-20T23:03:12.0758172Z INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+2026-10-20T23:03:12.0760850Z INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
+2026-10-20T23:03:12.0762797Z INFO         | Graphics Device Extensions N/A
+2026-10-20T23:03:12.0763141Z INFO         | Disabling sparse binding feature support
+2026-10-20T23:03:12.0830663Z INFO         | Sending adb public key [QAAAADGt41kvdAmeEDeimHfnsRuCQPJl7C1J9KGxd1b6UmJnUzrzqJaXvBWLboRhrCwQo8c/jhyOmL9OoKTN8BZg93Jw8NJdj032Mfz66obkAY4HbM0IbaJQRM0cSGboT2/ZW3j8HPjOdZ3Lavl2jAN45l2oPtquySm7XUFrp8iFjtI+hY1DfQ5/o5Bf9Z4dCkuz4bTlD5U92uDTMqgbSmP1yWQz/xQRZYuDik1LDe1AqW25yz1md9uE8l7vp0MBFXKlczDY1+Y7d+ccXNJlmeyHI4pm17y7/BjzEtez+aFGIH+ac7Wp2nijTu2Lil5CDoe1sB6l90JCQlNMarixaa3qVGxo6cK350bF7rmFNuAQ5b6n4WKLp5hgclTrCYTRJW0nvQFXZoxVYLd0CEC32euBu7qva2eKgH77NGKMK9QsYof3Jg2FA1qe3jCG+Oc9SBjJYfBew+fc+ivjwz8c235SfxHSThdnONh3T5kX9IprKPTKKsQSxgOotzsTE9aIpC2oE0Zsy4gKeooxH2BcALJSSXbiOjIPA5o5YfSFdxqYAoNZ0eUqlU0pHv75OkdEfIX2BGML09pJK16sYg0y9yPaEVWjx/zPVw8Wa1nWookO6W9ZddXTz4hB8jSUxA5jrfZ8qAvxN/pKRWsY3ALpDaAJPQ4UnnTW/PZAMqygGKYILOmjCU6mZQEAAQA= runner@unknown]
+2026-10-20T23:03:12.0832946Z INFO         | Userspace boot properties:
+2026-10-20T23:03:12.0833420Z INFO         |   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0
+2026-10-20T23:03:12.0833954Z INFO         |   androidboot.dalvik.vm.heapsize=576m
+2026-10-20T23:03:12.0834358Z INFO         |   androidboot.debug.hwui.renderer=skiagl
+2026-10-20T23:03:12.0834742Z INFO         |   androidboot.debug.sf.nobootanimation=1
+2026-10-20T23:03:12.0835094Z INFO         |   androidboot.hardware=ranchu
+2026-10-20T23:03:12.0835450Z INFO         |   androidboot.hardware.gltransport=pipe
+2026-10-20T23:03:12.0835988Z INFO         |   androidboot.hardware.vulkan=ranchu
+2026-10-20T23:03:12.0836311Z INFO         |   androidboot.logcat=*:V
+2026-10-20T23:03:12.0836628Z INFO         |   androidboot.opengles.version=196608
+2026-10-20T23:03:12.0836940Z INFO         |   androidboot.qemu=1
+2026-10-20T23:03:12.0840467Z INFO         |   androidboot.qemu.adb.pubkey=QAAAADGt41kvdAmeEDeimHfnsRuCQPJl7C1J9KGxd1b6UmJnUzrzqJaXvBWLboRhrCwQo8c/jhyOmL9OoKTN8BZg93Jw8NJdj032Mfz66obkAY4HbM0IbaJQRM0cSGboT2/ZW3j8HPjOdZ3Lavl2jAN45l2oPtquySm7XUFrp8iFjtI+hY1DfQ5/o5Bf9Z4dCkuz4bTlD5U92uDTMqgbSmP1yWQz/xQRZYuDik1LDe1AqW25yz1md9uE8l7vp0MBFXKlczDY1+Y7d+ccXNJlmeyHI4pm17y7/BjzEtez+aFGIH+ac7Wp2nijTu2Lil5CDoe1sB6l90JCQlNMarixaa3qVGxo6cK350bF7rmFNuAQ5b6n4WKLp5hgclTrCYTRJW0nvQFXZoxVYLd0CEC32euBu7qva2eKgH77NGKMK9QsYof3Jg2FA1qe3jCG+Oc9SBjJYfBew+fc+ivjwz8c235SfxHSThdnONh3T5kX9IprKPTKKsQSxgOotzsTE9aIpC2oE0Zsy4gKeooxH2BcALJSSXbiOjIPA5o5YfSFdxqYAoNZ0eUqlU0pHv75OkdEfIX2BGML09pJK16sYg0y9yPaEVWjx/zPVw8Wa1nWookO6W9ZddXTz4hB8jSUxA5jrfZ8qAvxN/pKRWsY3ALpDaAJPQ4UnnTW/PZAMqygGKYILOmjCU6mZQEAAQA= runner@unknown
+2026-10-20T23:03:12.0842620Z INFO         |   androidboot.qemu.avd_name=stage5-ci
+2026-10-20T23:03:12.0842858Z INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+2026-10-20T23:03:12.0843095Z INFO         |   androidboot.qemu.camera_protocol_ver=1
+2026-10-20T23:03:12.0843328Z INFO         |   androidboot.qemu.cpuvulkan.version=4206592
+2026-10-20T23:03:12.0843735Z INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+2026-10-20T23:03:12.0843991Z INFO         |   androidboot.qemu.gltransport.name=pipe
+2026-10-20T23:03:12.0844216Z INFO         |   androidboot.qemu.hwcodec.avcdec=2
+2026-10-20T23:03:12.0844439Z INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+2026-10-20T23:03:12.0844658Z INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+2026-10-20T23:03:12.0844929Z INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+2026-10-20T23:03:12.0845189Z INFO         |   androidboot.qemu.skin=1080x2400
+2026-10-20T23:03:12.0845400Z INFO         |   androidboot.qemu.virtiowifi=1
+2026-10-20T23:03:12.0845597Z INFO         |   androidboot.qemu.vsync=60
+2026-10-20T23:03:12.0845808Z INFO         |   androidboot.serialno=EMULATOR37X2X12X0
+2026-10-20T23:03:12.0846151Z INFO         |   androidboot.vbmeta.digest=7466b5c28e6a3e1427b22ed2c317c6c7066294bde838d4d5243cce5d37992bd5
+2026-10-20T23:03:12.0846465Z INFO         |   androidboot.vbmeta.hash_alg=sha256
+2026-10-20T23:03:12.0846670Z INFO         |   androidboot.vbmeta.size=6848
+2026-10-20T23:03:12.0846876Z INFO         |   androidboot.veritymode=enforcing
+2026-10-20T23:03:12.1000228Z WARNING: cannnot unmap ptr 0x7f4e3a601000 as it is in the protected range from 0x7f4d9a600000 to 0x7f4e3a800000
+2026-10-20T23:03:12.1215112Z INFO         | Monitoring duration of emulator setup.
+2026-10-20T23:03:13.1178082Z INFO         | Activated packet streamer for uwb emulation
+2026-10-20T23:03:13.1190269Z INFO         | Activated packet streamer for bluetooth emulation
+2026-10-20T23:03:13.1190898Z INFO         | Successfully initialized netsim WiFi
+2026-10-20T23:03:13.1220291Z INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+2026-10-20T23:03:13.1220798Z INFO         | setDisplayActiveConfig: id:0, 1080x2400
+2026-10-20T23:03:13.1221348Z INFO         | emulatorSetupEnvironment: Environment scene is not required
+2026-10-20T23:03:13.1272592Z USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+2026-10-20T23:03:13.1290584Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+2026-10-20T23:03:13.4739994Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+2026-10-20T23:03:20.9826206Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:20.9861811Z * daemon not running; starting now at tcp:5037
+2026-10-20T23:03:21.3930718Z * daemon started successfully
+2026-10-20T23:03:21.3931753Z adb: device offline
+2026-10-20T23:03:21.3935794Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-20T23:03:23.3970417Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:23.4003405Z adb: device offline
+2026-10-20T23:03:23.4011241Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-20T23:03:25.4046332Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:25.4083480Z adb: device offline
+2026-10-20T23:03:25.4087131Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-20T23:03:27.4103467Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:27.4135714Z adb: device offline
+2026-10-20T23:03:27.4139908Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-20T23:03:29.4200958Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:29.4570084Z 
+2026-10-20T23:03:31.4581281Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:31.4743361Z 
+2026-10-20T23:03:33.4820928Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:33.5076622Z 
+2026-10-20T23:03:35.5121560Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:35.5252527Z 
+2026-10-20T23:03:37.5306844Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:37.5456379Z 
+2026-10-20T23:03:39.5518484Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:39.5893619Z 
+2026-10-20T23:03:41.5936315Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:41.6145243Z 
+2026-10-20T23:03:43.6232075Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:43.6711320Z 
+2026-10-20T23:03:45.6752392Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:45.8664035Z 
+2026-10-20T23:03:47.8741424Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:47.9150124Z 
+2026-10-20T23:03:49.9031129Z INFO         | Boot completed in 38894 ms
+2026-10-20T23:03:49.9040265Z INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+2026-10-20T23:03:49.9151189Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:50.1161451Z 1
+2026-10-20T23:03:50.1174369Z Emulator booted.
+2026-10-20T23:03:50.1222704Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell input keyevent 82
+2026-10-20T23:03:50.4094448Z Disabling animations.
+2026-10-20T23:03:50.4168954Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global window_animation_scale 0.0
+2026-10-20T23:03:50.5133553Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global transition_animation_scale 0.0
+2026-10-20T23:03:50.8231089Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global animator_duration_scale 0.0
+2026-10-20T23:03:50.8857364Z ##[endgroup]
+2026-10-20T23:03:50.8951268Z [command]/usr/bin/sh -c bash "$RUNNER_TEMP/stage5-acceptance.sh"
+2026-10-20T23:03:51.0340538Z Running acceptance subset on verified emulator emulator-5554
+2026-10-20T23:03:58.6860656Z Performing Streamed Install
+2026-10-20T23:03:58.6910263Z Success
+2026-10-20T23:04:06.8951463Z stage5-ci-results/upgrade/seed.db: 1 file pushed, 0 skipped. 2.7 MB/s (147456 bytes in 0.052s)
+2026-10-20T23:04:07.0693377Z stage5-ci-results/upgrade/goldberg-appearance.xml: 1 file pushed, 0 skipped. 1.7 MB/s (198 bytes in 0.000s)
+2026-10-20T23:04:47.9394546Z Performing Streamed Install
+2026-10-20T23:04:47.9398202Z Success
+2026-10-20T23:05:12.2551342Z INFO         | Created VkInstance:0x55efeadfe000 for application:'' engine:''.
+2026-10-20T23:05:12.3325328Z INFO         | Destroyed VkInstance:0x55efeadfe000 for application:'' engine:''.
+2026-10-20T23:05:18.9443831Z Traceback (most recent call last):
+2026-10-20T23:05:18.9444463Z   File "/home/runner/work/Goldberg/Goldberg/scripts/verify_emulator_upgrade.py", line 143, in <module>
+2026-10-20T23:05:18.9445440Z     assert re.search(r'Active default network:\s*(?:none|null|-1)(?:\s|$)',adb('shell','dumpsys','connectivity').decode(),re.I), 'Offline state changed during upgrade'
+2026-10-20T23:05:18.9446157Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-20T23:05:18.9446548Z AssertionError: Offline state changed during upgrade
+2026-10-20T23:05:19.0851413Z ##[error]The process '/usr/bin/sh' failed with exit code 1
+2026-10-20T23:05:19.0853075Z ##[group]Terminate Emulator
+2026-10-20T23:05:19.0854797Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 emu kill
+2026-10-20T23:05:19.0884691Z OK: killing emulator, bye bye
+2026-10-20T23:05:19.0885215Z OK
+2026-10-20T23:05:19.0890928Z INFO         | Wait for emulator (pid 3666) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+2026-10-20T23:05:19.0891420Z 
+2026-10-20T23:05:19.0891738Z ##[endgroup]
+2026-10-20T23:05:19.1361235Z USER_INFO    | Snapshots have been disabled by the user, save request is ignored.
+2026-10-20T23:05:19.1362020Z INFO         | Saving snapshot 'default_boot' took 0 ms
+2026-10-20T23:05:19.1927649Z ERROR        | stop: Not implemented
+2026-10-20T23:05:19.1928595Z WARNING      | Emulator client has not yet been configured.. Call configure me first!
+2026-10-20T23:05:19.2067495Z INFO         | removeAll
+2026-10-20T23:05:19.2614726Z WARNING      | Netsim Wifi dns:///localhost:36055 is gone due to Stream removed (CANCELLED)

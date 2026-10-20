@@ -1,0 +1,100 @@
+10-20 23:04:57.564  4034  4122 I TestRunner: started: opus05UpgradePreservesIdsNotesHistoryUnlocksAndLinks(com.opus.piano.GoldbergPersistenceTest)
+10-20 23:04:57.576   446  4467 I resolv  : GetAddrInfoHandler::run: {100 100 100 983140 10166 0}
+10-20 23:04:57.578   446  4468 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-20 23:04:57.579   446  4469 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-20 23:04:57.583   446  4468 I resolv  : res_nsend: used send_dg 75 terrno: 0
+10-20 23:04:57.583   446  4468 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+10-20 23:04:57.583   446  4469 I resolv  : res_nsend: used send_dg 63 terrno: 0
+10-20 23:04:57.584   446  4469 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+10-20 23:04:57.611   643   764 E ReportEncoder: No watchlist hash
+10-20 23:04:57.630  4452  4452 W iew:webview_apk: Failed to find entry 'classes.dex': Entry not found
+10-20 23:04:57.630  4452  4452 D nativeloader: Configuring clns-9 for other apk /data/app/~~ccCLY4oheuF6nAN9A0XalA==/com.google.android.trichromelibrary_694313738-fb5D5LzVbtfRpWibz-ez3A==/TrichromeLibrary.apk. target_sdk_version=34, uses_libraries=ALL, library_path=/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/lib/x86_64:/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/WebViewGoogle.apk!/lib/x86_64:/data/app/~~ccCLY4oheuF6nAN9A0XalA==/com.google.android.trichromelibrary_694313738-fb5D5LzVbtfRpWibz-ez3A==/TrichromeLibrary.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.webview
+10-20 23:04:57.644  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df44d8) locale list changing from [] to [en-US]
+10-20 23:04:57.645  3240  3547 W SystemServiceRegistry: No service published for: persistent_data_block
+10-20 23:04:57.634  4452  4452 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+10-20 23:04:57.660   643  1852 D FileUtils: Rounded bytes from 2593067008 to 4000000000
+10-20 23:04:57.662  4402  4430 I cr_LibraryLoader: Successfully loaded native library
+10-20 23:04:57.670  4452  4452 D nativeloader: Configuring clns-10 for other apk /data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/WebViewGoogle.apk. target_sdk_version=34, uses_libraries=, library_path=/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/lib/x86_64:/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/WebViewGoogle.apk!/lib/x86_64:/data/app/~~ccCLY4oheuF6nAN9A0XalA==/com.google.android.trichromelibrary_694313738-fb5D5LzVbtfRpWibz-ez3A==/TrichromeLibrary.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.webview
+10-20 23:04:57.677  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312de8958) locale list changing from [] to [en-US]
+10-20 23:04:57.678  4402  4430 I cr_CachingUmaRecorder: Flushed 2 samples from 2 histograms, 0 samples were dropped.
+10-20 23:04:57.693  4402  4430 W SystemServiceRegistry: No service published for: uimode
+10-20 23:04:57.695  4452  4452 I iew:webview_apk: AssetManager2(0x7ef312de2b98) locale list changing from [] to [en-US]
+10-20 23:04:57.720  1704  2239 W achh    : Abort, client detached.
+10-20 23:04:57.723  1704  2239 W achh    : Abort, client detached.
+10-20 23:04:57.723  1704  2239 W achh    : Abort, client detached.
+10-20 23:04:57.724  1704  2239 W achh    : Abort, client detached.
+10-20 23:04:57.724  1704  2239 W achh    : Abort, client detached.
+10-20 23:04:57.724  1704  2239 W achh    : Abort, client detached.
+10-20 23:04:57.724  1704  2239 W achh    : Abort, client detached.
+10-20 23:04:57.725  4452  4452 V GraphicsEnvironment: Currently set values for:
+10-20 23:04:57.725  4452  4452 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-20 23:04:57.725  4452  4452 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-20 23:04:57.725  4452  4452 V GraphicsEnvironment: com.google.android.webview is not listed in per-application setting
+10-20 23:04:57.725  4452  4452 V GraphicsEnvironment: ANGLE allowlist from config: com.dreamgames.royalmatch com.dts.freefiremax com.dxx.firenow com.gramgames.mergedragons com.ludo.king com.mojang.minecraftpe com.my.defense com.nintendo.zaka com.os.airforce com.playrix.fishdomdd.gplay io.teslatech.callbreak jp.konami.prospia net.peakgames.toonblast
+10-20 23:04:57.725  4452  4452 V GraphicsEnvironment: com.google.android.webview is not listed in ANGLE allowlist or settings, returning default
+10-20 23:04:57.725  4452  4452 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-20 23:04:57.733  4452  4452 I LoadedApk: No resource references to update in package com.google.android.trichromelibrary
+10-20 23:04:57.736  4452  4452 I cr_WebViewApkApp: version=133.0.6943.137 (694313738) minSdkVersion=29 isBundle=false processName=com.google.android.webview:webview_apk
+10-20 23:04:57.737  4357  4454 W libc    : Access denied finding property "vendor.mesa.log"
+10-20 23:04:57.737  4357  4454 W libc    : Access denied finding property "vendor.mesa.log.file"
+10-20 23:04:57.737  4357  4454 E MESA    : Failed to open rendernode: No such file or directory
+10-20 23:04:57.755  4402  4430 W chromium: [WARNING:runtime_features.cc(560)] Fenced frames cannot be enabled in this configuration. Use --enable-features=FencedFrames instead.
+10-20 23:04:57.755  4402  4430 W chromium: [WARNING:runtime_features.cc(585)] Topics cannot be enabled in this configuration. Use --enable-features=BrowsingTopics in addition.
+10-20 23:04:57.757  4402  4430 W chromium: [WARNING:runtime_features.cc(606)] SharedStorage cannot be enabled in this configuration. Use --enable-features=SharedStorageAPI in addition.
+10-20 23:04:57.762  4357  4454 D vulkan  : searching for layers in '/product/priv-app/Velvet/Velvet.apk!/lib/x86_64'
+10-20 23:04:57.763  3240  3251 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+10-20 23:04:57.763  3240  3251 W libc    : Access denied finding property "service.adb.tls.port"
+10-20 23:04:57.767  1704  2758 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:04:57.760  3240  3240 W binder:3240_1: type=1400 audit(0.0:45): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=338 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+10-20 23:04:57.770  2217  2387 I .gms.persistent: AssetManager2(0x7ef312dfed98) locale list changing from [] to [en-US]
+10-20 23:04:57.779  4394  4438 I cr_VariationsSeedFetch: Fetched first run seed in 224 ms
+10-20 23:04:57.784  4452  4452 D nativeloader: Load /data/app/~~ccCLY4oheuF6nAN9A0XalA==/com.google.android.trichromelibrary_694313738-fb5D5LzVbtfRpWibz-ez3A==/TrichromeLibrary.apk!/lib/x86_64/libmonochrome_64.so using class loader ns clns-10 (caller=/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/WebViewGoogle.apk): ok
+10-20 23:04:57.786  4452  4452 I cr_LibraryLoader: Successfully loaded native library
+10-20 23:04:57.760  3240  3240 W binder:3240_1: type=1400 audit(0.0:46): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=63 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+10-20 23:04:57.797  1704  2239 W achh    : Abort, client detached.
+10-20 23:04:57.799  1704  2239 W achh    : Abort, client detached.
+10-20 23:04:57.799  1704  2239 W achh    : Abort, client detached.
+10-20 23:04:57.802  2217  2324 I FontLog : Received query name=Google Sans&weight=700&besteffort=false, URI content://com.google.android.gms.fonts [CONTEXT service_id=132 ]
+10-20 23:04:57.802  2217  2324 I FontLog : Query [name=Google Sans&weight=700&besteffort=false] resolved to {Google Sans, wdth 100.0, wght 700, ital 0.0, bestEffort false}, isVf false} [CONTEXT service_id=132 ]
+10-20 23:04:57.803  2217  2324 I FontLog : Font PFD returned from cache for {Google Sans, wdth 100.0, wght 700, ital 0.0, bestEffort false}, isVf false} [CONTEXT service_id=132 ]
+10-20 23:04:57.810  2217  2324 I FontLog : Fetch {Google Sans, wdth 100.0, wght 700, ital 0.0, bestEffort false}, isVf false} end status Status{statusCode=SUCCESS, resolution=null} [CONTEXT service_id=132 ]
+10-20 23:04:57.814  1704  2239 W achh    : Abort, client detached.
+10-20 23:04:57.814  1704  2239 W achh    : Abort, client detached.
+10-20 23:04:57.814  1704  2239 W achh    : Abort, client detached.
+10-20 23:04:57.814   446  4488 I resolv  : GetAddrInfoHandler::run: {100 100 100 983140 10166 0}
+10-20 23:04:57.814   446  4489 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-20 23:04:57.814   446  4490 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-20 23:04:57.818   446  4489 I resolv  : res_nsend: used send_dg 67 terrno: 0
+10-20 23:04:57.818   446  4489 I resolv  : doQuery: rcode=0, ancount=1, return value=67
+10-20 23:04:57.819   446  4490 I resolv  : res_nsend: used send_dg 135 terrno: 0
+10-20 23:04:57.819   446  4490 I resolv  : doQuery: rcode=0, ancount=6, return value=135
+10-20 23:04:57.826  4357  4454 W libc    : Access denied finding property "vendor.mesa.vk.trace.per.submit"
+10-20 23:04:57.826  4357  4454 W libc    : Access denied finding property "vendor.mesa.gallium.print.optio"
+10-20 23:04:57.826  4357  4454 W libc    : Access denied finding property "vendor.mesa.vk.trace.frame"
+10-20 23:04:57.829  2217  2324 I FontLog : Pulling font file for id = 10, cache size = 10 [CONTEXT service_id=132 ]
+10-20 23:04:57.830  2217  2374 W GmsUrlRequestImpl: Content-Type header is overwritten.
+10-20 23:04:57.833  2217  2513 I FontLog : Received query name=Noto Color Emoji Compat&weight=400&besteffort=false, URI content://com.google.android.gms.fonts [CONTEXT service_id=132 ]
+10-20 23:04:57.833  2217  2513 I FontLog : Query [name=Noto Color Emoji Compat&weight=400&besteffort=false] resolved to {Noto Color Emoji Compat, wdth 100.0, wght 400, ital 0.0, bestEffort false}, isVf false} [CONTEXT service_id=132 ]
+10-20 23:04:57.840  4357  4454 W libc    : Access denied finding property "vendor.mesa.vk.wsi.headless.swa"
+10-20 23:04:57.843  2217  2513 I FontLog : Fetch {Noto Color Emoji Compat, wdth 100.0, wght 400, ital 0.0, bestEffort false}, isVf false} end status Status{statusCode=SUCCESS, resolution=null} [CONTEXT service_id=132 ]
+10-20 23:04:57.843  4357  4454 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+10-20 23:04:57.844  4357  4454 I EGL_emulation: Opening libGLESv2_emulation.so
+10-20 23:04:57.853  2217  2324 I FontLog : Pulling font file for id = 11, cache size = 11 [CONTEXT service_id=132 ]
+10-20 23:04:57.856  2217  2324 I FontLog : Received query name=Google Sans Flex&weight=400&besteffort=false, URI content://com.google.android.gms.fonts [CONTEXT service_id=132 ]
+10-20 23:04:57.856  2217  2324 I FontLog : Query [name=Google Sans Flex&weight=400&besteffort=false] resolved to {Google Sans Flex, wdth 100.0, wght 400, ital 0.0, bestEffort false}, isVf false} [CONTEXT service_id=132 ]
+10-20 23:04:57.863  2217  2324 I FontLog : Font PFD returned from cache for {Google Sans Flex, wdth 100.0, wght 400, ital 0.0, bestEffort false}, isVf false} [CONTEXT service_id=132 ]
+10-20 23:04:57.864  2217  2324 I FontLog : Fetch {Google Sans Flex, wdth 100.0, wght 400, ital 0.0, bestEffort false}, isVf false} end status Status{statusCode=SUCCESS, resolution=null} [CONTEXT service_id=132 ]
+10-20 23:04:57.865  2217  2375 I FontLog : Pulling font file for id = 12, cache size = 12 [CONTEXT service_id=132 ]
+10-20 23:04:57.866  2217  2324 I FontLog : Received query name=Google Sans&weight=400&besteffort=false, URI content://com.google.android.gms.fonts [CONTEXT service_id=132 ]
+10-20 23:04:57.866  2217  2324 I FontLog : Query [name=Google Sans&weight=400&besteffort=false] resolved to {Google Sans, wdth 100.0, wght 400, ital 0.0, bestEffort false}, isVf false} [CONTEXT service_id=132 ]
+10-20 23:04:57.869  2217  2324 I FontLog : Font PFD returned from cache for {Google Sans, wdth 100.0, wght 400, ital 0.0, bestEffort false}, isVf false} [CONTEXT service_id=132 ]
+10-20 23:04:57.870  2217  2324 I FontLog : Fetch {Google Sans, wdth 100.0, wght 400, ital 0.0, bestEffort false}, isVf false} end status Status{statusCode=SUCCESS, resolution=null} [CONTEXT service_id=132 ]
+10-20 23:04:57.872  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312def9d8) locale list changing from [] to [en-US]
+10-20 23:04:57.888  2217  2224 W .gms.persistent: Suspending all threads took: 16.313ms
+10-20 23:04:57.889  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df2bd8) locale list changing from [] to [en-US]
+10-20 23:04:57.891  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312deabb8) locale list changing from [] to [en-US]
+10-20 23:04:57.895  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df6418) locale list changing from [] to [en-US]
+10-20 23:04:57.900  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312deaed8) locale list changing from [] to [en-US]
+10-20 23:04:57.908  2217  2513 W .gms.persistent: Weak pointer dereference blocked for 15 milliseconds.
+10-20 23:04:57.909  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312dee3f8) locale list changing from [] to [en-US]
+10-20 23:04:57.917  4034  4122 I TestRunner: finished: opus05UpgradePreservesIdsNotesHistoryUnlocksAndLinks(com.opus.piano.GoldbergPersistenceTest)

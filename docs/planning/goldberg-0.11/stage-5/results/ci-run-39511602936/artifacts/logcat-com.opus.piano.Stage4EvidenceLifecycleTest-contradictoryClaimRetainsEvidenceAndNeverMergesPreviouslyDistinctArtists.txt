@@ -1,0 +1,2 @@
+10-20 23:05:46.186  4034  4122 I TestRunner: started: contradictoryClaimRetainsEvidenceAndNeverMergesPreviouslyDistinctArtists(com.opus.piano.Stage4EvidenceLifecycleTest)
+10-20 23:05:46.369  4034  4122 I TestRunner: finished: contradictoryClaimRetainsEvidenceAndNeverMergesPreviouslyDistinctArtists(com.opus.piano.Stage4EvidenceLifecycleTest)

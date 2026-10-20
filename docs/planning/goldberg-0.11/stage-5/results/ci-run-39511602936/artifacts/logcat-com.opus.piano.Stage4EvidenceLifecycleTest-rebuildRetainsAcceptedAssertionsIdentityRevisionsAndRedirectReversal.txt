@@ -1,0 +1,2 @@
+10-20 23:05:46.132  4034  4122 I TestRunner: started: rebuildRetainsAcceptedAssertionsIdentityRevisionsAndRedirectReversal(com.opus.piano.Stage4EvidenceLifecycleTest)
+10-20 23:05:46.185  4034  4122 I TestRunner: finished: rebuildRetainsAcceptedAssertionsIdentityRevisionsAndRedirectReversal(com.opus.piano.Stage4EvidenceLifecycleTest)

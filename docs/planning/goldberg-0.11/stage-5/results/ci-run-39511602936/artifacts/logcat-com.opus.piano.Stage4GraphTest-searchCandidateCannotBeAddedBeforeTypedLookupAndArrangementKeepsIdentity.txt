@@ -1,0 +1,2 @@
+10-20 23:05:46.416  4034  4122 I TestRunner: started: searchCandidateCannotBeAddedBeforeTypedLookupAndArrangementKeepsIdentity(com.opus.piano.Stage4GraphTest)
+10-20 23:05:46.449  4034  4122 I TestRunner: finished: searchCandidateCannotBeAddedBeforeTypedLookupAndArrangementKeepsIdentity(com.opus.piano.Stage4GraphTest)

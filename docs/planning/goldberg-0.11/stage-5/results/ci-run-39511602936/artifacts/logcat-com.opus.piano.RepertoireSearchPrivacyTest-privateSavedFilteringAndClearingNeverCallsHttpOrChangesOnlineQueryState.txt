@@ -1,0 +1,222 @@
+10-20 23:05:15.360  4034  4122 I TestRunner: started: privateSavedFilteringAndClearingNeverCallsHttpOrChangesOnlineQueryState(com.opus.piano.RepertoireSearchPrivacyTest)
+10-20 23:05:15.386   206   206 I lowmemorykiller: lmkd data connection established
+10-20 23:05:15.418   206   206 I lowmemorykiller: Wakeup counter is reset from 802 to 0
+10-20 23:05:15.418   206   206 I lowmemorykiller: Using psi monitors for memory pressure detection
+10-20 23:05:15.418   206   206 I lowmemorykiller: Properties reinitilized
+10-20 23:05:15.418  4671  4671 I lowmemorykiller: lmkd updated properties successfully
+10-20 23:05:15.418   206   206 I lowmemorykiller: lmkd data connection dropped
+10-20 23:05:15.418   206   206 I lowmemorykiller: closing lmkd data connection
+10-20 23:05:15.458  2303  4648 I NearbyFastPair: TaskSchedulerUtils cancelTask TAG_FOOTPRINTS_PERIODIC_SCHEDULE success. [CONTEXT service_id=265 ]
+10-20 23:05:15.464  2303  4634 I NearbySharing: onBindSlice failed since shareTargets is empty
+10-20 23:05:15.466  2217  4650 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.com.google.android.gms.nearby.COMMITTED
+10-20 23:05:15.467  2217  4162 I NearbyConnections: Runtime state initialization complete. Nearby connections setting is disabled
+10-20 23:05:15.467   643  2131 I WifiService: getWifiEnabledState uid=10147 state=3
+10-20 23:05:15.468  2303  4634 I NearbySharing: Granted slice and uri permissions to android
+10-20 23:05:15.469  2303  4634 I NearbySharing: Granted slice and uri permissions to com.google.android.apps.nbu.files
+10-20 23:05:15.469  2303  4634 I NearbySharing: com.google.android.gms.nearby.sharing.receive.SamsungQrCodeActivity enable=false
+10-20 23:05:15.469   643  2131 I WifiService: is5GHzBandSupported uid=10147
+10-20 23:05:15.471   643   979 I WifiService: getWifiEnabledState uid=10147 state=3
+10-20 23:05:15.472   643  2393 I WifiService: is6GHzBandSupported uid=10147
+10-20 23:05:15.475  2303  2303 I NearbySharing: SharingTileService created.
+10-20 23:05:15.483  2303  4634 I NearbySharing: Runtime state initialization complete. Sharing is enabled.
+10-20 23:05:15.484  2217  2217 I NearbySharing: ReceiveSurfaceService started
+10-20 23:05:15.484  2217  2217 I NearbySharing: SendSurfaceService started
+10-20 23:05:15.485  2217  2387 I Nearby  : Beginning attempt #1 out of 3 for RestoreDeviceName... [CONTEXT service_id=49 ]
+10-20 23:05:15.487  2217  2387 I NearbyMediums: BluetoothAdapter's name was not set by Nearby Connections, ignoring call to restore default scan mode.
+10-20 23:05:15.487  2217  2387 I NearbyMediums: BluetoothAdapter's name was not set by Nearby Connections, ignoring call to restore device name
+10-20 23:05:15.494  2303  4647 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.494  2303  4647 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.494  2303  4647 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:15.494  2303  4649 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.495  1006  1187 E FrameTracker: force finish cuj, time out: J<SPLASHSCREEN_EXIT_ANIM>
+10-20 23:05:15.495  2217  4652 I PTCommittedOperation: Receive new configuration for com.google.android.gms.tapandpay
+10-20 23:05:15.495  2303  4633 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:15.497  2303  4633 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:15.498  2217  4665 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.499  2303  4643 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:15.499  2303  4643 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:15.499  2303  4643 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.tapandpay [CONTEXT service_id=340 ]
+10-20 23:05:15.499  2303  4643 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.499  2303  4643 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:15.499  2303  4643 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:15.499  2303  4643 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:15.499  2303  4643 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:15.502  2217  2324 I NearbySharing: A new client has bound to the NearbySharingService ClientBridge for calling package com.google.android.gms and PID 2303
+10-20 23:05:15.505  2217  4652 I TapAndPay: OffHostSessionManager not initializing - flag is off [CONTEXT service_id=79 ]
+10-20 23:05:15.507  2217  2387 I NearbySharing: There is no account metadata, return default instance.
+10-20 23:05:15.533  2303  4633 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.533  2303  4633 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.534  2303  4647 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.535  2303  4633 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:15.536  2303  4634 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:15.537  2303  4647 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:15.538  2303  4673 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:15.538  2303  4673 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:15.538  2303  4673 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.places [CONTEXT service_id=340 ]
+10-20 23:05:15.538  2303  4649 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.538  2303  4649 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:15.539  2303  4675 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:15.539  2303  4675 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:15.539  2303  4675 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:15.545  2217  4639 I PTCommittedOperation: Receive new configuration for com.google.android.gms.places
+10-20 23:05:15.546  2217  4658 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.625  2217  2217 I ProximityAuth: [PhoneHubService] Handling intent for PhoneHubChimeraService.
+10-20 23:05:15.626  2217  4228 I ProximityAuth: [PhoneHubService] No enabled account, stopping service
+10-20 23:05:15.627  2217  2217 I ProximityAuth: [PhoneHubService] Destroying PhoneHubChimeraService.
+10-20 23:05:15.628  2217  2217 W ProximityAuth: [PhoneHubNotificationProcessor] shutdown(): context is null.
+10-20 23:05:15.628  2217  2217 I ProximityAuth: [PhoneHubService] All devices have disconnected. Performing cleanup...
+10-20 23:05:15.628  2217  2217 W ChimeraUtils: Module com.google.android.gms.auth_proximity missing resource null(0)
+10-20 23:05:15.628  2217  4162 I ProximityAuth: [FeatureLoader] auth_easyunlock module load status: 2
+10-20 23:05:15.655  2217  4162 W ProximityAuth: [GetSyncedDevices] Attestation: No devices out of 0 passed verification.
+10-20 23:05:15.660   446   476 I netd    : tetherGetStats() -> {[]} <0.50ms>
+10-20 23:05:15.671  2303  4673 I SystemUpdate: [Installation,ReceiverIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.com.google.android.gms.update.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+10-20 23:05:15.680  2303  4649 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.684  2303  4649 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.684  2303  4649 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:15.684  2303  4633 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.686  2303  4646 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:15.686  2303  4646 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:15.686  2303  4646 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.auth_authzen [CONTEXT service_id=340 ]
+10-20 23:05:15.687  2303  4648 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:15.687  2217  4652 I PTCommittedOperation: Receive new configuration for com.google.android.gms.auth_authzen
+10-20 23:05:15.687  2303  4634 I SystemUpdate: [Execution,InstallationEventIntentOperation] Handling event of type 2.
+10-20 23:05:15.689  2303  4641 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.690  2303  4641 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:15.692  2303  4641 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:15.692  2303  4641 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:15.693  2303  4648 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:15.693  2303  4647 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:15.694  2217  4162 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.695  2303  4634 I SystemUpdate: [Execution,InstallationIntentOperation] Received intent: Intent { act=com.google.android.gms.update.INSTALL_UPDATE cat=[targeted_intent_op_prefix:.update.execution.InstallationIntentOperation] xflg=0x4 cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+10-20 23:05:15.696  2303  4634 I SystemUpdate: [Execution,ExecutionManager] Start action execution: finished-execution
+10-20 23:05:15.697  2303  4634 I SystemUpdate: [Execution,ExecutionManager] Action finished-execution executed for 0.00 seconds.
+10-20 23:05:15.724   446  4678 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10147 0}
+10-20 23:05:15.724   446  4679 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-20 23:05:15.725   446  4680 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-20 23:05:15.732   446  4679 I resolv  : res_nsend: used send_dg 261 terrno: 0
+10-20 23:05:15.732   446  4679 I resolv  : doQuery: rcode=0, ancount=8, return value=261
+10-20 23:05:15.733   446  4680 I resolv  : res_nsend: used send_dg 165 terrno: 0
+10-20 23:05:15.733   446  4680 I resolv  : doQuery: rcode=0, ancount=8, return value=165
+10-20 23:05:15.770  2303  4648 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.772  2303  4633 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.772  2303  4634 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.775  2303  4676 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:15.775  2303  4676 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:15.776  2303  4676 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:15.777  2217  4639 I PTCommittedOperation: Receive new configuration for com.google.android.gms.tron.metrics
+10-20 23:05:15.779  2303  4634 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:15.780  2217  4162 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.781  2303  4634 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:15.782  2303  4634 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:15.782  2303  4634 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:15.782  2303  4634 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:15.783   446   476 I netd    : tetherGetStats() -> {[]} <0.45ms>
+10-20 23:05:15.783  2303  4647 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:15.783  2303  4647 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.tron.metrics [CONTEXT service_id=340 ]
+10-20 23:05:15.783  2303  4648 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.788   446   476 I netd    : bandwidthSetGlobalAlert(2097152) <0.07ms>
+10-20 23:05:15.833  2303  2303 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.audit.service.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+10-20 23:05:15.882  2303  4676 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.882  2303  4676 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:15.882  2303  4676 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.882  2303  4676 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:15.883  2303  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.884  2303  4673 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:15.885  2303  4636 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:15.885  2303  4636 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:15.885  2303  4636 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:15.885  2303  4636 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:15.886  2303  4647 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:15.886  2303  4642 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.886  2303  4634 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:15.887  2303  4634 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.wearable [CONTEXT service_id=340 ]
+10-20 23:05:15.898  2217  4650 I PTCommittedOperation: Receive new configuration for com.google.android.gms.wearable
+10-20 23:05:15.898  2217  4650 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:15.914  2217  2735 I HeterodyneSyncer: Sync completed. fetchReason: NEW_APP_PROPERTIES, fetchPackageName: com.google.android.platform.rotation_resolver, syncErrorType: UNSET, individual sync errors: . [CONTEXT service_id=51 ]
+10-20 23:05:15.915  2054  3229 I HttpGrpcBindableService: [pfd-write] DOWNLOAD COMPLETE: Downloaded 8693764 bytes from URL [https://storage.googleapis.com/captions/sound_recognition_v7.zip].
+10-20 23:05:15.915  2054  3229 W System.err: val in interceptor: null
+10-20 23:05:15.916  1610  2631 I AstreaHttpConnection: DOWNLOAD COMPLETE: Downloaded unknown number of bytes from https://storage.googleapis.com/captions/sound_recognition_v7.zip.
+10-20 23:05:15.919  2217  2735 I .gms.persistent: AssetManager2(0x7ef312e01958) locale list changing from [] to [en-US]
+10-20 23:05:15.920  1610  1943 I SP.AiAi : Download stopped: captions_i18n_v0_mandatory:sound_recognition_v7, succeeded, size: 8693764
+10-20 23:05:15.924  2303  4635 I PhoneskyRecoveryLogs: Experiments updated. Start recovery checks. [CONTEXT service_id=242 ]
+10-20 23:05:15.924  2303  4635 W ChimeraUtils: Module com.google.android.gms.phonesky_recovery missing resource null(0)
+10-20 23:05:15.934  1488  1488 I PhenotypeModule: PhenotypeModule.receiveBroadcast():535 onReceive() urgent = false
+10-20 23:05:15.935  1488  1488 I PhenotypeModule: PhenotypeModule.maybeFetchAndUpdate():220 maybeFetchAndUpdate: start new task to fetch
+10-20 23:05:15.935  1488  1488 I PhenotypeBackgroundRecv: Skipping com.google.android.inputmethod.latin#com.google.android.inputmethod.latin which doesn't use ProcessStable flags.
+10-20 23:05:15.941  2217  2735 I .gms.persistent: AssetManager2(0x7ef312e07718) locale list changing from [] to [en-US]
+10-20 23:05:15.947  1488  1928 E PhenotypeModule: PhenotypeModule.handlePhenotypeConfigurationUpdates():440 Get empty configurations.
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: PhenotypeModule.commitConfigurationInternal():519 Failed to update configurations.
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: java.lang.IllegalStateException: Get empty configurations.
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at lkv.a(PG:401)
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at hjg.run(PG:114)
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at jab.run(PG:51)
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at izq.run(PG:8)
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: PhenotypeModule.fetchAndUpdate():268
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: java.lang.IllegalStateException: Get empty configurations.
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at lkv.a(PG:401)
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at hjg.run(PG:114)
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at jab.run(PG:51)
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:05:15.948  1488  1928 E PhenotypeModule: 	at izq.run(PG:8)
+10-20 23:05:15.949  1488  1928 I PhenotypeModule: PhenotypeModule.handleResult():322 fetchAndUpdate() : Failure, hasFlags=false, fetchStatus=PhenotypeFetchStatus{reason=BROADCAST, timestamp=1792537515934, isFullFetch=false, success=false, fetchedFlagsCount=-1, deletedFlagsCount=-1, isEmpty=false, isDelta=true, totalTime=14, failureMessage=Unknown, registeredFormFactor=phone, fetchedFormFactor=phone, serverToken=CAMSLw0q15vyAAPvD8cZz37JEwP-BfINqgsA5PDdAwS0DAQBBLsXBCkEAQS6H_YD-xcD}
+10-20 23:05:15.960  2217  2217 I NearbyFastPair: DynamicSupportModule: doReceive update intent [CONTEXT service_id=265 ]
+10-20 23:05:15.961  2217  2387 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate start [CONTEXT service_id=265 ]
+10-20 23:05:15.967  2217  2735 I HeterodyneSyncer: Finished notifying packages after sync. syncLatency: 1124 [CONTEXT service_id=51 ]
+10-20 23:05:15.968  3655  3841 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of cump@1fafb10
+10-20 23:05:15.968  3655  3851 I ForwardSyncCache: reclaimMemory: Clearing caches
+10-20 23:05:15.970  2217  2387 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate end [CONTEXT service_id=265 ]
+10-20 23:05:15.971  3655  3851 W BugleSpam: trimming memory: closing msg model.
+10-20 23:05:15.971  3655  3851 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+10-20 23:05:15.971  3655  3841 I BuglePhenotype: onReceive for bugle package [CONTEXT package_name="com.google.android.apps.messaging#com.google.android.apps.messaging" ]
+10-20 23:05:15.972  3655  3841 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@fc198d2
+10-20 23:05:15.972  3655  3655 I PhenotypeBackgroundRecv: Skipping com.google.android.apps.messaging#com.google.android.apps.messaging which doesn't use ProcessStable flags.
+10-20 23:05:15.973  3655  3851 I ForwardSyncCache: reclaimMemory: Clearing caches
+10-20 23:05:15.973  3655  3851 W BugleSpam: trimming memory: closing msg model.
+10-20 23:05:15.974  3655  3851 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+10-20 23:05:15.982  3655  3846 I BuglePhenotype: onReceive for cslib package [CONTEXT package_name="com.google.android.ims.library" ]
+10-20 23:05:15.986  2217  2735 I HeterodyneSyncScheduler: Scheduling adaptive one off task with window [14400, 604800] in seconds [CONTEXT service_id=51 ]
+10-20 23:05:15.989  3655  3846 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@3657b64
+10-20 23:05:15.994  3655  3655 I PhenotypeBackgroundRecv: Skipping com.google.android.ims.library which doesn't use ProcessStable flags.
+10-20 23:05:15.995  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:15.996  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:15.996  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:15.996  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:15.996  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:15.996  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:15.996  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:15.996  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:15.996  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:15.998  3655  3851 I ForwardSyncCache: reclaimMemory: Clearing caches
+10-20 23:05:15.999  3655  3851 W BugleSpam: trimming memory: closing msg model.
+10-20 23:05:15.999  3655  3851 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+10-20 23:05:16.011  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:16.011  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:16.018  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:16.018  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:16.019  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:16.019  2054  2575 W System.err: Seeding context with ref: 102540178
+10-20 23:05:16.019  2054  2575 I HttpGrpcBindableService: Downloading requested for URL 'https://storage.googleapis.com/captions/emotion_recognition_v4.zip'
+10-20 23:05:16.019  2303  3138 E feyh    : FileGroupManager: Trying to add expired group enpromo-state-config.
+10-20 23:05:16.019  2303  3138 W feyh    : MDDManager class fegg
+10-20 23:05:16.019  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:16.019  2303  3138 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:16.026  2217  2387 E IPCThreadState: Process seems to be sending too many oneway calls.
+10-20 23:05:16.026  2217  2387 W IPCThreadState: CallStack::getCurrentInternal not linked, returning null
+10-20 23:05:16.026  2217  2387 W oneway spamming: CallStack::logStackInternal not linked
+10-20 23:05:16.026  2217  2387 W BpBinder: Large outgoing transaction of 421344 bytes, interface descriptor , code 4 was sent
+10-20 23:05:16.035  1610  1943 I SP.AiAi : Scheduling: download stopped, 0 started, 0 paused, 0 scheduled, 8 pending: manifests:kg_collections_table-21051103 {W:C:I:l, bg}, manifests:spelling_correction-22110320 {W:C:I:l, bg}, manifests:text-classifier-annotator-272525175 {W:C:I:l, bg}, manifests:text-classifier-actions-1140547708 {W:C:I:l, bg}, manifests:text-classifier-langid-1941001461 {W:C:I:l, bg}, captions_i18n_v0_mandatory:emotion_recognition_v4 @ {W:b:u:l, bg}, captions_i18n_v0_en-US:asr_en-US_v3056 @ {W:b:u:l, bg}, captions_i18n_v0_en-US:input_predictions_en-US_v4 @ {W:b:u:l, bg}
+10-20 23:05:16.083  2217  2737 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.phenotype.service.sync.PhenotypeConfigurator finished executing. cause:5 result: 1 elapsed_millis: 6957 uptime_millis: 6957 exec_start_elapsed_seconds: 134 [CONTEXT service_id=218 ]
+10-20 23:05:16.091  2054  2575 I HttpGrpcBindableService: Responding with header information for URL 'https://storage.googleapis.com/captions/emotion_recognition_v4.zip'
+10-20 23:05:16.095  1610  2631 I AstreaHttpConnection: Started download from url='https://storage.googleapis.com/captions/emotion_recognition_v4.zip'
+10-20 23:05:16.098  3655  3746 I BuglePhenotype: Notify about updates in current package [CONTEXT current_package_name="com.google.android.ims.library" ]
+10-20 23:05:16.105  3655  3746 I Bugle   : RcsAvailabilityUtilForProvisioningEngineV2: onCsLibPhenotypeUpdated
+10-20 23:05:16.108  3655  3849 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=69 ]
+10-20 23:05:16.110  3655  3851 I BugleRcsEngine: SystemBinding enabled: true [CONTEXT log_prefix="SystemBindingManager" thread_id=71 ]
+10-20 23:05:16.127  3655  3757 I BugleRcsEngine: System Binding updated [CONTEXT thread_id=47 ]
+10-20 23:05:16.127  3655  3803 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=62 ]
+10-20 23:05:16.151  4034  4122 I TestRunner: finished: privateSavedFilteringAndClearingNeverCallsHttpOrChangesOnlineQueryState(com.opus.piano.RepertoireSearchPrivacyTest)

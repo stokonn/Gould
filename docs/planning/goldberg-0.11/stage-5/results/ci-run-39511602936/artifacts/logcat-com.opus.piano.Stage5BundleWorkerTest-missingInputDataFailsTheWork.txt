@@ -1,0 +1,4 @@
+10-20 23:06:22.883  4034  4122 I TestRunner: started: missingInputDataFailsTheWork(com.opus.piano.Stage5BundleWorkerTest)
+10-20 23:06:22.885  4034  4122 D WM-ForceStopRunnable: The default process name was not specified.
+10-20 23:06:22.885  4034  4122 D WM-ForceStopRunnable: Performing cleanup operations.
+10-20 23:06:22.892  4034  4122 I TestRunner: finished: missingInputDataFailsTheWork(com.opus.piano.Stage5BundleWorkerTest)

@@ -1,0 +1,2 @@
+10-20 23:05:32.528  4034  4122 I TestRunner: started: unstartedNotesAndSelectionRecoverWithoutInventingPracticeCredit(com.opus.piano.Stage3bBackupTest)
+10-20 23:05:32.622  4034  4122 I TestRunner: finished: unstartedNotesAndSelectionRecoverWithoutInventingPracticeCredit(com.opus.piano.Stage3bBackupTest)

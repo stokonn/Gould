@@ -1,0 +1,231 @@
+10-20 23:04:56.086  4034  4122 I TestRunner: started: upgradeFromV2RetainsCatalogueHistoryAndFirstVerifiedUnlockAcrossRestart(com.opus.piano.ExperiencePersistenceTest)
+10-20 23:04:56.087   643  1741 V SafetySourceDataValidat: Package: com.google.android.gms has expected signature
+10-20 23:04:56.087   643  1741 V SafetySourceDataValidat: Package: com.google.android.gms has expected signature
+10-20 23:04:56.092  4357  4357 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-20 23:04:56.094  2303  2307 W gle.android.gms: Suspending all threads took: 30.460ms
+10-20 23:04:56.113  3329  4321 D ConfigUpdater: Removed key from SharedPreferences: CONTENT_DOWNLOAD_ID
+10-20 23:04:56.113  3329  4321 D ConfigUpdater: Removed key from SharedPreferences: METADATA_DOWNLOAD_ID
+10-20 23:04:56.113  3329  4321 D ConfigUpdater: SharedPreferences cleared.
+10-20 23:04:56.113  3329  4321 D ConfigUpdater: Finished async task for handleContentDownload
+10-20 23:04:56.116  2303  3986 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2526359260800+mlkit.ocr.common+vision.ocr,tflite_dynamite:2640104055100800+tflite_dynamite
+10-20 23:04:56.117  3329  3329 D ConfigUpdater: UpdateRequestReceiver constructed with Config: com.google.android.configupdater.IntentFirewall.IntentFirewallConfig@143078a, StoredState: com.google.android.configupdater.StoredState@49271fb, DownloadManagerHelper: com.google.android.configupdater.DownloadManagerHelper@4373218, FlagHelper: com.google.android.configupdater.GservicesHelper@353d471
+10-20 23:04:56.117  3329  3329 D ConfigUpdater: Setting up preferences for StoredState, Downloader, and FlagHelper
+10-20 23:04:56.117  3329  3329 D ConfigUpdater: Setting up DownloadManagerHelper
+10-20 23:04:56.117  3329  3329 D ConfigUpdater: Loaded SharedPreferences: IntentFirewallDownload
+10-20 23:04:56.118  3329  3329 D ConfigUpdater: Using Lollipop+ download directory: /data/user/0/com.google.android.configupdater/files/downloads
+10-20 23:04:56.118  3329  3329 D ConfigUpdater: Got DownloadManager service
+10-20 23:04:56.118  3329  3329 D ConfigUpdater: Is wearable device: false
+10-20 23:04:56.118  3329  3329 D ConfigUpdater: Received intent with action: android.intent.action.DOWNLOAD_COMPLETE
+10-20 23:04:56.118  3329  3329 D ConfigUpdater: Handling download completed intent
+10-20 23:04:56.118  3329  3329 D ConfigUpdater: Checking content download complete: downloadId=4
+10-20 23:04:56.118  3329  3329 D ConfigUpdater: Checking metadata download complete: downloadId= 4
+10-20 23:04:56.124  3329  3329 D ConfigUpdater: UpdateRequestReceiver constructed with Config: com.google.android.configupdater.SmsShortCodes.SmsShortCodesConfig@8c32d7, StoredState: com.google.android.configupdater.StoredState@c7957c4, DownloadManagerHelper: com.google.android.configupdater.DownloadManagerHelper@e0046ad, FlagHelper: com.google.android.configupdater.GservicesHelper@274fde2
+10-20 23:04:56.124  3329  3329 D ConfigUpdater: Setting up preferences for StoredState, Downloader, and FlagHelper
+10-20 23:04:56.124  3329  3329 D ConfigUpdater: Setting up DownloadManagerHelper
+10-20 23:04:56.124  3329  3329 D ConfigUpdater: Loaded SharedPreferences: SmsShortCodesDownload
+10-20 23:04:56.124  3329  3329 D ConfigUpdater: Using Lollipop+ download directory: /data/user/0/com.google.android.configupdater/files/downloads
+10-20 23:04:56.124  3329  3329 D ConfigUpdater: Got DownloadManager service
+10-20 23:04:56.124  3329  3329 D ConfigUpdater: Is wearable device: false
+10-20 23:04:56.124  3329  3329 D ConfigUpdater: Received intent with action: android.intent.action.DOWNLOAD_COMPLETE
+10-20 23:04:56.124  3329  3329 D ConfigUpdater: Handling download completed intent
+10-20 23:04:56.124  3329  3329 D ConfigUpdater: Checking content download complete: downloadId=4
+10-20 23:04:56.124  3329  3329 D ConfigUpdater: Checking metadata download complete: downloadId= 4
+10-20 23:04:56.125  3329  3329 D ConfigUpdater: UpdateRequestReceiver constructed with Config: com.google.android.configupdater.NetworkWatchlist.NetworkWatchlistConfig@3962c30, StoredState: com.google.android.configupdater.StoredState@587a0a9, DownloadManagerHelper: com.google.android.configupdater.DownloadManagerHelper@969162e, FlagHelper: com.google.android.configupdater.PhenotypeHelper@c14a5cf
+10-20 23:04:56.125  3329  3329 D ConfigUpdater: Setting up preferences for StoredState, Downloader, and FlagHelper
+10-20 23:04:56.125  3329  3329 D ConfigUpdater: Setting up DownloadManagerHelper
+10-20 23:04:56.125  3329  3329 D ConfigUpdater: Loaded SharedPreferences: NetworkWatchlistDownload
+10-20 23:04:56.125  3329  3329 D ConfigUpdater: Using Lollipop+ download directory: /data/user/0/com.google.android.configupdater/files/downloads
+10-20 23:04:56.125  3329  3329 D ConfigUpdater: Got DownloadManager service
+10-20 23:04:56.125  3329  3329 D ConfigUpdater: Is wearable device: false
+10-20 23:04:56.127  3329  3329 D ConfigUpdater: Received intent with action: android.intent.action.DOWNLOAD_COMPLETE
+10-20 23:04:56.127  3329  3329 D ConfigUpdater: Handling download completed intent
+10-20 23:04:56.127  3329  3329 D ConfigUpdater: Checking content download complete: downloadId=4
+10-20 23:04:56.127  3329  3329 D ConfigUpdater: Checking metadata download complete: downloadId= 4
+10-20 23:04:56.130  3329  3329 D ConfigUpdater: UpdateRequestReceiver constructed with Config: com.google.android.configupdater.ApnDb.ApnDbConfig@f109e65, StoredState: com.google.android.configupdater.StoredState@174673a, DownloadManagerHelper: com.google.android.configupdater.DownloadManagerHelper@6dfcfeb, FlagHelper: com.google.android.configupdater.GservicesHelper@9675148
+10-20 23:04:56.130  3329  3329 D ConfigUpdater: Setting up preferences for StoredState, Downloader, and FlagHelper
+10-20 23:04:56.130  3329  3329 D ConfigUpdater: Setting up DownloadManagerHelper
+10-20 23:04:56.130  3329  3329 D ConfigUpdater: Loaded SharedPreferences: ApnDbDownload
+10-20 23:04:56.130  3329  3329 D ConfigUpdater: Using Lollipop+ download directory: /data/user/0/com.google.android.configupdater/files/downloads
+10-20 23:04:56.132  3329  3329 D ConfigUpdater: Got DownloadManager service
+10-20 23:04:56.132  3329  3329 D ConfigUpdater: Is wearable device: false
+10-20 23:04:56.132  3329  3329 D ConfigUpdater: Received intent with action: android.intent.action.DOWNLOAD_COMPLETE
+10-20 23:04:56.132  3329  3329 D ConfigUpdater: Handling download completed intent
+10-20 23:04:56.133  3329  3329 D ConfigUpdater: Checking content download complete: downloadId=4
+10-20 23:04:56.133  3329  3329 D ConfigUpdater: Checking metadata download complete: downloadId= 4
+10-20 23:04:56.134  4357  4357 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/org.apache.http.legacy.jar
+10-20 23:04:56.136  2303  3752 W gle.android.gms: Weak pointer dereference blocked for 20 milliseconds.
+10-20 23:04:56.137  3329  3329 D ConfigUpdater: UpdateRequestReceiver constructed with Config: com.google.android.configupdater.CarrierProvisioningUrls.CarrierProvisioningUrlsConfig@5b1bd06, StoredState: com.google.android.configupdater.StoredState@ce97fc7, DownloadManagerHelper: com.google.android.configupdater.DownloadManagerHelper@f4439f4, FlagHelper: com.google.android.configupdater.GservicesHelper@6d351d
+10-20 23:04:56.137  3329  3329 D ConfigUpdater: Setting up preferences for StoredState, Downloader, and FlagHelper
+10-20 23:04:56.137  3329  3329 D ConfigUpdater: Setting up DownloadManagerHelper
+10-20 23:04:56.137  3329  3329 D ConfigUpdater: Loaded SharedPreferences: CarrierProvisioningUrlsDownload
+10-20 23:04:56.137  3329  3329 D ConfigUpdater: Using Lollipop+ download directory: /data/user/0/com.google.android.configupdater/files/downloads
+10-20 23:04:56.137  3329  3329 D ConfigUpdater: Got DownloadManager service
+10-20 23:04:56.137  3329  3329 D ConfigUpdater: Is wearable device: false
+10-20 23:04:56.137  3329  3329 D ConfigUpdater: Received intent with action: android.intent.action.DOWNLOAD_COMPLETE
+10-20 23:04:56.137  3329  3329 D ConfigUpdater: Handling download completed intent
+10-20 23:04:56.137  3329  3329 D ConfigUpdater: Checking content download complete: downloadId=4
+10-20 23:04:56.137  3329  3329 D ConfigUpdater: Checking metadata download complete: downloadId= 4
+10-20 23:04:56.139  4357  4357 D nativeloader: Configuring clns-9 for other apk /system_ext/framework/com.android.extensions.appfunctions.jar. target_sdk_version=35, uses_libraries=ALL, library_path=/product/priv-app/Velvet/lib/x86_64:/product/priv-app/Velvet/Velvet.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.googlequicksearchbox
+10-20 23:04:56.143  3329  3329 D ConfigUpdater: UpdateRequestReceiver constructed with Config: com.google.android.configupdater.LangId.LangIdConfig@8f45163, StoredState: com.google.android.configupdater.StoredState@6650160, DownloadManagerHelper: com.google.android.configupdater.DownloadManagerHelper@fad0619, FlagHelper: com.google.android.configupdater.PhenotypeHelper@4dd66de
+10-20 23:04:56.143  3329  3329 D ConfigUpdater: Setting up preferences for StoredState, Downloader, and FlagHelper
+10-20 23:04:56.143  3329  3329 D ConfigUpdater: Setting up DownloadManagerHelper
+10-20 23:04:56.143  3329  3329 D ConfigUpdater: Loaded SharedPreferences: LangIdDownload
+10-20 23:04:56.143  3329  3329 D ConfigUpdater: Using Lollipop+ download directory: /data/user/0/com.google.android.configupdater/files/downloads
+10-20 23:04:56.143  3329  3329 D ConfigUpdater: Got DownloadManager service
+10-20 23:04:56.143  3329  3329 D ConfigUpdater: Is wearable device: false
+10-20 23:04:56.143  3329  3329 D ConfigUpdater: Received intent with action: android.intent.action.DOWNLOAD_COMPLETE
+10-20 23:04:56.143  3329  3329 D ConfigUpdater: Handling download completed intent
+10-20 23:04:56.143  3329  3329 D ConfigUpdater: Checking content download complete: downloadId=4
+10-20 23:04:56.144  3329  3329 D ConfigUpdater: Checking metadata download complete: downloadId= 4
+10-20 23:04:56.145  4357  4357 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+10-20 23:04:56.145  4357  4357 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+10-20 23:04:56.146  3329  3329 D ConfigUpdater: UpdateRequestReceiver constructed with Config: com.google.android.configupdater.SmartSelection.SmartSelectionConfig@708d38c, StoredState: com.google.android.configupdater.StoredState@97eead5, DownloadManagerHelper: com.google.android.configupdater.DownloadManagerHelper@c5512ea, FlagHelper: com.google.android.configupdater.PhenotypeHelper@6f889db
+10-20 23:04:56.146  3329  3329 D ConfigUpdater: Setting up preferences for StoredState, Downloader, and FlagHelper
+10-20 23:04:56.146  3329  3329 D ConfigUpdater: Setting up DownloadManagerHelper
+10-20 23:04:56.146  3329  3329 D ConfigUpdater: Loaded SharedPreferences: SmartSelectionDownload
+10-20 23:04:56.146  3329  3329 D ConfigUpdater: Using Lollipop+ download directory: /data/user/0/com.google.android.configupdater/files/downloads
+10-20 23:04:56.146  3329  3329 D ConfigUpdater: Got DownloadManager service
+10-20 23:04:56.146  3329  3329 D ConfigUpdater: Is wearable device: false
+10-20 23:04:56.146  3329  3329 D ConfigUpdater: Received intent with action: android.intent.action.DOWNLOAD_COMPLETE
+10-20 23:04:56.146  3329  3329 D ConfigUpdater: Handling download completed intent
+10-20 23:04:56.146  3329  3329 D ConfigUpdater: Checking content download complete: downloadId=4
+10-20 23:04:56.146  3329  3329 D ConfigUpdater: Checking metadata download complete: downloadId= 4
+10-20 23:04:56.147  2303  2303 I MdmInitializer: Updated FMD enabled state successfully. [CONTEXT service_id=247 ]
+10-20 23:04:56.147  3329  3329 D ConfigUpdater: UpdateRequestReceiver constructed with Config: com.google.android.configupdater.ConversationActions.ConversationActionsConfig@5505f51, StoredState: com.google.android.configupdater.StoredState@9e973b6, DownloadManagerHelper: com.google.android.configupdater.DownloadManagerHelper@e6be8b7, FlagHelper: com.google.android.configupdater.PhenotypeHelper@9640824
+10-20 23:04:56.147  3329  3329 D ConfigUpdater: Setting up preferences for StoredState, Downloader, and FlagHelper
+10-20 23:04:56.147  3329  3329 D ConfigUpdater: Setting up DownloadManagerHelper
+10-20 23:04:56.147  3329  3329 D ConfigUpdater: Loaded SharedPreferences: ConversationActionsDownload
+10-20 23:04:56.147  3329  3329 D ConfigUpdater: Using Lollipop+ download directory: /data/user/0/com.google.android.configupdater/files/downloads
+10-20 23:04:56.147  3329  3329 D ConfigUpdater: Got DownloadManager service
+10-20 23:04:56.147  3329  3329 D ConfigUpdater: Is wearable device: false
+10-20 23:04:56.147  3329  3329 D ConfigUpdater: Received intent with action: android.intent.action.DOWNLOAD_COMPLETE
+10-20 23:04:56.147  3329  3329 D ConfigUpdater: Handling download completed intent
+10-20 23:04:56.147  3329  3329 D ConfigUpdater: Checking content download complete: downloadId=4
+10-20 23:04:56.147  3329  3329 D ConfigUpdater: Checking metadata download complete: downloadId= 4
+10-20 23:04:56.151  3329  3329 D ConfigUpdater: UpdateRequestReceiver constructed with Config: com.google.android.configupdater.CarrierId.CarrierIdConfig@9911542, StoredState: com.google.android.configupdater.StoredState@a4c5953, DownloadManagerHelper: com.google.android.configupdater.DownloadManagerHelper@eeb8290, FlagHelper: com.google.android.configupdater.PhenotypeHelper@76ea789
+10-20 23:04:56.151  3329  3329 D ConfigUpdater: Setting up preferences for StoredState, Downloader, and FlagHelper
+10-20 23:04:56.151  3329  3329 D ConfigUpdater: Setting up DownloadManagerHelper
+10-20 23:04:56.151  3329  3329 D ConfigUpdater: Loaded SharedPreferences: CarrierIdDownload
+10-20 23:04:56.151  3329  3329 D ConfigUpdater: Using Lollipop+ download directory: /data/user/0/com.google.android.configupdater/files/downloads
+10-20 23:04:56.151  3329  3329 D ConfigUpdater: Got DownloadManager service
+10-20 23:04:56.151  3329  3329 D ConfigUpdater: Is wearable device: false
+10-20 23:04:56.151  3329  3329 D ConfigUpdater: Received intent with action: android.intent.action.DOWNLOAD_COMPLETE
+10-20 23:04:56.151  3329  3329 D ConfigUpdater: Handling download completed intent
+10-20 23:04:56.151  3329  3329 D ConfigUpdater: Checking content download complete: downloadId=4
+10-20 23:04:56.151  3329  3329 D ConfigUpdater: Checking metadata download complete: downloadId= 4
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: UpdateRequestReceiver constructed with Config: com.google.android.configupdater.EmergencyNumberDb.EmergencyNumberDbConfig@7b937af, StoredState: com.google.android.configupdater.StoredState@92e37bc, DownloadManagerHelper: com.google.android.configupdater.DownloadManagerHelper@5113345, FlagHelper: com.google.android.configupdater.PhenotypeHelper@2500a9a
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Setting up preferences for StoredState, Downloader, and FlagHelper
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Setting up DownloadManagerHelper
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Loaded SharedPreferences: EmergencyNumberDbDownload
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Using Lollipop+ download directory: /data/user/0/com.google.android.configupdater/files/downloads
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Got DownloadManager service
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Is wearable device: false
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Received intent with action: android.intent.action.DOWNLOAD_COMPLETE
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Handling download completed intent
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Checking content download complete: downloadId=4
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Checking metadata download complete: downloadId= 4
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: UpdateRequestReceiver constructed with Config: com.google.android.configupdater.TelephonyConfigUpdate.TelephonyConfigUpdateConfig@68513a8, StoredState: com.google.android.configupdater.StoredState@e96bec1, DownloadManagerHelper: com.google.android.configupdater.DownloadManagerHelper@e943666, FlagHelper: com.google.android.configupdater.PhenotypeHelper@6926da7
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Setting up preferences for StoredState, Downloader, and FlagHelper
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Setting up DownloadManagerHelper
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Loaded SharedPreferences: TelephonyConfigUpdateDownload
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Using Lollipop+ download directory: /data/user/0/com.google.android.configupdater/files/downloads
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Got DownloadManager service
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Is wearable device: false
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Received intent with action: android.intent.action.DOWNLOAD_COMPLETE
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Handling download completed intent
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Checking content download complete: downloadId=4
+10-20 23:04:56.153  3329  3329 D ConfigUpdater: Checking metadata download complete: downloadId= 4
+10-20 23:04:56.165   643   772 I system_server: AssetManager2(0x7ef312e06458) locale list changing from [] to [en-US]
+10-20 23:04:56.170  4357  4357 D nativeloader: InitLlndkLibrariesProduct: libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libapexsupport.so:libavf.so:libbinder_ndk.so:libc.so:libcgrouprc.so:libclang_rt.asan-x86_64-android.so:libcom.android.tethering.connectivity_native.so:libdl.so:libft2.so:liblog.so:libm.so:libmediandk.so:libnativewindow.so:libneuralnetworks.so:libselinux.so:libsync.so:libvendorsupport.so:libvndksupport.so:libvulkan.so
+10-20 23:04:56.170  4357  4357 D nativeloader: Configuring product-clns-10 for unbundled product apk /product/priv-app/Velvet/Velvet.apk. target_sdk_version=35, uses_libraries=, library_path=/product/priv-app/Velvet/lib/x86_64:/product/priv-app/Velvet/Velvet.apk!/lib/x86_64:/product/lib64:/system/product/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.googlequicksearchbox:/product/lib64:/system/product/lib64
+10-20 23:04:56.171  4357  4357 D nativeloader: InitVndkspLibrariesProduct: VNDK is deprecated with product
+10-20 23:04:56.172  4357  4357 D CompatChangeReporter: Compat change id reported: 202956589; UID 10146; state: ENABLED
+10-20 23:04:56.177  4357  4357 I chbox:googleapp: AssetManager2(0x7ef312de2b98) locale list changing from [] to [en-US]
+10-20 23:04:56.191  2303  2303 I gle.android.gms: IncrementDisableThreadFlip blocked for 5.561ms
+10-20 23:04:56.191  4357  4357 V GraphicsEnvironment: Currently set values for:
+10-20 23:04:56.192  4357  4357 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-20 23:04:56.192  4357  4357 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-20 23:04:56.192  4357  4357 V GraphicsEnvironment: com.google.android.googlequicksearchbox is not listed in per-application setting
+10-20 23:04:56.195  4357  4357 V GraphicsEnvironment: ANGLE allowlist from config: com.dreamgames.royalmatch com.dts.freefiremax com.dxx.firenow com.gramgames.mergedragons com.ludo.king com.mojang.minecraftpe com.my.defense com.nintendo.zaka com.os.airforce com.playrix.fishdomdd.gplay io.teslatech.callbreak jp.konami.prospia net.peakgames.toonblast
+10-20 23:04:56.195  4357  4357 V GraphicsEnvironment: com.google.android.googlequicksearchbox is not listed in ANGLE allowlist or settings, returning default
+10-20 23:04:56.195  4357  4357 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-20 23:04:56.196  2303  3986 I gle.android.gms: IncrementDisableThreadFlip blocked for 10.662ms
+10-20 23:04:56.206  2303  3986 I GmsDebugLogger: [73] 1801
+10-20 23:04:56.207  2303  3917 I GmsDebugLogger: [53] +maps_core:1
+10-20 23:04:56.210  2303  3986 W ZappDownloader: No successful Zapp module downloads for requested modules [MlkitOcrCommon.optional:252635100800:permitMetered, VisionOcr.optional:252635100000:permitMetered, TfliteDynamiteDynamite.integ:264010405100800:permitMetered].
+10-20 23:04:56.210  2303  3986 I GmsDebugLogger: [30] [MlkitOcrCommon.optional:252635100800],[VisionOcr.optional:252635100000],[TfliteDynamiteDynamite.integ:264010405100800]
+10-20 23:04:56.216  4357  4357 I MultiDex: VM with version 2.1.0 has multidex support
+10-20 23:04:56.216  4357  4357 I MultiDex: Installing application
+10-20 23:04:56.216  4357  4357 I MultiDex: VM has multidex support, MultiDex support library is disabled.
+10-20 23:04:56.220  2217  2451 I .gms.persistent: AssetManager2(0x7ef312df9938) locale list changing from [] to [en-US]
+10-20 23:04:56.221  2303  3986 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+10-20 23:04:56.221  2303  3986 I GmsDebugLogger: [83] 1 [vision.ocr]
+10-20 23:04:56.225  2303  3918 W Vision  : Request for optional module download of ocr failed. Request again.
+10-20 23:04:56.226  2303  3918 W Vision  : Would have logged:
+10-20 23:04:56.226  2303  3918 W Vision  : # gptm@44f943d5
+10-20 23:04:56.226  2303  3918 I Vision  : Schedule retrying download ocr at 121807 with backoff 10 seconds
+10-20 23:04:56.228  2303  3526 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: maps_core:1
+10-20 23:04:56.238  2303  2303 I Google Maps Android API: maps_core feature request succeeded. [CONTEXT service_id=71 ]
+10-20 23:04:56.260  2303  3526 I ChimeraConfigurator: Detected pending changes for urgent request: [maps_core]. Pending module sets: container:2526359260800+maps_core
+10-20 23:04:56.264   643   643 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:04:56.265   643   643 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:04:56.276  2217  2854 W .gms.persistent: Long monitor contention with owner lowpool[15] (3853) at void egim.n(egee, egee, int)(:com.google.android.gms@252635038@25.26.35 (260800-783060121):48) waiters=0 in int egim.l(eghx, brax) for 170ms
+10-20 23:04:56.283  2303  3526 I GmsDebugLogger: [73] 1801
+10-20 23:04:56.286  2303  3526 W ZappDownloader: No successful Zapp module downloads for requested modules [MapsCoreDynamite.integ:252130101100800:permitMetered].
+10-20 23:04:56.286  2303  3526 I GmsDebugLogger: [30] [MapsCoreDynamite.integ:252130101100800]
+10-20 23:04:56.290  4357  4357 W MendelPackageState: Shared storage file not found for com.google.android.apps.search.policy#com.google.android.googlequicksearchbox
+10-20 23:04:56.292  2303  3526 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+10-20 23:04:56.292  2303  3526 I ChimeraConfigurator: Update complete: success
+10-20 23:04:56.303  2303  3526 I GmsModuleFndr: Beginning GMS chimera module scan
+10-20 23:04:56.305  2303  3526 I ModuleSetResolution: Computing pending module set with APKs: [[AdsFdrDynamite.integ:250505301100000], [Cronetdynamite:252635260800], [Dynamiteloader:252635260000], [Dynamitemodulesa:252635260000], [Dynamitemodulesc:252635260000], [Googlecertificates:252635260000], [Mapsdynamite:252635260000], [Measurementdynamite:252635260000]]
+10-20 23:04:56.307   643  1846 D FileUtils: Rounded bytes from 2593067008 to 4000000000
+10-20 23:04:56.309  2303  3526 I ModuleSetResolution: Pending container module APKs: []
+10-20 23:04:56.309  2303  3526 I ModuleSetResolution: Pending non-container module APKs: []
+10-20 23:04:56.324  2303  3526 I gle.android.gms: AssetManager2(0x7ef312e025d8) locale list changing from [] to [en-US]
+10-20 23:04:56.325  4357  4372 D nativeloader: Load /product/priv-app/Velvet/Velvet.apk!/lib/x86_64/libnative_crash_handler_jni.so using class loader ns product-clns-10 (caller=/product/priv-app/Velvet/Velvet.apk!classes2.dex): ok
+10-20 23:04:56.327  2303  3526 I gle.android.gms: AssetManager2(0x7ef312e025d8) locale list changing from [] to [en-US]
+10-20 23:04:56.328  2303  3526 I gle.android.gms: AssetManager2(0x7ef312e025d8) locale list changing from [] to [en-US]
+10-20 23:04:56.329  2303  3526 I gle.android.gms: AssetManager2(0x7ef312e025d8) locale list changing from [] to [en-US]
+10-20 23:04:56.330  2303  3526 I gle.android.gms: AssetManager2(0x7ef312e025d8) locale list changing from [] to [en-US]
+10-20 23:04:56.331  2303  3526 I gle.android.gms: AssetManager2(0x7ef312e025d8) locale list changing from [] to [en-US]
+10-20 23:04:56.332  2303  3526 I gle.android.gms: AssetManager2(0x7ef312df3858) locale list changing from [] to [en-US]
+10-20 23:04:56.333  2303  3526 I gle.android.gms: AssetManager2(0x7ef312df3858) locale list changing from [] to [en-US]
+10-20 23:04:56.336  4357  4357 W MendelPackageState: Shared storage file not found for com.google.android.libraries.search.device#com.google.android.googlequicksearchbox
+10-20 23:04:56.336  2303  3526 I ChimeraConfigurator: Checking 1 listeners. All downloaded: false
+10-20 23:04:56.336  2303  3526 I GmsDebugLogger: [83] 1 [maps_core]
+10-20 23:04:56.338   643  1741 I WifiService: isScanAlwaysAvailable uid=10147
+10-20 23:04:56.347   643   675 I system_server: AssetManager2(0x7ef312df9c58) locale list changing from [] to [en-US]
+10-20 23:04:56.348   643   675 I system_server: AssetManager2(0x7ef312e0af58) locale list changing from [] to [en-US]
+10-20 23:04:56.349   643   675 I system_server: AssetManager2(0x7ef312e138d8) locale list changing from [] to [en-US]
+10-20 23:04:56.354  2217  2451 I .gms.persistent: AssetManager2(0x7ef312e02f38) locale list changing from [] to [en-US]
+10-20 23:04:56.362   643  1741 I WifiService: getWifiEnabledState uid=10147 state=3
+10-20 23:04:56.367  2217  4248 I NearbySharing: There is no account metadata, return default instance.
+10-20 23:04:56.375  2303  2303 W Google Maps Android API: maps_core feature installation failed. Reason unknown. [CONTEXT service_id=71 ]
+10-20 23:04:56.380  2303  2485 W Pay     : Active account was null, notification task will be cancelled. [CONTEXT service_id=198 ]
+10-20 23:04:56.381  2303  2485 W Pay     : DownloadSePrepaidCardOnWearOperation: Active account not found! [CONTEXT service_id=198 ]
+10-20 23:04:56.390   643  1741 I RemoteProvisionSysSvc: getRegistration(android.hardware.security.keymint.IRemotelyProvisionedComponent/default)
+10-20 23:04:56.395   643   643 I RegistrationProxy: onServiceConnected: com.android.rkpdapp.service.RemoteProvisioningService
+10-20 23:04:56.404   643  1741 I RegistrationProxy: IGetRegistrationCallback.onSuccess
+10-20 23:04:56.406   643  1846 I RemoteProvisionSysSvc: Fetching key 10147 for client 242336398
+10-20 23:04:56.406   643  1846 I RegistrationProxy: getKeyAsync operation started with callback 126569135
+10-20 23:04:56.406  3437  3480 I RkpdRegistrationBinder: Key requested for : android.hardware.security.keymint.IRemotelyProvisionedComponent/default, clientUid: 1017, keyId: 10147, callback: 126583546
+10-20 23:04:56.407  3437  3480 I RkpdRegistrationBinder: Key successfully assigned to client
+10-20 23:04:56.407   643   643 I RemoteProvisionSysSvc: Successfully fetched key for client 242336398
+10-20 23:04:56.412   235   235 D SoftKeymaster: system/keymaster/km_openssl/certificate_utils.cpp, Line 148: Using TAG_CERTIFICATE_NOT_BEFORE: 0
+10-20 23:04:56.412   235   235 D SoftKeymaster: system/keymaster/km_openssl/certificate_utils.cpp, Line 154: Using TAG_CERTIFICATE_NOT_AFTER: 2461449600000
+10-20 23:04:56.412   235   235 D SoftKeymaster: system/keymaster/km_openssl/certificate_utils.cpp, Line 159: Got certificate date params:  NotBefore = 0, NotAfter = 2461449600000
+10-20 23:04:56.412   235   235 D SoftKeymaster: system/keymaster/km_openssl/certificate_utils.cpp, Line 273: Setting notBefore to 0
+10-20 23:04:56.412   235   235 D SoftKeymaster: system/keymaster/km_openssl/certificate_utils.cpp, Line 282: Setting notAfter to 2461449600
+10-20 23:04:56.423  2303  2309 W System  : A resource failed to call close.
+10-20 23:04:56.426  4357  4357 I dmna    : Initializing GMS Compliance Client Library...
+10-20 23:04:56.427  4357  4357 I dmna    : Checking for device compliance...
+10-20 23:04:56.427  4357  4357 I dmna    : Completed library init.
+10-20 23:04:56.434  2217  2739 I GCoreUlr: Unbound from all signal providers.
+10-20 23:04:56.435  4357  4357 I fsoa    : (REDACTED) Scoped context discovery schemas: %s.
+10-20 23:04:56.437  4357  4357 I fnwz    : (REDACTED) Created gRPC endpoint for service %s
+10-20 23:04:56.443   446   476 I netd    : tetherGetStats() -> {[]} <0.64ms>
+10-20 23:04:56.460  2303  2649 W KeyAttestationHandler: Certificate chain has 3 numbers of certificates [CONTEXT service_id=130 ]
+10-20 23:04:56.466  4357  4370 W CacheStorage: cache doesn't exist
+10-20 23:04:56.474  2217  4228 W .gms.persistent: Long monitor contention with owner netscheduler-queue-handler (2854) at void egim.o(int)(:com.google.android.gms@252635038@25.26.35 (260800-783060121):25) waiters=0 in int egim.r(egee) for 196ms
+10-20 23:04:56.481  2303  2649 W KeyAttestationHandler: Certificate chain has payload byte size 1719 [CONTEXT service_id=130 ]
+10-20 23:04:56.482  4034  4122 I TestRunner: finished: upgradeFromV2RetainsCatalogueHistoryAndFirstVerifiedUnlockAcrossRestart(com.opus.piano.ExperiencePersistenceTest)

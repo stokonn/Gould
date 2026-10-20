@@ -1,44 +1,49 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-20, second-CI-dispatch + execution-model-fix session
-> ([run 39508388525](https://github.com/stokonn/Goldberg/actions/runs/39508388525)
-> failed pre-test from the action's line-by-line script model; meaningful fix applied
-> and host-validated; **attempt-3 dispatch pending after documentation sync**).
+> **Last updated:** 2026-10-21, attempt-3 result session
+> ([run 39511602936](https://github.com/stokonn/Goldberg/actions/runs/39511602936)
+> @ `9b80d65`: **first run to execute real application tests** — CI works end-to-end;
+> 5.10 ran 177 tests with **13 Stage 5 failures**; 5.11's upgrade validation PASSED,
+> only its final offline assertion failed. **Code-level triage of the 13 failures is
+> the active task; no re-dispatch until meaningful verified fixes exist.**).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
 > `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → GitHub Issue #31.
 > **Stage 5 is NOT complete. No merge/tag/release/APK publication performed.**
 
-## 🚦 Current status: attempt-3 dispatch pending (fix validated, docs syncing)
+## 🚦 Current status: real test results in — triaging 13 Stage 5 instrumentation failures
 
-- **Approved attempt 2 completed:** PR #33 merged (`main` @ `a4a9509`, workflow-only
-  diff re-verified), run 39508388525 dispatched against `5cdc0d6` (exact approved
-  commit), both jobs monitored to completion, evidence preserved under
-  `docs/planning/goldberg-0.11/stage-5/results/ci-run-39508388525/`.
-- **Run-2 outcome — both jobs failed at the emulator step ONLY (CI
-  script-execution-model failure, not an application defect; zero application tests
-  executed):** everything else passed — SHA binding, all builds, trusted 0.10.1
-  download, **signing step with full diagnostics** (runner selected
-  `build-tools/37.0.0/apksigner`, empirically confirming the run-1 root cause; release
-  `53eface4…` = trusted, baseline = candidate = `47aebcfd…`), emulator boot
-  (49 524 ms).
-- **Root cause proven from the pinned action's source:** `parseScript()` splits the
-  `script` input into single lines and `main.ts` runs each via a separate `sh -c` —
-  no state persists between lines; multi-line constructs/heredocs cannot work; the
-  observed log (three consecutive `sh -c` calls ending in dash's
-  `set: Illegal option -o pipefail`) matches exactly. This also invalidated the
-  original script design (its guards depend on `SERIAL` persisting across lines).
-- **Fix applied (workflow-only, script body byte-identical):** GitHub `run:` step
-  materializes the approved script to `$RUNNER_TEMP/stage5-<job>.sh` + `bash -n`;
-  action input is the single line `bash "$RUNNER_TEMP/stage5-<job>.sh"` (parseScript
-  → exactly 1 chunk → one bash process).
-- **Fix host-validated (executed):** `validate_v3.py` all green; end-to-end
-  simulation GH-run-step → parseScript → `sh -c` → file: job 1 exit 0, job 2 exit 0
-  through the full acceptance flow (persistence proven by 25 deep `emulator-5554`
-  adb calls), negative guard test propagates exit 1. Stubs validate the execution
-  model only; application assertions are verified solely by real CI.
-- **STOPPED before attempt-3 merge/dispatch until documentation + Issue/Project sync
-  completes** (the owner's diagnose-and-document-first rule). Tasks 5.10–5.13 remain
-  open.
+- **Run 39511602936 (@ `9b80d65`, headSha verified; PR #34 merged workflow-only as
+  `816d142` first): the CI pipeline now works end-to-end** — materialize steps ✓, both
+  scripts ran as single bash processes, emulators booted (≈43 s), signing passed,
+  `connectedDebugAndroidTest` executed. Evidence:
+  `docs/planning/goldberg-0.11/stage-5/results/ci-run-39511602936/` (raw logs
+  `6e93fdd4…1ba11`, 253 artifacts incl. per-test logcats).
+- **5.10: 177 tests — 162 passed, 13 failed, 0 errors, 2 skipped.** All Stage 1–4
+  suites pass on-device; failures only in Stage5BundleJobRunnerTest (6),
+  Stage5BundleStoreTest (2), Stage5BundleWorkerTest (5, all `Failure {mOutputData=Data {}}`).
+  Signatures: on-device `Retryable(error=integrity/transport)`, partial-bundle publish,
+  `Integer<22> vs Long<22>` JSON coercion, `List has more than one element`, repair
+  path. Root causes NOT yet determined; no assertion weakened.
+- **5.11: upgrade validation PASSED on the emulator** (seeded v0.10.1 → candidate,
+  prefs unchanged, persistent-data equality, PRAGMA checks, UUID bridge) — only the
+  final offline-state assertion (`verify_emulator_upgrade.py:143`) failed on the API 36
+  network signature; investigate by capturing dumpsys output, not by weakening.
+- **Active task:** code-level root-cause triage of the 13 failures (start with the
+  worker cluster's systematic `Result.failure()` — suspected real-network vs injected-
+  state semantics — and the store/runner integrity+JSON-type signatures). Then
+  meaningful fixes + JVM verification locally → only then consider re-dispatch.
+- Tasks 5.10–5.13 remain open; Stage 5 IN PROGRESS; Stage 6/7 not started.
+
+**Run history (details: STAGE-CHECKLIST + `results/ci-run-*/run-summary.md`):**
+attempt 1 (run 39503450845) failed pre-test (dash `pipefail` + apksigner 37.0.0
+format) — both root-caused with evidence; attempt 2 (run 39508388525 @ `5cdc0d6`,
+after PR #33 merged as `a4a9509`) failed at the emulator step only — signing step
+then passed with runner-side confirmation of the apksigner root cause
+(`build-tools/37.0.0/apksigner`; release `53eface4…` = trusted, baseline = candidate =
+runner key `47aebcfd…`), root cause proven from the action source (`parseScript`
+single-line splitting) and fixed by the materialize-then-`bash <file>` design; attempt 3
+launch: PR #34 merged workflow-only (`816d142`), dispatched against `9b80d65` —
+outcome recorded in the current-status section above.
 
 
 ## ⚠️ Emulator blocker on the desktop machine (2026-10-20, third session)

@@ -1,0 +1,8 @@
+10-20 23:06:23.178  4034  4122 I TestRunner: started: revocationWithdrawsConsentCancelsWorkAndPausesTheManifest(com.opus.piano.Stage5BundleWorkerTest)
+10-20 23:06:23.179  4034  4122 D WM-ForceStopRunnable: The default process name was not specified.
+10-20 23:06:23.180  4034  4122 D WM-ForceStopRunnable: Performing cleanup operations.
+10-20 23:06:23.189  4034  5090 D WM-PackageManagerHelper: androidx.work.impl.background.systemalarm.RescheduleReceiver enabled
+10-20 23:06:23.191  4034  5090 D WM-Processor: Processor cancelling 3622d0b8-796c-427c-9b48-f1d23e90f255
+10-20 23:06:23.191  4034  5090 D WM-Processor: WorkerWrapper could not be found for 3622d0b8-796c-427c-9b48-f1d23e90f255
+10-20 23:06:23.193  4034  5090 D WM-PackageManagerHelper: androidx.work.impl.background.systemalarm.RescheduleReceiver disabled
+10-20 23:06:23.200  4034  4122 I TestRunner: finished: revocationWithdrawsConsentCancelsWorkAndPausesTheManifest(com.opus.piano.Stage5BundleWorkerTest)

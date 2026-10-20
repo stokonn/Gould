@@ -1,0 +1,5 @@
+10-20 23:05:47.410  4034  4122 I TestRunner: started: verifiedOriginalRetainsCreditsAndOfflineReadRejectsTamperedRightsOrBytes(com.opus.piano.Stage4PortraitTest)
+10-20 23:05:47.413  4034  4123 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.420  4034  4120 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.421  4034  4123 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.424  4034  4122 I TestRunner: finished: verifiedOriginalRetainsCreditsAndOfflineReadRejectsTamperedRightsOrBytes(com.opus.piano.Stage4PortraitTest)

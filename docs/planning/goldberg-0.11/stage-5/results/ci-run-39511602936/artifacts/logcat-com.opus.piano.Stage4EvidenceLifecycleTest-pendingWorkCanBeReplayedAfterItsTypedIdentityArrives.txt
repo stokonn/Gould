@@ -1,0 +1,2 @@
+10-20 23:05:45.923  4034  4122 I TestRunner: started: pendingWorkCanBeReplayedAfterItsTypedIdentityArrives(com.opus.piano.Stage4EvidenceLifecycleTest)
+10-20 23:05:45.948  4034  4122 I TestRunner: finished: pendingWorkCanBeReplayedAfterItsTypedIdentityArrives(com.opus.piano.Stage4EvidenceLifecycleTest)

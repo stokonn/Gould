@@ -1,0 +1,2 @@
+10-20 23:06:22.798  4034  4122 I TestRunner: started: admissionRefusesInsteadOfEvictingPinnedContent(com.opus.piano.Stage5BundleStoreTest)
+10-20 23:06:22.801  4034  4122 I TestRunner: finished: admissionRefusesInsteadOfEvictingPinnedContent(com.opus.piano.Stage5BundleStoreTest)

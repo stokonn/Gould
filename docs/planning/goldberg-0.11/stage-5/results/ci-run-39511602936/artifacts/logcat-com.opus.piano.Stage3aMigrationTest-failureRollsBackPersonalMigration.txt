@@ -1,0 +1,4 @@
+10-20 23:05:25.322  4034  4122 I TestRunner: started: failureRollsBackPersonalMigration(com.opus.piano.Stage3aMigrationTest)
+10-20 23:05:25.666  2217  4683 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 151 [CONTEXT service_id=218 ]
+10-20 23:05:25.667  2217  2423 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 6 uptime_millis: 6 exec_start_elapsed_seconds: 151 [CONTEXT service_id=218 ]
+10-20 23:05:25.900  4034  4122 I TestRunner: finished: failureRollsBackPersonalMigration(com.opus.piano.Stage3aMigrationTest)

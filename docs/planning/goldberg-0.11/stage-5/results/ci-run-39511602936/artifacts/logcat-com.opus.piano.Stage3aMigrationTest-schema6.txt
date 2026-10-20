@@ -1,0 +1,2 @@
+10-20 23:05:26.254  4034  4122 I TestRunner: started: schema6(com.opus.piano.Stage3aMigrationTest)
+10-20 23:05:26.346  4034  4122 I TestRunner: finished: schema6(com.opus.piano.Stage3aMigrationTest)

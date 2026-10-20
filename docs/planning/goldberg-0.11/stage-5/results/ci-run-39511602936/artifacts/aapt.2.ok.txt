@@ -1,0 +1,28 @@
+EXECUTING: /usr/local/lib/android/sdk/build-tools/36.0.0/aapt dump badging /home/runner/work/Goldberg/Goldberg/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+CURRENT_WORKING_DIRECTORY: /home/runner/work/Goldberg/Goldberg
+START_TIME: 2026-10-20 23:06:24.383
+START_TIME-NANOS: 2026-10-20 23:06:24.383572423
+ENVIRONMENT:
+
+*****************************************
+STDOUT/STDERR BELOW
+===================
+package: name='com.opus.piano.test' versionCode='' versionName='' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+sdkVersion:'26'
+targetSdkVersion:'36'
+uses-permission: name='android.permission.REORDER_TASKS'
+application: label='' icon=''
+application-debuggable
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+other-activities
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--' 'af' 'am' 'ar' 'as' 'az' 'be' 'bg' 'bn' 'bs' 'ca' 'cs' 'da' 'de' 'el' 'en-AU' 'en-CA' 'en-GB' 'en-IN' 'en-XC' 'es' 'es-US' 'et' 'eu' 'fa' 'fi' 'fr' 'fr-CA' 'gl' 'gu' 'hi' 'hr' 'hu' 'hy' 'in' 'is' 'it' 'iw' 'ja' 'ka' 'kk' 'km' 'kn' 'ko' 'ky' 'lo' 'lt' 'lv' 'mk' 'ml' 'mn' 'mr' 'ms' 'my' 'nb' 'ne' 'nl' 'or' 'pa' 'pl' 'pt' 'pt-BR' 'pt-PT' 'ro' 'ru' 'si' 'sk' 'sl' 'sq' 'sr' 'sr-Latn' 'sv' 'sw' 'ta' 'te' 'th' 'tl' 'tr' 'uk' 'ur' 'uz' 'vi' 'zh-CN' 'zh-HK' 'zh-TW' 'zu'
+densities: '160' '240' '320'
+===================
+END_TIME: 2026-10-20 23:06:24.394
+END_TIME-NANOS: 2026-10-20 23:06:24.394515730
+DURATION: 10ms
+EXIT CODE: 0
