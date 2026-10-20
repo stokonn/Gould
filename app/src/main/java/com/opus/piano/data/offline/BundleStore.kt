@@ -16,7 +16,7 @@ import java.io.File
  * filesDir/offline-bundles/manifests/<bundleId>.json        active revision (atomic writes)
  * filesDir/offline-bundles/pending/<bundleId>.rev<N>.json   newer revision while refreshing
  * filesDir/offline-bundles/blobs/<sha256>                   shared, never evicted while referenced
- * filesDir/offline-bundles/quarantine/                      unparsable manifests (moved, never deleted)
+ * filesDir/offline-bundles/quarantine/                      unparsable manifests + corrupt blobs (moved, never deleted)
  * cacheDir/offline-bundles/staging/                         disposable partial downloads
  * ```
  *
@@ -171,9 +171,19 @@ class BundleStore(
             if (BundleStoreLogic.sha256Of(staged) != sha256) return@withContext false
             val target = blobFile(sha256)
             mutex.withLock {
-                if (target.exists()) {
+                if (target.isFile && target.length() == staged.length() &&
+                    BundleStoreLogic.sha256Of(target) == sha256
+                ) {
                     staged.delete()
                     return@withLock
+                }
+                if (target.exists()) {
+                    // Dedup found bytes that do not match their declared digest: preserve
+                    // them in quarantine (never silently delete), then install the verified
+                    // staged copy so this very attempt repairs the corruption.
+                    quarantineDir.mkdirs()
+                    val preserved = File(quarantineDir, "$sha256.$DEDUP_CORRUPT_REASON.${System.currentTimeMillis()}")
+                    if (!target.renameTo(preserved)) return@withContext false
                 }
                 target.parentFile?.mkdirs()
                 if (!staged.renameTo(target)) {
@@ -303,6 +313,7 @@ class BundleStore(
     companion object {
         const val STAGED_SUFFIX = ".part"
         const val PUBLICATION_OVERHEAD_BYTES = 64L * 1024
+        const val DEDUP_CORRUPT_REASON = "dedup_corrupt"
         private val NON_ALPHANUMERIC = Regex("[^A-Za-z0-9_.-]")
         private const val MAX_REASON_CHARS = 48
     }

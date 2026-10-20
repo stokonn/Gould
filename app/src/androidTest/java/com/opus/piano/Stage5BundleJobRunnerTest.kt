@@ -7,11 +7,13 @@ import com.opus.piano.data.offline.BundleJobPreferences
 import com.opus.piano.data.offline.BundleJobRunner
 import com.opus.piano.data.offline.BundleJobStore
 import com.opus.piano.data.offline.BundleManifest
+import com.opus.piano.data.offline.BundleManifestCodec
 import com.opus.piano.data.offline.BundlePolicy
 import com.opus.piano.data.offline.BundleState
 import com.opus.piano.data.offline.BundleStore
 import com.opus.piano.data.offline.BundleStoreLogic
 import com.opus.piano.data.offline.NetworkFacts
+import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -64,10 +66,10 @@ class Stage5BundleJobRunnerTest {
         )
         val blobsDir get() = File(root, "bundles/blobs")
 
-        fun published(bundleId: String): BundleManifest? =
+        suspend fun published(bundleId: String): BundleManifest? =
             store.readPublished().manifests.firstOrNull { it.bundleId == bundleId }
 
-        fun stateOf(bundleId: String, revision: Long = 1): BundleState? {
+        suspend fun stateOf(bundleId: String, revision: Long = 1): BundleState? {
             val all = store.readAll().manifests
             return all.firstOrNull { it.bundleId == bundleId && it.revision == revision }?.state
         }
@@ -79,6 +81,7 @@ class Stage5BundleJobRunnerTest {
         facts: NetworkFacts = wifi,
         allowance: Boolean = false,
         reserve: () -> Long = { 0L },
+        jobs: BundleJobStore = BundleJobStore(MemoryPreferences()),
         endpoint: (URL) -> HttpURLConnection
     ): Harness {
         val root = File(context.cacheDir, "stage5-runner-${UUID.randomUUID()}").apply { mkdirs() }
@@ -86,7 +89,7 @@ class Stage5BundleJobRunnerTest {
             File(root, "bundles"), File(root, "staging"),
             reserveBytes = reserve, otherUsedBytes = { 0L }
         )
-        val h = Harness(root, store, BundleJobStore(MemoryPreferences()), facts, allowance, endpoint)
+        val h = Harness(root, store, jobs, facts, allowance, endpoint)
         harnesses += h
         return h
     }
@@ -150,7 +153,11 @@ class Stage5BundleJobRunnerTest {
         val file = Stage5Fixtures.bundleFile(content)
         var failNext = true
         val h = harness {
-            Stage5Fixtures.FakeEndpoint(content, failAfterReads = if (failNext) 2 else -1).also { failNext = false }
+            // Small chunks so the authored drop lands mid-stream (after 2 of 4 reads).
+            Stage5Fixtures.FakeEndpoint(
+                content, chunkSize = 8,
+                failAfterReads = if (failNext) 2 else -1
+            ).also { failNext = false }
         }
         val manifest = Stage5Fixtures.manifest(files = listOf(file))
         h.store.save(manifest)
@@ -176,7 +183,11 @@ class Stage5BundleJobRunnerTest {
         val newFile = Stage5Fixtures.bundleFile(newContent, relativePath = "media/new.jpg")
         var failing = true
         val h = harness {
-            Stage5Fixtures.FakeEndpoint(newContent, failAfterReads = if (failing) 1 else -1).also { failing = false }
+            // Small chunks so the authored drop lands mid-stream (after 1 of 3 reads).
+            Stage5Fixtures.FakeEndpoint(
+                newContent, chunkSize = 8,
+                failAfterReads = if (failing) 1 else -1
+            ).also { failing = false }
         }
         // Published READY revision 1.
         h.store.save(Stage5Fixtures.manifest(files = listOf(oldFile), state = BundleState.READY))
@@ -190,7 +201,7 @@ class Stage5BundleJobRunnerTest {
         val outcome = runJob(h, refresh)
         assertTrue(outcome is BundleJobRunner.Outcome.Retryable)
 
-        val stillReady = h.published(manifest = refresh).let { h.store.readPublished().manifests.single() }
+        val stillReady = h.store.readPublished().manifests.single()
         assertEquals("old READY revision survives the interrupted refresh", 1L, stillReady.revision)
         assertEquals(BundleState.READY, stillReady.state)
         assertTrue(h.store.blobFile(oldFile.sha256).isFile)
@@ -236,17 +247,22 @@ class Stage5BundleJobRunnerTest {
         val newContent = "metered refresh bytes".toByteArray()
         val oldFile = Stage5Fixtures.bundleFile(oldContent)
         val newFile = Stage5Fixtures.bundleFile(newContent, relativePath = "media/new.jpg")
-        val h = harness(facts = mobile, allowance = true) {
-            Stage5Fixtures.FakeEndpoint(newContent, onRead = { h.jobs.revokeMetered("${refresh.bundleId}:2") })
+        // The refresh manifest and the job store are created before the harness so the
+        // endpoint callback can revoke consent for exactly this job while bytes stream.
+        val refresh = Stage5Fixtures.manifest(revision = 2, files = listOf(newFile))
+        val jobs = BundleJobStore(MemoryPreferences())
+        val h = harness(facts = mobile, allowance = true, jobs = jobs) {
+            Stage5Fixtures.FakeEndpoint(
+                newContent,
+                onRead = { jobs.revokeMetered(BundleJob.id(refresh.bundleId, refresh.revision)) }
+            )
         }
-        // The lambda above needs the refresh id up front, so pin it here.
-        // (Kotlin closure order: refresh is defined below and captured by reference.)
+        // Published READY revision 1.
         h.store.save(Stage5Fixtures.manifest(files = listOf(oldFile), state = BundleState.READY))
         val oldStaged = File(h.root, "staging/${oldFile.sha256}.part")
         oldStaged.writeBytes(oldContent)
         assertTrue(h.store.installBlob(oldStaged, oldFile.sha256, oldContent.size.toLong()))
 
-        val refresh = Stage5Fixtures.manifest(revision = 2, files = listOf(newFile))
         h.store.save(refresh)
 
         val outcome = runJob(h, refresh, meteredAllowed = true)
@@ -295,9 +311,12 @@ class Stage5BundleJobRunnerTest {
 
     @Test
     fun lowStorageRefusesBeforeAnyByteMoves() = runBlocking {
-        val content = "low storage payload".toByteArray()
+        // Reserve leaves room for small durable state writes but refuses the payload itself:
+        // with reserve == free space even the manifest write would be admission-refused, so
+        // the fixture models the realistic D7 case (state writable, content not).
+        val content = ByteArray(1024 * 1024) { (it % 251).toByte() }
         var opened = 0
-        val h = harness(reserve = { context.cacheDir.usableSpace }) {
+        val h = harness(reserve = { context.cacheDir.usableSpace - STATE_SLACK_BYTES }) {
             opened++
             Stage5Fixtures.FakeEndpoint(content)
         }
@@ -330,15 +349,34 @@ class Stage5BundleJobRunnerTest {
     }
 
     @Test
-    fun invalidRightsQuarantineInsteadOfRetrying() = runBlocking {
+    fun invalidRightsOnDiskQuarantinesManifestAndDeactivatesJob() = runBlocking {
         val content = "rights payload".toByteArray()
         val h = harness { Stage5Fixtures.FakeEndpoint(content) }
-        val manifest = Stage5Fixtures.manifest(files = listOf(Stage5Fixtures.bundleFile(content, license = "")))
-        h.store.save(manifest)
+        val manifest = Stage5Fixtures.manifest(files = listOf(Stage5Fixtures.bundleFile(content)))
+        // D5.1 makes invalid rights unreachable through save()/encode() (rejected at write
+        // time); simulate on-disk rights corruption instead. The reachable contract: the
+        // codec's decode re-validation quarantines the file with bytes preserved, the job
+        // deactivates permanently and the bundle never becomes READY.
+        val tampered = BundleManifestCodec.encode(manifest)
+            .replace(Regex("\"license\":\"[^\"]*\""), "\"license\":\"\"")
+        h.store.manifestFile(manifest.bundleId).writeText(tampered)
+
         val outcome = runJob(h, manifest)
-        assertTrue(outcome is BundleJobRunner.Outcome.Quarantined)
-        assertEquals(BundleState.QUARANTINED, h.stateOf(manifest.bundleId))
-        assertFalse("quarantined jobs are not auto-retried", h.jobs.get(manifest.jobIdOf)!!.active)
+        assertEquals(
+            "a rights-corrupt manifest is permanent, not retried",
+            BundleJobRunner.Outcome.Permanent(BundlePolicy.Reasons.MANIFEST_MISSING),
+            outcome
+        )
+        assertFalse("permanent jobs are not auto-retried", h.jobs.get(manifest.jobIdOf)!!.active)
+        assertEquals(BundlePolicy.Reasons.MANIFEST_MISSING, h.jobs.get(manifest.jobIdOf)!!.lastError)
+        assertNull("corrupt manifest never publishes", h.published(manifest.bundleId))
+        assertNull("corrupt manifest leaves no active state", h.stateOf(manifest.bundleId))
+        val quarantined = File(h.root, "bundles/quarantine").listFiles()
+        assertTrue("tampered bytes preserved for inspection", quarantined != null && quarantined.isNotEmpty())
+        assertTrue(
+            "quarantine holds the tampered manifest",
+            quarantined!!.any { it.readText() == tampered }
+        )
     }
 
     @Test
@@ -389,7 +427,6 @@ class Stage5BundleJobRunnerTest {
         val sharedFile = Stage5Fixtures.bundleFile(shared)
         val fileA = Stage5Fixtures.bundleFile(ownA, relativePath = "media/a.jpg")
         val fileB = Stage5Fixtures.bundleFile(ownB, relativePath = "media/b.jpg")
-        val h = harness { Stage5Fixtures.FakeEndpoint(shared) }
         val manifestA = Stage5Fixtures.manifest(files = listOf(sharedFile, fileA))
         val manifestB = Stage5Fixtures.manifest(files = listOf(sharedFile, fileB))
         // Own files come from their own endpoints; the shared dependency from the shared one.
@@ -400,8 +437,8 @@ class Stage5BundleJobRunnerTest {
         hA.store.save(manifestA)
         hB.store.save(manifestB)
 
-        val outcomeA = kotlinx.coroutines.async { runJob(hA, manifestA) }
-        val outcomeB = kotlinx.coroutines.async { runJob(hB, manifestB) }
+        val outcomeA = async { runJob(hA, manifestA) }
+        val outcomeB = async { runJob(hB, manifestB) }
         assertEquals(BundleJobRunner.Outcome.Completed, outcomeA.await())
         assertEquals(BundleJobRunner.Outcome.Completed, outcomeB.await())
         assertEquals(BundleState.READY, hA.stateOf(manifestA.bundleId))
@@ -411,9 +448,12 @@ class Stage5BundleJobRunnerTest {
         assertEquals(2, hB.blobsDir.listFiles()!!.size)
         assertTrue(hA.store.blobFile(sharedFile.sha256).isFile)
         assertTrue(hB.store.blobFile(sharedFile.sha256).isFile)
-        assertEquals(sharedFile.sha256, BundleStoreLogic.sha256Of(hA.store.blobFile(sharedFile.sha256).readBytes()))
+        assertEquals(sharedFile.sha256, BundleStoreLogic.sha256Of(hA.store.blobFile(sharedFile.sha256)))
     }
 }
 
 private fun Stage5Fixtures.FakeEndpoint.isConnectedTo(url: URL): Boolean =
     url.host == "commons.wikimedia.org" && url.query == null
+
+/** Free-space headroom that admits manifest/state writes while refusing content payloads. */
+private const val STATE_SLACK_BYTES = 512L * 1024

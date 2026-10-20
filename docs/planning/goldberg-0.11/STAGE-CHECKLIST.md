@@ -201,10 +201,38 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
 - After 5.5–5.9 implementation: `compileDebugKotlin` BUILD SUCCESSFUL; `testDebugUnitTest` **174 tests / 0 failures** (28 new scheduler/engine/job tests).
 - 2026-10-20 durable checkpoint: all Stage 5 work committed and pushed to the Stage 5 branch;
   permanent AGENTS.md rules (stage checklists, GitHub Issue checklists) added; STAGE-CHECKLIST.md created.
-- Pending (not yet executed, no claim made): instrumentation drafts (`Stage5BundleStoreTest`,
-  `Stage5BundleJobRunnerTest` — has known compile issues documented in `docs/ai/STATE.md`;
-  `Stage5BundleWorkerTest` not yet written) must be fixed/compiled, then Stage 5 instrumentation
-  on emulator, emulator acceptance matrix, final host gate, host compatibility scripts rerun.
+- 2026-10-20 instrumentation-fix session (uncommitted working tree, HEAD `54f2b45`):
+  `Stage5BundleJobRunnerTest` compile issues fixed (6 errors, no assertion weakened) →
+  **EXECUTED** `:app:assembleDebugAndroidTest` **BUILD SUCCESSFUL** (4m54s, 0 errors, 7 new
+  nullable-`listFiles()` warnings); **EXECUTED** `:app:testDebugUnitTest` but all tasks
+  UP-TO-DATE → 0 tests re-executed (last real counts remain the prior session's 174/0).
+  `Stage5BundleWorkerTest` (12 tests, real WorkManager test infra) written; **EXECUTED**
+  androidTest compile after adding it → **FAILED, exactly 1 error** (`Stage5BundleWorkerTest.kt:324`,
+  nullable `TestDriver?` — one-line fix pending). Two static findings (F1 rights-quarantine
+  unreachable, F2 corrupt-blob repair dead-end) recorded in `docs/ai/STATE.md`/`DECISIONS.md`,
+  **not executed, no production change applied**. `docs/ai/*` checkpoint created (STATE/
+  VERIFICATION/HANDOFF/DECISIONS). No tasks 5.10–5.13 completed; Stage 5 remains incomplete.
+- Pending (not yet executed, no claim made): fix the worker-test compile error, re-verify
+  androidTest compile + fresh `testDebugUnitTest --rerun`, resolve F1/F2, then Stage 5
+  instrumentation on an explicitly identified emulator (5.10), emulator acceptance matrix (5.11),
+  final host gate + `scripts/check_*.py` (5.12), `docs/ai/*` commit/push + Issue #31/Project sync (5.13).
+- 2026-10-20 second resume session (checkpoint commit pushed as owner-authorized IN-PROGRESS
+  checkpoint, verification incomplete): worker-test L324
+  compile error FIXED → **EXECUTED** `assembleDebugAndroidTest` **BUILD SUCCESSFUL 0 errors**;
+  **EXECUTED** `testDebugUnitTest --rerun` → **174/0/0/0** (fresh). F1/F2 investigated,
+  confirmed against source and **owner-approved**: F1 test retargeted to the reachable contract
+  (test-only), F2 `BundleStore.installBlob` dedup now verifies the existing target and
+  quarantines invalid bytes before installing the verified copy (production fix, ~15 lines).
+  After both changes: **EXECUTED** `testDebugUnitTest + assembleDebugAndroidTest` → **BUILD
+  SUCCESSFUL, 174/0** (reports 19:23). PMP identified (Project Memory Protocol,
+  `stokonn/project-memory-protocol`); local state verified **absent everywhere** (CLI, XDG
+  state, `.pmp`/`.pmp.yml` in any commit, clones) — not reinitialized. Emulator toolchain
+  installed (emulator 37.2.12.0 + android-36 google_apis x86_64), AVD `stage5-api36` created
+  (AVD home: `/home/stokonn/.config/.android/avd` → needs `ANDROID_AVD_HOME`), **booted
+  emulator-5580 (API 36, qemu=1)**; stale `app-debug.apk` (Oct 16) caught before any test and
+  rebuilt (**EXECUTED** `assembleDebug` → BUILD SUCCESSFUL, fresh APK 19:45). Battery emergency
+  stopped the session: emulator cleanly killed (`emu kill` OK); **zero instrumentation tests
+  executed**; tasks 5.10–5.13 all remain open.
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,
