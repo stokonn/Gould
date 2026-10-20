@@ -47,3 +47,23 @@ scope for Stage 5.
   Verification: existing `corruptStoredBlobIsQuarantinedAndRepairedOnRetry` test + emulator run.
 
 See `docs/ai/STATE.md` for the full investigation record of both findings.
+
+## Stage 6 pointer (added 2026-10-21 on the Stage 6 planning branch)
+
+Stage 6 (secured optional community backend) planning is prepared at
+`docs/planning/goldberg-0.11/stage-6/`. This file does not change any decision above.
+
+- **D4/D5/D8 remain UNRESOLVED owner decisions.** The complete alternatives,
+  trade-offs, security implications and planning recommendations are in
+  `stage-6/OPEN-DECISIONS.md`. The Supabase Free moderation-only pilot is a
+  **proposal, not an approved backend selection**; Workers+D1 stays an unproven
+  alternative; deferral/no-backend remains a legitimate outcome.
+- Owner-approved on 2026-10-21: Stage 6 documentation preparation only
+  (10 documents + additive checklist/STAGES/DECISIONS/HANDOFF updates on the isolated
+  `docs/goldberg-0.11-stage-6-planning` branch). Explicitly **not** approved yet:
+  implementation, provisioning, real Google OAuth configuration, commit/push (pending
+  review), D4/D5/D8 finalization.
+- No identity, controller contact, legal or credential data was invented; privacy,
+  retention, licensing, audience/age safeguards and account deletion are recorded as
+  explicit unresolved decisions requiring joint owner review before any collection.
+- No legal compliance is claimed; free hosting is not proof of compliance.

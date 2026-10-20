@@ -122,4 +122,14 @@ tmpfs — keep large archives in `~/.cache`.
 Notebook (for 5.10/5.11): Arch Linux, Java 17, emulator 37.2.12, AVD `stage5-api36` with
 `ANDROID_AVD_HOME=/home/stokonn/.config/.android/avd`.
 
+## Additive note — Stage 6 planning branch (2026-10-21, separate agent, docs only)
+
+Added on the isolated `docs/goldberg-0.11-stage-6-planning` branch only; the Stage 5
+branch/tree was not modified by this work. Stage 6 (community backend) **planning
+documentation** is prepared at `docs/planning/goldberg-0.11/stage-6/` (10 documents +
+additive STAGE-CHECKLIST/STAGES/DECISIONS/HANDOFF updates), **uncommitted pending
+owner approval**. Stage 6 implementation is NOT started and stays blocked on owner
+decisions D4/D5/D8 and a separate instruction. Nothing above in this handoff changes;
+5.10–5.13 remain the open Stage 5 tasks with the same resume steps.
+
 created by stokonn with love <3

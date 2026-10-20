@@ -77,3 +77,7 @@ Stage 3A implements only the safe local persistence bridge and separate catalogu
 ## Stage 3B implementation checkpoint
 
 The owner separately authorized [portable v5 and safe recovery](stage-3b/README.md). This branch adds the additive9→10 personal migration, format1–4 readers, UUID/settings/raw-recovery portability, completion evidence and durable preference replay. Acceptance is recorded in its own verification ledger. Stage4 remains a separate future instruction, with no automatic continuation, provider adapter, cloud deployment, main merge or release.
+
+## Stage 6 planning reconciliation — 2026-10-21
+
+The owner approved a documentation-only Stage 6 preparation on the isolated `docs/goldberg-0.11-stage-6-planning` branch: the Stage 6 gate above, [COMMUNITY-ADMIN.md](COMMUNITY-ADMIN.md) and [CLOUD.md](CLOUD.md) remain authoritative and unchanged, and the implementation-ready package now lives in [stage-6/](stage-6/README.md) (architecture comparison, auth/authorization contracts, data model and moderation state machine, versioned `/v1` API for both Admin clients, adversarial threat matrix, zero-cost operations, open-decision register, unchecked implementation checklist, Stage 7 handoff). D4/D5/D8 remain **unresolved owner decisions** — the Supabase Free pilot stays a proposal, not a selection. No implementation, provisioning, OAuth configuration or cloud account occurred; Stage 6 implementation requires a separate instruction after the decisions in [stage-6/OPEN-DECISIONS.md](stage-6/OPEN-DECISIONS.md) are settled.

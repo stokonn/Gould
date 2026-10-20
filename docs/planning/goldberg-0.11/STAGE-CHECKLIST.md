@@ -299,8 +299,40 @@ Mark ✅ only when all of the above have executed-passed evidence.
 
 ## Stage 6 — Secured optional community backend
 
-**Status: ⬜ not started.** Requires a separate owner instruction; depends on D4/D5/D8 and a
-zero-cost operational plan. No provisioning, no client-side speculation.
+**Status: ⬜ planning prepared, implementation not started (2026-10-21).** The detailed
+implementation-ready plan lives in [stage-6/](stage-6/README.md) (architecture,
+auth, data model, API contracts, threat model, zero-cost ops, open decisions,
+handoff); the authoritative task list is [stage-6/CHECKLIST.md](stage-6/CHECKLIST.md)
+— every task there is unchecked. Implementation requires a separate owner instruction
+**and** settled owner decisions D4/D5/D8 ([stage-6/OPEN-DECISIONS.md](stage-6/OPEN-DECISIONS.md)).
+No provisioning, no OAuth configuration, no client-side speculation, no paid service.
+
+- **Purpose:** Optional, secured community backend: server-validated Google auth,
+  default-deny five-role authorization, revisioned submissions with immutable
+  evidence, one-transaction moderation decisions with audit trail, versioned `/v1`
+  API shared by future Android/Web Admin clients — under the permanent 0 CZK
+  contract, with zero practice-journal data ever crossing the boundary.
+- **Scope (planned, not implemented):** backend server code + database
+  (provider TBD by D4), Android community repository/token storage (optional
+  feature), export/restore tooling. **No** journal schema/backup/signing change; no
+  Stage 7 UI; no bundle changes.
+
+**Tasks — see [stage-6/CHECKLIST.md](stage-6/CHECKLIST.md) for full definitions
+(6.0a–6.0e decisions/provisioning; 6.1–6.9 server core; 6.10–6.11 Android
+integration; 6.12–6.16 verification gates; 6.17–6.18 handoff/closure). All UNCHECKED.**
+
+- [ ] 6.0a–6.0e Owner decisions D4/D5/D8 + separately authorized provisioning/OAuth.
+- [ ] 6.1–6.9 Server core: schema, auth, authorization, submissions, decision
+      transaction, idempotency, read overlay, admin endpoints, abuse controls.
+- [ ] 6.10–6.11 Android optional integration with strict personal-data isolation and
+      graceful offline/unavailable behavior.
+- [ ] 6.12–6.16 Adversarial matrix (local + separately approved integration rows),
+      export/restore drill, privacy/terms published before any collection.
+- [ ] 6.17–6.18 Frozen contract + Stage 7 handoff; tracking sync with evidence.
+
+**Verification:** none executed — nothing is claimed. Planning-document consistency
+checks (links, Stage 2–5 contract reuse, Stage 7 dependency compatibility) are
+recorded in the Stage 6 planning session report, not as implementation evidence.
 
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
