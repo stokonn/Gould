@@ -245,6 +245,15 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
   portion of task 5.12 executed on the desktop; 5.13 checkpoint docs updated + pushed, but
   5.13 stays open pending Issue #31/Project sync after 5.10/5.11. PMP local
   `.pmp/`/`.pmp.yml` preserved untouched (never reinitialized).
+- 2026-10-20 GUI-mode + CI follow-up (same session): the owner-requested **GUI-mode**
+  emulator attempt on the GNOME desktop (explicit `emulator-5580`, `-gpu auto`, session
+  XAUTHORITY) also ended **`Killed by SIGSEGV`** with no ADB device → all local emulator
+  retries stopped. A **CI verification workflow was prepared**
+  (`.github/workflows/stage5-emulator.yml`, `workflow_dispatch` only, SHA-pinned, full
+  `connectedDebugAndroidTest` for 5.10, digest-verified 0.10.1 upgrade + network/
+  process-death/startup evidence for 5.11) — **local file only, not committed or pushed
+  pending owner approval; no CI results claimed**. See `docs/ai/STATE.md` items 6–7 and
+  `docs/ai/VERIFICATION.md` rows 11–12.
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,

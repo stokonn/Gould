@@ -83,6 +83,26 @@ Task 5.10/5.11 are **blocked by a host-level Android emulator bug on this deskto
    22,508,542 B — same byte size as the notebook checkpoint APK (source-identity
    evidence). Task 5.12 host-side portion therefore executed and passing; 5.12 stays
    open only as a formality until 5.10/5.11 evidence exists for the final re-run.
+6. **GUI-mode emulator attempt (owner-requested, one controlled configuration)** —
+   first launch failed before QEMU started (tool shell lacked `XAUTHORITY`); relaunched
+   with the session's `/run/user/1000/.mutter-Xwaylandauth.*` → Qt window opened on the
+   GNOME desktop, then **`Killed by SIGSEGV` again** after the protected-range warning.
+   GUI mode does not avoid the bug → **all local emulator retries stopped** (owner
+   instruction). Details in VERIFICATION.md row 11.
+7. **CI investigation + workflow prepared (not yet committed/pushed — pending owner
+   approval)** — GitHub-hosted `ubuntu-24.04` runners support KVM-accelerated Android
+   emulation (GitHub Changelog 2024-04-02) and
+   `reactivecircus/android-emulator-runner` v2.38.0 is current. Prepared
+   `.github/workflows/stage5-emulator.yml`: **`workflow_dispatch` only** (no automatic
+   runs), `permissions: contents: read`, SHA-pinned actions, KVM enable step, explicit
+   `emulator-NNNN` serial + `ro.kernel.qemu=1` guard with abort-on-multiple-devices.
+   Job 5.10 runs the **complete** `connectedDebugAndroidTest` suite (no selection/
+   skipping). Job 5.11 runs the CI-executable acceptance subset: digest-verified
+   in-place upgrade from trusted 0.10.1 (script-asserted), Wi-Fi→mobile + Data Saver
+   evidence, process death + cold restart with DB integrity check, 5× startup
+   measurements, failure logcat capture. Explicitly NOT covered (notebook follow-up):
+   consent revocation mid-stream, low disk, screenshot inspection, real bundle
+   transfer costs. YAML validated (`yaml.safe_load` OK); helper scripts compile.
 
 ## Executed — second resume session (2026-10-20, battery emergency stop) — real results
 

@@ -1,0 +1,200 @@
+name: Goldberg Stage 5 emulator verification
+# Tasks 5.10 (instrumentation) and 5.11 (emulator acceptance subset) on a
+# GitHub-hosted Linux runner with KVM acceleration (hardware-accelerated
+# Android virtualization, GitHub Changelog 2024-04-02).
+#
+# Safety / policy:
+#   - workflow_dispatch ONLY: no automatic runs; widening the triggers is an
+#     explicit owner decision (AGENTS.md: ask before significant CI changes).
+#   - contents: read only; credentials are not persisted; nothing is signed,
+#     published, merged or tagged. Debug APKs are runner-signed only.
+#   - No test selection, weakening or skipping: job 5.10 runs the complete
+#     connected suite via `connectedDebugAndroidTest`.
+#   - Every adb use inside the scripts resolves and exports a single explicit
+#     `emulator-NNNN` serial and verifies `ro.kernel.qemu=1`; a physical device
+#     can never be selected (multiple attached devices abort the run).
+#   - Actions are pinned to full commit SHAs (repo convention).
+#
+# Coverage honesty (task 5.11 matrix):
+#   - Covered here: seeded in-place upgrade from trusted 0.10.1 (script-asserted
+#     table/schema equality), Wi-Fi→mobile default-network transition evidence,
+#     Data Saver enable/disable state evidence, real process death + cold-start
+#     restart with database integrity check, startup cost measurements, logcat
+#     evidence on failure.
+#   - NOT covered here (notebook/manual follow-up): consent revocation mid-stream
+#     (in-app UI flow), low-disk conditions, screenshot visual inspection, and
+#     real bundle-transfer network/disk costs (require a reachable provider host).
+#     Record those results in docs/ai/VERIFICATION.md before claiming 5.11.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: stage5-emulator-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  stage5-instrumentation:
+    name: "5.10 instrumentation — API 36 emulator"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Set up required Android SDK packages
+        uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
+        with:
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
+          log-accepted-android-sdk-licenses: false
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Build app, JVM tests and instrumentation APKs
+        run: ./gradlew --no-daemon --max-workers=1 assembleDebug testDebugUnitTest assembleDebugAndroidTest
+      - name: Run full instrumentation suite on the emulator
+        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
+        with:
+          api-level: 36
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          avd-name: stage5-ci
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+          script: |
+            set -euo pipefail
+            SERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"
+            case "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac
+            ATTACHED="$(adb devices | awk '$2=="device"' | wc -l)"
+            if [ "$ATTACHED" -ne 1 ]; then echo "ERROR: expected exactly one attached device, found $ATTACHED"; adb devices; exit 1; fi
+            QEMU="$(adb -s "$SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')"
+            if [ "$QEMU" != "1" ]; then echo "ERROR: $SERIAL is not a verified emulator (ro.kernel.qemu=$QEMU)"; exit 1; fi
+            export ANDROID_SERIAL="$SERIAL"
+            echo "Running the full connected suite on verified emulator $SERIAL"
+            mkdir -p stage5-ci-results
+            trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || true' EXIT
+            ./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest
+      - name: Upload instrumentation evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: stage5-instrumentation-results
+          path: |
+            app/build/outputs/androidTest-results/connected/**
+            app/build/reports/androidTests/**
+            stage5-ci-results/**
+          if-no-files-found: warn
+          retention-days: 14
+
+  stage5-acceptance:
+    name: "5.11 acceptance subset — API 36 emulator"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Set up required Android SDK packages
+        uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
+        with:
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
+          log-accepted-android-sdk-licenses: false
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Build candidate APK
+        run: ./gradlew --no-daemon --max-workers=1 assembleDebug
+      - name: Fetch trusted 0.10.1 baseline APK (digest-verified)
+        run: |
+          mkdir -p .gradle/release-artifacts stage5-ci-results
+          curl -fsSL -o .gradle/release-artifacts/Goldberg-v0.10.1.apk \
+            https://github.com/stokonn/Goldberg/releases/download/v0.10.1/Goldberg-v0.10.1.apk
+          echo "854bbfebf617ec920df60d181a12e0dcbd2fed10052f2479903a78a290cef312  .gradle/release-artifacts/Goldberg-v0.10.1.apk" | sha256sum -c -
+      - name: Run acceptance checks on the emulator
+        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
+        with:
+          api-level: 36
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          avd-name: stage5-ci
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+          script: |
+            set -euo pipefail
+            SERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"
+            case "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac
+            ATTACHED="$(adb devices | awk '$2=="device"' | wc -l)"
+            if [ "$ATTACHED" -ne 1 ]; then echo "ERROR: expected exactly one attached device, found $ATTACHED"; adb devices; exit 1; fi
+            QEMU="$(adb -s "$SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')"
+            if [ "$QEMU" != "1" ]; then echo "ERROR: $SERIAL is not a verified emulator (ro.kernel.qemu=$QEMU)"; exit 1; fi
+            export ANDROID_SERIAL="$SERIAL"
+            echo "Running acceptance subset on verified emulator $SERIAL"
+            trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || true' EXIT
+            # (a) Seeded in-place upgrade from the trusted 0.10.1 release APK.
+            #     The helper asserts baseline schema, version and per-table data
+            #     equality after migration; disposable emulator seeding only.
+            python3 scripts/verify_emulator_upgrade.py \
+              --serial "$SERIAL" \
+              --baseline .gradle/release-artifacts/Goldberg-v0.10.1.apk \
+              --baseline-version 0.10.1 --baseline-schema 8 --expected-schema 10 \
+              --candidate app/build/outputs/apk/debug/app-debug.apk \
+              --output stage5-ci-results/upgrade \
+              --seed-disposable --offline --startup-runs 5
+            # (b) Wi-Fi → mobile transition and Data Saver state evidence.
+            {
+              echo "== default network with Wi-Fi enabled =="
+              adb -s "$SERIAL" shell svc wifi enable
+              sleep 6
+              adb -s "$SERIAL" shell dumpsys connectivity | grep -E "Active default network|Default network" || true
+              echo "== default network after Wi-Fi disabled (expect mobile fallback) =="
+              adb -s "$SERIAL" shell svc wifi disable
+              sleep 6
+              adb -s "$SERIAL" shell dumpsys connectivity | grep -E "Active default network|Default network" || true
+              echo "== Data Saver enabled =="
+              adb -s "$SERIAL" shell cmd netpolicy set data_saver enable
+              sleep 3
+              adb -s "$SERIAL" shell dumpsys netpolicy
+              echo "== Data Saver disabled =="
+              adb -s "$SERIAL" shell cmd netpolicy set data_saver disable
+              sleep 3
+              adb -s "$SERIAL" shell dumpsys netpolicy
+              adb -s "$SERIAL" shell svc wifi enable
+            } | tee stage5-ci-results/network-evidence.txt
+            grep -qiE "data.saver|datasaver" stage5-ci-results/network-evidence.txt
+            # (c) Real process death + cold restart with database integrity check.
+            adb -s "$SERIAL" shell am start -W -n com.opus.piano/.MainActivity
+            sleep 5
+            test -n "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
+            adb -s "$SERIAL" shell am force-stop com.opus.piano
+            test -z "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
+            adb -s "$SERIAL" shell am start -W -n com.opus.piano/.MainActivity
+            sleep 5
+            test -n "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
+            adb -s "$SERIAL" shell run-as com.opus.piano ls databases | tee stage5-ci-results/process-death-db.txt
+            # (d) Startup cost measurement (5 warm cold-process launches).
+            bash scripts/measure-startup.sh "$SERIAL" 5 | tee stage5-ci-results/startup-measurement.txt
+      - name: Upload acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: stage5-acceptance-results
+          path: |
+            stage5-ci-results/**
+          if-no-files-found: warn
+          retention-days: 14
+# This workflow never publishes APKs and never signs with a runner-generated key.
+# Stage 5 remains IN PROGRESS until all mandatory checks pass with executed
+# evidence recorded in docs/ai/VERIFICATION.md (AGENTS.md publication gates).

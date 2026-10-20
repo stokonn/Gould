@@ -89,7 +89,16 @@ x86_64 image + AVD `stage5-api36`, AVD home redirected). On the notebook:
 8. PMP: local `.pmp/`/`.pmp.yml` on the desktop were **preserved as-is, never
    reinitialized**. Leave them private.
 
-Alternative: if an upstream emulator fix for #566807521 ships (watch the issue), the
+Alternative 1 (CI): a prepared workflow `.github/workflows/stage5-emulator.yml`
+(`workflow_dispatch` only, KVM-accelerated `ubuntu-24.04`, SHA-pinned) runs the full
+connected suite for 5.10 and the CI-executable 5.11 subset (digest-verified 0.10.1
+upgrade, Wi-Fi→mobile/Data Saver evidence, process death + DB integrity, startup
+measurements). It is **not yet committed/pushed — owner approval required first**;
+after it lands on `main` it can be dispatched manually from the Actions tab. Consent
+revocation mid-stream, low disk, screenshot inspection and real bundle-transfer costs
+remain notebook/manual work either way.
+
+Alternative 2: if an upstream emulator fix for #566807521 ships (watch the issue), the
 desktop's `stage5-api36` AVD + emulator 37.3.4 side-by-side install are already prepared
 (`~/Android/Sdk/emulator-37.3.4/emulator -avd stage5-api36 -port 5580 …`).
 
