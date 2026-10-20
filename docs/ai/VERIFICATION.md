@@ -2,6 +2,30 @@
 
 Honest executed vs not-executed record. Only rows marked **EXECUTED** were actually run.
 
+## Executed — second CI dispatch + execution-model fix (2026-10-20, sixth session)
+
+Owner-approved attempt 2: merge PR #33, dispatch against `5cdc0d6`, monitor both jobs,
+preserve evidence, diagnose before any further dispatch. Evidence:
+`docs/planning/goldberg-0.11/stage-5/results/ci-run-39508388525/`.
+
+| # | Command / action | Result |
+|---|---|---|
+| 1 | Pre-merge check `gh pr diff 33 --name-only` + merge + post-merge `git diff 577d811 origin/main` | **EXECUTED** — workflow-only (1 file, +79/−8); PR #33 merged as `a4a9509`; restriction "merge ONLY the CI workflow" holds. |
+| 2 | `gh workflow run stage5-emulator.yml --ref feature/goldberg-0.11-stage-5` → [run 39508388525](https://github.com/stokonn/Goldberg/actions/runs/39508388525), monitored to completion | **EXECUTED** — `headSha=5cdc0d6…` verified; both jobs **failure at the emulator step only**; all other steps (checkout, SHA binding, SDK, KVM, **all builds**, trusted-download, **signing**) succeeded. Zero instrumentation XMLs — **0 application tests executed; no application conclusion drawn.** |
+| 3 | Signing step results from the runner (attempt-2 fix verification) | **EXECUTED** — `apksigner used: /usr/local/lib/android/sdk/build-tools/37.0.0/apksigner` (**runner-side confirmation of the run-1 root cause**); release `53eface4…d59e` = trusted ✓; baseline = candidate = `47aebcfd…34c6` ✓; all exits 0; raw `apksigner-*.log/.err` + `signing-environment.txt` uploaded as artifacts. |
+| 4 | Emulator boot (run 2) | **EXECUTED** — API 36 google_apis booted, `Boot completed in 49524 ms`, serial `emulator-5554`. |
+| 5 | Action source inspection (`reactivecircus/android-emulator-runner@a421e43`: `src/script-parser.ts`, `src/main.ts`) | **EXECUTED** — `parseScript()` splits `script` into single lines (comments/blanks stripped); `main.ts` runs each line via its own `sh -c`. Matches the observed three consecutive `sh -c` log entries ending in dash's `set: Illegal option -o pipefail`. Root cause of runs 39503450845 **and** 39508388525 established from source + logs. |
+| 6 | Fix validation: `validate_v3.py` (YAML; faithful `parseScript` replica must yield exactly 1 chunk; `bash -n` on materialize run steps + materialized bodies) | **EXECUTED** — all pass: 1 chunk per job (`bash "$RUNNER_TEMP/stage5-<job>.sh"`), all `bash -n` OK. |
+| 7 | End-to-end execution-model simulation (GH `run:` step with `bash -e` → parseScript → `sh -c` → bash file; stubbed adb/sqlite3/gradlew/`scripts/*`) | **EXECUTED** — job 1 **exit 0** (guards, cross-line `SERIAL` persistence, EXIT trap, gradle task); job 2 **exit 0 through the full acceptance flow** (WiFi→mobile net-id change, Data Saver exact readbacks, force-stop/restart gates, PRAGMA integrity/foreign-key/user_version assertions, 5× startup); negative guard test propagates exit 1. Stubs validate the execution model only — application assertions are verified only by real CI. |
+
+### Not executed — this session (no claim)
+
+- Any `Stage5*Test` instrumentation or real acceptance assertion on an emulator —
+  run 39508388525 still produced zero XMLs (failure was pre-test, execution model).
+- The third dispatch (documented diagnosis first, per the owner's instruction).
+- dash-specific execution of the new single-line input (POSIX `sh -c 'bash …'`
+  on the runner; locally /bin/sh is bash — validated through the parseScript replica).
+
 ## Executed — first CI dispatch + failure triage (2026-10-20, fifth session)
 
 Phase C/D + triage of [run 39503450845](https://github.com/stokonn/Goldberg/actions/runs/39503450845)

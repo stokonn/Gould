@@ -330,6 +330,49 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
     instruction** (explicit approval required for significant main-branch change or new
     CI dispatch). Tasks 5.10–5.13 remain open; no merge of Stage 5 application code; no
     tag/release/APK publication; Stage 6/7 not started.
+- 2026-10-20 second CI dispatch + failure-triage session (owner-approved attempt 2;
+  **again no application tests executed — CI script-execution-model failure, not an
+  application defect**):
+  - **Approved steps executed:** pre-merge diff verified workflow-only (1 file,
+    +79/−8); PR #33 merged to `main` as merge commit `a4a9509`; corrected workflow
+    dispatched against `feature/goldberg-0.11-stage-5` @ `5cdc0d6` →
+    [run 39508388525](https://github.com/stokonn/Goldberg/actions/runs/39508388525)
+    (headSha verified); both jobs monitored to completion; evidence preserved at
+    `docs/planning/goldberg-0.11/stage-5/results/ci-run-39508388525/`
+    (raw logs SHA-256 `efa4baf3…42e7`, 12 artifacts incl. the new signing diagnostics).
+  - **Attempt-2 fixes verified on the actual runner:** SHA binding passed (both jobs);
+    all builds passed; **signing step PASSED with full diagnostics** — the runner
+    recorded `apksigner used: /usr/local/lib/android/sdk/build-tools/37.0.0/apksigner`
+    (empirically confirming the run-39503450845 root cause on the runner itself),
+    release digest `53eface4…d59e` = trusted certificate, baseline = candidate =
+    runner key `47aebcfd…34c6`, all exit codes 0, raw streams uploaded as artifacts;
+    API 36 emulator booted in **49 524 ms** (KVM works).
+  - **Run-2 root cause (proven from the pinned action's own source):**
+    `reactivecircus/android-emulator-runner@a421e43` `parseScript()` splits the
+    `script` input into **single lines** (comments/blanks stripped) and `main.ts` runs
+    each line via a **separate `sh -c`** — state cannot persist between lines and
+    multi-line constructs cannot work; the log shows three consecutive `sh -c` calls
+    (`set -e`, heredoc opener, `set -euo pipefail` → dash error, exit 2). Run
+    39503450845 died at line 1 of this same model. The action's `script` input only
+    supports single-line commands.
+  - **Meaningful fix applied (workflow-only; script body byte-identical):** a regular
+    GitHub `run:` step (one `bash -e` process) materializes the approved script into
+    `$RUNNER_TEMP/stage5-<job>.sh` + `bash -n` checks it; the action's `script:`
+    becomes exactly one line `bash "$RUNNER_TEMP/stage5-<job>.sh"` → `parseScript`
+    yields one chunk → the whole script runs in a single bash process.
+  - **Fix validated on the host (executed):** `validate_v3.py` — YAML OK; faithful
+    `parseScript` replica yields **exactly 1 chunk per job**; `bash -n` OK on both
+    materialize steps and both materialized bodies; end-to-end simulation (GH run step
+    → parseScript → `sh -c` → bash file with stubbed adb/gradlew/sqlite/scripts):
+    **job 1 exit 0** (guards, variable persistence, EXIT trap, gradle invoked);
+    **job 2 exit 0 through the full acceptance flow** (WiFi→mobile 100→101 transition
+    with net-id inequality, Data Saver exact readbacks, force-stop/restart pidof
+    gates, DB pull + `PRAGMA integrity_check/foreign_key_check/user_version`
+    assertions, 5× startup, trap; 25 deep `emulator-5554` adb calls prove persistence);
+    negative guard test propagates exit 1. Canned stubs validate the execution
+    model only — application assertions are verified solely by the real CI run.
+  - **STOPPED before merge/dispatch of attempt 3** pending the established
+    pre-dispatch documentation. Tasks 5.10–5.13 remain open.
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,

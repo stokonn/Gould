@@ -1,49 +1,44 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-20, first-CI-dispatch + failure-triage session (run
-> 39503450845 dispatched, both jobs failed pre-test from CI setup/script defects;
-> corrections prepared and validated, **awaiting owner approval for the workflow-fix
-> PR merge and re-dispatch**).
+> **Last updated:** 2026-10-20, second-CI-dispatch + execution-model-fix session
+> ([run 39508388525](https://github.com/stokonn/Goldberg/actions/runs/39508388525)
+> failed pre-test from the action's line-by-line script model; meaningful fix applied
+> and host-validated; **attempt-3 dispatch pending after documentation sync**).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
 > `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → GitHub Issue #31.
 > **Stage 5 is NOT complete. No merge/tag/release/APK publication performed.**
 
-## 🚦 Current status: awaiting owner approval (workflow-fix merge + re-dispatch gate)
+## 🚦 Current status: attempt-3 dispatch pending (fix validated, docs syncing)
 
-- **Phase C/D completed:** CI-only PR #32 merged to `main` (merge commit `577d811`,
-  workflow-only diff +384 lines); workflow dispatched against
-  `feature/goldberg-0.11-stage-5` @ `bcd8894` →
-  [run 39503450845](https://github.com/stokonn/Goldberg/actions/runs/39503450845).
-- **Both jobs failed BEFORE any application test** (owner-confirmed: CI setup/script
-  failures, not application defects; zero instrumentation XMLs; no application
-  conclusion may be drawn). 5.10: API 36 emulator booted on the runner in ≈53 s
-  (KVM works in CI), then the script died at line 1 — the emulator-runner invokes it
-  with `/usr/bin/sh` (dash), which rejects `set -o pipefail`. 5.11: builds, trusted
-  0.10.1 download and digest check succeeded; signing step logged `MISSING` ×3 and the
-  emulator step was skipped.
-- **Root causes proven with evidence** (bundle:
-  `docs/planning/goldberg-0.11/stage-5/results/ci-run-39503450845/`): (1) sh/dash
-  incompatibility above; (2) apksigner's print format changed in build-tools 37.0.0 —
-  `Signer #1 certificate SHA-256 digest:` → `V2 Signer: certificate SHA-256 digest:`;
-  37.0.0 is preinstalled on the runner and was selected by `sort -V | tail -n1`;
-  locally reproduced with the same release APK: **identical digest values, only labels
-  differ** — no certificate mismatch occurred and none is concluded.
-- **Minimal workflow-only corrections applied** (identical copy will live on the
-  Stage 5 branch and the main-branch CI PR): both emulator scripts materialize into
-  `$RUNNER_TEMP` via quoted heredoc and run with explicit `exec bash`; signing step
-  records raw apksigner stdout/stderr/exit codes + build-tools inventory to uploaded
-  artifacts (no suppressed diagnostics), parses both apksigner formats requiring
-  exactly one distinct signer digest; trusted-cert equality + baseline/candidate
-  equality assertions preserved verbatim and strict.
-- **Corrections validated on the host (executed):** static YAML/`bash -n`/`py_compile`
-  all pass; wrapper mechanics proven under `sh -c` with stubbed adb/gradlew; signing
-  step sandbox in exact runner conditions (apksigner 37.0.0 selected) — success exit 0,
-  genuine cert-mismatch exit 1 (separately generated test keystore), corrupt-APK exit 1
-  with diagnostics preserved. dash itself not installed locally (POSIX reasoning for
-  the 3 outer wrapper lines).
-- **STOPPED here per owner instruction:** merging the workflow-fix PR into `main` and
-  any new `workflow_dispatch` require explicit owner approval. Until then: no new CI
-  run, no instrumentation, no 5.10/5.11 evidence. Tasks 5.10–5.13 remain open.
+- **Approved attempt 2 completed:** PR #33 merged (`main` @ `a4a9509`, workflow-only
+  diff re-verified), run 39508388525 dispatched against `5cdc0d6` (exact approved
+  commit), both jobs monitored to completion, evidence preserved under
+  `docs/planning/goldberg-0.11/stage-5/results/ci-run-39508388525/`.
+- **Run-2 outcome — both jobs failed at the emulator step ONLY (CI
+  script-execution-model failure, not an application defect; zero application tests
+  executed):** everything else passed — SHA binding, all builds, trusted 0.10.1
+  download, **signing step with full diagnostics** (runner selected
+  `build-tools/37.0.0/apksigner`, empirically confirming the run-1 root cause; release
+  `53eface4…` = trusted, baseline = candidate = `47aebcfd…`), emulator boot
+  (49 524 ms).
+- **Root cause proven from the pinned action's source:** `parseScript()` splits the
+  `script` input into single lines and `main.ts` runs each via a separate `sh -c` —
+  no state persists between lines; multi-line constructs/heredocs cannot work; the
+  observed log (three consecutive `sh -c` calls ending in dash's
+  `set: Illegal option -o pipefail`) matches exactly. This also invalidated the
+  original script design (its guards depend on `SERIAL` persisting across lines).
+- **Fix applied (workflow-only, script body byte-identical):** GitHub `run:` step
+  materializes the approved script to `$RUNNER_TEMP/stage5-<job>.sh` + `bash -n`;
+  action input is the single line `bash "$RUNNER_TEMP/stage5-<job>.sh"` (parseScript
+  → exactly 1 chunk → one bash process).
+- **Fix host-validated (executed):** `validate_v3.py` all green; end-to-end
+  simulation GH-run-step → parseScript → `sh -c` → file: job 1 exit 0, job 2 exit 0
+  through the full acceptance flow (persistence proven by 25 deep `emulator-5554`
+  adb calls), negative guard test propagates exit 1. Stubs validate the execution
+  model only; application assertions are verified solely by real CI.
+- **STOPPED before attempt-3 merge/dispatch until documentation + Issue/Project sync
+  completes** (the owner's diagnose-and-document-first rule). Tasks 5.10–5.13 remain
+  open.
 
 
 ## ⚠️ Emulator blocker on the desktop machine (2026-10-20, third session)

@@ -102,22 +102,14 @@ jobs:
           sudo udevadm trigger --name-match=kvm
       - name: Build app, JVM tests and instrumentation APKs
         run: ./gradlew --no-daemon --max-workers=1 assembleDebug testDebugUnitTest assembleDebugAndroidTest
-      - name: Run full instrumentation suite on the emulator
-        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
-        with:
-          api-level: 36
-          target: google_apis
-          arch: x86_64
-          profile: pixel_6
-          avd-name: stage5-ci
-          disable-animations: true
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
-          script: |
-            # The action runs this script with /usr/bin/sh (dash): it rejects
-            # 'set -o pipefail'. Materialize the real script into a file and
-            # execute it explicitly with bash (run 39503450845 failed here).
-            set -e
-            cat > "$RUNNER_TEMP/stage5-instrumentation-script.sh" <<'BASH_SCRIPT'
+      - name: Materialize emulator test script (the action's script input runs line-by-line)
+        run: |
+            # android-emulator-runner@v2.38.0 parseScript() splits its `script` input
+            # into single lines and runs each via a separate `sh -c` (source-inspected;
+            # proven by runs 39503450845 and 39508388525). GitHub `run:` steps execute
+            # as ONE bash process, so the approved script is materialized into a file
+            # here, syntax-checked, and later executed as a single-line `bash <file>`.
+            cat > "$RUNNER_TEMP/stage5-instrumentation.sh" <<'BASH_SCRIPT'
             set -euo pipefail
             SERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"
             case "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac
@@ -131,7 +123,19 @@ jobs:
             trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || true' EXIT
             ./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest
             BASH_SCRIPT
-            exec bash "$RUNNER_TEMP/stage5-instrumentation-script.sh"
+            bash -n "$RUNNER_TEMP/stage5-instrumentation.sh"
+            echo "Materialized and syntax-checked $RUNNER_TEMP/stage5-instrumentation.sh"
+      - name: Run full instrumentation suite on the emulator
+        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
+        with:
+          api-level: 36
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          avd-name: stage5-ci
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+          script: bash "$RUNNER_TEMP/stage5-instrumentation.sh"
       - name: Summarize instrumentation results
         if: always()
         run: |
@@ -291,23 +295,14 @@ jobs:
           fi
           if [ -n "$FAIL" ]; then echo "$FAIL"; exit 1; fi
           echo "OK: release identity trusted; in-place upgrade pair signature-compatible"
-      - name: Run acceptance checks on the emulator
-        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
-        with:
-          api-level: 36
-          target: google_apis
-          arch: x86_64
-          profile: pixel_6
-          avd-name: stage5-ci
-          disable-animations: true
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
-          script: |
-            # The action runs this script with /usr/bin/sh (dash): it rejects
-            # 'set -o pipefail'. Materialize the real script into a file and
-            # execute it explicitly with bash (run 39503450845 failed here in
-            # the sibling job before this one could run).
-            set -e
-            cat > "$RUNNER_TEMP/stage5-acceptance-script.sh" <<'BASH_SCRIPT'
+      - name: Materialize emulator test script (the action's script input runs line-by-line)
+        run: |
+            # android-emulator-runner@v2.38.0 parseScript() splits its `script` input
+            # into single lines and runs each via a separate `sh -c` (source-inspected;
+            # proven by runs 39503450845 and 39508388525). GitHub `run:` steps execute
+            # as ONE bash process, so the approved script is materialized into a file
+            # here, syntax-checked, and later executed as a single-line `bash <file>`.
+            cat > "$RUNNER_TEMP/stage5-acceptance.sh" <<'BASH_SCRIPT'
             set -euo pipefail
             SERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"
             case "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac
@@ -438,7 +433,19 @@ jobs:
             # (d) Startup cost measurement (5 warm cold-process launches).
             bash scripts/measure-startup.sh "$SERIAL" 5 | tee stage5-ci-results/startup-measurement.txt
             BASH_SCRIPT
-            exec bash "$RUNNER_TEMP/stage5-acceptance-script.sh"
+            bash -n "$RUNNER_TEMP/stage5-acceptance.sh"
+            echo "Materialized and syntax-checked $RUNNER_TEMP/stage5-acceptance.sh"
+      - name: Run acceptance checks on the emulator
+        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
+        with:
+          api-level: 36
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          avd-name: stage5-ci
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+          script: bash "$RUNNER_TEMP/stage5-acceptance.sh"
       - name: Upload acceptance evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
