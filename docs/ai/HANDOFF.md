@@ -89,14 +89,17 @@ x86_64 image + AVD `stage5-api36`, AVD home redirected). On the notebook:
 8. PMP: local `.pmp/`/`.pmp.yml` on the desktop were **preserved as-is, never
    reinitialized**. Leave them private.
 
-Alternative 1 (CI): a prepared workflow `.github/workflows/stage5-emulator.yml`
-(`workflow_dispatch` only, KVM-accelerated `ubuntu-24.04`, SHA-pinned) runs the full
-connected suite for 5.10 and the CI-executable 5.11 subset (digest-verified 0.10.1
-upgrade, Wi-Fi→mobile/Data Saver evidence, process death + DB integrity, startup
-measurements). It is **not yet committed/pushed — owner approval required first**;
-after it lands on `main` it can be dispatched manually from the Actions tab. Consent
-revocation mid-stream, low disk, screenshot inspection and real bundle-transfer costs
-remain notebook/manual work either way.
+Alternative 1 (CI, current primary path): `.github/workflows/stage5-emulator.yml`
+(`workflow_dispatch` only, KVM-accelerated `ubuntu-24.04`, SHA-pinned, revised this
+session — signing-resolution, state-asserted network/Data Saver checks, DB integrity
+after process death, source-SHA binding) runs the full connected suite for 5.10 and the
+CI-executable 5.11 subset. It is committed on this branch (`1ef15bf` + CI-activation
+revision) and proposed for `main` via **draft PR #32 (workflow-only, not merged)**.
+After the owner approves: merge PR #32, then dispatch the workflow **against
+`feature/goldberg-0.11-stage-5`** from the Actions tab (the workflow depends on this
+branch's helper scripts; `main`'s copy is older). Consent revocation mid-stream, low
+disk, screenshot inspection and real bundle-transfer costs remain notebook/manual work
+either way.
 
 Alternative 2: if an upstream emulator fix for #566807521 ships (watch the issue), the
 desktop's `stage5-api36` AVD + emulator 37.3.4 side-by-side install are already prepared

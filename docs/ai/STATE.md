@@ -1,9 +1,36 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-20, third resume session (desktop machine; emulator blocker found).
+> **Last updated:** 2026-10-20, CI-activation session (Phase A/B of the owner's CI plan;
+> approval gate reached — nothing dispatched or merged).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
 > `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → GitHub Issue #31.
 > **Stage 5 is NOT complete. No merge/tag/release/APK publication performed.**
+
+## 🚦 Current status: awaiting owner approval (Phase C gate)
+
+- The Stage 5 emulator verification workflow was **revised and CI-only PR prepared**:
+  draft [PR #32](https://github.com/stokonn/Goldberg/pull/32), branch
+  `ci/stage5-emulator-verification` (based on `origin/main`), commit `9870d99` —
+  **workflow-only diff (1 file), NOT merged**.
+- **Phase B findings fixed in the workflow** (details in `docs/ai/VERIFICATION.md`
+  CI-activation section): in-place upgrade now uses a same-keystore debug rebuild of
+  the v0.10.1 tag (CI debug can never install over the release-signed APK; trusted cert
+  `53eface4…` apksigner-verified); the invalid `cmd netpolicy set data_saver enable`
+  was replaced with AOSP-verified `set/get restrict-background` + `dumpsys` state
+  assertions; Wi-Fi→mobile transition now asserts transport + network-ID change;
+  process death now includes pulled-DB `PRAGMA integrity_check/foreign_key_check/
+  user_version`; source commit SHA recorded+asserted in both jobs; 30-day evidence
+  retention. The identical revised workflow is committed on this Stage 5 branch too
+  (so a `workflow_dispatch` against `feature/goldberg-0.11-stage-5` uses the fixed
+  version).
+- **STOPPED here per owner instruction:** merging PR #32 into `main` and manually
+  dispatching the workflow both require explicit owner approval. Until then: no CI run,
+  no instrumentation, no 5.11 evidence. Tasks 5.10–5.13 remain open.
+- This checkpoint commit contains **only** the revised `.github/workflows/stage5-emulator.yml`
+  (identical to PR #32's file) and documentation sync (`docs/ai/STATE.md`,
+  `docs/ai/VERIFICATION.md`, `docs/ai/HANDOFF.md`,
+  `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md`) — **no application/test source
+  changes**.
 
 ## ⚠️ Emulator blocker on the desktop machine (2026-10-20, third session)
 

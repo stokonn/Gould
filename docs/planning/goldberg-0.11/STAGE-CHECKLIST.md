@@ -248,12 +248,45 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
 - 2026-10-20 GUI-mode + CI follow-up (same session): the owner-requested **GUI-mode**
   emulator attempt on the GNOME desktop (explicit `emulator-5580`, `-gpu auto`, session
   XAUTHORITY) also ended **`Killed by SIGSEGV`** with no ADB device → all local emulator
-  retries stopped. A **CI verification workflow was prepared**
-  (`.github/workflows/stage5-emulator.yml`, `workflow_dispatch` only, SHA-pinned, full
-  `connectedDebugAndroidTest` for 5.10, digest-verified 0.10.1 upgrade + network/
-  process-death/startup evidence for 5.11) — **local file only, not committed or pushed
-  pending owner approval; no CI results claimed**. See `docs/ai/STATE.md` items 6–7 and
-  `docs/ai/VERIFICATION.md` rows 11–12.
+  retries stopped. A **CI verification workflow was prepared and later committed+pushed**
+  as `1ef15bf` (`.github/workflows/stage5-emulator.yml`, `workflow_dispatch` only,
+  SHA-pinned, full `connectedDebugAndroidTest` for 5.10, digest-verified 0.10.1 upgrade +
+  network/process-death/startup evidence for 5.11); **no CI execution has happened; no CI
+  results claimed**. See `docs/ai/STATE.md` items 6–7 and `docs/ai/VERIFICATION.md` rows
+  11–12.
+- 2026-10-20 CI-activation session (Phase A/B of the owner's CI plan; **no CI run, no
+  emulator run, no instrumentation — approval gate pending**):
+  - **Phase A — CI-only PR prepared, NOT merged.** Worktree off `origin/main`
+    (`556970a`), branch `ci/stage5-emulator-verification`, commit `9870d99`, draft
+    [PR #32](https://github.com/stokonn/Goldberg/pull/32) — diff verified **workflow-only**
+    (1 file, +379): no application source, database, release, PMP or unrelated documents.
+    Stage 5 working tree and all untracked files preserved untouched. Workflow safety
+    re-reviewed: `workflow_dispatch` only, `contents: read`, `persist-credentials: false`,
+    all five action SHA pins re-verified against their release tags, 30-day evidence
+    retention, 150/120-min timeouts, per-ref concurrency, qemu-verified `emulator-NNNN`
+    serial guards on every adb call.
+  - **Phase B — findings investigated and resolved in the revised workflow (same file
+    now also on this branch):** (1) *signing* — apksigner-verified the trusted 0.10.1
+    release APK carries cert `53eface4…`; a CI debug candidate can never be installed
+    over it in place, so the upgrade test now uses a **debug rebuild of the exact
+    v0.10.1 tag built in the same job** (same runner keystore, signatures match by
+    construction) while release-signature compatibility stays a publication gate —
+    no production credentials in CI; (2) *network checks* — the old
+    `cmd netpolicy set data_saver enable` is **invalid on API 36** (AOSP-verified) and
+    the Wi-Fi→mobile/Data Saver steps only collected logs → replaced with
+    `set/get restrict-background` state readback + `dumpsys` state assertions + a
+    transport-level default-network parser (unit-tested; mobile data is re-enabled
+    after the `--offline` upgrade run); (3) *process death* — now pulls the database
+    after real force-stop → cold restart and asserts `PRAGMA integrity_check`/`foreign_key_check`/
+    `user_version`; (4) *exclusions* — scan confirms **0** `@Ignore`/filters/excluded
+    classes; the full 42-class suite runs unfiltered; (5) *coverage honesty* —
+    CI-covered vs manual-only 5.11 items (consent revocation mid-stream, low disk,
+    screenshots, real bundle-transfer costs) documented in the workflow header;
+    (6) *SHA binding* — both jobs record and assert `git rev-parse HEAD == GITHUB_SHA`.
+    Full executed/not-executed ledger: `docs/ai/VERIFICATION.md` (CI-activation section).
+  - **STOPPED at the owner approval gate as instructed:** merging PR #32 into `main` and
+    any manual `workflow_dispatch` require explicit owner approval (Phase C). Tasks
+    5.10–5.13 remain open; no merge/tag/release; Stage 6 not started.
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,
