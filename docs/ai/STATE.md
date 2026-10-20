@@ -1,17 +1,47 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-20, end of the second resume session (battery emergency stop).
+> **Last updated:** 2026-10-20, third resume session (desktop machine; emulator blocker found).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
 > `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → GitHub Issue #31.
-> **Stage 5 is NOT complete. No push/tag/merge/release/APK publication performed.**
+> **Stage 5 is NOT complete. No merge/tag/release/APK publication performed.**
+
+## ⚠️ Emulator blocker on the desktop machine (2026-10-20, third session)
+
+Task 5.10/5.11 are **blocked by a host-level Android emulator bug on this desktop**:
+
+- This is a **different machine** than the notebook (Fedora, kernel
+  `7.2.10-200.fc44.x86_64`, Java 25, 15 GiB RAM, no cmdline-tools, no stage5 AVD).
+- The desktop's only pre-existing AVD (`Medium_Phone_API_37.0`, google_apis_playstore)
+  and a freshly created notebook-style AVD (`stage5-api36`, google_apis API 36 x86_64,
+  r07 — installed via newly added cmdline-tools 12.0) were both tried.
+- **Every headless boot attempt ends in `Killed by SIGSEGV`** of the qemu process a few
+  minutes into guest boot, right after the persistent
+  `WARNING: cannnot unmap ptr … as it is in the protected range …` line. Configurations
+  tried (all with explicit serial `emulator-5580`, never a physical device):
+  API 37 + swiftshader ×2, API 36 + swiftshader (emulator 37.2.12), API 36 + `-gpu auto`
+  (lavapipe/swangle, 37.2.12), API 36 + swiftshader (emulator **37.3.4** canary, newest
+  published build, installed side-by-side at `~/Android/Sdk/emulator-37.3.4`). One
+  API 37 run with lavapipe/swangle stayed alive 13 min but the guest never completed
+  boot (`adb` stuck offline).
+- This matches the known upstream bug **Google Issue Tracker #566807521** ("Android
+  Emulator crashes with Segmentation fault during headless boot on modern Linux/Fedora",
+  same protected-range warning, KVM present, independent of GPU option). Not fixed in
+  37.3.4.
+- Conclusion: **no emulator on this desktop can currently boot**; tasks 5.10/5.11 cannot
+  be executed here. No instrumentation tests were executed. Possible paths (owner
+  decision): run 5.10/5.11 on the notebook (its `stage5-api36` AVD booted fine), wait for
+  an upstream emulator fix, or try a pre-37 emulator binary (not offered by the SDK
+  channel; direct-zip install would need owner approval).
 
 ## Git / branch state
 
-- Branch `feature/goldberg-0.11-stage-5`, parent `54f2b45` + **one checkpoint commit**
-  (Stage 5 test/production/checkpoint work). **Pushed to origin as the owner-authorized
-  IN-PROGRESS checkpoint** (2026-10-20 battery emergency; verification incomplete — see
-  VERIFICATION.md for what remains unexecuted). No merge/tag/release.
-- In the checkpoint commit:
+- Branch `feature/goldberg-0.11-stage-5`, parent `54f2b45` + Stage 5 checkpoint commits.
+  **Pushed to origin as owner-authorized IN-PROGRESS checkpoints** (verification
+  incomplete — see VERIFICATION.md for what remains unexecuted). No merge/tag/release.
+  The third-session checkpoint is **docs-only** (this file, HANDOFF, VERIFICATION,
+  STAGE-CHECKLIST): it records the desktop emulator blocker + host-gate evidence and
+  adds no production/test code changes.
+- In the second-session checkpoint commit (`c61cf12`):
   - `M app/src/androidTest/java/com/opus/piano/Stage5BundleJobRunnerTest.kt` — compile fixes,
     fixture corrections, F1 retarget (owner-approved, test-only).
   - `M app/src/main/java/com/opus/piano/data/offline/BundleStore.kt` — F2 fix
@@ -24,7 +54,37 @@
   - `?? docs/ai/*` — this checkpoint (STATE/VERIFICATION/HANDOFF/DECISIONS).
   - `M docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` — Stage 5 progress notes.
 
-## Executed this session (2026-10-20, second resume session) — real results
+## Executed this session (2026-10-20, third resume session — desktop) — real results
+
+1. Environment re-verified: branch `feature/goldberg-0.11-stage-5` at `c61cf12`, in sync
+   with origin; untracked private files (`.pmp/`, `.pmp.yml`, `RELEASE_NOTES.md`,
+   `docs/planning/goldberg-0.11/stage-4/checkpoint-archive/`) untouched and NOT committed.
+2. **EXECUTED** `./gradlew --no-daemon --max-workers=1 :app:assembleDebug
+   :app:assembleDebugAndroidTest` → **BUILD SUCCESSFUL** (1m08s, Java 25 host; only the
+   known nullable-`listFiles()` warnings). Fresh APKs: `app-debug.apk` 32,388,569 bytes
+   (sha256 `44222c59b89ed63041d1e105f074857f5ca3c2f93efef4a9ed0eea115dd0a157`),
+   `app-debug-androidTest.apk` 1,331,040 bytes (sha256
+   `6030e528474334ae31f0514c0f818aeeb68dcf3f9b2ac35e453762d1e5ba8f2d`), both Oct 20 21:13.
+   (These were rebuilt because the desktop's pre-existing outputs were from a different
+   build context; they are Stage-5 source-faithful.)
+3. Emulator toolchain: cmdline-tools 12.0 installed (side-effect: fixes sdkmanager/
+   avdmanager on this desktop), `system-images;android-36;google_apis;x86_64` r07
+   installed, AVD `stage5-api36` created in `~/.android/avd`. Emulator 37.3.4 downloaded
+   side-by-side (SDK's 37.2.12 untouched). **All boot attempts SIGSEGV — see blocker
+   section above. Zero instrumentation executed; APKs not installed (no device to install
+   to; the earlier installs were on the notebook's now-unavailable emulator).**
+4. **EXECUTED** `scripts/check_agent_policy.py`, `check_backup_fixtures.py`,
+   `check_history_paging.py`, `check_localization.py`, `check_migrations.py` → **ALL PASS**
+   (exit 0; see VERIFICATION.md row detail).
+5. **EXECUTED** full host gate
+   (`clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug`) →
+   **BUILD SUCCESSFUL** (3m24s): unit tests **174/0/0/0** (30 classes), lint
+   **0 errors / 110 warnings** (2 in Stage 5 offline code). Clean-build `app-debug.apk`
+   22,508,542 B — same byte size as the notebook checkpoint APK (source-identity
+   evidence). Task 5.12 host-side portion therefore executed and passing; 5.12 stays
+   open only as a formality until 5.10/5.11 evidence exists for the final re-run.
+
+## Executed — second resume session (2026-10-20, battery emergency stop) — real results
 
 1. Fixed the 1 open compile error (`Stage5BundleWorkerTest.kt:324` nullable TestDriver call).
 2. **EXECUTED** `:app:assembleDebugAndroidTest` → **BUILD SUCCESSFUL** (2m02s, 0 errors;
@@ -74,17 +134,23 @@
 
 ## Not executed / not claimed
 
-- **All `Stage5*Test` instrumentation (tasks 5.10/5.11) — zero tests executed on the emulator.**
-- `lintDebug`, `scripts/check_*.py` host checks (task 5.12) this session.
-- The installed app APK on the stopped emulator is stale — must reinstall fresh APKs first.
-- No screenshots, no physical phone (forbidden), no push/merge/tag/release (forbidden).
+- **All `Stage5*Test` instrumentation (tasks 5.10/5.11) — still zero tests executed; now
+  blocked by the desktop emulator bug (see blocker section). The fresh APKs were built
+  but not installed anywhere.**
+- `lintDebug` is part of the running host gate (task 5.12) — see VERIFICATION.md.
+- Emulator acceptance matrix (Wi-Fi→mobile, Data Saver, consent revocation mid-stream, real
+  process death, low disk, seeded in-place upgrade from trusted 0.10.1, cost measurements).
+- No screenshots, no physical phone (forbidden), no merge/tag/release (forbidden).
 
 ## Environment
 
-Arch Linux, 7.5 GiB RAM, Java 17.0.20.1, Android SDK 36 (+ emulator + API 36 google_apis
-x86_64 image), AVD `stage5-api36`, Gradle 9.3.1, `org.gradle.jvmargs=-Xmx3g`, all builds
-`--no-daemon --max-workers=1`. Battery emergency stopped the session; emulator already killed
-(`adb -s emulator-5580 emu kill` returned OK).
+Desktop (third session): Arch-notebook environment superseded — Fedora host, kernel
+`7.2.10-200.fc44.x86_64`, Java 25 (Gradle 9.3.1 runs fine), 15 GiB RAM, SDK at
+`~/Android/Sdk` (android-36 + android-37.0/37.2 images, build-tools 36.0.0, cmdline-tools
+12.0, emulator 37.2.12 + side-by-side 37.3.4), AVDs in `~/.android/avd`
+(`stage5-api36` google_apis API 36, `Medium_Phone_API_37.0` playstore). `/tmp` is a
+small tmpfs (7.8 GiB) — do not unzip large archives there. All builds
+`--no-daemon --max-workers=1`. All ADB calls require explicit `-s emulator-NNNN`.
 
 ## Prohibitions (still active)
 

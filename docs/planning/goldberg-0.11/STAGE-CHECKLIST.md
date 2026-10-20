@@ -233,6 +233,18 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
   rebuilt (**EXECUTED** `assembleDebug` → BUILD SUCCESSFUL, fresh APK 19:45). Battery emergency
   stopped the session: emulator cleanly killed (`emu kill` OK); **zero instrumentation tests
   executed**; tasks 5.10–5.13 all remain open.
+- 2026-10-20 third session (desktop machine, checkpoint commit pushed): fresh
+  `assembleDebug + assembleDebugAndroidTest` **BUILD SUCCESSFUL** (1m08s, 0 errors, fresh
+  APK hashes recorded in `docs/ai/VERIFICATION.md`). All five `scripts/check_*.py`
+  **PASS**; full host gate re-run executed (result in VERIFICATION.md). Emulator work on
+  the desktop **blocked by upstream SIGSEGV bug (Google #566807521)** on Fedora kernel
+  7.2.10: both AVDs (playstore API 37 + new google_apis API 36 `stage5-api36`) and both
+  emulator versions (37.2.12 + 37.3.4 canary) crash after the "protected range" warning,
+  independent of GPU mode — **no instrumentation executed; tasks 5.10/5.11 deferred to the
+  notebook's working API 36 emulator** (exact steps in `docs/ai/HANDOFF.md`). Host-side
+  portion of task 5.12 executed on the desktop; 5.13 checkpoint docs updated + pushed, but
+  5.13 stays open pending Issue #31/Project sync after 5.10/5.11. PMP local
+  `.pmp/`/`.pmp.yml` preserved untouched (never reinitialized).
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,

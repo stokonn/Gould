@@ -1,80 +1,113 @@
 # Goldberg 0.11 — Stage 5 HANDOFF (fresh-session resume instructions)
 
-> Created 2026-10-20; updated at the end of the second resume session (battery emergency stop).
-> Stage 5 is **in progress, incomplete**. The checkpoint commit (single commit on top of
-> `54f2b45`) was **pushed to origin** as the owner-authorized IN-PROGRESS checkpoint — verify
-> with `git log --oneline -2`. Nothing was merged, tagged or published.
+> Created 2026-10-20; updated at the end of the third resume session (desktop machine).
+> Stage 5 is **in progress, incomplete**. The branch HEAD is a checkpoint commit on top of
+> `54f2b45`, pushed to origin as an owner-authorized IN-PROGRESS checkpoint. Nothing was
+> merged, tagged or published. **Tasks 5.10/5.11 (instrumentation + emulator acceptance)
+> are the only Stage 5 tasks still open** — they are blocked on this desktop by a known
+> upstream emulator bug and must be executed on the **notebook's** working API 36 emulator.
 
 ## Read order (in this order, before touching code)
 
 1. `AGENTS.md` — permanent policy (data safety, no physical phone, publication gates).
-2. `docs/ai/STATE.md` — current state, executed evidence, PMP investigation result.
+2. `docs/ai/STATE.md` — current state, executed evidence, emulator blocker record.
 3. `docs/ai/VERIFICATION.md` — executed vs. not-executed ledger.
 4. `docs/ai/DECISIONS.md` — owner decisions, incl. approved F1/F2 resolutions.
 5. `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` — Stage 5 section (authoritative list).
 6. GitHub Issue #31 — latest checkpoint comment (do not duplicate issues).
 
-## What the checkpoint commit contains (all uncommitted work preserved)
+## What the checkpoint contains (all prior work preserved)
 
-- `Stage5BundleJobRunnerTest.kt` — compile fixes + fixture corrections + owner-approved
-  F1 retarget (`invalidRightsOnDiskQuarantineManifestAndDeactivatesJob`).
-- `Stage5BundleWorkerTest.kt` (new) — 12 tests; the L324 nullable-`TestDriver?` compile error
-  is **fixed**; androidTest source set compiles with 0 errors.
-- `BundleStore.kt` — owner-approved F2 fix: `installBlob` dedup verifies existing target
-  length+sha256; invalid bytes → quarantine (`dedup_corrupt`), verified staged copy installed;
-  rename failure → `false` (fail-safe).
-- `docs/ai/*` (this checkpoint) + STAGE-CHECKLIST Stage 5 progress notes.
+- Everything from the previous checkpoint (`c61cf12`): F1/F2 fixes, compile-green
+  `Stage5BundleJobRunnerTest`/`Stage5BundleWorkerTest`, recovery docs.
+- This session's additions: `docs/ai/*` + STAGE-CHECKLIST updated with the **desktop
+  emulator blocker** (Google Issue #566807521) and the emulator-independent host
+  verification (Gradle host gate + all five `scripts/check_*.py`).
+- `.pmp/`, `.pmp.yml`, `RELEASE_NOTES.md` and
+  `docs/planning/goldberg-0.11/stage-4/checkpoint-archive/` are private/unrelated —
+  never commit them.
 
-## Verified state at checkpoint (executed, see VERIFICATION.md for commands)
+## Verified state at this checkpoint (executed — see VERIFICATION.md for exact rows)
 
-- `:app:assembleDebugAndroidTest` **BUILD SUCCESSFUL, 0 errors** (after all test changes).
-- `testDebugUnitTest --rerun` **174 tests / 0 failures / 0 errors** — twice (pre- and
-  post-F1/F2 changes).
-- `:app:assembleDebug` **BUILD SUCCESSFUL** → fresh `app-debug.apk` (Oct 20 19:45,
-  22,508,542 bytes) — the previously installed one on the emulator was **stale (Oct 16)** and
-  was never used for a test run.
-- Emulator toolchain installed: emulator 37.2.12.0 + `system-images;android-36;google_apis/
-  x86_64`; AVD `stage5-api36` created; **booted as emulator-5580** (API 36, Android 16,
-  `ro.kernel.qemu=1`), then **stopped cleanly** (`adb -s emulator-5580 emu kill` → OK).
-- **Zero instrumentation tests executed** (battery emergency hit before task 5.10 started).
+- `:app:assembleDebug :app:assembleDebugAndroidTest` **BUILD SUCCESSFUL** (desktop, Java 25
+  host, 1m08s, 0 errors). Fresh APKs:
+  `app-debug.apk` 32,388,569 B sha256 `44222c59b89ed63041d1e105f074857f5ca3c2f93efef4a9ed0eea115dd0a157`;
+  `app-debug-androidTest.apk` 1,331,040 B sha256
+  `6030e528474334ae31f0514c0f818aeeb68dcf3f9b2ac35e453762d1e5ba8f2d` (Oct 20 21:13).
+- Host gate (`clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug`)
+  + `scripts/check_*.py` — results recorded in VERIFICATION.md (all executed on the
+  desktop this session).
+- **Zero instrumentation tests executed anywhere** (emulator blocker below).
 
-## Exact resume steps for a new session
+## Emulator blocker on the desktop (why 5.10/5.11 were not done here)
 
-1. Reboot the emulator (AVD home is redirected — the env var is mandatory):
+Every headless emulator boot on the desktop (Fedora kernel `7.2.10-200.fc44`) dies with
+`Killed by SIGSEGV` after `WARNING: cannnot unmap ptr … protected range …`, on both
+AVDs (`Medium_Phone_API_37.0` playstore and fresh `stage5-api36` google_apis API 36) and
+both emulator versions (37.2.12 SDK + 37.3.4 canary side-by-side), across
+swiftshader/auto(lavapipe) GPU modes. This is upstream bug **Google Issue Tracker
+#566807521**; unfixed as of 37.3.4. Details in `docs/ai/STATE.md`.
+
+## Exact resume steps for tasks 5.10/5.11 — run on the NOTEBOOK
+
+The notebook has the previously working toolchain (emulator 37.2.12 + API 36 google_apis
+x86_64 image + AVD `stage5-api36`, AVD home redirected). On the notebook:
+
+1. Confirm the tree is the pushed Stage 5 branch at the checkpoint commit:
+   `git status` (only `.pmp/`, `.pmp.yml`, `RELEASE_NOTES.md`,
+   `stage-4/checkpoint-archive/` untracked), `git log --oneline -2`.
+2. Rebuild **fresh** APKs there (the notebook's build outputs are from an older source
+   state — do NOT reuse them):
+   `./gradlew --no-daemon --max-workers=1 :app:assembleDebug :app:assembleDebugAndroidTest`
+   and verify timestamps/hashes before installing (the stale-APK lesson from the battery-
+   emergency session).
+3. Boot the notebook emulator (AVD home redirect is mandatory there):
    `ANDROID_AVD_HOME=/home/stokonn/.config/.android/avd "$ANDROID_HOME/emulator/emulator"
    -avd stage5-api36 -port 5580 -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect
    -no-snapshot -memory 2048 &`
-   then wait for `adb -s emulator-5580 shell getprop sys.boot_completed` = 1 and confirm
+   Keep the process alive across tool calls (managed/background shell, not a bare nohup —
+   the desktop session lost nohup'd processes). Wait for
+   `adb -s emulator-5580 shell getprop sys.boot_completed` = 1 and verify
    `ro.kernel.qemu`=1. **Every ADB call must use `-s emulator-5580`; never a physical phone.**
-2. Rebuild if source changed since the checkpoint: `./gradlew --no-daemon --max-workers=1
-   :app:assembleDebug :app:assembleDebugAndroidTest`.
-3. Install **fresh** APKs explicitly:
-   `adb -s emulator-5580 install -r app/build/outputs/apk/debug/app-debug.apk` and
+4. Install the fresh APKs explicitly:
+   `adb -s emulator-5580 install -r app/build/outputs/apk/debug/app-debug.apk`
    `adb -s emulator-5580 install -r app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk`
-   (verify timestamps first — the app APK was stale once).
-4. Task 5.10 — run instrumentation explicitly on the emulator (am instrument with
-   `-e class …` per Stage5 class, or Gradle connected task only with the emulator as the sole
-   attached device). Record real counts.
-5. Task 5.11 — emulator acceptance matrix (Wi-Fi→mobile, Data Saver, consent revocation
-   mid-stream, real process death, low disk, seeded in-place upgrade from trusted 0.10.1,
-   cost measurements) — Stage 4 helpers exist: `scripts/emulator_ui.py`,
+5. **Task 5.10** — run instrumentation explicitly, per Stage5 class with real counts:
+   - `adb -s emulator-5580 shell am instrument -w -e class com.opus.piano.Stage5BundleStoreTest com.opus.piano.test/androidx.test.runner.AndroidJUnitRunner`
+   - `adb -s emulator-5580 shell am instrument -w -e class com.opus.piano.Stage5BundleJobRunnerTest com.opus.piano.test/androidx.test.runner.AndroidJUnitRunner`
+   - `adb -s emulator-5580 shell am instrument -w -e class com.opus.piano.Stage5BundleWorkerTest com.opus.piano.test/androidx.test.runner.AndroidJUnitRunner`
+   Record exact OK/Failure counts. Investigate any failure against the F1/F2 contracts
+   (DECISIONS.md); never weaken assertions.
+6. **Task 5.11** — emulator acceptance matrix on the same emulator: Wi-Fi→mobile
+   transition, Data Saver, consent revocation mid-stream, real process death at
+   boundaries, low disk, seeded in-place upgrade from trusted 0.10.1, disk/network cost
+   measurements. Stage 4 helpers: `scripts/emulator_ui.py`,
    `scripts/verify_emulator_upgrade.py`, `scripts/measure-startup.sh`.
-6. Task 5.12 — host gate: `./gradlew --no-daemon --max-workers=1 clean assembleDebug
-   testDebugUnitTest assembleDebugAndroidTest lintDebug` + `scripts/check_*.py`.
-7. Task 5.13 — docs sync, reviewed commit/push, Issue #31 + Project sync (separate
-   authorization per AGENTS.md). **Do not mark 5.10–5.13 complete without executed evidence.
-   Do not start Stage 6; no tag/merge/release.**
-8. PMP: do **not** reinitialize without owner instruction — see STATE.md; local state was
-   verified absent (nothing to preserve, nothing overwritten).
+7. **Task 5.13** — update `docs/ai/*` + STAGE-CHECKLIST with executed evidence, commit,
+   push to the Stage 5 branch, sync Issue #31 + Project. **Do not mark 5.10–5.13 complete
+   without executed evidence. Do not start Stage 6; no tag/merge/release.**
+8. PMP: local `.pmp/`/`.pmp.yml` on the desktop were **preserved as-is, never
+   reinitialized**. Leave them private.
+
+Alternative: if an upstream emulator fix for #566807521 ships (watch the issue), the
+desktop's `stage5-api36` AVD + emulator 37.3.4 side-by-side install are already prepared
+(`~/Android/Sdk/emulator-37.3.4/emulator -avd stage5-api36 -port 5580 …`).
 
 ## Hard prohibitions (unchanged)
 
-No physical phone; no implicit device selection; no push/tag/merge/release/APK publication
+No physical phone; no implicit device selection; no merge/tag/release/APK publication
 without separate authorization; no weakened test assertions; no fabricated results; no
-Stage 5 "complete" claim; no Stage 6 start.
+Stage 5 "complete" claim; no Stage 6 start. Never commit `.pmp/`, `.pmp.yml`,
+`RELEASE_NOTES.md` or the stage-4 checkpoint archive.
 
 ## Environment
 
-Arch Linux, ~7.5 GiB RAM, Java 17.0.20.1, Android SDK 36 + emulator + API 36 google_apis
-x86_64 image, Gradle 9.3.1 wrapper, `org.gradle.jvmargs=-Xmx3g`; always use
-`--no-daemon --max-workers=1`. AVD location `/home/stokonn/.config/.android/avd`.
+Desktop: Fedora, kernel `7.2.10-200.fc44.x86_64`, Java 25, 15 GiB RAM, Android SDK at
+`~/Android/Sdk` (android-36 platform + build-tools 36.0.0 + cmdline-tools 12.0 +
+emulator 37.2.12 and side-by-side 37.3.4), AVDs in `~/.android/avd`. Gradle 9.3.1,
+`org.gradle.jvmargs=-Xmx3g`; always `--no-daemon --max-workers=1`. `/tmp` is a small
+tmpfs — keep large archives in `~/.cache`.
+Notebook (for 5.10/5.11): Arch Linux, Java 17, emulator 37.2.12, AVD `stage5-api36` with
+`ANDROID_AVD_HOME=/home/stokonn/.config/.android/avd`.
+
+created by stokonn with love <3
