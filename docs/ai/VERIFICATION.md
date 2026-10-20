@@ -2,6 +2,34 @@
 
 Honest executed vs not-executed record. Only rows marked **EXECUTED** were actually run.
 
+## Executed — first CI dispatch + failure triage (2026-10-20, fifth session)
+
+Phase C/D + triage of [run 39503450845](https://github.com/stokonn/Goldberg/actions/runs/39503450845)
+(owner-confirmed: **CI setup/script failures — no application test ran; no application
+conclusion drawn**). Full evidence bundle: `docs/planning/goldberg-0.11/stage-5/results/ci-run-39503450845/`.
+
+| # | Command / action | Result |
+|---|---|---|
+| 1 | Merge CI-only PR #32 to `main` (owner-authorized Phase C) + comment-correction mirror to Stage 5 branch | **EXECUTED** — `main` at merge commit `577d811` (diff = workflow file only, +384 lines); Stage 5 branch at `bcd8894` (pushed). Quality checks passed on both. |
+| 2 | `workflow_dispatch` of `stage5-emulator.yml` against `feature/goldberg-0.11-stage-5` @ `bcd8894` (run 39503450845) | **EXECUTED** — both jobs **FAILURE, pre-test**: 5.10 emulator booted ≈53 s (KVM works on runners) then script died at line 1 (`/usr/bin/sh: 1: set: Illegal option -o pipefail`, dash); 5.11 builds + trusted-download + digest OK, signing step `MISSING` ×3, emulator step skipped. **Zero instrumentation XMLs; 0 application tests executed.** SHA binding passed in both jobs. |
+| 3 | Run-evidence preservation (artifacts + full raw logs downloaded and re-uploaded to the repo) | **EXECUTED** — `results/ci-run-39503450845/` contains `run-logs.zip` (SHA-256 `a6b48abb…ad85`), both failed-step logs, all six artifact files, `run-summary.md` triage write-up. |
+| 4 | apksigner format investigation: install build-tools 37.0.0 locally and run both apksigner versions on the same trusted release APK | **EXECUTED** — 36.0.0 prints `Signer #1 certificate SHA-256 digest: 53eface4…d59e` (exit 0); 37.0.0 prints `V2 Signer: certificate SHA-256 digest: 53eface4…d59e` (exit 0). **Identical digests, different labels** → the old sed pattern matched nothing with apksigner 37.0.0 (preinstalled on the runner, selected by `sort -V \| tail -n1`) — root cause of the `MISSING` ×3, fully explained without any certificate mismatch. |
+| 5 | Workflow corrections, static validation (`yaml.safe_load`; `bash -n` on every run step + outer sh + inner bash emulator scripts; `py_compile` on embedded Python) | **EXECUTED** — all pass. |
+| 6 | Wrapper mechanics functional test under `sh -c` (stubbed adb/gradlew) | **EXECUTED** — guards pass for one `emulator-NNNN` + `qemu=1`; suite invoked; EXIT trap fires through `exec bash`; guard failure propagates exit 1. dash not installed locally → the 3 outer wrapper lines are POSIX by reasoning, `bash -n`-validated; real dash run happens on the runner. |
+| 7 | Signing step sandbox in exact runner conditions (both apksigner versions present; 37.0.0 selected) — success, genuine-cert-mismatch (separately generated test keystore), corrupt-APK paths | **EXECUTED** — success exit 0 with all evidence files; mismatch exit 1 naming both digests; corrupt APK exit 1 with non-zero exit code recorded and raw streams preserved. Assertions strict and unchanged. |
+
+### Not executed — this session (no claim)
+
+- The API 36 emulator suite runs for tasks 5.10/5.11 (both pending the workflow-fix
+  re-dispatch after explicit owner approval); no instrumentation XMLs exist yet.
+- dash (`/usr/bin/sh` on the runner) is not installed on the host — outer wrapper
+  POSIX-compliance is reasoned + `bash -n`, not dash-executed.
+- The actual runner-side apksigner selection inventory (recorded next run by
+  `signing-environment.txt`); the 37.0.0-preselection root cause is proven by local
+  reproduction of `sort -V \| tail -n1` over both versions + identical digest values,
+  not by a runner-side listing from run 39503450845 (its step suppressed diagnostics —
+  the defect that was fixed).
+
 ## Executed — CI activation session (2026-10-20, fourth session, desktop host)
 
 Phase A/B preparation for KVM CI verification (no CI run, no emulator run, no

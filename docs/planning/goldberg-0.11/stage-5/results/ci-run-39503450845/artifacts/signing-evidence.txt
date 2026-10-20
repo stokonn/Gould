@@ -1,0 +1,4 @@
+trusted release certificate SHA-256: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+downloaded 0.10.1 release certificate SHA-256: MISSING
+v0.10.1 debug-rebuild certificate SHA-256: MISSING
+candidate certificate SHA-256: MISSING

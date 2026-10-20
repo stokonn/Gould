@@ -287,6 +287,49 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
   - **STOPPED at the owner approval gate as instructed:** merging PR #32 into `main` and
     any manual `workflow_dispatch` require explicit owner approval (Phase C). Tasks
     5.10–5.13 remain open; no merge/tag/release; Stage 6 not started.
+- 2026-10-20 first CI dispatch + failure-triage session (Phase C/D authorized by owner;
+  **tasks 5.10/5.11 still open — both jobs failed BEFORE any application test ran**):
+  - **Phase C/D executed:** CI-only PR #32 merged to `main` as merge commit `577d811`
+    (diff verified workflow-only, 1 file, +384 lines; comment fix `e61313b` also mirrored
+    to the Stage 5 branch as `bcd8894`); workflow dispatched against
+    `feature/goldberg-0.11-stage-5` @ `bcd8894` (SHA binding asserted in-run).
+  - **Run [39503450845](https://github.com/stokonn/Goldberg/actions/runs/39503450845):
+    both jobs FAILURE, pre-test.** 5.10: GitHub-hosted API 36 emulator booted in ≈53 s
+    (KVM works on runners), then the script died at line 1 — the emulator-runner invokes
+    it with `/usr/bin/sh` (dash), which rejects `set -o pipefail`
+    (`/usr/bin/sh: 1: set: Illegal option -o pipefail`, exit 2). 5.11: builds, trusted
+    0.10.1 download and digest check succeeded; the signing step logged
+    `MISSING` for all three APKs and the emulator step was skipped.
+    **Owner-confirmed classification: CI setup/script failures — not application
+    defects; no application conclusion may be drawn from this run.**
+  - **Root causes established with evidence** (full bundle preserved under
+    `docs/planning/goldberg-0.11/stage-5/results/ci-run-39503450845/`, raw logs SHA-256
+    `a6b48abb…ad85`): (1) the sh/dash incompatibility above; (2) apksigner's print format
+    changed in build-tools 37.0.0 (preinstalled on the runner and selected by
+    `sort -V | tail -n1`) from `Signer #1 certificate SHA-256 digest:` to
+    `V2 Signer: certificate SHA-256 digest:` — locally reproduced with the same release
+    APK: both versions report the identical digest `53eface4…d59e`, only the label
+    differs, so the old sed pattern matched nothing with exit 0 (no certificate
+    mismatch occurred and none was concluded).
+  - **Minimal workflow-only corrections applied (assertions unchanged/strict):** both
+    emulator scripts now materialize into `$RUNNER_TEMP` via quoted heredoc and run with
+    explicit `exec bash`; the signing step records raw apksigner stdout/stderr/exit
+    codes + build-tools inventory to uploaded artifacts (no suppressed diagnostics) and
+    parses both apksigner formats requiring exactly one distinct signer digest; trusted-
+    certificate equality and baseline/candidate equality checks preserved verbatim;
+    all three APKs inspected before failing.
+  - **Corrections statically + functionally validated on the host (executed):** YAML/
+    `bash -n`/`py_compile` all pass; wrapper mechanics proven under `sh -c` with
+    stubbed adb/gradlew (guards, trap-through-exec, failure propagation); signing step
+    sandbox in exact runner conditions (apksigner 37.0.0 selected) — success exit 0,
+    genuine cert mismatch (separately generated test keystore) exit 1, corrupt APK
+    exit 1 with diagnostics preserved. dash itself not installed locally (POSIX
+    reasoning only for the 3 outer wrapper lines); actual API 36 suite runs pending
+    re-dispatch.
+  - **Workflow-fix PR for `main` prepared; STOPPED before merge/dispatch per owner
+    instruction** (explicit approval required for significant main-branch change or new
+    CI dispatch). Tasks 5.10–5.13 remain open; no merge of Stage 5 application code; no
+    tag/release/APK publication; Stage 6/7 not started.
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,

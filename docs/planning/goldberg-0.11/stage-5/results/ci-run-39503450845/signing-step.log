@@ -1,0 +1,34 @@
+﻿2026-10-20T21:55:44.1157381Z ##[group]Run set -euo pipefail
+2026-10-20T21:55:44.1157649Z [36;1mset -euo pipefail[0m
+2026-10-20T21:55:44.1157959Z [36;1mAPKSIGNER="$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -n1)"[0m
+2026-10-20T21:55:44.1158537Z [36;1mdigest_of() { "$APKSIGNER" verify --print-certs "$1" 2>/dev/null | sed -n 's/^Signer #1 certificate SHA-256 digest: //p' | head -n1; }[0m
+2026-10-20T21:55:44.1159092Z [36;1mTRUSTED="53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e"[0m
+2026-10-20T21:55:44.1159526Z [36;1mRELEASE="$(digest_of .gradle/release-artifacts/Goldberg-v0.10.1.apk)"[0m
+2026-10-20T21:55:44.1159955Z [36;1mBASELINE="$(digest_of baseline-src/app/build/outputs/apk/debug/app-debug.apk)"[0m
+2026-10-20T21:55:44.1160358Z [36;1mCANDIDATE="$(digest_of app/build/outputs/apk/debug/app-debug.apk)"[0m
+2026-10-20T21:55:44.1160639Z [36;1m{[0m
+2026-10-20T21:55:44.1160855Z [36;1m  echo "trusted release certificate SHA-256: $TRUSTED"[0m
+2026-10-20T21:55:44.1161202Z [36;1m  echo "downloaded 0.10.1 release certificate SHA-256: ${RELEASE:-MISSING}"[0m
+2026-10-20T21:55:44.1161616Z [36;1m  echo "v0.10.1 debug-rebuild certificate SHA-256: ${BASELINE:-MISSING}"[0m
+2026-10-20T21:55:44.1161972Z [36;1m  echo "candidate certificate SHA-256: ${CANDIDATE:-MISSING}"[0m
+2026-10-20T21:55:44.1162286Z [36;1m} | tee stage5-ci-results/signing-evidence.txt[0m
+2026-10-20T21:55:44.1162575Z [36;1mif [ -z "$RELEASE" ] || [ "$RELEASE" != "$TRUSTED" ]; then[0m
+2026-10-20T21:55:44.1162954Z [36;1m  echo "ERROR: downloaded 0.10.1 release APK does not carry the trusted certificate"; exit 1[0m
+2026-10-20T21:55:44.1163293Z [36;1mfi[0m
+2026-10-20T21:55:44.1163553Z [36;1mif [ -z "$BASELINE" ] || [ -z "$CANDIDATE" ] || [ "$BASELINE" != "$CANDIDATE" ]; then[0m
+2026-10-20T21:55:44.1164019Z [36;1m  echo "ERROR: in-place upgrade baseline and candidate are not signed with the same runner key"; exit 1[0m
+2026-10-20T21:55:44.1164552Z [36;1mfi[0m
+2026-10-20T21:55:44.1164831Z [36;1mecho "OK: release identity trusted; in-place upgrade pair signature-compatible"[0m
+2026-10-20T21:55:44.1222278Z shell: /usr/bin/bash -e {0}
+2026-10-20T21:55:44.1222572Z env:
+2026-10-20T21:55:44.1222947Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-20T21:55:44.1223549Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-20T21:55:44.1224033Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-10-20T21:55:44.1224695Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-10-20T21:55:44.1225036Z ##[endgroup]
+2026-10-20T21:55:44.8638193Z trusted release certificate SHA-256: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+2026-10-20T21:55:44.8639119Z downloaded 0.10.1 release certificate SHA-256: MISSING
+2026-10-20T21:55:44.8639672Z v0.10.1 debug-rebuild certificate SHA-256: MISSING
+2026-10-20T21:55:44.8640144Z candidate certificate SHA-256: MISSING
+2026-10-20T21:55:44.8640742Z ERROR: downloaded 0.10.1 release APK does not carry the trusted certificate
+2026-10-20T21:55:44.8645273Z ##[error]Process completed with exit code 1.

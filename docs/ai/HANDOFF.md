@@ -90,16 +90,22 @@ x86_64 image + AVD `stage5-api36`, AVD home redirected). On the notebook:
    reinitialized**. Leave them private.
 
 Alternative 1 (CI, current primary path): `.github/workflows/stage5-emulator.yml`
-(`workflow_dispatch` only, KVM-accelerated `ubuntu-24.04`, SHA-pinned, revised this
-session — signing-resolution, state-asserted network/Data Saver checks, DB integrity
-after process death, source-SHA binding) runs the full connected suite for 5.10 and the
-CI-executable 5.11 subset. It is committed on this branch (`1ef15bf` + CI-activation
-revision) and proposed for `main` via **draft PR #32 (workflow-only, not merged)**.
-After the owner approves: merge PR #32, then dispatch the workflow **against
-`feature/goldberg-0.11-stage-5`** from the Actions tab (the workflow depends on this
-branch's helper scripts; `main`'s copy is older). Consent revocation mid-stream, low
-disk, screenshot inspection and real bundle-transfer costs remain notebook/manual work
-either way.
+(`workflow_dispatch` only, KVM-accelerated `ubuntu-24.04`, SHA-pinned) runs the full
+connected suite for 5.10 and the CI-executable 5.11 subset. **PR #32 was merged to
+`main` (merge commit `577d811`, workflow-only) and the first dispatch (run
+39503450845 against this branch @ `bcd8894`) failed pre-test in both jobs from CI
+setup/script defects — not application defects** (owner-confirmed; zero application
+tests ran; evidence:
+`docs/planning/goldberg-0.11/stage-5/results/ci-run-39503450845/`): (1) the
+emulator-runner invokes its script with `/usr/bin/sh` (dash), which rejects
+`set -o pipefail`; (2) apksigner's print format changed in build-tools 37.0.0
+(preinstalled on runners; selected by `sort -V | tail -n1`), so the old sed pattern
+matched nothing — the `MISSING` digests were a parser failure, **not** a certificate
+mismatch. Minimal workflow-only corrections (bash heredoc wrapper + full
+apksigner-diagnostics capture + dual-format parsing, assertions unchanged/strict) are
+validated on the host and staged; **the workflow-fix PR merge and any re-dispatch
+await explicit owner approval**. Consent revocation mid-stream, low disk, screenshot
+inspection and real bundle-transfer costs remain notebook/manual work either way.
 
 Alternative 2: if an upstream emulator fix for #566807521 ships (watch the issue), the
 desktop's `stage5-api36` AVD + emulator 37.3.4 side-by-side install are already prepared

@@ -1,36 +1,50 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-20, CI-activation session (Phase A/B of the owner's CI plan;
-> approval gate reached — nothing dispatched or merged).
+> **Last updated:** 2026-10-20, first-CI-dispatch + failure-triage session (run
+> 39503450845 dispatched, both jobs failed pre-test from CI setup/script defects;
+> corrections prepared and validated, **awaiting owner approval for the workflow-fix
+> PR merge and re-dispatch**).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
 > `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → GitHub Issue #31.
 > **Stage 5 is NOT complete. No merge/tag/release/APK publication performed.**
 
-## 🚦 Current status: awaiting owner approval (Phase C gate)
+## 🚦 Current status: awaiting owner approval (workflow-fix merge + re-dispatch gate)
 
-- The Stage 5 emulator verification workflow was **revised and CI-only PR prepared**:
-  draft [PR #32](https://github.com/stokonn/Goldberg/pull/32), branch
-  `ci/stage5-emulator-verification` (based on `origin/main`), commit `9870d99` —
-  **workflow-only diff (1 file), NOT merged**.
-- **Phase B findings fixed in the workflow** (details in `docs/ai/VERIFICATION.md`
-  CI-activation section): in-place upgrade now uses a same-keystore debug rebuild of
-  the v0.10.1 tag (CI debug can never install over the release-signed APK; trusted cert
-  `53eface4…` apksigner-verified); the invalid `cmd netpolicy set data_saver enable`
-  was replaced with AOSP-verified `set/get restrict-background` + `dumpsys` state
-  assertions; Wi-Fi→mobile transition now asserts transport + network-ID change;
-  process death now includes pulled-DB `PRAGMA integrity_check/foreign_key_check/
-  user_version`; source commit SHA recorded+asserted in both jobs; 30-day evidence
-  retention. The identical revised workflow is committed on this Stage 5 branch too
-  (so a `workflow_dispatch` against `feature/goldberg-0.11-stage-5` uses the fixed
-  version).
-- **STOPPED here per owner instruction:** merging PR #32 into `main` and manually
-  dispatching the workflow both require explicit owner approval. Until then: no CI run,
-  no instrumentation, no 5.11 evidence. Tasks 5.10–5.13 remain open.
-- This checkpoint commit contains **only** the revised `.github/workflows/stage5-emulator.yml`
-  (identical to PR #32's file) and documentation sync (`docs/ai/STATE.md`,
-  `docs/ai/VERIFICATION.md`, `docs/ai/HANDOFF.md`,
-  `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md`) — **no application/test source
-  changes**.
+- **Phase C/D completed:** CI-only PR #32 merged to `main` (merge commit `577d811`,
+  workflow-only diff +384 lines); workflow dispatched against
+  `feature/goldberg-0.11-stage-5` @ `bcd8894` →
+  [run 39503450845](https://github.com/stokonn/Goldberg/actions/runs/39503450845).
+- **Both jobs failed BEFORE any application test** (owner-confirmed: CI setup/script
+  failures, not application defects; zero instrumentation XMLs; no application
+  conclusion may be drawn). 5.10: API 36 emulator booted on the runner in ≈53 s
+  (KVM works in CI), then the script died at line 1 — the emulator-runner invokes it
+  with `/usr/bin/sh` (dash), which rejects `set -o pipefail`. 5.11: builds, trusted
+  0.10.1 download and digest check succeeded; signing step logged `MISSING` ×3 and the
+  emulator step was skipped.
+- **Root causes proven with evidence** (bundle:
+  `docs/planning/goldberg-0.11/stage-5/results/ci-run-39503450845/`): (1) sh/dash
+  incompatibility above; (2) apksigner's print format changed in build-tools 37.0.0 —
+  `Signer #1 certificate SHA-256 digest:` → `V2 Signer: certificate SHA-256 digest:`;
+  37.0.0 is preinstalled on the runner and was selected by `sort -V | tail -n1`;
+  locally reproduced with the same release APK: **identical digest values, only labels
+  differ** — no certificate mismatch occurred and none is concluded.
+- **Minimal workflow-only corrections applied** (identical copy will live on the
+  Stage 5 branch and the main-branch CI PR): both emulator scripts materialize into
+  `$RUNNER_TEMP` via quoted heredoc and run with explicit `exec bash`; signing step
+  records raw apksigner stdout/stderr/exit codes + build-tools inventory to uploaded
+  artifacts (no suppressed diagnostics), parses both apksigner formats requiring
+  exactly one distinct signer digest; trusted-cert equality + baseline/candidate
+  equality assertions preserved verbatim and strict.
+- **Corrections validated on the host (executed):** static YAML/`bash -n`/`py_compile`
+  all pass; wrapper mechanics proven under `sh -c` with stubbed adb/gradlew; signing
+  step sandbox in exact runner conditions (apksigner 37.0.0 selected) — success exit 0,
+  genuine cert-mismatch exit 1 (separately generated test keystore), corrupt-APK exit 1
+  with diagnostics preserved. dash itself not installed locally (POSIX reasoning for
+  the 3 outer wrapper lines).
+- **STOPPED here per owner instruction:** merging the workflow-fix PR into `main` and
+  any new `workflow_dispatch` require explicit owner approval. Until then: no new CI
+  run, no instrumentation, no 5.10/5.11 evidence. Tasks 5.10–5.13 remain open.
+
 
 ## ⚠️ Emulator blocker on the desktop machine (2026-10-20, third session)
 
@@ -181,9 +195,10 @@ Task 5.10/5.11 are **blocked by a host-level Android emulator bug on this deskto
 
 ## Not executed / not claimed
 
-- **All `Stage5*Test` instrumentation (tasks 5.10/5.11) — still zero tests executed; now
-  blocked by the desktop emulator bug (see blocker section). The fresh APKs were built
-  but not installed anywhere.**
+- **All `Stage5*Test` instrumentation (tasks 5.10/5.11) — still zero tests executed.**
+  The desktop emulator path stays blocked by the upstream SIGSEGV bug; the CI path ran
+  once (run 39503450845) but both jobs failed pre-test from CI setup/script defects
+  (see current-status section). No instrumentation XMLs exist yet anywhere.
 - `lintDebug` is part of the running host gate (task 5.12) — see VERIFICATION.md.
 - Emulator acceptance matrix (Wi-Fi→mobile, Data Saver, consent revocation mid-stream, real
   process death, low disk, seeded in-place upgrade from trusted 0.10.1, cost measurements).
