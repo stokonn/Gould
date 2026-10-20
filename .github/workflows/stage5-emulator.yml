@@ -1,0 +1,379 @@
+name: Goldberg Stage 5 emulator verification
+# Tasks 5.10 (instrumentation) and 5.11 (emulator acceptance subset) on a
+# GitHub-hosted Linux runner with KVM acceleration (hardware-accelerated
+# Android virtualization, GitHub Changelog 2024-04-02).
+#
+# Safety / policy:
+#   - workflow_dispatch ONLY: no automatic runs; widening the triggers is an
+#     explicit owner decision (AGENTS.md: ask before significant CI changes).
+#   - contents: read only; credentials are not persisted; nothing is signed,
+#     published, merged or tagged. Debug APKs are runner-signed only.
+#   - No test selection, weakening or skipping: job 5.10 runs the complete
+#     connected suite via `connectedDebugAndroidTest` (all 42 androidTest
+#     classes; no runner-argument filters, no @Ignore, no excluded classes).
+#   - Every adb use inside the scripts resolves and exports a single explicit
+#     `emulator-NNNN` serial and verifies `ro.kernel.qemu=1`; a physical device
+#     can never be selected (multiple attached devices abort the run).
+#   - Actions are pinned to full commit SHAs (repo convention); every pin was
+#     re-verified against its release tag before this workflow version.
+#   - Each job records and asserts `git rev-parse HEAD == GITHUB_SHA` into the
+#     uploaded evidence, so results are bound to the exact dispatched commit.
+#   - Intended dispatch ref: feature/goldberg-0.11-stage-5 (the Stage 5 code
+#     under verification). The acceptance job depends on the helper scripts as
+#     they exist on that branch (main still carries an older
+#     verify_emulator_upgrade.py without the schema/offline/startup flags).
+#
+# Signing resolution (verified 2026-10-20, AGENTS.md publication gates):
+#   - The trusted 0.10.1 release APK is signed with the trusted certificate
+#     SHA-256 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+#     (apksigner-verified). A GitHub runner auto-generates a throwaway debug
+#     keystore, so a CI-built debug candidate can never be installed over the
+#     release-signed baseline in place (INSTALL_FAILED_UPDATE_INCOMPATIBLE).
+#     Production signing credentials are NEVER uploaded to CI.
+#   - Therefore the in-place upgrade test uses a debug rebuild of the exact
+#     v0.10.1 tag built in the same job - same runner debug keystore as the
+#     candidate - so signatures match by construction and the genuine data
+#     migration path (schema 8 -> 10) is exercised end to end.
+#   - Release-signature compatibility of the future 0.11 release APK remains a
+#     separate publication gate: this job asserts the trusted 0.10.1 release
+#     APK really carries the trusted certificate, and the release gate asserts
+#     the new release APK carries the same certificate (transitive proof).
+#
+# Coverage honesty (task 5.11 matrix):
+#   - Covered here (state-asserted, not just logged): seeded in-place upgrade
+#     from a v0.10.1 debug rebuild (script-asserted table/schema equality,
+#     PRAGMA integrity/foreign-key checks, preference hashes); Wi-Fi ->
+#     mobile default-network transition with transport-level assertions
+#     (dumpsys connectivity: active default network ID change + WIFI -> MOBILE
+#     transport); Data Saver enable/disable with real state readback
+#     (cmd netpolicy get restrict-background + dumpsys netpolicy); real
+#     process death + cold-start restart with pulled-database integrity
+#     checks; startup cost measurements; logcat evidence on failure.
+#   - NOT covered here (notebook/manual follow-up): consent revocation
+#     mid-stream (in-app UI flow), low-disk conditions, screenshot visual
+#     inspection, and real bundle-transfer network/disk costs (require a
+#     reachable provider host). Record those results in
+#     docs/ai/VERIFICATION.md before claiming 5.11.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: stage5-emulator-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  stage5-instrumentation:
+    name: "5.10 instrumentation — API 36 emulator"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - name: Record verified source commit
+        run: |
+          mkdir -p stage5-ci-results
+          CHECKED_OUT="$(git rev-parse HEAD)"
+          {
+            echo "github.sha: $GITHUB_SHA"
+            echo "github.ref: $GITHUB_REF"
+            echo "checkout HEAD: $CHECKED_OUT"
+          } | tee stage5-ci-results/source-commit.txt
+          if [ "$CHECKED_OUT" != "$GITHUB_SHA" ]; then
+            echo "ERROR: checked-out commit does not match the dispatched commit"; exit 1
+          fi
+          df -h / | tee stage5-ci-results/disk-usage.txt
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Set up required Android SDK packages
+        uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3.2.2
+        with:
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
+          log-accepted-android-sdk-licenses: false
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Build app, JVM tests and instrumentation APKs
+        run: ./gradlew --no-daemon --max-workers=1 assembleDebug testDebugUnitTest assembleDebugAndroidTest
+      - name: Run full instrumentation suite on the emulator
+        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
+        with:
+          api-level: 36
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          avd-name: stage5-ci
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+          script: |
+            set -euo pipefail
+            SERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"
+            case "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac
+            ATTACHED="$(adb devices | awk '$2=="device"' | wc -l)"
+            if [ "$ATTACHED" -ne 1 ]; then echo "ERROR: expected exactly one attached device, found $ATTACHED"; adb devices; exit 1; fi
+            QEMU="$(adb -s "$SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')"
+            if [ "$QEMU" != "1" ]; then echo "ERROR: $SERIAL is not a verified emulator (ro.kernel.qemu=$QEMU)"; exit 1; fi
+            export ANDROID_SERIAL="$SERIAL"
+            echo "Running the full connected suite on verified emulator $SERIAL"
+            mkdir -p stage5-ci-results
+            trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || true' EXIT
+            ./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest
+      - name: Summarize instrumentation results
+        if: always()
+        run: |
+          python3 - <<'PYEOF' | tee stage5-ci-results/instrumentation-counts.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          import glob
+          import xml.etree.ElementTree as ET
+          xmls = sorted(glob.glob('app/build/outputs/androidTest-results/connected/**/*.xml', recursive=True))
+          if not xmls:
+              print('No instrumentation result XML files found (suite may have failed before producing results).')
+              raise SystemExit(0)
+          totals = dict(tests=0, failures=0, errors=0, skipped=0)
+          for path in xmls:
+              root = ET.parse(path).getroot()
+              for key in totals:
+                  totals[key] += int(root.get(key, 0) or 0)
+          print(f'Result files: {len(xmls)}')
+          print('Tests: {tests}  Failures: {failures}  Errors: {errors}  Skipped: {skipped}'.format(**totals))
+          PYEOF
+      - name: Upload instrumentation evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: stage5-instrumentation-results
+          path: |
+            app/build/outputs/androidTest-results/connected/**
+            app/build/reports/androidTests/**
+            stage5-ci-results/**
+          if-no-files-found: warn
+          retention-days: 30
+
+  stage5-acceptance:
+    name: "5.11 acceptance subset — API 36 emulator"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - name: Record verified source commit
+        run: |
+          mkdir -p stage5-ci-results
+          CHECKED_OUT="$(git rev-parse HEAD)"
+          {
+            echo "github.sha: $GITHUB_SHA"
+            echo "github.ref: $GITHUB_REF"
+            echo "checkout HEAD: $CHECKED_OUT"
+          } | tee stage5-ci-results/source-commit.txt
+          if [ "$CHECKED_OUT" != "$GITHUB_SHA" ]; then
+            echo "ERROR: checked-out commit does not match the dispatched commit"; exit 1
+          fi
+          df -h / | tee stage5-ci-results/disk-usage.txt
+      - name: Check out trusted v0.10.1 tag for the baseline rebuild
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: v0.10.1
+          path: baseline-src
+          persist-credentials: false
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Set up required Android SDK packages
+        uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3.2.2
+        with:
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
+          log-accepted-android-sdk-licenses: false
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Build candidate APK
+        run: ./gradlew --no-daemon --max-workers=1 assembleDebug
+      - name: Build debug-signed v0.10.1 baseline (same runner debug keystore as candidate)
+        run: (cd baseline-src && ./gradlew --no-daemon --max-workers=1 assembleDebug)
+      - name: Fetch trusted 0.10.1 release APK (digest + signing-certificate verified)
+        run: |
+          mkdir -p .gradle/release-artifacts
+          curl -fsSL -o .gradle/release-artifacts/Goldberg-v0.10.1.apk \
+            https://github.com/stokonn/Goldberg/releases/download/v0.10.1/Goldberg-v0.10.1.apk
+          echo "854bbfebf617ec920df60d181a12e0dcbd2fed10052f2479903a78a290cef312  .gradle/release-artifacts/Goldberg-v0.10.1.apk" | sha256sum -c -
+      - name: Verify signing-certificate compatibility (never using production credentials)
+        run: |
+          set -euo pipefail
+          APKSIGNER="$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -n1)"
+          digest_of() { "$APKSIGNER" verify --print-certs "$1" 2>/dev/null | sed -n 's/^Signer #1 certificate SHA-256 digest: //p' | head -n1; }
+          TRUSTED="53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e"
+          RELEASE="$(digest_of .gradle/release-artifacts/Goldberg-v0.10.1.apk)"
+          BASELINE="$(digest_of baseline-src/app/build/outputs/apk/debug/app-debug.apk)"
+          CANDIDATE="$(digest_of app/build/outputs/apk/debug/app-debug.apk)"
+          {
+            echo "trusted release certificate SHA-256: $TRUSTED"
+            echo "downloaded 0.10.1 release certificate SHA-256: ${RELEASE:-MISSING}"
+            echo "v0.10.1 debug-rebuild certificate SHA-256: ${BASELINE:-MISSING}"
+            echo "candidate certificate SHA-256: ${CANDIDATE:-MISSING}"
+          } | tee stage5-ci-results/signing-evidence.txt
+          if [ -z "$RELEASE" ] || [ "$RELEASE" != "$TRUSTED" ]; then
+            echo "ERROR: downloaded 0.10.1 release APK does not carry the trusted certificate"; exit 1
+          fi
+          if [ -z "$BASELINE" ] || [ -z "$CANDIDATE" ] || [ "$BASELINE" != "$CANDIDATE" ]; then
+            echo "ERROR: in-place upgrade baseline and candidate are not signed with the same runner key"; exit 1
+          fi
+          echo "OK: release identity trusted; in-place upgrade pair signature-compatible"
+      - name: Run acceptance checks on the emulator
+        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
+        with:
+          api-level: 36
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          avd-name: stage5-ci
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+          script: |
+            set -euo pipefail
+            SERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"
+            case "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac
+            ATTACHED="$(adb devices | awk '$2=="device"' | wc -l)"
+            if [ "$ATTACHED" -ne 1 ]; then echo "ERROR: expected exactly one attached device, found $ATTACHED"; adb devices; exit 1; fi
+            QEMU="$(adb -s "$SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')"
+            if [ "$QEMU" != "1" ]; then echo "ERROR: $SERIAL is not a verified emulator (ro.kernel.qemu=$QEMU)"; exit 1; fi
+            export ANDROID_SERIAL="$SERIAL"
+            echo "Running acceptance subset on verified emulator $SERIAL"
+            mkdir -p stage5-ci-results
+            trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || true' EXIT
+            # (a) Seeded in-place upgrade from the debug rebuild of the exact v0.10.1
+            #     tag (same runner debug keystore as the candidate, so signatures
+            #     match). The helper asserts baseline schema, version and per-table
+            #     data equality after migration; disposable emulator seeding only.
+            python3 scripts/verify_emulator_upgrade.py \
+              --serial "$SERIAL" \
+              --baseline baseline-src/app/build/outputs/apk/debug/app-debug.apk \
+              --baseline-version 0.10.1 --baseline-schema 8 --expected-schema 10 \
+              --candidate app/build/outputs/apk/debug/app-debug.apk \
+              --output stage5-ci-results/upgrade \
+              --seed-disposable --offline --startup-runs 5
+            # (b) Wi-Fi -> mobile default-network transition and Data Saver, with real
+            #     state assertions (not just collected logs). The upgrade helper ran
+            #     with --offline (wifi AND mobile data disabled), so both are restored
+            #     before asserting the transition.
+            cat > stage5-ci-results/assert_default_network.py <<'PYEOF'
+            import re
+            import sys
+
+            expected, dump_path = sys.argv[1], sys.argv[2]
+            dump = open(dump_path, encoding='utf-8', errors='replace').read()
+            match = re.search(r'^\s*Active default network: (.*)$', dump, re.M)
+            if not match:
+                sys.exit('FATAL: "Active default network:" line missing from dumpsys connectivity')
+            net_id = match.group(1).strip()
+            if not re.fullmatch(r'\d+', net_id):
+                sys.exit(f'FATAL: expected a numeric active default network for transport {expected}, got: {net_id!r}')
+            blocks = re.findall(r'^[ \t]*NetworkAgentInfo\{network\{' + re.escape(net_id) + r'\}.*$', dump, re.M)
+            if not blocks:
+                sys.exit(f'FATAL: no NetworkAgentInfo block found for active default network {net_id}')
+            block = blocks[0]
+            ni = re.search(r'ni\{([^}]*)\}', block)
+            if not ni:
+                sys.exit(f'FATAL: no ni{{...}} token in active-network block: {block}')
+            transport = re.search(r'type: (\w+)', ni.group(1))
+            if not transport:
+                sys.exit(f'FATAL: no "type:" token in ni of active-network block: {ni.group(1)!r}')
+            found = transport.group(1)
+            if found != expected:
+                sys.exit(f'FATAL: active default network {net_id} transport is {found}, expected {expected}')
+            print(f'OK: active default network {net_id} uses transport {found}')
+            PYEOF
+            wait_for_transport() {
+              local expected="$1" deadline=$((SECONDS + 60))
+              while [ "$SECONDS" -lt "$deadline" ]; do
+                adb -s "$SERIAL" shell dumpsys connectivity > stage5-ci-results/connectivity-dump.txt 2>/dev/null || true
+                if python3 stage5-ci-results/assert_default_network.py "$expected" stage5-ci-results/connectivity-dump.txt >>stage5-ci-results/network-evidence.txt 2>&1; then
+                  sed -n 's/.*Active default network: /active default network: /p' stage5-ci-results/connectivity-dump.txt | head -n1
+                  return 0
+                fi
+                sleep 4
+              done
+              echo "FATAL: active default network never reached transport $expected within 60s"
+              return 1
+            }
+            {
+              echo "== restore mobile data and Wi-Fi (upgrade helper left both disabled) =="
+              adb -s "$SERIAL" shell svc data enable
+              adb -s "$SERIAL" shell svc wifi enable
+              echo "== expect Wi-Fi as active default network =="
+              WIFI_NET="$(wait_for_transport WIFI)"
+              echo "$WIFI_NET"
+              echo "== disable Wi-Fi, expect mobile fallback as active default network =="
+              adb -s "$SERIAL" shell svc wifi disable
+              MOBILE_NET="$(wait_for_transport MOBILE)"
+              echo "$MOBILE_NET"
+              if [ "$WIFI_NET" = "$MOBILE_NET" ]; then
+                echo "FATAL: default network did not change across the Wi-Fi -> mobile transition"; exit 1
+              fi
+              echo "OK: default network transitioned ($WIFI_NET -> $MOBILE_NET)"
+              echo "== restore Wi-Fi for the remainder of the run =="
+              adb -s "$SERIAL" shell svc wifi enable
+              wait_for_transport WIFI >/dev/null
+              echo "== Data Saver enable with state readback =="
+              adb -s "$SERIAL" shell cmd netpolicy set restrict-background true
+              sleep 2
+              DS_GET="$(adb -s "$SERIAL" shell cmd netpolicy get restrict-background | tr -d '\r')"
+              echo "cmd netpolicy get restrict-background: $DS_GET"
+              [ "$DS_GET" = "Restrict background status: enabled" ] || { echo "FATAL: Data Saver not enabled (readback: $DS_GET)"; exit 1; }
+              adb -s "$SERIAL" shell dumpsys netpolicy > stage5-ci-results/netpolicy-enabled.txt
+              grep -E "Restrict background: true" stage5-ci-results/netpolicy-enabled.txt || { echo "FATAL: dumpsys netpolicy does not report Restrict background: true"; exit 1; }
+              echo "== Data Saver disable with state readback =="
+              adb -s "$SERIAL" shell cmd netpolicy set restrict-background false
+              sleep 2
+              DS_GET="$(adb -s "$SERIAL" shell cmd netpolicy get restrict-background | tr -d '\r')"
+              echo "cmd netpolicy get restrict-background: $DS_GET"
+              [ "$DS_GET" = "Restrict background status: disabled" ] || { echo "FATAL: Data Saver not disabled (readback: $DS_GET)"; exit 1; }
+              adb -s "$SERIAL" shell dumpsys netpolicy > stage5-ci-results/netpolicy-disabled.txt
+              grep -E "Restrict background: false" stage5-ci-results/netpolicy-disabled.txt || { echo "FATAL: dumpsys netpolicy does not report Restrict background: false"; exit 1; }
+              echo "OK: Data Saver toggled with verified state readback"
+            } | tee stage5-ci-results/network-evidence.txt
+            # (c) Real process death + cold restart with database integrity check.
+            adb -s "$SERIAL" shell am start -W -n com.opus.piano/.MainActivity
+            sleep 5
+            test -n "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
+            adb -s "$SERIAL" shell am force-stop com.opus.piano
+            test -z "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
+            adb -s "$SERIAL" shell am start -W -n com.opus.piano/.MainActivity
+            sleep 5
+            test -n "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
+            adb -s "$SERIAL" shell run-as com.opus.piano ls databases | tee stage5-ci-results/process-death-db.txt
+            mkdir -p stage5-ci-results/db-after-restart
+            for SUFFIX in '' '-wal' '-shm'; do
+              adb -s "$SERIAL" exec-out run-as com.opus.piano cat databases/opus.db$SUFFIX > stage5-ci-results/db-after-restart/opus.db$SUFFIX 2>/dev/null || rm -f stage5-ci-results/db-after-restart/opus.db$SUFFIX
+            done
+            test -s stage5-ci-results/db-after-restart/opus.db
+            INTEGRITY="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA integrity_check;')"
+            echo "PRAGMA integrity_check: $INTEGRITY" | tee stage5-ci-results/process-death-integrity.txt
+            [ "$INTEGRITY" = "ok" ] || { echo "FATAL: database integrity_check failed"; exit 1; }
+            FK_VIOLATIONS="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA foreign_key_check;')"
+            echo "PRAGMA foreign_key_check violations: ${FK_VIOLATIONS:-none}" | tee -a stage5-ci-results/process-death-integrity.txt
+            [ -z "$FK_VIOLATIONS" ] || { echo "FATAL: foreign_key_check reported violations"; exit 1; }
+            SCHEMA="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA user_version;')"
+            echo "PRAGMA user_version: $SCHEMA" | tee -a stage5-ci-results/process-death-integrity.txt
+            [ "$SCHEMA" = "10" ] || { echo "FATAL: unexpected schema version $SCHEMA after restart (expected 10)"; exit 1; }
+            echo "OK: post-restart database passed integrity, foreign-key and schema checks"
+            # (d) Startup cost measurement (5 warm cold-process launches).
+            bash scripts/measure-startup.sh "$SERIAL" 5 | tee stage5-ci-results/startup-measurement.txt
+      - name: Upload acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: stage5-acceptance-results
+          path: |
+            stage5-ci-results/**
+          if-no-files-found: warn
+          retention-days: 30
+# This workflow never publishes APKs and never signs with a runner-generated key.
+# Stage 5 remains IN PROGRESS until all mandatory checks pass with executed
+# evidence recorded in docs/ai/VERIFICATION.md (AGENTS.md publication gates).
