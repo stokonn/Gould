@@ -6,8 +6,11 @@ name: Goldberg Stage 5 emulator verification
 # Safety / policy:
 #   - workflow_dispatch ONLY: no automatic runs; widening the triggers is an
 #     explicit owner decision (AGENTS.md: ask before significant CI changes).
-#   - contents: read only; credentials are not persisted; nothing is signed,
-#     published, merged or tagged. Debug APKs are runner-signed only.
+#   - contents: read only; credentials are not persisted; production signing
+#     credentials never enter CI; nothing is published, merged or tagged.
+#     Debug APKs ARE signed — with the runner's temporary debug keystore only
+#     (a throwaway key generated inside the job; CI output is never a
+#     release artifact).
 #   - No test selection, weakening or skipping: job 5.10 runs the complete
 #     connected suite via `connectedDebugAndroidTest` (all 42 androidTest
 #     classes; no runner-argument filters, no @Ignore, no excluded classes).
@@ -374,6 +377,8 @@ jobs:
             stage5-ci-results/**
           if-no-files-found: warn
           retention-days: 30
-# This workflow never publishes APKs and never signs with a runner-generated key.
+# This workflow never publishes APKs and never uses production signing
+# credentials: debug APKs are signed only with the runner's temporary debug
+# keystore. CI-built APKs are verification artifacts, not releases.
 # Stage 5 remains IN PROGRESS until all mandatory checks pass with executed
 # evidence recorded in docs/ai/VERIFICATION.md (AGENTS.md publication gates).
