@@ -27,8 +27,14 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.9.3")
     implementation("androidx.room:room-runtime:2.7.2")
     implementation("androidx.room:room-ktx:2.7.2")
+    // Stage 5 (D5.3, owner-mandated): persistent background scheduling for offline bundles.
+    implementation("androidx.work:work-runtime-ktx:2.12.0")
     ksp("androidx.room:room-compiler:2.7.2")
     testImplementation("junit:junit:4.13.2")
+    // Test-only real org.json so JVM unit tests can execute the manifest codec; the
+    // Android mockable jar stubs org.json and throws "not mocked". Not shipped in the APK.
+    testImplementation("org.json:json:20240303")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test:runner:1.6.2")
+    androidTestImplementation("androidx.work:work-testing:2.12.0")
 }

@@ -26,6 +26,29 @@ Maintain English-only official Wiki pages and navigation: Home, Getting Started,
 
 For each release: inspect → identify milestone/Issues → plan → implement → run relevant checks → build APK → verify acceptance → synchronize Project/Wiki → update README/changelog/docs → commit/push → publish release → report results. Commit/push/release are automatically authorized only after every mandatory gate passes. Never invoke an old release script without inspecting its actions; do not publish merely because Gradle succeeds.
 
+## Stage checklist documentation (permanent, from 2026-10-20)
+
+Every implementation stage of every Goldberg version MUST have a detailed entry in the version's project checklist at `docs/planning/<version>/STAGE-CHECKLIST.md`, and the checklist must stay synchronized with actual work — updated continuously as work progresses, not only at the end. Each stage entry must contain:
+
+- **Stage name and purpose** — explain what the stage actually does and why it exists.
+- **Scope** — which features, systems, components, databases and files it affects.
+- **Tasks** — individual actionable items written as checkboxes.
+- **Progress** — completed, in-progress and pending tasks, honestly reflected.
+- **Verification** — the tests/acceptance checks with their real executed results (counts, environments, what was *not* executed).
+- **Completion status** — mark a stage complete ONLY after its verification passed; unchecked boxes must never be implied as done, and "Stage X — Complete" alone is never acceptable without explaining what the stage accomplished.
+
+Verified project information only: never invent completed work, tests or evidence. For Goldberg 0.11 the checklist is `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (retroactively covering Stages 1–5); future versions create their own checklist file under their planning directory and keep it synchronized through release and beyond.
+
+## GitHub Issue stage checklists (permanent, from 2026-10-20)
+
+Every implementation stage MUST maintain its existing GitHub Issue as a living checklist, synchronized with the local stage checklist and GitHub Project. Each stage issue must describe the stage's purpose, scope and tasks as checkboxes. Update the checkboxes continuously as work progresses; mark a task complete only after its verification has actually passed. Keep GitHub Issues, the GitHub Project status and local documentation (`docs/planning/<version>/STAGE-CHECKLIST.md`, `docs/ai/*`) synchronized — never let them disagree about what is done. Preserve existing issue content and history: never delete or rewrite prior comments or task descriptions; append progress. Never create duplicate issues for a stage — reuse the existing tracking issue (for 0.11: umbrella Issue #31).
+
+## Automatic GitHub Issue checkpoints (permanent, from 2026-10-20)
+
+Automatically update the existing Stage GitHub Issue and its checklist at every verified milestone, before planned session termination, and proactively when context usage approaches 75–80%. Each checkpoint must state: completed and pending tasks; current implementation status; test results and blockers; current branch and commit; and exact next steps for a new agent. Keep the GitHub Issue, GitHub Project status, local checkpoint documentation (`docs/planning/<version>/STAGE-CHECKLIST.md`, `docs/ai/*`) and AGENTS.md synchronized. Never create duplicate Stage Issues and never mark unverified tasks complete. At the beginning of a new session, read the latest checkpoint before continuing work.
+
+Implement appropriate persistent workflow safeguards where supported; do not assume context compaction automatically triggers GitHub synchronization. If GitHub is unavailable, save a local checkpoint in the planning/ai docs and report that GitHub synchronization is pending. This rule applies to the existing workflow without disrupting the current stage in progress.
+
 ## Quality and publication gates
 
 Run appropriate existing/new JVM tests, migration and backup checks, localization/paging checks, lint, debug APK build and instrumentation compilation/execution where available. Add meaningful regression tests for data/timing/cache/permission changes. Inspect rendered UI across light/dark themes, representative sizes and larger fonts. Verify network/offline behavior, recovery and an in-place upgrade on a seeded emulator when required. Distinguish executed/passed, failed, compiled-only and unexecuted checks. No fabricated results.

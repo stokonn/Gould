@@ -14,6 +14,9 @@ class OpusApplication : Application() {
             portablePreferences.restoreDesiredLocale()
             com.opus.piano.i18n.L.refresh()
             runCatching { com.opus.piano.reminders.ReminderScheduler(this@OpusApplication).schedule() }
+            // Stage 5: restore durable bundle state after process death (D5.1/D5.3/D7).
+            // File + WorkManager metadata only; never touches the journal or recovery data.
+            runCatching { bundleScheduler.reconcileAfterRestart() }
         }
     }
     override fun onConfigurationChanged(newConfig: android.content.res.Configuration) {
@@ -40,6 +43,17 @@ class OpusApplication : Application() {
             com.opus.piano.data.catalogue.providers.ProviderClient(com.opus.piano.data.catalogue.providers.HttpsProviderTransport { media.allowed() }, { media.allowed() }, cache=providerCache), { media.allowed() }, catalogueStorage)
     }
     val cataloguePortraits by lazy { com.opus.piano.data.catalogue.CataloguePortraits(java.io.File(cacheDir,"catalogue-stage4/portraits"),reserveBytes={catalogueStorage.requiredReserve()},intake=catalogueStorage.intake) { media.allowed() } }
+    // Stage 5 offline bundles (D5.1 file store, D5.3 WorkManager, D7 budgets/consent).
+    // Lazy on purpose: nothing in journal/recovery/startup paths ever touches these.
+    val bundleStore by lazy { com.opus.piano.data.offline.BundleStore(java.io.File(filesDir,"offline-bundles"),java.io.File(cacheDir,"offline-bundles/staging"),reserveBytes={catalogueStorage.requiredReserve()},otherUsedBytes={catalogueStorage.usage().let { it.databaseBytes + it.mediaBytes }}) }
+    val bundleJobs by lazy { com.opus.piano.data.offline.BundleJobStore(com.opus.piano.data.offline.AndroidBundleJobPreferences(this)) }
+    // Stage 5 instrumentation seams: hermetic network/source in tests, never set in production.
+    @androidx.annotation.VisibleForTesting var bundleNetworkOverride: com.opus.piano.data.offline.BundleNetwork? = null
+    @androidx.annotation.VisibleForTesting var bundleConnectOverride: ((java.net.URL) -> java.net.HttpURLConnection)? = null
+    private val androidBundleNetwork by lazy { com.opus.piano.data.offline.AndroidBundleNetwork(this) }
+    val bundleNetwork by lazy { com.opus.piano.data.offline.BundleNetwork { (bundleNetworkOverride ?: androidBundleNetwork).facts() } }
+    val bundleScheduler by lazy { com.opus.piano.data.offline.BundleScheduler(androidx.work.WorkManager.getInstance(this),bundleJobs,bundleStore,bundleNetwork) }
+    val bundleRunner by lazy { com.opus.piano.data.offline.BundleJobRunner(bundleStore,bundleJobs,bundleNetwork,java.io.File(cacheDir,"offline-bundles/staging"),connect={ url -> bundleConnectOverride?.invoke(url) ?: (url.openConnection() as java.net.HttpURLConnection) }) }
     val discoverHistory by lazy { com.opus.piano.data.catalogue.DiscoverHistory(this) }
     val catalogueRepertoire by lazy { com.opus.piano.data.catalogue.CatalogueRepertoire(database) }
     val practiceRepository by lazy { PracticeRepository(database, repository) }
