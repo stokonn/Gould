@@ -340,7 +340,9 @@ unchecked.**
   with MFA-protected operator access and audited recovery.
 - 🟧 **Approved conditionally:** D8b Web Admin BFF (HttpOnly/Secure/SameSite=Strict
   cookies, server-side authz/CSRF, no bearer tokens in browser JS) — **must first
-  prove the 0 CZK fit** (task 6.0f) or report the blocker.
+  prove the 0 CZK fit** (task 6.0f) or report the blocker. *Feasibility study
+  executed 2026-10-21 → CONDITIONAL PASS
+  ([stage-6/BFF-FEASIBILITY.md](stage-6/BFF-FEASIBILITY.md)); conditions C1–C4 open.*
 - 🟨 **Provisional / deferred:** D5a personal contact email is the intended public
   contact but **no address was supplied or authorized — nothing may be published**;
   D5b controller/operator determination deferred to pre-launch review; D5d
@@ -374,7 +376,11 @@ implementation tasks UNCHECKED.**
 - [x] 6.0c D8a–D8c — decided 2026-10-21 (D8b conditional on the 6.0f proof gate).
 - [ ] 6.0d Provisioning (separate owner instruction + D5c verification list).
 - [ ] 6.0e Google OAuth console configuration (separately authorized).
-- [ ] 6.0f D8b zero-cost BFF hosting/runtime proof (or blocker report to owner).
+- [ ] 6.0f D8b zero-cost BFF hosting/runtime proof (or blocker report to owner) —
+      🚧 **feasibility study executed 2026-10-21 → CONDITIONAL PASS**
+      ([stage-6/BFF-FEASIBILITY.md](stage-6/BFF-FEASIBILITY.md)); conditions C1–C4
+      open (owner decision on the Cloudflare Free host, measured CPU spike, D5b/D5c
+      edge-location review, terms re-verification).
 - [ ] 6.1–6.9 Server core: schema, auth, authorization, submissions, decision
       transaction, idempotency, read overlay, admin endpoints, abuse controls.
 - [ ] 6.10–6.11 Android optional integration with strict personal-data isolation and

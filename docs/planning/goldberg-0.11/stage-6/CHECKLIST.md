@@ -44,7 +44,14 @@ pre-launch gates.**
 - **6.0f** **D8b pre-implementation gate:** prove the selected BFF hosting/runtime
   fits the permanent 0 CZK/month requirement including actual Free-tier limitations.
   If unprovable, report the blocker and request an owner decision — do not replace
-  the approved architecture silently. ⬜ not started.
+  the approved architecture silently. 🚧 **Feasibility study executed 2026-10-21
+  ([BFF-FEASIBILITY.md](BFF-FEASIBILITY.md)) → CONDITIONAL PASS:** a Cloudflare
+  Workers Free Worker (static assets + `/v1` BFF on one origin) + Supabase Free data
+  plane fits 0 CZK with fail-closed exhaustion; a Supabase-only same-origin host is
+  blocked (Edge Functions rewrite HTML without a custom domain; custom domains are a
+  paid add-on). Gate stays **unchecked** until conditions C1–C4 close: owner decision
+  on the Cloudflare host, a measured CPU-budget spike (≤10 ms/invocation), the
+  D5b/D5c edge-location review and terms re-verification before provisioning.
 
 - [x] 6.0a [ ] 6.0b [x] 6.0c (D8b proof gate 6.0f still open) [ ] 6.0d [ ] 6.0e [ ] 6.0f
 
@@ -122,5 +129,11 @@ pre-launch gates.**
   settled; 6.0b remains partially open (D5a/D5b/D5d details + pre-launch reviews);
   the new 6.0f D8b zero-cost proof gate was added. **No implementation, no
   provisioning, no OAuth configuration, no code, no cloud resources.**
+- 2026-10-21 — **D8b zero-cost feasibility study executed (task 6.0f, documentation
+  only)** — [BFF-FEASIBILITY.md](BFF-FEASIBILITY.md): verdict **CONDITIONAL PASS**
+  (Cloudflare Workers Free single-origin BFF + Supabase Free data plane; Supabase-only
+  same-origin hosting blocked at 0 CZK). 6.0f stays **unchecked** pending owner
+  decision on the Cloudflare host (C1), measured CPU spike (C2), D5b/D5c edge-location
+  review (C3) and terms re-verification (C4). No code, no deployment, no accounts.
 
 created by stokonn with love <3

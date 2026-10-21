@@ -76,6 +76,13 @@ above.
     no privileged bearer tokens in browser JS) — **before implementation, prove the
     0 CZK fit of the chosen BFF hosting/runtime; otherwise report the blocker and
     request an owner decision — never silently replace the architecture.**
+    *Feasibility study executed 2026-10-21 (task 6.0f):
+    **CONDITIONAL PASS** — `stage-6/BFF-FEASIBILITY.md` recommends a single-origin
+    Cloudflare Workers Free Worker (static + BFF) in front of the Supabase Free
+    data plane; a Supabase-only same-origin host is blocked at 0 CZK. Conditions
+    C1–C4 open (owner acceptance of the Cloudflare host, measured CPU spike,
+    D5b/D5c edge-location review, terms re-verification). No account or deployment
+    was created.*
   - **PROVISIONAL:** D5a personal contact email is the intended public contact, but
     **no address was supplied or authorized — do not invent/expose/request/publish
     contact data**; verify legally required controller identification before launch.

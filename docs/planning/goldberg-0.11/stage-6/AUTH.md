@@ -83,7 +83,12 @@ Admin (OPEN-DECISIONS.md §3):
   hosting/runtime fits the permanent **0 CZK/month** requirement, including actual
   Free-tier limitations. If the zero-cost condition cannot be proven, **report the
   blocker and request an owner decision — do not silently replace the approved
-  architecture** (CHECKLIST.md 6.0c/D8b gate).
+  architecture** (CHECKLIST.md 6.0f/D8b gate). Feasibility study executed 2026-10-21:
+  **CONDITIONAL PASS** — recommended topology is a single-origin Cloudflare Workers
+  Free Worker (static bundle + `/v1` BFF) in front of the Supabase Free data plane;
+  a Supabase-only same-origin host is blocked at 0 CZK (Edge Functions rewrite
+  `text/html` without a paid custom domain). Full evidence, capacity model and
+  conditions C1–C4: [BFF-FEASIBILITY.md](BFF-FEASIBILITY.md).
 - The static-SPA alternative is **not selected** and must not be substituted without
   a new owner decision (it must never pretend to have HttpOnly credential storage —
   COMMUNITY-ADMIN.md prohibition).

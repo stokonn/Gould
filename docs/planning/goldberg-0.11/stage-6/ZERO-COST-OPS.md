@@ -35,8 +35,9 @@ Design targets from CLOUD.md (not provider guarantees, not measured load):
 | Database size | 250 MB | 350 MB |
 | Egress (monthly, uncached) | 2.5 GB | 3.5 GB |
 | Function/API invocations (monthly) | 250k | 350k |
-| Worker requests/day *(Workers variant)* | 50k | 70k |
-| D1 rows/day *(Workers variant)* | 2.5 M read / 50k write | 3.5 M read / 70k write |
+| Worker requests/day *(if the D8b BFF topology in [BFF-FEASIBILITY.md](BFF-FEASIBILITY.md) is owner-approved)* | 5k sustained (5% of the Workers Free 100k/day cap) | 10k (10%) or intake kill switch |
+| Worker requests/day *(Workers variant, historical)* | 50k | 70k |
+| D1 rows/day *(Workers variant, historical)* | 2.5 M read / 50k write | 3.5 M read / 70k write |
 
 Behavior ladder (CLOUD.md §5, made operational):
 

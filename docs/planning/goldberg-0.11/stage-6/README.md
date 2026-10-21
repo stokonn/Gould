@@ -89,6 +89,7 @@ documentation extends the baseline, it does so additively and cites it.
 | [THREAT-MODEL.md](THREAT-MODEL.md) | Adversarial acceptance matrix with execution venues (local vs later integration). |
 | [ZERO-COST-OPS.md](ZERO-COST-OPS.md) | 0 CZK operations, monitoring, budgets, export/restore, kill switch. |
 | [OPEN-DECISIONS.md](OPEN-DECISIONS.md) | D4/D5/D8 decision table: alternatives, trade-offs, recommendations, blocked work. |
+| [BFF-FEASIBILITY.md](BFF-FEASIBILITY.md) | D8b zero-cost proof (task 6.0f): provider evaluation, topology, security assessment, capacity model, CONDITIONAL PASS verdict. |
 | [CHECKLIST.md](CHECKLIST.md) | Stage 6 implementation checklist — every task unchecked until executed and verified. |
 | [HANDOFF-STAGE7.md](HANDOFF-STAGE7.md) | Frozen-contract handoff requirements for the Stage 7 Admin clients. |
 
