@@ -169,17 +169,26 @@ jobs:
               sleep 1
               test "$(adb shell run-as com.opus.piano ls databases | tr -d '\r' | grep -c '^opus.db$')" = "1" \
                 || { echo "ERROR: opus.db was not created by the first launch"; exit 44; }
-              echo "primed: opus.db exists after first launch" | tee stage5-screenshots/prime.txt
+              test "$(sql "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='profile_settings'" | tail -n1 | tr -d '\r')" = "1" \
+                || { echo "ERROR: profile_settings table missing from opus.db"; exit 45; }
+              echo "primed: opus.db + profile_settings exist after first launch" | tee stage5-screenshots/prime.txt
             }
+
+            # Runs one SQL statement against the app's own Room DB through
+            # stdin. Run 39572917657 failed with sqlite "in prepare, incomplete
+            # input": passing the SQL as a quoted adb-shell argument does not
+            # survive the DEVICE shell re-parse (argv is joined with spaces
+            # before the device shell splits it again, so sqlite received only
+            # the bare `UPDATE`). Piping the statement on stdin is immune to
+            # any shell re-parsing on either side.
+            sql() { printf '%s\n' "$1" | adb shell "run-as com.opus.piano sqlite3 -batch databases/opus.db"; }
 
             set_theme() {
               # The product's own persistence (ProfileSettings.theme in opus.db).
               adb shell am force-stop com.opus.piano
               sleep 1
-              adb shell run-as com.opus.piano sqlite3 databases/opus.db \
-                "UPDATE profile_settings SET theme='$1' WHERE id=1"
-              READBACK="$(adb shell run-as com.opus.piano sqlite3 databases/opus.db \
-                "SELECT theme FROM profile_settings WHERE id=1" | tr -d '\r')"
+              sql "UPDATE profile_settings SET theme='$1' WHERE id=1"
+              READBACK="$(sql "SELECT theme FROM profile_settings WHERE id=1" | tail -n1 | tr -d '\r')"
               echo "theme readback after write: '$READBACK' (expected '$1')" \
                 | tee stage5-screenshots/theme-readback.txt
               if [ "$READBACK" != "$1" ]; then
