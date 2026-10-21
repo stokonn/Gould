@@ -158,6 +158,20 @@ jobs:
               sleep 2
             }
 
+            prime_app() {
+              # Run 39571926478 failed here: databases/opus.db does not exist
+              # until the app's FIRST launch (Room creates it on startup), so a
+              # theme write before any launch aborts with "unable to open
+              # database file". Launch once first — this also lets onboarding be
+              # dismissed before any themed capture.
+              launch
+              adb shell am force-stop com.opus.piano
+              sleep 1
+              test "$(adb shell run-as com.opus.piano ls databases | tr -d '\r' | grep -c '^opus.db$')" = "1" \
+                || { echo "ERROR: opus.db was not created by the first launch"; exit 44; }
+              echo "primed: opus.db exists after first launch" | tee stage5-screenshots/prime.txt
+            }
+
             set_theme() {
               # The product's own persistence (ProfileSettings.theme in opus.db).
               adb shell am force-stop com.opus.piano
@@ -202,6 +216,8 @@ jobs:
               capture "$PREFIX" "Settings" settings
             }
 
+            echo "=== Priming (first launch creates the Room DB; onboarding dismissed) ==="
+            prime_app
             echo "=== Ivory (theme=Light) ==="
             set_theme "Light"
             capture_theme "ivory"
