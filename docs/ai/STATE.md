@@ -10,12 +10,24 @@
 > **root cause proven from artifacts; the emulator itself behaved correctly**. Parser
 > fix implemented + locally verified **5/5 checks against the REAL run-5 dumps**
 > (workflow-only; assertions unchanged-strict); **sixth dispatch awaits owner
-> approval — not dispatched**).
+> approval — **owner approved → attempt 6 dispatched:
+> [run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
+> @ `44645fa`, headSha verified, monitoring in progress — outcome unknown**).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
 > `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → GitHub Issue #31.
 > **Stage 5 is NOT complete. No merge/tag/release/APK publication performed.**
 
-## 🚦 Current status: 5.11 python verification fully green; parser-format fix ready — sixth dispatch awaits owner approval
+## 🚦 Current status: 5.11 python verification fully green — attempt 6 (parser fix) in progress
+
+- **Attempt 6 dispatched (owner-approved): [run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
+  @ `44645fa`** (headSha verified = branch HEAD; workflow-only parser fix). Would give
+  the first real execution to (b)'s Data Saver toggles + transition assertion,
+  (c) process-death + cold restart, (d) post-restart DB integrity, if section (b) now
+  passes. Monitoring in progress — **outcome unknown, no result claimed**.
+- **Active task: monitor attempt 6 to completion, then preserve evidence**
+  (`results/ci-run-39557624554/`, run-summary, STAGE-CHECKLIST/VERIFICATION/STATE sync,
+  Issue #31 dashboard + checkpoint). If it fails: diagnose + document first — **no
+  seventh dispatch without a meaningful fix + verification**.
 
 - **Attempt 5 results ([run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455)
   @ `6da1021`, headSha + both jobs' `source-commit.txt` verified; evidence:
@@ -39,9 +51,6 @@
   fallback; deadline FATAL to stderr. Verification EXECUTED: YAML parse OK,
   `bash -n` OK on both materialized scripts, **fixed parser vs the REAL run-5 dumps —
   5/5 checks** (2 positive, 2 negative-strict, 1 legacy fallback).
-- **Active task: await owner approval for the sixth dispatch.** Do NOT dispatch
-  automatically. If approved and if it fails again: diagnose + document first, no
-  seventh dispatch without a meaningful fix + verification.
 - Tasks 5.10–5.13 remain open; Stage 5 IN PROGRESS; Stage 6/7 not started.
 
 - **Attempt 4 ([run 39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833)
@@ -91,7 +100,9 @@ Issue #31 checkpoint comments); attempt 4: fixes `dcea5b2` dispatched — **5.10
 [run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455) —
 **5.10 green again; 5.11 python verification fully passed; failed in section (b)'s
 host-side parser (format mismatch, proven from artifacts); parser fix + local
-verification committed (current HEAD); sixth dispatch awaits owner approval.**
+verification committed (`44645fa`) and dispatched as attempt 6
+([run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554),
+owner-approved) — monitoring.**
 Historical note: the triage revealed 12 of 13 run-3 failures were deterministic
 latent defects in androidTest-only tests that had never executed anywhere, 1 was a
 genuine product bug (`settle()` STALE→QUEUED wedge), plus a `readPublished()` invariant

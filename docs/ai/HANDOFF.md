@@ -107,7 +107,9 @@ all-green, startup measured) but failed in section (b)'s host-side parser (API 3
 prints the transport in `nc{[ Transports: …]}`, not the legacy `ni type:` — proven
 from artifacts, not an app defect; see `results/ci-run-39552116455/run-summary.md`).
 The parser fix is implemented + locally verified **5/5 against the real run-5 dumps**;
-**the sixth dispatch awaits explicit owner approval — not dispatched**.
+the owner approved, and attempt 6
+([run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554) @
+`44645fa`) is running — monitoring in progress, outcome unknown.
 See `docs/ai/STATE.md` for the live checkpoint. (Historical: the first dispatch, run
 39503450845, failed pre-test in both jobs from CI setup/script defects — not application defects (owner-confirmed; zero application
 tests ran; evidence:
