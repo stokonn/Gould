@@ -60,6 +60,24 @@ Run [39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833) 
 - Any fifth CI dispatch (5.11 fix must be implemented + locally verified first).
 - Lint; physical-device execution; production-credential signing (by design).
 
+## Executed — 5.11 offline fix implementation + local verification (2026-10-21, continued)
+
+| # | Command / action | Result |
+|---|---|---|
+| 1 | `python3 -m py_compile scripts/verify_emulator_upgrade.py` | **EXECUTED — OK.** |
+| 2 | Workflow YAML parse (`yaml.safe_load`, both jobs) | **EXECUTED — OK.** |
+| 3 | `bash -n` on both materialized job scripts, extracted from the YAML exactly as GitHub will write them | **EXECUTED — OK for both.** |
+| 4 | Behavioral simulation of the new `--offline` logic with a stubbed adb (3 scenarios) | **EXECUTED — 3/3 correct:** A: toggles apply after 2 retries → offline established at attempt 3, proceeds to baseline install + designed terminus; B: toggles no-op → `airplane-mode enable` fired exactly once, offline at attempt 13; C: never offline → fail fast with `Offline state could not be established before the upgrade (see connectivity-*.txt evidence)` **before any install**, 15 evidence files saved. Evidence files (`connectivity-offline-attempt-*`, `-established`, `-pre-upgrade`, `-final`, `offline-mobile-data-setting.txt`) verified present in every scenario. |
+| 5 | `python3 scripts/check_agent_policy.py` | **EXECUTED — PASS** (runtime agent loading not tested). |
+| 6 | Diff audit | **EXECUTED —** final assertion regex/message identical to run 4; only pre-fetch of the dump added. No assertion removed or relaxed. Other `scripts/check_*.py` (localization/migrations/backup/paging) cover app code — not applicable to this CI+script-only diff (last run in earlier stages). |
+
+### Not executed — this session (no claim)
+
+- Real-emulator behavior of the offline establishment (host emulator blocker) — that
+  is exactly what the owner-approved fifth dispatch verifies.
+- The acceptance sections after the python call (first real execution pending attempt 5).
+- Lint; physical-device execution; production-credential signing (by design).
+
 ## Executed — second CI dispatch + execution-model fix (2026-10-20, sixth session)
 
 Owner-approved attempt 2: merge PR #33, dispatch against `5cdc0d6`, monitor both jobs,

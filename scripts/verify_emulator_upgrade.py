@@ -51,9 +51,49 @@ def snapshot(name):
 if a.offline_preconfigured:
     assert not a.offline, 'Choose one offline setup mode'
     assert re.search(r'Active default network:\s*(?:none|null|-1)(?:\s|$)',adb('shell','dumpsys','connectivity').decode(),re.I), 'Preconfigured offline state not verified'
+def connectivity_dump(tag):
+    dump = adb('shell','dumpsys','connectivity').decode(errors='replace')
+    (a.output / ('connectivity-' + tag + '.txt')).write_text(dump)
+    return dump
+def offline_reached(dump):
+    return re.search(r'Active default network:\s*(?:none|null|-1)(?:\s|$)', dump, re.I) is not None
 if a.offline:
-    adb('shell','svc','wifi','disable')
-    adb('shell','svc','data','disable')
+    # Run 39518973833 proved on the API 36 CI emulator that `svc wifi disable` takes
+    # effect (logcat: WifiService setWifiEnabled enable=false) but `svc data disable`
+    # left zero observable trace and the emulated cellular network came up 15 s later
+    # as the active default network. The disables below are therefore belt-and-
+    # suspenders, verified in a retry loop with dumpsys evidence saved at every stage,
+    # escalating to airplane mode if the data toggles are no-ops. The final offline
+    # assertion is unchanged and still guards the whole upgrade.
+    def disable_radios():
+        adb('shell','svc','wifi','disable')
+        adb('shell','svc','data','disable')
+        adb('shell','settings','put','global','mobile_data','0')
+    disable_radios()
+    mobile_setting = ''
+    offline_ok = False
+    for attempt in range(1, 11):  # radios tear down asynchronously; telephony may still be initializing
+        time.sleep(3)
+        dump = connectivity_dump('offline-attempt-%02d' % attempt)
+        mobile_setting = adb('shell','settings','get','global','mobile_data').decode().strip()
+        if offline_reached(dump):
+            offline_ok = True
+            break
+        disable_radios()
+    if not offline_ok:
+        # Last resort where the data toggles do not apply: airplane mode also
+        # powers down the emulated radio.
+        adb('shell','cmd','connectivity','airplane-mode','enable')
+        for attempt in range(11, 16):
+            time.sleep(3)
+            dump = connectivity_dump('offline-attempt-%02d' % attempt)
+            if offline_reached(dump):
+                offline_ok = True
+                break
+    (a.output / 'offline-mobile-data-setting.txt').write_text(mobile_setting + '\n')
+    assert offline_reached(connectivity_dump('offline-established')), 'Offline state could not be established before the upgrade (see connectivity-*.txt evidence)'
+if a.offline or a.offline_preconfigured:
+    connectivity_dump('pre-upgrade')
 print(adb('install', '-r', '-d', str(a.baseline)).decode().strip(), flush=True)
 assert re.search(rb'versionName='+re.escape(a.baseline_version.encode())+rb'\s', adb('shell','dumpsys','package','com.opus.piano'))
 launch()
@@ -140,7 +180,8 @@ if a.expected_schema >= 9:
     assert bridge['anchors'] >= len(before['pieces']) + len(before['sessions'])
 final_db.close()
 if a.offline or a.offline_preconfigured:
-    assert re.search(r'Active default network:\s*(?:none|null|-1)(?:\s|$)',adb('shell','dumpsys','connectivity').decode(),re.I), 'Offline state changed during upgrade'
+    final_dump = connectivity_dump('final')
+    assert re.search(r'Active default network:\s*(?:none|null|-1)(?:\s|$)',final_dump,re.I), 'Offline state changed during upgrade'
 result = {'baselineVersion': a.baseline_version, 'baselineSchemaVerified': a.baseline_schema, 'offlineVerified': a.offline or a.offline_preconfigured, 'personalSchema': a.expected_schema,
           'baselineApkSha256': hashlib.sha256(a.baseline.read_bytes()).hexdigest(),
           'candidateApkSha256': hashlib.sha256(a.candidate.read_bytes()).hexdigest(),

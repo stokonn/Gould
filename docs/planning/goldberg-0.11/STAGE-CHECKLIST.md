@@ -463,10 +463,29 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
     captured to the artifact dir at every stage, fail-fast with evidence if offline
     cannot be achieved, final assertion semantics **unchanged**, workflow section (b)
     adds airplane-mode disable before the restores. No assertion weakened anywhere.
-  - **Gate held again:** run-4 results + root cause documented (this entry, run
-    summary, Issue #31) before implementing the 5.11 fix; no fifth dispatch until the
-    fix is implemented and locally verified (py_compile/YAML/check scripts). Tasks
-    5.10–5.13 remain open; Stage 5 IN PROGRESS.
+  - **Fix implemented + locally verified (2026-10-21, documented before dispatch):**
+    `scripts/verify_emulator_upgrade.py` — `connectivity_dump(tag)`/`offline_reached()`
+    helpers; `--offline` now runs the original `svc wifi/data disable` **plus**
+    `settings put global mobile_data 0`, a 10×3 s verify/retry loop (re-issuing the
+    disables; dumpsys evidence saved per attempt), `cmd connectivity airplane-mode
+    enable` escalation with 5 further attempts, and an **assertion that offline was
+    established before the upgrade** (fail fast, evidence-first). The final assertion
+    (was line 143) is **semantically unchanged** (same regex, same message) but now
+    saves `connectivity-final.txt` first. Workflow section (b) clears airplane mode
+    and re-enables data (`svc data enable` + `settings put global mobile_data 1`)
+    before the Wi-Fi→mobile transition. **Local verification EXECUTED:**
+    `python3 -m py_compile` OK; workflow YAML parse OK (both jobs); `bash -n` OK on
+    both materialized scripts extracted exactly as GitHub will run them; behavioral
+    simulation with a stubbed adb **3/3 scenarios correct** (A: toggles apply after 2
+    attempts → offline at attempt 3, proceeds to install; B: toggles no-op → airplane
+    fires once, offline at attempt 13; C: never offline → fail fast with the exact
+    message **before install**, 15 evidence files); `check_agent_policy.py` PASS. Not
+    executed locally: real emulator behavior (host blocker) — attempt 5's purpose.
+  - **Owner approved fix + verify + fifth dispatch (recovery session); the diagnose-
+    and-document-first gate was honored: run-4 results + root cause + fix design were
+    documented (commit `a427d88`) before implementation, and the implementation +
+    local verification are committed before dispatching.** Tasks 5.10–5.13 remain
+    open; Stage 5 IN PROGRESS.
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,

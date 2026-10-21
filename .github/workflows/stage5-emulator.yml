@@ -327,8 +327,10 @@ jobs:
               --seed-disposable --offline --startup-runs 5
             # (b) Wi-Fi -> mobile default-network transition and Data Saver, with real
             #     state assertions (not just collected logs). The upgrade helper ran
-            #     with --offline (wifi AND mobile data disabled), so both are restored
-            #     before asserting the transition.
+            #     with --offline and VERIFIED no active default network before and
+            #     after the upgrade (wifi AND mobile data disabled; airplane-mode
+            #     fallback possible), so the radios are fully restored before
+            #     asserting the transition.
             cat > stage5-ci-results/assert_default_network.py <<'PYEOF'
             import re
             import sys
@@ -370,8 +372,10 @@ jobs:
               return 1
             }
             {
-              echo "== restore mobile data and Wi-Fi (upgrade helper left both disabled) =="
+              echo "== restore mobile data and Wi-Fi (upgrade helper left both disabled; clear airplane mode in case the offline fallback engaged) =="
+              adb -s "$SERIAL" shell cmd connectivity airplane-mode disable || true
               adb -s "$SERIAL" shell svc data enable
+              adb -s "$SERIAL" shell settings put global mobile_data 1
               adb -s "$SERIAL" shell svc wifi enable
               echo "== expect Wi-Fi as active default network =="
               WIFI_NET="$(wait_for_transport WIFI)"
