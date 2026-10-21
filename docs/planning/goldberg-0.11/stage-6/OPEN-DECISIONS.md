@@ -30,7 +30,7 @@ Status vocabulary used below:
 | # | Question | Outcome (2026-10-21) | Consequences |
 |---|---|---|---|
 | D5a | Who is the operator/controller contact? | **PROVISIONAL OWNER PREFERENCE:** a personal contact email is the intended public contact. **No email address has been supplied or authorized for publication.** | Do not invent, expose, request or publish personal contact information. Legally required controller identification and public contact information must be verified before launch. Blocks: privacy notice publication and public collection. |
-| D5b | Privacy & data-processing responsibilities | **DEFERRED:** the legal data controller/operator will be determined **before public launch**, after reviewing applicable requirements. Privacy-by-design and data minimization apply meanwhile. | Do not claim GDPR compliance and do not authorize real-user collection. Applicable requirements concerning a minor project owner must be accounted for in the pre-launch review. **Research deliverable prepared 2026-10-21 — [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md)** (verified findings, Options A/B/C with no selection, professional-review questions); **D5b remains legally unresolved and blocking for 6.0d provisioning.** |
+| D5b | Privacy & data-processing responsibilities | **DEFERRED:** the legal data controller/operator will be determined **before public launch**, after reviewing applicable requirements. Privacy-by-design and data minimization apply meanwhile. | Do not claim GDPR compliance and do not authorize real-user collection. Applicable requirements concerning a minor project owner must be accounted for in the pre-launch review. **Research deliverable prepared 2026-10-21 — [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md)** (verified findings, **Options A/B/C + candidate D (natural person in own name) with an A/B/C/D matrix and no selection**, professional-review questions Q4.1–Q4.13, product direction PD-1 free/non-commercial); **D5b remains legally unresolved and blocking for 6.0d provisioning.** |
 | D5c | Processing region & transfers | **APPROVED: Frankfurt, Germany (`eu-central-1`).** Before provisioning, verify actual region availability, data residency, international processing/transfers, the DPA and subprocessors. EU database hosting alone must **not** be presented as a guarantee that all processing stays within the EU. | Region choice is fixed for provisioning task 6.0d; the verification list is a hard pre-provisioning sub-gate. |
 | D5d | Account deletion & retention | **PRINCIPLE APPROVED — DETAILS PENDING:** preserve legitimately published non-personal catalogue data where rights and applicable law permit; minimize and appropriately erase account-linked personal data; support account deletion. | Retention periods for pending/rejected contributions, audit records and backups remain **unresolved**. Attribution requirements, pseudonymization vs anonymization, legal exceptions and deletion semantics must be reviewed before public launch. **Do not invent final retention periods or claim legal approval.** `DELETE /v1/me` stays reserved (API-CONTRACTS.md §3). |
 | D5e | Contribution terms & licensing | **APPROVED, SUBJECT TO PRE-LAUNCH LEGAL REVIEW:** CC0 for contributor-owned structured catalogue metadata; CC BY-SA 4.0 for original contributor-authored text. | Third-party rights, source licenses, attribution and database rights remain fully applicable. Wikipedia content and copied third-party prose are **not** automatically relicensed. Field-level license/provenance requirements are preserved. Compatibility with D5d deletion/attribution must be verified before launch. |
@@ -79,6 +79,18 @@ Status vocabulary used below:
       rule), unresolved questions, professional-review question set, operator
       **Options A/B/C (no selection made)**. **Still unresolved — no legal
       conclusion recorded; D5b stays open and blocking for 6.0d.**
+      **Reassessment 2026-10-21 (same day, later session; supersedes only the
+      framing above, no gate changed):** capacity is now treated purely as an
+      **eligibility precondition for the eventual accountable party** — never a
+      personal fact about anyone; the C3 sentence above about the owner's
+      personal status remains historical context, not a current verified fact
+      (see §6 note). The option set is now **A/B/C/D**, adding candidate
+      **Q1-D — a legally capable natural person acting in their own name**
+      (Q1 §5, matrix §5.5, technical recommendation §5.6), and the product
+      direction is recorded as **PD-1: free of charge, non-commercial, no
+      monetization approved or implemented** (Q1 §1.7). Still **no option
+      selected; D5b unresolved and blocking; professional review (Q4.9–Q4.13)
+      still required.**
 - [ ] **D5d details** — retention periods, deletion semantics, attribution vs
       pseudonymization (blocks retention jobs and `DELETE /v1/me` implementation;
       pre-launch review gate).
@@ -164,7 +176,7 @@ Recorded from the owner's cloud-readiness instruction; full analysis:
   closure only after its own prerequisites and a separate authorization; the
   permanent **0 CZK/month** requirement (no billing methods, paid features,
   chargeable trials, auto-upgrades) applies to every step. **ORD-A is distinct
-  from Q1 Options A/B/C (operator arrangements), none of which is selected —
+  from Q1 Options A/B/C/D (operator arrangements), none of which is selected —
   see the note below.**
 - **Q1/D5b remains OPEN and blocking:** no provider account may be created
   while the contractual and legal prerequisites are unresolved; creating an
@@ -178,5 +190,29 @@ Recorded from the owner's cloud-readiness instruction; full analysis:
   of the Q1 §4 professional-review questions is prepared in
   [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md) §9.1 for routing **outside
   GitHub**.
+
+## 7. Q1 reassessment — natural-person operator readiness (2026-10-21, later session — documentation-only)
+
+Full analysis: [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) (rewritten
+in the reassessment). Current state, superseding only earlier Q1 framing:
+
+- **Four option sets now assessed, none selected:** Q1-A (adult/guardian of
+  record), Q1-B (legal entity of record), Q1-C (deferred provisioning — still
+  the only permissible posture), candidate **Q1-D (legally capable natural
+  person acting in their own name)** — compared in an A/B/C/D decision matrix
+  (§5.5) with a clearly labeled technical/non-legal recommendation to evaluate
+  D first *after* professional review (§5.6).
+- **Capacity = eligibility precondition only:** whether the eventual
+  accountable party meets the capacity/eligibility conditions is an abstract
+  requirement for professional confirmation — **no personal fact (age, birth
+  date, identity, family, contact) is requested, recorded, committed or
+  inferred**, in either direction (PA-2).
+- **Product direction PD-1:** Goldberg is intended to remain free of charge;
+  commercial features may be considered in a future version; **no monetization
+  is approved or implemented now.**
+- **Nothing resolved:** D5b remains unresolved and blocking for 6.0d; no
+  GDPR compliance is claimed; professional review is not unnecessary; Q4.9–
+  Q4.13 are open; no account may be created, nothing provisioned, 6.0f stays
+  unchecked, ORD-A stays sequencing-only.
 
 created by stokonn with love <3

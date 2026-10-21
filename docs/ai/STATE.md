@@ -63,6 +63,27 @@
 > questions to a professional review to resolve D5b** — until then nothing may
 > be provisioned. Stage 5 remains COMPLETE.
 
+> **Stage 6 addendum 4 (2026-10-21, Q1 natural-person reassessment session —
+> docs only):** `stage-6/Q1-OPERATOR-READINESS.md` was reassessed and rewritten
+> after fresh source checks (Cloudflare SSSA re-read; Supabase ToS at new
+> canonical `https://supabase.com/terms` — old path 404s; Czech Civil Code
+> verze 18 eff. 2026-01-01 §§15/18/30–37/420–421; Trade Act 455/1991 §2/§3(1)(b);
+> GDPR Art. 2/4/8 from a **non-official mirror — official EUR-Lex retrieval now
+> failed 5× total, X-6 still ❌**). The option set is now **A/B/C/D**, adding
+> candidate **Q1-D — a legally capable natural-person operator acting in their
+> own name** — with a §5.5 decision matrix and a clearly labeled **technical
+> (non-legal)** recommendation (§5.6) to evaluate D first *after* professional
+> review; §4 extended with Q4.9–Q4.13; new §1.6 trade-licensing, §1.7 product
+> direction **PD-1 (free of charge; non-commercial; no monetization approved or
+> implemented)**, §10 phased GDPR controller readiness. **Capacity is treated
+> solely as an eligibility precondition for the eventual accountable party —
+> never a personal fact requested, recorded or inferred.** Synchronized:
+> stage-6 README/OPEN-DECISIONS/CLOUD-READINESS-PLAN/C4, STAGE-CHECKLIST,
+> docs/ai/*. **No option selected; D5b UNRESOLVED and blocking for 6.0d; no
+> GDPR compliance claimed; professional review still required; ORD-A stays
+> sequencing-only; 6.0f stays UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; Stage 6
+> implementation NOT STARTED; nothing provisioned; Stage 5 remains COMPLETE.**
+
 > **Last updated:** 2026-10-20, CI-activation session (Phase A/B of the owner's CI plan;
 > approval gate reached — nothing dispatched or merged).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →

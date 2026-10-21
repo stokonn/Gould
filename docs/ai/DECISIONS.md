@@ -238,5 +238,25 @@ above.
     A concise owner-facing list of the Q1 §4 professional-review questions
     (identity-free) is prepared in CLOUD-READINESS-PLAN.md §9.1 for routing
     outside GitHub.
+  - **Q1 reassessment + product direction recorded (2026-10-21, later session
+    — documentation-only, owner statements recorded, NO option selected):**
+    - **PD-1 (owner's product direction, verbatim intent):** Goldberg is
+      currently intended to remain **free of charge**. Commercial features may
+      be considered in a future version, but **no monetization is approved or
+      implemented now.** Recorded in Q1 §1.7; it changes no gate and authorizes
+      nothing.
+    - **Option set now A/B/C/D (documentation analysis, not a decision):**
+      candidate **Q1-D — a legally capable natural-person operator acting in
+      their own name** — was added for evaluation, with a §5.5 matrix and a
+      §5.6 technical (non-legal) recommendation. **The owner has selected
+      nothing**; Q1-D is a candidate only, its prerequisites (Q4.9–Q4.13) are
+      open professional questions, and legal capacity is treated purely as an
+      **eligibility precondition for the eventual accountable party — no
+      personal fact requested, recorded or inferred**.
+    - **Unchanged:** D5b unresolved/blocking for 6.0d; no GDPR compliance
+      claimed; professional review still required; ORD-A sequencing-only; C4
+      open; C2 §12 open; 6.0f unchecked; 6.0d/6.0e not authorized; 0 CZK/month
+      permanent; architecture = Cloudflare Workers Free + Supabase Free
+      `eu-central-1`.
 - No identity, controller contact, legal or credential data was invented; no legal
   compliance is claimed; free hosting is not proof of compliance.

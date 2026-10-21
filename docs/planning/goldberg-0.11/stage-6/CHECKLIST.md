@@ -25,7 +25,9 @@ pre-launch gates.**
   D5a provisional — **no contact email supplied or authorized for publication**;
   D5b controller determination **deferred to pre-launch** (research deliverable
   prepared: [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) — **still
-  legally unresolved and blocking for 6.0d**); D5d principle approved
+  legally unresolved and blocking for 6.0d**; reassessed 2026-10-21 with option
+  sets **A/B/C/D — candidate Q1-D (natural person in own name) added, none
+  selected**, plus product direction PD-1 free/non-commercial); D5d principle approved
   with **retention/deletion details unresolved**; D5e approved subject to pre-launch
   legal review. *Remaining open items block: terms/privacy publication, retention
   jobs, `DELETE /v1/me`, public collection.* (OPEN-DECISIONS.md §2.)
@@ -117,7 +119,8 @@ pre-launch gates.**
 
 - [x] 6.0a [ ] 6.0b [x] 6.0c (D8b proof gate 6.0f still open — C2 executed
       CONDITIONAL PASS, C3 documentary review complete; Q1/C4 research docs
-      prepared; open: C2 §12 production verification, final C4 verification,
+      prepared (Q1 reassessed 2026-10-21: options A/B/C/D, candidate Q1-D,
+      no selection); open: C2 §12 production verification, final C4 verification,
       D5b; ORD-A gate-ordering strategy APPROVED 2026-10-21 — sequencing only,
       [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md); execution still
       blocked on D5b + phase-scoped authorizations) [ ] 6.0d [ ] 6.0e [ ] 6.0f
@@ -303,5 +306,28 @@ pre-launch gates.**
   OAuth or implement anything.** No checkboxes closed by this entry — 6.0b,
   6.0d, 6.0e, 6.0f all unchanged; no accounts, no provisioning, no OAuth, no
   code, no money.
+- 2026-10-21 — **Q1 reassessed: natural-person operator readiness + A/B/C/D
+  decision matrix (documentation-only, no accounts).**
+  [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) was rewritten after
+  fresh source checks (Cloudflare SSSA re-read; Supabase ToS at its new
+  canonical `https://supabase.com/terms` URL — the old `/company/terms` path
+  now 404s; Czech Civil Code verze 18 eff. 2026-01-01 §§15/18/30–37/420–421;
+  Trade Act 455/1991 §2/§3(1)(b); GDPR Art. 2/4/8 wording still from a
+  **non-official mirror** — official EUR-Lex retrieval failed 5× total, C4 X-6
+  remains ❌). New/changed: a QD-1…QD-10 findings classification; §1.6 Czech
+  business-status/trade-licensing; §1.7 product direction **PD-1 (free of
+  charge, non-commercial, no monetization approved or implemented)**; option
+  sets now **A/B/C/D** with candidate **Q1-D (legally capable natural person
+  acting in their own name)**, a full §5.5 matrix and a §5.6 technical
+  (non-legal) recommendation to evaluate D first *after* professional review;
+  §4 extended with Q4.9–Q4.13; §10 phased GDPR controller readiness.
+  **Capacity is treated solely as an eligibility precondition for the eventual
+  accountable party — no personal fact requested, recorded or inferred.**
+  Synchronized: stage-6 README/OPEN-DECISIONS/CLOUD-READINESS-PLAN/C4
+  (SB-P1 URL), STAGE-CHECKLIST, docs/ai/*. **No option selected; D5b remains
+  unresolved and blocking for 6.0d; no GDPR compliance claimed; professional
+  review still required; ORD-A stays sequencing-only; 6.0f stays unchecked.**
+  No checkboxes closed by this entry — 6.0b, 6.0d, 6.0e, 6.0f all unchanged;
+  no accounts, no provisioning, no OAuth, no code, no money.
 
 created by stokonn with love <3

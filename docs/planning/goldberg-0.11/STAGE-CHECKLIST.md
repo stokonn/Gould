@@ -400,6 +400,29 @@ not a D5b resolution, and not authorization to create accounts, provision,
 deploy, configure OAuth or implement. **6.0f stays unchecked; Stage 6
 implementation stays NOT STARTED; nothing provisioned.**
 
+**Q1 natural-person operator reassessment 2026-10-21 (documentation-only,
+current-state; supersedes only earlier Q1 framing, all gates unchanged):**
+[stage-6/Q1-OPERATOR-READINESS.md](stage-6/Q1-OPERATOR-READINESS.md) was
+reassessed after fresh source checks (Cloudflare SSSA, Supabase ToS at its new
+canonical `https://supabase.com/terms` URL, Czech Civil Code verze 18 eff.
+2026-01-01, Trade Act 455/1991, GDPR Art. 2/4/8 wording from an unofficial
+mirror — official EUR-Lex retrieval still failing). Its option set now covers
+**four frames — Q1-A (adult/guardian of record, minor as technical operator),
+Q1-B (legal entity of record), Q1-C (deferred provisioning, still the current
+posture), candidate Q1-D (legally capable natural-person operator acting in
+their own name)** — mutually exclusive ownership/governance frames for one
+future accountable GDPR controller, compared in a full A/B/C/D decision matrix
+(§5.5) with a technical (non-legal) recommendation to evaluate D first after
+professional review (§5.6). **Legal capacity is treated solely as an
+eligibility precondition for the eventual accountable party — never a personal
+fact to be requested, recorded or inferred** (PA-2 scope). The
+free/non-commercial product direction is recorded as PD-1 (Goldberg intended
+to remain free of charge; commercial features may be considered in a future
+version; **no monetization approved or implemented**).
+**No option selected; Q1/D5b remain UNRESOLVED and blocking for 6.0d; D5b is
+not resolved; no GDPR compliance claimed; professional review is not
+unnecessary; 6.0f stays unchecked; no account, provisioning or implementation.**
+
 - **Purpose:** Optional, secured community backend: server-validated Google auth,
   default-deny five-role authorization, revisioned submissions with immutable
   evidence, one-transaction moderation decisions with audit trail, versioned `/v1`
@@ -439,7 +462,9 @@ implementation tasks UNCHECKED.**
       now blocking for 6.0d; **Q1 research deliverable prepared 2026-10-21**
       ([stage-6/Q1-OPERATOR-READINESS.md](stage-6/Q1-OPERATOR-READINESS.md) —
       Options A/B/C documented, **no option selected, D5b still legally
-      unresolved**). **Still open: C2 §12 production verification and
+      unresolved**; reassessed later 2026-10-21 → **options A/B/C/D with
+      candidate Q1-D added, still no selection**, see the Stage 6 Q1
+      reassessment note above). **Still open: C2 §12 production verification and
       C4 terms re-verification (checklist prepared; final run required before
       any provisioning).**
 - [ ] 6.1–6.9 Server core: schema, auth, authorization, submissions, decision

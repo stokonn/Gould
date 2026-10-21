@@ -266,4 +266,34 @@ do not provision, do not create accounts, do not implement, do not touch
 6.0e.** 6.0f stays unchecked; Stage 6 implementation stays NOT STARTED;
 Stage 5 remains COMPLETE.
 
+**Addendum 4 (2026-10-21, Q1 natural-person reassessment session — docs only):**
+`stage-6/Q1-OPERATOR-READINESS.md` was reassessed and rewritten after fresh
+source checks (Cloudflare SSSA full text re-read; Supabase ToS re-read at its
+new canonical `https://supabase.com/terms` — the old `/company/terms` path now
+404s; Czech Civil Code verze 18 eff. 2026-01-01 §§15/18/30–37/420–421; Trade
+Act 455/1991 §2 + §3(1)(b); GDPR Art. 2/4/8 wording from a **non-official
+mirror — official EUR-Lex retrieval failed 5× total, C4 X-6 still ❌**). The
+option set is now **A/B/C/D**: Q1-A (adult/guardian of record), Q1-B (legal
+entity), Q1-C (deferred provisioning — still the only permissible posture),
+candidate **Q1-D (legally capable natural-person operator acting in their own
+name)**, compared in a §5.5 decision matrix with a §5.6 **technical/non-legal**
+recommendation to evaluate D first *after* professional review. Capacity is
+treated **solely as an eligibility precondition for the eventual accountable
+party — never a personal fact requested, recorded or inferred**. Product
+direction recorded as **PD-1: Goldberg intended to remain free of charge,
+non-commercial; commercial features may be considered in a future version; no
+monetization approved or implemented now.** New §1.6 trade-licensing,
+§1.8 QD-1…QD-10 classification, §4 Q4.9–Q4.13, §10 phased GDPR controller
+readiness. Synchronized: `stage-6/{README,CHECKLIST,OPEN-DECISIONS,
+CLOUD-READINESS-PLAN,C4-PREPROVISIONING-CHECKLIST}.md` (incl. SB-P1 canonical
+URL), `STAGE-CHECKLIST.md` Stage 6, `docs/ai/*`. **Nothing resolved: no option
+selected; D5b UNRESOLVED and blocking for 6.0d; no GDPR compliance claimed;
+professional review not waived; ORD-A stays sequencing-only; 6.0f stays
+UNCHECKED; 6.0d/6.0e NOT AUTHORIZED.** **Next step for a fresh agent:** read
+`stage-6/Q1-OPERATOR-READINESS.md` §§5.5–5.6 + §6 (explicit owner decisions)
+and the CHECKLIST progress log, then **await the owner's decision on routing
+Q4.1–Q4.13 to a professional review — no selection of A/B/C/D may be made or
+implied by an agent; do not provision, do not create accounts, do not
+implement.** Stage 5 remains COMPLETE.
+
 created by stokonn with love <3

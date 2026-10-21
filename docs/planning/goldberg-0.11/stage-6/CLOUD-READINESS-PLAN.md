@@ -44,9 +44,13 @@ Planning-assumption reconciliation:
   the gates in §3/§5 pass. Every planning document that described Option C as
   the default *intended* posture is hereby reconciled: the intended end state is
   the C1 topology; the "no accounts yet" state is a gated phase, not the goal.
-- **Q1 Options A/B/C (operator structures) are untouched by this decision.**
+- **Q1 Options A/B/C/D (operator structures) are untouched by this decision.**
   They concern *who* lawfully holds the accounts and acts as controller — a
   question the architecture choice does not answer. No option is selected here.
+  (Reassessment 2026-10-21: the set now includes candidate **Q1-D — a legally
+  capable natural person acting in their own name** — see
+  [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) §5/§5.5; still no
+  selection.)
 - This decision is **architecture/deployment-path level only**. It changes no
   gate: provisioning (6.0d), OAuth console work (6.0e), implementation
   (6.1–6.18) and collection (6.16) remain separately owner-gated, and **6.0f
@@ -70,6 +74,15 @@ current fact.** Reconciled framing, binding from now on:
 - **D5b stays legally unresolved and blocking for 6.0d** — unchanged. Reclassifying
   the assumption resolves nothing; it only prevents an unverified premise from
   hardening into fact.
+
+**Reassessment addendum (2026-10-21, same day, later session):** the capacity
+question is now framed **purely as an eligibility precondition for the eventual
+accountable party** — an abstract requirement to be confirmed by professional
+review, never a fact about any specific person. No option among Q1-A/B/C/D is
+selected; candidate **Q1-D (a legally capable natural person acting in their
+own name)** was added to the option set for evaluation; the product direction
+is recorded as free/non-commercial (Q1 §1.7, PD-1). Nothing in this addendum
+changes any gate, authorization or the embargo on real-user collection.
 
 ### 1.3 Contractual requirements actually at stake (from Q1, unchanged)
 
@@ -150,7 +163,7 @@ are authoritative; S-IDs are the shorthand used elsewhere in this document:
 |---|---|---|---|---|
 | 1 | Complete documentary readiness | S1 | Documentation work | 🟧 baseline captured 2026-10-21 (C4 pre-provisioning checklist; C3 sources); final day-of run still required at step 5 |
 | 2 | Resolve Q1/D5b account eligibility, contractual capacity and controller responsibilities through appropriate review | S2 | Owner action + professional review | ⬜ **OPEN — D5b unresolved and blocking**; Q1 §4 question set ready to route verbatim |
-| 3 | Establish a legally and contractually acceptable account/operator arrangement | S2 | Owner action (Q1 Options A/B/C — **none selected yet**) | ⬜ OPEN |
+| 3 | Establish a legally and contractually acceptable account/operator arrangement | S2 | Owner action (Q1 Options A/B/C/D — **none selected yet**) | ⬜ OPEN |
 | 4 | Obtain separate explicit owner authorization for limited private verification provisioning | S3 | Explicit owner decision, phase-scoped | ⬜ not yet — ORD-A approves the *ordering*, not this authorization |
 | 5 | Execute the final C4 terms/pricing/privacy verification immediately before provisioning | S4 | Verification run (day-of, fresh) | ⬜ OPEN — must run immediately before step 6 |
 | 6 | Create only the minimum separately authorized private test resources | S5 prep | Minimal private infrastructure (CR-5) | ⬜ NOT AUTHORIZED |
@@ -191,8 +204,8 @@ a silent upgrade** (D8b, C4 X-5).
 The §3 table (steps 1–11) is the approved ordering. Key clarifications, all
 binding:
 
-- **ORD-A ≠ Q1 Options A/B/C.** ORD-A is the *gate-ordering* strategy (when
-  things may happen). Q1 Options A/B/C are possible *legal/operator
+- **ORD-A ≠ Q1 Options A/B/C/D.** ORD-A is the *gate-ordering* strategy (when
+  things may happen). Q1 Options A/B/C/D are possible *legal/operator
   arrangements* (who holds the accounts and carries controller duties) —
   **none is selected**; that selection belongs to the owner after professional
   review ([Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) §5).
@@ -256,7 +269,7 @@ before any limited private verification provisioning is created. **Nothing here
 is executed by this document.**
 
 - [ ] Q1/D5b prerequisites **resolved** (professional review returned; operator
-      arrangement established per Q1 Options A/B/C — none pre-selected).
+      arrangement established per Q1 Options A/B/C/D — none pre-selected).
 - [ ] **Confirmed authority to accept provider contracts** by the determined
       counterparty (CF SSSA §2.2.1(a) / DPA v6.4; Supabase ToS v2 authority-to-bind
       warranties) — recorded as a fact, with no identity data in the repository.
@@ -506,7 +519,7 @@ is exercised, not stress-tested, at verification time.
 1. **D5b (the only substantive blocker before steps 4–7):** route the
    [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) §4 questions to an
    appropriate professional review; record the outcome; choose the operator
-   arrangement (Q1 Options A/B/C — none selected). Owner-facing summary of
+   arrangement (Q1 Options A/B/C/D — none selected). Owner-facing summary of
    those questions is in §9.1 below.
 2. **Phase-scoped authorizations (later, never implied by ORD-A):** CR-3
    limited-provisioning approval; CR-6 measurement scope sign-off; CR-8 6.0f
@@ -518,18 +531,24 @@ is exercised, not stress-tested, at verification time.
 These are the neutral, identity-free questions from
 [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) §4, restated briefly for
 routing. They contain and request no personal data; answers should be recorded
-in OPEN-DECISIONS.md, not in the public issue:
+in OPEN-DECISIONS.md, not in the public issue. *(Reassessment 2026-10-21: each
+question is about the **eligibility and role of whichever party would ultimately
+be accountable** — an abstract condition under every option set A/B/C/D — and
+requests no fact about any particular person.)*
 
-1. May a person of the project owner's situation validly accept the Cloudflare
-   and Supabase agreements as customer of record, accept the DPAs'
-   authority-to-bind warranties, and act as GDPR controller — and what consent
-   or court approval is required, if any (apparently Czech Civil Code
-   §§30–33)?
-2. Is this project plausibly "independent business/gainful activity" requiring
-   §33 court approval, or outside that provision?
-3. If an adult/guardian must be the counterparty, does Cloudflare SSSA
-   §2.2.1(a) permit that structure, or must the adult be the genuine customer
-   principal (with the technical operator under §2.3 third-party access)?
+1. Under each candidate structure (Q1-A/B/C/D), can the eventual accountable
+   party validly accept the Cloudflare and Supabase agreements as customer of
+   record, give the DPAs' authority-to-bind warranties **for themselves**, and
+   act as GDPR controller — and what consent or court approval does that path
+   require, if any (apparently Czech Civil Code §§30–37)?
+2. Is the planned activity plausibly "independent business/gainful activity"
+   requiring representative consent/court approval or trade registration (Czech
+   Civil Code §33, Trade Act 455/1991 §2/§3(1)(b)), or outside those provisions
+   — in particular for free, non-commercial operation (Q4.10–Q4.12)?
+3. If a structure with a different legal representative is chosen (Q1-A/Q1-B),
+   does Cloudflare SSSA §2.2.1(a) permit that structure, or must the
+   representative be the genuine customer principal (with the technical operator
+   under §2.3 third-party access)?
 4. In each permitted structure, **who is the GDPR controller**, who is the
    processor, and what legal instrument connects the parties? Does written
    documentation beyond the provider contracts exist/need creating?

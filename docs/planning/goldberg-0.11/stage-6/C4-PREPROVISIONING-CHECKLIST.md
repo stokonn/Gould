@@ -55,7 +55,7 @@ prepared 2026-10-21 · branch `docs/goldberg-0.11-stage-6-planning`**
 
 | ID | Item | Current state (verified 2026-10-21) | Status |
 |---|---|---|---|
-| SB-P1 | Terms of Service version/date; authority-to-bind clause; **no age clause anywhere** | "**Version 2 — May 6, 2026**" (footer: Last Modified **1 May 2026**), https://supabase.com/company/terms | ⚠ |
+| SB-P1 | Terms of Service version/date; authority-to-bind clause; **no age clause anywhere** | "**Version 2 — May 6, 2026**" (footer: Last Modified **1 May 2026**), https://supabase.com/terms (canonical URL as of 2026-10-21 reassessment — the older `/company/terms` path now returns 404) | ⚠ |
 | SB-P2 | DPA version + date; SCCs Module Two (Irish law) on acceptance; 30-day notice / **5-day** objection window; 48 h incident notice | **Version 1 — August 1, 2026**, https://supabase.com/legal/customer-resources/data-processing-addendum | ⚠ |
 | SB-P3 | Free plan limits: 500 MB DB, 5 GB egress, 5 GB cached egress, 1 GB storage, 50k MAU, 2 projects, 1 GB log ingestion; **pause after 1 week inactivity**; auth audit logs **1 h**, API/DB logs **1 day**; custom domains paid-only; no spend cap on Free | https://supabase.com/pricing | ⚠ |
 | SB-P4 | **Automatic backups: "Not included" on Free** vs DPA Schedule 1 "daily backups by default" — resolve the discrepancy; self-export (`db dump`) is the accepted mitigation; record honest RPO (ZERO-COST-OPS.md §4) | Pricing page vs DPA Schedule 1; backups docs | ⚠ + ❌ (C3 Q7) |
@@ -78,7 +78,7 @@ prepared 2026-10-21 · branch `docs/goldberg-0.11-stage-6-planning`**
 | X-3 | Google Terms age rule (parental permission for users under the account-management age) before any 6.0e Google OAuth console work | Effective **2026-07-30**, https://policies.google.com/terms | ⚠ (blocks 6.0e review) |
 | X-4 | Zero-cost assumption intact: Workers Free + Supabase Free + 0 CZK export path; **no paid plan, trial, billing method or upgrade anywhere** | Verified conceptually today; concrete confirmation at account setup (CF-P9, SB-P12) | ⚠ + ⬜ |
 | X-5 | If any item fails the free/legal assumption → **blocker report to owner**, never a silent substitution | Standing rule (D8b, AGENTS.md) | standing |
-| X-6 | **Re-retrieve official GDPR text (CELEX:32016R0679, Art. 4(7)/Art. 8)** — EUR-Lex fetch returned 0 bytes twice on 2026-10-21 (environment-blocked); needed for the professional review package, not for provisioning itself | Retrieval failed; re-try from another network or official mirror | ❌ not retrieved |
+| X-6 | **Re-retrieve official GDPR text (CELEX:32016R0679, Art. 4(7)/Art. 8)** — EUR-Lex fetch returned 0 bytes twice on 2026-10-21 (environment-blocked); **5 failed attempts total across 2026-10-21 sessions**; needed for the professional review package, not for provisioning itself | Retrieval failed; re-try from another network or official mirror. Q1 §1.5 currently relies on the **non-official** gdpr-info.eu mirror and says so explicitly — not a substitute for the official text | ❌ not retrieved |
 | X-7 | Czech Civil Code official **MoJ English** translation — official PDF failed TLS verification (curl exit 60) from this environment; authentic Czech text used instead | Re-obtain official English text if the professional reviewer needs it | ❌ not retrieved |
 
 ## D. Provisioning-day execution sequence (final C4 — run under separate owner instruction)
