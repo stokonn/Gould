@@ -112,3 +112,15 @@ fabricated.
 Explicitly NOT authorized by this approval: merging Stage 5 application code
 into `main`, tags, APK/release publication, cloud service provisioning, OAuth
 configuration, Stage 6/7 implementation. Each remains a separate owner decision.
+
+## Owner tracking correction — Issue #31 is the RELEASE umbrella, reopened (2026-10-21)
+
+The owner identified a tracking inconsistency: GitHub Issue #31 is the **umbrella issue for the entire Goldberg 0.11 release** (Stages 1–8), but it had been closed (and the GitHub Project item set to Done) when the **Stage 5** completion was approved. Because Stages 6–8 have not started, closing the release umbrella was incorrect.
+
+**Correction applied:**
+- Reopened Issue #31 (it stays **OPEN** as the release dashboard).
+- Set the umbrella GitHub Project item to **In Progress** (back from Done). **Stage 5 itself stays Done** in its stage checklist; no duplicate issue or project item was created.
+- Updated the Issue #31 description: master checklist now shows Stages 1–5 **complete**, Stages 6–8 **pending**, and **Goldberg 0.11 overall IN PROGRESS**; the stale Stage-5 "in-progress CI-attempt" status was replaced with the verified final results, while the historical audit trail (checkpoint comments, stages 1–4 summaries) is preserved unchanged.
+- Synchronized STATE/HANDOFF/VERIFICATION/DECISIONS + master checklist + this register.
+
+**Unchanged:** Stage 5 remains officially **COMPLETE and owner-approved**; it is NOT reopened or rerun. Still not authorized: merging application code, tags, releases/APK, cloud provisioning, OAuth, or Stage 6/7 implementation.

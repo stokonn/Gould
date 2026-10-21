@@ -322,3 +322,14 @@ Host gate executed this session (2026-10-20, desktop):
 - androidTest compile: **0 errors**; warnings: 7+ nullable `listFiles()` receivers (runner
   test), 1 pre-existing `Stage3bBackupTest` reified-type warning.
 - Installed-on-emulator app APK is stale (Oct 16) — reinstall fresh APKs before running tests.
+
+## Umbrella tracking correction (2026-10-21) — executed
+
+| # | Action | Result |
+|---|---|---|
+| 1 | `gh issue reopen 31` | Issue #31 **OPEN** (release umbrella; not Stage-5-only) |
+| 2 | Project item #31 → In Progress | **In Progress** (was Done; Stage 5 checklist stays Done) |
+| 3 | `gh issue edit 31 --body-file` | Description corrected: 1–5 complete / 6–8 pending / 0.11 IN PROGRESS |
+| 4 | Local docs sync | STATE/HANDOFF/VERIFICATION/DECISIONS + master checklist |
+
+No application code, tag, release/APK, cloud provisioning, OAuth or Stage 6/7 work was performed. Stage 5 remains COMPLETE + owner-approved and was not reopened or rerun.

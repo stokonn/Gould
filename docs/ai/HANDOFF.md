@@ -1,6 +1,10 @@
 # Goldberg 0.11 — Stage 5 HANDOFF (fresh-session resume instructions)
 
-> Created 2026-10-20; updated at the owner-approval close (2026-10-21).
+> Created 2026-10-20; updated at the umbrella tracking correction (2026-10-21).
+> **Umbrella tracking corrected:** Issue #31 is the release-wide 0.11 umbrella
+> (Stages 1–8), reopened and set to **In Progress** — it is NOT Stage-5-only and
+> must stay open until 0.11 ships. Stage 5 remains **COMPLETE + owner-approved**
+> and its checklist entry stays **Done**.
 > **STAGE 5 IS COMPLETE — owner-approved 2026-10-21** on the verified CI
 > evidence (5.10 run 39557624554; 5.11 run 6 + green screenshot run
 > 39576173002 + owner-dispositioned cost measurement; 5.12 host gate; 5.13

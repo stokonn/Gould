@@ -1,9 +1,14 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-21 — **STAGE 5 COMPLETE, OWNER-APPROVED** (owner
-> approved the completion claim based on the verified CI evidence, completed
-> checklist, archived screenshots and final documentation; GitHub Project item
-> #31 moved to Done). Carried-forward dependency: real bundle-transfer costs
+> **Last updated:** 2026-10-21 — **umbrella tracking corrected** + **STAGE 5
+> COMPLETE, OWNER-APPROVED.** Issue #31 is the **release-wide umbrella** (Stages
+> 1–8), NOT a Stage 5-only issue: it was reopened and the Project item set back to
+> **In Progress** so it stays open until all of 0.11 ships. Stage 5 itself remains
+> **COMPLETE + owner-approved** (verified CI evidence, completed checklist,
+> archived screenshots, final documentation); the Stage 5 checklist entry stays
+> **Done**. Goldberg 0.11 overall = **IN PROGRESS** (Stages 1–5 complete, Stages
+> 6–8 pending). Prior: owner approved the completion claim; Project had briefly
+> been set to Done. Carried-forward dependency: real bundle-transfer costs
 > against a production CDN await the Stage 6/7 bundle feed (no feed exists
 > today; DECISIONS.md). Prior: screenshot session — **all Stage 5 mandatory
 > verification requirements now have passing executed evidence.** Screenshot
@@ -25,7 +30,7 @@
 > `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → Issue #31.
 > **No merge/tag/release/APK publication performed.**
 
-## 🚦 Current status: **STAGE 5 COMPLETE — OWNER-APPROVED 2026-10-21** (5.10 ✓ / 5.11 ✓ incl. green screenshots / 5.12 ✓ / 5.13 ✓) — awaiting the owner's separate decision to merge application code / start Stage 6
+## 🚦 Current status: **GOLDBERG 0.11 IN PROGRESS — Stages 1–5 complete, 6–8 pending; Stage 5 COMPLETE + owner-approved** (5.10 ✓ / 5.11 ✓ incl. green screenshots / 5.12 ✓ / 5.13 ✓) — awaiting the owner's separate decision to merge application code / start Stage 6
 
 - **Attempt 6 ([run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
   @ `44645fa`, headSha + both jobs' `source-commit.txt` verified): CONCLUSION

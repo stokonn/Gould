@@ -1,6 +1,8 @@
 # Goldberg 0.11 — stage checklist (permanent, living document)
 
 Canonical policy: [AGENTS.md](../../../AGENTS.md) (§ "Stage checklist documentation").
+
+**Release status (2026-10-21): Goldberg 0.11 = IN PROGRESS.** Stages 1–5 complete (Stage 5 owner-approved); Stages 6–8 pending. The single umbrella issue [#31](https://github.com/stokonn/Goldberg/issues/31) tracks the whole release and stays **OPEN** until 0.11 ships (its GitHub Project item is **In Progress**); the Stage 5 entry below remains **Done**. Earlier it had been closed/set Done on Stage-5 approval — a tracking inconsistency corrected the same day (see DECISIONS.md).
 This checklist is synchronized continuously as work progresses. A stage is marked
 **complete** only after its verification section records checks that were actually
 executed and passed. Checkboxes without verified evidence must stay unchecked; checked
