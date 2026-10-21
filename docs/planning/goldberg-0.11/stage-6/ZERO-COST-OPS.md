@@ -2,21 +2,29 @@
 
 **Design only.** Applies the standing [CLOUD.md](../CLOUD.md) zero-cost operating
 contract (§"Zero-cost operating contract", "Export, recovery and security gates") to
-the concrete Stage 6 service. Nothing here is provisioned or scheduled yet.
+the concrete Stage 6 service. Nothing here is provisioned or scheduled yet. **Owner
+decisions (2026-10-21): Supabase Free with strict 0 CZK/month is approved (D4a), and
+inactivity suspension/quota limitations are explicitly accepted with graceful
+degradation and fail-closed behavior (D4b)** — the standing rules below are therefore
+binding requirements, not proposals.
 
 ## 1. Standing rules (restated, binding)
 
 1. Free plan/organization only; free provider subdomain only; **no trial that
    converts to billing, no paid add-ons, no automatic upgrade**. Supabase Pro's
-   spend cap is not a 0 CZK path (it has a fee).
+   spend cap is not a 0 CZK path (it has a fee). *(Owner-approved, D4a.)*
 2. Re-verify dashboard plan, organization membership and current terms
    **immediately before any future provisioning**.
-3. No fake keepalive traffic to evade inactivity policy (if Supabase is chosen and
-   pausing is accepted per D4b, pausing is resumed by the owner, deliberately).
-4. No published SLA; the app must treat this service as hobby-scale best-effort.
+3. No fake keepalive traffic to evade inactivity policy — pausing is accepted (D4b)
+   and is resumed by the owner, deliberately, from the dashboard.
+4. No published SLA; the app must treat this service as hobby-scale best-effort;
+   community features degrade gracefully and core local Goldberg functionality
+   remains operational whenever the backend is unavailable *(D4b)*.
 5. If Free terms change to require payment: **disable the optional service, export,
    prepare a separately reviewed migration** — never silently charge or silently
-   collect elsewhere.
+   collect elsewhere, and never switch backend/provider without a new owner decision.
+6. Privileged operator access (console, secrets, exports) must be **MFA-protected**
+   *(D8c)*; every grant/recovery action is audited.
 
 ## 2. Proposed budgets and warning/stop behavior
 

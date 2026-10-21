@@ -1,5 +1,11 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
+> **SUPERSESSION NOTE (2026-10-21, Stage 6 planning branch):** frozen historical
+> checkpoint from before Stage 5 completion. **Stage 5 is COMPLETE and owner-approved
+> (2026-10-21)** — CI runs 39557624554 (177/0/0/2) and 39576173002 (12/12 screenshots);
+> the authoritative record is on `feature/goldberg-0.11-stage-5` (completion commit
+> `736f6d3`). Everything below is retained as historical evidence only.
+
 > **Last updated:** 2026-10-20, CI-activation session (Phase A/B of the owner's CI plan;
 > approval gate reached — nothing dispatched or merged).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →

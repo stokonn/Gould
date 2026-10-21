@@ -9,24 +9,44 @@ Stage 6 is separately authorized.
 
 Status legend: ⬜ not started · 🚧 in progress · ✅ complete (verified)
 
-**Overall status: ⬜ not started — blocked on owner decisions D4/D5/D8
-([OPEN-DECISIONS.md](OPEN-DECISIONS.md)) and a separate implementation instruction.**
+**Overall status: ⬜ not started — owner decisions recorded 2026-10-21 (see
+[OPEN-DECISIONS.md](OPEN-DECISIONS.md)); implementation remains blocked on a
+separate owner instruction, the D8b zero-cost proof, and the remaining D5
+pre-launch gates.**
 
 ## Phase 0 — Decisions and provisioning (owner-gated)
 
-- **6.0a** Settle D4/D4b (backend + free-tier acceptance) — owner decision; planning
-  provides alternatives only. *Blocks: everything below.*
-- **6.0b** Settle D5a–D5g (operator/privacy/region/retention/licensing/audience) —
-  owner decision. *Blocks: provisioning, terms, public collection.*
-- **6.0c** Settle D8a–D8c (Admin packaging, web session flow, bootstrap) — owner
-  decision. *Blocks: Admin endpoint activation; not the API implementation itself.*
+- **6.0a** Settle D4/D4b (backend + free-tier acceptance). ✅ **Decision recorded
+  2026-10-21: Supabase Free approved; inactivity suspension/quotas accepted with
+  graceful degradation, fail-closed, strict 0 CZK** (OPEN-DECISIONS.md §1).
+- **6.0b** Settle D5a–D5g (operator/privacy/region/retention/licensing/audience).
+  🚧 **Partially settled 2026-10-21:** D5c (eu-central-1), D5f (general audience,
+  minimal data) and D5g (owner-only moderation, server-side audited grants) approved;
+  D5a provisional — **no contact email supplied or authorized for publication**;
+  D5b controller determination **deferred to pre-launch**; D5d principle approved
+  with **retention/deletion details unresolved**; D5e approved subject to pre-launch
+  legal review. *Remaining open items block: terms/privacy publication, retention
+  jobs, `DELETE /v1/me`, public collection.* (OPEN-DECISIONS.md §2.)
+- **6.0c** Settle D8a–D8c (Admin packaging, web session flow, bootstrap).
+  ✅ **Decisions recorded 2026-10-21** — D8a in-app Android Admin (no separate APK);
+  D8b BFF session architecture **approved conditionally** (the zero-cost BFF
+  hosting/runtime proof below remains a hard pre-implementation gate; do not silently
+  substitute another architecture); D8c console bootstrap/recovery with MFA-protected
+  operator access. (OPEN-DECISIONS.md §3.)
 - **6.0d** Provision the chosen Free-tier backend under a **separate explicit owner
-  instruction**: project, database, auth provider config, region per D5c, secrets in
-  server-side secrets only, kill switch, export target. No billing path enabled.
+  instruction**: project, database, auth provider config, region per D5c **including
+  its verification list** (availability, residency, transfers, DPA, subprocessors),
+  secrets in server-side secrets only, kill switch, export target. No billing path
+  enabled. ⬜ not started.
 - **6.0e** Configure Google OAuth console (redirect/origin allowlists, client IDs)
-  per AUTH.md — separately authorized, real credentials never committed.
+  per AUTH.md — separately authorized, real credentials never committed. ⬜ not
+  started.
+- **6.0f** **D8b pre-implementation gate:** prove the selected BFF hosting/runtime
+  fits the permanent 0 CZK/month requirement including actual Free-tier limitations.
+  If unprovable, report the blocker and request an owner decision — do not replace
+  the approved architecture silently. ⬜ not started.
 
-- [ ] 6.0a [ ] 6.0b [ ] 6.0c [ ] 6.0d [ ] 6.0e
+- [x] 6.0a [ ] 6.0b [x] 6.0c (D8b proof gate 6.0f still open) [ ] 6.0d [ ] 6.0e [ ] 6.0f
 
 ## Phase 1 — Server core (implementable locally before provisioning)
 
@@ -94,7 +114,13 @@ Status legend: ⬜ not started · 🚧 in progress · ✅ complete (verified)
 
 - 2026-10-21 — Planning documentation prepared on
   `docs/goldberg-0.11-stage-6-planning` (this directory + additive checklist/decisions/
-  handoff/stages updates). **Uncommitted, awaiting owner approval. No implementation,
-  no provisioning, no cloud/OAuth, no code.**
+  handoff/stages updates). No implementation, no provisioning, no cloud/OAuth, no code.
+- 2026-10-21 — **Owner architecture decision review completed**; outcomes recorded in
+  [OPEN-DECISIONS.md](OPEN-DECISIONS.md) and synchronized across README/ARCHITECTURE/
+  AUTH/DATA-MODEL/API-CONTRACTS/THREAT-MODEL/ZERO-COST-OPS/STAGE-CHECKLIST/docs-ai
+  (documentation-only commit on this branch). Decision tasks 6.0a/6.0c recorded as
+  settled; 6.0b remains partially open (D5a/D5b/D5d details + pre-launch reviews);
+  the new 6.0f D8b zero-cost proof gate was added. **No implementation, no
+  provisioning, no OAuth configuration, no code, no cloud resources.**
 
 created by stokonn with love <3

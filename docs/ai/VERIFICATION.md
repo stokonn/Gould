@@ -1,5 +1,11 @@
 # Goldberg 0.11 — Stage 5 VERIFICATION ledger
 
+> **NOTE (2026-10-21, Stage 6 planning branch):** frozen historical ledger from before
+> Stage 5 completion. Stage 5 is COMPLETE and owner-approved (2026-10-21); the final
+> executed/not-executed record (incl. runs 39557624554 and 39576173002) lives on
+> `feature/goldberg-0.11-stage-5`. Rows below are retained unchanged as historical
+> evidence — no row was edited, added or removed here.
+
 Honest executed vs not-executed record. Only rows marked **EXECUTED** were actually run.
 
 ## Executed — CI activation session (2026-10-20, fourth session, desktop host)

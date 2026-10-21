@@ -44,7 +44,7 @@ errors (baseline rule kept). Retries never create a second publication.
 | `POST /v1/session` | Google credential (body) | Verify (AUTH.md §2), mint session; returns session token + minimal `{principalId, displayName?, roles[]}`. |
 | `DELETE /v1/session` | session | Immediate server-side revocation; idempotent. |
 | `GET /v1/me/capabilities` | session | Server-computed capability list for this principal (convenience for UI; **never** an authorization source). |
-| `DELETE /v1/me` | session | Reserved for D5d account-deletion flow; not implemented until D5d resolved. |
+| `DELETE /v1/me` | session | Reserved for the D5d account-deletion flow; principle approved 2026-10-21, **not implemented until the D5d retention/deletion details are settled** (OPEN-DECISIONS.md §2). |
 
 ## 4. Contribution endpoints (contributor)
 

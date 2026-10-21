@@ -1,5 +1,12 @@
 # Goldberg 0.11 — Stage 5 HANDOFF (fresh-session resume instructions)
 
+> **SUPERSESSION NOTE (2026-10-21, Stage 6 planning branch):** the Stage 5 content
+> below is a frozen historical checkpoint from before Stage 5 completion. **Stage 5 is
+> now COMPLETE and owner-approved (2026-10-21)** — the resume steps below are obsolete
+> and must not be executed; the authoritative Stage 5 record lives on
+> `feature/goldberg-0.11-stage-5` (completion commit `736f6d3`, head `32cf5d9`) and the
+> canonical `STAGE-CHECKLIST.md`. See the additive note at the end of this file.
+
 > Created 2026-10-20; updated at the end of the third resume session (desktop machine).
 > Stage 5 is **in progress, incomplete**. The branch HEAD is a checkpoint commit on top of
 > `54f2b45`, pushed to origin as an owner-authorized IN-PROGRESS checkpoint. Nothing was
@@ -127,9 +134,30 @@ Notebook (for 5.10/5.11): Arch Linux, Java 17, emulator 37.2.12, AVD `stage5-api
 Added on the isolated `docs/goldberg-0.11-stage-6-planning` branch only; the Stage 5
 branch/tree was not modified by this work. Stage 6 (community backend) **planning
 documentation** is prepared at `docs/planning/goldberg-0.11/stage-6/` (10 documents +
-additive STAGE-CHECKLIST/STAGES/DECISIONS/HANDOFF updates), **uncommitted pending
-owner approval**. Stage 6 implementation is NOT started and stays blocked on owner
-decisions D4/D5/D8 and a separate instruction. Nothing above in this handoff changes;
-5.10–5.13 remain the open Stage 5 tasks with the same resume steps.
+additive STAGE-CHECKLIST/STAGES/DECISIONS/HANDOFF updates), committed and pushed on
+that branch.
+
+**Update (2026-10-21, same day — owner decision review completed):** the owner settled
+the Stage 6 design decisions. Supabase Free + strict 0 CZK + graceful denial/fail-closed
+(D4a/D4b), Frankfurt region (D5c), general-audience moderation with minimal data
+(D5f/D5g), in-app Android Admin (D8a) and console bootstrap with MFA (D8c) are
+**approved**; the Web Admin BFF (D8b) is **approved conditionally** on proving its
+zero-cost fit before implementation; D5a is a provisional preference with **no
+supplied contact** and D5b/D5d details plus D5e/D5f legal reviews are **deferred to
+pre-launch gates**. Full outcomes: `docs/planning/goldberg-0.11/stage-6/OPEN-DECISIONS.md`
+and `docs/ai/DECISIONS.md`.
+
+**Stage 5 reconciliation:** this branch was cut before Stage 5 completion, so its
+copies of STAGE-CHECKLIST/STATE/HANDOFF carried stale "Stage 5 in progress" text. The
+canonical checklist on this branch now records **Stage 5 ✅ complete, owner-approved
+2026-10-21** (CI runs 39557624554 + 39576173002, 12/12 screenshots; real-CDN transfer
+measurements preserved as a future integration dependency) and points to the Stage 5
+branch as the authoritative record. **Stage 5 was not reopened, rerun or modified** —
+no Stage 5 code or evidence was touched.
+
+**Stage 6 implementation is still NOT started and remains blocked** on a separate
+implementation instruction, the D8b zero-cost proof (new task 6.0f), the remaining D5
+pre-launch gates, and separately authorized provisioning (6.0d) / OAuth console setup
+(6.0e). Nothing above in the Stage 5 handoff changes.
 
 created by stokonn with love <3

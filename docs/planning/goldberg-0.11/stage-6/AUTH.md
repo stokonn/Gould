@@ -2,10 +2,11 @@
 
 **Design only, no implementation.** Extends the canonical authentication boundary in
 [COMMUNITY-ADMIN.md](../COMMUNITY-ADMIN.md) §"Authentication boundary" with
-implementation-ready specifics. Which variant applies depends on D4/D8
-([OPEN-DECISIONS.md](OPEN-DECISIONS.md)); the invariants below hold for **both**
-candidates. No custom cryptographic primitives are designed here — only composition
-of platform primitives and audited libraries.
+implementation-ready specifics. **Owner decisions (2026-10-21): Supabase Free is the
+approved backend (D4a); the BFF browser flow is approved conditionally (D8b, §5);
+out-of-band console bootstrap is approved (D8c, §7)** ([OPEN-DECISIONS.md](OPEN-DECISIONS.md));
+the invariants below hold regardless. No custom cryptographic primitives are designed
+here — only composition of platform primitives and audited libraries.
 
 ## 1. Identity
 
@@ -69,19 +70,25 @@ integration test plan (THREAT-MODEL.md T2).
 - Offline draft editing never authorizes publishing (drafts are device-local until
   an authenticated explicit submit).
 
-## 5. Browser (Web Admin) security — pending D8b
+## 5. Browser (Web Admin) security — D8b: BFF approved conditionally (2026-10-21)
 
-Two candidate flows; **D8b unresolved**:
+**Owner decision (2026-10-21): the BFF flow is APPROVED CONDITIONALLY** for the Web
+Admin (OPEN-DECISIONS.md §3):
 
-- **BFF (recommended proposal):** same-origin `HttpOnly; Secure; SameSite=Strict`
+- **BFF (approved direction):** same-origin `HttpOnly; Secure; SameSite=Strict`
   session cookie + CSRF token on every state-changing request; the tiny static
   frontend never sees a bearer token; server-side session table as above. Strongest
   XSS posture; requires the small backend to serve the session endpoints.
-- **Static SPA + managed auth:** tokens in memory/bounded persistence, CSP
-  mandatory, explicit XSS threat tests; must not pretend to have HttpOnly
-  credential storage (COMMUNITY-ADMIN.md prohibition).
+- **Conditional gate — before any implementation:** prove that the selected BFF
+  hosting/runtime fits the permanent **0 CZK/month** requirement, including actual
+  Free-tier limitations. If the zero-cost condition cannot be proven, **report the
+  blocker and request an owner decision — do not silently replace the approved
+  architecture** (CHECKLIST.md 6.0c/D8b gate).
+- The static-SPA alternative is **not selected** and must not be substituted without
+  a new owner decision (it must never pretend to have HttpOnly credential storage —
+  COMMUNITY-ADMIN.md prohibition).
 
-Shared browser requirements for either flow: exact redirect/origin allowlists
+Shared browser requirements: exact redirect/origin allowlists
 (no wildcards), `state`+PKCE where applicable, nonce, CSRF protection, strict CSP
 (`default-src 'self'`; no inline script), no tokens in `localStorage` for the BFF
 flow, CORS restricted to the one admin origin, referrer-policy and frame-ancestors
@@ -92,7 +99,10 @@ configuration.
 
 Roles exactly as in [COMMUNITY-ADMIN.md](../COMMUNITY-ADMIN.md) §"Roles and server
 data": public reader, authenticated contributor, moderator, administrator,
-deployment operator. Contract details:
+deployment operator. **Owner decision D5g (2026-10-21): moderation starts
+owner-only** — the moderator/administrator grant paths below must exist and be
+secure from day one so moderators can be added or revoked later, but no moderator
+is seeded at launch. Contract details:
 
 - Authorization is **capability-based per endpoint**, resolved from trusted
   `role_grants` rows — never from client-supplied claims, user-editable metadata or
@@ -108,13 +118,17 @@ deployment operator. Contract details:
 - Suspension blocks writes immediately and reads per policy; it is a
   `principals.state` check, not a role deletion, so audit history stays intact.
 
-## 7. Admin bootstrap and recovery (pending D8c)
+## 7. Admin bootstrap and recovery — D8c approved (2026-10-21)
+
+**Owner decision (2026-10-21): the out-of-band console procedure below is APPROVED**
+(OPEN-DECISIONS.md §3), with an added requirement: **privileged operator access must
+be MFA-protected**, and every grant/recovery action must be auditable.
 
 - **No pre-created trusted administrator identities may be invented.** At
   provisioning time (a future, separately authorized step) the deployment operator
   performs an out-of-band grant: the owner signs in with their own Google account
   through the normal flow, and the operator inserts the first
-  `role_grants (principal, 'administrator')` row directly in the provider console,
+  `role_grants (principal, 'administrator')` row directly in the **Supabase Console**,
   recording the grant in the audit log.
 - Recovery (lost admin access): the same out-of-band console path re-grants to a
   verified subject; no emailed magic links, no support-ticket identity proofing, no

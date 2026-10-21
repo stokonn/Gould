@@ -24,8 +24,10 @@ paid service, real user data or real Google credentials — synthetic identities
   server code with an in-process/local database, fake clock and synthetic JWKS —
   the majority of the matrix.
 - **[I] Integration, later separately approved:** needs a provisioned Free-tier
-  project + real Google OAuth console (requires D4/D5/D8 settled + explicit owner
-  provisioning instruction). Never run without that approval.
+  project + real Google OAuth console (backend/region decisions now settled —
+  D4a/D4b/D5c 2026-10-21 — but provisioning still requires an explicit owner
+  instruction, and D5a/D5b/D5d pre-launch gates still apply before any real-user
+  collection). Never run without that approval.
 
 ## 3. Adversarial acceptance matrix
 

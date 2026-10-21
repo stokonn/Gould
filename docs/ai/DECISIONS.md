@@ -48,22 +48,54 @@ scope for Stage 5.
 
 See `docs/ai/STATE.md` for the full investigation record of both findings.
 
-## Stage 6 pointer (added 2026-10-21 on the Stage 6 planning branch)
+## Stage 6 pointer (added 2026-10-21 on the Stage 6 planning branch; updated same day)
 
 Stage 6 (secured optional community backend) planning is prepared at
-`docs/planning/goldberg-0.11/stage-6/`. This file does not change any decision above.
+`docs/planning/goldberg-0.11/stage-6/`. This file does not change any Stage 5 decision
+above.
 
-- **D4/D5/D8 remain UNRESOLVED owner decisions.** The complete alternatives,
-  trade-offs, security implications and planning recommendations are in
-  `stage-6/OPEN-DECISIONS.md`. The Supabase Free moderation-only pilot is a
-  **proposal, not an approved backend selection**; Workers+D1 stays an unproven
-  alternative; deferral/no-backend remains a legitimate outcome.
-- Owner-approved on 2026-10-21: Stage 6 documentation preparation only
-  (10 documents + additive checklist/STAGES/DECISIONS/HANDOFF updates on the isolated
-  `docs/goldberg-0.11-stage-6-planning` branch). Explicitly **not** approved yet:
-  implementation, provisioning, real Google OAuth configuration, commit/push (pending
-  review), D4/D5/D8 finalization.
-- No identity, controller contact, legal or credential data was invented; privacy,
-  retention, licensing, audience/age safeguards and account deletion are recorded as
-  explicit unresolved decisions requiring joint owner review before any collection.
-- No legal compliance is claimed; free hosting is not proof of compliance.
+- **Owner architecture decision review COMPLETED 2026-10-21.** Outcomes recorded in
+  `stage-6/OPEN-DECISIONS.md` (the authoritative register) and synchronized across
+  the Stage 6 package:
+  - **APPROVED:** D4a Supabase Free (one optional backend, strict 0 CZK/month, no
+    paid plans/trials/auto-upgrades/billing escalation); D4b accept Free-tier
+    inactivity suspension and quota limits — community features degrade gracefully,
+    core local functionality stays operational, fail closed when unavailable;
+    D5c Supabase region Frankfurt `eu-central-1` (verify availability, residency,
+    transfers, DPA, subprocessors before provisioning; EU hosting ≠ all-processing-
+    in-EU guarantee); D5f general-audience moderated community (no DMs, no public
+    profiles, no unnecessary birth-date/age collection, public browsing without
+    login, moderated contributions); D5g owner-only moderation initially with
+    server-side authorized + audited grants/decisions, no self-approval;
+    D8a Android Admin integrated in the existing app (four tabs preserved, hidden UI
+    is not a security boundary, no separate Admin APK); D8c manual Supabase-console
+    admin bootstrap after account verification, MFA-protected privileged operator
+    access, audited grant/recovery, controlled out-of-band recovery.
+  - **APPROVED CONDITIONALLY:** D8b Web Admin BFF (same-origin HttpOnly/Secure/
+    SameSite=Strict cookies, server-side authz/session revocation/CSRF, strict CSP,
+    no privileged bearer tokens in browser JS) — **before implementation, prove the
+    0 CZK fit of the chosen BFF hosting/runtime; otherwise report the blocker and
+    request an owner decision — never silently replace the architecture.**
+  - **PROVISIONAL:** D5a personal contact email is the intended public contact, but
+    **no address was supplied or authorized — do not invent/expose/request/publish
+    contact data**; verify legally required controller identification before launch.
+  - **DEFERRED / DETAILS PENDING:** D5b controller/operator determination before
+    public launch (privacy-by-design and minimization meanwhile; no GDPR-compliance
+    claim; no real-user collection; account for requirements concerning a minor
+    project owner); D5d principle approved (preserve legitimately published
+    non-personal catalogue data, minimize/erase account-linked personal data,
+    support account deletion) but retention periods and deletion semantics remain
+    unresolved — invent no periods, claim no legal approval; D5e licensing (CC0
+    structured metadata / CC BY-SA 4.0 contributor text) approved subject to
+    pre-launch legal review — no automatic relicensing of Wikipedia/third-party
+    prose; field-level provenance preserved.
+- Owner-approved on 2026-10-21: Stage 6 documentation preparation **and** the
+  decision-review documentation synchronization (documentation-only commits on
+  `docs/goldberg-0.11-stage-6-planning`). Explicitly **still not authorized**:
+  implementation, provisioning, Google OAuth configuration, public launch/collection.
+- Stage 5 is complete and owner-approved (2026-10-21) on
+  `feature/goldberg-0.11-stage-5` (completion commit `736f6d3`); the stale Stage 5
+  "in progress" references on this planning branch were reconciled additively without
+  touching Stage 5 code or evidence.
+- No identity, controller contact, legal or credential data was invented; no legal
+  compliance is claimed; free hosting is not proof of compliance.

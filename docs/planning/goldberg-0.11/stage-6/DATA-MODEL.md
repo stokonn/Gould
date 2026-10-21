@@ -121,10 +121,17 @@ Rules:
 - Conversely, the app never writes journal rows to the backend; the network layer
   for community features accepts only the typed submission objects (regression test
   target: assert request bodies against the schema allowlist).
-- Deletion/pseudonymization shapes (pending D5d): deleting a principal detaches
-  identity from contributions (`principal → deleted`), keeps approved attribution
-  pseudonymized if the contribution license requires, or removes attribution
-  entirely where legally chosen — the exact shape is an owner decision before any
-  collection, and the API reserves `DELETE /v1/me` to implement it.
+- Deletion/pseudonymization shapes (**D5d, principle approved 2026-10-21, details
+  pending**): the owner approved preserving legitimately published non-personal
+  catalogue data where rights and applicable law permit, minimizing and appropriately
+  erasing account-linked personal data, and supporting account deletion. Deleting a
+  principal detaches identity from contributions (`principal → deleted`), keeps
+  approved attribution pseudonymized if the contribution license requires, or removes
+  attribution entirely where legally chosen. **Specific retention periods for
+  pending/rejected contributions, audit records and backups remain unresolved**, as do
+  attribution requirements, pseudonymization vs anonymization, legal exceptions and
+  deletion semantics — all subject to pre-launch legal review (OPEN-DECISIONS.md §2).
+  The API reserves `DELETE /v1/me` until those details are settled; **no retention
+  period may be invented and no legal approval may be claimed**.
 
 created by stokonn with love <3

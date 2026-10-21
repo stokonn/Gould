@@ -3,8 +3,9 @@
 **Design only.** Defines what the Stage 7 Part B Android/Web Admin clients may rely
 on once Stage 6 is implemented and verified, and what they must never assume. The
 Stage 7 planning branch (`docs/goldberg-0.11-stage-7-planning`) is **not modified**
-by this document; Stage 7 Part A (six-screen UX) has no Stage 6 dependency and
-remains gated only on Stage 5.
+by this document; Stage 7 Part A (six-screen UX) has no Stage 6 dependency — its
+Stage 5 prerequisite is complete (owner-approved 2026-10-21) — but starting Stage 7
+itself still requires a separate owner instruction.
 
 ## 1. What Stage 6 will deliver to Stage 7
 
@@ -72,10 +73,11 @@ not silently resolved**.
 |---|---|
 | API contract freeze (6.17) | ⬜ not started |
 | Verified threat matrix (6.12–6.14) | ⬜ not started |
-| D8a (Android packaging) / D8b (web session) / D8c (bootstrap) | ⬜ unresolved owner decisions |
-| Provisioned+authorized backend for live integration | ⬜ blocked on D4/D5 + explicit owner instruction |
+| D8a (Android packaging: in-app, no separate APK) / D8b (BFF session — approved conditionally; zero-cost BFF proof 6.0f still open) / D8c (console bootstrap, MFA operator) | ✅ owner decisions recorded 2026-10-21; D8b proof gate open |
+| Provisioned+authorized backend for live integration | ⬜ backend decided (Supabase Free, D4a) but provisioning still requires an explicit owner instruction + D5c verification; D5a/D5b/D5d pre-launch gates open |
 
 Stage 7 Part B cannot start before this handoff is satisfied with executed evidence.
-Stage 7 Part A remains independent (Stage 5-gated only).
+Stage 7 Part A remains independent of Stage 6 (its Stage 5 prerequisite is complete;
+starting Stage 7 still needs a separate owner instruction).
 
 created by stokonn with love <3

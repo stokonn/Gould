@@ -1,11 +1,13 @@
 # Goldberg 0.11 — Stage 6: Secured Optional Community Backend — PLANNING PROPOSAL
 
-Status: **planning prepared, unimplemented, awaiting owner decisions D4/D5/D8 and a
-separate Stage 6 implementation instruction.** Prepared 2026-10-21 as an
-owner-approved documentation-only deliverable on the isolated
-`docs/goldberg-0.11-stage-6-planning` branch (based on Stage 5 checkpoint `bcd8894`).
-No application code, cloud account, infrastructure, billing or OAuth configuration was
-created, changed or provisioned. No backend exists; nothing in this directory is deployed.
+Status: **planning prepared and owner decision review completed (2026-10-21);
+unimplemented, awaiting a separate Stage 6 implementation instruction.** The owner
+settled the design decisions D4/D5/D8 on 2026-10-21 (outcomes recorded in
+[OPEN-DECISIONS.md](OPEN-DECISIONS.md)); several **legal/operational details and
+pre-launch gates remain open**, and **provisioning, OAuth configuration and the
+implementation tasks themselves are separately gated**. No application code, cloud
+account, infrastructure, billing or OAuth configuration was created, changed or
+provisioned. No backend exists; nothing in this directory is deployed.
 
 Canonical policy: [AGENTS.md](../../../../AGENTS.md). Stage register:
 [STAGES.md](../STAGES.md). Living checklist: [STAGE-CHECKLIST.md](../STAGE-CHECKLIST.md).
@@ -40,8 +42,9 @@ documentation extends the baseline, it does so additively and cites it.
 - Adversarial threat model and acceptance matrix, split into locally-runnable and
   later-integration test venues.
 - Zero-cost operations, monitoring, export/restore and kill-switch procedures.
-- Open-decision register for D4/D5/D8 with alternatives, trade-offs and
-  recommendations (decisions themselves remain **owner calls, unresolved**).
+- Open-decision register for D4/D5/D8 with alternatives, trade-offs and the
+  **owner's 2026-10-21 decision outcomes** (approved / provisional / deferred /
+  conditionally approved) plus the remaining gates.
 - Stage 6 → Stage 7 handoff contract.
 
 ## 3. Out of scope (hard non-goals)
@@ -69,10 +72,10 @@ documentation extends the baseline, it does so additively and cites it.
 |---|---|---|
 | Stage 2 typed identities + provenance contracts | ✅ verified (Stage 2/3A/4) | Submissions map to catalogue UUIDs; expectedRevision semantics reuse catalogue revisions. |
 | Stage 4 catalogue store/provenance | ✅ verified | Published overlay reads reuse typed result envelopes and rights/attribution rules. |
-| Stage 5 offline bundle boundaries | 🚧 in progress (5.10–5.13 open) | No code dependency; published overlay must degrade gracefully offline (cache is Stage 5's concern only). |
-| Owner decision **D4** (backend + free-tier acceptance) | ⬜ unresolved | Blocks provisioning and all server implementation. |
-| Owner decision **D5** (operator/privacy/retention/licensing/audience) | ⬜ unresolved | Blocks public collection, OAuth console setup and terms publication. |
-| Owner decision **D8** (Admin packaging, web session flow, bootstrap) | ⬜ unresolved | Blocks Admin-client activation; API contracts here are client-agnostic meanwhile. |
+| Stage 5 offline bundle boundaries | ✅ complete (owner-approved 2026-10-21; real-CDN transfer measurements preserved as a future integration dependency) | No code dependency; published overlay must degrade gracefully offline (cache is Stage 5's concern only). |
+| Owner decision **D4** (backend + free-tier acceptance) | ✅ decided 2026-10-21 — Supabase Free, graceful denial, fail closed, strict 0 CZK | Provisioning and all server implementation remain gated on a separate owner instruction. |
+| Owner decision **D5** (operator/privacy/retention/licensing/audience) | 🚧 partially decided 2026-10-21 — D5c/D5f/D5g approved; D5a provisional; D5b/D5d details deferred to pre-launch review | Blocks public collection, privacy/terms publication; D5c verification list gates provisioning. |
+| Owner decision **D8** (Admin packaging, web session flow, bootstrap) | 🚧 decided 2026-10-21 with a condition — D8a/D8c approved; D8b BFF approved **conditionally** on proving the 0 CZK fit before implementation | Admin-client direction is fixed; D8b proof is a pre-implementation gate. |
 | Stage 7 Part B (Admin clients) | ⬜ gated on this stage | Consumes `API-CONTRACTS.md` + `HANDOFF-STAGE7.md`. |
 
 ## 5. Document map
@@ -92,14 +95,20 @@ documentation extends the baseline, it does so additively and cites it.
 ## 6. Status
 
 - **Done (planning):** this directory, plus additive Stage 6 sections in
-  `STAGE-CHECKLIST.md`, `STAGES.md` (reconciliation note), `docs/ai/DECISIONS.md` and
-  `docs/ai/HANDOFF.md` — applied on this isolated branch, **uncommitted, awaiting
-  owner commit approval**.
+  `STAGE-CHECKLIST.md`, `STAGES.md` (reconciliation notes), `docs/ai/DECISIONS.md` and
+  `docs/ai/HANDOFF.md` — committed and pushed on
+  `docs/goldberg-0.11-stage-6-planning`; the owner's decision review was recorded in a
+  follow-up documentation commit (2026-10-21).
+- **Owner decisions (2026-10-21):** D4a/D4b, D5c, D5f, D5g, D8a and D8c approved;
+  D8b approved conditionally (zero-cost BFF proof required before implementation);
+  D5a provisional (no contact supplied — nothing may be published); D5b/D5d details
+  deferred to pre-launch review. Full outcomes and remaining gates:
+  [OPEN-DECISIONS.md](OPEN-DECISIONS.md).
 - **Not started:** every Stage 6 implementation task (6.1–6.18 in `CHECKLIST.md`),
   provisioning, OAuth configuration, integration environments. No backend code, no
   cloud resources, no credentials exist.
-- **Authorization:** commits, pushes, GitHub sync, provisioning and implementation all
-  require explicit owner approval after the D4/D5/D8 review described in
-  [OPEN-DECISIONS.md](OPEN-DECISIONS.md).
+- **Still requires explicit owner approval:** implementation start, provisioning
+  (6.0d), Google OAuth console configuration (6.0e), and opening the service to real
+  contributors (pre-collection gate, OPEN-DECISIONS.md §5).
 
 created by stokonn with love <3

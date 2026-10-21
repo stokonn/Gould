@@ -163,10 +163,21 @@ persistent-table equality; real process death ×4 boundaries PASS; APK SHA-256
 
 ## Stage 5 — Offline bundles and Smart Cache 2.0
 
-**Status: 🚧 in progress.** Branch `feature/goldberg-0.11-stage-5`, baseline Stage 4 verified
-head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkManager
+**Status: ✅ complete — owner-approved 2026-10-21.** Branch `feature/goldberg-0.11-stage-5`,
+baseline Stage 4 verified head `99ea73a`; completion commit `736f6d3` (owner approval) on
+head `32cf5d9`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkManager
 (owner-mandated), D7 storage caps + per-job metered consent, D5.6 test-only org.json
-(see `docs/ai/DECISIONS.md`). No release/merge/tag authorized.
+(see `docs/ai/DECISIONS.md`). Verified evidence: emulator regression CI run
+[39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
+(177 instrumentation tests / 0 failures / 0 errors / 2 designed skips) and screenshot
+CI run [39576173002](https://github.com/stokonn/Goldberg/actions/runs/39576173002)
+(12/12 required screenshots captured and inspected). **Limitation preserved by owner
+disposition:** real production-CDN bundle-transfer measurements remain a future
+integration dependency (no bundle feed exists; must be re-measured when it ships —
+no numbers fabricated). The authoritative Stage 5 completion record (full executed
+ledger, evidence bundles under `stage-5/results/`, final verification detail) lives on
+the Stage 5 branch; **this Stage 6 planning branch does not repeat it and Stage 5 is
+not reopened here.** No release/merge/tag authorized.
 
 - **Purpose:** Let users keep encyclopedia/media content available offline through
   explicitly pinned, rights-complete bundles: durable file-based manifests, a
@@ -190,12 +201,22 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
 - [x] 5.7 Pipeline runner: QUEUED→READY with durable PAUSED/WAITING/FAILED_RETRYABLE/QUARANTINED outcomes (BundleJobRunner.kt) — instrumentation tests written.
 - [x] 5.8 WorkManager scheduler + worker: unique work per `bundleId:revision`, UNMETERED unless per-job consent, revoke/grant/cancel, startup reconciliation (BundleScheduler.kt, BundleDownloadWorker.kt).
 - [x] 5.9 `OpusApplication` lazy wiring + startup reconcile + hermetic test seams.
-- [ ] 5.10 Execute `Stage5*Test` instrumentation on an explicitly identified emulator (store I/O, runner pipeline, real WorkManager execution/cancel/reconcile).
-- [ ] 5.11 Emulator acceptance: Wi-Fi→mobile transition, Data Saver, consent revocation mid-stream, real process death at boundaries, low disk, seeded in-place upgrade from trusted 0.10.1, disk/network cost measurements.
-- [ ] 5.12 Full host gate re-run + `scripts/check_*.py` (migrations/backup/localization/paging/policy).
-- [ ] 5.13 Update `docs/ai/*` (STATE/VERIFICATION/HANDOFF/DECISIONS), reviewed commit, push to Stage 5 branch, verified evidence to GitHub Issue #31 + Project. No merge/tag/release/APK publication; Stage 6 not started.
+- [x] 5.10 Execute `Stage5*Test` instrumentation on an explicitly identified emulator (store I/O, runner pipeline, real WorkManager execution/cancel/reconcile). — **COMPLETE (owner-approved 2026-10-21): CI run 39557624554 (attempt 6), 177 tests / 0 failures / 0 errors / 2 designed skips.**
+- [x] 5.11 Emulator acceptance: Wi-Fi→mobile transition, Data Saver, consent revocation mid-stream, real process death at boundaries, low disk, seeded in-place upgrade from trusted 0.10.1, disk/network cost measurements. — **COMPLETE: every item has executed passing evidence (run 39557624554 + instrumentation); screenshots run 39576173002 GREEN 12/12 (Ivory/Nocturne × six screens, pair-by-pair inspected). Disk/network costs: executed byte accounting + real file I/O recorded; real-CDN transfer measurements owner-dispositioned as a future integration dependency (no bundle feed exists).**
+- [x] 5.12 Full host gate re-run + `scripts/check_*.py` (migrations/backup/localization/paging/policy). — **COMPLETE: host gate BUILD SUCCESSFUL, unit tests 174/0/0/0, lint 0 errors / 110 pre-existing warnings; all 5 check scripts PASS.**
+- [x] 5.13 Update `docs/ai/*` (STATE/VERIFICATION/HANDOFF/DECISIONS), reviewed commit, push to Stage 5 branch, verified evidence to GitHub Issue #31 + Project. No merge/tag/release/APK publication; Stage 6 not started. — **COMPLETE: docs synchronized, evidence bundles committed, Issue #31 checkpoints posted, only workflow files merged to main (PRs #35–#38); no application code merged, no tag/release/APK publication.**
 
-**Verification (executed so far, 2026-10-20 sessions):**
+**Verification (executed so far, 2026-10-20 sessions — HISTORICAL mid-progress log,
+retained as audit trail):**
+
+> **Reconciliation note (2026-10-21, Stage 6 planning branch):** this log was frozen
+> mid-Stage-5 when this branch was cut (`bcd8894`). It is kept unchanged as historical
+> evidence. The **authoritative final** Stage 5 verification record — including the
+> green CI runs 39557624554 (177/0/0/2) and 39576173002 (12/12 screenshots), the
+> root-cause triage of the earlier failed runs and the owner-approved completion
+> (2026-10-21) — lives on `feature/goldberg-0.11-stage-5` (completion commit `736f6d3`,
+> head `32cf5d9`) in its `docs/ai/*` files, `STAGE-CHECKLIST.md` and
+> `docs/planning/goldberg-0.11/stage-5/results/`. Nothing here supersedes that record.
 
 - Checkpoint #5 host gate (`clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug`) BUILD SUCCESSFUL; **146 tests / 0 failures**; lint **0 errors** (109 warnings).
 - After 5.5–5.9 implementation: `compileDebugKotlin` BUILD SUCCESSFUL; `testDebugUnitTest` **174 tests / 0 failures** (28 new scheduler/engine/job tests).
@@ -299,29 +320,61 @@ Mark ✅ only when all of the above have executed-passed evidence.
 
 ## Stage 6 — Secured optional community backend
 
-**Status: ⬜ planning prepared, implementation not started (2026-10-21).** The detailed
-implementation-ready plan lives in [stage-6/](stage-6/README.md) (architecture,
-auth, data model, API contracts, threat model, zero-cost ops, open decisions,
-handoff); the authoritative task list is [stage-6/CHECKLIST.md](stage-6/CHECKLIST.md)
-— every task there is unchecked. Implementation requires a separate owner instruction
-**and** settled owner decisions D4/D5/D8 ([stage-6/OPEN-DECISIONS.md](stage-6/OPEN-DECISIONS.md)).
-No provisioning, no OAuth configuration, no client-side speculation, no paid service.
+**Status: ⬜ planning prepared and owner decisions recorded (2026-10-21);
+implementation not started.** The detailed implementation-ready plan lives in
+[stage-6/](stage-6/README.md) (architecture, auth, data model, API contracts, threat
+model, zero-cost ops, decision register, handoff); the authoritative task list is
+[stage-6/CHECKLIST.md](stage-6/CHECKLIST.md) — **every implementation task there is
+unchecked.**
+
+**Owner decision review (2026-10-21), outcomes recorded in
+[stage-6/OPEN-DECISIONS.md](stage-6/OPEN-DECISIONS.md):**
+
+- ✅ **Approved:** D4a Supabase Free (one optional backend, strict 0 CZK/month, no
+  paid plans/trials/auto-upgrades); D4b free-tier suspension/quotas accepted with
+  graceful degradation, core local functionality preserved and fail-closed behavior;
+  D5c Frankfurt `eu-central-1` (with pre-provisioning verification of availability,
+  residency, transfers, DPA, subprocessors); D5f general-audience moderated community
+  with minimal data; D5g owner-only moderation initially with server-side audited
+  grants; D8a in-app Android Admin (no separate APK); D8c Supabase-console bootstrap
+  with MFA-protected operator access and audited recovery.
+- 🟧 **Approved conditionally:** D8b Web Admin BFF (HttpOnly/Secure/SameSite=Strict
+  cookies, server-side authz/CSRF, no bearer tokens in browser JS) — **must first
+  prove the 0 CZK fit** (task 6.0f) or report the blocker.
+- 🟨 **Provisional / deferred:** D5a personal contact email is the intended public
+  contact but **no address was supplied or authorized — nothing may be published**;
+  D5b controller/operator determination deferred to pre-launch review; D5d
+  retention/deletion principle approved with **details unresolved**; D5e licensing
+  approved subject to pre-launch legal review.
+
+**Separately gated (never authorized by the decision review):** implementation start,
+provisioning (6.0d), Google OAuth console setup (6.0e), and public launch/collection
+(pre-collection gate, OPEN-DECISIONS.md §5). No provisioning, no OAuth configuration,
+no client-side speculation, no paid service has occurred.
 
 - **Purpose:** Optional, secured community backend: server-validated Google auth,
   default-deny five-role authorization, revisioned submissions with immutable
   evidence, one-transaction moderation decisions with audit trail, versioned `/v1`
   API shared by future Android/Web Admin clients — under the permanent 0 CZK
   contract, with zero practice-journal data ever crossing the boundary.
-- **Scope (planned, not implemented):** backend server code + database
-  (provider TBD by D4), Android community repository/token storage (optional
-  feature), export/restore tooling. **No** journal schema/backup/signing change; no
-  Stage 7 UI; no bundle changes.
+- **Scope (planned, not implemented):** backend server code + database (Supabase
+  Free per D4a), Android community repository/token storage (optional feature),
+  export/restore tooling. **No** journal schema/backup/signing change; no Stage 7 UI;
+  no bundle changes.
 
 **Tasks — see [stage-6/CHECKLIST.md](stage-6/CHECKLIST.md) for full definitions
-(6.0a–6.0e decisions/provisioning; 6.1–6.9 server core; 6.10–6.11 Android
-integration; 6.12–6.16 verification gates; 6.17–6.18 handoff/closure). All UNCHECKED.**
+(6.0a–6.0f decisions/provisioning; 6.1–6.9 server core; 6.10–6.11 Android
+integration; 6.12–6.16 verification gates; 6.17–6.18 handoff/closure). All
+implementation tasks UNCHECKED.**
 
-- [ ] 6.0a–6.0e Owner decisions D4/D5/D8 + separately authorized provisioning/OAuth.
+- [x] 6.0a D4/D4b — decided 2026-10-21 (Supabase Free; graceful denial; fail closed;
+      strict 0 CZK).
+- [ ] 6.0b D5a–D5g — partially decided; D5a details, D5b determination, D5d details
+      and D5e/D5f pre-launch reviews remain open.
+- [x] 6.0c D8a–D8c — decided 2026-10-21 (D8b conditional on the 6.0f proof gate).
+- [ ] 6.0d Provisioning (separate owner instruction + D5c verification list).
+- [ ] 6.0e Google OAuth console configuration (separately authorized).
+- [ ] 6.0f D8b zero-cost BFF hosting/runtime proof (or blocker report to owner).
 - [ ] 6.1–6.9 Server core: schema, auth, authorization, submissions, decision
       transaction, idempotency, read overlay, admin endpoints, abuse controls.
 - [ ] 6.10–6.11 Android optional integration with strict personal-data isolation and
@@ -331,8 +384,8 @@ integration; 6.12–6.16 verification gates; 6.17–6.18 handoff/closure). All U
 - [ ] 6.17–6.18 Frozen contract + Stage 7 handoff; tracking sync with evidence.
 
 **Verification:** none executed — nothing is claimed. Planning-document consistency
-checks (links, Stage 2–5 contract reuse, Stage 7 dependency compatibility) are
-recorded in the Stage 6 planning session report, not as implementation evidence.
+checks (links, contract reuse, decision-reference synchronization) are recorded in
+the Stage 6 documentation session report, not as implementation evidence.
 
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
