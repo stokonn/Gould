@@ -118,7 +118,8 @@ data class BundleManifest(
         require(files.size <= MAX_FILES) { "Bounded file count exceeded" }
         require(files.distinctBy { it.sha256 }.size == files.size) { "Duplicate content reference" }
         require(attribution.isNotBlank()) { "Offline attribution is mandatory" }
-        // Freshness is separate from usability: a ready/paused/stale bundle still shows saved time.
+        // Freshness is separate from usability: ready/stale/quarantined keep the saved
+        // validation time — every other state, paused included, carries no timestamp.
         require(state == BundleState.READY || validatedAt == null || state == BundleState.STALE || state == BundleState.QUARANTINED) {
             "Only ready/stale/quarantined bundles may carry a validation timestamp"
         }

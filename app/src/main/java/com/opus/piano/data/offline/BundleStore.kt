@@ -75,9 +75,17 @@ class BundleStore(
 
     // ------------------------------------------------------------ reads
 
-    /** Published (authoritative) manifests; unparsable files are quarantined, not lost. */
+    /**
+     * Published manifests — authoritative states only: [BundleState.READY],
+     * [BundleState.STALE] and [BundleState.QUARANTINED] (exactly the states allowed to carry
+     * a validation timestamp). Working/partial revisions (QUEUED, WAITING_FOR_POLICY,
+     * DOWNLOADING, VALIDATING, INSTALLING, PAUSED, FAILED_RETRYABLE) share the same
+     * directory for routing but are never exposed as published. Unparsable files are
+     * quarantined, not lost.
+     */
     suspend fun readPublished(): BundleReadResult = withContext(Dispatchers.IO) { mutex.withLock {
-        readDir(manifestsDir)
+        val read = readDir(manifestsDir)
+        read.copy(manifests = read.manifests.filter { it.state in PUBLISHED_STATES })
     } }
 
     /** Working revisions that have not been promoted yet (refresh in flight). */
@@ -316,6 +324,9 @@ class BundleStore(
         const val DEDUP_CORRUPT_REASON = "dedup_corrupt"
         private val NON_ALPHANUMERIC = Regex("[^A-Za-z0-9_.-]")
         private const val MAX_REASON_CHARS = 48
+
+        /** Authoritative states exposed by [readPublished]; working/partial states are not. */
+        private val PUBLISHED_STATES = setOf(BundleState.READY, BundleState.STALE, BundleState.QUARANTINED)
     }
 }
 

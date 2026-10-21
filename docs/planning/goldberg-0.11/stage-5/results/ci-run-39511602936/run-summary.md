@@ -69,10 +69,15 @@ per-test status codes). Full stacks: emulator-step log and per-test logcat artif
   — JSON number type differs on-device (Gson/JVM vs Android coercion).
 - All 5 worker tests: `got Failure {mOutputData=Data {}}` instead of retry/success,
   including `missingMeteredConsentPausesAsSuccess…` (13 ms runtime, no exception logged
-  — the worker returned `Result.failure()` cleanly). Hypothesis (UNVERIFIED — must be
-  confirmed by code reading before any fix): worker gates read the **real device
-  network** (ConnectivityManager: emulator on unmetered Wi-Fi) where the JVM tests
-  injected metered/offline states, changing flow into an unexpected failure path.
+  — the worker returned `Result.failure()` cleanly). **Root cause CONFIRMED from code
+  (triage 2026-10-21):** `BundleDownloadWorker.doWork()` starts with
+  `applicationContext as? OpusApplication ?: return Result.failure()`, and the tests'
+  `TestListenableWorkerBuilder` (work-testing 2.12.0) stores the **raw context** passed
+  in — `targetContext` (a `ContextImpl`), not the `Application` — so the cast fails
+  before any logic. Real WorkManager passes the `Application`, proven by
+  `workManagerRunsTheScheduledWorkerToACompletedBundle` **passing** on-device (0.277 s).
+  An earlier hypothesis that worker gates read the real device network is **ruled out**
+  (`bundleNetworkOverride` is installed in setUp; the worker never reached the runner).
 
 ## Job 5.11 — offline-state assertion failure (acceptance script, not the app)
 
@@ -87,6 +92,20 @@ script change) and verifying real API 36 offline behavior before deciding.
 
 ## Status
 
-Per the owner's rule: documented first; **no re-dispatch** until meaningful application
-fixes are identified, implemented and verified (JVM tests locally, then CI). Stage 5
-remains IN PROGRESS. No physical phone, no production credentials, no APK publication.
+**All 13 failures root-caused by code-level triage (2026-10-21, documented in Issue #31
+checkpoint):** 5 = test-harness context bug (`TestListenableWorkerBuilder` raw-context
+cast at `BundleDownloadWorker.kt:30`); 7 = deterministic test/fixture defects that no
+prior run could surface (these androidTest-only tests had **never executed anywhere** —
+the worker test's own KDoc says "compile-verified only until Stage 5 task 5.10 executes
+them"); 1 = **genuine product bug** (`BundleJobRunner.settle()` kept `validatedAt` when
+settling STALE→QUEUED, violating the manifest invariant — and `settleQuietly` swallowed
+the resulting IAE leaving the bundle stuck STALE forever); plus an invariant gap where
+`BundleStore.readPublished()` exposed partial (FAILED_RETRYABLE/QUEUED) manifests as
+"published". The `List has more than one element` failure belongs to
+`interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete` (test `.single()`
+over two manifests from random per-call fixture bundleIds), not to the repair test.
+**Fix implementation in progress** on the Stage 5 branch (test-harness corrections +
+the two product fixes, no assertion weakened), pending local JVM tests + androidTest
+compilation before any re-dispatch decision. Per the owner's rule: **no re-dispatch**
+without a meaningful, verified fix. Stage 5 remains IN PROGRESS. No physical phone, no
+production credentials, no APK publication.

@@ -166,7 +166,10 @@ class Stage5BundleWorkerTest {
 
     /** Executes the real worker directly; [bundleId] == null exercises missing input data. */
     private suspend fun runWorker(bundleId: String?, revision: Long = 1L): ListenableWorker.Result {
-        val builder = TestListenableWorkerBuilder<BundleDownloadWorker>(context)
+        // work-testing stores the RAW context it is handed, so a ContextImpl would fail the
+        // worker's `applicationContext as? OpusApplication` cast; real WorkManager hands the
+        // Application itself, so bind the builder to the application context the same way.
+        val builder = TestListenableWorkerBuilder<BundleDownloadWorker>(context.applicationContext)
         if (bundleId != null) {
             builder.setInputData(
                 Data.Builder()

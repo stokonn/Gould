@@ -189,14 +189,17 @@ class Stage5BundleJobRunnerTest {
                 failAfterReads = if (failing) 1 else -1
             ).also { failing = false }
         }
-        // Published READY revision 1.
-        h.store.save(Stage5Fixtures.manifest(files = listOf(oldFile), state = BundleState.READY))
+        // Published READY revision 1. The manifest fixture generates a fresh random bundleId
+        // per call, so the id must be shared: the refresh below is revision 2 of the SAME
+        // bundle, not a second bundle.
+        val id = UUID.randomUUID().toString()
+        h.store.save(Stage5Fixtures.manifest(id, 1, listOf(oldFile), state = BundleState.READY))
         val oldStaged = File(h.root, "staging/${oldFile.sha256}.part")
         oldStaged.writeBytes(oldContent)
         assertTrue(h.store.installBlob(oldStaged, oldFile.sha256, oldContent.size.toLong()))
 
         // Refresh revision 2 fails mid-transfer.
-        val refresh = Stage5Fixtures.manifest(revision = 2, files = listOf(newFile))
+        val refresh = Stage5Fixtures.manifest(id, 2, listOf(newFile))
         h.store.save(refresh)
         val outcome = runJob(h, refresh)
         assertTrue(outcome is BundleJobRunner.Outcome.Retryable)
@@ -249,7 +252,10 @@ class Stage5BundleJobRunnerTest {
         val newFile = Stage5Fixtures.bundleFile(newContent, relativePath = "media/new.jpg")
         // The refresh manifest and the job store are created before the harness so the
         // endpoint callback can revoke consent for exactly this job while bytes stream.
-        val refresh = Stage5Fixtures.manifest(revision = 2, files = listOf(newFile))
+        // One bundle id is shared with the READY revision 1 below (the manifest fixture
+        // generates a fresh random bundleId per call).
+        val id = UUID.randomUUID().toString()
+        val refresh = Stage5Fixtures.manifest(id, 2, listOf(newFile))
         val jobs = BundleJobStore(MemoryPreferences())
         val h = harness(facts = mobile, allowance = true, jobs = jobs) {
             Stage5Fixtures.FakeEndpoint(
@@ -257,8 +263,8 @@ class Stage5BundleJobRunnerTest {
                 onRead = { jobs.revokeMetered(BundleJob.id(refresh.bundleId, refresh.revision)) }
             )
         }
-        // Published READY revision 1.
-        h.store.save(Stage5Fixtures.manifest(files = listOf(oldFile), state = BundleState.READY))
+        // Published READY revision 1 of the same bundle.
+        h.store.save(Stage5Fixtures.manifest(id, 1, listOf(oldFile), state = BundleState.READY))
         val oldStaged = File(h.root, "staging/${oldFile.sha256}.part")
         oldStaged.writeBytes(oldContent)
         assertTrue(h.store.installBlob(oldStaged, oldFile.sha256, oldContent.size.toLong()))
@@ -424,16 +430,43 @@ class Stage5BundleJobRunnerTest {
         val shared = "shared dependency bytes".toByteArray()
         val ownA = "bundle a bytes".toByteArray()
         val ownB = "bundle b bytes".toByteArray()
-        val sharedFile = Stage5Fixtures.bundleFile(shared)
-        val fileA = Stage5Fixtures.bundleFile(ownA, relativePath = "media/a.jpg")
-        val fileB = Stage5Fixtures.bundleFile(ownB, relativePath = "media/b.jpg")
+        // Every fixture file advertises its OWN source URL, so the requested URL identifies
+        // exactly which bytes an endpoint must serve.
+        val sharedFile = Stage5Fixtures.bundleFile(
+            shared, url = "https://commons.wikimedia.org/wiki/File:Stage5Shared.jpg"
+        )
+        val fileA = Stage5Fixtures.bundleFile(
+            ownA, relativePath = "media/a.jpg",
+            url = "https://commons.wikimedia.org/wiki/File:Stage5OwnA.jpg"
+        )
+        val fileB = Stage5Fixtures.bundleFile(
+            ownB, relativePath = "media/b.jpg",
+            url = "https://commons.wikimedia.org/wiki/File:Stage5OwnB.jpg"
+        )
         val manifestA = Stage5Fixtures.manifest(files = listOf(sharedFile, fileA))
         val manifestB = Stage5Fixtures.manifest(files = listOf(sharedFile, fileB))
-        // Own files come from their own endpoints; the shared dependency from the shared one.
+        // Own files come from their own endpoints; the shared dependency from the shared one —
+        // routed by the exact source URL each file advertises. A host+query check matches
+        // EVERY fixture URL (the defaults are one URL), which made harness A serve its own
+        // bytes for the shared dependency and fail the sha256 gate with Retryable(integrity).
+        // Both harnesses serve IDENTICAL bytes for the shared file: shared content staying
+        // single is the point of this test.
         val endpointA = Stage5Fixtures.FakeEndpoint(ownA)
         val endpointB = Stage5Fixtures.FakeEndpoint(ownB)
-        val hA = harness { url -> if (endpointA.isConnectedTo(url)) endpointA else Stage5Fixtures.FakeEndpoint(shared) }
-        val hB = harness { url -> if (endpointB.isConnectedTo(url)) endpointB else Stage5Fixtures.FakeEndpoint(shared) }
+        val hA = harness { url ->
+            when (url.toString()) {
+                fileA.rights.sourceUrl -> endpointA
+                sharedFile.rights.sourceUrl -> Stage5Fixtures.FakeEndpoint(shared)
+                else -> throw AssertionError("harness A asked for an unexpected source: $url")
+            }
+        }
+        val hB = harness { url ->
+            when (url.toString()) {
+                fileB.rights.sourceUrl -> endpointB
+                sharedFile.rights.sourceUrl -> Stage5Fixtures.FakeEndpoint(shared)
+                else -> throw AssertionError("harness B asked for an unexpected source: $url")
+            }
+        }
         hA.store.save(manifestA)
         hB.store.save(manifestB)
 
@@ -451,9 +484,6 @@ class Stage5BundleJobRunnerTest {
         assertEquals(sharedFile.sha256, BundleStoreLogic.sha256Of(hA.store.blobFile(sharedFile.sha256)))
     }
 }
-
-private fun Stage5Fixtures.FakeEndpoint.isConnectedTo(url: URL): Boolean =
-    url.host == "commons.wikimedia.org" && url.query == null
 
 /** Free-space headroom that admits manifest/state writes while refusing content payloads. */
 private const val STATE_SLACK_BYTES = 512L * 1024

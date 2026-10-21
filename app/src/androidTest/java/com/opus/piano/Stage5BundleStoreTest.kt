@@ -95,8 +95,12 @@ class Stage5BundleStoreTest {
         assertTrue("referenced partial staging is retained", partial.isFile)
         assertEquals("nothing unreferenced was removed", 0, sweep.removedBlobs)
 
-        // Completing the refresh publishes by a single atomic rename.
+        // Completing the refresh publishes by a single atomic rename. The full revision
+        // bytes are installed first (promote itself only renames the manifest and sweeps),
+        // so the assertion below verifies promotion of genuinely installed content.
         f.store.save(Stage5Fixtures.manifest(id, 2, listOf(fileB), state = BundleState.READY))
+        partial.writeBytes(contentB)
+        assertTrue(f.store.installBlob(partial, fileB.sha256, contentB.size.toLong()))
         val promoted = f.store.promote(id)
         assertEquals(2L, promoted.revision)
         val nowPublished = f.store.readPublished().manifests.single()
@@ -123,7 +127,7 @@ class Stage5BundleStoreTest {
         assertEquals("Open Opus contributors", restored.attribution)
         assertNotNull("validation timestamp is durable metadata", restored.validatedAt)
         assertTrue(reopened.blobFile(file.sha256).isFile)
-        assertEquals("bytes survive reopen exactly", content.size, reopened.blobFile(file.sha256).length())
+        assertEquals("bytes survive reopen exactly", content.size.toLong(), reopened.blobFile(file.sha256).length())
     }
 
     // ------------------------------------------------------------ corruption and sweep

@@ -140,13 +140,20 @@ class BundleJobRunner(
 
     // ---------------------------------------------------------------- steps
 
+    /**
+     * Resolves the manifest a job runs against, from BOTH directories: since
+     * [BundleStore.readPublished] exposes only authoritative states, a working copy
+     * (QUEUED/FAILED_RETRYABLE/... for a bundle whose first save landed in `manifests/`)
+     * is only visible through [BundleStore.readAll]. `inPending` is resolved separately so
+     * a completed refresh that has not been promoted yet is still published on recovery.
+     */
     private suspend fun locate(job: BundleJob): Located? {
-        val published = store.readPublished().manifests
+        val match = store.readAll().manifests
             .firstOrNull { it.bundleId == job.bundleId && it.revision == job.revision }
-        if (published != null) return Located(published, inPending = false)
-        val pending = store.readPending().manifests
-            .firstOrNull { it.bundleId == job.bundleId && it.revision == job.revision }
-        return pending?.let { Located(it, inPending = true) }
+            ?: return null
+        val inPending = store.readPending().manifests
+            .any { it.bundleId == job.bundleId && it.revision == job.revision }
+        return Located(match, inPending = inPending)
     }
 
     /** Fresh attempt: land in a state that may transfer, without touching READY content. */
@@ -219,13 +226,29 @@ class BundleJobRunner(
 
     // ---------------------------------------------------------------- state persistence
 
-    /** Persisted transition through the reviewed state machine; strict in the happy path. */
+    /**
+     * Persisted transition through the reviewed state machine; strict in the happy path.
+     *
+     * The validation timestamp follows the manifest invariant: only authoritative targets
+     * (READY/STALE/QUARANTINED) keep it — settling a non-authoritative state (e.g.
+     * STALE -> QUEUED in [enterAttempt]) drops it so the copy can never violate
+     * [BundleManifest]'s `require` and wedge the bundle.
+     */
     private suspend fun settle(manifest: BundleManifest, target: BundleState, error: String?): BundleManifest {
         if (manifest.state != target && BundleStateMachine.path(manifest.state, target).isEmpty()) {
             throw IllegalStateException("No legal transition ${manifest.state} -> $target")
         }
         if (manifest.state == target && manifest.lastError == error) return manifest
-        val updated = manifest.copy(state = target, lastError = error, updatedAt = now())
+        val updated = manifest.copy(
+            state = target,
+            lastError = error,
+            updatedAt = now(),
+            // Non-authoritative states drop the timestamp to keep the manifest invariant:
+            // only READY/STALE/QUARANTINED may carry validatedAt.
+            validatedAt = if (
+                target == BundleState.READY || target == BundleState.STALE || target == BundleState.QUARANTINED
+            ) manifest.validatedAt else null
+        )
         store.save(updated)
         return updated
     }
