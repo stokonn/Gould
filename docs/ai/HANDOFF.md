@@ -98,8 +98,10 @@ attempts 1–4 dispatched from `feature/goldberg-0.11-stage-5`; attempt 4
 `dcea5b2`) delivered **5.10 PASSED (177/0/0/2 — all 13 earlier failures fixed and
 verified on-device)**; 5.11's upgrade validation passed again but its offline premise
 was proven never achieved (`svc data disable` no-op on the API 36 CI emulator — see
-`results/ci-run-39518973833/run-summary.md`). The evidence-preserving 5.11 fix is
-designed but not yet implemented; **a fifth dispatch awaits explicit owner approval**.
+`results/ci-run-39518973833/run-summary.md`). The evidence-preserving 5.11 fix was
+implemented + locally verified (commit `6da1021`); the owner approved fix + verify +
+fifth dispatch: [run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455)
+@ `6da1021`, monitoring in progress — outcome unknown.
 See `docs/ai/STATE.md` for the live checkpoint. (Historical: the first dispatch, run
 39503450845, failed pre-test in both jobs from CI setup/script defects — not application defects (owner-confirmed; zero application
 tests ran; evidence:
@@ -110,8 +112,9 @@ emulator-runner invokes its script with `/usr/bin/sh` (dash), which rejects
 matched nothing — the `MISSING` digests were a parser failure, **not** a certificate
 mismatch. Minimal workflow-only corrections (bash heredoc wrapper + full
 apksigner-diagnostics capture + dual-format parsing, assertions unchanged/strict) are
-validated on the host and staged; **the workflow-fix PR merge and any re-dispatch
-await explicit owner approval**. Consent revocation mid-stream, low disk, screenshot
+validated on the host and staged; those workflow-only fixes were merged via PRs #32–#34
+(merge commits `577d811`, `a4a9509`, `816d142`) and runs 3–4 executed application
+tests. Consent revocation mid-stream, low disk, screenshot
 inspection and real bundle-transfer costs remain notebook/manual work either way.
 
 Alternative 2: if an upstream emulator fix for #566807521 ships (watch the issue), the

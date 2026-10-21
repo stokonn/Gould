@@ -1,19 +1,32 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-21, run-4 result session (recovered after an
-> interrupted documentation edit — no work was lost)
-> ([run 39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833)
-> @ `dcea5b2`: **5.10 PASSED — 177 tests, 0 failures, 0 errors, 2 skipped — all 13
-> fixes verified on-device**; 5.11 failed only at the final offline assertion with the
-> root cause **proven from logcat**: `svc data disable` had zero effect on the API 36
-> CI emulator, cellular came up 15 s later and was the default network for the whole
-> "offline" upgrade. **Evidence-preserving 5.11 fix designed + documented, NOT yet
-> implemented; no fifth dispatch without owner approval**).
+> **Last updated:** 2026-10-21, attempt-5 dispatch session
+> (run 4 ([39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833)
+> @ `dcea5b2`): **5.10 PASSED — 177/0/0/2, all 13 fixes verified on-device**; 5.11
+> failed only at the final offline assertion, root cause **proven from logcat** (`svc
+> data disable` no-op on the API 36 CI emulator; cellular was default network for the
+> whole "offline" upgrade. **Evidence-preserving 5.11 fix implemented + locally
+> verified at `6da1021`** (py_compile/YAML/`bash -n`/3-scenario stub simulation all
+> pass; final assertion semantics unchanged; owner approved: fix + verify + dispatch);
+> **attempt 5 dispatched:
+> [run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455)
+> @ `6da1021`, headSha verified, monitoring in progress — outcome unknown**).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
 > `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → GitHub Issue #31.
 > **Stage 5 is NOT complete. No merge/tag/release/APK publication performed.**
 
-## 🚦 Current status: 5.10 GREEN on the emulator; 5.11 offline premise disproven — fix designed, awaiting implementation + owner-approved dispatch
+## 🚦 Current status: 5.10 GREEN on the emulator; 5.11 fix implemented + locally verified — attempt 5 in progress
+
+- **Attempt 5 dispatched (owner-approved): [run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455)
+  @ `6da1021`** (headSha verified = branch HEAD). Validates the 5.11 offline fix on a
+  real emulator; would also be the **first real execution** of the acceptance sections
+  after the python call (Wi-Fi→mobile transition, Data Saver toggles, process-death,
+  post-restart DB, startup measurement) if offline is genuinely achieved. Monitoring in
+  progress — **outcome unknown, no result claimed**.
+- **Active task: monitor attempt 5 to completion, then preserve evidence**
+  (`results/ci-run-39552116455/`, run-summary, STAGE-CHECKLIST/VERIFICATION/STATE sync,
+  Issue #31 dashboard + checkpoint) and diagnose any failure from logs before any
+  further dispatch (no repeated dispatch without a meaningful fix).
 
 - **Attempt 4 ([run 39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833)
   @ `dcea5b2`, headSha + both jobs' `source-commit.txt` verified):**
@@ -30,15 +43,17 @@
     became the active default 00:12:19, and served `com.opus.piano` throughout the
     "offline" upgrade. The assertion correctly caught a premise **never achieved** —
     not an app regression, not an assertion-format issue.
-- **Active task: implement the documented, evidence-preserving 5.11 fix**
-  (`verify_emulator_upgrade.py`: belt-and-suspenders `settings put global mobile_data
-  0` + verify/retry loop + `cmd connectivity airplane-mode enable` escalation,
-  `dumpsys connectivity` saved to the artifact dir at every stage, fail fast with
-  evidence if offline cannot be achieved; final assertion semantics **unchanged**;
-  workflow section (b) disables airplane mode before the restores). Then local
-  verification (py_compile, workflow YAML parse + `scripts/check_*`, `bash -n`).
-  **A fifth CI dispatch requires explicit owner approval — do not dispatch
-  automatically.**
+- **5.11 fix record (implemented `6da1021`, locally verified — details in
+  STAGE-CHECKLIST + `docs/ai/VERIFICATION.md`):** `verify_emulator_upgrade.py`
+  belt-and-suspenders `settings put global mobile_data 0` + 10×3 s verify/retry loop +
+  `cmd connectivity airplane-mode enable` escalation, `dumpsys connectivity` saved to
+  the artifact dir at every stage, fail fast with evidence if offline cannot be
+  established before the upgrade; final assertion semantics **unchanged** (same
+  regex/message, dump saved first); workflow section (b) clears airplane mode + re-enables
+  data before the restores. Local verification EXECUTED: py_compile, YAML parse,
+  `bash -n` on both materialized scripts, 3/3 stubbed-adb scenarios (retry success,
+  airplane fallback, fail-fast before install), `check_agent_policy.py` PASS. The
+  owner approved fix + verify + dispatch in the recovery session.
 - **Never executed in CI yet:** the acceptance sections after the python call
   (Wi-Fi→mobile transition, Data Saver toggles, process-death, post-restart DB,
   startup measurement) — they will run for the first time in attempt 5 if the offline
@@ -57,7 +72,9 @@ launch: PR #34 merged workflow-only (`816d142`), dispatched against `9b80d65` �
 run to execute application tests (177 tests, 13 failures, all root-caused from code;
 full triage: STAGE-CHECKLIST run-3 entry, `results/ci-run-39511602936/run-summary.md`,
 Issue #31 checkpoint comments); attempt 4: fixes `dcea5b2` dispatched — **5.10 green**
-(above). Historical note: the triage revealed 12 of 13 run-3 failures were deterministic
+(above); attempt 5: offline fix `6da1021` committed + locally verified, then dispatched
+as [run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455)
+(owner-approved in the recovery session) — monitoring. Historical note: the triage revealed 12 of 13 run-3 failures were deterministic
 latent defects in androidTest-only tests that had never executed anywhere, 1 was a
 genuine product bug (`settle()` STALE→QUEUED wedge), plus a `readPublished()` invariant
 gap — all fixed in `dcea5b2` with local JVM verification (174/0) before dispatch.
