@@ -175,8 +175,28 @@ now blocking for 6.0d provisioning**). **Still open: C2 §12 production
 verification and C4 (terms re-verification). Task 6.0f stays UNCHECKED.**
 Resume order for a fresh Stage 6 session: `AGENTS.md` →
 `docs/planning/goldberg-0.11/stage-6/CHECKLIST.md` (progress log) →
+`Q1-OPERATOR-READINESS.md` + `C4-PREPROVISIONING-CHECKLIST.md` →
 `C3-EDGE-PRIVACY-REVIEW.md` §11 (pre-provisioning checklist) → GitHub Issue #31
-latest checkpoint. Next planned step: C4 documentation (owner-requestable);
-provisioning remains separately gated and blocked on D5b/Q1.
+latest checkpoint.
+
+**Addendum (2026-10-21, Stage 6 Q1/C4 session — docs/planning only):** the two
+remaining documentation conditions are now *prepared*, neither *closed*:
+**Q1 research** (`stage-6/Q1-OPERATOR-READINESS.md`) records verified contractual
+facts (no published minimum account age on either provider's current terms;
+authority-to-bind warranties; CF SSSA §2.2.1(a); Czech Civil Code §§30–33; Google
+age rule), the professional-review question set, and **operator Options A/B/C with
+no option selected** — **D5b remains legally unresolved and blocking for 6.0d
+provisioning**; no identity/contact data was requested or recorded, no legal
+conclusion was drawn. **C4 pre-provisioning checklist**
+(`stage-6/C4-PREPROVISIONING-CHECKLIST.md`) pins the current source versions with
+access dates (incl. the dated Workers Logs → Observability pricing change of
+2026-12-01 and the Supabase Free "no automatic backups" fact) and provides the
+§D runbook; **the final C4 verification must still run immediately before any
+separately authorized provisioning — C4 stays OPEN, 6.0f stays UNCHECKED.**
+Retrieval failures recorded honestly: EUR-Lex GDPR text (0 bytes ×2) and the
+Czech MoJ official English Civil Code PDF (TLS error). **Next step for a fresh
+agent:** read the CHECKLIST progress log, then await the owner's decisions
+(professional review of the Q1 §4 questions → choose Option A/B/C) — do not
+provision, do not implement, do not touch 6.0e.
 
 created by stokonn with love <3

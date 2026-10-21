@@ -30,7 +30,7 @@ Status vocabulary used below:
 | # | Question | Outcome (2026-10-21) | Consequences |
 |---|---|---|---|
 | D5a | Who is the operator/controller contact? | **PROVISIONAL OWNER PREFERENCE:** a personal contact email is the intended public contact. **No email address has been supplied or authorized for publication.** | Do not invent, expose, request or publish personal contact information. Legally required controller identification and public contact information must be verified before launch. Blocks: privacy notice publication and public collection. |
-| D5b | Privacy & data-processing responsibilities | **DEFERRED:** the legal data controller/operator will be determined **before public launch**, after reviewing applicable requirements. Privacy-by-design and data minimization apply meanwhile. | Do not claim GDPR compliance and do not authorize real-user collection. Applicable requirements concerning a minor project owner must be accounted for in the pre-launch review. |
+| D5b | Privacy & data-processing responsibilities | **DEFERRED:** the legal data controller/operator will be determined **before public launch**, after reviewing applicable requirements. Privacy-by-design and data minimization apply meanwhile. | Do not claim GDPR compliance and do not authorize real-user collection. Applicable requirements concerning a minor project owner must be accounted for in the pre-launch review. **Research deliverable prepared 2026-10-21 — [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md)** (verified findings, Options A/B/C with no selection, professional-review questions); **D5b remains legally unresolved and blocking for 6.0d provisioning.** |
 | D5c | Processing region & transfers | **APPROVED: Frankfurt, Germany (`eu-central-1`).** Before provisioning, verify actual region availability, data residency, international processing/transfers, the DPA and subprocessors. EU database hosting alone must **not** be presented as a guarantee that all processing stays within the EU. | Region choice is fixed for provisioning task 6.0d; the verification list is a hard pre-provisioning sub-gate. |
 | D5d | Account deletion & retention | **PRINCIPLE APPROVED — DETAILS PENDING:** preserve legitimately published non-personal catalogue data where rights and applicable law permit; minimize and appropriately erase account-linked personal data; support account deletion. | Retention periods for pending/rejected contributions, audit records and backups remain **unresolved**. Attribution requirements, pseudonymization vs anonymization, legal exceptions and deletion semantics must be reviewed before public launch. **Do not invent final retention periods or claim legal approval.** `DELETE /v1/me` stays reserved (API-CONTRACTS.md §3). |
 | D5e | Contribution terms & licensing | **APPROVED, SUBJECT TO PRE-LAUNCH LEGAL REVIEW:** CC0 for contributor-owned structured catalogue metadata; CC BY-SA 4.0 for original contributor-authored text. | Third-party rights, source licenses, attribution and database rights remain fully applicable. Wikipedia content and copied third-party prose are **not** automatically relicensed. Field-level license/provenance requirements are preserved. Compatibility with D5d deletion/attribution must be verified before launch. |
@@ -73,6 +73,12 @@ Status vocabulary used below:
       act as controller is now a **blocking question for 6.0d provisioning**
       and must go to an appropriate adult/professional review
       (C3-EDGE-PRIVACY-REVIEW.md §9 Q1). No identity or contact is invented.
+      **Research prepared 2026-10-21:** [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md)
+      — verified facts (no published minimum account age on either provider's
+      terms; authority-to-bind warranties; Czech Civil Code §§30–33; Google age
+      rule), unresolved questions, professional-review question set, operator
+      **Options A/B/C (no selection made)**. **Still unresolved — no legal
+      conclusion recorded; D5b stays open and blocking for 6.0d.**
 - [ ] **D5d details** — retention periods, deletion semantics, attribution vs
       pseudonymization (blocks retention jobs and `DELETE /v1/me` implementation;
       pre-launch review gate).
@@ -93,7 +99,10 @@ Status vocabulary used below:
       ([C3-EDGE-PRIVACY-REVIEW.md](C3-EDGE-PRIVACY-REVIEW.md)): conditional
       viability at 0 CZK; no compliance claim; legal/operator questions remain
       open (see D5b above). Still open: C2 §12 production verification, C4
-      terms re-verification.*
+      terms re-verification — **C4 pre-provisioning checklist prepared
+      2026-10-21** ([C4-PREPROVISIONING-CHECKLIST.md](C4-PREPROVISIONING-CHECKLIST.md);
+      dated current-source baseline, execution runbook §D; **C4 final
+      verification still required immediately before any provisioning**).*
 
 ## 5. Separately gated activities (never authorized by these decisions)
 

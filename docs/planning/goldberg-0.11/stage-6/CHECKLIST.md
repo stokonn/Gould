@@ -23,7 +23,9 @@ pre-launch gates.**
   🚧 **Partially settled 2026-10-21:** D5c (eu-central-1), D5f (general audience,
   minimal data) and D5g (owner-only moderation, server-side audited grants) approved;
   D5a provisional — **no contact email supplied or authorized for publication**;
-  D5b controller determination **deferred to pre-launch**; D5d principle approved
+  D5b controller determination **deferred to pre-launch** (research deliverable
+  prepared: [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) — **still
+  legally unresolved and blocking for 6.0d**); D5d principle approved
   with **retention/deletion details unresolved**; D5e approved subject to pre-launch
   legal review. *Remaining open items block: terms/privacy publication, retention
   jobs, `DELETE /v1/me`, public collection.* (OPEN-DECISIONS.md §2.)
@@ -35,8 +37,11 @@ pre-launch gates.**
   operator access. (OPEN-DECISIONS.md §3.)
 - **6.0d** Provision the chosen Free-tier backend under a **separate explicit owner
   instruction**: project, database, auth provider config, region per D5c **including
-  its verification list** (availability, residency, transfers, DPA, subprocessors),
-  secrets in server-side secrets only, kill switch, export target. No billing path
+  its verification list** (availability, residency, transfers, DPA, subprocessors —
+  executable via the final C4 runbook in
+  [C4-PREPROVISIONING-CHECKLIST.md](C4-PREPROVISIONING-CHECKLIST.md) §D, after
+  D5b/Q1 is resolved), secrets in server-side secrets only, kill switch, export
+  target. No billing path
   enabled. ⬜ not started.
 - **6.0e** Configure Google OAuth console (redirect/origin allowlists, client IDs)
   per AUTH.md — separately authorized, real credentials never committed. ⬜ not
@@ -69,10 +74,25 @@ pre-launch gates.**
   viability at 0 CZK, no compliance claim, legal/operator questions open.
   C4 (terms re-verification before provisioning) remains open; **6.0f stays
   unchecked.**
+- **Q1/C4 research deliverables prepared 2026-10-21 (documentation-only, in
+  support of 6.0b/6.0d):** [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md)
+  — verified contractual/capacity findings (neither provider publishes a minimum
+  account age for a first account; authority-to-bind warranties and Cloudflare
+  SSSA §2.2.1(a); Czech Civil Code §§30–33 incl. the court-approval question;
+  Google age rule), operator **Options A/B/C laid out with NO selection**, and
+  the professional-review question set — **D5b stays legally unresolved and
+  blocking for 6.0d**. [C4-PREPROVISIONING-CHECKLIST.md](C4-PREPROVISIONING-CHECKLIST.md)
+  — dated current-source baseline (CF DPA v6.4 / Supabase DPA v1, ToS versions,
+  Free-tier limits incl. Workers Logs → Observability pricing change 2026-12-01,
+  Supabase Free log-retention/no-backups facts, subprocessor lists) with
+  verified-2026-10-21 vs re-verify-on-provisioning-day columns; **C4 stays OPEN
+  (pre-provisioning checklist ≠ final verification)**. No accounts, no
+  provisioning, no OAuth, no code.
 
 - [x] 6.0a [ ] 6.0b [x] 6.0c (D8b proof gate 6.0f still open — C2 executed
-      CONDITIONAL PASS, C3 documentary review complete; open: C2 §12
-      production verification, C4) [ ] 6.0d [ ] 6.0e [ ] 6.0f
+      CONDITIONAL PASS, C3 documentary review complete; Q1/C4 research docs
+      prepared; open: C2 §12 production verification, final C4 verification,
+      D5b) [ ] 6.0d [ ] 6.0e [ ] 6.0f
 
 ## Phase 1 — Server core (implementable locally before provisioning)
 
@@ -193,5 +213,22 @@ pre-launch gates.**
   are carried to 6.0b/6.0d/6.16 and the pre-launch legal review. **No code,
   no deployment, no accounts, no personal data. 6.0f stays unchecked — open:
   C2 §12 production verification, C4 terms re-verification.**
+- 2026-10-21 — **Q1 operator-readiness research + C4 pre-provisioning checklist
+  prepared (documentation-only, no accounts).**
+  [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) separates verified facts
+  (no published minimum account age on either provider's current terms;
+  Cloudflare SSSA §2.2.1(a)/DPA v6.4 and Supabase ToS v2/DPA v1 authority-to-bind
+  warranties; Czech Civil Code §§30–33; Google age rule), unresolved questions,
+  the professional-review question set and **Options A/B/C without selecting
+  any**. **D5b remains legally unresolved and blocking for 6.0d**; no
+  identity/contact recorded, no legal conclusions drawn. EUR-Lex GDPR text
+  retrieval failed (0 bytes ×2) and is recorded as not-retrieved (C4 X-6).
+  [C4-PREPROVISIONING-CHECKLIST.md](C4-PREPROVISIONING-CHECKLIST.md) is a
+  **pre-provisioning** baseline with per-item URLs, version/date stamps and
+  verified-2026-10-21 vs must-reverify-on-day columns (incl. the dated Workers
+  Logs → Observability pricing change of 2026-12-01 and the Supabase Free
+  backups discrepancy); **C4 final verification stays OPEN and must still run
+  immediately before any separately authorized provisioning.** No checkboxes
+  closed by this entry — 6.0b, 6.0d, 6.0e, 6.0f all unchanged.
 
 created by stokonn with love <3

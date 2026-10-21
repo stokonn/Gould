@@ -145,6 +145,22 @@ above.
     - C4 (terms re-verification) and the C2 §12 production-runtime
       verification remain open; task 6.0f stays unchecked; Stage 6
       implementation remains NOT STARTED.
+    - **2026-10-21 Q1/C4 research session (documentation only — NO new owner
+      decision, no status change):** `stage-6/Q1-OPERATOR-READINESS.md` prepared —
+      verified facts (neither provider's current terms publish a minimum account
+      age for a first account; authority-to-bind warranties in CF DPA v6.4 /
+      Supabase ToS v2; CF SSSA §2.2.1(a); Czech Civil Code §§30–33 incl. the §33
+      court-approval question; Google parental-permission rule), unresolved
+      questions, professional-review question set, and **operator Options A/B/C
+      presented without selection**. **D5b stays DEFERRED/unresolved and blocking
+      for 6.0d**; the agent chose no operator, drew no legal conclusion, requested
+      no identifying information. `stage-6/C4-PREPROVISIONING-CHECKLIST.md`
+      prepared as a **pre-provisioning** baseline (URLs, versions, access dates,
+      re-verify-on-day columns, §D runbook) — **C4 final verification stays OPEN**.
+      Retrieval failures recorded: EUR-Lex GDPR text (0 bytes ×2), Czech MoJ
+      official English Civil Code PDF (TLS error). Zero-cost/legal assumption
+      checks preserved: any failure → owner blocker report, never a silent paid
+      substitution.
   - **PROVISIONAL:** D5a personal contact email is the intended public contact, but
     **no address was supplied or authorized — do not invent/expose/request/publish
     contact data**; verify legally required controller identification before launch.

@@ -16,7 +16,13 @@
 > (`docs/planning/goldberg-0.11/stage-6/C3-EDGE-PRIVACY-REVIEW.md`: conditional
 > privacy viability at 0 CZK, **no compliance claim**, legal/operator questions
 > open — controller/operator identity incl. the minor-owner legal-capacity
-> question is now blocking for 6.0d). C4 open; **task 6.0f unchecked; Stage 6
+> question is now blocking for 6.0d). **Q1 operator-readiness research + C4
+> pre-provisioning checklist prepared 2026-10-21**
+> (`stage-6/Q1-OPERATOR-READINESS.md`: verified facts, **Options A/B/C with no
+> selection, no legal conclusion — D5b still unresolved/blocking**; `stage-6/
+> C4-PREPROVISIONING-CHECKLIST.md`: dated baseline + day-of runbook, **C4 final
+> verification still OPEN**; EUR-Lex GDPR retrieval failed 0 bytes ×2, recorded
+> as not-retrieved). C4 open; **task 6.0f unchecked; Stage 6
 > implementation NOT STARTED**; nothing provisioned or deployed. Authoritative
 > current state: `docs/planning/goldberg-0.11/stage-6/CHECKLIST.md` (progress
 > log) + GitHub Issue #31 checkpoints.

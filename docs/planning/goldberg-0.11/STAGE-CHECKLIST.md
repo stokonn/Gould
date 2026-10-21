@@ -351,10 +351,15 @@ unchecked.**
   verification owner-gated); **C3 documentary review COMPLETE 2026-10-21**
   ([stage-6/C3-EDGE-PRIVACY-REVIEW.md](stage-6/C3-EDGE-PRIVACY-REVIEW.md):
   conditional privacy viability at 0 CZK, no compliance claim, legal/operator
-  questions open). **C4 remains open.***
+  questions open). **C4 remains open** — its pre-provisioning checklist was
+  prepared 2026-10-21
+  ([stage-6/C4-PREPROVISIONING-CHECKLIST.md](stage-6/C4-PREPROVISIONING-CHECKLIST.md),
+  preparation ≠ final verification).*
 - 🟨 **Provisional / deferred:** D5a personal contact email is the intended public
   contact but **no address was supplied or authorized — nothing may be published**;
-  D5b controller/operator determination deferred to pre-launch review; D5d
+  D5b controller/operator determination deferred to pre-launch review — **research
+  deliverable [stage-6/Q1-OPERATOR-READINESS.md](stage-6/Q1-OPERATOR-READINESS.md)
+  prepared 2026-10-21; still legally unresolved and blocking for 6.0d**; D5d
   retention/deletion principle approved with **details unresolved**; D5e licensing
   approved subject to pre-launch legal review.
 
@@ -399,8 +404,12 @@ implementation tasks UNCHECKED.**
       ([stage-6/C3-EDGE-PRIVACY-REVIEW.md](stage-6/C3-EDGE-PRIVACY-REVIEW.md)):
       conditional privacy viability at 0 CZK, no compliance claim, legal/
       operator questions open (controller identity incl. minor-owner capacity
-      now blocking for 6.0d). **Still open: C2 §12 production verification and
-      C4 terms re-verification.**
+      now blocking for 6.0d; **Q1 research deliverable prepared 2026-10-21**
+      ([stage-6/Q1-OPERATOR-READINESS.md](stage-6/Q1-OPERATOR-READINESS.md) —
+      Options A/B/C documented, **no option selected, D5b still legally
+      unresolved**). **Still open: C2 §12 production verification and
+      C4 terms re-verification (checklist prepared; final run required before
+      any provisioning).**
 - [ ] 6.1–6.9 Server core: schema, auth, authorization, submissions, decision
       transaction, idempotency, read overlay, admin endpoints, abuse controls.
 - [ ] 6.10–6.11 Android optional integration with strict personal-data isolation and
