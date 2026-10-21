@@ -191,9 +191,9 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
 - [x] 5.8 WorkManager scheduler + worker: unique work per `bundleId:revision`, UNMETERED unless per-job consent, revoke/grant/cancel, startup reconciliation (BundleScheduler.kt, BundleDownloadWorker.kt).
 - [x] 5.9 `OpusApplication` lazy wiring + startup reconcile + hermetic test seams.
 - [x] 5.10 Execute `Stage5*Test` instrumentation on an explicitly identified emulator (store I/O, runner pipeline, real WorkManager execution/cancel/reconcile). — **COMPLETE: run 39557624554 (attempt 6), 177 tests / 0 failures / 0 errors / 2 skipped, stable across runs 4–6; 2 skips investigated = designed fixture assumptions (`skipped-tests.md`).**
-- [ ] 5.11 Emulator acceptance: Wi-Fi→mobile transition, Data Saver, consent revocation mid-stream, real process death at boundaries, low disk, seeded in-place upgrade from trusted 0.10.1, disk/network cost measurements. — **executed portions GREEN (attempt 6 + instrumentation coverage mapping below). OPEN ONLY: UI screenshots in both themes — owner approved the purpose-built dispatch-only CI job (`.github/workflows/stage5-screenshots.yml`, 12 screencaps Ivory+Nocturne via the product's own persisted theme) on 2026-10-21, pending captured artifacts + owner inspection. Real bundle-transfer costs — DISPOSITIONED by owner decision (DECISIONS.md): the executed tests' exact byte accounting + real file I/O + `disk-usage.txt` is the Stage 5 answer; the structural blocker (no production bundle feed/CDN URL or enqueue path exists; download UI is Stage 7) is recorded as a Stage 6/7 dependency; no fabricated numbers.**
+- [x] 5.11 Emulator acceptance: Wi-Fi→mobile transition, Data Saver, consent revocation mid-stream, real process death at boundaries, low disk, seeded in-place upgrade from trusted 0.10.1, disk/network cost measurements. — **COMPLETE: every item has passed executed evidence.** Attempt 6 (run 39557624554): transition `101→100` + Data Saver both directions with state readback, process-death + cold restart, post-restart DB integrity (`ok`/`none`/`user_version 10`), seeded in-place upgrade all-green, startup measured. Instrumentation (same run, 177 tests): consent revocation mid-stream (`consentRevocationMidStreamPausesAndKeepsReadyContent` + worker/persistence variants), low disk (`lowStorageRefusesBeforeAnyByteMoves` + backup/portrait variants), corrupt assets, concurrent remove/clear/restore, old-READY-survives-interrupted-refresh, practice-available-with-caches-removed. **Screenshots: run [39576173002](https://github.com/stokonn/Goldberg/actions/runs/39576173002) GREEN — 12/12 (Home/Repertoire/Discover/Practice/Profile/Settings × Ivory/Nocturne), agent-inspected pair-by-pair, preserved in `results/ci-run-39576173002/` (after 3 script-defect attempts, each root-caused + fixed via workflow-only PRs #36–#38; no application defect in any of them).** Disk/network cost measurements: owner-dispositioned (DECISIONS.md) — executed tests' exact byte accounting + real file I/O + `disk-usage.txt`; real-CDN transfer recorded as a Stage 6/7 dependency (no bundle feed exists).
 - [x] 5.12 Full host gate re-run + `scripts/check_*.py` (migrations/backup/localization/paging/policy). — **COMPLETE: `./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1` → BUILD SUCCESSFUL (3 m 41 s), unit tests 174/0/0/0, lint 0 errors / 110 pre-existing warnings; all 5 check scripts PASS (agent_policy, backup_fixtures, history_paging, localization, migrations).**
-- [ ] 5.13 Update `docs/ai/*` (STATE/VERIFICATION/HANDOFF/DECISIONS), reviewed commit, push to Stage 5 branch, verified evidence to GitHub Issue #31 + Project. No merge/tag/release/APK publication; Stage 6 not started.
+- [x] 5.13 Update `docs/ai/*` (STATE/VERIFICATION/HANDOFF/DECISIONS), reviewed commit, push to Stage 5 branch, verified evidence to GitHub Issue #31 + Project. No merge/tag/release/APK publication; Stage 6 not started. — **COMPLETE: STATE/HANDOFF/VERIFICATION/DECISIONS + STAGE-CHECKLIST synchronized through the green screenshot run; evidence bundles committed (`ci-run-39557624554` 22 MB, `ci-run-39576173002` 12 MB); reviewed commit pushed; Issue #31 checkpoints posted for every session (run-6 green, decisions, screenshot attempts 1–4); Project kept In Progress. Only workflow files ever merged to `main` (PRs #35–#38); no application code merged; no tag/release/APK publication; Stage 6/7 not started.**
 
 **Verification (executed so far, 2026-10-20 sessions):**
 
@@ -598,6 +598,35 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
       engine + real file I/O in the executed tests + emulator `disk-usage.txt`
       snapshots. Owner decision requested (see Issue #31).
     - *5.12 host gate* — **green** (checkbox above); exact results recorded.
+  - **Screenshot session (2026-10-21, owner-approved "build + dispatch"): the last
+    open 5.11 item is now EXECUTED and green.**
+    - Workflow `.github/workflows/stage5-screenshots.yml` (dispatch-only, same
+      safety rules as the green workflow) merged workflow-only via **PR #35**;
+      theme switched through the product's **own persistence**
+      (`profile_settings.theme` in `opus.db` via `run-as` + `sqlite3` with
+      readback assertion), UI driven via the accessibility tree, onboarding
+      dismissed through its own Skip button.
+    - **Three failures, three distinct script defects — each root-caused from
+      raw logs with host-side proof where possible BEFORE re-dispatch; zero
+      application defects:** (1) run 39571926478 — theme write before first
+      launch, DB absent → `prime_app()` (PR #36); (2) run 39572917657 —
+      adb device-shell re-parse split the SQL → stdin-piped `sql()` (PR #37,
+      host-proven byte-for-byte); (3) run 39574447299 — fresh install has **no
+      settings row** (independently confirmed by the green run's
+      `prime.txt`: `row count: 0`) → upsert of the entity-default row (PR #38,
+      host-proven for both row states); the script's own readback guard
+      (exit 42) caught it — assertions never weakened.
+    - **GREEN: run [39576173002](https://github.com/stokonn/Goldberg/actions/runs/39576173002)
+      @ `3579417` — 12/12 screenshots** (Home/Repertoire/Discover/Practice/
+      Profile/Settings × Ivory/Nocturne), cold start 9.4 s, sha256 manifest,
+      preserved in `results/ci-run-39576173002/` (+ `run-summary.md`).
+    - **Agent inspection: every pair verified** — identical layouts, correct
+      Ivory/Nocturne semantic palettes, adapted system bars, real content,
+      no blank frames. Owner visual sign-off offered as courtesy.
+  - **Stage 5 status after this session: ALL mandatory verification
+    requirements have executed evidence that passed.** 5.10 ✓ (run 6),
+    5.11 ✓ (run 6 + screenshots run + owner-dispositioned cost measurement),
+    5.12 ✓ (host gate). Remaining: task 5.13 final documentation/handoff.
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,

@@ -1,0 +1,24 @@
+Starting: Intent { cmp=com.opus.piano/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.opus.piano/.MainActivity
+TotalTime: 5322
+WaitTime: 5374
+Complete
+  mCurrentFocus=Window{7ae3d34 u0 com.opus.piano/com.opus.piano.MainActivity}
+Starting: Intent { cmp=com.opus.piano/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.opus.piano/.MainActivity
+TotalTime: 6524
+WaitTime: 6545
+Complete
+  mCurrentFocus=Window{f52731e u0 com.opus.piano/com.opus.piano.MainActivity}
+Starting: Intent { cmp=com.opus.piano/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.opus.piano/.MainActivity
+TotalTime: 4938
+WaitTime: 4946
+Complete
+  mCurrentFocus=Window{19d89 u0 com.opus.piano/com.opus.piano.MainActivity}

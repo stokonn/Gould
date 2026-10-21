@@ -1,28 +1,26 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-21, post-green session (evidence preservation + skip
-> investigation + coverage mapping + **5.12 host gate GREEN**). Prior: attempt-6
-> FULLY GREEN ([run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
-> @ `44645fa`, headSha + both jobs' `source-commit.txt` verified: **conclusion
-> `success` — both jobs green. 5.10: 177/0/0/2 (third consecutive green). 5.11:
-> PASSED IN FULL with every acceptance section executing for the FIRST time**).
-> This session (branch @ `f9f59d1` + uncommitted docs/evidence, all EXECUTED):
-> attempt-6 evidence permanently preserved in-repo (22 MB bundle incl. both full
-> logcats SHA-verified); the 2 skipped tests root-caused (`skipped-tests.md` —
-> designed `assumeTrue` fixture conditions, never bundled into either APK, skip set
-> identical across runs 3–6; `AppLanguageTest` ran and passed); 5.11 coverage
-> mapping found **consent revocation mid-stream + low disk already EXECUTED on the
-> emulator** (per-test logcats preserved); **5.12 host gate green** (gradle
-> BUILD SUCCESSFUL, unit 174/0/0/0, lint 0 errors/110 warnings, all 5 check scripts
-> PASS). Stage 5 stays IN PROGRESS until the two genuinely-open items pass (UI
-> screenshots both themes; real bundle-transfer costs — structural blocker:
-> no production bundle feed/enqueue path exists; owner decision pending) and 5.13
-> finalizes. Read order for a fresh session: `AGENTS.md` → this file →
-> `docs/ai/HANDOFF.md` → `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md`
-> (Stage 5 section) → GitHub Issue #31.
-> **Stage 5 is NOT complete. No merge/tag/release/APK publication performed.**
+> **Last updated:** 2026-10-21, screenshot session — **all Stage 5 mandatory
+> verification requirements now have passing executed evidence.** Screenshot
+> job: 3 attempts failed on 3 distinct *script* defects (each root-caused from
+> raw logs with host-side proof, fixed via workflow-only PRs #36–#38, zero
+> application defects), then [run 39576173002](https://github.com/stokonn/Goldberg/actions/runs/39576173002)
+> @ `3579417` **GREEN — 12/12 screenshots** (Home/Repertoire/Discover/Practice/
+> Profile/Settings × Ivory/Nocturne), agent-inspected pair-by-pair, preserved in
+> `results/ci-run-39576173002/` (+ `run-summary.md`). Prior session: attempt-6
+> FULLY GREEN ([run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554):
+> 5.10 177/0/0/2; 5.11 every section executed); attempt-6 evidence preserved
+> permanently (22 MB incl. both full logcats SHA-verified); 2 skips root-caused
+> (`skipped-tests.md`); consent-revocation/low-disk coverage mapped to executed
+> instrumentation; **5.12 host gate green** (unit 174/0/0/0, lint 0 errors/110
+> warnings, 5 check scripts PASS); real-transfer costs owner-dispositioned
+> (measured evidence accepted; real-CDN = Stage 6/7 dependency, DECISIONS.md).
+> Tasks 5.10/5.11/5.12 complete; **5.13 final documentation/handoff is the
+> closing step.** Read order: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
+> `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → Issue #31.
+> **No merge/tag/release/APK publication performed.**
 
-## 🚦 Current status: **CI GREEN + 5.12 HOST GATE GREEN** — remaining Stage 5 work: screenshots + real-transfer disposition (owner decision) then 5.13
+## 🚦 Current status: **ALL MANDATORY VERIFICATION PASSED** (5.10 ✓ / 5.11 ✓ incl. green screenshots / 5.12 ✓) — task 5.13 final documentation + handoff closes the stage
 
 - **Attempt 6 ([run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
   @ `44645fa`, headSha + both jobs' `source-commit.txt` verified): CONCLUSION

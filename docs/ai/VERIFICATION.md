@@ -125,6 +125,21 @@ Evidence: `docs/planning/goldberg-0.11/stage-5/results/ci-run-39557624554/`.
 - Lint; physical-device execution; production-credential signing (by design);
   owner-device verification (forbidden by policy).
 
+## Executed — screenshot capture job: 3 failed script-defect attempts (each root-caused + fixed) then **GREEN run 39576173002, 12/12 captured + inspected** (2026-10-21, owner-approved)
+
+| # | Command / action | Result |
+|---|---|---|
+| 1 | Build + local validation of `.github/workflows/stage5-screenshots.yml`; workflow-only merge **PR #35**; dispatch run 39571926478 @ `1ae42ba` | **EXECUTED — FAILED pre-capture (5 m 9 s)** from a script defect: theme write before the app's first launch → `databases/opus.db` absent (`unable to open database file`). Emulator + install + SHA binding all fine. Root-caused from the raw step log; fix `prime_app()` → PR #36 (`ab17642`). |
+| 2 | Re-dispatch run 39572917657 @ `df8376c` | **EXECUTED — FAILED pre-capture (7 m 3 s)**, second script defect: `adb shell` device-shell re-parse split the SQL → sqlite received only the bare `UPDATE` (`in prepare, incomplete input`). **Root cause proven byte-for-byte on the host** (split-args reproduces the exact error; stdin-pipe works). Fix: stdin-piped `sql()` → PR #37 (`3008b27`). |
+| 3 | Re-dispatch run 39574447299 @ `e1351b6` | **EXECUTED — FAILED at the script's own readback guard (exit 42)**, third script defect: fresh install has **no `profile_settings` row** (the app's own `?: ProfileSettings()` fallback) → `UPDATE … WHERE id=1` matched 0 rows silently → empty readback. Fix: upsert of the entity-default row (host-proven: absent → insert; present → theme-only update preserving custom values) → PR #38 (`3e7c25e`). Assertions never weakened. |
+| 4 | Re-dispatch run 39576173002 @ `3579417` | **EXECUTED — GREEN (9 m 4 s), all steps passed.** `prime.txt` independently confirms the run-3 root cause (`id=1 row count: 0`); cold start `TotalTime 9391 ms`; **12/12 screenshots captured** (Home/Repertoire/Discover/Practice/Profile/Settings × Ivory `theme='Light'` / Nocturne `theme='Dark'`, theme readbacks asserted in-run; 116–232 KB PNGs, sha256 manifest). Preserved in `results/ci-run-39576173002/` + `run-summary.md`. |
+| 5 | Agent visual inspection of all 12 screenshots | **EXECUTED — every Ivory/Nocturne pair verified:** identical layouts, correct semantic palettes, adapted system bars, real content (Schumann quote, stats, empty states, offline-first Discover messaging + cache controls, Settings sections), no blank/clipped frames. Fresh-install empty states by design; Google sign-in untouched; no owner data involved. |
+
+### Not executed — screenshot session (no claim)
+
+- Owner's own visual sign-off (offered as courtesy; agent inspection complete).
+- Physical-device rendering (forbidden); production signing; Stage 6/7 work.
+
 ## Executed — attempt-6 evidence preservation, skip investigation, 5.11 coverage mapping, 5.12 host gate (2026-10-21, post-green session)
 
 | # | Command / action | Result |
@@ -137,12 +152,11 @@ Evidence: `docs/planning/goldberg-0.11/stage-5/results/ci-run-39557624554/`.
 
 ### Not executed — this session (no claim)
 
-- UI screenshots in both themes — **owner decision RESOLVED 2026-10-21 ("build +
-  dispatch the job")**: purpose-built dispatch-only workflow
-  `.github/workflows/stage5-screenshots.yml` created + locally validated (YAML,
-  `bash -n` of the materialized script, embedded python compiles, node-parser
-  regex tested against dump variants); dispatch + artifact capture + owner
-  inspection still pending at this checkpoint.
+- UI screenshots in both themes — **RESOLVED**: owner approved the job; the
+  purpose-built workflow was built, three script defects were root-caused +
+  fixed (PRs #36–#38), and **run 39576173002 captured all 12 screenshots
+  green** (see the screenshot-session section above; artifacts preserved in
+  `results/ci-run-39576173002/`).
 - Real bundle-transfer over a production CDN — **owner decision RESOLVED 2026-10-21
   ("document measured costs + blocker")**: the executed tests' exact byte
   accounting + real file I/O + emulator `disk-usage.txt` is the accepted Stage 5

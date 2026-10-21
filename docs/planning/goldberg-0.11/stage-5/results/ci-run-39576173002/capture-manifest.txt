@@ -1,0 +1,16 @@
+total 1896
+drwxr-xr-x 2 runner runner   4096 Oct 21 09:29 .
+drwxr-xr-x 3 runner runner   4096 Oct 21 09:29 ..
+-rw-r--r-- 1 runner runner 224312 Oct 21 09:28 ivory-discover.png
+-rw-r--r-- 1 runner runner 172023 Oct 21 09:28 ivory-home.png
+-rw-r--r-- 1 runner runner 116175 Oct 21 09:28 ivory-practice.png
+-rw-r--r-- 1 runner runner 156426 Oct 21 09:28 ivory-profile.png
+-rw-r--r-- 1 runner runner 143595 Oct 21 09:28 ivory-repertoire.png
+-rw-r--r-- 1 runner runner 134530 Oct 21 09:28 ivory-settings.png
+-rw-r--r-- 1 runner runner 232178 Oct 21 09:29 nocturne-discover.png
+-rw-r--r-- 1 runner runner 174606 Oct 21 09:28 nocturne-home.png
+-rw-r--r-- 1 runner runner 116936 Oct 21 09:29 nocturne-practice.png
+-rw-r--r-- 1 runner runner 157790 Oct 21 09:29 nocturne-profile.png
+-rw-r--r-- 1 runner runner 146270 Oct 21 09:29 nocturne-repertoire.png
+-rw-r--r-- 1 runner runner 135886 Oct 21 09:29 nocturne-settings.png
+  mCurrentFocus=Window{2eb9d19 u0 com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity}
