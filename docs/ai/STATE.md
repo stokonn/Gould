@@ -27,6 +27,24 @@
 > current state: `docs/planning/goldberg-0.11/stage-6/CHECKLIST.md` (progress
 > log) + GitHub Issue #31 checkpoints.
 
+> **Stage 6 addendum 2 (2026-10-21, later session — cloud readiness, docs only):**
+> the owner chose the **cloud architecture as the intended deployment path**
+> (Cloudflare Workers Free static + `/v1` BFF; Supabase Free `eu-central-1`;
+> strict 0 CZK) **instead of the temporary local-only Option C** — Option C is
+> now only the current gated posture; **no gate changed, nothing provisioned**
+> (documentation/verification planning only). The earlier "owner is a minor"
+> premise is **reclassified as an unverified assumption, not a verified current
+> fact** — no age/identity/family detail requested or recorded; **D5b stays
+> legally unresolved and blocking for 6.0d**. New:
+> `docs/planning/goldberg-0.11/stage-6/CLOUD-READINESS-PLAN.md` — the 6.0f ↔
+> provisioning **gate-ordering** analysis (explicit minimal sequence S1–S8;
+> alternatives **ORD-A/B/C pending an owner decision**) and the future
+> private-cloud verification runbook CR-0…CR-8 (accounts, no-billing checks,
+> Frankfurt region, secrets+MFA, CPU/cold-start/Supabase-latency/quota/
+> fail-closed/logging measurements, rollback+cleanup; **synthetic data only**;
+> 0 CZK estimates; stop conditions). **6.0f stays UNCHECKED; Stage 6
+> implementation NOT STARTED; C4 open; D5b open; Stage 5 remains COMPLETE.**
+
 > **Last updated:** 2026-10-20, CI-activation session (Phase A/B of the owner's CI plan;
 > approval gate reached — nothing dispatched or merged).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →

@@ -42,7 +42,16 @@ pre-launch gates.**
   [C4-PREPROVISIONING-CHECKLIST.md](C4-PREPROVISIONING-CHECKLIST.md) §D, after
   D5b/Q1 is resolved), secrets in server-side secrets only, kill switch, export
   target. No billing path
-  enabled. ⬜ not started.
+  enabled. ⬜ not started. **Reconciled 2026-10-21 (later session): the owner
+  chose the approved cloud architecture (Cloudflare Workers Free + Supabase
+  Free `eu-central-1`, strict 0 CZK) as the intended deployment path instead of
+  the temporary local-only Option C — Option C is no longer the intended path,
+  only the current gated posture (nothing provisioned). The 2026-10-21
+  gate-ordering analysis and the future provisioning/verification runbook are in
+  [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md); a scoped
+  verification-only provisioning step (if the owner chooses ORD-A) is a distinct,
+  separately authorized act — 6.0d production setup still follows 6.0f
+  acceptance and its own day-of C4 run. D5b stays blocking under every option.**
 - **6.0e** Configure Google OAuth console (redirect/origin allowlists, client IDs)
   per AUTH.md — separately authorized, real credentials never committed. ⬜ not
   started.
@@ -73,7 +82,16 @@ pre-launch gates.**
   ([C3-EDGE-PRIVACY-REVIEW.md](C3-EDGE-PRIVACY-REVIEW.md)): conditional
   viability at 0 CZK, no compliance claim, legal/operator questions open.
   C4 (terms re-verification before provisioning) remains open; **6.0f stays
-  unchecked.**
+  unchecked.** **Gate-ordering analysis added 2026-10-21 (later session):** the
+  apparent 6.0f ↔ provisioning circle (§12 production-runtime measurements need
+  a deployed Worker; provisioning is owner-gated on C4 + D5b) is analyzed in
+  [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md) §§2–4 — proposed explicit
+  minimal sequence (documentary verification → contractual readiness → owner
+  authorization for *limited private verification* provisioning → day-of C4 →
+  isolated synthetic-data production-runtime measurement → 6.0f acceptance/
+  rejection → separate implementation authorization → later launch gates),
+  with alternatives ORD-A/ORD-B/ORD-C **left pending as an owner decision**. No
+  gate was changed, checked or bypassed by this analysis.**
 - **Q1/C4 research deliverables prepared 2026-10-21 (documentation-only, in
   support of 6.0b/6.0d):** [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md)
   — verified contractual/capacity findings (neither provider publishes a minimum
@@ -92,7 +110,9 @@ pre-launch gates.**
 - [x] 6.0a [ ] 6.0b [x] 6.0c (D8b proof gate 6.0f still open — C2 executed
       CONDITIONAL PASS, C3 documentary review complete; Q1/C4 research docs
       prepared; open: C2 §12 production verification, final C4 verification,
-      D5b) [ ] 6.0d [ ] 6.0e [ ] 6.0f
+      D5b; cloud-readiness/gate-ordering plan prepared 2026-10-21 —
+      [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md), ORD-A/B/C decision
+      pending) [ ] 6.0d [ ] 6.0e [ ] 6.0f
 
 ## Phase 1 — Server core (implementable locally before provisioning)
 
@@ -230,5 +250,29 @@ pre-launch gates.**
   backups discrepancy); **C4 final verification stays OPEN and must still run
   immediately before any separately authorized provisioning.** No checkboxes
   closed by this entry — 6.0b, 6.0d, 6.0e, 6.0f all unchanged.
+- 2026-10-21 — **Cloud-readiness reconciliation + gate-ordering plan prepared
+  (documentation-only, no accounts).** The owner chose the approved **cloud
+  architecture as the intended deployment path** (Cloudflare Workers Free
+  same-origin static + `/v1` BFF; Supabase Free `eu-central-1`; strict 0 CZK)
+  **instead of the temporary local-only Option C**; Option C is now only the
+  current gated posture, not the intended path. The earlier "owner is a minor"
+  premise is **reclassified as an unverified assumption — not a verified current
+  fact**; no age/identity/family detail is requested or recorded anywhere, and
+  **D5b stays legally unresolved and blocking** (account registration ≠
+  compliance; eligibility, legal capacity, authority-to-bind and the GDPR
+  controller role all still require professional verification). New:
+  [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md) — reconciled assumptions;
+  the precise 6.0f ↔ provisioning gate-ordering conflict analysis; an explicit
+  minimal sequence (documentary → contractual readiness → owner-authorized
+  *limited private* verification provisioning → day-of C4 → isolated
+  synthetic-data production-runtime C2 verification → 6.0f accept/reject →
+  separate implementation authorization → launch gates) with alternatives
+  **ORD-A/B/C left pending as an owner decision**; the exact future private-cloud
+  verification runbook (CR-0…CR-8: accounts, no-billing verification, Frankfurt
+  region, secrets+MFA, CPU/cold-start/Supabase-latency/quota-fail-closed/logging
+  measurements, rollback+cleanup, synthetic data only); Free-tier usage
+  estimates (0 CZK, no billing method); binding stop/rollback conditions. No
+  checkboxes closed by this entry — 6.0b, 6.0d, 6.0e, 6.0f all unchanged; no
+  accounts, no provisioning, no OAuth, no code.
 
 created by stokonn with love <3

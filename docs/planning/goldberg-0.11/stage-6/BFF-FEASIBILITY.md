@@ -260,6 +260,12 @@ either provider; **none is recommended.**
   legal review — **C3 closes no legal or provisioning gate**.
 - **C4 — Terms re-verification** for both providers immediately before 6.0d
   provisioning.
+- **Gate-ordering note (2026-10-21, later session):** the dependency between
+  the C2 §12 production-runtime verification (needs a deployed Worker) and the
+  owner-gated provisioning/C4 steps is analyzed, with an explicit minimal
+  sequence and pending owner alternatives (ORD-A/B/C), in
+  [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md) §§2–4. No condition above
+  is closed, changed or bypassed by that analysis; 6.0f stays unchecked.
 
 ## 9. Recommendation
 

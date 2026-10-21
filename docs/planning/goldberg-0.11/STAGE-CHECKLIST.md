@@ -368,6 +368,25 @@ provisioning (6.0d), Google OAuth console setup (6.0e), and public launch/collec
 (pre-collection gate, OPEN-DECISIONS.md §5). No provisioning, no OAuth configuration,
 no client-side speculation, no paid service has occurred.
 
+**Cloud-readiness reconciliation (2026-10-21, later session, documentation-only):**
+the owner chose the approved **cloud architecture as the intended deployment
+path** (Cloudflare Workers Free + Supabase Free `eu-central-1`, strict 0 CZK)
+**instead of the temporary local-only Option C** — Option C is now only the
+current gated posture, not the intended path; **no gate changed**. The earlier
+"owner is a minor" premise is **reclassified as an unverified assumption, not a
+verified current fact** (no age/identity/family detail may be requested or
+recorded); **D5b stays legally unresolved and blocking for 6.0d**, and account
+registration would not establish compliance. The apparent **6.0f ↔
+provisioning gate-ordering conflict** (C2 §12 production measurements need a
+deployed Worker; provisioning is owner-gated on C4 + D5b) is analyzed in
+[stage-6/CLOUD-READINESS-PLAN.md](stage-6/CLOUD-READINESS-PLAN.md) with an
+explicit minimal sequence (documentary verification → contractual readiness →
+owner-authorized *limited private verification* provisioning → day-of C4 →
+isolated synthetic-data production-runtime C2 verification → 6.0f accept/
+reject → separate implementation authorization → later launch gates) and
+alternatives **ORD-A/B/C left pending as an owner decision**. **6.0f stays
+unchecked; Stage 6 implementation stays NOT STARTED; nothing provisioned.**
+
 - **Purpose:** Optional, secured community backend: server-validated Google auth,
   default-deny five-role authorization, revisioned submissions with immutable
   evidence, one-transaction moderation decisions with audit trail, versioned `/v1`

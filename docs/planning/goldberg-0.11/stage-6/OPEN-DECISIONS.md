@@ -122,4 +122,38 @@ Status vocabulary used below:
 An unresolved item blocks only its dependent tasks (STAGES.md standing rule); it never
 blocks unrelated local work.
 
+## 6. Operator decision reconciliation (2026-10-21, later session — documentation-only)
+
+Recorded from the owner's cloud-readiness instruction; full analysis:
+[CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md).
+
+- **Intended deployment path = the approved cloud architecture** (Cloudflare
+  Workers Free same-origin static + `/v1` BFF; Supabase Free PostgreSQL/Auth in
+  `eu-central-1` Frankfurt; permanent 0 CZK; no paid plans, chargeable trials,
+  automatic upgrades or unapproved billing) — **instead of the temporary
+  local-only Option C** of Q1 §5. Option C is now only the *current gated
+  posture* (nothing provisioned; nothing may be until its gates pass), not the
+  intended end state. This is a deployment-path decision only: **no gate
+  changed** — provisioning (6.0d), OAuth (6.0e), implementation and collection
+  stay separately owner-gated, and 6.0f stays unchecked.
+- **The earlier "owner is a minor" premise is reclassified as an UNVERIFIED
+  assumption, not a verified current fact** (it was carried as a premise in C3
+  Q1/Q10 and Q1 §1.4; those statements remain historical document context).
+  No age, birth date, personal identity or family detail may be requested,
+  recorded, committed or inferred anywhere. **D5b stays legally unresolved and
+  blocking for 6.0d** — the contractual questions (account eligibility, legal
+  capacity, authority to accept the provider agreements, GDPR controller role)
+  still require professional verification per Q1 §4, and account registration
+  would not establish compliance.
+- **Gate-ordering proposal — PENDING OWNER DECISION:** the apparent 6.0f ↔
+  provisioning circle (C2 §12 production-runtime measurements need a deployed
+  Worker; provisioning is owner-gated on C4 + D5b) is analyzed with an explicit
+  minimal sequence and alternatives **ORD-A** (scoped, owner-authorized
+  *limited private verification* provisioning → synthetic-data production
+  measurement → 6.0f accept/reject → separate implementation authorization),
+  **ORD-B** (close 6.0f on local C2 evidence, defer §12 to the [I] venue) and
+  **ORD-C** (full 6.0d before 6.0f closes) in
+  [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md) §§2–4. **No option is
+  adopted; the posture stays frozen until the owner chooses.**
+
 created by stokonn with love <3

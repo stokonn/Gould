@@ -199,4 +199,37 @@ agent:** read the CHECKLIST progress log, then await the owner's decisions
 (professional review of the Q1 §4 questions → choose Option A/B/C) — do not
 provision, do not implement, do not touch 6.0e.
 
+**Addendum (2026-10-21, Stage 6 cloud-readiness session — docs/planning only):**
+the owner chose the **cloud architecture as the intended deployment path**
+(Cloudflare Workers Free same-origin static + `/v1` BFF; Supabase Free
+PostgreSQL/Auth in `eu-central-1` Frankfurt; permanent 0 CZK; no paid plans,
+chargeable trials, upgrades or unapproved billing) **instead of the temporary
+local-only Option C** — Option C is now only the current gated posture (nothing
+provisioned, nothing may be until gates pass), not the intended end state.
+Instruction authorized **documentation and verification planning only**: no
+accounts, credentials, deployments, endpoints or code. The earlier "owner is a
+minor" premise is **reclassified as an unverified assumption, not a verified
+current fact**; no age/identity/family detail may be requested or recorded, and
+**D5b stays legally unresolved and blocking for 6.0d** (account registration ≠
+compliance; eligibility, legal capacity, authority-to-bind and the GDPR
+controller role require professional verification — Q1 §4 unchanged). New
+deliverable: `stage-6/CLOUD-READINESS-PLAN.md` — (a) reconciled assumptions;
+(b) the **6.0f ↔ provisioning gate-ordering** conflict analyzed with an
+explicit minimal sequence (documentary verification → contractual readiness →
+owner-authorized *limited private verification* provisioning → day-of C4 →
+isolated synthetic-data production-runtime C2 verification → 6.0f accept/
+reject → separate implementation authorization → later launch gates) and
+alternatives **ORD-A/B/C left pending as an owner decision**; (c) the exact
+future private-cloud verification runbook **CR-0…CR-8** (account readiness,
+MFA/secrets, no-billing verification, Frankfurt region selection, minimal
+private test infra, CPU-per-invocation/cold-start/Supabase-latency/quota/
+fail-closed/logging measurements, mandatory recorded rollback+cleanup —
+synthetic data only); (d) Free-tier usage estimates (0 CZK, no billing method)
+and binding stop/rollback conditions. **Next step for a fresh agent:** read
+`stage-6/CLOUD-READINESS-PLAN.md` §9 (pending owner decisions) and the CHECKLIST
+progress log, then **await the owner's gate-ordering decision (ORD-A/B/C) and
+the D5b professional-review routing — do not provision, do not create accounts,
+do not implement, do not touch 6.0e.** 6.0f stays unchecked; Stage 6
+implementation stays NOT STARTED; Stage 5 remains COMPLETE.
+
 created by stokonn with love <3

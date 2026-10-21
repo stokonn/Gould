@@ -182,5 +182,36 @@ above.
   `feature/goldberg-0.11-stage-5` (completion commit `736f6d3`); the stale Stage 5
   "in progress" references on this planning branch were reconciled additively without
   touching Stage 5 code or evidence.
+- **2026-10-21 cloud-readiness session (documentation-only, later same day):**
+  - **D-path reconciliation (owner instruction):** the approved **cloud
+    architecture is the intended Stage 6 deployment path** — Cloudflare Workers
+    Free (same-origin Web Admin static + `/v1` BFF) + Supabase Free PostgreSQL/
+    Auth in `eu-central-1` (Frankfurt); permanent **0 CZK/month**; no paid plans,
+    chargeable trials, automatic upgrades or unapproved billing — **instead of
+    the temporary local-only Option C**. Option C is now only the current gated
+    posture. Documentation/verification **planning only**: this authorizes no
+    provisioning, account creation, OAuth configuration, deployment or
+    implementation.
+  - **"Minor owner" premise reclassified:** earlier C3/Q1 statements that the
+    owner is a minor are an **unverified assumption, not a verified current
+    fact**; no age, birth date, identity or family detail may be requested,
+    recorded or inferred. **D5b stays legally unresolved and blocking for 6.0d**;
+    account eligibility, legal capacity, authority-to-bind and the GDPR
+    controller role all still require professional verification (Q1 §4), and
+    account registration would not establish compliance.
+  - **Gate-ordering proposal (PENDING OWNER DECISION):** the apparent 6.0f ↔
+    provisioning circle is analyzed in `stage-6/CLOUD-READINESS-PLAN.md` —
+    explicit minimal sequence S1–S8 and alternatives **ORD-A** (scoped
+    owner-authorized limited-private verification provisioning → synthetic-data
+    production-runtime measurement → 6.0f accept/reject → separate
+    implementation authorization), **ORD-B** (close 6.0f on local C2 evidence,
+    defer §12 to the [I] venue), **ORD-C** (full 6.0d before 6.0f closes). No
+    option adopted; no gate changed, checked or bypassed; 6.0f stays unchecked.
+  - The same document specifies the future private-cloud verification runbook
+    (CR-0…CR-8: account readiness + MFA/secrets, day-of C4, minimal private
+    infrastructure in `eu-central-1`, CPU/cold-start/Supabase-latency/quota/
+    fail-closed/logging measurements, mandatory recorded rollback/cleanup;
+    **synthetic test data only**), Free-tier usage estimates (0 CZK, no billing
+    method) and binding stop conditions.
 - No identity, controller contact, legal or credential data was invented; no legal
   compliance is claimed; free hosting is not proof of compliance.

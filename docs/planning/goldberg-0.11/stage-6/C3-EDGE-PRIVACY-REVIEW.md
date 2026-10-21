@@ -17,6 +17,20 @@ permanent 0 CZK/month contract.
 > deployed. This review does **not** close any legal, controller/operator or
 > provisioning gate (§9–§11).
 
+> **RECONCILIATION NOTE (2026-10-21, later session — no finding, risk row or
+> question in this review is answered or changed by it):** (1) the owner chose
+> this cloud architecture as the **intended deployment path** instead of the
+> temporary local-only Option C — see
+> [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md) §1; the review's scope and
+> verdict are unchanged. (2) Statements in this review that the project owner is
+> a minor (§1, risk P7, §9 Q1/Q10, §13 item 2) are **reclassified as an
+> unverified assumption carried into this document — not a verified current
+> fact**; they remain here as historical document context and may not be cited
+> as established fact. No age, identity or family detail may be requested or
+> recorded. The legal-capacity, eligibility, authority-to-bind and
+> controller-role questions remain **open and blocking for provisioning**
+> regardless of any assumption in either direction (D5b — Q1 research).
+
 **Review date:** 2026-10-21 · **Method:** current official provider
 documentation, EU institutional guidance (§12 sources, all accessed
 2026-10-21). Evidence is classified as **[Verified]** (directly stated in a

@@ -13,6 +13,23 @@ prepared 2026-10-21 · branch `docs/goldberg-0.11-stage-6-planning`**
 > [C3-EDGE-PRIVACY-REVIEW.md](C3-EDGE-PRIVACY-REVIEW.md) §9 Q1 and feeds the
 > final C4 gate ([C4-PREPROVISIONING-CHECKLIST.md](C4-PREPROVISIONING-CHECKLIST.md)).
 
+> **RECONCILIATION NOTE (2026-10-21, later session — no question below is
+> answered or changed by it):** (1) The owner chose the approved **cloud
+> architecture as the intended deployment path** — Cloudflare Workers Free +
+> Supabase Free `eu-central-1` at 0 CZK — **instead of the temporary local-only
+> Option C** (§5). Option C is therefore no longer the intended end state (only
+> the current gated posture); its table below is retained as historical record.
+> This changes **nothing about D5b**: every Q1 question, the professional-review
+> set (§4) and the blocking status of D5b for 6.0d remain exactly as written.
+> (2) The statement in the constraints below that "the owner is a minor" is
+> **reclassified as an unverified assumption carried from C3, not a verified
+> current fact**; it may not be cited as established fact, and no age, birth
+> date, identity or family detail may be requested or recorded. The contractual
+> questions this document raises (eligibility, capacity, authority-to-bind,
+> controller role) **must be answered by an accountable party regardless of any
+> assumption in either direction**. See
+> [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md) §1.
+
 **Standing constraints honored by this document:**
 
 - No identity, contact detail, family detail or credential of any person appears
