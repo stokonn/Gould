@@ -1,33 +1,45 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-21, attempt-5 result session
-> ([run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455)
-> @ `6da1021`: **5.10 PASSED again — 177/0/0/2**; **5.11 python upgrade verification
-> PASSED IN FULL for the first time** (`offlineVerified: true` — the offline fix
-> worked; in-place upgrade all-green incl. startup measurement); failed only in
-> section (b)'s **host-side parser** (first real execution) — API 36 prints the
-> transport in `nc{[ Transports: …]}`, not the legacy `ni{…} type:` the parser read;
-> **root cause proven from artifacts; the emulator itself behaved correctly**. Parser
-> fix implemented + locally verified **5/5 checks against the REAL run-5 dumps**
-> (workflow-only; assertions unchanged-strict); **sixth dispatch awaits owner
-> approval — **owner approved → attempt 6 dispatched:
-> [run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
-> @ `44645fa`, headSha verified, monitoring in progress — outcome unknown**).
+> **Last updated:** 2026-10-21, attempt-6 FULLY GREEN session
+> ([run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
+> @ `44645fa`, headSha + both jobs' `source-commit.txt` verified: **conclusion
+> `success` — both jobs green. 5.10: 177/0/0/2 (third consecutive green). 5.11:
+> PASSED IN FULL with every acceptance section executing for the FIRST time** —
+> (b) Wi-Fi→mobile transition `101 → 100` (the run-5 parser fix verified by real
+> execution), Data Saver enable/disable with `cmd netpolicy` readback + `dumpsys`
+> both directions, (c) process-death + cold restart, (d) post-restart
+> `PRAGMA integrity_check: ok` / `foreign_key_check: none` / `user_version: 10`,
+> startup measurement (candidate ≈2× faster cold process). **The mandatory CI
+> verification for 5.10/5.11 is green end-to-end.** Stage 5 stays IN PROGRESS until
+> the notebook/manual-only items (5.12/5.13) pass; no merge/tag/release performed).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
 > `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → GitHub Issue #31.
 > **Stage 5 is NOT complete. No merge/tag/release/APK publication performed.**
 
-## 🚦 Current status: 5.11 python verification fully green — attempt 6 (parser fix) in progress
+## 🚦 Current status: **CI GREEN END-TO-END** — attempt 6 fully passed; remaining Stage 5 work is notebook/manual-only (5.12/5.13)
 
-- **Attempt 6 dispatched (owner-approved): [run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
-  @ `44645fa`** (headSha verified = branch HEAD; workflow-only parser fix). Would give
-  the first real execution to (b)'s Data Saver toggles + transition assertion,
-  (c) process-death + cold restart, (d) post-restart DB integrity, if section (b) now
-  passes. Monitoring in progress — **outcome unknown, no result claimed**.
-- **Active task: monitor attempt 6 to completion, then preserve evidence**
-  (`results/ci-run-39557624554/`, run-summary, STAGE-CHECKLIST/VERIFICATION/STATE sync,
-  Issue #31 dashboard + checkpoint). If it fails: diagnose + document first — **no
-  seventh dispatch without a meaningful fix + verification**.
+- **Attempt 6 ([run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
+  @ `44645fa`, headSha + both jobs' `source-commit.txt` verified): CONCLUSION
+  `success` — BOTH JOBS GREEN.**
+  - **5.10 — PASSED (third consecutive green): 177 tests, 0 failures, 0 errors, 2
+    skipped.**
+  - **5.11 — PASSED IN FULL; every section executed for the first time:**
+    (a) python verification (`offlineVerified: true`, upgrade all-green, signing
+    green) · **(b) transition `active default network: 101 → 100`, `OK: default
+    network transitioned`** (run-5 parser fix verified by real execution) ·
+    **(b) Data Saver** enable/disable with `cmd netpolicy` readback + `dumpsys netpolicy`
+    both directions · **(c) process-death** force-stop→dead→relaunch→alive ·
+    **(d) post-restart DB** `PRAGMA integrity_check: ok`, `foreign_key_check: none`,
+    `user_version: 10` · **startup measurement** (workflow cold `TotalTime`
+    2262/2408/2587/2445/2004 ms; python samples baseline ≈4.7 s vs candidate ≈2.3 s).
+  - Evidence: `docs/planning/goldberg-0.11/stage-5/results/ci-run-39557624554/`
+    (28 files; large logcats retained in GitHub artifacts, SHA-256 recorded).
+- **What remains for Stage 5 (all notebook/manual-only → tasks 5.12/5.13):** consent
+  revocation mid-stream, low disk, screenshots, real bundle-transfer costs. **Stage 5
+  stays IN PROGRESS until those pass** (owner's standing rule); no merge/tag/release/
+  APK publication; Stage 6/7 not started; Home/Profile redesign requirements preserved.
+- Active task: report CI-green status + evidence to the owner and proceed with 5.12/5.13
+  planning per owner direction.
 
 - **Attempt 5 results ([run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455)
   @ `6da1021`, headSha + both jobs' `source-commit.txt` verified; evidence:
@@ -79,10 +91,10 @@
   `bash -n` on both materialized scripts, 3/3 stubbed-adb scenarios (retry success,
   airplane fallback, fail-fast before install), `check_agent_policy.py` PASS. The
   owner approved fix + verify + dispatch in the recovery session.
-- **Still never executed in CI (as of attempt 5):** section (b)'s Data Saver toggles +
-  the Wi-Fi→mobile transition *assertion* (run 5 died in (b)'s parser after Wi-Fi
-  restore succeeded), (c) process-death + cold restart, (d) post-restart DB integrity.
-  Startup measurement HAS now executed (inside the python run).
+- **Update from attempt 6: everything previously unexecuted has now executed and
+  passed** — (b)'s transition assertion + Data Saver, (c) process-death + cold restart,
+  (d) post-restart DB integrity, startup measurement (all first real execution; see
+  the current-status section + `results/ci-run-39557624554/`).
 
 **Run history (details: STAGE-CHECKLIST + `results/ci-run-*/run-summary.md`):**
 attempt 1 (run 39503450845) failed pre-test (dash `pipefail` + apksigner 37.0.0
@@ -102,7 +114,7 @@ Issue #31 checkpoint comments); attempt 4: fixes `dcea5b2` dispatched — **5.10
 host-side parser (format mismatch, proven from artifacts); parser fix + local
 verification committed (`44645fa`) and dispatched as attempt 6
 ([run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554),
-owner-approved) — monitoring.**
+owner-approved) — **FULLY GREEN (both jobs; all sections above)**.**
 Historical note: the triage revealed 12 of 13 run-3 failures were deterministic
 latent defects in androidTest-only tests that had never executed anywhere, 1 was a
 genuine product bug (`settle()` STALE→QUEUED wedge), plus a `readPublished()` invariant

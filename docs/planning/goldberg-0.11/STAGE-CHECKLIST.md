@@ -527,6 +527,41 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
     unchanged; E: legacy-format synthetic → fallback OK). Not executed locally: real
     emulator behavior (host blocker). A sixth dispatch awaits owner approval.
   - Tasks 5.10–5.13 remain open; Stage 5 IN PROGRESS.
+  - **Attempt 6 dispatched after owner approval and FULLY GREEN (2026-10-21,
+    [run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554) @
+    `44645fa`, headSha + both jobs' `source-commit.txt` verified) — the first fully
+    green Stage 5 CI run:**
+  - **5.10 — PASSED (third consecutive green): 177 tests, 0 failures, 0 errors, 2
+    skipped.** Evidence: `results/ci-run-39557624554/instrumentation-counts.txt` +
+    per-test XML.
+  - **5.11 — PASSED IN FULL; every acceptance section executed for the first time:**
+    - **(a) python upgrade verification** (unchanged since run 5): `offlineVerified:
+      true` (offline at attempt 1, held through upgrade), `originalRowsUnchanged`,
+      `preferencesUnchanged`, 37 sessions, bridge 3/113, `foreignKeys: pass`;
+      signing green (trusted cert `53eface4…` matched; baseline = candidate debug
+      cert; 3× apksigner exit 0).
+    - **(b) Wi-Fi→mobile transition — first execution, PASSED:** the fixed parser
+      read the API 36 format: Wi-Fi restored → `active default network: 101`,
+      `svc wifi disable` → `100`, **`OK: default network transitioned (101 → 100)`**
+      — the run-5 parser fix verified by real execution, not just local checks.
+    - **(b) Data Saver — first execution, PASSED:** enable/disable with `cmd
+      netpolicy` state readback (`enabled`/`disabled`) **and** `dumpsys netpolicy`
+      (`Restrict background: true`/`false`) — `netpolicy-enabled/disabled.txt`.
+    - **(c) process-death + cold restart — first execution, PASSED:** force-stop
+      confirmed dead → relaunch confirmed alive → databases listed.
+    - **(d) post-restart DB integrity — first execution, PASSED:** pulled
+      `db-after-restart/opus.db` (preserved): `PRAGMA integrity_check: ok`,
+      `foreign_key_check violations: none`, `user_version: 10`.
+    - **Startup measurement — first execution, PASSED:** workflow cold launches
+      TotalTime 2262/2408/2587/2445/2004 ms; python matched samples baseline
+      `[4765,5204,4774,4908,4019]` vs candidate `[2423,2436,1997,2323,2049]` ms
+      (candidate ≈2× faster; small-emulator-sample caveat recorded).
+    - Evidence: `results/ci-run-39557624554/` (28 files; large logcats retained in
+      GitHub artifacts with recorded SHA-256).
+  - **CI gate status: the mandatory CI verification for 5.10/5.11 is green
+    end-to-end.** Stage 5 stays IN PROGRESS until the notebook/manual-only items
+    (consent revocation mid-stream, low disk, screenshots, real bundle-transfer
+    costs → 5.12/5.13) also pass. No merge/tag/release performed.
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,

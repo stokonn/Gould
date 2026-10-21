@@ -101,6 +101,30 @@ Run [39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455) 
   **sixth dispatch, which awaits owner approval**.
 - Lint; physical-device execution; production-credential signing (by design).
 
+## Executed — sixth CI dispatch: **FULLY GREEN — both jobs; every acceptance section first executed and passed** (2026-10-21)
+
+Run [39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554) @
+`44645fa` (headSha + both jobs' `source-commit.txt` verified). Conclusion `success`.
+Evidence: `docs/planning/goldberg-0.11/stage-5/results/ci-run-39557624554/`.
+
+| # | Command / action | Result |
+|---|---|---|
+| 1 | Full connected instrumentation suite on API 36 emulator (job 5.10) | **EXECUTED — PASSED: 177 tests, 0 failures, 0 errors, 2 skipped** (third consecutive green). |
+| 2 | 5.11 (a) python upgrade verification (offline establishment + in-place upgrade + startup samples) | **EXECUTED — PASSED:** `offlineVerified: true` (attempt 1, held through upgrade), `originalRowsUnchanged`, `preferencesUnchanged`, 37 sessions, bridge 3/113, `foreignKeys: pass`; signing green (trusted `53eface4…` matched release; baseline = candidate debug cert `750a7aaf…`; 3× apksigner exit 0). |
+| 3 | 5.11 (b) Wi-Fi→mobile transition — **first real execution** | **EXECUTED — PASSED:** restored Wi-Fi = `active default network: 101`, after `svc wifi disable` = `100`; `OK: default network transitioned (101 -> 100)`. The run-5 parser fix verified by real execution (not only local checks). |
+| 4 | 5.11 (b) Data Saver toggles — **first real execution** | **EXECUTED — PASSED:** `cmd netpolicy` readback `enabled`/`disabled` **and** `dumpsys netpolicy` `Restrict background: true`/`false` (`netpolicy-enabled/disabled.txt`). |
+| 5 | 5.11 (c) process-death + cold restart — **first real execution** | **EXECUTED — PASSED:** force-stop dead → relaunch alive → `run-as` databases listed (`opus.db`, `-shm`, `-wal`). |
+| 6 | 5.11 (d) post-restart DB integrity — **first real execution** | **EXECUTED — PASSED:** `PRAGMA integrity_check: ok`, `foreign_key_check violations: none`, `user_version: 10` on the pulled `db-after-restart/opus.db`. |
+| 7 | Startup measurement — **first real execution** | **EXECUTED — PASSED:** workflow cold launches `TotalTime` 2262/2408/2587/2445/2004 ms; python matched samples baseline `[4765,5204,4774,4908,4019]` vs candidate `[2423,2436,1997,2323,2049]` ms (≈2× faster; small-sample caveat recorded). |
+| 8 | Evidence preservation (curated 28-file bundle; logcat SHA-256 recorded) | **EXECUTED** — 1.2 MB; large logcats retained by GitHub artifacts (30 days). |
+
+### Not executed — this session (no claim)
+
+- Notebook/manual-only items (consent revocation mid-stream, low disk, screenshots,
+  real bundle-transfer costs) → tasks 5.12/5.13 — **Stage 5 stays IN PROGRESS until these pass**.
+- Lint; physical-device execution; production-credential signing (by design);
+  owner-device verification (forbidden by policy).
+
 ## Executed — second CI dispatch + execution-model fix (2026-10-20, sixth session)
 
 Owner-approved attempt 2: merge PR #33, dispatch against `5cdc0d6`, monitor both jobs,
