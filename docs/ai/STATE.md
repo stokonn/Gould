@@ -1,32 +1,48 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-21, attempt-5 dispatch session
-> (run 4 ([39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833)
-> @ `dcea5b2`): **5.10 PASSED — 177/0/0/2, all 13 fixes verified on-device**; 5.11
-> failed only at the final offline assertion, root cause **proven from logcat** (`svc
-> data disable` no-op on the API 36 CI emulator; cellular was default network for the
-> whole "offline" upgrade. **Evidence-preserving 5.11 fix implemented + locally
-> verified at `6da1021`** (py_compile/YAML/`bash -n`/3-scenario stub simulation all
-> pass; final assertion semantics unchanged; owner approved: fix + verify + dispatch);
-> **attempt 5 dispatched:
-> [run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455)
-> @ `6da1021`, headSha verified, monitoring in progress — outcome unknown**).
+> **Last updated:** 2026-10-21, attempt-5 result session
+> ([run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455)
+> @ `6da1021`: **5.10 PASSED again — 177/0/0/2**; **5.11 python upgrade verification
+> PASSED IN FULL for the first time** (`offlineVerified: true` — the offline fix
+> worked; in-place upgrade all-green incl. startup measurement); failed only in
+> section (b)'s **host-side parser** (first real execution) — API 36 prints the
+> transport in `nc{[ Transports: …]}`, not the legacy `ni{…} type:` the parser read;
+> **root cause proven from artifacts; the emulator itself behaved correctly**. Parser
+> fix implemented + locally verified **5/5 checks against the REAL run-5 dumps**
+> (workflow-only; assertions unchanged-strict); **sixth dispatch awaits owner
+> approval — not dispatched**).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
 > `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → GitHub Issue #31.
 > **Stage 5 is NOT complete. No merge/tag/release/APK publication performed.**
 
-## 🚦 Current status: 5.10 GREEN on the emulator; 5.11 fix implemented + locally verified — attempt 5 in progress
+## 🚦 Current status: 5.11 python verification fully green; parser-format fix ready — sixth dispatch awaits owner approval
 
-- **Attempt 5 dispatched (owner-approved): [run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455)
-  @ `6da1021`** (headSha verified = branch HEAD). Validates the 5.11 offline fix on a
-  real emulator; would also be the **first real execution** of the acceptance sections
-  after the python call (Wi-Fi→mobile transition, Data Saver toggles, process-death,
-  post-restart DB, startup measurement) if offline is genuinely achieved. Monitoring in
-  progress — **outcome unknown, no result claimed**.
-- **Active task: monitor attempt 5 to completion, then preserve evidence**
-  (`results/ci-run-39552116455/`, run-summary, STAGE-CHECKLIST/VERIFICATION/STATE sync,
-  Issue #31 dashboard + checkpoint) and diagnose any failure from logs before any
-  further dispatch (no repeated dispatch without a meaningful fix).
+- **Attempt 5 results ([run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455)
+  @ `6da1021`, headSha + both jobs' `source-commit.txt` verified; evidence:
+  `docs/planning/goldberg-0.11/stage-5/results/ci-run-39552116455/`):**
+  - **5.10 — PASSED (second consecutive green): 177 tests, 0 failures, 0 errors, 2
+    skipped.**
+  - **5.11 — the python upgrade verification PASSED IN FULL, first time ever:**
+    `offlineVerified: true` (offline reached at attempt 1 via `settings put global
+    mobile_data 0`, held through the upgrade); in-place upgrade all-green
+    (`originalRowsUnchanged`, `preferencesUnchanged`, 37 sessions, UUID bridge
+    3/113, `foreignKeys: pass`); **startup measurement executed for the first time**
+    (baseline ≈ 3.6–5.1 s vs candidate ≈ 2.2–2.6 s, small-sample caveat).
+  - **Failed in section (b)'s host-side parser (first real execution):** the parser
+    read the legacy `ni{…} type:` transport token; API 36 prints it only in
+    `nc{[ Transports: … ]}`. 14 loop iterations prove **Wi-Fi reconnected and became
+    the validated active default** — only the parser couldn't read it → 60 s deadline
+    → exit. Not an app defect; proven from artifacts. Secondary defect: the deadline
+    FATAL was swallowed by `$(…)`. Sections (c)/(d) + Data Saver still never executed.
+- **Fix implemented + locally verified (workflow-only; assertions unchanged-strict):**
+  parser reads `nc{[ Transports:` with `WIFI→WIFI`/`MOBILE→CELLULAR` mapping + legacy
+  fallback; deadline FATAL to stderr. Verification EXECUTED: YAML parse OK,
+  `bash -n` OK on both materialized scripts, **fixed parser vs the REAL run-5 dumps —
+  5/5 checks** (2 positive, 2 negative-strict, 1 legacy fallback).
+- **Active task: await owner approval for the sixth dispatch.** Do NOT dispatch
+  automatically. If approved and if it fails again: diagnose + document first, no
+  seventh dispatch without a meaningful fix + verification.
+- Tasks 5.10–5.13 remain open; Stage 5 IN PROGRESS; Stage 6/7 not started.
 
 - **Attempt 4 ([run 39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833)
   @ `dcea5b2`, headSha + both jobs' `source-commit.txt` verified):**
@@ -54,11 +70,10 @@
   `bash -n` on both materialized scripts, 3/3 stubbed-adb scenarios (retry success,
   airplane fallback, fail-fast before install), `check_agent_policy.py` PASS. The
   owner approved fix + verify + dispatch in the recovery session.
-- **Never executed in CI yet:** the acceptance sections after the python call
-  (Wi-Fi→mobile transition, Data Saver toggles, process-death, post-restart DB,
-  startup measurement) — they will run for the first time in attempt 5 if the offline
-  premise is genuinely achieved.
-- Tasks 5.10–5.13 remain open; Stage 5 IN PROGRESS; Stage 6/7 not started.
+- **Still never executed in CI (as of attempt 5):** section (b)'s Data Saver toggles +
+  the Wi-Fi→mobile transition *assertion* (run 5 died in (b)'s parser after Wi-Fi
+  restore succeeded), (c) process-death + cold restart, (d) post-restart DB integrity.
+  Startup measurement HAS now executed (inside the python run).
 
 **Run history (details: STAGE-CHECKLIST + `results/ci-run-*/run-summary.md`):**
 attempt 1 (run 39503450845) failed pre-test (dash `pipefail` + apksigner 37.0.0
@@ -72,9 +87,12 @@ launch: PR #34 merged workflow-only (`816d142`), dispatched against `9b80d65` �
 run to execute application tests (177 tests, 13 failures, all root-caused from code;
 full triage: STAGE-CHECKLIST run-3 entry, `results/ci-run-39511602936/run-summary.md`,
 Issue #31 checkpoint comments); attempt 4: fixes `dcea5b2` dispatched — **5.10 green**
-(above); attempt 5: offline fix `6da1021` committed + locally verified, then dispatched
-as [run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455)
-(owner-approved in the recovery session) — monitoring. Historical note: the triage revealed 12 of 13 run-3 failures were deterministic
+(above); attempt 5: offline fix `6da1021` dispatched as
+[run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455) —
+**5.10 green again; 5.11 python verification fully passed; failed in section (b)'s
+host-side parser (format mismatch, proven from artifacts); parser fix + local
+verification committed (current HEAD); sixth dispatch awaits owner approval.**
+Historical note: the triage revealed 12 of 13 run-3 failures were deterministic
 latent defects in androidTest-only tests that had never executed anywhere, 1 was a
 genuine product bug (`settle()` STALE→QUEUED wedge), plus a `readPublished()` invariant
 gap — all fixed in `dcea5b2` with local JVM verification (174/0) before dispatch.

@@ -484,8 +484,49 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
   - **Owner approved fix + verify + fifth dispatch (recovery session); the diagnose-
     and-document-first gate was honored: run-4 results + root cause + fix design were
     documented (commit `a427d88`) before implementation, and the implementation +
-    local verification are committed before dispatching.** Tasks 5.10–5.13 remain
-    open; Stage 5 IN PROGRESS.
+    local verification are committed before dispatching.**
+  - **Attempt 5 dispatched (2026-10-21,
+    [run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455) @
+    `6da1021`, headSha + both jobs' `source-commit.txt` verified):**
+  - **5.10 — EXECUTED AND PASSED (second consecutive green): 177 tests, 0 failures, 0
+    errors, 2 skipped** on the API 36 emulator. Evidence:
+    `results/ci-run-39552116455/instrumentation-counts.txt` + full per-test XML
+    (SHA-256 `eee30ad8…98a141`).
+  - **5.11 — the python upgrade verification PASSED IN FULL for the first time ever:**
+    **`offlineVerified: true` — the attempt-5 offline fix worked** (offline reached at
+    verify-loop attempt 1, held through the whole upgrade: `connectivity-final.txt` =
+    `none`; no airplane escalation needed); seeded v0.10.1 → candidate in-place
+    upgrade fully green (`originalRowsUnchanged`, `preferencesUnchanged`, 37 sessions,
+    UUID bridge 3/113, `foreignKeys: pass`, schema 8 → 10); **startup measurement
+    executed for the first time** (baseline ≈ 3.6–5.1 s vs candidate ≈ 2.2–2.6 s cold
+    process, small-sample caveat noted in `result.json`).
+  - **5.11 — failed in section (b) (the Wi-Fi→mobile transition parser, its FIRST
+    real execution) with the root cause PROVEN from artifacts:** the host-side
+    `assert_default_network.py` read the transport from the legacy `ni{…} type:` token,
+    but the API 36 dump prints it only in `nc{[ Transports: … ]}`
+    (`connectivity-dump.txt`: `Active default network: 101`,
+    `ni{WIFI CONNECTED extra: }`, `nc{[ Transports: WIFI …]}`). **The emulator itself
+    behaved correctly** — Wi-Fi reconnected within ~4–8 s and became the validated
+    active default (14 loop iterations of evidence in `network-evidence.txt`); only the
+    parser could not read the token, so `wait_for_transport WIFI` hit its 60 s deadline
+    and `set -e` killed the script. Not an app defect (app not running in this
+    section); not a data issue (the upgrade validation had already passed). Sections
+    (c)/(d) and the Data Saver half of (b) still never executed. Secondary defect found
+    in triage: the deadline FATAL echoed into the `$(…)` substitution and reached
+    neither log. Full narrative:
+    `results/ci-run-39552116455/run-summary.md`.
+  - **Fix implemented + locally verified (documented BEFORE implementation):** parser
+    now reads `nc{\[\s*Transports:\s*(\w+)` (canonical API 36 location) with explicit
+    `WIFI→WIFI`/`MOBILE→CELLULAR` mapping and the legacy `ni type:` path kept as
+    fallback; deadline FATAL echoed to stderr. **Assertions unchanged** (active default
+    must be numeric AND declare the expected transport). Local verification
+    **EXECUTED:** YAML parse OK; `bash -n` OK on both materialized scripts; **fixed
+    parser run against the REAL run-5 dumps — 5/5 checks pass** (A: WIFI @ real dump →
+    OK; B: MOBILE @ cellular-active variant → OK via CELLULAR; C: WIFI @ cellular dump
+    → still FATAL, negative strictness preserved; D: offline dump → numeric FATAL
+    unchanged; E: legacy-format synthetic → fallback OK). Not executed locally: real
+    emulator behavior (host blocker). A sixth dispatch awaits owner approval.
+  - Tasks 5.10–5.13 remain open; Stage 5 IN PROGRESS.
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,

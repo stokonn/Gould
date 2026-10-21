@@ -98,10 +98,16 @@ attempts 1–4 dispatched from `feature/goldberg-0.11-stage-5`; attempt 4
 `dcea5b2`) delivered **5.10 PASSED (177/0/0/2 — all 13 earlier failures fixed and
 verified on-device)**; 5.11's upgrade validation passed again but its offline premise
 was proven never achieved (`svc data disable` no-op on the API 36 CI emulator — see
-`results/ci-run-39518973833/run-summary.md`). The evidence-preserving 5.11 fix was
-implemented + locally verified (commit `6da1021`); the owner approved fix + verify +
-fifth dispatch: [run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455)
-@ `6da1021`, monitoring in progress — outcome unknown.
+`results/ci-run-39518973833/run-summary.md`). The evidence-preserving 5.11 offline fix
+was implemented + verified at `6da1021`; attempt 5
+([run 39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455) @
+`6da1021`) delivered **5.10 green again (177/0/0/2)** and the **full 5.11 python
+upgrade verification passed for the first time** (`offlineVerified: true`, upgrade
+all-green, startup measured) but failed in section (b)'s host-side parser (API 36
+prints the transport in `nc{[ Transports: …]}`, not the legacy `ni type:` — proven
+from artifacts, not an app defect; see `results/ci-run-39552116455/run-summary.md`).
+The parser fix is implemented + locally verified **5/5 against the real run-5 dumps**;
+**the sixth dispatch awaits explicit owner approval — not dispatched**.
 See `docs/ai/STATE.md` for the live checkpoint. (Historical: the first dispatch, run
 39503450845, failed pre-test in both jobs from CI setup/script defects — not application defects (owner-confirmed; zero application
 tests ran; evidence:

@@ -78,6 +78,29 @@ Run [39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833) 
 - The acceptance sections after the python call (first real execution pending attempt 5).
 - Lint; physical-device execution; production-credential signing (by design).
 
+## Executed — fifth CI dispatch: 5.10 green again; 5.11 python verification PASSED IN FULL; section (b) parser format mismatch (2026-10-21)
+
+Run [39552116455](https://github.com/stokonn/Goldberg/actions/runs/39552116455) @
+`6da1021` (headSha + both jobs' `source-commit.txt` verified). Evidence:
+`docs/planning/goldberg-0.11/stage-5/results/ci-run-39552116455/`.
+
+| # | Command / action | Result |
+|---|---|---|
+| 1 | Full connected instrumentation suite on API 36 emulator (job 5.10) | **EXECUTED — PASSED: 177 tests, 0 failures, 0 errors, 2 skipped** — second consecutive green; run-4 result confirmed stable. |
+| 2 | 5.11 offline establishment (new `--offline` logic) on the real emulator | **EXECUTED — WORKED:** offline reached at verify-loop **attempt 1** (`settings put global mobile_data 0` beat telephony init), held through the whole upgrade (`connectivity-final.txt` = `none`), `offlineVerified: true`; no airplane escalation needed. |
+| 3 | Seeded in-place v0.10.1 → candidate upgrade validation (python portion, full) | **EXECUTED — PASSED IN FULL, first time ever:** `originalRowsUnchanged`, `preferencesUnchanged`, 37 sessions, UUID bridge 3 identities/113 anchors, `foreignKeys: pass`, schema 8→10; step log `PASS: exact persistent-table equality…`. **Startup measurement also executed for the first time** (baseline `[4441,4864,5140,4599,3578] ms` vs candidate `[2470,2080,2630,2363,2236] ms`, small-sample caveat in `result.json`). |
+| 4 | Section (b) Wi-Fi→mobile transition (first real execution) | **EXECUTED — FAILED in the host-side parser:** 14 loop iterations prove Wi-Fi reconnected (~4–8 s) and became validated active default (`Active default network: 101`, `nc{[ Transports: WIFI …]}`), but `assert_default_network.py` read the legacy `ni{…} type:` token, which API 36 does not print (`ni{WIFI CONNECTED extra: }`) → 60 s deadline → `set -e` exit 1. Root cause **proven from artifacts**, not inferred; not an app defect (app not running in this section). Sections (c)/(d) + Data Saver still never executed. |
+| 5 | Triage of the failure evidence (step-13 log, `network-evidence.txt`, `connectivity-dump.txt`, `result.json`) | **EXECUTED —** two workflow defects identified: (a) parser format mismatch; (b) deadline FATAL echoed into `$(…)` substitution → invisible in both log and evidence file. |
+| 6 | Parser fix implemented in the workflow (nc `Transports:` first, `WIFI→WIFI`/`MOBILE→CELLULAR` mapping, legacy `ni type:` fallback; deadline FATAL to stderr) + local verification | **EXECUTED:** YAML parse OK; `bash -n` OK on both materialized scripts; **fixed parser vs the REAL run-5 dumps — 5/5 checks pass** (WIFI @ real dump OK; MOBILE @ cellular-active variant OK; WIFI @ cellular dump still FATAL; offline dump still numeric-FATAL; legacy synthetic OK). No assertion removed or relaxed (active default must still be numeric AND declare the expected transport). Not executed locally: real emulator behavior (host blocker). |
+
+### Not executed — this session (no claim)
+
+- Section (b) Data Saver toggles, (c) process-death + cold restart, (d) post-restart
+  DB integrity — still never executed on a real CI emulator (run 5 died in (b)).
+- Real-emulator re-verification of the fixed parser (host blocker) — requires a
+  **sixth dispatch, which awaits owner approval**.
+- Lint; physical-device execution; production-credential signing (by design).
+
 ## Executed — second CI dispatch + execution-model fix (2026-10-20, sixth session)
 
 Owner-approved attempt 2: merge PR #33, dispatch against `5cdc0d6`, monitor both jobs,

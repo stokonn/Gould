@@ -348,12 +348,24 @@ jobs:
                 sys.exit(f'FATAL: no NetworkAgentInfo block found for active default network {net_id}')
             block = blocks[0]
             ni = re.search(r'ni\{([^}]*)\}', block)
-            if not ni:
-                sys.exit(f'FATAL: no ni{{...}} token in active-network block: {block}')
-            transport = re.search(r'type: (\w+)', ni.group(1))
-            if not transport:
-                sys.exit(f'FATAL: no "type:" token in ni of active-network block: {ni.group(1)!r}')
-            found = transport.group(1)
+            # API 36 (run 39552116455 evidence, connectivity-dump.txt) prints the
+            # transport ONLY in the nc{[ Transports: ... ]} capabilities section;
+            # the legacy ni{...} "type:" token does not exist there
+            # (ni{WIFI CONNECTED extra: }). Assertions unchanged: the active default
+            # network must be numeric and its NAI must declare the expected
+            # transport (WIFI->WIFI, MOBILE->CELLULAR naming mapped explicitly).
+            nc = re.search(r'nc\{\[\s*Transports:\s*(\w+)', block)
+            if nc:
+                found = nc.group(1)
+                wanted = {'WIFI': 'WIFI', 'MOBILE': 'CELLULAR'}.get(expected, expected)
+                if found != wanted:
+                    sys.exit(f'FATAL: active default network {net_id} transport is {found}, expected {wanted} ({expected})')
+                print(f'OK: active default network {net_id} uses transport {found} ({expected})')
+                sys.exit(0)
+            legacy = re.search(r'type: (\w+)', ni.group(1)) if ni else None
+            if not legacy:
+                sys.exit(f'FATAL: no transport token (nc Transports / ni type:) in active-network block: {block[:240]!r}')
+            found = legacy.group(1)
             if found != expected:
                 sys.exit(f'FATAL: active default network {net_id} transport is {found}, expected {expected}')
             print(f'OK: active default network {net_id} uses transport {found}')
@@ -368,7 +380,7 @@ jobs:
                 fi
                 sleep 4
               done
-              echo "FATAL: active default network never reached transport $expected within 60s"
+              echo "FATAL: active default network never reached transport $expected within 60s" >&2
               return 1
             }
             {
