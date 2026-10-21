@@ -1,6 +1,11 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-21, screenshot session — **all Stage 5 mandatory
+> **Last updated:** 2026-10-21 — **STAGE 5 COMPLETE, OWNER-APPROVED** (owner
+> approved the completion claim based on the verified CI evidence, completed
+> checklist, archived screenshots and final documentation; GitHub Project item
+> #31 moved to Done). Carried-forward dependency: real bundle-transfer costs
+> against a production CDN await the Stage 6/7 bundle feed (no feed exists
+> today; DECISIONS.md). Prior: screenshot session — **all Stage 5 mandatory
 > verification requirements now have passing executed evidence.** Screenshot
 > job: 3 attempts failed on 3 distinct *script* defects (each root-caused from
 > raw logs with host-side proof, fixed via workflow-only PRs #36–#38, zero
@@ -20,7 +25,7 @@
 > `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → Issue #31.
 > **No merge/tag/release/APK publication performed.**
 
-## 🚦 Current status: **ALL MANDATORY VERIFICATION PASSED** (5.10 ✓ / 5.11 ✓ incl. green screenshots / 5.12 ✓) — task 5.13 final documentation + handoff closes the stage
+## 🚦 Current status: **STAGE 5 COMPLETE — OWNER-APPROVED 2026-10-21** (5.10 ✓ / 5.11 ✓ incl. green screenshots / 5.12 ✓ / 5.13 ✓) — awaiting the owner's separate decision to merge application code / start Stage 6
 
 - **Attempt 6 ([run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
   @ `44645fa`, headSha + both jobs' `source-commit.txt` verified): CONCLUSION

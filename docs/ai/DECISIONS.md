@@ -89,3 +89,26 @@ to the owner with the honest constraints; both answered:
 Both decisions were recorded in the Issue #31 checkpoint thread as well. Stage 5 stays
 IN PROGRESS until the screenshot artifacts are captured + inspected and task 5.13
 finalizes.
+
+## Owner approval — Stage 5 completion claim APPROVED (2026-10-21, closing checkpoint)
+
+The owner approved the Goldberg 0.11 Stage 5 completion claim based on: the
+verified CI evidence (attempt-6 run 39557624554 and green screenshot run
+39576173002), the completed checklist (5.10–5.13), the archived screenshots
+(`results/ci-run-39576173002/`) and the final documentation. Actions taken:
+GitHub Project item #31 moved to **Done**; final approval checkpoint appended to
+Issue #31 (permanent audit trail preserved); docs synchronized.
+
+**Carried-forward production-CDN limitation (future integration dependency,
+explicitly preserved):** real bundle-transfer disk/network costs against a
+production CDN remain **unmeasurable until a production bundle feed/CDN URL and
+enqueue path exist** — none exists in the product today (`BundleScheduler` has
+no non-test caller; no bundle URL in `app/src/main`; download UI is Stage 7).
+The accepted Stage 5 evidence is the executed tests' exact byte accounting +
+real file I/O + emulator `disk-usage.txt` snapshots. This MUST be re-measured
+against the real host when the bundle feed ships (Stage 6/7); no numbers were
+fabricated.
+
+Explicitly NOT authorized by this approval: merging Stage 5 application code
+into `main`, tags, APK/release publication, cloud service provisioning, OAuth
+configuration, Stage 6/7 implementation. Each remains a separate owner decision.

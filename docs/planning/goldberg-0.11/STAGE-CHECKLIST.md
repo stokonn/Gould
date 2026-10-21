@@ -627,6 +627,15 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
     requirements have executed evidence that passed.** 5.10 ✓ (run 6),
     5.11 ✓ (run 6 + screenshots run + owner-dispositioned cost measurement),
     5.12 ✓ (host gate). Remaining: task 5.13 final documentation/handoff.
+  - **OWNER APPROVAL (2026-10-21): the owner approved the Stage 5 completion
+    claim** based on the verified CI evidence (runs 39557624554 + 39576173002),
+    the completed checklist, the archived screenshots and the final
+    documentation. **STAGE 5 IS COMPLETE.** The GitHub Project item #31 is
+    moved to Done; Issue #31 keeps the permanent audit trail. Carried forward
+    as a **future integration dependency**: real bundle-transfer disk/network
+    costs against a production CDN remain unmeasurable until a production
+    bundle feed/CDN URL + enqueue path exist (Stage 6/7 scope; no feed exists
+    today — DECISIONS.md). Application code stays unmerged; no tag/release/APK.
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,

@@ -137,7 +137,8 @@ Evidence: `docs/planning/goldberg-0.11/stage-5/results/ci-run-39557624554/`.
 
 ### Not executed — screenshot session (no claim)
 
-- Owner's own visual sign-off (offered as courtesy; agent inspection complete).
+- Owner's own visual sign-off — **GIVEN 2026-10-21**: the owner approved the
+  Stage 5 completion claim (incl. the archived screenshots) outright.
 - Physical-device rendering (forbidden); production signing; Stage 6/7 work.
 
 ## Executed — attempt-6 evidence preservation, skip investigation, 5.11 coverage mapping, 5.12 host gate (2026-10-21, post-green session)

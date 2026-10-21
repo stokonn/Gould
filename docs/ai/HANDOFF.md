@@ -1,11 +1,15 @@
 # Goldberg 0.11 — Stage 5 HANDOFF (fresh-session resume instructions)
 
-> Created 2026-10-20; updated at the end of the screenshot session (2026-10-21).
-> **All Stage 5 mandatory verification requirements now have passing executed
-> evidence: 5.10 ✓ (run 39557624554), 5.11 ✓ (run 6 + green screenshot run
-> 39576173002 + owner-dispositioned cost measurement), 5.12 ✓ (host gate).**
-> Task 5.13 (final documentation/handoff) is the closing step. Nothing was
-> merged, tagged or published. The CI path (workflow_dispatch on `ubuntu-24.04`
+> Created 2026-10-20; updated at the owner-approval close (2026-10-21).
+> **STAGE 5 IS COMPLETE — owner-approved 2026-10-21** on the verified CI
+> evidence (5.10 run 39557624554; 5.11 run 6 + green screenshot run
+> 39576173002 + owner-dispositioned cost measurement; 5.12 host gate; 5.13
+> docs). GitHub Project item #31 = Done; Issue #31 keeps the audit trail.
+> A next session must NOT assume merge/tag/release authority: application code
+> stays unmerged and Stage 6/7 must not start without a fresh owner decision.
+> Carried-forward dependency: real bundle-transfer costs await a production
+> bundle feed (Stage 6/7; DECISIONS.md). Nothing was merged, tagged or
+> published. The CI path (workflow_dispatch on `ubuntu-24.04`
 > with KVM) is the primary execution vehicle because the desktop's host emulator
 > is blocked by upstream bug
 > [Google Issue Tracker #566807521](https://issuetracker.google.com/issues/566807521).
