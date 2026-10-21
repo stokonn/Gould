@@ -1,22 +1,28 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-21, attempt-6 FULLY GREEN session
-> ([run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
+> **Last updated:** 2026-10-21, post-green session (evidence preservation + skip
+> investigation + coverage mapping + **5.12 host gate GREEN**). Prior: attempt-6
+> FULLY GREEN ([run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
 > @ `44645fa`, headSha + both jobs' `source-commit.txt` verified: **conclusion
 > `success` — both jobs green. 5.10: 177/0/0/2 (third consecutive green). 5.11:
-> PASSED IN FULL with every acceptance section executing for the FIRST time** —
-> (b) Wi-Fi→mobile transition `101 → 100` (the run-5 parser fix verified by real
-> execution), Data Saver enable/disable with `cmd netpolicy` readback + `dumpsys`
-> both directions, (c) process-death + cold restart, (d) post-restart
-> `PRAGMA integrity_check: ok` / `foreign_key_check: none` / `user_version: 10`,
-> startup measurement (candidate ≈2× faster cold process). **The mandatory CI
-> verification for 5.10/5.11 is green end-to-end.** Stage 5 stays IN PROGRESS until
-> the notebook/manual-only items (5.12/5.13) pass; no merge/tag/release performed).
-> Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
-> `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → GitHub Issue #31.
+> PASSED IN FULL with every acceptance section executing for the FIRST time**).
+> This session (branch @ `f9f59d1` + uncommitted docs/evidence, all EXECUTED):
+> attempt-6 evidence permanently preserved in-repo (22 MB bundle incl. both full
+> logcats SHA-verified); the 2 skipped tests root-caused (`skipped-tests.md` —
+> designed `assumeTrue` fixture conditions, never bundled into either APK, skip set
+> identical across runs 3–6; `AppLanguageTest` ran and passed); 5.11 coverage
+> mapping found **consent revocation mid-stream + low disk already EXECUTED on the
+> emulator** (per-test logcats preserved); **5.12 host gate green** (gradle
+> BUILD SUCCESSFUL, unit 174/0/0/0, lint 0 errors/110 warnings, all 5 check scripts
+> PASS). Stage 5 stays IN PROGRESS until the two genuinely-open items pass (UI
+> screenshots both themes; real bundle-transfer costs — structural blocker:
+> no production bundle feed/enqueue path exists; owner decision pending) and 5.13
+> finalizes. Read order for a fresh session: `AGENTS.md` → this file →
+> `docs/ai/HANDOFF.md` → `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md`
+> (Stage 5 section) → GitHub Issue #31.
 > **Stage 5 is NOT complete. No merge/tag/release/APK publication performed.**
 
-## 🚦 Current status: **CI GREEN END-TO-END** — attempt 6 fully passed; remaining Stage 5 work is notebook/manual-only (5.12/5.13)
+## 🚦 Current status: **CI GREEN + 5.12 HOST GATE GREEN** — remaining Stage 5 work: screenshots + real-transfer disposition (owner decision) then 5.13
 
 - **Attempt 6 ([run 39557624554](https://github.com/stokonn/Goldberg/actions/runs/39557624554)
   @ `44645fa`, headSha + both jobs' `source-commit.txt` verified): CONCLUSION
@@ -33,11 +39,45 @@
     `user_version: 10` · **startup measurement** (workflow cold `TotalTime`
     2262/2408/2587/2445/2004 ms; python samples baseline ≈4.7 s vs candidate ≈2.3 s).
   - Evidence: `docs/planning/goldberg-0.11/stage-5/results/ci-run-39557624554/`
-    (28 files; large logcats retained in GitHub artifacts, SHA-256 recorded).
-- **What remains for Stage 5 (all notebook/manual-only → tasks 5.12/5.13):** consent
-  revocation mid-stream, low disk, screenshots, real bundle-transfer costs. **Stage 5
-  stays IN PROGRESS until those pass** (owner's standing rule); no merge/tag/release/
-  APK publication; Stage 6/7 not started; Home/Profile redesign requirements preserved.
+    (now 22 MB: **both full logcats committed in-repo** and SHA-256 verified
+    byte-identical to the artifacts, plus per-test logcats, XML, DB, startup and
+    `skipped-tests.md`).
+- **Post-green session results (2026-10-21, all EXECUTED):**
+  - **Evidence permanently preserved** — the attempt-6 bundle at
+    `docs/planning/goldberg-0.11/stage-5/results/ci-run-39557624554/` is now 22 MB:
+    both full logcats (SHA-256 verified byte-identical to the GitHub artifacts:
+    acceptance `1d29f99c…70cdba`, instrumentation `c7c47039…630d9b`), per-test
+    logcats for the consent-revocation/low-storage/worker-revocation tests, JUnit
+    XML + counts + test-results log, `db-after-restart/opus.db` + integrity text,
+    startup measurement, netpolicy/transition/upgrade evidence, and
+    `skipped-tests.md`. Nothing needed remains only in 30-day artifacts.
+  - **The 2 skipped tests are designed `assumeTrue` fixture skips**
+    (`skipped-tests.md`): `Stage4ExternalProviderTest:17` + `Stage4ExternalPortraitTest:26`
+    — separately-acquired licensed fixtures that are **never bundled into either
+    APK** by policy; the skip set is identical across runs 3/4/5/6;
+    `AppLanguageTest` ran and PASSED (9.2 s). Not failures, not masked (run-1 audit
+    already proved 0 `@Ignore`/filters).
+  - **5.11 coverage mapping: 2 of the 4 notebook/manual items were already EXECUTED
+    on the emulator** as part of the 177-test suite — consent revocation mid-stream
+    (`Stage5BundleJobRunnerTest::consentRevocationMidStreamPausesAndKeepsReadyContent`,
+    revoke fired while bytes stream + worker/persistence variants, per-test logcats
+    preserved) and low disk (`lowStorageRefusesBeforeAnyByteMoves` +
+    backup-export/portrait-reserve variants).
+  - **5.12 host gate GREEN:** `./gradlew clean assembleDebug testDebugUnitTest
+    assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1` → BUILD
+    SUCCESSFUL (3 m 41 s); unit tests **174/0/0/0**; lint **0 errors / 110
+    pre-existing warnings**; all 5 `scripts/check_*.py` PASS.
+- **What remains for Stage 5 (truly open):** (1) **UI screenshots in both themes** —
+  host emulator still blocked by the upstream SIGSEGV bug, so this needs a
+  purpose-built CI job; (2) **real bundle-transfer disk/network costs** —
+  structurally not measurable today: the product has **no production bundle
+  feed/CDN URL and no production enqueue path** (`BundleScheduler` has no non-test
+  caller; download UI is Stage 7); current measured evidence = the executed tests'
+  exact byte accounting through the real engine + real file I/O + emulator
+  `disk-usage.txt` snapshots. Both items await an owner decision (Issue #31).
+  Then task 5.13 final documentation/handoff closes the stage. **Stage 5 stays IN
+  PROGRESS until those pass** (owner's standing rule); no merge/tag/release/APK
+  publication; Stage 6/7 not started; Home/Profile redesign requirements preserved.
 - Active task: report CI-green status + evidence to the owner and proceed with 5.12/5.13
   planning per owner direction.
 

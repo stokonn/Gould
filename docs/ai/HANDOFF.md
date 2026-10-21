@@ -1,11 +1,15 @@
 # Goldberg 0.11 — Stage 5 HANDOFF (fresh-session resume instructions)
 
-> Created 2026-10-20; updated at the end of the third resume session (desktop machine).
+> Created 2026-10-20; updated at the end of the post-green session (2026-10-21).
 > Stage 5 is **in progress, incomplete**. The branch HEAD is a checkpoint commit on top of
 > `54f2b45`, pushed to origin as an owner-authorized IN-PROGRESS checkpoint. Nothing was
-> merged, tagged or published. **Tasks 5.10/5.11 (instrumentation + emulator acceptance)
-> are the only Stage 5 tasks still open** — they are blocked on this desktop by a known
-> upstream emulator bug and must be executed on the **notebook's** working API 36 emulator.
+> merged, tagged or published. **Tasks 5.10 (instrumentation), 5.12 (host gate) are
+> COMPLETE with executed evidence; 5.11 is executed-and-green except two genuinely-open
+> items (UI screenshots in both themes; real bundle-transfer costs — structural blocker)
+> that await an owner decision; 5.13 (final docs/handoff) is the closing task.** The CI
+> path (workflow_dispatch on `ubuntu-24.04` with KVM) is the primary execution vehicle
+> because the desktop's host emulator is blocked by upstream bug
+> [Google Issue Tracker #566807521](https://issuetracker.google.com/issues/566807521).
 
 ## Read order (in this order, before touching code)
 
@@ -113,6 +117,19 @@ the owner approved attempt 6
 and passed — see `results/ci-run-39557624554/run-summary.md`). The CI verification for
 5.10/5.11 is green end-to-end; remaining Stage 5 work is notebook/manual-only (5.12/5.13),
 so Stage 5 stays IN PROGRESS.**
+**Post-green session (2026-10-21, all executed, branch @ `f9f59d1` + docs commits):**
+attempt-6 evidence permanently preserved in-repo (22 MB bundle: both full logcats
+SHA-verified, per-test logcats, XML, DB, startup, `skipped-tests.md`); the 2 skipped
+tests root-caused as designed `assumeTrue` fixture conditions (licensed fixtures never
+bundled into either APK; skip set identical runs 3–6; `AppLanguageTest` ran+passed);
+5.11 coverage mapping proved **consent revocation mid-stream + low disk were already
+executed on the emulator** inside the 177-test suite; **5.12 host gate GREEN**
+(gradle BUILD SUCCESSFUL 3 m 41 s, unit 174/0/0/0, lint 0 errors/110 warnings, all 5
+`scripts/check_*.py` PASS). What remains: **UI screenshots in both themes** (needs a
+purpose-built CI job — host emulator blocked) and **real bundle-transfer costs**
+(structural blocker: no production bundle feed/CDN URL and no production enqueue path
+in the product; measured byte accounting + real file I/O + `disk-usage.txt` are the
+current evidence) — both awaiting an owner decision on Issue #31; then 5.13 finalizes.
 See `docs/ai/STATE.md` for the live checkpoint. (Historical: the first dispatch, run
 39503450845, failed pre-test in both jobs from CI setup/script defects — not application defects (owner-confirmed; zero application
 tests ran; evidence:
@@ -125,8 +142,9 @@ mismatch. Minimal workflow-only corrections (bash heredoc wrapper + full
 apksigner-diagnostics capture + dual-format parsing, assertions unchanged/strict) are
 validated on the host and staged; those workflow-only fixes were merged via PRs #32–#34
 (merge commits `577d811`, `a4a9509`, `816d142`) and runs 3–4 executed application
-tests. Consent revocation mid-stream, low disk, screenshot
-inspection and real bundle-transfer costs remain notebook/manual work either way.
+tests. Consent revocation mid-stream and low disk are now covered by executed
+emulator instrumentation (see post-green status above); only screenshot inspection
+and real bundle-transfer costs remain open, both pending owner decisions.
 
 Alternative 2: if an upstream emulator fix for #566807521 ships (watch the issue), the
 desktop's `stage5-api36` AVD + emulator 37.3.4 side-by-side install are already prepared

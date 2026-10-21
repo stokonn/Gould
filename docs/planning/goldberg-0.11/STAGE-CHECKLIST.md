@@ -190,9 +190,9 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
 - [x] 5.7 Pipeline runner: QUEUED→READY with durable PAUSED/WAITING/FAILED_RETRYABLE/QUARANTINED outcomes (BundleJobRunner.kt) — instrumentation tests written.
 - [x] 5.8 WorkManager scheduler + worker: unique work per `bundleId:revision`, UNMETERED unless per-job consent, revoke/grant/cancel, startup reconciliation (BundleScheduler.kt, BundleDownloadWorker.kt).
 - [x] 5.9 `OpusApplication` lazy wiring + startup reconcile + hermetic test seams.
-- [ ] 5.10 Execute `Stage5*Test` instrumentation on an explicitly identified emulator (store I/O, runner pipeline, real WorkManager execution/cancel/reconcile).
-- [ ] 5.11 Emulator acceptance: Wi-Fi→mobile transition, Data Saver, consent revocation mid-stream, real process death at boundaries, low disk, seeded in-place upgrade from trusted 0.10.1, disk/network cost measurements.
-- [ ] 5.12 Full host gate re-run + `scripts/check_*.py` (migrations/backup/localization/paging/policy).
+- [x] 5.10 Execute `Stage5*Test` instrumentation on an explicitly identified emulator (store I/O, runner pipeline, real WorkManager execution/cancel/reconcile). — **COMPLETE: run 39557624554 (attempt 6), 177 tests / 0 failures / 0 errors / 2 skipped, stable across runs 4–6; 2 skips investigated = designed fixture assumptions (`skipped-tests.md`).**
+- [ ] 5.11 Emulator acceptance: Wi-Fi→mobile transition, Data Saver, consent revocation mid-stream, real process death at boundaries, low disk, seeded in-place upgrade from trusted 0.10.1, disk/network cost measurements. — **executed portions GREEN (attempt 6 + instrumentation coverage mapping below); OPEN: UI screenshots in both themes + real bundle-transfer disk/network costs (structural blocker documented below).**
+- [x] 5.12 Full host gate re-run + `scripts/check_*.py` (migrations/backup/localization/paging/policy). — **COMPLETE: `./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1` → BUILD SUCCESSFUL (3 m 41 s), unit tests 174/0/0/0, lint 0 errors / 110 pre-existing warnings; all 5 check scripts PASS (agent_policy, backup_fixtures, history_paging, localization, migrations).**
 - [ ] 5.13 Update `docs/ai/*` (STATE/VERIFICATION/HANDOFF/DECISIONS), reviewed commit, push to Stage 5 branch, verified evidence to GitHub Issue #31 + Project. No merge/tag/release/APK publication; Stage 6 not started.
 
 **Verification (executed so far, 2026-10-20 sessions):**
@@ -562,6 +562,42 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
     end-to-end.** Stage 5 stays IN PROGRESS until the notebook/manual-only items
     (consent revocation mid-stream, low disk, screenshots, real bundle-transfer
     costs → 5.12/5.13) also pass. No merge/tag/release performed.
+  - **Post-run-6 session (2026-10-21): evidence preservation + skip investigation +
+    coverage mapping + 5.12 host gate (all EXECUTED):**
+    - *Evidence preserved permanently* — attempt-6 bundle grew to 22 MB: both **full
+      logcats** (`acceptance-logcat.txt` `1d29f99c…70cdba`,
+      `instrumentation-logcat.txt` `c7c47039…630d9b`, SHA-256 verified identical to
+      the downloaded artifacts), per-test logcat for each acceptance-relevant test
+      (`consentRevocationMidStream…`, `lowStorageRefusesBeforeAnyByteMoves`,
+      `revocationWithdrawsConsentCancelsWork…`), JUnit XML + counts, test-results
+      log, DB checks (`db-after-restart/opus.db` + integrity text), startup
+      measurement, netpolicy/transition/upgrade evidence — nothing needed remains
+      only in the 30-day GitHub artifacts. Reports/HTML (derivative of the XML) not
+      committed; retained in artifacts.
+    - *Skip investigation* — **`skipped-tests.md`**: both skips are designed
+      `assumeTrue` fixture conditions (`Stage4ExternalProviderTest` line 17, `Stage4ExternalPortraitTest`
+      line 26 — separately-acquired licensed fixtures **never bundled into either
+      APK** by policy); skip set byte-identical across runs 3/4/5/6; `AppLanguageTest`
+      **ran and passed** (9.2 s) — an earlier looser parse that suggested otherwise was
+      a regex-pairing bug in the ad-hoc extractor, corrected and documented. No test
+      hidden: run-1 audit already proved 0 `@Ignore`/filters/exclusions.
+    - *5.11 coverage mapping (executed vs open)* — **EXECUTED on the emulator:**
+      consent revocation mid-stream → `Stage5BundleJobRunnerTest::consentRevocationMidStreamPausesAndKeepsReadyContent`
+      (revoke fired **while bytes stream**, per test source), `Stage5BundleWorkerTest::revocationWithdrawsConsentCancelsWorkAndPausesTheManifest`,
+      `missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable`, `Quality092PersistenceTest::mediaConsentCacheOfflineFailureAndRevocationAreEnforced`;
+      low disk → `Stage5BundleJobRunnerTest::lowStorageRefusesBeforeAnyByteMoves`
+      (+ `Stage3bBackupTest::exportIsAtomicOnLowSpace…`, `Stage4PortraitTest::missingConsentBlocksTransferAndInsufficientReserve…`)
+      — all with per-test logcats in the bundle. Plus attempt-6's (b)/(c)/(d)/startup
+      results above. **OPEN:** UI screenshots in both themes (host emulator blocked by
+      the upstream SIGSEGV bug → needs a purpose-built CI job) and **real
+      bundle-transfer disk/network costs** — structural blocker: the product has **no
+      production bundle feed/CDN URL and no production enqueue path** (verified:
+      `BundleScheduler` has no non-test caller; no bundle URL anywhere in
+      `app/src/main`; download UI is Stage 7) → real-CDN costs are not measurable
+      today; current measured evidence = exact byte accounting through the real
+      engine + real file I/O in the executed tests + emulator `disk-usage.txt`
+      snapshots. Owner decision requested (see Issue #31).
+    - *5.12 host gate* — **green** (checkbox above); exact results recorded.
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,

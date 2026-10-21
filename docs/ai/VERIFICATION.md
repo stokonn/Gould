@@ -125,6 +125,28 @@ Evidence: `docs/planning/goldberg-0.11/stage-5/results/ci-run-39557624554/`.
 - Lint; physical-device execution; production-credential signing (by design);
   owner-device verification (forbidden by policy).
 
+## Executed — attempt-6 evidence preservation, skip investigation, 5.11 coverage mapping, 5.12 host gate (2026-10-21, post-green session)
+
+| # | Command / action | Result |
+|---|---|---|
+| 1 | Permanent preservation of all attempt-6 evidence into `results/ci-run-39557624554/` | **EXECUTED —** bundle now 22 MB: both full logcats (SHA-256 verified byte-identical to GitHub artifacts: acceptance `1d29f99c…70cdba`, instrumentation `c7c47039…630d9b`), per-test logcats for consent-revocation/low-storage/worker-revocation tests, JUnit XML + counts + test-results log, `db-after-restart/opus.db` + integrity text, startup measurement, netpolicy/transition/upgrade evidence, `skipped-tests.md`. |
+| 2 | Skipped-test investigation (JUnit XMLs of runs 3/4/5/6 + test sources) | **EXECUTED — both skips root-caused:** designed `assumeTrue` fixture conditions — `Stage4ExternalProviderTest:17` ("separately acquired bounded public provider responses", path null) and `Stage4ExternalPortraitTest:26` ("separately acquired original and per-file metadata"; KDoc: *never bundled into either APK*). Skip set identical across all 4 runs; `AppLanguageTest` ran and passed (9.226 s) — an earlier loose-parse suggestion of a different pair was an extractor regex bug, corrected in `skipped-tests.md`. Not failures; not masked (run-1 audit: 0 `@Ignore`/filters). |
+| 3 | 5.11 coverage mapping of the four notebook/manual items against the 177-test inventory | **EXECUTED — 2 of 4 already carried out on the emulator:** consent revocation mid-stream (revoke fired while bytes stream — test source `onRead = { jobs.revokeMetered(...) }`; + worker/persistence variants, per-test logcats preserved) and low disk (`lowStorageRefusesBeforeAnyByteMoves` + backup-export/portrait-reserve variants). **OPEN:** UI screenshots both themes (host emulator blocked by upstream SIGSEGV); real bundle-transfer costs (structural blocker: no production bundle feed/CDN URL and no production enqueue path in the product — verified `BundleScheduler` has no non-test caller; download UI is Stage 7). |
+| 4 | 5.12 host gate: `./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1` | **EXECUTED — BUILD SUCCESSFUL** (3 m 41 s, 84 tasks): unit tests **174 total, 0 failures, 0 errors, 0 skipped** (30 suites); `assembleDebug` + `assembleDebugAndroidTest` OK; **lint: 0 errors, 110 warnings** (pre-existing warning set, `lint-results-debug.txt`). |
+| 5 | 5.12 check scripts: `scripts/check_{agent_policy,backup_fixtures,history_paging,localization,migrations}.py` | **EXECUTED — ALL PASS:** agent_policy (runtime agent loading not tested), backup_fixtures (formats 1–3 → schema 10 DDL, every portable field retained), history_paging (106 sessions/4 pages), localization (922 EN/CZ resources + Czech plurals), migrations (v7/v8/v9 → v10 DDL + Room export match). |
+
+### Not executed — this session (no claim)
+
+- UI screenshots in both themes (host emulator blocked; purpose-built CI job not yet
+  authorized/dispatched) — **owner decision pending**.
+- Real bundle-transfer over a production CDN (**structurally impossible today**: no
+  bundle feed exists in the product; documented, not fabricated) — **owner decision
+  pending**; current measurement = executed tests' exact byte accounting + real file
+  I/O + emulator `disk-usage.txt`.
+- Task 5.13 final documentation/handoff completion (in progress at checkpoint time).
+- Lint beyond the host gate (same command); physical-device execution; production
+  credentials; Stage 6/7 work.
+
 ## Executed — second CI dispatch + execution-model fix (2026-10-20, sixth session)
 
 Owner-approved attempt 2: merge PR #33, dispatch against `5cdc0d6`, monitor both jobs,
