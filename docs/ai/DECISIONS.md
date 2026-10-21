@@ -47,3 +47,45 @@ scope for Stage 5.
   Verification: existing `corruptStoredBlobIsQuarantinedAndRepairedOnRetry` test + emulator run.
 
 See `docs/ai/STATE.md` for the full investigation record of both findings.
+
+## Owner decisions on the two open Stage 5 acceptance items (2026-10-21, post-green session)
+
+Context: after run 39557624554 was fully green and the coverage mapping proved that
+consent revocation mid-stream + low disk were already executed on the emulator inside
+the 177-test suite, exactly two acceptance items remained genuinely open. Both were put
+to the owner with the honest constraints; both answered:
+
+1. **UI screenshots in both themes — APPROVED: "Build + dispatch the job".**
+   A purpose-built, dispatch-only CI job (`.github/workflows/stage5-screenshots.yml`)
+   boots the same proven API 36 / pixel_6 / KVM emulator configuration, installs the
+   candidate debug APK, drives the real UI (uiautomator accessibility tree; onboarding
+   dismissed via its own Skip button), switches the product's own persisted theme
+   (`profile_settings.theme` in `opus.db`: `Light` = Ivory, `Dark` = Nocturne — written
+   via `run-as` + `sqlite3` with readback assertion, app relaunched through its normal
+   startup path), and captures 12 screencaps (Home/Repertoire/Discover/Practice/Profile/
+   Settings × both themes) with SHA-256 manifest. Same safety rules as the green
+   workflow: dispatch-only, contents read-only, no production credentials, explicit
+   `emulator-NNNN` + `ro.kernel.qemu=1` guards, SHA-pinned actions, `HEAD == GITHUB_SHA`
+   assertion, no tests re-run, nothing published.
+
+2. **Real bundle-transfer disk/network costs — DECISION: "Document measured costs +
+   blocker" (recommended option).**
+   The requirement is dispositioned with the measured evidence that genuinely exists,
+   plus a formal record of why real-CDN numbers cannot be produced today:
+   - **Measured (executed) evidence accepted as the Stage 5 answer:** the run-6
+     instrumented suite exercised the real transfer engine end to end with exact byte
+     accounting (network bytes == manifest-declared bytes; staged/published file bytes;
+     admission refusal before any byte moves on low storage; mid-stream cancellation
+     byte accounting) on the emulator with real file I/O, plus `disk-usage.txt`
+     emulator snapshots.
+   - **Structural blocker (documented, not fabricated):** the product has **no
+     production bundle feed/CDN URL and no production enqueue path** — verified:
+     `BundleScheduler` has no non-test caller, no bundle URL exists anywhere in
+     `app/src/main`, and the user-facing download management UI is Stage 7 scope.
+     Real-CDN transfer costs therefore become measurable only when the bundle feed
+     exists (Stage 6/7 dependency) and must be measured then, against the real host.
+   No numbers were invented; nothing was claimed as a real-CDN measurement.
+
+Both decisions were recorded in the Issue #31 checkpoint thread as well. Stage 5 stays
+IN PROGRESS until the screenshot artifacts are captured + inspected and task 5.13
+finalizes.

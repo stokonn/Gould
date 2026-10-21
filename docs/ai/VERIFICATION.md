@@ -137,12 +137,18 @@ Evidence: `docs/planning/goldberg-0.11/stage-5/results/ci-run-39557624554/`.
 
 ### Not executed — this session (no claim)
 
-- UI screenshots in both themes (host emulator blocked; purpose-built CI job not yet
-  authorized/dispatched) — **owner decision pending**.
-- Real bundle-transfer over a production CDN (**structurally impossible today**: no
-  bundle feed exists in the product; documented, not fabricated) — **owner decision
-  pending**; current measurement = executed tests' exact byte accounting + real file
-  I/O + emulator `disk-usage.txt`.
+- UI screenshots in both themes — **owner decision RESOLVED 2026-10-21 ("build +
+  dispatch the job")**: purpose-built dispatch-only workflow
+  `.github/workflows/stage5-screenshots.yml` created + locally validated (YAML,
+  `bash -n` of the materialized script, embedded python compiles, node-parser
+  regex tested against dump variants); dispatch + artifact capture + owner
+  inspection still pending at this checkpoint.
+- Real bundle-transfer over a production CDN — **owner decision RESOLVED 2026-10-21
+  ("document measured costs + blocker")**: the executed tests' exact byte
+  accounting + real file I/O + emulator `disk-usage.txt` is the accepted Stage 5
+  answer; the structural blocker (no production bundle feed/CDN URL or enqueue
+  path in the product; download UI is Stage 7) is recorded as a Stage 6/7
+  dependency in DECISIONS.md. No fabricated numbers.
 - Task 5.13 final documentation/handoff completion (in progress at checkpoint time).
 - Lint beyond the host gate (same command); physical-device execution; production
   credentials; Stage 6/7 work.
