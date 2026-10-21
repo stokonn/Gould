@@ -171,7 +171,9 @@ jobs:
                 || { echo "ERROR: opus.db was not created by the first launch"; exit 44; }
               test "$(sql "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='profile_settings'" | tail -n1 | tr -d '\r')" = "1" \
                 || { echo "ERROR: profile_settings table missing from opus.db"; exit 45; }
-              echo "primed: opus.db + profile_settings exist after first launch" | tee stage5-screenshots/prime.txt
+              ROWS="$(sql "SELECT count(*) FROM profile_settings WHERE id=1" | tail -n1 | tr -d '\r')"
+              echo "primed: opus.db + profile_settings exist; id=1 row count: $ROWS (upsert handles both)" \
+                | tee stage5-screenshots/prime.txt
             }
 
             # Runs one SQL statement against the app's own Room DB through
@@ -185,9 +187,16 @@ jobs:
 
             set_theme() {
               # The product's own persistence (ProfileSettings.theme in opus.db).
+              # Run 39574447299 proved the fresh install has NO profile_settings
+              # row yet (the app's own getSettings() ?: ProfileSettings() fallback
+              # proves the row is optional): the plain UPDATE matched 0 rows
+              # silently and the readback returned nothing (exit 42). Upsert the
+              # app-default row instead — same columns/values the entity defaults
+              # declare (username 'Musician', empty avatar/showcase, DB defaults
+              # for the rest) — and only the theme differs per call.
               adb shell am force-stop com.opus.piano
               sleep 1
-              sql "UPDATE profile_settings SET theme='$1' WHERE id=1"
+              sql "INSERT INTO profile_settings (id,username,avatar,theme,showcase) VALUES (1,'Musician','','$1','') ON CONFLICT(id) DO UPDATE SET theme=excluded.theme"
               READBACK="$(sql "SELECT theme FROM profile_settings WHERE id=1" | tail -n1 | tr -d '\r')"
               echo "theme readback after write: '$READBACK' (expected '$1')" \
                 | tee stage5-screenshots/theme-readback.txt
