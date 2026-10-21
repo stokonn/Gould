@@ -232,4 +232,38 @@ the D5b professional-review routing — do not provision, do not create accounts
 do not implement, do not touch 6.0e.** 6.0f stays unchecked; Stage 6
 implementation stays NOT STARTED; Stage 5 remains COMPLETE.
 
+**Addendum (2026-10-21, Stage 6 ORD-A approval session — docs/planning only):**
+the owner **APPROVED ORD-A — Scoped Private Cloud Verification Provisioning**
+as the sequencing strategy for closing task 6.0f; **ORD-B and ORD-C are NOT
+selected**. This is a **sequencing-only, documentation-only** approval: it
+authorizes recording the decision, reconciling gates and preparing
+prerequisites — it is **NOT** acceptance of 6.0f, **NOT** a D5b resolution, and
+**NOT** authorization to create/configure Cloudflare or Supabase accounts,
+provision resources, deploy even a test Worker, configure OAuth, touch real
+API credentials, implement backend/Android code, modify Stage 5/Stage 7 code,
+merge/rebase, change `main`, tag/release, publish an APK, collect personal
+data, activate public endpoints or spend money. Recorded in
+`stage-6/CLOUD-READINESS-PLAN.md`: the approved 11-step sequence (§3), the
+reconciled gate table (§4.2 — C1 approved · C2 conditional pass · C2 §12 open
+· C3 complete · C4 open · **Q1/D5b open** · ORD-A approved (sequencing only) ·
+**6.0f UNCHECKED** · 6.0d/6.0e NOT AUTHORIZED · Stage 6 implementation NOT
+STARTED), the **ORD-A readiness checklist** for the future owner decision (§5,
+aligned with CR-0…CR-8), and the concise owner-facing list of the Q1 §4
+professional-review questions (§9.1 — identity-free, to be routed **outside
+GitHub**; no private replies requested in the issue). ORD-A (gate ordering) is
+explicitly distinct from **Q1 Options A/B/C (operator arrangements), none of
+which is selected**; Q1/D5b remains open and blocking — no provider account
+may be created while the contractual/legal prerequisites are unresolved, and
+creating an account would not resolve D5b or establish compliance. The "minor
+owner" premise remains an **unverified assumption**; no age, birth date,
+identity, family detail, contact information or credential may be requested,
+inferred, committed or published. Permanent **0 CZK/month** applies to every
+future step. **Next step for a fresh agent:** read
+`stage-6/CLOUD-READINESS-PLAN.md` §5 (ORD-A readiness checklist) + §9.1 (Q1
+questions) and the CHECKLIST progress log, then **await the owner's D5b
+professional-review outcome and the later phase-scoped CR-3 authorization —
+do not provision, do not create accounts, do not implement, do not touch
+6.0e.** 6.0f stays unchecked; Stage 6 implementation stays NOT STARTED;
+Stage 5 remains COMPLETE.
+
 created by stokonn with love <3

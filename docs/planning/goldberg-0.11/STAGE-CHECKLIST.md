@@ -384,8 +384,21 @@ explicit minimal sequence (documentary verification → contractual readiness �
 owner-authorized *limited private verification* provisioning → day-of C4 →
 isolated synthetic-data production-runtime C2 verification → 6.0f accept/
 reject → separate implementation authorization → later launch gates) and
-alternatives **ORD-A/B/C left pending as an owner decision**. **6.0f stays
-unchecked; Stage 6 implementation stays NOT STARTED; nothing provisioned.**
+alternatives **ORD-A/B/C left pending as an owner decision**.
+
+**ORD-A APPROVED 2026-10-21 (sequencing only, documentation-only session):**
+the owner selected **ORD-A — Scoped Private Cloud Verification Provisioning**
+as the sequencing strategy for closing 6.0f (**ORD-B/ORD-C not selected**),
+recorded with the approved 11-step sequence, the reconciled gate table (C1
+approved · C2 conditional pass · C2 §12 open · C3 complete · C4 open · Q1/D5b
+open · ORD-A approved (sequencing only) · 6.0f unchecked · 6.0d/6.0e not
+authorized · Stage 6 implementation not started) and the **ORD-A readiness
+checklist** for the future owner decision in
+[stage-6/CLOUD-READINESS-PLAN.md](stage-6/CLOUD-READINESS-PLAN.md) §§3–5. **ORD-A
+approves the ordering of future steps only** — it is not acceptance of 6.0f,
+not a D5b resolution, and not authorization to create accounts, provision,
+deploy, configure OAuth or implement. **6.0f stays unchecked; Stage 6
+implementation stays NOT STARTED; nothing provisioned.**
 
 - **Purpose:** Optional, secured community backend: server-validated Google auth,
   default-deny five-role authorization, revisioned submissions with immutable

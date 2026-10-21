@@ -4,20 +4,21 @@
 verification-planning only · prepared 2026-10-21 · branch
 `docs/goldberg-0.11-stage-6-planning`**
 
-> **Standing of this document.** This plan **authorizes nothing**. The owner's
+> Standing of this document. This plan **authorizes nothing**. The owner's
 > 2026-10-21 instruction that produced it authorizes **documentation and
 > verification planning only** — it explicitly does **not** authorize
 > provisioning or production implementation. Nothing here creates accounts,
 > credentials, deployments, endpoints or code. Every phase in §5 is a **future
 > procedure** that runs only under a separate, explicit, phase-scoped owner
 > instruction. This document: (a) reconciles the operator's cloud-architecture
-> decision with the planning assumptions; (b) proposes an explicit resolution of
-> the apparent 6.0f gate-ordering conflict, leaving the gate-policy choice
-> **pending as an owner decision**; (c) specifies the exact future private-cloud
-> verification procedure (synthetic data only); and (d) records zero-cost
-> estimates, stop conditions and rollback. Preserved without change: **C1
-> approved · C2 CONDITIONAL PASS (local; production verification pending) · C3
-> documentary review complete · C4 final verification OPEN · D5b legally
+> decision with the planning assumptions; (b) records the **approved ORD-A
+> gate-ordering strategy (2026-10-21 — sequencing only)** resolving the apparent
+> 6.0f gate-ordering conflict, with the still-open prerequisites and
+> phase-scoped authorizations left pending; (c) specifies the exact future
+> private-cloud verification procedure (synthetic data only); and (d) records
+> zero-cost estimates, stop conditions and rollback. Preserved without change:
+> **C1 approved · C2 CONDITIONAL PASS (local; production verification pending)
+> · C3 documentary review complete · C4 final verification OPEN · D5b legally
 > unresolved · 6.0f UNCHECKED · Stage 5 COMPLETE · Stage 6 implementation NOT
 > STARTED · Stages 7–8 pending.**
 
@@ -125,59 +126,118 @@ itself a **gate-policy clarification the owner has never authorized** (no
 account may be created by anyone today; §12 says so explicitly). Therefore the
 resolution below is **proposed, not adopted**, and any branch of it that changes
 gate policy is **left pending as an owner decision**.
+*(Superseded 2026-10-21, same day, later session: the owner decided — **ORD-A
+approved, sequencing only** — see the supersession note at §3 and the decision
+record at §4. The analysis above is retained unchanged as the historical
+reasoning behind the decision.)*
 
-## 3. Proposed sequence (minimal, safe, does not bypass 6.0f)
+## 3. Approved sequence (ORD-A — owner-approved sequencing strategy, 2026-10-21)
 
-The sequence distinguishes the eight conceptually separate steps the owner's
-instruction requires, so that no step borrows another step's authority:
+> **SUPERSESSION NOTE (2026-10-21, ORD-A approval session):** this section was
+> originally written as a *proposal with pending alternatives*. The owner has
+> now **approved ORD-A** as the sequencing strategy (§4). The sequence below is
+> therefore the **approved gate ordering** — while remaining, as before, a
+> plan that **authorizes no execution**: every step involving real accounts or
+> infrastructure still requires its own separate, phase-scoped owner
+> instruction (§5).
 
-| # | Step | Nature | Who/what it unblocks | Gate status now |
+The sequence distinguishes the conceptually separate steps so that no step
+borrows another step's authority. The owner-approved ordering (recorded
+2026-10-21) maps onto the S-table as follows — the **11 owner-approved steps**
+are authoritative; S-IDs are the shorthand used elsewhere in this document:
+
+| # | Step (owner-approved sequence) | Shorthand | Nature | Gate status now |
 |---|---|---|---|---|
-| S1 | **Documentary verification** | Documentation work | Everything downstream | 🟧 baseline captured 2026-10-21 (C4 pre-provisioning checklist; C3 sources); final day-of run still required at S4 |
-| S2 | **Account eligibility & legal/contractual readiness** | Owner action + professional review | S3, S4 | ⬜ **OPEN — D5b unresolved and blocking**; Q1 §4 question set ready to route verbatim |
-| S3 | **Owner authorization for limited private provisioning** | Explicit owner decision, phase-scoped | S4/S5 only | ⬜ pending — requires the §4 gate-ordering decision first |
-| S4 | **C4 execution immediately before provisioning** | Verification run (day-of, fresh) | S5 | ⬜ OPEN — must run immediately before S5, not weeks before |
-| S5 | **Isolated production-runtime C2 verification (synthetic data only)** | Measurement on throwaway private resources (§5 runbook) | 6.0f evidence | ⬜ not started; needs S2+S3+S4 green |
-| S6 | **Final 6.0f acceptance or rejection** | Owner decision on evidence | Implementation authorization | ⬜ 6.0f UNCHECKED |
-| S7 | **Separate Stage 6 implementation authorization** | Explicit owner instruction | Tasks 6.1–6.18 (incl. production 6.0d setup, 6.0e) | ⬜ NOT STARTED |
-| S8 | **Later real-user launch gates** | D5a contact, D5b final, D5d details, 6.16 published notices, [I]-venue rows, export/restore drill, owner authorization | Public collection | ⬜ blocked; **collection stays embargoed** |
+| 1 | Complete documentary readiness | S1 | Documentation work | 🟧 baseline captured 2026-10-21 (C4 pre-provisioning checklist; C3 sources); final day-of run still required at step 5 |
+| 2 | Resolve Q1/D5b account eligibility, contractual capacity and controller responsibilities through appropriate review | S2 | Owner action + professional review | ⬜ **OPEN — D5b unresolved and blocking**; Q1 §4 question set ready to route verbatim |
+| 3 | Establish a legally and contractually acceptable account/operator arrangement | S2 | Owner action (Q1 Options A/B/C — **none selected yet**) | ⬜ OPEN |
+| 4 | Obtain separate explicit owner authorization for limited private verification provisioning | S3 | Explicit owner decision, phase-scoped | ⬜ not yet — ORD-A approves the *ordering*, not this authorization |
+| 5 | Execute the final C4 terms/pricing/privacy verification immediately before provisioning | S4 | Verification run (day-of, fresh) | ⬜ OPEN — must run immediately before step 6 |
+| 6 | Create only the minimum separately authorized private test resources | S5 prep | Minimal private infrastructure (CR-5) | ⬜ NOT AUTHORIZED |
+| 7 | Execute C2 §12 production-runtime verification using synthetic data | S5 | Measurement on throwaway private resources (§5 runbook CR-6) | ⬜ not started; needs steps 2–4 green |
+| 8 | Remove temporary resources, revoke credentials and verify cleanup | S5 post | Mandatory recorded rollback (CR-7) | ⬜ planned |
+| 9 | Evaluate evidence and obtain explicit owner acceptance or rejection of 6.0f | S6 | Owner decision on evidence | ⬜ 6.0f UNCHECKED |
+| 10 | Obtain separate Stage 6 implementation authorization | S7 | Explicit owner instruction | ⬜ NOT STARTED |
+| 11 | Complete additional legal/privacy/launch gates before collecting any real-user data | S8 | D5a contact, D5b final, D5d details, 6.16 published notices, [I]-venue rows, export/restore drill, owner authorization | ⬜ blocked; **collection stays embargoed** |
 
-**Property:** S5 (the only step that touches real infrastructure) sits behind
-S2 (contractual readiness) and S4 (fresh C4), and in front of S6/S7 — 6.0f is
-still genuinely satisfied before any implementation begins; no gate is
-bypassed, one gate-policy clarification (S3 scope) is made explicit and
-owner-decided.
+**Property:** step 7 (the only step that touches real infrastructure) sits
+behind steps 2–4 (contractual readiness + phase-scoped authorization) and step
+5 (fresh C4), and in front of steps 9–10 — **6.0f remains a pre-implementation
+gate**: it must be genuinely satisfied before any implementation begins; the
+narrowly scoped verification provisioning of steps 4–8 may precede its closure
+**only after its own prerequisites and a separate authorization**. No gate is
+bypassed.
 
-## 4. Gate-ordering alternatives — **pending owner decision**
+**Permanent constraints attached to the approved sequence:** strict **0
+CZK/month**; **no billing methods, paid features, trials that incur charges,
+auto-upgrades or chargeable usage** anywhere in any step — a required capability
+that is no longer available at 0 CZK is a **blocker report to the owner, never
+a silent upgrade** (D8b, C4 X-5).
 
-Nothing in §3 is adopted until the owner picks an option. Presented without
-recommendation-in-the-record (MiMo's own view is in the final report, not here):
+## 4. Gate-ordering decision — **ORD-A APPROVED (2026-10-21), sequencing only**
 
-- **Option ORD-A — Scoped verification provisioning (the §3 sequence).**
-  Owner authorizes a *limited, private, verification-only* provisioning phase
-  (S3): two Free accounts (or an existing owner-authorized pair), one throwaway
-  Worker, one minimal private Supabase project — synthetic data only, deleted
-  with recorded evidence after S5. 6.0f closes on the resulting §12 evidence,
-  *then* implementation is separately authorized (S7), with production 6.0d
-  setup executed then. *Gate-policy change:* creates the S3 category; requires
-  explicit owner decision. *Risk if 6.0f rejects:* resources are deleted
-  (§6 rollback); sunk cost 0 CZK.
-- **Option ORD-B — Close 6.0f on local evidence; defer §12.** Owner explicitly
-  downgrades C2 §12 from required-now to deferred-to-integration-venue ([I]
-  rows / 6.13). 6.0f could then be accepted on C2-local + C3 + C4 documentary
-  evidence, with **zero cloud resources until implementation authorization**.
-  *Gate-policy change:* weakens the D8b proof (production CPU/cold-start
-  behavior unverified until after implementation begins); residual risk is
-  owner-accepted, never agent-assumed.
+> **Owner decision recorded 2026-10-21: ORD-A — Scoped Private Cloud
+> Verification Provisioning is APPROVED as the sequencing strategy for closing
+> the 6.0f feasibility gate. ORD-B and ORD-C are NOT selected.** This approval
+> is **sequencing only** — it authorizes recording the decision, reconciling
+> gates and preparing prerequisites (what this document does). It is **NOT
+> approval to execute any step involving real provider accounts or
+> infrastructure**: no account creation, no provisioning, no deployment, no
+> OAuth configuration, no production code, no real-user data collection. 6.0f
+> remains a **pre-implementation gate** and stays **UNCHECKED**.
+
+### 4.1 What ORD-A approves (restated for the record)
+
+The §3 table (steps 1–11) is the approved ordering. Key clarifications, all
+binding:
+
+- **ORD-A ≠ Q1 Options A/B/C.** ORD-A is the *gate-ordering* strategy (when
+  things may happen). Q1 Options A/B/C are possible *legal/operator
+  arrangements* (who holds the accounts and carries controller duties) —
+  **none is selected**; that selection belongs to the owner after professional
+  review ([Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) §5).
+- **Q1/D5b stays unresolved** and blocks steps 2–6 under every reading: no
+  provider account may be created while the contractual and legal prerequisites
+  remain unresolved, and creating an account would not resolve D5b or establish
+  compliance.
+- Verification provisioning under ORD-A is **narrowly scoped** (CR-5: one
+  throwaway Worker, one minimal private Supabase project, synthetic data only,
+  mandatory recorded deletion) and **never** becomes production by default; the
+  production 6.0d setup happens only after step 10's separate authorization.
+- The permanent **0 CZK/month** requirement (no billing methods, paid features,
+  chargeable trials, auto-upgrades or chargeable usage) applies to every step;
+  any 0 CZK failure is an owner blocker report, never a silent upgrade.
+
+### 4.2 Reconciled Stage 6 gate statuses (authoritative, as of 2026-10-21)
+
+| Gate | Status |
+|---|---|
+| C1 | **APPROVED** — Cloudflare Workers Free + Supabase Free (architecture level) |
+| C2 | **CONDITIONAL PASS** — local verification completed (`workerd`, 19/19 security, CPU 2.03 ms/invocation avg) |
+| C2 §12 | **OPEN** — real production-runtime verification pending |
+| C3 | **DOCUMENTARY REVIEW COMPLETE** — conditional viability at 0 CZK, no compliance claim |
+| C4 | **OPEN** — checklist prepared, final verification not executed |
+| Q1/D5b | **OPEN** — contractual/legal readiness unresolved |
+| ORD-A | **APPROVED — sequencing decision only** |
+| 6.0f | **UNCHECKED** |
+| 6.0d | **NOT AUTHORIZED** |
+| 6.0e | **NOT AUTHORIZED** |
+| Stage 6 implementation | **NOT STARTED** |
+
+No technical, legal or privacy gate may be closed without evidence; ORD-A
+approval is **not** acceptance of the 6.0f feasibility gate.
+
+### 4.3 Preserved historical alternatives (not selected — retained for the record)
+
+- **Option ORD-B — Close 6.0f on local evidence; defer §12.** Would downgrade
+  C2 §12 to deferred-to-[I]-venue; **NOT SELECTED** (2026-10-21).
 - **Option ORD-C — Full 6.0d production provisioning before 6.0f closes.**
-  Provision the complete intended topology (after S2 + S4), measure, then close
-  6.0f. *Gate-policy change:* inverts the pre-implementation intent of 6.0f by
-  committing production resources before the architecture proof closes;
-  conflates verification provisioning with production provisioning. Legally
-  possible, least clean; not recommended by the agent.
+  Would commit production resources before the architecture proof closes;
+  **NOT SELECTED** (2026-10-21).
 
-**Consequence of no decision:** the posture simply stays frozen — nothing
-provisioned, 6.0f unchecked, no accounts. No option is "default".
+The original "no decision → frozen posture" consequence is now historical: the
+decision exists (ORD-A), and the posture remains frozen **only because steps
+2–6 are still open** — no other reason.
 
 ## 5. Private-cloud verification runbook (future; each phase separately authorized)
 
@@ -188,10 +248,58 @@ OAuth, no public endpoints, no billing method, no paid feature** — ever, at an
 phase below. Each phase ends with a recorded evidence entry; any stop condition
 (§6) halts the run.
 
+### ORD-A readiness checklist for the future owner decision (all must be green before CR-5)
+
+Prepared 2026-10-21 under the approved ORD-A sequencing (§4). This is the
+bounded checklist the owner (or a fresh agent on their instruction) verifies
+before any limited private verification provisioning is created. **Nothing here
+is executed by this document.**
+
+- [ ] Q1/D5b prerequisites **resolved** (professional review returned; operator
+      arrangement established per Q1 Options A/B/C — none pre-selected).
+- [ ] **Confirmed authority to accept provider contracts** by the determined
+      counterparty (CF SSSA §2.2.1(a) / DPA v6.4; Supabase ToS v2 authority-to-bind
+      warranties) — recorded as a fact, with no identity data in the repository.
+- [ ] **Separate explicit owner approval to create temporary resources**
+      (distinct from this ORD-A sequencing approval — CR-3).
+- [ ] **Day-of C4 verification executed** (CR-1/CR-4) with every ⚠/⬜ item
+      current; CF-P6 checked if the date is ≥ 2026-12-01.
+- [ ] **Cloudflare Workers Free only** — Free plan confirmed, **no billing
+      method, no paid features, no add-ons, no custom domains**.
+- [ ] **Supabase Free in `eu-central-1` (Frankfurt)** — the specific region
+      selected in the real project-creation flow (not the general "Europe"
+      grouping); no billing method; no paid features.
+- [ ] **MFA-protected operator access** on both accounts (D8c), recovery codes
+      held offline by the owner; no credential ever enters the repository.
+- [ ] **Minimal, temporary, protected resources only** — one throwaway Worker
+      (verification name, secret-gated, fail-closed), one minimal Supabase
+      project (RLS on, synthetic schema only, service-role server-side only);
+      target lifetime ≤ 1 week.
+- [ ] **Synthetic identities and synthetic data only** — machine-generated or
+      obviously fictional; no real users, no real catalogue data copied from
+      elsewhere, no owner personal data.
+- [ ] **No public service launch or open participation** — the Worker is never
+      referenced by any client, no public endpoints are activated, nothing is
+      indexed or shared; collection stays embargoed (6.16 gates unchanged).
+- [ ] **Measurements planned and executed per CR-6:** CPU per invocation, cold
+      starts, Supabase latency, quota/fail-closed behavior (no deliberate
+      provider-quota exhaustion), secret-safe minimized logging audit.
+- [ ] **Mandatory resource deletion and credential revocation** (CR-7): Worker
+      deleted and route verified 404; Supabase project deleted/emptied and
+      paused; API tokens revoked; local secrets removed.
+- [ ] **Recorded cleanup and verification evidence** in CHECKLIST.md +
+      docs/ai/VERIFICATION.md + Issue #31 before 6.0f may be discussed.
+- [ ] **Immediate stop on any contractual, financial, privacy or security
+      blocker** (§6) — reported to the owner, never worked around.
+
+If any checklist item cannot be satisfied at **0 CZK**, the outcome is a
+**blocker report to the owner** — never an upgrade, trial or substitution (D8b).
+
 ### CR-0 — Preconditions (all must be true before CR-1 starts)
 
-- [ ] Gate-ordering decision recorded (§4 — one of ORD-A/B/C; ORD-B skips
-      CR-2–CR-5 entirely).
+- [ ] Gate-ordering decision recorded (§4): ✅ **ORD-A approved 2026-10-21 —
+      sequencing only; this CR checklist is the ORD-A-aligned readiness gate
+      and every item below must be green before CR-5 provisions anything.**
 - [ ] D5b/X-1 resolved per [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md)
       §6 (professional review returned; operator structure chosen; the
       counterparty who will accept the provider agreements is determined and
@@ -382,7 +490,9 @@ is exercised, not stress-tested, at verification time.
 
 - Does **not** authorize provisioning, account creation, OAuth configuration,
   deployment, implementation, or any change to Android/backend production
-  source (none exists yet on this branch).
+  source (none exists yet on this branch) — **including under the approved
+  ORD-A sequencing: ORD-A approves the ordering of future steps only, not the
+  execution of any step involving real accounts or infrastructure.**
 - Does **not** close, weaken or check 6.0f, C2 §12, C4 or D5b; it does **not**
   claim legal/GDPR approval, and does **not** treat account registration as
   compliance.
@@ -391,19 +501,50 @@ is exercised, not stress-tested, at verification time.
 - Does **not** merge, rebase, tag or release; does **not** touch the Stage 5
   branch or its evidence; does **not** change the GitHub Project status.
 
-## 9. Pending owner decisions (consolidated)
+## 9. Remaining owner actions (consolidated, post-ORD-A)
 
-1. **Gate ordering (§4):** ORD-A (scoped verification provisioning — the §3
-   sequence), ORD-B (close 6.0f on local evidence, defer §12), or ORD-C (full
-   6.0d before 6.0f). Until decided: frozen posture.
-2. **D5b (blocking for any provisioning under every option except ORD-B's
-   deferral, and for all real-user collection under all options):** route the
+1. **D5b (the only substantive blocker before steps 4–7):** route the
    [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) §4 questions to an
    appropriate professional review; record the outcome; choose the operator
-   structure (Q1 Options A/B/C).
-3. **Later, phase-scoped (not now):** CR-3 limited-provisioning authorization;
-   CR-6 measurement scope sign-off; CR-8 6.0f acceptance/rejection; then the
-   separate Stage 6 implementation authorization; then launch gates.
+   arrangement (Q1 Options A/B/C — none selected). Owner-facing summary of
+   those questions is in §9.1 below.
+2. **Phase-scoped authorizations (later, never implied by ORD-A):** CR-3
+   limited-provisioning approval; CR-6 measurement scope sign-off; CR-8 6.0f
+   acceptance/rejection; then the separate Stage 6 implementation
+   authorization; then the launch gates (step 11).
+
+### 9.1 Q1 §4 questions — concise owner-facing list (route to a qualified professional; no private replies needed in GitHub)
+
+These are the neutral, identity-free questions from
+[Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) §4, restated briefly for
+routing. They contain and request no personal data; answers should be recorded
+in OPEN-DECISIONS.md, not in the public issue:
+
+1. May a person of the project owner's situation validly accept the Cloudflare
+   and Supabase agreements as customer of record, accept the DPAs'
+   authority-to-bind warranties, and act as GDPR controller — and what consent
+   or court approval is required, if any (apparently Czech Civil Code
+   §§30–33)?
+2. Is this project plausibly "independent business/gainful activity" requiring
+   §33 court approval, or outside that provision?
+3. If an adult/guardian must be the counterparty, does Cloudflare SSSA
+   §2.2.1(a) permit that structure, or must the adult be the genuine customer
+   principal (with the technical operator under §2.3 third-party access)?
+4. In each permitted structure, **who is the GDPR controller**, who is the
+   processor, and what legal instrument connects the parties? Does written
+   documentation beyond the provider contracts exist/need creating?
+5. (If a legal entity is considered) what is the simplest lawful formation
+   path, its obligations even at zero revenue, and its cost — any fee is an
+   owner decision against the 0 CZK boundary, never absorbed silently.
+6. What must be true before any real user data is collected (controller
+   identification/contact, privacy notice, lawful basis, retention,
+   minors/consent posture, Art. 30/35 screening)?
+7. Do Google's age terms permit the planned Google sign-in for end users, and
+   under what age/consent configuration (feeds 6.0e review)?
+8. Which obligations attach **now** (before launch) versus only on opening the
+   service to real contributors?
+
+**The agent cannot perform this review and draws no legal conclusion.**
 
 ## 10. Sources
 

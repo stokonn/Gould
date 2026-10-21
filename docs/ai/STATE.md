@@ -45,6 +45,24 @@
 > 0 CZK estimates; stop conditions). **6.0f stays UNCHECKED; Stage 6
 > implementation NOT STARTED; C4 open; D5b open; Stage 5 remains COMPLETE.**
 
+> **Stage 6 addendum 3 (2026-10-21, ORD-A approval session — docs only):** the
+> owner **APPROVED ORD-A — Scoped Private Cloud Verification Provisioning** as
+> the sequencing strategy for closing 6.0f (**ORD-B/ORD-C not selected**;
+> sequencing-only — not acceptance of 6.0f, not a D5b resolution, not
+> authorization to create accounts, provision, deploy, configure OAuth or
+> implement). Recorded in `stage-6/CLOUD-READINESS-PLAN.md` §§3–5: the
+> approved 11-step sequence, the reconciled gate table (C1 approved · C2
+> conditional pass · C2 §12 open · C3 complete · C4 open · Q1/D5b open ·
+> ORD-A approved (sequencing only) · **6.0f UNCHECKED** · 6.0d/6.0e NOT
+> AUTHORIZED · Stage 6 implementation NOT STARTED), the ORD-A readiness
+> checklist for the future owner decision, and the concise owner-facing Q1 §4
+> professional-review question list (§9.1, routed outside GitHub). Q1 Options
+> A/B/C (operator arrangements) remain distinct and unselected; the "minor
+> owner" premise remains an unverified assumption; no personal data of any
+> kind is requested or recorded. **Next owner action: route the Q1 §4
+> questions to a professional review to resolve D5b** — until then nothing may
+> be provisioned. Stage 5 remains COMPLETE.
+
 > **Last updated:** 2026-10-20, CI-activation session (Phase A/B of the owner's CI plan;
 > approval gate reached — nothing dispatched or merged).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →

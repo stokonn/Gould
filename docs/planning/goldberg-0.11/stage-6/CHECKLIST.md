@@ -92,6 +92,14 @@ pre-launch gates.**
   rejection → separate implementation authorization → later launch gates),
   with alternatives ORD-A/ORD-B/ORD-C **left pending as an owner decision**. No
   gate was changed, checked or bypassed by this analysis.**
+  **ORD-A APPROVED 2026-10-21 (sequencing only):** the owner selected **ORD-A —
+  Scoped Private Cloud Verification Provisioning** as the gate-ordering
+  strategy (ORD-B/ORD-C not selected). This approves the *ordering* of future
+  steps (CLOUD-READINESS-PLAN.md §3 steps 1–11) — it is **not** acceptance of
+  6.0f, **not** authorization to create accounts, provision, deploy or
+  implement. 6.0f stays **unchecked**; Q1/D5b, C2 §12 and C4 stay open; the
+  ORD-A readiness checklist (CLOUD-READINESS-PLAN.md §5) must be fully green
+  before any CR-5 provisioning under a separate phase-scoped instruction.
 - **Q1/C4 research deliverables prepared 2026-10-21 (documentation-only, in
   support of 6.0b/6.0d):** [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md)
   — verified contractual/capacity findings (neither provider publishes a minimum
@@ -110,9 +118,9 @@ pre-launch gates.**
 - [x] 6.0a [ ] 6.0b [x] 6.0c (D8b proof gate 6.0f still open — C2 executed
       CONDITIONAL PASS, C3 documentary review complete; Q1/C4 research docs
       prepared; open: C2 §12 production verification, final C4 verification,
-      D5b; cloud-readiness/gate-ordering plan prepared 2026-10-21 —
-      [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md), ORD-A/B/C decision
-      pending) [ ] 6.0d [ ] 6.0e [ ] 6.0f
+      D5b; ORD-A gate-ordering strategy APPROVED 2026-10-21 — sequencing only,
+      [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md); execution still
+      blocked on D5b + phase-scoped authorizations) [ ] 6.0d [ ] 6.0e [ ] 6.0f
 
 ## Phase 1 — Server core (implementable locally before provisioning)
 
@@ -274,5 +282,26 @@ pre-launch gates.**
   estimates (0 CZK, no billing method); binding stop/rollback conditions. No
   checkboxes closed by this entry — 6.0b, 6.0d, 6.0e, 6.0f all unchanged; no
   accounts, no provisioning, no OAuth, no code.
+- 2026-10-21 — **ORD-A APPROVED by the owner (sequencing only, documentation
+  only).** The owner selected **ORD-A — Scoped Private Cloud Verification
+  Provisioning** as the approved sequencing strategy for closing 6.0f; **ORD-B
+  and ORD-C are NOT selected** (retained as historical alternatives in
+  [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md) §4.3). Recorded:
+  the approved 11-step sequence (§3: documentary readiness → Q1/D5b resolution
+  → acceptable operator arrangement → separate phase-scoped provisioning
+  authorization → day-of C4 → minimum private test resources → C2 §12
+  synthetic-data production verification → cleanup/credential revocation →
+  owner acceptance or rejection of 6.0f → separate implementation
+  authorization → pre-launch gates); the reconciled gate table (§4.2: C1
+  approved · C2 conditional pass · C2 §12 open · C3 complete · C4 open ·
+  Q1/D5b open · ORD-A approved (sequencing only) · 6.0f unchecked · 6.0d/6.0e
+  not authorized · Stage 6 implementation not started); the **ORD-A readiness
+  checklist** for the future owner decision (§5, aligned with CR-0…CR-8); and
+  a concise owner-facing list of the Q1 §4 professional-review questions (§9.1,
+  identity-free, routed outside GitHub). **ORD-A approval is NOT acceptance of
+  6.0f and NOT authorization to create accounts, provision, deploy, configure
+  OAuth or implement anything.** No checkboxes closed by this entry — 6.0b,
+  6.0d, 6.0e, 6.0f all unchanged; no accounts, no provisioning, no OAuth, no
+  code, no money.
 
 created by stokonn with love <3

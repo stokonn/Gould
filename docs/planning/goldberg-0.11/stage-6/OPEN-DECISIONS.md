@@ -145,15 +145,38 @@ Recorded from the owner's cloud-readiness instruction; full analysis:
   capacity, authority to accept the provider agreements, GDPR controller role)
   still require professional verification per Q1 §4, and account registration
   would not establish compliance.
-- **Gate-ordering proposal — PENDING OWNER DECISION:** the apparent 6.0f ↔
-  provisioning circle (C2 §12 production-runtime measurements need a deployed
-  Worker; provisioning is owner-gated on C4 + D5b) is analyzed with an explicit
-  minimal sequence and alternatives **ORD-A** (scoped, owner-authorized
-  *limited private verification* provisioning → synthetic-data production
-  measurement → 6.0f accept/reject → separate implementation authorization),
-  **ORD-B** (close 6.0f on local C2 evidence, defer §12 to the [I] venue) and
-  **ORD-C** (full 6.0d before 6.0f closes) in
-  [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md) §§2–4. **No option is
-  adopted; the posture stays frozen until the owner chooses.**
+- **Gate-ordering decision — RESOLVED 2026-10-21: ORD-A APPROVED (sequencing
+  only).** The owner selected **ORD-A — Scoped Private Cloud Verification
+  Provisioning** as the sequencing strategy for closing 6.0f; **ORD-B and ORD-C
+  are NOT selected**. The approved sequence (11 steps: documentary readiness →
+  Q1/D5b resolution → acceptable operator arrangement → separate phase-scoped
+  authorization for limited private verification provisioning → day-of C4 →
+  minimum private test resources → C2 §12 synthetic-data production-runtime
+  verification → resource removal + credential revocation + recorded cleanup →
+  explicit owner acceptance or rejection of 6.0f → separate Stage 6
+  implementation authorization → pre-launch legal/privacy gates) and the
+  reconciled gate table are in [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md)
+  §§3–4, with the ORD-A readiness checklist in §5. **Clarifications binding:**
+  ORD-A is a sequencing decision **only** — it is not acceptance of 6.0f, not
+  a resolution of D5b, and not authorization to create accounts, provision,
+  deploy, configure OAuth or implement; 6.0f remains a **pre-implementation
+  gate** while narrowly scoped verification provisioning may precede its
+  closure only after its own prerequisites and a separate authorization; the
+  permanent **0 CZK/month** requirement (no billing methods, paid features,
+  chargeable trials, auto-upgrades) applies to every step. **ORD-A is distinct
+  from Q1 Options A/B/C (operator arrangements), none of which is selected —
+  see the note below.**
+- **Q1/D5b remains OPEN and blocking:** no provider account may be created
+  while the contractual and legal prerequisites are unresolved; creating an
+  account would not resolve D5b and would not establish compliance. Account
+  eligibility, legal capacity to accept agreements, authority to bind, technical
+  account administration and GDPR controller responsibilities remain five
+  separate determinations. The earlier "owner is a minor" premise remains an
+  **unverified assumption, not a verified current personal fact**; no age,
+  birth date, identity, family detail, contact information or credential may
+  be requested, inferred, committed or published. A concise owner-facing list
+  of the Q1 §4 professional-review questions is prepared in
+  [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md) §9.1 for routing **outside
+  GitHub**.
 
 created by stokonn with love <3

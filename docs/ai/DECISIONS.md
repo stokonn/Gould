@@ -213,5 +213,30 @@ above.
     fail-closed/logging measurements, mandatory recorded rollback/cleanup;
     **synthetic test data only**), Free-tier usage estimates (0 CZK, no billing
     method) and binding stop conditions.
+  - **ORD-A APPROVED (2026-10-21, later session — sequencing only,
+    documentation-only):** the owner selected **ORD-A — Scoped Private Cloud
+    Verification Provisioning** as the sequencing strategy for closing task
+    6.0f; **ORD-B and ORD-C are NOT selected**. Recorded in
+    `stage-6/CLOUD-READINESS-PLAN.md` §§3–5: the approved 11-step sequence
+    (documentary readiness → Q1/D5b resolution → acceptable operator
+    arrangement → separate phase-scoped authorization for limited private
+    verification provisioning → day-of C4 → minimum private test resources →
+    C2 §12 synthetic-data production-runtime verification → resource removal,
+    credential revocation and recorded cleanup → explicit owner acceptance or
+    rejection of 6.0f → separate Stage 6 implementation authorization →
+    pre-launch legal/privacy gates), the reconciled gate table, and the ORD-A
+    readiness checklist for the future owner decision. **Clarifications:**
+    6.0f remains a pre-implementation gate — narrowly scoped verification
+    provisioning may precede its closure only after its own prerequisites and
+    a separate, phase-scoped authorization; ORD-A is **not** acceptance of
+    6.0f, **not** a D5b resolution and **not** authorization to create
+    accounts, provision, deploy, configure OAuth or implement; the permanent
+    0 CZK/month requirement (no billing methods, paid features, chargeable
+    trials, auto-upgrades) applies to every step; a 0 CZK failure is an owner
+    blocker report, never a silent upgrade. **ORD-A (gate ordering) is
+    distinct from Q1 Options A/B/C (operator arrangements), none selected.**
+    A concise owner-facing list of the Q1 §4 professional-review questions
+    (identity-free) is prepared in CLOUD-READINESS-PLAN.md §9.1 for routing
+    outside GitHub.
 - No identity, controller contact, legal or credential data was invented; no legal
   compliance is claimed; free hosting is not proof of compliance.
