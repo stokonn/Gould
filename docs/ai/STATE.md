@@ -1,11 +1,12 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-21, attempt-3 result session
-> ([run 39511602936](https://github.com/stokonn/Goldberg/actions/runs/39511602936)
-> @ `9b80d65`: **first run to execute real application tests** — CI works end-to-end;
-> 5.10 ran 177 tests with **13 Stage 5 failures**; 5.11's upgrade validation PASSED,
-> only its final offline assertion failed. **Code-level triage of the 13 failures is
-> the active task; no re-dispatch until meaningful verified fixes exist.**).
+> **Last updated:** 2026-10-21, triage-fixes-dispatch session
+> (all 13 run-3 failures **root-caused from code**; fixes committed `dcea5b2`
+> — 2 product fixes + 4 harness fixes, no assertion weakened; local verification
+> **EXECUTED**: `testDebugUnitTest` **174/0 green** + `assembleDebugAndroidTest` OK;
+> **attempt 4 dispatched as
+> [run 39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833)
+> @ `dcea5b2`, monitoring in progress — outcome unknown**).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
 > `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → GitHub Issue #31.
 > **Stage 5 is NOT complete. No merge/tag/release/APK publication performed.**
@@ -28,11 +29,27 @@
   prefs unchanged, persistent-data equality, PRAGMA checks, UUID bridge) — only the
   final offline-state assertion (`verify_emulator_upgrade.py:143`) failed on the API 36
   network signature; investigate by capturing dumpsys output, not by weakening.
-- **Active task:** code-level root-cause triage of the 13 failures (start with the
-  worker cluster's systematic `Result.failure()` — suspected real-network vs injected-
-  state semantics — and the store/runner integrity+JSON-type signatures). Then
-  meaningful fixes + JVM verification locally → only then consider re-dispatch.
-- Tasks 5.10–5.13 remain open; Stage 5 IN PROGRESS; Stage 6/7 not started.
+- **Active task:** attempt 4 monitoring — [run 39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833)
+  @ `dcea5b2` (the triage-fix commit; headSha verified) validates the 13 fixes on the
+  emulator, plus the 5.11 offline-state investigation remains (capture dumpsys output).
+  Triage + fixes + local verification precede it (below). Tasks 5.10–5.13 remain open;
+  Stage 5 IN PROGRESS; Stage 6/7 not started.
+
+**Triage + fixes summary (2026-10-21, commit `dcea5b2`):** all 13 root-caused —
+5 = worker test-harness context bug (`TestListenableWorkerBuilder` raw context →
+`as? OpusApplication` fails at `BundleDownloadWorker` entry; real WorkManager passes
+the Application, proven by its sibling test passing); 7 = deterministic latent test/
+fixture defects (these androidTest-only tests had **never executed anywhere**):
+random-per-call fixture bundleIds ×2, URL selector matching every fixture URL, blob
+never installed before promote, JUnit Object-overload boxing (`Integer<22>` vs `Long<22>`
+— not JSON coercion); 1 = **genuine product bug** (`settle()` kept `validatedAt` on
+STALE→QUEUED → invariant IAE swallowed by `settleQuietly` → wedged STALE forever) +
+1 invariant gap (`readPublished()` exposed partial manifests). Fixes: 2 product
+(`settle()` timestamp rule, `readPublished()` authoritative-only + audit-mandated
+`locate()` via `readAll()`) + 4 harness; **no assertion weakened**. Local verification
+**EXECUTED:** `testDebugUnitTest` BUILD SUCCESSFUL **174 tests / 0 failures**;
+`assembleDebugAndroidTest` BUILD SUCCESSFUL. Not executed locally: androidTest runtime
+(host emulator blocker).
 
 **Run history (details: STAGE-CHECKLIST + `results/ci-run-*/run-summary.md`):**
 attempt 1 (run 39503450845) failed pre-test (dash `pipefail` + apksigner 37.0.0

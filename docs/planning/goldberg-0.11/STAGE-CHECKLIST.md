@@ -404,6 +404,39 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
     do not weaken).
   - **Gate held:** diagnosis + documentation recorded BEFORE any re-dispatch; no new
     dispatch started. Tasks 5.10–5.13 remain open; Stage 5 IN PROGRESS.
+  - **Code-level triage COMPLETED (2026-10-21) — all 13 root causes confirmed from code
+    + the preserved CI artifacts** (Issue #31 checkpoint carries the full table):
+    5 = test-harness context bug (`TestListenableWorkerBuilder` stores the raw
+    `targetContext`, so `BundleDownloadWorker`'s `applicationContext as? OpusApplication`
+    failed at entry → `Result.failure()`; real WorkManager passes the `Application`,
+    proven by its sibling test passing on-device); 7 = deterministic test/fixture
+    defects never surfaced before (these androidTest-only tests had never executed
+    anywhere — KDoc: "compile-verified only until task 5.10 executes them"): random
+    per-call fixture bundleIds ×2, URL selector matching every fixture URL, blob never
+    installed before promote, JUnit `assertEquals(String, Int, Long)` Object-overload
+    boxing (`Integer<22>` vs `Long<22>` — NOT JSON coercion); 1 = **genuine product bug**
+    (`settle()` kept `validatedAt` on STALE→QUEUED, violating the manifest invariant;
+    `settleQuietly` swallowed the IAE → bundle wedged STALE forever) + 1 **invariant gap**
+    (`readPublished()` exposed partial QUEUED/FAILED_RETRYABLE manifests as "published",
+    violating "a partial bundle is never published"). The earlier real-network hypothesis
+    was **ruled out by code** and the run summary corrected.
+  - **Fixes implemented + locally verified (commit `dcea5b2`, working tree = pushed
+    Stage 5 branch):** product fixes in `BundleJobRunner.settle()` (drop `validatedAt`
+    for non-authoritative targets), `BundleStore.readPublished()` (authoritative states
+    only, `PUBLISHED_STATES`), `BundleJobRunner.locate()` (audit-mandated: resolve via
+    `readAll()` + `readPending()`), comment alignment in `OfflineBundle.kt`; harness fixes
+    in all three test classes (builder `applicationContext`, shared bundleIds, exact-URL
+    routing with identical shared bytes, blob installed before promote,
+    `content.size.toLong()`). **No assertion weakened; no test skipped** (verified: diff
+    removes no assertion except the type-corrected one, which remains with identical
+    message/expected/actual semantics).
+  - **Verification EXECUTED locally:** `./gradlew testDebugUnitTest` → **BUILD
+    SUCCESSFUL, 174 tests, 0 failures** (bundle suites: Job 8, Codec 21, Policy 10,
+    StateMachine 13, StoreLogic 10, TransferEngine 15 all green); `assembleDebugAndroidTest`
+    → **BUILD SUCCESSFUL**. Not executed locally: androidTest runtime (host emulator
+    blocker documented in STATE) — device execution is what the CI dispatch provides.
+  - **Next gate:** fourth CI dispatch decision (owner's rule: meaningful fix + local
+    verification now exist and are documented; emulator execution remains CI-only).
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,

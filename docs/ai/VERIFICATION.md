@@ -23,6 +23,22 @@ Evidence: `docs/planning/goldberg-0.11/stage-5/results/ci-run-39511602936/`.
 - Any re-dispatch of the workflow (forbidden until a meaningful, verified fix exists).
 - Physical-device execution; production-credential signing (by design).
 
+## Executed — root-cause triage + fixes + local verification (2026-10-21, continued)
+
+| # | Command / action | Result |
+|---|---|---|
+| 1 | Code-level triage of all 13 failures (repo code + preserved run-39511602936 artifacts + upstream androidx.work 2.12.0 sources) | **EXECUTED — all 13 root-caused with confirmed-from-code confidence**; details in Issue #31 checkpoint + corrected `results/ci-run-39511602936/run-summary.md`. Prior real-network hypothesis **ruled out by code**. |
+| 2 | Fix implementation (2 product fixes + 4 harness fixes, 6 files) | **EXECUTED** — commit `dcea5b2` (pushed). Diff audit: no assertion removed/weakened; only `content.size` → `content.size.toLong()` on an identical assertion. |
+| 3 | `./gradlew --no-daemon --max-workers=1 testDebugUnitTest` | **EXECUTED — BUILD SUCCESSFUL, 174 tests, 0 failures, 0 skipped** (all JVM bundle logic suites green). |
+| 4 | `./gradlew --no-daemon --max-workers=1 assembleDebugAndroidTest` | **EXECUTED — BUILD SUCCESSFUL** (modified androidTest sources compile). |
+| 5 | `readPublished()` production-caller audit | **EXECUTED — 2 callers found**: `BundleJobRunner.locate()` needed non-authoritative manifests → fixed via `readAll()`; `BundleScheduler.validate()` needs only READY (unchanged); mark-and-sweep reads the dir directly (unaffected). 14 androidTest call sites all assert authoritative content or absence of partials — filter matches every one. |
+
+### Not executed — this session (no claim)
+
+- Android/emulator execution of the 13 fixed tests (host emulator blocker; provided only
+  by the CI dispatch — a fourth dispatch is the next gate).
+- Lint; instrumentation beyond compilation.
+
 ## Executed — second CI dispatch + execution-model fix (2026-10-20, sixth session)
 
 Owner-approved attempt 2: merge PR #33, dispatch against `5cdc0d6`, monitor both jobs,
