@@ -1,5 +1,16 @@
 # Stage 6 — C2 CPU/auth spike: test plan and execution specification
 
+> **SUPERSESSION NOTE (2026-10-21, later session):** this specification was
+> written while the spike was unexecuted. The spike was subsequently
+> **executed with separate owner authorization** on branch
+> `spike/goldberg-0.11-c2-bff` (final docs commit `7bc6976`, spike code commit
+> `d2ce77b`) → **CONDITIONAL PASS**: security 19/19, performance P1–P7
+> executed, kernel-measured average CPU **2.03 ms/invocation**; per-invocation
+> production CPU remains **unverified** and the §12 production-runtime
+> verification is still owner-gated. Report:
+> `spikes/bff-c2/results/SUMMARY.md` on that branch. The text below is
+> retained unchanged as the historical approved specification.
+
 **Planning and test specification only. Nothing in this document is implemented,
 installed, executed or provisioned. The C2 spike is UNEXECUTED (§15).**
 Evaluation/plan date: **2026-10-21**, the day the owner approved the C2 approach.

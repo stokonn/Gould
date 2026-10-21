@@ -101,11 +101,50 @@ above.
       methodology, provisional P50≤3/P95≤5/P99≤8 ms targets vs the 10 ms Workers
       Free ceiling, PASS/CONDITIONAL PASS/FAIL/INCONCLUSIVE outcomes, stop
       conditions and rollback, an owner-gated future production-runtime
-      verification gate). **The spike remains UNEXECUTED** — no spike code, harness,
+      verification gate). **The spike remains UNEXECUTED** *(historical statement
+      from the planning checkpoint — superseded by the executed CONDITIONAL PASS
+      recorded immediately below)* — no spike code, harness,
       fixtures, dependencies or tests exist or were run; executing it requires a
       separate explicit owner authorization.
     - C3 (D5b/D5c edge-location review) and C4 (terms re-verification) remain
       open; task 6.0f stays unchecked; Stage 6 implementation remains NOT STARTED.
+    - **Updated 2026-10-21 (later sessions):**
+      - **C2 SPIKE EXECUTED — CONDITIONAL PASS.** With separate owner
+        authorization the isolated local spike ran on
+        `spike/goldberg-0.11-c2-bff` (`workerd` via Wrangler local mode,
+        loopback-only, synthetic identities; spike code commit `d2ce77b`,
+        final docs commit `7bc6976`): security **19/19 passed**, performance
+        **P1–P7 executed**, kernel-measured **average CPU 2.03
+        ms/invocation** (~4.9× under the 10 ms Workers Free ceiling).
+        **Preserved without exaggeration:** per-invocation production CPU is
+        **unverified** (percentiles rest on conservative local upper bounds)
+        and the §12 production-runtime verification remains **owner-gated**.
+        Spike code was **not merged** into the planning branch or `main`.
+        Report: `spikes/bff-c2/results/SUMMARY.md` (on the spike branch).
+      - **C3 DOCUMENTARY REVIEW COMPLETE (documentation-only) →
+        [stage-6/C3-EDGE-PRIVACY-REVIEW.md](../planning/goldberg-0.11/stage-6/C3-EDGE-PRIVACY-REVIEW.md):**
+        primary-source review of Cloudflare Free (global edge in 330+ cities,
+        metadata processed in US/EU core data centers, Workers Logs
+        default-on with 3-day Free retention, DPA v6.4 incorporated by
+        reference into the self-serve terms, DPF + EU SCCs, Developer Platform
+        subprocessors incl. Google/Oracle, Data Localization Suite
+        Enterprise-only) and Supabase (Frankfurt `eu-central-1` pins DB/Auth/
+        backups but explicitly does **not** guarantee region-exclusive
+        processing — support/account/telemetry flows to Singapore/US under
+        SCCs; DPA v1; Free-plan pause/backup/email limits). Verdict:
+        **conditionally viable at 0 CZK; NOT a compliance certification**;
+        every configurable risk has a Free-tier mitigation (no paid feature
+        needed); EU-only edge metadata processing is impossible on Workers
+        Free and is disclosed as a constraint, never absorbed silently.
+        **Legal/operator questions remain open** — controller/operator
+        identity (D5b), heightened because the project owner is a minor
+        (both providers require legal capacity to bind the account →
+        adult/professional review before provisioning), retention details
+        (D5d), privacy-notice content (D5a/6.16). C3 closes no legal or
+        provisioning gate.
+    - C4 (terms re-verification) and the C2 §12 production-runtime
+      verification remain open; task 6.0f stays unchecked; Stage 6
+      implementation remains NOT STARTED.
   - **PROVISIONAL:** D5a personal contact email is the intended public contact, but
     **no address was supplied or authorized — do not invent/expose/request/publish
     contact data**; verify legally required controller identification before launch.

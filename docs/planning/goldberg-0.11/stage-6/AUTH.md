@@ -92,11 +92,15 @@ Admin (OPEN-DECISIONS.md §3):
   2026-10-21:** Cloudflare Workers Free is the approved BFF hosting/runtime (single
   origin; Supabase Free data/auth backend; `eu-central-1`; no paid plans/billing/
   trials/upgrades; architecture-level only — no provisioning, deployment or
-  implementation authorized). **C2 approved 2026-10-21 for planning only** — the
-  isolated local CPU/auth spike (`workerd` local mode, synthetic identities,
-  simulated Supabase/JWKS) is specified in [C2-SPIKE-PLAN.md](C2-SPIKE-PLAN.md);
-  the spike is UNEXECUTED and its execution, fixtures, dependencies and tests all
-  require a separate explicit owner authorization.
+  implementation authorized). **C2 executed 2026-10-21 (separate owner
+  authorization; isolated local `workerd`, synthetic identities) → CONDITIONAL
+  PASS** — 19/19 security, P1–P7 executed, kernel CPU 2.03 ms/invocation;
+  per-invocation production CPU unverified and the §12 production-runtime
+  verification remains owner-gated (report `spikes/bff-c2/results/SUMMARY.md`
+  on `spike/goldberg-0.11-c2-bff`, final commit `7bc6976`). **C3 documentary
+  review complete 2026-10-21**
+  ([C3-EDGE-PRIVACY-REVIEW.md](C3-EDGE-PRIVACY-REVIEW.md)) — conditional
+  viability, no compliance claim; C4 open.
 - The static-SPA alternative is **not selected** and must not be substituted without
   a new owner decision (it must never pretend to have HttpOnly credential storage —
   COMMUNITY-ADMIN.md prohibition).

@@ -42,7 +42,7 @@ Status vocabulary used below:
 | # | Question | Outcome (2026-10-21) | Consequences |
 |---|---|---|---|
 | D8a | Android Admin packaging | **APPROVED: integrate Android Admin into the existing Goldberg application.** Preserve the four main navigation tabs; admin access appears only for authorized accounts. **No separate Admin APK** for the initial implementation. | Hidden UI is **not** a security boundary: the server must independently authorize every privileged action (AUTH.md §6). Blocks Stage 7 Part B Android work on this direction only. |
-| D8b | Web Admin auth/session | **APPROVED CONDITIONALLY: Backend-for-Frontend (BFF).** Same-origin `HttpOnly`/`Secure`/`SameSite=Strict` session cookies; server-side authorization, session revocation and CSRF protection; restrictive CSP, origin allowlists and appropriate XSS protections. Browser JavaScript must not receive privileged bearer tokens. | **Before implementation**, prove the selected BFF hosting/runtime fits the permanent 0 CZK/month requirement including actual Free-tier limitations. If the zero-cost condition cannot be proven, **report the blocker and request an owner decision — do not silently replace the approved architecture** (AUTH.md §5). Feasibility study executed 2026-10-21 → **CONDITIONAL PASS** ([BFF-FEASIBILITY.md](BFF-FEASIBILITY.md)): recommended topology is a Cloudflare Workers Free Worker (static + BFF on one origin) + Supabase Free data plane; a Supabase-only same-origin host is blocked at 0 CZK. **C1 APPROVED 2026-10-21:** Cloudflare Workers Free hosts the static assets + BFF on one origin, Supabase Free remains the data/auth backend (`eu-central-1`), no paid plans/billing/trials/upgrades; architecture-level approval only — **no provisioning, deployment or implementation authorized**. C2 (CPU/auth spike) approach approved 2026-10-21 for **planning only** ([C2-SPIKE-PLAN.md](C2-SPIKE-PLAN.md), spike UNEXECUTED); C3–C4 also open. |
+| D8b | Web Admin auth/session | **APPROVED CONDITIONALLY: Backend-for-Frontend (BFF).** Same-origin `HttpOnly`/`Secure`/`SameSite=Strict` session cookies; server-side authorization, session revocation and CSRF protection; restrictive CSP, origin allowlists and appropriate XSS protections. Browser JavaScript must not receive privileged bearer tokens. | **Before implementation**, prove the selected BFF hosting/runtime fits the permanent 0 CZK/month requirement including actual Free-tier limitations. If the zero-cost condition cannot be proven, **report the blocker and request an owner decision — do not silently replace the approved architecture** (AUTH.md §5). Feasibility study executed 2026-10-21 → **CONDITIONAL PASS** ([BFF-FEASIBILITY.md](BFF-FEASIBILITY.md)): recommended topology is a Cloudflare Workers Free Worker (static + BFF on one origin) + Supabase Free data plane; a Supabase-only same-origin host is blocked at 0 CZK. **C1 APPROVED 2026-10-21:** Cloudflare Workers Free hosts the static assets + BFF on one origin, Supabase Free remains the data/auth backend (`eu-central-1`), no paid plans/billing/trials/upgrades; architecture-level approval only — **no provisioning, deployment or implementation authorized**. **C2 EXECUTED 2026-10-21 (separate owner authorization) → CONDITIONAL PASS** (`spike/goldberg-0.11-c2-bff`, final commit `7bc6976`: 19/19 security, P1–P7 executed, kernel CPU 2.03 ms/invocation; per-invocation production CPU unverified, §12 production-runtime verification owner-gated). **C3 documentary review COMPLETE 2026-10-21** ([C3-EDGE-PRIVACY-REVIEW.md](C3-EDGE-PRIVACY-REVIEW.md)): conditional viability at 0 CZK; no compliance claim; legal/operator questions open. C4 (terms re-verification) also open. |
 | D8c | Admin bootstrap & recovery | **APPROVED:** initial administrator role assigned manually through a **secured Supabase Console procedure** after verifying the account. No hardcoded admin accounts, passwords, embedded API secrets or privileged bypass endpoints. Privileged operator access must be **MFA-protected**. Every grant/recovery action is auditable. Lost admin access uses a controlled out-of-band recovery and re-grant procedure (AUTH.md §7). | No users, accounts, credentials or role grants are provisioned during planning or documentation tasks. Blocks admin endpoint activation only. |
 
 ## 4. Gate status after the 2026-10-21 decisions
@@ -66,6 +66,13 @@ Status vocabulary used below:
 - [ ] **D5a details** — actual public contact supplied/authorized (blocks privacy notice
       publication and public collection).
 - [ ] **D5b** — legal controller/operator determination (pre-launch gate).
+      **Heightened by C3 (2026-10-21):** the project owner is a minor, and
+      both providers' agreements require the accepting party to be able to
+      bind the account/customer (Cloudflare's DPA warrants "full legal
+      authority to bind Customer"). Who may lawfully hold the accounts and
+      act as controller is now a **blocking question for 6.0d provisioning**
+      and must go to an appropriate adult/professional review
+      (C3-EDGE-PRIVACY-REVIEW.md §9 Q1). No identity or contact is invented.
 - [ ] **D5d details** — retention periods, deletion semantics, attribution vs
       pseudonymization (blocks retention jobs and `DELETE /v1/me` implementation;
       pre-launch review gate).
@@ -78,11 +85,15 @@ Status vocabulary used below:
       executed 2026-10-21 → CONDITIONAL PASS ([BFF-FEASIBILITY.md](BFF-FEASIBILITY.md)).
       **C1 APPROVED 2026-10-21** (Cloudflare Workers Free host, one origin; Supabase
       Free data/auth backend; `eu-central-1`; no paid plans/billing/trials/upgrades;
-      architecture-level only — no provisioning authorized). **C2 approach approved
-      2026-10-21 for planning only** — test specification at
-      [C2-SPIKE-PLAN.md](C2-SPIKE-PLAN.md); **spike UNEXECUTED, execution requires
-      separate owner authorization**. Still open: C2 (measured CPU/auth evidence),
-      C3 (D5b/D5c edge-location review), C4 (terms re-verification).*
+      architecture-level only — no provisioning authorized). **C2 EXECUTED
+      2026-10-21 → CONDITIONAL PASS** (`spike/goldberg-0.11-c2-bff`, final commit
+      `7bc6976`: 19/19 security, P1–P7 executed, kernel CPU 2.03 ms/invocation;
+      per-invocation production CPU unverified, §12 production-runtime
+      verification owner-gated). **C3 documentary review COMPLETE 2026-10-21**
+      ([C3-EDGE-PRIVACY-REVIEW.md](C3-EDGE-PRIVACY-REVIEW.md)): conditional
+      viability at 0 CZK; no compliance claim; legal/operator questions remain
+      open (see D5b above). Still open: C2 §12 production verification, C4
+      terms re-verification.*
 
 ## 5. Separately gated activities (never authorized by these decisions)
 

@@ -6,6 +6,18 @@
 > `feature/goldberg-0.11-stage-5`. Rows below are retained unchanged as historical
 > evidence — no row was edited, added or removed here.
 
+## Stage 6 documentation sessions (2026-10-21 — planning branch; no application code)
+
+| # | Action | Result |
+|---|---|---|
+| 1 | C2 spike execution (separate owner authorization; isolated branch `spike/goldberg-0.11-c2-bff`, loopback-only, synthetic identities, no accounts/deployments) | **EXECUTED → CONDITIONAL PASS**: security **19/19**, performance **P1–P7 executed**, kernel-measured average CPU **2.03 ms/invocation** (flat under injected latency; 10 ms Workers Free ceiling re-verified from official pricing docs). Per-invocation production CPU **NOT verified** (local upper-bound argument only); §12 production-runtime verification **not executed — owner-gated**. Evidence: `spikes/bff-c2/results/SUMMARY.md` (spike branch, final commit `7bc6976`). |
+| 2 | C3 edge-privacy documentary review (Cloudflare + Supabase + EU institutional sources; all accessed 2026-10-21) | **EXECUTED (documentation)** — `stage-6/C3-EDGE-PRIVACY-REVIEW.md`: 18 primary sources recorded with titles/access dates; conditional-viability verdict; no compliance claim. Not executed: any provisioning-time verification (§11 checklist), the Supabase subprocessor PDF parse, the Supabase TIA retrieval, any legal review. |
+| 3 | C2/C3 status reconciliation across Stage 6 + `docs/ai/*` docs | **EXECUTED** — stale "C2 UNEXECUTED" current-state statements updated or superseded-noted (historical specs retained verbatim under supersession headers); C1/C2/C3/C4 statuses consistent everywhere; 6.0f still unchecked. |
+
+**No application source, test source, Gradle or dependency change was made in
+any Stage 6 session. No credentials, personal data or contact details were
+introduced.**
+
 Honest executed vs not-executed record. Only rows marked **EXECUTED** were actually run.
 
 ## Executed — CI activation session (2026-10-20, fourth session, desktop host)

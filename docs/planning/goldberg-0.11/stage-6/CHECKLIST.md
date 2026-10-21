@@ -57,11 +57,22 @@ pre-launch gates.**
   CPU/auth spike is fully specified in [C2-SPIKE-PLAN.md](C2-SPIKE-PLAN.md)
   (`workerd`/Wrangler local mode, synthetic identities, simulated Supabase/JWKS;
   P50≤3 ms / P95≤5 ms / P99≤8 ms provisional targets vs the 10 ms Workers Free
-  ceiling; full T1–T5/T15/T20 security matrix). **Spike UNEXECUTED — executing it
-  (code, harness, fixtures, dependencies, tests) requires a separate explicit owner
-  authorization.** C3 and C4 remain open.
+  ceiling; full T1–T5/T15/T20 security matrix). **Spike EXECUTED 2026-10-21 on
+  `spike/goldberg-0.11-c2-bff` (separate owner authorization; isolated local
+  `workerd`, synthetic identities only, nothing deployed) → CONDITIONAL
+  PASS:** security **19/19**, performance P1–P7 executed, kernel-measured
+  average CPU **2.03 ms/invocation**; per-invocation production CPU remains
+  **unverified** and the §12 production-runtime verification is still
+  owner-gated (report: `spikes/bff-c2/results/SUMMARY.md`, final commit
+  `7bc6976` on that branch). **C3 DOCUMENTARY REVIEW COMPLETE 2026-10-21**
+  ([C3-EDGE-PRIVACY-REVIEW.md](C3-EDGE-PRIVACY-REVIEW.md)): conditional
+  viability at 0 CZK, no compliance claim, legal/operator questions open.
+  C4 (terms re-verification before provisioning) remains open; **6.0f stays
+  unchecked.**
 
-- [x] 6.0a [ ] 6.0b [x] 6.0c (D8b proof gate 6.0f still open) [ ] 6.0d [ ] 6.0e [ ] 6.0f
+- [x] 6.0a [ ] 6.0b [x] 6.0c (D8b proof gate 6.0f still open — C2 executed
+      CONDITIONAL PASS, C3 documentary review complete; open: C2 §12
+      production verification, C4) [ ] 6.0d [ ] 6.0e [ ] 6.0f
 
 ## Phase 1 — Server core (implementable locally before provisioning)
 
@@ -157,5 +168,30 @@ pre-launch gates.**
   verification gate). **Spike remains UNEXECUTED** — no code, harness, fixtures,
   dependencies or tests exist or were run. 6.0f stays **unchecked** (C2 evidence,
   C3, C4 open).
+- 2026-10-21 — **C2 spike EXECUTED (separate owner authorization) → CONDITIONAL
+  PASS.** Isolated local run on `spike/goldberg-0.11-c2-bff` (`workerd` via
+  Wrangler local mode, loopback-only, synthetic identities, simulated
+  Supabase/JWKS; spike code commit `d2ce77b`, final docs commit `7bc6976`;
+  spike code was **not** merged into this planning branch or `main`).
+  Security **S1–S19: 19/19 passed**; performance **P1–P7 all executed**;
+  kernel-measured **average CPU 2.03 ms/invocation** (~4.9× headroom under
+  the 10 ms Workers Free ceiling, flat under injected latency). **Not closed:**
+  per-invocation production CPU unverified (local upper-bound argument only)
+  and the §12 production-runtime verification remains owner-gated. Report:
+  `spikes/bff-c2/results/SUMMARY.md`.
+- 2026-10-21 — **C3 D5b/D5c edge-privacy review DOCUMENTARY WORK COMPLETE**
+  (documentation-only) —
+  [C3-EDGE-PRIVACY-REVIEW.md](C3-EDGE-PRIVACY-REVIEW.md): primary-source
+  review of Cloudflare (Workers locations, Workers Logs, DPA v6.4,
+  subprocessors, DPF/SCCs) and Supabase (Frankfurt residency and its explicit
+  limits, DPA v1, SCCs, support/telemetry flows, Free-plan limits) plus
+  EU institutional transfer guidance. Verdict: **conditionally viable at
+  0 CZK, not a compliance certification**; EU-only edge processing is
+  unavailable on Workers Free (Enterprise-only) and is disclosed as a
+  constraint; legal/operator questions (controller identity incl. the
+  minor-owner capacity question, retention, notice content) remain open and
+  are carried to 6.0b/6.0d/6.16 and the pre-launch legal review. **No code,
+  no deployment, no accounts, no personal data. 6.0f stays unchecked — open:
+  C2 §12 production verification, C4 terms re-verification.**
 
 created by stokonn with love <3

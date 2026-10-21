@@ -160,4 +160,23 @@ implementation instruction, the D8b zero-cost proof (new task 6.0f), the remaini
 pre-launch gates, and separately authorized provisioning (6.0d) / OAuth console setup
 (6.0e). Nothing above in the Stage 5 handoff changes.
 
+**Addendum (2026-10-21, Stage 6 C2/C3 session — docs/planning only):** conditions
+C1–C3 of the 6.0f gate now read: **C1 approved** (architecture level);
+**C2 executed → CONDITIONAL PASS** (isolated local `workerd` spike on
+`spike/goldberg-0.11-c2-bff`, final commit `7bc6976`, spike code commit
+`d2ce77b`: 19/19 security, P1–P7 executed, kernel CPU **2.03 ms/invocation**;
+per-invocation production CPU **unverified**; §12 production-runtime
+verification **owner-gated**; spike code remains isolated/unmerged);
+**C3 documentary review complete**
+(`docs/planning/goldberg-0.11/stage-6/C3-EDGE-PRIVACY-REVIEW.md`: conditional
+privacy viability at 0 CZK, no compliance claim, legal/operator questions open —
+controller/operator identity incl. the **minor-owner legal-capacity question is
+now blocking for 6.0d provisioning**). **Still open: C2 §12 production
+verification and C4 (terms re-verification). Task 6.0f stays UNCHECKED.**
+Resume order for a fresh Stage 6 session: `AGENTS.md` →
+`docs/planning/goldberg-0.11/stage-6/CHECKLIST.md` (progress log) →
+`C3-EDGE-PRIVACY-REVIEW.md` §11 (pre-provisioning checklist) → GitHub Issue #31
+latest checkpoint. Next planned step: C4 documentation (owner-requestable);
+provisioning remains separately gated and blocked on D5b/Q1.
+
 created by stokonn with love <3

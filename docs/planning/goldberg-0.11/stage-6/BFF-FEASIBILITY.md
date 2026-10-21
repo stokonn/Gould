@@ -232,21 +232,43 @@ either provider; **none is recommended.**
   implementation authorized** — OPEN-DECISIONS.md §4a).
 - **C2 — Measured CPU spike** on a Workers-compatible runtime with the real
   BFF code path (cookie→CSRF→PostgREST→JWT verify), proving ≤10 ms CPU/request,
-  recorded as executed evidence. 🚧 **Approach owner-approved 2026-10-21 for
-  planning only** — the isolated local spike (`workerd` via Wrangler local mode,
-  synthetic identities, simulated Supabase/JWKS, CPU-vs-wall-clock methodology,
-  provisional P50≤3/P95≤5/P99≤8 ms targets, full T1–T5/T15/T20 security matrix) is
-  specified in [C2-SPIKE-PLAN.md](C2-SPIKE-PLAN.md). **The spike is UNEXECUTED; its
-  execution requires a separate explicit owner authorization.**
+  recorded as executed evidence. 🚧 **Executed 2026-10-21 on branch
+  `spike/goldberg-0.11-c2-bff` (isolated local `workerd`, synthetic identities,
+  simulated Supabase/JWKS; final docs commit `7bc6976`, spike code commit
+  `d2ce77b`) → CONDITIONAL PASS:** security **19/19 passed**; performance P1–P7
+  all executed; **kernel-measured average CPU 2.03 ms/invocation** (~4.9× under
+  the 10 ms Workers Free ceiling; distribution flat under injected latency).
+  Full report: `spikes/bff-c2/results/SUMMARY.md` on that branch.
+  **C2 is not closed:** per-invocation production CPU remains **unverified**
+  (local workerd ≠ production edge; percentile claims rest on conservative
+  local upper bounds), and the **§12 production-runtime verification remains
+  owner-gated**. Production business logic beyond the minimal pipeline must be
+  re-measured, not assumed to carry over.
 - **C3 — D5b/D5c review** explicitly covering R2 (edge processing location).
+  ✅ **Documentary review COMPLETE 2026-10-21**
+  ([C3-EDGE-PRIVACY-REVIEW.md](C3-EDGE-PRIVACY-REVIEW.md)): architecture
+  **conditionally viable** for a privacy-compliant path at 0 CZK (both DPAs in
+  place at 0 CZK; DPF + EU SCCs cover transfers; every configurable risk has a
+  Free-tier mitigation). **Not a compliance certification:** Frankfurt hosting
+  does not mean EU-only processing (Cloudflare metadata processed in US/EU
+  core DCs; Supabase support/account/telemetry flows to Singapore/US under
+  SCCs); EU-only edge metadata processing is Enterprise-only and **unavailable
+  on Workers Free** — reported as a disclosed constraint, not silently
+  absorbed. **Legal/operator questions remain open** (controller/operator
+  identity incl. the minor-owner capacity question, retention details,
+  privacy-notice content) and are carried to 6.0b/6.0d/6.16 and the pre-launch
+  legal review — **C3 closes no legal or provisioning gate**.
 - **C4 — Terms re-verification** for both providers immediately before 6.0d
   provisioning.
 
 ## 9. Recommendation
 
 Adopt topology §5 (Cloudflare Workers Free BFF + Supabase Free data plane in
-`eu-central-1`) as the **preferred arrangement**, subject to C1–C4 — **C1 approved
-by the owner 2026-10-21; C2–C4 open** (§8). It satisfies
+`eu-central-1`) as the **preferred arrangement**, subject to C1–C4 — **C1
+approved by the owner 2026-10-21; C2 executed 2026-10-21 → CONDITIONAL PASS
+(19/19 security, kernel CPU 2.03 ms/invocation; production-runtime §12
+verification still owner-gated); C3 documentary review complete
+(conditional viability, legal/operator items open); C4 open** (§8). It satisfies
 every D8b security requirement on a single origin, has **no billing method, no
 paid tier, no chargeable trial and no automatic escalation path on either
 provider**, and its economic failure mode is graceful denial — matching D4a/D4b
@@ -254,8 +276,10 @@ exactly. The Supabase-only arrangement is **blocked at 0 CZK** (S1) and no appro
 design element was weakened to make hosting easier. **This study cannot guarantee
 future provider terms**; the standing re-verification rules apply.
 
-**Verdict: CONDITIONAL PASS (task 6.0f evidence recorded; C1 approved 2026-10-21;
-gate remains open until C2–C4 are closed — the C2 spike is planned at
-[C2-SPIKE-PLAN.md](C2-SPIKE-PLAN.md) and remains UNEXECUTED).**
+**Verdict: CONDITIONAL PASS (task 6.0f evidence recorded; C1 approved
+2026-10-21; C2 executed 2026-10-21 → CONDITIONAL PASS with the §12
+production-runtime verification still open; C3 documentary review complete
+2026-10-21 — conditional viability, no compliance claim;
+gate remains open until the remaining C2 conditions and C4 are closed).**
 
 created by stokonn with love <3

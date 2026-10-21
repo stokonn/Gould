@@ -6,6 +6,21 @@
 > the authoritative record is on `feature/goldberg-0.11-stage-5` (completion commit
 > `736f6d3`). Everything below is retained as historical evidence only.
 
+> **Stage 6 addendum (2026-10-21, later session — Stage 6 planning branch,
+> documentation-only):** C2 spike executed → **CONDITIONAL PASS**
+> (`spike/goldberg-0.11-c2-bff`, final commit `7bc6976`, spike code commit
+> `d2ce77b`; 19/19 security, P1–P7 executed, kernel CPU **2.03
+> ms/invocation**; per-invocation production CPU **unverified**; §12
+> production-runtime verification **owner-gated**; spike code unmerged).
+> C3 edge-privacy documentary review **complete**
+> (`docs/planning/goldberg-0.11/stage-6/C3-EDGE-PRIVACY-REVIEW.md`: conditional
+> privacy viability at 0 CZK, **no compliance claim**, legal/operator questions
+> open — controller/operator identity incl. the minor-owner legal-capacity
+> question is now blocking for 6.0d). C4 open; **task 6.0f unchecked; Stage 6
+> implementation NOT STARTED**; nothing provisioned or deployed. Authoritative
+> current state: `docs/planning/goldberg-0.11/stage-6/CHECKLIST.md` (progress
+> log) + GitHub Issue #31 checkpoints.
+
 > **Last updated:** 2026-10-20, CI-activation session (Phase A/B of the owner's CI plan;
 > approval gate reached — nothing dispatched or merged).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
