@@ -226,9 +226,18 @@ either provider; **none is recommended.**
 
 - **C1 — Owner decision** accepting **Cloudflare Workers Free as the BFF
   hosting/runtime** (topology §5), or a directive to study an alternative.
+  ✅ **APPROVED 2026-10-21** (architecture-decision level: single origin for static
+  assets + `/v1`; Supabase Free remains the data/auth backend in `eu-central-1`; no
+  paid plans, billing, trials or upgrades; **no provisioning, deployment or
+  implementation authorized** — OPEN-DECISIONS.md §4a).
 - **C2 — Measured CPU spike** on a Workers-compatible runtime with the real
   BFF code path (cookie→CSRF→PostgREST→JWT verify), proving ≤10 ms CPU/request,
-  recorded as executed evidence.
+  recorded as executed evidence. 🚧 **Approach owner-approved 2026-10-21 for
+  planning only** — the isolated local spike (`workerd` via Wrangler local mode,
+  synthetic identities, simulated Supabase/JWKS, CPU-vs-wall-clock methodology,
+  provisional P50≤3/P95≤5/P99≤8 ms targets, full T1–T5/T15/T20 security matrix) is
+  specified in [C2-SPIKE-PLAN.md](C2-SPIKE-PLAN.md). **The spike is UNEXECUTED; its
+  execution requires a separate explicit owner authorization.**
 - **C3 — D5b/D5c review** explicitly covering R2 (edge processing location).
 - **C4 — Terms re-verification** for both providers immediately before 6.0d
   provisioning.
@@ -236,7 +245,8 @@ either provider; **none is recommended.**
 ## 9. Recommendation
 
 Adopt topology §5 (Cloudflare Workers Free BFF + Supabase Free data plane in
-`eu-central-1`) as the **preferred arrangement**, subject to C1–C4. It satisfies
+`eu-central-1`) as the **preferred arrangement**, subject to C1–C4 — **C1 approved
+by the owner 2026-10-21; C2–C4 open** (§8). It satisfies
 every D8b security requirement on a single origin, has **no billing method, no
 paid tier, no chargeable trial and no automatic escalation path on either
 provider**, and its economic failure mode is graceful denial — matching D4a/D4b
@@ -244,7 +254,8 @@ exactly. The Supabase-only arrangement is **blocked at 0 CZK** (S1) and no appro
 design element was weakened to make hosting easier. **This study cannot guarantee
 future provider terms**; the standing re-verification rules apply.
 
-**Verdict: CONDITIONAL PASS (task 6.0f evidence recorded; gate remains open until
-C1–C4 are closed).**
+**Verdict: CONDITIONAL PASS (task 6.0f evidence recorded; C1 approved 2026-10-21;
+gate remains open until C2–C4 are closed — the C2 spike is planned at
+[C2-SPIKE-PLAN.md](C2-SPIKE-PLAN.md) and remains UNEXECUTED).**
 
 created by stokonn with love <3

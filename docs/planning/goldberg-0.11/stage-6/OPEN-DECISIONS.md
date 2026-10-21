@@ -42,7 +42,7 @@ Status vocabulary used below:
 | # | Question | Outcome (2026-10-21) | Consequences |
 |---|---|---|---|
 | D8a | Android Admin packaging | **APPROVED: integrate Android Admin into the existing Goldberg application.** Preserve the four main navigation tabs; admin access appears only for authorized accounts. **No separate Admin APK** for the initial implementation. | Hidden UI is **not** a security boundary: the server must independently authorize every privileged action (AUTH.md §6). Blocks Stage 7 Part B Android work on this direction only. |
-| D8b | Web Admin auth/session | **APPROVED CONDITIONALLY: Backend-for-Frontend (BFF).** Same-origin `HttpOnly`/`Secure`/`SameSite=Strict` session cookies; server-side authorization, session revocation and CSRF protection; restrictive CSP, origin allowlists and appropriate XSS protections. Browser JavaScript must not receive privileged bearer tokens. | **Before implementation**, prove the selected BFF hosting/runtime fits the permanent 0 CZK/month requirement including actual Free-tier limitations. If the zero-cost condition cannot be proven, **report the blocker and request an owner decision — do not silently replace the approved architecture** (AUTH.md §5). Feasibility study executed 2026-10-21 → **CONDITIONAL PASS** ([BFF-FEASIBILITY.md](BFF-FEASIBILITY.md)): recommended topology is a Cloudflare Workers Free Worker (static + BFF on one origin) + Supabase Free data plane; a Supabase-only same-origin host is blocked at 0 CZK. **New owner decision required: accept the Cloudflare Free host (condition C1)**; C2–C4 also open. |
+| D8b | Web Admin auth/session | **APPROVED CONDITIONALLY: Backend-for-Frontend (BFF).** Same-origin `HttpOnly`/`Secure`/`SameSite=Strict` session cookies; server-side authorization, session revocation and CSRF protection; restrictive CSP, origin allowlists and appropriate XSS protections. Browser JavaScript must not receive privileged bearer tokens. | **Before implementation**, prove the selected BFF hosting/runtime fits the permanent 0 CZK/month requirement including actual Free-tier limitations. If the zero-cost condition cannot be proven, **report the blocker and request an owner decision — do not silently replace the approved architecture** (AUTH.md §5). Feasibility study executed 2026-10-21 → **CONDITIONAL PASS** ([BFF-FEASIBILITY.md](BFF-FEASIBILITY.md)): recommended topology is a Cloudflare Workers Free Worker (static + BFF on one origin) + Supabase Free data plane; a Supabase-only same-origin host is blocked at 0 CZK. **C1 APPROVED 2026-10-21:** Cloudflare Workers Free hosts the static assets + BFF on one origin, Supabase Free remains the data/auth backend (`eu-central-1`), no paid plans/billing/trials/upgrades; architecture-level approval only — **no provisioning, deployment or implementation authorized**. C2 (CPU/auth spike) approach approved 2026-10-21 for **planning only** ([C2-SPIKE-PLAN.md](C2-SPIKE-PLAN.md), spike UNEXECUTED); C3–C4 also open. |
 | D8c | Admin bootstrap & recovery | **APPROVED:** initial administrator role assigned manually through a **secured Supabase Console procedure** after verifying the account. No hardcoded admin accounts, passwords, embedded API secrets or privileged bypass endpoints. Privileged operator access must be **MFA-protected**. Every grant/recovery action is auditable. Lost admin access uses a controlled out-of-band recovery and re-grant procedure (AUTH.md §7). | No users, accounts, credentials or role grants are provisioned during planning or documentation tasks. Blocks admin endpoint activation only. |
 
 ## 4. Gate status after the 2026-10-21 decisions
@@ -55,6 +55,11 @@ Status vocabulary used below:
 - [x] D5g decided — owner-only moderation initially, server-side audited grants.
 - [x] D8a decided — in-app Android Admin, no separate APK.
 - [x] D8c decided — console bootstrap, MFA-protected operator, audited recovery.
+- [x] **C1 decided 2026-10-21** — Cloudflare Workers Free **approved as the D8b BFF
+      hosting/runtime** (single origin for static assets + `/v1`; Supabase Free stays
+      the data/auth backend in `eu-central-1`; no paid plans, billing, trials or
+      upgrades). Architecture-decision level only: **provisioning, deployment and
+      implementation remain separately gated.** C2–C4 stay open (§4b).
 
 ### 4b. Still open (each blocks only its named dependents)
 
@@ -70,9 +75,14 @@ Status vocabulary used below:
       enabling public participation.
 - [ ] **D8b zero-cost proof** — BFF hosting/runtime Free-tier fit, **before any
       implementation**; blocker → owner decision if unprovable. 🚧 *Feasibility study
-      executed 2026-10-21 → CONDITIONAL PASS ([BFF-FEASIBILITY.md](BFF-FEASIBILITY.md));
-      conditions C1 (owner accepts the Cloudflare Free host), C2 (measured CPU spike),
-      C3 (D5b/D5c edge-location review) and C4 (terms re-verification) still open.*
+      executed 2026-10-21 → CONDITIONAL PASS ([BFF-FEASIBILITY.md](BFF-FEASIBILITY.md)).
+      **C1 APPROVED 2026-10-21** (Cloudflare Workers Free host, one origin; Supabase
+      Free data/auth backend; `eu-central-1`; no paid plans/billing/trials/upgrades;
+      architecture-level only — no provisioning authorized). **C2 approach approved
+      2026-10-21 for planning only** — test specification at
+      [C2-SPIKE-PLAN.md](C2-SPIKE-PLAN.md); **spike UNEXECUTED, execution requires
+      separate owner authorization**. Still open: C2 (measured CPU/auth evidence),
+      C3 (D5b/D5c edge-location review), C4 (terms re-verification).*
 
 ## 5. Separately gated activities (never authorized by these decisions)
 

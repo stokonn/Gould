@@ -52,6 +52,14 @@ pre-launch gates.**
   paid add-on). Gate stays **unchecked** until conditions C1–C4 close: owner decision
   on the Cloudflare host, a measured CPU-budget spike (≤10 ms/invocation), the
   D5b/D5c edge-location review and terms re-verification before provisioning.
+  **C1 APPROVED 2026-10-21** (architecture-level; no provisioning authorized).
+  **C2 approach approved 2026-10-21 for planning only** — the isolated local
+  CPU/auth spike is fully specified in [C2-SPIKE-PLAN.md](C2-SPIKE-PLAN.md)
+  (`workerd`/Wrangler local mode, synthetic identities, simulated Supabase/JWKS;
+  P50≤3 ms / P95≤5 ms / P99≤8 ms provisional targets vs the 10 ms Workers Free
+  ceiling; full T1–T5/T15/T20 security matrix). **Spike UNEXECUTED — executing it
+  (code, harness, fixtures, dependencies, tests) requires a separate explicit owner
+  authorization.** C3 and C4 remain open.
 
 - [x] 6.0a [ ] 6.0b [x] 6.0c (D8b proof gate 6.0f still open) [ ] 6.0d [ ] 6.0e [ ] 6.0f
 
@@ -135,5 +143,19 @@ pre-launch gates.**
   same-origin hosting blocked at 0 CZK). 6.0f stays **unchecked** pending owner
   decision on the Cloudflare host (C1), measured CPU spike (C2), D5b/D5c edge-location
   review (C3) and terms re-verification (C4). No code, no deployment, no accounts.
+- 2026-10-21 — **C1 owner approval recorded; C2 spike planned (documentation and test
+  specification only).** C1 **APPROVED**: Cloudflare Workers Free hosts the Web Admin
+  static assets + `/v1` BFF on one HTTPS origin; Supabase Free remains the data/auth
+  backend (`eu-central-1`); no paid plans/billing/trials/upgrades; architecture level
+  only — **no provisioning, deployment or implementation authorized**. C2 approach
+  **approved for planning only**: full local test specification at
+  [C2-SPIKE-PLAN.md](C2-SPIKE-PLAN.md) (`workerd` via Wrangler local mode, synthetic
+  identities, simulated Supabase/JWKS, fake clock, latency/failure injection; CPU vs
+  wall-clock methodology; provisional P50≤3/P95≤5/P99≤8 ms targets against the 10 ms
+  Workers Free ceiling; S1–S19 security matrix mapped to T1–T5/T15/T20; PASS/
+  CONDITIONAL PASS/FAIL/INCONCLUSIVE outcomes; §12 owner-gated production-runtime
+  verification gate). **Spike remains UNEXECUTED** — no code, harness, fixtures,
+  dependencies or tests exist or were run. 6.0f stays **unchecked** (C2 evidence,
+  C3, C4 open).
 
 created by stokonn with love <3

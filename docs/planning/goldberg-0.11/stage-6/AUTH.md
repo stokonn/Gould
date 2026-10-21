@@ -88,7 +88,15 @@ Admin (OPEN-DECISIONS.md §3):
   Free Worker (static bundle + `/v1` BFF) in front of the Supabase Free data plane;
   a Supabase-only same-origin host is blocked at 0 CZK (Edge Functions rewrite
   `text/html` without a paid custom domain). Full evidence, capacity model and
-  conditions C1–C4: [BFF-FEASIBILITY.md](BFF-FEASIBILITY.md).
+  conditions C1–C4: [BFF-FEASIBILITY.md](BFF-FEASIBILITY.md). **C1 APPROVED
+  2026-10-21:** Cloudflare Workers Free is the approved BFF hosting/runtime (single
+  origin; Supabase Free data/auth backend; `eu-central-1`; no paid plans/billing/
+  trials/upgrades; architecture-level only — no provisioning, deployment or
+  implementation authorized). **C2 approved 2026-10-21 for planning only** — the
+  isolated local CPU/auth spike (`workerd` local mode, synthetic identities,
+  simulated Supabase/JWKS) is specified in [C2-SPIKE-PLAN.md](C2-SPIKE-PLAN.md);
+  the spike is UNEXECUTED and its execution, fixtures, dependencies and tests all
+  require a separate explicit owner authorization.
 - The static-SPA alternative is **not selected** and must not be substituted without
   a new owner decision (it must never pretend to have HttpOnly credential storage —
   COMMUNITY-ADMIN.md prohibition).

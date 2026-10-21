@@ -83,6 +83,29 @@ above.
     C1–C4 open (owner acceptance of the Cloudflare host, measured CPU spike,
     D5b/D5c edge-location review, terms re-verification). No account or deployment
     was created.*
+    **Updated 2026-10-21 (same day, later session):**
+    - **C1 APPROVED** — the owner approved Cloudflare Workers Free as the D8b BFF
+      hosting/runtime: Web Admin static assets + `/v1` BFF on one HTTPS origin;
+      Supabase Free remains the data and authentication backend in Frankfurt
+      (`eu-central-1`); no paid plans, automatic billing, chargeable trials or
+      upgrades. **Architecture-decision level only — no provisioning, deployment
+      or implementation authorized.** Recorded in `stage-6/OPEN-DECISIONS.md` §4a.
+    - **C2 approach APPROVED FOR PLANNING ONLY** — the owner approved an isolated,
+      fully local CPU/authentication feasibility spike (Cloudflare
+      Workers-compatible runtime `workerd` via Wrangler local mode, synthetic
+      identities, simulated Supabase/JWKS services, fake clock, latency/failure
+      injection). A complete test specification was produced at
+      `stage-6/C2-SPIKE-PLAN.md` (local runtime design, auth-consumption contract
+      that keeps Supabase Auth as the identity provider, synthetic-only fixtures,
+      S1–S19 security matrix mapped to THREAT-MODEL T1–T5/T15/T20, CPU-vs-wall-clock
+      methodology, provisional P50≤3/P95≤5/P99≤8 ms targets vs the 10 ms Workers
+      Free ceiling, PASS/CONDITIONAL PASS/FAIL/INCONCLUSIVE outcomes, stop
+      conditions and rollback, an owner-gated future production-runtime
+      verification gate). **The spike remains UNEXECUTED** — no spike code, harness,
+      fixtures, dependencies or tests exist or were run; executing it requires a
+      separate explicit owner authorization.
+    - C3 (D5b/D5c edge-location review) and C4 (terms re-verification) remain
+      open; task 6.0f stays unchecked; Stage 6 implementation remains NOT STARTED.
   - **PROVISIONAL:** D5a personal contact email is the intended public contact, but
     **no address was supplied or authorized — do not invent/expose/request/publish
     contact data**; verify legally required controller identification before launch.

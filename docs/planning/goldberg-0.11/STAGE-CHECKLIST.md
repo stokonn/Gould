@@ -342,7 +342,11 @@ unchecked.**
   cookies, server-side authz/CSRF, no bearer tokens in browser JS) — **must first
   prove the 0 CZK fit** (task 6.0f) or report the blocker. *Feasibility study
   executed 2026-10-21 → CONDITIONAL PASS
-  ([stage-6/BFF-FEASIBILITY.md](stage-6/BFF-FEASIBILITY.md)); conditions C1–C4 open.*
+  ([stage-6/BFF-FEASIBILITY.md](stage-6/BFF-FEASIBILITY.md)); **C1 APPROVED
+  2026-10-21** (Cloudflare Workers Free host, architecture-level only — no
+  provisioning); **C2 planned 2026-10-21**
+  ([stage-6/C2-SPIKE-PLAN.md](stage-6/C2-SPIKE-PLAN.md), spike UNEXECUTED); C2
+  evidence, C3 and C4 remain open.*
 - 🟨 **Provisional / deferred:** D5a personal contact email is the intended public
   contact but **no address was supplied or authorized — nothing may be published**;
   D5b controller/operator determination deferred to pre-launch review; D5d
@@ -378,9 +382,12 @@ implementation tasks UNCHECKED.**
 - [ ] 6.0e Google OAuth console configuration (separately authorized).
 - [ ] 6.0f D8b zero-cost BFF hosting/runtime proof (or blocker report to owner) —
       🚧 **feasibility study executed 2026-10-21 → CONDITIONAL PASS**
-      ([stage-6/BFF-FEASIBILITY.md](stage-6/BFF-FEASIBILITY.md)); conditions C1–C4
-      open (owner decision on the Cloudflare Free host, measured CPU spike, D5b/D5c
-      edge-location review, terms re-verification).
+      ([stage-6/BFF-FEASIBILITY.md](stage-6/BFF-FEASIBILITY.md)); **C1 APPROVED
+      2026-10-21** (Cloudflare Workers Free host, single origin, architecture-level
+      only — no provisioning); **C2 approach approved 2026-10-21 for planning only**
+      — test specification at [stage-6/C2-SPIKE-PLAN.md](stage-6/C2-SPIKE-PLAN.md),
+      **spike UNEXECUTED and execution separately gated**; C2 evidence, C3 (D5b/D5c
+      edge-location review) and C4 (terms re-verification) remain open.
 - [ ] 6.1–6.9 Server core: schema, auth, authorization, submissions, decision
       transaction, idempotency, read overlay, admin endpoints, abuse controls.
 - [ ] 6.10–6.11 Android optional integration with strict personal-data isolation and
