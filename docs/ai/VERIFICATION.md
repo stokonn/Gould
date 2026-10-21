@@ -39,6 +39,27 @@ Evidence: `docs/planning/goldberg-0.11/stage-5/results/ci-run-39511602936/`.
   by the CI dispatch — a fourth dispatch is the next gate).
 - Lint; instrumentation beyond compilation.
 
+## Executed — fourth CI dispatch: 5.10 green, 5.11 offline premise disproven (2026-10-21)
+
+Run [39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833) @
+`dcea5b2` (headSha + both jobs' `source-commit.txt` verified). Evidence:
+`docs/planning/goldberg-0.11/stage-5/results/ci-run-39518973833/`.
+
+| # | Command / action | Result |
+|---|---|---|
+| 1 | Full connected instrumentation suite on API 36 emulator (job 5.10) | **EXECUTED — PASSED: 177 tests, 0 failures, 0 errors, 2 skipped** — all 13 run-3 fixes verified on-device. |
+| 2 | Seeded in-place upgrade acceptance (job 5.11, python portion) | **EXECUTED — upgrade validation PASSED again** (baseline/seed/candidate, prefs unchanged, `before == after`, PRAGMA/foreign-key checks, UUID bridge); **failed only at the final offline assertion.** |
+| 3 | Offline-premise root-cause analysis from acceptance logcat (84 730 lines) + step log | **EXECUTED — proven:** `svc wifi disable` took effect (logcat `WifiService … enable=false` @ 00:11:59.904); `svc data disable` left zero trace; emulated CELLULAR network registered 00:12:15, became default 00:12:19, served the app during the whole "offline" upgrade. The assertion correctly caught a premise never achieved. |
+| 4 | Evidence preservation (curated bundle: raw logs zip `4b92dc7a…ab28`, step logs, counts/XML/testlog/logcat, acceptance logcat, upgrade DBs/JSONs, signing evidence) | **EXECUTED** — 22 files; full 257-file artifact set retained by GitHub (30 days). |
+
+### Not executed — this session (no claim)
+
+- The acceptance sections after the python call (Wi-Fi→mobile transition, Data Saver
+  toggles, process-death, post-restart DB, startup measurement) — still never executed
+  on a real CI emulator (every attempt ended at the python assertion).
+- Any fifth CI dispatch (5.11 fix must be implemented + locally verified first).
+- Lint; physical-device execution; production-credential signing (by design).
+
 ## Executed — second CI dispatch + execution-model fix (2026-10-20, sixth session)
 
 Owner-approved attempt 2: merge PR #33, dispatch against `5cdc0d6`, monitor both jobs,

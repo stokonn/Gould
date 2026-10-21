@@ -1,55 +1,49 @@
 # Goldberg 0.11 — Stage 5 STATE (recovery checkpoint)
 
-> **Last updated:** 2026-10-21, triage-fixes-dispatch session
-> (all 13 run-3 failures **root-caused from code**; fixes committed `dcea5b2`
-> — 2 product fixes + 4 harness fixes, no assertion weakened; local verification
-> **EXECUTED**: `testDebugUnitTest` **174/0 green** + `assembleDebugAndroidTest` OK;
-> **attempt 4 dispatched as
-> [run 39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833)
-> @ `dcea5b2`, monitoring in progress — outcome unknown**).
+> **Last updated:** 2026-10-21, run-4 result session (recovered after an
+> interrupted documentation edit — no work was lost)
+> ([run 39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833)
+> @ `dcea5b2`: **5.10 PASSED — 177 tests, 0 failures, 0 errors, 2 skipped — all 13
+> fixes verified on-device**; 5.11 failed only at the final offline assertion with the
+> root cause **proven from logcat**: `svc data disable` had zero effect on the API 36
+> CI emulator, cellular came up 15 s later and was the default network for the whole
+> "offline" upgrade. **Evidence-preserving 5.11 fix designed + documented, NOT yet
+> implemented; no fifth dispatch without owner approval**).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →
 > `docs/planning/goldberg-0.11/STAGE-CHECKLIST.md` (Stage 5 section) → GitHub Issue #31.
 > **Stage 5 is NOT complete. No merge/tag/release/APK publication performed.**
 
-## 🚦 Current status: real test results in — triaging 13 Stage 5 instrumentation failures
+## 🚦 Current status: 5.10 GREEN on the emulator; 5.11 offline premise disproven — fix designed, awaiting implementation + owner-approved dispatch
 
-- **Run 39511602936 (@ `9b80d65`, headSha verified; PR #34 merged workflow-only as
-  `816d142` first): the CI pipeline now works end-to-end** — materialize steps ✓, both
-  scripts ran as single bash processes, emulators booted (≈43 s), signing passed,
-  `connectedDebugAndroidTest` executed. Evidence:
-  `docs/planning/goldberg-0.11/stage-5/results/ci-run-39511602936/` (raw logs
-  `6e93fdd4…1ba11`, 253 artifacts incl. per-test logcats).
-- **5.10: 177 tests — 162 passed, 13 failed, 0 errors, 2 skipped.** All Stage 1–4
-  suites pass on-device; failures only in Stage5BundleJobRunnerTest (6),
-  Stage5BundleStoreTest (2), Stage5BundleWorkerTest (5, all `Failure {mOutputData=Data {}}`).
-  Signatures: on-device `Retryable(error=integrity/transport)`, partial-bundle publish,
-  `Integer<22> vs Long<22>` JSON coercion, `List has more than one element`, repair
-  path. Root causes NOT yet determined; no assertion weakened.
-- **5.11: upgrade validation PASSED on the emulator** (seeded v0.10.1 → candidate,
-  prefs unchanged, persistent-data equality, PRAGMA checks, UUID bridge) — only the
-  final offline-state assertion (`verify_emulator_upgrade.py:143`) failed on the API 36
-  network signature; investigate by capturing dumpsys output, not by weakening.
-- **Active task:** attempt 4 monitoring — [run 39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833)
-  @ `dcea5b2` (the triage-fix commit; headSha verified) validates the 13 fixes on the
-  emulator, plus the 5.11 offline-state investigation remains (capture dumpsys output).
-  Triage + fixes + local verification precede it (below). Tasks 5.10–5.13 remain open;
-  Stage 5 IN PROGRESS; Stage 6/7 not started.
-
-**Triage + fixes summary (2026-10-21, commit `dcea5b2`):** all 13 root-caused —
-5 = worker test-harness context bug (`TestListenableWorkerBuilder` raw context →
-`as? OpusApplication` fails at `BundleDownloadWorker` entry; real WorkManager passes
-the Application, proven by its sibling test passing); 7 = deterministic latent test/
-fixture defects (these androidTest-only tests had **never executed anywhere**):
-random-per-call fixture bundleIds ×2, URL selector matching every fixture URL, blob
-never installed before promote, JUnit Object-overload boxing (`Integer<22>` vs `Long<22>`
-— not JSON coercion); 1 = **genuine product bug** (`settle()` kept `validatedAt` on
-STALE→QUEUED → invariant IAE swallowed by `settleQuietly` → wedged STALE forever) +
-1 invariant gap (`readPublished()` exposed partial manifests). Fixes: 2 product
-(`settle()` timestamp rule, `readPublished()` authoritative-only + audit-mandated
-`locate()` via `readAll()`) + 4 harness; **no assertion weakened**. Local verification
-**EXECUTED:** `testDebugUnitTest` BUILD SUCCESSFUL **174 tests / 0 failures**;
-`assembleDebugAndroidTest` BUILD SUCCESSFUL. Not executed locally: androidTest runtime
-(host emulator blocker).
+- **Attempt 4 ([run 39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833)
+  @ `dcea5b2`, headSha + both jobs' `source-commit.txt` verified):**
+  - **5.10 — EXECUTED AND PASSED: 177 tests, 0 failures, 0 errors, 2 skipped** on the
+    API 36 emulator. All 13 run-3 fixes verified on-device (worker context, fixture
+    bundleIds, URL routing, blob-before-promote, JUnit overload, product
+    `settle()`/`readPublished()`/`locate()`). Evidence:
+    `docs/planning/goldberg-0.11/stage-5/results/ci-run-39518973833/` (raw logs
+    `4b92dc7a…ab28`; full 257-file set in GitHub artifacts, 30-day retention).
+  - **5.11 — upgrade validation PASSED again; final offline assertion failed with
+    root cause PROVEN from the 84 730-line acceptance logcat:** `svc wifi disable`
+    took effect (logcat `WifiService … enable=false` @ 00:11:59.904) but **`svc data
+    disable` left zero trace**, and the emulated CELLULAR network registered 00:12:15,
+    became the active default 00:12:19, and served `com.opus.piano` throughout the
+    "offline" upgrade. The assertion correctly caught a premise **never achieved** —
+    not an app regression, not an assertion-format issue.
+- **Active task: implement the documented, evidence-preserving 5.11 fix**
+  (`verify_emulator_upgrade.py`: belt-and-suspenders `settings put global mobile_data
+  0` + verify/retry loop + `cmd connectivity airplane-mode enable` escalation,
+  `dumpsys connectivity` saved to the artifact dir at every stage, fail fast with
+  evidence if offline cannot be achieved; final assertion semantics **unchanged**;
+  workflow section (b) disables airplane mode before the restores). Then local
+  verification (py_compile, workflow YAML parse + `scripts/check_*`, `bash -n`).
+  **A fifth CI dispatch requires explicit owner approval — do not dispatch
+  automatically.**
+- **Never executed in CI yet:** the acceptance sections after the python call
+  (Wi-Fi→mobile transition, Data Saver toggles, process-death, post-restart DB,
+  startup measurement) — they will run for the first time in attempt 5 if the offline
+  premise is genuinely achieved.
+- Tasks 5.10–5.13 remain open; Stage 5 IN PROGRESS; Stage 6/7 not started.
 
 **Run history (details: STAGE-CHECKLIST + `results/ci-run-*/run-summary.md`):**
 attempt 1 (run 39503450845) failed pre-test (dash `pipefail` + apksigner 37.0.0
@@ -59,8 +53,14 @@ then passed with runner-side confirmation of the apksigner root cause
 (`build-tools/37.0.0/apksigner`; release `53eface4…` = trusted, baseline = candidate =
 runner key `47aebcfd…`), root cause proven from the action source (`parseScript`
 single-line splitting) and fixed by the materialize-then-`bash <file>` design; attempt 3
-launch: PR #34 merged workflow-only (`816d142`), dispatched against `9b80d65` —
-outcome recorded in the current-status section above.
+launch: PR #34 merged workflow-only (`816d142`), dispatched against `9b80d65` — first
+run to execute application tests (177 tests, 13 failures, all root-caused from code;
+full triage: STAGE-CHECKLIST run-3 entry, `results/ci-run-39511602936/run-summary.md`,
+Issue #31 checkpoint comments); attempt 4: fixes `dcea5b2` dispatched — **5.10 green**
+(above). Historical note: the triage revealed 12 of 13 run-3 failures were deterministic
+latent defects in androidTest-only tests that had never executed anywhere, 1 was a
+genuine product bug (`settle()` STALE→QUEUED wedge), plus a `readPublished()` invariant
+gap — all fixed in `dcea5b2` with local JVM verification (174/0) before dispatch.
 
 
 ## ⚠️ Emulator blocker on the desktop machine (2026-10-20, third session)

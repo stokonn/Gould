@@ -91,10 +91,17 @@ x86_64 image + AVD `stage5-api36`, AVD home redirected). On the notebook:
 
 Alternative 1 (CI, current primary path): `.github/workflows/stage5-emulator.yml`
 (`workflow_dispatch` only, KVM-accelerated `ubuntu-24.04`, SHA-pinned) runs the full
-connected suite for 5.10 and the CI-executable 5.11 subset. **PR #32 was merged to
-`main` (merge commit `577d811`, workflow-only) and the first dispatch (run
-39503450845 against this branch @ `bcd8894`) failed pre-test in both jobs from CI
-setup/script defects — not application defects** (owner-confirmed; zero application
+connected suite for 5.10 and the CI-executable 5.11 subset.
+**Status as of 2026-10-21 (supersedes the run-1 paragraph below, kept as history):**
+attempts 1–4 dispatched from `feature/goldberg-0.11-stage-5`; attempt 4
+([run 39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833) @
+`dcea5b2`) delivered **5.10 PASSED (177/0/0/2 — all 13 earlier failures fixed and
+verified on-device)**; 5.11's upgrade validation passed again but its offline premise
+was proven never achieved (`svc data disable` no-op on the API 36 CI emulator — see
+`results/ci-run-39518973833/run-summary.md`). The evidence-preserving 5.11 fix is
+designed but not yet implemented; **a fifth dispatch awaits explicit owner approval**.
+See `docs/ai/STATE.md` for the live checkpoint. (Historical: the first dispatch, run
+39503450845, failed pre-test in both jobs from CI setup/script defects — not application defects (owner-confirmed; zero application
 tests ran; evidence:
 `docs/planning/goldberg-0.11/stage-5/results/ci-run-39503450845/`): (1) the
 emulator-runner invokes its script with `/usr/bin/sh` (dash), which rejects

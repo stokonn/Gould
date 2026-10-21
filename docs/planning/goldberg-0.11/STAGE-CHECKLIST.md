@@ -435,8 +435,38 @@ head `99ea73a`. Owner-approved decisions: D5.1 file-based manifests, D5.3 WorkMa
     StateMachine 13, StoreLogic 10, TransferEngine 15 all green); `assembleDebugAndroidTest`
     → **BUILD SUCCESSFUL**. Not executed locally: androidTest runtime (host emulator
     blocker documented in STATE) — device execution is what the CI dispatch provides.
-  - **Next gate:** fourth CI dispatch decision (owner's rule: meaningful fix + local
-    verification now exist and are documented; emulator execution remains CI-only).
+  - **Attempt 4 dispatched under the sanctioned loop (2026-10-21,
+    [run 39518973833](https://github.com/stokonn/Goldberg/actions/runs/39518973833) @
+    `dcea5b2`, headSha verified; both jobs' `source-commit.txt` confirm the SHA).**
+  - **5.10 — EXECUTED AND PASSED: 177 tests, 0 failures, 0 errors, 2 skipped on the
+    API 36 emulator.** All 13 run-3 fixes verified on-device (worker cluster,
+    fixture/endpoint routing, JUnit overload, product `settle()`/`readPublished()`/
+    `locate()` fixes). Evidence:
+    `docs/planning/goldberg-0.11/stage-5/results/ci-run-39518973833/`
+    (raw logs SHA-256 `4b92dc7a…ab28`, counts/XML/testlog/logcat; full 257-file set in
+    GitHub artifacts, 30-day retention). Task 5.10's connected-suite execution now has
+    executed-**passing** evidence; remaining 5.10 items (notebook/manual-only: consent
+    revocation mid-stream, low disk, screenshots, real bundle-transfer costs) still open.
+  - **5.11 — upgrade validation PASSED again; failed at the final offline assertion
+    with the root cause now PROVEN from logcat (not inferred):** `svc wifi disable`
+    worked (`WifiService: setWifiEnabled … enable=false`, 00:11:59.904), but **`svc data
+    disable` had zero observable effect** — no telephony data-disable event anywhere in
+    the 84 730-line acceptance logcat, and the emulated CELLULAR network registered at
+    00:12:15, became the active default network at 00:12:19, and served `com.opus.piano`
+    throughout the "offline" upgrade. The assertion (`Active default network:
+    none|null|-1`) correctly caught a premise that was **never achieved** — not an app
+    regression. Post-python acceptance sections (Wi-Fi→mobile transition, Data Saver,
+    process-death, post-restart DB, startup measurement) still never executed in CI.
+  - **5.11 fix designed + documented BEFORE implementation:** verify/retry loop after
+    the disables (`settings put global mobile_data 0` belt-and-suspenders; escalation to
+    `cmd connectivity airplane-mode enable` if still online), `dumpsys connectivity`
+    captured to the artifact dir at every stage, fail-fast with evidence if offline
+    cannot be achieved, final assertion semantics **unchanged**, workflow section (b)
+    adds airplane-mode disable before the restores. No assertion weakened anywhere.
+  - **Gate held again:** run-4 results + root cause documented (this entry, run
+    summary, Issue #31) before implementing the 5.11 fix; no fifth dispatch until the
+    fix is implemented and locally verified (py_compile/YAML/check scripts). Tasks
+    5.10–5.13 remain open; Stage 5 IN PROGRESS.
 
 **Completion criteria (from STAGES.md Stage 5 acceptance):** process-death/resume,
 low-space, corrupt-asset, concurrent remove/clear/restore tests; Wi-Fi→mobile,

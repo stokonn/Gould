@@ -1,0 +1,26 @@
+﻿2026-10-21T00:15:13.7376728Z ##[group]Run python3 - <<'PYEOF' | tee stage5-ci-results/instrumentation-counts.txt | tee -a "$GITHUB_STEP_SUMMARY"
+2026-10-21T00:15:13.7377532Z [36;1mpython3 - <<'PYEOF' | tee stage5-ci-results/instrumentation-counts.txt | tee -a "$GITHUB_STEP_SUMMARY"[0m
+2026-10-21T00:15:13.7378264Z [36;1mimport glob[0m
+2026-10-21T00:15:13.7378515Z [36;1mimport xml.etree.ElementTree as ET[0m
+2026-10-21T00:15:13.7379021Z [36;1mxmls = sorted(glob.glob('app/build/outputs/androidTest-results/connected/**/*.xml', recursive=True))[0m
+2026-10-21T00:15:13.7379507Z [36;1mif not xmls:[0m
+2026-10-21T00:15:13.7379947Z [36;1m    print('No instrumentation result XML files found (suite may have failed before producing results).')[0m
+2026-10-21T00:15:13.7380683Z [36;1m    raise SystemExit(0)[0m
+2026-10-21T00:15:13.7381014Z [36;1mtotals = dict(tests=0, failures=0, errors=0, skipped=0)[0m
+2026-10-21T00:15:13.7381375Z [36;1mfor path in xmls:[0m
+2026-10-21T00:15:13.7381642Z [36;1m    root = ET.parse(path).getroot()[0m
+2026-10-21T00:15:13.7381955Z [36;1m    for key in totals:[0m
+2026-10-21T00:15:13.7382234Z [36;1m        totals[key] += int(root.get(key, 0) or 0)[0m
+2026-10-21T00:15:13.7382555Z [36;1mprint(f'Result files: {len(xmls)}')[0m
+2026-10-21T00:15:13.7383016Z [36;1mprint('Tests: {tests}  Failures: {failures}  Errors: {errors}  Skipped: {skipped}'.format(**totals))[0m
+2026-10-21T00:15:13.7383458Z [36;1mPYEOF[0m
+2026-10-21T00:15:13.7474893Z shell: /usr/bin/bash -e {0}
+2026-10-21T00:15:13.7475165Z env:
+2026-10-21T00:15:13.7475484Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-21T00:15:13.7475989Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-21T00:15:13.7476400Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-10-21T00:15:13.7476698Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-10-21T00:15:13.7476998Z   ANDROID_AVD_HOME: /home/runner/.android/avd
+2026-10-21T00:15:13.7477266Z ##[endgroup]
+2026-10-21T00:15:13.7891299Z Result files: 1
+2026-10-21T00:15:13.7891797Z Tests: 177  Failures: 0  Errors: 0  Skipped: 2
