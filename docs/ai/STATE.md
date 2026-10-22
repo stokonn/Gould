@@ -84,6 +84,23 @@
 > sequencing-only; 6.0f stays UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; Stage 6
 > implementation NOT STARTED; nothing provisioned; Stage 5 remains COMPLETE.**
 
+> **Stage 6 addendum 5 (2026-10-22, Q1 professional-review handoff — docs only):**
+> new `stage-6/Q1-PROFESSIONAL-REVIEW-BRIEF.md` — the identity-free routing
+> package for a qualified professional: all **13 questions Q4.1–Q4.13 verbatim**
+> with primary-source references; neutral Q1-A/B/C/D framing (**Q1-D is a
+> candidate for review, explicitly not an approved solution**); verified law vs
+> unresolved interpretation separated; official **ÚOOÚ** guidance (Základní
+> příručka §7 — legal form not decisive for controller/processor, cloud provider
+> as typical processor, risk-based self-analysis; Desatero for small controllers;
+> consultation practice) and **European Commission** guidance (Application of the
+> GDPR — household exception wording, free services in scope, Art. 4(7) roles;
+> Obligations — Arts. 12–14/25/32/33–35/37 thresholds), all fetched 2026-10-22;
+> and the **C-1…C-6 confirmations required before Q1/D5b can be resolved**.
+> Official EUR-Lex GDPR text still unretrieved (5 failures, X-6). **No review
+> performed or simulated; no option selected; no personal data; D5b UNRESOLVED,
+> C4 OPEN, 6.0f UNCHECKED, 6.0d/6.0e NOT AUTHORIZED, ORD-A sequencing-only, 0 CZK
+> unchanged; Stage 6 implementation NOT STARTED; Stage 5 remains COMPLETE.**
+
 > **Last updated:** 2026-10-20, CI-activation session (Phase A/B of the owner's CI plan;
 > approval gate reached — nothing dispatched or merged).
 > Read order for a fresh session: `AGENTS.md` → this file → `docs/ai/HANDOFF.md` →

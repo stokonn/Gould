@@ -422,6 +422,14 @@ version; **no monetization approved or implemented**).
 **No option selected; Q1/D5b remain UNRESOLVED and blocking for 6.0d; D5b is
 not resolved; no GDPR compliance claimed; professional review is not
 unnecessary; 6.0f stays unchecked; no account, provisioning or implementation.**
+A professional-review **routing package** was added 2026-10-22:
+[stage-6/Q1-PROFESSIONAL-REVIEW-BRIEF.md](stage-6/Q1-PROFESSIONAL-REVIEW-BRIEF.md)
+— the identity-free handoff carrying all 13 questions Q4.1–Q4.13 verbatim with
+primary sources, the neutral A/B/C/D framing (Q1-D = candidate for review, **not
+approved**), official ÚOOÚ + European Commission guidance (accessed 2026-10-22)
+and the C-1…C-6 confirmations required before D5b can be resolved. **The brief
+performs no review and changes no gate: Q1/D5b stay UNRESOLVED, C4 OPEN, 6.0f
+UNCHECKED, ORD-A sequencing-only.**
 
 - **Purpose:** Optional, secured community backend: server-validated Google auth,
   default-deny five-role authorization, revisioned submissions with immutable

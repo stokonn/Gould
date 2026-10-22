@@ -91,6 +91,12 @@ Status vocabulary used below:
       monetization approved or implemented** (Q1 §1.7). Still **no option
       selected; D5b unresolved and blocking; professional review (Q4.9–Q4.13)
       still required.**
+      **Routing package prepared 2026-10-22:**
+      [Q1-PROFESSIONAL-REVIEW-BRIEF.md](Q1-PROFESSIONAL-REVIEW-BRIEF.md) — all 13
+      questions Q4.1–Q4.13 verbatim with primary-source references, neutral
+      A/B/C/D summary, official ÚOOÚ/European Commission guidance, and the
+      C-1…C-6 confirmations required before D5b can be resolved. **The review
+      itself is not commissioned, not performed, and nothing here resolves D5b.**
 - [ ] **D5d details** — retention periods, deletion semantics, attribution vs
       pseudonymization (blocks retention jobs and `DELETE /v1/me` implementation;
       pre-launch review gate).

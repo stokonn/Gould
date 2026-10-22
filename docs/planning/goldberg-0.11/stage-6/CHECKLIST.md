@@ -329,5 +329,29 @@ pre-launch gates.**
   review still required; ORD-A stays sequencing-only; 6.0f stays unchecked.**
   No checkboxes closed by this entry — 6.0b, 6.0d, 6.0e, 6.0f all unchanged;
   no accounts, no provisioning, no OAuth, no code, no money.
+- 2026-10-22 — **Q1 professional-review handoff brief prepared
+  (documentation-only, no accounts, no review performed).**
+  New: [Q1-PROFESSIONAL-REVIEW-BRIEF.md](Q1-PROFESSIONAL-REVIEW-BRIEF.md) — an
+  identity-free routing document for a qualified professional containing (a) all
+  **13 questions Q4.1–Q4.13 preserved verbatim** from Q1 §4, each with its
+  primary-source references; (b) a neutral Q1-A/B/C/D summary explaining that
+  **Q1-D is a candidate for review, not an approved solution** (textual contract
+  compatibility ≠ lawfulness — eligibility, trade classification and controller
+  determination all remain open); (c) a **verified-law vs unresolved-interpretation
+  split**; (d) official guidance fetched 2026-10-22 from the **Czech Data
+  Protection Authority (ÚOOÚ)** (Základní příručka §7, Desatero for small
+  controllers, consultation-practice note) and the **European Commission**
+  (Application of the GDPR; Obligations) — quotes recorded with access dates;
+  and (e) the **C-1…C-6 confirmations a qualified professional must return
+  before Q1/D5b can be resolved** (eligibility, contract acceptability, controller
+  determination, trade classification, pre-collection readiness posture, and an
+  explicit list of lawfully available structures — selection always the owner's).
+  Official EUR-Lex GDPR text remains unretrieved (5 failures, C4 X-6 ❌) and is
+  labeled as such. Synchronized: stage-6 README/OPEN-DECISIONS,
+  STAGE-CHECKLIST, docs/ai/*. **No option selected; no legal approval simulated
+  or claimed; D5b remains unresolved and blocking for 6.0d; C4 OPEN; 6.0f
+  UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing-only; 0 CZK unchanged.**
+  No checkboxes closed by this entry — 6.0b, 6.0d, 6.0e, 6.0f all unchanged;
+  no accounts, no provisioning, no OAuth, no code, no money.
 
 created by stokonn with love <3

@@ -296,4 +296,26 @@ Q4.1–Q4.13 to a professional review — no selection of A/B/C/D may be made or
 implied by an agent; do not provision, do not create accounts, do not
 implement.** Stage 5 remains COMPLETE.
 
+**Addendum 5 (2026-10-22, Q1 professional-review handoff — docs only):**
+`stage-6/Q1-PROFESSIONAL-REVIEW-BRIEF.md` was created as the **identity-free
+routing package** for the still-not-commissioned professional review: all **13
+questions Q4.1–Q4.13 preserved verbatim** from Q1 §4 with primary-source
+references per question; a neutral Q1-A/B/C/D summary making explicit that
+**Q1-D is a candidate for review, not an approved solution** (contract-text
+compatibility ≠ lawfulness); a **verified-law vs unresolved-interpretation**
+separation (§3.1–§3.3); official guidance fetched 2026-10-22 from the **Czech
+Data Protection Authority (ÚOOÚ)** and the **European Commission**, quoted with
+access dates; and the **C-1…C-6 confirmations a qualified professional must
+return before Q1/D5b can be resolved**, plus the requested output format. The
+official EUR-Lex GDPR text remains unretrievable from this environment (5
+attempts, C4 X-6) and is labeled as a limitation, never papered over.
+Synchronized: stage-6 README/OPEN-DECISIONS/CHECKLIST, STAGE-CHECKLIST,
+docs/ai/*. **Next step for a fresh agent:** the owner routes the brief to a
+qualified professional (an owner action the agent cannot take); on return, the
+owner records the outcome in OPEN-DECISIONS D5b and only then selects an
+option. **Until then: no option selected, D5b UNRESOLVED/blocking for 6.0d, C4
+OPEN, 6.0f UNCHECKED, 6.0d/6.0e NOT AUTHORIZED, ORD-A sequencing-only, no
+accounts/provisioning/OAuth/implementation, 0 CZK/month, Stage 7 untouched,
+Stage 5 remains COMPLETE.**
+
 created by stokonn with love <3
