@@ -23,7 +23,7 @@ Work only in this worktree; never touch Stage 6 branches/worktrees/credentials.
 - [x] 7A.10 Host gates: assembleDebug, JVM tests, lintDebug, `scripts/check_*.py`
 - [x] 7A.11 Emulator screenshots: six screens × Ivory/Nocturne × CZ/EN (+ font scale spot check), explicit emulator serial — **32 shots captured & inspected**
 - [x] 7A.12 Screenshot-vs-reference comparison + mismatch report — **[results/README.md](results/README.md)**
-- [ ] 7A.13 Commit/push verified Stage 7A changes; Issue #31 checkpoint; no merge/tag/release
+- [x] 7A.13 Commit/push verified Stage 7A changes; Issue #31 checkpoint; no merge/tag/release — **done: commit `c106c5c` pushed to `origin/feature/goldberg-0.11-stage-7a` (52 files, +1248/−119); Issue #31 checkpoint comment appended. No merge, tag, release or APK publication.**
 
 ## Progress log
 
@@ -171,15 +171,18 @@ pre-existing pipeline behavior verified identical via `git show HEAD:`, not a 7A
 regression). Matrix gates: X2 ✓ X3 ✓ X4 (1.5× spot) ✓ X5 ✓ X6 ✓ X7 ✓, X8 not executed
 (no schema change; inspection-proven), **X9 owner visual acceptance PENDING**.
 
-### Next steps (7A.13)
+### 7A.13 publication record — DONE (2026-10-22)
 
-1. Commit all verified Stage 7A changes (app code + tests + strings + planning docs +
-   `stage-7/` results; NOT `stage-4/visual-references/` — owner planning refs, left
-   untracked); push to `feature/goldberg-0.11-stage-7a`.
-2. Append Issue #31 checkpoint comment (Stage 7A section; never overwrite description or
-   Stage 6 content).
-3. Report to owner — NO merge/tag/release; Stage 7A is NOT "complete" until owner visual
-   acceptance (X9). Emulator left tidy: theme=System, font 1.0, locale en, catalogue cache
-   retained on disposable AVD only.
+- Commit **`c106c5c`** "feat: redesign six Encyclopedia screens for Goldberg 0.11 Stage 7A"
+  (52 files, +1248/−119: app code + strings + tests + planning docs + `stage-7/` results;
+  `stage-4/visual-references/` deliberately left untracked as owner planning refs) —
+  **pushed to `origin/feature/goldberg-0.11-stage-7a`** (remote head verified equal).
+- Issue #31 Stage 7A checkpoint comment appended (append-only; description and Stage 6
+  content untouched).
+- **No merge, no tag, no release, no APK publication.** Stage 7A is NOT complete until
+  owner visual acceptance (**X9, pending**) — the screenshots in `results/` are submitted
+  for that review.
+- Emulator left tidy: theme=System, font_scale=1.0, locale en; the bootstrapped catalogue
+  cache lives only on the disposable `stage5-api36` AVD.
 
 created by stokonn with love <3
