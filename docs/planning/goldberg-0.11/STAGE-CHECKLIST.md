@@ -781,6 +781,29 @@ Issue #31 checkpoint 6351050432 independently read back exactly; all 63 older
 comments preserved, 64 total, Project In Progress unchanged. Later publication
 metadata/checkpoint commits do not change tested prototype source.
 
+
+### Reviewed prototype / formal-local adoption preparation — 2026-10-22
+
+Purpose/scope: record owner-selected revision states, inspect dependencies and
+prepare an exact local 6.1–6.3 scope/policy proposal reusing the tested prototype.
+Documentation/proposals only; formal implementation remains NOT STARTED.
+
+- [x] Publish only the owner-approved Stage 6 dashboard row and checkpoint link; exact body/metadata/comments readback PASS.
+- [x] Record owner direction: draft local-only, changes_requested canonical, returned UI label only.
+- [x] Inspect app, Stage 7A, prototype and old C6 dependencies; no approved API edit.
+- [x] Prepare exact adoption scope/map, API patch and narrow gate-exception text for review.
+- [ ] Owner approves the reviewed API patch and local-only formal 6.1–6.3 policy exception.
+- [ ] After that authorization: perform extraction/adoption and targeted local Auth/AuthZ implementation/tests.
+
+[LOCAL-CORE-ADOPTION.md](stage-6/LOCAL-CORE-ADOPTION.md) holds concrete scope, compatibility
+impact, retained 34/34 evidence and acceptance requirements. No tests claimed rerun
+for unchanged prototype source. Local-only exception is proposed, NOT in force;
+all original technical task/gate boxes unchanged. Verification: five host scripts,
+source hashes, proposal applicability and links/scope/gate checks recorded in docs/ai/VERIFICATION.md.
+Q1/D5b unresolved/blocking; C4/C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
+6.0d/6.0e NOT AUTHORIZED; 0 CZK/month; collection NOT AUTHORIZED. Stage 7A/X10
+and Stage 7B preserved. No cloud, production code, API change, merge or release.
+
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
 **Status: ⬜ not started.** Depends on stable Stage 4/5 contracts and Stage 6 admin actions.

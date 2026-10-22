@@ -50,3 +50,11 @@ failed-run diagnostics and records the check failure. Tested source hashes and
 Issue #31 checkpoint 6351050432 independently read back exactly; all 63 older
 comments preserved, 64 total, Project In Progress unchanged. Later publication
 metadata/checkpoint commits do not change tested prototype source.
+
+## Adoption preparation after owner review — 2026-10-22
+
+Owner selected canonical changes_requested revisions with device-local drafts and
+returned as a UI label only. [LOCAL-CORE-ADOPTION.md](LOCAL-CORE-ADOPTION.md) records
+compatibility impact, exact API patch for review and narrowly scoped local 6.1–6.3
+approval text. No API/gate amendment is applied yet; prototype remains the verified
+candidate. Source hashes and 34/34 artifact unchanged; no test/benchmark rerun.

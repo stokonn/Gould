@@ -24,7 +24,9 @@ API-CONTRACTS.md §4 permits new revisions from draft/changes_requested/returned
 DATA-MODEL.md §3 keeps drafts device-only, does not define returned, and documents
 only changes_requested → in_review for an author revision. The prototype has no
 HTTP endpoint and introduces neither draft nor returned server transitions.
-Approved API text is unchanged; reconcile with the owner before endpoint adoption.
+Owner selected changes_requested as the canonical server state, device-local drafts
+and returned as UI label only. [Adoption/compatibility report](../../docs/planning/goldberg-0.11/stage-6/LOCAL-CORE-ADOPTION.md)
+prepares the exact patch; approved API text is unchanged pending impact review.
 
 created by stokonn with love <3
 

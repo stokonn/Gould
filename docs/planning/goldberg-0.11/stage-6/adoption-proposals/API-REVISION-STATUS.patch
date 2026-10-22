@@ -1,0 +1,14 @@
+--- a/docs/planning/goldberg-0.11/stage-6/API-CONTRACTS.md
++++ b/docs/planning/goldberg-0.11/stage-6/API-CONTRACTS.md
+@@ -56 +56 @@
+-| `POST /v1/submissions/{id}/revisions` | owner, status∈{draft, changes_requested, returned} | New immutable revision; returns to `in_review`. |
++| `POST /v1/submissions/{id}/revisions` | owner, status=changes_requested | New immutable revision; returns to `in_review`. |
+@@ -57,0 +58,3 @@
++
++Drafts remain device-local. `returned` may be a UI label for
++`changes_requested`, never a separate server status or wire alias.
+--- a/docs/planning/goldberg-0.11/COMMUNITY-ADMIN.md
++++ b/docs/planning/goldberg-0.11/COMMUNITY-ADMIN.md
+@@ -20 +20 @@
+-| Authenticated contributor | Create own draft/submission; view own status/review reason; revise own returned/draft item. Cannot set author/status/approval/role or enumerate other pending work. |
++| Authenticated contributor | Edit device-local drafts; create submissions; view own status/review reason; revise own changes_requested submission. Cannot set author/status/approval/role or enumerate other pending work. |

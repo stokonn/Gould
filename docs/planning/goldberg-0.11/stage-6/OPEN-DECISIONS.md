@@ -248,3 +248,14 @@ in the reassessment). Current state, superseding only earlier Q1 framing:
   unchecked, ORD-A stays sequencing-only.
 
 created by stokonn with love <3
+
+## Owner-selected revision-state direction — 2026-10-22
+
+The owner reviewed the local schema prototype and selected draft as device-local
+only, changes_requested as the canonical server author-revision state and returned
+as at most a UI label, never a separate server state. [LOCAL-CORE-ADOPTION.md](LOCAL-CORE-ADOPTION.md)
+records the dependency/compatibility review and prepared API patch. Direction is
+selected; applying the approved-API edit awaits review of that impact/patch.
+Prototype source/tests and approved API text unchanged. A scoped exception for
+formal local-only 6.1–6.3 is proposed in that document, not approved/in force.
+D8b/6.0f policy, ORD-A, all cloud gates and global task boxes remain unchanged.

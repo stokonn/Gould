@@ -1,3 +1,65 @@
+## Current checkpoint — approved dashboard and adoption preparation (2026-10-22)
+
+Base f54881e on spike/goldberg-0.11-stage-6-schema-pg. Owner-approved exact Issue
+#31 Stage 6 row/latest-checkpoint edit PUBLISHED; independent readback PASS:
+9,592 Unicode characters/52 lines, 2026-10-22T20:58:16Z, UTF-8 SHA-256
+`dd2829c6576e9648396505c9cd87e70e3ae8667e4f35a7ac571bb90e59e35f2a`.
+All 64 existing comment records and metadata/Project In Progress preserved at
+publication. Other stage rows and all gates unchanged. Supersedes prior pending
+9,564-character dashboard baseline below.
+
+Owner reviewed the prototype and selected draft=device-local only,
+changes_requested=canonical author-revision server state, returned=UI label only
+if needed. Dependency review COMPLETE before any API edit: prototype already
+matches; old isolated C6 simulator permits all three; no matching current app or
+Stage 7A consumer found. Unknown external consumers are not proven absent. Approved
+API/model text and old simulator/evidence remain unchanged.
+
+Concrete adoption/compatibility report:
+docs/planning/goldberg-0.11/stage-6/LOCAL-CORE-ADOPTION.md. Includes exact proposed
+API patch and narrow local 6.1–6.3 authorization text under adoption-proposals/.
+These are REVIEW DRAFTS, not policy in force. Reuse the hash-verified 34/34 prototype
+for local 6.1, then fake-clock/JWKS/session Auth 6.2 and server capability/ownership
+AuthZ 6.3. No actual extraction, new Auth/AuthZ code or formal 6.1 start this session.
+
+Exact required owner decision: approve local-only formal 6.1–6.3 ahead of 6.0f,
+amending only that subset's ordering in CHECKLIST/D8b, OPEN-DECISIONS,
+CLOUD-READINESS-PLAN and POSTGRESQL-DESIGN-REQUIREMENTS. 6.0f stays OPEN/UNCHECKED;
+ORD-A/cloud gates remain unchanged. Separately approve the API patch after reviewing
+compatibility impact. This is needed because the current rule still says before
+any implementation; prototype review alone does not amend it. No general audit
+or replanning prerequisite; the concrete approval is the next action.
+
+Q1/D5b unresolved/blocking; C4/C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
+6.0d/6.0e NOT AUTHORIZED; 0 CZK/month; collection NOT AUTHORIZED. Stage 5/7 and
+unrelated worktrees/files preserved. Tested SQL/source/runner hashes unchanged;
+34/34 historical evidence reused, no repeated PG benchmarks or hosted operations.
+Publication/checkpoint SHA is the containing documentation commit on this branch.
+
+### Adoption-preparation verification
+
+Executed on the isolated spike branch; all PASS:
+
+- `python3 scripts/check_agent_policy.py` (runtime loading not tested).
+- `python3 scripts/check_backup_fixtures.py` — 3 formats.
+- `python3 scripts/check_history_paging.py` — 106 sessions/4 pages.
+- `python3 scripts/check_localization.py` — 922 EN/CZ resources.
+- `python3 scripts/check_migrations.py` — host v1–9→10 DDL, Android runtime not executed.
+- `git apply --check --unidiff-zero docs/planning/goldberg-0.11/stage-6/adoption-proposals/API-REVISION-STATUS.patch` — exact review patch applies to the inspected baseline; NOT applied. Zero-context hunks avoid whitespace-only context lines in the saved patch artifact.
+- Twelve-file documentation/proposal scope, local links, unchanged original gate checkboxes/operative policy and non-Stage-6 sections, untouched approved API/model and 34-test source hashes: PASS.
+- `git diff --check` / staged diff check: PASS.
+
+Compatibility work is executed source/reference inspection, not a live client or
+hosted database test. Original C6 guard found at src/server.mjs:558 and canonical
+request-changes regression at tests/v4-moderation.test.mjs:75; Stage 7A 576f0d2
+inspected read-only with its unrelated visual-reference files preserved. No source
+extraction or formal 6.1–6.3 implementation; no old suite/benchmark rerun, cloud
+operation, app build, screenshot, APK/signing, deployment or release.
+
+Approved Issue body published exactly after fresh conflict check: 9,592 chars/52
+lines; all 64 full comments/metadata unchanged at publication; Project In Progress.
+No policy amendment or API update beyond the separate review artifacts is applied.
+
 ## Local prototype publication — 2026-10-22
 
 Verified source commit: 16bfdfbe213ce66973a55d9746453601605e74d7.

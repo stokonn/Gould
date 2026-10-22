@@ -622,3 +622,13 @@ is candidate evidence for future 6.1, not formal implementation or a policy waiv
 6.0f remains UNCHECKED; Q1/D5b/C4/C2 §12 gates and all cloud/collection approvals
 remain unchanged. No hosted action, production RLS, OAuth, retention policy,
 Stage 7 change, merge or release is authorized by this prototype instruction.
+
+## Local-core adoption proposal — 2026-10-22 (NOT AUTHORIZED)
+
+Owner reviewed the local prototype; [LOCAL-CORE-ADOPTION.md](LOCAL-CORE-ADOPTION.md)
+now specifies exact local 6.1–6.3 scope and a proposed exception to the current
+6.0f-before-implementation ordering for that subset. The exception has NOT been
+approved: §§2–4/ORD-A step 10 remain unchanged and formal adoption cannot start.
+The draft would keep Q1/D5b/C4/C2 §12/6.0f open and every cloud/collection gate
+binding. It does not select ORD-B or authorize deployment. Next action is review
+of the concrete approval text, not another general security/planning loop.
