@@ -804,6 +804,30 @@ Q1/D5b unresolved/blocking; C4/C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
 6.0d/6.0e NOT AUTHORIZED; 0 CZK/month; collection NOT AUTHORIZED. Stage 7A/X10
 and Stage 7B preserved. No cloud, production code, API change, merge or release.
 
+
+### Local Auth/session/authorization prototype — 2026-10-22
+
+Purpose/scope: owner-authorized isolated LOCAL-ONLY prototype for 6.2/6.3 designs,
+reusing the verified PostgreSQL schema. New spikes/stage6-auth-local code, additive
+Auth migration, tests and Stage 6 checkpoints; no formal promotion or cloud work.
+
+- [x] Create spike/goldberg-0.11-stage-6-auth-local from verified schema remote 0f966dc.
+- [x] Implement real JWT/JWKS validation, issuer/subject identity, hashed opaque sessions, nonce/replay/rotation/family revocation and safe logout/error/log handling.
+- [x] Implement fresh server role/state/capability/ownership checks, no-self-grant and actor≠author with a local in-process adapter.
+- [x] Execute 50 Auth/security tests plus unchanged 34-schema regression suite: 84 PASS, 0 failures/skips/cancellations.
+- [x] Run five repository host scripts: PASS; original schema/evidence/approved contracts and gate boxes preserved.
+- [ ] Commit/push and append verified existing Issue #31 checkpoint; propose latest-link-only dashboard diff for owner approval.
+
+[Local Auth checkpoint](stage-6/LOCAL-AUTH-PROTOTYPE.md) links exact source/tests/commands
+and partial T1–T9/T22 coverage. Formal 6.2/6.3 and all global task boxes remain
+UNCHECKED; no hosted/real-provider/HTTP/RLS/CSRF or complete threat-row pass inferred.
+No original concurrency benchmark/provider audit rerun. Remaining work: separately
+authorized local 6.4–6.6 with bounded typed handlers, authenticated moderation and
+idempotency; canonical revision contract patch awaits review before endpoint adoption.
+Q1/D5b unresolved/blocking; C4/C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
+6.0d/6.0e NOT AUTHORIZED; 0 CZK/month; collection NOT AUTHORIZED. No Stage 5/7,
+cloud, real credentials/users, APK, deployment, merge, tag or release changes.
+
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
 **Status: ⬜ not started.** Depends on stable Stage 4/5 contracts and Stage 6 admin actions.

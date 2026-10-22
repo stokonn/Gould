@@ -1,3 +1,60 @@
+## Current checkpoint — local Auth/session/AuthZ prototype (2026-10-22)
+
+Owner explicitly authorized isolated LOCAL-ONLY task-design 6.2/6.3 prototype,
+not formal acceptance or gate amendment. Branch spike/goldberg-0.11-stage-6-auth-local,
+base 0f966dc (actual latest schema remote, newer than observed f54881e), isolated
+clone .gradle/stage6-auth-prototype. Original schema branch/evidence and Stage 5/7
+worktrees/code preserved. This source checkpoint is its containing commit.
+
+Implemented spikes/stage6-auth-local: strict jose 6.2.13 JWT/JWKS verification,
+bounded injected keys/clock, stable issuer/subject mapping, additive auth_families/
+challenges/refresh migration, hashed CSPRNG opaque tokens, expiry/revocation/logout,
+atomic refresh replay-family revocation, fresh server capabilities/ownership,
+no self-grant/operator privilege, safe in-process local transport/errors/logs.
+No HTTP listener or deployment interface. No default launch administrator seed.
+
+Executed final: 50 new Auth/security tests + 34 original schema regressions =
+84 passed, zero failed/skipped/cancelled on PostgreSQL 17.11. Initial 41+34 and
+second 48+34 also passed before final coverage/guards added. Five host scripts PASS.
+Original schema source/hash/34-test artifact unchanged; no old benchmark/audit rerun.
+Local T1–T9/T22 coverage is qualified in results/SUMMARY.md, not full threat-row,
+real-provider/hosted/HTTP/RLS/CSRF acceptance. Code/SQL/tests/source hashes and exact
+commands: docs/planning/goldberg-0.11/stage-6/LOCAL-AUTH-PROTOTYPE.md and
+spikes/stage6-auth-local/results/. No Supabase, real credentials/users, production
+retention/deletion, Android/APK/device, cloud, merge or release activity.
+
+Original API/model untouched. Existing consumer review in LOCAL-CORE-ADOPTION.md
+reused: changes_requested canonical, draft device-local, returned UI label only;
+old C6 broader guard/evidence preserved. Patch remains for owner review. Auth work
+was independent and authorized; no formal policy exception applied.
+
+Next, only after separate owner scope: local 6.4 typed bounded submissions/revisions
+with full validation; 6.5 authenticated atomic moderation using this context and
+existing lock/head design; 6.6 request-bound idempotency/replay/mismatch/expiry.
+Do not automatically proceed. Q1/D5b unresolved/blocking; C4/C2 §12 OPEN;
+6.0f/6.1–6.18 UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; 0 CZK/month; collection NOT
+AUTHORIZED. Stage 7A conditional/X10 OPEN, Stage 7B untouched. Issue checkpoint
+and minimal latest-link dashboard proposal will be published/prepared after commit;
+description edits require explicit approval and fresh conflict check.
+
+### Executed local Auth milestone verification
+
+- `spikes/stage6-auth-local/run-local.sh > spikes/stage6-auth-local/results/final.tap 2>&1`: PASS, 50 new tests + 34 original schema regressions, zero failures/skips/cancellations. PostgreSQL 17.11/Node v22.23.1/pg 8.23.1/jose 6.2.13; pinned disposable container and source hashes in the new results directory. Original 34-test files not overwritten.
+- `python3 scripts/check_agent_policy.py`: PASS; runtime agent loading not tested.
+- `python3 scripts/check_backup_fixtures.py`: PASS, 3 formats.
+- `python3 scripts/check_history_paging.py`: PASS, 106 sessions/4 pages.
+- `python3 scripts/check_localization.py`: PASS, 922 EN/CZ resources.
+- `python3 scripts/check_migrations.py`: PASS, host v1–9→10 DDL; Android runtime unexecuted.
+- New module/source hashes, unchanged original schema/evidence, authorized scope/local links/original gate boxes/non-Stage-6 sections and whitespace checks: verified before commit.
+
+Test results cover actual reusable modules and PostgreSQL persistence, not mocks of
+security behavior. Runtime uses maintained jose verification/standard CSPRNG+hash
+primitives; fake JWKS/clock are test dependencies and generated signing keys stay
+in memory. Scope/remaining T1–T9/T22 qualifications are in new results/SUMMARY.md.
+No failed or skipped tests in the three executed runs; no completed benchmark/audit
+rerun or real provider/cloud/phone/browser/app/APK/production RLS acceptance claim.
+Original schema branch 0f966dc and Stage 7A 576f0d2 preserved. Formal gates unchanged.
+
 ## Current checkpoint — approved dashboard and adoption preparation (2026-10-22)
 
 Base f54881e on spike/goldberg-0.11-stage-6-schema-pg. Owner-approved exact Issue

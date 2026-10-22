@@ -1,0 +1,15 @@
+{
+  "migrations/003_auth.sql": "cccffe54b97e8dc2dcc90fb0f39a10298b857ee5d22375196e35b0746ea2df5e",
+  "package-lock.json": "12a26799cc9dfa867a36211208dcc26eee8f6fbf158ff274fd6476af5dfe12f6",
+  "package.json": "edd4632bb4d771e70150c4b4519c3d4d7acb64f79f8a0f12f53fcb5fd965ed17",
+  "run-local.sh": "e9ed89b8f5a84d2ec3e1758d6465a16c5eec6ac9a44412743dfdd1a9d3986e8b",
+  "src/authorization.mjs": "1867ccf656011ad1fb9d291e066a1876ac4945ac7e9843acc40c455409100d63",
+  "src/errors.mjs": "5839b3819c8cad9ea944e5a904082b153996d28fc5f920e60c698d5e2e358d61",
+  "src/identity.mjs": "fdd916a24d509c7cc179553ac6e363648da85647c0f680098e090b158f172157",
+  "src/local-api.mjs": "fe65df238e0659d485576f8f2ad8093e0421929e65f998af1b52da932fdc4792",
+  "src/principals.mjs": "45ceea8a01ce0f83d09e964e9935aad19f98fffeea00dc98c8ae6693cf548317",
+  "src/sessions.mjs": "74eb92e82bd5d8d82141a1e619d3a1d9197d5759e8a90eb3f84e24a2552b6cd1",
+  "src/storage.mjs": "4ef8e45bd35e3d89f687919c5428ab7b1cf978f0369c144b9702a575d5ad9735",
+  "tests/auth.test.mjs": "8769aec2d2b00d8484708cc43d0ea2ed2e84edf0b7c4866e8279a5fba9e6d01b",
+  "tests/fixtures.mjs": "23d617c02f41fe607db41ac28d29da718cffb677a412fdf752399fb0c4bc649e"
+}

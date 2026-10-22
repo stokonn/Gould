@@ -1,3 +1,42 @@
+## Current checkpoint — local Auth/session/AuthZ prototype (2026-10-22)
+
+Owner explicitly authorized isolated LOCAL-ONLY task-design 6.2/6.3 prototype,
+not formal acceptance or gate amendment. Branch spike/goldberg-0.11-stage-6-auth-local,
+base 0f966dc (actual latest schema remote, newer than observed f54881e), isolated
+clone .gradle/stage6-auth-prototype. Original schema branch/evidence and Stage 5/7
+worktrees/code preserved. This source checkpoint is its containing commit.
+
+Implemented spikes/stage6-auth-local: strict jose 6.2.13 JWT/JWKS verification,
+bounded injected keys/clock, stable issuer/subject mapping, additive auth_families/
+challenges/refresh migration, hashed CSPRNG opaque tokens, expiry/revocation/logout,
+atomic refresh replay-family revocation, fresh server capabilities/ownership,
+no self-grant/operator privilege, safe in-process local transport/errors/logs.
+No HTTP listener or deployment interface. No default launch administrator seed.
+
+Executed final: 50 new Auth/security tests + 34 original schema regressions =
+84 passed, zero failed/skipped/cancelled on PostgreSQL 17.11. Initial 41+34 and
+second 48+34 also passed before final coverage/guards added. Five host scripts PASS.
+Original schema source/hash/34-test artifact unchanged; no old benchmark/audit rerun.
+Local T1–T9/T22 coverage is qualified in results/SUMMARY.md, not full threat-row,
+real-provider/hosted/HTTP/RLS/CSRF acceptance. Code/SQL/tests/source hashes and exact
+commands: docs/planning/goldberg-0.11/stage-6/LOCAL-AUTH-PROTOTYPE.md and
+spikes/stage6-auth-local/results/. No Supabase, real credentials/users, production
+retention/deletion, Android/APK/device, cloud, merge or release activity.
+
+Original API/model untouched. Existing consumer review in LOCAL-CORE-ADOPTION.md
+reused: changes_requested canonical, draft device-local, returned UI label only;
+old C6 broader guard/evidence preserved. Patch remains for owner review. Auth work
+was independent and authorized; no formal policy exception applied.
+
+Next, only after separate owner scope: local 6.4 typed bounded submissions/revisions
+with full validation; 6.5 authenticated atomic moderation using this context and
+existing lock/head design; 6.6 request-bound idempotency/replay/mismatch/expiry.
+Do not automatically proceed. Q1/D5b unresolved/blocking; C4/C2 §12 OPEN;
+6.0f/6.1–6.18 UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; 0 CZK/month; collection NOT
+AUTHORIZED. Stage 7A conditional/X10 OPEN, Stage 7B untouched. Issue checkpoint
+and minimal latest-link dashboard proposal will be published/prepared after commit;
+description edits require explicit approval and fresh conflict check.
+
 ## Current checkpoint — approved dashboard and adoption preparation (2026-10-22)
 
 Base f54881e on spike/goldberg-0.11-stage-6-schema-pg. Owner-approved exact Issue
