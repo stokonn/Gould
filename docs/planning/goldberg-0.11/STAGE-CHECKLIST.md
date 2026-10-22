@@ -655,10 +655,10 @@ zero-cost operational plan. No provisioning, no client-side speculation.
 
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
-**Status: 🚧 Stage 7A verification-executed, awaiting owner visual acceptance (X9);
-Stage 7B not started.** Part B (Android/Web Admin clients) depends on Stage 6 and is
-**not started** — no Stage 6 code, branch, worktree, credential or cloud resource is
-touched by Stage 7A.
+**Status: 🚧 Stage 7A refinement pass verification-executed, awaiting owner final
+acceptance (X9); Stage 7B not started.** Part B (Android/Web Admin clients) depends on
+Stage 6 and is **not started** — no Stage 6 code, branch, worktree, credential or cloud
+resource is touched by Stage 7A.
 
 ### Stage 7A — six-screen Encyclopedia UX redesign (owner-authorized 2026-10-22)
 
@@ -710,6 +710,47 @@ NO Stage 6/7B changes. Branch `feature/goldberg-0.11-stage-7a`, worktree
 - **Completion status:** Stage 7A implementation and its verification are complete; the
   stage is **NOT complete** until the owner's visual acceptance (**X9, pending**). No
   merge, tag, release or APK publication is authorized or performed.
+
+### Stage 7A refinement pass — seven corrections + spacing audit (owner-authorized 2026-10-22)
+
+**Purpose:** targeted polish on top of the approved redesign: seven owner-specified
+corrections (online toggle → Settings; artist hero overlap; Library catalogue separation;
+Discover empty-state contradiction; Work Profile placeholder + empty sections; biography
+language fallback; privacy-safe first-install catalogue reachability) plus a systematic
+JournalSpace-token spacing audit across all six screens. **Scope:** same UI/strings scope
+as 7A (plus one new `preferences/CatalogPreferences.kt` file and
+`ComposerPortrait` optional parameters); NO schema/database/backup/navigation changes,
+NO Stage 6/7B changes. Living plan/state log:
+[stage-7/stage-7a/REFINEMENT-CHECKPOINT.md](stage-7/stage-7a/REFINEMENT-CHECKPOINT.md).
+
+- **Tasks/progress — COMPLETE (implementation + verification), submitted for X9:**
+  persisted default-OFF `CatalogPreferences` + Settings toggle row; Discover explicit
+  "Search online" button (never networks on open/restore; plain-`remember` request state)
+  + rewritten privacy wording; overlap-proof artist hero (growing image hero with bottom
+  scrim / Row fallback); Library "From the catalogue"/"Catalogue artists" separation
+  headers + explicit `startBrowsing()` bootstrap button for fresh installs; Work header
+  MusicNote art + soft Info empty-section panel + merged button/caption group; CZ/EN
+  bio-language fallback label; token spacing pass on all six screens; 12 new EN/CZ string
+  pairs; `DiscoverNavigationTest` updated to the new contract.
+- **Verification — executed 2026-10-22 (real results):**
+  - Host gates: assembleDebug + testDebugUnitTest + lintDebug **BUILD SUCCESSFUL**;
+    JVM **174/0F/0E/0S**; lint **0 errors, 124 warnings** (+2 stylistic, documented:
+    UseKtx in the new `CatalogPreferences` matching the existing `MediaPreferences`
+    pattern; ModifierParameter on `ComposerPortrait`); `assembleDebugAndroidTest`
+    **compiles**; all five `scripts/check_*.py` **PASS** (EN/CZ parity intact).
+  - **Seeded in-place upgrade (X8, now executed for 7A):** `adb install -r` over the
+    seeded `emulator-5554` AVD — all **22 table counts + profile_settings row
+    (`Musician|System`) identical** before/after; online-catalogue preference defaults
+    OFF (file absent until first write; read back `true`/`false` correctly on toggle).
+  - **Screenshots: 48 fresh captures** (4 theme×language combos incl. Library
+    separation/artists/artist/work, Settings toggle flow EN+CS, 2× font EN+CS,
+    720×1560 narrow sweep) with sha256 manifest; hero no-overlap, Work MusicNote art,
+    Library headers, Discover hint/empty-state and CZ bio label visually inspected.
+  - Spacing/mismatch documentation: [stage-7/stage-7a/results/README.md](stage-7/stage-7a/results/README.md)
+    (refinement section); acceptance matrix X2–X8 updated with refinement evidence.
+- **Completion status:** refinement implementation and verification are complete and
+  **submitted for owner final acceptance (X9, pending)** — Stage 7A remains NOT complete
+  until then. No merge, tag, release or APK publication is authorized or performed.
 
 ## Stage 8 — Integration, legal review and release readiness
 

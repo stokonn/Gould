@@ -6,6 +6,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.MusicNote
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -43,8 +46,10 @@ import com.opus.piano.data.*
             // Header: verified title, composer attribution and catalogue designation; artwork only
             // from the real licensed portrait pipeline, with a graceful fallback (Stage 7A).
             item {
-                Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
-                    ComposerPortrait(composer, Modifier.width(96.dp).height(116.dp))
+                Row(horizontalArrangement = Arrangement.spacedBy(JournalSpace.medium)) {
+                    // Work Profile (Stage 7A, owner): music/work-specific fallback artwork;
+                    // real licensed portraits still come from the same portrait pipeline.
+                    ComposerPortrait(composer, Modifier.width(96.dp).height(116.dp), fallbackIcon = Icons.Outlined.MusicNote, placeholderDescription = L.s(R.string.stage7a_work_art_unavailable))
                     Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text(title, style = MaterialTheme.typography.headlineMedium, maxLines = 4, overflow = TextOverflow.Ellipsis)
                         if (composerName.isNotBlank()) Text(composerName, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary, maxLines = 2, overflow = TextOverflow.Ellipsis)
@@ -56,14 +61,19 @@ import com.opus.piano.data.*
             // Prominent primary action: practice selection for saved pieces, otherwise add to
             // repertoire with the existing duplicate prevention (UUID-safe catalogModel.add).
             if (personal != null) item {
-                Text(L.fixed(personal.status.label), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
-                JournalPrimaryButton(onClick = { practice(personal) }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text(L.s(R.string.select_in_practice)) }
+                // Status label, primary action and its meaning stay one visual group (Stage 7A).
+                Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    Text(L.fixed(personal.status.label), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
+                    JournalPrimaryButton(onClick = { practice(personal) }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text(L.s(R.string.select_in_practice)) }
+                }
             } else if (work != null && composer != null) item {
                 val already = alreadyAdded(work, composer, library.pieces)
-                JournalPrimaryButton(onClick = { catalogModel.add(work, composer) }, enabled = !already && work.id !in adding, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
-                    Text(if (already) L.s(R.string.msg_already_in_repertoire_eac8) else if (work.id in adding) L.s(R.string.msg_adding_ffb2) else L.s(R.string.msg_add_to_repertoire_f27e))
+                Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    JournalPrimaryButton(onClick = { catalogModel.add(work, composer) }, enabled = !already && work.id !in adding, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
+                        Text(if (already) L.s(R.string.msg_already_in_repertoire_eac8) else if (work.id in adding) L.s(R.string.msg_adding_ffb2) else L.s(R.string.msg_add_to_repertoire_f27e))
+                    }
+                    Text(L.s(R.string.msg_some_works_share_a_title_check_the_composer_a406), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
-                Text(L.s(R.string.msg_some_works_share_a_title_check_the_composer_a406), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             // Compact verified-metadata row: only fields that actually exist (Stage 7A).
             item {
@@ -76,7 +86,7 @@ import com.opus.piano.data.*
                     Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
                         cells.forEachIndexed { index, (value, label) ->
                             if (index > 0) VerticalDivider(Modifier.padding(vertical = 10.dp), color = MaterialTheme.colorScheme.outlineVariant)
-                            Column(Modifier.weight(1f).padding(horizontal = 12.dp, vertical = 10.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                            Column(Modifier.weight(1f).padding(horizontal = 12.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(JournalSpace.tiny)) {
                                 Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
                                 Text(value, style = MaterialTheme.typography.bodyMedium, maxLines = 2, overflow = TextOverflow.Ellipsis)
                             }
@@ -99,8 +109,16 @@ import com.opus.piano.data.*
             }
             item { EditorialSectionHeader(L.s(R.string.stage7a_structure_movements)) }
             item {
-                Text(L.s(R.string.msg_no_verified_movement_list_is_supplied_by_the_d571), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                if (key != null) JournalTextButton(onClick = { studyExpanded = !studyExpanded }) { Text(L.s(R.string.msg_sources_study_bfcb)) }
+                // Honest empty section (Stage 7A): soft panel, never invented movements.
+                Surface(shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = .55f)) {
+                    Row(Modifier.fillMaxWidth().padding(12.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                        Icon(Icons.Outlined.Info, null, Modifier.padding(top = 1.dp).size(18.dp), tint = MaterialTheme.colorScheme.primary)
+                        Column(verticalArrangement = Arrangement.spacedBy(JournalSpace.tiny)) {
+                            Text(L.s(R.string.msg_no_verified_movement_list_is_supplied_by_the_d571), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            if (key != null) JournalTextButton(onClick = { studyExpanded = !studyExpanded }) { Text(L.s(R.string.msg_sources_study_bfcb)) }
+                        }
+                    }
+                }
             }
             if (key != null && studyExpanded) item { ListenAndStudy(key, composerName, title, work?.catalogLabel.orEmpty(), recordings.filter { it.workKey == key }, recordingsPage) }
             item { EditorialSectionHeader(L.s(R.string.stage7a_sources_references)) }

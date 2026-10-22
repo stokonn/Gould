@@ -944,7 +944,7 @@
     <string name="discover_field_evidence">Další údaje ze zdroje</string>
     <string name="label_library">Knihovna</string>
     <string name="stage7a_search_placeholder">Hledejte hudbu, umělce, díla…</string>
-    <string name="stage7a_privacy_notice">Místní vyhledávání funguje offline. Když výslovně spustíte online vyhledávání, dotaz se odešle externím poskytovatelům hudebních dat.</string>
+    <string name="stage7a_privacy_notice">Místní vyhledávání funguje offline a nikam neodesílá vaše dotazy. Online výsledky katalogu jsou ve výchozím nastavení vypnuté v Nastavení → Data a úložiště; když je zapnete a sami spustíte online hledání, dotaz se odešle externím poskytovatelům hudebních dat.</string>
     <string name="stage7a_browse_categories">Procházet kategorie</string>
     <string name="stage7a_recently_viewed">Nedávno zobrazené</string>
     <string name="stage7a_available_offline">Dostupné offline</string>
@@ -959,4 +959,15 @@
     <string name="stage7a_sources_references">Zdroje a reference</string>
     <string name="stage7a_about_me">O mně</string>
     <string name="stage7a_portrait_of_artist">Portrét umělce %1$s</string>
+    <string name="stage7a_search_online">Hledat online</string>
+    <string name="stage7a_online_off_hint">Online výsledky katalogu jsou vypnuté. Zapněte je v Nastavení → Data a úložiště, abyste mohli sami hledat u externích poskytovatelů.</string>
+    <string name="stage7a_online_catalogue_setting">Zahrnout online výsledky katalogu</string>
+    <string name="stage7a_online_catalogue_setting_detail">Ve výchozím nastavení vypnuto. Když je zapnete, Objevovat nabídne výslovnou akci „Hledat online“; váš dotaz se pak odešle externím poskytovatelům hudebních dat. Otevření Objevovat nikdy nespouští síťový požadavek.</string>
+    <string name="stage7a_from_catalogue">Z katalogu</string>
+    <string name="stage7a_catalogue_not_saved">Veřejné záznamy katalogu k procházení — neukládají se do vaší knihovny.</string>
+    <string name="stage7a_catalogue_artists">Umělci z katalogu</string>
+    <string name="stage7a_catalogue_artists_hint">Veřejní umělci z katalogu, které si můžete procházet a připínat — ne osobní sbírka. Připnuté oblíbené zůstávají první.</string>
+    <string name="stage7a_load_catalogue_artists">Načíst umělce katalogu (vyžaduje internet)</string>
+    <string name="stage7a_bio_language_en">Životopis v angličtině — česká verze není z dostupného zdroje k dispozici.</string>
+    <string name="stage7a_work_art_unavailable">Obrázek díla není k dispozici</string>
 </resources>

@@ -71,3 +71,222 @@ captured font15-en-library.png (179130 bytes)
 captured font15-en-discover.png (215435 bytes)
 captured font15-en-profile.png (190120 bytes)
 system font_scale set to 1.0
+guards OK on emulator-5554 (qemu=1, booted, app installed)
+seeded catalogue present: 23 composers
+BEFORE: {'pieces': '0', 'sessions': '0', 'catalog_composers': '23', 'catalog_works': '597', 'catalog_cache': '4', 'saved_recordings': '0', 'badge_unlocks': '0', 'session_parts': '0', 'profile_settings': '1', 'session_intervals': '0', 'practice_drafts': '0', 'local_app_state': '1', 'practice_recovery_archives': '0', 'session_piece_links': '0', 'favorite_composers': '0', 'personal_catalogue_identities': '0', 'personal_catalogue_anchors': '0', 'personal_catalogue_state': '1', 'backup_restore_state': '0', 'recovery_evidence': '0', 'practice_completion_evidence': '0', 'room_master_table': '1', 'profile_settings_row': 'Musician|System'}
+adb install -r -> rc=0 Performing Streamed Install
+Success 
+AFTER: {'pieces': '0', 'sessions': '0', 'catalog_composers': '23', 'catalog_works': '597', 'catalog_cache': '4', 'saved_recordings': '0', 'badge_unlocks': '0', 'session_parts': '0', 'profile_settings': '1', 'session_intervals': '0', 'practice_drafts': '0', 'local_app_state': '1', 'practice_recovery_archives': '0', 'session_piece_links': '0', 'favorite_composers': '0', 'personal_catalogue_identities': '0', 'personal_catalogue_anchors': '0', 'personal_catalogue_state': '1', 'backup_restore_state': '0', 'recovery_evidence': '0', 'practice_completion_evidence': '0', 'room_master_table': '1', 'profile_settings_row': 'Musician|System'}
+SEEDED UPGRADE OK: every table count and the profile_settings row are unchanged
+shared_prefs after upgrade first-run: goldberg-quotes.xml
+system font_scale set to 1.0
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+=== combo ivory-en ===
+captured ivory-en-home.png (149621 bytes)
+captured ivory-en-library.png (167106 bytes)
+captured ivory-en-library_artists.png (197987 bytes)
+captured ivory-en-library_artists.png (197987 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Essential works') timed out after 25s — capturing anyway
+captured ivory-en-artist_profile.png (187942 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured ivory-en-work_profile.png (185869 bytes)
+captured ivory-en-discover.png (231487 bytes)
+captured ivory-en-profile.png (143662 bytes)
+theme set to Dark (readback OK)
+=== combo nocturne-en ===
+captured nocturne-en-home.png (153057 bytes)
+captured nocturne-en-library.png (169324 bytes)
+captured nocturne-en-library_artists.png (199783 bytes)
+captured nocturne-en-library_artists.png (199783 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Essential works') timed out after 25s — capturing anyway
+captured nocturne-en-artist_profile.png (189848 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured nocturne-en-work_profile.png (187485 bytes)
+captured nocturne-en-discover.png (233449 bytes)
+captured nocturne-en-profile.png (145079 bytes)
+app locale set to cs (Locales for com.opus.piano for user 0 are [cs])
+theme set to Light (readback OK)
+=== combo ivory-cs ===
+captured ivory-cs-home.png (142606 bytes)
+captured ivory-cs-library.png (168819 bytes)
+captured ivory-cs-library_artists.png (208686 bytes)
+captured ivory-cs-library_artists.png (208686 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Zásadní díla') timed out after 25s — capturing anyway
+captured ivory-cs-artist_profile.png (197645 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured ivory-cs-work_profile.png (185913 bytes)
+captured ivory-cs-discover.png (240496 bytes)
+captured ivory-cs-profile.png (147063 bytes)
+theme set to Dark (readback OK)
+=== combo nocturne-cs ===
+captured nocturne-cs-home.png (144573 bytes)
+captured nocturne-cs-library.png (169760 bytes)
+captured nocturne-cs-library_artists.png (208594 bytes)
+captured nocturne-cs-library_artists.png (208594 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Zásadní díla') timed out after 25s — capturing anyway
+captured nocturne-cs-artist_profile.png (198919 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured nocturne-cs-work_profile.png (186409 bytes)
+captured nocturne-cs-discover.png (240696 bytes)
+captured nocturne-cs-profile.png (147006 bytes)
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+=== settings/toggle flow (en) ===
+guards OK on emulator-5554 (qemu=1, booted, app installed)
+system font_scale set to 1.0
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+=== settings/toggle flow (en) ===
+guards OK on emulator-5554 (qemu=1, booted, app installed)
+system font_scale set to 1.0
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+=== settings/toggle flow (en) ===
+guards OK on emulator-5554 (qemu=1, booted, app installed)
+system font_scale set to 1.0
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+=== settings/toggle flow (en) ===
+captured settings-en-data_storage_off.png (242283 bytes)
+goldberg-catalogue prefs after enabling: <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="online-catalogue" value="true" />
+</map>
+captured settings-en-data_storage_on.png (241520 bytes)
+captured settings-en-discover_online_on.png (215947 bytes)
+goldberg-catalogue prefs after disabling: <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="online-catalogue" value="false" />
+</map>
+captured settings-en-discover_off_hint.png (229958 bytes)
+app locale set to cs (Locales for com.opus.piano for user 0 are [cs])
+theme set to Dark (readback OK)
+=== settings/toggle flow (cs) ===
+guards OK on emulator-5554 (qemu=1, booted, app installed)
+system font_scale set to 1.0
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+=== settings/toggle flow (en) ===
+captured settings-en-data_storage_off.png (242690 bytes)
+goldberg-catalogue prefs after enabling: <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="online-catalogue" value="true" />
+</map>
+captured settings-en-data_storage_on.png (241880 bytes)
+captured settings-en-discover_online_on.png (216106 bytes)
+goldberg-catalogue prefs after disabling: <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="online-catalogue" value="false" />
+</map>
+captured settings-en-discover_off_hint.png (229954 bytes)
+app locale set to cs (Locales for com.opus.piano for user 0 are [cs])
+theme set to Dark (readback OK)
+=== settings/toggle flow (cs) ===
+guards OK on emulator-5554 (qemu=1, booted, app installed)
+system font_scale set to 1.0
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+=== settings/toggle flow (en) ===
+captured settings-en-data_storage_off.png (242970 bytes)
+goldberg-catalogue prefs after enabling: <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="online-catalogue" value="true" />
+</map>
+captured settings-en-data_storage_on.png (242189 bytes)
+captured settings-en-discover_online_on.png (216492 bytes)
+goldberg-catalogue prefs after disabling: <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="online-catalogue" value="false" />
+</map>
+captured settings-en-discover_off_hint.png (229684 bytes)
+app locale set to cs (Locales for com.opus.piano for user 0 are [cs])
+theme set to Dark (readback OK)
+=== settings/toggle flow (cs) ===
+guards OK on emulator-5554 (qemu=1, booted, app installed)
+system font_scale set to 1.0
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+app locale set to cs (Locales for com.opus.piano for user 0 are [cs])
+theme set to Dark (readback OK)
+=== settings/toggle flow (cs) ===
+captured settings-cs-data_storage_off.png (249844 bytes)
+goldberg-catalogue prefs after enabling: <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="online-catalogue" value="true" />
+</map>
+captured settings-cs-data_storage_on.png (249201 bytes)
+captured settings-cs-discover_online_on.png (221656 bytes)
+goldberg-catalogue prefs after disabling: <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="online-catalogue" value="false" />
+</map>
+captured settings-cs-discover_off_hint.png (240635 bytes)
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+system font_scale set to 2.0
+=== font-scale 2.0 spot check (EN) ===
+captured font20-en-home.png (201305 bytes)
+captured font20-en-library.png (195821 bytes)
+captured font20-en-discover.png (241563 bytes)
+captured font20-en-library_artists.png (214407 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Essential works') timed out after 25s — capturing anyway
+captured font20-en-artist_profile.png (180724 bytes)
+guards OK on emulator-5554 (qemu=1, booted, app installed)
+system font_scale set to 1.0
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+app locale set to cs (Locales for com.opus.piano for user 0 are [cs])
+theme set to Dark (readback OK)
+=== settings/toggle flow (cs) ===
+captured settings-cs-data_storage_off.png (250561 bytes)
+goldberg-catalogue prefs after enabling: <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="online-catalogue" value="true" />
+</map>
+captured settings-cs-data_storage_on.png (249986 bytes)
+captured settings-cs-discover_online_on.png (222665 bytes)
+goldberg-catalogue prefs after disabling: <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="online-catalogue" value="false" />
+</map>
+captured settings-cs-discover_off_hint.png (241090 bytes)
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+system font_scale set to 2.0
+=== font-scale 2.0 spot check (EN) ===
+captured font20-en-home.png (200572 bytes)
+captured font20-en-library.png (195184 bytes)
+captured font20-en-discover.png (240823 bytes)
+captured font20-en-library_artists.png (213738 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Essential works') timed out after 25s — capturing anyway
+captured font20-en-artist_profile.png (181770 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured font20-en-work_profile.png (208222 bytes)
+app locale set to cs (Locales for com.opus.piano for user 0 are [cs])
+theme set to Dark (readback OK)
+=== font-scale 2.0 spot check (CS) ===
+captured font20-cs-home.png (203653 bytes)
+captured font20-cs-discover.png (250686 bytes)
+system font_scale set to 1.0
+=== narrow-display spot check (720x1560) ===
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+wm size: Physical size: 1080x2400
+Override size: 720x1560
+captured small-en-home.png (102796 bytes)
+captured small-en-library.png (105298 bytes)
+captured small-en-discover.png (137515 bytes)
+captured small-en-library_artists.png (105195 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Essential works') timed out after 25s — capturing anyway
+captured small-en-artist_profile.png (90060 bytes)
+captured small-en-work_profile.png (101531 bytes)
+captured small-en-work_profile.png (104669 bytes)
+theme set to System (readback OK)

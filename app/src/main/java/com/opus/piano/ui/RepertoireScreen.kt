@@ -59,11 +59,11 @@ import com.opus.piano.data.*
     }
     fun options(values: List<String>) = listOf("All") + values.filter { it.isNotBlank() }.distinctBy(::catalogText).sortedBy(::catalogText)
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        item {Column(verticalArrangement=Arrangement.spacedBy(2.dp)) {
+        item {Column(verticalArrangement=Arrangement.spacedBy(JournalSpace.tiny)) {
             Text(L.s(R.string.stage7a_library_title),style=MaterialTheme.typography.headlineLarge,modifier=Modifier.semantics {heading()})
             Text(L.s(R.string.stage7a_library_subtitle),style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
         }}
-        stickyHeader { Surface(color=MaterialTheme.colorScheme.background) { Row(Modifier.fillMaxWidth().padding(bottom=8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+        stickyHeader { Surface(color=MaterialTheme.colorScheme.background) { Row(Modifier.fillMaxWidth().padding(bottom=8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(JournalSpace.small)) {
             OutlinedTextField(query, { query = it; limit=40 }, Modifier.weight(1f), label = { Text(L.s(R.string.ui101_search),maxLines=1,overflow=TextOverflow.Ellipsis) }, leadingIcon = { Icon(Icons.Outlined.Search, null) }, singleLine = true,shape=androidx.compose.foundation.shape.RoundedCornerShape(14.dp))
             Box { IconButton(onClick={addMenu=true}) { Icon(Icons.Outlined.Add,L.s(R.string.msg_add_piece_2cfc)) }
                 DropdownMenu(addMenu,{addMenu=false}) {
@@ -73,12 +73,12 @@ import com.opus.piano.data.*
             }
         } } }
         item {
-            FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+            FlowRow(horizontalArrangement=Arrangement.spacedBy(JournalSpace.small)) {
                 listOf("all" to L.fixed("All"),"mine" to L.s(R.string.ui101_my_repertoire),"artists" to L.s(R.string.discover_artists)).forEach {(key,label)->
                     FilterChip(view==key,{view=key;limit=40},label={Text(label)},shape=androidx.compose.foundation.shape.RoundedCornerShape(14.dp))
                 }
             }
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
                 var sorting by remember { mutableStateOf(false) }
                 Box(Modifier.weight(1f)) {
                     JournalSecondaryButton(onClick={sorting=true},modifier=Modifier.fillMaxWidth()) { Icon(Icons.Outlined.Sort,null); Text(L.s(R.string.msg_sort_adc4)) }
@@ -90,7 +90,7 @@ import com.opus.piano.data.*
                 }
                 JournalSecondaryButton(onClick = { filters = !filters },modifier=Modifier.weight(1f)) { Icon(Icons.Outlined.Tune, null); Text(L.s(R.string.msg_filters_96e5)) }
             }
-            if (filters) FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            if (filters) FlowRow(horizontalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
                 Choice(L.fixed("Difficulty"),listOf("All")+Difficulty.entries.map {it.label},difficulty) {difficulty=it}
                 Choice(L.s(R.string.msg_status_bae7), listOf("All") + LearningStatus.entries.map { it.label }, status) { status = it }
                 Choice(L.s(R.string.msg_composer_10c3), options(state.pieces.map { it.composer } + catalog.composers.map {it.name}), composer, translateOptions=false) { composer = it }
@@ -104,10 +104,22 @@ import com.opus.piano.data.*
             val artistRows=(favorites.mapNotNull {f->composerMap[f.composerId]}+results.composers).distinctBy {it.id}
                 .filter {author->query.isBlank() || catalogText(author.name).contains(catalogText(query))}
             if (state.loading) item { EditorialSkeleton() }
+            // Stage 7A (owner): the Artists chip browses the PUBLIC catalogue; pinned
+            // favourites come from the user. Never presented as a personal collection.
+            if (!state.loading && artistRows.isNotEmpty()) item { EditorialSectionHeader(L.s(R.string.stage7a_catalogue_artists), L.s(R.string.stage7a_catalogue_artists_hint)) }
             items(artistRows.take(limit),key={"artist:"+it.id}) {author->
                 ArtistRow(author,favorites.any {it.composerId==author.id},profile::favoriteComposer){composerPage(author.id)}
             }
-            if(!state.loading && artistRows.isEmpty()) item {JournalEmpty(L.s(R.string.msg_no_matching_compositions_391a),L.s(R.string.msg_try_a_different_title_composer_or_catalogue_16ea))}
+            if(!state.loading && artistRows.isEmpty()) item {
+                // First-install reachability (Stage 7A, owner): an explicit, user-initiated
+                // bootstrap through the app's own featured() fetch — no silent downloads and
+                // no invented catalogue data.
+                if(results.composers.isEmpty() && favorites.isEmpty() && query.isBlank()) Panel {
+                    SectionTitle(L.s(R.string.stage7a_catalogue_artists))
+                    Text(L.s(R.string.stage7a_catalogue_artists_hint), color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    JournalSecondaryButton(onClick={catalogModel.startBrowsing()}) {Text(L.s(R.string.stage7a_load_catalogue_artists))}
+                } else JournalEmpty(L.s(R.string.msg_no_matching_compositions_391a),L.s(R.string.msg_try_a_different_title_composer_or_catalogue_16ea))
+            }
             if(artistRows.size>limit) item {JournalSecondaryButton(onClick={limit+=40}) {Text(L.s(R.string.msg_more_saved_suggestions_d7e1))}}
         } else {
         if(favorites.isNotEmpty()) item { FavoriteComposerStrip(catalog,favorites,composerPage,profile::favoriteComposer) }
@@ -116,7 +128,7 @@ import com.opus.piano.data.*
         items(pieces, key = { it.id }) { piece ->
             Surface(modifier = Modifier.animateItem(), onClick = { detail(piece.id) }, shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.surface) {
                 Column(Modifier.padding(horizontal = 12.dp, vertical = if(appearance.density=="Compact") 8.dp else 12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                    Row(verticalAlignment = Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
                         ComposerPortrait(composerMap[ComposerIdentity.resolve(piece,works)])
                         PieceRowContent(piece.title,piece.composer,
                             works[piece.catalogWorkId]?.catalogLabel?.takeIf { it.isNotBlank() && !catalogText(piece.title).contains(catalogText(it)) }.orEmpty(),
@@ -145,12 +157,16 @@ import com.opus.piano.data.*
                 !alreadyAdded(work,author,state.pieces) && (composer=="All" || catalogText(author?.name.orEmpty())==catalogText(composer)) &&
                     (era=="All" || catalogText(author?.epoch.orEmpty())==catalogText(era)) && (genre=="All" || catalogText(work.genre)==catalogText(genre)) && status=="All" && (difficulty=="All" || difficulty==Difficulty.UNRATED.label) && instrument=="All"
             }.let {rows->when(sort) {"Composer"->rows.sortedBy {catalogText(composerMap[it.composerId]?.name.orEmpty())};"Alphabetical"->rows.sortedBy {catalogText(it.title)};else->rows}}
+            // Stage 7A (owner): personal collection and public catalogue entries are always
+            // visually separated; catalogue rows are clearly labelled, never shown as saved.
+            if(available.isNotEmpty()) item { EditorialSectionHeader(L.s(R.string.stage7a_from_catalogue), L.s(R.string.stage7a_catalogue_not_saved)) }
             items(available.take(limit),key={"work:${it.id}"}) {work->WorkCard(work,composerMap[work.composerId],false,work.id in adding,{workPage(work.id)},{composerMap[work.composerId]?.let {catalogModel.add(work,it)}})}
             if(available.size>limit || visibleComposers.size>limit) item {JournalSecondaryButton(onClick={limit+=40}) {Text(L.s(R.string.msg_more_saved_suggestions_d7e1))}}
             if(visibleComposers.isNotEmpty()) {
+                item { EditorialSectionHeader(L.s(R.string.stage7a_catalogue_artists), L.s(R.string.stage7a_catalogue_not_saved)) }
                 items(visibleComposers.take(limit),key={"composer:${it.id}"}) {author->
                     Surface(onClick={composerPage(author.id)},shape=androidx.compose.foundation.shape.RoundedCornerShape(14.dp),color=MaterialTheme.colorScheme.surface) {
-                        Row(Modifier.fillMaxWidth().padding(12.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                        Row(Modifier.fillMaxWidth().padding(12.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
                             ComposerPortrait(author)
                             Text(author.name,Modifier.weight(1f),style=MaterialTheme.typography.titleMedium)
                             ComposerFavoriteButton(author,favorites.any {it.composerId==author.id},profile::favoriteComposer)
@@ -173,9 +189,9 @@ import com.opus.piano.data.*
 /** Compact artist row for the Library "Artists" chip (Stage 7A). */
 @Composable private fun ArtistRow(author: CatalogComposer, favorite: Boolean, toggle: (String, Boolean) -> Unit, open: () -> Unit) {
     Surface(onClick=open,shape=androidx.compose.foundation.shape.RoundedCornerShape(14.dp),color=MaterialTheme.colorScheme.surface) {
-        Row(Modifier.fillMaxWidth().padding(12.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+        Row(Modifier.fillMaxWidth().padding(12.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
             ComposerPortrait(author)
-            Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(2.dp)) {
+            Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(JournalSpace.tiny)) {
                 Text(author.name,style=MaterialTheme.typography.titleMedium,maxLines=2,overflow=TextOverflow.Ellipsis)
                 Text(listOf(L.fixed(author.epoch),author.years).filter {it.isNotBlank()}.joinToString(" · "),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant,maxLines=1,overflow=TextOverflow.Ellipsis)
             }

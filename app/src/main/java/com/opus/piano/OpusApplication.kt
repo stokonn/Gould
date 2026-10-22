@@ -26,6 +26,8 @@ class OpusApplication : Application() {
     val portablePreferences by lazy { com.opus.piano.data.backup.PortablePreferences(this,live=true) }
     val identity by lazy { com.opus.piano.identity.GoogleIdentity(this, database) }
     val media by lazy { com.opus.piano.preferences.MediaPreferences(this) }
+    // Stage 7A: persisted online-catalogue toggle (default OFF); online search stays explicit.
+    val catalogOnline by lazy { com.opus.piano.preferences.CatalogPreferences(this) }
     val quotes by lazy { com.opus.piano.data.DailyQuotes(this) }
     val appearance by lazy { com.opus.piano.preferences.AppearanceStore(this) }
     val practiceRequest = kotlinx.coroutines.flow.MutableStateFlow("")

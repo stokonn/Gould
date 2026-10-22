@@ -35,7 +35,6 @@ import org.json.JSONObject
 /** Nav-entry memory only. Queries survive detail/Back and recreation, never process storage. */
 internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     var query by mutableStateOf("")
-    var online by mutableStateOf(false)
 }
 @Composable internal fun DiscoverScreen(open:(String)->Unit,openPiece:(Long)->Unit,openCatalogWork:(String)->Unit,library:LibraryState) {
     val app=LocalContext.current.applicationContext as OpusApplication
@@ -43,7 +42,12 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     val session:DiscoverSearchSession=androidx.lifecycle.viewmodel.compose.viewModel()
     val query=session.query
     var active by rememberSaveable {mutableStateOf(false)}
-    val online=session.online
+    // Stage 7A (owner): online catalogue results are a persisted Settings toggle, default OFF.
+    // The online leg of a search is only ever triggered by an explicit "Search online" tap;
+    // opening or restoring this screen never starts a network request. Plain remember on
+    // purpose: restoring after process death must not silently re-run an online search.
+    val catalogOnline by app.catalogOnline.enabled.collectAsState()
+    var onlineRequested by remember {mutableStateOf(false)}
     var category by rememberSaveable {mutableStateOf("all")}
     var artistId by rememberSaveable {mutableStateOf<String?>(null)}
     var period by rememberSaveable {mutableStateOf<String?>(null)}
@@ -56,7 +60,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     var searchEpoch by remember {mutableLongStateOf(0L)}
     var limitReached by remember {mutableStateOf(false)}
     val filter=SearchFilter(category,artistId,period)
-    val searchKey=listOf(query,category,artistId,period,active.toString(),online.toString())
+    val searchKey=listOf(query,category,artistId,period,active.toString(),onlineRequested.toString())
     val currentSearchKey by rememberUpdatedState(searchKey)
     var rows by remember {mutableStateOf(emptyList<CatalogueEntity>())}
     var recent by remember {mutableStateOf(emptyList<CatalogueEntity>())}
@@ -72,7 +76,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     var historyEnabled by remember {mutableStateOf(app.discoverHistory.enabled)}
     val scope=rememberCoroutineScope()
     val language=LocalConfiguration.current.locales[0].language.let {if(it=="cs")"cs" else "en"}
-    LaunchedEffect(query,category,artistId,period,active,online,revision,language) {
+    LaunchedEffect(query,category,artistId,period,active,onlineRequested,revision,language) {
         pageJob?.cancel();searchEpoch++;paging=false;limitReached=false;sources=emptyList();candidates=emptyList()
         error=false;loading=true
         cacheBytes=app.providerCache.bytes()
@@ -81,7 +85,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
             else {
                 val localOrder=linkedMapOf<String,CatalogueEntity>()
                 app.discover.search(query,filter,language,false).collect {result->rows=result.page.items;workTypes=result.page.workTypes;cursor=result.continuation;candidates=result.candidates;limitReached=result.limitReached;rows.forEach {localOrder[it.id]=it}}
-                if(online) {
+                if(onlineRequested && catalogOnline) {
                     delay(400)
                     app.discover.search(query,filter,language,true).collect {result->
                         result.page.items.forEach {localOrder[it.id]=it}
@@ -110,11 +114,11 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
             cached.map {work->OfflineRow(work.title,composersById[work.composerId]?.name.orEmpty(),work.catalogLabel,null,work.id,composersById[work.composerId])}
     }
     LazyColumn(contentPadding=PaddingValues(20.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {
-        item {Column(verticalArrangement=Arrangement.spacedBy(2.dp)) {
+        item {Column(verticalArrangement=Arrangement.spacedBy(JournalSpace.tiny)) {
             Text(L.s(R.string.discover),style=MaterialTheme.typography.headlineLarge,modifier=Modifier.semantics {heading()})
             Text(L.s(R.string.discover_explore),style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
         }}
-        item {EditorialSearchField(query,{session.query=it;active=true})}
+        item {EditorialSearchField(query,{session.query=it;active=true;onlineRequested=false})}
         item {
             // Owner-approved truthful privacy wording (stage-7 plan §9 C1); never claims "our servers".
             Surface(shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surfaceVariant.copy(alpha=.55f)) {
@@ -124,15 +128,19 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
                 }
             }
         }
-        item {Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp),verticalAlignment=Alignment.CenterVertically) {
-            Checkbox(online,{session.online=it;active=true},modifier=Modifier.semantics {contentDescription=L.s(R.string.discover_online)})
-            Text(L.s(R.string.discover_online),modifier=Modifier.weight(1f))
-        }}
+        item { if(catalogOnline) {
+            // Explicit, user-initiated online search (owner privacy requirement): the button
+            // is the only path that ever reaches external providers, and it re-runs only for
+            // the current query/filter state.
+            JournalSecondaryButton(onClick={onlineRequested=true;active=true},enabled=!loading && query.isNotBlank()) {Text(L.s(R.string.stage7a_search_online))}
+        } else {
+            Text(L.s(R.string.stage7a_online_off_hint),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+        } }
         item {Text(L.s(if(app.media.allowed())R.string.discover_network_ready else R.string.discover_offline),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
         // Browsable categories rendered from the real supported search categories.
         item {EditorialSectionHeader(L.s(R.string.stage7a_browse_categories))}
-        item {LazyRow(horizontalArrangement=Arrangement.spacedBy(10.dp)) {
-            items(listOf("all","works","artists","albums","lists")) {key->CategoryTile(key,category==key){category=key;active=true}}
+        item {LazyRow(horizontalArrangement=Arrangement.spacedBy(JournalSpace.tiny),contentPadding=PaddingValues(horizontal=JournalSpace.small)) {
+            items(listOf("all","works","artists","albums","lists")) {key->CategoryTile(key,category==key){category=key;active=true;onlineRequested=false}}
         }}
         if(availableFilters.artists.isNotEmpty() || availableFilters.periods.isNotEmpty())item {
             TextButton({filtersExpanded=!filtersExpanded}){Text(L.s(R.string.discover_filters))}
@@ -140,15 +148,15 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
                 Box {
                     TextButton({artistMenu=true}){Text(availableFilters.artists.firstOrNull {it.id==artistId}?.let {shownTitle("artist",it.title)} ?: L.s(R.string.discover_any_artist))}
                     DropdownMenu(artistMenu,{artistMenu=false}) {
-                        DropdownMenuItem(text={Text(L.s(R.string.discover_any_artist))},onClick={artistId=null;artistMenu=false;active=true})
-                        availableFilters.artists.forEach {artist->DropdownMenuItem(text={Text(shownTitle("artist",artist.title))},onClick={artistId=artist.id;artistMenu=false;active=true})}
+                        DropdownMenuItem(text={Text(L.s(R.string.discover_any_artist))},onClick={artistId=null;artistMenu=false;active=true;onlineRequested=false})
+                        availableFilters.artists.forEach {artist->DropdownMenuItem(text={Text(shownTitle("artist",artist.title))},onClick={artistId=artist.id;artistMenu=false;active=true;onlineRequested=false})}
                     }
                 }
                 Box {
                     TextButton({periodMenu=true}){Text(period ?: L.s(R.string.discover_any_period))}
                     DropdownMenu(periodMenu,{periodMenu=false}) {
-                        DropdownMenuItem(text={Text(L.s(R.string.discover_any_period))},onClick={period=null;periodMenu=false;active=true})
-                        availableFilters.periods.forEach {value->DropdownMenuItem(text={Text(value)},onClick={period=value;periodMenu=false;active=true})}
+                        DropdownMenuItem(text={Text(L.s(R.string.discover_any_period))},onClick={period=null;periodMenu=false;active=true;onlineRequested=false})
+                        availableFilters.periods.forEach {value->DropdownMenuItem(text={Text(value)},onClick={period=value;periodMenu=false;active=true;onlineRequested=false})}
                     }
                 }
             }
@@ -159,7 +167,10 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
             Text(source.provider+(source.requestKind?.let {" · "+sourceKindLabel(it)} ?: "")+" · "+sourceLabel(source.state)+(source.refreshState?.let {" · "+sourceLabel(it)} ?: ""),style=MaterialTheme.typography.bodySmall)
             if(source.state !in setOf(SourceState.FRESH,SourceState.CACHED))TextButton({revision++}){Text(L.s(R.string.discover_retry))}
         }
-        if(rows.isEmpty() && !loading)item {Text(L.s(R.string.discover_empty))}
+        // Stage 7A (owner): never claim "no local content" on the landing screen while the
+        // "Available offline" rows below show real local results — only a search with no
+        // matches shows this.
+        if(active && rows.isEmpty() && !loading)item {Text(L.s(R.string.discover_empty))}
         items(rows,key={it.id}) {entity->CatalogueRow(entity,workTypes[entity.id]){open(entity.id)}}
         items(candidates.filterNot {candidate->rows.any {it.id==candidate.id}},key={"candidate:"+it.id}) {candidate->
             Text(L.s(R.string.discover_candidate),style=MaterialTheme.typography.labelSmall)
@@ -168,7 +179,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
         if(limitReached)item {Text(L.s(R.string.discover_refine_search))}
         if(cursor!=null)item {TextButton(enabled=!paging && !loading,onClick={
             val next=cursor ?: return@TextButton
-            val requestedKey=searchKey;val requestedEpoch=searchEpoch;val requestedQuery=query;val requestedFilter=filter;val requestedOnline=online
+            val requestedKey=searchKey;val requestedEpoch=searchEpoch;val requestedQuery=query;val requestedFilter=filter;val requestedOnline=onlineRequested
             paging=true
             pageJob=scope.launch {
                 try {
@@ -181,7 +192,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
         }){Text(L.s(R.string.discover_more))}}
         if(!active && recent.isNotEmpty()) {
             item {EditorialSectionHeader(L.s(R.string.stage7a_recently_viewed))}
-            item {LazyRow(horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+            item {LazyRow(horizontalArrangement=Arrangement.spacedBy(JournalSpace.tiny),contentPadding=PaddingValues(horizontal=JournalSpace.small)) {
                 items(recent,key={"recent:"+it.id}) {entity->
                     RecentCard(entity,recentTypes[entity.id],{open(entity.id)}) {scope.launch {withContext(Dispatchers.IO){app.discoverHistory.remove(entity.id)};recent=recent.filterNot {it.id==entity.id}}}
                 }
@@ -207,7 +218,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
 private class OfflineRow(val title:String,val composer:String,val meta:String,val pieceId:Long?,val workId:String,val composerRef:com.opus.piano.data.CatalogComposer?)
 @Composable private fun OfflineRowCard(row:OfflineRow,onClick:()->Unit) {
     Surface(onClick=onClick,shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surface) {
-        Row(Modifier.fillMaxWidth().padding(horizontal=12.dp,vertical=10.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+        Row(Modifier.fillMaxWidth().padding(horizontal=12.dp,vertical=12.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
             ComposerPortrait(row.composerRef)
             Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(2.dp)) {
                 Text(row.title,style=MaterialTheme.typography.titleMedium,maxLines=2,overflow=TextOverflow.Ellipsis)
@@ -249,7 +260,7 @@ private class OfflineRow(val title:String,val composer:String,val meta:String,va
 private fun categoryIcon(key:String)=when(key){"works"->Icons.Outlined.MusicNote;"artists"->Icons.Outlined.Person;"albums"->Icons.Outlined.Album;"lists"->Icons.Outlined.List;else->Icons.Outlined.LibraryMusic}
 @Composable private fun CatalogueRow(entity:CatalogueEntity,workType:String?=null,onClick:()->Unit) {
     Surface(onClick=onClick,shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surface) {
-        Row(Modifier.fillMaxWidth().padding(horizontal=12.dp,vertical=11.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+        Row(Modifier.fillMaxWidth().padding(horizontal=12.dp,vertical=12.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
             Icon(categoryIcon(entity.kind),null,tint=MaterialTheme.colorScheme.primary,modifier=Modifier.size(20.dp))
             Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(2.dp)) {
                 Text(shownTitle(entity.kind,entity.title),style=MaterialTheme.typography.titleMedium,maxLines=2,overflow=TextOverflow.Ellipsis)

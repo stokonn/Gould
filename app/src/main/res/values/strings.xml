@@ -940,7 +940,6 @@
     <string name="discover_field_evidence">Additional source evidence</string>
     <string name="label_library">Library</string>
     <string name="stage7a_search_placeholder">Search music, artists, works…</string>
-    <string name="stage7a_privacy_notice">Local search works offline. When you explicitly start an online search, your query is sent to external music-data providers.</string>
     <string name="stage7a_browse_categories">Browse categories</string>
     <string name="stage7a_recently_viewed">Recently viewed</string>
     <string name="stage7a_available_offline">Available offline</string>
@@ -955,4 +954,16 @@
     <string name="stage7a_sources_references">Sources &amp; references</string>
     <string name="stage7a_about_me">About Me</string>
     <string name="stage7a_portrait_of_artist">Portrait of %1$s</string>
+    <string name="stage7a_privacy_notice">Local search works offline and never sends your queries anywhere. Online catalogue results are off by default in Settings → Data &amp; Storage; when you turn them on and start an online search yourself, your query is sent to external music-data providers.</string>
+    <string name="stage7a_search_online">Search online</string>
+    <string name="stage7a_online_off_hint">Online catalogue results are off. Turn them on in Settings → Data &amp; Storage to search external providers yourself.</string>
+    <string name="stage7a_online_catalogue_setting">Include online catalogue results</string>
+    <string name="stage7a_online_catalogue_setting_detail">Off by default. When on, Discover offers an explicit “Search online” action; your query is then sent to external music-data providers. Opening Discover never starts a network request.</string>
+    <string name="stage7a_from_catalogue">From the catalogue</string>
+    <string name="stage7a_catalogue_not_saved">Public catalogue entries for browsing — not saved in your library.</string>
+    <string name="stage7a_catalogue_artists">Catalogue artists</string>
+    <string name="stage7a_catalogue_artists_hint">Public catalogue artists you can browse and pin — not a personal collection. Pinned favourites stay first.</string>
+    <string name="stage7a_load_catalogue_artists">Load catalogue artists (requires internet)</string>
+    <string name="stage7a_bio_language_en">Biography in English — no Czech version is available from the source.</string>
+    <string name="stage7a_work_art_unavailable">Work artwork unavailable</string>
 </resources>

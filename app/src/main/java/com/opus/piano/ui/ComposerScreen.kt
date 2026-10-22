@@ -55,7 +55,7 @@ import kotlinx.coroutines.launch
         if (sort == "Catalogue") found.sortedWith(compareBy({ it.catalogue }, { it.catalogueNumber.toIntOrNull() ?: Int.MAX_VALUE }, { it.title })) else found.sortedBy { catalogText(it.title) }
     }
     LaunchedEffect(id) { model.loadComposer(id) }
-    LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+    LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(JournalSpace.medium)) {
         item { CatalogBack(L.s(R.string.msg_the_composer_s_archive_2190), back) }
         if (composer == null) item { CatalogFeedback(L.s(R.string.composer_unavailable)) { model.loadComposer(id, true) } }
         else {
@@ -87,6 +87,9 @@ import kotlinx.coroutines.launch
                         Text(profile?.text?.ifBlank { null } ?: if (page.profileLoading) L.s(R.string.msg_loading_the_introduction_f296) else L.s(R.string.msg_no_verified_biography_is_available_8fab),
                             maxLines = if (expanded) Int.MAX_VALUE else 4, overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         if (!profile?.text.isNullOrBlank()) JournalTextButton(onClick = { expanded = !expanded }) { Text(if (expanded) L.s(R.string.msg_read_less_32ab) else L.s(R.string.msg_read_more_ad08)) }
+                        // Stage 7A (owner): clearly identify the biography language fallback —
+                        // the sourced introduction is English when no Czech text is available.
+                        if (L.locale.language != "en" && !profile?.text.isNullOrBlank()) Text(L.s(R.string.stage7a_bio_language_en), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         JournalTextButton(onClick = { tab = 2 }) { Text(L.s(R.string.msg_sources_credits_874b)) }
                     }
                     item { SectionTitle(L.s(R.string.msg_from_your_repertoire_f345)) }
@@ -95,7 +98,7 @@ import kotlinx.coroutines.launch
                         Panel { Text(p.title, style = MaterialTheme.typography.titleMedium); Text(L.fixed(p.status.label), color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.bodySmall) }
                     }
                     if (featured.isNotEmpty()) item { EditorialSectionHeader(L.s(R.string.stage7a_essential_works)) }
-                    if (featured.isNotEmpty()) item { LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    if (featured.isNotEmpty()) item { LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                         items(featured, key = { "essential:${it.id}" }) { w -> EssentialWorkCard(w, composer) { workPage(w.id) } }
                     } }
                     if (works.isNotEmpty()) item { JournalSecondaryButton(onClick = { tab = 1 }) { Text(L.s(R.string.msg_explore_works_size_loaded_works_c20f, (works.size))) } }
@@ -113,7 +116,8 @@ import kotlinx.coroutines.launch
                     if (matches.size > limit) item { JournalSecondaryButton(onClick = { limit += 40 }) { Text(L.s(R.string.msg_show_more_works_matches_size_limit_remaining_2020, (matches.size - limit))) } }
                 }
                 2 -> {
-                    item { SectionTitle(L.s(R.string.msg_biography_53c2)); Spacer(Modifier.height(8.dp)); Text(profile?.text?.ifBlank { null } ?: L.s(R.string.msg_no_verified_biography_is_available_8fab), color = MaterialTheme.colorScheme.onSurfaceVariant) }
+                    item { SectionTitle(L.s(R.string.msg_biography_53c2)); Spacer(Modifier.height(8.dp)); Text(profile?.text?.ifBlank { null } ?: L.s(R.string.msg_no_verified_biography_is_available_8fab), color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        if (L.locale.language != "en" && !profile?.text.isNullOrBlank()) Text(L.s(R.string.stage7a_bio_language_en), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
                     item { Panel {
                         Text(L.s(R.string.msg_historical_details_67be), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
                         Text(L.s(R.string.msg_era_composer_epoch_ifblank_not_supplied_6765, (L.fixed(composer.epoch).ifBlank { L.fixed("Not supplied") })))
@@ -139,17 +143,35 @@ import kotlinx.coroutines.launch
         bitmap = try { repository.portrait(portrait.url) } catch (c: CancellationException) { throw c } catch (_: Exception) { null }
     }
     val hasImage = bitmap != null
-    Box(Modifier.fillMaxWidth().height(210.dp), contentAlignment = Alignment.BottomStart) {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.surfaceVariant) {
-            if (hasImage) Image(bitmap!!.asImageBitmap(), L.s(R.string.stage7a_portrait_of_artist, composer.name), contentScale = ContentScale.Crop)
-            else Icon(Icons.Outlined.PersonOutline, null, Modifier.fillMaxSize().padding(56.dp), tint = MaterialTheme.colorScheme.primary.copy(alpha = .45f))
+    // Stage 7A (owner): the artist name/dates/favorite column must never overlap the
+    // portrait placeholder, in either theme, for long names and enlarged fonts.
+    // Image case: keeps the full-bleed hero, but grows with its text (heightIn) and uses a
+    // bottom scrim so the overlaid text stays readable at any font scale.
+    // Fallback case: side-by-side Row — overlap is impossible by construction.
+    if (hasImage) {
+        Box(Modifier.fillMaxWidth().heightIn(min = 210.dp), contentAlignment = Alignment.BottomStart) {
+            Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.surfaceVariant) {
+                Image(bitmap!!.asImageBitmap(), L.s(R.string.stage7a_portrait_of_artist, composer.name), contentScale = ContentScale.Crop)
+            }
+            Box(Modifier.fillMaxSize().background(androidx.compose.ui.graphics.Brush.verticalGradient(0f to Color.Transparent, .45f to Color(0x33000000), 1f to Color(0xC0000000))))
+            Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(JournalSpace.tiny)) {
+                Text(composer.name, style = MaterialTheme.typography.headlineMedium, color = Color.White, maxLines = 3, overflow = TextOverflow.Ellipsis)
+                val roles = listOf(L.fixed(composer.epoch), composer.years).filter { it.isNotBlank() }.joinToString(" · ")
+                if (roles.isNotBlank()) Text(roles, style = MaterialTheme.typography.bodyMedium, color = Color(0xE6FFFFFF), maxLines = 2, overflow = TextOverflow.Ellipsis)
+                ComposerFavoriteButton(composer, favorite) { _, _ -> toggle() }
+            }
         }
-        if (hasImage) Box(Modifier.fillMaxSize().background(androidx.compose.ui.graphics.Brush.horizontalGradient(0f to Color.Transparent, .5f to Color(0x55000000), 1f to Color(0xC0000000))))
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text(composer.name, style = MaterialTheme.typography.headlineMedium, color = if (hasImage) Color.White else MaterialTheme.colorScheme.onSurface, maxLines = 3, overflow = TextOverflow.Ellipsis)
-            val roles = listOf(L.fixed(composer.epoch), composer.years).filter { it.isNotBlank() }.joinToString(" · ")
-            if (roles.isNotBlank()) Text(roles, style = MaterialTheme.typography.bodyMedium, color = if (hasImage) Color(0xE6FFFFFF) else MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 2, overflow = TextOverflow.Ellipsis)
-            ComposerFavoriteButton(composer, favorite) { _, _ -> toggle() }
+    } else {
+        Surface(Modifier.fillMaxWidth().heightIn(min = 140.dp), color = MaterialTheme.colorScheme.surfaceVariant) {
+            Row(Modifier.fillMaxWidth().padding(16.dp), horizontalArrangement = Arrangement.spacedBy(JournalSpace.medium), verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(JournalSpace.tiny)) {
+                    Text(composer.name, style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.onSurface, maxLines = 3, overflow = TextOverflow.Ellipsis)
+                    val roles = listOf(L.fixed(composer.epoch), composer.years).filter { it.isNotBlank() }.joinToString(" · ")
+                    if (roles.isNotBlank()) Text(roles, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                    ComposerFavoriteButton(composer, favorite) { _, _ -> toggle() }
+                }
+                Icon(Icons.Outlined.PersonOutline, L.s(R.string.msg_portrait_unavailable_6f4e), Modifier.size(84.dp), tint = MaterialTheme.colorScheme.primary.copy(alpha = .45f))
+            }
         }
     }
 }
@@ -166,7 +188,7 @@ import kotlinx.coroutines.launch
     }
 }
 @Composable internal fun SmallStatistic(value: String, label: String) {
-    Column(verticalArrangement = Arrangement.spacedBy(3.dp)) { Text(value, style = MaterialTheme.typography.titleMedium.copy(fontSize = MaterialTheme.typography.titleLarge.fontSize, lineHeight = MaterialTheme.typography.titleLarge.lineHeight, fontFeatureSettings = "tnum"), color = MaterialTheme.colorScheme.primary); Text(L.fixed(label), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+    Column(verticalArrangement = Arrangement.spacedBy(JournalSpace.tiny)) { Text(value, style = MaterialTheme.typography.titleMedium.copy(fontSize = MaterialTheme.typography.titleLarge.fontSize, lineHeight = MaterialTheme.typography.titleLarge.lineHeight, fontFeatureSettings = "tnum"), color = MaterialTheme.colorScheme.primary); Text(L.fixed(label), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
 }
 @Composable private fun ProfileCredits(profile: ComposerProfile?) {
     Panel {

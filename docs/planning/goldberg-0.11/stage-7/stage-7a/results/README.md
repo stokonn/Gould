@@ -127,4 +127,45 @@ no Practice History / Journey / Home duplication (P7).
 | X8 seeded upgrade check | **Not executed in 7A** — no schema/database/migration change in Stage 7A (code inspection: only UI + resources + tests); Stage 5 upgrade evidence remains authoritative |
 | X9 owner acceptance | **PENDING — required before any "Stage 7 complete" claim** |
 
+## Refinement pass (owner-authorized polish, 2026-10-22)
+
+Seven targeted corrections + a systematic spacing audit on top of the approved six-screen
+redesign. All verified on `emulator-5554` (qemu=1 asserted); 48 fresh screenshots
+(`settings-*`, refreshed combo shots, `font20-*`, `small-*`) with SHA-256 manifest.
+
+| # | Correction | Implementation | Verified |
+|---|---|---|---|
+| R1 | Online toggle → Settings, persisted, default OFF, explicit search only | New `preferences/CatalogPreferences.kt` (SharedPreferences `goldberg-catalogue`, StateFlow, default OFF; exposed as `catalogOnline`). Discover checkbox removed; explicit `onlineRequested` (plain `remember` — never restored, so restore/open never networks) set only by the "Search online" button when the pref is ON; pref persistence asserted on-device (`true`→`false` readback); privacy notice + off-hint rewritten to actual behavior | ✓ Settings EN/CS captures, `discover_online_on`/`discover_off_hint`, prefs XML readbacks |
+| R2 | Artist name/dates vs portrait-placeholder overlap | `ArtistHeroHeader` restructured: image case keeps the full-bleed hero with a bottom scrim and `heightIn(min=210.dp)` (grows with text); fallback case is a side-by-side Row (text `weight(1)` + 84 dp watermark icon) — overlap impossible by construction | ✓ ivory/nocturne × EN/CS artist captures; 2× font + 720 px narrow captures |
+| R3 | Personal vs public catalogue separation in Library | "From the catalogue" + "Catalogue artists" `EditorialSectionHeader`s with "not saved in your library" subtitle in the All view; Artists chip gets its own header + hint ("pinned favourites stay first") | ✓ `*-library.png`, `*-library_artists.png` all combos |
+| R4 | Discover "no local content" contradiction | `discover_empty` only renders for an active search with no matches — never on the landing screen while "Available offline" rows exist | ✓ all four `*-discover.png` landing captures |
+| R5 | Work Profile placeholder + empty sections | `ComposerPortrait` gained `fallbackIcon`/`placeholderDescription`; Work header uses MusicNote art (real portrait pipeline unchanged); "no verified movement list" wrapped in a soft Info panel (no invented data); button+warning merged into one 6 dp-spaced item | ✓ `*-work_profile.png` all combos |
+| R6 | Biography language fallback label | Non-`en` locale + English bio → "Biography in English — no Czech version…" label under the bio (Overview + Biography tabs) | ✓ `ivory-cs-artist_profile.png` renders "Životopis v angličtině…" |
+| R7 | First-install catalogue reachability (privacy-safe) | Library Artists empty state: explicit "Load catalogue artists (requires internet)" → `catalogModel.startBrowsing()` (the app's own `featured()` fetch — real OpenOpus rows, user-initiated, no silent downloads, no invented data, no navigation changes) | ✓ code + empty-state path (AVD has bootstrapped catalogue, so the button renders only on a truly fresh install) |
+
+### Spacing audit (all six screens)
+
+JournalSpace tokens (4/8/16/20/28 dp) for structural spacing; 12 dp retained as the
+design-system's card inner padding (`Panel`/`JournalCard` convention). Normalized:
+Discover header 2→4, tile/card rows 10→8+8-edge-padding (≈20 visual), card rows 10/11→12;
+Library controls 8→small token, rows 10→12, title stacks 2→4; Artist screen list 14→16,
+card row 10→12, stat labels 3→4; Work header 14→16, metadata cells 10→12, button/caption 6;
+Home/Profile group gaps 10→12, 5→4, 7→8. No text/portrait/icon overlap observed at
+1.0×/2× font, EN/CS, 1080 px and 720 px widths. Editorial look preserved — no new
+borders or cards added for separation (section headers + one soft empty-state panel).
+
+### Verification deltas vs the initial pass
+
+- Seeded in-place upgrade (X8) now EXECUTED for 7A: `adb install -r` over the seeded AVD;
+  all 22 table counts + profile_settings row identical; `goldberg-catalogue.xml` absent
+  until first write (default OFF by absence) and read back `false`/`true` correctly.
+- Lint warnings 122→124: +1 UseKtx in the new `CatalogPreferences` (identical to the
+  existing `MediaPreferences` pattern), +1 ModifierParameter on `ComposerPortrait`'s
+  signature; 0 errors, both stylistic and non-blocking.
+- `DiscoverNavigationTest` updated to the new contract (query retention kept; the online
+  request is composable-local state by construction).
+- Known pre-existing observation (not introduced here): the Settings landing renders its
+  section names via `L.fixed(...)`, localizing "Data & Storage"/"Data a úložiště"
+  correctly; no action taken.
+
 created by stokonn with love <3

@@ -74,7 +74,7 @@ import java.time.*
                 val columns=if(maxWidth<300.dp || fontScale>1.15f) 2 else 4
                 Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
                     StatisticLayout.normalize(settings.statistics.split(',')).chunked(columns).forEach {row->
-                    Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(7.dp)) {row.forEach {id->
+                    Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(JournalSpace.small)) {row.forEach {id->
                             Surface(Modifier.weight(1f).fillMaxHeight().heightIn(min=76.dp),shape=MaterialTheme.shapes.small,color=MaterialTheme.colorScheme.surface,border=androidx.compose.foundation.BorderStroke(1.dp,MaterialTheme.colorScheme.outlineVariant.copy(alpha=.4f))) {
                                 Column(Modifier.fillMaxHeight().padding(horizontal=6.dp,vertical=8.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(4.dp)) {
                                     Text(metrics.getValue(id).first,style=MaterialTheme.typography.bodyLarge.copy(fontWeight=androidx.compose.ui.text.font.FontWeight.SemiBold,fontFeatureSettings="tnum"),maxLines=1,softWrap=false,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
@@ -86,7 +86,7 @@ import java.time.*
                 }
             }
         }
-        Column(verticalArrangement=Arrangement.spacedBy(5.dp)) {
+        Column(verticalArrangement=Arrangement.spacedBy(JournalSpace.tiny)) {
             CompactSection(L.s(R.string.favorite_artist))
             JournalCard(Modifier.clickable(role=Role.Button) {artistEdit=true}) {
                 Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
@@ -132,7 +132,7 @@ import java.time.*
             if(matches.isEmpty()) Text(L.s(R.string.ui010_local_no_match),style=MaterialTheme.typography.bodySmall)
             else Column(Modifier.heightIn(max=240.dp).verticalScroll(rememberScrollState())) {matches.forEach {composer->
                 Surface(onClick={change(composer.name);expanded=false},color=MaterialTheme.colorScheme.surface) {
-                    Row(Modifier.fillMaxWidth().heightIn(min=60.dp).padding(6.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)) {ComposerPortrait(composer);Text(composer.name,style=MaterialTheme.typography.bodyMedium)}
+                    Row(Modifier.fillMaxWidth().heightIn(min=60.dp).padding(6.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {ComposerPortrait(composer);Text(composer.name,style=MaterialTheme.typography.bodyMedium)}
                 }
             }}
         }
@@ -143,7 +143,7 @@ import java.time.*
     val ids = StatisticLayout.normalize(settings.statistics.split(','))
     val names = mapOf("time" to L.s(R.string.msg_total_practice_a63c), "pieces" to L.s(R.string.msg_repertoire_pieces_e09d), "sessions" to L.s(R.string.msg_practice_sessions_60c7), "streak" to L.s(R.string.msg_current_streak_2ff8))
     AlertDialog(onDismissRequest = dismiss, title = { Text(L.s(R.string.msg_your_statistics_502c)) }, text = {
-        Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Text(L.s(R.string.msg_the_first_metric_is_prominent_use_the_arrows_1043))
             ids.forEachIndexed { index, id ->
                 Text(L.s(R.string.msg_if_index_0_primary_else_names_getvalue_id_4c74, (if (index == 0) L.fixed("Primary · ") else ""), (names.getValue(id))))

@@ -185,4 +185,39 @@ regression). Matrix gates: X2 ✓ X3 ✓ X4 (1.5× spot) ✓ X5 ✓ X6 ✓ X7 �
 - Emulator left tidy: theme=System, font_scale=1.0, locale en; the bootstrapped catalogue
   cache lives only on the disposable `stage5-api36` AVD.
 
+### 7A.14 refinement pass — owner-authorized polish (2026-10-22, IN REVIEW)
+
+On top of the approved redesign, the owner requested seven targeted corrections plus a
+systematic spacing audit across all six screens. Full plan + state log:
+`stage-7a/REFINEMENT-CHECKPOINT.md`; mismatch/spacing report:
+`stage-7a/results/README.md` (refinement section).
+
+- **Code (all on `feature/goldberg-0.11-stage-7a`, uncommitted at checkpoint time):**
+  new `preferences/CatalogPreferences.kt` (persisted online-catalogue toggle, default
+  OFF) + `catalogOnline` on OpusApplication; DiscoverScreen online checkbox removed →
+  explicit "Search online" button gated on the Settings pref (plain-`remember`
+  `onlineRequested`, so opening/restoring never networks; resets on query/filter change);
+  `discover_empty` only for real empty searches; Settings → Data & Storage toggle row;
+  `ArtistHeroHeader` overlap-proof restructure (Row fallback / growing image hero with
+  bottom scrim); bio language-fallback label (non-en locale); Work header MusicNote art
+  via new `ComposerPortrait(fallbackIcon, placeholderDescription)` params; soft Info
+  panel for the honest no-movements empty section; Library "From the catalogue" /
+  "Catalogue artists" separation headers + first-install "Load catalogue artists
+  (requires internet)" bootstrap (`startBrowsing()` → app's own `featured()` fetch);
+  JournalSpace token spacing pass on all six screens; 12 new EN/CZ string pairs +
+  privacy notice rewritten to actual behavior.
+- **Host gates (EXECUTED, green):** assembleDebug/testDebugUnitTest/lintDebug
+  BUILD SUCCESSFUL; JVM 174/0F/0E/0S; lint 0 errors (124 warnings, +2 stylistic and
+  documented); assembleDebugAndroidTest compiles (`DiscoverNavigationTest` updated to
+  the new contract); 5/5 `scripts/check_*.py` PASS (EN/CZ parity intact).
+- **Emulator (EXECUTED on `emulator-5554`, qemu=1 asserted):** **seeded in-place upgrade
+  PASSED** (`adb install -r`; all 22 table counts + profile_settings row unchanged);
+  preference persistence verified on-device (true/false XML readbacks, default OFF by
+  absence); 48 fresh screenshots (4 theme×lang combos incl. library/artists/artist/work
+  + settings toggle flow EN/CS + 2× font EN/CS + 720×1560 narrow sweep) with SHA-256
+  manifest; visually inspected (hero no-overlap both themes, Work MusicNote art, Library
+  separation, Discover hint/empty-state fix, CZ bio-language label).
+- **Status:** submitted to the owner for final Stage 7A acceptance (**X9 pending**).
+  No merge, no tag, no release, no APK publication; Stage 6 untouched.
+
 created by stokonn with love <3

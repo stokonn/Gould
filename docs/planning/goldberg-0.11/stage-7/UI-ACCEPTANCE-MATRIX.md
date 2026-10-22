@@ -94,13 +94,13 @@ No row is "Done"; no Stage 7 screenshot evidence exists.
 | # | Acceptance check | Status |
 |---|---|---|
 | X1 | One coherent editorial design system (Cormorant Garamond/Inter, tokens, spacing) | Approved |
-| X2 | Ivory + Nocturne both inspected | Mandatory (not executed) |
-| X3 | CZ + EN both inspected; plurals/dates/numbers localized | Mandatory (not executed) |
-| X4 | Normal + enlarged font (1.5×/2×), small screens, touch targets, content reflow | Mandatory (not executed) |
-| X5 | `assembleDebug`, JVM tests, `lintDebug`, `scripts/check_*.py` pass | Mandatory (not executed) |
-| X6 | Fresh emulator screenshots for all six screens, explicit emulator serial | Mandatory (not executed) |
-| X7 | Screenshot-vs-reference comparison + explicit mismatch report | Mandatory (not executed) |
-| X8 | Personal data intact after changes (seeded upgrade check) | Mandatory (not executed) |
-| X9 | Owner acceptance recorded before any "Stage 7 complete" claim | Mandatory gate |
+| X2 | Ivory + Nocturne both inspected | **EXECUTED** (refinement pass) — all six screens in both themes; theme readback asserted per switch; Artist hero, Work art, Library separation, Discover states and Settings toggle visually inspected in both themes |
+| X3 | CZ + EN both inspected; plurals/dates/numbers localized | **EXECUTED** (refinement pass) — all six screens in both languages; CZ bio-language fallback label verified; 12 new string pairs EN/CZ parity-checked |
+| X4 | Normal + enlarged font (1.5×/2×), small screens, touch targets, content reflow | **EXECUTED** (refinement pass) — 1.5× (initial pass) + 2.0× EN full/CZ partial spot checks + 720×1560 narrow-display sweep; hero grows with text, no overlap observed |
+| X5 | `assembleDebug`, JVM tests, `lintDebug`, `scripts/check_*.py` pass | **EXECUTED — green** (refinement pass: build SUCCESSFUL, JVM 174/0F/0E/0S, lint 0 errors / 124 warnings (+2 stylistic, documented), `assembleDebugAndroidTest` compiles, 5/5 check scripts PASS) |
+| X6 | Fresh emulator screenshots for all six screens, explicit emulator serial | **EXECUTED** (refinement pass) — 48 screenshots incl. Settings toggle flow + 2× + narrow; `emulator-5554` + `ro.kernel.qemu=1` asserted |
+| X7 | Screenshot-vs-reference comparison + explicit mismatch report | This document + `stage-7a/results/README.md` (refinement section) |
+| X8 | Personal data intact after changes (seeded upgrade check) | **EXECUTED** (refinement pass) — `adb install -r` in-place upgrade over the seeded AVD; all 22 table counts + profile_settings row (`Musician\|System`) byte-identical before/after; online-catalogue preference defaults OFF |
+| X9 | Owner acceptance recorded before any "Stage 7 complete" claim | **PENDING — required before any "Stage 7 complete" claim** |
 
 created by stokonn with love <3

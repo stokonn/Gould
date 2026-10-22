@@ -53,14 +53,15 @@ class DiscoverNavigationTest {
             }
             settled("DISCOVER")
             val original=session
-            instrumentation.runOnMainSync {session.query="Authored transient query";session.online=false;nav.navigate("detail")}
+            instrumentation.runOnMainSync {session.query="Authored transient query";nav.navigate("detail")}
             settled("detail")
             instrumentation.runOnMainSync {assertTrue(nav.popBackStack())}
             settled("DISCOVER")
-            instrumentation.runOnMainSync {assertSame(original,session);assertEquals("Authored transient query",session.query);assertFalse(session.online)}
-            // Fresh state contains neither query nor online choice. This is a memory-state
-            // assertion, not a substitute for an actual process-death/restart experiment.
-            assertEquals("",DiscoverSearchSession().query);assertFalse(DiscoverSearchSession().online)
+            // Stage 7A refinement: the explicit online request moved out of the session into
+            // composable-local remember state, so it can never survive navigation or process
+            // death by construction; only the raw query remains transient memory state here.
+            instrumentation.runOnMainSync {assertSame(original,session);assertEquals("Authored transient query",session.query)}
+            assertEquals("",DiscoverSearchSession().query)
         }
     }
 }
