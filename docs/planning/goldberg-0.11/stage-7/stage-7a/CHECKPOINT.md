@@ -220,7 +220,7 @@ systematic spacing audit across all six screens. Full plan + state log:
 - **Status:** submitted to the owner for final Stage 7A acceptance (**X9 pending**).
   No merge, no tag, no release, no APK publication; Stage 6 untouched.
 
-### 7A.15 round 2 — final accessibility + spacing fixes (2026-10-22, IN REVIEW)
+### 7A.15 round 2 — final accessibility + spacing fixes (2026-10-22, commit `33214d3`, IN REVIEW)
 
 Independent screenshot review found three remaining issues; owner authorized a second
 targeted round (commit recorded in git log). Full plan + state log:

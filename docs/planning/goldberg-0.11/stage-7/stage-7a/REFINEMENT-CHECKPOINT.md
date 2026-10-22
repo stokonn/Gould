@@ -149,7 +149,7 @@ token pass (no full rewrite).
 Blockers: none. Emulator alive: emulator-5554 (tidy state; catalogue bootstrapped on AVD
 only). adb: `$HOME/Android/Sdk/platform-tools/adb`.
 
-## Round 2 — final accessibility + spacing fixes (owner, 2026-10-22, commit pending)
+## Round 2 — final accessibility + spacing fixes (owner, 2026-10-22, commit `33214d3`)
 
 Independent screenshot review found three remaining issues; owner authorized a second
 targeted refinement round. No redesign, no provider/network behavior changes, JournalSpace
