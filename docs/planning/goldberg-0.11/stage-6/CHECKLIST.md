@@ -386,5 +386,37 @@ pre-launch gates.**
   6.1–6.18 all remain unchecked; Q1/D5b UNRESOLVED; C4 OPEN; ORD-A
   sequencing-only; no accounts, no provisioning, no OAuth, no merge, no tag,
   no release, 0 CZK/month, Stage 7 untouched.**
+- 2026-10-22 — **Cloudflare MCP readiness verification CHECKPOINT #1
+  (read-only cloud inspection, no cloud changes).** Under an explicit owner
+  instruction, the official **Cloudflare MCP server** (OAuth, **read-only**
+  permissions) was verified and used for **read-only inventory** of the
+  owner-provisioned Cloudflare account; **the agent created nothing, modified
+  nothing and deleted nothing** (all calls were GET; no write scope was
+  exercised). Verified facts: **MCP connection WORKS** — `GET /user` → HTTP
+  200; `GET /user/tokens/verify` → 401 is **expected** (that endpoint
+  validates API tokens, not OAuth bearer sessions — not a defect). Read-only
+  evidence: Workers R2 *read* scope present; **billing/subscription endpoints
+  refused (403, no OAuth scope covers them)** — **billing state is NOT
+  inspectable through this connection, and inaccessible billing is explicitly
+  NOT evidence of zero costs** (the 0 CZK posture is enforced by the C4/
+  ORD-A gates, not by this limitation). Account inventory (non-identifying;
+  no email, account ID or credential recorded): **1 standard account**
+  (created 2026-10-22, not suspended, no pro zones); **user-level 2FA
+  ENABLED** (account-level 2FA-enforcement flag off — D8c-relevant when
+  actionable); **0 zones (no domains); 0 Workers scripts; workers.dev
+  subdomain NOT yet created** (404/10007 — auto-created only on the first
+  Workers & Pages dashboard visit; not performed); **0 D1 databases; 0 KV
+  namespaces; R2 not enabled** (403/10042 — not needed by the approved
+  architecture). Comparison with the C1 architecture: capability available
+  for a Workers Free verification Worker, **nothing exists yet**, the
+  no-custom-domain constraint is trivially satisfied (0 zones), and
+  **Supabase remains entirely unverified/unprovisioned from this side**.
+  **Standing preserved: the existing account does NOT resolve Q1/D5b** —
+  account eligibility, contractual capacity, authority-to-bind and the GDPR
+  controller role remain for professional review; **Q1/D5b UNRESOLVED and
+  blocking for 6.0d; C4 OPEN; C2 §12 OPEN; 6.0f UNCHECKED; 6.0d/6.0e NOT
+  AUTHORIZED; 6.1–6.18 all unchecked; ORD-A sequencing-only; Stage 7
+  untouched; Stage 5 remains COMPLETE; 0 CZK/month unchanged.** Checkpoint
+  recorded in `docs/ai/{STATE,HANDOFF,VERIFICATION}.md` + GitHub Issue #31.
 
 created by stokonn with love <3

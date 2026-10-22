@@ -343,4 +343,30 @@ as 6.0f acceptance, do not provision, no accounts/OAuth, D5b/Q1 unresolved, C4
 open, 6.0d/6.0e not authorized, ORD-A sequencing-only, 0 CZK/month, Stage 7
 untouched, Stage 5 remains COMPLETE.**
 
+**Addendum 7 (2026-10-22, Cloudflare MCP readiness verification CHECKPOINT #1 —
+read-only cloud inspection, no cloud changes):**
+under an explicit owner instruction, the official **Cloudflare MCP server**
+(OAuth, **read-only**) was verified and used for a read-only inventory of the
+owner-provisioned Cloudflare account. **MCP connection VERIFIED** (`GET /user`
+→ 200; `GET /user/tokens/verify` → 401 is expected — API-token endpoint, not
+OAuth). **Read-only scope evidence:** Workers R2 *read* scope present;
+**billing/subscription endpoints refused (403, no OAuth scope) — billing is
+not inspectable via MCP and inaccessible billing is NOT proof of zero costs.**
+**Inventory (non-identifying, nothing recorded but facts):** 1 standard
+account (created 2026-10-22, user-level **2FA enabled**, account-level
+enforcement flag off); **0 zones; 0 Workers scripts; workers.dev subdomain not
+yet created; 0 D1; 0 KV; R2 not enabled.** No resource was created, modified
+or deleted; no credential accessed. **Standing preserved: the existing
+account does NOT resolve Q1/D5b; Q1/D5b UNRESOLVED/blocking for 6.0d; C4
+OPEN; C2 §12 OPEN; 6.0f UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; 6.1–6.18 all
+unchecked; ORD-A sequencing-only; Stage 7 untouched; Stage 5 remains
+COMPLETE; 0 CZK/month.** **Next step for a fresh agent:** read
+`stage-6/CHECKLIST.md` progress log (2026-10-22 MCP checkpoint entry) and
+this addendum. The substantive blocker is unchanged: **the owner routes
+`stage-6/Q1-PROFESSIONAL-REVIEW-BRIEF.md` to a qualified professional to
+resolve D5b**; only afterward, under a separate phase-scoped authorization,
+may ORD-A steps 4–6 (day-of C4 → minimal verification resources → CR-6
+measurements → CR-7 cleanup → 6.0f accept/reject) proceed. **Do not provision,
+do not deploy, do not change OAuth permissions or billing, do not implement.**
+
 created by stokonn with love <3

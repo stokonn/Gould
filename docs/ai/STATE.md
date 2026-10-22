@@ -326,3 +326,45 @@ gate 6.0d: D5b unresolved, C4 open, ORD-A steps 4–6), all [I]-venue rows, real
 Postgres isolation, HTTP/token layer (C2 S1–S19 reused), CPU (C2 measured),
 tasks 6.1–6.18. **No gates changed: 6.0f UNCHECKED, 6.1–6.18 unchecked, no
 accounts/provisioning/merge/tag/release, Stage 7 untouched, 0 CZK/month.**
+
+## Addendum — Stage 6 Cloudflare MCP readiness verification CHECKPOINT #1 (2026-10-22, read-only)
+
+Under an explicit owner instruction, the official **Cloudflare MCP server**
+(OAuth, **read-only** permissions) was verified and used for a **read-only
+inventory** of the owner-provisioned Cloudflare account. **No cloud resource
+was created, modified or deleted; no OAuth permission, billing or account
+setting was touched; no credential was accessed or recorded.** All calls were
+GET. Non-identifying facts recorded (no email, account ID or credential in any
+repository file):
+
+- **MCP connection VERIFIED:** `GET /user` → HTTP 200 (success).
+  `GET /user/tokens/verify` → 401 "Invalid API Token" is **expected** — that
+  endpoint validates API tokens, not OAuth bearer sessions; not a defect.
+- **Read-only scope evidence:** Workers R2 *read* scope present;
+  **billing/subscription endpoints refused (403, no OAuth scope)** — billing
+  state is **not inspectable** through this connection, and **inaccessible
+  billing is explicitly NOT proof of zero costs** (the 0 CZK posture is
+  enforced by the C4/ORD-A gates and the owner's accounting, never inferred
+  from a tool limitation).
+- **Account inventory (empty):** 1 standard account (created 2026-10-22, not
+  suspended, no pro zones); **user-level 2FA ENABLED** (account-level
+  2FA-enforcement flag off — relevant to D8c when actionable); **0 zones**;
+  **0 Workers scripts**; **workers.dev subdomain NOT yet created** (404 /
+  code 10007 — auto-created only on the first Workers & Pages dashboard
+  visit; not performed); **0 D1 databases; 0 KV namespaces; R2 not enabled**
+  (403 / code 10042 — not needed by the approved architecture).
+- **Architecture comparison (C1):** a Workers Free verification Worker can be
+  hosted when separately authorized; **nothing exists yet**; the
+  no-custom-domain constraint is trivially satisfied (0 zones); **Supabase
+  remains entirely unverified/unprovisioned from this side.**
+- **Standing preserved:** the existing account does **NOT** resolve Q1/D5b —
+  account eligibility, contractual capacity, authority-to-bind and the GDPR
+  controller role all remain for professional review. **Q1/D5b UNRESOLVED
+  and blocking for 6.0d; C4 OPEN; C2 §12 OPEN; 6.0f UNCHECKED; 6.0d/6.0e NOT
+  AUTHORIZED; tasks 6.1–6.18 all unchecked; ORD-A sequencing-only; Stage 7
+  untouched; Stage 5 remains COMPLETE; 0 CZK/month unchanged.**
+  **Next steps:** (1) owner routes `Q1-PROFESSIONAL-REVIEW-BRIEF.md` to a
+  qualified professional to resolve D5b; (2) only then, under a separate
+  phase-scoped authorization (ORD-A steps 4–6 / CR-1…CR-5): day-of C4 →
+  minimal verification resources → CR-6 measurements → CR-7 cleanup →
+  owner acceptance/rejection of 6.0f.

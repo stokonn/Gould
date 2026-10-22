@@ -151,3 +151,40 @@ Postgres isolation, HTTP/JWT/CSRF/CORS (C2 scope), CPU measurement (C2),
 tasks 6.1–6.18, Android/emulator checks (untouched), lint (no app code).
 `node:sqlite` ExperimentalWarning recorded honestly in TAP. No integration or
 production readiness is claimed; 6.0f stays UNCHECKED.
+
+## Executed — Stage 6 Cloudflare MCP readiness verification (2026-10-22, read-only)
+
+Owner-instructed, read-only session against the official Cloudflare MCP server
+(OAuth, read-only permissions). **No cloud resource created/modified/deleted;
+no OAuth permission, billing or account setting changed; no credential
+accessed or recorded; no write scope exercised.** Non-identifying facts only
+(no email, account ID or token in any repository file).
+
+| # | Read-only call | Result |
+|---|---|---|
+| M1 | `GET /user` (MCP connection check) | **EXECUTED — HTTP 200, success.** Connection authenticates via OAuth. |
+| M2 | `GET /user/tokens/verify` | **EXECUTED — 401 "Invalid API Token".** **Expected, not a defect:** that endpoint validates API tokens, not OAuth bearer sessions (M1 proves the OAuth session works). |
+| M3 | `GET /accounts` | **EXECUTED — 1 standard account**, created 2026-10-22, not suspended, no pro/business/enterprise zones, account-level 2FA-enforcement flag off. |
+| M4 | `GET /user` (account fields) | **EXECUTED — user-level two-factor authentication ENABLED** (D8c-relevant when actionable). |
+| M5 | `GET /user/subscriptions` | **EXECUTED — 403, "Authentication error": no OAuth scope covers this endpoint.** **Billing state is NOT inspectable via this MCP connection; inaccessible billing is explicitly NOT evidence of zero costs** — the 0 CZK posture is enforced by the C4/ORD-A gates, never inferred from a tool limitation. |
+| M6 | `GET /accounts/{id}/workers/scripts` | **EXECUTED — 0 Worker scripts.** |
+| M7 | `GET /accounts/{id}/workers/subdomain` | **EXECUTED — 404, code 10007:** workers.dev subdomain **not yet created** (auto-created only on the first Workers & Pages dashboard visit — not performed). |
+| M8 | `GET /zones` (filtered by account) | **EXECUTED — 0 zones** (no domains on the account). |
+| M9 | `GET /accounts/{id}/d1/database` | **EXECUTED — 0 D1 databases.** |
+| M10 | `GET /accounts/{id}/storage/kv/namespaces` | **EXECUTED — 0 KV namespaces.** |
+| M11 | `GET /accounts/{id}/r2/buckets` | **EXECUTED — 403, code 10042:** R2 **not enabled** on the account (dashboard enablement required; not performed — R2 is not needed by the approved architecture). |
+
+**Read-scope evidence:** the Workers R2 *read* scope is present on the
+connection (error text of M11 confirms it); billing endpoints are refused for
+lack of any OAuth scope (M5). Read-only posture therefore verified from
+observed behavior, not assumed.
+
+**Not executed / no claim:** any write/create/update/delete call of any kind;
+any billing inspection, change or interpretation; any provisioning,
+deployment, Wrangler action or OAuth scope change; C4 final verification
+(stays OPEN); C2 §12 production-runtime measurement (stays OPEN — no Worker
+deployed); any Supabase inspection (out of MCP scope — Supabase remains
+unverified/unprovisioned from this side); legal/professional review.
+**No gate closed: Q1/D5b UNRESOLVED (the existing account does NOT resolve
+it); 6.0f UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; 6.1–6.18 unchecked; ORD-A
+sequencing-only; Stage 7 untouched; 0 CZK/month unchanged.**
