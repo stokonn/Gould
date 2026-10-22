@@ -414,3 +414,31 @@ authorization. 6.0f UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; 6.1–6.18
 unchecked; Q1/D5b UNRESOLVED (Q1-D owner preference unchanged, preference
 only); C4 OPEN; C2 §12 OPEN; ORD-A sequencing-only; Stage 7 untouched;
 Stage 5 remains COMPLETE; 0 CZK/month.**
+
+**C4 preliminary verification + documentation reconciliation (2026-10-22,
+documentation-only; C4 stays OPEN):** the official Cloudflare/Supabase pricing,
+terms, DPA, region and backup sources were re-fetched (public documents only —
+no console login, no billing/API call, no resource, no payment method touched)
+and reconciled with the 2026-10-21 snapshot; results recorded as **§F** of
+`stage-6/C4-PREPROVISIONING-CHECKLIST.md` (§A–§C statuses untouched).
+**Recorded: both provider accounts now exist** (owner-side; Cloudflare
+corroborated by read-only MCP checkpoint #1 comment `6343122203`; Supabase
+from the owner's statement only, never agent-verified); **Cloudflare MCP
+read-only auth verified; Workers Free remains available; Supabase Free remains
+available with stated limits; `eu-central-1` remains a documented specific
+region; automatic backups NOT included on Supabase Free** (official free-tier
+`db dump` self-export guidance confirmed); **Supabase Free quotas can result
+in service restrictions** (pause / read-only / 402 after grace period);
+**billing and payment-method status NOT verified; subprocessor and transfer
+reviews still incomplete.** Doc-date diff: all 2026-10-21 stamps unchanged
+except CF Website Terms date + Supabase terms version badge (not re-renderable
+— honest gaps, remain ⚠ day-of); **CF observability announcement (2026-12-01)
+unchanged**; its target page (upd. 2026-10-15, new source) shows **Free =
+0.5 GB/day ingestion + 7-day retention, no paid overage on Free** —
+preliminary 0-CZK read, re-verify day-of and for any access ≥ 2026-12-01.
+**Q1-D = owner's preferred structure subject to eligibility verification
+(preference only).** **Gates unchanged: C4 OPEN (§D steps 1–9 unchecked);
+6.0f UNCHECKED; 6.1–6.18 unchecked; Q1/D5b UNRESOLVED and blocking; C2 §12
+OPEN; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing-only; 0 CZK/month; no
+provisioning/account/billing/OAuth/deployment change; Stage 7 untouched;
+Stage 5 remains COMPLETE.**

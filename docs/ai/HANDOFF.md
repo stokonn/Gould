@@ -410,4 +410,39 @@ provision, do not deploy, do not merge any spike branch, do not implement.
 unchanged); C4 OPEN; C2 §12 OPEN; Stage 7 untouched; Stage 5 remains
 COMPLETE; 0 CZK/month.
 
+**Addendum 10 (2026-10-22, C4 preliminary verification + documentation
+reconciliation — C4 stays OPEN):** an owner-instructed, docs-only recheck
+re-fetched the official Cloudflare and Supabase pricing, terms, DPA, region
+and backup documentation and reconciled it with the 2026-10-21 C4 snapshot;
+results are recorded as **§F** of
+[`stage-6/C4-PREPROVISIONING-CHECKLIST.md`](../planning/goldberg-0.11/stage-6/C4-PREPROVISIONING-CHECKLIST.md)
+(the §A–§C tables and statuses untouched; public document fetches only — no
+console login, no billing/API call, no resource, no payment method touched).
+**Recorded:** both provider accounts now exist (owner-side; Cloudflare
+corroborated by read-only MCP checkpoint #1 comment `6343122203`; Supabase
+existence from the owner's statement only, never agent-verified); **Cloudflare
+MCP read-only authentication verified; Workers Free remains available;
+Supabase Free remains available with stated limits; `eu-central-1` remains a
+documented specific region; automatic backups are NOT included on Supabase
+Free** (official docs guide free-tier `db dump` self-export + off-site);
+**Supabase Free quotas can result in service restrictions** (pause /
+read-only / 402 after grace period); **billing and payment-method status NOT
+verified; subprocessor and transfer reviews still incomplete.** Doc-date
+diff: all 2026-10-21 stamps unchanged except the CF Website Terms date and
+Supabase terms version badge (not re-renderable — honest gaps, remain ⚠
+day-of); the **CF observability-pricing announcement (2026-12-01) is
+unchanged**, and its target page (upd. 2026-10-15, new source) adds Free-tier
+detail: **0.5 GB/day ingestion, 7-day retention, no paid overage available on
+Free** — preliminary 0-CZK read only. **Q1-D = the owner's preferred structure
+subject to eligibility verification (preference only, `78fece3`).**
+**Next steps for a fresh agent:** unchanged — the owner routes
+`Q1-PROFESSIONAL-REVIEW-BRIEF.md` to resolve D5b; the §D day-of sequence in
+the C4 checklist remains fully required before any separately authorized 6.0d
+provisioning; CF-P6 must be re-verified on the day and again for any access
+≥ 2026-12-01. Do not provision, do not touch billing or payment methods, do
+not change OAuth configuration, and do not treat accounts existing as C4
+progress. 6.0f UNCHECKED; 6.1–6.18 unchecked; Q1/D5b UNRESOLVED; C4 OPEN;
+C2 §12 OPEN; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing-only; 0 CZK/month;
+Stage 7 untouched; Stage 5 remains COMPLETE.
+
 created by stokonn with love <3

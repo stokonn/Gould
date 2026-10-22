@@ -541,6 +541,34 @@ unchecked (F1–F5 are design inputs FOR task 6.1) and 6.0f remains UNCHECKED;
 D5b/Q1 unresolved (Q1-D preference unchanged), C4 open, C2 §12 open,
 6.0d/6.0e not authorized, ORD-A sequencing-only.**
 
+**C4 preliminary-verification addendum (2026-10-22, documentation
+reconciliation — C4 stays OPEN):** an owner-instructed docs-only recheck
+re-fetched the official Cloudflare and Supabase pricing, terms, DPA, region
+and backup sources and reconciled them with the 2026-10-21 snapshot; results
+recorded as §F of
+[stage-6/C4-PREPROVISIONING-CHECKLIST.md](stage-6/C4-PREPROVISIONING-CHECKLIST.md)
+(the §A–§C tables and all statuses untouched). **Recorded:** both provider
+accounts now exist (owner-side; Cloudflare corroborated by read-only MCP
+checkpoint #1, Supabase from the owner's statement only — never agent-verified);
+Cloudflare MCP read-only auth verified; **Workers Free remains available**;
+**Supabase Free remains available** with the snapshotted limits; **`eu-central-1`
+still a documented specific region**; **automatic backups "Not included" on
+Free** (official `db dump` self-export guidance confirmed); **Free quota
+overage can trigger service restrictions** (pause / read-only / 402);
+**billing and payment-method status NOT verified; subprocessor and transfer
+reviews still incomplete.** Documentation-date diff: all 2026-10-21 stamps
+unchanged (CF Website Terms date and Supabase terms version badge not
+re-renderable — honest gaps, remain ⚠ day-of); the **CF observability-pricing
+announcement (change 2026-12-01) is unchanged**, and its target page (upd.
+2026-10-15, new source) now shows **Free = 0.5 GB/day ingestion + 7-day
+retention with no paid overage available on Free** — preliminary 0-CZK read
+only, to be re-verified day-of and again for any access ≥ 2026-12-01. Q1-D
+recorded as the owner's preferred structure, subject to eligibility
+verification (preference only, not a selection). **This addendum closes no
+item: §D steps 1–9 unchecked, C4 stays OPEN, 6.0f UNCHECKED, 6.1–6.18
+unchecked, D5b/Q1 unresolved, C2 §12 open, 6.0d/6.0e not authorized, ORD-A
+sequencing-only, 0 CZK/month.**
+
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
 **Status: ⬜ not started.** Depends on stable Stage 4/5 contracts and Stage 6 admin actions.

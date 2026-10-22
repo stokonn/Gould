@@ -223,3 +223,43 @@ sequencing-only; Stage 7 untouched; 0 CZK/month unchanged.**
 **Gates unchanged: 6.0f UNCHECKED; 6.1–6.18 unchecked; Q1/D5b UNRESOLVED
 (Q1-D preference only); C4 OPEN; C2 §12 OPEN; ORD-A sequencing-only;
 0 CZK/month; Stage 7 untouched; Stage 5 remains COMPLETE.**
+
+## Executed — Stage 6 C4 preliminary verification & documentation reconciliation (2026-10-22, documentation-only)
+
+**Method:** public document fetches only (webfetch/curl). No console login, no
+MCP/API billing call, no resource created, no payment method inspected, no
+account setting touched. Reconciliation target: the 2026-10-21 source set in
+the C4 checklist §E.
+
+| # | Source | Result (accessed 2026-10-22) |
+|---|---|---|
+| V-1 | Cloudflare Workers pricing | **Workers Free available** — 100k req/day, 10 ms CPU/invocation, static assets free & unlimited; "Last updated Oct 2, 2026" = unchanged; Workers Logs Free 200k events/day, 3-day retention; "Beginning December 1, 2026 …" announcement unchanged |
+| V-2 | Cloudflare Observability pricing (**NEW source, not in §E**) | **"Last updated Oct 15, 2026":** Free = 0.5 GB/day ingestion + 7-day retention included, **additional ingestion unavailable on Free** (hard stop, resumes 00:00 UTC), storage not separately metered; automatic Free/Pro/Business migration **2026-12-01**; Log Explorer separate $1/GB, 30-day pool → **preliminary 0-CZK read; re-verify day-of and ≥ 2026-12-01** |
+| V-3 | Cloudflare Self-Serve Subscription Agreement | "Last Updated September 12, 2025" — unchanged |
+| V-4 | Cloudflare Customer DPA | "Version 6.4 … effective April 3, 2026" — unchanged |
+| V-5 | Cloudflare Workers limits | dateModified 2026-10-12 — unchanged; fail-closed error-routing code **1027** present |
+| V-6 | Cloudflare subprocessors page | "Last Updated: October 1, 2025" — unchanged |
+| V-7 | Cloudflare Website Terms | **date not re-extractable this session** (client-rendered) — honest gap; last verified Effective 2025-08-01 on 2026-10-21; remains ⚠ day-of |
+| V-8 | Supabase pricing | **Free available** — 500 MB DB (shared CPU) / 5 GB egress / 5 GB cached / 1 GB storage / 50k MAU / 2 projects / 1 GB log ingestion / audit 1 h / API+DB logs 1 day / unlimited API requests / pause 1 week; **Automatic backups "Not included" on Free** |
+| V-9 | Supabase backups docs | Daily backups Pro (7 d) / Team (14 d) / Enterprise; official guidance: "free tier plan projects regularly export their data using the Supabase CLI `db dump` command and maintain off-site backups" |
+| V-10 | Supabase billing FAQ | Free quota exceed → notification → grace period → **"service restrictions will apply"**: project pause, database read-only, disabled new launches/transfers, **402 for all API requests**; no-prior-notice only for suspected abuse |
+| V-11 | Supabase regions | **`eu-central-1` "Central EU (Frankfurt)" listed under Specific regions**; "Region selection is a data-location control, not proof of regulatory compliance" unchanged |
+| V-12 | Supabase DPA | "Version 1 — August 1, 2026" — unchanged |
+| V-13 | Supabase Terms of Service | **version badge not re-renderable this session** — honest gap; last verified "Version 2 — May 6, 2026" on 2026-10-21; remains ⚠ day-of |
+| V-14 | Supabase subprocessor list page | "Updated October 12, 2026" / "Updated June 1, 2026" — unchanged; **PDF still not parsed (SB-P9 ❌)** |
+| V-15 | Issue #31 MCP checkpoint `6343122203` (prior session, re-read) | read-only MCP auth verified (`GET /user` 200); 1 CF account created 2026-10-22, 0 zones / 0 Workers; billing refused 403 — **explicitly not zero-cost evidence** |
+
+- **Recorded from owner instruction (not agent-verified):** both provider
+  accounts now exist (Cloudflare corroborated by V-15; Supabase existence
+  from the owner's statement only); **Q1-D = owner's preferred structure
+  subject to eligibility verification** (preference only, `78fece3`).
+- **Not executed / not claimed:** console sessions; billing/payment-method
+  inspection; subprocessor PDF parse; TIA/Trust Center access; official GDPR
+  retrieval (X-6); MoJ translation (X-7); in-flow region selection; any
+  provisioning, deployment, account change, OAuth change; **C4 closure** (§D
+  steps 1–9 all unchecked); any Stage 7 work.
+
+**Gates unchanged: C4 OPEN; 6.0f UNCHECKED; 6.1–6.18 unchecked; Q1/D5b
+UNRESOLVED (Q1-D preference only, subject to eligibility verification); C2 §12
+OPEN; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing-only; 0 CZK/month; Stage 7
+untouched; Stage 5 remains COMPLETE.**

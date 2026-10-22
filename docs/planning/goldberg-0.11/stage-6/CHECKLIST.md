@@ -491,4 +491,54 @@ pre-launch gates.**
   (Q1-D remains owner preference only); C4 OPEN; C2 §12 OPEN; ORD-A
   sequencing-only; 0 CZK/month; Stage 7 untouched.**
 
+- 2026-10-22 — **C4 PRELIMINARY VERIFICATION + documentation reconciliation
+  EXECUTED (documentation-only; C4 remains OPEN, no status changed, no
+  checkbox closed).** Owner-instructed recheck of the official Cloudflare and
+  Supabase pricing, terms, DPA, region and backup documentation against the
+  2026-10-21 snapshot (public document fetches only — no console login, no
+  MCP/API billing call, no resource created, no payment method inspected or
+  changed, no account setting touched), recorded as **§F** of
+  [C4-PREPROVISIONING-CHECKLIST.md](C4-PREPROVISIONING-CHECKLIST.md); the
+  §A–§C tables and all row statuses left intact. **New facts recorded:**
+  **both provider accounts now exist** (owner-side; Cloudflare corroborated by
+  read-only MCP checkpoint #1
+  ([comment `6343122203`](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6343122203),
+  Supabase existence from the owner's statement only — never agent-verified);
+  **Cloudflare MCP read-only authentication verified**; **Cloudflare Workers
+  Free remains available** (100k req/day, 10 ms CPU, static assets free;
+  pricing page "Last updated Oct 2, 2026" unchanged); **Supabase Free remains
+  available with stated limits** (500 MB DB / 5 GB egress / 5 GB cached /
+  1 GB storage / 50k MAU / 2 projects / 1 GB log ingestion / audit 1 h /
+  API+DB logs 1 day / pause after 1 week); **`eu-central-1` remains a
+  documented specific region** ("Central EU (Frankfurt)" in Specific regions);
+  **automatic backups "Not included" on Free** (official docs guide free-tier
+  `db dump` self-export + off-site); **Supabase Free quotas can result in
+  service restrictions** (notification → grace period → pause / read-only /
+  disabled launches / **402**); **billing and payment-method status NOT yet
+  verified** (CF billing refused via MCP = not zero-cost evidence; Supabase
+  billing never opened); **subprocessor and transfer reviews remain
+  incomplete** (SB-P9 PDF unparsed, SB-P10 TIA not opened, CF-P10 subscribe
+  pending, X-2/X-6/X-7 open). **Cloudflare documentation-date diff recheck:**
+  SSSA 2025-09-12, Workers pricing 2026-10-02, limits 2026-10-12 (error
+  routing 1027 present), DPA v6.4 (2026-04-03), CF subprocessors 2025-10-01 —
+  **all unchanged**; CF Website Terms date not re-renderable this session
+  (honest gap, remains ⚠ day-of). **Observability pricing announcement
+  rechecked:** the 2026-12-01 change is unchanged, and its target page
+  (Observability pricing, **upd. 2026-10-15 — new source, not in the 2026-10-21
+  set**) now shows **Free = 0.5 GB/day ingestion + 7-day retention, additional
+  ingestion unavailable on Free (hard stop), storage not separately metered,
+  automatic migration 2026-12-01** → preliminary read that 0 CZK survives the
+  change — **must still be re-verified day-of and again for any access
+  ≥ 2026-12-01 (§D step 3); CF-P6/CF-P13 stay ⚠ dated.** Supabase terms date
+  badge not re-renderable (honest gap; last verified 2026-10-21); Supabase DPA
+  v1 (2026-08-01) and subprocessor page dates (2026-10-12 / 2026-06-01)
+  unchanged. **Q1-D recorded as the owner's preferred structure subject to
+  eligibility verification** (preference only — already at `78fece3`, repeated
+  in §F.1; not a selection). **No checkboxes closed: C4 OPEN (§D steps 1–9
+  unchecked), 6.0f UNCHECKED, 6.1–6.18 unchecked, Q1/D5b UNRESOLVED and
+  blocking, C2 §12 OPEN, 6.0d/6.0e NOT AUTHORIZED, ORD-A sequencing-only, 0
+  CZK/month; no provisioning, account change, billing/payment-method change,
+  OAuth change, deployment, Stage 7 change; no merge/tag/release.**
+  Validation: all five `scripts/check_*.py` PASS on this commit.
+
 created by stokonn with love <3

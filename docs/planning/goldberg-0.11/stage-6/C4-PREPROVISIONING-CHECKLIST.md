@@ -1,7 +1,8 @@
 # C4 — Pre-provisioning checklist (terms, pricing, DPA, subprocessors) — preparation snapshot
 
 **Goldberg 0.11 · Stage 6 · D8b condition C4 support document · documentation-only ·
-prepared 2026-10-21 · branch `docs/goldberg-0.11-stage-6-planning`**
+prepared 2026-10-21 · preliminarily re-verified and reconciled 2026-10-22 (§F) ·
+branch `docs/goldberg-0.11-stage-6-planning`**
 
 > **Standing of this document.** This is a **PRE-PROVISIONING checklist** — the
 > current-source baseline captured on 2026-10-21 so the final C4 verification can
@@ -12,6 +13,11 @@ prepared 2026-10-21 · branch `docs/goldberg-0.11-stage-6-planning`**
 > instruction, using the "⚠ RE-VERIFY" items below. Prepared in response to C3
 > §11 item 2 and C3 §13 decision point 1. No accounts exist, none were created,
 > no provisioning, OAuth configuration or deployment is authorized by this file.
+> **AMENDED 2026-10-22 (§F): the owner reports both provider accounts now
+> exist** — an owner-side fact that authorizes nothing and discharges no row:
+> no resource provisioning, billing/payment-method change, OAuth
+> reconfiguration or deployment is authorized by this file, and the §D day-of
+> sequence remains mandatory before any 6.0d provisioning.
 
 **Hard rules for execution (from AGENTS.md / OPEN-DECISIONS.md / BFF-FEASIBILITY.md):**
 
@@ -21,8 +27,10 @@ prepared 2026-10-21 · branch `docs/goldberg-0.11-stage-6-planning`**
   assumption fails), **report the blocker and request an owner decision — never
   silently substitute a paid service, trial or different architecture** (D8b).
 - **Access date discipline:** every row records what was verified **2026-10-21**
-  and whether it must be re-verified on provisioning day. Provider documents move
-  frequently; a version pinned today is evidence of *today*, not of tomorrow.
+  and whether it must be re-verified on provisioning day; the **2026-10-22
+  preliminary recheck is recorded separately in §F** and changes no status.
+  Provider documents move frequently; a version pinned today is evidence of
+  *today*, not of tomorrow.
 - **No compliance claims:** passing this checklist proves current-term alignment
   only. It is not legal advice, not GDPR compliance, not D5b resolution
   ([Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) remains the blocking
@@ -131,8 +139,93 @@ GDPR official-text retrieval (X-6), no MoJ English Civil Code download (X-7).
 
 ---
 
+## F. Preliminary verification & documentation reconciliation — 2026-10-22 (C4 remains OPEN)
+
+Owner-instructed, documentation-only recheck of the official Cloudflare and
+Supabase pricing, terms, DPA, region and backup documentation against this
+snapshot, plus recording of new account facts. **Method: public document
+fetches only — no console login, no MCP/API billing call, no resource created,
+no payment method inspected or changed, no account setting touched.** The §A–§C
+tables and their statuses are left intact; this section is dated evidence, not
+a status change.
+
+### F.1 New recorded facts
+
+| # | Fact | Source / verification |
+|---|---|---|
+| N-1 | **Both provider accounts now exist.** | Owner instruction 2026-10-22. Cloudflare side corroborated by read-only MCP checkpoint #1 ([Issue #31 comment `6343122203`](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6343122203): 1 standard account, created 2026-10-22, 0 zones, 0 Workers scripts, not suspended); the **Supabase account's existence is recorded from the owner's statement only** — no agent console/API verification performed. Accounts were created owner-side; no agent created, modified or deleted any account. |
+| N-2 | **Cloudflare MCP read-only authentication is verified.** | Checkpoint #1: `GET /user` → 200; Workers R2 *read* scope present; billing/subscription endpoints refused (403, no OAuth scope); no write scope exercised; **inaccessible billing is explicitly NOT evidence of zero costs.** |
+| N-3 | **Cloudflare Workers Free remains available.** | Workers pricing page re-fetched 2026-10-22 ("Last updated Oct 2, 2026" — unchanged): Workers Free is the default plan — 100,000 requests/day, 10 ms CPU per invocation, no charge for duration, static assets free & unlimited. Still ⚠ re-verify day-of (CF-P5). |
+| N-4 | **Supabase Free remains available with stated limits.** | Pricing page re-fetched 2026-10-22: $0/month, 500 MB database (shared CPU), 5 GB egress, 5 GB cached egress, 1 GB file storage, 50k MAU, 2 active projects, 1 GB log ingestion, auth audit logs 1 h, API/DB log retention 1 day, unlimited API requests, pause after 1 week inactivity — matches the §B snapshot. Still ⚠ day-of (SB-P3). |
+| N-5 | **Supabase `eu-central-1` remains documented as an available specific region.** | Regions page re-fetched 2026-10-22: "Central EU (Frankfurt), `eu-central-1`" listed under **Specific regions**; residency wording unchanged ("Region selection is a data-location control, not proof of regulatory compliance"). In-flow selectability still ⬜ (SB-P7) — no console opened. |
+| N-6 | **Automatic backups are not included on Supabase Free.** | Pricing feature table re-fetched 2026-10-22: Automatic backups — Free **"Not included"** (Pro 7 days / Team 14 days / Enterprise custom). Backups docs re-fetched: daily backups are Pro+; official guidance — "free tier plan projects regularly export their data using the Supabase CLI `db dump` command and maintain off-site backups". DPA Schedule 1 discrepancy ❌ (C3 Q7) unchanged; RPO per ZERO-COST-OPS.md §4. |
+| N-7 | **Supabase Free quotas can result in service restrictions.** | Billing FAQ re-fetched 2026-10-22: notification on quota exceed → if continued, **"service restrictions will apply"**; Fair Use restrictions = project pause, database read-only mode, disabled new project launches/transfers, **402 status code for all API requests**; grace period first; without prior notice only for suspected abuse. Consistent with SB-P5/SB-P6 (the 6.14 integration test is still ⬜). |
+| N-8 | **Billing and payment-method status are NOT yet verified.** | ⬜ Cloudflare: billing endpoints refused via MCP (403, no scope) — explicitly not zero-cost evidence; dashboard billing never inspected. Supabase: billing/payment pages never opened (no console session this session or prior ones). CF-P9, SB-P12 and X-4 remain ⬜ day-of items; the 0 CZK posture still rests on the C4/ORD-A gates and the owner's accounting, never on a tool limitation. |
+| N-9 | **Subprocessor and transfer reviews remain incomplete.** | ❌ SB-P9 subprocessor **PDF still unparsed** (page dates re-checked: Updated Oct 12, 2026 / Jun 1, 2026 — unchanged); ❌ SB-P10 Trust Center / TIA not opened; CF-P10 notification subscription not yet made; X-2 transfer landscape ⚠ day-of; X-6 official GDPR text still not retrieved (5 failed attempts across 2026-10-21); X-7 MoJ English translation not retrieved. |
+| N-10 | **Q1-D is the owner's PREFERRED operator structure, subject to eligibility verification.** | Preference recorded 2026-10-22 (`78fece3`) — a directional preference only, **NOT a selection, NOT an approval, NOT a D5b resolution**; contractual eligibility (CF-P8 account-eligibility rows) and professional verification remain open; D5b/Q1 stay ❌ unresolved and blocking; no option selected or implied by any agent. |
+
+### F.2 Cloudflare documentation-date recheck & observability pricing announcement
+
+Rechecked against the 2026-10-21 source set (§E) on **2026-10-22**:
+
+| Doc | Snapshot (2026-10-21) | Rechecked 2026-10-22 | Difference |
+|---|---|---|---|
+| Self-Serve Subscription Agreement (CF-P1) | Last Updated 2025-09-12 | "Last Updated September 12, 2025" | none |
+| Workers pricing (CF-P5) | updated 2026-10-02 | "Last updated Oct 2, 2026" (dateModified 2026-10-02) | none |
+| Workers limits (CF-P7) | updated 2026-10-12 | dateModified 2026-10-12; fail-closed error-routing code **1027** present | none |
+| Customer DPA (CF-P3) | v6.4, effective 2026-04-03 | "Version 6.4", effective April 3, 2026 | none |
+| Subprocessors page (CF-P10) | Last Updated 2025-10-01 | "Last Updated: October 1, 2025" | none |
+| Website Terms (CF-P2) | Effective 2025-08-01 | **date not re-extractable this session** (client-rendered) | honest gap — remains ⚠ day-of |
+| Observability pricing (CF-P6 target page) | **not in the §E source set** | **"Last updated Oct 15, 2026"** | **NEW source — see below** |
+
+**Observability pricing announcement rechecked (CF-P6).** The announcement is
+unchanged on the Workers pricing page: *"Beginning December 1, 2026, Workers
+Logs will use Cloudflare Observability pricing. Until then, the Workers Logs
+pricing in this table applies."* The linked Observability pricing page
+(updated **2026-10-15**, i.e. after the §E snapshot was assembled) now spells
+out the **Free-plan terms of the change**: Free = **0.5 GB/day included
+ingestion + 7-day retention included; additional ingestion NOT available on
+Free** (Cloudflare stops ingesting new data at the daily allowance and resumes
+at 00:00 UTC; storage not separately metered); existing Free/Pro/Business
+accounts **migrate automatically on 2026-12-01**; Log Explorer datasets remain
+a separate $1/GB, 30-day pool. **Preliminary read only: the Free posture still
+appears to yield 0 CZK after the change (hard cap, no paid overage available
+on Free) — an announced change not yet in effect. ⚠ MUST re-verify on the day
+and again for any access on/after 2026-12-01 (§D step 3); CF-P6/CF-P13
+statuses unchanged.**
+
+### F.3 Supabase terms/backup/region recheck (2026-10-22)
+
+| Doc | Snapshot (2026-10-21) | Rechecked 2026-10-22 | Difference |
+|---|---|---|---|
+| Terms of Service (SB-P1) | Version 2 — May 6, 2026 | **version badge not re-renderable this session** (client-side) | honest gap — last verified 2026-10-21; remains ⚠ day-of |
+| DPA (SB-P2) | Version 1 — August 1, 2026 | "Version 1 — August 1, 2026" | none |
+| Pricing / Free limits (SB-P3) | see N-4 | all stated limits confirmed | none |
+| Backups (SB-P4) | Free "Not included" | confirmed in pricing feature table + backups docs (N-6) | none |
+| Free overage behavior (SB-P5) | see N-7 | confirmed in billing FAQ (N-7) | none |
+| Regions (SB-P7) | `eu-central-1` specific | confirmed (N-5) | none |
+| Subprocessors (SB-P9) | page updated 2026-10-12 / 2026-06-01 | "Updated October 12, 2026" / "Updated June 1, 2026" | none (PDF still ❌ unparsed) |
+
+### F.4 What section F does NOT change
+
+**C4 remains OPEN and §D steps 1–9 all remain unchecked.** Accounts existing
+is not verification: billing/payment-method status is unverified, subprocessor
+and transfer reviews are incomplete, no eligibility determination was made, no
+in-flow region check happened, and no console evidence was collected — all
+still pending. Unchanged gates: **6.0f UNCHECKED · 6.1–6.18 unchecked ·
+Q1/D5b UNRESOLVED and blocking for 6.0d (Q1-D = preference subject to
+eligibility verification only) · C2 §12 OPEN · 6.0d/6.0e NOT AUTHORIZED ·
+ORD-A sequencing-only · 0 CZK/month unchanged.** No agent created, modified or
+deleted any account or resource, touched billing or payment methods, changed
+OAuth configuration, deployed anything, or touched Stage 7. No merge, no tag,
+no release.
+
+---
+
 **C4 status after this document: OPEN.** This snapshot is preparation only; the
 final C4 verification (section D) must run immediately before any separately
-authorized provisioning.
+authorized provisioning. The 2026-10-22 preliminary verification (§F) rechecked
+sources and recorded new account facts — it changed **no status** and closed
+**no item**: §D steps 1–9 all remain unchecked and C4 stays OPEN.
 
 created by stokonn with love <3
