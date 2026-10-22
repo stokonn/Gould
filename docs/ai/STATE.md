@@ -368,3 +368,21 @@ repository file):
   phase-scoped authorization (ORD-A steps 4–6 / CR-1…CR-5): day-of C4 →
   minimal verification resources → CR-6 measurements → CR-7 cleanup →
   owner acceptance/rejection of 6.0f.
+
+## Addendum — Owner preference: Q1-D preferred operator model (2026-10-22, docs only)
+
+The owner recorded **Q1-D (operation under their own name, as a legally
+capable natural person acting in their own name) as the PREFERRED operator
+model**, subject to contractual eligibility determination and professional
+verification. **A directional preference only — NOT a selection, NOT an
+approval, NOT a D5b resolution.** D5b stays **legally UNRESOLVED and blocking
+for 6.0d** until the professional review (Q4.1–Q4.13 / C-1…C-6) returns and
+the owner records the outcome; textual contract compatibility ≠ lawfulness;
+no account may be created; ORD-A stays sequencing-only; Q1-C remains the
+operative posture (nothing provisioned); no personal data requested, recorded
+or implied. Synchronized: `stage-6/Q1-OPERATOR-READINESS.md` (PREFERENCE
+ADDENDUM), `OPEN-DECISIONS.md` (D5b row), `CLOUD-READINESS-PLAN.md` §4.1,
+stage-6 `README.md`, `CHECKLIST.md` (6.0b + progress log),
+`STAGE-CHECKLIST.md`, `docs/ai/HANDOFF.md`. **6.0f UNCHECKED; 6.0d/6.0e NOT
+AUTHORIZED; 6.1–6.18 unchecked; C4 OPEN; C2 §12 OPEN; Stage 7 untouched;
+Stage 5 remains COMPLETE; 0 CZK/month.**

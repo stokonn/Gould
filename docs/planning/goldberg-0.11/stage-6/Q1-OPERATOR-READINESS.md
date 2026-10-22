@@ -37,6 +37,24 @@ reassessment) · branch `docs/goldberg-0.11-stage-6-planning`**
 > for 6.0d; 6.0f UNCHECKED; ORD-A APPROVED (sequencing only); no option
 > selected.**
 
+> **OWNER PREFERENCE ADDENDUM (2026-10-22 — documentation-only; a preference,
+> NOT a resolution, selection or approval).** The owner has recorded **Q1-D —
+> operation under the owner's own name, as a legally capable natural person
+> acting in their own name — as the PREFERRED operator model**, subject to
+> (a) contractual eligibility determination and (b) the professional
+> verification of §4 (questions Q4.1–Q4.13; brief
+> [Q1-PROFESSIONAL-REVIEW-BRIEF.md](Q1-PROFESSIONAL-REVIEW-BRIEF.md)
+> confirmations C-1…C-6). Binding reading: this is the owner's **directional
+> preference** for the eventual arrangement — **not** completion of the §6
+> "choose operator structure" act, **not** a selection that resolves D5b, and
+> **not** an approval of Q1-D. **D5b stays legally UNRESOLVED and blocking for
+> 6.0d** until the professional review returns and the owner records the
+> outcome; textual contract compatibility ≠ lawfulness; no account may be
+> created; ORD-A stays sequencing-only; **no personal data is requested,
+> recorded or implied by this preference**; Q1-A/Q1-B remain documented
+> fallbacks, and Q1-C remains the operative posture meanwhile (nothing
+> provisioned). Recorded per the owner's instruction of 2026-10-22.
+
 > **RECONCILIATION NOTE (2026-10-21, earlier session — no question below is
 > answered or changed by it):** (1) The owner chose the approved **cloud
 > architecture as the intended deployment path** — Cloudflare Workers Free +
@@ -580,7 +598,10 @@ offered to structure the owner's decision; it is **not** legal advice, it does
       (questions are ready to forward verbatim; they contain no identifying
       information).
 - [ ] **Choose operator structure:** Option A, B, C **or the new D** — only after
-      §4 input. *(Q1-D is a candidate only; choosing it is an explicit act.)*
+      §4 input. *(Q1-D is a candidate only; choosing it is an explicit act.
+      **2026-10-22: the owner recorded Q1-D as the PREFERRED model — subject to
+      eligibility + professional verification; the choice is still NOT made and
+      this checkbox stays open until the review returns.**)*
 - [ ] **D5a remains open:** no contact supplied/authorized for publication;
       do not supply identifying details in this public repository or in Issue #31.
 - [ ] **Confirm the 0 CZK boundary** against Option B's potential formation
@@ -598,7 +619,9 @@ offered to structure the owner's decision; it is **not** legal advice, it does
 ## 7. What this document deliberately does NOT do
 
 - Does not resolve D5b or mark it legally resolved; does not select an operator
-  (A, B, C **or D**).
+  (A, B, C **or D**). *(The owner's 2026-10-22 recorded preference for Q1-D —
+  see the PREFERENCE ADDENDUM at the top — is a preference only; this document
+  still selects nothing and D5b stays unresolved.)*
 - Does not conclude that any person is or is not capable of any specific act; it
   states **eligibility conditions only** and records **no personal facts** — not
   the owner's, not anyone else's.

@@ -209,6 +209,10 @@ binding:
   arrangements* (who holds the accounts and carries controller duties) —
   **none is selected**; that selection belongs to the owner after professional
   review ([Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) §5).
+  *(2026-10-22: the owner recorded **Q1-D as the preferred operator model**,
+  subject to contractual eligibility and professional verification — a
+  preference only; no option is selected, **D5b stays unresolved and
+  blocking**, and Q1-C remains the operative posture meanwhile.)*
 - **Q1/D5b stays unresolved** and blocks steps 2–6 under every reading: no
   provider account may be created while the contractual and legal prerequisites
   remain unresolved, and creating an account would not resolve D5b or establish

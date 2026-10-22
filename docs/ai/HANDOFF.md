@@ -369,4 +369,21 @@ may ORD-A steps 4–6 (day-of C4 → minimal verification resources → CR-6
 measurements → CR-7 cleanup → 6.0f accept/reject) proceed. **Do not provision,
 do not deploy, do not change OAuth permissions or billing, do not implement.**
 
+**Addendum 8 (2026-10-22, owner preference — Q1-D, docs only):** the owner
+recorded **Q1-D (operation under their own name, as a legally capable natural
+person acting in their own name) as the PREFERRED operator model**, subject to
+contractual eligibility determination and professional verification. **A
+directional preference only — NOT a selection, NOT an approval, NOT a D5b
+resolution.** D5b stays **legally UNRESOLVED and blocking for 6.0d** until the
+professional review (Q4.1–Q4.13 / C-1…C-6) returns; no account may be created;
+ORD-A stays sequencing-only; Q1-C remains the operative posture (nothing
+provisioned); no personal data requested, recorded or implied. Synchronized:
+`stage-6/Q1-OPERATOR-READINESS.md` (PREFERENCE ADDENDUM), `OPEN-DECISIONS.md`
+(D5b row), `CLOUD-READINESS-PLAN.md` §4.1, stage-6 `README.md`,
+`CHECKLIST.md` (6.0b + progress log), `STAGE-CHECKLIST.md`. **Next step for a
+fresh agent:** unchanged — the owner routes the professional-review brief;
+until the review returns, do not select an option, do not provision, do not
+implement. 6.0f UNCHECKED; 6.1–6.18 unchecked; Stage 7 untouched; Stage 5
+remains COMPLETE.
+
 created by stokonn with love <3

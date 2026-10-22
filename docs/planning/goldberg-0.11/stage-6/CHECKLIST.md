@@ -27,7 +27,11 @@ pre-launch gates.**
   prepared: [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) — **still
   legally unresolved and blocking for 6.0d**; reassessed 2026-10-21 with option
   sets **A/B/C/D — candidate Q1-D (natural person in own name) added, none
-  selected**, plus product direction PD-1 free/non-commercial); D5d principle approved
+  selected**; **owner preference recorded 2026-10-22: Q1-D is the PREFERRED
+  operator model, subject to contractual eligibility + professional
+  verification — a directional preference only, NOT a selection or
+  resolution; D5b stays legally unresolved and blocking**; plus product
+  direction PD-1 free/non-commercial); D5d principle approved
   with **retention/deletion details unresolved**; D5e approved subject to pre-launch
   legal review. *Remaining open items block: terms/privacy publication, retention
   jobs, `DELETE /v1/me`, public collection.* (OPEN-DECISIONS.md §2.)
@@ -418,5 +422,25 @@ pre-launch gates.**
   AUTHORIZED; 6.1–6.18 all unchecked; ORD-A sequencing-only; Stage 7
   untouched; Stage 5 remains COMPLETE; 0 CZK/month unchanged.** Checkpoint
   recorded in `docs/ai/{STATE,HANDOFF,VERIFICATION}.md` + GitHub Issue #31.
+- 2026-10-22 — **Owner preference recorded: Q1-D preferred operator model
+  (documentation-only; a preference, NOT a selection or resolution).** The
+  owner instructed: operation **under their own name (Q1-D)** is recorded as
+  the **preferred operator model**, **subject to contractual eligibility and
+  professional verification**. Binding reading, synchronized across
+  [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) (new PREFERENCE
+  ADDENDUM; §6 checkbox annotated, still open; §7 non-actions unchanged),
+  [OPEN-DECISIONS.md](OPEN-DECISIONS.md) (D5b row),
+  [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md) §4.1, this README,
+  STAGE-CHECKLIST.md and `docs/ai/*`: this is the owner's directional
+  preference for the eventual arrangement — **not** the completion of the
+  operator-structure choice, **not** an approval of Q1-D, and **not** a
+  resolution of D5b. **D5b stays legally UNRESOLVED and blocking for 6.0d**
+  until the professional review (Q4.1–Q4.13 / C-1…C-6) returns and the owner
+  records the outcome; textual contract compatibility ≠ lawfulness; **no
+  account may be created**; ORD-A stays sequencing-only; Q1-C remains the
+  operative posture (nothing provisioned); **no personal data is requested,
+  recorded or implied**. No checkboxes closed by this entry — 6.0b, 6.0d,
+  6.0e, 6.0f all unchanged; 6.1–6.18 all unchecked; C4 OPEN; C2 §12 OPEN;
+  0 CZK/month; Stage 7 untouched.
 
 created by stokonn with love <3

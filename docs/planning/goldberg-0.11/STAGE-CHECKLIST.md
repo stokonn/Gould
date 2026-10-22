@@ -472,7 +472,11 @@ implementation tasks UNCHECKED.**
       Options A/B/C documented, **no option selected, D5b still legally
       unresolved**; reassessed later 2026-10-21 → **options A/B/C/D with
       candidate Q1-D added, still no selection**, see the Stage 6 Q1
-      reassessment note above). **Still open: C2 §12 production verification and
+      reassessment note above; **owner preference recorded 2026-10-22: Q1-D
+      is the PREFERRED operator model, subject to contractual eligibility +
+      professional verification — a directional preference only, NOT a
+      selection or resolution; D5b stays legally unresolved and blocking**).
+      **Still open: C2 §12 production verification and
       C4 terms re-verification (checklist prepared; final run required before
       any provisioning).**
 - [ ] 6.1–6.9 Server core: schema, auth, authorization, submissions, decision

@@ -111,6 +111,14 @@ documentation extends the baseline, it does so additively and cites it.
   D5a provisional (no contact supplied — nothing may be published); D5b/D5d details
   deferred to pre-launch review. Full outcomes and remaining gates:
   [OPEN-DECISIONS.md](OPEN-DECISIONS.md).
+- **Owner preference (2026-10-22):** the owner recorded **Q1-D — operation
+  under their own name as a legally capable natural person — as the preferred
+  operator model**, subject to contractual eligibility determination and
+  professional verification. **A directional preference only: not a
+  selection, not an approval, not a D5b resolution** — D5b stays legally
+  unresolved and blocking for 6.0d; Q1-C remains the operative posture
+  (nothing provisioned); see
+  [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) PREFERENCE ADDENDUM.
 - **Not started:** every Stage 6 implementation task (6.1–6.18 in `CHECKLIST.md`),
   provisioning, OAuth configuration, integration environments. No backend code, no
   cloud resources, no credentials exist.
