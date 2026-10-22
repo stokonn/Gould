@@ -220,12 +220,37 @@ deleted any account or resource, touched billing or payment methods, changed
 OAuth configuration, deployed anything, or touched Stage 7. No merge, no tag,
 no release.
 
+### F.5 Owner-side console observations (2026-10-22, second session — attributed, not agent-verified)
+
+Additional facts reported by the **owner** from their own console sessions on
+2026-10-22. Method note: these are **explicitly attributed owner observations**
+(manual, first-hand), never agent-verified; **no screenshots, console exports
+or account identifiers are stored in GitHub** (per the privacy rule); no agent
+logged into any console, called any billing API, created or modified any
+resource, or touched any payment method. Recorded because they materially
+inform C4 preparation — they change **no status** (F.4 stands).
+
+| # | Owner-observed fact | Verification status |
+|---|---|---|
+| N-11 | **Cloudflare Workers Free is active on the account with no payment method attached** (owner-reported). | ⚠ Owner observation only — never agent-verified (MCP has no billing scope; N-8 unchanged). Still a §D day-of item. |
+| N-12 | **A Supabase "Personal Free" organization exists with zero projects** (owner-reported; **no project was created**). | ⚠ Owner observation only — never agent-verified (no console session, no API call). The 2-project Free cap (N-4) is therefore not consumed. |
+| N-13 | **Frankfurt (`eu-central-1`) is selectable in the Supabase project-creation form** (owner-reported, in-flow). | ⚠ Partially informs SB-P7/§D step 6 (in-flow availability of the documented specific region) but **does NOT close it**: no agent verification, no project created, no console evidence stored. Remains ⬜. |
+
+**Explicit non-claims:** Supabase **billing/payment status remains unverified**
+(N-8 unchanged — an organization existing is not billing evidence); **project
+creation remains unperformed and unauthorized** (6.0d NOT AUTHORIZED; the
+owner's empty organization is not a Goldberg resource); nothing here closes
+§D steps 1–9. Unchanged gates: **C4 OPEN · 6.0f UNCHECKED · 6.1–6.18
+unchecked · Q1/D5b UNRESOLVED and blocking · C2 §12 OPEN · 6.0d/6.0e NOT
+AUTHORIZED · ORD-A sequencing-only · 0 CZK/month.**
+
 ---
 
 **C4 status after this document: OPEN.** This snapshot is preparation only; the
 final C4 verification (section D) must run immediately before any separately
 authorized provisioning. The 2026-10-22 preliminary verification (§F) rechecked
 sources and recorded new account facts — it changed **no status** and closed
-**no item**: §D steps 1–9 all remain unchecked and C4 stays OPEN.
+**no item**: §D steps 1–9 all remain unchecked and C4 stays OPEN. §F.5 adds
+owner-attributed console observations (N-11–N-13) with the same effect.
 
 created by stokonn with love <3

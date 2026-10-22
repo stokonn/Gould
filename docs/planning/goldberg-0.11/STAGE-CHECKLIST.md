@@ -569,6 +569,53 @@ item: §D steps 1–9 unchecked, C4 stays OPEN, 6.0f UNCHECKED, 6.1–6.18
 unchecked, D5b/Q1 unresolved, C2 §12 open, 6.0d/6.0e not authorized, ORD-A
 sequencing-only, 0 CZK/month.**
 
+**C6-PG hardening addendum (2026-10-22, experimental mitigation comparison —
+NOT implementation, never merged):** the F1/F3/F4 candidate fixes were
+implemented **in the isolated spike only** and compared on the same local
+PostgreSQL 17.11 instance (`read committed`), same branch
+`spike/goldberg-0.11-stage-6-contract-pg`, commits `d8e82d5` (code) +
+`c21e550` (evidence); the faithful sources and the original `results/pg/`
+deviation evidence remain byte-untouched. `src/harden.mjs` implements both
+strategies over the identical `runDecision` step sequence: **`for-update`**
+(submission-row lock + `audit_head` append mutex) and **`serializable`** (SSI +
+faithful audit pattern + bounded retry with explicit 40001/40P01/23505
+handling; exhaustion → 409, never 500), sharing the F3 hardening (concurrent
+idempotency 23505 → serve stored replay; 422 on mismatch). **Executed results
+(v11, 37 tests, 7/7):** the repeated 20-trial multi-process race restored
+`[201,409]` in **20/20 trials per strategy** (the exact invariant the faithful
+server broke 10/10 in v9); **for-update: 0 SQLSTATE retries everywhere**,
+including a 20-decision F4 scale run with consecutive audit seqs and a
+coherent chain; **serializable: 21× `40001`** across the race and **218×
+`40001`** at 20-way scale (maxAttempts=64), **0 exhausted**; deterministic F3
+store race verified. Full executor: SQLite regression **93 tests / 79 pass /
+0 fail / 14 PG-only skips**; PostgreSQL venue **123/123 pass / 0 fail**; static
+scan PASS (23 files). **Conclusion for task 6.1: `SELECT … FOR UPDATE` is the
+recommended pattern** (deterministic, zero retries, loser's 409 via the normal
+guard); serializable works but needs a generous bounded retry and 40001→409
+mapping; concurrent same-key decision duplicates answer `[201,409]` while
+sequential ones replay — to be stated in the production API contract. **This
+addendum closes no task: experimental evidence only, not a Supabase run
+(Supabase-hosted proof stays BLOCKED), production implementation remains gated
+on 6.0f UNCHECKED; 6.1–6.18 remain unchecked (this is design input FOR 6.1);
+D5b/Q1 unresolved, C4 open, C2 §12 open, 6.0d/6.0e not authorized, ORD-A
+sequencing-only, 0 CZK/month.**
+
+**C4 owner-observation addendum (2026-10-22, attributed owner console facts —
+C4 stays OPEN):** three first-hand owner observations were recorded as §F.5
+(N-11–N-13) of
+[stage-6/C4-PREPROVISIONING-CHECKLIST.md](stage-6/C4-PREPROVISIONING-CHECKLIST.md),
+never agent-verified, with **no screenshots or account identifiers stored in
+GitHub**: **Cloudflare Workers Free active with no payment method attached**
+(billing non-verification N-8 unchanged); a **Supabase "Personal Free"
+organization with zero projects** (no project created; the 2-project Free cap
+not consumed; existing ≠ billing evidence); **Frankfurt (`eu-central-1`)
+selectable in the Supabase project-creation form** (informs SB-P7/§D step 6
+but does not close it). Supabase billing/payment status remains unverified;
+project creation remains unperformed and unauthorized. **This addendum closes
+no item: C4 OPEN (§D steps 1–9 unchecked), 6.0f UNCHECKED, 6.1–6.18
+unchecked, D5b/Q1 unresolved, C2 §12 open, 6.0d/6.0e not authorized, ORD-A
+sequencing-only, 0 CZK/month.**
+
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
 **Status: ⬜ not started.** Depends on stable Stage 4/5 contracts and Stage 6 admin actions.

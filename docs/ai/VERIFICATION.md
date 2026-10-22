@@ -263,3 +263,61 @@ the C4 checklist §E.
 UNRESOLVED (Q1-D preference only, subject to eligibility verification); C2 §12
 OPEN; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing-only; 0 CZK/month; Stage 7
 untouched; Stage 5 remains COMPLETE.**
+
+## C6-PG concurrency hardening — executed verification record (2026-10-22)
+
+- **Executor (executed):** `node tools/execute-hardening.mjs` with
+  `C6_PG_URL=postgres://c6spike@127.0.0.1:54329/c6spike` on branch
+  `spike/goldberg-0.11-stage-6-contract-pg` (code `d8e82d5`, evidence
+  `c21e550`), Node v22.23.1, PostgreSQL 17.11 (podman `c6-pg`, rootless,
+  loopback-only, `read committed`, removed after capture). Exit 0.
+- **PostgreSQL hardening venue:** v1–v11 → **123 tests, 123 pass, 0 fail,
+  0 skipped**. Raw TAP:
+  [tap-postgres-hardening.txt](https://github.com/stokonn/Goldberg/blob/c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab/spikes/contract-c6/results/pg-hardening/raw/tap-postgres-hardening.txt).
+- **SQLite regression venue (faithful server only):** **93 tests, 79 pass,
+  0 fail, 14 skipped** (v10 + v11 are PostgreSQL-only — honest skips; v1–v9
+  unchanged). Raw TAP:
+  [tap-sqlite-regression.txt](https://github.com/stokonn/Goldberg/blob/c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab/spikes/contract-c6/results/pg-hardening/raw/tap-sqlite-regression.txt).
+- **v11 hardening suite (PG-only, 37 tests, 7/7 pass):** in-process races
+  (both strategies × new/pre-existing entity) `[201,409]` with exact
+  one-decision counts and coherent chain; **repeated 20-trial multi-process
+  barrier race: 20/20 `[201,409]` per strategy** (for-update telemetry all
+  zero; serializable 21× `40001`, 0 exhausted); contract/negative behavior
+  (401/403/400/409/503, kill switch, fault-injection rollback, concurrent
+  same-key `[201,409]`); **deterministic F3 store race** (23505 → stored
+  replay, exactly 1 row, 422 negative); **F4 scale run** (20 concurrent
+  decisions: all 201, audit seqs strictly consecutive, chain coherent;
+  for-update 0 retries, serializable 218× `40001` with maxAttempts=64).
+- **Static isolation scan:** 23 files, 0 forbidden findings (`child_process`
+  confined to the race tests + child tools; only socket use: `pg` driver →
+  loopback). Original `results/pg/` evidence verified untouched
+  (`git status`: only new files added).
+- **Not executed / not claimed:** any Supabase-hosted (PostgREST) run —
+  blocked by 6.0f + D5b/Q1 + C4 + ORD-A steps 4–6; production implementation
+  (6.1–6.18); any device/emulator work; any merge/deploy/release.
+- **Cleanup:** container `c6-pg` stopped and removed after evidence capture.
+
+**Gates unchanged: 6.0f UNCHECKED; 6.1–6.18 unchecked; Q1/D5b UNRESOLVED
+(Q1-D preference only); C4 OPEN; C2 §12 OPEN; ORD-A sequencing-only;
+0 CZK/month; Stage 7 untouched; Stage 5 remains COMPLETE.**
+
+## Owner-attributed C4 console observations recorded (2026-10-22, NOT agent-executed)
+
+- **Recorded from owner instruction (manual, first-hand, never agent-verified):**
+  (a) Cloudflare Workers Free **active with no payment method attached**;
+  (b) a Supabase **"Personal Free" organization exists with zero projects**
+  (no project created); (c) **Frankfurt (`eu-central-1`) is selectable in the
+  Supabase project-creation form**. Recorded as §F.5 (N-11–N-13) of
+  `stage-6/C4-PREPROVISIONING-CHECKLIST.md`.
+- **Not executed / not claimed:** any agent console session, billing or
+  payment-method inspection (MCP has no billing scope — inaccessible billing
+  is explicitly not zero-cost evidence), project creation, resource
+  modification; any screenshot/console export stored in GitHub (none —
+  privacy rule); any §D step closure. Supabase billing/payment status
+  remains unverified; SB-P7/§D step 6 remains ⬜ (in-flow selectability
+  partially informed, not closed).
+
+**Gates unchanged: C4 OPEN (§D steps 1–9 unchecked); 6.0f UNCHECKED;
+6.1–6.18 unchecked; Q1/D5b UNRESOLVED and blocking; C2 §12 OPEN; 6.0d/6.0e
+NOT AUTHORIZED; ORD-A sequencing-only; 0 CZK/month; Stage 7 untouched;
+Stage 5 remains COMPLETE.**

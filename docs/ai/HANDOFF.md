@@ -445,4 +445,56 @@ progress. 6.0f UNCHECKED; 6.1–6.18 unchecked; Q1/D5b UNRESOLVED; C4 OPEN;
 C2 §12 OPEN; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing-only; 0 CZK/month;
 Stage 7 untouched; Stage 5 remains COMPLETE.
 
+**Addendum 11 (2026-10-22, C6-PG concurrency hardening — experimental
+mitigation comparison, never merged):** both candidate F1/F3/F4 fixes were
+implemented **in the isolated spike only** (same branch
+`spike/goldberg-0.11-stage-6-contract-pg`, commits
+[`d8e82d5`](https://github.com/stokonn/Goldberg/commit/d8e82d5807b0039e0f799ae3753558e970b74205)
+code + [`c21e550`](https://github.com/stokonn/Goldberg/commit/c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab)
+evidence) and compared on local PostgreSQL 17.11 (`read committed`). The
+faithful sources and the original `results/pg/` deviation evidence are
+byte-untouched. `src/harden.mjs` = hardened decision endpoint with two
+strategies over the same `runDecision` steps: **`for-update`** (row lock +
+`audit_head` mutex) and **`serializable`** (SSI + bounded retry + explicit
+40001/40P01/23505 handling; exhaustion → 409, never 500); both share the F3
+store hardening (concurrent idempotency 23505 → serve stored replay; 422 on
+mismatch). **Executed:** v11 7/7 (37 tests); repeated 20-trial multi-process
+race restored `[201,409]` in **20/20 per strategy**; **for-update 0 retries
+everywhere** (incl. a 20-decision F4 scale run — consecutive seqs, coherent
+chain); **serializable 21× `40001`** in the race and **218× at 20-way scale**
+(maxAttempts=64), 0 exhausted; deterministic F3 store race verified.
+Executor: SQLite 93 tests / 79 pass / 0 fail / 14 PG-only skips; PostgreSQL
+**123/123 pass, 0 fail**; static scan PASS (23 files). **Engineering
+conclusion: row locking recommended** (deterministic, zero retries, loser's
+409 via the ordinary guard); serializable viable with a generous bounded
+retry + 40001→409 mapping; concurrent same-key decision duplicates answer
+`[201,409]` while sequential ones replay — state this in the 6.1 API
+contract. Full write-up:
+[SUMMARY-HARDENING.md](https://github.com/stokonn/Goldberg/blob/c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab/spikes/contract-c6/results/pg-hardening/SUMMARY-HARDENING.md).
+**Next steps for a fresh agent:** F1–F5 + this comparison remain **design
+inputs for task 6.1 (gated on 6.0f acceptance)** — NOT authorization to
+implement; do not merge the spike branch; the Supabase-hosted re-proof stays
+BLOCKED (D5b/Q1 + C4 + ORD-A steps 4–6). 6.0f UNCHECKED; 6.1–6.18 unchecked;
+Q1/D5b UNRESOLVED; C4 OPEN; C2 §12 OPEN; Stage 7 untouched; 0 CZK/month.
+
+**Addendum 12 (2026-10-22, C4 owner-side console observations — recorded,
+never agent-verified, C4 stays OPEN):** the owner reported three first-hand
+console facts, recorded as **§F.5 (N-11–N-13)** of
+[`stage-6/C4-PREPROVISIONING-CHECKLIST.md`](../planning/goldberg-0.11/stage-6/C4-PREPROVISIONING-CHECKLIST.md):
+**Cloudflare Workers Free active with no payment method attached** (billing
+non-verification N-8 unchanged — MCP has no billing scope); a **Supabase
+"Personal Free" organization with zero projects** (no project created; the
+2-project Free cap not consumed; an organization existing is not billing
+evidence); **Frankfurt (`eu-central-1`) selectable in the Supabase
+project-creation form** (informs SB-P7/§D step 6 but does NOT close it).
+**Privacy: no screenshots, console exports or account identifiers are stored
+in GitHub.** Supabase billing/payment status remains unverified; project
+creation remains unperformed and unauthorized. **Next steps for a fresh
+agent:** unchanged — the owner routes `Q1-PROFESSIONAL-REVIEW-BRIEF.md` to
+resolve D5b; the §D day-of sequence remains fully required before any
+separately authorized 6.0d provisioning; do not treat these observations as
+C4 progress and do not create any Supabase project. 6.0f UNCHECKED;
+6.1–6.18 unchecked; Q1/D5b UNRESOLVED; C4 OPEN; C2 §12 OPEN; 6.0d/6.0e NOT
+AUTHORIZED; ORD-A sequencing-only; 0 CZK/month; Stage 7 untouched.
+
 created by stokonn with love <3

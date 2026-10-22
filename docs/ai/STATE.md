@@ -442,3 +442,48 @@ preliminary 0-CZK read, re-verify day-of and for any access ≥ 2026-12-01.
 OPEN; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing-only; 0 CZK/month; no
 provisioning/account/billing/OAuth/deployment change; Stage 7 untouched;
 Stage 5 remains COMPLETE.**
+
+**C6-PG concurrency hardening (2026-10-22, experimental spike comparison —
+never merged):** both candidate F1/F3/F4 fixes were implemented in the
+isolated spike branch `spike/goldberg-0.11-stage-6-contract-pg` (commits
+`d8e82d5` code + `c21e550` evidence; faithful sources and the original
+`results/pg/` deviation evidence byte-untouched) and compared on local
+PostgreSQL 17.11 (`read committed`): **`for-update`** (submission-row lock +
+`audit_head` append mutex) vs **`serializable`** (SSI + bounded retry +
+explicit 40001/40P01/23505 handling, exhaustion → 409 never 500), both with
+the shared F3 store hardening (concurrent idempotency 23505 → serve stored
+replay; 422 on mismatch). **Executed:** v11 7/7 (37 tests); the repeated
+20-trial multi-process race restored `[201,409]` in **20/20 trials per
+strategy** (vs the faithful server's 10/10 deviations in v9); **for-update
+needed 0 SQLSTATE retries everywhere** (incl. a 20-decision F4 scale run with
+consecutive audit seqs and a coherent chain); **serializable needed 21×
+`40001`** in the race and **218× at 20-way concurrency** (maxAttempts=64),
+0 exhausted; deterministic F3 store race verified. Full executor: SQLite
+regression 93 tests / 79 pass / **0 fail** / 14 honest PG-only skips;
+PostgreSQL venue **123/123 pass, 0 fail**; static scan PASS (23 files);
+container removed after capture. **Conclusion (design input for 6.1):
+`SELECT … FOR UPDATE` is the recommended pattern** (deterministic, zero
+retries); serializable works but needs a generous bounded retry and
+40001→409 mapping; concurrent same-key decision duplicates answer `[201,409]`
+while sequential duplicates replay. Evidence at `c21e550`
+(`results/pg-hardening/SUMMARY-HARDENING.md`). **Gates unchanged: 6.0f
+UNCHECKED; 6.1–6.18 unchecked; Q1/D5b UNRESOLVED; C4 OPEN; C2 §12 OPEN;
+6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing-only; 0 CZK/month; not a Supabase
+run; no merge/tag/release; Stage 7 untouched.**
+
+**C4 owner-side console observations (2026-10-22, attributed owner facts,
+never agent-verified — recorded as §F.5 / N-11–N-13 of
+`stage-6/C4-PREPROVISIONING-CHECKLIST.md`):** **Cloudflare Workers Free is
+active with no payment method attached** (billing non-verification unchanged —
+MCP has no billing scope); a **Supabase "Personal Free" organization exists
+with zero projects** (no project created; 2-project Free cap not consumed; an
+organization existing is not billing evidence); **Frankfurt (`eu-central-1`)
+is selectable in the Supabase project-creation form** (informs SB-P7/§D step 6
+but does not close it). **No screenshots, console exports or account
+identifiers are stored in GitHub.** Supabase billing/payment status remains
+unverified; project creation remains unperformed and unauthorized. **Gates
+unchanged: C4 OPEN (§D steps 1–9 unchecked); 6.0f UNCHECKED; 6.1–6.18
+unchecked; Q1/D5b UNRESOLVED and blocking; C2 §12 OPEN; 6.0d/6.0e NOT
+AUTHORIZED; ORD-A sequencing-only; 0 CZK/month; no agent console login, no
+billing/API call, no resource created or modified; Stage 7 untouched; Stage 5
+remains COMPLETE.**

@@ -541,4 +541,81 @@ pre-launch gates.**
   OAuth change, deployment, Stage 7 change; no merge/tag/release.**
   Validation: all five `scripts/check_*.py` PASS on this commit.
 
+- 2026-10-22 — **C6-PG CONCURRENCY-HARDENING spike EXECUTED: both candidate
+  F1/F3/F4 mitigations implemented in the isolated spike (experimental, never
+  merged) and compared empirically on real PostgreSQL — row locking
+  recommended.** Same isolated branch `spike/goldberg-0.11-stage-6-contract-pg`
+  (never merged; planning branch untouched), commits
+  [`d8e82d5`](https://github.com/stokonn/Goldberg/commit/d8e82d5807b0039e0f799ae3753558e970b74205)
+  (code) + [`c21e550`](https://github.com/stokonn/Goldberg/commit/c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab)
+  (evidence). The faithful sources (`server.mjs`, `db-pg.mjs`,
+  `execute-pg.mjs`, `decide-child.mjs`) and the **original 10/10-deviation
+  evidence `results/pg/` remain byte-untouched** (verified by `git status`).
+  Implementation (`src/harden.mjs`): an experimental hardened decision endpoint
+  (auth gate + envelope/allowlist + kill switch + idempotency + decision
+  transaction only) with two strategies over the **same** `runDecision` step
+  sequence — **`for-update`** (`SELECT … FOR UPDATE` on the submission row +
+  single-row `audit_head` append mutex) and **`serializable`**
+  (`BEGIN ISOLATION LEVEL SERIALIZABLE`, faithful read-last-seq audit kept,
+  **explicit SQLSTATE handling: bounded retry on 40001/40P01/23505; exhaustion
+  maps to 409 — never an unhandled 500**); both share the **F3 store
+  hardening** (concurrent duplicate idempotency INSERT → serve the stored
+  replay, or faithful 422 on hash mismatch). **Results (executed, PostgreSQL
+  17.11, `read committed`): v11 suite 7/7 (37 tests); the repeated
+  multi-process barrier race — the mitigation counterpart of v9's 10/10
+  deviations — restored `[201,409]` in 20/20 trials PER STRATEGY; for-update
+  needed ZERO SQLSTATE retries everywhere (incl. a 20-decision F4 scale run);
+  serializable needed 21× `40001` aborts across the 20-trial race and
+  **218× `40001`** at 20-way scale (maxAttempts=64), 0 exhausted; audit seqs
+  strictly consecutive + chain coherent in every run; deterministic F3 store
+  race verified (23505 → stored replay; 1 row; 422 negative). Full executor:
+  SQLite regression venue 93 tests / 79 pass / **0 fail** / 14 honest PG-only
+  skips (faithful behavior unchanged); PostgreSQL venue **123/123 pass /
+  0 fail**; static scan PASS (23 files). **Engineering conclusion:** row
+  locking is the recommended production pattern (deterministic, zero retries,
+  loser's 409 via the ordinary status guard); serializable is viable but must
+  budget retry generously and map exhaustion to 409; a *concurrent* same-key
+  decision duplicate answers `[201,409]` while *sequential* duplicates get the
+  stored replay — task 6.1 must state this in the API contract. **Honest
+  non-claims:** experimental spike only — **not production code, not a
+  Supabase run** (Supabase-hosted proof stays BLOCKED: 6.0f + D5b/Q1 + C4 +
+  ORD-A); production implementation stays gated on **6.0f (UNCHECKED)**;
+  F1–F5 + this comparison are design inputs FOR task 6.1. Evidence — stable
+  links at `c21e550`:
+  [SUMMARY-HARDENING.md](https://github.com/stokonn/Goldberg/blob/c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab/spikes/contract-c6/results/pg-hardening/SUMMARY-HARDENING.md),
+  [tap-postgres-hardening.txt](https://github.com/stokonn/Goldberg/blob/c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab/spikes/contract-c6/results/pg-hardening/raw/tap-postgres-hardening.txt),
+  [tap-sqlite-regression.txt](https://github.com/stokonn/Goldberg/blob/c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab/spikes/contract-c6/results/pg-hardening/raw/tap-sqlite-regression.txt),
+  [summary-data.json](https://github.com/stokonn/Goldberg/blob/c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab/spikes/contract-c6/results/pg-hardening/summary-data.json),
+  [harden.mjs](https://github.com/stokonn/Goldberg/blob/c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab/spikes/contract-c6/src/harden.mjs),
+  [v11 suite](https://github.com/stokonn/Goldberg/blob/c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab/spikes/contract-c6/tests/v11-concurrency-hardening.test.mjs).
+  Container `c6-pg` stopped/removed after evidence capture. **No checkboxes
+  closed: 6.0f UNCHECKED, 6.1–6.18 unchecked, Q1/D5b UNRESOLVED (Q1-D
+  preference only), C4 OPEN, C2 §12 OPEN, 6.0d/6.0e NOT AUTHORIZED, ORD-A
+  sequencing-only, 0 CZK/month; no provisioning, no billing/OAuth/account
+  change, no deployment, Stage 7 untouched; no merge/tag/release.**
+  Validation: all five `scripts/check_*.py` PASS on this commit.
+
+- 2026-10-22 — **C4 owner-side console observations RECORDED (documentation
+  only; attributed owner observations, never agent-verified; C4 stays OPEN).**
+  The owner reported three first-hand console facts, recorded as **§F.5
+  (N-11–N-13)** of
+  [C4-PREPROVISIONING-CHECKLIST.md](C4-PREPROVISIONING-CHECKLIST.md):
+  **(N-11) Cloudflare Workers Free is active with no payment method attached**
+  (owner-observed; MCP has no billing scope — N-8 billing non-verification
+  unchanged); **(N-12) a Supabase "Personal Free" organization exists with
+  zero projects** (owner-observed; **no project was created** — the 2-project
+  Free cap is not consumed; organization existing ≠ billing evidence);
+  **(N-13) Frankfurt (`eu-central-1`) is selectable in the Supabase
+  project-creation form** (owner-observed in-flow — partially informs
+  SB-P7/§D step 6 but **does NOT close it**: no agent verification, no
+  project, no console evidence stored). **Privacy: no screenshots, console
+  exports or account identifiers are stored in GitHub.** Supabase
+  billing/payment status remains unverified; project creation remains
+  unperformed and unauthorized (6.0d NOT AUTHORIZED). **No checkboxes closed:
+  C4 OPEN (§D steps 1–9 unchecked), 6.0f UNCHECKED, 6.1–6.18 unchecked,
+  Q1/D5b UNRESOLVED and blocking, C2 §12 OPEN, 6.0d/6.0e NOT AUTHORIZED, ORD-A
+  sequencing-only, 0 CZK/month; no agent console login, no billing/API call,
+  no resource created or modified, no Stage 7 change.**
+  Validation: all five `scripts/check_*.py` PASS on this commit.
+
 created by stokonn with love <3
