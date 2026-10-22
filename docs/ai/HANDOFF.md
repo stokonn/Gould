@@ -1,3 +1,26 @@
+## Issue #31 dashboard baseline — published and verified 2026-10-22
+
+Owner approved the exact editorial draft; only the Issue description was replaced.
+[Current dashboard](https://github.com/stokonn/Goldberg/issues/31), verified at
+2026-10-22T19:23:54Z: **8,925 Unicode characters, 52 lines**, down from 25,489
+characters/136 lines (64.98% character reduction). Exact UTF-8 body SHA-256:
+`c6fabfe7efefa331472fab9e1ba70ea4418bafe6dfedaa02e644e34c138318b7`.
+Pre-write body matched the reviewed baseline; post-write body matched the approved
+draft exactly. All 63 full comment records unchanged; no new comments. Labels,
+milestone 4, title, state, assignees and lock state unchanged; Goldberg Development
+item remains In Progress. This supersedes earlier editorial approval-pending notes.
+
+For future edits, fetch current body/comments and compare with this baseline;
+review unrelated changes before writing, preserve evidence and update the baseline
+after verified publication. The Issue is current status/navigation, repository
+docs hold specifications, and comments remain chronological history.
+
+Technical gates unchanged: Q1/D5b unresolved/blocking; C4 and C2 §12 OPEN; 6.0f
+and 6.1–6.18 UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only;
+0 CZK/month. Stage 7A conditional/X10 OPEN; 7B not started. No new implementation,
+merge, deployment, release or application changes. Next product actions remain
+owner-routed Q1 review and owner-performed X10; no physical-device work by agents.
+
 ## Current Stage 6 continuation — 2026-10-22 (documentation only)
 
 

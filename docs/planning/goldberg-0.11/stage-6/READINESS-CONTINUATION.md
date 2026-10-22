@@ -1,3 +1,26 @@
+## Issue #31 dashboard baseline — published and verified 2026-10-22
+
+Owner approved the exact editorial draft; only the Issue description was replaced.
+[Current dashboard](https://github.com/stokonn/Goldberg/issues/31), verified at
+2026-10-22T19:23:54Z: **8,925 Unicode characters, 52 lines**, down from 25,489
+characters/136 lines (64.98% character reduction). Exact UTF-8 body SHA-256:
+`c6fabfe7efefa331472fab9e1ba70ea4418bafe6dfedaa02e644e34c138318b7`.
+Pre-write body matched the reviewed baseline; post-write body matched the approved
+draft exactly. All 63 full comment records unchanged; no new comments. Labels,
+milestone 4, title, state, assignees and lock state unchanged; Goldberg Development
+item remains In Progress. This supersedes earlier editorial approval-pending notes.
+
+For future edits, fetch current body/comments and compare with this baseline;
+review unrelated changes before writing, preserve evidence and update the baseline
+after verified publication. The Issue is current status/navigation, repository
+docs hold specifications, and comments remain chronological history.
+
+Technical gates unchanged: Q1/D5b unresolved/blocking; C4 and C2 §12 OPEN; 6.0f
+and 6.1–6.18 UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only;
+0 CZK/month. Stage 7A conditional/X10 OPEN; 7B not started. No new implementation,
+merge, deployment, release or application changes. Next product actions remain
+owner-routed Q1 review and owner-performed X10; no physical-device work by agents.
+
 # Stage 6 — Readiness continuation, 2026-10-22
 
 Purpose: recover the interrupted checkpoint, narrow documentary gaps and prepare
@@ -17,7 +40,7 @@ Scope: Stage 6 planning and docs/ai; no application, database, spike or infrastr
 - [x] Finalize verified documentation commit/push and append remote evidence (6c40799).
 
 Completion: local documentary work VERIFIED; checkpoint posted with owner approval;
-verified documentation commit/push completed (6c40799); final dashboard approval pending. This checklist concerns documentation work only; it never
+verified documentation commit/push completed; dashboard owner-approved, published and verified. This checklist concerns documentation work only; it never
 checks off 6.0f or 6.1–6.18. See the final verification section to be recorded below.
 
 ## Recovered evidence and remote status
@@ -166,7 +189,7 @@ created by stokonn with love <3
 - [x] Re-run the five existing host checks and documentation scope/link/checkbox checks.
 - [x] Commit/push only verified Stage 6 documentation and verify remote identity (6c40799).
 - [x] Prepare a concise Issue dashboard from latest Stage 1–8 checkpoints, with link checks and before/after counts.
-- [ ] Obtain owner approval of the final dashboard before replacing the Issue description.
+- [x] Obtain owner approval of the exact final dashboard, replace only the description and verify exact published content.
 
 Issue cleanup is editorial only; no technical approval gate or stage acceptance changes.
 
@@ -175,7 +198,7 @@ Finalization pre-commit verification: all five host scripts re-executed and PASS
 PASS; git diff --check PASS. No code/spike/emulator reruns. Owner Git identity
 read from existing configuration, not changed. Publication evidence follows after push.
 
-## Finalization publication checkpoint — 2026-10-22
+## Finalization publication checkpoint — 2026-10-22 (historical pre-dashboard-publication snapshot)
 
 The owner explicitly authorized this documentation-only finalization. Reviewed
 12 Markdown files; all five host scripts re-executed and PASS; local relative
