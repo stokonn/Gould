@@ -1,3 +1,44 @@
+## Current Stage 6 continuation — 2026-10-22 (documentation only)
+
+This entry supersedes earlier retrieval/next-action summaries only; historical
+checkpoints below remain preserved. Base planning b3edc2a; completed spike c21e550;
+prior Issue checkpoint 6348121556. Owner-approved Stage 6-only Issue description
+sync applied and exact-body readback passed. Issue #31 and milestone 4 OPEN;
+Project Goldberg Development item In Progress (verified, unchanged).
+
+Current working checkout: /home/stokonn/Projects/Opus/.gradle/stage6-continuation,
+branch docs/goldberg-0.11-stage-6-readiness, based on b3edc2a.
+Owner explicitly authorized verified documentation commit/push in the finalization
+instruction; publication evidence will be appended after remote verification.
+Read docs/planning/goldberg-0.11/stage-6/READINESS-CONTINUATION.md first for the
+session checklist, sources, owner actions and verification; then
+POSTGRESQL-DESIGN-REQUIREMENTS.md for future 6.1 requirements. Completed spike
+results preserved and NOT rerun. C4 PDF text parsed (22 entries); Trust Center
+opened but TIA not retrieved/Free access unverified; official GDPR retrieval still
+challenged; exact provider metadata retention and Supabase billing remain open.
+Corrected stale no-account wording in the professional-review brief to preserve
+owner-created account facts. No identity, credentials or console evidence added.
+
+Next: owner routes the existing professional-review brief for Q1/D5b; obtain TIA
+and retention clarification privately, finish documentary transfer review and
+Supabase no-payment confirmation without provisioning. No contact sent. New Issue
+checkpoint [posted with owner authorization](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6349066370);
+local text preserved in docs/ai/STAGE6-ISSUE-CHECKPOINT-DRAFT.md as a historical
+snapshot. No automatic compaction-to-GitHub synchronization assumed.
+No merge is authorized. Issue description cleanup requires final draft approval.
+
+Verification in this continuation: five existing Python host checks PASS
+(policy, 3 backup fixtures, 106-session/4-page paging, 922 EN/CZ resources,
+v1–9→10 DDL); git diff --check and document/scope checks PASS. These are host
+checks only. No Gradle, APK, lint, instrumentation, emulator, hosted runtime or
+billing tests executed; no screenshots inspected. Only verified documentation
+commit/push is authorized; production gates remain unchanged.
+
+Q1/D5b UNRESOLVED and blocking; C4 OPEN; C2 §12 OPEN; 6.0f UNCHECKED;
+6.1–6.18 UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only;
+permanent 0 CZK/month. No production implementation, deployment, project, billing,
+real-user data, merge, tag or release. No device/emulator tests or screenshots.
+
 # Goldberg 0.11 — Stage 5 HANDOFF (fresh-session resume instructions)
 
 > **SUPERSESSION NOTE (2026-10-21, Stage 6 planning branch):** the Stage 5 content

@@ -135,3 +135,13 @@ Rules:
   period may be invented and no legal approval may be claimed**.
 
 created by stokonn with love <3
+
+
+## Future task 6.1 PostgreSQL requirements (2026-10-22, design input only)
+
+[POSTGRESQL-DESIGN-REQUIREMENTS.md](POSTGRESQL-DESIGN-REQUIREMENTS.md) maps F1–F5
+and the completed local comparison to required DDL/transaction/API verification.
+Recommended SELECT … FOR UPDATE + audit_head mutex; FK/deletion semantics, targeted
+idempotency conflict recovery, numeric safety and hosted transaction boundaries
+still need authorized implementation and verification. No conceptual invariant or
+approval gate is changed here; 6.1 remains unchecked.

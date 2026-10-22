@@ -254,3 +254,19 @@ sources and recorded new account facts — it changed **no status** and closed
 owner-attributed console observations (N-11–N-13) with the same effect.
 
 created by stokonn with love <3
+
+
+## G. Continuation review — 2026-10-22 (documentary progress only; C4 OPEN)
+
+See [READINESS-CONTINUATION.md](READINESS-CONTINUATION.md) for current findings,
+sources, remaining owner actions and verification. This dated addendum supersedes
+only the earlier retrieval states: SB-P9/C3 Q8 current PDF now text-parsed, both
+pages (22 entries), while applicability/location and notification review remain
+open; SB-P10 Trust Center public page opened, but TIA not retrieved and Free-plan
+access still unverified. X-6 official GDPR text remains unavailable (JavaScript
+challenge on EUR-Lex ELI/HTML/PDF; EDPS 403); X-7 not retried. X-2 EC adequacy
+guidance re-read, but recipient certification and current legal-status assessment
+remain open. No C4 §D checkbox changes. N-11–N-13 owner observations preserved;
+Supabase billing/payment posture remains unverified; no configuration changed.
+
+created by stokonn with love <3

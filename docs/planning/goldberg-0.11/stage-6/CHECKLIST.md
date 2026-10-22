@@ -619,3 +619,19 @@ pre-launch gates.**
   Validation: all five `scripts/check_*.py` PASS on this commit.
 
 created by stokonn with love <3
+
+
+## Continuation checkpoint — 2026-10-22 (Stage 6 documentation only)
+
+Purpose/scope: recover interrupted Issue sync, narrow C4 documentary gaps and
+prepare F1–F5 for future 6.1; no production code or database change.
+Session checklist/results: [READINESS-CONTINUATION.md](READINESS-CONTINUATION.md).
+Design requirements: [POSTGRESQL-DESIGN-REQUIREMENTS.md](POSTGRESQL-DESIGN-REQUIREMENTS.md).
+Issue description edit referencing b3edc2a/c21e550/checkpoint 6348121556 explicitly
+owner-approved, applied and readback verified. PDF parsed; TIA not retrieved;
+official GDPR still blocked. [Session checkpoint posted](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6349066370)
+with explicit owner authorization. Verified documentation commit/push now authorized;
+Project #31 verified In Progress. No approval gate passed.
+
+**6.0f UNCHECKED; 6.1–6.18 UNCHECKED; Q1/D5b unresolved and blocking; C4 OPEN;
+C2 §12 OPEN; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only; 0 CZK/month.**

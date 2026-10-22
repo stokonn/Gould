@@ -616,6 +616,18 @@ no item: C4 OPEN (§D steps 1–9 unchecked), 6.0f UNCHECKED, 6.1–6.18
 unchecked, D5b/Q1 unresolved, C2 §12 open, 6.0d/6.0e not authorized, ORD-A
 sequencing-only, 0 CZK/month.**
 
+**Stage 6 continuation (2026-10-22, documentary readiness only):** purpose,
+scope, session tasks, current progress, verification and remaining blockers in
+[stage-6/READINESS-CONTINUATION.md](stage-6/READINESS-CONTINUATION.md).
+Approved interrupted Issue #31 description sync applied and exact readback passed
+(b3edc2a, c21e550, checkpoint 6348121556); C4 PDF now parsed, TIA not retrieved,
+official GDPR still unavailable. Future F1–F5 requirements prepared in
+[stage-6/POSTGRESQL-DESIGN-REQUIREMENTS.md](stage-6/POSTGRESQL-DESIGN-REQUIREMENTS.md).
+No new spike execution. **6.0f and 6.1–6.18 remain unchecked; Q1/D5b blocking;
+C4 and C2 §12 OPEN; 6.0d/6.0e NOT AUTHORIZED; 0 CZK/month.**
+[Continuation checkpoint posted](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6349066370); verified documentation commit/push
+explicitly authorized in the finalization instruction. No production implementation.
+
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
 **Status: ⬜ not started.** Depends on stable Stage 4/5 contracts and Stage 6 admin actions.

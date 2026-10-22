@@ -127,3 +127,12 @@ documentation extends the baseline, it does so additively and cites it.
   contributors (pre-collection gate, OPEN-DECISIONS.md §5).
 
 created by stokonn with love <3
+
+
+## Current Stage 6 continuation (2026-10-22)
+
+[READINESS-CONTINUATION.md](READINESS-CONTINUATION.md) is the latest documentary
+recovery/readiness checkpoint; [POSTGRESQL-DESIGN-REQUIREMENTS.md](POSTGRESQL-DESIGN-REQUIREMENTS.md)
+contains future 6.1 design inputs. Earlier “no accounts” wording is historical:
+owner-created accounts exist, with owner-attributed observations in C4 §F.5.
+This does not authorize provisioning or resolve any gate.
