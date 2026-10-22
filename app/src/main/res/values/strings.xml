@@ -955,6 +955,7 @@
     <string name="stage7a_about_me">About Me</string>
     <string name="stage7a_portrait_of_artist">Portrait of %1$s</string>
     <string name="stage7a_privacy_notice">Searches stay on this device. When you start an online search, your query is sent to external music-data providers.</string>
+    <string name="stage7a_privacy_info">Privacy information</string>
     <string name="stage7a_search_online">Search online</string>
     <string name="stage7a_online_off_hint">Online catalogue results are off. Turn them on in Settings → Data &amp; Storage to search external providers yourself.</string>
     <string name="stage7a_online_catalogue_setting">Include online catalogue results</string>

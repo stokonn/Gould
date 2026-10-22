@@ -48,6 +48,8 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     // purpose: restoring after process death must not silently re-run an online search.
     val catalogOnline by app.catalogOnline.enabled.collectAsState()
     var onlineRequested by remember {mutableStateOf(false)}
+    // Stage 7A round 3: Discover header privacy popover state (browser site-info style).
+    var privacyInfo by remember {mutableStateOf(false)}
     var category by rememberSaveable {mutableStateOf("all")}
     var artistId by rememberSaveable {mutableStateOf<String?>(null)}
     var period by rememberSaveable {mutableStateOf<String?>(null)}
@@ -114,25 +116,31 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
             cached.map {work->OfflineRow(work.title,composersById[work.composerId]?.name.orEmpty(),work.catalogLabel,null,work.id,composersById[work.composerId])}
     }
     LazyColumn(contentPadding=PaddingValues(20.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {
-        item {Column(verticalArrangement=Arrangement.spacedBy(JournalSpace.tiny)) {
-            Text(L.s(R.string.discover),style=MaterialTheme.typography.headlineLarge,modifier=Modifier.semantics {heading()})
-            Text(L.s(R.string.discover_explore),style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
-        }}
-        item {EditorialSearchField(query,{session.query=it;active=true;onlineRequested=false})}
         item {
-            // Owner-approved truthful privacy wording (stage-7 plan §9 C1); concise
-            // third-party disclosure only — never claims "our servers". This is the single
-            // privacy notice on the landing (Stage 7A refinement).
-            Surface(shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surfaceVariant.copy(alpha=.55f)) {
-                Row(Modifier.fillMaxWidth().padding(12.dp),horizontalArrangement=Arrangement.spacedBy(10.dp)) {
-                    Icon(Icons.Outlined.Lock,null,Modifier.padding(top=1.dp).size(18.dp),tint=MaterialTheme.colorScheme.primary)
-                    Text(L.s(R.string.stage7a_privacy_notice),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+            // Stage 7A round 3 (owner): header row with the privacy affordance in the
+            // upper-right, browser site-information style. The persistent privacy card
+            // below the search field is removed; the same truthful disclosure opens as a
+            // compact anchored popover that dismisses on outside tap or Back.
+            Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.Top,horizontalArrangement=Arrangement.spacedBy(JournalSpace.small)) {
+                Column(Modifier.weight(1f).padding(top=JournalSpace.tiny),verticalArrangement=Arrangement.spacedBy(JournalSpace.tiny)) {
+                    Text(L.s(R.string.discover),style=MaterialTheme.typography.headlineLarge,modifier=Modifier.semantics {heading()})
+                    Text(L.s(R.string.discover_explore),style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+                Box {
+                    IconButton(onClick={privacyInfo=true},modifier=Modifier.semantics {contentDescription=L.s(R.string.stage7a_privacy_info)}) {
+                        Icon(Icons.Outlined.Lock,L.s(R.string.stage7a_privacy_info),tint=MaterialTheme.colorScheme.primary)
+                    }
+                    DropdownMenu(expanded=privacyInfo,onDismissRequest={privacyInfo=false}) {
+                        DropdownMenuItem(text={Text(L.s(R.string.stage7a_privacy_notice),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)},
+                            onClick={privacyInfo=false},leadingIcon={Icon(Icons.Outlined.Lock,null,tint=MaterialTheme.colorScheme.primary)})
+                    }
                 }
             }
         }
+        item {EditorialSearchField(query,{session.query=it;active=true;onlineRequested=false})}
         // Stage 7A refinement: contextual online-search controls, shown only while the user
-        // is actually searching — the landing stays the single concise privacy notice, and
-        // technical network status is kept away from prominent landing content.
+        // is actually searching — the landing stays clean (privacy lives in the header
+        // popover), and technical network status is kept away from prominent landing content.
         if(active) {
             item { if(catalogOnline) {
                 // Explicit, user-initiated online search (owner privacy requirement): the button

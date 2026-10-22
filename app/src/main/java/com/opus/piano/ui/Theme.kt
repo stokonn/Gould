@@ -37,7 +37,13 @@ private fun journalTypography(system: Boolean): Typography {
     val sans = if (system) FontFamily.Default else EditorialSans
     val serif = if (system) FontFamily.Default else EditorialSerif
     fun text(size: Int, height: Int, heading: Boolean = false, weight: FontWeight = FontWeight.Normal) =
-        TextStyle(fontFeatureSettings = "tnum", fontFamily = if (heading) serif else sans, fontSize = size.sp, lineHeight = height.sp, fontWeight = weight)
+        // Stage 7A round 3 (owner): includeFontPadding=false matches the Material 3 default.
+        // The legacy font padding inflated text boxes with asymmetric extra leading (deep
+        // descender space), which made visually centered rows/cards render top-biased on
+        // real devices. Trimming the extra leading centers single-line labels and multi-line
+        // blocks correctly without clipping glyphs or changing wrapping.
+        TextStyle(fontFeatureSettings = "tnum", fontFamily = if (heading) serif else sans, fontSize = size.sp, lineHeight = height.sp, fontWeight = weight,
+            platformStyle = androidx.compose.ui.text.PlatformTextStyle(includeFontPadding = false))
     return Typography(
         displayLarge = text(44, 52), displayMedium = text(38, 46), displaySmall = text(32, 40),
         headlineLarge = text(34, 38, true, FontWeight.Bold), headlineMedium = text(28, 32, true, FontWeight.SemiBold), headlineSmall = text(24, 32, true),
