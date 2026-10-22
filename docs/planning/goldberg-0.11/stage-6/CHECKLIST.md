@@ -746,3 +746,28 @@ Q1/D5b unresolved/blocking; C4 and C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only; 0 CZK/month; collection NOT
 AUTHORIZED. Keep ensure_rls; any permissions change requires separate authorization
 and compatibility review. No Stage 7 or application changes; no gate acceptance.
+
+### Additional external security inventories — 2026-10-22 (base 9fe83db)
+
+Purpose/scope: reconcile four executed catalog-only findings in Stage 6 audit and
+handoff documentation. ChatGPT executed these against the existing Supabase
+project; the owner relayed the results. This agent did not execute hosted queries.
+
+- [x] Record public function inventory: only rls_auto_enable().
+- [x] Record direct anon/authenticated memberships: none returned.
+- [x] Record function dependency count: 1, without assuming identity/type/direction.
+- [x] Record public tables/views/materialized views/foreign tables: zero objects.
+- [ ] Finish full private source/dependency and remaining cross-schema/DDL-path review; obtain sanitized advisor IDs/version.
+- [ ] Finish read-only Auth/API/RLS configuration and billing/payment/C4 evidence review.
+
+Progress/evidence: [security audit §1/§3/§8](SECURITY-AUTH-READINESS-AUDIT.md).
+Only these scoped inventory portions are complete; broader hosted audit remains
+INCOMPLETE. Neither warning is resolved; no vulnerability demonstrated/repaired,
+no database writes or application-function invocation. Do not repeat A1–A3 or the
+four completed inventories. Issue #31’s concise broader status remains accurate;
+no edit/comment is needed. Documentation verification is recorded in docs/ai/VERIFICATION.md.
+
+Q1/D5b unresolved/blocking; C4 and C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
+6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only; 0 CZK/month; collection NOT
+AUTHORIZED. Keep ensure_rls; future permissions changes require separate approval
+and compatibility review. No Stage 7 or application changes; no gate acceptance.

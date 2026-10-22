@@ -378,3 +378,16 @@ billing/payment methods and C4 legal/transfer requirements remain UNVERIFIED/ope
 C4 stays OPEN; §D gates/checkboxes unchanged; 6.0d/6.0e NOT AUTHORIZED, 6.0f
 UNCHECKED, Q1/D5b unresolved/blocking, C2 §12 OPEN; 0 CZK/month. Preserve ensure_rls;
 future permissions changes require separate authorization and compatibility review.
+
+## K. Additional external inventories — 2026-10-22 (base 9fe83db)
+
+ChatGPT’s read-only Supabase catalog queries, as relayed by the owner, returned:
+only rls_auto_enable() in public functions; no direct anon/authenticated memberships;
+function dependency count 1; zero public tables/views/materialized views/foreign
+tables. This agent did not execute those queries. [Audit §1/§3/§8](SECURITY-AUTH-READINESS-AUDIT.md)
+records the scope/limits and remaining source/Auth/API checks. No database writes
+or application-function invocation occurred. Dependency identity/type/direction,
+other-schema/indirect DDL paths and complete source safety remain unverified;
+both warnings remain. No billing, Auth or API configuration is verified by these
+inventories. C4 stays OPEN; §D checkboxes and all other approval gates unchanged.
+No permissions/trigger/function changes are authorized; 0 CZK/month preserved.

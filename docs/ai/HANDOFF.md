@@ -1,3 +1,41 @@
+## Additional external catalog inventories — 2026-10-22 (base 9fe83db)
+
+ChatGPT executed four further read-only Supabase catalog queries; results were
+relayed by the owner, not executed by this coding agent. Public functions: only
+rls_auto_enable(). Direct anon/authenticated memberships: none returned. Function
+dependency count: 1 (identity/type/direction not supplied). Public tables, views,
+materialized views and foreign tables: zero objects. No database writes or
+application-function invocation. Exact evidence and reconciled checklist:
+docs/planning/goldberg-0.11/stage-6/SECURITY-AUTH-READINESS-AUDIT.md §1/§3/§8.
+
+These scoped observations supersede corresponding pending inventories below.
+They do not prove full security, eliminate all indirect DDL paths, establish
+complete dependency/source safety or resolve either advisor warning. PUBLIC
+EXECUTE remains observed despite no direct API-role memberships. Keep ensure_rls.
+Do not repeat A1–A3 or these four inventories without a concrete reason.
+
+Next authorized read-only work: resolve dependency identity/type/direction and
+remaining cross-schema/DDL privilege paths, complete private body review, then
+allowlisted Auth/provider/redirect/session/MFA and API-exposure flags (§3 B/C).
+Other-schema RLS/grants, raw advisor IDs/version, billing/payment and C4 legal
+requirements remain open. No secrets, user records, function/RPC or DDL probes.
+Future permissions changes need separate authorization and compatibility review.
+
+Issue #31 remains accurate and unchanged: 9,564 Unicode characters/52 lines,
+SHA-256 b3a49d6bf39b7181fd675765d3d5d8fff16d04f637ced2bddc69494c4df48549;
+63 comments preserved. No dashboard edit or checkpoint comment is necessary for
+these scoped inventory details; the dashboard already links the living checklist.
+
+Q1/D5b unresolved/blocking; C4 and C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
+6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only; 0 CZK/month; real-user collection
+NOT AUTHORIZED. Production backend NOT IMPLEMENTED; Worker NOT DEPLOYED. Stage 7A
+conditional/X10 OPEN and 7B not started remain unchanged. Branch:
+`docs/goldberg-0.11-stage-6-readiness`; checkpoint SHA is its containing commit.
+
+Eight-file documentation consistency/link/gate/SQL-preservation checks and the
+five existing host scripts PASS; see docs/ai/VERIFICATION.md for exact commands
+and limitations. No hosted checks or completed concurrency tests rerun by this agent.
+
 ## External A1–A3 continuation — 2026-10-22 (base bac81fb)
 
 A1–A3 EXECUTED successfully by ChatGPT’s connected Supabase integration; results

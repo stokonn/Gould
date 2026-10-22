@@ -175,3 +175,9 @@ A1–A3 are externally EXECUTED by ChatGPT’s connected Supabase integration (o
 the pinned path and binding are confirmed, while full source/inherited-access and
 Auth/API review remain open; no hosted mutation or new backend
 implementation has occurred, and all Stage 6 gates remain unchanged.
+
+Additional external inventories (owner-relayed ChatGPT/Supabase, base 9fe83db):
+only rls_auto_enable() in public functions; no direct anon/authenticated memberships;
+function dependency count 1; zero public tables/views/materialized views/foreign
+tables. See the audit §8 for limits and remaining source/Auth/API requirements.
+These narrow the review without resolving either warning or any approval gate.

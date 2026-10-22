@@ -18,8 +18,11 @@ Issue #31 C4 sentence. No hosted SQL or configuration operation executed by this
 
 Documentary analysis/verification COMPLETE. A1–A3 are now EXECUTED externally by
 ChatGPT’s connected Supabase integration, as relayed by the owner on 2026-10-22.
-The wider hosted Auth/RLS/API audit remains INCOMPLETE; only the evidenced portions
-of the checklist below are checked. This agent did not execute hosted queries. This is not Stage 6 acceptance, a vulnerability exploit test, or authorization for any corrective write.
+Four additional catalog inventories are also externally EXECUTED (owner-relayed
+2026-10-22; §8). The wider hosted Auth/RLS/API audit remains INCOMPLETE; only the
+evidenced portions of the checklist below are checked. This agent did not execute
+hosted queries. This is not Stage 6 acceptance, a vulnerability exploit test, or
+authorization for any corrective write.
 
 ## 1. Evidence ledger (facts versus unknowns)
 
@@ -29,17 +32,24 @@ of the checklist below are checked. This agent did not execute hosted queries. T
 | A1 — EXECUTED externally | Function OID 17603; plpgsql; SECURITY DEFINER true; owner postgres; return event_trigger; function-local search_path pg_catalog; effective EXECUTE anon=true and authenticated=true. ChatGPT connected Supabase integration; owner-relayed results, not executed by this agent. |
 | A2 — EXECUTED externally | ensure_rls; ddl_command_end; enabled O (normal mode); tags CREATE TABLE, CREATE TABLE AS, SELECT INTO; function OID 17603 matches A1; trigger owner postgres. Same external provenance. |
 | A3 — EXECUTED externally | anon/authenticated: superuser, CREATEDB, CREATEROLE, BYPASSRLS, public-schema CREATE and database CREATE all false. postgres: rolsuper=false, rolbypassrls=true, public CREATE=true, database CREATE=true. Same external provenance. Unreported rolinherit values and postgres CREATEDB/CREATEROLE are not inferred. |
-| Additional ACL observations | Externally reported catalog inspection found default function privileges including PUBLIC EXECUTE; no explicit separate anon/authenticated grants identified. Inherited-role paths, grant options and broader default ACL inventory remain unverified. Effective EXECUTE alone did not identify this provenance. |
+| Additional ACL observations | Externally reported catalog inspection found default function privileges including PUBLIC EXECUTE; no explicit separate anon/authenticated grants identified. A subsequent direct-membership inventory returned no rows for anon/authenticated; broader privilege paths, grant options and default ACL inventory remain unverified. Effective EXECUTE alone did not identify this provenance. |
 | Partial structural source review | External read-only checks found DDL-event filtering, schema checks, quoted identifiers and RLS enablement patterns. This is not a complete source/qualification/dependency audit or a proof of safety; provenance equivalence to a published example is not established. |
-| No public application tables | Existing external inventory/owner observation; does not prove all schemas empty, no functions exposed, or future policy correctness. No application records accessed. |
+| Additional public function inventory — EXECUTED externally | Only public.rls_auto_enable() found. No additional public functions/overloads or public function wrappers were reported by this inventory. Other schemas, API exposure and complete call paths remain unverified. |
+| Additional direct role-membership inventory — EXECUTED externally | No memberships returned for anon or authenticated. This narrows the membership review; it does not remove PUBLIC privileges, prove the absence of other DDL paths or constitute a complete authorization audit. |
+| Additional function dependency count — EXECUTED externally | Catalog dependency count for rls_auto_enable(): 1. Query text/direction, dependency type and referenced/dependent object identity were not supplied; do not assume the counted row is ensure_rls or a complete dependency graph. |
+| Additional public relation inventory — EXECUTED externally | Zero public-schema tables, views, materialized views or foreign tables returned. No applicable current public relation/policy target in that inventory; future RLS coverage is not verified. Other schemas, sequences and other object kinds are not established empty. No user rows accessed. |
 | Existing project Free/tier_free, eu-central-1, ACTIVE_HEALTHY, PostgreSQL 17.11; 0 recorded migrations/Edge Functions | Previously recorded external ChatGPT connected-integration verification in C4 §H. Not re-executed here; this agent has no callable Supabase tools in this session. |
-| Complete body review, overload inventory, exposed API configuration, wrappers/dependencies and remaining DDL paths | UNVERIFIED. Confirmed metadata above narrows the earlier unknowns; it does not establish these broader properties. |
+| Complete body review, exposed API configuration, cross-schema wrappers, dependency identity/direction and remaining DDL paths | UNVERIFIED. Public function/overload inventory and direct API-role memberships are now recorded; those scoped observations do not establish broader properties. |
 | Auth/security flags, payment methods, billing/usage and direct DB connectivity from this agent | UNVERIFIED. No secret-bearing settings, auth/user records, credentials or data rows requested. |
 
 All three queries succeeded according to the owner’s external ChatGPT/Supabase
 execution report. No database writes or function/RPC invocation occurred. Raw
 advisor IDs/version, complete result dumps and a source digest were not supplied.
 No vulnerability was demonstrated or repaired; both warnings remain recorded.
+The four additional queries were executed by ChatGPT against the existing Supabase
+project, per the owner’s report, not by this coding agent. The same external
+ChatGPT/Supabase provenance applies; raw SQL/result dumps were not supplied here.
+No database mutation or application-function invocation occurred in these checks.
 
 ## 2. Risk analysis against official sources
 
@@ -83,7 +93,10 @@ object ownership, role memberships and any privileged DDL wrapper. No DDL probe 
 permitted by this audit. A3 confirms those two API roles lack the six reported
 role/CREATE capabilities, narrowing their direct DDL path in public/the database.
 It does not inventory other schemas, temporary-object rights, object ownership,
-role memberships or privileged wrappers. The postgres owner is not a superuser
+all other privilege paths or privileged wrappers. The later inventory returned
+no direct memberships for either API role and no additional public functions;
+these scoped negative observations do not close the indirect-DDL review. The
+postgres owner is not a superuser
 but does have BYPASSRLS and the reported CREATE rights; the hook remains privileged.
 
 The [PG17 dispatcher](https://raw.githubusercontent.com/postgres/postgres/REL_17_STABLE/src/backend/commands/event_trigger.c)
@@ -105,7 +118,8 @@ could remove an RLS guard for future tables.
 
 **No corrective mutation is justified automatically from the supplied facts.**
 Continue the remaining source/dependency and inherited-access review read-only;
-do not rerun completed A1–A3 without a concrete reason. If the function is confirmed
+do not rerun completed A1–A3 or the four additional inventories without a concrete
+reason. If the function is confirmed
 to be an internal callback with no intended API callers, the preferred future
 hardening candidate is **function-specific removal of unnecessary PUBLIC EXECUTE**,
 subject to compatibility review and separate write authorization. Default PUBLIC
@@ -129,7 +143,7 @@ to SECURITY INVOKER or change owner as an automatic fix: that may break the guar
 All ACL/body/path changes require separate explicit write authorization, reviewed
 compatibility evidence and a rollback plan; none is authorized or performed here.
 
-## 3. Read-only verification checklist (A1–A3 externally EXECUTED; remainder OPEN)
+## 3. Read-only verification checklist (A1–A3 and four inventories externally EXECUTED; remainder OPEN)
 
 Use an existing authorized connection with catalog/configuration read scope. Return
 only allowlisted metadata/booleans, no keys, passwords, auth records, tokens, user
@@ -144,8 +158,11 @@ facts; do not paste arbitrary function definitions into GitHub or the model.
 - [x] A2 externally EXECUTED: record ensure_rls matching binding OID, event/tags, enabled mode and owner.
 - [x] A3 externally EXECUTED: record the supplied API-role capabilities/CREATE rights and postgres owner attributes; do not infer unreported values.
 - [x] Record external default-ACL PUBLIC EXECUTE and no identified separate anon/authenticated grants, plus partial structural body-check findings.
-- [ ] Complete signature/same-name overload inventory and other references/wrappers/managed-extension dependency review.
-- [ ] Complete inherited-role/grant-option and other-schema/temporary-object/ownership capability review without reading pg_authid or passwords.
+- [x] Record the external public-function inventory: only rls_auto_enable(); no additional public functions/overloads returned.
+- [x] Record the external direct-membership inventory: no memberships returned for anon/authenticated.
+- [x] Record the external catalog dependency count of 1 without inferring its object identity, direction or safety.
+- [ ] Resolve dependency row identity/type/direction and any remaining cross-schema references/wrappers/managed-extension dependencies; a count alone does not complete this review.
+- [ ] Complete broader privilege/grant-option and other-schema/temporary-object/ownership capability review without reading pg_authid or passwords; do not rerun the completed direct-membership inventory.
 - [ ] Have a privileged reviewer inspect the body privately: bounded target schemas/tags/object kinds, qualified lookup, trusted name resolution including pg_temp, safe identifier formatting and no arbitrary privileged DDL/data access. Return only sanitized findings; function name alone is insufficient.
 - [ ] Review whether any untrusted role can cause a matching DDL event or influence its inputs; no CREATE TABLE, SELECT INTO, test migration, function call or RPC probe.
 
@@ -165,8 +182,8 @@ These pages supply a review checklist; their mutation/setup examples are NOT exe
 
 ### C. RLS, grants and API surfaces
 
-- [ ] Read schema/table/view/materialized/foreign-table inventory metadata and RLS/force-RLS flags; inspect policy definitions privately and report sanitized role/command coverage, never application rows.
-- [ ] Confirm the current zero-public-table inventory. With no application tables, table-policy coverage is not evidence that future application policies pass; other schemas remain in scope for metadata review.
+- [x] Record external public-schema table/view/materialized-view/foreign-table inventory: zero objects returned; current zero-public-table observation confirmed.
+- [ ] Review other-schema relation inventories and applicable RLS/force-RLS/policy metadata privately; report sanitized role/command coverage, never application rows. Empty public inventory does not prove all schemas empty or validate future application policies.
 - [ ] Inspect table/sequence/function grants and per-creator/global default ACLs, including PUBLIC and inherited rights, without changing them. RLS does not gate function EXECUTE.
 - [ ] Read Data API enabled state, exposed schemas and relevant search-path settings only; inventory security-definer/invoker RPC and API views and any enabled GraphQL/Realtime/Storage exposure as metadata, not record reads.
 - [ ] Check SSL enforcement and network-restriction flags as available on Free; do not run endpoint/RPC/auth probes or change restrictions. Assess key-handling architecture without retrieving any keys.
@@ -220,8 +237,9 @@ WHERE r.rolname IN ('anon', 'authenticated', 'postgres');
 ```
 
 A1 effective booleans alone do not identify grant provenance. Additional external
-ACL inspection reported default PUBLIC EXECUTE; inherited memberships still need
-review. The observed local search_path is pg_catalog, not null.
+ACL inspection reported default PUBLIC EXECUTE; the later direct-membership
+inventory returned no memberships for either API role. Broader authorization paths
+still need review. The observed local search_path is pg_catalog, not null.
 Database CREATE and public CREATE
 do not alone enumerate every way to cause DDL (other schemas, object ownership,
 wrappers and temporary objects still require contextual review).
@@ -229,11 +247,12 @@ wrappers and temporary objects still require contextual review).
 ## 5. Acceptance, unknowns and independently authorized next step
 
 Next concrete action within the owner’s existing READ-ONLY authorization: obtain
-sanitized advisor IDs, remaining inherited-role/DDL-path and dependency metadata,
+sanitized advisor IDs, dependency identity/type/direction and remaining other-schema/DDL-path metadata,
 and finish private function-body review through the existing authorized Supabase
 connection. Then read allowlisted Auth/provider/redirect/session and API exposure
 flags from §3 B/C without keys, user records, endpoint probes or configuration
-changes. Do not repeat A1–A3. This session exposes no callable Supabase tools; any
+changes. Do not repeat A1–A3 or the four completed additional inventories. This
+session exposes no callable Supabase tools; any
 unavailable result stays UNVERIFIED, without requesting secrets or broader access.
 Billing/payment-method evidence and other C4 legal/transfer prerequisites remain
 open. No claim of no risk, verified exploitation, fixed warnings or public readiness.
@@ -291,3 +310,44 @@ Owner-approved minimal A1–A3 sentence published and verified exactly; current 
 baseline: 9,564 Unicode characters/52 lines, 2026-10-22T20:09:06Z, UTF-8 SHA-256
 `b3a49d6bf39b7181fd675765d3d5d8fff16d04f637ced2bddc69494c4df48549`.
 All 63 comments, metadata and Project In Progress preserved; no new comment.
+
+
+## 8. Additional external catalog inventories (2026-10-22; base 9fe83db)
+
+Purpose/scope: reconcile four further catalog-only observations supplied by the
+owner from ChatGPT’s connected Supabase verification. These are external execution
+results, not tests or hosted queries run by this agent. The exact scoped results
+and limits are in §1; checklist portions are reconciled in §3.
+
+- [x] Record public functions: only rls_auto_enable().
+- [x] Record direct memberships for anon/authenticated: none returned.
+- [x] Record function catalog dependency count: 1; identity/type/direction still unknown.
+- [x] Record public tables/views/materialized views/foreign tables: zero objects.
+- [x] Preserve both warnings, future RLS requirements, remaining source/Auth/API review and every Stage 6 approval gate.
+
+No write or application-function invocation occurred. These findings narrow the
+review; they neither prove full database security nor eliminate every indirect
+DDL path. They do not justify revoking grants, removing ensure_rls or closing the
+Security Advisor findings. Compatibility review and separate authorization remain
+required for any permissions change.
+
+Remaining source work: privately inspect the complete callback for bounded
+schema/object/tag handling, qualified references (including temporary-object
+resolution), safe dynamic SQL and absence of unintended privileged operations;
+resolve the dependency’s identity/type/direction and cross-schema callers. Partial
+structural matches and a dependency count are insufficient proof. No need to
+repeat public-function, direct-membership, count-only or public-relation queries.
+
+Remaining Auth checks (§3 B): provider/anonymous-signup and confirmation flags,
+password/OTP and rate-limit/CAPTCHA posture, sanitized redirect assessment,
+session/JWT/refresh settings, and operator MFA availability/enforcement. Remaining
+API/RLS checks (§3 C): Data API enablement/exposed schemas/search paths, other-schema
+objects/policies/grants/default ACLs and RPC/view/GraphQL/Realtime/Storage metadata,
+SSL/network flags and key-handling design without retrieving keys. No provider,
+OAuth or runtime acceptance setting is marked verified by these catalog results.
+
+Issue #31 needs no edit: its two-warnings/no-demonstrated-exploit/open broader
+review statement remains accurate. The dashboard links the living Stage 6
+checklist; details stay here. No description or comment change is proposed or
+published; the verified 9,564-character/52-line baseline is unchanged. Verification
+and publication status of these documentation changes are in docs/ai/VERIFICATION.md.
