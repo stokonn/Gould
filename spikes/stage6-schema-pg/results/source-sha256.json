@@ -1,0 +1,11 @@
+{
+  "migrations/001_entities.sql": "6ff749738f1c1194c213a1237e637d19f0ca2cf080257a27ef98d23d43e5030c",
+  "migrations/002_integrity.sql": "a368bfee1c8dc77159f655f46c3ab09a7c78b1ed218d4fa91c7abb57fb6feb1e",
+  "package-lock.json": "b2277bc59f434d9c90b63ebc79c6cfda75222ed730a259244aea9cf7f791fcb0",
+  "package.json": "1cfe85efc762b9ef34e04839318d0a154f69f5cba518c40c50718ef9fe3cdd41",
+  "run-local.sh": "641bc013c837ddeb76d503264d0191c338bf0c1996c3ebd628179b96bfc655c5",
+  "src/audit.mjs": "4bf05dc5e0348bed3888979f629efc4fb4bb2d679923f4c6841930ff7f4bc1ac",
+  "src/database.mjs": "76c84dbdc39ff3d4450695a87a04c48e1c6ebb2cf30048379ae8d853b4f455f7",
+  "src/transactions.mjs": "c5bcf8fc2abee23be5f1c64827cc6b3567803d677add84e00b6bb1af413d44cd",
+  "tests/schema.test.mjs": "9843ed29538e16d4488d40b560c8a4c20a5fa4dba1d6a1d685f05440129edf1f"
+}

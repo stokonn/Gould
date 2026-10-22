@@ -1,3 +1,42 @@
+## Current Stage 6 checkpoint — local schema prototype (2026-10-22, base 4d01489)
+
+Owner explicitly authorized isolated local-only synthetic prototype implementation,
+not formal 6.1. Branch: `spike/goldberg-0.11-stage-6-schema-pg`, separate clone
+`.gradle/stage6-schema-prototype`. Readiness branch remains at 4d01489; Stage 5
+and Stage 7A worktrees/code/evidence untouched. Containing implementation commit
+identifies this checkpoint; exact publication SHA follows in branch history.
+
+Implemented `spikes/stage6-schema-pg`: two versioned/checksummed migrations for all
+community entities, FK/unique/check graph, immutable revision/review/publication/
+audit/feed history, revision hash chain, audit_head serialization, idempotency
+storage and bounded local transaction exerciser; disposable PG17 runner, safe int8
+conversion, independent audit export verification and targeted tests.
+
+Executed: final clean PostgreSQL 17.11 run 34/34 PASS, zero failed/skipped; five
+repository host checks PASS. Empty/seeded/repeat/concurrent/failing migration,
+orphans/uniqueness, immutable mutation/truncation, six rollback boundaries,
+same/different-submission target contention, named-key collision recovery/replay/
+expiry, audit tamper/head/role checks, int8 boundaries and lock-timeout regression.
+Earlier SQL/fixture/setup failures are preserved separately, not final failures.
+No old PG/SQLite concurrency benchmarks repeated; original e37ed00/c21e550 evidence
+untouched. No Supabase/production RLS/Auth/OAuth, full restore/RPO, app/APK/device
+checks or deployment performed. Disposable prototype containers removed.
+
+Contract discrepancy: API revisions permit draft/changes_requested/returned;
+server model defines draft local-only and changes_requested → in_review only.
+No new transition or approved API edit. Owner review required before adoption.
+
+Evidence/recovery: docs/planning/goldberg-0.11/stage-6/LOCAL-SCHEMA-PROTOTYPE.md
+and spikes/stage6-schema-pg/results/SUMMARY.md, final.tap, environment/source hashes.
+Next: review this candidate for eventual 6.1, reconcile contract statuses, obtain
+explicit 6.0f acceptance and separate formal implementation approval. Stop any
+hosted/credential/gate-policy action without its phase-scoped authorization.
+Q1/D5b unresolved/blocking; C4/C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
+6.0d/6.0e NOT AUTHORIZED; 0 CZK/month; real-user collection NOT AUTHORIZED.
+Stage 7A conditional/X10 OPEN; Stage 7B untouched. Implementation commit/push and
+existing Issue #31 checkpoint authorized by the owner/workflow; significant body
+edits require review. Issue publication status is recorded in the next checkpoint.
+
 ## Live Supabase evidence and bounded readiness verdict — 2026-10-22 (base 31e0539)
 
 Externally executed by ChatGPT’s connected Supabase integration, relayed by the

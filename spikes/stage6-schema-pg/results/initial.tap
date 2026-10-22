@@ -1,0 +1,528 @@
+
+> goldberg-stage6-schema-prototype@0.0.0 test
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+TAP version 13
+# PostgreSQL version: PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+# Subtest: empty PostgreSQL 17 migrations create all entities and a pre-existing genesis head
+not ok 1 - empty PostgreSQL 17 migrations create all entities and a pre-existing genesis head
+  ---
+  duration_ms: 134.328291
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:33:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:34:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: seeded v1 to v2 migration preserves principals, roles and quota accounting
+not ok 2 - seeded v1 to v2 migration preserves principals, roles and quota accounting
+  ---
+  duration_ms: 119.375376
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:38:1'
+  failureType: 'testCodeFailure'
+  error: 'inconsistent types deduced for parameter $1'
+  code: '42P08'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:40:2)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: repeat and concurrent migrations are idempotent and checksum drift fails closed
+not ok 3 - repeat and concurrent migrations are idempotent and checksum drift fails closed
+  ---
+  duration_ms: 91.548682
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:46:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:47:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: failed migration rolls back DDL and its ledger entry, preserving seeded v1
+not ok 4 - failed migration rolls back DDL and its ledger entry, preserving seeded v1
+  ---
+  duration_ms: 122.154155
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:52:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+    
+    Caught error:
+    
+    error: syntax error at end of input
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:54:2)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: principal, external identity and active-role uniqueness; explicit soft revocation history
+not ok 5 - principal, external identity and active-role uniqueness; explicit soft revocation history
+  ---
+  duration_ms: 105.940224
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:59:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:60:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: orphan FKs for identity, actor, mapping, session, revision, review, audit and publication reject
+not ok 6 - orphan FKs for identity, actor, mapping, session, revision, review, audit and publication reject
+  ---
+  duration_ms: 94.760038
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:68:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:69:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: deferred current-revision FK permits atomic creation but rejects dangling pointers at COMMIT
+not ok 7 - deferred current-revision FK permits atomic creation but rejects dangling pointers at COMMIT
+  ---
+  duration_ms: 112.814762
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:79:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:80:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: session rotation family/ownership, expiry and quota checks are physical constraints
+not ok 8 - session rotation family/ownership, expiry and quota checks are physical constraints
+  ---
+  duration_ms: 98.257035
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:85:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:86:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: revision chain requires contiguous versions and matching previous/content hashes
+not ok 9 - revision chain requires contiguous versions and matching previous/content hashes
+  ---
+  duration_ms: 94.200419
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:92:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:93:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: only documented server transitions; changes_requested creates a new immutable revision
+not ok 10 - only documented server transitions; changes_requested creates a new immutable revision
+  ---
+  duration_ms: 95.29514
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:100:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:101:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: state transition without matching audit/review cannot commit
+not ok 11 - state transition without matching audit/review cannot commit
+  ---
+  duration_ms: 110.01791
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:109:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:110:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: immutable revision, published revision, review, audit and feed reject UPDATE/DELETE/TRUNCATE
+not ok 12 - immutable revision, published revision, review, audit and feed reject UPDATE/DELETE/TRUNCATE
+  ---
+  duration_ms: 101.85315
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:114:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:115:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: publication snapshot, target kind and actor-author checks reject invalid publication
+not ok 13 - publication snapshot, target kind and actor-author checks reject invalid publication
+  ---
+  duration_ms: 104.201203
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:126:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:127:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: atomic publication rollback after locked leaves all tables/head/key unchanged
+not ok 14 - atomic publication rollback after locked leaves all tables/head/key unchanged
+  ---
+  duration_ms: 97.339068
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:133:88'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:134:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: atomic publication rollback after publication leaves all tables/head/key unchanged
+not ok 15 - atomic publication rollback after publication leaves all tables/head/key unchanged
+  ---
+  duration_ms: 90.001074
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:133:88'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:134:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: atomic publication rollback after approved leaves all tables/head/key unchanged
+not ok 16 - atomic publication rollback after approved leaves all tables/head/key unchanged
+  ---
+  duration_ms: 90.942174
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:133:88'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:134:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: atomic publication rollback after audit leaves all tables/head/key unchanged
+not ok 17 - atomic publication rollback after audit leaves all tables/head/key unchanged
+  ---
+  duration_ms: 92.466288
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:133:88'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:134:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: atomic publication rollback after feed leaves all tables/head/key unchanged
+not ok 18 - atomic publication rollback after feed leaves all tables/head/key unchanged
+  ---
+  duration_ms: 96.620689
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:133:88'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:134:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: atomic publication rollback after idempotency leaves all tables/head/key unchanged
+not ok 19 - atomic publication rollback after idempotency leaves all tables/head/key unchanged
+  ---
+  duration_ms: 93.771939
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:133:88'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:134:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: stored response replay, mismatch 422, principal isolation and >=24-hour expiry/reuse
+not ok 20 - stored response replay, mismatch 422, principal isolation and >=24-hour expiry/reuse
+  ---
+  duration_ms: 92.951125
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:138:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:139:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: F3 new-schema unique collision recovers transaction using exact constraint/savepoint
+not ok 21 - F3 new-schema unique collision recovers transaction using exact constraint/savepoint
+  ---
+  duration_ms: 100.627221
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:147:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:148:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: F1 physical-schema same-submission contention is serialized; loser is ordinary conflict
+not ok 22 - F1 physical-schema same-submission contention is serialized; loser is ordinary conflict
+  ---
+  duration_ms: 91.878426
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:155:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:156:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: F1 new regression: different submissions for same absent entity compare target revision atomically
+not ok 23 - F1 new regression: different submissions for same absent entity compare target revision atomically
+  ---
+  duration_ms: 99.610526
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:161:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:162:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: F4 physical audit triggers serialize independent appenders, rollback head, export and detect tampering
+not ok 24 - F4 physical audit triggers serialize independent appenders, rollback head, export and detect tampering
+  ---
+  duration_ms: 90.890657
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:168:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:169:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: F5 driver-default int8, prepared statements and safe JSON boundaries are lossless or rejected
+not ok 25 - F5 driver-default int8, prepared statements and safe JSON boundaries are lossless or rejected
+  ---
+  duration_ms: 146.279616
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:175:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:176:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: F5 unsafe next entity revision fails before write and leaves transaction consistent
+not ok 26 - F5 unsafe next entity revision fails before write and leaves transaction consistent
+  ---
+  duration_ms: 114.026716
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:183:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:184:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: restricted local role cannot mutate history/head or invoke ungranted definer functions
+not ok 27 - restricted local role cannot mutate history/head or invoke ungranted definer functions
+  ---
+  duration_ms: 95.265464
+  type: 'test'
+  location: '/home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:190:1'
+  failureType: 'testCodeFailure'
+  error: 'syntax error at end of input'
+  code: '42601'
+  name: 'error'
+  stack: |-
+    /home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async migrate (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/src/database.mjs:38:7)
+    async venue (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:9:116)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Opus/.gradle/stage6-schema-prototype/spikes/stage6-schema-pg/tests/schema.test.mjs:191:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..27
+# tests 27
+# suites 0
+# pass 0
+# fail 27
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3325.975127

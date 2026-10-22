@@ -28,7 +28,7 @@ unchanged; no Stage 7 work is performed here.
 
 Canonical policy: [AGENTS.md](../../../../AGENTS.md) §"Stage checklist documentation".
 Every task below stays **unchecked** until its verification evidence actually exists
-and is recorded. Planning (this directory) is complete; **no implementation has
+and is recorded. Planning (this directory) is complete; **no formal implementation has
 started**. This file is synchronized with the Stage 6 section of
 [STAGE-CHECKLIST.md](../STAGE-CHECKLIST.md) and the GitHub Issue tracking once
 Stage 6 is separately authorized.
@@ -798,3 +798,29 @@ AUTHORIZED. Prioritize owner/professional Q1, C4 evidence, separately authorized
 C2 §12/6.0f acceptance, then explicit implementation authorization. Both warnings
 remain; preserve ensure_rls. No hosted/production/Stage 7 changes. Issue #31’s
 concise broader status remains accurate and unchanged; no edit/comment proposed.
+
+### Owner-authorized local schema prototype — 2026-10-22
+
+Purpose: prove physical PostgreSQL 17 schema/migration/integrity requirements using
+synthetic data on a separately named spike. Scope: spikes/stage6-schema-pg and
+Stage 6 checkpoints only; no production implementation or adoption into 6.1.
+
+- [x] Create isolated spike/goldberg-0.11-stage-6-schema-pg from verified remote 4d01489.
+- [x] Implement physical DDL, FK/unique/check graph, immutable histories, audit_head, idempotency and repeatable atomic migrations.
+- [x] Execute disposable PostgreSQL 17.11 targeted suite: 34/34 PASS, 0 failures/skips.
+- [x] Run five existing host scripts: PASS; preserve failed intermediate evidence and original PG comparison.
+- [x] Flag API revision-eligible statuses versus server transitions; no approved contract changed.
+- [ ] Publish the implementation commit/branch and existing Issue #31 milestone checkpoint.
+
+[Prototype checkpoint](LOCAL-SCHEMA-PROTOTYPE.md) links source, commands, evidence
+and limitations. Verification includes empty/seeded/idempotent migrations, FKs,
+immutable mutation/truncation, transactional rollback, new target-contention and
+idempotency regressions, audit recomputation and int8 boundaries. No benchmark
+rerun; no hosted RLS/Auth/API, full restore/RPO, app build/device or release proof.
+
+This local milestone can later supply reviewed 6.1 inputs; it does not pass or
+change 6.0f. Formal 6.1–6.18 remain UNCHECKED; Q1/D5b unresolved/blocking, C4/C2 §12
+OPEN; 6.0d/6.0e NOT AUTHORIZED; 0 CZK/month; collection NOT AUTHORIZED.
+Exact next step: review candidate schema, resolve status-contract ambiguity with
+owner, then clear gates/obtain separate formal implementation authorization.
+Stage 7A conditional/X10 OPEN and Stage 7B untouched. No merge/deploy/release.

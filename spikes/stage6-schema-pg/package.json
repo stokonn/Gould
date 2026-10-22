@@ -1,0 +1,1 @@
+{"name":"goldberg-stage6-schema-prototype","version":"0.0.0","private":true,"type":"module","description":"Local-only PG17 schema prototype; synthetic data; not formal 6.1","scripts":{"test":"node --test --test-concurrency=1 tests/*.test.mjs"},"dependencies":{"pg":"8.23.1"}}

@@ -1,0 +1,10 @@
+{
+  "node": "v22.23.1",
+  "driver": "pg 8.23.1",
+  "postgres_version": "PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit",
+  "image": "docker.io/library/postgres@sha256:e4cb93687b062cd25a0e8f672d85a7708235009d70d31f8a7698d9370092a9c4",
+  "host": "127.0.0.1",
+  "port": 36177,
+  "syntheticOnly": true,
+  "cloudAccess": false
+}

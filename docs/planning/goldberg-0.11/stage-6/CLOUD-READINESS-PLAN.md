@@ -612,3 +612,13 @@ log, not in any external source).
 ---
 
 created by stokonn with love <3
+
+## Local prototype authorization — 2026-10-22
+
+The owner separately authorized isolated local-only synthetic schema prototyping
+on `spike/goldberg-0.11-stage-6-schema-pg`. [LOCAL-SCHEMA-PROTOTYPE.md](LOCAL-SCHEMA-PROTOTYPE.md)
+records concrete implementation and 34/34 targeted PostgreSQL 17.11 checks. This
+is candidate evidence for future 6.1, not formal implementation or a policy waiver.
+6.0f remains UNCHECKED; Q1/D5b/C4/C2 §12 gates and all cloud/collection approvals
+remain unchanged. No hosted action, production RLS, OAuth, retention policy,
+Stage 7 change, merge or release is authorized by this prototype instruction.
