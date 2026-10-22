@@ -1,4 +1,55 @@
-## Current security-audit checkpoint and Issue baseline — 2026-10-22
+## External A1–A3 continuation — 2026-10-22 (base bac81fb)
+
+A1–A3 EXECUTED successfully by ChatGPT’s connected Supabase integration; results
+relayed by the owner, not executed by this coding agent. Evidence ledger and
+partial-completion checklist: docs/planning/goldberg-0.11/stage-6/SECURITY-AUTH-READINESS-AUDIT.md.
+OID 17603 is plpgsql/SECURITY DEFINER/postgres/event_trigger with search_path
+pg_catalog and anon/authenticated effective EXECUTE. ensure_rls binds that OID,
+ddl_command_end, normal mode O, tags CREATE TABLE/CREATE TABLE AS/SELECT INTO.
+API roles lack the six reported superuser/role/CREATE capabilities; postgres has
+BYPASSRLS and public/database CREATE, but rolsuper=false. Default PUBLIC EXECUTE
+was observed; no separate anon/authenticated grants identified. Structural body
+checks are partial, not proof of safety. Both advisor warnings remain unresolved;
+no exploit demonstrated or repaired, no function/RPC invocation or database writes.
+
+This supersedes earlier pending language/path/binding/A1–A3 statements below.
+Auth/API flags, inherited-role and remaining DDL paths, complete source/dependency
+review, actual advisor IDs/version and billing/payment evidence remain UNVERIFIED.
+Next independently authorized step: those remaining sanitized catalog/private
+source checks, then allowlisted Auth/API flags through the existing authorized
+connection. No callable Supabase tools here; do not repeat A1–A3 or request secrets.
+Any future function-specific PUBLIC ACL reduction requires separate write approval,
+compatibility review and rollback design; preserve ensure_rls.
+
+Q1/D5b unresolved/blocking; C4 and C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
+6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only; 0 CZK/month; collection NOT
+AUTHORIZED. No production backend, Worker deployment or Stage 7 changes. This
+checkpoint is identified by its containing documentation commit on
+`docs/goldberg-0.11-stage-6-readiness`.
+
+### Published Issue #31 baseline and verification
+
+Owner approved only the A1–A3 C4 audit-sentence replacement. Fresh pre-write body,
+metadata and comments matched the inspected baseline; exact published readback PASS.
+[Issue #31](https://github.com/stokonn/Goldberg/issues/31): **9,564 Unicode characters / 52 lines**,
+updated 2026-10-22T20:09:06Z; UTF-8 SHA-256
+`b3a49d6bf39b7181fd675765d3d5d8fff16d04f637ced2bddc69494c4df48549`.
+Previous baseline: 9,442 characters / 52 lines; change +122 characters, one sentence
+only. All 63 full comment records, labels/milestone/state/title/assignees/lock and
+Goldberg Development Project In Progress preserved; no checkpoint comment added.
+This is the current conflict-check baseline; older baselines below are historical.
+
+Five existing host checks PASS: agent policy; 3 backup fixtures; history paging
+106 sessions/4 pages; localization 922 EN/CZ resources; migration DDL v1–9→10.
+Migration/bridge Android runtime coverage is not supplied by these host checks.
+Nine Markdown files only; local links, git diff --check, unchanged original
+stage/gate checkboxes and non-Stage-6 sections PASS. Original SQL blocks and the
+remaining Auth/API task lists are unchanged. No hosted SQL/function/RPC/DDL by this
+agent, application build/device test, screenshots, cloud changes or completed
+PostgreSQL/SQLite concurrency reruns. Documentation publication is authorized on
+the dedicated branch; use this checkpoint’s containing commit as the source SHA.
+
+## Previous security-audit checkpoint and Issue baseline — 2026-10-22
 
 Read-only documentary audit completed from 4f0cd51 on
 `docs/goldberg-0.11-stage-6-readiness`; actual hosted verification checklist remains

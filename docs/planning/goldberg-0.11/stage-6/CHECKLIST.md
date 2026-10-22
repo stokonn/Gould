@@ -724,3 +724,25 @@ review is complete; hosted metadata checklist remains unexecuted. No 6.0d/6.0f,
 Q1/D5b, C4, C2 §12 or 6.1–6.18 completion is implied. Owner approved one concise
 C4 dashboard sentence, now published and exact readback verified; all 63 comments
 and Issue/Project metadata preserved. No new comments. 0 CZK/month preserved.
+
+### External security audit continuation — 2026-10-22 (base bac81fb)
+
+Purpose/scope: reconcile the executed, read-only A1–A3 catalog evidence in Stage 6
+documentation only. ChatGPT’s connected Supabase integration executed all three
+successfully; this agent records owner-relayed external results, not its own SQL.
+
+- [x] Record function OID 17603, plpgsql/definer/postgres/event_trigger, pg_catalog search path and effective API-role EXECUTE.
+- [x] Record matching ensure_rls binding/event/tags/normal enabled mode and the supplied limited API-role/privileged owner capabilities.
+- [x] Record default PUBLIC EXECUTE, no identified separate API-role grants and partial structural source checks with their limits.
+- [ ] Complete inherited-access/other DDL paths, full private source/dependency review and sanitized advisor IDs/version.
+- [ ] Complete read-only Auth/RLS/API configuration and billing/payment evidence review.
+
+Evidence: [SECURITY-AUTH-READINESS-AUDIT.md](SECURITY-AUTH-READINESS-AUDIT.md)
+§1/§3/§7. Both warnings remain; no exploit demonstrated/repaired, no hosted write
+or function/RPC invocation. A1–A3 are complete externally; the overall hosted audit
+is INCOMPLETE. Existing five host checks and documentation consistency checks PASS
+for this continuation (details in docs/ai/VERIFICATION.md); no concurrency rerun.
+Q1/D5b unresolved/blocking; C4 and C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
+6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only; 0 CZK/month; collection NOT
+AUTHORIZED. Keep ensure_rls; any permissions change requires separate authorization
+and compatibility review. No Stage 7 or application changes; no gate acceptance.

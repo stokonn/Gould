@@ -165,3 +165,8 @@ sessions/MFA, RLS/ACLs and API exposure. It records the owner-supplied event-tri
 warnings, execution-context limitations and remaining unknowns. It does not
 configure OAuth, create sessions/users, execute RPC, change privileges or verify
 any integration/runtime acceptance row. Existing AUTH.md contracts remain binding.
+
+A1–A3 catalog queries subsequently succeeded externally through ChatGPT’s connected
+Supabase integration (owner-relayed 2026-10-22); see the audit evidence ledger. This
+confirms only the recorded callback/binding/role metadata, not any provider, OAuth,
+session, API exposure or runtime acceptance setting. Those Auth checks remain OPEN.

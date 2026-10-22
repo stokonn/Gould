@@ -171,5 +171,7 @@ This does not authorize provisioning or resolve any gate.
 [SECURITY-AUTH-READINESS-AUDIT.md](SECURITY-AUTH-READINESS-AUDIT.md) is the current
 read-only security finding analysis and verification runbook. Two owner-supplied
 advisor warnings are under contextual review; exploitability is not established.
-Function-body/path/privilege checks remain open; no hosted mutation or new backend
+A1–A3 are externally EXECUTED by ChatGPT’s connected Supabase integration (owner-relayed);
+the pinned path and binding are confirmed, while full source/inherited-access and
+Auth/API review remain open; no hosted mutation or new backend
 implementation has occurred, and all Stage 6 gates remain unchanged.

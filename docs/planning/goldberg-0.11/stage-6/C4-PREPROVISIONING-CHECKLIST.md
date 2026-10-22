@@ -365,3 +365,16 @@ calls are blocked outside trigger context, but matching DDL can fire an existing
 privileged hook; neither “definer means exploited” nor “event_trigger means safe”
 is a justified conclusion. Preserve ensure_rls while reviewing; no corrective write
 is authorized. C4 stays OPEN, all §D checkboxes unchanged, all other gates preserved.
+
+## J. External A1–A3 reconciliation — 2026-10-22
+
+Supersedes §I’s pending language/search_path/binding and limited-role-rights items:
+ChatGPT’s connected Supabase integration executed A1–A3 successfully, as relayed by
+the owner. Exact results, partial ACL/source observations and unresolved checks:
+[security audit §1/§3/§7](SECURITY-AUTH-READINESS-AUDIT.md).
+Both warnings remain; no exploit demonstrated/repaired. No writes or function/RPC
+invocation occurred. Auth/API configuration, full inherited-access/source review,
+billing/payment methods and C4 legal/transfer requirements remain UNVERIFIED/open.
+C4 stays OPEN; §D gates/checkboxes unchanged; 6.0d/6.0e NOT AUTHORIZED, 6.0f
+UNCHECKED, Q1/D5b unresolved/blocking, C2 §12 OPEN; 0 CZK/month. Preserve ensure_rls;
+future permissions changes require separate authorization and compatibility review.
