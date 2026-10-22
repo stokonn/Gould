@@ -27,6 +27,8 @@ object L {
     fun fixed(label:String):String = when(label) {
         "Home" -> s(R.string.label_home)
         "Repertoire" -> s(R.string.label_repertoire)
+        "Library" -> s(R.string.label_library)
+        "See all" -> s(R.string.stage7a_see_all)
         "Practice" -> s(R.string.label_practice)
         "Profile" -> s(R.string.label_profile)
         "Good morning" -> s(R.string.label_good_morning)

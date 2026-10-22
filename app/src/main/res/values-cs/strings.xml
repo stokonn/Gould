@@ -942,4 +942,21 @@
     <string name="discover_field_type">Typ ve zdroji</string>
     <string name="discover_field_sort_name">Název pro řazení</string>
     <string name="discover_field_evidence">Další údaje ze zdroje</string>
+    <string name="label_library">Knihovna</string>
+    <string name="stage7a_search_placeholder">Hledejte hudbu, umělce, díla…</string>
+    <string name="stage7a_privacy_notice">Místní vyhledávání funguje offline. Když výslovně spustíte online vyhledávání, dotaz se odešle externím poskytovatelům hudebních dat.</string>
+    <string name="stage7a_browse_categories">Procházet kategorie</string>
+    <string name="stage7a_recently_viewed">Nedávno zobrazené</string>
+    <string name="stage7a_available_offline">Dostupné offline</string>
+    <string name="stage7a_offline_subtitle">Hudba a zdroje ve vašem zařízení</string>
+    <string name="stage7a_local">Lokální</string>
+    <string name="stage7a_online">Online</string>
+    <string name="stage7a_see_all">Zobrazit vše</string>
+    <string name="stage7a_library_title">Vaše sbírky</string>
+    <string name="stage7a_library_subtitle">Vaše hudba</string>
+    <string name="stage7a_essential_works">Zásadní díla</string>
+    <string name="stage7a_structure_movements">Struktura a věty</string>
+    <string name="stage7a_sources_references">Zdroje a reference</string>
+    <string name="stage7a_about_me">O mně</string>
+    <string name="stage7a_portrait_of_artist">Portrét umělce %1$s</string>
 </resources>

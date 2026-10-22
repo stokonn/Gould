@@ -655,7 +655,60 @@ zero-cost operational plan. No provisioning, no client-side speculation.
 
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
-**Status: ⬜ not started.** Depends on stable Stage 4/5 contracts and Stage 6 admin actions.
+**Status: 🚧 Stage 7A verification-executed, awaiting owner visual acceptance (X9);
+Stage 7B not started.** Part B (Android/Web Admin clients) depends on Stage 6 and is
+**not started** — no Stage 6 code, branch, worktree, credential or cloud resource is
+touched by Stage 7A.
+
+### Stage 7A — six-screen Encyclopedia UX redesign (owner-authorized 2026-10-22)
+
+**Purpose:** redesign Discover, Library, Artist Profile, Work Profile, Home and User Profile
+to the owner's approved editorial direction while preserving every existing behaviour and
+all user data. **Scope:** `app/src/main` UI + localized strings only (+ one committed
+instrumentation helper); NO database/schema/migration/backup changes, NO navigation changes,
+NO Stage 6/7B changes. Branch `feature/goldberg-0.11-stage-7a`, worktree
+`/home/stokonn/Projects/Goldberg-Stage7A`, base `32cf5d9`. Living checklist & progress log:
+[stage-7/stage-7a/CHECKPOINT.md](stage-7/stage-7a/CHECKPOINT.md).
+
+- **Tasks/progress — COMPLETE (implementation + verification):** 7A.1 strings EN+CZ
+  (16 `stage7a_*` keys incl. owner-approved privacy wording + `label_library`;
+  939-resource parity PASS) · 7A.2 shared editorial components · 7A.3–7A.6 the four
+  Encyclopedia screens redesigned · 7A.7–7A.8 Home/Profile adjustments · 7A.9 preservation
+  by inspection (repertoire/UUIDs/notes/badges/recovery/backup untouched) · 7A.10 host
+  gates green · 7A.11 emulator screenshots · 7A.12 mismatch report. Only **7A.13
+  (commit/push + Issue #31 checkpoint)** remains before the owner report.
+- **Verification — executed 2026-10-22 (real results):**
+  - Host gates: `./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest
+    lintDebug --no-daemon --max-workers=1` → **BUILD SUCCESSFUL EXIT=0**; JVM
+    **174 run / 0 failures / 0 errors / 0 skipped**; lint **0 errors, 122 warnings**
+    (pre-existing); `assembleDebugAndroidTest` compiles; all five `scripts/check_*.py`
+    **PASS** (939-resource EN/CZ parity, migrations, backup fixtures, history paging,
+    agent policy). Lint/test logs: `/tmp/goldberg-7a-host-gates.log` (session-local).
+  - Instrumentation on disposable emulator `emulator-5554` (API 36, `ro.kernel.qemu=1`
+    asserted; never a physical device): new `Stage7aCatalogueBootstrapTest` **OK (1 test)**
+    — drives the app's own `CatalogRepository.featured()`/`composerWorks()` (the same
+    product code `CatalogScreen`/`ComposerScreen` call) and thereby populated **23 real
+    OpenOpus composers + 597 real Vivaldi works** with source attribution; no invented or
+    hand-written catalogue rows anywhere. This helper exists because on a fresh install
+    the legacy `catalog` route has no production entry (pre-existing Stage 4-era
+    finding, recorded only — no navigation change made).
+  - **Screenshots (X6/X2/X3/X4): 32 captures** — Home, Library, Library-Artists, Discover,
+    Profile, Artist Profile, Work Profile × Ivory/Nocturne × EN/CS + 1.5× font-scale spot
+    check — in [stage-7/stage-7a/results/](stage-7/stage-7a/results/) with sha256
+    manifest and step log; 9 directly inspected (all six screens ivory-en +
+    nocturne-cs-library + font15-en-home), all rendering the intended design with real
+    data, correct theme/locale/font tokens and no clipping.
+  - **Comparison (X7):** [stage-7/stage-7a/results/README.md](stage-7/stage-7a/results/README.md)
+    documents every difference vs the four approved Stage 4 references and the 0.10/0.10.1
+    Home/Profile approvals — all deliberate and plan/owner-approved (privacy wording
+    without "our servers"; chips All·My Repertoire·Artists; no fake download button; no
+    Albums/Recordings sections; honest "no verified movement list"; hero-portrait fallback
+    verified pre-existing, not a 7A regression).
+  - X8 seeded upgrade check: **not executed** — Stage 7A contains no schema/database/
+    migration change (inspection-proven); Stage 5 upgrade evidence remains authoritative.
+- **Completion status:** Stage 7A implementation and its verification are complete; the
+  stage is **NOT complete** until the owner's visual acceptance (**X9, pending**). No
+  merge, tag, release or APK publication is authorized or performed.
 
 ## Stage 8 — Integration, legal review and release readiness
 

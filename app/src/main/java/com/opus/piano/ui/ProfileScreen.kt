@@ -57,16 +57,15 @@ import java.time.*
         JournalCard(padding=PaddingValues(10.dp)) {
             Row(Modifier.padding(top=2.dp,bottom=4.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(16.dp)) {
                 Box {
-                    Surface(onClick={edit=true},modifier=Modifier.size(88.dp),shape=CircleShape,color=MaterialTheme.colorScheme.primary.copy(alpha=.1f),border=androidx.compose.foundation.BorderStroke(2.dp,MaterialTheme.colorScheme.primary.copy(alpha=.35f))) {
+                    Surface(onClick={edit=true},modifier=Modifier.size(104.dp),shape=CircleShape,color=MaterialTheme.colorScheme.primary.copy(alpha=.1f),border=androidx.compose.foundation.BorderStroke(2.dp,MaterialTheme.colorScheme.primary.copy(alpha=.35f))) {
                         if(avatar!=null) Image(avatar!!.asImageBitmap(),L.s(R.string.msg_profile_avatar_1671),contentScale=ContentScale.Crop)
-                        else Icon(Icons.Outlined.Person,L.s(R.string.msg_default_avatar_400b),Modifier.padding(20.dp),tint=MaterialTheme.colorScheme.primary)
+                        else Icon(Icons.Outlined.Person,L.s(R.string.msg_default_avatar_400b),Modifier.padding(24.dp),tint=MaterialTheme.colorScheme.primary)
                     }
                     IconButton(onClick={edit=true},modifier=Modifier.align(Alignment.BottomEnd).size(48.dp)) {Surface(shape=CircleShape,color=MaterialTheme.colorScheme.surfaceVariant) {Icon(Icons.Outlined.Edit,L.s(R.string.msg_edit_profile_cd28),Modifier.size(32.dp).padding(7.dp))}}
                 }
                 Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(8.dp)) {
-                    Text(settings.username,style=MaterialTheme.typography.headlineMedium,maxLines=3,overflow=TextOverflow.Ellipsis)
-                    Text(settings.biography.ifBlank {L.s(R.string.ui010_add_bio)},Modifier.fillMaxWidth().clickable {edit=true},style=MaterialTheme.typography.bodySmall,textAlign=androidx.compose.ui.text.style.TextAlign.Center,color=MaterialTheme.colorScheme.onSurfaceVariant)
-                    if(settings.favoriteEra.isNotBlank()) Surface(shape=MaterialTheme.shapes.small,color=MaterialTheme.colorScheme.surfaceVariant) {Text(settings.favoriteEra,Modifier.padding(horizontal=10.dp,vertical=5.dp),style=MaterialTheme.typography.bodySmall)}
+                    Text(settings.username,style=MaterialTheme.typography.headlineLarge,maxLines=3,overflow=TextOverflow.Ellipsis)
+                    Text(settings.biography.ifBlank {L.s(R.string.ui010_add_bio)},Modifier.fillMaxWidth().clickable {edit=true},style=MaterialTheme.typography.bodySmall,textAlign=androidx.compose.ui.text.style.TextAlign.Start,color=MaterialTheme.colorScheme.onSurfaceVariant)
                     if(googleAccount==null) JournalTextButton(enabled=!busy,onClick={profile.googleSignIn(context)},contentPadding=PaddingValues(0.dp)) {Text(L.s(R.string.google_sign_in),style=MaterialTheme.typography.labelMedium)}
                 }
             }
@@ -98,7 +97,9 @@ import java.time.*
                     }
                     Icon(Icons.Outlined.ChevronRight,null,Modifier.size(20.dp),tint=MaterialTheme.colorScheme.primary)
                 }
-                if(settings.favoritePiece.isNotBlank()) {HorizontalDivider(color=MaterialTheme.colorScheme.outlineVariant.copy(alpha=.4f));Text(L.s(R.string.favorite_piece)+" · "+settings.favoritePiece,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
+                if(settings.favoritePiece.isNotBlank() || settings.favoriteEra.isNotBlank()) {HorizontalDivider(color=MaterialTheme.colorScheme.outlineVariant.copy(alpha=.4f))}
+                if(settings.favoritePiece.isNotBlank()) Text(L.s(R.string.favorite_piece)+" · "+settings.favoritePiece,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+                if(settings.favoriteEra.isNotBlank()) Text(L.s(R.string.favorite_era)+" · "+settings.favoriteEra,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
         Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
@@ -107,8 +108,8 @@ import java.time.*
                 IconButton(onClick={showcaseEdit=true}) {Icon(Icons.Outlined.Add,L.s(R.string.msg_badge_showcase_6868))}
             }
             if(showcased.isEmpty()) Text(L.s(R.string.showcase_collection_hint),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
-            else Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(10.dp)) {showcased.forEach {badge->
-                Surface(onClick={badgeDetail(badge.definition.id)},modifier=Modifier.size(72.dp).semantics {contentDescription=badge.definition.localizedName+" · "+localDateTime(badge.unlockedAt ?: 0)},shape=CircleShape,color=MaterialTheme.colorScheme.surface,border=androidx.compose.foundation.BorderStroke(1.dp,MaterialTheme.colorScheme.primary.copy(alpha=.35f))) {MedalArtwork(badge,Modifier.padding(4.dp))}
+            else Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(12.dp)) {showcased.forEach {badge->
+                Surface(onClick={badgeDetail(badge.definition.id)},modifier=Modifier.size(84.dp).semantics {contentDescription=badge.definition.localizedName+" · "+localDateTime(badge.unlockedAt ?: 0)},shape=CircleShape,color=MaterialTheme.colorScheme.surface,border=androidx.compose.foundation.BorderStroke(1.dp,MaterialTheme.colorScheme.primary.copy(alpha=.35f))) {MedalArtwork(badge,Modifier.padding(5.dp))}
             }}
         }
     }

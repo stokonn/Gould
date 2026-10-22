@@ -1,0 +1,73 @@
+guards OK on emulator-5554 (qemu=1, booted, app installed)
+catalogue present: 23 composers
+system font_scale set to 1.0
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+=== combo ivory-en ===
+captured ivory-en-home.png (150398 bytes)
+captured ivory-en-library.png (152581 bytes)
+captured ivory-en-library_artists.png (188562 bytes)
+tapped artist row: Antonio Vivaldi
+captured ivory-en-artist_profile.png (160712 bytes)
+guards OK on emulator-5554 (qemu=1, booted, app installed)
+catalogue present: 23 composers
+system font_scale set to 1.0
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+=== combo ivory-en ===
+captured ivory-en-home.png (150197 bytes)
+captured ivory-en-library.png (152407 bytes)
+captured ivory-en-library_artists.png (188404 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Essential works') timed out after 25s — capturing anyway
+captured ivory-en-artist_profile.png (175240 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured ivory-en-work_profile.png (183446 bytes)
+captured ivory-en-discover.png (215102 bytes)
+captured ivory-en-profile.png (143241 bytes)
+theme set to Dark (readback OK)
+=== combo nocturne-en ===
+captured nocturne-en-home.png (152216 bytes)
+captured nocturne-en-library.png (152893 bytes)
+captured nocturne-en-library_artists.png (188997 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Essential works') timed out after 25s — capturing anyway
+captured nocturne-en-artist_profile.png (178031 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured nocturne-en-work_profile.png (185634 bytes)
+captured nocturne-en-discover.png (217336 bytes)
+captured nocturne-en-profile.png (145003 bytes)
+app locale set to cs (Locales for com.opus.piano for user 0 are [cs])
+theme set to Light (readback OK)
+=== combo ivory-cs ===
+captured ivory-cs-home.png (142252 bytes)
+captured ivory-cs-library.png (157317 bytes)
+captured ivory-cs-library_artists.png (194777 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Zásadní díla') timed out after 25s — capturing anyway
+captured ivory-cs-artist_profile.png (176280 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured ivory-cs-work_profile.png (185610 bytes)
+captured ivory-cs-discover.png (224869 bytes)
+captured ivory-cs-profile.png (146143 bytes)
+theme set to Dark (readback OK)
+=== combo nocturne-cs ===
+captured nocturne-cs-home.png (142972 bytes)
+captured nocturne-cs-library.png (157482 bytes)
+captured nocturne-cs-library_artists.png (195225 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Zásadní díla') timed out after 25s — capturing anyway
+captured nocturne-cs-artist_profile.png (177953 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured nocturne-cs-work_profile.png (186458 bytes)
+captured nocturne-cs-discover.png (225765 bytes)
+captured nocturne-cs-profile.png (146730 bytes)
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+system font_scale set to 1.5
+=== font-scale 1.5 spot check ===
+captured font15-en-home.png (200471 bytes)
+captured font15-en-library.png (179130 bytes)
+captured font15-en-discover.png (215435 bytes)
+captured font15-en-profile.png (190120 bytes)
+system font_scale set to 1.0

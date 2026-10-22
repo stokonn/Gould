@@ -9,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.opus.piano.data.*
@@ -28,7 +29,6 @@ import com.opus.piano.data.*
     val composerName = if (pieceId != null) personal?.composer ?: composer?.name.orEmpty() else composer?.name ?: personal?.composer.orEmpty()
     val key = sourceId?.let { "catalog:$it" } ?: pieceId?.let { "piece:$it" }
     var studyExpanded by rememberSaveable { mutableStateOf(false) }
-    var tab by rememberSaveable(workId, pieceId) { mutableIntStateOf(0) }
     var editor by rememberSaveable { mutableStateOf(false) }
     LaunchedEffect(sourceId) { if (pieceId == null) sourceId?.let { catalogModel.loadWork(it) } }
     val sessions=remember(library.sessions,library.parts,library.links,personal,sourceId) { PracticeInsights.forPiece(library.sessions,library.parts,personal?.id,sourceId,library.links) }
@@ -40,74 +40,87 @@ import com.opus.piano.data.*
             if (library.loading || (sourceId != null && page.loading)) item { Text(L.s(R.string.msg_loading_composition_03a3), color = MaterialTheme.colorScheme.onSurfaceVariant) }
             else item { Panel { SectionTitle(L.s(R.string.msg_composition_unavailable_9973)); Text(L.s(R.string.msg_this_work_has_no_saved_information_on_this_d_c958), color = MaterialTheme.colorScheme.onSurfaceVariant) } }
         } else {
+            // Header: verified title, composer attribution and catalogue designation; artwork only
+            // from the real licensed portrait pipeline, with a graceful fallback (Stage 7A).
             item {
-                Text((work?.genre?.let(L::fixed) ?: personal?.genre.orEmpty()).ifBlank { L.s(R.string.msg_composition_e860) }.uppercase(), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
-                Spacer(Modifier.height(8.dp))
-                Text(title, style = MaterialTheme.typography.headlineMedium)
-                Text(composerName, style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
-                if (personal != null) {
-                    Text(L.fixed(personal.status.label),style=MaterialTheme.typography.labelLarge)
-                    JournalPrimaryButton(onClick={practice(personal)},modifier=Modifier.fillMaxWidth().heightIn(min=52.dp)) { Text(L.s(R.string.select_in_practice)) }
-                }
-                if (composer != null) JournalTextButton(onClick = { composerPage(composer.id) }) { Text(L.s(R.string.msg_explore_composer_e4ca)) }
-                val metadata = listOf(work?.catalogLabel.orEmpty().takeUnless { catalogText(title).contains(catalogText(it)) }.orEmpty(), work?.musicalKey?.ifBlank { work.keyFromTitle }.orEmpty(), composer?.epoch?.let(L::fixed) ?: personal?.musicalEra.orEmpty()).filter { it.isNotBlank() }
-                if (metadata.isNotEmpty()) Text(metadata.joinToString(" · "), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            }
-            item {
-                FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    listOf("Overview", "Movements", "Sources & Study", "My Practice").forEachIndexed { i, label -> FilterChip(selected = tab == i, onClick = { tab = i }, label = { Text(L.fixed(label)) }) }
-                }
-            }
-            when (tab) {
-                0 -> {
-                    if (!work?.subtitle.isNullOrBlank()) item { SectionTitle(L.s(R.string.msg_about_the_work_0fef));Text(work!!.subtitle) }
-                    if (!personal?.notes.isNullOrBlank()) item { SectionTitle(L.s(R.string.msg_repertoire_notes_f720));Text(personal!!.notes) }
-                    item {
-                        SectionTitle(L.s(R.string.msg_my_practice_0448))
-                        Text(localizedPracticeTime(sessions.sumOf { it.durationMillis }))
-                        Text(L.quantity(R.plurals.sessions_count,sessions.size))
-                        sessions.firstOrNull()?.let { Text(localDateTime(it.completedAt)) }
-                        JournalTextButton(onClick={history(personal?.id,sourceId)}) { Text(L.s(R.string.msg_practice_history_76e7)) }
+                Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
+                    ComposerPortrait(composer, Modifier.width(96.dp).height(116.dp))
+                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(title, style = MaterialTheme.typography.headlineMedium, maxLines = 4, overflow = TextOverflow.Ellipsis)
+                        if (composerName.isNotBlank()) Text(composerName, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                        val catalogue = work?.catalogLabel.orEmpty().takeUnless { catalogText(title).contains(catalogText(it)) }.orEmpty()
+                        if (catalogue.isNotBlank()) Text(catalogue, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
-                    item { Column(verticalArrangement=Arrangement.spacedBy(6.dp)) {
-                        MetadataLine("Genre", personal?.genre?.ifBlank { work?.genre.orEmpty() } ?: work?.genre.orEmpty())
-                        MetadataLine("Instrumentation", personal?.instrument.orEmpty())
-                        if (personal != null && personal.difficulty != Difficulty.UNRATED) MetadataLine("Difficulty", L.fixed(personal.difficulty.label))
-                    } }
                 }
-                1 -> item { Panel {
-                    SectionTitle(L.s(R.string.msg_movements_e4a3))
-                    Text(L.s(R.string.msg_no_verified_movement_list_is_supplied_by_the_d571), color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    JournalTextButton(onClick = { tab = 2 }) { Text(L.s(R.string.msg_find_a_score_6ee5)) }
-                } }
-                2 -> if (key != null) item {
-                    JournalTextButton(onClick={studyExpanded=!studyExpanded}) { Text(L.s(R.string.msg_sources_study_bfcb)) }
-                    if(studyExpanded) ListenAndStudy(key, composerName, title, work?.catalogLabel.orEmpty(), recordings.filter { it.workKey == key }, recordingsPage)
+            }
+            // Prominent primary action: practice selection for saved pieces, otherwise add to
+            // repertoire with the existing duplicate prevention (UUID-safe catalogModel.add).
+            if (personal != null) item {
+                Text(L.fixed(personal.status.label), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
+                JournalPrimaryButton(onClick = { practice(personal) }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text(L.s(R.string.select_in_practice)) }
+            } else if (work != null && composer != null) item {
+                val already = alreadyAdded(work, composer, library.pieces)
+                JournalPrimaryButton(onClick = { catalogModel.add(work, composer) }, enabled = !already && work.id !in adding, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
+                    Text(if (already) L.s(R.string.msg_already_in_repertoire_eac8) else if (work.id in adding) L.s(R.string.msg_adding_ffb2) else L.s(R.string.msg_add_to_repertoire_f27e))
                 }
-                3 -> {
-                    if (personal != null) {
-                        item { Panel {
-                            SectionTitle(L.s(R.string.msg_your_practice_e682))
+                Text(L.s(R.string.msg_some_works_share_a_title_check_the_composer_a406), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            // Compact verified-metadata row: only fields that actually exist (Stage 7A).
+            item {
+                val cells = listOf(
+                    (composer?.epoch?.let(L::fixed) ?: personal?.musicalEra.orEmpty()) to L.s(R.string.discover_field_period),
+                    (work?.genre?.let(L::fixed) ?: personal?.genre.orEmpty()) to L.s(R.string.msg_genre_2aa3),
+                    work?.catalogLabel.orEmpty() to L.s(R.string.discover_field_catalogue)
+                ).filter { it.first.isNotBlank() }
+                if (cells.isNotEmpty()) Surface(shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
+                    Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
+                        cells.forEachIndexed { index, (value, label) ->
+                            if (index > 0) VerticalDivider(Modifier.padding(vertical = 10.dp), color = MaterialTheme.colorScheme.outlineVariant)
+                            Column(Modifier.weight(1f).padding(horizontal = 12.dp, vertical = 10.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                                Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                                Text(value, style = MaterialTheme.typography.bodyMedium, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                            }
+                        }
+                    }
+                }
+            }
+            item { EditorialSectionHeader(L.fixed("Overview")) }
+            if (!work?.subtitle.isNullOrBlank()) item { Text(work!!.subtitle, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+            if (!personal?.notes.isNullOrBlank()) item { Text(personal!!.notes, style = MaterialTheme.typography.bodyMedium) }
+            item {
+                Surface(shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
+                    Column(Modifier.fillMaxWidth().padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(L.s(R.string.msg_my_practice_0448), style = MaterialTheme.typography.titleSmall)
+                        Text("${localizedPracticeTime(sessions.sumOf { it.durationMillis })} · ${L.quantity(R.plurals.sessions_count, sessions.size)}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
+                        sessions.firstOrNull()?.let { Text(localDateTime(it.completedAt), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+                        JournalTextButton(onClick = { history(personal?.id, sourceId) }) { Text(L.s(R.string.msg_practice_history_76e7)) }
+                    }
+                }
+            }
+            item { EditorialSectionHeader(L.s(R.string.stage7a_structure_movements)) }
+            item {
+                Text(L.s(R.string.msg_no_verified_movement_list_is_supplied_by_the_d571), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                if (key != null) JournalTextButton(onClick = { studyExpanded = !studyExpanded }) { Text(L.s(R.string.msg_sources_study_bfcb)) }
+            }
+            if (key != null && studyExpanded) item { ListenAndStudy(key, composerName, title, work?.catalogLabel.orEmpty(), recordings.filter { it.workKey == key }, recordingsPage) }
+            item { EditorialSectionHeader(L.s(R.string.stage7a_sources_references)) }
+            if (composer != null) item { JournalTextButton(onClick = { composerPage(composer.id) }) { Text(L.s(R.string.msg_explore_composer_e4ca)) } }
+            if (personal != null) {
+                item {
+                    Surface(shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
+                        Column(Modifier.fillMaxWidth().padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Text(L.s(R.string.msg_your_practice_e682), style = MaterialTheme.typography.titleSmall)
                             Choice(L.s(R.string.msg_learning_status_30b8), LearningStatus.entries.map { it.label }, personal.status.label) { label -> model.save(personal.copy(status = LearningStatus.entries.first { it.label == label })) {} }
-                            Text("${L.quantity(R.plurals.sessions_count,sessions.size)} · ${localizedPracticeTime(sessions.sumOf { it.durationMillis })}", color = MaterialTheme.colorScheme.primary)
                             JournalPrimaryButton(onClick = { practice(personal) }) { Text(L.s(R.string.select_in_practice)) }
                             JournalTextButton(onClick = { editor = true }) { Text(L.s(R.string.msg_edit_your_repertoire_entry_4636)) }
-                        } }
+                        }
                     }
-                    item { SectionTitle(L.s(R.string.msg_practice_history_4d00)) }
-                    if (sessions.isEmpty()) item { Text(L.s(R.string.msg_no_completed_sessions_for_this_composition_y_1b30), color = MaterialTheme.colorScheme.onSurfaceVariant) }
-                    items(sessions.take(3), key = { it.id }) { attributed ->
-                        Text("${L.fixed("My Practice")} · ${localizedPracticeTime(attributed.durationMillis)}",style=MaterialTheme.typography.labelLarge)
-                        val parent=library.sessions.first { it.id==attributed.id }
-                        SessionRow(parent, library.summary.partsBySession[parent.id].orEmpty())
-                    }
-                    item { JournalTextButton(onClick={history(personal?.id,sourceId)}) { Text(L.s(R.string.msg_practice_history_76e7)) } }
                 }
-            }
-            if (personal == null && work != null && composer != null) item {
-                val already = alreadyAdded(work, composer, library.pieces)
-                JournalPrimaryButton(onClick = { catalogModel.add(work, composer) }, enabled = !already && work.id !in adding, modifier = Modifier.fillMaxWidth()) { Text(if (already) L.s(R.string.msg_already_in_repertoire_eac8) else if (work.id in adding) L.s(R.string.msg_adding_ffb2) else L.s(R.string.msg_add_to_repertoire_f27e)) }
-                Text(L.s(R.string.msg_some_works_share_a_title_check_the_composer_a406), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                items(sessions.take(3), key = { it.id }) { attributed ->
+                    val parent = library.sessions.first { it.id == attributed.id }
+                    SessionRow(parent, library.summary.partsBySession[parent.id].orEmpty())
+                }
+                item { JournalTextButton(onClick = { history(personal?.id, sourceId) }) { Text(L.s(R.string.msg_practice_history_4d00)) } }
             }
         }
         if (sourceId != null && page.id == sourceId) {

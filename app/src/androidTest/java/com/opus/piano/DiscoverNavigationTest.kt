@@ -13,6 +13,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.opus.piano.ui.DiscoverScreen
 import com.opus.piano.ui.DiscoverSearchSession
+import com.opus.piano.ui.LibraryState
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -34,7 +35,7 @@ class DiscoverNavigationTest {
                     composable("DISCOVER") {
                         val state:DiscoverSearchSession=viewModel()
                         SideEffect {session=state;ready.countDown()}
-                        DiscoverScreen {controller.navigate("detail")}
+                        DiscoverScreen({controller.navigate("detail")},{},{}, LibraryState(loading = false))
                     }
                     composable("detail"){Text("Authored local detail")}
                 }

@@ -45,7 +45,7 @@ import java.time.*
 import java.time.format.DateTimeFormatter
 
 private enum class Destination(val label: String, val icon: ImageVector) {
-    OVERVIEW("Home", Icons.Outlined.Home), HOME("Profile", Icons.Outlined.Person), REPERTOIRE("Repertoire", Icons.Outlined.LibraryMusic),
+    OVERVIEW("Home", Icons.Outlined.Home), HOME("Profile", Icons.Outlined.Person), REPERTOIRE("Library", Icons.Outlined.LibraryMusic),
     DISCOVER("Discover", Icons.Outlined.Explore), PRACTICE("Practice", Icons.Outlined.Piano), BADGES("Badges", Icons.Outlined.EmojiEvents), WRAPPED("Wrapped", Icons.Outlined.Insights)
 }
 @Composable fun OpusApp(model: OpusViewModel, catalog: CatalogViewModel, experience: ExperienceViewModel, profile: ProfileViewModel) {
@@ -129,7 +129,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 composable(Destination.REPERTOIRE.name) {
                     RepertoireScreen(library,catalogData,model,{nav.selectTopLevel("DISCOVER")},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")},catalog,{nav.navigate("catalog/work/$it")})
                 }
-                composable(Destination.DISCOVER.name) { DiscoverScreen { nav.navigate("discover/entity/$it") } }
+                composable(Destination.DISCOVER.name) { DiscoverScreen({ nav.navigate("discover/entity/$it") }, { nav.navigate("piece/$it") }, { nav.navigate("catalog/work/$it") }, library) }
                 composable("discover/entity/{id}") { route -> DiscoverDetailScreen(route.arguments?.getString("id").orEmpty(), {nav.popBackStack()}, {nav.navigate("discover/entity/$it")}, {nav.navigate("piece/$it")}) }
                 composable("catalog") { CatalogScreen(catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("catalog/work/$it") }, { nav.navigate("piece/$it") },profile=profile) }
                 composable("catalog/composer/{id}") { route -> ComposerScreen(route.arguments?.getString("id").orEmpty(), catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/work/$it") },identity=profile) }

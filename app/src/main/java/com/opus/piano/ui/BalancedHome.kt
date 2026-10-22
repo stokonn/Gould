@@ -33,7 +33,7 @@ import java.time.*
     val catalog by app.catalogRepository.snapshot.collectAsState(initial=CatalogSnapshot(emptyList(),emptyList()))
     BoxWithConstraints(Modifier.fillMaxSize()) {
         val availableWidth=maxWidth
-        val recentLimit=if(maxHeight>=720.dp && fontScale<=1.15f) 3 else 2
+        val recentLimit=2
         JournalViewport {
             val greeting:@Composable ()->Unit={Column(verticalArrangement=Arrangement.spacedBy(4.dp)) {
                 Text(L.s(when(LocalTime.now().hour) {in 5..11->R.string.ui010_morning;in 12..17->R.string.ui010_afternoon;else->R.string.ui010_evening}),style=MaterialTheme.typography.bodyMedium.copy(fontSize=MaterialTheme.typography.bodyMedium.fontSize * 1.06f),color=MaterialTheme.colorScheme.onSurfaceVariant)

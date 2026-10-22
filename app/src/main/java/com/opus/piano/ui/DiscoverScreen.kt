@@ -7,17 +7,22 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.opus.piano.OpusApplication
 import com.opus.piano.R
@@ -32,7 +37,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     var query by mutableStateOf("")
     var online by mutableStateOf(false)
 }
-@Composable internal fun DiscoverScreen(open:(String)->Unit) {
+@Composable internal fun DiscoverScreen(open:(String)->Unit,openPiece:(Long)->Unit,openCatalogWork:(String)->Unit,library:LibraryState) {
     val app=LocalContext.current.applicationContext as OpusApplication
     // Raw catalogue queries are transient; exclude them from persisted saved state.
     val session:DiscoverSearchSession=androidx.lifecycle.viewmodel.compose.viewModel()
@@ -90,21 +95,45 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
             recent=opened.map {it.entity};recentTypes=opened.mapNotNull {detail->detail.workType?.let {detail.entity.id to it}}.toMap()
         } catch(e:CancellationException){throw e} catch(_:Exception){error=true} finally {loading=false}
     }
+    // "Available offline" shows only genuinely local content: the user's catalogue-linked
+    // repertoire plus locally cached catalogue works. Stage 5 bundles ship no management UI yet,
+    // so no bundle entries are shown (plan C6).
+    val catalogSnapshot by app.catalogRepository.snapshot.collectAsState(com.opus.piano.data.CatalogSnapshot(emptyList(),emptyList()))
+    val offlineRows=remember(library.pieces,catalogSnapshot) {
+        val worksById=catalogSnapshot.works.associateBy {it.id}
+        val composersById=catalogSnapshot.composers.associateBy {it.id}
+        val linked=library.pieces.filter {it.catalogWorkId!=null && worksById.containsKey(it.catalogWorkId)}.distinctBy {it.catalogWorkId}.take(4)
+        val linkedIds=linked.mapNotNull {it.catalogWorkId}.toSet()
+        val cached=catalogSnapshot.works.filter {(it.popular||it.recommended) && it.id !in linkedIds}.take(maxOf(0,4-linked.size))
+        linked.map {piece->OfflineRow(worksById[piece.catalogWorkId]?.title ?: piece.title,piece.composer,
+            worksById[piece.catalogWorkId]?.catalogLabel.orEmpty(),piece.id,piece.catalogWorkId ?: "",composersById[worksById[piece.catalogWorkId]?.composerId])}+
+            cached.map {work->OfflineRow(work.title,composersById[work.composerId]?.name.orEmpty(),work.catalogLabel,null,work.id,composersById[work.composerId])}
+    }
     LazyColumn(contentPadding=PaddingValues(20.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {
-        item {Heading(L.s(R.string.discover),L.s(R.string.discover_explore),L.s(R.string.discover_privacy))}
-        item {OutlinedTextField(query,{session.query=it;active=true},label={Text(L.s(R.string.discover_search))},singleLine=true,modifier=Modifier.fillMaxWidth())}
-        item {Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)) {
-            Checkbox(online,{session.online=it;active=true},modifier=Modifier.semantics {contentDescription=L.s(R.string.discover_online)});Text(L.s(R.string.discover_online),modifier=Modifier.weight(1f))
+        item {Column(verticalArrangement=Arrangement.spacedBy(2.dp)) {
+            Text(L.s(R.string.discover),style=MaterialTheme.typography.headlineLarge,modifier=Modifier.semantics {heading()})
+            Text(L.s(R.string.discover_explore),style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
         }}
-        item {Text(L.s(if(app.media.allowed())R.string.discover_network_ready else R.string.discover_offline),style=MaterialTheme.typography.bodySmall)}
-        // Wrap categories instead of compressing five text controls at large font sizes.
+        item {EditorialSearchField(query,{session.query=it;active=true})}
         item {
-            FlowRow(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
-                listOf("all","works","artists","albums","lists").forEach { key ->
-                    FilterChip(category==key,{category=key;active=true},label={Text(categoryLabel(key))})
+            // Owner-approved truthful privacy wording (stage-7 plan §9 C1); never claims "our servers".
+            Surface(shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surfaceVariant.copy(alpha=.55f)) {
+                Row(Modifier.fillMaxWidth().padding(12.dp),horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                    Icon(Icons.Outlined.Lock,null,Modifier.padding(top=1.dp).size(18.dp),tint=MaterialTheme.colorScheme.primary)
+                    Text(L.s(R.string.stage7a_privacy_notice),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
         }
+        item {Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp),verticalAlignment=Alignment.CenterVertically) {
+            Checkbox(online,{session.online=it;active=true},modifier=Modifier.semantics {contentDescription=L.s(R.string.discover_online)})
+            Text(L.s(R.string.discover_online),modifier=Modifier.weight(1f))
+        }}
+        item {Text(L.s(if(app.media.allowed())R.string.discover_network_ready else R.string.discover_offline),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
+        // Browsable categories rendered from the real supported search categories.
+        item {EditorialSectionHeader(L.s(R.string.stage7a_browse_categories))}
+        item {LazyRow(horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+            items(listOf("all","works","artists","albums","lists")) {key->CategoryTile(key,category==key){category=key;active=true}}
+        }}
         if(availableFilters.artists.isNotEmpty() || availableFilters.periods.isNotEmpty())item {
             TextButton({filtersExpanded=!filtersExpanded}){Text(L.s(R.string.discover_filters))}
             if(filtersExpanded) {
@@ -151,24 +180,84 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
             }
         }){Text(L.s(R.string.discover_more))}}
         if(!active && recent.isNotEmpty()) {
-            item {Text(L.s(R.string.discover_recent),style=MaterialTheme.typography.titleLarge,modifier=Modifier.semantics {heading()})}
-            items(recent,key={"recent:"+it.id}) {entity->CatalogueRow(entity,recentTypes[entity.id]){open(entity.id)};TextButton({scope.launch {withContext(Dispatchers.IO){app.discoverHistory.remove(entity.id)};recent=recent.filterNot {it.id==entity.id}}}){Text(L.s(R.string.discover_remove))}}
+            item {EditorialSectionHeader(L.s(R.string.stage7a_recently_viewed))}
+            item {LazyRow(horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                items(recent,key={"recent:"+it.id}) {entity->
+                    RecentCard(entity,recentTypes[entity.id],{open(entity.id)}) {scope.launch {withContext(Dispatchers.IO){app.discoverHistory.remove(entity.id)};recent=recent.filterNot {it.id==entity.id}}}
+                }
+            }}
+        }
+        if(!active && offlineRows.isNotEmpty()) {
+            item {EditorialSectionHeader(L.s(R.string.stage7a_available_offline),L.s(R.string.stage7a_offline_subtitle))}
+            items(offlineRows,key={"offline:"+(it.pieceId ?: it.workId)}) {row->
+                OfflineRowCard(row) {if(row.pieceId!=null) openPiece(row.pieceId) else openCatalogWork(row.workId)}
+            }
         }
         item {
             HorizontalDivider()
-            Text(L.s(R.string.discover_cache_consequences),style=MaterialTheme.typography.bodySmall)
-            Text(android.text.format.Formatter.formatShortFileSize(LocalContext.current,cacheBytes))
+            Text(L.s(R.string.discover_cache_consequences),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(android.text.format.Formatter.formatShortFileSize(LocalContext.current,cacheBytes),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
             TextButton(onClick={scope.launch {app.discover.clearResponseCache();cacheBytes=app.providerCache.bytes()}}){Text(L.s(R.string.discover_clear_cache))}
         }
-        item {HorizontalDivider();Row {Switch(historyEnabled,{value->historyEnabled=value;scope.launch {withContext(Dispatchers.IO){app.discoverHistory.enabled(value)};revision++}});Text(L.s(R.string.discover_history))}}
+        item {HorizontalDivider();Row(verticalAlignment=Alignment.CenterVertically) {Switch(historyEnabled,{value->historyEnabled=value;scope.launch {withContext(Dispatchers.IO){app.discoverHistory.enabled(value)};revision++}});Text(L.s(R.string.discover_history))}}
         item {TextButton({scope.launch {withContext(Dispatchers.IO){app.discoverHistory.clear()};recent=emptyList()}}){Text(L.s(R.string.discover_clear_history))}}
     }
 }
+/** One row of the "Available offline" section; pieceId links personal repertoire, workId a cached catalogue work. */
+private class OfflineRow(val title:String,val composer:String,val meta:String,val pieceId:Long?,val workId:String,val composerRef:com.opus.piano.data.CatalogComposer?)
+@Composable private fun OfflineRowCard(row:OfflineRow,onClick:()->Unit) {
+    Surface(onClick=onClick,shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surface) {
+        Row(Modifier.fillMaxWidth().padding(horizontal=12.dp,vertical=10.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+            ComposerPortrait(row.composerRef)
+            Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(2.dp)) {
+                Text(row.title,style=MaterialTheme.typography.titleMedium,maxLines=2,overflow=TextOverflow.Ellipsis)
+                if(row.composer.isNotBlank()) Text(row.composer,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant,maxLines=1,overflow=TextOverflow.Ellipsis)
+                if(row.meta.isNotBlank()) Text(row.meta,style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant,maxLines=1,overflow=TextOverflow.Ellipsis)
+            }
+            AvailabilityPill(online=false)
+            Icon(Icons.Outlined.ChevronRight,null,Modifier.size(18.dp),tint=MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+    }
+}
+@Composable private fun CategoryTile(key:String,selected:Boolean,onClick:()->Unit) {
+    val tint=MaterialTheme.colorScheme.primary
+    Surface(onClick=onClick,shape=MaterialTheme.shapes.medium,color=if(selected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface) {
+        Column(Modifier.width(92.dp).padding(horizontal=10.dp,vertical=12.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(8.dp)) {
+            Icon(categoryIcon(key),null,tint=tint,modifier=Modifier.size(24.dp))
+            Text(categoryLabel(key),style=MaterialTheme.typography.labelLarge,color=if(selected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface,maxLines=1,overflow=TextOverflow.Ellipsis)
+        }
+    }
+}
+@Composable private fun RecentCard(entity:CatalogueEntity,workType:String?,open:()->Unit,remove:()->Unit) {
+    Surface(onClick=open,shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surface) {
+        Column(Modifier.width(150.dp)) {
+            Box(Modifier.fillMaxWidth().height(88.dp)) {
+                Surface(Modifier.fillMaxSize(),color=MaterialTheme.colorScheme.surfaceVariant) {Icon(categoryIcon(entity.kind),null,Modifier.fillMaxSize().padding(26.dp),tint=MaterialTheme.colorScheme.primary)}
+                AvailabilityPill(online=false,modifier=Modifier.align(Alignment.BottomStart).padding(6.dp))
+                IconButton(onClick=remove,modifier=Modifier.align(Alignment.TopEnd).size(32.dp)) {Icon(Icons.Outlined.Close,L.s(R.string.discover_remove),Modifier.size(16.dp),tint=MaterialTheme.colorScheme.onSurfaceVariant)}
+            }
+            Column(Modifier.padding(start=10.dp,end=10.dp,top=8.dp,bottom=10.dp),verticalArrangement=Arrangement.spacedBy(2.dp)) {
+                Text(shownTitle(entity.kind,entity.title),style=MaterialTheme.typography.titleSmall,maxLines=2,overflow=TextOverflow.Ellipsis)
+                Row(verticalAlignment=Alignment.CenterVertically) {
+                    Text(kindLabel(workType ?: entity.kind),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant,modifier=Modifier.weight(1f),maxLines=1,overflow=TextOverflow.Ellipsis)
+                    Icon(Icons.Outlined.ChevronRight,null,Modifier.size(16.dp),tint=MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
+        }
+    }
+}
+private fun categoryIcon(key:String)=when(key){"works"->Icons.Outlined.MusicNote;"artists"->Icons.Outlined.Person;"albums"->Icons.Outlined.Album;"lists"->Icons.Outlined.List;else->Icons.Outlined.LibraryMusic}
 @Composable private fun CatalogueRow(entity:CatalogueEntity,workType:String?=null,onClick:()->Unit) {
-    JournalCard(Modifier.fillMaxWidth().clickable(onClick=onClick)) {Column(Modifier.padding(12.dp)) {
-        Text(shownTitle(entity.kind,entity.title),style=MaterialTheme.typography.titleMedium)
-        Text(kindLabel(workType ?: entity.kind),style=MaterialTheme.typography.bodySmall)
-    }}
+    Surface(onClick=onClick,shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surface) {
+        Row(Modifier.fillMaxWidth().padding(horizontal=12.dp,vertical=11.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+            Icon(categoryIcon(entity.kind),null,tint=MaterialTheme.colorScheme.primary,modifier=Modifier.size(20.dp))
+            Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(2.dp)) {
+                Text(shownTitle(entity.kind,entity.title),style=MaterialTheme.typography.titleMedium,maxLines=2,overflow=TextOverflow.Ellipsis)
+                Text(kindLabel(workType ?: entity.kind),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant,maxLines=1,overflow=TextOverflow.Ellipsis)
+            }
+            Icon(Icons.Outlined.ChevronRight,null,Modifier.size(18.dp),tint=MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+    }
 }
 @Composable internal fun DiscoverDetailScreen(id:String,back:()->Unit,open:(String)->Unit,openPiece:(Long)->Unit) {
     val app=LocalContext.current.applicationContext as OpusApplication

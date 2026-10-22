@@ -938,4 +938,21 @@
     <string name="discover_field_type">Source type</string>
     <string name="discover_field_sort_name">Sorting name</string>
     <string name="discover_field_evidence">Additional source evidence</string>
+    <string name="label_library">Library</string>
+    <string name="stage7a_search_placeholder">Search music, artists, works…</string>
+    <string name="stage7a_privacy_notice">Local search works offline. When you explicitly start an online search, your query is sent to external music-data providers.</string>
+    <string name="stage7a_browse_categories">Browse categories</string>
+    <string name="stage7a_recently_viewed">Recently viewed</string>
+    <string name="stage7a_available_offline">Available offline</string>
+    <string name="stage7a_offline_subtitle">Music and resources on your device</string>
+    <string name="stage7a_local">Local</string>
+    <string name="stage7a_online">Online</string>
+    <string name="stage7a_see_all">See all</string>
+    <string name="stage7a_library_title">Your Collections</string>
+    <string name="stage7a_library_subtitle">Your music</string>
+    <string name="stage7a_essential_works">Essential works</string>
+    <string name="stage7a_structure_movements">Structure &amp; movements</string>
+    <string name="stage7a_sources_references">Sources &amp; references</string>
+    <string name="stage7a_about_me">About Me</string>
+    <string name="stage7a_portrait_of_artist">Portrait of %1$s</string>
 </resources>
