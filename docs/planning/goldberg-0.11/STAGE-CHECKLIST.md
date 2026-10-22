@@ -816,7 +816,7 @@ Auth migration, tests and Stage 6 checkpoints; no formal promotion or cloud work
 - [x] Implement fresh server role/state/capability/ownership checks, no-self-grant and actor≠author with a local in-process adapter.
 - [x] Execute 50 Auth/security tests plus unchanged 34-schema regression suite: 84 PASS, 0 failures/skips/cancellations.
 - [x] Run five repository host scripts: PASS; original schema/evidence/approved contracts and gate boxes preserved.
-- [ ] Commit/push and append verified existing Issue #31 checkpoint; propose latest-link-only dashboard diff for owner approval.
+- [x] Commit/push source 76c1c87 and append [Issue checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6351715021); show latest-link-only dashboard proposal for approval.
 
 [Local Auth checkpoint](stage-6/LOCAL-AUTH-PROTOTYPE.md) links exact source/tests/commands
 and partial T1–T9/T22 coverage. Formal 6.2/6.3 and all global task boxes remain
@@ -827,6 +827,13 @@ idempotency; canonical revision contract patch awaits review before endpoint ado
 Q1/D5b unresolved/blocking; C4/C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
 6.0d/6.0e NOT AUTHORIZED; 0 CZK/month; collection NOT AUTHORIZED. No Stage 5/7,
 cloud, real credentials/users, APK, deployment, merge, tag or release changes.
+
+
+Publication: tested source 76c1c879b5642236490e1f14b652fdf5e5ebdc7a pushed to the
+separate Auth branch. Checkpoint 6351715021 independently read back exactly; all
+64 prior full comments preserved, 65 total, Project In Progress unchanged. Dashboard
+link-only proposal is prepared/shown; UNPUBLISHED pending explicit approval.
+Source hashes and final 50+34 test artifacts unchanged by publication bookkeeping.
 
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 

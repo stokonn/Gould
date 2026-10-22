@@ -9,7 +9,7 @@ credentials, OAuth, deployment or Stage 5/7 work is authorized.
 - [x] Implement durable principal/session/challenge/refresh storage and rotation.
 - [x] Implement reusable server-side capability and resource authorization.
 - [x] Execute local security tests (50/50) and original schema regression suite (34/34).
-- [ ] Verify/checkpoint/commit/push and post existing Issue #31 milestone.
+- [x] Verify/commit/push source 76c1c87 and post [Issue checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6351715021); independent readback PASS.
 
 The original schema code, checksum ledger and evidence remain unmodified. New
 schema changes are a separate local Auth migration, never a hosted migration.
@@ -121,3 +121,9 @@ moderation using this server context; 6.6 request-bound idempotency/replay/misma
 and expiry, reusing the existing verified transaction storage. Contract status
 patch still needs owner review before endpoint adoption. Do not proceed without
 new scope authorization, and do not deploy/promote before the existing gates.
+
+Publication: tested source 76c1c879b5642236490e1f14b652fdf5e5ebdc7a pushed to the
+separate Auth branch. Checkpoint 6351715021 independently read back exactly; all
+64 prior full comments preserved, 65 total, Project In Progress unchanged. Dashboard
+link-only proposal is prepared/shown; UNPUBLISHED pending explicit approval.
+Source hashes and final 50+34 test artifacts unchanged by publication bookkeeping.

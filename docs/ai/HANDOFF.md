@@ -1,3 +1,26 @@
+## Local Auth milestone publication — 2026-10-22
+
+Source commit 76c1c879b5642236490e1f14b652fdf5e5ebdc7a pushed/remote verified on
+spike/goldberg-0.11-stage-6-auth-local. Final 50 new + 34 original tests PASS;
+zero failed/skipped/cancelled. Tested source hashes unchanged. Original schema
+branch remains 0f966dc; Stage 7A 576f0d2 and all unrelated worktrees/files preserved.
+
+[Issue #31 checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6351715021) posted under the owner's explicit instruction;
+independent readback exactly matches. All 64 previous full comments preserved,
+65 total; labels/milestone/state and Project In Progress unchanged. Proposed body
+changes only the Stage 6 Latest checkpoint URL to that comment. Exact diff shown
+and approval requested; UNPUBLISHED pending reply. Current body baseline remains
+9,592 characters/52 lines, SHA-256
+dd2829c6576e9648396505c9cd87e70e3ae8667e4f35a7ac571bb90e59e35f2a.
+Re-fetch before any approved write; stop on unrelated edits, preserve other stages.
+
+Local prototype milestone COMPLETE, formal 6.2/6.3 NOT COMPLETE. Q1/D5b/C4/C2 §12/
+6.0f remain open; all formal tasks 6.1–6.18 unchecked; cloud/collection approvals
+unchanged. No automatic 6.4–6.6 continuation. Next only after new scope instruction:
+full bounded typed submissions, authenticated atomic moderation and request-bound
+idempotency, with the existing contract discrepancy reviewed before endpoint adoption.
+This publication bookkeeping checkpoint is its containing documentation commit.
+
 ## Current checkpoint — local Auth/session/AuthZ prototype (2026-10-22)
 
 Owner explicitly authorized isolated LOCAL-ONLY task-design 6.2/6.3 prototype,

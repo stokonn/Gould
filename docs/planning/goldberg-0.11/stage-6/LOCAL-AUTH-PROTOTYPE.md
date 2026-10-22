@@ -17,7 +17,7 @@ additive local Auth migration and Stage 6 documentation only. No Stage 5/7 chang
 - [x] Implement current server grants/state, default deny, owner predicates, actor≠author, immediate revocation/suspension, no self-grant/operator capability and strict body/error/log boundaries.
 - [x] Execute 50 new Auth/security tests plus 34 original schema regressions: 84 PASS, 0 failed/skipped/cancelled.
 - [x] Run five existing repository host checks: PASS; verify original hashes/gates and new documentation/source scope.
-- [ ] Commit/push verified milestone and append checkpoint to existing Issue #31.
+- [x] Commit/push source 76c1c87 and append [Issue checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6351715021); independent readback PASS.
 - [ ] Show minimal latest-checkpoint-link dashboard diff and obtain approval before description publication.
 
 [Executed evidence](../../../../spikes/stage6-auth-local/results/SUMMARY.md) gives
@@ -51,3 +51,9 @@ Q1/D5b unresolved/blocking; C4/C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
 AUTHORIZED. Stage 7A conditional/X10 OPEN and Stage 7B untouched.
 
 created by stokonn with love <3
+
+Publication: tested source 76c1c879b5642236490e1f14b652fdf5e5ebdc7a pushed to the
+separate Auth branch. Checkpoint 6351715021 independently read back exactly; all
+64 prior full comments preserved, 65 total, Project In Progress unchanged. Dashboard
+link-only proposal is prepared/shown; UNPUBLISHED pending explicit approval.
+Source hashes and final 50+34 test artifacts unchanged by publication bookkeeping.
