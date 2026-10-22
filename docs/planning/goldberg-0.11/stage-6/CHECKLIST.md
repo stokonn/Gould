@@ -442,5 +442,53 @@ pre-launch gates.**
   recorded or implied**. No checkboxes closed by this entry — 6.0b, 6.0d,
   6.0e, 6.0f all unchanged; 6.1–6.18 all unchecked; C4 OPEN; C2 §12 OPEN;
   0 CZK/month; Stage 7 untouched.
+- 2026-10-22 — **C6-PG spike EXECUTED: the C6 contract tests verified against
+  a real, isolated, LOCAL PostgreSQL instance (owner-authorized local-only
+  investigation; not production implementation).** New branch
+  `spike/goldberg-0.11-stage-6-contract-pg` (from `spike/goldberg-0.11-stage-6-contract`
+  @ `d2a95d4`; **never merged**, planning branch untouched), commits
+  [`f7bef8e`](https://github.com/stokonn/Goldberg/tree/f7bef8ed405442349ff6644e969e6f02a966b754/spikes/contract-c6)
+  (port) + [`e37ed00`](https://github.com/stokonn/Goldberg/tree/e37ed00b9205ce22e9e8ec494651e900708ee1e3/spikes/contract-c6)
+  (evidence). Instance: **PostgreSQL 17.11** via rootless podman, bound to
+  **127.0.0.1:54329 only**, trust auth on loopback, default isolation
+  **`read committed`** (same default as Supabase's PostgREST pool), synthetic
+  data only, per-test throwaway schemas; container stopped/removed after
+  evidence capture (recreation commands in the spike README). Approach: the
+  same async adapter interface + same server source + same suites on both
+  engines (`C6_ENGINE=sqlite|postgres`; SQLite stays zero-dep, the PG venue's
+  single new dependency is the `pg` wire client, spike branch only).
+  **Results (executed): PostgreSQL venue 86 tests / 86 pass / 0 fail
+  (v1–v10); SQLite post-port 79 / 79 / 0 fail + 7 v10-only skips (no
+  regression vs the original 79/79); static isolation scan PASS.** v9
+  multi-process race: SQLite 10/10 `[201,409]`; PostgreSQL 10/10
+  `[201,500]`/`[500,201]` — **the T10 invariant does NOT hold under READ
+  COMMITTED.** Key findings (details in
+  [results/SUMMARY-PG.md](https://github.com/stokonn/Goldberg/blob/e37ed00b9205ce22e9e8ec494651e900708ee1e3/spikes/contract-c6/results/SUMMARY-PG.md)):
+  **F1** faithful decision tx loses the exactly-one-decision guard on READ
+  COMMITTED (deterministic double-approve, ISO-1; loser 500 not 409) —
+  `SELECT … FOR UPDATE` (ISO-2) and SERIALIZABLE + explicit 40001→409 mapping
+  (ISO-3) both restore it, demonstrated as probes only; **F2** rollback
+  atomicity identical on PG (v6), but the C6 DDL has **no foreign keys**
+  (orphan accepted — task 6.1 DDL gap); **F3** idempotency contract identical,
+  concurrent duplicate key → SQLSTATE 23505 must map to replay, not 500;
+  **F4** audit chain identical, but in-transaction “read last seq” appends race
+  → 23505 (seq must be serialized in production DDL); **F5** SQLite→PG
+  differences found: `BEGIN IMMEDIATE` has no PG equivalent, unqualified
+  `ON CONFLICT DO UPDATE` column → 42702 (fixed portably), `rowid`/`?`
+  translations, **int8 defaults to string in the pg driver** (parsers required
+  to keep JSON numbers). Evidence — stable links at the verified spike commit:
+  [SUMMARY-PG.md](https://github.com/stokonn/Goldberg/blob/e37ed00b9205ce22e9e8ec494651e900708ee1e3/spikes/contract-c6/results/SUMMARY-PG.md),
+  [tap-postgres.txt](https://github.com/stokonn/Goldberg/blob/e37ed00b9205ce22e9e8ec494651e900708ee1e3/spikes/contract-c6/results/pg/raw/tap-postgres.txt),
+  [tap-sqlite-postport.txt](https://github.com/stokonn/Goldberg/blob/e37ed00b9205ce22e9e8ec494651e900708ee1e3/spikes/contract-c6/results/pg/raw/tap-sqlite-postport.txt),
+  [summary-data.json](https://github.com/stokonn/Goldberg/blob/e37ed00b9205ce22e9e8ec494651e900708ee1e3/spikes/contract-c6/results/pg/summary-data.json),
+  [README (scope/blockers)](https://github.com/stokonn/Goldberg/blob/e37ed00b9205ce22e9e8ec494651e900708ee1e3/spikes/contract-c6/README.md).
+  **Honest non-claims:** a local instance is **not** Supabase — the
+  Supabase-hosted re-proof stays BLOCKED (D5b/Q1 + C4 + ORD-A steps 4–6); no
+  production code exists (F1 fixes are probes); no Supabase project, no
+  Worker, no billing change, no user data. **No checkboxes closed by this
+  entry — 6.0b/6.0d/6.0e/6.0f all unchanged; 6.1–6.18 all remain unchecked
+  (F1–F5 are design inputs FOR task 6.1, gated on 6.0f); Q1/D5b UNRESOLVED
+  (Q1-D remains owner preference only); C4 OPEN; C2 §12 OPEN; ORD-A
+  sequencing-only; 0 CZK/month; Stage 7 untouched.**
 
 created by stokonn with love <3

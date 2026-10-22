@@ -188,3 +188,38 @@ unverified/unprovisioned from this side); legal/professional review.
 **No gate closed: Q1/D5b UNRESOLVED (the existing account does NOT resolve
 it); 6.0f UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; 6.1–6.18 unchecked; ORD-A
 sequencing-only; Stage 7 untouched; 0 CZK/month unchanged.**
+
+## C6-PG spike — executed verification record (2026-10-22)
+
+- **Executor (executed):** `node tools/execute-pg.mjs` with
+  `C6_PG_URL=postgres://c6spike@127.0.0.1:54329/c6spike` on branch
+  `spike/goldberg-0.11-stage-6-contract-pg` @ `f7bef8e` (evidence committed at
+  `e37ed00`), Node v22.23.1. Exit 0.
+- **PostgreSQL venue (real engine):** `tests/` v1–v10 → **86 tests, 86 pass,
+  0 fail, 0 skipped** — PostgreSQL **17.11** (podman `c6-pg`, removed after
+  capture), `default_transaction_isolation = read committed`, host port
+  `127.0.0.1:54329` (loopback only, trust auth), synthetic data, per-test
+  schemas. Raw TAP:
+  [tap-postgres.txt](https://github.com/stokonn/Goldberg/blob/e37ed00b9205ce22e9e8ec494651e900708ee1e3/spikes/contract-c6/results/pg/raw/tap-postgres.txt).
+- **SQLite post-port regression venue:** **86 tests, 79 pass, 0 fail,
+  7 skipped** (v10 is PostgreSQL-only; the skips are honest). Raw TAP:
+  [tap-sqlite-postport.txt](https://github.com/stokonn/Goldberg/blob/e37ed00b9205ce22e9e8ec494651e900708ee1e3/spikes/contract-c6/results/pg/raw/tap-sqlite-postport.txt).
+  Baseline comparison: the original C6 run at `d2a95d4` was 79/79 — no
+  regression introduced by the async port.
+- **Static isolation scan:** 20 files, 0 forbidden findings (only socket use:
+  `pg` driver → loopback instance).
+- **Observed race outcomes (not asserted away):** v9 SQLite 10/10
+  `[201,409]`; v9 PostgreSQL 10/10 `[201,500]`/`[500,201]` (10/10 T10-invariant
+  deviations), plus deterministic ISO-1..ISO-3 probes in v10 — findings
+  F1–F5 written up in
+  [results/SUMMARY-PG.md](https://github.com/stokonn/Goldberg/blob/e37ed00b9205ce22e9e8ec494651e900708ee1e3/spikes/contract-c6/results/SUMMARY-PG.md).
+- **Not executed / not claimed:** Supabase-hosted (PostgREST) runs — blocked
+  by D5b/Q1 + C4 + ORD-A steps 4–6; production implementation tests
+  (6.1–6.18); HTTP/CSRF/CORS layer (C2 scope); instrumentation on any device
+  (no emulator/device work in this spike); any [I]-venue row.
+- **Cleanup:** container `c6-pg` stopped and removed after evidence capture;
+  `.scratch/` is gitignored; no cloud resources, no billing, no user data.
+
+**Gates unchanged: 6.0f UNCHECKED; 6.1–6.18 unchecked; Q1/D5b UNRESOLVED
+(Q1-D preference only); C4 OPEN; C2 §12 OPEN; ORD-A sequencing-only;
+0 CZK/month; Stage 7 untouched; Stage 5 remains COMPLETE.**

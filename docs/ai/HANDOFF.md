@@ -386,4 +386,28 @@ until the review returns, do not select an option, do not provision, do not
 implement. 6.0f UNCHECKED; 6.1–6.18 unchecked; Stage 7 untouched; Stage 5
 remains COMPLETE.
 
+**Addendum 9 (2026-10-22, C6-PG spike — real local PostgreSQL verification):**
+the C6 contract suites were executed against a **real, isolated, LOCAL
+PostgreSQL 17.11** (rootless podman, `127.0.0.1:54329` loopback-only, trust
+auth on loopback, default isolation `read committed`, synthetic data only;
+container removed after evidence) on branch
+`spike/goldberg-0.11-stage-6-contract-pg` (**never merged**; commits
+`f7bef8e` code + `e37ed00` evidence). Same server source + same suites on
+both engines; `pg` is the PG venue's only new dependency (spike branch only).
+**Results: PostgreSQL 86/86 pass / 0 fail; SQLite post-port 79/79 / 0 fail
+(+7 v10-only skips, no regression); scan PASS.** Headline: v9 race SQLite
+10/10 `[201,409]` vs PostgreSQL 10/10 `[201,500]`/`[500,201]` — **T10 does
+not hold under READ COMMITTED**; findings F1–F5 recorded (lost-update +
+both fixes demonstrated as probes, missing FKs, idempotency 23505→replay,
+audit-seq race, `BEGIN IMMEDIATE`/42702/`rowid`/int8-string differences) in
+[results/SUMMARY-PG.md](https://github.com/stokonn/Goldberg/blob/e37ed00b9205ce22e9e8ec494651e900708ee1e3/spikes/contract-c6/results/SUMMARY-PG.md).
+**Next steps for a fresh agent:** unchanged gates — F1–F5 are **design inputs
+for task 6.1 (gated on 6.0f acceptance)**, not authorization to implement;
+the Supabase-hosted re-proof stays BLOCKED (D5b/Q1 + C4 + ORD-A steps 4–6);
+the owner still routes `Q1-PROFESSIONAL-REVIEW-BRIEF.md` for D5b. Do not
+provision, do not deploy, do not merge any spike branch, do not implement.
+6.0f UNCHECKED; 6.1–6.18 unchecked; Q1/D5b UNRESOLVED (Q1-D preference
+unchanged); C4 OPEN; C2 §12 OPEN; Stage 7 untouched; Stage 5 remains
+COMPLETE; 0 CZK/month.
+
 created by stokonn with love <3

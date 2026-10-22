@@ -386,3 +386,31 @@ stage-6 `README.md`, `CHECKLIST.md` (6.0b + progress log),
 `STAGE-CHECKLIST.md`, `docs/ai/HANDOFF.md`. **6.0f UNCHECKED; 6.0d/6.0e NOT
 AUTHORIZED; 6.1–6.18 unchecked; C4 OPEN; C2 §12 OPEN; Stage 7 untouched;
 Stage 5 remains COMPLETE; 0 CZK/month.**
+
+## Addendum — C6-PG spike: contract tests verified on real local PostgreSQL (2026-10-22)
+
+Branch `spike/goldberg-0.11-stage-6-contract-pg` (**never merged**; `f7bef8e`
+code + `e37ed00` evidence) ran the SAME C6 contract suites against a real,
+isolated, LOCAL **PostgreSQL 17.11** (rootless podman, `127.0.0.1:54329`
+loopback-only, trust auth on loopback, default isolation **`read committed`**,
+synthetic data only, per-test throwaway schemas; container removed after
+evidence capture). **Results: PostgreSQL 86/86 pass / 0 fail (v1–v10);
+SQLite post-port 79/79 / 0 fail + 7 v10-only skips (no regression vs the
+original 79/79); static scan PASS.** v9 multi-process race: SQLite 10/10
+`[201,409]` vs PostgreSQL **10/10 `[201,500]`/`[500,201]`** — the T10
+exactly-one-decision invariant does NOT hold under READ COMMITTED.
+Findings F1–F5 (details:
+[SUMMARY-PG.md](https://github.com/stokonn/Goldberg/blob/e37ed00b9205ce22e9e8ec494651e900708ee1e3/spikes/contract-c6/results/SUMMARY-PG.md)):
+F1 lost-update/double-approve under READ COMMITTED with both fixes
+(`SELECT … FOR UPDATE`; SERIALIZABLE + explicit 40001→409 mapping)
+demonstrated as probes only; F2 rollback parity + **no FK constraints in the
+C6 DDL** (task 6.1 gap); F3 idempotency parity + concurrent duplicate key →
+23505 must serve replay; F4 audit chain parity + audit-seq race (seq must be
+serialized); F5 SQLite→PG differences (`BEGIN IMMEDIATE` absent, 42702 column
+qualification fixed portably, `rowid`, `?`, **int8→string driver default**).
+**Local PostgreSQL ≠ Supabase: the Supabase-hosted proof stays BLOCKED
+(D5b/Q1 + C4 + ORD-A steps 4–6). F1–F5 are design inputs for task 6.1, not
+authorization. 6.0f UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; 6.1–6.18
+unchecked; Q1/D5b UNRESOLVED (Q1-D owner preference unchanged, preference
+only); C4 OPEN; C2 §12 OPEN; ORD-A sequencing-only; Stage 7 untouched;
+Stage 5 remains COMPLETE; 0 CZK/month.**

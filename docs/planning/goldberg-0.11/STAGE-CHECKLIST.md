@@ -513,6 +513,34 @@ re-tested), real Postgres isolation and all [I]-venue rows NOT executed
 no task: 6.1–6.18 remain unchecked and 6.0f remains UNCHECKED; D5b/Q1
 unresolved, C4 open, 6.0d/6.0e not authorized, ORD-A sequencing-only.**
 
+**C6-PG addendum (2026-10-22, local PostgreSQL verification — NOT implementation):**
+under a follow-up owner instruction, the same C6 contract suites were executed
+against a **real, isolated, LOCAL PostgreSQL 17.11** (rootless podman container,
+host-loopback `127.0.0.1:54329` only, trust auth on loopback, default isolation
+`read committed` = Supabase PostgREST's default, synthetic data only, per-test
+throwaway schemas; container removed after evidence capture) on
+`spike/goldberg-0.11-stage-6-contract-pg` (from `d2a95d4`; **never merged**),
+commits `f7bef8e` (port) + `e37ed00` (evidence). Same server source, same
+suites, two engines (`C6_ENGINE=sqlite|postgres`); the PG venue's only new
+dependency is the `pg` wire client (spike branch only; SQLite venue stays
+zero-dep). **Results: PostgreSQL 86/86 pass / 0 fail (v1–v10); SQLite
+post-port 79/79 / 0 fail + 7 v10-only skips (no regression); static scan
+PASS.** v9 race: SQLite 10/10 `[201,409]` vs PostgreSQL **10/10
+`[201,500]`/`[500,201]`** — the T10 exactly-one-decision invariant does not
+hold under READ COMMITTED. Findings F1–F5 (full detail in
+[results/SUMMARY-PG.md](https://github.com/stokonn/Goldberg/blob/e37ed00b9205ce22e9e8ec494651e900708ee1e3/spikes/contract-c6/results/SUMMARY-PG.md)):
+F1 isolation/lost-update with both demonstrated fixes (`SELECT … FOR UPDATE`;
+SERIALIZABLE + required 40001→409 mapping) as probes only; F2 rollback parity
++ missing FK constraints; F3 idempotency parity + concurrent 23505→replay
+requirement; F4 audit-chain parity + audit-seq race; F5 SQLite→PG SQL/type
+differences (`BEGIN IMMEDIATE` absent, 42702 column qualification, `rowid`,
+`?`, int8→string default). **Honest scope: a local instance is not Supabase —
+the Supabase-hosted proof stays BLOCKED (D5b/Q1 + C4 + ORD-A steps 4–6); no
+production code exists; this addendum closes no task: 6.1–6.18 remain
+unchecked (F1–F5 are design inputs FOR task 6.1) and 6.0f remains UNCHECKED;
+D5b/Q1 unresolved (Q1-D preference unchanged), C4 open, C2 §12 open,
+6.0d/6.0e not authorized, ORD-A sequencing-only.**
+
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
 **Status: ⬜ not started.** Depends on stable Stage 4/5 contracts and Stage 6 admin actions.
