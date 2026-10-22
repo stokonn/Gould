@@ -305,3 +305,24 @@ small tmpfs (7.8 GiB) — do not unzip large archives there. All builds
 No physical phone / implicit ADB device; explicit `emulator-NNNN` serial only. No push, tag,
 merge, release or APK publication without separate authorization. Do not mark Stage 5 tasks
 5.10–5.13 complete; do not start Stage 6. Never weaken test assertions; never fabricate results.
+
+## Addendum — Stage 6 C6 contract spike (2026-10-22, isolated branch, local-only)
+
+Owner-authorized local verification prototype executed on branch
+`spike/goldberg-0.11-stage-6-contract` (from planning HEAD `c22adb1`; **planning
+branch untouched, spike never merged**): `spikes/contract-c6/` — disposable
+in-process `/v1` contract simulator (synthetic identities, fake sessions, fake
+clock, per-run `node:sqlite`, zero npm deps, static scan PASS: no network
+surface). Executed: **79 tests / 79 pass / 0 fail** (Node v22.23.1, run
+2026-10-22T06:40Z; first run 69/79 → 10 root-caused failures fixed and
+preserved in
+[results/SUMMARY.md §1](https://github.com/stokonn/Goldberg/blob/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6/results/SUMMARY.md)
+failure log — stable link at commit `d2a95d4`, the spike code stays isolated
+on its branch). Covers THREAT-MODEL [L] rows T5–T18/T22
+incl. 10-trial multi-process approve race (exactly one commit/trial), fault-
+injection rollback, kill switch, quotas, SSRF static guard, audit chain.
+**Not executed (precise blockers):** C2 §12 production runtime (provisioning
+gate 6.0d: D5b unresolved, C4 open, ORD-A steps 4–6), all [I]-venue rows, real
+Postgres isolation, HTTP/token layer (C2 S1–S19 reused), CPU (C2 measured),
+tasks 6.1–6.18. **No gates changed: 6.0f UNCHECKED, 6.1–6.18 unchecked, no
+accounts/provisioning/merge/tag/release, Stage 7 untouched, 0 CZK/month.**

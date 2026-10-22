@@ -128,3 +128,26 @@ Host gate executed this session (2026-10-20, desktop):
 - androidTest compile: **0 errors**; warnings: 7+ nullable `listFiles()` receivers (runner
   test), 1 pre-existing `Stage3bBackupTest` reified-type warning.
 - Installed-on-emulator app APK is stale (Oct 16) — reinstall fresh APKs before running tests.
+
+## Executed — Stage 6 C6 contract spike (2026-10-22, isolated branch, local-only)
+
+Evidence links below point at the stable spike commit
+[`d2a95d4`](https://github.com/stokonn/Goldberg/tree/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6)
+because the executable `spikes/contract-c6/` directory is intentionally not
+part of this planning branch (code isolation preserved).
+
+| # | Command | Result |
+|---|---|---|
+| C1 | `node tools/execute.mjs` (in `spikes/contract-c6/`) | **PASS — 79 tests / 79 pass / 0 fail**, exit 0, run `2026-10-22T06:40:20Z`→`06:40:23Z`, Node v22.23.1; static isolation scan: 17 files, **0 forbidden findings** (no http/net/dns/fetch/undici/wrangler surface; `child_process` only for the in-repo race test). Raw: [tap.txt](https://github.com/stokonn/Goldberg/blob/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6/results/raw/tap.txt), [run.json](https://github.com/stokonn/Goldberg/blob/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6/results/raw/run.json), summary-data.json (same directory). |
+| C2 | `node --test tests/*.test.mjs` (run 1, debugging) | **69/79 pass, 10 fail** — all root-caused and preserved: 1 real server bug (uncaught idempotency `HttpError` → now 422 response), 6 test-side bugs (invalid revision flow; session TTL vs 24 h fake-clock jumps; wrong error-envelope requestId path; `GENESIS` first-link hash), 2 SSRF gaps (WHATWG hex-form v4-mapped `::ffff:7f00:1`; non-4-part numeric host) — see [SUMMARY.md §1 failure log](https://github.com/stokonn/Goldberg/blob/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6/results/SUMMARY.md). |
+| C3 | `node --test tests/*.test.mjs` (run 2, after fixes) | **79/79 pass, 0 fail**, exit 0. |
+
+Suite coverage executed: V1 validation (16), V2 authz (14), V3 existence (9),
+V4 moderation (10), V5 idempotency (7), V6 failures (7), V7 SSRF-static (8),
+V8 audit chain (6), V9 multi-process race (10 trials + 1 hygiene = 12 tests).
+
+**Not executed / no claim:** C2 §12 production runtime, all [I]-venue rows, real
+Postgres isolation, HTTP/JWT/CSRF/CORS (C2 scope), CPU measurement (C2),
+tasks 6.1–6.18, Android/emulator checks (untouched), lint (no app code).
+`node:sqlite` ExperimentalWarning recorded honestly in TAP. No integration or
+production readiness is claimed; 6.0f stays UNCHECKED.

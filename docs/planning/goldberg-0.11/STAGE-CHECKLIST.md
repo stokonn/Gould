@@ -487,6 +487,28 @@ implementation tasks UNCHECKED.**
 checks (links, contract reuse, decision-reference synchronization) are recorded in
 the Stage 6 documentation session report, not as implementation evidence.
 
+**C6 spike addendum (2026-10-22, isolated local prototype — NOT implementation):**
+an owner-authorized, local-only verification prototype ran on
+`spike/goldberg-0.11-stage-6-contract` (never merged; planning baseline
+`c22adb1`): `spikes/contract-c6/` simulates the `/v1` contract in-process
+(synthetic identities, fake sessions, fake clock, disposable SQLite, zero npm
+deps, zero network) and executed THREAT-MODEL [L] rows T5–T18/T22 including a
+10-trial multi-process approval race — **79 tests / 79 pass / 0 fail** (run
+`2026-10-22T06:40Z`, Node v22.23.1; first run 69/79 with 10 root-caused,
+fixed and preserved failures). Evidence — stable links at the verified spike
+commit, because the executable `spikes/contract-c6/` directory exists only on
+`spike/goldberg-0.11-stage-6-contract` and is deliberately absent here:
+[results/SUMMARY.md](https://github.com/stokonn/Goldberg/blob/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6/results/SUMMARY.md),
+[results/raw/tap.txt](https://github.com/stokonn/Goldberg/blob/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6/results/raw/tap.txt),
+[README (scope/blockers)](https://github.com/stokonn/Goldberg/blob/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6/README.md)
+— all at commit [`d2a95d4`](https://github.com/stokonn/Goldberg/tree/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6).
+This is **contract-behavior evidence only**: no
+integration/production readiness claimed, HTTP/token layer covered by C2 (not
+re-tested), real Postgres isolation and all [I]-venue rows NOT executed
+(provisioning gate unchanged), CPU not re-measured (C2). **This addendum closes
+no task: 6.1–6.18 remain unchecked and 6.0f remains UNCHECKED; D5b/Q1
+unresolved, C4 open, 6.0d/6.0e not authorized, ORD-A sequencing-only.**
+
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
 **Status: ⬜ not started.** Depends on stable Stage 4/5 contracts and Stage 6 admin actions.

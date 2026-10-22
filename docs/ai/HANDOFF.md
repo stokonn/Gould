@@ -318,4 +318,29 @@ OPEN, 6.0f UNCHECKED, 6.0d/6.0e NOT AUTHORIZED, ORD-A sequencing-only, no
 accounts/provisioning/OAuth/implementation, 0 CZK/month, Stage 7 untouched,
 Stage 5 remains COMPLETE.**
 
+**Addendum 6 (2026-10-22, C6 contract-behavior spike — isolated, local-only):**
+an owner-authorized disposable simulator was built and executed at
+`spikes/contract-c6/` on branch **`spike/goldberg-0.11-stage-6-contract`**
+(created from planning HEAD `c22adb1`; push that branch only; **never merge**;
+planning branch remains at its own HEAD). It verifies the `/v1` contract layer
+(validation allowlist/caps, roles + default-deny + live revocation/suspension,
+existence-hidden reads, moderation state machine + conflicts, idempotency
+replay/mismatch/expiry, fault-injection rollback + kill switch + quotas,
+SSRF static guard, hash-chained audit, multi-process approval race) with
+**79/79 tests passing** (Node v22.23.1, zero npm deps, zero network; first run
+69/79 with 10 root-caused fixes — failure log preserved). C2's HTTP/token/CPU
+results are reused, not re-tested. Evidence — stable links at the verified
+spike commit [`d2a95d4`](https://github.com/stokonn/Goldberg/tree/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6)
+(the executable directory is absent from this branch):
+[results/SUMMARY.md](https://github.com/stokonn/Goldberg/blob/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6/results/SUMMARY.md),
+[raw TAP](https://github.com/stokonn/Goldberg/blob/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6/results/raw/tap.txt),
+[README (scope/blockers)](https://github.com/stokonn/Goldberg/blob/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6/README.md).
+**Next step for a fresh agent:** read the spike README §"Permissible vs
+blocked" and this addendum. The docs-only port of `d2a95d4` to this planning
+branch is DONE (2026-10-22, no code merge); then await
+owner decisions — **do not close any of 6.1–6.18, do not treat spike results
+as 6.0f acceptance, do not provision, no accounts/OAuth, D5b/Q1 unresolved, C4
+open, 6.0d/6.0e not authorized, ORD-A sequencing-only, 0 CZK/month, Stage 7
+untouched, Stage 5 remains COMPLETE.**
+
 created by stokonn with love <3

@@ -353,5 +353,38 @@ pre-launch gates.**
   UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing-only; 0 CZK unchanged.**
   No checkboxes closed by this entry — 6.0b, 6.0d, 6.0e, 6.0f all unchanged;
   no accounts, no provisioning, no OAuth, no code, no money.
+- 2026-10-22 — **C6 contract-behavior verification spike EXECUTED
+  (isolated, local-only, owner-authorized prototype; not production
+  implementation).** New: `spikes/contract-c6/` on branch
+  `spike/goldberg-0.11-stage-6-contract` (created from this branch's HEAD
+  `c22adb1`; **never merged**, planning branch untouched) — a disposable
+  in-process simulator of the `/v1` contract (API-CONTRACTS + DATA-MODEL §2–§6)
+  with synthetic identities, fake sessions, fake clock, per-run isolated
+  SQLite (`node:sqlite`), **zero npm dependencies and zero network** (static
+  scan: 17 files, no http/net/dns/fetch surface). Verified THREAT-MODEL [L]
+  rows T5, T6, T7, T8, T10 (incl. a 10-trial multi-process concurrent-approve
+  race: exactly one commit per trial), T11, T12, T13, T14 (static portion),
+  T16, T17 (fault-injection full rollback + idempotent retry), T18 (local
+  chain + tamper detection), T22. **Result: 79 tests / 79 pass / 0 fail**
+  (first run was 69/79 — 10 root-caused failures preserved in
+  `results/SUMMARY.md` §1 failure log; one real server bug fixed: uncaught
+  idempotency `HttpError` → 422 response). Evidence — stable links at the
+  verified spike commit (the executable directory is absent from this branch):
+  [results/SUMMARY.md](https://github.com/stokonn/Goldberg/blob/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6/results/SUMMARY.md),
+  [results/raw/tap.txt](https://github.com/stokonn/Goldberg/blob/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6/results/raw/tap.txt),
+  [results/raw/run.json](https://github.com/stokonn/Goldberg/blob/d2a95d4b83c634aacb4f7f74432f2bd8980cf218/spikes/contract-c6/results/raw/run.json)
+  (executor `tools/execute.mjs`, run
+  `2026-10-22T06:40Z`, Node v22.23.1). Blocked/skipped with precise blockers
+  (not bypassed): C2 §12 production runtime (needs provisioning = 6.0d, gated
+  by D5b/C4/ORD-A steps 4–6), all [I]-venue rows (real Google/Supabase/browser),
+  real Postgres isolation proof, tasks 6.1–6.18, CPU re-measurement (C2
+  already measured). Contract ambiguities found (5, incl.
+  `DELETE /v1/session` idempotency reading and revision-timing) are documented
+  in the spike README for implementation-time decisions. C2 reuse: token/
+  HTTP-layer security (S1–S19) and CPU results NOT re-tested here.
+  **No checkboxes closed by this entry — 6.0b, 6.0d, 6.0e, 6.0f all unchanged;
+  6.1–6.18 all remain unchecked; Q1/D5b UNRESOLVED; C4 OPEN; ORD-A
+  sequencing-only; no accounts, no provisioning, no OAuth, no merge, no tag,
+  no release, 0 CZK/month, Stage 7 untouched.**
 
 created by stokonn with love <3
