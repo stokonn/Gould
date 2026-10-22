@@ -1,5 +1,11 @@
 # Q1 — Professional review brief: operator eligibility and controller determination (D5b)
 
+> **Current factual amendment (2026-10-22):** an owner-created Supabase project
+> EXISTS; organization Free/tier_free and Frankfurt/healthy metadata externally
+> verified by ChatGPT connected Supabase integration (2026-10-22), not by this
+> coding agent. Billing/payment methods and remaining configuration UNVERIFIED.
+> See C4 §H; no Q1 question, operator decision or approval changes.
+
 **Goldberg 0.11 · Stage 6 · handoff document for a qualified professional · documentation-only ·
 prepared 2026-10-22 · companion to [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) ·
 branch `docs/goldberg-0.11-stage-6-planning`**
@@ -42,7 +48,7 @@ branch `docs/goldberg-0.11-stage-6-planning`**
 |---|---|---|
 | F-1 | Goldberg is a **free, non-commercial** open-source Android application with a planned *optional* community backend; **no monetization is approved or implemented now** (commercial features are only a possible future-version consideration). | Q1 §1.7 (PD-1) |
 | F-2 | Intended architecture: **Cloudflare Workers Free** (static + `/v1` BFF) + **Supabase Free, region `eu-central-1` (Frankfurt)**, under a permanent **0 CZK/month** requirement (no paid plans, billing methods, chargeable trials or auto-upgrades). | CLOUD-READINESS-PLAN §1.1; C1 |
-| F-3 | **Owner-created provider accounts exist (reported 2026-10-22); no project or Worker is provisioned.** Existing accounts do not resolve eligibility/controller duties. Provisioning (6.0d) requires a separate explicit owner instruction and a passed Q1/D5b. | C4 §F.1/§F.5; OPEN-DECISIONS §5; Q1 §3 |
+| F-3 | **Owner-created provider accounts and a Supabase project EXIST.** ChatGPT connected Supabase integration externally verified organization Free/tier_free, Frankfurt/ACTIVE_HEALTHY, PostgreSQL 17.11, 0 public tables/recorded migrations/Edge Functions on 2026-10-22; this coding agent did not run those checks. Billing/payment methods and remaining configuration UNVERIFIED; no controller determination or 6.0d authorization/completion follows. Cloudflare Worker NOT DEPLOYED in the verified record. | C4 §H; OPEN-DECISIONS §5; Q1 §3 |
 | F-4 | Under both providers' DPAs, **Cloudflare and Supabase are contracted as processors** for the service's personal data; each is a controller for its own account/billing data. | Q1 §1.1 CF-4/CF-6, §1.2 SB-3, §10 |
 | F-5 | Roles are kept distinct: **contract holder · technical administrator · GDPR controller · D5a operator contact** (no contact authorized for publication today). | Q1 standing constraints; Q1 §10.1 |
 | F-6 | First real-user collection is gated at **6.16**; until then only synthetic data may be used; the **journal/practice data of the app never crosses** into this backend. | C3; OPEN-DECISIONS §5 |

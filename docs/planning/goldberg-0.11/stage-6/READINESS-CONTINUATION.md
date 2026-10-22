@@ -1,3 +1,31 @@
+## Existing-project reconciliation checklist — 2026-10-22
+
+Purpose/scope: reconcile existing Supabase project in Stage 6 planning/handoff and
+one C4 dashboard bullet; no code, database, resources or configuration changed.
+Current source-attributed metadata and unknowns are in C4 §H. ChatGPT's connected
+Supabase integration externally verified the supplied observations on 2026-10-22;
+this coding agent did not execute those checks. Older zero-project evidence below
+is historical, not current inventory. Display names retained only in ignored notes.
+
+- [x] Recover eab990b, current Issue/checkpoints and concurrent branch/worktree state.
+- [x] Discover installed Supabase integration; this session has no callable Supabase tools.
+- [x] Record external ChatGPT observations: Free/tier_free, Frankfurt, ACTIVE_HEALTHY, PG 17.11, 0 public tables/recorded migrations/Edge Functions.
+- [x] Keep billing/payment methods, quotas, Auth/security and direct DB connectivity UNVERIFIED.
+- [x] Obtain approval for C4-only edit and subsequent external-verification correction; publish and verify exact final body.
+- [x] Final documentation/policy consistency checks and record results.
+- [x] Prepare verified reconciliation documentation for the authorized dedicated-branch commit/push.
+
+Status: documentation reconciliation VERIFIED; remaining hosted configuration
+checks remain explicitly open. This checkpoint is carried by its containing
+commit on docs/goldberg-0.11-stage-6-readiness. Issue published and exact
+readback passed: 9,276 characters/52 lines; body SHA-256
+970b5a9e1dbcc632fba28403d440a4ec6183ddc6b48720d0dd30784566699328;
+all 63 comments, labels/milestone/state and Project In Progress unchanged. No new
+comment. Production backend NOT IMPLEMENTED, Worker NOT DEPLOYED in verified record,
+Google OAuth not configured in implementation record/hosted settings UNVERIFIED;
+real-user collection NOT AUTHORIZED. Q1/D5b, C4, C2 §12 and 6.0f remain OPEN;
+6.0d/6.0e NOT AUTHORIZED, 6.0f/6.1–6.18 UNCHECKED; 0 CZK/month. No Stage 7 work.
+
 ## Issue #31 dashboard baseline — published and verified 2026-10-22
 
 Owner approved the exact editorial draft; only the Issue description was replaced.
@@ -223,3 +251,16 @@ All technical gates unchanged: Q1/D5b unresolved/blocking; C4 OPEN; C2 §12 OPEN
 only; 0 CZK/month. Stage 7A conditional/X10 OPEN, 7B not started (latest separate
 Stage 7 branch); no Stage 7 code or evidence modified. No Gradle, APK, screenshots,
 emulator, hosted-runtime or new spike execution. No merge/tag/release/provisioning.
+
+
+### Reconciliation verification executed (2026-10-22)
+
+Commands: `python3 scripts/check_agent_policy.py`, `check_backup_fixtures.py`,
+`check_history_paging.py`, `check_localization.py`, `check_migrations.py` — all
+PASS (policy; 3 fixtures; 106 sessions/4 pages; 922 EN/CZ resources; v1–9→10 DDL).
+Local Markdown links, 12-file documentation-only scope, original approval/task
+checkboxes, verbatim Q1 professional-review questions, preserved non-Stage-6
+sections, external-verification attribution and published baseline hash — PASS.
+`git diff --check` PASS. No Gradle/APK, JVM suite, emulator/instrumentation,
+Supabase/production SQL, real-user rows, new cloud metadata calls, or completed
+PG/SQLite spike/research reruns. No screenshots inspected. No new Issue comments.

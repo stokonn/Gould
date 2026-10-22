@@ -1,3 +1,46 @@
+## Current Issue #31 baseline after Supabase reconciliation — 2026-10-22
+
+Published with explicit owner authorization; verified at 2026-10-22T19:41:30Z:
+9,276 Unicode characters/52 lines; exact UTF-8 SHA-256
+`970b5a9e1dbcc632fba28403d440a4ec6183ddc6b48720d0dd30784566699328`.
+Only C4 observation text changed. All 63 comment records and Issue metadata
+unchanged; Goldberg Development remains In Progress. No new checkpoint comment.
+Supersedes the older 8,925-character baseline for future conflict comparisons.
+
+## Existing Supabase project — externally verified reconciliation (2026-10-22)
+
+The owner relayed verification by **ChatGPT's connected Supabase integration** on
+2026-10-22: existing organization/project identity, organization Free/`tier_free`,
+project Frankfurt (`eu-central-1`), `ACTIVE_HEALTHY`, PostgreSQL 17.11, **0 public
+tables, 0 recorded migrations, 0 Edge Functions**. These are externally verified
+observations; **this coding agent did not execute those checks**. Display names
+stay in ignored local notes under the public no-account-identifiers policy.
+This session still exposes no callable Supabase tools; that capability limitation
+does not negate the separate external verification.
+
+Billing/payment methods, quota usage, Auth providers/security, direct database
+connectivity from this agent and non-public schema configuration remain **UNVERIFIED**.
+Zero public tables is not proof that every schema is empty or that Auth is disabled.
+Production backend **NOT IMPLEMENTED** in the verified repository; Cloudflare Worker
+**NOT DEPLOYED** in the verified record. Google OAuth not configured in Goldberg's
+implementation record; hosted Google configuration UNVERIFIED. Real-user collection
+**NOT AUTHORIZED**. Do not create another project or modify the existing one.
+
+Q1/D5b, C4, C2 §12 and 6.0f remain **OPEN** (6.0f UNCHECKED); 6.0d/6.0e **NOT
+AUTHORIZED**, 6.1–6.18 UNCHECKED; ORD-A sequencing only; 0 CZK/month permanently.
+Project existence does not complete/authorize 6.0d. Q1-C denotes the operational
+hold, not zero-resource inventory; no operator option is selected. Prior zero-project
+observations are historical. Stage 7A conditional/X10 OPEN and 7B not started stay
+unchanged; no Stage 7 work is performed here.
+
+Current checklist and metadata inventory: docs/planning/goldberg-0.11/stage-6/
+C4-PREPROVISIONING-CHECKLIST.md §H and READINESS-CONTINUATION.md reconciliation
+entry. Base eab990b on docs/goldberg-0.11-stage-6-readiness; no newer remote commit
+or conflicting local work at recovery. Issue #31 still matched the verified
+8,925-character baseline on recovery; latest checkpoint 6349209052. The owner approved the C4-bullet update and its subsequent external-verification
+correction; the exact published body and validation are recorded in C4 §H.
+No new Issue comment was added.
+
 ## Issue #31 dashboard baseline — published and verified 2026-10-22
 
 Owner approved the exact editorial draft; only the Issue description was replaced.

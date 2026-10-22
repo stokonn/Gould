@@ -1,5 +1,10 @@
 # C4 — Pre-provisioning checklist (terms, pricing, DPA, subprocessors) — preparation snapshot
 
+> **Current inventory amendment (2026-10-22):** owner-created Supabase project
+> EXISTS; ChatGPT connected-integration observations are attributed in §H below.
+> This coding agent did not execute those checks. Earlier zero-project
+> observations are historical. No C4 checkbox or provisioning authorization changes.
+
 **Goldberg 0.11 · Stage 6 · D8b condition C4 support document · documentation-only ·
 prepared 2026-10-21 · preliminarily re-verified and reconciled 2026-10-22 (§F) ·
 branch `docs/goldberg-0.11-stage-6-planning`**
@@ -11,7 +16,8 @@ branch `docs/goldberg-0.11-stage-6-planning`**
 > **6.0f stays unchecked**, and the final C4 verification must be re-run
 > **immediately before** any provisioning under a separate explicit owner
 > instruction, using the "⚠ RE-VERIFY" items below. Prepared in response to C3
-> §11 item 2 and C3 §13 decision point 1. No accounts exist, none were created,
+> §11 item 2 and C3 §13 decision point 1. At the original snapshot no accounts existed;
+> subsequent owner-created accounts/project are reconciled in §F/§H. No agent created them;
 > no provisioning, OAuth configuration or deployment is authorized by this file.
 > **AMENDED 2026-10-22 (§F): the owner reports both provider accounts now
 > exist** — an owner-side fact that authorizes nothing and discharges no row:
@@ -268,5 +274,78 @@ challenge on EUR-Lex ELI/HTML/PDF; EDPS 403); X-7 not retried. X-2 EC adequacy
 guidance re-read, but recipient certification and current legal-status assessment
 remain open. No C4 §D checkbox changes. N-11–N-13 owner observations preserved;
 Supabase billing/payment posture remains unverified; no configuration changed.
+
+created by stokonn with love <3
+
+
+## H. Existing owner-created Supabase project — 2026-10-22
+
+### Purpose, scope and attribution
+
+Reconcile the existing project without creating another or changing hosted state.
+Scope: Stage 6 documentation and one Issue #31 C4 bullet. The owner first reported
+project existence/Free/Frankfurt, then supplied **externally verified observations
+from ChatGPT's connected Supabase integration on 2026-10-22**. This coding agent
+**did not execute those metadata, inventory or health checks**; their source is the
+owner-relayed ChatGPT integration verification. Preserve that attribution in every
+future checkpoint. Project/organization display names are retained only in ignored
+local notes; no account identifiers or secrets are committed to public GitHub.
+
+| Item | Dated observation / source | Current verification status |
+|---|---|---|
+| Project existence, name and organization | ChatGPT connected Supabase integration, 2026-10-22; matches the owner-supplied display names | VERIFIED EXTERNALLY; not checked by this coding agent |
+| Organization plan | free / tier_free | VERIFIED EXTERNALLY; not proof of payment-method absence |
+| Project region | eu-central-1 (Frankfurt) | VERIFIED EXTERNALLY; not an EU-only processing/compliance claim |
+| Project status | ACTIVE_HEALTHY | VERIFIED EXTERNALLY at the recorded date; not a continuous health guarantee |
+| PostgreSQL version | 17.11 | VERIFIED EXTERNALLY |
+| Public tables | 0 | VERIFIED EXTERNALLY; scope is public schema, not all database namespaces |
+| Recorded migrations | 0 | VERIFIED EXTERNALLY; no Goldberg migration/application rollout is inferred |
+| Edge Functions | 0 | VERIFIED EXTERNALLY; not a statement about Cloudflare or hosted Auth providers |
+| Direct database accessibility from this coding agent | No connection/query executed by this agent | UNVERIFIED; not a failed connectivity test |
+| Non-public Goldberg schema/configuration | No broader schema inventory supplied | UNVERIFIED; empty public schema does not prove absence of every database object |
+| Auth providers/security | No sanitized Auth/security metadata supplied | UNVERIFIED: Google enablement, redirect/origin settings, MFA, SSL/RLS and related settings |
+| Billing/payment methods/add-ons/quota usage | Free organization confirmed externally; no other billing/usage evidence supplied | UNVERIFIED; Free does not establish no card, no paid add-ons or zero accrued costs |
+
+**This session's own discovery:** Supabase plugin reported installed/enabled by
+Plugin Management; zero callable Supabase tools are exposed, including after
+rechecking. Installation metadata is not project access. This agent issued no
+Supabase project/DB request, SQL, user-row read, key request, login, token inspection
+or hosted configuration operation. No secrets were requested or exposed. The
+session limitation and the separate ChatGPT verification are distinct evidence.
+
+**Implementation/authorization record:** production backend NOT IMPLEMENTED;
+Cloudflare Worker NOT DEPLOYED in the last verified record. Google OAuth NOT
+CONFIGURED in Goldberg's implementation record; hosted Google settings UNVERIFIED.
+Real-user collection NOT AUTHORIZED. Existing project does not complete or authorize
+6.0d. No project deletion/recreation, migrations, Auth changes or replacement project.
+
+### Reconciliation tasks (documentation only)
+
+- [x] Recover eab990b, latest Issue/checkpoints and unchanged remote Stage 6/7 heads.
+- [x] Discover this session's integration availability without accessing credentials/user rows.
+- [x] Record externally verified ChatGPT metadata separately from this agent's checks and remaining unknowns.
+- [x] Publish only the owner-approved C4 bullet and the subsequent explicitly authorized external-verification correction; exact body readback passed.
+- [x] Final documentation/policy consistency verification: five host scripts, link/scope/attribution and unchanged-gate checks PASS.
+- [x] Prepare the verified documentation checkpoint for the authorized dedicated-branch commit/push.
+
+Issue #31 now has 9,276 Unicode characters / 52 lines; verified publication time
+2026-10-22T19:41:30Z. Exact UTF-8 body SHA-256:
+`970b5a9e1dbcc632fba28403d440a4ec6183ddc6b48720d0dd30784566699328`.
+The correction changed only C4's observation text; all 63 full comment records,
+Issue labels/milestone/state and Project In Progress were preserved. No new comment.
+The brief earlier owner-report-only update was corrected after the external
+verification arrived; its now-superseded inventory is not the current baseline.
+
+Next safe task: through an already authorized session exposing Supabase tools,
+read only sanitized Auth/security flags, database metadata and billing/usage
+indicators for the existing project. No user rows or secret-bearing configuration;
+no new credentials, authentication, scope changes or resource modifications.
+Otherwise leave each unknown UNVERIFIED. Q1 professional-review handoff and C4
+TIA/transfer/retention gaps remain independently actionable documentary work.
+
+**Gates unchanged:** Q1/D5b unresolved/blocking, C4 OPEN, C2 §12 OPEN, 6.0f OPEN
+and UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; 6.1–6.18 UNCHECKED; ORD-A sequencing
+only; 0 CZK/month. All §D checkboxes unchanged. N-12 zero-project observation is
+historical, superseded for current inventory only. No Stage 7 changes.
 
 created by stokonn with love <3

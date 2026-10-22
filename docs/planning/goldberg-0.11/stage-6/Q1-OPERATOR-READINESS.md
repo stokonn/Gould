@@ -1,5 +1,31 @@
 # Q1 — Operator readiness: who may lawfully hold the provider accounts (D5b)
 
+## Existing Supabase project — externally verified reconciliation (2026-10-22)
+
+The owner relayed verification by **ChatGPT's connected Supabase integration** on
+2026-10-22: existing organization/project identity, organization Free/`tier_free`,
+project Frankfurt (`eu-central-1`), `ACTIVE_HEALTHY`, PostgreSQL 17.11, **0 public
+tables, 0 recorded migrations, 0 Edge Functions**. These are externally verified
+observations; **this coding agent did not execute those checks**. Display names
+stay in ignored local notes under the public no-account-identifiers policy.
+This session still exposes no callable Supabase tools; that capability limitation
+does not negate the separate external verification.
+
+Billing/payment methods, quota usage, Auth providers/security, direct database
+connectivity from this agent and non-public schema configuration remain **UNVERIFIED**.
+Zero public tables is not proof that every schema is empty or that Auth is disabled.
+Production backend **NOT IMPLEMENTED** in the verified repository; Cloudflare Worker
+**NOT DEPLOYED** in the verified record. Google OAuth not configured in Goldberg's
+implementation record; hosted Google configuration UNVERIFIED. Real-user collection
+**NOT AUTHORIZED**. Do not create another project or modify the existing one.
+
+Q1/D5b, C4, C2 §12 and 6.0f remain **OPEN** (6.0f UNCHECKED); 6.0d/6.0e **NOT
+AUTHORIZED**, 6.1–6.18 UNCHECKED; ORD-A sequencing only; 0 CZK/month permanently.
+Project existence does not complete/authorize 6.0d. Q1-C denotes the operational
+hold, not zero-resource inventory; no operator option is selected. Prior zero-project
+observations are historical. Stage 7A conditional/X10 OPEN and 7B not started stay
+unchanged; no Stage 7 work is performed here.
+
 **Goldberg 0.11 · Stage 6 · task 6.0b/6.0d support document · documentation-only ·
 prepared 2026-10-21 · reassessed 2026-10-21 (later session — Q1/D5b natural-person
 reassessment) · branch `docs/goldberg-0.11-stage-6-planning`**
@@ -508,7 +534,7 @@ authorized, since it needs no cloud accounts; provisioning-dependent tasks
 
 | Dimension | Content |
 |---|---|
-| **Prerequisites** | None — this is the default posture **today** (nothing provisioned). |
+| **Prerequisites** | Original deferred-provisioning option; current operational hold retains the same gates, but an existing Supabase project is externally verified by ChatGPT connected integration (C4 §H). It is no longer a literal zero-resource inventory. |
 | **Responsibilities** | Keep the collection embargo, keep fail-closed design, keep this register synchronized. |
 | **Risks / open questions** | Delays any end-to-end verification of the C1/C2 architecture (C2 §12 production runtime check needs a real Worker); provider terms/pricing/subprocessors continue to move — hence the dated C4 re-verification requirement. |
 | **0 CZK impact** | **None.** |

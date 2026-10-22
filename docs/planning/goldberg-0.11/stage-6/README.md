@@ -1,13 +1,40 @@
 # Goldberg 0.11 — Stage 6: Secured Optional Community Backend — PLANNING PROPOSAL
 
+## Existing Supabase project — externally verified reconciliation (2026-10-22)
+
+The owner relayed verification by **ChatGPT's connected Supabase integration** on
+2026-10-22: existing organization/project identity, organization Free/`tier_free`,
+project Frankfurt (`eu-central-1`), `ACTIVE_HEALTHY`, PostgreSQL 17.11, **0 public
+tables, 0 recorded migrations, 0 Edge Functions**. These are externally verified
+observations; **this coding agent did not execute those checks**. Display names
+stay in ignored local notes under the public no-account-identifiers policy.
+This session still exposes no callable Supabase tools; that capability limitation
+does not negate the separate external verification.
+
+Billing/payment methods, quota usage, Auth providers/security, direct database
+connectivity from this agent and non-public schema configuration remain **UNVERIFIED**.
+Zero public tables is not proof that every schema is empty or that Auth is disabled.
+Production backend **NOT IMPLEMENTED** in the verified repository; Cloudflare Worker
+**NOT DEPLOYED** in the verified record. Google OAuth not configured in Goldberg's
+implementation record; hosted Google configuration UNVERIFIED. Real-user collection
+**NOT AUTHORIZED**. Do not create another project or modify the existing one.
+
+Q1/D5b, C4, C2 §12 and 6.0f remain **OPEN** (6.0f UNCHECKED); 6.0d/6.0e **NOT
+AUTHORIZED**, 6.1–6.18 UNCHECKED; ORD-A sequencing only; 0 CZK/month permanently.
+Project existence does not complete/authorize 6.0d. Q1-C denotes the operational
+hold, not zero-resource inventory; no operator option is selected. Prior zero-project
+observations are historical. Stage 7A conditional/X10 OPEN and 7B not started stay
+unchanged; no Stage 7 work is performed here.
+
 Status: **planning prepared and owner decision review completed (2026-10-21);
 unimplemented, awaiting a separate Stage 6 implementation instruction.** The owner
 settled the design decisions D4/D5/D8 on 2026-10-21 (outcomes recorded in
 [OPEN-DECISIONS.md](OPEN-DECISIONS.md)); several **legal/operational details and
 pre-launch gates remain open**, and **provisioning, OAuth configuration and the
-implementation tasks themselves are separately gated**. No application code, cloud
-account, infrastructure, billing or OAuth configuration was created, changed or
-provisioned. No backend exists; nothing in this directory is deployed.
+implementation tasks themselves are separately gated**. This planning work created no application code, cloud accounts or infrastructure,
+and changed no billing or OAuth configuration. The existing
+Supabase project is externally verified by ChatGPT connected integration (C4 §H); production backend implementation has not started and
+nothing in this directory is deployed.
 
 Canonical policy: [AGENTS.md](../../../../AGENTS.md). Stage register:
 [STAGES.md](../STAGES.md). Living checklist: [STAGE-CHECKLIST.md](../STAGE-CHECKLIST.md).
@@ -117,11 +144,13 @@ documentation extends the baseline, it does so additively and cites it.
   professional verification. **A directional preference only: not a
   selection, not an approval, not a D5b resolution** — D5b stays legally
   unresolved and blocking for 6.0d; Q1-C remains the operative posture
-  (nothing provisioned); see
+  (operational hold; owner-created project reported in C4 §H); see
   [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md) PREFERENCE ADDENDUM.
 - **Not started:** every Stage 6 implementation task (6.1–6.18 in `CHECKLIST.md`),
-  provisioning, OAuth configuration, integration environments. No backend code, no
-  cloud resources, no credentials exist.
+  authorized production backend setup, OAuth configuration and integration execution.
+  The owner-created Supabase project and public metadata are externally verified
+  by ChatGPT connected integration; remaining hosted schema/security configuration
+  is UNVERIFIED. No backend implementation exists.
 - **Still requires explicit owner approval:** implementation start, provisioning
   (6.0d), Google OAuth console configuration (6.0e), and opening the service to real
   contributors (pre-collection gate, OPEN-DECISIONS.md §5).

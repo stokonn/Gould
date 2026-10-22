@@ -635,6 +635,25 @@ checkpoint 6349066370 posted. Publication evidence and the subsequently owner-ap
 Issue dashboard baseline are documented in stage-6/READINESS-CONTINUATION.md. All Stage 6
 technical gates unchanged; this is documentation completion, not backend acceptance.
 
+**Stage 6 existing-project reconciliation (2026-10-22, documentation only):**
+purpose/scope: reconcile existing Supabase project in Stage 6 planning/handoff
+and one C4 dashboard bullet, without cloud changes or gate acceptance. ChatGPT's
+connected Supabase integration externally verified organization/project identity,
+Free/tier_free, Frankfurt/eu-central-1, ACTIVE_HEALTHY, PG 17.11, 0 public tables,
+0 recorded migrations and 0 Edge Functions. This coding agent did not execute
+those checks; billing/payment methods and remaining settings remain UNVERIFIED.
+Current evidence: [C4 §H](stage-6/C4-PREPROVISIONING-CHECKLIST.md); tasks/results:
+[readiness checklist](stage-6/READINESS-CONTINUATION.md). Owner-approved C4 correction
+published and exact readback passed; all 63 comments/Issue metadata/Project preserved.
+Earlier zero-project observations remain dated history. Production backend NOT
+IMPLEMENTED, Worker NOT DEPLOYED in verified record, Google OAuth not configured
+in implementation record/hosted settings UNVERIFIED; real-user collection NOT
+AUTHORIZED. **Q1/D5b, C4, C2 §12 and 6.0f OPEN; 6.0f/6.1–6.18 UNCHECKED;
+6.0d/6.0e NOT AUTHORIZED; 0 CZK/month.** Documentation verification passed
+(five host scripts, scope/links/attribution/unchanged-gate checks); checkpoint
+prepared for authorized commit/push. No Stage 7 changes or retroactive 6.0d
+authorization/completion.
+
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
 **Status: ⬜ not started.** Depends on stable Stage 4/5 contracts and Stage 6 admin actions.

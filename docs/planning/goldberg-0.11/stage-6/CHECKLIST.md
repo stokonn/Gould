@@ -1,5 +1,31 @@
 # Goldberg 0.11 — Stage 6 implementation checklist (all tasks UNCHECKED)
 
+## Existing Supabase project — externally verified reconciliation (2026-10-22)
+
+The owner relayed verification by **ChatGPT's connected Supabase integration** on
+2026-10-22: existing organization/project identity, organization Free/`tier_free`,
+project Frankfurt (`eu-central-1`), `ACTIVE_HEALTHY`, PostgreSQL 17.11, **0 public
+tables, 0 recorded migrations, 0 Edge Functions**. These are externally verified
+observations; **this coding agent did not execute those checks**. Display names
+stay in ignored local notes under the public no-account-identifiers policy.
+This session still exposes no callable Supabase tools; that capability limitation
+does not negate the separate external verification.
+
+Billing/payment methods, quota usage, Auth providers/security, direct database
+connectivity from this agent and non-public schema configuration remain **UNVERIFIED**.
+Zero public tables is not proof that every schema is empty or that Auth is disabled.
+Production backend **NOT IMPLEMENTED** in the verified repository; Cloudflare Worker
+**NOT DEPLOYED** in the verified record. Google OAuth not configured in Goldberg's
+implementation record; hosted Google configuration UNVERIFIED. Real-user collection
+**NOT AUTHORIZED**. Do not create another project or modify the existing one.
+
+Q1/D5b, C4, C2 §12 and 6.0f remain **OPEN** (6.0f UNCHECKED); 6.0d/6.0e **NOT
+AUTHORIZED**, 6.1–6.18 UNCHECKED; ORD-A sequencing only; 0 CZK/month permanently.
+Project existence does not complete/authorize 6.0d. Q1-C denotes the operational
+hold, not zero-resource inventory; no operator option is selected. Prior zero-project
+observations are historical. Stage 7A conditional/X10 OPEN and 7B not started stay
+unchanged; no Stage 7 work is performed here.
+
 Canonical policy: [AGENTS.md](../../../../AGENTS.md) §"Stage checklist documentation".
 Every task below stays **unchecked** until its verification evidence actually exists
 and is recorded. Planning (this directory) is complete; **no implementation has
@@ -48,11 +74,13 @@ pre-launch gates.**
   [C4-PREPROVISIONING-CHECKLIST.md](C4-PREPROVISIONING-CHECKLIST.md) §D, after
   D5b/Q1 is resolved), secrets in server-side secrets only, kill switch, export
   target. No billing path
-  enabled. ⬜ not started. **Reconciled 2026-10-21 (later session): the owner
+  enabled. ⬜ task NOT AUTHORIZED/NOT COMPLETE; owner-created project
+  EXISTS via external ChatGPT integration verification (C4 §H), not
+  completion of this task. **Reconciled 2026-10-21 (later session): the owner
   chose the approved cloud architecture (Cloudflare Workers Free + Supabase
   Free `eu-central-1`, strict 0 CZK) as the intended deployment path instead of
   the temporary local-only Option C — Option C is no longer the intended path,
-  only the current gated posture (nothing provisioned). The 2026-10-21
+  only the operational hold (existing Supabase project externally verified; C4 §H). The 2026-10-21
   gate-ordering analysis and the future provisioning/verification runbook are in
   [CLOUD-READINESS-PLAN.md](CLOUD-READINESS-PLAN.md); a scoped
   verification-only provisioning step (if the owner chooses ORD-A) is a distinct,
