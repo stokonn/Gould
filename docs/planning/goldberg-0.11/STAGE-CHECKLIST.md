@@ -654,6 +654,20 @@ AUTHORIZED. **Q1/D5b, C4, C2 §12 and 6.0f OPEN; 6.0f/6.1–6.18 UNCHECKED;
 prepared for authorized commit/push. No Stage 7 changes or retroactive 6.0d
 authorization/completion.
 
+**Stage 6 Security & Auth readiness audit (2026-10-22, read-only):** purpose:
+assess two owner-supplied rls_auto_enable() advisor warnings in PostgreSQL event
+context; scope: Stage 6 security/Auth planning and handoff only. Evidence ledger,
+individual tasks/progress, official sources, conditional least-privilege proposal,
+read-only Auth/RLS/API checklist and prepared catalog SELECTs are in
+[stage-6/SECURITY-AUTH-READINESS-AUDIT.md](stage-6/SECURITY-AUTH-READINESS-AUDIT.md).
+Source review complete; exploitability not established; hosted checklist NOT
+EXECUTED. Documentary verification passed (five host checks, links/scope/original
+checkbox preservation); owner-approved C4 sentence published and exact readback
+verified with all comments/metadata preserved. No hosted mutation, no repeated
+concurrency suite, no Stage 7 changes.
+Q1/D5b, C4, C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED; 6.0d/6.0e NOT AUTHORIZED;
+0 CZK/month. No technical gate acceptance.
+
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
 **Status: ⬜ not started.** Depends on stable Stage 4/5 contracts and Stage 6 admin actions.

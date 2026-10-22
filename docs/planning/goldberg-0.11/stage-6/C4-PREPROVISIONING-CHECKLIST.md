@@ -349,3 +349,19 @@ only; 0 CZK/month. All §D checkboxes unchanged. N-12 zero-project observation i
 historical, superseded for current inventory only. No Stage 7 changes.
 
 created by stokonn with love <3
+
+## I. Security Advisor/event-trigger readiness review — 2026-10-22
+
+Two warnings and catalog facts for public.rls_auto_enable() were supplied by the
+owner (not executed by this agent): SECURITY DEFINER/postgres owner, anon and
+authenticated EXECUTE, event_trigger return type, ensure_rls enabled, no public
+application tables. [SECURITY-AUTH-READINESS-AUDIT.md](SECURITY-AUTH-READINESS-AUDIT.md)
+records evidence limits, official-source analysis, conditional narrow remediation
+and the read-only Auth/RLS/API checklist with catalog-only SELECTs.
+
+Exploitability NOT ESTABLISHED; exact deployed language/body/search_path, effective
+ACL provenance and DDL/API paths still unverified. Ordinary PL/pgSQL event-trigger
+calls are blocked outside trigger context, but matching DDL can fire an existing
+privileged hook; neither “definer means exploited” nor “event_trigger means safe”
+is a justified conclusion. Preserve ensure_rls while reviewing; no corrective write
+is authorized. C4 stays OPEN, all §D checkboxes unchanged, all other gates preserved.

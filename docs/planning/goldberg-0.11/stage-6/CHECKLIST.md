@@ -712,3 +712,15 @@ and 6.1–6.18 UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only;
 0 CZK/month. Stage 7A conditional/X10 OPEN; 7B not started. No new implementation,
 merge, deployment, release or application changes. Next product actions remain
 owner-routed Q1 review and owner-performed X10; no physical-device work by agents.
+
+## Security & Auth readiness audit — 2026-10-22 (documentation-only)
+
+Purpose/scope: evaluate owner-supplied advisor/catalog findings without treating
+broad grants as proof of exploitation; prepare the existing-project read-only
+Auth/RLS/API audit. No production code, database, migration or configuration change.
+Tasks, progress, conditional remediation and verification are in
+[SECURITY-AUTH-READINESS-AUDIT.md](SECURITY-AUTH-READINESS-AUDIT.md). Public-source
+review is complete; hosted metadata checklist remains unexecuted. No 6.0d/6.0f,
+Q1/D5b, C4, C2 §12 or 6.1–6.18 completion is implied. Owner approved one concise
+C4 dashboard sentence, now published and exact readback verified; all 63 comments
+and Issue/Project metadata preserved. No new comments. 0 CZK/month preserved.

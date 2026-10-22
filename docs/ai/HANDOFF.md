@@ -1,3 +1,46 @@
+## Current security-audit checkpoint and Issue baseline — 2026-10-22
+
+Read-only documentary audit completed from 4f0cd51 on
+`docs/goldberg-0.11-stage-6-readiness`; actual hosted verification checklist remains
+UNEXECUTED. Use SECURITY-AUTH-READINESS-AUDIT.md for source-attributed facts,
+conditional risk analysis, recommendation and next catalog reads A1–A3.
+Owner-approved single C4-sentence update published and exact readback verified:
+9,442 Unicode characters/52 lines, 2026-10-22T19:56:59Z; SHA-256
+`2abc94feba38ded15eccb75b9bc61c884dff3c6d973e432db2190c23e9cb50dc`. All 63 comments,
+Issue metadata and Project In Progress preserved. No new comments. This supersedes
+older dashboard baselines for future conflict checks. All Stage 6 gates unchanged.
+
+Five host checks and Markdown scope/link/unchanged-checkbox checks PASS; three
+catalog SELECT drafts statically reviewed only. No Supabase SQL/functions/RPC, DDL,
+Auth mutation, grants, event-trigger change, application tests, screenshots or
+completed concurrency/research-suite reruns. This checkpoint is carried by its
+containing documentation commit; publication SHA is resolved from branch history.
+
+## Security & Auth read-only audit — 2026-10-22 (base 4f0cd51)
+
+Owner-supplied catalog facts: public.rls_auto_enable() is SECURITY DEFINER, owned
+by postgres, executable by anon/authenticated, returns event_trigger; ensure_rls
+is an enabled DDL event trigger; no public application tables. This agent did not
+execute those hosted checks. Exact advisor IDs, language/body/search_path, grant
+provenance, DDL rights and API/Auth configuration remain unverified.
+
+Official Supabase and PG17 guidance/source reviewed: direct PL/pgSQL callback calls
+are rejected outside trigger context; existing hooks can still fire on matching
+non-superuser DDL. Excess privileges do not establish exploitability. Preserve the
+RLS guard; inspect metadata/body safely before considering separately authorized,
+function-specific ACL/search-path hardening. No grants, functions, event triggers,
+OAuth settings or resources changed; no function/RPC/DDL probe or user-row read.
+
+Current analysis, read-only checklist, A1–A3 catalog SELECTs and source references:
+docs/planning/goldberg-0.11/stage-6/SECURITY-AUTH-READINESS-AUDIT.md. Hosted checklist
+NOT EXECUTED (no callable Supabase tools in this session). Next independently
+authorized task is those allowlisted metadata reads through an existing authorized
+connection, not a mutation or privilege-escalation test. Owner approved the single C4-sentence Issue update; exact publication and
+verification are recorded above and in the audit document.
+
+Q1/D5b unresolved/blocking; C4 and C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
+6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only; 0 CZK/month. Stage 7 unchanged.
+
 ## Current Issue #31 baseline after Supabase reconciliation — 2026-10-22
 
 Published with explicit owner authorization; verified at 2026-10-22T19:41:30Z:

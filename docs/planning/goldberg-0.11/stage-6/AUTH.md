@@ -156,3 +156,12 @@ be MFA-protected**, and every grant/recovery action must be auditable.
   events (AGENTS.md permanent rule).
 
 created by stokonn with love <3
+
+## Read-only readiness audit (2026-10-22; implementation gates unchanged)
+
+[SECURITY-AUTH-READINESS-AUDIT.md](SECURITY-AUTH-READINESS-AUDIT.md) supplies the
+current catalog/flag-only checklist for existing Auth providers, redirects,
+sessions/MFA, RLS/ACLs and API exposure. It records the owner-supplied event-trigger
+warnings, execution-context limitations and remaining unknowns. It does not
+configure OAuth, create sessions/users, execute RPC, change privileges or verify
+any integration/runtime acceptance row. Existing AUTH.md contracts remain binding.

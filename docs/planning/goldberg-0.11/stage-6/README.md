@@ -165,3 +165,11 @@ recovery/readiness checkpoint; [POSTGRESQL-DESIGN-REQUIREMENTS.md](POSTGRESQL-DE
 contains future 6.1 design inputs. Earlier “no accounts” wording is historical:
 owner-created accounts exist, with owner-attributed observations in C4 §F.5.
 This does not authorize provisioning or resolve any gate.
+
+## Security & Auth readiness audit (2026-10-22)
+
+[SECURITY-AUTH-READINESS-AUDIT.md](SECURITY-AUTH-READINESS-AUDIT.md) is the current
+read-only security finding analysis and verification runbook. Two owner-supplied
+advisor warnings are under contextual review; exploitability is not established.
+Function-body/path/privilege checks remain open; no hosted mutation or new backend
+implementation has occurred, and all Stage 6 gates remain unchanged.
