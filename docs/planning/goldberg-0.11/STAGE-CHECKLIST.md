@@ -717,6 +717,34 @@ Q1/D5b unresolved/blocking; C4 and C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
 AUTHORIZED. Keep ensure_rls; future permissions changes require separate approval
 and compatibility review. No Stage 7 or application changes; no gate acceptance.
 
+
+### Live security evidence / bounded readiness — 2026-10-22 (base 31e0539)
+
+Purpose/scope: reconcile five new external ChatGPT/Supabase read-only findings in
+Stage 6 documentation; narrow remaining work to settings evidence and approval
+choices, without continuing open-ended catalog exploration.
+
+- [x] Record normal ensure_rls → rls_auto_enable dependency and function language/schema dependencies.
+- [x] Record CREATE=false for anon/authenticated across all eight supplied schemas.
+- [x] Record private deployed-source retrieval and structural checks, including exception handling, with safety limits.
+- [x] Record ensure_rls plus six reported Supabase-related system triggers, unchanged.
+- [x] Record both exact advisor names at WARN, unresolved after external rerun.
+- [x] Check accessible integration tools; no callable Supabase tools here, Auth/API settings UNVERIFIED.
+- [ ] Complete one sanitized Auth/API settings pass where access permits; retain inaccessible fields as limitations for scoped owner review.
+
+[Audit §1/§3/§9](stage-6/SECURITY-AUTH-READINESS-AUDIT.md) records exact provenance,
+remaining settings and prioritized readiness verdict. Catalog reconciliation of
+this snapshot is complete; the broader hosted audit/Stage 6 are NOT accepted.
+No completed A1–A3/dependency/schema/inventory queries or concurrency tests rerun.
+Documentation verification results are in docs/ai/VERIFICATION.md.
+
+Q1/D5b unresolved/blocking; C4/C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
+6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only; 0 CZK/month; collection NOT
+AUTHORIZED. Prioritize owner/professional Q1, C4 evidence, separately authorized
+C2 §12/6.0f acceptance, then explicit implementation authorization. Both warnings
+remain; preserve ensure_rls. No hosted/production/Stage 7 changes. Issue #31’s
+concise broader status remains accurate and unchanged; no edit/comment proposed.
+
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
 **Status: ⬜ not started.** Depends on stable Stage 4/5 contracts and Stage 6 admin actions.

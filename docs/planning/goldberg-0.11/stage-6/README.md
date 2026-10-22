@@ -181,3 +181,11 @@ only rls_auto_enable() in public functions; no direct anon/authenticated members
 function dependency count 1; zero public tables/views/materialized views/foreign
 tables. See the audit §8 for limits and remaining source/Auth/API requirements.
 These narrow the review without resolving either warning or any approval gate.
+
+Latest live evidence (external ChatGPT/Supabase, base 31e0539) identifies the normal
+trigger→function dependency and function language/schema dependencies, limits
+CREATE across eight schemas, adds private source structural checks/event-trigger
+inventory and confirms both named WARNs remain. [Audit §9](SECURITY-AUTH-READINESS-AUDIT.md)
+contains the bounded Auth/API matrix and prioritized verdict: no implementation
+authorization. Auth/API flags inaccessible here remain UNVERIFIED; prioritize
+Q1/D5b, C4, C2 §12/6.0f and explicit authorization over more catalog exploration.

@@ -391,3 +391,21 @@ other-schema/indirect DDL paths and complete source safety remain unverified;
 both warnings remain. No billing, Auth or API configuration is verified by these
 inventories. C4 stays OPEN; §D checkboxes and all other approval gates unchanged.
 No permissions/trigger/function changes are authorized; 0 CZK/month preserved.
+
+## L. Live security evidence / bounded next step — 2026-10-22 (base 31e0539)
+
+External ChatGPT/Supabase verification identifies the normal ensure_rls → function
+dependency, function language/schema dependencies, CREATE=false in eight named
+schemas for both API roles, private source structural checks and seven reported
+event triggers. Advisor rerun retains both named definer-EXECUTE WARN findings.
+See [audit §1/§3/§9](SECURITY-AUTH-READINESS-AUDIT.md) for exact evidence and limits.
+This agent did not run those checks. No hosted objects changed; no exploit proved
+or repaired. Earlier §K dependency-identity unknowns are superseded for these rows.
+
+Auth/API settings remain UNVERIFIED: discovery finds the installed/enabled plugin,
+but no callable Supabase tools here. Complete one bounded sanitized settings pass
+where available, retain inaccessible fields and prioritize owner approval decisions.
+C4 legal/transfer/retention and billing/payment/Free evidence remain open; current
+catalog metadata does not prove zero-cost/compliance or authorize 6.0d. C4 and
+C2 §12 OPEN, Q1/D5b unresolved/blocking, 6.0f UNCHECKED; §D boxes unchanged.
+0 CZK/month permanent; no permissions/OAuth/billing/resource changes authorized.

@@ -1,3 +1,48 @@
+## Live Supabase evidence and bounded readiness verdict — 2026-10-22 (base 31e0539)
+
+Externally executed by ChatGPT’s connected Supabase integration, relayed by the
+owner; not queried by this coding agent: ensure_rls → public.rls_auto_enable(),
+normal dependency n; function also depends on plpgsql/public. Both API roles lack
+CREATE in auth/extensions/graphql/graphql_public/public/realtime/storage/vault.
+Private deployed-definition review confirms pinned pg_catalog, public restriction,
+CREATE TABLE filtering, quoted identifiers, RLS logic and exception handling; this
+is structural evidence, not complete safety proof. Inventory found ensure_rls plus
+six Supabase-related system triggers, unchanged. Advisor rerun reports
+anon_security_definer_function_executable and
+authenticated_security_definer_function_executable both WARN, targeting the
+function; unresolved. No exploit demonstrated/repaired or hosted mutation.
+
+Current ledger/checklist/verdict: docs/planning/goldberg-0.11/stage-6/SECURITY-AUTH-READINESS-AUDIT.md
+§1/§3/§9 supersede the earlier pending dependency/schema/source-structure/warning-name
+items. Do not repeat A1–A3 or completed inventory/dependency/schema queries.
+
+Plugin discovery: Supabase installed/ENABLED, but no callable Supabase tools exposed
+here. Auth/API provider, signup, redirect, session/MFA, exposure and SSL/network
+flags remain UNVERIFIED. No credentials, user records, raw definitions or broader
+access requested. Next authorized step: one bounded sanitized settings pass through
+an existing session with the required read tools; retain inaccessible fields as
+limitations, then stop exploratory catalog work and resolve approval decisions.
+
+Readiness: NOT authorized for backend implementation. Priorities: (1) owner obtains
+Q1/D5b professional eligibility decision; (2) C4 transfer/retention/legal and
+billing/payment/0-CZK evidence plus fresh review; (3) separately authorized C2 §12
+verification and explicit 6.0f acceptance; (4) explicit implementation authorization.
+A bounded Auth/API review and owner disposition of remaining WARN/unknowns are
+security acceptance inputs, not permission to alter grants/triggers/functions.
+Q1/D5b unresolved/blocking; C4/C2 §12 OPEN; 6.0f/6.1–6.18 UNCHECKED;
+6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only; 0 CZK/month; real-user collection
+NOT AUTHORIZED. Backend NOT IMPLEMENTED; Worker NOT DEPLOYED.
+
+Issue #31 needs no material correction and stays unchanged (9,564 characters/52
+lines, 63 comments; body SHA-256
+b3a49d6bf39b7181fd675765d3d5d8fff16d04f637ced2bddc69494c4df48549).
+Stage 7A conditional/X10 OPEN and Stage 7B not started remain untouched. Dedicated
+branch docs/goldberg-0.11-stage-6-readiness; this checkpoint is its containing commit.
+
+Eight-file documentation/link/gate/SQL checks and five existing host checks PASS.
+Exact commands/limitations: docs/ai/VERIFICATION.md. Documentation-only publication
+is authorized; no hosted or application test is implied.
+
 ## Additional external catalog inventories — 2026-10-22 (base 9fe83db)
 
 ChatGPT executed four further read-only Supabase catalog queries; results were

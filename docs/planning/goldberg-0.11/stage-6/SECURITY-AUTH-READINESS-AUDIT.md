@@ -18,8 +18,10 @@ Issue #31 C4 sentence. No hosted SQL or configuration operation executed by this
 
 Documentary analysis/verification COMPLETE. A1–A3 are now EXECUTED externally by
 ChatGPT’s connected Supabase integration, as relayed by the owner on 2026-10-22.
-Four additional catalog inventories are also externally EXECUTED (owner-relayed
-2026-10-22; §8). The wider hosted Auth/RLS/API audit remains INCOMPLETE; only the
+Additional inventories and live evidence are externally EXECUTED (owner-relayed
+2026-10-22; §8/§9). Catalog evidence reconciliation is complete for this snapshot;
+remaining work is a bounded Auth/API configuration review and approval decisions.
+The wider hosted Auth/RLS/API audit remains INCOMPLETE; only the
 evidenced portions of the checklist below are checked. This agent did not execute
 hosted queries. This is not Stage 6 acceptance, a vulnerability exploit test, or
 authorization for any corrective write.
@@ -28,23 +30,26 @@ authorization for any corrective write.
 
 | Item | Evidence and scope |
 |---|---|
-| Two Security Advisor warnings concern public.rls_auto_enable() | Supplied in the owner's current handoff; raw warning IDs/text/version not supplied. Do not invent their IDs or mark resolved. |
+| Security Advisor rerun — EXECUTED externally | anon_security_definer_function_executable: WARN; authenticated_security_definer_function_executable: WARN. Both target rls_auto_enable and remain unresolved. Exact check names are now externally observed, not inferred from upstream rules; full warning payload/linter version not supplied. |
 | A1 — EXECUTED externally | Function OID 17603; plpgsql; SECURITY DEFINER true; owner postgres; return event_trigger; function-local search_path pg_catalog; effective EXECUTE anon=true and authenticated=true. ChatGPT connected Supabase integration; owner-relayed results, not executed by this agent. |
 | A2 — EXECUTED externally | ensure_rls; ddl_command_end; enabled O (normal mode); tags CREATE TABLE, CREATE TABLE AS, SELECT INTO; function OID 17603 matches A1; trigger owner postgres. Same external provenance. |
 | A3 — EXECUTED externally | anon/authenticated: superuser, CREATEDB, CREATEROLE, BYPASSRLS, public-schema CREATE and database CREATE all false. postgres: rolsuper=false, rolbypassrls=true, public CREATE=true, database CREATE=true. Same external provenance. Unreported rolinherit values and postgres CREATEDB/CREATEROLE are not inferred. |
 | Additional ACL observations | Externally reported catalog inspection found default function privileges including PUBLIC EXECUTE; no explicit separate anon/authenticated grants identified. A subsequent direct-membership inventory returned no rows for anon/authenticated; broader privilege paths, grant options and default ACL inventory remain unverified. Effective EXECUTE alone did not identify this provenance. |
-| Partial structural source review | External read-only checks found DDL-event filtering, schema checks, quoted identifiers and RLS enablement patterns. This is not a complete source/qualification/dependency audit or a proof of safety; provenance equivalence to a published example is not established. |
+| Private deployed definition / structural review — EXECUTED externally | ChatGPT retrieved the definition privately; confirmed pinned pg_catalog search_path, public-schema restriction, CREATE TABLE filtering, quoted dynamic SQL identifiers, RLS enablement and exception handling. Source is not reproduced here. Structural evidence is not formal proof of complete safety, exact equivalence to a published example, or verified failure behavior. |
 | Additional public function inventory — EXECUTED externally | Only public.rls_auto_enable() found. No additional public functions/overloads or public function wrappers were reported by this inventory. Other schemas, API exposure and complete call paths remain unverified. |
 | Additional direct role-membership inventory — EXECUTED externally | No memberships returned for anon or authenticated. This narrows the membership review; it does not remove PUBLIC privileges, prove the absence of other DDL paths or constitute a complete authorization audit. |
-| Additional function dependency count — EXECUTED externally | Catalog dependency count for rls_auto_enable(): 1. Query text/direction, dependency type and referenced/dependent object identity were not supplied; do not assume the counted row is ensure_rls or a complete dependency graph. |
+| Function dependency identity/direction — EXECUTED externally | Previously counted dependency identified as event trigger ensure_rls → function public.rls_auto_enable(), type n (normal). Function also has catalog dependencies on language plpgsql and schema public. The earlier count of 1 is not a total of both dependency directions or proof of all runtime call paths. |
+| Schema CREATE review — EXECUTED externally | For both anon and authenticated, CREATE=false on auth, extensions, graphql, graphql_public, public, realtime, storage and vault. This does not prove every indirect DDL path impossible or every possible namespace/object/temporary privilege reviewed. |
+| Event-trigger inventory — EXECUTED externally | ensure_rls present alongside six Supabase-related system event triggers, as externally reported. No trigger changed. Names/definitions of the six are not supplied; no safety or ownership equivalence inferred. |
 | Additional public relation inventory — EXECUTED externally | Zero public-schema tables, views, materialized views or foreign tables returned. No applicable current public relation/policy target in that inventory; future RLS coverage is not verified. Other schemas, sequences and other object kinds are not established empty. No user rows accessed. |
 | Existing project Free/tier_free, eu-central-1, ACTIVE_HEALTHY, PostgreSQL 17.11; 0 recorded migrations/Edge Functions | Previously recorded external ChatGPT connected-integration verification in C4 §H. Not re-executed here; this agent has no callable Supabase tools in this session. |
-| Complete body review, exposed API configuration, cross-schema wrappers, dependency identity/direction and remaining DDL paths | UNVERIFIED. Public function/overload inventory and direct API-role memberships are now recorded; those scoped observations do not establish broader properties. |
+| Residual security limits | Structural definition review and the reported dependency/trigger/schema inventories are recorded. Complete source safety, exception failure behavior, cross-schema runtime callers and elimination of all indirect DDL paths are NOT proven. These are limits/future design-review requirements, not a reason to repeat completed catalog queries indefinitely. |
 | Auth/security flags, payment methods, billing/usage and direct DB connectivity from this agent | UNVERIFIED. No secret-bearing settings, auth/user records, credentials or data rows requested. |
 
 All three queries succeeded according to the owner’s external ChatGPT/Supabase
-execution report. No database writes or function/RPC invocation occurred. Raw
-advisor IDs/version, complete result dumps and a source digest were not supplied.
+execution report. No database writes or function/RPC invocation occurred. Full advisor payload/version,
+complete result dumps and a source digest were not supplied.
+The latest rerun supplies the two exact check names and WARN levels above.
 No vulnerability was demonstrated or repaired; both warnings remain recorded.
 The four additional queries were executed by ChatGPT against the existing Supabase
 project, per the owner’s report, not by this coding agent. The same external
@@ -62,7 +67,8 @@ static/deterministic checks and require context. Current upstream [lint 0028](ht
 and [lint 0029](https://raw.githubusercontent.com/supabase/splinter/main/lints/0029_authenticated_security_definer_function_executable.sql)
 check SECURITY DEFINER, effective role EXECUTE and exposed-schema membership; neither
 SQL predicate excludes event_trigger return types. Those rules explain a possible
-warning mechanism, not the unprovided actual warning IDs or deployed linter version.
+warning mechanism. The later external rerun confirms these two named checks; the
+deployed linter version remains unknown.
 Their RPC wording does not prove that this particular function body can execute.
 The query-parameter advisor pages rendered unrelated default detail, so the primary
 lint SQL above is used for the rule analysis instead of that rendered detail.
@@ -95,7 +101,8 @@ role/CREATE capabilities, narrowing their direct DDL path in public/the database
 It does not inventory other schemas, temporary-object rights, object ownership,
 all other privilege paths or privileged wrappers. The later inventory returned
 no direct memberships for either API role and no additional public functions;
-these scoped negative observations do not close the indirect-DDL review. The
+CREATE=false is additionally confirmed in the eight named schemas above; these
+scoped negative observations do not eliminate every indirect DDL path. The
 postgres owner is not a superuser
 but does have BYPASSRLS and the reported CREATE rights; the hook remains privileged.
 
@@ -153,7 +160,7 @@ facts; do not paste arbitrary function definitions into GitHub or the model.
 
 ### A. Function / event-trigger / effective-role metadata — first priority
 
-- [ ] Fetch sanitized advisor IDs/text/object identity and observation date; establish exactly which two checks fired.
+- [x] Record the external advisor rerun: both exact check names, WARN level and target rls_auto_enable (2026-10-22 owner-relayed evidence); findings remain unresolved. Full payload/version not supplied.
 - [x] A1 externally EXECUTED: record OID/language/prosecdef/owner/return type, function-local search_path and effective anon/authenticated EXECUTE for the reported function.
 - [x] A2 externally EXECUTED: record ensure_rls matching binding OID, event/tags, enabled mode and owner.
 - [x] A3 externally EXECUTED: record the supplied API-role capabilities/CREATE rights and postgres owner attributes; do not infer unreported values.
@@ -161,10 +168,11 @@ facts; do not paste arbitrary function definitions into GitHub or the model.
 - [x] Record the external public-function inventory: only rls_auto_enable(); no additional public functions/overloads returned.
 - [x] Record the external direct-membership inventory: no memberships returned for anon/authenticated.
 - [x] Record the external catalog dependency count of 1 without inferring its object identity, direction or safety.
-- [ ] Resolve dependency row identity/type/direction and any remaining cross-schema references/wrappers/managed-extension dependencies; a count alone does not complete this review.
-- [ ] Complete broader privilege/grant-option and other-schema/temporary-object/ownership capability review without reading pg_authid or passwords; do not rerun the completed direct-membership inventory.
-- [ ] Have a privileged reviewer inspect the body privately: bounded target schemas/tags/object kinds, qualified lookup, trusted name resolution including pg_temp, safe identifier formatting and no arbitrary privileged DDL/data access. Return only sanitized findings; function name alone is insufficient.
-- [ ] Review whether any untrusted role can cause a matching DDL event or influence its inputs; no CREATE TABLE, SELECT INTO, test migration, function call or RPC probe.
+- [x] Record dependency identity/direction: ensure_rls → public.rls_auto_enable(), normal n; record function dependencies on plpgsql/public.
+- [x] Record CREATE=false for both API roles across the eight named schemas in §1; preserve limits on indirect DDL conclusions.
+- [x] Record private deployed-definition retrieval and six structural findings, including exception handling; no source pasted or full-safety claim.
+- [x] Record ensure_rls plus six externally reported Supabase-related system triggers; no trigger changes.
+- [ ] Before any future callback/ACL change, review relevant cross-schema/delegated call paths, qualified/temporary-object resolution and exception behavior with compatibility evidence. Do not repeat completed inventories or run DDL/function/RPC probes. This is targeted future review, not a formal-proof requirement to continue documentary readiness.
 
 ### B. Auth flags and admin access
 
@@ -246,16 +254,21 @@ wrappers and temporary objects still require contextual review).
 
 ## 5. Acceptance, unknowns and independently authorized next step
 
-Next concrete action within the owner’s existing READ-ONLY authorization: obtain
-sanitized advisor IDs, dependency identity/type/direction and remaining other-schema/DDL-path metadata,
-and finish private function-body review through the existing authorized Supabase
-connection. Then read allowlisted Auth/provider/redirect/session and API exposure
-flags from §3 B/C without keys, user records, endpoint probes or configuration
-changes. Do not repeat A1–A3 or the four completed additional inventories. This
-session exposes no callable Supabase tools; any
-unavailable result stays UNVERIFIED, without requesting secrets or broader access.
-Billing/payment-method evidence and other C4 legal/transfer prerequisites remain
-open. No claim of no risk, verified exploitation, fixed warnings or public readiness.
+The next concrete authorized action is one bounded read-only pass over §3 B/C:
+provider/signup/confirmation flags, sanitized redirects, session/refresh/MFA flags,
+Data API/exposed schemas and SSL/network posture. Read only allowlisted settings;
+no keys, user records, endpoint probes or configuration changes. Stop at accessible
+results and record missing settings as UNVERIFIED; do not turn this into repeated
+catalog discovery or demand proof of complete database safety.
+
+Access checked in this session: plugin discovery reports Supabase installed and
+ENABLED, but no callable Supabase tools are exposed. Installation is not evidence
+of usable query/config access here. Auth/API settings are therefore inaccessible
+to this agent and UNVERIFIED; no hosted reads were attempted. No connection,
+permission or authentication change requested. Detailed pending flags remain in
+§3 B/C and the bounded matrix in §9. Do not repeat A1–A3, completed inventories,
+dependency or schema-privilege queries. Billing/payment and C4 legal prerequisites
+remain open. No claim of no risk, exploitation, fixed warnings or public readiness.
 
 **Unchanged gates:** Q1/D5b UNRESOLVED/blocking; C4 OPEN; C2 §12 OPEN; 6.0f
 UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; 6.1–6.18 UNCHECKED; ORD-A sequencing
@@ -351,3 +364,55 @@ review statement remains accurate. The dashboard links the living Stage 6
 checklist; details stay here. No description or comment change is proposed or
 published; the verified 9,564-character/52-line baseline is unchanged. Verification
 and publication status of these documentation changes are in docs/ai/VERIFICATION.md.
+
+
+## 9. Live evidence reconciliation and readiness verdict (2026-10-22; base 31e0539)
+
+All five new observations in §1 are externally EXECUTED by ChatGPT through the
+connected Supabase integration, per the owner’s report. They were not executed
+by this coding agent. This supersedes earlier pending dependency identity,
+named-schema CREATE checks and warning-name/source-structure items in §8 and
+older checkpoints. No raw function definition, secrets or user records published.
+
+- [x] Record ensure_rls → public.rls_auto_enable(), normal dependency n, plus language/schema dependencies.
+- [x] Record both API roles’ CREATE=false in all eight supplied schemas.
+- [x] Record private deployed-definition retrieval and six structural observations, without claiming complete source safety.
+- [x] Record ensure_rls and six externally reported Supabase-related system triggers, unchanged.
+- [x] Record both exact advisor names as WARN/unresolved after external rerun.
+- [x] Check integration access available to this agent and explicitly retain inaccessible Auth/API settings as UNVERIFIED.
+- [ ] Complete the single remaining sanitized configuration pass through an existing session exposing the required authorized read tools, or retain unavailable fields as documented limitations for owner review.
+
+### Bounded Auth/API configuration pass
+
+| Read-only evidence requested | Current result / completion condition |
+|---|---|
+| Enabled Google/email/anonymous providers, signup/confirmation flags | UNVERIFIED — no callable Supabase configuration tool here; do not equate intended Google setup with a live setting. |
+| Password/OTP policy, rate-limit/CAPTCHA posture, session/JWT/refresh flags | UNVERIFIED — allowlisted booleans/numbers only, no secrets or session records. |
+| Site URL/redirect allowlist assessment; operator MFA availability/enforcement | UNVERIFIED — assess privately, return sanitized conclusions; no OAuth/MFA changes. |
+| Data API enablement, exposed schemas/search paths and RPC/view/GraphQL/Realtime/Storage exposure | UNVERIFIED — public catalog emptiness does not verify API configuration. |
+| SSL/network flags and key-handling architecture | UNVERIFIED — no endpoint probes, keys or paid changes. |
+
+One authorized settings-read pass is sufficient for this readiness snapshot: record
+available flags and retain unavailable ones as limitations. Configuration acceptance,
+future application RLS tests and any callback/ACL change belong to their own scoped
+approval/implementation work. No additional open-ended catalog campaign is proposed.
+
+### Prioritized blockers to authorized implementation
+
+**Verdict: documentary/catalog readiness improved; NOT authorized to implement or
+operate the backend. No exploitable vulnerability demonstrated or warning repaired.
+Neither clearing the advisor warnings automatically nor obtaining formal proof of
+complete source safety is treated as an already-approved prerequisite or action.**
+
+1. **Q1/D5b — owner/professional decision, blocking.** Resolve operator/controller eligibility via the existing professional-review brief; current preference is not final acceptance.
+2. **C4 — OPEN.** Finish applicable subprocessor/transfer/TIA/retention and authentic GDPR evidence, verify billing/payment/Free zero-cost posture, and perform the fresh day-of review. Existing-project facts do not retroactively authorize or complete 6.0d. Preserve 0 CZK/month permanently.
+3. **C2 §12 and 6.0f — OPEN/UNCHECKED.** Production-runtime/private verification needs its separate authorization and prerequisites; local CPU/concurrency evidence does not close it. Owner must accept the resulting evidence explicitly.
+4. **Explicit implementation authorization — absent.** 6.1–6.18 remain UNCHECKED; 6.0d/6.0e remain NOT AUTHORIZED. ORD-A authorizes sequencing only. Any hosted changes, OAuth, permissions hardening and real-user collection need their own authorization; current instruction permits documentation/read-only work only.
+5. **Bounded security acceptance evidence — pending configuration access.** Complete the matrix above where available, then seek a scoped owner disposition for unknowns and the two WARN findings before hosted security acceptance. Preserve the RLS hook. Targeted exception/caller/qualification compatibility review is required if a later change is proposed, not an excuse to repeat the completed queries.
+
+No Supabase mutations, deploys, OAuth/billing changes, production implementation,
+application builds, screenshots or repeated concurrency tests. Stage 7A remains
+conditional/X10 OPEN; Stage 7B not started, untouched. Issue #31’s broader open-review
+summary remains accurate; no materially important correction, edit or comment is
+needed. Its 9,564-character/52-line body and 63 comments remain the baseline.
+Verification/commit publication is recorded in docs/ai/VERIFICATION.md.
