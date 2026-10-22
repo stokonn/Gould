@@ -628,6 +628,13 @@ C4 and C2 §12 OPEN; 6.0d/6.0e NOT AUTHORIZED; 0 CZK/month.**
 [Continuation checkpoint posted](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6349066370); verified documentation commit/push
 explicitly authorized in the finalization instruction. No production implementation.
 
+**Stage 6 documentation finalization (2026-10-22):** all 12 documentation files
+reviewed, five host checks re-executed PASS, source commit `6c40799` pushed to
+`docs/goldberg-0.11-stage-6-readiness` with exact remote SHA verified; continuation
+checkpoint 6349066370 posted. Publication evidence and owner-review-pending Issue
+dashboard proposal documented in stage-6/READINESS-CONTINUATION.md. All Stage 6
+technical gates unchanged; this is documentation completion, not backend acceptance.
+
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
 **Status: ⬜ not started.** Depends on stable Stage 4/5 contracts and Stage 6 admin actions.

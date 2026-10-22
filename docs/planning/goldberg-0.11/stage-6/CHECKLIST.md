@@ -635,3 +635,29 @@ Project #31 verified In Progress. No approval gate passed.
 
 **6.0f UNCHECKED; 6.1–6.18 UNCHECKED; Q1/D5b unresolved and blocking; C4 OPEN;
 C2 §12 OPEN; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing only; 0 CZK/month.**
+
+## Finalization publication checkpoint — 2026-10-22
+
+The owner explicitly authorized this documentation-only finalization. Reviewed
+12 Markdown files; all five host scripts re-executed and PASS; local relative
+links, unchanged original task checkboxes and preservation of other stage sections
+verified; git diff --check PASS. Source documentation commit
+[6c40799](https://github.com/stokonn/Goldberg/commit/6c40799fefa331385c394fb621e72a5a62c20423)
+was pushed to docs/goldberg-0.11-stage-6-readiness and exact remote SHA verified.
+Prepared continuation checkpoint posted unchanged at
+[comment 6349066370](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6349066370).
+This containing documentation commit records publication evidence; consult the
+branch HEAD and the finalization Issue comment for its exact revision.
+
+Issue dashboard editorial draft prepared from the latest body and all 62 comments,
+including Stage 7A conditional acceptance 6346899885; all 19 unique links checked
+live. Snapshot/proposal/link report stored locally at
+/home/stokonn/Projects/Opus/.gradle/issue31-cleanup/. No description replacement
+until owner approval of the final draft; re-fetch immediately before any approved
+write and stop on unrelated edits. Original comments remain untouched.
+
+All technical gates unchanged: Q1/D5b unresolved/blocking; C4 OPEN; C2 §12 OPEN;
+6.0f UNCHECKED; 6.1–6.18 UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing
+only; 0 CZK/month. Stage 7A conditional/X10 OPEN, 7B not started (latest separate
+Stage 7 branch); no Stage 7 code or evidence modified. No Gradle, APK, screenshots,
+emulator, hosted-runtime or new spike execution. No merge/tag/release/provisioning.

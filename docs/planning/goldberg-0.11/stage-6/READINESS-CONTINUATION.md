@@ -14,10 +14,10 @@ Scope: Stage 6 planning and docs/ai; no application, database, spike or infrastr
 - [x] Prepare F1–F5 requirements and synchronize local checkpoint documents.
 - [x] Run documentation/policy checks and record actual results.
 - [x] Publish the prepared session checkpoint to Issue #31 (owner-authorized; comment 6349066370).
-- [ ] Finalize verified documentation commit/push and append remote evidence.
+- [x] Finalize verified documentation commit/push and append remote evidence (6c40799).
 
 Completion: local documentary work VERIFIED; checkpoint posted with owner approval;
-verified documentation commit/push authorized and in progress. This checklist concerns documentation work only; it never
+verified documentation commit/push completed (6c40799); final dashboard approval pending. This checklist concerns documentation work only; it never
 checks off 6.0f or 6.1–6.18. See the final verification section to be recorded below.
 
 ## Recovered evidence and remote status
@@ -164,8 +164,8 @@ created by stokonn with love <3
 - [x] Post prepared continuation checkpoint to existing Issue #31 (6349066370).
 - [x] Review all 12 documentation changes; preserve technical gates and other worktrees.
 - [x] Re-run the five existing host checks and documentation scope/link/checkbox checks.
-- [ ] Commit/push only verified Stage 6 documentation and verify remote identity.
-- [ ] Prepare a concise Issue dashboard from latest Stage 1–8 checkpoints, with link checks and before/after counts.
+- [x] Commit/push only verified Stage 6 documentation and verify remote identity (6c40799).
+- [x] Prepare a concise Issue dashboard from latest Stage 1–8 checkpoints, with link checks and before/after counts.
 - [ ] Obtain owner approval of the final dashboard before replacing the Issue description.
 
 Issue cleanup is editorial only; no technical approval gate or stage acceptance changes.
@@ -174,3 +174,29 @@ Finalization pre-commit verification: all five host scripts re-executed and PASS
 (same counts as above); documentation review/link/scope/unchanged-checkbox check
 PASS; git diff --check PASS. No code/spike/emulator reruns. Owner Git identity
 read from existing configuration, not changed. Publication evidence follows after push.
+
+## Finalization publication checkpoint — 2026-10-22
+
+The owner explicitly authorized this documentation-only finalization. Reviewed
+12 Markdown files; all five host scripts re-executed and PASS; local relative
+links, unchanged original task checkboxes and preservation of other stage sections
+verified; git diff --check PASS. Source documentation commit
+[6c40799](https://github.com/stokonn/Goldberg/commit/6c40799fefa331385c394fb621e72a5a62c20423)
+was pushed to docs/goldberg-0.11-stage-6-readiness and exact remote SHA verified.
+Prepared continuation checkpoint posted unchanged at
+[comment 6349066370](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6349066370).
+This containing documentation commit records publication evidence; consult the
+branch HEAD and the finalization Issue comment for its exact revision.
+
+Issue dashboard editorial draft prepared from the latest body and all 62 comments,
+including Stage 7A conditional acceptance 6346899885; all 19 unique links checked
+live. Snapshot/proposal/link report stored locally at
+/home/stokonn/Projects/Opus/.gradle/issue31-cleanup/. No description replacement
+until owner approval of the final draft; re-fetch immediately before any approved
+write and stop on unrelated edits. Original comments remain untouched.
+
+All technical gates unchanged: Q1/D5b unresolved/blocking; C4 OPEN; C2 §12 OPEN;
+6.0f UNCHECKED; 6.1–6.18 UNCHECKED; 6.0d/6.0e NOT AUTHORIZED; ORD-A sequencing
+only; 0 CZK/month. Stage 7A conditional/X10 OPEN, 7B not started (latest separate
+Stage 7 branch); no Stage 7 code or evidence modified. No Gradle, APK, screenshots,
+emulator, hosted-runtime or new spike execution. No merge/tag/release/provisioning.
