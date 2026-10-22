@@ -12,7 +12,7 @@ production RLS, OAuth, retention/deletion jobs or real-user data are in scope.
 - [x] Implement audit_head transaction locking, idempotency storage and safe int8 conversion.
 - [x] Execute empty/seeded/repeat migration and integrity/rollback/concurrency tests.
 - [x] Run repository checks and record limitations.
-- [ ] Publish the isolated branch and Issue checkpoint after commit.
+- [x] Publish the isolated branch and [Issue checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6351050432); exact readback verified.
 
 Q1/D5b unresolved; C4/C2 §12 OPEN; 6.0f and 6.1–6.18 UNCHECKED;
 6.0d/6.0e NOT AUTHORIZED; 0 CZK/month; collection NOT AUTHORIZED.
@@ -127,3 +127,11 @@ gates respected. Reconcile the revision-eligible status mismatch with the owner;
 review the physical schema/locking/encoding and real deployment transaction path.
 Do not copy the prototype into a live Supabase migration automatically. 6.1–6.18
 remain unchecked and 6.0d/6.0e unauthorized.
+
+Publication: implementation commit 16bfdfbe213ce66973a55d9746453601605e74d7;
+follow-up f91a4ced846ad53a571c744c6c588f245fe3a582 corrects whitespace in saved
+failed-run diagnostics and records the check failure. Tested source hashes and
+34/34 results are unchanged; full baseline-to-current diff check PASS. Existing
+Issue #31 checkpoint 6351050432 independently read back exactly; all 63 older
+comments preserved, 64 total, Project In Progress unchanged. Later publication
+metadata/checkpoint commits do not change tested prototype source.

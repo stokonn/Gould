@@ -810,7 +810,7 @@ Stage 6 checkpoints only; no production implementation or adoption into 6.1.
 - [x] Execute disposable PostgreSQL 17.11 targeted suite: 34/34 PASS, 0 failures/skips.
 - [x] Run five existing host scripts: PASS; preserve failed intermediate evidence and original PG comparison.
 - [x] Flag API revision-eligible statuses versus server transitions; no approved contract changed.
-- [ ] Publish the implementation commit/branch and existing Issue #31 milestone checkpoint.
+- [x] Publish implementation 16bfdfb/correction f91a4ce and [Issue checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6351050432); exact readback PASS.
 
 [Prototype checkpoint](LOCAL-SCHEMA-PROTOTYPE.md) links source, commands, evidence
 and limitations. Verification includes empty/seeded/idempotent migrations, FKs,
@@ -824,3 +824,11 @@ OPEN; 6.0d/6.0e NOT AUTHORIZED; 0 CZK/month; collection NOT AUTHORIZED.
 Exact next step: review candidate schema, resolve status-contract ambiguity with
 owner, then clear gates/obtain separate formal implementation authorization.
 Stage 7A conditional/X10 OPEN and Stage 7B untouched. No merge/deploy/release.
+
+Publication: implementation commit 16bfdfbe213ce66973a55d9746453601605e74d7;
+follow-up f91a4ced846ad53a571c744c6c588f245fe3a582 corrects whitespace in saved
+failed-run diagnostics and records the check failure. Tested source hashes and
+34/34 results are unchanged; full baseline-to-current diff check PASS. Existing
+Issue #31 checkpoint 6351050432 independently read back exactly; all 63 older
+comments preserved, 64 total, Project In Progress unchanged. Later publication
+metadata/checkpoint commits do not change tested prototype source.

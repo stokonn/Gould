@@ -1,3 +1,26 @@
+## Local prototype publication — 2026-10-22
+
+Verified source commit: 16bfdfbe213ce66973a55d9746453601605e74d7.
+Verified diagnostic-format correction: f91a4ced846ad53a571c744c6c588f245fe3a582.
+Both pushed to spike/goldberg-0.11-stage-6-schema-pg; tested source hashes unchanged.
+[Issue #31 checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6351050432) posted under owner/workflow authorization, then
+independently fetched and matched exactly. All 63 older comment records preserved;
+64 total; labels/milestone/state and Project In Progress unchanged. Readiness branch
+4d01489, Stage 7A 576f0d2 and all unrelated worktrees/files preserved.
+
+Dashboard row/link proposal prepared in ignored .gradle/supabase-security-audit/
+prototype-proposed-dashboard.md and shown for explicit owner approval. Currently
+UNPUBLISHED; description remains 9,564 characters/52 lines with SHA-256
+b3a49d6bf39b7181fd675765d3d5d8fff16d04f637ced2bddc69494c4df48549.
+Before any approved body write, re-fetch for conflicts and preserve all other rows.
+
+Formal Stage 6 remains unstarted. Local prototype milestone COMPLETE; Q1/D5b/C4/
+C2 §12/6.0f still open, 6.1–6.18 unchecked; no automatic promotion, deployment,
+OAuth or collection. Next: owner review of schema/contracts; formal adoption only
+after gate clearance and separate approval. Full verification and the whitespace
+workflow correction are in docs/ai/VERIFICATION.md; source/evidence in prototype
+results/SUMMARY.md. This publication record is identified by its containing commit.
+
 ## Current Stage 6 checkpoint — local schema prototype (2026-10-22, base 4d01489)
 
 Owner explicitly authorized isolated local-only synthetic prototype implementation,
