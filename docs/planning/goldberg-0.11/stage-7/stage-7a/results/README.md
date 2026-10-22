@@ -201,4 +201,35 @@ profile_settings row identical; pref `true`/`false` on-device readbacks, restore
   `wait_for("Essential works")` timeouts at enlarged fonts are non-fatal (header below
   the fold; real work cards were still tapped via dump-driven detection).
 
+## Round 3 — vertical alignment + Discover privacy popover (owner-reported, 2026-10-22, commit `d7c0aef`)
+
+**51 targeted `r3-*` screenshots** (50 scripted + 1 targeted Appearance & Customize shot)
+with SHA-256 manifest (`capture-manifest-r3.txt`) and log (`capture-log-r3.txt`). Host
+gates re-run green: BUILD SUCCESSFUL, JVM 174/0F/0E/0S, lint 0 errors / 124 warnings
+(unchanged), `assembleDebugAndroidTest` compiles, 5/5 check scripts PASS (EN/CZ parity
+951). Seeded in-place upgrade re-PASSED (all table counts + profile_settings row
+identical). Emulator left tidy (font 1.0, theme System, locale `[]`, wm physical).
+
+| # | Owner-reported issue (real device) | Fix | Verified |
+|---|---|---|---|
+| O1 | Text in Settings rows, Discover result cards, Profile cards and shared components appears biased toward the top | Root cause in the shared design system: `journalTypography()`'s `text()` builder lacked `PlatformTextStyle(includeFontPadding = false)` (the Material 3 default the app bypassed) — legacy font padding inflated text boxes with asymmetric extra leading, so centered content read top-biased. Fixed in the one shared builder (app-wide); no padding hacks, no clipping. Structural sweep of every `Row(` in `ui/*.kt`: all shared Rows already `CenterVertically`; one further real defect — `CustomizePanel` "♫" glyph row → `CenterVertically`. Decorative top-aligned quote/info icons intentionally kept | ✓ `r3-ivory-en/nocturne-en/ivory-cs/nocturne-cs-{home,library,discover_landing,practice,profile,settings_landing}` (all six screens × both languages × both themes at 1×); `r3-*-settings_data` (switch centered vs 2-line AND 4-line subtitle blocks); `r3-ivory-en-appearance_custom.png` (glyph node center 1101 vs preview block center 1100.5); `r3-*-15/*-20-*` + `r3-small-*` at 1.5×/2×/narrow — no clipping, no reflow regressions |
+| O2 | Remove the large persistent privacy card below the search field; add a small accessible lock icon in the upper-right of the Discover header opening a compact anchored popover (browser site-info style) with the same accurate disclosure; dismiss on outside tap or Back; no misleading HTTPS/security guarantee | Landing card removed; header is now a title/subtitle column + lock `IconButton` with accessible label `stage7a_privacy_info` (EN "Privacy information" / CZ "Informace o soukromí") opening an anchored `DropdownMenu` popover showing the unchanged truthful `stage7a_privacy_notice`; `privacyInfo` state hoisted beside `onlineRequested`. Online-results setting stays in Settings → Data & Storage (default OFF); no network/session behavior changes (asserted: search state captures + untouched `onlineRequested`/`catalogOnline` logic) | ✓ Popover cycle verified ×8 via UIAutomator — each of `r3-{ivory-en,nocturne-en,ivory-cs,nocturne-cs}` (1×), `r3-ivory-en-15`, `r3-ivory-en-20`, `r3-nocturne-cs-20`, `r3-small-en`: landing card **absent**, lock tapped → notice visible (popover shot), outside tap → absent, reopen → Back → absent, still on Discover. Popover shots: `r3-*-privacy_popover.png` (EN/CZ × Ivory/Nocturne × 1×/1.5×/2×/narrow) |
+
+### Round-3 limitations and incidents (honest)
+
+- Round-2 limitations carry over unchanged: bottom-nav labels ellipsize visually at 2×
+  (full names carried by verified accessibility semantics); the third artist tab is
+  edge-cut at 2× in the scrollable row (swipe to reach; never breaks mid-word); Discover
+  category tiles ellipsize at 2× (pre-existing).
+- The 2× CZ popover wraps tall (7 lines) but stays anchored and fully contained; its
+  dismissal cycle is verified programmatically at every tested scale.
+- Capture-automation incidents (not app defects), resolved: on API 36 `uiautomator dump`
+  returns **only the popup window** while the DropdownMenu is open (background hierarchy
+  excluded) — the first two runs failed hunting the lock node inside the popup dump, so
+  the outside-tap point is now derived from the notice node's own bounds (left page
+  margin above the popup); at 720×1560 the popup reports `left=0` (full width), where a
+  bounds sanity check refused the first derived tap — the notice-node approach handles
+  both dump modes; the script now resets `wm size` at startup after an interrupted run
+  left the override active.
+
 created by stokonn with love <3

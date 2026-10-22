@@ -799,6 +799,65 @@ untouched. Living plan/state log:
   carried by verified accessibility semantics); at 2× the third artist tab is edge-cut
   by the scrollable row (swipe to reach; never breaks mid-word).
 
+### Stage 7A refinement round 3 — vertical alignment audit + Discover privacy popover (owner-reported 2026-10-22, commit `d7c0aef`)
+
+**Purpose:** fix two defects the owner found testing the round-2 APK on a physical
+Samsung device: (1) text in Settings rows, Discover result cards, Profile cards and other
+shared components reads top-biased — audit the real Compose layout constraints
+(`verticalAlignment`/`contentAlignment`, line height, font padding, asymmetric modifiers)
+and fix the root cause in shared components (no blind top padding, no clipping or
+accessibility breakage); (2) replace the large persistent Discover privacy card with a
+small accessible lock icon in the header's upper-right opening a compact anchored
+popover (browser site-information style) with the same truthful disclosure, dismissing
+on outside tap and Back. **Scope:** 5 Kotlin/resource files (+35/−16) — shared typography
+(`Theme.kt`), `DiscoverScreen.kt`, `CustomizePanel.kt`, EN/CZ strings (parity 951); NO
+schema/database/backup/navigation/provider-behavior/network changes; online-results
+setting stays in Settings → Data & Storage default OFF; Stage 6/7B untouched. Living
+plan/state log: [stage-7/stage-7a/REFINEMENT-CHECKPOINT.md](stage-7/stage-7a/REFINEMENT-CHECKPOINT.md)
+(round-3 section).
+
+- **Tasks/progress — COMPLETE (implementation + verification), submitted for X9:**
+  · **Alignment audit:** every shared Row verified `CenterVertically` per call site plus
+  a scripted sweep of all `Row(` bodies/arguments in `ui/*.kt`; root cause found in
+  `journalTypography()` — the shared `text()` builder lacked
+  `PlatformTextStyle(includeFontPadding = false)` (M3 default the app bypassed), so
+  legacy font padding inflated text boxes with asymmetric leading → fixed in the one
+  shared builder (app-wide, no padding hacks, no clipping). Sweep found exactly one more
+  real defect: `CustomizePanel` "♫" preview glyph row → `CenterVertically` (+ missing
+  `Alignment` import). Decorative top-aligned quote/info icons intentionally kept.
+  · **Discover privacy:** persistent landing card removed; header Row = title/subtitle
+  column + lock `IconButton` (accessible label `stage7a_privacy_info` EN/CZ) opening an
+  anchored `DropdownMenu` popover with the unchanged truthful disclosure (no
+  HTTPS/security claim); `privacyInfo` state hoisted; dismisses on outside tap and Back;
+  no network/session logic touched.
+- **Verification — executed 2026-10-22 (real results):**
+  - Host gates: assembleDebug + testDebugUnitTest + assembleDebugAndroidTest + lintDebug
+    **BUILD SUCCESSFUL**; JVM **174/0F/0E/0S**; lint **0 errors, 124 warnings**
+    (unchanged — `includeFontPadding` produced no new warnings); all five
+    `scripts/check_*.py` **PASS** (EN/CZ parity 951 with the new label pair); final
+    `assembleDebug` re-ran after a comment-only edit (source/artifact identity, 39s).
+  - **Seeded in-place upgrade re-PASSED:** `adb install -r` over the seeded
+    `emulator-5554` AVD — all table counts + `profile_settings` row unchanged.
+  - **Screenshots: 51 targeted `r3-*` captures** (4 combos × all six screens at 1×,
+    Data & Storage EN/CS, 1.5×/2× EN Ivory, 2× CS Nocturne, 720×1560 narrow, targeted
+    Appearance & Customize previews) with SHA-256 manifest + log; **privacy popover
+    cycle (open / outside-tap / Back) verified ×8** via UIAutomator in every
+    combo/scale; landing-card absence asserted per context; alignment surfaces
+    visually inspected in both languages, both themes and all scales — no clipping at
+    2×. Capture-automation incidents (popup-only uiautomator dump on API 36, narrow
+    `left=0` popup bounds, startup `wm size` reset) documented honestly in the
+    round-3 checkpoint. Emulator left tidy.
+  - Documentation: round-3 sections in
+    [stage-7/stage-7a/results/README.md](stage-7/stage-7a/results/README.md) (issue
+    table + honest limitations/incidents) and the Stage 7A checkpoint log (7A.16).
+- **Completion status:** round-3 implementation and verification are complete and
+  **submitted for owner final acceptance (X9, pending)** — Stage 7A remains NOT complete
+  until then. No merge, tag, release or APK publication is authorized or performed.
+  Known honest limitations: round-2 limitations carry over (bottom-nav visual ellipsis
+  at 2× with verified full-name semantics; third artist tab edge-cut in the 2×
+  scrollable row; category tiles ellipsize at 2× — pre-existing); the 2× CZ popover
+  wraps tall but stays anchored and its dismissal cycle is verified per scale.
+
 ## Stage 8 — Integration, legal review and release readiness
 
 **Status: ⬜ not started.** Only after all prior gates; requires explicit release instruction

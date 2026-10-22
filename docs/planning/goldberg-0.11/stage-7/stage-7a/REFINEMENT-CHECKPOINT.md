@@ -237,4 +237,86 @@ artist tab ("Biography") sits at the scrollable row's edge and requires a horizo
 swipe — labels never break mid-word; Discover category tiles ellipsize at 2× (pre-existing
 tile behavior, unchanged this round).
 
+## Round 3 — vertical alignment audit + Discover privacy popover (owner, 2026-10-22, commit `d7c0aef`)
+
+Owner tested the round-2 APK on a physical Samsung device; X9 remains open. Two defects:
+
+**R3-1 — vertical text bias** (Settings rows, Discover result cards, Profile cards,
+"other shared components"). Audit result: every shared Row already used
+`verticalAlignment = Alignment.CenterVertically` (`SettingsRow`, `CatalogueRow`, Profile
+rows, header rows — verified by reading each call site, plus a scripted sweep of every
+`Row(` in `ui/*.kt` that checks bodies as well as call arguments). The root cause was
+text-box metrics, not Row placement: the app's custom `journalTypography()` built its
+`TextStyle` without `PlatformTextStyle(includeFontPadding = false)`, so every Text kept
+the legacy font padding — extra leading beyond the font's core ascent/descent, uneven
+against the explicit line heights. Material 3's own default Typography sets this to
+`false`; the app bypassed that by constructing `TextStyle` directly. On real devices
+(including Samsung system-font metrics) the inflated boxes made visually centered
+content read top-biased. **Fix:** one place — the shared `text()` builder in `Theme.kt`
+now applies `platformStyle = PlatformTextStyle(includeFontPadding = false)` (root cause,
+app-wide, matches M3 defaults). No blind padding anywhere; no clipping (wrapping still
+measures real ascent/descent — only the extra leading is trimmed). The structural sweep
+found exactly one further real defect: the `CustomizePanel` preview placed the "♫" glyph
+at default top alignment against its two-line title block → now `CenterVertically`.
+Top-aligned decorative quote/info icons (Home quote mark, work info panel) intentionally
+kept — conventional first-line/decoration alignment, not text bias.
+
+**R3-2 — Discover privacy.** The persistent "Searches stay on this device…" card below
+the search field is removed. The Discover header is now a Row (title/subtitle column +
+`IconButton` lock in the upper-right) opening a compact anchored `DropdownMenu` popover
+(browser site-information style) with the same truthful disclosure — no HTTPS/security
+claim. The popover dismisses on outside tap **and** on Back (both asserted per context);
+the button carries an accessible label (`stage7a_privacy_info`, EN "Privacy information"
+/ CZ "Informace o soukromí"); `privacyInfo` state is hoisted beside `onlineRequested`
+(survives LazyColumn item recycling). The online-results setting stays in
+Settings → Data & Storage (default OFF) and network/session behavior is untouched
+(no `onlineRequested`/`catalogOnline` logic changes).
+
+- [x] Code: 5 files (+35/−16) — `Theme.kt`, `DiscoverScreen.kt`, `CustomizePanel.kt`,
+      `values/strings.xml` + `values-cs/strings.xml` (EN/CZ parity 951).
+- [x] Host gates (EXECUTED, green): `assembleDebug testDebugUnitTest
+      assembleDebugAndroidTest lintDebug` **BUILD SUCCESSFUL** (2m51s); JVM
+      **174/0F/0E/0S**; lint **0 errors, 124 warnings** (unchanged — `includeFontPadding`
+      produced no new warnings); all five `scripts/check_*.py` **PASS** (parity 951 with
+      the new label pair). A final `assembleDebug` re-ran after a comment-only edit —
+      source/artifact identity restored (BUILD SUCCESSFUL, 39s).
+- [x] Emulator (EXECUTED on `emulator-5554`, `ro.kernel.qemu=1` asserted, never a
+      physical device): **seeded in-place upgrade re-PASSED** (`adb install -r` of the
+      round-3 APK over the seeded AVD; all table counts + `profile_settings` row
+      unchanged); **51 `r3-*` screenshots** (50 from the scripted sweep + 1 targeted
+      Appearance & Customize shot) + SHA-256 manifest (`capture-manifest-r3.txt`) +
+      log (`capture-log-r3.txt`): 4 theme×language combos at 1× covering all six
+      screens, 1.5×/2× EN Ivory, 2× CS Nocturne, 720×1560 narrow, both Data & Storage
+      variants, both Appearance & Customize previews.
+      · **Privacy popover cycle verified ×8** (all four combos + 1.5× + 2× EN + 2× CS +
+        narrow): landing absence of the disclosure card asserted, open → notice visible,
+        outside-tap dismissal, reopen → Back dismissal, still on Discover — every step
+        asserted via UIAutomator text presence/absence, not by eye alone.
+      · Visually inspected: lock icon position + popover anchoring/content in EN/CZ ×
+        Ivory/Nocturne × 1×/1.5×/2×/narrow; Settings switches centered against 2-line
+        and 4-line subtitle blocks (EN Ivory + CS Nocturne Data & Storage); Profile
+        stat tiles/Favorite-artist row/badge header centered; Discover offline rows
+        centered; "♫" glyph node center 1101 vs preview block center 1100.5
+        (`r3-ivory-en-appearance_custom.png`); no clipping at 2× in either language.
+      · Script incidents resolved honestly (capture automation, not app defects): on
+        API 36 `uiautomator dump` returns **only the popup window** while the
+        DropdownMenu is open (background hierarchy excluded) — the first two runs failed
+        hunting for the lock node inside the popup dump; the outside-tap point is now
+        derived from the notice node's own bounds (left page margin above the popup).
+        At 720×1560 the popup reports `left=0` (full width) — a bounds sanity check
+        refused the first derived tap; the notice-node approach handles both dump modes.
+        The script now resets `wm size` at startup (re-run safety after an interrupted
+        run left the override active).
+      · Emulator left tidy: font 1.0, theme System, locale follows system (readback
+        `[]`), `wm size` physical 1080×2400.
+- [x] Docs: this checkpoint; stage-7a/CHECKPOINT.md 7A.16; results/README.md round-3
+      section; STAGE-CHECKLIST round-3 entry; UI-ACCEPTANCE-MATRIX evidence.
+- [x] Commit + push same branch + Issue #31 append-only comment (see git log).
+
+Known limitations (honest): the round-2 limitations carry over unchanged (bottom-nav
+visual ellipsis at 2× with verified full-name semantics; third artist tab edge-cut in
+the 2× scrollable row; Discover category tiles ellipsize at 2× — pre-existing). The 2×
+CZ popover renders tall (7 wrapped lines) but stays anchored and fully contained; its
+dismissal cycle is verified programmatically at every tested scale.
+
 created by stokonn with love <3

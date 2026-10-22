@@ -259,3 +259,46 @@ targeted round (commit recorded in git log). Full plan + state log:
   No merge, no tag, no release, no APK publication; Stage 6 untouched.
 
 created by stokonn with love <3
+
+### 7A.16 round 3 — vertical alignment audit + Discover privacy popover (2026-10-22, commit `d7c0aef`, IN REVIEW)
+
+Owner real-device (Samsung) feedback on the round-2 APK; X9 still open. Full plan + state
+log: `stage-7a/REFINEMENT-CHECKPOINT.md` (round-3 section); evidence report:
+`stage-7a/results/README.md` (round-3 section).
+
+- **Code (5 files, +35/−16):** vertical-bias root cause fixed in the shared typography —
+  `journalTypography()`'s `text()` builder now applies
+  `PlatformTextStyle(includeFontPadding = false)` (M3 default the app had bypassed;
+  legacy font padding inflated text boxes with asymmetric leading, making centered
+  rows/cards read top-biased on real devices). All shared Rows already used
+  `CenterVertically` (verified per call site + scripted sweep of every `Row(` in
+  `ui/*.kt`); the sweep found one further real defect — the `CustomizePanel` "♫" preview
+  glyph row, now `CenterVertically`. Decorative top-aligned quote/info icons kept
+  intentionally. Discover privacy: persistent landing card removed; header lock
+  `IconButton` (upper-right, accessible label `stage7a_privacy_info` EN/CZ) opens an
+  anchored `DropdownMenu` popover with the same truthful disclosure (no security claim),
+  dismissing on outside tap and Back; `privacyInfo` state hoisted; online-results
+  setting stays in Settings → Data & Storage default OFF; no network/session changes.
+- **Host gates (EXECUTED, green):** BUILD SUCCESSFUL; JVM 174/0F/0E/0S; lint 0 errors
+  (124 warnings — unchanged, no deprecation from `includeFontPadding`); all five
+  `scripts/check_*.py` PASS (EN/CZ parity 951); `assembleDebugAndroidTest` compiles.
+  A final `assembleDebug` re-ran after a comment-only edit (source/artifact identity).
+- **Emulator (EXECUTED on `emulator-5554`, qemu=1 asserted):** seeded in-place upgrade
+  **re-PASSED** (all table counts + profile_settings row identical); **51 targeted
+  `r3-*` screenshots** at 1×/1.5×/2×, EN/CS, Ivory/Nocturne + 720×1560 narrow + both
+  Data & Storage + both Appearance & Customize previews, SHA-256 manifest + log;
+  **privacy popover cycle (open / outside-tap / Back) verified ×8** via UIAutomator in
+  every combo/scale; landing-card absence asserted per context; alignment surfaces
+  (Settings switches vs 2/4-line subtitles, Profile tiles/rows, Discover rows, ♫
+  preview) visually inspected; no clipping at 2×. Capture-automation incidents
+  documented honestly in the round-3 checkpoint (popup-only dump on API 36; narrow
+  `left=0` popup bounds; startup `wm size` reset). Emulator tidy (font 1.0, theme
+  System, locale `[]`, wm physical).
+- **Known limitations (honest):** round-2 limitations carry over unchanged (bottom-nav
+  visual ellipsis at 2× with verified full-name semantics; third artist tab edge-cut in
+  the 2× scrollable row; category tiles ellipsize at 2× — pre-existing). The 2× CZ
+  popover wraps tall but stays anchored/contained; dismissal verified per scale.
+- **Status:** submitted to the owner for final Stage 7A acceptance (**X9 pending**).
+  No merge, no tag, no release, no APK publication; Stage 6 untouched.
+
+created by stokonn with love <3
