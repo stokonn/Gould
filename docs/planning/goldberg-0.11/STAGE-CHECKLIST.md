@@ -752,6 +752,53 @@ NO Stage 6/7B changes. Living plan/state log:
   **submitted for owner final acceptance (X9, pending)** — Stage 7A remains NOT complete
   until then. No merge, tag, release or APK publication is authorized or performed.
 
+### Stage 7A refinement round 2 — final accessibility + spacing fixes (owner-authorized 2026-10-22)
+
+**Purpose:** fix the three remaining issues found in independent screenshot review of the
+refinement pass: (1) 2× font mid-word wrapping in Artist Profile tabs and Work Profile
+metadata cells (plus a review of the five-tab bottom navigation labels and accessibility
+descriptions), (2) Settings → Data & Storage spacing (headers/toggles/descriptions/cards
+no longer touching), (3) repetitive privacy/offline explanations on the Discover landing
+(one concise notice; contextual online hint; technical network status moved out of the
+landing). **Scope:** 5 Kotlin UI files + EN/CZ strings (+64/−28); NO schema/database/
+backup/navigation/provider-behavior changes; JournalSpace tokens only; Stage 6/7B
+untouched. Living plan/state log:
+[stage-7/stage-7a/REFINEMENT-CHECKPOINT.md](stage-7/stage-7a/REFINEMENT-CHECKPOINT.md)
+(round-2 section).
+
+- **Tasks/progress — COMPLETE (implementation + verification), submitted for X9:**
+  Artist tabs `TabRow` → `ScrollableTabRow` (intrinsic widths — labels never break
+  mid-word; scrollable at 2×/narrow); Work metadata cells → adaptive
+  `BoxWithConstraints` stacking (stacked Column + dividers when narrow or font >
+  1.15×, same precedent as Settings › About; compact row retained at 1×); bottom-nav
+  labels gain explicit full-name `semantics { contentDescription }`; Settings →
+  Data & Storage first item → `Column(spacedBy(JournalSpace.medium))` (preference +
+  every warning preserved verbatim); Discover landing keeps one concise third-party
+  disclosure notice (shortened EN+CZ), online-off hint only while searching, technical
+  network status only while searching with the catalogue pref ON.
+- **Verification — executed 2026-10-22 (real results):**
+  - Host gates: assembleDebug + testDebugUnitTest + assembleDebugAndroidTest + lintDebug
+    **BUILD SUCCESSFUL**; JVM **174/0F/0E/0S**; lint **0 errors, 124 warnings**
+    (unchanged from the round-1 baseline); all five `scripts/check_*.py` **PASS**
+    (EN/CZ parity 950 intact).
+  - **Seeded in-place upgrade re-PASSED:** `adb install -r` over the seeded
+    `emulator-5554` AVD — all **22 table counts + profile_settings row identical**;
+    online-catalogue preference read back `true`→`false` on-device and restored OFF.
+  - **Screenshots: 47 targeted `r2-*` captures** (1×/1.5×/2×, EN/CS, Ivory/Nocturne,
+    720×1560 narrow; incl. pref-ON search flow and navcheck) with SHA-256 manifest +
+    log; every changed surface visually inspected; Discover landing notice/hint/network
+    status presence+absence asserted via UIAutomator; bottom-nav full-name `content-desc`
+    verified at 2× (`NAV-EVIDENCE` log lines). Emulator left tidy.
+  - Documentation: round-2 sections in
+    [stage-7/stage-7a/results/README.md](stage-7/stage-7a/results/README.md) (mismatch
+    + honest limitations) and the Stage 7A checkpoint log (7A.15).
+- **Completion status:** round-2 implementation and verification are complete and
+  **submitted for owner final acceptance (X9, pending)** — Stage 7A remains NOT complete
+  until then. No merge, tag, release or APK publication is authorized or performed.
+  Known honest limitations: bottom-nav labels ellipsize visually at 2× (full names
+  carried by verified accessibility semantics); at 2× the third artist tab is edge-cut
+  by the scrollable row (swipe to reach; never breaks mid-word).
+
 ## Stage 8 — Integration, legal review and release readiness
 
 **Status: ⬜ not started.** Only after all prior gates; requires explicit release instruction

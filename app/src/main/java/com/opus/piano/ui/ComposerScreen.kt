@@ -69,7 +69,10 @@ import kotlinx.coroutines.launch
                 if(profile?.portrait!=null || !profile?.text.isNullOrBlank()) JournalTextButton(onClick={scope.launch {try {model.repository.removeSupplement(id);model.loadComposer(id)} catch(c:CancellationException) {throw c} catch(_:Exception) {app.practice.notice.value=L.s(R.string.media_remove_failed)}}}) {Text(L.s(R.string.remove_supplement))}
                 if(page.profileLoading) {LinearProgressIndicator(Modifier.fillMaxWidth());JournalTextButton(onClick=model::cancelSupplement) {Text(L.s(R.string.msg_cancel_77df))}}
             }
-            item { TabRow(tab, containerColor = MaterialTheme.colorScheme.background, contentColor = MaterialTheme.colorScheme.primary) { listOf("Overview", "Works", "About").forEachIndexed { i, label -> Tab(tab == i, onClick = { tab = i }, text = { Text(if(label=="About") L.s(R.string.msg_biography_53c2) else L.fixed(label)) }) } } }
+            // Stage 7A refinement: ScrollableTabRow gives each tab its intrinsic width so
+            // labels ("Overview", "Biography") never wrap mid-word at 2× font; tabs stay
+            // scrollable on narrow displays and touch targets keep their default height.
+            item { ScrollableTabRow(tab, containerColor = MaterialTheme.colorScheme.background, contentColor = MaterialTheme.colorScheme.primary, edgePadding = JournalSpace.small) { listOf("Overview", "Works", "About").forEachIndexed { i, label -> Tab(tab == i, onClick = { tab = i }, text = { Text(if(label=="About") L.s(R.string.msg_biography_53c2) else L.fixed(label)) }) } } }
             when (tab) {
                 0 -> {
                     item {

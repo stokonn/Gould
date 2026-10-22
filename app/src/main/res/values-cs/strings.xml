@@ -944,7 +944,7 @@
     <string name="discover_field_evidence">Další údaje ze zdroje</string>
     <string name="label_library">Knihovna</string>
     <string name="stage7a_search_placeholder">Hledejte hudbu, umělce, díla…</string>
-    <string name="stage7a_privacy_notice">Místní vyhledávání funguje offline a nikam neodesílá vaše dotazy. Online výsledky katalogu jsou ve výchozím nastavení vypnuté v Nastavení → Data a úložiště; když je zapnete a sami spustíte online hledání, dotaz se odešle externím poskytovatelům hudebních dat.</string>
+    <string name="stage7a_privacy_notice">Vyhledávání zůstává na tomto zařízení. Když sami spustíte online hledání, dotaz se odešle externím poskytovatelům hudebních dat.</string>
     <string name="stage7a_browse_categories">Procházet kategorie</string>
     <string name="stage7a_recently_viewed">Nedávno zobrazené</string>
     <string name="stage7a_available_offline">Dostupné offline</string>

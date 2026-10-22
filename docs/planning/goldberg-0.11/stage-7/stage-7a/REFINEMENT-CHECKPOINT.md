@@ -149,4 +149,92 @@ token pass (no full rewrite).
 Blockers: none. Emulator alive: emulator-5554 (tidy state; catalogue bootstrapped on AVD
 only). adb: `$HOME/Android/Sdk/platform-tools/adb`.
 
+## Round 2 — final accessibility + spacing fixes (owner, 2026-10-22, commit pending)
+
+Independent screenshot review found three remaining issues; owner authorized a second
+targeted refinement round. No redesign, no provider/network behavior changes, JournalSpace
+tokens only. Stage 6 untouched; no merge/tag/release; Stage 7A NOT complete until X9.
+
+### Owner issues and fixes
+
+1. **2× font mid-word wrapping.**
+   - Artist Profile tabs (`ComposerScreen.kt`): `TabRow` → `ScrollableTabRow`
+     (intrinsic tab width, `edgePadding = JournalSpace.small`) — labels never break
+     mid-word; at 1.5× all three fit, at 2×/narrow the row scrolls horizontally (the
+     owner-approved "scrollable tab pattern"); tab targets keep full default height.
+   - Work Profile metadata cells (`CompositionScreen.kt`): adaptive `BoxWithConstraints`
+     — stacked full-width Column with `HorizontalDivider` separators when
+     `maxWidth < 340.dp || fontScale > 1.15f` (same precedent as Settings › About), the
+     previous compact three-cell Row retained for regular widths at 1×.
+   - Bottom navigation (`OpusApp.kt`): every item's label now carries an explicit full-name
+     `semantics { contentDescription }` so screen readers announce "Discover"/"Practice"
+     completely even where the visual label ellipsizes at 2× (5 tabs cannot fit full
+     words; visual ellipsis remains as a documented limitation).
+2. **Settings → Data & Storage spacing** (`SettingsScreen.kt`): the downloaded-content
+   item is now a `Column(verticalArrangement = Arrangement.spacedBy(JournalSpace.medium))`
+   grouping section header, media toggle card, supplementary hint and the online-catalogue
+   card — no more touching boundaries. The online-catalogue preference and every warning
+   text are preserved unchanged.
+3. **Discover landing declutter** (`DiscoverScreen.kt` + strings): the privacy notice is
+   shortened in EN+CZ to the single essential third-party disclosure ("Searches stay on
+   this device. When you start an online search, your query is sent to external
+   music-data providers." / CZ equivalent); the online-off hint now renders only while
+   the user is actually searching (`active && !catalogOnline`); the technical
+   network-status line renders only while searching with the catalogue preference ON
+   (`active && catalogOnline`). Landing = one concise notice, nothing else.
+
+### Verification plan (executed — see results below)
+
+Host gates + all check scripts; seeded in-place upgrade re-run; targeted emulator captures
+(`r2-*`) of the affected surfaces at 1×/1.5×/2×, EN/CS, Ivory/Nocturne + 720×1560 narrow;
+UIAutomator evidence for bottom-nav semantics; visual inspection of every changed surface.
+
+### State log (round 2)
+
+- [x] Code edits: ComposerScreen (ScrollableTabRow), CompositionScreen (adaptive
+      BoxWithConstraints cells), OpusApp (nav label semantics), SettingsScreen
+      (Data & Storage Column spacing), DiscoverScreen (contextual hint/network items,
+      `if(active)` gating), strings EN+CZ (`stage7a_privacy_notice` shortened, parity kept).
+- [x] Host gates (EXECUTED, 2026-10-22): `./gradlew assembleDebug testDebugUnitTest
+      assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1` → BUILD SUCCESSFUL;
+      JVM **174/0F/0E/0S**; lint **0 errors, 124 warnings** (unchanged from round 1);
+      `assembleDebugAndroidTest` compiles (`DiscoverNavigationTest` asserts only
+      session/query retention — compatible, verified by reading the test);
+      all five `scripts/check_*.py` **PASS** (localization parity 950 EN↔CS intact).
+- [x] Emulator (EXECUTED on `emulator-5554`, `ro.kernel.qemu=1` asserted, never a
+      physical device):
+      · **Seeded in-place upgrade re-PASSED** — `adb install -r` of the round-2 APK over
+        the seeded AVD; all 22 table counts + `profile_settings` row byte-identical;
+        pref `true`→`false` readback across an on-device toggle cycle, restored OFF.
+      · **47 targeted `r2-*` screenshots** + SHA-256 manifest (`capture-manifest-r2.txt`)
+        + log (`capture-log-r2.txt`): EN Ivory 1× full set incl. the pref-ON flow
+        (`discover_search_on`), CS Nocturne 1×, EN Ivory 1.5×, EN Ivory 2× (+ navcheck),
+        CS Nocturne 2×, EN Nocturne 1× changed-surface coverage, 720×1560 narrow sweep.
+      · Visually inspected: artist tabs no mid-word wrap at 1.5×/2×/narrow (scrollable
+        row); work cells stacked cleanly at 1.5×/2×/narrow (EN + CZ); Data & Storage
+        spacing clear in EN/CS, Ivory/Nocturne, 1×/2×/narrow; Discover landing carries
+        exactly one concise notice in EN/CZ, both themes, all font scales; off-hint and
+        Search-online + network line appear only in the searching state (asserted via
+        UIAutomator text presence/absence, not by eye alone).
+      · **Bottom-nav semantics evidence (2×, UIAutomator):** all five items report full
+        `content-desc` names (Home/Library/Discover/Practice/Profile) — `NAV-EVIDENCE`
+        lines in the capture log; visual ellipsis at 2× remains (documented limitation).
+      · Script incidents resolved honestly (capture automation, not app defects): the
+        first run failed on a flaky fixed-swipe work-card tap at 720 px (dump-driven
+        scroll replaced it); the Settings section can open at a preserved scroll anchor
+        at narrow width — the capture now scrolls to the top before screenshotting;
+        `wait_for("Essential works")` timeouts at 1.5×/2× are non-fatal (header below
+        the fold; dump-driven card detection still tapped real cards).
+      · Emulator left tidy: font 1.0, theme System, locale follows system (readback
+        `[]`), `wm size` reset to physical 1080×2400.
+- [x] Docs: this checkpoint; stage-7a/CHECKPOINT.md 7A.15; results/README.md round-2
+      section; STAGE-CHECKLIST round-2 entry; UI-ACCEPTANCE-MATRIX X4/X6 evidence.
+- [x] Commit + push same branch + Issue #31 append-only comment (see git log).
+
+Known limitations (honest): bottom-nav labels ellipsize visually at 2× ("Disc…",
+"Pract…") — full names carried by accessibility semantics (verified); at 2× the third
+artist tab ("Biography") sits at the scrollable row's edge and requires a horizontal
+swipe — labels never break mid-word; Discover category tiles ellipsize at 2× (pre-existing
+tile behavior, unchanged this round).
+
 created by stokonn with love <3

@@ -83,12 +83,27 @@ import com.opus.piano.data.*
                     work?.catalogLabel.orEmpty() to L.s(R.string.discover_field_catalogue)
                 ).filter { it.first.isNotBlank() }
                 if (cells.isNotEmpty()) Surface(shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
-                    Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
-                        cells.forEachIndexed { index, (value, label) ->
-                            if (index > 0) VerticalDivider(Modifier.padding(vertical = 10.dp), color = MaterialTheme.colorScheme.outlineVariant)
-                            Column(Modifier.weight(1f).padding(horizontal = 12.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(JournalSpace.tiny)) {
-                                Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                                Text(value, style = MaterialTheme.typography.bodyMedium, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                    // Stage 7A refinement: stack the metadata cells on narrow screens or at
+                    // enlarged font scales (same adaptive pattern as Settings › About) so
+                    // labels and values never wrap or ellipsize mid-word; the compact
+                    // three-cell row stays for regular widths at 1× fonts.
+                    BoxWithConstraints {
+                        val stacked = maxWidth < 340.dp || androidx.compose.ui.platform.LocalDensity.current.fontScale > 1.15f
+                        if (stacked) Column(Modifier.fillMaxWidth()) {
+                            cells.forEachIndexed { index, (value, label) ->
+                                if (index > 0) HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+                                Column(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = JournalSpace.small), verticalArrangement = Arrangement.spacedBy(JournalSpace.tiny)) {
+                                    Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                    Text(value, style = MaterialTheme.typography.bodyMedium)
+                                }
+                            }
+                        } else Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
+                            cells.forEachIndexed { index, (value, label) ->
+                                if (index > 0) VerticalDivider(Modifier.padding(vertical = 10.dp), color = MaterialTheme.colorScheme.outlineVariant)
+                                Column(Modifier.weight(1f).padding(horizontal = 12.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(JournalSpace.tiny)) {
+                                    Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                                    Text(value, style = MaterialTheme.typography.bodyMedium, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                                }
                             }
                         }
                     }

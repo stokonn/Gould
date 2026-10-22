@@ -1,0 +1,212 @@
+guards OK on emulator-5554 (qemu=1, booted, app installed)
+seeded catalogue present: 23 composers
+pref before upgrade: <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="online-catalogue" value="false" />
+</map>
+BEFORE: {'pieces': '0', 'sessions': '0', 'catalog_composers': '23', 'catalog_works': '597', 'catalog_cache': '4', 'saved_recordings': '0', 'badge_unlocks': '0', 'session_parts': '0', 'profile_settings': '1', 'session_intervals': '0', 'practice_drafts': '0', 'local_app_state': '1', 'practice_recovery_archives': '0', 'session_piece_links': '0', 'favorite_composers': '0', 'personal_catalogue_identities': '0', 'personal_catalogue_anchors': '0', 'personal_catalogue_state': '1', 'backup_restore_state': '0', 'recovery_evidence': '0', 'practice_completion_evidence': '0', 'room_master_table': '1', 'profile_settings_row': 'Musician|System'}
+adb install -r -> rc=0 Performing Streamed Install
+Success 
+AFTER: {'pieces': '0', 'sessions': '0', 'catalog_composers': '23', 'catalog_works': '597', 'catalog_cache': '4', 'saved_recordings': '0', 'badge_unlocks': '0', 'session_parts': '0', 'profile_settings': '1', 'session_intervals': '0', 'practice_drafts': '0', 'local_app_state': '1', 'practice_recovery_archives': '0', 'session_piece_links': '0', 'favorite_composers': '0', 'personal_catalogue_identities': '0', 'personal_catalogue_anchors': '0', 'personal_catalogue_state': '1', 'backup_restore_state': '0', 'recovery_evidence': '0', 'practice_completion_evidence': '0', 'room_master_table': '1', 'profile_settings_row': 'Musician|System'}
+SEEDED UPGRADE OK: every table count and the profile_settings row are unchanged
+system font_scale set to 1.0
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+--- surfaces r2-ivory-en-10 ---
+captured r2-ivory-en-10-home.png (149984 bytes)
+captured r2-ivory-en-10-discover_landing.png (208740 bytes)
+confirmed absent: 'Network permitted by your media preference' (r2-ivory-en-10 landing keeps network status out of prominent content)
+typed 'bach' into the Discover search field (en)
+contextual online-off hint visible while searching (r2-ivory-en-10)
+captured r2-ivory-en-10-discover_search_off.png (202457 bytes)
+captured r2-ivory-en-10-library_artists.png (198358 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Essential works') timed out after 25s — capturing anyway
+captured r2-ivory-en-10-artist.png (187043 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured r2-ivory-en-10-work.png (185091 bytes)
+captured r2-ivory-en-10-settings_data.png (237946 bytes)
+=== online-catalogue ON flow (EN Ivory 1.0) ===
+pref after enabling: <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="online-catalogue" value="true" />
+</map>
+typed 'bach' into the Discover search field (en)
+Search online button + network status visible only in the searching state
+captured r2-ivory-en-10-discover_search_on.png (198543 bytes)
+pref restored: <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="online-catalogue" value="false" />
+</map>
+app locale set to cs (Locales for com.opus.piano for user 0 are [cs])
+theme set to Dark (readback OK)
+--- surfaces r2-nocturne-cs-10 ---
+captured r2-nocturne-cs-10-home.png (144294 bytes)
+captured r2-nocturne-cs-10-discover_landing.png (217691 bytes)
+confirmed absent: 'Síť povolena vaším nastavením médií' (r2-nocturne-cs-10 landing keeps network status out of prominent content)
+typed 'bach' into the Discover search field (cs)
+contextual online-off hint visible while searching (r2-nocturne-cs-10)
+captured r2-nocturne-cs-10-discover_search_off.png (223246 bytes)
+captured r2-nocturne-cs-10-library_artists.png (209542 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Zásadní díla') timed out after 25s — capturing anyway
+captured r2-nocturne-cs-10-artist.png (199708 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured r2-nocturne-cs-10-work.png (187494 bytes)
+captured r2-nocturne-cs-10-settings_data.png (244380 bytes)
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+system font_scale set to 1.5
+--- surfaces r2-ivory-en-15 ---
+captured r2-ivory-en-15-home.png (202622 bytes)
+captured r2-ivory-en-15-discover_landing.png (216609 bytes)
+confirmed absent: 'Network permitted by your media preference' (r2-ivory-en-15 landing keeps network status out of prominent content)
+typed 'bach' into the Discover search field (en)
+contextual online-off hint visible while searching (r2-ivory-en-15)
+captured r2-ivory-en-15-discover_search_off.png (241454 bytes)
+captured r2-ivory-en-15-library_artists.png (221155 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Essential works') timed out after 25s — capturing anyway
+captured r2-ivory-en-15-artist.png (201685 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured r2-ivory-en-15-work.png (180139 bytes)
+captured r2-ivory-en-15-settings_data.png (246328 bytes)
+system font_scale set to 2.0
+--- surfaces r2-ivory-en-20 ---
+captured r2-ivory-en-20-home.png (200852 bytes)
+captured r2-ivory-en-20-discover_landing.png (208338 bytes)
+confirmed absent: 'Network permitted by your media preference' (r2-ivory-en-20 landing keeps network status out of prominent content)
+typed 'bach' into the Discover search field (en)
+contextual online-off hint visible while searching (r2-ivory-en-20)
+captured r2-ivory-en-20-discover_search_off.png (234454 bytes)
+captured r2-ivory-en-20-library_artists.png (214127 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Essential works') timed out after 25s — capturing anyway
+captured r2-ivory-en-20-artist.png (185547 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured r2-ivory-en-20-work.png (196885 bytes)
+captured r2-ivory-en-20-settings_data.png (237749 bytes)
+app locale set to cs (Locales for com.opus.piano for user 0 are [cs])
+theme set to Dark (readback OK)
+=== font-scale 2.0 CS Nocturne ===
+captured r2-nocturne-cs-20-home.png (203584 bytes)
+captured r2-nocturne-cs-20-discover_landing.png (216675 bytes)
+captured r2-nocturne-cs-20-library_artists.png (229058 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Zásadní díla') timed out after 25s — capturing anyway
+captured r2-nocturne-cs-20-artist.png (181395 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured r2-nocturne-cs-20-work.png (202413 bytes)
+captured r2-nocturne-cs-20-settings_data.png (254551 bytes)
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Dark (readback OK)
+system font_scale set to 1.0
+=== 1.0 EN Nocturne changed-surface coverage ===
+captured r2-nocturne-en-10-home.png (151980 bytes)
+captured r2-nocturne-en-10-discover_landing.png (209874 bytes)
+typed 'bach' into the Discover search field (en)
+captured r2-nocturne-en-10-discover_search_off.png (203904 bytes)
+captured r2-nocturne-en-10-settings_data.png (242010 bytes)
+=== narrow-display spot check (720x1560) ===
+app locale set to en (Locales for com.opus.piano for user 0 are [en])
+theme set to Light (readback OK)
+wm size: Physical size: 1080x2400
+Override size: 720x1560
+captured r2-small-en-home.png (103316 bytes)
+captured r2-small-en-discover_landing.png (113244 bytes)
+typed 'bach' into the Discover search field (en)
+captured r2-small-en-discover_search_off.png (123044 bytes)
+captured r2-small-en-library_artists.png (105611 bytes)
+tapped artist row: Antonio Vivaldi
+WARNING: wait_for('Essential works') timed out after 25s — capturing anyway
+captured r2-small-en-artist.png (86478 bytes)
+guards OK on emulator-5554 (qemu=1)
+wm size at fixup start: Physical size: 1080x2400
+Override size: 720x1560
+system font_scale set to 1.0
+app locale set to en
+theme set to Light (readback OK)
+=== narrow 720×1560 redo (dump-driven) ===
+captured r2-small-en-home.png (102784 bytes)
+captured r2-small-en-discover_landing.png (112670 bytes)
+confirmed absent: 'Network permitted by your media preference' (r2-small-en landing)
+typed 'bach' into the Discover search field (en)
+contextual online-off hint visible while searching (r2-small-en)
+captured r2-small-en-discover_search_off.png (122615 bytes)
+captured r2-small-en-library_artists.png (105186 bytes)
+tapped artist row: Antonio Vivaldi
+guards OK on emulator-5554 (qemu=1)
+wm size at fixup start: Physical size: 1080x2400
+Override size: 720x1560
+system font_scale set to 1.0
+app locale set to en
+theme set to Light (readback OK)
+=== narrow 720×1560 redo (dump-driven) ===
+captured r2-small-en-home.png (102780 bytes)
+captured r2-small-en-discover_landing.png (112669 bytes)
+confirmed absent: 'Network permitted by your media preference' (r2-small-en landing)
+typed 'bach' into the Discover search field (en)
+contextual online-off hint visible while searching (r2-small-en)
+captured r2-small-en-discover_search_off.png (122608 bytes)
+captured r2-small-en-library_artists.png (105185 bytes)
+tapped artist row: Antonio Vivaldi
+essential-works header below the fold at this size — dump-driven scroll will find cards
+captured r2-small-en-artist.png (86719 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured r2-small-en-work.png (96250 bytes)
+guards OK on emulator-5554 (qemu=1)
+wm size at fixup start: Physical size: 1080x2400
+Override size: 720x1560
+system font_scale set to 1.0
+app locale set to en
+theme set to Light (readback OK)
+=== narrow 720×1560 redo (dump-driven) ===
+captured r2-small-en-home.png (103471 bytes)
+captured r2-small-en-discover_landing.png (113399 bytes)
+confirmed absent: 'Network permitted by your media preference' (r2-small-en landing)
+typed 'bach' into the Discover search field (en)
+contextual online-off hint visible while searching (r2-small-en)
+captured r2-small-en-discover_search_off.png (123317 bytes)
+captured r2-small-en-library_artists.png (105814 bytes)
+tapped artist row: Antonio Vivaldi
+essential-works header below the fold at this size — dump-driven scroll will find cards
+captured r2-small-en-artist.png (87067 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured r2-small-en-work.png (96245 bytes)
+scrolled the narrow Settings landing until 'Data & Storage' was visible
+guards OK on emulator-5554 (qemu=1)
+wm size at fixup start: Physical size: 1080x2400
+Override size: 720x1560
+system font_scale set to 1.0
+app locale set to en
+theme set to Light (readback OK)
+=== narrow 720×1560 redo (dump-driven) ===
+captured r2-small-en-home.png (102266 bytes)
+captured r2-small-en-discover_landing.png (112109 bytes)
+confirmed absent: 'Network permitted by your media preference' (r2-small-en landing)
+typed 'bach' into the Discover search field (en)
+contextual online-off hint visible while searching (r2-small-en)
+captured r2-small-en-discover_search_off.png (122336 bytes)
+captured r2-small-en-library_artists.png (104919 bytes)
+tapped artist row: Antonio Vivaldi
+essential-works header below the fold at this size — dump-driven scroll will find cards
+captured r2-small-en-artist.png (86122 bytes)
+tapped essential work: Bassoon Concerto in E minor, RV.484
+captured r2-small-en-work.png (95701 bytes)
+scrolled the narrow Settings landing until 'Data & Storage' was visible
+narrow Data & Storage section framed from the top with the toggle row visible
+captured r2-small-en-settings_data.png (133358 bytes)
+wm size reset: Physical size: 1080x2400
+=== bottom-nav semantics evidence at 2× (EN Ivory) ===
+system font_scale set to 2.0
+NAV-EVIDENCE[font20]: node text='Home' content-desc='Home'
+NAV-EVIDENCE[font20]: node text='Library' content-desc='Library'
+NAV-EVIDENCE[font20]: node text='Discover' content-desc='Discover'
+NAV-EVIDENCE[font20]: node text='Practice' content-desc='Practice'
+NAV-EVIDENCE[font20]: node text='Profile' content-desc='Profile'
+captured r2-ivory-en-20-navcheck.png (201453 bytes)
+=== tidy + manifest ===
+system font_scale set to 1.0
+locale readback: Locales for com.opus.piano for user 0 are []
+theme set to System (readback OK)
+CAPTURE COMPLETE: 47 round-2 screenshots, manifest written

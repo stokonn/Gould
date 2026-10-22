@@ -185,7 +185,7 @@ regression). Matrix gates: X2 ✓ X3 ✓ X4 (1.5× spot) ✓ X5 ✓ X6 ✓ X7 �
 - Emulator left tidy: theme=System, font_scale=1.0, locale en; the bootstrapped catalogue
   cache lives only on the disposable `stage5-api36` AVD.
 
-### 7A.14 refinement pass — owner-authorized polish (2026-10-22, IN REVIEW)
+### 7A.14 refinement pass — owner-authorized polish (2026-10-22, committed `cae2701`, IN REVIEW)
 
 On top of the approved redesign, the owner requested seven targeted corrections plus a
 systematic spacing audit across all six screens. Full plan + state log:
@@ -217,6 +217,44 @@ systematic spacing audit across all six screens. Full plan + state log:
   + settings toggle flow EN/CS + 2× font EN/CS + 720×1560 narrow sweep) with SHA-256
   manifest; visually inspected (hero no-overlap both themes, Work MusicNote art, Library
   separation, Discover hint/empty-state fix, CZ bio-language label).
+- **Status:** submitted to the owner for final Stage 7A acceptance (**X9 pending**).
+  No merge, no tag, no release, no APK publication; Stage 6 untouched.
+
+### 7A.15 round 2 — final accessibility + spacing fixes (2026-10-22, IN REVIEW)
+
+Independent screenshot review found three remaining issues; owner authorized a second
+targeted round (commit recorded in git log). Full plan + state log:
+`stage-7a/REFINEMENT-CHECKPOINT.md` (round-2 section); mismatch/spacing report:
+`stage-7a/results/README.md` (round-2 section).
+
+- **Code (5 Kotlin files + EN/CZ strings, +64/−28):** Artist tabs `TabRow` →
+  `ScrollableTabRow` (no mid-word wrapping at any font scale; scrollable at 2×/narrow);
+  Work metadata cells → adaptive `BoxWithConstraints` (stacked full-width rows with
+  dividers below 340 dp or above 1.15× font — same precedent as Settings › About);
+  bottom-nav labels carry explicit full-name `semantics { contentDescription }`;
+  Settings → Data & Storage first item restructured as `Column(spacedBy(JournalSpace.medium))`
+  (header/cards/hint separated; preference + all warnings preserved verbatim); Discover
+  landing keeps ONE concise privacy notice (`stage7a_privacy_notice` shortened EN+CZ to
+  the essential third-party disclosure) with the online-off hint shown only while
+  searching and the technical network-status line only while searching with the
+  catalogue pref ON. No provider/network behavior changes.
+- **Host gates (EXECUTED, green):** assembleDebug/testDebugUnitTest/lintDebug
+  BUILD SUCCESSFUL; JVM 174/0F/0E/0S; lint 0 errors (124 warnings — unchanged); all five
+  `scripts/check_*.py` PASS (EN/CZ parity 950 intact); `assembleDebugAndroidTest`
+  compiles (`DiscoverNavigationTest` compatibility verified by inspection — asserts only
+  session/query retention).
+- **Emulator (EXECUTED on `emulator-5554`, qemu=1 asserted):** seeded in-place upgrade
+  **re-PASSED** (22 table counts + profile_settings row identical; pref readbacks
+  `true`→`false`, restored OFF); **47 targeted `r2-*` screenshots** at 1×/1.5×/2×,
+  EN/CS, Ivory/Nocturne + 720×1560 narrow with SHA-256 manifest + log; every changed
+  surface visually inspected; landing-notice/hint/network-status presence+absence
+  asserted via UIAutomator; bottom-nav full-name semantics verified via UIAutomator
+  `content-desc` at 2×. Emulator tidy (font 1.0, theme System, locale follows system,
+  wm size reset).
+- **Known limitations (honest):** bottom-nav labels ellipsize visually at 2× (full names
+  carried by semantics, verified); at 2× the third artist tab is edge-cut by the
+  scrollable row (swipe to reach; labels never break mid-word); Discover category tiles
+  ellipsize at 2× (pre-existing, unchanged).
 - **Status:** submitted to the owner for final Stage 7A acceptance (**X9 pending**).
   No merge, no tag, no release, no APK publication; Stage 6 untouched.
 

@@ -120,7 +120,9 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
         }}
         item {EditorialSearchField(query,{session.query=it;active=true;onlineRequested=false})}
         item {
-            // Owner-approved truthful privacy wording (stage-7 plan §9 C1); never claims "our servers".
+            // Owner-approved truthful privacy wording (stage-7 plan §9 C1); concise
+            // third-party disclosure only — never claims "our servers". This is the single
+            // privacy notice on the landing (Stage 7A refinement).
             Surface(shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surfaceVariant.copy(alpha=.55f)) {
                 Row(Modifier.fillMaxWidth().padding(12.dp),horizontalArrangement=Arrangement.spacedBy(10.dp)) {
                     Icon(Icons.Outlined.Lock,null,Modifier.padding(top=1.dp).size(18.dp),tint=MaterialTheme.colorScheme.primary)
@@ -128,15 +130,22 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
                 }
             }
         }
-        item { if(catalogOnline) {
-            // Explicit, user-initiated online search (owner privacy requirement): the button
-            // is the only path that ever reaches external providers, and it re-runs only for
-            // the current query/filter state.
-            JournalSecondaryButton(onClick={onlineRequested=true;active=true},enabled=!loading && query.isNotBlank()) {Text(L.s(R.string.stage7a_search_online))}
-        } else {
-            Text(L.s(R.string.stage7a_online_off_hint),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
-        } }
-        item {Text(L.s(if(app.media.allowed())R.string.discover_network_ready else R.string.discover_offline),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
+        // Stage 7A refinement: contextual online-search controls, shown only while the user
+        // is actually searching — the landing stays the single concise privacy notice, and
+        // technical network status is kept away from prominent landing content.
+        if(active) {
+            item { if(catalogOnline) {
+                // Explicit, user-initiated online search (owner privacy requirement): the button
+                // is the only path that ever reaches external providers, and it re-runs only for
+                // the current query/filter state.
+                JournalSecondaryButton(onClick={onlineRequested=true;active=true},enabled=!loading && query.isNotBlank()) {Text(L.s(R.string.stage7a_search_online))}
+            } else {
+                // Contextual hint: only useful when the user is searching without the
+                // catalogue preference enabled.
+                Text(L.s(R.string.stage7a_online_off_hint),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+            } }
+            if(catalogOnline) item {Text(L.s(if(app.media.allowed())R.string.discover_network_ready else R.string.discover_offline),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
+        }
         // Browsable categories rendered from the real supported search categories.
         item {EditorialSectionHeader(L.s(R.string.stage7a_browse_categories))}
         item {LazyRow(horizontalArrangement=Arrangement.spacedBy(JournalSpace.tiny),contentPadding=PaddingValues(horizontal=JournalSpace.small)) {

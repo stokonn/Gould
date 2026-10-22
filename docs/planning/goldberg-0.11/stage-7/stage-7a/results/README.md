@@ -168,4 +168,37 @@ borders or cards added for separation (section headers + one soft empty-state pa
   section names via `L.fixed(...)`, localizing "Data & Storage"/"Data a úložiště"
   correctly; no action taken.
 
+## Round 2 — final accessibility + spacing fixes (owner-reported, 2026-10-22)
+
+Second targeted round after independent screenshot review: three fixes, no redesign, no
+provider/network behavior changes. Verified on `emulator-5554` (qemu=1 asserted) with
+**47 targeted `r2-*` screenshots** + SHA-256 manifest (`capture-manifest-r2.txt`) and log
+(`capture-log-r2.txt`). Host gates re-run green: BUILD SUCCESSFUL, JVM 174/0F/0E/0S,
+lint 0 errors / 124 warnings (unchanged), `assembleDebugAndroidTest` compiles, 5/5 check
+scripts PASS (EN/CZ parity 950). Seeded in-place upgrade re-PASSED (22 table counts +
+profile_settings row identical; pref `true`/`false` on-device readbacks, restored OFF).
+
+| # | Owner-reported issue | Fix | Verified |
+|---|---|---|---|
+| N1 | 2× font mid-word wrapping in Artist tabs ("Overvi/ew", "Biogra/phy") | `TabRow` → `ScrollableTabRow` (intrinsic tab widths, `edgePadding = JournalSpace.small`) — labels never break mid-word; at 1.5× all three fit fully, at 2×/narrow the row scrolls horizontally (owner-approved scrollable pattern); default tab touch-target height kept | ✓ `r2-ivory-en-15/20-artist`, `r2-nocturne-cs-20-artist`, `r2-small-en-artist` (tabs render "Overview/Works/Biography" unbroken; narrow error-dump showed all three labels fully) |
+| N2 | 2× font wrapping/ellipsizing in Work metadata cells ("Catalo/gue…") | Adaptive `BoxWithConstraints` — stacked full-width Column + `HorizontalDivider` when `maxWidth < 340.dp \|\| fontScale > 1.15f` (same precedent as Settings › About); compact three-cell Row retained at 1× regular width | ✓ `r2-*-15-work`, `r2-*-20-work` (EN+CS), `r2-small-en-work` — "Catalogue number / Katalogové číslo" fully readable, no wrap/ellipsis |
+| N3 | Five-tab bottom nav labels + accessibility descriptions | Explicit full-name `semantics { contentDescription }` on every NavigationBarItem label | ✓ UIAutomator `NAV-EVIDENCE` at 2×: all five items expose complete names (Home/Library/Discover/Practice/Profile); visual ellipsis "Disc…"/"Pract…" remains (documented limitation — 5 tabs cannot fit full words at 2×) |
+| N4 | Settings → Data & Storage: headers/toggles/descriptions visually touching | Downloaded-content item restructured as `Column(spacedBy(JournalSpace.medium))` — header, media card, hint, online-catalogue card separated by 16 dp; preference + all warnings preserved verbatim | ✓ `r2-ivory-en-10/15/20-settings_data`, `r2-nocturne-cs-10/20-settings_data`, `r2-nocturne-en-10-settings_data`, `r2-small-en-settings_data` |
+| N5 | Discover: repetitive privacy/offline explanations on the landing | One concise notice kept (EN/CZ `stage7a_privacy_notice` shortened to the essential third-party disclosure); online-off hint now only while actually searching (`active && !catalogOnline`); technical network-status line only while searching with the pref ON (`active && catalogOnline`) | ✓ landing captures (4 combos + 1.5×/2×/narrow) show exactly one notice; search-state captures show the contextual hint (pref OFF) / Search-online + network line (pref ON); absence on landing asserted via UIAutomator, not by eye |
+
+### Round-2 limitations (honest)
+
+- Bottom-nav labels still ellipsize visually at 2× ("Disc…", "Pract…"); accessibility
+  semantics now carry the full names (verified via UIAutomator dump). Fitting five full
+  words at 2× would require shrinking the type scale — deliberately not done.
+- At 2× the third artist tab ("Biography") is edge-cut by the scrollable tab row and
+  needs one horizontal swipe — labels never break mid-word (scroll affordance).
+- Discover category tiles ellipsize at 2× ("Wo…", "Arti…") — pre-existing tile behavior,
+  unchanged this round (tiles are horizontally scrollable).
+- Capture-automation incidents (not app defects), resolved: fixed-swipe work-card tap
+  flaked at 720 px (replaced with dump-driven scrolling); the narrow Data & Storage
+  section can open at a preserved scroll anchor (capture now scrolls to the top first);
+  `wait_for("Essential works")` timeouts at enlarged fonts are non-fatal (header below
+  the fold; real work cards were still tapped via dump-driven detection).
+
 created by stokonn with love <3

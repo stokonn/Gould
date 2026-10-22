@@ -112,7 +112,10 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                         focus.clearFocus()
                         keyboard?.hide()
                         nav.selectTopLevel(destination.name)
-                    }, icon = { Icon(destination.icon, contentDescription = null) }, label = { Text(if(destination==Destination.DISCOVER)L.s(R.string.discover) else L.fixed(destination.label), style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis) })
+                    }, icon = { Icon(destination.icon, contentDescription = null) }, label = { val navLabel = if(destination==Destination.DISCOVER)L.s(R.string.discover) else L.fixed(destination.label); Text(navLabel, // Stage 7A refinement: full-name content description so screen readers always
+                                // announce the complete tab name even when the visual label
+                                // ellipsizes at 2× font (five tabs in the NavigationBar).
+                                modifier = Modifier.semantics { contentDescription = navLabel }, style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis) })
                 }
             }
         }
