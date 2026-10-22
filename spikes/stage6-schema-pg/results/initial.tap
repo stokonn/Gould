@@ -68,9 +68,9 @@ not ok 4 - failed migration rolls back DDL and its ledger entry, preserving seed
   failureType: 'testCodeFailure'
   error: |-
     The validation function is expected to return "true". Received false
-    
+
     Caught error:
-    
+
     error: syntax error at end of input
   code: 'ERR_ASSERTION'
   name: 'AssertionError'

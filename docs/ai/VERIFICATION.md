@@ -37,6 +37,18 @@ Stage 7A conditional/X10 OPEN; Stage 7B untouched. Implementation commit/push an
 existing Issue #31 checkpoint authorized by the owner/workflow; significant body
 edits require review. Issue publication status is recorded in the next checkpoint.
 
+### Publication check correction
+
+The first staged diff check exposed trailing spaces on four blank lines in saved
+initial/second failed-run TAP diagnostics. A shell lacking fail-fast handling
+continued to commit/push 16bfdfb despite that formatting check failure. Source and
+34/34 test results were unaffected. The original log bytes are retained under
+ignored .gradle/supabase-security-audit/prototype-raw; only trailing whitespace in
+these two committed diagnostics is normalized. Full base-to-current diff check
+then PASS. No gate policy is waived or source/test result altered; subsequent
+publication steps use fail-fast commands. This correction is an additional commit,
+without rewriting the already-pushed implementation history.
+
 ### Executed commands and scope for local prototype
 
 - `cd spikes/stage6-schema-pg && ./run-local.sh > results/final.tap 2>&1`: PASS, 34 tests, 0 failed/skipped/cancelled; PostgreSQL 17.11, Node v22.23.1, pg 8.23.1. Pinned image/env and source hashes in prototype results.

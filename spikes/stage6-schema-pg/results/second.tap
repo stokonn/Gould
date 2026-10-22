@@ -66,9 +66,9 @@ not ok 8 - session rotation family/ownership, expiry and quota checks are physic
   failureType: 'testCodeFailure'
   error: |-
     The validation function is expected to return "true". Received false
-    
+
     Caught error:
-    
+
     error: inconsistent types deduced for parameter $1
   code: 'ERR_ASSERTION'
   name: 'AssertionError'

@@ -31,7 +31,8 @@ Repository checks (isolated checkout root):
 - `python3 scripts/check_localization.py` PASS, 922 EN/CZ resources.
 - `python3 scripts/check_migrations.py` PASS, host v1–9→10 DDL; Android bridge/trigger runtime not executed.
 
-Intermediate evidence retained honestly:
+Intermediate evidence retained honestly (blank-line trailing whitespace normalized
+in initial.tap/second.tap; unmodified originals retained in ignored local artifacts):
 
 - [initial.tap](initial.tap): 0/27; shared migration syntax error blocked all tests.
 - [second.tap](second.tap): 25/27; two fixture UUID/text parameter inference errors.
