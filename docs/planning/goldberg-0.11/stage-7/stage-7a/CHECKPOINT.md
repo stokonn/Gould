@@ -298,7 +298,39 @@ log: `stage-7a/REFINEMENT-CHECKPOINT.md` (round-3 section); evidence report:
   visual ellipsis at 2× with verified full-name semantics; third artist tab edge-cut in
   the 2× scrollable row; category tiles ellipsize at 2× — pre-existing). The 2× CZ
   popover wraps tall but stays anchored/contained; dismissal verified per scale.
-- **Status:** submitted to the owner for final Stage 7A acceptance (**X9 pending**).
+- **Status:** submitted to the owner for final Stage 7A acceptance (**X9 pending** —
+  resolved by 7A.17 below).
   No merge, no tag, no release, no APK publication; Stage 6 untouched.
+
+created by stokonn with love <3
+
+### 7A.17 conditional owner acceptance — X9 🟧 CONDITIONAL, text-alignment issue OPEN (2026-10-22, documentation-only)
+
+The owner reviewed the round-3 evidence and **accepted Stage 7A with one explicitly
+unresolved reservation** (owner instruction 2026-10-22). This entry supersedes the
+"X9 pending" statuses above; prior entries remain the chronological audit trail.
+
+- **Decision:** **🟧 CONDITIONAL ACCEPTANCE** of Stage 7A (X9) — not unconditional
+  sign-off; no "Stage 7 complete" claim follows (Stage 7B not started).
+- **Reservation — text alignment, recorded OPEN (NOT fixed):** the owner still observes
+  **inconsistent text alignment on their physical Samsung device** despite round 3
+  (shared-typography `includeFontPadding = false` root-cause fix + `CustomizePanel`
+  row centering; all host/emulator gates green; 51 `r3-*` screenshots inspected).
+  Emulator renders cannot reproduce or close a real-device rendering difference — the
+  round-3 evidence does **not** close this issue and must not be mistaken for
+  real-device confirmation.
+- **Required before the 0.11 release:** a **real-device regression check of text
+  alignment on the owner's Samsung device** — tracked as gate **X10** in the
+  Stage 7 UI acceptance matrix and in Issue #31; owner-performed (agents never test the
+  owner's physical phone). The release must not proceed while X10 is open.
+- **This pass is documentation-only (owner instruction):** no further UI changes were
+  made or are authorized; all round-1–3 code, screenshots, manifests and logs are
+  preserved unchanged; no build/test/lint re-run (not applicable to docs-only changes —
+  prior green results remain the standing evidence).
+- **Status:** Stage 7A = 🟧 conditionally accepted with **X10 open**. No merge, no tag,
+  no release, no APK publication; Stage 6 and Stage 7B untouched. Next action: the
+  owner performs the Samsung real-device alignment check and reports the result; if it
+  fails, a further targeted round (like rounds 1–3) would need explicit owner
+  authorization.
 
 created by stokonn with love <3

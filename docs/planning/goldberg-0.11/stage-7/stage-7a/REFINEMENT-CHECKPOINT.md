@@ -319,4 +319,22 @@ the 2× scrollable row; Discover category tiles ellipsize at 2× — pre-existin
 CZ popover renders tall (7 wrapped lines) but stays anchored and fully contained; its
 dismissal cycle is verified programmatically at every tested scale.
 
+## Owner acceptance — CONDITIONAL (2026-10-22, documentation-only)
+
+The owner reviewed the round-3 evidence and accepted Stage 7A **with one explicitly
+unresolved reservation** (X9 🟧 CONDITIONAL — not unconditional sign-off):
+
+- **Text alignment is recorded OPEN, NOT fixed.** The owner still observes inconsistent
+  text alignment on their **physical Samsung device** despite round 3. Emulator renders
+  cannot reproduce or close a real-device rendering difference — the round-3 evidence
+  in this document does **not** close the issue.
+- **Required before the 0.11 release: a real-device regression check of text alignment**
+  on the owner's Samsung device (owner-performed; agents never test the owner's physical
+  phone). Tracked as gate **X10** in `stage-7/UI-ACCEPTANCE-MATRIX.md` and in Issue #31.
+- Per the owner's instruction this pass made **no further UI changes** —
+  documentation-only (checklist, both checkpoints, matrix, Issue #31); all round-1–3
+  code and verification evidence preserved unchanged. Details:
+  stage-7a/CHECKPOINT.md **7A.17**; STAGE-CHECKLIST "Stage 7A conditional owner
+  acceptance" entry.
+
 created by stokonn with love <3

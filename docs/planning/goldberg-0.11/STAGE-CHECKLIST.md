@@ -2,7 +2,7 @@
 
 Canonical policy: [AGENTS.md](../../../AGENTS.md) (§ "Stage checklist documentation").
 
-**Release status (2026-10-21): Goldberg 0.11 = IN PROGRESS.** Stages 1–5 complete (Stage 5 owner-approved); Stages 6–8 pending. The single umbrella issue [#31](https://github.com/stokonn/Goldberg/issues/31) tracks the whole release and stays **OPEN** until 0.11 ships (its GitHub Project item is **In Progress**); the Stage 5 entry below remains **Done**. Earlier it had been closed/set Done on Stage-5 approval — a tracking inconsistency corrected the same day (see DECISIONS.md).
+**Release status (2026-10-22): Goldberg 0.11 = IN PROGRESS.** Stages 1–5 complete (Stage 5 owner-approved); Stages 6–8 pending. **Stage 7A = 🟧 CONDITIONALLY ACCEPTED by the owner on 2026-10-22 (X9 with reservation) — one text-alignment issue remains explicitly OPEN, with a required real-device regression check before the 0.11 release (gate X10; see the Stage 7A conditional-acceptance entry below).** The single umbrella issue [#31](https://github.com/stokonn/Goldberg/issues/31) tracks the whole release and stays **OPEN** until 0.11 ships (its GitHub Project item is **In Progress**); the Stage 5 entry below remains **Done**. Earlier it had been closed/set Done on Stage-5 approval — a tracking inconsistency corrected the same day (see DECISIONS.md).
 This checklist is synchronized continuously as work progresses. A stage is marked
 **complete** only after its verification section records checks that were actually
 executed and passed. Checkboxes without verified evidence must stay unchecked; checked
@@ -708,8 +708,11 @@ NO Stage 6/7B changes. Branch `feature/goldberg-0.11-stage-7a`, worktree
   - X8 seeded upgrade check: **not executed** — Stage 7A contains no schema/database/
     migration change (inspection-proven); Stage 5 upgrade evidence remains authoritative.
 - **Completion status:** Stage 7A implementation and its verification are complete; the
-  stage is **NOT complete** until the owner's visual acceptance (**X9, pending**). No
-  merge, tag, release or APK publication is authorized or performed.
+  owner recorded **conditional acceptance (X9, 2026-10-22)** — see the Stage 7A
+  conditional-acceptance entry below. The stage is **NOT unconditionally complete**: the
+  text-alignment issue stays **OPEN (gate X10)** pending a real-device regression check
+  before the 0.11 release. No merge, tag, release or APK publication is authorized or
+  performed.
 
 ### Stage 7A refinement pass — seven corrections + spacing audit (owner-authorized 2026-10-22)
 
@@ -850,13 +853,50 @@ plan/state log: [stage-7/stage-7a/REFINEMENT-CHECKPOINT.md](stage-7/stage-7a/REF
   - Documentation: round-3 sections in
     [stage-7/stage-7a/results/README.md](stage-7/stage-7a/results/README.md) (issue
     table + honest limitations/incidents) and the Stage 7A checkpoint log (7A.16).
-- **Completion status:** round-3 implementation and verification are complete and
-  **submitted for owner final acceptance (X9, pending)** — Stage 7A remains NOT complete
-  until then. No merge, tag, release or APK publication is authorized or performed.
+- **Completion status:** round-3 implementation and verification are complete and were
+  **submitted for owner final acceptance (X9)** — resolved 2026-10-22 with **🟧
+  CONDITIONAL owner acceptance** (see the conditional-acceptance entry below): the owner
+  reports text alignment **still inconsistent on their physical Samsung device despite
+  round 3**, so the issue stays **OPEN (gate X10)** and Stage 7A is **not
+  unconditionally complete**. No merge, tag, release or APK publication is authorized or
+  performed.
   Known honest limitations: round-2 limitations carry over (bottom-nav visual ellipsis
   at 2× with verified full-name semantics; third artist tab edge-cut in the 2×
   scrollable row; category tiles ellipsize at 2× — pre-existing); the 2× CZ popover
   wraps tall but stays anchored and its dismissal cycle is verified per scale.
+
+### Stage 7A conditional owner acceptance (2026-10-22) — X9 🟧 CONDITIONAL, one issue OPEN
+
+**Purpose:** record the owner's Stage 7A acceptance decision and its explicitly
+unresolved reservation. **Scope:** documentation-only update — this checklist, both
+Stage 7A checkpoints, [stage-7/UI-ACCEPTANCE-MATRIX.md](stage-7/UI-ACCEPTANCE-MATRIX.md)
+and Issue #31. **No further UI changes were made or are authorized in this pass**; all
+round-1–3 code and verification evidence are preserved unchanged (no build/test/lint
+re-run for a documentation-only change — not applicable; prior green results remain the
+standing evidence).
+
+- **Decision (owner, 2026-10-22):** Stage 7A (X9) is **🟧 CONDITIONALLY ACCEPTED** —
+  the owner accepts the six-screen redesign and all three refinement rounds **with one
+  explicitly unresolved issue**. This is not unconditional sign-off, and no
+  "Stage 7 complete" claim follows from it.
+- **OPEN ISSUE — text alignment (NOT fixed):** despite round 3 (shared-typography
+  `includeFontPadding = false` root-cause fix in `Theme.kt` + `CustomizePanel` row
+  centering; all host/emulator gates green; 51 `r3-*` screenshots inspected),
+  **text alignment still appears inconsistent on the owner's physical Samsung
+  device.** The issue is recorded **OPEN**, not fixed: emulator renders cannot
+  reproduce or close a real-device rendering difference, and round-3 evidence must not
+  be mistaken for real-device confirmation.
+- **REQUIRED BEFORE THE 0.11 RELEASE: a real-device regression check of text
+  alignment** on the owner's physical Samsung device — tracked as gate **X10** in
+  [stage-7/UI-ACCEPTANCE-MATRIX.md](stage-7/UI-ACCEPTANCE-MATRIX.md) and in Issue #31;
+  the check is owner-performed (agents never test the owner's physical phone). The
+  0.11 release must not proceed while X10 is open.
+- **Completion status:** Stage 7A = **🟧 conditionally accepted (X9)** with the
+  text-alignment issue **OPEN (X10)**; Stage 7A is not treated as unconditionally
+  complete and "Stage 7 complete" is still not claimed (Stage 7B not started). No
+  merge, no tag, no release, no APK publication; Stage 6 and Stage 7B untouched.
+
+---
 
 ## Stage 8 — Integration, legal review and release readiness
 
