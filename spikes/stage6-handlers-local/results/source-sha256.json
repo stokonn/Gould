@@ -1,0 +1,12 @@
+{
+  "package.json": "37093b07b369ed1e88ebc8a3a27c705d131c1147b6f5a41eb1de0b2e054b6acb",
+  "run-local.sh": "b6970b1a12a98a7e83d2cb116b0e490a82b6e0060edc85afebcec050124c4dae",
+  "src/audit.mjs": "c72ea000e51d853cafb7b0fb395c320aa99d5155759498b6b7998b2294981fd7",
+  "src/events.mjs": "1a6c7765f49b67c0fe0658576834fa256eb5824f109e870a1e3cdccc8ecfa6ad",
+  "src/idempotency.mjs": "5ea62f63a27d5940b40f67c9f57b16234f67ce2856d5556a3496f92e1a7e4797",
+  "src/local-api.mjs": "8da6d235ab34120e26eee20d7a398ff629ec4df72015122dbe8c3a89e33ebdb4",
+  "src/moderation.mjs": "a5e0950d0ae7403e6ab0eb2c6f283c6286b579ea1d8b079f40b3b9ed249fbca4",
+  "src/submissions.mjs": "883afff4482a995a942d3a09a309cc678a119ef3cf406689a0fa69674a1db225",
+  "src/validation.mjs": "b037ee04449be5685aa92cde3c0ab67a066dad018bb2003672b5ac54b5d28402",
+  "tests/handlers.test.mjs": "a6d8c8d0bf3bd4cba4469be314402e8a5498545dc97e03e4cba7574378f7de6b"
+}

@@ -883,3 +883,16 @@ separate Auth branch. Checkpoint 6351715021 independently read back exactly; all
 64 prior full comments preserved, 65 total, Project In Progress unchanged. Dashboard
 link-only proposal is prepared/shown; UNPUBLISHED pending explicit approval.
 Source hashes and final 50+34 test artifacts unchanged by publication bookkeeping.
+
+## Owner-authorized local 6.4–6.6 prototype — 2026-10-23
+
+The explicit new owner instruction authorizes only synthetic local handler
+implementation before unresolved gates, not formal acceptance or hosted adoption.
+[Living purpose/scope/tasks/evidence](LOCAL-HANDLERS-PROTOTYPE.md).
+Implemented strict validation, immutable submissions/revisions, private reads,
+authenticated atomic moderation and principal/request-bound idempotency on the
+unchanged schema/Auth components. PG17.11 final: 87 new + 50 Auth + 34 schema PASS,
+zero failed/skipped/cancelled. Original failed-run/source evidence preserved.
+The reviewed narrow state patch is applied; no schema/data conversion. Formal
+6.4–6.6 remain unchecked; Q1/D5b, C4, C2 §12 and 6.0f unresolved. Cloud, Stage 5/7
+and Android unchanged. Next recommendation: separately authorized 6.7–6.9 only.

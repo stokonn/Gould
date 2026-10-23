@@ -1,3 +1,12 @@
+## 2026-10-23 local-handler continuation
+
+The owner explicitly authorized the local-only 6.4–6.6 prototype and selected
+canonical server changes_requested. The exact narrow state patch below was reviewed
+with its recorded dependencies and applied for these local handlers; no unseen-data
+migration or old C6 change. This does not accept formal adoption/6.0f.
+Current scope/results: [LOCAL-HANDLERS-PROTOTYPE.md](LOCAL-HANDLERS-PROTOTYPE.md).
+The preparation record below remains the 2026-10-22 historical proposal.
+
 # Stage 6 — prototype adoption preparation and compatibility impact
 
 2026-10-22; base f54881e; branch spike/goldberg-0.11-stage-6-schema-pg.

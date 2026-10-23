@@ -17,7 +17,7 @@ Browser login requires exact redirect/origin allowlists, state/PKCE where applic
 | Principal | Allowed operations |
 |---|---|
 | Public reader | Published approved overlay/revisions only, bounded pages. No pending submissions, identities, roles or audit details. |
-| Authenticated contributor | Create own draft/submission; view own status/review reason; revise own returned/draft item. Cannot set author/status/approval/role or enumerate other pending work. |
+| Authenticated contributor | Edit device-local drafts; create submissions; view own status/review reason; revise own changes_requested submission. Cannot set author/status/approval/role or enumerate other pending work. |
 | Moderator | Read pending queue and evidence; request changes/reject/approve through transaction API if permitted; no infrastructure secrets or role assignment. |
 | Administrator | Moderator actions plus controlled roles/suspensions and catalogue quarantine/rollback; cannot edit the append-only audit log through client endpoints. |
 | Deployment operator | Secret/config/export/restore management outside both clients; owner-controlled, least privilege, no credentials in APK/web bundle. |

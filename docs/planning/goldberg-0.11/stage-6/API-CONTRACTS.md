@@ -53,8 +53,11 @@ errors (baseline rule kept). Retries never create a second publication.
 | `POST /v1/submissions` | `submit` | Create submission + revision 1 from allowlisted payload (DATA-MODEL.md §2). Enforces per-principal caps. |
 | `GET /v1/submissions/mine` | `submit` | Own submissions only (ownership in query); cursor-paged. |
 | `GET /v1/submissions/{id}` | owner or moderator | Others' pending submissions are existence-hidden (404). |
-| `POST /v1/submissions/{id}/revisions` | owner, status∈{draft, changes_requested, returned} | New immutable revision; returns to `in_review`. |
+| `POST /v1/submissions/{id}/revisions` | owner, status=changes_requested | New immutable revision; returns to `in_review`. |
 | `POST /v1/submissions/{id}/withdraw` | owner, pre-approval | Terminal withdrawal with optional reason. |
+
+Drafts remain device-local. `returned` may be a UI label for
+`changes_requested`, never a separate server status or wire alias.
 
 Contributors can never set author, status, approval, roles or publication fields;
 those fields in a request body cause 400, not silent stripping-with-effect.

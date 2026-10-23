@@ -1,0 +1,16 @@
+PASS: canonical policy, thin agent references, Cursor frontmatter and local Wiki navigation; runtime agent loading NOT TESTED
+PASS goldberg-0.6.0-format1.json: schema 4 → 10 DDL, every original portable field retained
+PASS goldberg-0.9.1-format2.json: schema 6 → 10 DDL, every original portable field retained
+PASS goldberg-0.9.2-format3.json: schema 7 → 10 DDL, every original portable field retained
+PASS: 106 sessions across 4 pages, equal timestamps, duplicate parts, legacy attribution, catalogue filtering, newer insert and empty result
+PASS: untimed legacy association visible once; original time unchanged
+PASS: 922 English/Czech resources, matching placeholders, Czech plural forms and declared locales
+PASS v1 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v2 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v3 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v4 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v5 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v6 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v7 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v8 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v9 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests

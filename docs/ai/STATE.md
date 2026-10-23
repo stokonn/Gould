@@ -1,3 +1,59 @@
+## Local 6.4–6.6 verified implementation — 2026-10-23
+
+Owner-authorized local synthetic prototype; not formal 6.4–6.6 acceptance or 6.0f
+waiver. Branch spike/goldberg-0.11-stage-6-handlers-local, isolated worktree
+/tmp/goldberg-stage6-handlers; remote Auth base
+7993444b86690d95aae03aa23383b80014dec031.
+Implementation source commit is the containing commit; publication follows.
+
+Purpose/scope: separate validation/submission/moderation/idempotency/events/audit
+export/local adapter modules under spikes/stage6-handlers-local, reviewed narrow
+changes_requested contract clarification, and Stage 6 tracking only. No database
+change/migration. Original 34 schema + 50 Auth source/hash/history preserved.
+Implemented immutable snapshots and audit, private ownership reads, authorized
+open/approve/reject/request_changes, absent/existing entity serialization and
+atomic feed/projection, exact stored-response replay and principal/request hashing.
+Unexpected SQL remains safe 503; stale decisions 409; mismatch 422.
+
+Final executed command: spikes/stage6-handlers-local/run-local.sh — exit 0,
+PostgreSQL 17.11: **87 new + 50 Auth + 34 schema = 171 PASS, zero failures/skips/
+cancellations**. Five scripts/check_*.py PASS; original 22 source hashes PASS.
+Initial 77/81 failure evidence retained: numeric export ordering after seq 9
+fixed in a new exporter, old helper untouched; existing-entity fixture revision
+corrected. Intermediate 81+84 passed; final expanded 87+84 passed. Disposable
+container removed. Exact outputs/source hashes/threat qualifications:
+spikes/stage6-handlers-local/results/SUMMARY.md and
+docs/planning/goldberg-0.11/stage-6/LOCAL-HANDLERS-PROTOTYPE.md.
+
+Issue #31 approved link-only update PUBLISHED via existing CLI after connector
+write returned 403 Resource not accessible by integration. Fresh concurrency
+check matched old body SHA dd2829c6…35f2a; independent CLI+connector readback
+exact, new body SHA cbb0579ef81b7d92052d9878d4d3d306718d9fe2168e01984548a2b54081af81.
+All 65 full comments preserved; metadata/milestone/labels unchanged; Goldberg
+Development In Progress, Priority Medium/Version 0.11. Latest URL now points to
+6351715021 as expressly approved. Further body changes need approval; append-only
+implementation checkpoint pending source publication. No historical comment edits.
+
+Local T6–T14/T17/T18/T21 subchecks only; no full threat-row pass. No HTTP/browser/
+CSRF/real-provider/hosted RLS, DNS/redirect fetches, Android/Gradle/APK/UI/device,
+quota/kill-switch, full Admin/overlay/restore/RPO work executed. Source/field/license
+compatibility policy for real contributions remains incomplete: default validator
+denies all; tests inject reviewed authored synthetic CC0 evidence, not a new real
+license policy. Unknown licenses/fields fail closed; structured non-text metadata
+is unsupported. No fetcher/proxy or public endpoint. Unresolved identities are
+preserved and cannot be automatically merged/published. Historical C6 same-key
+[201,409] unchanged; actual new handler same-key replay [201,201], one effect.
+
+Q1/D5b unresolved; C4/C2 §12 OPEN; 6.0f/formal 6.1–6.18 unchecked; 6.0d/6.0e
+unauthorized; 0 CZK/month, no real collection. Cloud, Stage 5 and Stage 7A/7B
+unchanged; no app/practice/backup/signing changes, merge/tag/release. No APK was
+built; APK digest/signing/screenshots not applicable.
+
+Next steps: publish verified isolated source/checkpoint; then stop. Recommend
+separately authorized **6.7–6.9** (public overlay/feed, remaining Admin operations,
+abuse controls). Do not start automatically. Read this checkpoint, latest Issue
+#31 comment and source/hash artifacts on resume; preserve all unresolved gates.
+
 ## Local Auth milestone publication — 2026-10-22
 
 Source commit 76c1c879b5642236490e1f14b652fdf5e5ebdc7a pushed/remote verified on

@@ -847,3 +847,26 @@ and current mandatory verification gates.
 ---
 
 created by stokonn with love <3
+
+## Stage 6 local handlers milestone — 6.4–6.6 (2026-10-23)
+
+Purpose: implement bounded submissions, atomic authorized moderation and request-bound
+idempotency on the verified PostgreSQL/Auth prototypes, using synthetic data only.
+Scope: spikes/stage6-handlers-local, reviewed revision-status contract clarification,
+and Stage 6 tracking. Original 34 schema/50 Auth source and historical evidence remain intact.
+
+- [x] Verify remote Auth HEAD 7993444 and create isolated implementation branch.
+- [x] Read latest Issue #31 checkpoint and publish approved link-only dashboard update.
+- [x] Review exact state patch/dependencies; reconcile changes_requested canonical state.
+- [x] Implement separate validation, submission, moderation, idempotency and adapter modules.
+- [x] Execute focused PG17 security/concurrency/rollback tests plus all 84 regressions.
+- [ ] Verify source hashes, host checks, scope and synchronize checkpoint; commit/push.
+
+Progress: local code and verification passed; publication/checkpoint pending.
+Verification: PostgreSQL 17.11 — 87 new + 50 Auth + 34 schema = 171 PASS, zero
+failures/skips/cancellations; five host checks and original source hashes PASS.
+Initial 77/81 and corrected 81/81 artifacts retained, including diagnosed export
+ordering bug and fixture correction. No hosted/HTTP/DNS/Android tests executed.
+[Purpose, scope, limits and tasks](stage-6/LOCAL-HANDLERS-PROTOTYPE.md).
+Completion: local verification passed, publication pending. Formal
+6.4–6.6 and 6.0f remain unchecked; Q1/D5b, C4 and C2 §12 unresolved.
