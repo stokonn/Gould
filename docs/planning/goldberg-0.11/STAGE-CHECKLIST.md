@@ -1,4 +1,4 @@
-## Local API M3 — VERIFIED; source publication pending (2026-10-23)
+## Local API M3 — VERIFIED / SOURCE PUBLISHED (2026-10-23)
 
 Purpose: expose approved authorized live Comparison for moderation conflict recovery.
 Scope: isolated API adapter/projection, tests/runner/evidence and tracking docs only;
@@ -21,7 +21,11 @@ native services/schema/migrations/Android and Stage7B untouched. Branch
   schema. Zero failures/skips/cancellations in final run; failed attempts retained.
 - [x] Current source/raw hashes/protected baseline PASS; exact disposable container
   AND recorded volume removed/absence verified. Evidence `results/m3/pg-ygh16ba3`.
-- [ ] Commit/ordinary push/exact remote readback, final Issue31 checkpoint.
+- [x] Implementation/evidence committed and ordinary-pushed; exact remote SHA
+  `b01f1e924601d2571ba399888755369de2db3f08` verified. Issue31 verified-progress
+  [checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6375047517).
+  Completion is tracked in the existing [Issue31](https://github.com/stokonn/Goldberg/issues/31)
+  M3 dashboard/comment after final tracking-commit remote readback.
 
 No cross-request snapshot promise; Comparison intentionally has no proposal revision
 or timestamp fields. Detail supplies recorded intent separately; client reconfirmation
@@ -33,6 +37,11 @@ Goldberg Development In Progress. Next smallest milestone: separately authorized
 client Detail/Comparison refetch and explicit reconfirmation integration; no policy activation.
 
 [Full milestone ledger](stage-6/API-V1-LOCAL-M3.md).
+
+Continuity: M3 backend scope is verified; do not repeat M2/M3 publication or
+implementation. Recover latest Issue31 M3 checkpoint and actual HEAD/status before
+new work. Test-source checker is `verify-m3.py results/m3/pg-ygh16ba3` in the API
+package (run from root with full paths); original M2 checker is historical/source-bound.
 
 ---
 

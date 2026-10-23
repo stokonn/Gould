@@ -1,4 +1,4 @@
-# Local API M3 — current-value Comparison (VERIFIED; source publication pending)
+# Local API M3 — current-value Comparison (VERIFIED / SOURCE PUBLISHED)
 
 Purpose: authorized live catalogue comparison for moderation conflict recovery.
 Scope: isolated local API adapter/projection/tests/evidence and tracking docs only.
@@ -14,7 +14,10 @@ branch feature/goldberg-0.11-stage-6-api-v1-local. Existing M2 is published.
   no truncation, absent/unmapped/unsupported projections use approved unavailable union.
 - [x] Actual disposable PostgreSQL behavior/concurrency/conflict/precision/auth tests;
   affected M1/M2/T22 regressions; raw logs/source hashes/container+volume cleanup.
-- [ ] Synchronize docs/Issue31/Project, commit, ordinary push, exact remote SHA, completion.
+- [x] Synchronize verified docs/Issue31/Project progress; commit and ordinary push
+  implementation/evidence `b01f1e924601d2571ba399888755369de2db3f08`; exact remote SHA matched.
+  Completion checkpoint is published to existing Issue31 after final tracking-commit
+  remote readback; no second backend implementation or acceptance claim.
 
 Comparison is the approved live-only DTO; it adds no baseline/proposal fields or
 new timestamps. Detail supplies recorded expectedEntityRevision and current
@@ -24,7 +27,7 @@ full-int8 writes separate; G10 CLOSED,6.12 PARTIAL,6.17 NOT FROZEN. No formal6.1
 HTTP listener, Android/device/emulator, cloud/hosted/OAuth, merge/deploy/release.
 Stage7A acceptance preserved; X10 deferred Gould0.12. No APK or screenshot applicable.
 
-Implementation and required scoped verification PASS; source publication pending.
+Implementation and required scoped verification PASS; source publication verified.
 
 ## Verification attempts (preserved)
 
@@ -90,3 +93,20 @@ not domain writes or a max-int8 submission revision chain. No full-int8 write cl
 
 
 created by stokonn with love <3
+
+## Publication and continuity
+
+Implementation/evidence commit `b01f1e924601d2571ba399888755369de2db3f08` ordinary-pushed,
+exact remote branch SHA readback matched; API worktree was clean. Current-source
+checker PASS after commit. Final documentation follow-up records this publication;
+its exact SHA and authoritative completion URL live in Issue31's M3 dashboard.
+[Start checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6374949198)
+and [verified progress](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6375047517)
+remain chronological history. Issue31 stays OPEN / Goldberg Development In Progress.
+
+Next executor: recover actual HEAD/status and latest M3 Issue31 checkpoint first;
+M2/M3 backend implementation is done. Smallest justified next milestone is separately
+authorized client Detail/Comparison refetch plus explicit reconfirmation integration.
+No cross-request snapshot, full-int8-write, public-version or real policy permission
+is implied. No essential DTO semantics gap found for this bounded projection;
+real-world disclosure policy remains deliberately unapproved/default-deny.
