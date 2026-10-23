@@ -1,5 +1,66 @@
 # Goldberg 0.11 — stage checklist (permanent, living document)
 
+## Current — Stage 6 API local Milestone 1 (2026-10-23)
+
+**LOCAL IMPLEMENTATION VERIFIED / PROVISIONAL v1 / INTEGRATION NOT ACCEPTED.**
+Owner authorization permits this isolated adapter foundation and focused verification,
+superseding planning-only limits for this milestone only. Branch
+`feature/goldberg-0.11-stage-6-api-v1-local`, worktree
+`/home/stokonn/Projects/Goldberg-Stage6-API`, exact approved baseline
+`6dd3136269ec7f5932c8c4b3689fb065d4db9105`; original security branch/evidence preserved.
+[Approved-design checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6371704250).
+
+Purpose/scope: explicit in-process public request/response adapter around existing local
+services for G5–G8. No listener, Android changes, browser/hosted integration or public
+version adoption. `/v1` consumer compatibility remains unconfirmed, so local paths
+are provisional; never silently select `/v2`.
+
+- [x] Inspect Stage6 worktrees and dirty Stage7B read-only; create separate branch from
+  exact baseline. No unrelated worktree reset/cleanup/edit or security branch change.
+- [x] Implement strict method/path/body/schemaVersion/unknown-field/duplicate-key
+  validation, explicit operation projection, safe error taxonomy, request correlation
+  and empty204 logout. No competing-dialect inference.
+- [x] Execute challenge/exchange/session/capabilities/refresh/logout through actual
+  local services; stored identity/expiry projection, live grants, family revocation,
+  approved durations and controlled RSA/JWKS exchange. Account principal is server-derived.
+- [x] Execute explicit open and three decisions with independent entity/proposal
+  revisions; typed200/201, generic409, exact public receipts stored atomically with
+  effects,24h from completion, changed intent422 and live authorization before replay.
+- [x] Lossless decimal-string int8 reads; valid unsupported full-int8 writes fail503
+  after authentication/authorization; malformed values400; domain safe-increment
+  exhaustion409. UTC microseconds preserved, scoped signed cursor codec15m tested.
+- [x]106 adapter/wire tests PASS:34 service/scripted-SQL,27 original request-scene
+  adapter tests,24 routing/validation/security,21 wire/cursor/composition units.
+  Includes all8 protocol scenarios and one controlled RSA/JWKS exchange.38 relevant
+  T22 regressions and18 planning-verifier tests PASS separately. Source bound before/
+  after run and current verification; raw logs retained, no hidden skipped bodies.
+- [ ] Local PostgreSQL preflight EPERM;0 DB bodies. No actual HTTP/Android/browser/
+  runtime/hosted acceptance. Prior345 executions/313 tests/205 PG-backed bodies
+  unchanged and not rerun; full threat matrix remains6.12 PARTIAL/T22 LOCAL PASS.
+- [ ] Public latest-detail/refetch DTO, full-int8 moderation writes, PG receipt proof,
+  client single-flight/account isolation/204 handling and real HTTP binding remain open.
+- [ ] No G1–G4 implementation, real-world policy approval, cloud/OAuth production,
+  networking activation, formal6.13–6.18 implementation or6.17 freeze. All real
+  source/field/license/attribution/evidence policies stay empty/default-deny.
+
+G10 CLOSED; G1–G9/G11 integration acceptance BLOCKED. Original service/schema/Android/
+contract/evidence files unchanged. New receipt wrapper uses existing storage helpers/
+table, no migration. See `stage-6/API-V1-LOCAL-M1.md` and package README for actual
+operations, test venues, compatibility findings, limitations and next milestone.
+
+Stage7A is FINAL ACCEPTED; X10 is NOT FIXED/NOT VERIFIED, owner-deferred to Gould0.12
+([acceptance](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6371745218)).
+This supersedes earlier conditional/X10-open cosmetic release gating in historical
+entries below. Stage8 readability/accessibility/touch-target verification remains
+required; Stage7B integration acceptance remains separate and blocked.
+
+Next smallest local milestone: bounded authoritative latest-submission Detail/refetch
+projection for409 recovery, with permitted disposable-PG verification of adapter/public
+receipts. Numeric full-int8 writes stay a separate tested change. Stop at all remaining
+production, policy, public-version and deployment gates. Publication instructions and
+actual outcomes: docs/ai/STAGE6-API-M1-PUBLICATION.md.
+
+
 ## Current — API v1 owner design approval recorded (2026-10-23)
 
 **O1–O8 APPROVED AS QUALIFIED DESIGN; O7 PARTIAL; UNIMPLEMENTED / INACTIVE / NOT FROZEN.**

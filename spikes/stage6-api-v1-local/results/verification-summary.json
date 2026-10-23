@@ -1,0 +1,31 @@
+{
+  "classification": "ACTUAL_ADAPTER_REAL_SERVICE_SCRIPTED_SQL_PLUS_UNIT",
+  "approvedBaseline": "6dd3136269ec7f5932c8c4b3689fb065d4db9105",
+  "latestRun": "spikes/stage6-api-v1-local/results/run-ludy8qhh",
+  "adapterTests": 106,
+  "adapterCategories": {
+    "service_scripted_sql": 34,
+    "request_fixture_adapter": 27,
+    "routing_validation_security": 24,
+    "wire_cursor_composition_units": 21
+  },
+  "requestFixtureCasesExecuted": 27,
+  "protocolScenariosExecuted": 8,
+  "t22Regressions": 38,
+  "planningVerifierTests": 18,
+  "postgresBodiesExecuted": 0,
+  "httpRequestsExecuted": 0,
+  "androidBodiesExecuted": 0,
+  "publicVersion": "LOCAL_PROVISIONAL_V1; compatibility gate open",
+  "prior345Rerun": false,
+  "limits": [
+    "SQL harness serializes transactions globally; no PostgreSQL locking/constraint/durability proof",
+    "No actual HTTP/browser/Android venue",
+    "Metadata enrichment is a post-mint authenticated transaction",
+    "No full-int8 moderation write or public detail/refetch route"
+  ],
+  "newFindings": [
+    "Existing auth204 adapter drops its own generated request ID; local public logout calls same SessionService with public ID to correlate audit/header",
+    "Existing idempotency timestamps before work completion; new public wrapper samples after lock wait and effect completion using unchanged storage helpers/table"
+  ]
+}

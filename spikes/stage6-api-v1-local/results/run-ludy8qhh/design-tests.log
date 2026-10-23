@@ -1,0 +1,7 @@
+..................
+----------------------------------------------------------------------
+Ran 18 tests in 0.033s
+
+OK
+PASS: owner O1–O8 scope, Prague4 civil/DST windows and10 literal CZ/EN search fixtures; host fixture checks only, not server/runtime acceptance.
+PASS: 61 proposed synthetic fixtures (37 positive / 24 negative); 8 authored protocol scenes; DTO structure/bytes/int8/replay/audit accounting; hashes; approved design only, policies default-deny and integration blocked. No HTTP/PG/Android execution.

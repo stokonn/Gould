@@ -8,3 +8,6 @@ local.properties
 docs/design/goldberg-0.10.1/references/
 # Regenerable Python verification bytecode.
 __pycache__/
+# Isolated API adapter tests reuse verified local dependency caches (never committed).
+/spikes/stage6-schema-pg/node_modules
+/spikes/stage6-auth-local/node_modules

@@ -1,0 +1,80 @@
+{
+  "classification": "LOCAL_IN_PROCESS_SCRIPTED_SQL_AND_UNIT_ONLY",
+  "sourceUnchanged": true,
+  "commands": [
+    {
+      "log": "adapter.tap",
+      "command": [
+        "node",
+        "spikes/stage6-api-v1-local/tests/adapter.test.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "log": "t22.tap",
+      "command": [
+        "node",
+        "spikes/stage6-security-local/tests/t22.test.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "log": "design.log",
+      "command": [
+        "python3",
+        "contracts/admin/v1/decision-proposal/verify.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "log": "design-tests.log",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "contracts/admin/v1/decision-proposal",
+        "-p",
+        "test_*.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "log": "original-contract.log",
+      "command": [
+        "python3",
+        "spikes/stage6-security-local/verify_contract.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "log": "agent-policy.log",
+      "command": [
+        "python3",
+        "scripts/check_agent_policy.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "log": "whitespace.log",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "node": "v22.23.1",
+  "python": "3.14.8",
+  "postgres": {
+    "localTcp": "blocked",
+    "errno": 1,
+    "error": "Operation not permitted",
+    "databaseBodiesExecuted": 0
+  },
+  "httpRequestsExecuted": 0,
+  "androidBodiesExecuted": 0,
+  "prior345Rerun": false
+}

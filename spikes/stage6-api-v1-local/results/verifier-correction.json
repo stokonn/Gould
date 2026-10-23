@@ -1,0 +1,11 @@
+{
+  "classification": "VERIFIER_FAILURE_RETAINED",
+  "finding": "An overly broad test-count text edit changed the final digits of the pinned baseline in the new verification script. The read-only ancestry/protected-source check failed with git bad object; no source publication occurred. Exact baseline restored and a new source-bound run follows.",
+  "failedCommand": "python3 spikes/stage6-api-v1-local/verify.py",
+  "exitCode": 1,
+  "gitExitCode": 128,
+  "affectedRun": "run-k0cm5yrh",
+  "adapterTestsInThatRun": 106,
+  "adapterTestsPassed": 106,
+  "backendBehaviorChangedByFix": false
+}

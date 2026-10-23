@@ -1,0 +1,12 @@
+{
+  "pg": {
+    "version": "8.23.1",
+    "packageJsonSha256": "b1e53333a3d0c2c47c49a5cb919d221135dc03145df740925b899bc2baacc435",
+    "venue": "existing read-only local cache; original lock unchanged"
+  },
+  "jose": {
+    "version": "6.2.13",
+    "packageJsonSha256": "eeced90762bec14bbc6fdfefb1f50a75409f9db11b8199f472518b3dad50283d",
+    "venue": "existing read-only local cache; original lock unchanged"
+  }
+}
