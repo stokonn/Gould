@@ -15,7 +15,7 @@ superseded by this successful authorized CLI publication. No new authentication.
 - [x] Execute `python3 spikes/stage6-api-v1-local/verify.py`: PASS;106 adapter/wire
   plus38 T22 and18 planning-verifier results, raw hashes and source-before/after/
   current binding verified. These are inspected prior executions, NOT tests rerun
-  by publication recovery; prior345 tests were not repeated.
+  by publication recovery; prior345 executions were not repeated.
 - [x] Protected services/schema/Android/contracts/security evidence byte-unchanged
   against approved baseline; whitespace and publication-scope/clean-HEAD guards PASS.
 - [x] Guarded publisher ordinary push and Issue31 description/comment readbacks PASS;
