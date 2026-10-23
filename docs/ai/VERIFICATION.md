@@ -1,3 +1,29 @@
+## Host evidence committed; remote publication pending
+
+Host verification evidence commitc4673c25163e8210807d0b85d94cfd4fd30933b9 records
+owner-tested1277bed with214/214 JVM tests, lint0 errors/109 warnings, trusted-signed
+debug APK and precise coverage/runtime limitations. Application/test source is
+unchanged from the tested revision. Normal exact-SHA push ofc4673c2 was attempted
+and failed before authentication: github.com could not resolve. Connected GitHub
+read confirmed the integration branch absent; Issue31 has68 comments and no new
+Android checkpoint. No force-push or dashboard write was attempted.
+
+A narrowly scoped host publisher is prepared at
+.gradle/community-publication/publish-host.sh. It checks a clean exact branch/HEAD,
+ancestry, unchanged tested source,214 XML results, lint counts, source/artifact
+hashes and the preserved APK, then pushes normally, verifies remote SHA and appends
+one factual partial checkpoint with readback/history checks. It never deploys or
+uploads the APK. The milestone remains runtime-PARTIAL even after source publication.
+
+Exact next compilation (permitted host, no full JVM/lint rerun needed):
+`./gradlew --no-daemon :app:assembleDebugAndroidTest --stacktrace`.
+Then use a functioning named disposable emulator for5 native tests, existing Room/
+backup migration and seeded-upgrade checks, actual process recreation/cold startup
+and contributor UI/theme/font/CZ/EN acceptance. Current executor cannot bind sockets;
+no active emulator observed, and Stage7B separately reports host qemu SIGSEGV. Native
+source-only compilation has passed, but there is no Android test APK or runtime pass.
+Do not use a physical phone or start6.12–6.14. All formal gates remain unchanged.
+
 ## Android host Gradle verification confirmed — 2026-10-23
 
 **JVM/build/lint VERIFIED; Android runtime acceptance still PENDING.**
