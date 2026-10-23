@@ -29,9 +29,10 @@ Initial HEAD `cee9330`; all pre-existing dirty source preserved.
   native JSON exact BIGINT/revision overflow. Synthetic data only.
 - [x] Workflow YAML/run-block syntax and helper bash syntax PASS; assembly gate
   SUCCESS (cached compilation), fresh JVM task 275/0/0/0 in12s. Six host scripts PASS.
-- [ ] Put the intended verification source on GitHub under an approved scope;
-  existing uncommitted implementation cannot be tested by checking out cee9330.
-- [ ] Dispatch exact commit, inspect actual job logs/results and retrieve artifacts.
+- [x] Reviewed checkpoint0703cd8 committed/pushed under explicit owner scope;
+  exact remote SHA readback PASS.
+- [x] Dispatch exact checkpoint0703cd8: run40011091868; source binding PASS.
+- [ ] Inspect completed job logs/results and retrieve artifacts.
 - [ ] Inspect captured smoke screenshots; classify their limited scope honestly.
 - [ ] Synchronize Issue31/dashboard/Project, AI docs, master/stage checklist and PMP.
 
@@ -49,3 +50,20 @@ an app defect. No emulator reinstall, Fedora driver change or local relaunch.
 
 No Stage6 worktree/contracts, application models, production networking/moderation,
 physical devices, main merge, deployment or release. X10 OPEN; Stage8 pending.
+
+## Run40011091868 — setup failure, narrow correction
+
+Exact source0703cd8; job120611362267 failed at pre-build SDK/emulator diagnostics,
+exit127. Downloaded raw emulator-version.txt says emulator executable missing.
+Zero JVM or instrumentation bodies executed in this CI run; no application failure.
+Artifact12525568699 (1368 bytes), remote ZIP SHA256
+cf4fd1040124d460998c033a252320f04f21f82c9aac8f96da15653e0885bf1d;
+raw job log, run metadata and extracted five diagnostic files retained under
+results/ci-run-40011091868. No screenshots or test XMLs exist for this run.
+
+Narrow fix: add `emulator` to the existing instrumentation-job setup-android
+package list, before strict version/KVM diagnostics. No change to tests/assertions,
+permissions, physical-device guards, trigger scope, acceptance job or app source.
+YAML ordering/package assertion and bash parsing PASS. Re-dispatch requires this
+verified fix committed/pushed, binding evidence to its new SHA. Host tests need no
+rerun because application/test/build source is unchanged.

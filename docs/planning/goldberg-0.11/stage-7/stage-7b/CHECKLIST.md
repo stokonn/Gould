@@ -1,14 +1,24 @@
-## Stage 7B safe recovery in progress — 2026-10-23
+## Stage 7B preserved checkpoint and CI continuation — 2026-10-23
 
-Current recovery authority: [SAFE-RECOVERY.md](SAFE-RECOVERY.md). Existing implementation and
-evidence inventoried and preserved at base `cee9330`; remote SHA matched. Host gate
-SUCCESS (assembly/lint mostly cached), fresh JVM rerun **275/0/0/0** (36 suites,
-12s), six static checks and workflow/shell syntax PASS. Checkpoint/push/CI and Issue
-synchronization are in progress.
-Stage7B acceptance remains incomplete; networking/decisions DISABLED.
-Latest Issue31 decision: Stage7A final owner acceptance; X10 unfixed/unverified,
-deferred to Gould0.12. Stage8 material readability/accessibility/touch targets remain.
-Older checkpoint statuses and counts are historical, not current execution claims.
+**Stage7B IN PROGRESS; acceptance incomplete.** Source/evidence checkpoint
+`0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e` committed and ordinary-pushed; exact
+remote SHA readback PASS. Initial cee9330 +26 modified tracked /125 publishable new
+files preserved; private PMP excluded. Fresh JVM **275/0/0/0**,36 suites,12s;
+assembly/lint gate SUCCESS (mostly cached), six host scripts and syntax checks PASS.
+No app-source/contract/private PMP/prior-evidence bytes changed during recovery.
+
+[API36 CI run40011091868](https://github.com/stokonn/Goldberg/actions/runs/40011091868)
+FAILED before build/tests at this exact SHA: emulator executable absent during
+pre-build diagnostics (exit127). Zero test bodies; no application failure. Narrow
+verified fix explicitly installs emulator before diagnostics; corrected CI pending. Issue31 dashboard updated (connector403; authenticated gh succeeded),
+umbrella OPEN / Project In Progress; final chronological checkpoint awaits results.
+See [SAFE-RECOVERY.md](SAFE-RECOVERY.md) for scope/tasks/audit/commands/artifact identity.
+
+Stage7A finally owner-accepted; X10 NOT FIXED/NOT VERIFIED, owner-deferred Gould0.12.
+Stage8 material readability/accessibility/touch targets remain required. Existing
+historical summaries below are superseded for current status/authorization only.
+Production networking/decisions DISABLED; G1–G9/G11 integration and Admin visual/
+accessibility/WorkManager/notification/upgrade/owner acceptance remain pending.
 
 ---
 

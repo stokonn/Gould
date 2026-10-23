@@ -36,7 +36,8 @@ Original source/evidence and private PMP bytes are preserved.
   Raw diagnostic whitespace discovered only after including previously untracked
   evidence. Scoped .gitattributes preserves original log/signing bytes while
   retaining default checks for source, structured results and documentation.
-- [ ] Commit checkpoint, recheck remote, ordinary push and exact SHA readback.
+- [x] Checkpoint `0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e` committed; immediate remote precheck
+  matched base cee9330; ordinary push and exact SHA readback PASS.
 - [ ] Dispatch Stage7B mode; inspect actual run/logs/artifacts and document result.
 - [ ] Synchronize Issue31 description plus one checkpoint comment and local docs.
 
@@ -105,3 +106,13 @@ No APK published; no runtime screenshot inspected locally.
 
 Only new repository policy adjustment: scoped raw-evidence whitespace attributes;
 no source/workflow rewrite. Final staging also includes .gitattributes.
+
+Preservation checkpoint: `0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e`; source unchanged after this commit.
+Only private `.pmp/` and `.pmp.yml` remained untracked after publication.
+
+## First CI result and correction
+
+Run40011091868 at0703cd8 FAILED during pre-build diagnostics: missing emulator
+binary, exit127. Zero tests executed. Raw log/metadata/artifact retained; see
+CI-RECOVERY.md. Recovery adds explicit emulator SDK package before diagnostics;
+YAML ordering and bash syntax verified. A new corrected-SHA dispatch follows.
