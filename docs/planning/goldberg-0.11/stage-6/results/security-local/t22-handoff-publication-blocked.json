@@ -1,0 +1,31 @@
+{
+  "localImplementationCommit": "262a76ed08c7910e9a4ad86018188589efc58c37",
+  "branch": "verify/goldberg-0.11-stage-6-12-local",
+  "remoteVerifiedHead": "e7dc7ea871f61965600ba31076e8d28dc01822fe",
+  "publishedBaselineCheckpoint": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6369071469",
+  "currentUpdate": "UNPUBLISHED",
+  "normalPush": {
+    "exit": 128,
+    "error": "Could not resolve host: github.com"
+  },
+  "checkpointWrite": {
+    "status": 403,
+    "error": "Resource not accessible by integration",
+    "url": null
+  },
+  "commentReadbackBeforeWrite": {
+    "comments": 76,
+    "newMarkerMatches": 0
+  },
+  "guardedPublisherVerifyOnly": "PASS at exact clean262a76e; source/evidence/history/owner decision/corpus/count checks",
+  "finalTests": {
+    "node": 108,
+    "python": 11,
+    "pass": 119,
+    "fail": 0,
+    "skip": 0,
+    "cancelled": 0
+  },
+  "currentPostgresBodies": 0,
+  "overall": "6.12 PARTIAL; T22 approved correction with PostgreSQL verification pending; G10 closed, G1-G9/G11 integration blocked"
+}

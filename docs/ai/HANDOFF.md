@@ -1,3 +1,26 @@
+## T22/Stage7B update publication outcome — LOCAL ONLY (base publication intact)
+
+Verified code/fixture update `262a76ed08c7910e9a4ad86018188589efc58c37` is committed
+on the isolated security branch. Normal non-force push failed DNS resolution;
+connected read confirms remote still `e7dc7ea871f61965600ba31076e8d28dc01822fe`.
+That base and Issue31 checkpoint6369071469 remain PUBLISHED. This new update's
+checkpoint write returned403; no new checkpoint URL or remote success claimed.
+The prior76 comments had no matching new marker; no dashboard/history edit.
+
+Raw blocker and draft: `results/security-local/t22-handoff-publication-blocked.json`
+and `ISSUE31-T22-HANDOFF-UNPUBLISHED.md`. Updated guarded publisher passed local
+read-only verification at262a76e; this following documentation receipt changes no
+service/fixture/test behavior. On a permitted Fedora host, run the publisher with
+exact final clean HEAD, then the updated version3 PostgreSQL runner. It checks
+source/corpus/evidence/approval/counts, normal push ancestry and exact remote SHA,
+appends one factual checkpoint and retains history. No repeated network attempts here.
+
+Final119 local tests/five checks PASS; updated PostgreSQL0 bodies dueEPERM. T22
+PARTIAL after explicit owner-approved local correction; G10 closed, G1–G9/G11
+blocked for real integration. No HTTP freeze, Stage7B edit, emulator, hosted changes,
+merge/release or6.13–6.18. Exact next action: publish current scope from permitted
+host and obtain current real PostgreSQL regression evidence plus shared decisions.
+
 ## Stage6.12 — approved T22 correction and Stage7B contract coordination (PARTIAL)
 
 Published base `e7dc7ea871f61965600ba31076e8d28dc01822fe` and Issue31 checkpoint
