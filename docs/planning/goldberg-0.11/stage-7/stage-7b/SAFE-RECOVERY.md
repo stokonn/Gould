@@ -116,3 +116,12 @@ Run40011091868 at0703cd8 FAILED during pre-build diagnostics: missing emulator
 binary, exit127. Zero tests executed. Raw log/metadata/artifact retained; see
 CI-RECOVERY.md. Recovery adds explicit emulator SDK package before diagnostics;
 YAML ordering and bash syntax verified. A new corrected-SHA dispatch follows.
+
+## Run40011450671 — second independent setup failure
+
+Source3e04e2b: SDK emulator installation succeeded; strict version probe failed
+exit127 because qemu-system-x86_64 could not load libpulse.so.0. Zero build/JVM/
+instrumentation bodies in this CI run; no application failure. Raw artifact/run
+metadata retained under results/ci-run-40011450671. New narrow fix installs Ubuntu
+libpulse0 before diagnostics. YAML dependency ordering and all bash run blocks PASS;
+no test assertions, production infrastructure or application code changed.

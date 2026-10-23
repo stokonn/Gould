@@ -10,7 +10,11 @@ No app-source/contract/private PMP/prior-evidence bytes changed during recovery.
 [API36 CI run40011091868](https://github.com/stokonn/Goldberg/actions/runs/40011091868)
 FAILED before build/tests at this exact SHA: emulator executable absent during
 pre-build diagnostics (exit127). Zero test bodies; no application failure. Narrow
-verified fix explicitly installs emulator before diagnostics; corrected CI pending. Issue31 dashboard updated (connector403; authenticated gh succeeded),
+verified fix explicitly installs emulator before diagnostics. Corrected commit
+`3e04e2b716435684a0d4d88a71a4a59407201ada` pushed with exact remote SHA readback;
+[run40011450671](https://github.com/stokonn/Goldberg/actions/runs/40011450671)
+FAILED before build/tests: installed emulator lacks libpulse.so.0 (exit127).
+Second narrow CI fix installs libpulse0 before diagnostics; corrected run pending. Issue31 dashboard updated (connector403; authenticated gh succeeded),
 umbrella OPEN / Project In Progress; final chronological checkpoint awaits results.
 See [SAFE-RECOVERY.md](../planning/goldberg-0.11/stage-7/stage-7b/SAFE-RECOVERY.md) for scope/tasks/audit/commands/artifact identity.
 

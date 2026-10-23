@@ -67,3 +67,15 @@ permissions, physical-device guards, trigger scope, acceptance job or app source
 YAML ordering/package assertion and bash parsing PASS. Re-dispatch requires this
 verified fix committed/pushed, binding evidence to its new SHA. Host tests need no
 rerun because application/test/build source is unchanged.
+
+Corrected source `3e04e2b716435684a0d4d88a71a4a59407201ada` ordinarily pushed and remotely verified;
+run40011450671 dispatched in Stage7B mode. Result pending; no test PASS claimed.
+
+## Run40011450671 — second independent setup failure
+
+Source3e04e2b: SDK emulator installation succeeded; strict version probe failed
+exit127 because qemu-system-x86_64 could not load libpulse.so.0. Zero build/JVM/
+instrumentation bodies in this CI run; no application failure. Raw artifact/run
+metadata retained under results/ci-run-40011450671. New narrow fix installs Ubuntu
+libpulse0 before diagnostics. YAML dependency ordering and all bash run blocks PASS;
+no test assertions, production infrastructure or application code changed.
