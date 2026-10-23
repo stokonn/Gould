@@ -1,6 +1,7 @@
 """Guarded normal Git push + one append-only Issue31 checkpoint. No build/deploy/release."""
 from pathlib import Path
 import argparse,hashlib,json,re,subprocess,tempfile
+from verified_evidence import verify_host_evidence
 ROOT=Path(__file__).resolve().parents[2]
 BRANCH='verify/goldberg-0.11-stage-6-12-local'
 REPO='stokonn/Goldberg'
@@ -25,13 +26,8 @@ def verify(expected):
  manifest(ROOT,old/'verified-host-source-sha256.json')
  manifest(old/'run-8SWyGyB0',old/'verified-host-artifacts-sha256.json')
  manifest(ROOT,ROOT/'docs/planning/goldberg-0.11/stage-6/results/android-local/source-sha256.json')
- manifest(EVIDENCE,EVIDENCE/'artifact-sha256.json')
- manifest(ROOT,EVIDENCE/'publication-tools-sha256.json')
- manifest(ROOT,EVIDENCE/'run-x1eRKaqL/source-sha256.json')
- result=json.loads((EVIDENCE/'run-x1eRKaqL/result.json').read_text())
- require(result['counts']['focused.tap']=={'tests':27,'pass':27,'fail':0,'cancelled':0,'skipped':0},'focused counts differ')
- require(result['counts']['unit.tap']=={'tests':32,'pass':32,'fail':0,'cancelled':0,'skipped':0},'unit counts differ')
- require(result['postgresBlocked'] and result['postgresFreshBodies']==0,'review database result changes before publication')
+ manifest(ROOT,EVIDENCE/'current-verification-tools-sha256.json')
+ verify_host_evidence(ROOT)
  matrix=json.loads((EVIDENCE/'coverage.json').read_text())
  require(matrix['counts']=={'PASS':13,'PARTIAL':6,'NOT TESTED':2,'FAIL':1},'threat findings differ')
  require(matrix['rows'][-1]['localStatus']=='FAIL','T22 must remain an explicit finding')
@@ -68,16 +64,25 @@ def main():
  body=f'''## Stage 6.12 — LOCAL security verification PARTIAL; source published
 
 Branch `{BRANCH}`; exact remote HEAD `{expected}` verified after a normal push.
-Verification source commit `{AUDIT}`; later commits contain documentation/publication guards.
+Original audit source `{AUDIT}`; owner-tested revision `faf9ba3ec24e7098289c80d6e119519ccc21b95e`.
+Current commit adds verified host evidence and reporting/publication tooling fixes only.
 
 - [x] Audited all T1–T22; matrix links168 exact successful test references and reviewed assertions.
-- [x] Fresh local run:27 focused +32 existing unit =59 PASS,0 failed/skipped/cancelled;
-  five repository checks PASS. Earlier27-test run preserved separately, not added to59.
+- [x] Owner Fedora wrapper27 focused +32 unit PASS; nested PG17.11 Auth50 +handlers87
+  +schema34 +integration34 +unit32 PASS. **296 successful executions;264 tests
+  counting the repeated32 suite once;0 failures/skips/cancellations.** Five checks PASS.
+- [x] All62 at-run source hashes matched before tool edits; immutable raw-run hashes checked.
+  Nested stdout matches its five TAP/check logs; cleanup log records container removal.
+  Numeric exit sidecar absent in tested v1: success uses owner report/result/control flow.
+- [x] Version2 runner handles missing/duplicate/truncated TAP summaries with structured
+  failure JSON, not NoneType traceback. **10 reporting regressions PASS** separately.
+  Full version2 PostgreSQL rerun unexecuted; service/test/SQL/Android behavior unchanged.
 - [x] Verified46 backend source +15 original host artifact +15 Android source hashes.
-  Historical owner PG17.11 baseline237 and Android JVM214 remain historical, not fresh reruns.
+  Original host237 and Android JVM214 remain preserved historical baselines.
 - [x] Matrix local assessment:13 PASS,6 PARTIAL,2 NOT TESTED,1 FAIL. Local PASS includes
-  explicitly attributed prior unchanged-source SQL execution; it does not close [I].
-- [ ] Fresh PostgreSQL: socket preflight EPERM, runner exit78, zero database bodies.
+  the new verified owner SQL execution; it does not close [I].
+- [x] Fresh host PostgreSQL executed successfully; earlier dependency/setup/EPERM runs retained.
+  Agent live Podman inventory remains denied by read-only runtime configuration.
 - [ ] T22 exact-status finding: composed unknown audit-edit route returns400 rather than required403.
   No mutation handler dispatched or privilege bypass demonstrated. Passing probe records400;
   it does not waive the403 gate. No API/contract behavior changed.
@@ -85,7 +90,7 @@ Verification source commit `{AUDIT}`; later commits contain documentation/public
   T19 actual restore/RPO; T16/T20 runtime usability; T21 actual network privacy remain OPEN.
 
 [Exact threat matrix](https://github.com/{REPO}/blob/{expected}/docs/planning/goldberg-0.11/stage-6/LOCAL-SECURITY-MATRIX.md)
-and raw `stage-6/results/security-local/run-x1eRKaqL/` retain names, assertions, counts,
+and raw `stage-6/results/security-local/run-vQd6iGn5/` retain names, assertions, counts,
 source manifests and preflight. Successful probes are not full security acceptance.
 
 Backend published9d7150c and Android published2f1524e preserved. Owner-confirmed instrumentation
@@ -94,8 +99,9 @@ Emulator recovery deferred; no emulator/physical phone operated. Stage5/7A/X10/7
 No hosted provisioning/configuration, OAuth/real data, paid resources, merge/tag/release or6.13–6.18.
 Formal6.12 and all cloud/release gates remain UNCHECKED/PARTIAL. No dashboard edit.
 
-Next: permitted local-host `bash spikes/stage6-security-local/run-local.sh` with cached locked
-dependencies/PG17.11, review exact new results, and explicitly reconcile T22 status semantics.
+Next: explicitly review/reconcile T22 status semantics and the remaining untested local
+assertions. Preserve hosted/Android gates. Do not repeat already successful host suites
+merely to restate these results; full version2 runner execution remains unverified.
 Hosted [I] remains separately authorized. Historical comments/description preserved.
 
 created by stokonn with love <3

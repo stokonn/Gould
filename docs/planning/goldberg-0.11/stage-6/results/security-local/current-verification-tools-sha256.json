@@ -1,0 +1,17 @@
+{
+  "docs/planning/goldberg-0.11/stage-6/LOCAL-SECURITY-MATRIX.md": "48a0e2b858f1f3863110f47dd75417322795459bbcf84593b80e5ca4716a8086",
+  "docs/planning/goldberg-0.11/stage-6/results/security-local/coverage.json": "f65252ab888b58965d81ca91e05b2922855f7b896530b264429fe5c6348cc8a4",
+  "docs/planning/goldberg-0.11/stage-6/results/security-local/host-confirmed-faf9ba3.json": "98a636e506b79c1e21b10d6721c61bd6c716281cace5d463d7f49175d4d4ab17",
+  "docs/planning/goldberg-0.11/stage-6/results/security-local/host-independent-verification.json": "8184a09dccdfc650231badfe3f993e53101759f6730fbd9ba7133cb0dfd872c1",
+  "docs/planning/goldberg-0.11/stage-6/results/security-local/host-run-artifacts-sha256.json": "894480f8da9fcff0c5506f4bcd57713811fb0c4225ab4993563d67b2ec068a58",
+  "docs/planning/goldberg-0.11/stage-6/results/security-local/runner-v2/unittest.log": "7a857b0034adcc389db26f005605d686a35f61aea3f363c43768150f3aca28bb",
+  "docs/planning/goldberg-0.11/stage-6/results/security-local/test-inventory.json": "647ffd1009765f78d3d54256815265996396fed7458c42d86fcca81fc7e5c0c1",
+  "spikes/stage6-security-local/README.md": "b4c4b7972a8a4aa5fbd83ca6934c3092489e6a3ca0bc93cea73c97585fcb9626",
+  "spikes/stage6-security-local/build-matrix.py": "aa73052a7a6b22af9f6a6a3dd7d0b69eb2cdffb46bba118cf13eca94b19cef0b",
+  "spikes/stage6-security-local/publish-host.py": "415d3e3bbb13a5160cf7fe83069c304a603e2b4ace32d6515c4d1795141038a4",
+  "spikes/stage6-security-local/run-local.sh": "d2672f698aac5aba7b04f351377cb8833a6c4766341b0a27e824145a17a06dd5",
+  "spikes/stage6-security-local/tap_report.py": "64dfc626d5ab9a8bd4e3350f832d21ca47d1c6a1d4738ebf8bd3485938b06616",
+  "spikes/stage6-security-local/tests/security.test.mjs": "c16a64f77d2fe0e8bd833722316d05bf55d5e6bc93b72803b41451fea4dc469d",
+  "spikes/stage6-security-local/tests/test_tap_report.py": "6cee3ec15e014d11920230aecf303c4c3d6aa57f92c55d0ab82c8691599f614c",
+  "spikes/stage6-security-local/verified_evidence.py": "165143a82a07310df72af79f9fc393edbe37062aceb867436888644587e37f6c"
+}

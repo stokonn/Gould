@@ -1362,3 +1362,52 @@ commit follows the verified audit source; use its exact current SHA explicitly.
 Android/emulator, hosted or later-stage execution. Next: run the guarded publisher
 and unchanged disposable PostgreSQL verification on a permitted host, preserve raw
 results and continue6.12 acceptance. Overall6.12 PARTIAL, all formal gates unchanged.
+
+## Stage 6.12 — fresh owner PostgreSQL evidence confirmed (PARTIAL)
+
+Owner executed the existing version1 security runner on Fedora at exact source
+`faf9ba3ec24e7098289c80d6e119519ccc21b95e`. Agent independently inspected both runs:
+`stage-6/results/security-local/run-vQd6iGn5/` and
+`spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/`.
+This supersedes prior statements that fresh PostgreSQL execution is blocked;
+all older checkpoints and raw failures remain historical evidence.
+
+- [x] Wrapper:27 focused +32 unit PASS; PostgreSQL17.11:50 Auth +87 handler +34
+  schema +34 integration +32 unit PASS. **296 successful executions;264 tests
+  counting the repeated32 unit suite once. Zero failures/skips/cancellations.**
+- [x] All five repository checks PASS in both runners; wrapper flags false for
+  checksOrTestsFailed/postgresBlocked, true for sourceUnchanged. At-run62 source
+  hashes all matched before tool edits; immutable55 raw-artifact hashes recorded.
+- [x] Exact wrapper stdout equals nested TAP/check concatenation; container removal
+  log retained. Successful exit uses owner report/v1 result/control flow; no numeric
+  exit sidecar was captured. Live agent Podman inventory is denied by read-only
+  runtime configuration; do not claim an additional live-container check passed.
+- [x] Preserve run-csaqQFXV/run-cTS0AuDe dependency-startup failures, missing TAP
+  summaries and all earlier successful/blocked runs. No destructive cleanup.
+- [x] Fix only local verification tooling: version2 writes structured failure JSON
+  for missing/duplicate/truncated/inconsistent TAP, retains raw logs, fails closed
+  on false-green summaries and source changes; records future nested exit status.
+  **10 Python reporting regressions PASS**, separate from296 host executions.
+- [x] Matrix uses fresh exact names/logs:168 references; **13 local PASS,6 PARTIAL,
+  2 NOT TESTED,1 FAIL**. T22 remains FAIL (observed400 vs required403), with no
+  mutation dispatch or demonstrated privilege bypass. No API/SQL/Android changes.
+- [x] Publisher now requires the successful actual host counts, immutable artifact
+  hashes, tested-source ancestry/identity and current tool/index hashes; it keeps
+  PARTIAL wording and duplicate/history guards. Old postgresBlocked=true gate removed.
+- [ ] Full version2 PostgreSQL runner execution NOT performed; reporting tests pass.
+- [ ] T22 explicit contract/security review; T13 rendering; T14 DNS/redirect/rebinding/
+  fetch; T15 HTTP/browser; T19 real restore/RPO; T16/T20 runtime usability; T21 actual
+  network privacy; all hosted [I] portions remain OPEN. No automatic gate acceptance.
+- [ ] Publication of this correction awaits normal push/exact remote readback and
+  one new factual Issue31 checkpoint; prior failed publication remains historical.
+
+Branch `verify/goldberg-0.11-stage-6-12-local`, based on preservedfaf9ba3;
+implementation/evidence commit for this update follows that ancestor. Current tool
+changes are explicitly separated from the owner-tested version1 runner; at-run
+source hashes are checked against current unchanged services or immutablefaf9ba3
+for the identified tooling edits. Matrix/index and source hashes remain reviewable.
+Read `stage-6/LOCAL-SECURITY-MATRIX.md` and `results/security-local/host-confirmed-faf9ba3.json`.
+Exact next: publish the verified evidence/tool fix normally, then resolve T22 and
+remaining local acceptance gaps; hosted checks require separate authorization.
+Formal6.12 stays UNCHECKED/PARTIAL. Android runtime/emulator recovery deferred;
+Stage5/7A/X10/7B untouched. No hosted/OAuth/real-data/paid/merge/tag/release or6.13–6.18.

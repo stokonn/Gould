@@ -1,0 +1,78 @@
+{
+  "status": "HOST_LOCAL_VERIFIED; OVERALL_6_12_PARTIAL",
+  "executor": "owner executed Fedora; agent independently inspected exact retained artifacts",
+  "testedHead": "faf9ba3ec24e7098289c80d6e119519ccc21b95e",
+  "wrapper": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-vQd6iGn5",
+  "nested": "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk",
+  "runnerVersion": 1,
+  "counts": {
+    "docs/planning/goldberg-0.11/stage-6/results/security-local/run-vQd6iGn5/unit.tap": {
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "docs/planning/goldberg-0.11/stage-6/results/security-local/run-vQd6iGn5/focused.tap": {
+      "tests": 27,
+      "pass": 27,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/schema-regression.tap": {
+      "tests": 34,
+      "pass": 34,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/auth-regression.tap": {
+      "tests": 50,
+      "pass": 50,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/handlers-regression.tap": {
+      "tests": 87,
+      "pass": 87,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/postgres.tap": {
+      "tests": 34,
+      "pass": 34,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/unit.tap": {
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "successfulExecutions": 296,
+  "testsCountingRepeated32SuiteOnce": 264,
+  "repeatedSuite": "32 backend unit tests executed twice; exact names match",
+  "checks": "all five repository checks PASS in both wrapper and nested runner",
+  "sourceHashesMatchedBeforeToolEdits": 62,
+  "nestedLinkage": "wrapper stdout exactly equals five nested TAPs and five check logs in runner order",
+  "exitEvidence": "owner reports successful command; v1 result checksOrTestsFailed=false implies nested runner returned0 per tested control flow; no separate numeric exit file was captured",
+  "cleanup": {
+    "containerId": "c05c9fb8e0f351ad2db80bfe0be33d548ed53108f8fa42728eb613b95e6ee330",
+    "recordedRemoval": "goldberg-public-admin-abuse-3161302",
+    "meaning": "podman rm logged the uniquely named removed container; stdout records successful removal",
+    "liveInventory": "agent read-only podman container exists blocked: Failed to obtain podman configuration: set sticky bit on: chmod /run/user/1000/libpod: read-only file system; no permission or runtime configuration changed"
+  },
+  "failuresPreserved": [
+    "run-csaqQFXV: missing jose/pg dependencies, missing TAP summaries and no result.json",
+    "run-cTS0AuDe: dependency startup failures, no test bodies; cleanup log retained"
+  ],
+  "securityFinding": "T22 remains FAIL: observed400 vs required403; no mutation dispatched",
+  "limits": "hosted/browser/fetch/restore/network privacy/Android runtime gaps remain OPEN"
+}

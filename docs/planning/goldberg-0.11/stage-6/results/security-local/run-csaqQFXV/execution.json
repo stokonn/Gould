@@ -1,0 +1,6 @@
+{
+  "runnerVersion": 1,
+  "head": "faf9ba3ec24e7098289c80d6e119519ccc21b95e",
+  "branch": "verify/goldberg-0.11-stage-6-12-local",
+  "scope": "local synthetic; no emulator or external network"
+}

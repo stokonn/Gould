@@ -1,0 +1,67 @@
+{
+  "counts": {
+    "docs/planning/goldberg-0.11/stage-6/results/security-local/run-vQd6iGn5/focused.tap": {
+      "tests": 27,
+      "pass": 27,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "docs/planning/goldberg-0.11/stage-6/results/security-local/run-vQd6iGn5/unit.tap": {
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/auth-regression.tap": {
+      "tests": 50,
+      "pass": 50,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/handlers-regression.tap": {
+      "tests": 87,
+      "pass": 87,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/schema-regression.tap": {
+      "tests": 34,
+      "pass": 34,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/postgres.tap": {
+      "tests": 34,
+      "pass": 34,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/unit.tap": {
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "successfulExecutions": 296,
+  "testsCountingRepeatedSuiteOnce": 264,
+  "testedHead": "faf9ba3ec24e7098289c80d6e119519ccc21b95e",
+  "runnerVersion": 1,
+  "sourceHashes": 62,
+  "currentToolingEdits": [
+    "spikes/stage6-security-local/README.md",
+    "spikes/stage6-security-local/build-matrix.py",
+    "spikes/stage6-security-local/publish-host.py",
+    "spikes/stage6-security-local/run-local.sh"
+  ],
+  "overall": "PARTIAL; T22 FAIL and other local/hosted gaps remain OPEN",
+  "exitEvidence": "v1 successful wrapper result/control flow and owner report; numeric exit sidecar absent",
+  "cleanupEvidence": "successful removal stdout; live agent inventory blocked by read-only Podman runtime"
+}

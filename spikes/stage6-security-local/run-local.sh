@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Version 1. Local synthetic verification only. No installs, downloads or hosted configuration.
+# Version 2. Local synthetic verification only. No installs, downloads or hosted configuration.
 set -euo pipefail
 cd -- "$(dirname -- "$0")/../.."
 results="$(mktemp -d docs/planning/goldberg-0.11/stage-6/results/security-local/run-XXXXXXXX)"
@@ -13,7 +13,7 @@ for name in ['stage6-auth-local','stage6-handlers-local','stage6-schema-pg','sta
   if p.is_file() and not any(part in ['node_modules','results'] for part in p.parts):files.append(p)
 files+=list(Path('scripts').glob('check_*.py'))
 (out/'source-sha256.json').write_text(json.dumps({str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(set(files))},indent=2)+'\n')
-(out/'execution.json').write_text(json.dumps({'runnerVersion':1,'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'branch':subprocess.check_output(['git','branch','--show-current'],text=True).strip(),'scope':'local synthetic; no emulator or external network'},indent=2)+'\n')
+(out/'execution.json').write_text(json.dumps({'runnerVersion':2,'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'branch':subprocess.check_output(['git','branch','--show-current'],text=True).strip(),'scope':'local synthetic; no emulator or external network'},indent=2)+'\n')
 PY
 node --version > "$results/node-version.log"
 failed=0
@@ -34,19 +34,10 @@ except OSError as error:
 PY
 then
  # Existing version-pinned disposable PG17 runner, unchanged; never points at a hosted DB.
- if bash spikes/stage6-public-admin-abuse/run-local.sh > "$results/postgres-runner.log" 2>&1; then :; else failed=1; fi
+ if bash spikes/stage6-public-admin-abuse/run-local.sh > "$results/postgres-runner.log" 2>&1; then pg_exit=0; else pg_exit=$?; failed=1; fi
+ printf '%s\n' "$pg_exit" > "$results/postgres-runner.exit"
 else blocked=true
 fi
-python3 - "$results" "$failed" "$blocked" <<'PY'
-from pathlib import Path
-import hashlib,json,re,sys
-out=Path(sys.argv[1]);counts={}
-for name in ['focused.tap','unit.tap']:
- text=(out/name).read_text();counts[name]={key:int(re.search(r'^# '+key+r' (\d+)$',text,re.M)[1]) for key in ['tests','pass','fail','cancelled','skipped']}
-manifest=json.loads((out/'source-sha256.json').read_text());unchanged=all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==sha for p,sha in manifest.items())
-assert unchanged,'Source changed during verification'
-(out/'result.json').write_text(json.dumps({'counts':counts,'checksOrTestsFailed':bool(int(sys.argv[2])),'postgresBlocked':sys.argv[3]=='true','postgresFreshBodies':0 if sys.argv[3]=='true' else 'see unchanged PostgreSQL runner outputs','sourceUnchanged':unchanged,'acceptance':'PARTIAL; see threat matrix, successful probes do not close all threats'},indent=2)+'\n')
-print((out/'result.json').read_text())
-PY
+if python3 spikes/stage6-security-local/tap_report.py "$results" "$failed" "$blocked"; then :; else failed=1; fi
 if [[ "$failed" != 0 ]]; then exit 1; fi
 if [[ "$blocked" == true ]]; then exit 78; fi
