@@ -6,10 +6,18 @@ TESTED='faf9ba3ec24e7098289c80d6e119519ccc21b95e'
 WRAPPER='docs/planning/goldberg-0.11/stage-6/results/security-local/run-vQd6iGn5'
 NESTED='spikes/stage6-public-admin-abuse/results/run-qx9TUTDk'
 CHECKS=['check_agent_policy','check_backup_fixtures','check_history_paging','check_localization','check_migrations']
-TOOL_EDITS={f'spikes/stage6-security-local/{name}' for name in ['run-local.sh','build-matrix.py','publish-host.py','README.md']}
+TOOL_EDITS={f'spikes/stage6-security-local/{name}' for name in ['run-local.sh','build-matrix.py','publish-host.py','README.md','tests/security.test.mjs']}
+APPROVED_ROUTING_EDITS={'spikes/stage6-handlers-local/src/local-api.mjs','spikes/stage6-handlers-local/tests/handlers.test.mjs','spikes/stage6-public-admin-abuse/tests/unit.test.mjs','spikes/stage6-public-admin-abuse/tests/postgres.test.mjs'}
 def require(condition,message):
  if not condition:raise ValueError(message)
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+def verify_historical_sources(root,manifest_path,commit,allowed):
+ root=Path(root)
+ for name,sha in json.loads(Path(manifest_path).read_text()).items():
+  if digest(root/name)!=sha:
+   require(name in allowed,'unexpected source change: '+name)
+   original=subprocess.check_output(['git','show',f'{commit}:{name}'],cwd=root)
+   require(hashlib.sha256(original).hexdigest()==sha,'historical source hash differs: '+name)
 def verify_host_evidence(root):
  root=Path(root);base=root/'docs/planning/goldberg-0.11/stage-6/results/security-local';wrapper=root/WRAPPER;nested=root/NESTED
  # Current coverage/index supersede older versions; their original hashes stay verifiable in Git.
@@ -19,12 +27,14 @@ def verify_host_evidence(root):
    original=subprocess.check_output(['git','show',f'{TESTED}:{base.relative_to(root)}/{name}'],cwd=root)
    require(hashlib.sha256(original).hexdigest()==sha,'original index hash differs: '+name)
  for name,sha in json.loads((base/'host-run-artifacts-sha256.json').read_text()).items():require(digest(root/name)==sha,'immutable host artifact mismatch: '+name)
+ approval=base/'t22-investigation/OWNER-APPROVAL.json'
+ if any(digest(root/p)!=h for p,h in json.loads((wrapper/'source-sha256.json').read_text()).items() if p in APPROVED_ROUTING_EDITS):require(json.loads(approval.read_text())['approval']=='EXPLICIT_OWNER_APPROVED','routing change requires explicit recorded owner approval')
  execution=json.loads((wrapper/'execution.json').read_text());require(execution['head']==TESTED and execution['runnerVersion']==1,'unexpected tested head/runner')
  manifest=json.loads((wrapper/'source-sha256.json').read_text());require(len(manifest)==62,'expected62 at-run source hashes')
  edits=[]
  for name,sha in manifest.items():
   if digest(root/name)!=sha:
-   require(name in TOOL_EDITS,'tested application/service source changed: '+name)
+   require(name in TOOL_EDITS|APPROVED_ROUTING_EDITS,'tested application/service source changed: '+name)
    original=subprocess.check_output(['git','show',f'{TESTED}:{name}'],cwd=root)
    require(hashlib.sha256(original).hexdigest()==sha,'at-run source does not match tested commit: '+name);edits.append(name)
  result=json.loads((wrapper/'result.json').read_text())
@@ -48,6 +58,6 @@ def verify_host_evidence(root):
  tool_log=(base/'runner-v2/unittest.log').read_text()
  require(bool(re.search(r'^Ran 10 tests in ',tool_log,re.M)) and bool(re.search(r'^OK$',tool_log,re.M)) and len(re.findall(r'^test_.* \.\.\. ok$',tool_log,re.M))==10,'reporting regression evidence differs')
  total=sum(c['pass'] for c in counts.values());require(total==296,'expected296 successful executions')
- return {'counts':counts,'successfulExecutions':total,'testsCountingRepeatedSuiteOnce':total-32,'testedHead':TESTED,'runnerVersion':1,'sourceHashes':len(manifest),'currentToolingEdits':sorted(edits),'overall':'PARTIAL; T22 FAIL and other local/hosted gaps remain OPEN','exitEvidence':'v1 successful wrapper result/control flow and owner report; numeric exit sidecar absent','cleanupEvidence':'successful removal stdout; live agent inventory blocked by read-only Podman runtime'}
+ return {'counts':counts,'successfulExecutions':total,'testsCountingRepeatedSuiteOnce':total-32,'testedHead':TESTED,'runnerVersion':1,'sourceHashes':len(manifest),'currentSourceEdits':sorted(edits),'overall':'PARTIAL; T22 owner-approved correction pending current PostgreSQL verification; other local/hosted gaps OPEN','exitEvidence':'v1 successful wrapper result/control flow and owner report; numeric exit sidecar absent','cleanupEvidence':'successful removal stdout; live agent inventory blocked by read-only Podman runtime'}
 if __name__=='__main__':
  print(json.dumps(verify_host_evidence(Path(__file__).resolve().parents[2]),indent=2))

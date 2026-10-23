@@ -146,7 +146,7 @@ test('database lock timeout returns safe 503; rollback releases locks and permit
 test('T18 immutable publication/audit/review/feed; exported chain tamper detected; no audit mutation adapter',async()=>{
  const v=await venue(),s=await create(v);await open(v,s.id);assert.equal((await decide(v,s.id)).status,201);
  for(const t of ['published_revisions','audit_events','review_events','change_feed'])await assert.rejects(db.query(`DELETE FROM ${v.q}.${t}`),e=>e.code==='55000');
- const exported=await exportAudit(db,v.schema);verifyAudit(exported);exported.events[0].action='forged';assert.throws(()=>verifyAudit(exported));assert.equal((await call(v,v.mod,'audit.edit',{schemaVersion:1})).status,400);await chain(v);
+ const exported=await exportAudit(db,v.schema);verifyAudit(exported);exported.events[0].action='forged';assert.throws(()=>verifyAudit(exported));assert.equal((await call(v,v.mod,'audit.edit',{schemaVersion:1})).status,403);await chain(v);
 });
 test('malformed, expired and revoked sessions safely reject actual handlers with 401 and sanitized logs',async()=>{
  const v=await venue(),s=await create(v),body=decisionBody(s.id,{decision:'approve'});await open(v,s.id);

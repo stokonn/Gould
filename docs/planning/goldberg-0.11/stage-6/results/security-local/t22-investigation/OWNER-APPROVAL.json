@@ -1,0 +1,10 @@
+{
+  "approval": "EXPLICIT_OWNER_APPROVED",
+  "selectedAnswer": "Approve this local policy clarification and patch",
+  "scope": "Non-string/empty operation400; well-formed unregistered operation403 with no dispatch; registered missing/invalid session401; capability/self-grant403; clarify T22; update relevant local assertions",
+  "proposal": "PROPOSED-NOT-APPLIED.patch",
+  "implemented": "approved local routing policy only; no HTTP endpoint or added privilege",
+  "stage": "6.12 remains PARTIAL; no6.17 freeze or subsequent stage",
+  "appliedPatchSha256": "ff1eb53cb3e033b54d23ab0c09fd59ebebb71f690456174faa15ebeab5f514e4",
+  "actualSourceDiffMatchesApprovedPatch": true
+}

@@ -94,12 +94,12 @@ test('T14 empty policy refuses synthetic evidence and URL policy is not an SSRF 
   const p=payload();p.fields[0].evidence[0]={type:'source_url',value,license:'CC0-1.0'};assert.throws(()=>validator.payload(p),e=>e.status===400);
  }
 });
-test('T22 probe records composed unknown audit mutation as 400 with no dispatch; required 403 remains a finding',async()=>{
+test('T22 approved composed unknown audit mutation denies403 with no dispatch',async()=>{
  let calls=0;const api=new CommunityApi({extensions:{'admin.audit':async()=>{calls++;return {status:200,body:{}};}}});
  for(const accessToken of [undefined,'synthetic-admin-token']){
-  const r=await api.invoke({operation:'admin.audit.edit',accessToken,body:{schemaVersion:1}});assert.equal(r.status,400);assert.equal(r.body.error.code,'validation_failed');
+  const r=await api.invoke({operation:'admin.audit.edit',accessToken,body:{schemaVersion:1}});assert.equal(r.status,403);assert.equal(r.body.error.code,'forbidden');
  }
- assert.equal(calls,0); // Observes current behavior; explicitly NOT an assertion that T22's 403 gate passes.
+ assert.equal(calls,0); // Approved absent-operation403; no audit handler is exposed.
 });
 test('T9/T22 configured admin role route defers to live authorization and never opens storage when denied',async()=>{
  let connects=0,checks=0;

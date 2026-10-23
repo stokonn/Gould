@@ -8,9 +8,8 @@
   "verifiedAndroidSourceHashes": 15,
   "counts": {
     "PASS": 13,
-    "PARTIAL": 6,
-    "NOT TESTED": 2,
-    "FAIL": 1
+    "PARTIAL": 7,
+    "NOT TESTED": 2
   },
   "interpretation": "PASS refers only to reviewed local assertions with exact executed evidence; historical owner executions are not fresh reruns or full [I] acceptance. Probe PASS is not threat PASS.",
   "rows": [
@@ -407,7 +406,7 @@
       "scenario": "REST/RPC privilege escalation",
       "localStatus": "PARTIAL",
       "coveredAssertions": "Fresh restricted SQL roles cannot read private tables, mutate audit/head or invoke ungranted functions. SQL functions pin search_path=pg_catalog and revoke PUBLIC execution (source review). Local arbitrary RPC denied by Auth adapter. New composed admin route defers to injected authorization.",
-      "missingAssertionsOrEvidence": "No real REST/RPC listener, hosted Supabase RLS/anonymous JWT or deployed function identity. SQL mocks are not hosted tests. Current unknown CommunityApi operation taxonomy400 rather than Auth LocalApi403; see T22.",
+      "missingAssertionsOrEvidence": "No real REST/RPC listener, hosted Supabase RLS/anonymous JWT or deployed function identity. SQL mocks are not hosted tests. The historical400/403 difference is corrected by an explicit owner-approved local patch; current PostgreSQL regression rerun pending, see T22.",
       "requiresHostedIntegration": true,
       "remainingIntegration": "OPEN",
       "evidence": [
@@ -991,7 +990,7 @@
       "scenario": "Audit tamper/update/delete",
       "localStatus": "PASS",
       "coveredAssertions": "SQL immutable UPDATE/DELETE/TRUNCATE and restricted-role guards; exported copy modification/omission/order/head mismatch rejected by independent recomputation, including >9 sequences. No audit mutation handler dispatched.",
-      "missingAssertionsOrEvidence": "Operator console/provider path [I] OPEN. Chain proves tamper evidence relative to trusted head, not protection from privileged full-history replacement. T22 separately records mutation-route403 mismatch.",
+      "missingAssertionsOrEvidence": "Operator console/provider path [I] OPEN. Chain proves tamper evidence relative to trusted head, not protection from privileged full-history replacement. T22 records the historical mismatch and approved local correction; current PostgreSQL rerun pending.",
       "requiresHostedIntegration": true,
       "remainingIntegration": "OPEN",
       "evidence": [
@@ -1213,27 +1212,15 @@
     {
       "threat": "T22",
       "scenario": "Bootstrap self-grant/audit self-edit",
-      "localStatus": "FAIL",
-      "coveredAssertions": "Fresh SQL/live Auth tests reject self-grant403, moderator escalation403 and ungranted SQL mutation. Auth LocalApi unknown RPC403. New probe observes no audit-edit dispatch for anonymous/synthetic token, but composed CommunityApi returns400 validation_failed.",
-      "missingAssertionsOrEvidence": "EXACT ACCEPTANCE MISMATCH: threat model demands403; current composed missing audit-edit endpoint returns400, corroborating the fresh handler/admin tests. Denial/no-mutation holds; no privilege bypass demonstrated. Probe deliberately records observed400 and is not a passing403 assertion. Reconcile status semantics before accepting T22; contracts/production behavior left unchanged. Fresh anonymous role-route probe uses injected deny, not real unauthenticated session.",
+      "localStatus": "PARTIAL",
+      "coveredAssertions": "Published400 mismatch reproduced and preserved. Owner explicitly approved local routing clarification/patch: well-formed absent audit/bootstrap operation403 with no SQL/handler; non-string/empty operation400; known registered route missing/invalid session401, capability/self-grant403. Fresh38 service/scripted-SQL tests pass. Array operation coercion is rejected. No protected role/audit writes; transaction-local idempotency housekeeping rolls back.",
+      "missingAssertionsOrEvidence": "Owner approval and fresh unit assertions resolve the local status-policy discrepancy without waiving security. Updated real PostgreSQL regression assertions are not yet executed: agent socket EPERM,0 database bodies. T22 NOT fully PASS; original FAIL/raw runs remain historical. No actual HTTP binding or new privileged endpoint.",
       "requiresHostedIntegration": false,
       "remainingIntegration": "No hosted venue required by original row; listed unsupported/local checks remain OPEN",
       "evidence": [
         {
           "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
           "test": "T22 admin cannot self-grant; operator capability/role stays outside application roles",
-          "log": "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/auth-regression.tap",
-          "venue": "fresh owner Fedora PostgreSQL17.11"
-        },
-        {
-          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
-          "test": "self-grant and self-suspension cannot bypass guards using uppercase UUID spellings",
-          "log": "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/auth-regression.tap",
-          "venue": "fresh owner Fedora PostgreSQL17.11"
-        },
-        {
-          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
-          "test": "T9/T22 local transport exposes no audit mutation or arbitrary RPC, even to admin",
           "log": "spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/auth-regression.tap",
           "venue": "fresh owner Fedora PostgreSQL17.11"
         },
@@ -1250,16 +1237,232 @@
           "venue": "fresh owner Fedora PostgreSQL17.11"
         },
         {
-          "file": "spikes/stage6-security-local/tests/security.test.mjs",
-          "test": "T22 probe records composed unknown audit mutation as 400 with no dispatch; required 403 remains a finding",
-          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-vQd6iGn5/focused.tap",
-          "venue": "fresh owner Fedora security wrapper"
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 audit edit anonymous: approved403 before auth SQL or handler dispatch",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
         },
         {
-          "file": "spikes/stage6-security-local/tests/security.test.mjs",
-          "test": "T9/T22 configured admin role route defers to live authorization and never opens storage when denied",
-          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-vQd6iGn5/focused.tap",
-          "venue": "fresh owner Fedora security wrapper"
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 audit edit malformed token: approved403 before auth SQL or handler dispatch",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 audit edit administrator: approved403 before auth SQL or handler dispatch",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 same absent audit operation: Auth and composed adapters both403",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 absent operation bootstrap.admin cannot dispatch via prototype",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 absent operation roles.bootstrap cannot dispatch via prototype",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 absent operation rpc cannot dispatch via prototype",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 absent operation deployment cannot dispatch via prototype",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 absent operation __proto__ cannot dispatch via prototype",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 absent operation constructor cannot dispatch via prototype",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 absent operation toString cannot dispatch via prototype",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 registered role route missing denies401 without privilege writes",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 registered role route malformed denies401 without privilege writes",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 registered role route unknown well formed denies401 without privilege writes",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 registered role route expired denies401 without privilege writes",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 registered role route revoked denies401 without privilege writes",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 registered role route suspended denies403 without privilege writes",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 registered role route contributor denies403 without privilege writes",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 registered role route moderator denies403 without privilege writes",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 registered role route no grants denies403 without privilege writes",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 registered role route unknown role denies403 without privilege writes",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 authenticated administrator self grant canonical UUID denies403 before mutation",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 authenticated administrator self grant uppercase UUID denies403 before mutation",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 malformed role request forged actor fails400 before authentication",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 malformed role request schemaVersion fails400 before authentication",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 malformed role request string revoke fails400 before authentication",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 malformed role request bad principal UUID fails400 before authentication",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 malformed role request mixed suspend fields fails400 before authentication",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 unsupported operator role denied400 after auth, no grant/audit SQL",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 known audit read authenticates and authorizes; admin only read SQL",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 unavailable auth storage gives safe503, no role/audit mutation",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 approved array operation rejects400 before registered route authentication",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 malformed outer envelope bounded body and getters deny400 before any SQL",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 malformed operation missing denies400 without dispatch",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 malformed operation null denies400 without dispatch",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 malformed operation empty denies400 without dispatch",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 malformed operation object denies400 without dispatch",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/t22.test.mjs",
+          "test": "T22 malformed operation array denies400 without dispatch",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap",
+          "venue": "fresh Node real service + scripted SQL; no PostgreSQL/HTTP"
         }
       ]
     }

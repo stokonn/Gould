@@ -1,0 +1,172 @@
+TAP version 13
+# Subtest: T1/T4 independent verifier rejects expired
+ok 1 - T1/T4 independent verifier rejects expired
+  ---
+  duration_ms: 58.501036
+  type: 'test'
+  ...
+# Subtest: T1/T4 independent verifier rejects future iat
+ok 2 - T1/T4 independent verifier rejects future iat
+  ---
+  duration_ms: 3.637814
+  type: 'test'
+  ...
+# Subtest: T1/T4 independent verifier rejects wrong issuer
+ok 3 - T1/T4 independent verifier rejects wrong issuer
+  ---
+  duration_ms: 2.337734
+  type: 'test'
+  ...
+# Subtest: T1/T4 independent verifier rejects wrong audience
+ok 4 - T1/T4 independent verifier rejects wrong audience
+  ---
+  duration_ms: 2.757848
+  type: 'test'
+  ...
+# Subtest: T1/T4 independent verifier rejects multi audience
+ok 5 - T1/T4 independent verifier rejects multi audience
+  ---
+  duration_ms: 2.59976
+  type: 'test'
+  ...
+# Subtest: T1/T4 independent verifier rejects missing nonce
+ok 6 - T1/T4 independent verifier rejects missing nonce
+  ---
+  duration_ms: 2.292669
+  type: 'test'
+  ...
+# Subtest: T2 untrusted jku header rejected before trusted resolver invocation
+ok 7 - T2 untrusted jku header rejected before trusted resolver invocation
+  ---
+  duration_ms: 1.890828
+  type: 'test'
+  ...
+# Subtest: T2 untrusted x5u header rejected before trusted resolver invocation
+ok 8 - T2 untrusted x5u header rejected before trusted resolver invocation
+  ---
+  duration_ms: 3.126856
+  type: 'test'
+  ...
+# Subtest: T2 untrusted jwk header rejected before trusted resolver invocation
+ok 9 - T2 untrusted jwk header rejected before trusted resolver invocation
+  ---
+  duration_ms: 2.344716
+  type: 'test'
+  ...
+# Subtest: T2 none HMAC and forged signatures deny without successful identity
+ok 10 - T2 none HMAC and forged signatures deny without successful identity
+  ---
+  duration_ms: 4.443107
+  type: 'test'
+  ...
+# Subtest: T2 header cache cap exact expiry fails closed then recovers with rotated keys
+ok 11 - T2 header cache cap exact expiry fails closed then recovers with rotated keys
+  ---
+  duration_ms: 7.050732
+  type: 'test'
+  ...
+# Subtest: T2 zero max age cannot reuse keys on the next verification
+ok 12 - T2 zero max age cannot reuse keys on the next verification
+  ---
+  duration_ms: 1.999193
+  type: 'test'
+  ...
+# Subtest: T2 unknown kid flood bounded and later rotation eligible at exactly one second
+ok 13 - T2 unknown kid flood bounded and later rotation eligible at exactly one second
+  ---
+  duration_ms: 14.417941
+  type: 'test'
+  ...
+# Subtest: T2 parallel cold resolver outage coalesces and never returns identity
+ok 14 - T2 parallel cold resolver outage coalesces and never returns identity
+  ---
+  duration_ms: 2.987593
+  type: 'test'
+  ...
+# Subtest: T1 unavailable clock is safe 503 and does not invoke resolver
+ok 15 - T1 unavailable clock is safe 503 and does not invoke resolver
+  ---
+  duration_ms: 1.362127
+  type: 'test'
+  ...
+# Subtest: T1 denial envelope and structured log contain no supplied credential or exception text
+ok 16 - T1 denial envelope and structured log contain no supplied credential or exception text
+  ---
+  duration_ms: 2.735466
+  type: 'test'
+  ...
+# Subtest: T21 server rejects private journal at every selected object boundary
+ok 17 - T21 server rejects private journal at every selected object boundary
+  ---
+  duration_ms: 1.749089
+  type: 'test'
+  ...
+# Subtest: T21 server rejects private practiceSessions at every selected object boundary
+ok 18 - T21 server rejects private practiceSessions at every selected object boundary
+  ---
+  duration_ms: 0.556513
+  type: 'test'
+  ...
+# Subtest: T21 server rejects private personalNotes at every selected object boundary
+ok 19 - T21 server rejects private personalNotes at every selected object boundary
+  ---
+  duration_ms: 0.520405
+  type: 'test'
+  ...
+# Subtest: T21 server rejects private microphoneRecordings at every selected object boundary
+ok 20 - T21 server rejects private microphoneRecordings at every selected object boundary
+  ---
+  duration_ms: 0.321227
+  type: 'test'
+  ...
+# Subtest: T21 server rejects private backup at every selected object boundary
+ok 21 - T21 server rejects private backup at every selected object boundary
+  ---
+  duration_ms: 0.437147
+  type: 'test'
+  ...
+# Subtest: T21 server rejects private privateRepertoireHistory at every selected object boundary
+ok 22 - T21 server rejects private privateRepertoireHistory at every selected object boundary
+  ---
+  duration_ms: 0.530043
+  type: 'test'
+  ...
+# Subtest: T21 server rejects private profile at every selected object boundary
+ok 23 - T21 server rejects private profile at every selected object boundary
+  ---
+  duration_ms: 0.530103
+  type: 'test'
+  ...
+# Subtest: T13 malformed object getters nesting and size fail before any handler dispatch
+ok 24 - T13 malformed object getters nesting and size fail before any handler dispatch
+  ---
+  duration_ms: 1.260225
+  type: 'test'
+  ...
+# Subtest: T14 empty policy refuses synthetic evidence and URL policy is not an SSRF fetch pass
+ok 25 - T14 empty policy refuses synthetic evidence and URL policy is not an SSRF fetch pass
+  ---
+  duration_ms: 9.043552
+  type: 'test'
+  ...
+# Subtest: T22 approved composed unknown audit mutation denies403 with no dispatch
+ok 26 - T22 approved composed unknown audit mutation denies403 with no dispatch
+  ---
+  duration_ms: 0.466132
+  type: 'test'
+  ...
+# Subtest: T9/T22 configured admin role route defers to live authorization and never opens storage when denied
+ok 27 - T9/T22 configured admin role route defers to live authorization and never opens storage when denied
+  ---
+  duration_ms: 1.526559
+  type: 'test'
+  ...
+1..27
+# tests 27
+# suites 0
+# pass 27
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 158.610943

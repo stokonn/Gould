@@ -32,7 +32,7 @@ test('public projection selects only safe display/provenance, retaining exact re
 test('adapter propagates truthful retry and safe failure envelope, never diagnostics',async()=>{
  const a=new AbuseProtection({schema:'proto_unit',clock:()=>0,key}),api=new CommunityApi({extensions:{limited:async()=>{throw a.limited(1.1);},unavailable:async()=>{throw new Error('PRIVATE backend state');}}});
  const r=await api.invoke({operation:'limited',body:{schemaVersion:1}});assert.equal(r.status,429);assert.equal(r.headers['Retry-After'],'2');assert.equal(r.body.error.retryAfterSeconds,2);
- const u=await api.invoke({operation:'unavailable',body:{schemaVersion:1}});assert.equal(u.status,503);assert.ok(!JSON.stringify(u).includes('PRIVATE'));assert.equal((await api.invoke({operation:'admin.audit.edit',body:{schemaVersion:1}})).status,400);
+ const u=await api.invoke({operation:'unavailable',body:{schemaVersion:1}});assert.equal(u.status,503);assert.ok(!JSON.stringify(u).includes('PRIVATE'));assert.equal((await api.invoke({operation:'admin.audit.edit',body:{schemaVersion:1}})).status,403);
 });
 test('fail-closed evidence policy remains empty and no evidence fetch abstraction is added',()=>{
  assert.throws(()=>new Validator().payload({schemaVersion:1,target:{kind:'work',catalogueUuid:randomUUID()},changeKind:'new_metadata',intendedLicense:'CC0-1.0',fields:[]}),e=>e.status===400);

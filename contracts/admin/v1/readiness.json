@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "classification": "local-contract-audit",
+  "frozen": false,
+  "httpApproved": false,
+  "stage6_17": "NOT STARTED / NOT ACCEPTED",
+  "backendBase": "e7dc7ea871f61965600ba31076e8d28dc01822fe",
+  "currentChanges": "owner-approved T22 local routing clarification; no other API dialect selected",
+  "dependencies": [
+    {
+      "id": "G1",
+      "normative": "No normative stats endpoint; bounded reads and truthful unavailable.",
+      "actualLocalBackend": "No stats operation or counts/snapshot endpoint. Queue pagination is keyset without a global snapshot highwater; audit does have signed highwater.",
+      "androidExpectation": "Owner-approved exact-or-unavailable bounded complete walks; Pending/Needs info from queue, Approved/Rejected today from audit.",
+      "mismatchOrMissing": "No server totals or instantaneous completeness proof under concurrent queue changes; no approved server timezone/window semantics.",
+      "requiredSharedFixtures": [
+        "proposal-stats-snapshot",
+        "proposal-statistical-vocabulary"
+      ],
+      "proposedResolution": "Approve one coherent snapshot/count contract or retain unavailable; do not label partial walk as exact total.",
+      "approvalRequirement": "Owner: count definitions, consistency point, timezone, time window, endpoint/DTO. Implementation authorization needed.",
+      "verificationStatus": "BLOCKED"
+    },
+    {
+      "id": "G2",
+      "normative": "Admin queue status/cursor design; <=20 rows.",
+      "actualLocalBackend": "moderation.queue accepts only schemaVersion/cursor; fixed20; object {createdAt,id}; target_kind/current_revision text; no title/composer/owner/evidence count/search/status filter.",
+      "androidExpectation": "Legacy string cursor, status and limit parameters; owner/revision/evidenceCount/epoch date; bounded detail hydration/exhaustive search fallback.",
+      "mismatchOrMissing": "Actual candidate rejects unsupported parameters; no approved display/search DTO or HTTP cursor serialization.",
+      "requiredSharedFixtures": [
+        "actual-queue-page",
+        "actual-queue-filter-rejected",
+        "stage7b-comparison/fixtures.json#candidate-queue",
+        "proposal-queue-search"
+      ],
+      "proposedResolution": "Approve safe display fields and server-filtered deterministic cursor scope. Keep current exact-or-unavailable fallback only against its supported legacy fixture dialect.",
+      "approvalRequirement": "Owner: query/display/DTO and HTTP binding; new server functionality is not delivered here.",
+      "verificationStatus": "BLOCKED"
+    },
+    {
+      "id": "G3",
+      "normative": "Admin audit bounded append-only view.",
+      "actualLocalBackend": "admin.audit only schemaVersion/cursor, fixed20, signed scope/high/head/after; no filter/search.",
+      "androidExpectation": "Legacy audit cursor+limit; client-side filtering over fetched role-scoped pages, never complete search claim.",
+      "mismatchOrMissing": "No server filter/search and candidate fields differ.",
+      "requiredSharedFixtures": [
+        "actual-audit-page-1",
+        "actual-audit-page-2",
+        "actual-audit-search-rejected",
+        "proposal-audit-search"
+      ],
+      "proposedResolution": "Approve filter/search vocabulary and bind filters to signed cursor/snapshot.",
+      "approvalRequirement": "Owner: filter/query scope, privacy, DTO and route; implementation absent.",
+      "verificationStatus": "BLOCKED"
+    },
+    {
+      "id": "G4",
+      "normative": "Quarantine/rollback published entity concept; no complete current-field comparison DTO specified.",
+      "actualLocalBackend": "Detail is proposal submission/revisions/reviews. Public overlay gives displayTitle/revision/provenance only; not arbitrary current fields.",
+      "androidExpectation": "Smart Comparison needs authoritative current entity before-values; earlier proposal never labeled current catalogue.",
+      "mismatchOrMissing": "No admin current-field lookup; public display cannot supply full field comparisons.",
+      "requiredSharedFixtures": [
+        "actual-detail",
+        "actual-public-display-7",
+        "actual-public-display-8",
+        "proposal-current-entity-values"
+      ],
+      "proposedResolution": "Approve minimal authorized current entity projection with revision/status/hash and allowlisted fields. Keep unavailable when missing.",
+      "approvalRequirement": "Owner: field/privacy/license projection and endpoint. No current-value service added.",
+      "verificationStatus": "BLOCKED"
+    },
+    {
+      "id": "G5",
+      "normative": "Session exchange/delete/capabilities; Google identity verified server-side, roles live, no presentation sign-in privilege.",
+      "actualLocalBackend": "Separate challenge/login/refresh/session/logout operations; capabilities response lacks principalId; session exposes principalId/sessionId/familyId/expiresAt; logout204/null; opaque token rotation/replay revocation. AuthLocalApi session/capability bodies use operation-specific allowlists that reject schemaVersion; no automatic public-body binding is implied.",
+      "androidExpectation": "Capabilities requires principalId; legacy signOut expects revoked JSON. Android live exchange/refresh lifecycle is not integrated.",
+      "mismatchOrMissing": "No approved HTTP binding or principal composition; capabilities alone cannot identify current account.",
+      "requiredSharedFixtures": [
+        "actual-capabilities",
+        "actual-session",
+        "actual-logout-204",
+        "actual-role-revoked",
+        "proposal-session-http-lifecycle",
+        "proposal-session-principal-binding",
+        "actual-auth-schemaVersion-rejected"
+      ],
+      "proposedResolution": "Approve coherent authenticated principal/token/capability lifecycle DTO and route mapping.",
+      "approvalRequirement": "Owner: wire binding, principal/session lifecycle and stored-token semantics; real OAuth remains separately gated.",
+      "verificationStatus": "BLOCKED"
+    },
+    {
+      "id": "G6",
+      "normative": "Decisions use expectedRevision; reason rules; conflict409 and stable idempotency keys.",
+      "actualLocalBackend": "Explicit moderation.open from submitted; decisions only in_review. Entity expectedRevision and proposal expectedSubmissionRevision both required safe JSON numbers. Approve201 id/status/entityId/new entity revision; other decisions200 id/status only. Generic409 lacks current values; current auth before replay; exact replay body incl original requestId; changed body422.",
+      "androidExpectation": "Legacy one expectedRevision, no open method; all successes parsed as submissionId/decision/revision; conflict fields optional. Decisions disabled.",
+      "mismatchOrMissing": "One revision cannot be heuristically mapped; missing expectations cannot default; current state refetch required for409.",
+      "requiredSharedFixtures": [
+        "actual-open",
+        "actual-decision-approve",
+        "actual-decision-reject",
+        "actual-decision-request_changes",
+        "actual-approve-replay",
+        "actual-error-409",
+        "actual-error-422",
+        "proposal-dual-revision-http"
+      ],
+      "proposedResolution": "Approve explicit open plus dual meanings, separate entity/proposal result fields, exact replay/conflict UX contract; then one versioned adapter.",
+      "approvalRequirement": "Owner: whole decision contract; no mapping activated. Local capture is not database atomicity or HTTP proof.",
+      "verificationStatus": "BLOCKED"
+    },
+    {
+      "id": "G7",
+      "normative": "/v1 design and error envelope; no arbitrary unknown-field acceptance.",
+      "actualLocalBackend": "In-process operation/body adapter only; no HTTP listener or method/path binder. Raw detail rows, object queue cursor, signed string audit/public cursor.",
+      "androidExpectation": "Legacy HTTP facade requires distinct shapes; rejects incompatible object cursor/DTOs; no dialect inference.",
+      "mismatchOrMissing": "Public DTO projection, microsecond timestamp representation, method/path binding and cursor serialization are not frozen.",
+      "requiredSharedFixtures": [
+        "actual-queue-page",
+        "actual-detail",
+        "actual-audit-page-1",
+        "proposal-public-binding",
+        "all actual-error-*"
+      ],
+      "proposedResolution": "Review/approve explicit public projections and HTTP binding after local fixture agreement.",
+      "approvalRequirement": "Owner: contract decisions; formal6.17 freeze NOT started or complete.",
+      "verificationStatus": "BLOCKED"
+    },
+    {
+      "id": "G8",
+      "normative": "Lossless typed catalogue identity/revision conventions, no numeric rounding.",
+      "actualLocalBackend": "PG BIGINT reads strings. Audit/admin entity/public int8 reads decimal strings up to9223372036854775807; moderation revision writes safe JS number0..9007199254740991.",
+      "androidExpectation": "Legacy positive Int revision<=2147483647; Long audit parser accepts exact integer/string up to Long.MAX_VALUE; rejects fractions/overflow; no candidate widening.",
+      "mismatchOrMissing": "Zero/new entity semantics, revision range/number-vs-string and timestamp precision need explicit agreement.",
+      "requiredSharedFixtures": [
+        "actual-bigint-9007199254740993",
+        "actual-bigint-9223372036854775807",
+        "actual-decision-approve",
+        "proposal-revision-representation"
+      ],
+      "proposedResolution": "Choose per-field representation/ranges; preserve audit strings/opaque cursors; refuse unsupported writes rather than clamp/round.",
+      "approvalRequirement": "Owner: field-specific range/representation; existing Android parser hardening can remain.",
+      "verificationStatus": "BLOCKED"
+    },
+    {
+      "id": "G9",
+      "normative": "Append-only audit chronology/hash chain; today/window authority not specified.",
+      "actualLocalBackend": "Transitions submitted->in_review, in_review->approved, approved->published, in_review->rejected/changes_requested, role.*, principal.*, session.*. Approve produces TWO transitions. Audit numeric seq with captured signed highwater/head.",
+      "androidExpectation": "Legacy decision.approve/reject, epoch ts, actor/subject/camelCase hashes/chainHead. Stats uses device ZoneId.systemDefault today and complete bounded audit walk.",
+      "mismatchOrMissing": "No automatic action aliases; double-counting hazard; no approved server timezone or statistical window.",
+      "requiredSharedFixtures": [
+        "actual-audit-page-1",
+        "actual-audit-page-2",
+        "proposal-statistical-vocabulary"
+      ],
+      "proposedResolution": "Approve one authoritative approval event plus timezone/window/snapshot semantics. Keep exact-or-unavailable and raw vocabulary.",
+      "approvalRequirement": "Owner: vocabulary, statistical authority, time/date/actor DTO.",
+      "verificationStatus": "BLOCKED"
+    },
+    {
+      "id": "G10",
+      "normative": "Unavailable/not configured must remain truthful, local practice independent.",
+      "actualLocalBackend": "No deployed endpoint; local adapter only; no activation is required or proposed.",
+      "androidExpectation": "Actual working-tree AdminApi.forApplication chooses DisabledAdminTransport absent explicit test override; OpusApplication decisionsEnabled=false independently.",
+      "mismatchOrMissing": "No reopening: static compatibility confirmed against current read-only sources; no new Android runtime claim.",
+      "requiredSharedFixtures": [
+        "stage7b-readonly-source-sha256.json"
+      ],
+      "proposedResolution": "Preserve the closed Android disabled-network boundary and independent decision kill; fixture-only local work can proceed.",
+      "approvalRequirement": "No new owner decision needed to retain this boundary; enabling networking/actions requires explicit later approval.",
+      "verificationStatus": "CLOSED_ANDROID_STATIC_COMPATIBILITY_CONFIRMED"
+    },
+    {
+      "id": "G11",
+      "normative": "Strict schemaVersion/allowlists, 16KiB/20fields/10URLs; reason-required actions and reviewed provenance; no universal license acceptance.",
+      "actualLocalBackend": "Plain text rejects HTML/control/encoded-dangerous forms. Reason max1000 UTF-8 bytes; reject/request_changes/quarantine/rollback required. Metadata strings<=2048; depth7/node1000; injected field/license/source allowlist, empty default-deny; evidence stored never fetched.",
+      "androidExpectation": "Legacy confirmation max2000 characters; validation/422 mapped Validation; current reviewed source policy not agreed.",
+      "mismatchOrMissing": "Byte/character limits differ; no real source/field/license policy. T22 400/401/403 classification approved locally, public HTTP binding remains open.",
+      "requiredSharedFixtures": [
+        "actual-error-400",
+        "actual-error-422",
+        "actual-error-403",
+        "proposal-validation-policy"
+      ],
+      "proposedResolution": "Approve compatible byte limits/reason semantics/source evidence policy; keep real content default-deny. Distinguish local T22 classifications without adding privilege.",
+      "approvalRequirement": "Owner: real field/source/license policy and DTO validation; local T22 patch explicitly approved, not a license or HTTP approval.",
+      "verificationStatus": "BLOCKED"
+    }
+  ]
+}

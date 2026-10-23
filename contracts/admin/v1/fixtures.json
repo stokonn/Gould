@@ -1,0 +1,1578 @@
+{
+  "schemaVersion": 1,
+  "fixtureSet": "admin-v1-local-audit-2026-10-23-r1",
+  "synthetic": true,
+  "frozen": false,
+  "active": false,
+  "httpApproved": false,
+  "approval": "local comparison/captures only; not6.17 freeze",
+  "imports": [
+    "stage7b-comparison/fixtures.json"
+  ],
+  "cases": [
+    {
+      "id": "actual-capabilities",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "capabilities",
+      "httpBinding": null,
+      "requestBody": {},
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "capabilities": [
+            "audit.read",
+            "decide",
+            "quarantine",
+            "queue.read",
+            "roles.manage"
+          ]
+        }
+      }
+    },
+    {
+      "id": "actual-auth-schemaVersion-rejected",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "capabilities",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 400,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "error": {
+            "code": "validation_failed",
+            "message": "Invalid request",
+            "requestId": "00000000-0000-4000-8000-000000000099"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-session",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "session",
+      "httpBinding": null,
+      "requestBody": {},
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "principalId": "00000000-0000-4000-8000-000000001000",
+          "sessionId": "00000000-0000-4000-8000-000000001001",
+          "familyId": "00000000-0000-4000-8000-000000001002",
+          "expiresAt": "2030-01-01T00:00:10.000Z"
+        }
+      }
+    },
+    {
+      "id": "actual-logout-204",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "logout",
+      "httpBinding": null,
+      "requestBody": {},
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 204,
+        "body": null
+      }
+    },
+    {
+      "id": "actual-error-400",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "admin.roles",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 400,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "error": {
+            "code": "validation_failed",
+            "message": "Invalid request",
+            "requestId": "00000000-0000-4000-8000-000000000099"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-error-401",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "admin.roles",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "principalId": "00000000-0000-4000-8000-000000001000",
+        "role": "administrator",
+        "revoke": false,
+        "idempotencyKey": "00000000-0000-4000-8000-000000001001"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "error": {
+            "code": "unauthenticated",
+            "message": "Authentication required",
+            "requestId": "00000000-0000-4000-8000-000000000099"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-error-403",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "admin.audit.edit",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "error": {
+            "code": "forbidden",
+            "message": "Operation not permitted",
+            "requestId": "00000000-0000-4000-8000-000000000099"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-role-revoked",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "admin.roles",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "principalId": "00000000-0000-4000-8000-000000001000",
+        "role": "administrator",
+        "revoke": false,
+        "idempotencyKey": "00000000-0000-4000-8000-000000001001"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "error": {
+            "code": "forbidden",
+            "message": "Operation not permitted",
+            "requestId": "00000000-0000-4000-8000-000000000099"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-service-unavailable",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "admin.roles",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "principalId": "00000000-0000-4000-8000-000000001000",
+        "role": "administrator",
+        "revoke": false,
+        "idempotencyKey": "00000000-0000-4000-8000-000000001001"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 503,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "error": {
+            "code": "service_unavailable",
+            "message": "Service unavailable",
+            "requestId": "00000000-0000-4000-8000-000000000099"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-queue-filter-rejected",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "moderation.queue",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "status": "submitted"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 400,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "error": {
+            "code": "validation_failed",
+            "message": "Invalid request",
+            "requestId": "00000000-0000-4000-8000-000000000099"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-audit-search-rejected",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "admin.audit",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "search": "synthetic"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 400,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "error": {
+            "code": "validation_failed",
+            "message": "Invalid request",
+            "requestId": "00000000-0000-4000-8000-000000000099"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-admin-audit-empty",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "admin.audit",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "items": [],
+          "head": {
+            "last_seq": "0",
+            "last_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "nextCursor": null
+        }
+      }
+    },
+    {
+      "id": "actual-queue-page",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "moderation.queue",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "items": [
+            {
+              "id": "00000000-0000-4000-8000-000000000001",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000002",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000003",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000004",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000005",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000006",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000007",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000008",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000009",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000010",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000011",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000012",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000013",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000014",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000015",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000016",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000017",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000018",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000019",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000020",
+              "target_kind": "work",
+              "status": "submitted",
+              "current_revision": "1",
+              "createdAt": "2030-01-01T00:00:00.000001Z"
+            }
+          ],
+          "nextCursor": {
+            "createdAt": "2030-01-01T00:00:00.000001Z",
+            "id": "00000000-0000-4000-8000-000000000020"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-queue-empty",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "moderation.queue",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "items": [],
+          "nextCursor": null
+        }
+      }
+    },
+    {
+      "id": "actual-detail",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "submission.read",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "submission": {
+            "id": "00000000-0000-4000-8000-000000000002",
+            "author_id": "00000000-0000-4000-8000-000000000006",
+            "target_kind": "work",
+            "catalogue_uuid": "00000000-0000-4000-8000-000000000007",
+            "mapping_id": null,
+            "target_entity_id": "00000000-0000-4000-8000-000000000007",
+            "expected_revision": "7",
+            "status": "in_review",
+            "current_revision": "3",
+            "created_at": "2030-01-01T00:00:00.000Z",
+            "updated_at": "2030-01-01T00:00:00.000Z"
+          },
+          "revisions": [
+            {
+              "revision": "3",
+              "payload": {
+                "schemaVersion": 1,
+                "target": {
+                  "kind": "work",
+                  "catalogueUuid": "00000000-0000-4000-8000-000000000007"
+                },
+                "changeKind": "correction",
+                "intendedLicense": "CC0-1.0",
+                "fields": [
+                  {
+                    "field": "title",
+                    "newValue": "Synthetic after",
+                    "evidence": [
+                      {
+                        "type": "reference",
+                        "value": "Goldberg authored synthetic contract fixture",
+                        "license": "CC0-1.0"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "this_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          ],
+          "reviews": [
+            {
+              "from_status": "submitted",
+              "to_status": "in_review",
+              "reason": null,
+              "audit_seq": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "actual-error-404",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "submission.read",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 404,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "error": {
+            "code": "not_found",
+            "message": "Resource not found",
+            "requestId": "00000000-0000-4000-8000-000000000099"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-decision-approve",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "moderation.decide",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002",
+        "expectedRevision": 7,
+        "expectedSubmissionRevision": 3,
+        "idempotencyKey": "00000000-0000-4000-8000-000000000008",
+        "decision": "approve"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "id": "00000000-0000-4000-8000-000000000002",
+          "status": "published",
+          "entityId": "00000000-0000-4000-8000-000000000007",
+          "revision": 8
+        }
+      }
+    },
+    {
+      "id": "actual-approve-replay",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "moderation.decide",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002",
+        "expectedRevision": 7,
+        "expectedSubmissionRevision": 3,
+        "idempotencyKey": "00000000-0000-4000-8000-000000000008",
+        "decision": "approve"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "id": "00000000-0000-4000-8000-000000000002",
+          "status": "published",
+          "entityId": "00000000-0000-4000-8000-000000000007",
+          "revision": 8
+        }
+      },
+      "replayOf": "actual-decision-approve"
+    },
+    {
+      "id": "actual-error-422",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "moderation.decide",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002",
+        "expectedRevision": 7,
+        "expectedSubmissionRevision": 3,
+        "idempotencyKey": "00000000-0000-4000-8000-000000000008",
+        "decision": "approve",
+        "reason": "Changed synthetic body"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 422,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "error": {
+            "code": "idempotency_mismatch",
+            "message": "Key already used for a different request",
+            "requestId": "00000000-0000-4000-8000-000000000099"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-decision-reject",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "moderation.decide",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002",
+        "expectedRevision": 7,
+        "expectedSubmissionRevision": 3,
+        "idempotencyKey": "00000000-0000-4000-8000-000000000008",
+        "decision": "reject",
+        "reason": "Synthetic reason"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "id": "00000000-0000-4000-8000-000000000002",
+          "status": "rejected"
+        }
+      }
+    },
+    {
+      "id": "actual-decision-request_changes",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "moderation.decide",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002",
+        "expectedRevision": 7,
+        "expectedSubmissionRevision": 3,
+        "idempotencyKey": "00000000-0000-4000-8000-000000000008",
+        "decision": "request_changes",
+        "reason": "Synthetic reason"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "id": "00000000-0000-4000-8000-000000000002",
+          "status": "changes_requested"
+        }
+      }
+    },
+    {
+      "id": "actual-open",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "moderation.open",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002",
+        "expectedRevision": 0,
+        "expectedSubmissionRevision": 1,
+        "idempotencyKey": "00000000-0000-4000-8000-000000000008"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "id": "00000000-0000-4000-8000-000000000002",
+          "status": "in_review"
+        }
+      }
+    },
+    {
+      "id": "actual-error-409",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "moderation.decide",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002",
+        "expectedRevision": 6,
+        "expectedSubmissionRevision": 3,
+        "idempotencyKey": "00000000-0000-4000-8000-000000000008",
+        "decision": "approve"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 409,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "error": {
+            "code": "conflict",
+            "message": "Revision or state conflict",
+            "requestId": "00000000-0000-4000-8000-000000000099"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-error-429",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "submission.create",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1
+      },
+      "scope": "actual adapter/AbuseProtection error serialization; effect injected, no quota storage execution",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 429,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "error": {
+            "code": "rate_limited",
+            "message": "Submission limit reached",
+            "requestId": "00000000-0000-4000-8000-000000000099",
+            "retryAfterSeconds": 2
+          }
+        },
+        "headers": {
+          "Retry-After": "2"
+        }
+      }
+    },
+    {
+      "id": "actual-audit-page-1",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "admin.audit",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "items": [
+            {
+              "seq": "1",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+              "canonical_content": "[\"goldberg-audit-v1\", \"1\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "c21689e11c526d444b8ed246bab2e4c68cfe79c39f92a66ca06324a5262a46dd"
+            },
+            {
+              "seq": "2",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "c21689e11c526d444b8ed246bab2e4c68cfe79c39f92a66ca06324a5262a46dd",
+              "canonical_content": "[\"goldberg-audit-v1\", \"2\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "6a620c6b64c0bbb93b5724116542b276931d0a9a56ac044b3c06e545b1623c14"
+            },
+            {
+              "seq": "3",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "6a620c6b64c0bbb93b5724116542b276931d0a9a56ac044b3c06e545b1623c14",
+              "canonical_content": "[\"goldberg-audit-v1\", \"3\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "9c484985c1a03a8a7c1acbf0ae6e7ccb9ad64986c5a6b9d741940ee96c9cd0ef"
+            },
+            {
+              "seq": "4",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "9c484985c1a03a8a7c1acbf0ae6e7ccb9ad64986c5a6b9d741940ee96c9cd0ef",
+              "canonical_content": "[\"goldberg-audit-v1\", \"4\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "2cb59670b1f309e0190049caecf525d7d1088e5e3d964bc5bf1e950636b2d3bb"
+            },
+            {
+              "seq": "5",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "2cb59670b1f309e0190049caecf525d7d1088e5e3d964bc5bf1e950636b2d3bb",
+              "canonical_content": "[\"goldberg-audit-v1\", \"5\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "18c0b4c5c981642c3e9d14cb366ae5460823a1d956dd986d7a804bcb72e5a9d7"
+            },
+            {
+              "seq": "6",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "18c0b4c5c981642c3e9d14cb366ae5460823a1d956dd986d7a804bcb72e5a9d7",
+              "canonical_content": "[\"goldberg-audit-v1\", \"6\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "4c57b23b8a455ff3ec135893bd0c6e2bb42c76181b367e88847f286f66e07fcf"
+            },
+            {
+              "seq": "7",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "4c57b23b8a455ff3ec135893bd0c6e2bb42c76181b367e88847f286f66e07fcf",
+              "canonical_content": "[\"goldberg-audit-v1\", \"7\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "262b8f1df9c843a281dd73b0a5b806d17d69d0f0c39575bdb545202cb935f551"
+            },
+            {
+              "seq": "8",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "262b8f1df9c843a281dd73b0a5b806d17d69d0f0c39575bdb545202cb935f551",
+              "canonical_content": "[\"goldberg-audit-v1\", \"8\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "f48b362406293f6b607e26f4f8d031ad40ed8dfd2d101eca25be5e5aca518473"
+            },
+            {
+              "seq": "9",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "f48b362406293f6b607e26f4f8d031ad40ed8dfd2d101eca25be5e5aca518473",
+              "canonical_content": "[\"goldberg-audit-v1\", \"9\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "1c65149eb75eba3099a3b97cffef9b031b89ae3da2d302d8298737502c75db46"
+            },
+            {
+              "seq": "10",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "1c65149eb75eba3099a3b97cffef9b031b89ae3da2d302d8298737502c75db46",
+              "canonical_content": "[\"goldberg-audit-v1\", \"10\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "2479b2be2c4995ce8b5dca58411f6c88721ac230f0e43ddec3766a00f9e1b0d3"
+            },
+            {
+              "seq": "11",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "2479b2be2c4995ce8b5dca58411f6c88721ac230f0e43ddec3766a00f9e1b0d3",
+              "canonical_content": "[\"goldberg-audit-v1\", \"11\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "6db8592d9d6a654dcc3e04dea15b176b86a583993c8db0e72c26579b935107c1"
+            },
+            {
+              "seq": "12",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "6db8592d9d6a654dcc3e04dea15b176b86a583993c8db0e72c26579b935107c1",
+              "canonical_content": "[\"goldberg-audit-v1\", \"12\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "a88ebe9f5676ff35d31785c45f58122be1d9a37ded01ddc743663833606dc213"
+            },
+            {
+              "seq": "13",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "a88ebe9f5676ff35d31785c45f58122be1d9a37ded01ddc743663833606dc213",
+              "canonical_content": "[\"goldberg-audit-v1\", \"13\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "8fae2863d8501ca12bed64ce5bcb85ef6b6e60e0049ecd4dc95ff9e5290f7d6d"
+            },
+            {
+              "seq": "14",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "8fae2863d8501ca12bed64ce5bcb85ef6b6e60e0049ecd4dc95ff9e5290f7d6d",
+              "canonical_content": "[\"goldberg-audit-v1\", \"14\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "289a25d429528933dffce79b35f51f396af1a13fe8bbf12dfbe6e0d4f4edf6b3"
+            },
+            {
+              "seq": "15",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "289a25d429528933dffce79b35f51f396af1a13fe8bbf12dfbe6e0d4f4edf6b3",
+              "canonical_content": "[\"goldberg-audit-v1\", \"15\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "ba47d1519f83b990683f246d337dcf158faa9fd518d1f9ce1b98111561b402dc"
+            },
+            {
+              "seq": "16",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "ba47d1519f83b990683f246d337dcf158faa9fd518d1f9ce1b98111561b402dc",
+              "canonical_content": "[\"goldberg-audit-v1\", \"16\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "3b833a23b536377be6f32c48e88679ca4b86ec13f8c2cce88a8b6e5c98a48271"
+            },
+            {
+              "seq": "17",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "3b833a23b536377be6f32c48e88679ca4b86ec13f8c2cce88a8b6e5c98a48271",
+              "canonical_content": "[\"goldberg-audit-v1\", \"17\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "e8e007862de5236b4b502ea4aad5f0e85e20e21839d208bf7114d7315f66f8b2"
+            },
+            {
+              "seq": "18",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "e8e007862de5236b4b502ea4aad5f0e85e20e21839d208bf7114d7315f66f8b2",
+              "canonical_content": "[\"goldberg-audit-v1\", \"18\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "3550ed4b373d5b8e7d6532e62103ef8326332ebca221922fa13180870b9a8db0"
+            },
+            {
+              "seq": "19",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "3550ed4b373d5b8e7d6532e62103ef8326332ebca221922fa13180870b9a8db0",
+              "canonical_content": "[\"goldberg-audit-v1\", \"19\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "eeaa891684debfb8985385ba7eb8efff023b9299ca2cc244c70981db0e89911f"
+            },
+            {
+              "seq": "20",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "eeaa891684debfb8985385ba7eb8efff023b9299ca2cc244c70981db0e89911f",
+              "canonical_content": "[\"goldberg-audit-v1\", \"20\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "e8c4975599abc6bbfd23830905d3ffe1aab080c70ac529298e8856c8a2c9c606"
+            }
+          ],
+          "head": {
+            "last_seq": "21",
+            "last_hash": "4e258ab540db7038ee58aa8a16259c512d93f122b84cc72def1e6c56a9aa24a8"
+          },
+          "nextCursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6ImFkbWluLmF1ZGl0IiwiaGlnaCI6IjIxIiwiaGVhZCI6IjRlMjU4YWI1NDBkYjcwMzhlZTU4YWE4YTE2MjU5YzUxMmQ5M2YxMjJiODRjYzcyZGVmMWU2YzU2YTlhYTI0YTgiLCJhZnRlciI6IjIwIn0.yhlBFOcWdKCiWZm1UayKMgFgY-e9L3cO8tyLe9YwcN0"
+        }
+      }
+    },
+    {
+      "id": "actual-audit-page-2",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "admin.audit",
+      "httpBinding": null,
+      "requestBody": {
+        "schemaVersion": 1,
+        "cursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6ImFkbWluLmF1ZGl0IiwiaGlnaCI6IjIxIiwiaGVhZCI6IjRlMjU4YWI1NDBkYjcwMzhlZTU4YWE4YTE2MjU5YzUxMmQ5M2YxMjJiODRjYzcyZGVmMWU2YzU2YTlhYTI0YTgiLCJhZnRlciI6IjIwIn0.yhlBFOcWdKCiWZm1UayKMgFgY-e9L3cO8tyLe9YwcN0"
+      },
+      "scope": "real in-process adapter/service + scripted SQL",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false,
+        "identifiers": "dynamic response UUIDs normalized; no credentials captured"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000099",
+          "items": [
+            {
+              "seq": "21",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "submitted->in_review",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": null,
+              "reason": null,
+              "created_at": "2030-01-01T00:00:00.000000Z",
+              "request_id": "00000000-0000-4000-8000-000000000099",
+              "prev_hash": "e8c4975599abc6bbfd23830905d3ffe1aab080c70ac529298e8856c8a2c9c606",
+              "canonical_content": "[\"goldberg-audit-v1\", \"21\", \"00000000-0000-4000-8000-000000000003\", \"submitted->in_review\", \"submission\", \"00000000-0000-4000-8000-000000000002\", \"3\", null, null, null, \"2030-01-01T00:00:00.000000Z\", \"00000000-0000-4000-8000-000000000099\"]",
+              "this_hash": "4e258ab540db7038ee58aa8a16259c512d93f122b84cc72def1e6c56a9aa24a8"
+            }
+          ],
+          "head": {
+            "last_seq": "21",
+            "last_hash": "4e258ab540db7038ee58aa8a16259c512d93f122b84cc72def1e6c56a9aa24a8"
+          },
+          "nextCursor": null
+        }
+      }
+    },
+    {
+      "id": "actual-public-display-7",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "display",
+      "httpBinding": null,
+      "scope": "actual public projection function over authored row; not current entity lookup",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false
+      },
+      "value": {
+        "kind": "work",
+        "catalogueUuid": "00000000-0000-4000-8000-000000000007",
+        "displayTitle": "Synthetic before",
+        "revision": "7",
+        "provenanceSummary": {
+          "licenses": [
+            "CC0-1.0"
+          ],
+          "sourceCount": 1
+        }
+      }
+    },
+    {
+      "id": "actual-public-display-8",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "display",
+      "httpBinding": null,
+      "scope": "actual public projection function over authored row; not current entity lookup",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false
+      },
+      "value": {
+        "kind": "work",
+        "catalogueUuid": "00000000-0000-4000-8000-000000000007",
+        "displayTitle": "Synthetic after",
+        "revision": "8",
+        "provenanceSummary": {
+          "licenses": [
+            "CC0-1.0"
+          ],
+          "sourceCount": 1
+        }
+      }
+    },
+    {
+      "id": "actual-bigint-9007199254740993",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "decimal",
+      "httpBinding": null,
+      "scope": "actual lossless decimal primitive; not full audit chain",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false
+      },
+      "value": "9007199254740993"
+    },
+    {
+      "id": "actual-bigint-9223372036854775807",
+      "classification": "actual-local-capture",
+      "synthetic": true,
+      "operation": "decimal",
+      "httpBinding": null,
+      "scope": "actual lossless decimal primitive; not full audit chain",
+      "verification": {
+        "executed": true,
+        "postgres": false,
+        "http": false
+      },
+      "value": "9223372036854775807"
+    },
+    {
+      "id": "proposal-stats-snapshot",
+      "gap": "G1",
+      "proposal": {
+        "snapshotId": "synthetic",
+        "computedAt": "2030-01-01T00:00:00Z",
+        "window": {
+          "start": "2030-01-01T00:00:00Z",
+          "end": "2030-01-02T00:00:00Z",
+          "timezone": "OWNER_DECISION_REQUIRED"
+        },
+        "counts": {
+          "pending": 2,
+          "needsInfo": 1,
+          "approved": 1,
+          "rejected": 0
+        },
+        "complete": true
+      },
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "requiresApproval": true,
+      "httpBinding": null
+    },
+    {
+      "id": "proposal-queue-search",
+      "gap": "G2",
+      "proposal": {
+        "search": "synthetic",
+        "status": [
+          "submitted"
+        ],
+        "fields": [
+          "title",
+          "composer",
+          "targetKind"
+        ],
+        "cursorBinding": "filter and snapshot digest required"
+      },
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "requiresApproval": true,
+      "httpBinding": null
+    },
+    {
+      "id": "proposal-audit-search",
+      "gap": "G3",
+      "proposal": {
+        "action": [
+          "approved->published"
+        ],
+        "query": "synthetic",
+        "cursorBinding": "signed filter/snapshot scope required"
+      },
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "requiresApproval": true,
+      "httpBinding": null
+    },
+    {
+      "id": "proposal-current-entity-values",
+      "gap": "G4",
+      "proposal": {
+        "catalogueUuid": "00000000-0000-4000-8000-000000000007",
+        "revision": "7",
+        "status": "published",
+        "fields": {
+          "title": "Synthetic before"
+        },
+        "authority": "explicit admin current projection required; not earlier proposal"
+      },
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "requiresApproval": true,
+      "httpBinding": null
+    },
+    {
+      "id": "proposal-session-http-lifecycle",
+      "gap": "G5",
+      "proposal": {
+        "httpBinding": null,
+        "sourceOperations": [
+          "challenge",
+          "login",
+          "refresh",
+          "logout"
+        ],
+        "loginBody": {
+          "credential": "SYNTHETIC_NOT_A_REAL_CREDENTIAL",
+          "challenge": "SYNTHETIC_CHALLENGE"
+        },
+        "tokenResponseFields": [
+          "accessToken",
+          "refreshToken",
+          "principalId",
+          "expiresAt"
+        ],
+        "refreshReplay": "revoke family and audit; exact lifecycle binding approval required"
+      },
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "requiresApproval": true,
+      "httpBinding": null
+    },
+    {
+      "id": "proposal-session-principal-binding",
+      "gap": "G5",
+      "proposal": {
+        "principalId": "00000000-0000-4000-8000-000000000003",
+        "capabilities": [
+          "decide"
+        ],
+        "requires": "authenticated principal source and token lifecycle binding approval"
+      },
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "requiresApproval": true,
+      "httpBinding": null
+    },
+    {
+      "id": "proposal-dual-revision-http",
+      "gap": "G6",
+      "proposal": {
+        "expectedRevision": 7,
+        "expectedSubmissionRevision": 3,
+        "publishedEntityRevision": 8,
+        "missingExpectation": "block; never default"
+      },
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "requiresApproval": true,
+      "httpBinding": null
+    },
+    {
+      "id": "proposal-public-binding",
+      "gap": "G7",
+      "proposal": {
+        "httpRoute": null,
+        "approval": "all method/path/DTO bindings remain unapproved"
+      },
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "requiresApproval": true,
+      "httpBinding": null
+    },
+    {
+      "id": "proposal-revision-representation",
+      "gap": "G8",
+      "proposal": {
+        "writes": "owner must select explicit compatible representation/range",
+        "auditReads": "decimal strings through Long.MAX_VALUE"
+      },
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "requiresApproval": true,
+      "httpBinding": null
+    },
+    {
+      "id": "proposal-statistical-vocabulary",
+      "gap": "G9",
+      "proposal": {
+        "oneApproval": "choose exactly one transition; never count both in_review->approved and approved->published",
+        "timezone": "owner decision"
+      },
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "requiresApproval": true,
+      "httpBinding": null
+    },
+    {
+      "id": "proposal-validation-policy",
+      "gap": "G11",
+      "proposal": {
+        "reasonMaxUtf8Bytes": 1000,
+        "reasonRequired": [
+          "reject",
+          "request_changes",
+          "quarantine",
+          "rollback"
+        ],
+        "realEvidencePolicy": "default-deny pending approval"
+      },
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "requiresApproval": true,
+      "httpBinding": null
+    }
+  ]
+}

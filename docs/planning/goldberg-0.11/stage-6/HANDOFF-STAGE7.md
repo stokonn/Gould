@@ -81,3 +81,21 @@ Stage 7 Part A remains independent of Stage 6 (its Stage 5 prerequisite is compl
 starting Stage 7 still needs a separate owner instruction).
 
 created by stokonn with love <3
+
+## Current local coordination checkpoint — Stage6.12, not6.17 freeze
+
+The design-only handoff above remains the future acceptance target, not a claim
+that its gates passed. Stage7B local work was separately owner-authorized and is
+already in progress; no Stage7B source is changed here.
+
+See [current readiness report](STAGE7B-CONTRACT-READINESS.md): G10's Android disabled
+transport boundary remains closed by read-only static compatibility; G1–G9 andG11
+remain blocked for actual integration. `contracts/admin/v1` contains30 real-service/
+scripted-storage captures,11 inactive proposals and29 preserved authored Stage7B
+comparison cases, with source/fixture hashes. These are not public HTTP or PostgreSQL
+proof and not an API freeze. No heuristic dialect mapping or live activation.
+
+The owner-approved T22 local routing clarification is recorded in
+[T22 investigation](T22-INVESTIGATION.md); new unit/fixture evidence does not replace
+updated PG17.11, HTTP or Android runtime acceptance. Formal6.12 stays PARTIAL;
+6.17 and6.13–6.18 are not started by this audit/fixture coordination.

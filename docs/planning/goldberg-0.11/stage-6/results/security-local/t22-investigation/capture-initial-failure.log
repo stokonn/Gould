@@ -1,0 +1,1 @@
+Initial capture harness failed before writing corpus: TypeError reading undefined v.authorization.sessions in unused local variable. Removed the unused variable; no backend/source behavior changed.

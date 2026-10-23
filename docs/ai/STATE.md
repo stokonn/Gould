@@ -1,3 +1,48 @@
+## Stage6.12 — approved T22 correction and Stage7B contract coordination (PARTIAL)
+
+Published base `e7dc7ea871f61965600ba31076e8d28dc01822fe` and Issue31 checkpoint
+6369071469 independently read back; older UNPUBLISHED statements below are historical.
+Continue on `verify/goldberg-0.11-stage-6-12-local`, isolated from Stage7B.
+Purpose/scope: trace and correct the approved local T22 routing classification,
+add focused negative regressions, and prepare exact G1–G11 shared fixture handoff.
+No formal6.13–6.18 work or6.17 API freeze.
+
+- [x] Reproduce old400 before authentication/dispatch versus Auth adapter403.
+- [x] Explicit owner approval recorded: malformed/non-string/empty operation400;
+  well-formed unregistered audit/bootstrap operation403 with no dispatch; registered
+  missing/invalid session401; live capability/self-grant403. Applied exact local
+  patch and corresponding regression expectations; no new privileged endpoint.
+- [x] Final local119 PASS:38 T22 +11 shared-contract +27 security +32 unit Node tests,
+  plus11 Python reporting regressions. Zero failures/skips/cancellations in final
+  runs. All five repository checks PASS; raw intermediate harness failures retained.
+- [x] T22 tests use real services with scripted SQL, not actual PostgreSQL. No role/
+  audit mutation attempted in denied cases; expired-key housekeeping rolls back.
+  Non-string operation coercion is rejected before handler selection.
+- [x] Matrix13 local PASS/7 PARTIAL/2 NOT TESTED; original T22 FAIL remains historical.
+  T22 now PARTIAL after explicit owner decision and local fix, not full acceptance.
+- [x] Read actual Stage7B source/checklist/acceptance/proposals read-only; hash all
+  inspected bytes, including uncommitted work. No Stage7B file/index/build changed.
+- [x] Shared Admin v1 preparation:30 actual in-process/scripted-storage captures,
+  11 inactive proposals,29 byte-preserved authored Stage7B comparison cases. Exact
+  source/corpus hashes; all synthetic, no HTTP binding or PostgreSQL claim.
+- [x] G1–G11 ledger records normative/backend/Android/mismatch/fixtures/resolution/
+  approval/status. G10 remains CLOSED on Android by static compatibility; G1–G9
+  andG11 remain blocked for real integration. No dialect or revision mapping guessed.
+- [ ] Current updated PostgreSQL assertions: agent socketEPERM,0 database bodies;
+  run version3 local runner on permitted host. Prior owner296 executions/264 tests
+  are pre-patch baseline only; original raw manifests remain immutable/Git-verifiable.
+- [ ] Hosted/browser/fetch/restore/network-privacy/Android-runtime gates remain OPEN.
+- [ ] Commit/push/readback and one non-duplicate Issue31 checkpoint for this update.
+
+Reports: `stage-6/T22-INVESTIGATION.md`, `stage-6/STAGE7B-CONTRACT-READINESS.md`,
+`contracts/admin/v1/readiness.json`. Raw final evidence and owner decision:
+`stage-6/results/security-local/t22-investigation/`. Production networking and
+privileged Android actions remain disabled. Formal6.12 PARTIAL,6.17 not accepted;
+no hosted/OAuth/real data/paid/merge/tag/release/emulator/phone/Stage7B writes.
+Exact next: publish reviewed scope, execute updated PG17.11 regressions on permitted
+host, and obtain G1–G9/G11 implementation/DTO/session/validation decisions before
+one approved Android adapter or any live integration.
+
 ## Stage 6.12 publication outcome — host tests VERIFIED, source/checkpoint UNPUBLISHED
 
 Fresh Fedora PostgreSQL verification is confirmed:296 executions/264 tests counting

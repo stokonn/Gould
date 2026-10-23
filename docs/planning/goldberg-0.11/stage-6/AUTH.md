@@ -135,6 +135,13 @@ is seeded at launch. Contract details:
 - Suspension blocks writes immediately and reads per policy; it is a
   `principals.state` check, not a role deletion, so audit history stays intact.
 
+CommunityApi local T22 routing clarification approved by the owner (2026-10-23): well-formed
+unregistered audit/bootstrap operations are denied403 without entering authentication
+or storage. On registered operations, missing/invalid sessions remain401 and live
+capability/self-grant denials403. Malformed operations/bodies remain400. The router
+must reject non-string operation coercion. No privileged endpoint, client-controlled
+actor field or bootstrap bypass is created; HTTP binding remains a separate gate.
+
 ## 7. Admin bootstrap and recovery — D8c approved (2026-10-21)
 
 **Owner decision (2026-10-21): the out-of-band console procedure below is APPROVED**

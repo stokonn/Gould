@@ -42,6 +42,9 @@ class TapReportTests(unittest.TestCase):
  def test_false_green_summary_with_not_ok_is_failed_and_counts_retained(self):
   (self.root/'focused.tap').write_text(valid(27).replace('ok 1 -','not ok 1 -'));(self.root/'unit.tap').write_text(valid(32));(self.root/'source-sha256.json').write_text('{}')
   result=tap.report(self.root,False,False);self.assertTrue(result['checksOrTestsFailed']);self.assertEqual(result['counts']['focused.tap']['tests'],27);self.assertTrue(any('TAP reports' in e for e in result['summaryErrors']))
+ def test_extra_t22_log_cannot_hide_missing_summaries(self):
+  (self.root/'focused.tap').write_text(valid(27));(self.root/'unit.tap').write_text(valid(32));(self.root/'t22.tap').write_text('synthetic module startup failure');source=self.root/'source';source.write_text('synthetic');(self.root/'source-sha256.json').write_text(json.dumps({str(source):hashlib.sha256(source.read_bytes()).hexdigest()}))
+  result=tap.report(self.root,False,False);self.assertTrue(result['checksOrTestsFailed']);self.assertTrue(result['sourceUnchanged']);self.assertNotIn('t22.tap',result['counts']);self.assertTrue(any('t22.tap: missing TAP summaries' in e for e in result['summaryErrors']))
  def test_source_change_is_explicit_failed_result(self):
   (self.root/'focused.tap').write_text(valid(27));(self.root/'unit.tap').write_text(valid(32));source=self.root/'source';source.write_text('synthetic original');h=hashlib.sha256(source.read_bytes()).hexdigest();(self.root/'source-sha256.json').write_text(json.dumps({str(source):h}));source.write_text('changed')
   result=tap.report(self.root,False,True);self.assertFalse(result['sourceUnchanged']);self.assertTrue(result['checksOrTestsFailed']);self.assertIn('source changed',result['summaryErrors'][0])

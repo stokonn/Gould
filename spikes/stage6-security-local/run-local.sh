@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Version 2. Local synthetic verification only. No installs, downloads or hosted configuration.
+# Version 3. Local synthetic verification only. No installs, downloads or hosted configuration.
 set -euo pipefail
 cd -- "$(dirname -- "$0")/../.."
 results="$(mktemp -d docs/planning/goldberg-0.11/stage-6/results/security-local/run-XXXXXXXX)"
@@ -12,13 +12,18 @@ for name in ['stage6-auth-local','stage6-handlers-local','stage6-schema-pg','sta
  for p in (Path('spikes')/name).rglob('*'):
   if p.is_file() and not any(part in ['node_modules','results','__pycache__'] for part in p.parts):files.append(p)
 files+=list(Path('scripts').glob('check_*.py'))
+files += [p for p in Path('contracts/admin/v1').rglob('*') if p.is_file()]
+files += [Path('docs/planning/goldberg-0.11/stage-6')/p for p in ['API-CONTRACTS.md','AUTH.md','THREAT-MODEL.md']]
 (out/'source-sha256.json').write_text(json.dumps({str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(set(files))},indent=2)+'\n')
-(out/'execution.json').write_text(json.dumps({'runnerVersion':2,'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'branch':subprocess.check_output(['git','branch','--show-current'],text=True).strip(),'scope':'local synthetic; no emulator or external network'},indent=2)+'\n')
+(out/'execution.json').write_text(json.dumps({'runnerVersion':3,'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'branch':subprocess.check_output(['git','branch','--show-current'],text=True).strip(),'scope':'local synthetic; no emulator or external network'},indent=2)+'\n')
 PY
 node --version > "$results/node-version.log"
 failed=0
 if node spikes/stage6-security-local/tests/security.test.mjs > "$results/focused.tap" 2>&1; then :; else failed=1; fi
 if node spikes/stage6-public-admin-abuse/tests/unit.test.mjs > "$results/unit.tap" 2>&1; then :; else failed=1; fi
+for suite in t22 contract; do
+ if node "spikes/stage6-security-local/tests/$suite.test.mjs" > "$results/$suite.tap" 2>&1; then :; else failed=1; fi
+done
 for check in check_agent_policy check_backup_fixtures check_history_paging check_localization check_migrations; do
  if python3 "scripts/$check.py" > "$results/$check.log" 2>&1; then :; else failed=1; fi
 done

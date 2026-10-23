@@ -1,0 +1,16 @@
+test_actual_retained_dependency_error_is_clear_not_none_traceback (test_tap_report.TapReportTests.test_actual_retained_dependency_error_is_clear_not_none_traceback) ... ok
+test_cli_writes_failure_json_with_unverified_counts_and_no_traceback (test_tap_report.TapReportTests.test_cli_writes_failure_json_with_unverified_counts_and_no_traceback) ... ok
+test_duplicate_summary_refused (test_tap_report.TapReportTests.test_duplicate_summary_refused) ... ok
+test_extra_t22_log_cannot_hide_missing_summaries (test_tap_report.TapReportTests.test_extra_t22_log_cannot_hide_missing_summaries) ... ok
+test_failed_cancelled_skipped_results_never_pass_success_gate (test_tap_report.TapReportTests.test_failed_cancelled_skipped_results_never_pass_success_gate) ... ok
+test_false_green_summary_with_not_ok_is_failed_and_counts_retained (test_tap_report.TapReportTests.test_false_green_summary_with_not_ok_is_failed_and_counts_retained) ... ok
+test_missing_file_is_named (test_tap_report.TapReportTests.test_missing_file_is_named) ... ok
+test_source_change_is_explicit_failed_result (test_tap_report.TapReportTests.test_source_change_is_explicit_failed_result) ... ok
+test_truncated_summary_identifies_missing_field (test_tap_report.TapReportTests.test_truncated_summary_identifies_missing_field) ... ok
+test_valid_exact_summaries_and_bodies (test_tap_report.TapReportTests.test_valid_exact_summaries_and_bodies) ... ok
+test_zero_or_inconsistent_or_unexecuted_tests_never_pass_expected_suite (test_tap_report.TapReportTests.test_zero_or_inconsistent_or_unexecuted_tests_never_pass_expected_suite) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.037s
+
+OK

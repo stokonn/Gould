@@ -54,7 +54,7 @@ paid service, real user data or real Google credentials — synthetic identities
 | T19 | Export then isolated restore into a fresh empty database | Restore succeeds; chain verification passes; counts and sample records match; RPO evidence recorded | [L] local engine + [I] real provider |
 | T20 | Backend unavailable / paused / quota-exhausted / kill-switch on | App and Admin degrade gracefully: last-known overlay or offline state, local drafts intact, truthful "unavailable" (no fake success, no local lockout) | [L] + [I] |
 | T21 | Personal-data isolation: crafted submission containing journal-like fields; network-layer assertion across the app | Validation rejects unknown fields; request-body allowlist regression test passes; zero personal rows leave device | [L] (client regression) + code review |
-| T22 | Bootstrap abuse: anonymous principal attempts admin self-grant; admin attempts audit self-edit | 403; no client endpoint exists for either | [L] |
+| T22 | Bootstrap/audit-mutation abuse; registered role requests, invalid sessions and malformed requests tested separately | Owner-approved local clarification: well-formed unregistered audit/bootstrap operation403 without dispatch; authenticated self-grant403; missing/invalid session on registered role route401; malformed operation/body400. No client audit-edit/bootstrap endpoint exists. HTTP binding remains unapproved. | [L] |
 
 ## 4. Abuse and denial-of-service posture (summary)
 

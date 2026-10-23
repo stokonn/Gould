@@ -91,7 +91,7 @@ test('principal operation fault rolls role and audit/idempotency back together',
 test('admin audit paginates numerically with hash head and has no mutation endpoint',async()=>{
  const v=await venue();for(let i=0;i<7;i++)await publish(v);for(const u of [null,v.author,v.mod])assert.equal((await call(v,u,'admin.audit')).status,u?403:401);
  let cursor,events=[],head;do{const r=await call(v,v.admin,'admin.audit',{schemaVersion:1,...(cursor?{cursor}:{})});assert.equal(r.status,200);head=r.body.head;events.push(...r.body.items);cursor=r.body.nextCursor;}while(cursor);
- assert.equal(verifyAudit({version:1,events,head}),true);assert.equal((await call(v,v.admin,'admin.audit.edit',request())).status,400);
+ assert.equal(verifyAudit({version:1,events,head}),true);assert.equal((await call(v,v.admin,'admin.audit.edit',request())).status,403);
  for(const table of ['published_revisions','audit_events','change_feed'])await assert.rejects(db.query(`DELETE FROM ${v.q}.${table}`),e=>e.code==='55000');
 });
 test('daily limit atomic last slot, duplicate replay, mismatch and pending quota',async()=>{

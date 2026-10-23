@@ -1,0 +1,247 @@
+TAP version 13
+# Subtest: T22 audit edit anonymous: current400 before auth SQL or handler dispatch
+ok 1 - T22 audit edit anonymous: current400 before auth SQL or handler dispatch
+  ---
+  duration_ms: 6.666243
+  type: 'test'
+  ...
+# Subtest: T22 audit edit malformed token: current400 before auth SQL or handler dispatch
+ok 2 - T22 audit edit malformed token: current400 before auth SQL or handler dispatch
+  ---
+  duration_ms: 0.72981
+  type: 'test'
+  ...
+# Subtest: T22 audit edit administrator: current400 before auth SQL or handler dispatch
+ok 3 - T22 audit edit administrator: current400 before auth SQL or handler dispatch
+  ---
+  duration_ms: 0.484246
+  type: 'test'
+  ...
+# Subtest: T22 same absent audit operation: Auth adapter403 versus composed adapter400
+ok 4 - T22 same absent audit operation: Auth adapter403 versus composed adapter400
+  ---
+  duration_ms: 2.150436
+  type: 'test'
+  ...
+# Subtest: T22 absent operation bootstrap.admin cannot dispatch via prototype
+ok 5 - T22 absent operation bootstrap.admin cannot dispatch via prototype
+  ---
+  duration_ms: 0.635822
+  type: 'test'
+  ...
+# Subtest: T22 absent operation roles.bootstrap cannot dispatch via prototype
+ok 6 - T22 absent operation roles.bootstrap cannot dispatch via prototype
+  ---
+  duration_ms: 0.500486
+  type: 'test'
+  ...
+# Subtest: T22 absent operation rpc cannot dispatch via prototype
+ok 7 - T22 absent operation rpc cannot dispatch via prototype
+  ---
+  duration_ms: 0.464979
+  type: 'test'
+  ...
+# Subtest: T22 absent operation deployment cannot dispatch via prototype
+ok 8 - T22 absent operation deployment cannot dispatch via prototype
+  ---
+  duration_ms: 0.444571
+  type: 'test'
+  ...
+# Subtest: T22 absent operation __proto__ cannot dispatch via prototype
+ok 9 - T22 absent operation __proto__ cannot dispatch via prototype
+  ---
+  duration_ms: 1.077938
+  type: 'test'
+  ...
+# Subtest: T22 absent operation constructor cannot dispatch via prototype
+ok 10 - T22 absent operation constructor cannot dispatch via prototype
+  ---
+  duration_ms: 0.951399
+  type: 'test'
+  ...
+# Subtest: T22 absent operation toString cannot dispatch via prototype
+ok 11 - T22 absent operation toString cannot dispatch via prototype
+  ---
+  duration_ms: 0.47055
+  type: 'test'
+  ...
+# Subtest: T22 registered role route missing denies401 without privilege writes
+ok 12 - T22 registered role route missing denies401 without privilege writes
+  ---
+  duration_ms: 1.307913
+  type: 'test'
+  ...
+# Subtest: T22 registered role route malformed denies401 without privilege writes
+ok 13 - T22 registered role route malformed denies401 without privilege writes
+  ---
+  duration_ms: 0.46011
+  type: 'test'
+  ...
+# Subtest: T22 registered role route unknown well formed denies401 without privilege writes
+ok 14 - T22 registered role route unknown well formed denies401 without privilege writes
+  ---
+  duration_ms: 1.799282
+  type: 'test'
+  ...
+# Subtest: T22 registered role route expired denies401 without privilege writes
+ok 15 - T22 registered role route expired denies401 without privilege writes
+  ---
+  duration_ms: 0.85149
+  type: 'test'
+  ...
+# Subtest: T22 registered role route revoked denies401 without privilege writes
+ok 16 - T22 registered role route revoked denies401 without privilege writes
+  ---
+  duration_ms: 0.483424
+  type: 'test'
+  ...
+# Subtest: T22 registered role route suspended denies403 without privilege writes
+ok 17 - T22 registered role route suspended denies403 without privilege writes
+  ---
+  duration_ms: 0.608189
+  type: 'test'
+  ...
+# Subtest: T22 registered role route contributor denies403 without privilege writes
+ok 18 - T22 registered role route contributor denies403 without privilege writes
+  ---
+  duration_ms: 5.850782
+  type: 'test'
+  ...
+# Subtest: T22 registered role route moderator denies403 without privilege writes
+ok 19 - T22 registered role route moderator denies403 without privilege writes
+  ---
+  duration_ms: 0.602389
+  type: 'test'
+  ...
+# Subtest: T22 registered role route no grants denies403 without privilege writes
+ok 20 - T22 registered role route no grants denies403 without privilege writes
+  ---
+  duration_ms: 0.61844
+  type: 'test'
+  ...
+# Subtest: T22 registered role route unknown role denies403 without privilege writes
+ok 21 - T22 registered role route unknown role denies403 without privilege writes
+  ---
+  duration_ms: 0.646512
+  type: 'test'
+  ...
+# Subtest: T22 authenticated administrator self grant canonical UUID denies403 before mutation
+not ok 22 - T22 authenticated administrator self grant canonical UUID denies403 before mutation
+  ---
+  duration_ms: 2.82952
+  type: 'test'
+  location: '/tmp/goldberg-stage6-security-local/spikes/stage6-security-local/tests/t22.test.mjs:64:37'
+  failureType: 'testCodeFailure'
+  error: `["BEGIN","SET LOCAL lock_timeout='2s'","SET LOCAL statement_timeout='5s'","SELECT principal_id,family_id FROM \\"proto_t22\\".sessions WHERE token_hash=$1","SELECT id,state FROM \\"proto_t22\\".principals WHERE id=ANY($1::uuid[]) ORDER BY id FOR UPDATE","SELECT * FROM \\"proto_t22\\".auth_families WHERE id=$1 AND principal_id=$2 FOR UPDATE","SELECT id,issued_at,expires_at,revoked_at FROM \\"proto_t22\\".sessions WHERE token_hash=$1","SELECT role FROM \\"proto_t22\\".role_grants WHERE principal_id=$1 AND revoked_at IS NULL AND granted_at<=$2","SELECT pg_advisory_xact_lock(hashtextextended($1,0))","SELECT * FROM \\"proto_t22\\".idempotency_results WHERE principal_id=$1 AND key=$2 FOR UPDATE","DELETE FROM \\"proto_t22\\".idempotency_results WHERE principal_id=$1 AND key=$2 AND expires_at<=$3","SAVEPOINT idem_effects","SELECT role FROM \\"proto_t22\\".role_grants WHERE principal_id=$1 AND revoked_at IS NULL AND granted_at<=$2","ROLLBACK"]`
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    noWrites (file:///tmp/goldberg-stage6-security-local/spikes/stage6-security-local/tests/t22.test.mjs:39:29)
+    TestContext.<anonymous> (file:///tmp/goldberg-stage6-security-local/spikes/stage6-security-local/tests/t22.test.mjs:66:110)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: T22 authenticated administrator self grant uppercase UUID denies403 before mutation
+not ok 23 - T22 authenticated administrator self grant uppercase UUID denies403 before mutation
+  ---
+  duration_ms: 0.972689
+  type: 'test'
+  location: '/tmp/goldberg-stage6-security-local/spikes/stage6-security-local/tests/t22.test.mjs:64:37'
+  failureType: 'testCodeFailure'
+  error: `["BEGIN","SET LOCAL lock_timeout='2s'","SET LOCAL statement_timeout='5s'","SELECT principal_id,family_id FROM \\"proto_t22\\".sessions WHERE token_hash=$1","SELECT id,state FROM \\"proto_t22\\".principals WHERE id=ANY($1::uuid[]) ORDER BY id FOR UPDATE","SELECT * FROM \\"proto_t22\\".auth_families WHERE id=$1 AND principal_id=$2 FOR UPDATE","SELECT id,issued_at,expires_at,revoked_at FROM \\"proto_t22\\".sessions WHERE token_hash=$1","SELECT role FROM \\"proto_t22\\".role_grants WHERE principal_id=$1 AND revoked_at IS NULL AND granted_at<=$2","SELECT pg_advisory_xact_lock(hashtextextended($1,0))","SELECT * FROM \\"proto_t22\\".idempotency_results WHERE principal_id=$1 AND key=$2 FOR UPDATE","DELETE FROM \\"proto_t22\\".idempotency_results WHERE principal_id=$1 AND key=$2 AND expires_at<=$3","SAVEPOINT idem_effects","SELECT role FROM \\"proto_t22\\".role_grants WHERE principal_id=$1 AND revoked_at IS NULL AND granted_at<=$2","ROLLBACK"]`
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    noWrites (file:///tmp/goldberg-stage6-security-local/spikes/stage6-security-local/tests/t22.test.mjs:39:29)
+    TestContext.<anonymous> (file:///tmp/goldberg-stage6-security-local/spikes/stage6-security-local/tests/t22.test.mjs:66:110)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: T22 malformed role request fails400 before authentication
+ok 24 - T22 malformed role request fails400 before authentication
+  ---
+  duration_ms: 0.552184
+  type: 'test'
+  ...
+# Subtest: T22 malformed role request fails400 before authentication
+ok 25 - T22 malformed role request fails400 before authentication
+  ---
+  duration_ms: 0.351163
+  type: 'test'
+  ...
+# Subtest: T22 malformed role request fails400 before authentication
+ok 26 - T22 malformed role request fails400 before authentication
+  ---
+  duration_ms: 1.843615
+  type: 'test'
+  ...
+# Subtest: T22 malformed role request fails400 before authentication
+ok 27 - T22 malformed role request fails400 before authentication
+  ---
+  duration_ms: 0.34387
+  type: 'test'
+  ...
+# Subtest: T22 malformed role request fails400 before authentication
+ok 28 - T22 malformed role request fails400 before authentication
+  ---
+  duration_ms: 0.346235
+  type: 'test'
+  ...
+# Subtest: T22 unsupported operator role denied400 after auth, no grant/audit SQL
+not ok 29 - T22 unsupported operator role denied400 after auth, no grant/audit SQL
+  ---
+  duration_ms: 0.953663
+  type: 'test'
+  location: '/tmp/goldberg-stage6-security-local/spikes/stage6-security-local/tests/t22.test.mjs:71:1'
+  failureType: 'testCodeFailure'
+  error: `["BEGIN","SET LOCAL lock_timeout='2s'","SET LOCAL statement_timeout='5s'","SELECT principal_id,family_id FROM \\"proto_t22\\".sessions WHERE token_hash=$1","SELECT id,state FROM \\"proto_t22\\".principals WHERE id=ANY($1::uuid[]) ORDER BY id FOR UPDATE","SELECT * FROM \\"proto_t22\\".auth_families WHERE id=$1 AND principal_id=$2 FOR UPDATE","SELECT id,issued_at,expires_at,revoked_at FROM \\"proto_t22\\".sessions WHERE token_hash=$1","SELECT role FROM \\"proto_t22\\".role_grants WHERE principal_id=$1 AND revoked_at IS NULL AND granted_at<=$2","SELECT pg_advisory_xact_lock(hashtextextended($1,0))","SELECT * FROM \\"proto_t22\\".idempotency_results WHERE principal_id=$1 AND key=$2 FOR UPDATE","DELETE FROM \\"proto_t22\\".idempotency_results WHERE principal_id=$1 AND key=$2 AND expires_at<=$3","SAVEPOINT idem_effects","ROLLBACK"]`
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    noWrites (file:///tmp/goldberg-stage6-security-local/spikes/stage6-security-local/tests/t22.test.mjs:39:29)
+    TestContext.<anonymous> (file:///tmp/goldberg-stage6-security-local/spikes/stage6-security-local/tests/t22.test.mjs:72:137)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: T22 known audit read authenticates and authorizes; admin only read SQL
+ok 30 - T22 known audit read authenticates and authorizes; admin only read SQL
+  ---
+  duration_ms: 1.649538
+  type: 'test'
+  ...
+# Subtest: T22 unavailable auth storage gives safe503, no role/audit mutation
+ok 31 - T22 unavailable auth storage gives safe503, no role/audit mutation
+  ---
+  duration_ms: 0.529451
+  type: 'test'
+  ...
+# Subtest: T22 current array operation coerces to registered route; auth still401, explicit type validation missing
+ok 32 - T22 current array operation coerces to registered route; auth still401, explicit type validation missing
+  ---
+  duration_ms: 0.349651
+  type: 'test'
+  ...
+# Subtest: T22 malformed outer envelope bounded body and getters deny400 before any SQL
+ok 33 - T22 malformed outer envelope bounded body and getters deny400 before any SQL
+  ---
+  duration_ms: 0.437307
+  type: 'test'
+  ...
+1..33
+# tests 33
+# suites 0
+# pass 30
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 76.441043

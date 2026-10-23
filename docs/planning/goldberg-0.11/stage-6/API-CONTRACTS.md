@@ -37,6 +37,17 @@ the Stage 7 Web Admin. Clients differ only in UI, never in server semantics.
 Validation errors are always distinct from auth, conflict, quota and availability
 errors (baseline rule kept). Retries never create a second publication.
 
+### Owner-approved local routing clarification (Stage 6.12, 2026-10-23)
+
+The owner explicitly approved this CommunityApi local adapter classification after T22 review:
+malformed envelope/body or empty/non-string operation400; a well-formed unregistered
+operation403 without authentication, SQL or handler dispatch; registered protected
+operations require valid authentication401, then live authorization403, with
+malformed bodies still400. No audit-edit or bootstrap endpoint is added. These
+are in-process operation rules, not an approved HTTP path/method binding or6.17
+freeze. Historical tests asserting400 for absent operations are retained in prior
+commits/logs; the approved regression expectations now require403.
+
 ## 3. Session and identity endpoints
 
 | Endpoint | Auth | Semantics |

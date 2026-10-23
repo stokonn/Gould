@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: shared corpus keeps captures proposals and legacy authored cases separate, never frozen
+ok 1 - shared corpus keeps captures proposals and legacy authored cases separate, never frozen
+  ---
+  duration_ms: 2.614183
+  type: 'test'
+  ...
+# Subtest: all eight error classes retain safe distinct envelopes and request correlation
+ok 2 - all eight error classes retain safe distinct envelopes and request correlation
+  ---
+  duration_ms: 0.531404
+  type: 'test'
+  ...
+# Subtest: capabilities do not invent principal binding and logout204 is not legacy revoked JSON
+ok 3 - capabilities do not invent principal binding and logout204 is not legacy revoked JSON
+  ---
+  duration_ms: 0.214185
+  type: 'test'
+  ...
+# Subtest: queue uses object microsecond cursor and fixed20 rows; unsupported filters do not silently apply
+ok 4 - queue uses object microsecond cursor and fixed20 rows; unsupported filters do not silently apply
+  ---
+  duration_ms: 0.339732
+  type: 'test'
+  ...
+# Subtest: detail separates entity expectation7 and immutable submission3 with history and raw reviews
+ok 5 - detail separates entity expectation7 and immutable submission3 with history and raw reviews
+  ---
+  duration_ms: 0.303044
+  type: 'test'
+  ...
+# Subtest: open and decision bodies keep both expectations, approval8 is entity revision, other results omit revision
+ok 6 - open and decision bodies keep both expectations, approval8 is entity revision, other results omit revision
+  ---
+  duration_ms: 0.218593
+  type: 'test'
+  ...
+# Subtest: idempotent replay preserves exact body and key; changed body422; generic409 requires refetch
+ok 7 - idempotent replay preserves exact body and key; changed body422; generic409 requires refetch
+  ---
+  duration_ms: 1.886397
+  type: 'test'
+  ...
+# Subtest: audit pages preserve signed cursor highwater numeric order, vocabulary and independent chain check
+ok 8 - audit pages preserve signed cursor highwater numeric order, vocabulary and independent chain check
+  ---
+  duration_ms: 2.829691
+  type: 'test'
+  ...
+# Subtest: BIGINT decimal bounds stay exact and outsideLong or floating representations fail closed
+ok 9 - BIGINT decimal bounds stay exact and outsideLong or floating representations fail closed
+  ---
+  duration_ms: 0.707338
+  type: 'test'
+  ...
+# Subtest: before after fixtures are public display only, not privileged current-field lookup
+ok 10 - before after fixtures are public display only, not privileged current-field lookup
+  ---
+  duration_ms: 0.618019
+  type: 'test'
+  ...
+# Subtest: G1 throughG9 andG11 proposals remain inactive and require explicit approval; G10 is not reopened
+ok 11 - G1 throughG9 andG11 proposals remain inactive and require explicit approval; G10 is not reopened
+  ---
+  duration_ms: 0.42845
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 30.367326

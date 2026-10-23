@@ -40,10 +40,11 @@ XML records and baseline hashes, and regenerates the deterministic evidence inde
 It intentionally refers to the reviewed host runs `run-vQd6iGn5`/`run-qx9TUTDk`; new host results
 must be explicitly reviewed and then incorporated, never silently treated as PASS.
 
-The T22 audit-edit probe **observes400 without dispatch**. It is a passing
-observation test but a **failed403 threat acceptance expectation**. It does not
-waive or redefine the contract. No privilege bypass demonstrated. Any behavior/
-contract reconciliation must be explicit and preserve existing baseline tests.
+The historical T22 probe observed400 without dispatch; that FAIL evidence remains.
+The owner explicitly approved the current local routing correction: absent valid
+operation403, malformed operation/body400, registered missing/invalid session401,
+capability/self-grant403. Current38 scripted-storage T22 tests pass; T22 remains
+PARTIAL pending updated PostgreSQL execution. No new endpoint or privilege.
 
 No full T14 fetch/redirect/rebinding assertion, T15 HTTP/browser scenario, T19
 restore/RPO drill, Android runtime or actual network privacy assertion was executed.
@@ -93,3 +94,20 @@ edits are validated against immutablefaf9ba3 bytes. Current tool/index hashes ar
 separate; older raw/index manifests are retained with their original commit identity.
 The live agent Podman inventory check was blocked by read-only runtime configuration;
 cleanup is evidenced by the retained host removal output, not a new inventory pass.
+
+## Current T22 and Stage7B handoff extension
+
+Version3 local runner also executes38 T22 and11 shared-contract tests; reporting
+includes these summaries when present and fails closed on missing summaries. Final
+current evidence:108 Node +11 Python =119 PASS, separately from the pre-patch host296.
+Current PG suites have not run in the denied socket venue; run on permitted host
+only. The old87 handler/34 integration/32 unit sources change only the authorized
+absent-operation status assertion; no old logs or manifests are overwritten.
+
+`contracts/admin/v1` has30 actual in-process/scripted-storage captures,11 inactive
+proposals and29 imported authored comparison cases. Read provenance qualifications,
+G1–G11 ledger and Stage6 T22/readiness reports; these are not HTTP/PG/Android/frozen
+contract proof. G10 stays closed; live networking/actions remain disabled. No Stage7B
+files changed. Use `python3 spikes/stage6-security-local/verify_contract.py` to verify
+source/corpus hashes and the read-only client snapshot. Corpus changes must be
+reviewed and intentionally rehashed; never silently auto-approve a new dialect.

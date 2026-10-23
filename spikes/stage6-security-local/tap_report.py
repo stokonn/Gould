@@ -28,7 +28,8 @@ def parse_tap(path,expected=None,require_success=False):
 
 def report(folder,prior_failed,blocked):
  folder=Path(folder);counts={};errors=[]
- for name,expected in [('focused.tap',27),('unit.tap',32)]:
+ suites=[('focused.tap',27),('unit.tap',32)] + [(n,e) for n,e in [('t22.tap',38),('contract.tap',11)] if (folder/n).exists()]
+ for name,expected in suites:
   try:
    counts[name]=parse_tap(folder/name,expected)
    parse_tap(folder/name,expected,require_success=True)

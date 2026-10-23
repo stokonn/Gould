@@ -1,0 +1,46 @@
+{
+  "baseCommit": "e7dc7ea871f61965600ba31076e8d28dc01822fe",
+  "ownerDecision": "EXPLICIT_OWNER_APPROVED; OWNER-APPROVAL.json",
+  "nodeCounts": {
+    "verified-t22.tap": {
+      "tests": 38,
+      "pass": 38,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "verified-contract.tap": {
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "verified-focused.tap": {
+      "tests": 27,
+      "pass": 27,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "verified-unit.tap": {
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "nodePass": 108,
+  "pythonReportPass": 11,
+  "totalFinalPass": 119,
+  "fail": 0,
+  "skip": 0,
+  "cancelled": 0,
+  "postgresBodies": 0,
+  "postgres": "current agent socket preflightEPERM; updated PostgreSQL assertions unexecuted",
+  "T22": "PARTIAL: approved local403 correction and validation distinction pass; real updated PostgreSQL/HTTP verification pending",
+  "handoff": "30 actual in-process/scripted SQL captures +11 proposals +29 authored imported scenes; no public HTTP freeze",
+  "earlierFailures": "initial30/33 housekeeping assertion; approved-routing32/33 malformed test expectation; capture generator unused-variable TypeError; all retained",
+  "baseline": "owner296 executions/264 tests is preserved PRE-PATCH source baseline, not current updated PostgreSQL proof"
+}

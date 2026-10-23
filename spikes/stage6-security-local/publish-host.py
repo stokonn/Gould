@@ -1,7 +1,9 @@
 """Guarded normal Git push + one append-only Issue31 checkpoint. No build/deploy/release."""
 from pathlib import Path
 import argparse,hashlib,json,re,subprocess,tempfile
-from verified_evidence import verify_host_evidence
+from verified_evidence import verify_host_evidence,verify_historical_sources,APPROVED_ROUTING_EDITS
+from verify_contract import check as verify_contract
+from tap_report import parse_tap
 ROOT=Path(__file__).resolve().parents[2]
 BRANCH='verify/goldberg-0.11-stage-6-12-local'
 REPO='stokonn/Goldberg'
@@ -23,14 +25,19 @@ def verify(expected):
  for ancestor in [AUDIT,'9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce','2f1524e4083a98a64d5fa9790f3cdc002d1f8237']:
   command('git','merge-base','--is-ancestor',ancestor,expected)
  old=ROOT/'spikes/stage6-public-admin-abuse/results'
- manifest(ROOT,old/'verified-host-source-sha256.json')
+ verify_historical_sources(ROOT,old/'verified-host-source-sha256.json','9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce',APPROVED_ROUTING_EDITS)
  manifest(old/'run-8SWyGyB0',old/'verified-host-artifacts-sha256.json')
  manifest(ROOT,ROOT/'docs/planning/goldberg-0.11/stage-6/results/android-local/source-sha256.json')
  manifest(ROOT,EVIDENCE/'current-verification-tools-sha256.json')
  verify_host_evidence(ROOT)
+ verify_contract(check_client_worktree=False)
+ current=EVIDENCE/'t22-investigation'
+ for name,count in [('verified-t22.tap',38),('verified-contract.tap',11),('verified-focused.tap',27),('verified-unit.tap',32)]:parse_tap(current/name,count,True)
+ report=(current/'verified-report.log').read_text();require('Ran 11 tests' in report and '\nOK\n' in report,'current reporting regressions differ')
+ require(json.loads((current/'OWNER-APPROVAL.json').read_text())['approval']=='EXPLICIT_OWNER_APPROVED','owner decision not recorded')
  matrix=json.loads((EVIDENCE/'coverage.json').read_text())
- require(matrix['counts']=={'PASS':13,'PARTIAL':6,'NOT TESTED':2,'FAIL':1},'threat findings differ')
- require(matrix['rows'][-1]['localStatus']=='FAIL','T22 must remain an explicit finding')
+ require(matrix['counts']=={'PASS':13,'PARTIAL':7,'NOT TESTED':2},'threat findings differ')
+ require(matrix['rows'][-1]['localStatus']=='PARTIAL','T22 must remain pending real PostgreSQL/HTTP verification')
  require(not command('git','diff','bcc779685d79e99451796b3fa45657b3bca8dd99',expected,'--','app','scripts'),'unexpected Android/repository script changes')
 
 def comments():
@@ -61,48 +68,46 @@ def main():
  marker=f'<!-- stage6-security-local-published:{expected} -->'
  matches=[key for key,body in history.items() if marker in body]
  require(len(matches)<=1,'duplicate marker already exists; inspect without creating another')
- body=f'''## Stage 6.12 — LOCAL security verification PARTIAL; source published
+ body=f'''## Stage 6.12 — owner-approved T22 correction and Stage7B contract handoff (PARTIAL)
 
-Branch `{BRANCH}`; exact remote HEAD `{expected}` verified after a normal push.
-Original audit source `{AUDIT}`; owner-tested revision `faf9ba3ec24e7098289c80d6e119519ccc21b95e`.
-Current commit adds verified host evidence and reporting/publication tooling fixes only.
+Branch `{BRANCH}`; exact remote HEAD `{expected}` verified after normal push.
+Published baseline e7dc7ea and checkpoint6369071469 preserved; no history rewrite.
 
-- [x] Audited all T1–T22; matrix links168 exact successful test references and reviewed assertions.
-- [x] Owner Fedora wrapper27 focused +32 unit PASS; nested PG17.11 Auth50 +handlers87
-  +schema34 +integration34 +unit32 PASS. **296 successful executions;264 tests
-  counting the repeated32 suite once;0 failures/skips/cancellations.** Five checks PASS.
-- [x] All62 at-run source hashes matched before tool edits; immutable raw-run hashes checked.
-  Nested stdout matches its five TAP/check logs; cleanup log records container removal.
-  Numeric exit sidecar absent in tested v1: success uses owner report/result/control flow.
-- [x] Version2 runner handles missing/duplicate/truncated TAP summaries with structured
-  failure JSON, not NoneType traceback. **10 reporting regressions PASS** separately.
-  Full version2 PostgreSQL rerun unexecuted; service/test/SQL/Android behavior unchanged.
-- [x] Verified46 backend source +15 original host artifact +15 Android source hashes.
-  Original host237 and Android JVM214 remain preserved historical baselines.
-- [x] Matrix local assessment:13 PASS,6 PARTIAL,2 NOT TESTED,1 FAIL. Local PASS includes
-  the new verified owner SQL execution; it does not close [I].
-- [x] Fresh host PostgreSQL executed successfully; earlier dependency/setup/EPERM runs retained.
-  Agent live Podman inventory remains denied by read-only runtime configuration.
-- [ ] T22 exact-status finding: composed unknown audit-edit route returns400 rather than required403.
-  No mutation handler dispatched or privilege bypass demonstrated. Passing probe records400;
-  it does not waive the403 gate. No API/contract behavior changed.
-- [ ] T13 rendering; T14 DNS/redirect/rebinding/fetch protections; T15 HTTP/browser;
-  T19 actual restore/RPO; T16/T20 runtime usability; T21 actual network privacy remain OPEN.
+- [x] Reproduced old composed400 before auth/dispatch versus Auth adapter403.
+  Owner explicitly approved: malformed/non-string/empty operation400; well-formed
+  unregistered audit/bootstrap operation403 without dispatch; registered missing/
+  invalid session401; capability/self-grant403. No privileged endpoint added.
+- [x] Applied approved local patch;38 focused real-service/scripted-SQL checks PASS.
+  Current27 security +32 unit +11 shared-contract +11 reporting regressions PASS:
+  **119 executed local tests,0 failed/skipped/cancelled in final runs.** Earlier
+  harness failures retained; no protected role/audit mutation observed. This is not
+  actual HTTP or current PostgreSQL execution.
+- [x] Owner-confirmed prior PG17.11 baseline296 executions/264 tests counting the
+  repeated32 suite once preserved. It is pre-patch evidence, not a new regression
+  run against the changed routing assertions. Original manifests checked via pinned
+  history for explicitly approved changes; current code/corpus hashes recorded.
+- [x] T22 now PARTIAL after explicit justified owner decision and local checks;
+  original FAIL evidence preserved. Matrix13 local PASS/7 PARTIAL/2 NOT TESTED.
+- [x] Stage6→7B handoff compares normative design/current backend/actual Android/
+  unapproved proposals acrossG1–G11. G10 remains closed on Android (read-only static
+  compatibility); G1–G9/G11 blocked for real integration. No Stage7B files changed.
+- [x] Shared versioned corpus:30 actual in-process/scripted-storage captures +11
+  inactive proposals +29 preserved authored Stage7B comparison scenes. All synthetic,
+  no HTTP binding, no API freeze. Exact provenance and fixture hashes recorded.
+- [ ] Updated real PostgreSQL suites not executed here: socket preflightEPERM,
+  zero database bodies. Re-run new assertions on permitted local host.
+- [ ] G1–G4 server functionality andG5–G9/G11 contract/implementation decisions;
+  hosted/browser/fetch/restore/network-privacy/Android-runtime acceptance OPEN.
 
-[Exact threat matrix](https://github.com/{REPO}/blob/{expected}/docs/planning/goldberg-0.11/stage-6/LOCAL-SECURITY-MATRIX.md)
-and raw `stage-6/results/security-local/run-vQd6iGn5/` retain names, assertions, counts,
-source manifests and preflight. Successful probes are not full security acceptance.
+[Contract readiness](https://github.com/{REPO}/blob/{expected}/docs/planning/goldberg-0.11/stage-6/STAGE7B-CONTRACT-READINESS.md)
+[Shared fixtures](https://github.com/{REPO}/tree/{expected}/contracts/admin/v1)
+[Threat matrix](https://github.com/{REPO}/blob/{expected}/docs/planning/goldberg-0.11/stage-6/LOCAL-SECURITY-MATRIX.md)
 
-Backend published9d7150c and Android published2f1524e preserved. Owner-confirmed instrumentation
-APK packaging is PASS; zero Android instrumentation bodies, runtime acceptance still pending.
-Emulator recovery deferred; no emulator/physical phone operated. Stage5/7A/X10/7B untouched.
-No hosted provisioning/configuration, OAuth/real data, paid resources, merge/tag/release or6.13–6.18.
-Formal6.12 and all cloud/release gates remain UNCHECKED/PARTIAL. No dashboard edit.
-
-Next: explicitly review/reconcile T22 status semantics and the remaining untested local
-assertions. Preserve hosted/Android gates. Do not repeat already successful host suites
-merely to restate these results; full version2 runner execution remains unverified.
-Hosted [I] remains separately authorized. Historical comments/description preserved.
+Production networking and privileged Android actions remain disabled. Formal6.12
+PARTIAL;6.17 freeze NOT completed. No6.13–6.18, hosted/OAuth/real-data/paid/merge/tag/
+release/emulator/phone operations. Issue description and historical comments preserved.
+Next: permitted local PostgreSQL rerun, owner review of exact shared DTO/binding/
+revision/session/validation decisions; no dialect guessing or live activation.
 
 created by stokonn with love <3
 {marker}

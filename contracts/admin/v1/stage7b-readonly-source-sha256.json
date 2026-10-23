@@ -1,0 +1,21 @@
+{
+  "worktree": "/home/stokonn/Projects/Goldberg-Stage7B",
+  "head": "cee9330f82cf2e57dcdc66a63d94b7a4e3749888",
+  "qualification": "read-only actual working bytes, including uncommitted Stage7B work; never represented as committed candidate backend proof",
+  "files": {
+    "app/src/main/java/com/opus/piano/OpusApplication.kt": "961df89b5006e52f0ec63d32813e4d2cb38350c9b33ebdee32bc6bfba21fd9ba",
+    "app/src/main/java/com/opus/piano/admin/AdminApi.kt": "06064c62b05960aa26aaacf73d3dc5e61cd068c0e25896cee6c7bbfed985e1d8",
+    "app/src/main/java/com/opus/piano/admin/AdminAuditService.kt": "e738ddbeb9a43657964abb8dcf51049593515245bb7050116d2e932e935507de",
+    "app/src/main/java/com/opus/piano/admin/AdminModels.kt": "1f39958d1d44ae8944dbedbbc101b51d699cdfc617a75ba6c896b0fbf423f231",
+    "app/src/main/java/com/opus/piano/admin/AdminReviewService.kt": "ca191f012bd20d4680c63e13e101801101bfbf25dfb68fea4b2c3132228521d6",
+    "app/src/main/java/com/opus/piano/admin/AdminStatsService.kt": "29959125fd5b3ab4359e3809569cf3c2318672ad749e91f57d1f0f7f40fe816b",
+    "app/src/main/java/com/opus/piano/admin/AdminWireValues.kt": "6c4545d1ac8e493be27acb4043750a46fca3a18c5085bf095a6ee07dab96fd86",
+    "contracts/admin/v1/README.md": "aa25acafda15627db06942354030a2c007b7032191fefa20c1040ae80481c240",
+    "contracts/admin/v1/fixtures.json": "7dfd5fae063f15406443b0740140a8891c1412b5e1b4d119cce62e2c0695be70",
+    "contracts/admin/v1/mapping-proposal.json": "3fe8bad09b8d60c94d16fb5ff1b7b18a385de4dc738636998407e852c3384957",
+    "contracts/admin/v1/source-provenance.json": "e683c58efb1d61f248e326d1d4a81fd9dcd0e133d99e804d343d54e92150c0e0",
+    "docs/planning/goldberg-0.11/stage-7/stage-7b/ACCEPTANCE.md": "d0a0d20a17c12170496ae3e8e74ecf84005c7b1f67447cb2605310bfb10e6155",
+    "docs/planning/goldberg-0.11/stage-7/stage-7b/CHECKLIST.md": "41884a6380526d872a9b25dd7b7226b73e72d0548a1d77795f0de0462fe339e6",
+    "docs/planning/goldberg-0.11/stage-7/stage-7b/CONTRACT-AUDIT.md": "fc7b8f4391ee0942abe273116d0c550efccd3207f3b2b6ba021147cd0c06f66c"
+  }
+}

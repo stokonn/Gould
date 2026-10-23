@@ -1,0 +1,2 @@
+# Preserve raw node:test failure formatting, including indented blank diagnostic lines.
+*.tap whitespace=-blank-at-eol,-blank-at-eof
