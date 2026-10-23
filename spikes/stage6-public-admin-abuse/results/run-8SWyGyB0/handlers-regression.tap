@@ -1,0 +1,532 @@
+TAP version 13
+# Subtest: authenticated initial submission has server owner, immutable revision, hash and request-bound audit
+ok 1 - authenticated initial submission has server owner, immutable revision, hash and request-bound audit
+  ---
+  duration_ms: 599.134522
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects unknown top field without effects
+ok 2 - T6/T13 validation rejects unknown top field without effects
+  ---
+  duration_ms: 404.415232
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects nested role without effects
+ok 3 - T6/T13 validation rejects nested role without effects
+  ---
+  duration_ms: 380.787343
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects field author without effects
+ok 4 - T6/T13 validation rejects field author without effects
+  ---
+  duration_ms: 379.307113
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects evidence approval without effects
+ok 5 - T6/T13 validation rejects evidence approval without effects
+  ---
+  duration_ms: 378.250744
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects external elevated without effects
+ok 6 - T6/T13 validation rejects external elevated without effects
+  ---
+  duration_ms: 347.421321
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects missing schema version without effects
+ok 7 - T6/T13 validation rejects missing schema version without effects
+  ---
+  duration_ms: 389.367976
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects wrong schema version without effects
+ok 8 - T6/T13 validation rejects wrong schema version without effects
+  ---
+  duration_ms: 381.123158
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects HTML without effects
+ok 9 - T6/T13 validation rejects HTML without effects
+  ---
+  duration_ms: 369.883956
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects encoded HTML without effects
+ok 10 - T6/T13 validation rejects encoded HTML without effects
+  ---
+  duration_ms: 375.639084
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects object value without effects
+ok 11 - T6/T13 validation rejects object value without effects
+  ---
+  duration_ms: 371.311407
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects oversize string without effects
+ok 12 - T6/T13 validation rejects oversize string without effects
+  ---
+  duration_ms: 375.824345
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects bad UUID without effects
+ok 13 - T6/T13 validation rejects bad UUID without effects
+  ---
+  duration_ms: 370.858099
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects wrong kind without effects
+ok 14 - T6/T13 validation rejects wrong kind without effects
+  ---
+  duration_ms: 374.3365
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects unknown change without effects
+ok 15 - T6/T13 validation rejects unknown change without effects
+  ---
+  duration_ms: 377.404514
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects no identity without effects
+ok 16 - T6/T13 validation rejects no identity without effects
+  ---
+  duration_ms: 378.377755
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects unknown field name without effects
+ok 17 - T6/T13 validation rejects unknown field name without effects
+  ---
+  duration_ms: 368.212374
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects missing license without effects
+ok 18 - T6/T13 validation rejects missing license without effects
+  ---
+  duration_ms: 365.517887
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects unknown license without effects
+ok 19 - T6/T13 validation rejects unknown license without effects
+  ---
+  duration_ms: 392.512855
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects rejected license without effects
+ok 20 - T6/T13 validation rejects rejected license without effects
+  ---
+  duration_ms: 372.495347
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects missing evidence without effects
+ok 21 - T6/T13 validation rejects missing evidence without effects
+  ---
+  duration_ms: 355.940338
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects missing intended license without effects
+ok 22 - T6/T13 validation rejects missing intended license without effects
+  ---
+  duration_ms: 319.704737
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects unreviewed source without effects
+ok 23 - T6/T13 validation rejects unreviewed source without effects
+  ---
+  duration_ms: 314.812091
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects external kind mismatch without effects
+ok 24 - T6/T13 validation rejects external kind mismatch without effects
+  ---
+  duration_ms: 360.099867
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal journal at every object level
+ok 25 - T21 rejects personal journal at every object level
+  ---
+  duration_ms: 374.31576
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal notes at every object level
+ok 26 - T21 rejects personal notes at every object level
+  ---
+  duration_ms: 369.3838
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal microphone at every object level
+ok 27 - T21 rejects personal microphone at every object level
+  ---
+  duration_ms: 384.517139
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal backup at every object level
+ok 28 - T21 rejects personal backup at every object level
+  ---
+  duration_ms: 362.77608
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal sessions at every object level
+ok 29 - T21 rejects personal sessions at every object level
+  ---
+  duration_ms: 342.529026
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal repertoire at every object level
+ok 30 - T21 rejects personal repertoire at every object level
+  ---
+  duration_ms: 364.693878
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal profile at every object level
+ok 31 - T21 rejects personal profile at every object level
+  ---
+  duration_ms: 381.405903
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL javascript:alert(1)
+ok 32 - T14 refuses unsafe/unreviewed URL javascript:alert(1)
+  ---
+  duration_ms: 0.594615
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL data:text/plain,x
+ok 33 - T14 refuses unsafe/unreviewed URL data:text/plain,x
+  ---
+  duration_ms: 0.214887
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL http://evidence.synthetic.invalid/source
+ok 34 - T14 refuses unsafe/unreviewed URL http://evidence.synthetic.invalid/source
+  ---
+  duration_ms: 0.245004
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://localhost/source
+ok 35 - T14 refuses unsafe/unreviewed URL https://localhost/source
+  ---
+  duration_ms: 0.404094
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://127.0.0.1/source
+ok 36 - T14 refuses unsafe/unreviewed URL https://127.0.0.1/source
+  ---
+  duration_ms: 0.22733
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://127.1/source
+ok 37 - T14 refuses unsafe/unreviewed URL https://127.1/source
+  ---
+  duration_ms: 0.2062
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://0x7f000001/source
+ok 38 - T14 refuses unsafe/unreviewed URL https://0x7f000001/source
+  ---
+  duration_ms: 0.209196
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://10.0.0.1/source
+ok 39 - T14 refuses unsafe/unreviewed URL https://10.0.0.1/source
+  ---
+  duration_ms: 0.328331
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://172.16.0.1/source
+ok 40 - T14 refuses unsafe/unreviewed URL https://172.16.0.1/source
+  ---
+  duration_ms: 0.233351
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://192.168.1.1/source
+ok 41 - T14 refuses unsafe/unreviewed URL https://192.168.1.1/source
+  ---
+  duration_ms: 0.198876
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://169.254.169.254/source
+ok 42 - T14 refuses unsafe/unreviewed URL https://169.254.169.254/source
+  ---
+  duration_ms: 0.213093
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://[::1]/source
+ok 43 - T14 refuses unsafe/unreviewed URL https://[::1]/source
+  ---
+  duration_ms: 0.193386
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://[::ffff:7f00:1]/source
+ok 44 - T14 refuses unsafe/unreviewed URL https://[::ffff:7f00:1]/source
+  ---
+  duration_ms: 0.197343
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://user:pass@evidence.synthetic.invalid/source
+ok 45 - T14 refuses unsafe/unreviewed URL https://user:pass@evidence.synthetic.invalid/source
+  ---
+  duration_ms: 0.192795
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid:444/source
+ok 46 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid:444/source
+  ---
+  duration_ms: 0.212211
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid./source
+ok 47 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid./source
+  ---
+  duration_ms: 0.19569
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/source\#private
+ok 48 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/source\#private
+  ---
+  duration_ms: 0.225967
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid\\@localhost/source
+ok 49 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid\\@localhost/source
+  ---
+  duration_ms: 0.204387
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evil.invalid/source
+ok 50 - T14 refuses unsafe/unreviewed URL https://evil.invalid/source
+  ---
+  duration_ms: 0.227671
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ok 51 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  ---
+  duration_ms: 0.220326
+  type: 'test'
+  ...
+# Subtest: boundary checks: 20 fields, 10 URLs, 2 KiB strings, 16 KiB exact request, nesting/cycle/getters
+ok 52 - boundary checks: 20 fields, 10 URLs, 2 KiB strings, 16 KiB exact request, nesting/cycle/getters
+  ---
+  duration_ms: 3.63146
+  type: 'test'
+  ...
+# Subtest: T7/T8 owner-only private reads/revisions/withdrawals hide another contributor and absent IDs equally
+ok 53 - T7/T8 owner-only private reads/revisions/withdrawals hide another contributor and absent IDs equally
+  ---
+  duration_ms: 578.340094
+  type: 'test'
+  ...
+# Subtest: canonical lifecycle request_changes → author revision keeps original immutable snapshot and audit
+ok 54 - canonical lifecycle request_changes → author revision keeps original immutable snapshot and audit
+  ---
+  duration_ms: 673.010982
+  type: 'test'
+  ...
+# Subtest: atomic approve transition and review/audit coherence
+ok 55 - atomic approve transition and review/audit coherence
+  ---
+  duration_ms: 532.77364
+  type: 'test'
+  ...
+# Subtest: atomic reject transition and review/audit coherence
+ok 56 - atomic reject transition and review/audit coherence
+  ---
+  duration_ms: 492.566958
+  type: 'test'
+  ...
+# Subtest: atomic request_changes transition and review/audit coherence
+ok 57 - atomic request_changes transition and review/audit coherence
+  ---
+  duration_ms: 509.761126
+  type: 'test'
+  ...
+# Subtest: withdraw author submitted/in_review only; terminal and changes_requested deny without silent deletion
+ok 58 - withdraw author submitted/in_review only; terminal and changes_requested deny without silent deletion
+  ---
+  duration_ms: 727.842292
+  type: 'test'
+  ...
+# Subtest: T6 self-approval, forged role/author/status, revoked moderator and suspended identity deny
+ok 59 - T6 self-approval, forged role/author/status, revoked moderator and suspended identity deny
+  ---
+  duration_ms: 550.916975
+  type: 'test'
+  ...
+# Subtest: unresolved external identity uniqueness persists needs_review, including paired catalogue UUID; no auto-merge/publication
+ok 60 - unresolved external identity uniqueness persists needs_review, including paired catalogue UUID; no auto-merge/publication
+  ---
+  duration_ms: 620.935495
+  type: 'test'
+  ...
+# Subtest: T10 two moderators race on one submission: exactly [201,409] and coherent publication/feed
+ok 61 - T10 two moderators race on one submission: exactly [201,409] and coherent publication/feed
+  ---
+  duration_ms: 490.889615
+  type: 'test'
+  ...
+# Subtest: T10 distinct submissions same absent entity: one winner, stale loser 409
+ok 62 - T10 distinct submissions same absent entity: one winner, stale loser 409
+  ---
+  duration_ms: 598.281739
+  type: 'test'
+  ...
+# Subtest: T10 distinct submissions same existing entity: one winner, stale loser 409
+ok 63 - T10 distinct submissions same existing entity: one winner, stale loser 409
+  ---
+  duration_ms: 723.232821
+  type: 'test'
+  ...
+# Subtest: T11 same-key concurrent create and moderation replay exact stored response; different-key loser conflicts
+ok 64 - T11 same-key concurrent create and moderation replay exact stored response; different-key loser conflicts
+  ---
+  duration_ms: 534.270463
+  type: 'test'
+  ...
+# Subtest: T12 same key different payload/operation gives 422; principals cannot see/reuse stored results
+ok 65 - T12 same key different payload/operation gives 422; principals cannot see/reuse stored results
+  ---
+  duration_ms: 415.648684
+  type: 'test'
+  ...
+# Subtest: expiry minimum 24h: replay just before, reuse exactly at expiry; original records retained
+ok 66 - expiry minimum 24h: replay just before, reuse exactly at expiry; original records retained
+  ---
+  duration_ms: 406.609955
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after locked fault
+ok 67 - T17 full rollback and same-key retry after locked fault
+  ---
+  duration_ms: 457.01962
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after entity fault
+ok 68 - T17 full rollback and same-key retry after entity fault
+  ---
+  duration_ms: 460.917904
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after snapshot fault
+ok 69 - T17 full rollback and same-key retry after snapshot fault
+  ---
+  duration_ms: 474.369552
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after projection fault
+ok 70 - T17 full rollback and same-key retry after projection fault
+  ---
+  duration_ms: 441.075846
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after approved fault
+ok 71 - T17 full rollback and same-key retry after approved fault
+  ---
+  duration_ms: 501.953766
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after audit fault
+ok 72 - T17 full rollback and same-key retry after audit fault
+  ---
+  duration_ms: 484.178018
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after feed fault
+ok 73 - T17 full rollback and same-key retry after feed fault
+  ---
+  duration_ms: 493.411876
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after sql fault
+ok 74 - T17 full rollback and same-key retry after sql fault
+  ---
+  duration_ms: 512.577594
+  type: 'test'
+  ...
+# Subtest: T17 idempotency insert and deferred commit failures rollback all effects and allow same-key retry
+ok 75 - T17 idempotency insert and deferred commit failures rollback all effects and allow same-key retry
+  ---
+  duration_ms: 642.187941
+  type: 'test'
+  ...
+# Subtest: database lock timeout returns safe 503; rollback releases locks and permits retry
+ok 76 - database lock timeout returns safe 503; rollback releases locks and permits retry
+  ---
+  duration_ms: 2519.919231
+  type: 'test'
+  ...
+# Subtest: T18 immutable publication/audit/review/feed; exported chain tamper detected; no audit mutation adapter
+ok 77 - T18 immutable publication/audit/review/feed; exported chain tamper detected; no audit mutation adapter
+  ---
+  duration_ms: 427.555339
+  type: 'test'
+  ...
+# Subtest: malformed, expired and revoked sessions safely reject actual handlers with 401 and sanitized logs
+ok 78 - malformed, expired and revoked sessions safely reject actual handlers with 401 and sanitized logs
+  ---
+  duration_ms: 420.431362
+  type: 'test'
+  ...
+# Subtest: validation rejects unknown envelope/schema/request fields; safe 400/401/403/404/409/422/503 taxonomy covered
+ok 79 - validation rejects unknown envelope/schema/request fields; safe 400/401/403/404/409/422/503 taxonomy covered
+  ---
+  duration_ms: 386.153414
+  type: 'test'
+  ...
+# Subtest: bounded queue/mine pagination returns 20 then remainder with microsecond stable cursor, no private payload leakage
+ok 80 - bounded queue/mine pagination returns 20 then remainder with microsecond stable cursor, no private payload leakage
+  ---
+  duration_ms: 1076.103021
+  type: 'test'
+  ...
+# Subtest: constraint-specific PostgreSQL recovery does not translate unrelated unique/SQL errors to conflict
+ok 81 - constraint-specific PostgreSQL recovery does not translate unrelated unique/SQL errors to conflict
+  ---
+  duration_ms: 320.979949
+  type: 'test'
+  ...
+# Subtest: reusable service snapshots caller data before awaiting authorization; actor remains session-derived
+ok 82 - reusable service snapshots caller data before awaiting authorization; actor remains session-derived
+  ---
+  duration_ms: 330.771203
+  type: 'test'
+  ...
+# Subtest: read role revocation is immediate; owner retains data but cannot bypass current capabilities
+ok 83 - read role revocation is immediate; owner retains data but cannot bypass current capabilities
+  ---
+  duration_ms: 328.141297
+  type: 'test'
+  ...
+# Subtest: exact idempotency collision recovery: unrelated unique violation remains SQL error
+ok 84 - exact idempotency collision recovery: unrelated unique violation remains SQL error
+  ---
+  duration_ms: 246.923299
+  type: 'test'
+  ...
+# Subtest: schemaVersion/unknown object/string/array value and sparse evidence boundaries fail closed
+ok 85 - schemaVersion/unknown object/string/array value and sparse evidence boundaries fail closed
+  ---
+  duration_ms: 233.942012
+  type: 'test'
+  ...
+# Subtest: stale expected entity/submission revisions, malformed reasons and retargeting have safe errors
+ok 86 - stale expected entity/submission revisions, malformed reasons and retargeting have safe errors
+  ---
+  duration_ms: 415.557361
+  type: 'test'
+  ...
+# Subtest: audit export sorts int8 numerically beyond nine and detects an omitted row/head tamper
+ok 87 - audit export sorts int8 numerically beyond nine and detects an omitted row/head tamper
+  ---
+  duration_ms: 643.579994
+  type: 'test'
+  ...
+1..87
+# tests 87
+# suites 0
+# pass 87
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 33856.802844

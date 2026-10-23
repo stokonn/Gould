@@ -55,3 +55,17 @@ test('T20 unavailable PostgreSQL connector fails public read closed with safe 50
  const api=new CommunityApi({extensions:{'catalogue.overlay':(_t,b)=>catalogue.read('catalogue.overlay',b)}});
  const r=await api.invoke({operation:'catalogue.overlay',body:{schemaVersion:1}});assert.equal(r.status,503);assert.ok(!JSON.stringify(r).includes('PRIVATE'));
 });
+
+test('retention scheduler cleans during idle intake, suppresses overlap and drains on stop',async()=>{
+ const {RetentionJanitor}=await import('../src/retention.mjs');let tick,resolve,calls=0,timers=0,cleared=0;
+ const j=new RetentionJanitor({sweep:()=>{calls++;return new Promise(r=>{resolve=r;});},intervalMs:1000,setTimer:fn=>{tick=fn;timers++;return 1;},clearTimer:()=>{cleared++;}});
+ j.start();j.start();await Promise.resolve();assert.equal(calls,1);assert.equal(timers,1);
+ tick();tick();await Promise.resolve();assert.equal(calls,1);
+ let stopped=false;const stopping=j.stop().then(()=>{stopped=true;});await Promise.resolve();assert.equal(stopped,false);resolve();await stopping;
+ tick();await Promise.resolve();assert.equal(calls,1);assert.equal(cleared,1);
+});
+test('retention scheduler retries unavailable storage at later ticks and reports no private diagnostics',async()=>{
+ const {RetentionJanitor}=await import('../src/retention.mjs');let calls=0,tick;const reports=[];
+ const j=new RetentionJanitor({sweep:async()=>{if(++calls===1)throw Error('PRIVATE storage state');},intervalMs:1000,setTimer:fn=>{tick=fn;return 1;},clearTimer:()=>{},onResult:r=>reports.push(r)});
+ j.start();assert.equal(await j.run(),false);tick();assert.equal(await j.run(),true);await j.stop();assert.deepEqual(reports,[{event:'coarse_ip.cleanup',ok:false},{event:'coarse_ip.cleanup',ok:true}]);assert.ok(!JSON.stringify(reports).includes('PRIVATE'));
+});

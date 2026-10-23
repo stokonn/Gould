@@ -135,3 +135,12 @@ test('idempotency insert failure rolls quota, submission and audit back together
  assert.equal((await call(v,v.author,'submission.create',b)).status,503);assert.deepEqual(await snapshot(v),prior);
  await db.query(`DROP TRIGGER synthetic_fail_result ON ${v.q}.idempotency_results`);assert.equal((await call(v,v.author,'submission.create',b)).status,201);
 });
+
+test('independent janitor prunes expired coarse hashes with intake disabled and preserves evidence',async()=>{
+ const v=await venue({daily:5,pending:10,ipLimit:5,ipWindowMs:1000,retentionMs:1000});await create(v);
+ await db.query(`UPDATE ${v.q}.intake_control SET enabled=false`);v.clock.advance(3000);
+ const prior=await snapshot(v);assert.equal(await v.janitor.run(),true);const after=await snapshot(v);
+ for(const t of ['audit_events','published_revisions','submissions','submission_revisions'])assert.deepEqual(after[t],prior[t]);
+ assert.equal((await db.query(`SELECT count(*)::int n FROM ${v.q}.abuse_limits WHERE scope='coarse_ip'`)).rows[0].n,0);
+ assert.equal((await db.query(`SELECT count(*)::int n FROM ${v.q}.abuse_limits WHERE scope='principal'`)).rows[0].n,1);
+});

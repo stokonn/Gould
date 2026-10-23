@@ -1,0 +1,62 @@
+{
+  "status": "LOCAL_IMPLEMENTATION_VERIFIED; PUBLICATION_PENDING",
+  "executor": "Owner executed directly on permitted Fedora host; agent inspected retained files",
+  "run": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0",
+  "postgres": "postgres (PostgreSQL) 17.11",
+  "node": "v22.23.1",
+  "counts": {
+    "postgres.tap": {
+      "tests": 34,
+      "pass": 34,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "unit.tap": {
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "handlers-regression.tap": {
+      "tests": 87,
+      "pass": 87,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "auth-regression.tap": {
+      "tests": 50,
+      "pass": 50,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "schema-regression.tap": {
+      "tests": 34,
+      "pass": 34,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "totalPass": 237,
+  "hostChecks": {
+    "check_agent_policy.log": "PASS",
+    "check_backup_fixtures.log": "PASS",
+    "check_history_paging.log": "PASS",
+    "check_localization.log": "PASS",
+    "check_migrations.log": "PASS"
+  },
+  "preflight": {
+    "localTcp": "available",
+    "testBodiesExecuted": 0
+  },
+  "cleanupContainer": "goldberg-public-admin-abuse-895873",
+  "sourceFilesHashed": 46,
+  "artifactFilesHashed": 15,
+  "priorSourceEntriesUnchanged": 30,
+  "priorSourceEntriesIntentionallyExtended": 2,
+  "sourceIdentityQualification": "Current service/test bytes match 11 pre-run hashes and runner matches one pre-run hash; trusted owner confirms execution of this worktree. At-run source hash manifest was not captured. Comprehensive current manifest generated after inspection; no implementation edits after host run."
+}

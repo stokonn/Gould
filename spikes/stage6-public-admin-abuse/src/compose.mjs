@@ -1,3 +1,5 @@
+import {transaction} from '../../stage6-auth-local/src/storage.mjs';
+import {RetentionJanitor} from './retention.mjs';
 import {CommunityApi} from '../../stage6-handlers-local/src/local-api.mjs';
 import {Cursors} from './cursor.mjs';
 import {CatalogueService} from './catalogue.mjs';
@@ -12,5 +14,6 @@ export function compose({connect,schema,authorization,idempotency,validator,cloc
  for(const op of ['admin.quarantine','admin.rollback'])extensions[op]=(token,body,id)=>admin.entity(token,op,body,id);
  for(const op of ['admin.roles','admin.suspend'])extensions[op]=(token,body,id)=>admin.principal(token,op,body,id);
  extensions['admin.audit']=(token,body)=>admin.audit(token,body);
- return {api:new CommunityApi({submissions,moderation,extensions,logger}),abuse,admin,catalogue,submissions,moderation};
+ const janitor=new RetentionJanitor({sweep:()=>transaction(connect,c=>abuse.prune(c)),intervalMs:Math.min(60000,abuse.retentionMs)});
+ return {janitor,api:new CommunityApi({submissions,moderation,extensions,logger}),abuse,admin,catalogue,submissions,moderation};
 }

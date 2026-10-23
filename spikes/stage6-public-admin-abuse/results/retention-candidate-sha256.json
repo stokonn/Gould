@@ -1,0 +1,13 @@
+{
+  "spikes/stage6-public-admin-abuse/src/abuse.mjs": "8cf249d4294da48517794d5b70dfc570cee4efd151a8aa2010d9c114464273b1",
+  "spikes/stage6-public-admin-abuse/src/admin.mjs": "e325605ec2645f38a7319f35762c022b9c5bd7ac021ca5bcdbe26f3af9eb2b1d",
+  "spikes/stage6-public-admin-abuse/src/catalogue.mjs": "0d5fd6320de8cd1bec61257cf1f84890bc713621c212798e4d8b059b7398eee0",
+  "spikes/stage6-public-admin-abuse/src/compose.mjs": "0dc47d69e5dfc7bac6938057ce880a8ec5278b7eb8f1e25301ff0634531a6aa0",
+  "spikes/stage6-public-admin-abuse/src/cursor.mjs": "ba4d864e758c275c2252c9167157cf48ecf895b8444602f3bc1c87fd7f40f3ad",
+  "spikes/stage6-public-admin-abuse/src/retention.mjs": "3dc24767035dc24223ad3a4e507275a2ed247051b94d9f3be9a1d670b3af9d4b",
+  "spikes/stage6-public-admin-abuse/src/storage.mjs": "bc8d742e64ac25886c34a00cf5eb3333e8b5129f0cbf3cbdc2bcd18aab3cef94",
+  "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs": "33c7fc2c698d9052fa26cadb73d98df3bcb027ec4ab2c781efecac944b035198",
+  "spikes/stage6-public-admin-abuse/tests/single-user-retention.sql": "8bdc077cdd6c50c1de3962a161f18c353af62ed61cb71256ad18fd2c89fa6c97",
+  "spikes/stage6-public-admin-abuse/tests/single-user.sql": "fb2b815b5cf1b650ac880260e591105b89c2da4b932d95d1fec2eb5ccb91b58a",
+  "spikes/stage6-public-admin-abuse/tests/unit.test.mjs": "f974cfce892b176d800bac51d2f9fbeb8d64156924fc09c86c949ad03cfab3eb"
+}

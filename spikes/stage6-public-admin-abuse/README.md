@@ -1,6 +1,9 @@
 # Local public catalogue, Admin operations and abuse protection
 
-Owner-authorized Stage 6 local 6.7–6.9 candidate. **PARTIAL / NOT ACCEPTED.**
+Owner-authorized Stage 6 local 6.7–6.9 candidate. **LOCAL IMPLEMENTATION VERIFIED; publication pending.**
+Owner executed the retained 237-test run on Fedora; the agent inspected the logs
+and matched current source/runner to the pre-run manifests. Formal task/cloud
+acceptance is separate.
 No HTTP listener, hosted integration, real users, credentials or deployment.
 Existing formal 6.1–6.18 and 6.0f statuses are unchanged.
 
@@ -65,9 +68,12 @@ cannot select its peer or forwarded headers. IPv4 /24 and IPv6 /64 groups are
 HMAC-SHA256 keyed with an explicit server key (IPv4-mapped IPv6 normalizes to IPv4).
 Keys are injected, never committed. Tests use only reserved synthetic addresses.
 Local short retention is configurable, with expired coarse counters pruned during
-fresh intake; no production retention/legal period is selected. **No independent
-janitor is scheduled: expiry cleanup during inactivity remains an integration
-limitation.** This is not complete bounded-retention acceptance.
+fresh intake; no production retention/legal period is selected. RetentionJanitor is integrated with explicit janitor.start()/stop() lifecycle.
+The host run verified PostgreSQL cleanup with intake disabled while preserving
+principal counters and all submission/audit/publication evidence. Unit tests
+verified idle scheduling, overlap suppression, draining on stop and storage-fault
+retry. Nothing starts automatically on import, and no hosted job was created.
+Synthetic retention is configurable; no legal real-user retention policy is set.
 
 Real-world source/field/license compatibility remains unresolved. Validator defaults
 still reject unreviewed content. Fixtures are explicitly permitted authored synthetic
@@ -79,6 +85,11 @@ PostgreSQL 17 image in an environment permitting rootless Podman and loopback so
 Each execution creates a new results directory and removes only its own container.
 `npm run test:unit` needs no database. Direct node:test file execution preserves
 actual subtest counts; a wrapper-only --test result is not sufficient evidence.
-Read [results/SUMMARY.md](results/SUMMARY.md) for executed results and blocked tests.
+Read [results/SUMMARY.md](results/SUMMARY.md) for executed results, identity
+qualification, coverage and venue limitations.
 
 created by stokonn with love <3
+
+The runner performs a fail-fast TCP preflight (exit78 for environment restrictions)
+and all five repository checks. Earlier sandbox failures are retained as history.
+The owner completed the permitted-host run in results/run-8SWyGyB0: 237 PASS.

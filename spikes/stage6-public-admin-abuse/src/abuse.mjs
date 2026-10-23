@@ -23,6 +23,9 @@ export class AbuseProtection {
  hash(ip){return createHmac('sha256',this.key).update('goldberg-coarse-ip-v1:'+coarseAddress(ip)).digest('hex');}
  async gate(c){const {rows:[state]}=await c.query(`SELECT enabled FROM ${this.q}.intake_control WHERE singleton FOR SHARE`);if(state?.enabled!==true)throw unavailable();}
  limited(seconds){const e=new ApiError(429,'rate_limited','Submission limit reached');e.retryAfter=Math.max(1,Math.ceil(seconds));return e;}
+ async prune(c){
+  await c.query(`DELETE FROM ${this.q}.abuse_limits WHERE scope='coarse_ip' AND window_end<=$1`,[new Date(this.clock()-this.retentionMs)]);
+ }
  async consume(c,principal,ip){
   await this.gate(c);const now=this.clock(),day=Math.floor(now/86400000)*86400000,window=Math.floor(now/this.ipWindowMs)*this.ipWindowMs;
   // Principal already locked by SessionService; account quotas and pending count cannot race.
@@ -31,7 +34,7 @@ export class AbuseProtection {
   const hash=this.hash(ip);
   // Serialize across accounts in one coarse group, including expiry cleanup.
   await c.query('SELECT pg_advisory_xact_lock(hashtextextended($1,0))',[`abuse-ip:${this.q}:${hash}`]);
-  await c.query(`DELETE FROM ${this.q}.abuse_limits WHERE scope='coarse_ip' AND window_end<=$1`,[new Date(now-this.retentionMs)]);
+  await this.prune(c);
   for(const [scope,key,start,end,limit,pid] of [['principal',principal,day,day+86400000,this.daily,principal],['coarse_ip',hash,window,window+this.ipWindowMs,this.ipLimit,null]]){
    const result=await c.query(`INSERT INTO ${this.q}.abuse_limits(scope,scope_key,principal_id,window_start,window_end,count) VALUES($1,$2,$3,$4,$5,1)
     ON CONFLICT(scope,scope_key,window_start) DO UPDATE SET count=${this.q}.abuse_limits.count+1 WHERE ${this.q}.abuse_limits.count<$6::bigint RETURNING count::text`,[scope,key,pid,new Date(start),new Date(end),String(limit)]);

@@ -1,0 +1,48 @@
+{
+  "backup": "/tmp/goldberg-stage679-recovery-20261023T052407Z",
+  "savedFiles": 24,
+  "head": "defbf346904c9aa082a4afc8cac625ce8ea8b923",
+  "sockets": {
+    "inet": {
+      "errno": 1,
+      "error": "Operation not permitted"
+    },
+    "unix": "available"
+  },
+  "githubDns": {
+    "errno": -3,
+    "error": "Temporary failure in name resolution"
+  },
+  "processRestrictions": [
+    "NoNewPrivs:\t1",
+    "Seccomp:\t2",
+    "Seccomp_filters:\t1"
+  ],
+  "unixDomainBindListenConnect": {
+    "errno": 1,
+    "error": "Operation not permitted"
+  },
+  "podman": "configuration fails: chmod /run/user/1000/libpod: read-only file system",
+  "hostExecutionRequest": {
+    "command": "bash spikes/stage6-public-admin-abuse/run-local.sh",
+    "result": "AUTOMATICALLY REJECTED before execution",
+    "reason": "sandbox_approval: false; require_escalated is disabled under the configured granular approval policy"
+  },
+  "freshUnitResults": {
+    "passed": 32,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "freshRepositoryChecks": {
+    "passed": 5,
+    "failed": 0
+  },
+  "postgresTestBodiesExecutedThisRecovery": 0,
+  "newIntegrationBodiesPending": 34,
+  "regressionBodiesPending": 171,
+  "remoteBranchExists": false,
+  "issue31Comments": 66,
+  "newIssueCheckpoint": "UNPUBLISHED",
+  "newCommitCreated": false
+}
