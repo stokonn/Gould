@@ -74,7 +74,7 @@ editing or restoring them. Checkpoint/publication receipt stays ignored under
 ## Reporting fix and evidence identity
 
 Version1 produced the confirmed host evidence; no application/service/SQL/Android
-source was changed afterward. Version2 replaces fragile regex indexing with
+source was changed afterward. Version2 excludes regenerable Python bytecode caches from source snapshots and replaces fragile regex indexing with
 `tap_report.py`: absent/duplicate/truncated/inconsistent summaries produce clear
 `summaryErrors`, unverified counts stay absent, source changes and unsuccessful
 results fail closed, and nested runner exit status is saved explicitly. Ten focused

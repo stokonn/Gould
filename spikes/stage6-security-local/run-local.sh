@@ -10,7 +10,7 @@ import hashlib,json,subprocess,sys
 out=Path(sys.argv[1]);files=[]
 for name in ['stage6-auth-local','stage6-handlers-local','stage6-schema-pg','stage6-public-admin-abuse','stage6-security-local']:
  for p in (Path('spikes')/name).rglob('*'):
-  if p.is_file() and not any(part in ['node_modules','results'] for part in p.parts):files.append(p)
+  if p.is_file() and not any(part in ['node_modules','results','__pycache__'] for part in p.parts):files.append(p)
 files+=list(Path('scripts').glob('check_*.py'))
 (out/'source-sha256.json').write_text(json.dumps({str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(set(files))},indent=2)+'\n')
 (out/'execution.json').write_text(json.dumps({'runnerVersion':2,'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'branch':subprocess.check_output(['git','branch','--show-current'],text=True).strip(),'scope':'local synthetic; no emulator or external network'},indent=2)+'\n')

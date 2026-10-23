@@ -1411,3 +1411,27 @@ Exact next: publish the verified evidence/tool fix normally, then resolve T22 an
 remaining local acceptance gaps; hosted checks require separate authorization.
 Formal6.12 stays UNCHECKED/PARTIAL. Android runtime/emulator recovery deferred;
 Stage5/7A/X10/7B untouched. No hosted/OAuth/real-data/paid/merge/tag/release or6.13–6.18.
+
+## Stage 6.12 publication outcome — host tests VERIFIED, source/checkpoint UNPUBLISHED
+
+Fresh Fedora PostgreSQL verification is confirmed:296 executions/264 tests counting
+repeated unit suite once;10 separate reporting regressions PASS. This is independent
+of publication status. Source update `a21dbafb1180563b88ed36909a801da179b5bf55` preserves
+owner-testedfaf9ba3; this following receipt also excludes Python bytecode caches
+from the version2 runner source snapshot. Full version2 PostgreSQL run unexecuted.
+
+Normal publication failed: guarded remote lookup and direct non-force push could
+not resolve github.com; connector comment returned403; directgh API could not connect.
+Issue31 readback:75 comments, all previously read bodies preserved, zero new matching
+checkpoint. Exact branch read returned404; no remote SHA or checkpoint URL claimed.
+**Source and checkpoint remain UNPUBLISHED.** Existing backend/Android publications
+remain valid. New draft `results/security-local/ISSUE31-HOST-VERIFIED-UNPUBLISHED.md`
+and raw blocker record `fresh-publication-blocked.json` are retained.
+
+Updated `spikes/stage6-security-local/publish-host.py` passed local read-only guards
+at the verified source commit. On a permitted host, supply the exact current clean
+HEAD with `--expected-head` (first `--verify-only`, then publish normally). It checks
+fresh successful counts/hashes and preserves all prior Issue comments/description;
+no repeated PostgreSQL/build run is needed merely to publish these verified facts.
+T22 remains FAIL and formal6.12 PARTIAL; remaining local/hosted gates OPEN. Android
+runtime deferred, no Stage7B/emulator/hosted/merge/release or6.13–6.18 work.

@@ -1,0 +1,29 @@
+{
+  "verifiedUpdateCommit": "a21dbafb1180563b88ed36909a801da179b5bf55",
+  "branch": "verify/goldberg-0.11-stage-6-12-local",
+  "publication": "UNPUBLISHED",
+  "hostVerification": "CONFIRMED:296 executions;264 tests counting repeated suite once;10 separate reporting regressions PASS",
+  "publisherVerifyOnly": "PASS at a21dbaf; exact clean revision/evidence/ancestry guards",
+  "publisherNetwork": "stopped at git ls-remote: Could not resolve host: github.com; subprocess exit128",
+  "directNormalPush": {
+    "source": "a21dbafb1180563b88ed36909a801da179b5bf55",
+    "exit": 128,
+    "error": "Could not resolve host: github.com"
+  },
+  "githubConnectorComment": {
+    "status": 403,
+    "error": "Resource not accessible by integration"
+  },
+  "directGhRead": {
+    "exit": 1,
+    "error": "error connecting to api.github.com"
+  },
+  "remoteBranch": "connected GitHub exact ref404 before direct failed push; no remote SHA claimed",
+  "issueReadback": {
+    "comments": 75,
+    "previousBodiesPreserved": true,
+    "newCheckpointMatches": 0,
+    "url": null
+  },
+  "continuation": "Run updated guarded publisher from permitted host using exact final clean HEAD. Source/evidence history preserved; no force push, repeated network retry, dashboard change or deployment."
+}
