@@ -1078,3 +1078,49 @@ release/merge/tag/APK action. Local server milestone is ready as the basis for a
 separately authorized6.10–6.11 milestone; Android work has NOT started and is NOT
 implicitly authorized. Remaining work in this milestone is GitHub publication,
 not another general planning/security pass or a repeat of the host-green suites.
+
+## Android 6.10–6.11 partial source checkpoint — 2026-10-23
+
+Branch implement/goldberg-0.11-stage-6-10-11-local; isolated worktree
+/tmp/goldberg-stage6-android-local, remote-verified backend base9d7150c.
+Implementation commit is the containing scoped source commit. Backend237 PASS and
+published Issue31 checkpoint6358952579 verified;67 old comments preserved.
+Purpose: local-first Android community repository, contribution DTOs and safe
+unavailable/error/retry behavior. Scope: data/community, lazy OpusApplication
+composition, small Settings subpage, EN/CZ strings, JVM/native tests and host scripts.
+
+- [x] Typed strict privacy-isolated request DTOs, public overlay/feed DTOs and
+  disabled production transport, deterministic synthetic-only fixture transport.
+- [x] File-backed local drafts with stable IDs/account namespaces, atomic saves,
+  optimistic conflicts, incomplete editing, exact pending request/key persistence,
+  explicit reviewed copy for new logical work, no background publishing.
+- [x] Distinct400/401/403/404/409/422/429/503/offline/server/storage states, retry
+  windows, uncertain outcome/receipt-save/cancellation safety and stale cache labels.
+- [x] Candidate AndroidKeyStore AES-GCM credential adapter, no-backup location,
+  local credential clearing; Google profile identity remains presentation-only.
+- [x] Local draft Settings subpage using existing navigation/theme/components and
+ 29 localized strings; actual remote-submit control disabled, no fixture success UI.
+- [x] Direct Kotlin/JVM **40 PASS,0 failures**; credential class compiles against
+  SDK36. Separate JVM process recreates persisted draft store. Five host checks PASS,
+ 951 EN/CZ resources; host Room1→10..9→10 and backup fixtures PASS.
+- [ ] Full Gradle JVM/lint/build/androidTest compilation: blocked before tasks by
+  FileLockContentionHandler wildcard-IP failure. Initial raw log retained.
+- [ ]5 new Android runtime tests, Room/backup instrumentation, emulator startup/
+  process-death/upgrade and actual contributor screenshots. No physical phone used.
+- [ ] Push verified partial source/checkpoint, then obtain permitted host execution.
+
+Narrow host run request was AUTOMATICALLY REJECTED: sandbox_approval:false prevents
+require_escalated and cannot display an approval prompt. No bypass attempted.
+This is PARTIAL Android implementation, not formal6.10/6.11 completion. No actual
+network privacy assertion, real service auth, hosted or UI runtime claim. Initial
+new unit fixture error31/32 (Integer-vs-Long assertion) fixed; final40 PASS. Original
+regression sources unchanged; full app regressions remain unexecuted.
+
+No Room migration: schema10/backup v5/practice/profile/Google identity and backend
+source untouched. Stage5/Stage7A/Stage7B branches/worktrees preserved. Backend
+baseline predates six later Stage5 fixes; they remain on32cf5d9 for future integration.
+No real endpoint or OAuth, upload/deploy/release/tag/main merge/subsequent-stage work.
+Source/evidence/limits: stage-6/results/android-local/SUMMARY.md and source manifest.
+Next: run scripts/verify-community-android-local.sh on a permitted host; inspect/fix
+actual build/test results, then explicitly targeted disposable-emulator checks.
+Only after acceptance recommend separate6.12–6.14 verification; do not start it.

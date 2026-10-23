@@ -1,0 +1,10 @@
+{
+  "java": "openjdk 25.0.4.1 2026-08-18",
+  "kotlinCompiler": "2.2.10 cached embeddable compiler, direct invocation",
+  "androidCompileStub": "SDK36 android.jar; credential class compiled, not executed on Android",
+  "jvmResult": "40 PASS,0 failures; final jvm-ofm366xf with source hashes captured before compilation and rechecked afterward",
+  "gradle": "blocked before tasks; wildcard IP unavailable in FileLockContentionHandler",
+  "hostExecutionApproval": "automatic rejection: sandbox_approval:false",
+  "androidInstrumentation": "5 new tests written; not compiled/executed",
+  "network": "production transport disabled; no endpoint/listener/no network privacy assertion"
+}

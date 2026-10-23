@@ -1,0 +1,22 @@
+[
+  {
+    "script": "scripts/check_agent_policy.py",
+    "exit": 0
+  },
+  {
+    "script": "scripts/check_backup_fixtures.py",
+    "exit": 0
+  },
+  {
+    "script": "scripts/check_history_paging.py",
+    "exit": 0
+  },
+  {
+    "script": "scripts/check_localization.py",
+    "exit": 0
+  },
+  {
+    "script": "scripts/check_migrations.py",
+    "exit": 0
+  }
+]

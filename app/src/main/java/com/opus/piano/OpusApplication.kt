@@ -23,6 +23,14 @@ class OpusApplication : Application() {
         super.onConfigurationChanged(newConfig)
         com.opus.piano.i18n.L.refresh()
     }
+    // Stage 6: no endpoint, fixture, startup job or Google-profile authorization.
+    val community by lazy {
+        val root=java.io.File(noBackupFilesDir,"community-v1")
+        com.opus.piano.data.community.LocalCommunityRepository(
+            com.opus.piano.data.community.CommunityDraftStore(java.io.File(root,"drafts")),
+            com.opus.piano.data.community.AndroidCommunityCredentials(this),
+            cache=com.opus.piano.data.community.CommunityOverlayCache(java.io.File(root,"public-overlay.json")))
+    }
     val portablePreferences by lazy { com.opus.piano.data.backup.PortablePreferences(this,live=true) }
     val identity by lazy { com.opus.piano.identity.GoogleIdentity(this, database) }
     val media by lazy { com.opus.piano.preferences.MediaPreferences(this) }

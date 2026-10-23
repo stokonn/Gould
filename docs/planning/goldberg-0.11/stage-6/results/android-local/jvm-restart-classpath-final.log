@@ -1,0 +1,19 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.jetbrains.kotlin.org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/2.2.10/6882d39ef03b18879c1a5d2a83c2212361bed5fe/kotlin-compiler-embeddable-2.2.10.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.jetbrains.kotlin.com.intellij.util.containers.Unsafe (file:/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/2.2.10/6882d39ef03b18879c1a5d2a83c2212361bed5fe/kotlin-compiler-embeddable-2.2.10.jar)
+WARNING: Please consider reporting this to the maintainers of class org.jetbrains.kotlin.com.intellij.util.containers.Unsafe
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+app/src/test/java/com/opus/piano/community/CommunityRepositoryTest.kt:80:24: warning: only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'ProtectionDomain?'.
+            .map {File(it.protectionDomain.codeSource.location.toURI()).path}.distinct().joinToString(File.pathSeparator)
+                       ^^^^^^^^^^^^^^^^^^^
+JUnit version 4.13.2
+........................................
+Time: 0.555
+
+OK (40 tests)
+
+Evidence: /tmp/goldberg-stage6-android-local/docs/planning/goldberg-0.11/stage-6/results/android-local/jvm-5o5vuxd0

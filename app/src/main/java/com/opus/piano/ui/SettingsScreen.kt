@@ -51,7 +51,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
     LaunchedEffect(Unit) { profile.measureCache() }
     replaceIdentity?.let {kind -> AlertDialog(onDismissRequest={replaceIdentity=null},title={Text(L.s(if(kind=="name") R.string.ui010_google_name else R.string.ui010_google_photo))},text={Text(L.s(R.string.ui010_identity_confirm))},confirmButton={JournalTextButton(onClick={if(kind=="name") profile.useGoogleName() else profile.replaceGooglePhoto();replaceIdentity=null}) {Text(L.s(R.string.ui010_apply))}},dismissButton={JournalTextButton(onClick={replaceIdentity=null}) {Text(L.s(R.string.ui010_keep_local))}})}
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        item { CatalogBack(if(page.isEmpty()) L.s(R.string.msg_settings_c7f7) else page) { if(page.isEmpty()) back() else page="" } }
+        item { CatalogBack(if(page.isEmpty()) L.s(R.string.msg_settings_c7f7) else if(page=="Community drafts") L.s(R.string.community_local_title) else page) { if(page.isEmpty()) back() else page="" } }
         if(page.isEmpty()) {
             listOf(
                 R.string.google_account to listOf("Google"),
@@ -142,7 +142,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
             }
         } }
             }
+            "Community drafts" -> item { CommunityDraftPanel(app.community) }
             "Data & Storage" -> {
+        item { SettingsRow(L.s(R.string.community_local_title),action={page="Community drafts"},trailing={Text("›")}) }
         item {
             SectionTitle(L.s(R.string.downloaded_content))
             SettingsRow(L.s(R.string.mobile_media),L.s(R.string.mobile_media_description),action={scope.launch(kotlinx.coroutines.Dispatchers.IO) {app.media.consent(!metered)}},trailing={Switch(metered,{value->scope.launch(kotlinx.coroutines.Dispatchers.IO) {app.media.consent(value)}},modifier=Modifier.semantics {contentDescription=L.s(R.string.mobile_media)})})

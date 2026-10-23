@@ -1,0 +1,27 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.jetbrains.kotlin.org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/2.2.10/6882d39ef03b18879c1a5d2a83c2212361bed5fe/kotlin-compiler-embeddable-2.2.10.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.jetbrains.kotlin.com.intellij.util.containers.Unsafe (file:/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/2.2.10/6882d39ef03b18879c1a5d2a83c2212361bed5fe/kotlin-compiler-embeddable-2.2.10.jar)
+WARNING: Please consider reporting this to the maintainers of class org.jetbrains.kotlin.com.intellij.util.containers.Unsafe
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+app/src/test/java/com/opus/piano/community/CommunityRepositoryTest.kt:157:23: warning: Java type mismatch: inferred type is 'String?', but 'String' was expected.
+        val root=File(System.getProperty("goldberg.projectRoot","."));val manifest=File(root,"app/src/main/AndroidManifest.xml").readText();assertTrue(manifest.contains("android:allowBackup=\"false\""));assertTrue(manifest.contains("android:fullBackupContent=\"false\""))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+JUnit version 4.13.2
+........................E........
+Time: 0.539
+There was 1 failure:
+1) retryAfterParsesHttpDateAndRejectsInvalidOrOverflow(com.opus.piano.community.CommunityRepositoryTest)
+java.lang.AssertionError: expected: java.lang.Integer<2000> but was: java.lang.Long<2000>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.opus.piano.community.CommunityRepositoryTest.retryAfterParsesHttpDateAndRejectsInvalidOrOverflow(CommunityRepositoryTest.kt:121)
+
+FAILURES!!!
+Tests run: 32,  Failures: 1
+

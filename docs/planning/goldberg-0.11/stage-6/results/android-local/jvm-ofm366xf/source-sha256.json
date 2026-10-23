@@ -1,0 +1,9 @@
+{
+  "app/src/main/java/com/opus/piano/data/community/AndroidCommunityCredentials.kt": "559fe89df20835a4054219f1434fc855a87754c4e02c1feae7ccf03121859d98",
+  "app/src/main/java/com/opus/piano/data/community/CommunityDraftStore.kt": "1ac2c3f53069b9067a3a20e711e8bc28a0c56418b25e2d2bad9dd63a4ff4aef1",
+  "app/src/main/java/com/opus/piano/data/community/CommunityModels.kt": "fe8f530886979aed5b1a0a4b1d7059510f6a86f56217bbf86d20e99ae71ea753",
+  "app/src/main/java/com/opus/piano/data/community/CommunityOverlayCache.kt": "04c9fda4e392d5d602797034db03c730597c6334382d9ab1d995d80d1bf88533",
+  "app/src/main/java/com/opus/piano/data/community/CommunityRepository.kt": "64f6fe03e21f6a94db669cb9be7e9e5fae200eb5a9f9b208ef43296f52a5f709",
+  "app/src/main/java/com/opus/piano/data/community/CommunityTransport.kt": "39aaa3df9bf464cbfa6b2f1962087bfdfd29e9b4e34c7cb74a71317b1721764d",
+  "app/src/test/java/com/opus/piano/community/CommunityRepositoryTest.kt": "d9c729d7f3c549a44a48f2912ca749a84d1bbbc6c5ca4670c8c4b8acc5547618"
+}
