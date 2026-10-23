@@ -19,6 +19,8 @@ test "$(awk 'NR>1 && NF>=2 {count++} END {print count+0}' stage5-ci-results/adb-
 } > stage5-ci-results/emulator-identity.txt
 test "$(adb -s "$SERIAL" shell getprop ro.build.version.sdk | tr -d '\r')" = 36
 collect() {
+  # Instrumentation exports synthetic Admin renders before suite uninstall.
+  adb -s "$SERIAL" pull /data/local/tmp/goldberg-stage7b stage5-ci-results/admin-evidence > stage5-ci-results/admin-evidence-pull.txt 2>&1 || true
   adb -s "$SERIAL" logcat -d -v threadtime > stage5-ci-results/logcat.txt 2>&1 || true
   adb -s "$SERIAL" shell dumpsys activity activities > stage5-ci-results/activity.txt 2>&1 || true
   adb -s "$SERIAL" exec-out screencap -p > stage5-ci-results/final-screen.png 2> stage5-ci-results/screencap.err || true

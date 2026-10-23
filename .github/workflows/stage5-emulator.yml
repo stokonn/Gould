@@ -71,6 +71,7 @@ on:
         options:
           - stage5
           - stage7b
+          - stage7b-acceptance
 permissions:
   contents: read
 concurrency:
@@ -101,7 +102,7 @@ jobs:
           fi
           df -h / | tee stage5-ci-results/disk-usage.txt
       - name: Fetch immutable Stage 7B contract provenance
-        if: inputs.verification-scope == 'stage7b'
+        if: inputs.verification-scope == 'stage7b' || inputs.verification-scope == 'stage7b-acceptance'
         shell: bash
         run: |
           SOURCE_COMMIT="$(python3 -c 'import json; print(json.load(open("contracts/admin/v1/source-provenance.json"))["commit"])')"
@@ -142,7 +143,7 @@ jobs:
           set -o pipefail
           ./gradlew --no-daemon --max-workers=1 assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug 2>&1 | tee stage5-ci-results/host-gradle.log
       - name: Stage 7B host policy and contract checks
-        if: inputs.verification-scope == 'stage7b'
+        if: inputs.verification-scope == 'stage7b' || inputs.verification-scope == 'stage7b-acceptance'
         run: |
           set -o pipefail
           for check in agent_policy backup_fixtures history_paging localization migrations admin_contract_fixtures; do
@@ -222,7 +223,7 @@ jobs:
       - name: Check out trusted v0.10.1 tag for the baseline rebuild
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
-          ref: v0.10.1
+          ref: b19b77b81e76feef6baf83e6c4bfa935e7c10bea # immutable v0.10.1 source
           path: baseline-src
           persist-credentials: false
       - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
@@ -242,7 +243,10 @@ jobs:
       - name: Build candidate APK
         run: ./gradlew --no-daemon --max-workers=1 assembleDebug
       - name: Build debug-signed v0.10.1 baseline (same runner debug keystore as candidate)
-        run: (cd baseline-src && ./gradlew --no-daemon --max-workers=1 assembleDebug)
+        run: |
+          test "$(git -C baseline-src rev-parse HEAD)" = b19b77b81e76feef6baf83e6c4bfa935e7c10bea
+          git -C baseline-src rev-parse HEAD > stage5-ci-results/baseline-source.txt
+          (cd baseline-src && ./gradlew --no-daemon --max-workers=1 assembleDebug)
       - name: Fetch trusted 0.10.1 release APK (digest + signing-certificate verified)
         run: |
           mkdir -p .gradle/release-artifacts

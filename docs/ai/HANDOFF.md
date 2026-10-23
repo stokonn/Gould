@@ -1,3 +1,24 @@
+## Stage 7B coordinated acceptance continuation — 2026-10-23
+
+**Current: IN PROGRESS; owner acceptance pending.** Scope: approved remaining
+Admin visual/no-scroll/accessibility, sync/notification runtime, seeded upgrade and
+contract/session verification. Initial HEAD/remote3dc8488; prior CI40023191770 at
+3a4aac2 retained. Concrete matrix and running tasks: [OWNER-REVIEW.md](../planning/goldberg-0.11/stage-7/stage-7b/OWNER-REVIEW.md).
+
+- [x] Recover exact state/pinned contracts/criteria; private PMP and Stage6 preserved.
+- [x] Changed read-only local emulator5584 attempt: host SIGSEGV139 before ADB,
+  zero app executions/screenshots. Use existing KVM CI; no unchanged retry.
+- [ ] Test-only production-screen render harness and controlled WorkManager/permission
+  checks compile. Host assembly/JVM/lint gate PASS2m6s,275 JVM/0 failures/errors/skips; six host scripts PASS. Default app networking/decisions remain disabled.
+- [ ] Execute source-bound CI and immutable-v0.10.1 same-runner upgrade; inspect
+  actual Admin screenshots, document limitations and synchronize publication.
+- [ ] G1–G9/G11 approved live integration BLOCKED; explicit owner acceptance pending.
+
+This section supersedes older current-status text. Stage7A FINAL ACCEPTED; X10
+NOT FIXED/NOT VERIFIED, deferred Gould0.12. No main merge/release/production activation.
+
+---
+
 ## Stage 7B Android Admin — preserved implementation and verified CI (2026-10-23)
 
 **CI recovery COMPLETE; Stage 7B acceptance remains IN PROGRESS.**

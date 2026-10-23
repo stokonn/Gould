@@ -23,9 +23,11 @@ import kotlinx.coroutines.launch
  * With the default empty endpoint configuration this performs ZERO network calls
  * (AdminApi fails fast with NotConfigured) and surfaces honest unavailable states.
  */
-class AdminViewModel(application: Application) : AndroidViewModel(application) {
+class AdminViewModel @JvmOverloads constructor(
+    application: Application,
+    private val admin: AdminRepository = (application as OpusApplication).adminRepository,
+) : AndroidViewModel(application) {
     private val app = application as OpusApplication
-    private val admin: AdminRepository = app.adminRepository
     private val settings = app.adminSettings
     private val _syncPolicy = MutableStateFlow(settings.syncPolicy)
     val syncPolicy: StateFlow<com.opus.piano.admin.AdminSyncPolicy> = _syncPolicy
