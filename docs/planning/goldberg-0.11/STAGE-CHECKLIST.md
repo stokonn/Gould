@@ -14,7 +14,10 @@ verified fix explicitly installs emulator before diagnostics. Corrected commit
 `3e04e2b716435684a0d4d88a71a4a59407201ada` pushed with exact remote SHA readback;
 [run40011450671](https://github.com/stokonn/Goldberg/actions/runs/40011450671)
 FAILED before build/tests: installed emulator lacks libpulse.so.0 (exit127).
-Second narrow CI fix installs libpulse0 before diagnostics; corrected run pending. Issue31 dashboard updated (connector403; authenticated gh succeeded),
+Second narrow CI fix installs libpulse0 before diagnostics. Commit
+`5d3f0ccd03411666ff741ccc894bc85ad98cd280` pushed and remotely verified;
+[run40011713646](https://github.com/stokonn/Goldberg/actions/runs/40011713646)
+passed dependency/KVM diagnostics and is building. Instrumentation execution pending. Issue31 dashboard updated (connector403; authenticated gh succeeded),
 umbrella OPEN / Project In Progress; final chronological checkpoint awaits results.
 See [SAFE-RECOVERY.md](stage-7/stage-7b/SAFE-RECOVERY.md) for scope/tasks/audit/commands/artifact identity.
 
@@ -23,6 +26,11 @@ Stage8 material readability/accessibility/touch targets remain required. Existin
 historical summaries below are superseded for current status/authorization only.
 Production networking/decisions DISABLED; G1–G9/G11 integration and Admin visual/
 accessibility/WorkManager/notification/upgrade/owner acceptance remain pending.
+
+Native test-only isolation fix found by inspection: return the wrapper itself from
+applicationContext so stores and tamper assertions use the same disposable prefs.
+All assertions retained; compilation SUCCESS17s. Corrected runtime still pending.
+Original test preserved in0703cd8; application/contracts/PMP/prior evidence unchanged.
 
 ---
 

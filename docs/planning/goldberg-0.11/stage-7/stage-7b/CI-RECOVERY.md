@@ -79,3 +79,11 @@ instrumentation bodies in this CI run; no application failure. Raw artifact/run
 metadata retained under results/ci-run-40011450671. New narrow fix installs Ubuntu
 libpulse0 before diagnostics. YAML dependency ordering and all bash run blocks PASS;
 no test assertions, production infrastructure or application code changed.
+
+Third dispatch: run40011713646, source5d3f0ccd03411666ff741ccc894bc85ad98cd280;
+exact SHA confirmed, result pending.
+
+Native helper inspection: stores resolve context.applicationContext; inherited
+ContextWrapper behavior bypasses isolated preferences. Override only test
+getApplicationContext to retain isolation and test the actual tampered file.
+Original source preserved in checkpoint; no assertion or app-source change.

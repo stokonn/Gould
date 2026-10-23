@@ -73,7 +73,8 @@ API36 with explicit emulator-5554/qemu guards and exact GITHUB_SHA binding.
 Stage7B mode runs the full suite without filters; Stage5 acceptance job is excluded.
 Host checks and always-upload diagnostics/reports are included. YAML and every run
 block pass syntax validation. Native test assembly passes (cached compilation).
-No workflow/source changes were needed during recovery. Fedora graphics SIGSEGV
+Initial static review passed; CI execution then exposed two missing setup
+dependencies, corrected below without application changes. Fedora graphics SIGSEGV
 is prior host setup failure, not application failure; no local emulator retry.
 
 ## Continuation
@@ -104,8 +105,8 @@ ZIP and test-corpus exclusion PASS. androidTest APK SHA256
 `2bd8e457f800ea1bf9796ddd18af9cab63aa4e3b09e7bb1470ba66d431e76224`.
 No APK published; no runtime screenshot inspected locally.
 
-Only new repository policy adjustment: scoped raw-evidence whitespace attributes;
-no source/workflow rewrite. Final staging also includes .gitattributes.
+Preservation checkpoint adds scoped raw-evidence whitespace attributes; final
+staging includes .gitattributes. Later workflow-only dependency fixes follow below.
 
 Preservation checkpoint: `0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e`; source unchanged after this commit.
 Only private `.pmp/` and `.pmp.yml` remained untracked after publication.
@@ -125,3 +126,20 @@ instrumentation bodies in this CI run; no application failure. Raw artifact/run
 metadata retained under results/ci-run-40011450671. New narrow fix installs Ubuntu
 libpulse0 before diagnostics. YAML dependency ordering and all bash run blocks PASS;
 no test assertions, production infrastructure or application code changed.
+
+Corrected verification commit `5d3f0ccd03411666ff741ccc894bc85ad98cd280`
+ordinary-pushed with exact remote readback; Stage7B run40011713646 dispatched.
+Its source SHA matches. No application/test source changed since0703cd8.
+
+## Inspection-backed native test isolation correction
+
+While run40011713646 builds original source5d3f0cc, inspection found the native
+test ContextWrapper redirects getSharedPreferences but inherits applicationContext.
+Both stores resolve applicationContext first, bypassing the isolated preference
+file; the tamper assertion targets a different file. Correct only the test wrapper
+by returning itself from getApplicationContext; preserve all assertions. Original
+four-test source remains immutable in0703cd8/5d3f0cc. No production storage behavior
+changed. `assembleDebugAndroidTest --no-daemon --max-workers=1` SUCCESS in17s
+(5 executed/46 cached tasks); runtime verification requires corrected source.
+Protected-file accounting after this deliberate edit:1187 unchanged; one native
+test file intentionally changed with the original preserved in the checkpoint.

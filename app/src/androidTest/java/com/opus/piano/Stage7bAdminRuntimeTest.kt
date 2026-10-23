@@ -18,6 +18,9 @@ class Stage7bAdminRuntimeTest {
         val base = InstrumentationRegistry.getInstrumentation().targetContext
         val name = "stage7b-ci-${System.nanoTime()}"
         val context = object : ContextWrapper(base) {
+            // Stores resolve applicationContext before opening preferences. Keep
+            // that resolution inside this disposable test context as well.
+            override fun getApplicationContext(): Context = this
             override fun getSharedPreferences(ignored: String, mode: Int) = base.getSharedPreferences(name, mode)
         }
         try { check(context, name) } finally { base.deleteSharedPreferences(name) }
