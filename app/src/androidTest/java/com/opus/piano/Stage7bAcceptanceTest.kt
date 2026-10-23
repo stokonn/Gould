@@ -131,12 +131,13 @@ class Stage7bAcceptanceTest {
                 for (locale in listOf("en", "cs")) for (theme in listOf("Light", "Dark")) {
                     for (font in listOf("1.0", "1.3", "1.5", "2.0")) {
                         shell("settings put system font_scale $font")
-                        inst.runOnMainSync { AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(locale)); L.refresh() }
+                        inst.runOnMainSync { AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(locale)); L.refresh(locale) }
                         val fixture = Fixture()
                         val route = mutableStateOf("dashboard")
                         try { ActivityScenario.launch(MainActivity::class.java).use { scenario ->
                             lateinit var model: AdminViewModel
                             scenario.onActivity { activity ->
+                                activity.resources.configuration.setLocales(android.os.LocaleList.forLanguageTags(locale))
                                 model = AdminViewModel(app, fixture.repo)
                                 activity.viewModelStore.put("stage7b-acceptance", model)
                                 activity.setContent {
@@ -275,7 +276,7 @@ class Stage7bAcceptanceTest {
         } finally {
             shell("wm size reset"); shell("wm density reset")
             shell("settings put system font_scale $oldFont")
-            inst.runOnMainSync { AppCompatDelegate.setApplicationLocales(oldLocales); L.refresh() }
+            inst.runOnMainSync { L.clearOverride(); AppCompatDelegate.setApplicationLocales(oldLocales) }
         }
     }
 }
