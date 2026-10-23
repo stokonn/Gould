@@ -1,11 +1,16 @@
-# PROPOSED — API v1 decision package for Stage 6 → Stage 7B
+# API v1 decision package — owner-approved design with qualifications
 
-Status: **PROPOSAL / OWNER REVIEW REQUIRED / INACTIVE / NOT FROZEN**. Proposal
-identifier `admin-v1-decision-1`, 2026-10-23. This document is implementation-ready
-planning, not approval or implementation of 6.13–6.18, and does not close 6.17.
+Status: **APPROVED DESIGN / UNIMPLEMENTED / INACTIVE / NOT FROZEN**.
+Proposal identifier `admin-v1-decision-1`, owner approval recorded 2026-10-23 against
+published baseline `fefa6e83c2a7b9c4c12660ff1542ab086356de88`.
+[Durable O1–O8 checkpoint](API-V1-OWNER-DECISIONS-2026-10-23.md) is authoritative for
+approval scope: O7 is partial by design; concrete production policies remain unapproved.
+This is not backend/Android implementation or permission to start6.13–6.18 or close6.17.
 No listener, route binder, production authentication or privileged action is enabled.
-G10 remains **CLOSED_ANDROID_STATIC_COMPATIBILITY_CONFIRMED**. G1–G9/G11 remain
-blocked for integration until owner decisions, implementation and tests pass.
+G10 remains **CLOSED_ANDROID_STATIC_COMPATIBILITY_CONFIRMED**; G1–G9/G11 remain
+integration BLOCKED until separately authorized implementation and acceptance pass.
+The original proposal remains immutable at the baseline; this document incorporates
+only the owner's approved design choices and qualifications.
 
 ## 1. Authority and evidence
 
@@ -14,9 +19,10 @@ blocked for integration until owner decisions, implementation and tests pass.
 | Normative design | API-CONTRACTS.md, DATA-MODEL.md, AUTH.md: existing design constraints, including versioned request bodies and unknown-request rejection. Not a complete approved success DTO. |
 | Verified local behavior | Baseline `19f5642192148051a7b4eb5bc5efb1090192e3c0`; published [checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6370511889). In-process AuthLocalApi/CommunityApi and PostgreSQL handlers. 345 prior successful executions / 313 tests counting repeated units once / 205 PostgreSQL-backed bodies. No HTTP proof. |
 | Android expectation | Read-only pinned working bytes in contracts/admin/v1/stage7b-readonly-source-sha256.json; CONTRACT-AUDIT.md and ACCEPTANCE.md in that tree. Legacy C6 is a distinct dialect. 275 recovered JVM tests are historical Android evidence, not executions by this task. |
-| Proposed public binding | Everything below and decision-proposal fixtures. Authored synthetic scenes, never captured HTTP responses or approved policy. No mutation of earlier corpora/provenance. |
+| Approved public design | O1–O8 as qualified by the dated owner checkpoint. Public behavior is unimplemented; fixtures remain authored synthetic scenes, never HTTP proof or real policy approval. Original evidence remains preserved. |
 
-Readiness comparison remains in [STAGE7B-CONTRACT-READINESS.md](STAGE7B-CONTRACT-READINESS.md).
+Current design readiness: [STAGE7B-APPROVED-DESIGN-READINESS.md](STAGE7B-APPROVED-DESIGN-READINESS.md).
+Historical local comparison remains in [STAGE7B-CONTRACT-READINESS.md](STAGE7B-CONTRACT-READINESS.md).
 The latest Issue31 checkpoint is authoritative for local 6.12: T22 LOCAL PASS,
 overall PARTIAL (14 local PASS / 6 PARTIAL / 2 NOT TESTED). The older Issue description
 contains superseded implementation summaries; publication should append a current
@@ -24,7 +30,10 @@ planning section without rewriting historical checkpoints or implying acceptance
 
 ## 2. Public HTTP binding (G7/G8)
 
-One proposed Android bearer binding under `/v1`; HTTPS deployment is separately gated.
+One owner-approved Android bearer binding design; `/v1` is conditional on confirming
+no previously approved/deployed incompatible v1 consumer. Otherwise prepare `/v2`
+for a separate owner decision. Paths below use conditional `/v1` notation; consumer
+compatibility is not confirmed by this task. HTTPS deployment is separately gated.
 Browser BFF/cookie/CSRF integration remains conditional under AUTH.md; do not replace
 that architecture with Android token delivery to browser JavaScript. No extra service,
 paid index, cron, websocket or subscription is required. Use bounded PostgreSQL queries
@@ -80,8 +89,7 @@ Audit also binds highwater and head hash. Queue binds filter scope and last
 payload schema, date precision, int8 bounds and route/scope match before queries.
 Malformed/tampered/expired/wrong-filter cursor →400 validation_failed, no silent
 restart. New filter starts a new explicit walk. Fixtures use authored opaque labels;
-syntactic fixture validation does not prove signatures. Proposed TTL: 15 minutes,
-owner approval pending; signing key rotation/expiry requires future tests.
+syntactic fixture validation does not prove signatures. Owner-approved design TTL: 15 minutes; signing key rotation/expiry requires future tests.
 
 ### Endpoint registry (complete for this Admin package)
 
@@ -219,8 +227,8 @@ inside an error. 409 is deliberately generic; authoritative refetch is compulsor
 This preserves 400 for validation and reserves 422 for key mismatch, unlike APIs
 that use 422 for all semantic validation. Do not change body and automatically retry
 422. Local T22 absent-operation403 is preserved as a local routing rule; unsupported
-public paths/methods propose 404/405 (Allow header on405), no protected dispatch.
-This public routing distinction requires owner approval; no local behavior changes.
+public paths/methods use the approved404/405 design (Allow header on405), no protected dispatch.
+This public routing distinction is owner-approved as design; no local behavior changes.
 
 ## 3. G5 — one explicit session lifecycle
 
@@ -232,9 +240,10 @@ This public routing distinction requires owner approval; no local behavior chang
    capabilities returns principalId AND sessionId from the same authenticated context
    and computes grants live. FamilyId stays private. Client checks identity/session
    consistency before exposing Admin; mismatch clears trust/account-scoped caches.
-3. Access expiry →401. Propose 15-minute access, 7-day absolute family, 5-minute
+3. Access expiry →401. Approved design: 15-minute access, 7-day absolute family, 5-minute
    challenge, ≤60-second provider clock skew. Refresh does not extend family expiry.
-   These exact durations are pending owner approval, not current fixed local config.
+   These exact durations are owner-approved design; current injected local configuration
+   is unchanged and production remains inactive.
 4. Single-flight refresh consumes old refresh token, revokes predecessor access,
    rotates both tokens atomically. Used refresh replay revokes the entire family,
    commits session.refresh_replay event, then401. Never use moderation idempotency
@@ -248,10 +257,10 @@ This public routing distinction requires owner approval; no local behavior chang
    Clear tokens/trust immediately even if offline. Account switching cancels pending
    requests and isolates drafts/markers by principal; delayed replies from prior
    account cannot update new account. Fresh challenge/exchange required for new user.
-   **Known normative tension:** AUTH.md says queued logout retry after local secrets
-   gone. Prefer no persisted bearer retry queue: failed remote logout remains
+   **Owner-approved amendment to historical AUTH.md:** no persisted secret-bearing
+   offline logout queue. Failed remote logout remains
    unconfirmed, client says so, relies on server expiry and future separately approved
-   account session management. Owner must approve this amendment; never claim offline
+   account session management. O1 approves this design amendment; never claim offline
    logout proved server revocation or retain credentials in a backup to retry it.
 7. No credential/access/refresh/challenge in logs, audit content, crash reports, URLs,
    backups or exports. Store only token hashes server-side; Keystore-protected
@@ -263,10 +272,10 @@ This public routing distinction requires owner approval; no local behavior chang
 
 **schemaVersion discrepancy decision:** public POST challenge/login/refresh require
 schemaVersion:1. AuthLocalApi currently rejects it through operation-specific allowlists.
-Approve a named, tested `admin-v1-decision-1` HTTP mapper: validate exact public schema
+The owner approves the named `admin-v1-decision-1` HTTP mapper design: validate exact public schema
 first, then explicitly project only credential/challenge/refreshToken to that local
 operation; GETs map to empty local bodies. Never spread public JSON then silently
-strip unknowns or retry another version. This adapter is proposed, not written here.
+strip unknowns or retry another version. This adapter remains unimplemented; its future tests and implementation need separate authorization.
 New expiry/session result fields require service DTO support; do not synthesize them
 by decoding opaque tokens. Authentication POSTs are explicit exceptions to normative
 “All writes authenticated/idempotent”: challenge/login/refresh use single-use security
@@ -306,7 +315,7 @@ public version + method + canonical path + exact validated body (key included), 
 headers or JSON whitespace/key order; no normalization of strings/reasons/revisions.
 The explicit mapper must prove this preserves local operation+body identity. Same key
 with changed input/path/operation→422; never reuse it for a changed confirmation.
-Retention ≥24h (propose exactly24h from original completion). Store exact public
+Approved retention is exactly24 hours from original completion. Store exact public
 result in the transaction, rather than rebuilding a replay DTO from changed rows.
 Live auth check happens before receipt lookup: revoked role403/session401 even if
 old key had succeeded. Same-body authorized replay has no second audit/feed/review.
@@ -333,10 +342,14 @@ counts zero approvals. Atomic publication makes the two approval transitions co-
 No COUNT DISTINCT by submission (would hide invalid duplicates); duplicate illegal
 transitions are an integrity failure, not silently repaired statistics.
 
-Recommend UTC civil-day window `[00:00Z,next00:00Z)`, server chosen, all dates absolute;
-owner may choose Europe/Prague instead. **Timezone/day boundary/window definition
-PENDING OWNER APPROVAL.** No client ZoneId.systemDefault determines “today”. Until
-approved/implemented, Stats unavailable/window_unapproved. Bound query work to
+**Owner-approved authoritative timezone: Europe/Prague.** Server derives the civil
+calendar date and `[local midnight,next local midnight)` boundaries using Europe/Prague
+rules, including 23-hour spring and 25-hour autumn DST days, then stores/transmits both
+instants in UTC with six fractional digits. No fixed 24-hour subtraction or device
+ZoneId.systemDefault defines “today”. Counts share one coherent snapshot. The earlier
+UTC-day recommendation was not selected. Until implemented and verified, statistics
+remain unavailable; `window_unapproved` is retained only as a compatibility error value
+for historical fixtures, not the current approval state. Bound query work to
 measured free-tier limits; timeout/incomplete snapshot →unavailable, no approximate
 counts. Existing approved bounded exact-or-unavailable fallback remains permitted
 only where completeness and a coherent reporting window can be proven; concurrent
@@ -344,18 +357,19 @@ mutable queue walks cannot prove an instantaneous global count. Never invent tot
 
 **G2:** queue display uses stored reviewed title/composer projection if available,
 otherwise null with unavailable UI. Evidence count counts evidence entries on current
-proposal, not downloads/URLs guessed by client. Server search exact UUID match OR
-case-insensitive literal substring (no wildcard/regex semantics) over available title,
-composer and kind. Define Unicode normalization/collation in the owner decision before
-implementation; recommend NFC + PostgreSQL deterministic lower-case comparison,
-fixture-test CZ/EN diacritics and `%_` literals. Do not promise transliteration/fuzzy or
+proposal, not downloads/URLs guessed by client. Server search exact UUID match OR literal substring over available title,
+composer and kind. Approved O6: normalize searchable text and query to NFC;
+case-insensitive but diacritic-sensitive matching, including Czech/English and literal
+`%`/`_` characters. Database collation/index strategy must satisfy that contract in
+future tests; PostgreSQL behavior is not proven by planning fixtures. Final query
+budgets await later local measurement; no budget is invented here. Do not promise transliteration/fuzzy or
 missing-field search. Deterministic ascending(createdAt,id); cursor does not claim
 snapshot isolation across calls. Search scope is explicit, never “whole catalogue”.
 Rows may change during paging; refresh explicitly. Preserve bounded detail hydration/
 exhaustive-or-unavailable fallback; do not label searched fetched pages exhaustive.
 
 **G3:** audit filters combine AND; q literal substring only in action, subject UUID,
-and safe reason text, case-insensitive as above. actorId/subjectId exact; action exact;
+and safe reason text, NFC-normalized, case-insensitive and diacritic-sensitive as above. actorId/subjectId exact; action exact;
 from inclusive/to exclusive. No token/profile/raw canonical-content search. Filters
 run server-side before limit. Signed cursor scopes all filters and caller, fixes
 highwater/head from first snapshot. Subsequent pages return seq ascending ≤highwater,
@@ -438,10 +452,11 @@ These are **breaking** versus legacy C6 and portions of normative design: rename
 entity expectation; string numeric revisions; changed success shapes/status handling;
 capability session binding; session auth/idempotency exceptions; schemaVersion HTTP
 projection; precise timestamp/cursor/reporting semantics; generic conflict/refetch;
-o persisted logout retry secret. No deployed approved v1 exists in this evidence;
-owner may approve this as the first public v1 baseline, but must explicitly retire the
-legacy test dialect. If any approved/deployed v1 consumer is identified, publish this
-under v2 instead, never silently change /v1. No dual-dialect shape detection.
+no persisted logout retry secret. O4 approves an initial v1 baseline only after
+confirming no previously approved/deployed incompatible v1 consumer exists. That
+confirmation is still pending; absence from inspected local evidence is not a global
+guarantee. If an incompatible consumer is found, prepare v2 for a separate owner
+decision, never silently change /v1. No dual-dialect shape detection.
 
 Migration sequence after decision: pin reviewed package hash → separately authorize
 numeric/service DTO changes and HTTP mapper → backend projection/transaction tests →
@@ -450,18 +465,22 @@ and Android runtime acceptance → security/cloud/legal gates → separate freez
 No app database/backup migrations required for this planning. Token/local caches must
 be versioned/invalidated by future client code without deleting drafts or practice data.
 
-## 8. Exact owner decisions still required
+## 8. Recorded owner outcomes and remaining decisions
 
-| ID | Recommended choice; alternatives/consequence |
-|---|---|
-| O1 G5/G7 | Approve explicit lifecycle/HTTP schemaVersion mapper and204 logout; confirm no durable secret-bearing offline logout queue amendment. Otherwise specify safe revocation recovery. |
-| O2 G5 | Approve access15m/family7d/challenge5m/skew≤60s, single-flight refresh/lost-response reauthentication and family revocation. Current lifetimes remain injected, production inactive. |
-| O3 G6 | Approve expectedEntityRevision + expectedSubmissionRevision, explicit open, result unions/statuses, generic409/refetch/reconfirm and24h exact receipt semantics. |
-| O4 G7/G8 | Approve decimal-string full int8 domain, microseconds, DTO projection/cursor15m scope and public404/405 routing; authorize future numeric changes separately. If compatibility exists, choose v2. |
-| O5 G1/G9 | Approve metric definitions and choose UTC day vs Europe/Prague day (or explicit different window). This decision is deliberately pending; no timezone selected by agent. |
-| O6 G2/G3 | Approve nullable metadata, literal search scope/NFC/collation, audit filters and privacy/coverage; choose bounded budget after measurement. No completeness beyond declared scope. |
-| O7 G4/G11 | Supply/review exact kind/field/source/license/attribution policies and current-value projection. Remain empty/default-deny until approved; no synthetic policy promoted. |
-| O8 sequencing | Accept package as design only, then separately authorize implementation/testing. Production activation,6.17 freeze, hosted provisioning/OAuth, merge/release remain separate decisions. |
+O1–O8 are recorded in [API-V1-OWNER-DECISIONS-2026-10-23.md](API-V1-OWNER-DECISIONS-2026-10-23.md):
+O1 session/version/logout and no-secret-queue amendment APPROVED; O2 exact durations
+APPROVED; O3 moderation/24h receipts APPROVED; O4 wire/int8/cursors APPROVED AS DESIGN
+with conditional version choice; O5 Europe/Prague daily statistics APPROVED; O6
+NFC/case-insensitive/diacritic-sensitive literal search APPROVED AS DESIGN; O7 safety
+structure PARTIALLY APPROVED BY DESIGN only; O8 documentation sequence APPROVED.
+
+Remaining: confirm v1 compatibility (otherwise separate v2 owner decision); later
+measure final query budgets; separately review/authorize exact real-world source,
+field, license, attribution and evidence policies. All production policy sets remain
+empty/default-deny; synthetic allowlists are never production permission and no legal
+clearance is implied. Backend numeric/HTTP work and Android integration need separate
+owner authorization. Formal freeze/activation/cloud/OAuth/merge/deploy/release remain
+separate gates. No blanket policy or implementation approval can be inferred from O1–O8.
 
 ## 9. Future acceptance tests and blocked gates
 
@@ -483,7 +502,7 @@ be versioned/invalidated by future client code without deleting drafts or practi
 - Reads/audit/stats: concurrent queue mutation → no global exact-walk claim; bounded
   stats snapshot timeout unavailable; paired approval events count once; sequence
   ordering despite clock skew; filtered highwater/gaps not chain verification; new
-  events excluded from existing walk; UTC/Prague DST boundaries after window approval;
+  events excluded from existing walk; Europe/Prague civil-day boundaries, spring/autumn DST and UTC serialization;
   nullable labels, literal wildcards, CZ/EN normalization, hidden entity404 and missing
   field unavailable; no proposal snapshot mislabeled as current catalogue.
 - Android: shared positive/negative fixtures against the one approved adapter;
@@ -497,7 +516,7 @@ Formal6.12 remains PARTIAL; browser/CORS/CSRF, SSRF DNS/fetch, restore/RPO, netw
 privacy and runtime/hosted checks open. 6.13–6.18 remain unimplemented/unaccepted by
 this task;6.17 NOT FROZEN. Q1/D5b, C4, C2§12 and applicable cloud/zero-cost/legal gates
 remain unresolved; no compliance or capacity proof added. Stage7B acceptance BLOCKED,
-X10 OPEN, Stage8 pending. Stop at this owner decision gate.
+X10 OPEN, Stage8 pending. Stop at the separate policy and implementation authorization gates.
 
 Fixtures and deterministic verifier: contracts/admin/v1/decision-proposal/README.md.
 

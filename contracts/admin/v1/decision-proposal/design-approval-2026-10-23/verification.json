@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-23",
+  "classification": "documentation-and-planning-fixture-verification-only",
+  "proposalBaseline": "fefa6e83c2a7b9c4c12660ff1542ab086356de88",
+  "results": [
+    {
+      "command": [
+        "python3",
+        "contracts/admin/v1/decision-proposal/verify.py"
+      ],
+      "exitCode": 0,
+      "output": "PASS: owner O1\u2013O8 scope, Prague4 civil/DST windows and10 literal CZ/EN search fixtures; host fixture checks only, not server/runtime acceptance.\nPASS: 61 proposed synthetic fixtures (37 positive / 24 negative); 8 authored protocol scenes; DTO structure/bytes/int8/replay/audit accounting; hashes; approved design only, policies default-deny and integration blocked. No HTTP/PG/Android execution.\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "contracts/admin/v1/decision-proposal",
+        "-p",
+        "test_*.py"
+      ],
+      "exitCode": 0,
+      "output": "..................\n----------------------------------------------------------------------\nRan 18 tests in 0.037s\n\nOK\nPASS: owner O1\u2013O8 scope, Prague4 civil/DST windows and10 literal CZ/EN search fixtures; host fixture checks only, not server/runtime acceptance.\nPASS: 61 proposed synthetic fixtures (37 positive / 24 negative); 8 authored protocol scenes; DTO structure/bytes/int8/replay/audit accounting; hashes; approved design only, policies default-deny and integration blocked. No HTTP/PG/Android execution.\n"
+    },
+    {
+      "command": [
+        "python3",
+        "spikes/stage6-security-local/verify_contract.py"
+      ],
+      "exitCode": 0,
+      "output": "Read-only current client bytes checked. PASS:41 primary cases (30 actual in-process/scripted-storage captures,11 inactive proposals),29 preserved authored cases; G1-G11 matrix; source/corpus/client hashes; G10 remains closed. No HTTP/PG/Android/freeze acceptance.\n"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_agent_policy.py"
+      ],
+      "exitCode": 0,
+      "output": "PASS: canonical policy, thin agent references, Cursor frontmatter and local Wiki navigation; runtime agent loading NOT TESTED\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "output": ""
+    }
+  ],
+  "notExecuted": [
+    "PostgreSQL or the 345 baseline executions",
+    "HTTP/backend implementation",
+    "Android integration/build/runtime",
+    "Emulator or physical device operations",
+    "Cloud/OAuth production",
+    "Merge/deployment/release"
+  ],
+  "limits": "Host timezone/Unicode fixture checks do not prove server collation, budgets, snapshot consistency or actual integration; original fixture/data evidence preserved"
+}

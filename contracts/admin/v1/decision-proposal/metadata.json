@@ -1,7 +1,7 @@
 {
   "proposalId": "admin-v1-decision-1",
   "classification": "proposal-unapproved",
-  "ownerApproved": false,
+  "ownerApproved": true,
   "baseline": "19f5642192148051a7b4eb5bc5efb1090192e3c0",
   "baselineCheckpoint": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6370511889",
   "g10": "CLOSED",
@@ -33,16 +33,21 @@
     "admin.rollback"
   ],
   "files": {
-    "contracts/admin/v1/decision-proposal/README.md": "970c5d502ebc8d5431099db70f5f8c36d6ce5254312995433c9fb5a8fb1251fb",
+    "contracts/admin/v1/decision-proposal/README.md": "973872e75061a74e0a1ac1a679d3fad99a87fab7856f5d2c3fd4c11808082d74",
     "contracts/admin/v1/decision-proposal/dto.schema.json": "d0802a9397d51a9c542a39c44f0cf4343c0ff9a5e4c536cb18cd3627f1afd9ca",
     "contracts/admin/v1/decision-proposal/fixtures.json": "ff45b3e79c9ac1480765e171f61f56cf553885019d412c809a17eb198d2a99bb",
-    "contracts/admin/v1/decision-proposal/publish.py": "24280031177d5c9a6e7cb2be7e5cfc3c7ec6b0f0d45922b9bbb094fc515860a4",
-    "contracts/admin/v1/decision-proposal/test_verify.py": "d668c0d26832021850924b620019b3c49ba628da68a7c320f6444908f4ba872a",
-    "contracts/admin/v1/decision-proposal/verify.py": "e489a0f03c11fe6f31d4e6b082e4904c099d7c7c8c25fc7e207a45d8784c3763",
-    "docs/planning/goldberg-0.11/stage-6/API-V1-DECISION-PROPOSAL.md": "8b32dc35e39712ff4ed4acaa786c336d845ade554fd0a7c2e310b893fe8b3af4",
+    "contracts/admin/v1/decision-proposal/publish.py": "3551f37c93331a966ccdc9ac26bb2f8f0f499d46e46bc85e7e7098b44c26b0a1",
+    "contracts/admin/v1/decision-proposal/test_verify.py": "43dddf5cf85db54f157410bfa640f2829aa36cad05429ea75b30463979a22232",
+    "contracts/admin/v1/decision-proposal/verify.py": "0d4b562b84acb8a183167119ff65346318fe27da9396c18b5355c0b49bb148bc",
+    "docs/planning/goldberg-0.11/stage-6/API-V1-DECISION-PROPOSAL.md": "33a54ce09ad699274b842c0957d7c5cf658570bb2799f03fce924f05cb29245d",
     "contracts/admin/v1/decision-proposal/protocol.json": "2016b1676746e5c090fefc28a2e5455e5320fb18eb434c605b61bf30f54e17b5",
     "contracts/admin/v1/decision-proposal/verification.json": "b30f6bf16b9aebb13f226e8df1f757ee69bc392c42b3af123f642f255e4f0e1e",
-    "contracts/admin/v1/decision-proposal/publication-attempt.json": "76963434db4d300bdcdcec414220e186be00f819e4c3dace714505a44a3d0893"
+    "contracts/admin/v1/decision-proposal/publication-attempt.json": "76963434db4d300bdcdcec414220e186be00f819e4c3dace714505a44a3d0893",
+    "contracts/admin/v1/decision-proposal/design-approval-2026-10-23/fixtures.json": "9892d9bf34f96efb52aef8c9e401e69b8bdb5fa45f2428fda13ab18f7fc43b7c",
+    "contracts/admin/v1/decision-proposal/design-approval-2026-10-23/approval.json": "511fd483c51c03fdc358debef4623315bd3c2966dbb1b4f76b24771b245f51d7",
+    "docs/planning/goldberg-0.11/stage-6/API-V1-OWNER-DECISIONS-2026-10-23.md": "698f090507acc92c05c9b117072c04c9f7b35ce03523ca2977f61f815814958b",
+    "docs/planning/goldberg-0.11/stage-6/STAGE7B-APPROVED-DESIGN-READINESS.md": "93d2110fad30c5eef87345d6444722be6f5897df16bfd5fa900deb7a3cf7f5f5",
+    "contracts/admin/v1/decision-proposal/design-approval-2026-10-23/verification.json": "c49b19d680539e116cb7e93f0d5b278f7467507eef89cd6c727fadf1bba2a82b"
   },
   "baselineFiles": {
     "contracts/admin/v1/README.md": "3d820dc4120a1d5e1d931e61b7eaa94b38be5b830be457747e3a453bc4e1b923",
@@ -83,5 +88,17 @@
     "spikes/stage6-schema-pg/src/transactions.mjs": "c5bcf8fc2abee23be5f1c64827cc6b3567803d677add84e00b6bb1af413d44cd"
   },
   "protocolScenes": 8,
-  "verifierTests": 15
+  "verifierTests": 18,
+  "approvalScope": "DESIGN_ONLY_WITH_QUALIFICATIONS",
+  "classificationScope": "Original authored proposal fixtures retain historical proposal-unapproved classification; approval applies to design only",
+  "productionPolicyApproved": false,
+  "active": false,
+  "frozen": false,
+  "httpApproved": false,
+  "designApprovalRecord": "contracts/admin/v1/decision-proposal/design-approval-2026-10-23/approval.json",
+  "approvedQualificationFixtures": {
+    "pragueCivilWindows": 4,
+    "literalSearchCases": 10
+  },
+  "httpApprovedScope": "HTTP implementation/integration acceptance remains false; O4 wire design is approved separately"
 }

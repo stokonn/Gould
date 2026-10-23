@@ -1,5 +1,24 @@
 # Goldberg 0.11 — DECISIONS (Stage 5 view)
 
+## API v1 O1–O8 — owner design outcomes, 2026-10-23
+
+O1/O2/O3/O5/O8 approved; O4/O6 approved AS DESIGN with qualifications;
+O7 PARTIALLY APPROVED BY DESIGN only. Durable canonical approval:
+`docs/planning/goldberg-0.11/stage-6/API-V1-OWNER-DECISIONS-2026-10-23.md`.
+Europe/Prague is the approved server daily-statistics calendar, UTC timestamps;
+NFC case-insensitive/diacritic-sensitive literal search. Exact token durations,
+24h receipts, scoped cursor15m,204 logout/no persisted secret queue, independent
+revisions and explicit open are approved design; implementation remains unauthorized.
+
+Still pending: initial-v1 compatibility confirmation (otherwise separate v2 decision),
+later measured query budgets, all concrete production source/field/license/attribution/
+evidence policy approvals and separate implementation/integration authorization.
+All real policy sets empty/default-deny. G1–G9/G11 integration BLOCKED; G10 CLOSED;
+6.12 PARTIAL/T22 LOCAL PASS and345 prior executions unchanged;6.17 NOT FROZEN.
+No changes to older D4/D5/D8/Q1/cloud/legal decisions or current runtime behavior.
+Earlier “O1–O8 pending” statements below are historical, superseded by this checkpoint.
+
+
 Pointer register — this file does not replace the canonical decision table in
 `docs/planning/goldberg-0.11/stage-2/READINESS.md` or `docs/planning/goldberg-0.11/STAGES.md`.
 

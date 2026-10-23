@@ -5,7 +5,7 @@ import verify
 ROOT = verify.ROOT
 BRANCH = 'verify/goldberg-0.11-stage-6-12-local'
 REPO = 'stokonn/Goldberg'
-BASELINE = '19f5642192148051a7b4eb5bc5efb1090192e3c0'
+BASELINE = 'fefa6e83c2a7b9c4c12660ff1542ab086356de88'
 ALLOWED_DOCS = {
  'docs/planning/goldberg-0.11/stage-6/API-V1-DECISION-PROPOSAL.md',
  'docs/planning/goldberg-0.11/stage-6/STAGE7B-CONTRACT-READINESS.md',
@@ -14,6 +14,10 @@ ALLOWED_DOCS = {
  'docs/planning/goldberg-0.11/STAGE-CHECKLIST.md',
  'docs/ai/STATE.md','docs/ai/HANDOFF.md','docs/ai/VERIFICATION.md',
  'docs/ai/API-V1-PROPOSAL-PUBLICATION.md',
+ 'docs/ai/DECISIONS.md',
+ 'docs/planning/goldberg-0.11/stage-6/OPEN-DECISIONS.md',
+ 'docs/planning/goldberg-0.11/stage-6/API-V1-OWNER-DECISIONS-2026-10-23.md',
+ 'docs/planning/goldberg-0.11/stage-6/STAGE7B-APPROVED-DESIGN-READINESS.md',
 }
 
 def command(*args):
@@ -47,36 +51,42 @@ def comments():
  return {str(c['id']):c['body'] for page in pages for c in page}
 
 def payload_text(expected):
- return f'''## Stage 6 → Stage 7B — PROPOSED API v1 decision package
+ return f'''## API v1 — owner design approval O1–O8 recorded (implementation BLOCKED)
 
-Branch `{BRANCH}`, planning commit `{expected}`; baseline `{BASELINE}` preserved.
-Purpose: prepare owner decisions and synthetic DTO fixtures, with no live HTTP or
-privileged action activation. [Decision package](https://github.com/{REPO}/blob/{expected}/docs/planning/goldberg-0.11/stage-6/API-V1-DECISION-PROPOSAL.md).
+Branch `{BRANCH}`, exact planning commit `{expected}`; published proposal `{BASELINE}`
+and checkpoint6371392069 preserved. [Dated decision record](https://github.com/{REPO}/blob/{expected}/docs/planning/goldberg-0.11/stage-6/API-V1-OWNER-DECISIONS-2026-10-23.md).
 
-- [x] Prepared G1 authoritative snapshot stats; G2 queue/search metadata; G3 scoped
-  audit filters; G4 authorized current comparison; G5 explicit session/principal/
-  rotation/logout; G6 explicit open/dual revisions/replay/conflicts; G7 versioned
-  binding; G8 decimal-string int8; G9 canonical audit/counting; G11 UTF-8/policy limits.
-- [x] 61 authored synthetic cases (37 positive / 24 negative), 15 verifier
-  regressions PASS; eight authored protocol scenes checked; existing 41 primary / 29 comparison fixtures preserved and
-  verified; 11 existing local contract tests PASS; agent policy and whitespace PASS.
-  No HTTP/PG/Android execution or activation from this package.
-- [x] G10 remains CLOSED. Prior 345 successful host executions / 313 tests / 205
-  PG-backed bodies retained as historical verified baseline; not rerun.
-- [ ] Owner O1–O8 decisions: lifecycle/logout/version mapping, lifetimes, dual
-  revisions/receipt semantics, wire/int8/cursors/version compatibility, statistics
-  timezone/window, search scope, exact field/source/license policy, future authorization.
-- [ ] G1–G9/G11 integration BLOCKED; production auth/network/actions inactive;
-  6.12 PARTIAL; 6.17 NOT FROZEN; 6.13–6.18 implementation not performed.
-- [ ] Browser/fetch/restore/privacy/hosted/Android runtime acceptance and existing
-  Q1/C4/zero-cost/legal gates remain OPEN. X10 OPEN; Stage8 pending.
+- [x] O1 explicit session/version mapper,204 logout and no persisted secret-bearing
+  offline queue; no unconfirmed revocation claim. O2 access15m/family7d/challenge5m/
+  skew≤60s, atomic/single-flight refresh and replay-family revocation approved by design.
+- [x] O3 explicit open/independent revisions,200/201 typed results,409 refetch/reconfirm,
+  live authorization and24h exact receipts approved. O4 decimal-string int8, UTC precision,
+  DTO projections, scoped signed cursors15m and public404/405 approved AS DESIGN.
+- [x] O5 Europe/Prague server civil-day statistics, UTC transport, DST/coherent snapshot,
+  approval counted once, incomplete totals unavailable. O6 NFC, case-insensitive,
+  diacritic-sensitive literal bounded search approved AS DESIGN.
+- [x] O7 safety structure/1000 UTF-8-byte reason/current projection/strict allowlisting
+  PARTIALLY APPROVED BY DESIGN. O8 documentation/fixture verification sequence approved.
+- [x] Offline verification:61 original DTO scenes (37 positive/24 negative),8 authored
+  protocol scenes,4 Prague civil/DST windows,10 CZ/EN/literal search cases;18 verifier
+  regressions PASS. Original41 primary/29 comparison fixtures and provenance PASS;
+  agent policy and whitespace PASS. These are planning checks, not server/runtime proof.
+- [ ] `/v1` requires confirming no previously approved/deployed incompatible consumer;
+  otherwise prepare `/v2` for separate owner approval. Query budgets await local measurement.
+- [ ] Concrete real-world source/field/license/attribution/evidence policy remains empty/
+  default-deny, unapproved. Synthetic policies grant no permission; no legal clearance.
+- [ ] G1–G9/G11 integration BLOCKED; G10 CLOSED;6.12 PARTIAL/T22 LOCAL PASS;
+  prior345 executions/313 tests/205 PG-backed bodies preserved, not rerun;6.17 NOT FROZEN.
 
-No Stage7B edits, device operations, cloud provisioning, OAuth integration, merge,
-deploy or release. Next: owner reviews O1–O8, then separately authorizes approved
-implementation and shared integration tests. Stop at owner decision gate.
+No backend/Android implementation, HTTP/auth/network/action activation, formal6.13–6.18,
+Stage7B tree edits, devices, cloud/OAuth production, merge, deployment or release.
+Next: separate policy/version/budget decisions and explicit implementation authorization;
+all remaining security/hosted/runtime/zero-cost/legal gates unchanged. Stage7B acceptance
+BLOCKED, X10 OPEN, Stage8 pending. Prior proposal/checkpoints preserved as history.
 
 created by stokonn with love <3
 '''
+
 
 def api_write(method, path, data):
  with tempfile.NamedTemporaryFile('w',suffix='.json') as f:
@@ -100,7 +110,7 @@ def main():
  require(remote()==expected,'remote SHA differs; no checkpoint')
  issue=json.loads(command('gh','api',f'repos/{REPO}/issues/31'))
  history=comments(); body=payload_text(expected)
- marker=f'<!-- stage6-api-v1-proposal:{expected} -->'
+ marker=f'<!-- stage6-api-v1-design-approval:{expected} -->'
  matches=[cid for cid,text in history.items() if marker in text]
  require(len(matches)<=1,'duplicate marker; inspect')
  require(issue['state']=='open','issue unexpectedly closed; inspect')
@@ -124,7 +134,7 @@ def main():
  final=json.loads(command('gh','api',f'repos/{REPO}/issues/31'))
  require(final['body'].startswith(issue['body']) and marker in final['body'],'dashboard changed; inspect')
  require(remote()==expected,'remote moved; inspect')
- result={'sha':expected,'checkpoint':f'https://github.com/{REPO}/issues/31#issuecomment-{cid}','status':'PROPOSED; owner gate pending'}
+ result={'sha':expected,'checkpoint':f'https://github.com/{REPO}/issues/31#issuecomment-{cid}','status':'APPROVED DESIGN WITH QUALIFICATIONS; implementation and integration blocked'}
  (receipt/'published.json').write_text(json.dumps(result,indent=2)+'\n'); print(json.dumps(result,indent=2))
 
 if __name__=='__main__': main()

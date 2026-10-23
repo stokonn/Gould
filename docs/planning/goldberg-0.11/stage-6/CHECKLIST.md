@@ -1,5 +1,49 @@
 # Goldberg 0.11 — Stage 6 implementation checklist (all tasks UNCHECKED)
 
+## Current — API v1 owner design approval recorded (2026-10-23)
+
+**O1–O8 APPROVED AS QUALIFIED DESIGN; O7 PARTIAL; UNIMPLEMENTED / INACTIVE / NOT FROZEN.**
+Owner authority: explicit instruction in this conversation; durable record
+`stage-6/API-V1-OWNER-DECISIONS-2026-10-23.md` and machine-readable
+`contracts/admin/v1/decision-proposal/design-approval-2026-10-23/approval.json`.
+Published proposal baseline `fefa6e83c2a7b9c4c12660ff1542ab086356de88` and
+[checkpoint6371392069](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6371392069)
+verified through connected GitHub reads. This supersedes earlier unpublished-proposal
+and pending O1–O8 summaries below; all previous evidence remains historical.
+
+Purpose/scope: record the owner's exact design decisions, reconcile planning/readiness
+and verify synthetic fixtures only. Current lifecycle/TTL/revision/numeric/HTTP/audit/
+validation design is approved; actual local backend and Android behavior are unchanged.
+
+- [x] Record O1 explicit mapper/204 logout/no secret-bearing offline queue, O2 exact
+  access15m/family7d/challenge5m/skew≤60s and refresh rules, O3 independent revisions/
+  explicit open/typed200–201/generic409/refetch/reconfirm/exact24h receipts.
+- [x] Record O4 lossless int8 strings/UTC precision/scoped cursors15m/404–405 AS DESIGN;
+  O5 server Europe/Prague civil daily boundaries including DST, UTC transport,
+  coherent exact snapshot and one approval count; O6 NFC/case-insensitive/
+  diacritic-sensitive literal search AS DESIGN; O8 documentation sequence only.
+- [x] Record O7 PARTIAL: safety validation/1000 UTF-8-byte reason/current projection
+  approved by design. All concrete real-world source/field/license/attribution/
+  evidence policy sets remain empty/default-deny; no synthetic promotion/legal clearance.
+- [x] Preserve original61 DTO/8 protocol scenes and historical UTC alternative;
+  add separate4 Prague civil/DST windows and10 CZ/EN/literal search planning cases.
+- [ ] Confirm no previously approved/deployed incompatible v1 consumer before `/v1`;
+  otherwise prepare `/v2` for separate owner decision. No confirmation claimed here.
+- [ ] Determine final query budgets by later local measurement; separately review
+  concrete policies and authorize numeric/HTTP/backend/Android implementation.
+- [ ] G1–G9/G11 integration BLOCKED; G10 CLOSED;6.12 PARTIAL/T22 LOCAL PASS;
+  6.17 NOT FROZEN. No formal6.13–6.18 implementation or API freeze authorized.
+
+Prior345 executions/313 tests/205 PostgreSQL-backed bodies preserved, not rerun.
+No Stage7B edits, devices, live endpoints/auth/network/actions, cloud/OAuth production,
+merge, deployment or release. Stage7B acceptance BLOCKED, X10 OPEN, Stage8 pending;
+existing security/hosted/runtime/zero-cost/legal gates remain. Separate implementation
+and policy authorization gates are the stopping point; no repeated O1–O8 approval needed.
+Verification: docs/ai/VERIFICATION.md and the separate dated approval verification log.
+Publication: docs/ai/API-V1-PROPOSAL-PUBLICATION.md; guarded publisher now emits the
+approval checkpoint, never republishes the superseded pending-design summary.
+
+
 ## Current — API v1 owner decision preparation (2026-10-23)
 
 **PROPOSED / INACTIVE / NOT FROZEN.** Worktree `/tmp/goldberg-stage6-security-local`,
@@ -44,22 +88,22 @@ Publication pending via guarded Fedora publisher with exact final clean SHA.
 | Substage and purpose | Local evidence / remaining task (all formal gates unchanged) |
 |---|---|
 | 6.1 schema integrity | Existing local DDL proof retained; hosted migration/access/restore acceptance pending. |
-| 6.2 authentication | Existing local token/session proof retained; approve G5 lifecycle/TTLs/version mapper and later real integration. |
+| 6.2 authentication | Existing local token/session proof retained; G5 lifecycle/TTLs/version mapper design approved; authorized implementation and real integration pending. |
 | 6.3 authorization | Live role/default-deny local proof retained; hosted role removal/suspension acceptance pending. |
-| 6.4 submissions | Local immutable payload proof retained; approve actual default-deny field/source/license policy. |
-| 6.5 moderation | Local atomic/dual-revision proof retained; approve explicit public open/decision/result/conflict protocol. |
-| 6.6 idempotency | Local replay/mismatch proof retained; approve exact public receipts,24h retention and uncertain-outcome tests. |
+| 6.4 submissions | Local immutable payload proof retained; concrete field/source/license/attribution/evidence policy remains unapproved and empty/default-deny. |
+| 6.5 moderation | Local atomic/dual-revision proof retained; public open/decision/result/conflict design approved; implementation/integration verification pending. |
+| 6.6 idempotency | Local replay/mismatch proof retained; exact public receipts/24h retention design approved; authorized implementation and uncertain-outcome tests pending. |
 | 6.7 public projection | Local overlay/feed proof retained; public HTTP and hosted exposure acceptance pending. |
 | 6.8 Admin queries/actions | Existing local operations retained; G1–G4 functionality and G7 DTO mapping unimplemented here. |
 | 6.9 abuse budgets | Existing local caps/kill-switch proof retained; real runtime/quota/zero-cost measurements pending. |
-| 6.10 Android repository/security | Existing isolated candidate retained; approved shared adapter and runtime/upgrade acceptance pending. |
+| 6.10 Android repository/security | Existing isolated candidate retained; shared adapter design approved; adapter implementation and runtime/upgrade acceptance pending. |
 | 6.11 Android error/offline UX | Existing local candidate retained; byte limits/204/int8/error/recovery adapter tests and runtime pending. |
 | 6.12 threat verification | T22 LOCAL PASS,14 local PASS/6 PARTIAL/2 NOT TESTED; overall PARTIAL. Browser/fetch/restore/privacy/runtime open. |
 | 6.13 real integration auth | Not implemented by this task; separately authorize expiry/rotation/JWKS/live revocation integration. |
 | 6.14 exhaustion/budget | Not implemented by this task; separately authorize provider/quota/kill-switch/budget acceptance. |
 | 6.15 restore/RPO | Not implemented by this task; actual isolated restore/export audit proof remains pending. |
 | 6.16 pre-collection publication | Not implemented by this task; retention/privacy/contact/license approvals and publication pending. |
-| 6.17 API freeze/handoff | PROPOSED decision package only; owner O1–O8, implementation/shared tests/security gates before explicit freeze. UNCHECKED. |
+| 6.17 API freeze/handoff | O1–O8 design approved with O7 partial; version confirmation, concrete policy approvals, authorized implementation/shared tests/security gates before explicit freeze. UNCHECKED. |
 | 6.18 closure/tracking | Planning checkpoint synchronization only; formal stage closure unaccepted, merge/deploy/release not authorized. |
 
 

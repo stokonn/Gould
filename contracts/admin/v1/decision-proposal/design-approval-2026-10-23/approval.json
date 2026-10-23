@@ -1,0 +1,150 @@
+{
+  "recordId": "admin-v1-decision-1-owner-approval-2026-10-23",
+  "proposalId": "admin-v1-decision-1",
+  "date": "2026-10-23",
+  "authority": "Explicit owner instruction in this conversation: Owner Approval of API v1 Decisions O1–O8",
+  "proposalBaseline": "fefa6e83c2a7b9c4c12660ff1542ab086356de88",
+  "proposalCheckpoint": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6371392069",
+  "status": "APPROVED_DESIGN_WITH_QUALIFICATIONS",
+  "implementationAuthorized": false,
+  "httpActive": false,
+  "productionAuthenticationActive": false,
+  "productionPolicyApproved": false,
+  "apiFrozen": false,
+  "decisions": {
+    "O1": {
+      "status": "APPROVED_DESIGN",
+      "terms": [
+        "Explicit versioned HTTP session lifecycle and schemaVersion mapper",
+        "Logout HTTP 204 with no JSON",
+        "Clear local credentials immediately, including offline",
+        "Never claim unconfirmed server revocation",
+        "No persisted secret-bearing offline logout queue",
+        "Server-side revocation and account isolation preserved"
+      ]
+    },
+    "O2": {
+      "status": "APPROVED_DESIGN",
+      "accessSeconds": 900,
+      "familyAbsoluteSeconds": 604800,
+      "challengeSeconds": 300,
+      "providerClockSkewMaxSeconds": 60,
+      "terms": [
+        "Atomic refresh rotation",
+        "Replay revokes session family",
+        "Single-flight refresh",
+        "Fresh authentication after lost refresh response"
+      ]
+    },
+    "O3": {
+      "status": "APPROVED_DESIGN",
+      "receiptRetentionSeconds": 86400,
+      "terms": [
+        "Distinct expectedEntityRevision and expectedSubmissionRevision",
+        "Explicit submission opening",
+        "Correct HTTP 200/201 and typed response unions",
+        "Generic 409 requires refetch and explicit reconfirmation",
+        "Exact 24-hour idempotency receipts",
+        "Never infer revisions, silently retry conflicts or approve without live authorization"
+      ]
+    },
+    "O4": {
+      "status": "APPROVED_DESIGN_CONDITIONAL_VERSION",
+      "integerEncoding": "canonical decimal strings",
+      "integerStorageDomain": "signed PostgreSQL BIGINT; field-specific nonnegative/positive subranges retained",
+      "timestamps": "UTC with six fractional digits",
+      "cursorTtlSeconds": 900,
+      "terms": [
+        "Explicit DTO projections and scoped signed cursors",
+        "Public 404/405, no privileged route",
+        "Use initial /v1 only after confirming no previously approved/deployed incompatible v1 consumer",
+        "If incompatible consumer exists, prepare /v2 for a separate owner decision",
+        "Backend numeric and HTTP implementation separately authorized"
+      ],
+      "v1CompatibilityConfirmed": false
+    },
+    "O5": {
+      "status": "APPROVED_DESIGN",
+      "timeZone": "Europe/Prague",
+      "timestampZone": "UTC",
+      "window": "Server-derived civil date [local midnight,next local midnight), including DST",
+      "terms": [
+        "One coherent snapshot for exact counts",
+        "Count in_review->approved once",
+        "approved->published contributes zero additional approvals",
+        "Incomplete or estimated total is unavailable"
+      ]
+    },
+    "O6": {
+      "status": "APPROVED_DESIGN",
+      "normalization": "NFC",
+      "caseSensitive": false,
+      "diacriticSensitive": true,
+      "terms": [
+        "Reviewed nullable display metadata",
+        "Bounded server-side filters and scoped cursors",
+        "Literal substring search including literal % and _",
+        "Czech and English behavior tests",
+        "No transliteration, fuzzy matching or completeness outside declared server scope"
+      ],
+      "finalQueryBudgets": "PENDING_LATER_LOCAL_MEASUREMENT"
+    },
+    "O7": {
+      "status": "PARTIALLY_APPROVED_DESIGN",
+      "approved": [
+        "Safety-oriented validation structure",
+        "UTF-8 byte-based reason limit",
+        "Authorized current-value projection model",
+        "Strict allowlisting principles"
+      ],
+      "reasonMaxUtf8Bytes": 1000,
+      "productionPolicies": {
+        "sources": [],
+        "fields": [],
+        "licenses": [],
+        "attribution": [],
+        "evidence": []
+      },
+      "terms": [
+        "Concrete real-world policies require separate review and explicit authorization",
+        "No synthetic allowlist promoted to production",
+        "No legal clearance implied"
+      ]
+    },
+    "O8": {
+      "status": "APPROVED_DOCUMENTATION_SEQUENCE",
+      "authorized": [
+        "Documentation",
+        "Decision-record updates",
+        "Deterministic planning-only fixture verification",
+        "Verified documentation commit and normal publication/checkpoint attempt"
+      ],
+      "notAuthorized": [
+        "Backend implementation",
+        "Android integration",
+        "Public HTTP activation",
+        "Cloud provisioning",
+        "OAuth production use",
+        "Formal 6.17 freeze",
+        "Formal Stage 6.13–6.18 implementation",
+        "Stage 7B worktree edits",
+        "Emulator/physical device operations",
+        "Merge",
+        "Deployment",
+        "Release"
+      ]
+    }
+  },
+  "gates": {
+    "G10": "CLOSED",
+    "G1-G9/G11": "INTEGRATION_BLOCKED",
+    "6.12": "PARTIAL; T22 LOCAL PASS",
+    "6.17": "NOT FROZEN"
+  },
+  "priorEvidence": {
+    "executions": 345,
+    "testsCountingRepeatedUnitsOnce": 313,
+    "postgresBackedBodies": 205,
+    "rerun": false
+  }
+}

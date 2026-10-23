@@ -1,3 +1,33 @@
+# API v1 owner design approval — current publication handoff
+
+The proposal baseline fefa6e83c2a7b9c4c12660ff1542ab086356de88 is now confirmed
+published through connected GitHub commit read and Issue31 checkpoint6371392069.
+Historical blocked attempts below remain accurate for their original sessions.
+
+The new dated owner checkpoint records APPROVED DESIGN WITH QUALIFICATIONS:
+O7 partial, all real policies empty/default-deny; no implementation or freeze.
+The updated guarded publisher appends one distinct `stage6-api-v1-design-approval`
+checkpoint and a current Issue description section, preserving old proposal comments.
+Current terminal release/milestone reads failed connection; connected Issue reads work.
+Normal push and issue writes are attempted after local verification/commit; report
+publication only after actual remote SHA/checkpoint readback. No bypass of permissions.
+
+On a permitted Fedora host, replace FINAL_SHA with the exact final committed SHA:
+
+```bash
+cd /tmp/goldberg-stage6-security-local
+python3 contracts/admin/v1/decision-proposal/publish.py --expected-head FINAL_SHA --verify-only
+python3 contracts/admin/v1/decision-proposal/publish.py --expected-head FINAL_SHA
+```
+
+Guards require clean expected SHA/branch/origin, fefa6e8 ancestry, planning-only paths,
+current/historical hashes,18 verifier regressions and whitespace. Then ordinary push,
+exact remote SHA verification, concurrent-edit check, append-only dashboard section,
+one marked checkpoint and historical comment preservation/readback. No PostgreSQL,
+backend/Android implementation, live activation, devices, cloud/OAuth, merge or release.
+
+---
+
 # Proposed API v1 package — publication handoff
 
 Scope: planning-only from published baseline19f5642192148051a7b4eb5bc5efb1090192e3c0,

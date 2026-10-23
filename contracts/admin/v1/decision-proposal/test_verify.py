@@ -111,5 +111,25 @@ class PublisherGuardTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, 'non-planning change'):
                 publish.local_guards('1'*40)
 
+class ApprovalQualificationTests(unittest.TestCase):
+    def setUp(self):
+        self.approval = verify.read(verify.BASE / 'design-approval-2026-10-23/approval.json')
+        self.fixtures = verify.read(verify.BASE / 'design-approval-2026-10-23/fixtures.json')
+
+    def test_fixed_twenty_four_hour_spring_day_is_rejected(self):
+        self.fixtures['windows'][1]['elapsedHours'] = 24
+        with self.assertRaises(AssertionError):
+            verify.check_design_approval(self.approval, self.fixtures)
+
+    def test_real_policy_cannot_be_smuggled_into_approval(self):
+        self.approval['decisions']['O7']['productionPolicies']['licenses'] = ['unapproved-license']
+        with self.assertRaises(AssertionError):
+            verify.check_design_approval(self.approval, self.fixtures)
+
+    def test_diacritic_insensitive_fixture_is_rejected(self):
+        self.fixtures['searchCases'][1]['matches'] = True
+        with self.assertRaises(AssertionError):
+            verify.check_design_approval(self.approval, self.fixtures)
+
 if __name__ == '__main__':
     unittest.main()

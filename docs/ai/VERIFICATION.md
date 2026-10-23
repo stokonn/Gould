@@ -1,3 +1,70 @@
+## Executed — owner design approval verification (2026-10-23)
+
+- Owner decision/scope and fixture verifier PASS: original61 DTO cases (37 positive/
+  24 negative),8 authored protocol scenes;4 Europe/Prague civil/DST windows and10
+  NFC/case-insensitive/diacritic-sensitive CZ/EN/literal-percent/underscore scenes.
+- `python3 -m unittest discover -s contracts/admin/v1/decision-proposal -p 'test_*.py'`:
+  **18 tests PASS** (15 existing verifier tests plus3 approval-qualification guards).
+- `python3 spikes/stage6-security-local/verify_contract.py`: PASS,41 original primary
+  cases,29 comparison scenes, source/provenance and current read-only Android hashes.
+- Agent policy check and whitespace PASS. No production/backend/Android source changes.
+  Original61 DTO/8 protocol fixtures, schema, previous verification/raw execution
+  evidence and all baseline source/corpus hashes preserved.
+
+Actual outputs: `contracts/admin/v1/decision-proposal/design-approval-2026-10-23/verification.json`.
+These are planning fixture checks using host timezone/Unicode data, not SQL/HTTP/
+Android implementation or integration tests. Prior345 successful executions and
+T22 LOCAL PASS remain historical verified evidence, not rerun. The old UTC stats
+example is historical/unselected; current approved calendar is Europe/Prague.
+Metadata ownerApproved=true is explicitly DESIGN_ONLY_WITH_QUALIFICATIONS;
+productionPolicyApproved/active/httpApproved/frozen=false. O7 remains partial,
+all real policies empty/default-deny. G10 CLOSED; G1–G9/G11 integration BLOCKED.
+Normal push/remote SHA and one nonduplicate Issue checkpoint are attempted after
+commit; see publication handoff for actual result and guarded host fallback.
+
+## Current — API v1 owner design approval recorded (2026-10-23)
+
+**O1–O8 APPROVED AS QUALIFIED DESIGN; O7 PARTIAL; UNIMPLEMENTED / INACTIVE / NOT FROZEN.**
+Owner authority: explicit instruction in this conversation; durable record
+`stage-6/API-V1-OWNER-DECISIONS-2026-10-23.md` and machine-readable
+`contracts/admin/v1/decision-proposal/design-approval-2026-10-23/approval.json`.
+Published proposal baseline `fefa6e83c2a7b9c4c12660ff1542ab086356de88` and
+[checkpoint6371392069](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6371392069)
+verified through connected GitHub reads. This supersedes earlier unpublished-proposal
+and pending O1–O8 summaries below; all previous evidence remains historical.
+
+Purpose/scope: record the owner's exact design decisions, reconcile planning/readiness
+and verify synthetic fixtures only. Current lifecycle/TTL/revision/numeric/HTTP/audit/
+validation design is approved; actual local backend and Android behavior are unchanged.
+
+- [x] Record O1 explicit mapper/204 logout/no secret-bearing offline queue, O2 exact
+  access15m/family7d/challenge5m/skew≤60s and refresh rules, O3 independent revisions/
+  explicit open/typed200–201/generic409/refetch/reconfirm/exact24h receipts.
+- [x] Record O4 lossless int8 strings/UTC precision/scoped cursors15m/404–405 AS DESIGN;
+  O5 server Europe/Prague civil daily boundaries including DST, UTC transport,
+  coherent exact snapshot and one approval count; O6 NFC/case-insensitive/
+  diacritic-sensitive literal search AS DESIGN; O8 documentation sequence only.
+- [x] Record O7 PARTIAL: safety validation/1000 UTF-8-byte reason/current projection
+  approved by design. All concrete real-world source/field/license/attribution/
+  evidence policy sets remain empty/default-deny; no synthetic promotion/legal clearance.
+- [x] Preserve original61 DTO/8 protocol scenes and historical UTC alternative;
+  add separate4 Prague civil/DST windows and10 CZ/EN/literal search planning cases.
+- [ ] Confirm no previously approved/deployed incompatible v1 consumer before `/v1`;
+  otherwise prepare `/v2` for separate owner decision. No confirmation claimed here.
+- [ ] Determine final query budgets by later local measurement; separately review
+  concrete policies and authorize numeric/HTTP/backend/Android implementation.
+- [ ] G1–G9/G11 integration BLOCKED; G10 CLOSED;6.12 PARTIAL/T22 LOCAL PASS;
+  6.17 NOT FROZEN. No formal6.13–6.18 implementation or API freeze authorized.
+
+Prior345 executions/313 tests/205 PostgreSQL-backed bodies preserved, not rerun.
+No Stage7B edits, devices, live endpoints/auth/network/actions, cloud/OAuth production,
+merge, deployment or release. Stage7B acceptance BLOCKED, X10 OPEN, Stage8 pending;
+existing security/hosted/runtime/zero-cost/legal gates remain. Separate implementation
+and policy authorization gates are the stopping point; no repeated O1–O8 approval needed.
+Verification: docs/ai/VERIFICATION.md and the separate dated approval verification log.
+Publication: docs/ai/API-V1-PROPOSAL-PUBLICATION.md; guarded publisher now emits the
+approval checkpoint, never republishes the superseded pending-design summary.
+
 ## API v1 proposal publication — BLOCKED (2026-10-23)
 
 Planning package commit `1f9996fd385189b66a42f6abbc8a9944c3030702` verified locally.

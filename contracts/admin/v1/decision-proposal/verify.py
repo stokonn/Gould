@@ -5,7 +5,8 @@ plus x-* byte/int8/plain-text constraints. Fails on unknown schema keywords.
 Real policy, signatures, auth, SQL and transaction acceptance require future tests.
 """
 from pathlib import Path
-import base64, binascii, datetime, hashlib, json, re
+import base64, binascii, datetime, hashlib, json, re, unicodedata
+from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[4]
 BASE = Path(__file__).resolve().parent
 KEYWORDS = {'$ref','type','properties','required','additionalProperties','items',
@@ -94,6 +95,52 @@ def validate(value, schema, definitions, response=False):
             validate(item, schema['items'], definitions, response)
 
 
+
+def check_design_approval(approval, fixtures):
+    """Validate decision/fixture consistency only; never implement a server query."""
+    assert approval['proposalBaseline'] == 'fefa6e83c2a7b9c4c12660ff1542ab086356de88'
+    assert approval['status'] == 'APPROVED_DESIGN_WITH_QUALIFICATIONS'
+    assert all(approval[k] is False for k in ['implementationAuthorized','httpActive',
+               'productionAuthenticationActive','productionPolicyApproved','apiFrozen'])
+    decisions = approval['decisions']
+    assert set(decisions) == {f'O{i}' for i in range(1,9)}
+    assert [decisions['O2'][k] for k in ['accessSeconds','familyAbsoluteSeconds',
+             'challengeSeconds','providerClockSkewMaxSeconds']] == [900,604800,300,60]
+    assert decisions['O3']['receiptRetentionSeconds'] == 86400
+    assert decisions['O4']['cursorTtlSeconds'] == 900
+    assert decisions['O4']['v1CompatibilityConfirmed'] is False
+    assert decisions['O5']['timeZone'] == fixtures['timeZone'] == 'Europe/Prague'
+    assert decisions['O6']['normalization'] == 'NFC'
+    assert decisions['O6']['caseSensitive'] is False and decisions['O6']['diacriticSensitive'] is True
+    assert decisions['O6']['finalQueryBudgets'] == 'PENDING_LATER_LOCAL_MEASUREMENT'
+    assert decisions['O7']['status'] == 'PARTIALLY_APPROVED_DESIGN'
+    assert decisions['O7']['reasonMaxUtf8Bytes'] == 1000
+    assert decisions['O7']['productionPolicies'] == dict.fromkeys(
+        ['sources','fields','licenses','attribution','evidence'], [])
+    assert approval['gates'] == {'G10':'CLOSED','G1-G9/G11':'INTEGRATION_BLOCKED',
+                                '6.12':'PARTIAL; T22 LOCAL PASS','6.17':'NOT FROZEN'}
+    assert fixtures['classification'] == 'approved-design-synthetic-fixtures'
+    assert all(fixtures[k] is False for k in ['active','httpExecuted','sqlExecuted'])
+    assert len(fixtures['windows']) == 4 and len(fixtures['searchCases']) == 10
+    zone = ZoneInfo('Europe/Prague')
+    def instant(value):
+        return value.astimezone(datetime.timezone.utc).isoformat(timespec='microseconds').replace('+00:00','Z')
+    for window in fixtures['windows']:
+        day = datetime.date.fromisoformat(window['civilDate'])
+        start = datetime.datetime.combine(day, datetime.time(), zone)
+        end = datetime.datetime.combine(day + datetime.timedelta(days=1), datetime.time(), zone)
+        assert instant(start) == window['startInclusive'], window['id']
+        assert instant(end) == window['endExclusive'], window['id']
+        duration = (end.astimezone(datetime.timezone.utc) - start.astimezone(datetime.timezone.utc)).total_seconds()
+        assert duration == window['elapsedHours'] * 3600, window['id']
+    for case in fixtures['searchCases']:
+        text = unicodedata.normalize('NFC', case['text']).casefold()
+        query = unicodedata.normalize('NFC', case['query']).casefold()
+        assert (query in text) == case['matches'], case['id']
+    print('PASS: owner O1–O8 scope, Prague4 civil/DST windows and10 literal CZ/EN search fixtures; '
+          'host fixture checks only, not server/runtime acceptance.')
+
+
 def check():
     metadata = read(BASE / 'metadata.json')
     corpus = read(BASE / 'fixtures.json')
@@ -101,7 +148,11 @@ def check():
     assert metadata['baseline'] == '19f5642192148051a7b4eb5bc5efb1090192e3c0'
     assert corpus['classification'] == metadata['classification'] == 'proposal-unapproved'
     assert all(corpus[k] is False for k in ['active', 'frozen', 'httpApproved'])
-    assert metadata['ownerApproved'] is False and metadata['g10'] == 'CLOSED'
+    assert metadata['ownerApproved'] is True and metadata['approvalScope'] == 'DESIGN_ONLY_WITH_QUALIFICATIONS'
+    assert metadata['productionPolicyApproved'] is False and metadata['g10'] == 'CLOSED'
+    assert all(metadata[k] is False for k in ['active', 'frozen', 'httpApproved'])
+    check_design_approval(read(BASE / 'design-approval-2026-10-23/approval.json'),
+                          read(BASE / 'design-approval-2026-10-23/fixtures.json'))
     for name, digest in metadata['files'].items():
         assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == digest, name
     for name, digest in metadata['baselineFiles'].items():
@@ -154,10 +205,11 @@ def check():
     document = (ROOT / metadata['document']).read_text()
     assert all('G' + str(i) in document for i in range(1,12))
     assert all('O' + str(i) in document for i in range(1,9))
-    assert 'PENDING OWNER APPROVAL' in document and '6.17 NOT FROZEN' in document
+    assert 'APPROVED DESIGN / UNIMPLEMENTED / INACTIVE / NOT FROZEN' in document
+    assert 'Europe/Prague' in document and '6.17 NOT FROZEN' in document
     assert len(metadata['canonicalLocalActions']) == len(set(metadata['canonicalLocalActions']))
     print(f'PASS: {len(cases)} proposed synthetic fixtures ({counts["positive"]} positive / {counts["negative"]} negative); '
-          '8 authored protocol scenes; DTO structure/bytes/int8/replay/audit accounting; hashes; proposal-only gates. No HTTP/PG/Android execution.')
+          '8 authored protocol scenes; DTO structure/bytes/int8/replay/audit accounting; hashes; approved design only, policies default-deny and integration blocked. No HTTP/PG/Android execution.')
     return counts
 
 if __name__ == '__main__':
