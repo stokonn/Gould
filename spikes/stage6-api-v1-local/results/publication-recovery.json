@@ -1,0 +1,25 @@
+{
+  "status": "source publication succeeded",
+  "sourceSha": "c84c4b99eb27034e3630ff18cf2c470410dbbea2",
+  "implementationSha": "337847770a579e1f6689c135805ad07a9b2bab19",
+  "checkpoint": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6372592793",
+  "branch": "feature/goldberg-0.11-stage-6-api-v1-local",
+  "remoteShaMatched": true,
+  "issueState": "OPEN",
+  "projectStatus": "In Progress",
+  "recoveryVerification": "read-only raw TAP/source/artifact verification PASS; no application tests rerun",
+  "venues": {
+    "adapter": 106,
+    "t22": 38,
+    "planningVerifier": 18,
+    "newPostgresBodies": 0,
+    "newHttpRequests": 0,
+    "newAndroidBodies": 0
+  },
+  "limits": [
+    "prior executions validated, not repeated",
+    "original PostgreSQL preflight EPERM is historical, no new availability inference",
+    "public v1 compatibility open; local provisional only",
+    "no domain/policy/Android/production changes"
+  ]
+}
