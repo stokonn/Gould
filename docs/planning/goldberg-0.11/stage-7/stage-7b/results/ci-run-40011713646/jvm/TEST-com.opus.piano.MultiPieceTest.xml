@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.MultiPieceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-23T19:34:21.212Z" hostname="runnervm8k3b6" time="0.011">
+  <properties/>
+  <testcase name="switchingAndPausesNeverDoubleCount" classname="com.opus.piano.MultiPieceTest" time="0.001"/>
+  <testcase name="showcaseFiltersLockedDuplicatesAndCapsAtFive" classname="com.opus.piano.MultiPieceTest" time="0.001"/>
+  <testcase name="attributionKeepsGlobalSessionCountAndPracticeTotal" classname="com.opus.piano.MultiPieceTest" time="0.007"/>
+  <testcase name="negativeDeltaIsRejected" classname="com.opus.piano.MultiPieceTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

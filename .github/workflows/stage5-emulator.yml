@@ -100,6 +100,16 @@ jobs:
             echo "ERROR: checked-out commit does not match the dispatched commit"; exit 1
           fi
           df -h / | tee stage5-ci-results/disk-usage.txt
+      - name: Fetch immutable Stage 7B contract provenance
+        if: inputs.verification-scope == 'stage7b'
+        shell: bash
+        run: |
+          SOURCE_COMMIT="$(python3 -c 'import json; print(json.load(open("contracts/admin/v1/source-provenance.json"))["commit"])')"
+          [[ "$SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ ]]
+          # Fetch objects only: keep the dispatched HEAD and worktree unchanged.
+          git fetch --no-tags --depth=1 origin "$SOURCE_COMMIT"
+          git cat-file -e "$SOURCE_COMMIT^{commit}"
+          python3 scripts/check_admin_contract_fixtures.py | tee stage5-ci-results/provenance-preflight.txt
       - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
         with:
           distribution: temurin

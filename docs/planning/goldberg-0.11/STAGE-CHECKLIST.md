@@ -17,7 +17,9 @@ FAILED before build/tests: installed emulator lacks libpulse.so.0 (exit127).
 Second narrow CI fix installs libpulse0 before diagnostics. Commit
 `5d3f0ccd03411666ff741ccc894bc85ad98cd280` pushed and remotely verified;
 [run40011713646](https://github.com/stokonn/Goldberg/actions/runs/40011713646)
-passed dependency/KVM diagnostics and is building. Instrumentation execution pending. Issue31 dashboard updated (connector403; authenticated gh succeeded),
+passed dependency/KVM and fresh host gate7m37s (275/0/0/0), then FAILED
+contract provenance because shallow checkout lacked bcc7796; zero instrumentation.
+Targeted immutable fetch reproduced PASS in disposable repo; corrected CI pending. Issue31 dashboard updated (connector403; authenticated gh succeeded),
 umbrella OPEN / Project In Progress; final chronological checkpoint awaits results.
 See [SAFE-RECOVERY.md](stage-7/stage-7b/SAFE-RECOVERY.md) for scope/tasks/audit/commands/artifact identity.
 

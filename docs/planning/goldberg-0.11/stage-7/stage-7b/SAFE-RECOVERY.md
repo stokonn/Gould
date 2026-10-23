@@ -143,3 +143,20 @@ changed. `assembleDebugAndroidTest --no-daemon --max-workers=1` SUCCESS in17s
 (5 executed/46 cached tasks); runtime verification requires corrected source.
 Protected-file accounting after this deliberate edit:1187 unchanged; one native
 test file intentionally changed with the original preserved in the checkpoint.
+
+## Run40011713646 — CI host PASS, provenance setup failure
+
+Exact source5d3f0cc: dependency/KVM diagnostics PASS; fresh full Gradle host gate
+SUCCESS7m37s;36 suites/275 JVM tests/0 failures/errors/skips, lint report retained.
+Five host scripts PASS; contract verifier failed because shallow checkout lacked
+immutable bcc7796 source. Zero instrumentation bodies; no emulator launch.
+Raw job log, run/artifact metadata, all JVM XMLs and diagnostic/lint files retained
+under results/ci-run-40011713646; full extracted artifact retained under the initial
+/tmp recovery directory. This is CI provenance setup failure, not an app test failure.
+
+Verified narrow fix: fetch only the exact 40-hex provenance commit without checking
+out/changing HEAD, then run existing strict verifier before the expensive build.
+Reproduced in a new /tmp Git repository: exact bcc7796 fetch and all29 cases/15 hashes
+PASS. YAML/bash parsing PASS. No weakened hash checks or contract content changes.
+Native test isolation correction071ea93 is already committed/pushed, compiled17s;
+next dispatch must include both verified fixes. Original source/evidence preserved.

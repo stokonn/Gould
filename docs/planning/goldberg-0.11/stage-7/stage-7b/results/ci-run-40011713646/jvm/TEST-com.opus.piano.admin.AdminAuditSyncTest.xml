@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.admin.AdminAuditSyncTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-23T19:34:21.677Z" hostname="runnervm8k3b6" time="0.043">
+  <properties/>
+  <testcase name="failedAuditReloadPreservesPreviousEntries" classname="com.opus.piano.admin.AdminAuditSyncTest" time="0.023"/>
+  <testcase name="wifiOnlyRequiresWifiAndUnmeteredNetwork" classname="com.opus.piano.admin.AdminAuditSyncTest" time="0.001"/>
+  <testcase name="allOptInsAreOffAndWifiIsDefault" classname="com.opus.piano.admin.AdminAuditSyncTest" time="0.0"/>
+  <testcase name="auditDeduplicatesPagesAndFiltersOnlyFetchedRows" classname="com.opus.piano.admin.AdminAuditSyncTest" time="0.005"/>
+  <testcase name="notificationsNeedBothOptInAndPlatformPermission" classname="com.opus.piano.admin.AdminAuditSyncTest" time="0.0"/>
+  <testcase name="snapshotDigestDetectsRevisionStatusAndRemovalWithoutStoringPayloads" classname="com.opus.piano.admin.AdminAuditSyncTest" time="0.011"/>
+  <testcase name="incompleteSnapshotNeverProvidesNotificationSignature" classname="com.opus.piano.admin.AdminAuditSyncTest" time="0.001"/>
+  <testcase name="failedSnapshotNeverProvidesNotificationSignature" classname="com.opus.piano.admin.AdminAuditSyncTest" time="0.002"/>
+  <testcase name="explicitMobileConsentPermitsMeteredChecks" classname="com.opus.piano.admin.AdminAuditSyncTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

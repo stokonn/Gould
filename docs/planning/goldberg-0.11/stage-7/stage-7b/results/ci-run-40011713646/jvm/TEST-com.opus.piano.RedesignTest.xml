@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.RedesignTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-23T19:34:21.656Z" hostname="runnervm8k3b6" time="0.007">
+  <properties/>
+  <testcase name="repertoireDefaultsToRecentlyPracticedAndNeverPracticedIsDeterministic" classname="com.opus.piano.RedesignTest" time="0.004"/>
+  <testcase name="badgesAndHistoryBelongToProfileWithoutLosingRoutes" classname="com.opus.piano.RedesignTest" time="0.0"/>
+  <testcase name="presentationNormalizationKeepsExactlyTwoDistinctMetricsAndSafeOrder" classname="com.opus.piano.RedesignTest" time="0.001"/>
+  <testcase name="homeMetricsUseCreditedTimeAndIgnoreNoteOnlyEntries" classname="com.opus.piano.RedesignTest" time="0.0"/>
+  <testcase name="samePieceMultipleEntriesCountOneSessionAndReconcile" classname="com.opus.piano.RedesignTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
