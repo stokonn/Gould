@@ -1314,3 +1314,26 @@ Do not rerun known-blocked PostgreSQL setup in this agent venue. Overall/formal
 packaging already PASS, zero native bodies. Stage5/7A/X10/7B and all user data
 untouched. Exact next action: publish the verified audit scope normally, then
 obtain a permitted PostgreSQL venue and resolve documented acceptance gaps.
+
+## Stage 6.12 publication blocker — verified source preserved locally
+
+Audit commit `ebd813509c046c3b6119e2aed953f270ec7d8d92` is LOCAL ONLY on
+`verify/goldberg-0.11-stage-6-12-local`. Normal push failed before authentication:
+`Could not resolve host: github.com` (exit128). Connected read after failure confirms
+exact branch404. Issue31 checkpoint attempt returned403 `Resource not accessible
+by integration`; fresh read found73 comments, zero matching new checkpoint marker.
+**Source and new Issue checkpoint UNPUBLISHED.** Prior backend9d7150c and Android
+2f1524e publication remain verified; unrelated new comment belongs to its author.
+
+Guarded host publisher: `spikes/stage6-security-local/publish-host.py` requires an
+explicit reviewed40-character HEAD, correct clean branch/origin/ancestry, matching
+baseline/raw evidence/source hashes and PARTIAL findings; normal push only, exact
+remote readback, duplicate guard, append-only Issue31 and old description/comments
+readback. It neither builds nor deploys. Verify locally with `--verify-only`; actual
+network publication remains UNEXECUTED until a permitted host runs it. This receipt
+commit follows the verified audit source; use its exact current SHA explicitly.
+
+59 tests/five checks PASS and T22 finding remain as below; no fresh PostgreSQL,
+Android/emulator, hosted or later-stage execution. Next: run the guarded publisher
+and unchanged disposable PostgreSQL verification on a permitted host, preserve raw
+results and continue6.12 acceptance. Overall6.12 PARTIAL, all formal gates unchanged.

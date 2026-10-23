@@ -1,0 +1,7 @@
+{
+  "spikes/stage6-security-local/README.md": "2f66aaed9cb3d15dcda5332b2d7336f13b6f6d9ee90b9e9477d7a42dd4ffba78",
+  "spikes/stage6-security-local/build-matrix.py": "967cef7b9b45b2d61ea796828387d274b71f7bad9aca4e268de98c5bb11b54db",
+  "spikes/stage6-security-local/publish-host.py": "ce82dd98bb940adac6f0460eee9274dacf36cca44c8097353321a2aec636692a",
+  "spikes/stage6-security-local/run-local.sh": "473a29559c8f6c38c0b38fbe7b500e8ffe38b2f572be817027f7005df7a69df8",
+  "spikes/stage6-security-local/tests/security.test.mjs": "c16a64f77d2fe0e8bd833722316d05bf55d5e6bc93b72803b41451fea4dc469d"
+}

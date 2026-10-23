@@ -49,3 +49,22 @@ See matrix for every local/hosted gap. Do not infer full security/compliance fro
 59 passing probes or historical237/214 totals. Formal6.12 stays unchecked.
 
 created by stokonn with love <3
+
+## Host publication after sandbox DNS/integration-write failures
+
+Do not repeat the original Android/backend publisher. For this new security branch,
+inspect the current local commit and run the scoped publisher with its exact SHA:
+
+```bash
+python3 spikes/stage6-security-local/publish-host.py --expected-head REVIEWED_40_CHARACTER_SHA --verify-only
+python3 spikes/stage6-security-local/publish-host.py --expected-head REVIEWED_40_CHARACTER_SHA
+```
+
+The first command performs local read-only guards. The second uses existing host
+Git/gh access, normal push and exact remote readback before appending one factual
+PARTIAL checkpoint. No automatic authentication/setup, dashboard edit, build,
+deployment, release or APK upload. An existing matching checkpoint is reused.
+If a remote branch diverged, the script stops; never force-push or rewrite it.
+Publisher history checks stop on concurrent description/comment changes without
+editing or restoring them. Checkpoint/publication receipt stays ignored under
+`.gradle/stage612-publication/published-host.json` for agent readback.

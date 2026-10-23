@@ -1,0 +1,20 @@
+{
+  "auditCommit": "ebd813509c046c3b6119e2aed953f270ec7d8d92",
+  "branch": "verify/goldberg-0.11-stage-6-12-local",
+  "sourcePublication": "UNPUBLISHED",
+  "gitPush": {
+    "exit": 128,
+    "error": "fatal: unable to access 'https://github.com/stokonn/Goldberg.git/': Could not resolve host: github.com"
+  },
+  "connectorComment": {
+    "status": 403,
+    "error": "Resource not accessible by integration"
+  },
+  "remoteRefReadback": "connected GitHub exact branch404 after failed push",
+  "issueReadback": {
+    "comments": 73,
+    "pendingMarkerMatches": 0,
+    "checkpoint": "UNPUBLISHED"
+  },
+  "note": "Earlier initial ls-remote succeeded empty; later DNS denied. No blanket bypass, force push, duplicate comment or repeated inaccessible attempts."
+}
