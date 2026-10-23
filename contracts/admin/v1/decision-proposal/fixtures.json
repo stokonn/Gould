@@ -1,0 +1,1220 @@
+{
+  "proposalId": "admin-v1-decision-1",
+  "classification": "proposal-unapproved",
+  "active": false,
+  "frozen": false,
+  "httpApproved": false,
+  "cases": [
+    {
+      "id": "challenge-request",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "EmptyRequest",
+      "valid": true,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1
+      }
+    },
+    {
+      "id": "login-request",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "LoginRequest",
+      "valid": true,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "credential": "SYNTHETIC-NOT-A-CREDENTIAL",
+        "challenge": "SYNTHETIC-NOT-A-CHALLENGE"
+      }
+    },
+    {
+      "id": "refresh-request",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "RefreshRequest",
+      "valid": true,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "refreshToken": "SYNTHETIC-NOT-A-TOKEN"
+      }
+    },
+    {
+      "id": "challenge",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Challenge",
+      "valid": true,
+      "httpStatus": 201,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "challenge": "SYNTHETIC-CHALLENGE",
+        "nonce": "SYNTHETIC-CHALLENGE",
+        "expiresAt": "2026-10-23T12:00:00.123456Z"
+      }
+    },
+    {
+      "id": "tokens",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Tokens",
+      "valid": true,
+      "httpStatus": 201,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "principalId": "00000000-0000-4000-8000-000000000001",
+        "sessionId": "00000000-0000-4000-8000-000000000006",
+        "accessToken": "SYNTHETIC-ACCESS",
+        "refreshToken": "SYNTHETIC-REFRESH",
+        "expiresAt": "2026-10-23T12:00:00.123456Z",
+        "refreshExpiresAt": "2026-10-30T12:00:00.123456Z"
+      }
+    },
+    {
+      "id": "session",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Session",
+      "valid": true,
+      "httpStatus": 200,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "principalId": "00000000-0000-4000-8000-000000000001",
+        "sessionId": "00000000-0000-4000-8000-000000000006",
+        "expiresAt": "2026-10-23T12:00:00.123456Z"
+      }
+    },
+    {
+      "id": "capabilities",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Capabilities",
+      "valid": true,
+      "httpStatus": 200,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "principalId": "00000000-0000-4000-8000-000000000001",
+        "sessionId": "00000000-0000-4000-8000-000000000006",
+        "capabilities": [
+          "queue.read",
+          "decide",
+          "audit.read"
+        ]
+      }
+    },
+    {
+      "id": "open-request",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": true,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "open-result",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenResult",
+      "valid": true,
+      "httpStatus": 200,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "submissionId": "00000000-0000-4000-8000-000000000003",
+        "status": "in_review",
+        "expectedEntityRevision": "7",
+        "submissionRevision": "3"
+      }
+    },
+    {
+      "id": "approve-request",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "ApproveRequest",
+      "valid": true,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      }
+    },
+    {
+      "id": "approve-result",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "ApproveResult",
+      "valid": true,
+      "httpStatus": 201,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "submissionId": "00000000-0000-4000-8000-000000000003",
+        "decision": "approve",
+        "status": "published",
+        "submissionRevision": "3",
+        "entityId": "00000000-0000-4000-8000-000000000004",
+        "publishedEntityRevision": "8"
+      }
+    },
+    {
+      "id": "approve-replay",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "ApproveResult",
+      "valid": true,
+      "httpStatus": 201,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "submissionId": "00000000-0000-4000-8000-000000000003",
+        "decision": "approve",
+        "status": "published",
+        "submissionRevision": "3",
+        "entityId": "00000000-0000-4000-8000-000000000004",
+        "publishedEntityRevision": "8"
+      },
+      "replayOf": "approve-result"
+    },
+    {
+      "id": "reject-request",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "RejectRequest",
+      "valid": true,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000007",
+        "decision": "reject",
+        "reason": "Synthetic evidence needs review."
+      }
+    },
+    {
+      "id": "reject-result",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "RejectResult",
+      "valid": true,
+      "httpStatus": 200,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "submissionId": "00000000-0000-4000-8000-000000000003",
+        "decision": "reject",
+        "status": "rejected",
+        "submissionRevision": "3"
+      }
+    },
+    {
+      "id": "changes-request",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "ChangesRequest",
+      "valid": true,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000008",
+        "decision": "request_changes",
+        "reason": "Synthetic evidence needs review."
+      }
+    },
+    {
+      "id": "changes-result",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "ChangesResult",
+      "valid": true,
+      "httpStatus": 200,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "submissionId": "00000000-0000-4000-8000-000000000003",
+        "decision": "request_changes",
+        "status": "changes_requested",
+        "submissionRevision": "3"
+      }
+    },
+    {
+      "id": "logout",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "EmptyBody",
+      "valid": true,
+      "httpStatus": 204,
+      "value": null
+    },
+    {
+      "id": "queue",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "QueuePage",
+      "valid": true,
+      "httpStatus": 200,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "items": [
+          {
+            "submissionId": "00000000-0000-4000-8000-000000000003",
+            "authorId": "00000000-0000-4000-8000-000000000002",
+            "status": "in_review",
+            "kind": "work",
+            "createdAt": "2026-10-23T12:00:00.123456Z",
+            "updatedAt": "2026-10-23T12:00:00.123456Z",
+            "expectedEntityRevision": "7",
+            "submissionRevision": "3",
+            "evidenceCount": "1",
+            "display": {
+              "title": null,
+              "composer": null
+            }
+          }
+        ],
+        "nextCursor": "U1lOVEhFVElDLUNVUlNPUg",
+        "coverage": "page",
+        "searchScope": "id_title_composer_kind"
+      }
+    },
+    {
+      "id": "detail",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Detail",
+      "valid": true,
+      "httpStatus": 200,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "submissionId": "00000000-0000-4000-8000-000000000003",
+        "authorId": "00000000-0000-4000-8000-000000000002",
+        "status": "in_review",
+        "kind": "work",
+        "targetEntityId": "00000000-0000-4000-8000-000000000004",
+        "expectedEntityRevision": "7",
+        "submissionRevision": "3",
+        "createdAt": "2026-10-23T12:00:00.123456Z",
+        "updatedAt": "2026-10-23T12:00:00.123456Z",
+        "revisions": {
+          "items": [
+            {
+              "submissionRevision": "3",
+              "payload": {
+                "schemaVersion": 1,
+                "target": {
+                  "kind": "work",
+                  "catalogueUuid": "00000000-0000-4000-8000-000000000004"
+                },
+                "changeKind": "correction",
+                "fields": [
+                  {
+                    "field": "syntheticTitle",
+                    "newValue": "Synthetic work",
+                    "evidence": [
+                      {
+                        "type": "reference",
+                        "value": "Synthetic reference only",
+                        "license": "SYNTHETIC-NOT-APPROVED"
+                      }
+                    ]
+                  }
+                ],
+                "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+              },
+              "createdAt": "2026-10-23T12:00:00.123456Z",
+              "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+              "hash": "1111111111111111111111111111111111111111111111111111111111111111"
+            }
+          ],
+          "nextCursor": null
+        },
+        "reviews": {
+          "items": [],
+          "nextCursor": null
+        },
+        "targetState": "existing"
+      }
+    },
+    {
+      "id": "comparison-unavailable",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "ComparisonUnavailable",
+      "valid": true,
+      "httpStatus": 200,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "submissionId": "00000000-0000-4000-8000-000000000003",
+        "entityId": "00000000-0000-4000-8000-000000000004",
+        "state": "unavailable",
+        "reason": "projection_unavailable"
+      }
+    },
+    {
+      "id": "comparison",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Comparison",
+      "valid": true,
+      "httpStatus": 200,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "submissionId": "00000000-0000-4000-8000-000000000003",
+        "entityId": "00000000-0000-4000-8000-000000000004",
+        "state": "available",
+        "entityRevision": "7",
+        "entityStatus": "published",
+        "payloadHash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "fields": [
+          {
+            "field": "syntheticTitle",
+            "value": "Synthetic prior work",
+            "evidence": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "stats-unapproved",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "StatsUnavailable",
+      "valid": true,
+      "httpStatus": 200,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "asOf": "2026-10-23T12:00:00.123456Z",
+        "state": "unavailable",
+        "reason": "window_unapproved"
+      }
+    },
+    {
+      "id": "stats-conditional-utc",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Stats",
+      "valid": true,
+      "httpStatus": 200,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "asOf": "2026-10-23T12:00:00.123456Z",
+        "auditHighwater": "9007199254740993",
+        "window": {
+          "timeZone": "UTC",
+          "startInclusive": "2026-10-23T00:00:00.000000Z",
+          "endExclusive": "2026-10-24T00:00:00.000000Z"
+        },
+        "state": "exact",
+        "pending": "2",
+        "needsInfo": "1",
+        "approvedInWindow": "1",
+        "rejectedInWindow": "0"
+      },
+      "condition": "UTC example only; owner has not approved timezone/window"
+    },
+    {
+      "id": "audit-paired-approval",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "AuditPage",
+      "valid": true,
+      "httpStatus": 200,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "items": [
+          {
+            "seq": "9007199254740992",
+            "createdAt": "2026-10-23T12:00:00.123456Z",
+            "action": "in_review->approved",
+            "actor": {
+              "principalId": "00000000-0000-4000-8000-000000000001"
+            },
+            "subject": {
+              "kind": "submission",
+              "id": "00000000-0000-4000-8000-000000000003",
+              "revision": "3"
+            },
+            "beforeHash": null,
+            "afterHash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "reason": null,
+            "requestId": "00000000-0000-4000-8000-000000000001",
+            "prevHash": "0000000000000000000000000000000000000000000000000000000000000000",
+            "thisHash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "canonicalContent": "SYNTHETIC-NOT-A-CHAIN-PROOF"
+          },
+          {
+            "seq": "9007199254740993",
+            "createdAt": "2026-10-23T12:00:00.123456Z",
+            "action": "approved->published",
+            "actor": {
+              "principalId": "00000000-0000-4000-8000-000000000001"
+            },
+            "subject": {
+              "kind": "submission",
+              "id": "00000000-0000-4000-8000-000000000003",
+              "revision": "3"
+            },
+            "beforeHash": null,
+            "afterHash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "reason": null,
+            "requestId": "00000000-0000-4000-8000-000000000001",
+            "prevHash": "0000000000000000000000000000000000000000000000000000000000000000",
+            "thisHash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "canonicalContent": "SYNTHETIC-NOT-A-CHAIN-PROOF"
+          }
+        ],
+        "nextCursor": null,
+        "highwater": "9007199254740993",
+        "headHash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "coverage": "filtered"
+      }
+    },
+    {
+      "id": "error-400",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Error",
+      "valid": true,
+      "httpStatus": 400,
+      "value": {
+        "schemaVersion": 1,
+        "error": {
+          "code": "validation_failed",
+          "message": "Synthetic safe error",
+          "requestId": "00000000-0000-4000-8000-000000000001"
+        }
+      }
+    },
+    {
+      "id": "error-401",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Error",
+      "valid": true,
+      "httpStatus": 401,
+      "value": {
+        "schemaVersion": 1,
+        "error": {
+          "code": "unauthenticated",
+          "message": "Synthetic safe error",
+          "requestId": "00000000-0000-4000-8000-000000000001"
+        }
+      }
+    },
+    {
+      "id": "error-403",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Error",
+      "valid": true,
+      "httpStatus": 403,
+      "value": {
+        "schemaVersion": 1,
+        "error": {
+          "code": "forbidden",
+          "message": "Synthetic safe error",
+          "requestId": "00000000-0000-4000-8000-000000000001"
+        }
+      }
+    },
+    {
+      "id": "error-404",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Error",
+      "valid": true,
+      "httpStatus": 404,
+      "value": {
+        "schemaVersion": 1,
+        "error": {
+          "code": "not_found",
+          "message": "Synthetic safe error",
+          "requestId": "00000000-0000-4000-8000-000000000001"
+        }
+      }
+    },
+    {
+      "id": "error-409",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Error",
+      "valid": true,
+      "httpStatus": 409,
+      "value": {
+        "schemaVersion": 1,
+        "error": {
+          "code": "conflict",
+          "message": "Synthetic safe error",
+          "requestId": "00000000-0000-4000-8000-000000000001"
+        }
+      }
+    },
+    {
+      "id": "error-422",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Error",
+      "valid": true,
+      "httpStatus": 422,
+      "value": {
+        "schemaVersion": 1,
+        "error": {
+          "code": "idempotency_mismatch",
+          "message": "Synthetic safe error",
+          "requestId": "00000000-0000-4000-8000-000000000001"
+        }
+      }
+    },
+    {
+      "id": "error-429",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Error",
+      "valid": true,
+      "httpStatus": 429,
+      "value": {
+        "schemaVersion": 1,
+        "error": {
+          "code": "rate_limited",
+          "message": "Synthetic safe error",
+          "requestId": "00000000-0000-4000-8000-000000000001"
+        }
+      }
+    },
+    {
+      "id": "error-503",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Error",
+      "valid": true,
+      "httpStatus": 503,
+      "value": {
+        "schemaVersion": 1,
+        "error": {
+          "code": "service_unavailable",
+          "message": "Synthetic safe error",
+          "requestId": "00000000-0000-4000-8000-000000000001"
+        }
+      }
+    },
+    {
+      "id": "error-500",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Error",
+      "valid": true,
+      "httpStatus": 500,
+      "value": {
+        "schemaVersion": 1,
+        "error": {
+          "code": "internal",
+          "message": "Synthetic safe error",
+          "requestId": "00000000-0000-4000-8000-000000000001"
+        }
+      }
+    },
+    {
+      "id": "bad-entity-number",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": 9007199254740993,
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "bad-entity-zero-pad",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "07",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "bad-entity-overflow",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "9223372036854775808",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "bad-entity-fraction",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7.0",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "bad-entity-exponent",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7e0",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "bad-entity-negative",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "-1",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "bad-entity-missing",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "bad-proposal-zero",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "0",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "bad-proposal-number",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": 3,
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "bad-proposal-missing",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "explicit-new-zero",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": true,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "0",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "bigint-above-js",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": true,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "9007199254740993",
+        "expectedSubmissionRevision": "9223372036854775807",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "missing-version",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "EmptyRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {}
+    },
+    {
+      "id": "unknown-request-field",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "OpenRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "principalId": "00000000-0000-4000-8000-000000000001"
+      }
+    },
+    {
+      "id": "wrong-version",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "EmptyRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 2
+      }
+    },
+    {
+      "id": "reason-1000-bytes",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "RejectRequest",
+      "valid": true,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "reject",
+        "reason": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀"
+      }
+    },
+    {
+      "id": "reason-1004-bytes",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "RejectRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "reject",
+        "reason": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀"
+      }
+    },
+    {
+      "id": "reason-blank",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "RejectRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "reject",
+        "reason": " "
+      }
+    },
+    {
+      "id": "reason-html",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "RejectRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "reject",
+        "reason": "<b>no</b>"
+      }
+    },
+    {
+      "id": "reason-required",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "RejectRequest",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "reject"
+      }
+    },
+    {
+      "id": "unknown-nested-request-shape",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "QueueItem",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "submissionId": "00000000-0000-4000-8000-000000000003",
+        "authorId": "00000000-0000-4000-8000-000000000002",
+        "status": "in_review",
+        "kind": "work",
+        "createdAt": "2026-10-23T12:00:00.123456Z",
+        "updatedAt": "2026-10-23T12:00:00.123456Z",
+        "expectedEntityRevision": "7",
+        "submissionRevision": "3",
+        "evidenceCount": "1",
+        "display": {
+          "title": null,
+          "composer": null,
+          "invented": "no"
+        }
+      },
+      "mode": "request"
+    },
+    {
+      "id": "object-cursor",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "QueuePage",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "items": [
+          {
+            "submissionId": "00000000-0000-4000-8000-000000000003",
+            "authorId": "00000000-0000-4000-8000-000000000002",
+            "status": "in_review",
+            "kind": "work",
+            "createdAt": "2026-10-23T12:00:00.123456Z",
+            "updatedAt": "2026-10-23T12:00:00.123456Z",
+            "expectedEntityRevision": "7",
+            "submissionRevision": "3",
+            "evidenceCount": "1",
+            "display": {
+              "title": null,
+              "composer": null
+            }
+          }
+        ],
+        "nextCursor": {
+          "id": "00000000-0000-4000-8000-000000000003"
+        },
+        "coverage": "page",
+        "searchScope": "id_title_composer_kind"
+      }
+    },
+    {
+      "id": "malformed-cursor",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "QueuePage",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "items": [
+          {
+            "submissionId": "00000000-0000-4000-8000-000000000003",
+            "authorId": "00000000-0000-4000-8000-000000000002",
+            "status": "in_review",
+            "kind": "work",
+            "createdAt": "2026-10-23T12:00:00.123456Z",
+            "updatedAt": "2026-10-23T12:00:00.123456Z",
+            "expectedEntityRevision": "7",
+            "submissionRevision": "3",
+            "evidenceCount": "1",
+            "display": {
+              "title": null,
+              "composer": null
+            }
+          }
+        ],
+        "nextCursor": "bad cursor=",
+        "coverage": "page",
+        "searchScope": "id_title_composer_kind"
+      }
+    },
+    {
+      "id": "timestamp-ms",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "QueuePage",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "items": [
+          {
+            "submissionId": "00000000-0000-4000-8000-000000000003",
+            "authorId": "00000000-0000-4000-8000-000000000002",
+            "status": "in_review",
+            "kind": "work",
+            "createdAt": "2026-10-23T12:00:00.123Z",
+            "updatedAt": "2026-10-23T12:00:00.123456Z",
+            "expectedEntityRevision": "7",
+            "submissionRevision": "3",
+            "evidenceCount": "1",
+            "display": {
+              "title": null,
+              "composer": null
+            }
+          }
+        ],
+        "nextCursor": "U1lOVEhFVElDLUNVUlNPUg",
+        "coverage": "page",
+        "searchScope": "id_title_composer_kind"
+      }
+    },
+    {
+      "id": "timestamp-invalid-date",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "QueuePage",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "items": [
+          {
+            "submissionId": "00000000-0000-4000-8000-000000000003",
+            "authorId": "00000000-0000-4000-8000-000000000002",
+            "status": "in_review",
+            "kind": "work",
+            "createdAt": "2026-02-30T12:00:00.123456Z",
+            "updatedAt": "2026-10-23T12:00:00.123456Z",
+            "expectedEntityRevision": "7",
+            "submissionRevision": "3",
+            "evidenceCount": "1",
+            "display": {
+              "title": null,
+              "composer": null
+            }
+          }
+        ],
+        "nextCursor": "U1lOVEhFVElDLUNVUlNPUg",
+        "coverage": "page",
+        "searchScope": "id_title_composer_kind"
+      }
+    },
+    {
+      "id": "unknown-response-field",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "QueuePage",
+      "valid": true,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "items": [
+          {
+            "submissionId": "00000000-0000-4000-8000-000000000003",
+            "authorId": "00000000-0000-4000-8000-000000000002",
+            "status": "in_review",
+            "kind": "work",
+            "createdAt": "2026-10-23T12:00:00.123456Z",
+            "updatedAt": "2026-10-23T12:00:00.123456Z",
+            "expectedEntityRevision": "7",
+            "submissionRevision": "3",
+            "evidenceCount": "1",
+            "display": {
+              "title": null,
+              "composer": null
+            }
+          }
+        ],
+        "nextCursor": "U1lOVEhFVElDLUNVUlNPUg",
+        "coverage": "page",
+        "searchScope": "id_title_composer_kind",
+        "futureAdditiveHint": "safe"
+      },
+      "mode": "response"
+    },
+    {
+      "id": "nested-mass-assignment",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Payload",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "target": {
+          "kind": "work",
+          "catalogueUuid": "00000000-0000-4000-8000-000000000004"
+        },
+        "changeKind": "correction",
+        "fields": [
+          {
+            "field": "syntheticTitle",
+            "newValue": "Synthetic work",
+            "evidence": [
+              {
+                "type": "reference",
+                "value": "Synthetic reference only",
+                "license": "SYNTHETIC-NOT-APPROVED",
+                "roles": [
+                  "administrator"
+                ]
+              }
+            ]
+          }
+        ],
+        "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+      }
+    },
+    {
+      "id": "missing-principal",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "dto": "Capabilities",
+      "valid": false,
+      "httpStatus": null,
+      "value": {
+        "schemaVersion": 1,
+        "requestId": "00000000-0000-4000-8000-000000000001",
+        "sessionId": "00000000-0000-4000-8000-000000000006",
+        "capabilities": [
+          "decide"
+        ]
+      }
+    }
+  ]
+}

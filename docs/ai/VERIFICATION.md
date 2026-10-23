@@ -1,3 +1,64 @@
+## API v1 proposal — executed offline verification (2026-10-23)
+
+- `python3 contracts/admin/v1/decision-proposal/verify.py`: PASS,61 proposed DTO
+  fixtures (37 positive/24 negative),8 authored unexecuted protocol scenes, package/
+  protected-source hashes, int8/UTF-8/cursor/receipt/audit-accounting checks.
+- `python3 -m unittest discover -s contracts/admin/v1/decision-proposal -p 'test_*.py'`:
+  PASS,15 tests including malformed/duplicate JSON, unsafe numeric representations,
+  Unicode/date/byte boundaries and wrong-SHA/branch/implementation-diff publisher guards.
+- `python3 spikes/stage6-security-local/verify_contract.py`: PASS,41 original primary
+  cases +29 comparison scenes; current read-only Android bytes and G10 hashes checked.
+- `node spikes/stage6-security-local/tests/contract.test.mjs`: PASS,11 tests,
+  zero failures/skips/cancellations. These are local/scripted-contract checks.
+- `python3 scripts/check_agent_policy.py` and `git diff --check`: PASS.
+
+Raw command outputs and initial corrected findings:
+`contracts/admin/v1/decision-proposal/verification.json`. No production validator,
+HTTP, PostgreSQL, Android JVM/build/runtime, emulator or physical device executed.
+Prior345 successful host executions unchanged and not rerun. Original hash-bound
+handoff/readiness documents preserved; new proposal and current tracking stay separate.
+The proposed UTC fixture is conditional; timezone/window choice remains pending.
+Publication uses exact final clean SHA and the dedicated guarded publisher; see
+API-V1-PROPOSAL-PUBLICATION.md. API freeze/activation remain blocked.
+
+## Current — API v1 owner decision preparation (2026-10-23)
+
+**PROPOSED / INACTIVE / NOT FROZEN.** Worktree `/tmp/goldberg-stage6-security-local`,
+branch `verify/goldberg-0.11-stage-6-12-local`, starts at verified published baseline
+`19f5642192148051a7b4eb5bc5efb1090192e3c0` and
+[checkpoint 6370511889](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6370511889).
+This supersedes older “unpublished baseline” summaries below; their evidence is retained.
+
+Purpose/scope: planning-only G1–G9/G11 contract decision package, exact public DTO/
+endpoint proposals, synthetic fixtures and offline verification tooling. No production
+endpoint/auth/network/moderation activation; G10 remains CLOSED. Stage7B worktree
+unchanged. Existing backend, Android source, SQL and historical corpora/evidence unchanged.
+
+- [x] Separate normative design, verified local behavior, Android legacy expectations
+  and unapproved preferred design in `stage-6/API-V1-DECISION-PROPOSAL.md`.
+- [x] Prepare G1 snapshot statistics, G2 queue metadata/search, G3 audit filters,
+  G4 authorized current values, G5 session-derived identity/lifecycle, G6 explicit
+  open + independent revisions/replay/conflict recovery, G7 binding/schemaVersion,
+  G8 lossless decimal int8, G9 canonical audit/window, G11 byte/policy validation.
+- [x] Prepare 61 authored synthetic DTO cases (37 positive/24 negative), 15 verifier
+  regressions; preserve 41 primary cases (30 captures/11 proposals) and 29 comparison
+  scenes. Exact offline verification results are in docs/ai/VERIFICATION.md.
+- [ ] Owner O1–O8 choices in decision document: public lifecycle/version mapper and
+  offline logout amendment; TTLs; explicit revisions/receipts; int8/cursor/version
+  compatibility; server timezone/window; search/privacy; actual field/source/license
+  policy; separate future implementation authorization. No approval inferred.
+- [ ] G1–G9/G11 integration BLOCKED; formal 6.12 PARTIAL; 6.17 NOT FROZEN;
+  no 6.13–6.18 implementation or acceptance from this task. Browser/fetch/restore/
+  privacy/hosted and Android runtime acceptance remain OPEN. X10 OPEN; Stage8 pending.
+
+Prior 345 successful executions/313 tests counting repeated 32 once/205 PostgreSQL
+bodies are historical verified source evidence, **not rerun**. Q1/D5b, C4, C2 §12,
+cloud/zero-cost/legal and activation gates remain unchanged. Stop at owner decision gate.
+Next agent: read proposed decision package and O1–O8; collect owner decisions before
+any implementation. Do not run old publisher for this new package; use the dedicated
+guarded `contracts/admin/v1/decision-proposal/publish.py` with exact final SHA.
+Publication receipt/fallback: `docs/ai/API-V1-PROPOSAL-PUBLICATION.md`.
+
 ## Post-T22 reconciliation publication outcome — VERIFIED locally, update UNPUBLISHED
 
 Reconciliation commit `f7d88aae69bdf2a4b1adb248e1020c9a9b3baa8a` preserves the

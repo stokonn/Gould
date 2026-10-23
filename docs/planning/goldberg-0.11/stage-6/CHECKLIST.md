@@ -1,5 +1,65 @@
 # Goldberg 0.11 — Stage 6 implementation checklist (all tasks UNCHECKED)
 
+## Current — API v1 owner decision preparation (2026-10-23)
+
+**PROPOSED / INACTIVE / NOT FROZEN.** Worktree `/tmp/goldberg-stage6-security-local`,
+branch `verify/goldberg-0.11-stage-6-12-local`, starts at verified published baseline
+`19f5642192148051a7b4eb5bc5efb1090192e3c0` and
+[checkpoint 6370511889](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6370511889).
+This supersedes older “unpublished baseline” summaries below; their evidence is retained.
+
+Purpose/scope: planning-only G1–G9/G11 contract decision package, exact public DTO/
+endpoint proposals, synthetic fixtures and offline verification tooling. No production
+endpoint/auth/network/moderation activation; G10 remains CLOSED. Stage7B worktree
+unchanged. Existing backend, Android source, SQL and historical corpora/evidence unchanged.
+
+- [x] Separate normative design, verified local behavior, Android legacy expectations
+  and unapproved preferred design in `stage-6/API-V1-DECISION-PROPOSAL.md`.
+- [x] Prepare G1 snapshot statistics, G2 queue metadata/search, G3 audit filters,
+  G4 authorized current values, G5 session-derived identity/lifecycle, G6 explicit
+  open + independent revisions/replay/conflict recovery, G7 binding/schemaVersion,
+  G8 lossless decimal int8, G9 canonical audit/window, G11 byte/policy validation.
+- [x] Prepare 61 authored synthetic DTO cases (37 positive/24 negative), 15 verifier
+  regressions; preserve 41 primary cases (30 captures/11 proposals) and 29 comparison
+  scenes. Exact offline verification results are in docs/ai/VERIFICATION.md.
+- [ ] Owner O1–O8 choices in decision document: public lifecycle/version mapper and
+  offline logout amendment; TTLs; explicit revisions/receipts; int8/cursor/version
+  compatibility; server timezone/window; search/privacy; actual field/source/license
+  policy; separate future implementation authorization. No approval inferred.
+- [ ] G1–G9/G11 integration BLOCKED; formal 6.12 PARTIAL; 6.17 NOT FROZEN;
+  no 6.13–6.18 implementation or acceptance from this task. Browser/fetch/restore/
+  privacy/hosted and Android runtime acceptance remain OPEN. X10 OPEN; Stage8 pending.
+
+Prior 345 successful executions/313 tests counting repeated 32 once/205 PostgreSQL
+bodies are historical verified source evidence, **not rerun**. Q1/D5b, C4, C2 §12,
+cloud/zero-cost/legal and activation gates remain unchanged. Stop at owner decision gate.
+Next agent: read proposed decision package and O1–O8; collect owner decisions before
+any implementation. Do not run old publisher for this new package; use the dedicated
+guarded `contracts/admin/v1/decision-proposal/publish.py` with exact final SHA.
+Publication receipt/fallback: `docs/ai/API-V1-PROPOSAL-PUBLICATION.md`.
+
+| Substage and purpose | Local evidence / remaining task (all formal gates unchanged) |
+|---|---|
+| 6.1 schema integrity | Existing local DDL proof retained; hosted migration/access/restore acceptance pending. |
+| 6.2 authentication | Existing local token/session proof retained; approve G5 lifecycle/TTLs/version mapper and later real integration. |
+| 6.3 authorization | Live role/default-deny local proof retained; hosted role removal/suspension acceptance pending. |
+| 6.4 submissions | Local immutable payload proof retained; approve actual default-deny field/source/license policy. |
+| 6.5 moderation | Local atomic/dual-revision proof retained; approve explicit public open/decision/result/conflict protocol. |
+| 6.6 idempotency | Local replay/mismatch proof retained; approve exact public receipts,24h retention and uncertain-outcome tests. |
+| 6.7 public projection | Local overlay/feed proof retained; public HTTP and hosted exposure acceptance pending. |
+| 6.8 Admin queries/actions | Existing local operations retained; G1–G4 functionality and G7 DTO mapping unimplemented here. |
+| 6.9 abuse budgets | Existing local caps/kill-switch proof retained; real runtime/quota/zero-cost measurements pending. |
+| 6.10 Android repository/security | Existing isolated candidate retained; approved shared adapter and runtime/upgrade acceptance pending. |
+| 6.11 Android error/offline UX | Existing local candidate retained; byte limits/204/int8/error/recovery adapter tests and runtime pending. |
+| 6.12 threat verification | T22 LOCAL PASS,14 local PASS/6 PARTIAL/2 NOT TESTED; overall PARTIAL. Browser/fetch/restore/privacy/runtime open. |
+| 6.13 real integration auth | Not implemented by this task; separately authorize expiry/rotation/JWKS/live revocation integration. |
+| 6.14 exhaustion/budget | Not implemented by this task; separately authorize provider/quota/kill-switch/budget acceptance. |
+| 6.15 restore/RPO | Not implemented by this task; actual isolated restore/export audit proof remains pending. |
+| 6.16 pre-collection publication | Not implemented by this task; retention/privacy/contact/license approvals and publication pending. |
+| 6.17 API freeze/handoff | PROPOSED decision package only; owner O1–O8, implementation/shared tests/security gates before explicit freeze. UNCHECKED. |
+| 6.18 closure/tracking | Planning checkpoint synchronization only; formal stage closure unaccepted, merge/deploy/release not authorized. |
+
+
 ## Existing Supabase project — externally verified reconciliation (2026-10-22)
 
 The owner relayed verification by **ChatGPT's connected Supabase integration** on

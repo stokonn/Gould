@@ -1,0 +1,204 @@
+{
+  "classification": "proposal-unapproved",
+  "executed": false,
+  "purpose": "Authored expected protocol scenes for future adapter tests; not a backend simulator or observed HTTP run",
+  "cases": [
+    {
+      "id": "stale-entity",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      },
+      "expectedHttpStatus": 409,
+      "expectedErrorFixture": "error-409",
+      "precondition": {
+        "session": "active",
+        "role": "decide",
+        "status": "in_review",
+        "entityRevision": "8",
+        "submissionRevision": "3"
+      },
+      "recovery": "refetch_comparison_and_detail_then_explicit_reconfirm_no_revision_substitution"
+    },
+    {
+      "id": "stale-proposal",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      },
+      "expectedHttpStatus": 409,
+      "expectedErrorFixture": "error-409",
+      "precondition": {
+        "session": "active",
+        "role": "decide",
+        "status": "in_review",
+        "entityRevision": "7",
+        "submissionRevision": "4"
+      },
+      "recovery": "refetch_detail_then_explicit_reconfirm"
+    },
+    {
+      "id": "wrong-state",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      },
+      "expectedHttpStatus": 409,
+      "expectedErrorFixture": "error-409",
+      "precondition": {
+        "session": "active",
+        "role": "decide",
+        "status": "submitted",
+        "entityRevision": "7",
+        "submissionRevision": "3"
+      },
+      "recovery": "refetch_then_explicit_open_before_decision"
+    },
+    {
+      "id": "same-request-replay",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      },
+      "expectedHttpStatus": 201,
+      "expectedErrorFixture": null,
+      "storedRequest": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      },
+      "resultFixture": "approve-replay",
+      "effects": 0
+    },
+    {
+      "id": "changed-body-same-key",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve",
+        "reason": "Changed intent on same key"
+      },
+      "expectedHttpStatus": 422,
+      "expectedErrorFixture": "error-422",
+      "storedRequest": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      },
+      "effects": 0
+    },
+    {
+      "id": "role-revoked-before-replay",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      },
+      "expectedHttpStatus": 403,
+      "expectedErrorFixture": "error-403",
+      "storedRequest": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      },
+      "precondition": {
+        "session": "active",
+        "role": "revoked"
+      },
+      "effects": 0
+    },
+    {
+      "id": "session-revoked-before-replay",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      },
+      "expectedHttpStatus": 401,
+      "expectedErrorFixture": "error-401",
+      "storedRequest": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      },
+      "precondition": {
+        "session": "revoked",
+        "role": "decide"
+      },
+      "effects": 0
+    },
+    {
+      "id": "uncertain-response-recovery",
+      "classification": "proposal-unapproved",
+      "synthetic": true,
+      "active": false,
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      },
+      "expectedHttpStatus": 201,
+      "expectedErrorFixture": null,
+      "storedRequest": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "7",
+        "expectedSubmissionRevision": "3",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      },
+      "priorTransportOutcome": "timeout_after_commit",
+      "resultFixture": "approve-replay",
+      "effects": 0,
+      "recovery": "explicit_exact_intent_retry_with_same_key_within_retention"
+    }
+  ]
+}

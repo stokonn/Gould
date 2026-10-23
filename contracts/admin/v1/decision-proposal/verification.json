@@ -1,0 +1,79 @@
+{
+  "classification": "planning-only-offline-verification",
+  "baseline": "19f5642192148051a7b4eb5bc5efb1090192e3c0",
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "contracts/admin/v1/decision-proposal/verify.py"
+      ],
+      "exitCode": 0,
+      "output": "PASS: 61 proposed synthetic fixtures (37 positive / 24 negative); 8 authored protocol scenes; DTO structure/bytes/int8/replay/audit accounting; hashes; proposal-only gates. No HTTP/PG/Android execution.\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "contracts/admin/v1/decision-proposal",
+        "-p",
+        "test_*.py"
+      ],
+      "exitCode": 0,
+      "output": "...............\n----------------------------------------------------------------------\nRan 15 tests in 0.032s\n\nOK\nPASS: 61 proposed synthetic fixtures (37 positive / 24 negative); 8 authored protocol scenes; DTO structure/bytes/int8/replay/audit accounting; hashes; proposal-only gates. No HTTP/PG/Android execution.\n"
+    },
+    {
+      "command": [
+        "python3",
+        "spikes/stage6-security-local/verify_contract.py"
+      ],
+      "exitCode": 0,
+      "output": "Read-only current client bytes checked. PASS:41 primary cases (30 actual in-process/scripted-storage captures,11 inactive proposals),29 preserved authored cases; G1-G11 matrix; source/corpus/client hashes; G10 remains closed. No HTTP/PG/Android/freeze acceptance.\n"
+    },
+    {
+      "command": [
+        "node",
+        "spikes/stage6-security-local/tests/contract.test.mjs"
+      ],
+      "exitCode": 0,
+      "output": "TAP version 13\n# Subtest: shared corpus keeps captures proposals and legacy authored cases separate, never frozen\nok 1 - shared corpus keeps captures proposals and legacy authored cases separate, never frozen\n  ---\n  duration_ms: 2.681753\n  type: 'test'\n  ...\n# Subtest: all eight error classes retain safe distinct envelopes and request correlation\nok 2 - all eight error classes retain safe distinct envelopes and request correlation\n  ---\n  duration_ms: 0.548918\n  type: 'test'\n  ...\n# Subtest: capabilities do not invent principal binding and logout204 is not legacy revoked JSON\nok 3 - capabilities do not invent principal binding and logout204 is not legacy revoked JSON\n  ---\n  duration_ms: 0.201842\n  type: 'test'\n  ...\n# Subtest: queue uses object microsecond cursor and fixed20 rows; unsupported filters do not silently apply\nok 4 - queue uses object microsecond cursor and fixed20 rows; unsupported filters do not silently apply\n  ---\n  duration_ms: 0.355633\n  type: 'test'\n  ...\n# Subtest: detail separates entity expectation7 and immutable submission3 with history and raw reviews\nok 5 - detail separates entity expectation7 and immutable submission3 with history and raw reviews\n  ---\n  duration_ms: 0.30131\n  type: 'test'\n  ...\n# Subtest: open and decision bodies keep both expectations, approval8 is entity revision, other results omit revision\nok 6 - open and decision bodies keep both expectations, approval8 is entity revision, other results omit revision\n  ---\n  duration_ms: 0.210147\n  type: 'test'\n  ...\n# Subtest: idempotent replay preserves exact body and key; changed body422; generic409 requires refetch\nok 7 - idempotent replay preserves exact body and key; changed body422; generic409 requires refetch\n  ---\n  duration_ms: 1.893542\n  type: 'test'\n  ...\n# Subtest: audit pages preserve signed cursor highwater numeric order, vocabulary and independent chain check\nok 8 - audit pages preserve signed cursor highwater numeric order, vocabulary and independent chain check\n  ---\n  duration_ms: 2.823441\n  type: 'test'\n  ...\n# Subtest: BIGINT decimal bounds stay exact and outsideLong or floating representations fail closed\nok 9 - BIGINT decimal bounds stay exact and outsideLong or floating representations fail closed\n  ---\n  duration_ms: 0.705415\n  type: 'test'\n  ...\n# Subtest: before after fixtures are public display only, not privileged current-field lookup\nok 10 - before after fixtures are public display only, not privileged current-field lookup\n  ---\n  duration_ms: 0.617699\n  type: 'test'\n  ...\n# Subtest: G1 throughG9 andG11 proposals remain inactive and require explicit approval; G10 is not reopened\nok 11 - G1 throughG9 andG11 proposals remain inactive and require explicit approval; G10 is not reopened\n  ---\n  duration_ms: 0.415757\n  type: 'test'\n  ...\n1..11\n# tests 11\n# suites 0\n# pass 11\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 30.022296\n"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_agent_policy.py"
+      ],
+      "exitCode": 0,
+      "output": "PASS: canonical policy, thin agent references, Cursor frontmatter and local Wiki navigation; runtime agent loading NOT TESTED\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "output": ""
+    }
+  ],
+  "notExecuted": [
+    "PostgreSQL rerun",
+    "HTTP",
+    "Android JVM/build/runtime",
+    "emulator",
+    "physical device",
+    "cloud/OAuth"
+  ],
+  "initialFindings": [
+    {
+      "check": "existing source provenance",
+      "finding": "Initial planning addenda to HANDOFF-STAGE7.md and STAGE7B-CONTRACT-READINESS.md invalidated their pinned hashes; those edits were removed and original bytes preserved. Current checker passes."
+    },
+    {
+      "check": "git diff --check",
+      "finding": "Initial extra trailing blank line in root stage checklist corrected; final check passes."
+    }
+  ]
+}
