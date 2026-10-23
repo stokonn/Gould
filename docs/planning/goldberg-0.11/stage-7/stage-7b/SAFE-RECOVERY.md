@@ -38,7 +38,9 @@ Original source/evidence and private PMP bytes are preserved.
   retaining default checks for source, structured results and documentation.
 - [x] Checkpoint `0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e` committed; immediate remote precheck
   matched base cee9330; ordinary push and exact SHA readback PASS.
-- [ ] Dispatch Stage7B mode; inspect actual run/logs/artifacts and document result.
+- [x] Dispatch Stage7B mode and preserve four run logs/artifacts; fourth run
+  executes182 XML tests,0 failures/errors,2 pre-existing skips; four Admin cases PASS.
+- [ ] Verify corrected post-suite smoke workflow on its new exact source SHA.
 - [ ] Synchronize Issue31 description plus one checkpoint comment and local docs.
 
 ## Implementation audit and acceptance limits
@@ -160,3 +162,57 @@ Reproduced in a new /tmp Git repository: exact bcc7796 fetch and all29 cases/15 
 PASS. YAML/bash parsing PASS. No weakened hash checks or contract content changes.
 Native test isolation correction071ea93 is already committed/pushed, compiled17s;
 next dispatch must include both verified fixes. Original source/evidence preserved.
+
+Fourth dispatch: source `de792fc06f0e8d8ef898d4d2254489783e3310a5`,
+run40013193851 includes pinned-source preflight and native test wrapper correction;
+ordinary push/readback verified. Result pending. Raw emulator-version/sdkmanager
+text also emits trailing whitespace; extend the existing narrow raw-evidence
+attributes for those filenames without editing diagnostic bytes.
+
+## Run40013193851 — instrumentation PASS; post-suite smoke failed
+
+Source de792fc; strict source/provenance/KVM/API36 guards passed. Fresh host gate
+and275 JVM tests PASS; lint0 errors/132 warnings/1 hint; six scripts PASS.
+Connected task SUCCESS3m22s. XML182 testcase elements, failures0/errors0/skipped2;
+all four Stage7bAdminRuntimeTest bodies PASS. Two skips are unchanged Stage4
+external portrait/provider fixture tests. Gradle console says184; preserve the
+console/XML discrepancy without inventing additional executions.
+
+Workflow FAILURE is post-test smoke: ui-start.txt reports missing MainActivity
+because connected-test teardown removed app. Captured final-screen.png inspected:
+Android launcher only; no Admin/no-scroll/visual acceptance proof. Preserve all
+original downloaded hashes in artifact-files-sha256.json; core XML/diagnostics,
+raw job log, losslessly compressed logcat and screenshot retained in results.
+
+Fix only smoke helper: explicit emulator-targeted install-r of the same built APK
+before am start. No uninstall/signature bypass. Bash syntax and synthetic host
+harness PASS, including fatal install failure and command order; no real device
+used by harness. Corrected runtime pending a new exact-SHA dispatch.
+
+## Usage-limit resume — exact state and evidence correction
+
+Resume inventory: HEAD and remote both de792fc06f0e8d8ef898d4d2254489783e3310a5;
+80 staged files, no unstaged changes initially; private PMP remained untracked.
+Only this session visible in process namespace. Staged patch and byte hashes saved
+before edits under /tmp/goldberg-stage7b-resume-20261023.
+
+Run40015851111 completed FAILURE at original de792fc, without the smoke fix.
+The preceding staged check stopped the commit; the following shell dispatch still
+ran against the old remote. No commit/push/corrected-source verification came from
+that URL. Preserve its metadata/logs; do not use it as correction acceptance.
+
+Exact whitespace blocker: raw instrumentation XML uses CRLF. Add only its evidence
+path's cr-at-eol allowance, retain normal blank-at-eol/EOF/space-before-tab checks,
+and disable text conversion there to preserve bytes. No source checks suppressed.
+Staged check now PASS under the scoped attribute; raw XML bytes unchanged.
+
+Teardown cause now verified directly from saved logcat: at19:55:17.862,
+ActivityManager force-stops com.opus.piano for deletePackageX; at19:55:18.058,
+RollbackManager broadcasts ACTION_PACKAGE_FULLY_REMOVED. Both occur after tests
+and before the failed smoke launch. Exact excerpt retained in safe-recovery results.
+Restore only the same built APK with emulator-targeted install-r; keep set-euo
+pipefail, full suite, strict install and launch failures, and device guards intact.
+Synthetic host harness establishes command ordering/error propagation only.
+Next: require staged check success, commit, verify ordinary push and exact remote,
+then dispatch corrected SHA once. Collect actual final logs/XML/smoke, synchronize
+Issue31/local checklists and publish documentation. Stage7B acceptance stays open.

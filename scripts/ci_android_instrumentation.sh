@@ -27,6 +27,9 @@ trap collect EXIT
 set -o pipefail
 ./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest 2>&1 | tee stage5-ci-results/instrumentation-gradle.log
 # A real UI smoke artifact, not proof of the Admin visual acceptance matrix.
+# The connected-test runner removes its installed app during suite teardown.
+# Restore the same built APK; keep signature compatibility strict with install -r.
+adb -s "$SERIAL" install -r app/build/outputs/apk/debug/app-debug.apk > stage5-ci-results/smoke-install.txt
 adb -s "$SERIAL" shell am start -W -n com.opus.piano/.MainActivity > stage5-ci-results/ui-start.txt
 sleep 2
 adb -s "$SERIAL" exec-out screencap -p > stage5-ci-results/app-smoke.png

@@ -1,38 +1,31 @@
-## Stage 7B preserved checkpoint and CI continuation — 2026-10-23
+## Stage 7B recovered work and native verification — 2026-10-23
 
-**Stage7B IN PROGRESS; acceptance incomplete.** Source/evidence checkpoint
-`0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e` committed and ordinary-pushed; exact
-remote SHA readback PASS. Initial cee9330 +26 modified tracked /125 publishable new
-files preserved; private PMP excluded. Fresh JVM **275/0/0/0**,36 suites,12s;
-assembly/lint gate SUCCESS (mostly cached), six host scripts and syntax checks PASS.
-No app-source/contract/private PMP/prior-evidence bytes changed during recovery.
+Stage7B remains IN PROGRESS; acceptance incomplete. Preservation checkpoint
+`0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e` ordinary-pushed/read back.
+Current verified CI source `de792fc06f0e8d8ef898d4d2254489783e3310a5`,
+[run40013193851](https://github.com/stokonn/Goldberg/actions/runs/40013193851):
+full host build/JVM/lint and six scripts PASS; **275 JVM tests,0 failures/errors/skips**;
+lint0 errors/132 warnings/1 hint. API36 emulator-5554/qemu1: connected task SUCCESS
+3m22s; XML **182 tests,0 failures/errors,2 pre-existing Stage4 external-fixture skips**;
+all **4 Stage7bAdminRuntimeTest cases PASS**. XML has182 testcase elements; Gradle's
+console prints184, so XML counts remain authoritative. No tests filtered/weakened.
 
-[API36 CI run40011091868](https://github.com/stokonn/Goldberg/actions/runs/40011091868)
-FAILED before build/tests at this exact SHA: emulator executable absent during
-pre-build diagnostics (exit127). Zero test bodies; no application failure. Narrow
-verified fix explicitly installs emulator before diagnostics. Corrected commit
-`3e04e2b716435684a0d4d88a71a4a59407201ada` pushed with exact remote SHA readback;
-[run40011450671](https://github.com/stokonn/Goldberg/actions/runs/40011450671)
-FAILED before build/tests: installed emulator lacks libpulse.so.0 (exit127).
-Second narrow CI fix installs libpulse0 before diagnostics. Commit
-`5d3f0ccd03411666ff741ccc894bc85ad98cd280` pushed and remotely verified;
-[run40011713646](https://github.com/stokonn/Goldberg/actions/runs/40011713646)
-passed dependency/KVM and fresh host gate7m37s (275/0/0/0), then FAILED
-contract provenance because shallow checkout lacked bcc7796; zero instrumentation.
-Targeted immutable fetch reproduced PASS in disposable repo; corrected CI pending. Issue31 dashboard updated (connector403; authenticated gh succeeded),
-umbrella OPEN / Project In Progress; final chronological checkpoint awaits results.
-See [SAFE-RECOVERY.md](stage-7/stage-7b/SAFE-RECOVERY.md) for scope/tasks/audit/commands/artifact identity.
+Workflow conclusion FAILURE after tests: UTP removes the installed app; post-suite
+smoke launch fails with Activity class missing. Launcher screenshot inspected;
+it is not Admin/app UI evidence. Narrow fix restores the same built APK with
+explicit emulator-targeted install-r before smoke; syntax and synthetic host
+success/fatal-install-failure harness PASS. Corrected smoke runtime pending.
 
-Stage7A finally owner-accepted; X10 NOT FIXED/NOT VERIFIED, owner-deferred Gould0.12.
-Stage8 material readability/accessibility/touch targets remain required. Existing
-historical summaries below are superseded for current status/authorization only.
+Native context-wrapper isolation fix071ea93 is compiled and now runtime-verified.
+Initial source/prior evidence/PMP preserved;1187 protected files unchanged and one
+intentional native-test correction (original retained in0703cd8). Personal Room,
+backup, practice and production application source unchanged during recovery.
 Production networking/decisions DISABLED; G1–G9/G11 integration and Admin visual/
-accessibility/WorkManager/notification/upgrade/owner acceptance remain pending.
-
-Native test-only isolation fix found by inspection: return the wrapper itself from
-applicationContext so stores and tamper assertions use the same disposable prefs.
-All assertions retained; compilation SUCCESS17s. Corrected runtime still pending.
-Original test preserved in0703cd8; application/contracts/PMP/prior evidence unchanged.
+accessibility/WorkManager/notification/seeded-upgrade/owner acceptance remain open.
+Stage7A finally owner-accepted; X10 unfixed/unverified and deferred Gould0.12;
+Stage8 material readability/accessibility/touch-target checks remain required.
+See [SAFE-RECOVERY.md](stage-7/stage-7b/SAFE-RECOVERY.md) for purpose, scope, tasks, evidence and continuation.
+Issue31 OPEN / Goldberg Development In Progress; final checkpoint sync pending.
 
 ---
 

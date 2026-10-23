@@ -1,0 +1,1 @@
+10-23 19:55:17.862   648   682 I ActivityManager: Force stopping com.opus.piano appid=10216 user=-1: deletePackageX
