@@ -1,0 +1,54 @@
+{
+  "publishedImplementationHead": "2f1524e4083a98a64d5fa9790f3cdc002d1f8237",
+  "remoteReadback": "independently confirmed via connected GitHub read",
+  "issue31Checkpoint": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6362788710",
+  "checkpointReadback": "independently fetched; not reposted or edited",
+  "publisherHistoryVerification": {
+    "remoteSha": "2f1524e4083a98a64d5fa9790f3cdc002d1f8237",
+    "checkpoint": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6362788710",
+    "historicalCommentsPreserved": 70,
+    "milestone": "PARTIAL; runtime acceptance pending"
+  },
+  "jvm": {
+    "tests": 214,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "source": "owner-confirmed, prior generated XML independently inspected"
+  },
+  "debugApkAndLint": "owner host BUILD SUCCESSFUL, artifacts already inspected; not rerun",
+  "instrumentationPackaging": {
+    "command": "./gradlew --no-daemon :app:assembleDebugAndroidTest --stacktrace",
+    "result": "BUILD SUCCESSFUL",
+    "tasks": 51,
+    "executedTasks": 30,
+    "upToDateTasks": 21,
+    "taskCountsSource": "owner report; original console log not supplied",
+    "apkSha256": "519dcf93d767e9a8fa5fade656f3361fe0f5d332e6e833603d8c66e75c60305e",
+    "apkBytes": 991419,
+    "preservedLocalPath": ".gradle/community-host-artifacts/2f1524e/app-debug-androidTest.apk",
+    "package": "com.opus.piano.test",
+    "targetPackage": "com.opus.piano",
+    "runner": "androidx.test.runner.AndroidJUnitRunner",
+    "signer": "trusted53eface4\u202641d59e; independently verified",
+    "sourceHashesMatched": 15,
+    "testBodiesExecuted": 0
+  },
+  "emulatorDiagnostics": {
+    "source": "owner report, not newly agent-executed VM diagnostics",
+    "host": "Fedora44",
+    "emulatorVersion": "37.2.12",
+    "KVM": "available and usable",
+    "AVDs": [
+      "stage5-api36",
+      "Medium_Phone_API_37.0"
+    ],
+    "adbConnectedDevices": 0,
+    "failure": "repeated SIGSEGV in qemu-system-x86_64-headless",
+    "commandIncluded": "-gpu swiftshader_indirect",
+    "lastInspectedCorePid": 1321999,
+    "rootCause": "UNCONFIRMED"
+  },
+  "agentActions": "read back remote/checkpoint, inspect packaged test APK, prepare procedure; no builds/publication/emulator launches repeated",
+  "acceptance": "PARTIAL; Android instrumentation/runtime/UI acceptance pending"
+}

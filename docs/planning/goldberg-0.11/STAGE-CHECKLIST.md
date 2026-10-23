@@ -1213,3 +1213,60 @@ Supabase/Cloudflare change, main merge, release or6.12–6.14 start. Next action
 compile test APK on permitted host, then execute scoped tests and native migration/
 upgrade/UI acceptance on a named disposable emulator; publish this factual partial
 checkpoint after normal source push and exact remote readback.
+
+## OWNER STATUS CORRECTION — packaging and source publication confirmed (2026-10-23)
+
+**The implementation is PUBLISHED. JVM/build/lint and instrumentation APK packaging
+PASS. Android runtime/UI acceptance remains PENDING.** This entry supersedes all
+older statements that packaging or source publication are blocked/unpublished.
+Historical checkpoints below are preserved as point-in-time evidence.
+
+Branch implement/goldberg-0.11-stage-6-10-11-local; published implementation HEAD
+2f1524e4083a98a64d5fa9790f3cdc002d1f8237. Agent independently read the exact remote
+branch HEAD and published Issue #31 checkpoint 6362788710:
+https://github.com/stokonn/Goldberg/issues/31#issuecomment-6362788710.
+Owner's guarded publisher record confirms preservation of all 70 earlier comments
+and the Issue description at publication. Fresh connected read saw 72 comments;
+no checkpoint was reposted or edited in this correction, and no build/publication
+command was repeated. New documentation correction remains distinct from published
+application source; application/test/build files have not changed.
+
+- [x] Prior confirmed Fedora host JVM 214 PASS, 0 failures/errors/skips; debug APK and
+ lint BUILD SUCCESSFUL (lint 0 errors / 109 warnings); results remain valid, not rerun.
+- [x] Owner executed `./gradlew --no-daemon :app:assembleDebugAndroidTest --stacktrace`:
+ BUILD SUCCESSFUL; 51 tasks (30 executed, 21 up-to-date). Task counts are owner-reported;
+ original console transcript not supplied. Full instrumentation APK packaging PASS.
+- [x] Agent inspected the actual packaged test APK/metadata/manifest/signature:
+ com.opus.piano.test targets com.opus.piano using AndroidJUnitRunner, min 26 / target 36,
+ trusted signing certificate matches. 991419 bytes; SHA256
+ 519dcf93d767e9a8fa5fade656f3361fe0f5d332e6e833603d8c66e75c60305e.
+ Preserved privately at .gradle/community-host-artifacts/2f1524e/app-debug-androidTest.apk.
+ All 15 recorded source hashes match. No APK upload/release.
+- [x] Source branch publication and existing checkpoint read back independently.
+ No duplicate Issue/checkpoint, dashboard change or repeat publisher execution.
+- [x] Narrow non-destructive recovery/verification procedure prepared:
+ stage-6/LOCAL-ANDROID-EMULATOR-RECOVERY.md. Preparation only; no VM was launched.
+- [ ] Instrumentation execution: 0 Android test bodies; 5 new tests remain pending.
+- [ ] Android Keystore/backup runtime, native Room/backup migration/seeded upgrade,
+ actual app process death/recreation/cold startup and contributor UI/theme/font/
+ CZ/EN screenshots/acceptance remain pending. Overall 6.10–6.11 is NOT fully accepted.
+
+Owner diagnostics (not newly agent-executed VM tests): Fedora 44, Emulator 37.2.12,
+KVM available/usable; AVDs stage5-api36 and Medium_Phone_API_37.0; no ADB-connected
+device. Repeated SIGSEGV in qemu-system-x86_64-headless, command included
+-gpu swiftshader_indirect; last inspected core PID 1321999. **Root cause UNCONFIRMED.**
+Official graphics guidance marks this GPU mode deprecated; that is not causal proof.
+Procedure retains existing diagnostic evidence and permits at most one explicit,
+fresh isolated API36 desktop trial with a documented renderer, existing cached image,
+separate AVD registry/data, bounded boot observation and stop-on-crash rules.
+No original AVD boot/wipe/config edit, global ADB reset, SDK upgrade, permission/
+SELinux change, physical-phone use or repeated crashing launch. If the trial fails,
+stop and obtain stack-based diagnosis or a functioning separately selected venue.
+
+New packaging/publication evidence and owner-attribution details:
+stage-6/results/android-local/owner-status-correction-20261023/.
+Existing application source, Stage 5/7 worktrees and all user/history data untouched.
+No code defect/root-cause fix or runtime success is inferred. Formal 6.10/6.11/cloud/
+release gates remain unchecked. No 6.12–6.14 start, merge, deployment, hosted change
+or release. Exact next action: review the prepared procedure on a permitted host;
+no rebuild or republishing of the already successful implementation is needed.
