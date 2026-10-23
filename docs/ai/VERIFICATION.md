@@ -1,3 +1,25 @@
+## Post-T22 reconciliation publication outcome — VERIFIED locally, update UNPUBLISHED
+
+Reconciliation commit `f7d88aae69bdf2a4b1adb248e1020c9a9b3baa8a` preserves the
+published/tested6d0abad baseline and checkpoint6370125421. Normal push failed DNS;
+connected read confirms remote still6d0abad. Checkpoint write returned403, with
+no new URL; prior77 comments had no matching new marker. No dashboard/history edit.
+This documentation receipt changes no tested service/fixture/SQL behavior.
+
+345 host executions/313 tests counting repeated unit once;205 PostgreSQL-backed
+bodies;17 additional tool regressions PASS. T22 LOCAL PASS, overall6.12 PARTIAL.
+G10 remains closed; G1–G9/G11 integration-blocked. No HTTP/hosted/Android acceptance.
+New draft and exact blocker: ISSUE31-POST-T22-V3-UNPUBLISHED.md and
+post-t22-publication-blocked.json under results/security-local/.
+
+Updated guarded publisher passed local --verify-only atf7d88aa. On permitted Fedora,
+supply exact final clean HEAD to publish normally; it verifies the successful v3
+counts/source hashes/exit/cleanup, prior evidence, source ancestry and history,
+then appends one factual checkpoint after exact remote readback. No repeat of the
+successful PostgreSQL suite, force push, guard bypass, emulator, Stage7B changes,
+cloud operation, merge/release or6.13–6.18 work. Next: host publication, remaining
+local acceptance and explicitly authorized G1–G9/G11 decisions/integration.
+
 ## Stage6.12 — post-T22 Fedora version3 VERIFIED; T22 LOCAL PASS, overall PARTIAL
 
 Published/tested base `6d0abad3decf0b724c0e00f1b4e270bf8d244fba` independently read

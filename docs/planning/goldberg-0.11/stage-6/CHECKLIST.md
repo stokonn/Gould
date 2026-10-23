@@ -1544,3 +1544,25 @@ post-t22-independent-verification.json. Next: publish verified evidence normally
 then resolve G1–G9/G11 decisions and remaining acceptance under proper authorization.
 Formal6.12 PARTIAL; no6.13–6.18, hosted/OAuth/real data/paid, emulator/phone, Stage7B
 writes, merge/tag/release or6.17 acceptance. Successful v3 PG run need not be repeated.
+
+## Post-T22 reconciliation publication outcome — VERIFIED locally, update UNPUBLISHED
+
+Reconciliation commit `f7d88aae69bdf2a4b1adb248e1020c9a9b3baa8a` preserves the
+published/tested6d0abad baseline and checkpoint6370125421. Normal push failed DNS;
+connected read confirms remote still6d0abad. Checkpoint write returned403, with
+no new URL; prior77 comments had no matching new marker. No dashboard/history edit.
+This documentation receipt changes no tested service/fixture/SQL behavior.
+
+345 host executions/313 tests counting repeated unit once;205 PostgreSQL-backed
+bodies;17 additional tool regressions PASS. T22 LOCAL PASS, overall6.12 PARTIAL.
+G10 remains closed; G1–G9/G11 integration-blocked. No HTTP/hosted/Android acceptance.
+New draft and exact blocker: ISSUE31-POST-T22-V3-UNPUBLISHED.md and
+post-t22-publication-blocked.json under results/security-local/.
+
+Updated guarded publisher passed local --verify-only atf7d88aa. On permitted Fedora,
+supply exact final clean HEAD to publish normally; it verifies the successful v3
+counts/source hashes/exit/cleanup, prior evidence, source ancestry and history,
+then appends one factual checkpoint after exact remote readback. No repeat of the
+successful PostgreSQL suite, force push, guard bypass, emulator, Stage7B changes,
+cloud operation, merge/release or6.13–6.18 work. Next: host publication, remaining
+local acceptance and explicitly authorized G1–G9/G11 decisions/integration.

@@ -1,0 +1,25 @@
+{
+  "reconciliationCommit": "f7d88aae69bdf2a4b1adb248e1020c9a9b3baa8a",
+  "branch": "verify/goldberg-0.11-stage-6-12-local",
+  "remoteVerifiedSha": "6d0abad3decf0b724c0e00f1b4e270bf8d244fba",
+  "baselineCheckpoint": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6370125421",
+  "currentPublication": "UNPUBLISHED",
+  "normalPush": {
+    "exit": 128,
+    "error": "Could not resolve host: github.com"
+  },
+  "checkpointWrite": {
+    "status": 403,
+    "error": "Resource not accessible by integration",
+    "newUrl": null
+  },
+  "commentsBeforeWrite": 77,
+  "matchingNewMarkerBeforeWrite": 0,
+  "localGuardVerifyOnly": "PASS at exact clean f7d88aa; post-T22345 counts/82 hashes/exit0/cleanup and source identity checked",
+  "T22": "LOCAL_PASS",
+  "overall": "PARTIAL; remaining local/integration gates OPEN",
+  "hostExecutions": 345,
+  "testsCountingRepeatedUnitOnce": 313,
+  "databaseBackedBodies": 205,
+  "additionalToolTests": 17
+}
