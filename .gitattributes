@@ -1,0 +1,4 @@
+# Preserve raw Stage 7B tool diagnostics byte-for-byte, including emitted whitespace.
+# Source, structured results and documentation retain normal whitespace checks.
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/**/*.log -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/apk-signing.txt -whitespace

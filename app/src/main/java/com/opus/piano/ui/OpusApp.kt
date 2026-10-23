@@ -45,6 +45,7 @@ import com.opus.piano.ui.admin.AdminDashboardScreen
 import com.opus.piano.ui.admin.AdminQueueScreen
 import com.opus.piano.ui.admin.AdminAuditScreen
 import com.opus.piano.ui.admin.AdminSettingsScreen
+import com.opus.piano.ui.admin.AdminProposalScreen
 import java.time.*
 import java.time.format.DateTimeFormatter
 
@@ -142,14 +143,21 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 // Stage 7B: role-gated Administration (entry is convenience only — the
                 // server always enforces capabilities on every admin endpoint).
                 composable("admin") {
-                    AdminDashboardScreen(
+                    AdminTheme { AdminDashboardScreen(
                         admin,
                         onQueue = { filter ->
                             nav.navigate(if (filter == null) "admin/queue" else "admin/queue?filter=$filter")
                         },
-                        onAudit = { nav.navigate("admin/audit") },
+                        onAudit = { tile ->
+                            admin.auditInitialFilter = when (tile) {
+                                com.opus.piano.admin.AdminTile.APPROVED_TODAY -> "today_approve"
+                                com.opus.piano.admin.AdminTile.REJECTED_TODAY -> "today_reject"
+                                else -> "all"
+                            }
+                            nav.navigate("admin/audit")
+                        },
                         onSettings = { nav.navigate("admin/settings") },
-                    )
+                    ) }
                 }
                 composable(
                     "admin/queue?filter={filter}",
@@ -161,10 +169,17 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                         }
                     ),
                 ) { route ->
-                    AdminQueueScreen(admin, route.arguments?.getString("filter")) { nav.popBackStack() }
+                    AdminTheme { AdminQueueScreen(admin, route.arguments?.getString("filter"), { nav.popBackStack() }, { id -> nav.navigate("admin/proposal/${android.net.Uri.encode(id)}") }) }
                 }
-                composable("admin/audit") { AdminAuditScreen(admin) { nav.popBackStack() } }
-                composable("admin/settings") { AdminSettingsScreen(admin) { nav.popBackStack() } }
+                composable("admin/proposal/{id}") { route ->
+                    AdminTheme { AdminProposalScreen(admin, route.arguments?.getString("id").orEmpty(), { nav.popBackStack() }, { id ->
+                        nav.navigate("admin/proposal/${android.net.Uri.encode(id)}") {
+                            popUpTo("admin/proposal/{id}") { inclusive = true }
+                        }
+                    }) }
+                }
+                composable("admin/audit") { AdminTheme { AdminAuditScreen(admin) { nav.popBackStack() } } }
+                composable("admin/settings") { AdminTheme { AdminSettingsScreen(admin) { nav.popBackStack() } } }
                 composable(Destination.REPERTOIRE.name) {
                     RepertoireScreen(library,catalogData,model,{nav.selectTopLevel("DISCOVER")},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")},catalog,{nav.navigate("catalog/work/$it")})
                 }

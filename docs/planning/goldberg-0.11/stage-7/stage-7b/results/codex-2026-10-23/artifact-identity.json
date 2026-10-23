@@ -1,0 +1,12 @@
+{
+  "branch": "feature/goldberg-0.11-stage-7b",
+  "head": "cee9330f82cf2e57dcdc66a63d94b7a4e3749888",
+  "source_state": "uncommitted continuation",
+  "apk": "app/build/outputs/apk/debug/app-debug.apk",
+  "apk_sha256": "d23a98b25dc5da8069a04d629d04408bf2135929872ef624c803910d0c03f8c6",
+  "apk_bytes": 24140673,
+  "newer_source_files": [],
+  "instrumentation": "compiled only; NOT executed",
+  "screenshots": "none captured; blocked emulator",
+  "production_decisions": "disabled pending G6 wire contract"
+}

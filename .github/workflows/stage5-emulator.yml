@@ -1,4 +1,4 @@
-name: Goldberg Stage 5 emulator verification
+name: Goldberg Android emulator verification (Stage 5 / 7B)
 # Tasks 5.10 (instrumentation) and 5.11 (emulator acceptance subset) on a
 # GitHub-hosted Linux runner with KVM acceleration (hardware-accelerated
 # Android virtualization, GitHub Changelog 2024-04-02).
@@ -21,7 +21,10 @@ name: Goldberg Stage 5 emulator verification
 #     re-verified against its release tag before this workflow version.
 #   - Each job records and asserts `git rev-parse HEAD == GITHUB_SHA` into the
 #     uploaded evidence, so results are bound to the exact dispatched commit.
-#   - Intended dispatch ref: feature/goldberg-0.11-stage-5 (the Stage 5 code
+#   - Stage 7B recovery uses verification-scope=stage7b on its feature branch.
+#     It runs one full instrumentation job, not the Stage 5 acceptance job.
+#     API 37 is not requested and cannot invalidate API 36 results.
+#   - Intended Stage 5 dispatch ref: feature/goldberg-0.11-stage-5 (the Stage 5 code
 #     under verification). The acceptance job depends on the helper scripts as
 #     they exist on that branch (main still carries an older
 #     verify_emulator_upgrade.py without the schema/offline/startup flags).
@@ -59,6 +62,15 @@ name: Goldberg Stage 5 emulator verification
 #     docs/ai/VERIFICATION.md before claiming 5.11.
 on:
   workflow_dispatch:
+    inputs:
+      verification-scope:
+        description: 'Stage 7B runs one full-suite emulator job; Stage 5 also runs its upgrade acceptance job'
+        required: true
+        type: choice
+        default: stage5
+        options:
+          - stage5
+          - stage7b
 permissions:
   contents: read
 concurrency:
@@ -66,9 +78,11 @@ concurrency:
   cancel-in-progress: false
 jobs:
   stage5-instrumentation:
-    name: "5.10 instrumentation — API 36 emulator"
+    name: "${{ inputs.verification-scope || 'stage5' }} full instrumentation — API 36"
     runs-on: ubuntu-24.04
     timeout-minutes: 150
+    env:
+      CI_VERIFICATION_SCOPE: ${{ inputs.verification-scope || 'stage5' }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
@@ -90,6 +104,7 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+          cache: gradle
       - name: Set up required Android SDK packages
         uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3.2.2
         with:
@@ -100,31 +115,28 @@ jobs:
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
-      - name: Build app, JVM tests and instrumentation APKs
-        run: ./gradlew --no-daemon --max-workers=1 assembleDebug testDebugUnitTest assembleDebugAndroidTest
-      - name: Materialize emulator test script (the action's script input runs line-by-line)
+      - name: Record SDK, KVM and emulator diagnostics
         run: |
-            # android-emulator-runner@v2.38.0 parseScript() splits its `script` input
-            # into single lines and runs each via a separate `sh -c` (source-inspected;
-            # proven by runs 39503450845 and 39508388525). GitHub `run:` steps execute
-            # as ONE bash process, so the approved script is materialized into a file
-            # here, syntax-checked, and later executed as a single-line `bash <file>`.
-            cat > "$RUNNER_TEMP/stage5-instrumentation.sh" <<'BASH_SCRIPT'
-            set -euo pipefail
-            SERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"
-            case "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac
-            ATTACHED="$(adb devices | awk '$2=="device"' | wc -l)"
-            if [ "$ATTACHED" -ne 1 ]; then echo "ERROR: expected exactly one attached device, found $ATTACHED"; adb devices; exit 1; fi
-            QEMU="$(adb -s "$SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')"
-            if [ "$QEMU" != "1" ]; then echo "ERROR: $SERIAL is not a verified emulator (ro.kernel.qemu=$QEMU)"; exit 1; fi
-            export ANDROID_SERIAL="$SERIAL"
-            echo "Running the full connected suite on verified emulator $SERIAL"
-            mkdir -p stage5-ci-results
-            trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || true' EXIT
-            ./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest
-            BASH_SCRIPT
-            bash -n "$RUNNER_TEMP/stage5-instrumentation.sh"
-            echo "Materialized and syntax-checked $RUNNER_TEMP/stage5-instrumentation.sh"
+          java -version 2> stage5-ci-results/java-version.txt
+          "$ANDROID_HOME/emulator/emulator" -version > stage5-ci-results/emulator-version.txt 2>&1
+          "$ANDROID_HOME/emulator/emulator" -accel-check > stage5-ci-results/kvm.txt 2>&1
+          sdkmanager --list_installed > stage5-ci-results/sdk-packages.txt
+          test -r /dev/kvm && test -w /dev/kvm
+      - name: Build app, JVM tests, instrumentation APKs and lint
+        shell: bash
+        run: |
+          set -o pipefail
+          ./gradlew --no-daemon --max-workers=1 assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug 2>&1 | tee stage5-ci-results/host-gradle.log
+      - name: Stage 7B host policy and contract checks
+        if: inputs.verification-scope == 'stage7b'
+        run: |
+          set -o pipefail
+          for check in agent_policy backup_fixtures history_paging localization migrations admin_contract_fixtures; do
+            python3 "scripts/check_${check}.py" 2>&1 | tee "stage5-ci-results/check-${check}.log"
+          done
+          git diff --exit-code -- app/schemas
+      - name: Validate emulator script
+        run: bash -n scripts/ci_android_instrumentation.sh
       - name: Run full instrumentation suite on the emulator
         uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
         with:
@@ -133,9 +145,10 @@ jobs:
           arch: x86_64
           profile: pixel_6
           avd-name: stage5-ci
+          emulator-port: 5554
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
-          script: bash "$RUNNER_TEMP/stage5-instrumentation.sh"
+          script: bash scripts/ci_android_instrumentation.sh
       - name: Summarize instrumentation results
         if: always()
         run: |
@@ -158,15 +171,20 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: stage5-instrumentation-results
+          name: ${{ inputs.verification-scope || 'stage5' }}-instrumentation-api36-${{ github.sha }}
           path: |
             app/build/outputs/androidTest-results/connected/**
             app/build/reports/androidTests/**
+            app/build/test-results/testDebugUnitTest/**
+            app/build/reports/tests/testDebugUnitTest/**
+            app/build/reports/lint-results-debug.*
+            app/build/outputs/logs/**
             stage5-ci-results/**
           if-no-files-found: warn
-          retention-days: 30
+          retention-days: 14
 
   stage5-acceptance:
+    if: inputs.verification-scope != 'stage7b'
     name: "5.11 acceptance subset — API 36 emulator"
     runs-on: ubuntu-24.04
     timeout-minutes: 120

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "classification": "proposal-unapproved",
+  "active": false,
+  "requiresApproval": true,
+  "mapping": {
+    "candidateSubmissionExpectedEntityRevision": "expectedRevision",
+    "candidateSubmissionCurrentRevision": "expectedSubmissionRevision",
+    "candidateApprovalResponseRevision": "new published entity revision, NOT immutable proposal revision"
+  },
+  "example": {
+    "expectedEntityRevision": 7,
+    "expectedSubmissionRevision": 3,
+    "publishedEntityRevisionAfterSuccess": 8
+  },
+  "rules": [
+    "No runtime adapter or new HTTP endpoint is added by this proposal.",
+    "Read both expectations from authoritative detail; never copy proposal revision into entity revision.",
+    "Open submitted proposal before decision only after explicit transition contract approval.",
+    "Confirm after refreshed detail, compare both expectations and state; reconcile uncertain outcome with exact same operation/body/key.",
+    "For an absent entity, zero is meaningful only if confirmed by the approved server contract; never infer it from missing data.",
+    "Reject/request_changes responses omit revision; do not default them to 1.",
+    "Unknown or unsafe-range numeric values lock decisions; never round, clamp or silently coerce."
+  ]
+}

@@ -11,6 +11,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.FontVariation
 import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.unit.dp
 
 val Gold = Color(0xFFB28B54)
@@ -73,4 +74,30 @@ object MusicalColors {
     val natural=Color(0xFFF3E7D2);val naturalPressed=Color(0xFFD2C0A3);val naturalInk=Color(0xFF27221E)
     val accidental=Color(0xFF25211E);val accidentalPressed=Color(0xFF62584D);val accidentalInk=Color(0xFFFFF7E9)
     val terminal=Color(0xFF211323);val terminalInk=Color(0xFFFFAFD7)
+}
+
+/** Stage 7B owner-approved dark admin surface. Keep app-wide Ivory/Nocturne and
+ * typography preferences intact; admin headings use the selected sans family. */
+@Composable internal fun AdminTheme(content: @Composable () -> Unit) {
+    val family = MaterialTheme.typography.bodyLarge.fontFamily
+    val type = MaterialTheme.typography
+    val adminType = type.copy(
+        headlineLarge = type.headlineLarge.copy(fontFamily = family),
+        headlineMedium = type.headlineMedium.copy(fontFamily = family),
+        headlineSmall = type.headlineSmall.copy(fontFamily = family),
+        titleLarge = type.titleLarge.copy(fontFamily = family),
+    )
+    val colors = darkColorScheme(
+        background = Color(0xFF050505), onBackground = Color(0xFFF6F6F6),
+        surface = Color(0xFF242424), onSurface = Color(0xFFF6F6F6),
+        surfaceVariant = Color(0xFF171717), onSurfaceVariant = Color(0xFFA6A6A6),
+        primary = Color(0xFFF6F6F6), onPrimary = Color(0xFF050505),
+        primaryContainer = Color(0xFF292929), onPrimaryContainer = Color(0xFFF6F6F6),
+        secondary = Color(0xFFF6F6F6), secondaryContainer = Color(0xFF292929),
+        onSecondaryContainer = Color(0xFFF6F6F6), outline = Color(0xFF666666),
+        outlineVariant = Color(0xFF292929), surfaceTint = Color.Transparent,
+    )
+    MaterialTheme(colorScheme = colors, typography = adminType) {
+        Surface(modifier = androidx.compose.ui.Modifier.fillMaxSize(), color = colors.background, content = content)
+    }
 }

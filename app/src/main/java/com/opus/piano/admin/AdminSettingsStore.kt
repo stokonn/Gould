@@ -20,6 +20,16 @@ class AdminSettingsStore(context: Context) {
         get() = prefs.getString(KEY_ENDPOINT, "").orEmpty()
         set(value) { prefs.edit().putString(KEY_ENDPOINT, value.trim()).apply() }
 
+    // Scope opt-ins to the configured endpoint and local account. No credentials stored.
+    private val app = context.applicationContext as com.opus.piano.OpusApplication
+    private val scope: String get() = adminFingerprint("${app.identity.account.value.orEmpty()}\n$endpoint")
+    var syncPolicy: AdminSyncPolicy
+        get() = AdminSyncPolicy(prefs.getBoolean("sync:$scope",false), prefs.getBoolean("notify:$scope",false), prefs.getBoolean("mobile:$scope",false))
+        set(value) { prefs.edit().putBoolean("sync:$scope",value.background)
+            .putBoolean("notify:$scope",value.notifications).putBoolean("mobile:$scope",value.mobileConsent).apply() }
+    fun syncSignature(key: String): String? = prefs.getString("signature:$key",null)
+    fun saveSyncSignature(key: String,value: String) { prefs.edit().putString("signature:$key",value).apply() }
+
     companion object {
         private const val FILE_NAME = "goldberg-admin-settings"
         private const val KEY_ENDPOINT = "endpoint"

@@ -1,0 +1,650 @@
+{
+  "schemaVersion": 1,
+  "synthetic": true,
+  "approval": "comparison-only; no shared wire-contract approval",
+  "normative": {
+    "commit": "bcc779685d79e99451796b3fa45657b3bca8dd99",
+    "path": "docs/planning/goldberg-0.11/stage-6/API-CONTRACTS.md",
+    "kind": "design; not deployed DTO proof"
+  },
+  "candidate": {
+    "commit": "bcc779685d79e99451796b3fa45657b3bca8dd99",
+    "kind": "in-process local adapter; HTTP binding unapproved"
+  },
+  "legacy": {
+    "commit": "d2a95d4b83c634aacb4f7f74432f2bd8980cf218",
+    "kind": "C6 reference only; not candidate compatibility"
+  },
+  "cases": [
+    {
+      "id": "legacy-capabilities",
+      "classification": "legacy-c6-reference",
+      "surface": "capabilities",
+      "response": {
+        "status": 200,
+        "body": {
+          "principalId": "00000000-0000-4000-8000-000000000003",
+          "capabilities": [
+            "queue.read",
+            "decide",
+            "audit.read"
+          ]
+        }
+      }
+    },
+    {
+      "id": "legacy-queue",
+      "classification": "legacy-c6-reference",
+      "surface": "queue",
+      "response": {
+        "status": 200,
+        "body": {
+          "items": [
+            {
+              "id": "00000000-0000-4000-8000-000000000002",
+              "owner": "00000000-0000-4000-8000-000000000006",
+              "status": "in_review",
+              "revision": 3,
+              "evidenceCount": 1,
+              "createdAt": 1761000000000
+            }
+          ],
+          "nextCursor": "1761000000000:00000000-0000-4000-8000-000000000002"
+        }
+      }
+    },
+    {
+      "id": "legacy-detail",
+      "classification": "legacy-c6-reference",
+      "surface": "detail",
+      "response": {
+        "status": 200,
+        "body": {
+          "id": "00000000-0000-4000-8000-000000000002",
+          "owner": "00000000-0000-4000-8000-000000000006",
+          "status": "in_review",
+          "revision": 3,
+          "revisions": [
+            {
+              "revision": 3,
+              "payload": {
+                "schemaVersion": 1,
+                "target": {
+                  "kind": "work",
+                  "catalogueUuid": "00000000-0000-4000-8000-000000000004"
+                },
+                "changeKind": "correction",
+                "fields": [
+                  {
+                    "field": "title",
+                    "newValue": "Synthetic reviewed title",
+                    "evidence": [
+                      {
+                        "type": "reference",
+                        "value": "Authored fixture reference",
+                        "license": "CC0-1.0"
+                      }
+                    ]
+                  }
+                ],
+                "intendedLicense": "CC0-1.0"
+              },
+              "createdAt": 1761000000000
+            }
+          ],
+          "reviewEvents": []
+        }
+      }
+    },
+    {
+      "id": "legacy-approved",
+      "classification": "legacy-c6-reference",
+      "surface": "decision",
+      "response": {
+        "status": 201,
+        "body": {
+          "submissionId": "00000000-0000-4000-8000-000000000002",
+          "decision": "approve",
+          "status": "published",
+          "revision": 3,
+          "publishedRevisionId": "9",
+          "entityUuid": "00000000-0000-4000-8000-000000000004"
+        }
+      }
+    },
+    {
+      "id": "legacy-audit-bigint",
+      "classification": "legacy-c6-reference",
+      "surface": "audit",
+      "response": {
+        "status": 200,
+        "body": {
+          "items": [
+            {
+              "seq": "9007199254740993",
+              "ts": 1761000000000,
+              "actor": "00000000-0000-4000-8000-000000000003",
+              "action": "decision.approve",
+              "subject": "submission:00000000-0000-4000-8000-000000000002",
+              "prevHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "thisHash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            }
+          ],
+          "nextCursor": "9007199254740993",
+          "chainHead": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "id": "legacy-conflict-details",
+      "classification": "legacy-c6-reference",
+      "surface": "decision",
+      "response": {
+        "status": 409,
+        "body": {
+          "error": {
+            "code": "conflict",
+            "message": "Stale expectedRevision",
+            "details": {
+              "currentStatus": "in_review",
+              "currentRevision": 4
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "candidate-capabilities",
+      "classification": "candidate-local",
+      "surface": "capabilities",
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "capabilities": [
+            "audit.read",
+            "decide",
+            "quarantine",
+            "queue.read",
+            "roles.manage"
+          ]
+        }
+      },
+      "operation": "capabilities",
+      "notes": "No principalId in capabilities; session operation supplies identity separately. No HTTP binding frozen."
+    },
+    {
+      "id": "candidate-session",
+      "classification": "candidate-local",
+      "surface": "session",
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "principalId": "00000000-0000-4000-8000-000000000003",
+          "sessionId": "00000000-0000-4000-8000-000000000002",
+          "familyId": "00000000-0000-4000-8000-000000000005",
+          "expiresAt": "2026-10-24T10:00:00.000Z"
+        }
+      },
+      "operation": "session"
+    },
+    {
+      "id": "candidate-logout",
+      "classification": "candidate-local",
+      "surface": "session",
+      "response": {
+        "status": 204,
+        "body": null
+      },
+      "operation": "logout"
+    },
+    {
+      "id": "candidate-queue",
+      "classification": "candidate-local",
+      "surface": "queue",
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "items": [
+            {
+              "id": "00000000-0000-4000-8000-000000000002",
+              "target_kind": "work",
+              "status": "in_review",
+              "current_revision": "3",
+              "createdAt": "2026-10-23T10:00:00.123456Z"
+            }
+          ],
+          "nextCursor": {
+            "createdAt": "2026-10-23T10:00:00.123456Z",
+            "id": "00000000-0000-4000-8000-000000000002"
+          }
+        }
+      },
+      "operation": "moderation.queue",
+      "requestBody": {
+        "schemaVersion": 1
+      },
+      "notes": "No status/search/limit inputs; fixed 20-page maximum. Cursor is an object, not a C6 string."
+    },
+    {
+      "id": "candidate-detail",
+      "classification": "candidate-local",
+      "surface": "detail",
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "submission": {
+            "id": "00000000-0000-4000-8000-000000000002",
+            "author_id": "00000000-0000-4000-8000-000000000006",
+            "target_kind": "work",
+            "catalogue_uuid": "00000000-0000-4000-8000-000000000004",
+            "expected_revision": "7",
+            "current_revision": "3",
+            "status": "in_review"
+          },
+          "revisions": [
+            {
+              "revision": "3",
+              "payload": {
+                "schemaVersion": 1,
+                "target": {
+                  "kind": "work",
+                  "catalogueUuid": "00000000-0000-4000-8000-000000000004"
+                },
+                "changeKind": "correction",
+                "fields": [
+                  {
+                    "field": "title",
+                    "newValue": "Synthetic reviewed title",
+                    "evidence": [
+                      {
+                        "type": "reference",
+                        "value": "Authored fixture reference",
+                        "license": "CC0-1.0"
+                      }
+                    ]
+                  }
+                ],
+                "intendedLicense": "CC0-1.0"
+              },
+              "prev_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "this_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            }
+          ],
+          "reviews": [
+            {
+              "from_status": "submitted",
+              "to_status": "in_review",
+              "reason": null,
+              "audit_seq": "9007199254740993"
+            }
+          ]
+        }
+      },
+      "operation": "submission.read",
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002"
+      },
+      "notes": "Synthetic projection of SELECT s.* relevant columns, not an exhaustive DTO; G4 current entity field values absent."
+    },
+    {
+      "id": "candidate-open",
+      "classification": "candidate-local",
+      "surface": "decision",
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "id": "00000000-0000-4000-8000-000000000002",
+          "status": "in_review"
+        }
+      },
+      "operation": "moderation.open",
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002",
+        "expectedRevision": 7,
+        "expectedSubmissionRevision": 1,
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "candidate-approved",
+      "classification": "candidate-local",
+      "surface": "decision",
+      "response": {
+        "status": 201,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "id": "00000000-0000-4000-8000-000000000002",
+          "status": "published",
+          "entityId": "00000000-0000-4000-8000-000000000004",
+          "revision": 8
+        }
+      },
+      "operation": "moderation.decide",
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002",
+        "expectedRevision": 7,
+        "expectedSubmissionRevision": 3,
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      }
+    },
+    {
+      "id": "candidate-reject",
+      "classification": "candidate-local",
+      "surface": "decision",
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "id": "00000000-0000-4000-8000-000000000002",
+          "status": "rejected"
+        }
+      },
+      "operation": "moderation.decide",
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002",
+        "expectedRevision": 7,
+        "expectedSubmissionRevision": 3,
+        "decision": "reject",
+        "reason": "Synthetic review request",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "candidate-request_changes",
+      "classification": "candidate-local",
+      "surface": "decision",
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "id": "00000000-0000-4000-8000-000000000002",
+          "status": "changes_requested"
+        }
+      },
+      "operation": "moderation.decide",
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002",
+        "expectedRevision": 7,
+        "expectedSubmissionRevision": 3,
+        "decision": "request_changes",
+        "reason": "Synthetic review request",
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "id": "candidate-error-400",
+      "classification": "candidate-local",
+      "surface": "error",
+      "response": {
+        "status": 400,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "error": {
+            "code": "validation_failed",
+            "message": "Invalid request",
+            "requestId": "00000000-0000-4000-8000-000000000001"
+          }
+        }
+      },
+      "notes": "Synthetic existing error envelope."
+    },
+    {
+      "id": "candidate-error-401",
+      "classification": "candidate-local",
+      "surface": "error",
+      "response": {
+        "status": 401,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "error": {
+            "code": "unauthenticated",
+            "message": "Authentication required",
+            "requestId": "00000000-0000-4000-8000-000000000001"
+          }
+        }
+      },
+      "notes": "Synthetic existing error envelope."
+    },
+    {
+      "id": "candidate-error-403",
+      "classification": "candidate-local",
+      "surface": "error",
+      "response": {
+        "status": 403,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "error": {
+            "code": "forbidden",
+            "message": "Operation not permitted",
+            "requestId": "00000000-0000-4000-8000-000000000001"
+          }
+        }
+      },
+      "notes": "Synthetic existing error envelope."
+    },
+    {
+      "id": "candidate-error-404",
+      "classification": "candidate-local",
+      "surface": "error",
+      "response": {
+        "status": 404,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "error": {
+            "code": "not_found",
+            "message": "Resource not found",
+            "requestId": "00000000-0000-4000-8000-000000000001"
+          }
+        }
+      },
+      "notes": "Synthetic existing error envelope."
+    },
+    {
+      "id": "candidate-error-409",
+      "classification": "candidate-local",
+      "surface": "error",
+      "response": {
+        "status": 409,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "error": {
+            "code": "conflict",
+            "message": "Revision or state conflict",
+            "requestId": "00000000-0000-4000-8000-000000000001"
+          }
+        }
+      },
+      "notes": "409 does not provide current revisions/status; latest detail must be re-read. No automatic retry."
+    },
+    {
+      "id": "candidate-error-422",
+      "classification": "candidate-local",
+      "surface": "error",
+      "response": {
+        "status": 422,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "error": {
+            "code": "idempotency_mismatch",
+            "message": "Key already used for a different request",
+            "requestId": "00000000-0000-4000-8000-000000000001"
+          }
+        }
+      },
+      "notes": "Synthetic existing error envelope."
+    },
+    {
+      "id": "candidate-error-503",
+      "classification": "candidate-local",
+      "surface": "error",
+      "response": {
+        "status": 503,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "error": {
+            "code": "service_unavailable",
+            "message": "Service unavailable",
+            "requestId": "00000000-0000-4000-8000-000000000001"
+          }
+        }
+      },
+      "notes": "Synthetic existing error envelope."
+    },
+    {
+      "id": "normative-error-taxonomy",
+      "classification": "normative-design",
+      "surface": "error",
+      "response": {
+        "status": 429,
+        "body": {
+          "error": {
+            "code": "rate_limited",
+            "message": "Synthetic quota response",
+            "requestId": "00000000-0000-4000-8000-000000000001"
+          }
+        }
+      },
+      "headers": {
+        "Retry-After": "60"
+      },
+      "notes": "API-CONTRACTS error taxonomy; no claim that this is an observed hosted response."
+    },
+    {
+      "id": "candidate-idempotent-replay",
+      "classification": "candidate-local",
+      "surface": "decision",
+      "response": {
+        "status": 201,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "id": "00000000-0000-4000-8000-000000000002",
+          "status": "published",
+          "entityId": "00000000-0000-4000-8000-000000000004",
+          "revision": 8
+        }
+      },
+      "operation": "moderation.decide",
+      "requestBody": {
+        "schemaVersion": 1,
+        "id": "00000000-0000-4000-8000-000000000002",
+        "expectedRevision": 7,
+        "expectedSubmissionRevision": 3,
+        "idempotencyKey": "00000000-0000-4000-8000-000000000005",
+        "decision": "approve"
+      },
+      "replayOf": "candidate-approved",
+      "notes": "Same principal/body/key, live authorization first; stored result replay. No new publication; not a fresh execution receipt."
+    },
+    {
+      "id": "candidate-stale-entity",
+      "classification": "candidate-local",
+      "surface": "decision",
+      "response": {
+        "status": 409,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "error": {
+            "code": "conflict",
+            "message": "Revision or state conflict",
+            "requestId": "00000000-0000-4000-8000-000000000001"
+          }
+        }
+      },
+      "operation": "moderation.decide",
+      "notes": "Entity expectedRevision changed independently of proposal."
+    },
+    {
+      "id": "candidate-stale-submission",
+      "classification": "candidate-local",
+      "surface": "decision",
+      "response": {
+        "status": 409,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "error": {
+            "code": "conflict",
+            "message": "Revision or state conflict",
+            "requestId": "00000000-0000-4000-8000-000000000001"
+          }
+        }
+      },
+      "operation": "moderation.decide",
+      "notes": "Immutable proposal revision changed independently of entity."
+    },
+    {
+      "id": "candidate-not-open",
+      "classification": "candidate-local",
+      "surface": "decision",
+      "response": {
+        "status": 409,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "error": {
+            "code": "conflict",
+            "message": "Revision or state conflict",
+            "requestId": "00000000-0000-4000-8000-000000000001"
+          }
+        }
+      },
+      "operation": "moderation.decide",
+      "notes": "Submitted/changes_requested cannot be decided directly; requires in_review."
+    },
+    {
+      "id": "candidate-audit",
+      "classification": "candidate-local",
+      "surface": "audit",
+      "response": {
+        "status": 200,
+        "body": {
+          "requestId": "00000000-0000-4000-8000-000000000001",
+          "items": [
+            {
+              "seq": "9007199254740993",
+              "prev_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "this_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "actor_id": "00000000-0000-4000-8000-000000000003",
+              "action": "approved->published",
+              "target_kind": "submission",
+              "target_id": "00000000-0000-4000-8000-000000000002",
+              "target_revision": "3",
+              "before_hash": null,
+              "after_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "reason": null,
+              "created_at": "2026-10-23T10:00:00.123456Z",
+              "request_id": "00000000-0000-4000-8000-000000000001",
+              "canonical_content": "authored synthetic content"
+            }
+          ],
+          "head": {
+            "last_seq": "9223372036854775807",
+            "last_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+          },
+          "nextCursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6ImFkbWluLmF1ZGl0IiwiaGlnaCI6IjkyMjMzNzIwMzY4NTQ3NzU4MDciLCJoZWFkIjoiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYiIsImFmdGVyIjoiOTAwNzE5OTI1NDc0MDk5MyJ9.BmmLOb0kXTTl3b85eajKKv9xDOaK87Ynil-Zk6ClChE"
+        }
+      },
+      "operation": "admin.audit",
+      "notes": "SQL row projection; actual transition vocabulary from events.mjs; no automatic decision.* aliasing; hashes/canonical content are authored shape placeholders, not chain verification evidence."
+    },
+    {
+      "id": "client-unavailable-data",
+      "classification": "client-condition",
+      "surface": "unavailable",
+      "response": {
+        "status": 0,
+        "body": null
+      },
+      "reason": "NotConfigured / ContractUnavailable; zero transport calls; no catalogue before-values or fabricated stats."
+    }
+  ]
+}

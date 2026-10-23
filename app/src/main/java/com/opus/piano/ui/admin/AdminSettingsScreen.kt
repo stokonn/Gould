@@ -1,6 +1,11 @@
 package com.opus.piano.ui.admin
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Logout
 import androidx.compose.material.icons.outlined.Public
@@ -32,10 +37,33 @@ import com.opus.piano.ui.JournalSpace
     val signOutResult by model.signOutResult.collectAsStateWithLifecycle()
     val endpoint = model.currentEndpoint()
     var editing by remember { mutableStateOf(false) }
+    val policy by model.syncPolicy.collectAsStateWithLifecycle()
+    val syncFailure by model.syncFailure.collectAsStateWithLifecycle()
+    val context = LocalContext.current
+    var mobileDialog by remember { mutableStateOf(false) }
+    val permission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+        model.setSyncPolicy(policy.copy(notifications = granted))
+    }
 
-    Column(Modifier.fillMaxSize().padding(horizontal = JournalSpace.page, vertical = JournalSpace.small)) {
+    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = JournalSpace.page, vertical = JournalSpace.small)) {
         EditorialHeader(title = L.s(R.string.stage7b_admin_settings), back = back)
 
+        Text(L.s(R.string.stage7b_wifi_default), style = MaterialTheme.typography.bodySmall)
+        AdminSwitch(L.s(R.string.stage7b_notifications), policy.notifications) { enabled ->
+            if (enabled && android.os.Build.VERSION.SDK_INT >= 33 &&
+                androidx.core.content.ContextCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                permission.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+            } else model.setSyncPolicy(policy.copy(notifications = enabled))
+        }
+        AdminSwitch(L.s(R.string.stage7b_sync), policy.background) { model.setSyncPolicy(policy.copy(background = it)) }
+        AdminSwitch(L.s(R.string.stage7b_mobile_consent), policy.mobileConsent) {
+            if (it) mobileDialog = true else model.setSyncPolicy(policy.copy(mobileConsent = false))
+        }
+        syncFailure?.let { AdminFailureMessage(it) }
+        if (mobileDialog) AlertDialog(onDismissRequest = { mobileDialog = false },
+            text = { Text(L.s(R.string.stage7b_mobile_confirm)) },
+            confirmButton = { TextButton({ model.setSyncPolicy(policy.copy(mobileConsent = true)); mobileDialog = false }) { Text(L.s(R.string.stage7b_save)) } },
+            dismissButton = { TextButton({ mobileDialog = false }) { Text(L.s(R.string.stage7b_cancel)) } })
         SettingsCard(
             icon = Icons.Outlined.Public,
             title = L.s(R.string.stage7b_endpoint),
@@ -156,3 +184,10 @@ private fun EndpointDialog(initial: String, onDismiss: () -> Unit, onSave: (Stri
 
 private fun endpointValid(text: String): Boolean =
     text.trim().isEmpty() || com.opus.piano.admin.AdminApi.validateEndpoint(text.trim()) != null
+
+@Composable private fun AdminSwitch(label: String, checked: Boolean, change: (Boolean) -> Unit) {
+    Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(label, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
+        Switch(checked, change)
+    }
+}

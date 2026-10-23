@@ -13,8 +13,8 @@ package com.opus.piano.admin
  * Pure Kotlin (no Android) so the window semantics are JVM-testable.
  */
 class AdminTrustPolicy(
-    /** Wall-clock milliseconds supplier; injectable for tests. */
-    private val now: () -> Long = System::currentTimeMillis,
+    /** Monotonic milliseconds supplier; injectable for tests. */
+    private val now: () -> Long = { System.nanoTime() / 1_000_000L },
     /** Window length; parameterised for tests, production value is [WINDOW_MILLIS]. */
     private val windowMillis: Long = WINDOW_MILLIS,
 ) {

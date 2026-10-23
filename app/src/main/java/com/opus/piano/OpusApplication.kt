@@ -71,10 +71,10 @@ class OpusApplication : Application() {
     @androidx.annotation.VisibleForTesting var adminTransportOverride: com.opus.piano.admin.AdminTransport? = null
     val adminSettings by lazy { com.opus.piano.admin.AdminSettingsStore(this) }
     val adminSession by lazy { com.opus.piano.admin.KeystoreAdminSessionStore(this) }
-    val adminRepository by lazy {
-        val api = com.opus.piano.admin.AdminApi(
+    val adminRepository: com.opus.piano.admin.AdminRepository by lazy {
+        val api = com.opus.piano.admin.AdminApi.forApplication(
             baseUrl = { adminSettings.endpoint },
-            transport = adminTransportOverride ?: com.opus.piano.admin.HttpsAdminTransport(),
+            fixtureTransportOverride = adminTransportOverride,
             token = { adminSession.readToken() },
         )
         com.opus.piano.admin.AdminRepository(
@@ -82,9 +82,12 @@ class OpusApplication : Application() {
             session = adminSession,
             trust = com.opus.piano.admin.AdminTrustPolicy(),
             markers = com.opus.piano.admin.AdminMarkers(com.opus.piano.admin.AndroidAdminMarkerStore(this)) {
-                identity.account.value ?: "local"
+                com.opus.piano.admin.adminFingerprint("${identity.account.value.orEmpty()}:${adminSettings.endpoint}:${adminRepository.principalId.orEmpty()}")
             },
             stats = com.opus.piano.admin.AdminStatsService(api),
+            // New local Stage 6 candidate requires dual revision expectations;
+            // no frozen HTTP mapping exists yet. Never send legacy C6 live decisions.
+            decisionsEnabled = false,
         )
     }
 }

@@ -1,0 +1,156 @@
+ M .github/workflows/stage5-emulator.yml
+ M app/build.gradle.kts
+ M app/src/main/java/com/opus/piano/OpusApplication.kt
+ M app/src/main/java/com/opus/piano/admin/AdminApi.kt
+ M app/src/main/java/com/opus/piano/admin/AdminMarkers.kt
+ M app/src/main/java/com/opus/piano/admin/AdminModels.kt
+ M app/src/main/java/com/opus/piano/admin/AdminRepository.kt
+ M app/src/main/java/com/opus/piano/admin/AdminSettingsStore.kt
+ M app/src/main/java/com/opus/piano/admin/AdminTrustPolicy.kt
+ M app/src/main/java/com/opus/piano/ui/OpusApp.kt
+ M app/src/main/java/com/opus/piano/ui/Theme.kt
+ M app/src/main/java/com/opus/piano/ui/admin/AdminAuditScreen.kt
+ M app/src/main/java/com/opus/piano/ui/admin/AdminDashboardScreen.kt
+ M app/src/main/java/com/opus/piano/ui/admin/AdminQueueScreen.kt
+ M app/src/main/java/com/opus/piano/ui/admin/AdminSettingsScreen.kt
+ M app/src/main/java/com/opus/piano/ui/admin/AdminUi.kt
+ M app/src/main/java/com/opus/piano/ui/admin/AdminViewModel.kt
+ M app/src/main/res/values-cs/strings.xml
+ M app/src/main/res/values/strings.xml
+ M app/src/test/java/com/opus/piano/admin/AdminFoundationTest.kt
+ M docs/ai/HANDOFF.md
+ M docs/ai/STATE.md
+ M docs/ai/VERIFICATION.md
+ M docs/planning/goldberg-0.11/STAGE-CHECKLIST.md
+ M docs/planning/goldberg-0.11/stage-7/stage-7b/CHECKLIST.md
+ M docs/planning/goldberg-0.11/stage-7/stage-7b/CONTRACT-AUDIT.md
+?? .pmp.yml
+?? .pmp/recovery-origin/HANDOFF-stage5.md
+?? .pmp/recovery-origin/configuration-stage5.json
+?? .pmp/recovery-origin/state-stage5.json
+?? .pmp/state.json
+?? app/src/androidTest/java/com/opus/piano/Stage7bAdminRuntimeTest.kt
+?? app/src/main/java/com/opus/piano/admin/AdminAuditService.kt
+?? app/src/main/java/com/opus/piano/admin/AdminQueueService.kt
+?? app/src/main/java/com/opus/piano/admin/AdminReviewService.kt
+?? app/src/main/java/com/opus/piano/admin/AdminSyncPolicy.kt
+?? app/src/main/java/com/opus/piano/admin/AdminSyncWorker.kt
+?? app/src/main/java/com/opus/piano/admin/AdminWireValues.kt
+?? app/src/main/java/com/opus/piano/ui/admin/AdminProposalScreen.kt
+?? app/src/test/java/com/opus/piano/admin/AdminAuditSyncTest.kt
+?? app/src/test/java/com/opus/piano/admin/AdminContractIntegrationTest.kt
+?? app/src/test/java/com/opus/piano/admin/AdminQueueTest.kt
+?? app/src/test/java/com/opus/piano/admin/AdminReviewTest.kt
+?? contracts/admin/v1/README.md
+?? contracts/admin/v1/fixtures.json
+?? contracts/admin/v1/mapping-proposal.json
+?? contracts/admin/v1/source-provenance.json
+?? docs/ai/PMP-RECOVERY.md
+?? docs/ai/STAGE_7B_CONTRACT_PREPARATION.md
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/ACCEPTANCE.md
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/CI-RECOVERY.md
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.AchievementEngineTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.CatalogTextTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.CsvExportTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.GoogleIdentityPolicyTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.JournalFormattingTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.MultiPieceTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.PianoActivityDetectorTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.Polish101Test.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.PracticeEngineTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.PracticeFailureTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.ProfileMaintenanceTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.ProfileStatisticsTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.Quality092Test.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.RecordingLinksTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.Redesign010Test.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.RedesignTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.ReminderScheduleTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.SmartCacheTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.admin.AdminAuditSyncTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.admin.AdminFoundationTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.admin.AdminQueueTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.admin.AdminReviewTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.admin.AdminStatsTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.data.catalogue.CatalogueBudgetTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.data.catalogue.CatalogueIntakeTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.data.catalogue.CataloguePresentationTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.data.catalogue.CatalogueQueryTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.data.catalogue.SearchContractTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.data.catalogue.providers.ProviderProjectionTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.data.offline.BundleJobTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.data.offline.BundleManifestCodecTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.data.offline.BundlePolicyTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.data.offline.BundleStateMachineTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.data.offline.BundleStoreLogicTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/TEST-com.opus.piano.data.offline.BundleTransferEngineTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/apk-badging.txt
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/apk-signing.txt
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/artifact-identity.json
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/baseline.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/check_agent_policy.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/check_backup_fixtures.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/check_history_paging.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/check_localization.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/check_migrations.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/host-gate.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/intermediate-review-compile-failure.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/intermediate-scope-compile-failure.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/lint-results-debug.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/source-sha256.txt
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/verification-summary.json
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.AchievementEngineTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.CatalogTextTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.CsvExportTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.GoogleIdentityPolicyTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.JournalFormattingTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.MultiPieceTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.PianoActivityDetectorTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.Polish101Test.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.PracticeEngineTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.PracticeFailureTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.ProfileMaintenanceTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.ProfileStatisticsTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.Quality092Test.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.RecordingLinksTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.Redesign010Test.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.RedesignTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.ReminderScheduleTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.SmartCacheTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.admin.AdminAuditSyncTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.admin.AdminContractIntegrationTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.admin.AdminFoundationTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.admin.AdminQueueTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.admin.AdminReviewTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.admin.AdminStatsTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.data.catalogue.CatalogueBudgetTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.data.catalogue.CatalogueIntakeTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.data.catalogue.CataloguePresentationTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.data.catalogue.CatalogueQueryTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.data.catalogue.SearchContractTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.data.catalogue.providers.ProviderProjectionTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.data.offline.BundleJobTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.data.offline.BundleManifestCodecTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.data.offline.BundlePolicyTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.data.offline.BundleStateMachineTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.data.offline.BundleStoreLogicTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/TEST-com.opus.piano.data.offline.BundleTransferEngineTest.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/apk-badging.txt
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/apk-signing.txt
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/initial-contract-failure.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/initial-host-failure.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/lint-results-debug.xml
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/recovered-emulator-result.json
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/recovered-emulator.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/recovered-final-host.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/recovered-verification-summary.json
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/recovered-verified-host.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/recovery-check_admin_contract_fixtures.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/recovery-check_agent_policy.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/recovery-check_backup_fixtures.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/recovery-check_history_paging.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/recovery-check_localization.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/recovery-check_migrations.log
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/recovery-source-sha256.txt
+?? scripts/check_admin_contract_fixtures.py
+?? scripts/ci_android_instrumentation.sh

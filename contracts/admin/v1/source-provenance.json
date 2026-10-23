@@ -1,0 +1,20 @@
+{
+  "commit": "bcc779685d79e99451796b3fa45657b3bca8dd99",
+  "files": {
+    "docs/planning/goldberg-0.11/stage-6/API-CONTRACTS.md": "9044e6ec8e7753ece1250f76b8a5d77e97a6f07fd861fb308edfe0d8253a57f9",
+    "docs/planning/goldberg-0.11/stage-6/results/android-local/SUMMARY.md": "c39579d207b5507475f90e42f46ac8c0b901d6069258af85675f6483796ed307",
+    "spikes/stage6-handlers-local/README.md": "de96227d9f85f21c5f2cf9bab8244dc294f23077f9ebd7d1553d693eea0fe68d",
+    "spikes/stage6-handlers-local/src/moderation.mjs": "087a81c6cfef4b49483866421758418011399fcba58f4f85603345052922c797",
+    "spikes/stage6-handlers-local/src/submissions.mjs": "883afff4482a995a942d3a09a309cc678a119ef3cf406689a0fa69674a1db225",
+    "spikes/stage6-handlers-local/src/local-api.mjs": "c797e3a8421ee73c8c56b554eb2a09226cbff0a0695e5ecf01ee3825903299e1",
+    "spikes/stage6-auth-local/src/local-api.mjs": "fe65df238e0659d485576f8f2ad8093e0421929e65f998af1b52da932fdc4792",
+    "spikes/stage6-auth-local/src/authorization.mjs": "1867ccf656011ad1fb9d291e066a1876ac4945ac7e9843acc40c455409100d63",
+    "spikes/stage6-auth-local/src/sessions.mjs": "74eb92e82bd5d8d82141a1e619d3a1d9197d5759e8a90eb3f84e24a2552b6cd1",
+    "spikes/stage6-handlers-local/src/idempotency.mjs": "5ea62f63a27d5940b40f67c9f57b16234f67ce2856d5556a3496f92e1a7e4797",
+    "spikes/stage6-public-admin-abuse/src/admin.mjs": "e325605ec2645f38a7319f35762c022b9c5bd7ac021ca5bcdbe26f3af9eb2b1d",
+    "spikes/stage6-public-admin-abuse/src/cursor.mjs": "ba4d864e758c275c2252c9167157cf48ecf895b8444602f3bc1c87fd7f40f3ad",
+    "spikes/stage6-auth-local/src/errors.mjs": "5839b3819c8cad9ea944e5a904082b153996d28fc5f920e60c698d5e2e358d61",
+    "spikes/stage6-handlers-local/src/events.mjs": "1a6c7765f49b67c0fe0658576834fa256eb5824f109e870a1e3cdccc8ecfa6ad",
+    "spikes/stage6-handlers-local/src/validation.mjs": "b037ee04449be5685aa92cde3c0ab67a066dad018bb2003672b5ac54b5d28402"
+  }
+}

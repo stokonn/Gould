@@ -27,6 +27,31 @@ class AdminViewModel(application: Application) : AndroidViewModel(application) {
     private val app = application as OpusApplication
     private val admin: AdminRepository = app.adminRepository
     private val settings = app.adminSettings
+    private val _syncPolicy = MutableStateFlow(settings.syncPolicy)
+    val syncPolicy: StateFlow<com.opus.piano.admin.AdminSyncPolicy> = _syncPolicy
+    private val _syncFailure = MutableStateFlow<AdminFailure?>(null)
+    val syncFailure: StateFlow<AdminFailure?> = _syncFailure
+    fun setSyncPolicy(value: com.opus.piano.admin.AdminSyncPolicy) {
+        viewModelScope.launch {
+            if (value.background) {
+                val role = admin.verifyRole()
+                if (role !is AdminResult.Ok || !role.value.canQueueRead || app.adminSession.readToken() == null) {
+                    _syncFailure.value = if (role is AdminResult.Err) role.failure else AdminFailure.Unauthorized
+                    return@launch
+                }
+            }
+            settings.syncPolicy = value
+            _syncPolicy.value = value
+            _syncFailure.value = null
+            com.opus.piano.admin.AdminSyncWorker.schedule(app)
+        }
+    }
+    val queue get() = admin.queue
+    var auditInitialFilter = "all"
+    var queueQuery = ""
+    var queueFilter = "all"
+    var queueScrollIndex = 0
+    var queueScrollOffset = 0
 
     private val _loading = MutableStateFlow(false)
     val loading: StateFlow<Boolean> = _loading
@@ -56,22 +81,40 @@ class AdminViewModel(application: Application) : AndroidViewModel(application) {
     /** Persist the admin base URL (empty = honest not-configured default). */
     fun saveEndpoint(raw: String): Boolean {
         val trimmed = raw.trim()
+        if (trimmed.isNotEmpty() && AdminApi.validateEndpoint(trimmed) == null) return false
+        if (trimmed != settings.endpoint) {
+            com.opus.piano.admin.AdminSyncWorker.cancel(app)
+            app.adminSession.clear()
+            admin.clearSensitiveState()
+            _caps.value = null
+            _stats.value = null
+        }
         if (trimmed.isEmpty()) {
             // Explicitly clearing the endpoint returns the app to the honest
             // "not configured" state (the shipped default).
             settings.endpoint = ""
+            _syncPolicy.value = settings.syncPolicy
             refresh()
             return true
         }
-        if (AdminApi.validateEndpoint(trimmed) == null) return false
         settings.endpoint = trimmed
+        _syncPolicy.value = settings.syncPolicy
         refresh()
         return true
     }
 
     /** Contract sign-out; local credential/trust/markers are always cleared (see repository). */
     fun signOut() {
-        viewModelScope.launch { _signOutResult.value = admin.signOut() }
+        viewModelScope.launch {
+            settings.syncPolicy = com.opus.piano.admin.AdminSyncPolicy()
+            _syncPolicy.value = settings.syncPolicy
+            com.opus.piano.admin.AdminSyncWorker.cancel(app)
+            _signOutResult.value = admin.signOut()
+            _caps.value = null
+            _stats.value = null
+            _resumeId.value = null
+            queueQuery = ""; queueFilter = "all"; queueScrollIndex = 0; queueScrollOffset = 0
+        }
     }
 
     init {
@@ -79,6 +122,21 @@ class AdminViewModel(application: Application) : AndroidViewModel(application) {
         // is unconfigured (the default); at most 1 capabilities request per process
         // otherwise. Server always enforces — this is convenience only.
         refresh()
+        val initialAccount = app.identity.account.value
+        viewModelScope.launch {
+            var observedAccount = initialAccount
+            app.identity.account.collect { account ->
+                if (account == observedAccount) return@collect
+                observedAccount = account
+                com.opus.piano.admin.AdminSyncWorker.cancel(app)
+                app.adminSession.clear()
+                admin.clearSensitiveState()
+                _caps.value = null; _capsFailure.value = AdminFailure.Unauthorized
+                _stats.value = null; _resumeId.value = null
+                queueQuery = ""; queueFilter = "all"; queueScrollIndex = 0; queueScrollOffset = 0
+                _syncPolicy.value = settings.syncPolicy
+            }
+        }
     }
 
     /**
@@ -103,9 +161,10 @@ class AdminViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 when (val role = admin.verifyRole()) {
                     is AdminResult.Ok -> { _caps.value = role.value; _capsFailure.value = null }
-                    is AdminResult.Err -> { _capsFailure.value = role.failure; /* keep last good caps only within trust */ if (!admin.trust.isTrusted) _caps.value = null }
+                    is AdminResult.Err -> { _capsFailure.value = role.failure; _caps.value = null }
                 }
-                _stats.value = admin.stats(System.currentTimeMillis())
+                _stats.value = if (_capsFailure.value == null) admin.stats(System.currentTimeMillis())
+                    else AdminStats.unavailable(_capsFailure.value!!.key)
                 _resumeId.value = resumeMarker()
             } finally {
                 _loading.value = false

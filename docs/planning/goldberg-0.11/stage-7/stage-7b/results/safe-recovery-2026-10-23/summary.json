@@ -1,0 +1,19 @@
+{
+  "baseHead": "cee9330f82cf2e57dcdc66a63d94b7a4e3749888",
+  "jvmFreshExecution": {
+    "tests": 275,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "jvmSuites": 36,
+  "lintCachedReport": {
+    "Warning": 132,
+    "Hint": 1
+  },
+  "instrumentation": "Assembly verified (up-to-date); no runtime execution locally",
+  "apkSha256": "6976d76e9bd936cd5b45e26f1910f86c3105863a8fe2bbf6f1269aaafc7e269b",
+  "apkBytes": 24140673,
+  "protectedFileHashesUnchanged": 1188,
+  "apkZipAndTestCorpusExclusion": "PASS"
+}

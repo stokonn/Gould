@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.data.offline.BundleTransferEngineTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-10-23T13:12:25.585Z" hostname="fedora" time="0.051">
+  <properties/>
+  <testcase name="missingOrUnapprovedSourcesArePermanent" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.009"/>
+  <testcase name="storageAdmissionRefusalNeverOpensAConnection" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.002"/>
+  <testcase name="interruptedStagedFileIsRestartedNotResumed" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.005"/>
+  <testcase name="wifiToMobileTransitionMidStreamStopsAJobWithoutConsent" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.004"/>
+  <testcase name="shortResponseIsRejectedAndDropped" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.002"/>
+  <testcase name="consentRevocationMidStreamStopsWithinOneGateWindowAndDropsThePartial" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.004"/>
+  <testcase name="blankLicenseIsARightsFailure" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.003"/>
+  <testcase name="hashMismatchIsNeverStaged" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.003"/>
+  <testcase name="offlineNetworkNeverOpensAConnection" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.002"/>
+  <testcase name="sourceReturningMoreThanDeclaredIsRejected" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.003"/>
+  <testcase name="httpStatusesSeparateTransientFromPermanentFailures" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.006"/>
+  <testcase name="lyingContentLengthHeaderIsRejectedBeforeStreaming" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.002"/>
+  <testcase name="verifiedContentIsStagedWithMonotonicProgress" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.003"/>
+  <testcase name="dataSaverOnMeteredNetworkStopsEvenWithConsent" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.002"/>
+  <testcase name="sourceUrlPolicyRejectsEverythingButApprovedHttpsProviders" classname="com.opus.piano.data.offline.BundleTransferEngineTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

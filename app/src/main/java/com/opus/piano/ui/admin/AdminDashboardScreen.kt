@@ -53,7 +53,7 @@ private const val SCROLL_FALLBACK_FONT_SCALE = 1.3f
 @Composable internal fun AdminDashboardScreen(
     model: AdminViewModel,
     onQueue: (filter: String?) -> Unit,
-    onAudit: () -> Unit,
+    onAudit: (AdminTile?) -> Unit,
     onSettings: () -> Unit,
 ) {
     val loading by model.loading.collectAsStateWithLifecycle()
@@ -62,6 +62,7 @@ private const val SCROLL_FALLBACK_FONT_SCALE = 1.3f
     val stats by model.stats.collectAsStateWithLifecycle()
     val resumeId by model.resumeId.collectAsStateWithLifecycle()
 
+    AdminOnResume(onResume = { model.refresh() })
     val fontScale = LocalDensity.current.fontScale
     val scrollState = rememberScrollState()
     val scrolling = fontScale > SCROLL_FALLBACK_FONT_SCALE
@@ -94,7 +95,7 @@ private const val SCROLL_FALLBACK_FONT_SCALE = 1.3f
         StatTileRow(
             left = AdminTile.APPROVED_TODAY to stats.tileValue(AdminTile.APPROVED_TODAY),
             right = AdminTile.REJECTED_TODAY to stats.tileValue(AdminTile.REJECTED_TODAY),
-            onClick = { onAudit() },
+            onClick = { onAudit(it) },
         )
         DestinationRow(
             icon = Icons.Outlined.Rule,
@@ -103,7 +104,7 @@ private const val SCROLL_FALLBACK_FONT_SCALE = 1.3f
             trailingText = resumeId?.let { L.s(R.string.stage7b_continue) },
             onClick = { onQueue(null) },
         )
-        DestinationRow(icon = Icons.Outlined.History, title = L.s(R.string.stage7b_audit_log), onClick = onAudit)
+        DestinationRow(icon = Icons.Outlined.History, title = L.s(R.string.stage7b_audit_log), onClick = { onAudit(null) })
         DestinationRow(icon = Icons.Outlined.Settings, title = L.s(R.string.stage7b_admin_settings), onClick = onSettings)
 
         // Fill remaining space on the fixed layout so the footer sits at the bottom;

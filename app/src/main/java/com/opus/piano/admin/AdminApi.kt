@@ -39,7 +39,16 @@ data class AdminHttpResponse(val code: Int, val body: ByteArray, val retryAfterS
 
 /** Transport seam. Implementations must honour https-only and bounds; the client re-validates. */
 fun interface AdminTransport {
+    val available: Boolean get() = true
     suspend fun call(method: String, url: String, headers: Map<String, String>, body: ByteArray?): AdminHttpResponse
+}
+
+/** Production boundary remains disabled regardless of a persisted endpoint/token.
+ * Fixture transports opt into the existing seam only in explicit tests. */
+object DisabledAdminTransport : AdminTransport {
+    override val available: Boolean = false
+    override suspend fun call(method: String, url: String, headers: Map<String, String>, body: ByteArray?): AdminHttpResponse =
+        throw IllegalStateException("Admin networking is disabled")
 }
 
 /** Typed failure taxonomy — one entry per verified contract behaviour plus transport states. */
@@ -48,6 +57,8 @@ sealed class AdminFailure {
     data object NotConfigured : AdminFailure()
     /** Base URL present but violates https-only/port/userinfo policy. */
     data object InvalidEndpoint : AdminFailure()
+    /** Current Stage 6 candidate and C6 reference disagree; live writes stay disabled. */
+    data object ContractUnavailable : AdminFailure()
     /** No connection, DNS, timeout, or cancellation-neutral I/O problem. */
     data object Unreachable : AdminFailure()
     /** 400 / 422 — request rejected by validation. */
@@ -77,6 +88,7 @@ sealed class AdminFailure {
     val key: String get() = when (this) {
         NotConfigured -> "not_configured"
         InvalidEndpoint -> "invalid_endpoint"
+        ContractUnavailable -> "contract_unavailable"
         Unreachable -> "unreachable"
         is Validation -> "validation_$code"
         Unauthorized -> "unauthorized"
@@ -113,16 +125,20 @@ class AdminApi(
     private val token: () -> String? = { null },
 ) {
 
+    internal var onAccessDenied: (AdminFailure) -> Unit = {}
+
     // ---- verified endpoints -------------------------------------------------
 
     suspend fun capabilities(): AdminResult<AdminCapabilitiesResponse> =
-        get("$V1/me/capabilities").flatMap { obj ->
+        get("$V1/me/capabilities").decode { obj ->
             val caps = obj.optJSONArray("capabilities")
-                ?: return@flatMap AdminResult.Err(AdminFailure.InvalidPayload)
-            val set = (0 until caps.length()).mapNotNull {
-                caps.optString(it)?.takeIf(String::isNotBlank)
+                ?: return@decode AdminResult.Err(AdminFailure.InvalidPayload)
+            val set = (0 until caps.length()).map { index ->
+                val value = caps.opt(index)
+                require(value is String && value.isNotBlank())
+                value
             }.toSet()
-            AdminResult.Ok(AdminCapabilitiesResponse(obj.optString("principalId", ""), set))
+            AdminResult.Ok(AdminCapabilitiesResponse(AdminWireValues.text(obj, "principalId"), set))
         }
 
     /**
@@ -136,12 +152,17 @@ class AdminApi(
             if (!status.isNullOrBlank()) add("status" to status)
             add("limit" to limit.coerceIn(1, QUEUE_PAGE_LIMIT).toString())
         }
-        return get("$V1/admin/queue", query).flatMap { AdminResult.Ok(AdminQueuePage.parse(it)) }
+        return get("$V1/admin/queue", query).decode { if (it.optJSONArray("items") == null) AdminResult.Err(AdminFailure.InvalidPayload) else {
+            val page = AdminQueuePage.parse(it)
+            if (page.items.size != it.getJSONArray("items").length() || page.items.size > QUEUE_PAGE_LIMIT ||
+                page.items.any { row -> row.id.isBlank() || row.revision < 1 || row.status == AdminStatus.UNKNOWN }) AdminResult.Err(AdminFailure.InvalidPayload)
+            else AdminResult.Ok(page)
+        } }
     }
 
     /** Submission detail — the only verified source of title/composer-bearing payload. */
     suspend fun submission(id: String): AdminResult<AdminSubmissionDetail> =
-        get("$V1/admin/submissions/${encode(id)}").flatMap { AdminResult.Ok(AdminSubmissionDetail.parse(it)) }
+        get("$V1/admin/submissions/${encode(id)}").decode { if (it.optString("id") != id || !it.has("revision") || !it.has("status")) AdminResult.Err(AdminFailure.InvalidPayload) else AdminResult.Ok(AdminSubmissionDetail.parse(it)) }
 
     /**
      * POST a decision. [body] comes from [buildDecisionBody] (expectedRevision +
@@ -150,7 +171,7 @@ class AdminApi(
      */
     suspend fun decide(id: String, body: JSONObject): AdminResult<AdminDecisionResult> =
         post("$V1/admin/submissions/${encode(id)}/decisions", body)
-            .flatMap { AdminResult.Ok(AdminDecisionResult.parse(it)) }
+            .decode { AdminResult.Ok(AdminDecisionResult.parse(it)) }
 
     /** Role-scoped audit page; only `cursor` and `limit` are contract-defined (gap G3). */
     suspend fun audit(cursor: String?, limit: Int = QUEUE_PAGE_LIMIT): AdminResult<AdminAuditPage> {
@@ -158,7 +179,7 @@ class AdminApi(
             if (!cursor.isNullOrBlank()) add("cursor" to cursor)
             add("limit" to limit.coerceIn(1, QUEUE_PAGE_LIMIT).toString())
         }
-        return get("$V1/admin/audit", query).flatMap { AdminResult.Ok(AdminAuditPage.parse(it)) }
+        return get("$V1/admin/audit", query).decode { if (it.optJSONArray("items") == null) AdminResult.Err(AdminFailure.InvalidPayload) else AdminResult.Ok(AdminAuditPage.parse(it)) }
     }
 
     /** Contract sign-out: `DELETE /v1/session` → `{revoked:true}`, idempotent. */
@@ -173,17 +194,22 @@ class AdminApi(
     private suspend fun post(path: String, body: JSONObject) =
         request("POST", path, body.toString().toByteArray(Charsets.UTF_8))
 
-    private suspend fun request(method: String, path: String, body: ByteArray?): AdminResult<JSONObject> {
+    private suspend fun request(method: String, path: String, body: ByteArray?): AdminResult<JSONObject> =
+        withContext(Dispatchers.IO) { requestOnIo(method, path, body) }
+
+    private suspend fun requestOnIo(method: String, path: String, body: ByteArray?): AdminResult<JSONObject> {
         val base = baseUrl()?.trim().orEmpty()
         if (base.isEmpty()) return AdminResult.Err(AdminFailure.NotConfigured)
+        if (!transport.available) return AdminResult.Err(AdminFailure.ContractUnavailable)
         val endpoint = validateEndpoint(base)
             ?: return AdminResult.Err(AdminFailure.InvalidEndpoint)
 
+        val requestToken = token()
         val headers = buildMap {
             put("Accept", "application/json")
             put("User-Agent", "Goldberg/0.11-stage7b (https://github.com/stokonn/Goldberg)")
             if (body != null) put("Content-Type", "application/json; charset=utf-8")
-            token()?.takeIf { it.isNotBlank() }?.let { put("Authorization", "Bearer $it") }
+            requestToken?.takeIf { it.isNotBlank() }?.let { put("Authorization", "Bearer $it") }
         }
 
         val response = try {
@@ -194,8 +220,16 @@ class AdminApi(
             return AdminResult.Err(AdminFailure.Unreachable)
         }
 
+        if (baseUrl()?.trim().orEmpty() != base || token() != requestToken) {
+            onAccessDenied(AdminFailure.Unauthorized)
+            return AdminResult.Err(AdminFailure.Unauthorized)
+        }
         if (response.body.size > MAX_BODY_BYTES) return AdminResult.Err(AdminFailure.InvalidPayload)
-        return mapOutcome(response)
+        val outcome = mapOutcome(response)
+        if (outcome is AdminResult.Err && (outcome.failure == AdminFailure.Unauthorized || outcome.failure == AdminFailure.Forbidden)) {
+            onAccessDenied(outcome.failure)
+        }
+        return outcome
     }
 
     private fun mapOutcome(response: AdminHttpResponse): AdminResult<JSONObject> {
@@ -223,6 +257,11 @@ class AdminApi(
     }
 
     companion object {
+        /** Application wiring has no live transport. The explicit override is an
+         * existing test seam, not an endpoint preference or production activation. */
+        fun forApplication(baseUrl: () -> String?, token: () -> String? = { null }, fixtureTransportOverride: AdminTransport? = null): AdminApi =
+            AdminApi(baseUrl, fixtureTransportOverride ?: DisabledAdminTransport, token)
+
         const val V1 = "/v1"
         /** Hard ceiling for any single response body. */
         const val MAX_BODY_BYTES = 512 * 1024
@@ -232,7 +271,7 @@ class AdminApi(
         /** https-only, default port, no userinfo. Returns normalized base (no trailing slash) or null. */
         fun validateEndpoint(base: String): String? = try {
             val url = URL(base)
-            val ok = url.protocol == "https" &&
+            val ok = url.protocol == "https" && url.query == null && url.ref == null &&
                 url.port in setOf(-1, 443) &&
                 url.userInfo == null &&
                 !url.host.isNullOrBlank()
@@ -262,8 +301,8 @@ class AdminApi(
                 ?: root?.optJSONObject("details")
             return AdminFailure.Conflict(
                 message = serverMessage(body),
-                currentStatus = details?.optString("currentStatus")?.takeIf { it.isNotBlank() },
-                currentRevision = details?.optInt("currentRevision")?.takeIf { it > 0 },
+                currentStatus = (details?.opt("currentStatus") as? String)?.takeIf { it.isNotBlank() },
+                currentRevision = details?.let { runCatching { AdminWireValues.revision(it, "currentRevision") }.getOrNull() },
             )
         }
 
@@ -288,4 +327,13 @@ internal fun <T, R> AdminResult<T>.flatMap(transform: (T) -> AdminResult<R>): Ad
 internal fun <T, R> AdminResult<T>.map(transform: (T) -> R): AdminResult<R> = when (this) {
     is AdminResult.Ok -> AdminResult.Ok(transform(value))
     is AdminResult.Err -> this
+}
+
+/** Contract/parser failures are a typed error, never a crashed screen or default
+ * revision. Unknown additive fields remain tolerated by the individual codecs. */
+internal inline fun <T> AdminResult<JSONObject>.decode(parse: (JSONObject) -> AdminResult<T>): AdminResult<T> = when (this) {
+    is AdminResult.Err -> this
+    is AdminResult.Ok -> try { parse(value) }
+        catch (_: IllegalArgumentException) { AdminResult.Err(AdminFailure.InvalidPayload) }
+        catch (_: org.json.JSONException) { AdminResult.Err(AdminFailure.InvalidPayload) }
 }

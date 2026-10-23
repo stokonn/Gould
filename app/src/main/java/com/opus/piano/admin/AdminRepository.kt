@@ -12,19 +12,56 @@ class AdminRepository(
     val trust: AdminTrustPolicy,
     val markers: AdminMarkers,
     private val stats: AdminStatsService,
+    val decisionsEnabled: Boolean = false,
 ) {
+    val queue = AdminQueueService(api, markers)
+    val review = AdminReviewService(this)
+    val audit = AdminAuditService(api)
+    private var principal: String? = null
+    val principalId: String? get() = principal
+    init { api.onAccessDenied = { failure ->
+        clearSensitiveState(failure)
+        if (failure == AdminFailure.Unauthorized) session.clear()
+    } }
+
+    fun clearSensitiveState(failure: AdminFailure? = null) {
+        trust.invalidate()
+        principal = null
+        queue.clear()
+        review.clear(failure)
+        audit.clear()
+    }
+
     /**
      * Fresh role verification via the verified `GET /v1/me/capabilities`.
-     * On SUCCESS the trust window is re-granted (fresh grant, non-sliding 10 min).
+     * On success an expired/ungranted window is granted; checks inside it never extend it.
      * Failures never grant trust and never fabricate capabilities.
      */
     suspend fun verifyRole(): AdminResult<AdminCapabilities> =
         when (val result = api.capabilities()) {
-            is AdminResult.Err -> result
+            is AdminResult.Err -> {
+                trust.invalidate()
+                if (result.failure == AdminFailure.Unauthorized || result.failure == AdminFailure.Forbidden) {
+                    clearSensitiveState(result.failure)
+                }
+                result
+            }
             is AdminResult.Ok -> {
                 val caps = AdminCapabilities(result.value.principalId, result.value.capabilities)
-                trust.grant()
-                AdminResult.Ok(caps)
+                if (caps.principalId.isBlank() || !hasAdminSurface(caps)) {
+                    clearSensitiveState(AdminFailure.Forbidden)
+                    AdminResult.Err(AdminFailure.Forbidden)
+                } else {
+                    if (principal != null && principal != caps.principalId) {
+                        clearSensitiveState(AdminFailure.Unauthorized)
+                        session.clear()
+                        AdminResult.Err(AdminFailure.Unauthorized)
+                    } else {
+                        principal = caps.principalId
+                        if (!trust.isTrusted) trust.grant()
+                        AdminResult.Ok(caps)
+                    }
+                }
             }
         }
 
@@ -44,11 +81,15 @@ class AdminRepository(
      * clearing is not presented as server revocation.
      */
     suspend fun signOut(): AdminResult<Boolean> {
-        val server = api.signOut()
-        session.clear()
-        trust.invalidate()
+        // Clear the currently verified account markers before a 401 can erase its
+        // principal scope. Cancellation must still clear local credentials/trust.
         markers.clearAccount()
-        return server
+        try {
+            return api.signOut()
+        } finally {
+            session.clear()
+            clearSensitiveState()
+        }
     }
 
     /** Local-only re-lock (e.g. trust window expiry handling or account switch). */

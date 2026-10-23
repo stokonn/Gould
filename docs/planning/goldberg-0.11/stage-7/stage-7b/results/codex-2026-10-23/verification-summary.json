@@ -1,0 +1,19 @@
+{
+  "jvm": {
+    "tests": 251,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "Fatal": 0,
+    "Error": 0,
+    "Warning": 132,
+    "Information": 0
+  },
+  "build": "PASS, 2m41s",
+  "instrumentation": "compiled only; not executed",
+  "scripts": "all 5 pass; 1050 EN/CZ resources",
+  "screenshots": "not executed; retained emulator SIGSEGV blocker",
+  "source_manifest": "source-sha256.txt"
+}

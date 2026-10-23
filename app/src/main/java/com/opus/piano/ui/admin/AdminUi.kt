@@ -12,9 +12,11 @@ import androidx.compose.ui.unit.dp
 import com.opus.piano.R
 import com.opus.piano.admin.AdminFailure
 import com.opus.piano.i18n.L
+import kotlinx.coroutines.launch
 
 /** Localized explanation for an honest unavailable/error state (shared by all admin screens). */
 internal fun adminReasonText(reasonKey: String): String = when {
+    reasonKey == "contract_unavailable" -> L.s(R.string.stage7b_contract_unavailable)
     reasonKey == "not_configured" -> L.s(R.string.stage7b_reason_not_configured)
     reasonKey == "unreachable" -> L.s(R.string.stage7b_reason_unreachable)
     reasonKey == "unauthorized" -> L.s(R.string.stage7b_reason_unauthorized)
@@ -60,3 +62,26 @@ internal fun AdminLoadingRow(label: String) {
 }
 
 private val JournalAdminSpace = 12.dp
+
+/** Revalidate when returning from background; cancel reads and lock confirmations
+ * as soon as the screen loses foreground status. No polling or background reads. */
+@Composable
+internal fun AdminOnResume(onResume: suspend () -> Unit, onPause: () -> Unit = {}) {
+    val owner = androidx.lifecycle.compose.LocalLifecycleOwner.current
+    val scope = androidx.compose.runtime.rememberCoroutineScope()
+    val resume = androidx.compose.runtime.rememberUpdatedState(onResume)
+    val pause = androidx.compose.runtime.rememberUpdatedState(onPause)
+    androidx.compose.runtime.DisposableEffect(owner) {
+        var job: kotlinx.coroutines.Job? = null
+        fun start() { job?.cancel(); job = scope.launch { resume.value() } }
+        val observer = androidx.lifecycle.LifecycleEventObserver { _, event ->
+            when (event) {
+                androidx.lifecycle.Lifecycle.Event.ON_RESUME -> start()
+                androidx.lifecycle.Lifecycle.Event.ON_PAUSE -> { job?.cancel(); pause.value() }
+                else -> Unit
+            }
+        }
+        owner.lifecycle.addObserver(observer)
+        onDispose { owner.lifecycle.removeObserver(observer); job?.cancel(); pause.value() }
+    }
+}

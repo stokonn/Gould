@@ -29,14 +29,14 @@ import org.json.JSONObject
 /** Server-side moderation status. "Needs info" in the UI == server `changes_requested`. */
 enum class AdminStatus(val wire: String) {
     SUBMITTED("submitted"), IN_REVIEW("in_review"), CHANGES_REQUESTED("changes_requested"),
-    APPROVED("approved"), PUBLISHED("published"), REJECTED("rejected"), WITHDRAWN("withdrawn");
+    APPROVED("approved"), PUBLISHED("published"), REJECTED("rejected"), WITHDRAWN("withdrawn"), UNKNOWN("unknown");
 
     /** True while the item is still awaiting a moderator decision (decidable per C6). */
     val decidable: Boolean get() = this == SUBMITTED || this == IN_REVIEW || this == CHANGES_REQUESTED
 
     companion object {
         fun fromWire(raw: String?): AdminStatus =
-            entries.firstOrNull { it.wire == raw } ?: SUBMITTED
+            entries.firstOrNull { it.wire == raw } ?: UNKNOWN
     }
 }
 
@@ -73,7 +73,7 @@ data class AdminQueueItem(
         fun parse(o: JSONObject) = AdminQueueItem(
             id = o.optString("id"), owner = o.optString("owner"),
             status = AdminStatus.fromWire(o.optString("status")),
-            revision = o.optInt("revision", 1), evidenceCount = o.optInt("evidenceCount", 0),
+            revision = AdminWireValues.revision(o), evidenceCount = o.optInt("evidenceCount", 0),
             createdAt = o.optLong("createdAt", 0L)
         )
     }
@@ -84,7 +84,7 @@ data class AdminQueuePage(val items: List<AdminQueueItem>, val nextCursor: Strin
         fun parse(o: JSONObject): AdminQueuePage {
             val arr = o.optJSONArray("items") ?: JSONArray()
             val items = (0 until arr.length()).mapNotNull { arr.optJSONObject(it)?.let(AdminQueueItem::parse) }
-            val cursor = o.optString("nextCursor").takeIf { it.isNotBlank() }
+            val cursor = AdminWireValues.cursor(o)
             return AdminQueuePage(items, cursor)
         }
     }
@@ -94,7 +94,7 @@ data class AdminQueuePage(val items: List<AdminQueueItem>, val nextCursor: Strin
 data class AdminReviewEvent(val revision: Int, val decision: String, val actorId: String, val reason: String, val createdAt: Long) {
     companion object {
         fun parse(o: JSONObject) = AdminReviewEvent(
-            revision = o.optInt("revision", 1), decision = o.optString("decision"),
+            revision = AdminWireValues.revision(o), decision = o.optString("decision"),
             actorId = o.optString("actor_id"), reason = o.optString("reason"),
             createdAt = o.optLong("created_at", 0L)
         )
@@ -104,7 +104,7 @@ data class AdminReviewEvent(val revision: Int, val decision: String, val actorId
 data class AdminRevision(val revision: Int, val payload: JSONObject, val createdAt: Long) {
     companion object {
         fun parse(o: JSONObject) = AdminRevision(
-            revision = o.optInt("revision", 1), payload = o.optJSONObject("payload") ?: JSONObject(),
+            revision = AdminWireValues.revision(o), payload = o.optJSONObject("payload") ?: JSONObject(),
             createdAt = o.optLong("createdAt", 0L)
         )
     }
@@ -122,7 +122,7 @@ data class AdminSubmissionDetail(
             val evts = o.optJSONArray("reviewEvents") ?: JSONArray()
             return AdminSubmissionDetail(
                 id = o.optString("id"), owner = o.optString("owner"),
-                status = AdminStatus.fromWire(o.optString("status")), revision = o.optInt("revision", 1),
+                status = AdminStatus.fromWire(o.optString("status")), revision = AdminWireValues.revision(o),
                 revisions = (0 until revs.length()).mapNotNull { revs.optJSONObject(it)?.let(AdminRevision::parse) },
                 reviewEvents = (0 until evts.length()).mapNotNull { evts.optJSONObject(it)?.let(AdminReviewEvent::parse) }
             )
@@ -137,7 +137,7 @@ data class AdminDecisionResult(
     companion object {
         fun parse(o: JSONObject) = AdminDecisionResult(
             submissionId = o.optString("submissionId"), decision = o.optString("decision"),
-            status = AdminStatus.fromWire(o.optString("status")), revision = o.optInt("revision", 1),
+            status = AdminStatus.fromWire(o.optString("status")), revision = AdminWireValues.revision(o),
             publishedRevisionId = o.optString("publishedRevisionId").takeIf { it.isNotBlank() },
             entityUuid = o.optString("entityUuid").takeIf { it.isNotBlank() }
         )
@@ -150,7 +150,7 @@ data class AdminAuditEvent(
 ) {
     companion object {
         fun parse(o: JSONObject) = AdminAuditEvent(
-            seq = o.optLong("seq"), ts = o.optLong("ts"), actor = o.optString("actor"),
+            seq = AdminWireValues.unsignedLong(o, "seq", positive = true), ts = AdminWireValues.unsignedLong(o, "ts"), actor = o.optString("actor"),
             action = o.optString("action"), subject = o.optString("subject"),
             prevHash = o.optString("prevHash"), thisHash = o.optString("thisHash")
         )
@@ -161,8 +161,9 @@ data class AdminAuditPage(val items: List<AdminAuditEvent>, val nextCursor: Stri
     companion object {
         fun parse(o: JSONObject): AdminAuditPage {
             val arr = o.optJSONArray("items") ?: JSONArray()
-            val items = (0 until arr.length()).mapNotNull { arr.optJSONObject(it)?.let(AdminAuditEvent::parse) }
-            return AdminAuditPage(items, o.optString("nextCursor").takeIf { it.isNotBlank() }, o.optString("chainHead"))
+            require(arr.length() <= AdminApi.QUEUE_PAGE_LIMIT)
+            val items = (0 until arr.length()).map { AdminAuditEvent.parse(arr.getJSONObject(it)) }
+            return AdminAuditPage(items, AdminWireValues.cursor(o), o.optString("chainHead"))
         }
     }
 }

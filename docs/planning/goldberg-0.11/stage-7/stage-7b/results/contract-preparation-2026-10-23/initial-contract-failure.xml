@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.admin.AdminContractIntegrationTest" tests="24" skipped="0" failures="2" errors="0" timestamp="2026-10-23T13:07:55.761Z" hostname="fedora" time="0.079">
+  <properties/>
+  <testcase name="unsafeConflictDetailsAreUnknownRatherThanRounded" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <testcase name="entityProposalAndPublishedRevisionsStayExplicitlyDifferent" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.007"/>
+  <testcase name="applicationDefaultUnconfiguredRemainsHonestWithZeroCredentialsRead" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <testcase name="candidateCapabilitiesCannotGrantAnUnboundPrincipal" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.007">
+    <failure message="java.lang.AssertionError: expected:&lt;Err(failure=InvalidPayload)&gt; but was:&lt;Ok(value=AdminCapabilitiesResponse(principalId=, capabilities=[decide, queue.read]))&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;Err(failure=InvalidPayload)&gt; but was:&lt;Ok(value=AdminCapabilitiesResponse(principalId=, capabilities=[decide, queue.read]))&gt;
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.opus.piano.admin.AdminContractIntegrationTest.invalid(AdminContractIntegrationTest.kt:22)
+	at com.opus.piano.admin.AdminContractIntegrationTest.access$invalid(AdminContractIntegrationTest.kt:9)
+	at com.opus.piano.admin.AdminContractIntegrationTest$candidateCapabilitiesCannotGrantAnUnboundPrincipal$1.invokeSuspend(AdminContractIntegrationTest.kt:58)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source)
+	at com.opus.piano.admin.AdminContractIntegrationTest.candidateCapabilitiesCannotGrantAnUnboundPrincipal(AdminContractIntegrationTest.kt:57)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestExecutor.runRequest(JUnitTestExecutor.java:175)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestExecutor.accept(JUnitTestExecutor.java:84)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestExecutor.accept(JUnitTestExecutor.java:47)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestDefinitionProcessor.processTestDefinition(AbstractJUnitTestDefinitionProcessor.java:65)
+	at org.gradle.api.internal.tasks.testing.SuiteTestDefinitionProcessor.processTestDefinition(SuiteTestDefinitionProcessor.java:54)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.gradle.internal.dispatch.MethodInvocation.invokeOn(MethodInvocation.java:77)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:28)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:19)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:88)
+	at jdk.proxy1/jdk.proxy1.$Proxy4.processTestDefinition(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:178)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:126)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:103)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:63)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:122)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:72)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</failure>
+  </testcase>
+  <testcase name="allCandidateFailureClassesRemainDistinct" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.012"/>
+  <testcase name="supportedLegacyQueueAndDetailRemainReadable" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.005"/>
+  <testcase name="invalidAuditIntegerBecomesTypedPayloadError" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.003"/>
+  <testcase name="signedLongMaximumIsAcceptedWithoutRounding" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.001"/>
+  <testcase name="candidateDetailIsRejectedRatherThanDefaultedToProposalRevisionOne" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.003"/>
+  <testcase name="applicationTransportStaysDisabledWithConfiguredEndpointAndCredentials" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.003"/>
+  <testcase name="candidateQueueCursorCannotBeStringifiedIntoLegacyCursor" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.001"/>
+  <testcase name="applicationFixtureSeamIsExplicitAndNeverRequiresNetworking" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.003"/>
+  <testcase name="auditBigintBeyondJavaScriptPrecisionIsExact" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <testcase name="replayFixtureRequiresIdenticalBodyKeyAndOriginalResponse" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <testcase name="candidateRejectWithoutRevisionIsNotInventedAsLegacySuccess" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <testcase name="corpusSeparatesAuthoritiesAndDoesNotApproveMapping" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.001"/>
+  <testcase name="malformedBigintRepresentationsAreRejected" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.005"/>
+  <testcase name="nonStringCapabilityCannotBecomeAClaim" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002">
+    <failure message="java.lang.AssertionError: expected:&lt;Err(failure=InvalidPayload)&gt; but was:&lt;Ok(value=AdminCapabilitiesResponse(principalId=p, capabilities=[{&quot;role&quot;:&quot;decide&quot;}]))&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;Err(failure=InvalidPayload)&gt; but was:&lt;Ok(value=AdminCapabilitiesResponse(principalId=p, capabilities=[{&quot;role&quot;:&quot;decide&quot;}]))&gt;
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.opus.piano.admin.AdminContractIntegrationTest.invalid(AdminContractIntegrationTest.kt:22)
+	at com.opus.piano.admin.AdminContractIntegrationTest.access$invalid(AdminContractIntegrationTest.kt:9)
+	at com.opus.piano.admin.AdminContractIntegrationTest$nonStringCapabilityCannotBecomeAClaim$1.invokeSuspend(AdminContractIntegrationTest.kt:62)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source)
+	at com.opus.piano.admin.AdminContractIntegrationTest.nonStringCapabilityCannotBecomeAClaim(AdminContractIntegrationTest.kt:60)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestExecutor.runRequest(JUnitTestExecutor.java:175)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestExecutor.accept(JUnitTestExecutor.java:84)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestExecutor.accept(JUnitTestExecutor.java:47)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestDefinitionProcessor.processTestDefinition(AbstractJUnitTestDefinitionProcessor.java:65)
+	at org.gradle.api.internal.tasks.testing.SuiteTestDefinitionProcessor.processTestDefinition(SuiteTestDefinitionProcessor.java:54)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.gradle.internal.dispatch.MethodInvocation.invokeOn(MethodInvocation.java:77)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:28)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:19)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:88)
+	at jdk.proxy1/jdk.proxy1.$Proxy4.processTestDefinition(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:178)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:126)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:103)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:63)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:122)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:72)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</failure>
+  </testcase>
+  <testcase name="opaqueLegacyCursorIsPreservedByteForByte" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.001"/>
+  <testcase name="malformedAuditRowsCannotBeSilentlyDroppedIntoAnEmptySuccess" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <testcase name="candidateAuditCannotBeMistakenForLegacyEventOrTimestamp" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <testcase name="revisionOverflowFractionOrMissingNeverDefaults" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.003"/>
+  <testcase name="candidateConflictHasNoInventedCurrentRevisionOrStatus" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.003"/>
+  <testcase name="candidateAuditVocabularyIsNotSilentlyCountedAsLegacyDecision" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

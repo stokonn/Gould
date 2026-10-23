@@ -8,6 +8,8 @@ android {
     compileSdk = 36
     defaultConfig { applicationId = "com.opus.piano"; minSdk = 26; targetSdk = 36; versionCode = 11; versionName = "0.10.1"; testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
     buildFeatures { compose = true }
+    // Shared synthetic contract corpus is available to JVM tests only, never the APK.
+    sourceSets.getByName("test").resources.srcDir("../contracts/admin/v1")
     bundle { language { enableSplit = false } }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
 }

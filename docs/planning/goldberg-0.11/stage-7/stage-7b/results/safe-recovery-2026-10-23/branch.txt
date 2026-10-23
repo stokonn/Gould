@@ -1,0 +1,49 @@
+## feature/goldberg-0.11-stage-7b...origin/feature/goldberg-0.11-stage-7b
+ M .github/workflows/stage5-emulator.yml
+ M app/build.gradle.kts
+ M app/src/main/java/com/opus/piano/OpusApplication.kt
+ M app/src/main/java/com/opus/piano/admin/AdminApi.kt
+ M app/src/main/java/com/opus/piano/admin/AdminMarkers.kt
+ M app/src/main/java/com/opus/piano/admin/AdminModels.kt
+ M app/src/main/java/com/opus/piano/admin/AdminRepository.kt
+ M app/src/main/java/com/opus/piano/admin/AdminSettingsStore.kt
+ M app/src/main/java/com/opus/piano/admin/AdminTrustPolicy.kt
+ M app/src/main/java/com/opus/piano/ui/OpusApp.kt
+ M app/src/main/java/com/opus/piano/ui/Theme.kt
+ M app/src/main/java/com/opus/piano/ui/admin/AdminAuditScreen.kt
+ M app/src/main/java/com/opus/piano/ui/admin/AdminDashboardScreen.kt
+ M app/src/main/java/com/opus/piano/ui/admin/AdminQueueScreen.kt
+ M app/src/main/java/com/opus/piano/ui/admin/AdminSettingsScreen.kt
+ M app/src/main/java/com/opus/piano/ui/admin/AdminUi.kt
+ M app/src/main/java/com/opus/piano/ui/admin/AdminViewModel.kt
+ M app/src/main/res/values-cs/strings.xml
+ M app/src/main/res/values/strings.xml
+ M app/src/test/java/com/opus/piano/admin/AdminFoundationTest.kt
+ M docs/ai/HANDOFF.md
+ M docs/ai/STATE.md
+ M docs/ai/VERIFICATION.md
+ M docs/planning/goldberg-0.11/STAGE-CHECKLIST.md
+ M docs/planning/goldberg-0.11/stage-7/stage-7b/CHECKLIST.md
+ M docs/planning/goldberg-0.11/stage-7/stage-7b/CONTRACT-AUDIT.md
+?? .pmp.yml
+?? .pmp/
+?? app/src/androidTest/java/com/opus/piano/Stage7bAdminRuntimeTest.kt
+?? app/src/main/java/com/opus/piano/admin/AdminAuditService.kt
+?? app/src/main/java/com/opus/piano/admin/AdminQueueService.kt
+?? app/src/main/java/com/opus/piano/admin/AdminReviewService.kt
+?? app/src/main/java/com/opus/piano/admin/AdminSyncPolicy.kt
+?? app/src/main/java/com/opus/piano/admin/AdminSyncWorker.kt
+?? app/src/main/java/com/opus/piano/admin/AdminWireValues.kt
+?? app/src/main/java/com/opus/piano/ui/admin/AdminProposalScreen.kt
+?? app/src/test/java/com/opus/piano/admin/AdminAuditSyncTest.kt
+?? app/src/test/java/com/opus/piano/admin/AdminContractIntegrationTest.kt
+?? app/src/test/java/com/opus/piano/admin/AdminQueueTest.kt
+?? app/src/test/java/com/opus/piano/admin/AdminReviewTest.kt
+?? contracts/
+?? docs/ai/PMP-RECOVERY.md
+?? docs/ai/STAGE_7B_CONTRACT_PREPARATION.md
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/ACCEPTANCE.md
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/CI-RECOVERY.md
+?? docs/planning/goldberg-0.11/stage-7/stage-7b/results/
+?? scripts/check_admin_contract_fixtures.py
+?? scripts/ci_android_instrumentation.sh

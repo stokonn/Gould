@@ -59,7 +59,7 @@ class AdminMarkers(
      * never from a local-only optimistic update.
      */
     fun clearResolved(submissionId: String, serverStatus: AdminStatus) {
-        if (submissionId.isBlank() || serverStatus.decidable || serverStatus == AdminStatus.WITHDRAWN) return
+        if (submissionId.isBlank() || serverStatus.decidable || serverStatus == AdminStatus.UNKNOWN) return
         set(AdminMarkerKind.DEFERRED, submissionId, false)
         set(AdminMarkerKind.RE_REVIEW, submissionId, false)
     }

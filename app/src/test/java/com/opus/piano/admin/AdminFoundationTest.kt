@@ -56,7 +56,7 @@ class AdminFoundationTest {
         assertFalse(AdminStatus.PUBLISHED.decidable)
         assertFalse(AdminStatus.WITHDRAWN.decidable)
         assertEquals(AdminStatus.CHANGES_REQUESTED, AdminStatus.fromWire("changes_requested"))
-        assertEquals(AdminStatus.SUBMITTED, AdminStatus.fromWire("something_new")) // forward-compat
+        assertEquals(AdminStatus.UNKNOWN, AdminStatus.fromWire("something_new")) // forward-compat
     }
 
     @Test
