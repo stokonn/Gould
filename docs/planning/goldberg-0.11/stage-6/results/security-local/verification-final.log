@@ -1,0 +1,8 @@
+PASS: all 22 threat rows indexed; 168 exact successful TAP/JUnit evidence references.
+PASS: original 46 backend source, 15 host artifact and 15 Android source hashes.
+PASS: final-run source manifest unchanged; verification-only tools hashes match.
+PASS: existing backend, Android and repository script source unchanged.
+PASS: bash -n recovery runner; build-matrix.py executed successfully.
+PASS: git diff --check after correcting documented trailing EOF blanks.
+LIMIT: fresh PostgreSQL preflight EPERM, exit78, zero database bodies.
+LIMIT: 13 local PASS / 6 PARTIAL / 2 NOT TESTED / 1 FAIL is not full acceptance.

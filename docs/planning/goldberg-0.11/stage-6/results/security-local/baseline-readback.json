@@ -1,0 +1,20 @@
+{
+  "backend": {
+    "branch": "implement/goldberg-0.11-stage-6-7-9-local",
+    "sha": "9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce",
+    "checkpoint": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6358952579"
+  },
+  "android": {
+    "branch": "implement/goldberg-0.11-stage-6-10-11-local",
+    "sha": "2f1524e4083a98a64d5fa9790f3cdc002d1f8237",
+    "checkpoint": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6362788710",
+    "runtime": "PENDING; packaging PASS per owner and inspected artifact"
+  },
+  "readback": "Connected GitHub exact refs and Issue31 comments independently read 2026-10-23",
+  "stage7b": "Latest checkpoint6362810877 read; tree not entered or modified; G1-G6 remain open",
+  "initialIssueComments": 72,
+  "newBranch": "verify/goldberg-0.11-stage-6-12-local",
+  "base": "bcc779685d79e99451796b3fa45657b3bca8dd99",
+  "remoteInitialCheck": "git ls-remote --heads origin refs/heads/verify/goldberg-0.11-stage-6-12-local succeeded, empty; connected GitHub ref404 agrees",
+  "policy": "no dashboard edit; append-only checkpoint after exact normal push/readback; no emulator, hosted change, merge/tag/release"
+}

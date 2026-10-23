@@ -1,3 +1,47 @@
+## Stage 6.12 — local security verification (2026-10-23; PARTIAL)
+
+Purpose/scope: audit T1–T22 at assertion level and add focused local synthetic
+regressions; verification/evidence only. No service, API, SQL or Android behavior
+changes. Branch `verify/goldberg-0.11-stage-6-12-local`, based on `bcc7796`;
+implementation ancestors: backend `9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce`,
+Android `2f1524e4083a98a64d5fa9790f3cdc002d1f8237`, both remote SHAs read back.
+This owner authorization supersedes prior instructions deferring *local* 6.12;
+6.13–6.18 and cloud/real OAuth/collection/merge/tag/release remain unauthorized.
+
+- [x] Recover instructions, latest Issue #31 checkpoints and isolated worktree.
+- [x] Inspect actual assertions and index exact successful test names/files/logs.
+- [x] T1–T22 matrix: **13 local PASS, 6 PARTIAL, 2 NOT TESTED, 1 FAIL**. Local PASS
+  can use explicit historical unchanged-source execution; no full [I] acceptance.
+- [x] Fresh final run: **27 focused +32 existing unit =59 PASS**, zero failures,
+  skips or cancellations; five repository checks PASS. Initial27-test log retained
+  separately and not added to59. Pre/post runner source hashes unchanged.
+- [x] Independently verify historical backend46 source +15 artifact hashes and
+  Android15 source hashes. Retain host237 and JVM214 baselines without relabeling
+  them as fresh reruns. All historical/failure evidence preserved.
+- [x] Record T22 exact-status finding: unknown audit-edit operation returns400,
+  threat model expects403. No mutation dispatch or privilege bypass demonstrated.
+  Passing diagnostic probe records400; it does NOT pass the403 acceptance gate.
+- [ ] Fresh PostgreSQL rerun: loopback socket preflight EPERM, runner exit78;
+  **zero database test bodies**, not connection failures counted as executed tests.
+- [ ] T13 rendering, T14 DNS/redirect/rebinding/fetch protections, T15 HTTP/browser,
+  T19 actual isolated restore/RPO, T16/T20 runtime usability and T21 actual network
+  privacy assertions remain OPEN. Hosted [I] requires separate authorization.
+- [ ] Reconcile T22 exact status explicitly before accepting it; no silent API or
+  contract change in this verification milestone.
+- [ ] Normal branch push/exact remote SHA and one append-only Issue31 checkpoint
+  pending at this source checkpoint; record actual publication separately.
+
+Matrix: `docs/planning/goldberg-0.11/stage-6/LOCAL-SECURITY-MATRIX.md`.
+Raw fresh results/index: `stage-6/results/security-local/`, final `run-x1eRKaqL`.
+Reproducible narrow host command: `bash spikes/stage6-security-local/run-local.sh`
+on a permitted local host with existing locked dependencies and cached PG17.11
+image. It reuses the unchanged disposable backend runner; no hosted connection.
+Do not rerun known-blocked PostgreSQL setup in this agent venue. Overall/formal
+6.12 remains UNCHECKED/PARTIAL. Android6.10–6.11 runtime/emulator recovery DEFERRED;
+packaging already PASS, zero native bodies. Stage5/7A/X10/7B and all user data
+untouched. Exact next action: publish the verified audit scope normally, then
+obtain a permitted PostgreSQL venue and resolve documented acceptance gaps.
+
 ## OWNER STATUS CORRECTION — packaging and source publication confirmed (2026-10-23)
 
 **The implementation is PUBLISHED. JVM/build/lint and instrumentation APK packaging

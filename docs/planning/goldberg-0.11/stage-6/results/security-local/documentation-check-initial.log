@@ -1,0 +1,4 @@
+git diff --check exited2 before commit:
+docs/planning/goldberg-0.11/STAGE-CHECKLIST.md:1317: new blank line at EOF.
+docs/planning/goldberg-0.11/stage-6/CHECKLIST.md:1342: new blank line at EOF.
+Corrected only added trailing blank lines; application/test source unchanged.

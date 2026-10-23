@@ -1,0 +1,1267 @@
+{
+  "overall": "PARTIAL; formal 6.12 unchecked",
+  "sourceBase": "bcc779685d79e99451796b3fa45657b3bca8dd99",
+  "backendPublished": "9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce",
+  "androidPublished": "2f1524e4083a98a64d5fa9790f3cdc002d1f8237",
+  "verifiedBaselineSourceHashes": 46,
+  "verifiedBaselineArtifactHashes": 15,
+  "verifiedAndroidSourceHashes": 15,
+  "counts": {
+    "PASS": 13,
+    "PARTIAL": 6,
+    "NOT TESTED": 2,
+    "FAIL": 1
+  },
+  "interpretation": "PASS refers only to reviewed local assertions with exact executed evidence; historical owner executions are not fresh reruns or full [I] acceptance. Probe PASS is not threat PASS.",
+  "rows": [
+    {
+      "threat": "T1",
+      "scenario": "Expired session/access token",
+      "localStatus": "PASS",
+      "coveredAssertions": "Exact access expiry rejects; actual handlers return401, publish nothing and omit token from logs. New generic denial probe asserts request.denied event and correlation ID.",
+      "missingAssertionsOrEvidence": "No real HTTP/hosted session/logging check. Fresh SQL rerun blocked; actual expiry assertion comes from prior unchanged PostgreSQL suite.",
+      "requiresHostedIntegration": true,
+      "remainingIntegration": "OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T1 exact access expiry rejects; refresh can rotate before absolute family expiry",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "malformed, expired and revoked sessions safely reject actual handlers with 401 and sanitized logs",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T1 denial envelope and structured log contain no supplied credential or exception text",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T1/T4 independent verifier rejects expired",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        }
+      ]
+    },
+    {
+      "threat": "T2",
+      "scenario": "Signature, kid, algorithms and JWKS cache/rotation",
+      "localStatus": "PASS",
+      "coveredAssertions": "Signature/none/HS confusion rejected401; fake provider bounded/cold outage yields safe503; concurrent refresh coalesces; header cap, zero-age, exact expiry and unknown-kid cooldown verified with synthetic clock. Attacker jku/x5u/jwk rejected before resolver invocation.",
+      "missingAssertionsOrEvidence": "Real JWKS rotation, transport/DNS and deployed cache window untested. Provider outage503 is deliberate fail-closed behavior, not a successful identity.",
+      "requiresHostedIntegration": true,
+      "remainingIntegration": "OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T2 invalid signature, malformed/no token, none and HMAC confusion fail closed",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T2 unknown kid refreshes once; rotation succeeds; attacker URLs are never fetched",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T2 bounded cache expiry and unavailable provider never fall back to stale keys",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T2 cold unavailable/hanging provider, ambiguous/private keys and malformed JWKS deny",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T2 concurrent cold verification coalesces one bounded JWKS request",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T22 admin cannot self-grant; operator capability/role stays outside application roles",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T2 untrusted jku header rejected before trusted resolver invocation",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T2 untrusted x5u header rejected before trusted resolver invocation",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T2 untrusted jwk header rejected before trusted resolver invocation",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T2 none HMAC and forged signatures deny without successful identity",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T2 header cache cap exact expiry fails closed then recovers with rotated keys",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T2 zero max age cannot reuse keys on the next verification",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T2 unknown kid flood bounded and later rotation eligible at exactly one second",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T2 parallel cold resolver outage coalesces and never returns identity",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private journal at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private practiceSessions at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private personalNotes at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private microphoneRecordings at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private backup at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private privateRepertoireHistory at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private profile at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T22 probe records composed unknown audit mutation as 400 with no dispatch; required 403 remains a finding",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        }
+      ]
+    },
+    {
+      "threat": "T3",
+      "scenario": "Credential/refresh replay",
+      "localStatus": "PASS",
+      "coveredAssertions": "Nonce mismatch/expiry/replay cannot mint second session; concurrent credential consumption has one winner. Refresh reuse commits family revocation/audit; even concurrent winner access is revoked.",
+      "missingAssertionsOrEvidence": "Prior real local SQL execution only; no fresh SQL rerun or Google/hosted replay venue.",
+      "requiresHostedIntegration": true,
+      "remainingIntegration": "OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T3 nonce binding, expired challenge and credential replay cannot mint a second session",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T3 concurrent identical credential exchange consumes challenge exactly once",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T3 refresh rotation revokes old access; replay commits family revocation and audit",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T3 concurrent refresh has one winner and replay revokes even its newly issued access",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        }
+      ]
+    },
+    {
+      "threat": "T4",
+      "scenario": "Wrong audience or issuer",
+      "localStatus": "PASS",
+      "coveredAssertions": "Exact issuer/audience, unexpected multi-audience and required claims rejected401 with real local JWT crypto; prior SQL suite confirms no principal rows.",
+      "missingAssertionsOrEvidence": "Hosted provider audience/issuer integration OPEN.",
+      "requiresHostedIntegration": true,
+      "remainingIntegration": "OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T1/T4 strict claims reject wrong issuer with 401",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T1/T4 strict claims reject wrong audience with 401",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "strict audience is the exact configured value, not an unexpected multi-audience envelope",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T1/T4 independent verifier rejects wrong audience",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T1/T4 independent verifier rejects multi audience",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T1/T4 independent verifier rejects wrong issuer",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        }
+      ]
+    },
+    {
+      "threat": "T5",
+      "scenario": "Revoked moderator/suspended principal",
+      "localStatus": "PASS",
+      "coveredAssertions": "Still-live sessions lose privileged capabilities on next request; suspension403 and role revocation403; integration wrappers use live authorization including replay.",
+      "missingAssertionsOrEvidence": "Fresh SQL rerun blocked. No wall-clock production propagation claim.",
+      "requiresHostedIntegration": false,
+      "remainingIntegration": "No hosted venue required by original row; listed unsupported/local checks remain OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T5 valid token from suspended/deleted principal gets 403, expired/revoked token 401",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T5 role revocation takes effect on next request despite a still-live session",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T5 administrator suspension is immediate, audited and cannot resurrect deleted principal",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "role/suspension integration reuses live Auth, denies escalation, self grant and revoked replay",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "read role revocation is immediate; owner retains data but cannot bypass current capabilities",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        }
+      ]
+    },
+    {
+      "threat": "T6",
+      "scenario": "Role injection/mass assignment",
+      "localStatus": "PASS",
+      "coveredAssertions": "Forged role/author/status rejected400 with exact snapshot equality; nested unknown fields rejected; role claims grant no authority; no self-approval.",
+      "missingAssertionsOrEvidence": "Fresh SQL rerun blocked; no wire-layer deserialization/HTTP claim.",
+      "requiresHostedIntegration": false,
+      "remainingIntegration": "No hosted venue required by original row; listed unsupported/local checks remain OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T6/T13 validation rejects unknown top field without effects",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T6/T13 validation rejects nested role without effects",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T6 self-approval, forged role/author/status, revoked moderator and suspended identity deny",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "strict verified identity maps by issuer/subject; email/name/role claims grant no authority",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T6 strict allowlist rejects forged role/author/status in protected resource requests",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        }
+      ]
+    },
+    {
+      "threat": "T7",
+      "scenario": "Guess another contributor pending ID",
+      "localStatus": "PASS",
+      "coveredAssertions": "Other-owner and absent IDs both404 on private reads; own list empty; contributor queue denied.",
+      "missingAssertionsOrEvidence": "Evidence is local in-process/SQL; no HTTP listener tested.",
+      "requiresHostedIntegration": false,
+      "remainingIntegration": "No hosted venue required by original row; listed unsupported/local checks remain OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T7/T8 owner-only private reads/revisions/withdrawals hide another contributor and absent IDs equally",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T7/T8 ownership in query hides other private submissions and denies cross-user writes",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        }
+      ]
+    },
+    {
+      "threat": "T8",
+      "scenario": "Cross-user modification",
+      "localStatus": "PASS",
+      "coveredAssertions": "Other-owner revise/withdraw both404; no revision/status effect; ownership SQL query hides rows.",
+      "missingAssertionsOrEvidence": "No deployed PATCH route; local service operation is tested.",
+      "requiresHostedIntegration": false,
+      "remainingIntegration": "No hosted venue required by original row; listed unsupported/local checks remain OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T7/T8 owner-only private reads/revisions/withdrawals hide another contributor and absent IDs equally",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T7/T8 ownership in query hides other private submissions and denies cross-user writes",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        }
+      ]
+    },
+    {
+      "threat": "T9",
+      "scenario": "REST/RPC privilege escalation",
+      "localStatus": "PARTIAL",
+      "coveredAssertions": "Prior restricted SQL roles cannot read private tables, mutate audit/head or invoke ungranted functions. SQL functions pin search_path=pg_catalog and revoke PUBLIC execution (source review). Local arbitrary RPC denied by Auth adapter. New composed admin route defers to injected authorization.",
+      "missingAssertionsOrEvidence": "No real REST/RPC listener, hosted Supabase RLS/anonymous JWT or deployed function identity. SQL mocks are not hosted tests. Current unknown CommunityApi operation taxonomy400 rather than Auth LocalApi403; see T22.",
+      "requiresHostedIntegration": true,
+      "remainingIntegration": "OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T9/T22 public database role has no private-table or privileged-function access",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T9/T22 local transport exposes no audit mutation or arbitrary RPC, even to admin",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-schema-pg/tests/schema.test.mjs",
+          "test": "restricted local role cannot mutate history/head or invoke ungranted definer functions",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/schema-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T9/T22 configured admin role route defers to live authorization and never opens storage when denied",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        }
+      ]
+    },
+    {
+      "threat": "T10",
+      "scenario": "Concurrent moderator decisions",
+      "localStatus": "PASS",
+      "coveredAssertions": "Two moderators exactly201/409; one immutable publication/feed. Same absent/existing entity contention compares revisions atomically. Admin quarantine/rollback distinct-key races exactly200/409.",
+      "missingAssertionsOrEvidence": "Fresh concurrency rerun blocked; accepted evidence is unchanged prior PostgreSQL run. No production load inference.",
+      "requiresHostedIntegration": false,
+      "remainingIntegration": "No hosted venue required by original row; listed unsupported/local checks remain OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T10 two moderators race on one submission: exactly [201,409] and coherent publication/feed",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T10 distinct submissions same absent entity: one winner, stale loser 409",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T10 distinct submissions same existing entity: one winner, stale loser 409",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.quarantine replay, mismatch and concurrent distinct-key decisions",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.rollback replay, mismatch and concurrent distinct-key decisions",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        }
+      ]
+    },
+    {
+      "threat": "T11",
+      "scenario": "Identical idempotent retry",
+      "localStatus": "PASS",
+      "coveredAssertions": "Concurrent identical create/moderation replay stored response with one submission/publication; successful retries do not consume quota again.",
+      "missingAssertionsOrEvidence": "Fresh SQL rerun blocked; no network-loss wire replay tested.",
+      "requiresHostedIntegration": false,
+      "remainingIntegration": "No hosted venue required by original row; listed unsupported/local checks remain OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T11 same-key concurrent create and moderation replay exact stored response; different-key loser conflicts",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "daily limit atomic last slot, duplicate replay, mismatch and pending quota",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "kill switch truthful 503, committed replay and public/private reads stay available",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        }
+      ]
+    },
+    {
+      "threat": "T12",
+      "scenario": "Key reused with changed body",
+      "localStatus": "PASS",
+      "coveredAssertions": "Same key different payload/operation422; principals cannot reuse another stored result. Admin same-key changed reason422.",
+      "missingAssertionsOrEvidence": "No HTTP transport integration; PostgreSQL evidence historical unchanged.",
+      "requiresHostedIntegration": false,
+      "remainingIntegration": "No hosted venue required by original row; listed unsupported/local checks remain OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T12 same key different payload/operation gives 422; principals cannot see/reuse stored results",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.quarantine replay, mismatch and concurrent distinct-key decisions",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.rollback replay, mismatch and concurrent distinct-key decisions",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        }
+      ]
+    },
+    {
+      "threat": "T13",
+      "scenario": "Script/URL/oversize/unknown/deep input",
+      "localStatus": "PARTIAL",
+      "coveredAssertions": "HTML/encoded HTML and unknown fields rejected400 with unchanged SQL snapshots. Node/string/byte/nesting/getter/cycle limits enforced before dispatch; no handler called in new probe.",
+      "missingAssertionsOrEvidence": "Actual Android/browser rendering/escaping unexecuted. Compose Text source review cannot substitute runtime rendering. No HTTP parser-size limit assertion.",
+      "requiresHostedIntegration": false,
+      "remainingIntegration": "No hosted venue required by original row; listed unsupported/local checks remain OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T6/T13 validation rejects HTML without effects",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T6/T13 validation rejects encoded HTML without effects",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "boundary checks: 20 fields, 10 URLs, 2 KiB strings, 16 KiB exact request, nesting/cycle/getters",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T13 malformed object getters nesting and size fail before any handler dispatch",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        }
+      ]
+    },
+    {
+      "threat": "T14",
+      "scenario": "Evidence SSRF/private IP/rebinding/redirect",
+      "localStatus": "PARTIAL",
+      "coveredAssertions": "Unsafe literal/private/metadata/local and non-reviewed URLs refused; empty policy denies even synthetic input. Evidence is stored only; no fetcher/proxy introduced.",
+      "missingAssertionsOrEvidence": "No DNS resolve-then-check, rebinding, redirect revalidation, real fetch size/time tests. URL syntax/allowlist validation DOES NOT pass full T14. No unrestricted fetching may be enabled.",
+      "requiresHostedIntegration": false,
+      "remainingIntegration": "No hosted venue required by original row; listed unsupported/local checks remain OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL javascript:alert(1)",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL data:text/plain,x",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL http://evidence.synthetic.invalid/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://localhost/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://127.0.0.1/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://127.1/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://0x7f000001/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://10.0.0.1/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://172.16.0.1/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://192.168.1.1/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://169.254.169.254/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://[::1]/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://[::ffff:7f00:1]/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://user:pass@evidence.synthetic.invalid/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid:444/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid./source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/source\\#private",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid\\\\@localhost/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://evil.invalid/source",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T14 empty policy refuses synthetic evidence and URL policy is not an SSRF fetch pass",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/unit.test.mjs",
+          "test": "fail-closed evidence policy remains empty and no evidence fetch abstraction is added",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/unit.tap",
+          "venue": "fresh agent socket-free run"
+        }
+      ]
+    },
+    {
+      "threat": "T15",
+      "scenario": "Browser CSRF/CORS",
+      "localStatus": "NOT TESTED",
+      "coveredAssertions": "No current browser session/cookie/HTTP path exists. Older isolated C2 spike is not execution of this composed adapter.",
+      "missingAssertionsOrEvidence": "No current CSRF mismatch403, SameSite=Strict cookie, Origin/CORS or browser scenario execution. Both current local HTTP and hosted/browser paths OPEN.",
+      "requiresHostedIntegration": true,
+      "remainingIntegration": "OPEN",
+      "evidence": []
+    },
+    {
+      "threat": "T16",
+      "scenario": "Principal/distributed IP quota exhaustion",
+      "localStatus": "PARTIAL",
+      "coveredAssertions": "Daily/pending limits, principal last-slot and cross-account coarse-IP races; hashes/grouping; exact windows;429 Retry-After; kill503; storage failure503; rollback/retry counts; janitor preserves submissions/audit.",
+      "missingAssertionsOrEvidence": "Android/Admin actual runtime usability and deployed distributed-IP/edge quota exhaustion untested. Key/retention fixtures synthetic, not legal retention policy.",
+      "requiresHostedIntegration": true,
+      "remainingIntegration": "OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "daily limit atomic last slot, duplicate replay, mismatch and pending quota",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "coarse IP last slot across different accounts, hashed storage and no raw diagnostics",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "quota rollback on principal counter fault",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "quota rollback on coarse_ip counter fault",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "quota boundary exactly resets the IP window without recounting prior idempotency replay",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "kill switch truthful 503, committed replay and public/private reads stay available",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "quota table unavailable is 503 without work loss; recovery permits same key",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "idempotency insert failure rolls quota, submission and audit back together",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "independent janitor prunes expired coarse hashes with intake disabled and preserves evidence",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/unit.test.mjs",
+          "test": "keyed hashes hide peer, preserve group, separate groups and key rotations",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/unit.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/unit.test.mjs",
+          "test": "retention scheduler cleans during idle intake, suppresses overlap and drains on stop",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/unit.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/unit.test.mjs",
+          "test": "retention scheduler retries unavailable storage at later ticks and reports no private diagnostics",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/unit.tap",
+          "venue": "fresh agent socket-free run"
+        }
+      ]
+    },
+    {
+      "threat": "T17",
+      "scenario": "Partial transaction failure",
+      "localStatus": "PASS",
+      "coveredAssertions": "Approval fault boundaries locked/entity/snapshot/projection/approved/audit/feed/sql; idempotency insertion and deferred commit failure; exact snapshot equality then same-key success. Admin quarantine/rollback locked/projection/audit/feed/deferred; principal/quota faults atomic.",
+      "missingAssertionsOrEvidence": "Fresh PostgreSQL rerun blocked. No claim of provider failure injection.",
+      "requiresHostedIntegration": false,
+      "remainingIntegration": "No hosted venue required by original row; listed unsupported/local checks remain OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T17 full rollback and same-key retry after locked fault",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T17 full rollback and same-key retry after entity fault",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T17 full rollback and same-key retry after snapshot fault",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T17 full rollback and same-key retry after projection fault",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T17 full rollback and same-key retry after approved fault",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T17 full rollback and same-key retry after audit fault",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T17 full rollback and same-key retry after feed fault",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T17 full rollback and same-key retry after sql fault",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T17 idempotency insert and deferred commit failures rollback all effects and allow same-key retry",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.quarantine T17 atomic rollback at locked",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.quarantine T17 atomic rollback at projection",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.quarantine T17 atomic rollback at audit",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.quarantine T17 atomic rollback at feed",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.quarantine T17 atomic rollback at deferred",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.rollback T17 atomic rollback at locked",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.rollback T17 atomic rollback at projection",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.rollback T17 atomic rollback at audit",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.rollback T17 atomic rollback at feed",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin.rollback T17 atomic rollback at deferred",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "principal operation fault rolls role and audit/idempotency back together",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "quota rollback on principal counter fault",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "quota rollback on coarse_ip counter fault",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-schema-pg/tests/schema.test.mjs",
+          "test": "atomic publication rollback after locked leaves all tables/head/key unchanged",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/schema-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-schema-pg/tests/schema.test.mjs",
+          "test": "atomic publication rollback after publication leaves all tables/head/key unchanged",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/schema-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-schema-pg/tests/schema.test.mjs",
+          "test": "atomic publication rollback after approved leaves all tables/head/key unchanged",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/schema-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-schema-pg/tests/schema.test.mjs",
+          "test": "atomic publication rollback after audit leaves all tables/head/key unchanged",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/schema-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-schema-pg/tests/schema.test.mjs",
+          "test": "atomic publication rollback after feed leaves all tables/head/key unchanged",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/schema-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-schema-pg/tests/schema.test.mjs",
+          "test": "atomic publication rollback after idempotency leaves all tables/head/key unchanged",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/schema-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        }
+      ]
+    },
+    {
+      "threat": "T18",
+      "scenario": "Audit tamper/update/delete",
+      "localStatus": "PASS",
+      "coveredAssertions": "SQL immutable UPDATE/DELETE/TRUNCATE and restricted-role guards; exported copy modification/omission/order/head mismatch rejected by independent recomputation, including >9 sequences. No audit mutation handler dispatched.",
+      "missingAssertionsOrEvidence": "Operator console/provider path [I] OPEN. Chain proves tamper evidence relative to trusted head, not protection from privileged full-history replacement. T22 separately records mutation-route403 mismatch.",
+      "requiresHostedIntegration": true,
+      "remainingIntegration": "OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-schema-pg/tests/schema.test.mjs",
+          "test": "immutable revision, published revision, review, audit and feed reject UPDATE/DELETE/TRUNCATE",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/schema-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-schema-pg/tests/schema.test.mjs",
+          "test": "F4 physical audit triggers serialize independent appenders, rollback head, export and detect tampering",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/schema-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T18 immutable publication/audit/review/feed; exported chain tamper detected; no audit mutation adapter",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "audit export sorts int8 numerically beyond nine and detects an omitted row/head tamper",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/unit.test.mjs",
+          "test": "T18 independent audit verification rejects tamper, omission, sequence reordering and head mismatch",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/unit.tap",
+          "venue": "fresh agent socket-free run"
+        }
+      ]
+    },
+    {
+      "threat": "T19",
+      "scenario": "Export and isolated restore/RPO",
+      "localStatus": "NOT TESTED",
+      "coveredAssertions": "Prior F4 verifies an exported JSON audit copy; it does NOT restore a database.",
+      "missingAssertionsOrEvidence": "No full fresh-empty-database restore, table/count/sample comparison, restored chain or RPO execution. Local and provider [I] OPEN; do not start 6.14 export/restore implementation here.",
+      "requiresHostedIntegration": true,
+      "remainingIntegration": "OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-schema-pg/tests/schema.test.mjs",
+          "test": "F4 physical audit triggers serialize independent appenders, rollback head, export and detect tampering",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/schema-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        }
+      ]
+    },
+    {
+      "threat": "T20",
+      "scenario": "Unavailable/paused/quota backend graceful behavior",
+      "localStatus": "PARTIAL",
+      "coveredAssertions": "Backend safe503 and kill-switch read availability; JVM fake transport retains drafts, error taxonomy, explicit stale cache and disabled production transport without startup fetch.",
+      "missingAssertionsOrEvidence": "No Android cold startup/process death/UI or Admin runtime, no deployed pause/exhaustion. JVM file-store recreation is not Android runtime. Emulator recovery explicitly deferred.",
+      "requiresHostedIntegration": true,
+      "remainingIntegration": "OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/unit.test.mjs",
+          "test": "T20 unavailable PostgreSQL connector fails public read closed with safe 503",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/unit.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "kill switch truthful 503, committed replay and public/private reads stay available",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "quota table unavailable is 503 without work loss; recovery permits same key",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "app/src/test/java/com/opus/piano/community/CommunityRepositoryTest.kt",
+          "test": "everyServerErrorRetainsDraftAndMapsDistinctly",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/android-local/host-confirmed-1277bed/TEST-com.opus.piano.community.CommunityRepositoryTest.xml",
+          "venue": "prior owner Fedora JVM; no Android runtime"
+        },
+        {
+          "file": "app/src/test/java/com/opus/piano/community/CommunityRepositoryTest.kt",
+          "test": "disabledProductionBoundaryNeverSendsAndRetainsDraft",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/android-local/host-confirmed-1277bed/TEST-com.opus.piano.community.CommunityRepositoryTest.xml",
+          "venue": "prior owner Fedora JVM; no Android runtime"
+        },
+        {
+          "file": "app/src/test/java/com/opus/piano/community/CommunityRepositoryTest.kt",
+          "test": "repositoryConstructionAndLocalEditingDoNotUploadOrFetch",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/android-local/host-confirmed-1277bed/TEST-com.opus.piano.community.CommunityRepositoryTest.xml",
+          "venue": "prior owner Fedora JVM; no Android runtime"
+        },
+        {
+          "file": "app/src/test/java/com/opus/piano/community/CommunityRepositoryTest.kt",
+          "test": "cachedOverlayIsExplicitlyStaleSyntheticAndSurvivesRestart",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/android-local/host-confirmed-1277bed/TEST-com.opus.piano.community.CommunityRepositoryTest.xml",
+          "venue": "prior owner Fedora JVM; no Android runtime"
+        }
+      ]
+    },
+    {
+      "threat": "T21",
+      "scenario": "Personal-data isolation",
+      "localStatus": "PARTIAL",
+      "coveredAssertions": "Server private fields rejected at root/target/field/evidence; prior SQL no submissions; Kotlin explicit nested DTO allowlists and credential redaction executed in JVM fixtures; fresh additional server private-field probes.",
+      "missingAssertionsOrEvidence": "Actual network-layer assertion absent: production transport disabled. Zero personal rows leaving device cannot be claimed from DTO/fixture assertions. Android/runtime venue deferred; no real data needed.",
+      "requiresHostedIntegration": false,
+      "remainingIntegration": "No hosted venue required by original row; listed unsupported/local checks remain OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T21 rejects personal journal at every object level",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T21 rejects personal notes at every object level",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T21 rejects personal microphone at every object level",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T21 rejects personal backup at every object level",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T21 rejects personal sessions at every object level",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T21 rejects personal repertoire at every object level",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-handlers-local/tests/handlers.test.mjs",
+          "test": "T21 rejects personal profile at every object level",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/handlers-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private journal at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private practiceSessions at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private personalNotes at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private microphoneRecordings at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private backup at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private privateRepertoireHistory at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T21 server rejects private profile at every selected object boundary",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "app/src/test/java/com/opus/piano/community/CommunityRepositoryTest.kt",
+          "test": "dtoUsesExplicitNestedAllowlists",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/android-local/host-confirmed-1277bed/TEST-com.opus.piano.community.CommunityRepositoryTest.xml",
+          "venue": "prior owner Fedora JVM; no Android runtime"
+        },
+        {
+          "file": "app/src/test/java/com/opus/piano/community/CommunityRepositoryTest.kt",
+          "test": "privateObjectSmugglingFailsAtEveryPayloadLevel",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/android-local/host-confirmed-1277bed/TEST-com.opus.piano.community.CommunityRepositoryTest.xml",
+          "venue": "prior owner Fedora JVM; no Android runtime"
+        },
+        {
+          "file": "app/src/test/java/com/opus/piano/community/CommunityRepositoryTest.kt",
+          "test": "credentialsAreRedactedAndNotInFixtureCallsOrPersistedDrafts",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/android-local/host-confirmed-1277bed/TEST-com.opus.piano.community.CommunityRepositoryTest.xml",
+          "venue": "prior owner Fedora JVM; no Android runtime"
+        }
+      ]
+    },
+    {
+      "threat": "T22",
+      "scenario": "Bootstrap self-grant/audit self-edit",
+      "localStatus": "FAIL",
+      "coveredAssertions": "Prior SQL/live Auth tests reject self-grant403, moderator escalation403 and ungranted SQL mutation. Auth LocalApi unknown RPC403. New probe observes no audit-edit dispatch for anonymous/synthetic token, but composed CommunityApi returns400 validation_failed.",
+      "missingAssertionsOrEvidence": "EXACT ACCEPTANCE MISMATCH: threat model demands403; current composed missing audit-edit endpoint returns400, corroborating prior handler/admin tests. Denial/no-mutation holds; no privilege bypass demonstrated. Probe deliberately records observed400 and is not a passing403 assertion. Reconcile status semantics before accepting T22; contracts/production behavior left unchanged. Fresh anonymous role-route probe uses injected deny, not real unauthenticated session.",
+      "requiresHostedIntegration": false,
+      "remainingIntegration": "No hosted venue required by original row; listed unsupported/local checks remain OPEN",
+      "evidence": [
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T22 admin cannot self-grant; operator capability/role stays outside application roles",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "self-grant and self-suspension cannot bypass guards using uppercase UUID spellings",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-auth-local/tests/auth.test.mjs",
+          "test": "T9/T22 local transport exposes no audit mutation or arbitrary RPC, even to admin",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/auth-regression.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "role/suspension integration reuses live Auth, denies escalation, self grant and revoked replay",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs",
+          "test": "admin audit paginates numerically with hash head and has no mutation endpoint",
+          "log": "spikes/stage6-public-admin-abuse/results/run-8SWyGyB0/postgres.tap",
+          "venue": "prior owner Fedora PostgreSQL17.11"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T22 probe records composed unknown audit mutation as 400 with no dispatch; required 403 remains a finding",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        },
+        {
+          "file": "spikes/stage6-security-local/tests/security.test.mjs",
+          "test": "T9/T22 configured admin role route defers to live authorization and never opens storage when denied",
+          "log": "docs/planning/goldberg-0.11/stage-6/results/security-local/run-x1eRKaqL/focused.tap",
+          "venue": "fresh agent socket-free run"
+        }
+      ]
+    }
+  ]
+}
