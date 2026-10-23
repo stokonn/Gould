@@ -8,8 +8,13 @@ contract/session verification. Initial HEAD/remote3dc8488; prior CI40023191770 a
 - [x] Recover exact state/pinned contracts/criteria; private PMP and Stage6 preserved.
 - [x] Changed read-only local emulator5584 attempt: host SIGSEGV139 before ADB,
   zero app executions/screenshots. Use existing KVM CI; no unchanged retry.
-- [ ] Test-only production-screen render harness and controlled WorkManager/permission
-  checks compile. Host assembly/JVM/lint gate PASS2m6s,275 JVM/0 failures/errors/skips; six host scripts PASS. Default app networking/decisions remain disabled.
+- [x] Test-only production-screen render harness and controlled WorkManager/permission
+  checks compile. Host assembly/JVM/lint gate PASS, 275 JVM/0 failures/errors/skips; six host scripts PASS. Default app networking/decisions remain disabled.
+- [x] Source63f7e21 normal-pushed/read back; run40027522387 executing full suite.
+- [x] Upgrade job failed before boot: corrupt API36 system-image ZIP; zero upgrade
+  checks. Trusted baseline/release signer checks PASS; raw evidence retained.
+- [x] Bounded image-install preflight synthetic command harness PASS; additional
+  worker-delivery fixture source compiled/host gate PASS2m25s. Runtime pending.
 - [ ] Execute source-bound CI and immutable-v0.10.1 same-runner upgrade; inspect
   actual Admin screenshots, document limitations and synchronize publication.
 - [ ] G1–G9/G11 approved live integration BLOCKED; explicit owner acceptance pending.

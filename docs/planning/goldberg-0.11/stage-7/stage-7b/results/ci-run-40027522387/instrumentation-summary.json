@@ -1,0 +1,18 @@
+{
+  "source": "63f7e2106897401e7da902b0d27066684d5f4abc",
+  "tests": 185,
+  "failures": 1,
+  "errors": 0,
+  "skipped": 2,
+  "passed": 182,
+  "skipReasons": "unchanged external portrait/provider files absent",
+  "newNativeSchedulingTests": "2 PASS",
+  "priorAdminNativeTests": "4 PASS",
+  "failure": "test incorrectly demanded nonzero scroll at standard viewport font1.5/2 even when content fits",
+  "evidenceExport": "0 files copied; zero retained Admin screenshots; no visual acceptance inferred",
+  "artifactId": 12533418335,
+  "artifactSha256": "b9434e80eb7ee917f56e0a6aba45f8811462a2217812ffaa799ec6650d49275f",
+  "zipIntegrityAndDigest": "PASS",
+  "consoleCount": 187,
+  "xmlCountAuthoritative": 185
+}

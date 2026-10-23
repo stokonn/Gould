@@ -188,6 +188,6 @@ private fun endpointValid(text: String): Boolean =
 @Composable private fun AdminSwitch(label: String, checked: Boolean, change: (Boolean) -> Unit) {
     Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(label, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
-        Switch(checked, change)
+        Switch(checked, change, modifier = Modifier.semantics { contentDescription = label })
     }
 }

@@ -19,7 +19,11 @@ import java.util.concurrent.TimeUnit
 /** Optional, approximate 3h check; no push, continuous polling or decisions. Stores
  * only a digest of a COMPLETE bounded queue. Incomplete/failed scans never notify.
  * Work input contains account/endpoint digest only, never a bearer token/payload. */
-class AdminSyncWorker(context: Context, parameters: WorkerParameters) : CoroutineWorker(context,parameters) {
+class AdminSyncWorker @JvmOverloads constructor(
+    context: Context,
+    parameters: WorkerParameters,
+    private val repositoryOverride: AdminRepository? = null,
+) : CoroutineWorker(context,parameters) {
     override suspend fun doWork(): Result {
         val app=applicationContext as OpusApplication
         val settings=app.adminSettings
@@ -29,13 +33,14 @@ class AdminSyncWorker(context: Context, parameters: WorkerParameters) : Coroutin
         val connectivity=applicationContext.getSystemService(ConnectivityManager::class.java)
         val capabilities=connectivity.getNetworkCapabilities(connectivity.activeNetwork) ?: return Result.success()
         if(!settings.syncPolicy.permitsNetwork(capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI),connectivity.isActiveNetworkMetered)) return Result.success()
-        val role=app.adminRepository.verifyRole()
+        val admin=repositoryOverride ?: app.adminRepository
+        val role=admin.verifyRole()
         if(role !is AdminResult.Ok || !role.value.canQueueRead || !scopeCurrent()) return Result.success()
         val principal=role.value.principalId
-        val signature=queueSignature(app.adminRepository.api) ?: return Result.success()
+        val signature=queueSignature(admin.api) ?: return Result.success()
         if(!scopeCurrent()) return Result.success()
         // Re-check fresh role after the bounded walk to reject revocation during a scan.
-        val fresh=app.adminRepository.verifyRole()
+        val fresh=admin.verifyRole()
         if(fresh !is AdminResult.Ok || !fresh.value.canQueueRead || fresh.value.principalId!=principal || !scopeCurrent()) return Result.success()
         val key=adminFingerprint("$scheduledScope:$principal")
         val previous=settings.syncSignature(key)

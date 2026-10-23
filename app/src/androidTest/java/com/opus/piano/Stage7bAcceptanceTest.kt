@@ -34,11 +34,20 @@ class Stage7bAcceptanceTest {
     private fun shell(command: String): String = inst.uiAutomation.executeShellCommand(command).use {
         android.os.ParcelFileDescriptor.AutoCloseInputStream(it).bufferedReader().readText()
     }
+    @android.annotation.SuppressLint("NewApi") // This evidence venue is explicitly API36.
     private fun export(name: String, write: (File) -> Unit) {
         val file = File(app.filesDir, "stage7b-evidence/$name").apply { parentFile!!.mkdirs() }
         write(file)
         shell("mkdir -p /data/local/tmp/goldberg-stage7b")
-        shell("sh -c 'run-as com.opus.piano cat files/stage7b-evidence/$name > /data/local/tmp/goldberg-stage7b/$name'")
+        // executeShellCommand(String) does not parse shell quoting. Send bytes
+        // through API31+ stdin instead of silently relying on sh -c quoting.
+        val pipes = inst.uiAutomation.executeShellCommandRw("dd of=/data/local/tmp/goldberg-stage7b/$name")
+        android.os.ParcelFileDescriptor.AutoCloseOutputStream(pipes[1]).use { it.write(file.readBytes()) }
+        android.os.ParcelFileDescriptor.AutoCloseInputStream(pipes[0]).use { it.readBytes() }
+        val exported = inst.uiAutomation.executeShellCommand("cat /data/local/tmp/goldberg-stage7b/$name").use {
+            android.os.ParcelFileDescriptor.AutoCloseInputStream(it).readBytes()
+        }
+        assertArrayEquals("Exported evidence differs: $name", file.readBytes(), exported)
     }
     private fun nodes(root: AccessibilityNodeInfo?): List<AccessibilityNodeInfo> {
         if (root == null) return emptyList()
@@ -54,6 +63,24 @@ class Stage7bAcceptanceTest {
         }
         fail("Acceptance condition timed out")
     }
+    private fun click(label: String) {
+        var action: AccessibilityNodeInfo? = null
+        waitUntil {
+            action = tree().firstOrNull { it.text?.toString() == label || it.contentDescription?.toString() == label || it.contentDescription?.toString()?.startsWith("$label:") == true }
+            while (action != null && !action!!.isClickable) action = action!!.parent
+            action != null && action!!.isEnabled
+        }
+        assertTrue("Action failed: $label", action!!.performAction(AccessibilityNodeInfo.ACTION_CLICK))
+        inst.waitForIdleSync()
+    }
+    private fun enterText(value: String) {
+        val edit = tree().first { it.isEditable }
+        edit.performAction(AccessibilityNodeInfo.ACTION_CLICK)
+        assertTrue(edit.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, android.os.Bundle().apply {
+            putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE,value)
+        }))
+        inst.waitForIdleSync()
+    }
     private fun capture(name: String) {
         inst.waitForIdleSync(); Thread.sleep(180)
         export("$name.png") { file ->
@@ -62,10 +89,13 @@ class Stage7bAcceptanceTest {
             file.outputStream().use { assertTrue(bitmap.compress(Bitmap.CompressFormat.PNG, 100, it)) }
             bitmap.recycle()
         }
+        assertTrue("Unnamed checkable control in $name", tree().filter { it.isCheckable }.all {
+            !it.text.isNullOrBlank() || !it.contentDescription.isNullOrBlank()
+        })
         export("$name.txt") { file ->
             file.writeText("locale=${L.locale} font=${app.resources.configuration.fontScale} size=${shell("wm size").trim()} density=${shell("wm density").trim()}\n" + tree().joinToString("\n") {
                 val r = Rect(); it.getBoundsInScreen(r)
-                "bounds=$r text=${it.text} description=${it.contentDescription} clickable=${it.isClickable} enabled=${it.isEnabled} scrollable=${it.isScrollable} focusable=${it.isFocusable}"
+                "bounds=$r text=${it.text} description=${it.contentDescription} clickable=${it.isClickable} enabled=${it.isEnabled} scrollable=${it.isScrollable} focusable=${it.isFocusable} checkable=${it.isCheckable} checked=${it.isChecked} class=${it.className} actions=${it.actionList.map { action -> action.id }}"
             })
         }
     }
@@ -139,15 +169,28 @@ class Stage7bAcceptanceTest {
                             waitUntil { !model.loading.value && model.stats.value?.allExact == true && tree().any { it.text?.toString() == L.s(R.string.stage7b_administration) } }
                             val id = "$prefix-$size-$locale-$theme-f$font"
                             capture("$id-dashboard")
-                            if (font.toFloat() <= 1.3f) {
-                                assertFalse("Dashboard scroll at $id", tree().any { it.isScrollable })
-                                for (label in listOf(R.string.stage7b_moderation_queue, R.string.stage7b_audit_log, R.string.stage7b_admin_settings, R.string.stage7b_refresh)) {
-                                    assertTrue("Dashboard action missing/clipped at $id: ${L.s(label)}", tree().any {
+                            assertEquals("Requested font scale not applied at $id", font.toFloat(), app.resources.configuration.fontScale, 0.01f)
+                            assertEquals(locale, L.locale.language)
+                            if (font.toFloat() <= 1.3f) assertFalse("Dashboard scroll at $id", tree().any { it.isScrollable })
+                            // Larger text needs reachability, not forced scroll when
+                            // the complete content already fits a standard viewport.
+                            for (label in listOf(R.string.stage7b_moderation_queue, R.string.stage7b_audit_log, R.string.stage7b_admin_settings, R.string.stage7b_refresh)) {
+                                    fun visible() = tree().any {
                                         val r = Rect(); it.getBoundsInScreen(r)
                                         it.isVisibleToUser && (it.text?.toString() == L.s(label) || it.contentDescription?.toString() == L.s(label)) && r.width() > 0 && r.height() > 0 && r.bottom <= pixels.substringAfter('x').toInt()
-                                    })
+                                    }
+                                    if (font.toFloat()>1.3f && !visible()) {
+                                        repeat(6) { if (!visible()) tree().firstOrNull { it.isScrollable }?.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD); inst.waitForIdleSync() }
+                                    }
+                                    assertTrue("Dashboard action unreachable/clipped at $id: ${L.s(label)}",visible())
+                                    if (font.toFloat()<=1.3f) {
+                                        var target = tree().first { it.text?.toString()==L.s(label) || it.contentDescription?.toString()==L.s(label) }
+                                        while(!target.isClickable && target.parent!=null) target=target.parent
+                                        val bounds=Rect(); target.getBoundsInScreen(bounds)
+                                        assertTrue("Dashboard touch target below48dp at $id: ${L.s(label)} $bounds",target.isClickable && bounds.width()>=96 && bounds.height()>=96)
+                                    }
                                 }
-                            } else assertTrue("Large-font scroll fallback missing", tree().any { it.isScrollable })
+                            if(font.toFloat()>1.3f) capture("$id-dashboard-reachable-footer")
                             // Detailed destinations at standard1.0 and small2.0, both locales/themes.
                             if (size == "standard" && font == "1.0" || size == "small" && font == "2.0") {
                                 for (destination in listOf("queue", "proposal", "audit", "settings")) {
@@ -159,11 +202,42 @@ class Stage7bAcceptanceTest {
                                         else -> tree().any { it.text?.toString() == L.s(R.string.stage7b_admin_settings) }
                                     } }
                                     Thread.sleep(350); capture("$id-$destination")
+                                    if (destination == "queue" && font == "1.0") {
+                                        fixture.revision = 2
+                                        runBlocking { model.queue.revalidate() }
+                                        assertTrue(model.queue.state.value.pendingUpdates>0)
+                                        capture("$id-queue-stale-update")
+                                        runBlocking { model.queue.refresh() }
+                                        assertEquals(0,model.queue.state.value.pendingUpdates)
+                                    }
+                                    if (destination == "settings" && font == "1.0") {
+                                        click(L.s(R.string.stage7b_mobile_consent))
+                                        waitUntil { tree().any { it.text?.toString() == L.s(R.string.stage7b_mobile_confirm) } }
+                                        capture("$id-metered-confirmation")
+                                        assertFalse(model.syncPolicy.value.mobileConsent)
+                                        click(L.s(R.string.stage7b_cancel))
+                                        click(L.s(R.string.stage7b_endpoint))
+                                        waitUntil { tree().any { it.isEditable } }
+                                        enterText("http://synthetic-invalid.invalid")
+                                        capture("$id-endpoint-keyboard")
+                                        click(L.s(R.string.stage7b_save))
+                                        waitUntil { tree().any { it.text?.toString() == L.s(R.string.stage7b_reason_invalid) } }
+                                        capture("$id-endpoint-validation")
+                                        click(L.s(android.R.string.cancel))
+                                    }
                                     if (destination == "proposal" && font == "1.0") {
+                                        for ((tabName,tabLabel) in listOf("details" to R.string.stage7b_details,"history" to R.string.stage7b_history,"evidence" to R.string.stage7b_evidence,"comparison" to R.string.stage7b_comparison)) {
+                                            click(L.s(tabLabel)); capture("$id-proposal-tab-$tabName")
+                                        }
                                         for (decision in AdminDecision.entries) {
                                             runBlocking { fixture.repo.review.prepare(decision) }
                                             assertNotNull(fixture.repo.review.state.value.confirmation)
                                             capture("$id-confirm-${decision.wire}")
+                                            if (decision != AdminDecision.APPROVE) {
+                                                enterText("Synthetic reason: preserve evidence and request a clear citation.")
+                                                capture("$id-confirm-${decision.wire}-reason-keyboard")
+                                                inst.sendKeyDownUpSync(android.view.KeyEvent.KEYCODE_BACK)
+                                            }
                                             fixture.repo.review.cancelConfirmation()
                                         }
                                         fixture.revision = 3
@@ -171,6 +245,8 @@ class Stage7bAcceptanceTest {
                                         assertTrue(fixture.repo.review.state.value.reReview)
                                         capture("$id-re-review-incomplete-history")
                                     }
+                                    repeat(6) { tree().firstOrNull { it.isScrollable }?.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD); inst.waitForIdleSync() }
+                                    capture("$id-$destination-bottom")
                                 }
                                 for (mode in listOf("empty", "error", "loading")) {
                                     fixture.mode = mode
@@ -181,6 +257,9 @@ class Stage7bAcceptanceTest {
                                     inst.runOnMainSync { route.value = "queue" }
                                     Thread.sleep(if(mode == "loading") 100 else 500)
                                     capture("$id-queue-$mode")
+                                    inst.runOnMainSync { route.value = "audit" }
+                                    Thread.sleep(if(mode == "loading") 100 else 500)
+                                    capture("$id-audit-$mode")
                                 }
                             }
                             scenario.onActivity { it.setContent {} }

@@ -1,0 +1,13 @@
+{
+  "source": "63f7e2106897401e7da902b0d27066684d5f4abc",
+  "job": 120667338338,
+  "status": "CI SETUP FAILURE",
+  "failure": "sdkmanager API36 google_apis x86_64 system-image download: Error on ZipFile unknown archive",
+  "upgradeTestsExecuted": 0,
+  "emulatorBooted": false,
+  "baselineSource": "b19b77b81e76feef6baf83e6c4bfa935e7c10bea",
+  "baselineReleaseDigestAndSignerChecks": "PASS, raw diagnostics retained",
+  "artifactId": 12533792110,
+  "artifactSha256": "3ea542415734ef762c8f0fb9934e6a60b759dbb121aaed402dc468849be8a6f6",
+  "zipIntegrityAndDigest": "PASS"
+}

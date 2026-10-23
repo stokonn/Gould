@@ -1,0 +1,927 @@
+﻿2026-10-23T21:32:35.9238057Z Current runner version: '2.338.0'
+2026-10-23T21:32:35.9260482Z ##[group]Runner Image Provisioner
+2026-10-23T21:32:35.9261358Z Hosted Compute Agent
+2026-10-23T21:32:35.9261835Z Version: 20261012.601
+2026-10-23T21:32:35.9262433Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-23T21:32:35.9263019Z Build Date: 2026-10-12T17:48:21Z
+2026-10-23T21:32:35.9263578Z Worker ID: {a594cad8-852a-43f7-aa44-1a3a7194ba12}
+2026-10-23T21:32:35.9264204Z Region: westus3
+2026-10-23T21:32:35.9264652Z Cloud: Azure
+2026-10-23T21:32:35.9265116Z ##[endgroup]
+2026-10-23T21:32:35.9266435Z ##[group]Operating System
+2026-10-23T21:32:35.9267168Z Ubuntu
+2026-10-23T21:32:35.9267706Z 24.04.5
+2026-10-23T21:32:35.9268122Z LTS
+2026-10-23T21:32:35.9268885Z ##[endgroup]
+2026-10-23T21:32:35.9269362Z ##[group]Runner Image
+2026-10-23T21:32:35.9269894Z Image: ubuntu-24.04
+2026-10-23T21:32:35.9270395Z Version: 20261012.334.1
+2026-10-23T21:32:35.9271439Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-23T21:32:35.9272705Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-23T21:32:35.9273510Z ##[endgroup]
+2026-10-23T21:32:35.9274534Z ##[group]GITHUB_TOKEN Permissions
+2026-10-23T21:32:35.9276279Z Contents: read
+2026-10-23T21:32:35.9277155Z Metadata: read
+2026-10-23T21:32:35.9277652Z ##[endgroup]
+2026-10-23T21:32:35.9279411Z Secret source: Actions
+2026-10-23T21:32:35.9280265Z Cache mode: write
+2026-10-23T21:32:35.9281101Z Prepare workflow directory
+2026-10-23T21:32:35.9561440Z Prepare all required actions
+2026-10-23T21:32:35.9618346Z Getting action download info
+2026-10-23T21:32:36.2735012Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-23T21:32:36.4032806Z Download action repository 'actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3' (SHA:cf277c60eb25467037889841efdb72551f06f6c3)
+2026-10-23T21:32:37.4431954Z Download action repository 'android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407' (SHA:9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407)
+2026-10-23T21:32:37.9782088Z Download action repository 'reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d' (SHA:a421e43855164a8197daf9d8d40fe71c6996bb0d)
+2026-10-23T21:32:38.5429920Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-23T21:32:38.7767131Z Complete job name: 5.11 acceptance subset — API 36 emulator
+2026-10-23T21:32:38.8523680Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-10-23T21:32:38.8524212Z with:
+2026-10-23T21:32:38.8524399Z   persist-credentials: false
+2026-10-23T21:32:38.8524621Z   repository: stokonn/Goldberg
+2026-10-23T21:32:38.8527203Z   token: ***
+2026-10-23T21:32:38.8527381Z   ssh-strict: true
+2026-10-23T21:32:38.8527557Z   ssh-user: git
+2026-10-23T21:32:38.8527724Z   clean: true
+2026-10-23T21:32:38.8527924Z   sparse-checkout-cone-mode: true
+2026-10-23T21:32:38.8528151Z   fetch-depth: 1
+2026-10-23T21:32:38.8528323Z   fetch-tags: false
+2026-10-23T21:32:38.8528505Z   show-progress: true
+2026-10-23T21:32:38.8528675Z   lfs: false
+2026-10-23T21:32:38.8528834Z   submodules: false
+2026-10-23T21:32:38.8529010Z   set-safe-directory: true
+2026-10-23T21:32:38.8529208Z   allow-unsafe-pr-checkout: false
+2026-10-23T21:32:38.8529601Z ##[endgroup]
+2026-10-23T21:32:38.9388195Z Syncing repository: stokonn/Goldberg
+2026-10-23T21:32:38.9389398Z ##[group]Getting Git version info
+2026-10-23T21:32:38.9389774Z Working directory is '/home/runner/work/Goldberg/Goldberg'
+2026-10-23T21:32:38.9390296Z [command]/usr/bin/git version
+2026-10-23T21:32:38.9428045Z git version 2.55.0
+2026-10-23T21:32:38.9444674Z ##[endgroup]
+2026-10-23T21:32:38.9458200Z Temporarily overriding HOME='/home/runner/work/_temp/60d3f8d0-7856-4449-93b8-83e0662ee036' before making global git config changes
+2026-10-23T21:32:38.9459369Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-23T21:32:38.9463076Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goldberg/Goldberg
+2026-10-23T21:32:38.9506873Z Deleting the contents of '/home/runner/work/Goldberg/Goldberg'
+2026-10-23T21:32:38.9511877Z ##[group]Initializing the repository
+2026-10-23T21:32:38.9515337Z [command]/usr/bin/git init /home/runner/work/Goldberg/Goldberg
+2026-10-23T21:32:38.9593209Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-23T21:32:38.9594380Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-23T21:32:38.9595363Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-23T21:32:38.9596111Z hint: call:
+2026-10-23T21:32:38.9596525Z hint:
+2026-10-23T21:32:38.9597319Z hint: 	git config --global init.defaultBranch <name>
+2026-10-23T21:32:38.9597978Z hint:
+2026-10-23T21:32:38.9598554Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-23T21:32:38.9599446Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-23T21:32:38.9600158Z hint:
+2026-10-23T21:32:38.9600642Z hint: 	git branch -m <name>
+2026-10-23T21:32:38.9601139Z hint:
+2026-10-23T21:32:38.9601699Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-23T21:32:38.9602699Z Initialized empty Git repository in /home/runner/work/Goldberg/Goldberg/.git/
+2026-10-23T21:32:38.9606279Z [command]/usr/bin/git remote add origin https://github.com/stokonn/Goldberg
+2026-10-23T21:32:38.9654662Z ##[endgroup]
+2026-10-23T21:32:38.9655368Z ##[group]Disabling automatic garbage collection
+2026-10-23T21:32:38.9656515Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-23T21:32:38.9690475Z ##[endgroup]
+2026-10-23T21:32:38.9691214Z ##[group]Setting up auth
+2026-10-23T21:32:38.9698328Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T21:32:38.9748206Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T21:32:39.0112150Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T21:32:39.0151364Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T21:32:39.0387772Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T21:32:39.0418718Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T21:32:39.0609392Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-23T21:32:39.0646426Z ##[endgroup]
+2026-10-23T21:32:39.0647387Z ##[group]Fetching the repository
+2026-10-23T21:32:39.0654294Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +63f7e2106897401e7da902b0d27066684d5f4abc:refs/remotes/origin/feature/goldberg-0.11-stage-7b
+2026-10-23T21:32:41.6255923Z From https://github.com/stokonn/Goldberg
+2026-10-23T21:32:41.6256450Z  * [new ref]         63f7e2106897401e7da902b0d27066684d5f4abc -> origin/feature/goldberg-0.11-stage-7b
+2026-10-23T21:32:41.6259645Z ##[endgroup]
+2026-10-23T21:32:41.6260215Z ##[group]Determining the checkout info
+2026-10-23T21:32:41.6262242Z ##[endgroup]
+2026-10-23T21:32:41.6268486Z [command]/usr/bin/git sparse-checkout disable
+2026-10-23T21:32:41.6315311Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-23T21:32:41.6348111Z ##[group]Checking out the ref
+2026-10-23T21:32:41.6348671Z [command]/usr/bin/git checkout --progress --force -B feature/goldberg-0.11-stage-7b refs/remotes/origin/feature/goldberg-0.11-stage-7b
+2026-10-23T21:32:42.1295877Z Switched to a new branch 'feature/goldberg-0.11-stage-7b'
+2026-10-23T21:32:42.1298460Z branch 'feature/goldberg-0.11-stage-7b' set up to track 'origin/feature/goldberg-0.11-stage-7b'.
+2026-10-23T21:32:42.1322410Z ##[endgroup]
+2026-10-23T21:32:42.1363898Z [command]/usr/bin/git log -1 --format=%H
+2026-10-23T21:32:42.1388222Z 63f7e2106897401e7da902b0d27066684d5f4abc
+2026-10-23T21:32:42.1401613Z ##[group]Removing auth
+2026-10-23T21:32:42.1402296Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T21:32:42.1435077Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T21:32:42.1640652Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T21:32:42.1665387Z http.https://github.com/.extraheader
+2026-10-23T21:32:42.1677378Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-23T21:32:42.1705347Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T21:32:42.1910079Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T21:32:42.1938605Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T21:32:42.2130006Z ##[endgroup]
+2026-10-23T21:32:42.2306860Z ##[group]Run mkdir -p stage5-ci-results
+2026-10-23T21:32:42.2307229Z [36;1mmkdir -p stage5-ci-results[0m
+2026-10-23T21:32:42.2307519Z [36;1mCHECKED_OUT="$(git rev-parse HEAD)"[0m
+2026-10-23T21:32:42.2307763Z [36;1m{[0m
+2026-10-23T21:32:42.2307940Z [36;1m  echo "github.sha: $GITHUB_SHA"[0m
+2026-10-23T21:32:42.2308204Z [36;1m  echo "github.ref: $GITHUB_REF"[0m
+2026-10-23T21:32:42.2308498Z [36;1m  echo "checkout HEAD: $CHECKED_OUT"[0m
+2026-10-23T21:32:42.2308758Z [36;1m} | tee stage5-ci-results/source-commit.txt[0m
+2026-10-23T21:32:42.2309029Z [36;1mif [ "$CHECKED_OUT" != "$GITHUB_SHA" ]; then[0m
+2026-10-23T21:32:42.2309396Z [36;1m  echo "ERROR: checked-out commit does not match the dispatched commit"; exit 1[0m
+2026-10-23T21:32:42.2309718Z [36;1mfi[0m
+2026-10-23T21:32:42.2309930Z [36;1mdf -h / | tee stage5-ci-results/disk-usage.txt[0m
+2026-10-23T21:32:42.2729555Z shell: /usr/bin/bash -e {0}
+2026-10-23T21:32:42.2729850Z ##[endgroup]
+2026-10-23T21:32:42.2861733Z github.sha: 63f7e2106897401e7da902b0d27066684d5f4abc
+2026-10-23T21:32:42.2862245Z github.ref: refs/heads/feature/goldberg-0.11-stage-7b
+2026-10-23T21:32:42.2862553Z checkout HEAD: 63f7e2106897401e7da902b0d27066684d5f4abc
+2026-10-23T21:32:42.2876480Z Filesystem      Size  Used Avail Use% Mounted on
+2026-10-23T21:32:42.2877251Z /dev/root       145G   59G   86G  41% /
+2026-10-23T21:32:42.2958134Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-10-23T21:32:42.2958459Z with:
+2026-10-23T21:32:42.2958659Z   ref: b19b77b81e76feef6baf83e6c4bfa935e7c10bea
+2026-10-23T21:32:42.2958911Z   path: baseline-src
+2026-10-23T21:32:42.2959106Z   persist-credentials: false
+2026-10-23T21:32:42.2959311Z   repository: stokonn/Goldberg
+2026-10-23T21:32:42.2961553Z   token: ***
+2026-10-23T21:32:42.2961733Z   ssh-strict: true
+2026-10-23T21:32:42.2961904Z   ssh-user: git
+2026-10-23T21:32:42.2962076Z   clean: true
+2026-10-23T21:32:42.2962254Z   sparse-checkout-cone-mode: true
+2026-10-23T21:32:42.2962467Z   fetch-depth: 1
+2026-10-23T21:32:42.2962632Z   fetch-tags: false
+2026-10-23T21:32:42.2962807Z   show-progress: true
+2026-10-23T21:32:42.2962983Z   lfs: false
+2026-10-23T21:32:42.2963146Z   submodules: false
+2026-10-23T21:32:42.2963328Z   set-safe-directory: true
+2026-10-23T21:32:42.2963534Z   allow-unsafe-pr-checkout: false
+2026-10-23T21:32:42.2963742Z ##[endgroup]
+2026-10-23T21:32:42.3631815Z Syncing repository: stokonn/Goldberg
+2026-10-23T21:32:42.3633501Z ##[group]Getting Git version info
+2026-10-23T21:32:42.3634161Z Working directory is '/home/runner/work/Goldberg/Goldberg/baseline-src'
+2026-10-23T21:32:42.3665553Z [command]/usr/bin/git version
+2026-10-23T21:32:42.3703689Z git version 2.55.0
+2026-10-23T21:32:42.3723002Z ##[endgroup]
+2026-10-23T21:32:42.3747749Z Temporarily overriding HOME='/home/runner/work/_temp/4941036b-487e-4e06-b140-609c9449e4b1' before making global git config changes
+2026-10-23T21:32:42.3748755Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-23T21:32:42.3749608Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goldberg/Goldberg/baseline-src
+2026-10-23T21:32:42.3802543Z ##[group]Initializing the repository
+2026-10-23T21:32:42.3808100Z [command]/usr/bin/git init /home/runner/work/Goldberg/Goldberg/baseline-src
+2026-10-23T21:32:42.3844945Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-23T21:32:42.3845826Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-23T21:32:42.3846757Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-23T21:32:42.3847392Z hint: call:
+2026-10-23T21:32:42.3847866Z hint:
+2026-10-23T21:32:42.3848349Z hint: 	git config --global init.defaultBranch <name>
+2026-10-23T21:32:42.3848880Z hint:
+2026-10-23T21:32:42.3849384Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-23T21:32:42.3850134Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-23T21:32:42.3850621Z hint:
+2026-10-23T21:32:42.3850859Z hint: 	git branch -m <name>
+2026-10-23T21:32:42.3851090Z hint:
+2026-10-23T21:32:42.3851345Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-23T21:32:42.3851822Z Initialized empty Git repository in /home/runner/work/Goldberg/Goldberg/baseline-src/.git/
+2026-10-23T21:32:42.3854307Z [command]/usr/bin/git remote add origin https://github.com/stokonn/Goldberg
+2026-10-23T21:32:42.3883921Z ##[endgroup]
+2026-10-23T21:32:42.3884263Z ##[group]Disabling automatic garbage collection
+2026-10-23T21:32:42.3888323Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-23T21:32:42.3915408Z ##[endgroup]
+2026-10-23T21:32:42.3915720Z ##[group]Setting up auth
+2026-10-23T21:32:42.3922390Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T21:32:42.3950946Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T21:32:42.4157862Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T21:32:42.4190295Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T21:32:42.4411910Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T21:32:42.4448850Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T21:32:42.4659084Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-23T21:32:42.4696565Z ##[endgroup]
+2026-10-23T21:32:42.4697113Z ##[group]Fetching the repository
+2026-10-23T21:32:42.4704013Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin b19b77b81e76feef6baf83e6c4bfa935e7c10bea
+2026-10-23T21:32:43.9287352Z From https://github.com/stokonn/Goldberg
+2026-10-23T21:32:43.9287760Z  * branch            b19b77b81e76feef6baf83e6c4bfa935e7c10bea -> FETCH_HEAD
+2026-10-23T21:32:43.9290982Z ##[endgroup]
+2026-10-23T21:32:43.9291496Z ##[group]Determining the checkout info
+2026-10-23T21:32:43.9293184Z ##[endgroup]
+2026-10-23T21:32:43.9298332Z [command]/usr/bin/git sparse-checkout disable
+2026-10-23T21:32:43.9437967Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-23T21:32:43.9469402Z ##[group]Checking out the ref
+2026-10-23T21:32:43.9473694Z [command]/usr/bin/git checkout --progress --force b19b77b81e76feef6baf83e6c4bfa935e7c10bea
+2026-10-23T21:32:44.0587513Z Note: switching to 'b19b77b81e76feef6baf83e6c4bfa935e7c10bea'.
+2026-10-23T21:32:44.0587875Z 
+2026-10-23T21:32:44.0588130Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-23T21:32:44.0588705Z changes and commit them, and you can discard any commits you make in this
+2026-10-23T21:32:44.0589847Z state without impacting any branches by switching back to a branch.
+2026-10-23T21:32:44.0590152Z 
+2026-10-23T21:32:44.0590364Z If you want to create a new branch to retain commits you create, you may
+2026-10-23T21:32:44.0591723Z do so (now or later) by using -c with the switch command. Example:
+2026-10-23T21:32:44.0592059Z 
+2026-10-23T21:32:44.0593012Z   git switch -c <new-branch-name>
+2026-10-23T21:32:44.0593221Z 
+2026-10-23T21:32:44.0593353Z Or undo this operation with:
+2026-10-23T21:32:44.0593841Z 
+2026-10-23T21:32:44.0594027Z   git switch -
+2026-10-23T21:32:44.0594397Z 
+2026-10-23T21:32:44.0594657Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-23T21:32:44.0595696Z 
+2026-10-23T21:32:44.0596039Z HEAD is now at b19b77b docs: align Goldberg 0.10.1 privacy and modified-file record
+2026-10-23T21:32:44.0606484Z ##[endgroup]
+2026-10-23T21:32:44.0646220Z [command]/usr/bin/git log -1 --format=%H
+2026-10-23T21:32:44.0670034Z b19b77b81e76feef6baf83e6c4bfa935e7c10bea
+2026-10-23T21:32:44.0677654Z ##[group]Removing auth
+2026-10-23T21:32:44.0680642Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T21:32:44.0708121Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T21:32:44.1001378Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T21:32:44.1042951Z http.https://github.com/.extraheader
+2026-10-23T21:32:44.1058701Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-23T21:32:44.1106304Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T21:32:44.1301011Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T21:32:44.1330593Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T21:32:44.1530261Z ##[endgroup]
+2026-10-23T21:32:44.1730013Z ##[group]Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3
+2026-10-23T21:32:44.1730344Z with:
+2026-10-23T21:32:44.1730514Z   distribution: temurin
+2026-10-23T21:32:44.1730697Z   java-version: 17
+2026-10-23T21:32:44.1730869Z   java-package: jdk
+2026-10-23T21:32:44.1731040Z   check-latest: false
+2026-10-23T21:32:44.1731218Z   server-id: github
+2026-10-23T21:32:44.1731396Z   server-username: GITHUB_ACTOR
+2026-10-23T21:32:44.1731612Z   server-password: GITHUB_TOKEN
+2026-10-23T21:32:44.1731809Z   overwrite-settings: true
+2026-10-23T21:32:44.1731994Z   job-status: success
+2026-10-23T21:32:44.1734150Z   token: ***
+2026-10-23T21:32:44.1734319Z ##[endgroup]
+2026-10-23T21:32:44.3146102Z ##[warning]setup-java v4 is deprecated and will no longer receive updates. Please migrate to actions/setup-java@v5.
+2026-10-23T21:32:44.3155441Z ##[group]Installed distributions
+2026-10-23T21:32:44.3275958Z Resolved Java 17.0.20+1 from tool-cache
+2026-10-23T21:32:44.3276799Z Setting Java 17.0.20+1 as the default
+2026-10-23T21:32:44.3285884Z (node:2368) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-23T21:32:44.3287246Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-23T21:32:44.3289180Z Creating toolchains.xml for JDK version 17 from temurin
+2026-10-23T21:32:44.3348364Z Writing to /home/runner/.m2/toolchains.xml
+2026-10-23T21:32:44.3348739Z 
+2026-10-23T21:32:44.3348923Z Java configuration:
+2026-10-23T21:32:44.3349199Z   Distribution: temurin
+2026-10-23T21:32:44.3349426Z   Version: 17.0.20+1
+2026-10-23T21:32:44.3349789Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:32:44.3350109Z 
+2026-10-23T21:32:44.3350384Z ##[endgroup]
+2026-10-23T21:32:44.3368492Z Creating settings.xml with server-id: github
+2026-10-23T21:32:44.3397400Z Writing to /home/runner/.m2/settings.xml
+2026-10-23T21:32:44.3563460Z ##[group]Run android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407
+2026-10-23T21:32:44.3563812Z with:
+2026-10-23T21:32:44.3564083Z   packages: platform-tools platforms;android-36 build-tools;36.0.0
+2026-10-23T21:32:44.3564398Z   log-accepted-android-sdk-licenses: false
+2026-10-23T21:32:44.3564643Z   cmdline-tools-version: 12266719
+2026-10-23T21:32:44.3564869Z   accept-android-sdk-licenses: true
+2026-10-23T21:32:44.3565076Z env:
+2026-10-23T21:32:44.3565313Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:32:44.3565703Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:32:44.3565997Z ##[endgroup]
+2026-10-23T21:32:44.4290181Z Found preinstalled sdkmanager in /usr/local/lib/android/sdk/cmdline-tools/latest with following source.properties:
+2026-10-23T21:32:44.4290842Z Pkg.Revision=12.0
+2026-10-23T21:32:44.4291050Z Pkg.Path=cmdline-tools;12.0
+2026-10-23T21:32:44.4291369Z Pkg.Desc=Android SDK Command-line Tools
+2026-10-23T21:32:44.4291527Z 
+2026-10-23T21:32:44.4291625Z Wrong version in preinstalled sdkmanager
+2026-10-23T21:32:44.4292094Z Downloading commandline tools from https://dl.google.com/android/repository/commandlinetools-linux-12266719_latest.zip
+2026-10-23T21:32:45.1238035Z [command]/usr/bin/unzip -o -q /home/runner/work/_temp/e671b33f-93ec-4e31-abbd-747599546c23
+2026-10-23T21:32:45.7906378Z Accepting Android SDK licenses
+2026-10-23T21:32:52.9702336Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager platform-tools
+2026-10-23T21:32:53.6129745Z Loading package information...                                                  
+2026-10-23T21:32:53.7019327Z Loading local repository...                                                     
+2026-10-23T21:32:53.7023882Z [                                       ] 3% Loading local repository...        
+2026-10-23T21:32:53.7105254Z [                                       ] 3% Fetch remote repository...         
+2026-10-23T21:32:53.9638493Z [=                                      ] 3% Fetch remote repository...         
+2026-10-23T21:32:54.0256345Z [=                                      ] 4% Fetch remote repository...         
+2026-10-23T21:32:54.0628263Z [=                                      ] 5% Fetch remote repository...         
+2026-10-23T21:32:54.1026330Z [==                                     ] 5% Fetch remote repository...         
+2026-10-23T21:32:54.1728142Z [==                                     ] 6% Fetch remote repository...         
+2026-10-23T21:32:54.2407943Z [==                                     ] 7% Fetch remote repository...         
+2026-10-23T21:32:54.2428339Z [==                                     ] 7% Computing updates...               
+2026-10-23T21:32:54.2547732Z [===                                    ] 8% Computing updates...               
+2026-10-23T21:32:54.2575811Z [===                                    ] 10% Computing updates...              
+2026-10-23T21:32:54.2577591Z [=======================================] 100% Computing updates...             
+2026-10-23T21:32:54.2578181Z 
+2026-10-23T21:32:54.3382145Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager platforms;android-36
+2026-10-23T21:32:55.0155632Z Loading package information...                                                  
+2026-10-23T21:32:55.0955251Z Loading local repository...                                                     
+2026-10-23T21:32:55.0958222Z [                                       ] 3% Loading local repository...        
+2026-10-23T21:32:55.1038220Z [                                       ] 3% Fetch remote repository...         
+2026-10-23T21:32:55.3008492Z [=                                      ] 3% Fetch remote repository...         
+2026-10-23T21:32:55.4147801Z [=                                      ] 4% Fetch remote repository...         
+2026-10-23T21:32:55.4399532Z [=                                      ] 5% Fetch remote repository...         
+2026-10-23T21:32:55.4791438Z [==                                     ] 5% Fetch remote repository...         
+2026-10-23T21:32:55.5477671Z [==                                     ] 6% Fetch remote repository...         
+2026-10-23T21:32:55.6135928Z [==                                     ] 7% Fetch remote repository...         
+2026-10-23T21:32:55.6178936Z [==                                     ] 7% Computing updates...               
+2026-10-23T21:32:55.6237592Z [===                                    ] 8% Computing updates...               
+2026-10-23T21:32:55.6290007Z [===                                    ] 10% Computing updates...              
+2026-10-23T21:32:55.6299386Z [=======================================] 100% Computing updates...             
+2026-10-23T21:32:55.6299715Z 
+2026-10-23T21:32:55.7500963Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager build-tools;36.0.0
+2026-10-23T21:32:56.4047144Z Loading package information...                                                  
+2026-10-23T21:32:56.4920476Z Loading local repository...                                                     
+2026-10-23T21:32:56.4921921Z [                                       ] 3% Loading local repository...        
+2026-10-23T21:32:56.5003363Z [                                       ] 3% Fetch remote repository...         
+2026-10-23T21:32:56.7458620Z [=                                      ] 3% Fetch remote repository...         
+2026-10-23T21:32:56.8007947Z [=                                      ] 4% Fetch remote repository...         
+2026-10-23T21:32:56.8291702Z [=                                      ] 5% Fetch remote repository...         
+2026-10-23T21:32:56.8878299Z [==                                     ] 5% Fetch remote repository...         
+2026-10-23T21:32:56.9365138Z [==                                     ] 6% Fetch remote repository...         
+2026-10-23T21:32:57.0049626Z [==                                     ] 7% Fetch remote repository...         
+2026-10-23T21:32:57.0067467Z [==                                     ] 7% Computing updates...               
+2026-10-23T21:32:57.0155057Z [===                                    ] 8% Computing updates...               
+2026-10-23T21:32:57.0210674Z [===                                    ] 10% Computing updates...              
+2026-10-23T21:32:57.0212368Z [=======================================] 100% Computing updates...             
+2026-10-23T21:32:57.0212846Z 
+2026-10-23T21:32:57.2346178Z ##[group]Run echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+2026-10-23T21:32:57.2347355Z [36;1mecho 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules[0m
+2026-10-23T21:32:57.2348055Z [36;1msudo udevadm control --reload-rules[0m
+2026-10-23T21:32:57.2348454Z [36;1msudo udevadm trigger --name-match=kvm[0m
+2026-10-23T21:32:57.2405663Z shell: /usr/bin/bash -e {0}
+2026-10-23T21:32:57.2405875Z env:
+2026-10-23T21:32:57.2406123Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:32:57.2406518Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:32:57.2407128Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-10-23T21:32:57.2407367Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-10-23T21:32:57.2407589Z ##[endgroup]
+2026-10-23T21:32:57.3521051Z KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"
+2026-10-23T21:32:57.3839436Z ##[group]Run ./gradlew --no-daemon --max-workers=1 assembleDebug
+2026-10-23T21:32:57.3839821Z [36;1m./gradlew --no-daemon --max-workers=1 assembleDebug[0m
+2026-10-23T21:32:57.3895769Z shell: /usr/bin/bash -e {0}
+2026-10-23T21:32:57.3895977Z env:
+2026-10-23T21:32:57.3896227Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:32:57.3896829Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:32:57.3897159Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-10-23T21:32:57.3897399Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-10-23T21:32:57.3897615Z ##[endgroup]
+2026-10-23T21:32:57.4861223Z Downloading https://services.gradle.org/distributions/gradle-9.3.1-bin.zip
+2026-10-23T21:32:58.9511333Z .............10%.............20%.............30%.............40%.............50%.............60%.............70%.............80%.............90%.............100%
+2026-10-23T21:33:00.0916956Z 
+2026-10-23T21:33:00.0917880Z Welcome to Gradle 9.3.1!
+2026-10-23T21:33:00.0918110Z 
+2026-10-23T21:33:00.0921221Z Here are the highlights of this release:
+2026-10-23T21:33:00.0925891Z  - Test reporting improvements
+2026-10-23T21:33:00.0926703Z  - Error and warning improvements
+2026-10-23T21:33:00.0927385Z  - Build authoring improvements
+2026-10-23T21:33:00.0927599Z 
+2026-10-23T21:33:00.0928877Z For more details see https://docs.gradle.org/9.3.1/release-notes.html
+2026-10-23T21:33:00.0929197Z 
+2026-10-23T21:33:00.2927022Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+2026-10-23T21:33:01.3928160Z Daemon will be stopped at the end of the build 
+2026-10-23T21:34:03.8920472Z 
+2026-10-23T21:34:03.8927580Z > Configure project :app
+2026-10-23T21:34:03.8929304Z w: file:///home/runner/work/Goldberg/Goldberg/app/build.gradle.kts:12:44: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+2026-10-23T21:34:05.5906724Z 
+2026-10-23T21:34:05.5908020Z > Task :app:preBuild UP-TO-DATE
+2026-10-23T21:34:05.5912923Z > Task :app:preDebugBuild UP-TO-DATE
+2026-10-23T21:34:05.5913720Z > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+2026-10-23T21:34:05.6907698Z > Task :app:generateDebugResources
+2026-10-23T21:34:05.8907549Z > Task :app:packageDebugResources
+2026-10-23T21:34:35.8907282Z > Task :app:processDebugNavigationResources
+2026-10-23T21:34:47.7917961Z > Task :app:parseDebugLocalResources
+2026-10-23T21:34:47.8927900Z > Task :app:generateDebugRFile
+2026-10-23T21:35:13.5906946Z > Task :app:kspDebugKotlin
+2026-10-23T21:35:43.4915244Z > Task :app:compileDebugKotlin
+2026-10-23T21:36:04.2910466Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/data/PersonalCatalogueBridge.kt:93:97 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged. This will become an error in a future release.
+2026-10-23T21:36:04.2915132Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/data/PersonalCatalogueBridge.kt:94:81 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged. This will become an error in a future release.
+2026-10-23T21:36:04.2918741Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/ui/DiscoverScreen.kt:277:170 'val Icons.Outlined.List: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.List.
+2026-10-23T21:36:04.2921270Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/ui/JournalComponents.kt:58:70 'val Icons.Outlined.ArrowBack: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.ArrowBack.
+2026-10-23T21:36:04.2922721Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/ui/RepertoireScreen.kt:84:123 'val Icons.Outlined.Sort: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.Sort.
+2026-10-23T21:36:04.2924130Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/ui/admin/AdminDashboardScreen.kt:101:35 'val Icons.Outlined.Rule: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.Rule.
+2026-10-23T21:36:04.2925582Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/ui/admin/AdminSettingsScreen.kt:84:35 'val Icons.Outlined.Logout: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.Logout.
+2026-10-23T21:36:04.3911736Z 
+2026-10-23T21:36:04.3912412Z > Task :app:javaPreCompileDebug
+2026-10-23T21:36:04.3912918Z > Task :app:compileDebugJavaWithJavac NO-SOURCE
+2026-10-23T21:36:04.3913245Z > Task :app:generateDebugAssets UP-TO-DATE
+2026-10-23T21:36:04.5907828Z > Task :app:mergeDebugAssets
+2026-10-23T21:36:04.5908667Z > Task :app:compressDebugAssets
+2026-10-23T21:36:04.5909399Z > Task :app:desugarDebugFileDependencies
+2026-10-23T21:36:04.6907434Z > Task :app:checkDebugAarMetadata
+2026-10-23T21:36:04.6908917Z > Task :app:mapDebugSourceSetPaths
+2026-10-23T21:36:04.9907801Z > Task :app:compileDebugNavigationResources
+2026-10-23T21:36:06.8914329Z > Task :app:mergeDebugResources
+2026-10-23T21:36:06.8915201Z > Task :app:createDebugCompatibleScreenManifests
+2026-10-23T21:36:06.8915727Z > Task :app:extractDeepLinksDebug
+2026-10-23T21:36:07.1927770Z > Task :app:processDebugMainManifest
+2026-10-23T21:36:07.2921181Z > Task :app:processDebugManifest
+2026-10-23T21:36:07.3922406Z > Task :app:processDebugManifestForPackage
+2026-10-23T21:36:08.3907250Z > Task :app:processDebugResources
+2026-10-23T21:36:25.8928048Z > Task :app:dexBuilderDebug
+2026-10-23T21:36:55.8907530Z > Task :app:mergeDebugGlobalSynthetics
+2026-10-23T21:37:25.7914108Z > Task :app:processDebugJavaRes
+2026-10-23T21:37:27.5906853Z > Task :app:mergeDebugJavaResource
+2026-10-23T21:37:27.6910204Z > Task :app:checkDebugDuplicateClasses
+2026-10-23T21:37:33.2906529Z > Task :app:mergeExtDexDebug
+2026-10-23T21:37:33.2917224Z > Task :app:mergeLibDexDebug
+2026-10-23T21:37:33.9909838Z > Task :app:mergeProjectDexDebug
+2026-10-23T21:37:33.9910456Z > Task :app:mergeDebugJniLibFolders
+2026-10-23T21:37:34.1911966Z > Task :app:mergeDebugNativeLibs
+2026-10-23T21:37:34.1912379Z 
+2026-10-23T21:37:34.1927360Z > Task :app:stripDebugDebugSymbols
+2026-10-23T21:37:34.1930698Z Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so. Run with --info option to learn more.
+2026-10-23T21:37:34.6911980Z 
+2026-10-23T21:37:34.6912986Z > Task :app:validateSigningDebug
+2026-10-23T21:37:34.7927042Z > Task :app:writeDebugAppMetadata
+2026-10-23T21:37:34.7936114Z > Task :app:writeDebugSigningConfigVersions
+2026-10-23T21:37:35.2906857Z > Task :app:packageDebug
+2026-10-23T21:37:35.2907698Z > Task :app:createDebugApkListingFileRedirect
+2026-10-23T21:37:35.2908191Z > Task :app:assembleDebug
+2026-10-23T21:37:35.2908397Z 
+2026-10-23T21:37:35.2908565Z BUILD SUCCESSFUL in 4m 37s
+2026-10-23T21:37:35.2908946Z 37 actionable tasks: 37 executed
+2026-10-23T21:37:35.3389852Z Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.3.1/userguide/configuration_cache_enabling.html
+2026-10-23T21:37:35.6622727Z ##[group]Run test "$(git -C baseline-src rev-parse HEAD)" = b19b77b81e76feef6baf83e6c4bfa935e7c10bea
+2026-10-23T21:37:35.6623271Z [36;1mtest "$(git -C baseline-src rev-parse HEAD)" = b19b77b81e76feef6baf83e6c4bfa935e7c10bea[0m
+2026-10-23T21:37:35.6623883Z [36;1mgit -C baseline-src rev-parse HEAD > stage5-ci-results/baseline-source.txt[0m
+2026-10-23T21:37:35.6624298Z [36;1m(cd baseline-src && ./gradlew --no-daemon --max-workers=1 assembleDebug)[0m
+2026-10-23T21:37:35.6681076Z shell: /usr/bin/bash -e {0}
+2026-10-23T21:37:35.6681282Z env:
+2026-10-23T21:37:35.6681533Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:37:35.6681926Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:37:35.6682234Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-10-23T21:37:35.6682466Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-10-23T21:37:35.6682686Z ##[endgroup]
+2026-10-23T21:37:36.3299378Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+2026-10-23T21:37:37.1264341Z Daemon will be stopped at the end of the build 
+2026-10-23T21:37:48.2277548Z > Task :app:preBuild UP-TO-DATE
+2026-10-23T21:37:48.2280751Z > Task :app:preDebugBuild UP-TO-DATE
+2026-10-23T21:37:48.3287799Z > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+2026-10-23T21:37:48.3288384Z > Task :app:generateDebugResources
+2026-10-23T21:37:48.6288054Z > Task :app:packageDebugResources
+2026-10-23T21:37:50.0261101Z > Task :app:processDebugNavigationResources
+2026-10-23T21:37:50.2282757Z > Task :app:parseDebugLocalResources
+2026-10-23T21:37:50.2283656Z > Task :app:generateDebugRFile
+2026-10-23T21:37:59.6258407Z > Task :app:kspDebugKotlin
+2026-10-23T21:38:29.6274563Z > Task :app:compileDebugKotlin
+2026-10-23T21:38:29.9264841Z w: file:///home/runner/work/Goldberg/Goldberg/baseline-src/app/src/main/java/com/opus/piano/ui/JournalComponents.kt:58:70 'val Icons.Outlined.ArrowBack: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.ArrowBack.
+2026-10-23T21:38:29.9268275Z w: file:///home/runner/work/Goldberg/Goldberg/baseline-src/app/src/main/java/com/opus/piano/ui/RepertoireScreen.kt:78:123 'val Icons.Outlined.Sort: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.Sort.
+2026-10-23T21:38:30.1256859Z 
+2026-10-23T21:38:30.1263646Z > Task :app:javaPreCompileDebug
+2026-10-23T21:38:30.1287760Z > Task :app:compileDebugJavaWithJavac NO-SOURCE
+2026-10-23T21:38:30.1290878Z > Task :app:generateDebugAssets UP-TO-DATE
+2026-10-23T21:38:30.1291809Z > Task :app:mergeDebugAssets
+2026-10-23T21:38:30.2259564Z > Task :app:compressDebugAssets
+2026-10-23T21:38:30.2264770Z > Task :app:desugarDebugFileDependencies
+2026-10-23T21:38:30.2265411Z > Task :app:checkDebugAarMetadata
+2026-10-23T21:38:30.2266089Z > Task :app:mapDebugSourceSetPaths
+2026-10-23T21:38:30.3268224Z > Task :app:compileDebugNavigationResources
+2026-10-23T21:38:32.0259337Z > Task :app:mergeDebugResources
+2026-10-23T21:38:32.0267668Z > Task :app:createDebugCompatibleScreenManifests
+2026-10-23T21:38:32.0268209Z > Task :app:extractDeepLinksDebug
+2026-10-23T21:38:32.2274026Z > Task :app:processDebugMainManifest
+2026-10-23T21:38:32.3262662Z > Task :app:processDebugManifest
+2026-10-23T21:38:32.3263376Z > Task :app:processDebugManifestForPackage
+2026-10-23T21:38:33.0277966Z > Task :app:processDebugResources
+2026-10-23T21:38:44.5258200Z > Task :app:dexBuilderDebug
+2026-10-23T21:38:48.1257638Z > Task :app:mergeDebugGlobalSynthetics
+2026-10-23T21:38:48.2261591Z > Task :app:processDebugJavaRes
+2026-10-23T21:38:49.3263117Z > Task :app:mergeDebugJavaResource
+2026-10-23T21:38:49.4272271Z > Task :app:checkDebugDuplicateClasses
+2026-10-23T21:38:56.1258231Z > Task :app:mergeExtDexDebug
+2026-10-23T21:38:56.1277255Z > Task :app:mergeLibDexDebug
+2026-10-23T21:38:56.6263510Z > Task :app:mergeProjectDexDebug
+2026-10-23T21:38:56.6287330Z > Task :app:mergeDebugJniLibFolders
+2026-10-23T21:38:56.7258294Z > Task :app:mergeDebugNativeLibs
+2026-10-23T21:38:56.7287167Z 
+2026-10-23T21:38:56.7289595Z > Task :app:stripDebugDebugSymbols
+2026-10-23T21:38:56.7296430Z Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so. Run with --info option to learn more.
+2026-10-23T21:38:56.7297284Z 
+2026-10-23T21:38:56.7317070Z > Task :app:validateSigningDebug
+2026-10-23T21:38:56.7337614Z > Task :app:writeDebugAppMetadata
+2026-10-23T21:38:56.8277931Z > Task :app:writeDebugSigningConfigVersions
+2026-10-23T21:38:57.4258347Z > Task :app:packageDebug
+2026-10-23T21:38:57.4258907Z > Task :app:createDebugApkListingFileRedirect
+2026-10-23T21:38:57.4259375Z > Task :app:assembleDebug
+2026-10-23T21:38:57.4259635Z 
+2026-10-23T21:38:57.4259890Z BUILD SUCCESSFUL in 1m 21s
+2026-10-23T21:38:57.4260331Z 37 actionable tasks: 37 executed
+2026-10-23T21:38:57.4261486Z Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.3.1/userguide/configuration_cache_enabling.html
+2026-10-23T21:38:57.7582860Z ##[group]Run mkdir -p .gradle/release-artifacts
+2026-10-23T21:38:57.7583193Z [36;1mmkdir -p .gradle/release-artifacts[0m
+2026-10-23T21:38:57.7583506Z [36;1mcurl -fsSL -o .gradle/release-artifacts/Goldberg-v0.10.1.apk \[0m
+2026-10-23T21:38:57.7583944Z [36;1m  https://github.com/stokonn/Goldberg/releases/download/v0.10.1/Goldberg-v0.10.1.apk[0m
+2026-10-23T21:38:57.7584602Z [36;1mecho "854bbfebf617ec920df60d181a12e0dcbd2fed10052f2479903a78a290cef312  .gradle/release-artifacts/Goldberg-v0.10.1.apk" | sha256sum -c -[0m
+2026-10-23T21:38:57.7642391Z shell: /usr/bin/bash -e {0}
+2026-10-23T21:38:57.7642607Z env:
+2026-10-23T21:38:57.7642849Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:38:57.7643238Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:38:57.7643545Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-10-23T21:38:57.7643781Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-10-23T21:38:57.7644047Z ##[endgroup]
+2026-10-23T21:38:58.7191289Z .gradle/release-artifacts/Goldberg-v0.10.1.apk: OK
+2026-10-23T21:38:58.7224418Z ##[group]Run set -euo pipefail
+2026-10-23T21:38:58.7224729Z [36;1mset -euo pipefail[0m
+2026-10-23T21:38:58.7225001Z [36;1m# Run 39503450845: all three digests came back MISSING because the[0m
+2026-10-23T21:38:58.7225360Z [36;1m# previous digest_of discarded apksigner's streams/exit codes[0m
+2026-10-23T21:38:58.7225715Z [36;1m# (2>/dev/null). Now every raw stdout/stderr/exit code is captured to[0m
+2026-10-23T21:38:58.7226092Z [36;1m# stage5-ci-results/ (uploaded as evidence) and echoed to the step log.[0m
+2026-10-23T21:38:58.7226477Z [36;1m# The certificate-identity assertions below are UNCHANGED and strict.[0m
+2026-10-23T21:38:58.7227109Z [36;1mAPKSIGNER="$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -n1)"[0m
+2026-10-23T21:38:58.7227444Z [36;1m{[0m
+2026-10-23T21:38:58.7227646Z [36;1m  echo "== signing verification environment =="[0m
+2026-10-23T21:38:58.7227907Z [36;1m  echo "apksigner used: $APKSIGNER"[0m
+2026-10-23T21:38:58.7228181Z [36;1m  echo "build-tools directory:"[0m
+2026-10-23T21:38:58.7228422Z [36;1m  ls -la "$ANDROID_HOME/build-tools" || true[0m
+2026-10-23T21:38:58.7228669Z [36;1m  echo "java: $(command -v java || true)"[0m
+2026-10-23T21:38:58.7228916Z [36;1m  java -version 2>&1 | head -n1 || true[0m
+2026-10-23T21:38:58.7229189Z [36;1m} | tee stage5-ci-results/signing-environment.txt[0m
+2026-10-23T21:38:58.7229478Z [36;1m: > stage5-ci-results/apksigner-exit-codes.txt[0m
+2026-10-23T21:38:58.7229716Z [36;1mdigest_of() {[0m
+2026-10-23T21:38:58.7229907Z [36;1m  local apk="$1" name="$2" rc digest[0m
+2026-10-23T21:38:58.7230124Z [36;1m  set +e[0m
+2026-10-23T21:38:58.7230519Z [36;1m  "$APKSIGNER" verify --print-certs "$apk" > "stage5-ci-results/apksigner-$name.log" 2> "stage5-ci-results/apksigner-$name.err"[0m
+2026-10-23T21:38:58.7230934Z [36;1m  rc=$?[0m
+2026-10-23T21:38:58.7231090Z [36;1m  set -e[0m
+2026-10-23T21:38:58.7231355Z [36;1m  echo "$name apksigner exit=$rc" >> stage5-ci-results/apksigner-exit-codes.txt[0m
+2026-10-23T21:38:58.7232166Z [36;1m  {[0m
+2026-10-23T21:38:58.7232515Z [36;1m    echo "== apksigner verify --print-certs [$name] exit=$rc"[0m
+2026-10-23T21:38:58.7233018Z [36;1m    echo "--- stdout (stage5-ci-results/apksigner-$name.log):"[0m
+2026-10-23T21:38:58.7233347Z [36;1m    cat "stage5-ci-results/apksigner-$name.log"[0m
+2026-10-23T21:38:58.7233638Z [36;1m    echo "--- stderr (stage5-ci-results/apksigner-$name.err):"[0m
+2026-10-23T21:38:58.7233922Z [36;1m    cat "stage5-ci-results/apksigner-$name.err"[0m
+2026-10-23T21:38:58.7234144Z [36;1m  } >&2[0m
+2026-10-23T21:38:58.7234384Z [36;1m  # Root cause of run 39503450845 MISSING digests: apksigner's print[0m
+2026-10-23T21:38:58.7234744Z [36;1m  # format changed in build-tools 37.0.0 (preinstalled on the runner,[0m
+2026-10-23T21:38:58.7235111Z [36;1m  # selected by sort -V | tail -n1) from 'Signer #1 certificate SHA-256[0m
+2026-10-23T21:38:58.7235459Z [36;1m  # digest:' to 'V2 Signer: certificate SHA-256 digest:' (verified[0m
+2026-10-23T21:38:58.7235819Z [36;1m  # locally: both versions report the same digest, only labels differ).[0m
+2026-10-23T21:38:58.7236186Z [36;1m  # Parse both formats and require exactly one distinct signer digest.[0m
+2026-10-23T21:38:58.7236816Z [36;1m  digest="$(sed -n 's/^.*certificate SHA-256 digest: //p' "stage5-ci-results/apksigner-$name.log" | sort -u)"[0m
+2026-10-23T21:38:58.7237268Z [36;1m  if [ "$(printf '%s\n' "$digest" | grep -c '^.' || true)" -gt 1 ]; then[0m
+2026-10-23T21:38:58.7237650Z [36;1m    echo "ERROR [$name]: multiple distinct signer certificate digests found:" >&2[0m
+2026-10-23T21:38:58.7237969Z [36;1m    printf '%s\n' "$digest" >&2[0m
+2026-10-23T21:38:58.7238182Z [36;1m    digest=""[0m
+2026-10-23T21:38:58.7238355Z [36;1m  fi[0m
+2026-10-23T21:38:58.7238524Z [36;1m  if [ -z "$digest" ]; then[0m
+2026-10-23T21:38:58.7238888Z [36;1m    digest="$(sed -n 's/^.*certificate SHA-256 digest: //p' "stage5-ci-results/apksigner-$name.err" | sort -u)"[0m
+2026-10-23T21:38:58.7239786Z [36;1m    [ -z "$digest" ] || echo "NOTE [$name]: certificate digest was found on stderr, not stdout" >&2[0m
+2026-10-23T21:38:58.7240163Z [36;1m  fi[0m
+2026-10-23T21:38:58.7240331Z [36;1m  printf '%s' "$digest"[0m
+2026-10-23T21:38:58.7240522Z [36;1m}[0m
+2026-10-23T21:38:58.7240804Z [36;1mTRUSTED="53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e"[0m
+2026-10-23T21:38:58.7241252Z [36;1mRELEASE="$(digest_of .gradle/release-artifacts/Goldberg-v0.10.1.apk release)"[0m
+2026-10-23T21:38:58.7241709Z [36;1mBASELINE="$(digest_of baseline-src/app/build/outputs/apk/debug/app-debug.apk baseline)"[0m
+2026-10-23T21:38:58.7242147Z [36;1mCANDIDATE="$(digest_of app/build/outputs/apk/debug/app-debug.apk candidate)"[0m
+2026-10-23T21:38:58.7242450Z [36;1m{[0m
+2026-10-23T21:38:58.7242659Z [36;1m  echo "trusted release certificate SHA-256: $TRUSTED"[0m
+2026-10-23T21:38:58.7243009Z [36;1m  echo "downloaded 0.10.1 release certificate SHA-256: ${RELEASE:-MISSING}"[0m
+2026-10-23T21:38:58.7243423Z [36;1m  echo "v0.10.1 debug-rebuild certificate SHA-256: ${BASELINE:-MISSING}"[0m
+2026-10-23T21:38:58.7243819Z [36;1m  echo "candidate certificate SHA-256: ${CANDIDATE:-MISSING}"[0m
+2026-10-23T21:38:58.7244106Z [36;1m  echo "apksigner exit codes:"[0m
+2026-10-23T21:38:58.7244364Z [36;1m  cat stage5-ci-results/apksigner-exit-codes.txt[0m
+2026-10-23T21:38:58.7244648Z [36;1m} | tee stage5-ci-results/signing-evidence.txt[0m
+2026-10-23T21:38:58.7244878Z [36;1mFAIL=""[0m
+2026-10-23T21:38:58.7245129Z [36;1mif grep -qv "exit=0" stage5-ci-results/apksigner-exit-codes.txt; then[0m
+2026-10-23T21:38:58.7245634Z [36;1m  FAIL="$FAIL ERROR: apksigner exited non-zero for at least one APK (see apksigner-exit-codes.txt and apksigner-*.log/.err)."[0m
+2026-10-23T21:38:58.7246051Z [36;1mfi[0m
+2026-10-23T21:38:58.7246225Z [36;1mif [ -z "$RELEASE" ]; then[0m
+2026-10-23T21:38:58.7246947Z [36;1m  FAIL="$FAIL ERROR: no certificate digest could be parsed from the release APK apksigner output (raw streams preserved in stage5-ci-results/apksigner-release.*)."[0m
+2026-10-23T21:38:58.7247645Z [36;1melif [ "$RELEASE" != "$TRUSTED" ]; then[0m
+2026-10-23T21:38:58.7248038Z [36;1m  FAIL="$FAIL ERROR: downloaded 0.10.1 release APK carries certificate $RELEASE, not the trusted $TRUSTED."[0m
+2026-10-23T21:38:58.7248403Z [36;1mfi[0m
+2026-10-23T21:38:58.7248678Z [36;1mif [ -z "$BASELINE" ] || [ -z "$CANDIDATE" ]; then[0m
+2026-10-23T21:38:58.7249291Z [36;1m  FAIL="$FAIL ERROR: no certificate digest parsed for the in-place upgrade pair (raw streams preserved in stage5-ci-results/apksigner-baseline.* / apksigner-candidate.*)."[0m
+2026-10-23T21:38:58.7249881Z [36;1melif [ "$BASELINE" != "$CANDIDATE" ]; then[0m
+2026-10-23T21:38:58.7250336Z [36;1m  FAIL="$FAIL ERROR: in-place upgrade baseline ($BASELINE) and candidate ($CANDIDATE) are not signed with the same runner key."[0m
+2026-10-23T21:38:58.7250741Z [36;1mfi[0m
+2026-10-23T21:38:58.7250932Z [36;1mif [ -n "$FAIL" ]; then echo "$FAIL"; exit 1; fi[0m
+2026-10-23T21:38:58.7251295Z [36;1mecho "OK: release identity trusted; in-place upgrade pair signature-compatible"[0m
+2026-10-23T21:38:58.7307636Z shell: /usr/bin/bash -e {0}
+2026-10-23T21:38:58.7307845Z env:
+2026-10-23T21:38:58.7308094Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:38:58.7308480Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:38:58.7308783Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-10-23T21:38:58.7309034Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-10-23T21:38:58.7309255Z ##[endgroup]
+2026-10-23T21:38:58.7413372Z == signing verification environment ==
+2026-10-23T21:38:58.7413993Z apksigner used: /usr/local/lib/android/sdk/build-tools/37.0.0/apksigner
+2026-10-23T21:38:58.7414385Z build-tools directory:
+2026-10-23T21:38:58.7416967Z total 32
+2026-10-23T21:38:58.7417297Z drwxrwxrwx  8 root root 4096 Oct 12 21:33 .
+2026-10-23T21:38:58.7417732Z drwxrwxrwx 11 root root 4096 Oct 23 21:32 ..
+2026-10-23T21:38:58.7418281Z drwxrwxrwx  6 root root 4096 Oct 12 21:33 34.0.0
+2026-10-23T21:38:58.7418568Z drwxrwxrwx  6 root root 4096 Oct 12 21:33 35.0.0
+2026-10-23T21:38:58.7418843Z drwxrwxrwx  6 root root 4096 Oct 12 21:33 35.0.1
+2026-10-23T21:38:58.7419128Z drwxrwxrwx  6 root root 4096 Oct 12 21:33 36.0.0
+2026-10-23T21:38:58.7419396Z drwxrwxrwx  6 root root 4096 Oct 12 21:33 36.1.0
+2026-10-23T21:38:58.7419662Z drwxrwxrwx  6 root root 4096 Oct 12 21:33 37.0.0
+2026-10-23T21:38:58.7422907Z java: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64/bin/java
+2026-10-23T21:38:58.7662891Z openjdk version "17.0.20.1" 2026-08-18
+2026-10-23T21:38:59.1488406Z == apksigner verify --print-certs [release] exit=0
+2026-10-23T21:38:59.1489032Z --- stdout (stage5-ci-results/apksigner-release.log):
+2026-10-23T21:38:59.1498732Z V2 Signer: certificate DN: C=US, O=Android, CN=Android Debug
+2026-10-23T21:38:59.1499502Z V2 Signer: certificate SHA-256 digest: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+2026-10-23T21:38:59.1500474Z V2 Signer: certificate SHA-1 digest: 4fbb357f14740db36fce486727507557d4e3c420
+2026-10-23T21:38:59.1501129Z V2 Signer: certificate MD5 digest: 99b2cb67071b64525b38e0e46271893c
+2026-10-23T21:38:59.1502809Z --- stderr (stage5-ci-results/apksigner-release.err):
+2026-10-23T21:38:59.3584427Z == apksigner verify --print-certs [baseline] exit=0
+2026-10-23T21:38:59.3584980Z --- stdout (stage5-ci-results/apksigner-baseline.log):
+2026-10-23T21:38:59.3593760Z V2 Signer: certificate DN: C=US, O=Android, CN=Android Debug
+2026-10-23T21:38:59.3594620Z V2 Signer: certificate SHA-256 digest: c23db99540e1266427ad8a226f465b054211ff6ebd7f50544bb6aced210f52dc
+2026-10-23T21:38:59.3595278Z V2 Signer: certificate SHA-1 digest: da4a0c15c9aff451de5c1298653bc4a9883ffdc3
+2026-10-23T21:38:59.3595789Z V2 Signer: certificate MD5 digest: 0a71f1b0203d1ab7d9584e703767c71f
+2026-10-23T21:38:59.3596248Z --- stderr (stage5-ci-results/apksigner-baseline.err):
+2026-10-23T21:38:59.5555679Z == apksigner verify --print-certs [candidate] exit=0
+2026-10-23T21:38:59.5556446Z --- stdout (stage5-ci-results/apksigner-candidate.log):
+2026-10-23T21:38:59.5565267Z V2 Signer: certificate DN: C=US, O=Android, CN=Android Debug
+2026-10-23T21:38:59.5565958Z V2 Signer: certificate SHA-256 digest: c23db99540e1266427ad8a226f465b054211ff6ebd7f50544bb6aced210f52dc
+2026-10-23T21:38:59.5566974Z V2 Signer: certificate SHA-1 digest: da4a0c15c9aff451de5c1298653bc4a9883ffdc3
+2026-10-23T21:38:59.5567718Z V2 Signer: certificate MD5 digest: 0a71f1b0203d1ab7d9584e703767c71f
+2026-10-23T21:38:59.5568307Z --- stderr (stage5-ci-results/apksigner-candidate.err):
+2026-10-23T21:38:59.5624718Z trusted release certificate SHA-256: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+2026-10-23T21:38:59.5625456Z downloaded 0.10.1 release certificate SHA-256: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+2026-10-23T21:38:59.5626293Z v0.10.1 debug-rebuild certificate SHA-256: c23db99540e1266427ad8a226f465b054211ff6ebd7f50544bb6aced210f52dc
+2026-10-23T21:38:59.5627499Z candidate certificate SHA-256: c23db99540e1266427ad8a226f465b054211ff6ebd7f50544bb6aced210f52dc
+2026-10-23T21:38:59.5628055Z apksigner exit codes:
+2026-10-23T21:38:59.5628267Z release apksigner exit=0
+2026-10-23T21:38:59.5628493Z baseline apksigner exit=0
+2026-10-23T21:38:59.5628708Z candidate apksigner exit=0
+2026-10-23T21:38:59.5640497Z OK: release identity trusted; in-place upgrade pair signature-compatible
+2026-10-23T21:38:59.5667394Z ##[group]Run # android-emulator-runner@v2.38.0 parseScript() splits its `script` input
+2026-10-23T21:38:59.5668460Z [36;1m# android-emulator-runner@v2.38.0 parseScript() splits its `script` input[0m
+2026-10-23T21:38:59.5668889Z [36;1m# into single lines and runs each via a separate `sh -c` (source-inspected;[0m
+2026-10-23T21:38:59.5669298Z [36;1m# proven by runs 39503450845 and 39508388525). GitHub `run:` steps execute[0m
+2026-10-23T21:38:59.5669674Z [36;1m# as ONE bash process, so the approved script is materialized into a file[0m
+2026-10-23T21:38:59.5670075Z [36;1m# here, syntax-checked, and later executed as a single-line `bash <file>`.[0m
+2026-10-23T21:38:59.5670451Z [36;1mcat > "$RUNNER_TEMP/stage5-acceptance.sh" <<'BASH_SCRIPT'[0m
+2026-10-23T21:38:59.5670731Z [36;1mset -euo pipefail[0m
+2026-10-23T21:38:59.5671024Z [36;1mSERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"[0m
+2026-10-23T21:38:59.5671575Z [36;1mcase "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac[0m
+2026-10-23T21:38:59.5672021Z [36;1mATTACHED="$(adb devices | awk '$2=="device"' | wc -l)"[0m
+2026-10-23T21:38:59.5672478Z [36;1mif [ "$ATTACHED" -ne 1 ]; then echo "ERROR: expected exactly one attached device, found $ATTACHED"; adb devices; exit 1; fi[0m
+2026-10-23T21:38:59.5672960Z [36;1mQEMU="$(adb -s "$SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')"[0m
+2026-10-23T21:38:59.5673401Z [36;1mif [ "$QEMU" != "1" ]; then echo "ERROR: $SERIAL is not a verified emulator (ro.kernel.qemu=$QEMU)"; exit 1; fi[0m
+2026-10-23T21:38:59.5673780Z [36;1mexport ANDROID_SERIAL="$SERIAL"[0m
+2026-10-23T21:38:59.5674272Z [36;1mecho "Running acceptance subset on verified emulator $SERIAL"[0m
+2026-10-23T21:38:59.5674676Z [36;1mmkdir -p stage5-ci-results[0m
+2026-10-23T21:38:59.5675106Z [36;1mtrap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || true' EXIT[0m
+2026-10-23T21:38:59.5675670Z [36;1m# (a) Seeded in-place upgrade from the debug rebuild of the exact v0.10.1[0m
+2026-10-23T21:38:59.5676151Z [36;1m#     tag (same runner debug keystore as the candidate, so signatures[0m
+2026-10-23T21:38:59.5676828Z [36;1m#     match). The helper asserts baseline schema, version and per-table[0m
+2026-10-23T21:38:59.5677527Z [36;1m#     data equality after migration; disposable emulator seeding only.[0m
+2026-10-23T21:38:59.5677959Z [36;1mpython3 scripts/verify_emulator_upgrade.py \[0m
+2026-10-23T21:38:59.5678340Z [36;1m  --serial "$SERIAL" \[0m
+2026-10-23T21:38:59.5727562Z [36;1m  --baseline baseline-src/app/build/outputs/apk/debug/app-debug.apk \[0m
+2026-10-23T21:38:59.5728012Z [36;1m  --baseline-version 0.10.1 --baseline-schema 8 --expected-schema 10 \[0m
+2026-10-23T21:38:59.5728393Z [36;1m  --candidate app/build/outputs/apk/debug/app-debug.apk \[0m
+2026-10-23T21:38:59.5728718Z [36;1m  --output stage5-ci-results/upgrade \[0m
+2026-10-23T21:38:59.5729024Z [36;1m  --seed-disposable --offline --startup-runs 5[0m
+2026-10-23T21:38:59.5729355Z [36;1m# (b) Wi-Fi -> mobile default-network transition and Data Saver, with real[0m
+2026-10-23T21:38:59.5729739Z [36;1m#     state assertions (not just collected logs). The upgrade helper ran[0m
+2026-10-23T21:38:59.5730105Z [36;1m#     with --offline and VERIFIED no active default network before and[0m
+2026-10-23T21:38:59.5730464Z [36;1m#     after the upgrade (wifi AND mobile data disabled; airplane-mode[0m
+2026-10-23T21:38:59.5730829Z [36;1m#     fallback possible), so the radios are fully restored before[0m
+2026-10-23T21:38:59.5731126Z [36;1m#     asserting the transition.[0m
+2026-10-23T21:38:59.5731406Z [36;1mcat > stage5-ci-results/assert_default_network.py <<'PYEOF'[0m
+2026-10-23T21:38:59.5731676Z [36;1mimport re[0m
+2026-10-23T21:38:59.5731843Z [36;1mimport sys[0m
+2026-10-23T21:38:59.5732004Z [36;1m[0m
+2026-10-23T21:38:59.5732194Z [36;1mexpected, dump_path = sys.argv[1], sys.argv[2][0m
+2026-10-23T21:38:59.5732768Z [36;1mdump = open(dump_path, encoding='utf-8', errors='replace').read()[0m
+2026-10-23T21:38:59.5733130Z [36;1mmatch = re.search(r'^\s*Active default network: (.*)$', dump, re.M)[0m
+2026-10-23T21:38:59.5733410Z [36;1mif not match:[0m
+2026-10-23T21:38:59.5733711Z [36;1m    sys.exit('FATAL: "Active default network:" line missing from dumpsys connectivity')[0m
+2026-10-23T21:38:59.5734060Z [36;1mnet_id = match.group(1).strip()[0m
+2026-10-23T21:38:59.5734298Z [36;1mif not re.fullmatch(r'\d+', net_id):[0m
+2026-10-23T21:38:59.5734689Z [36;1m    sys.exit(f'FATAL: expected a numeric active default network for transport {expected}, got: {net_id!r}')[0m
+2026-10-23T21:38:59.5735223Z [36;1mblocks = re.findall(r'^[ \t]*NetworkAgentInfo\{network\{' + re.escape(net_id) + r'\}.*$', dump, re.M)[0m
+2026-10-23T21:38:59.5735580Z [36;1mif not blocks:[0m
+2026-10-23T21:38:59.5735894Z [36;1m    sys.exit(f'FATAL: no NetworkAgentInfo block found for active default network {net_id}')[0m
+2026-10-23T21:38:59.5736240Z [36;1mblock = blocks[0][0m
+2026-10-23T21:38:59.5736442Z [36;1mni = re.search(r'ni\{([^}]*)\}', block)[0m
+2026-10-23T21:38:59.5736887Z [36;1m# API 36 (run 39552116455 evidence, connectivity-dump.txt) prints the[0m
+2026-10-23T21:38:59.5737244Z [36;1m# transport ONLY in the nc{[ Transports: ... ]} capabilities section;[0m
+2026-10-23T21:38:59.5737569Z [36;1m# the legacy ni{...} "type:" token does not exist there[0m
+2026-10-23T21:38:59.5737899Z [36;1m# (ni{WIFI CONNECTED extra: }). Assertions unchanged: the active default[0m
+2026-10-23T21:38:59.5738251Z [36;1m# network must be numeric and its NAI must declare the expected[0m
+2026-10-23T21:38:59.5738614Z [36;1m# transport (WIFI->WIFI, MOBILE->CELLULAR naming mapped explicitly).[0m
+2026-10-23T21:38:59.5738942Z [36;1mnc = re.search(r'nc\{\[\s*Transports:\s*(\w+)', block)[0m
+2026-10-23T21:38:59.5739178Z [36;1mif nc:[0m
+2026-10-23T21:38:59.5739343Z [36;1m    found = nc.group(1)[0m
+2026-10-23T21:38:59.5739616Z [36;1m    wanted = {'WIFI': 'WIFI', 'MOBILE': 'CELLULAR'}.get(expected, expected)[0m
+2026-10-23T21:38:59.5739897Z [36;1m    if found != wanted:[0m
+2026-10-23T21:38:59.5740258Z [36;1m        sys.exit(f'FATAL: active default network {net_id} transport is {found}, expected {wanted} ({expected})')[0m
+2026-10-23T21:38:59.5740746Z [36;1m    print(f'OK: active default network {net_id} uses transport {found} ({expected})')[0m
+2026-10-23T21:38:59.5741058Z [36;1m    sys.exit(0)[0m
+2026-10-23T21:38:59.5741300Z [36;1mlegacy = re.search(r'type: (\w+)', ni.group(1)) if ni else None[0m
+2026-10-23T21:38:59.5741565Z [36;1mif not legacy:[0m
+2026-10-23T21:38:59.5742056Z [36;1m    sys.exit(f'FATAL: no transport token (nc Transports / ni type:) in active-network block: {block[:240]!r}')[0m
+2026-10-23T21:38:59.5742423Z [36;1mfound = legacy.group(1)[0m
+2026-10-23T21:38:59.5742617Z [36;1mif found != expected:[0m
+2026-10-23T21:38:59.5742942Z [36;1m    sys.exit(f'FATAL: active default network {net_id} transport is {found}, expected {expected}')[0m
+2026-10-23T21:38:59.5743365Z [36;1mprint(f'OK: active default network {net_id} uses transport {found}')[0m
+2026-10-23T21:38:59.5743645Z [36;1mPYEOF[0m
+2026-10-23T21:38:59.5743805Z [36;1mwait_for_transport() {[0m
+2026-10-23T21:38:59.5744030Z [36;1m  local expected="$1" deadline=$((SECONDS + 60))[0m
+2026-10-23T21:38:59.5744294Z [36;1m  while [ "$SECONDS" -lt "$deadline" ]; do[0m
+2026-10-23T21:38:59.5744698Z [36;1m    adb -s "$SERIAL" shell dumpsys connectivity > stage5-ci-results/connectivity-dump.txt 2>/dev/null || true[0m
+2026-10-23T21:38:59.5745394Z [36;1m    if python3 stage5-ci-results/assert_default_network.py "$expected" stage5-ci-results/connectivity-dump.txt >>stage5-ci-results/network-evidence.txt 2>&1; then[0m
+2026-10-23T21:38:59.5746122Z [36;1m      sed -n 's/.*Active default network: /active default network: /p' stage5-ci-results/connectivity-dump.txt | head -n1[0m
+2026-10-23T21:38:59.5746516Z [36;1m      return 0[0m
+2026-10-23T21:38:59.5746774Z [36;1m    fi[0m
+2026-10-23T21:38:59.5747101Z [36;1m    sleep 4[0m
+2026-10-23T21:38:59.5747263Z [36;1m  done[0m
+2026-10-23T21:38:59.5747538Z [36;1m  echo "FATAL: active default network never reached transport $expected within 60s" >&2[0m
+2026-10-23T21:38:59.5747860Z [36;1m  return 1[0m
+2026-10-23T21:38:59.5748015Z [36;1m}[0m
+2026-10-23T21:38:59.5748156Z [36;1m{[0m
+2026-10-23T21:38:59.5748548Z [36;1m  echo "== restore mobile data and Wi-Fi (upgrade helper left both disabled; clear airplane mode in case the offline fallback engaged) =="[0m
+2026-10-23T21:38:59.5749064Z [36;1m  adb -s "$SERIAL" shell cmd connectivity airplane-mode disable || true[0m
+2026-10-23T21:38:59.5749379Z [36;1m  adb -s "$SERIAL" shell svc data enable[0m
+2026-10-23T21:38:59.5749649Z [36;1m  adb -s "$SERIAL" shell settings put global mobile_data 1[0m
+2026-10-23T21:38:59.5749917Z [36;1m  adb -s "$SERIAL" shell svc wifi enable[0m
+2026-10-23T21:38:59.5750177Z [36;1m  echo "== expect Wi-Fi as active default network =="[0m
+2026-10-23T21:38:59.5750446Z [36;1m  WIFI_NET="$(wait_for_transport WIFI)"[0m
+2026-10-23T21:38:59.5750668Z [36;1m  echo "$WIFI_NET"[0m
+2026-10-23T21:38:59.5750949Z [36;1m  echo "== disable Wi-Fi, expect mobile fallback as active default network =="[0m
+2026-10-23T21:38:59.5751268Z [36;1m  adb -s "$SERIAL" shell svc wifi disable[0m
+2026-10-23T21:38:59.5751514Z [36;1m  MOBILE_NET="$(wait_for_transport MOBILE)"[0m
+2026-10-23T21:38:59.5751740Z [36;1m  echo "$MOBILE_NET"[0m
+2026-10-23T21:38:59.5751944Z [36;1m  if [ "$WIFI_NET" = "$MOBILE_NET" ]; then[0m
+2026-10-23T21:38:59.5752293Z [36;1m    echo "FATAL: default network did not change across the Wi-Fi -> mobile transition"; exit 1[0m
+2026-10-23T21:38:59.5752625Z [36;1m  fi[0m
+2026-10-23T21:38:59.5752858Z [36;1m  echo "OK: default network transitioned ($WIFI_NET -> $MOBILE_NET)"[0m
+2026-10-23T21:38:59.5753192Z [36;1m  echo "== restore Wi-Fi for the remainder of the run =="[0m
+2026-10-23T21:38:59.5753460Z [36;1m  adb -s "$SERIAL" shell svc wifi enable[0m
+2026-10-23T21:38:59.5753797Z [36;1m  wait_for_transport WIFI >/dev/null[0m
+2026-10-23T21:38:59.5754062Z [36;1m  echo "== Data Saver enable with state readback =="[0m
+2026-10-23T21:38:59.5754380Z [36;1m  adb -s "$SERIAL" shell cmd netpolicy set restrict-background true[0m
+2026-10-23T21:38:59.5754652Z [36;1m  sleep 2[0m
+2026-10-23T21:38:59.5754939Z [36;1m  DS_GET="$(adb -s "$SERIAL" shell cmd netpolicy get restrict-background | tr -d '\r')"[0m
+2026-10-23T21:38:59.5755305Z [36;1m  echo "cmd netpolicy get restrict-background: $DS_GET"[0m
+2026-10-23T21:38:59.5755749Z [36;1m  [ "$DS_GET" = "Restrict background status: enabled" ] || { echo "FATAL: Data Saver not enabled (readback: $DS_GET)"; exit 1; }[0m
+2026-10-23T21:38:59.5756411Z [36;1m  adb -s "$SERIAL" shell dumpsys netpolicy > stage5-ci-results/netpolicy-enabled.txt[0m
+2026-10-23T21:38:59.5757238Z [36;1m  grep -E "Restrict background: true" stage5-ci-results/netpolicy-enabled.txt || { echo "FATAL: dumpsys netpolicy does not report Restrict background: true"; exit 1; }[0m
+2026-10-23T21:38:59.5757803Z [36;1m  echo "== Data Saver disable with state readback =="[0m
+2026-10-23T21:38:59.5758114Z [36;1m  adb -s "$SERIAL" shell cmd netpolicy set restrict-background false[0m
+2026-10-23T21:38:59.5758383Z [36;1m  sleep 2[0m
+2026-10-23T21:38:59.5758648Z [36;1m  DS_GET="$(adb -s "$SERIAL" shell cmd netpolicy get restrict-background | tr -d '\r')"[0m
+2026-10-23T21:38:59.5759003Z [36;1m  echo "cmd netpolicy get restrict-background: $DS_GET"[0m
+2026-10-23T21:38:59.5759450Z [36;1m  [ "$DS_GET" = "Restrict background status: disabled" ] || { echo "FATAL: Data Saver not disabled (readback: $DS_GET)"; exit 1; }[0m
+2026-10-23T21:38:59.5759964Z [36;1m  adb -s "$SERIAL" shell dumpsys netpolicy > stage5-ci-results/netpolicy-disabled.txt[0m
+2026-10-23T21:38:59.5760600Z [36;1m  grep -E "Restrict background: false" stage5-ci-results/netpolicy-disabled.txt || { echo "FATAL: dumpsys netpolicy does not report Restrict background: false"; exit 1; }[0m
+2026-10-23T21:38:59.5761281Z [36;1m  echo "OK: Data Saver toggled with verified state readback"[0m
+2026-10-23T21:38:59.5761580Z [36;1m} | tee stage5-ci-results/network-evidence.txt[0m
+2026-10-23T21:38:59.5761892Z [36;1m# (c) Real process death + cold restart with database integrity check.[0m
+2026-10-23T21:38:59.5762260Z [36;1madb -s "$SERIAL" shell am start -W -n com.opus.piano/.MainActivity[0m
+2026-10-23T21:38:59.5762534Z [36;1msleep 5[0m
+2026-10-23T21:38:59.5762776Z [36;1mtest -n "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"[0m
+2026-10-23T21:38:59.5763103Z [36;1madb -s "$SERIAL" shell am force-stop com.opus.piano[0m
+2026-10-23T21:38:59.5763420Z [36;1mtest -z "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"[0m
+2026-10-23T21:38:59.5763758Z [36;1madb -s "$SERIAL" shell am start -W -n com.opus.piano/.MainActivity[0m
+2026-10-23T21:38:59.5764027Z [36;1msleep 5[0m
+2026-10-23T21:38:59.5764248Z [36;1mtest -n "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"[0m
+2026-10-23T21:38:59.5764686Z [36;1madb -s "$SERIAL" shell run-as com.opus.piano ls databases | tee stage5-ci-results/process-death-db.txt[0m
+2026-10-23T21:38:59.5765081Z [36;1mmkdir -p stage5-ci-results/db-after-restart[0m
+2026-10-23T21:38:59.5765327Z [36;1mfor SUFFIX in '' '-wal' '-shm'; do[0m
+2026-10-23T21:38:59.5765927Z [36;1m  adb -s "$SERIAL" exec-out run-as com.opus.piano cat databases/opus.db$SUFFIX > stage5-ci-results/db-after-restart/opus.db$SUFFIX 2>/dev/null || rm -f stage5-ci-results/db-after-restart/opus.db$SUFFIX[0m
+2026-10-23T21:38:59.5766498Z [36;1mdone[0m
+2026-10-23T21:38:59.5766794Z [36;1mtest -s stage5-ci-results/db-after-restart/opus.db[0m
+2026-10-23T21:38:59.5767192Z [36;1mINTEGRITY="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA integrity_check;')"[0m
+2026-10-23T21:38:59.5767698Z [36;1mecho "PRAGMA integrity_check: $INTEGRITY" | tee stage5-ci-results/process-death-integrity.txt[0m
+2026-10-23T21:38:59.5768150Z [36;1m[ "$INTEGRITY" = "ok" ] || { echo "FATAL: database integrity_check failed"; exit 1; }[0m
+2026-10-23T21:38:59.5768608Z [36;1mFK_VIOLATIONS="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA foreign_key_check;')"[0m
+2026-10-23T21:38:59.5769176Z [36;1mecho "PRAGMA foreign_key_check violations: ${FK_VIOLATIONS:-none}" | tee -a stage5-ci-results/process-death-integrity.txt[0m
+2026-10-23T21:38:59.5769698Z [36;1m[ -z "$FK_VIOLATIONS" ] || { echo "FATAL: foreign_key_check reported violations"; exit 1; }[0m
+2026-10-23T21:38:59.5770136Z [36;1mSCHEMA="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA user_version;')"[0m
+2026-10-23T21:38:59.5770715Z [36;1mecho "PRAGMA user_version: $SCHEMA" | tee -a stage5-ci-results/process-death-integrity.txt[0m
+2026-10-23T21:38:59.5771208Z [36;1m[ "$SCHEMA" = "10" ] || { echo "FATAL: unexpected schema version $SCHEMA after restart (expected 10)"; exit 1; }[0m
+2026-10-23T21:38:59.5771683Z [36;1mecho "OK: post-restart database passed integrity, foreign-key and schema checks"[0m
+2026-10-23T21:38:59.5772071Z [36;1m# (d) Startup cost measurement (5 warm cold-process launches).[0m
+2026-10-23T21:38:59.5772484Z [36;1mbash scripts/measure-startup.sh "$SERIAL" 5 | tee stage5-ci-results/startup-measurement.txt[0m
+2026-10-23T21:38:59.5772824Z [36;1mBASH_SCRIPT[0m
+2026-10-23T21:38:59.5773024Z [36;1mbash -n "$RUNNER_TEMP/stage5-acceptance.sh"[0m
+2026-10-23T21:38:59.5773352Z [36;1mecho "Materialized and syntax-checked $RUNNER_TEMP/stage5-acceptance.sh"[0m
+2026-10-23T21:38:59.5829822Z shell: /usr/bin/bash -e {0}
+2026-10-23T21:38:59.5830034Z env:
+2026-10-23T21:38:59.5830284Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:38:59.5830674Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:38:59.5830983Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-10-23T21:38:59.5831219Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-10-23T21:38:59.5831441Z ##[endgroup]
+2026-10-23T21:38:59.5941262Z Materialized and syntax-checked /home/runner/work/_temp/stage5-acceptance.sh
+2026-10-23T21:38:59.5999388Z ##[group]Run reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d
+2026-10-23T21:38:59.5999777Z with:
+2026-10-23T21:38:59.5999948Z   api-level: 36
+2026-10-23T21:38:59.6000123Z   target: google_apis
+2026-10-23T21:38:59.6000293Z   arch: x86_64
+2026-10-23T21:38:59.6000452Z   profile: pixel_6
+2026-10-23T21:38:59.6000621Z   avd-name: stage5-ci
+2026-10-23T21:38:59.6000799Z   disable-animations: true
+2026-10-23T21:38:59.6001183Z   emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+2026-10-23T21:38:59.6001631Z   script: bash "$RUNNER_TEMP/stage5-acceptance.sh"
+2026-10-23T21:38:59.6001863Z   cores: 2
+2026-10-23T21:38:59.6002025Z   force-avd-creation: true
+2026-10-23T21:38:59.6002221Z   emulator-boot-timeout: 600
+2026-10-23T21:38:59.6002411Z   emulator-port: 5554
+2026-10-23T21:38:59.6002595Z   disable-spellchecker: false
+2026-10-23T21:38:59.6002794Z   disable-linux-hw-accel: auto
+2026-10-23T21:38:59.6003022Z   enable-hw-keyboard: false
+2026-10-23T21:38:59.6003206Z   channel: stable
+2026-10-23T21:38:59.6003361Z env:
+2026-10-23T21:38:59.6003597Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:38:59.6003968Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:38:59.6004275Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-10-23T21:38:59.6004509Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-10-23T21:38:59.6004728Z ##[endgroup]
+2026-10-23T21:38:59.6478016Z ##[group]Configure emulator
+2026-10-23T21:38:59.6479582Z API level: 36
+2026-10-23T21:38:59.6479944Z System image API level: 36
+2026-10-23T21:38:59.6480172Z target: google_apis
+2026-10-23T21:38:59.6480686Z CPU architecture: x86_64
+2026-10-23T21:38:59.6483065Z Hardware profile: pixel_6
+2026-10-23T21:38:59.6483414Z Cores: 2
+2026-10-23T21:38:59.6483653Z RAM size: 
+2026-10-23T21:38:59.6483898Z Heap size: 
+2026-10-23T21:38:59.6484235Z SD card path or size: 
+2026-10-23T21:38:59.6484703Z Disk size: 
+2026-10-23T21:38:59.6485094Z AVD name: stage5-ci
+2026-10-23T21:38:59.6485507Z force avd creation: true
+2026-10-23T21:38:59.6485936Z Emulator boot timeout: 600
+2026-10-23T21:38:59.6486355Z emulator port: 5554
+2026-10-23T21:38:59.6487273Z emulator options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+2026-10-23T21:38:59.6488121Z disable animations: true
+2026-10-23T21:38:59.6488554Z disable spellchecker: false
+2026-10-23T21:38:59.6489015Z disable Linux hardware acceleration: false
+2026-10-23T21:38:59.6489511Z enable hardware keyboard: false
+2026-10-23T21:38:59.6490369Z Channel: 0 (stable)
+2026-10-23T21:38:59.6490697Z Script:
+2026-10-23T21:38:59.6491091Z bash "$RUNNER_TEMP/stage5-acceptance.sh"
+2026-10-23T21:38:59.6491562Z Pre emulator launch script:
+2026-10-23T21:38:59.6492175Z ##[endgroup]
+2026-10-23T21:38:59.6492716Z ##[group]Install Android SDK
+2026-10-23T21:38:59.6521952Z [command]/usr/bin/sh -c \yes | sdkmanager --licenses > /dev/null
+2026-10-23T21:39:02.4359543Z Installing latest build tools, platform tools, and platform.
+2026-10-23T21:39:02.4370924Z [command]/usr/bin/sh -c \sdkmanager --install 'build-tools;37.0.0' platform-tools 'platforms;android-36'> /dev/null
+2026-10-23T21:39:03.5938072Z Installing latest emulator.
+2026-10-23T21:39:03.5948085Z [command]/usr/bin/sh -c \sdkmanager --install emulator --channel=0 > /dev/null
+2026-10-23T21:39:32.5945680Z Installing system images.
+2026-10-23T21:39:32.5957978Z [command]/usr/bin/sh -c \sdkmanager --install 'system-images;android-36;google_apis;x86_64' --channel=0 > /dev/null
+2026-10-23T21:40:54.6155641Z Warning: An error occurred while preparing SDK package Google APIs Intel x86_64 Atom System Image: Error on ZipFile unknown archive.
+2026-10-23T21:40:54.7775564Z ##[endgroup]
+2026-10-23T21:40:54.7778106Z ##[group]Terminate Emulator
+2026-10-23T21:40:54.7790632Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 emu kill
+2026-10-23T21:40:55.0425660Z error: could not connect to TCP port 5554: Connection refused
+2026-10-23T21:40:55.0429336Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-23T21:40:55.0430096Z ##[endgroup]
+2026-10-23T21:40:55.0436132Z ##[error]The process '/usr/bin/sh' failed with exit code 1
+2026-10-23T21:40:55.0529500Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-10-23T21:40:55.0529816Z with:
+2026-10-23T21:40:55.0529991Z   name: stage5-acceptance-results
+2026-10-23T21:40:55.0530205Z   path: stage5-ci-results/**
+
+2026-10-23T21:40:55.0530402Z   if-no-files-found: warn
+2026-10-23T21:40:55.0530596Z   retention-days: 30
+2026-10-23T21:40:55.0530767Z   compression-level: 6
+2026-10-23T21:40:55.0530938Z   overwrite: false
+2026-10-23T21:40:55.0531108Z   include-hidden-files: false
+2026-10-23T21:40:55.0531289Z env:
+2026-10-23T21:40:55.0531519Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:40:55.0531890Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-23T21:40:55.0532196Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-10-23T21:40:55.0532426Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-10-23T21:40:55.0532657Z   ANDROID_AVD_HOME: /home/runner/.android/avd
+2026-10-23T21:40:55.0532897Z ##[endgroup]
+2026-10-23T21:40:55.1825107Z (node:3679) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-23T21:40:55.1825741Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-23T21:40:55.1883099Z With the provided path, there will be 12 files uploaded
+2026-10-23T21:40:55.1887733Z Artifact name is valid!
+2026-10-23T21:40:55.1888347Z Root directory input is valid!
+2026-10-23T21:40:55.5258045Z Beginning upload of artifact content to blob storage
+2026-10-23T21:40:55.5517643Z (node:3679) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-23T21:40:55.7630652Z Uploaded bytes 2939
+2026-10-23T21:40:55.8202550Z Finished uploading artifact content to blob storage!
+2026-10-23T21:40:55.8203561Z SHA256 digest of uploaded artifact zip is 3ea542415734ef762c8f0fb9934e6a60b759dbb121aaed402dc468849be8a6f6
+2026-10-23T21:40:55.8204277Z Finalizing artifact upload
+2026-10-23T21:40:56.2604927Z Artifact stage5-acceptance-results.zip successfully finalized. Artifact ID 12533792110
+2026-10-23T21:40:56.2606052Z Artifact stage5-acceptance-results has been successfully uploaded! Final size is 2939 bytes. Artifact ID is 12533792110
+2026-10-23T21:40:56.2612094Z Artifact download URL: https://github.com/stokonn/Goldberg/actions/runs/40027522387/artifacts/12533792110
+2026-10-23T21:40:56.2790981Z Post job cleanup.
+2026-10-23T21:40:56.3910138Z (node:3692) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-23T21:40:56.3911148Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-23T21:40:56.4077508Z Post job cleanup.
+2026-10-23T21:40:56.4817596Z [command]/usr/bin/git version
+2026-10-23T21:40:56.4857671Z git version 2.55.0
+2026-10-23T21:40:56.4890128Z Temporarily overriding HOME='/home/runner/work/_temp/69e6757b-f1e0-4341-90b7-927372ca0605' before making global git config changes
+2026-10-23T21:40:56.4897465Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-23T21:40:56.4921197Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goldberg/Goldberg/baseline-src
+2026-10-23T21:40:56.4958241Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T21:40:56.4989281Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T21:40:56.5242229Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T21:40:56.5250406Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T21:40:56.5464326Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T21:40:56.5496072Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T21:40:56.5842996Z Post job cleanup.
+2026-10-23T21:40:56.6546242Z [command]/usr/bin/git version
+2026-10-23T21:40:56.6582962Z git version 2.55.0
+2026-10-23T21:40:56.6612769Z Temporarily overriding HOME='/home/runner/work/_temp/3d64dc37-0f29-478a-a62d-6d19a4c9abee' before making global git config changes
+2026-10-23T21:40:56.6613938Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-23T21:40:56.6617191Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goldberg/Goldberg
+2026-10-23T21:40:56.6656775Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T21:40:56.6687812Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T21:40:56.6918925Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T21:40:56.6950231Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T21:40:56.7172836Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T21:40:56.7209564Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T21:40:56.7575057Z Cleaning up orphan processes
+2026-10-23T21:40:56.7864571Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02, android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

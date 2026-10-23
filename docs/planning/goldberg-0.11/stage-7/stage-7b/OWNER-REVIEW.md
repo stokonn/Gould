@@ -45,3 +45,17 @@ Stage7A FINAL ACCEPTED. X10 NOT FIXED/NOT VERIFIED, deferred to Gould0.12. Stage
 ## Host verification before dispatch
 
 `./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1` SUCCESS2m6s;275 JVM tests/0 failures/errors/skips,36 suites. Final refined instrumentation `assembleDebugAndroidTest` SUCCESS21s. Lint0 errors/132 warnings/1 hint. Six host checks PASS; workflow dispatch-only YAML and every bash block syntax PASS. No new runtime body executed locally.
+
+## Current source and running verification
+
+Published source **63f7e2106897401e7da902b0d27066684d5f4abc**; normal push and exact remote readback PASS. [Acceptance CI40027522387](https://github.com/stokonn/Goldberg/actions/runs/40027522387) runs both existing jobs. No new runtime PASS is claimed until its results are inspected. [Dispatch checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6375168844). See [review sequence and exact next actions](REVIEW-RUNBOOK.md) and [contract verification disposition](CONTRACT-VERIFICATION-2026-10-23.md).
+
+The only application-source change at dispatch is a default-compatible injectable AdminRepository constructor argument for AdminViewModel; production factory overload/default repository and all network/decision gates remain intact. Test fixtures live in androidTest; no personal database/schema/backup/practice behavior changes. Local APK identity is recorded in results/acceptance-preparation-2026-10-23/local-artifact.json; CI APKs use separate temporary runner signing.
+
+## First coordinated run — historical failure retained
+
+Run40027522387/source63f7e21: host275 JVM/0 failures; full instrumentation185 XML cases,182 passed/1 failed/0 errors/2 unchanged external-fixture skips (console187 discrepancy retained). Four original Admin native checks and both new scheduling tests PASS. Render test incorrectly demanded nonzero scroll at standard font1.5/2 even when content fit; corrected test now verifies actual action reachability while retaining strict no-scroll≤1.3 and font/locale assertions. Export copied zero files because UiAutomation command execution does not interpret quoted shell arguments. No Admin visual PASS is inferred; corrected byte-stream export now asserts exact readback. Raw evidence/digests retained under results/ci-run-40027522387.
+
+Upgrade job failed before boot on invalid downloaded API36 image ZIP; zero upgrade checks, trusted release/baseline signing checks PASS. Bounded sdkmanager preflight preserves three attempt logs and fails closed; synthetic success/retry/final failure harness PASS. No shared SDK deletion or weakened assertions.
+
+Source-audited accessibility defect: Admin switches and proposal checkboxes had separate visible text but no associated accessible name on the interactive node. Added localized semantic names only. New worker constructor seam retains the default two-argument WorkManager factory, with synthetic repository injection only in tests. Positive delivery, denied/granted permission, failed scan/revocation/cancellation/scope switch and offline/recovery checks require the next exact-source CI. Live networking/decisions remain disabled.

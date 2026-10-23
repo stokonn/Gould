@@ -1,0 +1,14 @@
+{
+  "sourceCommit": "63f7e2106897401e7da902b0d27066684d5f4abc",
+  "path": "app/build/outputs/apk/debug/app-debug.apk",
+  "bytes": 24140673,
+  "sha256": "34e96605f0b5c0e99be4ac3e78539c8500a4ff3d97294d9d1ae5ad127ecbd12b",
+  "package": "com.opus.piano",
+  "versionName": "0.10.1",
+  "versionCode": 11,
+  "signerSha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+  "zipIntegrity": "PASS",
+  "testCorpusExcluded": "PASS",
+  "sourceHashTiming": "after successful build, compared to committed source; not a CI artifact",
+  "published": false
+}
