@@ -1,0 +1,31 @@
+{
+  "classification": "LOCAL_M1_SOURCE_PUBLICATION_BLOCKED",
+  "sourceCommit": "337847770a579e1f6689c135805ad07a9b2bab19",
+  "branch": "feature/goldberg-0.11-stage-6-api-v1-local",
+  "baseline": "6dd3136269ec7f5932c8c4b3689fb065d4db9105",
+  "push": {
+    "exitCode": 128,
+    "error": "Could not resolve host: github.com"
+  },
+  "remote": {
+    "lookupStatus": 422,
+    "error": "No commit found for SHA: feature/goldberg-0.11-stage-6-api-v1-local",
+    "verifiedNewSha": null
+  },
+  "issueUpdate": {
+    "httpStatus": 403,
+    "error": "Resource not accessible by integration"
+  },
+  "checkpointAppend": {
+    "httpStatus": 403,
+    "error": "Resource not accessible by integration"
+  },
+  "readback": {
+    "issueDescriptionUnchanged": true,
+    "priorCommentsPreserved": true,
+    "comments": 81,
+    "newMarkerCount": 0
+  },
+  "newCheckpointUrl": null,
+  "draft": "## Stage 6 API v1 LOCAL implementation — Milestone1 (PARTIAL integration)\n\nBranch `feature/goldberg-0.11-stage-6-api-v1-local`, source commit `337847770a579e1f6689c135805ad07a9b2bab19`, exact approved baseline `6dd3136269ec7f5932c8c4b3689fb065d4db9105`.\n[Local adapter and evidence](https://github.com/stokonn/Goldberg/tree/337847770a579e1f6689c135805ad07a9b2bab19/spikes/stage6-api-v1-local).\n\n- [x] Isolated local in-process request/response adapter: strict routes/version/body,\n  explicit AuthLocalApi/SessionService/CommunityApi mappings, safe errors,204 logout,\n  correlated IDs and exact DTO projections. No listener or Android wiring.\n- [x] Session challenge/exchange/session/capabilities/refresh/logout executable locally;\n 15m access/7d absolute family/5m challenge, live authorization/revocation; controlled\n  RSA/JWKS exchange tested with maximum60s provider skew.\n- [x] Explicit open and approve/reject/request_changes with independent entity/proposal\n  expectations;200/201/generic409, exact public receipts inside domain transaction,\n  expiry24h from completion, changed intent422, authorization before replay.\n- [x] Decimal int8 reads/strict range rejection, microsecond timestamps and scoped signed\n  cursor codec15m. Unsupported full-int8 writes503 after live auth; safe-number increment\n  exhaustion retains domain409. No narrowing/rounding or full-int8-write claim.\n- [x] Executed106 adapter/wire tests (real services on scripted SQL + scalar/routing\n  units, including27 request fixtures/all8 protocol scenes/controlled RSA),38 relevant\n  T22 regressions and18 planning-verifier tests PASS. Before/after/current source hashes,\n  raw TAP and policy/provenance checks recorded. Zero failures/skips/cancellations.\n- [ ] PostgreSQL preflight EPERM;0 PG bodies. No HTTP/browser/Android/runtime proof.\n  Prior345 executions/313 tests/205 PG-backed bodies preserved, not rerun.\n- [ ] Latest detail/refetch DTO, full-int8 domain writes, actual PostgreSQL/public HTTP\n  verification, client single-flight/account/204 integration remain OPEN.\n- [ ] Public `/v1` compatibility unconfirmed: local/provisional only, no silent `/v2`.\n  G1–G4 unimplemented; all real policies empty/default-deny; no production OAuth/cloud.\n\nG10 CLOSED; G1–G9/G11 integration acceptance BLOCKED;6.12 PARTIAL/T22 LOCAL PASS;\n6.17 NOT FROZEN; no formal6.13–6.18, Stage7B edits, devices, hosted/browser/production,\nmerge/deploy/release. Stage7A FINAL ACCEPTED; X10 unfixed/unverified, owner-deferred\nGould0.12; Stage8 readability/accessibility/touch-target gates retained.\nNext smallest local milestone: bounded authoritative latest-submission detail/refetch\nprojection plus permitted disposable-PG verification of adapter/receipts; preserve all\nremaining version/policy/activation gates. Original security branch/evidence untouched.\n\ncreated by stokonn with love <3\n\nPublication status: source is LOCAL/UNPUBLISHED. Ordinary push failed DNS (Could not resolve host: github.com); connected remote branch lookup returns422, No commit found. No source publication claim, listener or production activation.\n\n<!-- stage6-api-v1-local-m1:337847770a579e1f6689c135805ad07a9b2bab19 -->\n"
+}

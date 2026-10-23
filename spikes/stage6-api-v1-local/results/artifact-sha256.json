@@ -45,5 +45,6 @@
   "t22-regression.tap": "e67ec013857f469facc8f5f6671c3f8255c005a9d560bc5576f0a37f95a20bfe",
   "verification-summary.json": "f486e731f41599baf334ba312f35ec1fd6ae06148f6888478bc3c8228f6144db",
   "verified.tap": "340118d5027052c019b61d7b620fc7e94bb7762bf008d9c29ba29e9d6b8a9e81",
-  "verifier-correction.json": "26ff7a95ddf05cf583d2818b8e18802f964be43b214a16e13deae752bb0b2ce8"
+  "verifier-correction.json": "26ff7a95ddf05cf583d2818b8e18802f964be43b214a16e13deae752bb0b2ce8",
+  "publication-attempt.json": "f95750ee7f7e648be011aba45b73964dd9782b42fad10b11c9e9134b9262399f"
 }

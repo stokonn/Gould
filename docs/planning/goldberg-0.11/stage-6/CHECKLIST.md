@@ -59,6 +59,9 @@ projection for409 recovery, with permitted disposable-PG verification of adapter
 receipts. Numeric full-int8 writes stay a separate tested change. Stop at all remaining
 production, policy, public-version and deployment gates. Publication instructions and
 actual outcomes: docs/ai/STAGE6-API-M1-PUBLICATION.md.
+Publication blocked: normal push DNS error; connected new branch lookup422/no commit.
+Both Issue31 writes denied403; description and81 historical comments unchanged.
+No new checkpoint URL; guarded Fedora source publication remains pending.
 
 
 ## Current — API v1 owner design approval recorded (2026-10-23)

@@ -26,3 +26,14 @@ No test rerun/DB launch in the publisher; no bypass or authentication escalation
 Generated readback stays in `.gradle/stage6-api-m1-publication/`.
 
 created by stokonn with love <3
+
+## Actual attempt — source and checkpoint unpublished
+
+Implementation337847770a579e1f6689c135805ad07a9b2bab19 passed guarded local checks.
+Ordinary push failed exit128 DNS `Could not resolve host: github.com`. Connected
+branch lookup returns422 `No commit found`; no new remote SHA verified. Both Issue31
+writes denied403 `Resource not accessible by integration`. Readback confirms original
+description and81 prior comments unchanged,zero new M1 marker. No checkpoint URL.
+Exact failed attempt/draft retained under package results/publication-attempt.json.
+Final receipt commit keeps implementation source identical to the successful run;
+use its exact final SHA in the guarded commands above on a permitted Fedora host.

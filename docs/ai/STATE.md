@@ -1,3 +1,18 @@
+## Stage 6 API local M1 — publication BLOCKED (2026-10-23)
+
+Implementation commit `337847770a579e1f6689c135805ad07a9b2bab19` verified locally;
+ordinary push failed DNS (`Could not resolve host: github.com`,exit128). Connected
+new-branch lookup returns422 `No commit found`; no new remote SHA verified.
+Issue31 description append and checkpoint comment both denied403 `Resource not
+accessible by integration`. Fresh readback: description unchanged,81 prior comments
+preserved,zero new M1 marker; no checkpoint URL. No permissions/DNS bypass.
+
+Raw attempt/draft: `spikes/stage6-api-v1-local/results/publication-attempt.json`.
+This receipt changes documentation/artifact metadata only; tested implementation
+source remains unchanged. Use the final exact clean SHA with the guarded Fedora
+publisher in docs/ai/STAGE6-API-M1-PUBLICATION.md.106+38 Node tests and18 planning
+verifier tests PASS;0 PG/HTTP/Android bodies. No formal completion/API freeze.
+
 ## Current — Stage 6 API local Milestone 1 (2026-10-23)
 
 **LOCAL IMPLEMENTATION VERIFIED / PROVISIONAL v1 / INTEGRATION NOT ACCEPTED.**
