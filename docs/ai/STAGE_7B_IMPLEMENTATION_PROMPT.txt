@@ -1,0 +1,60 @@
+Goldberg 0.11 — Stage 7B Android Admin — IMPLEMENTATION AUTHORIZED
+
+You are the coding agent for the Goldberg Android project. The owner has approved the complete Stage 7B implementation plan and has NOW expressly authorized implementation. The owner also supplied new visual references and explicitly rejected earlier decorative/ivory/serif mockups. Follow the NEW visual package in docs/design/stage-7b/ as the authoritative visual direction for Stage 7B.
+
+FIRST ACTIONS:
+1. Read AGENTS.md, existing project handoff/checkpoint files, current Stage 7B checklist, relevant GitHub Issue, Stage 6 contracts, and Stage 7A status. Verify branch and repository state. Do not assume historical notes are current.
+2. Inspect docs/design/stage-7b/README.md and DESIGN-SPEC.md, all nine individual PNG mockups and the two user-provided original reference screenshots. The originals are strongest visual evidence; the nine PNGs/SVGs are clean implementation guidance, not production screenshots.
+3. Begin Stage 7B.1: a contract and readiness audit. Verify Stage 6 APIs, authorization, revision checks, cursor pagination, moderation operations, idempotency, immutable audit and contributor status. Report missing contracts explicitly. Do not invent endpoints or bypass the server. Do not deploy or modify backend infrastructure as an undocumented workaround.
+4. After the required contracts are verified, proceed with authorized Android-side implementation in small, tested stages 7B.2–7B.8. If a blocking contract is missing, pause only the affected implementation and provide a precise blocker report/owner decision rather than faking data or behavior.
+
+NON-NEGOTIABLE VISUAL REQUIREMENTS:
+- Minimal dark/Nocturne design matching the two original screenshots: pure black background, charcoal #242424 cards, subtle #292929 borders, white text, muted gray secondary text, sparse accent colors for meaningful statuses only. No cream editorial redesign, gradients, illustrations, heavy shadows or decorative icons.
+- Compact, readable layout, rounded cards, quiet line icons, consistent spacing, same established app branding and typography where practical. Do not recreate ChatGPT UI chrome or chat controls visible outside the screenshot's actual app mockup.
+- Dashboard must contain exactly four stat shortcuts (Pending, Needs info, Approved today, Rejected today) and three destinations (Moderation Queue, Audit Log, Admin Settings). Resume #ID is an optional small second line INSIDE Moderation Queue, never an additional Dashboard card.
+- HARD ACCEPTANCE GATE: Administration Dashboard must fit one normal supported screen WITHOUT VERTICAL OR HORIZONTAL SCROLLING. Validate with actual screenshots on small and standard emulator sizes, system bars/insets, dark/light themes and normal supported font scales. Never achieve fit by clipping controls or reducing text to unreadable sizes. At extreme accessibility scaling, prioritize fully accessible fallback (scroll only if unavoidable) over clipping.
+- Queue/detail/audit/settings MAY scroll. Do not extend the Dashboard with new sections.
+- All nine PNGs are separate screens/states; do not use an image collage as an implementation reference. Illustrative mock numbers are NOT real backend data.
+
+APPROVED FUNCTIONAL SCOPE:
+- Role-gated entry Profile → Administration. Server-verifiable Moderator/Admin only; no extra bottom tab or Android role management.
+- Dashboard: server-backed stats, four smart deep-link shortcuts, on-entry/after-decision/manual refresh, authorized last-known values visibly marked stale, consistent time windows; no polling.
+- Moderation Queue: compact rows, All/Pending/Needs Info plus Re-review and Deferred filters, server-wide debounced search (title/composer/ID/type), cursor pagination (~20 provisional), stable sort, dedup, contextual empty/error states, floating update pill with manual refresh, safe context restoration.
+- Smart Deferred Review: account-scoped, minimal non-sensitive local markers persistent until confirmed resolution or manual removal; collapsed section in Queue, no Dashboard card; revalidate role/proposal/revision before resume, handle logout/revocation safely. Deferred and Re-review are personal UX markers, not backend moderation statuses.
+- Proposal Detail: read-only before/after Smart Comparison, full evidence/sources, integrated revision and information-request timeline; always inspect latest verified server revision.
+- Approve/Reject/Request Changes: explicit contextual confirmation; reason required for rejection; request changes only via server-authorized transition to NEEDS_INFORMATION; no bulk approve; Smart Auto-Next only after confirmed server success.
+- Adaptive Security: fresh role verification, elevated verification for sensitive actions, 10-minute non-sliding trust window invalidated on logout/revocation/restart, separate confirmation for each action.
+- Conflict safety: validate on entry/resume/pre-confirmation, expected revision/state and atomic server checks; inline validation status blocks decisions until success; highlighted old/new diff, guided re-review, catch-up across intermediate revisions when available; never auto-resubmit stale decisions. Repeated conflicts may show a nonblocking stability advisory (~3 confirmed conflicts provisional).
+- Audit: role-scoped server audit, immutable from client perspective, chronological search/filter/pagination, integrated timeline.
+- Notifications: optional in-app/local notifications, opt-in; optional WorkManager approximate 3-hour checks OFF by default and Wi-Fi-only by default; mobile data only with explicit consent; no push or continuous polling.
+- Never embed privileged credentials in APK; no sensitive persistent review drafts; no unverified offline moderation decisions.
+
+IMPLEMENTATION ORDER AND REQUIRED STAGE PURPOSE:
+7B.1 Contract audit — verify actual Stage 6 capabilities and identify blockers.
+7B.2 Security/data foundation — role gates, auth, error/idempotency, minimal account-scoped state.
+7B.3 Dashboard — implement approved 4+3 compact non-scroll layout and screenshot checks.
+7B.4 Queue — server-backed search, filters, pagination, update pill, deferred/resume.
+7B.5 Review/decisions — comparison, evidence, audit timeline, confirmations, server decisions.
+7B.6 Conflict recovery — revision validation, diff, guided re-review, catch-up and advisory.
+7B.7 Audit/notifications/sync — role-safe audit and consent-respecting background work.
+7B.8 Verification/owner acceptance — comprehensive tests, screenshot evidence and review.
+
+For EACH Stage, update the existing checklist with its purpose, concrete tasks, current progress, evidence, blockers and next action. Keep existing GitHub Issue (do not duplicate), AGENTS.md and durable local checkpoint docs synchronized. Create append-only checkpoints at milestones, interruption and before context compaction. Record branch/commit/test details. Use established safe approval behavior: ask only for truly important/high-risk actions. Do not test on owner's physical phone.
+
+TEST/ACCEPTANCE GATES:
+- Role denial/revocation, auth expiration, trust window, cross-account data isolation, no unauthorized audit.
+- Atomic decision, required reason, idempotency/reconciliation of uncertain network outcomes, concurrent revision conflicts, stale confirmation invalidation.
+- Search/filter across all pages, cursor stability/dedup, retry, safe resume and deferred markers, empty/error states.
+- Screenshots of actual emulator UI vs mockups for Dashboard, Queue, Detail, Confirmations, Re-review, Audit, Settings; accessibility, insets, dynamic type, dark/light mode, touch targets, TalkBack.
+- Build, JVM tests, instrumentation, lint, regression tests for Profile, Repertoire, Practice, existing data and upgrade.
+- Do not claim a gate passed unless you actually ran and recorded it.
+
+EXISTING BLOCKERS/RELEASE GATES:
+- Stage 7A has CONDITIONAL acceptance; X10 text-alignment defect OPEN. Do not claim it is fixed or release 0.11 while unresolved. Historical doc commit 576f0d2 on feature/goldberg-0.11-stage-7a is only a reference, verify current state.
+- Stage 6 backend contracts, free-tier operational constraints and legal readiness must be checked. Do not invent a backend or silently broaden scope.
+- Goldberg → Gould rebranding is reserved for 0.12, NOT Stage 7B.
+
+AUTHORIZATION BOUNDARY:
+The owner has authorized Stage 7B Android implementation in this handoff. This is NOT authorization for production backend deployments, destructive migrations, final release/publication, merging to main, or testing on the owner's physical phone. Use existing repository workflow for verified commits and pushes/checkpoints, subject to repository permissions; ask before high-risk actions. Stage 7B owner acceptance and 0.11 release remain separate gates.
+
+NOW: verify project state, perform Stage 7B.1, present contract matrix and blockers, and continue with supported Android implementation. Respect the supplied visuals. Do not invent results or claim release completion.

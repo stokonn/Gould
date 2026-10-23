@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="920" viewBox="0 0 440 920">
+<rect width="440" height="920" fill="#050505"/>
+<text x="22" y="33" font-family="Comic Neue, sans-serif" font-size="13" font-weight="700" fill="#A6A6A6" text-anchor="start">9:41</text>
+<text x="374" y="33" font-family="Comic Neue, sans-serif" font-size="12" font-weight="700" fill="#A6A6A6" text-anchor="start">100%</text>
+<circle cx="35" cy="76" r="23" fill="#242424" stroke="none" stroke-width="1"/>
+<g transform="translate(24 65) scale(0.9)"><path d="M2 5 H22 M2 12 H22 M2 19 H22" fill="none" stroke="#F6F6F6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="220" y="85" font-family="Comic Neue, sans-serif" font-size="29" font-weight="700" fill="#F6F6F6" text-anchor="middle">Goldberg</text>
+<circle cx="405" cy="76" r="23" fill="#242424" stroke="none" stroke-width="1"/>
+<g transform="translate(394 64) scale(1)"><path d="M12 4 v1 M12 11 v2 M12 19 v1" fill="none" stroke="#F6F6F6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<rect x="16" y="120" width="408" height="780" rx="25" fill="#050505" stroke="#292929" stroke-width="1.4"/>
+<text x="35" y="174" font-family="Comic Neue, sans-serif" font-size="31" font-weight="700" fill="#F6F6F6" text-anchor="start">Review proposal</text>
+<text x="36" y="201" font-family="Comic Neue, sans-serif" font-size="16" font-weight="400" fill="#A6A6A6" text-anchor="start">#1042 · Revision 4</text>
+<rect x="35" y="230" width="370" height="155" rx="15" fill="#050505" stroke="#292929" stroke-width="1"/>
+<g transform="translate(54 247) scale(0.8)"><path d="M20 7 A9 9 0 1 0 21 12 M20 2 V8 H14" fill="none" stroke="#F6F6F6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="87" y="269" font-family="Comic Neue, sans-serif" font-size="25" font-weight="700" fill="#F6F6F6" text-anchor="start">Re-review required</text>
+<text x="55" y="309" font-family="Comic Neue, sans-serif" font-size="18" font-weight="400" fill="#A6A6A6" text-anchor="start">This proposal changed during your</text>
+<text x="55" y="337" font-family="Comic Neue, sans-serif" font-size="18" font-weight="400" fill="#A6A6A6" text-anchor="start">previous review. Check the updated</text>
+<text x="55" y="365" font-family="Comic Neue, sans-serif" font-size="18" font-weight="400" fill="#A6A6A6" text-anchor="start">fields before continuing.</text>
+<text x="35" y="426" font-family="Comic Neue, sans-serif" font-size="13" font-weight="700" fill="#A6A6A6" text-anchor="start" letter-spacing="0.5">UPDATED FIELDS</text>
+<rect x="35" y="448" width="370" height="141" rx="15" fill="#242424" stroke="none" stroke-width="1"/>
+<text x="54" y="478" font-family="Comic Neue, sans-serif" font-size="13" font-weight="700" fill="#A6A6A6" text-anchor="start" letter-spacing="0.5">TITLE · UPDATED</text>
+<text x="54" y="520" font-family="Comic Neue, sans-serif" font-size="22" font-weight="400" fill="#F6F6F6" text-anchor="start">Nocturne No. 2</text>
+<line x1="53" y1="512" x2="234" y2="512" stroke="#F6F6F6" stroke-width="1.5"/>
+<g transform="translate(54 542) scale(0.8)"><path d="M4 12 L10 18 L20 5" fill="none" stroke="#61B78A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="83" y="563" font-family="Comic Neue, sans-serif" font-size="18" font-weight="400" fill="#F6F6F6" text-anchor="start">Nocturne in E-flat major, Op. 9 No. 2</text>
+<rect x="35" y="607" width="370" height="111" rx="15" fill="#242424" stroke="none" stroke-width="1"/>
+<text x="54" y="639" font-family="Comic Neue, sans-serif" font-size="13" font-weight="700" fill="#A6A6A6" text-anchor="start" letter-spacing="0.5">SOURCE · UPDATED</text>
+<text x="54" y="674" font-family="Comic Neue, sans-serif" font-size="18" font-weight="400" fill="#F6F6F6" text-anchor="start">New supporting reference provided</text>
+<circle cx="53" cy="759" r="12" fill="#050505" stroke="#292929" stroke-width="2"/>
+<text x="78" y="765" font-family="Comic Neue, sans-serif" font-size="20" font-weight="400" fill="#F6F6F6" text-anchor="start">I have reviewed revision 4</text>
+<rect x="35" y="797" width="370" height="54" rx="22" fill="#171717" stroke="none" stroke-width="1"/>
+<text x="220" y="832" font-family="Comic Neue, sans-serif" font-size="21" font-weight="400" fill="#777777" text-anchor="middle">Complete re-review</text>
+<rect x="173" y="907" width="94" height="4" rx="3" fill="#F6F6F6" stroke="none" stroke-width="1"/>
+</svg>

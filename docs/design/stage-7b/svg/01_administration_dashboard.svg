@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="920" viewBox="0 0 440 920">
+<rect width="440" height="920" fill="#050505"/>
+<text x="22" y="33" font-family="Comic Neue, sans-serif" font-size="13" font-weight="700" fill="#A6A6A6" text-anchor="start">9:41</text>
+<text x="374" y="33" font-family="Comic Neue, sans-serif" font-size="12" font-weight="700" fill="#A6A6A6" text-anchor="start">100%</text>
+<circle cx="35" cy="76" r="23" fill="#242424" stroke="none" stroke-width="1"/>
+<g transform="translate(24 65) scale(0.9)"><path d="M2 5 H22 M2 12 H22 M2 19 H22" fill="none" stroke="#F6F6F6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="220" y="85" font-family="Comic Neue, sans-serif" font-size="29" font-weight="700" fill="#F6F6F6" text-anchor="middle">Goldberg</text>
+<circle cx="405" cy="76" r="23" fill="#242424" stroke="none" stroke-width="1"/>
+<g transform="translate(394 64) scale(1)"><path d="M12 4 v1 M12 11 v2 M12 19 v1" fill="none" stroke="#F6F6F6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<rect x="16" y="120" width="408" height="780" rx="25" fill="#050505" stroke="#292929" stroke-width="1.4"/>
+<text x="35" y="174" font-family="Comic Neue, sans-serif" font-size="31" font-weight="700" fill="#F6F6F6" text-anchor="start">Administration</text>
+<g transform="translate(310 152) scale(0.72)"><path d="M12 2 L21 6 V12 Q21 18 12 22 Q3 18 3 12 V6 Z M9 12 L11 14 L16 9" fill="none" stroke="#A6A6A6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="405" y="170" font-family="Comic Neue, sans-serif" font-size="16" font-weight="400" fill="#A6A6A6" text-anchor="end">Moderator</text>
+<text x="36" y="232" font-family="Comic Neue, sans-serif" font-size="13" font-weight="700" fill="#A6A6A6" text-anchor="start" letter-spacing="0.5">CATALOG OVERVIEW</text>
+<rect x="35" y="252" width="180" height="122" rx="17" fill="#242424" stroke="none" stroke-width="1"/>
+<text x="52" y="286" font-family="Comic Neue, sans-serif" font-size="19" font-weight="400" fill="#A6A6A6" text-anchor="start">Pending</text>
+<g transform="translate(186 333) scale(0.55)"><path d="M4 19 L19 4 M12 4 H19 V11" fill="none" stroke="#A6A6A6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="52" y="345" font-family="Comic Neue, sans-serif" font-size="37" font-weight="700" fill="#F6F6F6" text-anchor="start">24</text>
+<rect x="225" y="252" width="180" height="122" rx="17" fill="#242424" stroke="none" stroke-width="1"/>
+<text x="242" y="286" font-family="Comic Neue, sans-serif" font-size="19" font-weight="400" fill="#A6A6A6" text-anchor="start">Needs info</text>
+<g transform="translate(376 333) scale(0.55)"><path d="M4 19 L19 4 M12 4 H19 V11" fill="none" stroke="#A6A6A6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="242" y="345" font-family="Comic Neue, sans-serif" font-size="37" font-weight="700" fill="#F6F6F6" text-anchor="start">6</text>
+<rect x="35" y="385" width="180" height="122" rx="17" fill="#242424" stroke="none" stroke-width="1"/>
+<text x="52" y="419" font-family="Comic Neue, sans-serif" font-size="19" font-weight="400" fill="#A6A6A6" text-anchor="start">Approved today</text>
+<g transform="translate(186 466) scale(0.55)"><path d="M4 19 L19 4 M12 4 H19 V11" fill="none" stroke="#A6A6A6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="52" y="478" font-family="Comic Neue, sans-serif" font-size="37" font-weight="700" fill="#F6F6F6" text-anchor="start">12</text>
+<rect x="225" y="385" width="180" height="122" rx="17" fill="#242424" stroke="none" stroke-width="1"/>
+<text x="242" y="419" font-family="Comic Neue, sans-serif" font-size="19" font-weight="400" fill="#A6A6A6" text-anchor="start">Rejected today</text>
+<g transform="translate(376 466) scale(0.55)"><path d="M4 19 L19 4 M12 4 H19 V11" fill="none" stroke="#A6A6A6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="242" y="478" font-family="Comic Neue, sans-serif" font-size="37" font-weight="700" fill="#F6F6F6" text-anchor="start">3</text>
+<rect x="35" y="539" width="370" height="121" rx="17" fill="#050505" stroke="#292929" stroke-width="1.5"/>
+<g transform="translate(53 562) scale(0.85)"><path d="M4 5 H20 M4 12 H20 M4 19 H20" fill="none" stroke="#F6F6F6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="87" y="583" font-family="Comic Neue, sans-serif" font-size="25" font-weight="700" fill="#F6F6F6" text-anchor="start">Moderation Queue</text>
+<text x="386" y="584" font-family="Comic Neue, sans-serif" font-size="28" font-weight="400" fill="#A6A6A6" text-anchor="middle">&gt;</text>
+<text x="55" y="631" font-family="Comic Neue, sans-serif" font-size="18" font-weight="400" fill="#A6A6A6" text-anchor="start">Resume #1042</text>
+<text x="382" y="631" font-family="Comic Neue, sans-serif" font-size="18" font-weight="400" fill="#F6F6F6" text-anchor="end">Continue &gt;</text>
+<rect x="35" y="675" width="370" height="64" rx="16" fill="#050505" stroke="#292929" stroke-width="1.5"/>
+<text x="54" y="714" font-family="Comic Neue, sans-serif" font-size="24" font-weight="700" fill="#F6F6F6" text-anchor="start">     Audit Log</text>
+<text x="386" y="714" font-family="Comic Neue, sans-serif" font-size="28" font-weight="400" fill="#A6A6A6" text-anchor="middle">&gt;</text>
+<g transform="translate(52 697) scale(0.9)"><path d="M12 3 A9 9 0 1 0 21 12 M12 6 V12 L17 15" fill="none" stroke="#F6F6F6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<rect x="35" y="751" width="370" height="64" rx="16" fill="#050505" stroke="#292929" stroke-width="1.5"/>
+<text x="54" y="790" font-family="Comic Neue, sans-serif" font-size="24" font-weight="700" fill="#F6F6F6" text-anchor="start">     Admin Settings</text>
+<text x="386" y="790" font-family="Comic Neue, sans-serif" font-size="28" font-weight="400" fill="#A6A6A6" text-anchor="middle">&gt;</text>
+<g transform="translate(52 774) scale(0.9)"><path d="M12 3 V6 M12 18 V21 M3 12 H6 M18 12 H21 M6 6 L8 8 M16 16 L18 18 M18 6 L16 8 M8 16 L6 18 M12 7 A5 5 0 1 0 12 17 A5 5 0 1 0 12 7" fill="none" stroke="#F6F6F6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="40" y="865" font-family="Comic Neue, sans-serif" font-size="15" font-weight="400" fill="#A6A6A6" text-anchor="start">Last updated 10:24</text>
+<g transform="translate(374 845) scale(0.85)"><path d="M20 7 A9 9 0 1 0 21 12 M20 2 V8 H14" fill="none" stroke="#A6A6A6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<rect x="173" y="907" width="94" height="4" rx="3" fill="#F6F6F6" stroke="none" stroke-width="1"/>
+</svg>

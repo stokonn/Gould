@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="920" viewBox="0 0 440 920">
+<rect width="440" height="920" fill="#050505"/>
+<text x="22" y="33" font-family="Comic Neue, sans-serif" font-size="13" font-weight="700" fill="#A6A6A6" text-anchor="start">9:41</text>
+<text x="374" y="33" font-family="Comic Neue, sans-serif" font-size="12" font-weight="700" fill="#A6A6A6" text-anchor="start">100%</text>
+<circle cx="35" cy="76" r="23" fill="#242424" stroke="none" stroke-width="1"/>
+<g transform="translate(24 65) scale(0.9)"><path d="M2 5 H22 M2 12 H22 M2 19 H22" fill="none" stroke="#F6F6F6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="220" y="85" font-family="Comic Neue, sans-serif" font-size="29" font-weight="700" fill="#F6F6F6" text-anchor="middle">Goldberg</text>
+<circle cx="405" cy="76" r="23" fill="#242424" stroke="none" stroke-width="1"/>
+<g transform="translate(394 64) scale(1)"><path d="M12 4 v1 M12 11 v2 M12 19 v1" fill="none" stroke="#F6F6F6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<rect x="16" y="120" width="408" height="780" rx="25" fill="#050505" stroke="#292929" stroke-width="1.4"/>
+<text x="35" y="174" font-family="Comic Neue, sans-serif" font-size="31" font-weight="700" fill="#F6F6F6" text-anchor="start">Review proposal</text>
+<text x="36" y="201" font-family="Comic Neue, sans-serif" font-size="16" font-weight="400" fill="#A6A6A6" text-anchor="start">#1042 · Revision 4</text>
+<rect x="323" y="215" width="83" height="31" rx="16" fill="#4A3821" stroke="none" stroke-width="1"/>
+<text x="364.5" y="236" font-family="Comic Neue, sans-serif" font-size="14" font-weight="400" fill="#F6F6F6" text-anchor="middle">Pending</text>
+<text x="35" y="278" font-family="Comic Neue, sans-serif" font-size="25" font-weight="700" fill="#F6F6F6" text-anchor="start">Præludium in C Major</text>
+<text x="35" y="305" font-family="Comic Neue, sans-serif" font-size="16" font-weight="400" fill="#A6A6A6" text-anchor="start">J. S. Bach · Submitted yesterday</text>
+<text x="90.5" y="353" font-family="Comic Neue, sans-serif" font-size="16" font-weight="700" fill="#F6F6F6" text-anchor="middle">Comparison</text>
+<line x1="35" y1="365" x2="146" y2="365" stroke="#F6F6F6" stroke-width="2"/>
+<text x="183.0" y="353" font-family="Comic Neue, sans-serif" font-size="16" font-weight="400" fill="#A6A6A6" text-anchor="middle">Details</text>
+<text x="263.0" y="353" font-family="Comic Neue, sans-serif" font-size="16" font-weight="400" fill="#A6A6A6" text-anchor="middle">History</text>
+<text x="353.0" y="353" font-family="Comic Neue, sans-serif" font-size="16" font-weight="400" fill="#A6A6A6" text-anchor="middle">Evidence</text>
+<text x="35" y="404" font-family="Comic Neue, sans-serif" font-size="13" font-weight="700" fill="#A6A6A6" text-anchor="start" letter-spacing="0.5">CURRENT</text>
+<text x="232" y="404" font-family="Comic Neue, sans-serif" font-size="13" font-weight="700" fill="#A6A6A6" text-anchor="start" letter-spacing="0.5">PROPOSED</text>
+<text x="35" y="445" font-family="Comic Neue, sans-serif" font-size="15" font-weight="400" fill="#A6A6A6" text-anchor="start">Title</text>
+<rect x="35" y="454" width="175" height="48" rx="11" fill="#242424" stroke="none" stroke-width="1"/>
+<rect x="227" y="454" width="178" height="48" rx="11" fill="#1B2D25" stroke="none" stroke-width="1"/>
+<text x="47" y="484" font-family="Comic Neue, sans-serif" font-size="14" font-weight="400" fill="#F6F6F6" text-anchor="start">Præludium in C Major</text>
+<text x="239" y="484" font-family="Comic Neue, sans-serif" font-size="14" font-weight="400" fill="#61B78A" text-anchor="start">Prelude in C Major</text>
+<text x="35" y="542" font-family="Comic Neue, sans-serif" font-size="15" font-weight="400" fill="#A6A6A6" text-anchor="start">Composer</text>
+<rect x="35" y="551" width="175" height="48" rx="11" fill="#242424" stroke="none" stroke-width="1"/>
+<rect x="227" y="551" width="178" height="48" rx="11" fill="#1B2D25" stroke="none" stroke-width="1"/>
+<text x="47" y="581" font-family="Comic Neue, sans-serif" font-size="14" font-weight="400" fill="#F6F6F6" text-anchor="start">Johann Sebastian Bach</text>
+<text x="239" y="581" font-family="Comic Neue, sans-serif" font-size="14" font-weight="400" fill="#61B78A" text-anchor="start">J. S. Bach</text>
+<text x="35" y="639" font-family="Comic Neue, sans-serif" font-size="15" font-weight="400" fill="#A6A6A6" text-anchor="start">Catalogue</text>
+<rect x="35" y="648" width="175" height="48" rx="11" fill="#242424" stroke="none" stroke-width="1"/>
+<rect x="227" y="648" width="178" height="48" rx="11" fill="#242424" stroke="none" stroke-width="1"/>
+<text x="47" y="678" font-family="Comic Neue, sans-serif" font-size="14" font-weight="400" fill="#F6F6F6" text-anchor="start">BWV 846</text>
+<text x="239" y="678" font-family="Comic Neue, sans-serif" font-size="14" font-weight="400" fill="#F6F6F6" text-anchor="start">BWV 846</text>
+<text x="35" y="736" font-family="Comic Neue, sans-serif" font-size="15" font-weight="400" fill="#A6A6A6" text-anchor="start">Key</text>
+<rect x="35" y="745" width="175" height="48" rx="11" fill="#242424" stroke="none" stroke-width="1"/>
+<rect x="227" y="745" width="178" height="48" rx="11" fill="#1B2D25" stroke="none" stroke-width="1"/>
+<text x="47" y="775" font-family="Comic Neue, sans-serif" font-size="14" font-weight="400" fill="#F6F6F6" text-anchor="start">C major</text>
+<text x="239" y="775" font-family="Comic Neue, sans-serif" font-size="14" font-weight="400" fill="#61B78A" text-anchor="start">C Major</text>
+<rect x="35" y="826" width="370" height="46" rx="13" fill="#242424" stroke="#292929" stroke-width="1"/>
+<text x="220" y="856" font-family="Comic Neue, sans-serif" font-size="17" font-weight="700" fill="#F6F6F6" text-anchor="middle">Review full proposal  v</text>
+<rect x="173" y="907" width="94" height="4" rx="3" fill="#F6F6F6" stroke="none" stroke-width="1"/>
+</svg>
