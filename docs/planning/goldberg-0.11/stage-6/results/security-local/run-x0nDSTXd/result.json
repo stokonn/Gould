@@ -1,0 +1,38 @@
+{
+  "counts": {
+    "focused.tap": {
+      "tests": 27,
+      "pass": 27,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "unit.tap": {
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "t22.tap": {
+      "tests": 38,
+      "pass": 38,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "contract.tap": {
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "summaryErrors": [],
+  "checksOrTestsFailed": false,
+  "postgresBlocked": false,
+  "postgresFreshBodies": "see unchanged PostgreSQL runner outputs",
+  "sourceUnchanged": true,
+  "acceptance": "PARTIAL; see threat matrix, successful probes do not close all threats"
+}

@@ -10,9 +10,9 @@
   "files": {
     "docs/planning/goldberg-0.11/stage-6/API-CONTRACTS.md": "251c5ae7d36a2963547299a8fb6c78c6edabb586b816c311f4cf0e0e1ad4b944",
     "docs/planning/goldberg-0.11/stage-6/AUTH.md": "860536c6a0265022b5da032c4d256520a198e15d5349cc5a417b7ea09ce6d188",
-    "docs/planning/goldberg-0.11/stage-6/HANDOFF-STAGE7.md": "5d46961d2564f8517ca00ac2da5dcabb50ef7f196c6bbad8f8eac6a111bc80a7",
-    "docs/planning/goldberg-0.11/stage-6/STAGE7B-CONTRACT-READINESS.md": "d6c6f5b6c682f2298e845b5c1521062da089a0e71b1b272b2a63191bd485eae1",
-    "docs/planning/goldberg-0.11/stage-6/T22-INVESTIGATION.md": "c5a14f6c8186cba8ea9e1b661baa9751d77eeea085c65d52edc0706da516e1b1",
+    "docs/planning/goldberg-0.11/stage-6/HANDOFF-STAGE7.md": "358afb59d708c0554cad939e041499930f6887d385800d056530cae9d85503d9",
+    "docs/planning/goldberg-0.11/stage-6/STAGE7B-CONTRACT-READINESS.md": "92951dcf17af9f9453e5d0ee5b0c86d055b5b4a9630b806a67309a6bb2fdabc7",
+    "docs/planning/goldberg-0.11/stage-6/T22-INVESTIGATION.md": "a737b9139b70a63e457abd8045f3a53fabfe5c6ca1054f80fad92572caa6c38b",
     "docs/planning/goldberg-0.11/stage-6/THREAT-MODEL.md": "c2cb19591c8b3414976729c8f56d9dae87016179a0fd16c4b296603fb203a623",
     "spikes/stage6-auth-local/src/authorization.mjs": "1867ccf656011ad1fb9d291e066a1876ac4945ac7e9843acc40c455409100d63",
     "spikes/stage6-auth-local/src/errors.mjs": "5839b3819c8cad9ea944e5a904082b153996d28fc5f920e60c698d5e2e358d61",
@@ -44,13 +44,13 @@
   "fixtureFiles": {
     "README.md": "3d820dc4120a1d5e1d931e61b7eaa94b38be5b830be457747e3a453bc4e1b923",
     "fixtures.json": "4f1b28816beb73003b507b8aa13d56670616b4d96cef0a45d262836be06bb3b9",
-    "readiness.json": "7aef3acb2956539985db5bc8cef3a523b68a124916d76c4bb1ec7c37745272c7",
+    "readiness.json": "22fd1a5e4024973d8c326ae63db99853654d662bc648335e81f6f5ec6b505e16",
     "stage7b-comparison/README.md": "aa25acafda15627db06942354030a2c007b7032191fefa20c1040ae80481c240",
     "stage7b-comparison/fixtures.json": "7dfd5fae063f15406443b0740140a8891c1412b5e1b4d119cce62e2c0695be70",
     "stage7b-comparison/mapping-proposal.json": "3fe8bad09b8d60c94d16fb5ff1b7b18a385de4dc738636998407e852c3384957",
     "stage7b-comparison/source-provenance.json": "e683c58efb1d61f248e326d1d4a81fd9dcd0e133d99e804d343d54e92150c0e0",
     "stage7b-readonly-source-sha256.json": "b8d454bd86e4c01d80104c1c5e65d957333c7b1aafbdd3bcc78744fd047f0d39"
   },
-  "fixtureSetHash": "7f8dc740452c1b3125ed2eabbbff1da5d228a6bde367c27525398e9f96c5c4bc",
-  "sourceSetHash": "537ef3048037ecfc0447ad9862608605bcfe51f417979c3308f4ea446bbd55fc"
+  "fixtureSetHash": "3acb20517c0c12ca67f91df5be0c46f7179f9b74bf44bc3939c15d3f3a1a2792",
+  "sourceSetHash": "8f101a926d6aad2d58da533ff240967c5d7222acf91d6e9ff4e76b826e273e74"
 }

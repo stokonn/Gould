@@ -185,5 +185,16 @@
       "approvalRequirement": "Owner: real field/source/license policy and DTO validation; local T22 patch explicitly approved, not a license or HTTP approval.",
       "verificationStatus": "BLOCKED"
     }
-  ]
+  ],
+  "postT22LocalVerification": {
+    "testedSource": "6d0abad3decf0b724c0e00f1b4e270bf8d244fba",
+    "wrapper": "run-x0nDSTXd",
+    "nested": "run-TEmZzZQg",
+    "executions": 345,
+    "testsCountingRepeatedUnitSuiteOnce": 313,
+    "databaseBackedBodies": 205,
+    "T22": "LOCAL_PASS",
+    "HTTP": "UNEXECUTED; no freeze or integration approval",
+    "dependencies": "G10 remains closed; G1-G9/G11 blocked for real integration"
+  }
 }

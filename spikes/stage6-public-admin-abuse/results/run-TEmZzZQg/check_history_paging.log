@@ -1,0 +1,2 @@
+PASS: 106 sessions across 4 pages, equal timestamps, duplicate parts, legacy attribution, catalogue filtering, newer insert and empty result
+PASS: untimed legacy association visible once; original time unchanged

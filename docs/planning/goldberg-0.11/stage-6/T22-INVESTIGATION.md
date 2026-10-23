@@ -1,10 +1,24 @@
 # T22 — reproduced routing discrepancy and approved local correction
 
-**Owner decision recorded; local correction verified; T22 PARTIAL pending updated
-PostgreSQL execution.** No HTTP listener, browser or hosted endpoint was tested.
+**T22 LOCAL PASS: owner-approved correction verified in version3 Fedora PostgreSQL
+and routing/model tests. Overall6.12 PARTIAL.** No HTTP listener, browser or hosted endpoint was tested.
 The observed “HTTP400/403” values were response status numbers from in-process
 adapters, not actual HTTP exchanges. Published e7dc7ea/checkpoint6369071469 and all
 original FAIL evidence remain intact.
+
+## Post-patch local acceptance evidence
+
+Owner-tested6d0abad: outer run-x0nDSTXd108 PASS + nested PG17.11 run-TEmZzZQg237
+PASS =345 executions/313 tests counting repeated32 suite once.205 database-backed
+bodies include explicit handler/admin audit403, live self-grant/escalation/revocation
+and SQL immutable-history restrictions.38 routing/scripted-SQL cases separately
+verify malformed400, registered auth401 and denied403 without protected writes.
+Nested exit0, exact stdout linkage,82 source hashes, five checks in both runners
+and retained container-removal output verified. No inference solely from availability.
+
+All explicitly approved LOCAL T22 cases now have executed evidence: local PASS.
+No HTTP listener/hosted/Android acceptance is claimed. Earlier119-test/pending-PG
+and original FAIL records below remain point-in-time history, not current blockers.
 
 ## Cause and contract review
 
@@ -60,9 +74,9 @@ denied403 without dispatch. Own-property lookup prevents prototype names becomin
 handlers. The old array-to-property-key coercion could reach a registered handler
 (whose authorization still denied access); the approved type guard rejects it400.
 
-## Executed evidence and limits
+## Historical patch-investigation evidence (superseded by v3 above)
 
-Final current tests:38 T22 +11 shared contract +27 security +32 unit =108 Node tests;
+At the patch checkpoint:38 T22 +11 shared contract +27 security +32 unit =108 Node tests;
 11 Python report regressions separately, **119 PASS total**, zero failures/skips/
 cancellations in final runs. Raw logs: results/security-local/t22-investigation/.
 The T22 suite calls real routing, SessionService, Authorization, AdminService and
@@ -70,10 +84,10 @@ Idempotency over explicitly scripted SQL. It is NOT physical PostgreSQL evidence
 The existing pre-patch host296 executions/264 tests retain real SQL audit immutability,
 role restrictions, rollback and replay proof for their original exact source.
 
-Fresh updated PostgreSQL suites:0 bodies, agent loopback preflight EPERM. The three
+At that earlier agent checkpoint, updated PostgreSQL suites had0 bodies due loopback EPERM; the owner has now executed them successfully as recorded above. The three
 baseline test files change only absent-operation status assertions; their historical
 logs/source hashes remain bound to the old commits, not relabeled as post-patch runs.
-Real local PG17.11 rerun is required before full T22 acceptance. HTTP binding and
+The current real PG17.11 run now satisfies local T22 acceptance. HTTP binding and
 client/server integration remain unapproved/unexecuted.
 
 Retained intermediate failures: initial30/33 due an overly broad harness no-write

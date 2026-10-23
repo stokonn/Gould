@@ -1,0 +1,107 @@
+{
+  "counts": {
+    "outer": {
+      "focused.tap": {
+        "tests": 27,
+        "pass": 27,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "unit.tap": {
+        "tests": 32,
+        "pass": 32,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "t22.tap": {
+        "tests": 38,
+        "pass": 38,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "contract.tap": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    "nested": {
+      "auth-regression.tap": {
+        "tests": 50,
+        "pass": 50,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "handlers-regression.tap": {
+        "tests": 87,
+        "pass": 87,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "schema-regression.tap": {
+        "tests": 34,
+        "pass": 34,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "postgres.tap": {
+        "tests": 34,
+        "pass": 34,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "unit.tap": {
+        "tests": 32,
+        "pass": 32,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "successfulExecutions": 345,
+  "testsCountingRepeated32SuiteOnce": 313,
+  "databaseBackedBodies": 205,
+  "nestedExit": 0,
+  "removedContainer": "goldberg-public-admin-abuse-3645015",
+  "launchedContainerId": "d6f75958c0decbcf33075e28ab273a09ee26720096e5f19a8a9ca9361814c804",
+  "T22": "LOCAL_PASS under explicit owner-approved clarification; no HTTP/hosted claim",
+  "overall": "PARTIAL; other local/integration gates OPEN",
+  "requiredPhysicalTests": {
+    "auth-regression.tap": [
+      "T22 admin cannot self-grant; operator capability/role stays outside application roles",
+      "T9/T22 public database role has no private-table or privileged-function access",
+      "T9/T22 local transport exposes no audit mutation or arbitrary RPC, even to admin",
+      "self-grant and self-suspension cannot bypass guards using uppercase UUID spellings"
+    ],
+    "handlers-regression.tap": [
+      "T18 immutable publication/audit/review/feed; exported chain tamper detected; no audit mutation adapter"
+    ],
+    "postgres.tap": [
+      "admin audit paginates numerically with hash head and has no mutation endpoint",
+      "role/suspension integration reuses live Auth, denies escalation, self grant and revoked replay"
+    ],
+    "schema-regression.tap": [
+      "immutable revision, published revision, review, audit and feed reject UPDATE/DELETE/TRUNCATE"
+    ]
+  },
+  "testedHead": "6d0abad3decf0b724c0e00f1b4e270bf8d244fba",
+  "sourceHashes": 82,
+  "currentEvidenceToolEdits": [
+    "contracts/admin/v1/readiness.json",
+    "contracts/admin/v1/source-provenance.json",
+    "spikes/stage6-security-local/README.md",
+    "spikes/stage6-security-local/build-matrix.py",
+    "spikes/stage6-security-local/publish-host.py"
+  ],
+  "cleanupQualification": "Removal stdout and nested exit0 verified; not a new live Podman inventory check"
+}

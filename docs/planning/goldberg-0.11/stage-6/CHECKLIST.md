@@ -1503,3 +1503,44 @@ PARTIAL after explicit owner-approved local correction; G10 closed, G1–G9/G11
 blocked for real integration. No HTTP freeze, Stage7B edit, emulator, hosted changes,
 merge/release or6.13–6.18. Exact next action: publish current scope from permitted
 host and obtain current real PostgreSQL regression evidence plus shared decisions.
+
+## Stage6.12 — post-T22 Fedora version3 VERIFIED; T22 LOCAL PASS, overall PARTIAL
+
+Published/tested base `6d0abad3decf0b724c0e00f1b4e270bf8d244fba` independently read
+back on the existing security branch; Issue31 checkpoint6370125421 preserved.
+Purpose: reconcile the new actual post-patch PostgreSQL execution and T22 criteria,
+not change service behavior or activate public/client integration.
+
+- [x] Exact outer run-x0nDSTXd:27 focused +32 unit +38 T22 +11 contract =108 PASS.
+- [x] Matching nested run-TEmZzZQg PG17.11:50 Auth +87 handler +34 schema +34
+  integration +32 unit =237 PASS. **345 successful executions;313 tests counting
+  repeated32 unit suite once;205 PostgreSQL-backed bodies.** Zero failures/skips/
+  cancellations across nine TAPs; model/fixture tests remain distinctly labeled.
+- [x] Explicit nested exit0, empty summaryErrors, successful outer flags, exact
+  nested stdout linkage; all five checks PASS in both runners. All82 at-run source
+  hashes matched before reconciliation edits and immutable31 raw artifacts hashed.
+- [x] Removal output names goldberg-public-admin-abuse-3645015; container ID/version
+  retained. No new live inventory pass is claimed. All previous runs/FAIL findings
+  and pre-patch296/264 baseline preserved without deletion or relabeling.
+- [x] T22 LOCAL PASS: actual handler/admin assertions require403 on absent audit edit;
+  live self-grant/revocation/escalation and physical SQL immutable-history guards
+  executed.38 routing/service models separately verify approved400/401/403 cases.
+  No HTTP listener/hosted/Android assertion inferred from local execution.
+- [x] Current matrix14 local PASS/6 PARTIAL/2 NOT TESTED. Browser, SSRF fetching,
+  restore/RPO, network privacy, Android runtime and hosted portions remain OPEN.
+- [x] Stage7B readiness reconciled: G10 remains closed by pinned Android boundary;
+  G1–G9/G11 remain BLOCKED for real integration. Corpus captures/proposals retain
+  original qualifications and source identities; no public API freeze or activation.
+- [x] Evidence verifier/reporting regression tests executed separately; raw results
+  in results/security-local/post-t22-tools/. No service/SQL/Android code changes.
+- [ ] Normal source push/exact remote readback and one new factual Issue31 checkpoint
+  for this reconciliation; record actual publication separately.
+
+Current branch `verify/goldberg-0.11-stage-6-12-local`; current commit follows the
+verified6d0abad ancestor. Exact source binding is to6d0abad, with only specifically
+identified evidence/index/publication/documentation metadata changed afterward.
+Reports: LOCAL-SECURITY-MATRIX.md, T22-INVESTIGATION.md, STAGE7B-CONTRACT-READINESS.md,
+post-t22-independent-verification.json. Next: publish verified evidence normally,
+then resolve G1–G9/G11 decisions and remaining acceptance under proper authorization.
+Formal6.12 PARTIAL; no6.13–6.18, hosted/OAuth/real data/paid, emulator/phone, Stage7B
+writes, merge/tag/release or6.17 acceptance. Successful v3 PG run need not be repeated.

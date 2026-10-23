@@ -1,6 +1,6 @@
 # Stage6 → Stage7B contract readiness — local audit only
 
-**PARTIAL; not6.17 API freeze.** Source baseline e7dc7ea; owner-approved local T22
+**Overall PARTIAL; T22 LOCAL PASS, not6.17 API freeze.** Source baseline e7dc7ea; owner-approved local T22
 routing patch is the only service behavior change. Stage7B actual uncommitted
 working bytes inspected read-only and hashed; legacy C6 is not silently promoted
 into the current candidate. See contracts/admin/v1/ for versioned synthetic cases.
@@ -8,12 +8,22 @@ into the current candidate. See contracts/admin/v1/ for versioned synthetic case
 Local readiness:30 actual in-process/scripted-storage captures,11 inactive proposals,
 and29 preserved authored Stage7B comparison scenes. No PostgreSQL/HTTP claim from
 these captures. Existing host296 evidence remains historical for its exact source.
-Fresh updated PostgreSQL regression execution is still required after routing fix.
+Post-patch Fedora version3 regression proof is now verified: outer108 + nested237 =345 executions,313 tests counting repeated units once,205 database-backed bodies. This closes T22 locally, not shared public HTTP integration.
 
 G10 is CLOSED on Android and compatible with the local-only backend. G1–G9/G11
 remain BLOCKED for real integration; approved bounded fallback UX does not invent
 missing endpoints. The local fixture corpus is ready for explicit cross-client
 review/testing, not activation.
+
+## Post-T22 Fedora v3 evidence reconciliation
+
+Tested source6d0abad, outer run-x0nDSTXd and nested run-TEmZzZQg are now verified:
+345 successful executions/313 tests counting repeated unit suite once;205 physical
+PostgreSQL-backed bodies. Explicit nested exit0,82 source hashes and container removal
+output checked. T22 LOCAL PASS under the owner-approved local clarification. All
+G1–G9/G11 integration dependencies below remain BLOCKED; G10 stays CLOSED. No new
+wire contract, fixture activation, server endpoint or Android work. Any earlier
+pending-PostgreSQL text below is historical preparation context, superseded here.
 
 ## G1 — BLOCKED
 
@@ -134,8 +144,7 @@ Unauthorized and403 to Forbidden; only401/403 invoke onAccessDenied and invalida
 local access/trust. Therefore the former absent-route400 was misleading validation
 UX, not demonstrated privilege escalation. The approved403 follows default-deny;
 Android must not reinterpret403 as success or retry by changing body/key.
-T22's published FAIL/raw logs remain preserved; updated local checks and owner
-approval do not substitute fresh PostgreSQL/HTTP acceptance. Malformed input remains
+T22's published FAIL/raw logs remain preserved; post-patch PostgreSQL assertions now pass; no HTTP binding or integration acceptance is implied. Malformed input remains
 400, and no audit-edit/bootstrap endpoint is created.
 
 ## Safe work now / still disabled
@@ -149,8 +158,8 @@ catalogue values, double-count audit transitions or enable real networking/actio
 
 Before integration: owner-approved G5/G6/G7 DTO and session binding, G8/G9 numeric/
 audit/time rules, G11 validation/source policy; implement approved G1–G4 functionality
-under separate scope; shared backend/client fixture contract tests, fresh real-local
-PostgreSQL rollback/auth/replay tests, future authorized HTTP/error/cursor tests,
+under separate scope; shared backend/client fixture contract tests after an approved binding, future authorized
+HTTP/error/cursor tests (current local PostgreSQL rollback/auth/replay proof is verified),
 and separately permitted Android runtime/upgrade/UI evidence. No emulator in this
 milestone. Hosted/OAuth/collection gates remain separate. No6.13–6.18 started.
 

@@ -4,6 +4,7 @@ import argparse,hashlib,json,re,subprocess,tempfile
 from verified_evidence import verify_host_evidence,verify_historical_sources,APPROVED_ROUTING_EDITS
 from verify_contract import check as verify_contract
 from tap_report import parse_tap
+from post_t22_evidence import verify as verify_post_t22
 ROOT=Path(__file__).resolve().parents[2]
 BRANCH='verify/goldberg-0.11-stage-6-12-local'
 REPO='stokonn/Goldberg'
@@ -30,14 +31,16 @@ def verify(expected):
  manifest(ROOT,ROOT/'docs/planning/goldberg-0.11/stage-6/results/android-local/source-sha256.json')
  manifest(ROOT,EVIDENCE/'current-verification-tools-sha256.json')
  verify_host_evidence(ROOT)
+ verify_post_t22(ROOT)
+ tool_log=(EVIDENCE/'post-t22-tools/unittest-final.log').read_text();require('Ran 17 tests' in tool_log and '\nOK\n' in tool_log,'post-T22 verifier regressions differ')
  verify_contract(check_client_worktree=False)
  current=EVIDENCE/'t22-investigation'
  for name,count in [('verified-t22.tap',38),('verified-contract.tap',11),('verified-focused.tap',27),('verified-unit.tap',32)]:parse_tap(current/name,count,True)
  report=(current/'verified-report.log').read_text();require('Ran 11 tests' in report and '\nOK\n' in report,'current reporting regressions differ')
  require(json.loads((current/'OWNER-APPROVAL.json').read_text())['approval']=='EXPLICIT_OWNER_APPROVED','owner decision not recorded')
  matrix=json.loads((EVIDENCE/'coverage.json').read_text())
- require(matrix['counts']=={'PASS':13,'PARTIAL':7,'NOT TESTED':2},'threat findings differ')
- require(matrix['rows'][-1]['localStatus']=='PARTIAL','T22 must remain pending real PostgreSQL/HTTP verification')
+ require(matrix['counts']=={'PASS':14,'PARTIAL':6,'NOT TESTED':2},'threat findings differ')
+ require(matrix['rows'][-1]['localStatus']=='PASS','T22 local status must match post-patch executed evidence')
  require(not command('git','diff','bcc779685d79e99451796b3fa45657b3bca8dd99',expected,'--','app','scripts'),'unexpected Android/repository script changes')
 
 def comments():
@@ -68,46 +71,44 @@ def main():
  marker=f'<!-- stage6-security-local-published:{expected} -->'
  matches=[key for key,body in history.items() if marker in body]
  require(len(matches)<=1,'duplicate marker already exists; inspect without creating another')
- body=f'''## Stage 6.12 — owner-approved T22 correction and Stage7B contract handoff (PARTIAL)
+ body=f'''## Stage 6.12 — post-T22 Fedora v3 verified; T22 LOCAL PASS, overall PARTIAL
 
 Branch `{BRANCH}`; exact remote HEAD `{expected}` verified after normal push.
-Published baseline e7dc7ea and checkpoint6369071469 preserved; no history rewrite.
+Owner-tested published source `6d0abad3decf0b724c0e00f1b4e270bf8d244fba` preserved.
 
-- [x] Reproduced old composed400 before auth/dispatch versus Auth adapter403.
-  Owner explicitly approved: malformed/non-string/empty operation400; well-formed
-  unregistered audit/bootstrap operation403 without dispatch; registered missing/
-  invalid session401; capability/self-grant403. No privileged endpoint added.
-- [x] Applied approved local patch;38 focused real-service/scripted-SQL checks PASS.
-  Current27 security +32 unit +11 shared-contract +11 reporting regressions PASS:
-  **119 executed local tests,0 failed/skipped/cancelled in final runs.** Earlier
-  harness failures retained; no protected role/audit mutation observed. This is not
-  actual HTTP or current PostgreSQL execution.
-- [x] Owner-confirmed prior PG17.11 baseline296 executions/264 tests counting the
-  repeated32 suite once preserved. It is pre-patch evidence, not a new regression
-  run against the changed routing assertions. Original manifests checked via pinned
-  history for explicitly approved changes; current code/corpus hashes recorded.
-- [x] T22 now PARTIAL after explicit justified owner decision and local checks;
-  original FAIL evidence preserved. Matrix13 local PASS/7 PARTIAL/2 NOT TESTED.
-- [x] Stage6→7B handoff compares normative design/current backend/actual Android/
-  unapproved proposals acrossG1–G11. G10 remains closed on Android (read-only static
-  compatibility); G1–G9/G11 blocked for real integration. No Stage7B files changed.
-- [x] Shared versioned corpus:30 actual in-process/scripted-storage captures +11
-  inactive proposals +29 preserved authored Stage7B comparison scenes. All synthetic,
-  no HTTP binding, no API freeze. Exact provenance and fixture hashes recorded.
-- [ ] Updated real PostgreSQL suites not executed here: socket preflightEPERM,
-  zero database bodies. Re-run new assertions on permitted local host.
-- [ ] G1–G4 server functionality andG5–G9/G11 contract/implementation decisions;
-  hosted/browser/fetch/restore/network-privacy/Android-runtime acceptance OPEN.
+- [x] Outer run-x0nDSTXd:27 focused +32 unit +38 T22 +11 contract =108 PASS.
+- [x] Matching nested PG17.11 run-TEmZzZQg:50 Auth +87 handler +34 schema
+  +34 integration +32 unit =237 PASS. **345 successful executions;313 tests
+  counting the repeated32 unit suite once;205 PostgreSQL-backed bodies.**
+  Zero failures/skips/cancellations across all nine TAP files.
+- [x] Explicit nested exit0; outer summaryErrors=[], checksOrTestsFailed=false,
+  postgresBlocked=false, sourceUnchanged=true; all five checks PASS in both runners.
+  Exact stdout linkage,82 at-run source hashes and31 immutable raw artifacts verified.
+- [x] Removal log names goldberg-public-admin-abuse-3645015; container ID andPG17.11
+  version retained. This is removal/exit evidence, not a new live inventory check.
+- [x] T22 LOCAL PASS under explicit owner-approved400/401/403 clarification:
+  physical handler/admin assertions require403 for absent audit mutation; live
+  self-grant/revocation and restricted SQL/audit immutability tests pass.38 focused
+  service/scripted-SQL cases remain clearly separate from database-backed tests.
+- [x] Original T22 FAIL, all pre-patch296/264 evidence and prior checkpoints retained.
+  Current matrix14 local PASS/6 PARTIAL/2 NOT TESTED; overall6.12 stays PARTIAL.
+- [x] Stage7B readiness updated: G10 remains closed by pinned Android boundary;
+  G1–G9/G11 remain BLOCKED for real integration. Current local backend proof does
+  not approve shared HTTP DTOs, session/revision mapping, server features or6.17 freeze.
+- [ ] Browser/CORS/CSRF, DNS/redirect/rebinding fetch protections, actual restore/RPO,
+  network privacy, Android runtime and all applicable hosted checks remain OPEN.
 
-[Contract readiness](https://github.com/{REPO}/blob/{expected}/docs/planning/goldberg-0.11/stage-6/STAGE7B-CONTRACT-READINESS.md)
-[Shared fixtures](https://github.com/{REPO}/tree/{expected}/contracts/admin/v1)
-[Threat matrix](https://github.com/{REPO}/blob/{expected}/docs/planning/goldberg-0.11/stage-6/LOCAL-SECURITY-MATRIX.md)
+[Exact matrix](https://github.com/{REPO}/blob/{expected}/docs/planning/goldberg-0.11/stage-6/LOCAL-SECURITY-MATRIX.md)
+[Readiness](https://github.com/{REPO}/blob/{expected}/docs/planning/goldberg-0.11/stage-6/STAGE7B-CONTRACT-READINESS.md)
+Raw runs and post-t22-independent-verification.json are retained under stage6 evidence.
+Seventeen additional evidence/reporting regressions PASS separately from345 host executions.
+Shared captures remain scripted-storage/fixture-only where labeled; no HTTP venue executed.
 
-Production networking and privileged Android actions remain disabled. Formal6.12
-PARTIAL;6.17 freeze NOT completed. No6.13–6.18, hosted/OAuth/real-data/paid/merge/tag/
-release/emulator/phone operations. Issue description and historical comments preserved.
-Next: permitted local PostgreSQL rerun, owner review of exact shared DTO/binding/
-revision/session/validation decisions; no dialect guessing or live activation.
+Production networking/actions disabled. No Stage7B edits, emulator/phone, hosted/OAuth/
+real-data/paid/merge/tag/release or6.13–6.18 work. No dashboard edit; prior comments
+and description preserved. Next: explicit G1–G9/G11 decisions/authorized implementation,
+remaining local acceptance, separately authorized integration. No repeat of the successful
+v3 PostgreSQL run merely to restate these facts.
 
 created by stokonn with love <3
 {marker}

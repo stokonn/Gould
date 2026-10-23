@@ -5,8 +5,8 @@ from tap_report import parse_tap
 from verified_evidence import verify_historical_sources,APPROVED_ROUTING_EDITS
 ROOT=Path(__file__).resolve().parents[2]
 BASE=ROOT/'docs/planning/goldberg-0.11/stage-6/results/security-local'
-HOST='spikes/stage6-public-admin-abuse/results/run-qx9TUTDk'
-RUN='docs/planning/goldberg-0.11/stage-6/results/security-local/run-vQd6iGn5'
+HOST='spikes/stage6-public-admin-abuse/results/run-TEmZzZQg'
+RUN='docs/planning/goldberg-0.11/stage-6/results/security-local/run-x0nDSTXd'
 files={
  'auth':('spikes/stage6-auth-local/tests/auth.test.mjs',HOST+'/auth-regression.tap','fresh owner Fedora PostgreSQL17.11'),
  'handlers':('spikes/stage6-handlers-local/tests/handlers.test.mjs',HOST+'/handlers-regression.tap','fresh owner Fedora PostgreSQL17.11'),
@@ -14,7 +14,7 @@ files={
  'pg':('spikes/stage6-public-admin-abuse/tests/postgres.test.mjs',HOST+'/postgres.tap','fresh owner Fedora PostgreSQL17.11'),
  'unit':('spikes/stage6-public-admin-abuse/tests/unit.test.mjs',RUN+'/unit.tap','fresh owner Fedora security wrapper'),
  'focused':('spikes/stage6-security-local/tests/security.test.mjs',RUN+'/focused.tap','fresh owner Fedora security wrapper'),
- 't22':('spikes/stage6-security-local/tests/t22.test.mjs','docs/planning/goldberg-0.11/stage-6/results/security-local/t22-investigation/verified-t22.tap','fresh Node real service + scripted SQL; no PostgreSQL/HTTP'),
+ 't22':('spikes/stage6-security-local/tests/t22.test.mjs',RUN+'/t22.tap','fresh Node real service + scripted SQL; no PostgreSQL/HTTP'),
  'android':('app/src/test/java/com/opus/piano/community/CommunityRepositoryTest.kt','docs/planning/goldberg-0.11/stage-6/results/android-local/host-confirmed-1277bed/TEST-com.opus.piano.community.CommunityRepositoryTest.xml','prior owner Fedora JVM; no Android runtime')}
 inventory={}
 for suite,(source,log,venue) in files.items():
@@ -46,7 +46,7 @@ row(5,'Revoked moderator/suspended principal','PASS','Still-live sessions lose p
 row(6,'Role injection/mass assignment','PASS','Forged role/author/status rejected400 with exact snapshot equality; nested unknown fields rejected; role claims grant no authority; no self-approval.','Fresh owner SQL execution confirmed; no wire-layer deserialization/HTTP claim.',False,refs(('handlers','T6/T13 validation rejects unknown top field without effects'),('handlers','T6/T13 validation rejects nested role without effects'),('handlers','T6 self-approval*'),('auth','strict verified identity maps*'),('auth','T6 strict allowlist rejects*')))
 row(7,'Guess another contributor pending ID','PASS','Other-owner and absent IDs both404 on private reads; own list empty; contributor queue denied.','Evidence is local in-process/SQL; no HTTP listener tested.',False,refs(('handlers','T7/T8 owner-only*'),('auth','T7/T8 ownership in query*')))
 row(8,'Cross-user modification','PASS','Other-owner revise/withdraw both404; no revision/status effect; ownership SQL query hides rows.','No deployed PATCH route; local service operation is tested.',False,refs(('handlers','T7/T8 owner-only*'),('auth','T7/T8 ownership in query*')))
-row(9,'REST/RPC privilege escalation','PARTIAL','Fresh restricted SQL roles cannot read private tables, mutate audit/head or invoke ungranted functions. SQL functions pin search_path=pg_catalog and revoke PUBLIC execution (source review). Local arbitrary RPC denied by Auth adapter. New composed admin route defers to injected authorization.','No real REST/RPC listener, hosted Supabase RLS/anonymous JWT or deployed function identity. SQL mocks are not hosted tests. The historical400/403 difference is corrected by an explicit owner-approved local patch; current PostgreSQL regression rerun pending, see T22.',True,refs(('auth','T9/T22 public database role*'),('auth','T9/T22 local transport*'),('schema','restricted local role*'),('focused','T9/T22 configured admin role*')))
+row(9,'REST/RPC privilege escalation','PARTIAL','Fresh restricted SQL roles cannot read private tables, mutate audit/head or invoke ungranted functions. SQL functions pin search_path=pg_catalog and revoke PUBLIC execution (source review). Local arbitrary RPC denied by Auth adapter. New composed admin route defers to injected authorization.','No real REST/RPC listener, hosted Supabase RLS/anonymous JWT or deployed function identity. SQL mocks are not hosted tests. The historical400/403 difference is corrected by an explicit owner-approved local patch; post-patch local PostgreSQL assertions now pass; HTTP/RPC binding remains untested, see T22.',True,refs(('auth','T9/T22 public database role*'),('auth','T9/T22 local transport*'),('schema','restricted local role*'),('focused','T9/T22 configured admin role*')))
 row(10,'Concurrent moderator decisions','PASS','Two moderators exactly201/409; one immutable publication/feed. Same absent/existing entity contention compares revisions atomically. Admin quarantine/rollback distinct-key races exactly200/409.','Fresh owner PostgreSQL concurrency execution confirmed. No production load inference.',False,refs(('handlers','T10*'),('pg','admin.* replay, mismatch and concurrent distinct-key decisions')))
 row(11,'Identical idempotent retry','PASS','Concurrent identical create/moderation replay stored response with one submission/publication; successful retries do not consume quota again.','Fresh owner SQL execution confirmed; no network-loss wire replay tested.',False,refs(('handlers','T11 same-key*'),('pg','daily limit atomic last slot*'),('pg','kill switch truthful*')))
 row(12,'Key reused with changed body','PASS','Same key different payload/operation422; principals cannot reuse another stored result. Admin same-key changed reason422.','No HTTP transport integration; fresh owner PostgreSQL evidence confirmed.',False,refs(('handlers','T12 same key*'),('pg','admin.* replay, mismatch and concurrent distinct-key decisions')))
@@ -55,11 +55,11 @@ row(14,'Evidence SSRF/private IP/rebinding/redirect','PARTIAL','Unsafe literal/p
 row(15,'Browser CSRF/CORS','NOT TESTED','No current browser session/cookie/HTTP path exists. Older isolated C2 spike is not execution of this composed adapter.','No current CSRF mismatch403, SameSite=Strict cookie, Origin/CORS or browser scenario execution. Both current local HTTP and hosted/browser paths OPEN.',True,[])
 row(16,'Principal/distributed IP quota exhaustion','PARTIAL','Daily/pending limits, principal last-slot and cross-account coarse-IP races; hashes/grouping; exact windows;429 Retry-After; kill503; storage failure503; rollback/retry counts; janitor preserves submissions/audit.','Android/Admin actual runtime usability and deployed distributed-IP/edge quota exhaustion untested. Key/retention fixtures synthetic, not legal retention policy.',True,refs(('pg','daily limit atomic last slot*'),('pg','coarse IP last slot*'),('pg','quota rollback on *'),('pg','quota boundary exactly*'),('pg','kill switch truthful*'),('pg','quota table unavailable*'),('pg','idempotency insert failure rolls quota*'),('pg','independent janitor prunes*'),('unit','keyed hashes*'),('unit','retention scheduler*')))
 row(17,'Partial transaction failure','PASS','Approval fault boundaries locked/entity/snapshot/projection/approved/audit/feed/sql; idempotency insertion and deferred commit failure; exact snapshot equality then same-key success. Admin quarantine/rollback locked/projection/audit/feed/deferred; principal/quota faults atomic.','Fresh owner PostgreSQL fault-injection run confirmed. No claim of provider failure injection.',False,refs(('handlers','T17*'),('pg','admin.* T17 atomic rollback at *'),('pg','principal operation fault*'),('pg','quota rollback on *'),('schema','atomic publication rollback after *')))
-row(18,'Audit tamper/update/delete','PASS','SQL immutable UPDATE/DELETE/TRUNCATE and restricted-role guards; exported copy modification/omission/order/head mismatch rejected by independent recomputation, including >9 sequences. No audit mutation handler dispatched.','Operator console/provider path [I] OPEN. Chain proves tamper evidence relative to trusted head, not protection from privileged full-history replacement. T22 records the historical mismatch and approved local correction; current PostgreSQL rerun pending.',True,refs(('schema','immutable revision, published revision*'),('schema','F4 physical audit triggers*'),('handlers','T18 immutable publication*'),('handlers','audit export sorts int8*'),('unit','T18 independent audit*')))
+row(18,'Audit tamper/update/delete','PASS','SQL immutable UPDATE/DELETE/TRUNCATE and restricted-role guards; exported copy modification/omission/order/head mismatch rejected by independent recomputation, including >9 sequences. No audit mutation handler dispatched.','Operator console/provider path [I] OPEN. Chain proves tamper evidence relative to trusted head, not protection from privileged full-history replacement. T22 records the historical mismatch and approved local correction; post-patch local PostgreSQL rerun now verified.',True,refs(('schema','immutable revision, published revision*'),('schema','F4 physical audit triggers*'),('handlers','T18 immutable publication*'),('handlers','audit export sorts int8*'),('unit','T18 independent audit*')))
 row(19,'Export and isolated restore/RPO','NOT TESTED','Fresh F4 verifies an exported JSON audit copy; it does NOT restore a database.','No full fresh-empty-database restore, table/count/sample comparison, restored chain or RPO execution. Local and provider [I] OPEN; do not start 6.14 export/restore implementation here.',True,refs(('schema','F4 physical audit triggers*')))
 row(20,'Unavailable/paused/quota backend graceful behavior','PARTIAL','Backend safe503 and kill-switch read availability; JVM fake transport retains drafts, error taxonomy, explicit stale cache and disabled production transport without startup fetch.','No Android cold startup/process death/UI or Admin runtime, no deployed pause/exhaustion. JVM file-store recreation is not Android runtime. Emulator recovery explicitly deferred.',True,refs(('unit','T20 unavailable PostgreSQL connector*'),('pg','kill switch truthful*'),('pg','quota table unavailable*'),('android','everyServerErrorRetainsDraftAndMapsDistinctly'),('android','disabledProductionBoundaryNeverSendsAndRetainsDraft'),('android','repositoryConstructionAndLocalEditingDoNotUploadOrFetch'),('android','cachedOverlayIsExplicitlyStaleSyntheticAndSurvivesRestart')))
 row(21,'Personal-data isolation','PARTIAL','Server private fields rejected at root/target/field/evidence; fresh SQL no submissions; Kotlin explicit nested DTO allowlists and credential redaction executed in JVM fixtures; fresh additional server private-field probes.','Actual network-layer assertion absent: production transport disabled. Zero personal rows leaving device cannot be claimed from DTO/fixture assertions. Android/runtime venue deferred; no real data needed.',False,refs(('handlers','T21 rejects personal*'),('focused','T21 server rejects*'),('android','dtoUsesExplicitNestedAllowlists'),('android','privateObjectSmugglingFailsAtEveryPayloadLevel'),('android','credentialsAreRedactedAndNotInFixtureCallsOrPersistedDrafts')))
-row(22,'Bootstrap self-grant/audit self-edit','PARTIAL','Published400 mismatch reproduced and preserved. Owner explicitly approved local routing clarification/patch: well-formed absent audit/bootstrap operation403 with no SQL/handler; non-string/empty operation400; known registered route missing/invalid session401, capability/self-grant403. Fresh38 service/scripted-SQL tests pass. Array operation coercion is rejected. No protected role/audit writes; transaction-local idempotency housekeeping rolls back.','Owner approval and fresh unit assertions resolve the local status-policy discrepancy without waiving security. Updated real PostgreSQL regression assertions are not yet executed: agent socket EPERM,0 database bodies. T22 NOT fully PASS; original FAIL/raw runs remain historical. No actual HTTP binding or new privileged endpoint.',False,refs(('auth','T22 admin cannot self-grant*'),('pg','role/suspension integration*'),('pg','admin audit paginates*'),('t22','*')))
+row(22,'Bootstrap self-grant/audit self-edit','PASS','LOCAL PASS under explicit owner-approved clarification. Post-patch PG17.11 Auth tests deny self-grant/case bypass and anonymous SQL/table/function escalation; handlers and admin audit tests explicitly assert403 on missing audit-edit routes and physical immutable history remains protected. Host38 real-service/scripted-SQL cases cover absent operations403/no dispatch, malformed operations400, registered auth401/capability403, safe503 and no protected writes. All executed at verified6d0abad source.','Local in-process scope only. No HTTP listener, browser, hosted bootstrap/console or Android path executed. Original400-versus403 FAIL, approval, patch and earlier PARTIAL checkpoints remain historical; no public integration or formal Stage6 acceptance implied.',False,refs(('auth','T22 admin cannot self-grant*'),('auth','T9/T22 public database role*'),('auth','T9/T22 local transport*'),('auth','self-grant and self-suspension*'),('handlers','T18 immutable publication*'),('schema','immutable revision, published revision*'),('pg','role/suspension integration*'),('pg','admin audit paginates*'),('t22','*')))
 
 assert len(rows)==22 and [r['threat'] for r in rows]==[f'T{i}' for i in range(1,23)]
 # Verify original signed-in-source baselines instead of silently regenerating their historical manifests.
@@ -71,50 +71,44 @@ for name,sha in artifacts.items():assert hashlib.sha256((old/'run-8SWyGyB0'/name
 android=json.loads((ROOT/'docs/planning/goldberg-0.11/stage-6/results/android-local/source-sha256.json').read_text())
 for name,sha in android.items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha,name
 summary=dict(collections.Counter(r['localStatus'] for r in rows))
-doc=dict(overall='PARTIAL; formal 6.12 unchecked',sourceBase='faf9ba3ec24e7098289c80d6e119519ccc21b95e',backendPublished='9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce',androidPublished='2f1524e4083a98a64d5fa9790f3cdc002d1f8237',verifiedBaselineSourceHashes=len(source),verifiedBaselineArtifactHashes=len(artifacts),verifiedAndroidSourceHashes=len(android),counts=summary,interpretation='PASS refers only to reviewed local assertions with exact executed evidence; historical owner executions are not fresh reruns or full [I] acceptance. Probe PASS is not threat PASS.',rows=rows)
+doc=dict(overall='PARTIAL; formal 6.12 unchecked',sourceBase='6d0abad3decf0b724c0e00f1b4e270bf8d244fba',backendPublished='9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce',androidPublished='2f1524e4083a98a64d5fa9790f3cdc002d1f8237',verifiedBaselineSourceHashes=len(source),verifiedBaselineArtifactHashes=len(artifacts),verifiedAndroidSourceHashes=len(android),counts=summary,interpretation='PASS refers only to reviewed local assertions with exact executed evidence; historical owner executions are not fresh reruns or full [I] acceptance. Probe PASS is not threat PASS.',rows=rows)
 (BASE/'coverage.json').write_text(json.dumps(doc,indent=2)+'\n')
 (BASE/'test-inventory.json').write_text(json.dumps(inventory,indent=2)+'\n')
 md='''# Stage 6.12 — local threat-coverage matrix
 
-**PARTIAL. Formal 6.12 remains unchecked.** Local verification only; no hosted,
-OAuth, personal-data, emulator, phone, merge, tag or release operations.
+**Overall PARTIAL; formal6.12 remains unchecked.** T22 LOCAL PASS under the explicit
+owner-approved local routing clarification. Browser/HTTP/hosted/SSRF-fetch/restore/
+network-privacy/Android-runtime portions remain OPEN. No6.13–6.18 or6.17 freeze.
 
-Current source has the owner-approved T22 routing patch; the296-execution host run
-below is the pre-patch baseline, NOT a post-patch PostgreSQL rerun.
+Owner-tested source `6d0abad3decf0b724c0e00f1b4e270bf8d244fba`, version3 runner:
+`results/security-local/run-x0nDSTXd/` matches nested PG17.11
+`spikes/stage6-public-admin-abuse/results/run-TEmZzZQg/` exactly by stdout linkage.
+Outer108 PASS (27 focused +32 unit +38 T22 +11 contract); nested237 PASS
+(50 Auth +87 handler +34 schema +34 integration +32 unit).
+**345 successful executions;313 tests counting repeated32 unit suite once.**
+There are205 PostgreSQL-backed bodies; the other140 executions are socket-free
+Node tests (including repeated units). Zero failures/skips/cancellations, all five
+checks PASS in both runners, explicit nested exit0,82 source hashes verified.
 
-Branch `verify/goldberg-0.11-stage-6-12-local`; owner-tested source
-`faf9ba3ec24e7098289c80d6e119519ccc21b95e`. Backend `9d7150c` and Android `2f1524e`
-are preserved ancestors. Stage 7B untouched; Android runtime acceptance deferred.
+Cleanup log records removal of goldberg-public-admin-abuse-3645015, matching its
+uniquely named disposable runner. This is retained removal evidence, not a new live
+agent Podman inventory check. Earlier296 pre-patch executions, all FAIL/PARTIAL
+snapshots, immutable raw logs and prior manifests are preserved.
 
-## Host baseline and current investigation evidence
+T22 now satisfies the explicitly approved local acceptance cases with current
+routing models AND physical PostgreSQL assertions; this does not turn a model
+case into a database case. Shared contract fixtures remain captures over scripted
+storage or inactive proposals, never HTTP/PostgreSQL integration proof. Prior Android
+JVM214 and reporting-tool runs are separate retained evidence, not this host run.
 
-- Owner Fedora wrapper `results/security-local/run-vQd6iGn5/`: 27 focused +32 unit
-  PASS; `checksOrTestsFailed=false`, `postgresBlocked=false`, `sourceUnchanged=true`.
-- Nested PG17.11 `spikes/stage6-public-admin-abuse/results/run-qx9TUTDk/`:
-  Auth50 + handlers87 + schema34 + integration34 + unit32 =237 PASS.
-  **296 successful executions; 264 tests counting the repeated32 unit suite once.**
-  All seven TAP files have zero failures, skips, cancellations or hook failures;
-  exact body and summary counts checked independently. Five checks PASS in both
-  runners. Wrapper stdout exactly matches nested TAP/check log concatenation.
-- All62 at-run source hashes matched before tooling changes. Version1 runner exit
-  success is evidenced by owner report and wrapper control flow/result, rather than
-  an invented numeric exit file. Cleanup log names the removed disposable container;
-  live agent Podman inventory is denied by read-only runtime configuration.
-- New version2 reporting tools:10 socket-free Python regressions PASS, retained in
-  `results/security-local/runner-v2/unittest.log`. These are additional tool tests,
-  separate from the296 host executions; full version2 PostgreSQL rerun NOT executed.
-- Original host237 baseline, Android JVM214 and older failed runs remain preserved.
-  Historical46 backend-source hashes remain verifiable against9d7150c for the four approved routing/test changes; original15 artifact and15 Android-source hashes match.
-  Android evidence is prior JVM execution, not runtime or actual network proof.
-- Local PASS covers only stated assertions. Hosted [I] portions remain OPEN.
-  **T22 now PARTIAL:** original400-versus403 FAIL is preserved historically. Owner
-  explicitly approved local routing clarification and patch;38 fresh real-service/
-  scripted-SQL checks pass. Updated PostgreSQL regression assertions remain blocked
-  here, and no HTTP venue was tested. No security requirement is silently waived.
+Historical46 backend hashes remain Git-verifiable for approved routing/test changes;
+original15 artifacts/15 Android-source hashes unchanged. Current82-source snapshot
+has no production/service/fixture changes during this reconciliation; only explicitly
+identified evidence/publication/documentation metadata may change afterward.
 
-Machine-readable [coverage](results/security-local/coverage.json) and
-[test inventory](results/security-local/test-inventory.json) provide exact test
-file/name/log/venue for202 evidence references. Current local statuses: '''+json.dumps(summary)+'''.
+[Coverage](results/security-local/coverage.json) and
+[test inventory](results/security-local/test-inventory.json) identify exact successful
+file/test/log/venue references. Current local statuses: '''+json.dumps(summary)+'''.
 
 | Threat | Local status | Hosted [I] remaining | Assertions / gaps |
 |---|---|---|---|
@@ -127,6 +121,7 @@ for r in rows:
  if not r['evidence']:md+='No current candidate test executed for this principal scenario.\n'
  for e in r['evidence']:
   md+=f"- `{e['file']}` — **{e['test']}**; {e['venue']}; `{e['log']}`.\n"
-md+='''\n## Remaining work / exact next action\n\n1. Preserve the confirmed host PostgreSQL run and updated immutable evidence hashes.\n   Full version2 runner execution remains untested; ten reporting regressions pass.\n2. Resolve T22 exact status discrepancy before accepting it. This verification\n   commit changes no service, API contract, SQL or Android behavior.\n3. Keep T13 rendering, T14 real fetch protections, T15 browser/HTTP, T19 actual\n   restore/RPO, T16/T20 actual client usability and T21 network assertions OPEN.\n   Unsupported fetch and disabled production transport must stay disabled.\n4. Hosted [I] requires separate authorization. Android runtime/emulator recovery\n   remains deferred. Stage7B G1–G6 dependencies remain as reported in Issue31\n   comment6362661598; no wire contract guessed or changed.\n5. No6.13–6.18, provisioning, merge/tag/deploy/release starts automatically.\n\ncreated by stokonn with love <3\n'''
+md+='\n## Remaining work / exact next action\n\n1. Preserve the successful version3 run and immutable new/old source/artifact records.\n   Do not repeat it merely to restate this verified evidence.\n2. T22 is LOCAL PASS under the approved clarification and current routing/physical\n   PostgreSQL assertions. HTTP binding, hosted bootstrap and actual clients untested.\n3. Keep T13 rendering, T14 real fetch protections, T15 browser/HTTP, T19 actual\n   restore/RPO, T16/T20 client runtime and T21 network assertions OPEN.\n4. G10 remains closed on Android; G1-G9/G11 remain blocked for real integration.\n   No wire dialect, endpoint, revision conversion or API freeze is approved here.\n5. Overall6.12 remains PARTIAL; no6.13–6.18, provisioning, merge/tag/deploy/release.\n\ncreated by stokonn with love <3\n'
+
 (ROOT/'docs/planning/goldberg-0.11/stage-6/LOCAL-SECURITY-MATRIX.md').write_text(md)
 print(json.dumps({'matrixRows':len(rows),'counts':summary,'sourceHashes':len(source),'artifactHashes':len(artifacts),'androidSourceHashes':len(android),'evidenceReferences':sum(len(r['evidence']) for r in rows)},indent=2))

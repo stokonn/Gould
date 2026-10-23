@@ -99,3 +99,14 @@ The owner-approved T22 local routing clarification is recorded in
 [T22 investigation](T22-INVESTIGATION.md); new unit/fixture evidence does not replace
 updated PG17.11, HTTP or Android runtime acceptance. Formal6.12 stays PARTIAL;
 6.17 and6.13–6.18 are not started by this audit/fixture coordination.
+
+## Post-T22 Fedora verification — local proof accepted, public binding still OPEN
+
+Owner-tested6d0abad version3: outer108 + matching nested237 =345 successful
+executions/313 tests counting repeated32 suite once;205 PostgreSQL-backed bodies.
+Explicit exit0,82 source hashes, exact stdout linkage and container-removal output
+verified. T22 LOCAL PASS under the approved clarification; original FAIL retained.
+Overall6.12 remains PARTIAL. G10 stays closed on Android; G1–G9/G11 remain blocked
+for actual integration, with no fixture activation, HTTP binding or6.17 freeze.
+See the current security matrix and STAGE7B-CONTRACT-READINESS.md. No repeat of
+this successful PostgreSQL run is needed solely to update evidence/publication.

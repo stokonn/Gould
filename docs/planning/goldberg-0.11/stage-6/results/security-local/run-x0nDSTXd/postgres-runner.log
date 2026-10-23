@@ -1,0 +1,1490 @@
+TAP version 13
+# Subtest: lossless int8 decimal 0
+ok 1 - lossless int8 decimal 0
+  ---
+  duration_ms: 2.552008
+  type: 'test'
+  ...
+# Subtest: lossless int8 decimal 9
+ok 2 - lossless int8 decimal 9
+  ---
+  duration_ms: 0.332359
+  type: 'test'
+  ...
+# Subtest: lossless int8 decimal 10
+ok 3 - lossless int8 decimal 10
+  ---
+  duration_ms: 0.136969
+  type: 'test'
+  ...
+# Subtest: lossless int8 decimal 9007199254740993
+ok 4 - lossless int8 decimal 9007199254740993
+  ---
+  duration_ms: 0.117543
+  type: 'test'
+  ...
+# Subtest: lossless int8 decimal 9223372036854775807
+ok 5 - lossless int8 decimal 9223372036854775807
+  ---
+  duration_ms: 0.133343
+  type: 'test'
+  ...
+# Subtest: invalid int8 1
+ok 6 - invalid int8 1
+  ---
+  duration_ms: 0.627968
+  type: 'test'
+  ...
+# Subtest: invalid int8 9007199254740992
+ok 7 - invalid int8 9007199254740992
+  ---
+  duration_ms: 0.124926
+  type: 'test'
+  ...
+# Subtest: invalid int8 01
+ok 8 - invalid int8 01
+  ---
+  duration_ms: 0.146697
+  type: 'test'
+  ...
+# Subtest: invalid int8 -1
+ok 9 - invalid int8 -1
+  ---
+  duration_ms: 0.431607
+  type: 'test'
+  ...
+# Subtest: invalid int8 1e3
+ok 10 - invalid int8 1e3
+  ---
+  duration_ms: 0.555041
+  type: 'test'
+  ...
+# Subtest: invalid int8 9223372036854775808
+ok 11 - invalid int8 9223372036854775808
+  ---
+  duration_ms: 0.242459
+  type: 'test'
+  ...
+# Subtest: invalid int8 null
+ok 12 - invalid int8 null
+  ---
+  duration_ms: 0.118033
+  type: 'test'
+  ...
+# Subtest: signed cursors reject alteration, cross endpoint/filter and cross server key
+ok 13 - signed cursors reject alteration, cross endpoint/filter and cross server key
+  ---
+  duration_ms: 3.776345
+  type: 'test'
+  ...
+# Subtest: synthetic coarse grouping 198.51.100.1
+ok 14 - synthetic coarse grouping 198.51.100.1
+  ---
+  duration_ms: 0.692791
+  type: 'test'
+  ...
+# Subtest: synthetic coarse grouping 198.51.100.254
+ok 15 - synthetic coarse grouping 198.51.100.254
+  ---
+  duration_ms: 0.093867
+  type: 'test'
+  ...
+# Subtest: synthetic coarse grouping 2001:db8:1:2::a
+ok 16 - synthetic coarse grouping 2001:db8:1:2::a
+  ---
+  duration_ms: 6.083228
+  type: 'test'
+  ...
+# Subtest: synthetic coarse grouping 2001:0db8:0001:0002:ffff:ffff:ffff:ffff
+ok 17 - synthetic coarse grouping 2001:0db8:0001:0002:ffff:ffff:ffff:ffff
+  ---
+  duration_ms: 0.215237
+  type: 'test'
+  ...
+# Subtest: synthetic coarse grouping ::ffff:198.51.100.1
+ok 18 - synthetic coarse grouping ::ffff:198.51.100.1
+  ---
+  duration_ms: 0.124205
+  type: 'test'
+  ...
+# Subtest: synthetic coarse grouping ::ffff:c633:6401
+ok 19 - synthetic coarse grouping ::ffff:c633:6401
+  ---
+  duration_ms: 0.089238
+  type: 'test'
+  ...
+# Subtest: invalid trusted peer 198.51.100.01
+ok 20 - invalid trusted peer 198.51.100.01
+  ---
+  duration_ms: 0.182325
+  type: 'test'
+  ...
+# Subtest: invalid trusted peer unknown
+ok 21 - invalid trusted peer unknown
+  ---
+  duration_ms: 0.091062
+  type: 'test'
+  ...
+# Subtest: invalid trusted peer 2001:db8::1%zone
+ok 22 - invalid trusted peer 2001:db8::1%zone
+  ---
+  duration_ms: 0.078379
+  type: 'test'
+  ...
+# Subtest: invalid trusted peer 198.51.100.1, 198.51.100.2
+ok 23 - invalid trusted peer 198.51.100.1, 198.51.100.2
+  ---
+  duration_ms: 0.076755
+  type: 'test'
+  ...
+# Subtest: invalid trusted peer undefined
+ok 24 - invalid trusted peer undefined
+  ---
+  duration_ms: 0.073098
+  type: 'test'
+  ...
+# Subtest: keyed hashes hide peer, preserve group, separate groups and key rotations
+ok 25 - keyed hashes hide peer, preserve group, separate groups and key rotations
+  ---
+  duration_ms: 1.103909
+  type: 'test'
+  ...
+# Subtest: public projection selects only safe display/provenance, retaining exact revision
+ok 26 - public projection selects only safe display/provenance, retaining exact revision
+  ---
+  duration_ms: 0.814892
+  type: 'test'
+  ...
+# Subtest: adapter propagates truthful retry and safe failure envelope, never diagnostics
+ok 27 - adapter propagates truthful retry and safe failure envelope, never diagnostics
+  ---
+  duration_ms: 1.530917
+  type: 'test'
+  ...
+# Subtest: fail-closed evidence policy remains empty and no evidence fetch abstraction is added
+ok 28 - fail-closed evidence policy remains empty and no evidence fetch abstraction is added
+  ---
+  duration_ms: 0.910773
+  type: 'test'
+  ...
+# Subtest: T18 independent audit verification rejects tamper, omission, sequence reordering and head mismatch
+ok 29 - T18 independent audit verification rejects tamper, omission, sequence reordering and head mismatch
+  ---
+  duration_ms: 15.457694
+  type: 'test'
+  ...
+# Subtest: T20 unavailable PostgreSQL connector fails public read closed with safe 503
+ok 30 - T20 unavailable PostgreSQL connector fails public read closed with safe 503
+  ---
+  duration_ms: 0.927956
+  type: 'test'
+  ...
+# Subtest: retention scheduler cleans during idle intake, suppresses overlap and drains on stop
+ok 31 - retention scheduler cleans during idle intake, suppresses overlap and drains on stop
+  ---
+  duration_ms: 1.167579
+  type: 'test'
+  ...
+# Subtest: retention scheduler retries unavailable storage at later ticks and reports no private diagnostics
+ok 32 - retention scheduler retries unavailable storage at later ticks and reports no private diagnostics
+  ---
+  duration_ms: 0.640412
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 70.894404
+TAP version 13
+# Subtest: 004 migration repeat application is checksum verified and defaults intake off
+ok 1 - 004 migration repeat application is checksum verified and defaults intake off
+  ---
+  duration_ms: 605.45667
+  type: 'test'
+  ...
+# Subtest: public only approved current metadata, no private note, identity, audit or pending record
+ok 2 - public only approved current metadata, no private note, identity, audit or pending record
+  ---
+  duration_ms: 656.676913
+  type: 'test'
+  ...
+# Subtest: quarantine immediate exclusion even with older page cursor; immutable disclosure-safe tombstone
+ok 3 - quarantine immediate exclusion even with older page cursor; immutable disclosure-safe tombstone
+  ---
+  duration_ms: 3528.37019
+  type: 'test'
+  ...
+# Subtest: supersession, rollback, later publication use immutable monotonic revision allocation
+ok 4 - supersession, rollback, later publication use immutable monotonic revision allocation
+  ---
+  duration_ms: 955.481075
+  type: 'test'
+  ...
+# Subtest: numeric feed order beyond nine events, equal timestamps, multipage highwater and concurrent writes
+ok 5 - numeric feed order beyond nine events, equal timestamps, multipage highwater and concurrent writes
+  ---
+  duration_ms: 3904.994638
+  type: 'test'
+  ...
+# Subtest: cursor tampering, cross kind, invalid kind, page size and privilege fields fail 400
+ok 6 - cursor tampering, cross kind, invalid kind, page size and privilege fields fail 400
+  ---
+  duration_ms: 405.576041
+  type: 'test'
+  ...
+# Subtest: admin.quarantine live default-deny, reason and exact expected state
+ok 7 - admin.quarantine live default-deny, reason and exact expected state
+  ---
+  duration_ms: 749.695954
+  type: 'test'
+  ...
+# Subtest: admin.rollback live default-deny, reason and exact expected state
+ok 8 - admin.rollback live default-deny, reason and exact expected state
+  ---
+  duration_ms: 756.076966
+  type: 'test'
+  ...
+# Subtest: admin.quarantine replay, mismatch and concurrent distinct-key decisions
+ok 9 - admin.quarantine replay, mismatch and concurrent distinct-key decisions
+  ---
+  duration_ms: 1582.854419
+  type: 'test'
+  ...
+# Subtest: admin.rollback replay, mismatch and concurrent distinct-key decisions
+ok 10 - admin.rollback replay, mismatch and concurrent distinct-key decisions
+  ---
+  duration_ms: 1477.403098
+  type: 'test'
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at locked
+ok 11 - admin.quarantine T17 atomic rollback at locked
+  ---
+  duration_ms: 751.543159
+  type: 'test'
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at projection
+ok 12 - admin.quarantine T17 atomic rollback at projection
+  ---
+  duration_ms: 734.248008
+  type: 'test'
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at audit
+ok 13 - admin.quarantine T17 atomic rollback at audit
+  ---
+  duration_ms: 743.597867
+  type: 'test'
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at feed
+ok 14 - admin.quarantine T17 atomic rollback at feed
+  ---
+  duration_ms: 752.940322
+  type: 'test'
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at deferred
+ok 15 - admin.quarantine T17 atomic rollback at deferred
+  ---
+  duration_ms: 764.717062
+  type: 'test'
+  ...
+# Subtest: admin.rollback T17 atomic rollback at locked
+ok 16 - admin.rollback T17 atomic rollback at locked
+  ---
+  duration_ms: 784.475182
+  type: 'test'
+  ...
+# Subtest: admin.rollback T17 atomic rollback at projection
+ok 17 - admin.rollback T17 atomic rollback at projection
+  ---
+  duration_ms: 744.882187
+  type: 'test'
+  ...
+# Subtest: admin.rollback T17 atomic rollback at audit
+ok 18 - admin.rollback T17 atomic rollback at audit
+  ---
+  duration_ms: 746.795436
+  type: 'test'
+  ...
+# Subtest: admin.rollback T17 atomic rollback at feed
+ok 19 - admin.rollback T17 atomic rollback at feed
+  ---
+  duration_ms: 787.441564
+  type: 'test'
+  ...
+# Subtest: admin.rollback T17 atomic rollback at deferred
+ok 20 - admin.rollback T17 atomic rollback at deferred
+  ---
+  duration_ms: 745.151977
+  type: 'test'
+  ...
+# Subtest: role/suspension integration reuses live Auth, denies escalation, self grant and revoked replay
+ok 21 - role/suspension integration reuses live Auth, denies escalation, self grant and revoked replay
+  ---
+  duration_ms: 705.966834
+  type: 'test'
+  ...
+# Subtest: principal operation fault rolls role and audit/idempotency back together
+ok 22 - principal operation fault rolls role and audit/idempotency back together
+  ---
+  duration_ms: 417.944441
+  type: 'test'
+  ...
+# Subtest: admin audit paginates numerically with hash head and has no mutation endpoint
+ok 23 - admin audit paginates numerically with hash head and has no mutation endpoint
+  ---
+  duration_ms: 1471.903844
+  type: 'test'
+  ...
+# Subtest: daily limit atomic last slot, duplicate replay, mismatch and pending quota
+ok 24 - daily limit atomic last slot, duplicate replay, mismatch and pending quota
+  ---
+  duration_ms: 1382.95346
+  type: 'test'
+  ...
+# Subtest: coarse IP last slot across different accounts, hashed storage and no raw diagnostics
+ok 25 - coarse IP last slot across different accounts, hashed storage and no raw diagnostics
+  ---
+  duration_ms: 537.957811
+  type: 'test'
+  ...
+# Subtest: quota rollback on principal counter fault
+ok 26 - quota rollback on principal counter fault
+  ---
+  duration_ms: 487.717513
+  type: 'test'
+  ...
+# Subtest: quota rollback on coarse_ip counter fault
+ok 27 - quota rollback on coarse_ip counter fault
+  ---
+  duration_ms: 506.023947
+  type: 'test'
+  ...
+# Subtest: kill switch truthful 503, committed replay and public/private reads stay available
+ok 28 - kill switch truthful 503, committed replay and public/private reads stay available
+  ---
+  duration_ms: 535.059708
+  type: 'test'
+  ...
+# Subtest: quota table unavailable is 503 without work loss; recovery permits same key
+ok 29 - quota table unavailable is 503 without work loss; recovery permits same key
+  ---
+  duration_ms: 486.276356
+  type: 'test'
+  ...
+# Subtest: BIGINT feed sequence boundaries remain lossless and numerically ordered
+ok 30 - BIGINT feed sequence boundaries remain lossless and numerically ordered
+  ---
+  duration_ms: 718.076604
+  type: 'test'
+  ...
+# Subtest: synthetic daily reset and coarse retention do not erase pending/audit history
+ok 31 - synthetic daily reset and coarse retention do not erase pending/audit history
+  ---
+  duration_ms: 460.212446
+  type: 'test'
+  ...
+# Subtest: quota boundary exactly resets the IP window without recounting prior idempotency replay
+ok 32 - quota boundary exactly resets the IP window without recounting prior idempotency replay
+  ---
+  duration_ms: 576.114398
+  type: 'test'
+  ...
+# Subtest: idempotency insert failure rolls quota, submission and audit back together
+ok 33 - idempotency insert failure rolls quota, submission and audit back together
+  ---
+  duration_ms: 509.99586
+  type: 'test'
+  ...
+# Subtest: independent janitor prunes expired coarse hashes with intake disabled and preserves evidence
+ok 34 - independent janitor prunes expired coarse hashes with intake disabled and preserves evidence
+  ---
+  duration_ms: 455.95952
+  type: 'test'
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 34
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 35754.50794
+TAP version 13
+# Subtest: authenticated initial submission has server owner, immutable revision, hash and request-bound audit
+ok 1 - authenticated initial submission has server owner, immutable revision, hash and request-bound audit
+  ---
+  duration_ms: 529.834442
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects unknown top field without effects
+ok 2 - T6/T13 validation rejects unknown top field without effects
+  ---
+  duration_ms: 384.504496
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects nested role without effects
+ok 3 - T6/T13 validation rejects nested role without effects
+  ---
+  duration_ms: 383.922565
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects field author without effects
+ok 4 - T6/T13 validation rejects field author without effects
+  ---
+  duration_ms: 375.798755
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects evidence approval without effects
+ok 5 - T6/T13 validation rejects evidence approval without effects
+  ---
+  duration_ms: 342.563168
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects external elevated without effects
+ok 6 - T6/T13 validation rejects external elevated without effects
+  ---
+  duration_ms: 378.406379
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects missing schema version without effects
+ok 7 - T6/T13 validation rejects missing schema version without effects
+  ---
+  duration_ms: 379.483918
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects wrong schema version without effects
+ok 8 - T6/T13 validation rejects wrong schema version without effects
+  ---
+  duration_ms: 375.241021
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects HTML without effects
+ok 9 - T6/T13 validation rejects HTML without effects
+  ---
+  duration_ms: 360.779962
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects encoded HTML without effects
+ok 10 - T6/T13 validation rejects encoded HTML without effects
+  ---
+  duration_ms: 375.290545
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects object value without effects
+ok 11 - T6/T13 validation rejects object value without effects
+  ---
+  duration_ms: 351.709963
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects oversize string without effects
+ok 12 - T6/T13 validation rejects oversize string without effects
+  ---
+  duration_ms: 390.035449
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects bad UUID without effects
+ok 13 - T6/T13 validation rejects bad UUID without effects
+  ---
+  duration_ms: 381.865393
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects wrong kind without effects
+ok 14 - T6/T13 validation rejects wrong kind without effects
+  ---
+  duration_ms: 386.64719
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects unknown change without effects
+ok 15 - T6/T13 validation rejects unknown change without effects
+  ---
+  duration_ms: 378.945128
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects no identity without effects
+ok 16 - T6/T13 validation rejects no identity without effects
+  ---
+  duration_ms: 361.354049
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects unknown field name without effects
+ok 17 - T6/T13 validation rejects unknown field name without effects
+  ---
+  duration_ms: 315.99814
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects missing license without effects
+ok 18 - T6/T13 validation rejects missing license without effects
+  ---
+  duration_ms: 302.463445
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects unknown license without effects
+ok 19 - T6/T13 validation rejects unknown license without effects
+  ---
+  duration_ms: 294.32634
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects rejected license without effects
+ok 20 - T6/T13 validation rejects rejected license without effects
+  ---
+  duration_ms: 294.68096
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects missing evidence without effects
+ok 21 - T6/T13 validation rejects missing evidence without effects
+  ---
+  duration_ms: 290.845485
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects missing intended license without effects
+ok 22 - T6/T13 validation rejects missing intended license without effects
+  ---
+  duration_ms: 297.741991
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects unreviewed source without effects
+ok 23 - T6/T13 validation rejects unreviewed source without effects
+  ---
+  duration_ms: 293.170242
+  type: 'test'
+  ...
+# Subtest: T6/T13 validation rejects external kind mismatch without effects
+ok 24 - T6/T13 validation rejects external kind mismatch without effects
+  ---
+  duration_ms: 300.488258
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal journal at every object level
+ok 25 - T21 rejects personal journal at every object level
+  ---
+  duration_ms: 292.258107
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal notes at every object level
+ok 26 - T21 rejects personal notes at every object level
+  ---
+  duration_ms: 283.386573
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal microphone at every object level
+ok 27 - T21 rejects personal microphone at every object level
+  ---
+  duration_ms: 313.876997
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal backup at every object level
+ok 28 - T21 rejects personal backup at every object level
+  ---
+  duration_ms: 289.327603
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal sessions at every object level
+ok 29 - T21 rejects personal sessions at every object level
+  ---
+  duration_ms: 293.999822
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal repertoire at every object level
+ok 30 - T21 rejects personal repertoire at every object level
+  ---
+  duration_ms: 287.971247
+  type: 'test'
+  ...
+# Subtest: T21 rejects personal profile at every object level
+ok 31 - T21 rejects personal profile at every object level
+  ---
+  duration_ms: 292.204676
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL javascript:alert(1)
+ok 32 - T14 refuses unsafe/unreviewed URL javascript:alert(1)
+  ---
+  duration_ms: 0.651202
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL data:text/plain,x
+ok 33 - T14 refuses unsafe/unreviewed URL data:text/plain,x
+  ---
+  duration_ms: 0.272786
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL http://evidence.synthetic.invalid/source
+ok 34 - T14 refuses unsafe/unreviewed URL http://evidence.synthetic.invalid/source
+  ---
+  duration_ms: 0.294888
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://localhost/source
+ok 35 - T14 refuses unsafe/unreviewed URL https://localhost/source
+  ---
+  duration_ms: 0.433229
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://127.0.0.1/source
+ok 36 - T14 refuses unsafe/unreviewed URL https://127.0.0.1/source
+  ---
+  duration_ms: 0.275371
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://127.1/source
+ok 37 - T14 refuses unsafe/unreviewed URL https://127.1/source
+  ---
+  duration_ms: 0.225877
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://0x7f000001/source
+ok 38 - T14 refuses unsafe/unreviewed URL https://0x7f000001/source
+  ---
+  duration_ms: 0.220828
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://10.0.0.1/source
+ok 39 - T14 refuses unsafe/unreviewed URL https://10.0.0.1/source
+  ---
+  duration_ms: 0.637135
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://172.16.0.1/source
+ok 40 - T14 refuses unsafe/unreviewed URL https://172.16.0.1/source
+  ---
+  duration_ms: 0.698922
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://192.168.1.1/source
+ok 41 - T14 refuses unsafe/unreviewed URL https://192.168.1.1/source
+  ---
+  duration_ms: 0.469028
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://169.254.169.254/source
+ok 42 - T14 refuses unsafe/unreviewed URL https://169.254.169.254/source
+  ---
+  duration_ms: 0.365321
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://[::1]/source
+ok 43 - T14 refuses unsafe/unreviewed URL https://[::1]/source
+  ---
+  duration_ms: 0.255082
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://[::ffff:7f00:1]/source
+ok 44 - T14 refuses unsafe/unreviewed URL https://[::ffff:7f00:1]/source
+  ---
+  duration_ms: 0.236567
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://user:pass@evidence.synthetic.invalid/source
+ok 45 - T14 refuses unsafe/unreviewed URL https://user:pass@evidence.synthetic.invalid/source
+  ---
+  duration_ms: 0.245254
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid:444/source
+ok 46 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid:444/source
+  ---
+  duration_ms: 0.222722
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid./source
+ok 47 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid./source
+  ---
+  duration_ms: 0.214015
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/source\#private
+ok 48 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/source\#private
+  ---
+  duration_ms: 0.222271
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid\\@localhost/source
+ok 49 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid\\@localhost/source
+  ---
+  duration_ms: 0.222681
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evil.invalid/source
+ok 50 - T14 refuses unsafe/unreviewed URL https://evil.invalid/source
+  ---
+  duration_ms: 1.252229
+  type: 'test'
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ok 51 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  ---
+  duration_ms: 0.277285
+  type: 'test'
+  ...
+# Subtest: boundary checks: 20 fields, 10 URLs, 2 KiB strings, 16 KiB exact request, nesting/cycle/getters
+ok 52 - boundary checks: 20 fields, 10 URLs, 2 KiB strings, 16 KiB exact request, nesting/cycle/getters
+  ---
+  duration_ms: 2.652338
+  type: 'test'
+  ...
+# Subtest: T7/T8 owner-only private reads/revisions/withdrawals hide another contributor and absent IDs equally
+ok 53 - T7/T8 owner-only private reads/revisions/withdrawals hide another contributor and absent IDs equally
+  ---
+  duration_ms: 467.004166
+  type: 'test'
+  ...
+# Subtest: canonical lifecycle request_changes → author revision keeps original immutable snapshot and audit
+ok 54 - canonical lifecycle request_changes → author revision keeps original immutable snapshot and audit
+  ---
+  duration_ms: 536.914537
+  type: 'test'
+  ...
+# Subtest: atomic approve transition and review/audit coherence
+ok 55 - atomic approve transition and review/audit coherence
+  ---
+  duration_ms: 451.816462
+  type: 'test'
+  ...
+# Subtest: atomic reject transition and review/audit coherence
+ok 56 - atomic reject transition and review/audit coherence
+  ---
+  duration_ms: 421.123605
+  type: 'test'
+  ...
+# Subtest: atomic request_changes transition and review/audit coherence
+ok 57 - atomic request_changes transition and review/audit coherence
+  ---
+  duration_ms: 404.016641
+  type: 'test'
+  ...
+# Subtest: withdraw author submitted/in_review only; terminal and changes_requested deny without silent deletion
+ok 58 - withdraw author submitted/in_review only; terminal and changes_requested deny without silent deletion
+  ---
+  duration_ms: 598.709266
+  type: 'test'
+  ...
+# Subtest: T6 self-approval, forged role/author/status, revoked moderator and suspended identity deny
+ok 59 - T6 self-approval, forged role/author/status, revoked moderator and suspended identity deny
+  ---
+  duration_ms: 420.720032
+  type: 'test'
+  ...
+# Subtest: unresolved external identity uniqueness persists needs_review, including paired catalogue UUID; no auto-merge/publication
+ok 60 - unresolved external identity uniqueness persists needs_review, including paired catalogue UUID; no auto-merge/publication
+  ---
+  duration_ms: 487.764842
+  type: 'test'
+  ...
+# Subtest: T10 two moderators race on one submission: exactly [201,409] and coherent publication/feed
+ok 61 - T10 two moderators race on one submission: exactly [201,409] and coherent publication/feed
+  ---
+  duration_ms: 399.173528
+  type: 'test'
+  ...
+# Subtest: T10 distinct submissions same absent entity: one winner, stale loser 409
+ok 62 - T10 distinct submissions same absent entity: one winner, stale loser 409
+  ---
+  duration_ms: 461.885712
+  type: 'test'
+  ...
+# Subtest: T10 distinct submissions same existing entity: one winner, stale loser 409
+ok 63 - T10 distinct submissions same existing entity: one winner, stale loser 409
+  ---
+  duration_ms: 564.229474
+  type: 'test'
+  ...
+# Subtest: T11 same-key concurrent create and moderation replay exact stored response; different-key loser conflicts
+ok 64 - T11 same-key concurrent create and moderation replay exact stored response; different-key loser conflicts
+  ---
+  duration_ms: 422.984866
+  type: 'test'
+  ...
+# Subtest: T12 same key different payload/operation gives 422; principals cannot see/reuse stored results
+ok 65 - T12 same key different payload/operation gives 422; principals cannot see/reuse stored results
+  ---
+  duration_ms: 368.781089
+  type: 'test'
+  ...
+# Subtest: expiry minimum 24h: replay just before, reuse exactly at expiry; original records retained
+ok 66 - expiry minimum 24h: replay just before, reuse exactly at expiry; original records retained
+  ---
+  duration_ms: 301.642461
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after locked fault
+ok 67 - T17 full rollback and same-key retry after locked fault
+  ---
+  duration_ms: 367.214005
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after entity fault
+ok 68 - T17 full rollback and same-key retry after entity fault
+  ---
+  duration_ms: 366.428198
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after snapshot fault
+ok 69 - T17 full rollback and same-key retry after snapshot fault
+  ---
+  duration_ms: 369.071569
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after projection fault
+ok 70 - T17 full rollback and same-key retry after projection fault
+  ---
+  duration_ms: 409.316127
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after approved fault
+ok 71 - T17 full rollback and same-key retry after approved fault
+  ---
+  duration_ms: 378.530694
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after audit fault
+ok 72 - T17 full rollback and same-key retry after audit fault
+  ---
+  duration_ms: 378.704724
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after feed fault
+ok 73 - T17 full rollback and same-key retry after feed fault
+  ---
+  duration_ms: 377.906955
+  type: 'test'
+  ...
+# Subtest: T17 full rollback and same-key retry after sql fault
+ok 74 - T17 full rollback and same-key retry after sql fault
+  ---
+  duration_ms: 411.655914
+  type: 'test'
+  ...
+# Subtest: T17 idempotency insert and deferred commit failures rollback all effects and allow same-key retry
+ok 75 - T17 idempotency insert and deferred commit failures rollback all effects and allow same-key retry
+  ---
+  duration_ms: 501.055907
+  type: 'test'
+  ...
+# Subtest: database lock timeout returns safe 503; rollback releases locks and permits retry
+ok 76 - database lock timeout returns safe 503; rollback releases locks and permits retry
+  ---
+  duration_ms: 2428.736596
+  type: 'test'
+  ...
+# Subtest: T18 immutable publication/audit/review/feed; exported chain tamper detected; no audit mutation adapter
+ok 77 - T18 immutable publication/audit/review/feed; exported chain tamper detected; no audit mutation adapter
+  ---
+  duration_ms: 407.481386
+  type: 'test'
+  ...
+# Subtest: malformed, expired and revoked sessions safely reject actual handlers with 401 and sanitized logs
+ok 78 - malformed, expired and revoked sessions safely reject actual handlers with 401 and sanitized logs
+  ---
+  duration_ms: 411.32604
+  type: 'test'
+  ...
+# Subtest: validation rejects unknown envelope/schema/request fields; safe 400/401/403/404/409/422/503 taxonomy covered
+ok 79 - validation rejects unknown envelope/schema/request fields; safe 400/401/403/404/409/422/503 taxonomy covered
+  ---
+  duration_ms: 359.21477
+  type: 'test'
+  ...
+# Subtest: bounded queue/mine pagination returns 20 then remainder with microsecond stable cursor, no private payload leakage
+ok 80 - bounded queue/mine pagination returns 20 then remainder with microsecond stable cursor, no private payload leakage
+  ---
+  duration_ms: 1051.883667
+  type: 'test'
+  ...
+# Subtest: constraint-specific PostgreSQL recovery does not translate unrelated unique/SQL errors to conflict
+ok 81 - constraint-specific PostgreSQL recovery does not translate unrelated unique/SQL errors to conflict
+  ---
+  duration_ms: 307.920929
+  type: 'test'
+  ...
+# Subtest: reusable service snapshots caller data before awaiting authorization; actor remains session-derived
+ok 82 - reusable service snapshots caller data before awaiting authorization; actor remains session-derived
+  ---
+  duration_ms: 318.163436
+  type: 'test'
+  ...
+# Subtest: read role revocation is immediate; owner retains data but cannot bypass current capabilities
+ok 83 - read role revocation is immediate; owner retains data but cannot bypass current capabilities
+  ---
+  duration_ms: 322.516673
+  type: 'test'
+  ...
+# Subtest: exact idempotency collision recovery: unrelated unique violation remains SQL error
+ok 84 - exact idempotency collision recovery: unrelated unique violation remains SQL error
+  ---
+  duration_ms: 243.906892
+  type: 'test'
+  ...
+# Subtest: schemaVersion/unknown object/string/array value and sparse evidence boundaries fail closed
+ok 85 - schemaVersion/unknown object/string/array value and sparse evidence boundaries fail closed
+  ---
+  duration_ms: 227.473453
+  type: 'test'
+  ...
+# Subtest: stale expected entity/submission revisions, malformed reasons and retargeting have safe errors
+ok 86 - stale expected entity/submission revisions, malformed reasons and retargeting have safe errors
+  ---
+  duration_ms: 405.584868
+  type: 'test'
+  ...
+# Subtest: audit export sorts int8 numerically beyond nine and detects an omitted row/head tamper
+ok 87 - audit export sorts int8 numerically beyond nine and detects an omitted row/head tamper
+  ---
+  duration_ms: 625.393409
+  type: 'test'
+  ...
+1..87
+# tests 87
+# suites 0
+# pass 87
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 29979.455608
+TAP version 13
+Auth venue: PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+# Subtest: Auth extension upgrades seeded base sessions and repeats without altering original migration checksums
+ok 1 - Auth extension upgrades seeded base sessions and repeats without altering original migration checksums
+  ---
+  duration_ms: 303.806665
+  type: 'test'
+  ...
+# Subtest: incompatible cross-principal seeded family fails Auth migration atomically, preserving base data
+ok 2 - incompatible cross-principal seeded family fails Auth migration atomically, preserving base data
+  ---
+  duration_ms: 122.250283
+  type: 'test'
+  ...
+# Subtest: strict verified identity maps by issuer/subject; email/name/role claims grant no authority
+ok 3 - strict verified identity maps by issuer/subject; email/name/role claims grant no authority
+  ---
+  duration_ms: 263.273421
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject wrong issuer with 401
+ok 4 - T1/T4 strict claims reject wrong issuer with 401
+  ---
+  duration_ms: 131.226655
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject wrong audience with 401
+ok 5 - T1/T4 strict claims reject wrong audience with 401
+  ---
+  duration_ms: 130.12976
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject expired with 401
+ok 6 - T1/T4 strict claims reject expired with 401
+  ---
+  duration_ms: 125.164556
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject future iat with 401
+ok 7 - T1/T4 strict claims reject future iat with 401
+  ---
+  duration_ms: 130.874128
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject missing expiry with 401
+ok 8 - T1/T4 strict claims reject missing expiry with 401
+  ---
+  duration_ms: 125.550727
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject missing subject with 401
+ok 9 - T1/T4 strict claims reject missing subject with 401
+  ---
+  duration_ms: 124.228465
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject empty subject with 401
+ok 10 - T1/T4 strict claims reject empty subject with 401
+  ---
+  duration_ms: 123.607742
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject missing audience with 401
+ok 11 - T1/T4 strict claims reject missing audience with 401
+  ---
+  duration_ms: 120.525189
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject missing nonce with 401
+ok 12 - T1/T4 strict claims reject missing nonce with 401
+  ---
+  duration_ms: 122.717296
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject non-numeric expiry with 401
+ok 13 - T1/T4 strict claims reject non-numeric expiry with 401
+  ---
+  duration_ms: 126.719808
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject expiry before issued with 401
+ok 14 - T1/T4 strict claims reject expiry before issued with 401
+  ---
+  duration_ms: 120.845475
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject old credential with 401
+ok 15 - T1/T4 strict claims reject old credential with 401
+  ---
+  duration_ms: 131.647131
+  type: 'test'
+  ...
+# Subtest: T2 invalid signature, malformed/no token, none and HMAC confusion fail closed
+ok 16 - T2 invalid signature, malformed/no token, none and HMAC confusion fail closed
+  ---
+  duration_ms: 124.453381
+  type: 'test'
+  ...
+# Subtest: T2 unknown kid refreshes once; rotation succeeds; attacker URLs are never fetched
+ok 17 - T2 unknown kid refreshes once; rotation succeeds; attacker URLs are never fetched
+  ---
+  duration_ms: 125.170448
+  type: 'test'
+  ...
+# Subtest: T2 bounded cache expiry and unavailable provider never fall back to stale keys
+ok 18 - T2 bounded cache expiry and unavailable provider never fall back to stale keys
+  ---
+  duration_ms: 125.120623
+  type: 'test'
+  ...
+# Subtest: T2 cold unavailable/hanging provider, ambiguous/private keys and malformed JWKS deny
+ok 19 - T2 cold unavailable/hanging provider, ambiguous/private keys and malformed JWKS deny
+  ---
+  duration_ms: 176.362687
+  type: 'test'
+  ...
+# Subtest: T2 concurrent cold verification coalesces one bounded JWKS request
+ok 20 - T2 concurrent cold verification coalesces one bounded JWKS request
+  ---
+  duration_ms: 126.282822
+  type: 'test'
+  ...
+# Subtest: T3 nonce binding, expired challenge and credential replay cannot mint a second session
+ok 21 - T3 nonce binding, expired challenge and credential replay cannot mint a second session
+  ---
+  duration_ms: 211.668511
+  type: 'test'
+  ...
+# Subtest: T3 concurrent identical credential exchange consumes challenge exactly once
+ok 22 - T3 concurrent identical credential exchange consumes challenge exactly once
+  ---
+  duration_ms: 167.926106
+  type: 'test'
+  ...
+# Subtest: tokens are CSPRNG opaque, distinct by purpose; only hashes persisted, no raw credentials/nonce
+ok 23 - tokens are CSPRNG opaque, distinct by purpose; only hashes persisted, no raw credentials/nonce
+  ---
+  duration_ms: 170.145444
+  type: 'test'
+  ...
+# Subtest: T1 exact access expiry rejects; refresh can rotate before absolute family expiry
+ok 24 - T1 exact access expiry rejects; refresh can rotate before absolute family expiry
+  ---
+  duration_ms: 262.386463
+  type: 'test'
+  ...
+# Subtest: T3 refresh rotation revokes old access; replay commits family revocation and audit
+ok 25 - T3 refresh rotation revokes old access; replay commits family revocation and audit
+  ---
+  duration_ms: 284.158022
+  type: 'test'
+  ...
+# Subtest: T3 concurrent refresh has one winner and replay revokes even its newly issued access
+ok 26 - T3 concurrent refresh has one winner and replay revokes even its newly issued access
+  ---
+  duration_ms: 223.399896
+  type: 'test'
+  ...
+# Subtest: T1 logout is idempotent and family-scoped; other sign-in/account sessions remain isolated
+ok 27 - T1 logout is idempotent and family-scoped; other sign-in/account sessions remain isolated
+  ---
+  duration_ms: 354.402607
+  type: 'test'
+  ...
+# Subtest: T5 valid token from suspended/deleted principal gets 403, expired/revoked token 401
+ok 28 - T5 valid token from suspended/deleted principal gets 403, expired/revoked token 401
+  ---
+  duration_ms: 278.814353
+  type: 'test'
+  ...
+# Subtest: T5 role revocation takes effect on next request despite a still-live session
+ok 29 - T5 role revocation takes effect on next request despite a still-live session
+  ---
+  duration_ms: 286.286259
+  type: 'test'
+  ...
+# Subtest: T6 default deny, empty roles, unknown capability and JWT role injection
+ok 30 - T6 default deny, empty roles, unknown capability and JWT role injection
+  ---
+  duration_ms: 281.339971
+  type: 'test'
+  ...
+# Subtest: T6 strict allowlist rejects forged role/author/status in protected resource requests
+ok 31 - T6 strict allowlist rejects forged role/author/status in protected resource requests
+  ---
+  duration_ms: 183.461527
+  type: 'test'
+  ...
+# Subtest: T7/T8 ownership in query hides other private submissions and denies cross-user writes
+ok 32 - T7/T8 ownership in query hides other private submissions and denies cross-user writes
+  ---
+  duration_ms: 287.573103
+  type: 'test'
+  ...
+# Subtest: T8/T22 moderator/admin capabilities and actor != author enforced server-side
+ok 33 - T8/T22 moderator/admin capabilities and actor != author enforced server-side
+  ---
+  duration_ms: 365.202639
+  type: 'test'
+  ...
+# Subtest: T22 admin cannot self-grant; operator capability/role stays outside application roles
+ok 34 - T22 admin cannot self-grant; operator capability/role stays outside application roles
+  ---
+  duration_ms: 286.989279
+  type: 'test'
+  ...
+# Subtest: T5 administrator suspension is immediate, audited and cannot resurrect deleted principal
+ok 35 - T5 administrator suspension is immediate, audited and cannot resurrect deleted principal
+  ---
+  duration_ms: 325.315658
+  type: 'test'
+  ...
+# Subtest: T9/T22 public database role has no private-table or privileged-function access
+ok 36 - T9/T22 public database role has no private-table or privileged-function access
+  ---
+  duration_ms: 185.993537
+  type: 'test'
+  ...
+# Subtest: T9/T22 local transport exposes no audit mutation or arbitrary RPC, even to admin
+ok 37 - T9/T22 local transport exposes no audit mutation or arbitrary RPC, even to admin
+  ---
+  duration_ms: 175.837413
+  type: 'test'
+  ...
+# Subtest: login audit failure rolls back identity/challenge/family/session atomically, then same credential retries
+ok 38 - login audit failure rolls back identity/challenge/family/session atomically, then same credential retries
+  ---
+  duration_ms: 217.763573
+  type: 'test'
+  ...
+# Subtest: refresh audit failure rolls back consumption/revocation/new tokens and preserves old session
+ok 39 - refresh audit failure rolls back consumption/revocation/new tokens and preserves old session
+  ---
+  duration_ms: 247.024521
+  type: 'test'
+  ...
+# Subtest: logout and admin role changes roll back when mandatory audit append fails
+ok 40 - logout and admin role changes roll back when mandatory audit append fails
+  ---
+  duration_ms: 281.816313
+  type: 'test'
+  ...
+# Subtest: secret-safe error envelope/logs distinguish 401/403/400/503 without request/token/SQL leaks
+ok 41 - secret-safe error envelope/logs distinguish 401/403/400/503 without request/token/SQL leaks
+  ---
+  duration_ms: 183.97607
+  type: 'test'
+  ...
+# Subtest: self-grant and self-suspension cannot bypass guards using uppercase UUID spellings
+ok 42 - self-grant and self-suspension cannot bypass guards using uppercase UUID spellings
+  ---
+  duration_ms: 164.169218
+  type: 'test'
+  ...
+# Subtest: issuer/subject identity isolation includes identical subject under another configured issuer
+ok 43 - issuer/subject identity isolation includes identical subject under another configured issuer
+  ---
+  duration_ms: 146.026344
+  type: 'test'
+  ...
+# Subtest: strict audience is the exact configured value, not an unexpected multi-audience envelope
+ok 44 - strict audience is the exact configured value, not an unexpected multi-audience envelope
+  ---
+  duration_ms: 68.94235
+  type: 'test'
+  ...
+# Subtest: clock rollback cannot activate sessions or refresh records before issuance
+ok 45 - clock rollback cannot activate sessions or refresh records before issuance
+  ---
+  duration_ms: 138.574326
+  type: 'test'
+  ...
+# Subtest: configured ES256 verification uses public EC keys and still rejects RSA/HS algorithm substitutions
+ok 46 - configured ES256 verification uses public EC keys and still rejects RSA/HS algorithm substitutions
+  ---
+  duration_ms: 4.286119
+  type: 'test'
+  ...
+# Subtest: concurrent identity creation from separate challenges converges to one principal and two isolated families
+ok 47 - concurrent identity creation from separate challenges converges to one principal and two isolated families
+  ---
+  duration_ms: 138.942593
+  type: 'test'
+  ...
+# Subtest: malformed credential and provider outage create no identity/session or consumed challenge
+ok 48 - malformed credential and provider outage create no identity/session or consumed challenge
+  ---
+  duration_ms: 87.034358
+  type: 'test'
+  ...
+# Subtest: unavailable/malformed clock is a 503 denial, never a bypass of expiry or JWT dates
+ok 49 - unavailable/malformed clock is a 503 denial, never a bypass of expiry or JWT dates
+  ---
+  duration_ms: 151.280905
+  type: 'test'
+  ...
+# Subtest: future-dated role grants are not effective before their server timestamp
+ok 50 - future-dated role grants are not effective before their server timestamp
+  ---
+  duration_ms: 182.350866
+  type: 'test'
+  ...
+1..50
+# tests 50
+# suites 0
+# pass 50
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10967.3391
+TAP version 13
+PostgreSQL version: PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+# Subtest: empty PostgreSQL 17 migrations create all entities and a pre-existing genesis head
+ok 1 - empty PostgreSQL 17 migrations create all entities and a pre-existing genesis head
+  ---
+  duration_ms: 140.446608
+  type: 'test'
+  ...
+# Subtest: seeded v1 to v2 migration preserves principals, roles and quota accounting
+ok 2 - seeded v1 to v2 migration preserves principals, roles and quota accounting
+  ---
+  duration_ms: 163.406034
+  type: 'test'
+  ...
+# Subtest: repeat and concurrent migrations are idempotent and checksum drift fails closed
+ok 3 - repeat and concurrent migrations are idempotent and checksum drift fails closed
+  ---
+  duration_ms: 156.547509
+  type: 'test'
+  ...
+# Subtest: failed migration rolls back DDL and its ledger entry, preserving seeded v1
+ok 4 - failed migration rolls back DDL and its ledger entry, preserving seeded v1
+  ---
+  duration_ms: 143.825981
+  type: 'test'
+  ...
+# Subtest: principal, external identity and active-role uniqueness; explicit soft revocation history
+ok 5 - principal, external identity and active-role uniqueness; explicit soft revocation history
+  ---
+  duration_ms: 137.407408
+  type: 'test'
+  ...
+# Subtest: orphan FKs for identity, actor, mapping, session, revision, review, audit and publication reject
+ok 6 - orphan FKs for identity, actor, mapping, session, revision, review, audit and publication reject
+  ---
+  duration_ms: 145.108659
+  type: 'test'
+  ...
+# Subtest: deferred current-revision FK permits atomic creation but rejects dangling pointers at COMMIT
+ok 7 - deferred current-revision FK permits atomic creation but rejects dangling pointers at COMMIT
+  ---
+  duration_ms: 139.110901
+  type: 'test'
+  ...
+# Subtest: session rotation family/ownership, expiry and quota checks are physical constraints
+ok 8 - session rotation family/ownership, expiry and quota checks are physical constraints
+  ---
+  duration_ms: 124.92301
+  type: 'test'
+  ...
+# Subtest: revision chain requires contiguous versions and matching previous/content hashes
+ok 9 - revision chain requires contiguous versions and matching previous/content hashes
+  ---
+  duration_ms: 143.173607
+  type: 'test'
+  ...
+# Subtest: only documented server transitions; changes_requested creates a new immutable revision
+ok 10 - only documented server transitions; changes_requested creates a new immutable revision
+  ---
+  duration_ms: 144.905754
+  type: 'test'
+  ...
+# Subtest: state transition without matching audit/review cannot commit
+ok 11 - state transition without matching audit/review cannot commit
+  ---
+  duration_ms: 129.423985
+  type: 'test'
+  ...
+# Subtest: immutable revision, published revision, review, audit and feed reject UPDATE/DELETE/TRUNCATE
+ok 12 - immutable revision, published revision, review, audit and feed reject UPDATE/DELETE/TRUNCATE
+  ---
+  duration_ms: 183.188751
+  type: 'test'
+  ...
+# Subtest: publication snapshot, target kind and actor-author checks reject invalid publication
+ok 13 - publication snapshot, target kind and actor-author checks reject invalid publication
+  ---
+  duration_ms: 141.575283
+  type: 'test'
+  ...
+# Subtest: atomic publication rollback after locked leaves all tables/head/key unchanged
+ok 14 - atomic publication rollback after locked leaves all tables/head/key unchanged
+  ---
+  duration_ms: 159.827404
+  type: 'test'
+  ...
+# Subtest: atomic publication rollback after publication leaves all tables/head/key unchanged
+ok 15 - atomic publication rollback after publication leaves all tables/head/key unchanged
+  ---
+  duration_ms: 162.870301
+  type: 'test'
+  ...
+# Subtest: atomic publication rollback after approved leaves all tables/head/key unchanged
+ok 16 - atomic publication rollback after approved leaves all tables/head/key unchanged
+  ---
+  duration_ms: 174.438477
+  type: 'test'
+  ...
+# Subtest: atomic publication rollback after audit leaves all tables/head/key unchanged
+ok 17 - atomic publication rollback after audit leaves all tables/head/key unchanged
+  ---
+  duration_ms: 159.197342
+  type: 'test'
+  ...
+# Subtest: atomic publication rollback after feed leaves all tables/head/key unchanged
+ok 18 - atomic publication rollback after feed leaves all tables/head/key unchanged
+  ---
+  duration_ms: 166.782953
+  type: 'test'
+  ...
+# Subtest: atomic publication rollback after idempotency leaves all tables/head/key unchanged
+ok 19 - atomic publication rollback after idempotency leaves all tables/head/key unchanged
+  ---
+  duration_ms: 167.527843
+  type: 'test'
+  ...
+# Subtest: stored response replay, mismatch 422, principal isolation and >=24-hour expiry/reuse
+ok 20 - stored response replay, mismatch 422, principal isolation and >=24-hour expiry/reuse
+  ---
+  duration_ms: 198.6384
+  type: 'test'
+  ...
+# Subtest: F3 new-schema unique collision recovers transaction using exact constraint/savepoint
+ok 21 - F3 new-schema unique collision recovers transaction using exact constraint/savepoint
+  ---
+  duration_ms: 135.808864
+  type: 'test'
+  ...
+# Subtest: F1 physical-schema same-submission contention is serialized; loser is ordinary conflict
+ok 22 - F1 physical-schema same-submission contention is serialized; loser is ordinary conflict
+  ---
+  duration_ms: 151.707613
+  type: 'test'
+  ...
+# Subtest: F1 new regression: different submissions for same absent entity compare target revision atomically
+ok 23 - F1 new regression: different submissions for same absent entity compare target revision atomically
+  ---
+  duration_ms: 164.925259
+  type: 'test'
+  ...
+# Subtest: F4 physical audit triggers serialize independent appenders, rollback head, export and detect tampering
+ok 24 - F4 physical audit triggers serialize independent appenders, rollback head, export and detect tampering
+  ---
+  duration_ms: 178.596093
+  type: 'test'
+  ...
+# Subtest: F5 driver-default int8, prepared statements and safe JSON boundaries are lossless or rejected
+ok 25 - F5 driver-default int8, prepared statements and safe JSON boundaries are lossless or rejected
+  ---
+  duration_ms: 116.126417
+  type: 'test'
+  ...
+# Subtest: F5 unsafe next entity revision fails before write and leaves transaction consistent
+ok 26 - F5 unsafe next entity revision fails before write and leaves transaction consistent
+  ---
+  duration_ms: 150.005843
+  type: 'test'
+  ...
+# Subtest: restricted local role cannot mutate history/head or invoke ungranted definer functions
+ok 27 - restricted local role cannot mutate history/head or invoke ungranted definer functions
+  ---
+  duration_ms: 150.269942
+  type: 'test'
+  ...
+# Subtest: different submissions for an existing entity serialize target revision comparison
+ok 28 - different submissions for an existing entity serialize target revision comparison
+  ---
+  duration_ms: 178.777936
+  type: 'test'
+  ...
+# Subtest: concurrent identical-key local publication returns one stored effect and replay
+ok 29 - concurrent identical-key local publication returns one stored effect and replay
+  ---
+  duration_ms: 163.815589
+  type: 'test'
+  ...
+# Subtest: non-idempotency uniqueness failure is not converted to replay; savepoint keeps transaction usable
+ok 30 - non-idempotency uniqueness failure is not converted to replay; savepoint keeps transaction usable
+  ---
+  duration_ms: 139.598343
+  type: 'test'
+  ...
+# Subtest: role and session identifiers/history cannot be rewritten; active revocation remains possible
+ok 31 - role and session identifiers/history cannot be rewritten; active revocation remains possible
+  ---
+  duration_ms: 127.377462
+  type: 'test'
+  ...
+# Subtest: new immutable revision without atomic header advancement cannot commit
+ok 32 - new immutable revision without atomic header advancement cannot commit
+  ---
+  duration_ms: 139.73961
+  type: 'test'
+  ...
+# Subtest: typed existing target FK and publication kind/evidence cannot disagree
+ok 33 - typed existing target FK and publication kind/evidence cannot disagree
+  ---
+  duration_ms: 171.245145
+  type: 'test'
+  ...
+# Subtest: bounded lock wait preserves native SQLSTATE and rolls back rather than hiding it as conflict
+ok 34 - bounded lock wait preserves native SQLSTATE and rolls back rather than hiding it as conflict
+  ---
+  duration_ms: 2173.1143
+  type: 'test'
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 34
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10482.198193
+PASS: canonical policy, thin agent references, Cursor frontmatter and local Wiki navigation; runtime agent loading NOT TESTED
+PASS goldberg-0.6.0-format1.json: schema 4 → 10 DDL, every original portable field retained
+PASS goldberg-0.9.1-format2.json: schema 6 → 10 DDL, every original portable field retained
+PASS goldberg-0.9.2-format3.json: schema 7 → 10 DDL, every original portable field retained
+PASS: 106 sessions across 4 pages, equal timestamps, duplicate parts, legacy attribution, catalogue filtering, newer insert and empty result
+PASS: untimed legacy association visible once; original time unchanged
+PASS: 951 English/Czech resources, matching placeholders, Czech plural forms and declared locales
+PASS v1 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v2 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v3 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v4 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v5 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v6 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v7 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v8 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v9 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests

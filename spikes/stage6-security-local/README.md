@@ -44,7 +44,7 @@ The historical T22 probe observed400 without dispatch; that FAIL evidence remain
 The owner explicitly approved the current local routing correction: absent valid
 operation403, malformed operation/body400, registered missing/invalid session401,
 capability/self-grant403. Current38 scripted-storage T22 tests pass; T22 remains
-PARTIAL pending updated PostgreSQL execution. No new endpoint or privilege.
+LOCAL PASS after the verified version3 PostgreSQL run; overall6.12 PARTIAL. No new endpoint or privilege.
 
 No full T14 fetch/redirect/rebinding assertion, T15 HTTP/browser scenario, T19
 restore/RPO drill, Android runtime or actual network privacy assertion was executed.
@@ -99,9 +99,8 @@ cleanup is evidenced by the retained host removal output, not a new inventory pa
 
 Version3 local runner also executes38 T22 and11 shared-contract tests; reporting
 includes these summaries when present and fails closed on missing summaries. Final
-current evidence:108 Node +11 Python =119 PASS, separately from the pre-patch host296.
-Current PG suites have not run in the denied socket venue; run on permitted host
-only. The old87 handler/34 integration/32 unit sources change only the authorized
+prior patch evidence:108 Node +11 Python =119 PASS, separately from the pre-patch host296.
+The owner has now executed the current v3 PG suites on Fedora; see the verified post-T22 run, not the old agent socket failure. The old87 handler/34 integration/32 unit sources change only the authorized
 absent-operation status assertion; no old logs or manifests are overwritten.
 
 `contracts/admin/v1` has30 actual in-process/scripted-storage captures,11 inactive
@@ -111,3 +110,14 @@ contract proof. G10 stays closed; live networking/actions remain disabled. No St
 files changed. Use `python3 spikes/stage6-security-local/verify_contract.py` to verify
 source/corpus hashes and the read-only client snapshot. Corpus changes must be
 reviewed and intentionally rehashed; never silently auto-approve a new dialect.
+
+## Post-T22 version3 host evidence
+
+Owner-tested6d0abad: outer108 + nested237 =345 successful executions;313 tests
+counting repeated32 unit suite once;205 actual PostgreSQL-backed bodies. Nine TAP
+summaries/body counts, explicit nested exit0,82 source hashes, exact stdout linkage,
+five checks in both runners and removal output verified. T22 LOCAL PASS; no HTTP,
+hosted or Android-runtime acceptance implied. `post_t22_evidence.py` verifies the
+new immutable raw manifests independently of availability flags and preserves old
+296/264 evidence. Additional evidence/reporting regressions are separate tool tests.
+G10 remains closed; G1–G9/G11 stay integration-blocked;6.12 overall PARTIAL.
