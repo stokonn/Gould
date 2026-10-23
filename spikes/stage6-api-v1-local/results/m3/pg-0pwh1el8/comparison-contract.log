@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/verify-m3.py", line 35, in <module>
+    if len(sys.argv)==3 and sys.argv[1]=='--captures':captures(Path(sys.argv[2]))
+                                                      ~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/verify-m3.py", line 12, in captures
+    values=json.loads(path.read_text());assert values
+                      ~~~~~~~~~~~~~~^^
+  File "/usr/lib64/python3.14/pathlib/__init__.py", line 787, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/results/m3/pg-0pwh1el8/detail-captures.json'

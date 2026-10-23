@@ -8,6 +8,7 @@ import {ApiError,invalid,unauthenticated,unavailable} from '../../stage6-auth-lo
 import {CommunityApi} from '../../stage6-handlers-local/src/local-api.mjs';
 import {ModerationService} from '../../stage6-handlers-local/src/moderation.mjs';
 import {latestDetail} from './detail.mjs';
+import {currentComparison} from './comparison.mjs';
 import {PublicReceipts} from './receipts.mjs';
 import {Validator,text} from '../../stage6-handlers-local/src/validation.mjs';
 import {object,secret,id,decimal,localRevision,readRevision,timestamp,parseBody} from './wire.mjs';
@@ -30,11 +31,16 @@ export class PublicAdapter {
    object(request,['method','path','headers','body'],['method','path']);
    const {method,path}=request;
    if(typeof method!=='string'||!/^[A-Z]+$/.test(method)||typeof path!=='string'||!path.startsWith('/')||path.includes('#'))throw invalid();
-   // No supported operation takes query parameters. Reject rather than discard them.
-   if(path.includes('?'))throw invalid();
+   const comparison=/^\/v1\/admin\/entities\/([^/?]+)\/comparison(?:\?(.*))?$/.exec(path);
+   let comparisonSubmission;
+   if(comparison){
+    // Canonical UUID only: no duplicate/extra/encoded parameters or discarded query.
+    const query=/^submissionId=([0-9a-f-]+)$/.exec(comparison[2]??'');
+    if(!query)throw invalid();comparisonSubmission=id(query[1]);id(comparison[1]);
+   }else if(path.includes('?'))throw invalid();
    const match=/^\/v1\/admin\/submissions\/([^/]+)\/(open|decisions)$/.exec(path);
    const detail=/^\/v1\/admin\/submissions\/([^/]+)$/.exec(path);
-   const methods=match?['POST']:detail?['GET']:known.get(path);
+   const methods=comparison?['GET']:match?['POST']:detail?['GET']:known.get(path);
    if(!methods)throw new ApiError(404,'not_found','Resource not found');
    if(!methods.includes(method)){allow=methods.join(', ');throw new ApiError(405,'method_not_allowed','Method not allowed');}
    const headers=request.headers??{};object(headers,Object.keys(headers));const normalized=Object.create(null);
@@ -52,6 +58,7 @@ export class PublicAdapter {
     return result;
    };
    const dto=(fields)=>({schemaVersion:1,requestId,...fields});
+   if(comparison)return response(200,await currentComparison(this,token(),id(comparison[1]),comparisonSubmission,requestId));
    if(detail)return response(200,await latestDetail(this,token(),id(detail[1]),requestId));
    if(match){
     const submissionId=id(match[1]),opening=match[2]==='open';

@@ -1,3 +1,41 @@
+## Local API M3 — VERIFIED; source publication pending (2026-10-23)
+
+Purpose: expose approved authorized live Comparison for moderation conflict recovery.
+Scope: isolated API adapter/projection, tests/runner/evidence and tracking docs only;
+native services/schema/migrations/Android and Stage7B untouched. Branch
+`feature/goldberg-0.11-stage-6-api-v1-local`; starting HEAD
+`fdbfbe06fcd3faf939d4f6a90cbdeac8ee683e67`. M2 remains published.
+
+- [x] Recover durable checkpoints/contracts/O1–O8/M1/M2, inspect branch/status/ancestry,
+  exact remote SHA/releases/Issue31; preserve legitimate work/history.
+- [x] Strict local GET `/v1/admin/entities/{id}/comparison?submissionId={id}`;
+  live session/queue.read, denied404, exact submission/entity binding, one coherent
+  SQL content snapshot, explicit approved DTO, decimal-string live revision/hash/status.
+- [x] Detail retains recorded expectedEntityRevision/current submissionRevision/exact
+  timestamps. Comparison never relabels baseline, substitutes proposal values,
+  mutates moderation or retries decisions; later decisions still validate both revisions.
+- [x] Default-deny real policies; exact allowlisted text/evidence only, no private
+  provenance. Absent/unmapped/projection_unavailable; no truncation or raw rows.
+- [x] Actual PostgreSQL17.11:16 M3 +19 M2 PASS;106 adapter/wire +38 T22 scripted/unit
+  regressions and18 planning tests PASS.22 actual PG Comparison DTO captures match
+  schema. Zero failures/skips/cancellations in final run; failed attempts retained.
+- [x] Current source/raw hashes/protected baseline PASS; exact disposable container
+  AND recorded volume removed/absence verified. Evidence `results/m3/pg-ygh16ba3`.
+- [ ] Commit/ordinary push/exact remote readback, final Issue31 checkpoint.
+
+No cross-request snapshot promise; Comparison intentionally has no proposal revision
+or timestamp fields. Detail supplies recorded intent separately; client reconfirmation
+remains deferred. Public /v1 UNCONFIRMED; full-int8 writes separate; production
+policies empty/default-deny. G10 CLOSED,6.12 PARTIAL,6.17 NOT FROZEN; no formal6.13–6.18,
+HTTP/Android/APK/screenshots/device/hosted/cloud/OAuth/merge/deploy/release. Stage7A
+FINAL ACCEPTED; X10 NOT FIXED/NOT VERIFIED, deferred Gould0.12. Issue31 OPEN /
+Goldberg Development In Progress. Next smallest milestone: separately authorized
+client Detail/Comparison refetch and explicit reconfirmation integration; no policy activation.
+
+[Full milestone ledger](stage-6/API-V1-LOCAL-M3.md).
+
+---
+
 ## Local API M2 — VERIFIED / SOURCE PUBLISHED (2026-10-23)
 
 Purpose: bounded authoritative Detail/refetch and actual disposable PostgreSQL

@@ -1,0 +1,2 @@
+PASS: 22 actual PostgreSQL-backed Comparison responses match approved exact DTO schema; synthetic content only.
+PASS:16 M3 +19 M2 actual PostgreSQL tests,106 adapter/wire +38 T22 scripted/unit regressions,18 planning tests; zero failures/skips; current source/raw hashes/cleanup/protected baseline verified. No HTTP/Android/full-int8-write/production compatibility acceptance.

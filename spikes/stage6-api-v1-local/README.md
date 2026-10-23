@@ -1,3 +1,17 @@
+## Local M3 Comparison — verified
+
+Strict in-process GET `/v1/admin/entities/{id}/comparison?submissionId={id}` now
+projects approved live values; Detail retains recorded baseline/proposal semantics.
+Real policies remain empty/default-deny. Run `python3 spikes/stage6-api-v1-local/run-m3-postgres.py`
+from repository root for isolated disposable PostgreSQL acceptance. Verify the saved
+run with `verify-m3.py RUN_DIRECTORY`. M2 evidence remains historical, byte-preserved;
+its current-source checker is bound to its pre-M3 source.
+
+[Scope, executed results, limitations and continuity](../../docs/planning/goldberg-0.11/stage-6/API-V1-LOCAL-M3.md).
+No listener/Android/public compatibility/production activation or release acceptance.
+
+---
+
 # Current: local API M2 — verified Detail and PostgreSQL
 
 GET `/v1/admin/submissions/{id}` now provides the approved bounded Detail. See
