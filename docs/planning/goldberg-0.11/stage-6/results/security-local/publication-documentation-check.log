@@ -1,0 +1,3 @@
+Initial publication draft diff check flagged one added blank line at EOF.
+Retained e5166af without rewriting history; following documentation-only commit removes the blank line.
+No service/test behavior or raw test evidence changed.
