@@ -1,0 +1,173 @@
+{
+  "conclusion": "success",
+  "headSha": "3a4aac27e2eb8ae70716538d86acd374cdd38077",
+  "jobs": [
+    {
+      "completedAt": "2026-10-23T21:11:33Z",
+      "conclusion": "success",
+      "databaseId": 120652718818,
+      "name": "stage7b full instrumentation \u2014 API 36",
+      "startedAt": "2026-10-23T20:57:38Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-23T20:57:40Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-23T20:57:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T20:57:43Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 2,
+          "startedAt": "2026-10-23T20:57:40Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T20:57:43Z",
+          "conclusion": "success",
+          "name": "Record verified source commit",
+          "number": 3,
+          "startedAt": "2026-10-23T20:57:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T20:57:43Z",
+          "conclusion": "success",
+          "name": "Fetch immutable Stage 7B contract provenance",
+          "number": 4,
+          "startedAt": "2026-10-23T20:57:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T20:57:44Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3",
+          "number": 5,
+          "startedAt": "2026-10-23T20:57:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T20:58:06Z",
+          "conclusion": "success",
+          "name": "Set up required Android SDK packages",
+          "number": 6,
+          "startedAt": "2026-10-23T20:57:44Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T20:58:15Z",
+          "conclusion": "success",
+          "name": "Install emulator audio runtime library",
+          "number": 7,
+          "startedAt": "2026-10-23T20:58:06Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T20:58:15Z",
+          "conclusion": "success",
+          "name": "Enable KVM group perms",
+          "number": 8,
+          "startedAt": "2026-10-23T20:58:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T20:58:16Z",
+          "conclusion": "success",
+          "name": "Record SDK, KVM and emulator diagnostics",
+          "number": 9,
+          "startedAt": "2026-10-23T20:58:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T21:05:58Z",
+          "conclusion": "success",
+          "name": "Build app, JVM tests, instrumentation APKs and lint",
+          "number": 10,
+          "startedAt": "2026-10-23T20:58:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T21:05:58Z",
+          "conclusion": "success",
+          "name": "Stage 7B host policy and contract checks",
+          "number": 11,
+          "startedAt": "2026-10-23T21:05:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T21:05:59Z",
+          "conclusion": "success",
+          "name": "Validate emulator script",
+          "number": 12,
+          "startedAt": "2026-10-23T21:05:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T21:11:23Z",
+          "conclusion": "success",
+          "name": "Run full instrumentation suite on the emulator",
+          "number": 13,
+          "startedAt": "2026-10-23T21:05:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T21:11:23Z",
+          "conclusion": "success",
+          "name": "Summarize instrumentation results",
+          "number": 14,
+          "startedAt": "2026-10-23T21:11:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T21:11:25Z",
+          "conclusion": "success",
+          "name": "Upload instrumentation evidence",
+          "number": 15,
+          "startedAt": "2026-10-23T21:11:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T21:11:32Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3",
+          "number": 29,
+          "startedAt": "2026-10-23T21:11:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T21:11:32Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 30,
+          "startedAt": "2026-10-23T21:11:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-23T21:11:32Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 31,
+          "startedAt": "2026-10-23T21:11:32Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/stokonn/Goldberg/actions/runs/40023191770/job/120652718818"
+    },
+    {
+      "completedAt": "2026-10-23T20:57:36Z",
+      "conclusion": "skipped",
+      "databaseId": 120652721138,
+      "name": "5.11 acceptance subset \u2014 API 36 emulator",
+      "startedAt": "2026-10-23T20:57:37Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/stokonn/Goldberg/actions/runs/40023191770/job/120652721138"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/stokonn/Goldberg/actions/runs/40023191770"
+}

@@ -1,0 +1,1394 @@
+{
+  "stage5-ci-results/ui-start.txt": {
+    "bytes": 162,
+    "sha256": "bf27d3458d5f5248e6b41499cb71de80c68303163a3610ae4fa29b7125fc3b31"
+  },
+  "stage5-ci-results/sdk-packages.txt": {
+    "bytes": 4927,
+    "sha256": "52fafa87886aa7bb8c7eb3749b8fa2bae3e611572954e0db3e1870728fafa935"
+  },
+  "stage5-ci-results/source-commit.txt": {
+    "bytes": 163,
+    "sha256": "e29cfd45ecc423107207f3cccdb914ad7dd6b4e1c6e30c89d69106d83ef3d892"
+  },
+  "stage5-ci-results/smoke-install.txt": {
+    "bytes": 36,
+    "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+  },
+  "stage5-ci-results/screencap.err": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stage5-ci-results/kvm.txt": {
+    "bytes": 57,
+    "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+  },
+  "stage5-ci-results/provenance-preflight.txt": {
+    "bytes": 168,
+    "sha256": "06bd8767ec0f685726674d870f3c561f5baca9fbf4034a1259242648386dc09b"
+  },
+  "stage5-ci-results/logcat.txt": {
+    "bytes": 12710207,
+    "sha256": "2289cbf00ee599f4450cb155be822d7dd309dbbce92ad25756e14756ce589509"
+  },
+  "stage5-ci-results/java-version.txt": {
+    "bytes": 193,
+    "sha256": "8ffd2d05de22acb2a1f82845905d499e807c7595cf7c3e7f2a2cab7e576a26de"
+  },
+  "stage5-ci-results/instrumentation-gradle.log": {
+    "bytes": 5645,
+    "sha256": "43771a333a94215a084aba6d8ff73baa4f46040c1de361b067f9c3732d61deec"
+  },
+  "stage5-ci-results/instrumentation-counts.txt": {
+    "bytes": 63,
+    "sha256": "b28a192a9732b2ae548a9947e2ffff74650245e95c9835aaaeb34b508ac47d83"
+  },
+  "stage5-ci-results/host-gradle.log": {
+    "bytes": 10626,
+    "sha256": "60f4dc9a434825596b8898ddfd277121607b9f07b9620ba5ff9aa692f3e6881c"
+  },
+  "stage5-ci-results/emulator-identity.txt": {
+    "bytes": 160,
+    "sha256": "0904e136271c9c504da36fcb10070384abd30bf0d25e133d460d59d7f9469216"
+  },
+  "stage5-ci-results/final-screen.png": {
+    "bytes": 159119,
+    "sha256": "acf32fbed535e4b7be69903410a26fd45a5d96c4eb7192141c00d7e7cd8f412c"
+  },
+  "stage5-ci-results/emulator-version.txt": {
+    "bytes": 655,
+    "sha256": "ea36a35958c14ba5f003d0e68087a01947b2b1e7d3c26286417430ced3f2b811"
+  },
+  "stage5-ci-results/check-localization.log": {
+    "bytes": 99,
+    "sha256": "c8079382d18ef84a1881bcd67635ad55efb6c597064a02d5fd764d855adea50c"
+  },
+  "stage5-ci-results/disk-usage.txt": {
+    "bytes": 89,
+    "sha256": "c55ac4956756574b86dd3f6d9046bd914e7c8b2524aa2a1681a272e68b725b67"
+  },
+  "stage5-ci-results/check-migrations.log": {
+    "bytes": 1017,
+    "sha256": "2683781d9410ad99f7634585601998139ec4b944eac46ce57c400c71c7b60aa6"
+  },
+  "stage5-ci-results/check-agent_policy.log": {
+    "bytes": 126,
+    "sha256": "a8d9aed2cee3751fe47bb59393012b73900212cb963edd81f04e0b9cc307c4bb"
+  },
+  "stage5-ci-results/check-history_paging.log": {
+    "bytes": 212,
+    "sha256": "230d3f7596e00d9295a1a11890eddeb7bd82b4d4fcfb0db5a47e2d1b79d6ac78"
+  },
+  "stage5-ci-results/check-backup_fixtures.log": {
+    "bytes": 282,
+    "sha256": "c23f2f40581ef10309656bde7231951d9b70ff3869606898d72e744dff54db4e"
+  },
+  "stage5-ci-results/check-admin_contract_fixtures.log": {
+    "bytes": 168,
+    "sha256": "06bd8767ec0f685726674d870f3c561f5baca9fbf4034a1259242648386dc09b"
+  },
+  "stage5-ci-results/app-smoke.png": {
+    "bytes": 159119,
+    "sha256": "acf32fbed535e4b7be69903410a26fd45a5d96c4eb7192141c00d7e7cd8f412c"
+  },
+  "stage5-ci-results/adb-devices.txt": {
+    "bytes": 47,
+    "sha256": "56ecd6ef0cc63935dccb7816ebed2d058f6ee037867f849447a1a2e566ab7488"
+  },
+  "stage5-ci-results/activity.txt": {
+    "bytes": 29970,
+    "sha256": "9fdb20cd32a23a3493457eaa76b06a0c0e58c31ed6dd0358d14507a665eb4862"
+  },
+  "app/build/reports/lint-results-debug.xml": {
+    "bytes": 149127,
+    "sha256": "37b5665a4b4887ab45fb2deb0be0d6a3b6cf8ef90706d29cb133210dd9ea1344"
+  },
+  "app/build/reports/lint-results-debug.html": {
+    "bytes": 350896,
+    "sha256": "c6722a435820094f1afb36067bab85a63b67cb51c09fb4125159482332903c5f"
+  },
+  "app/build/reports/lint-results-debug.txt": {
+    "bytes": 55658,
+    "sha256": "daa6cc30e718ab66f0475c7892065c6f1efcfccdb6d11c7e304988aab9845c03"
+  },
+  "app/build/outputs/logs/manifest-merger-debug-report.txt": {
+    "bytes": 99041,
+    "sha256": "1c47868d8e3548517ff292293ca361519c2a9ca8e27b7b91c88151bec2de1a2e"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/test-result.pb": {
+    "bytes": 167746,
+    "sha256": "ed42b53738579e96f861d54210dd225633ae564055bbed78821a41b649595f0e"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/test-result-exit-code.txt": {
+    "bytes": 1,
+    "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/TEST-emulator-5554 - 16-_app-.xml": {
+    "bytes": 42523,
+    "sha256": "1c059435f699c25031d80e09be4496726aab65fc959ecd794b853407d271ec50"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/test-result.textproto": {
+    "bytes": 291391,
+    "sha256": "1e74ad246a1419fa72b2ad50b7fadac084509fe1a005f6ebac141d0628be8819"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/test-result.pb": {
+    "bytes": 167772,
+    "sha256": "b08315a10bbfb03a639fe8ec30e1e3e5cdac3b91b1b6cddc2331583bc9f44def"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/meminfo": {
+    "bytes": 1292,
+    "sha256": "5ab44a69ab864f730577d6e177a8e0659a7d4000ee1aca006eb4381d4164463d"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7bAdminRuntimeTest-savedEndpointAndKeystoreTokenCannotEnableApplicationNetworking.txt": {
+    "bytes": 315,
+    "sha256": "39250d4122e14249a7366c80cc4f1b3c73b40e05c837679873dc1c528104229d"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7bAdminRuntimeTest-nativeJsonPreservesExactAuditBigintAndRejectsRevisionOverflow.txt": {
+    "bytes": 313,
+    "sha256": "66e913611ca8f0641c0b2c1248239cb4328029a3a0d8dc6cdf469a9145e7f082"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7bAdminRuntimeTest-keystoreSessionSurvivesStoreRecreationAndTamperingClearsIt.txt": {
+    "bytes": 307,
+    "sha256": "af001e63a6a4ce14cb3530c67297b2d6f9c055b1c82b02f28fd92e3b9ad650f0"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7bAdminRuntimeTest-androidMarkersPersistAcrossStoreRecreationAndStayAccountScoped.txt": {
+    "bytes": 315,
+    "sha256": "2dd9ee1c242dffd3d3d3e80adcfec7c086c8438694845d35d3fe0607f958d9c0"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7aCatalogueBootstrapTest-appOwnCatalogueBootstrapFeedsEditorialScreens.txt": {
+    "bytes": 11397,
+    "sha256": "373362f66d5af98ff62a486449db0751f68ee8066d1d63ba0d6145fb4d001b1d"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-workManagerRunsTheScheduledWorkerToACompletedBundle.txt": {
+    "bytes": 1534,
+    "sha256": "78c8f574dd3a8cc68aba2436a8350e82a0c00d0645d27e3ca5628f7e9ce91c04"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-unknownBundleJobFailsTheWork.txt": {
+    "bytes": 430,
+    "sha256": "853d3921ea2567dbcc8b521734e274ac4b3566461d8e2f91736ad965aa3e6408"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-transportFailureRetriesAndRecordsTheAttempt.txt": {
+    "bytes": 460,
+    "sha256": "6e0dd14a67a0f316d1374fb6f8ce34f7814e7f7cd5f37ee12f131ab488eb1447"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-revocationWithdrawsConsentCancelsWorkAndPausesTheManifest.txt": {
+    "bytes": 969,
+    "sha256": "e3abce70bee8c94705fa1ad8d66bc2be8aee1dd57a3c8fd2124dea004e04ab35"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-reconciliationRecoversInFlightWorkAndNeverStartsUnconfirmedBundles.txt": {
+    "bytes": 1064,
+    "sha256": "722fe2f3872533b2d9b7c497cf555c34f4b64e2d386ebe88e60f3584cdba2706"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker.txt": {
+    "bytes": 1199,
+    "sha256": "6d31abd455b57914799ab261929db9c8603ac3689301aa6ef44ec32be6f8b070"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-offlineEnvironmentRetriesWithoutMovingAByte.txt": {
+    "bytes": 460,
+    "sha256": "e9dfe3112b87d3d2ae01624eebf6fdd6c542e1872b5da00c86fc709ddc437cf4"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-missingInputDataFailsTheWork.txt": {
+    "bytes": 430,
+    "sha256": "d9af5f69d2c67ad52c2493d1478cceb29a8792b5f31ce7341c0790b02f414c0e"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable.txt": {
+    "bytes": 490,
+    "sha256": "77ac1e98cd41689c90cf449618a44cb691275492c5f8577ddaa3876d5d42e2a9"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-enqueueBindsOneUniqueWorkPerRevisionWithTheD7NetworkConstraint.txt": {
+    "bytes": 1205,
+    "sha256": "307608a5fc4a0f1d4a92f4e2fdc3173e092f41eec489dc383ec34c73708e73ec"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-cancelledJobSucceedsWithoutTouchingTheBundle.txt": {
+    "bytes": 462,
+    "sha256": "4332f0acea6d3a6a1ce6939e0bf8a011d69ede6e15800cb69c1dfebc53d59524"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-cancelDeactivatesTheJobAndPreservesPreviouslyReadyContent.txt": {
+    "bytes": 969,
+    "sha256": "58211600905ce3701ad35c5003eb13e6a0bfdd4ab6ed687c6366909201e89f74"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-sweepReclaimsOnlyUnreferencedContent.txt": {
+    "bytes": 259,
+    "sha256": "b085f962b43e8e521a0521a1ee224325b194cc869df1e161f4093ca55fb0847c"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-storeStateSurvivesReopenLikeAProcessRestart.txt": {
+    "bytes": 273,
+    "sha256": "1f2fb80b18899724bad1455fc4e0fabce2f3b441233efde442b989411203cd47"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-sharedBlobSurvivesUntilTheLastReferencingBundleIsRemoved.txt": {
+    "bytes": 299,
+    "sha256": "0e3aa3f77d15a591f00080428cf52dedc3866cc6b1a25cb4e4ef3c8f95f70557"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-removingAllBundlesLeavesPersonalJournalDataIntact.txt": {
+    "bytes": 285,
+    "sha256": "e77c322ae5f8972edc3ff3a2b66269b19d41b302fa727b2f094f275f5161b31f"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-quarantineBlobPreservesBytesAndRemovesFromBlobStore.txt": {
+    "bytes": 289,
+    "sha256": "d2ba02f3556239ca9c8317d6946f7a5c0d993b8e35209a44db6d8c6d2a87e7d3"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote.txt": {
+    "bytes": 311,
+    "sha256": "ebbe3653b8cf0e90c2038e03388658c8f56ed0af31fd33145d6d42f5fbac6951"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-corruptManifestIsQuarantinedWithBytesPreservedAndOthersSurvive.txt": {
+    "bytes": 311,
+    "sha256": "393f2fcdd427f93701202a7ca10474800b4e0feb2e4e471936d890f09e66a17a"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-concurrentRemovalsAndClearNeverCorruptTheStoreOrDeleteSharedMediaEarly.txt": {
+    "bytes": 327,
+    "sha256": "2aa85034682484e4095a8f85fb7c2e04c7cdef7565a79ef7a3e4f166da7ac571"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-admissionRefusesInsteadOfEvictingPinnedContent.txt": {
+    "bytes": 279,
+    "sha256": "43f97889b33529d2f8232721f7439f144c014482dbf039e3ca35aee16c1e3de1"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-queuedBundleDownloadsValidatesAndPublishesAtomically.txt": {
+    "bytes": 299,
+    "sha256": "b6a871f4802bcfb2c3460f6153b75cf16af3642f7a9587b59056e590adf46cab"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-offlineNetworkWaitsWithoutMovingBytes.txt": {
+    "bytes": 269,
+    "sha256": "36beedc7b7f7c3efe341a5e7cd33ffc1cb9ffe6b049a3f39871cab7767d15630"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-lowStorageRefusesBeforeAnyByteMoves.txt": {
+    "bytes": 265,
+    "sha256": "406bdc33e73fbdc92772eda41957159d866db89fa169db1b28848418896cbd24"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-invalidRightsOnDiskQuarantinesManifestAndDeactivatesJob.txt": {
+    "bytes": 305,
+    "sha256": "393c9de33c0e6064853a527840ef7a0d40fb0d692deab732650f5547758dca1e"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete.txt": {
+    "bytes": 327,
+    "sha256": "2b8854772d5baf3949d0a38d7d5cc96fcbc31ba990e17415f028c87f0dfe4d53"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-interruptedDownloadLeavesRetryableStateAndCompletesOnRetry.txt": {
+    "bytes": 311,
+    "sha256": "ffe76a1dbde03507bbe0e92d3cb8454acd7ae2f736c7a188399a77b2b02adad1"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-inFlightStatesFromProcessDeathResumeLegally.txt": {
+    "bytes": 281,
+    "sha256": "c4e94b941715cb163100b240560a351c76525e74552b660e00aaefdef6eb4f16"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-futureReaderRequirementQuarantinesInsteadOfRenderingGarbage.txt": {
+    "bytes": 313,
+    "sha256": "d6eb19d7e599c7632ea0eb9890ebee30f0cce4e901596e7e33c25d0b0f9703a4"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-dataSaverPausesEvenWithPerJobConsent.txt": {
+    "bytes": 267,
+    "sha256": "cf80d01b0803481470e25e14b1450e36fe4c8a75867bf7c49466e50c0025aeed"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-corruptStoredBlobIsQuarantinedAndRepairedOnRetry.txt": {
+    "bytes": 291,
+    "sha256": "1e5c82f1c0dbf8f336eaec9a5173ee2fed18ff46a48719f303b939885bf98f29"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-corruptSourceContentNeverReachesReady.txt": {
+    "bytes": 269,
+    "sha256": "f0fd7d966586f5463661ec492f0ed1e2425e28ed0471a33aaff252ad99a70ea4"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-consentRevocationMidStreamPausesAndKeepsReadyContent.txt": {
+    "bytes": 299,
+    "sha256": "c64dcad79fe9ad355c7209f62927470eb24454bfc683904264d7afd0c785f964"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle.txt": {
+    "bytes": 426,
+    "sha256": "0587875ea4bc02305f2004a8661b9511bd20b1c4c7321c06b09332477fa64215"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4TransportTest-redirectsAndUnexpectedHostsDoNotBecomeContentOrForwardCredentials.txt": {
+    "bytes": 313,
+    "sha256": "de6474ab9f0284c52e13d5022e760f40e0960a3c473a09b9654f443a860b398a"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4TransportTest-oversizedStreamsAndNetworkPolicyRevocationFailBeforeAcceptance.txt": {
+    "bytes": 307,
+    "sha256": "14c431d3fcacc2a086dcf137364439ac4c7ce7b8f42aa04b7815cd732d315f24"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4TransportTest-cancellationClosesBlockingReadWithoutWaitingForSocketTimeout.txt": {
+    "bytes": 303,
+    "sha256": "72dfc2cceb1e6472f37fa54b65a93ad6c17562764713cb42d9089f78a4546a9a"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4StorageAdmissionTest-refusedCopyAndRebuildPreserveJournalAcceptedLedgerAndGenerationFiles.txt": {
+    "bytes": 333,
+    "sha256": "f7230c691831f084f5def51da47889c59ccdbe5d2149276379a1b9d3417c64db"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SearchVerificationTest-searchPagesCarryWorkSubtypesForAccurateRowLabels.txt": {
+    "bytes": 297,
+    "sha256": "14711f3cb3b7cb3e69a07aa7068cc9d877df6b248a447c1d62bb839e99a00c0f"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SearchVerificationTest-measuredBoundedSearchAtOneTenAndFiftyThousandWithPracticeUnderLoad.txt": {
+    "bytes": 1472327,
+    "sha256": "e35416e7c2d7625066f0bbbb700b57fab9ba0d02cb44fbbeb0b0bfa9378b6d24"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SearchVerificationTest-historyIsBoundedOptionalAndIndependentOfJournal.txt": {
+    "bytes": 295,
+    "sha256": "d0fb9acca34ae271379c00f9d6c258e4b224dc74dd92aa0f9792584c2d66fff2"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SearchVerificationTest-authoredRelevanceNamesakesDiacriticsGenresAndFilters.txt": {
+    "bytes": 305,
+    "sha256": "ed171aed60a7834695f4f434baf5bed2e5b13cd7462103ff64eb1c62da95cb6a"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SafetyTest-portraitDecoderRejectsUnsupportedAndOversizedContent.txt": {
+    "bytes": 463,
+    "sha256": "749660677fd805d1121efb12ef27e275c1ea96d784162845948f556a104a6c0f"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SafetyTest-portableV5RetainsOptionalLinksGroupedSnapshotsUuidAndRawRecoveryWithoutCatalogue.txt": {
+    "bytes": 337,
+    "sha256": "c7d97ab5de790fdf41565bc585eeaa86e5e1b67b9b19ae9cd5a7696277d1ce28"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SafetyTest-groupedPartsSnapshotAndExplicitSeparateEntriesNeverCreatePracticeCredit.txt": {
+    "bytes": 319,
+    "sha256": "b834b88a48585187308e350c8859898f876b93e9b0b8e315753cffca0b2b0f19"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SafetyTest-persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles.txt": {
+    "bytes": 293,
+    "sha256": "8d4b21026d50b1e22ab8e5a2b86dad4a34ffd845e1db2dad9a12d5a924a4caad"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SafetyTest-correctionExportContainsOnlyCatalogueEvidenceAndRemainsUnsubmitted.txt": {
+    "bytes": 309,
+    "sha256": "abde227b63e0f88507944b0525a2eb925cf8c74f6848b77d19eeed45139b4ba9"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SafetyTest-arrangementPersonalUuidIsIndependentAndLegacyOpenOpusPieceIsNotDuplicated.txt": {
+    "bytes": 323,
+    "sha256": "8bba3baaed99f9a0b6001e944b3bfc73ac35b28448316fd26734da1fc5d5633f"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-waitingSuccessorCanTakeOverCancelledOwnerExactlyOnce.txt": {
+    "bytes": 4507,
+    "sha256": "1605ea690b2ee2b0b7a008db29380a5c452f8899b09a5fdc85f97e9d094253d2"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-projectedCacheIsPersistentPrivateBoundedAndConditionallyRevalidated.txt": {
+    "bytes": 325,
+    "sha256": "fcc8c181a09a6d1b9d01999a0a3f3e687cf31d22d52a7525af9d887be894064b"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-noStoreDoesNotPersistAndNoCacheRequiresRevalidation.txt": {
+    "bytes": 3253,
+    "sha256": "f2dd91f079ebab193e4389e15a95afefbf29dde73f7caab12b5049bed8d087d4"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-legacyCacheForcesUnconditionalRefreshAndRejectsUnsolicitedNotModified.txt": {
+    "bytes": 1384,
+    "sha256": "a5f7c8686d0df756a5f8fd1333b84f0a6b93798bde3e5562fae13f7af822542b"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-invalidRightsAndJsonErrorsNeverBecomeSuccessfulEmptyContent.txt": {
+    "bytes": 309,
+    "sha256": "3bd5850c08596e864559ed8dec16733459a74287647f19f73c93bb49fcdfcb07"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-invalidJsonIsNotRetriedButTransportFailuresRemainUnavailable.txt": {
+    "bytes": 33907,
+    "sha256": "96f55ca2ffda47d47ab23e4450e63d4676840be403e896b9f74dfed9c0c6b305"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-failedRefreshRetainsAcceptedRevisionAndHonorsBackoff.txt": {
+    "bytes": 295,
+    "sha256": "f3eec61f51f3d2de6a82fc3e051f1166e707b7333b1c10711818e3d638565320"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-corruptCacheIsDisposableAndDoesNotHideValidProviderData.txt": {
+    "bytes": 969,
+    "sha256": "be3da044bf761c764ab93a098f60f7b60c64f725dcea08d61a6f182ba879d414"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-concurrentCallsCoalesceAndCancelledOwnerDoesNotPoisonLaterRequests.txt": {
+    "bytes": 5570,
+    "sha256": "5d62c4f3890b3fc6a305a99dce450ab9200c7bc64acf611c260e612dd43eb8a8"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PortraitTest-verifiedOriginalRetainsCreditsAndOfflineReadRejectsTamperedRightsOrBytes.txt": {
+    "bytes": 550,
+    "sha256": "8b0a3e106ca7c8387ad9ffa27e411c92185b5d4a637b9869ad74f1e78e093a08"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PortraitTest-missingConsentBlocksTransferAndInsufficientReserveCannotReplaceSavedPortrait.txt": {
+    "bytes": 708,
+    "sha256": "5d709ee6bb00cdf0647059e932f9d8e49686fe735def133bb2606b10a623c49c"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PortraitTest-displayedSnapshotRetainsItsOwnAttributionAcrossRefreshAndRejectsUnverifiedCredits.txt": {
+    "bytes": 643,
+    "sha256": "83608c71ebfc3355a472287e7de8b2375af0bd072913d7e65e82b59f144d1949"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PortraitTest-changedLengthDimensionsMimeOrRevisionNeverPublishesAndFailedRefreshKeepsPriorPortrait.txt": {
+    "bytes": 726,
+    "sha256": "330d757a1abebd7d140a40eaad8288ef7d44870ff3324d86ae3126e6e9ac4d1b"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-revokedNetworkPolicyNeverSendsContinuation.txt": {
+    "bytes": 261,
+    "sha256": "52d1f6fcb90831a279dd3689ae4ae267471b3e4ea820a3d70afcc8715a6fad0e"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-providerContinuationReplaysWithoutDuplicatesAndRejectsOtherQueryLanguageCategoryOrGeneration.txt": {
+    "bytes": 361,
+    "sha256": "e70610de1a85ae95de686ef2e300b21158ced1e18ef7c5f7e08ffed35fd3a8c7"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-opaquePagingStateExpiresAndEvictsOnlyTransientSessions.txt": {
+    "bytes": 285,
+    "sha256": "1c9fecb3217140d737af50817cc016539bb5af53fa08c3ec369550ff6ff70006"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-multipleEndpointsAppendAtMostFortyAndPageUnseenLocalRowsWithoutRefetch.txt": {
+    "bytes": 317,
+    "sha256": "42a5e725868e215a927443a06e3293e82a4a4b8df324cf0e29d77a94682751f5"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-localPagingAndConcurrentContinuationStayBoundedAndNetworkFree.txt": {
+    "bytes": 299,
+    "sha256": "e7454846321796a2e6df815484c2f5a933bda3485b278ad46c4928f8f451305a"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider.txt": {
+    "bytes": 6891,
+    "sha256": "fddc1a4390092cab1b134f2233171dbab44a292f4a01405ead6859b9cc3213e8"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-externalGenerationChangeRejectsBeforeSendingProviderQuery.txt": {
+    "bytes": 291,
+    "sha256": "8eea3a041e5e39f9934b916f8bd4ef704c1b57cf5c6298bf80fbc8f061099839"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ObservationCacheTest-protectedPrefixesAndOversizedValuesCannotEnterEvictionPath.txt": {
+    "bytes": 313,
+    "sha256": "549efbeb8b0aaf2d2a53d955b80104c0b058119137c5807f33008d3d3328eb3b"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ObservationCacheTest-legacyRowsAreBoundedAndEvictionCountsSaturateWithoutOverflow.txt": {
+    "bytes": 317,
+    "sha256": "3e2e33a854a77e8632e1f01859fc32b1585b809d5c52fcf1779ad7b7f08a35a1"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ObservationCacheTest-leastRecentlyAccessedObservationsEvictWithoutTouchingAcceptedRows.txt": {
+    "bytes": 327,
+    "sha256": "8b00b307c1b0f047b1dd1f147249028ecbfe0ca0ea929a320311111458117a72"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-streamingLinksAreBoundToRecordingAndExactPlatformDestination.txt": {
+    "bytes": 295,
+    "sha256": "dde9dbd12ca7d166d9c543997ccda258e44122d553ea1227c825af1d1c698767"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-searchCandidateCannotBeAddedBeforeTypedLookupAndArrangementKeepsIdentity.txt": {
+    "bytes": 319,
+    "sha256": "63bd0a7ac19451d66aa418d3bd5cee67d9a1bce0bf96e257031bd47225f15e70"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-quarantinedConflictingParentPositionCannotPromoteACompositionToPart.txt": {
+    "bytes": 309,
+    "sha256": "00cda51bb8ee44381e93d2ec801429a6884e60439e6d081bde5c4e1c563c3840"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-partsOrderAndRecordingPerformanceAreDifferentEdges.txt": {
+    "bytes": 275,
+    "sha256": "b3e709f42192453bf09e441a98d77fd68fd8bb35e016eed7e06e1dfff3e7d41a"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-newRelationshipUsesItsOwnObservationRatherThanTheOriginalIdentitySource.txt": {
+    "bytes": 317,
+    "sha256": "2d14d05564ccd29d50728f6635a7ccb3dfbfda381877d50a5d0b675f8a12741b"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-linkedReleaseTrackProjectionDropsUnknownNestedRightsFields.txt": {
+    "bytes": 291,
+    "sha256": "2b2aa84efc8e6a47d65ea6a2099f71e39688d3edf499aac2808e01d7a651d736"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-aliasesCreditsCatalogueNumbersAndBoundedTypoRetrieval.txt": {
+    "bytes": 281,
+    "sha256": "afddb0393917600ed1bbfc501b4b93c8942c510f06ffdd6001a343c86ec69fed"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ExternalProviderTest-boundedObservedProviderResponsesPassNativeProjectionAndSearchPaging.txt": {
+    "bytes": 4919,
+    "sha256": "e336a6d559f999b1b8240e64b2dc4f2b4b9aa359f8c0dac9389178134d8daf2f"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ExternalPortraitTest-separatelyAcquiredLicensedOriginalCanBeVerifiedAndRenderedOffline.txt": {
+    "bytes": 6076,
+    "sha256": "46dcbd3e6f9792874374a2b880699a83dcafd45510f52f4ad76a7bc8ee841f71"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-reverseArtistIntakeConfirmsTheSameIdentityWithoutTitleMatching.txt": {
+    "bytes": 323,
+    "sha256": "6a767077bf06e36ec7ca296ac54b097b701156459a2d623f9f7e45869c67dc22"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-rebuildRetainsAcceptedAssertionsIdentityRevisionsAndRedirectReversal.txt": {
+    "bytes": 335,
+    "sha256": "aa574b35f6396f36a0bcffa9ef939622f4cf29969055b87c2a169e0763cd49a8"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-pendingWorkCanBeReplayedAfterItsTypedIdentityArrives.txt": {
+    "bytes": 303,
+    "sha256": "a9fcc111a6262e66704b860430716b242f8ac20f56d867e0fc6fd7f6ed1c7d6a"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-identicalDocumentBodiesInDifferentEditionsAndEntitiesRetainTheirOwnSources.txt": {
+    "bytes": 347,
+    "sha256": "e73f136641306206343fd4bb06fe1787f97addcfd9c47148d573789777e860ab"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-contradictoryClaimRetainsEvidenceAndNeverMergesPreviouslyDistinctArtists.txt": {
+    "bytes": 343,
+    "sha256": "0b4159a15849139c86d05bdd161c9a6f9eae46042b7d1aefbf54152e55044b23"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-concurrentReplayIsIdempotentAndCancelledTransactionCannotPublishEvidence.txt": {
+    "bytes": 343,
+    "sha256": "25b639a8e7dfd58a26096388a2680dfc6be26548e8705d1902b085d56d5e4179"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-assertionsKeepAllLanguagesAndValuesAndRemainImmutableAfterReopen.txt": {
+    "bytes": 3282,
+    "sha256": "2c97687bc4ddbf28083853ff37eea383f9ab5dff38ae549f9f65f02ea5adaf8b"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-activeRedirectsAffectSearchAndDetailAndReversalInvalidatesOldCursors.txt": {
+    "bytes": 335,
+    "sha256": "f2fc52c98d090671ecb04dca45b98f6b3c5ad46ed12b22e0e5141ccaaf81aabf"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4DocumentTest-unapprovedOrUnsupportedTitleEvidenceCannotTriggerOnlineContentLookup.txt": {
+    "bytes": 394,
+    "sha256": "19ea82e98d7d4d00dd62d4af6ac4615cb828449f488f2b29f165327e17f4f559"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4DocumentTest-overloadStopsBeforeEnglishAndOfflineNeverSendsAnArticleRequest.txt": {
+    "bytes": 305,
+    "sha256": "eaa14c541ebbaf7fb771a45bccbd285bb39effd8a39a7011bdfb43e122febedc"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4DocumentTest-missingSelectedLanguageTitleUsesVerifiedFallbackWithoutInventingTranslation.txt": {
+    "bytes": 331,
+    "sha256": "df9ee597a656b42c23d2c66e430b8913c5cb8910beff566e1f561c8d1d016690"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4DocumentTest-missingRequestedDocumentFallsBackOnlyToVerifiedEnglishTitleWithItsOwnRevision.txt": {
+    "bytes": 440,
+    "sha256": "797665d0dc8389d74e2d80462e511a24b03ba15d6d54c928b11b1f2ddfad4aa9"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-stablePagingRejectsOldGenerationAndDoesNotOverlap.txt": {
+    "bytes": 281,
+    "sha256": "edc6d90b6458f40d4beb8772b972c2681dd1039a8cf757d4263d2c5ed45573d5"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4DocumentTest-detailExposesActualMovementSubtypeWithoutChangingItsIdentity.txt": {
+    "bytes": 301,
+    "sha256": "31710bc44662e9a882f1e98ad5fcea10df35c281de457a039818592828b798f5"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-repertoireDuplicateAddPreservesUuidManualEditsHistoryAndRawDraft.txt": {
+    "bytes": 311,
+    "sha256": "fdbb04c11f71913c949f700b2475c5303edc03b4c81902591e243cb99fc9021e"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-repeatedProviderImportKeepsIdentityAndContradictionsWithoutPersonalWrites.txt": {
+    "bytes": 329,
+    "sha256": "34052829b595ae3ec4164e5bede3075a960084b8526f98848b8c8268bb6cd261"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-providerPartialSuccessAndJsonOverloadRemainIndependent.txt": {
+    "bytes": 291,
+    "sha256": "286085fa70c6f3a67370943baa0474b808bf253810e1853c8a9fda325bd5d9b1"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-openingDiscoverAndOfflineSearchSendNothing.txt": {
+    "bytes": 267,
+    "sha256": "1b2954c3f31ca72c0b76d8b7829d739e1a54068139b7e3914e98c6946f50f6f4"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-hostileJsonDepthDuplicateKeysAndOversizeRejected.txt": {
+    "bytes": 279,
+    "sha256": "ee7a7da462a604c1f55277c289bf48f4a649157beaff69581ad7bb9018058869"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-explicitCrossIdEvidenceReconcilesButNamesDoNot.txt": {
+    "bytes": 275,
+    "sha256": "fe243213a9f411dfd007d41598e14082353fab0e98ea5d834ceff6bd783cd474"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bProcessDeathTest-verifyAfterActualProcessDeath.txt": {
+    "bytes": 249,
+    "sha256": "7a6551fdb8538882dd3f8f1a0eba4f69503398631c9a68e0ce340d0d96b2dc0f"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-validDraftRegeneratesExecutionOnlyAndCompletesExactlyOnce.txt": {
+    "bytes": 293,
+    "sha256": "11a04650ee0ec373dbe2fd35f20f26bfd6499ab1e8784c5b8267e154b1f390b5"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bProcessDeathTest-prepareActualProcessDeath.txt": {
+    "bytes": 241,
+    "sha256": "426157d2c8d4a9272971283ecc590b9f6dc5dea059463284dfe77eb37b0a450d"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-unstartedNotesAndSelectionRecoverWithoutInventingPracticeCredit.txt": {
+    "bytes": 305,
+    "sha256": "6a2e0aed085a60b30fe4a2f570e101bad58e0ee69c48f812f186ed27d39d4a39"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-unreadableBinaryDraftCanBeExportedAndArchivedWithoutRepair.txt": {
+    "bytes": 295,
+    "sha256": "e044f2fcddb16faa2c76889f73657696be32e2995299b1a6cdc60df85bf738d9"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-restoredForeignScopeRebuildsCatalogueAndKeepsCanonicalIds.txt": {
+    "bytes": 293,
+    "sha256": "752aef45db55595dcae478bf55e1069fb4ec1d669896df945514164e55ffd422"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-minimalAndRepeatedRestoreWorkWithoutCatalogueOrAccount.txt": {
+    "bytes": 489,
+    "sha256": "4def8755bc4440cbc127d9946d7a8344a347c88600460b7e61b63d2e56bb2796"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-measuredJournalAndLargeRawEvidenceRoundTripWithoutCursorTruncation.txt": {
+    "bytes": 14357,
+    "sha256": "4273234ab3dd7f8b12d550138299c08cde6662b04e62ef2e8490e4e0f25041d1"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-malformedDraftTimingIsPreservedRatherThanInvented.txt": {
+    "bytes": 1224,
+    "sha256": "c69386fa8ebc7c55661b3c5c291b4ac1c761810c2f91e3d91ed8afe0ed5573cb"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-historicalOneThroughFourRemainReadableAndRetainOriginalFields.txt": {
+    "bytes": 969,
+    "sha256": "b2be04815876b9b70c350720c741fa9875728251369cdfa88319e5b3639d5180"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-fullV5PreservesIdentitiesJournalRawArchivesAndAllowlistedPreferences.txt": {
+    "bytes": 315,
+    "sha256": "8de200c3146eb779cf37187143c26365f0c6b7453a11cfed91bf4dc545dd4dfe"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-freshRestoreCannotReuseDeletedOwnerIdsAndAdoptTheirUuid.txt": {
+    "bytes": 394,
+    "sha256": "48c54f75f6a9a1f437d448f41b78e3a66e880dcd00e9e4caf768cd6fc64ee4a1"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-failureBeforeCommitLeavesDestinationIntactAndAfterCommitReplaysIdempotently.txt": {
+    "bytes": 3284,
+    "sha256": "90b6be851aa4f0befbc837315bf06790c1705efa9df6a04d02e2f11fceffbd79"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-exportIsAtomicOnLowSpaceAndInterruptedWritesAndInputIsBounded.txt": {
+    "bytes": 301,
+    "sha256": "a2cc829095091a8415a5e2a671f95a839642ca340c6ecb9dd65539d28af2c03a"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-duplicateCompletionCannotRemoveAnUnrelatedActiveDraft.txt": {
+    "bytes": 641,
+    "sha256": "219a0a0946528c4bc3bb7b57a40dad056aacae4380fe64fe5bf466304e86a2d9"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-destinationIdentityEvidenceSurvivesEvenWithoutDraftsOrArchives.txt": {
+    "bytes": 303,
+    "sha256": "5b3063455270db87b0da0d809456e04bdf3a190adece81a3dc10dea5e699be4b"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-destinationDraftArchivesAndIdentityContextSurviveReplacement.txt": {
+    "bytes": 451,
+    "sha256": "7f0c252fa5b009c7304711627893eafa6f745a83d2495dd6d357c205d652fd5e"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-coordinatorReplacementCannotClearTheImportedDraft.txt": {
+    "bytes": 277,
+    "sha256": "9418f3a5f6a29975a2e007e2fc3e93b240c18c2d67ed6a75570455f505dca199"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-conflictingTokenRetainsBothRecordsAndBlocksAutomaticCredit.txt": {
+    "bytes": 295,
+    "sha256": "929b1dead8afd78bc6c224cb99bee996f587b8a3a667309f80c38cea3341ed05"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-conflictingEvidenceIdsKeepBothPayloads.txt": {
+    "bytes": 255,
+    "sha256": "1ef250ffd7bd95b5a125425f31d7ab93864eaedf4fdad03cdb8670270ff735eb"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-badHashesSectionsReferencesEnumsAndVersionsRejectBeforeReplacement.txt": {
+    "bytes": 311,
+    "sha256": "943cfc6faa9966eeb892fa71bee3f8bf8e4a38756e9da44f164472fc2ce31a27"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aPerformanceTest-boundedQueriesAndJournalPriorityUnderCatalogueLoad.txt": {
+    "bytes": 113692,
+    "sha256": "d4dca67d67a639a7d86fced00edffc64db5792f4397e0d38aad988c3ee3f2d46"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema9PreservesExistingUuidRegistryAndSeedsCompletionEvidence.txt": {
+    "bytes": 10935,
+    "sha256": "7818babc7923b13ffb8e83610ead91772d0bd77e8f2614dfa569abef645181df"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema8.txt": {
+    "bytes": 17127,
+    "sha256": "ba9c12b7972fe1e5358b3d07c49459c0f000c1384dae0fe872f10629ac0e5602"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema7.txt": {
+    "bytes": 3540,
+    "sha256": "82b26fb2e2278e2ea7c6d667b2cbf7b2fe0b56577f75bdec8b03f785596e8ec2"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema6.txt": {
+    "bytes": 2663,
+    "sha256": "2a412087cd1f3c9f7fa5fc69d8e5060056090da9759287fbfcff542a3a64366d"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema5.txt": {
+    "bytes": 4046,
+    "sha256": "0346fd2800eb2b643f80a7965d8022c6f3b23cbc95ffe6432f9c7b47bb7e00d2"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema4.txt": {
+    "bytes": 9938,
+    "sha256": "5386cff08ed1ef25a8e54887cf8b25393092bdf40aacc92a5c8f2a65dedf0be7"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema3.txt": {
+    "bytes": 5082,
+    "sha256": "dee566a7a26f4573afe9e926937ccd5179921feea9aa99fd903d5632114639aa"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema2.txt": {
+    "bytes": 6813,
+    "sha256": "49c6ff4ea776889aa34844d8f281f1c0409870844ca45671c8be1b5e574ff0fb"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema1.txt": {
+    "bytes": 22340,
+    "sha256": "515a293344dc0598eefe6d81aada5d487134b27393b1cb4ab744df43ffdd29e5"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-failureRollsBackPersonalMigration.txt": {
+    "bytes": 31976,
+    "sha256": "6a8e7fe8e4b779c0a7f10f5eff7c5fc0615af23fa2843a09cd25839dabbd6e58"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aCatalogueTest-reversibleEvidenceMappingAndRedirects.txt": {
+    "bytes": 60362,
+    "sha256": "a5fd9d2580c2b88f341de91b1141ada215ac2fb6945be9202772d9da1042350e"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aCatalogueTest-provenanceAndRightsDefaultDeny.txt": {
+    "bytes": 3411,
+    "sha256": "dc28704fb15c3fb5263b4e05f07aafd364014848f536586f8dd394f2886d510e"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aCatalogueTest-interruptedCopyAndRepeatedInitialization.txt": {
+    "bytes": 300259,
+    "sha256": "2fc2338a48587348f68c46761ae5377e78f8d561c6d41bdde8e062f1e390661a"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aCatalogueTest-catalogueFailureDeletionRebuildAndJournalOffline.txt": {
+    "bytes": 151103,
+    "sha256": "de23bb11dffaf4009b4f793ee910e0432b95a0c0e4d9a5963d30e21a58337ea2"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aCatalogueTest-authoredMultiGenreFixtureAndTypedRelationships.txt": {
+    "bytes": 23211,
+    "sha256": "8bad947004a31495376d223546b1b50ac9462783600fc77543c2706bb59717ae"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aBackupTest-legacyRestorePreservesUnfinishedRecoveryWithoutChangingBytes.txt": {
+    "bytes": 3260,
+    "sha256": "65dc0b1d1526c2b86cc7765cea034287f74d6391e143d477e505408e262fd7e8"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aBackupTest-historicalReadersAndV4WriterKeepFieldsAndNoStaleLocalAnchors.txt": {
+    "bytes": 32047,
+    "sha256": "b8815988b831d4399fea8964f5406186f778bdbe47fd43ed41bc0fcb9644fbb2"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.SmartCachePersistenceTest-upgradeActualSchemaFourAndReopenWithoutLosingProfileOrHistory.txt": {
+    "bytes": 479,
+    "sha256": "0b7dad9d725dfb2111a0148c83c36edf08099399b9f772cceb05b0b6e1838cdd"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.SmartCachePersistenceTest-schemaFourBackupGainsDefaultsAndKeepsExistingShowcaseAndDates.txt": {
+    "bytes": 7235,
+    "sha256": "d69c00f168cbf2c1ffe9aa2c6459747bc4a59d87ebd9c19d63c76d90d892bde1"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.SmartCachePersistenceTest-freshCatalogueAvoidsRequestsAndExpiredCatalogueRemainsAvailableOffline.txt": {
+    "bytes": 1004,
+    "sha256": "3205389fc9177305dd4bfc02208fd6a853c803d03199ce2a46e3a91e9910b312"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.SmartCachePersistenceTest-clearingDownloadsPreservesJournalCatalogueUnlocksAndPreferences.txt": {
+    "bytes": 5642,
+    "sha256": "9e666133cb16e4f2797e28d3f1935eb452a0c4353ffb8e8a81b27b930cbac166"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.RepertoireSearchPrivacyTest-privateSavedFilteringAndClearingNeverCallsHttpOrChangesOnlineQueryState.txt": {
+    "bytes": 5154,
+    "sha256": "21ea4de2378c196bada2e9a2e0fd45023945b24f10d05e7fdba099238fe9a372"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.RedesignPersistenceTest-czechPluralResourcesAndEnglishFallbackAreRealAndroidResources.txt": {
+    "bytes": 545,
+    "sha256": "5b3f2fdfb9f25de617f21c58dc771eb11f3b81eb10402a8a7255a407204288f2"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.RedesignPersistenceTest-appearancePersistsAndResetNeverTouchesPersonalDatabase.txt": {
+    "bytes": 419,
+    "sha256": "a3ceb4e97f284e9b5e88c5b6bab13b2fe687b5d9f6b0c70c7714799c758bfdf7"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Redesign010PersistenceTest-schemaSevenMigrationPreservesEveryFixtureFieldAndUnfinishedDraft.txt": {
+    "bytes": 11337,
+    "sha256": "5a3c3aa3e2827f85ba2f756698519837cd109d99e4cebf37d132cda0c9ab4646"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Redesign010PersistenceTest-omittedPieceIsIdempotentUntimedAndDoesNotChangeOriginalJournal.txt": {
+    "bytes": 604,
+    "sha256": "28ad49fb5bf8a73bb76760134a85d5cfa3c1a220c833e22abd1abf2680abfa76"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Redesign010PersistenceTest-missingOrAlreadyMeasuredPieceCannotBecomeAnotherCredit.txt": {
+    "bytes": 1932,
+    "sha256": "6c0afa23a487df7e4eb8205eeae0a2a014af8bef65215b8b09dfc8fde26b562a"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Redesign010PersistenceTest-legacyRecordAndNotesSurviveAssociationAndBackupRoundTrip.txt": {
+    "bytes": 20676,
+    "sha256": "a94cc2456f0eaf54a75fa53bbae25fd2c9f2bad1a2bbbf09cd4a0b63b5fdd8e2"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Redesign010PersistenceTest-favoritesRemainIndependentOfFeaturedArtistAndSurviveBackup.txt": {
+    "bytes": 1426,
+    "sha256": "f1c7641c1f64deb85fb1666ec6b845e1fa3856b595a4dab56993f904b31d0a70"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Quality092PersistenceTest-personalizationAndOriginalRecoveryArchiveRoundTripWithoutTouchingJournal.txt": {
+    "bytes": 20931,
+    "sha256": "08bb3f6187b4df3f7b14b3d71cf3a69c0d15e2ae3bf10d268e54108d0268d78f"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Quality092PersistenceTest-mediaConsentCacheOfflineFailureAndRevocationAreEnforced.txt": {
+    "bytes": 530,
+    "sha256": "a6957da67967fd4f7ad9279b1576684dfc6f85c9b413f4d6198f5a72f604d66e"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Quality092PersistenceTest-formatTwoSchemaSixBackupKeepsAllOriginalFieldsAndAddsSafeDefaults.txt": {
+    "bytes": 36254,
+    "sha256": "20e66b2f487fe4e2a71a2cafbdccf56a37aa160e1e084d1655a31e2f07884ee6"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Quality092PersistenceTest-dailyQuoteRequestsOnceAndOfflineFallbackSurvivesRestart.txt": {
+    "bytes": 528,
+    "sha256": "19eff1a381034841ea8493fd810c765a93b8d087cc99d487d22ab21e00413129"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.ProfileCompatibilityTest-restore060FormatIntoExistingJournalAndKeepProfileAcrossThemeChanges.txt": {
+    "bytes": 26250,
+    "sha256": "2cce16363abfd3339bc2feb7878adede4d12f7a7f58ddbbc6ce55b7b5bd127e2"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeServicePolicyTest-staleNotificationActionsNeverStartRecording.txt": {
+    "bytes": 281,
+    "sha256": "13e763fac968ef0287eaa87a58a511eb41dcdfc96fffa6f86207d0bda9e794d7"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeServicePolicyTest-serviceIsPrivateAndApplicationContextCannotStartMicrophone.txt": {
+    "bytes": 311,
+    "sha256": "d4a1de334bae9d9e817660555f56257d1bd7a889eaa6c7a3fd50109c954f3e99"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeRecoveryTest-oldBackupImportsAndDeviceStateDoesNotTravel.txt": {
+    "bytes": 8005,
+    "sha256": "b3de370b45c67a74eac1855cee38e02ef508adac764fec35fe6e2c992fb39d73"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeRecoveryTest-durableDraftCompletesOnceAndRoundTripsNewBackup.txt": {
+    "bytes": 8392,
+    "sha256": "91bee3dcbb9bbf228bf850ff597552c7602126d8955ac609e78646ee3d02c63c"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeCoordinatorTest-reconnectingObserversNeverStartsOrDuplicatesTime.txt": {
+    "bytes": 18949,
+    "sha256": "35a821c70299d79503df510b6ffdabb3219e35a2fbd070599ee83c121d8b51f3"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeCoordinatorTest-obsoleteCaptureCannotInterruptAResumedManualSession.txt": {
+    "bytes": 6377,
+    "sha256": "cb5adb62e7f54bd5459248fc1bb596c6f81fa773df95895d4086d44c8e5d734b"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeCoordinatorTest-failedRestoreKeepsThePausedDraft.txt": {
+    "bytes": 25694,
+    "sha256": "86329c255dbf2375027fa0094d7683c505e578b816843ce008635d42407611da"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.NavigationRegressionTest-searchProfileSettingsAndRepeatedTabSwitchesKeepBackStackCorrect.txt": {
+    "bytes": 189698,
+    "sha256": "cbce4df1edd4d488f8ded2bc2094e90145d72a0820e1555c8617191dc339320f"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.NavigationRegressionTest-homeOverviewKeepsProfileSettingsAndSearchBackStacksCorrect.txt": {
+    "bytes": 192959,
+    "sha256": "d6942010db763c68397885aebe416bd33153e73d9655e643f9e9f330d19f96bd"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.GoogleIdentityPersistenceTest-manualAvatarChoiceSurvivesIdentityRepositoryRestart.txt": {
+    "bytes": 1259,
+    "sha256": "93b389d9a54cc87221a875f45af3d33ecb28374644e3b5912ece6b1fde4bc899"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.GoogleIdentityPersistenceTest-googleAvatarDecodePreservesSmallImagesAndBoundsLargeImages.txt": {
+    "bytes": 8030,
+    "sha256": "fa4442bed14c9068df082fd72ffe0050324e0b6b5c3726de2d03ee9d02e93a12"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.GoldbergPersistenceTest-opus05UpgradePreservesIdsNotesHistoryUnlocksAndLinks.txt": {
+    "bytes": 8880,
+    "sha256": "955cd775cdf4bf8ecba10c0355f51fb25433e840d77ee3ac32cba36a99b0bae3"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.GoldbergPersistenceTest-multiplePiecesReopenAndBackupRestoreIntoExistingJournalIsIdempotent.txt": {
+    "bytes": 248388,
+    "sha256": "ec337716e507f20133133c241b265d14d3f59a980b9f463552aeba8ce6fe6b52"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Goldberg08MigrationTest-schemaFiveMigrationKeepsHistoryAndSkipsOnboarding.txt": {
+    "bytes": 24513,
+    "sha256": "470a8a9e644506b369459808d16517bc6b81781476adf61de79d7188b43c8f04"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.ExperiencePersistenceTest-upgradeFromV2RetainsCatalogueHistoryAndFirstVerifiedUnlockAcrossRestart.txt": {
+    "bytes": 43660,
+    "sha256": "4533586fc236f68e18a42178724de9df18a740c32ae428c89ce5a6b10ff301b6"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.ExperiencePersistenceTest-savedInterpretationsRetainDatesAndPreferenceAndSupportEditsAndRemoval.txt": {
+    "bytes": 10197,
+    "sha256": "faa437349576435b59e5cec206a0e93f0111c18e3f32e45d95940f08daebd2db"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.DiscoverNavigationTest-realDiscoverEntryRetainsTransientQueryAcrossDetailAndBack.txt": {
+    "bytes": 280080,
+    "sha256": "a4c5ac3518c0ec7e5c432716ea49ba2782ca290988d4c2988c9f995289eb4f7b"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.DatabaseTest-repertoireCrudAndHistorySurviveReopening.txt": {
+    "bytes": 30215,
+    "sha256": "81ecb41873403172c5decc737cf6ce002bf78d7911dffebb053d27365762a5c7"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.CatalogDatabaseTest-migrationPreservesVersionOneRepertoireAndSessions.txt": {
+    "bytes": 93203,
+    "sha256": "2b7b0b85c427366167e8b3507e75b24b495e46f4300fd275f25ae95fb858116e"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.CatalogDatabaseTest-importsAreIdempotentAndSameTitlesFromDifferentComposersStayDistinct.txt": {
+    "bytes": 34100,
+    "sha256": "3275cf3d2fafde6d096a275f8c05b5067846d91dd09fb490d88a6085b0fce4be"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.AppLanguageTest-languageOverrideUsesAppCompatAndCanReturnToSystem.txt": {
+    "bytes": 1035338,
+    "sha256": "bc41c3aa69d7f28edb1bc8c53280ae68a4b060b797b26bbabd1d03c398f14f79"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/device-info.pb": {
+    "bytes": 115,
+    "sha256": "eb397c1e4a13d3c808c4b7c0bfc75c38301b937ac4b38d3e2933fe81252da7ed"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/cpuinfo": {
+    "bytes": 1663,
+    "sha256": "35f072e8d83833b523d87f214c0ad0bd5c5b736b1261e690b91d52f8307d5cbd"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/aapt.2.ok.txt": {
+    "bytes": 1656,
+    "sha256": "529ce78b33bf5c3545e10cb87c173706ff2d31b2e3bfdbc8680dd32772034afb"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/aapt.1.ok.txt": {
+    "bytes": 5960,
+    "sha256": "a66038d2abcc50341dffe448e11d6abdcece2d748f721079dd3f22b1a1ce6472"
+  },
+  "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/testlog/test-results.log": {
+    "bytes": 129526,
+    "sha256": "73cca451451d7e78356b3803b9494da3e4a337b715ab11e55bc0a05611f2d8a6"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.offline.BundleTransferEngineTest.xml": {
+    "bytes": 2495,
+    "sha256": "7878ad6db82a504b483e5aa05123cbc1cec4d1cbab01ff19a071febdc8a6afd8"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.offline.BundleStoreLogicTest.xml": {
+    "bytes": 1681,
+    "sha256": "1d95753e3c9393b9ffeff4d3107d88454e909e5c592902b968877837fdf08c10"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.offline.BundleStateMachineTest.xml": {
+    "bytes": 2123,
+    "sha256": "16c648d177aa6df5f59752594c5320bbba4e5d121b8992f918d0a13b8fdf46d8"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.offline.BundlePolicyTest.xml": {
+    "bytes": 1623,
+    "sha256": "eca545394d1ef3059d4cccccd9e19f02faef450ff38e71a2cc55157bfdbf79e0"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.offline.BundleManifestCodecTest.xml": {
+    "bytes": 3182,
+    "sha256": "3f65a5b9318e338edcd49b455b3f68c4ee4da34bf2fcd614ad264056d65dcf52"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.offline.BundleJobTest.xml": {
+    "bytes": 1385,
+    "sha256": "6f0cc707a763ec89cf2c9809a2229128507cbb5edf3ad651a9d4a25e4a4cdcc3"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.catalogue.providers.ProviderProjectionTest.xml": {
+    "bytes": 2127,
+    "sha256": "9e026ac1eae6469f9212e80d1408ae27e0515d8d27df58496733118b844b104c"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.catalogue.SearchContractTest.xml": {
+    "bytes": 749,
+    "sha256": "0d1bb16f8ed3d707723d5476a569e710fa663e7b58600a9cd5ef5e5640ddc32f"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.catalogue.CatalogueQueryTest.xml": {
+    "bytes": 589,
+    "sha256": "d048fc2fb637b3b540db67f1ca5bfd8b06223db6b564870f99db835bc21102ff"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.catalogue.CataloguePresentationTest.xml": {
+    "bytes": 502,
+    "sha256": "620ec0f6cd6bb5df32b7119cbcb3a3fa5af131562e66be4cc060a15e8383b1d8"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.catalogue.CatalogueIntakeTest.xml": {
+    "bytes": 651,
+    "sha256": "c13c2d8a54672f49353b29d91cd4fe5c6d3ed9f9264f5fa8d9ae31c98f47ac5a"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.catalogue.CatalogueBudgetTest.xml": {
+    "bytes": 646,
+    "sha256": "853bc6fbe0d36ccef300a6734520abad20fa844621d49773f2ad98fe5a21b52c"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.admin.AdminStatsTest.xml": {
+    "bytes": 1100,
+    "sha256": "f73d6582f85eadac9eed9e396aea7bb6e6dd77eebf79c771e115b3f8946aa749"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.admin.AdminReviewTest.xml": {
+    "bytes": 3647,
+    "sha256": "21c344fbbf185e690f3cfc95cbbeac581b099766d9b9a9bd6c33d0092ab3adbd"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.admin.AdminQueueTest.xml": {
+    "bytes": 1813,
+    "sha256": "19cff13689341cb8c309a40ec68bcdfe17f6d3f56cdbfe8dc8497a30619dc2cb"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.admin.AdminFoundationTest.xml": {
+    "bytes": 3515,
+    "sha256": "34f6a05595b1b80c771592edcc943cc282f8799edc99835ab29b61c4555b29ce"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.admin.AdminContractIntegrationTest.xml": {
+    "bytes": 3902,
+    "sha256": "fadab18a211e33644c09fd8912114fa6c8931a6310f6d810cd0f315a51dc4fca"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.admin.AdminAuditSyncTest.xml": {
+    "bytes": 1516,
+    "sha256": "2f362be0607e4581283477490e6500c8432d578ef2a794702e090d15282746a7"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.SmartCacheTest.xml": {
+    "bytes": 610,
+    "sha256": "2fa7ba184494bf7c67327833cc31b219a4081705897bc070d7d901ada0ddc82c"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.ReminderScheduleTest.xml": {
+    "bytes": 580,
+    "sha256": "33bfdd144957d3903074890e17c2d1f5de5d24e85aa8fed5306ccb0bee653bd5"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.RedesignTest.xml": {
+    "bytes": 976,
+    "sha256": "06681d040726c1c0e8b4abe6d4b5cc66451af96ddfd9b9392a31d2ec58994651"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.Redesign010Test.xml": {
+    "bytes": 557,
+    "sha256": "b847f0a72570e3cdbe00c5c512e156b35d17f49bc232a5724c4477460901f995"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.RecordingLinksTest.xml": {
+    "bytes": 853,
+    "sha256": "e2568a9b2f6c74309006efee6edcc3e1c181e1223a944aa373a71fe1cf888fe5"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.Quality092Test.xml": {
+    "bytes": 552,
+    "sha256": "4885ba19be704de3e09eb83f62d431820393399db3506fa71b888a138e31d795"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.ProfileStatisticsTest.xml": {
+    "bytes": 580,
+    "sha256": "5722667b7701460005f9ab33abbdf3f16c7f732a09fe0c9628411b15861e6130"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.ProfileMaintenanceTest.xml": {
+    "bytes": 984,
+    "sha256": "91104833651c1fbe8c3e6f4a60262a34325c9df4d1798eed1b26cd2e7376ef8f"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.PracticeFailureTest.xml": {
+    "bytes": 1895,
+    "sha256": "cafe6d25f8938fbcd81d58698725da3e85fee2f27712c3b11852e080365bf861"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.PracticeEngineTest.xml": {
+    "bytes": 1440,
+    "sha256": "f2289c2d2db54ec13242aaf0ebb0d20e6f6550180012a48115ebad842ef6e694"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.Polish101Test.xml": {
+    "bytes": 581,
+    "sha256": "aea565ba038d6f3bb6bb3d437ca55d39f2f30b7ac8396fea4b92dc10d5930e5c"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.PianoActivityDetectorTest.xml": {
+    "bytes": 832,
+    "sha256": "5c27107c70573c9c66e47306eece9081e2e31edf853f169fb2b52ba14111c107"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.MultiPieceTest.xml": {
+    "bytes": 777,
+    "sha256": "3d8efd526d4d5545b5edaf68d6779818cb6825bdc4c9bd55d389cafc536d2e73"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.JournalFormattingTest.xml": {
+    "bytes": 571,
+    "sha256": "81e609c0e59890fd19c6f074206e8ac874045d9a9b725143782ade2354cb39b2"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.GoogleIdentityPolicyTest.xml": {
+    "bytes": 696,
+    "sha256": "0d604f42ce355cd0c5ceabf1d50ddef349da90499c14d5a20d14de618a0ba04c"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.CsvExportTest.xml": {
+    "bytes": 567,
+    "sha256": "00890019a4cf88e4d9e4a2f01f2c9bdee1002bdb404fac14ba697fd461d91ec0"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.CatalogTextTest.xml": {
+    "bytes": 689,
+    "sha256": "5ba09eecdcddc735ba91eaf43b15ee504f4138fd298b69a8c13c39d5f3ec10fe"
+  },
+  "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.AchievementEngineTest.xml": {
+    "bytes": 1854,
+    "sha256": "00aea3102960f7c272e0f0c661ac3b54b3724ce862d6d08f97c58fd9ca1f5257"
+  },
+  "app/build/test-results/testDebugUnitTest/binary/results-generic.bin": {
+    "bytes": 35965,
+    "sha256": "8148e89af78eea0dfa66a7aeb33e707de58f781724a4011c6509636a5b6de346"
+  },
+  "app/build/test-results/testDebugUnitTest/binary/output-events.bin": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "app/build/reports/androidTests/connected/debug/index.html": {
+    "bytes": 10895,
+    "sha256": "860cd672fcde0b6fb799e270891a30dfb797de5a1eabe30ecdd59dd4f1e642cf"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.html": {
+    "bytes": 10119,
+    "sha256": "bdbf23a43c538599a5d28a5f8ac2e17d4c5dd39011ac911126a6640037498060"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage7bAdminRuntimeTest.html": {
+    "bytes": 2155,
+    "sha256": "f91010a8831b1558f1e5170985d4e40d23556e02cd4cff06289bedc607641156"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage7aCatalogueBootstrapTest.html": {
+    "bytes": 1793,
+    "sha256": "7bd291311d21f93b9133cd9cf4997235d4d83f6e39f216e6258239927710cf47"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage5BundleWorkerTest.html": {
+    "bytes": 2998,
+    "sha256": "3c4c6b552debcc98ef166e5042868957ed5777e3cfe9d0bd1895eac93abaf778"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage5BundleJobRunnerTest.html": {
+    "bytes": 3118,
+    "sha256": "9c52fbfa35b21163e18d933913d8ebb90c05f6eddb59f4fe4a352a178f9cf147"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage5BundleStoreTest.html": {
+    "bytes": 2691,
+    "sha256": "5c2fe1ff9784d893e460695410f30f978f1215893800bb6c170b31ea45dfa3ad"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4TransportTest.html": {
+    "bytes": 2029,
+    "sha256": "0e28b3320fecca7c3a52336b970bd16b90110c5ae6d2d39682216443faf59684"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4ProviderCacheTest.html": {
+    "bytes": 2753,
+    "sha256": "ae652175d599e58b6ee3e1b769e80dea4d732e25d0c6707a3a802096e36b0f47"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4StorageAdmissionTest.html": {
+    "bytes": 1807,
+    "sha256": "ad96f189d9d08f6416a8ec09f9d65eae2167adb4f3576d31bc667b882ea780e1"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4SearchVerificationTest.html": {
+    "bytes": 2146,
+    "sha256": "e9dfbb196b7d455cf60359092793a90caead34e2e26eaf7d8b05cc7dce12caad"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4SafetyTest.html": {
+    "bytes": 2411,
+    "sha256": "b1fe68b9504f5b862f7d15dfedc126e4de22fefbd1f867dd430f339800275f5f"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4PortraitTest.html": {
+    "bytes": 2211,
+    "sha256": "5cab19fa6ed04efe92931a2243c7f8451fa9a94664ab0024752f5855306c6736"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4PagingTest.html": {
+    "bytes": 2512,
+    "sha256": "6b3de1d177b897a47fc0d5a210d5ad4726d85edf2f432fb8d453a7fc389952bd"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4ObservationCacheTest.html": {
+    "bytes": 2046,
+    "sha256": "99a9a2b0aa3b2d80bdef155744d923ac6360a2aa7ffde0576878d7de0d4f67a6"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4ExternalPortraitTest.html": {
+    "bytes": 1790,
+    "sha256": "b3995a955fbad4e0e11aa14dba64eede569d9c5cbaa931701c772a5cb437ded7"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4GraphTest.html": {
+    "bytes": 2509,
+    "sha256": "94f7bbc1e93c039e8ec2022138695b153ab19efb384597600d6b6f6a03593051"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4ExternalProviderTest.html": {
+    "bytes": 1792,
+    "sha256": "64c8cab3e2baacf80a139c401ec69ef79c96c2008009d5e23e23620676189296"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4EvidenceLifecycleTest.html": {
+    "bytes": 2708,
+    "sha256": "298bb1383b3f5646e69508994e018f41a907a9c66670800b1324191d4b740e8c"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4DocumentTest.html": {
+    "bytes": 2305,
+    "sha256": "404bfff41a4408a6f522db4f4b927a0943d7c9f80cc7ad79e4be3159cf500339"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4CatalogueTest.html": {
+    "bytes": 2466,
+    "sha256": "212b08f722ea40ca4c41bbb67ffc964e910a93e4be7fa30753f3e65d0a1f1dcc"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage3bProcessDeathTest.html": {
+    "bytes": 1846,
+    "sha256": "7bbf0543423900782416eca1b13d8d11ba3a20595cff0c58a524612257785bbb"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage3bBackupTest.html": {
+    "bytes": 3941,
+    "sha256": "6fb6c51692b3681aa761f295bfc0cadfe39ef2b9e02b1af27bb01e1c821768a6"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage3aPerformanceTest.html": {
+    "bytes": 1779,
+    "sha256": "cf9b9840e136ff286052551934b38f8475df2b2555cb8304c06ed8b93c1bb7d1"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage3aMigrationTest.html": {
+    "bytes": 2431,
+    "sha256": "5722d3440adad2a2fa2bf09e1d6ac714a4a3f7f357c3c3d3afdc812d4aa8ed15"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage3aCatalogueTest.html": {
+    "bytes": 2170,
+    "sha256": "7bd1e9ea21f1cc994634a45707d1c6fa5f98ce0645b1fe65899324d54dbc1810"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage3aBackupTest.html": {
+    "bytes": 1894,
+    "sha256": "cbb59dfd6696c368670f98a98c155812980023e306b4582c1cbc4da983047ae5"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.SmartCachePersistenceTest.html": {
+    "bytes": 2177,
+    "sha256": "b421b9fd0ebe14b6eba935ff9b035d9b075c4cce79cbcf1aae899e9b9dfe1686"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.RepertoireSearchPrivacyTest.html": {
+    "bytes": 1813,
+    "sha256": "7615610e8de982dc7699bc484ef0b3006c47137a2d160a76f764d6524825b3fe"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.RedesignPersistenceTest.html": {
+    "bytes": 1907,
+    "sha256": "06320c88e14d82a3c266d091c4e99e6ddfd56ea0a25081b9f75a81f59b8ee59e"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Quality092PersistenceTest.html": {
+    "bytes": 2169,
+    "sha256": "d112cd2f4fc0612495dd8604cb1d7340a980d9ec5d2d31ecc7026da4bdf5c128"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Redesign010PersistenceTest.html": {
+    "bytes": 2281,
+    "sha256": "2db42b6e1435ee12d75dca16667597446c1f60f79104d82cebd79ad157218920"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.ProfileCompatibilityTest.html": {
+    "bytes": 1800,
+    "sha256": "7fc15b8f7b6ee511f8aacbe9cc8d8dece27276ee7320dd124fd686bbb9eb6236"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.PracticeServicePolicyTest.html": {
+    "bytes": 1899,
+    "sha256": "0ef2d046be47b13a6515a97e0da85652aa9ef74066b00c5a44c612a6de84b8a2"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.PracticeRecoveryTest.html": {
+    "bytes": 1873,
+    "sha256": "9c0989175209839d1002ec2c006f4e9ec790b2d3ddae09ab63765d45dc4fa0b7"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.PracticeCoordinatorTest.html": {
+    "bytes": 1985,
+    "sha256": "be60d8078add589e5931d2e38ea502ac5c12ea97ec1c9f34bf568dbb1c75d734"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.NavigationRegressionTest.html": {
+    "bytes": 1917,
+    "sha256": "4f0d549fdfcbf596aabcb7c87659688a1f974ad36598d265a45efa111ca456a9"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.GoogleIdentityPersistenceTest.html": {
+    "bytes": 1919,
+    "sha256": "013eb94cb3dc04118fc7e1af7c50dad5d32b54323d3a6145d7f1fe1bb8023963"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.GoldbergPersistenceTest.html": {
+    "bytes": 1911,
+    "sha256": "fc8c4f9c089409fac1ee205fe800c3d62c65f72c4522b0cfc41cc6403028c2ac"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.Goldberg08MigrationTest.html": {
+    "bytes": 1779,
+    "sha256": "52118d3dab972828ae9a8a1bc3d9bd328e6aa856aac162a68d4ee26176191bee"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.ExperiencePersistenceTest.html": {
+    "bytes": 1938,
+    "sha256": "7d9615a75f51cd3834792c9972dab7a23b88f840c837cc2443e2b9ba22f69f08"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.DiscoverNavigationTest.html": {
+    "bytes": 1784,
+    "sha256": "a24c9d56705ee5c2eba83e07c59544caa9179ad9e36e0362e394ad176725ad15"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.DatabaseTest.html": {
+    "bytes": 1737,
+    "sha256": "1ead5a41209991cc1f65f4cb9704ddfdad81e3f8bb7b491e7b22d6c1fd59c240"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.CatalogDatabaseTest.html": {
+    "bytes": 1896,
+    "sha256": "caf86c28e6b89097dc81dcb5c3eafe83c0f483b492e6d8320e5c157add9685cb"
+  },
+  "app/build/reports/androidTests/connected/debug/com.opus.piano.AppLanguageTest.html": {
+    "bytes": 1757,
+    "sha256": "58e0584a910e5a9ffc02d75408f2a7cf7d4ee8ce88cd9dd2d98794dbd5d21c51"
+  },
+  "app/build/reports/androidTests/connected/debug/js/report.js": {
+    "bytes": 2933,
+    "sha256": "0aa306f94805890682c639b2d5c06108801d64b859a171a3c6eea66c8bab4c6a"
+  },
+  "app/build/reports/androidTests/connected/debug/css/style.css": {
+    "bytes": 1798,
+    "sha256": "f1b366319836f8726d0939654d0eeddfc5b20f67d9e5954b9a1632c60f2f31bf"
+  },
+  "app/build/reports/androidTests/connected/debug/css/base-style.css": {
+    "bytes": 2428,
+    "sha256": "2851d0b2f14f4ff1b75f0d01438887911eb474e235be93e561709227cefb18db"
+  },
+  "app/build/reports/tests/testDebugUnitTest/index.html": {
+    "bytes": 11515,
+    "sha256": "2b539e365b86b4135741832377b9e918acf3d02fff74bf1395856bd16452eac5"
+  },
+  "app/build/reports/tests/testDebugUnitTest/js/report.js": {
+    "bytes": 6718,
+    "sha256": "3aadca4fcf721dca618b54c0e93c93c37884c8d25aa2c9cb92782a3db9ffa605"
+  },
+  "app/build/reports/tests/testDebugUnitTest/css/style.css": {
+    "bytes": 2201,
+    "sha256": "7e5a63bb31295a4a5627ca9d8f8bd463bd91c035577fa2b4d020713936083a08"
+  },
+  "app/build/reports/tests/testDebugUnitTest/css/base-style.css": {
+    "bytes": 2449,
+    "sha256": "ae3edaf7d2e0cdfbd9919e0c89fcabbc6c593118515e82a13567005dc10bbf08"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.offline.BundleTransferEngineTest/index.html": {
+    "bytes": 5725,
+    "sha256": "83c7e774a376df512e2d68e6a31d514ee293fe6c658baafa0f29a3d2f22fb0fe"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.offline.BundleStoreLogicTest/index.html": {
+    "bytes": 4428,
+    "sha256": "a538197e912c588b53acdc8018388bd46634b8d2cc4d5a0926049ebdacfa288a"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.offline.BundleStateMachineTest/index.html": {
+    "bytes": 5133,
+    "sha256": "9a51d38755fb683357b45e5ed6553b480572ae25a070cf185d01ef6ce81d8d64"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.offline.BundlePolicyTest/index.html": {
+    "bytes": 4388,
+    "sha256": "3a9bed956bec2a0ece5429396f01a5938c7d77ecf459ccf2ecb7c6f5cd9270a2"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.offline.BundleManifestCodecTest/index.html": {
+    "bytes": 6834,
+    "sha256": "58075b61bfc6a9653ada2d8b5f0757da1d604211a25157d791687deab966fdd2"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.offline.BundleJobTest/index.html": {
+    "bytes": 4028,
+    "sha256": "b5823580a1ff76d5c2f6303c5685a87e474f6ec7e1c97ff25cb313d688b31d91"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.catalogue.providers.ProviderProjectionTest/index.html": {
+    "bytes": 4973,
+    "sha256": "3290b79dcdee51a1540d34fe6d11568ead47d324a2fa93c0b4e41a189b2231b0"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.catalogue.SearchContractTest/index.html": {
+    "bytes": 2864,
+    "sha256": "2aaa12bc095742dd50c96baca74024b2f6c0347e91fb537ba16c135925e89f37"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.catalogue.CatalogueQueryTest/index.html": {
+    "bytes": 2587,
+    "sha256": "d9e2b420bb4f49a88f8cae1455ecb3c27e00b6d36b995e3ad10deece6f56a72c"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.catalogue.CataloguePresentationTest/index.html": {
+    "bytes": 2449,
+    "sha256": "e33384ee7aa63d13f49b712dd86bbb57018a220520024b6791fc9c0e081221d7"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.catalogue.CatalogueIntakeTest/index.html": {
+    "bytes": 2708,
+    "sha256": "c83e4a3e63254eae3fc5ec005eebdff0901aca2c3d104b8c87a790b8491ec98c"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.catalogue.CatalogueBudgetTest/index.html": {
+    "bytes": 2698,
+    "sha256": "f511d9a5318efffae0a45830f1314282277a6ed472e227db3802f87b2b25c709"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.admin.AdminStatsTest/index.html": {
+    "bytes": 3589,
+    "sha256": "10f31623f6298ae7c4c34e4d701a02f9bde50616aa7b636a374ee5b79066ae4c"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.admin.AdminReviewTest/index.html": {
+    "bytes": 8291,
+    "sha256": "5656a6b478ea1b45a4a45a1e73cca102418fb0a0c23cca69965fa3098076a7a2"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.admin.AdminQueueTest/index.html": {
+    "bytes": 4914,
+    "sha256": "675a875312d04c2bb5df8b17d5a6da7c700be26079a95e32dc1006c1c94fc8cb"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.admin.AdminFoundationTest/index.html": {
+    "bytes": 7877,
+    "sha256": "7f918b320b89afd51910c8fbadda7fc51ffa6fd6cf2f2bb28f5ff36ccf63b3dd"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.admin.AdminContractIntegrationTest/index.html": {
+    "bytes": 8228,
+    "sha256": "1c9e0dc0aabe9c699b62ce155776790d765be18fd944f558cb91f214b132d0e5"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.admin.AdminAuditSyncTest/index.html": {
+    "bytes": 4302,
+    "sha256": "9f5a9d21a5746cf87f1e4c1deb66d5b354521d29e6e983ccec670aa9936eb1d0"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.SmartCacheTest/index.html": {
+    "bytes": 2701,
+    "sha256": "8e7906573c31441c233d0a96557fb384849c3fc1353a2776b957bd256512abc6"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.ReminderScheduleTest/index.html": {
+    "bytes": 2623,
+    "sha256": "18d148c224c64e68795513d54ef93773e6e24ec7109577bad2717daf46590e47"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.RedesignTest/index.html": {
+    "bytes": 3436,
+    "sha256": "1ffe6dde44c021dd854de1b5fbf8985a1d76be9d1343383032b3ae865c13cb6a"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.Redesign010Test/index.html": {
+    "bytes": 2592,
+    "sha256": "e8a5f40911c8b437db3de56f2e1e9d38d70e1028fdf6de04324183eb6c31c177"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.ProfileStatisticsTest/index.html": {
+    "bytes": 2622,
+    "sha256": "5db7f08d1113791eadf4aa6ad063b033ef3a0bcd2b524fd62e5eaffaeefc1ec0"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.RecordingLinksTest/index.html": {
+    "bytes": 3149,
+    "sha256": "aad0c11960e2caa91d81bf01b509c3485c3b3f864f44a894841a736d16d4d780"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.Quality092Test/index.html": {
+    "bytes": 2585,
+    "sha256": "6fb919410393be235a22390e6113dbe050550e772bb5de56220d7f3f3f8d956f"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.ProfileMaintenanceTest/index.html": {
+    "bytes": 3362,
+    "sha256": "374bbb8e5ac3fe48a894100c94543edfe7ab26fea205446d9a12e0236b02503d"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.PracticeFailureTest/index.html": {
+    "bytes": 5105,
+    "sha256": "fd6d87f1445996182a65f87dc3a7f7a0b06166dea18dc5813afd244d8b50af2b"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.PracticeEngineTest/index.html": {
+    "bytes": 4258,
+    "sha256": "444bc934659af5ba9db4fd030c7eef4264fb522eb72424a0f34ef032d9e8df00"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.Polish101Test/index.html": {
+    "bytes": 2646,
+    "sha256": "9ce517ecdcd8b26e00d8f3746e3cf1b28e2fc493fedb457f7cc02d15f87a3d40"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.PianoActivityDetectorTest/index.html": {
+    "bytes": 3058,
+    "sha256": "de4972119698fbc91c5a61963e715c4249e082321faf0ae60cc0d4a723500b5a"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.MultiPieceTest/index.html": {
+    "bytes": 3025,
+    "sha256": "a970d17674c903662623335a3ff14d92816148eda597386473ddb19bdb6292c0"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.JournalFormattingTest/index.html": {
+    "bytes": 2602,
+    "sha256": "115159d2d80ac6031df718a4a7ce9717253b66caa3c7a8d2829bf132a18a944e"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.GoogleIdentityPolicyTest/index.html": {
+    "bytes": 2818,
+    "sha256": "a417c90586e81dfaa6e290fc32c9385b8402e160dffc83c6b1f67a7c08076fe3"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.CatalogTextTest/index.html": {
+    "bytes": 2849,
+    "sha256": "0c27c711048220791a56029c9c2ad061da4be7c6d748d4ac29868f2bab06e8a8"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.CsvExportTest/index.html": {
+    "bytes": 2618,
+    "sha256": "31b78f5ecf4ddf778aab66a22b261aacf404269314266ef3024738f6b63220bb"
+  },
+  "app/build/reports/tests/testDebugUnitTest/com.opus.piano.AchievementEngineTest/index.html": {
+    "bytes": 4998,
+    "sha256": "eefe4fa7119a9fcdf597cff2c69f6feeb0982a3e9248ffc6d9ed534ab49c3594"
+  }
+}

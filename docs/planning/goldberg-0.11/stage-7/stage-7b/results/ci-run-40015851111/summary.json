@@ -1,0 +1,29 @@
+{
+  "source": "de792fc06f0e8d8ef898d4d2254489783e3310a5",
+  "containsSmokeFix": false,
+  "xml": {
+    "tests": 182,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2
+  },
+  "admin": [
+    {
+      "name": "keystoreSessionSurvivesStoreRecreationAndTamperingClearsIt",
+      "result": "PASS"
+    },
+    {
+      "name": "nativeJsonPreservesExactAuditBigintAndRejectsRevisionOverflow",
+      "result": "PASS"
+    },
+    {
+      "name": "androidMarkersPersistAcrossStoreRecreationAndStayAccountScoped",
+      "result": "PASS"
+    },
+    {
+      "name": "savedEndpointAndKeystoreTokenCannotEnableApplicationNetworking",
+      "result": "PASS"
+    }
+  ],
+  "smokeFailure": "Starting: Intent { cmp=com.opus.piano/.MainActivity }\nError type 3\nError: Activity class {com.opus.piano/com.opus.piano.MainActivity} does not exist.\n"
+}
