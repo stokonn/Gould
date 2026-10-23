@@ -24,8 +24,8 @@ change or migration is needed; no original migration checksum was overwritten.
   moderation/events/feed and canonical principal/request-bound idempotency.
 - [x] Execute focused PG17 tests, retain failed-run evidence, fix discovered errors.
 - [x] Final integrated 84-regression/host/hash verification: 171 total PASS; five host checks PASS.
-- [ ] Commit/push and remote source/scope verification.
-- [ ] Publish append-only Issue #31 checkpoint with final verified source and results.
+- [x] Commit/push c80c03eee3f908437dda3fc75e366a9e2f1b995c; exact remote source/scope verified.
+- [x] Publish [append-only Issue #31 checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6357457691); exact readback and all 65 older records preserved.
 - [ ] Formal 6.4–6.6 acceptance (not granted by local results).
 
 Initial 81-test run: 77 passed/4 failed. Three failures exposed the inherited
@@ -50,3 +50,10 @@ Next recommendation is separately authorized **6.7–6.9**: public overlay/feed,
 remaining Admin operations and abuse controls; do not start automatically.
 
 created by stokonn with love <3
+
+## Publication/completion status
+
+Local milestone VERIFIED AND PUBLISHED; formal 6.4–6.6 acceptance remains pending.
+Final source c80c03e: 87 new + 84 unchanged regressions PASS; source hashes unchanged.
+Issue/milestone OPEN; Project In Progress. No further dashboard change beyond the
+owner-approved link. This documentation follow-up records the source publication.

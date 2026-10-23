@@ -1,3 +1,24 @@
+## Local handlers publication verified — 2026-10-23
+
+Branch `spike/goldberg-0.11-stage-6-handlers-local`; implementation
+`c80c03eee3f908437dda3fc75e366a9e2f1b995c` pushed and exact remote HEAD verified.
+[Issue #31 implementation checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6357457691)
+appended and independently read back exactly; 66 comments, all 65 full older
+records unchanged. Body remains the approved link-only version (SHA-256
+cbb0579ef81b7d92052d9878d4d3d306718d9fe2168e01984548a2b54081af81);
+labels/milestone/state preserved and Goldberg Development In Progress. No further
+body/status edit. This documentation-only follow-up records publication; tested
+implementation and 10-source hash manifest remain unchanged.
+
+Local milestone verified and published: 87 new + 50 Auth + 34 schema = 171 PASS,
+zero failed/skipped/cancelled; five host checks and original 22 hashes PASS.
+Initial four failures and fixes retained. No source change since final execution.
+Formal 6.4–6.6 NOT COMPLETE; Q1/D5b, C4, C2 §12 and 6.0f remain unresolved.
+Real license/field/source rules remain undecided, validator defaults fail closed.
+Cloud/Stage 5/Stage 7/Android unchanged. No merge/release/APK/screenshots/device.
+Next recommendation only: separately authorized 6.7–6.9; not started. Resume from
+this branch's living LOCAL-HANDLERS-PROTOTYPE checklist/results and checkpoint.
+
 ## Local 6.4–6.6 verified implementation — 2026-10-23
 
 Owner-authorized local synthetic prototype; not formal 6.4–6.6 acceptance or 6.0f

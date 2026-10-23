@@ -860,13 +860,14 @@ and Stage 6 tracking. Original 34 schema/50 Auth source and historical evidence 
 - [x] Review exact state patch/dependencies; reconcile changes_requested canonical state.
 - [x] Implement separate validation, submission, moderation, idempotency and adapter modules.
 - [x] Execute focused PG17 security/concurrency/rollback tests plus all 84 regressions.
-- [ ] Verify source hashes, host checks, scope and synchronize checkpoint; commit/push.
+- [x] Verify source hashes, host checks and scope; push c80c03e and synchronize checkpoint #6357457691.
 
-Progress: local code and verification passed; publication/checkpoint pending.
+Progress: local code/verification/publication complete; formal acceptance pending.
 Verification: PostgreSQL 17.11 — 87 new + 50 Auth + 34 schema = 171 PASS, zero
 failures/skips/cancellations; five host checks and original source hashes PASS.
 Initial 77/81 and corrected 81/81 artifacts retained, including diagnosed export
 ordering bug and fixture correction. No hosted/HTTP/DNS/Android tests executed.
 [Purpose, scope, limits and tasks](stage-6/LOCAL-HANDLERS-PROTOTYPE.md).
-Completion: local verification passed, publication pending. Formal
+Completion: local milestone VERIFIED AND PUBLISHED (c80c03e, Issue checkpoint
+6357457691 independently read back, 65 older comments preserved). Formal
 6.4–6.6 and 6.0f remain unchecked; Q1/D5b, C4 and C2 §12 unresolved.
