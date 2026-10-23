@@ -1,0 +1,67 @@
+{
+  "executedCommunityTests": 40,
+  "suite": "com.opus.piano.community.CommunityRepositoryTest",
+  "groups": {
+    "privacy/request allowlists": [
+      "dtoUsesExplicitNestedAllowlists",
+      "privateObjectSmugglingFailsAtEveryPayloadLevel",
+      "credentialsAreRedactedAndNotInFixtureCallsOrPersistedDrafts",
+      "strictSchemaVersionRejectsCoercions"
+    ],
+    "draft persistence and recovery": [
+      "savedDraftSurvivesRepositoryAndStoreRecreation",
+      "draftPersistsAcrossAnActualSeparateJvmProcess",
+      "atomicFaultPreservesOriginalDraft",
+      "staleEditCannotSilentlyOverwrite",
+      "corruptDraftIsNotSilentlyReplaced",
+      "incompleteLocalDraftSurvivesAndCannotSubmit"
+    ],
+    "account and authorization isolation": [
+      "accountSwitchHidesOtherDraftsAndCannotSendThem",
+      "signOutClearsOnlyCredentialsAndRetainsAccountAndGuestDrafts",
+      "signOutDuringFlightPreventsReceiptAndPreservesPendingRequest",
+      "guestWithoutCommunityAuthorizationCannotSubmit",
+      "expiredAndUnprivilegedSessionsCannotSubmit"
+    ],
+    "error taxonomy and idempotency": [
+      "everyServerErrorRetainsDraftAndMapsDistinctly",
+      "conflictAndMismatchKeepDraftsAndRefuseAutomaticResend",
+      "offlineRetryKeepsExactBodyAndKeyAcrossRestart",
+      "lostReceiptSaveCanOnlyRetryTheOriginalRequest",
+      "attemptedBodyCannotBeEditedOrSilentlyAssignedANewKey",
+      "malformedSuccessIsNeverReportedAsSuccess"
+    ],
+    "rate limits": [
+      "rateLimitHonorsRetryAfterAndReusesRequest",
+      "retryAfterParsesHttpDateAndRejectsInvalidOrOverflow",
+      "missingRetryAfterNeverCausesImmediateResend"
+    ],
+    "offline/startup/cache": [
+      "disabledProductionBoundaryNeverSendsAndRetainsDraft",
+      "repositoryConstructionAndLocalEditingDoNotUploadOrFetch",
+      "cachedOverlayIsExplicitlyStaleSyntheticAndSurvivesRestart",
+      "callerCancellationLeavesDurableRetrySnapshot",
+      "transportTimeoutIsTruthfulAndKeepsFrozenDraft"
+    ],
+    "backup/startup policy source assertions": [
+      "backupAndStartupBoundariesAreExplicitInAndroidSource"
+    ]
+  },
+  "qualifications": {
+    "privacy": "DTO/fixture boundary only; no actual network path enabled/tested",
+    "backup": "JVM source assertions plus independently inspected packaged manifest/rules; not a restore drill",
+    "processRecreation": "Actual separate JVM/file store; not Android process death or activity recreation",
+    "startup": "Construction/no implicit calls and source isolation; not Android cold-start timing",
+    "migrations": "No Room migration suites among these 31 JVM suites; agent host Python DDL/fixtures separately pass; native Room migration/upgrade tests remain pending",
+    "keystore": "Native code compiled in app; actual Android crypto/read/clear/tamper runtime tests pending",
+    "ui": "App compiled/lint passed; contributor rendering/accessibility/theme/font checks unexecuted"
+  },
+  "pendingAndroidTests": [
+    "keystoreRoundTripEncryptsTokenAndSignOutClearsIt",
+    "credentialsCannotBeReadAfterCiphertextTampering",
+    "installedApplicationDisablesAndroidBackup",
+    "independentStoreInstancesRecoverLocalDraftOnAndroid",
+    "applicationCommunityRemainsDisabledWithoutChangingPracticeDatabase"
+  ],
+  "acceptance": "PARTIAL; no full Android/runtime threat-row acceptance"
+}

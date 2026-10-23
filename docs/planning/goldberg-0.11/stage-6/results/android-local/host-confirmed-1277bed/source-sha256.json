@@ -1,0 +1,17 @@
+{
+  "app/src/androidTest/java/com/opus/piano/CommunityLocalInstrumentedTest.kt": "064d11bd8082b3848bbb1d435a9319ff9b5c2a86b3e39b8970e2250fedc86eb7",
+  "app/src/main/java/com/opus/piano/OpusApplication.kt": "fb8ddf4ab2395399c4dce527cc9a9f0e5020801de2f52ae23038c598cae6a5a5",
+  "app/src/main/java/com/opus/piano/data/community/AndroidCommunityCredentials.kt": "559fe89df20835a4054219f1434fc855a87754c4e02c1feae7ccf03121859d98",
+  "app/src/main/java/com/opus/piano/data/community/CommunityDraftStore.kt": "1ac2c3f53069b9067a3a20e711e8bc28a0c56418b25e2d2bad9dd63a4ff4aef1",
+  "app/src/main/java/com/opus/piano/data/community/CommunityModels.kt": "fe8f530886979aed5b1a0a4b1d7059510f6a86f56217bbf86d20e99ae71ea753",
+  "app/src/main/java/com/opus/piano/data/community/CommunityOverlayCache.kt": "04c9fda4e392d5d602797034db03c730597c6334382d9ab1d995d80d1bf88533",
+  "app/src/main/java/com/opus/piano/data/community/CommunityRepository.kt": "64f6fe03e21f6a94db669cb9be7e9e5fae200eb5a9f9b208ef43296f52a5f709",
+  "app/src/main/java/com/opus/piano/data/community/CommunityTransport.kt": "39aaa3df9bf464cbfa6b2f1962087bfdfd29e9b4e34c7cb74a71317b1721764d",
+  "app/src/main/java/com/opus/piano/ui/CommunityDraftPanel.kt": "c79e79de01b9d435d1de3b4f3079d5cdc65e1256568386c53412999ec57f0df7",
+  "app/src/main/java/com/opus/piano/ui/SettingsScreen.kt": "7f39db31c40e46c44f446f2064758ef9923d9fc84f3eb455cb062c430483a383",
+  "app/src/main/res/values/strings.xml": "346fb83f55e59b0fa94829fde39a75a4f2ee4394d303164edfc5110ac6d6a184",
+  "app/src/main/res/values-cs/strings.xml": "772b53198d7cb63dc256ad390777b550298222113e8608e01c734d051025645b",
+  "app/src/test/java/com/opus/piano/community/CommunityRepositoryTest.kt": "d9c729d7f3c549a44a48f2912ca749a84d1bbbc6c5ca4670c8c4b8acc5547618",
+  "scripts/community-local/verify-jvm.py": "5dd5896a878d8e23f602e64b2e568bce97cb2f7e407bbe01b1d89f626230f9c4",
+  "scripts/verify-community-android-local.sh": "8b119f4e1542cfbac73dc831627bd1a41a098a2e73fb512be74b9f7084faa193"
+}

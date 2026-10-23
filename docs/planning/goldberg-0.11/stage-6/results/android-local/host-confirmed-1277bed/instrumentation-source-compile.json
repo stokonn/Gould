@@ -1,0 +1,22 @@
+{
+  "command": [
+    "java",
+    "-cp",
+    "/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/2.2.10/6882d39ef03b18879c1a5d2a83c2212361bed5fe/kotlin-compiler-embeddable-2.2.10.jar:/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.2.10/30de6faa127a4a012db8e71bf1b9c0a99b1402b2/kotlin-stdlib-2.2.10.jar:/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/2.2.10/712f9bc08f378c13a4a00f0bbb28c76e59183e83/kotlin-script-runtime-2.2.10.jar:/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.2.21/17bc47f5dfe27c2351538e711f0afe377b0de6b2/kotlin-reflect-2.2.21.jar:/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/23.0.0/8cc20c07506ec18e0834947b84a864bfc094484e/annotations-23.0.0.jar:/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.10.2/4a9f78ef49483748e2c129f3d124b8fa249dafbf/kotlinx-coroutines-core-jvm-1.10.2.jar",
+    "org.jetbrains.kotlin.cli.jvm.K2JVMCompiler",
+    "-no-stdlib",
+    "-no-reflect",
+    "-jvm-target",
+    "17",
+    "-Xfriend-paths=/tmp/goldberg-stage6-android-local/app/build/intermediates/built_in_kotlinc/debug/compileDebugKotlin/classes",
+    "-classpath",
+    "/tmp/goldberg-stage6-android-local/app/build/intermediates/built_in_kotlinc/debug/compileDebugKotlin/classes:/home/stokonn/Android/Sdk/platforms/android-36/android.jar:/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.2.10/30de6faa127a4a012db8e71bf1b9c0a99b1402b2/kotlin-stdlib-2.2.10.jar:/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.10.2/4a9f78ef49483748e2c129f3d124b8fa249dafbf/kotlinx-coroutines-core-jvm-1.10.2.jar:/home/stokonn/.gradle/caches/modules-2/files-2.1/junit/junit/4.13.2/8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12/junit-4.13.2.jar:/home/stokonn/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar:/tmp/goldberg-stage6-android-local/.gradle/community-instrumentation-compile/junit-1.2.1.jar:/tmp/goldberg-stage6-android-local/.gradle/community-instrumentation-compile/core-1.6.1.jar:/tmp/goldberg-stage6-android-local/.gradle/community-instrumentation-compile/runner-1.6.2.jar:/tmp/goldberg-stage6-android-local/.gradle/community-instrumentation-compile/monitor-1.7.2.jar",
+    "-d",
+    "/tmp/goldberg-stage6-android-local/.gradle/community-instrumentation-compile/classes",
+    "/tmp/goldberg-stage6-android-local/app/src/androidTest/java/com/opus/piano/CommunityLocalInstrumentedTest.kt"
+  ],
+  "exit": 0,
+  "sourceSha256": "064d11bd8082b3848bbb1d435a9319ff9b5c2a86b3e39b8970e2250fedc86eb7",
+  "testsExecuted": 0,
+  "venue": "Direct Kotlin compilation against host-built debug classes, SDK36 and cached AndroidX; no androidTest APK produced"
+}

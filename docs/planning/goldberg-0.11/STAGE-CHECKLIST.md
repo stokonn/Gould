@@ -1149,3 +1149,67 @@ Host execution approval was automatically rejected because sandbox_approval:fals
 prevents escalation prompts. No bypass, real network API, deployment, real account,
 physical phone, main merge or release action. Next action is permitted-host Android
 verification of this source, followed by emulator acceptance; not a new milestone.
+
+## Android host Gradle verification confirmed — 2026-10-23
+
+**JVM/build/lint VERIFIED; Android runtime acceptance still PENDING.**
+Branch implement/goldberg-0.11-stage-6-10-11-local; owner-tested HEAD
+1277bedf5056e794a94566e828ffecb4b14338a3 (implementation6e4a627). Before this
+recording pass, working tree was clean and all15 recorded source hashes matched.
+Owner executed on permitted Fedora host:
+`./gradlew --no-daemon :app:testDebugUnitTest :app:lintDebug :app:assembleDebug --stacktrace`
+and reported BUILD SUCCESSFUL. Agent inspected the actual generated outputs;
+original console transcript was not supplied, so no compiler-warning count is
+invented. No application/test source change was needed after this green run.
+
+- [x]31 actual JUnit XML suites: **214 PASS,0 failures/errors/skips**; includes
+ 40 CommunityRepositoryTest tests and174 existing regressions. These40 are included
+ in214, not an additional execution total. Full app/contributor UI Kotlin compiled.
+- [x] LintDebug: **0 errors/fatal,109 warnings**. Category counts and raw XML/TXT/HTML
+ retained. No warnings located in new data/community or CommunityDraftPanel files;
+ SettingsScreen has an existing UseKtx suggestion on an unchanged expression.
+- [x] Debug APK assembled, agent signature/badging inspected. ApplicationId
+ com.opus.piano, inherited version0.10.1/code11, min26/target36. Trusted signing
+ SHA25653eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e matches.
+ APK SHA2568e30d783d223b7fc9b48c780edf6a3f5f24624aa016a77c3312d6f4149a0751d;
+ preserved privately under .gradle/community-host-artifacts/1277bed/app-debug.apk.
+ APK is not committed, uploaded or released.
+- [x] Packaged manifest and data-extraction XML independently inspected: allowBackup
+ false/fullBackupContent false; all cloud/device-transfer domains excluded. This is
+ structural policy proof, not an executed Android restore/Keystore test.
+- [x] Coverage mapped to exact executed XML test names for privacy/DTOs, file drafts,
+ independent JVM restart, account isolation, error/retry/conflict/rate limits, cache,
+ disabled transport and source-level backup/startup assertions. No network-path
+ privacy assertion or Android process-death inference from JVM tests.
+- [x] Direct standalone compilation of CommunityLocalInstrumentedTest.kt against
+ the host-built app classes, SDK36 and cached AndroidX PASS. **0 Android test bodies
+ executed**; no Gradle androidTest APK packaging claim.
+- [x] Agent reran five repository checks: all PASS, including host DDL migrations
+ 1→10..9→10 and portable backup fixtures. No Room/personal/backup source change.
+- [ ] Gradle :app:assembleDebugAndroidTest, packaging/install of test APK,5 new
+ Android Keystore/tamper/backup-flag/filesystem/disabled-boundary tests.
+- [ ] Existing Room/backup native migration and seeded upgrade verification;
+ actual Android process death/recreation, cold startup, contributor UI/theme/font/
+ CZ/EN screenshots and user-visible draft/error states. No physical phone use.
+- [ ] Normal branch push/exact remote-SHA verification and Issue31 checkpoint.
+
+Evidence copied before build outputs can be overwritten:
+stage-6/results/android-local/host-confirmed-1277bed/ contains31 JUnit XML files,
+raw lint reports, coverage.json, verification.json, source/artifact hashes and
+APK/policy/direct-instrumentation-compile checks. Source identity relies on owner's
+exact tested-revision report, initially clean tree and matching recorded hashes;
+manual host command did not capture a contemporaneous source manifest. No claim
+of signed execution attestation. Earlier blocked runs/failure logs remain intact.
+
+Runtime venue: fresh executor loopback-bind probe returns EPERM; no active emulator
+observed. Stage7B checkpoint6359455362 separately reports host qemu SIGSEGV. No
+repeat crashing launch, AVD wipe, phone use or sandbox bypass. Existing granular
+policy forbids host escalation prompts. A functioning permitted emulator venue is
+required; shared Stage5/7 emulator state/worktrees must remain preserved.
+
+All formal6.10/6.11/cloud/release gates remain unchecked; overall milestone remains
+PARTIAL pending runtime acceptance. No real OAuth/endpoint/production upload,
+Supabase/Cloudflare change, main merge, release or6.12–6.14 start. Next action:
+compile test APK on permitted host, then execute scoped tests and native migration/
+upgrade/UI acceptance on a named disposable emulator; publish this factual partial
+checkpoint after normal source push and exact remote readback.

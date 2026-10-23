@@ -1,0 +1,55 @@
+{
+  "testedHead": "1277bedf5056e794a94566e828ffecb4b14338a3",
+  "implementation": "6e4a627eab72c5c2056151c122556d5442417d91",
+  "branch": "implement/goldberg-0.11-stage-6-10-11-local",
+  "execution": "Owner executed on Fedora outside restricted sandbox; agent inspected generated evidence",
+  "command": "./gradlew --no-daemon :app:testDebugUnitTest :app:lintDebug :app:assembleDebug --stacktrace",
+  "ownerReportedBuild": "BUILD SUCCESSFUL",
+  "consoleLog": "Not supplied; generated XML/lint/APK independently inspected",
+  "workingTreeBeforeDocumentation": "clean at tested HEAD",
+  "sourceIdentity": "15 pre-existing recorded hashes match current tree; owner revision attribution and output timestamps agree; no at-run source manifest captured",
+  "jvm": {
+    "tests": 214,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suiteCount": 31,
+  "community": 40,
+  "priorRegressions": 174,
+  "lint": {
+    "errors": 0,
+    "warnings": 109
+  },
+  "apk": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "preservedLocalPath": ".gradle/community-host-artifacts/1277bed/app-debug.apk",
+    "bytes": 22589138,
+    "sha256": "8e30d783d223b7fc9b48c780edf6a3f5f24624aa016a77c3312d6f4149a0751d",
+    "applicationId": "com.opus.piano",
+    "versionName": "0.10.1",
+    "versionCode": 11,
+    "minSdk": 26,
+    "targetSdk": 36,
+    "signerSha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e"
+  },
+  "androidTestCompilation": "Not part of owner command; no androidTest APK found",
+  "instrumentation": "5 new tests unexecuted; existing Room/backup native suites unexecuted",
+  "emulator": "No active emulator observed; execution sandbox loopback bind EPERM; separate Stage7B checkpoint reported host qemu SIGSEGV",
+  "acceptance": "PARTIAL; Android runtime/UI acceptance pending",
+  "instrumentationDirectSourceCompilation": {
+    "result": "PASS",
+    "exit": 0,
+    "testsExecuted": 0,
+    "source": "CommunityLocalInstrumentedTest.kt",
+    "venue": "Direct Kotlin2.2.10 against actual host-built debug classes and cached SDK36/AndroidX",
+    "androidTestApkProduced": false
+  },
+  "packagedBackupPolicy": {
+    "allowBackup": false,
+    "fullBackupContent": false,
+    "cloudAndDeviceTransfer": "all root/database/file/sharedpref/external domains excluded",
+    "restoreRuntimeTested": false
+  },
+  "fiveRepositoryChecks": "Agent rerun PASS; see agent-check_*.log"
+}

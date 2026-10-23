@@ -1,0 +1,21 @@
+{
+  "errors": 0,
+  "warnings": 109,
+  "fatal": 0,
+  "categories": {
+    "ApplySharedPref": 1,
+    "OldTargetApi": 1,
+    "UnusedAttribute": 1,
+    "AndroidGradlePluginVersion": 1,
+    "GradleDependency": 14,
+    "NewerVersionAvailable": 1,
+    "ModifierParameter": 3,
+    "PrivateResource": 2,
+    "Untranslatable": 1,
+    "UnusedResources": 62,
+    "UsableSpace": 7,
+    "UseKtx": 15
+  },
+  "newCommunityLocations": [],
+  "unchangedSettingsLocation": "UseKtx SettingsScreen.kt:188"
+}
