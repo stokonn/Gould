@@ -1,4 +1,4 @@
-## Local API M2 — implementation and verification COMPLETE (2026-10-23)
+## Local API M2 — VERIFIED / SOURCE PUBLISHED (2026-10-23)
 
 Purpose: bounded authoritative Detail/refetch and actual disposable PostgreSQL
 acceptance for the existing local adapter/public receipts. Scope: isolated API
@@ -13,7 +13,9 @@ package and documentation; existing services/schema/migrations/Android untouched
 - [x] Source-before/after/current and raw hashes verified; UUID-named loopback-only
   container removed/absence verified; failed attempts and M1/security evidence retained.
 - [x] Issue31 verified milestone description/comment synchronized; OPEN / Project In Progress.
-- [ ] Ordinary commit/push, exact remote SHA and final completion checkpoint pending.
+- [x] Implementation/evidence committed and ordinary-pushed at `1ba7c1a67f5b8d1b2fea9084e9595fca97b7eb52`;
+  exact remote SHA matched. [Completion checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6374687079)
+  description/comment readback PASS, exactly one completion marker; Issue31 OPEN.
 
 [Full purpose/scope/tasks, exact commands, attempts and limits](API-V1-LOCAL-M2.md).
 Current baseline is recorded submission intent, not live catalogue state. Comparison,

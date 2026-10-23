@@ -1,6 +1,6 @@
 # Local API Milestone 2 — authoritative detail and PostgreSQL
 
-**LOCAL IMPLEMENTATION AND VERIFICATION COMPLETE; integration remains PARTIAL.**
+**LOCAL M2 VERIFIED / SOURCE PUBLISHED; integration remains PARTIAL.**
 Purpose: authoritative bounded latest-submission refetch after generic409, plus
 actual disposable local PostgreSQL acceptance of the adapter and public receipts.
 Scope: `spikes/stage6-api-v1-local` and tracking documentation only. Existing native
@@ -49,8 +49,12 @@ Branch: `feature/goldberg-0.11-stage-6-api-v1-local`. No listener or hosted inte
   PostgreSQL version and cleanup evidence retained. Prior345 baseline not rerun.
 - [x] Synchronize verified progress with Issue31 description/comment; Issue31 OPEN /
   Goldberg Development In Progress. [Verified checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6374588115).
-- [ ] Source publication: commit and ordinary push after fresh remote-divergence check;
-  exact remote SHA readback before the factual completion checkpoint.
+- [x] Source publication: normal non-force push/exact remote readback at
+  `1ba7c1a67f5b8d1b2fea9084e9595fca97b7eb52` after fresh baseline-equality guard.
+  [Completion checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6374687079); Issue31 description/comment
+  readback PASS, exactly one completion marker. Publication receipt is
+  `spikes/stage6-api-v1-local/results/m2/publication.json`.
+  This follow-up changes documentation/receipt only; tested implementation stays identical.
 
 ## Executed verification and venues
 

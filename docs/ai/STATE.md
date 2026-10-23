@@ -1,4 +1,4 @@
-## Local API M2 — implementation and verification COMPLETE (2026-10-23)
+## Local API M2 — VERIFIED / SOURCE PUBLISHED (2026-10-23)
 
 Purpose: bounded authoritative Detail/refetch and actual disposable PostgreSQL
 acceptance for the existing local adapter/public receipts. Scope: isolated API
@@ -13,7 +13,9 @@ package and documentation; existing services/schema/migrations/Android untouched
 - [x] Source-before/after/current and raw hashes verified; UUID-named loopback-only
   container removed/absence verified; failed attempts and M1/security evidence retained.
 - [x] Issue31 verified milestone description/comment synchronized; OPEN / Project In Progress.
-- [ ] Ordinary commit/push, exact remote SHA and final completion checkpoint pending.
+- [x] Implementation/evidence committed and ordinary-pushed at `1ba7c1a67f5b8d1b2fea9084e9595fca97b7eb52`;
+  exact remote SHA matched. [Completion checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6374687079)
+  description/comment readback PASS, exactly one completion marker; Issue31 OPEN.
 
 [Full purpose/scope/tasks, exact commands, attempts and limits](../planning/goldberg-0.11/stage-6/API-V1-LOCAL-M2.md).
 Current baseline is recorded submission intent, not live catalogue state. Comparison,
@@ -28,12 +30,12 @@ its new work is preserved. Security HEAD/status/diff remained unchanged.
 Final evidence: `spikes/stage6-api-v1-local/results/m2/pg-lg7ei69p`.
 Current-source checker: `python3 spikes/stage6-api-v1-local/verify-m2.py spikes/stage6-api-v1-local/results/m2/pg-lg7ei69p` PASS.
 Starting ancestor0782e22b17b55fe9850934feafca4af391a508d2; branch
-feature/goldberg-0.11-stage-6-api-v1-local. Unpublished until guarded push completes.
+feature/goldberg-0.11-stage-6-api-v1-local. Source/evidence published at `1ba7c1a67f5b8d1b2fea9084e9595fca97b7eb52`; exact remote SHA verified.
 Before interruption, preserve this work and inspect git status/log before proceeding.
 [Verified Issue checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6374588115).
 
-Next executor: commit verified work, fresh remote SHA guard, ordinary push, exact
-remote readback, final Issue31 description/comment. No old M1 publisher. No APK or
+Next executor: inspect latest HEAD and this checkpoint; bounded M2 is complete.
+Next separately authorized task: current Comparison/conflict-recovery integration. No old M1 publisher. No APK or
 rendered UI/device execution; no full-int8 proposal max seed bypassing its chain.
 Current external Stage7B bytes differed from its historical pin; pinned-provenance
 verification passed without editing it. All failed/raw attempts retained.
