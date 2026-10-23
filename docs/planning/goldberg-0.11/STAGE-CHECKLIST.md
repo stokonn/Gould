@@ -1124,3 +1124,28 @@ Source/evidence/limits: stage-6/results/android-local/SUMMARY.md and source mani
 Next: run scripts/verify-community-android-local.sh on a permitted host; inspect/fix
 actual build/test results, then explicitly targeted disposable-emulator checks.
 Only after acceptance recommend separate6.12–6.14 verification; do not start it.
+
+## Android partial source saved — publication and acceptance pending
+
+Implementation candidate commit6e4a627eab72c5c2056151c122556d5442417d91 on
+implement/goldberg-0.11-stage-6-10-11-local, descendant of verified backend9d7150c.
+Direct Kotlin/JUnit40 PASS and five host checks PASS; final captured source run is
+stage-6/results/android-local/jvm-ofm366xf. Core/credential Kotlin was compiled;
+full Android UI/build/lint and5 runtime tests remain unexecuted. Formal6.10/6.11
+are unchecked and this local Android milestone is PARTIAL.
+
+Git shell read failed resolving github.com; connected GitHub confirms the new
+branch is absent. No unverified Android candidate was pushed. Issue31 remains at67
+comments; no new checkpoint/dashboard edit. Prepared host verification is
+scripts/verify-community-android-local.sh; optional EMULATOR_SERIAL must explicitly
+name a disposable confirmed emulator. Host publication instructions and an exact
+partial checkpoint are saved under ignored .gradle/community-publication/; publish
+only after appropriate host verification and a normal exact-SHA remote readback.
+
+The source commit retained raw log trailing blank lines. A scoped .gitattributes
+rule disables blank-at-eof checks only for .log artifacts, preserving their raw
+bytes; source/document whitespace checks remain enabled. No test failure was hidden.
+Host execution approval was automatically rejected because sandbox_approval:false
+prevents escalation prompts. No bypass, real network API, deployment, real account,
+physical phone, main merge or release action. Next action is permitted-host Android
+verification of this source, followed by emulator acceptance; not a new milestone.
