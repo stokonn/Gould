@@ -64,4 +64,27 @@ class OpusApplication : Application() {
     val recordings by lazy { RecordingRepository(database) }
     val repository by lazy { OpusRepository(database, achievements) }
     val catalogRepository by lazy { CatalogRepository(database, filesDir, achievements = achievements, mediaAllowed = { media.allowed() }) }
+
+    // Stage 7B: Administration foundation. LAZY — nothing in startup/journal/recovery
+    // paths ever touches these. adminTransportOverride mirrors bundleConnectOverride:
+    // hermetic seam for tests/previews, never set in production.
+    @androidx.annotation.VisibleForTesting var adminTransportOverride: com.opus.piano.admin.AdminTransport? = null
+    val adminSettings by lazy { com.opus.piano.admin.AdminSettingsStore(this) }
+    val adminSession by lazy { com.opus.piano.admin.KeystoreAdminSessionStore(this) }
+    val adminRepository by lazy {
+        val api = com.opus.piano.admin.AdminApi(
+            baseUrl = { adminSettings.endpoint },
+            transport = adminTransportOverride ?: com.opus.piano.admin.HttpsAdminTransport(),
+            token = { adminSession.readToken() },
+        )
+        com.opus.piano.admin.AdminRepository(
+            api = api,
+            session = adminSession,
+            trust = com.opus.piano.admin.AdminTrustPolicy(),
+            markers = com.opus.piano.admin.AdminMarkers(com.opus.piano.admin.AndroidAdminMarkerStore(this)) {
+                identity.account.value ?: "local"
+            },
+            stats = com.opus.piano.admin.AdminStatsService(api),
+        )
+    }
 }

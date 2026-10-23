@@ -14,6 +14,33 @@ before integration; assume no uncommitted Stage 6 changes exist.
 vertical/horizontal scrolling. Accessible scroll fallback permitted only at extreme
 font scaling; never clip controls or shrink text to unreadable sizes.
 
+## Session status checkpoint (2026-10-23) — 7B.1 ✅ · 7B.2 ✅ · 7B.3 🟧 (emulator BLOCKED) · 7B.4–7B.8 pending
+
+- **Branch/commit:** `feature/goldberg-0.11-stage-7b`, based on Stage 7A `576f0d2`;
+  commits `49680da` (7B.1+7B.2) and this 7B.3 checkpoint (see `git log`).
+- **Done:** 7B.1 contract audit (G1/G2/G3 + owner decisions); 7B.2 foundation
+  (`admin/` package: models, contract client + transport seam, Keystore session,
+  trust policy, markers, repository) — **204 unit tests 0 failures, lint PASS,
+  5 check scripts PASS, EN/CZ 993 keys PASS, debug APK
+  SHA-256 `7fef49b1900643f4e4ec68ddd405ac493ca51a60a351c3162c83794fa2d3f19c`**;
+  7B.3 dashboard + Profile entry + stats derivation + destination routes (implemented,
+  JVM-verified).
+- **Blockers:** (1) **Host emulator is unusable — qemu SIGSEGV on every launch**
+  (3 crashes today, systemd-coredump SIGSEGV, matches upstream Google #566807521 from
+  Stage 5) ⇒ scroll-free screenshot gate, instrumentation execution and all visual
+  verification are **BLOCKED, not passed**; (2) no deployed Stage 6 backend anywhere ⇒
+  every admin screen correctly shows honest not-configured/unavailable states;
+  live-data verification awaits Stage 6 (6.0d/6.0e, not authorized).
+- **X10 (Stage 7A text alignment): UNCHANGED — still OPEN**, real-device-only,
+  not reproduced, no code shipped, no claim of resolution (see cross-cutting section).
+- **Exact next steps for a new agent:** (a) retry emulator when the host upstream
+  SIGSEGV is worked around (e.g. CI workflow like `.github/workflows/stage5-emulator.yml`,
+  a different host/AVD, or an emulator version fix) and execute the 7B.3 scroll-free
+  screenshot gate; (b) continue 7B.4 Moderation Queue (search per owner decision,
+  detail hydration, update pill, scroll/filter restoration); then 7B.5 detail +
+  decisions, 7B.6 conflict, 7B.7 audit/notifications/sync, 7B.8 verification.
+  Keep Issue #31 updated at every milestone; no release/deployment without approval.
+
 ## Stage 7B.1 — Contract and readiness audit — ✅ COMPLETE
 
 - [x] Inspect Stage 6 normative contract, C6 spike, C2 BFF spike, cloud reality.
@@ -48,25 +75,68 @@ font scaling; never clip controls or shrink text to unreadable sizes.
 - [x] `admin/AdminMarkers.kt` — account-scoped DEFERRED + RE_REVIEW markers (ids only,
       non-sensitive); persist until confirmed non-pending server status or manual
       removal; cleared per-account only; never bled across accounts.
-- [ ] Role gate wired: `GET /v1/me/capabilities` client verified (tested); UI entry +
-      action gating lands with 7B.3 screens (server always enforces regardless).
-- [ ] Strings `stage7b_*` in both `values/strings.xml` and `values-cs/strings.xml`.
+- [x] Role gate wired: `GET /v1/me/capabilities` client verified (tested); Profile →
+      Administration entry + dashboard role chip wired (server always enforces
+      regardless; entry visibility rule documented in `AdminViewModel.entryVisible`).
+- [x] Strings `stage7b_*` in both `values/strings.xml` and `values-cs/strings.xml`
+      (993 keys, EN/CZ parity + placeholder check PASS via `scripts/check_localization.py`).
 - [x] JVM tests for codecs, error mapping, trust window, markers —
       **21 `AdminFoundationTest` cases green; full suite 195/195 green**
       (`./gradlew testDebugUnitTest`, 2026-10-23).
 
-## Stage 7B.3 — Dashboard (scroll-free hard gate)
+## Stage 7B.3 — Dashboard (scroll-free hard gate) — 🟧 IMPLEMENTED, EMULATOR GATE BLOCKED
 
-- [ ] `ui/admin/AdminDashboardScreen.kt` — exactly 4 stat tiles (Pending, Needs info,
+- [x] `ui/admin/AdminDashboardScreen.kt` — exactly 4 stat tiles (Pending, Needs info,
       Approved today, Rejected today) + 3 destinations (Moderation Queue, Audit Log,
-      Admin Settings). Resume #ID = optional 2nd line INSIDE Moderation Queue row only.
-- [ ] Role label, last-updated, manual refresh, authorized-but-stale marking, no polling.
-- [ ] Stats source: owner-approved exact-or-unavailable derivation (see 7B.1); explicit
-      unavailable state per tile; never partial-as-total; bounded request count.
-- [ ] **Scroll-free on normal supported screens** (verified by emulator screenshot on
-      small + standard sizes, both themes, normal font scale). Scroll fallback only at
-      extreme accessibility scale.
-- [ ] Role-gated Profile → Administration entry; no extra bottom tab.
+      Admin Settings). Resume #ID = optional 2nd line INSIDE Moderation Queue row only
+      (deterministic account-scoped marker; empty while no markers exist).
+- [x] Role label (server-derived chip), section label, last-updated, manual refresh,
+      no polling; first-load placeholder is "…", never a fabricated count.
+- [x] Stats source: owner-approved exact-or-unavailable derivation (`AdminStatsService`,
+      gap G1): complete bounded walks only (≤8 queue pages + ≤8 audit pages per manual
+      refresh); incomplete walk, upstream failure or missing config ⇒ explicit
+      per-tile unavailable state with reason text; `GET /v1/admin/stats` remains the
+      durable Stage 6 fix.
+- [x] Role-gated Profile → Administration entry (`entryVisible` rule: hidden only after
+      a verified no-surface answer or explicit 403; convenience only — server enforces);
+      no extra bottom tab (`selectedTab` maps admin routes to Profile).
+- [x] Destination routes registered (`admin`, `admin/queue?filter=`, `admin/audit`,
+      `admin/settings`) with real first-pass server-backed Queue/Audit/Settings
+      screens so deep links resolve end-to-end; their full stage requirements
+      continue in 7B.4/7B.7/7B.8.
+- [ ] **Scroll-free on normal supported screens (HARD GATE — NOT VERIFIED):** requires
+      emulator screenshots (small + standard sizes, both themes, normal font scale).
+      **BLOCKED 2026-10-23:** every emulator launch on this host dies with qemu
+      SIGSEGV (see Verification below). Implementation uses a fixed-height layout
+      with bottom-anchored footer and no `verticalScroll` at font scale ≤1.3
+      (`SCROLL_FALLBACK_FONT_SCALE`), but this is a code-level property only — the
+      visual gate is NOT passed until screenshots exist.
+
+### 7B.3 verification (executed 2026-10-23, host only)
+
+| Check | Result |
+|---|---|
+| `./gradlew testDebugUnitTest` | **PASS — 204 tests, 0 failures, 0 errors** (25 `AdminFoundationTest` + 6 `AdminStatsTest` incl. partial-walk-never-total, not-configured, per-tile failure mapping, contract-only query params, trust-window semantics, marker scoping) |
+| `./gradlew lintDebug` | **PASS** (no fatal findings) |
+| `./gradlew assembleDebug` | **PASS** — `app/build/outputs/apk/debug/app-debug.apk`, SHA-256 `7fef49b1900643f4e4ec68ddd405ac493ca51a60a351c3162c83794fa2d3f19c` (0 source files newer than APK) |
+| `./gradlew assembleDebugAndroidTest` | **PASS — instrumentation COMPILED only, NOT executed** |
+| `scripts/check_*.py` (5 scripts) | **PASS** all |
+| EN/CZ parity | **PASS — 993 keys**, matching placeholders |
+| Emulator screenshots / instrumentation | **BLOCKED — not executed** (host emulator SIGSEGV) |
+| Visual comparison vs `docs/design/stage-7b/` mockups | **BLOCKED** (needs screenshots) |
+
+**Emulator blocker evidence (2026-10-23):** bounded recovery performed — adb server
+restarted (`kill-server`/`start-server`, daemon healthy, 0 devices), `adb connect
+127.0.0.1:5555/5557` → connection refused (qemu dead), startup logs inspected.
+Three launch attempts (Medium_Phone_API_37.0 ×2 — one GUI-capable, one headless
+`-no-window -gpu swiftshader_indirect`; stage5-api36 ×1 headless swiftshader with
+`-no-snapshot`) all died during early boot; systemd-coredump records **SIGSEGV in
+`qemu-system-x86_64`** for PIDs 1187010 (08:42:06), 1256430 (08:43:35) and
+1321999 (08:56:40 CEST), plus one on 2026-10-22 23:35 — 39 historical qemu coredumps
+on this host. Consistent with the upstream emulator SIGSEGV already recorded in the
+Stage 5 STATE.md (Google Issue #566807521). A first-run crash-consent dialog was also
+suspected of blocking boot; clearing the crash-report cache did not prevent the
+subsequent SIGSEGV. **No AVD data was wiped; no physical device was used.**
 
 ## Stage 7B.4 — Moderation Queue
 

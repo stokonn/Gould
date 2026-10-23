@@ -41,6 +41,10 @@ import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.*
 import com.opus.piano.data.*
+import com.opus.piano.ui.admin.AdminDashboardScreen
+import com.opus.piano.ui.admin.AdminQueueScreen
+import com.opus.piano.ui.admin.AdminAuditScreen
+import com.opus.piano.ui.admin.AdminSettingsScreen
 import java.time.*
 import java.time.format.DateTimeFormatter
 
@@ -48,7 +52,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
     OVERVIEW("Home", Icons.Outlined.Home), HOME("Profile", Icons.Outlined.Person), REPERTOIRE("Library", Icons.Outlined.LibraryMusic),
     DISCOVER("Discover", Icons.Outlined.Explore), PRACTICE("Practice", Icons.Outlined.Piano), BADGES("Badges", Icons.Outlined.EmojiEvents), WRAPPED("Wrapped", Icons.Outlined.Insights)
 }
-@Composable fun OpusApp(model: OpusViewModel, catalog: CatalogViewModel, experience: ExperienceViewModel, profile: ProfileViewModel) {
+@Composable fun OpusApp(model: OpusViewModel, catalog: CatalogViewModel, experience: ExperienceViewModel, profile: ProfileViewModel, admin: com.opus.piano.ui.admin.AdminViewModel) {
     val context = LocalContext.current
     val focus = androidx.compose.ui.platform.LocalFocusManager.current
     val keyboard = androidx.compose.ui.platform.LocalSoftwareKeyboardController.current
@@ -128,7 +132,39 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                     BalancedHome(library, settings.username, { nav.navigate("piece/$it") }, { nav.navigate("history") }, {nav.navigate(SETTINGS_ROUTE)})
                 }
                 composable(SETTINGS_ROUTE) { SettingsScreen(profile, model, { replay = true }) { nav.popBackStack() } }
-                composable(Destination.HOME.name) { ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }) { nav.navigate("badge/$it") } }
+                composable(Destination.HOME.name) {
+                    val adminCaps by admin.caps.collectAsStateWithLifecycle()
+                    val adminFailure by admin.capsFailure.collectAsStateWithLifecycle()
+                    val administration: (() -> Unit)? =
+                        if (admin.entryVisible(adminCaps, adminFailure)) ({ nav.navigate("admin") }) else null
+                    ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }, administration = administration, badgeDetail = { nav.navigate("badge/$it") })
+                }
+                // Stage 7B: role-gated Administration (entry is convenience only — the
+                // server always enforces capabilities on every admin endpoint).
+                composable("admin") {
+                    AdminDashboardScreen(
+                        admin,
+                        onQueue = { filter ->
+                            nav.navigate(if (filter == null) "admin/queue" else "admin/queue?filter=$filter")
+                        },
+                        onAudit = { nav.navigate("admin/audit") },
+                        onSettings = { nav.navigate("admin/settings") },
+                    )
+                }
+                composable(
+                    "admin/queue?filter={filter}",
+                    arguments = listOf(
+                        androidx.navigation.navArgument("filter") {
+                            type = androidx.navigation.NavType.StringType
+                            nullable = true
+                            defaultValue = null
+                        }
+                    ),
+                ) { route ->
+                    AdminQueueScreen(admin, route.arguments?.getString("filter")) { nav.popBackStack() }
+                }
+                composable("admin/audit") { AdminAuditScreen(admin) { nav.popBackStack() } }
+                composable("admin/settings") { AdminSettingsScreen(admin) { nav.popBackStack() } }
                 composable(Destination.REPERTOIRE.name) {
                     RepertoireScreen(library,catalogData,model,{nav.selectTopLevel("DISCOVER")},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")},catalog,{nav.navigate("catalog/work/$it")})
                 }

@@ -204,7 +204,7 @@ class AdminFoundationTest {
         assertEquals(AdminFailure.Unauthorized, at(401))
         assertEquals(AdminFailure.Forbidden, at(403))
         assertEquals(AdminFailure.NotFound, at(404))
-        val conflict = at(409, """{"error":"stale revision"}""")
+        val conflict = at(409, """{"error":{"code":"revision_conflict","message":"stale revision"}}""")
         assertTrue(conflict is AdminFailure.Conflict)
         assertEquals("stale revision", (conflict as AdminFailure.Conflict).message)
         val limited = at(429, retry = 30)
@@ -227,10 +227,43 @@ class AdminFoundationTest {
         assertTrue("actual=$url", url.startsWith("https://admin.example.test/v1/admin/queue?"))
         assertTrue(url.contains("cursor="))
         assertTrue(url.contains("status=submitted"))
+        assertTrue(url.contains("limit=20")) // contract-defined, server caps at 20
         // Gap G2: no search parameter is ever invented.
         assertFalse(url.contains("search"))
         assertFalse(url.contains("q="))
         assertFalse(url.contains("title"))
+    }
+
+    @Test
+    fun queueLimitIsClampedToContractMaximum() = runBlocking {
+        val t = FakeTransport(code = 200, body = """{"items":[]}""")
+        api(t).queue(cursor = null, status = null, limit = 500)
+        assertTrue(t.urls.single().contains("limit=20"))
+        val t2 = FakeTransport(code = 200, body = """{"items":[]}""")
+        api(t2).queue(cursor = null, status = null, limit = 5)
+        assertTrue(t2.urls.single().contains("limit=5"))
+    }
+
+    @Test
+    fun conflictCarriesCurrentServerStateFromErrorEnvelope() = runBlocking {
+        val t = FakeTransport(
+            code = 409,
+            body = """{"error":{"code":"revision_conflict","message":"stale revision",
+                      "details":{"currentStatus":"approved","currentRevision":7}}}"""
+        )
+        val failure = errOf(api(t).decide("sub_1", buildDecisionBody(AdminDecision.APPROVE, 5, null, "idem-1")))
+        val conflict = failure as AdminFailure.Conflict
+        assertEquals("stale revision", conflict.message)
+        assertEquals("approved", conflict.currentStatus)
+        assertEquals(7, conflict.currentRevision)
+    }
+
+    @Test
+    fun signOutUsesContractSessionEndpoint() = runBlocking {
+        val t = FakeTransport(code = 200, body = """{"revoked":true}""")
+        val r = api(t).signOut()
+        assertTrue((r as AdminResult.Ok).value)
+        assertTrue(t.urls.single().endsWith("/v1/session"))
     }
 
     @Test

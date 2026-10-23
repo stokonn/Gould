@@ -58,8 +58,14 @@ sealed class AdminFailure {
     data object Forbidden : AdminFailure()
     /** 404 — submission/id does not exist (also used for ID search misses). */
     data object NotFound : AdminFailure()
-    /** 409 — revision/state conflict; caller must re-fetch and re-review. */
-    data class Conflict(val message: String) : AdminFailure()
+    /** 409 — revision/state conflict; caller must re-fetch and re-review. Carries the
+     *  server's current state when the envelope provides it (`details.currentStatus`/
+     *  `currentRevision`), so the UI can show what changed without inventing fields. */
+    data class Conflict(
+        val message: String,
+        val currentStatus: String? = null,
+        val currentRevision: Int? = null,
+    ) : AdminFailure()
     /** 429 — rate limited; [retryAfterSeconds] when the server supplied it. */
     data class RateLimited(val retryAfterSeconds: Long?) : AdminFailure()
     /** 5xx / 503 — service-side failure or maintenance. */
@@ -120,13 +126,15 @@ class AdminApi(
         }
 
     /**
-     * Queue page. Only the two contract-defined parameters are ever sent: `cursor`
-     * and `status` (PENDING_STATUSES values). NO search parameter exists (gap G2).
+     * Queue page. Only contract-defined parameters are ever sent: `cursor`, `status`
+     * (single PENDING_STATUSES value or default set) and `limit` (server caps at 20).
+     * NO search parameter exists (gap G2).
      */
-    suspend fun queue(cursor: String?, status: String?): AdminResult<AdminQueuePage> {
+    suspend fun queue(cursor: String?, status: String?, limit: Int = QUEUE_PAGE_LIMIT): AdminResult<AdminQueuePage> {
         val query = buildList {
             if (!cursor.isNullOrBlank()) add("cursor" to cursor)
             if (!status.isNullOrBlank()) add("status" to status)
+            add("limit" to limit.coerceIn(1, QUEUE_PAGE_LIMIT).toString())
         }
         return get("$V1/admin/queue", query).flatMap { AdminResult.Ok(AdminQueuePage.parse(it)) }
     }
@@ -144,11 +152,18 @@ class AdminApi(
         post("$V1/admin/submissions/${encode(id)}/decisions", body)
             .flatMap { AdminResult.Ok(AdminDecisionResult.parse(it)) }
 
-    /** Role-scoped audit page; only `cursor` is a contract-defined parameter (gap G3). */
-    suspend fun audit(cursor: String?): AdminResult<AdminAuditPage> {
-        val query = if (!cursor.isNullOrBlank()) listOf("cursor" to cursor) else emptyList()
+    /** Role-scoped audit page; only `cursor` and `limit` are contract-defined (gap G3). */
+    suspend fun audit(cursor: String?, limit: Int = QUEUE_PAGE_LIMIT): AdminResult<AdminAuditPage> {
+        val query = buildList {
+            if (!cursor.isNullOrBlank()) add("cursor" to cursor)
+            add("limit" to limit.coerceIn(1, QUEUE_PAGE_LIMIT).toString())
+        }
         return get("$V1/admin/audit", query).flatMap { AdminResult.Ok(AdminAuditPage.parse(it)) }
     }
+
+    /** Contract sign-out: `DELETE /v1/session` → `{revoked:true}`, idempotent. */
+    suspend fun signOut(): AdminResult<Boolean> =
+        request("DELETE", "$V1/session", null).map { it.optBoolean("revoked") }
 
     // ---- request plumbing ---------------------------------------------------
 
@@ -191,7 +206,7 @@ class AdminApi(
             code == 401 -> err(AdminFailure.Unauthorized)
             code == 403 -> err(AdminFailure.Forbidden)
             code == 404 -> err(AdminFailure.NotFound)
-            code == 409 -> err(AdminFailure.Conflict(serverMessage(text)))
+            code == 409 -> err(conflictOf(text))
             code == 429 -> err(AdminFailure.RateLimited(response.retryAfterSeconds))
             code in 400..499 -> err(AdminFailure.Validation(code, serverMessage(text)))
             code in 500..599 -> err(AdminFailure.ServerError(code))
@@ -226,12 +241,30 @@ class AdminApi(
             null
         }
 
-        private fun serverMessage(body: String): String = try {
-            JSONObject(body).optString("message").takeIf { it.isNotBlank() }
-                ?: JSONObject(body).optString("error").takeIf { it.isNotBlank() }
-                ?: ""
+        private fun envelope(body: String): JSONObject? = try {
+            if (body.isBlank()) null else JSONObject(body)
         } catch (_: Exception) {
-            ""
+            null
+        }
+
+        /** C6 error envelope is `{error:{code,message,details?}}`; tolerate flat shapes too. */
+        private fun serverMessage(body: String): String {
+            val root = envelope(body) ?: return ""
+            val error = root.optJSONObject("error")
+            return error?.optString("message")?.takeIf { it.isNotBlank() }
+                ?: root.optString("message").takeIf { it.isNotBlank() }
+                ?: ""
+        }
+
+        private fun conflictOf(body: String): AdminFailure.Conflict {
+            val root = envelope(body)
+            val details = root?.optJSONObject("error")?.optJSONObject("details")
+                ?: root?.optJSONObject("details")
+            return AdminFailure.Conflict(
+                message = serverMessage(body),
+                currentStatus = details?.optString("currentStatus")?.takeIf { it.isNotBlank() },
+                currentRevision = details?.optInt("currentRevision")?.takeIf { it > 0 },
+            )
         }
 
         private fun queryOf(query: List<Pair<String, String>>): String =
@@ -248,5 +281,11 @@ class AdminApi(
 /** Success projection that keeps the failure typed instead of throwing it away. */
 internal fun <T, R> AdminResult<T>.flatMap(transform: (T) -> AdminResult<R>): AdminResult<R> = when (this) {
     is AdminResult.Ok -> transform(value)
+    is AdminResult.Err -> this
+}
+
+/** Pure success mapping; failures pass through untouched. */
+internal fun <T, R> AdminResult<T>.map(transform: (T) -> R): AdminResult<R> = when (this) {
+    is AdminResult.Ok -> AdminResult.Ok(transform(value))
     is AdminResult.Err -> this
 }

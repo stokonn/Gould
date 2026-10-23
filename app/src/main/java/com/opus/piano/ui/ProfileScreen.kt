@@ -33,7 +33,7 @@ import kotlinx.coroutines.withContext
 import java.time.*
 
 @OptIn(ExperimentalLayoutApi::class)
-@Composable internal fun ProfileScreen(state: LibraryState, badges: List<BadgeProgress>, profile: ProfileViewModel, settingsAction: () -> Unit, allBadges: () -> Unit, history: () -> Unit, badgeDetail: (String) -> Unit) {
+@Composable internal fun ProfileScreen(state: LibraryState, badges: List<BadgeProgress>, profile: ProfileViewModel, settingsAction: () -> Unit, allBadges: () -> Unit, history: () -> Unit, badgeDetail: (String) -> Unit, administration: (() -> Unit)? = null) {
     val settings by profile.settings.collectAsStateWithLifecycle()
     val busy by profile.busy.collectAsStateWithLifecycle()
     val googleAccount by profile.googleAccount.collectAsStateWithLifecycle()
@@ -54,6 +54,25 @@ import java.time.*
             IconButton(onClick=allBadges) {Icon(Icons.Outlined.EmojiEvents,L.s(R.string.msg_badges_2c57),tint=MaterialTheme.colorScheme.primary)}
             IconButton(onClick=settingsAction) {Icon(Icons.Outlined.Settings,L.fixed("Settings"),tint=MaterialTheme.colorScheme.primary)}
         })
+        // Stage 7B: role-gated Administration entry (convenience only; server enforces).
+        if (administration != null) {
+            Surface(
+                onClick = administration,
+                shape = MaterialTheme.shapes.medium,
+                color = MaterialTheme.colorScheme.surface,
+                border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = .45f)),
+            ) {
+                Row(
+                    Modifier.fillMaxWidth().heightIn(min = 52.dp).padding(horizontal = 14.dp, vertical = 10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    Icon(Icons.Outlined.AdminPanelSettings, null, Modifier.size(20.dp), tint = MaterialTheme.colorScheme.primary)
+                    Text(L.s(com.opus.piano.R.string.stage7b_administration), style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
+                    Icon(Icons.Outlined.ChevronRight, null, Modifier.size(20.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
+        }
         JournalCard(padding=PaddingValues(10.dp)) {
             Row(Modifier.padding(top=2.dp,bottom=4.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(16.dp)) {
                 Box {
