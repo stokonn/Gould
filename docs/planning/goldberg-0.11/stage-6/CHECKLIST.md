@@ -1,3 +1,53 @@
+## C4 read-only verification and Q1-D owner decision — current2026-10-23
+
+Purpose: reconcile current official cloud documentation,inspect only existing
+read-only account metadata,and record the owner-reported professional outcome.
+Scope: Stage6/Q1/C4 planning and docs/ai only; no backend/Android/schema/cloud changes.
+Branch `feature/goldberg-0.11-stage-6-api-v1-local`, recovered clean/remote-matched
+HEAD `f3668fc963e1c3b55e5137d397e1881e88237a79`; M3 source/evidence preserved.
+
+- [x] Recover C4,Q1/operator/professional brief,cloud runbook,open decisions,Stage6
+  handoffs/checklists and current Issue31; preserve earlier evidence and comments.
+- [x] Record **Q1-D SELECTED by owner: operation under owner's own name**.
+  Owner reports qualified professional outcome **acceptable / no blocking objection**
+  for operator model,contractual eligibility and relevant privacy/protection obligations.
+  **D5b RESOLVED only in that reported scope**; no independent professional verification,
+  document/signature/legal citation or individual C-1…C-6 answers invented.
+  Review date not supplied; report recorded2026-10-23,not inferred as review date.
+- [x] Re-fetch official current sources and classify every C4 item in C4 §M.
+  **33 items:8 PASS /19 PARTIAL /6 OPEN**,24 official source entries accessed2026-10-23.
+- [x] Documentation coverage/history/link/gate/privacy assertions,agent policy and
+  whitespace PASS; current M3 source/raw evidence verifier PASS with zero test reruns.
+  Evidence:`docs/planning/goldberg-0.11/stage-6/c4-2026-10-23/verification.json`.
+- [x] Actual authorized Supabase metadata:1 organization Free/tier_free,1 existing
+  eu-central-1/ACTIVE_HEALTHY project,PG17.11.0.003. No identifying metadata stored.
+  No current Cloudflare callable tool/plugin found; prior observations remain historical.
+- [x] Billing observability checked: metadata omits cards,invoices,add-ons and charges.
+  Billing/payment status **NOT VERIFIED** for either provider;0CZK remains goal,not proof.
+- [x] Prepare exact day-of evidence matrix without entering any creation/configuration flow.
+- [ ] C4 technical/billing/backup/transfer/retention/day-of evidence and owner closure.
+
+**C1 APPROVED; Q1-D SELECTED/D5b bounded owner-reported resolution; C4 OPEN;
+ORD-A sequencing only;6.0f UNCHECKED; cloud provisioning/deployment/OAuth/permission
+changes NOT AUTHORIZED.** No GDPR/legal-compliance claim or real-user collection.
+Other privacy/contact/consent/retention and actual configuration checks remain open.
+No cloud resource created,changed or deleted; no keys,production credentials or user
+rows accessed; no hosted SQL.3 read-only Supabase metadata calls only. No Android,
+Gradle/APK/lint/screenshots/emulator/physical-device/hosted runtime/restore execution.
+Stage7A acceptance and X10 deferral Gould0.12 preserved; Stage7B worktree untouched.
+
+New owner selection and direct Supabase metadata materially change the record:
+one combined factual Issue31 checkpoint is justified; no duplicate issue or old
+checkpoint edit. Issue31 stays OPEN / Goldberg Development In Progress.
+Smallest immediate next action: authorized read-only billing/payment/add-on/charge
+verification for both providers. This alone cannot close remaining C4 evidence.
+Earlier blanket Q1-unresolved/no-selection statements below are historical and
+superseded only for this explicitly reported scope; M3 backend status is unchanged.
+
+[Current C4 classifications,sources and day-of requirements](C4-PREPROVISIONING-CHECKLIST.md#m-current-c4-verification--2026-10-23-c4-open).
+
+---
+
 ## Local API M3 — VERIFIED / SOURCE PUBLISHED (2026-10-23)
 
 Purpose: expose approved authorized live Comparison for moderation conflict recovery.

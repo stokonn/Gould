@@ -1,5 +1,10 @@
 # C4 — Pre-provisioning checklist (terms, pricing, DPA, subprocessors) — preparation snapshot
 
+> **Current status2026-10-23:** see §M for all33 PASS/PARTIAL/OPEN classifications,
+> direct Supabase metadata and day-of requirements. Q1-D SELECTED; D5b bounded
+> owner-reported resolution; C4 OPEN and billing unverified. Earlier snapshots below
+> are preserved historical evidence and do not override §M/current Q1 outcome.
+
 > **Current inventory amendment (2026-10-22):** owner-created Supabase project
 > EXISTS; ChatGPT connected-integration observations are attributed in §H below.
 > This coding agent did not execute those checks. Earlier zero-project
@@ -409,3 +414,163 @@ C4 legal/transfer/retention and billing/payment/Free evidence remain open; curre
 catalog metadata does not prove zero-cost/compliance or authorize 6.0d. C4 and
 C2 §12 OPEN, Q1/D5b unresolved/blocking, 6.0f UNCHECKED; §D boxes unchanged.
 0 CZK/month permanent; no permissions/OAuth/billing/resource changes authorized.
+
+
+## M. Current C4 verification — 2026-10-23 (C4 OPEN)
+
+This is the authoritative current classification of every §A–§C item. Earlier
+snapshots/checkboxes are preserved historical evidence. PASS means this item's
+stated, bounded check passed today; it does not close C4 or waive day-of freshness.
+PARTIAL means evidence exists but a named requirement remains; OPEN means the
+required acceptance evidence is missing. Q1-D is now SELECTED and D5b resolved
+only in the owner-reported operator-model/eligibility scope (current Q1 record).
+
+### M.1 Purpose, scope, tasks and actual verification
+
+Read-only/documentation-only reconciliation: official public terms/pricing/data
+processing sources, existing authorized account metadata, no hosted SQL/user rows,
+no keys/credentials retrieved, no new authentication or permission changes.
+
+- [x] Read C4/Q1/operator/professional brief, cloud runbook, open decisions and handoffs.
+- [x] Re-fetch official documentation and classify all33 CF-P/SB-P/X items.
+- [x] Direct metadata-only Supabase check:1 organization,Free/tier_free;1 existing
+  project,eu-central-1,ACTIVE_HEALTHY,PostgreSQL17.11.0.003. No identifying metadata saved.
+- [x] Inspect tool surface for billing observability: no payment/invoice/add-on fields
+  returned. get_cost quotes creating resources, not current billing; it was not called.
+- [x] Cloudflare discovery: no callable Cloudflare tool and no Cloudflare plugin
+  search result in this session. No current CF account call; prior evidence preserved.
+- [x] Record explicit owner Q1-D selection/professional outcome without identifying data.
+- [x] Prepare day-of evidence checklist below; preserve original §D history.
+- [ ] Remaining C4 acceptance evidence and owner closure — not completed here.
+
+Billing/payment status was **NOT verified for either provider**. Supabase Free plan
+is observable; cards,invoices,paid add-ons,trial/upgrade paths and accrued costs are
+not. Historical Cloudflare billing403/owner observations remain historical, not
+newly executed or proof of zero costs. The0CZK/month goal remains mandatory and
+unproven at account/configuration level. No cloud resource created,changed,deleted
+or deployed; no payment method attached; no OAuth/permissions change,production
+credential access,professional contact or real-user collection. Existing project
+was owner-created; do not create a replacement or imply retroactive authorization.
+
+### M.2 All C4 items (current classification)
+
+| ID | Status | Evidence / remaining requirement |
+|---|---|---|
+| CF-P1 | PARTIAL | Current agreement retrieved (S01); project-specific applicability/day-of differences still need review; Q1 scope resolved by owner report. |
+| CF-P2 | PASS | Website terms date re-extracted:2025-08-01 (S02). Documentary currency check only; refresh day-of. |
+| CF-P3 | PARTIAL | DPA v6.4/effective2026-04-03 read (S03); account acceptance mechanics/evidence not independently verified. |
+| CF-P4 | PARTIAL | Transfer clauses retrieved (S03); actual recipient/safeguard applicability and day-of legal landscape not established. |
+| CF-P5 | PASS | Free pricing documentation rechecked (S04);100000 requests/day,10ms CPU; static-asset requests free. Account billing not proved. |
+| CF-P6 | PARTIAL | Current log allowance and announced2026-12-01 transition read (S04/S06); future active billing/config unverified. |
+| CF-P7 | PASS | Limits/fail-closed1027 documentation rechecked (S05);50 subrequests,64 variables. Runtime/config not tested. |
+| CF-P8 | PARTIAL | Account-creation rules rechecked (S07); Q1-D eligibility confirmation owner-reported. Actual declarations not inspected; no new signup. |
+| CF-P9 | OPEN | No current Cloudflare billing/payment/add-on tool; prior owner report preserved, not refreshed or agent-verified. |
+| CF-P10 | PARTIAL | 2025-10-01 list re-read (S08); actual service/location mapping and notification monitoring incomplete. |
+| CF-P11 | PARTIAL | Privacy policy effective2025-11-04 and GDPR FAQ fetched (S09/S10); exact provider edge/security retention unresolved. |
+| CF-P12 | OPEN | No Worker configuration/log-field runtime inspection or resource creation; separately authorized test required. |
+| CF-P13 | PARTIAL | Documented Free fit only (S04/S06); chosen account/config/billing and transition-date recheck pending. |
+| SB-P1 | PARTIAL | Current ToS/authority clause fetched (S11); version selector did not expose current date. Do not reuse historical date as reverified. |
+| SB-P2 | PARTIAL | DPA v1/2026-08-01 re-read (S12);5-day objection after proposed-change notice. Acceptance/application evidence and backup discrepancy open. |
+| SB-P3 | PASS | Published Free allowances rechecked (S13); live organization free/tier_free directly observed. No payment-status inference. |
+| SB-P4 | PARTIAL | Free automatic backups excluded by pricing/backups (S13/S15); DPA generic daily-backup wording persists (S12). Export/RPO/restore unverified. |
+| SB-P5 | PASS | Free restriction/grace-period policy rechecked (S14); documentation only, not measured billing or quota behavior. |
+| SB-P6 | PARTIAL | Documented pause/read-only/402 behavior (S14); hosted fail-closed/offline acceptance not executed. |
+| SB-P7 | PASS | Specific Frankfurt region documented (S16) and existing project eu-central-1 directly observed. Existing-project region criterion satisfied; no new creation flow entered. |
+| SB-P8 | PARTIAL | Residency FAQ v1/2026-10-06 re-read (S17); regional hosting is not EU-only processing; actual transfer assessment remains. |
+| SB-P9 | PARTIAL | Current two-page PDF text re-read (S18/S19),22 entries, preserving earlier parse evidence; applicability/notification monitoring open. |
+| SB-P10 | PARTIAL | Trust Center public page accessible (S20); no TIA retrieved or Free-access entitlement verified; no private request submitted. |
+| SB-P11 | PARTIAL | Pricing log-retention windows checked (S13); provider/dashboard/security retention completeness unresolved. |
+| SB-P12 | OPEN | Read-only metadata proves Free plan only; no SSL/MFA/RLS/paid-add-on/payment/invoice acceptance performed. Existing external security evidence preserved. |
+| SB-P13 | OPEN | No scheduled encrypted0CZK export target or restore/RPO demonstrated; hosted actions outside present authorization. |
+| X-1 | PASS | Bounded Q1-D selection/D5b resolution recorded from explicit owner-reported professional confirmation; review date unspecified. No general legal clearance. |
+| X-2 | PARTIAL | EC transfer guidance re-read (S21); actual recipient certification/scope and complete current legal-status assessment not performed. |
+| X-3 | PARTIAL | Google terms retrieved (S23),but country variant was Japan; Czech-specific eligibility/consent and future OAuth review remain unverified. No personal-age inference. |
+| X-4 | PARTIAL | 0CZK goal retained; Supabase Free directly verified, billing/cards/add-ons/trials/export cost not verified for either provider. |
+| X-5 | PASS | Standing stop rule retained: any cost/terms failure blocks progression; no paid substitution or unauthorized action. |
+| X-6 | OPEN | Fresh official EUR-Lex ELI attempt returned JavaScript/anti-bot challenge (S22),not Regulation text. Historical failures preserved; no wording verification claimed. |
+| X-7 | OPEN | MoJ English translation not retried; prior TLS failure preserved. Obtain only if reviewer requires; no inferred translation verification. |
+
+Coverage: **33 items = 8 PASS / 19 PARTIAL / 6 OPEN**. PASS items retain day-of revalidation. No C4 closure.
+
+### M.3 Official source register — all accessed 2026-10-23
+
+Sources were read as public text/PDF; no third-party documents or console captures
+copied into Git. Dates below are observed publication labels,not legal conclusions.
+A failed retrieval or hidden selector is a limitation,not a successful version check.
+
+| ID | Official source | Observation / version |
+|---|---|---|
+| S01 | [Cloudflare subscription agreement](https://www.cloudflare.com/terms/) | Last Updated2025-09-12 |
+| S02 | [Cloudflare website terms](https://www.cloudflare.com/website-terms/) | Effective2025-08-01; now re-extracted |
+| S03 | [Cloudflare DPA](https://www.cloudflare.com/cloudflare-customer-dpa/) | v6.4/effective2026-04-03 |
+| S04 | [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/) | Updated2026-10-02; current Free logs200000/day,3-day retention |
+| S05 | [Workers limits](https://developers.cloudflare.com/workers/platform/limits/) | Updated2026-10-12; technical documentation only |
+| S06 | [Observability pricing](https://developers.cloudflare.com/observability/pricing/) | Updated2026-10-15; announced transition2026-12-01,not current active-account evidence |
+| S07 | [Cloudflare account rules](https://developers.cloudflare.com/fundamentals/account/create-account/) | Updated2026-09-17; additional-account rules distinct from first signup |
+| S08 | [Cloudflare subprocessors](https://www.cloudflare.com/gdpr/subprocessors/cloudflare-services/) | Updated2025-10-01; mapping/monitoring open |
+| S09 | [Cloudflare privacy policy](https://www.cloudflare.com/privacypolicy/) | Effective2025-11-04; exact edge/security retention unresolved |
+| S10 | [Cloudflare GDPR FAQ](https://www.cloudflare.com/trust-hub/gdpr/) | Fetched via /gdpr/introduction/ redirect; web result reports cached crawl2days old,not live origin version proof |
+| S11 | [Supabase terms](https://supabase.com/terms) | Current text available; version selector/date not extractable |
+| S12 | [Supabase DPA](https://supabase.com/legal/customer-resources/data-processing-addendum) | Version1/2026-08-01; backup discrepancy unchanged |
+| S13 | [Supabase pricing/limits](https://supabase.com/pricing) | Free:$0,500MB database,5GB egress+5GB cached,1GB storage,50kMAU,two active projects,one-week inactivity pause |
+| S14 | [Supabase billing FAQ](https://supabase.com/docs/guides/platform/billing-faq) | Organization-level plans; quota restriction policy,not account invoices |
+| S15 | [Supabase backups](https://supabase.com/docs/guides/platform/backups) | Daily automatic backups Pro+; Free export guidance |
+| S16 | [Supabase regions](https://supabase.com/docs/guides/platform/regions) | Specific eu-central-1 listed |
+| S17 | [Supabase residency/transfer FAQ](https://supabase.com/legal/privacy-resources/data-residency-and-transfers-faq) | Version1/2026-10-06; processing outside selected region remains possible |
+| S18 | [Supabase subprocessors index](https://supabase.com/legal/customer-resources/subprocessor-list) | Current list2026-10-12; prior list2026-06-01 |
+| S19 | [Supabase subprocessors PDF](https://supabase.com/legal/subprocessor-list/October-12-2026.pdf) | Two pages/22 entries extracted as text; not applicability clearance |
+| S20 | [Supabase Trust Center](https://trust.supabase.io/) | Public profile updated2026-10-19; no TIA/access entitlement |
+| S21 | [EC EU-US transfers guidance](https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/eu-us-data-transfers_en) | Participating-company adequacy guidance; not complete current legal-status/certification review |
+| S22 | [Official GDPR retrieval attempt](https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng) | FAILED content verification:JavaScript anti-bot page |
+| S23 | [Google terms](https://policies.google.com/terms) | Effective2026-07-30; fetched country variant Japan,not Czech-specific verification |
+| S24 | [Supabase changelog](https://supabase.com/changelog) | HTML fallback after .md unsupported content type; breaking-change tags scanned; no implementation/config changes |
+
+### M.4 Exact day-of C4 evidence requirements (prepared, not executed)
+
+The prior §D sequence is retained as history. This updated runbook reuses the
+existing project; checking its actual region replaces any instruction to create
+a new project merely to test selection. No step below authorizes a write now.
+
+| Step | Current status | Evidence required before C4 closure |
+|---|---|---|
+| D1 Operator arrangement | PARTIAL | Carry current owner-reported Q1-D selection/D5b bounded outcome into day-of record; note review date unspecified. Reassess only changed scope/terms; no reviewer identity or signed artifact demanded. |
+| D2 Current terms/data processing | PARTIAL | Same-day URLs/access times,observed versions,differences and applicability disposition for CF/SB terms,DPA,limits,regions,subprocessors; extract Supabase current version/date or document exact blocker. |
+| D3 Zero-cost/account billing | OPEN | Authorized read-only billing observation for both providers: plan,current and upcoming charges/invoices,no payment method,paid add-ons,trials/upgrade paths,applicable quotas. Record only non-identifying facts; never card digits,addresses or invoices containing personal data. Missing access remains OPEN. |
+| D4 Logging/pricing transition | PARTIAL | Use terms applicable on actual execution date; before2026-12-01 distinguish current200k/day/3day logs from announced0.5GB/day/7day Free retention; recheck after transition. Paid overage/Log Explorer excluded; actual config/field/retention proof remains required. |
+| D5 Backup/export | OPEN | Resolve Free backup entitlement versus DPA wording; demonstrate separately authorized encrypted0CZK export+restore,record venue,time,cleanup and achieved RPO. No export/user-data read executed now. |
+| D6 Existing region/security | PARTIAL | Refresh actual existing project eu-central-1 metadata; no new project. Authorized sanitized SSL/MFA/RLS/Auth/API security evidence,restrictive fail-closed behavior and planned flow; no production keys or configuration changes now. |
+| D7 Transfers/retention/monitoring | OPEN | Actual recipient/service/data-category/location map,applicable transfer safeguards,provider TIA/access clarification,exact edge/security/dashboard retention and assigned change monitoring. CF10-day/SB5-day objection windows; no subscription/contact sent without authorization. |
+| D8 Explicit future authorization | OPEN | After prerequisite evidence,obtain separate phase-scoped owner authorization for any missing synthetic runtime/config/restore verification. ORD-A remains sequencing only; current scope authorizes none of those writes. |
+| D9 Closure record | OPEN | Reconcile all33 items and evidence with Stage6/Issue31; record remaining limits and explicit owner C4 disposition.6.0f acceptance remains separate and unchecked. |
+
+No single remaining action can close C4. Smallest immediate evidence step: authorized
+read-only,non-identifying billing/payment/add-on/charge verification for both providers.
+Transfer/retention,TIA,backup/restore/security/runtime and fresh day-of evidence remain
+independent requirements even after that step. No paid substitute or provisioning
+workaround is permitted. Missing official GDPR/optional translation remains an honest
+review-support retrieval gap; do not invent a professional legal citation.
+
+**Gates now:** C1 APPROVED; Q1-D SELECTED/D5b RESOLVED only for the owner-reported
+operator-model/eligibility scope; C4 OPEN; C2 §12 OPEN; ORD-A sequencing only;
+6.0f UNCHECKED; cloud provisioning/deployment/OAuth/permission changes NOT AUTHORIZED.
+Real-user collection remains embargoed; public/API freeze/production gates unchanged.
+Stage7A acceptance and X10 deferral to Gould0.12 preserved; no Stage7 worktree edits.
+
+created by stokonn with love <3
+
+### M.5 Executed documentation validation / continuity
+
+Host documentation assertions PASS:all33 unique item IDs/statuses,8/19/6 counts,
+all9 day-of rows,relative links,current gate/evidence posture,unchanged historical
+research/checkpoints and current M3 source hashes. `python3 scripts/check_agent_policy.py`
+and `git diff --check` PASS. Existing `verify-m3.py` current-source/raw-artifact audit
+PASS; no M3 test bodies rerun. Only10 tracked Markdown documents plus sanitized C4
+JSON evidence added/changed; source,Android,schemas,credentials and prior evidence
+unchanged. Evidence lives in `c4-2026-10-23/` beside this checklist.
+
+Current branch:feature/goldberg-0.11-stage-6-api-v1-local; starting source HEAD
+f3668fc963e1c3b55e5137d397e1881e88237a79. This documentation commit carries
+Q1/C4 evidence only. The combined factual checkpoint is tracked under
+`c4-q1-owner-report-2026-10-23` in existing Issue31 after source publication;
+consult actual HEAD/status and latest Issue before continuing. No older unresolved
+Q1 snapshot or zero-project observation should override today's bounded record.

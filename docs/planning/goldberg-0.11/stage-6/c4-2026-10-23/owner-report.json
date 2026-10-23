@@ -1,0 +1,17 @@
+{
+  "reportRecordedDate": "2026-10-23",
+  "professionalReviewDate": null,
+  "professionalReviewDatePosture": "not supplied; do not substitute report date",
+  "selection": "Q1-D",
+  "operatorModel": "operation under owner own name",
+  "outcome": "acceptable / no blocking objection reported",
+  "scope": [
+    "Q1/D5b operator model",
+    "contractual eligibility",
+    "relevant privacy/protection obligations"
+  ],
+  "evidence": "owner-reported professional confirmation; no underlying document or independent verification",
+  "D5b": "resolved only in reported operator-model/eligibility scope",
+  "personalInformationStored": false,
+  "provisioningAuthorized": false
+}

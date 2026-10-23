@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-23",
+  "counts": {
+    "PASS": 8,
+    "PARTIAL": 19,
+    "OPEN": 6
+  },
+  "gate": "C4 OPEN",
+  "C1": "APPROVED",
+  "Q1-D": "SELECTED by owner",
+  "D5b": "bounded resolved via owner-reported professional confirmation",
+  "ORD-A": "sequencing only",
+  "6.0f": "UNCHECKED",
+  "cloudProvisioning": "NOT AUTHORIZED",
+  "billingPaymentVerified": false,
+  "sourceCount": 24,
+  "cloudResourcesCreatedOrChanged": 0
+}

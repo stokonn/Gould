@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-23",
+  "statuses": [
+    {
+      "id": "CF-P1",
+      "status": "PARTIAL",
+      "evidence": "Current agreement retrieved (S01); project-specific applicability/day-of differences still need review; Q1 scope resolved by owner report."
+    },
+    {
+      "id": "CF-P2",
+      "status": "PASS",
+      "evidence": "Website terms date re-extracted:2025-08-01 (S02). Documentary currency check only; refresh day-of."
+    },
+    {
+      "id": "CF-P3",
+      "status": "PARTIAL",
+      "evidence": "DPA v6.4/effective2026-04-03 read (S03); account acceptance mechanics/evidence not independently verified."
+    },
+    {
+      "id": "CF-P4",
+      "status": "PARTIAL",
+      "evidence": "Transfer clauses retrieved (S03); actual recipient/safeguard applicability and day-of legal landscape not established."
+    },
+    {
+      "id": "CF-P5",
+      "status": "PASS",
+      "evidence": "Free pricing documentation rechecked (S04);100000 requests/day,10ms CPU; static-asset requests free. Account billing not proved."
+    },
+    {
+      "id": "CF-P6",
+      "status": "PARTIAL",
+      "evidence": "Current log allowance and announced2026-12-01 transition read (S04/S06); future active billing/config unverified."
+    },
+    {
+      "id": "CF-P7",
+      "status": "PASS",
+      "evidence": "Limits/fail-closed1027 documentation rechecked (S05);50 subrequests,64 variables. Runtime/config not tested."
+    },
+    {
+      "id": "CF-P8",
+      "status": "PARTIAL",
+      "evidence": "Account-creation rules rechecked (S07); Q1-D eligibility confirmation owner-reported. Actual declarations not inspected; no new signup."
+    },
+    {
+      "id": "CF-P9",
+      "status": "OPEN",
+      "evidence": "No current Cloudflare billing/payment/add-on tool; prior owner report preserved, not refreshed or agent-verified."
+    },
+    {
+      "id": "CF-P10",
+      "status": "PARTIAL",
+      "evidence": "2025-10-01 list re-read (S08); actual service/location mapping and notification monitoring incomplete."
+    },
+    {
+      "id": "CF-P11",
+      "status": "PARTIAL",
+      "evidence": "Privacy policy effective2025-11-04 and GDPR FAQ fetched (S09/S10); exact provider edge/security retention unresolved."
+    },
+    {
+      "id": "CF-P12",
+      "status": "OPEN",
+      "evidence": "No Worker configuration/log-field runtime inspection or resource creation; separately authorized test required."
+    },
+    {
+      "id": "CF-P13",
+      "status": "PARTIAL",
+      "evidence": "Documented Free fit only (S04/S06); chosen account/config/billing and transition-date recheck pending."
+    },
+    {
+      "id": "SB-P1",
+      "status": "PARTIAL",
+      "evidence": "Current ToS/authority clause fetched (S11); version selector did not expose current date. Do not reuse historical date as reverified."
+    },
+    {
+      "id": "SB-P2",
+      "status": "PARTIAL",
+      "evidence": "DPA v1/2026-08-01 re-read (S12);5-day objection after proposed-change notice. Acceptance/application evidence and backup discrepancy open."
+    },
+    {
+      "id": "SB-P3",
+      "status": "PASS",
+      "evidence": "Published Free allowances rechecked (S13); live organization free/tier_free directly observed. No payment-status inference."
+    },
+    {
+      "id": "SB-P4",
+      "status": "PARTIAL",
+      "evidence": "Free automatic backups excluded by pricing/backups (S13/S15); DPA generic daily-backup wording persists (S12). Export/RPO/restore unverified."
+    },
+    {
+      "id": "SB-P5",
+      "status": "PASS",
+      "evidence": "Free restriction/grace-period policy rechecked (S14); documentation only, not measured billing or quota behavior."
+    },
+    {
+      "id": "SB-P6",
+      "status": "PARTIAL",
+      "evidence": "Documented pause/read-only/402 behavior (S14); hosted fail-closed/offline acceptance not executed."
+    },
+    {
+      "id": "SB-P7",
+      "status": "PASS",
+      "evidence": "Specific Frankfurt region documented (S16) and existing project eu-central-1 directly observed. Existing-project region criterion satisfied; no new creation flow entered."
+    },
+    {
+      "id": "SB-P8",
+      "status": "PARTIAL",
+      "evidence": "Residency FAQ v1/2026-10-06 re-read (S17); regional hosting is not EU-only processing; actual transfer assessment remains."
+    },
+    {
+      "id": "SB-P9",
+      "status": "PARTIAL",
+      "evidence": "Current two-page PDF text re-read (S18/S19),22 entries, preserving earlier parse evidence; applicability/notification monitoring open."
+    },
+    {
+      "id": "SB-P10",
+      "status": "PARTIAL",
+      "evidence": "Trust Center public page accessible (S20); no TIA retrieved or Free-access entitlement verified; no private request submitted."
+    },
+    {
+      "id": "SB-P11",
+      "status": "PARTIAL",
+      "evidence": "Pricing log-retention windows checked (S13); provider/dashboard/security retention completeness unresolved."
+    },
+    {
+      "id": "SB-P12",
+      "status": "OPEN",
+      "evidence": "Read-only metadata proves Free plan only; no SSL/MFA/RLS/paid-add-on/payment/invoice acceptance performed. Existing external security evidence preserved."
+    },
+    {
+      "id": "SB-P13",
+      "status": "OPEN",
+      "evidence": "No scheduled encrypted0CZK export target or restore/RPO demonstrated; hosted actions outside present authorization."
+    },
+    {
+      "id": "X-1",
+      "status": "PASS",
+      "evidence": "Bounded Q1-D selection/D5b resolution recorded from explicit owner-reported professional confirmation; review date unspecified. No general legal clearance."
+    },
+    {
+      "id": "X-2",
+      "status": "PARTIAL",
+      "evidence": "EC transfer guidance re-read (S21); actual recipient certification/scope and complete current legal-status assessment not performed."
+    },
+    {
+      "id": "X-3",
+      "status": "PARTIAL",
+      "evidence": "Google terms retrieved (S23),but country variant was Japan; Czech-specific eligibility/consent and future OAuth review remain unverified. No personal-age inference."
+    },
+    {
+      "id": "X-4",
+      "status": "PARTIAL",
+      "evidence": "0CZK goal retained; Supabase Free directly verified, billing/cards/add-ons/trials/export cost not verified for either provider."
+    },
+    {
+      "id": "X-5",
+      "status": "PASS",
+      "evidence": "Standing stop rule retained: any cost/terms failure blocks progression; no paid substitution or unauthorized action."
+    },
+    {
+      "id": "X-6",
+      "status": "OPEN",
+      "evidence": "Fresh official EUR-Lex ELI attempt returned JavaScript/anti-bot challenge (S22),not Regulation text. Historical failures preserved; no wording verification claimed."
+    },
+    {
+      "id": "X-7",
+      "status": "OPEN",
+      "evidence": "MoJ English translation not retried; prior TLS failure preserved. Obtain only if reviewer requires; no inferred translation verification."
+    }
+  ]
+}

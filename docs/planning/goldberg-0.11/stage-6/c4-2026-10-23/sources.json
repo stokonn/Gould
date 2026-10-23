@@ -1,0 +1,150 @@
+{
+  "accessDate": "2026-10-23",
+  "method": "public official web fetch/find/PDF text; cached result limitations retained",
+  "sources": [
+    {
+      "id": "S01",
+      "title": "Cloudflare subscription agreement",
+      "url": "https://www.cloudflare.com/terms/",
+      "observation": "Last Updated2025-09-12"
+    },
+    {
+      "id": "S02",
+      "title": "Cloudflare website terms",
+      "url": "https://www.cloudflare.com/website-terms/",
+      "observation": "Effective2025-08-01; now re-extracted"
+    },
+    {
+      "id": "S03",
+      "title": "Cloudflare DPA",
+      "url": "https://www.cloudflare.com/cloudflare-customer-dpa/",
+      "observation": "v6.4/effective2026-04-03"
+    },
+    {
+      "id": "S04",
+      "title": "Workers pricing",
+      "url": "https://developers.cloudflare.com/workers/platform/pricing/",
+      "observation": "Updated2026-10-02; current Free logs200000/day,3-day retention"
+    },
+    {
+      "id": "S05",
+      "title": "Workers limits",
+      "url": "https://developers.cloudflare.com/workers/platform/limits/",
+      "observation": "Updated2026-10-12; technical documentation only"
+    },
+    {
+      "id": "S06",
+      "title": "Observability pricing",
+      "url": "https://developers.cloudflare.com/observability/pricing/",
+      "observation": "Updated2026-10-15; announced transition2026-12-01,not current active-account evidence"
+    },
+    {
+      "id": "S07",
+      "title": "Cloudflare account rules",
+      "url": "https://developers.cloudflare.com/fundamentals/account/create-account/",
+      "observation": "Updated2026-09-17; additional-account rules distinct from first signup"
+    },
+    {
+      "id": "S08",
+      "title": "Cloudflare subprocessors",
+      "url": "https://www.cloudflare.com/gdpr/subprocessors/cloudflare-services/",
+      "observation": "Updated2025-10-01; mapping/monitoring open"
+    },
+    {
+      "id": "S09",
+      "title": "Cloudflare privacy policy",
+      "url": "https://www.cloudflare.com/privacypolicy/",
+      "observation": "Effective2025-11-04; exact edge/security retention unresolved"
+    },
+    {
+      "id": "S10",
+      "title": "Cloudflare GDPR FAQ",
+      "url": "https://www.cloudflare.com/trust-hub/gdpr/",
+      "observation": "Fetched via /gdpr/introduction/ redirect; web result reports cached crawl2days old,not live origin version proof"
+    },
+    {
+      "id": "S11",
+      "title": "Supabase terms",
+      "url": "https://supabase.com/terms",
+      "observation": "Current text available; version selector/date not extractable"
+    },
+    {
+      "id": "S12",
+      "title": "Supabase DPA",
+      "url": "https://supabase.com/legal/customer-resources/data-processing-addendum",
+      "observation": "Version1/2026-08-01; backup discrepancy unchanged"
+    },
+    {
+      "id": "S13",
+      "title": "Supabase pricing/limits",
+      "url": "https://supabase.com/pricing",
+      "observation": "Free:$0,500MB database,5GB egress+5GB cached,1GB storage,50kMAU,two active projects,one-week inactivity pause"
+    },
+    {
+      "id": "S14",
+      "title": "Supabase billing FAQ",
+      "url": "https://supabase.com/docs/guides/platform/billing-faq",
+      "observation": "Organization-level plans; quota restriction policy,not account invoices"
+    },
+    {
+      "id": "S15",
+      "title": "Supabase backups",
+      "url": "https://supabase.com/docs/guides/platform/backups",
+      "observation": "Daily automatic backups Pro+; Free export guidance"
+    },
+    {
+      "id": "S16",
+      "title": "Supabase regions",
+      "url": "https://supabase.com/docs/guides/platform/regions",
+      "observation": "Specific eu-central-1 listed"
+    },
+    {
+      "id": "S17",
+      "title": "Supabase residency/transfer FAQ",
+      "url": "https://supabase.com/legal/privacy-resources/data-residency-and-transfers-faq",
+      "observation": "Version1/2026-10-06; processing outside selected region remains possible"
+    },
+    {
+      "id": "S18",
+      "title": "Supabase subprocessors index",
+      "url": "https://supabase.com/legal/customer-resources/subprocessor-list",
+      "observation": "Current list2026-10-12; prior list2026-06-01"
+    },
+    {
+      "id": "S19",
+      "title": "Supabase subprocessors PDF",
+      "url": "https://supabase.com/legal/subprocessor-list/October-12-2026.pdf",
+      "observation": "Two pages/22 entries extracted as text; not applicability clearance"
+    },
+    {
+      "id": "S20",
+      "title": "Supabase Trust Center",
+      "url": "https://trust.supabase.io/",
+      "observation": "Public profile updated2026-10-19; no TIA/access entitlement"
+    },
+    {
+      "id": "S21",
+      "title": "EC EU-US transfers guidance",
+      "url": "https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/eu-us-data-transfers_en",
+      "observation": "Participating-company adequacy guidance; not complete current legal-status/certification review"
+    },
+    {
+      "id": "S22",
+      "title": "Official GDPR retrieval attempt",
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng",
+      "observation": "FAILED content verification:JavaScript anti-bot page"
+    },
+    {
+      "id": "S23",
+      "title": "Google terms",
+      "url": "https://policies.google.com/terms",
+      "observation": "Effective2026-07-30; fetched country variant Japan,not Czech-specific verification"
+    },
+    {
+      "id": "S24",
+      "title": "Supabase changelog",
+      "url": "https://supabase.com/changelog",
+      "observation": "HTML fallback after .md unsupported content type; breaking-change tags scanned; no implementation/config changes"
+    }
+  ]
+}

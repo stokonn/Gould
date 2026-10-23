@@ -1,5 +1,35 @@
 # Stage 6 — Decision register (D4 / D5 / D8) — owner outcomes 2026-10-21
 
+## Current Q1/D5b outcome — owner report received 2026-10-23
+
+- **Q1-D: SELECTED by the owner** — operation under the owner's own name.
+- **Professional-review outcome:** acceptable / no blocking objection reported.
+- **Scope:** Q1/D5b operator model, contractual eligibility and relevant
+  privacy/protection obligations for this project.
+- **Evidence posture:** owner-reported professional confirmation. This agent did
+  not perform the review or independently verify its underlying materials.
+- **Review date:** not supplied by the owner; unspecified. **Report recorded:
+  2026-10-23.** The report date is not asserted to be the professional's review date.
+- **D5b: RESOLVED for this reported operator-model/eligibility scope only.** No
+  document, signature, legal citation, reviewer identity or individual answer to
+  Q4.1–Q4.13/C-1…C-6 is inferred. The owner's explicit reporting instruction
+  permits this bounded record without requiring a signed or written review artifact.
+- This does not establish general GDPR/legal compliance or discharge unrelated
+  privacy, transfer, retention, notice, consent, security or pre-collection duties.
+  D5a/D5d/D5e/D5f and specific unanswered operational questions remain separately gated.
+
+**C1 approved; C4 OPEN; ORD-A sequencing approval only; 6.0f UNCHECKED;
+cloud provisioning, deployment, OAuth/permission changes and real-user collection
+NOT AUTHORIZED.** The permanent goal remains 0 CZK/month, not a verified billing
+result. Existing accounts/projects do not change those gates.
+
+This current record supersedes only older Q1-D preference/no-selection and blanket
+D5b-unresolved/blocking statements below. Dated research, questions and earlier
+observations remain historical evidence; they must not be read as today's decision.
+
+---
+
+
 ## API v1 O1–O8 — owner design outcomes, 2026-10-23
 
 O1/O2/O3/O5/O8 approved; O4/O6 approved AS DESIGN with qualifications;
@@ -75,7 +105,7 @@ Status vocabulary used below:
 | # | Question | Outcome (2026-10-21) | Consequences |
 |---|---|---|---|
 | D5a | Who is the operator/controller contact? | **PROVISIONAL OWNER PREFERENCE:** a personal contact email is the intended public contact. **No email address has been supplied or authorized for publication.** | Do not invent, expose, request or publish personal contact information. Legally required controller identification and public contact information must be verified before launch. Blocks: privacy notice publication and public collection. |
-| D5b | Privacy & data-processing responsibilities | **DEFERRED:** the legal data controller/operator will be determined **before public launch**, after reviewing applicable requirements. Privacy-by-design and data minimization apply meanwhile. | Do not claim GDPR compliance and do not authorize real-user collection. Applicable requirements concerning a minor project owner must be accounted for in the pre-launch review. **Research deliverable prepared 2026-10-21 — [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md)** (verified findings, **Options A/B/C + candidate D (natural person in own name) with an A/B/C/D matrix and no selection**, professional-review questions Q4.1–Q4.13, product direction PD-1 free/non-commercial); **D5b remains legally unresolved and blocking for 6.0d provisioning.** **Owner preference recorded 2026-10-22: Q1-D (natural person in own name) is the PREFERRED operator model, subject to contractual eligibility determination and professional verification — a directional preference only, NOT a selection, NOT a resolution; D5b stays legally unresolved and blocking (Q1-OPERATOR-READINESS.md PREFERENCE ADDENDUM).** |
+| D5b | Privacy & data-processing responsibilities | **RESOLVED in bounded operator-model scope, owner-reported 2026-10-23:** Q1-D **SELECTED** — operation under the owner's own name. Qualified professional outcome reported acceptable / no blocking objection. | Scope: operator model, contractual eligibility and relevant privacy/protection obligations. Review date unspecified; report received2026-10-23. No independent verification, document/signature/citation or compliance claim. Unrelated C4/billing/transfer/retention/security and pre-collection duties remain open; no provisioning/deployment authorization. See current Q1 outcome. |
 | D5c | Processing region & transfers | **APPROVED: Frankfurt, Germany (`eu-central-1`).** Before provisioning, verify actual region availability, data residency, international processing/transfers, the DPA and subprocessors. EU database hosting alone must **not** be presented as a guarantee that all processing stays within the EU. | Region choice is fixed for provisioning task 6.0d; the verification list is a hard pre-provisioning sub-gate. |
 | D5d | Account deletion & retention | **PRINCIPLE APPROVED — DETAILS PENDING:** preserve legitimately published non-personal catalogue data where rights and applicable law permit; minimize and appropriately erase account-linked personal data; support account deletion. | Retention periods for pending/rejected contributions, audit records and backups remain **unresolved**. Attribution requirements, pseudonymization vs anonymization, legal exceptions and deletion semantics must be reviewed before public launch. **Do not invent final retention periods or claim legal approval.** `DELETE /v1/me` stays reserved (API-CONTRACTS.md §3). |
 | D5e | Contribution terms & licensing | **APPROVED, SUBJECT TO PRE-LAUNCH LEGAL REVIEW:** CC0 for contributor-owned structured catalogue metadata; CC BY-SA 4.0 for original contributor-authored text. | Third-party rights, source licenses, attribution and database rights remain fully applicable. Wikipedia content and copied third-party prose are **not** automatically relicensed. Field-level license/provenance requirements are preserved. Compatibility with D5d deletion/attribution must be verified before launch. |
@@ -106,7 +136,7 @@ Status vocabulary used below:
       upgrades). Architecture-decision level only: **provisioning, deployment and
       implementation remain separately gated.** C2–C4 stay open (§4b).
 
-### 4b. Still open (each blocks only its named dependents)
+### 4b. Historical open-task register (Q1/D5b superseded by current outcome above)
 
 - [ ] **D5a details** — actual public contact supplied/authorized (blocks privacy notice
       publication and public collection).
@@ -278,3 +308,8 @@ selected; applying the approved-API edit awaits review of that impact/patch.
 Prototype source/tests and approved API text unchanged. A scoped exception for
 formal local-only 6.1–6.3 is proposed in that document, not approved/in force.
 D8b/6.0f policy, ORD-A, all cloud gates and global task boxes remain unchanged.
+
+
+## Historical D5b decision-row snapshot (superseded 2026-10-23)
+
+| D5b | Privacy & data-processing responsibilities | **DEFERRED:** the legal data controller/operator will be determined **before public launch**, after reviewing applicable requirements. Privacy-by-design and data minimization apply meanwhile. | Do not claim GDPR compliance and do not authorize real-user collection. Applicable requirements concerning a minor project owner must be accounted for in the pre-launch review. **Research deliverable prepared 2026-10-21 — [Q1-OPERATOR-READINESS.md](Q1-OPERATOR-READINESS.md)** (verified findings, **Options A/B/C + candidate D (natural person in own name) with an A/B/C/D matrix and no selection**, professional-review questions Q4.1–Q4.13, product direction PD-1 free/non-commercial); **D5b remains legally unresolved and blocking for 6.0d provisioning.** **Owner preference recorded 2026-10-22: Q1-D (natural person in own name) is the PREFERRED operator model, subject to contractual eligibility determination and professional verification — a directional preference only, NOT a selection, NOT a resolution; D5b stays legally unresolved and blocking (Q1-OPERATOR-READINESS.md PREFERENCE ADDENDUM).** |

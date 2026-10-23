@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-23",
+  "method": "existing authorized Supabase connector; metadata only",
+  "calls": [
+    "list_organizations",
+    "list_projects",
+    "get_organization"
+  ],
+  "organizationCount": 1,
+  "organizationPlan": "free",
+  "organizationTier": "tier_free",
+  "projectCount": 1,
+  "projectRegion": "eu-central-1",
+  "projectStatus": "ACTIVE_HEALTHY",
+  "postgresVersion": "17.11.0.003",
+  "billingPaymentVerified": false,
+  "billingFieldsExposed": false,
+  "cloudflareToolAvailable": false,
+  "cloudflarePluginSearchResults": 0,
+  "cloudflareLiveCalls": 0,
+  "SQLExecutions": 0,
+  "userRowsRead": 0,
+  "keysRequested": 0,
+  "cloudWrites": 0,
+  "identifiersOrDisplayNamesRecorded": false,
+  "limitations": "Metadata-only Free does not establish no payment method,add-ons,trials or accrued costs. No current Cloudflare inventory/billing call. Prior external inventories retain their original attribution."
+}

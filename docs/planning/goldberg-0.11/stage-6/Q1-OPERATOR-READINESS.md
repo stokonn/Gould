@@ -1,5 +1,36 @@
 # Q1 — Operator readiness: who may lawfully hold the provider accounts (D5b)
 
+## Current Q1/D5b outcome — owner report received 2026-10-23
+
+- **Q1-D: SELECTED by the owner** — operation under the owner's own name.
+- **Professional-review outcome:** acceptable / no blocking objection reported.
+- **Scope:** Q1/D5b operator model, contractual eligibility and relevant
+  privacy/protection obligations for this project.
+- **Evidence posture:** owner-reported professional confirmation. This agent did
+  not perform the review or independently verify its underlying materials.
+- **Review date:** not supplied by the owner; unspecified. **Report recorded:
+  2026-10-23.** The report date is not asserted to be the professional's review date.
+- **D5b: RESOLVED for this reported operator-model/eligibility scope only.** No
+  document, signature, legal citation, reviewer identity or individual answer to
+  Q4.1–Q4.13/C-1…C-6 is inferred. The owner's explicit reporting instruction
+  permits this bounded record without requiring a signed or written review artifact.
+- This does not establish general GDPR/legal compliance or discharge unrelated
+  privacy, transfer, retention, notice, consent, security or pre-collection duties.
+  D5a/D5d/D5e/D5f and specific unanswered operational questions remain separately gated.
+
+**C1 approved; C4 OPEN; ORD-A sequencing approval only; 6.0f UNCHECKED;
+cloud provisioning, deployment, OAuth/permission changes and real-user collection
+NOT AUTHORIZED.** The permanent goal remains 0 CZK/month, not a verified billing
+result. Existing accounts/projects do not change those gates.
+
+This current record supersedes only older Q1-D preference/no-selection and blanket
+D5b-unresolved/blocking statements below. Dated research, questions and earlier
+observations remain historical evidence; they must not be read as today's decision.
+
+---
+
+## Preserved research and earlier checkpoints (historical; current outcome above governs)
+
 ## Existing Supabase project — externally verified reconciliation (2026-10-22)
 
 The owner relayed verification by **ChatGPT's connected Supabase integration** on
