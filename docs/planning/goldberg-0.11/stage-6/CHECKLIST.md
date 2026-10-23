@@ -37,6 +37,9 @@ Next agent: read proposed decision package and O1–O8; collect owner decisions 
 any implementation. Do not run old publisher for this new package; use the dedicated
 guarded `contracts/admin/v1/decision-proposal/publish.py` with exact final SHA.
 Publication receipt/fallback: `docs/ai/API-V1-PROPOSAL-PUBLICATION.md`.
+Normal push blocked by DNS; both Issue31 writes denied403 by integration.
+No new checkpoint URL;78 previous comments and issue description unchanged.
+Publication pending via guarded Fedora publisher with exact final clean SHA.
 
 | Substage and purpose | Local evidence / remaining task (all formal gates unchanged) |
 |---|---|

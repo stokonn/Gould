@@ -1,0 +1,25 @@
+{
+  "packageCommit": "1f9996fd385189b66a42f6abbc8a9944c3030702",
+  "branch": "verify/goldberg-0.11-stage-6-12-local",
+  "normalPush": {
+    "exitCode": 128,
+    "error": "Could not resolve host: github.com"
+  },
+  "issueUpdate": {
+    "httpStatus": 403,
+    "error": "Resource not accessible by integration"
+  },
+  "issueComment": {
+    "httpStatus": 403,
+    "error": "Resource not accessible by integration"
+  },
+  "readback": {
+    "issueUnchanged": true,
+    "priorCommentsPreserved": true,
+    "comments": 78,
+    "proposalMarkerCount": 0
+  },
+  "newCheckpointUrl": null,
+  "classification": "publication-blocked; planning-only package verified locally; no permission/DNS bypass",
+  "draftCheckpoint": "## Stage 6 → Stage 7B — PROPOSED API v1 decision package (source UNPUBLISHED)\n\nLocal planning commit `1f9996fd385189b66a42f6abbc8a9944c3030702`, branch `verify/goldberg-0.11-stage-6-12-local`; published baseline `19f5642192148051a7b4eb5bc5efb1090192e3c0` and checkpoint6370511889 preserved. Normal push failed DNS: Could not resolve host github.com. This is a factual local preparation checkpoint, not a remote-source publication claim.\n\n- [x] Prepared preferred G1 snapshot statistics, G2 queue metadata/search, G3 audit filters, G4 authorized current comparison, G5 explicit session/principal/refresh/logout, G6 explicit open/dual revisions/receipts/conflicts, G7 versioned DTO/binding, G8 decimal-string int8, G9 canonical audit/counting, G11 UTF-8 reason/default-deny policy.\n- [x] 61 authored DTO fixtures (37 positive / 24 negative), eight unexecuted authored protocol scenes and 15 verifier regressions checked; existing41 primary /29 comparison corpus/provenance and current read-only Android hashes PASS; 11 existing local contract tests PASS. Agent policy/whitespace PASS. No HTTP/PG/Android run.\n- [x] G10 CLOSED. Prior345 successful host executions /313 tests /205 PostgreSQL-backed bodies preserved, not rerun. No Stage7B worktree changes.\n- [ ] Owner O1–O8: lifecycle/schemaVersion mapper/204 and offline-logout amendment; exact lifetimes; independent revisions/receipt retention; wire/int8/cursor/version compatibility; metric/window/timezone; search/privacy; exact field/source/license policy; separate future implementation authorization.\n- [ ] G1–G9/G11 integration BLOCKED; production auth/network/actions inactive;6.12 PARTIAL;6.17 NOT FROZEN. No6.13–6.18 implementation, cloud/OAuth/device/merge/deploy/release operations.\n\nPackage: docs/planning/goldberg-0.11/stage-6/API-V1-DECISION-PROPOSAL.md; fixtures/tooling: contracts/admin/v1/decision-proposal/. Checklists and docs/ai updated. Browser/fetch/restore/privacy/hosted/Android runtime and Q1/C4/zero-cost/legal gates remain open; X10 OPEN; Stage8 pending.\nNext: permitted-host normal publication using dedicated guarded publisher with exact final SHA, then owner O1–O8 review before approved implementation. Stop at owner decision gate.\n\ncreated by stokonn with love <3\n<!-- stage6-api-v1-proposal:1f9996fd385189b66a42f6abbc8a9944c3030702 -->\n"
+}

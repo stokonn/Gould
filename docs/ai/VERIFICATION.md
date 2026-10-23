@@ -1,3 +1,18 @@
+## API v1 proposal publication — BLOCKED (2026-10-23)
+
+Planning package commit `1f9996fd385189b66a42f6abbc8a9944c3030702` verified locally.
+Normal push failed DNS (`Could not resolve host: github.com`,exit128). Connected
+Issue31 description update AND checkpoint append each returned HTTP403 `Resource
+not accessible by integration`. Readback confirms description unchanged,78 prior
+comments preserved,zero new matching checkpoint. No new checkpoint URL exists.
+Source and tracking publication remain PENDING; no approval or gate closure implied.
+
+`contracts/admin/v1/decision-proposal/publication-attempt.json` preserves the factual
+attempt/draft. This receipt commit changes only publication tracking/metadata;
+contract package/source proof is unchanged. On permitted Fedora use the dedicated
+publisher with the final exact clean SHA; instructions in API-V1-PROPOSAL-PUBLICATION.md.
+Stop at owner O1–O8 decision gate. No PostgreSQL rerun or Stage7B changes.
+
 ## API v1 proposal — executed offline verification (2026-10-23)
 
 - `python3 contracts/admin/v1/decision-proposal/verify.py`: PASS,61 proposed DTO

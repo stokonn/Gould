@@ -41,7 +41,8 @@
     "contracts/admin/v1/decision-proposal/verify.py": "e489a0f03c11fe6f31d4e6b082e4904c099d7c7c8c25fc7e207a45d8784c3763",
     "docs/planning/goldberg-0.11/stage-6/API-V1-DECISION-PROPOSAL.md": "8b32dc35e39712ff4ed4acaa786c336d845ade554fd0a7c2e310b893fe8b3af4",
     "contracts/admin/v1/decision-proposal/protocol.json": "2016b1676746e5c090fefc28a2e5455e5320fb18eb434c605b61bf30f54e17b5",
-    "contracts/admin/v1/decision-proposal/verification.json": "b30f6bf16b9aebb13f226e8df1f757ee69bc392c42b3af123f642f255e4f0e1e"
+    "contracts/admin/v1/decision-proposal/verification.json": "b30f6bf16b9aebb13f226e8df1f757ee69bc392c42b3af123f642f255e4f0e1e",
+    "contracts/admin/v1/decision-proposal/publication-attempt.json": "76963434db4d300bdcdcec414220e186be00f819e4c3dace714505a44a3d0893"
   },
   "baselineFiles": {
     "contracts/admin/v1/README.md": "3d820dc4120a1d5e1d931e61b7eaa94b38be5b830be457747e3a453bc4e1b923",

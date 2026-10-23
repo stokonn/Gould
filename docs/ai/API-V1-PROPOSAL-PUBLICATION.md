@@ -34,3 +34,15 @@ Generated readback receipt is local under `.gradle/api-v1-proposal-publication/`
 Do not invoke the older security publisher, whose checkpoint describes another milestone.
 
 created by stokonn with love <3
+
+## Actual publication attempt — blocked
+
+Package commit1f9996fd385189b66a42f6abbc8a9944c3030702 passed clean-SHA guarded
+verification. Normal push returned exit128, `Could not resolve host: github.com`.
+Both connected Issue31 writes (description append and checkpoint comment) returned
+HTTP403 `Resource not accessible by integration`. Fresh readback confirms unchanged
+description,78 prior comments preserved,zero matching new checkpoint. No new URL.
+The connected branch search confirms branch existence but exposes no current SHA;
+no new remote-source verification is claimed. Existing baseline/checkpoint preserved.
+Final receipt tip contains the unchanged proposed package plus this blocked outcome.
+Use its exact final SHA in the guarded Fedora publisher; do not bypass the guards.
