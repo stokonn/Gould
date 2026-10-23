@@ -1,0 +1,2 @@
+PASS: 13 actual PostgreSQL-backed Detail responses match approved exact DTO schema; synthetic content only.
+PASS:19 actual PostgreSQL tests,106 adapter/wire +38 T22 scripted/unit regressions,18 planning tests; zero failures/skips; current source/raw hashes/cleanup/protected baseline verified. No HTTP/Android/full-int8-write/production compatibility acceptance.

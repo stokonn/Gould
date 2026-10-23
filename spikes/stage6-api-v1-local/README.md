@@ -1,3 +1,20 @@
+# Current: local API M2 — verified Detail and PostgreSQL
+
+GET `/v1/admin/submissions/{id}` now provides the approved bounded Detail. See
+[scope, results and limits](../../docs/planning/goldberg-0.11/stage-6/API-V1-LOCAL-M2.md).
+Run `python3 spikes/stage6-api-v1-local/run-m2-postgres.py` on an authorized Fedora
+host with the existing cached pinned PG17 image/dependencies. This creates/removes
+only its UUID-named loopback container, never accepts a database URL or touches
+host services. Verify a saved run with `python3 spikes/stage6-api-v1-local/verify-m2.py RUN_DIRECTORY`.
+
+M1 `verify.py` and source manifests remain historical and intentionally source-bound
+to M1; use the M2 verifier for current code. Do not invoke the obsolete M1 publisher.
+No live catalogue head is added to Detail; current Comparison and client reconfirmation
+remain integration gaps. Histories>20 fail503 without truncation; production policy
+default-deny. Public compatibility is unconfirmed; no HTTP/Android/cloud activation.
+
+---
+
 # Stage 6 API v1 local adapter — Milestone 1
 
 **LOCAL / PROVISIONAL PUBLIC VERSION / NOT FROZEN / NO LISTENER.** Isolated branch

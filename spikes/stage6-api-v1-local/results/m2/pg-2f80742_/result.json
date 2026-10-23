@@ -1,0 +1,29 @@
+{
+  "container": "goldberg-api-m2-87d342ff52af4d18b8bf62c66a02eedf",
+  "image": "docker.io/library/postgres@sha256:e4cb93687b062cd25a0e8f672d85a7708235009d70d31f8a7698d9370092a9c4",
+  "syntheticOnly": true,
+  "httpExecutions": 0,
+  "androidExecutions": 0,
+  "created": false,
+  "cleanup": "not-created",
+  "commands": [
+    {
+      "argv": [
+        "podman",
+        "info",
+        "--format",
+        "{{.Host.Security.Rootless}}"
+      ],
+      "exitCode": 1,
+      "log": "podman.log"
+    }
+  ],
+  "acceptance": "BLOCKED_OR_FAILED",
+  "error": "podman.log exit 1",
+  "sourceUnchanged": true,
+  "artifacts": {
+    "podman.log": "075134201a333df626f0c76979c95cc124492e65ed487fe3cb513865b84ede20",
+    "source-after.json": "38ac38a3c5fbd57a659f4c772e15864066774ad5260c4615e1381731e4d7ad44",
+    "source-before.json": "38ac38a3c5fbd57a659f4c772e15864066774ad5260c4615e1381731e4d7ad44"
+  }
+}

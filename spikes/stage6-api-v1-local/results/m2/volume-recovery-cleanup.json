@@ -1,0 +1,82 @@
+[
+  {
+    "volume": "ea2b1a0b3acc51c720cd07260678e06ee96149ff7916f6108fbe208977ba7098",
+    "container": "goldberg-api-m2-8d540b068bd44c8d9230d40b0f6b89ef",
+    "priorInspect": {
+      "Name": "ea2b1a0b3acc51c720cd07260678e06ee96149ff7916f6108fbe208977ba7098",
+      "Driver": "local",
+      "Mountpoint": "/home/stokonn/.local/share/containers/storage/volumes/ea2b1a0b3acc51c720cd07260678e06ee96149ff7916f6108fbe208977ba7098/_data",
+      "CreatedAt": "2026-10-23T21:52:38.563222675+02:00",
+      "Labels": {},
+      "Scope": "local",
+      "Options": {},
+      "Anonymous": true,
+      "MountCount": 0,
+      "NeedsCopyUp": true,
+      "NeedsChown": true,
+      "LockNumber": 20
+    },
+    "removeExit": 0,
+    "absenceExit": 1
+  },
+  {
+    "volume": "f011de6cc4812d372506c8190a03dfea50700648007a8797992d4d84eb9425bf",
+    "container": "goldberg-api-m2-0cf3ffe3069e466f9717ca708c60c9d7",
+    "priorInspect": {
+      "Name": "f011de6cc4812d372506c8190a03dfea50700648007a8797992d4d84eb9425bf",
+      "Driver": "local",
+      "Mountpoint": "/home/stokonn/.local/share/containers/storage/volumes/f011de6cc4812d372506c8190a03dfea50700648007a8797992d4d84eb9425bf/_data",
+      "CreatedAt": "2026-10-23T22:40:42.124545426+02:00",
+      "Labels": {},
+      "Scope": "local",
+      "Options": {},
+      "Anonymous": true,
+      "MountCount": 0,
+      "NeedsCopyUp": true,
+      "NeedsChown": true,
+      "LockNumber": 21
+    },
+    "removeExit": 0,
+    "absenceExit": 1
+  },
+  {
+    "volume": "b109ba78101c6f9ff26b8022b6ca8d45291f5dcdae1aa5e4bfc7e00c683ba663",
+    "container": "goldberg-api-m2-79d18e5fb32b4640bef07679808d8b0c",
+    "priorInspect": {
+      "Name": "b109ba78101c6f9ff26b8022b6ca8d45291f5dcdae1aa5e4bfc7e00c683ba663",
+      "Driver": "local",
+      "Mountpoint": "/home/stokonn/.local/share/containers/storage/volumes/b109ba78101c6f9ff26b8022b6ca8d45291f5dcdae1aa5e4bfc7e00c683ba663/_data",
+      "CreatedAt": "2026-10-23T22:54:52.286286647+02:00",
+      "Labels": {},
+      "Scope": "local",
+      "Options": {},
+      "Anonymous": true,
+      "MountCount": 0,
+      "NeedsCopyUp": true,
+      "NeedsChown": true,
+      "LockNumber": 22
+    },
+    "removeExit": 0,
+    "absenceExit": 1
+  },
+  {
+    "volume": "4314fd0463acc8e4c4c31a6fdf1a57d0c44d3d222b6405ae207c896eba508f78",
+    "container": "goldberg-api-m2-1b1b6110150f4dc7a5834962ed1cc667",
+    "priorInspect": {
+      "Name": "4314fd0463acc8e4c4c31a6fdf1a57d0c44d3d222b6405ae207c896eba508f78",
+      "Driver": "local",
+      "Mountpoint": "/home/stokonn/.local/share/containers/storage/volumes/4314fd0463acc8e4c4c31a6fdf1a57d0c44d3d222b6405ae207c896eba508f78/_data",
+      "CreatedAt": "2026-10-23T22:56:07.903439555+02:00",
+      "Labels": {},
+      "Scope": "local",
+      "Options": {},
+      "Anonymous": true,
+      "MountCount": 0,
+      "NeedsCopyUp": true,
+      "NeedsChown": true,
+      "LockNumber": 23
+    },
+    "removeExit": 0,
+    "absenceExit": 1
+  }
+]

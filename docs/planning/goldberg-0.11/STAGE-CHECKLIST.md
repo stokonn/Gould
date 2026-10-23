@@ -1,3 +1,30 @@
+## Local API M2 — implementation and verification COMPLETE (2026-10-23)
+
+Purpose: bounded authoritative Detail/refetch and actual disposable PostgreSQL
+acceptance for the existing local adapter/public receipts. Scope: isolated API
+package and documentation; existing services/schema/migrations/Android untouched.
+
+- [x] Strict GET Detail, one SQL content snapshot, live queue.read/account isolation,
+  explicit approved DTO, independent baseline/proposal decimal strings, UTC microseconds,
+  policy default-deny and bounded history overflow503 without truncation.
+- [x] Actual PostgreSQL17.11:19 tests PASS;106 adapter/wire +38 T22 service/scripted-SQL
+  regressions and18 planning tests PASS;13 real PG Detail captures match approved DTO.
+  Zero failures/skips/cancellations in final run; prior345 baseline not rerun.
+- [x] Source-before/after/current and raw hashes verified; UUID-named loopback-only
+  container removed/absence verified; failed attempts and M1/security evidence retained.
+- [x] Issue31 verified milestone description/comment synchronized; OPEN / Project In Progress.
+- [ ] Ordinary commit/push, exact remote SHA and final completion checkpoint pending.
+
+[Full purpose/scope/tasks, exact commands, attempts and limits](stage-6/API-V1-LOCAL-M2.md).
+Current baseline is recorded submission intent, not live catalogue state. Comparison,
+history cursors, client reconfirmation/full-int8 writes/public compatibility stay open.
+G10 CLOSED;6.12 PARTIAL;6.17 NOT FROZEN; no formal6.13–6.18 or HTTP/Android/device/cloud/
+OAuth/production/merge/release. Stage7A FINAL ACCEPTED; X10 unfixed/unverified, deferred
+Gould0.12; No M2 writes to Stage7B/security worktrees. Stage7B advanced externally during this run;
+its new work is preserved. Security HEAD/status/diff remained unchanged.
+
+---
+
 ## Stage 6 API local M1 — verified source published (2026-10-23)
 
 **LOCAL MILESTONE 1 VERIFIED / SOURCE PUBLISHED; INTEGRATION NOT ACCEPTED.**

@@ -108,3 +108,16 @@ No Git garbage collection, backup deletion or published-artifact removal was per
 Read this ledger and AGENTS.md first. Use rg and Git reachability to narrow investigation; consult the preserved-component list before repeating migration/icon/signing audits. Append only new findings, evidence and actual checks. Keep release work and maintenance commits separate, retain uncertain items, and record explicit deferred work. Do not publish a new application release solely for maintenance without authorization.
 
 created by stokonn with love <3
+
+### 2026-10-23 — local API M2 disposable resource cleanup
+
+No application/legacy components removed. Scoped API M2 rootless PostgreSQL runner
+now records its anonymous volume identities, removes only its UUID-named container
+with --volumes, and verifies both container and volume absence. Four initial M2
+anonymous volumes were attributed through saved container receipts and adjacent
+Podman create events (<20ms, no intervening creates), checked unused, removed
+individually and absence-verified; unrelated volumes retained. Evidence is in
+`spikes/stage6-api-v1-local/results/m2/volume-recovery-{attribution,cleanup}.json`.
+Final source-bound `pg-lg7ei69p` passed19 actual PostgreSQL tests and all focused
+regressions; container/volume cleanup verified. No system services, shared/hosted
+DBs, user data, migrations, backup formats, assets or signing identity changed.

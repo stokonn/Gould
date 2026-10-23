@@ -1,0 +1,107 @@
+TAP version 13
+# ACTUAL POSTGRESQL PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+# Subtest: PG detail reflects persisted submitted/open/published; exact DTO fields, no read effects
+ok 1 - PG detail reflects persisted submitted/open/published; exact DTO fields, no read effects
+  ---
+  duration_ms: 685.797294
+  type: 'test'
+  ...
+# Subtest: PG independent entity7/proposal3 publishes8; stale expectations conflict and refetch stays authoritative
+ok 2 - PG independent entity7/proposal3 publishes8; stale expectations conflict and refetch stays authoritative
+  ---
+  duration_ms: 1786.426974
+  type: 'test'
+  ...
+# Subtest: PG changed live entity baseline cannot be waived by refetch/reconfirmation
+ok 3 - PG changed live entity baseline cannot be waived by refetch/reconfirmation
+  ---
+  duration_ms: 638.009841
+  type: 'test'
+  ...
+# Subtest: PG live authorization, revocation, suspension and account isolation before detail or replay
+ok 4 - PG live authorization, revocation, suspension and account isolation before detail or replay
+  ---
+  duration_ms: 680.431812
+  type: 'test'
+  ...
+# Subtest: PG exact receipt replay after state change/fresh adapter; changed body422; no second effects
+ok 5 - PG exact receipt replay after state change/fresh adapter; changed body422; no second effects
+  ---
+  duration_ms: 544.665988
+  type: 'test'
+  ...
+# Subtest: PG reject200 exact receipt and persisted detail
+ok 6 - PG reject200 exact receipt and persisted detail
+  ---
+  duration_ms: 488.558836
+  type: 'test'
+  ...
+# Subtest: PG request_changes200 exact receipt and persisted detail
+ok 7 - PG request_changes200 exact receipt and persisted detail
+  ---
+  duration_ms: 500.768336
+  type: 'test'
+  ...
+# Subtest: PG atomic rollback of effects/audit/receipt at projection
+ok 8 - PG atomic rollback of effects/audit/receipt at projection
+  ---
+  duration_ms: 508.043901
+  type: 'test'
+  ...
+# Subtest: PG atomic rollback of effects/audit/receipt at receipt
+ok 9 - PG atomic rollback of effects/audit/receipt at receipt
+  ---
+  duration_ms: 517.264836
+  type: 'test'
+  ...
+# Subtest: PG atomic rollback of effects/audit/receipt at deferred
+ok 10 - PG atomic rollback of effects/audit/receipt at deferred
+  ---
+  duration_ms: 546.41628
+  type: 'test'
+  ...
+# Subtest: PG concurrent competing moderators: one201 and one409, coherent atomic chain
+ok 11 - PG concurrent competing moderators: one201 and one409, coherent atomic chain
+  ---
+  duration_ms: 481.7375
+  type: 'test'
+  ...
+# Subtest: PG simultaneous same-key requests exact replay; changed-body same-key race422
+ok 12 - PG simultaneous same-key requests exact replay; changed-body same-key race422
+  ---
+  duration_ms: 592.997219
+  type: 'test'
+  ...
+# Subtest: PG receipt retention exactly24h from completion; before/at/after expiry under controlled clock
+ok 13 - PG receipt retention exactly24h from completion; before/at/after expiry under controlled clock
+  ---
+  duration_ms: 563.92205
+  type: 'test'
+  ...
+# Subtest: PG lossless full-int8 reads and UTC microseconds; writes stay fail closed
+ok 14 - PG lossless full-int8 reads and UTC microseconds; writes stay fail closed
+  ---
+  duration_ms: 365.20282
+  type: 'test'
+  ...
+# Subtest: PG empty real policy denies payload disclosure; strict detail routing and no body/query
+ok 15 - PG empty real policy denies payload disclosure; strict detail routing and no body/query
+  ---
+  duration_ms: 402.002434
+  type: 'test'
+  ...
+# Subtest: PG detail coherent snapshot during a concurrent committed decision
+ok 16 - PG detail coherent snapshot during a concurrent committed decision
+  ---
+  duration_ms: 516.341729
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11639.887468

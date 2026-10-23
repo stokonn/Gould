@@ -1,0 +1,1445 @@
+[
+  {
+    "schemaVersion": 1,
+    "requestId": "0fabff0c-6628-4d4e-b531-6a99b6292980",
+    "submissionId": "cf2200a6-76c5-4237-ba37-546d26e91b68",
+    "authorId": "aabe3794-969a-4a74-ae10-b111681393c6",
+    "status": "submitted",
+    "kind": "work",
+    "targetEntityId": "2e308f9d-196e-418d-8dd0-f8d3e2875b06",
+    "targetState": "new",
+    "expectedEntityRevision": "0",
+    "submissionRevision": "1",
+    "createdAt": "2026-10-23T20:56:12.167815Z",
+    "updatedAt": "2026-10-23T20:56:12.167815Z",
+    "revisions": {
+      "items": [
+        {
+          "submissionRevision": "1",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "2e308f9d-196e-418d-8dd0-f8d3e2875b06"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:12.170966Z",
+          "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "hash": "d5b03ca487d380e9bd0f031d3375605bd42fdf5f11921688000b475a07f32fba"
+        }
+      ],
+      "nextCursor": null
+    },
+    "reviews": {
+      "items": [],
+      "nextCursor": null
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "09eed299-dd90-4d5d-a2a6-24f5be4bd54a",
+    "submissionId": "cf2200a6-76c5-4237-ba37-546d26e91b68",
+    "authorId": "aabe3794-969a-4a74-ae10-b111681393c6",
+    "status": "in_review",
+    "kind": "work",
+    "targetEntityId": "2e308f9d-196e-418d-8dd0-f8d3e2875b06",
+    "targetState": "new",
+    "expectedEntityRevision": "0",
+    "submissionRevision": "1",
+    "createdAt": "2026-10-23T20:56:12.167815Z",
+    "updatedAt": "2026-10-23T20:56:12.259259Z",
+    "revisions": {
+      "items": [
+        {
+          "submissionRevision": "1",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "2e308f9d-196e-418d-8dd0-f8d3e2875b06"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:12.170966Z",
+          "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "hash": "d5b03ca487d380e9bd0f031d3375605bd42fdf5f11921688000b475a07f32fba"
+        }
+      ],
+      "nextCursor": null
+    },
+    "reviews": {
+      "items": [
+        {
+          "auditSeq": "6",
+          "submissionRevision": "1",
+          "actorId": "515fcb5e-f1a8-48fc-9c11-90b82b6a4435",
+          "from": "submitted",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:12.257400Z"
+        }
+      ],
+      "nextCursor": null
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "faa00ace-8782-4cb9-86d8-f41530f66a11",
+    "submissionId": "cf2200a6-76c5-4237-ba37-546d26e91b68",
+    "authorId": "aabe3794-969a-4a74-ae10-b111681393c6",
+    "status": "published",
+    "kind": "work",
+    "targetEntityId": "2e308f9d-196e-418d-8dd0-f8d3e2875b06",
+    "targetState": "new",
+    "expectedEntityRevision": "0",
+    "submissionRevision": "1",
+    "createdAt": "2026-10-23T20:56:12.167815Z",
+    "updatedAt": "2026-10-23T20:56:12.332543Z",
+    "revisions": {
+      "items": [
+        {
+          "submissionRevision": "1",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "2e308f9d-196e-418d-8dd0-f8d3e2875b06"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:12.170966Z",
+          "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "hash": "d5b03ca487d380e9bd0f031d3375605bd42fdf5f11921688000b475a07f32fba"
+        }
+      ],
+      "nextCursor": null
+    },
+    "reviews": {
+      "items": [
+        {
+          "auditSeq": "6",
+          "submissionRevision": "1",
+          "actorId": "515fcb5e-f1a8-48fc-9c11-90b82b6a4435",
+          "from": "submitted",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:12.257400Z"
+        },
+        {
+          "auditSeq": "7",
+          "submissionRevision": "1",
+          "actorId": "515fcb5e-f1a8-48fc-9c11-90b82b6a4435",
+          "from": "in_review",
+          "to": "approved",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:12.326966Z"
+        },
+        {
+          "auditSeq": "8",
+          "submissionRevision": "1",
+          "actorId": "515fcb5e-f1a8-48fc-9c11-90b82b6a4435",
+          "from": "approved",
+          "to": "published",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:12.331545Z"
+        }
+      ],
+      "nextCursor": null
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "d9ee8598-f07f-4f1b-9be2-2507be381e92",
+    "submissionId": "0321d191-11e0-4af5-b108-ffdeb2fd352d",
+    "authorId": "76c7b68d-c7ca-4bf5-90a6-2dedba057320",
+    "status": "in_review",
+    "kind": "work",
+    "targetEntityId": "951d2e92-6cb9-43c7-9d7e-f5d68b1111b5",
+    "targetState": "existing",
+    "expectedEntityRevision": "7",
+    "submissionRevision": "3",
+    "createdAt": "2026-10-23T20:56:13.483222Z",
+    "updatedAt": "2026-10-23T20:56:13.671673Z",
+    "revisions": {
+      "items": [
+        {
+          "submissionRevision": "3",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "951d2e92-6cb9-43c7-9d7e-f5d68b1111b5"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:13.658907Z",
+          "previousHash": "a2d8c6535dffa1534fc5a07e990ecb2c0dfbadf8d797afaaade261cc8a88036b",
+          "hash": "3e25ef103945f918a43d655a1541d07fc300c14400fd243aba0e7f6272c03d06"
+        },
+        {
+          "submissionRevision": "2",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "951d2e92-6cb9-43c7-9d7e-f5d68b1111b5"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:13.588452Z",
+          "previousHash": "9d6087cf22813d498adfbd78725d424ce879d746899b293b237c068191cac73f",
+          "hash": "a2d8c6535dffa1534fc5a07e990ecb2c0dfbadf8d797afaaade261cc8a88036b"
+        },
+        {
+          "submissionRevision": "1",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "951d2e92-6cb9-43c7-9d7e-f5d68b1111b5"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:13.486966Z",
+          "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "hash": "9d6087cf22813d498adfbd78725d424ce879d746899b293b237c068191cac73f"
+        }
+      ],
+      "nextCursor": null
+    },
+    "reviews": {
+      "items": [
+        {
+          "auditSeq": "34",
+          "submissionRevision": "1",
+          "actorId": "4402db0b-7b05-429c-a92f-dc69d5c453e4",
+          "from": "submitted",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:13.524732Z"
+        },
+        {
+          "auditSeq": "35",
+          "submissionRevision": "1",
+          "actorId": "4402db0b-7b05-429c-a92f-dc69d5c453e4",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic revision requested",
+          "createdAt": "2026-10-23T20:56:13.557595Z"
+        },
+        {
+          "auditSeq": "36",
+          "submissionRevision": "2",
+          "actorId": "76c7b68d-c7ca-4bf5-90a6-2dedba057320",
+          "from": "changes_requested",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:13.598585Z"
+        },
+        {
+          "auditSeq": "37",
+          "submissionRevision": "2",
+          "actorId": "4402db0b-7b05-429c-a92f-dc69d5c453e4",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic revision requested",
+          "createdAt": "2026-10-23T20:56:13.631850Z"
+        },
+        {
+          "auditSeq": "38",
+          "submissionRevision": "3",
+          "actorId": "76c7b68d-c7ca-4bf5-90a6-2dedba057320",
+          "from": "changes_requested",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:13.669817Z"
+        }
+      ],
+      "nextCursor": null
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "df2093fb-0561-459f-916b-d14c54e239d4",
+    "submissionId": "0321d191-11e0-4af5-b108-ffdeb2fd352d",
+    "authorId": "76c7b68d-c7ca-4bf5-90a6-2dedba057320",
+    "status": "published",
+    "kind": "work",
+    "targetEntityId": "951d2e92-6cb9-43c7-9d7e-f5d68b1111b5",
+    "targetState": "existing",
+    "expectedEntityRevision": "7",
+    "submissionRevision": "3",
+    "createdAt": "2026-10-23T20:56:13.483222Z",
+    "updatedAt": "2026-10-23T20:56:13.766510Z",
+    "revisions": {
+      "items": [
+        {
+          "submissionRevision": "3",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "951d2e92-6cb9-43c7-9d7e-f5d68b1111b5"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:13.658907Z",
+          "previousHash": "a2d8c6535dffa1534fc5a07e990ecb2c0dfbadf8d797afaaade261cc8a88036b",
+          "hash": "3e25ef103945f918a43d655a1541d07fc300c14400fd243aba0e7f6272c03d06"
+        },
+        {
+          "submissionRevision": "2",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "951d2e92-6cb9-43c7-9d7e-f5d68b1111b5"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:13.588452Z",
+          "previousHash": "9d6087cf22813d498adfbd78725d424ce879d746899b293b237c068191cac73f",
+          "hash": "a2d8c6535dffa1534fc5a07e990ecb2c0dfbadf8d797afaaade261cc8a88036b"
+        },
+        {
+          "submissionRevision": "1",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "951d2e92-6cb9-43c7-9d7e-f5d68b1111b5"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:13.486966Z",
+          "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "hash": "9d6087cf22813d498adfbd78725d424ce879d746899b293b237c068191cac73f"
+        }
+      ],
+      "nextCursor": null
+    },
+    "reviews": {
+      "items": [
+        {
+          "auditSeq": "34",
+          "submissionRevision": "1",
+          "actorId": "4402db0b-7b05-429c-a92f-dc69d5c453e4",
+          "from": "submitted",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:13.524732Z"
+        },
+        {
+          "auditSeq": "35",
+          "submissionRevision": "1",
+          "actorId": "4402db0b-7b05-429c-a92f-dc69d5c453e4",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic revision requested",
+          "createdAt": "2026-10-23T20:56:13.557595Z"
+        },
+        {
+          "auditSeq": "36",
+          "submissionRevision": "2",
+          "actorId": "76c7b68d-c7ca-4bf5-90a6-2dedba057320",
+          "from": "changes_requested",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:13.598585Z"
+        },
+        {
+          "auditSeq": "37",
+          "submissionRevision": "2",
+          "actorId": "4402db0b-7b05-429c-a92f-dc69d5c453e4",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic revision requested",
+          "createdAt": "2026-10-23T20:56:13.631850Z"
+        },
+        {
+          "auditSeq": "38",
+          "submissionRevision": "3",
+          "actorId": "76c7b68d-c7ca-4bf5-90a6-2dedba057320",
+          "from": "changes_requested",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:13.669817Z"
+        },
+        {
+          "auditSeq": "39",
+          "submissionRevision": "3",
+          "actorId": "4402db0b-7b05-429c-a92f-dc69d5c453e4",
+          "from": "in_review",
+          "to": "approved",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:13.760583Z"
+        },
+        {
+          "auditSeq": "40",
+          "submissionRevision": "3",
+          "actorId": "4402db0b-7b05-429c-a92f-dc69d5c453e4",
+          "from": "approved",
+          "to": "published",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:13.765254Z"
+        }
+      ],
+      "nextCursor": null
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "b40f9a99-5ab1-47e9-a076-826ac5c4e91a",
+    "submissionId": "1013fc93-a369-422f-9c42-9e525ede61a5",
+    "authorId": "ab4803d7-ea24-4ab6-8bfa-e29a08a36644",
+    "status": "in_review",
+    "kind": "work",
+    "targetEntityId": "36ed6f20-3cef-409f-a2c3-adade17706c9",
+    "targetState": "new",
+    "expectedEntityRevision": "0",
+    "submissionRevision": "1",
+    "createdAt": "2026-10-23T20:56:14.104218Z",
+    "updatedAt": "2026-10-23T20:56:14.146896Z",
+    "revisions": {
+      "items": [
+        {
+          "submissionRevision": "1",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "36ed6f20-3cef-409f-a2c3-adade17706c9"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:14.106899Z",
+          "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "hash": "7df40268029e893131a8baa3faf6c224151297177287ec2ebe00d4f5ffe0a89c"
+        }
+      ],
+      "nextCursor": null
+    },
+    "reviews": {
+      "items": [
+        {
+          "auditSeq": "6",
+          "submissionRevision": "1",
+          "actorId": "dde097db-c12c-409e-83f4-4938914c61c6",
+          "from": "submitted",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:14.145112Z"
+        }
+      ],
+      "nextCursor": null
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "46838e21-fb84-4d46-87ff-ef003e730ae2",
+    "submissionId": "deca584f-47b0-4019-b53e-bc789c4914cc",
+    "authorId": "a5952d04-ced6-4d98-beb1-647f1072dae3",
+    "status": "rejected",
+    "kind": "work",
+    "targetEntityId": "38228c29-9e7b-4ade-823e-ce7e5f1c87c6",
+    "targetState": "new",
+    "expectedEntityRevision": "0",
+    "submissionRevision": "1",
+    "createdAt": "2026-10-23T20:56:15.633837Z",
+    "updatedAt": "2026-10-23T20:56:15.716372Z",
+    "revisions": {
+      "items": [
+        {
+          "submissionRevision": "1",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "38228c29-9e7b-4ade-823e-ce7e5f1c87c6"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:15.636536Z",
+          "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "hash": "653c08be3e02a5d92697b7854f8f2471b3158731ddcc85f98bb217830dfc558a"
+        }
+      ],
+      "nextCursor": null
+    },
+    "reviews": {
+      "items": [
+        {
+          "auditSeq": "6",
+          "submissionRevision": "1",
+          "actorId": "42123a83-e5f1-4781-89e2-abc4c0b8cacc",
+          "from": "submitted",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:15.675415Z"
+        },
+        {
+          "auditSeq": "7",
+          "submissionRevision": "1",
+          "actorId": "42123a83-e5f1-4781-89e2-abc4c0b8cacc",
+          "from": "in_review",
+          "to": "rejected",
+          "reason": "Synthetic reason",
+          "createdAt": "2026-10-23T20:56:15.715000Z"
+        }
+      ],
+      "nextCursor": null
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "91779178-5982-4c70-bc39-40f43c56887a",
+    "submissionId": "f267eda4-afdf-4c37-8029-514ae15f221c",
+    "authorId": "55b94cae-4be5-46f4-a96d-6c7edfb898fd",
+    "status": "changes_requested",
+    "kind": "work",
+    "targetEntityId": "cd1b7e7f-2930-4c3a-aa0d-792c41f487f1",
+    "targetState": "new",
+    "expectedEntityRevision": "0",
+    "submissionRevision": "1",
+    "createdAt": "2026-10-23T20:56:16.056974Z",
+    "updatedAt": "2026-10-23T20:56:16.130869Z",
+    "revisions": {
+      "items": [
+        {
+          "submissionRevision": "1",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "cd1b7e7f-2930-4c3a-aa0d-792c41f487f1"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:16.059703Z",
+          "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "hash": "28f49adeb86bdf8d0c198692b54bf9c5764c7c392d2471292a674d5982b32ece"
+        }
+      ],
+      "nextCursor": null
+    },
+    "reviews": {
+      "items": [
+        {
+          "auditSeq": "6",
+          "submissionRevision": "1",
+          "actorId": "1a70fb7d-a0ac-4bf6-81bc-8e6b9a663a93",
+          "from": "submitted",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:16.096990Z"
+        },
+        {
+          "auditSeq": "7",
+          "submissionRevision": "1",
+          "actorId": "1a70fb7d-a0ac-4bf6-81bc-8e6b9a663a93",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic reason",
+          "createdAt": "2026-10-23T20:56:16.129521Z"
+        }
+      ],
+      "nextCursor": null
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "227ad66f-05a7-4463-8abd-4243c49332a4",
+    "submissionId": "717716ba-7c4b-479c-b972-ac7f13c55a93",
+    "authorId": "b77a8fd0-436a-4d29-85be-948a0b9c1d9b",
+    "status": "submitted",
+    "kind": "work",
+    "targetEntityId": "bb33126e-2277-4db7-9dfb-c74234b7683c",
+    "targetState": "existing",
+    "expectedEntityRevision": "9223372036854775807",
+    "submissionRevision": "1",
+    "createdAt": "2030-01-01T12:00:00.123456Z",
+    "updatedAt": "2030-01-01T12:00:00.123457Z",
+    "revisions": {
+      "items": [
+        {
+          "submissionRevision": "1",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "bb33126e-2277-4db7-9dfb-c74234b7683c"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2030-01-01T12:00:00.999999Z",
+          "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "hash": "e3bf6b4781ed5be7e519e0ad861261ae9a46dc2ae8536f1e88c5f2b0dd4bc08f"
+        }
+      ],
+      "nextCursor": null
+    },
+    "reviews": {
+      "items": [],
+      "nextCursor": null
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "6d35dbe9-4568-44b1-90d0-fa6aa11ad300",
+    "submissionId": "7c6e286b-4458-422d-8729-1426a444aefd",
+    "authorId": "b1eef130-35fe-4ac2-a2b1-ebe2b914cd1e",
+    "status": "in_review",
+    "kind": "work",
+    "targetEntityId": "def999ed-9277-4ce8-b157-bd4017f1dd2e",
+    "targetState": "new",
+    "expectedEntityRevision": "0",
+    "submissionRevision": "1",
+    "createdAt": "2026-10-23T20:56:19.872699Z",
+    "updatedAt": "2026-10-23T20:56:19.916834Z",
+    "revisions": {
+      "items": [
+        {
+          "submissionRevision": "1",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "def999ed-9277-4ce8-b157-bd4017f1dd2e"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:19.875545Z",
+          "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "hash": "a76342ca465765f26597b998c95c1fd480d5573f5ede60acb0bf8463fbcdbb15"
+        }
+      ],
+      "nextCursor": null
+    },
+    "reviews": {
+      "items": [
+        {
+          "auditSeq": "6",
+          "submissionRevision": "1",
+          "actorId": "dbafffb3-13b7-46b3-aff5-cdb9fcc3ebbe",
+          "from": "submitted",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:19.914917Z"
+        }
+      ],
+      "nextCursor": null
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "1b008519-ada1-42ce-b21b-38d237cd43bc",
+    "submissionId": "7c6e286b-4458-422d-8729-1426a444aefd",
+    "authorId": "b1eef130-35fe-4ac2-a2b1-ebe2b914cd1e",
+    "status": "published",
+    "kind": "work",
+    "targetEntityId": "def999ed-9277-4ce8-b157-bd4017f1dd2e",
+    "targetState": "new",
+    "expectedEntityRevision": "0",
+    "submissionRevision": "1",
+    "createdAt": "2026-10-23T20:56:19.872699Z",
+    "updatedAt": "2026-10-23T20:56:19.974647Z",
+    "revisions": {
+      "items": [
+        {
+          "submissionRevision": "1",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "def999ed-9277-4ce8-b157-bd4017f1dd2e"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:19.875545Z",
+          "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "hash": "a76342ca465765f26597b998c95c1fd480d5573f5ede60acb0bf8463fbcdbb15"
+        }
+      ],
+      "nextCursor": null
+    },
+    "reviews": {
+      "items": [
+        {
+          "auditSeq": "6",
+          "submissionRevision": "1",
+          "actorId": "dbafffb3-13b7-46b3-aff5-cdb9fcc3ebbe",
+          "from": "submitted",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:19.914917Z"
+        },
+        {
+          "auditSeq": "7",
+          "submissionRevision": "1",
+          "actorId": "ccbff843-552f-458f-89d6-29a41917931e",
+          "from": "in_review",
+          "to": "approved",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:19.969547Z"
+        },
+        {
+          "auditSeq": "8",
+          "submissionRevision": "1",
+          "actorId": "ccbff843-552f-458f-89d6-29a41917931e",
+          "from": "approved",
+          "to": "published",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:19.973745Z"
+        }
+      ],
+      "nextCursor": null
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "cebbc492-ed4b-4662-8c52-ac38ea320e19",
+    "submissionId": "b48485e8-f3db-4bff-9893-3f71d551d997",
+    "authorId": "b71b2d0c-4625-4163-8d2d-68cac27b7dea",
+    "status": "in_review",
+    "kind": "work",
+    "targetEntityId": "f812452e-a80a-4eff-a2eb-d84950c6f8a8",
+    "targetState": "new",
+    "expectedEntityRevision": "0",
+    "submissionRevision": "10",
+    "createdAt": "2026-10-23T20:56:20.298533Z",
+    "updatedAt": "2026-10-23T20:56:20.967102Z",
+    "revisions": {
+      "items": [
+        {
+          "submissionRevision": "10",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "f812452e-a80a-4eff-a2eb-d84950c6f8a8"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:20.955840Z",
+          "previousHash": "818d7e77456ad62ebdd7a11318be220fb1fc424a686063efc01eac396af222ff",
+          "hash": "5f331c012ffc7bd2b07978a9b9c2fb5fd1a0e7a7c1bac0e1a73bfab0f278ba4a"
+        },
+        {
+          "submissionRevision": "9",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "f812452e-a80a-4eff-a2eb-d84950c6f8a8"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:20.887325Z",
+          "previousHash": "b390cc1a8932f5768230ca6c87c451746345063b6a8b565901ba3bfc989a0b65",
+          "hash": "818d7e77456ad62ebdd7a11318be220fb1fc424a686063efc01eac396af222ff"
+        },
+        {
+          "submissionRevision": "8",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "f812452e-a80a-4eff-a2eb-d84950c6f8a8"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:20.819218Z",
+          "previousHash": "4ae63998b40008e5bc2dca52c414bf805ec02d5f1d50bfa143da97a16b84b413",
+          "hash": "b390cc1a8932f5768230ca6c87c451746345063b6a8b565901ba3bfc989a0b65"
+        },
+        {
+          "submissionRevision": "7",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "f812452e-a80a-4eff-a2eb-d84950c6f8a8"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:20.748455Z",
+          "previousHash": "3325cf8c65cd9247e2df05f78f5554640f9e591a4364a931b6ea5259715f721f",
+          "hash": "4ae63998b40008e5bc2dca52c414bf805ec02d5f1d50bfa143da97a16b84b413"
+        },
+        {
+          "submissionRevision": "6",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "f812452e-a80a-4eff-a2eb-d84950c6f8a8"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:20.681688Z",
+          "previousHash": "74e2855493010fa8f9cfd94602c473d24517efea286909fb4a593e3a5dd2bd96",
+          "hash": "3325cf8c65cd9247e2df05f78f5554640f9e591a4364a931b6ea5259715f721f"
+        },
+        {
+          "submissionRevision": "5",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "f812452e-a80a-4eff-a2eb-d84950c6f8a8"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:20.612808Z",
+          "previousHash": "271cd09489471b3e3c538a0be53914cdae0723db9e213218d21f55b7362b995f",
+          "hash": "74e2855493010fa8f9cfd94602c473d24517efea286909fb4a593e3a5dd2bd96"
+        },
+        {
+          "submissionRevision": "4",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "f812452e-a80a-4eff-a2eb-d84950c6f8a8"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:20.539816Z",
+          "previousHash": "527c6d7e2922edea7ca54b52a6c9bade4e375f840f2f805a63f0c9bc2acc3551",
+          "hash": "271cd09489471b3e3c538a0be53914cdae0723db9e213218d21f55b7362b995f"
+        },
+        {
+          "submissionRevision": "3",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "f812452e-a80a-4eff-a2eb-d84950c6f8a8"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:20.466516Z",
+          "previousHash": "0493e02caef12944d8de69b996330d603b75b260bb5997ae583f00aab6199b5e",
+          "hash": "527c6d7e2922edea7ca54b52a6c9bade4e375f840f2f805a63f0c9bc2acc3551"
+        },
+        {
+          "submissionRevision": "2",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "f812452e-a80a-4eff-a2eb-d84950c6f8a8"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:20.399107Z",
+          "previousHash": "9329f706e096f4406d08cffff7e4926ae51071409fd32aac89c471f6fa0f6162",
+          "hash": "0493e02caef12944d8de69b996330d603b75b260bb5997ae583f00aab6199b5e"
+        },
+        {
+          "submissionRevision": "1",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "f812452e-a80a-4eff-a2eb-d84950c6f8a8"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:20.301497Z",
+          "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "hash": "9329f706e096f4406d08cffff7e4926ae51071409fd32aac89c471f6fa0f6162"
+        }
+      ],
+      "nextCursor": null
+    },
+    "reviews": {
+      "items": [
+        {
+          "auditSeq": "6",
+          "submissionRevision": "1",
+          "actorId": "e5e64420-a2a6-4ec9-a4d8-820a11f90afa",
+          "from": "submitted",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:20.338854Z"
+        },
+        {
+          "auditSeq": "7",
+          "submissionRevision": "1",
+          "actorId": "e5e64420-a2a6-4ec9-a4d8-820a11f90afa",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic revision",
+          "createdAt": "2026-10-23T20:56:20.372787Z"
+        },
+        {
+          "auditSeq": "8",
+          "submissionRevision": "2",
+          "actorId": "b71b2d0c-4625-4163-8d2d-68cac27b7dea",
+          "from": "changes_requested",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:20.408713Z"
+        },
+        {
+          "auditSeq": "9",
+          "submissionRevision": "2",
+          "actorId": "e5e64420-a2a6-4ec9-a4d8-820a11f90afa",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic revision",
+          "createdAt": "2026-10-23T20:56:20.440209Z"
+        },
+        {
+          "auditSeq": "10",
+          "submissionRevision": "3",
+          "actorId": "b71b2d0c-4625-4163-8d2d-68cac27b7dea",
+          "from": "changes_requested",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:20.476585Z"
+        },
+        {
+          "auditSeq": "11",
+          "submissionRevision": "3",
+          "actorId": "e5e64420-a2a6-4ec9-a4d8-820a11f90afa",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic revision",
+          "createdAt": "2026-10-23T20:56:20.512981Z"
+        },
+        {
+          "auditSeq": "12",
+          "submissionRevision": "4",
+          "actorId": "b71b2d0c-4625-4163-8d2d-68cac27b7dea",
+          "from": "changes_requested",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:20.549743Z"
+        },
+        {
+          "auditSeq": "13",
+          "submissionRevision": "4",
+          "actorId": "e5e64420-a2a6-4ec9-a4d8-820a11f90afa",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic revision",
+          "createdAt": "2026-10-23T20:56:20.584632Z"
+        },
+        {
+          "auditSeq": "14",
+          "submissionRevision": "5",
+          "actorId": "b71b2d0c-4625-4163-8d2d-68cac27b7dea",
+          "from": "changes_requested",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:20.622621Z"
+        },
+        {
+          "auditSeq": "15",
+          "submissionRevision": "5",
+          "actorId": "e5e64420-a2a6-4ec9-a4d8-820a11f90afa",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic revision",
+          "createdAt": "2026-10-23T20:56:20.655876Z"
+        },
+        {
+          "auditSeq": "16",
+          "submissionRevision": "6",
+          "actorId": "b71b2d0c-4625-4163-8d2d-68cac27b7dea",
+          "from": "changes_requested",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:20.691373Z"
+        },
+        {
+          "auditSeq": "17",
+          "submissionRevision": "6",
+          "actorId": "e5e64420-a2a6-4ec9-a4d8-820a11f90afa",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic revision",
+          "createdAt": "2026-10-23T20:56:20.722781Z"
+        },
+        {
+          "auditSeq": "18",
+          "submissionRevision": "7",
+          "actorId": "b71b2d0c-4625-4163-8d2d-68cac27b7dea",
+          "from": "changes_requested",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:20.758200Z"
+        },
+        {
+          "auditSeq": "19",
+          "submissionRevision": "7",
+          "actorId": "e5e64420-a2a6-4ec9-a4d8-820a11f90afa",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic revision",
+          "createdAt": "2026-10-23T20:56:20.791761Z"
+        },
+        {
+          "auditSeq": "20",
+          "submissionRevision": "8",
+          "actorId": "b71b2d0c-4625-4163-8d2d-68cac27b7dea",
+          "from": "changes_requested",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:20.829051Z"
+        },
+        {
+          "auditSeq": "21",
+          "submissionRevision": "8",
+          "actorId": "e5e64420-a2a6-4ec9-a4d8-820a11f90afa",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic revision",
+          "createdAt": "2026-10-23T20:56:20.860692Z"
+        },
+        {
+          "auditSeq": "22",
+          "submissionRevision": "9",
+          "actorId": "b71b2d0c-4625-4163-8d2d-68cac27b7dea",
+          "from": "changes_requested",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:20.897238Z"
+        },
+        {
+          "auditSeq": "23",
+          "submissionRevision": "9",
+          "actorId": "e5e64420-a2a6-4ec9-a4d8-820a11f90afa",
+          "from": "in_review",
+          "to": "changes_requested",
+          "reason": "Synthetic revision",
+          "createdAt": "2026-10-23T20:56:20.929111Z"
+        },
+        {
+          "auditSeq": "24",
+          "submissionRevision": "10",
+          "actorId": "b71b2d0c-4625-4163-8d2d-68cac27b7dea",
+          "from": "changes_requested",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:20.965665Z"
+        }
+      ],
+      "nextCursor": null
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "142c62e0-18ad-4d84-a23a-0529ab30219e",
+    "submissionId": "b1d1245e-cd0d-4890-9d4d-e1ce48eebdb9",
+    "authorId": "75325527-4c15-4610-bb9a-05e0a40909ad",
+    "status": "in_review",
+    "kind": "work",
+    "targetEntityId": "15fc512d-d1ae-4d36-9c88-3b38bbce2502",
+    "targetState": "existing",
+    "expectedEntityRevision": "7",
+    "submissionRevision": "1",
+    "createdAt": "2026-10-23T20:56:21.843571Z",
+    "updatedAt": "2026-10-23T20:56:21.890856Z",
+    "revisions": {
+      "items": [
+        {
+          "submissionRevision": "1",
+          "payload": {
+            "fields": [
+              {
+                "field": "syntheticTitle",
+                "evidence": [
+                  {
+                    "type": "reference",
+                    "value": "Synthetic reference only",
+                    "license": "SYNTHETIC-NOT-APPROVED"
+                  }
+                ],
+                "newValue": "Synthetic work"
+              }
+            ],
+            "target": {
+              "kind": "work",
+              "catalogueUuid": "15fc512d-d1ae-4d36-9c88-3b38bbce2502"
+            },
+            "changeKind": "new_metadata",
+            "schemaVersion": 1,
+            "intendedLicense": "SYNTHETIC-NOT-APPROVED"
+          },
+          "createdAt": "2026-10-23T20:56:21.846340Z",
+          "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "hash": "fd8ac5928f4c810ac1bf986b2a87dbef471fdf7d4f9b37f2306d083672aa28cd"
+        }
+      ],
+      "nextCursor": null
+    },
+    "reviews": {
+      "items": [
+        {
+          "auditSeq": "6",
+          "submissionRevision": "1",
+          "actorId": "dabbe64b-d0dd-4b99-8a0b-63e02d089f00",
+          "from": "submitted",
+          "to": "in_review",
+          "reason": null,
+          "createdAt": "2026-10-23T20:56:21.889101Z"
+        }
+      ],
+      "nextCursor": null
+    }
+  }
+]

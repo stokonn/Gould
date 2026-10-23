@@ -1,0 +1,1 @@
+PASS: 13 actual PostgreSQL-backed Detail responses match approved exact DTO schema; synthetic content only.
