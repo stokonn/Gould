@@ -896,3 +896,43 @@ zero failed/skipped/cancelled. Original failed-run/source evidence preserved.
 The reviewed narrow state patch is applied; no schema/data conversion. Formal
 6.4–6.6 remain unchecked; Q1/D5b, C4, C2 §12 and 6.0f unresolved. Cloud, Stage 5/7
 and Android unchanged. Next recommendation: separately authorized 6.7–6.9 only.
+
+## Local 6.7–6.9 candidate — PARTIAL, 2026-10-23
+
+Purpose/scope: public overlay/feed, remaining Admin operations and PostgreSQL abuse
+protection under spikes/stage6-public-admin-abuse; two narrow existing handler
+extensions and additive local migration 004. Branch
+implement/goldberg-0.11-stage-6-7-9-local; isolated worktree
+/tmp/goldberg-stage6-public-admin-abuse; live GitHub-verified base
+262847ebcdef18d186ded5b7af4825436a1dc4e3, direct child of c80c03e.
+Source checkpoint is its containing implementation commit; publication follows.
+
+- [x] Read canonical instructions, latest Issue #31 body/66 comments/checkpoint,
+  verify live remote ancestry and isolate work without changing earlier branches.
+- [x] Add candidate public, Admin and quota services; reuse existing core and
+  role/suspension functions; preserve original 171 test files and historical evidence.
+- [x] Execute 30 unit checks PASS, five repository checks PASS; single-user PG17.11
+  migration SQL and scoped history/feed/quota/rollback smoke assertions PASS.
+- [ ] Execute 33 new PostgreSQL integration tests and original 171 regressions.
+  Actual attempts: 33 + 87/50/34 hook failures, 0 bodies executed (connect EPERM).
+  Separate attempts on the unchanged original worktree fail identically.
+- [ ] Verify concurrency, Admin transaction boundaries, end-to-end authorization,
+  idempotency, quota windows and all integration assertions in a socket venue.
+- [ ] Finish independently scheduled coarse-IP expiry cleanup/retention acceptance.
+- [ ] Publish source branch and append a verified partial checkpoint to Issue #31.
+
+Podman fails on read-only /run/user/1000/libpod. A disposable PostgreSQL17.11 cluster
+initialized from cached local binaries; TCP startup is denied by the sandbox.
+Single-user SQL execution succeeds but cannot prove JavaScript service or concurrent
+behavior. Full source hashes, commands, failed attempts and exact threat limitations:
+spikes/stage6-public-admin-abuse/results/SUMMARY.md. Original 32-source manifest:
+30 unchanged; only adapter and publication revision allocation intentionally changed.
+No old hash/log overwritten. Local retention currently prunes only during fresh
+intake; real source/field/license policy stays unresolved/default-deny. No fetcher.
+T14/T16/T17/T18/T20/T22 subchecks only; no whole threat row acceptance.
+
+Formal 6.1–6.18/6.0f unchanged; Q1/D5b/C4/C2 §12 open. No hosted, real-user,
+Android/Stage7/Stage5, main merge/tag/APK/release action. Not ready for 6.10–6.11.
+Next: obtain an allowed local PostgreSQL17 socket/container venue, execute
+run-local.sh and fix/verify actual results, finish retention, then acceptance.
+No Issue dashboard diff proposed; description and prior comments remain untouched.

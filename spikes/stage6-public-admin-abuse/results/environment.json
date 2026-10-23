@@ -1,0 +1,12 @@
+{
+  "node": "v22.23.1",
+  "postgres": "17.11",
+  "postgresVenue": "disposable single-user backend only; no socket listener",
+  "postgresExecutableSha256": "b6ce755ba9744e67c4f949e2e14e6cc20e9c12d28b5ac2ab6fabd9deb4e57779",
+  "cachedImage": "docker.io/library/postgres@sha256:e4cb93687b062cd25a0e8f672d85a7708235009d70d31f8a7698d9370092a9c4",
+  "binaryAdaptation": "Local copies use /tmp musl interpreter path; cached source untouched; runtime libraries and ICU data from cached image layers",
+  "syntheticOnly": true,
+  "hostedOperations": false,
+  "tcpSocketCreation": "EPERM",
+  "podman": "blocked by read-only runtime path"
+}

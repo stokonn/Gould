@@ -1,0 +1,760 @@
+TAP version 13
+# Subtest: Auth extension upgrades seeded base sessions and repeats without altering original migration checksums
+not ok 1 - Auth extension upgrades seeded base sessions and repeats without altering original migration checksums
+  ---
+  duration_ms: 5.702477
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:38:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: incompatible cross-principal seeded family fails Auth migration atomically, preserving base data
+not ok 2 - incompatible cross-principal seeded family fails Auth migration atomically, preserving base data
+  ---
+  duration_ms: 0.108385
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:46:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: strict verified identity maps by issuer/subject; email/name/role claims grant no authority
+not ok 3 - strict verified identity maps by issuer/subject; email/name/role claims grant no authority
+  ---
+  duration_ms: 0.070073
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:51:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1/T4 strict claims reject wrong issuer with 401
+not ok 4 - T1/T4 strict claims reject wrong issuer with 401
+  ---
+  duration_ms: 0.06879
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:63:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1/T4 strict claims reject wrong audience with 401
+not ok 5 - T1/T4 strict claims reject wrong audience with 401
+  ---
+  duration_ms: 0.106081
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:63:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1/T4 strict claims reject expired with 401
+not ok 6 - T1/T4 strict claims reject expired with 401
+  ---
+  duration_ms: 0.079269
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:63:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1/T4 strict claims reject future iat with 401
+not ok 7 - T1/T4 strict claims reject future iat with 401
+  ---
+  duration_ms: 0.245495
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:63:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1/T4 strict claims reject missing expiry with 401
+not ok 8 - T1/T4 strict claims reject missing expiry with 401
+  ---
+  duration_ms: 0.083167
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:63:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1/T4 strict claims reject missing subject with 401
+not ok 9 - T1/T4 strict claims reject missing subject with 401
+  ---
+  duration_ms: 0.488413
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:63:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1/T4 strict claims reject empty subject with 401
+not ok 10 - T1/T4 strict claims reject empty subject with 401
+  ---
+  duration_ms: 0.33302
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:63:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1/T4 strict claims reject missing audience with 401
+not ok 11 - T1/T4 strict claims reject missing audience with 401
+  ---
+  duration_ms: 0.080783
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:63:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1/T4 strict claims reject missing nonce with 401
+not ok 12 - T1/T4 strict claims reject missing nonce with 401
+  ---
+  duration_ms: 0.061457
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:63:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1/T4 strict claims reject non-numeric expiry with 401
+not ok 13 - T1/T4 strict claims reject non-numeric expiry with 401
+  ---
+  duration_ms: 0.057659
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:63:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1/T4 strict claims reject expiry before issued with 401
+not ok 14 - T1/T4 strict claims reject expiry before issued with 401
+  ---
+  duration_ms: 0.056077
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:63:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1/T4 strict claims reject old credential with 401
+not ok 15 - T1/T4 strict claims reject old credential with 401
+  ---
+  duration_ms: 0.060014
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:63:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T2 invalid signature, malformed/no token, none and HMAC confusion fail closed
+not ok 16 - T2 invalid signature, malformed/no token, none and HMAC confusion fail closed
+  ---
+  duration_ms: 0.168539
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:67:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T2 unknown kid refreshes once; rotation succeeds; attacker URLs are never fetched
+not ok 17 - T2 unknown kid refreshes once; rotation succeeds; attacker URLs are never fetched
+  ---
+  duration_ms: 0.065644
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:74:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T2 bounded cache expiry and unavailable provider never fall back to stale keys
+not ok 18 - T2 bounded cache expiry and unavailable provider never fall back to stale keys
+  ---
+  duration_ms: 0.064111
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:80:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T2 cold unavailable/hanging provider, ambiguous/private keys and malformed JWKS deny
+not ok 19 - T2 cold unavailable/hanging provider, ambiguous/private keys and malformed JWKS deny
+  ---
+  duration_ms: 0.055174
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:85:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T2 concurrent cold verification coalesces one bounded JWKS request
+not ok 20 - T2 concurrent cold verification coalesces one bounded JWKS request
+  ---
+  duration_ms: 0.064842
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:90:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T3 nonce binding, expired challenge and credential replay cannot mint a second session
+not ok 21 - T3 nonce binding, expired challenge and credential replay cannot mint a second session
+  ---
+  duration_ms: 0.059773
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:93:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T3 concurrent identical credential exchange consumes challenge exactly once
+not ok 22 - T3 concurrent identical credential exchange consumes challenge exactly once
+  ---
+  duration_ms: 0.058461
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:101:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: tokens are CSPRNG opaque, distinct by purpose; only hashes persisted, no raw credentials/nonce
+not ok 23 - tokens are CSPRNG opaque, distinct by purpose; only hashes persisted, no raw credentials/nonce
+  ---
+  duration_ms: 0.053622
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:106:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1 exact access expiry rejects; refresh can rotate before absolute family expiry
+not ok 24 - T1 exact access expiry rejects; refresh can rotate before absolute family expiry
+  ---
+  duration_ms: 0.056667
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:113:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T3 refresh rotation revokes old access; replay commits family revocation and audit
+not ok 25 - T3 refresh rotation revokes old access; replay commits family revocation and audit
+  ---
+  duration_ms: 0.05301
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:117:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T3 concurrent refresh has one winner and replay revokes even its newly issued access
+not ok 26 - T3 concurrent refresh has one winner and replay revokes even its newly issued access
+  ---
+  duration_ms: 0.099478
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:122:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T1 logout is idempotent and family-scoped; other sign-in/account sessions remain isolated
+not ok 27 - T1 logout is idempotent and family-scoped; other sign-in/account sessions remain isolated
+  ---
+  duration_ms: 0.065875
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:127:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T5 valid token from suspended/deleted principal gets 403, expired/revoked token 401
+not ok 28 - T5 valid token from suspended/deleted principal gets 403, expired/revoked token 401
+  ---
+  duration_ms: 0.053762
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:132:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T5 role revocation takes effect on next request despite a still-live session
+not ok 29 - T5 role revocation takes effect on next request despite a still-live session
+  ---
+  duration_ms: 0.053721
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:137:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6 default deny, empty roles, unknown capability and JWT role injection
+not ok 30 - T6 default deny, empty roles, unknown capability and JWT role injection
+  ---
+  duration_ms: 0.064362
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:142:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6 strict allowlist rejects forged role/author/status in protected resource requests
+not ok 31 - T6 strict allowlist rejects forged role/author/status in protected resource requests
+  ---
+  duration_ms: 0.076976
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:147:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T7/T8 ownership in query hides other private submissions and denies cross-user writes
+not ok 32 - T7/T8 ownership in query hides other private submissions and denies cross-user writes
+  ---
+  duration_ms: 0.07942
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:154:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T8/T22 moderator/admin capabilities and actor != author enforced server-side
+not ok 33 - T8/T22 moderator/admin capabilities and actor != author enforced server-side
+  ---
+  duration_ms: 0.086954
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:160:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T22 admin cannot self-grant; operator capability/role stays outside application roles
+not ok 34 - T22 admin cannot self-grant; operator capability/role stays outside application roles
+  ---
+  duration_ms: 0.064723
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:165:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T5 administrator suspension is immediate, audited and cannot resurrect deleted principal
+not ok 35 - T5 administrator suspension is immediate, audited and cannot resurrect deleted principal
+  ---
+  duration_ms: 0.064472
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:172:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T9/T22 public database role has no private-table or privileged-function access
+not ok 36 - T9/T22 public database role has no private-table or privileged-function access
+  ---
+  duration_ms: 0.072397
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:178:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T9/T22 local transport exposes no audit mutation or arbitrary RPC, even to admin
+not ok 37 - T9/T22 local transport exposes no audit mutation or arbitrary RPC, even to admin
+  ---
+  duration_ms: 0.057979
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:186:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: login audit failure rolls back identity/challenge/family/session atomically, then same credential retries
+not ok 38 - login audit failure rolls back identity/challenge/family/session atomically, then same credential retries
+  ---
+  duration_ms: 0.053151
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:191:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: refresh audit failure rolls back consumption/revocation/new tokens and preserves old session
+not ok 39 - refresh audit failure rolls back consumption/revocation/new tokens and preserves old session
+  ---
+  duration_ms: 0.052569
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:197:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: logout and admin role changes roll back when mandatory audit append fails
+not ok 40 - logout and admin role changes roll back when mandatory audit append fails
+  ---
+  duration_ms: 0.053732
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:200:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: secret-safe error envelope/logs distinguish 401/403/400/503 without request/token/SQL leaks
+not ok 41 - secret-safe error envelope/logs distinguish 401/403/400/503 without request/token/SQL leaks
+  ---
+  duration_ms: 0.054783
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:204:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: self-grant and self-suspension cannot bypass guards using uppercase UUID spellings
+not ok 42 - self-grant and self-suspension cannot bypass guards using uppercase UUID spellings
+  ---
+  duration_ms: 0.061927
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:214:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: issuer/subject identity isolation includes identical subject under another configured issuer
+not ok 43 - issuer/subject identity isolation includes identical subject under another configured issuer
+  ---
+  duration_ms: 0.061957
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:219:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: strict audience is the exact configured value, not an unexpected multi-audience envelope
+not ok 44 - strict audience is the exact configured value, not an unexpected multi-audience envelope
+  ---
+  duration_ms: 0.061927
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:227:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: clock rollback cannot activate sessions or refresh records before issuance
+not ok 45 - clock rollback cannot activate sessions or refresh records before issuance
+  ---
+  duration_ms: 0.056226
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:230:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: configured ES256 verification uses public EC keys and still rejects RSA/HS algorithm substitutions
+not ok 46 - configured ES256 verification uses public EC keys and still rejects RSA/HS algorithm substitutions
+  ---
+  duration_ms: 0.053572
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:233:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: concurrent identity creation from separate challenges converges to one principal and two isolated families
+not ok 47 - concurrent identity creation from separate challenges converges to one principal and two isolated families
+  ---
+  duration_ms: 0.06828
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:239:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: malformed credential and provider outage create no identity/session or consumed challenge
+not ok 48 - malformed credential and provider outage create no identity/session or consumed challenge
+  ---
+  duration_ms: 0.05794
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:244:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: unavailable/malformed clock is a 503 denial, never a bypass of expiry or JWT dates
+not ok 49 - unavailable/malformed clock is a 503 denial, never a bypass of expiry or JWT dates
+  ---
+  duration_ms: 0.052149
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:251:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: future-dated role grants are not effective before their server timestamp
+not ok 50 - future-dated role grants are not effective before their server timestamp
+  ---
+  duration_ms: 0.060053
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-auth-local/tests/auth.test.mjs:256:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+1..50
+# tests 50
+# suites 0
+# pass 0
+# fail 50
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 63.744862

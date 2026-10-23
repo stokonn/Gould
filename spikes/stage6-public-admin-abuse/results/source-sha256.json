@@ -1,0 +1,16 @@
+{
+  "spikes/stage6-handlers-local/src/local-api.mjs": "c797e3a8421ee73c8c56b554eb2a09226cbff0a0695e5ecf01ee3825903299e1",
+  "spikes/stage6-handlers-local/src/moderation.mjs": "087a81c6cfef4b49483866421758418011399fcba58f4f85603345052922c797",
+  "spikes/stage6-public-admin-abuse/migrations/004_operations.sql": "d4aef06f7ba1f50e3b0bb822df744b340a12a3a12ef1f4f0673f13c5fd87b6dd",
+  "spikes/stage6-public-admin-abuse/package.json": "9483c5dcffde5cc00672ba0f331eef9507eb35fb30c28ed9d1598c4a514ecd35",
+  "spikes/stage6-public-admin-abuse/run-local.sh": "b902b8b37337eced61828b0048c4f264ce19e0e46514f0e46f932d491cb3ee89",
+  "spikes/stage6-public-admin-abuse/src/abuse.mjs": "99ab465958c43e68760db44ead361a9f11a66efb68529d9f07d89d6b5e574365",
+  "spikes/stage6-public-admin-abuse/src/admin.mjs": "e325605ec2645f38a7319f35762c022b9c5bd7ac021ca5bcdbe26f3af9eb2b1d",
+  "spikes/stage6-public-admin-abuse/src/catalogue.mjs": "0d5fd6320de8cd1bec61257cf1f84890bc713621c212798e4d8b059b7398eee0",
+  "spikes/stage6-public-admin-abuse/src/compose.mjs": "c0d6de53c8aeeb6d4d8abb39d50bda40bcbda5f5a07d4ef72bacc9010f8e0309",
+  "spikes/stage6-public-admin-abuse/src/cursor.mjs": "ba4d864e758c275c2252c9167157cf48ecf895b8444602f3bc1c87fd7f40f3ad",
+  "spikes/stage6-public-admin-abuse/src/storage.mjs": "bc8d742e64ac25886c34a00cf5eb3333e8b5129f0cbf3cbdc2bcd18aab3cef94",
+  "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs": "d332adb625f98bd5ad375e65e6732e4322e0a81f0a3d13a6c571bc467941a44a",
+  "spikes/stage6-public-admin-abuse/tests/single-user.sql": "fb2b815b5cf1b650ac880260e591105b89c2da4b932d95d1fec2eb5ccb91b58a",
+  "spikes/stage6-public-admin-abuse/tests/unit.test.mjs": "b71bbb546dde8724c104caac2810954f93a95ebeb8951ceae665c32d56e527cf"
+}

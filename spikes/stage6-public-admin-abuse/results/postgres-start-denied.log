@@ -1,0 +1,5 @@
+2026-10-23 07:06:32.997 CEST [5] LOG:  starting PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+2026-10-23 07:06:32.997 CEST [5] LOG:  could not create IPv4 socket for address "127.0.0.1": Operation not permitted
+2026-10-23 07:06:32.997 CEST [5] WARNING:  could not create listen socket for "127.0.0.1"
+2026-10-23 07:06:32.997 CEST [5] FATAL:  could not create any TCP/IP sockets
+2026-10-23 07:06:33.000 CEST [5] LOG:  database system is shut down

@@ -1,0 +1,505 @@
+TAP version 13
+# Subtest: 004 migration repeat application is checksum verified and defaults intake off
+not ok 1 - 004 migration repeat application is checksum verified and defaults intake off
+  ---
+  duration_ms: 5.402509
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:40:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: public only approved current metadata, no private note, identity, audit or pending record
+not ok 2 - public only approved current metadata, no private note, identity, audit or pending record
+  ---
+  duration_ms: 0.114036
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:41:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: quarantine immediate exclusion even with older page cursor; immutable disclosure-safe tombstone
+not ok 3 - quarantine immediate exclusion even with older page cursor; immutable disclosure-safe tombstone
+  ---
+  duration_ms: 0.07961
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:44:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: supersession, rollback, later publication use immutable monotonic revision allocation
+not ok 4 - supersession, rollback, later publication use immutable monotonic revision allocation
+  ---
+  duration_ms: 0.074641
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:50:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: numeric feed order beyond nine events, equal timestamps, multipage highwater and concurrent writes
+not ok 5 - numeric feed order beyond nine events, equal timestamps, multipage highwater and concurrent writes
+  ---
+  duration_ms: 0.109888
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:56:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: cursor tampering, cross kind, invalid kind, page size and privilege fields fail 400
+not ok 6 - cursor tampering, cross kind, invalid kind, page size and privilege fields fail 400
+  ---
+  duration_ms: 0.077546
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:62:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.quarantine live default-deny, reason and exact expected state
+not ok 7 - admin.quarantine live default-deny, reason and exact expected state
+  ---
+  duration_ms: 0.218273
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:65:55'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.rollback live default-deny, reason and exact expected state
+not ok 8 - admin.rollback live default-deny, reason and exact expected state
+  ---
+  duration_ms: 0.081755
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:65:55'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.quarantine replay, mismatch and concurrent distinct-key decisions
+not ok 9 - admin.quarantine replay, mismatch and concurrent distinct-key decisions
+  ---
+  duration_ms: 0.404345
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:71:55'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.rollback replay, mismatch and concurrent distinct-key decisions
+not ok 10 - admin.rollback replay, mismatch and concurrent distinct-key decisions
+  ---
+  duration_ms: 0.285039
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:71:55'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at locked
+not ok 11 - admin.quarantine T17 atomic rollback at locked
+  ---
+  duration_ms: 0.074831
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:78:127'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at projection
+not ok 12 - admin.quarantine T17 atomic rollback at projection
+  ---
+  duration_ms: 0.062609
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:78:127'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at audit
+not ok 13 - admin.quarantine T17 atomic rollback at audit
+  ---
+  duration_ms: 0.059032
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:78:127'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at feed
+not ok 14 - admin.quarantine T17 atomic rollback at feed
+  ---
+  duration_ms: 0.065784
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:78:127'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at deferred
+not ok 15 - admin.quarantine T17 atomic rollback at deferred
+  ---
+  duration_ms: 0.055966
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:78:127'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.rollback T17 atomic rollback at locked
+not ok 16 - admin.rollback T17 atomic rollback at locked
+  ---
+  duration_ms: 0.127762
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:78:127'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.rollback T17 atomic rollback at projection
+not ok 17 - admin.rollback T17 atomic rollback at projection
+  ---
+  duration_ms: 0.061566
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:78:127'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.rollback T17 atomic rollback at audit
+not ok 18 - admin.rollback T17 atomic rollback at audit
+  ---
+  duration_ms: 0.053782
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:78:127'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.rollback T17 atomic rollback at feed
+not ok 19 - admin.rollback T17 atomic rollback at feed
+  ---
+  duration_ms: 0.055365
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:78:127'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin.rollback T17 atomic rollback at deferred
+not ok 20 - admin.rollback T17 atomic rollback at deferred
+  ---
+  duration_ms: 0.05289
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:78:127'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: role/suspension integration reuses live Auth, denies escalation, self grant and revoked replay
+not ok 21 - role/suspension integration reuses live Auth, denies escalation, self grant and revoked replay
+  ---
+  duration_ms: 0.06351
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:82:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: principal operation fault rolls role and audit/idempotency back together
+not ok 22 - principal operation fault rolls role and audit/idempotency back together
+  ---
+  duration_ms: 0.06864
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:90:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: admin audit paginates numerically with hash head and has no mutation endpoint
+not ok 23 - admin audit paginates numerically with hash head and has no mutation endpoint
+  ---
+  duration_ms: 0.055294
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:91:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: daily limit atomic last slot, duplicate replay, mismatch and pending quota
+not ok 24 - daily limit atomic last slot, duplicate replay, mismatch and pending quota
+  ---
+  duration_ms: 0.05264
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:97:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: coarse IP last slot across different accounts, hashed storage and no raw diagnostics
+not ok 25 - coarse IP last slot across different accounts, hashed storage and no raw diagnostics
+  ---
+  duration_ms: 0.053181
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:105:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: quota rollback on principal counter fault
+not ok 26 - quota rollback on principal counter fault
+  ---
+  duration_ms: 0.053341
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:109:49'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: quota rollback on coarse_ip counter fault
+not ok 27 - quota rollback on coarse_ip counter fault
+  ---
+  duration_ms: 0.052789
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:109:49'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: kill switch truthful 503, committed replay and public/private reads stay available
+not ok 28 - kill switch truthful 503, committed replay and public/private reads stay available
+  ---
+  duration_ms: 0.052509
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:110:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: quota table unavailable is 503 without work loss; recovery permits same key
+not ok 29 - quota table unavailable is 503 without work loss; recovery permits same key
+  ---
+  duration_ms: 0.05277
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:113:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: BIGINT feed sequence boundaries remain lossless and numerically ordered
+not ok 30 - BIGINT feed sequence boundaries remain lossless and numerically ordered
+  ---
+  duration_ms: 0.060385
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:117:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: synthetic daily reset and coarse retention do not erase pending/audit history
+not ok 31 - synthetic daily reset and coarse retention do not erase pending/audit history
+  ---
+  duration_ms: 0.053391
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:121:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: quota boundary exactly resets the IP window without recounting prior idempotency replay
+not ok 32 - quota boundary exactly resets the IP window without recounting prior idempotency replay
+  ---
+  duration_ms: 0.052238
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:127:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: idempotency insert failure rolls quota, submission and audit back together
+not ok 33 - idempotency insert failure rolls quota, submission and audit back together
+  ---
+  duration_ms: 0.058771
+  type: 'test'
+  location: '/tmp/goldberg-stage6-public-admin-abuse/spikes/stage6-public-admin-abuse/tests/postgres.test.mjs:132:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+1..33
+# tests 33
+# suites 0
+# pass 0
+# fail 33
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 45.084692

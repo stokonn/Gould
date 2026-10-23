@@ -1,0 +1,8 @@
+
+PostgreSQL stand-alone backend 17.11
+backend> 	 1: result	(typeid = 25, len = -1, typmod = -1, byval = f)
+	----
+	 1: result = "PASS: migration SQL, default-off kill switch, immutable history, supersession/rollback/quarantine events, quota boundary and counter rollback; no concurrency claim"	(typeid = 25, len = -1, typmod = -1, byval = f)
+	----
+backend> backend> 2026-10-23 07:09:15.063 CEST [24] LOG:  checkpoint starting: shutdown immediate
+2026-10-23 07:09:15.064 CEST [24] LOG:  checkpoint complete: wrote 110 buffers (0.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.001 s; sync files=49, longest=0.001 s, average=0.000 s; distance=168 kB, estimate=168 kB; lsn=0/1688E88, redo lsn=0/1688E88

@@ -1,0 +1,520 @@
+TAP version 13
+# Subtest: empty PostgreSQL 17 migrations create all entities and a pre-existing genesis head
+not ok 1 - empty PostgreSQL 17 migrations create all entities and a pre-existing genesis head
+  ---
+  duration_ms: 5.611515
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:33:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: seeded v1 to v2 migration preserves principals, roles and quota accounting
+not ok 2 - seeded v1 to v2 migration preserves principals, roles and quota accounting
+  ---
+  duration_ms: 0.166936
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:38:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: repeat and concurrent migrations are idempotent and checksum drift fails closed
+not ok 3 - repeat and concurrent migrations are idempotent and checksum drift fails closed
+  ---
+  duration_ms: 0.076144
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:46:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: failed migration rolls back DDL and its ledger entry, preserving seeded v1
+not ok 4 - failed migration rolls back DDL and its ledger entry, preserving seeded v1
+  ---
+  duration_ms: 0.076485
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:52:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: principal, external identity and active-role uniqueness; explicit soft revocation history
+not ok 5 - principal, external identity and active-role uniqueness; explicit soft revocation history
+  ---
+  duration_ms: 0.215728
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:59:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: orphan FKs for identity, actor, mapping, session, revision, review, audit and publication reject
+not ok 6 - orphan FKs for identity, actor, mapping, session, revision, review, audit and publication reject
+  ---
+  duration_ms: 0.092375
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:68:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: deferred current-revision FK permits atomic creation but rejects dangling pointers at COMMIT
+not ok 7 - deferred current-revision FK permits atomic creation but rejects dangling pointers at COMMIT
+  ---
+  duration_ms: 0.081554
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:79:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: session rotation family/ownership, expiry and quota checks are physical constraints
+not ok 8 - session rotation family/ownership, expiry and quota checks are physical constraints
+  ---
+  duration_ms: 0.096472
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:85:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: revision chain requires contiguous versions and matching previous/content hashes
+not ok 9 - revision chain requires contiguous versions and matching previous/content hashes
+  ---
+  duration_ms: 0.460581
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:92:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: only documented server transitions; changes_requested creates a new immutable revision
+not ok 10 - only documented server transitions; changes_requested creates a new immutable revision
+  ---
+  duration_ms: 0.349
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:100:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: state transition without matching audit/review cannot commit
+not ok 11 - state transition without matching audit/review cannot commit
+  ---
+  duration_ms: 0.075092
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:109:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: immutable revision, published revision, review, audit and feed reject UPDATE/DELETE/TRUNCATE
+not ok 12 - immutable revision, published revision, review, audit and feed reject UPDATE/DELETE/TRUNCATE
+  ---
+  duration_ms: 0.063319
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:114:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: publication snapshot, target kind and actor-author checks reject invalid publication
+not ok 13 - publication snapshot, target kind and actor-author checks reject invalid publication
+  ---
+  duration_ms: 0.05829
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:126:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: atomic publication rollback after locked leaves all tables/head/key unchanged
+not ok 14 - atomic publication rollback after locked leaves all tables/head/key unchanged
+  ---
+  duration_ms: 0.055485
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:133:88'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: atomic publication rollback after publication leaves all tables/head/key unchanged
+not ok 15 - atomic publication rollback after publication leaves all tables/head/key unchanged
+  ---
+  duration_ms: 0.066686
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:133:88'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: atomic publication rollback after approved leaves all tables/head/key unchanged
+not ok 16 - atomic publication rollback after approved leaves all tables/head/key unchanged
+  ---
+  duration_ms: 0.146157
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:133:88'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: atomic publication rollback after audit leaves all tables/head/key unchanged
+not ok 17 - atomic publication rollback after audit leaves all tables/head/key unchanged
+  ---
+  duration_ms: 0.085722
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:133:88'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: atomic publication rollback after feed leaves all tables/head/key unchanged
+not ok 18 - atomic publication rollback after feed leaves all tables/head/key unchanged
+  ---
+  duration_ms: 0.056386
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:133:88'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: atomic publication rollback after idempotency leaves all tables/head/key unchanged
+not ok 19 - atomic publication rollback after idempotency leaves all tables/head/key unchanged
+  ---
+  duration_ms: 0.054473
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:133:88'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: stored response replay, mismatch 422, principal isolation and >=24-hour expiry/reuse
+not ok 20 - stored response replay, mismatch 422, principal isolation and >=24-hour expiry/reuse
+  ---
+  duration_ms: 0.053702
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:138:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: F3 new-schema unique collision recovers transaction using exact constraint/savepoint
+not ok 21 - F3 new-schema unique collision recovers transaction using exact constraint/savepoint
+  ---
+  duration_ms: 0.058981
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:147:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: F1 physical-schema same-submission contention is serialized; loser is ordinary conflict
+not ok 22 - F1 physical-schema same-submission contention is serialized; loser is ordinary conflict
+  ---
+  duration_ms: 0.058541
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:155:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: F1 new regression: different submissions for same absent entity compare target revision atomically
+not ok 23 - F1 new regression: different submissions for same absent entity compare target revision atomically
+  ---
+  duration_ms: 0.05811
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:161:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: F4 physical audit triggers serialize independent appenders, rollback head, export and detect tampering
+not ok 24 - F4 physical audit triggers serialize independent appenders, rollback head, export and detect tampering
+  ---
+  duration_ms: 0.054343
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:168:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: F5 driver-default int8, prepared statements and safe JSON boundaries are lossless or rejected
+not ok 25 - F5 driver-default int8, prepared statements and safe JSON boundaries are lossless or rejected
+  ---
+  duration_ms: 0.053482
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:175:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: F5 unsafe next entity revision fails before write and leaves transaction consistent
+not ok 26 - F5 unsafe next entity revision fails before write and leaves transaction consistent
+  ---
+  duration_ms: 0.054122
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:183:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: restricted local role cannot mutate history/head or invoke ungranted definer functions
+not ok 27 - restricted local role cannot mutate history/head or invoke ungranted definer functions
+  ---
+  duration_ms: 0.055846
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:190:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: different submissions for an existing entity serialize target revision comparison
+not ok 28 - different submissions for an existing entity serialize target revision comparison
+  ---
+  duration_ms: 0.053461
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:204:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: concurrent identical-key local publication returns one stored effect and replay
+not ok 29 - concurrent identical-key local publication returns one stored effect and replay
+  ---
+  duration_ms: 0.081835
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:211:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: non-idempotency uniqueness failure is not converted to replay; savepoint keeps transaction usable
+not ok 30 - non-idempotency uniqueness failure is not converted to replay; savepoint keeps transaction usable
+  ---
+  duration_ms: 0.067638
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:217:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: role and session identifiers/history cannot be rewritten; active revocation remains possible
+not ok 31 - role and session identifiers/history cannot be rewritten; active revocation remains possible
+  ---
+  duration_ms: 0.053832
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:224:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: new immutable revision without atomic header advancement cannot commit
+not ok 32 - new immutable revision without atomic header advancement cannot commit
+  ---
+  duration_ms: 0.053301
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:235:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: typed existing target FK and publication kind/evidence cannot disagree
+not ok 33 - typed existing target FK and publication kind/evidence cannot disagree
+  ---
+  duration_ms: 0.053832
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:243:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: bounded lock wait preserves native SQLSTATE and rolls back rather than hiding it as conflict
+not ok 34 - bounded lock wait preserves native SQLSTATE and rolls back rather than hiding it as conflict
+  ---
+  duration_ms: 0.055735
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-schema-pg/tests/schema.test.mjs:251:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 0
+# fail 34
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 52.80107

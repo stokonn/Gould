@@ -1,0 +1,1 @@
+{"name":"goldberg-stage6-public-admin-abuse","private":true,"type":"module","scripts":{"test":"node tests/unit.test.mjs && node tests/postgres.test.mjs","test:unit":"node tests/unit.test.mjs","test:pg":"node tests/postgres.test.mjs"}}

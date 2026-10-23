@@ -36,7 +36,8 @@ export class ModerationService {
    await c.query('SELECT pg_advisory_xact_lock(hashtextextended($1,0))',[`entity:${this.idempotency.schema}:${entity}`]);
    const {rows:[current]}=await c.query(`SELECT * FROM ${this.q}.published_entities WHERE id=$1 FOR UPDATE`,[entity]);
    if((current?.revision??'0')!==String(body.expectedRevision)||(current&&(current.kind!==s.target_kind||current.status!=='published')))throw conflict();
-   const next=Number(BigInt(current?.revision??'0')+1n);if(!Number.isSafeInteger(next))throw conflict();
+   const maximum=(await c.query(`SELECT coalesce(max(revision),0)::text AS n FROM ${this.q}.published_revisions WHERE entity_id=$1`,[entity])).rows[0].n;
+   const next=Number(BigInt(maximum)+1n);if(!Number.isSafeInteger(next))throw conflict();
    await this.onBoundary('locked',c);
    if(!current)await c.query(`INSERT INTO ${this.q}.published_entities(id,kind,revision,status) VALUES($1,$2,$3,'published')`,[entity,s.target_kind,next]);
    await this.onBoundary('entity',c);

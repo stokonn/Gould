@@ -1,0 +1,1315 @@
+TAP version 13
+# Subtest: authenticated initial submission has server owner, immutable revision, hash and request-bound audit
+not ok 1 - authenticated initial submission has server owner, immutable revision, hash and request-bound audit
+  ---
+  duration_ms: 6.118735
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:46:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects unknown top field without effects
+not ok 2 - T6/T13 validation rejects unknown top field without effects
+  ---
+  duration_ms: 0.101172
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects nested role without effects
+not ok 3 - T6/T13 validation rejects nested role without effects
+  ---
+  duration_ms: 0.075262
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects field author without effects
+not ok 4 - T6/T13 validation rejects field author without effects
+  ---
+  duration_ms: 0.074922
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects evidence approval without effects
+not ok 5 - T6/T13 validation rejects evidence approval without effects
+  ---
+  duration_ms: 0.107514
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects external elevated without effects
+not ok 6 - T6/T13 validation rejects external elevated without effects
+  ---
+  duration_ms: 0.077576
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects missing schema version without effects
+not ok 7 - T6/T13 validation rejects missing schema version without effects
+  ---
+  duration_ms: 0.265111
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects wrong schema version without effects
+not ok 8 - T6/T13 validation rejects wrong schema version without effects
+  ---
+  duration_ms: 0.091904
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects HTML without effects
+not ok 9 - T6/T13 validation rejects HTML without effects
+  ---
+  duration_ms: 0.412711
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects encoded HTML without effects
+not ok 10 - T6/T13 validation rejects encoded HTML without effects
+  ---
+  duration_ms: 0.302011
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects object value without effects
+not ok 11 - T6/T13 validation rejects object value without effects
+  ---
+  duration_ms: 0.074571
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects oversize string without effects
+not ok 12 - T6/T13 validation rejects oversize string without effects
+  ---
+  duration_ms: 0.060625
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects bad UUID without effects
+not ok 13 - T6/T13 validation rejects bad UUID without effects
+  ---
+  duration_ms: 0.057489
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects wrong kind without effects
+not ok 14 - T6/T13 validation rejects wrong kind without effects
+  ---
+  duration_ms: 0.060875
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects unknown change without effects
+not ok 15 - T6/T13 validation rejects unknown change without effects
+  ---
+  duration_ms: 0.056036
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects no identity without effects
+not ok 16 - T6/T13 validation rejects no identity without effects
+  ---
+  duration_ms: 0.133793
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects unknown field name without effects
+not ok 17 - T6/T13 validation rejects unknown field name without effects
+  ---
+  duration_ms: 0.06314
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects missing license without effects
+not ok 18 - T6/T13 validation rejects missing license without effects
+  ---
+  duration_ms: 0.053361
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects unknown license without effects
+not ok 19 - T6/T13 validation rejects unknown license without effects
+  ---
+  duration_ms: 0.055465
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects rejected license without effects
+not ok 20 - T6/T13 validation rejects rejected license without effects
+  ---
+  duration_ms: 0.051989
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects missing evidence without effects
+not ok 21 - T6/T13 validation rejects missing evidence without effects
+  ---
+  duration_ms: 0.060905
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects missing intended license without effects
+not ok 22 - T6/T13 validation rejects missing intended license without effects
+  ---
+  duration_ms: 0.082316
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects unreviewed source without effects
+not ok 23 - T6/T13 validation rejects unreviewed source without effects
+  ---
+  duration_ms: 0.080562
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6/T13 validation rejects external kind mismatch without effects
+not ok 24 - T6/T13 validation rejects external kind mismatch without effects
+  ---
+  duration_ms: 0.065895
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:54:3'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T21 rejects personal journal at every object level
+not ok 25 - T21 rejects personal journal at every object level
+  ---
+  duration_ms: 0.070924
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:55:95'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T21 rejects personal notes at every object level
+not ok 26 - T21 rejects personal notes at every object level
+  ---
+  duration_ms: 0.077807
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:55:95'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T21 rejects personal microphone at every object level
+not ok 27 - T21 rejects personal microphone at every object level
+  ---
+  duration_ms: 0.09001
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:55:95'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T21 rejects personal backup at every object level
+not ok 28 - T21 rejects personal backup at every object level
+  ---
+  duration_ms: 0.095871
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:55:95'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T21 rejects personal sessions at every object level
+not ok 29 - T21 rejects personal sessions at every object level
+  ---
+  duration_ms: 0.086534
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:55:95'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T21 rejects personal repertoire at every object level
+not ok 30 - T21 rejects personal repertoire at every object level
+  ---
+  duration_ms: 0.09002
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:55:95'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T21 rejects personal profile at every object level
+not ok 31 - T21 rejects personal profile at every object level
+  ---
+  duration_ms: 0.07921
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:55:95'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL javascript:alert(1)
+not ok 32 - T14 refuses unsafe/unreviewed URL javascript:alert(1)
+  ---
+  duration_ms: 0.075543
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL data:text/plain,x
+not ok 33 - T14 refuses unsafe/unreviewed URL data:text/plain,x
+  ---
+  duration_ms: 0.053441
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL http://evidence.synthetic.invalid/source
+not ok 34 - T14 refuses unsafe/unreviewed URL http://evidence.synthetic.invalid/source
+  ---
+  duration_ms: 0.05306
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://localhost/source
+not ok 35 - T14 refuses unsafe/unreviewed URL https://localhost/source
+  ---
+  duration_ms: 0.062469
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://127.0.0.1/source
+not ok 36 - T14 refuses unsafe/unreviewed URL https://127.0.0.1/source
+  ---
+  duration_ms: 0.066667
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://127.1/source
+not ok 37 - T14 refuses unsafe/unreviewed URL https://127.1/source
+  ---
+  duration_ms: 0.054022
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://0x7f000001/source
+not ok 38 - T14 refuses unsafe/unreviewed URL https://0x7f000001/source
+  ---
+  duration_ms: 0.089259
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://10.0.0.1/source
+not ok 39 - T14 refuses unsafe/unreviewed URL https://10.0.0.1/source
+  ---
+  duration_ms: 0.054754
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://172.16.0.1/source
+not ok 40 - T14 refuses unsafe/unreviewed URL https://172.16.0.1/source
+  ---
+  duration_ms: 0.052209
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://192.168.1.1/source
+not ok 41 - T14 refuses unsafe/unreviewed URL https://192.168.1.1/source
+  ---
+  duration_ms: 0.05248
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://169.254.169.254/source
+not ok 42 - T14 refuses unsafe/unreviewed URL https://169.254.169.254/source
+  ---
+  duration_ms: 0.051838
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://[::1]/source
+not ok 43 - T14 refuses unsafe/unreviewed URL https://[::1]/source
+  ---
+  duration_ms: 0.057358
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://[::ffff:7f00:1]/source
+not ok 44 - T14 refuses unsafe/unreviewed URL https://[::ffff:7f00:1]/source
+  ---
+  duration_ms: 0.060745
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://user:pass@evidence.synthetic.invalid/source
+not ok 45 - T14 refuses unsafe/unreviewed URL https://user:pass@evidence.synthetic.invalid/source
+  ---
+  duration_ms: 0.066706
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid:444/source
+not ok 46 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid:444/source
+  ---
+  duration_ms: 0.075022
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid./source
+not ok 47 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid./source
+  ---
+  duration_ms: 0.054764
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/source\#private
+not ok 48 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/source\#private
+  ---
+  duration_ms: 0.0531
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid\\@localhost/source
+not ok 49 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid\\@localhost/source
+  ---
+  duration_ms: 0.06871
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evil.invalid/source
+not ok 50 - T14 refuses unsafe/unreviewed URL https://evil.invalid/source
+  ---
+  duration_ms: 0.054794
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+not ok 51 - T14 refuses unsafe/unreviewed URL https://evidence.synthetic.invalid/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  ---
+  duration_ms: 0.06343
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:58:723'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: boundary checks: 20 fields, 10 URLs, 2 KiB strings, 16 KiB exact request, nesting/cycle/getters
+not ok 52 - boundary checks: 20 fields, 10 URLs, 2 KiB strings, 16 KiB exact request, nesting/cycle/getters
+  ---
+  duration_ms: 0.062829
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:60:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T7/T8 owner-only private reads/revisions/withdrawals hide another contributor and absent IDs equally
+not ok 53 - T7/T8 owner-only private reads/revisions/withdrawals hide another contributor and absent IDs equally
+  ---
+  duration_ms: 0.058381
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:69:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: canonical lifecycle request_changes → author revision keeps original immutable snapshot and audit
+not ok 54 - canonical lifecycle request_changes → author revision keeps original immutable snapshot and audit
+  ---
+  duration_ms: 0.067969
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:76:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: atomic approve transition and review/audit coherence
+not ok 55 - atomic approve transition and review/audit coherence
+  ---
+  duration_ms: 0.192744
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:82:62'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: atomic reject transition and review/audit coherence
+not ok 56 - atomic reject transition and review/audit coherence
+  ---
+  duration_ms: 0.061135
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:82:62'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: atomic request_changes transition and review/audit coherence
+not ok 57 - atomic request_changes transition and review/audit coherence
+  ---
+  duration_ms: 0.056537
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:82:62'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: withdraw author submitted/in_review only; terminal and changes_requested deny without silent deletion
+not ok 58 - withdraw author submitted/in_review only; terminal and changes_requested deny without silent deletion
+  ---
+  duration_ms: 0.075242
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:88:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T6 self-approval, forged role/author/status, revoked moderator and suspended identity deny
+not ok 59 - T6 self-approval, forged role/author/status, revoked moderator and suspended identity deny
+  ---
+  duration_ms: 0.063761
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:93:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: unresolved external identity uniqueness persists needs_review, including paired catalogue UUID; no auto-merge/publication
+not ok 60 - unresolved external identity uniqueness persists needs_review, including paired catalogue UUID; no auto-merge/publication
+  ---
+  duration_ms: 0.060695
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:99:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T10 two moderators race on one submission: exactly [201,409] and coherent publication/feed
+not ok 61 - T10 two moderators race on one submission: exactly [201,409] and coherent publication/feed
+  ---
+  duration_ms: 0.083919
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:104:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T10 distinct submissions same absent entity: one winner, stale loser 409
+not ok 62 - T10 distinct submissions same absent entity: one winner, stale loser 409
+  ---
+  duration_ms: 0.088929
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:107:36'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T10 distinct submissions same existing entity: one winner, stale loser 409
+not ok 63 - T10 distinct submissions same existing entity: one winner, stale loser 409
+  ---
+  duration_ms: 0.152138
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:107:36'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T11 same-key concurrent create and moderation replay exact stored response; different-key loser conflicts
+not ok 64 - T11 same-key concurrent create and moderation replay exact stored response; different-key loser conflicts
+  ---
+  duration_ms: 0.082526
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:113:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T12 same key different payload/operation gives 422; principals cannot see/reuse stored results
+not ok 65 - T12 same key different payload/operation gives 422; principals cannot see/reuse stored results
+  ---
+  duration_ms: 0.073138
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:119:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: expiry minimum 24h: replay just before, reuse exactly at expiry; original records retained
+not ok 66 - expiry minimum 24h: replay just before, reuse exactly at expiry; original records retained
+  ---
+  duration_ms: 0.098156
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:125:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T17 full rollback and same-key retry after locked fault
+not ok 67 - T17 full rollback and same-key retry after locked fault
+  ---
+  duration_ms: 0.07936
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:130:99'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T17 full rollback and same-key retry after entity fault
+not ok 68 - T17 full rollback and same-key retry after entity fault
+  ---
+  duration_ms: 0.075532
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:130:99'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T17 full rollback and same-key retry after snapshot fault
+not ok 69 - T17 full rollback and same-key retry after snapshot fault
+  ---
+  duration_ms: 0.082416
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:130:99'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T17 full rollback and same-key retry after projection fault
+not ok 70 - T17 full rollback and same-key retry after projection fault
+  ---
+  duration_ms: 0.073729
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:130:99'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T17 full rollback and same-key retry after approved fault
+not ok 71 - T17 full rollback and same-key retry after approved fault
+  ---
+  duration_ms: 0.077937
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:130:99'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T17 full rollback and same-key retry after audit fault
+not ok 72 - T17 full rollback and same-key retry after audit fault
+  ---
+  duration_ms: 0.078678
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:130:99'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T17 full rollback and same-key retry after feed fault
+not ok 73 - T17 full rollback and same-key retry after feed fault
+  ---
+  duration_ms: 0.07401
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:130:99'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T17 full rollback and same-key retry after sql fault
+not ok 74 - T17 full rollback and same-key retry after sql fault
+  ---
+  duration_ms: 0.074661
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:130:99'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T17 idempotency insert and deferred commit failures rollback all effects and allow same-key retry
+not ok 75 - T17 idempotency insert and deferred commit failures rollback all effects and allow same-key retry
+  ---
+  duration_ms: 0.082937
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:133:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: database lock timeout returns safe 503; rollback releases locks and permits retry
+not ok 76 - database lock timeout returns safe 503; rollback releases locks and permits retry
+  ---
+  duration_ms: 0.078499
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:141:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: T18 immutable publication/audit/review/feed; exported chain tamper detected; no audit mutation adapter
+not ok 77 - T18 immutable publication/audit/review/feed; exported chain tamper detected; no audit mutation adapter
+  ---
+  duration_ms: 0.074301
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:146:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: malformed, expired and revoked sessions safely reject actual handlers with 401 and sanitized logs
+not ok 78 - malformed, expired and revoked sessions safely reject actual handlers with 401 and sanitized logs
+  ---
+  duration_ms: 0.080392
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:151:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: validation rejects unknown envelope/schema/request fields; safe 400/401/403/404/409/422/503 taxonomy covered
+not ok 79 - validation rejects unknown envelope/schema/request fields; safe 400/401/403/404/409/422/503 taxonomy covered
+  ---
+  duration_ms: 0.075072
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:157:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: bounded queue/mine pagination returns 20 then remainder with microsecond stable cursor, no private payload leakage
+not ok 80 - bounded queue/mine pagination returns 20 then remainder with microsecond stable cursor, no private payload leakage
+  ---
+  duration_ms: 0.072217
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:162:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: constraint-specific PostgreSQL recovery does not translate unrelated unique/SQL errors to conflict
+not ok 81 - constraint-specific PostgreSQL recovery does not translate unrelated unique/SQL errors to conflict
+  ---
+  duration_ms: 0.078278
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:168:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: reusable service snapshots caller data before awaiting authorization; actor remains session-derived
+not ok 82 - reusable service snapshots caller data before awaiting authorization; actor remains session-derived
+  ---
+  duration_ms: 0.070193
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:174:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: read role revocation is immediate; owner retains data but cannot bypass current capabilities
+not ok 83 - read role revocation is immediate; owner retains data but cannot bypass current capabilities
+  ---
+  duration_ms: 0.071265
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:179:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: exact idempotency collision recovery: unrelated unique violation remains SQL error
+not ok 84 - exact idempotency collision recovery: unrelated unique violation remains SQL error
+  ---
+  duration_ms: 0.083458
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:182:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: schemaVersion/unknown object/string/array value and sparse evidence boundaries fail closed
+not ok 85 - schemaVersion/unknown object/string/array value and sparse evidence boundaries fail closed
+  ---
+  duration_ms: 0.067578
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:187:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: stale expected entity/submission revisions, malformed reasons and retargeting have safe errors
+not ok 86 - stale expected entity/submission revisions, malformed reasons and retargeting have safe errors
+  ---
+  duration_ms: 0.071615
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:190:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+# Subtest: audit export sorts int8 numerically beyond nine and detects an omitted row/head tamper
+not ok 87 - audit export sorts int8 numerically beyond nine and detects an omitted row/head tamper
+  ---
+  duration_ms: 0.053963
+  type: 'test'
+  location: '/tmp/goldberg-stage6-handlers/spikes/stage6-handlers-local/tests/handlers.test.mjs:195:1'
+  failureType: 'hookFailed'
+  error: 'connect EPERM 127.0.0.1:54339 - Local (undefined:undefined)'
+  code: 'EPERM'
+  stack: |-
+    internalConnect (node:net:1111:16)
+    defaultTriggerAsyncIdScope (node:internal/async_hooks:472:18)
+    node:net:1357:9
+    process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+  ...
+1..87
+# tests 87
+# suites 0
+# pass 0
+# fail 87
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 82.133507
