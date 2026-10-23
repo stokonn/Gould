@@ -1,3 +1,26 @@
+## Stage 6 safe continuation checkpoint — 2026-10-24
+
+Recovery audit completed on branch `feature/goldberg-0.11-stage-6-api-v1-local`
+at clean, remote-matched HEAD `401b46bde2aaa99d32db84c4014ab980a123b04c`.
+M1, M2 and M3 local API implementation/evidence remain published and must not be
+reimplemented. `python3 spikes/stage6-api-v1-local/verify-m3.py
+spikes/stage6-api-v1-local/results/m3/pg-ygh16ba3` passed: 22 captured
+PostgreSQL-backed Comparison DTOs, 16 M3 + 19 M2 PostgreSQL tests, 106 adapter/
+wire, 38 T22 and 18 planning checks; zero failures/skips, with HTTP, Android,
+full-int8 writes and production compatibility still unverified.
+
+No new implementation milestone is authorized by the recovered records. Client
+Detail/Comparison refetch and explicit reconfirmation remain separately gated;
+the immediate approved Stage 6 follow-up is read-only billing/payment/add-on/
+charge verification for both providers, which is unavailable in this session.
+C4 remains 8 PASS / 19 PARTIAL / 6 OPEN, 6.0f remains unchecked, and no cloud,
+OAuth, production networking, real-user data, device, merge, tag or release work
+was performed. Next executor: obtain the required owner-authorized provider
+read-only evidence or a new explicit local implementation authorization, then
+update Issue #31 and this handoff without changing Stage 7B.
+
+created by stokonn with love <3
+
 ## C4 read-only verification and Q1-D owner decision — current2026-10-23
 
 Purpose: reconcile current official cloud documentation,inspect only existing

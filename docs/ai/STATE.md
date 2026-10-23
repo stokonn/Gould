@@ -1,3 +1,23 @@
+## Safe continuation recovery — 2026-10-24
+
+- Branch: `feature/goldberg-0.11-stage-6-api-v1-local`
+- HEAD and origin: `401b46bde2aaa99d32db84c4014ab980a123b04c`
+- Worktree: clean; Stage 7B worktree/processes untouched.
+- Verification: `python3 spikes/stage6-api-v1-local/verify-m3.py spikes/stage6-api-v1-local/results/m3/pg-ygh16ba3`
+  PASS. This is source-bound evidence verification, not a rerun of the 16 M3,
+  19 M2 PostgreSQL bodies or the regression suites.
+- Status: M1/M2/M3 verified and published; no API implementation remains
+  authorized by the recovered checkpoint. Client refetch/reconfirmation is gated.
+- Blockers: C4 is 8 PASS / 19 PARTIAL / 6 OPEN; 6.0f is unchecked; hosted
+  billing/payment evidence and production compatibility remain unavailable or
+  unverified. No cloud, OAuth, HTTP listener, Android networking, device,
+  full-int8-write, merge, tag or release action occurred.
+- Next step: obtain the separately approved read-only provider billing/payment/
+  add-on/charge evidence, or wait for explicit authorization for a new isolated
+  local milestone. Do not alter Stage 7B.
+
+created by stokonn with love <3
+
 ## C4 read-only verification and Q1-D owner decision — current2026-10-23
 
 Purpose: reconcile current official cloud documentation,inspect only existing

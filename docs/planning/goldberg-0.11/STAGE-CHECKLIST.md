@@ -48,6 +48,29 @@ superseded only for this explicitly reported scope; M3 backend status is unchang
 
 ---
 
+## Stage 6 continuation recovery — 2026-10-24
+
+- [x] Recover the canonical policy, maintenance ledger, Stage 6 planning,
+  `docs/ai/*`, M1/M2/M3 ledgers, Issue #31, branch/worktrees and publication state.
+- [x] Confirm M1, M2 and M3 are already implemented, PostgreSQL-verified and
+  ordinarily pushed; no duplicate implementation or publication performed.
+- [x] Run the source-bound M3 verifier:
+  `python3 spikes/stage6-api-v1-local/verify-m3.py
+  spikes/stage6-api-v1-local/results/m3/pg-ygh16ba3` — PASS; recorded evidence
+  includes 22 Comparison DTOs, 16 M3 + 19 M2 PostgreSQL tests, 106 adapter/wire,
+  38 T22 and 18 planning checks, with zero failures/skips.
+- [ ] Obtain the separately approved read-only provider billing/payment/add-on/
+  charge evidence; unavailable in this session.
+- [ ] Obtain separate authorization before client refetch/reconfirmation,
+  HTTP/Android integration, full-int8 writes, public compatibility or any
+  production/cloud action.
+
+Status: Stage 6 local API M1–M3 remain verified but integration is not accepted.
+C4 remains 8 PASS / 19 PARTIAL / 6 OPEN; 6.0f remains unchecked. This recovery
+performed no cloud, OAuth, device, Stage 7B, merge, tag or release action.
+
+created by stokonn with love <3
+
 ## Local API M3 — VERIFIED / SOURCE PUBLISHED (2026-10-23)
 
 Purpose: expose approved authorized live Comparison for moderation conflict recovery.

@@ -1,3 +1,24 @@
+## Safe continuation verification — 2026-10-24
+
+The recovered API worktree is clean and remote-matched:
+`feature/goldberg-0.11-stage-6-api-v1-local` at
+`401b46bde2aaa99d32db84c4014ab980a123b04c`. The existing source-bound command
+`python3 spikes/stage6-api-v1-local/verify-m3.py
+spikes/stage6-api-v1-local/results/m3/pg-ygh16ba3` passed. It verified the
+published M3 source/raw hashes, protected baseline and cleanup receipts, 22
+captured PostgreSQL Comparison DTOs, and the recorded counts (16 M3, 19 M2,
+106 adapter/wire, 38 T22, 18 planning; zero failures/skips). It did not rerun
+database bodies and provides no HTTP, Android, device, full-int8-write, hosted
+or public-compatibility acceptance.
+
+No source implementation was changed. M1–M3 remain complete local milestones.
+The separately gated client refetch/reconfirmation integration is not started.
+The immediate approved follow-up is provider billing/payment/add-on/charge
+verification, but no callable provider billing tool is available in this
+session. C4 remains 8 PASS / 19 PARTIAL / 6 OPEN and 6.0f remains unchecked.
+
+created by stokonn with love <3
+
 ## C4 read-only verification and Q1-D owner decision — current2026-10-23
 
 Purpose: reconcile current official cloud documentation,inspect only existing
