@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-23",
+  "recordId": "admin-v1-decision-1-owner-approval-2026-10-23",
+  "designCommit": "36519e7808887423a9cc8ed663ae33995aaf5698",
+  "proposalBaseline": "fefa6e83c2a7b9c4c12660ff1542ab086356de88",
+  "push": {
+    "exitCode": 128,
+    "error": "Could not resolve host: github.com"
+  },
+  "remoteSha": "fefa6e83c2a7b9c4c12660ff1542ab086356de88",
+  "issueUpdate": {
+    "status": 403,
+    "error": "Resource not accessible by integration"
+  },
+  "checkpointAppend": {
+    "status": 403,
+    "error": "Resource not accessible by integration"
+  },
+  "readback": {
+    "issueDescriptionUnchanged": true,
+    "priorCommentsPreserved": true,
+    "commentCount": 79,
+    "newMarkerCount": 0
+  },
+  "newCheckpointUrl": null,
+  "status": "VERIFIED_LOCALLY; SOURCE AND APPROVAL CHECKPOINT PUBLICATION BLOCKED",
+  "draft": "## API v1 — owner design approval O1–O8 recorded (implementation BLOCKED)\n\nBranch `verify/goldberg-0.11-stage-6-12-local`, exact planning commit `36519e7808887423a9cc8ed663ae33995aaf5698`; published proposal `fefa6e83c2a7b9c4c12660ff1542ab086356de88`\nand checkpoint6371392069 preserved. [Dated decision record](https://github.com/stokonn/Goldberg/blob/36519e7808887423a9cc8ed663ae33995aaf5698/docs/planning/goldberg-0.11/stage-6/API-V1-OWNER-DECISIONS-2026-10-23.md).\n\n- [x] O1 explicit session/version mapper,204 logout and no persisted secret-bearing\n  offline queue; no unconfirmed revocation claim. O2 access15m/family7d/challenge5m/\n  skew≤60s, atomic/single-flight refresh and replay-family revocation approved by design.\n- [x] O3 explicit open/independent revisions,200/201 typed results,409 refetch/reconfirm,\n  live authorization and24h exact receipts approved. O4 decimal-string int8, UTC precision,\n  DTO projections, scoped signed cursors15m and public404/405 approved AS DESIGN.\n- [x] O5 Europe/Prague server civil-day statistics, UTC transport, DST/coherent snapshot,\n  approval counted once, incomplete totals unavailable. O6 NFC, case-insensitive,\n  diacritic-sensitive literal bounded search approved AS DESIGN.\n- [x] O7 safety structure/1000 UTF-8-byte reason/current projection/strict allowlisting\n  PARTIALLY APPROVED BY DESIGN. O8 documentation/fixture verification sequence approved.\n- [x] Offline verification:61 original DTO scenes (37 positive/24 negative),8 authored\n  protocol scenes,4 Prague civil/DST windows,10 CZ/EN/literal search cases;18 verifier\n  regressions PASS. Original41 primary/29 comparison fixtures and provenance PASS;\n  agent policy and whitespace PASS. These are planning checks, not server/runtime proof.\n- [ ] `/v1` requires confirming no previously approved/deployed incompatible consumer;\n  otherwise prepare `/v2` for separate owner approval. Query budgets await local measurement.\n- [ ] Concrete real-world source/field/license/attribution/evidence policy remains empty/\n  default-deny, unapproved. Synthetic policies grant no permission; no legal clearance.\n- [ ] G1–G9/G11 integration BLOCKED; G10 CLOSED;6.12 PARTIAL/T22 LOCAL PASS;\n  prior345 executions/313 tests/205 PG-backed bodies preserved, not rerun;6.17 NOT FROZEN.\n\nNo backend/Android implementation, HTTP/auth/network/action activation, formal6.13–6.18,\nStage7B tree edits, devices, cloud/OAuth production, merge, deployment or release.\nNext: separate policy/version/budget decisions and explicit implementation authorization;\nall remaining security/hosted/runtime/zero-cost/legal gates unchanged. Stage7B acceptance\nBLOCKED, X10 OPEN, Stage8 pending. Prior proposal/checkpoints preserved as history.\n\ncreated by stokonn with love <3\n\nPublication status: source commit above is LOCAL/UNPUBLISHED. Normal push failed DNS (Could not resolve host: github.com); connected branch readback remains fefa6e83c2a7b9c4c12660ff1542ab086356de88. No remote publication or implementation acceptance claimed.\n\n<!-- stage6-api-v1-design-approval:36519e7808887423a9cc8ed663ae33995aaf5698 -->\n"
+}

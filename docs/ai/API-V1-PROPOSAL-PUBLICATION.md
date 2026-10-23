@@ -26,6 +26,13 @@ exact remote SHA verification, concurrent-edit check, append-only dashboard sect
 one marked checkpoint and historical comment preservation/readback. No PostgreSQL,
 backend/Android implementation, live activation, devices, cloud/OAuth, merge or release.
 
+Actual new approval publication attempt: local design commit36519e7808887423a9cc8ed663ae33995aaf5698
+passed guarded verification; normal push exit128 DNS failure. Connected branch SHA
+readback remains fefa6e83c2a7b9c4c12660ff1542ab086356de88. Issue description append
+and checkpoint comment both denied403 `Resource not accessible by integration`.
+Readback: description unchanged,79 prior comments preserved,zero new marker; no URL.
+Use final receipt tip's exact SHA in the guarded command above. No permission/DNS bypass.
+
 ---
 
 # Proposed API v1 package — publication handoff

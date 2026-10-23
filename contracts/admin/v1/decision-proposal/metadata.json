@@ -47,7 +47,8 @@
     "contracts/admin/v1/decision-proposal/design-approval-2026-10-23/approval.json": "511fd483c51c03fdc358debef4623315bd3c2966dbb1b4f76b24771b245f51d7",
     "docs/planning/goldberg-0.11/stage-6/API-V1-OWNER-DECISIONS-2026-10-23.md": "698f090507acc92c05c9b117072c04c9f7b35ce03523ca2977f61f815814958b",
     "docs/planning/goldberg-0.11/stage-6/STAGE7B-APPROVED-DESIGN-READINESS.md": "93d2110fad30c5eef87345d6444722be6f5897df16bfd5fa900deb7a3cf7f5f5",
-    "contracts/admin/v1/decision-proposal/design-approval-2026-10-23/verification.json": "c49b19d680539e116cb7e93f0d5b278f7467507eef89cd6c727fadf1bba2a82b"
+    "contracts/admin/v1/decision-proposal/design-approval-2026-10-23/verification.json": "c49b19d680539e116cb7e93f0d5b278f7467507eef89cd6c727fadf1bba2a82b",
+    "contracts/admin/v1/decision-proposal/design-approval-2026-10-23/publication-attempt.json": "26ea9483923083a71ff08d0b5bae6542ea500a2391a7a656f55f5ea490997629"
   },
   "baselineFiles": {
     "contracts/admin/v1/README.md": "3d820dc4120a1d5e1d931e61b7eaa94b38be5b830be457747e3a453bc4e1b923",

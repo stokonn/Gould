@@ -42,6 +42,9 @@ and policy authorization gates are the stopping point; no repeated O1–O8 appro
 Verification: docs/ai/VERIFICATION.md and the separate dated approval verification log.
 Publication: docs/ai/API-V1-PROPOSAL-PUBLICATION.md; guarded publisher now emits the
 approval checkpoint, never republishes the superseded pending-design summary.
+Publication attempt blocked: normal push DNS failure; connected branch remains fefa6e8.
+Both Issue31 writes denied403; description and79 prior comments unchanged, no new URL.
+Guarded Fedora publisher with final exact clean SHA remains the next publication step.
 
 
 Canonical policy: [AGENTS.md](../../../AGENTS.md) (§ "Stage checklist documentation").

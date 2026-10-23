@@ -1,3 +1,20 @@
+## Owner design approval publication — BLOCKED (2026-10-23)
+
+Qualified O1–O8 design approval is verified and committed locally at
+`36519e7808887423a9cc8ed663ae33995aaf5698`. Normal push failed DNS (exit128,
+`Could not resolve host: github.com`). Connected branch SHA readback remains
+published proposal `fefa6e83c2a7b9c4c12660ff1542ab086356de88`.
+Both Issue31 description append and checkpoint comment returned HTTP403
+`Resource not accessible by integration`. Fresh readback: description unchanged,
+all79 prior comments preserved,zero new approval marker; no new checkpoint URL.
+
+Owner design approval remains valid locally; only publication is pending. Full
+attempt/draft: `contracts/admin/v1/decision-proposal/design-approval-2026-10-23/`
+`publication-attempt.json`. This receipt changes tracking/metadata only; no source,
+policy or approval scope change. Use the guarded publisher with the final exact
+clean SHA on a permitted Fedora host; instructions in API-V1-PROPOSAL-PUBLICATION.md.
+G10 CLOSED; G1–G9/G11 integration BLOCKED;6.12 PARTIAL/T22 LOCAL PASS;6.17 NOT FROZEN.
+
 ## Current — API v1 owner design approval recorded (2026-10-23)
 
 **O1–O8 APPROVED AS QUALIFIED DESIGN; O7 PARTIAL; UNIMPLEMENTED / INACTIVE / NOT FROZEN.**
