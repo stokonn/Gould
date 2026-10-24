@@ -83,8 +83,13 @@ class Stage7bAcceptanceTest {
     private fun click(label: String) {
         var action: AccessibilityNodeInfo? = null
         waitUntil {
-            action = tree().firstOrNull { it.text?.toString() == label || it.contentDescription?.toString() == label || it.contentDescription?.toString()?.startsWith("$label:") == true }
-            while (action != null && !action!!.isClickable) action = action!!.parent
+            action = tree().asSequence().filter {
+                it.text?.toString() == label || it.contentDescription?.toString() == label || it.contentDescription?.toString()?.startsWith("$label:") == true
+            }.mapNotNull {
+                var target: AccessibilityNodeInfo? = it
+                while (target != null && !target.isClickable) target = target.parent
+                target?.takeIf { node -> node.isEnabled }
+            }.firstOrNull()
             action != null && action!!.isEnabled
         }
         assertTrue("Action failed: $label", action!!.performAction(AccessibilityNodeInfo.ACTION_CLICK))
@@ -152,9 +157,9 @@ class Stage7bAcceptanceTest {
                     assertFalse(control(label)!!.isChecked)
                     assertTrue(control(label)!!.isClickable)
                     assertTrue(control(label)!!.isEnabled)
-                    assertTrue(control(label)!!.performAction(AccessibilityNodeInfo.ACTION_CLICK))
+                    click(label)
                     waitUntil { control(label)?.isChecked == true }
-                    assertTrue(control(label)!!.performAction(AccessibilityNodeInfo.ACTION_CLICK))
+                    click(label)
                     waitUntil { control(label)?.isChecked == false }
                 }
                 val disabled = control(disabledLabel)!!
