@@ -137,7 +137,6 @@ private fun DashboardHeader(roleLabel: String) {
         Text(
             L.s(R.string.stage7b_administration),
             style = MaterialTheme.typography.headlineMedium,
-            maxLines = 2,
             modifier = Modifier.weight(1f).semantics { heading() },
         )
         Row(
@@ -211,7 +210,6 @@ private fun StatTile(tile: AdminTile, value: AdminTileValue?, modifier: Modifier
                     label,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 2,
                     modifier = Modifier.weight(1f),
                 )
                 Icon(
@@ -264,7 +262,7 @@ private fun DestinationRow(
         ) {
             Icon(icon, null, Modifier.size(20.dp), tint = MaterialTheme.colorScheme.primary)
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                Text(title, style = MaterialTheme.typography.titleMedium, maxLines = 2)
+                Text(title, style = MaterialTheme.typography.titleMedium)
                 if (secondLine != null) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(

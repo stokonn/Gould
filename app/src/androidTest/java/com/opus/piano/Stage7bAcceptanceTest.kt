@@ -157,6 +157,9 @@ class Stage7bAcceptanceTest {
                     assertFalse(control(label)!!.isChecked)
                     assertTrue(control(label)!!.isClickable)
                     assertTrue(control(label)!!.isEnabled)
+                    assertTrue("Input focus semantics missing: $label", control(label)!!.isFocusable)
+                    assertTrue(control(label)!!.performAction(AccessibilityNodeInfo.ACTION_FOCUS))
+                    waitUntil { control(label)?.isFocused == true }
                     click(label)
                     waitUntil { control(label)?.isChecked == true }
                     click(label)
@@ -164,6 +167,7 @@ class Stage7bAcceptanceTest {
                 }
                 val disabled = control(disabledLabel)!!
                 assertFalse(disabled.isEnabled)
+                assertFalse(disabled.isFocusable)
                 disabled.performAction(AccessibilityNodeInfo.ACTION_CLICK)
                 inst.waitForIdleSync()
                 assertFalse("Disabled revision acknowledgement changed", control(disabledLabel)!!.isChecked)

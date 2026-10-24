@@ -1,3 +1,27 @@
+# Stage 7B owner review packet — recovery, October 24, 2026
+
+**Status: IN PROGRESS; final owner acceptance is not yet ready.** This section is current; all earlier sections below are historical checkpoints.
+
+Purpose/scope: resolve named checkable owners and dashboard refresh reachability, verify the approved synthetic Admin UI and preserve personal data. Current published/test-dispatch commit `d0cc455e2d71fd0c718cd5a3582d3895b3e34ff1`, branch `feature/goldberg-0.11-stage-7b`. [Acceptance run40079488627](https://github.com/stokonn/Goldberg/actions/runs/40079488627) is PENDING. [Living implementation/verification checklist](RECOVERY-2026-10-24.md).
+
+- [x] Exact AndroidX source/root-cause audit and preserved prior actual CI hierarchies.
+- [x] Complete named-owner semantics for chips/switches/checkboxes; retain localized names, selected/toggled states, disabled guard and click callbacks. EN/CZ native regression compiled; final runtime proof pending.
+- [x] Dashboard accessibility scroll synchronization with full48dp action checks at every font scale; preserve no-scroll≤1.3. Historical447738d run proves32dashboard reachability, not final follow-up visual acceptance.
+- [x] Visually inspect32historical dashboards and11references; fix demonstrated small1.3 statistic ellipses with wrapping/compact padding. New wrapping render proof pending.
+- [x] Clean host gate3m41s:275 JVM/0 failures/errors/skips; lint0 errors/119 warnings/1 hint; seven scripts PASS. Test-only helper follow-up host gate1m01s; production-source hashes unchanged. [Host evidence](results/recovery-followup-2026-10-24/).
+- [ ] Final exact-source full instrumentation, all32rendered configurations, every exported checkable hierarchy and seeded-upgrade inspection.
+- [ ] Explicit owner acceptance after reviewing evidence and limitations.
+
+**Evidence limits that remain independent of automated green CI:**
+
+- Native screen renders use production composables in a synthetic five-tab test scaffold. They do not establish the full production OpusApp navigation, TalkBack announcement/focus/touch exploration or every keyboard/reduced-motion interaction.
+- Notification runtime test verifies platform permission denial then grant, generic private changed-scan delivery, role revocation, cancellation, scope changes and offline/recovery. It does not revoke Android POST_NOTIFICATIONS between separate live processes; do not conflate role revocation with platform permission revocation. WorkManager tests cover unique3h scheduling/constraints/cancel, not a real3h/reboot delivery.
+- Seeded upgrade uses immutable v0.10.1 rebuilt with the candidate's temporary CI signer; independently checking the trusted release digest/certificate does not turn this into a released-APK installation test. Baseline has no Admin data; Admin store-recreation tests provide separate limited persistence evidence.
+- Existing app-wide tab-label truncation and dark-parent status-bar contrast were visible in historical scaffold captures and remain disclosed; no navigation redesign was performed here.
+- G1–G9/G11 approved live API/session/current-value integration remains blocked. Production networking and decisions remain disabled. No Stage6/7A worktree, physical device, merge or release was used.
+
+---
+
 # Stage 7B consolidated acceptance preparation
 
 Status: IN PROGRESS. Implementation, executed verification and owner acceptance are separate. This packet supersedes older current-status summaries; historical records remain intact.
