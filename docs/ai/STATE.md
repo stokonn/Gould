@@ -1,3 +1,25 @@
+## Stage 6 ACL candidate review — 2026-10-24
+
+- [x] Read all five supplied ACL/backup review files from the localized
+  Downloads directory `/home/stokonn/Stažené/stage6-review/stage6_acl_review`.
+- [x] Review the candidate as narrowly scoped: function-specific `EXECUTE`
+  revocation with pre/post checks for the existing `SECURITY DEFINER`
+  `ensure_rls` binding; no unrelated authorization change identified.
+- [x] Execute the supplied runner unchanged from its package directory.
+- [ ] PostgreSQL 17 acceptance — **BLOCKED**: Podman exists, but the required
+  cached `docker.io/library/postgres:17` image is absent; runner exit code 2,
+  no pull/container/SQL.
+- [ ] Confirm trigger behavior and no unintended privilege escalation in a
+  disposable PostgreSQL 17 runtime.
+- [ ] Backup destination, encryption/decryption, schedule, export and isolated
+  restore drill remain unverified; design-only requirements are preserved.
+
+No hosted Supabase permission change, production migration, real-data export,
+cloud provisioning, OAuth, Android/device work or Stage 7B change occurred.
+C4 remains 8 PASS / 19 PARTIAL / 6 OPEN and 6.0f remains unchecked.
+
+created by stokonn with love <3
+
 ## Safe continuation recovery — 2026-10-24
 
 - Branch: `feature/goldberg-0.11-stage-6-api-v1-local`

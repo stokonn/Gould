@@ -1,3 +1,75 @@
+# 2026-10-24 — supplied ACL candidate review and isolated PG17 verification
+
+**Status: REVIEWED / POSTGRESQL VERIFICATION BLOCKED / NOT APPROVED FOR HOSTED DEPLOYMENT.**
+
+The extracted review package was inspected at
+`$XDG_DOWNLOAD_DIR/stage6-review/stage6_acl_review` with
+`$XDG_DOWNLOAD_DIR=/home/stokonn/Stažené`. `README.md`, `BACKUP-REVIEW.md`,
+`run_disposable_pg17.sh`, `01_bootstrap_disposable.sql`,
+`02_candidate_privilege_hardening.sql` and `03_verify_disposable.sql` were
+read. The package is explicitly candidate-only and contains no authorization to
+change the hosted Supabase project.
+
+## Candidate review
+
+`02_candidate_privilege_hardening.sql` is narrowly scoped: it aborts unless
+`public.rls_auto_enable()` is a `SECURITY DEFINER` event-trigger function and
+the enabled `ensure_rls` trigger is still bound to that exact function OID. It
+then revokes function-specific `EXECUTE` from `PUBLIC`, `anon` and
+`authenticated`, and verifies effective execution denial for both API roles.
+It does not drop, replace or disable the event trigger, change ownership,
+`SECURITY DEFINER`, `search_path`, schema defaults or unrelated privileges.
+The explicit `anon`/`authenticated` revokes are harmlessly redundant when the
+access is inherited only from `PUBLIC`; the effective-privilege assertions are
+the material checks.
+
+The candidate therefore addresses the observed excessive effective
+`EXECUTE` privilege without an apparent unrelated authorization change.
+However, the supplied scripts do not independently exercise every indirect DDL
+or delegated authorization path, and no hosted compatibility evidence exists.
+The candidate remains **CONDITIONALLY ACCEPTABLE FOR DISPOSABLE TESTING ONLY**;
+no live migration or production approval is implied.
+
+## Actual isolated verification attempt
+
+The exact supplied command was run from the extracted package:
+
+```text
+(cd /home/stokonn/Stažené/stage6-review/stage6_acl_review && ./run_disposable_pg17.sh)
+```
+
+Podman was available, but `docker.io/library/postgres:17` was not already
+cached. The runner correctly refused an automatic pull and exited **2**:
+
+```text
+BLOCKED: Image docker.io/library/postgres:17 is not already cached. No automatic image pull attempted.
+exit_code=2
+```
+
+No container was created, no SQL script ran, no pass/fail assertions were
+executed, and no live or hosted database was contacted. The raw command log is
+preserved outside the repository at
+`/home/stokonn/.copilot/session-state/3a888b7e-8982-45f3-b923-86283dda25eb/files/stage6-acl-pg17-run.log`.
+The earlier wrong-directory probe in that log is retained as raw evidence; the
+package-directory attempt is the authoritative result.
+
+## Backup/recovery review
+
+`BACKUP-REVIEW.md` is consistent with `ZERO-COST-OPS.md`: daily encrypted
+logical exports, owner-controlled private storage, SHA-256 manifests, target
+RPO <=24 hours and isolated restore verification remain design requirements.
+Destination, encryption/decryption key handling, scheduler, real export,
+restore drill and measured RTO remain unverified or unimplemented. No real
+records were exported and no scheduler or production backup was activated.
+
+**Stage 6 consequence:** ACL hardening is not PostgreSQL-verified; the event
+trigger's continued behavior and the no-escalation assertion remain OPEN.
+Backup readiness remains DESIGN ONLY. C4 stays 8 PASS / 19 PARTIAL / 6 OPEN,
+6.0f stays unchecked, and no Stage 6 completion or hosted security change is
+claimed.
+
+created by stokonn with love <3
+
 # Stage 6 — Supabase Security & Auth Readiness Audit (read-only)
 
 **2026-10-22; base 4f0cd51; documentation/research only.** Purpose: assess two

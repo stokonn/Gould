@@ -1,3 +1,29 @@
+## Stage 6 ACL candidate review — 2026-10-24
+
+The extracted package at `/home/stokonn/Stažené/stage6-review/stage6_acl_review`
+was independently read. The candidate migration narrowly checks the expected
+`SECURITY DEFINER` event-trigger function and `ensure_rls` binding, revokes
+function-specific `EXECUTE` from `PUBLIC`, `anon` and `authenticated`, and
+verifies effective denial for the two API roles without dropping or disabling
+the trigger. It is conditionally suitable for disposable testing only; no
+hosted deployment approval or production authorization exists.
+
+The exact supplied `run_disposable_pg17.sh` was executed from its package
+directory. Podman was present, but the required cached
+`docker.io/library/postgres:17` image was absent. The runner returned
+`BLOCKED` with exit code **2** and did not pull, create a container or execute
+SQL. Therefore RLS-trigger preservation, privilege denial and no-escalation
+assertions remain unverified. Raw output is preserved in the session artifact
+`stage6-acl-pg17-run.log`; no repository evidence file was added.
+
+`BACKUP-REVIEW.md` confirms the existing zero-cost design only: encrypted daily
+logical exports, private owner-controlled storage, SHA-256 manifest, RPO <=24h
+and isolated restore drill. Destination/key/scheduler/export/restore/RTO remain
+unverified. C4 remains 8 PASS / 19 PARTIAL / 6 OPEN; 6.0f remains unchecked.
+M1–M3 and Stage 7B were not changed.
+
+created by stokonn with love <3
+
 ## Stage 6 safe continuation checkpoint — 2026-10-24
 
 Recovery audit completed on branch `feature/goldberg-0.11-stage-6-api-v1-local`

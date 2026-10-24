@@ -1,3 +1,34 @@
+## Stage 6 ACL candidate and backup review — 2026-10-24
+
+The extracted `stage6_acl_review` package was read from
+`/home/stokonn/Stažené/stage6-review/`. Candidate review result: the SQL is
+narrowly scoped to effective `EXECUTE` removal for
+`public.rls_auto_enable()` and preserves the exact enabled `ensure_rls`
+event-trigger binding through preflight checks. It does not change unrelated
+roles, ownership, function security, search path or trigger state. This is a
+review result, not production approval.
+
+**Executed command and result:** from the package directory,
+`./run_disposable_pg17.sh` returned **exit 2 / BLOCKED** because Podman could
+not find the pre-cached `docker.io/library/postgres:17` image. The runner did
+not pull an image, create a container or execute any SQL. PostgreSQL pass/fail
+counts are therefore **0 executed / not applicable**, not zero failures.
+RLS-trigger preservation, effective `anon`/`authenticated` denial and
+no-escalation checks remain unverified. Raw output is preserved in the session
+artifact `stage6-acl-pg17-run.log`.
+
+Backup review confirms `ZERO-COST-OPS.md` requirements remain design-only:
+owner-controlled private storage, daily encrypted logical backup, SHA-256
+manifest, RPO <=24h and isolated restore verification. No real data was
+exported and no scheduler was activated; destination, key recovery, restore
+and measured RTO remain open.
+
+No M1–M3 source/evidence, Stage 7A/7B worktree, hosted database or production
+configuration was modified. C4 remains 8 PASS / 19 PARTIAL / 6 OPEN and 6.0f
+remains unchecked.
+
+created by stokonn with love <3
+
 ## Safe continuation verification — 2026-10-24
 
 The recovered API worktree is clean and remote-matched:

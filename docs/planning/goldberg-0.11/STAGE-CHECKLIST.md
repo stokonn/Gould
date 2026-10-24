@@ -1889,3 +1889,42 @@ Publication receipt/fallback: `docs/ai/API-V1-PROPOSAL-PUBLICATION.md`.
 Normal push blocked by DNS; both Issue31 writes denied403 by integration.
 No new checkpoint URL;78 previous comments and issue description unchanged.
 Publication pending via guarded Fedora publisher with exact final clean SHA.
+## Stage 6 ACL hardening and backup review — 2026-10-24
+
+**Purpose:** review the owner-supplied candidate privilege hardening and
+validate it only in a disposable PostgreSQL 17 runtime, while reconciling the
+zero-cost backup/recovery requirements without exporting real data.
+
+**Scope:** supplied review package; Stage 6 security/readiness and verification
+documentation; no hosted Supabase permissions, application source, Room
+schema, Android integration, Stage 7 worktree or production backup scheduler.
+
+**Tasks**
+
+- [x] Locate the extracted package using `xdg-user-dir DOWNLOAD` and read its
+  README, ACL SQL, runner and backup review.
+- [x] Review candidate preflight/postchecks, effective ACL intent and trigger
+  preservation; no unrelated authorization change identified.
+- [x] Inspect the local runtime without pulling dependencies.
+- [ ] Execute disposable PostgreSQL 17 acceptance checks.
+- [ ] Verify `anon`/`authenticated` effective `EXECUTE` denial, preserved
+  `ensure_rls` behavior and no unintended privilege escalation.
+- [ ] Verify encrypted synthetic backup/restore, manifest and recovery
+  procedure; no real-data export or scheduler activation.
+- [x] Record the actual blocked result and preserve raw output privately.
+- [x] Synchronize Stage 6 handoff/state/verification and security audit docs.
+
+**Progress and verification:** Podman is installed, but the required cached
+`docker.io/library/postgres:17` image is unavailable. The supplied runner
+returned **BLOCKED, exit 2** and correctly attempted no pull; no container or
+SQL was run. PostgreSQL test count is **0 executed**. The candidate is
+conditionally suitable for disposable testing only and is not approved for
+hosted deployment. Backup readiness remains design-only: destination,
+encryption keys, schedule, export, isolated restore and measured RTO are not
+verified.
+
+**Completion status:** **OPEN / BLOCKED**, not complete. C4 remains 8 PASS /
+19 PARTIAL / 6 OPEN and 6.0f remains unchecked. M1–M3 remain preserved and
+Stage 7B was not touched.
+
+created by stokonn with love <3
