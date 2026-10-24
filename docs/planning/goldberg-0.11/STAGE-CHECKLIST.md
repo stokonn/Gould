@@ -1,3 +1,7 @@
+## Stage8A preparation completion and publication receipt
+
+**8A readiness preparation COMPLETE / packet PREPARED AND PUBLISHED. Stage8 integration/release acceptance PENDING/BLOCKED.** Published preparation commit `ea1758c6fb10c9f4cdecf83d4c47523e9a5b553a` on `feature/goldberg-0.11-stage-8`, ordinary push and exact remote readback PASS. [Existing Issue31 source checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388549455) and Project overview/item readbacks PASS; Issue OPEN / umbrella In Progress. Documentation-only preservation checks passed; no runtime tests/builds/CI/merges/deploy/releases executed. Stage7 client/synthetic acceptance remains COMPLETE. Concurrent Stage6-Cloud WIP was recorded untouched, not adopted; all Stage6/live/production gates remain OPEN. Final handoff commit SHA is recorded in the next Issue31 receipt.
+
 # Stage 8A readiness preparation — October 24, 2026
 
 **Stage7 Android client/synthetic acceptance COMPLETE and owner-approved. Stage8A preparation packet PREPARED; Stage8 integration/release acceptance remains PENDING/BLOCKED.** Current authorized scope: documentation, read-only inventories and separate worktree creation only. No source integration or live adoption is authorized.
@@ -17,10 +21,10 @@ Purpose/scope: safe input/base inventory, a separate worktree and future integra
 - [x] Inspect existing branches/worktrees/unique changes and choose accepted Stage7B base before worktree creation.
 - [x] Create separate Stage8 preparation worktree; retain Stage7 acceptance/evidence and private PMP.
 - [x] Prepare integration sequence, release-readiness checklist, deferred accessibility assessments, Stage6 dependencies and verification matrix.
-- [ ] Complete documentation/preservation checks, commit/push and Issue31/Project publication readback.
+- [x] Complete documentation/preservation checks, commit/push and Issue31/Project publication readback.
 - [ ] Stage8 integration/release gates remain PENDING/BLOCKED; all applicable Stage6 gates OPEN, no source combination/activation/publication authorized.
 
-Completion status: preparation packet ready for publication checks; all application tests and live/release matrix rows unexecuted for8A. Full Stage8 is not complete.
+Completion status:8A readiness preparation COMPLETE; packet published and Issue31/Project synchronized with readback. All application tests and live/release matrix rows remain unexecuted for8A. Full Stage8 is not complete.
 
 <details>
 <summary>Prior stage checklist and accepted Stage7 history — preserved</summary>

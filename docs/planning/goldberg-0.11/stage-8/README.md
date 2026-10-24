@@ -1,10 +1,14 @@
+## Stage8A preparation completion and publication receipt
+
+**8A readiness preparation COMPLETE / packet PREPARED AND PUBLISHED. Stage8 integration/release acceptance PENDING/BLOCKED.** Published preparation commit `ea1758c6fb10c9f4cdecf83d4c47523e9a5b553a` on `feature/goldberg-0.11-stage-8`, ordinary push and exact remote readback PASS. [Existing Issue31 source checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388549455) and Project overview/item readbacks PASS; Issue OPEN / umbrella In Progress. Documentation-only preservation checks passed; no runtime tests/builds/CI/merges/deploy/releases executed. Stage7 client/synthetic acceptance remains COMPLETE. Concurrent Stage6-Cloud WIP was recorded untouched, not adopted; all Stage6/live/production gates remain OPEN. Final handoff commit SHA is recorded in the next Issue31 receipt.
+
 ## Concurrent work observed during preparation
 
 Initial inventory found clean tracked trees in all15 existing worktrees. A later preservation check detected new uncommitted changes in `/home/stokonn/Projects/Goldberg-Stage6-Cloud` (ten tracked paths, plus new untracked readiness work). They were left untouched, not copied/merged, and are not accepted input evidence or a gate-closing decision. Published preparation pins remain unchanged; re-read the Cloud worktree's eventual published checkpoint/HEAD and Issue31 before dependent integration. All2203 originally inventoried untracked files remained byte-identical, including private PMP; Stage7B tracked/untracked evidence and existing APK were preserved. The complete private audit is retained outside Git.
 
 # Stage 8A — readiness preparation
 
-Status: **readiness packet PREPARED; integration/release acceptance NOT EXECUTED**. Stage8 readiness preparation is in progress until the publication/checkpoint checks below complete; Stage8 integration and release gates remain PENDING/BLOCKED. Owner authorization is the current request to proceed with previously authorized Stage8A preparation. No separate earlier Stage8A execution authorization was found in the inspected local planning documents or all143 existing Issue31 comments; this request authorizes the bounded preparation performed here.
+Status: **readiness packet PREPARED; integration/release acceptance NOT EXECUTED**. Stage8A preparation publication/checkpoint checks are complete; Stage8 integration and release gates remain PENDING/BLOCKED. Owner authorization is the current request to proceed with previously authorized Stage8A preparation. No separate earlier Stage8A execution authorization was found in the inspected local planning documents or all143 existing Issue31 comments; this request authorizes the bounded preparation performed here.
 
 Stage7 Android client/synthetic scope is officially COMPLETE and owner-approved. Stage7B is ACCEPTED WITH DOCUMENTED LIMITATIONS; [owner decision](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388393525), [published final checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388422250). Stage7A acceptance is preserved. This packet does not reopen that acceptance or claim live compatibility.
 
@@ -32,7 +36,7 @@ The Stage6 merge base is `bcd88949b7998ce30df25b19b71de30dd413483a`. Read-only p
 - [x] Create the separate Stage8 worktree without merging source branches.
 - [x] Prepare [integration sequence](INTEGRATION-SEQUENCE.md), [release-readiness checklist](CHECKLIST.md), [deferred accessibility assessments](ACCESSIBILITY-ASSESSMENTS.md), [Stage6 dependencies](STAGE6-DEPENDENCIES.md) and [verification matrix](VERIFICATION-MATRIX.md).
 - [x] Verify documentation links/JSON/whitespace,270 unchanged accepted source hashes/Stage7 evidence/APK and2203 original private/untracked files; concurrent Cloud work recorded untouched. [Preparation results](PREPARATION-VERIFICATION.json). This is documentation/preservation verification, not a fresh application test result.
-- [ ] Commit/push the documentation-only packet and verify remote SHA; synchronize existing Issue31 and Project/AI checkpoints. No duplicate issue/project.
+- [x] Commit/push the documentation-only packet and verify remote SHA; existing Issue31 and Project/AI checkpoints synchronized and read back. No duplicate issue/project.
 - [ ] Stage8 integration/release acceptance: PENDING. Stage6 G1–G9/G11,C4,6.0f, Android/backend live integration and all production authorization gates remain OPEN. G10 is closed only for the existing disabled boundary.
 
 Completion of8A preparation means the readiness packet and durable checkpoints are reviewable. It does not mark any unexecuted matrix row passed, fix a deferred finding, authorize client/backend adoption, waive legal/operational gates or complete Stage8.

@@ -1,4 +1,8 @@
-Verified8A documentation/preservation milestone: [Issue31 checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388534366).270 source hashes,2203 original untracked files and Stage7B APK unchanged; document links/JSON/whitespace PASS. Concurrent Cloud WIP recorded untouched; no tests/builds/CI run. Publication checkpoint follows.
+## Stage8A preparation completion and publication receipt
+
+**8A readiness preparation COMPLETE / packet PREPARED AND PUBLISHED. Stage8 integration/release acceptance PENDING/BLOCKED.** Published preparation commit `ea1758c6fb10c9f4cdecf83d4c47523e9a5b553a` on `feature/goldberg-0.11-stage-8`, ordinary push and exact remote readback PASS. [Existing Issue31 source checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388549455) and Project overview/item readbacks PASS; Issue OPEN / umbrella In Progress. Documentation-only preservation checks passed; no runtime tests/builds/CI/merges/deploy/releases executed. Stage7 client/synthetic acceptance remains COMPLETE. Concurrent Stage6-Cloud WIP was recorded untouched, not adopted; all Stage6/live/production gates remain OPEN. Final handoff commit SHA is recorded in the next Issue31 receipt.
+
+Verified8A documentation/preservation milestone: [Issue31 checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388534366).270 source hashes,2203 original untracked files and Stage7B APK unchanged; document links/JSON/whitespace PASS. Concurrent Cloud WIP recorded untouched; no tests/builds/CI run. Publication/checkpoint checks completed; see the current receipt above.
 
 # Stage 8A readiness preparation — October 24, 2026
 
@@ -8,7 +12,7 @@ Worktree `/home/stokonn/Projects/Goldberg-Stage8`, branch `feature/goldberg-0.11
 
 Stage6 G1–G9/G11,C4,6.0f, Android/backend live integration and all production authorization gates remain OPEN. G10 is closed for disabled transport/actions only. Duplicate Settings TalkBack stops, large-font bottom-tab truncation and scaffold contrast remain NOT FIXED, awaiting explicit Stage8 release assessment. Speech/motion/exhaustive accessibility/real three-hour-reboot delivery remain UNVERIFIED. X10 remains under its existing Gould0.12 deferral.
 
-No tests/builds/emulators/live calls/merges/deploys/releases executed in8A. Earlier source-bound CI25/275JVM/262pairs/seeded-upgrade evidence remains accepted within Stage7 scope; no new candidate exists. Next: finish documentation/preservation checks, commit/push the packet, synchronize Issue31/Project and record exact publication SHA. Later work must refresh input HEADs and obtain separate integration/production authorization; blocked Stage6 gates cannot be silently omitted.
+No tests/builds/emulators/live calls/merges/deploys/releases executed in8A. Earlier source-bound CI25/275JVM/262pairs/seeded-upgrade evidence remains accepted within Stage7 scope; no new candidate exists. Next: refresh input HEADs/concurrent published work and obtain separate implementation/integration scope before source adoption or new runtime work. Blocked Stage6 gates cannot be silently omitted; production authorization remains separate.
 
 created by stokonn with love <3
 

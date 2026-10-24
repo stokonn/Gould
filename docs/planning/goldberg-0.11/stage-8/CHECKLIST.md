@@ -1,3 +1,7 @@
+## Stage8A preparation completion and publication receipt
+
+**8A readiness preparation COMPLETE / packet PREPARED AND PUBLISHED. Stage8 integration/release acceptance PENDING/BLOCKED.** Published preparation commit `ea1758c6fb10c9f4cdecf83d4c47523e9a5b553a` on `feature/goldberg-0.11-stage-8`, ordinary push and exact remote readback PASS. [Existing Issue31 source checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388549455) and Project overview/item readbacks PASS; Issue OPEN / umbrella In Progress. Documentation-only preservation checks passed; no runtime tests/builds/CI/merges/deploy/releases executed. Stage7 client/synthetic acceptance remains COMPLETE. Concurrent Stage6-Cloud WIP was recorded untouched, not adopted; all Stage6/live/production gates remain OPEN. Final handoff commit SHA is recorded in the next Issue31 receipt.
+
 # Stage 8 — release-readiness checklist
 
 Purpose: integrate only authorized verified inputs and establish a truthful release verdict. Scope: future combined Android/backend behavior, data preservation, accessibility, legal/operational readiness, artifact identity and owner decisions. **8A readiness preparation is the only current execution scope; integration/release acceptance PENDING/BLOCKED.** Stage7 client/synthetic scope remains COMPLETE.
@@ -7,7 +11,7 @@ Purpose: integrate only authorized verified inputs and establish a truthful rele
 - [x] Inventory branches/remotes/worktrees/unique work and choose accepted Stage7B preparation base before creating a separate worktree.
 - [x] Record Stage7A documentation-only divergence, main CI divergence and13 potential Stage6 path overlaps without merging.
 - [x] Prepare integration sequence, Stage6 gate ledger, deferred findings and verification matrix.
-- [ ] Validate documentation/preservation and publish exact-SHA packet; synchronize existing Issue31, Project and AI handoffs.
+- [x] Validate documentation/preservation and publish exact-SHA packet; existing Issue31, Project and AI handoffs synchronized/read back.
 
 ## Authorization and integration — pending
 
