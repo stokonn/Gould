@@ -2308,3 +2308,19 @@ The ACL run retained the existing function identity and enabled `ensure_rls`
 trigger and confirmed synthetic table RLS. No live Supabase connection was
 used. The API and security counts above are this session's executions; they
 do not close HTTP, hosted, Android runtime, C4, or 6.0f gates.
+## Stage 6 integration engineering batch — 2026-10-24
+
+The Stage 7B `ACCEPTANCE.md` mismatch is ordinary source evolution: the
+Stage 6 pin at `262a76e` and current Stage 7B branch have different committed
+file content and hashes. The current dirty worktree matches the branch HEAD.
+No provenance hash was rewritten and no Stage 7B file was modified.
+
+New executable checks:
+
+- `node --test spikes/stage6-api-v1-local/tests/compatibility.test.mjs`
+  validates five synthetic compatibility invariants.
+- `python3 scripts/check_stage6_acl_proposal.py` verifies the ACL proposal's
+  narrow scope and fail-closed safeguards.
+
+These checks do not close HTTP, Android runtime, hosted, C4, 6.0f, or owner
+approval gates.

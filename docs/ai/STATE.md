@@ -2260,3 +2260,13 @@ failed closed because the pinned Stage 7B source hash for
 `stage-7/stage-7b/ACCEPTANCE.md` does not match the current read-only source;
 this is preserved as an integration-evidence blocker, not silently rehashed.
 C4 remains **8 PASS / 19 PARTIAL / 6 OPEN**.
+## Stage 6 integration engineering batch — 2026-10-24
+
+- [x] Resolve the Stage 7B hash mismatch as ordinary source evolution while
+  retaining the original pin and fail-closed verification.
+- [x] Add executable synthetic compatibility guards without selecting a
+  dialect or enabling Android production transport.
+- [x] Add a static ACL proposal safety check for function scope, trigger
+  guards, rollback guidance, and destructive-operation rejection.
+- [ ] Owner decisions, HTTP/backend integration, hosted evidence, C4/6.0f and
+  G1–G9/G11 remain open.

@@ -2054,3 +2054,17 @@ security evidence regressions **17/17 PASS**; policy, backup fixture, and
 whitespace checks PASS. `verify_contract.py` failed closed on the pre-existing
 Stage 7B `ACCEPTANCE.md` hash mismatch. No hosted or Android runtime checks
 were executed. **Status: in progress; not complete.**
+## Stage 6 integration engineering batch — 2026-10-24
+
+**Purpose:** establish executable local compatibility and provenance guards
+without activating an unapproved API mapping or production service.
+
+- [x] Compare the pinned Stage 7B hash with later branch history and current
+  source; preserve historical evidence.
+- [x] Add synthetic executable compatibility tests for approved distinctions.
+- [x] Add a static ACL proposal safety regression.
+- [ ] Obtain owner decisions and implement only an approved shared binding.
+
+**Verification:** compatibility and ACL checks are executed with the batch
+test results; no Stage 7B files, hosted services, Android devices, or live
+databases were touched. Status remains **in progress**.

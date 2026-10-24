@@ -2295,3 +2295,18 @@ No production database, scheduler, cloud service, Android device, Stage 7
 worktree, release, or real data was accessed. The next safe action is owner
 approval of the shared API fixture decisions or separately authorized hosted
 evidence collection; neither is implied by these local results.
+## Stage 6 integration engineering batch — 2026-10-24
+
+The Stage 7B provenance mismatch was investigated without changing its
+worktree. The Stage 6 pin at `262a76e` recorded
+`ACCEPTANCE.md` hash `d0a0d20a...`; the later Stage 7B source evolved and the
+current branch/worktree hashes are `ce1083d9...`. The current dirty Stage 7B
+worktree matches its branch HEAD. This is ordinary source evolution, not an
+integrity finding. The fail-closed verifier remains unchanged and the
+historical pin is preserved.
+
+Added executable `tests/compatibility.test.mjs` guards for synthetic corpus
+classification, session identity, cursor dialects, dual revisions, numeric
+precision, and G1–G11 status. Added `scripts/check_stage6_acl_proposal.py` to
+fail closed on destructive or unguarded ACL proposal changes. No mapping,
+HTTP listener, Android transport, or production security change was enabled.
