@@ -12,10 +12,21 @@ import {currentComparison} from './comparison.mjs';
 import {PublicReceipts} from './receipts.mjs';
 import {Validator,text} from '../../stage6-handlers-local/src/validation.mjs';
 import {object,secret,id,decimal,localRevision,readRevision,timestamp,parseBody} from './wire.mjs';
+import {queueQuery,auditQuery} from './query.mjs';
 const caps=new Set(['submit','submission.read.own','submission.revise.own','submission.withdraw.own','queue.read','decide','quarantine','audit.read','roles.manage']);
 const safeMessages={400:['validation_failed','Invalid request'],401:['unauthenticated','Authentication required'],403:['forbidden','Operation not permitted'],404:['not_found','Resource not found'],405:['method_not_allowed','Method not allowed'],409:['conflict','Revision or state conflict'],422:['idempotency_mismatch','Key already used for a different request'],503:['service_unavailable','Service unavailable']};
 const output=(fn,...args)=>{try{return fn(...args);}catch{throw unavailable();}};
 const known=new Map([['/v1/session/challenge',['POST']],['/v1/session',['POST','GET','DELETE']],['/v1/session/refresh',['POST']],['/v1/me/capabilities',['GET']]]);
+function queryObject(path){
+ const index=path.indexOf('?');if(index<0)return {base:path,query:{}};
+ const base=path.slice(0,index),query={};if(!path.slice(index+1))throw invalid();
+ for(const part of path.slice(index+1).split('&')){
+  const equal=part.indexOf('=');if(equal<1)throw invalid();
+  let key,value;try{key=decodeURIComponent(part.slice(0,equal));value=decodeURIComponent(part.slice(equal+1));}catch{throw invalid();}
+  if(Object.hasOwn(query,key))throw invalid();query[key]=value;
+ }
+ return {base,query};
+}
 export function createLocalAdapter({localOnly,connect,schema,verifier,clock,validator=new Validator()}){
  if(localOnly!==true||typeof clock!=='function')throw new TypeError('explicit local-only composition and clock required');
  const sessions=new SessionService({connect,schema,verifier,clock,accessTtlMs:900000,refreshTtlMs:604800000,challengeTtlMs:300000});
@@ -31,16 +42,18 @@ export class PublicAdapter {
    object(request,['method','path','headers','body'],['method','path']);
    const {method,path}=request;
    if(typeof method!=='string'||!/^[A-Z]+$/.test(method)||typeof path!=='string'||!path.startsWith('/')||path.includes('#'))throw invalid();
-   const comparison=/^\/v1\/admin\/entities\/([^/?]+)\/comparison(?:\?(.*))?$/.exec(path);
+   const parsed=queryObject(path),route=parsed.base;
+   const comparison=/^\/v1\/admin\/entities\/([^/?]+)\/comparison$/.exec(route);
    let comparisonSubmission;
    if(comparison){
-    // Canonical UUID only: no duplicate/extra/encoded parameters or discarded query.
-    const query=/^submissionId=([0-9a-f-]+)$/.exec(comparison[2]??'');
-    if(!query)throw invalid();comparisonSubmission=id(query[1]);id(comparison[1]);
-   }else if(path.includes('?'))throw invalid();
-   const match=/^\/v1\/admin\/submissions\/([^/]+)\/(open|decisions)$/.exec(path);
-   const detail=/^\/v1\/admin\/submissions\/([^/]+)$/.exec(path);
-   const methods=comparison?['GET']:match?['POST']:detail?['GET']:known.get(path);
+    if(Object.keys(parsed.query).length!==1||!Object.hasOwn(parsed.query,'submissionId'))throw invalid();
+    comparisonSubmission=id(parsed.query.submissionId);id(comparison[1]);
+   }else if(['/v1/admin/queue','/v1/admin/audit','/v1/admin/stats'].includes(route)){
+    if(route==='/v1/admin/queue')queueQuery(parsed.query);else if(route==='/v1/admin/audit')auditQuery(parsed.query);else if(Object.keys(parsed.query).length)throw invalid();
+   }else if(Object.keys(parsed.query).length)throw invalid();
+   const match=/^\/v1\/admin\/submissions\/([^/]+)\/(open|decisions)$/.exec(route);
+   const detail=/^\/v1\/admin\/submissions\/([^/]+)$/.exec(route);
+   const methods=comparison?['GET']:match?['POST']:detail?['GET']:route==='/v1/admin/queue'||route==='/v1/admin/audit'||route==='/v1/admin/stats'?['GET']:known.get(route);
    if(!methods)throw new ApiError(404,'not_found','Resource not found');
    if(!methods.includes(method)){allow=methods.join(', ');throw new ApiError(405,'method_not_allowed','Method not allowed');}
    const headers=request.headers??{};object(headers,Object.keys(headers));const normalized=Object.create(null);
@@ -59,6 +72,17 @@ export class PublicAdapter {
    };
    const dto=(fields)=>({schemaVersion:1,requestId,...fields});
    if(comparison)return response(200,await currentComparison(this,token(),id(comparison[1]),comparisonSubmission,requestId));
+   if(route==='/v1/admin/queue'){
+    await this.authorization.require(token(),'queue.read',async()=>{throw unavailable();});
+   }
+   if(route==='/v1/admin/audit'){
+    await this.authorization.require(token(),'audit.read',async()=>{throw unavailable();});
+   }
+   if(route==='/v1/admin/stats'){
+    const accessToken=token(),capabilities=await this.authorization.capabilities(accessToken);
+    if(!capabilities.includes('queue.read')||!capabilities.includes('audit.read'))throw new ApiError(403,'forbidden','Operation not permitted');
+    throw unavailable();
+   }
    if(detail)return response(200,await latestDetail(this,token(),id(detail[1]),requestId));
    if(match){
     const submissionId=id(match[1]),opening=match[2]==='open';

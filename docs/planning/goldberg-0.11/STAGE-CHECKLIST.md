@@ -2097,3 +2097,37 @@ incomplete because `/v1` compatibility, hosted/security/legal/operational and
 G1–G9/G11 gates remain open.
 
 created by stokonn with love <3
+## Stage 6 loopback HTTP integration — VERIFIED LOCALLY (2026-10-24)
+
+**Purpose:** exercise the approved local adapter through real HTTP request and
+response handling without exposing a public listener or activating `/v1`.
+
+**Scope:** `spikes/stage6-api-v1-local/src/http.mjs`, adapter route guards,
+synthetic loopback tests and local evidence only. No hosted service, real
+credentials, Android transport or Stage 7 worktree.
+
+- [x] Bind only to `127.0.0.1` on an ephemeral port.
+- [x] Preserve adapter validation, authorization, request IDs and response
+  headers through HTTP.
+- [x] Enforce body-size, duplicate-key, duplicate-query and unsupported-method
+  rejection.
+- [x] Verify challenge/login/capabilities/logout and empty 204 behavior over
+  HTTP.
+- [x] Recognize queue/audit/stats routes with capability guards and explicit
+  unavailable responses; do not fabricate records or totals.
+- [x] Run loopback tests 2/2 and complete local suite 117/117.
+- [x] Re-run disposable PostgreSQL M2 and M3 acceptance; both passed with
+  cleanup and source-unchanged checks.
+- [ ] Add exact queue/audit DTO projections and database-backed statistics
+  snapshots once approved source fields and snapshot semantics are available.
+
+**Verification:** actual loopback HTTP 2/2 PASS; complete API suite 117/117
+PASS; M2 and M3 PostgreSQL acceptance PASS. M2/M3 report `httpExecutions: 0`;
+they are separate database-backed checks and do not prove HTTP behavior.
+
+**Completion:** loopback transport substage verified. Stage 6 remains
+incomplete because public-version compatibility, exact queue/audit projections,
+statistics snapshots, hosted/legal/operational gates and G1–G9/G11 remain
+open.
+
+created by stokonn with love <3

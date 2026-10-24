@@ -2327,3 +2327,27 @@ approved source fields and snapshot semantics are available; `/v1` remains
 inactive/version-conditional.
 
 created by stokonn with love <3
+## Stage 6 loopback HTTP integration — 2026-10-24
+
+Added `spikes/stage6-api-v1-local/src/http.mjs`, a real Node HTTP transport
+that binds only to `127.0.0.1` on an ephemeral port. It enforces the existing
+adapter's content type, duplicate-key, UTF-8, schema and header rules, adds a
+16 KiB request limit, preserves request IDs and headers, and emits empty 204
+responses without a JSON body. No deployment entrypoint or external network
+path exists.
+
+The adapter now recognizes the approved queue, audit and stats routes,
+rejects duplicate/unknown query parameters, applies the required capability
+guards, and returns explicit `503 service_unavailable` rather than fabricating
+DTO rows or totals while the current local schema lacks the approved
+projections/snapshot source. Stats capability checking uses one session
+snapshot to avoid nested transaction acquisition.
+
+Verification: complete local suite **117/117 PASS**, including two actual
+loopback HTTP tests. Disposable PostgreSQL M2 and M3 runs both passed with
+synthetic-only pinned PostgreSQL images and verified container/volume cleanup;
+their recorded `httpExecutions` remain 0 because they exercise database-backed
+acceptance separately from the new loopback tests. C4 remains **8 PASS /
+19 PARTIAL / 6 OPEN** and `/v1` remains provisional.
+
+created by stokonn with love <3

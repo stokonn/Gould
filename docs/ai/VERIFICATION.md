@@ -2342,3 +2342,28 @@ filters, allowlisted audit actions and malformed/reversed ranges. This remains
 host-level synthetic evidence, not HTTP/backend or production acceptance.
 
 created by stokonn with love <3
+## Stage 6 loopback HTTP integration — 2026-10-24
+
+| Check | Result |
+|---|---|
+| `cd spikes/stage6-api-v1-local && node --test tests/http.test.mjs` | PASS; 2/2 actual loopback HTTP tests |
+| `cd spikes/stage6-api-v1-local && npm test --silent` | PASS; 117/117 |
+| `python3 spikes/stage6-api-v1-local/run-m2-postgres.py` | PASS; synthetic PostgreSQL acceptance, cleanup verified, `httpExecutions: 0` |
+| `python3 spikes/stage6-api-v1-local/run-m3-postgres.py` | PASS; synthetic PostgreSQL acceptance, cleanup verified, `httpExecutions: 0` |
+| `python3 scripts/check_agent_policy.py` | PASS |
+| `python3 scripts/check_backup_fixtures.py` | PASS |
+| `python3 scripts/check_stage6_acl_proposal.py` | PASS |
+| `git diff --check` | PASS |
+
+The loopback server bound to `127.0.0.1` with an ephemeral port. Tests
+verified session challenge/login/capabilities/logout, exact principal/session
+binding, empty 204 output, duplicate JSON/query rejection, 16 KiB body
+rejection and unsupported-method handling. Queue, audit and stats route
+guards authenticate but deliberately return `503 service_unavailable` until
+the current fixture/schema can provide approved DTO projections and coherent
+statistics snapshots. No HTTP result is inferred from the PostgreSQL runs.
+
+The M2/M3 evidence directories are retained locally as raw synthetic evidence
+and are not production or hosted-database evidence.
+
+created by stokonn with love <3

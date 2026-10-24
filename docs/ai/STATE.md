@@ -2285,3 +2285,25 @@ This is local contract hardening only. No listener, deployment, production
 database, OAuth, Android transport or cloud resource was used.
 
 created by stokonn with love <3
+## Stage 6 loopback HTTP integration — 2026-10-24
+
+- [x] Add a real local HTTP transport bound exclusively to `127.0.0.1` with
+  an ephemeral port and no deployment entrypoint.
+- [x] Verify session challenge/login/capabilities/logout over HTTP, including
+  exact DTO identity, authorization, request headers and empty 204 behavior.
+- [x] Verify duplicate JSON, duplicate query keys, oversized bodies and
+  unsupported methods fail closed.
+- [x] Add guarded queue/audit/stats routes that return explicit unavailable
+  results instead of fabricated data where the current schema cannot provide
+  approved projections or coherent totals.
+- [x] Run local API/HTTP suite: **117/117 PASS**; loopback HTTP: **2/2 PASS**.
+- [x] Run disposable PostgreSQL M2 and M3 acceptance: both PASS with cleanup
+  and source-unchanged checks.
+- [ ] Implement queue/audit DTO projections and exact statistics snapshots
+  after the approved source fields and database snapshot semantics are present.
+
+The PostgreSQL runs did not execute HTTP (`httpExecutions: 0`); HTTP evidence
+is separately provided by the loopback tests. No hosted database, OAuth,
+Android transport, cloud resource or Stage 7 worktree was used.
+
+created by stokonn with love <3
