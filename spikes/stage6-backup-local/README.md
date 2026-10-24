@@ -1,15 +1,17 @@
 # Stage 6 local backup and restore verification
 
 This harness is a local, synthetic-only verification of the Stage 6 backup
-design. It starts a fresh rootless Podman PostgreSQL 17 container with no
+design. It starts fresh rootless Podman PostgreSQL 17 containers with no
 published port, creates only fixture rows, exports a PostgreSQL custom-format
-logical dump, encrypts it with a temporary OpenSSL AES-256-CBC key, writes a
-SHA-256 manifest, decrypts it into a separate restore path, and restores it
-into a fresh database.
+logical dump, encrypts it with GnuPG symmetric AES-256 plus MDC integrity
+protection, writes a SHA-256 manifest, and restores it into a fresh database
+in a separate process.
 
 The harness also verifies:
 
-- encrypted-artifact integrity and deliberate tamper rejection;
+- authenticated encrypted-artifact integrity and deliberate tamper rejection;
+- durable external key custody, wrong-key/missing-key rejection and rotation;
+- partial/interrupted artifact rejection and atomic `.part` publication;
 - restored row counts and schema-only dump identity;
 - a synthetic SHA-256 audit chain after restore;
 - absence of the encryption key and plaintext dump after cleanup;
@@ -25,8 +27,9 @@ Run from this directory:
 ./run-local.sh
 ```
 
-Set `BACKUP_RESULTS_DIR` to a private directory to preserve the encrypted
-artifact, manifest, and machine-readable evidence. The key is never written
-there; it remains temporary and is removed on exit.
+Set `BACKUP_RESULTS_DIR` to a private backup-destination directory and
+`BACKUP_KEY_DIR` to a separate private recovery-key custody directory. Both
+must be absolute and outside the repository. Keys are retained only in the
+supplied custody directory; never commit it or place it beside the backups.
 
 created by stokonn with love <3

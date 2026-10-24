@@ -1,3 +1,24 @@
+## Stage 6 durable backup-key resilience verification — 2026-10-24
+
+The hardened `spikes/stage6-backup-local/` harness now uses GnuPG symmetric
+AES-256 with MDC integrity protection, isolated temporary `GNUPGHOME`
+directories, separate export/restore processes, external mode-600 recovery
+keys, atomic `.part` publication and manifest verification. It rejects wrong,
+missing, partial and tampered backups, recovers an older v1 backup after v2
+rotation, verifies schema/row counts/audit-chain integrity, and removes
+temporary plaintext, interrupted artifacts, containers and GnuPG state.
+
+The fresh rootless Podman PostgreSQL 17.11 run passed with exit **0**:
+export **3,915 ms**, restore **4,341 ms**, rotation export **4,009 ms**, total
+**30,033 ms**. Evidence is private under
+`stage6-backup-resilience-evidence`; keys are private under the separate
+`stage6-backup-key-custody` directory. No user data, hosted endpoint,
+production scheduler or real credential was used. These synthetic timings do
+not establish production RPO/RTO or backup readiness. C4 remains **8 PASS /
+19 PARTIAL / 6 OPEN** and 6.0f remains open.
+
+created by stokonn with love <3
+
 ## Stage 6 synthetic backup and restore verification — 2026-10-24
 
 Added `spikes/stage6-backup-local/`, a local-only harness that starts the

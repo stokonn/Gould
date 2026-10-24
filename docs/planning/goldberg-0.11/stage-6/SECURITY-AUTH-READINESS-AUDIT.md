@@ -1,3 +1,26 @@
+## 2026-10-24 — durable backup-key resilience drill
+
+The hardened local harness was rerun against fresh disposable rootless
+PostgreSQL 17.11 containers. GnuPG symmetric AES-256 with MDC integrity
+protection, isolated temporary `GNUPGHOME` directories, external mode-600
+keys, separate export/restore processes, atomic publication and SHA-256
+manifests were exercised.
+
+Result: **PASS / exit 0**. Export **3,915 ms**, restore **4,341 ms**, rotation
+export **4,009 ms**, total **30,033 ms**. Wrong-key, missing-key, partial and
+tampered artifacts were rejected; v2 rotation succeeded and the older v1
+backup restored. Schema, synthetic row counts (2 metadata, 2 submissions,
+2 audit events) and audit-chain integrity passed. No temporary plaintext,
+`.part`, tampered artifact, matching container or user GnuPG state remained.
+
+This proves only isolated synthetic recovery and keyed tamper detection. It
+does not establish production backup authenticity, destination durability,
+key disaster recovery, scheduling, retention, hosted restore, RPO/RTO or
+legal/compliance readiness. C4 remains **8 PASS / 19 PARTIAL / 6 OPEN** and
+6.0f remains open.
+
+created by stokonn with love <3
+
 # 2026-10-24 — synthetic encrypted backup and restore drill
 
 The local harness `spikes/stage6-backup-local/run-local.sh` was added and

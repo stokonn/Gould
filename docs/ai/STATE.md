@@ -1,3 +1,25 @@
+## Stage 6 durable backup-key resilience verification — 2026-10-24
+
+- [x] Replace temporary OpenSSL-CBC handling with GnuPG symmetric AES-256
+  encryption and MDC integrity protection; isolate each phase's `GNUPGHOME`.
+- [x] Verify separate-process recovery using external mode-600 v1/v2 keys,
+  including wrong-key and missing-key rejection.
+- [x] Verify key rotation, recovery of the older v1 backup, tampered/partial
+  artifact rejection, atomic publication and manifest validation.
+- [x] Verify restored schema, 2 metadata, 2 submissions and 2 audit events,
+  audit-chain integrity, cleanup, secret scans and disposable-container
+  removal.
+- [x] Add failure cleanup for interrupted `.part` and manifest-temporary
+  artifacts.
+
+Fresh rootless PostgreSQL 17.11 run passed with exit **0**: export **3,915
+ms**, restore **4,341 ms**, rotation export **4,009 ms**, total **30,033 ms**.
+The result is synthetic local evidence only; production destination, key
+disaster recovery, scheduling, retention, hosted restore, measurable RTO,
+C4 and 6.0f remain open.
+
+created by stokonn with love <3
+
 ## Stage 6 synthetic backup and restore verification — 2026-10-24
 
 - [x] Add a local-only synthetic PostgreSQL 17 backup/restore harness under

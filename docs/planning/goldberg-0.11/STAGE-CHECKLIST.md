@@ -1,3 +1,37 @@
+## Stage 6 durable backup-key resilience verification — 2026-10-24
+
+**Purpose:** verify recoverable synthetic encrypted backups after process
+termination and key rotation without activating production operations.
+
+**Scope:** `spikes/stage6-backup-local/`, private synthetic evidence and Stage
+6 documentation only; no Supabase, real data, scheduler, cloud storage,
+Android or Stage 7 worktree.
+
+**Tasks**
+
+- [x] Use external mode-600 recovery-key custody and isolated per-process
+  GnuPG state.
+- [x] Verify separate-process export/restore, wrong/missing-key rejection and
+  v2 rotation with recovery of the older v1 backup.
+- [x] Reject partial/tampered archives; verify atomic publication and SHA-256
+  manifests.
+- [x] Verify schema, 2 metadata, 2 submissions, 2 audit events and audit-chain
+  integrity, with cleanup and secret scans.
+- [x] Remove interrupted `.part` and manifest-temporary artifacts on phase
+  failure.
+- [ ] Approve production destination, disaster-recovery key custody, daily
+  scheduling, monitoring, retention, hosted restore and measurable RTO.
+
+**Verification:** fresh rootless PostgreSQL 17.11 run exited **0**; export
+**3,915 ms**, restore **4,341 ms**, rotation export **4,009 ms**, total
+**30,033 ms**. No production RPO/RTO claim is made.
+
+**Completion status:** synthetic resilience drill **COMPLETE**; production
+backup readiness and Stage 6 remain **OPEN**. C4 remains **8 PASS / 19
+PARTIAL / 6 OPEN** and 6.0f remains unchecked.
+
+created by stokonn with love <3
+
 ## C4 read-only verification and Q1-D owner decision — current2026-10-23
 
 Purpose: reconcile current official cloud documentation,inspect only existing

@@ -1,3 +1,29 @@
+## Stage 6 durable backup-key resilience verification — 2026-10-24
+
+The hardened harness was rerun against fresh disposable rootless Podman
+PostgreSQL 17.11 containers after isolating GnuPG state per phase. Exit code
+was **0**.
+
+| Check | Result |
+|---|---|
+| Separate-process encrypted export/restore | PASS; 3,915 ms / 4,341 ms |
+| Wrong-key and missing-key rejection | PASS |
+| Partial and tampered archive rejection | PASS |
+| Atomic publication and manifest validation | PASS |
+| v2 rotation and older v1 recovery | PASS; rotation export 4,009 ms |
+| Schema, row counts and audit chain | PASS; 2/2/2 synthetic rows |
+| Cleanup and secret/endpoint scan | PASS; no `.part`, plaintext, matching container or user GnuPG state |
+| Total local elapsed time | 30,033 ms |
+
+GnuPG AES-256 with MDC supplies keyed tamper detection/integrity; this
+synthetic drill does not establish production key-disaster recovery,
+destination durability, RPO/RTO, scheduling, retention or legal readiness.
+An initial post-isolation rerun exposed that the previous tamper-test byte
+offset could land outside the authenticated payload; the test now flips a
+payload byte and the corrected rerun passed.
+
+created by stokonn with love <3
+
 ## Stage 6 synthetic backup and restore verification — 2026-10-24
 
 The new `spikes/stage6-backup-local/run-local.sh` harness was executed against
