@@ -54,6 +54,23 @@ class Stage7bAcceptanceTest {
         return listOf(root) + (0 until root.childCount).flatMap { nodes(root.getChild(it)) }
     }
     private fun tree() = nodes(inst.uiAutomation.rootInActiveWindow)
+    private fun awaitStableBounds() {
+        // Accessibility scroll actions launch Compose animations. Main-looper idleness
+        // alone does not mean that a frame-driven animation has reached its target.
+        fun bounds() = tree().map {
+            val rect = Rect(); it.getBoundsInScreen(rect)
+            "${it.text}|${it.contentDescription}|$rect|${it.actionList.map { action -> action.id }}"
+        }
+        var previous = bounds()
+        var stable = 0
+        waitUntil {
+            Thread.sleep(80)
+            val current = bounds()
+            stable = if (current == previous) stable + 1 else 0
+            previous = current
+            stable >= 4
+        }
+    }
     private fun waitUntil(check: () -> Boolean) {
         val end = android.os.SystemClock.uptimeMillis() + 15000
         while (android.os.SystemClock.uptimeMillis() < end) {
@@ -99,6 +116,35 @@ class Stage7bAcceptanceTest {
         assertTrue("Unnamed checkable control in $name", currentTree.filter { it.isCheckable }.all {
             !it.text.isNullOrBlank() || !it.contentDescription.isNullOrBlank()
         })
+    }
+    @Test fun filterChipExportsNameStateAndClickOnSameNode() {
+        for (locale in listOf("en", "cs")) {
+            val configuration = android.content.res.Configuration(app.resources.configuration).apply {
+                setLocales(android.os.LocaleList.forLanguageTags(locale))
+            }
+            val label = app.createConfigurationContext(configuration).getString(R.string.stage7b_pending)
+            ActivityScenario.launch(MainActivity::class.java).use { scenario ->
+                scenario.onActivity { activity ->
+                    activity.setContent {
+                        var selected by remember { mutableStateOf(false) }
+                        OpusTheme("Light") { AdminTheme {
+                            AdminFilterChip(selected, label) { selected = !selected }
+                        } }
+                    }
+                }
+                fun chip() = tree().singleOrNull {
+                    it.isCheckable && it.contentDescription?.toString() == label
+                }
+                waitUntil { chip() != null }
+                assertFalse(chip()!!.isChecked)
+                assertTrue(chip()!!.isClickable)
+                click(label)
+                waitUntil { chip()?.isChecked == true }
+                click(label)
+                waitUntil { chip()?.isChecked == false }
+                capture("stage7b-chip-$locale")
+            }
+        }
     }
     private class Fixture {
         var mode = "ready"
@@ -176,13 +222,26 @@ class Stage7bAcceptanceTest {
                             if (font.toFloat() <= 1.3f) assertFalse("Dashboard scroll at $id", tree().any { it.isScrollable })
                             // Larger text needs reachability, not forced scroll when
                             // the complete content already fits a standard viewport.
+                            try {
                             for (label in listOf(R.string.stage7b_moderation_queue, R.string.stage7b_audit_log, R.string.stage7b_admin_settings, R.string.stage7b_refresh)) {
                                     fun visible() = tree().any {
-                                        val r = Rect(); it.getBoundsInScreen(r)
-                                        it.isVisibleToUser && (it.text?.toString() == L.s(label) || it.contentDescription?.toString() == L.s(label)) && r.width() > 0 && r.height() > 0 && r.bottom <= pixels.substringAfter('x').toInt()
+                                        if (it.text?.toString() != L.s(label) && it.contentDescription?.toString() != L.s(label)) return@any false
+                                        var target = it
+                                        while (!target.isClickable && target.parent != null) target = target.parent
+                                        val r = Rect(); target.getBoundsInScreen(r)
+                                        // Require the complete 48dp action, not a sliver of its
+                                        // icon at the scroll viewport edge (density is 320dpi).
+                                        target.isVisibleToUser && target.isClickable && r.width() >= 96 && r.height() >= 96 && r.top >= 0 && r.bottom <= pixels.substringAfter('x').toInt()
                                     }
                                     if (font.toFloat()>1.3f && !visible()) {
-                                        repeat(6) { if (!visible()) tree().firstOrNull { it.isScrollable }?.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD); inst.waitForIdleSync() }
+                                        repeat(6) {
+                                            if (!visible()) {
+                                                val scroll = tree().firstOrNull { it.isScrollable && it.actionList.any { action -> action.id == AccessibilityNodeInfo.ACTION_SCROLL_FORWARD } }
+                                                assertNotNull("No forward scroll action for ${L.s(label)} at $id", scroll)
+                                                assertTrue("Scroll action rejected at $id", scroll!!.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD))
+                                                awaitStableBounds()
+                                            }
+                                        }
                                     }
                                     assertTrue("Dashboard action unreachable/clipped at $id: ${L.s(label)}",visible())
                                     if (font.toFloat()<=1.3f) {
@@ -265,6 +324,13 @@ class Stage7bAcceptanceTest {
                                 }
                             }
                             scenario.onActivity { it.setContent {} }
+                            } catch (failure: Throwable) {
+                                // Keep the failing viewport before ActivityScenario closes it.
+                                try { capture("$id-FAIL-in-activity") } catch (evidenceFailure: Throwable) {
+                                    failure.addSuppressed(evidenceFailure)
+                                }
+                                throw failure
+                            }
                         } } catch (failure: Throwable) {
                             failures += "$size/$locale/$theme/$font: ${failure.message}"
                             capture("$prefix-$size-$locale-$theme-f$font-FAIL")

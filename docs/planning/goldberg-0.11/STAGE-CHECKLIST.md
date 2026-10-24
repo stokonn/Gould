@@ -1,3 +1,7 @@
+## Stage 7B recovery — 2026-10-24, IN PROGRESS
+
+Current purpose, scope, implementation checklist, verification and pending gates: [recovery checklist](stage-7/stage-7b/RECOVERY-2026-10-24.md). Initial HEAD `1bb5aac`; acceptance is not complete. Earlier checkpoints below are historical.
+
 ## Stage 7B coordinated acceptance continuation — 2026-10-23
 
 **Current: IN PROGRESS; owner acceptance pending.** Scope: approved remaining

@@ -8,8 +8,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.opus.piano.R
@@ -51,8 +49,7 @@ import kotlinx.coroutines.launch
             Text(L.s(R.string.stage7b_audit_scope),style=MaterialTheme.typography.bodySmall)
             FlowRow(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
                 listOf("all" to R.string.stage7b_all,"mine" to R.string.stage7b_my_actions,"moderation" to R.string.stage7b_moderation).forEach { (key,label) ->
-                    FilterChip(filter==key,{filter=key},{Text(L.s(label))},
-                        modifier=Modifier.semantics(mergeDescendants = true) { contentDescription = L.s(label) })
+                    AdminFilterChip(filter == key, L.s(label)) { filter = key }
                 }
             }
             val visible=service.filtered(query,filter,principal)

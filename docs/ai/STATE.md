@@ -1,3 +1,7 @@
+## Stage 7B recovery — October 24, 2026 (IN PROGRESS)
+
+Authoritative active checklist: [recovery and verification](../planning/goldberg-0.11/stage-7/stage-7b/RECOVERY-2026-10-24.md). Initial HEAD `1bb5aac`; narrow chip semantics and animated-scroll synchronization fixes compile; clean host gate SUCCESS4m07s,275 JVM/0 failures,lint0 errors/119 warnings/1 hint; seven scripts PASS; final assertion compile/lint SUCCESS25s; exact-source API36 acceptance pending. No completed-stage or runtime pass claimed. Private PMP, existing evidence and other worktrees preserved. Earlier checkpoints below are historical.
+
 ## Stage 7B coordinated acceptance continuation — 2026-10-23
 
 **Current: IN PROGRESS; owner acceptance pending.** Scope: approved remaining

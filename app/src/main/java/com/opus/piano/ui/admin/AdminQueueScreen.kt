@@ -9,8 +9,6 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.opus.piano.R
@@ -74,8 +72,7 @@ internal object AdminPalette {
                 singleLine = true, modifier = Modifier.fillMaxWidth())
             FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 listOf("all", "pending", "needs_info", "re_review", "deferred").forEach { key ->
-                    FilterChip(filter == key, { filter = key }, { Text(queueFilterLabel(key)) },
-                        modifier = Modifier.semantics(mergeDescendants = true) { contentDescription = queueFilterLabel(key) })
+                    AdminFilterChip(filter == key, queueFilterLabel(key)) { filter = key }
                 }
             }
             val results = when (val search = state.search) {
