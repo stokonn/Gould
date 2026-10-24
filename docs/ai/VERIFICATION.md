@@ -1,3 +1,54 @@
+## Stage 6 HTTP → PostgreSQL integration — VERIFIED LOCALLY (2026-10-24)
+
+**Purpose/scope:** close the separate HTTP/PG venue gap, implement O1–O8 approved
+read DTOs and verify local transactions. API adapter/projections/tests/runner and
+tracking only; native services/schema, Android and Stage7 worktrees unchanged.
+Branch `feature/goldberg-0.11-stage-6-api-v1-local`; baseline
+`944280bee28d3280479db3b4e311e69b8c49027c`. Explicit owner instruction authorizes
+this local batch; older no-further-local-implementation statements are historical.
+
+- [x] Queue safe DTOs, null unapproved labels, exact evidence counts, bounded SQL
+  filters/literal NFC search and signed caller/filter/scope-bound keyset cursors.
+- [x] Canonical audit DTO/filtering, fixed highwater/head, chain/filtered coverage.
+- [x] Exact PostgreSQL repeatable-read statistics, Prague-day/DST boundaries,
+  concurrent publication consistency and single-count approval semantics.
+- [x] Real HTTP lifecycle, capabilities, moderation, dual revisions, Comparison,
+  idempotent exact-byte replay, races, account isolation, role revocation, rollback,
+  24h receipt/15m cursor expiry and SQL timeout recovery for all three reads.
+- [x] Final source-bound run `spikes/stage6-api-v1-local/results/http-pg/pg-n4udfonz`:
+  **24 HTTP→PG +240 independent PG** tests PASS (Auth50/schema34/handlers87/
+  operations34/M2-19/M3-16); **API117/T22 scripted-unit38/operations unit32** PASS;
+  **planning18/security-evidence17** PASS; **39 actual HTTP read DTOs** validate.
+- [x] Policy, three portable backup fixtures, ACL proposal and whitespace checks
+  PASS. Source/raw SHA-256 and exact disposable rootless PG17.11 container/volume
+  absence verified. `verify-http-pg.py .../pg-n4udfonz` PASS.
+- [x] Preserve failed/disqualified attempts and previously untracked M2/M3 evidence;
+  private checkpoint `/tmp/goldberg-stage6-private-pmp/checkpoint.md` outside Git.
+- [ ] Scoped commit/push/exact remote SHA and final Issue31 checkpoint receipt.
+
+**Completion:** local engineering verification complete; publication receipt pending.
+Stage6 remains OPEN,6.12 PARTIAL,6.17 NOT FROZEN. G1/G2/G3/G5/G6/G9 now have
+combined local backend evidence; G4 HTTP Comparison available/unavailable verified;
+G8 exact reads/max-int8 and fail-closed unsupported writes; G11 validation/default-deny
+verified locally. G1–G9/G11 **consumer integration stays OPEN**; G10 static disabled
+Android boundary CLOSED. `/v1` compatibility UNCONFIRMED. Title/composer policy,
+full-int8 domain writes, final query budgets, client refetch/reconfirmation and
+broader hosted/browser/operational/legal acceptance remain open.
+C4 **8 PASS/19 PARTIAL/6 OPEN**;6.0f unchecked; C2 §12 remains independent.
+
+No production Supabase/Cloudflare/OAuth, real credentials/data, paid resources,
+Stage7 edits, device/ADB, merge/main/tag/release or public API activation. No
+Gradle/JVM/lint/APK/instrumentation/screenshots/browser/proxy/hosted tests executed;
+no APK/hash/signing claim. Prior encrypted-restore/ACL SQL runs are preserved
+historical evidence, not rerun by the static backup/ACL checks above.
+
+Full endpoint/G1–G11/evidence ledger:
+`docs/planning/goldberg-0.11/stage-6/API-HTTP-PG-INTEGRATION.md`.
+Next: publish verified source normally, verify remote SHA, append Issue31 final
+checkpoint and synchronize receipt; then leave consumer/policy/cloud gates open.
+
+created by stokonn with love <3
+
 ## Stage 6 durable backup-key resilience verification — 2026-10-24
 
 Current official public documentation was re-read without provider login or

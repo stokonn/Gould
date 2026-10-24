@@ -1,0 +1,1 @@
+Pinned client provenance only; external worktree not consulted. PASS:41 primary cases (30 actual in-process/scripted-storage captures,11 inactive proposals),29 preserved authored cases; G1-G11 matrix; source/corpus/client hashes; G10 remains closed. No HTTP/PG/Android/freeze acceptance.

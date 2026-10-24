@@ -1,3 +1,20 @@
+## Current local HTTP → PostgreSQL integration (2026-10-24)
+
+Queue, audit and exact Prague-day statistics now have PostgreSQL-backed DTO
+projections. The loopback HTTP listener exercises real transactions; native
+services/schema and Android remain unchanged. `/v1` is provisional, policies
+remain default-deny, title/composer are null and full-int8 writes remain unavailable.
+
+Run `python3 spikes/stage6-api-v1-local/run-http-postgres.py` from repository root
+on the authorized rootless host, then verify its printed run directory with
+`python3 spikes/stage6-api-v1-local/verify-http-pg.py RUN_DIRECTORY`.
+No image pull, external database URL, host data mount or production service is used.
+The runner uses the exact inspected cached PostgreSQL17 image ID, ephemeral
+localhost ports, synthetic fixtures and verified container/volume cleanup.
+
+See [current implementation, G1–G11 and evidence ledger](../../docs/planning/goldberg-0.11/stage-6/API-HTTP-PG-INTEGRATION.md).
+Older venue/absence statements below describe historical milestones, not this batch.
+
 ## Local M3 Comparison — verified
 
 Strict in-process GET `/v1/admin/entities/{id}/comparison?submissionId={id}` now

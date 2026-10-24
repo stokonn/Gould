@@ -1,5 +1,5 @@
-// Provisional LOCAL /v1 representation only: deliberately no listener, URL or deploy entry point.
-import {randomUUID} from 'node:crypto';
+// Provisional LOCAL /v1 representation only; optional loopback transport, no deployment entry point.
+import {randomBytes,randomUUID} from 'node:crypto';
 import {LocalApi} from '../../stage6-auth-local/src/local-api.mjs';
 import {SessionService,protect} from '../../stage6-auth-local/src/sessions.mjs';
 import {Authorization} from '../../stage6-auth-local/src/authorization.mjs';
@@ -13,28 +13,30 @@ import {PublicReceipts} from './receipts.mjs';
 import {Validator,text} from '../../stage6-handlers-local/src/validation.mjs';
 import {object,secret,id,decimal,localRevision,readRevision,timestamp,parseBody} from './wire.mjs';
 import {queueQuery,auditQuery} from './query.mjs';
+import {CursorCodec} from './wire.mjs';
+import {queuePage,auditPage,statistics} from './reads.mjs';
 const caps=new Set(['submit','submission.read.own','submission.revise.own','submission.withdraw.own','queue.read','decide','quarantine','audit.read','roles.manage']);
 const safeMessages={400:['validation_failed','Invalid request'],401:['unauthenticated','Authentication required'],403:['forbidden','Operation not permitted'],404:['not_found','Resource not found'],405:['method_not_allowed','Method not allowed'],409:['conflict','Revision or state conflict'],422:['idempotency_mismatch','Key already used for a different request'],503:['service_unavailable','Service unavailable']};
 const output=(fn,...args)=>{try{return fn(...args);}catch{throw unavailable();}};
 const known=new Map([['/v1/session/challenge',['POST']],['/v1/session',['POST','GET','DELETE']],['/v1/session/refresh',['POST']],['/v1/me/capabilities',['GET']]]);
 function queryObject(path){
  const index=path.indexOf('?');if(index<0)return {base:path,query:{}};
- const base=path.slice(0,index),query={};if(!path.slice(index+1))throw invalid();
+ const base=path.slice(0,index),query=Object.create(null);if(!path.slice(index+1))throw invalid();
  for(const part of path.slice(index+1).split('&')){
   const equal=part.indexOf('=');if(equal<1)throw invalid();
-  let key,value;try{key=decodeURIComponent(part.slice(0,equal));value=decodeURIComponent(part.slice(equal+1));}catch{throw invalid();}
+  let key,value;try{key=decodeURIComponent(part.slice(0,equal).replace(/\+/g,' '));value=decodeURIComponent(part.slice(equal+1).replace(/\+/g,' '));}catch{throw invalid();}
   if(Object.hasOwn(query,key))throw invalid();query[key]=value;
  }
  return {base,query};
 }
-export function createLocalAdapter({localOnly,connect,schema,verifier,clock,validator=new Validator()}){
+export function createLocalAdapter({localOnly,connect,schema,verifier,clock,validator=new Validator(),cursorKey=randomBytes(32)}){
  if(localOnly!==true||typeof clock!=='function')throw new TypeError('explicit local-only composition and clock required');
  const sessions=new SessionService({connect,schema,verifier,clock,accessTtlMs:900000,refreshTtlMs:604800000,challengeTtlMs:300000});
  const authorization=new Authorization({sessions,clock});const idempotency=new PublicReceipts({schema,clock});
- return new PublicAdapter({sessions,authorization,idempotency,validator,clock});
+ return new PublicAdapter({sessions,authorization,idempotency,validator,clock,cursors:new CursorCodec({key:cursorKey,clock})});
 }
 export class PublicAdapter {
- constructor({sessions,authorization,idempotency,validator,clock}){Object.assign(this,{sessions,authorization,idempotency,validator,clock});this.auth=new LocalApi({sessions,authorization});}
+ constructor({sessions,authorization,idempotency,validator,clock,cursors}){Object.assign(this,{sessions,authorization,idempotency,validator,clock,cursors});this.auth=new LocalApi({sessions,authorization});}
  async invoke(request){
   let requestId=randomUUID(),allow;
   const response=(status,body)=>({status,headers:{'X-Request-ID':requestId,'Cache-Control':'no-store',...(status===204?{}:{'Content-Type':'application/json'}),...(allow?{Allow:allow}: {})},body});
@@ -72,17 +74,9 @@ export class PublicAdapter {
    };
    const dto=(fields)=>({schemaVersion:1,requestId,...fields});
    if(comparison)return response(200,await currentComparison(this,token(),id(comparison[1]),comparisonSubmission,requestId));
-   if(route==='/v1/admin/queue'){
-    await this.authorization.require(token(),'queue.read',async()=>{throw unavailable();});
-   }
-   if(route==='/v1/admin/audit'){
-    await this.authorization.require(token(),'audit.read',async()=>{throw unavailable();});
-   }
-   if(route==='/v1/admin/stats'){
-    const accessToken=token(),capabilities=await this.authorization.capabilities(accessToken);
-    if(!capabilities.includes('queue.read')||!capabilities.includes('audit.read'))throw new ApiError(403,'forbidden','Operation not permitted');
-    throw unavailable();
-   }
+   if(route==='/v1/admin/queue')return response(200,await queuePage(this,token(),queueQuery(parsed.query),requestId));
+   if(route==='/v1/admin/audit')return response(200,await auditPage(this,token(),auditQuery(parsed.query),requestId));
+   if(route==='/v1/admin/stats')return response(200,await statistics(this,token(),requestId));
    if(detail)return response(200,await latestDetail(this,token(),id(detail[1]),requestId));
    if(match){
     const submissionId=id(match[1]),opening=match[2]==='open';

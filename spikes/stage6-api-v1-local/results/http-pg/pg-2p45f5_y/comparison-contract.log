@@ -1,0 +1,1 @@
+PASS: 22 actual PostgreSQL-backed Comparison responses match approved exact DTO schema; synthetic content only.

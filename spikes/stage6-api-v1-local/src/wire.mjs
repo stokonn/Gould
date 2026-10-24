@@ -52,7 +52,7 @@ function cursorShape(v){
  if(v.version!==1||!['queue','audit'].includes(v.scope))throw invalid();id(v.principalId);timestamp(v.issuedAt);timestamp(v.expiresAt);
  if(micros(v.expiresAt)-micros(v.issuedAt)!==900000000n)throw invalid();
  const keys=v.scope==='queue'?['status','kind','q']:['action','actorId','subjectId','from','to','q'];object(v.filters,keys,[]);
- for(const [k,x] of Object.entries(v.filters)){if(typeof x!=='string'||!x.length||Buffer.byteLength(x)>200||/[\x00-\x1f\x7f]/.test(x)||(/[<>]/.test(x)&&!(k==='action'&&/^[a-z_]+(?:\.[a-z_]+|->[a-z_]+)?$/.test(x))))throw invalid();if(!x.trim())throw invalid();if(k==='status'&&!['submitted','in_review','changes_requested'].includes(x))throw invalid();if(k==='kind'&&!['work','arrangement','artist','album','release','recording','collection'].includes(x))throw invalid();if(['actorId','subjectId'].includes(k))id(x);if(['from','to'].includes(k))timestamp(x);}
+ for(const [k,x] of Object.entries(v.filters)){if(typeof x!=='string'||!x.length||Buffer.byteLength(x)>200||/[\x00-\x1f\x7f]/.test(x))throw invalid();if(!x.trim())throw invalid();if(k==='status'&&!['submitted','in_review','changes_requested'].includes(x))throw invalid();if(k==='kind'&&!['work','arrangement','artist','album','release','recording','collection'].includes(x))throw invalid();if(['actorId','subjectId'].includes(k))id(x);if(['from','to'].includes(k))timestamp(x);}
  if(v.filters.from&&v.filters.to&&v.filters.from>=v.filters.to)throw invalid();
  if(v.scope==='queue'){
   if(v.order!=='createdAt,id'||Object.hasOwn(v,'highwater')||Object.hasOwn(v,'headHash'))throw invalid();

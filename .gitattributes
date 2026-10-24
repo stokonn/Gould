@@ -1,0 +1,4 @@
+# Preserve byte-exact failed Node TAP diagnostics and their recorded SHA-256.
+# Only these two historical raw logs contain Node-generated blank-line spaces.
+spikes/stage6-api-v1-local/results/http-pg/pg-4klrg2um/http-postgres.tap -whitespace
+spikes/stage6-api-v1-local/results/http-pg/pg-c9rg4x5v/http-postgres.tap -whitespace

@@ -1,0 +1,716 @@
+
+> goldberg-stage6-api-v1-local@0.0.0 test
+> node --test tests/adapter.test.mjs tests/compatibility.test.mjs tests/statistics.test.mjs tests/http.test.mjs
+
+TAP version 13
+# Subtest: unit: local-only composition is mandatory; no implicit deployment configuration
+ok 1 - unit: local-only composition is mandatory; no implicit deployment configuration
+  ---
+  duration_ms: 4.305975
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: challenge and exchange expose exact versioned session DTOs
+ok 2 - service/scripted SQL: challenge and exchange expose exact versioned session DTOs
+  ---
+  duration_ms: 12.090939
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: authenticated session and capabilities bind same verified principal/session
+ok 3 - service/scripted SQL: authenticated session and capabilities bind same verified principal/session
+  ---
+  duration_ms: 6.511305
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: missing and unknown sessions return401, no fake principal
+ok 4 - service/scripted SQL: missing and unknown sessions return401, no fake principal
+  ---
+  duration_ms: 3.713263
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: access expires exactly15m and refresh rotates atomically
+ok 5 - service/scripted SQL: access expires exactly15m and refresh rotates atomically
+  ---
+  duration_ms: 6.491328
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: used refresh replay revokes family and denies replacement access
+ok 6 - service/scripted SQL: used refresh replay revokes family and denies replacement access
+  ---
+  duration_ms: 4.31994
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: lost refresh response requires reauthentication; no idempotent credential replay
+ok 7 - service/scripted SQL: lost refresh response requires reauthentication; no idempotent credential replay
+  ---
+  duration_ms: 6.213021
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: challenge consumed once, nonce mismatch and expired challenge denied
+ok 8 - service/scripted SQL: challenge consumed once, nonce mismatch and expired challenge denied
+  ---
+  duration_ms: 4.59976
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: logout is empty204, repeat idempotent, and family access revoked
+ok 9 - service/scripted SQL: logout is empty204, repeat idempotent, and family access revoked
+  ---
+  duration_ms: 3.846275
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: absolute family lifetime does not slide; suspension and unknown grants deny
+ok 10 - service/scripted SQL: absolute family lifetime does not slide; suspension and unknown grants deny
+  ---
+  duration_ms: 8.079582
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: different account has server identity, no inherited capabilities
+ok 11 - service/scripted SQL: different account has server identity, no inherited capabilities
+  ---
+  duration_ms: 5.918253
+  type: 'test'
+  ...
+# Subtest: adapter routing: GET /v1/session/challenge →405
+ok 12 - adapter routing: GET /v1/session/challenge →405
+  ---
+  duration_ms: 0.726184
+  type: 'test'
+  ...
+# Subtest: adapter routing: PATCH /v1/session →405
+ok 13 - adapter routing: PATCH /v1/session →405
+  ---
+  duration_ms: 0.332299
+  type: 'test'
+  ...
+# Subtest: adapter routing: POST /v1/admin/audit/edit →404
+ok 14 - adapter routing: POST /v1/admin/audit/edit →404
+  ---
+  duration_ms: 0.235646
+  type: 'test'
+  ...
+# Subtest: adapter routing: POST /v1/bootstrap →404
+ok 15 - adapter routing: POST /v1/bootstrap →404
+  ---
+  duration_ms: 0.236477
+  type: 'test'
+  ...
+# Subtest: adapter routing: GET /v1/admin/stats →401
+ok 16 - adapter routing: GET /v1/admin/stats →401
+  ---
+  duration_ms: 0.258759
+  type: 'test'
+  ...
+# Subtest: adapter routing: GET /v1/admin/queue →401
+ok 17 - adapter routing: GET /v1/admin/queue →401
+  ---
+  duration_ms: 0.605305
+  type: 'test'
+  ...
+# Subtest: adapter routing: POST /v2/session →404
+ok 18 - adapter routing: POST /v2/session →404
+  ---
+  duration_ms: 0.757903
+  type: 'test'
+  ...
+# Subtest: adapter routing: GET /v1/session/ →404
+ok 19 - adapter routing: GET /v1/session/ →404
+  ---
+  duration_ms: 0.439521
+  type: 'test'
+  ...
+# Subtest: adapter routing: get /v1/session →400
+ok 20 - adapter routing: get /v1/session →400
+  ---
+  duration_ms: 0.533469
+  type: 'test'
+  ...
+# Subtest: adapter routing: GET https://bad.invalid/v1/session →400
+ok 21 - adapter routing: GET https://bad.invalid/v1/session →400
+  ---
+  duration_ms: 0.38083
+  type: 'test'
+  ...
+# Subtest: adapter routing: GET /v1/session?cursor=bad →400
+ok 22 - adapter routing: GET /v1/session?cursor=bad →400
+  ---
+  duration_ms: 0.561442
+  type: 'test'
+  ...
+# Subtest: adapter validation: duplicate-version rejected before service dispatch
+ok 23 - adapter validation: duplicate-version rejected before service dispatch
+  ---
+  duration_ms: 0.862331
+  type: 'test'
+  ...
+# Subtest: adapter validation: duplicate-nested rejected before service dispatch
+ok 24 - adapter validation: duplicate-nested rejected before service dispatch
+  ---
+  duration_ms: 0.556192
+  type: 'test'
+  ...
+# Subtest: adapter validation: unknown-elevated-field rejected before service dispatch
+ok 25 - adapter validation: unknown-elevated-field rejected before service dispatch
+  ---
+  duration_ms: 0.536585
+  type: 'test'
+  ...
+# Subtest: adapter validation: dangerous-key rejected before service dispatch
+ok 26 - adapter validation: dangerous-key rejected before service dispatch
+  ---
+  duration_ms: 0.642185
+  type: 'test'
+  ...
+# Subtest: adapter validation: missing-version rejected before service dispatch
+ok 27 - adapter validation: missing-version rejected before service dispatch
+  ---
+  duration_ms: 0.565409
+  type: 'test'
+  ...
+# Subtest: adapter validation: boolean-version rejected before service dispatch
+ok 28 - adapter validation: boolean-version rejected before service dispatch
+  ---
+  duration_ms: 0.437237
+  type: 'test'
+  ...
+# Subtest: adapter validation: nonfinite rejected before service dispatch
+ok 29 - adapter validation: nonfinite rejected before service dispatch
+  ---
+  duration_ms: 0.484055
+  type: 'test'
+  ...
+# Subtest: adapter validation: bad-json rejected before service dispatch
+ok 30 - adapter validation: bad-json rejected before service dispatch
+  ---
+  duration_ms: 0.474618
+  type: 'test'
+  ...
+# Subtest: adapter validation: unpaired-surrogate rejected before service dispatch
+ok 31 - adapter validation: unpaired-surrogate rejected before service dispatch
+  ---
+  duration_ms: 0.598392
+  type: 'test'
+  ...
+# Subtest: adapter validation: deep rejected before service dispatch
+ok 32 - adapter validation: deep rejected before service dispatch
+  ---
+  duration_ms: 0.520364
+  type: 'test'
+  ...
+# Subtest: adapter validation: malformed UTF8, oversized body, GET/DELETE bodies, content type and header duplication
+ok 33 - adapter validation: malformed UTF8, oversized body, GET/DELETE bodies, content type and header duplication
+  ---
+  duration_ms: 1.260174
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: explicit open preserves distinct entity7/proposal3 and is not automatic
+ok 34 - service/scripted SQL: explicit open preserves distinct entity7/proposal3 and is not automatic
+  ---
+  duration_ms: 10.573639
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: approval201 projects entity8 and proposal3; paired audit transition once per effect
+ok 35 - service/scripted SQL: approval201 projects entity8 and proposal3; paired audit transition once per effect
+  ---
+  duration_ms: 6.130325
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: reject200 has actual proposal revision and no invented entity revision
+ok 36 - service/scripted SQL: reject200 has actual proposal revision and no invented entity revision
+  ---
+  duration_ms: 3.006757
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: request_changes200 has actual proposal revision and no invented entity revision
+ok 37 - service/scripted SQL: request_changes200 has actual proposal revision and no invented entity revision
+  ---
+  duration_ms: 3.06639
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: same-key replay after explicit open preserves exact receipt
+ok 38 - service/scripted SQL: same-key replay after explicit open preserves exact receipt
+  ---
+  duration_ms: 3.268132
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: reuse across operation/path is422; role revocation precedes stored receipt lookup
+ok 39 - service/scripted SQL: reuse across operation/path is422; role revocation precedes stored receipt lookup
+  ---
+  duration_ms: 5.691304
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: self-review denied for both open and decisions
+ok 40 - service/scripted SQL: self-review denied for both open and decisions
+  ---
+  duration_ms: 6.653624
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: default policy denies approval; no synthetic production policy enabled
+ok 41 - service/scripted SQL: default policy denies approval; no synthetic production policy enabled
+  ---
+  duration_ms: 2.465333
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: approved protocol expectation stale-entity
+ok 42 - service/scripted SQL: approved protocol expectation stale-entity
+  ---
+  duration_ms: 3.969178
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: approved protocol expectation stale-proposal
+ok 43 - service/scripted SQL: approved protocol expectation stale-proposal
+  ---
+  duration_ms: 1.940069
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: approved protocol expectation wrong-state
+ok 44 - service/scripted SQL: approved protocol expectation wrong-state
+  ---
+  duration_ms: 1.596038
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: approved protocol expectation same-request-replay
+ok 45 - service/scripted SQL: approved protocol expectation same-request-replay
+  ---
+  duration_ms: 2.6013
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: approved protocol expectation changed-body-same-key
+ok 46 - service/scripted SQL: approved protocol expectation changed-body-same-key
+  ---
+  duration_ms: 3.275125
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: approved protocol expectation role-revoked-before-replay
+ok 47 - service/scripted SQL: approved protocol expectation role-revoked-before-replay
+  ---
+  duration_ms: 3.118779
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: approved protocol expectation session-revoked-before-replay
+ok 48 - service/scripted SQL: approved protocol expectation session-revoked-before-replay
+  ---
+  duration_ms: 2.287406
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: approved protocol expectation uncertain-response-recovery
+ok 49 - service/scripted SQL: approved protocol expectation uncertain-response-recovery
+  ---
+  duration_ms: 2.899684
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: receipt retention exactly24h after completion, not request start
+ok 50 - service/scripted SQL: receipt retention exactly24h after completion, not request start
+  ---
+  duration_ms: 4.430029
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: storage/projection failure rolls back domain effects and public receipt, retry same intent
+ok 51 - service/scripted SQL: storage/projection failure rolls back domain effects and public receipt, retry same intent
+  ---
+  duration_ms: 3.739242
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: conflicting concurrent intents serialize in scripted venue; only one succeeds
+ok 52 - service/scripted SQL: conflicting concurrent intents serialize in scripted venue; only one succeeds
+  ---
+  duration_ms: 5.085969
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: challenge-request
+ok 53 - actual adapter fixture request: challenge-request
+  ---
+  duration_ms: 1.868855
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: login-request
+ok 54 - actual adapter fixture request: login-request
+  ---
+  duration_ms: 1.347719
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: refresh-request
+ok 55 - actual adapter fixture request: refresh-request
+  ---
+  duration_ms: 1.487864
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: open-request
+ok 56 - actual adapter fixture request: open-request
+  ---
+  duration_ms: 1.738478
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: approve-request
+ok 57 - actual adapter fixture request: approve-request
+  ---
+  duration_ms: 1.729761
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: reject-request
+ok 58 - actual adapter fixture request: reject-request
+  ---
+  duration_ms: 1.641896
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: changes-request
+ok 59 - actual adapter fixture request: changes-request
+  ---
+  duration_ms: 1.657595
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: bad-entity-number
+ok 60 - actual adapter fixture request: bad-entity-number
+  ---
+  duration_ms: 1.053122
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: bad-entity-zero-pad
+ok 61 - actual adapter fixture request: bad-entity-zero-pad
+  ---
+  duration_ms: 1.049945
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: bad-entity-overflow
+ok 62 - actual adapter fixture request: bad-entity-overflow
+  ---
+  duration_ms: 1.083038
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: bad-entity-fraction
+ok 63 - actual adapter fixture request: bad-entity-fraction
+  ---
+  duration_ms: 1.123836
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: bad-entity-exponent
+ok 64 - actual adapter fixture request: bad-entity-exponent
+  ---
+  duration_ms: 1.141839
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: bad-entity-negative
+ok 65 - actual adapter fixture request: bad-entity-negative
+  ---
+  duration_ms: 1.068441
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: bad-entity-missing
+ok 66 - actual adapter fixture request: bad-entity-missing
+  ---
+  duration_ms: 1.153321
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: bad-proposal-zero
+ok 67 - actual adapter fixture request: bad-proposal-zero
+  ---
+  duration_ms: 1.20552
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: bad-proposal-number
+ok 68 - actual adapter fixture request: bad-proposal-number
+  ---
+  duration_ms: 1.122173
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: bad-proposal-missing
+ok 69 - actual adapter fixture request: bad-proposal-missing
+  ---
+  duration_ms: 0.967109
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: explicit-new-zero
+ok 70 - actual adapter fixture request: explicit-new-zero
+  ---
+  duration_ms: 1.405007
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: bigint-above-js
+ok 71 - actual adapter fixture request: bigint-above-js
+  ---
+  duration_ms: 2.998852
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: missing-version
+ok 72 - actual adapter fixture request: missing-version
+  ---
+  duration_ms: 1.183689
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: unknown-request-field
+ok 73 - actual adapter fixture request: unknown-request-field
+  ---
+  duration_ms: 1.095222
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: wrong-version
+ok 74 - actual adapter fixture request: wrong-version
+  ---
+  duration_ms: 1.146068
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: reason-1000-bytes
+ok 75 - actual adapter fixture request: reason-1000-bytes
+  ---
+  duration_ms: 2.773626
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: reason-1004-bytes
+ok 76 - actual adapter fixture request: reason-1004-bytes
+  ---
+  duration_ms: 1.796999
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: reason-blank
+ok 77 - actual adapter fixture request: reason-blank
+  ---
+  duration_ms: 1.197174
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: reason-html
+ok 78 - actual adapter fixture request: reason-html
+  ---
+  duration_ms: 0.998259
+  type: 'test'
+  ...
+# Subtest: actual adapter fixture request: reason-required
+ok 79 - actual adapter fixture request: reason-required
+  ---
+  duration_ms: 1.027673
+  type: 'test'
+  ...
+# Subtest: wire unit: exact decimal read 0
+ok 80 - wire unit: exact decimal read 0
+  ---
+  duration_ms: 0.19532
+  type: 'test'
+  ...
+# Subtest: wire unit: exact decimal read 1
+ok 81 - wire unit: exact decimal read 1
+  ---
+  duration_ms: 0.087656
+  type: 'test'
+  ...
+# Subtest: wire unit: exact decimal read 9007199254740993
+ok 82 - wire unit: exact decimal read 9007199254740993
+  ---
+  duration_ms: 0.062088
+  type: 'test'
+  ...
+# Subtest: wire unit: exact decimal read 9223372036854775807
+ok 83 - wire unit: exact decimal read 9223372036854775807
+  ---
+  duration_ms: 0.046057
+  type: 'test'
+  ...
+# Subtest: wire unit: malformed/overflow integer representation 9007199254740992
+ok 84 - wire unit: malformed/overflow integer representation 9007199254740992
+  ---
+  duration_ms: 0.175432
+  type: 'test'
+  ...
+# Subtest: wire unit: malformed/overflow integer representation 1.5
+ok 85 - wire unit: malformed/overflow integer representation 1.5
+  ---
+  duration_ms: 0.075042
+  type: 'test'
+  ...
+# Subtest: wire unit: malformed/overflow integer representation 9223372036854775808
+ok 86 - wire unit: malformed/overflow integer representation 9223372036854775808
+  ---
+  duration_ms: 0.065975
+  type: 'test'
+  ...
+# Subtest: wire unit: malformed/overflow integer representation 01
+ok 87 - wire unit: malformed/overflow integer representation 01
+  ---
+  duration_ms: 0.05314
+  type: 'test'
+  ...
+# Subtest: wire unit: malformed/overflow integer representation -1
+ok 88 - wire unit: malformed/overflow integer representation -1
+  ---
+  duration_ms: 0.054954
+  type: 'test'
+  ...
+# Subtest: wire unit: malformed/overflow integer representation 1e2
+ok 89 - wire unit: malformed/overflow integer representation 1e2
+  ---
+  duration_ms: 0.05323
+  type: 'test'
+  ...
+# Subtest: wire unit: malformed/overflow integer representation 1.0
+ok 90 - wire unit: malformed/overflow integer representation 1.0
+  ---
+  duration_ms: 0.053001
+  type: 'test'
+  ...
+# Subtest: wire unit: malformed/overflow integer representation +1
+ok 91 - wire unit: malformed/overflow integer representation +1
+  ---
+  duration_ms: 0.218994
+  type: 'test'
+  ...
+# Subtest: wire unit: malformed/overflow integer representation  1
+ok 92 - wire unit: malformed/overflow integer representation  1
+  ---
+  duration_ms: 0.066756
+  type: 'test'
+  ...
+# Subtest: wire unit: backend unsafe Number never decoded as an exact int8
+ok 93 - wire unit: backend unsafe Number never decoded as an exact int8
+  ---
+  duration_ms: 0.270091
+  type: 'test'
+  ...
+# Subtest: wire unit: UTC microseconds preserved, auth milliseconds padded, impossible dates rejected
+ok 94 - wire unit: UTC microseconds preserved, auth milliseconds padded, impossible dates rejected
+  ---
+  duration_ms: 0.305779
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: valid unsupported int8 writes fail503 after live auth; missing auth401
+ok 95 - service/scripted SQL: valid unsupported int8 writes fail503 after live auth; missing auth401
+  ---
+  duration_ms: 2.028848
+  type: 'test'
+  ...
+# Subtest: cursor unit: opaque canonical string preserves int8 highwater, scope and15m expiry
+ok 96 - cursor unit: opaque canonical string preserves int8 highwater, scope and15m expiry
+  ---
+  duration_ms: 2.671162
+  type: 'test'
+  ...
+# Subtest: cursor unit: malformed/tampered/expired/wrong-principal/filter tokens rejected
+ok 97 - cursor unit: malformed/tampered/expired/wrong-principal/filter tokens rejected
+  ---
+  duration_ms: 1.984123
+  type: 'test'
+  ...
+# Subtest: adapter security: arbitrary backend exception text is never a public/logged error
+ok 98 - adapter security: arbitrary backend exception text is never a public/logged error
+  ---
+  duration_ms: 1.606128
+  type: 'test'
+  ...
+# Subtest: cursor unit: microsecond TTL and future issuance cannot be rounded to milliseconds
+ok 99 - cursor unit: microsecond TTL and future issuance cannot be rounded to milliseconds
+  ---
+  duration_ms: 0.99402
+  type: 'test'
+  ...
+# Subtest: cursor unit: invalid queue enum, nested field or audit window is rejected
+ok 100 - cursor unit: invalid queue enum, nested field or audit window is rejected
+  ---
+  duration_ms: 0.707849
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: full int8 increment unsupported at safe-number boundary returns409 without effects
+ok 101 - service/scripted SQL: full int8 increment unsupported at safe-number boundary returns409 without effects
+  ---
+  duration_ms: 1.969475
+  type: 'test'
+  ...
+# Subtest: adapter routing: malformed submission ID and forbidden request-level fields never dispatch
+ok 102 - adapter routing: malformed submission ID and forbidden request-level fields never dispatch
+  ---
+  duration_ms: 0.56543
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: nonexistent submission is404 without hidden current-state disclosure
+ok 103 - service/scripted SQL: nonexistent submission is404 without hidden current-state disclosure
+  ---
+  duration_ms: 2.247902
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL + controlled RSA/JWKS: signed credential challenge exchange and maximum60s skew
+ok 104 - service/scripted SQL + controlled RSA/JWKS: signed credential challenge exchange and maximum60s skew
+  ---
+  duration_ms: 152.904203
+  type: 'test'
+  ...
+# Subtest: service/scripted SQL: explicit new-entity zero expectation approves revision1; no missing default
+ok 105 - service/scripted SQL: explicit new-entity zero expectation approves revision1; no missing default
+  ---
+  duration_ms: 2.523062
+  type: 'test'
+  ...
+# Subtest: cursor unit: actual audit transition vocabulary survives exact action filter binding
+ok 106 - cursor unit: actual audit transition vocabulary survives exact action filter binding
+  ---
+  duration_ms: 1.261255
+  type: 'test'
+  ...
+# Subtest: compatibility corpus remains synthetic, inactive, and explicitly classified
+ok 107 - compatibility corpus remains synthetic, inactive, and explicitly classified
+  ---
+  duration_ms: 2.377927
+  type: 'test'
+  ...
+# Subtest: session identity is not inferred from capabilities
+ok 108 - session identity is not inferred from capabilities
+  ---
+  duration_ms: 0.471251
+  type: 'test'
+  ...
+# Subtest: queue and audit cursor dialects are never silently substituted
+ok 109 - queue and audit cursor dialects are never silently substituted
+  ---
+  duration_ms: 2.124078
+  type: 'test'
+  ...
+# Subtest: decision expectations and result revisions remain distinct
+ok 110 - decision expectations and result revisions remain distinct
+  ---
+  duration_ms: 0.376211
+  type: 'test'
+  ...
+# Subtest: unsafe numeric and unresolved server capabilities remain blocked
+ok 111 - unsafe numeric and unresolved server capabilities remain blocked
+  ---
+  duration_ms: 0.540152
+  type: 'test'
+  ...
+# Subtest: loopback HTTP preserves session DTOs, authorization and 204 logout
+ok 112 - loopback HTTP preserves session DTOs, authorization and 204 logout
+  ---
+  duration_ms: 121.58699
+  type: 'test'
+  ...
+# Subtest: loopback transport rejects duplicate JSON, oversized bodies and unsupported methods
+ok 113 - loopback transport rejects duplicate JSON, oversized bodies and unsupported methods
+  ---
+  duration_ms: 37.271846
+  type: 'test'
+  ...
+# Subtest: Europe/Prague windows preserve civil midnight and DST duration
+ok 114 - Europe/Prague windows preserve civil midnight and DST duration
+  ---
+  duration_ms: 6.558064
+  type: 'test'
+  ...
+# Subtest: search is NFC-normalized, case-insensitive, and diacritic-sensitive
+ok 115 - search is NFC-normalized, case-insensitive, and diacritic-sensitive
+  ---
+  duration_ms: 0.612008
+  type: 'test'
+  ...
+# Subtest: queue query accepts only bounded approved filters
+ok 116 - queue query accepts only bounded approved filters
+  ---
+  duration_ms: 1.426288
+  type: 'test'
+  ...
+# Subtest: audit query rejects ambiguous or unsafe filters
+ok 117 - audit query rejects ambiguous or unsafe filters
+  ---
+  duration_ms: 1.265633
+  type: 'test'
+  ...
+1..117
+# tests 117
+# suites 0
+# pass 117
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 701.802025

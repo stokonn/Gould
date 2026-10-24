@@ -1,0 +1,240 @@
+TAP version 13
+# Subtest: HTTP-PG challenge/login/session/capabilities/refresh/logout and account isolation
+ok 1 - HTTP-PG challenge/login/session/capabilities/refresh/logout and account isolation
+  ---
+  duration_ms: 824.564857
+  type: 'test'
+  ...
+# Subtest: HTTP-PG refresh replay revokes entire family; concurrent rotation has one winner
+not ok 2 - HTTP-PG refresh replay revokes entire family; concurrent rotation has one winner
+  ---
+  duration_ms: 591.35699
+  type: 'test'
+  location: '/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http-postgres.test.mjs:18:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+    -   200,
+        401,
+    +   401
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 200
+    1: 401
+  actual:
+    0: 401
+    1: 401
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http-postgres.test.mjs:21:9)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: HTTP-PG expired challenge, bad identity, expired access, and absolute family expiry
+ok 3 - HTTP-PG expired challenge, bad identity, expired access, and absolute family expiry
+  ---
+  duration_ms: 478.50904
+  type: 'test'
+  ...
+# Subtest: HTTP-PG queue exact safe DTO, metadata null, evidence count and no private payload
+ok 4 - HTTP-PG queue exact safe DTO, metadata null, evidence count and no private payload
+  ---
+  duration_ms: 451.901703
+  type: 'test'
+  ...
+# Subtest: HTTP-PG queue filters precede limit; UUID/kind search; percent underscore literal
+ok 5 - HTTP-PG queue filters precede limit; UUID/kind search; percent underscore literal
+  ---
+  duration_ms: 724.646404
+  type: 'test'
+  ...
+# Subtest: HTTP-PG queue microsecond keyset pages have no duplicates and survive adapter restart
+ok 6 - HTTP-PG queue microsecond keyset pages have no duplicates and survive adapter restart
+  ---
+  duration_ms: 622.810076
+  type: 'test'
+  ...
+# Subtest: HTTP-PG cursor tamper, scope, caller, filters and exact 15-minute expiry fail closed
+ok 7 - HTTP-PG cursor tamper, scope, caller, filters and exact 15-minute expiry fail closed
+  ---
+  duration_ms: 651.747346
+  type: 'test'
+  ...
+# Subtest: HTTP-PG audit exact canonical DTO, fixed snapshot head and independent hash chain
+ok 8 - HTTP-PG audit exact canonical DTO, fixed snapshot head and independent hash chain
+  ---
+  duration_ms: 653.698193
+  type: 'test'
+  ...
+# Subtest: HTTP-PG audit AND filters, actual action vocabulary, time bounds and literal CZ/NFC search
+not ok 9 - HTTP-PG audit AND filters, actual action vocabulary, time bounds and literal CZ/NFC search
+  ---
+  duration_ms: 467.223901
+  type: 'test'
+  location: '/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http-postgres.test.mjs:71:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http-postgres.test.mjs:75:111)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: HTTP-PG exact stats count approval once and use database Prague day
+ok 10 - HTTP-PG exact stats count approval once and use database Prague day
+  ---
+  duration_ms: 739.43842
+  type: 'test'
+  ...
+# Subtest: HTTP-PG stats snapshot remains coherent during concurrent publication
+ok 11 - HTTP-PG stats snapshot remains coherent during concurrent publication
+  ---
+  duration_ms: 618.558691
+  type: 'test'
+  ...
+# Subtest: HTTP-PG dual revisions, open, comparison, publication and exact persisted replay
+not ok 12 - HTTP-PG dual revisions, open, comparison, publication and exact persisted replay
+  ---
+  duration_ms: 544.129921
+  type: 'test'
+  location: '/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http-postgres.test.mjs:92:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '{"requestId":"8be63c79-e21e-4669-9fcc-76ee2ef037e4","status":"published","decision":"approve","entityId":"f2228718-5d80-4242-8a62-4b65eeb1c9ac","submissionId":"f15423c3-7cb9-495b-b7ea-b5f3301ce304","schemaVersion":1,"submissionRevision":"1","publishedEntityRevision":"1"}'
+    - '{"requestId":"8be63c79-e21e-4669-9fcc-76ee2ef037e4","schemaVersion":1,"submissionId":"f15423c3-7cb9-495b-b7ea-b5f3301ce304","status":"published","submissionRevision":"1","decision":"approve","entityId":"f2228718-5d80-4242-8a62-4b65eeb1c9ac","publishedEntityRevision":"1"}'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '{"requestId":"8be63c79-e21e-4669-9fcc-76ee2ef037e4","schemaVersion":1,"submissionId":"f15423c3-7cb9-495b-b7ea-b5f3301ce304","status":"published","submissionRevision":"1","decision":"approve","entityId":"f2228718-5d80-4242-8a62-4b65eeb1c9ac","publishedEntityRevision":"1"}'
+  actual: '{"requestId":"8be63c79-e21e-4669-9fcc-76ee2ef037e4","status":"published","decision":"approve","entityId":"f2228718-5d80-4242-8a62-4b65eeb1c9ac","submissionId":"f15423c3-7cb9-495b-b7ea-b5f3301ce304","schemaVersion":1,"submissionRevision":"1","publishedEntityRevision":"1"}'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http-postgres.test.mjs:97:104)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: HTTP-PG stale entity/proposal conflicts and revised proposal requires explicit new intent
+not ok 13 - HTTP-PG stale entity/proposal conflicts and revised proposal requires explicit new intent
+  ---
+  duration_ms: 568.356069
+  type: 'test'
+  location: '/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http-postgres.test.mjs:101:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    {"schemaVersion":1,"error":{"code":"conflict","message":"Revision or state conflict","requestId":"7c4f6bf5-cc69-45ce-b3b5-6f13eb7792a8"}}
+    
+    409 !== 200
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 200
+  actual: 409
+  operator: 'strictEqual'
+  stack: |-
+    equalStatus (file:///home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http-postgres.test.mjs:9:38)
+    TestContext.<anonymous> (file:///home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http-postgres.test.mjs:106:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: HTTP-PG same-key concurrency exact replay and competing moderators one publication
+not ok 14 - HTTP-PG same-key concurrency exact replay and competing moderators one publication
+  ---
+  duration_ms: 485.542282
+  type: 'test'
+  location: '/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http-postgres.test.mjs:109:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '{"requestId":"6b75ffbf-2b3e-4701-835e-001c78074369","schemaVersion":1,"submissionId":"57f2f742-49a0-4545-b01b-9ab645bf16f6","status":"published","submissionRevision":"1","decision":"approve","entityId":"e2654eff-aadd-4af2-8328-60eb9164977a","publishedEntityRevision":"1"}'
+    - '{"requestId":"6b75ffbf-2b3e-4701-835e-001c78074369","status":"published","decision":"approve","entityId":"e2654eff-aadd-4af2-8328-60eb9164977a","submissionId":"57f2f742-49a0-4545-b01b-9ab645bf16f6","schemaVersion":1,"submissionRevision":"1","publishedEntityRevision":"1"}'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '{"requestId":"6b75ffbf-2b3e-4701-835e-001c78074369","status":"published","decision":"approve","entityId":"e2654eff-aadd-4af2-8328-60eb9164977a","submissionId":"57f2f742-49a0-4545-b01b-9ab645bf16f6","schemaVersion":1,"submissionRevision":"1","publishedEntityRevision":"1"}'
+  actual: '{"requestId":"6b75ffbf-2b3e-4701-835e-001c78074369","schemaVersion":1,"submissionId":"57f2f742-49a0-4545-b01b-9ab645bf16f6","status":"published","submissionRevision":"1","decision":"approve","entityId":"e2654eff-aadd-4af2-8328-60eb9164977a","publishedEntityRevision":"1"}'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http-postgres.test.mjs:111:163)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: HTTP-PG SQL failure rolls back domain, audit and receipt; unchanged intent retry recovers
+ok 15 - HTTP-PG SQL failure rolls back domain, audit and receipt; unchanged intent retry recovers
+  ---
+  duration_ms: 539.351771
+  type: 'test'
+  ...
+# Subtest: HTTP-PG read timeout is explicit unavailable and next request recovers without mutation
+ok 16 - HTTP-PG read timeout is explicit unavailable and next request recovers without mutation
+  ---
+  duration_ms: 432.835889
+  type: 'test'
+  ...
+# Subtest: HTTP-PG live role revocation, suspension, self-review and foreign account isolation
+ok 17 - HTTP-PG live role revocation, suspension, self-review and foreign account isolation
+  ---
+  duration_ms: 552.63152
+  type: 'test'
+  ...
+# Subtest: HTTP-PG malformed queries and unsafe int8 writes fail closed; safe errors hide SQL
+ok 18 - HTTP-PG malformed queries and unsafe int8 writes fail closed; safe errors hide SQL
+  ---
+  duration_ms: 490.836589
+  type: 'test'
+  ...
+# Subtest: HTTP-PG Prague DST windows equal PostgreSQL civil boundaries, exclusive end includes no next day
+ok 19 - HTTP-PG Prague DST windows equal PostgreSQL civil boundaries, exclusive end includes no next day
+  ---
+  duration_ms: 405.191882
+  type: 'test'
+  ...
+# Subtest: HTTP-PG int8 queue baseline read preserves max storage precision without Number coercion
+not ok 20 - HTTP-PG int8 queue baseline read preserves max storage precision without Number coercion
+  ---
+  duration_ms: 370.637816
+  type: 'test'
+  location: '/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http-postgres.test.mjs:153:1'
+  failureType: 'testCodeFailure'
+  error: 'revision hash mismatch'
+  code: '23514'
+  name: 'error'
+  stack: |-
+    /tmp/goldberg-stage6-security-local/spikes/stage6-schema-pg/node_modules/pg/lib/client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http-postgres.test.mjs:159:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 14
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11645.446509

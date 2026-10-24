@@ -1,0 +1,1 @@
+PASS: ACL proposal is function-scoped, trigger-guarded, and rollback-oriented

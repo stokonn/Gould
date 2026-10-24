@@ -1,5 +1,6 @@
 import {createServer} from 'node:http';
 import {randomUUID} from 'node:crypto';
+import {canonical} from '../../stage6-handlers-local/src/idempotency.mjs';
 
 const MAX_BODY_BYTES=16384;
 const requestId=()=>randomUUID();
@@ -39,7 +40,7 @@ export function createLocalHttpServer({adapter,maxBodyBytes=MAX_BODY_BYTES}){
     ...(chunks.length?{body:Buffer.concat(chunks)}:{})
    });
    const responseHeaders={...result.headers,'X-Request-ID':result.headers?.['X-Request-ID']??id};
-   const body=result.status===204?null:JSON.stringify(result.body);
+   const body=result.status===204?null:canonical(result.body);
    if(body!==null)responseHeaders['Content-Length']=String(Buffer.byteLength(body));
    write(response,result.status,responseHeaders,body);
   }catch{
