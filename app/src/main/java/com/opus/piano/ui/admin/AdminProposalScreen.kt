@@ -7,8 +7,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -83,8 +81,8 @@ import org.json.JSONObject
                             }
                         }
                         Row {
-                            Checkbox(acknowledged, { acknowledged = it }, enabled = state.verified && !state.loading,
-                                modifier = Modifier.semantics { contentDescription = L.s(R.string.stage7b_ack_revision, detail.revision) })
+                            AdminCheckbox(acknowledged, L.s(R.string.stage7b_ack_revision, detail.revision),
+                                enabled = state.verified && !state.loading) { acknowledged = it }
                             Text(L.s(R.string.stage7b_ack_revision, detail.revision), Modifier.padding(top = 12.dp))
                         }
                         Button({ scope.launch { service.acknowledge(detail.revision) } }, enabled = acknowledged && state.verified && !state.loading) {
@@ -136,7 +134,7 @@ import org.json.JSONObject
                 Text(L.s(if (deferred) R.string.stage7b_remove_deferred else R.string.stage7b_defer))
             }
             Row {
-                Checkbox(autoNext, { autoNext = it }, modifier = Modifier.semantics { contentDescription = L.s(R.string.stage7b_auto_next) })
+                AdminCheckbox(autoNext, L.s(R.string.stage7b_auto_next)) { autoNext = it }
                 Text(L.s(R.string.stage7b_auto_next), Modifier.padding(top = 12.dp))
             }
             if (!model.repository.decisionsEnabled) Text(L.s(R.string.stage7b_contract_unavailable))

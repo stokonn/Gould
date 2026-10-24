@@ -185,9 +185,9 @@ private fun EndpointDialog(initial: String, onDismiss: () -> Unit, onSave: (Stri
 private fun endpointValid(text: String): Boolean =
     text.trim().isEmpty() || com.opus.piano.admin.AdminApi.validateEndpoint(text.trim()) != null
 
-@Composable private fun AdminSwitch(label: String, checked: Boolean, change: (Boolean) -> Unit) {
+@Composable internal fun AdminSwitch(label: String, checked: Boolean, change: (Boolean) -> Unit) {
     Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(label, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
-        Switch(checked, change, modifier = Modifier.semantics { contentDescription = label })
+        Switch(checked, change, modifier = Modifier.adminToggleSemantics(label, checked, androidx.compose.ui.semantics.Role.Switch) { change(!checked) })
     }
 }

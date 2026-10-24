@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.CsvExportTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-24T08:38:42.320Z" hostname="fedora" time="0.005">
+  <properties/>
+  <testcase name="spreadsheetFormulasAreNeutralizedWithoutChangingNumbers" classname="com.opus.piano.CsvExportTest" time="0.001"/>
+  <testcase name="unicodeQuotesCommasAndMultilineArePreserved" classname="com.opus.piano.CsvExportTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

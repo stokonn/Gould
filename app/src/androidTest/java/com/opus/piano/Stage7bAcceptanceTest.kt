@@ -117,32 +117,52 @@ class Stage7bAcceptanceTest {
             !it.text.isNullOrBlank() || !it.contentDescription.isNullOrBlank()
         })
     }
-    @Test fun filterChipExportsNameStateAndClickOnSameNode() {
+    @Test fun adminCheckablesExportNameStateAndClickOnSameNode() {
         for (locale in listOf("en", "cs")) {
             val configuration = android.content.res.Configuration(app.resources.configuration).apply {
                 setLocales(android.os.LocaleList.forLanguageTags(locale))
             }
-            val label = app.createConfigurationContext(configuration).getString(R.string.stage7b_pending)
+            val context = app.createConfigurationContext(configuration)
+            val labels = listOf(R.string.stage7b_pending, R.string.stage7b_sync, R.string.stage7b_auto_next).map { context.getString(it) }
+            val disabledLabel = context.getString(R.string.stage7b_ack_revision, 1)
             ActivityScenario.launch(MainActivity::class.java).use { scenario ->
                 scenario.onActivity { activity ->
                     activity.setContent {
                         var selected by remember { mutableStateOf(false) }
+                        var switched by remember { mutableStateOf(false) }
+                        var checked by remember { mutableStateOf(false) }
+                        var disabledChecked by remember { mutableStateOf(false) }
                         OpusTheme("Light") { AdminTheme {
-                            AdminFilterChip(selected, label) { selected = !selected }
+                            Box(Modifier.fillMaxSize()) {
+                                Column {
+                                    AdminFilterChip(selected, labels[0]) { selected = !selected }
+                                    AdminSwitch(labels[1], switched) { switched = it }
+                                    AdminCheckbox(checked, labels[2]) { checked = it }
+                                    AdminCheckbox(disabledChecked, disabledLabel, enabled = false) { disabledChecked = it }
+                                }
+                            }
                         } }
                     }
                 }
-                fun chip() = tree().singleOrNull {
+                fun control(label: String) = tree().singleOrNull {
                     it.isCheckable && it.contentDescription?.toString() == label
                 }
-                waitUntil { chip() != null }
-                assertFalse(chip()!!.isChecked)
-                assertTrue(chip()!!.isClickable)
-                click(label)
-                waitUntil { chip()?.isChecked == true }
-                click(label)
-                waitUntil { chip()?.isChecked == false }
-                capture("stage7b-chip-$locale")
+                for (label in labels) {
+                    waitUntil { control(label) != null }
+                    assertFalse(control(label)!!.isChecked)
+                    assertTrue(control(label)!!.isClickable)
+                    assertTrue(control(label)!!.isEnabled)
+                    assertTrue(control(label)!!.performAction(AccessibilityNodeInfo.ACTION_CLICK))
+                    waitUntil { control(label)?.isChecked == true }
+                    assertTrue(control(label)!!.performAction(AccessibilityNodeInfo.ACTION_CLICK))
+                    waitUntil { control(label)?.isChecked == false }
+                }
+                val disabled = control(disabledLabel)!!
+                assertFalse(disabled.isEnabled)
+                disabled.performAction(AccessibilityNodeInfo.ACTION_CLICK)
+                inst.waitForIdleSync()
+                assertFalse("Disabled revision acknowledgement changed", control(disabledLabel)!!.isChecked)
+                capture("stage7b-checkables-$locale")
             }
         }
     }

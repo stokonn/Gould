@@ -137,8 +137,7 @@ private fun DashboardHeader(roleLabel: String) {
         Text(
             L.s(R.string.stage7b_administration),
             style = MaterialTheme.typography.headlineMedium,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
+            maxLines = 2,
             modifier = Modifier.weight(1f).semantics { heading() },
         )
         Row(
@@ -173,6 +172,10 @@ private fun StatTileRow(
 
 @Composable
 private fun StatTile(tile: AdminTile, value: AdminTileValue?, modifier: Modifier, onClick: (AdminTile) -> Unit) {
+    val fontScale = LocalDensity.current.fontScale
+    // Give two-line labels room at supported enlarged text sizes without shrinking
+    // text or introducing scrolling. At extreme sizes natural height can scroll.
+    val compactPadding = fontScale > 1f && fontScale <= SCROLL_FALLBACK_FONT_SCALE
     val label = when (tile) {
         AdminTile.PENDING -> L.s(R.string.stage7b_pending)
         AdminTile.NEEDS_INFO -> L.s(R.string.stage7b_needs_info)
@@ -199,7 +202,8 @@ private fun StatTile(tile: AdminTile, value: AdminTileValue?, modifier: Modifier
         shadowElevation = 0.dp,
     ) {
         Column(
-            Modifier.fillMaxWidth().heightIn(min = 84.dp).padding(horizontal = 12.dp, vertical = 10.dp),
+            Modifier.fillMaxWidth().heightIn(min = if (compactPadding) 72.dp else 84.dp)
+                .padding(horizontal = 12.dp, vertical = if (compactPadding) 6.dp else 10.dp),
             verticalArrangement = Arrangement.spacedBy(2.dp),
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -207,8 +211,7 @@ private fun StatTile(tile: AdminTile, value: AdminTileValue?, modifier: Modifier
                     label,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 2,
                     modifier = Modifier.weight(1f),
                 )
                 Icon(
@@ -261,7 +264,7 @@ private fun DestinationRow(
         ) {
             Icon(icon, null, Modifier.size(20.dp), tint = MaterialTheme.colorScheme.primary)
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                Text(title, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(title, style = MaterialTheme.typography.titleMedium, maxLines = 2)
                 if (secondLine != null) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.data.offline.BundleManifestCodecTest" tests="21" skipped="0" failures="0" errors="0" timestamp="2026-10-24T08:38:43.183Z" hostname="fedora" time="0.053">
+  <properties/>
+  <testcase name="decodeRejectsUnknownEnumValues" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.004"/>
+  <testcase name="roundTripPreservesPartialProgressAndNullFields" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.0"/>
+  <testcase name="validateFileAcceptsTypicalMimeTypes" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.001"/>
+  <testcase name="manifestRejectsBlankAttribution" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.0"/>
+  <testcase name="validateFileRejectsMalformedHashes" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.002"/>
+  <testcase name="encodeValidatesPathsBeforeWriting" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.0"/>
+  <testcase name="decodeRejectsMissingRequiredField" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.001"/>
+  <testcase name="decodeRejectsOversizedPayload" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.008"/>
+  <testcase name="encodeRejectsOversizedManifest" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.026"/>
+  <testcase name="manifestRejectsDuplicateContentReferences" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.001"/>
+  <testcase name="validateFileRejectsMissingMandatoryRights" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.001"/>
+  <testcase name="requirePathRejectsTraversalAbsoluteAndControlPaths" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.001"/>
+  <testcase name="progressRejectsInconsistentCounts" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.0"/>
+  <testcase name="decodeValidatesTamperedPathEvenWhenSignatureFieldsMatch" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.001"/>
+  <testcase name="validateFileRejectsInsecureUrls" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.001"/>
+  <testcase name="decodeRejectsUnknownFormatVersion" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.001"/>
+  <testcase name="validateFileRejectsMalformedMime" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.001"/>
+  <testcase name="requirePathAcceptsOrdinaryRelativePaths" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.0"/>
+  <testcase name="decodeRejectsStateThatContradictsValidationTimestamp" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.001"/>
+  <testcase name="roundTripPreservesReadyManifestExactly" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.001"/>
+  <testcase name="validateFileRejectsBlankLanguage" classname="com.opus.piano.data.offline.BundleManifestCodecTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
