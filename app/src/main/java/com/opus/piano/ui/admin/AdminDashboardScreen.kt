@@ -107,12 +107,10 @@ private const val SCROLL_FALLBACK_FONT_SCALE = 1.3f
         DestinationRow(icon = Icons.Outlined.History, title = L.s(R.string.stage7b_audit_log), onClick = { onAudit(null) })
         DestinationRow(icon = Icons.Outlined.Settings, title = L.s(R.string.stage7b_admin_settings), onClick = onSettings)
 
-        // Fill remaining space on the fixed layout so the footer sits at the bottom;
-        // inside the scroll fallback (unbounded height) this would collapse to 0.
+        // In fixed layout, push footer to bottom.
+        // In scroll fallback, the footer simply follows the content.
         if (!scrolling) Spacer(Modifier.weight(1f))
         
-        // Ensure the footer is always reachable even in scroll fallback; 
-        // avoid pushing it off-screen by not wrapping it in a fixed-height container if scrolling.
         DashboardFooter(
             updatedAt = stats?.updatedAt ?: 0L,
             loading = loading,
