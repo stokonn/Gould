@@ -1,4 +1,20 @@
-## Current full-int8 local engineering acceptance (2026-10-24)
+## Current shared integration foundation — locally verified (2026-10-24)
+
+Canonical package `contracts/admin/shared/v1` provides66 actual HTTP/PG fixture
+scenes,22 unmodified selected Kotlin JVM replay probes and34 compatibility rows.
+490 Node tests pass (469 preserved baseline+21 new bodies); all historical/schema
+and independent source/cleanup checks pass. Public version choice, Android adoption,
+real policy and hosted gates remain open; no production transport is enabled.
+
+The measured queue query bounds headers before payload joins; no schema/index
+change. UTF8 JSON media parameters are supported without legacy DTO aliases.
+Current build/runner commands below remain valid; the current manifest is now
+`integration-readiness-source-provenance.json`. The full-int8 manifest is preserved.
+
+[Full integration handoff, matrix, version proposal and query evidence](../../docs/planning/goldberg-0.11/stage-6/INTEGRATION-READINESS.md).
+Source publication/CI receipt follows verified local acceptance.
+
+## Historical full-int8 local engineering acceptance (2026-10-24)
 
 Shared moderation/submission handlers now preserve canonical decimal int8 strings
 through validation, comparison, checked increment, persistence and responses.

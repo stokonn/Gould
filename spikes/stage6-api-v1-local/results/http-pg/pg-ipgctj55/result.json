@@ -1,0 +1,791 @@
+{
+  "container": "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+  "image": "docker.io/library/postgres:17",
+  "syntheticOnly": true,
+  "httpExecutions": "real-loopback-to-PG17; see http-postgres.tap",
+  "androidExecutions": 0,
+  "acceptance": "PASS",
+  "created": true,
+  "cleanup": "removed-and-absence-verified",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/verify-current-provenance.py"
+      ],
+      "exitCode": 0,
+      "log": "current-provenance-before.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/consumer-compatibility.py"
+      ],
+      "exitCode": 0,
+      "log": "consumer-source-before.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "info",
+        "--format",
+        "{{.Host.Security.Rootless}}"
+      ],
+      "exitCode": 0,
+      "log": "podman.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "image",
+        "inspect",
+        "docker.io/library/postgres:17",
+        "--format",
+        "{{json .}}"
+      ],
+      "exitCode": 0,
+      "log": "image.json"
+    },
+    {
+      "argv": [
+        "podman",
+        "run",
+        "--detach",
+        "--pull=never",
+        "--name",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "--label",
+        "goldberg.scope=local-synthetic-api-http-pg",
+        "--env",
+        "POSTGRES_USER=schema_prototype",
+        "--env",
+        "POSTGRES_DB=schema_prototype",
+        "--env",
+        "POSTGRES_HOST_AUTH_METHOD=trust",
+        "--publish",
+        "127.0.0.1::5432",
+        "82903352d6faf8f8a318bc4353d1cb1db67d4a5ff968d2799b2718e2cb00afa2"
+      ],
+      "exitCode": 0,
+      "log": "container.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "inspect",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "--format",
+        "{{json .Mounts}}"
+      ],
+      "exitCode": 0,
+      "log": "mounts.json"
+    },
+    {
+      "argv": [
+        "podman",
+        "port",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "5432/tcp"
+      ],
+      "exitCode": 0,
+      "log": "binding.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-U",
+        "schema_prototype",
+        "-d",
+        "schema_prototype"
+      ],
+      "exitCode": 2,
+      "log": "ready-00.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-U",
+        "schema_prototype",
+        "-d",
+        "schema_prototype"
+      ],
+      "exitCode": 2,
+      "log": "ready-01.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-U",
+        "schema_prototype",
+        "-d",
+        "schema_prototype"
+      ],
+      "exitCode": 2,
+      "log": "ready-02.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-U",
+        "schema_prototype",
+        "-d",
+        "schema_prototype"
+      ],
+      "exitCode": 2,
+      "log": "ready-03.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-U",
+        "schema_prototype",
+        "-d",
+        "schema_prototype"
+      ],
+      "exitCode": 2,
+      "log": "ready-04.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-U",
+        "schema_prototype",
+        "-d",
+        "schema_prototype"
+      ],
+      "exitCode": 2,
+      "log": "ready-05.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-U",
+        "schema_prototype",
+        "-d",
+        "schema_prototype"
+      ],
+      "exitCode": 2,
+      "log": "ready-06.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-U",
+        "schema_prototype",
+        "-d",
+        "schema_prototype"
+      ],
+      "exitCode": 2,
+      "log": "ready-07.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-U",
+        "schema_prototype",
+        "-d",
+        "schema_prototype"
+      ],
+      "exitCode": 2,
+      "log": "ready-08.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-U",
+        "schema_prototype",
+        "-d",
+        "schema_prototype"
+      ],
+      "exitCode": 0,
+      "log": "ready-09.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17",
+        "psql",
+        "-U",
+        "schema_prototype",
+        "-d",
+        "schema_prototype",
+        "-Atc",
+        "SELECT version()"
+      ],
+      "exitCode": 0,
+      "log": "postgres-version.log"
+    },
+    {
+      "argv": [
+        "node",
+        "--version"
+      ],
+      "exitCode": 0,
+      "log": "node-version.log"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "spikes/stage6-api-v1-local/tests/shared-contract-postgres.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "shared-contract.tap"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "spikes/stage6-api-v1-local/tests/query-budget-postgres.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "query-budget.tap"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "spikes/stage6-api-v1-local/tests/http-postgres.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "http-postgres.tap"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/verify-http-pg.py",
+        "--captures",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/results/http-pg/pg-ipgctj55/http-read-captures.json"
+      ],
+      "exitCode": 0,
+      "log": "http-dto-contract.log"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "spikes/stage6-api-v1-local/tests/int8-postgres.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "int8-postgres.tap"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "spikes/stage6-auth-local/tests/auth.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "auth.tap"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "spikes/stage6-schema-pg/tests/schema.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "schema.tap"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "spikes/stage6-handlers-local/tests/handlers.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "handlers.tap"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "operations-pg.tap"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "spikes/stage6-public-admin-abuse/tests/unit.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "operations-unit.tap"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "spikes/stage6-api-v1-local/tests/m3-postgres.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "postgres.tap"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "spikes/stage6-api-v1-local/tests/m2-postgres.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "m2-postgres.tap"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "spikes/stage6-api-v1-local/tests/adapter.test.mjs",
+        "spikes/stage6-api-v1-local/tests/compatibility.test.mjs",
+        "spikes/stage6-api-v1-local/tests/statistics.test.mjs",
+        "spikes/stage6-api-v1-local/tests/http.test.mjs",
+        "spikes/stage6-api-v1-local/tests/int8-unit.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "api.tap"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "spikes/stage6-security-local/tests/t22.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "t22.tap"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/consumer-compatibility.py",
+        "--replay",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/results/http-pg/pg-ipgctj55/shared-contract-captures.json",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/results/http-pg/pg-ipgctj55/consumer-results.json"
+      ],
+      "exitCode": 0,
+      "log": "consumer-replay.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/verify-shared-contract.py",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/results/http-pg/pg-ipgctj55"
+      ],
+      "exitCode": 0,
+      "log": "shared-contract-verifier.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/consumer-compatibility.py"
+      ],
+      "exitCode": 0,
+      "log": "consumer-source-after.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/verify-m3.py",
+        "--captures",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/results/http-pg/pg-ipgctj55/detail-captures.json"
+      ],
+      "exitCode": 0,
+      "log": "comparison-contract.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/verify-current-provenance.py"
+      ],
+      "exitCode": 0,
+      "log": "current-provenance.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/validate-current-corpus.py"
+      ],
+      "exitCode": 0,
+      "log": "current-dto-schema.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/verify-historical-provenance.py"
+      ],
+      "exitCode": 0,
+      "log": "historical-design-tests.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/check_agent_policy.py"
+      ],
+      "exitCode": 0,
+      "log": "agent-policy.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/verify-historical-provenance.py",
+        "--security"
+      ],
+      "exitCode": 0,
+      "log": "historical-security-evidence.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "spikes/stage6-security-local/tests",
+        "-p",
+        "test_tap_report.py"
+      ],
+      "exitCode": 0,
+      "log": "tap-parser-tests.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/check_backup_fixtures.py"
+      ],
+      "exitCode": 0,
+      "log": "backup.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/check_stage6_acl_proposal.py"
+      ],
+      "exitCode": 0,
+      "log": "acl.log"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "log": "whitespace.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "contracts/admin/v1/decision-proposal/verify.py"
+      ],
+      "exitCode": 1,
+      "log": "historical-pin-current-source-EXPECTED-FAIL.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "rm",
+        "--force",
+        "--volumes",
+        "--time",
+        "0",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17"
+      ],
+      "exitCode": 0,
+      "log": "cleanup.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "container",
+        "exists",
+        "goldberg-api-http-pg-d5dd12cb08664faea3ddec740a2d4f17"
+      ],
+      "exitCode": 1,
+      "log": "cleanup-probe.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "volume",
+        "exists",
+        "ed680720b03fe2c7b0b6afad18b8ac6791179fba7e28cf620b45d87fd87b5de9"
+      ],
+      "exitCode": 1,
+      "log": "cleanup-volume-0.log"
+    }
+  ],
+  "startingCommit": "a3fb7e2f1436c93b49a0f4f0596d8d06e241fcef",
+  "startingBranch": "feature/goldberg-0.11-stage-6-api-v1-local",
+  "imageIdentity": "82903352d6faf8f8a318bc4353d1cb1db67d4a5ff968d2799b2718e2cb00afa2",
+  "volumes": [
+    "ed680720b03fe2c7b0b6afad18b8ac6791179fba7e28cf620b45d87fd87b5de9"
+  ],
+  "suiteSources": {
+    "shared-contract.tap": [
+      "spikes/stage6-api-v1-local/tests/shared-contract-postgres.test.mjs"
+    ],
+    "query-budget.tap": [
+      "spikes/stage6-api-v1-local/tests/query-budget-postgres.test.mjs"
+    ],
+    "http-postgres.tap": [
+      "spikes/stage6-api-v1-local/tests/http-postgres.test.mjs"
+    ],
+    "int8-postgres.tap": [
+      "spikes/stage6-api-v1-local/tests/int8-postgres.test.mjs"
+    ],
+    "auth.tap": [
+      "spikes/stage6-auth-local/tests/auth.test.mjs"
+    ],
+    "schema.tap": [
+      "spikes/stage6-schema-pg/tests/schema.test.mjs"
+    ],
+    "handlers.tap": [
+      "spikes/stage6-handlers-local/tests/handlers.test.mjs"
+    ],
+    "operations-pg.tap": [
+      "spikes/stage6-public-admin-abuse/tests/postgres.test.mjs"
+    ],
+    "operations-unit.tap": [
+      "spikes/stage6-public-admin-abuse/tests/unit.test.mjs"
+    ],
+    "postgres.tap": [
+      "spikes/stage6-api-v1-local/tests/m3-postgres.test.mjs"
+    ],
+    "m2-postgres.tap": [
+      "spikes/stage6-api-v1-local/tests/m2-postgres.test.mjs"
+    ],
+    "api.tap": [
+      "spikes/stage6-api-v1-local/tests/adapter.test.mjs",
+      "spikes/stage6-api-v1-local/tests/compatibility.test.mjs",
+      "spikes/stage6-api-v1-local/tests/statistics.test.mjs",
+      "spikes/stage6-api-v1-local/tests/http.test.mjs",
+      "spikes/stage6-api-v1-local/tests/int8-unit.test.mjs"
+    ],
+    "t22.tap": [
+      "spikes/stage6-security-local/tests/t22.test.mjs"
+    ]
+  },
+  "testCounts": {
+    "shared-contract.tap": {
+      "tests": 17,
+      "pass": 17,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "query-budget.tap": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "http-postgres.tap": {
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "int8-postgres.tap": {
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "auth.tap": {
+      "tests": 50,
+      "pass": 50,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "schema.tap": {
+      "tests": 34,
+      "pass": 34,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "handlers.tap": {
+      "tests": 87,
+      "pass": 87,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "operations-pg.tap": {
+      "tests": 34,
+      "pass": 34,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "operations-unit.tap": {
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "postgres.tap": {
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "m2-postgres.tap": {
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "api.tap": {
+      "tests": 122,
+      "pass": 122,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "t22.tap": {
+      "tests": 38,
+      "pass": 38,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "historicalCurrentFilePin": "EXPECTED_FAILURE; evolved handler bytes do not match historical pin",
+  "volumeAbsenceExits": [
+    1
+  ],
+  "sourceUnchanged": true,
+  "artifacts": {
+    "acl.log": "ab09185293c47f7b43be5b27486e35a21c99b5e32855bd56289b5e58c6297a57",
+    "agent-policy.log": "a8d9aed2cee3751fe47bb59393012b73900212cb963edd81f04e0b9cc307c4bb",
+    "api.tap": "d0bbcced7ebcfb70b10948bb3b56ff8cb86996d7031961f8c9993d84ee89804c",
+    "auth.tap": "3e1c55afab7c0c30101f1508100d37e8b54247fce73008ecd847c14f2e51458a",
+    "backup.log": "c23f2f40581ef10309656bde7231951d9b70ff3869606898d72e744dff54db4e",
+    "binding.log": "25756698b841e31570f0aeb82f6d88ea6f365416e8a57ecae349e80df22f62f3",
+    "cleanup-probe.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cleanup-volume-0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cleanup.log": "532b42299b3c1ac0bab3884394443f8b03bc5437a1ae606df97ea72093463d33",
+    "comparison-contract.log": "6c384e42af2b10e090a094a567af57e7036901a12a8c68047aa9ec3aeb3f67d9",
+    "consumer-replay.log": "813fd54a27c59291ad0758a291d0ff5874ff1204f824fe9bd0ae9ee43360c668",
+    "consumer-results.json": "f1a2ee1701b5172a4427e8360f16594ba67b2123aaa7e63e0ec0f7ce091e52a4",
+    "consumer-source-after.log": "32746a1d05e6987d661202dab2e5cb46f6c5958d770ef6d2c88ea5715c6cd3ce",
+    "consumer-source-before.log": "32746a1d05e6987d661202dab2e5cb46f6c5958d770ef6d2c88ea5715c6cd3ce",
+    "container.log": "37897281d06e1e21e7943339c9836f59876834bdd33d99df409e35f950e3d423",
+    "current-dto-schema.log": "988cfca10877b05c1e3242c8f779ecd44203b94bced3363d98def78c3a3297da",
+    "current-provenance-before.log": "84fdc55ad8312cb6814e5a6c2fe5740b7017a3d4675a8365da68e99f1a16dda4",
+    "current-provenance.log": "84fdc55ad8312cb6814e5a6c2fe5740b7017a3d4675a8365da68e99f1a16dda4",
+    "detail-captures.json": "93c17dabf2d588202c88bc16d14113e4f547097e3a8475308011fd2e32737e8b",
+    "handlers.tap": "719e6ad83a6c21ff62a3bf0585cbecf2990150468759a6ac41a1c6cf74aa20ba",
+    "historical-design-tests.log": "765be847ffe862579b006ac60af3b06085d4be5760198270661a5a3705701416",
+    "historical-pin-current-source-EXPECTED-FAIL.log": "feb5a76467809d50c76d6bb67292ceea8dffbcbafd67716a519b2739106b3569",
+    "historical-security-evidence.log": "8269ffc8e736d3c90ab213013e0b9bf15772c3ad262b2ccbea6f8b314587fa9f",
+    "http-dto-contract.log": "61339b89d340e4ec5a94db9d89dd3c452f4ef3eddb94e1c7a5bf3195b263142a",
+    "http-postgres.tap": "c63d0384a64187951a8fb29492d011ccd179d681ac41dfc35ad673aff8ab4078",
+    "http-read-captures.json": "5daeaaf4bd2f6b445980b4ab8afd65889755496929e040a1538bae59879c6618",
+    "image.json": "c2c9dd6f2dd64eaf46d5ce6782a3eaa66688dbcf0b104fb34816a14398987821",
+    "int8-postgres.tap": "0045d7d73d030440ebe75f7034bcb658ecd47312fc29a43929c5ed9c332605c1",
+    "kotlin-compile.log": "bab409568452cd55922637bc5c1c5f4555329bea434007591b5269bccf8e07f9",
+    "kotlin-runtime.log": "09220f29286198a1a8ee78423a9ca68b3d2d522c3b0ca7359ec9782e6bdd9d40",
+    "m2-postgres.tap": "1c4e5bec157c56c309293b71d601eaf9a345b161268683b8d8fa2c1abc7cb5a1",
+    "mounts.json": "1dd2a64874ecc3503780ce946b16d246cc93fdccf1634b6e97c8f75dbe3ca105",
+    "node-version.log": "b8139b18707113247bd3eba5bff8ee50ed8f6bfd5076113805af4e414abfdf23",
+    "operations-pg.tap": "e74c5544d3fbee4011f5eb62411c1614e3ccdf506d20ea8682da935182342489",
+    "operations-unit.tap": "8860b8164b192b47e4e3e25efcc2ebd305fac5977c07a4cd24c2233ac7dfc185",
+    "podman.log": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74",
+    "postgres-version.log": "985ea1329f3d9361a5a0e45040824957259bb5e130bd1745a422e26577891269",
+    "postgres.tap": "81aad98527052e41e55ddd1421fa2da2221f33cbf1a7165ec8cfcc82e7714445",
+    "query-budget.tap": "6c3b20bdff2d0076151fcc51ad47840fe1b92f4e186bb3ff1bb6a9b60f81be65",
+    "query-plans.json": "4ea278ffd0ace98051d000dca10705d8a8d0dcac7e385508b52b982942ee5b41",
+    "ready-00.log": "16ee3d174b642b39bda2af4b9be5ba53306922e073f3f9750a7f4b458cdfde1a",
+    "ready-01.log": "16ee3d174b642b39bda2af4b9be5ba53306922e073f3f9750a7f4b458cdfde1a",
+    "ready-02.log": "16ee3d174b642b39bda2af4b9be5ba53306922e073f3f9750a7f4b458cdfde1a",
+    "ready-03.log": "16ee3d174b642b39bda2af4b9be5ba53306922e073f3f9750a7f4b458cdfde1a",
+    "ready-04.log": "16ee3d174b642b39bda2af4b9be5ba53306922e073f3f9750a7f4b458cdfde1a",
+    "ready-05.log": "16ee3d174b642b39bda2af4b9be5ba53306922e073f3f9750a7f4b458cdfde1a",
+    "ready-06.log": "16ee3d174b642b39bda2af4b9be5ba53306922e073f3f9750a7f4b458cdfde1a",
+    "ready-07.log": "16ee3d174b642b39bda2af4b9be5ba53306922e073f3f9750a7f4b458cdfde1a",
+    "ready-08.log": "16ee3d174b642b39bda2af4b9be5ba53306922e073f3f9750a7f4b458cdfde1a",
+    "ready-09.log": "f65a06d12c78be4ce11dc662c4ebf525a1da13786331065f0fe973c6df5ddd29",
+    "schema.tap": "dd962cc87c99dcc6a93c7e9a8c809511e87240f8e77162461635afb1cc30158f",
+    "shared-contract-captures.json": "589c4de404e2472bf5637201ee2fb4afc27d3153a11ebe8266982a3fb203dea0",
+    "shared-contract-verifier.log": "d6167131bc9c246c9ee6945b4c6ba3a6ffaec9f4c994c2b0ac53ee16f1cb99f4",
+    "shared-contract.tap": "f9ec6f1df20d908efba04fa987ff87f9e30b5d46ba8538cbafcc5c97ae9d65fc",
+    "source-after.json": "a91c65daca1052c4cdedb7d9335c983ddda5f6e04152993b80f8b8630f2c2f1e",
+    "source-before.json": "a91c65daca1052c4cdedb7d9335c983ddda5f6e04152993b80f8b8630f2c2f1e",
+    "t22.tap": "65f698cbec3010226b7b50564b3413e76994e7f2709ea3cc52f364697d40ba51",
+    "tap-parser-tests.log": "e903102c5cc316b1f367555bb89208a8ef34bd08f3df57f37015ce5b2014dfc3",
+    "whitespace.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,328 @@
+[
+  {
+    "schemaVersion": 1,
+    "requestId": "c0967630-fc0a-4976-aba8-f7e9f980e0ea",
+    "submissionId": "99fcbef0-e076-45d0-88a3-2e52cfbc7d4c",
+    "entityId": "b1e2b086-b003-4f4b-9111-c1d781db29c0",
+    "state": "available",
+    "entityRevision": "1",
+    "entityStatus": "published",
+    "payloadHash": "f179a87b6765b89539447bd8f7f7ac65ac23aa6bd138ef3239c82cf62433031b",
+    "fields": [
+      {
+        "field": "syntheticTitle",
+        "value": "Synthetic work",
+        "evidence": [
+          {
+            "type": "reference",
+            "value": "Synthetic reference only",
+            "license": "SYNTHETIC-NOT-APPROVED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "330518e1-db64-4b96-b832-241c4004fa03",
+    "submissionId": "fae5bef8-4f39-43a0-9835-651a3f9cabb9",
+    "entityId": "0f66a1db-cb5d-4635-a162-4841a5cc4673",
+    "state": "available",
+    "entityRevision": "1",
+    "entityStatus": "published",
+    "payloadHash": "53781f12c42429f2246c493bec7b284cc82672b9dbaf375351d79e5f9df92ff8",
+    "fields": [
+      {
+        "field": "syntheticTitle",
+        "value": "Synthetic work",
+        "evidence": [
+          {
+            "type": "reference",
+            "value": "Synthetic reference only",
+            "license": "SYNTHETIC-NOT-APPROVED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "0a1f46f9-29b9-49d8-b954-6db9130c377f",
+    "submissionId": "fae5bef8-4f39-43a0-9835-651a3f9cabb9",
+    "entityId": "0f66a1db-cb5d-4635-a162-4841a5cc4673",
+    "state": "available",
+    "entityRevision": "2",
+    "entityStatus": "published",
+    "payloadHash": "ac1f036af7d3c69e72bb2d251b4cbf52b631376b678d8c7dbecbcd535ee3173b",
+    "fields": [
+      {
+        "field": "syntheticTitle",
+        "value": "Synthetic work",
+        "evidence": [
+          {
+            "type": "reference",
+            "value": "Synthetic reference only",
+            "license": "SYNTHETIC-NOT-APPROVED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "273949c9-29af-4b7d-a60e-a5aa5abe9bf3",
+    "submissionId": "c0b6cb62-5d07-4c26-8da5-42ab925778ca",
+    "entityId": "b0d500c8-e477-4340-ad6e-7907b14b146d",
+    "state": "available",
+    "entityRevision": "1",
+    "entityStatus": "published",
+    "payloadHash": "9f79aec661df5964614f7b35e8c2dd53bc5033f2541cbfae42ef4e4106eb933e",
+    "fields": [
+      {
+        "field": "syntheticTitle",
+        "value": "Synthetic work",
+        "evidence": [
+          {
+            "type": "reference",
+            "value": "Synthetic reference only",
+            "license": "SYNTHETIC-NOT-APPROVED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "336c5547-0dc0-4889-a963-9fc5c7beb284",
+    "submissionId": "c0b6cb62-5d07-4c26-8da5-42ab925778ca",
+    "entityId": "b0d500c8-e477-4340-ad6e-7907b14b146d",
+    "state": "available",
+    "entityRevision": "1",
+    "entityStatus": "published",
+    "payloadHash": "9f79aec661df5964614f7b35e8c2dd53bc5033f2541cbfae42ef4e4106eb933e",
+    "fields": [
+      {
+        "field": "syntheticTitle",
+        "value": "Synthetic work",
+        "evidence": [
+          {
+            "type": "reference",
+            "value": "Synthetic reference only",
+            "license": "SYNTHETIC-NOT-APPROVED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "503b0b4f-1c7c-451b-bb8a-cff31a335a80",
+    "submissionId": "deb61b77-312b-41db-b233-e4a90bb0432b",
+    "entityId": "3ba6e856-46cf-463a-9dc2-d5eabd404304",
+    "state": "available",
+    "entityRevision": "1",
+    "entityStatus": "published",
+    "payloadHash": "16a6d1ac2504a13dff998108f802e096caafa3cb5779a4aa888be39f22fde53b",
+    "fields": [
+      {
+        "field": "syntheticTitle",
+        "value": "Synthetic work",
+        "evidence": [
+          {
+            "type": "reference",
+            "value": "Synthetic reference only",
+            "license": "SYNTHETIC-NOT-APPROVED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "62588195-af6f-4a41-ba3d-97d6407da8d7",
+    "submissionId": "deb61b77-312b-41db-b233-e4a90bb0432b",
+    "entityId": "3ba6e856-46cf-463a-9dc2-d5eabd404304",
+    "state": "available",
+    "entityRevision": "1",
+    "entityStatus": "published",
+    "payloadHash": "16a6d1ac2504a13dff998108f802e096caafa3cb5779a4aa888be39f22fde53b",
+    "fields": [
+      {
+        "field": "syntheticTitle",
+        "value": "Synthetic work",
+        "evidence": [
+          {
+            "type": "reference",
+            "value": "Synthetic reference only",
+            "license": "SYNTHETIC-NOT-APPROVED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "c68de98c-0e6c-44ef-bec4-e6a09a25ad33",
+    "submissionId": "deb61b77-312b-41db-b233-e4a90bb0432b",
+    "entityId": "3ba6e856-46cf-463a-9dc2-d5eabd404304",
+    "state": "available",
+    "entityRevision": "2",
+    "entityStatus": "published",
+    "payloadHash": "3153a9060b9f57e82e4285f3c1cbe4cd25aeab6658b0f78a6ece5b5b3fd6fb26",
+    "fields": [
+      {
+        "field": "syntheticTitle",
+        "value": "New live value",
+        "evidence": [
+          {
+            "type": "reference",
+            "value": "Synthetic reference only",
+            "license": "SYNTHETIC-NOT-APPROVED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "11686c98-0ef0-48ca-a5ed-df7830685564",
+    "submissionId": "6337ece0-2b80-4264-8fe8-85c425f048ca",
+    "entityId": "63239913-e5d5-4ba3-ba38-f187a87b05ac",
+    "state": "unavailable",
+    "reason": "absent"
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "9c695311-a644-457a-b137-96814bcce9e5",
+    "submissionId": "ec99895c-0fe6-4dc0-bc66-77569663d811",
+    "entityId": "ec4bbebb-24f2-44ad-9ba8-293e744af823",
+    "state": "unavailable",
+    "reason": "projection_unavailable"
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "1924b69f-8a16-4518-adb7-2512bdb42d06",
+    "submissionId": "ec99895c-0fe6-4dc0-bc66-77569663d811",
+    "entityId": "ec4bbebb-24f2-44ad-9ba8-293e744af823",
+    "state": "unavailable",
+    "reason": "projection_unavailable"
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "2039fceb-58c5-46d8-b2be-6a2f202991bf",
+    "submissionId": "592c87d2-e64f-4ecd-a584-87afb4f17b2f",
+    "entityId": "24d79db5-280a-4707-8189-54b2f9023a05",
+    "state": "unavailable",
+    "reason": "projection_unavailable"
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "749bcd25-1462-4577-b966-78f499805793",
+    "submissionId": "c985e0dd-16e5-4d26-bf37-59004722d234",
+    "entityId": "2a65a221-c877-41bc-8742-4226b7308ca3",
+    "state": "available",
+    "entityRevision": "9223372036854775807",
+    "entityStatus": "published",
+    "payloadHash": "80f1a76dc5e5457e1f84b1b315d4abdba0de0326c4dbc5a4c9a5c64b67fe0834",
+    "fields": [
+      {
+        "field": "syntheticTitle",
+        "value": "Synthetic work",
+        "evidence": [
+          {
+            "type": "reference",
+            "value": "Synthetic reference only",
+            "license": "SYNTHETIC-NOT-APPROVED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "284e7988-21cc-4de0-aa8c-440b568dbf5e",
+    "submissionId": "10fa106d-d229-4aba-9889-deb24de19fb8",
+    "entityId": "85008e82-85ee-4499-9711-7f254379f0bc",
+    "state": "unavailable",
+    "reason": "projection_unavailable"
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "f79fb957-546f-4ea2-930c-329968e203e7",
+    "submissionId": "6a5de076-1e0e-41c9-b919-18f515c6f220",
+    "entityId": "73e7b146-0ed7-4b4f-89c0-ed4186ad01ee",
+    "state": "available",
+    "entityRevision": "1",
+    "entityStatus": "published",
+    "payloadHash": "43a17a3c8bb31d0f851981c05708e4b08283b6c863dc6555f6e3f2f453fcac3b",
+    "fields": [
+      {
+        "field": "syntheticTitle",
+        "value": "Synthetic work",
+        "evidence": [
+          {
+            "type": "reference",
+            "value": "Synthetic reference only",
+            "license": "SYNTHETIC-NOT-APPROVED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "d313a23d-ef0e-4165-9eb7-fcf7e9f3dc47",
+    "submissionId": "82be4f02-6e6f-453e-b7f2-ac0963cb52c1",
+    "entityId": null,
+    "state": "unavailable",
+    "reason": "unmapped"
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "f3745a96-16d7-4b2a-8bb3-cf5de51aeb5a",
+    "submissionId": "84adfb30-668c-4a24-a381-4a8221b923f5",
+    "entityId": "66aba340-7fb3-4a70-bc9b-c419249e6b59",
+    "state": "unavailable",
+    "reason": "projection_unavailable"
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "0a570f20-3b6a-4db1-8686-e4d53ab48c0f",
+    "submissionId": "8ffb9e05-1575-4930-af56-f5223fd90802",
+    "entityId": "80019c96-67b9-4ea4-9b2f-bc95bde3d469",
+    "state": "unavailable",
+    "reason": "projection_unavailable"
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "3ff7a5f4-36de-40e9-92a3-46953b19739b",
+    "submissionId": "698d296d-b7ea-4b8c-ab00-89a9f20f9338",
+    "entityId": "f1d1355d-6694-446e-bcd2-8468afd547e3",
+    "state": "unavailable",
+    "reason": "projection_unavailable"
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "bfbc447f-db4e-456d-82d8-b725e034601a",
+    "submissionId": "38b0af88-5b02-44f2-93a9-30faf84d6cb1",
+    "entityId": "9493bbc6-ce9d-4702-876f-5d93488a7bab",
+    "state": "unavailable",
+    "reason": "projection_unavailable"
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "5fe441e6-ced3-4acd-829a-948d0fc56b5e",
+    "submissionId": "01f6bf09-b81f-41a2-9f30-619cdcacba3b",
+    "entityId": "8920efbe-4dfd-445a-8ead-8cf71fd6ae82",
+    "state": "unavailable",
+    "reason": "projection_unavailable"
+  },
+  {
+    "schemaVersion": 1,
+    "requestId": "2116c22b-1c7e-4195-8115-77cbfc628ce7",
+    "submissionId": "7d8252d6-5a49-4a5c-befc-a4b6132a4043",
+    "entityId": "fe9caaa7-a27e-453b-a4c3-e73302cc4409",
+    "state": "unavailable",
+    "reason": "absent"
+  }
+]

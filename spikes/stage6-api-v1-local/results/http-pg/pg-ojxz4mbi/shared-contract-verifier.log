@@ -1,0 +1,4 @@
+PASS: 34 compatibility rows: {"VERIFIED COMPATIBLE": 12, "VERIFIED INCOMPATIBLE": 12, "NOT EXECUTED": 7, "NOT APPLICABLE": 1, "BLOCKED BY OWNER/POLICY": 2}; external/public-version gate remains open.
+PASS: 66 maintained real HTTP/PG fixture captures;2 actual dropped response streams; schema expectations match.
+PASS: 22 actual Kotlin JVM replay cases: {"VERIFIED COMPATIBLE": 12, "VERIFIED INCOMPATIBLE": 10}; Android runtime not executed.
+PASS: synthetic5000-row actual-query EXPLAIN/caps/5s timeout evidence: [{"label": "queue-default", "planningMs": 1.02, "executionMs": 2.877, "root": "Limit"}, {"label": "queue-keyset", "planningMs": 0.95, "executionMs": 2.871, "root": "Limit"}, {"label": "queue-filtered", "planningMs": 1.188, "executionMs": 0.508, "root": "Limit"}, {"label": "audit-filtered", "planningMs": 0.699, "executionMs": 0.257, "root": "Limit"}, {"label": "stats-exact", "planningMs": 0.674, "executionMs": 3.684, "root": "Aggregate"}]

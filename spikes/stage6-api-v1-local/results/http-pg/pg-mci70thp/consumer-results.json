@@ -1,0 +1,164 @@
+{
+  "cases": [
+    {
+      "id": "capabilities",
+      "classification": "VERIFIED COMPATIBLE",
+      "actualOutcome": "ok",
+      "transportCalls": 1
+    },
+    {
+      "id": "queue",
+      "classification": "VERIFIED INCOMPATIBLE",
+      "actualOutcome": "invalid_payload",
+      "transportCalls": 1
+    },
+    {
+      "id": "detail",
+      "classification": "VERIFIED INCOMPATIBLE",
+      "actualOutcome": "invalid_payload",
+      "transportCalls": 1
+    },
+    {
+      "id": "approve",
+      "classification": "VERIFIED INCOMPATIBLE",
+      "actualOutcome": "invalid_payload",
+      "transportCalls": 1
+    },
+    {
+      "id": "reject",
+      "classification": "VERIFIED INCOMPATIBLE",
+      "actualOutcome": "invalid_payload",
+      "transportCalls": 1
+    },
+    {
+      "id": "request-changes",
+      "classification": "VERIFIED INCOMPATIBLE",
+      "actualOutcome": "invalid_payload",
+      "transportCalls": 1
+    },
+    {
+      "id": "audit",
+      "classification": "VERIFIED INCOMPATIBLE",
+      "actualOutcome": "invalid_payload",
+      "transportCalls": 1
+    },
+    {
+      "id": "logout204",
+      "classification": "VERIFIED INCOMPATIBLE",
+      "actualOutcome": "invalid_payload",
+      "transportCalls": 1
+    },
+    {
+      "id": "conflict",
+      "classification": "VERIFIED COMPATIBLE",
+      "actualOutcome": "conflict",
+      "transportCalls": 1
+    },
+    {
+      "id": "validation400",
+      "classification": "VERIFIED COMPATIBLE",
+      "actualOutcome": "validation_400",
+      "transportCalls": 1
+    },
+    {
+      "id": "unauthorized",
+      "classification": "VERIFIED COMPATIBLE",
+      "actualOutcome": "unauthorized",
+      "transportCalls": 1
+    },
+    {
+      "id": "forbidden",
+      "classification": "VERIFIED COMPATIBLE",
+      "actualOutcome": "forbidden",
+      "transportCalls": 1
+    },
+    {
+      "id": "not-found",
+      "classification": "VERIFIED COMPATIBLE",
+      "actualOutcome": "not_found",
+      "transportCalls": 1
+    },
+    {
+      "id": "mismatch422",
+      "classification": "VERIFIED COMPATIBLE",
+      "actualOutcome": "validation_422",
+      "transportCalls": 1
+    },
+    {
+      "id": "outage503",
+      "classification": "VERIFIED COMPATIBLE",
+      "actualOutcome": "server_error_503",
+      "transportCalls": 1
+    },
+    {
+      "id": "signed-cursor",
+      "classification": "VERIFIED COMPATIBLE",
+      "actualOutcome": "exact_cursor",
+      "transportCalls": 0
+    },
+    {
+      "id": "revision-int8-max",
+      "classification": "VERIFIED INCOMPATIBLE",
+      "actualOutcome": "rejected",
+      "transportCalls": 0
+    },
+    {
+      "id": "audit-long-int8-max",
+      "classification": "VERIFIED COMPATIBLE",
+      "actualOutcome": "exact_int8",
+      "transportCalls": 0
+    },
+    {
+      "id": "disabled-boundary",
+      "classification": "VERIFIED COMPATIBLE",
+      "actualOutcome": "contract_unavailable",
+      "transportCalls": 0
+    },
+    {
+      "id": "legacy-request-builder",
+      "classification": "VERIFIED INCOMPATIBLE",
+      "actualOutcome": "single_numeric_revision",
+      "transportCalls": 0
+    },
+    {
+      "id": "account-switch",
+      "classification": "VERIFIED COMPATIBLE",
+      "actualOutcome": "unauthorized",
+      "transportCalls": 1
+    },
+    {
+      "id": "stats",
+      "classification": "VERIFIED INCOMPATIBLE",
+      "actualOutcome": "stats_unavailable",
+      "transportCalls": 2
+    }
+  ],
+  "executedCases": 22,
+  "mechanism": "unmodified selected Kotlin JVM API/DTO code replaying real HTTP/PG captures; no Android runtime",
+  "consumerCommit": "0887d3fe33cf5d49d46e14e1de95168f08a493a2",
+  "staticFacts": {
+    "dual-revisions-missing": true,
+    "revision-int-range": true,
+    "legacy-queue-fields": true,
+    "legacy-audit-ts": true,
+    "logout-requires-json": true,
+    "refresh-api-missing": true,
+    "comparison-open-api-missing": true,
+    "stats-legacy-zone-actions": true,
+    "logout-clear-after-io": true,
+    "conflict-never-retry": true,
+    "account-response-guard": true,
+    "g10-disabled": true
+  },
+  "dependencySha256": {
+    "/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/2.2.10/6882d39ef03b18879c1a5d2a83c2212361bed5fe/kotlin-compiler-embeddable-2.2.10.jar": "79628fd5d64b4692a62f98962baab00e9076a37e2cffd6ace33cd0b7be7d1cdf",
+    "/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/2.2.10/712f9bc08f378c13a4a00f0bbb28c76e59183e83/kotlin-script-runtime-2.2.10.jar": "c304a67dba6a61dde560e6310920bed746307c3854f6675c29ac29114731b6b0",
+    "/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar": "ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478",
+    "/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.6.10/1cbe9c92c12a94eea200d23c2bbaedaf3daf5132/kotlin-reflect-1.6.10.jar": "3277ac102ae17aad10a55abec75ff5696c8d109790396434b496e75087854203",
+    "/home/stokonn/.gradle/caches/modules-2/files-2.1/org.json/json/20240303/ebb88e8fb5122b7506d5cf1d69f1ccdb790d22a/json-20240303.jar": "3cf6cd6892e32e2b4c1c39e0f52f5248a2f5b37646fdfbb79a66b46b618414ed",
+    "/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.8.0/ac1dc37a30a93150b704022f8d895ee1bd3a36b3/kotlinx-coroutines-core-jvm-1.8.0.jar": "9860906a1937490bf5f3b06d2f0e10ef451e65b95b269f22daf68a3d1f5065c5",
+    "/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.2.10/30de6faa127a4a012db8e71bf1b9c0a99b1402b2/kotlin-stdlib-2.2.10.jar": "9c67cc79efd6b9215b49d2a4308f5f3433537376c7c88e89bdd6729bd096e61a",
+    "/home/stokonn/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.10.2/4a9f78ef49483748e2c129f3d124b8fa249dafbf/kotlinx-coroutines-core-jvm-1.10.2.jar": "5ca175b38df331fd64155b35cd8cae1251fa9ee369709b36d42e0a288ccce3fd"
+  },
+  "androidRuntimeExecuted": false
+}

@@ -62,7 +62,7 @@ export class PublicAdapter {
    for(const [name,value] of Object.entries(headers)){const key=name.toLowerCase();if(!/^[A-Za-z][A-Za-z0-9-]*$/.test(name)||Object.hasOwn(normalized,key)||typeof value!=='string'||/[\r\n]/.test(value))throw invalid();normalized[key]=value;}
    let body;
    if(method==='POST'){
-    if(normalized['content-type']!=='application/json')throw invalid();body=parseBody(request.body);
+    if(!/^application\/json(?:;[ \t]*charset=utf-8)?$/i.test(normalized['content-type']??''))throw invalid();body=parseBody(request.body);
     if(body?.schemaVersion!==1)throw invalid();
    }else if(request.body!==undefined)throw invalid();
    const token=()=>{const v=normalized.authorization;if(typeof v!=='string'||!/^Bearer [A-Za-z0-9_-]+$/.test(v))throw unauthenticated();return v.slice(7);};

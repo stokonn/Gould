@@ -13,7 +13,7 @@ def main():
  def interrupted(_sig,_frame):raise KeyboardInterrupt('runner interrupted')
  signal.signal(signal.SIGTERM,interrupted)
  run=Path(tempfile.mkdtemp(prefix='pg-',dir=BASE/'results/http-pg'));name='goldberg-api-http-pg-'+uuid.uuid4().hex
- result={'container':name,'image':IMAGE,'syntheticOnly':True,'httpExecutions':0,'androidExecutions':0,'acceptance':'INTERRUPTED','created':False,'cleanup':'not-created','commands':[]}
+ result={'container':name,'image':IMAGE,'syntheticOnly':True,'httpExecutions':0,'androidExecutions':0,'acceptance':'INTERRUPTED','created':False,'cleanup':'not-created','commands':[],'startingCommit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'startingBranch':subprocess.check_output(['git','branch','--show-current'],cwd=ROOT,text=True).strip()}
  before=sources();(run/'source-before.json').write_text(json.dumps(before,indent=2)+'\n')
  def call(args,log,env=None,check=True):
   p=subprocess.run(args,cwd=ROOT,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
@@ -22,6 +22,7 @@ def main():
   return p
  try:
   call(['python3',str(BASE/'verify-current-provenance.py')],'current-provenance-before.log')
+  call(['python3',str(BASE/'consumer-compatibility.py')],'consumer-source-before.log')
   rootless=call(['podman','info','--format','{{.Host.Security.Rootless}}'],'podman.log').stdout.strip()
   if rootless!='true':raise RuntimeError('rootless Podman required')
   result['imageIdentity']=json.loads(call(['podman','image','inspect',IMAGE,'--format','{{json .}}'],'image.json').stdout)['Id']
@@ -46,6 +47,8 @@ def main():
   from tap_report import parse_tap
   for log,files in result['suiteSources'].items():
    suite_env=env.copy()
+   if log=='shared-contract.tap':suite_env['SHARED_CONTRACT_CAPTURES']=str(run/'shared-contract-captures.json')
+   if log=='query-budget.tap':suite_env['QUERY_PLAN_CAPTURES']=str(run/'query-plans.json')
    if log=='http-postgres.tap':suite_env['HTTP_PG_CAPTURES']=str(run/'http-read-captures.json')
    call(['node','--test','--test-reporter=tap',*files],log,env=suite_env)
    # These suites are flat: independently reconcile body count, plan and summary.
@@ -57,6 +60,9 @@ def main():
    if log=='http-postgres.tap':
     result['httpExecutions']='real-loopback-to-PG17; see http-postgres.tap'
     call(['python3',str(BASE/'verify-http-pg.py'),'--captures',str(run/'http-read-captures.json')],'http-dto-contract.log')
+  call(['python3',str(BASE/'consumer-compatibility.py'),'--replay',str(run/'shared-contract-captures.json'),str(run/'consumer-results.json')],'consumer-replay.log')
+  call(['python3',str(BASE/'verify-shared-contract.py'),str(run)],'shared-contract-verifier.log')
+  call(['python3',str(BASE/'consumer-compatibility.py')],'consumer-source-after.log')
   call(['python3',str(BASE/'verify-m3.py'),'--captures',str(run/'detail-captures.json')],'comparison-contract.log')
   for command,log in [
    (['python3',str(BASE/'verify-current-provenance.py')],'current-provenance.log'),

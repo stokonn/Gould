@@ -1,0 +1,3 @@
+PASS: pinned read-only consumer source and 12 actual static contract/boundary facts; source inspection is not Android runtime acceptance.
+PASS: pinned read-only consumer source and 12 actual static contract/boundary facts; source inspection is not Android runtime acceptance.
+PASS: 22 actual Kotlin JVM consumer compatibility cases; no Android runtime/network activation.

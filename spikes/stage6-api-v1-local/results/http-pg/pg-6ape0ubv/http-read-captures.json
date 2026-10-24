@@ -1,0 +1,1633 @@
+[
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "bdf25ab6-5a6c-4c4a-8660-14494ce75220",
+          "createdAt": "2026-10-24T18:28:32.238251Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "submitted",
+          "submissionId": "d05b3c75-901f-4be4-a79a-fa96b13fe6d9",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:32.238251Z"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "0fc1d214-c0fb-4a86-b3a2-a71efdea6ecf",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "bdf25ab6-5a6c-4c4a-8660-14494ce75220",
+          "createdAt": "2026-10-24T18:28:32.238251Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "submitted",
+          "submissionId": "d05b3c75-901f-4be4-a79a-fa96b13fe6d9",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:32.238251Z"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "337269ff-ccba-4548-b809-a8cffcb85c9d",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "ed6efa98-3c24-400f-8dce-8bef7b7fe9d2",
+          "createdAt": "2026-10-24T18:28:32.697038Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "in_review",
+          "submissionId": "ad2bb340-6e7c-4d28-9740-b17b2669bbaf",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:32.732488Z"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "8c467671-508a-4179-bd8f-6b56dbbd0791",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "ed6efa98-3c24-400f-8dce-8bef7b7fe9d2",
+          "createdAt": "2026-10-24T18:28:32.697038Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "in_review",
+          "submissionId": "ad2bb340-6e7c-4d28-9740-b17b2669bbaf",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:32.732488Z"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "d8e85f4e-d66b-40f2-b0ec-ebf16e896a91",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "ed6efa98-3c24-400f-8dce-8bef7b7fe9d2",
+          "createdAt": "2026-10-24T18:28:32.697038Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "in_review",
+          "submissionId": "ad2bb340-6e7c-4d28-9740-b17b2669bbaf",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:32.732488Z"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "7486cf76-ac14-454f-8ef4-d980797ce2fe",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "ed6efa98-3c24-400f-8dce-8bef7b7fe9d2",
+          "createdAt": "2026-10-24T18:28:32.697038Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "in_review",
+          "submissionId": "ad2bb340-6e7c-4d28-9740-b17b2669bbaf",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:32.732488Z"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "6253bfad-d986-4301-af2f-e4d3f50ae65a",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [],
+      "nextCursor": null,
+      "requestId": "22a8f318-d5f5-4e05-ba67-c2adb7d76155",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [],
+      "nextCursor": null,
+      "requestId": "c19d753c-3a30-4954-be39-986ad6d4be45",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [],
+      "nextCursor": null,
+      "requestId": "91f6ed3d-31e9-4f36-b120-e40bf18a51a8",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [],
+      "nextCursor": null,
+      "requestId": "f572604d-c351-47bb-bd36-1e419063570a",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "7390c166-d8c8-498d-9674-0acff8a303ae",
+          "createdAt": "2026-10-24T18:28:33.261285Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "submitted",
+          "submissionId": "e31c4515-c54b-4c84-9746-b24241273248",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:33.261285Z"
+        },
+        {
+          "authorId": "7390c166-d8c8-498d-9674-0acff8a303ae",
+          "createdAt": "2026-10-24T18:28:33.285489Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "submitted",
+          "submissionId": "b6895074-7e6b-432f-b204-1bca91b367dd",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:33.285489Z"
+        }
+      ],
+      "nextCursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6InF1ZXVlIiwicHJpbmNpcGFsSWQiOiJlMmFhOWFlMC05NjAyLTQ3NzktOTFhNC0zOTY5OTYzMDFkZmYiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJjcmVhdGVkQXQsaWQiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTg6Mjg6MzMuMDMyMDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTg6NDM6MzMuMDMyMDAwWiIsImFmdGVyIjp7ImNyZWF0ZWRBdCI6IjIwMjYtMTAtMjRUMTg6Mjg6MzMuMjg1NDg5WiIsImlkIjoiYjY4OTUwNzQtN2U2Yi00MzJmLWIyMDQtMWJjYTkxYjM2N2RkIn19f4BZKRaWGKD6moWix9vxNm1pc1jxfvxC0IAMGEVzunA",
+      "requestId": "4a9c1b25-b3b8-48d0-b792-75dcb6dba98a",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "7390c166-d8c8-498d-9674-0acff8a303ae",
+          "createdAt": "2026-10-24T18:28:33.309332Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "submitted",
+          "submissionId": "3421bfff-ca75-4a69-b57f-52fe6455522b",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:33.309332Z"
+        },
+        {
+          "authorId": "7390c166-d8c8-498d-9674-0acff8a303ae",
+          "createdAt": "2026-10-24T18:28:33.331855Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "submitted",
+          "submissionId": "a0002f8d-e615-4f37-9173-05bf9d046cd3",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:33.331855Z"
+        }
+      ],
+      "nextCursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6InF1ZXVlIiwicHJpbmNpcGFsSWQiOiJlMmFhOWFlMC05NjAyLTQ3NzktOTFhNC0zOTY5OTYzMDFkZmYiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJjcmVhdGVkQXQsaWQiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTg6Mjg6MzMuMDMyMDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTg6NDM6MzMuMDMyMDAwWiIsImFmdGVyIjp7ImNyZWF0ZWRBdCI6IjIwMjYtMTAtMjRUMTg6Mjg6MzMuMzMxODU1WiIsImlkIjoiYTAwMDJmOGQtZTYxNS00ZjM3LTkxNzMtMDViZjlkMDQ2Y2QzIn194f0m_pEC4dgYhA7JnJqPrHXFkxRR6ognXaOOek6yoCA",
+      "requestId": "f901d555-d9b7-4031-829a-c8729451878f",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "7390c166-d8c8-498d-9674-0acff8a303ae",
+          "createdAt": "2026-10-24T18:28:33.353844Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "submitted",
+          "submissionId": "fee0cd35-f75e-4023-b108-48a7daf44441",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:33.353844Z"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "99adf7b1-b1e8-4ee8-b92c-58a597500b94",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "6621320e-bbf2-407a-8050-1cd7ac041737",
+          "createdAt": "2026-10-24T18:28:33.768707Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "submitted",
+          "submissionId": "50a614cf-b01a-40ab-94ed-38602494b473",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:33.768707Z"
+        }
+      ],
+      "nextCursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6InF1ZXVlIiwicHJpbmNpcGFsSWQiOiI3YjM1ZWZlNS1kZTgyLTQ2MzUtOGE1OS01MDYyYzdhOWZjZjAiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJjcmVhdGVkQXQsaWQiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTg6Mjg6MzMuNTM0MDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTg6NDM6MzMuNTM0MDAwWiIsImFmdGVyIjp7ImNyZWF0ZWRBdCI6IjIwMjYtMTAtMjRUMTg6Mjg6MzMuNzY4NzA3WiIsImlkIjoiNTBhNjE0Y2YtYjAxYS00MGFiLTk0ZWQtMzg2MDI0OTRiNDczIn19Oa-wS7YZzeF-5sXU57qym4EReApak2hWGEPImjJZssA",
+      "requestId": "42f945f6-b3aa-496c-b00c-6948255cd617",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "6621320e-bbf2-407a-8050-1cd7ac041737",
+          "createdAt": "2026-10-24T18:28:33.791871Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "submitted",
+          "submissionId": "bb0bff72-5f8c-414d-bffd-d72e7df4a3e3",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:33.791871Z"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "401cd3d5-8a67-4471-b8b6-00ffc6f93f47",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "chain",
+      "headHash": "8c34f02e86b24cf865c7590abba7f64a8c5ee0cc68aeecada1d5f8ff75db9991",
+      "highwater": "8",
+      "items": [
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"1\", \"43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd\", \"session.created\", \"principal\", \"43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd\", null, null, null, null, \"2026-10-24T18:28:34.105460Z\", \"ea397f69-82a1-4290-8105-f765bfbe9a6b\"]",
+          "createdAt": "2026-10-24T18:28:34.105460Z",
+          "prevHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "reason": null,
+          "requestId": "ea397f69-82a1-4290-8105-f765bfbe9a6b",
+          "seq": "1",
+          "subject": {
+            "id": "43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "229ad843fc15673e18153bad77b898b299a4b1054782ed551f0571a513c627ed"
+        },
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "2e0d2165-a57a-41ff-94ab-8fb9e69cd485"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"2\", \"2e0d2165-a57a-41ff-94ab-8fb9e69cd485\", \"session.created\", \"principal\", \"2e0d2165-a57a-41ff-94ab-8fb9e69cd485\", null, null, null, null, \"2026-10-24T18:28:34.164358Z\", \"2bcd9385-701b-4d96-83e6-27c751f84994\"]",
+          "createdAt": "2026-10-24T18:28:34.164358Z",
+          "prevHash": "229ad843fc15673e18153bad77b898b299a4b1054782ed551f0571a513c627ed",
+          "reason": null,
+          "requestId": "2bcd9385-701b-4d96-83e6-27c751f84994",
+          "seq": "2",
+          "subject": {
+            "id": "2e0d2165-a57a-41ff-94ab-8fb9e69cd485",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "d9b42f3f7d62abc643d68d24612d1601faeb9dc498e49605af5038a85b8a9b9c"
+        }
+      ],
+      "nextCursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6ImF1ZGl0IiwicHJpbmNpcGFsSWQiOiIyZTBkMjE2NS1hNTdhLTQxZmYtOTRhYi04ZmI5ZTY5Y2Q0ODUiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJzZXEiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTg6Mjg6MzQuMDcxMDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTg6NDM6MzQuMDcxMDAwWiIsImFmdGVyIjp7InNlcSI6IjIifSwiaGlnaHdhdGVyIjoiOCIsImhlYWRIYXNoIjoiOGMzNGYwMmU4NmIyNGNmODY1Yzc1OTBhYmJhN2Y2NGE4YzVlZTBjYzY4YWVlY2FkYTFkNWY4ZmY3NWRiOTk5MSJ9ywH44r7yL_AGr3fHOxaD7ejBIPih-vjM5xaxFSdD6lM",
+      "requestId": "1ea27346-f3f1-4be5-9093-ec695c573f76",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "chain",
+      "headHash": "8c34f02e86b24cf865c7590abba7f64a8c5ee0cc68aeecada1d5f8ff75db9991",
+      "highwater": "8",
+      "items": [
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "06e86486-82a2-4e84-adf9-3dc52fc22226"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"3\", \"06e86486-82a2-4e84-adf9-3dc52fc22226\", \"session.created\", \"principal\", \"06e86486-82a2-4e84-adf9-3dc52fc22226\", null, null, null, null, \"2026-10-24T18:28:34.224291Z\", \"fd113253-7d32-44fe-be83-8091edae174d\"]",
+          "createdAt": "2026-10-24T18:28:34.224291Z",
+          "prevHash": "d9b42f3f7d62abc643d68d24612d1601faeb9dc498e49605af5038a85b8a9b9c",
+          "reason": null,
+          "requestId": "fd113253-7d32-44fe-be83-8091edae174d",
+          "seq": "3",
+          "subject": {
+            "id": "06e86486-82a2-4e84-adf9-3dc52fc22226",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "1afbe5759f4690847f21a00c7ae8850eda44603b41a17ae635b4bda588ff534e"
+        },
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "1321380f-b7e2-49fb-942f-b83661e5cd26"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"4\", \"1321380f-b7e2-49fb-942f-b83661e5cd26\", \"session.created\", \"principal\", \"1321380f-b7e2-49fb-942f-b83661e5cd26\", null, null, null, null, \"2026-10-24T18:28:34.289247Z\", \"e711e912-8198-4eb9-99df-a0836bf8b5b1\"]",
+          "createdAt": "2026-10-24T18:28:34.289247Z",
+          "prevHash": "1afbe5759f4690847f21a00c7ae8850eda44603b41a17ae635b4bda588ff534e",
+          "reason": null,
+          "requestId": "e711e912-8198-4eb9-99df-a0836bf8b5b1",
+          "seq": "4",
+          "subject": {
+            "id": "1321380f-b7e2-49fb-942f-b83661e5cd26",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "43270b079a97c9f69b09a96995e0ef5188fb7579072f81ddefffec8ce1a8dfcf"
+        }
+      ],
+      "nextCursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6ImF1ZGl0IiwicHJpbmNpcGFsSWQiOiIyZTBkMjE2NS1hNTdhLTQxZmYtOTRhYi04ZmI5ZTY5Y2Q0ODUiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJzZXEiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTg6Mjg6MzQuMDcxMDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTg6NDM6MzQuMDcxMDAwWiIsImFmdGVyIjp7InNlcSI6IjQifSwiaGlnaHdhdGVyIjoiOCIsImhlYWRIYXNoIjoiOGMzNGYwMmU4NmIyNGNmODY1Yzc1OTBhYmJhN2Y2NGE4YzVlZTBjYzY4YWVlY2FkYTFkNWY4ZmY3NWRiOTk5MSJ91LFJ63_IQ27KGcw7YeExYR64X6Vb06HkOkr1MFH1gi0",
+      "requestId": "4b50a5d3-58df-4d17-a787-f6b6ae29efa6",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "chain",
+      "headHash": "8c34f02e86b24cf865c7590abba7f64a8c5ee0cc68aeecada1d5f8ff75db9991",
+      "highwater": "8",
+      "items": [
+        {
+          "action": "submission.created",
+          "actor": {
+            "principalId": "43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd"
+          },
+          "afterHash": "3ac1963e215c884f2127067f44f49eacfdb18be4ffadd2e23a6d3c1f9c3c1dac",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"5\", \"43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd\", \"submission.created\", \"submission\", \"47784424-5bb9-4d25-b5ae-467b99a0670a\", \"1\", null, \"3ac1963e215c884f2127067f44f49eacfdb18be4ffadd2e23a6d3c1f9c3c1dac\", null, \"2026-10-24T18:28:34.328468Z\", \"1a344693-ed6f-415d-b5ce-6d038dbc31c5\"]",
+          "createdAt": "2026-10-24T18:28:34.328468Z",
+          "prevHash": "43270b079a97c9f69b09a96995e0ef5188fb7579072f81ddefffec8ce1a8dfcf",
+          "reason": null,
+          "requestId": "1a344693-ed6f-415d-b5ce-6d038dbc31c5",
+          "seq": "5",
+          "subject": {
+            "id": "47784424-5bb9-4d25-b5ae-467b99a0670a",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "c0b964efdb065a5c15dd797be39010d6ab5b769d045409be326390259e627e35"
+        },
+        {
+          "action": "submitted->in_review",
+          "actor": {
+            "principalId": "06e86486-82a2-4e84-adf9-3dc52fc22226"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"6\", \"06e86486-82a2-4e84-adf9-3dc52fc22226\", \"submitted->in_review\", \"submission\", \"47784424-5bb9-4d25-b5ae-467b99a0670a\", \"1\", null, null, null, \"2026-10-24T18:28:34.354975Z\", \"45e28d90-7ae2-4ff4-95f5-07d9d3df0281\"]",
+          "createdAt": "2026-10-24T18:28:34.354975Z",
+          "prevHash": "c0b964efdb065a5c15dd797be39010d6ab5b769d045409be326390259e627e35",
+          "reason": null,
+          "requestId": "45e28d90-7ae2-4ff4-95f5-07d9d3df0281",
+          "seq": "6",
+          "subject": {
+            "id": "47784424-5bb9-4d25-b5ae-467b99a0670a",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "c9b53d66b68165ff2ffc0efaa7905adc98d9387bebee399dd2fc2a7860e6bac5"
+        }
+      ],
+      "nextCursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6ImF1ZGl0IiwicHJpbmNpcGFsSWQiOiIyZTBkMjE2NS1hNTdhLTQxZmYtOTRhYi04ZmI5ZTY5Y2Q0ODUiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJzZXEiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTg6Mjg6MzQuMDcxMDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTg6NDM6MzQuMDcxMDAwWiIsImFmdGVyIjp7InNlcSI6IjYifSwiaGlnaHdhdGVyIjoiOCIsImhlYWRIYXNoIjoiOGMzNGYwMmU4NmIyNGNmODY1Yzc1OTBhYmJhN2Y2NGE4YzVlZTBjYzY4YWVlY2FkYTFkNWY4ZmY3NWRiOTk5MSJ9Yb-v1jtMsH5AyquycuGUFG_9cFyHOA0chgwfZyIPQeM",
+      "requestId": "fba73e51-1451-46f0-94f2-fd89b6326220",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "chain",
+      "headHash": "8c34f02e86b24cf865c7590abba7f64a8c5ee0cc68aeecada1d5f8ff75db9991",
+      "highwater": "8",
+      "items": [
+        {
+          "action": "in_review->approved",
+          "actor": {
+            "principalId": "2e0d2165-a57a-41ff-94ab-8fb9e69cd485"
+          },
+          "afterHash": "3ac1963e215c884f2127067f44f49eacfdb18be4ffadd2e23a6d3c1f9c3c1dac",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"7\", \"2e0d2165-a57a-41ff-94ab-8fb9e69cd485\", \"in_review->approved\", \"submission\", \"47784424-5bb9-4d25-b5ae-467b99a0670a\", \"1\", null, \"3ac1963e215c884f2127067f44f49eacfdb18be4ffadd2e23a6d3c1f9c3c1dac\", null, \"2026-10-24T18:28:34.389708Z\", \"72347bc8-e9c8-4e29-8d15-ef312c954c32\"]",
+          "createdAt": "2026-10-24T18:28:34.389708Z",
+          "prevHash": "c9b53d66b68165ff2ffc0efaa7905adc98d9387bebee399dd2fc2a7860e6bac5",
+          "reason": null,
+          "requestId": "72347bc8-e9c8-4e29-8d15-ef312c954c32",
+          "seq": "7",
+          "subject": {
+            "id": "47784424-5bb9-4d25-b5ae-467b99a0670a",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "5e5a1c285d1afad4fe01e7f4fe1d22e8aca542b740253f0c9a6a5acdb1e0eae6"
+        },
+        {
+          "action": "approved->published",
+          "actor": {
+            "principalId": "2e0d2165-a57a-41ff-94ab-8fb9e69cd485"
+          },
+          "afterHash": "3ac1963e215c884f2127067f44f49eacfdb18be4ffadd2e23a6d3c1f9c3c1dac",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"8\", \"2e0d2165-a57a-41ff-94ab-8fb9e69cd485\", \"approved->published\", \"submission\", \"47784424-5bb9-4d25-b5ae-467b99a0670a\", \"1\", null, \"3ac1963e215c884f2127067f44f49eacfdb18be4ffadd2e23a6d3c1f9c3c1dac\", null, \"2026-10-24T18:28:34.394706Z\", \"72347bc8-e9c8-4e29-8d15-ef312c954c32\"]",
+          "createdAt": "2026-10-24T18:28:34.394706Z",
+          "prevHash": "5e5a1c285d1afad4fe01e7f4fe1d22e8aca542b740253f0c9a6a5acdb1e0eae6",
+          "reason": null,
+          "requestId": "72347bc8-e9c8-4e29-8d15-ef312c954c32",
+          "seq": "8",
+          "subject": {
+            "id": "47784424-5bb9-4d25-b5ae-467b99a0670a",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "8c34f02e86b24cf865c7590abba7f64a8c5ee0cc68aeecada1d5f8ff75db9991"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "ed6bb6d2-5f6f-4758-b2fc-a6b155f80fc6",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "chain",
+      "headHash": "7bc4a265ff30552696e1e4340b108d56e9af16a49ecc0bed8ec2d5f32925f059",
+      "highwater": "9",
+      "items": [
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"1\", \"43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd\", \"session.created\", \"principal\", \"43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd\", null, null, null, null, \"2026-10-24T18:28:34.105460Z\", \"ea397f69-82a1-4290-8105-f765bfbe9a6b\"]",
+          "createdAt": "2026-10-24T18:28:34.105460Z",
+          "prevHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "reason": null,
+          "requestId": "ea397f69-82a1-4290-8105-f765bfbe9a6b",
+          "seq": "1",
+          "subject": {
+            "id": "43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "229ad843fc15673e18153bad77b898b299a4b1054782ed551f0571a513c627ed"
+        },
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "2e0d2165-a57a-41ff-94ab-8fb9e69cd485"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"2\", \"2e0d2165-a57a-41ff-94ab-8fb9e69cd485\", \"session.created\", \"principal\", \"2e0d2165-a57a-41ff-94ab-8fb9e69cd485\", null, null, null, null, \"2026-10-24T18:28:34.164358Z\", \"2bcd9385-701b-4d96-83e6-27c751f84994\"]",
+          "createdAt": "2026-10-24T18:28:34.164358Z",
+          "prevHash": "229ad843fc15673e18153bad77b898b299a4b1054782ed551f0571a513c627ed",
+          "reason": null,
+          "requestId": "2bcd9385-701b-4d96-83e6-27c751f84994",
+          "seq": "2",
+          "subject": {
+            "id": "2e0d2165-a57a-41ff-94ab-8fb9e69cd485",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "d9b42f3f7d62abc643d68d24612d1601faeb9dc498e49605af5038a85b8a9b9c"
+        },
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "06e86486-82a2-4e84-adf9-3dc52fc22226"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"3\", \"06e86486-82a2-4e84-adf9-3dc52fc22226\", \"session.created\", \"principal\", \"06e86486-82a2-4e84-adf9-3dc52fc22226\", null, null, null, null, \"2026-10-24T18:28:34.224291Z\", \"fd113253-7d32-44fe-be83-8091edae174d\"]",
+          "createdAt": "2026-10-24T18:28:34.224291Z",
+          "prevHash": "d9b42f3f7d62abc643d68d24612d1601faeb9dc498e49605af5038a85b8a9b9c",
+          "reason": null,
+          "requestId": "fd113253-7d32-44fe-be83-8091edae174d",
+          "seq": "3",
+          "subject": {
+            "id": "06e86486-82a2-4e84-adf9-3dc52fc22226",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "1afbe5759f4690847f21a00c7ae8850eda44603b41a17ae635b4bda588ff534e"
+        },
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "1321380f-b7e2-49fb-942f-b83661e5cd26"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"4\", \"1321380f-b7e2-49fb-942f-b83661e5cd26\", \"session.created\", \"principal\", \"1321380f-b7e2-49fb-942f-b83661e5cd26\", null, null, null, null, \"2026-10-24T18:28:34.289247Z\", \"e711e912-8198-4eb9-99df-a0836bf8b5b1\"]",
+          "createdAt": "2026-10-24T18:28:34.289247Z",
+          "prevHash": "1afbe5759f4690847f21a00c7ae8850eda44603b41a17ae635b4bda588ff534e",
+          "reason": null,
+          "requestId": "e711e912-8198-4eb9-99df-a0836bf8b5b1",
+          "seq": "4",
+          "subject": {
+            "id": "1321380f-b7e2-49fb-942f-b83661e5cd26",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "43270b079a97c9f69b09a96995e0ef5188fb7579072f81ddefffec8ce1a8dfcf"
+        },
+        {
+          "action": "submission.created",
+          "actor": {
+            "principalId": "43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd"
+          },
+          "afterHash": "3ac1963e215c884f2127067f44f49eacfdb18be4ffadd2e23a6d3c1f9c3c1dac",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"5\", \"43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd\", \"submission.created\", \"submission\", \"47784424-5bb9-4d25-b5ae-467b99a0670a\", \"1\", null, \"3ac1963e215c884f2127067f44f49eacfdb18be4ffadd2e23a6d3c1f9c3c1dac\", null, \"2026-10-24T18:28:34.328468Z\", \"1a344693-ed6f-415d-b5ce-6d038dbc31c5\"]",
+          "createdAt": "2026-10-24T18:28:34.328468Z",
+          "prevHash": "43270b079a97c9f69b09a96995e0ef5188fb7579072f81ddefffec8ce1a8dfcf",
+          "reason": null,
+          "requestId": "1a344693-ed6f-415d-b5ce-6d038dbc31c5",
+          "seq": "5",
+          "subject": {
+            "id": "47784424-5bb9-4d25-b5ae-467b99a0670a",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "c0b964efdb065a5c15dd797be39010d6ab5b769d045409be326390259e627e35"
+        },
+        {
+          "action": "submitted->in_review",
+          "actor": {
+            "principalId": "06e86486-82a2-4e84-adf9-3dc52fc22226"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"6\", \"06e86486-82a2-4e84-adf9-3dc52fc22226\", \"submitted->in_review\", \"submission\", \"47784424-5bb9-4d25-b5ae-467b99a0670a\", \"1\", null, null, null, \"2026-10-24T18:28:34.354975Z\", \"45e28d90-7ae2-4ff4-95f5-07d9d3df0281\"]",
+          "createdAt": "2026-10-24T18:28:34.354975Z",
+          "prevHash": "c0b964efdb065a5c15dd797be39010d6ab5b769d045409be326390259e627e35",
+          "reason": null,
+          "requestId": "45e28d90-7ae2-4ff4-95f5-07d9d3df0281",
+          "seq": "6",
+          "subject": {
+            "id": "47784424-5bb9-4d25-b5ae-467b99a0670a",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "c9b53d66b68165ff2ffc0efaa7905adc98d9387bebee399dd2fc2a7860e6bac5"
+        },
+        {
+          "action": "in_review->approved",
+          "actor": {
+            "principalId": "2e0d2165-a57a-41ff-94ab-8fb9e69cd485"
+          },
+          "afterHash": "3ac1963e215c884f2127067f44f49eacfdb18be4ffadd2e23a6d3c1f9c3c1dac",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"7\", \"2e0d2165-a57a-41ff-94ab-8fb9e69cd485\", \"in_review->approved\", \"submission\", \"47784424-5bb9-4d25-b5ae-467b99a0670a\", \"1\", null, \"3ac1963e215c884f2127067f44f49eacfdb18be4ffadd2e23a6d3c1f9c3c1dac\", null, \"2026-10-24T18:28:34.389708Z\", \"72347bc8-e9c8-4e29-8d15-ef312c954c32\"]",
+          "createdAt": "2026-10-24T18:28:34.389708Z",
+          "prevHash": "c9b53d66b68165ff2ffc0efaa7905adc98d9387bebee399dd2fc2a7860e6bac5",
+          "reason": null,
+          "requestId": "72347bc8-e9c8-4e29-8d15-ef312c954c32",
+          "seq": "7",
+          "subject": {
+            "id": "47784424-5bb9-4d25-b5ae-467b99a0670a",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "5e5a1c285d1afad4fe01e7f4fe1d22e8aca542b740253f0c9a6a5acdb1e0eae6"
+        },
+        {
+          "action": "approved->published",
+          "actor": {
+            "principalId": "2e0d2165-a57a-41ff-94ab-8fb9e69cd485"
+          },
+          "afterHash": "3ac1963e215c884f2127067f44f49eacfdb18be4ffadd2e23a6d3c1f9c3c1dac",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"8\", \"2e0d2165-a57a-41ff-94ab-8fb9e69cd485\", \"approved->published\", \"submission\", \"47784424-5bb9-4d25-b5ae-467b99a0670a\", \"1\", null, \"3ac1963e215c884f2127067f44f49eacfdb18be4ffadd2e23a6d3c1f9c3c1dac\", null, \"2026-10-24T18:28:34.394706Z\", \"72347bc8-e9c8-4e29-8d15-ef312c954c32\"]",
+          "createdAt": "2026-10-24T18:28:34.394706Z",
+          "prevHash": "5e5a1c285d1afad4fe01e7f4fe1d22e8aca542b740253f0c9a6a5acdb1e0eae6",
+          "reason": null,
+          "requestId": "72347bc8-e9c8-4e29-8d15-ef312c954c32",
+          "seq": "8",
+          "subject": {
+            "id": "47784424-5bb9-4d25-b5ae-467b99a0670a",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "8c34f02e86b24cf865c7590abba7f64a8c5ee0cc68aeecada1d5f8ff75db9991"
+        },
+        {
+          "action": "submission.created",
+          "actor": {
+            "principalId": "43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd"
+          },
+          "afterHash": "b2e8f78ad4174833e5c50d1bc185159eb496ba04ce6c99666c8420144631213b",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"9\", \"43ffc6db-e9b2-4c89-a108-8eb7f9e58cfd\", \"submission.created\", \"submission\", \"50133a4a-a186-4795-91a6-aba06fd62d88\", \"1\", null, \"b2e8f78ad4174833e5c50d1bc185159eb496ba04ce6c99666c8420144631213b\", null, \"2026-10-24T18:28:34.442536Z\", \"41485206-26c4-4073-bb89-478e0d6a8346\"]",
+          "createdAt": "2026-10-24T18:28:34.442536Z",
+          "prevHash": "8c34f02e86b24cf865c7590abba7f64a8c5ee0cc68aeecada1d5f8ff75db9991",
+          "reason": null,
+          "requestId": "41485206-26c4-4073-bb89-478e0d6a8346",
+          "seq": "9",
+          "subject": {
+            "id": "50133a4a-a186-4795-91a6-aba06fd62d88",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "7bc4a265ff30552696e1e4340b108d56e9af16a49ecc0bed8ec2d5f32925f059"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "bc0d9c8a-96ae-4051-8648-1dad1afba350",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "filtered",
+      "headHash": "370b7f46f8f241b11f98f19bee97055c0c166a35b9a29d8aea7bc7d9e56c6f3a",
+      "highwater": "7",
+      "items": [
+        {
+          "action": "in_review->rejected",
+          "actor": {
+            "principalId": "f824a6fd-065e-497e-9cc1-77a0e0a4f80f"
+          },
+          "afterHash": "5c2b3eab5d3570d4011b76cdab7fc0bde792f8c76443fcb4587a2c4082275738",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"7\", \"f824a6fd-065e-497e-9cc1-77a0e0a4f80f\", \"in_review->rejected\", \"submission\", \"86b4079c-74fd-425c-93fa-012e9d23a4fe\", \"1\", null, \"5c2b3eab5d3570d4011b76cdab7fc0bde792f8c76443fcb4587a2c4082275738\", \"Český %_ důvod\", \"2026-10-24T18:28:34.926830Z\", \"3eafab7c-3fe4-42c5-bf18-ed7191e8766d\"]",
+          "createdAt": "2026-10-24T18:28:34.926830Z",
+          "prevHash": "abc5c400b2af0d94ada4796853c0581ad4a8382075471f677663971bd83b1c84",
+          "reason": "Český %_ důvod",
+          "requestId": "3eafab7c-3fe4-42c5-bf18-ed7191e8766d",
+          "seq": "7",
+          "subject": {
+            "id": "86b4079c-74fd-425c-93fa-012e9d23a4fe",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "370b7f46f8f241b11f98f19bee97055c0c166a35b9a29d8aea7bc7d9e56c6f3a"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "5d9d426f-212d-421e-94c7-7ed22d1adc8e",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "filtered",
+      "headHash": "370b7f46f8f241b11f98f19bee97055c0c166a35b9a29d8aea7bc7d9e56c6f3a",
+      "highwater": "7",
+      "items": [
+        {
+          "action": "in_review->rejected",
+          "actor": {
+            "principalId": "f824a6fd-065e-497e-9cc1-77a0e0a4f80f"
+          },
+          "afterHash": "5c2b3eab5d3570d4011b76cdab7fc0bde792f8c76443fcb4587a2c4082275738",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"7\", \"f824a6fd-065e-497e-9cc1-77a0e0a4f80f\", \"in_review->rejected\", \"submission\", \"86b4079c-74fd-425c-93fa-012e9d23a4fe\", \"1\", null, \"5c2b3eab5d3570d4011b76cdab7fc0bde792f8c76443fcb4587a2c4082275738\", \"Český %_ důvod\", \"2026-10-24T18:28:34.926830Z\", \"3eafab7c-3fe4-42c5-bf18-ed7191e8766d\"]",
+          "createdAt": "2026-10-24T18:28:34.926830Z",
+          "prevHash": "abc5c400b2af0d94ada4796853c0581ad4a8382075471f677663971bd83b1c84",
+          "reason": "Český %_ důvod",
+          "requestId": "3eafab7c-3fe4-42c5-bf18-ed7191e8766d",
+          "seq": "7",
+          "subject": {
+            "id": "86b4079c-74fd-425c-93fa-012e9d23a4fe",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "370b7f46f8f241b11f98f19bee97055c0c166a35b9a29d8aea7bc7d9e56c6f3a"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "cc3149a8-62fb-494a-863d-5cf4f4bbc209",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "filtered",
+      "headHash": "370b7f46f8f241b11f98f19bee97055c0c166a35b9a29d8aea7bc7d9e56c6f3a",
+      "highwater": "7",
+      "items": [],
+      "nextCursor": null,
+      "requestId": "0627ae64-c32e-4e6b-b0f6-805453382ab1",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "filtered",
+      "headHash": "370b7f46f8f241b11f98f19bee97055c0c166a35b9a29d8aea7bc7d9e56c6f3a",
+      "highwater": "7",
+      "items": [],
+      "nextCursor": null,
+      "requestId": "d5593e3e-891c-4585-a938-7bcc8a8ed75c",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "filtered",
+      "headHash": "370b7f46f8f241b11f98f19bee97055c0c166a35b9a29d8aea7bc7d9e56c6f3a",
+      "highwater": "7",
+      "items": [],
+      "nextCursor": null,
+      "requestId": "52da6f77-516b-464a-81da-847f2645b816",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "filtered",
+      "headHash": "370b7f46f8f241b11f98f19bee97055c0c166a35b9a29d8aea7bc7d9e56c6f3a",
+      "highwater": "7",
+      "items": [],
+      "nextCursor": null,
+      "requestId": "d1843a1e-0c05-4cfc-8808-5ebcded7d704",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "filtered",
+      "headHash": "370b7f46f8f241b11f98f19bee97055c0c166a35b9a29d8aea7bc7d9e56c6f3a",
+      "highwater": "7",
+      "items": [
+        {
+          "action": "submitted->in_review",
+          "actor": {
+            "principalId": "2df5ec8f-ca9d-4507-8182-bba8ebe104a9"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"6\", \"2df5ec8f-ca9d-4507-8182-bba8ebe104a9\", \"submitted->in_review\", \"submission\", \"86b4079c-74fd-425c-93fa-012e9d23a4fe\", \"1\", null, null, null, \"2026-10-24T18:28:34.898202Z\", \"12d6614f-63bf-4cfe-bad4-837c6c2d8c22\"]",
+          "createdAt": "2026-10-24T18:28:34.898202Z",
+          "prevHash": "704c65e7ada7c339729e1ffde738377858dd0f7a0e036e9621d5fedfe9a09b75",
+          "reason": null,
+          "requestId": "12d6614f-63bf-4cfe-bad4-837c6c2d8c22",
+          "seq": "6",
+          "subject": {
+            "id": "86b4079c-74fd-425c-93fa-012e9d23a4fe",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "abc5c400b2af0d94ada4796853c0581ad4a8382075471f677663971bd83b1c84"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "806a802d-3e79-49c7-b8c4-35c288e5c647",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "Stats",
+    "value": {
+      "approvedInWindow": "1",
+      "asOf": "2026-10-24T18:28:35.713056Z",
+      "auditHighwater": "17",
+      "needsInfo": "1",
+      "pending": "2",
+      "rejectedInWindow": "1",
+      "requestId": "ee844ac1-572b-42bd-af22-f5a731f959ae",
+      "schemaVersion": 1,
+      "state": "exact",
+      "window": {
+        "endExclusive": "2026-10-24T22:00:00.000000Z",
+        "startInclusive": "2026-10-23T22:00:00.000000Z",
+        "timeZone": "Europe/Prague"
+      }
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "chain",
+      "headHash": "a55d36b982f5c1163f2551f21b283ceb57e268b78609771a99bd157633fa878a",
+      "highwater": "17",
+      "items": [
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "86d54aae-d891-42f4-a395-2a8a4703ff09"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"1\", \"86d54aae-d891-42f4-a395-2a8a4703ff09\", \"session.created\", \"principal\", \"86d54aae-d891-42f4-a395-2a8a4703ff09\", null, null, null, null, \"2026-10-24T18:28:35.223335Z\", \"267218ff-e4a9-4ec8-9177-1abe4f45249e\"]",
+          "createdAt": "2026-10-24T18:28:35.223335Z",
+          "prevHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "reason": null,
+          "requestId": "267218ff-e4a9-4ec8-9177-1abe4f45249e",
+          "seq": "1",
+          "subject": {
+            "id": "86d54aae-d891-42f4-a395-2a8a4703ff09",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "f24e03303b82c2d2b0e50ae9485d487cf32898205b52527164ac9b7d81375c80"
+        },
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "51121db3-8b6d-4dbc-9cfc-34edb6870c38"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"2\", \"51121db3-8b6d-4dbc-9cfc-34edb6870c38\", \"session.created\", \"principal\", \"51121db3-8b6d-4dbc-9cfc-34edb6870c38\", null, null, null, null, \"2026-10-24T18:28:35.277476Z\", \"2eeb7b0f-54bf-44b2-a666-04809e0da4b9\"]",
+          "createdAt": "2026-10-24T18:28:35.277476Z",
+          "prevHash": "f24e03303b82c2d2b0e50ae9485d487cf32898205b52527164ac9b7d81375c80",
+          "reason": null,
+          "requestId": "2eeb7b0f-54bf-44b2-a666-04809e0da4b9",
+          "seq": "2",
+          "subject": {
+            "id": "51121db3-8b6d-4dbc-9cfc-34edb6870c38",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "f2068fa1d5502352ea8b26da0e9ecc6c0e704280b4ec5531c6180959e1795a8a"
+        },
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "2b725f6f-f861-4a99-b3fc-e25834eac526"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"3\", \"2b725f6f-f861-4a99-b3fc-e25834eac526\", \"session.created\", \"principal\", \"2b725f6f-f861-4a99-b3fc-e25834eac526\", null, null, null, null, \"2026-10-24T18:28:35.330850Z\", \"f8280295-6fc3-4939-a6e9-b23ebc7baa8c\"]",
+          "createdAt": "2026-10-24T18:28:35.330850Z",
+          "prevHash": "f2068fa1d5502352ea8b26da0e9ecc6c0e704280b4ec5531c6180959e1795a8a",
+          "reason": null,
+          "requestId": "f8280295-6fc3-4939-a6e9-b23ebc7baa8c",
+          "seq": "3",
+          "subject": {
+            "id": "2b725f6f-f861-4a99-b3fc-e25834eac526",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "56d50b323b4078a48baee801b4f8c5f612877efee9c5d481e21f0c82c095c08b"
+        },
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "f55401f6-b90c-4585-bced-3c6f4d3bb1f2"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"4\", \"f55401f6-b90c-4585-bced-3c6f4d3bb1f2\", \"session.created\", \"principal\", \"f55401f6-b90c-4585-bced-3c6f4d3bb1f2\", null, null, null, null, \"2026-10-24T18:28:35.385065Z\", \"5f7e8f06-be2a-4d0d-9e5e-4cb02ab6176b\"]",
+          "createdAt": "2026-10-24T18:28:35.385065Z",
+          "prevHash": "56d50b323b4078a48baee801b4f8c5f612877efee9c5d481e21f0c82c095c08b",
+          "reason": null,
+          "requestId": "5f7e8f06-be2a-4d0d-9e5e-4cb02ab6176b",
+          "seq": "4",
+          "subject": {
+            "id": "f55401f6-b90c-4585-bced-3c6f4d3bb1f2",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "c6b9a03fe35eabcdcfa5118244517a1d51e4ca3dad7ad2d297244d6169fd7804"
+        },
+        {
+          "action": "submission.created",
+          "actor": {
+            "principalId": "86d54aae-d891-42f4-a395-2a8a4703ff09"
+          },
+          "afterHash": "35689cba7692565ae3e2460d524153a4648959a27ed6e3c7dbd83defe7906d2a",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"5\", \"86d54aae-d891-42f4-a395-2a8a4703ff09\", \"submission.created\", \"submission\", \"b8974dfd-8eb3-42c3-af81-aeabcd3f0ec9\", \"1\", null, \"35689cba7692565ae3e2460d524153a4648959a27ed6e3c7dbd83defe7906d2a\", null, \"2026-10-24T18:28:35.422476Z\", \"5e4f696b-851d-4e54-bcf9-b56a1f4a1b01\"]",
+          "createdAt": "2026-10-24T18:28:35.422476Z",
+          "prevHash": "c6b9a03fe35eabcdcfa5118244517a1d51e4ca3dad7ad2d297244d6169fd7804",
+          "reason": null,
+          "requestId": "5e4f696b-851d-4e54-bcf9-b56a1f4a1b01",
+          "seq": "5",
+          "subject": {
+            "id": "b8974dfd-8eb3-42c3-af81-aeabcd3f0ec9",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "056ce52461dfe41f7009348bf53843bd5e18a1d3f08b431d05a62056251d3e48"
+        },
+        {
+          "action": "submission.created",
+          "actor": {
+            "principalId": "86d54aae-d891-42f4-a395-2a8a4703ff09"
+          },
+          "afterHash": "dedcf2f0c7dfccc032c49fad97533f57165e853f1eb95acf1fb4af248c5ef354",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"6\", \"86d54aae-d891-42f4-a395-2a8a4703ff09\", \"submission.created\", \"submission\", \"d2c5ec1c-2d5a-4256-8347-47fc4f10e9c4\", \"1\", null, \"dedcf2f0c7dfccc032c49fad97533f57165e853f1eb95acf1fb4af248c5ef354\", null, \"2026-10-24T18:28:35.444199Z\", \"3762a498-cea4-4350-a51f-f00a9c90f3bc\"]",
+          "createdAt": "2026-10-24T18:28:35.444199Z",
+          "prevHash": "056ce52461dfe41f7009348bf53843bd5e18a1d3f08b431d05a62056251d3e48",
+          "reason": null,
+          "requestId": "3762a498-cea4-4350-a51f-f00a9c90f3bc",
+          "seq": "6",
+          "subject": {
+            "id": "d2c5ec1c-2d5a-4256-8347-47fc4f10e9c4",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "a6210e73b00c8879242b3a1328d515f4d91a9aa65de0878a9a3c4d38cb98e61d"
+        },
+        {
+          "action": "submitted->in_review",
+          "actor": {
+            "principalId": "2b725f6f-f861-4a99-b3fc-e25834eac526"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"7\", \"2b725f6f-f861-4a99-b3fc-e25834eac526\", \"submitted->in_review\", \"submission\", \"d2c5ec1c-2d5a-4256-8347-47fc4f10e9c4\", \"1\", null, null, null, \"2026-10-24T18:28:35.463841Z\", \"89e363ab-24b0-4f22-ab79-bd357e37e757\"]",
+          "createdAt": "2026-10-24T18:28:35.463841Z",
+          "prevHash": "a6210e73b00c8879242b3a1328d515f4d91a9aa65de0878a9a3c4d38cb98e61d",
+          "reason": null,
+          "requestId": "89e363ab-24b0-4f22-ab79-bd357e37e757",
+          "seq": "7",
+          "subject": {
+            "id": "d2c5ec1c-2d5a-4256-8347-47fc4f10e9c4",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "1b0a34b45a2c855a91af28ca9e9b56ec35566db6098e52447c884a5d40d9d8a1"
+        },
+        {
+          "action": "submission.created",
+          "actor": {
+            "principalId": "86d54aae-d891-42f4-a395-2a8a4703ff09"
+          },
+          "afterHash": "4bb99b9c8cac451f96231aba61144aaa738ce161c1a8be927655da251b36f5b5",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"8\", \"86d54aae-d891-42f4-a395-2a8a4703ff09\", \"submission.created\", \"submission\", \"2eaadfce-404b-408d-8c67-a3e775f44d5c\", \"1\", null, \"4bb99b9c8cac451f96231aba61144aaa738ce161c1a8be927655da251b36f5b5\", null, \"2026-10-24T18:28:35.489466Z\", \"a0659097-4ea4-469c-b120-a751b4ddc7d0\"]",
+          "createdAt": "2026-10-24T18:28:35.489466Z",
+          "prevHash": "1b0a34b45a2c855a91af28ca9e9b56ec35566db6098e52447c884a5d40d9d8a1",
+          "reason": null,
+          "requestId": "a0659097-4ea4-469c-b120-a751b4ddc7d0",
+          "seq": "8",
+          "subject": {
+            "id": "2eaadfce-404b-408d-8c67-a3e775f44d5c",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "29952a7160524799397a9c6d05fc9ce31f8058ae2844cc855a188660396639dd"
+        },
+        {
+          "action": "submitted->in_review",
+          "actor": {
+            "principalId": "2b725f6f-f861-4a99-b3fc-e25834eac526"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"9\", \"2b725f6f-f861-4a99-b3fc-e25834eac526\", \"submitted->in_review\", \"submission\", \"2eaadfce-404b-408d-8c67-a3e775f44d5c\", \"1\", null, null, null, \"2026-10-24T18:28:35.511797Z\", \"31e117b4-79f7-4c27-ba1f-4c43a242faff\"]",
+          "createdAt": "2026-10-24T18:28:35.511797Z",
+          "prevHash": "29952a7160524799397a9c6d05fc9ce31f8058ae2844cc855a188660396639dd",
+          "reason": null,
+          "requestId": "31e117b4-79f7-4c27-ba1f-4c43a242faff",
+          "seq": "9",
+          "subject": {
+            "id": "2eaadfce-404b-408d-8c67-a3e775f44d5c",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "d9d8f7b9e9fd779c33ce92ad377a17720fddf7a87898f7d7792e602364c53e37"
+        },
+        {
+          "action": "submission.created",
+          "actor": {
+            "principalId": "86d54aae-d891-42f4-a395-2a8a4703ff09"
+          },
+          "afterHash": "cbacb2d4304ffca7b785df19a99ccd7e52c36f25d766c87b9b5061e349d8d16b",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"10\", \"86d54aae-d891-42f4-a395-2a8a4703ff09\", \"submission.created\", \"submission\", \"496bc939-d601-4d2e-bb8d-9710caa206e6\", \"1\", null, \"cbacb2d4304ffca7b785df19a99ccd7e52c36f25d766c87b9b5061e349d8d16b\", null, \"2026-10-24T18:28:35.538209Z\", \"b89bb704-5e40-4117-a1e1-26f375217fe1\"]",
+          "createdAt": "2026-10-24T18:28:35.538209Z",
+          "prevHash": "d9d8f7b9e9fd779c33ce92ad377a17720fddf7a87898f7d7792e602364c53e37",
+          "reason": null,
+          "requestId": "b89bb704-5e40-4117-a1e1-26f375217fe1",
+          "seq": "10",
+          "subject": {
+            "id": "496bc939-d601-4d2e-bb8d-9710caa206e6",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "f8df18e437db0f2a5835a6799f0d09ac49bd7038440b6af36dba332b28c6933f"
+        },
+        {
+          "action": "submitted->in_review",
+          "actor": {
+            "principalId": "2b725f6f-f861-4a99-b3fc-e25834eac526"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"11\", \"2b725f6f-f861-4a99-b3fc-e25834eac526\", \"submitted->in_review\", \"submission\", \"496bc939-d601-4d2e-bb8d-9710caa206e6\", \"1\", null, null, null, \"2026-10-24T18:28:35.558543Z\", \"c410645c-a12b-46b2-9009-66e22a205bd2\"]",
+          "createdAt": "2026-10-24T18:28:35.558543Z",
+          "prevHash": "f8df18e437db0f2a5835a6799f0d09ac49bd7038440b6af36dba332b28c6933f",
+          "reason": null,
+          "requestId": "c410645c-a12b-46b2-9009-66e22a205bd2",
+          "seq": "11",
+          "subject": {
+            "id": "496bc939-d601-4d2e-bb8d-9710caa206e6",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "c2177010beeb12b8b78f5ae6aa359256c15f96a2e902de209ce8ca585e7060d9"
+        },
+        {
+          "action": "submission.created",
+          "actor": {
+            "principalId": "86d54aae-d891-42f4-a395-2a8a4703ff09"
+          },
+          "afterHash": "9bead8b063cd651cc2cddc1b9edb1332336a8c3f2560ad2aeacc6facb4039a68",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"12\", \"86d54aae-d891-42f4-a395-2a8a4703ff09\", \"submission.created\", \"submission\", \"1f61b3f2-8af0-4242-b769-7c296d316bf4\", \"1\", null, \"9bead8b063cd651cc2cddc1b9edb1332336a8c3f2560ad2aeacc6facb4039a68\", null, \"2026-10-24T18:28:35.584204Z\", \"756bf188-e41d-4016-8a4d-c16626297f2a\"]",
+          "createdAt": "2026-10-24T18:28:35.584204Z",
+          "prevHash": "c2177010beeb12b8b78f5ae6aa359256c15f96a2e902de209ce8ca585e7060d9",
+          "reason": null,
+          "requestId": "756bf188-e41d-4016-8a4d-c16626297f2a",
+          "seq": "12",
+          "subject": {
+            "id": "1f61b3f2-8af0-4242-b769-7c296d316bf4",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "461de359d8f075160208c88e66ca187cab07dc4d0431cb0f0a3337e34cb4b066"
+        },
+        {
+          "action": "submitted->in_review",
+          "actor": {
+            "principalId": "2b725f6f-f861-4a99-b3fc-e25834eac526"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"13\", \"2b725f6f-f861-4a99-b3fc-e25834eac526\", \"submitted->in_review\", \"submission\", \"1f61b3f2-8af0-4242-b769-7c296d316bf4\", \"1\", null, null, null, \"2026-10-24T18:28:35.606020Z\", \"cdd04c46-9583-4b53-b8bf-24855ec83989\"]",
+          "createdAt": "2026-10-24T18:28:35.606020Z",
+          "prevHash": "461de359d8f075160208c88e66ca187cab07dc4d0431cb0f0a3337e34cb4b066",
+          "reason": null,
+          "requestId": "cdd04c46-9583-4b53-b8bf-24855ec83989",
+          "seq": "13",
+          "subject": {
+            "id": "1f61b3f2-8af0-4242-b769-7c296d316bf4",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "b64402ae1fabd4a2d73bd482a6317ee483f167a68ff9bed769f975ca841b3cea"
+        },
+        {
+          "action": "in_review->changes_requested",
+          "actor": {
+            "principalId": "51121db3-8b6d-4dbc-9cfc-34edb6870c38"
+          },
+          "afterHash": "4bb99b9c8cac451f96231aba61144aaa738ce161c1a8be927655da251b36f5b5",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"14\", \"51121db3-8b6d-4dbc-9cfc-34edb6870c38\", \"in_review->changes_requested\", \"submission\", \"2eaadfce-404b-408d-8c67-a3e775f44d5c\", \"1\", null, \"4bb99b9c8cac451f96231aba61144aaa738ce161c1a8be927655da251b36f5b5\", \"Synthetic details\", \"2026-10-24T18:28:35.631596Z\", \"a77e0a89-9787-4cfc-a0a2-98783549e684\"]",
+          "createdAt": "2026-10-24T18:28:35.631596Z",
+          "prevHash": "b64402ae1fabd4a2d73bd482a6317ee483f167a68ff9bed769f975ca841b3cea",
+          "reason": "Synthetic details",
+          "requestId": "a77e0a89-9787-4cfc-a0a2-98783549e684",
+          "seq": "14",
+          "subject": {
+            "id": "2eaadfce-404b-408d-8c67-a3e775f44d5c",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "bd0f89582d4ef0ccbca5a950f18e1814c915c7054c525c8b4693371aeeddcbdf"
+        },
+        {
+          "action": "in_review->approved",
+          "actor": {
+            "principalId": "51121db3-8b6d-4dbc-9cfc-34edb6870c38"
+          },
+          "afterHash": "cbacb2d4304ffca7b785df19a99ccd7e52c36f25d766c87b9b5061e349d8d16b",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"15\", \"51121db3-8b6d-4dbc-9cfc-34edb6870c38\", \"in_review->approved\", \"submission\", \"496bc939-d601-4d2e-bb8d-9710caa206e6\", \"1\", null, \"cbacb2d4304ffca7b785df19a99ccd7e52c36f25d766c87b9b5061e349d8d16b\", null, \"2026-10-24T18:28:35.659712Z\", \"9ff9026b-0f98-441f-9fd9-a15c32d90a83\"]",
+          "createdAt": "2026-10-24T18:28:35.659712Z",
+          "prevHash": "bd0f89582d4ef0ccbca5a950f18e1814c915c7054c525c8b4693371aeeddcbdf",
+          "reason": null,
+          "requestId": "9ff9026b-0f98-441f-9fd9-a15c32d90a83",
+          "seq": "15",
+          "subject": {
+            "id": "496bc939-d601-4d2e-bb8d-9710caa206e6",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "4fa9a86f58f7d376087f77bce7bdd55af8d45a0c33dd9f0ca628feb54e43029b"
+        },
+        {
+          "action": "approved->published",
+          "actor": {
+            "principalId": "51121db3-8b6d-4dbc-9cfc-34edb6870c38"
+          },
+          "afterHash": "cbacb2d4304ffca7b785df19a99ccd7e52c36f25d766c87b9b5061e349d8d16b",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"16\", \"51121db3-8b6d-4dbc-9cfc-34edb6870c38\", \"approved->published\", \"submission\", \"496bc939-d601-4d2e-bb8d-9710caa206e6\", \"1\", null, \"cbacb2d4304ffca7b785df19a99ccd7e52c36f25d766c87b9b5061e349d8d16b\", null, \"2026-10-24T18:28:35.663187Z\", \"9ff9026b-0f98-441f-9fd9-a15c32d90a83\"]",
+          "createdAt": "2026-10-24T18:28:35.663187Z",
+          "prevHash": "4fa9a86f58f7d376087f77bce7bdd55af8d45a0c33dd9f0ca628feb54e43029b",
+          "reason": null,
+          "requestId": "9ff9026b-0f98-441f-9fd9-a15c32d90a83",
+          "seq": "16",
+          "subject": {
+            "id": "496bc939-d601-4d2e-bb8d-9710caa206e6",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "88882deadd76a2232685da9c2a8373f653388db49673bb48165405015760a363"
+        },
+        {
+          "action": "in_review->rejected",
+          "actor": {
+            "principalId": "51121db3-8b6d-4dbc-9cfc-34edb6870c38"
+          },
+          "afterHash": "9bead8b063cd651cc2cddc1b9edb1332336a8c3f2560ad2aeacc6facb4039a68",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"17\", \"51121db3-8b6d-4dbc-9cfc-34edb6870c38\", \"in_review->rejected\", \"submission\", \"1f61b3f2-8af0-4242-b769-7c296d316bf4\", \"1\", null, \"9bead8b063cd651cc2cddc1b9edb1332336a8c3f2560ad2aeacc6facb4039a68\", \"Synthetic rejection\", \"2026-10-24T18:28:35.686235Z\", \"7610197f-7460-4ae1-abc2-77d8bcfccb59\"]",
+          "createdAt": "2026-10-24T18:28:35.686235Z",
+          "prevHash": "88882deadd76a2232685da9c2a8373f653388db49673bb48165405015760a363",
+          "reason": "Synthetic rejection",
+          "requestId": "7610197f-7460-4ae1-abc2-77d8bcfccb59",
+          "seq": "17",
+          "subject": {
+            "id": "1f61b3f2-8af0-4242-b769-7c296d316bf4",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "a55d36b982f5c1163f2551f21b283ceb57e268b78609771a99bd157633fa878a"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "4604d072-a9dd-46ee-8382-f3ecc22a3d5d",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "Stats",
+    "value": {
+      "approvedInWindow": "0",
+      "asOf": "2026-10-24T18:28:36.124678Z",
+      "auditHighwater": "6",
+      "needsInfo": "0",
+      "pending": "1",
+      "rejectedInWindow": "0",
+      "requestId": "8ae5506c-dda0-4197-965f-ce61a784d8ff",
+      "schemaVersion": 1,
+      "state": "exact",
+      "window": {
+        "endExclusive": "2026-10-24T22:00:00.000000Z",
+        "startInclusive": "2026-10-23T22:00:00.000000Z",
+        "timeZone": "Europe/Prague"
+      }
+    }
+  },
+  {
+    "dto": "Stats",
+    "value": {
+      "approvedInWindow": "0",
+      "asOf": "2026-10-24T18:28:36.148396Z",
+      "auditHighwater": "6",
+      "needsInfo": "0",
+      "pending": "1",
+      "rejectedInWindow": "0",
+      "requestId": "962263b0-44a7-4c96-a319-f8af0459ac62",
+      "schemaVersion": 1,
+      "state": "exact",
+      "window": {
+        "endExclusive": "2026-10-24T22:00:00.000000Z",
+        "startInclusive": "2026-10-23T22:00:00.000000Z",
+        "timeZone": "Europe/Prague"
+      }
+    }
+  },
+  {
+    "dto": "Stats",
+    "value": {
+      "approvedInWindow": "1",
+      "asOf": "2026-10-24T18:28:36.207305Z",
+      "auditHighwater": "8",
+      "needsInfo": "0",
+      "pending": "0",
+      "rejectedInWindow": "0",
+      "requestId": "c6b2d938-783f-453f-b6b4-2201fa5755e8",
+      "schemaVersion": 1,
+      "state": "exact",
+      "window": {
+        "endExclusive": "2026-10-24T22:00:00.000000Z",
+        "startInclusive": "2026-10-23T22:00:00.000000Z",
+        "timeZone": "Europe/Prague"
+      }
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "1834ca84-c27a-43d0-b4bc-8b5e9e2b6181",
+          "createdAt": "2026-10-24T18:28:38.857317Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "submitted",
+          "submissionId": "0334f4a3-a553-4388-9625-d2de3530aea7",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:38.857317Z"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "4f2cd38b-f0dd-4c5c-918d-9d0bc5158ffd",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "chain",
+      "headHash": "a921d048822332fcb3b32dea83b36546d9ac8651d6b005b8dfc6d1db3605afea",
+      "highwater": "5",
+      "items": [
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "1834ca84-c27a-43d0-b4bc-8b5e9e2b6181"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"1\", \"1834ca84-c27a-43d0-b4bc-8b5e9e2b6181\", \"session.created\", \"principal\", \"1834ca84-c27a-43d0-b4bc-8b5e9e2b6181\", null, null, null, null, \"2026-10-24T18:28:38.602944Z\", \"2823c037-32d8-481e-90b7-4cdc64b80c62\"]",
+          "createdAt": "2026-10-24T18:28:38.602944Z",
+          "prevHash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "reason": null,
+          "requestId": "2823c037-32d8-481e-90b7-4cdc64b80c62",
+          "seq": "1",
+          "subject": {
+            "id": "1834ca84-c27a-43d0-b4bc-8b5e9e2b6181",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "9630faf19e54d4915649a1a7f93ca7d7cea2329ac9aeb9afbea64d16388179b3"
+        },
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "61e0eba4-c68b-40a8-97b0-9a151bf17a10"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"2\", \"61e0eba4-c68b-40a8-97b0-9a151bf17a10\", \"session.created\", \"principal\", \"61e0eba4-c68b-40a8-97b0-9a151bf17a10\", null, null, null, null, \"2026-10-24T18:28:38.670675Z\", \"bcc246cc-ab0b-4eab-b331-dba2fb5150ad\"]",
+          "createdAt": "2026-10-24T18:28:38.670675Z",
+          "prevHash": "9630faf19e54d4915649a1a7f93ca7d7cea2329ac9aeb9afbea64d16388179b3",
+          "reason": null,
+          "requestId": "bcc246cc-ab0b-4eab-b331-dba2fb5150ad",
+          "seq": "2",
+          "subject": {
+            "id": "61e0eba4-c68b-40a8-97b0-9a151bf17a10",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "6074b61c1a7af167df955858e4c61216585b787d78ef61e71051241ad81fe73d"
+        },
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "890454d4-056d-4fbc-900d-b9d33cb44ff5"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"3\", \"890454d4-056d-4fbc-900d-b9d33cb44ff5\", \"session.created\", \"principal\", \"890454d4-056d-4fbc-900d-b9d33cb44ff5\", null, null, null, null, \"2026-10-24T18:28:38.741980Z\", \"ebb677bb-9839-4a5a-9845-b91f58863cb6\"]",
+          "createdAt": "2026-10-24T18:28:38.741980Z",
+          "prevHash": "6074b61c1a7af167df955858e4c61216585b787d78ef61e71051241ad81fe73d",
+          "reason": null,
+          "requestId": "ebb677bb-9839-4a5a-9845-b91f58863cb6",
+          "seq": "3",
+          "subject": {
+            "id": "890454d4-056d-4fbc-900d-b9d33cb44ff5",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "c62c1432f528fcefb5d419e5439a0c33255849c0a61e6b73ee470103b270f54b"
+        },
+        {
+          "action": "session.created",
+          "actor": {
+            "principalId": "ff983119-1524-41a3-a8cb-d87e69a8c13f"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"4\", \"ff983119-1524-41a3-a8cb-d87e69a8c13f\", \"session.created\", \"principal\", \"ff983119-1524-41a3-a8cb-d87e69a8c13f\", null, null, null, null, \"2026-10-24T18:28:38.809430Z\", \"01661ec1-0792-496c-ade8-36f51ec3ac7e\"]",
+          "createdAt": "2026-10-24T18:28:38.809430Z",
+          "prevHash": "c62c1432f528fcefb5d419e5439a0c33255849c0a61e6b73ee470103b270f54b",
+          "reason": null,
+          "requestId": "01661ec1-0792-496c-ade8-36f51ec3ac7e",
+          "seq": "4",
+          "subject": {
+            "id": "ff983119-1524-41a3-a8cb-d87e69a8c13f",
+            "kind": "principal",
+            "revision": null
+          },
+          "thisHash": "27bb039cdf469c31b20535d01c34631fd5c9ab0906401c6843e6fcd3c13724e8"
+        },
+        {
+          "action": "submission.created",
+          "actor": {
+            "principalId": "1834ca84-c27a-43d0-b4bc-8b5e9e2b6181"
+          },
+          "afterHash": "8c9fea8da9866da1e64aea7710178b969ee70fbbe943bbc6f24121c56e97aebf",
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"5\", \"1834ca84-c27a-43d0-b4bc-8b5e9e2b6181\", \"submission.created\", \"submission\", \"0334f4a3-a553-4388-9625-d2de3530aea7\", \"1\", null, \"8c9fea8da9866da1e64aea7710178b969ee70fbbe943bbc6f24121c56e97aebf\", null, \"2026-10-24T18:28:38.861402Z\", \"739f84c1-a241-4a10-bd66-d9e769fa030e\"]",
+          "createdAt": "2026-10-24T18:28:38.861402Z",
+          "prevHash": "27bb039cdf469c31b20535d01c34631fd5c9ab0906401c6843e6fcd3c13724e8",
+          "reason": null,
+          "requestId": "739f84c1-a241-4a10-bd66-d9e769fa030e",
+          "seq": "5",
+          "subject": {
+            "id": "0334f4a3-a553-4388-9625-d2de3530aea7",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "a921d048822332fcb3b32dea83b36546d9ac8651d6b005b8dfc6d1db3605afea"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "6267df3d-8813-4a25-a903-cba7a9b16cce",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "Stats",
+    "value": {
+      "approvedInWindow": "0",
+      "asOf": "2026-10-24T18:28:39.033413Z",
+      "auditHighwater": "5",
+      "needsInfo": "0",
+      "pending": "1",
+      "rejectedInWindow": "0",
+      "requestId": "a68048d3-b0fb-45b7-9d6c-f4b98669692b",
+      "schemaVersion": 1,
+      "state": "exact",
+      "window": {
+        "endExclusive": "2026-10-24T22:00:00.000000Z",
+        "startInclusive": "2026-10-23T22:00:00.000000Z",
+        "timeZone": "Europe/Prague"
+      }
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "7df05c29-5d99-45c8-92ed-3fa99eb5a3e3",
+          "createdAt": "2026-10-24T18:28:40.834042Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "9223372036854775807",
+          "kind": "work",
+          "status": "submitted",
+          "submissionId": "8c0ef93c-af4f-438f-947a-8923394b2958",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:40.834043Z"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "0d2be314-4edc-49a4-af39-0c03ec801214",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "filtered",
+      "headHash": "4b86d2db83668e0f4dd2ec5398b13b5f0732fb91f219dffd197ebad243a23bb9",
+      "highwater": "10",
+      "items": [
+        {
+          "action": "submitted->in_review",
+          "actor": {
+            "principalId": "cbc0e2b0-496c-4fcc-852b-16de43253dbe"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"6\", \"cbc0e2b0-496c-4fcc-852b-16de43253dbe\", \"submitted->in_review\", \"submission\", \"dd98fc91-776c-4bd4-890a-498ad7a61d14\", \"1\", null, null, null, \"2026-10-24T18:28:41.983221Z\", \"78f68556-e63c-4d18-87aa-da9ddd3e4a28\"]",
+          "createdAt": "2026-10-24T18:28:41.983221Z",
+          "prevHash": "2fd001959ca02237accc096e553c0f01477804ab39895ce512cd794b6f28cf95",
+          "reason": null,
+          "requestId": "78f68556-e63c-4d18-87aa-da9ddd3e4a28",
+          "seq": "6",
+          "subject": {
+            "id": "dd98fc91-776c-4bd4-890a-498ad7a61d14",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "a7aa6047f5ceac8c8606cdd269290bbe99c7ba7b695ef19e5f8c9cf328a90066"
+        }
+      ],
+      "nextCursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6ImF1ZGl0IiwicHJpbmNpcGFsSWQiOiIzYWIyOWRiNS01MzJlLTRlNmQtOTNjNC1lMjllOTcwZGYzZmMiLCJmaWx0ZXJzIjp7InEiOiItPiJ9LCJvcmRlciI6InNlcSIsImlzc3VlZEF0IjoiMjAyNi0xMC0yNFQxODoyODo0MS42NzUwMDBaIiwiZXhwaXJlc0F0IjoiMjAyNi0xMC0yNFQxODo0Mzo0MS42NzUwMDBaIiwiYWZ0ZXIiOnsic2VxIjoiNiJ9LCJoaWdod2F0ZXIiOiIxMCIsImhlYWRIYXNoIjoiNGI4NmQyZGI4MzY2OGUwZjRkZDJlYzUzOThiMTNiNWYwNzMyZmI5MWYyMTlkZmZkMTk3ZWJhZDI0M2EyM2JiOSJ9EPVEvez28Qy-jdYpQhIaK6abnHrmDLN8AZ6yZhPVpaU",
+      "requestId": "a205b179-1188-4b26-95a1-cb6d3ea0512d",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "AuditPage",
+    "value": {
+      "coverage": "filtered",
+      "headHash": "4b86d2db83668e0f4dd2ec5398b13b5f0732fb91f219dffd197ebad243a23bb9",
+      "highwater": "10",
+      "items": [
+        {
+          "action": "submitted->in_review",
+          "actor": {
+            "principalId": "cbc0e2b0-496c-4fcc-852b-16de43253dbe"
+          },
+          "afterHash": null,
+          "beforeHash": null,
+          "canonicalContent": "[\"goldberg-audit-v1\", \"8\", \"cbc0e2b0-496c-4fcc-852b-16de43253dbe\", \"submitted->in_review\", \"submission\", \"b5c00758-ce2c-4911-a8cc-89241ea2e850\", \"1\", null, null, null, \"2026-10-24T18:28:42.036107Z\", \"23c5fbc7-d6e9-42bf-88ee-d0ef305c33b9\"]",
+          "createdAt": "2026-10-24T18:28:42.036107Z",
+          "prevHash": "1c3065c58a75e4e5a5dc20f6b9e2775df1b211bde3202a360724de3908f26303",
+          "reason": null,
+          "requestId": "23c5fbc7-d6e9-42bf-88ee-d0ef305c33b9",
+          "seq": "8",
+          "subject": {
+            "id": "b5c00758-ce2c-4911-a8cc-89241ea2e850",
+            "kind": "submission",
+            "revision": "1"
+          },
+          "thisHash": "89c2092f370a5a95ec0b52f4a975d6ba20deab5df12bcedd98b30aa588514c19"
+        }
+      ],
+      "nextCursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6ImF1ZGl0IiwicHJpbmNpcGFsSWQiOiIzYWIyOWRiNS01MzJlLTRlNmQtOTNjNC1lMjllOTcwZGYzZmMiLCJmaWx0ZXJzIjp7InEiOiItPiJ9LCJvcmRlciI6InNlcSIsImlzc3VlZEF0IjoiMjAyNi0xMC0yNFQxODoyODo0MS42NzUwMDBaIiwiZXhwaXJlc0F0IjoiMjAyNi0xMC0yNFQxODo0Mzo0MS42NzUwMDBaIiwiYWZ0ZXIiOnsic2VxIjoiOCJ9LCJoaWdod2F0ZXIiOiIxMCIsImhlYWRIYXNoIjoiNGI4NmQyZGI4MzY2OGUwZjRkZDJlYzUzOThiMTNiNWYwNzMyZmI5MWYyMTlkZmZkMTk3ZWJhZDI0M2EyM2JiOSJ9uVnyUO1UCNZEAFlAjeZxiKnOyKA9_QdbIwD1M2j9JvM",
+      "requestId": "9d585f53-fd4b-4c21-a9b2-912c98b695b3",
+      "schemaVersion": 1
+    }
+  },
+  {
+    "dto": "QueuePage",
+    "value": {
+      "coverage": "page",
+      "items": [
+        {
+          "authorId": "f2d12f1d-7e64-4b65-8b9b-31355b2c1cb8",
+          "createdAt": "2026-10-24T18:28:42.593013Z",
+          "display": {
+            "composer": null,
+            "title": null
+          },
+          "evidenceCount": "1",
+          "expectedEntityRevision": "0",
+          "kind": "work",
+          "status": "in_review",
+          "submissionId": "9b7e93c5-dcb5-41fd-9c2d-27daa04479a1",
+          "submissionRevision": "1",
+          "updatedAt": "2026-10-24T18:28:42.621968Z"
+        }
+      ],
+      "nextCursor": null,
+      "requestId": "70ef172d-1a85-4168-9fc8-767ba707df16",
+      "schemaVersion": 1,
+      "searchScope": "id_title_composer_kind"
+    }
+  }
+]

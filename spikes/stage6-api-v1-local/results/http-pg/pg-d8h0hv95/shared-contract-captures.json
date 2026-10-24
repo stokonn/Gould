@@ -1,0 +1,1740 @@
+{
+  "packageVersion": 1,
+  "captures": [
+    {
+      "id": "session.challenge",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/session/challenge",
+      "request": {
+        "schemaVersion": 1
+      },
+      "status": 201,
+      "dto": "Challenge",
+      "response": {
+        "challenge": "SYNTHETIC_REDACTED_TOKEN",
+        "expiresAt": "2026-10-24T14:14:38.174000Z",
+        "nonce": "SYNTHETIC_REDACTED_TOKEN",
+        "requestId": "b310e1b0-e8d9-4eff-9917-9a5808619001",
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "3c1b0102b1a0486df3dea4306d4eeee40ca8ec0e531ea5a29b08416dd181553b",
+      "bodyBytes": 250
+    },
+    {
+      "id": "session.login",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/session",
+      "request": {
+        "schemaVersion": 1,
+        "challenge": "SYNTHETIC_REDACTED_TOKEN",
+        "credential": "SYNTHETIC_REDACTED_TOKEN"
+      },
+      "status": 201,
+      "dto": "Tokens",
+      "response": {
+        "accessToken": "SYNTHETIC_REDACTED_TOKEN",
+        "expiresAt": "2026-10-24T14:24:38.174000Z",
+        "principalId": "bb52d93a-2cce-434e-a0a5-f1d246068535",
+        "refreshExpiresAt": "2026-10-31T14:09:38.174000Z",
+        "refreshToken": "SYNTHETIC_REDACTED_TOKEN",
+        "requestId": "e02c874b-9250-459a-8b84-5052307131fc",
+        "schemaVersion": 1,
+        "sessionId": "0b0fef6c-d9e8-40bb-b48d-3b1d486bae2e"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "2c4bf49e942e12d54f95e6cc16562dc8a1c9deedbb6fca8da7af296c222a0a8b",
+      "bodyBytes": 407
+    },
+    {
+      "id": "session.binding",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/session",
+      "request": null,
+      "status": 200,
+      "dto": "Session",
+      "response": {
+        "expiresAt": "2026-10-24T14:24:38.174000Z",
+        "principalId": "bb52d93a-2cce-434e-a0a5-f1d246068535",
+        "requestId": "8326629c-db82-48b8-ac5e-75d33d3864f3",
+        "schemaVersion": 1,
+        "sessionId": "0b0fef6c-d9e8-40bb-b48d-3b1d486bae2e"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "fa73641739c5ef37a27dbbee49c363d287435e966c396799f07df3c197dd0b57",
+      "bodyBytes": 216
+    },
+    {
+      "id": "session.capabilities",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/me/capabilities",
+      "request": null,
+      "status": 200,
+      "dto": "Capabilities",
+      "response": {
+        "capabilities": [
+          "audit.read",
+          "decide",
+          "quarantine",
+          "queue.read",
+          "roles.manage"
+        ],
+        "principalId": "6ebc021b-2050-4b44-bd0d-e8eb02657d6c",
+        "requestId": "69a8ffdc-e5fa-420f-99f0-fe1e337a03c7",
+        "schemaVersion": 1,
+        "sessionId": "d5da8642-1ce5-448c-a11d-6107ac43ddd5"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "b6de7d157368d63ee90d2f5750df443b8e4309f216990c0cc3b152375d5d49e3",
+      "bodyBytes": 254
+    },
+    {
+      "id": "session.access-expired",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/session",
+      "request": null,
+      "status": 401,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "unauthenticated",
+          "message": "Authentication required",
+          "requestId": "f59a7b45-511d-45c3-81b3-48d6d6e5b176"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "cf07d2673772d83bef66ea1c2761633360d7b903ae2cac07ce1fa9d61f726ad4",
+      "bodyBytes": 141
+    },
+    {
+      "id": "session.family-expired",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/session/refresh",
+      "request": {
+        "schemaVersion": 1,
+        "refreshToken": "SYNTHETIC_REDACTED_TOKEN"
+      },
+      "status": 401,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "unauthenticated",
+          "message": "Authentication required",
+          "requestId": "ad98ca76-d9bb-461f-a99d-aad961eef1d7"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "ba54e03652bc4f21eadd18233c3cf3f7a220fcedaa061bf8f093fc097a4e173a",
+      "bodyBytes": 141
+    },
+    {
+      "id": "session.refresh",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/session/refresh",
+      "request": {
+        "schemaVersion": 1,
+        "refreshToken": "SYNTHETIC_REDACTED_TOKEN"
+      },
+      "status": 200,
+      "dto": "Tokens",
+      "response": {
+        "accessToken": "SYNTHETIC_REDACTED_TOKEN",
+        "expiresAt": "2026-10-24T14:24:38.943000Z",
+        "principalId": "8b26dca3-b696-4f2d-b41f-95c6da9d54ad",
+        "refreshExpiresAt": "2026-10-31T14:09:38.943000Z",
+        "refreshToken": "SYNTHETIC_REDACTED_TOKEN",
+        "requestId": "c57ac886-312e-4500-a514-bed0b15533d1",
+        "schemaVersion": 1,
+        "sessionId": "be686dc0-0a5d-4b1f-8bf0-73b8eaca53af"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "9c2f8fc9cd49b30146ed6fef8389363dd80f1c7f970cd3a7ac76f92f0b060f35",
+      "bodyBytes": 407
+    },
+    {
+      "id": "session.old-access-revoked",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/session",
+      "request": null,
+      "status": 401,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "unauthenticated",
+          "message": "Authentication required",
+          "requestId": "84527f78-5fe7-4999-aaf1-18662a479138"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "243f682349cda93e6c526ef18e8d7e160072c5cd8a8a5f89a297a537aa813636",
+      "bodyBytes": 141
+    },
+    {
+      "id": "session.refresh-replay",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/session/refresh",
+      "request": {
+        "schemaVersion": 1,
+        "refreshToken": "SYNTHETIC_REDACTED_TOKEN"
+      },
+      "status": 401,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "unauthenticated",
+          "message": "Authentication required",
+          "requestId": "1da37c4a-691d-494b-b3ef-71e9ab9a3f60"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "456f9ccab2a334bf680cf4fcecc9162ef5e290f09648010353c083a452073928",
+      "bodyBytes": 141
+    },
+    {
+      "id": "session.family-revoked",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/session",
+      "request": null,
+      "status": 401,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "unauthenticated",
+          "message": "Authentication required",
+          "requestId": "29c96174-1f2b-45bc-90e3-f8057c875a51"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "fe09ed6f9dc4ba712b85b403e5737fa9c9550c8609a93c03b3c1624104709613",
+      "bodyBytes": 141
+    },
+    {
+      "id": "session.other-account",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/session",
+      "request": null,
+      "status": 200,
+      "dto": "Session",
+      "response": {
+        "expiresAt": "2026-10-24T14:24:38.943000Z",
+        "principalId": "f0610672-c8df-45b8-bae2-edff78d5ecf4",
+        "requestId": "fa9f5c7b-87d9-47d3-a67f-29ca75c6e203",
+        "schemaVersion": 1,
+        "sessionId": "6891df02-b4ec-4158-9936-c9b66906c771"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "339f0693b6f78b5779b260dee9e896244cfe328b183892c166902d0f0ec49da0",
+      "bodyBytes": 216
+    },
+    {
+      "id": "session.lost-refresh-replay",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/session/refresh",
+      "request": {
+        "schemaVersion": 1,
+        "refreshToken": "SYNTHETIC_REDACTED_TOKEN"
+      },
+      "status": 401,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "unauthenticated",
+          "message": "Authentication required",
+          "requestId": "c33a5e3a-7652-43dc-b45c-1d743cb7522b"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "992ddcbde9b29de03153f0d1b3fd681ad829bde477a471cc81accd532d3edede",
+      "bodyBytes": 141
+    },
+    {
+      "id": "session.lost-refresh-old-access",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/session",
+      "request": null,
+      "status": 401,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "unauthenticated",
+          "message": "Authentication required",
+          "requestId": "428fb6cb-98e5-404d-8b7f-3ed812a96e40"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "0278ac080c21b5f724b6f6866ae01b5e520d3824ebdcac3ffb0cad86f0c50f9f",
+      "bodyBytes": 141
+    },
+    {
+      "id": "session.logout",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "DELETE",
+      "path": "/v1/session",
+      "request": null,
+      "status": 204,
+      "dto": "EmptyBody",
+      "response": null,
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bodyBytes": 0
+    },
+    {
+      "id": "session.logout-repeat",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "DELETE",
+      "path": "/v1/session",
+      "request": null,
+      "status": 204,
+      "dto": "EmptyBody",
+      "response": null,
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bodyBytes": 0
+    },
+    {
+      "id": "session.after-logout",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/session",
+      "request": null,
+      "status": 401,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "unauthenticated",
+          "message": "Authentication required",
+          "requestId": "dd587a89-e433-4f97-ab31-9ad5e5299fcd"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "efe7cd27ea0923e47928e64162c4f46d8613120fd578530df17bc030a842d262",
+      "bodyBytes": 141
+    },
+    {
+      "id": "isolation.contributor-queue",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue",
+      "request": null,
+      "status": 403,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "forbidden",
+          "message": "Operation not permitted",
+          "requestId": "241b0bd9-fc05-4ab7-bcc3-740e90765589"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "f7fbcb0f8cbc8128abc39fe620b846a1952a2fce81c1d5053247b26e97fbbc7e",
+      "bodyBytes": 135
+    },
+    {
+      "id": "isolation.revoked-role",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue",
+      "request": null,
+      "status": 403,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "forbidden",
+          "message": "Operation not permitted",
+          "requestId": "3ecd7132-b103-41e0-b73c-3ca8c02e57bc"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "30c02981fab68f0f4b6108b309daadc0de895b1bd7bd2f073ab3c9e65733b860",
+      "bodyBytes": 135
+    },
+    {
+      "id": "moderation.open",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/0551ed7a-21ab-4c81-b702-ef0c0589cbbe/open",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "0",
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "ee93e09d-74a4-4940-ae8f-d697d7eaac57"
+      },
+      "status": 200,
+      "dto": "OpenResult",
+      "response": {
+        "expectedEntityRevision": "0",
+        "requestId": "7a78b9ee-bc7e-4d56-8ba3-b97dea440ed0",
+        "schemaVersion": 1,
+        "status": "in_review",
+        "submissionId": "0551ed7a-21ab-4c81-b702-ef0c0589cbbe",
+        "submissionRevision": "1"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "1baa3ce8c6d0a2ae361ecdbbf26842fc805f899c96635dfe00595b28d3651537",
+      "bodyBytes": 199
+    },
+    {
+      "id": "moderation.detail",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/submissions/0551ed7a-21ab-4c81-b702-ef0c0589cbbe",
+      "request": null,
+      "status": 200,
+      "dto": "Detail",
+      "response": {
+        "authorId": "8811d078-cf91-4441-a837-9d81b7ea0d92",
+        "createdAt": "2026-10-24T14:09:41.758062Z",
+        "expectedEntityRevision": "0",
+        "kind": "work",
+        "requestId": "13d5e4a1-39d8-47d6-a690-3e28763c5105",
+        "reviews": {
+          "items": [
+            {
+              "actorId": "c39011b0-2abf-4e9f-b722-fc54c090278f",
+              "auditSeq": "6",
+              "createdAt": "2026-10-24T14:09:41.793074Z",
+              "from": "submitted",
+              "reason": null,
+              "submissionRevision": "1",
+              "to": "in_review"
+            }
+          ],
+          "nextCursor": null
+        },
+        "revisions": {
+          "items": [
+            {
+              "createdAt": "2026-10-24T14:09:41.759925Z",
+              "hash": "17cf2dca7772a5174c9e6cd9f4f4819eda7d79eaab99fbd7d9ee55e356c3d096",
+              "payload": {
+                "changeKind": "new_metadata",
+                "fields": [
+                  {
+                    "evidence": [
+                      {
+                        "license": "SYNTHETIC-NOT-APPROVED",
+                        "type": "reference",
+                        "value": "Synthetic reference only"
+                      }
+                    ],
+                    "field": "syntheticTitle",
+                    "newValue": "Synthetic work"
+                  }
+                ],
+                "intendedLicense": "SYNTHETIC-NOT-APPROVED",
+                "schemaVersion": 1,
+                "target": {
+                  "catalogueUuid": "d35636f0-8bd5-4961-adaf-931f618e5c17",
+                  "kind": "work"
+                }
+              },
+              "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+              "submissionRevision": "1"
+            }
+          ],
+          "nextCursor": null
+        },
+        "schemaVersion": 1,
+        "status": "in_review",
+        "submissionId": "0551ed7a-21ab-4c81-b702-ef0c0589cbbe",
+        "submissionRevision": "1",
+        "targetEntityId": "d35636f0-8bd5-4961-adaf-931f618e5c17",
+        "targetState": "new",
+        "updatedAt": "2026-10-24T14:09:41.794098Z"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "71d72be7f72eca54a200ad9ba82cc8f63679ab9ff486f812fadba528b39daedb",
+      "bodyBytes": 1264
+    },
+    {
+      "id": "comparison.absent",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/entities/d35636f0-8bd5-4961-adaf-931f618e5c17/comparison?submissionId=0551ed7a-21ab-4c81-b702-ef0c0589cbbe",
+      "request": null,
+      "status": 200,
+      "dto": "ComparisonUnavailable",
+      "response": {
+        "entityId": "d35636f0-8bd5-4961-adaf-931f618e5c17",
+        "reason": "absent",
+        "requestId": "99c1f1c6-32c9-42dd-8cf2-0b8682064f2c",
+        "schemaVersion": 1,
+        "state": "unavailable",
+        "submissionId": "0551ed7a-21ab-4c81-b702-ef0c0589cbbe"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "1bfb7e01159541b267593425cecb1def4971b66c1fb1771c5e246eee7b3abbd4",
+      "bodyBytes": 214
+    },
+    {
+      "id": "moderation.approve",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/0551ed7a-21ab-4c81-b702-ef0c0589cbbe/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "0",
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "c3ed3d67-a76a-4a22-ac01-35f5b7418c34",
+        "decision": "approve"
+      },
+      "status": 201,
+      "dto": "ApproveResult",
+      "response": {
+        "decision": "approve",
+        "entityId": "d35636f0-8bd5-4961-adaf-931f618e5c17",
+        "publishedEntityRevision": "1",
+        "requestId": "4f229aef-4b86-4e26-a954-e55b2c8b8002",
+        "schemaVersion": 1,
+        "status": "published",
+        "submissionId": "0551ed7a-21ab-4c81-b702-ef0c0589cbbe",
+        "submissionRevision": "1"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "8a69a3a8c8efd4e1c81f2e4060e729e161ba429a67ef8d4c579a382d16627ecb",
+      "bodyBytes": 271
+    },
+    {
+      "id": "moderation.replay",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/0551ed7a-21ab-4c81-b702-ef0c0589cbbe/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "0",
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "c3ed3d67-a76a-4a22-ac01-35f5b7418c34",
+        "decision": "approve"
+      },
+      "status": 201,
+      "dto": "ApproveResult",
+      "response": {
+        "decision": "approve",
+        "entityId": "d35636f0-8bd5-4961-adaf-931f618e5c17",
+        "publishedEntityRevision": "1",
+        "requestId": "4f229aef-4b86-4e26-a954-e55b2c8b8002",
+        "schemaVersion": 1,
+        "status": "published",
+        "submissionId": "0551ed7a-21ab-4c81-b702-ef0c0589cbbe",
+        "submissionRevision": "1"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "8a69a3a8c8efd4e1c81f2e4060e729e161ba429a67ef8d4c579a382d16627ecb",
+      "bodyBytes": 271
+    },
+    {
+      "id": "moderation.mismatch",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/0551ed7a-21ab-4c81-b702-ef0c0589cbbe/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "0",
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "c3ed3d67-a76a-4a22-ac01-35f5b7418c34",
+        "decision": "approve",
+        "reason": "Changed intent"
+      },
+      "status": 422,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "idempotency_mismatch",
+          "message": "Key already used for a different request",
+          "requestId": "9cd3c702-bfeb-4729-bbc8-0599028a3e25"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "c0ee8f66d0800b8d8e297d049784cbe250d31a1ca60264fc55e8778fbef48975",
+      "bodyBytes": 163
+    },
+    {
+      "id": "moderation.expired-receipt",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/0551ed7a-21ab-4c81-b702-ef0c0589cbbe/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "0",
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "c3ed3d67-a76a-4a22-ac01-35f5b7418c34",
+        "decision": "approve"
+      },
+      "status": 409,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "conflict",
+          "message": "Revision or state conflict",
+          "requestId": "55d871d6-6c83-4a50-b750-efaa9e965130"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "b33a86bdb816c96b9c0f288a9e6f8d1006fc017f11a73a07789f18f5be0ef7ef",
+      "bodyBytes": 137
+    },
+    {
+      "id": "moderation.reject",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/c809ef24-6eab-4cfd-a211-342ce8505336/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "0",
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "c4dd9256-1c22-440f-9a68-efa10108b670",
+        "decision": "reject",
+        "reason": "Synthetic rejection"
+      },
+      "status": 200,
+      "dto": "RejectResult",
+      "response": {
+        "decision": "reject",
+        "requestId": "3ee4b363-e8a8-4592-be4b-d0b7674512ad",
+        "schemaVersion": 1,
+        "status": "rejected",
+        "submissionId": "c809ef24-6eab-4cfd-a211-342ce8505336",
+        "submissionRevision": "1"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "52fa00ca88391216b24abec17507952659ad86f4ff284abd513e80ea33b32fd5",
+      "bodyBytes": 189
+    },
+    {
+      "id": "moderation.request-changes",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/d71cf250-478e-4691-a4c0-7fae2b87c78e/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "0",
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "00243ee4-e9eb-4e0d-9ba1-e479751aa26a",
+        "decision": "request_changes",
+        "reason": "Synthetic clarification"
+      },
+      "status": 200,
+      "dto": "ChangesResult",
+      "response": {
+        "decision": "request_changes",
+        "requestId": "5fba4a9d-6aa6-4ad3-b37d-5a602b76fb4a",
+        "schemaVersion": 1,
+        "status": "changes_requested",
+        "submissionId": "d71cf250-478e-4691-a4c0-7fae2b87c78e",
+        "submissionRevision": "1"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "280734eb50d5935ad04a6421433cb3b5a7bbced32d1e0fbffd38b6cc10b2931d",
+      "bodyBytes": 207
+    },
+    {
+      "id": "wire.legacy-decision",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/d71cf250-478e-4691-a4c0-7fae2b87c78e/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "decision": "approve",
+        "expectedRevision": 1,
+        "idempotencyKey": "fe71cf91-e0ac-4534-9a86-d050bdd66121"
+      },
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "24dd39e9-34d3-42a8-a318-2dd22dde5298"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "fbdcd1fb8600a8f64ea49288a16b8180c557dc3fe9eed372cea106df36690335",
+      "bodyBytes": 135
+    },
+    {
+      "id": "moderation.conflict",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/1924b720-8825-4919-acf5-877674336726/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "0",
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "17c1bd35-5be7-4708-a7e6-524d1728840c",
+        "decision": "approve"
+      },
+      "status": 409,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "conflict",
+          "message": "Revision or state conflict",
+          "requestId": "91da3b5e-d27e-40e8-ba7b-fe9d2eaea064"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "33618acd14c8eb205fa8c7b5c979f66a21c1c09e09cad165e6a26adb00a9443d",
+      "bodyBytes": 137
+    },
+    {
+      "id": "moderation.refetch",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/submissions/1924b720-8825-4919-acf5-877674336726",
+      "request": null,
+      "status": 200,
+      "dto": "Detail",
+      "response": {
+        "authorId": "641a251f-b3bd-4f66-8cf6-3af25b9d69e6",
+        "createdAt": "2026-10-24T14:09:43.189576Z",
+        "expectedEntityRevision": "0",
+        "kind": "work",
+        "requestId": "977d902e-3348-41e5-bd2d-e0056db5f9d6",
+        "reviews": {
+          "items": [
+            {
+              "actorId": "4cb3145a-31b3-4069-8371-c289a481db56",
+              "auditSeq": "6",
+              "createdAt": "2026-10-24T14:09:43.218412Z",
+              "from": "submitted",
+              "reason": null,
+              "submissionRevision": "1",
+              "to": "in_review"
+            },
+            {
+              "actorId": "65deffca-b533-47eb-b77f-6a52bb467f9a",
+              "auditSeq": "7",
+              "createdAt": "2026-10-24T14:09:43.296842Z",
+              "from": "in_review",
+              "reason": "Revise",
+              "submissionRevision": "1",
+              "to": "changes_requested"
+            },
+            {
+              "actorId": "641a251f-b3bd-4f66-8cf6-3af25b9d69e6",
+              "auditSeq": "8",
+              "createdAt": "2026-10-24T14:09:43.324506Z",
+              "from": "changes_requested",
+              "reason": null,
+              "submissionRevision": "2",
+              "to": "in_review"
+            }
+          ],
+          "nextCursor": null
+        },
+        "revisions": {
+          "items": [
+            {
+              "createdAt": "2026-10-24T14:09:43.318893Z",
+              "hash": "3e13cb96dbce81e74b0d111fae8e64d71eef5685b9a54a3f6e656557f46fd94e",
+              "payload": {
+                "changeKind": "new_metadata",
+                "fields": [
+                  {
+                    "evidence": [
+                      {
+                        "license": "SYNTHETIC-NOT-APPROVED",
+                        "type": "reference",
+                        "value": "Synthetic reference only"
+                      }
+                    ],
+                    "field": "syntheticTitle",
+                    "newValue": "Synthetic work"
+                  }
+                ],
+                "intendedLicense": "SYNTHETIC-NOT-APPROVED",
+                "schemaVersion": 1,
+                "target": {
+                  "catalogueUuid": "937b9cdc-2314-4575-993c-95dfdbff602b",
+                  "kind": "work"
+                }
+              },
+              "previousHash": "6eabbb2bd69e6d065a60565c1473a956a513e59c03323fcbfa127d7d8bba84dc",
+              "submissionRevision": "2"
+            },
+            {
+              "createdAt": "2026-10-24T14:09:43.191540Z",
+              "hash": "6eabbb2bd69e6d065a60565c1473a956a513e59c03323fcbfa127d7d8bba84dc",
+              "payload": {
+                "changeKind": "new_metadata",
+                "fields": [
+                  {
+                    "evidence": [
+                      {
+                        "license": "SYNTHETIC-NOT-APPROVED",
+                        "type": "reference",
+                        "value": "Synthetic reference only"
+                      }
+                    ],
+                    "field": "syntheticTitle",
+                    "newValue": "Synthetic work"
+                  }
+                ],
+                "intendedLicense": "SYNTHETIC-NOT-APPROVED",
+                "schemaVersion": 1,
+                "target": {
+                  "catalogueUuid": "937b9cdc-2314-4575-993c-95dfdbff602b",
+                  "kind": "work"
+                }
+              },
+              "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+              "submissionRevision": "1"
+            }
+          ],
+          "nextCursor": null
+        },
+        "schemaVersion": 1,
+        "status": "in_review",
+        "submissionId": "1924b720-8825-4919-acf5-877674336726",
+        "submissionRevision": "2",
+        "targetEntityId": "937b9cdc-2314-4575-993c-95dfdbff602b",
+        "targetState": "new",
+        "updatedAt": "2026-10-24T14:09:43.325450Z"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "d918945934790825c6b2939fb6eb5d3d2bd05c02465ebc97aa458f94fcc3b7ac",
+      "bodyBytes": 2226
+    },
+    {
+      "id": "moderation.lost-response-replay",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/3dfffb92-90bc-45ad-8731-b7fa32d80066/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "0",
+        "expectedSubmissionRevision": "1",
+        "decision": "approve",
+        "idempotencyKey": "1c7fe0ca-d715-49dd-b225-9ef01acfced3"
+      },
+      "status": 201,
+      "dto": "ApproveResult",
+      "response": {
+        "decision": "approve",
+        "entityId": "c2c5182c-753c-4bb2-bcf4-88462600589e",
+        "publishedEntityRevision": "1",
+        "requestId": "5431c59e-f823-43bb-9543-5a9d1d9b0221",
+        "schemaVersion": 1,
+        "status": "published",
+        "submissionId": "3dfffb92-90bc-45ad-8731-b7fa32d80066",
+        "submissionRevision": "1"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "5636a2aecf3e60996ece711a462bb6ab55247f5076439b7c1534c2572ff18e4f",
+      "bodyBytes": 271
+    },
+    {
+      "id": "queue.first",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue?limit=2",
+      "request": null,
+      "status": 200,
+      "dto": "QueuePage",
+      "response": {
+        "coverage": "page",
+        "items": [
+          {
+            "authorId": "1cc47cda-fde8-4768-b9e0-6a37c69e2215",
+            "createdAt": "2026-10-24T14:09:45.181418Z",
+            "display": {
+              "composer": null,
+              "title": null
+            },
+            "evidenceCount": "1",
+            "expectedEntityRevision": "0",
+            "kind": "work",
+            "status": "submitted",
+            "submissionId": "39be5915-fa5a-4dcd-805b-4814e1165652",
+            "submissionRevision": "1",
+            "updatedAt": "2026-10-24T14:09:45.181418Z"
+          },
+          {
+            "authorId": "1cc47cda-fde8-4768-b9e0-6a37c69e2215",
+            "createdAt": "2026-10-24T14:09:45.203766Z",
+            "display": {
+              "composer": null,
+              "title": null
+            },
+            "evidenceCount": "1",
+            "expectedEntityRevision": "0",
+            "kind": "work",
+            "status": "submitted",
+            "submissionId": "003c0cd6-2a0f-4551-b0e5-5bb138d0b8e9",
+            "submissionRevision": "1",
+            "updatedAt": "2026-10-24T14:09:45.203766Z"
+          }
+        ],
+        "nextCursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6InF1ZXVlIiwicHJpbmNpcGFsSWQiOiI1MzRiMjNhOC0wZDlmLTRhNWMtYWE4Zi0zNTU0YjEwZDJjMzEiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJjcmVhdGVkQXQsaWQiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDQuOTU0MDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTQ6MjQ6NDQuOTU0MDAwWiIsImFmdGVyIjp7ImNyZWF0ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDUuMjAzNzY2WiIsImlkIjoiMDAzYzBjZDYtMmEwZi00NTUxLWIwZTUtNWJiMTM4ZDBiOGU5In19XIxzCfUeFStHwhVCr6DFW5u3dy50h3DnldsLs7prbr0",
+        "requestId": "c55f8bef-d19c-45eb-8d7d-1e1393830337",
+        "schemaVersion": 1,
+        "searchScope": "id_title_composer_kind"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "3ce1332b89427bc29af5cb9b1e31977d8354cbe147cd9376809e4d195ca210ca",
+      "bodyBytes": 1272
+    },
+    {
+      "id": "queue.next",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue?limit=2&cursor=eyJ2ZXJzaW9uIjoxLCJzY29wZSI6InF1ZXVlIiwicHJpbmNpcGFsSWQiOiI1MzRiMjNhOC0wZDlmLTRhNWMtYWE4Zi0zNTU0YjEwZDJjMzEiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJjcmVhdGVkQXQsaWQiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDQuOTU0MDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTQ6MjQ6NDQuOTU0MDAwWiIsImFmdGVyIjp7ImNyZWF0ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDUuMjAzNzY2WiIsImlkIjoiMDAzYzBjZDYtMmEwZi00NTUxLWIwZTUtNWJiMTM4ZDBiOGU5In19XIxzCfUeFStHwhVCr6DFW5u3dy50h3DnldsLs7prbr0",
+      "request": null,
+      "status": 200,
+      "dto": "QueuePage",
+      "response": {
+        "coverage": "page",
+        "items": [
+          {
+            "authorId": "1cc47cda-fde8-4768-b9e0-6a37c69e2215",
+            "createdAt": "2026-10-24T14:09:45.224135Z",
+            "display": {
+              "composer": null,
+              "title": null
+            },
+            "evidenceCount": "1",
+            "expectedEntityRevision": "0",
+            "kind": "work",
+            "status": "submitted",
+            "submissionId": "17666817-1385-497c-b737-98b6e0844e12",
+            "submissionRevision": "1",
+            "updatedAt": "2026-10-24T14:09:45.224135Z"
+          },
+          {
+            "authorId": "1cc47cda-fde8-4768-b9e0-6a37c69e2215",
+            "createdAt": "2026-10-24T14:09:45.246111Z",
+            "display": {
+              "composer": null,
+              "title": null
+            },
+            "evidenceCount": "1",
+            "expectedEntityRevision": "0",
+            "kind": "work",
+            "status": "submitted",
+            "submissionId": "f62c4633-3fee-4c0b-b605-b0f2638a2bf5",
+            "submissionRevision": "1",
+            "updatedAt": "2026-10-24T14:09:45.246111Z"
+          }
+        ],
+        "nextCursor": null,
+        "requestId": "57c2002f-ac81-42a5-8bb3-d7907bb03897",
+        "schemaVersion": 1,
+        "searchScope": "id_title_composer_kind"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "e807ef4e2c84e3fc83ac5156d033c65c4c10a6fbb6380ab249777d649703a5f7",
+      "bodyBytes": 835
+    },
+    {
+      "id": "queue.filtered",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue?kind=work&status=submitted&q=WoRk&limit=1",
+      "request": null,
+      "status": 200,
+      "dto": "QueuePage",
+      "response": {
+        "coverage": "page",
+        "items": [
+          {
+            "authorId": "1cc47cda-fde8-4768-b9e0-6a37c69e2215",
+            "createdAt": "2026-10-24T14:09:45.181418Z",
+            "display": {
+              "composer": null,
+              "title": null
+            },
+            "evidenceCount": "1",
+            "expectedEntityRevision": "0",
+            "kind": "work",
+            "status": "submitted",
+            "submissionId": "39be5915-fa5a-4dcd-805b-4814e1165652",
+            "submissionRevision": "1",
+            "updatedAt": "2026-10-24T14:09:45.181418Z"
+          }
+        ],
+        "nextCursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6InF1ZXVlIiwicHJpbmNpcGFsSWQiOiI1MzRiMjNhOC0wZDlmLTRhNWMtYWE4Zi0zNTU0YjEwZDJjMzEiLCJmaWx0ZXJzIjp7InN0YXR1cyI6InN1Ym1pdHRlZCIsImtpbmQiOiJ3b3JrIiwicSI6IldvUmsifSwib3JkZXIiOiJjcmVhdGVkQXQsaWQiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDQuOTU0MDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTQ6MjQ6NDQuOTU0MDAwWiIsImFmdGVyIjp7ImNyZWF0ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDUuMTgxNDE4WiIsImlkIjoiMzliZTU5MTUtZmE1YS00ZGNkLTgwNWItNDgxNGUxMTY1NjUyIn19sHsbmdt46Cw0RO6yA8AlylO3r1cQrxk1MXnuQnG7cBY",
+        "requestId": "042d6a37-1e4b-429a-96bd-7326e66b410b",
+        "schemaVersion": 1,
+        "searchScope": "id_title_composer_kind"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "8d9ee464130573590dcade25d9c886695607a06a0454a6f4290ae15830e1adec",
+      "bodyBytes": 992
+    },
+    {
+      "id": "queue.cursor-tamper",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue?cursor=eyJ2ZXJzaW9uIjoxLCJzY29wZSI6InF1ZXVlIiwicHJpbmNpcGFsSWQiOiI1MzRiMjNhOC0wZDlmLTRhNWMtYWE4Zi0zNTU0YjEwZDJjMzEiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJjcmVhdGVkQXQsaWQiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDQuOTU0MDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTQ6MjQ6NDQuOTU0MDAwWiIsImFmdGVyIjp7ImNyZWF0ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDUuMjAzNzY2WiIsImlkIjoiMDAzYzBjZDYtMmEwZi00NTUxLWIwZTUtNWJiMTM4ZDBiOGU5In19XIxzCfUeFStHwhVCr6DFW5u3dy50h3DnldsLs7pAAAA",
+      "request": null,
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "72f99906-d13b-4f5c-8b69-ea680c485760"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "7ce44e9c8787acc4e84246b015a0e830a1a6c38eb6109e9f3330b69f31267651",
+      "bodyBytes": 135
+    },
+    {
+      "id": "queue.cursor-account",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue?cursor=eyJ2ZXJzaW9uIjoxLCJzY29wZSI6InF1ZXVlIiwicHJpbmNpcGFsSWQiOiI1MzRiMjNhOC0wZDlmLTRhNWMtYWE4Zi0zNTU0YjEwZDJjMzEiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJjcmVhdGVkQXQsaWQiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDQuOTU0MDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTQ6MjQ6NDQuOTU0MDAwWiIsImFmdGVyIjp7ImNyZWF0ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDUuMjAzNzY2WiIsImlkIjoiMDAzYzBjZDYtMmEwZi00NTUxLWIwZTUtNWJiMTM4ZDBiOGU5In19XIxzCfUeFStHwhVCr6DFW5u3dy50h3DnldsLs7prbr0",
+      "request": null,
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "1a653359-6a97-41ef-8205-24a8b1fa5648"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "b230ade5c17c20a0961a649d1c9281a1be15176fa7122b4daa9ed5ac43ea1c8a",
+      "bodyBytes": 135
+    },
+    {
+      "id": "queue.cursor-filter",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue?status=submitted&cursor=eyJ2ZXJzaW9uIjoxLCJzY29wZSI6InF1ZXVlIiwicHJpbmNpcGFsSWQiOiI1MzRiMjNhOC0wZDlmLTRhNWMtYWE4Zi0zNTU0YjEwZDJjMzEiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJjcmVhdGVkQXQsaWQiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDQuOTU0MDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTQ6MjQ6NDQuOTU0MDAwWiIsImFmdGVyIjp7ImNyZWF0ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDUuMjAzNzY2WiIsImlkIjoiMDAzYzBjZDYtMmEwZi00NTUxLWIwZTUtNWJiMTM4ZDBiOGU5In19XIxzCfUeFStHwhVCr6DFW5u3dy50h3DnldsLs7prbr0",
+      "request": null,
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "3683e383-573e-4fb1-971d-b424156e1ef3"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "077399f56381558e7667ece004a6245675e624d387b867518b8962fb2432ab5d",
+      "bodyBytes": 135
+    },
+    {
+      "id": "queue.legacy-cursor",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue?cursor=2030-01-01",
+      "request": null,
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "3640e860-f7ca-432b-9cfe-7109dc285411"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "9881ef1a0b542dde2fda3420c25c9b174e23b0dab5ef8cbfda0dcc05e0972537",
+      "bodyBytes": 135
+    },
+    {
+      "id": "queue.cursor-expired",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue?cursor=eyJ2ZXJzaW9uIjoxLCJzY29wZSI6InF1ZXVlIiwicHJpbmNpcGFsSWQiOiI1MzRiMjNhOC0wZDlmLTRhNWMtYWE4Zi0zNTU0YjEwZDJjMzEiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJjcmVhdGVkQXQsaWQiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDQuOTU0MDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTQ6MjQ6NDQuOTU0MDAwWiIsImFmdGVyIjp7ImNyZWF0ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDUuMjAzNzY2WiIsImlkIjoiMDAzYzBjZDYtMmEwZi00NTUxLWIwZTUtNWJiMTM4ZDBiOGU5In19XIxzCfUeFStHwhVCr6DFW5u3dy50h3DnldsLs7prbr0",
+      "request": null,
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "4e14a4fa-fc93-41df-9803-0a7af0dce2cb"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "210c5b3a06e26f821f92a08cd90cd737ae42b6fee52362437e3bee0828c37ff0",
+      "bodyBytes": 135
+    },
+    {
+      "id": "audit.first",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/audit?limit=2",
+      "request": null,
+      "status": 200,
+      "dto": "AuditPage",
+      "response": {
+        "coverage": "chain",
+        "headHash": "6ddd92cae81458923d588c7c7e3d233e173407094e4e8ef7b5df0bf12c3aca01",
+        "highwater": "6",
+        "items": [
+          {
+            "action": "session.created",
+            "actor": {
+              "principalId": "a3c851f7-ddf0-46fa-ac2b-5a422c734e08"
+            },
+            "afterHash": null,
+            "beforeHash": null,
+            "canonicalContent": "[\"goldberg-audit-v1\", \"1\", \"a3c851f7-ddf0-46fa-ac2b-5a422c734e08\", \"session.created\", \"principal\", \"a3c851f7-ddf0-46fa-ac2b-5a422c734e08\", null, null, null, null, \"2026-10-24T14:09:45.946374Z\", \"0eea0f62-10de-48f9-9b47-0d42436dd74c\"]",
+            "createdAt": "2026-10-24T14:09:45.946374Z",
+            "prevHash": "0000000000000000000000000000000000000000000000000000000000000000",
+            "reason": null,
+            "requestId": "0eea0f62-10de-48f9-9b47-0d42436dd74c",
+            "seq": "1",
+            "subject": {
+              "id": "a3c851f7-ddf0-46fa-ac2b-5a422c734e08",
+              "kind": "principal",
+              "revision": null
+            },
+            "thisHash": "82c29c68a628c0f49dab8a2aca513027b8485f78b5171a15c81763a7cc310c2e"
+          },
+          {
+            "action": "session.created",
+            "actor": {
+              "principalId": "10049880-a100-4ee0-a69d-341dfc6c07f2"
+            },
+            "afterHash": null,
+            "beforeHash": null,
+            "canonicalContent": "[\"goldberg-audit-v1\", \"2\", \"10049880-a100-4ee0-a69d-341dfc6c07f2\", \"session.created\", \"principal\", \"10049880-a100-4ee0-a69d-341dfc6c07f2\", null, null, null, null, \"2026-10-24T14:09:45.999824Z\", \"89d29655-403f-4387-a7a1-80d646357ebc\"]",
+            "createdAt": "2026-10-24T14:09:45.999824Z",
+            "prevHash": "82c29c68a628c0f49dab8a2aca513027b8485f78b5171a15c81763a7cc310c2e",
+            "reason": null,
+            "requestId": "89d29655-403f-4387-a7a1-80d646357ebc",
+            "seq": "2",
+            "subject": {
+              "id": "10049880-a100-4ee0-a69d-341dfc6c07f2",
+              "kind": "principal",
+              "revision": null
+            },
+            "thisHash": "dabcdf127eac87c7f316b076e9ab3ecb17f69698c5e8d61043b57be920fd6e12"
+          }
+        ],
+        "nextCursor": "eyJ2ZXJzaW9uIjoxLCJzY29wZSI6ImF1ZGl0IiwicHJpbmNpcGFsSWQiOiIxMDA0OTg4MC1hMTAwLTRlZTAtYTY5ZC0zNDFkZmM2YzA3ZjIiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJzZXEiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDUuOTE1MDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTQ6MjQ6NDUuOTE1MDAwWiIsImFmdGVyIjp7InNlcSI6IjIifSwiaGlnaHdhdGVyIjoiNiIsImhlYWRIYXNoIjoiNmRkZDkyY2FlODE0NTg5MjNkNTg4YzdjN2UzZDIzM2UxNzM0MDcwOTRlNGU4ZWY3YjVkZjBiZjEyYzNhY2EwMSJ9l3LcaMT6oVAt1i3TqPnLJ6haaTkcOF89cPoOaJIUN5k",
+        "requestId": "3f21040f-8850-4bfb-8164-322e0cc5271a",
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "f7be01c32c6997f9ec9208712c95871c3850a6ee0e883b8422cb60d476f0b5b8",
+      "bodyBytes": 2184
+    },
+    {
+      "id": "audit.filtered",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/audit?action=in_review-%3Eapproved&subjectId=f8438ff3-c162-4857-907e-76885c6dae75",
+      "request": null,
+      "status": 200,
+      "dto": "AuditPage",
+      "response": {
+        "coverage": "filtered",
+        "headHash": "e565a5a6eae01ce3af7f6338a164849a90de0344a251e7cd3aaae74fe090d719",
+        "highwater": "8",
+        "items": [
+          {
+            "action": "in_review->approved",
+            "actor": {
+              "principalId": "10049880-a100-4ee0-a69d-341dfc6c07f2"
+            },
+            "afterHash": "7c92250afa2ef49533a33bd85f5dc785f31568c47fe5b0088ba03f6d6ee570da",
+            "beforeHash": null,
+            "canonicalContent": "[\"goldberg-audit-v1\", \"7\", \"10049880-a100-4ee0-a69d-341dfc6c07f2\", \"in_review->approved\", \"submission\", \"f8438ff3-c162-4857-907e-76885c6dae75\", \"1\", null, \"7c92250afa2ef49533a33bd85f5dc785f31568c47fe5b0088ba03f6d6ee570da\", null, \"2026-10-24T14:09:46.258807Z\", \"7fc0f0f8-5f93-4db7-96c6-74d5e8bf86dc\"]",
+            "createdAt": "2026-10-24T14:09:46.258807Z",
+            "prevHash": "6ddd92cae81458923d588c7c7e3d233e173407094e4e8ef7b5df0bf12c3aca01",
+            "reason": null,
+            "requestId": "7fc0f0f8-5f93-4db7-96c6-74d5e8bf86dc",
+            "seq": "7",
+            "subject": {
+              "id": "f8438ff3-c162-4857-907e-76885c6dae75",
+              "kind": "submission",
+              "revision": "1"
+            },
+            "thisHash": "b630989ff63030be7c719593df040be2335113e9c9e4c2bdc92eec31080eba0e"
+          }
+        ],
+        "nextCursor": null,
+        "requestId": "a9d5989e-34fb-40e0-bb40-9de3143933b9",
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "247101100e1a6e284d06536a8299ad95f3892b9cd045936a93c3de622cd5819e",
+      "bodyBytes": 1112
+    },
+    {
+      "id": "audit.cursor-scope",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue?cursor=eyJ2ZXJzaW9uIjoxLCJzY29wZSI6ImF1ZGl0IiwicHJpbmNpcGFsSWQiOiIxMDA0OTg4MC1hMTAwLTRlZTAtYTY5ZC0zNDFkZmM2YzA3ZjIiLCJmaWx0ZXJzIjp7fSwib3JkZXIiOiJzZXEiLCJpc3N1ZWRBdCI6IjIwMjYtMTAtMjRUMTQ6MDk6NDUuOTE1MDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMTAtMjRUMTQ6MjQ6NDUuOTE1MDAwWiIsImFmdGVyIjp7InNlcSI6IjIifSwiaGlnaHdhdGVyIjoiNiIsImhlYWRIYXNoIjoiNmRkZDkyY2FlODE0NTg5MjNkNTg4YzdjN2UzZDIzM2UxNzM0MDcwOTRlNGU4ZWY3YjVkZjBiZjEyYzNhY2EwMSJ9l3LcaMT6oVAt1i3TqPnLJ6haaTkcOF89cPoOaJIUN5k",
+      "request": null,
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "5dff5e8b-7b19-4d51-901b-a76e4d8ee8ca"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "e8b803a87ea194c8f86fb96eeb2ead049fe6e307427c5feb947cfc3f625a7520",
+      "bodyBytes": 135
+    },
+    {
+      "id": "stats.before",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/stats",
+      "request": null,
+      "status": 200,
+      "dto": "Stats",
+      "response": {
+        "approvedInWindow": "0",
+        "asOf": "2026-10-24T14:09:46.811686Z",
+        "auditHighwater": "6",
+        "needsInfo": "0",
+        "pending": "1",
+        "rejectedInWindow": "0",
+        "requestId": "88eec9c5-af73-4049-ac77-a817865ec68e",
+        "schemaVersion": 1,
+        "state": "exact",
+        "window": {
+          "endExclusive": "2026-10-24T22:00:00.000000Z",
+          "startInclusive": "2026-10-23T22:00:00.000000Z",
+          "timeZone": "Europe/Prague"
+        }
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "23450ae879081b9eeb57824121bbba121a868a66baec05354523286bb689856f",
+      "bodyBytes": 350
+    },
+    {
+      "id": "stats.concurrent",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/stats",
+      "request": null,
+      "status": 200,
+      "dto": "Stats",
+      "response": {
+        "approvedInWindow": "0",
+        "asOf": "2026-10-24T14:09:46.902966Z",
+        "auditHighwater": "6",
+        "needsInfo": "0",
+        "pending": "1",
+        "rejectedInWindow": "0",
+        "requestId": "d007beae-d76b-4e8d-83c3-128f5ef2de10",
+        "schemaVersion": 1,
+        "state": "exact",
+        "window": {
+          "endExclusive": "2026-10-24T22:00:00.000000Z",
+          "startInclusive": "2026-10-23T22:00:00.000000Z",
+          "timeZone": "Europe/Prague"
+        }
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "95029883d6739ca138563bf5ac152eb3d3149d948a3f47f102a3739365ba6e61",
+      "bodyBytes": 350
+    },
+    {
+      "id": "stats.after",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/stats",
+      "request": null,
+      "status": 200,
+      "dto": "Stats",
+      "response": {
+        "approvedInWindow": "1",
+        "asOf": "2026-10-24T14:09:46.999666Z",
+        "auditHighwater": "8",
+        "needsInfo": "0",
+        "pending": "0",
+        "rejectedInWindow": "0",
+        "requestId": "7476a0d2-e5f1-4f68-86d4-28f068cd794c",
+        "schemaVersion": 1,
+        "state": "exact",
+        "window": {
+          "endExclusive": "2026-10-24T22:00:00.000000Z",
+          "startInclusive": "2026-10-23T22:00:00.000000Z",
+          "timeZone": "Europe/Prague"
+        }
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "d888a4088bb47583e59913ca602e962d9bd913926197fc494b2c95f7838828c7",
+      "bodyBytes": 350
+    },
+    {
+      "id": "policy.detail-denied",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/submissions/3dd288b1-b12d-4f9f-8050-7e02d76f7c78",
+      "request": null,
+      "status": 503,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "service_unavailable",
+          "message": "Service unavailable",
+          "requestId": "32633c21-e0f0-4c55-bfc3-b64564cb8686"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "abefb5c84d80c2a3258e7f666970326b257c492d11915eebb73625748cd3b3af",
+      "bodyBytes": 141
+    },
+    {
+      "id": "policy.comparison-unavailable",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/entities/f8cd6441-2718-43c7-874b-272bf85f08c7/comparison?submissionId=3dd288b1-b12d-4f9f-8050-7e02d76f7c78",
+      "request": null,
+      "status": 200,
+      "dto": "ComparisonUnavailable",
+      "response": {
+        "entityId": "f8cd6441-2718-43c7-874b-272bf85f08c7",
+        "reason": "projection_unavailable",
+        "requestId": "b4731a20-e29c-44ba-b227-fe8d2c8cb79b",
+        "schemaVersion": 1,
+        "state": "unavailable",
+        "submissionId": "3dd288b1-b12d-4f9f-8050-7e02d76f7c78"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "52c77dfcaec7ee3c7612d46ad67a8f314a2f6481b8edf2757f901b3dafb6ef5c",
+      "bodyBytes": 230
+    },
+    {
+      "id": "error.outage",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue",
+      "request": null,
+      "status": 503,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "service_unavailable",
+          "message": "Service unavailable",
+          "requestId": "77422fbf-dd93-44c1-902c-4c86800268a4"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "580de26c22bf84ea2faa73d72130ca24008f1d9cf3dd4fef49f3d1a7db4857ab",
+      "bodyBytes": 141
+    },
+    {
+      "id": "error.timeout",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue",
+      "request": null,
+      "status": 503,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "service_unavailable",
+          "message": "Service unavailable",
+          "requestId": "925c58fa-c55e-4e81-8efd-28dfdccd5668"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "08b80485905d89045df6a4dfe5f251b20059444793434b2cefdb7ba26c4bc98c",
+      "bodyBytes": 141
+    },
+    {
+      "id": "queue.recovered",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue",
+      "request": null,
+      "status": 200,
+      "dto": "QueuePage",
+      "response": {
+        "coverage": "page",
+        "items": [],
+        "nextCursor": null,
+        "requestId": "77e3565b-fdf0-43c0-8ccd-0670432ff3d3",
+        "schemaVersion": 1,
+        "searchScope": "id_title_composer_kind"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "5cfd18051ba4a73d682ffbdbe341db0da952c1eb9b6df467ea1c62584d203144",
+      "bodyBytes": 156
+    },
+    {
+      "id": "error.not-found",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/submissions/0bf06253-1d3e-4180-aacf-259f5a80046f",
+      "request": null,
+      "status": 404,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "not_found",
+          "message": "Resource not found",
+          "requestId": "85154859-4203-4b1a-ab82-fb63794d0623"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "780ad20b0d113e1b3ea396ea2d04e6597914eb06ad34e7a7345348e4cb657e00",
+      "bodyBytes": 130
+    },
+    {
+      "id": "wire.numeric",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/89091674-e1d8-40fd-af24-1b05641fbeb7/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": 1,
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "1e61b49e-0c9f-46c1-af20-03ad6605b01e",
+        "decision": "approve"
+      },
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "e2e13c53-0561-4787-b6c9-d698a41773ef"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "043f400b8fa9d7ec16c2288e2be32d6901c4dcdde60625bc75840ecf0c05b295",
+      "bodyBytes": 135
+    },
+    {
+      "id": "wire.submission-zero",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/89091674-e1d8-40fd-af24-1b05641fbeb7/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "0",
+        "expectedSubmissionRevision": "0",
+        "idempotencyKey": "93190405-a4ee-4f17-95ca-f891ec8fd7c8",
+        "decision": "approve"
+      },
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "99c22700-ab30-4802-84fd-19c322f1210e"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "b26d782310ea97b4893613afe941630bb64fca1bc98049c00b3978aec0b09723",
+      "bodyBytes": 135
+    },
+    {
+      "id": "wire.overflow",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/89091674-e1d8-40fd-af24-1b05641fbeb7/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "9223372036854775808",
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "d20deb54-f2c4-4e1f-ae32-618f2b4622f4",
+        "decision": "approve"
+      },
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "d6ce0256-1d93-49d3-82f1-24ab4e469f29"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "63480362efd929e37af5d2c5ca741fcdcbac22c616cdaddb00fa1aca219e03e1",
+      "bodyBytes": 135
+    },
+    {
+      "id": "wire.underflow",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/89091674-e1d8-40fd-af24-1b05641fbeb7/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "-1",
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "4dfac040-8225-4f9f-a3f9-621cc106b86e",
+        "decision": "approve"
+      },
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "63be496c-2234-4cbb-aaef-45e17bfb626c"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "2fffd4ac895bceea6735a8e91c041aa47e440ead9c791ffcff970e1509177152",
+      "bodyBytes": 135
+    },
+    {
+      "id": "wire.unknown",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/89091674-e1d8-40fd-af24-1b05641fbeb7/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "0",
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "f1a6c0a7-6c44-4a40-8ea2-da0f231354fd",
+        "decision": "approve",
+        "unexpected": true
+      },
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "58f000ee-69fc-49b1-9b05-66da33f19004"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "4a1bff66a830382f95ae87cc7a3e29d6451509c41c5709a82995c9c587bb3824",
+      "bodyBytes": 135
+    },
+    {
+      "id": "wire.utf8-media",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/session/challenge",
+      "request": {
+        "schemaVersion": 1
+      },
+      "status": 201,
+      "dto": "Challenge",
+      "response": {
+        "challenge": "SYNTHETIC_REDACTED_TOKEN",
+        "expiresAt": "2026-10-24T14:14:47.886000Z",
+        "nonce": "SYNTHETIC_REDACTED_TOKEN",
+        "requestId": "78f7551d-f853-4c4c-9b83-9e9224ca6272",
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "490e823f5d1afb1361e31502a68a1fba119078dd081f47c0619bc33f14a55f85",
+      "bodyBytes": 250
+    },
+    {
+      "id": "wire.wrong-charset",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/session/challenge",
+      "request": {
+        "schemaVersion": 1
+      },
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "40b25546-2c75-4803-baee-dc61b9ca8391"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "76d11a9adb963dccac4f52f1f2dca58adf0b727ea9257707eab073b6ec789400",
+      "bodyBytes": 135
+    },
+    {
+      "id": "wire.unknown-login",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/session",
+      "request": {
+        "schemaVersion": 1,
+        "credential": "SYNTHETIC_REDACTED_TOKEN",
+        "challenge": "SYNTHETIC_REDACTED_TOKEN",
+        "principalId": "8b468410-e5fa-4041-b005-d3be8cb058d3"
+      },
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "1c67c96c-2563-498f-9951-01cc5b2959d2"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "669b6f1601d9cd628e9f58d20c1b48138e01cbac1e1afb377dd3b6b617b449ea",
+      "bodyBytes": 135
+    },
+    {
+      "id": "wire.unknown-query",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/queue?legacyLimit=20",
+      "request": null,
+      "status": 400,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "validation_failed",
+          "message": "Invalid request",
+          "requestId": "e6091823-d384-45e2-a914-810a5381a717"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "47c340d86c524f71df2c91e7d8a45994d6cc115e2eee89694093e63fa15c5a2c",
+      "bodyBytes": 135
+    },
+    {
+      "id": "wire.int8-max-result",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/60e2dd77-e9c5-4408-9f0b-a2478c58bf06/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "9223372036854775806",
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "fc9ab7bd-5239-47bb-971b-4a3908fbccab",
+        "decision": "approve"
+      },
+      "status": 201,
+      "dto": "ApproveResult",
+      "response": {
+        "decision": "approve",
+        "entityId": "08cd1904-4ea3-468e-9dfe-1a5e1d95206f",
+        "publishedEntityRevision": "9223372036854775807",
+        "requestId": "09b6ae13-28f8-4f20-b438-2f4d92e60da2",
+        "schemaVersion": 1,
+        "status": "published",
+        "submissionId": "60e2dd77-e9c5-4408-9f0b-a2478c58bf06",
+        "submissionRevision": "1"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "b4b2814b58d789991d3dd57f82c450893488f8fb2529bc9dd68806f97313fbaf",
+      "bodyBytes": 289
+    },
+    {
+      "id": "wire.int8-max-read",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "GET",
+      "path": "/v1/admin/entities/08cd1904-4ea3-468e-9dfe-1a5e1d95206f/comparison?submissionId=60e2dd77-e9c5-4408-9f0b-a2478c58bf06",
+      "request": null,
+      "status": 200,
+      "dto": "Comparison",
+      "response": {
+        "entityId": "08cd1904-4ea3-468e-9dfe-1a5e1d95206f",
+        "entityRevision": "9223372036854775807",
+        "entityStatus": "published",
+        "fields": [
+          {
+            "evidence": [
+              {
+                "license": "SYNTHETIC-NOT-APPROVED",
+                "type": "reference",
+                "value": "Synthetic reference only"
+              }
+            ],
+            "field": "syntheticTitle",
+            "value": "Synthetic work"
+          }
+        ],
+        "payloadHash": "145223c8fac4be23ea2c86e10f3cfc50e8fee53e55967d40cf0b8f9796366f9d",
+        "requestId": "8292018b-b2bd-45f8-b1e0-66c1c5568d84",
+        "schemaVersion": 1,
+        "state": "available",
+        "submissionId": "60e2dd77-e9c5-4408-9f0b-a2478c58bf06"
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "a2d610d723310cb9e1a2a0d68b52aa5eb55412722742eeca2fcbb537814bf529",
+      "bodyBytes": 508
+    },
+    {
+      "id": "wire.int8-max-overflow",
+      "origin": "actual-loopback-http-postgresql",
+      "method": "POST",
+      "path": "/v1/admin/submissions/911201f7-ba05-4ea4-a81d-0bb667023251/decisions",
+      "request": {
+        "schemaVersion": 1,
+        "expectedEntityRevision": "9223372036854775807",
+        "expectedSubmissionRevision": "1",
+        "idempotencyKey": "1c516082-932b-43ec-80be-b29c57cac663",
+        "decision": "approve"
+      },
+      "status": 409,
+      "dto": "Error",
+      "response": {
+        "error": {
+          "code": "conflict",
+          "message": "Revision or state conflict",
+          "requestId": "26b32a0d-674b-46db-a85f-9bc2f9d039b4"
+        },
+        "schemaVersion": 1
+      },
+      "redaction": "synthetic token fields scrubbed after raw DTO validation; other fields unchanged",
+      "rawSha256": "fb6b4ce3e7c1160ed228f04dd637da323328f0afd66bdbfbf2b0401c03c60245",
+      "bodyBytes": 137
+    }
+  ],
+  "transportFailures": [
+    {
+      "path": "/v1/session/refresh",
+      "status": 200,
+      "mechanism": "actual client response stream destroyed after HTTP headers, before consuming body"
+    },
+    {
+      "path": "/v1/admin/submissions/3dfffb92-90bc-45ad-8731-b7fa32d80066/decisions",
+      "status": 201,
+      "mechanism": "actual client response stream destroyed after HTTP headers, before consuming body"
+    }
+  ]
+}

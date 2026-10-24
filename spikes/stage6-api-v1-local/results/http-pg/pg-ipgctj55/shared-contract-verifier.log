@@ -1,0 +1,3 @@
+PASS: 64 maintained real HTTP/PG fixture captures;2 actual dropped response streams; schema expectations match.
+PASS: 22 actual Kotlin JVM replay cases: {"VERIFIED COMPATIBLE": 12, "VERIFIED INCOMPATIBLE": 10}; Android runtime not executed.
+PASS: synthetic5000-row actual-query EXPLAIN/caps/5s timeout evidence: [{"label": "queue-default", "planningMs": 0.984, "executionMs": 13.148, "root": "Limit"}, {"label": "queue-keyset", "planningMs": 1.026, "executionMs": 13.368, "root": "Limit"}, {"label": "queue-filtered", "planningMs": 1.072, "executionMs": 0.487, "root": "Limit"}, {"label": "audit-filtered", "planningMs": 0.533, "executionMs": 0.159, "root": "Limit"}, {"label": "stats-exact", "planningMs": 0.791, "executionMs": 3.697, "root": "Aggregate"}]

@@ -1,0 +1,97 @@
+{
+  "searchedReleaseTags": [
+    "v0.9.2",
+    "v0.10",
+    "v0.10.1"
+  ],
+  "consumerCommit": "0887d3fe33cf5d49d46e14e1de95168f08a493a2",
+  "confirmedIncompatibleLocalConsumer": true,
+  "incompatibleConsumerScope": "Stage7B synthetic client source; selected JVM replay measured separately",
+  "releasedAndroidAdminConsumerFoundInSearchedTags": false,
+  "confirmedGlobalConsumerAbsence": false,
+  "unknownExternalOrDeployedConsumerState": true,
+  "ownerVersionDecisionRequired": true,
+  "publicVersionSelected": false,
+  "evidence": [
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "v0.9.2",
+        "--",
+        "app/src/main/java/com/opus/piano/admin"
+      ],
+      "exitCode": 0,
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "v0.10",
+        "--",
+        "app/src/main/java/com/opus/piano/admin"
+      ],
+      "exitCode": 0,
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "v0.10.1",
+        "--",
+        "app/src/main/java/com/opus/piano/admin"
+      ],
+      "exitCode": 0,
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "git",
+        "log",
+        "--all",
+        "--format=%H %s",
+        "--",
+        "app/src/main/java/com/opus/piano/admin/AdminApi.kt"
+      ],
+      "exitCode": 0,
+      "stdout": "0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e chore(0.11): preserve Stage 7B admin work and verified recovery checkpoint\ncee9330f82cf2e57dcdc66a63d94b7a4e3749888 feat(0.11): Stage 7B.3 \u2014 Administration dashboard (scroll-free design) + destination routes\n49680da7e943ea846a6e1cdd46e7cc194e4fcdb0 feat(0.11): Stage 7B.1-7B.2 \u2014 contract audit + admin security/data foundation\n"
+    },
+    {
+      "argv": [
+        "git",
+        "grep",
+        "-n",
+        "-e",
+        "const val V1",
+        "-e",
+        "DisabledAdminTransport",
+        "0887d3fe33cf5d49d46e14e1de95168f08a493a2",
+        "--",
+        "app/src/main/java/com/opus/piano/admin/AdminApi.kt"
+      ],
+      "exitCode": 0,
+      "stdout": "0887d3fe33cf5d49d46e14e1de95168f08a493a2:app/src/main/java/com/opus/piano/admin/AdminApi.kt:48:object DisabledAdminTransport : AdminTransport {\n0887d3fe33cf5d49d46e14e1de95168f08a493a2:app/src/main/java/com/opus/piano/admin/AdminApi.kt:263:            AdminApi(baseUrl, fixtureTransportOverride ?: DisabledAdminTransport, token)\n0887d3fe33cf5d49d46e14e1de95168f08a493a2:app/src/main/java/com/opus/piano/admin/AdminApi.kt:265:        const val V1 = \"/v1\"\n"
+    },
+    {
+      "argv": [
+        "git",
+        "grep",
+        "-n",
+        "decisionsEnabled = false",
+        "0887d3fe33cf5d49d46e14e1de95168f08a493a2",
+        "--",
+        "app/src/main/java/com/opus/piano/OpusApplication.kt"
+      ],
+      "exitCode": 0,
+      "stdout": "0887d3fe33cf5d49d46e14e1de95168f08a493a2:app/src/main/java/com/opus/piano/OpusApplication.kt:90:            decisionsEnabled = false,\n"
+    }
+  ]
+}

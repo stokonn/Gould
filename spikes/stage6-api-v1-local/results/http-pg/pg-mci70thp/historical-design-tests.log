@@ -1,0 +1,10 @@
+Historical snapshot 6dd3136269ec7f5932c8c4b3689fb065d4db9105; source baseline 19f5642192148051a7b4eb5bc5efb1090192e3c0
+..................
+----------------------------------------------------------------------
+Ran 18 tests in 0.036s
+
+OK
+PASS: owner O1–O8 scope, Prague4 civil/DST windows and10 literal CZ/EN search fixtures; host fixture checks only, not server/runtime acceptance.
+PASS: 61 proposed synthetic fixtures (37 positive / 24 negative); 8 authored protocol scenes; DTO structure/bytes/int8/replay/audit accounting; hashes; approved design only, policies default-deny and integration blocked. No HTTP/PG/Android execution.
+Pinned client provenance only; external worktree not consulted. PASS:41 primary cases (30 actual in-process/scripted-storage captures,11 inactive proposals),29 preserved authored cases; G1-G11 matrix; source/corpus/client hashes; G10 remains closed. No HTTP/PG/Android/freeze acceptance.
+PASS: frozen 18-test historical suite on original Git source; no current-file historical pin PASS claimed.

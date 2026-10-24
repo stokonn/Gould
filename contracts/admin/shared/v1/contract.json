@@ -1,0 +1,26 @@
+{
+  "package": "goldberg-admin-shared",
+  "packageVersion": 1,
+  "classification": "local-executable-integration-foundation",
+  "publicApiVersionSelected": false,
+  "routes": "existing provisional local /v1 only; no /v2 binding",
+  "normativeSchema": "../../v1/decision-proposal/dto.schema.json",
+  "approval": "O1-O8 with qualifications; current owner authorizes this local engineering batch only",
+  "runtimeFixtures": "scenarios.json",
+  "consumerProbeCases": "consumer-cases.json",
+  "consumerSource": "consumer-source.json",
+  "matrix": "compatibility-matrix.json",
+  "referenceImplementation": "consumer-reference.mjs",
+  "requirements": {
+    "revisions": "canonical decimal strings; entity>=0, submission>=1; max9223372036854775807; no silent legacy aliases",
+    "timestamps": "UTC with exactly six fractional digits; preserve canonical audit text unchanged",
+    "unknownFields": "requests reject; response additive members tolerated only when known required fields/types validate",
+    "session": "bind principalId AND sessionId; access15m/family7d/challenge5m; single-flight refresh; lost refresh response requires fresh auth",
+    "logout": "204 bodyless; synchronously clear local credentials/account state before network; no secret-bearing offline logout queue",
+    "decisions": "explicit open; dual expected revisions; exact body/key replay24h; generic409 requires fresh Detail+Comparison and explicit reconfirmation, never automatic retry",
+    "reads": "bounded signed scoped cursors15m; exact Prague civil-day stats/asOf/highwater or explicit unavailable; null labels stay unavailable",
+    "policy": "real source/field/license/attribution/evidence sets empty/default-deny",
+    "scope": "selected JVM client replay is not Android/network/production runtime acceptance"
+  },
+  "signature": "created by stokonn with love <3"
+}

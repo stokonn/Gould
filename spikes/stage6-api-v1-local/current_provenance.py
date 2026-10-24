@@ -8,7 +8,9 @@ ROOT = Path(__file__).resolve().parents[2]
 BASE = Path(__file__).resolve().parent
 HIST = ROOT / 'contracts/admin/v1/source-provenance.json'
 META = ROOT / 'contracts/admin/v1/decision-proposal/metadata.json'
-CUR = HIST.parent / 'current-provenance/current-source-provenance.json'
+CUR = HIST.parent / 'current-provenance/integration-readiness-source-provenance.json'
+FULL_INT8_MANIFEST = HIST.parent / 'current-provenance/current-source-provenance.json'
+FULL_INT8_BASELINE = 'a3fb7e2f1436c93b49a0f4f0596d8d06e241fcef'
 # Last design checkpoint: all metadata pins (including original handler sources)
 # match this commit. metadata.baseline is the earlier source-only checkpoint.
 HISTORICAL_SNAPSHOT = '6dd3136269ec7f5932c8c4b3689fb065d4db9105'
@@ -36,6 +38,7 @@ def historical_integrity():
     # frozen artifact on disk. Evolved handlers are checked against their historical
     # Git snapshot, never declared a current-file PASS of the old pin.
     assert META.read_bytes() == historical_blob(str(META.relative_to(ROOT))), 'historical metadata changed'
+    assert FULL_INT8_MANIFEST.read_bytes() == historical_blob(str(FULL_INT8_MANIFEST.relative_to(ROOT)), FULL_INT8_BASELINE), 'full-int8 manifest changed'
     meta = json.loads(META.read_text())
     hist = json.loads(HIST.read_text())
     checked = {}
@@ -70,7 +73,7 @@ def source_files():
         root = ROOT / 'spikes' / folder
         for sub in ['src', 'migrations', 'tests']:
             paths.update(p for p in (root / sub).rglob('*') if p.is_file()
-                         and p.suffix in {'.mjs', '.sql', '.py', '.json'})
+                         and p.suffix in {'.mjs', '.sql', '.py', '.json', '.kt'})
         paths.update(p for p in root.glob('*.py'))
         paths.update(p for p in root.glob('package*.json'))
     security = ROOT / 'spikes/stage6-security-local'
@@ -83,6 +86,8 @@ def source_files():
                  and p.suffix in {'.py', '.mjs', '.json'})
     paths.update(p for p in (ROOT / 'contracts/admin/v1').rglob('*') if p.is_file()
                  and '__pycache__' not in p.parts and 'current-provenance' not in p.parts)
+    paths.add(FULL_INT8_MANIFEST)
+    paths.update(p for p in (ROOT/'contracts/admin/shared/v1').rglob('*') if p.is_file())
     paths.update(ROOT / 'scripts' / n for n in ['check_agent_policy.py',
                  'check_backup_fixtures.py', 'check_stage6_acl_proposal.py'])
     # Explicitly include external source inputs used by the policy/backup/ACL gates.
@@ -107,6 +112,8 @@ def tap_suites():
     assert api[:2] == ['node', '--test']
     api_files = ['spikes/stage6-api-v1-local/' + n for n in api[2:]]
     suites = {
+        'shared-contract.tap': ['spikes/stage6-api-v1-local/tests/shared-contract-postgres.test.mjs'],
+        'query-budget.tap': ['spikes/stage6-api-v1-local/tests/query-budget-postgres.test.mjs'],
         'http-postgres.tap': ['spikes/stage6-api-v1-local/tests/http-postgres.test.mjs'],
         'int8-postgres.tap': ['spikes/stage6-api-v1-local/tests/int8-postgres.test.mjs'],
         'auth.tap': ['spikes/stage6-auth-local/tests/auth.test.mjs'],

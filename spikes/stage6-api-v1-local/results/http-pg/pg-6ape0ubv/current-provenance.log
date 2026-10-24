@@ -1,0 +1,3 @@
+PASS: historical integrity: 52 pins on original source, frozen artifacts unchanged.
+PASS: current-source integrity: 196 files, sourceSetHash=f6dbaa10c5063228a6037397f1b99fab80e144b7bf276013191dd3dabbf76cbc
+Historical current-file pin comparisons are not reclassified as PASS.

@@ -43,7 +43,12 @@ def verify(run,live_cleanup=True):
   assert any(c['log']==name and c['exitCode']==0 and c['argv']==['node','--test','--test-reporter=tap',*files] for c in result['commands'])
   counts[name]=stats
  assert result['testCounts']==counts, 'reported counts do not match executed TAP'
+ assert result['startingBranch']=='feature/goldberg-0.11-stage-6-api-v1-local' and re.fullmatch('[0-9a-f]{40}',result['startingCommit'])
  expected_checks={
+  'consumer-source-before.log':['python3',str(BASE/'consumer-compatibility.py')],
+  'consumer-source-after.log':['python3',str(BASE/'consumer-compatibility.py')],
+  'consumer-replay.log':['python3',str(BASE/'consumer-compatibility.py'),'--replay',str(run/'shared-contract-captures.json'),str(run/'consumer-results.json')],
+  'shared-contract-verifier.log':['python3',str(BASE/'verify-shared-contract.py'),str(run)],
   'http-dto-contract.log':['python3',str(BASE/'verify-http-pg.py'),'--captures',str(run/'http-read-captures.json')],
   'comparison-contract.log':['python3',str(BASE/'verify-m3.py'),'--captures',str(run/'detail-captures.json')],
   'current-provenance-before.log':['python3',str(BASE/'verify-current-provenance.py')],
@@ -82,6 +87,7 @@ def verify(run,live_cleanup=True):
    assert subprocess.run(['podman','volume','exists',volume]).returncode==1
   print('PASS: independent live container/volume absence probes.')
  print('Executed TAP counts: '+json.dumps({name:c['tests'] for name,c in counts.items()},sort_keys=True))
+ subprocess.run(['python3',str(BASE/'verify-shared-contract.py'),str(run)],check=True)
  captures(run/'http-read-captures.json')
  print('PASS: real HTTP/PG and independent PostgreSQL/scripted/unit suites; source/raw hashes and recorded container/volume absence verified. Local-only; no Android/production/API freeze acceptance.')
 if __name__=='__main__':

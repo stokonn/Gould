@@ -1,0 +1,1 @@
+PASS: 39 actual HTTP-to-PostgreSQL read DTOs match the approved schema (queue/audit/stats).

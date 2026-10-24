@@ -46,7 +46,7 @@ export async function venue(t){
   if(role)await db.query(`INSERT INTO ${q}.role_grants(id,principal_id,role,granted_by,granted_at) VALUES($1,$2,$3,$2,$4)`,[randomUUID(),u.body.principalId,role,new Date(now)]);
   return u.body;
  };
- const v={db,schema,q,send,signIn,clock,advance:ms=>now+=ms,setFault:f=>fault=f,
+ const v={db,schema,q,send,signIn,url:()=>base,clock,advance:ms=>now+=ms,setFault:f=>fault=f,
   fresh:async options=>{adapter=factory(options);base=await start(adapter);},adapter:()=>adapter};
  v.author=await signIn('author','contributor');v.admin=await signIn('admin','administrator');v.mod=await signIn('mod','moderator');v.other=await signIn('other','contributor');
  v.submissions=new SubmissionService({authorization:adapter.authorization,validator:syntheticValidator(),idempotency:new Idempotency({schema,clock})});

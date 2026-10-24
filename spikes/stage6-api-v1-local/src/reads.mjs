@@ -35,6 +35,10 @@ export async function queuePage(adapter,token,query,requestId){
  return snapshot(adapter,token,'queue.read',async(c,ctx)=>{
   const {cursor,sign}=paging(adapter,'queue',ctx,query,['status','kind','q']);
   const q=adapter.authorization.q,limit=Number(query.limit);
+  // Bound candidate headers before payload/evidence joins. Measured5000-row
+  // default/keyset plans otherwise hash-joined every revision before LIMIT.
+  // All filter/keyset predicates remain before this inner limit; FK-backed
+  // revision pointers and the same statement snapshot preserve page semantics.
   const {rows}=await c.query(`SELECT s.id,s.author_id,s.status,s.target_kind,
    s.expected_revision::text,s.current_revision::text,${stamp('s.created_at')} AS created_at,
    ${stamp('s.updated_at')} AS updated_at,
@@ -42,12 +46,13 @@ export async function queuePage(adapter,token,query,requestId){
     (SELECT 1 FROM jsonb_array_elements(r.payload->'fields') f WHERE jsonb_typeof(f->'evidence') IS DISTINCT FROM 'array')) AS evidence_valid,
    (SELECT count(*)::text FROM jsonb_array_elements(r.payload->'fields') f,
     LATERAL jsonb_array_elements(f->'evidence') e) AS evidence_count
-   FROM ${q}.submissions s JOIN ${q}.submission_revisions r
-    ON r.submission_id=s.id AND r.revision=s.current_revision
+   FROM (SELECT s.* FROM ${q}.submissions s
    WHERE s.status IN ('submitted','in_review','changes_requested')
     AND ($1::text IS NULL OR s.status::text=$1) AND ($2::text IS NULL OR s.target_kind=$2)
     AND ($3::text IS NULL OR s.id::text=$3 OR ${contains('s.target_kind','$3')})
     AND ($4::timestamptz IS NULL OR (s.created_at,s.id)>($4::timestamptz,$5::uuid))
+   ORDER BY s.created_at,s.id LIMIT $6) s
+   JOIN ${q}.submission_revisions r ON r.submission_id=s.id AND r.revision=s.current_revision
    ORDER BY s.created_at,s.id LIMIT $6`,[query.status??null,query.kind??null,query.q?.normalize('NFC')??null,cursor?.after.createdAt??null,cursor?.after.id??null,limit+1]);
   const items=rows.slice(0,limit).map(s=>{
    if(s.evidence_valid!==true||!['work','arrangement','artist','album','release','recording','collection'].includes(s.target_kind))throw unavailable();

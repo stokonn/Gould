@@ -1,0 +1,346 @@
+{
+  "packageVersion": 1,
+  "androidRuntimeExecuted": false,
+  "rows": [
+    {
+      "id": "capabilities",
+      "consumerExpectation": "ok",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "session.capabilities",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "capabilities",
+      "result": "VERIFIED COMPATIBLE",
+      "remediation": "Keep principal/capability parsing; add required sessionId binding before activation."
+    },
+    {
+      "id": "queue",
+      "consumerExpectation": "invalid_payload",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "queue.first",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "queue",
+      "result": "VERIFIED INCOMPATIBLE",
+      "remediation": "Replace id/owner/revision/numeric createdAt with submissionId/authorId/dual decimal-string revisions/ISO microseconds; keep nullable display fields."
+    },
+    {
+      "id": "detail",
+      "consumerExpectation": "invalid_payload",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "moderation.detail",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "detail",
+      "result": "VERIFIED INCOMPATIBLE",
+      "remediation": "Decode submissionId/authorId/expectedEntityRevision/submissionRevision plus revisions.items and reviews.items; preserve targetState and bounded history."
+    },
+    {
+      "id": "approve",
+      "consumerExpectation": "invalid_payload",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "moderation.approve",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "approve",
+      "result": "VERIFIED INCOMPATIBLE",
+      "remediation": "Decode201 ApproveResult: submissionId, submissionRevision, entityId, publishedEntityRevision; never alias the two revisions."
+    },
+    {
+      "id": "reject",
+      "consumerExpectation": "invalid_payload",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "moderation.reject",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "reject",
+      "result": "VERIFIED INCOMPATIBLE",
+      "remediation": "Decode200 RejectResult with submissionRevision; no invented published revision."
+    },
+    {
+      "id": "request-changes",
+      "consumerExpectation": "invalid_payload",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "moderation.request-changes",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "request-changes",
+      "result": "VERIFIED INCOMPATIBLE",
+      "remediation": "Decode200 ChangesResult with submissionRevision; enforce1000 UTF8-byte reason ceiling."
+    },
+    {
+      "id": "audit",
+      "consumerExpectation": "invalid_payload",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "audit.first",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "audit",
+      "result": "VERIFIED INCOMPATIBLE",
+      "remediation": "Decode createdAt, actor.principalId, structured subject, canonicalContent, highwater/headHash/coverage; validate exact chain content."
+    },
+    {
+      "id": "logout204",
+      "consumerExpectation": "invalid_payload",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "session.logout",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "logout204",
+      "result": "VERIFIED INCOMPATIBLE",
+      "remediation": "Handle204 before JSON decode, return Unit/revocationConfirmed; clear credentials synchronously before network I/O."
+    },
+    {
+      "id": "conflict",
+      "consumerExpectation": "conflict",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "moderation.conflict",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "conflict",
+      "result": "VERIFIED COMPATIBLE",
+      "remediation": "Keep generic typed409; refetch Detail and Comparison, invalidate old acknowledgement; never auto-retry a decision."
+    },
+    {
+      "id": "validation400",
+      "consumerExpectation": "validation_400",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "wire.legacy-decision",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "validation400",
+      "result": "VERIFIED COMPATIBLE",
+      "remediation": "Retain typed validation failure; fix request construction, do not retry unchanged malformed input."
+    },
+    {
+      "id": "unauthorized",
+      "consumerExpectation": "unauthorized",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "session.access-expired",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "unauthorized",
+      "result": "VERIFIED COMPATIBLE",
+      "remediation": "Clear credentials and all account-bound review/cursor/pending state; require fresh authentication."
+    },
+    {
+      "id": "forbidden",
+      "consumerExpectation": "forbidden",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "isolation.revoked-role",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "forbidden",
+      "result": "VERIFIED COMPATIBLE",
+      "remediation": "Invalidate trust/capabilities/pending decisions; do not replay cached privileged work."
+    },
+    {
+      "id": "not-found",
+      "consumerExpectation": "not_found",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "error.not-found",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "not-found",
+      "result": "VERIFIED COMPATIBLE",
+      "remediation": "Retain existence-hiding404 without inferring hidden current data."
+    },
+    {
+      "id": "mismatch422",
+      "consumerExpectation": "validation_422",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "moderation.mismatch",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "mismatch422",
+      "result": "VERIFIED COMPATIBLE",
+      "remediation": "Distinguish idempotency_mismatch from generic validation for explicit recovery; never substitute a new body under the same key."
+    },
+    {
+      "id": "outage503",
+      "consumerExpectation": "server_error_503",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "error.outage",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "outage503",
+      "result": "VERIFIED COMPATIBLE",
+      "remediation": "Retain safe unavailable state; uncertain decisions require explicit same-body/key reconciliation."
+    },
+    {
+      "id": "signed-cursor",
+      "consumerExpectation": "exact_cursor",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "queue.first",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "signed-cursor",
+      "result": "VERIFIED COMPATIBLE",
+      "remediation": "Pass the opaque string unchanged; bind local cached cursor to account/filter/scope; never construct or reinterpret it."
+    },
+    {
+      "id": "revision-int8-max",
+      "consumerExpectation": "rejected",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "wire.int8-max-result",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "revision-int8-max",
+      "result": "VERIFIED INCOMPATIBLE",
+      "remediation": "Replace revision:Int with validated canonical decimal-string value class; checked Long/BigInteger comparisons; entity>=0/submission>=1."
+    },
+    {
+      "id": "audit-long-int8-max",
+      "consumerExpectation": "exact_int8",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "wire.int8-max-result",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "audit-long-int8-max",
+      "result": "VERIFIED COMPATIBLE",
+      "remediation": "Long can hold positive signed int8 exactly; continue canonical string serialization and checked bounds."
+    },
+    {
+      "id": "disabled-boundary",
+      "consumerExpectation": "contract_unavailable",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": null,
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "disabled-boundary",
+      "result": "VERIFIED COMPATIBLE",
+      "remediation": "Preserve DisabledAdminTransport and decisionsEnabled=false until separately approved integration."
+    },
+    {
+      "id": "legacy-request-builder",
+      "consumerExpectation": "single_numeric_revision",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": null,
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "legacy-request-builder",
+      "result": "VERIFIED INCOMPATIBLE",
+      "remediation": "Replace expectedRevision:Number with expectedEntityRevision:String and expectedSubmissionRevision:String from fresh acknowledged Detail; add explicit open."
+    },
+    {
+      "id": "account-switch",
+      "consumerExpectation": "unauthorized",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "session.capabilities",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "account-switch",
+      "result": "VERIFIED COMPATIBLE",
+      "remediation": "Preserve in-flight base/token guard; additionally clear account-scoped cursors/reviews/pending intents on identity/session changes."
+    },
+    {
+      "id": "stats",
+      "consumerExpectation": "stats_unavailable",
+      "normativeDesign": "O1-O8 approved canonical DTOs; schemaRef ../../v1/decision-proposal/dto.schema.json",
+      "actualBackendFixture": "queue.first",
+      "verificationMechanism": "unmodified selected Kotlin JVM code replaying actual HTTP/PG capture; no Android runtime",
+      "probeId": "stats",
+      "result": "VERIFIED INCOMPATIBLE",
+      "remediation": "Consume exact server Stats/StatsUnavailable with asOf, auditHighwater and Europe/Prague window; remove device-zone legacy-action derivation."
+    },
+    {
+      "id": "session-login",
+      "consumerExpectation": "Actual source-pinned Stage7B implementation; see static fact or explicit unexecuted boundary",
+      "normativeDesign": "Approved O1-O8 with owner/public-version/policy qualifications",
+      "actualBackendFixture": "session.login",
+      "verificationMechanism": "read-only source assertion; not Android runtime acceptance",
+      "staticFact": "refresh-api-missing",
+      "result": "NOT EXECUTED",
+      "remediation": "Add explicit challenge/exchange methods and authenticated principalId/sessionId/access+refresh expiry storage; current client only stores one opaque token."
+    },
+    {
+      "id": "refresh-single-flight",
+      "consumerExpectation": "Actual source-pinned Stage7B implementation; see static fact or explicit unexecuted boundary",
+      "normativeDesign": "Approved O1-O8 with owner/public-version/policy qualifications",
+      "actualBackendFixture": "session.refresh",
+      "verificationMechanism": "read-only source assertion; not Android runtime acceptance",
+      "staticFact": "refresh-api-missing",
+      "result": "NOT EXECUTED",
+      "remediation": "Implement one in-flight refresh per family/account; never automatically reuse a refresh token after lost response. Executable reference is provided."
+    },
+    {
+      "id": "immediate-local-clear",
+      "consumerExpectation": "Actual source-pinned Stage7B implementation; see static fact or explicit unexecuted boundary",
+      "normativeDesign": "Approved O1-O8 with owner/public-version/policy qualifications",
+      "actualBackendFixture": "session.logout",
+      "verificationMechanism": "read-only source assertion; not Android runtime acceptance",
+      "staticFact": "logout-clear-after-io",
+      "result": "VERIFIED INCOMPATIBLE",
+      "remediation": "Move session.clear and sensitive account-state clearing before awaiting api.signOut; current finally runs only after I/O completes/cancels."
+    },
+    {
+      "id": "explicit-open",
+      "consumerExpectation": "Actual source-pinned Stage7B implementation; see static fact or explicit unexecuted boundary",
+      "normativeDesign": "Approved O1-O8 with owner/public-version/policy qualifications",
+      "actualBackendFixture": "moderation.open",
+      "verificationMechanism": "read-only source assertion; not Android runtime acceptance",
+      "staticFact": "comparison-open-api-missing",
+      "result": "NOT EXECUTED",
+      "remediation": "Add explicit open with separately acknowledged entity/submission expectations and new idempotency key; do not infer open from detail fetch."
+    },
+    {
+      "id": "entity-comparison",
+      "consumerExpectation": "Actual source-pinned Stage7B implementation; see static fact or explicit unexecuted boundary",
+      "normativeDesign": "Approved O1-O8 with owner/public-version/policy qualifications",
+      "actualBackendFixture": "comparison.absent",
+      "verificationMechanism": "read-only source assertion; not Android runtime acceptance",
+      "staticFact": "comparison-open-api-missing",
+      "result": "NOT EXECUTED",
+      "remediation": "Add GET comparison with exact entity/submission association; absent/unmapped/projection_unavailable must remain unavailable, never proposal-before fallback."
+    },
+    {
+      "id": "revision-reconfirmation",
+      "consumerExpectation": "Actual source-pinned Stage7B implementation; see static fact or explicit unexecuted boundary",
+      "normativeDesign": "Approved O1-O8 with owner/public-version/policy qualifications",
+      "actualBackendFixture": "moderation.refetch",
+      "verificationMechanism": "read-only source assertion; not Android runtime acceptance",
+      "staticFact": "dual-revisions-missing",
+      "result": "VERIFIED INCOMPATIBLE",
+      "remediation": "Bind acknowledgement to principal/session, both revisions and fresh proposal/live comparison; include both expectations after explicit reconfirmation."
+    },
+    {
+      "id": "server-filter-search",
+      "consumerExpectation": "Actual source-pinned Stage7B implementation; see static fact or explicit unexecuted boundary",
+      "normativeDesign": "Approved O1-O8 with owner/public-version/policy qualifications",
+      "actualBackendFixture": "queue.filtered",
+      "verificationMechanism": "read-only source assertion; not Android runtime acceptance",
+      "staticFact": "legacy-queue-fields",
+      "result": "NOT EXECUTED",
+      "remediation": "Use bounded canonical status/kind/q server queries and reset signed pagination on filter change; unavailable labels cannot match."
+    },
+    {
+      "id": "rate-limit429",
+      "consumerExpectation": "Actual source-pinned Stage7B implementation; see static fact or explicit unexecuted boundary",
+      "normativeDesign": "Approved O1-O8 with owner/public-version/policy qualifications",
+      "actualBackendFixture": null,
+      "verificationMechanism": "explicit boundary/unexecuted operation",
+      "staticFact": null,
+      "result": "NOT APPLICABLE",
+      "remediation": "Normative envelope exists but no local rate-limit path emits429; hosted budget/rate-limit proof remains open, no fabricated runtime fixture."
+    },
+    {
+      "id": "public-route-version",
+      "consumerExpectation": "Actual source-pinned Stage7B implementation; see static fact or explicit unexecuted boundary",
+      "normativeDesign": "Approved O1-O8 with owner/public-version/policy qualifications",
+      "actualBackendFixture": null,
+      "verificationMechanism": "explicit boundary/unexecuted operation",
+      "staticFact": null,
+      "result": "BLOCKED BY OWNER/POLICY",
+      "remediation": "Owner must resolve unknown external/deployed consumers and conditional /v1 binding; concrete gated /v2 migration proposal accompanies evidence."
+    },
+    {
+      "id": "real-metadata-policy",
+      "consumerExpectation": "Actual source-pinned Stage7B implementation; see static fact or explicit unexecuted boundary",
+      "normativeDesign": "Approved O1-O8 with owner/public-version/policy qualifications",
+      "actualBackendFixture": "policy.comparison-unavailable",
+      "verificationMechanism": "explicit boundary/unexecuted operation",
+      "staticFact": null,
+      "result": "BLOCKED BY OWNER/POLICY",
+      "remediation": "Keep real sources/fields/licenses/attribution/evidence default-deny and nullable queue labels; synthetic fixtures are not permission."
+    },
+    {
+      "id": "android-session-storage-runtime",
+      "consumerExpectation": "Actual source-pinned Stage7B implementation; see static fact or explicit unexecuted boundary",
+      "normativeDesign": "Approved O1-O8 with owner/public-version/policy qualifications",
+      "actualBackendFixture": null,
+      "verificationMechanism": "explicit boundary/unexecuted operation",
+      "staticFact": null,
+      "result": "NOT EXECUTED",
+      "remediation": "Verify Keystore-backed account isolation and process lifecycle in separately authorized Android integration; selected JVM replay does not execute Android storage."
+    },
+    {
+      "id": "android-review-ui-runtime",
+      "consumerExpectation": "Actual source-pinned Stage7B implementation; see static fact or explicit unexecuted boundary",
+      "normativeDesign": "Approved O1-O8 with owner/public-version/policy qualifications",
+      "actualBackendFixture": null,
+      "verificationMechanism": "read-only source assertion; not Android runtime acceptance",
+      "staticFact": "conflict-never-retry",
+      "result": "NOT EXECUTED",
+      "remediation": "Integrate canonical fixtures and reference reconfirmation behavior in Stage7B under separate authorization; preserve its independent synthetic acceptance."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "commit": "0887d3fe33cf5d49d46e14e1de95168f08a493a2",
+  "branch": "feature/goldberg-0.11-stage-7b",
+  "worktreeInspectedReadOnly": "/home/stokonn/Projects/Goldberg-Stage7B",
+  "files": {
+    "app/src/main/java/com/opus/piano/OpusApplication.kt": "961df89b5006e52f0ec63d32813e4d2cb38350c9b33ebdee32bc6bfba21fd9ba",
+    "app/src/main/java/com/opus/piano/admin/AdminApi.kt": "06064c62b05960aa26aaacf73d3dc5e61cd068c0e25896cee6c7bbfed985e1d8",
+    "app/src/main/java/com/opus/piano/admin/AdminAuditService.kt": "e738ddbeb9a43657964abb8dcf51049593515245bb7050116d2e932e935507de",
+    "app/src/main/java/com/opus/piano/admin/AdminHttpTransport.kt": "f7e39537806ea566bb086fb1eaf4e1934c7292a98638e64fef04ccd0e433dda7",
+    "app/src/main/java/com/opus/piano/admin/AdminMarkers.kt": "f9f92bdc459ccf38175b4b5603500a08e71f62804a21e00aba6c401834d49352",
+    "app/src/main/java/com/opus/piano/admin/AdminModels.kt": "1f39958d1d44ae8944dbedbbc101b51d699cdfc617a75ba6c896b0fbf423f231",
+    "app/src/main/java/com/opus/piano/admin/AdminQueueService.kt": "9cd8e33aa298ad22c00843ab53fe1397de725d89f7e75639778f7e5bc5a8afd2",
+    "app/src/main/java/com/opus/piano/admin/AdminRepository.kt": "e900c56c12cdfdca3695edcd0d5bbfd9891e6b6b1246c6e0700a1f15fa9bd4ad",
+    "app/src/main/java/com/opus/piano/admin/AdminReviewService.kt": "ca191f012bd20d4680c63e13e101801101bfbf25dfb68fea4b2c3132228521d6",
+    "app/src/main/java/com/opus/piano/admin/AdminSessionStore.kt": "36e0050a8f086b37ea2049a7df9b5402611126b37f778ae1ecea2d64969386d4",
+    "app/src/main/java/com/opus/piano/admin/AdminSettingsStore.kt": "dc652104589c9d185ee6105b81a21b77bb14f4107e232e599a1c8f6fe6343128",
+    "app/src/main/java/com/opus/piano/admin/AdminStatsService.kt": "29959125fd5b3ab4359e3809569cf3c2318672ad749e91f57d1f0f7f40fe816b",
+    "app/src/main/java/com/opus/piano/admin/AdminSyncPolicy.kt": "a7f1f018176c6a930758f16ef854364ba1a90f59971faa533c5773acefdb02e0",
+    "app/src/main/java/com/opus/piano/admin/AdminSyncWorker.kt": "94c77855877776e6652fedda1083a78c226f9af2605a4178b4cda6059a168604",
+    "app/src/main/java/com/opus/piano/admin/AdminTrustPolicy.kt": "eac3c7577ee043572926ab02c7193cd61843a2bd314798b437494b38cfa8e0d5",
+    "app/src/main/java/com/opus/piano/admin/AdminWireValues.kt": "6c4545d1ac8e493be27acb4043750a46fca3a18c5085bf095a6ee07dab96fd86"
+  }
+}

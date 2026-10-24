@@ -1,0 +1,160 @@
+{
+  "packageVersion": 1,
+  "mechanism": "Actual unmodified selected Kotlin JVM client with captured real HTTP/PG responses; not Android runtime",
+  "cases": [
+    {
+      "id": "capabilities",
+      "fixtureId": "session.capabilities",
+      "operation": "capabilities",
+      "expectedOutcome": "ok",
+      "classification": "VERIFIED COMPATIBLE"
+    },
+    {
+      "id": "queue",
+      "fixtureId": "queue.first",
+      "operation": "queue",
+      "expectedOutcome": "invalid_payload",
+      "classification": "VERIFIED INCOMPATIBLE"
+    },
+    {
+      "id": "detail",
+      "fixtureId": "moderation.detail",
+      "operation": "detail",
+      "expectedOutcome": "invalid_payload",
+      "classification": "VERIFIED INCOMPATIBLE"
+    },
+    {
+      "id": "approve",
+      "fixtureId": "moderation.approve",
+      "operation": "decision",
+      "expectedOutcome": "invalid_payload",
+      "classification": "VERIFIED INCOMPATIBLE"
+    },
+    {
+      "id": "reject",
+      "fixtureId": "moderation.reject",
+      "operation": "decision",
+      "expectedOutcome": "invalid_payload",
+      "classification": "VERIFIED INCOMPATIBLE"
+    },
+    {
+      "id": "request-changes",
+      "fixtureId": "moderation.request-changes",
+      "operation": "decision",
+      "expectedOutcome": "invalid_payload",
+      "classification": "VERIFIED INCOMPATIBLE"
+    },
+    {
+      "id": "audit",
+      "fixtureId": "audit.first",
+      "operation": "audit",
+      "expectedOutcome": "invalid_payload",
+      "classification": "VERIFIED INCOMPATIBLE"
+    },
+    {
+      "id": "logout204",
+      "fixtureId": "session.logout",
+      "operation": "logout",
+      "expectedOutcome": "invalid_payload",
+      "classification": "VERIFIED INCOMPATIBLE"
+    },
+    {
+      "id": "conflict",
+      "fixtureId": "moderation.conflict",
+      "operation": "decision",
+      "expectedOutcome": "conflict",
+      "classification": "VERIFIED COMPATIBLE"
+    },
+    {
+      "id": "validation400",
+      "fixtureId": "wire.legacy-decision",
+      "operation": "decision",
+      "expectedOutcome": "validation_400",
+      "classification": "VERIFIED COMPATIBLE"
+    },
+    {
+      "id": "unauthorized",
+      "fixtureId": "session.access-expired",
+      "operation": "capabilities",
+      "expectedOutcome": "unauthorized",
+      "classification": "VERIFIED COMPATIBLE"
+    },
+    {
+      "id": "forbidden",
+      "fixtureId": "isolation.revoked-role",
+      "operation": "capabilities",
+      "expectedOutcome": "forbidden",
+      "classification": "VERIFIED COMPATIBLE"
+    },
+    {
+      "id": "not-found",
+      "fixtureId": "error.not-found",
+      "operation": "capabilities",
+      "expectedOutcome": "not_found",
+      "classification": "VERIFIED COMPATIBLE"
+    },
+    {
+      "id": "mismatch422",
+      "fixtureId": "moderation.mismatch",
+      "operation": "decision",
+      "expectedOutcome": "validation_422",
+      "classification": "VERIFIED COMPATIBLE"
+    },
+    {
+      "id": "outage503",
+      "fixtureId": "error.outage",
+      "operation": "capabilities",
+      "expectedOutcome": "server_error_503",
+      "classification": "VERIFIED COMPATIBLE"
+    },
+    {
+      "id": "signed-cursor",
+      "fixtureId": "queue.first",
+      "operation": "cursor",
+      "expectedOutcome": "exact_cursor",
+      "classification": "VERIFIED COMPATIBLE"
+    },
+    {
+      "id": "revision-int8-max",
+      "fixtureId": "wire.int8-max-result",
+      "operation": "revision-max",
+      "expectedOutcome": "rejected",
+      "classification": "VERIFIED INCOMPATIBLE"
+    },
+    {
+      "id": "audit-long-int8-max",
+      "fixtureId": "wire.int8-max-result",
+      "operation": "long-max",
+      "expectedOutcome": "exact_int8",
+      "classification": "VERIFIED COMPATIBLE"
+    },
+    {
+      "id": "disabled-boundary",
+      "fixtureId": null,
+      "operation": "disabled",
+      "expectedOutcome": "contract_unavailable",
+      "classification": "VERIFIED COMPATIBLE"
+    },
+    {
+      "id": "legacy-request-builder",
+      "fixtureId": null,
+      "operation": "legacy-body",
+      "expectedOutcome": "single_numeric_revision",
+      "classification": "VERIFIED INCOMPATIBLE"
+    },
+    {
+      "id": "account-switch",
+      "fixtureId": "session.capabilities",
+      "operation": "account-switch",
+      "expectedOutcome": "unauthorized",
+      "classification": "VERIFIED COMPATIBLE"
+    },
+    {
+      "id": "stats",
+      "fixtureId": "queue.first",
+      "operation": "stats",
+      "expectedOutcome": "stats_unavailable",
+      "classification": "VERIFIED INCOMPATIBLE"
+    }
+  ]
+}

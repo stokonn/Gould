@@ -1,0 +1,202 @@
+TAP version 13
+# Subtest: lossless int8 decimal 0
+ok 1 - lossless int8 decimal 0
+  ---
+  duration_ms: 2.567953
+  type: 'test'
+  ...
+# Subtest: lossless int8 decimal 9
+ok 2 - lossless int8 decimal 9
+  ---
+  duration_ms: 0.302021
+  type: 'test'
+  ...
+# Subtest: lossless int8 decimal 10
+ok 3 - lossless int8 decimal 10
+  ---
+  duration_ms: 0.12179
+  type: 'test'
+  ...
+# Subtest: lossless int8 decimal 9007199254740993
+ok 4 - lossless int8 decimal 9007199254740993
+  ---
+  duration_ms: 0.143561
+  type: 'test'
+  ...
+# Subtest: lossless int8 decimal 9223372036854775807
+ok 5 - lossless int8 decimal 9223372036854775807
+  ---
+  duration_ms: 0.129966
+  type: 'test'
+  ...
+# Subtest: invalid int8 1
+ok 6 - invalid int8 1
+  ---
+  duration_ms: 0.677831
+  type: 'test'
+  ...
+# Subtest: invalid int8 9007199254740992
+ok 7 - invalid int8 9007199254740992
+  ---
+  duration_ms: 0.134474
+  type: 'test'
+  ...
+# Subtest: invalid int8 01
+ok 8 - invalid int8 01
+  ---
+  duration_ms: 0.121871
+  type: 'test'
+  ...
+# Subtest: invalid int8 -1
+ok 9 - invalid int8 -1
+  ---
+  duration_ms: 0.43957
+  type: 'test'
+  ...
+# Subtest: invalid int8 1e3
+ok 10 - invalid int8 1e3
+  ---
+  duration_ms: 0.538789
+  type: 'test'
+  ...
+# Subtest: invalid int8 9223372036854775808
+ok 11 - invalid int8 9223372036854775808
+  ---
+  duration_ms: 0.250584
+  type: 'test'
+  ...
+# Subtest: invalid int8 null
+ok 12 - invalid int8 null
+  ---
+  duration_ms: 0.126108
+  type: 'test'
+  ...
+# Subtest: signed cursors reject alteration, cross endpoint/filter and cross server key
+ok 13 - signed cursors reject alteration, cross endpoint/filter and cross server key
+  ---
+  duration_ms: 4.339811
+  type: 'test'
+  ...
+# Subtest: synthetic coarse grouping 198.51.100.1
+ok 14 - synthetic coarse grouping 198.51.100.1
+  ---
+  duration_ms: 0.949334
+  type: 'test'
+  ...
+# Subtest: synthetic coarse grouping 198.51.100.254
+ok 15 - synthetic coarse grouping 198.51.100.254
+  ---
+  duration_ms: 0.1057
+  type: 'test'
+  ...
+# Subtest: synthetic coarse grouping 2001:db8:1:2::a
+ok 16 - synthetic coarse grouping 2001:db8:1:2::a
+  ---
+  duration_ms: 7.798126
+  type: 'test'
+  ...
+# Subtest: synthetic coarse grouping 2001:0db8:0001:0002:ffff:ffff:ffff:ffff
+ok 17 - synthetic coarse grouping 2001:0db8:0001:0002:ffff:ffff:ffff:ffff
+  ---
+  duration_ms: 0.235155
+  type: 'test'
+  ...
+# Subtest: synthetic coarse grouping ::ffff:198.51.100.1
+ok 18 - synthetic coarse grouping ::ffff:198.51.100.1
+  ---
+  duration_ms: 0.126189
+  type: 'test'
+  ...
+# Subtest: synthetic coarse grouping ::ffff:c633:6401
+ok 19 - synthetic coarse grouping ::ffff:c633:6401
+  ---
+  duration_ms: 0.088958
+  type: 'test'
+  ...
+# Subtest: invalid trusted peer 198.51.100.01
+ok 20 - invalid trusted peer 198.51.100.01
+  ---
+  duration_ms: 0.182444
+  type: 'test'
+  ...
+# Subtest: invalid trusted peer unknown
+ok 21 - invalid trusted peer unknown
+  ---
+  duration_ms: 0.081604
+  type: 'test'
+  ...
+# Subtest: invalid trusted peer 2001:db8::1%zone
+ok 22 - invalid trusted peer 2001:db8::1%zone
+  ---
+  duration_ms: 0.081995
+  type: 'test'
+  ...
+# Subtest: invalid trusted peer 198.51.100.1, 198.51.100.2
+ok 23 - invalid trusted peer 198.51.100.1, 198.51.100.2
+  ---
+  duration_ms: 0.077566
+  type: 'test'
+  ...
+# Subtest: invalid trusted peer undefined
+ok 24 - invalid trusted peer undefined
+  ---
+  duration_ms: 0.073439
+  type: 'test'
+  ...
+# Subtest: keyed hashes hide peer, preserve group, separate groups and key rotations
+ok 25 - keyed hashes hide peer, preserve group, separate groups and key rotations
+  ---
+  duration_ms: 1.104297
+  type: 'test'
+  ...
+# Subtest: public projection selects only safe display/provenance, retaining exact revision
+ok 26 - public projection selects only safe display/provenance, retaining exact revision
+  ---
+  duration_ms: 0.820671
+  type: 'test'
+  ...
+# Subtest: adapter propagates truthful retry and safe failure envelope, never diagnostics
+ok 27 - adapter propagates truthful retry and safe failure envelope, never diagnostics
+  ---
+  duration_ms: 1.533538
+  type: 'test'
+  ...
+# Subtest: fail-closed evidence policy remains empty and no evidence fetch abstraction is added
+ok 28 - fail-closed evidence policy remains empty and no evidence fetch abstraction is added
+  ---
+  duration_ms: 0.853613
+  type: 'test'
+  ...
+# Subtest: T18 independent audit verification rejects tamper, omission, sequence reordering and head mismatch
+ok 29 - T18 independent audit verification rejects tamper, omission, sequence reordering and head mismatch
+  ---
+  duration_ms: 18.059357
+  type: 'test'
+  ...
+# Subtest: T20 unavailable PostgreSQL connector fails public read closed with safe 503
+ok 30 - T20 unavailable PostgreSQL connector fails public read closed with safe 503
+  ---
+  duration_ms: 1.120567
+  type: 'test'
+  ...
+# Subtest: retention scheduler cleans during idle intake, suppresses overlap and drains on stop
+ok 31 - retention scheduler cleans during idle intake, suppresses overlap and drains on stop
+  ---
+  duration_ms: 1.336535
+  type: 'test'
+  ...
+# Subtest: retention scheduler retries unavailable storage at later ticks and reports no private diagnostics
+ok 32 - retention scheduler retries unavailable storage at later ticks and reports no private diagnostics
+  ---
+  duration_ms: 0.703309
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 316.198986

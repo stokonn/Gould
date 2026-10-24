@@ -1,0 +1,469 @@
+{
+  "packageVersion": 1,
+  "publicVersionSelected": false,
+  "schemaRef": "../../v1/decision-proposal/dto.schema.json",
+  "cases": [
+    {
+      "id": "session.challenge",
+      "status": 201,
+      "dto": "Challenge",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "wire.utf8-media",
+      "status": 201,
+      "dto": "Challenge",
+      "category": "wire",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.login",
+      "status": 201,
+      "dto": "Tokens",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.binding",
+      "status": 200,
+      "dto": "Session",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.other-account",
+      "status": 200,
+      "dto": "Session",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.capabilities",
+      "status": 200,
+      "dto": "Capabilities",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.refresh",
+      "status": 200,
+      "dto": "Tokens",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.logout",
+      "status": 204,
+      "dto": "EmptyBody",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.logout-repeat",
+      "status": 204,
+      "dto": "EmptyBody",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "moderation.open",
+      "status": 200,
+      "dto": "OpenResult",
+      "category": "moderation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "moderation.detail",
+      "status": 200,
+      "dto": "Detail",
+      "category": "moderation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "moderation.refetch",
+      "status": 200,
+      "dto": "Detail",
+      "category": "moderation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "comparison.absent",
+      "status": 200,
+      "dto": "ComparisonUnavailable",
+      "category": "comparison",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "policy.comparison-unavailable",
+      "status": 200,
+      "dto": "ComparisonUnavailable",
+      "category": "policy",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "moderation.approve",
+      "status": 201,
+      "dto": "ApproveResult",
+      "category": "moderation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "moderation.replay",
+      "status": 201,
+      "dto": "ApproveResult",
+      "category": "moderation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "moderation.lost-response-replay",
+      "status": 201,
+      "dto": "ApproveResult",
+      "category": "moderation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "moderation.reject",
+      "status": 200,
+      "dto": "RejectResult",
+      "category": "moderation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "moderation.request-changes",
+      "status": 200,
+      "dto": "ChangesResult",
+      "category": "moderation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "queue.first",
+      "status": 200,
+      "dto": "QueuePage",
+      "category": "queue",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "queue.next",
+      "status": 200,
+      "dto": "QueuePage",
+      "category": "queue",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "queue.filtered",
+      "status": 200,
+      "dto": "QueuePage",
+      "category": "queue",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "queue.recovered",
+      "status": 200,
+      "dto": "QueuePage",
+      "category": "queue",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "audit.first",
+      "status": 200,
+      "dto": "AuditPage",
+      "category": "audit",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "audit.filtered",
+      "status": 200,
+      "dto": "AuditPage",
+      "category": "audit",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "stats.before",
+      "status": 200,
+      "dto": "Stats",
+      "category": "stats",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "stats.concurrent",
+      "status": 200,
+      "dto": "Stats",
+      "category": "stats",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "stats.after",
+      "status": 200,
+      "dto": "Stats",
+      "category": "stats",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.access-expired",
+      "status": 401,
+      "dto": "Error",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.family-expired",
+      "status": 401,
+      "dto": "Error",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.old-access-revoked",
+      "status": 401,
+      "dto": "Error",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.refresh-replay",
+      "status": 401,
+      "dto": "Error",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.family-revoked",
+      "status": 401,
+      "dto": "Error",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.lost-refresh-replay",
+      "status": 401,
+      "dto": "Error",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.lost-refresh-old-access",
+      "status": 401,
+      "dto": "Error",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "session.after-logout",
+      "status": 401,
+      "dto": "Error",
+      "category": "session",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "isolation.suspended",
+      "status": 403,
+      "dto": "Error",
+      "category": "isolation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "isolation.contributor-queue",
+      "status": 403,
+      "dto": "Error",
+      "category": "isolation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "isolation.revoked-role",
+      "status": 403,
+      "dto": "Error",
+      "category": "isolation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "moderation.expired-receipt",
+      "status": 409,
+      "dto": "Error",
+      "category": "moderation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "moderation.conflict",
+      "status": 409,
+      "dto": "Error",
+      "category": "moderation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "moderation.mismatch",
+      "status": 422,
+      "dto": "Error",
+      "category": "moderation",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "policy.detail-denied",
+      "status": 503,
+      "dto": "Error",
+      "category": "policy",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "error.outage",
+      "status": 503,
+      "dto": "Error",
+      "category": "error",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "error.timeout",
+      "status": 503,
+      "dto": "Error",
+      "category": "error",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "error.not-found",
+      "status": 404,
+      "dto": "Error",
+      "category": "error",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "wire.legacy-decision",
+      "status": 400,
+      "dto": "Error",
+      "category": "wire",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "queue.cursor-tamper",
+      "status": 400,
+      "dto": "Error",
+      "category": "queue",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "queue.cursor-account",
+      "status": 400,
+      "dto": "Error",
+      "category": "queue",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "queue.cursor-filter",
+      "status": 400,
+      "dto": "Error",
+      "category": "queue",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "queue.legacy-cursor",
+      "status": 400,
+      "dto": "Error",
+      "category": "queue",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "queue.cursor-expired",
+      "status": 400,
+      "dto": "Error",
+      "category": "queue",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "audit.cursor-scope",
+      "status": 400,
+      "dto": "Error",
+      "category": "audit",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "wire.numeric",
+      "status": 400,
+      "dto": "Error",
+      "category": "wire",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "wire.submission-zero",
+      "status": 400,
+      "dto": "Error",
+      "category": "wire",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "wire.overflow",
+      "status": 400,
+      "dto": "Error",
+      "category": "wire",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "wire.underflow",
+      "status": 400,
+      "dto": "Error",
+      "category": "wire",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "wire.unknown",
+      "status": 400,
+      "dto": "Error",
+      "category": "wire",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "wire.wrong-charset",
+      "status": 400,
+      "dto": "Error",
+      "category": "wire",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "wire.unknown-login",
+      "status": 400,
+      "dto": "Error",
+      "category": "wire",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "wire.unknown-query",
+      "status": 400,
+      "dto": "Error",
+      "category": "wire",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "wire.int8-max-result",
+      "dto": "ApproveResult",
+      "status": 201,
+      "category": "wire",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "wire.int8-max-read",
+      "dto": "Comparison",
+      "status": 200,
+      "category": "wire",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "wire.int8-max-overflow",
+      "dto": "Error",
+      "status": 409,
+      "category": "wire",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "queue.live-first",
+      "dto": "QueuePage",
+      "status": 200,
+      "category": "queue",
+      "origin": "real-http-postgresql-required"
+    },
+    {
+      "id": "queue.live-next",
+      "dto": "QueuePage",
+      "status": 200,
+      "category": "queue",
+      "origin": "real-http-postgresql-required"
+    }
+  ]
+}

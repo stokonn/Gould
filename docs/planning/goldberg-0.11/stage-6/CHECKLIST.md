@@ -1,3 +1,70 @@
+## Stage6/7B executable integration readiness — LOCAL ACCEPTANCE VERIFIED (2026-10-24)
+
+**Purpose/scope:** maintained canonical shared fixtures, actual HTTP/PG behavior,
+source-pinned consumer compatibility, isolated actual Kotlin JVM replay and measured
+query bounds. Stage6 branch `feature/goldberg-0.11-stage-6-api-v1-local`; recovered
+published baseline `a3fb7e2f1436c93b49a0f4f0596d8d06e241fcef`. Stage7B inspected
+read-only at `0887d3fe33cf5d49d46e14e1de95168f08a493a2`; its source/acceptance intact.
+
+- [x] Recover actual branch/remote/checkpoints/O1–O8/Issue31/private PMP and inspect
+  actual Admin API/Models/WireValues/Repository/Review/Session/Queue/Audit/Stats.
+- [x] Implement versioned `contracts/admin/shared/v1`:66 actual HTTP scene fixtures,
+  canonical schema references, consumer source/history pins, executable local
+  session/reconfirmation reference and34 independently checked compatibility rows.
+- [x] Compile four unmodified selected actual Kotlin sources into/tmp;22 replay
+  probes PASS:12 compatible/10 incompatible. Full matrix:12 VERIFIED COMPATIBLE,
+  12 VERIFIED INCOMPATIBLE (including2 explicit static contradictions),7 NOT EXECUTED,
+  2 BLOCKED BY OWNER/POLICY,1 NOT APPLICABLE. No Android runtime claim.
+- [x] Backend accepts explicit UTF8 JSON charset; no legacy DTO/revision aliases.
+  Measured queue optimization bounds header page before payload joins; all filters,
+  ordering/snapshot/lock semantics preserved. No schema/index/migration change.
+- [x] Final `results/http-pg/pg-ojxz4mbi`: **490 Node bodies PASS**,0 failures/skips/
+  cancellations: all469 baseline bodies plus20 shared HTTP/PG and1 query-plan body.
+  Existing realHTTP/PG37, full-int8 coverage, auth/T22/concurrency/replay/rollback
+  retained.66 actual fixture responses validate before synthetic-token redaction;
+  2 actual response streams destroyed to verify loss recovery.39 existing read and
+  22 Comparison captures still match schema.
+- [x] Current DTO61 expectations PASS (37 positive/24 negative), historical18 design/
+  17 security-evidence tests on original snapshot and current parser11 PASS; policy,
+  three backup fixtures, static ACL proposal and whitespace PASS. Historical pin on
+  evolved current handlers remains EXPECTED FAILURE, not reclassified PASS.
+- [x]196 source/test/input files plus separate integration manifest unchanged through
+  execution and independently verified; original full-int8 manifest unchanged.
+  Exact synthetic container/volume removed and independently probed absent.
+- [x]5000-row actual-query EXPLAIN: five variants,5s timeout, page≤20/SQL21;
+  revision work≤21. Default/keyset samples2.877/2.871ms vs13.148/13.368ms before.
+  Header scans/statistics remain scaling limits; no production/free-tier budget claim.
+- [x] Exact consumer request/session/conflict/metadata/freshness handoff, G1–G11,
+ 34-row matrix and gated concrete /v2 migration proposal prepared. External/deployed
+  consumer state UNKNOWN; no public version selection/activation/freeze.
+- [ ] Scoped commit/push, exact remote/source identity and final GitHub CI receipt.
+
+**Source-set SHA256:**
+`ddffb491f5e99f1db6bd20673312be888b8b4f846d30038d15fdcad2eea2a9c0`.
+**Commands/results:** `python3 spikes/stage6-api-v1-local/build-current-provenance.py`,
+`python3 spikes/stage6-api-v1-local/run-http-postgres.py`, then
+`python3 spikes/stage6-api-v1-local/verify-http-pg.py spikes/stage6-api-v1-local/results/http-pg/pg-6ape0ubv`
+all PASS/exit0. Selected Kotlin replay is integrated by `consumer-compatibility.py`;
+independent scene/matrix/plan verification by `verify-shared-contract.py`.
+Full handoff: `docs/planning/goldberg-0.11/stage-6/INTEGRATION-READINESS.md`.
+
+**Completion:** local foundation passed acceptance; publication/CI pending. Stage6
+and Stage7B remain OPEN/IN PROGRESS; G1–G9/G11 consumer adoption, owner version/real
+policy, client lifecycle/UI and hosted/legal/operational gates remain open. G10
+CLOSED for disabled production transport/actions. C4 **8 PASS/19 PARTIAL/6 OPEN**,
+6.0f unchecked,6.12 PARTIAL,6.17 NOT FROZEN. No production/OAuth/real-user/device/
+ADB/other-worktree/main merge/release/deploy. No local Android build/APK/signing/
+instrumentation/screenshots; isolated Kotlin JVM replay is not Android runtime.
+Failed/intermediate raw evidence and private PMP preserved; original two untracked
+M2/M3 directories retained. Next: publish verified local source and inspect exact-SHA
+CI; then only separately authorized remaining adoption/owner/hosted work.
+
+created by stokonn with love <3
+
+---
+
+Earlier checkpoints below retain their recorded source scope.
+
 ## Stage 6 full-int8 — LOCAL ACCEPTANCE VERIFIED (2026-10-24)
 
 Purpose/scope: recover and complete the interrupted, owner-authorized shared

@@ -5,3 +5,6 @@ spikes/stage6-api-v1-local/results/http-pg/pg-c9rg4x5v/http-postgres.tap -whites
 
 # Retain the interrupted full-int8 operations failure byte-for-byte (lines29/31).
 spikes/stage6-api-v1-local/results/http-pg/pg-t9tcc9wr/operations-pg.tap -whitespace
+
+# Preserve the diagnosed initial shared-fixture failure byte-exact (Node blank lines).
+spikes/stage6-api-v1-local/results/http-pg/pg-d8h0hv95/shared-contract.tap -whitespace
