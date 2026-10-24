@@ -97,7 +97,7 @@ import org.json.JSONObject
             FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 listOf(R.string.stage7b_comparison,R.string.stage7b_details,R.string.stage7b_history,R.string.stage7b_evidence).forEachIndexed { index,label ->
                     FilterChip(tab == index,{ tab = index },{ Text(L.s(label)) },
-                        modifier = Modifier.semantics { contentDescription = L.s(label) })
+                        modifier = Modifier.semantics(mergeDescendants = true) { contentDescription = L.s(label) })
                 }
             }
             when (tab) {

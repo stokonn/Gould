@@ -75,7 +75,7 @@ internal object AdminPalette {
             FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 listOf("all", "pending", "needs_info", "re_review", "deferred").forEach { key ->
                     FilterChip(filter == key, { filter = key }, { Text(queueFilterLabel(key)) },
-                        modifier = Modifier.semantics { contentDescription = queueFilterLabel(key) })
+                        modifier = Modifier.semantics(mergeDescendants = true) { contentDescription = queueFilterLabel(key) })
                 }
             }
             val results = when (val search = state.search) {

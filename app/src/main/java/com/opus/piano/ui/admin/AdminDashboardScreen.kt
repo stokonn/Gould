@@ -110,7 +110,9 @@ private const val SCROLL_FALLBACK_FONT_SCALE = 1.3f
         // Fill remaining space on the fixed layout so the footer sits at the bottom;
         // inside the scroll fallback (unbounded height) this would collapse to 0.
         if (!scrolling) Spacer(Modifier.weight(1f))
-
+        
+        // Ensure the footer is always reachable even in scroll fallback; 
+        // avoid pushing it off-screen by not wrapping it in a fixed-height container if scrolling.
         DashboardFooter(
             updatedAt = stats?.updatedAt ?: 0L,
             loading = loading,

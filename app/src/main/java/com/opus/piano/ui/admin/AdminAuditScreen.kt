@@ -52,7 +52,7 @@ import kotlinx.coroutines.launch
             FlowRow(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
                 listOf("all" to R.string.stage7b_all,"mine" to R.string.stage7b_my_actions,"moderation" to R.string.stage7b_moderation).forEach { (key,label) ->
                     FilterChip(filter==key,{filter=key},{Text(L.s(label))},
-                        modifier=Modifier.semantics { contentDescription = L.s(label) })
+                        modifier=Modifier.semantics(mergeDescendants = true) { contentDescription = L.s(label) })
                 }
             }
             val visible=service.filtered(query,filter,principal)
