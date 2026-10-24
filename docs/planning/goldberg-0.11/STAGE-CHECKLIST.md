@@ -2068,3 +2068,32 @@ without activating an unapproved API mapping or production service.
 **Verification:** compatibility and ACL checks are executed with the batch
 test results; no Stage 7B files, hosted services, Android devices, or live
 databases were touched. Status remains **in progress**.
+## Stage 6 local API contract hardening — VERIFIED LOCALLY (2026-10-24)
+
+**Purpose:** implement independently testable, fail-closed API contract
+primitives without activating the provisional `/v1` surface.
+
+**Scope:** local API statistics/time-zone and query validation helpers plus
+synthetic tests; no HTTP listener, deployment, hosted database or Android
+transport.
+
+- [x] Derive Europe/Prague civil-day windows with UTC six-digit timestamps.
+- [x] Verify ordinary, spring-DST and autumn-DST windows against the approved
+  fixture corpus.
+- [x] Implement NFC-normalized, case-insensitive, diacritic-sensitive literal
+  search.
+- [x] Validate bounded queue filters and exact audit vocabulary/ranges.
+- [x] Reject unknown, unsafe, malformed and ambiguous query inputs.
+- [x] Run local API and policy/design checks: 115/115 API tests passed.
+- [ ] Implement queue/audit DTO projections and statistics aggregation only
+  after owner-approved source fields and snapshot semantics are available.
+
+**Verification:** `npm test --silent` passed 115/115; targeted statistics tests
+passed 4/4; policy, backup fixture, ACL proposal, design fixture and whitespace
+checks passed. No HTTP/PG/Android runtime acceptance was claimed.
+
+**Completion:** local contract-hardening substage verified; Stage 6 remains
+incomplete because `/v1` compatibility, hosted/security/legal/operational and
+G1–G9/G11 gates remain open.
+
+created by stokonn with love <3

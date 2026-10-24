@@ -2324,3 +2324,21 @@ New executable checks:
 
 These checks do not close HTTP, Android runtime, hosted, C4, 6.0f, or owner
 approval gates.
+## Stage 6 local API contract hardening — 2026-10-24
+
+| Check | Result |
+|---|---|
+| `cd spikes/stage6-api-v1-local && node --test tests/statistics.test.mjs` | PASS; 4/4 |
+| `cd spikes/stage6-api-v1-local && npm test --silent` | PASS; 115/115 |
+| `python3 contracts/admin/v1/decision-proposal/verify.py` | PASS |
+| `python3 scripts/check_agent_policy.py` | PASS |
+| `python3 scripts/check_backup_fixtures.py` | PASS |
+| `python3 scripts/check_stage6_acl_proposal.py` | PASS |
+| `git diff --check` | PASS |
+
+The new tests cover all four approved Prague windows, including 23-hour spring
+and 25-hour autumn DST days, ten literal search fixtures, bounded queue
+filters, allowlisted audit actions and malformed/reversed ranges. This remains
+host-level synthetic evidence, not HTTP/backend or production acceptance.
+
+created by stokonn with love <3

@@ -2310,3 +2310,20 @@ classification, session identity, cursor dialects, dual revisions, numeric
 precision, and G1–G11 status. Added `scripts/check_stage6_acl_proposal.py` to
 fail closed on destructive or unguarded ACL proposal changes. No mapping,
 HTTP listener, Android transport, or production security change was enabled.
+## Stage 6 local API contract hardening — 2026-10-24
+
+Added `src/statistics.mjs` and `src/query.mjs` under the inactive local API
+adapter. Prague civil-day windows are derived from server-local midnight and
+cover 23/24/25-hour DST days; timestamps use six-digit UTC precision. Literal
+search is NFC-normalized, case-insensitive and diacritic-sensitive. Queue and
+audit query validators enforce bounded, allowlisted filters and fail closed on
+unknown, malformed or unsafe input. These helpers do not expose `/v1`, start a
+listener, or imply owner approval of public fields.
+
+The local API suite now passes **115/115**, including four new tests. Design,
+policy, backup-fixture and whitespace checks also pass. Queue DTO projection,
+audit snapshot export and statistics aggregation remain blocked until the
+approved source fields and snapshot semantics are available; `/v1` remains
+inactive/version-conditional.
+
+created by stokonn with love <3

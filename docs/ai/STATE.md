@@ -2270,3 +2270,18 @@ C4 remains **8 PASS / 19 PARTIAL / 6 OPEN**.
   guards, rollback guidance, and destructive-operation rejection.
 - [ ] Owner decisions, HTTP/backend integration, hosted evidence, C4/6.0f and
   G1–G9/G11 remain open.
+## Stage 6 local API contract hardening — 2026-10-24
+
+- [x] Add synthetic-only Prague civil-day/DST window calculation and six-digit
+  UTC wire formatting.
+- [x] Add NFC/case-insensitive/diacritic-sensitive literal search semantics.
+- [x] Add bounded allowlisted queue and audit query validation with fail-closed
+  rejection of unsupported filters.
+- [x] Run the expanded local API suite: **115/115 PASS**.
+- [ ] Keep queue/audit DTOs, statistics aggregation and `/v1` activation
+  blocked pending owner-approved fields, snapshot semantics and compatibility.
+
+This is local contract hardening only. No listener, deployment, production
+database, OAuth, Android transport or cloud resource was used.
+
+created by stokonn with love <3
