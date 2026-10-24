@@ -1,0 +1,60 @@
+{
+  "source": "dc60e8379114b44f758e0bb5184a0b6b83d7a465",
+  "archives": [
+    {
+      "id": 12556611238,
+      "archive": "/tmp/opencode/run-40083355927/accept.zip",
+      "sha256": "849fe2d34a4d19a5f841c78695a3369294e4bb2bdec005ae958fa7b5509a6fb4",
+      "members": 37,
+      "integrity": "PASS"
+    },
+    {
+      "id": 12555758828,
+      "archive": "/tmp/opencode/run-40083355927/instr.zip",
+      "sha256": "4b6b7ae9c439c1196247c923d1d1fd6480dfb4d152d46203a7cdbc6eccaa4137",
+      "members": 695,
+      "integrity": "PASS"
+    }
+  ],
+  "junit": {
+    "tests": 187,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 2
+  },
+  "failureDetails": [
+    {
+      "test": "renderApprovedAdminMatrixAndRetainAccessibilityTrees",
+      "message": null,
+      "body": "java.lang.AssertionError: standard/en/Light/1.0: null\nstandard/en/Dark/1.0: null\nstandard/cs/Light/1.0: null\nstandard/cs/Dark/1.0: null\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.opus.piano.Stage7bAcceptanceTest.renderApprovedAdminMatrixAndRetainAccessibilityTrees(Stage7bAcceptanceTest.kt:426)\n"
+    }
+  ],
+  "pngFiles": 170,
+  "treeFiles": 171,
+  "matrix": "standard/en/Light/1.0: null\nstandard/en/Dark/1.0: null\nstandard/cs/Light/1.0: null\nstandard/cs/Dark/1.0: null",
+  "personalCollectionsEqual": 12,
+  "databases": [
+    {
+      "database": "before",
+      "version": 8,
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "foreignKeyViolations": 0
+    },
+    {
+      "database": "after",
+      "version": 10,
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "foreignKeyViolations": 0
+    }
+  ],
+  "downloadedAgain": false,
+  "limits": "Failed matrix is historical evidence only; no final acceptance. Original ZIPs preserved at listed paths; complete extracted upgrade retained locally in raw-upgrade."
+}

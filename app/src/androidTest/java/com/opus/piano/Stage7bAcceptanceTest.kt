@@ -335,7 +335,10 @@ class Stage7bAcceptanceTest {
                                             var target = row()!!
                                             while (!target.isClickable && target.parent != null) target = target.parent
                                             assertTrue(target.performAction(AccessibilityNodeInfo.ACTION_CLICK))
-                                            waitUntil { tree().any { it.text?.toString() == L.s(R.string.stage7b_review_proposal) } }
+                                            waitUntil {
+                                                tree().any { it.text?.toString() == L.s(R.string.stage7b_review_proposal) } &&
+                                                    fixture.repo.review.state.value.verified && fixture.repo.review.state.value.detail?.id == "sub_1"
+                                            }
                                             click(L.s(R.string.msg_back_b52b))
                                             waitUntil {
                                                 val current = tree()
@@ -371,6 +374,15 @@ class Stage7bAcceptanceTest {
                                         for ((tabName,tabLabel) in listOf("details" to R.string.stage7b_details,"history" to R.string.stage7b_history,"evidence" to R.string.stage7b_evidence,"comparison" to R.string.stage7b_comparison)) {
                                             click(L.s(tabLabel)); capture("$id-proposal-tab-$tabName")
                                         }
+                                        // Actual row navigation reviewed revision1 before the
+                                        // stale-queue fixture advanced to revision2. Respect the
+                                        // real re-review gate before exercising confirmations.
+                                        assertTrue("Changed revision bypassed re-review at $id", fixture.repo.review.state.value.reReview)
+                                        val revision = fixture.repo.review.state.value.detail!!.revision
+                                        click(L.s(R.string.stage7b_ack_revision, revision))
+                                        click(L.s(R.string.stage7b_complete_re_review))
+                                        waitUntil { fixture.repo.review.state.value.verified && !fixture.repo.review.state.value.reReview }
+                                        capture("$id-re-review-acknowledged")
                                         for (decision in AdminDecision.entries) {
                                             runBlocking { fixture.repo.review.prepare(decision) }
                                             assertNotNull(fixture.repo.review.state.value.confirmation)

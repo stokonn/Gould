@@ -1,0 +1,4 @@
+standard/en/Light/1.0: null
+standard/en/Dark/1.0: null
+standard/cs/Light/1.0: null
+standard/cs/Dark/1.0: null

@@ -1,0 +1,4394 @@
+[
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/TEST-emulator-5554 - 16-_app-.xml",
+    "bytes": 44768,
+    "sha256": "9208f7eb9a6f9344547f68b167c4efadf6d9f34058bd09ada3b52401c1a89dcb"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/aapt.1.ok.txt",
+    "bytes": 5960,
+    "sha256": "3c02f1f09cfc335f59db7365e511942df4b5d0564c239c0034d44eb6f7837e32"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/aapt.2.ok.txt",
+    "bytes": 1656,
+    "sha256": "2562344752e7e9461d67756b5d68cf98624ffb169a249fa17591efaecb35220e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/cpuinfo",
+    "bytes": 1663,
+    "sha256": "0561ce9efc7ee2c27d2d3df49cc522791d53e3f1a4338e3ef5b609a69ebbd963"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/device-info.pb",
+    "bytes": 115,
+    "sha256": "eb397c1e4a13d3c808c4b7c0bfc75c38301b937ac4b38d3e2933fe81252da7ed"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.AppLanguageTest-languageOverrideUsesAppCompatAndCanReturnToSystem.txt",
+    "bytes": 736420,
+    "sha256": "21088521fcaf00623b68925801dd9223e993ecc096926c319663ffa1cb19ee0d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.CatalogDatabaseTest-importsAreIdempotentAndSameTitlesFromDifferentComposersStayDistinct.txt",
+    "bytes": 60939,
+    "sha256": "ee4a9966cef7f0d8b1eb6a1ef7f840d380f81904b429242841b08abba5ef1ed8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.CatalogDatabaseTest-migrationPreservesVersionOneRepertoireAndSessions.txt",
+    "bytes": 198326,
+    "sha256": "80bd1a73fdd1eded18a6f8823287b972c7379c17082ef81ada3858d13b894e7c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.DatabaseTest-repertoireCrudAndHistorySurviveReopening.txt",
+    "bytes": 49834,
+    "sha256": "0bfa6f42426666694642f9847b9a8aed55142592b586d8564adb4c596b855c87"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.DiscoverNavigationTest-realDiscoverEntryRetainsTransientQueryAcrossDetailAndBack.txt",
+    "bytes": 874801,
+    "sha256": "c074cba6fa16fdbd458a4a9306d5d0bcfef432b792ee8c61fadb45134b25c592"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.ExperiencePersistenceTest-savedInterpretationsRetainDatesAndPreferenceAndSupportEditsAndRemoval.txt",
+    "bytes": 42645,
+    "sha256": "8d1801385cc5f9da5a4014e9969bd8b2767554d73dd5c03ba382273eac18e2e9"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.ExperiencePersistenceTest-upgradeFromV2RetainsCatalogueHistoryAndFirstVerifiedUnlockAcrossRestart.txt",
+    "bytes": 82225,
+    "sha256": "e1fecbe84b3c498f3f72f323721cb01f88108e9698348824cae82e826b88f9d3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Goldberg08MigrationTest-schemaFiveMigrationKeepsHistoryAndSkipsOnboarding.txt",
+    "bytes": 33427,
+    "sha256": "7f62380e3de0ef6e7a5785398c9f380e0139832d99afbf699c76c115845bdb4d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.GoldbergPersistenceTest-multiplePiecesReopenAndBackupRestoreIntoExistingJournalIsIdempotent.txt",
+    "bytes": 296410,
+    "sha256": "832631c46b6aeb67ff78da9748d652005dfec9961a202db83afe671ae3a62db1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.GoldbergPersistenceTest-opus05UpgradePreservesIdsNotesHistoryUnlocksAndLinks.txt",
+    "bytes": 29896,
+    "sha256": "7d527fce9bfb77f2f79f2966463778a4caf08048cdaf3647db355d2311ef76f5"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.GoogleIdentityPersistenceTest-googleAvatarDecodePreservesSmallImagesAndBoundsLargeImages.txt",
+    "bytes": 12313,
+    "sha256": "b5a8093ae26e616a8f1bc9f9f9ade3c3d446de5445e1fc47f910225e9b9f7f5a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.GoogleIdentityPersistenceTest-manualAvatarChoiceSurvivesIdentityRepositoryRestart.txt",
+    "bytes": 1395,
+    "sha256": "6ba3457bd28daf1885be30c97b1083225799bcfcb89d5bee5a728cd2ceb78aff"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.NavigationRegressionTest-searchProfileSettingsAndRepeatedTabSwitchesKeepBackStackCorrect.txt",
+    "bytes": 248464,
+    "sha256": "b2af109bf76f9d3fec3da333ba2ff4c7b86dbcbcebade7449f2f23316809f68a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.NavigationRegressionTest-homeOverviewKeepsProfileSettingsAndSearchBackStacksCorrect.txt",
+    "bytes": 248699,
+    "sha256": "4a79ae27ff53e8d26f2368fbe78c573dcdf120609f760210962b091e302fd70e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeCoordinatorTest-failedRestoreKeepsThePausedDraft.txt",
+    "bytes": 495,
+    "sha256": "654c494f10e6f6de28379a888e5332fecb609a608b66a5b8f45eae01c65faaa5"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeCoordinatorTest-obsoleteCaptureCannotInterruptAResumedManualSession.txt",
+    "bytes": 11753,
+    "sha256": "833630e630f7f5a75d3d700829e2d25f49a35e95d7c2dbc38bd9aeb67da56046"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeCoordinatorTest-reconnectingObserversNeverStartsOrDuplicatesTime.txt",
+    "bytes": 27042,
+    "sha256": "5180f6ac3a8166fa7af4a9bdd3c786f7038ce4ef1277340f63391ce3c798b301"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeRecoveryTest-durableDraftCompletesOnceAndRoundTripsNewBackup.txt",
+    "bytes": 29850,
+    "sha256": "de7c88b26c495d7e4c05e2b7db0b835569812cfd379c0e189bc5d0e68a0eb759"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeRecoveryTest-oldBackupImportsAndDeviceStateDoesNotTravel.txt",
+    "bytes": 60974,
+    "sha256": "cf8a3b1bbdd515032b3699f14a718c4397490b5f48a620679af81714a84679e4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeServicePolicyTest-serviceIsPrivateAndApplicationContextCannotStartMicrophone.txt",
+    "bytes": 406,
+    "sha256": "04b3df9fdd813eb09026990936103e2793ca514f9da2f8af9e4b4a7f960882e5"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.PracticeServicePolicyTest-staleNotificationActionsNeverStartRecording.txt",
+    "bytes": 401,
+    "sha256": "7495d05bd5fe745b8a8dc8efb6aebb41cedf939afbf588e3ed06bf6c8b3b3521"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.ProfileCompatibilityTest-restore060FormatIntoExistingJournalAndKeepProfileAcrossThemeChanges.txt",
+    "bytes": 52279,
+    "sha256": "82305e67283f577649d948f6753ee94389e50abd45e38060f3f21b558ac773ce"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Quality092PersistenceTest-dailyQuoteRequestsOnceAndOfflineFallbackSurvivesRestart.txt",
+    "bytes": 305,
+    "sha256": "02d050582570cb4f2919ea9571266fc9bebc62ef9e68b42c8794a499645d7962"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Quality092PersistenceTest-formatTwoSchemaSixBackupKeepsAllOriginalFieldsAndAddsSafeDefaults.txt",
+    "bytes": 9025,
+    "sha256": "f7c8abc3544d9cd3dfedce71b52408f35ff61efe1f82f30d4cecfbbda2d1045e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Quality092PersistenceTest-mediaConsentCacheOfflineFailureAndRevocationAreEnforced.txt",
+    "bytes": 530,
+    "sha256": "6340e86389d898e3f8afa5cbcd517e0c1f58b2a451c9b7c4b8116d9930846241"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Quality092PersistenceTest-personalizationAndOriginalRecoveryArchiveRoundTripWithoutTouchingJournal.txt",
+    "bytes": 3545,
+    "sha256": "a75714d9bcb03c147d4cec47470fdba05adbdfcb5f98c27eae1bfc019274b723"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Redesign010PersistenceTest-favoritesRemainIndependentOfFeaturedArtistAndSurviveBackup.txt",
+    "bytes": 19347,
+    "sha256": "df4ea1d14e420980f5b611d764be400377660020df844454ae44d468eb4cafca"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Redesign010PersistenceTest-legacyRecordAndNotesSurviveAssociationAndBackupRoundTrip.txt",
+    "bytes": 14735,
+    "sha256": "421a6fcd15b8c352a3c63f5ff7d5514febb1ea0069628d5e31e757551c19db0b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Redesign010PersistenceTest-omittedPieceIsIdempotentUntimedAndDoesNotChangeOriginalJournal.txt",
+    "bytes": 8106,
+    "sha256": "32ea9e20f8cb72c1ba0eb02057c0894e4757031f6434d350488cb19cfe1c4836"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Redesign010PersistenceTest-missingOrAlreadyMeasuredPieceCannotBecomeAnotherCredit.txt",
+    "bytes": 2569,
+    "sha256": "50730be33d41bc63a685a5971954ec57df4397eeb151e6b37d5fc7edae8accf8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Redesign010PersistenceTest-schemaSevenMigrationPreservesEveryFixtureFieldAndUnfinishedDraft.txt",
+    "bytes": 41169,
+    "sha256": "19de3437185764695dd10538a7921cbc427c39d74de97a24d6fc3f6bbd363e7e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.RedesignPersistenceTest-appearancePersistsAndResetNeverTouchesPersonalDatabase.txt",
+    "bytes": 3999,
+    "sha256": "bd0d25f98a1d0d3ec33781928a4e4983d02e1a2fad3deae0124967ed0a0a374e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.RedesignPersistenceTest-czechPluralResourcesAndEnglishFallbackAreRealAndroidResources.txt",
+    "bytes": 856,
+    "sha256": "2cb2c0f2189636bf7e46a6c045f0262263d2e84947193ab45d676475dc668cdf"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.RepertoireSearchPrivacyTest-privateSavedFilteringAndClearingNeverCallsHttpOrChangesOnlineQueryState.txt",
+    "bytes": 60943,
+    "sha256": "cb5e5495e71a70a1c80363475ba901a758e7fd5462fa872653f4818c0bd9b6e3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.SmartCachePersistenceTest-clearingDownloadsPreservesJournalCatalogueUnlocksAndPreferences.txt",
+    "bytes": 14774,
+    "sha256": "907e3401742fe22b5801d446cb57cfe60fff52ab5444cb30f0a3261e616c5238"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.SmartCachePersistenceTest-freshCatalogueAvoidsRequestsAndExpiredCatalogueRemainsAvailableOffline.txt",
+    "bytes": 6496,
+    "sha256": "591d799635fc6e031f5f678cb77678a2e5d795dcf7f3d0cf735d7aa3b84888d0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.SmartCachePersistenceTest-schemaFourBackupGainsDefaultsAndKeepsExistingShowcaseAndDates.txt",
+    "bytes": 35047,
+    "sha256": "8bbde41581afb277ebea7226b23c039b6d11a327b4bffc28d392b43b40f2b401"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.SmartCachePersistenceTest-upgradeActualSchemaFourAndReopenWithoutLosingProfileOrHistory.txt",
+    "bytes": 26169,
+    "sha256": "38457c34322c1ca87f070a610281f8f5f68aea83e322b5b70c29e13cb9e80b97"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aBackupTest-historicalReadersAndV4WriterKeepFieldsAndNoStaleLocalAnchors.txt",
+    "bytes": 261077,
+    "sha256": "34ca3bfa2517a0c71e1e2f7e007618ed30077fc7c05d5325067acf26652888d0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aBackupTest-legacyRestorePreservesUnfinishedRecoveryWithoutChangingBytes.txt",
+    "bytes": 109729,
+    "sha256": "e99c74b045a3d1d269f6b2b71523d1835ea3bce1cce1e7e5d046f5ef5d90c84e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aCatalogueTest-authoredMultiGenreFixtureAndTypedRelationships.txt",
+    "bytes": 5915,
+    "sha256": "6c1c43949d6b05ebf0270b1fed3f4e6749737aa4ce950f9d49c1a4b2d81abd8c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aCatalogueTest-catalogueFailureDeletionRebuildAndJournalOffline.txt",
+    "bytes": 58987,
+    "sha256": "f22c65a56a53315bc2ef026a3eb4872080ff1d45c7c5285c54d8c8993515fa9b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aCatalogueTest-interruptedCopyAndRepeatedInitialization.txt",
+    "bytes": 33686,
+    "sha256": "ca9a62bd90655252d6975ea5f621aa40259bfc5a2ae8468f6547ac958b6125dc"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aCatalogueTest-provenanceAndRightsDefaultDeny.txt",
+    "bytes": 2704,
+    "sha256": "35d76e4d0c9f408800420f4b98a823494e252b03bb2c4a22657d63c9458a0351"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aCatalogueTest-reversibleEvidenceMappingAndRedirects.txt",
+    "bytes": 5604,
+    "sha256": "941c0667127ba37ac062ac65e7e9bf046762888f1ba5c96e9d9dcd48e5cb6c83"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-failureRollsBackPersonalMigration.txt",
+    "bytes": 28872,
+    "sha256": "7965db46ef93231d42f832802425b194e005f9b1ab6e615454d1fa2289f9e204"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema1.txt",
+    "bytes": 4616,
+    "sha256": "4b80ebcb041431ec7e417cf65f17be218ae0d15cbd242136694872a6253aa346"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema2.txt",
+    "bytes": 5704,
+    "sha256": "4335bf1830c2a0d3610c6975b15537deebc5af29eff1dc2040ddca64aee1853f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema3.txt",
+    "bytes": 1034,
+    "sha256": "82b2c293df20caf0ac9247dd724de147b1a3fc77dfebcd8d556327d556582233"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema4.txt",
+    "bytes": 2658,
+    "sha256": "5001d3b7ffbb9ad3cfc39958f0d6b6706e2cc349d2f51833b5dcba65416c3493"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema5.txt",
+    "bytes": 5394,
+    "sha256": "a8255bfd48e81858d6f42669167416d5676b690b24f40a96db97e3a804cf5708"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema6.txt",
+    "bytes": 5893,
+    "sha256": "baa0ccc14d84bb52b7799a018cdc11a60153d3c7b7481db592b6e0666868690f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema7.txt",
+    "bytes": 4171,
+    "sha256": "590916603f84ac20ab5c3b254ffc346c9f425e2b72d103eed4abebdcf88a4d40"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema8.txt",
+    "bytes": 6043,
+    "sha256": "1c350e625ed712e1fe60d49899734f4c362a46b298d953f8f8ce89a42a14f389"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aMigrationTest-schema9PreservesExistingUuidRegistryAndSeedsCompletionEvidence.txt",
+    "bytes": 13078,
+    "sha256": "1e479f9f15c039eb6726bb6148520c35679ed61a96b210d0c1ddf957b200be2e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3aPerformanceTest-boundedQueriesAndJournalPriorityUnderCatalogueLoad.txt",
+    "bytes": 86671,
+    "sha256": "160596bdc8b9d05162fea8b5748118d0af8aa695e7f315a756891045e0359ca9"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-badHashesSectionsReferencesEnumsAndVersionsRejectBeforeReplacement.txt",
+    "bytes": 311,
+    "sha256": "420a5743a73413b1efd5ea62dd383451e0974af1a8e37f6cc30aaa6051d5f7b8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-conflictingEvidenceIdsKeepBothPayloads.txt",
+    "bytes": 255,
+    "sha256": "fc70bd9fd1cc3538d0da2356838493110fe3017e8715783ab38c58f63911b4bf"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-coordinatorReplacementCannotClearTheImportedDraft.txt",
+    "bytes": 277,
+    "sha256": "b37821020c40eb5f2f3197aed534907c8ab273bdd87947e6b5b408481babbac4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-conflictingTokenRetainsBothRecordsAndBlocksAutomaticCredit.txt",
+    "bytes": 295,
+    "sha256": "68d28683bdb536e9a7931692dde2ef4f9aff21fc036d148e8ea29af3dd30e088"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-destinationDraftArchivesAndIdentityContextSurviveReplacement.txt",
+    "bytes": 451,
+    "sha256": "3d99f385cee3222a4a797f5cf38a50edc10290d4d693db59e2c177e8303e5e25"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-destinationIdentityEvidenceSurvivesEvenWithoutDraftsOrArchives.txt",
+    "bytes": 303,
+    "sha256": "c3c105cd5b47641ed9eba02d80720cf7b3c611521a1111f416adb36f44067136"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-duplicateCompletionCannotRemoveAnUnrelatedActiveDraft.txt",
+    "bytes": 285,
+    "sha256": "cced4e3ff96184ff9795dccf2368b5f6bd9c786812dbedefd9ca8521c9c58af9"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-exportIsAtomicOnLowSpaceAndInterruptedWritesAndInputIsBounded.txt",
+    "bytes": 301,
+    "sha256": "0c5b8a49094a5d24887fbc7259b9412ed56a8c69232d809558848450af484c6f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-failureBeforeCommitLeavesDestinationIntactAndAfterCommitReplaysIdempotently.txt",
+    "bytes": 554,
+    "sha256": "159387b6e283257b21688242f9ad9e67e1d72e4cef48dfac7d519b7cef0035fb"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-freshRestoreCannotReuseDeletedOwnerIdsAndAdoptTheirUuid.txt",
+    "bytes": 289,
+    "sha256": "930ed6ab7c334f66c3317581595a60cac177ad7dae24722494c73a8adc0960d7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-fullV5PreservesIdentitiesJournalRawArchivesAndAllowlistedPreferences.txt",
+    "bytes": 315,
+    "sha256": "8d4cc269dd885a08fdd32f08faec59301a3acd81a571a149e70fb99dc2ebb746"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-historicalOneThroughFourRemainReadableAndRetainOriginalFields.txt",
+    "bytes": 378,
+    "sha256": "74b95545a6ef9a98691824e4665ebc7cc46a770f0c115075ebdf13772e71fe74"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-malformedDraftTimingIsPreservedRatherThanInvented.txt",
+    "bytes": 815,
+    "sha256": "7f5b11d593b9036816cd075c67975c53f073c64540d462b6be101a8d241ab864"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-measuredJournalAndLargeRawEvidenceRoundTripWithoutCursorTruncation.txt",
+    "bytes": 14987,
+    "sha256": "6a14a7903a9bf370d2ec521c6451a5762ba2970b273c236917cc4e68d70282ce"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-minimalAndRepeatedRestoreWorkWithoutCatalogueOrAccount.txt",
+    "bytes": 4953,
+    "sha256": "909c4af1220c725db3d2f8a6c0c5f0f9719fe1d774cd161784e49e601ae8c04e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-restoredForeignScopeRebuildsCatalogueAndKeepsCanonicalIds.txt",
+    "bytes": 293,
+    "sha256": "7789b6a8ad80f82664c17842ca1bdf0387ae52506002369c87f669d4045d1abe"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-unreadableBinaryDraftCanBeExportedAndArchivedWithoutRepair.txt",
+    "bytes": 629,
+    "sha256": "39fddb94afb37bd42b50b122758d6595a3113f453ebafa101815da1b2d68a015"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-unstartedNotesAndSelectionRecoverWithoutInventingPracticeCredit.txt",
+    "bytes": 639,
+    "sha256": "a743b0ba7bb62dbe413a82fdf28cb8760446a6a310513803ab95ac215df31b0c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bBackupTest-validDraftRegeneratesExecutionOnlyAndCompletesExactlyOnce.txt",
+    "bytes": 370,
+    "sha256": "072809e8b7f78872bc9e66102e7e9b64db5275d0f271c163862b21bd7e8b8717"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bProcessDeathTest-prepareActualProcessDeath.txt",
+    "bytes": 241,
+    "sha256": "3d0c469010225076003c92f75cdcfd67211a8cf80b6bb936792edb71ea9ca343"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage3bProcessDeathTest-verifyAfterActualProcessDeath.txt",
+    "bytes": 249,
+    "sha256": "6d8c9550e375ac17dbdda8ea4aeac35654405bc3863bc60b4f6f1aa5f98c22d7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-explicitCrossIdEvidenceReconcilesButNamesDoNot.txt",
+    "bytes": 275,
+    "sha256": "14a3cae0adb33fd3ac209e159f56123f4cdf547ad1e4d3376417c2bd9e26a55a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-hostileJsonDepthDuplicateKeysAndOversizeRejected.txt",
+    "bytes": 279,
+    "sha256": "15cac1a65b84fae392b7731bf037145d815223e3952bc387f8833fbc29e43bb0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-openingDiscoverAndOfflineSearchSendNothing.txt",
+    "bytes": 267,
+    "sha256": "2db2a41ef4b65b3b941737702066790ca949fa9028ced24d60d8d5e51ac906eb"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-providerPartialSuccessAndJsonOverloadRemainIndependent.txt",
+    "bytes": 291,
+    "sha256": "e8106eb0c8a05fec5889cbbb3f6294241682fbd6799285c3b1459f93a933fc23"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-repeatedProviderImportKeepsIdentityAndContradictionsWithoutPersonalWrites.txt",
+    "bytes": 329,
+    "sha256": "1ad0b3da013cd4ad214134c17ed043c5186634432f18dfe460f2d5dae8662999"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-repertoireDuplicateAddPreservesUuidManualEditsHistoryAndRawDraft.txt",
+    "bytes": 311,
+    "sha256": "2f7521d8bf7d64abd73e978433ebf5dccf2b7d635096e75756e5619e317c7b41"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4CatalogueTest-stablePagingRejectsOldGenerationAndDoesNotOverlap.txt",
+    "bytes": 281,
+    "sha256": "b0aebf6a5075187f0c9057165952bd02ae075e260c828a762466fe69fc0252bd"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4DocumentTest-detailExposesActualMovementSubtypeWithoutChangingItsIdentity.txt",
+    "bytes": 301,
+    "sha256": "32e74773b4d791ec6603da4ad089507cc12659b5d239bffabee510110a59c520"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4DocumentTest-missingRequestedDocumentFallsBackOnlyToVerifiedEnglishTitleWithItsOwnRevision.txt",
+    "bytes": 489,
+    "sha256": "c0d46d2d747a8890af4c7d693e06fcf99138fabb88ea23f2aa622788169b1f9b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4DocumentTest-missingSelectedLanguageTitleUsesVerifiedFallbackWithoutInventingTranslation.txt",
+    "bytes": 331,
+    "sha256": "5c8f723db57451eb6ef700a37eb9b0eb47a567e39f4617027b6c6dcb7c5180cd"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4DocumentTest-overloadStopsBeforeEnglishAndOfflineNeverSendsAnArticleRequest.txt",
+    "bytes": 305,
+    "sha256": "b83f26a9ab0df923df69e22883f20c9fdff4fd6543daaec615ebd00fdc2ae1ec"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4DocumentTest-unapprovedOrUnsupportedTitleEvidenceCannotTriggerOnlineContentLookup.txt",
+    "bytes": 317,
+    "sha256": "cc977ea50ed4bcdc44b75b3c34ad4431f50ff1e2203371dad61db037ea9612c9"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-activeRedirectsAffectSearchAndDetailAndReversalInvalidatesOldCursors.txt",
+    "bytes": 335,
+    "sha256": "ba0acdd119e217b37a9c1fd16a9b87582ad4846b829f44ccc6928c59e89af366"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-assertionsKeepAllLanguagesAndValuesAndRemainImmutableAfterReopen.txt",
+    "bytes": 327,
+    "sha256": "84c16b6d67a985541bb499ce3f6a0fef0cab02a9ed5b18d60241c67dc8fdba21"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-concurrentReplayIsIdempotentAndCancelledTransactionCannotPublishEvidence.txt",
+    "bytes": 343,
+    "sha256": "0bd3a77919e541e611f5d1bb81471b94cb07eae31973d078163060cae1cf9a5d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-contradictoryClaimRetainsEvidenceAndNeverMergesPreviouslyDistinctArtists.txt",
+    "bytes": 3298,
+    "sha256": "184a5232f64dc096efc2f6c30569feebace32b93ed3069b5aa6959c30fd6d201"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-identicalDocumentBodiesInDifferentEditionsAndEntitiesRetainTheirOwnSources.txt",
+    "bytes": 347,
+    "sha256": "c5555cf9d021e79b3c421b78ddf251b55e02676ec2e670e0c6b94f9e7285449b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-pendingWorkCanBeReplayedAfterItsTypedIdentityArrives.txt",
+    "bytes": 303,
+    "sha256": "3788b27f639c529492f431739816d3a123d698b7eae38a292282c3d89d09094b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-rebuildRetainsAcceptedAssertionsIdentityRevisionsAndRedirectReversal.txt",
+    "bytes": 335,
+    "sha256": "4381ad9fd3772cde348346898133f8143e46fe54b8e650fc2e1e2cca51536662"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4EvidenceLifecycleTest-reverseArtistIntakeConfirmsTheSameIdentityWithoutTitleMatching.txt",
+    "bytes": 323,
+    "sha256": "ca5b0de6237355c216a1c9b15a444617226d4801c3ca26ab91cbddb724ecf85d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ExternalPortraitTest-separatelyAcquiredLicensedOriginalCanBeVerifiedAndRenderedOffline.txt",
+    "bytes": 6076,
+    "sha256": "290ba66d8cfd72aaf3437e95c2dd0f65928f02141574f45fccabb13511fb3e78"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ExternalProviderTest-boundedObservedProviderResponsesPassNativeProjectionAndSearchPaging.txt",
+    "bytes": 4919,
+    "sha256": "af37e5fd775d5e1f5dd6f2e01efc30854b2998ceff8df78ca7e36feb53a2e353"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-aliasesCreditsCatalogueNumbersAndBoundedTypoRetrieval.txt",
+    "bytes": 281,
+    "sha256": "6622ac96125937012c9c823007b12d4c49e8a6ddad3848d7953a1522e98c5ba3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-linkedReleaseTrackProjectionDropsUnknownNestedRightsFields.txt",
+    "bytes": 291,
+    "sha256": "73d5e2f6fc7a23e1a14f79c37bfed56a02727f1f30a3fe039eec6abc2ca34476"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-newRelationshipUsesItsOwnObservationRatherThanTheOriginalIdentitySource.txt",
+    "bytes": 317,
+    "sha256": "740fdc7390126e56f32cf479323d9628ecb03cb396a41d2352a8a8fe66610fdd"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-partsOrderAndRecordingPerformanceAreDifferentEdges.txt",
+    "bytes": 275,
+    "sha256": "92d1d17d0ac5a18e128fcae7fbba3edee30e573776bb3bfd5e99f151d69afac5"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-quarantinedConflictingParentPositionCannotPromoteACompositionToPart.txt",
+    "bytes": 309,
+    "sha256": "4a27ca6b85e651ac8c70e33328f84e6d9d129a085b7c9bffdd5073d2c47d364d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-searchCandidateCannotBeAddedBeforeTypedLookupAndArrangementKeepsIdentity.txt",
+    "bytes": 319,
+    "sha256": "9b5125b9334ce2e7e49319756c08627bd88e84c5c0732e0e31a42fda21a96770"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4GraphTest-streamingLinksAreBoundToRecordingAndExactPlatformDestination.txt",
+    "bytes": 295,
+    "sha256": "14370b43c4d15eee94b473ae96456aa5eda6599f2c09b69d4cccbaee54b8e42b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ObservationCacheTest-legacyRowsAreBoundedAndEvictionCountsSaturateWithoutOverflow.txt",
+    "bytes": 317,
+    "sha256": "b8466c45578991e6b6b85bf54aa520c84af3a2bca5088b0d828dedec2caedfa0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ObservationCacheTest-leastRecentlyAccessedObservationsEvictWithoutTouchingAcceptedRows.txt",
+    "bytes": 327,
+    "sha256": "c7694e99a31f08d18f550fa563e705e86f27d2832dd2a6e9aea6c1e7cb3fabff"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ObservationCacheTest-protectedPrefixesAndOversizedValuesCannotEnterEvictionPath.txt",
+    "bytes": 313,
+    "sha256": "956c31eda85a270415eb174551355c2cbb34496c34e3841ed176d1980e99737a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-externalGenerationChangeRejectsBeforeSendingProviderQuery.txt",
+    "bytes": 384,
+    "sha256": "74d26a75f042e22d6d7e0a6b279261ba8c0e35c0eab7b8ff729d6b83b1c6c939"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-localPagingAndConcurrentContinuationStayBoundedAndNetworkFree.txt",
+    "bytes": 6423,
+    "sha256": "84f09cb65ae4f176b488f367b2299b8dae6e1db1f1957e9df1b461c3aef1cfd8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider.txt",
+    "bytes": 295,
+    "sha256": "9533992bea16d71ce7356ce4e5288ea023875c9afec565d9f6c41bff4fd310b6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-multipleEndpointsAppendAtMostFortyAndPageUnseenLocalRowsWithoutRefetch.txt",
+    "bytes": 317,
+    "sha256": "77feec4f9b1dd6416601fb57b35a30667415e38b724184b55c48c0268539bc12"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-opaquePagingStateExpiresAndEvictsOnlyTransientSessions.txt",
+    "bytes": 285,
+    "sha256": "e286fc13cb532632567c28577b3ceaaa419e40e40889f4073209ba0730a14666"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-providerContinuationReplaysWithoutDuplicatesAndRejectsOtherQueryLanguageCategoryOrGeneration.txt",
+    "bytes": 361,
+    "sha256": "71cc24accb6f09c36499f686ceb9f8788a7714aa6d6c866c08b0aedd140057bf"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PagingTest-revokedNetworkPolicyNeverSendsContinuation.txt",
+    "bytes": 261,
+    "sha256": "39d28bc55d8ecf3e47e94c4e20b6ea728288c293a4c0414eb40bb51b02ba141d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PortraitTest-changedLengthDimensionsMimeOrRevisionNeverPublishesAndFailedRefreshKeepsPriorPortrait.txt",
+    "bytes": 726,
+    "sha256": "1fa6a3a06f7192a19816a297b324f843be2d575d0df7624800adc8aca9471ffc"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PortraitTest-displayedSnapshotRetainsItsOwnAttributionAcrossRefreshAndRejectsUnverifiedCredits.txt",
+    "bytes": 643,
+    "sha256": "805916a9c0e601a799dc9e002d0a1b319d71765bebfe17a511bf5560b779eca9"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PortraitTest-missingConsentBlocksTransferAndInsufficientReserveCannotReplaceSavedPortrait.txt",
+    "bytes": 708,
+    "sha256": "ba12d9da373e1e60ac8aff16420cf8f8fe7c3c05b9e21c41db4fdf3a8507a5f6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4PortraitTest-verifiedOriginalRetainsCreditsAndOfflineReadRejectsTamperedRightsOrBytes.txt",
+    "bytes": 550,
+    "sha256": "597a1a07ab0a33e5d8b71e18b9cf96818f81e5cf7b9f7f1c79aa34a9cf117c59"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-concurrentCallsCoalesceAndCancelledOwnerDoesNotPoisonLaterRequests.txt",
+    "bytes": 3946,
+    "sha256": "b244ee4ff9c1f44759903b6730a1ac60689c6137bc90973850699eebcb4d39aa"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-corruptCacheIsDisposableAndDoesNotHideValidProviderData.txt",
+    "bytes": 9957,
+    "sha256": "0d1b8857de554864278632099545928c22a42d09e78dd0c6ea5656a0a54c0842"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-invalidJsonIsNotRetriedButTransportFailuresRemainUnavailable.txt",
+    "bytes": 311,
+    "sha256": "ff1622ec4ba3198148482b66ecba28e9489fbce3192de8619adfb5edf9a9d593"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-failedRefreshRetainsAcceptedRevisionAndHonorsBackoff.txt",
+    "bytes": 295,
+    "sha256": "00262bd25b59201fcc319cb7c060a1864f9485ee8a0a151314d86f9f1e63b8ac"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-invalidRightsAndJsonErrorsNeverBecomeSuccessfulEmptyContent.txt",
+    "bytes": 309,
+    "sha256": "fdfe5171c816d7e16be3ce194c5fc4711abab1483e2aa323b29fb671fac6c485"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-legacyCacheForcesUnconditionalRefreshAndRejectsUnsolicitedNotModified.txt",
+    "bytes": 329,
+    "sha256": "19af90fdafee7fb5682965216feac0adf1775b949c2496a10dc42cb38ced0a1e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-noStoreDoesNotPersistAndNoCacheRequiresRevalidation.txt",
+    "bytes": 293,
+    "sha256": "a58dc190f81f02ff44b1a7047f7caf07b69d0bc31ea714b6fc51f66f98e0535c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-projectedCacheIsPersistentPrivateBoundedAndConditionallyRevalidated.txt",
+    "bytes": 325,
+    "sha256": "4738a12f6220f18bf40c16577893040d4c6257e632c27a07471445a3fffd813b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4ProviderCacheTest-waitingSuccessorCanTakeOverCancelledOwnerExactlyOnce.txt",
+    "bytes": 295,
+    "sha256": "f741538380883d0591edf70eef5ea3219cb7517a12250347b43f567d7ce83cff"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SafetyTest-arrangementPersonalUuidIsIndependentAndLegacyOpenOpusPieceIsNotDuplicated.txt",
+    "bytes": 323,
+    "sha256": "8bacf9bede463d815556bf69838887cd089e03dc4b989a799f25bc3c23b408e3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SafetyTest-correctionExportContainsOnlyCatalogueEvidenceAndRemainsUnsubmitted.txt",
+    "bytes": 309,
+    "sha256": "ec12ebef99839b570b4a4117659e6674c17d3f148d7fc4196657615c4887efd8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SafetyTest-groupedPartsSnapshotAndExplicitSeparateEntriesNeverCreatePracticeCredit.txt",
+    "bytes": 319,
+    "sha256": "87055d8ee6136fb93323eef53f3d54b2fc3a690eacae1927813a4b1009468cde"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SafetyTest-persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles.txt",
+    "bytes": 293,
+    "sha256": "005fc36ef9be0b602f98229608146c8b57c790f423a222fe1152cd12fd12605a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SafetyTest-portableV5RetainsOptionalLinksGroupedSnapshotsUuidAndRawRecoveryWithoutCatalogue.txt",
+    "bytes": 337,
+    "sha256": "9a80437bc69414b82a53fb02a279df118ab722b7296e87dad8f4978ecbe3cce7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SafetyTest-portraitDecoderRejectsUnsupportedAndOversizedContent.txt",
+    "bytes": 463,
+    "sha256": "92084ac818da72e38c5ab30c4119df10253ada6dc832d7c4729b63b0b1d84491"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SearchVerificationTest-authoredRelevanceNamesakesDiacriticsGenresAndFilters.txt",
+    "bytes": 305,
+    "sha256": "dc542a74f6eab207d5b5927478bd64682add4c43a28bcda235a8c1056160ff6d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SearchVerificationTest-historyIsBoundedOptionalAndIndependentOfJournal.txt",
+    "bytes": 295,
+    "sha256": "77ec539d4f58723e0d525512af25aaea786e47b773a681e6c0f352c4bfabfc18"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SearchVerificationTest-measuredBoundedSearchAtOneTenAndFiftyThousandWithPracticeUnderLoad.txt",
+    "bytes": 1169171,
+    "sha256": "24cca7b69551e6ead00a619c6abe3741ba0a0d11d2ccdbbefb39a3557c5fd840"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4SearchVerificationTest-searchPagesCarryWorkSubtypesForAccurateRowLabels.txt",
+    "bytes": 297,
+    "sha256": "75a959263fbe5f0bb40ffb754ce8d86889eb2df42b39dc00144063dfca2d8f79"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4StorageAdmissionTest-refusedCopyAndRebuildPreserveJournalAcceptedLedgerAndGenerationFiles.txt",
+    "bytes": 333,
+    "sha256": "c5fa5a5662683c23cc6518edaa5363b376125c3f5bf33f223571904b4a815379"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4TransportTest-cancellationClosesBlockingReadWithoutWaitingForSocketTimeout.txt",
+    "bytes": 303,
+    "sha256": "d2d2c7dae0af7c17426c50f23ff82c133e57ac05dc1dbb018c4c77cd87155923"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4TransportTest-oversizedStreamsAndNetworkPolicyRevocationFailBeforeAcceptance.txt",
+    "bytes": 307,
+    "sha256": "9701afcf332b4f6057ee3cc2cd6ac91007f548b9bf19370fc0394a16b90a8ac5"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage4TransportTest-redirectsAndUnexpectedHostsDoNotBecomeContentOrForwardCredentials.txt",
+    "bytes": 313,
+    "sha256": "746561d0bc673062e26d0617e4ad7bc2e0ed039f9555be84657e556ae7bb3288"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle.txt",
+    "bytes": 321,
+    "sha256": "4a6be1575d239dd12d91f874138d8efca6c4713d6dafcb0d74d326d15c3f7abd"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-consentRevocationMidStreamPausesAndKeepsReadyContent.txt",
+    "bytes": 299,
+    "sha256": "8b8c50b9554abf55c248eeb86cf8c04257eb8143066bee9dbec27e895b376548"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-corruptSourceContentNeverReachesReady.txt",
+    "bytes": 269,
+    "sha256": "c2bd661a8b7a88a82d963c35f5e0fa0504e79b374b035614f78969168ab7657d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-corruptStoredBlobIsQuarantinedAndRepairedOnRetry.txt",
+    "bytes": 291,
+    "sha256": "a54c0a3caddd8aef167587c6e06d683db0f39f0bb0f052966fba5e983c1a74d7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-dataSaverPausesEvenWithPerJobConsent.txt",
+    "bytes": 267,
+    "sha256": "25d7e222808e06695d8294c2f108e3bd044594c02d0eabbec2efab3ae9ed4ec3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-futureReaderRequirementQuarantinesInsteadOfRenderingGarbage.txt",
+    "bytes": 313,
+    "sha256": "e37936811e2cbeaef35e5cde34607145b1b244a131fed39e8b6bfe12d0015bff"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-inFlightStatesFromProcessDeathResumeLegally.txt",
+    "bytes": 281,
+    "sha256": "ac0c0dd90aed0bb80a708a6cf62f23384869bb0d1fe787b4265c61dbda65a972"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-interruptedDownloadLeavesRetryableStateAndCompletesOnRetry.txt",
+    "bytes": 311,
+    "sha256": "4ca2b960666aa8de96fbeae7ea55f021eb341e9c770da7b680b71f39b013b403"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete.txt",
+    "bytes": 327,
+    "sha256": "bf6253fc41a794930871a2defe0d20917fa0b96da683af57a15188aa935cf4fd"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-invalidRightsOnDiskQuarantinesManifestAndDeactivatesJob.txt",
+    "bytes": 305,
+    "sha256": "063ae743c7c41b538da2a3e4d6ca7d01c01577e8b4cf6bdae517755c5942adb5"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-lowStorageRefusesBeforeAnyByteMoves.txt",
+    "bytes": 265,
+    "sha256": "c050e2bc019788ea170c30c523ba084536731c68a729d93a330e331fbcb8a84b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-offlineNetworkWaitsWithoutMovingBytes.txt",
+    "bytes": 269,
+    "sha256": "c060bf1384112560c09abd979958da71380a35065f736efd9e0324a0cfb6b29c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleJobRunnerTest-queuedBundleDownloadsValidatesAndPublishesAtomically.txt",
+    "bytes": 299,
+    "sha256": "630ffed44cb7cc7548fe26da376ec3d40d7483e9cab1eacbfc3a461cc577b20f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-admissionRefusesInsteadOfEvictingPinnedContent.txt",
+    "bytes": 279,
+    "sha256": "5ddb70c355d071a289a396e749f161abb802d5b466580baf422cd88907bd34f5"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-concurrentRemovalsAndClearNeverCorruptTheStoreOrDeleteSharedMediaEarly.txt",
+    "bytes": 327,
+    "sha256": "60710d10119b9f769d648ecec2e21132d7a3fcc87323b29ba9dbb2e0bf0db3d7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-corruptManifestIsQuarantinedWithBytesPreservedAndOthersSurvive.txt",
+    "bytes": 311,
+    "sha256": "eb2b3697c9d850c1afa8c9d53f3a236ae35b52ed9a770c7473f2c0080f1e3f59"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote.txt",
+    "bytes": 311,
+    "sha256": "a0a80b25d55c73b131dc62fb1ca30b933609f4cde1a24bbd4b289892cdec159d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-quarantineBlobPreservesBytesAndRemovesFromBlobStore.txt",
+    "bytes": 289,
+    "sha256": "f770e7b784d7fe35ea03e2130adc603ce1bad53b3f6c04cf9fb7cd5017755c89"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-removingAllBundlesLeavesPersonalJournalDataIntact.txt",
+    "bytes": 285,
+    "sha256": "4d5b4dbe59bf69633a7ce71878194eb10eab3c4ed70758d9021b16ef07836ec1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-sharedBlobSurvivesUntilTheLastReferencingBundleIsRemoved.txt",
+    "bytes": 299,
+    "sha256": "b1dc5477d89f982df5b2ca56fa91de0a8ee20f2c297cf657a730e1272f53de27"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-storeStateSurvivesReopenLikeAProcessRestart.txt",
+    "bytes": 3228,
+    "sha256": "0c324b318cd67bbaeff005a31996d8d87394088d420100bf39b480ee4814d5a4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleStoreTest-sweepReclaimsOnlyUnreferencedContent.txt",
+    "bytes": 259,
+    "sha256": "daee5ab91cf723707bcc3c233d5c2a1c64b489db8cb556e9dfd485f2fdcbd2f2"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-cancelDeactivatesTheJobAndPreservesPreviouslyReadyContent.txt",
+    "bytes": 969,
+    "sha256": "63f11e4dda16061f2f3c23ef18d6078e4075c2629339393cf40823df40d4049e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-cancelledJobSucceedsWithoutTouchingTheBundle.txt",
+    "bytes": 462,
+    "sha256": "08cde30760f761b577f7b5d459bea207c8f3b3f761d216d2d02a91d796575e39"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-enqueueBindsOneUniqueWorkPerRevisionWithTheD7NetworkConstraint.txt",
+    "bytes": 1205,
+    "sha256": "321b4240602bfd8331f507c75e79827b90e995a10addab16eec9bc05217d3841"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable.txt",
+    "bytes": 490,
+    "sha256": "6116289606662a6507cff1c050023bb9a6f9848a7afd950e5932e4b38cbb30bc"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-missingInputDataFailsTheWork.txt",
+    "bytes": 430,
+    "sha256": "f46ed3b8a35f2970208aca387c9282ae9340c9e290f60719744973d3985fc5b1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-offlineEnvironmentRetriesWithoutMovingAByte.txt",
+    "bytes": 460,
+    "sha256": "fc3551056731ecd4d35104c3d09c46a2fbfb6d5037c6492abaf89b33dc538954"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker.txt",
+    "bytes": 1199,
+    "sha256": "ca8cf763afca3664831b05fd2813d4d21a018b47f880c6da302ecdc19dceb2aa"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-reconciliationRecoversInFlightWorkAndNeverStartsUnconfirmedBundles.txt",
+    "bytes": 987,
+    "sha256": "108e988761af93875f5d036c1a789d67377b378b8c5945d100cbc32f5747ecd8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-revocationWithdrawsConsentCancelsWorkAndPausesTheManifest.txt",
+    "bytes": 969,
+    "sha256": "c24a7dfe1d8ce56ce312642a42cc7c9ce58d8173df100dc4e9b7ecb0790c31c4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-transportFailureRetriesAndRecordsTheAttempt.txt",
+    "bytes": 460,
+    "sha256": "d090e150b6ed3b567ddc1b13dc7a64be59c769a0548f0f851ab82fe7dd08f969"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-unknownBundleJobFailsTheWork.txt",
+    "bytes": 430,
+    "sha256": "9fb4c86e0ee038c808305b0123ef86dbff8baaea9dd9e0a05c55141fc70817a3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage5BundleWorkerTest-workManagerRunsTheScheduledWorkerToACompletedBundle.txt",
+    "bytes": 1534,
+    "sha256": "252ab7f86476a1ec2f935e3b6df878aeca035053d1483296ca1a23dd7c4a8a6c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7aCatalogueBootstrapTest-appOwnCatalogueBootstrapFeedsEditorialScreens.txt",
+    "bytes": 15477,
+    "sha256": "d5e7c9dcf3cf47b4d4f495c00be243278971f6966ee48af38eb86493221ed43e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7bAcceptanceTest-adminCheckablesExportNameStateAndClickOnSameNode.txt",
+    "bytes": 256173,
+    "sha256": "95b6e54826449357b6c8e1c5bb617be718a6aefacb20bd4cc0c362472c3595d7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7bAcceptanceTest-renderApprovedAdminMatrixAndRetainAccessibilityTrees.txt",
+    "bytes": 4445395,
+    "sha256": "80c6936333d6f604f2cc42be87554f0eb58cdc411eb8b99c5a51850ea2c11ae0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7bAdminRuntimeTest-androidMarkersPersistAcrossStoreRecreationAndStayAccountScoped.txt",
+    "bytes": 315,
+    "sha256": "34e4275445e2eab12d706399f924622a68438b2a103acbeb1483f024f2b286d3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7bAdminRuntimeTest-keystoreSessionSurvivesStoreRecreationAndTamperingClearsIt.txt",
+    "bytes": 13557,
+    "sha256": "ce5635babcd836c9ec6f81f87440b29532fe0d773c7a6d4164bf5a2deb0e7483"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7bAdminRuntimeTest-nativeJsonPreservesExactAuditBigintAndRejectsRevisionOverflow.txt",
+    "bytes": 388,
+    "sha256": "a3214a25341c28a2a38f026ddd0df96bd7e986ae613452343e0fbe09196a369f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7bNotificationRuntimeTest-completeChangedScanPermissionFailureRevocationCancellationAndOfflineAreFailClosed.txt",
+    "bytes": 480430,
+    "sha256": "477eadb60f19a3c75ea6668dc96af12e2da61034d7f166fc8f4b5ce9aa7b58fe"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7bAdminRuntimeTest-savedEndpointAndKeystoreTokenCannotEnableApplicationNetworking.txt",
+    "bytes": 390,
+    "sha256": "56c6990942652ae47b7bbac24ba471151b3ab223d8799fed816af0a5b8f24153"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7bSyncRuntimeTest-staleEndpointAndMissingSessionCannotNotify.txt",
+    "bytes": 876,
+    "sha256": "13937289067642d5ee2a651e01a8f18632f4d4462946fe3eb8c535aed51b4e09"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/logcat-com.opus.piano.Stage7bSyncRuntimeTest-uniqueThreeHourWorkUsesConsentConstraintsAndCancels.txt",
+    "bytes": 11176,
+    "sha256": "43389e8a5e68c909a67833ed17d0da23fbfaa353d7372dfd3df2a001e78342ab"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/meminfo",
+    "bytes": 1292,
+    "sha256": "a4e7d160b0ab92c6990ea7b32820e1bc48826a65492fce4fe34bcf65d1b2ae79"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/test-result.pb",
+    "bytes": 172797,
+    "sha256": "cf243e695a915b37483e8b0c60b08d9436bb7284b48cffe736e7d11c29cbbfd1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/test-result.textproto",
+    "bytes": 299920,
+    "sha256": "92d32e296fc2f54f68d0fa947c7a315cbc227ca1cdd8bf36a78bdcfbadd58a52"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 16/testlog/test-results.log",
+    "bytes": 134331,
+    "sha256": "71b339117edf4142b3cbf961ade76c5201e7fbf6fe07de77148a6540af293555"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/test-result-exit-code.txt",
+    "bytes": 1,
+    "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/androidTest-results/connected/debug/test-result.pb",
+    "bytes": 172771,
+    "sha256": "eca97fc4f4108aae546592a600b2e766350391d77b4d507f28d4f3d2273c9466"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.AchievementEngineTest.xml",
+    "bytes": 1859,
+    "sha256": "cd7aacbbeed61926c89023799a886b7335f8eeea2f6ff27259b4f36a7a51b869"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.CatalogTextTest.xml",
+    "bytes": 687,
+    "sha256": "b3f5362e9ab424e5c0ec361032b9c2fda2434e0d80d1851ebee63de04c463f81"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.CsvExportTest.xml",
+    "bytes": 567,
+    "sha256": "e731b629142041ca2e0d53b4048cd1beee7dfcc662b6736bc916dd172da2c28c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.GoogleIdentityPolicyTest.xml",
+    "bytes": 692,
+    "sha256": "43ef3c47caeff5881eea3b1331b76871d1097fcefe8a0a170eb831edfabfaf50"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.JournalFormattingTest.xml",
+    "bytes": 571,
+    "sha256": "9119eb8cd47eb02d0dc8041f10d136de4570c17fef62a6d15201f6090b3101f0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.MultiPieceTest.xml",
+    "bytes": 773,
+    "sha256": "f093e3f31a0070296185618befe72b1648362b1e564ce0844385eb97f9c89f3b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.PianoActivityDetectorTest.xml",
+    "bytes": 832,
+    "sha256": "257b2984b14b8625ef4de2dd8c37714812c77e84c3d7e2a990bdbd17c5349e27"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.Polish101Test.xml",
+    "bytes": 581,
+    "sha256": "e48cefa113d3823733bcb0d16cd8d18ffe9df3a9a3dc32c8dab6c0fd22c93b40"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.PracticeEngineTest.xml",
+    "bytes": 1436,
+    "sha256": "1851f95d0748d1b5b493edc93d7ddb79dfcf2e1bb20f6827f279235e150c4b38"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.PracticeFailureTest.xml",
+    "bytes": 1895,
+    "sha256": "dd03abc0f26971832f7ac397b677f5945bbf485456a2cafa1531b8d1077effe8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.ProfileMaintenanceTest.xml",
+    "bytes": 982,
+    "sha256": "db9e87edb29f130cde70e010b34eaa22a781dead31496667c85b0d09571fba67"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.ProfileStatisticsTest.xml",
+    "bytes": 581,
+    "sha256": "5fdc569f88926afe56f9068f7102839d4ec2c592868405c05a2e7b5d8946914b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.Quality092Test.xml",
+    "bytes": 550,
+    "sha256": "73f0f29247ab760817a8994c660995b005f3c296969dfb2e8347fa8935a278a3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.RecordingLinksTest.xml",
+    "bytes": 853,
+    "sha256": "90b92f011b63ceadf7edc7bed21d173e791cd5c334458a4a133b3edee559f2aa"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.Redesign010Test.xml",
+    "bytes": 557,
+    "sha256": "06cf0db3dea05f12a7cd7512ee37dc0b6d7918ada6afd5a7ae285631e2a86994"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.RedesignTest.xml",
+    "bytes": 974,
+    "sha256": "82df0a2de0505a9a0455cec18ebc4884f38c8ff9231864e6cda1d462b40e1462"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.ReminderScheduleTest.xml",
+    "bytes": 580,
+    "sha256": "a49e51ccebd7d196c1261b4b953b40a9b0af6e422890adeb11376dcb7a172d56"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.SmartCacheTest.xml",
+    "bytes": 612,
+    "sha256": "603d28a9ceb2c1c8aa8f988d93a8295be041b51f62e2e18548774e67c57369a6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.admin.AdminAuditSyncTest.xml",
+    "bytes": 1515,
+    "sha256": "e0f17e7976e8f8f98d68cf6cf4bd699b1eb29e50598140e3b5b9431390dfe5c7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.admin.AdminContractIntegrationTest.xml",
+    "bytes": 3902,
+    "sha256": "8b73357fc8841e1c98ef162117268cac2be704299fcbe871f05102dd82053ad1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.admin.AdminFoundationTest.xml",
+    "bytes": 3515,
+    "sha256": "7ae4eacf857827decbb493cad00da16c1dea6d0522e39c8a391168101ba26df4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.admin.AdminQueueTest.xml",
+    "bytes": 1814,
+    "sha256": "65a23ffe9ed963839e24ea1728e788fa94ee792fa7d0eb1f888f26ba9ca18a6b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.admin.AdminReviewTest.xml",
+    "bytes": 3645,
+    "sha256": "8df17f2c6b54f7377b780dc1f29a2220c77b96c64660c54786e838f43a0d5cdc"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.admin.AdminStatsTest.xml",
+    "bytes": 1100,
+    "sha256": "f618a4509ac5fbf28c36ddf339d0f05386cba1246045e6d851473ff82984fe2d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.catalogue.CatalogueBudgetTest.xml",
+    "bytes": 644,
+    "sha256": "d0f2abb6f69eda34816978494ef711f23ec67338873dd729317a4d4c1c281b83"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.catalogue.CatalogueIntakeTest.xml",
+    "bytes": 651,
+    "sha256": "57698a29c4fd625967af3cd463a37246b08cb4f8b79163846a2ac70a6fe9548b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.catalogue.CataloguePresentationTest.xml",
+    "bytes": 502,
+    "sha256": "08bf37218604b4ae66d38a0030a1094e24b26a54aa7186412cab09970f969c83"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.catalogue.CatalogueQueryTest.xml",
+    "bytes": 589,
+    "sha256": "59335a4c1f88e50ada498904ea61986daefad40b2c4f0e1bc6c22d4b389cb3ca"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.catalogue.SearchContractTest.xml",
+    "bytes": 751,
+    "sha256": "533ce02308b6e7c534a0177069a67f7dc34f8f5661dffa7d0b2e2df42a7a218d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.catalogue.providers.ProviderProjectionTest.xml",
+    "bytes": 2128,
+    "sha256": "6904d5b56fb0a6cca07ed2f5049804ddcc8ad94bc6d01021c9f697859fbbc9bf"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.offline.BundleJobTest.xml",
+    "bytes": 1385,
+    "sha256": "375bf87db684388d3c04fbf6cee4882e5669247d6c3636ccf8cee5a9c459fc9f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.offline.BundleManifestCodecTest.xml",
+    "bytes": 3184,
+    "sha256": "06b71085bd442e5d0ca8cae7840d017f3917ddc302af3f8210c71b7135cea5ce"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.offline.BundlePolicyTest.xml",
+    "bytes": 1627,
+    "sha256": "af7ad47d742423e9b1acab886e3edb41dc0e43ed3cec5ec5265a8e2f0eab917b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.offline.BundleStateMachineTest.xml",
+    "bytes": 2123,
+    "sha256": "ccf4a84f8b56565d3b33e96a179c7e35a2d95856f1a583a7520cdf638d45efc6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.offline.BundleStoreLogicTest.xml",
+    "bytes": 1681,
+    "sha256": "77151961b4121ecf5931d3467a6b72e9c39dfe5360772dce7cc0dc682e0f4f2a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.offline.BundleTransferEngineTest.xml",
+    "bytes": 2495,
+    "sha256": "d16a6279a592b10d8798b82529bab6aa8e75c175535cbc6b5f157849e88042c2"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/binary/output-events.bin",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/test-results/testDebugUnitTest/binary/results-generic.bin",
+    "bytes": 35965,
+    "sha256": "a4cd0d9c2d0966107f1c4ff539c48b3005940a95e64c93013514b87257ffc662"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.AppLanguageTest.html",
+    "bytes": 1758,
+    "sha256": "ef4cc0866fbe1431cc384c808e53ee41c29b8cb1a30def55bf7f549734e08999"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.CatalogDatabaseTest.html",
+    "bytes": 1897,
+    "sha256": "5a8ecd2ee0e4714eacd0a245eb7224b63c1b9a60fef40086f72ebc4884d0d8c8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.DatabaseTest.html",
+    "bytes": 1738,
+    "sha256": "41180de3573329111390a96c207d47095defc5728f9e280b3e991f5c7516c48d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.DiscoverNavigationTest.html",
+    "bytes": 1785,
+    "sha256": "4efa08f7a860f2b092e84ef0f8e1765d1550ee824720b35b9eae68a85fe18d0c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Goldberg08MigrationTest.html",
+    "bytes": 1780,
+    "sha256": "b335d38c331068c9aaa6a57f621d6cfe6429db1837a0798f3efdda715a93f7c5"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.ExperiencePersistenceTest.html",
+    "bytes": 1939,
+    "sha256": "c6c0ac8940823e8e4a585438d34f053562152b2511daa1eb90c5ee902e056179"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.GoldbergPersistenceTest.html",
+    "bytes": 1912,
+    "sha256": "b1cc164c81ab9e5ce8c4cbdd07eef15ad6b0f572f7dd120679518a1cea9b3943"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.GoogleIdentityPersistenceTest.html",
+    "bytes": 1920,
+    "sha256": "5e85e2546e9f709a70eb1410e3ce00d6fbd5b88ec8ddfe2037a1f2cd898ee678"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.PracticeCoordinatorTest.html",
+    "bytes": 1986,
+    "sha256": "d8809077a273d45ec584fcdc24339ef4dab9bd7ce6ea1f639f11b9cb02d4a98c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.NavigationRegressionTest.html",
+    "bytes": 1918,
+    "sha256": "b3d1de7a9fb1efdf9ab1475ad5ce0b354fb2208b17be0713385940fc93b11fca"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.PracticeRecoveryTest.html",
+    "bytes": 1874,
+    "sha256": "e927e240ec079842a3c3d955e23b3184ac430e2a29ad9898b0285a370cecc327"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.PracticeServicePolicyTest.html",
+    "bytes": 1900,
+    "sha256": "ae78e24b4ce1f808ff5d076d202961a337d3485bea8be5ab893c97d2fe2a714d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.ProfileCompatibilityTest.html",
+    "bytes": 1801,
+    "sha256": "56800ea0efb88451f775ff1e7735bb30552104fe77691152261abcc56257a54e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Quality092PersistenceTest.html",
+    "bytes": 2170,
+    "sha256": "5b51662031ac34e1f2597d29a106377df23937cbd72baa5125b134281eb9bc60"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Redesign010PersistenceTest.html",
+    "bytes": 2282,
+    "sha256": "274d8cd09bc9fe6a4ab9a1e2d5989ed1980e3b0b8610dd9ce5b3239dc48a738b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.RedesignPersistenceTest.html",
+    "bytes": 1908,
+    "sha256": "f55eb8b1e489212fa13a1c37eca89067919cf823d9171a932f9d44fdfb85c826"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.RepertoireSearchPrivacyTest.html",
+    "bytes": 1814,
+    "sha256": "33a7c53b97f1f5ce905ed570c39888764c9a4e47de8b2733ccaeef9180097fcf"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.SmartCachePersistenceTest.html",
+    "bytes": 2178,
+    "sha256": "df4f285e59f3beb0cf3efa2d243efe439194c67849395dbf9537f340f63c0bf6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage3aBackupTest.html",
+    "bytes": 1895,
+    "sha256": "baa41f881e38481688305f3cb1ed1800a00128e89d1bebb8c268d71f6c3dbd18"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage3aCatalogueTest.html",
+    "bytes": 2171,
+    "sha256": "bc4fa5400892f6446e082bf5a889bc409bdd21436e51ea3318c3a4f353c9c291"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage3aMigrationTest.html",
+    "bytes": 2432,
+    "sha256": "fd76950c974b1f915efc33120df51bfdbbe44dbc728ce4a799cccd97b97e446a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage3aPerformanceTest.html",
+    "bytes": 1778,
+    "sha256": "589a08f790ce62e460ab4a1aca18f87cacff580d0e750abbb910eff799c078da"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage3bBackupTest.html",
+    "bytes": 3942,
+    "sha256": "62a914808a5b15483180db15afd9bbd79a35bd95d08b5893867196378ca676b3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4CatalogueTest.html",
+    "bytes": 2463,
+    "sha256": "0bc51ff5761b685b9296ed624ab4971afc9979516d54b2b11e24857c1b4dc354"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage3bProcessDeathTest.html",
+    "bytes": 1847,
+    "sha256": "20859b44a7623390d247df45c57545b8b773c6120db4d6e8fa0d2e5cecabf3ec"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4DocumentTest.html",
+    "bytes": 2306,
+    "sha256": "18653ab85b60455e2616aebb5e7afae72a8d63f77c2f1ef2e642201b3b01599e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4EvidenceLifecycleTest.html",
+    "bytes": 2709,
+    "sha256": "5da8e29d5e36d5415bce046a2bdc1cbdd0bf416b71bc7bf1779fcbfb88f50f01"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4ExternalPortraitTest.html",
+    "bytes": 1791,
+    "sha256": "cb4794a03920845def3da262533b31ee3a16b3fe9d6b9971a2dce7df71e483b2"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4ExternalProviderTest.html",
+    "bytes": 1793,
+    "sha256": "1b0f59667332915f975b74fe48eb7008657760afa9219f3c83c65403076dacb0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4GraphTest.html",
+    "bytes": 2506,
+    "sha256": "0565ce977c7570319d485c0ac285804658df18fefe630a247dcab27cc0befb75"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4ObservationCacheTest.html",
+    "bytes": 2047,
+    "sha256": "b8cbd2755d2026606dbdee8f074231469f524a2c85e160836650d0f5dec43989"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4PagingTest.html",
+    "bytes": 2517,
+    "sha256": "e121778c8db66e91269087ef5ce7a4ced670c6857efee75695541a026fca7e11"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4PortraitTest.html",
+    "bytes": 2216,
+    "sha256": "ce53d2cc892f4aa923572d64716ecb7752e2166a459f49a9cc2fd2ae1c207383"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4ProviderCacheTest.html",
+    "bytes": 2754,
+    "sha256": "fd83f773f8ca3775009bfd45d9b233a41aa8da4fd5af31a0ce06b5a24261d960"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4SafetyTest.html",
+    "bytes": 2420,
+    "sha256": "354e92a207e23b772c7b812535a02ef0fa2cb27bc4af1cc9f8e43e08e91ec46d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4SearchVerificationTest.html",
+    "bytes": 2147,
+    "sha256": "436d1ee8edd6de09f83676d5762bfbc210bac4145aa52648ff24060a1f09ff02"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4StorageAdmissionTest.html",
+    "bytes": 1808,
+    "sha256": "e86bbbcb308087c1a7a9a48a2b7244e9d6496d36b83fb50a88d30f611ddb61df"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage4TransportTest.html",
+    "bytes": 2026,
+    "sha256": "f3c1dbf48058d4055b6e562fb513fb26ce3c233420d015a299d514a7c27ecb60"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage5BundleJobRunnerTest.html",
+    "bytes": 3115,
+    "sha256": "7c04baf0c65ecfb4756c5ba689e10a7d9502e379c7d39fd00c21357ad3e706ee"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage5BundleStoreTest.html",
+    "bytes": 2680,
+    "sha256": "3c1f22ff43970f56de715d12088c61f07fc3d302d6bb9e2b9ed0e5d893287af0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage7aCatalogueBootstrapTest.html",
+    "bytes": 1794,
+    "sha256": "f30370ce38489dbb1e1ccf188b99accd6258a9ec31ec7366c2b45bc50d494d66"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage5BundleWorkerTest.html",
+    "bytes": 3003,
+    "sha256": "e96d48e5530c2c77794019dd77b37d137638da0561498d42b298d2319c0b7656"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage7bAcceptanceTest.html",
+    "bytes": 2553,
+    "sha256": "db78cebc0f4088e60b5f14a99d97ba12a24f883ac40578d47991bd423d8995c1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage7bAdminRuntimeTest.html",
+    "bytes": 2156,
+    "sha256": "037e8a81b31db7e3b8f4007b604ba34ce6d03706c85e0520d8ebce1f2fae43c3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage7bNotificationRuntimeTest.html",
+    "bytes": 1833,
+    "sha256": "f1ae77398980a6d214fea8cc23fe16937bfd115aca8301fcf86e1e44e6f4e145"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.Stage7bSyncRuntimeTest.html",
+    "bytes": 1883,
+    "sha256": "725c37960968e6892ae125f3d32abb29c54853de60a795ddbaead9caf94968dc"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/com.opus.piano.html",
+    "bytes": 11237,
+    "sha256": "d2bfd7899858d47295bc144a09814febb7dadb762e70c3d450acc2cf51062c6f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/css/base-style.css",
+    "bytes": 2428,
+    "sha256": "2851d0b2f14f4ff1b75f0d01438887911eb474e235be93e561709227cefb18db"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/css/style.css",
+    "bytes": 1798,
+    "sha256": "f1b366319836f8726d0939654d0eeddfc5b20f67d9e5954b9a1632c60f2f31bf"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/index.html",
+    "bytes": 12044,
+    "sha256": "ffb4ab56b04179698f7bedc681a8dc4f4b69c18841ce7d9adc27b1f4c4140381"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/androidTests/connected/debug/js/report.js",
+    "bytes": 2933,
+    "sha256": "0aa306f94805890682c639b2d5c06108801d64b859a171a3c6eea66c8bab4c6a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/lint-results-debug.txt",
+    "bytes": 55658,
+    "sha256": "daa6cc30e718ab66f0475c7892065c6f1efcfccdb6d11c7e304988aab9845c03"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/lint-results-debug.html",
+    "bytes": 350896,
+    "sha256": "89765f2af27d5ea4eaa09ef6f13de1053183565b6ae99014099270d96a60f848"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/lint-results-debug.xml",
+    "bytes": 149127,
+    "sha256": "37b5665a4b4887ab45fb2deb0be0d6a3b6cf8ef90706d29cb133210dd9ea1344"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.AchievementEngineTest/index.html",
+    "bytes": 5006,
+    "sha256": "767d7e707a5cbbfe0fe9d4392154628eb90ba2ecce47a25c8363b4148c064513"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.CatalogTextTest/index.html",
+    "bytes": 2845,
+    "sha256": "08acc34f7da5f3f5aa15f0b7c7fdc09bd4e394eaa22194bfeeb35922964699a5"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.CsvExportTest/index.html",
+    "bytes": 2618,
+    "sha256": "ff0fb7284d0f8e5926d0b6eb3efc07b9c9d95c5eadaa483abe8ac0bfd3bb0d98"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.GoogleIdentityPolicyTest/index.html",
+    "bytes": 2810,
+    "sha256": "c21fff52a7cb498d3c3b8e64173b0bf44cfa79660c123681a924e92d77b4e747"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.JournalFormattingTest/index.html",
+    "bytes": 2602,
+    "sha256": "6161c20745bbe56efdade13a0d75954be930d1750f121859cfefa11b4ad4742a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.MultiPieceTest/index.html",
+    "bytes": 3017,
+    "sha256": "ab801aa834f60ad88e4ac32371f7bb67010431aa6088c521c9ec0167dac2c1f9"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.PianoActivityDetectorTest/index.html",
+    "bytes": 3058,
+    "sha256": "a71c555d9f4084da2e357a366fc1b63304c8b5c625c60f13c406110189a6d1da"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.Polish101Test/index.html",
+    "bytes": 2646,
+    "sha256": "fbc2bd586431418ecdd154324124c010829645a34b4a8d02ffab8a0f47bcac35"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.PracticeEngineTest/index.html",
+    "bytes": 4250,
+    "sha256": "168b0b834295b938e9d6b4e46ef289de1660ba610a5be5f02af8556cff1a0bb6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.PracticeFailureTest/index.html",
+    "bytes": 5105,
+    "sha256": "02cbd8d33d75a03ea5a66b837e10f4becdca309a4437176063389a0b26d89e31"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.ProfileMaintenanceTest/index.html",
+    "bytes": 3358,
+    "sha256": "06047dc68f5e4703199953a52a372b7a15bfa3cc09941e33a79d5419c683b0f7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.ProfileStatisticsTest/index.html",
+    "bytes": 2622,
+    "sha256": "0ac789f9182de1639172ec830b6411507429b4897dce64ad5fa5fc23508f98e1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.Quality092Test/index.html",
+    "bytes": 2581,
+    "sha256": "24460da7834af48be685570fa6995317713c5aa44768a7946993f17d4c910a21"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.RecordingLinksTest/index.html",
+    "bytes": 3149,
+    "sha256": "92ce5f37f8b59c0ff352bd233296439101f5008fc7741e0ab59f1c50bfc0f553"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.Redesign010Test/index.html",
+    "bytes": 2592,
+    "sha256": "a2ac999c5afe83bd028f6338cdde4e87156c6004a408ed565f652c9b09448e90"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.RedesignTest/index.html",
+    "bytes": 3432,
+    "sha256": "3356602aa70d168f64cd3efba08cbc48caed5e5b9f353695c496daa88a32bfc1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.ReminderScheduleTest/index.html",
+    "bytes": 2623,
+    "sha256": "f18604bbeb9f3070de0a0589d70e6ff201037e0fb8e56c609c28c1fd09e53b09"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.SmartCacheTest/index.html",
+    "bytes": 2705,
+    "sha256": "b95be1b26963022d7c30d4a66b4f4dc0d0497252dcd7bee23bf60f1dcdba3aca"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.admin.AdminAuditSyncTest/index.html",
+    "bytes": 4302,
+    "sha256": "39bd30a0201736ba4de5d12749f53e87f79d15e5f098f27e6608772452bc608e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.admin.AdminContractIntegrationTest/index.html",
+    "bytes": 8228,
+    "sha256": "3d4423c070f5fae13683d3447958cfdc2c08e116b56708dabd49d146624bf3a7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.admin.AdminFoundationTest/index.html",
+    "bytes": 7877,
+    "sha256": "e3a87c1e4b80a9d790ae90bce2e1273f43571fdd7dff07b09bc08f8439bc5de7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.admin.AdminQueueTest/index.html",
+    "bytes": 4914,
+    "sha256": "57cd45b168df1ba55cdb069781a548e815c4e8138094353d6afd09a944e9d277"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.admin.AdminReviewTest/index.html",
+    "bytes": 8287,
+    "sha256": "2fa0ca9a122dce5c170ed6c7bb7c2608ceb245b4b5363731a423aa9790966206"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.admin.AdminStatsTest/index.html",
+    "bytes": 3589,
+    "sha256": "3aebfd2e35b69111a30541bc21650005e1f361f2636b337af722d05b3192aa31"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.catalogue.CatalogueBudgetTest/index.html",
+    "bytes": 2694,
+    "sha256": "efa7c3716d679033f8cb9c0c4cb2489f7693723e3e199a619d63fabc10cd9659"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.catalogue.CatalogueIntakeTest/index.html",
+    "bytes": 2708,
+    "sha256": "529f754ddb97fbafbfa1117080ba76eddb04b455262bfad7b860c692c5243176"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.catalogue.CataloguePresentationTest/index.html",
+    "bytes": 2449,
+    "sha256": "276b3cd45119cb46c415eb66689915a9025f212ec8a496e8c00a92df817f70bf"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.catalogue.CatalogueQueryTest/index.html",
+    "bytes": 2587,
+    "sha256": "8741bb77dea0942439ff1fb1154962fdd001965f760868e2f03fbc4bd4f46323"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.catalogue.SearchContractTest/index.html",
+    "bytes": 2868,
+    "sha256": "591daf963e004c1df1208dbd931e4c36f341bb1a037f4df26ba6c8c806574cec"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.catalogue.providers.ProviderProjectionTest/index.html",
+    "bytes": 4973,
+    "sha256": "41d32f262008d9221bff1e446939cdbb2553b86632b377e436499081ec8875fe"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.offline.BundleJobTest/index.html",
+    "bytes": 4028,
+    "sha256": "a71298ee7dc95441173bbc7294f6168108754eaa36eedc5f1a86f268043d1812"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.offline.BundleManifestCodecTest/index.html",
+    "bytes": 6838,
+    "sha256": "1a568cfd9506a4709fba50040f0630c4f7144a6f626a203bd5497af714cd1638"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.offline.BundlePolicyTest/index.html",
+    "bytes": 4396,
+    "sha256": "1a40bec6cdcd7af0b23289d20647d613b623a2c11944b09dc751f5ca0bafbbec"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.offline.BundleStateMachineTest/index.html",
+    "bytes": 5133,
+    "sha256": "30c319a28eaac26ee78cf8f9fa507506da7b8134c2fc8abad084ddc866bc8343"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.offline.BundleStoreLogicTest/index.html",
+    "bytes": 4428,
+    "sha256": "c7866e078d126280d56968e4e0bfcf4c9b398ddaa9098878d3029cff4135963b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/com.opus.piano.data.offline.BundleTransferEngineTest/index.html",
+    "bytes": 5725,
+    "sha256": "ceab946ae0c8261034942f678fb2318637d4ebc4806b070dce5e62822db6ff01"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/css/base-style.css",
+    "bytes": 2449,
+    "sha256": "ae3edaf7d2e0cdfbd9919e0c89fcabbc6c593118515e82a13567005dc10bbf08"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/css/style.css",
+    "bytes": 2201,
+    "sha256": "7e5a63bb31295a4a5627ca9d8f8bd463bd91c035577fa2b4d020713936083a08"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/index.html",
+    "bytes": 11511,
+    "sha256": "5d7663194baf77d52f0a539738fae8f4e4f3d5b89c9613712fe69113a50c024a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/reports/tests/testDebugUnitTest/js/report.js",
+    "bytes": 6718,
+    "sha256": "3aadca4fcf721dca618b54c0e93c93c37884c8d25aa2c9cb92782a3db9ffa605"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "app/build/outputs/logs/manifest-merger-debug-report.txt",
+    "bytes": 99041,
+    "sha256": "1c47868d8e3548517ff292293ca361519c2a9ca8e27b7b91c88151bec2de1a2e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/activity.txt",
+    "bytes": 25905,
+    "sha256": "d82386d11e3e624127a317764346a67fa0f2c3504789e4f1ecbc42de1453b504"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/adb-devices.txt",
+    "bytes": 47,
+    "sha256": "56ecd6ef0cc63935dccb7816ebed2d058f6ee037867f849447a1a2e566ab7488"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/matrix-results.txt",
+    "bytes": 109,
+    "sha256": "4d6f9d8dbae3a2f90eb1cb8a175b89fe703a2e630dd848db69b39f9aec064324"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-checkables-cs.png",
+    "bytes": 34701,
+    "sha256": "dd7c9e28ce0263aabeff536f4d560b91390a85bbe8d998c80a101f8b3645fa5b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-checkables-en.png",
+    "bytes": 37273,
+    "sha256": "52e90fdcd31cbad388be10022f9e83aa0a03f3f397acd2752be7a5ee34e37f25"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-checkables-en.txt",
+    "bytes": 2952,
+    "sha256": "20be8faece15d3ee2866ef9f49ecde31fde941c0b608e00b148ddc6ce8980d6e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-checkables-cs.txt",
+    "bytes": 2969,
+    "sha256": "3a3be0378d5658cdba6da43b0f038e78c1696bdaef7f4f6bcdbc81a9565662bd"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f1.0-dashboard.png",
+    "bytes": 68955,
+    "sha256": "31f1c29d03180ddc01045e18f8479879a4a86dc42ecb703d39583acc0854111c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f1.0-dashboard.txt",
+    "bytes": 14624,
+    "sha256": "46b9e44d2ef5867b0d2af7cccebf11a0925e32dae45f1163f54eb823fdc68bd0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f1.3-dashboard.txt",
+    "bytes": 14625,
+    "sha256": "fb96307ca472084f5bdea0798dc02c9a7469325773f50124c246665a20187acc"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f1.3-dashboard.png",
+    "bytes": 80494,
+    "sha256": "52155acc2117b1042d04ff8346d25149959ad0e0b5df268d2989583cf8a96ca4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f1.5-dashboard-reachable-footer.png",
+    "bytes": 77960,
+    "sha256": "d997fe675f142ccb13f30c9f38cbf3c34bf0e8ff7b98e54a6eb112e7b6d30136"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f1.5-dashboard-reachable-footer.txt",
+    "bytes": 14184,
+    "sha256": "c814d3991b243f894e42f8ef9cad40ce45bec38f679a2f631ade8e2acaac064f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f1.5-dashboard.png",
+    "bytes": 83705,
+    "sha256": "23fff486ccd156e84fa1b3b2e2bd1ad5140e6f01b36733183a9373a139af7919"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f1.5-dashboard.txt",
+    "bytes": 14010,
+    "sha256": "56fe7c2aa00c0bec35d97a1c93af8d00f9930d264303a13a9731952a5feae08f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-audit-bottom.png",
+    "bytes": 84780,
+    "sha256": "cbc35e188e6e32f092b996c1b06cd5dfcf8b6c6209e974086a5b177d2a185165"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-audit-bottom.txt",
+    "bytes": 11112,
+    "sha256": "99da7558b4f7b097d1391f7121be3994e75575e7d6318a492959e801a7f72ed6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-audit-empty.png",
+    "bytes": 93501,
+    "sha256": "52ef4124edc97075dfd62aceba9559ad3c020071e9b226af0bec3ada5cfc1271"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-audit-empty.txt",
+    "bytes": 11101,
+    "sha256": "11b1e99a2082a406f10a0f76ff1443d949b0397d18d52a4ba117239a6b6b0ded"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-audit-error.png",
+    "bytes": 42323,
+    "sha256": "94a6c48b7fd291a96e1198a9a57ef07c0f78ffff1e4587d09cf7eabe29a4d996"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-audit-error.txt",
+    "bytes": 10077,
+    "sha256": "7a484838ebb180565299346310316917211f840c2ac0e9bb1a45b6fee8412340"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-audit-loading.png",
+    "bytes": 32156,
+    "sha256": "a7c8d1ea08262ce21c6543f2bd5148750a7b7e3db7ae011bdfd76059a57224e3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-audit-loading.txt",
+    "bytes": 9657,
+    "sha256": "9f6d908e9b918e1537e4cc8dfc25d853b12a2f42667c335894d46e76e704a7ed"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-audit-row-reachable.png",
+    "bytes": 84780,
+    "sha256": "cbc35e188e6e32f092b996c1b06cd5dfcf8b6c6209e974086a5b177d2a185165"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-audit-row-reachable.txt",
+    "bytes": 11112,
+    "sha256": "99da7558b4f7b097d1391f7121be3994e75575e7d6318a492959e801a7f72ed6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-audit.png",
+    "bytes": 93501,
+    "sha256": "52ef4124edc97075dfd62aceba9559ad3c020071e9b226af0bec3ada5cfc1271"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-audit.txt",
+    "bytes": 11101,
+    "sha256": "11b1e99a2082a406f10a0f76ff1443d949b0397d18d52a4ba117239a6b6b0ded"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-dashboard-empty.png",
+    "bytes": 71657,
+    "sha256": "42a4a463b644c27084f3d248030f7e202e3c02a10af537b49f22166e39cea217"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-dashboard-empty.txt",
+    "bytes": 13167,
+    "sha256": "d799e05384a60efbcc7b22c1a8445c3f24e535f86e02ba872f5ab780ab926786"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-dashboard-error.png",
+    "bytes": 81412,
+    "sha256": "64c2bb909477e6fd4a23801600e35ac897e548de218276736f6d9046a7d853e6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-dashboard-error.txt",
+    "bytes": 12944,
+    "sha256": "2d1dc3e48a8f9545ad797194664d9f46d376bcf5bc906346e98cd97775713ff6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-dashboard-loading.png",
+    "bytes": 81412,
+    "sha256": "64c2bb909477e6fd4a23801600e35ac897e548de218276736f6d9046a7d853e6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-dashboard-loading.txt",
+    "bytes": 12944,
+    "sha256": "2d1dc3e48a8f9545ad797194664d9f46d376bcf5bc906346e98cd97775713ff6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-dashboard-reachable-footer.png",
+    "bytes": 77261,
+    "sha256": "0255a662696abcee86b6154d7eb68a77a2b9b65654e2dcda9736fbb19a13a308"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-dashboard-reachable-footer.txt",
+    "bytes": 12668,
+    "sha256": "0059c3cb412594968dc8f6f3239864b6534b0a4f0cb830a2451ca341027b09f7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-dashboard.png",
+    "bytes": 70549,
+    "sha256": "4e658eb756dac3b6794e86c2d5174e7e0c3a7135ff995c007f5482203ab4f0a2"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-proposal-bottom.png",
+    "bytes": 90697,
+    "sha256": "c018b4913e088c7aaa0c550e76278187593535d1ee1162c949008901f4ab6023"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-dashboard.txt",
+    "bytes": 13167,
+    "sha256": "907c0e9dd3af2101f20ca4e88f90633e8d3ed843319fc7bc7835c1a4fd1a4173"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-proposal-bottom.txt",
+    "bytes": 12050,
+    "sha256": "10040e96ca7853925d0919823a84b6c43c13c2393f3c0af8aa801bd78fa01bae"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-proposal.png",
+    "bytes": 77975,
+    "sha256": "fe36ea7830fa7cc7c244b07cea2ce464d2ba86b8de7bf9df6e9061e2a422a640"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-proposal.txt",
+    "bytes": 11196,
+    "sha256": "1d342e9ea367f5267f78287c5b3946885f716e4efc7366e48075d9ae2834671c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-queue-bottom.png",
+    "bytes": 81725,
+    "sha256": "0a5801ffd9b763dc5dc28cf32046b4c730d5a4ea8d8f28a57a45adf30570d743"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-queue-bottom.txt",
+    "bytes": 11840,
+    "sha256": "b26d234e46df336489cab640c991c8f332c7c65e33c34455a03720b881d97cf2"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-queue-empty.png",
+    "bytes": 82139,
+    "sha256": "066618e2be42ee210ff0bdce26bf87e5990fa99c1449b03242fd4928ccdb63a9"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-queue-empty.txt",
+    "bytes": 12252,
+    "sha256": "911216e81624b9160537abf26f7b5f226fed50681eabafccaec50bcab0b8140e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-queue-error.txt",
+    "bytes": 10076,
+    "sha256": "98b73f0c0acca1d892914590c2503d9e33af26025b9788838536ed60c95a6289"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-queue-error.png",
+    "bytes": 44902,
+    "sha256": "de52889beeabc8c57d246b23a5142ee5f06fd17cdb0665ab25514d454a5af326"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-queue-loading.png",
+    "bytes": 34550,
+    "sha256": "83fb976d061b5588ee2b5f25f04d1a2003d4a82401612dba9379661fc5c505b4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-queue-loading.txt",
+    "bytes": 9656,
+    "sha256": "1da411e66fbcffb8d09b6a435f607861c23f08adcf5b143cacc4fea47f2106f7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-queue-row-reachable.png",
+    "bytes": 81725,
+    "sha256": "0a5801ffd9b763dc5dc28cf32046b4c730d5a4ea8d8f28a57a45adf30570d743"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-queue-row-reachable.txt",
+    "bytes": 11840,
+    "sha256": "b26d234e46df336489cab640c991c8f332c7c65e33c34455a03720b881d97cf2"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-queue.png",
+    "bytes": 81316,
+    "sha256": "341dcf79f205b90bd5d92a3482477e67898c1ce1acadc1894fb17d3bed5c1975"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-queue.txt",
+    "bytes": 12198,
+    "sha256": "765c5ad7b04766bf622f5b04b9512de90d2ba0f35c397aad83a2574e6d289526"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-settings-bottom.png",
+    "bytes": 96494,
+    "sha256": "e1a4cb9e4d2d035530f9e28a2c56acdc0b32b0f95db2b1ed980f7cdded376280"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-settings-bottom.txt",
+    "bytes": 12115,
+    "sha256": "c18195da7511c6f6eee5e17c6bfd2ca0ba3409a9972013d9f117400bd08f26f0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-settings.png",
+    "bytes": 102905,
+    "sha256": "561a90ed24a4e520b366e9cb7944be34aaf02c1a2de050e09b1a3c7074fb8bcb"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Dark-f2.0-settings.txt",
+    "bytes": 11082,
+    "sha256": "7db1fbdce67b0896de40cbe4f2fd4f7a5eedccb21a7855520d7010cc879baee1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f1.0-dashboard.png",
+    "bytes": 70706,
+    "sha256": "2c3e3acd4539784ce16a48780e45672abce15925526966e4bbf73609154f0ed1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f1.0-dashboard.txt",
+    "bytes": 14624,
+    "sha256": "6e1542104c881f2a4f80e9efdf35af48ab0090105f167caff386c3c734891871"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f1.3-dashboard.png",
+    "bytes": 82614,
+    "sha256": "ba64787fa1b7fae2001e9d5c7086f1706ccc421cc79fae723b55b233dd254623"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f1.3-dashboard.txt",
+    "bytes": 14625,
+    "sha256": "6bd6eddd2990b3d331a96691caae275c197ea898c38871c6f990b664479359cc"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f1.5-dashboard-reachable-footer.png",
+    "bytes": 80610,
+    "sha256": "de32a9a481a3ffb1abfac6fe82e51fa9e81407268f9a0523bb4ae15f11e3684e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f1.5-dashboard-reachable-footer.txt",
+    "bytes": 14184,
+    "sha256": "eda4e231ed734ce3e9493eac065aaa36b667d94a2fbfae6cb32ad83f51a971ef"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f1.5-dashboard.txt",
+    "bytes": 14010,
+    "sha256": "56fe7c2aa00c0bec35d97a1c93af8d00f9930d264303a13a9731952a5feae08f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-audit-bottom.png",
+    "bytes": 85972,
+    "sha256": "6af9f88775d3932f223c1a2189e4214f739c235f30b0bd62da37f0129cfa911d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f1.5-dashboard.png",
+    "bytes": 85287,
+    "sha256": "2985e23418306afc61135153f302db4b9b5dc3de893e9bd5bf5950fd7e4795ec"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-audit-bottom.txt",
+    "bytes": 11112,
+    "sha256": "99da7558b4f7b097d1391f7121be3994e75575e7d6318a492959e801a7f72ed6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-audit-empty.png",
+    "bytes": 94841,
+    "sha256": "274143ffe201569d1cda859628645ce2eebc7c6ea16cd67e81f926c1dd3fd5d5"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-audit-empty.txt",
+    "bytes": 11101,
+    "sha256": "11b1e99a2082a406f10a0f76ff1443d949b0397d18d52a4ba117239a6b6b0ded"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-audit-error.png",
+    "bytes": 43558,
+    "sha256": "9e982bc6815a83c57224937b6fbdb45816dcfa071eba8b81bde8154d21f974c5"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-audit-error.txt",
+    "bytes": 10077,
+    "sha256": "7a484838ebb180565299346310316917211f840c2ac0e9bb1a45b6fee8412340"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-audit-loading.txt",
+    "bytes": 9657,
+    "sha256": "9f6d908e9b918e1537e4cc8dfc25d853b12a2f42667c335894d46e76e704a7ed"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-audit-row-reachable.png",
+    "bytes": 85972,
+    "sha256": "6af9f88775d3932f223c1a2189e4214f739c235f30b0bd62da37f0129cfa911d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-audit-loading.png",
+    "bytes": 33269,
+    "sha256": "79eb0df2c8f201c4ff1775102fa17c847c1041a9b65b010a576609ac33465183"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-audit-row-reachable.txt",
+    "bytes": 11112,
+    "sha256": "99da7558b4f7b097d1391f7121be3994e75575e7d6318a492959e801a7f72ed6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-audit.png",
+    "bytes": 94849,
+    "sha256": "8c32a851147f42046218d09c2188fc22f956ca5a47a68100c0bde20b65114722"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-audit.txt",
+    "bytes": 11101,
+    "sha256": "11b1e99a2082a406f10a0f76ff1443d949b0397d18d52a4ba117239a6b6b0ded"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-dashboard-empty.png",
+    "bytes": 72793,
+    "sha256": "c7d6114b8bd719c15139038767b1fb2ed9e544563a31925b2291d2c08820a62d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-dashboard-empty.txt",
+    "bytes": 13167,
+    "sha256": "d799e05384a60efbcc7b22c1a8445c3f24e535f86e02ba872f5ab780ab926786"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-dashboard-error.png",
+    "bytes": 82612,
+    "sha256": "0bed00a11f2f7b081fde6aba38aae2a2582c978de2e731927fa760068496eb78"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-dashboard-error.txt",
+    "bytes": 12944,
+    "sha256": "2d1dc3e48a8f9545ad797194664d9f46d376bcf5bc906346e98cd97775713ff6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-dashboard-loading.txt",
+    "bytes": 12944,
+    "sha256": "2d1dc3e48a8f9545ad797194664d9f46d376bcf5bc906346e98cd97775713ff6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-dashboard-loading.png",
+    "bytes": 82612,
+    "sha256": "0bed00a11f2f7b081fde6aba38aae2a2582c978de2e731927fa760068496eb78"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-dashboard-reachable-footer.png",
+    "bytes": 80685,
+    "sha256": "5cc8e63f93505e754931a9897c18f8fd72200dc25bd4e6c0c3ea93259f0e80a0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-dashboard-reachable-footer.txt",
+    "bytes": 12668,
+    "sha256": "2f6f4278e669ff3c5d1cb4a7053bef24e1a4c7d634bf642453ed01ef3e226409"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-dashboard.png",
+    "bytes": 72715,
+    "sha256": "de2550e051b8d7e9bf9347bb64b6d7c222b1a3a5d8df5991bb44c95cdc9eeca0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-proposal-bottom.png",
+    "bytes": 91920,
+    "sha256": "b3eec57879150900ada81b328bbd810ba912432b21eccf3c59953c21e8090706"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-dashboard.txt",
+    "bytes": 13167,
+    "sha256": "907c0e9dd3af2101f20ca4e88f90633e8d3ed843319fc7bc7835c1a4fd1a4173"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-proposal-bottom.txt",
+    "bytes": 12050,
+    "sha256": "10040e96ca7853925d0919823a84b6c43c13c2393f3c0af8aa801bd78fa01bae"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-proposal.png",
+    "bytes": 79150,
+    "sha256": "18f9f7caee12b1e8b795a682d936d8b1cca8ee14df3a5b0eb69b47403538a4e0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-proposal.txt",
+    "bytes": 11196,
+    "sha256": "1d342e9ea367f5267f78287c5b3946885f716e4efc7366e48075d9ae2834671c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-queue-bottom.txt",
+    "bytes": 11840,
+    "sha256": "b26d234e46df336489cab640c991c8f332c7c65e33c34455a03720b881d97cf2"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-queue-bottom.png",
+    "bytes": 83029,
+    "sha256": "7c16505f9c15cca062f62781eb2f8e3bbccd56ce5ee080bb11f0035a54beb341"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-queue-empty.png",
+    "bytes": 83311,
+    "sha256": "32ce52e082383be0895ff79983b5dec76f30a6ce50efc0aeabf1d4be5b6bf494"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-queue-empty.txt",
+    "bytes": 12252,
+    "sha256": "911216e81624b9160537abf26f7b5f226fed50681eabafccaec50bcab0b8140e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-queue-error.png",
+    "bytes": 46087,
+    "sha256": "09a4a22f0a68e2327637f6595a956382e0f476061fe42079ff74d70381154eac"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-queue-error.txt",
+    "bytes": 10076,
+    "sha256": "98b73f0c0acca1d892914590c2503d9e33af26025b9788838536ed60c95a6289"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-queue-loading.png",
+    "bytes": 35525,
+    "sha256": "787d788cd0ee524006bff6379b7cabd60ac2842a3e454c8095e2205660f9d31a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-queue-loading.txt",
+    "bytes": 9656,
+    "sha256": "1da411e66fbcffb8d09b6a435f607861c23f08adcf5b143cacc4fea47f2106f7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-queue-row-reachable.png",
+    "bytes": 83029,
+    "sha256": "7c16505f9c15cca062f62781eb2f8e3bbccd56ce5ee080bb11f0035a54beb341"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-queue-row-reachable.txt",
+    "bytes": 11840,
+    "sha256": "b26d234e46df336489cab640c991c8f332c7c65e33c34455a03720b881d97cf2"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-queue.png",
+    "bytes": 82508,
+    "sha256": "4dc6a57566cacc86c3dabb28503ddb2479ea4ed9355be648e6e8643003effdfb"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-queue.txt",
+    "bytes": 12198,
+    "sha256": "765c5ad7b04766bf622f5b04b9512de90d2ba0f35c397aad83a2574e6d289526"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-settings-bottom.png",
+    "bytes": 97592,
+    "sha256": "19ee8b06d0032175ad07a12002d3f0ab74d48023b76ffbedc83818b76b6b168d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-settings-bottom.txt",
+    "bytes": 12115,
+    "sha256": "c18195da7511c6f6eee5e17c6bfd2ca0ba3409a9972013d9f117400bd08f26f0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-settings.png",
+    "bytes": 104173,
+    "sha256": "8592b1e71c4b288e4c27b3a36ed89b9b35fdedaadda349e6952b8e6e46a3a313"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-cs-Light-f2.0-settings.txt",
+    "bytes": 11082,
+    "sha256": "7db1fbdce67b0896de40cbe4f2fd4f7a5eedccb21a7855520d7010cc879baee1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f1.0-dashboard.txt",
+    "bytes": 14601,
+    "sha256": "72c5156f93cc670abdb10dc2a591f02d0c069d40f199b738366901cfc5a2eea8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f1.3-dashboard.png",
+    "bytes": 79963,
+    "sha256": "304694354c9dc9735da7aecc518b95302a8bafc62ac054149cfc076e16bfd5fd"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f1.0-dashboard.png",
+    "bytes": 67827,
+    "sha256": "f0856d5f35c792f87d3916d28bafd0b6a7b31fcc92ff70f6414526c6b5a2db03"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f1.3-dashboard.txt",
+    "bytes": 14601,
+    "sha256": "adf1f0c2e06d37907a52db52240049c63ad21c7e9ac7ed63159f60f468b21e2b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f1.5-dashboard-reachable-footer.png",
+    "bytes": 76807,
+    "sha256": "2c6853a9b580276008e9b3d4c8922bd4512de6920799c96af41b93e344fc32e0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f1.5-dashboard-reachable-footer.txt",
+    "bytes": 14382,
+    "sha256": "663bc2a4a3c5969a2f8d0ddf542328dcc47c5cb45b775c9cc45c96b9caf54777"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f1.5-dashboard.png",
+    "bytes": 79955,
+    "sha256": "d18dbfd9ff941387f34ff4df05204c48e0e269a736c750226aad3a720a3bd7c3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f1.5-dashboard.txt",
+    "bytes": 13989,
+    "sha256": "7552dd07384042ff6ba487089be35acaf0883870e618bbe067f46eac40850752"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-audit-bottom.png",
+    "bytes": 78135,
+    "sha256": "d3abcd7ef7f77554e340fb37963c0b19f79be6284afe4818e1e94d922c651aad"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-audit-bottom.txt",
+    "bytes": 11084,
+    "sha256": "655a515f2ac9b351a9fcda44b350ab1463dbbae7fbf9b39681f4bc94e8a6dd26"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-audit-empty.png",
+    "bytes": 94042,
+    "sha256": "cd30fdc15c200264b331238dec138eac05854972c74c24ff1235f305e0231f3b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-audit-empty.txt",
+    "bytes": 11483,
+    "sha256": "55c7ecaee9f346eeb555e8013d913e7bc3341f5f2cec36cca843d497b763e093"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-audit-error.png",
+    "bytes": 35679,
+    "sha256": "0e805f4916831ffb0fce734792ae7292fe283101f638b3acf758b68f5b542222"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-audit-error.txt",
+    "bytes": 10057,
+    "sha256": "f86f971c977f8073efb9c7a04259f6aab074c442d8c22c9866b1633513f1ee94"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-audit-loading.png",
+    "bytes": 30816,
+    "sha256": "0320b1b42f9d25b123461570a58dc2c44e22f3640299b639f077465ce77456b7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-audit-loading.txt",
+    "bytes": 9645,
+    "sha256": "98937a8abc7decb05c3cae0ba796bc46f3e7fd770fcb8cd65f466978eeffab96"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-audit-row-reachable.png",
+    "bytes": 78135,
+    "sha256": "d3abcd7ef7f77554e340fb37963c0b19f79be6284afe4818e1e94d922c651aad"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-audit-row-reachable.txt",
+    "bytes": 11084,
+    "sha256": "655a515f2ac9b351a9fcda44b350ab1463dbbae7fbf9b39681f4bc94e8a6dd26"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-audit.png",
+    "bytes": 92793,
+    "sha256": "eaf5d5b2ad30ff8256d52c9130739a40096dfe5d90f20164966485823066f496"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-audit.txt",
+    "bytes": 11665,
+    "sha256": "6eb32d87ccac61d5ee9b8f689cf49a83a1a85cea5769054f18216e35c72c8a88"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-dashboard-empty.png",
+    "bytes": 77403,
+    "sha256": "4e3496360fc601dcd3b1e7f648d0797975217d0e4649a4e4795eb1fbc18cd368"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-dashboard-empty.txt",
+    "bytes": 13159,
+    "sha256": "bab8c5c438166c4eeeac5d4bff985522bbeec1b7685a587312e8164413f83c8c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-dashboard-error.png",
+    "bytes": 81704,
+    "sha256": "4b6159af7b4386e7b9f1ccc063ddd885443aec1026a56c25272a0fb772f1c898"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-dashboard-loading.txt",
+    "bytes": 12905,
+    "sha256": "5f629046c79f6b12f1a3958325c1f7a071658693aa5927b9bfae6d51624b10a0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-dashboard-error.txt",
+    "bytes": 12905,
+    "sha256": "5f629046c79f6b12f1a3958325c1f7a071658693aa5927b9bfae6d51624b10a0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-dashboard-loading.png",
+    "bytes": 81704,
+    "sha256": "4b6159af7b4386e7b9f1ccc063ddd885443aec1026a56c25272a0fb772f1c898"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-dashboard-reachable-footer.png",
+    "bytes": 76505,
+    "sha256": "d1cddb0e51047ce747c76752d88d33635c674e22ec94f2867e6aca75ae96d5cf"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-dashboard-reachable-footer.txt",
+    "bytes": 13714,
+    "sha256": "93a542e1e6e58b77a519d71dc014c8694e036fd73895dc1a490bf154eaffab04"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-dashboard.png",
+    "bytes": 76274,
+    "sha256": "61aec3c57b8f122726daa3f9425bc63754ad9b659204468081f0b628793f6a60"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-dashboard.txt",
+    "bytes": 13159,
+    "sha256": "16ff7f799d3353f04fcde465e617dcc2ae80a40d57047ef12a2bd644c3c709fc"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-proposal-bottom.png",
+    "bytes": 85414,
+    "sha256": "4d6d103600afd904b34c784578923a8a7b401f2529f9419b061c562efbc9db84"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-proposal-bottom.txt",
+    "bytes": 12021,
+    "sha256": "809d8b2dd18c476a032477bfaf030b770de1ffbc83decbf9e21ad7e55c295327"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-proposal.png",
+    "bytes": 93652,
+    "sha256": "cf098fcc1af987f2a4e530bcd30b0433431ac19835610fbb4a6d24333d189cbf"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-proposal.txt",
+    "bytes": 11173,
+    "sha256": "f4cbbf625393a4665c82322435a30ceb6d485516dccfa465b237c5a467308fdd"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-queue-bottom.txt",
+    "bytes": 12654,
+    "sha256": "c607f69299f18e746c07af9851c991b7ed35c6cdba2a8900004537945ec3aa26"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-queue-empty.png",
+    "bytes": 82372,
+    "sha256": "f6c84fe9d872529b088f7843ae84e88486620474c40645e2578e100d1303ea2d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-queue-empty.txt",
+    "bytes": 12228,
+    "sha256": "f12cf7e6d2e13ae7baf6e54116dadfbeaae0bbb4097f60e077b4cafe17393a21"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-queue-bottom.png",
+    "bytes": 77659,
+    "sha256": "b1d1c0a3a981b9825097a9b3331358f52802d907c8814705c5b66b819cb1e719"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-queue-error.png",
+    "bytes": 41081,
+    "sha256": "11054c08bdfe90530029eb480e489d5c9532a67822f49e1e60fe8d6eda6d207f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-queue-error.txt",
+    "bytes": 10064,
+    "sha256": "c967efc9b78e8e1013656a883271d0c66c9800ed01f9e6a0b3dbe2cc51683db7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-queue-loading.png",
+    "bytes": 35393,
+    "sha256": "c9684fa540fad6c352f6ae562ff10bce2b84f6592b4cadb93a95d917c776067a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-queue-loading.txt",
+    "bytes": 9652,
+    "sha256": "d25f682ecdbf5c6298e03e28bded7d83c4da780f471896e45cd9299d1bba723a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-queue-row-reachable.txt",
+    "bytes": 12654,
+    "sha256": "c607f69299f18e746c07af9851c991b7ed35c6cdba2a8900004537945ec3aa26"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-queue.png",
+    "bytes": 78967,
+    "sha256": "25f90e2b3a6defbde5e8bdd37739ba07aaff50ce4685a235c0b5784956019939"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-queue-row-reachable.png",
+    "bytes": 77659,
+    "sha256": "b1d1c0a3a981b9825097a9b3331358f52802d907c8814705c5b66b819cb1e719"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-queue.txt",
+    "bytes": 12436,
+    "sha256": "98631e936e416f9b1727e618592ac12c6d2e22eda5f58233f8dccbf6e014d324"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-settings-bottom.png",
+    "bytes": 97241,
+    "sha256": "9716da31102f206ea8ac4d3b4b9ad35534f6b06784adefd42a10cf5c2a16cf04"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-settings-bottom.txt",
+    "bytes": 12073,
+    "sha256": "86911e2c06854a432b4c69a91dce6b573f893c71aee630d1118d1cc2e425810e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-settings.png",
+    "bytes": 106935,
+    "sha256": "0bff67c95cda3ca79600f03972facb7f110ec2af0775eb78bcfb9e01d823682b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Dark-f2.0-settings.txt",
+    "bytes": 11021,
+    "sha256": "ba83272ed0523150d68a511538f3d8e8b7f608fc24e1ee8c5d2e14f59b882538"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f1.0-dashboard.png",
+    "bytes": 68046,
+    "sha256": "4beb42bd3b5a07c0ff17150ef4e4a8be75aaeee57cc5e8e28abdc0ffca3b0606"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f1.0-dashboard.txt",
+    "bytes": 14601,
+    "sha256": "11b071db0a34778ba52dc1e3cdb4e19bda13c0beeebe05267ef2622d6a4cbf79"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f1.3-dashboard.png",
+    "bytes": 80155,
+    "sha256": "87819b7829d691eaccfb0cbf468f0d6ded5914b0d9d9cc22ca2d971617217adf"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f1.3-dashboard.txt",
+    "bytes": 14601,
+    "sha256": "0d6fb69afeeb650c04e09c81a859f973b8bbd9f14ed61bed5d2bde7e03ae06df"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f1.5-dashboard-reachable-footer.png",
+    "bytes": 77080,
+    "sha256": "9f1f4024107f7f355e0542cf2d65473ac01b576d01b33eab9f72ee2984421229"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f1.5-dashboard.png",
+    "bytes": 80721,
+    "sha256": "460e9335ffb0659e23ad8422011cef035fa1bbeb5b981dc304797c5d4d769876"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f1.5-dashboard-reachable-footer.txt",
+    "bytes": 14382,
+    "sha256": "bf3530e7a3569f12d473bb68276db9543f74751121eed94d29609a8488f08d87"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f1.5-dashboard.txt",
+    "bytes": 13989,
+    "sha256": "7552dd07384042ff6ba487089be35acaf0883870e618bbe067f46eac40850752"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-audit-bottom.txt",
+    "bytes": 11084,
+    "sha256": "655a515f2ac9b351a9fcda44b350ab1463dbbae7fbf9b39681f4bc94e8a6dd26"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-audit-empty.png",
+    "bytes": 95601,
+    "sha256": "872c5408fee247787e23c7f3c58163748c567300bfac0b8166be5717da65353d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-audit-bottom.png",
+    "bytes": 79612,
+    "sha256": "cccc364f4311b6171c7f199f211f8bfbd867035ecb0812481529bbf68f4f0674"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-audit-empty.txt",
+    "bytes": 11483,
+    "sha256": "55c7ecaee9f346eeb555e8013d913e7bc3341f5f2cec36cca843d497b763e093"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-audit-error.png",
+    "bytes": 37549,
+    "sha256": "a5f90e4108f4c962c9f439caa18f69893a137657d8e5ac43df85203f97cc4071"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-audit-error.txt",
+    "bytes": 10057,
+    "sha256": "f86f971c977f8073efb9c7a04259f6aab074c442d8c22c9866b1633513f1ee94"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-audit-loading.png",
+    "bytes": 32355,
+    "sha256": "9e14f3ba0e540a61009767edef003cccd91cc188885efbed742baf2fd210018c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-audit-loading.txt",
+    "bytes": 9645,
+    "sha256": "98937a8abc7decb05c3cae0ba796bc46f3e7fd770fcb8cd65f466978eeffab96"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-audit-row-reachable.png",
+    "bytes": 79612,
+    "sha256": "cccc364f4311b6171c7f199f211f8bfbd867035ecb0812481529bbf68f4f0674"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-audit-row-reachable.txt",
+    "bytes": 11084,
+    "sha256": "655a515f2ac9b351a9fcda44b350ab1463dbbae7fbf9b39681f4bc94e8a6dd26"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-audit.png",
+    "bytes": 94456,
+    "sha256": "cada379611619768fa8d18a7961b7c0cad70848dea65ead35d793a055ffb4288"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-audit.txt",
+    "bytes": 11665,
+    "sha256": "6eb32d87ccac61d5ee9b8f689cf49a83a1a85cea5769054f18216e35c72c8a88"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-dashboard-empty.png",
+    "bytes": 79052,
+    "sha256": "190789c6b359ee172e341e4f292b43e6ae06e3a42d71b67c3e45cdcbe547d8e9"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-dashboard-empty.txt",
+    "bytes": 13159,
+    "sha256": "bab8c5c438166c4eeeac5d4bff985522bbeec1b7685a587312e8164413f83c8c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-dashboard-error.png",
+    "bytes": 83446,
+    "sha256": "aa214d9e21e2e663932b8d82db717774b74868fe5f35e4afc568174b42664fcd"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-dashboard-error.txt",
+    "bytes": 12905,
+    "sha256": "5f629046c79f6b12f1a3958325c1f7a071658693aa5927b9bfae6d51624b10a0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-dashboard-loading.png",
+    "bytes": 83446,
+    "sha256": "aa214d9e21e2e663932b8d82db717774b74868fe5f35e4afc568174b42664fcd"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-dashboard-loading.txt",
+    "bytes": 12905,
+    "sha256": "5f629046c79f6b12f1a3958325c1f7a071658693aa5927b9bfae6d51624b10a0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-dashboard-reachable-footer.png",
+    "bytes": 78437,
+    "sha256": "80797e9b23724b2b263d40e9031e1cc61099d2278a0dc4fe6de884287fbe4d80"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-dashboard-reachable-footer.txt",
+    "bytes": 13714,
+    "sha256": "93a542e1e6e58b77a519d71dc014c8694e036fd73895dc1a490bf154eaffab04"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-dashboard.png",
+    "bytes": 77976,
+    "sha256": "bc387a4f2ade6c9bd95988aab45c1dde1a18fd0bcff9bfee481fc14f51b7edee"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-dashboard.txt",
+    "bytes": 13159,
+    "sha256": "16ff7f799d3353f04fcde465e617dcc2ae80a40d57047ef12a2bd644c3c709fc"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-proposal-bottom.png",
+    "bytes": 87172,
+    "sha256": "3875b76505d31240e8319a444854fc1f0281bbb86aea894166a37e46b5f5d08d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-proposal-bottom.txt",
+    "bytes": 12021,
+    "sha256": "809d8b2dd18c476a032477bfaf030b770de1ffbc83decbf9e21ad7e55c295327"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-proposal.png",
+    "bytes": 95337,
+    "sha256": "aeba4cbb42e561e40c79034258028c8361f2b3fe1ad58d48a0130edb4786cab8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-queue-bottom.png",
+    "bytes": 79393,
+    "sha256": "08a7da77d33276905186ee02e0797da437a39f29cd8bace1ef8b85db888a1ce8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-proposal.txt",
+    "bytes": 11173,
+    "sha256": "f4cbbf625393a4665c82322435a30ceb6d485516dccfa465b237c5a467308fdd"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-queue-bottom.txt",
+    "bytes": 12654,
+    "sha256": "c607f69299f18e746c07af9851c991b7ed35c6cdba2a8900004537945ec3aa26"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-queue-empty.png",
+    "bytes": 84059,
+    "sha256": "8037e7850e8ee02573115f5d44bb749e43fe972ca1f1ee67b035f75f8ac6a74a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-queue-empty.txt",
+    "bytes": 12228,
+    "sha256": "f12cf7e6d2e13ae7baf6e54116dadfbeaae0bbb4097f60e077b4cafe17393a21"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-queue-error.png",
+    "bytes": 42873,
+    "sha256": "ef0c4c13cfca8538de4c95d0deef8eef780a8373277fdc91912f66ebcdb15aef"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-queue-error.txt",
+    "bytes": 10064,
+    "sha256": "c967efc9b78e8e1013656a883271d0c66c9800ed01f9e6a0b3dbe2cc51683db7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-queue-loading.png",
+    "bytes": 37241,
+    "sha256": "9585e8317d921fd7ba595cc2e89f4553484fae67bcb197ee1fb47c9f6a1b81e5"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-queue-loading.txt",
+    "bytes": 9652,
+    "sha256": "d25f682ecdbf5c6298e03e28bded7d83c4da780f471896e45cd9299d1bba723a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-queue-row-reachable.png",
+    "bytes": 79393,
+    "sha256": "08a7da77d33276905186ee02e0797da437a39f29cd8bace1ef8b85db888a1ce8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-queue-row-reachable.txt",
+    "bytes": 12654,
+    "sha256": "c607f69299f18e746c07af9851c991b7ed35c6cdba2a8900004537945ec3aa26"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-queue.png",
+    "bytes": 80672,
+    "sha256": "4df7dfda883464c1a83c70cf578c5c7b653cac9f4fb34136f9bf57ce56cdaaf1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-queue.txt",
+    "bytes": 12436,
+    "sha256": "98631e936e416f9b1727e618592ac12c6d2e22eda5f58233f8dccbf6e014d324"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-settings-bottom.png",
+    "bytes": 99023,
+    "sha256": "5d53e50dd111991d24b39d5aeca220f57236a2302de9b8b729e22729c05667b8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-settings-bottom.txt",
+    "bytes": 12073,
+    "sha256": "86911e2c06854a432b4c69a91dce6b573f893c71aee630d1118d1cc2e425810e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-settings.png",
+    "bytes": 108278,
+    "sha256": "3e1c5c6d1b64e8b0cadb1455d8b1086f011c885c25a6fb76bc78356193ad41a4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-small-en-Light-f2.0-settings.txt",
+    "bytes": 11021,
+    "sha256": "ba83272ed0523150d68a511538f3d8e8b7f608fc24e1ee8c5d2e14f59b882538"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-FAIL-in-activity.png",
+    "bytes": 129779,
+    "sha256": "bd640920b0364e348fb7bfe038e3db70b20236b9645abcbdd2011cbda3fe8511"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-FAIL-in-activity.txt",
+    "bytes": 14712,
+    "sha256": "6a782ad7abb6ca5638ae3c193fef5fbb69f6c9a8da07239e4ece04b422cac936"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-FAIL.png",
+    "bytes": 836972,
+    "sha256": "5028e860e4eca68f9c3b48fa526cc0aefa4749df8faacf5f9b691f664acbf008"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-FAIL.txt",
+    "bytes": 7641,
+    "sha256": "0ee63d1dd631ac9f6620acde963751d764cc131f0066926055303e6330ae3c7f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-dashboard.png",
+    "bytes": 72378,
+    "sha256": "1232084a6dfc52c331289bf2706ab08e6a23a7d12d8a47b0b42b3ea943c5b208"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-dashboard.txt",
+    "bytes": 14630,
+    "sha256": "a4441300d8ee3844825b0405d361f8529a5ba47bc7aee47c9009cbc0a26eb7bb"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-proposal-tab-comparison.png",
+    "bytes": 129779,
+    "sha256": "bd640920b0364e348fb7bfe038e3db70b20236b9645abcbdd2011cbda3fe8511"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-proposal-tab-comparison.txt",
+    "bytes": 14712,
+    "sha256": "6a782ad7abb6ca5638ae3c193fef5fbb69f6c9a8da07239e4ece04b422cac936"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-proposal-tab-details.png",
+    "bytes": 123047,
+    "sha256": "62692466b1fb727c87de1895505ef2df00469db09b494471b7e7fa87f0fa7cea"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-proposal-tab-evidence.png",
+    "bytes": 124194,
+    "sha256": "c7f253784fcd3c0c6e17068bb6b39add95278f0cb91bdaef21a7eedeafa16ac2"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-proposal-tab-evidence.txt",
+    "bytes": 14634,
+    "sha256": "d875fe637e3643eb84d7af1007855226bca99958bcc36c759304e5f66794756d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-proposal-tab-history.png",
+    "bytes": 119943,
+    "sha256": "efa4aaa55d1a88efc69afe205ed792904287086710013b5f396dc4571faff46f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-proposal-tab-history.txt",
+    "bytes": 14976,
+    "sha256": "4e78bf85863d256d86078688e96aaf5b92f83b82fce5cc7dfd918b40a425416d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-proposal-tab-details.txt",
+    "bytes": 15014,
+    "sha256": "a4586760dffd22dddbc5cc5f08baae0576bed2acb8f17ede263045ed6dc05c70"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-proposal.png",
+    "bytes": 129752,
+    "sha256": "d5e0ee449313aec98cad8a623ec69bf0378c66ca6632e6bf46967376130aabb4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-proposal.txt",
+    "bytes": 14712,
+    "sha256": "6a782ad7abb6ca5638ae3c193fef5fbb69f6c9a8da07239e4ece04b422cac936"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-queue-bottom.png",
+    "bytes": 68177,
+    "sha256": "9f2d1a5879335fdd6ca5da99c81c4ab911ccd499ed582c1bf98e176f4b2324ae"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-queue-bottom.txt",
+    "bytes": 13292,
+    "sha256": "96c951bc75669f4fa0934c6a5fa44fa1df2310b9890de08e39a60080cb835b1e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-queue-row-reachable.png",
+    "bytes": 67389,
+    "sha256": "d9b93f72056087592571db83ba0664e7891260db0c3022eeb59f58ae75d46b27"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-queue-row-reachable.txt",
+    "bytes": 13292,
+    "sha256": "df9657e383576dc5d3e67f2747c9cb9f48f4706ad3ef657eb3ad8c13b7f44573"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-queue-stale-update.png",
+    "bytes": 75595,
+    "sha256": "073f4c7eb3b9a9c598bc220c0d1276c49f1bcf5298376d9d3e66060556eddecd"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-queue-stale-update.txt",
+    "bytes": 13931,
+    "sha256": "891688bae8a5590ebe4daa142cf4891fb2e51fba154d3e68f9ecb4233f494c7c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-queue.txt",
+    "bytes": 13292,
+    "sha256": "df9657e383576dc5d3e67f2747c9cb9f48f4706ad3ef657eb3ad8c13b7f44573"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.3-dashboard.png",
+    "bytes": 82729,
+    "sha256": "bdc4def7d483a477a0349aab9339db9a42b53a6b80ce436c7d3d4956eea8bf63"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.3-dashboard.txt",
+    "bytes": 14630,
+    "sha256": "0eac01f87cfafcdc5cf0257f2c30583ce942efdc011d5f2e8f2488533559fd07"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.0-queue.png",
+    "bytes": 67389,
+    "sha256": "d9b93f72056087592571db83ba0664e7891260db0c3022eeb59f58ae75d46b27"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.5-dashboard-reachable-footer.png",
+    "bytes": 91877,
+    "sha256": "6a5c2b06a04325c9b4e04c398d23f8827e6f59d2aae9146bb1b359e47bec923b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.5-dashboard.png",
+    "bytes": 91877,
+    "sha256": "6a5c2b06a04325c9b4e04c398d23f8827e6f59d2aae9146bb1b359e47bec923b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.5-dashboard.txt",
+    "bytes": 14829,
+    "sha256": "5864609f1dc0fe694ea530f0754759725c08b4b9050d4b0d2193706e17a7089e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f1.5-dashboard-reachable-footer.txt",
+    "bytes": 14829,
+    "sha256": "5864609f1dc0fe694ea530f0754759725c08b4b9050d4b0d2193706e17a7089e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f2.0-dashboard-reachable-footer.png",
+    "bytes": 110300,
+    "sha256": "1636669047882dc661d410a3b28de25b18d4c24b5b8f84147ab7cdc5a76288be"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f2.0-dashboard-reachable-footer.txt",
+    "bytes": 14833,
+    "sha256": "3d878dd8de74ef73edad96c7cac716a8be7cbe8406e0db0ae76740ffc5df5902"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f2.0-dashboard.png",
+    "bytes": 110300,
+    "sha256": "1636669047882dc661d410a3b28de25b18d4c24b5b8f84147ab7cdc5a76288be"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Dark-f2.0-dashboard.txt",
+    "bytes": 14833,
+    "sha256": "3d878dd8de74ef73edad96c7cac716a8be7cbe8406e0db0ae76740ffc5df5902"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-FAIL-in-activity.png",
+    "bytes": 130199,
+    "sha256": "e4847d264b17e644a13676666adb147ca2bd99f61987b9524a708f9fcb585e0c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-FAIL-in-activity.txt",
+    "bytes": 14712,
+    "sha256": "6a782ad7abb6ca5638ae3c193fef5fbb69f6c9a8da07239e4ece04b422cac936"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-FAIL.png",
+    "bytes": 837175,
+    "sha256": "de73cd7674bdc05b0be49d535951161302f67357427373ec74b116f04a8e20ee"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-FAIL.txt",
+    "bytes": 7641,
+    "sha256": "0ee63d1dd631ac9f6620acde963751d764cc131f0066926055303e6330ae3c7f"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-dashboard.png",
+    "bytes": 72861,
+    "sha256": "7206c9fe38c8f54807c5c0dafec0dbd53a4d4167fc5cc5b45ba6efc63e936a9d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-dashboard.txt",
+    "bytes": 14630,
+    "sha256": "a4441300d8ee3844825b0405d361f8529a5ba47bc7aee47c9009cbc0a26eb7bb"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-proposal-tab-comparison.png",
+    "bytes": 130199,
+    "sha256": "e4847d264b17e644a13676666adb147ca2bd99f61987b9524a708f9fcb585e0c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-proposal-tab-comparison.txt",
+    "bytes": 14712,
+    "sha256": "6a782ad7abb6ca5638ae3c193fef5fbb69f6c9a8da07239e4ece04b422cac936"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-proposal-tab-details.png",
+    "bytes": 123579,
+    "sha256": "1fb60f1a0c15c16c9ea3acf95df3e25969be4cd0a6229efc55117b077063087a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-proposal-tab-details.txt",
+    "bytes": 15014,
+    "sha256": "a4586760dffd22dddbc5cc5f08baae0576bed2acb8f17ede263045ed6dc05c70"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-proposal-tab-evidence.png",
+    "bytes": 124687,
+    "sha256": "0b07aa6437e6ed21a166ad6b4d88e5e34069b237ca5b8b10c9b99d3efaa1f901"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-proposal-tab-evidence.txt",
+    "bytes": 14634,
+    "sha256": "d875fe637e3643eb84d7af1007855226bca99958bcc36c759304e5f66794756d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-proposal-tab-history.png",
+    "bytes": 120383,
+    "sha256": "10f803d6f649a328d45426f745e6fc3820c4f06169a973cd6c430a6dab563ad0"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-proposal-tab-history.txt",
+    "bytes": 14976,
+    "sha256": "4e78bf85863d256d86078688e96aaf5b92f83b82fce5cc7dfd918b40a425416d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-proposal.png",
+    "bytes": 130199,
+    "sha256": "e4847d264b17e644a13676666adb147ca2bd99f61987b9524a708f9fcb585e0c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-proposal.txt",
+    "bytes": 14712,
+    "sha256": "6a782ad7abb6ca5638ae3c193fef5fbb69f6c9a8da07239e4ece04b422cac936"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-queue-bottom.png",
+    "bytes": 68757,
+    "sha256": "679b31b59f94d9a9bb8eadc0836c3255effb0382db9630b87d283a097baa9593"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-queue-bottom.txt",
+    "bytes": 13292,
+    "sha256": "96c951bc75669f4fa0934c6a5fa44fa1df2310b9890de08e39a60080cb835b1e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-queue-row-reachable.png",
+    "bytes": 67969,
+    "sha256": "87ea28d723ae54950a4027c78d9c39afbd57225df64fcbbf846e5057105f6840"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-queue-row-reachable.txt",
+    "bytes": 13292,
+    "sha256": "df9657e383576dc5d3e67f2747c9cb9f48f4706ad3ef657eb3ad8c13b7f44573"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-queue-stale-update.png",
+    "bytes": 76091,
+    "sha256": "ba1d825c0a334d50ced9b830eeca5a75c380bc92731b48b3ddf34edd56083592"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-queue.png",
+    "bytes": 67969,
+    "sha256": "87ea28d723ae54950a4027c78d9c39afbd57225df64fcbbf846e5057105f6840"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-queue-stale-update.txt",
+    "bytes": 13931,
+    "sha256": "891688bae8a5590ebe4daa142cf4891fb2e51fba154d3e68f9ecb4233f494c7c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.0-queue.txt",
+    "bytes": 13292,
+    "sha256": "df9657e383576dc5d3e67f2747c9cb9f48f4706ad3ef657eb3ad8c13b7f44573"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.3-dashboard.png",
+    "bytes": 83093,
+    "sha256": "c84127e960a441243ad5efaecb60581a75143caf25b6b8e215e6a2c0c3347055"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.3-dashboard.txt",
+    "bytes": 14630,
+    "sha256": "0eac01f87cfafcdc5cf0257f2c30583ce942efdc011d5f2e8f2488533559fd07"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.5-dashboard-reachable-footer.png",
+    "bytes": 92531,
+    "sha256": "0df7ccda02966e44cb3f38e896e75efb6d5b644193a3d4738a4f3e02d88beb8a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.5-dashboard-reachable-footer.txt",
+    "bytes": 14829,
+    "sha256": "5864609f1dc0fe694ea530f0754759725c08b4b9050d4b0d2193706e17a7089e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.5-dashboard.png",
+    "bytes": 92531,
+    "sha256": "0df7ccda02966e44cb3f38e896e75efb6d5b644193a3d4738a4f3e02d88beb8a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f1.5-dashboard.txt",
+    "bytes": 14829,
+    "sha256": "5864609f1dc0fe694ea530f0754759725c08b4b9050d4b0d2193706e17a7089e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f2.0-dashboard-reachable-footer.png",
+    "bytes": 111149,
+    "sha256": "a6e85b260ecf3e8ed8e896c2a1e1933b5d7efe08a288a684ac98270c11a048f8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f2.0-dashboard-reachable-footer.txt",
+    "bytes": 14833,
+    "sha256": "748693acdfd9f33df75f66caf7ad330be9e7f077c9057cb63517ac7c389a308a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f2.0-dashboard.png",
+    "bytes": 111149,
+    "sha256": "a6e85b260ecf3e8ed8e896c2a1e1933b5d7efe08a288a684ac98270c11a048f8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-cs-Light-f2.0-dashboard.txt",
+    "bytes": 14833,
+    "sha256": "748693acdfd9f33df75f66caf7ad330be9e7f077c9057cb63517ac7c389a308a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-FAIL-in-activity.png",
+    "bytes": 129876,
+    "sha256": "f84b1fe0f26fee70ea149f36d998ee75422a35db93c528e696c0daf698c7660a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-FAIL-in-activity.txt",
+    "bytes": 14660,
+    "sha256": "d3c820fd686112e29605dbbadf1ec94c7fba34468a6b770654bdeaa9eb8fcc42"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-FAIL.png",
+    "bytes": 837175,
+    "sha256": "de73cd7674bdc05b0be49d535951161302f67357427373ec74b116f04a8e20ee"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-FAIL.txt",
+    "bytes": 7641,
+    "sha256": "0bc2abf6a95fce9bb3af97da0698bcc3624ddce35e26d050a1344da04133ee6e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-dashboard.txt",
+    "bytes": 14606,
+    "sha256": "6b1f19a8204eca36209de88d71dea5f1a466f8a6138ff8c3a954e0c0166c68e4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-dashboard.png",
+    "bytes": 70508,
+    "sha256": "6a951553e2151db46180b4d3083a850f833e9ad81b307772a134b46fdf9abbb2"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-proposal-tab-comparison.png",
+    "bytes": 129876,
+    "sha256": "f84b1fe0f26fee70ea149f36d998ee75422a35db93c528e696c0daf698c7660a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-proposal-tab-comparison.txt",
+    "bytes": 14660,
+    "sha256": "d3c820fd686112e29605dbbadf1ec94c7fba34468a6b770654bdeaa9eb8fcc42"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-proposal-tab-details.png",
+    "bytes": 122598,
+    "sha256": "5a1b13c60452f5aeb6dc06fa9f1c32cf73cc72465d0fd1e50d9564e8933e5aed"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-proposal-tab-evidence.png",
+    "bytes": 123084,
+    "sha256": "10f4f57bbf88197d43a7ad925a94dcdaa392a2fa52a745e0b47957f62c5c3104"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-proposal-tab-details.txt",
+    "bytes": 14967,
+    "sha256": "253d35b5211db2afe49117cc2bf2242bc6f202011283c4e86e2fc12eb3196ac7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-proposal-tab-evidence.txt",
+    "bytes": 14592,
+    "sha256": "73f0122b9852ca912708b687f1a73da53ed4dc65aec354b97c45a48e82f03ae6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-proposal-tab-history.png",
+    "bytes": 121242,
+    "sha256": "dea69dfc302f0b788ed463160ca0232154c5ae4613c47c3dcc8b964e8c129150"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-proposal.png",
+    "bytes": 129876,
+    "sha256": "f84b1fe0f26fee70ea149f36d998ee75422a35db93c528e696c0daf698c7660a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-proposal-tab-history.txt",
+    "bytes": 14932,
+    "sha256": "ef26f6070fc07b33daf29d5005c221a0e88f3947d263069486b388017984d7d3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-proposal.txt",
+    "bytes": 14660,
+    "sha256": "d3c820fd686112e29605dbbadf1ec94c7fba34468a6b770654bdeaa9eb8fcc42"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-queue-bottom.txt",
+    "bytes": 13273,
+    "sha256": "db5c9d191822e76ab9415fc2f7b64927c33d74cdd03feb1466cdea3e82a3bee1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-queue-bottom.png",
+    "bytes": 64963,
+    "sha256": "899ce5898d18ee8f0ad78ad3bdf48a7b4c3a70d926aae8f8b35b1241228eaaad"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-queue-row-reachable.png",
+    "bytes": 64294,
+    "sha256": "2453226a96a85a18a7253be6bc48e91fc0d2bdb083cf43388c9cd41d1c25efbe"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-queue-row-reachable.txt",
+    "bytes": 13273,
+    "sha256": "c9ca79af8640d0646b5612e1ec43070129f3e98f42855d8a0f1480d313af7354"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-queue-stale-update.png",
+    "bytes": 71299,
+    "sha256": "e08c905669ece1b80fc31d1f45aede4004d10eae0c53bbae21cc541675eef0ab"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-queue-stale-update.txt",
+    "bytes": 13907,
+    "sha256": "eaebbd1a8644083a6654a209ab1098ca5492420a7a962ba838d6b50292821c36"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-queue.png",
+    "bytes": 64294,
+    "sha256": "2453226a96a85a18a7253be6bc48e91fc0d2bdb083cf43388c9cd41d1c25efbe"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.0-queue.txt",
+    "bytes": 13273,
+    "sha256": "c9ca79af8640d0646b5612e1ec43070129f3e98f42855d8a0f1480d313af7354"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.3-dashboard.png",
+    "bytes": 80408,
+    "sha256": "2c658a506a470bc312ce5462d9f40f7dfc83fefbf84c790d12270f4e2967dbad"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.3-dashboard.txt",
+    "bytes": 14606,
+    "sha256": "20c049f0bc9c0163ad83f00710575c42bfe5e3a256dc19597950a57e2c41aeba"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.5-dashboard-reachable-footer.png",
+    "bytes": 89777,
+    "sha256": "dab2578823d382d187fc6b283c1908699337fed625e3cc63ffc8fe618139987d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.5-dashboard-reachable-footer.txt",
+    "bytes": 14805,
+    "sha256": "9440a198fc8cff8921f3e60cd22cb8791b0b8c4f1db7595ec419d9918c5c8124"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.5-dashboard.png",
+    "bytes": 89777,
+    "sha256": "dab2578823d382d187fc6b283c1908699337fed625e3cc63ffc8fe618139987d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f1.5-dashboard.txt",
+    "bytes": 14805,
+    "sha256": "9440a198fc8cff8921f3e60cd22cb8791b0b8c4f1db7595ec419d9918c5c8124"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f2.0-dashboard-reachable-footer.png",
+    "bytes": 104943,
+    "sha256": "116fd893df31b06d8ed27ae8265abebc3ebbddc8fdf195ec2197da404fc6a88e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f2.0-dashboard-reachable-footer.txt",
+    "bytes": 14809,
+    "sha256": "86d000d0a2e639bc81de0b5c368df033ecd4db1aa9ad56b450785ecb9c63bfa4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f2.0-dashboard.png",
+    "bytes": 104943,
+    "sha256": "116fd893df31b06d8ed27ae8265abebc3ebbddc8fdf195ec2197da404fc6a88e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Dark-f2.0-dashboard.txt",
+    "bytes": 14809,
+    "sha256": "86d000d0a2e639bc81de0b5c368df033ecd4db1aa9ad56b450785ecb9c63bfa4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-FAIL-in-activity.png",
+    "bytes": 130696,
+    "sha256": "e64a34f855b7890e42f06477dc3c280cec04e51f59f0563c4df7eb6e4bb87d0a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-FAIL-in-activity.txt",
+    "bytes": 14660,
+    "sha256": "d3c820fd686112e29605dbbadf1ec94c7fba34468a6b770654bdeaa9eb8fcc42"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-FAIL.png",
+    "bytes": 838021,
+    "sha256": "2b9d5db727086e2b241dd72476f3e0df17b85823205873561fb40b3be1625e93"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-dashboard.png",
+    "bytes": 72085,
+    "sha256": "2277dcbc14763798bc49e8ab7c650e26e502baafadc171065347dfe651594166"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-FAIL.txt",
+    "bytes": 7629,
+    "sha256": "c6aae309c79966909ee1baf8cda2e9b53025c539da2a54245a8d03d3033cae5e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-dashboard.txt",
+    "bytes": 14606,
+    "sha256": "5e066fea7549e076143a6d50d4326bd0cab26776f9172b5d5ee9d2f96e2a6ecc"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-proposal-tab-comparison.png",
+    "bytes": 130696,
+    "sha256": "e64a34f855b7890e42f06477dc3c280cec04e51f59f0563c4df7eb6e4bb87d0a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-proposal-tab-comparison.txt",
+    "bytes": 14660,
+    "sha256": "d3c820fd686112e29605dbbadf1ec94c7fba34468a6b770654bdeaa9eb8fcc42"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-proposal-tab-details.txt",
+    "bytes": 14967,
+    "sha256": "253d35b5211db2afe49117cc2bf2242bc6f202011283c4e86e2fc12eb3196ac7"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-proposal-tab-details.png",
+    "bytes": 123469,
+    "sha256": "cb496b642130d5c21aeeac73a38fa23391ab597504c33c374c76cf2f063ba49d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-proposal-tab-evidence.png",
+    "bytes": 123898,
+    "sha256": "02bcee984306de3bd21991ae7b37da85e7162ca13b33dc9f2fd2355183b58330"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-proposal-tab-history.png",
+    "bytes": 121929,
+    "sha256": "463af380dadd7ce2907d41733b569721b8130131c2bb50e8148dc027f024461a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-proposal-tab-evidence.txt",
+    "bytes": 14592,
+    "sha256": "73f0122b9852ca912708b687f1a73da53ed4dc65aec354b97c45a48e82f03ae6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-proposal-tab-history.txt",
+    "bytes": 14932,
+    "sha256": "ef26f6070fc07b33daf29d5005c221a0e88f3947d263069486b388017984d7d3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-proposal.txt",
+    "bytes": 14660,
+    "sha256": "d3c820fd686112e29605dbbadf1ec94c7fba34468a6b770654bdeaa9eb8fcc42"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-queue-bottom.png",
+    "bytes": 65976,
+    "sha256": "3e20936d6ad27b0b6f0c66701b3b0b9dc8d2e51457aa9644bd71208beead3219"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-proposal.png",
+    "bytes": 130696,
+    "sha256": "e64a34f855b7890e42f06477dc3c280cec04e51f59f0563c4df7eb6e4bb87d0a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-queue-bottom.txt",
+    "bytes": 13273,
+    "sha256": "db5c9d191822e76ab9415fc2f7b64927c33d74cdd03feb1466cdea3e82a3bee1"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-queue-row-reachable.png",
+    "bytes": 65233,
+    "sha256": "20b4baed91528ee5653cccebc20a4b933ebdd8fd79b692d9f0f6fece497aec91"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-queue-row-reachable.txt",
+    "bytes": 13273,
+    "sha256": "c9ca79af8640d0646b5612e1ec43070129f3e98f42855d8a0f1480d313af7354"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-queue-stale-update.png",
+    "bytes": 72218,
+    "sha256": "27ebd2dece9f418c5e42e47c043099e515d10eed6dd114da8b869b125fbd341d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-queue-stale-update.txt",
+    "bytes": 13907,
+    "sha256": "eaebbd1a8644083a6654a209ab1098ca5492420a7a962ba838d6b50292821c36"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-queue.png",
+    "bytes": 65233,
+    "sha256": "20b4baed91528ee5653cccebc20a4b933ebdd8fd79b692d9f0f6fece497aec91"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.0-queue.txt",
+    "bytes": 13273,
+    "sha256": "c9ca79af8640d0646b5612e1ec43070129f3e98f42855d8a0f1480d313af7354"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.3-dashboard.png",
+    "bytes": 82663,
+    "sha256": "e5933387ea4c611997a74ab08466eba5cb7faf4aeb06de5bc5cca67c81f749c3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.3-dashboard.txt",
+    "bytes": 14606,
+    "sha256": "d151152078ab6bf6daa43be9026c76ef5aa800aac45dedb18050cc56a8b57fd6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.5-dashboard-reachable-footer.png",
+    "bytes": 92294,
+    "sha256": "070e071d599337fb911b0aee8d6e760ce8a247d99aceffa9ac92c22f54705391"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.5-dashboard-reachable-footer.txt",
+    "bytes": 14805,
+    "sha256": "02e326209e8805ed7d69dc760ba800f1b4b37543916aa118cb537e324b80a421"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.5-dashboard.png",
+    "bytes": 92408,
+    "sha256": "b2437cfc9647375e822618a406095636eb688bc88a4816d063b5ef2882dbdfdd"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f1.5-dashboard.txt",
+    "bytes": 14805,
+    "sha256": "02e326209e8805ed7d69dc760ba800f1b4b37543916aa118cb537e324b80a421"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f2.0-dashboard-reachable-footer.png",
+    "bytes": 105788,
+    "sha256": "cdd00a27369bd473be353cf4a36493b7b367d1fdf6b7e8c4159d9bb13e9fd5ca"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f2.0-dashboard-reachable-footer.txt",
+    "bytes": 14809,
+    "sha256": "86d000d0a2e639bc81de0b5c368df033ecd4db1aa9ad56b450785ecb9c63bfa4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f2.0-dashboard.png",
+    "bytes": 105788,
+    "sha256": "cdd00a27369bd473be353cf4a36493b7b367d1fdf6b7e8c4159d9bb13e9fd5ca"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence/stage7b-standard-en-Light-f2.0-dashboard.txt",
+    "bytes": 14809,
+    "sha256": "86d000d0a2e639bc81de0b5c368df033ecd4db1aa9ad56b450785ecb9c63bfa4"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/admin-evidence-pull.txt",
+    "bytes": 101,
+    "sha256": "345c50a980f2621d1be834d715a97df6e06a7662cc506c7b416b14e9fb70a85a"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/check-admin_contract_fixtures.log",
+    "bytes": 168,
+    "sha256": "06bd8767ec0f685726674d870f3c561f5baca9fbf4034a1259242648386dc09b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/check-agent_policy.log",
+    "bytes": 126,
+    "sha256": "a8d9aed2cee3751fe47bb59393012b73900212cb963edd81f04e0b9cc307c4bb"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/check-backup_fixtures.log",
+    "bytes": 282,
+    "sha256": "c23f2f40581ef10309656bde7231951d9b70ff3869606898d72e744dff54db4e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/check-history_paging.log",
+    "bytes": 212,
+    "sha256": "230d3f7596e00d9295a1a11890eddeb7bd82b4d4fcfb0db5a47e2d1b79d6ac78"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/check-localization.log",
+    "bytes": 99,
+    "sha256": "c8079382d18ef84a1881bcd67635ad55efb6c597064a02d5fd764d855adea50c"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/check-migrations.log",
+    "bytes": 1017,
+    "sha256": "2683781d9410ad99f7634585601998139ec4b944eac46ce57c400c71c7b60aa6"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/disk-usage.txt",
+    "bytes": 89,
+    "sha256": "3862950873fa3822020d1b6061dac657f57f3800c50db9cbbcd69b87268f93c3"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/emulator-identity.txt",
+    "bytes": 160,
+    "sha256": "0904e136271c9c504da36fcb10070384abd30bf0d25e133d460d59d7f9469216"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/emulator-version.txt",
+    "bytes": 655,
+    "sha256": "ea36a35958c14ba5f003d0e68087a01947b2b1e7d3c26286417430ced3f2b811"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/final-screen.png",
+    "bytes": 1378879,
+    "sha256": "28149bb8766241eb53e6b9c9846af18a4dc9e10c669c8f83257d917f3acc7ae2"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/host-gradle.log",
+    "bytes": 11094,
+    "sha256": "b2d47cb3f2a98ac9122921f0cb0d085a9eebd06fb2fafef4ba2f459e649765a8"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/instrumentation-counts.txt",
+    "bytes": 63,
+    "sha256": "6037f5589e59cd10dcb27b8a993e6af85835d4e1e1749feedd625c54473ce60d"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/instrumentation-gradle.log",
+    "bytes": 7371,
+    "sha256": "5159ca313b31b3695848ab1d9d3844e35e32d0c335f2da2c7035c3f29b71810e"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/java-version.txt",
+    "bytes": 193,
+    "sha256": "8ffd2d05de22acb2a1f82845905d499e807c7595cf7c3e7f2a2cab7e576a26de"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/kvm.txt",
+    "bytes": 57,
+    "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/logcat.txt",
+    "bytes": 16162770,
+    "sha256": "b6a5b156ee4e4980bad06fc395b567a9d16c64f486c6a08d6762500ee738afee"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/provenance-preflight.txt",
+    "bytes": 168,
+    "sha256": "06bd8767ec0f685726674d870f3c561f5baca9fbf4034a1259242648386dc09b"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/screencap.err",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/sdk-packages.txt",
+    "bytes": 4927,
+    "sha256": "52fafa87886aa7bb8c7eb3749b8fa2bae3e611572954e0db3e1870728fafa935"
+  },
+  {
+    "archive": "instr.zip",
+    "path": "stage5-ci-results/source-commit.txt",
+    "bytes": 163,
+    "sha256": "827e684ab9ca151dc55c00ca619ce824e8c8b523d67a00bd63e6fa25498d4229"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "apksigner-baseline.err",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "apksigner-baseline.log",
+    "bytes": 311,
+    "sha256": "c074140d2a75ccf1c64a25302b3d9dabb699d471198edabb98d1c9bafec3ab7e"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "apksigner-candidate.err",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "apksigner-candidate.log",
+    "bytes": 311,
+    "sha256": "c074140d2a75ccf1c64a25302b3d9dabb699d471198edabb98d1c9bafec3ab7e"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "apksigner-exit-codes.txt",
+    "bytes": 78,
+    "sha256": "8b3d7de3ae4d6e77d643dcc57845f6562ae535459214126ab8e95788cc97b73d"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "apksigner-release.err",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "apksigner-release.log",
+    "bytes": 311,
+    "sha256": "64c1c8c7db13315da592ad7d6e04645bc4fdd567f0c56dad5ea1e4e3f463d385"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "assert_default_network.py",
+    "bytes": 1955,
+    "sha256": "816e161327a27f200c4df48e8f2545b76d6740fb4c7e34de8c34f1fe661d64d6"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "baseline-source.txt",
+    "bytes": 41,
+    "sha256": "c17b5ff0870d7dbdf0657ec00e7d5996b06bdbedbc5e9018f4b5ae2f0b08de73"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "connectivity-dump.txt",
+    "bytes": 81397,
+    "sha256": "20a697094492bfdea6577e1ddd6621384fe62e47122eb8311552de82b315db6a"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "db-after-restart/opus.db",
+    "bytes": 249856,
+    "sha256": "25e872446a280b45e0a52f8fcc373fb06798947cd4ae126d75d572d18e5744aa"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "disk-usage.txt",
+    "bytes": 89,
+    "sha256": "3862950873fa3822020d1b6061dac657f57f3800c50db9cbbcd69b87268f93c3"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "image-install-1.log",
+    "bytes": 15716,
+    "sha256": "a526856b33f95883aedb62ae3091e3215dcb6f7a703ac8abd6f19ea82d56866b"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "image-source.properties",
+    "bytes": 356,
+    "sha256": "edfc961bd9128fbfea84b4c61aac3a72ea270ca286425e22b3ed01ac759b1fc3"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "logcat.txt",
+    "bytes": 11042674,
+    "sha256": "e4002290897faff62efe00885aa04d17799f98d82e15856d07ef22996bc76c9c"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "netpolicy-disabled.txt",
+    "bytes": 87185,
+    "sha256": "81864f7972a623d0dc5c067fcbed6bfb94deba9d574d1c16e101bdd1a93f4535"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "netpolicy-enabled.txt",
+    "bytes": 88072,
+    "sha256": "fdae79d24d40ff13af106d5100648834558cac9beb05056ad9a4f185d5929b95"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "process-death-db.txt",
+    "bytes": 32,
+    "sha256": "6a160f601d2c8c57865738b0264a78454fd3559ee854fea2f2614a5d7fcf78e4"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "network-evidence.txt",
+    "bytes": 789,
+    "sha256": "058b2dce26747ec2ae7ea4f098d13add3ff2788ed4263b9198027ae7e81e3e68"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "process-death-integrity.txt",
+    "bytes": 93,
+    "sha256": "7b4222fc2e937a47958058ccecd46657867e59c3ccb3e24c9434725e2398649b"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "signing-environment.txt",
+    "bytes": 640,
+    "sha256": "810d185467ac1a2dbee4c526266fcf7dc95f2264e07bec8a758309f2c7b6af73"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "signing-evidence.txt",
+    "bytes": 518,
+    "sha256": "e423c35e045571a51d82e644caef21a44cea1a6c2c07302db450862e472b8eb1"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "source-commit.txt",
+    "bytes": 163,
+    "sha256": "827e684ab9ca151dc55c00ca619ce824e8c8b523d67a00bd63e6fa25498d4229"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "startup-measurement.txt",
+    "bytes": 833,
+    "sha256": "9f0936ad4e834eec5b4577d18f0c7904355451d200ce61f07648733681571a94"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "upgrade/after.db",
+    "bytes": 249856,
+    "sha256": "25e872446a280b45e0a52f8fcc373fb06798947cd4ae126d75d572d18e5744aa"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "upgrade/after.json",
+    "bytes": 10966,
+    "sha256": "dcdf0ff2039d4392c0d7fdcef828bed7cca505c2de1273fe77687f18a99fcd73"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "upgrade/before.db",
+    "bytes": 147456,
+    "sha256": "758c359f740fd927e08552925567053231fbd78436f811103db745abeb69eefe"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "upgrade/before.json",
+    "bytes": 10966,
+    "sha256": "dcdf0ff2039d4392c0d7fdcef828bed7cca505c2de1273fe77687f18a99fcd73"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "upgrade/connectivity-final.txt",
+    "bytes": 52931,
+    "sha256": "8654fcc76983c05c243777a2fc661d13c502bacf0d402a26e133db0a530434cb"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "upgrade/connectivity-offline-attempt-01.txt",
+    "bytes": 30981,
+    "sha256": "be2d71f4cf81e07346fbb8a5c55ae148ecef2a4426218de8a094ce5df0d9500b"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "upgrade/connectivity-offline-established.txt",
+    "bytes": 30981,
+    "sha256": "886395ecaa0ed62a22c4f73c4b983c3f4718a8b7b0d721d4ea2e9a36cb28b9ac"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "upgrade/connectivity-pre-upgrade.txt",
+    "bytes": 30981,
+    "sha256": "1c4a268f732d29c6bfc7cf6a7ecb338d4eebaff25291017ca558df897a92dbb2"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "upgrade/goldberg-appearance.xml",
+    "bytes": 198,
+    "sha256": "fc30367884c2065e0ab9643f1d029a2a63ad3fe842d6766579c905d6e7cafa22"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "upgrade/offline-mobile-data-setting.txt",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "upgrade/result.json",
+    "bytes": 818,
+    "sha256": "39753c52c4e2a517b4650e2ba8b97706f14833a008d94479137d6bd9706e6e84"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "upgrade/seed.db",
+    "bytes": 147456,
+    "sha256": "c06824facc41585d431f7782bfa822fdacc03f10f0fcacf23b1603033aeb04b5"
+  },
+  {
+    "archive": "accept.zip",
+    "path": "upgrade/validated.db",
+    "bytes": 249856,
+    "sha256": "25e872446a280b45e0a52f8fcc373fb06798947cd4ae126d75d572d18e5744aa"
+  }
+]

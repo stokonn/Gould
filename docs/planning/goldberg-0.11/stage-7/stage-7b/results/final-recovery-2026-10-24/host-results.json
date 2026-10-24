@@ -1,0 +1,15 @@
+{
+  "jvm": {
+    "suites": 36,
+    "tests": 275,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "lint": {
+    "Warning": 119,
+    "Hint": 1
+  },
+  "scripts": "7 existing scripts PASS; contract29/15hashes, policy, backup1-3, paging106, localization1050, migrations1-9 to10, Stage3B v5 fixtures",
+  "instrumentation": "COMPILED ONLY locally; runtime pending exact-SHA CI"
+}

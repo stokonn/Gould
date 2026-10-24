@@ -1,3 +1,5 @@
+> **Current recovery checkpoint — 2026-10-24:** CI #24 at dc60e83 failed the matrix because revision 2 legitimately requires re-review acknowledgement. Both retained ZIP digests/integrity and seeded data preservation independently PASS; no repeat downloads. Existing test-only acknowledgement → completion → verification correction reviewed; focused gate and seven scripts PASS. Clean host gate PASS 3m58s: 275 JVM/0 failures/errors/skips, lint 0 errors/119 warnings/1 hint, APK/signing/ZIP verified. Expected final matrix: **262 screenshot/tree pairs**. Stage 7B IN PROGRESS; owner acceptance pending. [Authoritative final recovery checklist](stage-7/stage-7b/FINAL-RECOVERY.md). Earlier entries below are historical and do not describe the latest run status.
+
 ## Stage 7B recovery and final acceptance — October 24, 2026
 
 **Purpose:** resolve inaccessible Admin checkable owners and dashboard Refresh, then independently verify actual UI/data preservation. **Status: IN PROGRESS, final owner acceptance not ready.** Green CI alone is not visual acceptance.
@@ -10,7 +12,8 @@
 - [x] Independently inspect5591e76 CI40080892105:187 instrumentation/0 failures/0 errors/2 existing external-fixture skips; all9Stage7B cases PASS.242state pairs/243trees/419named-focus-checked occurrences and artifact digests PASS. Seeded schema8→10/all12 personal collections equal/37sessions/preferences/integrity/signing limits verified. These are bounded historical results, not proof of later source.
 - [x] Reject final visual acceptance after detailed32destination review found small2.0 list collapse (Queue60.5dp EN/12.5dp CZ; Audit0) and stale previous-route hierarchies.
 - [x] Implement finite accessibility list viewport only above1.3; preserve normal layout/anchors. Clear UiAutomation cache and require actual destination/authorized controls; add Queue/Audit row reachability and actual row-open/Back at8configs,16extra captures. Focused36s and clean host4m03s PASS275 JVM/0failures/errors/skips,lint0 errors/119warnings/1hint; seven scripts PASS.
-- [ ] Publish and verify this viewport follow-up on its exactSHA: full API36 native suite,258state pairs/fresh matching hierarchies,32dashboard configurations, actual list rows and seeded preservation.
+- [x] Publish viewport follow-updc60e8379114b44f758e0bb5184a0b6b83d7a465, remote exact; dispatch40083355927 once.
+- [ ] Verify this viewport follow-up on its exactSHA: full API36 native suite,258state pairs/fresh matching hierarchies,32dashboard configurations, actual list rows and seeded preservation.
 - [ ] Manual emulator TalkBack/full navigation/platform notification-permission revocation, approved G1–G9/G11 integration and explicit owner acceptance remain open. Production networking/decisions stay disabled; no merge/release.
 
 **Verification environment:** local Java25/SDK36 host builds; Ubuntu24.04/KVM/API36/emulator-5554/qemu guard in existing dispatch-only CI. Local emulator known SIGSEGV was not retried; no phone used. Two existing Stage4 external-provider/portrait cases lack separately acquired fixtures and remain honestly skipped. No new skips/exclusions/weakened assertions.
