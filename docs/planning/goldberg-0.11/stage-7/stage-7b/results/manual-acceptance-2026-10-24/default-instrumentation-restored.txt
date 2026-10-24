@@ -1,0 +1,1 @@
+instrumentation:com.opus.piano.test/androidx.test.runner.AndroidJUnitRunner (target=com.opus.piano)

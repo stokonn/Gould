@@ -1,0 +1,292 @@
+[
+  {
+    "capture": "cs-settings-focus-1",
+    "labels": [
+      "Nastavení administrace"
+    ],
+    "node": {
+      "index": 14,
+      "parent": 10,
+      "text": "Nastavení administrace",
+      "bounds": "136 80 680 216",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": true,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        128,
+        131072,
+        256,
+        512
+      ]
+    }
+  },
+  {
+    "capture": "cs-settings-focus-2",
+    "labels": [
+      "Ve výchozím stavu vypnuto. Kontroly používají neměřenou Wi-Fi, pokud výslovně nepovolíte mobilní data."
+    ],
+    "node": {
+      "index": 15,
+      "parent": 10,
+      "text": "Ve výchozím stavu vypnuto. Kontroly používají neměřenou Wi-Fi, pokud výslovně nepovolíte mobilní data.",
+      "bounds": "40 224 680 356",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": true,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        128,
+        131072,
+        256,
+        512
+      ]
+    }
+  },
+  {
+    "capture": "cs-settings-focus-3",
+    "labels": [
+      "Místní oznámení"
+    ],
+    "node": {
+      "index": 16,
+      "parent": 10,
+      "text": "Místní oznámení",
+      "bounds": "40 394 576 439",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": true,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        128,
+        131072,
+        256,
+        512
+      ]
+    }
+  },
+  {
+    "capture": "cs-settings-focus-4",
+    "labels": [
+      "Místní oznámení"
+    ],
+    "node": {
+      "index": 17,
+      "parent": 10,
+      "description": "Místní oznámení",
+      "bounds": "576 368 680 464",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": true,
+      "checkable": true,
+      "checked": false,
+      "actions": [
+        128,
+        1,
+        16,
+        131072,
+        256,
+        512
+      ]
+    }
+  },
+  {
+    "capture": "cs-settings-focus-5",
+    "labels": [
+      "Kontroly na pozadí (přibližně každé 3 hodiny)"
+    ],
+    "node": {
+      "index": 18,
+      "parent": 10,
+      "text": "Kontroly na pozadí (přibližně každé 3 hodiny)",
+      "bounds": "40 488 576 590",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": true,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        128,
+        131072,
+        256,
+        512
+      ]
+    }
+  },
+  {
+    "capture": "cs-settings-focus-6",
+    "labels": [
+      "Kontroly na pozadí (přibližně každé 3 hodiny)"
+    ],
+    "node": {
+      "index": 19,
+      "parent": 10,
+      "description": "Kontroly na pozadí (přibližně každé 3 hodiny)",
+      "bounds": "576 491 680 587",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": true,
+      "checkable": true,
+      "checked": false,
+      "actions": [
+        128,
+        1,
+        16,
+        131072,
+        256,
+        512
+      ]
+    }
+  },
+  {
+    "capture": "cs-settings-focus-7",
+    "labels": [
+      "Povolit mobilní a měřená data pro správní kontroly"
+    ],
+    "node": {
+      "index": 20,
+      "parent": 10,
+      "text": "Povolit mobilní a měřená data pro správní kontroly",
+      "bounds": "40 614 576 716",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": true,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        128,
+        131072,
+        256,
+        512
+      ]
+    }
+  },
+  {
+    "capture": "cs-settings-focus-8",
+    "labels": [
+      "Povolit mobilní a měřená data pro správní kontroly"
+    ],
+    "node": {
+      "index": 21,
+      "parent": 10,
+      "description": "Povolit mobilní a měřená data pro správní kontroly",
+      "bounds": "576 617 680 713",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": true,
+      "checkable": true,
+      "checked": false,
+      "actions": [
+        128,
+        1,
+        16,
+        131072,
+        256,
+        512
+      ]
+    }
+  },
+  {
+    "capture": "cs-settings-focus-9",
+    "labels": [
+      "URL administrace: Nenakonfigurováno",
+      "URL administrace",
+      "Nenakonfigurováno"
+    ],
+    "node": {
+      "index": 22,
+      "parent": 10,
+      "bounds": "40 728 680 865",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": true,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        128,
+        1,
+        16,
+        131072,
+        256,
+        512
+      ]
+    }
+  },
+  {
+    "capture": "cs-settings-focus-10",
+    "labels": [
+      "Moderátor: Moderátor",
+      "Moderátor",
+      "Moderátor"
+    ],
+    "node": {
+      "index": 26,
+      "parent": 10,
+      "bounds": "40 881 680 1018",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": false,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": true,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        128,
+        131072,
+        256,
+        512
+      ]
+    }
+  }
+]

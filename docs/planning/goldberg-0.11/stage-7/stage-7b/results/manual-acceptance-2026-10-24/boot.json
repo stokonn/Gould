@@ -1,0 +1,30 @@
+{
+  "serial": "emulator-5586",
+  "qemu": "1",
+  "polls": [
+    {
+      "attempt": 0,
+      "code": 0,
+      "boot": "",
+      "stderr": ""
+    },
+    {
+      "attempt": 1,
+      "code": 0,
+      "boot": "",
+      "stderr": ""
+    },
+    {
+      "attempt": 2,
+      "code": 0,
+      "boot": "",
+      "stderr": ""
+    },
+    {
+      "attempt": 3,
+      "code": 0,
+      "boot": "1",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+Signer #1 certificate DN: C=US, O=Android, CN=Android Debug
+Signer #1 certificate SHA-256 digest: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+Signer #1 certificate SHA-1 digest: 4fbb357f14740db36fce486727507557d4e3c420
+Signer #1 certificate MD5 digest: 99b2cb67071b64525b38e0e46271893c
+
+package: name='com.opus.piano' versionCode='11' versionName='0.10.1' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+sdkVersion:'26'
+targetSdkVersion:'36'
+uses-permission: name='android.permission.INTERNET'
+uses-permission: name='android.permission.ACCESS_NETWORK_STATE'
+uses-permission: name='android.permission.RECORD_AUDIO'
+uses-permission: name='android.permission.FOREGROUND_SERVICE'
+uses-permission: name='android.permission.FOREGROUND_SERVICE_MICROPHONE'
+uses-permission: name='android.permission.POST_NOTIFICATIONS'
+uses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'
+uses-permission: name='android.permission.USE_BIOMETRIC'
+uses-permission: name='android.permission.USE_FINGERPRINT'
+uses-permission: name='android.permission.WAKE_LOCK'
+uses-permission: name='com.opus.piano.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
+application-label:'Goldberg'
+application-label-af:'Goldberg'
+application-label-am:'Goldberg'
+application-label-ar:'Goldberg'
+application-label-as:'Goldberg'
+application-label-az:'Goldberg'
+application-label-be:'Goldberg'
+application-label-bg:'Goldberg'
+application-label-bn:'Goldberg'
+application-label-bs:'Goldberg'
+application-label-ca:'Goldberg'
+application-label-cs:'Goldberg'
+application-label-da:'Goldberg'
+application-label-de:'Goldberg'
+application-label-el:'Goldberg'
+application-label-en-AU:'Goldberg'
+application-label-en-CA:'Goldberg'
+application-label-en-GB:'Goldberg'
+application-label-en-IN:'Goldberg'
+application-label-en-XC:'Goldberg'
+application-label-es:'Goldberg'
+application-label-es-US:'Goldberg'
+application-label-et:'Goldberg'
+application-label-eu:'Goldberg'
+application-label-fa:'Goldberg'
+application-label-fi:'Goldberg'
+application-label-fr:'Goldberg'
+application-label-fr-CA:'Goldberg'
+application-label-gl:'Goldberg'
+application-label-gu:'Goldberg'
+application-label-hi:'Goldberg'
+application-label-hr:'Goldberg'
+application-label-hu:'Goldberg'
+application-label-hy:'Goldberg'
+application-label-in:'Goldberg'
+application-label-is:'Goldberg'
+application-label-it:'Goldberg'
+application-label-iw:'Goldberg'
+application-label-ja:'Goldberg'
+application-label-ka:'Goldberg'
+application-label-kk:'Goldberg'
+application-label-km:'Goldberg'
+application-label-kn:'Goldberg'
+application-label-ko:'Goldberg'
+application-label-ky:'Goldberg'
+application-label-lo:'Goldberg'
+application-label-lt:'Goldberg'
+application-label-lv:'Goldberg'
+application-label-mk:'Goldberg'
+application-label-ml:'Goldberg'
+application-label-mn:'Goldberg'
+application-label-mr:'Goldberg'
+application-label-ms:'Goldberg'
+application-label-my:'Goldberg'
+application-label-nb:'Goldberg'
+application-label-ne:'Goldberg'
+application-label-nl:'Goldberg'
+application-label-or:'Goldberg'
+application-label-pa:'Goldberg'
+application-label-pl:'Goldberg'
+application-label-pt:'Goldberg'
+application-label-pt-BR:'Goldberg'
+application-label-pt-PT:'Goldberg'
+application-label-ro:'Goldberg'
+application-label-ru:'Goldberg'
+application-label-si:'Goldberg'
+application-label-sk:'Goldberg'
+application-label-sl:'Goldberg'
+application-label-sq:'Goldberg'
+application-label-sr:'Goldberg'
+application-label-sr-Latn:'Goldberg'
+application-label-sv:'Goldberg'
+application-label-sw:'Goldberg'
+application-label-ta:'Goldberg'
+application-label-te:'Goldberg'
+application-label-th:'Goldberg'
+application-label-tl:'Goldberg'
+application-label-tr:'Goldberg'
+application-label-uk:'Goldberg'
+application-label-ur:'Goldberg'
+application-label-uz:'Goldberg'
+application-label-vi:'Goldberg'
+application-label-zh-CN:'Goldberg'
+application-label-zh-HK:'Goldberg'
+application-label-zh-TW:'Goldberg'
+application-label-zu:'Goldberg'
+application-icon-120:'res/mipmap-anydpi-v21/ic_goldberg.xml'
+application-icon-160:'res/mipmap-anydpi-v21/ic_goldberg.xml'
+application-icon-240:'res/mipmap-anydpi-v21/ic_goldberg.xml'
+application-icon-320:'res/mipmap-anydpi-v21/ic_goldberg.xml'
+application-icon-480:'res/mipmap-anydpi-v21/ic_goldberg.xml'
+application-icon-640:'res/mipmap-anydpi-v21/ic_goldberg.xml'
+application-icon-65534:'res/mipmap-anydpi-v21/ic_goldberg.xml'
+application-icon-65535:'res/mipmap-anydpi-v21/ic_goldberg.xml'
+application: label='Goldberg' icon='res/mipmap-anydpi-v21/ic_goldberg.xml'
+application-debuggable
+launchable-activity: name='com.opus.piano.MainActivity'  label='' icon=''
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+  uses-feature: name='android.hardware.microphone'
+  uses-implied-feature: name='android.hardware.microphone' reason='requested android.permission.RECORD_AUDIO permission'
+main
+other-activities
+other-receivers
+other-services
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--' 'af' 'am' 'ar' 'as' 'az' 'be' 'bg' 'bn' 'bs' 'ca' 'cs' 'da' 'de' 'el' 'en-AU' 'en-CA' 'en-GB' 'en-IN' 'en-XC' 'es' 'es-US' 'et' 'eu' 'fa' 'fi' 'fr' 'fr-CA' 'gl' 'gu' 'hi' 'hr' 'hu' 'hy' 'in' 'is' 'it' 'iw' 'ja' 'ka' 'kk' 'km' 'kn' 'ko' 'ky' 'lo' 'lt' 'lv' 'mk' 'ml' 'mn' 'mr' 'ms' 'my' 'nb' 'ne' 'nl' 'or' 'pa' 'pl' 'pt' 'pt-BR' 'pt-PT' 'ro' 'ru' 'si' 'sk' 'sl' 'sq' 'sr' 'sr-Latn' 'sv' 'sw' 'ta' 'te' 'th' 'tl' 'tr' 'uk' 'ur' 'uz' 'vi' 'zh-CN' 'zh-HK' 'zh-TW' 'zu'
+densities: '120' '160' '240' '320' '480' '640' '65534' '65535'
+native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'
+
+DEFAULT TEST MANIFEST
+N: android=http://schemas.android.com/apk/res/android
+  E: manifest (line=2)
+    A: android:compileSdkVersion(0x01010572)=(type 0x10)0x24
+    A: android:compileSdkVersionCodename(0x01010573)="16" (Raw: "16")
+    A: package="com.opus.piano.test" (Raw: "com.opus.piano.test")
+    A: platformBuildVersionCode=(type 0x10)0x24
+    A: platformBuildVersionName=(type 0x10)0x10
+    E: uses-sdk (line=5)
+      A: android:minSdkVersion(0x0101020c)=(type 0x10)0x1a
+      A: android:targetSdkVersion(0x01010270)=(type 0x10)0x24
+    E: instrumentation (line=9)
+      A: android:label(0x01010001)="Tests for com.opus.piano" (Raw: "Tests for com.opus.piano")
+      A: android:name(0x01010003)="androidx.test.runner.AndroidJUnitRunner" (Raw: "androidx.test.runner.AndroidJUnitRunner")
+      A: android:targetPackage(0x01010021)="com.opus.piano" (Raw: "com.opus.piano")
+      A: android:handleProfiling(0x01010022)=(type 0x12)0x0
+      A: android:functionalTest(0x01010023)=(type 0x12)0x0
+    E: queries (line=16)
+      E: package (line=17)
+        A: android:name(0x01010003)="androidx.test.orchestrator" (Raw: "androidx.test.orchestrator")
+      E: package (line=18)
+        A: android:name(0x01010003)="androidx.test.services" (Raw: "androidx.test.services")
+      E: package (line=19)
+        A: android:name(0x01010003)="com.google.android.apps.common.testing.services" (Raw: "com.google.android.apps.common.testing.services")
+    E: uses-permission (line=22)
+      A: android:name(0x01010003)="android.permission.REORDER_TASKS" (Raw: "android.permission.REORDER_TASKS")
+    E: application (line=24)
+      A: android:debuggable(0x0101000f)=(type 0x12)0xffffffff
+      A: android:extractNativeLibs(0x010104ea)=(type 0x12)0x0
+      E: activity (line=27)
+        A: android:theme(0x01010000)=@0x7f0a0006
+        A: android:name(0x01010003)="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity" (Raw: "androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity")
+        A: android:exported(0x01010010)=(type 0x12)0xffffffff
+        E: intent-filter (line=31)
+          A: android:priority(0x0101001c)=(type 0x10)0xffffff9c
+          E: category (line=32)
+            A: android:name(0x01010003)="android.intent.category.LAUNCHER" (Raw: "android.intent.category.LAUNCHER")
+      E: activity (line=35)
+        A: android:theme(0x01010000)=@0x7f0a0006
+        A: android:name(0x01010003)="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity" (Raw: "androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity")
+        A: android:exported(0x01010010)=(type 0x12)0xffffffff
+        E: intent-filter (line=39)
+          A: android:priority(0x0101001c)=(type 0x10)0xffffff9c
+          E: category (line=40)
+            A: android:name(0x01010003)="android.intent.category.LAUNCHER" (Raw: "android.intent.category.LAUNCHER")
+      E: activity (line=43)
+        A: android:theme(0x01010000)=@0x7f0a0005
+        A: android:name(0x01010003)="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity" (Raw: "androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity")
+        A: android:exported(0x01010010)=(type 0x12)0xffffffff
+        E: intent-filter (line=47)
+          A: android:priority(0x0101001c)=(type 0x10)0xffffff9c
+          E: category (line=48)
+            A: android:name(0x01010003)="android.intent.category.LAUNCHER" (Raw: "android.intent.category.LAUNCHER")

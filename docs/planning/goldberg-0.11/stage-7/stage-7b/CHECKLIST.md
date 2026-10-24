@@ -1,3 +1,55 @@
+## Final administrative closure — October 24, 2026
+
+**READY FOR OWNER REVIEW — NOT ACCEPTED. Recommendation: ACCEPT WITH DOCUMENTED LIMITATIONS**, subject to the owner's explicit disposition of the limitations below. This recommendation covers the completed Stage 7B Android client and synthetic/offline verification scope; it does not authorize live integration or release.
+
+- [x] Admin dashboard, Queue/re-review/decision safeguards, Audit, Settings and local sync/notification behavior verified within the documented synthetic scope.
+- [x] CI #25 retained unchanged: 187 native tests, 185 passed, 2 existing skips, no failures/errors; all 9 Stage 7B tests passed. All 262 screenshot/tree pairs reviewed; seeded upgrade retained 12 collections/37 sessions, schema 8→10. Prior clean host gate: 275 JVM tests passed and seven validation scripts passed.
+- [x] October 24 emulator observations retained: real EN/CZ TalkBack traversal and accessible Back, touch exploration, Tab order, IME/insets/system Back, zero-animation navigation and cross-process POST_NOTIFICATIONS revocation/restart/worker suppression. EN/Light/1.0 and CZ/Dark/1.3 are representative samples, not an exhaustive configuration matrix.
+- [x] Unique temporary manual recorder and exact Gradle patch archived under `results/manual-acceptance-2026-10-24/sources/`, with byte/hash receipts, before removal from the active test tree. The 270-file source manifest matches; active app, tests, Gradle and CI match the verified baseline. Default AndroidJUnitRunner restored. No production behavior changed.
+- [x] Restored normal build: `./gradlew assembleDebug assembleDebugAndroidTest lintDebug --offline --no-daemon --max-workers=1` PASS in 2m08s (13 executed/64 up-to-date); lint 0 errors/119 warnings/1 hint. This compiled instrumentation; it did not execute a fresh complete native suite. CI #25 was not repeated.
+- [x] Production APK ZIP integrity, unchanged SHA-256 `93ae9ec88472e4f07dc5328980786e9ce252887ccbac507c0034195cd9b51961`, package/version and trusted signing verified. Evidence-consistency verifier PASS; original screenshots/logs/JSON/hash inventory and historical failures preserved.
+- [ ] Owner explicitly approves final disposition. Stage remains READY FOR OWNER REVIEW; Issue #31 stays OPEN and the umbrella Project stays In Progress.
+- [ ] Proposed Stage 8 deferral, requiring owner agreement: duplicate TalkBack label/control focus stops in three Admin Settings rows; existing large-font bottom-tab truncation and historical scaffold status contrast limitation. Controls remain named, reachable and checkable; no semantics fix is claimed.
+- [ ] Unverified quality limits retained: audible speech/pronunciation, subjective motion comfort/frame timing, exhaustive accessibility/font/keyboard matrix and real three-hour/reboot delivery. These checks are not marked passed.
+- [ ] Stage 6 authorization/approved live backend contracts and credentials: G1–G9/G11 remain explicitly BLOCKED. Stage 8 broader integration/release gates remain separate; no backend activation, merge or release is authorized by this packet.
+
+Evidence: `results/manual-acceptance-2026-10-24/verified-results.json`, `closure-verification.json`, `raw-evidence-inventory.json` and `sources/archive-receipt.json`. The final publication receipt in existing Issue #31 records the exact documentation commit; CI evidence remains bound to `fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c`. Private PMP and unrelated historical files remain local and uncommitted. Earlier checkpoints below are chronological history and do not reopen completed verification.
+
+created by stokonn with love <3
+
+## Stage7B — manual acceptance preparation executed; owner decision OPEN
+
+Purpose: complete feasible emulator-only accessibility/navigation/motion/permission
+checks without repeating CI25. Scope: new isolated AVD, opt-in test recorder and
+build flag, retained evidence/checklists/Issue31/Project/Wiki. Production APK,
+Kotlin/resources, schema, migrations, backups and practice behavior unchanged.
+
+- [x] Preserve private/history; retain CI25 source-bound results without rerun.
+- [x] Boot changed Lavapipe/ANGLE+llvmpipe API36 venue; explicit emulator-5586/qemu1.
+- [x] Real TalkBack EN/Light/1.0 and CZ/Dark/1.3 Audit order, kernel touch exploration
+  and accessible Back; Settings control order sampled. Record duplicate focus stops.
+- [x] Audit Tab8, Queue/endpoint IME558px, layered system Back and real NavHost.
+- [x] All3 animation scales0; route/Back behavior; original1 scales restored.
+- [x] Host-process notification revoke: PID6176→absent→restart7748/DENIED;
+  new worker7815 executes6 fixture calls/signature change/zero notifications.
+- [x] Final recorder compile/lint PASS1m05s; default runner compile/lint PASS13s,
+  lint0errors/119warnings/1hint; default runner restored, isolated AVD stopped.
+- [x] Retain107 PNG observations, native events/state/commands/setup history and
+  read-only evidence verifier PASS. No new JVM/full-suite/CI execution claimed.
+- [ ] Owner disposition on the3 repeated Settings label/control TalkBack focus
+  stops, audible-speech/subjective-motion and non-exhaustive matrix limits.
+- [ ] Explicit Stage7B approval; live G1–G9/G11 stays BLOCKED pending Stage6.
+- [ ] Real3h/reboot-delivery evidence remains unexecuted.
+
+Verification/completion: representative checks executed; preparation complete,
+Stage7B NOT accepted. Decision: approve verified client scope with explicitly
+accepted limitations, or hold for focused accessibility/further review. Neither
+selected. See [owner report](FINAL-OWNER-REPORT.md) and [manual record](MANUAL-ACCEPTANCE.md) for exact commands,
+source/APK identities, raw results, screenshots inspected and limitations.
+No phone, other-worktree edits, production activation, merge or release.
+
+---
+
 > **Current verified checkpoint — 2026-10-24:** correction `fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c`; exact-SHA acceptance40097540179 and automatic quality40097530580 SUCCESS. Independent raw187 tests/0 failures/errors/2 existing skips, all9Stage7B cases PASS; **262 required screenshot/tree pairs** and all262 PNGs inspected in33 contact sheets,32dashboards/16actual row frames/516named-focus-checked occurrences. Seeded12collections/37sessions/schema8→10/integrity PASS; temporary CI signing limits disclosed. Clean host275JVM/0fail,lint0errors119warnings1hint/seven scripts PASS. **Stage7B remains IN PROGRESS; explicit owner acceptance and manual/live gates remain open.** [Authoritative owner report and exact limitations](FINAL-OWNER-REPORT.md). Earlier entries below are historical; their pending states/counts do not describe the latest source.
 
 ## Stage 7B — final recovery verified; owner acceptance OPEN

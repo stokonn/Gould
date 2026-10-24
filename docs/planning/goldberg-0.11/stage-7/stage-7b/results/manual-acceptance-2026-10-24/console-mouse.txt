@@ -1,0 +1,13 @@
+'event mouse <x> <y> <device> <buttonstate>' allows you to genenarate a mouse event
+at x, y with the given buttonstate using the given device. All values are integers.
+Where device:
+  0  = touch screen
+  1  = trackball
+And buttonstate is a mask where:
+  0  = No buttons
+  1  = Left button
+  2  = Right button
+  4  = Middle button
+  8  = Wheel up
+  16 = Wheel down
+OK

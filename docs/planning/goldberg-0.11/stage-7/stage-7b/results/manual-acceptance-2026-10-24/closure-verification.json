@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "stageStatus": "READY FOR OWNER REVIEW",
+  "ownerApproval": "PENDING",
+  "sourceManifestFilesVerified": 270,
+  "executableDiffAgainst0887d3f": "EMPTY",
+  "temporaryProbeArchived": true,
+  "defaultRunner": "androidx.test.runner.AndroidJUnitRunner",
+  "normalBuild": "assembleDebug assembleDebugAndroidTest lintDebug --offline --no-daemon --max-workers=1",
+  "result": "BUILD SUCCESSFUL in 2m 8s; 13 executed /64 up-to-date",
+  "apkSha256": "93ae9ec88472e4f07dc5328980786e9ce252887ccbac507c0034195cd9b51961",
+  "zipCrc": "PASS",
+  "trustedSigning": "PASS",
+  "fullCi25Repeated": false
+}

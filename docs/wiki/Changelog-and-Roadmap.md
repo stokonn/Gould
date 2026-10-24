@@ -30,3 +30,12 @@ All262 required screenshot/tree pairs were retained and inspected, covering32 da
 Stage7B remains **In Progress**: owner acceptance, manual TalkBack/complete app navigation/reduced motion, separate-process platform notification-permission revocation and live G1–G9/G11 integration remain open. Larger-font navigation-label truncation, dark-parent status-bar contrast, awkward wrapping and timed-frame limitations remain disclosed. Production networking/moderation stay disabled. No phone testing, production activation, main merge or new release. [Issue31](https://github.com/stokonn/Goldberg/issues/31) is the current release dashboard; earlier development notes are historical checkpoints.
 
 created by stokonn with love <3
+
+
+### October 24, 2026 — Stage 7B manual verification closure
+
+Stage 7B Android client verification is **READY FOR OWNER REVIEW**, not accepted or released. CI #25 remains the verified source-bound result (187 native tests, 2 existing skips, no failures; 262 screenshot/tree pairs; seeded upgrade preserved). Representative emulator checks now cover real English/Czech TalkBack navigation and accessible Back, touch exploration, keyboard/IME/system Back, reduced-motion navigation and cross-process notification-permission revocation. The temporary recorder is archived; normal app/test/CI sources and AndroidJUnitRunner are restored.
+
+Proposed owner disposition: ACCEPT WITH DOCUMENTED LIMITATIONS for the verified client scope. Three Admin Settings label/control pairs duplicate TalkBack focus stops; audible speech quality, subjective motion comfort and exhaustive configurations remain unverified. Live G1–G9/G11 integration is BLOCKED until Stage 6 authorization; Stage 8 integration/release gates remain separate. No main merge, production activation or release has occurred. See the branch's Stage 7B FINAL-OWNER-REPORT.md and existing Issue #31 for evidence and the pending owner decision.
+
+created by stokonn with love <3

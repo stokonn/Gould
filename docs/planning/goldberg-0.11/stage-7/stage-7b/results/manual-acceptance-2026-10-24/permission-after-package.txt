@@ -1,0 +1,194 @@
+Activity Resolver Table:
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        78eb5c com.opus.piano/.MainActivity filter 5a6e65
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+
+Receiver Resolver Table:
+  Non-Data Actions:
+      androidx.profileinstaller.action.SAVE_PROFILE:
+        42549f4 com.opus.piano/androidx.profileinstaller.ProfileInstallReceiver filter 3d4a163
+          Action: "androidx.profileinstaller.action.SAVE_PROFILE"
+      androidx.profileinstaller.action.INSTALL_PROFILE:
+        42549f4 com.opus.piano/androidx.profileinstaller.ProfileInstallReceiver filter 721051d
+          Action: "androidx.profileinstaller.action.INSTALL_PROFILE"
+      android.intent.action.TIMEZONE_CHANGED:
+        b41f73a com.opus.piano/.reminders.ReminderRescheduleReceiver filter 5461feb
+          Action: "android.intent.action.TIMEZONE_CHANGED"
+          Action: "android.intent.action.TIME_SET"
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.MY_PACKAGE_REPLACED"
+      android.intent.action.TIME_SET:
+        b41f73a com.opus.piano/.reminders.ReminderRescheduleReceiver filter 5461feb
+          Action: "android.intent.action.TIMEZONE_CHANGED"
+          Action: "android.intent.action.TIME_SET"
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.MY_PACKAGE_REPLACED"
+      androidx.profileinstaller.action.SKIP_FILE:
+        42549f4 com.opus.piano/androidx.profileinstaller.ProfileInstallReceiver filter a0c3392
+          Action: "androidx.profileinstaller.action.SKIP_FILE"
+      androidx.profileinstaller.action.BENCHMARK_OPERATION:
+        42549f4 com.opus.piano/androidx.profileinstaller.ProfileInstallReceiver filter 471160
+          Action: "androidx.profileinstaller.action.BENCHMARK_OPERATION"
+      android.intent.action.BOOT_COMPLETED:
+        b41f73a com.opus.piano/.reminders.ReminderRescheduleReceiver filter 5461feb
+          Action: "android.intent.action.TIMEZONE_CHANGED"
+          Action: "android.intent.action.TIME_SET"
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.MY_PACKAGE_REPLACED"
+        7576148 com.opus.piano/androidx.work.impl.background.systemalarm.RescheduleReceiver filter 5888be1
+          Action: "android.intent.action.BOOT_COMPLETED"
+      androidx.work.diagnostics.REQUEST_DIAGNOSTICS:
+        6c84d06 com.opus.piano/androidx.work.impl.diagnostics.DiagnosticsReceiver filter 364cfc7
+          Action: "androidx.work.diagnostics.REQUEST_DIAGNOSTICS"
+      android.intent.action.MY_PACKAGE_REPLACED:
+        b41f73a com.opus.piano/.reminders.ReminderRescheduleReceiver filter 5461feb
+          Action: "android.intent.action.TIMEZONE_CHANGED"
+          Action: "android.intent.action.TIME_SET"
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.MY_PACKAGE_REPLACED"
+
+Domain verification status:
+
+Permissions:
+  Permission [com.opus.piano.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION] (315991f):
+    sourcePackage=com.opus.piano
+    uid=10216 gids=[] type=0 prot=signature
+    perm=PermissionInfo{20aee62 com.opus.piano.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION}
+    flags=0x0
+
+Registered ContentProviders:
+  com.opus.piano/androidx.startup.InitializationProvider:
+    Provider{5158bf3 com.opus.piano/androidx.startup.InitializationProvider}
+
+ContentProvider Authorities:
+  [com.opus.piano.androidx-startup]:
+    Provider{5158bf3 com.opus.piano/androidx.startup.InitializationProvider}
+      applicationInfo=ApplicationInfo{1d3d46c com.opus.piano}
+
+Key Set Manager:
+  [com.opus.piano]
+      Signing KeySets: 61
+
+Packages:
+  Package [com.opus.piano] (2bf7f51):
+    appId=10216
+    pkg=Package{5a8ab29 com.opus.piano}
+    codePath=/data/app/~~-9ItpyknNOXfFFXuq_Y8Ug==/com.opus.piano-TsUrUzu99wwl1a8O2ZfIog==
+    resourcePath=/data/app/~~-9ItpyknNOXfFFXuq_Y8Ug==/com.opus.piano-TsUrUzu99wwl1a8O2ZfIog==
+    legacyNativeLibraryDir=/data/app/~~-9ItpyknNOXfFFXuq_Y8Ug==/com.opus.piano-TsUrUzu99wwl1a8O2ZfIog==/lib
+    extractNativeLibs=false
+    primaryCpuAbi=x86_64
+    secondaryCpuAbi=null
+    cpuAbiOverride=null
+    versionCode=11 minSdk=26 targetSdk=36
+    minExtensionVersions=[]
+    versionName=0.10.1
+    hiddenApiEnforcementPolicy=2
+    usesNonSdkApi=false
+    splits=[base]
+    apkSigningVersion=2
+    flags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PARTIALLY_DIRECT_BOOT_AWARE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    forceQueryable=false
+    pageSizeCompat=0
+    scannedAsStoppedSystemApp=false
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2026-10-24 15:59:51
+    lastUpdateTime=2026-10-24 15:59:51
+    installerPackageName=null
+    installerPackageUid=-1
+    initiatingPackageName=com.android.shell
+    originatingPackageName=null
+    packageSource=1
+    appMetadataFilePath=null
+    appMetadataSource=0
+    signatures=PackageSignatures{7ad8eae version:2, signatures:[53b8de7c], past signatures:[]}
+    installPermissionsFixed=false
+    pkgFlags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    privatePkgFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PARTIALLY_DIRECT_BOOT_AWARE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    apexModuleName=null
+    declared permissions:
+      com.opus.piano.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: prot=signature
+    requested permissions:
+      android.permission.POST_NOTIFICATIONS
+      android.permission.FOREGROUND_SERVICE
+      android.permission.RECEIVE_BOOT_COMPLETED
+      android.permission.INTERNET
+      com.opus.piano.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+      android.permission.ACCESS_NETWORK_STATE
+      android.permission.USE_FINGERPRINT
+      android.permission.FOREGROUND_SERVICE_MICROPHONE
+      android.permission.USE_BIOMETRIC
+      android.permission.RECORD_AUDIO
+      android.permission.WAKE_LOCK
+    install permissions:
+      android.permission.FOREGROUND_SERVICE: granted=true
+      android.permission.RECEIVE_BOOT_COMPLETED: granted=true
+      android.permission.INTERNET: granted=true
+      com.opus.piano.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: granted=true
+      android.permission.ACCESS_NETWORK_STATE: granted=true
+      android.permission.USE_FINGERPRINT: granted=true
+      android.permission.FOREGROUND_SERVICE_MICROPHONE: granted=true
+      android.permission.USE_BIOMETRIC: granted=true
+      android.permission.WAKE_LOCK: granted=true
+    User 0: ceDataInode=385216 deDataInode=66294 installed=true hidden=false suspended=false distractionFlags=0 stopped=false notLaunched=false enabled=0 instant=false virtual=false quarantined=false
+      installReason=0
+      dataDir=/data/user/0/com.opus.piano
+      firstInstallTime=2026-10-24 15:59:51
+      uninstallReason=0
+      overlay paths:
+        /product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk
+        /data/resource-cache/com.android.systemui-neutral-CxbU.frro
+        /data/resource-cache/com.android.systemui-accent-kM5x.frro
+        /data/resource-cache/com.android.systemui-dynamic-0i8X.frro
+      legacy overlay paths:
+        /product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk
+      gids=[3003]
+      runtime permissions:
+        android.permission.POST_NOTIFICATIONS: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.RECORD_AUDIO: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+      enabledComponents:
+        androidx.appcompat.app.AppLocalesMetadataHolderService
+
+Queries:
+  system apps queryable: false
+  queries via forceQueryable:
+  queries via package name:
+    com.opus.piano:
+      com.opus.piano.test
+    com.opus.piano.test:
+      com.opus.piano
+  queries via component:
+    com.google.android.settings.intelligence:
+      com.opus.piano
+    com.google.android.as:
+      com.opus.piano
+    com.google.android.apps.accessibility.voiceaccess:
+      com.opus.piano
+  queryable via interaction:
+    User 0:
+      [com.android.server.telecom,com.android.DeviceAsWebcam,com.android.location.fused,com.android.emulator.multidisplay,com.android.inputdevices,com.android.dynsystem,android,com.android.providers.settings,com.android.keychain,com.android.settings,com.android.localtransport]:
+        com.opus.piano
+      com.google.android.gms:
+        com.opus.piano
+      com.google.android.as:
+        com.opus.piano
+      com.google.android.inputmethod.latin:
+        com.opus.piano
+      com.android.systemui:
+        com.opus.piano
+      com.google.android.apps.nexuslauncher:
+        com.opus.piano
+  queryable via uses-library:
+
+Dexopt state:
+  [com.opus.piano]
+    path: /data/app/~~-9ItpyknNOXfFFXuq_Y8Ug==/com.opus.piano-TsUrUzu99wwl1a8O2ZfIog==/base.apk
+      x86_64: [status=run-from-apk] [reason=unknown] [primary-abi]
+        [location is error]
+
+Compiler stats:
+  [com.opus.piano]
+    (No recorded stats)

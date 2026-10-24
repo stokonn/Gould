@@ -1,0 +1,19 @@
+{
+  "result": "PASS: retained observations consistent; not unconditional Stage7B acceptance",
+  "TalkBack": "Actual EN Audit8/CS Audit6 traversal; touch exploration; accessible Back in both locales",
+  "keyboard": "Audit Tab8; Queue and endpoint IME558px; actual layered system Back",
+  "reducedMotion": "All3 scales0; real route/Back behavior; original1 scales restored",
+  "permissionRevocation": {
+    "beforePid": "6176",
+    "afterRevokePid": "",
+    "restartedPid": "7748",
+    "runtimePermissionAfterRevoke": "DENIED",
+    "runtimePermissionAfterRestart": "DENIED",
+    "hostRevokeSeparateProcess": true,
+    "beforeNotification701Present": true,
+    "launch": "Starting: Intent { cmp=com.opus.piano/.MainActivity }\nStatus: ok\nLaunchState: COLD\nActivity: com.opus.piano/.MainActivity\nTotalTime: 1325\nWaitTime: 1329\nComplete\n"
+  },
+  "newFinding": "Three Settings labels and named checkable controls are separate repeated TalkBack focus stops",
+  "limits": "No audible speech/vestibular assessment, exhaustive keyboard/locale/font matrix, real3h/reboot delivery or live G1–G9/G11 integration",
+  "ownerApproval": "PENDING"
+}
