@@ -1,6 +1,7 @@
 # Stage 6 — full-int8 local engineering acceptance
 
-Status: LOCAL ENGINEERING ACCEPTANCE VERIFIED, 2026-10-24. Source publication pending.
+Status: LOCAL ENGINEERING ACCEPTANCE VERIFIED, 2026-10-24. Implementation `023d290e5f30c26e85ffba5f20b1d16914a1e1e5`
+ordinary-pushed and exact remote SHA verified; implementation [quality run40098429341](https://github.com/stokonn/Goldberg/actions/runs/40098429341) **SUCCESS**.
 [Verified acceptance checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6384808424). Branch
 `feature/goldberg-0.11-stage-6-api-v1-local`; recovered published baseline
 `0142e997f3a63a026c76219d8dcb04185b66e7ee`. The owner authorized completing the
@@ -110,7 +111,7 @@ Venue: rootless Podman, PostgreSQL17.11, cached image ID
 Disposable container `goldberg-api-http-pg-88252f5025fe4a20a3db859abfe313a5` and
 volume `ec6a6368e0d3934dfb2c861aa804b139ea72102f1fbb9f544c0bdd86d9351529`
 were independently confirmed absent. No remaining implementation/test failure;
-publication/CI tracking follows separately.
+implementation published with exact remote/source identity and successful GitHub quality CI.
 
 Retained attempts:
 
@@ -141,6 +142,27 @@ worktree edits, device/ADB, main merge, release or deployment. No local Android
 build/JVM/lint/instrumentation/UI/screenshots/APK/signing verification was executed
 or required for this backend-only task. Static backup/ACL checks do not rerun the
 previous encrypted-restore or ACL SQL venue. GitHub's existing quality workflow
-is inspected separately after ordinary push; no release is authorized.
+passed on implementation023d290: `./gradlew clean assembleDebug testDebugUnitTest
+assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1`, followed by
+migration, portable backup/v5 fixtures, localization, paging, agent-policy and
+schema-drift checks. Instrumentation was compiled, not executed. CI does not
+provide a trusted release APK/signing or physical-device acceptance claim.
 
 created by stokonn with love <3
+
+## Publication receipt
+
+Implementation/evidence `023d290e5f30c26e85ffba5f20b1d16914a1e1e5` was
+ordinary-pushed; fresh remote SHA matched. GitHub quality40098429341 completed
+SUCCESS on that exact SHA. `committed-source-identity.json` independently verifies
+all182 committed source/manifest files equal the final acceptance run. Protected
+historical/Android/AGENTS tracked-file diff since0142e99 is empty.
+
+This receipt changes documentation/evidence only. Tested implementation, manifest
+and raw run bytes remain unchanged. Final receipt commit/remote SHA and its
+automatic quality run are recorded in Issue31 and the private PMP checkpoint to
+avoid self-referential commit hashes. The original two untracked M2/M3 evidence
+directories are retained; `.pmp/`, `.pmp.yml` and private credentials are not staged.
+
+Next work: separately authorized consumer/version/policy/hosted readiness; do not
+repeat completed numeric engineering, activate Android transport or deploy.

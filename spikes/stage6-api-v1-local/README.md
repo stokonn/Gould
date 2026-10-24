@@ -8,7 +8,8 @@ Existing lock ordering, receipt replay and audit chains remain intact. Real
 policies remain default-deny, public `/v1` compatibility unconfirmed.
 
 Final source-bound local verification PASS (469 Node tests; historical18+17 and
-current parser11 separately PASS). Source publication/CI pending; see the
+current parser11 separately PASS). Implementation `023d290e5f30c26e85ffba5f20b1d16914a1e1e5`
+is published with exact remote SHA and quality CI40098429341 SUCCESS; see the
 [full-int8 acceptance ledger](../../docs/planning/goldberg-0.11/stage-6/API-FULL-INT8-ACCEPTANCE.md).
 Build current provenance **before** executing the guarded runner:
 

@@ -3,7 +3,8 @@
 Purpose/scope: recover and complete the interrupted, owner-authorized shared
 handler/local API int8 implementation, current provenance and disposable-PG
 acceptance. Branch `feature/goldberg-0.11-stage-6-api-v1-local`; recovered published
-baseline `0142e997f3a63a026c76219d8dcb04185b66e7ee`. Publication/remote CI pending.
+baseline `0142e997f3a63a026c76219d8dcb04185b66e7ee`. Implementation/evidence commit `023d290e5f30c26e85ffba5f20b1d16914a1e1e5`
+ordinary-pushed; exact remote SHA verified. Implementation [quality run40098429341](https://github.com/stokonn/Goldberg/actions/runs/40098429341) **SUCCESS**; publication receipt below.
 
 - [x] Preserve dirty work, historical metadata/provenance/raw failures and private
   `/tmp/goldberg-stage6-private-pmp/checkpoint.md`; save new private recovery
@@ -23,8 +24,12 @@ baseline `0142e997f3a63a026c76219d8dcb04185b66e7ee`. Publication/remote CI pendi
 - [x] Policy, three portable backup fixtures, ACL proposal and whitespace PASS.
   **181 current-source files + manifest (182 run hashes)** unchanged during execution;
   independent verifier exit0 and live exact container/volume absence probes PASS.
-- [ ] Ordinary commit/push, exact remote readback, final Issue31/Project checkpoint
-  and GitHub quality CI receipt.
+- [x] Ordinary commit/push/exact remote readback of `023d290e5f30c26e85ffba5f20b1d16914a1e1e5`;
+  Issue31/Project publication checkpoint synchronized. All182 committed source/manifest
+  files match final run.
+- [x] Implementation [quality run40098429341](https://github.com/stokonn/Goldberg/actions/runs/40098429341) SUCCESS; record this documentation-only
+  publication receipt and committed source identity. Issue31 stays OPEN / Goldberg
+  Development In Progress. Final receipt SHA/CI are retained in Issue31/private PMP.
 
 The source-set SHA256 is
 `b7c6db2d251429e7edbbcef4ae3095a915ee8d5330ac7233254e4573b075c745`.
