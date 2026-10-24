@@ -1,0 +1,45 @@
+{
+  "total_count": 2,
+  "artifacts": [
+    {
+      "id": 12561801732,
+      "node_id": "MDg6QXJ0aWZhY3QxMjU2MTgwMTczMg==",
+      "name": "stage7b-acceptance-instrumentation-api36-fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c",
+      "size_in_bytes": 24816533,
+      "url": "https://api.github.com/repos/stokonn/Goldberg/actions/artifacts/12561801732",
+      "archive_download_url": "https://api.github.com/repos/stokonn/Goldberg/actions/artifacts/12561801732/zip",
+      "expired": false,
+      "digest": "sha256:8a75b0c22423cb792f893fa8ce06b04b1ca58bfba023f5b22ef1dfbaf5426223",
+      "created_at": "2026-10-24T13:33:20Z",
+      "updated_at": "2026-10-24T13:33:20Z",
+      "expires_at": "2026-11-07T13:33:17Z",
+      "workflow_run": {
+        "id": 40097540179,
+        "repository_id": 1421247418,
+        "head_repository_id": 1421247418,
+        "head_branch": "feature/goldberg-0.11-stage-7b",
+        "head_sha": "fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c"
+      }
+    },
+    {
+      "id": 12561432389,
+      "node_id": "MDg6QXJ0aWZhY3QxMjU2MTQzMjM4OQ==",
+      "name": "stage5-acceptance-results",
+      "size_in_bytes": 1596068,
+      "url": "https://api.github.com/repos/stokonn/Goldberg/actions/artifacts/12561432389",
+      "archive_download_url": "https://api.github.com/repos/stokonn/Goldberg/actions/artifacts/12561432389/zip",
+      "expired": false,
+      "digest": "sha256:c195d8743bce8fa5b2a2e7f6b711b552f82693cd595b4c0a3e85d9be1053d191",
+      "created_at": "2026-10-24T13:26:57Z",
+      "updated_at": "2026-10-24T13:26:57Z",
+      "expires_at": "2026-11-23T13:26:56Z",
+      "workflow_run": {
+        "id": 40097540179,
+        "repository_id": 1421247418,
+        "head_repository_id": 1421247418,
+        "head_branch": "feature/goldberg-0.11-stage-7b",
+        "head_sha": "fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c"
+      }
+    }
+  ]
+}

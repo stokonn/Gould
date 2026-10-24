@@ -1,4 +1,41 @@
-> **Current recovery checkpoint — 2026-10-24:** CI #24 at dc60e83 failed the matrix because revision 2 legitimately requires re-review acknowledgement. Both retained ZIP digests/integrity and seeded data preservation independently PASS; no repeat downloads. Existing test-only acknowledgement → completion → verification correction reviewed; focused gate and seven scripts PASS. Clean host gate PASS 3m58s: 275 JVM/0 failures/errors/skips, lint 0 errors/119 warnings/1 hint, APK/signing/ZIP verified. Expected final matrix: **262 screenshot/tree pairs**. Stage 7B IN PROGRESS; owner acceptance pending. [Authoritative final recovery checklist](stage-7/stage-7b/FINAL-RECOVERY.md). Earlier entries below are historical and do not describe the latest run status.
+> **Current verified checkpoint — 2026-10-24:** correction `fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c`; exact-SHA acceptance40097540179 and automatic quality40097530580 SUCCESS. Independent raw187 tests/0 failures/errors/2 existing skips, all9Stage7B cases PASS; **262 required screenshot/tree pairs** and all262 PNGs inspected in33 contact sheets,32dashboards/16actual row frames/516named-focus-checked occurrences. Seeded12collections/37sessions/schema8→10/integrity PASS; temporary CI signing limits disclosed. Clean host275JVM/0fail,lint0errors119warnings1hint/seven scripts PASS. **Stage7B remains IN PROGRESS; explicit owner acceptance and manual/live gates remain open.** [Authoritative owner report and exact limitations](stage-7/stage-7b/FINAL-OWNER-REPORT.md). Earlier entries below are historical; their pending states/counts do not describe the latest source.
+
+## Stage 7B — final recovery verified; owner acceptance OPEN
+
+**Purpose:** finish interrupted verification without bypassing the legitimate
+changed-revision acknowledgement. **Scope:** Stage7bAcceptanceTest, CI evidence,
+checklists/AI handoffs and existing Issue31/Project/Wiki. No production/database/
+migration/backup/practice changes.
+
+- [x] Preserve initialdc60e83 work/private PMP/historical artifacts; independently
+  inventory CI24 using existing ZIPs (732 member hashes, no repeat downloads).
+- [x] Review the existing test-only acknowledgement → completion → verification
+  flow; retain all earlier assertions and production safeguards.
+- [x] Focused gate13s and mandatory clean host3m58s PASS:275JVM/36suites/0 failures,
+  errors or skips;lint0errors119warnings1hint;seven validation scripts PASS.
+- [x] Ordinary-push correctionfb1d3f971ed79de09dccbdc771e1c45a09dc0a6c, remote exact;
+  dispatch full acceptance40097540179 exactly once;both jobs and quality40097530580 SUCCESS.
+- [x] Independently verify187native XML cases/185passed/0 failures/errors/2existing
+  external-fixture skips;all9Stage7B cases PASS. No locally executed instrumentation.
+- [x] Inventory262PNG/tree pairs and visually inspect all262 through33sheets plus
+  selected originals;32dashboard configs/16actual row frames/516named-focus-checked
+  occurrences. Native focus/toggle/disabled guard and actual row-open/Back PASS.
+- [x] Seeded immutable0.10.1→candidate upgrade:12personal collections equal,
+  37sessions/preferences preserved,schema8→10/integrity/foreign keys PASS;
+  temporary CI signing versus trusted local/release certificate disclosed.
+- [x] Prepare owner report and synchronize existing Issue description+checkpoint,
+  Project In Progress and English Wiki/local sources;preserve prior history.
+- [ ] Explicit owner acceptance;manual TalkBack/complete navigation/system Back/
+  keyboard/reduced motion/platform-permission revocation/real3h-reboot delivery.
+- [ ] Approved live G1–G9/G11 integration;production network/decisions stay disabled.
+
+**Verification/completion:** synthetic recovery PASS;Stage7B remains IN PROGRESS.
+Timed snapshot, existing navigation/contrast/extreme-font limitations and exact
+commands/artifact/source hashes are in [the owner report](stage-7/stage-7b/FINAL-OWNER-REPORT.md).
+[Final independent Issue checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6384951524). No phone, other-worktree edits,
+production activation, main merge or release. The entries below are historical.
+
+---
 
 ## Stage 7B recovery and final acceptance — October 24, 2026
 

@@ -1,6 +1,6 @@
 # Stage 7B final recovery — October 24, 2026
 
-Status: **IN PROGRESS — owner acceptance pending**. This file supersedes earlier
+Status: **Synthetic recovery verification PASS; Stage7B IN PROGRESS — owner acceptance pending**. This file supersedes earlier
 pending-run summaries; historical evidence and checkpoints remain preserved.
 
 Purpose: recover the interrupted CI #24 investigation, correct the fixture flow,
@@ -47,21 +47,21 @@ No production code, personal database, migration, backup or practice changes.
   backups, history paging, localization (1050 EN/CZ), migrations and Stage3B v5.
 - [x] Mandatory clean local gate PASS **3m58s**, 84 tasks (82 executed/2 up-to-date): `ANDROID_HOME=/home/stokonn/Android/Sdk ./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --offline --no-daemon --max-workers=1`. Fresh **275 JVM tests /36 suites /0 failures/errors/skips**, lint **0 errors/119 warnings/1 hint**, instrumentation compilation only. Logs, XML, source manifest and APK identity retained in `results/final-recovery-2026-10-24/`.
 - [x] APK identity/signing/ZIP checks PASS: `com.opus.piano`, existing development 0.10.1/code11, SHA-256 `93ae9ec88472e4f07dc5328980786e9ce252887ccbac507c0034195cd9b51961`, trusted signer `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`. Production source unchanged; APK hash is identical to the previous clean production build.
-- [ ] Commit/push only verified correction/evidence/docs; verify remote SHA.
-- [ ] Dispatch full stage7b-acceptance exactly once at corrected source SHA.
-- [ ] Independently inspect exact-SHA JUnit, 262 required screenshot/tree pairs,
+- [x] Commit/push only verified correction/evidence/docs: `fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c`; ordinary push and exact remote readback PASS.
+- [x] Dispatch full stage7b-acceptance exactly once at corrected source SHA: [run 40097540179](https://github.com/stokonn/Goldberg/actions/runs/40097540179). Both jobs SUCCESS; raw/native/visual/upgrade inspection PASS within the report's stated scope.
+- [x] New-source seeded upgrade independently PASS: artifact12561432389, SHA256 `c195d8743bce8fa5b2a2e7f6b711b552f82693cd595b4c0a3e85d9be1053d191`; ZIP/source binding PASS, all12 personal collections equal/37sessions, schema8→10, integrity and foreign keys PASS, preference assertion passed. Same-runner temporary signer `3d60b007…` matches debug baseline/candidate; downloaded release certificate separately matches trusted53eface4… (no release-signed installation claim). CI candidate hash `3b0afc1e5e8318dcec628db7b97ea4dd0977188423e7a587cb5b70eb51da08d0`.
+- [x] Independently inspect exact-SHA JUnit, 262 required screenshot/tree pairs,
   32 dashboard configurations, Queue/Audit row reachability, native accessibility
-  focus, actual row-open/Back, notification/sync and seeded upgrade evidence.
-- [ ] Synchronize Issue #31 description AND checkpoint comments, Project,
-  maintainable documentation and owner report with executed results.
+  focus, actual row-open/Back, notification/sync and seeded upgrade evidence. Raw187 tests/0 failures/errors/2 existing skips; all9Stage7B cases PASS. All262 PNGs inspected via33 contact sheets plus selected originals;263text files/516named-focus-checked occurrences. Static32base-destination/16row checks PASS. See [final owner report](FINAL-OWNER-REPORT.md) for timed-frame and manual/live limitations.
+- [x] Synchronize Issue #31 description AND checkpoint comments, Project,
+  maintainable documentation and owner report with executed results. [Final verified checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6384951524). Owner acceptance remains pending; earlier WIP descriptions archived without deleting history.
 - [ ] Explicit owner acceptance. Manual emulator TalkBack/full navigation,
   platform permission revocation and live G1–G9/G11 remain open/unexecuted;
   passing synthetic CI does not close them.
 
 ## Durable checkpoint
 
-Initial branch/commit above; clean host gate and APK identity PASS. Next: publish narrow test-only correction, dispatch once,
-then inspect complete raw acceptance artifacts. Known local emulator host crash is
+Current published/tested source `fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c`; run 40097540179 dispatched once. Clean host/APK/native/262-pair/visual/upgrade gates PASS within the bounded synthetic scope. Next: owner disposition and the explicitly open manual/live gates in [FINAL-OWNER-REPORT.md](FINAL-OWNER-REPORT.md); do not re-dispatch unchanged source. Known local emulator host crash is
 not retried. No phone, other-worktree edits, production activation, main merge or
 release. Stage 7B is not marked complete.
 

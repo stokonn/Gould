@@ -1,3 +1,5 @@
+> **Current verified checkpoint — 2026-10-24:** correction `fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c`; exact-SHA acceptance40097540179 and automatic quality40097530580 SUCCESS. Independent raw187 tests/0 failures/errors/2 existing skips, all9Stage7B cases PASS; **262 required screenshot/tree pairs** and all262 PNGs inspected in33 contact sheets,32dashboards/16actual row frames/516named-focus-checked occurrences. Seeded12collections/37sessions/schema8→10/integrity PASS; temporary CI signing limits disclosed. Clean host275JVM/0fail,lint0errors119warnings1hint/seven scripts PASS. **Stage7B remains IN PROGRESS; explicit owner acceptance and manual/live gates remain open.** [Authoritative owner report and exact limitations](FINAL-OWNER-REPORT.md). Earlier entries below are historical; their pending states/counts do not describe the latest source.
+
 ## Stage 7B coordinated acceptance continuation — 2026-10-23
 
 **Current: IN PROGRESS; owner acceptance pending.** Scope: approved remaining

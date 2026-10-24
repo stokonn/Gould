@@ -1,0 +1,8 @@
+trusted release certificate SHA-256: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+downloaded 0.10.1 release certificate SHA-256: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+v0.10.1 debug-rebuild certificate SHA-256: 3d60b00755b7e67dfa8b035a23d05b1496e4112a8673dec3a824e6fa18aaaf00
+candidate certificate SHA-256: 3d60b00755b7e67dfa8b035a23d05b1496e4112a8673dec3a824e6fa18aaaf00
+apksigner exit codes:
+release apksigner exit=0
+baseline apksigner exit=0
+candidate apksigner exit=0
