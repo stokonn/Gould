@@ -1,3 +1,37 @@
+## Stage 6 synthetic backup and restore verification — 2026-10-24
+
+The new `spikes/stage6-backup-local/run-local.sh` harness was executed against
+the cached rootless Podman PostgreSQL 17.11 image. It creates only synthetic
+rows and uses no published port, database URL, host data mount or hosted
+credential. The final run exited **0**.
+
+| Check | Result |
+|---|---|
+| Logical custom-format export | PASS; 368 ms |
+| OpenSSL encryption and SHA-256 manifest | PASS |
+| Deliberate tamper detection | PASS; manifest rejected modified ciphertext |
+| Fresh-database restore/decryption | PASS; 997 ms |
+| Restored counts | PASS; metadata 2, submissions 2, audit events 2 |
+| Schema consistency | PASS after removing PostgreSQL 17 session markers |
+| Audit-chain recomputation | PASS; two-row chain and head verified |
+| Cleanup/secrets | PASS; key/plaintext/decrypted/tampered files removed; no matching container |
+| Total local elapsed time | 4,354 ms |
+
+The encrypted artifact, manifest and `evidence.json` are preserved privately
+under the session workspace. The artifact is recognized as OpenSSL salted
+ciphertext and its manifest recheck passed. Secret/production-endpoint scans
+found no matches in preserved evidence or diagnostic logs. Earlier harness
+iterations failed during development because of a manifest path, tamper-test
+filename, and PostgreSQL 17 dump session-marker comparison; these were
+corrected before the final run and their raw failure output was not presented
+as passing evidence.
+
+This verifies only a disposable synthetic drill. It does not verify provider
+storage, key recovery, daily scheduling, retention, real-data scope, hosted
+restore, production RPO/RTO or 6.0f/C4.
+
+created by stokonn with love <3
+
 ## Stage 6 PostgreSQL 17 ACL verification — 2026-10-24
 
 **Executed and passed:** rootless Podman pulled official

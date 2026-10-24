@@ -1,3 +1,23 @@
+## Stage 6 synthetic backup and restore verification — 2026-10-24
+
+- [x] Add a local-only synthetic PostgreSQL 17 backup/restore harness under
+  `spikes/stage6-backup-local/`; no database URL, port publication or host
+  data mount is accepted.
+- [x] Export a custom-format logical dump and encrypt it with a temporary
+  OpenSSL key; preserve an integrity manifest without retaining plaintext.
+- [x] Reject a deliberately tampered encrypted artifact before restore.
+- [x] Restore into a fresh database; verify 2 metadata, 2 submission and 2
+  audit rows, normalized schema equality and the two-row audit hash chain.
+- [x] Verify cleanup and absence of key/plaintext/tampered artifact and
+  inspect logs for secrets or production endpoints.
+
+Final synthetic run passed: export **368 ms**, restore **997 ms**, total
+**4,354 ms**. These are local measurements only and are not production RPO/RTO.
+Backup destination, key custody, scheduler, retention and hosted restore remain
+open. No real data or cloud database was accessed.
+
+created by stokonn with love <3
+
 ## Stage 6 PostgreSQL 17 ACL verification — 2026-10-24
 
 - [x] Pull the owner-authorized official `docker.io/library/postgres:17`

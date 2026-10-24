@@ -1949,3 +1949,40 @@ deployment approval, rollback/migration review, C4, 6.0f and backup/recovery
 requirements remain open. No production or cloud change occurred.
 
 created by stokonn with love <3
+## Stage 6 backup and recovery verification — 2026-10-24
+
+**Purpose:** exercise the documented zero-cost logical backup design against
+only synthetic PostgreSQL 17 data, including encryption, integrity, isolated
+restore and audit-chain verification.
+
+**Scope:** new `spikes/stage6-backup-local/` fixture, shell harness and SQL;
+private synthetic evidence; Stage 6 documentation. No Supabase, real data,
+production scheduler, provider storage, Android or Stage 7 worktree.
+
+**Tasks**
+
+- [x] Review `ZERO-COST-OPS.md`, `BACKUP-REVIEW.md`, `DATA-MODEL.md` and
+  `THREAT-MODEL.md`.
+- [x] Implement a no-port, disposable PostgreSQL 17 synthetic fixture.
+- [x] Export a custom-format logical dump and encrypt it with a temporary key.
+- [x] Generate and verify a SHA-256 manifest; reject deliberate ciphertext
+  tampering.
+- [x] Decrypt and restore into a fresh database.
+- [x] Verify row counts, normalized schema equality and audit-chain/head
+  integrity.
+- [x] Verify cleanup and scan preserved evidence for secrets/endpoints.
+- [x] Record local export, restore and total elapsed times.
+- [ ] Verify owner-controlled destination, key custody/recovery, schedule,
+  retention, hosted restore and production backup failure handling.
+
+**Verification:** final harness exit **0**; export **368 ms**, restore
+**997 ms**, total **4,354 ms**. Restored counts were 2 metadata, 2
+submissions and 2 audit events. Encryption, manifest, tamper rejection,
+schema comparison, audit chain and cleanup passed. The measured timings are
+synthetic local timings only; no production RPO/RTO claim is made.
+
+**Completion status:** synthetic local drill **COMPLETE**; backup readiness
+and Stage 6 remain **OPEN** pending private destination/key/schedule/restore
+decisions and the independent C4/6.0f gates.
+
+created by stokonn with love <3

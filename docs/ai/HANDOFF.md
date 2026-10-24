@@ -1,3 +1,29 @@
+## Stage 6 synthetic backup and restore verification — 2026-10-24
+
+Added `spikes/stage6-backup-local/`, a local-only harness that starts the
+cached official PostgreSQL 17 image with no published port, creates synthetic
+metadata/submission/audit rows, performs a custom-format logical dump,
+encrypts it with a temporary OpenSSL AES-256-CBC key, writes a SHA-256
+manifest, deliberately rejects a tampered copy, decrypts/restores into a
+fresh database, compares normalized schema dumps, and recomputes the audit
+chain. The harness fails closed and removes the key, plaintext/decrypted
+artifacts, tampered copy and disposable container.
+
+Final run: **PASS**, exit 0. Evidence recorded **368 ms export**, **997 ms
+restore**, **4,354 ms total**; 2 metadata, 2 submission and 2 audit rows
+restored; schema matched; audit chain verified; tamper manifest rejected.
+Preserved encrypted artifact and `evidence.json` are private session files at
+`stage6-backup-evidence-20261024`; no plaintext dump or key was retained.
+The final manifest check and encrypted-file type check passed, and no matching
+Podman container remained.
+
+This is synthetic local evidence only. It does not establish production RPO or
+RTO, destination/key custody, schedule, retention, hosted restore behavior or
+backup readiness. No Supabase connection, real data, production scheduler,
+Stage 7 worktree or release action occurred.
+
+created by stokonn with love <3
+
 ## Stage 6 PostgreSQL 17 ACL verification — 2026-10-24
 
 Owner-authorized rootless Podman pull of official

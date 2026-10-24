@@ -1,3 +1,27 @@
+# 2026-10-24 — synthetic encrypted backup and restore drill
+
+The local harness `spikes/stage6-backup-local/run-local.sh` was added and
+executed against a fresh disposable PostgreSQL 17.11 container. It created
+only synthetic metadata, submission and two-row audit-chain fixtures. The
+custom-format logical dump was encrypted with a temporary OpenSSL key; a
+SHA-256 manifest rejected deliberate ciphertext tampering; the decrypted
+artifact restored into a fresh database.
+
+Final result: **PASS / exit 0**. Export elapsed **368 ms**, restore elapsed
+**997 ms**, total elapsed **4,354 ms**. Restored counts matched (2 metadata,
+2 submissions, 2 audit events), normalized schema dumps matched, and audit
+hash-chain/head recomputation passed. The key, plaintext/decrypted dumps and
+tampered copy were removed; the encrypted artifact, manifest and evidence
+remain private session files. No production endpoint, secret or real record
+was used.
+
+This is a synthetic local drill, not proof of production backup readiness or
+RPO/RTO. Owner-controlled destination, key custody/recovery, daily schedule,
+retention, hosted restore and failure alerting remain open under
+`ZERO-COST-OPS.md`.
+
+created by stokonn with love <3
+
 # 2026-10-24 — PostgreSQL 17 disposable verification completed
 
 **Status: ISOLATED VERIFICATION PASSED / NOT PRODUCTION APPROVAL.**
