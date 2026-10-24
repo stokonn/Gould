@@ -1,0 +1,588 @@
+{
+  "date": "2026-10-24",
+  "stage": "8A readiness preparation",
+  "base": "4c6a91d600ad18455a280f941f89740694d5afa0",
+  "branch": "feature/goldberg-0.11-stage-8",
+  "worktree": "/home/stokonn/Projects/Goldberg-Stage8",
+  "remoteHeads": [
+    {
+      "sha": "3e7c25e1b624759f7ba537fbd8cbee4bed21bd04",
+      "ref": "refs/heads/copilot/feature-xyz"
+    },
+    {
+      "sha": "b3edc2a25aa601b25561ec38cdaf912122dae4ec",
+      "ref": "refs/heads/docs/goldberg-0.11-stage-6-planning"
+    },
+    {
+      "sha": "4d014898e725715f1454ee05191c16eb7c68ad5d",
+      "ref": "refs/heads/docs/goldberg-0.11-stage-6-readiness"
+    },
+    {
+      "sha": "467ad29422e2af09fe6f689fd61bf8121b298674",
+      "ref": "refs/heads/docs/goldberg-0.11-stage-7-planning"
+    },
+    {
+      "sha": "56851cb5da30d9e823f6374562f7773e96a35e46",
+      "ref": "refs/heads/feature/goldberg-0.10.1"
+    },
+    {
+      "sha": "cb36535d8a733143213347dd2ce355d1bf81ae96",
+      "ref": "refs/heads/feature/goldberg-0.11-stage-3a"
+    },
+    {
+      "sha": "9ae8d33e113feba531cdfa8558f0505cd4205749",
+      "ref": "refs/heads/feature/goldberg-0.11-stage-3b"
+    },
+    {
+      "sha": "99ea73abc0c6a0b69274fe211ea882561c67fc79",
+      "ref": "refs/heads/feature/goldberg-0.11-stage-4"
+    },
+    {
+      "sha": "32cf5d93f19faef56fcb3bf7d7108088f66a1706",
+      "ref": "refs/heads/feature/goldberg-0.11-stage-5"
+    },
+    {
+      "sha": "006fa577ff4faef8ee7a25daf851620feb5bc3a8",
+      "ref": "refs/heads/feature/goldberg-0.11-stage-6-api-v1-local"
+    },
+    {
+      "sha": "1b97281ac639a045151ab4dd01e28c499c2e4ca7",
+      "ref": "refs/heads/feature/goldberg-0.11-stage-7a"
+    },
+    {
+      "sha": "4c6a91d600ad18455a280f941f89740694d5afa0",
+      "ref": "refs/heads/feature/goldberg-0.11-stage-7b"
+    },
+    {
+      "sha": "bcc779685d79e99451796b3fa45657b3bca8dd99",
+      "ref": "refs/heads/implement/goldberg-0.11-stage-6-10-11-local"
+    },
+    {
+      "sha": "9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce",
+      "ref": "refs/heads/implement/goldberg-0.11-stage-6-7-9-local"
+    },
+    {
+      "sha": "3e7c25e1b624759f7ba537fbd8cbee4bed21bd04",
+      "ref": "refs/heads/main"
+    },
+    {
+      "sha": "556970ab7407ec6986e3678657adbd2168516468",
+      "ref": "refs/heads/maintenance/legacy-cleanup-2026-10-18"
+    },
+    {
+      "sha": "c3d5e03b9a4936d8db393df664af209a8853c767",
+      "ref": "refs/heads/planning/goldberg-0.11-stage-1"
+    },
+    {
+      "sha": "d6049add3e46399d8f48afcb2aaa03422ebe0017",
+      "ref": "refs/heads/planning/goldberg-0.11-stage-2"
+    },
+    {
+      "sha": "7bc6976576353a244533792128e18b9343dc6c7c",
+      "ref": "refs/heads/spike/goldberg-0.11-c2-bff"
+    },
+    {
+      "sha": "7993444b86690d95aae03aa23383b80014dec031",
+      "ref": "refs/heads/spike/goldberg-0.11-stage-6-auth-local"
+    },
+    {
+      "sha": "d2a95d4b83c634aacb4f7f74432f2bd8980cf218",
+      "ref": "refs/heads/spike/goldberg-0.11-stage-6-contract"
+    },
+    {
+      "sha": "c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab",
+      "ref": "refs/heads/spike/goldberg-0.11-stage-6-contract-pg"
+    },
+    {
+      "sha": "262847ebcdef18d186ded5b7af4825436a1dc4e3",
+      "ref": "refs/heads/spike/goldberg-0.11-stage-6-handlers-local"
+    },
+    {
+      "sha": "0f966dcfb295b541ccf8f352033aa81e6aa90aa0",
+      "ref": "refs/heads/spike/goldberg-0.11-stage-6-schema-pg"
+    },
+    {
+      "sha": "6dd3136269ec7f5932c8c4b3689fb065d4db9105",
+      "ref": "refs/heads/verify/goldberg-0.11-stage-6-12-local"
+    }
+  ],
+  "branches": [
+    {
+      "ref": "refs/heads/ci/stage5-emulator-verification",
+      "sha": "67d9cca864ad00c7214d465f81d1cc34c9d32eb3",
+      "mergeBaseWithStage7B": "556970ab7407ec6986e3678657adbd2168516468",
+      "stage7B_vs_branch": "81\t4"
+    },
+    {
+      "ref": "refs/heads/ci/stage5-screenshots",
+      "sha": "d3c8a65043fb227f7909b66ba3866bcfad5e3e82",
+      "mergeBaseWithStage7B": "556970ab7407ec6986e3678657adbd2168516468",
+      "stage7B_vs_branch": "81\t8"
+    },
+    {
+      "ref": "refs/heads/ci/stage5-screenshots-fix",
+      "sha": "7665a2d7cddfbfb8e2daa7eefaa281b11434cc37",
+      "mergeBaseWithStage7B": "556970ab7407ec6986e3678657adbd2168516468",
+      "stage7B_vs_branch": "81\t9"
+    },
+    {
+      "ref": "refs/heads/ci/stage5-screenshots-sqlfix",
+      "sha": "161d97ea4672b9d690f75248108eb1dc58623476",
+      "mergeBaseWithStage7B": "556970ab7407ec6986e3678657adbd2168516468",
+      "stage7B_vs_branch": "81\t10"
+    },
+    {
+      "ref": "refs/heads/ci/stage5-screenshots-upsert",
+      "sha": "af983b3f78d8f272aca81b96303a499a0dcf8aba",
+      "mergeBaseWithStage7B": "556970ab7407ec6986e3678657adbd2168516468",
+      "stage7B_vs_branch": "81\t11"
+    },
+    {
+      "ref": "refs/heads/docs/goldberg-0.11-stage-6-planning",
+      "sha": "b3edc2a25aa601b25561ec38cdaf912122dae4ec",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t16"
+    },
+    {
+      "ref": "refs/heads/docs/goldberg-0.11-stage-7-planning",
+      "sha": "467ad29422e2af09fe6f689fd61bf8121b298674",
+      "mergeBaseWithStage7B": "7e7c3bab90441b2e3f2a75db245003ae5e8d03a8",
+      "stage7B_vs_branch": "55\t1"
+    },
+    {
+      "ref": "refs/heads/feature/goldberg-0.10.1",
+      "sha": "56851cb5da30d9e823f6374562f7773e96a35e46",
+      "mergeBaseWithStage7B": "56851cb5da30d9e823f6374562f7773e96a35e46",
+      "stage7B_vs_branch": "83\t0"
+    },
+    {
+      "ref": "refs/heads/feature/goldberg-0.11-stage-3a",
+      "sha": "cb36535d8a733143213347dd2ce355d1bf81ae96",
+      "mergeBaseWithStage7B": "cb36535d8a733143213347dd2ce355d1bf81ae96",
+      "stage7B_vs_branch": "78\t0"
+    },
+    {
+      "ref": "refs/heads/feature/goldberg-0.11-stage-3b",
+      "sha": "9ae8d33e113feba531cdfa8558f0505cd4205749",
+      "mergeBaseWithStage7B": "9ae8d33e113feba531cdfa8558f0505cd4205749",
+      "stage7B_vs_branch": "76\t0"
+    },
+    {
+      "ref": "refs/heads/feature/goldberg-0.11-stage-4",
+      "sha": "99ea73abc0c6a0b69274fe211ea882561c67fc79",
+      "mergeBaseWithStage7B": "99ea73abc0c6a0b69274fe211ea882561c67fc79",
+      "stage7B_vs_branch": "62\t0"
+    },
+    {
+      "ref": "refs/heads/feature/goldberg-0.11-stage-5",
+      "sha": "32cf5d93f19faef56fcb3bf7d7108088f66a1706",
+      "mergeBaseWithStage7B": "32cf5d93f19faef56fcb3bf7d7108088f66a1706",
+      "stage7B_vs_branch": "35\t0"
+    },
+    {
+      "ref": "refs/heads/feature/goldberg-0.11-stage-6-api-v1-local",
+      "sha": "006fa577ff4faef8ee7a25daf851620feb5bc3a8",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t78"
+    },
+    {
+      "ref": "refs/heads/feature/goldberg-0.11-stage-6-cloud",
+      "sha": "006fa577ff4faef8ee7a25daf851620feb5bc3a8",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t78"
+    },
+    {
+      "ref": "refs/heads/feature/goldberg-0.11-stage-7a",
+      "sha": "1b97281ac639a045151ab4dd01e28c499c2e4ca7",
+      "mergeBaseWithStage7B": "576f0d2dee561bd93f22daa616fe2f866eeb3365",
+      "stage7B_vs_branch": "27\t1"
+    },
+    {
+      "ref": "refs/heads/feature/goldberg-0.11-stage-7b",
+      "sha": "4c6a91d600ad18455a280f941f89740694d5afa0",
+      "mergeBaseWithStage7B": "4c6a91d600ad18455a280f941f89740694d5afa0",
+      "stage7B_vs_branch": "0\t0"
+    },
+    {
+      "ref": "refs/heads/implement/goldberg-0.11-stage-6-10-11-local",
+      "sha": "bcc779685d79e99451796b3fa45657b3bca8dd99",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t40"
+    },
+    {
+      "ref": "refs/heads/implement/goldberg-0.11-stage-6-7-9-local",
+      "sha": "9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t34"
+    },
+    {
+      "ref": "refs/heads/main",
+      "sha": "556970ab7407ec6986e3678657adbd2168516468",
+      "mergeBaseWithStage7B": "556970ab7407ec6986e3678657adbd2168516468",
+      "stage7B_vs_branch": "81\t0"
+    },
+    {
+      "ref": "refs/heads/maintenance/legacy-cleanup-2026-10-18",
+      "sha": "556970ab7407ec6986e3678657adbd2168516468",
+      "mergeBaseWithStage7B": "556970ab7407ec6986e3678657adbd2168516468",
+      "stage7B_vs_branch": "81\t0"
+    },
+    {
+      "ref": "refs/heads/planning/goldberg-0.11-stage-1",
+      "sha": "c3d5e03b9a4936d8db393df664af209a8853c767",
+      "mergeBaseWithStage7B": "c3d5e03b9a4936d8db393df664af209a8853c767",
+      "stage7B_vs_branch": "80\t0"
+    },
+    {
+      "ref": "refs/heads/planning/goldberg-0.11-stage-2",
+      "sha": "d6049add3e46399d8f48afcb2aaa03422ebe0017",
+      "mergeBaseWithStage7B": "d6049add3e46399d8f48afcb2aaa03422ebe0017",
+      "stage7B_vs_branch": "79\t0"
+    },
+    {
+      "ref": "refs/heads/spike/goldberg-0.11-c2-bff",
+      "sha": "7bc6976576353a244533792128e18b9343dc6c7c",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t6"
+    },
+    {
+      "ref": "refs/heads/spike/goldberg-0.11-stage-6-contract",
+      "sha": "d2a95d4b83c634aacb4f7f74432f2bd8980cf218",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t12"
+    },
+    {
+      "ref": "refs/heads/spike/goldberg-0.11-stage-6-contract-pg",
+      "sha": "c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t16"
+    },
+    {
+      "ref": "refs/heads/spike/goldberg-0.11-stage-6-handlers-local",
+      "sha": "262847ebcdef18d186ded5b7af4825436a1dc4e3",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t32"
+    },
+    {
+      "ref": "refs/heads/verify/goldberg-0.11-stage-6-12-local",
+      "sha": "6dd3136269ec7f5932c8c4b3689fb065d4db9105",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t53"
+    },
+    {
+      "ref": "refs/remotes/origin/HEAD",
+      "sha": "3e7c25e1b624759f7ba537fbd8cbee4bed21bd04",
+      "mergeBaseWithStage7B": "556970ab7407ec6986e3678657adbd2168516468",
+      "stage7B_vs_branch": "81\t11"
+    },
+    {
+      "ref": "refs/remotes/origin/copilot/feature-xyz",
+      "sha": "3e7c25e1b624759f7ba537fbd8cbee4bed21bd04",
+      "mergeBaseWithStage7B": "556970ab7407ec6986e3678657adbd2168516468",
+      "stage7B_vs_branch": "81\t11"
+    },
+    {
+      "ref": "refs/remotes/origin/docs/goldberg-0.11-stage-6-planning",
+      "sha": "b3edc2a25aa601b25561ec38cdaf912122dae4ec",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t16"
+    },
+    {
+      "ref": "refs/remotes/origin/docs/goldberg-0.11-stage-6-readiness",
+      "sha": "4d014898e725715f1454ee05191c16eb7c68ad5d",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t24"
+    },
+    {
+      "ref": "refs/remotes/origin/docs/goldberg-0.11-stage-7-planning",
+      "sha": "467ad29422e2af09fe6f689fd61bf8121b298674",
+      "mergeBaseWithStage7B": "7e7c3bab90441b2e3f2a75db245003ae5e8d03a8",
+      "stage7B_vs_branch": "55\t1"
+    },
+    {
+      "ref": "refs/remotes/origin/feature/goldberg-0.10.1",
+      "sha": "56851cb5da30d9e823f6374562f7773e96a35e46",
+      "mergeBaseWithStage7B": "56851cb5da30d9e823f6374562f7773e96a35e46",
+      "stage7B_vs_branch": "83\t0"
+    },
+    {
+      "ref": "refs/remotes/origin/feature/goldberg-0.11-stage-3a",
+      "sha": "cb36535d8a733143213347dd2ce355d1bf81ae96",
+      "mergeBaseWithStage7B": "cb36535d8a733143213347dd2ce355d1bf81ae96",
+      "stage7B_vs_branch": "78\t0"
+    },
+    {
+      "ref": "refs/remotes/origin/feature/goldberg-0.11-stage-3b",
+      "sha": "9ae8d33e113feba531cdfa8558f0505cd4205749",
+      "mergeBaseWithStage7B": "9ae8d33e113feba531cdfa8558f0505cd4205749",
+      "stage7B_vs_branch": "76\t0"
+    },
+    {
+      "ref": "refs/remotes/origin/feature/goldberg-0.11-stage-4",
+      "sha": "99ea73abc0c6a0b69274fe211ea882561c67fc79",
+      "mergeBaseWithStage7B": "99ea73abc0c6a0b69274fe211ea882561c67fc79",
+      "stage7B_vs_branch": "62\t0"
+    },
+    {
+      "ref": "refs/remotes/origin/feature/goldberg-0.11-stage-5",
+      "sha": "32cf5d93f19faef56fcb3bf7d7108088f66a1706",
+      "mergeBaseWithStage7B": "32cf5d93f19faef56fcb3bf7d7108088f66a1706",
+      "stage7B_vs_branch": "35\t0"
+    },
+    {
+      "ref": "refs/remotes/origin/feature/goldberg-0.11-stage-6-api-v1-local",
+      "sha": "006fa577ff4faef8ee7a25daf851620feb5bc3a8",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t78"
+    },
+    {
+      "ref": "refs/remotes/origin/feature/goldberg-0.11-stage-7a",
+      "sha": "1b97281ac639a045151ab4dd01e28c499c2e4ca7",
+      "mergeBaseWithStage7B": "576f0d2dee561bd93f22daa616fe2f866eeb3365",
+      "stage7B_vs_branch": "27\t1"
+    },
+    {
+      "ref": "refs/remotes/origin/feature/goldberg-0.11-stage-7b",
+      "sha": "4c6a91d600ad18455a280f941f89740694d5afa0",
+      "mergeBaseWithStage7B": "4c6a91d600ad18455a280f941f89740694d5afa0",
+      "stage7B_vs_branch": "0\t0"
+    },
+    {
+      "ref": "refs/remotes/origin/implement/goldberg-0.11-stage-6-10-11-local",
+      "sha": "bcc779685d79e99451796b3fa45657b3bca8dd99",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t40"
+    },
+    {
+      "ref": "refs/remotes/origin/implement/goldberg-0.11-stage-6-7-9-local",
+      "sha": "9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t34"
+    },
+    {
+      "ref": "refs/remotes/origin/main",
+      "sha": "3e7c25e1b624759f7ba537fbd8cbee4bed21bd04",
+      "mergeBaseWithStage7B": "556970ab7407ec6986e3678657adbd2168516468",
+      "stage7B_vs_branch": "81\t11"
+    },
+    {
+      "ref": "refs/remotes/origin/maintenance/legacy-cleanup-2026-10-18",
+      "sha": "556970ab7407ec6986e3678657adbd2168516468",
+      "mergeBaseWithStage7B": "556970ab7407ec6986e3678657adbd2168516468",
+      "stage7B_vs_branch": "81\t0"
+    },
+    {
+      "ref": "refs/remotes/origin/planning/goldberg-0.11-stage-1",
+      "sha": "c3d5e03b9a4936d8db393df664af209a8853c767",
+      "mergeBaseWithStage7B": "c3d5e03b9a4936d8db393df664af209a8853c767",
+      "stage7B_vs_branch": "80\t0"
+    },
+    {
+      "ref": "refs/remotes/origin/planning/goldberg-0.11-stage-2",
+      "sha": "d6049add3e46399d8f48afcb2aaa03422ebe0017",
+      "mergeBaseWithStage7B": "d6049add3e46399d8f48afcb2aaa03422ebe0017",
+      "stage7B_vs_branch": "79\t0"
+    },
+    {
+      "ref": "refs/remotes/origin/spike/goldberg-0.11-c2-bff",
+      "sha": "7bc6976576353a244533792128e18b9343dc6c7c",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t6"
+    },
+    {
+      "ref": "refs/remotes/origin/spike/goldberg-0.11-stage-6-auth-local",
+      "sha": "7993444b86690d95aae03aa23383b80014dec031",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t30"
+    },
+    {
+      "ref": "refs/remotes/origin/spike/goldberg-0.11-stage-6-contract",
+      "sha": "d2a95d4b83c634aacb4f7f74432f2bd8980cf218",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t12"
+    },
+    {
+      "ref": "refs/remotes/origin/spike/goldberg-0.11-stage-6-contract-pg",
+      "sha": "c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t16"
+    },
+    {
+      "ref": "refs/remotes/origin/spike/goldberg-0.11-stage-6-handlers-local",
+      "sha": "262847ebcdef18d186ded5b7af4825436a1dc4e3",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t32"
+    },
+    {
+      "ref": "refs/remotes/origin/spike/goldberg-0.11-stage-6-schema-pg",
+      "sha": "0f966dcfb295b541ccf8f352033aa81e6aa90aa0",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t28"
+    },
+    {
+      "ref": "refs/remotes/origin/verify/goldberg-0.11-stage-6-12-local",
+      "sha": "6dd3136269ec7f5932c8c4b3689fb065d4db9105",
+      "mergeBaseWithStage7B": "bcd88949b7998ce30df25b19b71de30dd413483a",
+      "stage7B_vs_branch": "54\t53"
+    }
+  ],
+  "worktrees": [
+    {
+      "path": "/home/stokonn/Projects/Opus",
+      "head": "32cf5d93f19faef56fcb3bf7d7108088f66a1706",
+      "branch": "refs/heads/feature/goldberg-0.11-stage-5",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 44
+    },
+    {
+      "path": "/home/stokonn/Projects/Goldberg-Stage6-API",
+      "head": "006fa577ff4faef8ee7a25daf851620feb5bc3a8",
+      "branch": "refs/heads/feature/goldberg-0.11-stage-6-api-v1-local",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 63
+    },
+    {
+      "path": "/home/stokonn/Projects/Goldberg-Stage6-Cloud",
+      "head": "006fa577ff4faef8ee7a25daf851620feb5bc3a8",
+      "branch": "refs/heads/feature/goldberg-0.11-stage-6-cloud",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 0
+    },
+    {
+      "path": "/home/stokonn/Projects/Goldberg-Stage7A",
+      "head": "1b97281ac639a045151ab4dd01e28c499c2e4ca7",
+      "branch": "refs/heads/feature/goldberg-0.11-stage-7a",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 6
+    },
+    {
+      "path": "/home/stokonn/Projects/Goldberg-Stage7B",
+      "head": "4c6a91d600ad18455a280f941f89740694d5afa0",
+      "branch": "refs/heads/feature/goldberg-0.11-stage-7b",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 2090
+    },
+    {
+      "path": "/home/stokonn/Projects/goldberg-c2-spike",
+      "head": "7bc6976576353a244533792128e18b9343dc6c7c",
+      "branch": "refs/heads/spike/goldberg-0.11-c2-bff",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 0
+    },
+    {
+      "path": "/home/stokonn/Projects/goldberg-stage6-docs",
+      "head": "b3edc2a25aa601b25561ec38cdaf912122dae4ec",
+      "branch": "refs/heads/docs/goldberg-0.11-stage-6-planning",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 0
+    },
+    {
+      "path": "/home/stokonn/Projects/goldberg-stage7-docs",
+      "head": "467ad29422e2af09fe6f689fd61bf8121b298674",
+      "branch": "refs/heads/docs/goldberg-0.11-stage-7-planning",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 0
+    },
+    {
+      "path": "/tmp/goldberg-stage1-review-c3d5e03",
+      "head": "c3d5e03b9a4936d8db393df664af209a8853c767",
+      "branch": "DETACHED",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 0
+    },
+    {
+      "path": "/tmp/goldberg-stage6-android-local",
+      "head": "bcc779685d79e99451796b3fa45657b3bca8dd99",
+      "branch": "refs/heads/implement/goldberg-0.11-stage-6-10-11-local",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 0
+    },
+    {
+      "path": "/tmp/goldberg-stage6-handlers",
+      "head": "262847ebcdef18d186ded5b7af4825436a1dc4e3",
+      "branch": "refs/heads/spike/goldberg-0.11-stage-6-handlers-local",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 0
+    },
+    {
+      "path": "/tmp/goldberg-stage6-public-admin-abuse",
+      "head": "9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce",
+      "branch": "refs/heads/implement/goldberg-0.11-stage-6-7-9-local",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 0
+    },
+    {
+      "path": "/tmp/goldberg-stage6-security-local",
+      "head": "6dd3136269ec7f5932c8c4b3689fb065d4db9105",
+      "branch": "refs/heads/verify/goldberg-0.11-stage-6-12-local",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 0
+    },
+    {
+      "path": "/tmp/opencode/c6-pg",
+      "head": "c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab",
+      "branch": "refs/heads/spike/goldberg-0.11-stage-6-contract-pg",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 0
+    },
+    {
+      "path": "/tmp/opencode/goldberg-ci-only",
+      "head": "67d9cca864ad00c7214d465f81d1cc34c9d32eb3",
+      "branch": "refs/heads/ci/stage5-emulator-verification",
+      "trackedChangedPaths": [],
+      "untrackedFileCount": 0
+    }
+  ],
+  "stage6Overlap": {
+    "mergeBase": "bcd88949b7998ce30df25b19b71de30dd413483a",
+    "overlap": [
+      ".gitattributes",
+      "app/src/main/java/com/opus/piano/OpusApplication.kt",
+      "app/src/main/java/com/opus/piano/ui/SettingsScreen.kt",
+      "app/src/main/res/values-cs/strings.xml",
+      "app/src/main/res/values/strings.xml",
+      "contracts/admin/v1/README.md",
+      "contracts/admin/v1/fixtures.json",
+      "contracts/admin/v1/source-provenance.json",
+      "docs/ai/DECISIONS.md",
+      "docs/ai/HANDOFF.md",
+      "docs/ai/STATE.md",
+      "docs/ai/VERIFICATION.md",
+      "docs/planning/goldberg-0.11/STAGE-CHECKLIST.md"
+    ],
+    "stage7ChangedPathCount": 2741,
+    "stage6ChangedPathCount": 1487
+  },
+  "stage7aUniqueCommit": "1b97281ac639a045151ab4dd01e28c499c2e4ca7",
+  "stage7aUniquePaths": [
+    "docs/ai/DECISIONS.md",
+    "docs/ai/HANDOFF.md",
+    "docs/ai/STATE.md",
+    "docs/ai/VERIFICATION.md",
+    "docs/planning/goldberg-0.11/STAGE-CHECKLIST.md",
+    "docs/planning/goldberg-0.11/stage-7/UI-ACCEPTANCE-MATRIX.md",
+    "docs/planning/goldberg-0.11/stage-7/stage-7a/CHECKPOINT.md",
+    "docs/planning/goldberg-0.11/stage-7/stage-7a/REFINEMENT-CHECKPOINT.md",
+    "docs/planning/gould-0.12/X10-SAMSUNG-TEXT-ALIGNMENT.md"
+  ],
+  "mergePerformed": false,
+  "integrationExecuted": false,
+  "privateFilePathsOrHashesIncluded": false,
+  "concurrentWorkObservedAfterCreation": {
+    "worktree": "/home/stokonn/Projects/Goldberg-Stage6-Cloud",
+    "head": "006fa577ff4faef8ee7a25daf851620feb5bc3a8",
+    "trackedChangedPaths": [
+      "docs/ai/HANDOFF.md",
+      "docs/ai/STATE.md",
+      "docs/ai/VERIFICATION.md",
+      "docs/maintenance/LEGACY-CLEANUP.md",
+      "docs/planning/goldberg-0.11/STAGE-CHECKLIST.md",
+      "docs/planning/goldberg-0.11/stage-6/ACL-MIGRATION-PROPOSAL.md",
+      "docs/planning/goldberg-0.11/stage-6/C4-PREPROVISIONING-CHECKLIST.md",
+      "docs/planning/goldberg-0.11/stage-6/CHECKLIST.md",
+      "docs/planning/goldberg-0.11/stage-6/CLOUD-READINESS-PLAN.md",
+      "scripts/check_stage6_acl_proposal.py"
+    ],
+    "status": "Unreviewed/uncommitted concurrent work; untouched and excluded from Stage8A inputs; no gate disposition inferred."
+  }
+}

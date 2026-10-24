@@ -1,3 +1,30 @@
+# Stage 8A readiness preparation — October 24, 2026
+
+**Stage7 Android client/synthetic acceptance COMPLETE and owner-approved. Stage8A preparation packet PREPARED; Stage8 integration/release acceptance remains PENDING/BLOCKED.** Current authorized scope: documentation, read-only inventories and separate worktree creation only. No source integration or live adoption is authorized.
+
+Worktree `/home/stokonn/Projects/Goldberg-Stage8`, branch `feature/goldberg-0.11-stage-8`, preparation base `4c6a91d600ad18455a280f941f89740694d5afa0`. All15 prior worktrees/53 cached refs and fresh remote heads/tags/Issue31 comments were inspected first. Stage7A's sole unique acceptance commit is documentation-only; Stage6 diverges54/78 with13 potential path overlaps; main diverges81/11. [Readiness packet](stage-8/README.md), integration sequence, release checklist, accessibility assessments, Stage6 ledger and20-row verification matrix are prepared. Existing Stage7 evidence/PMP remains in its owning worktree; no copying, deletion or reset.
+
+Stage6 G1–G9/G11,C4,6.0f, Android/backend live integration and all production authorization gates remain OPEN. G10 is closed for disabled transport/actions only. Duplicate Settings TalkBack stops, large-font bottom-tab truncation and scaffold contrast remain NOT FIXED, awaiting explicit Stage8 release assessment. Speech/motion/exhaustive accessibility/real three-hour-reboot delivery remain UNVERIFIED. X10 remains under its existing Gould0.12 deferral.
+
+No tests/builds/emulators/live calls/merges/deploys/releases executed in8A. Earlier source-bound CI25/275JVM/262pairs/seeded-upgrade evidence remains accepted within Stage7 scope; no new candidate exists. Next: finish documentation/preservation checks, commit/push the packet, synchronize Issue31/Project and record exact publication SHA. Later work must refresh input HEADs and obtain separate integration/production authorization; blocked Stage6 gates cannot be silently omitted.
+
+created by stokonn with love <3
+
+## Stage8A — readiness preparation checklist
+
+Purpose/scope: safe input/base inventory, a separate worktree and future integration/release verification planning; no product behavior changes.
+
+- [x] Inspect existing branches/worktrees/unique changes and choose accepted Stage7B base before worktree creation.
+- [x] Create separate Stage8 preparation worktree; retain Stage7 acceptance/evidence and private PMP.
+- [x] Prepare integration sequence, release-readiness checklist, deferred accessibility assessments, Stage6 dependencies and verification matrix.
+- [ ] Complete documentation/preservation checks, commit/push and Issue31/Project publication readback.
+- [ ] Stage8 integration/release gates remain PENDING/BLOCKED; all applicable Stage6 gates OPEN, no source combination/activation/publication authorized.
+
+Completion status: preparation packet ready for publication checks; all application tests and live/release matrix rows unexecuted for8A. Full Stage8 is not complete.
+
+<details>
+<summary>Prior stage checklist and accepted Stage7 history — preserved</summary>
+
 # Stage 7 owner acceptance — October 24, 2026
 
 **Stage 7B: ACCEPTED WITH DOCUMENTED LIMITATIONS. Stage 7 Android client/synthetic acceptance scope: COMPLETED.** Stage 7A was already owner-accepted. The owner explicitly approved the October 24 final owner report in this conversation; [permanent owner-decision checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388393525). This decision supersedes the earlier READY FOR OWNER REVIEW / pending-approval status. It covers the verified Android client/synthetic scope only.
@@ -1234,3 +1261,5 @@ Evidence: `docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-prepara
 artifact identity and recovery host checks). [Recovery Issue checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6368949572). Final PMP checkpoint is read through
 `pmp resume` / `pmp history`; native PMP test-count evidence is not fabricated from
 recovered JUnit outputs. Issue #31 remains OPEN; Project remains In Progress.
+
+</details>

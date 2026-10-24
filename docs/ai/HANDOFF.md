@@ -1,3 +1,24 @@
+Verified8A documentation/preservation milestone: [Issue31 checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388534366).270 source hashes,2203 original untracked files and Stage7B APK unchanged; document links/JSON/whitespace PASS. Concurrent Cloud WIP recorded untouched; no tests/builds/CI run. Publication checkpoint follows.
+
+## Concurrent work observed during preparation
+
+Initial inventory found clean tracked trees in all15 existing worktrees. A later preservation check detected new uncommitted changes in `/home/stokonn/Projects/Goldberg-Stage6-Cloud` (ten tracked paths, plus new untracked readiness work). They were left untouched, not copied/merged, and are not accepted input evidence or a gate-closing decision. Published preparation pins remain unchanged; re-read the Cloud worktree's eventual published checkpoint/HEAD and Issue31 before dependent integration. All2203 originally inventoried untracked files remained byte-identical, including private PMP; Stage7B tracked/untracked evidence and existing APK were preserved. The complete private audit is retained outside Git.
+
+# Stage 8A readiness preparation — October 24, 2026
+
+**Stage7 Android client/synthetic acceptance COMPLETE and owner-approved. Stage8A preparation packet PREPARED; Stage8 integration/release acceptance remains PENDING/BLOCKED.** Current authorized scope: documentation, read-only inventories and separate worktree creation only. No source integration or live adoption is authorized.
+
+Worktree `/home/stokonn/Projects/Goldberg-Stage8`, branch `feature/goldberg-0.11-stage-8`, preparation base `4c6a91d600ad18455a280f941f89740694d5afa0`. All15 prior worktrees/53 cached refs and fresh remote heads/tags/Issue31 comments were inspected first. Stage7A's sole unique acceptance commit is documentation-only; Stage6 diverges54/78 with13 potential path overlaps; main diverges81/11. [Readiness packet](../planning/goldberg-0.11/stage-8/README.md), integration sequence, release checklist, accessibility assessments, Stage6 ledger and20-row verification matrix are prepared. Existing Stage7 evidence/PMP remains in its owning worktree; no copying, deletion or reset.
+
+Stage6 G1–G9/G11,C4,6.0f, Android/backend live integration and all production authorization gates remain OPEN. G10 is closed for disabled transport/actions only. Duplicate Settings TalkBack stops, large-font bottom-tab truncation and scaffold contrast remain NOT FIXED, awaiting explicit Stage8 release assessment. Speech/motion/exhaustive accessibility/real three-hour-reboot delivery remain UNVERIFIED. X10 remains under its existing Gould0.12 deferral.
+
+No tests/builds/emulators/live calls/merges/deploys/releases executed in8A. Earlier source-bound CI25/275JVM/262pairs/seeded-upgrade evidence remains accepted within Stage7 scope; no new candidate exists. Next: finish documentation/preservation checks, commit/push the packet, synchronize Issue31/Project and record exact publication SHA. Later work must refresh input HEADs and obtain separate integration/production authorization; blocked Stage6 gates cannot be silently omitted.
+
+created by stokonn with love <3
+
+<details>
+<summary>Earlier accepted Stage7 and verification checkpoints — historical evidence retained</summary>
+
 # Stage 7 owner acceptance — October 24, 2026
 
 **Stage 7B: ACCEPTED WITH DOCUMENTED LIMITATIONS. Stage 7 Android client/synthetic acceptance scope: COMPLETED.** Stage 7A was already owner-accepted. The owner explicitly approved the October 24 final owner report in this conversation; [permanent owner-decision checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388393525). This decision supersedes the earlier READY FOR OWNER REVIEW / pending-approval status. It covers the verified Android client/synthetic scope only.
@@ -458,5 +479,7 @@ Notebook (for 5.10/5.11): Arch Linux, Java 17, emulator 37.2.12, AVD `stage5-api
 `ANDROID_AVD_HOME=/home/stokonn/.config/.android/avd`.
 
 created by stokonn with love <3
+
+</details>
 
 </details>
