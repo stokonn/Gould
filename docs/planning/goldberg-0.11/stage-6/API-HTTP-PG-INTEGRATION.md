@@ -102,6 +102,17 @@ its exact UUID container and anonymous volumes and verifies absence. Run
 `python3 spikes/stage6-api-v1-local/verify-http-pg.py RUN_DIRECTORY` afterward.
 Raw/source SHA-256 maps, failed attempts and historical M2/M3 evidence are retained.
 
+## Publication
+
+Implementation/evidence commit `ead440a27f5564b2366b50e3fb850a4f2c713fc5` ordinary-
+pushed and exact remote SHA verified. [Published checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6382021802).
+Issue31 OPEN / [Goldberg Development](https://github.com/users/stokonn/projects/2)
+In Progress. Documentation-only receipt changes no tested source. The only original
+untracked work is two retained M2/M3 evidence directories, deliberately not staged.
+Private checkpoint is outside Git; no `.pmp/`, `.pmp.yml` or owner release notes committed.
+Two narrow `.gitattributes` entries preserve Node-emitted whitespace in failed raw
+TAP logs; their bytes/hashes are unchanged and all source/docs whitespace checks pass.
+
 ## G1–G11 status (local backend versus consumer integration)
 
 | Gate | Local evidence | Remaining integration gate |

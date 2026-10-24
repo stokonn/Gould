@@ -24,9 +24,13 @@ this local batch; older no-further-local-implementation statements are historica
   absence verified. `verify-http-pg.py .../pg-n4udfonz` PASS.
 - [x] Preserve failed/disqualified attempts and previously untracked M2/M3 evidence;
   private checkpoint `/tmp/goldberg-stage6-private-pmp/checkpoint.md` outside Git.
-- [ ] Scoped commit/push/exact remote SHA and final Issue31 checkpoint receipt.
+- [x] Implementation/evidence `ead440a27f5564b2366b50e3fb850a4f2c713fc5`
+  ordinary-pushed and exact remote SHA read back; [published checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6382021802).
+  Project remains In Progress; Issue31 OPEN. Original two untracked M2/M3 evidence
+  directories preserved. Documentation-only receipt follows the verified source.
 
-**Completion:** local engineering verification complete; publication receipt pending.
+**Completion:** local engineering verification complete and source published;
+this documentation-only receipt changes no tested behavior.
 Stage6 remains OPEN,6.12 PARTIAL,6.17 NOT FROZEN. G1/G2/G3/G5/G6/G9 now have
 combined local backend evidence; G4 HTTP Comparison available/unavailable verified;
 G8 exact reads/max-int8 and fail-closed unsupported writes; G11 validation/default-deny
@@ -44,8 +48,9 @@ historical evidence, not rerun by the static backup/ACL checks above.
 
 Full endpoint/G1–G11/evidence ledger:
 `docs/planning/goldberg-0.11/stage-6/API-HTTP-PG-INTEGRATION.md`.
-Next: publish verified source normally, verify remote SHA, append Issue31 final
-checkpoint and synchronize receipt; then leave consumer/policy/cloud gates open.
+Next: separately scope consumer compatibility/shared fixtures, client reconfirmation,
+full-int8 mutations and real policy/operational evidence; keep Android transport,
+public API activation, hosted changes and Stage6 acceptance gated.
 
 created by stokonn with love <3
 
