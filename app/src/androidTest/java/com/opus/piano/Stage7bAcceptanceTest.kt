@@ -83,6 +83,7 @@ class Stage7bAcceptanceTest {
     }
     private fun capture(name: String) {
         inst.waitForIdleSync(); Thread.sleep(180)
+        val currentTree = tree()
         export("$name.png") { file ->
             val bitmap = inst.uiAutomation.takeScreenshot()
             assertNotNull("No emulator screenshot", bitmap)
@@ -90,12 +91,12 @@ class Stage7bAcceptanceTest {
             bitmap.recycle()
         }
         export("$name.txt") { file ->
-            file.writeText("locale=${L.locale} font=${app.resources.configuration.fontScale} size=${shell("wm size").trim()} density=${shell("wm density").trim()}\n" + tree().joinToString("\n") {
+            file.writeText("locale=${L.locale} font=${app.resources.configuration.fontScale} size=${shell("wm size").trim()} density=${shell("wm density").trim()}\n" + currentTree.joinToString("\n") {
                 val r = Rect(); it.getBoundsInScreen(r)
                 "bounds=$r text=${it.text} description=${it.contentDescription} clickable=${it.isClickable} enabled=${it.isEnabled} scrollable=${it.isScrollable} focusable=${it.isFocusable} checkable=${it.isCheckable} checked=${it.isChecked} class=${it.className} actions=${it.actionList.map { action -> action.id }}"
             })
         }
-        assertTrue("Unnamed checkable control in $name", tree().filter { it.isCheckable }.all {
+        assertTrue("Unnamed checkable control in $name", currentTree.filter { it.isCheckable }.all {
             !it.text.isNullOrBlank() || !it.contentDescription.isNullOrBlank()
         })
     }
