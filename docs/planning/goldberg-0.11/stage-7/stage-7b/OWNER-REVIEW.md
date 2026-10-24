@@ -1,8 +1,8 @@
 # Stage 7B owner review packet — recovery, October 24, 2026
 
-**Status: IN PROGRESS; final owner acceptance is not yet ready.** This section is current; all earlier sections below are historical checkpoints.
+**Status: IN PROGRESS; final owner acceptance is not yet ready.** Green5591e76 run is bounded evidence: detailed review found small2.0 Queue/Audit row collapse and stale previous-route hierarchy snapshots. Targeted list viewport/fresh-cache/actual-row regression follow-up is uncommitted; runtime pending. This section is current; all earlier sections below are historical checkpoints.
 
-Purpose/scope: resolve named checkable owners and dashboard refresh reachability, verify the approved synthetic Admin UI and preserve personal data. Current published/test-dispatch commit `d0cc455e2d71fd0c718cd5a3582d3895b3e34ff1`, branch `feature/goldberg-0.11-stage-7b`. [Acceptance run40079488627](https://github.com/stokonn/Goldberg/actions/runs/40079488627) is PENDING. [Living implementation/verification checklist](RECOVERY-2026-10-24.md).
+Purpose/scope: resolve named checkable owners and dashboard refresh reachability, verify the approved synthetic Admin UI and preserve personal data. Current published/test-dispatch commit `5591e76534488eb82fa318e7666c5e6007145097`, branch `feature/goldberg-0.11-stage-7b`. [Acceptance run40080892105](https://github.com/stokonn/Goldberg/actions/runs/40080892105) is PENDING. [Living implementation/verification checklist](RECOVERY-2026-10-24.md).
 
 - [x] Exact AndroidX source/root-cause audit and preserved prior actual CI hierarchies.
 - [x] Complete named-owner semantics for chips/switches/checkboxes; retain localized names, selected/toggled states, disabled guard and click callbacks. EN/CZ native regression compiled; final runtime proof pending.

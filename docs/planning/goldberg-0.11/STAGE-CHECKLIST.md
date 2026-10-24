@@ -1,3 +1,24 @@
+## Stage 7B recovery and final acceptance — October 24, 2026
+
+**Purpose:** resolve inaccessible Admin checkable owners and dashboard Refresh, then independently verify actual UI/data preservation. **Status: IN PROGRESS, final owner acceptance not ready.** Green CI alone is not visual acceptance.
+
+**Scope:** native AdminDashboard/Queue/Audit/Proposal/Settings, shared FilterChip/checkable focus semantics and AdminListViewport; Stage7bAcceptanceTest; evidence and English checkpoints. Existing ViewModel/repositories/navigation callbacks, database opus.db/schema10, practice timing/data and backups are unchanged. No Stage6/7A worktree changes.
+
+- [x] Recover actual initial HEAD1bb5aac, branch/status/remote/tags/releases/milestone/Issue31/Project/checkpoints; preserve private PMP and all old untracked evidence.
+- [x] Audit exact Material3 1.3.2/Compose1.9 synthetic-child semantics. Explicit named owners preserve role, selection/toggle, click, disabled guard and real FocusRequester-backed input focus; native EN/CZ assertions pass on5591e76.
+- [x] Fix async dashboard scroll synchronization and failure captures; require complete48dp actions, no-scroll≤1.3, actual locale/font. Natural labels remove ordinary1.3 ellipses and extreme-font clipping. All32dashboard+16footer5591e76 renders inspected.
+- [x] Independently inspect5591e76 CI40080892105:187 instrumentation/0 failures/0 errors/2 existing external-fixture skips; all9Stage7B cases PASS.242state pairs/243trees/419named-focus-checked occurrences and artifact digests PASS. Seeded schema8→10/all12 personal collections equal/37sessions/preferences/integrity/signing limits verified. These are bounded historical results, not proof of later source.
+- [x] Reject final visual acceptance after detailed32destination review found small2.0 list collapse (Queue60.5dp EN/12.5dp CZ; Audit0) and stale previous-route hierarchies.
+- [x] Implement finite accessibility list viewport only above1.3; preserve normal layout/anchors. Clear UiAutomation cache and require actual destination/authorized controls; add Queue/Audit row reachability and actual row-open/Back at8configs,16extra captures. Focused36s and clean host4m03s PASS275 JVM/0failures/errors/skips,lint0 errors/119warnings/1hint; seven scripts PASS.
+- [ ] Publish and verify this viewport follow-up on its exactSHA: full API36 native suite,258state pairs/fresh matching hierarchies,32dashboard configurations, actual list rows and seeded preservation.
+- [ ] Manual emulator TalkBack/full navigation/platform notification-permission revocation, approved G1–G9/G11 integration and explicit owner acceptance remain open. Production networking/decisions stay disabled; no merge/release.
+
+**Verification environment:** local Java25/SDK36 host builds; Ubuntu24.04/KVM/API36/emulator-5554/qemu guard in existing dispatch-only CI. Local emulator known SIGSEGV was not retried; no phone used. Two existing Stage4 external-provider/portrait cases lack separately acquired fixtures and remain honestly skipped. No new skips/exclusions/weakened assertions.
+
+**Completion:** Stage7B remains IN PROGRESS; current viewport follow-up runtime/visual acceptance pending. [Detailed living tasks, commands, hashes, screenshots, failures and next steps](stage-7/stage-7b/RECOVERY-2026-10-24.md).
+
+---
+
 ## Stage 7B recovery — 2026-10-24, IN PROGRESS
 
 Current purpose, scope, implementation checklist, verification and pending gates: [recovery checklist](stage-7/stage-7b/RECOVERY-2026-10-24.md). Initial HEAD `1bb5aac`; acceptance is not complete. Earlier checkpoints below are historical.

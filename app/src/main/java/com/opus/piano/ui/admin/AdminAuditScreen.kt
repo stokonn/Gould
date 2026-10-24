@@ -14,7 +14,6 @@ import com.opus.piano.R
 import com.opus.piano.admin.*
 import com.opus.piano.i18n.L
 import com.opus.piano.ui.EditorialHeader
-import com.opus.piano.ui.JournalSpace
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -41,7 +40,7 @@ import kotlinx.coroutines.launch
     }
     AdminOnResume(onResume={enter()},onPause={authorized=false})
     val list=rememberLazyListState()
-    Column(Modifier.fillMaxSize().padding(horizontal=JournalSpace.page,vertical=JournalSpace.small)) {
+    AdminListViewport { listModifier ->
         EditorialHeader(title=L.s(R.string.stage7b_audit_log),back=back)
         if(roleFailure!=null) AdminFailureMessage(roleFailure!!) { scope.launch { enter() } }
         if(authorized) {
@@ -53,7 +52,7 @@ import kotlinx.coroutines.launch
                 }
             }
             val visible=service.filtered(query,filter,principal)
-            LazyColumn(Modifier.weight(1f),state=list,verticalArrangement=Arrangement.spacedBy(8.dp)) {
+            LazyColumn(listModifier,state=list,verticalArrangement=Arrangement.spacedBy(8.dp)) {
                 if(visible.isEmpty() && !state.loading) item {Text(L.s(R.string.stage7b_audit_empty))}
                 items(visible,key={it.seq}) { event ->
                     OutlinedCard(Modifier.fillMaxWidth()) {

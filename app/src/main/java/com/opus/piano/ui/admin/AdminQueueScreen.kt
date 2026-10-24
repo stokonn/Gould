@@ -15,7 +15,6 @@ import com.opus.piano.R
 import com.opus.piano.admin.*
 import com.opus.piano.i18n.L
 import com.opus.piano.ui.EditorialHeader
-import com.opus.piano.ui.JournalSpace
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -62,7 +61,7 @@ internal object AdminPalette {
         onDispose { model.queueScrollIndex = list.firstVisibleItemIndex; model.queueScrollOffset = list.firstVisibleItemScrollOffset }
     }
     LaunchedEffect(filter) { model.queueFilter = filter }
-    Column(Modifier.fillMaxSize().padding(horizontal = JournalSpace.page, vertical = JournalSpace.small)) {
+    AdminListViewport { listModifier ->
         EditorialHeader(title = L.s(R.string.stage7b_moderation_queue), back = back)
         if (roleFailure != null) {
             AdminFailureMessage(roleFailure!!) { scope.launch { enter() } }
@@ -80,7 +79,7 @@ internal object AdminPalette {
                 AdminSearchState.Idle -> if (query.isBlank()) service.visibleRows(filter) else emptyList()
                 else -> emptyList()
             }
-            LazyColumn(Modifier.weight(1f), state = list, verticalArrangement = Arrangement.spacedBy(8.dp),
+            LazyColumn(listModifier, state = list, verticalArrangement = Arrangement.spacedBy(8.dp),
                 contentPadding = PaddingValues(bottom = 8.dp)) {
                 if (query.isBlank()) item {
                     TextButton({ expanded = !expanded }) { Text(L.s(R.string.stage7b_deferred_section)) }

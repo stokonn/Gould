@@ -53,7 +53,13 @@ class Stage7bAcceptanceTest {
         if (root == null) return emptyList()
         return listOf(root) + (0 until root.childCount).flatMap { nodes(root.getChild(it)) }
     }
-    private fun tree() = nodes(inst.uiAutomation.rootInActiveWindow)
+    @android.annotation.SuppressLint("NewApi") // This evidence venue is explicitly API36.
+    private fun tree(): List<AccessibilityNodeInfo> {
+        // Role/model state can be ready before the accessibility client cache receives
+        // a screen-change event. Never export the previous route's cached hierarchy.
+        inst.uiAutomation.clearCache()
+        return nodes(inst.uiAutomation.rootInActiveWindow)
+    }
     private fun awaitStableBounds() {
         // Accessibility scroll actions launch Compose animations. Main-looper idleness
         // alone does not mean that a frame-driven animation has reached its target.
@@ -285,13 +291,59 @@ class Stage7bAcceptanceTest {
                             if (size == "standard" && font == "1.0" || size == "small" && font == "2.0") {
                                 for (destination in listOf("queue", "proposal", "audit", "settings")) {
                                     inst.runOnMainSync { route.value = destination }
-                                    waitUntil { when(destination) {
-                                        "queue" -> model.queue.state.value.rows.isNotEmpty()
+                                    val title = when (destination) {
+                                        "queue" -> R.string.stage7b_moderation_queue
+                                        "proposal" -> R.string.stage7b_review_proposal
+                                        "audit" -> R.string.stage7b_audit_log
+                                        else -> R.string.stage7b_admin_settings
+                                    }
+                                    waitUntil {
+                                        val current = tree()
+                                        current.any { it.text?.toString() == L.s(title) } &&
+                                        current.any { it.contentDescription?.toString() == L.s(R.string.msg_back_b52b) } && when(destination) {
+                                        "queue" -> current.any { it.isEditable } && model.queue.state.value.rows.isNotEmpty() && !model.queue.state.value.loading
                                         "proposal" -> fixture.repo.review.state.value.verified
-                                        "audit" -> fixture.repo.audit.state.value.loaded
-                                        else -> tree().any { it.text?.toString() == L.s(R.string.stage7b_admin_settings) }
+                                        "audit" -> current.any { it.isEditable } && fixture.repo.audit.state.value.loaded
+                                        else -> true
                                     } }
                                     Thread.sleep(350); capture("$id-$destination")
+                                    if (destination == "queue" || destination == "audit") {
+                                        fun row(): AccessibilityNodeInfo? = tree().firstOrNull {
+                                            it.isVisibleToUser && it.text?.toString()?.contains("sub_1") == true
+                                        }
+                                        fun reachable(): Boolean {
+                                            var target = row() ?: return false
+                                            if (destination == "queue") {
+                                                while (!target.isClickable && target.parent != null) target = target.parent
+                                            }
+                                            val bounds = Rect(); target.getBoundsInScreen(bounds)
+                                            return target.isVisibleToUser && bounds.width() > 0 &&
+                                                bounds.height() >= (if (destination == "queue") 96 else 40) &&
+                                                (destination != "queue" || target.isClickable)
+                                        }
+                                        repeat(8) {
+                                            if (!reachable()) {
+                                                val scroll = tree().firstOrNull { it.isScrollable && it.actionList.any { action -> action.id == AccessibilityNodeInfo.ACTION_SCROLL_FORWARD } }
+                                                assertNotNull("No scroll to $destination row at $id", scroll)
+                                                assertTrue(scroll!!.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD))
+                                                awaitStableBounds()
+                                            }
+                                        }
+                                        assertTrue("$destination row unreachable at $id", reachable())
+                                        capture("$id-$destination-row-reachable")
+                                        if (destination == "queue") {
+                                            var target = row()!!
+                                            while (!target.isClickable && target.parent != null) target = target.parent
+                                            assertTrue(target.performAction(AccessibilityNodeInfo.ACTION_CLICK))
+                                            waitUntil { tree().any { it.text?.toString() == L.s(R.string.stage7b_review_proposal) } }
+                                            click(L.s(R.string.msg_back_b52b))
+                                            waitUntil {
+                                                val current = tree()
+                                                current.any { it.text?.toString() == L.s(R.string.stage7b_moderation_queue) } &&
+                                                    current.any { it.isEditable } && !model.queue.state.value.loading
+                                            }
+                                        }
+                                    }
                                     if (destination == "queue" && font == "1.0") {
                                         fixture.revision = 2
                                         runBlocking { model.queue.revalidate() }
@@ -335,7 +387,10 @@ class Stage7bAcceptanceTest {
                                         assertTrue(fixture.repo.review.state.value.reReview)
                                         capture("$id-re-review-incomplete-history")
                                     }
-                                    repeat(6) { tree().firstOrNull { it.isScrollable }?.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD); inst.waitForIdleSync() }
+                                    repeat(6) {
+                                        tree().firstOrNull { it.isScrollable && it.actionList.any { action -> action.id == AccessibilityNodeInfo.ACTION_SCROLL_FORWARD } }
+                                            ?.let { assertTrue(it.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)); awaitStableBounds() }
+                                    }
                                     capture("$id-$destination-bottom")
                                 }
                                 for (mode in listOf("empty", "error", "loading")) {

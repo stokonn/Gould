@@ -1,0 +1,23 @@
+locale=en font=1.0 size=Physical size: 1080x2400
+Override size: 824x1830 density=Physical density: 420
+Override density: 320
+bounds=Rect(92, 345 - 732, 918) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.FrameLayout actions=[4, 8, 64, 16908342]
+bounds=Rect(92, 345 - 732, 918) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.FrameLayout actions=[4, 8, 64, 16908342]
+bounds=Rect(92, 345 - 732, 918) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.FrameLayout actions=[4, 8, 64, 16908342]
+bounds=Rect(92, 345 - 732, 918) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.ViewGroup actions=[4, 8, 64, 16908342]
+bounds=Rect(92, 345 - 732, 918) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(92, 345 - 732, 918) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(92, 345 - 732, 918) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(92, 345 - 732, 918) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(140, 393 - 570, 457) text=Admin service URL description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]
+bounds=Rect(140, 489 - 684, 645) text=http://synthetic-invalid.invalid description=null clickable=true enabled=true scrollable=false focusable=true checkable=false checked=false class=android.widget.EditText actions=[64, 2, 16, 32, 2097152, 16908372, 131072, 256, 512]
+bounds=Rect(140, 489 - 684, 601) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(172, 524 - 652, 566) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(172, 609 - 512, 645) text=Unexpected service response description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]
+bounds=Rect(140, 661 - 684, 726) text=Leave empty to keep the service disabled (not configured). Only https URLs are accepted. description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]
+bounds=Rect(411, 774 - 552, 870) text=null description=null clickable=true enabled=true scrollable=false focusable=true checkable=false checked=false class=android.view.View actions=[64, 1, 16]
+bounds=Rect(435, 802 - 528, 842) text=Cancel description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]
+bounds=Rect(411, 782 - 552, 862) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.Button actions=[64]
+bounds=Rect(568, 774 - 684, 870) text=null description=null clickable=true enabled=true scrollable=false focusable=true checkable=false checked=false class=android.view.View actions=[64, 1, 16]
+bounds=Rect(593, 802 - 659, 842) text=Save description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]
+bounds=Rect(568, 782 - 684, 862) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.Button actions=[64]

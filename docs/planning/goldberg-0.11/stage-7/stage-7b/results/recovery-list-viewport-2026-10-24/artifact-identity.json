@@ -1,0 +1,10 @@
+{
+  "path": "app/build/outputs/apk/debug/app-debug.apk",
+  "bytes": 22915036,
+  "sha256": "93ae9ec88472e4f07dc5328980786e9ce252887ccbac507c0034195cd9b51961",
+  "package": "com.opus.piano",
+  "versionName": "0.10.1",
+  "versionCode": 11,
+  "signerSha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+  "zipIntegrity": "PASS"
+}
