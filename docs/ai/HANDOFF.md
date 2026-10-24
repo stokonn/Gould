@@ -1,5 +1,12 @@
 ## Stage 6 durable backup-key resilience verification — 2026-10-24
 
+Added the design-only
+`docs/planning/goldberg-0.11/stage-6/BACKUP-OPERATIONS-RUNBOOK.md`. It
+defines daily export publication, 24-hour age monitoring, owner-controlled
+storage and key custody, retention, fail-closed handling, notifications and
+quarterly isolated restore drills. It activates nothing and does not change
+the C4 matrix.
+
 The hardened `spikes/stage6-backup-local/` harness now uses GnuPG symmetric
 AES-256 with MDC integrity protection, isolated temporary `GNUPGHOME`
 directories, separate export/restore processes, external mode-600 recovery

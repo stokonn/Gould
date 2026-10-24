@@ -1,5 +1,11 @@
 ## Stage 6 durable backup-key resilience verification — 2026-10-24
 
+- [x] Prepare the design-only zero-cost backup operations runbook covering
+  daily scheduling, age monitoring, retention, owner-controlled storage,
+  disaster-recovery keys, failure handling and quarterly restore drills.
+- [x] Recheck current official provider pricing, backup, region, DPA and
+  transfer documentation without changing hosted state.
+
 - [x] Replace temporary OpenSSL-CBC handling with GnuPG symmetric AES-256
   encryption and MDC integrity protection; isolate each phase's `GNUPGHOME`.
 - [x] Verify separate-process recovery using external mode-600 v1/v2 keys,

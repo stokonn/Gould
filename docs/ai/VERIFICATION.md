@@ -1,5 +1,22 @@
 ## Stage 6 durable backup-key resilience verification — 2026-10-24
 
+Current official public documentation was re-read without provider login or
+resource access. Cloudflare Workers Free remains 100,000 requests/day and
+10 ms CPU/invocation; Workers Logs remains 200,000 events/day with 3-day
+retention until the announced 2026-12-01 Observability transition, whose Free
+allowance is documented as 0.5 GB/day with seven-day retention and no paid
+overage on Free. Supabase Free remains $0 with 500 MB database, 5 GB egress,
+1 GB storage, two active projects and one-week inactivity pause; automatic
+backups remain excluded and the official backup guide recommends off-site
+`supabase db dump` exports. The region page lists `eu-central-1` and explicitly
+says region selection is not proof of regulatory compliance. These are public
+document facts, not account billing, configuration, legal or production
+evidence.
+
+The design-only backup operations runbook was added. No scheduler, destination,
+provider export, production restore, cloud resource or payment setting was
+activated.
+
 The hardened harness was rerun against fresh disposable rootless Podman
 PostgreSQL 17.11 containers after isolating GnuPG state per phase. Exit code
 was **0**.

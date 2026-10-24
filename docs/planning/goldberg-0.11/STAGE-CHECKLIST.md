@@ -1,5 +1,12 @@
 ## Stage 6 durable backup-key resilience verification — 2026-10-24
 
+- [x] Add the design-only zero-cost backup operations runbook and link it from
+  `ZERO-COST-OPS.md`.
+- [x] Recheck official Cloudflare and Supabase pricing, backup, region, DPA and
+  transfer pages; preserve the 33-item C4 matrix at **8 PASS / 19 PARTIAL /
+  6 OPEN** because account, billing, legal, hosted and day-of evidence remain
+  incomplete.
+
 **Purpose:** verify recoverable synthetic encrypted backups after process
 termination and key rotation without activating production operations.
 

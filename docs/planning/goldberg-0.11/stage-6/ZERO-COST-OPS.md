@@ -10,6 +10,11 @@ binding requirements, not proposals.
 
 ## 1. Standing rules (restated, binding)
 
+The executable operator procedure is
+[BACKUP-OPERATIONS-RUNBOOK.md](BACKUP-OPERATIONS-RUNBOOK.md). This file
+defines the design contract; the runbook defines the future, separately
+authorized daily and quarterly procedures without activating them.
+
 1. Free plan/organization only; free provider subdomain only; **no trial that
    converts to billing, no paid add-ons, no automatic upgrade**. Supabase Pro's
    spend cap is not a 0 CZK path (it has a fee). *(Owner-approved, D4a.)*

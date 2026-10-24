@@ -558,6 +558,55 @@ Stage7A acceptance and X10 deferral to Gould0.12 preserved; no Stage7 worktree e
 
 created by stokonn with love <3
 
+## N. Current public-source recheck and blocker reduction — 2026-10-24
+
+This read-only review re-fetched official public documentation only. No provider
+login, billing call, project mutation, production export, scheduler or hosted
+restore occurred. The authoritative 33-item classification remains **8 PASS /
+19 PARTIAL / 6 OPEN**; public documentation cannot discharge account-specific,
+legal, billing, hosted-configuration or day-of evidence.
+
+### N.1 Confirmed facts
+
+| Area | Current official observation | C4 effect |
+|---|---|---|
+| Cloudflare Workers Free | 100,000 requests/day, no duration charge, 10 ms CPU/invocation; static asset requests free. | Confirms CF-P5 documentary basis; account billing and chosen configuration remain unverified. |
+| Cloudflare Workers Logs | 200,000 events/day and 3-day retention until 2026-12-01; the announced Observability model documents Free 0.5 GB/day, seven-day retention and no additional Free ingestion. | CF-P6 remains PARTIAL; recheck on/after 2026-12-01 and inspect the actual logging configuration before relying on it. |
+| Cloudflare DPA/privacy | DPA v6.4 effective 2026-04-03; Privacy Policy effective 2025-11-04. | CF-P3/CF-P4/CF-P11 remain PARTIAL because applicability, transfers and exact service retention are not account evidence. |
+| Supabase Free | $0, 500 MB database, 5 GB egress and cached egress, 1 GB storage, 50k MAU and two active projects; projects pause after one week inactive. | Confirms SB-P3 documentary basis; payment/add-on/usage evidence remains open. |
+| Supabase backups | Automatic backups are not included on Free; official guidance recommends regular off-site `supabase db dump` exports. | Narrows SB-P4 and supports the runbook, but does not verify a production export target, achieved RPO or restore. |
+| Supabase region/transfers | `eu-central-1` is listed; region selects primary data location but is not proof of regulatory compliance. The transfer FAQ describes account, support, telemetry and CDN processing outside the selected region. | SB-P7 documentary/metadata evidence remains PASS; SB-P8 remains PARTIAL and no EU-only claim is made. |
+| Supabase DPA | Version 1 dated 2026-08-01; Supabase acts as processor and customer as controller under the DPA. | SB-P2 remains PARTIAL pending applicability/acceptance and transfer review. |
+
+### N.2 Actionable reduction and blockers
+
+- **Reduced:** the future operational gap is now a concrete design artifact,
+  `BACKUP-OPERATIONS-RUNBOOK.md`, covering daily export publication, age
+  monitoring, retention, owner-controlled key custody, failure handling,
+  notification and quarterly isolated restore drills.
+- **Not reduced:** C4 counts, 6.0f, SB-P4 production evidence, SB-P9/SB-P10
+  subprocessor/TIA review, CF-P9/SB-P12 billing and configuration evidence,
+  hosted restore, provider scheduling, measurable production RTO and legal
+  review gaps.
+- **Smallest next safe action:** obtain an explicitly authorized,
+  non-identifying read-only billing/payment/add-on/charge observation for both
+  providers. This cannot alone close C4.
+
+### N.3 Source register
+
+| ID | Official source | Accessed | Relevant observation |
+|---|---|---|---|
+| S25 | [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/) | 2026-10-24 | Free limits and Workers Logs transition. |
+| S26 | [Observability pricing](https://developers.cloudflare.com/observability/pricing/) | 2026-10-24 | 2026-12-01 model: Free 0.5 GB/day and seven-day retention. |
+| S27 | [Cloudflare DPA](https://www.cloudflare.com/cloudflare-customer-dpa/) | 2026-10-24 | v6.4, effective 2026-04-03. |
+| S28 | [Cloudflare Privacy Policy](https://www.cloudflare.com/privacypolicy/) | 2026-10-24 | Effective 2025-11-04; retention remains not quantified for this design. |
+| S29 | [Supabase pricing](https://supabase.com/pricing) | 2026-10-24 | Free limits and no automatic backups. |
+| S30 | [Supabase backups](https://supabase.com/docs/guides/platform/backups) | 2026-10-24 | Free-tier off-site logical export guidance. |
+| S31 | [Supabase billing FAQ](https://supabase.com/docs/guides/platform/billing-faq) | 2026-10-24 | Organization billing and quota restrictions. |
+| S32 | [Supabase regions](https://supabase.com/docs/guides/platform/regions) | 2026-10-24 | `eu-central-1` and non-compliance caveat. |
+| S33 | [Supabase residency/transfers FAQ](https://supabase.com/legal/privacy-resources/data-residency-and-transfers-faq) | 2026-10-24 | Outside-region processing categories and SCC/TIA references. |
+| S34 | [Supabase DPA](https://supabase.com/legal/customer-resources/data-processing-addendum) | 2026-10-24 | Version 1, 2026-08-01; processor/controller roles. |
+
 ### M.5 Executed documentation validation / continuity
 
 Host documentation assertions PASS:all33 unique item IDs/statuses,8/19/6 counts,
