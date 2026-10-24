@@ -1,6 +1,6 @@
 import {randomUUID} from 'node:crypto';
 import {notFound,invalid,uuid,allowObject} from '../../stage6-auth-local/src/errors.mjs';
-import {bounded,version,revision,text} from './validation.mjs';
+import {bounded,version,revision,incrementRevision,text} from './validation.mjs';
 import {conflict,canonical} from './idempotency.mjs';
 import {audit,transition} from './events.mjs';
 export class SubmissionService {
@@ -24,13 +24,15 @@ export class SubmissionService {
   const {rows:[s]}=await c.query(`SELECT * FROM ${this.q}.submissions WHERE id=$1 AND author_id=$2 FOR UPDATE`,[id,ctx.principalId]);if(!s)throw notFound();return s;
  }
  async revise(token,body,requestId=randomUUID()){
-  bounded(body);body=structuredClone(body);version(body,['schemaVersion','id','payload','expectedRevision','expectedSubmissionRevision','idempotencyKey']);uuid(body.id);revision(body.expectedRevision);revision(body.expectedSubmissionRevision);this.validator.payload(body.payload);
+  bounded(body);body=structuredClone(body);version(body,['schemaVersion','id','payload','expectedRevision','expectedSubmissionRevision','idempotencyKey']);uuid(body.id);revision(body.expectedRevision);revision(body.expectedSubmissionRevision,{positive:true});this.validator.payload(body.payload);
   return this.authorization.require(token,'submission.revise.own',(c,ctx)=>this.idempotency.run(c,ctx.principalId,'submission.revise',body,async()=>{
    const s=await this.locked(c,ctx,body.id);
    if(s.status!=='changes_requested'||s.current_revision!==String(body.expectedSubmissionRevision))throw conflict();
    const {rows:[prior]}=await c.query(`SELECT payload,this_hash FROM ${this.q}.submission_revisions WHERE submission_id=$1 AND revision=$2`,[s.id,s.current_revision]);
    if(canonical(prior.payload.target)!==canonical(body.payload.target))throw invalid();
-   const next=Number(s.current_revision)+1;if(!Number.isSafeInteger(next))throw conflict();
+   // Checked full-range int8 increment: BigInt arithmetic only; overflow beyond
+   // signed int8 maximum is a conflict, never a rounded Number.
+   const next=incrementRevision(s.current_revision);
    const {rows:[snap]}=await c.query(`INSERT INTO ${this.q}.submission_revisions(submission_id,revision,payload,prev_hash) VALUES($1,$2,$3,$4) RETURNING this_hash`,[s.id,next,body.payload,prior.this_hash]);
    await c.query(`UPDATE ${this.q}.submissions SET expected_revision=$2 WHERE id=$1`,[s.id,body.expectedRevision]);
    await transition(c,this.q,{actor:ctx.principalId,id:s.id,revision:next,from:s.status,to:'in_review',requestId,hash:snap.this_hash});
@@ -38,7 +40,7 @@ export class SubmissionService {
   }));
  }
  async withdraw(token,body,requestId=randomUUID()){
-  bounded(body);body=structuredClone(body);version(body,['schemaVersion','id','expectedRevision','expectedSubmissionRevision','reason','idempotencyKey']);uuid(body.id);revision(body.expectedRevision);revision(body.expectedSubmissionRevision);if(body.reason!==undefined)text(body.reason);
+  bounded(body);body=structuredClone(body);version(body,['schemaVersion','id','expectedRevision','expectedSubmissionRevision','reason','idempotencyKey']);uuid(body.id);revision(body.expectedRevision);revision(body.expectedSubmissionRevision,{positive:true});if(body.reason!==undefined)text(body.reason);
   return this.authorization.require(token,'submission.withdraw.own',(c,ctx)=>this.idempotency.run(c,ctx.principalId,'submission.withdraw',body,async()=>{
    const s=await this.locked(c,ctx,body.id);if(!['submitted','in_review'].includes(s.status)||s.current_revision!==String(body.expectedSubmissionRevision)||s.expected_revision!==String(body.expectedRevision))throw conflict();
    await transition(c,this.q,{actor:ctx.principalId,id:s.id,revision:s.current_revision,from:s.status,to:'withdrawn',reason:body.reason,requestId});return {status:200,body:{requestId,id:s.id,status:'withdrawn'}};

@@ -1,4 +1,30 @@
-## Current local HTTP → PostgreSQL integration (2026-10-24)
+## Current full-int8 local engineering acceptance (2026-10-24)
+
+Shared moderation/submission handlers now preserve canonical decimal int8 strings
+through validation, comparison, checked increment, persistence and responses.
+Entity expectations allow0; submission expectations start at1. Increment beyond
+`9223372036854775807` conflicts409 atomically; malformed wire values fail400.
+Existing lock ordering, receipt replay and audit chains remain intact. Real
+policies remain default-deny, public `/v1` compatibility unconfirmed.
+
+Final source-bound local verification PASS (469 Node tests; historical18+17 and
+current parser11 separately PASS). Source publication/CI pending; see the
+[full-int8 acceptance ledger](../../docs/planning/goldberg-0.11/stage-6/API-FULL-INT8-ACCEPTANCE.md).
+Build current provenance **before** executing the guarded runner:
+
+```sh
+python3 spikes/stage6-api-v1-local/build-current-provenance.py
+python3 spikes/stage6-api-v1-local/run-http-postgres.py
+python3 spikes/stage6-api-v1-local/verify-http-pg.py RUN_DIRECTORY
+```
+
+The current manifest is separate from immutable historical provenance. Frozen
+validators run on original source snapshots; original positive/negative fixture
+expectations and raw evidence stay unchanged. Older statements below describe
+their historical milestones, including the old safe-Number write limitation.
+No production, Android transport, cloud service, merge, release or deployment.
+
+## Historical local HTTP → PostgreSQL checkpoint (2026-10-24)
 
 Queue, audit and exact Prague-day statistics now have PostgreSQL-backed DTO
 projections. The loopback HTTP listener exercises real transactions; native
@@ -126,7 +152,7 @@ exit codes, TAP and limits; it does not launch PostgreSQL or repeat the345 suite
 Historical initial/final logs remain, not overwritten. Publication uses publish.py
 with an exact clean SHA and ordinary push; it never deploys or changes policies.
 
-## Remaining gaps
+## Historical M1 remaining gaps (superseded by the current ledger)
 
 - G5: post-mint metadata enrichment uses a second authenticated transaction; a lost
   response requires fresh authentication (no credential replay). Android credential

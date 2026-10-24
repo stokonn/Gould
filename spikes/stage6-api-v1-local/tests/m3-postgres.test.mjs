@@ -103,7 +103,7 @@ test('PG unsupported kind projection unavailable without proposed-value fallback
  const v=await venue(),s=await published(v),policy=syntheticValidator();policy.fields={artist:policy.fields.work};v.fresh({validator:policy});
  assert.equal((await comparison(v,s)).body.reason,'projection_unavailable');
 });
-test('PG exact int8 live read above JS precision without permitting domain writes',async()=>{
+test('PG exact int8 live read above JS precision; full-range writes compare losslessly',async()=>{
  const v=await venue(),s=await published(v),max='9223372036854775807';
  // Isolated synthetic initial published-head fixture; all FK/hash/evidence guards remain.
  // This exercises adapter reads only, not a full-int8 domain publication.

@@ -1,0 +1,19 @@
+...E.............
+======================================================================
+ERROR: test_real_run_counts_source_identity_and_cleanup (test_post_t22_evidence.PostT22EvidenceTests.test_real_run_counts_source_identity_and_cleanup)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-security-local/tests/test_post_t22_evidence.py", line 11, in test_real_run_counts_source_identity_and_cleanup
+    r=evidence.verify(ROOT);self.assertEqual((r['successfulExecutions'],r['testsCountingRepeated32SuiteOnce'],r['databaseBackedBodies']),(345,313,205));self.assertEqual(r['nestedExit'],0);self.assertEqual(r['sourceHashes'],82)
+  File "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-security-local/post_t22_evidence.py", line 51, in verify
+    if digest(root/name)!=h:require(name in ALLOWED_CURRENT_EDITS,'tested service/fixture changed: '+name);edits.append(name)
+                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-security-local/post_t22_evidence.py", line 13, in require
+    if not condition:raise ValueError(message)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: tested service/fixture changed: spikes/stage6-handlers-local/src/moderation.mjs
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.191s
+
+FAILED (errors=1)

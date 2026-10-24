@@ -1,0 +1,2 @@
+PASS: owner O1–O8 scope, Prague4 civil/DST windows and10 literal CZ/EN search fixtures; host fixture checks only, not server/runtime acceptance.
+PASS: current-source DTO/schema fixtures: 61 original proposal cases; 37 accepted / 24 intentionally rejected; original classification and expectations preserved; int8/replay/audit checks PASS. Offline schema evidence only; actual HTTP/PG captures verified separately.

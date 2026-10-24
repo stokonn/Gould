@@ -2187,3 +2187,49 @@ statistics snapshots, hosted/legal/operational gates and G1–G9/G11 remain
 open.
 
 created by stokonn with love <3
+
+## Stage 6 full-int8 recovery — LOCAL ACCEPTANCE VERIFIED (2026-10-24)
+
+Purpose/scope: recover and complete the interrupted, owner-authorized shared
+handler/local API int8 implementation, current provenance and disposable-PG
+acceptance. Branch `feature/goldberg-0.11-stage-6-api-v1-local`; recovered published
+baseline `0142e997f3a63a026c76219d8dcb04185b66e7ee`. Publication/remote CI pending.
+
+- [x] Preserve dirty work, historical metadata/provenance/raw failures and private
+  `/tmp/goldberg-stage6-private-pmp/checkpoint.md`; save new private recovery
+  checkpoint separately. Other agent worktrees/processes untouched.
+- [x] Canonical decimal strings through the wire/shared handler bridge; entity≥0,
+  submission≥1; BigInt checked increments through signed int8 maximum;409 overflow,
+  400 malformed input. Existing atomic locking/idempotency/audit mechanisms retained.
+  No schema, migration, transaction utility or Android change.
+- [x] Final run `results/http-pg/pg-kr8b1q9g`: **469 Node bodies PASS**, including
+  **24 existing HTTP→PG +13 int8 HTTP→PG +240 independent PG** bodies;
+  **API122/T22-38/operations-unit32**. Zero failures/skips/cancellations.
+- [x] **Historical18 design +17 security-evidence** regressions PASS on original
+  `6dd3136` source (source baseline `19f5642`); **current parser11** PASS.
+  **Current DTO61 expectations** match37 positive/24 negative;39 actual HTTP read
+  DTOs and PostgreSQL Comparison captures validate. Frozen current-file pin rejection
+  is retained explicitly as EXPECTED FAILURE, never a current-source PASS.
+- [x] Policy, three portable backup fixtures, ACL proposal and whitespace PASS.
+  **181 current-source files + manifest (182 run hashes)** unchanged during execution;
+  independent verifier exit0 and live exact container/volume absence probes PASS.
+- [ ] Ordinary commit/push, exact remote readback, final Issue31/Project checkpoint
+  and GitHub quality CI receipt.
+
+The source-set SHA256 is
+`b7c6db2d251429e7edbbcef4ae3095a915ee8d5330ac7233254e4573b075c745`.
+All commands, counts, failure history and full-range submission testing limits are
+in `docs/planning/goldberg-0.11/stage-6/API-FULL-INT8-ACCEPTANCE.md`.
+Extreme submission increments/overflow have scripted service coverage; actual PG
+chains preserve every guard and exercise1→2, without fabricated high predecessors.
+
+**Completion:** this local numeric substage passed acceptance. Stage6 OPEN,
+6.12 PARTIAL,6.17 NOT FROZEN; C4 **8 PASS/19 PARTIAL/6 OPEN**,6.0f unchecked;
+consumer G1–G9/G11, `/v1` compatibility, policy, client reconfirmation, hosted,
+operational and legal gates remain open. G10 closed/Android transport disabled.
+No production/cloud/OAuth/real-user/device/ADB/other-worktree/merge/release/deploy.
+No local Gradle/JVM/lint/APK/signing/instrumentation/screenshots executed; existing
+GitHub quality workflow is checked separately after publication. Prior restore/ACL
+SQL evidence is historical, not rerun by static checks. Failed attempts retained.
+
+created by stokonn with love <3

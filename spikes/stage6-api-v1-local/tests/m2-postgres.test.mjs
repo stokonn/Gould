@@ -113,14 +113,14 @@ test('PG receipt retention exactly24h from completion; before/at/after expiry un
  // Failed expired replay rolls back its cleanup; old expired row is not resurrected as valid.
  assert.equal((await db.query(`SELECT response FROM ${v.q}.idempotency_results WHERE key=$1`,[b.idempotencyKey])).rows[0].response.requestId,r.body.requestId);await chain(v);
 });
-test('PG lossless full-int8 reads and UTC microseconds; writes stay fail closed',async()=>{
+test('PG lossless full-int8 reads and UTC microseconds; above-safe writes compare exactly',async()=>{
  const v=await venue(),entity=randomUUID(),sid=randomUUID(),max='9223372036854775807';
  await db.query('BEGIN');try{
   await db.query(`INSERT INTO ${v.q}.submissions(id,author_id,target_kind,catalogue_uuid,expected_revision,current_revision,created_at,updated_at) VALUES($1,$2,'work',$3,$4,1,'2030-01-01T12:00:00.123456Z','2030-01-01T12:00:00.123457Z')`,[sid,v.author.principalId,entity,max]);
   await db.query(`INSERT INTO ${v.q}.submission_revisions(submission_id,revision,payload,prev_hash,created_at) VALUES($1,1,$2,repeat('0',64),'2030-01-01T12:00:00.999999Z')`,[sid,payload(entity)]);await db.query('COMMIT');
  }catch(e){await db.query('ROLLBACK');throw e;}
  const s={id:sid,path:'/v1/admin/submissions/'+sid};const r=await detail(v,s);assert.equal(r.status,200,JSON.stringify(r));assert.equal(r.body.expectedEntityRevision,max);assert.equal(r.body.submissionRevision,'1');assert.equal(r.body.createdAt,'2030-01-01T12:00:00.123456Z');assert.equal(r.body.updatedAt,'2030-01-01T12:00:00.123457Z');assert.equal(r.body.revisions.items[0].createdAt,'2030-01-01T12:00:00.999999Z');
- assert.equal((await decide(v,s,body({decision:'approve',expectedEntityRevision:max,expectedSubmissionRevision:max}))).status,503);
+ assert.equal((await decide(v,s,body({decision:'approve',expectedEntityRevision:max,expectedSubmissionRevision:max}))).status,409);
 });
 test('PG empty real policy denies payload disclosure; strict detail routing and no body/query',async()=>{
  const v=await venue(),s=await create(v);v.fresh({validator:undefined});assert.equal((await detail(v,s)).status,503);

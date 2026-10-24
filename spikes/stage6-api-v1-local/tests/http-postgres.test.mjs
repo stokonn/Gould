@@ -141,7 +141,7 @@ test('HTTP-PG live role revocation, suspension, self-review and foreign account 
 test('HTTP-PG malformed queries and unsafe int8 writes fail closed; safe errors hide SQL',async t=>{
  const v=await venue(t),s=await v.create({open:true}),before=await snapshot(v);
  for(const path of ['/v1/admin/queue?limit=21','/v1/admin/queue?status=submitted&status=in_review','/v1/admin/audit?from=2030-02-30T00%3A00%3A00.000000Z','/v1/admin/audit?actorId=bad','/v1/admin/stats?limit=1','/v1/admin/queue?__proto__=bad'])equalStatus(await get(v,path),400);
- equalStatus(await decide(v,s,{expectedEntityRevision:'9223372036854775807'}),503);equalStatus(await decide(v,s,{expectedEntityRevision:'9223372036854775808'}),400);equalStatus(await decide(v,s,{expectedSubmissionRevision:'01'}),400);
+ equalStatus(await decide(v,s,{expectedEntityRevision:'9223372036854775807'}),409);equalStatus(await decide(v,s,{expectedEntityRevision:'9223372036854775808'}),400);equalStatus(await decide(v,s,{expectedSubmissionRevision:'01'}),400);
  assert.deepEqual(await snapshot(v),before);
 });
 test('HTTP-PG Prague DST windows equal PostgreSQL civil boundaries, exclusive end includes no next day',async t=>{

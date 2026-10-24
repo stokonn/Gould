@@ -3,16 +3,12 @@ from pathlib import Path
 import hashlib,json,os,subprocess,sys,tempfile,uuid,time,signal
 ROOT=Path(__file__).resolve().parents[2];BASE=Path(__file__).resolve().parent
 IMAGE='docker.io/library/postgres:17'
+from current_provenance import source_files, CUR, sha, tap_suites
+
 def sources():
- paths=[]
- for folder in ['stage6-api-v1-local','stage6-schema-pg','stage6-auth-local','stage6-handlers-local','stage6-public-admin-abuse']:
-  p=ROOT/'spikes'/folder
-  paths += [x for sub in ['src','migrations'] for x in (p/sub).glob('*') if x.is_file()]
- paths+=list((BASE/'tests').glob('*.mjs'))+[Path(__file__).resolve(),BASE/'verify-http-pg.py']
- paths += [ROOT/'spikes/stage6-security-local/tests'/n for n in ['t22.test.mjs','t22-fixture.mjs']]
- paths += list((ROOT/'contracts/admin/v1/decision-proposal').glob('*.json'))
- paths += [ROOT/'spikes'/f/'package-lock.json' for f in ['stage6-schema-pg','stage6-auth-local']]
- return {str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(paths)}
+ files=source_files()
+ files[str(CUR.relative_to(ROOT))]=sha(CUR)
+ return dict(sorted(files.items()))
 def main():
  def interrupted(_sig,_frame):raise KeyboardInterrupt('runner interrupted')
  signal.signal(signal.SIGTERM,interrupted)
@@ -25,6 +21,7 @@ def main():
   if check and p.returncode:raise RuntimeError(log+' exit '+str(p.returncode))
   return p
  try:
+  call(['python3',str(BASE/'verify-current-provenance.py')],'current-provenance-before.log')
   rootless=call(['podman','info','--format','{{.Host.Security.Rootless}}'],'podman.log').stdout.strip()
   if rootless!='true':raise RuntimeError('rootless Podman required')
   result['imageIdentity']=json.loads(call(['podman','image','inspect',IMAGE,'--format','{{json .}}'],'image.json').stdout)['Id']
@@ -42,31 +39,40 @@ def main():
   else:raise RuntimeError('not ready')
   call(['podman','exec',name,'psql','-U','schema_prototype','-d','schema_prototype','-Atc','SELECT version()'],'postgres-version.log')
   call(['node','--version'],'node-version.log')
-  env=os.environ.copy();env['SCHEMA_PG_PORT']=str(port);env['M3_COMPARISON_PATH']=str(run/'detail-captures.json');env['HTTP_PG_CAPTURES']=str(run/'http-read-captures.json')
-  call(['node','--test','spikes/stage6-api-v1-local/tests/http-postgres.test.mjs'],'http-postgres.tap',env=env)
-  result['httpExecutions']='real-loopback-to-PG17; see http-postgres.tap'
-  call(['python3',str(BASE/'verify-http-pg.py'),'--captures',str(run/'http-read-captures.json')],'http-dto-contract.log')
-  for suite,log in [
-   ('stage6-auth-local/tests/auth.test.mjs','auth.tap'),
-   ('stage6-schema-pg/tests/schema.test.mjs','schema.tap'),
-   ('stage6-handlers-local/tests/handlers.test.mjs','handlers.tap'),
-   ('stage6-public-admin-abuse/tests/postgres.test.mjs','operations-pg.tap'),
-   ('stage6-public-admin-abuse/tests/unit.test.mjs','operations-unit.tap')]:
-   call(['node','--test','spikes/'+suite],log,env=env)
-  call(['node','--test','spikes/stage6-api-v1-local/tests/m3-postgres.test.mjs'],'postgres.tap',env=env)
+  env=os.environ.copy();env['SCHEMA_PG_PORT']=str(port);env['M3_COMPARISON_PATH']=str(run/'detail-captures.json')
+  result['suiteSources']=tap_suites()
+  result['testCounts']={}
+  sys.path.insert(0,str(ROOT/'spikes/stage6-security-local'))
+  from tap_report import parse_tap
+  for log,files in result['suiteSources'].items():
+   suite_env=env.copy()
+   if log=='http-postgres.tap':suite_env['HTTP_PG_CAPTURES']=str(run/'http-read-captures.json')
+   call(['node','--test','--test-reporter=tap',*files],log,env=suite_env)
+   # These suites are flat: independently reconcile body count, plan and summary.
+   counts=parse_tap(run/log,require_success=True)
+   raw=(run/log).read_text()
+   assert raw.count('\n1..'+str(counts['tests'])+'\n')==1, 'missing/duplicate TAP plan'
+   assert counts['tests']>0 and not any(line.startswith('# Subtest: ') and line.endswith('.test.mjs') for line in raw.splitlines()), 'opaque file-level TAP is not executed body evidence'
+   result['testCounts'][log]=counts
+   if log=='http-postgres.tap':
+    result['httpExecutions']='real-loopback-to-PG17; see http-postgres.tap'
+    call(['python3',str(BASE/'verify-http-pg.py'),'--captures',str(run/'http-read-captures.json')],'http-dto-contract.log')
   call(['python3',str(BASE/'verify-m3.py'),'--captures',str(run/'detail-captures.json')],'comparison-contract.log')
-  call(['node','--test','spikes/stage6-api-v1-local/tests/m2-postgres.test.mjs'],'m2-postgres.tap',env=env)
   for command,log in [
-   (['npm','test','--prefix','spikes/stage6-api-v1-local'],'api.tap'),
-   (['node','spikes/stage6-security-local/tests/t22.test.mjs'],'t22.tap'),
-   (['python3','contracts/admin/v1/decision-proposal/verify.py'],'design.log'),
-   (['python3','-m','unittest','discover','-s','contracts/admin/v1/decision-proposal','-p','test_*.py'],'design-tests.log'),
-   (['python3','-c',"import sys;sys.path.insert(0,'spikes/stage6-security-local');from verify_contract import check;check(check_client_worktree=False)"],'original-contract-pinned.log'),
+   (['python3',str(BASE/'verify-current-provenance.py')],'current-provenance.log'),
+   (['python3',str(BASE/'validate-current-corpus.py')],'current-dto-schema.log'),
+   (['python3',str(BASE/'verify-historical-provenance.py')],'historical-design-tests.log'),
    (['python3','scripts/check_agent_policy.py'],'agent-policy.log'),
-   (['python3','-m','unittest','discover','-s','spikes/stage6-security-local/tests','-p','test_*.py'],'security-evidence.log'),
+   (['python3',str(BASE/'verify-historical-provenance.py'),'--security'],'historical-security-evidence.log'),
+   (['python3','-m','unittest','discover','-s','spikes/stage6-security-local/tests','-p','test_tap_report.py'],'tap-parser-tests.log'),
    (['python3','scripts/check_backup_fixtures.py'],'backup.log'),
    (['python3','scripts/check_stage6_acl_proposal.py'],'acl.log'),
    (['git','diff','--check'],'whitespace.log')]:call(command,log)
+  # Preserve the strict current-file rejection as such. It is never a historical
+  # PASS; historical acceptance above ran the unchanged suite on original blobs.
+  historical=call(['python3','contracts/admin/v1/decision-proposal/verify.py'],'historical-pin-current-source-EXPECTED-FAIL.log',check=False)
+  assert historical.returncode!=0 and 'immutable evidence changed: spikes/stage6-handlers-local/src/' in historical.stdout
+  result['historicalCurrentFilePin']='EXPECTED_FAILURE; evolved handler bytes do not match historical pin'
   result['acceptance']='PASS'
  except (Exception,KeyboardInterrupt) as e:result['acceptance']='BLOCKED_OR_FAILED';result['error']=str(e)
  finally:

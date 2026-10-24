@@ -1,0 +1,44 @@
+
+> goldberg-stage6-api-v1-local@0.0.0 test
+> node --test tests/adapter.test.mjs tests/compatibility.test.mjs tests/statistics.test.mjs tests/http.test.mjs
+
+TAP version 13
+# Subtest: tests/adapter.test.mjs
+ok 1 - tests/adapter.test.mjs
+  ---
+  duration_ms: 562.966232
+  type: 'test'
+  ...
+# Subtest: tests/compatibility.test.mjs
+ok 2 - tests/compatibility.test.mjs
+  ---
+  duration_ms: 184.781446
+  type: 'test'
+  ...
+# Subtest: tests/http.test.mjs
+not ok 3 - tests/http.test.mjs
+  ---
+  duration_ms: 346.052262
+  type: 'test'
+  location: '/home/stokonn/Projects/Goldberg-Stage6-API/spikes/stage6-api-v1-local/tests/http.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: tests/statistics.test.mjs
+ok 4 - tests/statistics.test.mjs
+  ---
+  duration_ms: 224.000811
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 3
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 579.764488

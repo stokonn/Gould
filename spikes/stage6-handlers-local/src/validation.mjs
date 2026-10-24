@@ -1,5 +1,5 @@
 import {isIP} from 'node:net';
-import {allowObject,invalid,uuid} from '../../stage6-auth-local/src/errors.mjs';
+import {ApiError,allowObject,invalid,uuid} from '../../stage6-auth-local/src/errors.mjs';
 const kinds=['work','arrangement','artist','album','release','recording','collection'];
 export function text(value,max=1000){
  if(typeof value!=='string'||!value.trim()||Buffer.byteLength(value)>max||/[<>\u0000-\u001f\u007f]/u.test(value)||/&#|&lt;|&gt;|javascript:|data:|vbscript:/i.test(value))throw invalid();return value;
@@ -23,7 +23,20 @@ export function bounded(value){
  walk(value,0);if(Buffer.byteLength(JSON.stringify(value))>16384)throw invalid();return value;
 }
 export function version(body,allowed){bounded(body);allowObject(body,allowed);if(body.schemaVersion!==1)throw invalid();}
-export function revision(value){if(!Number.isSafeInteger(value)||value<0)throw invalid();return value;}
+const INT8_MAX=9223372036854775807n;
+export function revision(value,{positive=false}={}){
+ if(Number.isSafeInteger(value)&&value>=(positive?1:0))return value;
+ // Checked full-range int8 decimal strings (canonical, no leading zeros, no
+ // rounding through Number) accepted from the lossless public wire bridge.
+ if(typeof value==='string'&&/^(0|[1-9][0-9]*)$/.test(value)&&value.length<=19&&BigInt(value)<=INT8_MAX&&(!positive||value!=='0'))return value;
+ throw invalid();
+}
+export function incrementRevision(value){
+ revision(value);
+ const next=BigInt(value)+1n;
+ if(next>INT8_MAX)throw new ApiError(409,'conflict','Revision or state conflict');
+ return next.toString();
+}
 export function safeUrl(value,hosts){
  text(value,2048);if(/[\s\\]/u.test(value)||!/^https:\/\//.test(value))throw invalid();let u;
  try{u=new URL(value);}catch{throw invalid();}

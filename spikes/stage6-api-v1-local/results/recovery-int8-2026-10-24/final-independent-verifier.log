@@ -1,0 +1,4 @@
+PASS: independent live container/volume absence probes.
+Executed TAP counts: {"api.tap": 122, "auth.tap": 50, "handlers.tap": 87, "http-postgres.tap": 24, "int8-postgres.tap": 13, "m2-postgres.tap": 19, "operations-pg.tap": 34, "operations-unit.tap": 32, "postgres.tap": 16, "schema.tap": 34, "t22.tap": 38}
+PASS: 39 actual HTTP-to-PostgreSQL read DTOs match the approved schema (queue/audit/stats).
+PASS: real HTTP/PG and independent PostgreSQL/scripted/unit suites; source/raw hashes and recorded container/volume absence verified. Local-only; no Android/production/API freeze acceptance.

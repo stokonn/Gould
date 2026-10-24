@@ -5,7 +5,9 @@ export function decimal(value,{positive=false}={}){
  if(typeof value!=='string'||!/^(0|[1-9][0-9]*)$/.test(value)||value.length>19||BigInt(value)>MAX||(positive&&value==='0'))throw invalid();return value;
 }
 export function localRevision(value,{positive=false}={}){
- decimal(value,{positive});if(BigInt(value)>BigInt(Number.MAX_SAFE_INTEGER))throw unavailable();return Number(value);
+ // Checked full-range int8 write bridge: the canonical decimal string is passed
+ // through losslessly; no mutation value ever rounds through a JavaScript Number.
+ return decimal(value,{positive});
 }
 export function readRevision(value,{positive=false}={}){
  // Accept an int8 driver string or a provably exact local numeric result, never rounded data.

@@ -1,0 +1,9 @@
+PASS: owner O1–O8 scope, Prague4 civil/DST windows and10 literal CZ/EN search fixtures; host fixture checks only, not server/runtime acceptance.
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Goldberg-Stage6-API/contracts/admin/v1/decision-proposal/verify.py", line 216, in <module>
+    check()
+    ~~~~~^^
+  File "/home/stokonn/Projects/Goldberg-Stage6-API/contracts/admin/v1/decision-proposal/verify.py", line 159, in check
+    assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == digest, 'immutable evidence changed: ' + name
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: immutable evidence changed: spikes/stage6-handlers-local/src/moderation.mjs

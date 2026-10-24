@@ -85,8 +85,6 @@ export class PublicAdapter {
     decimal(body.expectedEntityRevision);decimal(body.expectedSubmissionRevision,{positive:true});id(body.idempotencyKey);
     if(!opening){if(!['approve','reject','request_changes'].includes(body.decision))throw invalid();if(Object.hasOwn(body,'reason'))text(body.reason);if(body.decision!=='approve'&&!body.reason)throw invalid();}
     const accessToken=token(),operation=opening?'moderation.open':'moderation.decide';
-    // Auth first on valid-but-unsupported int8 writes; never round into the older safe-number domain.
-    if([body.expectedEntityRevision,body.expectedSubmissionRevision].some(v=>BigInt(v)>BigInt(Number.MAX_SAFE_INTEGER))){await this.authorization.require(accessToken,opening?'queue.read':'decide',async()=>{throw unavailable();});}
     const publicBody=structuredClone(body),localBody={schemaVersion:1,id:submissionId,expectedRevision:localRevision(body.expectedEntityRevision),expectedSubmissionRevision:localRevision(body.expectedSubmissionRevision,{positive:true}),idempotencyKey:body.idempotencyKey,...(opening?{}:{decision:body.decision,...(Object.hasOwn(body,'reason')?{reason:body.reason}:{})})};
     // Per-request bridge: public identity and complete public result are persisted by the existing
     // idempotency engine, inside the same live-authorized transaction as the domain mutation.

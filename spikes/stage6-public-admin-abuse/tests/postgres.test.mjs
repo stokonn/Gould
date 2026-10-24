@@ -50,7 +50,7 @@ test('quarantine immediate exclusion even with older page cursor; immutable disc
 test('supersession, rollback, later publication use immutable monotonic revision allocation',async()=>{
  const v=await venue(),p=await publish(v);await publish(v,p.entityId,1);const before=(await db.query(`SELECT * FROM ${v.q}.published_revisions ORDER BY revision`)).rows;
  const b=await adminBody(v,p.entityId,{targetRevision:'1'});assert.equal((await call(v,v.admin,'admin.rollback',b)).status,200);assert.equal((await call(v,null,'catalogue.overlay')).body.items[0].revision,'1');
- assert.deepEqual((await db.query(`SELECT * FROM ${v.q}.published_revisions ORDER BY revision`)).rows,before);assert.equal((await publish(v,p.entityId,1)).revision,3);
+ assert.deepEqual((await db.query(`SELECT * FROM ${v.q}.published_revisions ORDER BY revision`)).rows,before);assert.equal((await publish(v,p.entityId,1)).revision,'3');
  const f=await call(v,null,'catalogue.changes');assert.deepEqual(f.body.items.map(i=>i.event),['publication','supersession','rollback','supersession']);await chain(v);
 });
 test('numeric feed order beyond nine events, equal timestamps, multipage highwater and concurrent writes',async()=>{

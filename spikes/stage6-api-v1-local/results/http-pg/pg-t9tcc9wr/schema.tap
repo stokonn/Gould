@@ -1,0 +1,215 @@
+TAP version 13
+# PostgreSQL version: PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+# Subtest: empty PostgreSQL 17 migrations create all entities and a pre-existing genesis head
+ok 1 - empty PostgreSQL 17 migrations create all entities and a pre-existing genesis head
+  ---
+  duration_ms: 95.667162
+  type: 'test'
+  ...
+# Subtest: seeded v1 to v2 migration preserves principals, roles and quota accounting
+ok 2 - seeded v1 to v2 migration preserves principals, roles and quota accounting
+  ---
+  duration_ms: 94.069709
+  type: 'test'
+  ...
+# Subtest: repeat and concurrent migrations are idempotent and checksum drift fails closed
+ok 3 - repeat and concurrent migrations are idempotent and checksum drift fails closed
+  ---
+  duration_ms: 106.986013
+  type: 'test'
+  ...
+# Subtest: failed migration rolls back DDL and its ledger entry, preserving seeded v1
+ok 4 - failed migration rolls back DDL and its ledger entry, preserving seeded v1
+  ---
+  duration_ms: 113.593717
+  type: 'test'
+  ...
+# Subtest: principal, external identity and active-role uniqueness; explicit soft revocation history
+ok 5 - principal, external identity and active-role uniqueness; explicit soft revocation history
+  ---
+  duration_ms: 78.151924
+  type: 'test'
+  ...
+# Subtest: orphan FKs for identity, actor, mapping, session, revision, review, audit and publication reject
+ok 6 - orphan FKs for identity, actor, mapping, session, revision, review, audit and publication reject
+  ---
+  duration_ms: 91.515654
+  type: 'test'
+  ...
+# Subtest: deferred current-revision FK permits atomic creation but rejects dangling pointers at COMMIT
+ok 7 - deferred current-revision FK permits atomic creation but rejects dangling pointers at COMMIT
+  ---
+  duration_ms: 74.70437
+  type: 'test'
+  ...
+# Subtest: session rotation family/ownership, expiry and quota checks are physical constraints
+ok 8 - session rotation family/ownership, expiry and quota checks are physical constraints
+  ---
+  duration_ms: 74.669473
+  type: 'test'
+  ...
+# Subtest: revision chain requires contiguous versions and matching previous/content hashes
+ok 9 - revision chain requires contiguous versions and matching previous/content hashes
+  ---
+  duration_ms: 90.587659
+  type: 'test'
+  ...
+# Subtest: only documented server transitions; changes_requested creates a new immutable revision
+ok 10 - only documented server transitions; changes_requested creates a new immutable revision
+  ---
+  duration_ms: 86.373012
+  type: 'test'
+  ...
+# Subtest: state transition without matching audit/review cannot commit
+ok 11 - state transition without matching audit/review cannot commit
+  ---
+  duration_ms: 78.512967
+  type: 'test'
+  ...
+# Subtest: immutable revision, published revision, review, audit and feed reject UPDATE/DELETE/TRUNCATE
+ok 12 - immutable revision, published revision, review, audit and feed reject UPDATE/DELETE/TRUNCATE
+  ---
+  duration_ms: 114.097151
+  type: 'test'
+  ...
+# Subtest: publication snapshot, target kind and actor-author checks reject invalid publication
+ok 13 - publication snapshot, target kind and actor-author checks reject invalid publication
+  ---
+  duration_ms: 92.723961
+  type: 'test'
+  ...
+# Subtest: atomic publication rollback after locked leaves all tables/head/key unchanged
+ok 14 - atomic publication rollback after locked leaves all tables/head/key unchanged
+  ---
+  duration_ms: 116.92927
+  type: 'test'
+  ...
+# Subtest: atomic publication rollback after publication leaves all tables/head/key unchanged
+ok 15 - atomic publication rollback after publication leaves all tables/head/key unchanged
+  ---
+  duration_ms: 132.210601
+  type: 'test'
+  ...
+# Subtest: atomic publication rollback after approved leaves all tables/head/key unchanged
+ok 16 - atomic publication rollback after approved leaves all tables/head/key unchanged
+  ---
+  duration_ms: 114.277843
+  type: 'test'
+  ...
+# Subtest: atomic publication rollback after audit leaves all tables/head/key unchanged
+ok 17 - atomic publication rollback after audit leaves all tables/head/key unchanged
+  ---
+  duration_ms: 113.497796
+  type: 'test'
+  ...
+# Subtest: atomic publication rollback after feed leaves all tables/head/key unchanged
+ok 18 - atomic publication rollback after feed leaves all tables/head/key unchanged
+  ---
+  duration_ms: 113.234338
+  type: 'test'
+  ...
+# Subtest: atomic publication rollback after idempotency leaves all tables/head/key unchanged
+ok 19 - atomic publication rollback after idempotency leaves all tables/head/key unchanged
+  ---
+  duration_ms: 124.675991
+  type: 'test'
+  ...
+# Subtest: stored response replay, mismatch 422, principal isolation and >=24-hour expiry/reuse
+ok 20 - stored response replay, mismatch 422, principal isolation and >=24-hour expiry/reuse
+  ---
+  duration_ms: 140.168371
+  type: 'test'
+  ...
+# Subtest: F3 new-schema unique collision recovers transaction using exact constraint/savepoint
+ok 21 - F3 new-schema unique collision recovers transaction using exact constraint/savepoint
+  ---
+  duration_ms: 76.814653
+  type: 'test'
+  ...
+# Subtest: F1 physical-schema same-submission contention is serialized; loser is ordinary conflict
+ok 22 - F1 physical-schema same-submission contention is serialized; loser is ordinary conflict
+  ---
+  duration_ms: 95.998048
+  type: 'test'
+  ...
+# Subtest: F1 new regression: different submissions for same absent entity compare target revision atomically
+ok 23 - F1 new regression: different submissions for same absent entity compare target revision atomically
+  ---
+  duration_ms: 108.584849
+  type: 'test'
+  ...
+# Subtest: F4 physical audit triggers serialize independent appenders, rollback head, export and detect tampering
+ok 24 - F4 physical audit triggers serialize independent appenders, rollback head, export and detect tampering
+  ---
+  duration_ms: 117.475003
+  type: 'test'
+  ...
+# Subtest: F5 driver-default int8, prepared statements and safe JSON boundaries are lossless or rejected
+ok 25 - F5 driver-default int8, prepared statements and safe JSON boundaries are lossless or rejected
+  ---
+  duration_ms: 56.689295
+  type: 'test'
+  ...
+# Subtest: F5 unsafe next entity revision fails before write and leaves transaction consistent
+ok 26 - F5 unsafe next entity revision fails before write and leaves transaction consistent
+  ---
+  duration_ms: 95.511457
+  type: 'test'
+  ...
+# Subtest: restricted local role cannot mutate history/head or invoke ungranted definer functions
+ok 27 - restricted local role cannot mutate history/head or invoke ungranted definer functions
+  ---
+  duration_ms: 89.436971
+  type: 'test'
+  ...
+# Subtest: different submissions for an existing entity serialize target revision comparison
+ok 28 - different submissions for an existing entity serialize target revision comparison
+  ---
+  duration_ms: 126.609029
+  type: 'test'
+  ...
+# Subtest: concurrent identical-key local publication returns one stored effect and replay
+ok 29 - concurrent identical-key local publication returns one stored effect and replay
+  ---
+  duration_ms: 99.739058
+  type: 'test'
+  ...
+# Subtest: non-idempotency uniqueness failure is not converted to replay; savepoint keeps transaction usable
+ok 30 - non-idempotency uniqueness failure is not converted to replay; savepoint keeps transaction usable
+  ---
+  duration_ms: 82.133789
+  type: 'test'
+  ...
+# Subtest: role and session identifiers/history cannot be rewritten; active revocation remains possible
+ok 31 - role and session identifiers/history cannot be rewritten; active revocation remains possible
+  ---
+  duration_ms: 88.240126
+  type: 'test'
+  ...
+# Subtest: new immutable revision without atomic header advancement cannot commit
+ok 32 - new immutable revision without atomic header advancement cannot commit
+  ---
+  duration_ms: 86.242285
+  type: 'test'
+  ...
+# Subtest: typed existing target FK and publication kind/evidence cannot disagree
+ok 33 - typed existing target FK and publication kind/evidence cannot disagree
+  ---
+  duration_ms: 103.656502
+  type: 'test'
+  ...
+# Subtest: bounded lock wait preserves native SQLSTATE and rolls back rather than hiding it as conflict
+ok 34 - bounded lock wait preserves native SQLSTATE and rolls back rather than hiding it as conflict
+  ---
+  duration_ms: 2111.226339
+  type: 'test'
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 34
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6538.533636

@@ -1,0 +1,311 @@
+TAP version 13
+# Auth venue: PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+# Subtest: Auth extension upgrades seeded base sessions and repeats without altering original migration checksums
+ok 1 - Auth extension upgrades seeded base sessions and repeats without altering original migration checksums
+  ---
+  duration_ms: 160.048054
+  type: 'test'
+  ...
+# Subtest: incompatible cross-principal seeded family fails Auth migration atomically, preserving base data
+ok 2 - incompatible cross-principal seeded family fails Auth migration atomically, preserving base data
+  ---
+  duration_ms: 67.70725
+  type: 'test'
+  ...
+# Subtest: strict verified identity maps by issuer/subject; email/name/role claims grant no authority
+ok 3 - strict verified identity maps by issuer/subject; email/name/role claims grant no authority
+  ---
+  duration_ms: 175.059029
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject wrong issuer with 401
+ok 4 - T1/T4 strict claims reject wrong issuer with 401
+  ---
+  duration_ms: 63.254555
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject wrong audience with 401
+ok 5 - T1/T4 strict claims reject wrong audience with 401
+  ---
+  duration_ms: 66.791267
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject expired with 401
+ok 6 - T1/T4 strict claims reject expired with 401
+  ---
+  duration_ms: 66.976138
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject future iat with 401
+ok 7 - T1/T4 strict claims reject future iat with 401
+  ---
+  duration_ms: 58.847986
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject missing expiry with 401
+ok 8 - T1/T4 strict claims reject missing expiry with 401
+  ---
+  duration_ms: 62.556033
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject missing subject with 401
+ok 9 - T1/T4 strict claims reject missing subject with 401
+  ---
+  duration_ms: 62.640322
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject empty subject with 401
+ok 10 - T1/T4 strict claims reject empty subject with 401
+  ---
+  duration_ms: 60.539678
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject missing audience with 401
+ok 11 - T1/T4 strict claims reject missing audience with 401
+  ---
+  duration_ms: 70.873873
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject missing nonce with 401
+ok 12 - T1/T4 strict claims reject missing nonce with 401
+  ---
+  duration_ms: 57.822927
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject non-numeric expiry with 401
+ok 13 - T1/T4 strict claims reject non-numeric expiry with 401
+  ---
+  duration_ms: 61.06447
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject expiry before issued with 401
+ok 14 - T1/T4 strict claims reject expiry before issued with 401
+  ---
+  duration_ms: 64.074646
+  type: 'test'
+  ...
+# Subtest: T1/T4 strict claims reject old credential with 401
+ok 15 - T1/T4 strict claims reject old credential with 401
+  ---
+  duration_ms: 57.933726
+  type: 'test'
+  ...
+# Subtest: T2 invalid signature, malformed/no token, none and HMAC confusion fail closed
+ok 16 - T2 invalid signature, malformed/no token, none and HMAC confusion fail closed
+  ---
+  duration_ms: 58.616929
+  type: 'test'
+  ...
+# Subtest: T2 unknown kid refreshes once; rotation succeeds; attacker URLs are never fetched
+ok 17 - T2 unknown kid refreshes once; rotation succeeds; attacker URLs are never fetched
+  ---
+  duration_ms: 62.832036
+  type: 'test'
+  ...
+# Subtest: T2 bounded cache expiry and unavailable provider never fall back to stale keys
+ok 18 - T2 bounded cache expiry and unavailable provider never fall back to stale keys
+  ---
+  duration_ms: 58.350184
+  type: 'test'
+  ...
+# Subtest: T2 cold unavailable/hanging provider, ambiguous/private keys and malformed JWKS deny
+ok 19 - T2 cold unavailable/hanging provider, ambiguous/private keys and malformed JWKS deny
+  ---
+  duration_ms: 116.731848
+  type: 'test'
+  ...
+# Subtest: T2 concurrent cold verification coalesces one bounded JWKS request
+ok 20 - T2 concurrent cold verification coalesces one bounded JWKS request
+  ---
+  duration_ms: 61.923355
+  type: 'test'
+  ...
+# Subtest: T3 nonce binding, expired challenge and credential replay cannot mint a second session
+ok 21 - T3 nonce binding, expired challenge and credential replay cannot mint a second session
+  ---
+  duration_ms: 127.461432
+  type: 'test'
+  ...
+# Subtest: T3 concurrent identical credential exchange consumes challenge exactly once
+ok 22 - T3 concurrent identical credential exchange consumes challenge exactly once
+  ---
+  duration_ms: 90.169766
+  type: 'test'
+  ...
+# Subtest: tokens are CSPRNG opaque, distinct by purpose; only hashes persisted, no raw credentials/nonce
+ok 23 - tokens are CSPRNG opaque, distinct by purpose; only hashes persisted, no raw credentials/nonce
+  ---
+  duration_ms: 91.858331
+  type: 'test'
+  ...
+# Subtest: T1 exact access expiry rejects; refresh can rotate before absolute family expiry
+ok 24 - T1 exact access expiry rejects; refresh can rotate before absolute family expiry
+  ---
+  duration_ms: 168.123696
+  type: 'test'
+  ...
+# Subtest: T3 refresh rotation revokes old access; replay commits family revocation and audit
+ok 25 - T3 refresh rotation revokes old access; replay commits family revocation and audit
+  ---
+  duration_ms: 177.487985
+  type: 'test'
+  ...
+# Subtest: T3 concurrent refresh has one winner and replay revokes even its newly issued access
+ok 26 - T3 concurrent refresh has one winner and replay revokes even its newly issued access
+  ---
+  duration_ms: 132.938916
+  type: 'test'
+  ...
+# Subtest: T1 logout is idempotent and family-scoped; other sign-in/account sessions remain isolated
+ok 27 - T1 logout is idempotent and family-scoped; other sign-in/account sessions remain isolated
+  ---
+  duration_ms: 234.879175
+  type: 'test'
+  ...
+# Subtest: T5 valid token from suspended/deleted principal gets 403, expired/revoked token 401
+ok 28 - T5 valid token from suspended/deleted principal gets 403, expired/revoked token 401
+  ---
+  duration_ms: 168.852695
+  type: 'test'
+  ...
+# Subtest: T5 role revocation takes effect on next request despite a still-live session
+ok 29 - T5 role revocation takes effect on next request despite a still-live session
+  ---
+  duration_ms: 185.950739
+  type: 'test'
+  ...
+# Subtest: T6 default deny, empty roles, unknown capability and JWT role injection
+ok 30 - T6 default deny, empty roles, unknown capability and JWT role injection
+  ---
+  duration_ms: 167.861219
+  type: 'test'
+  ...
+# Subtest: T6 strict allowlist rejects forged role/author/status in protected resource requests
+ok 31 - T6 strict allowlist rejects forged role/author/status in protected resource requests
+  ---
+  duration_ms: 107.251779
+  type: 'test'
+  ...
+# Subtest: T7/T8 ownership in query hides other private submissions and denies cross-user writes
+ok 32 - T7/T8 ownership in query hides other private submissions and denies cross-user writes
+  ---
+  duration_ms: 188.205045
+  type: 'test'
+  ...
+# Subtest: T8/T22 moderator/admin capabilities and actor != author enforced server-side
+ok 33 - T8/T22 moderator/admin capabilities and actor != author enforced server-side
+  ---
+  duration_ms: 244.525218
+  type: 'test'
+  ...
+# Subtest: T22 admin cannot self-grant; operator capability/role stays outside application roles
+ok 34 - T22 admin cannot self-grant; operator capability/role stays outside application roles
+  ---
+  duration_ms: 189.389626
+  type: 'test'
+  ...
+# Subtest: T5 administrator suspension is immediate, audited and cannot resurrect deleted principal
+ok 35 - T5 administrator suspension is immediate, audited and cannot resurrect deleted principal
+  ---
+  duration_ms: 196.331582
+  type: 'test'
+  ...
+# Subtest: T9/T22 public database role has no private-table or privileged-function access
+ok 36 - T9/T22 public database role has no private-table or privileged-function access
+  ---
+  duration_ms: 104.77898
+  type: 'test'
+  ...
+# Subtest: T9/T22 local transport exposes no audit mutation or arbitrary RPC, even to admin
+ok 37 - T9/T22 local transport exposes no audit mutation or arbitrary RPC, even to admin
+  ---
+  duration_ms: 104.856627
+  type: 'test'
+  ...
+# Subtest: login audit failure rolls back identity/challenge/family/session atomically, then same credential retries
+ok 38 - login audit failure rolls back identity/challenge/family/session atomically, then same credential retries
+  ---
+  duration_ms: 115.039436
+  type: 'test'
+  ...
+# Subtest: refresh audit failure rolls back consumption/revocation/new tokens and preserves old session
+ok 39 - refresh audit failure rolls back consumption/revocation/new tokens and preserves old session
+  ---
+  duration_ms: 147.902742
+  type: 'test'
+  ...
+# Subtest: logout and admin role changes roll back when mandatory audit append fails
+ok 40 - logout and admin role changes roll back when mandatory audit append fails
+  ---
+  duration_ms: 170.041314
+  type: 'test'
+  ...
+# Subtest: secret-safe error envelope/logs distinguish 401/403/400/503 without request/token/SQL leaks
+ok 41 - secret-safe error envelope/logs distinguish 401/403/400/503 without request/token/SQL leaks
+  ---
+  duration_ms: 111.24217
+  type: 'test'
+  ...
+# Subtest: self-grant and self-suspension cannot bypass guards using uppercase UUID spellings
+ok 42 - self-grant and self-suspension cannot bypass guards using uppercase UUID spellings
+  ---
+  duration_ms: 119.459149
+  type: 'test'
+  ...
+# Subtest: issuer/subject identity isolation includes identical subject under another configured issuer
+ok 43 - issuer/subject identity isolation includes identical subject under another configured issuer
+  ---
+  duration_ms: 122.320684
+  type: 'test'
+  ...
+# Subtest: strict audience is the exact configured value, not an unexpected multi-audience envelope
+ok 44 - strict audience is the exact configured value, not an unexpected multi-audience envelope
+  ---
+  duration_ms: 61.158929
+  type: 'test'
+  ...
+# Subtest: clock rollback cannot activate sessions or refresh records before issuance
+ok 45 - clock rollback cannot activate sessions or refresh records before issuance
+  ---
+  duration_ms: 109.935408
+  type: 'test'
+  ...
+# Subtest: configured ES256 verification uses public EC keys and still rejects RSA/HS algorithm substitutions
+ok 46 - configured ES256 verification uses public EC keys and still rejects RSA/HS algorithm substitutions
+  ---
+  duration_ms: 4.714041
+  type: 'test'
+  ...
+# Subtest: concurrent identity creation from separate challenges converges to one principal and two isolated families
+ok 47 - concurrent identity creation from separate challenges converges to one principal and two isolated families
+  ---
+  duration_ms: 112.14596
+  type: 'test'
+  ...
+# Subtest: malformed credential and provider outage create no identity/session or consumed challenge
+ok 48 - malformed credential and provider outage create no identity/session or consumed challenge
+  ---
+  duration_ms: 71.329394
+  type: 'test'
+  ...
+# Subtest: unavailable/malformed clock is a 503 denial, never a bypass of expiry or JWT dates
+ok 49 - unavailable/malformed clock is a 503 denial, never a bypass of expiry or JWT dates
+  ---
+  duration_ms: 124.0622
+  type: 'test'
+  ...
+# Subtest: future-dated role grants are not effective before their server timestamp
+ok 50 - future-dated role grants are not effective before their server timestamp
+  ---
+  duration_ms: 150.563907
+  type: 'test'
+  ...
+1..50
+# tests 50
+# suites 0
+# pass 50
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7095.323843
