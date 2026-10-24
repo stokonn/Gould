@@ -1,3 +1,5 @@
+> Final evidence formatting check: five original Android accessibility/console text dumps emit trailing spaces or CRLF. Exact-path `.gitattributes` exemptions preserve their original bytes, following the existing raw-log policy. Structured results, source and documentation retain whitespace checks. No runtime or CI workflow configuration changed.
+
 ## Closure synchronization receipt — October 24, 2026
 
 Existing Issue #31 dashboard and appended [closure checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388271729) synchronized; Project 2 overview read back with READY FOR OWNER REVIEW and umbrella In Progress. Official Wiki published at `beac7e6fb908bdaafb3368a7da9ace35fe5e8372`; remote exact, both changed pages match maintained local sources. Final ordinary branch push and immutable documentation SHA are recorded in the subsequent Issue #31 publication receipt. No acceptance, merge, tag, release or production activation occurred.

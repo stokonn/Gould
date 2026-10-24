@@ -7,3 +7,10 @@ docs/planning/goldberg-0.11/stage-7/stage-7b/results/**/sdk-packages.txt -whites
 docs/planning/goldberg-0.11/stage-7/stage-7b/results/ci-run-*/artifact/stage5-ci-results/*.txt -whitespace
 # Android's raw instrumentation XML uses CRLF; retain all other whitespace checks.
 docs/planning/goldberg-0.11/stage-7/stage-7b/results/ci-run-*/instrumentation/*.xml -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve original manual Android service/console diagnostics, including CRLF/spaces.
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/accessibility-after-allow.txt -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/accessibility-enabled.txt -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/console-EV_ABS.txt -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/console-EV_KEY.txt -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/console-mouse.txt -whitespace
