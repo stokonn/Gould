@@ -1,3 +1,11 @@
+## Current owner decision — October 24, 2026
+
+**Stage7B ACCEPTED WITH DOCUMENTED LIMITATIONS; Stage7 Android client/synthetic acceptance scope COMPLETED.** Stage7A was already accepted. [Explicit owner decision](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388393525). Existing CI25 and emulator evidence is unchanged; no tests were rerun for this documentation-only decision.
+
+Duplicate Settings TalkBack focus stops, large-font bottom-tab truncation and scaffold contrast findings are deferred to Stage8 for explicit release-readiness assessment, **NOT FIXED**. Speech quality, subjective motion, exhaustive accessibility coverage and real three-hour/reboot notification delivery remain UNVERIFIED. Stage6 G1–G9/G11, C4, 6.0f, Android/backend live integration and all production authorization gates remain OPEN. Stage8 remains PENDING; no main merge, production activation or release is authorized. Issue31 remains OPEN and its umbrella Project item In Progress. Prior entries below are historical.
+
+created by stokonn with love <3
+
 # Changelog & Roadmap
 
 **[0.10.1 — Final Redesign Polish](https://github.com/stokonn/Goldberg/releases/tag/v0.10.1)** refines the unified Library, saved completion/notes, Profile, About, Tux and compact previews. Package/signing identity, schema 8 and format 4 remain unchanged. See [verification](Verification-0.10.1).

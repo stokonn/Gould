@@ -1,3 +1,24 @@
+# Stage 7 owner acceptance — October 24, 2026
+
+**Stage 7B: ACCEPTED WITH DOCUMENTED LIMITATIONS. Stage 7 Android client/synthetic acceptance scope: COMPLETED.** Stage 7A was already owner-accepted. The owner explicitly approved the October 24 final owner report in this conversation; [permanent owner-decision checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388393525). This decision supersedes the earlier READY FOR OWNER REVIEW / pending-approval status. It covers the verified Android client/synthetic scope only.
+
+Purpose/scope: close owner acceptance of the existing Android Admin dashboard, Queue/re-review/decision safeguards, Audit, Settings, local sync/notifications and documented synthetic data safeguards. This update changes documentation only; application/test/CI source, the APK and historical evidence remain unchanged.
+
+- [x] Record explicit owner acceptance of Stage 7B with the October 24 documented limitations; Stage 7A + Stage 7B Android client/synthetic acceptance scope completed.
+- [x] Retain prior results without rerunning unchanged tests: CI #25 `40097540179` SUCCESS at tested source `fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c`, 187 native cases /185 passed /2 existing skips /0 failures or errors, all9 Stage7B cases;262 screenshot/tree pairs reviewed; seeded12 collections/37 sessions/schema8→10 preserved. Prior275 JVM tests and seven validation scripts passed; normal restored assembly/lint passed (0 errors/119 warnings/1 hint). Representative October24 EN/Light/1.0 and CZ/Dark/1.3 emulator TalkBack/touch/Back/keyboard/IME/reduced-motion/permission-revocation observations retained. No fresh execution is claimed.
+- [x] Retain exact manual tooling archive, default AndroidJUnitRunner, production APK and source manifest. Pre-decision published documentation HEAD `9f6adf806bff034e884d12bbb4259f920975248d`, branch `feature/goldberg-0.11-stage-7b`; the final publication checkpoint records this decision's documentation SHA.
+- [x] Owner-approved deferral to Stage 8 for explicit release-readiness assessment: duplicate Settings TalkBack focus stops, large-font bottom-tab truncation and scaffold contrast findings. **Deferred, NOT FIXED**; acceptance does not waive Stage 8 assessment.
+- [ ] **UNVERIFIED:** audible speech/pronunciation, subjective motion comfort/frame timing, exhaustive accessibility/font/keyboard/configuration coverage and real three-hour/reboot notification delivery. These checks remain unexecuted or bounded as originally recorded, not passed by owner approval.
+- [ ] **OPEN:** Stage 6 G1–G9/G11, C4, 6.0f, Android/backend live integration and every production authorization gate. Live integration remains blocked pending separate authorization. **Stage 8 remains PENDING.**
+- [ ] Separate integration/release verification and explicit authorization for any main merge, production activation or release remain outstanding. Issue #31 stays OPEN; Goldberg Development's umbrella item stays In Progress.
+
+Next executor: retain the accepted Stage 7 client/synthetic disposition; assess the three deferred findings only within separately authorized Stage 8 release-readiness work. Do not mark them fixed, infer unverified checks passed, reopen completed Stage 7 tests or treat acceptance as live/backend/release authorization. Original raw observations/hashes, screenshots, logs, test results and private PMP are preserved. Earlier packets below are historical records, not the current acceptance status.
+
+created by stokonn with love <3
+
+<details>
+<summary>Historical Stage 7B verification and pre-approval checkpoints</summary>
+
 ## Final administrative closure — October 24, 2026
 
 **READY FOR OWNER REVIEW — NOT ACCEPTED. Recommendation: ACCEPT WITH DOCUMENTED LIMITATIONS**, subject to the owner's explicit disposition of the limitations below. This recommendation covers the completed Stage 7B Android client and synthetic/offline verification scope; it does not authorize live integration or release.
@@ -186,6 +207,9 @@ readability/accessibility/touch-target checks remain required. No physical devic
 main merge, release, deployment or production activation.
 
 ---
+
+
+</details>
 
 # Goldberg 0.11 — stage checklist (permanent, living document)
 
@@ -844,10 +868,10 @@ zero-cost operational plan. No provisioning, no client-side speculation.
 
 ## Stage 7 — Encyclopedia UX and Android/Web Admin clients
 
-**Status: 🚧 Stage 7A refinement pass verification-executed, awaiting owner final
-acceptance (X9); Stage 7B not started.** Part B (Android/Web Admin clients) depends on
-Stage 6 and is **not started** — no Stage 6 code, branch, worktree, credential or cloud
-resource is touched by Stage 7A.
+**Status: COMPLETE within the Android client/synthetic acceptance scope.** Stage 7A is already owner-accepted; Stage 7B is **ACCEPTED WITH DOCUMENTED LIMITATIONS** by explicit owner decision on October24,2026. Scope/tasks/results/limitations are recorded in the current acceptance entry at the top of this checklist and the Stage7B final owner report. Android/backend live integration remains OPEN; this client acceptance does not complete Stage6 or Stage8 or authorize production.
+
+<details>
+<summary>Historical Stage 7A refinement and acceptance checkpoints — later owner acceptance supersedes pending wording</summary>
 
 ### Stage 7A — six-screen Encyclopedia UX redesign (owner-authorized 2026-10-22)
 
@@ -1087,10 +1111,17 @@ standing evidence).
 
 ---
 
+</details>
+
 ## Stage 8 — Integration, legal review and release readiness
 
-**Status: ⬜ not started.** Only after all prior gates; requires explicit release instruction
-and current mandatory verification gates.
+**Status: PENDING.** Stage7 Android client/synthetic acceptance is complete. Stage6 G1–G9/G11, C4, 6.0f, Android/backend live integration and all production authorization gates remain OPEN; Stage8 requires its own authorized scope and verification.
+
+- [ ] Explicit release-readiness assessment of duplicate Settings TalkBack focus stops — deferred, NOT FIXED.
+- [ ] Explicit release-readiness assessment of large-font bottom-tab truncation — deferred, NOT FIXED.
+- [ ] Explicit release-readiness assessment of scaffold contrast findings — deferred, NOT FIXED.
+- [ ] Resolve or explicitly disposition unverified speech, motion, accessibility coverage and real three-hour/reboot notification delivery with actual evidence; no pass is inferred.
+- [ ] Complete authorized integration and release gates, with separate permission before any main merge, production activation or publication.
 
 ---
 
