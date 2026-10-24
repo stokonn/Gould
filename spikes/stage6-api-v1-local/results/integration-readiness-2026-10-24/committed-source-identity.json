@@ -1,0 +1,10 @@
+{
+  "implementationCommit": "b2fed621ef32665072faa6172d7947c99db3af61",
+  "recoveredBaseline": "a3fb7e2f1436c93b49a0f4f0596d8d06e241fcef",
+  "sourceSetHash": "ddffb491f5e99f1db6bd20673312be888b8b4f846d30038d15fdcad2eea2a9c0",
+  "committedFilesVerified": 197,
+  "allMatchFinalRun": true,
+  "finalRun": "spikes/stage6-api-v1-local/results/http-pg/pg-ojxz4mbi",
+  "baselineIsAncestor": true,
+  "protectedTrackedFilesUnmodified": true
+}

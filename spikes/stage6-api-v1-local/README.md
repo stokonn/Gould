@@ -12,7 +12,8 @@ Current build/runner commands below remain valid; the current manifest is now
 `integration-readiness-source-provenance.json`. The full-int8 manifest is preserved.
 
 [Full integration handoff, matrix, version proposal and query evidence](../../docs/planning/goldberg-0.11/stage-6/INTEGRATION-READINESS.md).
-Source publication/CI receipt follows verified local acceptance.
+Implementation `b2fed621ef32665072faa6172d7947c99db3af61` is published with exact remote/source identity.
+Exact final-head quality receipt is maintained in Issue31/private PMP.
 
 ## Historical full-int8 local engineering acceptance (2026-10-24)
 

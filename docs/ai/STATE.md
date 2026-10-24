@@ -37,7 +37,10 @@ read-only at `0887d3fe33cf5d49d46e14e1de95168f08a493a2`; its source/acceptance i
 - [x] Exact consumer request/session/conflict/metadata/freshness handoff, G1–G11,
  34-row matrix and gated concrete /v2 migration proposal prepared. External/deployed
   consumer state UNKNOWN; no public version selection/activation/freeze.
-- [ ] Scoped commit/push, exact remote/source identity and final GitHub CI receipt.
+- [x] Source/evidence `b2fed621ef32665072faa6172d7947c99db3af61` ordinary-pushed and exact remote SHA verified;
+  all197 committed input/manifest files match final run; recovered baseline is an
+  ancestor. Documentation-only receipt records publication; exact final-head GitHub
+  quality result is maintained in the final Issue31 checkpoint/private PMP.
 
 **Source-set SHA256:**
 `ddffb491f5e99f1db6bd20673312be888b8b4f846d30038d15fdcad2eea2a9c0`.
@@ -48,7 +51,8 @@ all PASS/exit0. Selected Kotlin replay is integrated by `consumer-compatibility.
 independent scene/matrix/plan verification by `verify-shared-contract.py`.
 Full handoff: `docs/planning/goldberg-0.11/stage-6/INTEGRATION-READINESS.md`.
 
-**Completion:** local foundation passed acceptance; publication/CI pending. Stage6
+**Completion:** local foundation passed acceptance and source is published; exact final-head
+CI result/receipt is referenced by the existing Issue31 checkpoint. Stage6
 and Stage7B remain OPEN/IN PROGRESS; G1–G9/G11 consumer adoption, owner version/real
 policy, client lifecycle/UI and hosted/legal/operational gates remain open. G10
 CLOSED for disabled production transport/actions. C4 **8 PASS/19 PARTIAL/6 OPEN**,

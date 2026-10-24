@@ -1,6 +1,6 @@
 # Stage6 / Stage7B — executable integration readiness
 
-Status: LOCAL ACCEPTANCE VERIFIED, 2026-10-24; source publication/CI pending. Stage6 recovered baseline
+Status: LOCAL ACCEPTANCE VERIFIED, 2026-10-24; implementation `b2fed621ef32665072faa6172d7947c99db3af61` source published/exact remote verified; final CI receipt in Issue31. Stage6 recovered baseline
 `a3fb7e2f1436c93b49a0f4f0596d8d06e241fcef`; branch
 `feature/goldberg-0.11-stage-6-api-v1-local`. Stage7B source inspected read-only at
 `0887d3fe33cf5d49d46e14e1de95168f08a493a2`; its executable correction remains
@@ -149,8 +149,10 @@ policy/backup/ACL/whitespace all PASS. No repeated-suite count inflation.
 196 inventoried source/test/input files plus integration manifest stayed unchanged.
 Source-set `ddffb491f5e99f1db6bd20673312be888b8b4f846d30038d15fdcad2eea2a9c0`.
 Independent receipt: `results/integration-readiness-2026-10-24/independent-pg-ojxz4mbi.log`.
-Container/volume identities and raw hashes are in result.json. Source commit/push/
-exact remote/GitHub CI publication receipt follows separately.
+Container/volume identities and raw hashes are in result.json. Implementation `b2fed621ef32665072faa6172d7947c99db3af61` ordinary-pushed, remote exact. All197 committed
+input/manifest hashes match the run; recovered baseline is an ancestor. Final
+documentation receipt SHA and its exact-head quality result are maintained in
+Issue31/private PMP, avoiding a self-referential commit hash in this file.
 
 Failure/intermediate history is preserved: `pg-d8h0hv95` shared16/17 (incorrect
 authored suspension401 expectation corrected to inspected established403);
@@ -175,3 +177,18 @@ No production/OAuth/real user data, Android/other-worktree edits, device/emulato
 ADB, trusted APK/signing/screenshot acceptance, main merge, release or deployment.
 
 created by stokonn with love <3
+
+## Source publication receipt
+
+Implementation/source/evidence commit `b2fed621ef32665072faa6172d7947c99db3af61`
+was ordinary-pushed with exact remote readback. Committed-source-identity.json
+verifies all197 accepted inputs/manifest against that Git commit and baseline
+ancestry. This receipt modifies docs/evidence only; executable source, shared
+package, final provenance and raw test bytes remain unchanged. Automatic GitHub
+quality runs on the exact final receipt HEAD; its terminal result is recorded in
+Issue31/private PMP. No CI result is inferred from an earlier commit or from local
+Kotlin replay. Original two untracked M2/M3 evidence directories remain preserved.
+
+Next authorized work: owner disposition on public version/real policy, separately
+scoped Stage7B adoption with canonical DTO/session/reconfirmation changes, then
+independent Android/hosted/security/operational acceptance. Neither stage is complete.
