@@ -2284,3 +2284,27 @@ untouched; Stage 5 remains COMPLETE.**
 6.1–6.18 unchecked; Q1/D5b UNRESOLVED and blocking; C2 §12 OPEN; 6.0d/6.0e
 NOT AUTHORIZED; ORD-A sequencing-only; 0 CZK/month; Stage 7 untouched;
 Stage 5 remains COMPLETE.**
+## Stage 6 major engineering/readiness batch — 2026-10-24
+
+### Changes
+
+Added `ACL-MIGRATION-PROPOSAL.md`, `BACKUP-ACCEPTANCE-MATRIX.md`, and
+`STAGE7B-API-COMPATIBILITY-HANDOFF.md`. These are local planning and
+verification artifacts only; no hosted or Android integration was activated.
+
+### Executed checks
+
+| Command/check | Result |
+|---|---|
+| Disposable PostgreSQL 17 ACL package, unchanged | PASS; exit 0 |
+| `cd spikes/stage6-api-v1-local && npm test --silent` | PASS; 106 tests, 0 failures |
+| `python3 -m unittest discover -s spikes/stage6-security-local/tests -p 'test_*.py' -q` | PASS; 17 tests |
+| `python3 scripts/check_agent_policy.py` | PASS |
+| `python3 scripts/check_backup_fixtures.py` | PASS |
+| `git diff --check` | PASS |
+| `python3 spikes/stage6-security-local/verify_contract.py` | BLOCKED; pinned Stage 7B hash mismatch, failed closed |
+
+The ACL run retained the existing function identity and enabled `ensure_rls`
+trigger and confirmed synthetic table RLS. No live Supabase connection was
+used. The API and security counts above are this session's executions; they
+do not close HTTP, hosted, Android runtime, C4, or 6.0f gates.

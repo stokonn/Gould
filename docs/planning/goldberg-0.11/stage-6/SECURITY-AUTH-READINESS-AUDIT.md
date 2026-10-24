@@ -589,3 +589,12 @@ conditional/X10 OPEN; Stage 7B not started, untouched. Issue #31’s broader ope
 summary remains accurate; no materially important correction, edit or comment is
 needed. Its 9,564-character/52-line body and 63 comments remain the baseline.
 Verification/commit publication is recorded in docs/ai/VERIFICATION.md.
+## ACL migration proposal checkpoint — 2026-10-24
+
+The production-compatible proposal is documented in
+[ACL-MIGRATION-PROPOSAL.md](ACL-MIGRATION-PROPOSAL.md). It is intentionally
+not an executed migration: preflight identity checks, function-only revoke,
+trigger-preservation postflight, and exact captured-ACL rollback guidance are
+provided for a future approved maintenance window. The supplied disposable
+PostgreSQL 17 procedure passed again with exit 0. This does not close hosted
+security configuration or C4 evidence.

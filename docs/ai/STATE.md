@@ -2240,3 +2240,23 @@ unchecked; Q1/D5b UNRESOLVED and blocking; C2 §12 OPEN; 6.0d/6.0e NOT
 AUTHORIZED; ORD-A sequencing-only; 0 CZK/month; no agent console login, no
 billing/API call, no resource created or modified; Stage 7 untouched; Stage 5
 remains COMPLETE.**
+## Stage 6 major engineering/readiness batch — 2026-10-24
+
+- [x] Add the reversible ACL migration proposal without executing it against
+  Supabase.
+- [x] Add the synthetic backup operational acceptance matrix and preserve the
+  distinction between local PASS and production DESIGN ONLY/OPEN.
+- [x] Add the Stage 6-to-Stage 7B compatibility handoff without touching the
+  Stage 7B worktree or enabling an adapter.
+- [x] Run disposable PostgreSQL 17 ACL verification, API tests, security
+  evidence regressions, policy checks, backup fixture checks, and whitespace
+  validation.
+- [ ] Hosted billing/security/export/restore/legal evidence, measurable
+  production RTO, 6.0f, and G1–G9/G11 integration remain blocked.
+
+The API test result was **106/106 PASS** and the security evidence regression
+result was **17/17 PASS**. `verify_contract.py` was attempted but correctly
+failed closed because the pinned Stage 7B source hash for
+`stage-7/stage-7b/ACCEPTANCE.md` does not match the current read-only source;
+this is preserved as an integration-evidence blocker, not silently rehashed.
+C4 remains **8 PASS / 19 PARTIAL / 6 OPEN**.

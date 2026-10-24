@@ -2268,3 +2268,30 @@ C4 progress and do not create any Supabase project. 6.0f UNCHECKED;
 AUTHORIZED; ORD-A sequencing-only; 0 CZK/month; Stage 7 untouched.
 
 created by stokonn with love <3
+## Stage 6 major engineering/readiness batch — 2026-10-24
+
+This batch added three local-only readiness artifacts:
+
+- `stage-6/ACL-MIGRATION-PROPOSAL.md`: reversible, function-specific
+  `rls_auto_enable()` preflight, revoke, postflight, and rollback procedure.
+  It was not run against Supabase.
+- `stage-6/BACKUP-ACCEPTANCE-MATRIX.md`: operational acceptance matrix
+  distinguishing verified synthetic resilience from design-only production
+  scheduling, retention, restore, and RTO requirements.
+- `stage-6/STAGE7B-API-COMPATIBILITY-HANDOFF.md`: read-only Stage 6/Stage 7B
+  comparison covering session, queue, detail, revisions, decisions, audit,
+  numeric representations, errors, and G1–G11 blockers.
+
+Verification: the supplied disposable PostgreSQL 17 ACL procedure passed with
+the event trigger preserved and synthetic-table RLS enabled; the Stage 6 API
+local suite passed **106/106**; security evidence Python regressions passed
+**17/17**; policy and backup fixture checks passed; `git diff --check` passed.
+`verify_contract.py` remains blocked by its pre-existing pinned Stage 7B
+read-only hash mismatch for `docs/planning/goldberg-0.11/stage-7/stage-7b/ACCEPTANCE.md`;
+no Stage 7B file was modified. C4 remains **8 PASS / 19 PARTIAL / 6 OPEN** and
+6.0f remains unchecked.
+
+No production database, scheduler, cloud service, Android device, Stage 7
+worktree, release, or real data was accessed. The next safe action is owner
+approval of the shared API fixture decisions or separately authorized hosted
+evidence collection; neither is implied by these local results.

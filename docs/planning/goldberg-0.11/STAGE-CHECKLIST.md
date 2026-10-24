@@ -2027,3 +2027,30 @@ and Stage 6 remain **OPEN** pending private destination/key/schedule/restore
 decisions and the independent C4/6.0f gates.
 
 created by stokonn with love <3
+## Stage 6 major engineering/readiness batch — 2026-10-24
+
+**Purpose:** reduce independently actionable Stage 6 readiness risk without
+activating production services or changing the approved C4 classification.
+
+**Scope:** ACL migration proposal, synthetic backup acceptance, Stage 6/7B
+contract comparison, local verification, and synchronized handoff documents.
+
+**Tasks**
+
+- [x] Prepare a narrow reversible `rls_auto_enable()` ACL migration with
+  preflight, postflight, and exact-ACL rollback guidance.
+- [x] Re-run the supplied disposable PostgreSQL 17 procedure unchanged.
+- [x] Record backup resilience acceptance and distinguish synthetic evidence
+  from production scheduling, retention, restore, and RTO gates.
+- [x] Compare Stage 6 API local semantics with the immutable Stage 7B source
+  and preserve the inactive mapping proposal.
+- [x] Run focused API/security/policy/fixture checks.
+- [ ] Resolve the pinned Stage 7B source-hash mismatch and obtain owner approval
+  for the shared public API fixture decisions.
+- [ ] Close hosted/legal/C4/6.0f and G1–G9/G11 requirements.
+
+**Verification:** PostgreSQL 17 ACL procedure exit 0; API **106/106 PASS**;
+security evidence regressions **17/17 PASS**; policy, backup fixture, and
+whitespace checks PASS. `verify_contract.py` failed closed on the pre-existing
+Stage 7B `ACCEPTANCE.md` hash mismatch. No hosted or Android runtime checks
+were executed. **Status: in progress; not complete.**

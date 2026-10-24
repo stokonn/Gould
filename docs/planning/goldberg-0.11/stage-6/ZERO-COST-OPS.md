@@ -100,3 +100,13 @@ budgets above), owner-controlled export storage already in place. Any proposed
 resource with a price tag stops the stage for owner review.
 
 created by stokonn with love <3
+## Backup acceptance checkpoint — 2026-10-24
+
+[BACKUP-ACCEPTANCE-MATRIX.md](BACKUP-ACCEPTANCE-MATRIX.md) now maps the
+verified synthetic controls to the remaining production gates. Encryption,
+manifest validation, tamper/partial rejection, atomic publication,
+separate-process recovery, key rotation, schema/count checks, audit-chain
+fixture checks, and cleanup remain local synthetic PASS evidence. Scheduling,
+freshness monitoring, retention execution, hosted restore, owner-held disaster
+recovery custody, and measurable production RTO remain design-only or OPEN.
+No production scheduler or backup was activated.
