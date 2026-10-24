@@ -1,3 +1,30 @@
+## Stage 6 PostgreSQL 17 ACL verification — 2026-10-24
+
+Owner-authorized rootless Podman pull of official
+`docker.io/library/postgres:17` completed. The image is PostgreSQL 17.11
+amd64, manifest
+`sha256:3518071376d0b6156b02e1db2747a78511b5b9dc3763cc79c506ebe2dc2ee71c`
+and local ID `82903352d6faf8f8a318bc4353d1cb1db67d4a5ff968d2799b2718e2cb00afa2`.
+The unchanged supplied runner exited **0**. All three SQL stages passed:
+effective `EXECUTE` was removed for `anon` and `authenticated`, PUBLIC
+effective privilege was false, `ensure_rls` remained enabled, and synthetic
+table creation enabled RLS.
+
+The final detailed disposable run also returned `f|f|f` for
+`anon`/`authenticated`/PUBLIC, ACL scan `f`, `postgres=X/postgres`, and
+`ensure_rls|O|rls_auto_enable()`. PostgreSQL 17.11 logs showed clean startup
+and readiness. Matching disposable containers/volumes were absent after
+cleanup. Raw logs remain in the private session directory:
+`stage6-acl-pg17-run.log` and `stage6-acl-pg17-detail-final.log`.
+Two earlier auxiliary diagnostic queries failed with exit 1 due query syntax;
+the corrected final detail run passed, and those logs are retained.
+
+This verifies the candidate only in synthetic local PostgreSQL. It does not
+approve hosted deployment or close C4/6.0f; backup readiness remains design
+only. M1–M3 and Stage 7B were not changed.
+
+created by stokonn with love <3
+
 ## Stage 6 ACL candidate review — 2026-10-24
 
 The extracted package at `/home/stokonn/Stažené/stage6-review/stage6_acl_review`

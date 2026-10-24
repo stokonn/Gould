@@ -1,3 +1,57 @@
+# 2026-10-24 — PostgreSQL 17 disposable verification completed
+
+**Status: ISOLATED VERIFICATION PASSED / NOT PRODUCTION APPROVAL.**
+
+The owner-authorized official image pull and the supplied
+`run_disposable_pg17.sh` completed successfully. Podman was rootless; the
+image was `docker.io/library/postgres:17`, PostgreSQL **17.11**, amd64,
+manifest digest
+`sha256:3518071376d0b6156b02e1db2747a78511b5b9dc3763cc79c506ebe2dc2ee71c`
+and local image ID
+`82903352d6faf8f8a318bc4353d1cb1db67d4a5ff968d2799b2718e2cb00afa2`.
+The manifest identified the official source as
+`https://github.com/docker-library/postgres.git` revision
+`2603e26e245e558218728ee14e0a42dcb020dc7f`, path `17/trixie`.
+
+## Acceptance result
+
+The unchanged supplied runner exited **0**:
+
+```text
+PASS — public EXECUTE revoked; ensure_rls preserved; synthetic CREATE TABLE got RLS
+PASS: isolated PostgreSQL 17 privilege and event trigger acceptance test.
+```
+
+Its three SQL stages all succeeded. The candidate revoked effective function
+`EXECUTE` for `anon` and `authenticated`, retained the enabled `ensure_rls`
+event trigger, and a synthetic `public` table automatically received RLS.
+The synthetic table transaction rolled back. A separate final detail run
+reported explicit effective privileges `f|f|f` for `anon`, `authenticated`
+and `PUBLIC`, an ACL scan result of `f` for a PUBLIC `EXECUTE` entry,
+`postgres=X/postgres` as the remaining function ACL, and
+`ensure_rls|O|rls_auto_enable()`. PostgreSQL server logs show PostgreSQL
+17.11 started and became ready to accept connections without error.
+
+The unchanged runner's full output is preserved outside the repository at
+`/home/stokonn/.copilot/session-state/3a888b7e-8982-45f3-b923-86283dda25eb/files/stage6-acl-pg17-run.log`.
+The detailed final ACL/log output is at
+`stage6-acl-pg17-detail-final.log` in the same private session directory.
+Two earlier auxiliary detail captures stopped with exit 1 because of
+diagnostic-query qualification/cast errors; they did not indicate a failure
+of the candidate SQL. Their raw logs remain preserved, and the corrected
+detail run passed.
+
+Podman showed no remaining matching container or volume after cleanup. No
+hosted Supabase connection, production migration, real data or cloud resource
+was used.
+
+**Conclusion:** the candidate is verified in the synthetic PostgreSQL 17
+fixture and no unexpected authorization change was observed. Hosted
+compatibility, migration approval, rollback planning and the existing
+broader Stage 6 gates remain separate and open.
+
+created by stokonn with love <3
+
 # 2026-10-24 — supplied ACL candidate review and isolated PG17 verification
 
 **Status: REVIEWED / POSTGRESQL VERIFICATION BLOCKED / NOT APPROVED FOR HOSTED DEPLOYMENT.**

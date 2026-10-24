@@ -1,3 +1,26 @@
+## Stage 6 PostgreSQL 17 ACL verification — 2026-10-24
+
+- [x] Pull the owner-authorized official `docker.io/library/postgres:17`
+  image rootlessly with Podman; PostgreSQL 17.11 amd64,
+  manifest `sha256:3518071376d0b6156b02e1db2747a78511b5b9dc3763cc79c506ebe2dc2ee71c`.
+- [x] Run the supplied runner unchanged: **exit 0**; all three SQL stages
+  passed.
+- [x] Verify effective `EXECUTE` false for `PUBLIC`, `anon` and
+  `authenticated`; function ACL retained only `postgres=X/postgres`.
+- [x] Verify `ensure_rls|O|rls_auto_enable()` and automatic RLS on the
+  synthetic table.
+- [x] Inspect PostgreSQL 17.11 logs; startup/readiness completed without
+  errors, and disposable resources were removed.
+- [x] Preserve exact runner/detail logs and image identity outside Git.
+
+The isolated candidate verification passed. Two earlier auxiliary diagnostic
+queries failed with exit 1 due query syntax; corrected evidence passed and all
+raw logs are retained. No hosted Supabase, production migration, real data,
+Stage 7A/7B, Android or release work occurred. Hosted approval and broader
+Stage 6 gates remain open; backup readiness remains design-only.
+
+created by stokonn with love <3
+
 ## Stage 6 ACL candidate review — 2026-10-24
 
 - [x] Read all five supplied ACL/backup review files from the localized

@@ -1928,3 +1928,24 @@ verified.
 Stage 7B was not touched.
 
 created by stokonn with love <3
+## Stage 6 ACL hardening and backup review — 2026-10-24 verification update
+
+**Progress:** The owner-authorized official PostgreSQL image was pulled
+rootlessly with Podman. The unchanged supplied runner exited **0**. PostgreSQL
+17.11 synthetic acceptance passed: effective `EXECUTE` is false for
+`PUBLIC`, `anon` and `authenticated`; `ensure_rls` remains enabled; synthetic
+table creation enables RLS; no unexpected authorization change was observed.
+The final detailed run captured clean PostgreSQL logs and removed all
+disposable resources.
+
+**Evidence:** image manifest
+`sha256:3518071376d0b6156b02e1db2747a78511b5b9dc3763cc79c506ebe2dc2ee71c`;
+local ID `82903352d6faf8f8a318bc4353d1cb1db67d4a5ff968d2799b2718e2cb00afa2`.
+Raw runner/detail logs are preserved privately. Two auxiliary diagnostic
+attempts exited 1 due query syntax errors; corrected final diagnostics passed.
+
+**Completion status:** ACL disposable verification **COMPLETE**. Hosted
+deployment approval, rollback/migration review, C4, 6.0f and backup/recovery
+requirements remain open. No production or cloud change occurred.
+
+created by stokonn with love <3
