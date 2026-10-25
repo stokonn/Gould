@@ -1,3 +1,8 @@
+> **Current Phase1/2 —2026-10-25:** fresh catalog guard match and new private
+> probe preparation,with actionable blocker classes,are in
+> [PRIVATE-DEPLOYMENT-PHASE1-2.md](PRIVATE-DEPLOYMENT-PHASE1-2.md). No C4 closure,
+> no unknown account fields marked PASS,and no accepted owner decision reopened.
+
 > **2026-10-25 source publication:** local packet re-verified;C4 classifications
 > remain8 PASS/19 PARTIAL/6 OPEN. No fresh account/legal/billing/hosted acceptance
 > inferred. [Exact next-stage gates](NEXT-PRIVATE-DEPLOYMENT-CHECKLIST.md).
@@ -685,3 +690,31 @@ No new PASS or owner closure inferred. D1 retains bounded Q1-D report; D2/D4/D6
 remain partial; D3/D5/D7/D8/D9 remain open as detailed in the linked report.
 Current contract/document currency must be rechecked immediately before any
 separately authorized hosted action.
+
+## P. Phase1/2 fresh evidence —2026-10-25
+
+Standing33-row classification remains8 PASS/19 PARTIAL/6 OPEN. New bounded
+subchecks:existing project Free/healthy/Frankfurt/PG17.11;catalog empty application
+schemas,private schema absent,expected ACL candidate guards and bootstrap
+prerequisites match;postgres schema/role creation capability;SSL server ON. Two
+Advisor warnings remain. External SSL enforcement,MFA,actual exposed schemas and
+Auth/API settings remain UNKNOWN;server SSL ON does not establish enforcement.
+
+Retain existing owner CF Free/no-card observation (§G) and accepted Q1-D scope.
+No screenshot payload or console export is present in that observation;none
+invented or requested as repeated approval. Current charges/add-ons/usage and
+complete financial posture remain UNKNOWN. Existing cf CLI has no login/token;
+no CF plugin/browser path found. No authentication,account or product activation.
+
+Official Zero Trust setup currently requires payment details even for Free,
+so this onboarding path is excluded. Route-less Worker plus authenticated remote
+service binding is documented and prepared;account entitlement/private session/
+negative hosted requests remain unexecuted. Source URLs and fresh privacy/log/
+backup findings are in the linked report. Actual runtime/restore/C2 measurements
+are bounded post-authorization acceptance,not circular pre-provisioning demands.
+
+No source-documented limits are treated as current account invoices,security
+configuration,Free backup entitlement or provider retention proof. Current terms
+HTML selector still does not expose version/date. Accepted operator/professional
+outcome remains intact;unquantified service/transfer/retention and operational
+inputs need evidence/disposition. No remote schema change or Worker deployed.

@@ -130,3 +130,17 @@ all existing worktrees preserved. Disposable runner uses network=none/no ports,
 immutable cached PG17 image and UUID-owned container/volume removal plus absence
 verification.20 SQL checks passed in final source-bound run; no hosted mutations.
 See Stage6 PRIVATE-CLOUD-READINESS.md.
+
+### 2026-10-25 — private probe preparation
+
+No application/legacy cleanup. Only new UUID-owned,network=none rootless PG
+fixtures were removed with their volumes and absence verified (18 new role/
+restore checks). Local workerd instances were loopback-only and disposed.
+Existing migrations/ACL/readiness shell/evidence and other worktrees retained.
+Accepted suites not rerun. See PRIVATE-DEPLOYMENT-PHASE1-2.md;no hosted mutation.
+
+Initial local workerd generated only .wrangler/cache/cf.json outside the intended
+build folder. Audited as new session-generated cache (absent at recovery),copied
+byte-identically to private/tmp custody and hash-verified before removing only
+that generated file and its now-empty directories. No metadata contents published.
+Final runner cf:false/telemetry:false prevents another lookup.

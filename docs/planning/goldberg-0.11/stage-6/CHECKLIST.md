@@ -1,3 +1,34 @@
+## Stage6 private deployment — Phase1/2 prepared,hosted NO-GO (2026-10-25)
+
+Purpose/scope:fresh read-only gate evaluation,new synthetic probe/access/private
+transport preparation and tracking. Basec8b903b;accepted provider/operator/Stage7/
+Cloud Readiness decisions and evidence reused. No accepted test suite rerun.
+
+- [x] Fresh catalog/Advisor/plan metadata and exact unchanged candidate guards
+  evaluated:expected function/trigger,empty application schema,SSL server ON.
+  External enforcement,MFA/exposed schemas/Auth/API and billing remain UNKNOWN.
+- [x] CF access investigated:CLI not logged in,no token/connector/browser.
+  Standard Zero Trust Free onboarding requires payment details:excluded.
+  Route-less remote service-binding path prepared,not hosted-verified.
+- [x] New least-privilege synthetic role/marker-only access,TLS fixed-query
+  adapter,authenticated disabled probe/local caller and containment packet.
+- [x]18 new PG checks PASS (a65fcef9);8 new component groups in3 file wrappers;
+  5 local workerd requests;strict core/config types,bundle/syntax/source/raw
+  integrity PASS. Accepted SQL used only as fixture setup;old test bodies untouched.
+- [x] Logging/retention/encrypted backup requirements and B1–B8 blocker classes
+  finalized. Read-only compatibility is not hosted permission/runtime proof.
+- [ ] Hard access/financial/security/operational/disposition inputs;one exact
+  consolidated hosted approval only after prerequisites genuinely pass.
+- [ ] Hosted execution/acceptance. No specific hosted authorization requested.
+
+Reports:docs/planning/goldberg-0.11/stage-6/PRIVATE-DEPLOYMENT-PHASE1-2.md
+and EXACT-PRIVATE-EXECUTION-PACKET.md. C4 OPEN8/19/6;6.0f unchecked.
+Issue31 OPEN/Goldberg Development In Progress. Source publication/remote/CI
+receipt lives in the latest Issue checkpoint/private PMP. No real data,public
+routes,OAuth,paid setup,main merge or release;other worktrees preserved.
+
+---
+
 ## Stage6 Cloud — re-verification/publication (2026-10-25)
 
 **PRIVATE STAGING NO-GO.** Owner authorized scoped review,reruns,commit/ordinary

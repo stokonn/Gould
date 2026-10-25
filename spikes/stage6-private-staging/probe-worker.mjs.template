@@ -1,0 +1,11 @@
+// Future route-less Worker entrypoint. Materialize locally for build only.
+// No hosted deployment or enabling is authorized by this template.
+import {Client} from 'pg';
+import {createProbeHandler} from './probe-handler.mjs';
+import {createReadProbe} from './probe-db.mjs';
+export default {async fetch(request,env){
+ const readProbe=()=>createReadProbe({Client,env:{
+  DATABASE_URL:env.DATABASE_URL ?? '',EXPECTED_DB_HOST:env.EXPECTED_DB_HOST ?? '',DB_CA_PEM:env.DB_CA_PEM ?? '',
+ }})();
+ return createProbeHandler({readProbe})(request,env);
+}};

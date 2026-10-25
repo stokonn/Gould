@@ -1,0 +1,9 @@
+// LOCAL caller only; never deploy this caller or expose its dev listener.
+// Remote-binding sessions are hosted actions and require separate authorization.
+import {bindings,defineConfig} from 'cf/config';
+export default defineConfig({worker:{
+  name:'goldberg-private-local-caller',compatibilityDate:'2026-10-25',
+  entrypoint:'./local-caller.mjs',workersDev:false,previewUrls:false,
+  env:{PROBE:bindings.worker({worker:'goldberg-private-verification',dev:{remote:true}})},
+  observability:{enabled:false,logs:{enabled:false,invocationLogs:false,persist:false},traces:{enabled:false,persist:false}},
+}});

@@ -1,3 +1,7 @@
+> Current Phase1/2 investigation and hard-vs-post-authorization gate classification:
+> [PRIVATE-DEPLOYMENT-PHASE1-2.md](PRIVATE-DEPLOYMENT-PHASE1-2.md). Accepted decisions
+> and tests are retained. No repeated eligibility/provider-choice approval is requested.
+
 # Next private deployment checklist — NO-GO (2026-10-25)
 
 Purpose: collect exact missing evidence before any remotely mutating private
@@ -28,7 +32,7 @@ project,data,worktrees and historical evidence;synthetic data only;0CZK mandator
   transfer safeguards/certification scope/TIA access,quantified provider edge/
   dashboard/security retention and assigned change monitoring. Resolve applicable
   legal-source retrieval gaps with reviewer disposition. No EU-only claim.
-- [ ] **C4 D1 / operator:** carry bounded Q1-D/D5b owner-reported resolution only;
+- [x] **C4 D1 / operator:** bounded Q1-D/D5b owner-reported resolution carried;
   reassess changed scope/terms. Do not reopen resolved eligibility without cause
   or infer general compliance. No identity/reviewer details requested or published.
 - [ ] **C4 D8–D9 / owner closure:** reconcile every row and retain explicit C4

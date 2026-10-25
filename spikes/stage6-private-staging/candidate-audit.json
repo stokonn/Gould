@@ -1,0 +1,21 @@
+{
+  "observedAt": "2026-10-25 00:39:23 UTC",
+  "candidateFiles": {
+    "spikes/stage6-cloud-readiness/acl-fix.candidate.sql": {
+      "sha256": "a77765b2a55e97eb0537926792fd9f49561b6cc6fa9c2128d6fdf8e441162138",
+      "byte_identical_to_accepted_head": true
+    },
+    "spikes/stage6-cloud-readiness/private-schema.candidate.sql": {
+      "sha256": "46c9149ba3db1f2d45028f69d83ffc2a065c64db59f730f782c51f446d75b3de",
+      "byte_identical_to_accepted_head": true
+    }
+  },
+  "acl_catalog_guard_matches": true,
+  "bootstrap_catalog_prerequisites_match": true,
+  "role_creation_capability_observed": true,
+  "staging_role_absent": true,
+  "external_ssl_enforcement": "UNKNOWN",
+  "exposed_api_schemas": "UNKNOWN",
+  "hosted_sql_executions": 0,
+  "method": "read-only catalog prerequisite evaluation; no remote prepare/DDL/transactional rehearsal"
+}

@@ -17,3 +17,7 @@ spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-332ae776bbb2415c8
 spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f/command-034.log -whitespace
 spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f/command-035.log -whitespace
 spikes/stage6-cloud-readiness/results/reverification-2026-10-25/build-04.log -whitespace
+
+# Preserve new private-probe esbuild raw output/hash,including generated trailing spaces.
+spikes/stage6-private-staging/results/component-verification/02.log -whitespace
+spikes/stage6-private-staging/results/component-final-8o7WsQ/02.log -whitespace

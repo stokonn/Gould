@@ -1,0 +1,10 @@
+import {bindings,defineConfig} from 'cf/config';
+export default defineConfig({worker:{
+ name:'goldberg-private-verification',compatibilityDate:'2026-10-25',
+ compatibilityFlags:['nodejs_compat'],entrypoint:'./probe-worker.mjs',
+ workersDev:false,previewUrls:false,
+ env:{STAGING_PROBE_ENABLED:bindings.text('false'),
+  PRIVATE_VERIFICATION_TOKEN:bindings.secret(),DATABASE_URL:bindings.secret(),
+  DB_CA_PEM:bindings.secret(),EXPECTED_DB_HOST:bindings.secret()},
+ observability:{enabled:false,logs:{enabled:false,invocationLogs:false,persist:false},traces:{enabled:false,persist:false}},
+}});

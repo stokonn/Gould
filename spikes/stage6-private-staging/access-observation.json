@@ -1,0 +1,21 @@
+{
+  "observedDate": "2026-10-25",
+  "cfCliAuthenticated": false,
+  "cfApiTokenVariablePresent": false,
+  "cloudflarePluginSearchResults": 0,
+  "browserToolsAvailable": false,
+  "supabasePlan": "free",
+  "supabaseTier": "tier_free",
+  "region": "eu-central-1",
+  "health": "ACTIVE_HEALTHY",
+  "securityAdvisorWarningNames": [
+    "anon_security_definer_function_executable",
+    "authenticated_security_definer_function_executable"
+  ],
+  "recordedMigrations": 0,
+  "billingCardsChargesAddonsQuotaEvidence": "UNKNOWN",
+  "accountMfaEvidence": "UNKNOWN",
+  "ownerCfFreeNoCardObservation": "retained from C4 sectionG October22;not re-approved or upgraded to fresh billing evidence",
+  "zeroTrustOnboardingPaymentDetails": "required even for Free by official setup guide;not activated",
+  "remoteMutations": 0
+}

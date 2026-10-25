@@ -1,0 +1,760 @@
+{
+  "status": "PASS",
+  "count": 18,
+  "checks": [
+    "role/table transactional rollback",
+    "probe access apply",
+    "role flags and bounded connection count",
+    "actual synthetic login sees exactly probe marker",
+    "application tables not granted",
+    "application security-definer execution denied",
+    "probe insert denied",
+    "probe update denied",
+    "probe delete denied",
+    "actual login statement timeout",
+    "anon probe denied",
+    "authenticated probe denied",
+    "service_role probe denied",
+    "reapply refuses existing role without replacing data",
+    "restore denied before explicit probe ACL",
+    "isolated restored fixture with reviewed minimal grants",
+    "disable containment preserves fixture",
+    "disabled role cannot login"
+  ],
+  "cleanup": "removed-and-absence-verified",
+  "sourceUnchanged": true,
+  "sources": {
+    "spikes/stage6-private-staging/verify-new.py": "717812ee6bfb143dbada35a0f17660e3a7545a7cdf65832eb44bee29eabfd68a",
+    "spikes/stage6-private-staging/probe-handler.mjs": "f580fac2c7d33602797b060187350b7adaab09a325dc60ddf78f3d6bb0840c67",
+    "spikes/stage6-private-staging/probe-handler.test.mjs": "ccc2886da2f2665709f3e22a84268e488664b54cac2821a574df40268295e829",
+    "spikes/stage6-private-staging/probe-db.mjs": "313008d5393b4667c4a649a19405a40b6f5723cbb49eee88616b678a890d4183",
+    "spikes/stage6-private-staging/probe-db.test.mjs": "9b7c0869f039812bdde0acd6ff1e33e282a6f9c0a9f025273e1fb21db516260d",
+    "spikes/stage6-private-staging/local-caller.mjs": "70923847b90778151a5a7cb0318abc9ba3bf414f92b4c724d537e78e13397576",
+    "spikes/stage6-private-staging/local-caller.test.mjs": "2365f3f1d690561b17f53ab5bf7fc495a2edcf1006bbf38db7e9de46f657f9e1",
+    "spikes/stage6-private-staging/catalog-preflight.sql": "cff77071c7d9060d465115a9a76c9413c542ff2ce8e3539fff68a26ff7240772",
+    "spikes/stage6-private-staging/probe-role.candidate.sql": "adc2ab4567ef4b1e66eb3136e23d4104cca9d12249c6408e3a5fe5017a086735",
+    "spikes/stage6-private-staging/disable-probe.candidate.sql": "000610e532702e0d66d3a7a034c8770373764de45070810f402120e162d26120",
+    "spikes/stage6-private-staging/local-caller.config.ts.template": "78aa47fbb45a183388142d19329dcbb2f84944c48fcc5a7504823f4cbad04ca7",
+    "spikes/stage6-cloud-readiness/acl-fix.candidate.sql": "a77765b2a55e97eb0537926792fd9f49561b6cc6fa9c2128d6fdf8e441162138",
+    "spikes/stage6-cloud-readiness/private-schema.candidate.sql": "46c9149ba3db1f2d45028f69d83ffc2a065c64db59f730f782c51f446d75b3de"
+  },
+  "commands": [
+    {
+      "argv": [
+        "podman",
+        "info",
+        "--format",
+        "{{.Host.Security.Rootless}}"
+      ],
+      "exitCode": 0,
+      "log": "000.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "run",
+        "--detach",
+        "--pull=never",
+        "--network=none",
+        "--name",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "--label",
+        "goldberg.scope=private-probe-synthetic",
+        "--env",
+        "POSTGRES_HOST_AUTH_METHOD=trust",
+        "docker.io/library/postgres@sha256:e4cb93687b062cd25a0e8f672d85a7708235009d70d31f8a7698d9370092a9c4"
+      ],
+      "exitCode": 0,
+      "log": "001.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "inspect",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "--format",
+        "{{json .Mounts}}"
+      ],
+      "exitCode": 0,
+      "log": "002.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "003.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "004.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "005.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "006.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "007.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "008.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "009.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "010.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 0,
+      "log": "011.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 0,
+      "log": "012.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 0,
+      "log": "013.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 0,
+      "log": "014.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 0,
+      "log": "015.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 0,
+      "log": "016.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 0,
+      "log": "017.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "goldberg_staging_probe",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 0,
+      "log": "018.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "goldberg_staging_probe",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 3,
+      "log": "019.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "goldberg_staging_probe",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 3,
+      "log": "020.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "goldberg_staging_probe",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 3,
+      "log": "021.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "goldberg_staging_probe",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 3,
+      "log": "022.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "goldberg_staging_probe",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 3,
+      "log": "023.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "goldberg_staging_probe",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 3,
+      "log": "024.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 3,
+      "log": "025.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 3,
+      "log": "026.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 3,
+      "log": "027.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 3,
+      "log": "028.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "pg_dump",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "--schema=goldberg_private",
+        "--no-owner",
+        "--no-privileges"
+      ],
+      "exitCode": 0,
+      "log": "029.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 0,
+      "log": "030.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "probe_restore"
+      ],
+      "exitCode": 0,
+      "log": "031.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "probe_restore"
+      ],
+      "exitCode": 0,
+      "log": "032.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "goldberg_staging_probe",
+        "-d",
+        "probe_restore"
+      ],
+      "exitCode": 3,
+      "log": "033.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "probe_restore"
+      ],
+      "exitCode": 0,
+      "log": "034.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "goldberg_staging_probe",
+        "-d",
+        "probe_restore"
+      ],
+      "exitCode": 0,
+      "log": "035.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 0,
+      "log": "036.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112",
+        "psql",
+        "-X",
+        "-At",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "goldberg_staging_probe",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "037.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "rm",
+        "--force",
+        "--volumes",
+        "--time",
+        "0",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112"
+      ],
+      "exitCode": 0,
+      "log": "038.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "container",
+        "exists",
+        "goldberg-private-probe-aa35bf00d1574a4798d2f964f063c112"
+      ],
+      "exitCode": 1,
+      "log": "039.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "volume",
+        "exists",
+        "71eaa080f6544d2bbfbe3909d1ecbb0f58494e7c1b758ef0893b1d8f5d4dfd17"
+      ],
+      "exitCode": 1,
+      "log": "040.log"
+    }
+  ],
+  "syntheticOnly": true,
+  "remoteWrites": 0,
+  "artifacts": {
+    "000.log": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74",
+    "001.log": "25046e1a81a5ccadbe329c7d8ab9079358274be79cef8f7bd976c08cddd996f4",
+    "002.log": "d5abb56d68147d12d685790669b8fab051de60164cfa10cd369fcbeb1f31e8eb",
+    "003.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "004.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "005.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "006.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "007.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "008.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "009.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "010.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "011.log": "6e168fc3b5a0662104b5e5da92e87b870e8b7c65fec827d267115b5123d18614",
+    "012.log": "9c3646b15734ac71f34da87880a1f44f5c6f519718468b886f3ca29ffd642989",
+    "013.log": "e037c72a97ecad0e7c9b0014db4763dfbcf2f7c386ba066ba0a9a54940111ed2",
+    "014.log": "5fb542dcf4b642dedf4fe6e9510f5aa6e1c8dc82a6d656e6973733dd28f673f0",
+    "015.log": "1e319d4a0dc44951a7f7f3a1e0b68c82556e601beabc579e5ef45b936a2023b5",
+    "016.log": "106f8aef442bc37f5cae828d5cff8a480440addcb292cc389eb01bd7a55c9a93",
+    "017.log": "fe8edeeb98cc6d3b93cf2d57000254b84bd9eba34b4df7ce4b87db8b937b7703",
+    "018.log": "fe8edeeb98cc6d3b93cf2d57000254b84bd9eba34b4df7ce4b87db8b937b7703",
+    "019.log": "3d8c45b0227567174deafd7d217216cdaa02d17a9c4d37b0942106fedb2eaf55",
+    "020.log": "0a3e5a8ee2312342ca4f4054f418436870ede2a2255426cdce83ac83201a9731",
+    "021.log": "017b788a51b778a19eb2ce96f2f98a475822d4fe8d60d26ef69517bfa7805f9a",
+    "022.log": "017b788a51b778a19eb2ce96f2f98a475822d4fe8d60d26ef69517bfa7805f9a",
+    "023.log": "017b788a51b778a19eb2ce96f2f98a475822d4fe8d60d26ef69517bfa7805f9a",
+    "024.log": "782b2ef42c44a5dd22332a5b3706728bc8bfa7ceb666bef1c3a9c169a3150c8f",
+    "025.log": "7af87d450f960f6d0c8b4032d83a05c56fa0a59769116a46f529d1538415201c",
+    "026.log": "7af87d450f960f6d0c8b4032d83a05c56fa0a59769116a46f529d1538415201c",
+    "027.log": "7af87d450f960f6d0c8b4032d83a05c56fa0a59769116a46f529d1538415201c",
+    "028.log": "0db0cbf9118ea168c4c47b07cec04820e86ec4c4a0a06122456a317a7c213a1f",
+    "029.log": "69444a708fd08668bf2ec4b70bae1d2e8c966b8b288fd04725cfb0498264f9d9",
+    "030.log": "691e4b64d448c6cffd680247056c2f445e4fbf2dcbc9be821934064e906d1ce7",
+    "031.log": "e4f41f45ba88d77205aefdb431af2f5716744979fa9a71a47ffa20e0138f4247",
+    "032.log": "5fb542dcf4b642dedf4fe6e9510f5aa6e1c8dc82a6d656e6973733dd28f673f0",
+    "033.log": "e53189878d77518c10a11225442d11aae736b2635bee479bbe063fb301fe23bb",
+    "034.log": "30ac714f491b99a9f4a7b79d89c9de2e43fd5f8207ea7f9d11df7cc63bafc5c5",
+    "035.log": "fe8edeeb98cc6d3b93cf2d57000254b84bd9eba34b4df7ce4b87db8b937b7703",
+    "036.log": "95493ba1b703929c307685d8b343b999d8c4f52d4f7189a45fce2b5e780f95af",
+    "037.log": "48b1a5e2c309b79d5a8d7576f46ba87a5d82927e580e65a1398ddd88f706bdeb",
+    "038.log": "8c2979862dd5880663e8b16b69f4310ee368f94ae1795da9bb4dbfb9e22a7124",
+    "039.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "040.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "argv": [
+        "node",
+        "--test",
+        "/home/stokonn/Projects/Goldberg-Stage6-Cloud/spikes/stage6-private-staging/probe-handler.test.mjs",
+        "/home/stokonn/Projects/Goldberg-Stage6-Cloud/spikes/stage6-private-staging/probe-db.test.mjs",
+        "/home/stokonn/Projects/Goldberg-Stage6-Cloud/spikes/stage6-private-staging/local-caller.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "00.log"
+    },
+    {
+      "argv": [
+        "/tmp/goldberg-cloud-local-build-20261025/node_modules/.bin/tsc",
+        "-p",
+        "/tmp/goldberg-probe-bundle-VUsoG5/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "log": "01.log"
+    },
+    {
+      "argv": [
+        "/tmp/goldberg-cloud-local-build-20261025/node_modules/.bin/esbuild",
+        "probe-worker.mjs",
+        "--bundle",
+        "--format=esm",
+        "--platform=node",
+        "--target=es2022",
+        "--banner:js=import { createRequire } from \"node:module\"; const require = createRequire(\"/worker.js\");",
+        "--outfile=probe-worker.bundle.mjs"
+      ],
+      "exitCode": 0,
+      "log": "02.log"
+    },
+    {
+      "argv": [
+        "node",
+        "--check",
+        "/tmp/goldberg-probe-bundle-VUsoG5/probe-worker.bundle.mjs"
+      ],
+      "exitCode": 0,
+      "log": "03.log"
+    }
+  ],
+  "logicalComponentTests": 8,
+  "nodeFileWrappers": 3,
+  "localWorkerdRequests": 5,
+  "hostedRequests": 0,
+  "sources": {
+    "catalog-preflight.sql": "cff77071c7d9060d465115a9a76c9413c542ff2ce8e3539fff68a26ff7240772",
+    "disable-probe.candidate.sql": "000610e532702e0d66d3a7a034c8770373764de45070810f402120e162d26120",
+    "local-caller.config.ts.template": "78aa47fbb45a183388142d19329dcbb2f84944c48fcc5a7504823f4cbad04ca7",
+    "local-caller.mjs": "9ab3bf7452e6d9c5b2747279e1951af463e924b20fdfd89242bac009d8893723",
+    "local-caller.test.mjs": "dd3c7be5182b1860c1e7eba53b5463d44f14e9598cb95fde8ac10b34bf715fbe",
+    "probe-db.mjs": "313008d5393b4667c4a649a19405a40b6f5723cbb49eee88616b678a890d4183",
+    "probe-db.test.mjs": "9b7c0869f039812bdde0acd6ff1e33e282a6f9c0a9f025273e1fb21db516260d",
+    "probe-handler.mjs": "f580fac2c7d33602797b060187350b7adaab09a325dc60ddf78f3d6bb0840c67",
+    "probe-handler.test.mjs": "ccc2886da2f2665709f3e22a84268e488664b54cac2821a574df40268295e829",
+    "probe-role.candidate.sql": "adc2ab4567ef4b1e66eb3136e23d4104cca9d12249c6408e3a5fe5017a086735",
+    "probe-worker.config.ts.template": "5082e61f4790c5720b5d74929965423404300e2c8e230c8c02787d9b26b7bfcd",
+    "probe-worker.mjs.template": "02ac5ed8fc09c14bce44f4ccd559c032aae803e968993ca732730f375444ba3c",
+    "verify-components.cjs": "5eb6a62fe1e83c3dae8ae742d2723978143b88d4ce5bd8ae93a4db6273f07e3c",
+    "verify-new.py": "7bfcc7de0aeecc1898fd9d4500cfbdd9a8c09ad31611beb4e7f625ac399b69d0"
+  },
+  "sourceUnchanged": true,
+  "buildDirectory": "/tmp/goldberg-probe-bundle-VUsoG5",
+  "artifacts": {
+    "00.log": "fe86e529286b3e24bb687a7292d2abd2acf99c32fb4ec4537a24e848d7d523e6",
+    "01.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "02.log": "535f1484a09110c79c2d6ea58eb8cab68c425a6c4eb82cfe65d594d817fb3f90",
+    "03.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "driver-package-lock.json": "9aab2d0953e6d14939a7dcb3e54925d57a0e56a5adcfcf0db8483fdd9c2f7d34",
+    "tsconfig.json": "77351d65cd9f7fdc911f2d56742599ed7d31d08cd4f3094cdd7b8ebcaaeb5c64",
+    "workerd.log": "28a26320fce091e06daeb4aa2610876eb5c4f38bd8d4feafb9e2caafe881d93b"
+  }
+}

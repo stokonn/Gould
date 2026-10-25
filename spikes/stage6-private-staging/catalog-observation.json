@@ -1,0 +1,34 @@
+{
+  "observedAt": "2026-10-25 00:39:23 UTC",
+  "venue": "Supabase connected read-only catalog query",
+  "pg17": true,
+  "function": {
+    "acl": null,
+    "owner": "postgres",
+    "config": [
+      "search_path=pg_catalog"
+    ],
+    "anon_execute": true,
+    "guard_matches": true,
+    "security_definer": true,
+    "definition_sha256": "b21d88816c445d14cef5032c3cd4abaebc1db2001fcb3435022ab6b496182ca4",
+    "authenticated_execute": true
+  },
+  "server_version": "17.11",
+  "application_tables": 0,
+  "ssl_server_enabled": true,
+  "runtime_role_absent": true,
+  "external_ssl_enforced": null,
+  "private_schema_absent": true,
+  "postgres_can_create_role": true,
+  "provider_roles_available": true,
+  "public_definer_functions": [
+    {
+      "name": "rls_auto_enable",
+      "anon_execute": true,
+      "authenticated_execute": true
+    }
+  ],
+  "postgres_can_create_schema": true,
+  "api_exposed_schemas_observed": null
+}
