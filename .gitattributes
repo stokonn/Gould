@@ -57,3 +57,6 @@ docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10
 docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/recorder-compile-initial-failed.log -whitespace
 docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/recorder-compile-passed.log -whitespace
 docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/trusted-baseline-signing.txt -whitespace
+
+# Preserve exact automatic Stage 8B source-quality diagnostics.
+docs/planning/goldberg-0.11/stage-8/results/automatic-quality-40147220442/quality.log -whitespace

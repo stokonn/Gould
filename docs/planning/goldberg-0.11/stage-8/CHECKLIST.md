@@ -1,21 +1,24 @@
 ## Stage 8B — first technical assessment verified, October 25, 2026
 
-**TECHNICAL ASSESSMENT COMPLETE; source publication/readback pending. Full Stage8 integration/release PENDING/BLOCKED.** Branch `feature/goldberg-0.11-stage-8`, baseline2f4d1b8. Stage7 client/synthetic acceptance remains COMPLETE.
+**TECHNICAL ASSESSMENT COMPLETE / SOURCE PUBLISHED. Full Stage8 integration/release PENDING/BLOCKED.** Branch `feature/goldberg-0.11-stage-8`, baseline2f4d1b8. Stage7 client/synthetic acceptance remains COMPLETE.
 
-Purpose/scope: reconcile accepted7A documentation, audit mainCI/13Stage6 overlaps, assess A8-1/A8-2/A8-3 offline, verify retained APK/source/upgrade prerequisites and map critical-data coverage. Production behavior/database/schema/contracts/CI unchanged; new opt-in instrumentation recorder/host evidence tools only.
+Automatic new-source quality [40147220442](https://github.com/stokonn/Goldberg/actions/runs/40147220442) **SUCCESS at394b6b58b2adcb0eb07b4f873161bbd7cc70ed3c**:clean Gradle build/JVM/androidTest compilation/lint PASS7m49s,83executed/1up-to-date;all six workflow validators PASS. Individual new JVM counts not exported;0 native suite executions. This supersedes earlier local-only no-full-host statements below;CI25 was not manually rerun. Documentation-only receipt skips redundant CI;source-bound success is not transferred to its later SHA.
 
-- [x] Refresh16worktrees/remotes/Issue31/milestone4/releases/Wiki/Goldberg Development; preserve all2203 external original untracked files/APKs/PMP. Concurrent Cloud source2c38177/receiptc8b903b untouched, not adopted; PRIVATE STAGING NO-GO retained.
-- [x] Reconcile9Stage7A documentation deltas:four isolated acceptance/follow-up files adopted, shared current dashboards preserve newer Stage7B/8 decisions. X10 NOT FIXED/NOT VERIFIED,deferred Gould0.12; material accessibility retained.
-- [x] Audit main-onlyCI and classify all13overlaps; stronger accepted Stage7B workflows retained; no source combination.
-- [x] New test-recorder wrapper assembly PASS54s; default runner manifest PASS13s. App APK byte-identical93ae9ec…; trusted package/signature/ZIP/source/version/baseline review PASS,still0.10.1/code11.75historical critical CI25 cases inventoried,not rerun.
-- [x] Offline API36 emulator5588/qemu1:28unique settings configurations (16small+4standard+4opposite-theme NavHost+4scaffold),29captures including retry;161PNG/tree pairs. Four real TalkBack traversals/40swipes with events. Emulator stopped; AVD/APKs retained.
+
+Purpose/scope: reconcile accepted7A documentation, audit mainCI/13 Stage 6 overlaps, assess A8-1/A8-2/A8-3 offline, verify retained APK/source/upgrade prerequisites and map critical-data coverage. Production behavior/database/schema/contracts/CI unchanged; new opt-in instrumentation recorder/host evidence tools only.
+
+- [x] Refresh16 worktrees/remotes/Issue31/milestone4/releases/Wiki/Goldberg Development; preserve all 2203 external original untracked files/APKs/PMP. Concurrent Cloud source 2c38177 / receipt c8b903b untouched, not adopted; PRIVATE STAGING NO-GO retained.
+- [x] Reconcile9 Stage 7A documentation deltas:four isolated acceptance/follow-up files adopted, shared current dashboards preserve newer Stage7B/8 decisions. X10 NOT FIXED/NOT VERIFIED,deferred Gould0.12; material accessibility retained.
+- [x] Audit main-onlyCI and classify all 13overlaps; stronger accepted Stage7B workflows retained; no source combination.
+- [x] New test-recorder wrapper assembly PASS54 s; default runner manifest PASS13 s. App APK byte-identical93ae9ec…; trusted package/signature/ZIP/source/version/baseline review PASS,still0.10.1/code11.75 historical critical CI25 cases inventoried,not rerun.
+- [x] Offline API36 emulator5588/qemu1:28 unique settings configurations (16small+4standard+4opposite-theme NavHost+4scaffold),29 captures including retry;161 PNG/tree pairs. Four real TalkBack traversals / 40 swipes with events. Emulator stopped; AVD/APKs retained.
 - [x] A8-1 actual duplicate Settings stops and A8-2 actual large-font label ellipsis reproduced, bothMedium/P2,NOT FIXED. A8-3 scaffold statuscontrast~1.05–1.13:1 reproduced; matching real NavHost5.56–19.48:1,gesture5.74–15.25:1; no product contrast defect demonstrated in tested scope. Proposed fixes await separate implementation approval.
 - [x] Evidence verifier,Python compilation,production-preservation and whitespace checks PASS. No new JUnit/full CI/lint/data-suite execution claimed; no audible speech/motion/full3h-reboot/live integration acceptance.
-- [ ] Final Issue/Project/source publication and exact remote readback (pending receipt).
+- [x] Source `394b6b58b2adcb0eb07b4f873161bbd7cc70ed3c` ordinary-pushed and remote SHA exact; [authoritative Issue checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6391483885), Issue OPEN / Project In Progress synchronized/read back. Final documentation receipt follows without changing runtime evidence.
 
-[Full commands/results/limitations and next milestone](8B-TECHNICAL-VERIFICATION.md); [all13risk resolutions](INTEGRATION-SEQUENCE.md). No production correction, networking activation, Android/backend combination, main merge, deploy or release.
+[Full commands/results/limitations and next milestone](8B-TECHNICAL-VERIFICATION.md); [all 13risk resolutions](INTEGRATION-SEQUENCE.md). No production correction, networking activation, Android/backend combination, main merge, deploy or release.
 
-Next: publish verified bounded evidence; then seek separate Stage8C scope for targeted row semantics/responsive labels/scaffold-window correction and affected before/after regressions. Stage6 G1–G9/G11,C4,6.0f/public-version/real-policy/live/production dependencies remain OPEN. Trusted-signer seeded0.11upgrade/version selection and broader release gates remain pending.
+Next: retain published bounded evidence; seek separate Stage8C scope for targeted row semantics/responsive labels/scaffold-window correction and affected before/after regressions. Stage6 G1–G9/G11,C4,6.0f/public-version/real-policy/live/production dependencies remain OPEN. Trusted-signer seeded0.11upgrade/version selection and broader release gates remain pending.
 
 created by stokonn with love <3
 

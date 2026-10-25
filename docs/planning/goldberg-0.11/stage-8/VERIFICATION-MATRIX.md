@@ -1,3 +1,7 @@
+## Automatic new-source host gate after8B source publication
+
+Run40147220442 SUCCESS at394b6b58b2adcb0eb07b4f873161bbd7cc70ed3c:clean wrapper build/JVM/testAPK compilation/lint PASS7m49s;83tasks executed/1up-to-date;all six workflow validators and schema-diff gate PASS. Individual JVM case count not exported,not inferred from275historical tests;0 native suite executions. This adds V02/V03 host evidence at the8B source,does not create combined-backend/upgrade acceptance or rerun CI25. [Raw result](results/automatic-quality-40147220442/result.json).
+
 ## Stage 8B verified execution delta — October 25, 2026
 
 V01:16worktrees/current heads/Issue31/milestone4/Project/releases reviewed;2203external untracked files unchanged,Cloud publication untouched. V02–V04:new opt-in recorder assembly PASS54s/default runner manifest PASS13s;no full CI/JVM/lint/native suite rerun. V05–V09:75historical CI25 critical cases mapped,not rerun;combined-source/true trusted-signer seeded upgrade remain pending. V10–V13:28unique emulator settings configurations,29captures including retry,161PNG/tree pairs,4actualTalkBack traversals/40swipes. A8-1/A8-2 actual Medium/P2 defects reproduced;A8-3 scaffold-only statuscontrast reproduced in tested scope,actual matching NavHost readable. Findings NOT FIXED. V19:retained/baseline ZIP/package/hash/trusted signer verified;source0.10.1/code11,no0.11candidate/version selection. Evidence verifier/Python/whitespace/production preservation PASS.

@@ -1,6 +1,6 @@
 # Stage 8B — first technical verification
 
-Status: TECHNICAL ASSESSMENT COMPLETE; source publication/readback pending. Authorized October 25, 2026: read-only integration/artifact review, isolated emulator assessments, documentation/scripts/test-only evidence and verified branch publication. Production behavior, Android/backend source combination, networking activation, main merge, deploy and release remain unauthorized.
+Status: TECHNICAL ASSESSMENT COMPLETE / SOURCE PUBLISHED; documentation handoff receipt complete. Authorized October 25, 2026: read-only integration/artifact review, isolated emulator assessments, documentation/scripts/test-only evidence and verified branch publication. Production behavior, Android/backend source combination, networking activation, main merge, deploy and release remain unauthorized.
 
 Baseline: `2f4d1b87a31fb4d8167652a411813a7909416900`, branch `feature/goldberg-0.11-stage-8`.
 
@@ -13,7 +13,7 @@ Purpose: assess the three accepted deferred findings and establish the smallest 
 - [x] Assess A8-1/A8-2/A8-3 on isolated emulator, representative EN/CZ, Light/Dark and font scales; retain actual screenshots, trees and TalkBack events.
 - [x] Read-only APK identity/hash/signing/source-binding and upgrade-prerequisite review.
 - [x] Review migration/backup/practice/offline coverage against V05–V09.
-- [ ] Validate preservation/documentation, synchronize Issue/Project, commit/push and read back exact source.
+- [x] Validate preservation/documentation, synchronize Issue/Project, commit/push and read back exact source. Source394b6b58b2adcb0eb07b4f873161bbd7cc70ed3c; [authoritative checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6391483885). Issue OPEN / Project In Progress; final documentation handoff receipt records final HEAD separately.
 
 No production corrections implemented. Stage 7 acceptance remains complete; Stage 8 full integration/release remains pending/blocked on Stage 6 and final release gates.
 
@@ -73,3 +73,10 @@ Final emulator readback:API36/qemu1,airplane1,wifi0,mobile_data0,active default 
 Recommend **Stage8C: separately approved targeted A8-1 row semantics/A8-2 responsive-label implementation and test-scaffold window correction**, followed by only impacted accessibility/render/action regressions with before/after evidence. The present milestone grants no such production implementation approval. Keep Stage6 adoption separate:resolve G1–G9/G11,public version/real policy,C4,6.0f and live/operational permissions before combining source. Use the13-path semantic resolution plan; preserve newer client acceptance and separate source-bound backend evidence. No main merge,deploy or release. Version/code selection and trusted-signer seeded candidate upgrade remain release prerequisites.
 
 created by stokonn with love <3
+
+
+## Automatic source-quality follow-up after publication
+
+Automatic push run [40147220442](https://github.com/stokonn/Goldberg/actions/runs/40147220442) **SUCCESS**, exact source `394b6b58b2adcb0eb07b4f873161bbd7cc70ed3c`. Command `./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1`:**BUILD SUCCESSFUL in7m49s**,84actionable tasks/83executed/1up-to-date. All six workflow data/policy validators passed;1050 EN/CZ resources;106 sessions/four pages;schema diff empty. Individual JVM XML/counts are not exported by this workflow,so no new275-count claim. Instrumentation compiled;0 native suite executions. Raw log/digest and exact result retained in `results/automatic-quality-40147220442/`.
+
+This is an additional automatic new-source host gate,not a manual rerun of accepted CI25. Earlier zero-suite/no-full-host statements describe the local assessment phase;this follow-up records the newly executed CI host task. Temporary runner signing never establishes trusted upgrade acceptance. Final receipt changes documentation/diagnostic preservation only;runtime source and426 hashed emulator/artifact evidence files remain unchanged. Receipt push uses `[skip ci]` to avoid an unchanged automatic rerun;the success is attributed only to394b6b5.
