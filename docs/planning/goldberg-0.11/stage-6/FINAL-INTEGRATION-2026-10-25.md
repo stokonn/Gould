@@ -1,3 +1,18 @@
+## Published release candidate — October25,2026
+
+Goldberg0.11-rc.1 is published as a prerelease,source/tag a73a7e21adf656dcbe7ed6da351a71e9a681a384.
+Signed non-debuggable release/code12/trusted53efcertificate;SHA256c5662d8ead2b175fac0be09145776e84936c2b8f794c85b967f71aaab1938bb5.
+302JVM PASS;API36native203/192pass/11existing fixture-probe skips/0failures;
+seeded upgrade/offline/process-death integrity PASS. Essential CI SUCCESS.
+Stage6engine f300b09:506bodies andactualKotlin/HTTP/PG1PASS;hosted Supabase20RLS
+bootstrap verified. Production networking/real-user collection remainsdisabled;
+no Worker/credential/session deployment. Finalcloud gates andStage6 acceptanceOPEN.
+Actual release andremaining blockers: https://github.com/stokonn/Goldberg/releases/tag/v0.11-rc.1
+Source/CI/artifact details: docs/planning/goldberg-0.11/stage-6/RELEASE-CANDIDATE-VERIFIED.md.
+No main merge/physical phone/public cloud activation. Earlier checkpoints below historical.
+
+---
+
 # Stage 6 final integration — active execution checklist
 
 Purpose: compose the accepted PostgreSQL domain services with executable BFF
@@ -15,12 +30,15 @@ No personal database migration, main merge, public activation or release.
 - [x] Read-only Advisor: 19 INFO default-deny findings, no earlier function warnings;
   anon/authenticated function EXECUTE both false. Project healthy, Frankfurt, PG17.11.
 - [x] Recover reviewed Stage 8 integration sequence and actual Android Admin source.
-- [ ] Implement and test BFF composition and bounded Fetch transport.
-- [ ] Verify connection lifecycle, policy/kill-switch, canonical routes and errors.
-- [ ] Implement controlled client transport/adoption in an isolated integration branch.
-- [ ] Run backend, Android, operations and feasible emulator regression matrix.
-- [ ] Prepare revised exact hosted packet excluding completed SQL operations.
-- [ ] Publish verified source, read back remote SHA and inspect corresponding CI.
+- [x] Implement and test BFF composition and bounded Fetch transport (506 bodies pass).
+- [x] Verify connection lifecycle, policy/kill-switch, canonical routes and errors.
+- [x] Implement controlled canonical application service/transport in isolated branch f5fc296; actual Kotlin/HTTP/PG1pass.
+- [ ] Complete accepted legacy UI/Keystore adoption before public community activation.
+- [x] Execute feasible local/backend/operations andAPI36CI subset:506backend/302JVM/203native(192pass,11existing skips),seeded upgrade PASS.
+- [ ] Hosted runtime,API26 andseparately driven preservation probes not executed in this candidate run;production matrix remains incomplete.
+- [x] Prepare revised remaining-only packet; account403/pooler/trust/secret prerequisites still unbound.
+- [x] Publish Stage6 ce7ce21/af420b7 andStage8 f5fc296;exact remotes read back.
+- [x] Final CI:rootf300b09 quality40212884026/BFF40212884120 SUCCESS;RCa73a7e2 quality40212615987/native+upgrade40212684482 SUCCESS. Published prerelease andremote asset digest verified.
 - [ ] Reconcile 24 requirements, G1–G11, C4, handoffs, Issue/Project and private PMP.
 
 Current status: IN PROGRESS. No new hosted mutation, credential provisioning,

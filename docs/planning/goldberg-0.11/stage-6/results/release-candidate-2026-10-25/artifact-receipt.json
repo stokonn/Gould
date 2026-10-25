@@ -1,0 +1,48 @@
+{
+  "sourceCommit": "a73a7e21adf656dcbe7ed6da351a71e9a681a384",
+  "versionName": "0.11-rc.1",
+  "versionCode": 12,
+  "package": "com.opus.piano",
+  "variant": "release",
+  "debuggable": false,
+  "sha256": "c5662d8ead2b175fac0be09145776e84936c2b8f794c85b967f71aaab1938bb5",
+  "bytes": 16335515,
+  "certificateSha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+  "trustedPreviousApkSha256": "854bbfebf617ec920df60d181a12e0dcbd2fed10052f2479903a78a290cef312",
+  "zipIntegrity": "PASS",
+  "testFixturesAndPrivateMaterialExcluded": true,
+  "backupDisabled": true,
+  "signingInitSha256": "48266810ec7af63653165e9f27817f7e12e6e5fa72e336ec048e26bb2a7dcb11",
+  "productionCommunityNetworking": "DISABLED",
+  "newHostedMutation": false,
+  "nativeAndUpgradeCi": "PASS",
+  "ci": "https://github.com/stokonn/Goldberg/actions/runs/40212684482",
+  "native": {
+    "tests": 203,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 11
+  },
+  "jvm": {
+    "tests": 302,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "upgrade": {
+    "sourceCommit": "a73a7e21adf656dcbe7ed6da351a71e9a681a384",
+    "baselineVersion": "0.10.1",
+    "personalSchema": "8 -> 10",
+    "originalRowsUnchanged": true,
+    "preferencesUnchanged": true,
+    "sessions": 37,
+    "offlineVerified": true,
+    "foreignKeys": "PASS",
+    "environment": "API36 emulator; CI debug rebuilds, trusted release certificate verified separately"
+  },
+  "releaseUrl": "https://github.com/stokonn/Goldberg/releases/tag/v0.11-rc.1",
+  "remoteAssetDigestVerified": true,
+  "downloadHashVerified": true,
+  "latestStable": "v0.10.1",
+  "tagObject": "4cb0059e36ed9e918ae1408e14f0c84a28ac2402"
+}

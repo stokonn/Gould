@@ -1,3 +1,18 @@
+## Published release candidate — October25,2026
+
+Goldberg0.11-rc.1 is published as a prerelease,source/tag a73a7e21adf656dcbe7ed6da351a71e9a681a384.
+Signed non-debuggable release/code12/trusted53efcertificate;SHA256c5662d8ead2b175fac0be09145776e84936c2b8f794c85b967f71aaab1938bb5.
+302JVM PASS;API36native203/192pass/11existing fixture-probe skips/0failures;
+seeded upgrade/offline/process-death integrity PASS. Essential CI SUCCESS.
+Stage6engine f300b09:506bodies andactualKotlin/HTTP/PG1PASS;hosted Supabase20RLS
+bootstrap verified. Production networking/real-user collection remainsdisabled;
+no Worker/credential/session deployment. Finalcloud gates andStage6 acceptanceOPEN.
+Actual release andremaining blockers: https://github.com/stokonn/Goldberg/releases/tag/v0.11-rc.1
+Source/CI/artifact details: docs/planning/goldberg-0.11/stage-6/RELEASE-CANDIDATE-VERIFIED.md.
+No main merge/physical phone/public cloud activation. Earlier checkpoints below historical.
+
+---
+
 # Current Stage 6 acceptance — final integration, October 25, 2026
 
 **PARTIAL / IN PROGRESS; owner acceptance NOT REQUESTED.** This current ledger
