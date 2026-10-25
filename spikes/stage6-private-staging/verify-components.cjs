@@ -31,6 +31,7 @@ async function main(){
   run([path.join(tool,'node_modules/.bin/tsc'),'-p',path.join(build,'tsconfig.json')]);
   // Node-compatible CJS import shim: Workers import.meta.url is not assumed.
   run([path.join(tool,'node_modules/.bin/esbuild'),'probe-worker.mjs','--bundle','--format=esm','--platform=node','--target=es2022',
+   '--conditions=workerd','--external:cloudflare:sockets',
    '--banner:js=import { createRequire } from "node:module"; const require = createRequire("/worker.js");','--outfile=probe-worker.bundle.mjs']);
   run(['node','--check',path.join(build,'probe-worker.bundle.mjs')]);
   const {Miniflare,convertV4MiniflareOptions}=require(path.join(tool,'node_modules/miniflare'));

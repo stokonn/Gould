@@ -10,6 +10,9 @@ export function localClient() {
     password:'', connectionTimeoutMillis:3000, application_name:'goldberg-local-schema-prototype'});
 }
 export function identifier(schema) {
+  // Runtime handlers may address only the accepted private schema or a disposable
+  // prototype. Migration entrypoints retain their stricter prototype-only guard.
+  if (schema === 'goldberg_private') return '"goldberg_private"';
   if (!/^proto_[a-z0-9_]+$/.test(schema) || schema.length > 63) throw new Error('prototype schema only');
   return `"${schema}"`;
 }
@@ -19,6 +22,7 @@ export async function migrationFiles() {
   })));
 }
 export async function migrate(client,schema,{through=2, files}={}) {
+  if (!/^proto_[a-z0-9_]+$/.test(schema)) throw new Error('prototype migrations only');
   const q=identifier(schema); files ??= await migrationFiles();
   const {rows:[v]}=await client.query('SHOW server_version_num');
   if (Number(v.server_version_num)<170000 || Number(v.server_version_num)>=180000) throw new Error('PostgreSQL 17 required');

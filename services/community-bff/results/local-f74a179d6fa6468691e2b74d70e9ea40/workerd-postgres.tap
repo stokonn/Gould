@@ -1,0 +1,23 @@
+TAP version 13
+# LOCAL SYNTHETIC ADAPTER Error Authentication required Error: Authentication required
+#     at unauthenticated (file:///tmp/goldberg-bff-workerd-x4ZXPl/worker.mjs:11024:29)
+#     at token2 (file:///tmp/goldberg-bff-workerd-x4ZXPl/worker.mjs:12405:80)
+#     at PublicAdapter.invoke (file:///tmp/goldberg-bff-workerd-x4ZXPl/worker.mjs:12419:83)
+#     at Object.invoke (file:///tmp/goldberg-bff-workerd-x4ZXPl/worker.mjs:12964:28)
+#     at file:///tmp/goldberg-bff-workerd-x4ZXPl/worker.mjs:11135:72
+#     at async handle2 (file:///tmp/goldberg-bff-workerd-x4ZXPl/worker.mjs:11147:14)
+# Subtest: actual local workerd Fetch → pg TCP → disposable PostgreSQL session and queue
+ok 1 - actual local workerd Fetch → pg TCP → disposable PostgreSQL session and queue
+  ---
+  duration_ms: 1093.583002
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1455.630721

@@ -1,0 +1,43 @@
+name: Community BFF local integration
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: community-bff-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  synthetic-postgres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17@sha256:3518071376d0b6156b02e1db2747a78511b5b9dc3763cc79c506ebe2dc2ee71c
+        env:
+          POSTGRES_USER: schema_prototype
+          POSTGRES_DB: schema_prototype
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 127.0.0.1:54339:5432
+        options: >-
+          --health-cmd "pg_isready -U schema_prototype"
+          --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      SCHEMA_PG_PORT: '54339'
+      GOLDBERG_DISPOSABLE_CI: 'true'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Install locked test dependencies
+        run: |
+          node --version
+          npm ci --prefix spikes/stage6-schema-pg --ignore-scripts --no-audit --no-fund
+          npm ci --prefix spikes/stage6-auth-local --ignore-scripts --no-audit --no-fund
+          npm ci --prefix services/community-bff --ignore-scripts --no-audit --no-fund
+      - name: Actual Fetch and workerd to PostgreSQL plus backend regressions
+        run: python3 services/community-bff/ci.py
+      - name: Verify production package fails closed
+        run: node services/community-bff/build-local.mjs
+# No cloud credentials, account operations, deployment or public API activation.

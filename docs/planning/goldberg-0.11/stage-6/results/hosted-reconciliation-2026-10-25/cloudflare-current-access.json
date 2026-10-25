@@ -1,0 +1,9 @@
+{
+  "observed_utc": "2026-10-25T12:48:54.590544+00:00",
+  "method": "GET",
+  "endpoint": "/accounts",
+  "http": 403,
+  "mutations": 0,
+  "priorSuccessfulInventory": "historical;not overwritten",
+  "newAuthenticationAttempted": false
+}

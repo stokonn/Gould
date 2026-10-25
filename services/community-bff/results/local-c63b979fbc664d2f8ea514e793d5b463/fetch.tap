@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: Fetch uses real Request/Response, preserves receipts and emits bodyless 204
+ok 1 - Fetch uses real Request/Response, preserves receipts and emits bodyless 204
+  ---
+  duration_ms: 61.904023
+  type: 'test'
+  ...
+# Subtest: body limit stops dispatch, including unknown-length streams
+ok 2 - body limit stops dispatch, including unknown-length streams
+  ---
+  duration_ms: 2.835605
+  type: 'test'
+  ...
+# Subtest: deadline aborts database work, closes late scope and redacts failure
+ok 3 - deadline aborts database work, closes late scope and redacts failure
+  ---
+  duration_ms: 47.722181
+  type: 'test'
+  ...
+# Subtest: request connections close on failed connect, abort and repeated cleanup
+ok 4 - request connections close on failed connect, abort and repeated cleanup
+  ---
+  duration_ms: 2.34646
+  type: 'test'
+  ...
+# Subtest: TLS bindings require fixed provider host, CA and restricted user
+ok 5 - TLS bindings require fixed provider host, CA and restricted user
+  ---
+  duration_ms: 0.645852
+  type: 'test'
+  ...
+# Subtest: runtime identifier permits only canonical private schema and migration stays local
+ok 6 - runtime identifier permits only canonical private schema and migration stays local
+  ---
+  duration_ms: 0.635071
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 364.251198

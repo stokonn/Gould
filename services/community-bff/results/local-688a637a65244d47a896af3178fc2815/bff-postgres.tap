@@ -1,0 +1,28 @@
+TAP version 13
+# Subtest: Fetch → canonical BFF → PostgreSQL contribution, immutable revisions and exact replay
+ok 1 - Fetch → canonical BFF → PostgreSQL contribution, immutable revisions and exact replay
+  ---
+  duration_ms: 674.198542
+  type: 'test'
+  ...
+# Subtest: Fetch BFF default-deny authorization, strict JSON, quotas and kill switch
+ok 2 - Fetch BFF default-deny authorization, strict JSON, quotas and kill switch
+  ---
+  duration_ms: 751.109197
+  type: 'test'
+  ...
+# Subtest: Fetch BFF canonical moderation and public feed have actual PG effects
+ok 3 - Fetch BFF canonical moderation and public feed have actual PG effects
+  ---
+  duration_ms: 596.165813
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2350.262334

@@ -1,3 +1,63 @@
+# Current Stage 6 acceptance — final integration, October 25, 2026
+
+**PARTIAL / IN PROGRESS; owner acceptance NOT REQUESTED.** This current ledger
+supersedes the historical pre-bootstrap report retained below. No public contract
+is frozen, no hosted Worker/credential/session was created and no real data enabled.
+
+Denominator24 requirements:2 VERIFIED COMPLETE design decisions,1 HOSTED VERIFIED
+schema scope,9 LOCALLY VERIFIED scopes,2 DEFERRED client/UI scopes,10 BLOCKED.
+These are evidence classifications,not a percentage estimate of code completion.
+Local verification does not discharge production obligations in the same row.
+
+| Requirement | Current classification | Evidence / exact remainder |
+|---|---|---|
+|6.0a provider/Free decision|VERIFIED COMPLETE|Approved architecture retained;owner supplied both Free/no-card evidence. No promise of impossible future charges.|
+|6.0b operator/privacy|BLOCKED|Q1-D/D5b preserved;exact operator/contact/retention/transfer/license dispositions before real collection.|
+|6.0c Admin/BFF design|VERIFIED COMPLETE|Accepted D8/O1–O8;no redesign or repeated provider decision.|
+|6.0d hosted provisioning|BLOCKED|Supabase bootstrap HOSTED VERIFIED;new Worker/secret/private session still require exact approval and valid account access.|
+|6.0e real Google OAuth|BLOCKED|Real provider/client configuration unavailable;no fake sign-in.|
+|6.0f runtime acceptance|BLOCKED|Local workerd/PG now executed;hosted private TLS/auth/denial/CPU/latency and owner acceptance unexecuted.|
+|6.1 PostgreSQL schema|HOSTED VERIFIED|20RLS tables,accepted private ledger v1 checksum,exact restricted probe policy,disabled intake;original ACL WARNs resolved.|
+|6.2 auth/session|LOCALLY VERIFIED|50auth bodies plus actual Kotlin HTTP/BFF/PG lifecycle;real OAuth/hosted scope outstanding.|
+|6.3 authorization|LOCALLY VERIFIED|Server live roles,ownership,revocation/suspension;combined Fetch role controls and isolation pass.|
+|6.4 contributions/revisions|LOCALLY VERIFIED|Actual Fetch/PG creation,immutable revise,withdraw,own list/read,strict validation and replay;real policy empty/default-deny.|
+|6.5 moderation|LOCALLY VERIFIED|Canonical explicit open/dual revisions/decisions and actual Kotlin confirmation path;hosted/UI adoption outstanding.|
+|6.6 idempotency|LOCALLY VERIFIED|Atomic exact replay/mismatch/races;client stable uncertain intent tests retained;no automatic replay.|
+|6.7 projection/feed|LOCALLY VERIFIED|Actual Fetch/PG approved projection,feed,quarantine androllback;no public service activated.|
+|6.8 Admin operations|LOCALLY VERIFIED|Queue/detail/Comparison/stats/audit androle/suspend/rollback bindings;production identity/runtime role unprovisioned.|
+|6.9 abuse/kill/quota|LOCALLY VERIFIED|Combined Fetch429/Retry-After andkill-switch approval denial;bounded stream/deadline/cancellation/connection cleanup;hostedCPU/quota not measured.|
+|6.10 Android repository|DEFERRED TO STAGE8 / FUTURE RELEASE|Isolated Stage8 canonical application repository/service now executable,tested over actual HTTP/PG;accepted legacy UI/Keystore adoption incomplete.|
+|6.11 Android errors/offline|DEFERRED TO STAGE8 / FUTURE RELEASE|Canonical service/cache/account/logout/error tests pass;full accepted UI/lifecycle/native acceptance incomplete.|
+|6.12 threat matrix|BLOCKED|Local negatives expanded;remaining hosted security/privacy/runtime matrix unexecuted.|
+|6.13 real integration auth|BLOCKED|Actual synthetic Kotlin/BFF/PG works;configured real provider and separately authorized hosted/client scope absent.|
+|6.14 hosted budget/failure|BLOCKED|Free evidence owner-supplied;actual remoteCPU/latency/runtime outage/private ingress unexecuted;currentCF account GET403.|
+|6.15 export/restore/RPO|LOCALLY VERIFIED|6encrypted archive +6actual localTLS/export/restore checks;production destination/custody/scheduler/alerts/RPO unresolved,Pi automation deferred.|
+|6.16 pre-collection disclosure|BLOCKED|Draft exact decision/evidence matrix;no invented contact/legal approval/license or publication.|
+|6.17 API freeze/handoff|BLOCKED|Canonical local contracts retained;accepted legacy consumer incompatibility proved;O4 version/migration decision before public freeze.|
+|6.18 closure/tracking|BLOCKED|Living docs/Issue/PMP maintained;whole-stage evidence andexplicit owner acceptance outstanding.|
+
+G1–G9/G11:canonical client/service andbackend evidence expanded,actual accepted
+UI adoption remains deferred. G10:production networking remains disabled. No
+executable Web Admin consumer was found in the accepted Android-only Stage7B
+packaging;no browser application or privileged browser credential was introduced.
+
+Current C4 denominator33:8PASS/22PARTIAL/3OPEN;the three changed rows are documented
+in C4-PREPROVISIONING-CHECKLIST.md. The earlier8/19/6 snapshot remains historical.
+
+Executed backend506 bodies,0failures/skips;8packaged workerd denial requests;
+8private probe component tests;6archive +6actual localTLS/restore checks. Actual
+Kotlin application service→loopbackHTTP→BFF→PG integration1PASS/0skips. Isolated
+Android302 JVM/0failures/skips andAPK/testAPK builds/lint0errors132warnings1hint
+passed before final reviewed-source gate;final source/CI/native receipts follow.
+Local emulator attempts failed(disk capacity,then hostSIGSEGV);no native PASS
+claimed from them. No API26 system image available. No UI changed/screenshots
+inspected orphysical-device operations. Source/results/remaining tasks:
+[final integration record](FINAL-INTEGRATION-2026-10-25.md).
+
+---
+
+## Historical pre-bootstrap acceptance evidence (preserved)
+
 ## Final source publication receipt — October25,2026
 
 Source be5104476cf6cb059b0f206b2c4f18027d6bc657 ordinary-pushed; remote exact.

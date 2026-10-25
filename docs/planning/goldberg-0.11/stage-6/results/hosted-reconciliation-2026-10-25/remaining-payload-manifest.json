@@ -1,0 +1,73 @@
+{
+  "status": "PREPARED;NOT AUTHORIZED;EXTERNAL PREREQUISITES MISSING",
+  "completedSqlExcluded": [
+    "acl-fix.candidate.sql",
+    "private-schema.candidate.sql",
+    "probe-role.candidate.sql"
+  ],
+  "sources": {
+    "spikes/stage6-private-staging/probe-worker.mjs.template": "02ac5ed8fc09c14bce44f4ccd559c032aae803e968993ca732730f375444ba3c",
+    "spikes/stage6-private-staging/probe-worker.config.ts.template": "5082e61f4790c5720b5d74929965423404300e2c8e230c8c02787d9b26b7bfcd",
+    "spikes/stage6-private-staging/probe-handler.mjs": "f580fac2c7d33602797b060187350b7adaab09a325dc60ddf78f3d6bb0840c67",
+    "spikes/stage6-private-staging/probe-db.mjs": "401d65f59014c158a4f4fb17df0226ebc227240c111cf9310676ad63633db436",
+    "spikes/stage6-private-staging/local-caller.mjs": "9ab3bf7452e6d9c5b2747279e1951af463e924b20fdfd89242bac009d8893723",
+    "spikes/stage6-private-staging/local-caller.config.ts.template": "78aa47fbb45a183388142d19329dcbb2f84944c48fcc5a7504823f4cbad04ca7",
+    "spikes/stage6-private-staging/disable-probe.candidate.sql": "000610e532702e0d66d3a7a034c8770373764de45070810f402120e162d26120"
+  },
+  "privateProbeBundle": {
+    "sha256": "c73567355631e69a464cd8c7a39cba2477707a3ecb284f83f010764261b5308a",
+    "bytes": 196054,
+    "localPath": "/tmp/goldberg-probe-bundle-zq8NpN/probe-worker.bundle.mjs",
+    "workerdCondition": true
+  },
+  "bffPackage": {
+    "bundleSha256": "5e8b2771f0f320974cddc7341ba0e98088599fdc6a235b9abab4455c95da4ffe",
+    "bundleBytes": 499863,
+    "conditions": [
+      "workerd"
+    ],
+    "runtime": "local workerd; not hosted",
+    "assertions": [
+      {
+        "enabled": false,
+        "path": "/v1/session",
+        "status": 503
+      },
+      {
+        "enabled": false,
+        "path": "/v1/admin/queue",
+        "status": 503
+      },
+      {
+        "enabled": false,
+        "path": "/v1/submissions",
+        "status": 503
+      },
+      {
+        "enabled": false,
+        "path": "/v1/catalogue/overlay",
+        "status": 503
+      },
+      {
+        "enabled": true,
+        "path": "/v1/session",
+        "status": 503
+      },
+      {
+        "enabled": true,
+        "path": "/v1/admin/queue",
+        "status": 503
+      },
+      {
+        "enabled": true,
+        "path": "/v1/submissions",
+        "status": 503
+      },
+      {
+        "enabled": true,
+        "path": "/v1/catalogue/overlay",
+        "status": 503
+      }
+    ]
+  }
+}

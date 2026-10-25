@@ -1,0 +1,154 @@
+TAP version 13
+# Subtest: HTTP-PG challenge/login/session/capabilities/refresh/logout and account isolation
+ok 1 - HTTP-PG challenge/login/session/capabilities/refresh/logout and account isolation
+  ---
+  duration_ms: 659.17681
+  type: 'test'
+  ...
+# Subtest: HTTP-PG concurrent refresh rotates once and replay revokes family before or after response
+ok 2 - HTTP-PG concurrent refresh rotates once and replay revokes family before or after response
+  ---
+  duration_ms: 473.551977
+  type: 'test'
+  ...
+# Subtest: HTTP-PG expired challenge, bad identity, expired access, and absolute family expiry
+ok 3 - HTTP-PG expired challenge, bad identity, expired access, and absolute family expiry
+  ---
+  duration_ms: 447.267693
+  type: 'test'
+  ...
+# Subtest: HTTP-PG queue exact safe DTO, metadata null, evidence count and no private payload
+ok 4 - HTTP-PG queue exact safe DTO, metadata null, evidence count and no private payload
+  ---
+  duration_ms: 423.584229
+  type: 'test'
+  ...
+# Subtest: HTTP-PG queue filters precede limit; UUID/kind search; percent underscore literal
+ok 5 - HTTP-PG queue filters precede limit; UUID/kind search; percent underscore literal
+  ---
+  duration_ms: 737.485352
+  type: 'test'
+  ...
+# Subtest: HTTP-PG queue microsecond keyset pages have no duplicates and survive adapter restart
+ok 6 - HTTP-PG queue microsecond keyset pages have no duplicates and survive adapter restart
+  ---
+  duration_ms: 590.299178
+  type: 'test'
+  ...
+# Subtest: HTTP-PG cursor tamper, scope, caller, filters and exact 15-minute expiry fail closed
+ok 7 - HTTP-PG cursor tamper, scope, caller, filters and exact 15-minute expiry fail closed
+  ---
+  duration_ms: 591.482256
+  type: 'test'
+  ...
+# Subtest: HTTP-PG audit exact canonical DTO, fixed snapshot head and independent hash chain
+ok 8 - HTTP-PG audit exact canonical DTO, fixed snapshot head and independent hash chain
+  ---
+  duration_ms: 566.708049
+  type: 'test'
+  ...
+# Subtest: HTTP-PG audit AND filters, actual action vocabulary, time bounds and literal CZ/NFC search
+ok 9 - HTTP-PG audit AND filters, actual action vocabulary, time bounds and literal CZ/NFC search
+  ---
+  duration_ms: 707.007434
+  type: 'test'
+  ...
+# Subtest: HTTP-PG exact stats count approval once and use database Prague day
+ok 10 - HTTP-PG exact stats count approval once and use database Prague day
+  ---
+  duration_ms: 695.389906
+  type: 'test'
+  ...
+# Subtest: HTTP-PG stats snapshot remains coherent during concurrent publication
+ok 11 - HTTP-PG stats snapshot remains coherent during concurrent publication
+  ---
+  duration_ms: 511.181434
+  type: 'test'
+  ...
+# Subtest: HTTP-PG dual revisions, open, comparison, publication and exact persisted replay
+ok 12 - HTTP-PG dual revisions, open, comparison, publication and exact persisted replay
+  ---
+  duration_ms: 522.912517
+  type: 'test'
+  ...
+# Subtest: HTTP-PG stale entity/proposal conflicts and revised proposal requires explicit new intent
+ok 13 - HTTP-PG stale entity/proposal conflicts and revised proposal requires explicit new intent
+  ---
+  duration_ms: 543.511476
+  type: 'test'
+  ...
+# Subtest: HTTP-PG same-key concurrency exact replay and competing moderators one publication
+ok 14 - HTTP-PG same-key concurrency exact replay and competing moderators one publication
+  ---
+  duration_ms: 553.184555
+  type: 'test'
+  ...
+# Subtest: HTTP-PG SQL failure rolls back domain, audit and receipt; unchanged intent retry recovers
+ok 15 - HTTP-PG SQL failure rolls back domain, audit and receipt; unchanged intent retry recovers
+  ---
+  duration_ms: 537.975212
+  type: 'test'
+  ...
+# Subtest: HTTP-PG read timeout is explicit unavailable and next request recovers without mutation
+ok 16 - HTTP-PG read timeout is explicit unavailable and next request recovers without mutation
+  ---
+  duration_ms: 561.349902
+  type: 'test'
+  ...
+# Subtest: HTTP-PG live role revocation, suspension, self-review and foreign account isolation
+ok 17 - HTTP-PG live role revocation, suspension, self-review and foreign account isolation
+  ---
+  duration_ms: 596.623021
+  type: 'test'
+  ...
+# Subtest: HTTP-PG malformed queries and unsafe int8 writes fail closed; safe errors hide SQL
+ok 18 - HTTP-PG malformed queries and unsafe int8 writes fail closed; safe errors hide SQL
+  ---
+  duration_ms: 472.433982
+  type: 'test'
+  ...
+# Subtest: HTTP-PG Prague DST windows equal PostgreSQL civil boundaries, exclusive end includes no next day
+ok 19 - HTTP-PG Prague DST windows equal PostgreSQL civil boundaries, exclusive end includes no next day
+  ---
+  duration_ms: 349.509085
+  type: 'test'
+  ...
+# Subtest: HTTP-PG int8 queue baseline read preserves max storage precision without Number coercion
+ok 20 - HTTP-PG int8 queue baseline read preserves max storage precision without Number coercion
+  ---
+  duration_ms: 375.692719
+  type: 'test'
+  ...
+# Subtest: HTTP-PG receipt expiry boundaries, live authorization before replay and principal key isolation
+ok 21 - HTTP-PG receipt expiry boundaries, live authorization before replay and principal key isolation
+  ---
+  duration_ms: 675.722009
+  type: 'test'
+  ...
+# Subtest: HTTP-PG audit cursor binds all filters and original highwater even with transition substring search
+ok 22 - HTTP-PG audit cursor binds all filters and original highwater even with transition substring search
+  ---
+  duration_ms: 600.025758
+  type: 'test'
+  ...
+# Subtest: HTTP-PG default-deny policy prevents publication and private detail disclosure without mutation
+ok 23 - HTTP-PG default-deny policy prevents publication and private detail disclosure without mutation
+  ---
+  duration_ms: 480.939643
+  type: 'test'
+  ...
+# Subtest: HTTP-PG revoked moderator cannot replay an earlier valid decision receipt
+ok 24 - HTTP-PG revoked moderator cannot replay an earlier valid decision receipt
+  ---
+  duration_ms: 509.744857
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 13557.821211

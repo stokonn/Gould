@@ -1,0 +1,1 @@
+{"name":"goldberg-community-bff","version":"0.0.0","private":true,"type":"module","scripts":{"test":"node --test tests/fetch.test.mjs","test:postgres":"node --test tests/postgres.test.mjs"},"dependencies":{"pg":"8.23.1"},"devDependencies":{"esbuild":"0.28.2","miniflare":"5.20261019.2-beta"}}

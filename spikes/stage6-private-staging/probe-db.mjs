@@ -18,7 +18,7 @@ export function createReadProbe({Client,env}) {
     }
     const c=new Client({host:url.hostname,port:Number(url.port || 5432),user,
       password:decodeURIComponent(url.password),database:'postgres',
-      ssl:{rejectUnauthorized:true,ca:env.DB_CA_PEM,servername:url.hostname},
+      ssl:{rejectUnauthorized:true,ca:env.DB_CA_PEM,servername:url.hostname,expectedServerHostname:url.hostname},
       connectionTimeoutMillis:3000,query_timeout:3000,statement_timeout:3000,
       application_name:'goldberg-synthetic-probe'});
     try {

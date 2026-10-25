@@ -97,7 +97,7 @@ export class PublicAdapter {
      else{receipt.decision=publicBody.decision;if(receipt.decision==='approve'){if(result.status!==201||receipt.status!=='published')throw unavailable();receipt.entityId=output(id,result.body.entityId);receipt.publishedEntityRevision=readRevision(result.body.revision,{positive:true});}else if(result.status!==200||receipt.status!==(receipt.decision==='reject'?'rejected':'changes_requested'))throw unavailable();}
      return {status:result.status,body:receipt};
     })};
-    const moderation=new ModerationService({authorization:this.authorization,idempotency:bridge,validator:this.validator});
+    const moderation=this.moderationFactory?this.moderationFactory({authorization:this.authorization,idempotency:bridge,validator:this.validator}):new ModerationService({authorization:this.authorization,idempotency:bridge,validator:this.validator});
     const api=new CommunityApi({moderation});
     const result=await api.invoke({operation,accessToken,body:localBody});
     requestId=output(id,result.body.requestId);

@@ -11,3 +11,4 @@ __pycache__/
 # Isolated API adapter tests reuse verified local dependency caches (never committed).
 /spikes/stage6-schema-pg/node_modules
 /spikes/stage6-auth-local/node_modules
+/services/community-bff/node_modules

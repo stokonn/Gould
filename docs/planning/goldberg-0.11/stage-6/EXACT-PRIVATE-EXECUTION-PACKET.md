@@ -1,3 +1,88 @@
+# Remaining private execution packet — NOT YET EXECUTABLE
+
+October25 final integration supersedes the historical packet below. The authorized
+ACL fix,private schema bootstrap andprobe role/marker creation are ALREADY COMPLETE.
+They are excluded from every new request. Never rerun CREATE SCHEMA/CREATE ROLE or
+revoke/bootstrap SQL to manufacture a clean starting state. Read-only reconciliation
+matches20RLS tables,ledger checksum andoriginal identities;intake stays disabled.
+
+## Exact remaining scope after prerequisites
+
+- Existing Supabase project hlfsouvndjsbsaldttvi/Frankfurt/Free andexisting
+  goldberg_staging_probe only. No new role,application grants,real data orintake.
+- One target goldberg-private-verification;no BFF production deployment. The full
+  BFF is locally executable but is NOT equivalent to the least-privilege probe.
+- Immutable source andcorrected workerd bundle hashes:
+  results/hosted-reconciliation-2026-10-25/remaining-payload-manifest.json.
+  Hashes must be rechecked immediately before any approved upload.
+- workers.dev=false,preview/versionURLs=false,no route/custom domain/assets,
+  logs/traces disabled,probe initially false. Caller stays127.0.0.1-bound with
+  private authenticated remote service binding andseparate probe token.
+- No Access onboarding,Hyperdrive,paidIPv4,subscription,trial,card orupgrade.
+  Owner Free/no-card evidence accepted as owner evidence;billing403 is a limitation.
+- One ≤60min/≤100synthetic-request window. No real accounts,OAuth orpersonal data;
+  no background keepalive orprovider-exhaustion experiment.
+
+## Confidential provisioning prerequisite — unavailable
+
+The connected SQL tool records its arguments/results;it MUST NOT carry a generated
+password,verifier orconnection string. No confidential local Supabase administrative
+connection ormanagement credential is configured here. Password remains unset.
+A future reviewed provisioner must receive its administrative credential andexact
+Connect host/CA through an owner-controlled600-mode protected file/FD outside Git;
+read secrets only into memory,generate the probe password locally,send ALTER ROLE
+through verifiedTLS without SQL tracing,anddeliver only probe credentials to server
+secrets through confidential stdin/FD. Never command arguments,tool text orevidence.
+No such provisioning was executed orclaimed ready. The same provisioner must bind
+secret cleanup andshort-lived custody before approval. No privileged BFF role may
+substitute for this restricted role.
+
+## Runtime trust andaccess prerequisites — unavailable
+
+Fresh Cloudflare account GET now403;the earlier successful account inventory is
+historical. Exact account selection/resource absence cannot be refreshed.No login
+orremote session is started to work around this. Restore existing authorized access
+through the supported account setup before one consolidated deployment request.
+
+Supabase metadata confirms direct db.hlfsouvndjsbsaldttvi.supabase.co. Shared pooler
+host/index andactual certificate/CA must be obtained from Connect,never guessed
+from region. Official docs distinguish Free directIPv6 andshared-poolerIPv4.
+Workers pg-cloudflare forwards expectedServerHostname but custom Node ca is not
+part of the Workers StartTLS options. NodeTLS tests therefore do not prove Workers
+custom-CA enforcement. Verify system-trust certificate/hostname behavior in the
+approved window;an unsupported trust requirement stops deployment,without bypass.
+
+## Bounded verification andcontainment to include in the ONE later request
+
+Authenticate local caller/control plane andprobe token;positive marker read;
+missing/wrong credentials deny;public routes unavailable;probe app-table andwrite
+permissions denied;privileged-function clients denied;TLS/hostname failures deny;
+DB timeout/rejection/outage deny;response/log redaction;realCPU/cold/warm/request
+measurements;Free/route/catalog/Advisor postflight andunchanged records.
+
+On fault:stop requests,disable probe,dispose only the approved remote session;
+apply the explicitly approved containment payload hash(NOLOGIN/revoke probe access,
+preserve role/table/data),close only this probe's identified sessions andremove
+only approved temporary secrets/Worker after inventory checks. Never DROP/reset,
+restore over the existing project ordelete historical data. Password cleanup must
+be explicit because the baseline had no configured password.
+
+Operational Pi/SD backup automation is deferred.This authorizes no unattended
+service andsatisfies no production backup gate.Disposable synthetic marker data
+alone does not justify real collection. C4/real privacy/source/license/public API
+version andwhole-stage acceptance remain separate.
+
+**No consolidated authorization is requested yet:**account GET403,exact pooler/
+trust evidence andconfidential credential delivery prevent a precise executable
+request. Complete source/tests/CI/handoff independently;do not deploy publicly as
+an alternative. Once prerequisites are bound,present only the remaining resources,
+exact hashes,secret method,private exposure,window andcontainment in one request.
+
+created by stokonn with love <3
+
+<details>
+<summary>Historical pre-bootstrap packet — preserved audit evidence,not executable instructions</summary>
+
 > End-to-end continuation: hard B2/B4/B5/B6 inputs remain missing per explicit owner clarification. No hosted request/execution; see END-TO-END-ACCEPTANCE.md. Local backup/TLS preparation is implemented, not operational custody approval.
 
 > B1 read-only access now SATISFIED; see [current prerequisite evidence](CLOUDFLARE-READONLY-2026-10-25.md). B2/B4/B5/B6 still block this future authorization.
@@ -96,3 +181,5 @@ those inputs. Once they pass, present their evidence, exact hashes, bound secret
 restore methods and remaining measured risks in one owner request before execution.
 
 created by stokonn with love <3
+
+</details>

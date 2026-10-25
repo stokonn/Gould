@@ -15,10 +15,10 @@ import {syntheticValidator} from './venue.mjs';
 export const connect=async()=>{const c=localClient();await c.connect();return c;};
 export const intent=(extra={})=>({schemaVersion:1,expectedEntityRevision:'0',expectedSubmissionRevision:'1',idempotencyKey:randomUUID(),...extra});
 export const payload=entity=>({schemaVersion:1,target:{kind:'work',catalogueUuid:entity},changeKind:'new_metadata',fields:[{field:'syntheticTitle',newValue:'Synthetic work',evidence:[{type:'reference',value:'Synthetic reference only',license:'SYNTHETIC-NOT-APPROVED'}]}],intendedLicense:'SYNTHETIC-NOT-APPROVED'});
-export async function venue(t){
+export async function venue(t,{adapterFactory=createLocalAdapter,migrate=migrateAuth}={}){
  const db=await connect(),schema='proto_http_'+randomUUID().replaceAll('-',''),q=identifier(schema);
  const servers=[];t.after(async()=>{for(const server of servers){server.closeAllConnections();await new Promise(r=>server.close(r));}await db.query(`DROP SCHEMA ${q} CASCADE`);await db.end();});
- await migrateAuth(db,schema);
+ await migrate(db,schema);
  let now=Date.now(),fault;const clock=()=>now,cursorKey=randomBytes(32);
  const verifier={verify:async raw=>{
   const x=JSON.parse(raw);
@@ -26,7 +26,7 @@ export async function venue(t){
   return x;
  }};
  const faultConnect=async()=>{const c=await connect(),query=c.query.bind(c);c.query=async(sql,args)=>{if(fault)await fault(sql,args,c,query);return query(sql,args);};return c;};
- const factory=(options={})=>createLocalAdapter({localOnly:true,connect:faultConnect,schema,verifier,clock,cursorKey,validator:syntheticValidator(),...options});
+ const factory=(options={})=>adapterFactory({localOnly:true,connect:faultConnect,schema,verifier,clock,cursorKey,validator:syntheticValidator(),...options});
  let adapter=factory();
  const start=async a=>{const server=createLocalHttpServer({adapter:a});servers.push(server);return listenLocalHttp(server);};
  let base=await start(adapter);

@@ -1,3 +1,23 @@
+## Current C4 reconciliation — October 25, 2026 final integration
+
+The original33 rows below remain historical. Current denominator:33;
+**8 PASS /22 PARTIAL /3 OPEN**. No C4 owner closure or6.0f acceptance is implied.
+Only three classifications change;all other row statuses remain as §M.
+
+| Row | Current status | New verified evidence / remaining scope |
+|---|---|---|
+| CF-P9 | PARTIAL | Owner supplied Free/no-card/no-paid-subscription evidence. Fresh account GET403 and earlier billing403 limit automation;future charges are not guaranteed impossible. |
+| SB-P12 | PARTIAL | Hosted20RLS tables,accepted bootstrap ledger,restricted probe,no public app tables,disabled intake,function ACL defect resolved;Advisor19INFO only. External TLS/MFA/exposure settings and credential/runtime acceptance remain unverified. |
+| SB-P13 | PARTIAL |6 encrypted archive and6 actual local TLS/export/isolated-restore checks pass. Pi/SD automation deferred;production custody/schedule/alerts/RPO remain unresolved. |
+
+X-4 remains PARTIAL with newer owner account evidence;CF-P12/X-6/X-7 remain OPEN.
+The resolved ACL WARN findings and absent-schema claim MUST NOT be reused as
+current blockers. The private ledger is authoritative even if the generic Supabase
+migration list is empty. Source/runtime tests and full acceptance are recorded in
+[final integration](FINAL-INTEGRATION-2026-10-25.md). All earlier snapshots follow.
+
+---
+
 > **Current Phase1/2 —2026-10-25:** fresh catalog guard match and new private
 > probe preparation,with actionable blocker classes,are in
 > [PRIVATE-DEPLOYMENT-PHASE1-2.md](PRIVATE-DEPLOYMENT-PHASE1-2.md). No C4 closure,

@@ -1,0 +1,69 @@
+TAP version 13
+# Subtest: Fetch → canonical BFF → PostgreSQL contribution, immutable revisions and exact replay
+ok 1 - Fetch → canonical BFF → PostgreSQL contribution, immutable revisions and exact replay
+  ---
+  duration_ms: 564.366698
+  type: 'test'
+  ...
+# Subtest: Fetch BFF default-deny authorization, strict JSON, quotas and kill switch
+ok 2 - Fetch BFF default-deny authorization, strict JSON, quotas and kill switch
+  ---
+  duration_ms: 572.68666
+  type: 'test'
+  ...
+# Subtest: Fetch BFF canonical moderation and public feed have actual PG effects
+ok 3 - Fetch BFF canonical moderation and public feed have actual PG effects
+  ---
+  duration_ms: 479.490321
+  type: 'test'
+  ...
+# Subtest: Fetch BFF request-changes, immutable revise, reopen and withdrawal lifecycle
+ok 4 - Fetch BFF request-changes, immutable revise, reopen and withdrawal lifecycle
+  ---
+  duration_ms: 494.391755
+  type: 'test'
+  ...
+# Subtest: Fetch BFF live role grants/revocation and suspension use server authorization
+ok 5 - Fetch BFF live role grants/revocation and suspension use server authorization
+  ---
+  duration_ms: 460.715499
+  type: 'test'
+  ...
+# Subtest: Fetch BFF public overlay exposes only approved projection and rollback follows feed sequence
+ok 6 - Fetch BFF public overlay exposes only approved projection and rollback follows feed sequence
+  ---
+  duration_ms: 535.128019
+  type: 'test'
+  ...
+# Subtest: Fetch BFF cursor boundary is bounded, principal-bound and expires
+not ok 7 - Fetch BFF cursor boundary is bounded, principal-bound and expires
+  ---
+  duration_ms: 840.517018
+  type: 'test'
+  location: '/home/stokonn/Projects/Goldberg-Stage6-Cloud/services/community-bff/tests/postgres.test.mjs:85:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    401 !== 400
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 401
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/stokonn/Projects/Goldberg-Stage6-Cloud/services/community-bff/tests/postgres.test.mjs:91:27)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 6
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4271.792462

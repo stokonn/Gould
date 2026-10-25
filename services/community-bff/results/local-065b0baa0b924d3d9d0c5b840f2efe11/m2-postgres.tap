@@ -1,0 +1,125 @@
+TAP version 13
+# ACTUAL POSTGRESQL PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+# Subtest: PG detail reflects persisted submitted/open/published; exact DTO fields, no read effects
+ok 1 - PG detail reflects persisted submitted/open/published; exact DTO fields, no read effects
+  ---
+  duration_ms: 491.112568
+  type: 'test'
+  ...
+# Subtest: PG independent entity7/proposal3 publishes8; stale expectations conflict and refetch stays authoritative
+ok 2 - PG independent entity7/proposal3 publishes8; stale expectations conflict and refetch stays authoritative
+  ---
+  duration_ms: 1212.484768
+  type: 'test'
+  ...
+# Subtest: PG changed live entity baseline cannot be waived by refetch/reconfirmation
+ok 3 - PG changed live entity baseline cannot be waived by refetch/reconfirmation
+  ---
+  duration_ms: 425.2547
+  type: 'test'
+  ...
+# Subtest: PG live authorization, revocation, suspension and account isolation before detail or replay
+ok 4 - PG live authorization, revocation, suspension and account isolation before detail or replay
+  ---
+  duration_ms: 481.553685
+  type: 'test'
+  ...
+# Subtest: PG exact receipt replay after state change/fresh adapter; changed body422; no second effects
+ok 5 - PG exact receipt replay after state change/fresh adapter; changed body422; no second effects
+  ---
+  duration_ms: 386.292462
+  type: 'test'
+  ...
+# Subtest: PG reject200 exact receipt and persisted detail
+ok 6 - PG reject200 exact receipt and persisted detail
+  ---
+  duration_ms: 349.006304
+  type: 'test'
+  ...
+# Subtest: PG request_changes200 exact receipt and persisted detail
+ok 7 - PG request_changes200 exact receipt and persisted detail
+  ---
+  duration_ms: 330.45032
+  type: 'test'
+  ...
+# Subtest: PG atomic rollback of effects/audit/receipt at projection
+ok 8 - PG atomic rollback of effects/audit/receipt at projection
+  ---
+  duration_ms: 351.085096
+  type: 'test'
+  ...
+# Subtest: PG atomic rollback of effects/audit/receipt at receipt
+ok 9 - PG atomic rollback of effects/audit/receipt at receipt
+  ---
+  duration_ms: 343.402182
+  type: 'test'
+  ...
+# Subtest: PG atomic rollback of effects/audit/receipt at deferred
+ok 10 - PG atomic rollback of effects/audit/receipt at deferred
+  ---
+  duration_ms: 323.437925
+  type: 'test'
+  ...
+# Subtest: PG concurrent competing moderators: one201 and one409, coherent atomic chain
+ok 11 - PG concurrent competing moderators: one201 and one409, coherent atomic chain
+  ---
+  duration_ms: 300.6372
+  type: 'test'
+  ...
+# Subtest: PG simultaneous same-key requests exact replay; changed-body same-key race422
+ok 12 - PG simultaneous same-key requests exact replay; changed-body same-key race422
+  ---
+  duration_ms: 361.560864
+  type: 'test'
+  ...
+# Subtest: PG receipt retention exactly24h from completion; before/at/after expiry under controlled clock
+ok 13 - PG receipt retention exactly24h from completion; before/at/after expiry under controlled clock
+  ---
+  duration_ms: 355.139427
+  type: 'test'
+  ...
+# Subtest: PG lossless full-int8 reads and UTC microseconds; above-safe writes compare exactly
+ok 14 - PG lossless full-int8 reads and UTC microseconds; above-safe writes compare exactly
+  ---
+  duration_ms: 220.05171
+  type: 'test'
+  ...
+# Subtest: PG empty real policy denies payload disclosure; strict detail routing and no body/query
+ok 15 - PG empty real policy denies payload disclosure; strict detail routing and no body/query
+  ---
+  duration_ms: 268.078527
+  type: 'test'
+  ...
+# Subtest: PG detail coherent snapshot during a concurrent committed decision
+ok 16 - PG detail coherent snapshot during a concurrent committed decision
+  ---
+  duration_ms: 371.654119
+  type: 'test'
+  ...
+# Subtest: PG bounded history numeric order and overflow unavailable without truncation or mutation
+ok 17 - PG bounded history numeric order and overflow unavailable without truncation or mutation
+  ---
+  duration_ms: 1050.773205
+  type: 'test'
+  ...
+# Subtest: PG revoked session denies exact receipt replay; another reviewer key namespace independent
+ok 18 - PG revoked session denies exact receipt replay; another reviewer key namespace independent
+  ---
+  duration_ms: 554.590795
+  type: 'test'
+  ...
+# Subtest: PG unsupported stored fields fail closed and missing entity never rewrites recorded baseline
+ok 19 - PG unsupported stored fields fail closed and missing entity never rewrites recorded baseline
+  ---
+  duration_ms: 455.141559
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9481.034156

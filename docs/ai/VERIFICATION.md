@@ -1,3 +1,33 @@
+## Current final integration checkpoint — October 25, 2026
+
+Stage6 IN PROGRESS / PARTIAL. Supabase bootstrap is HOSTED VERIFIED:20 RLS tables,
+accepted private ledger v1 checksum,intake disabled,marker-only probe,client
+function EXECUTE denied;19 INFO Advisor findings only. Earlier empty-schema/ACL
+warnings below are historical and superseded. No new hosted mutation performed.
+
+New executable BFF composition:504 test bodies PASS (14 new Fetch/PG/workerd,
+490 existing backend bodies),0 failures/skips in source-bound run local-7acbff96394f44cb9619e7bc75160ac8.
+Actual local workerd TCP/PG passes after workerd export-condition fix;8 packaged
+fail-closed requests also pass. Final updated-source/CI validation pending.
+Isolated Stage8 branch integrate/goldberg-0.11-canonical-client at42f6897 baseline:
+canonical application service/transport wiring,302 JVM tests PASS;APK/testAPK build
+and lint0errors132warnings1hint PASS. New native tests compile/execution pending.
+Kotlin real HTTP/PG integration in progress;local emulator crashes retained.
+No UI adoption or whole-stage acceptance inferred. Accepted Stage7/8 worktrees intact.
+
+Owner Free/no-card evidence retained;billing403 is visibility limitation. Fresh
+Cloudflare account GET now403 (prior successful observation retained). No new
+login,remote session,secret or Worker deployment. Pooler host/CA/confidential
+credential delivery and actual hosted runtime remain unresolved. Pi/SD operational
+backup automation deferred;production collection/license/privacy gates remain.
+
+Detailed living tasks and next steps:
+[final integration record](../planning/goldberg-0.11/stage-6/FINAL-INTEGRATION-2026-10-25.md).
+Issue31 OPEN/Goldberg Development In Progress;G10 disabled;6.0f/6.17 unchecked.
+Current source changes uncommitted. No main merge,release or physical-device use.
+
+---
+
 ## Final source publication receipt — October25,2026
 
 Source be5104476cf6cb059b0f206b2c4f18027d6bc657 ordinary-pushed; remote exact.

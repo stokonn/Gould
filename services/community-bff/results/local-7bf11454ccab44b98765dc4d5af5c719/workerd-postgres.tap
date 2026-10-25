@@ -1,0 +1,38 @@
+TAP version 13
+# LOCAL SYNTHETIC ADAPTER Error Service unavailable Error: Service unavailable
+#     at finishAuth (file:///tmp/goldberg-bff-workerd-om57pK/worker.mjs:12097:17)
+#     at async PublicAdapter.invoke (file:///tmp/goldberg-bff-workerd-om57pK/worker.mjs:12175:24)
+#     at async file:///tmp/goldberg-bff-workerd-om57pK/worker.mjs:10819:52
+#     at async handle2 (file:///tmp/goldberg-bff-workerd-om57pK/worker.mjs:10831:14)
+# Subtest: actual local workerd Fetch → pg TCP → disposable PostgreSQL session and queue
+not ok 1 - actual local workerd Fetch → pg TCP → disposable PostgreSQL session and queue
+  ---
+  duration_ms: 1040.351328
+  type: 'test'
+  location: '/home/stokonn/Projects/Goldberg-Stage6-Cloud/services/community-bff/tests/runtime.test.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    {"error":{"code":"service_unavailable","message":"Service unavailable","requestId":"f7261360-0bfa-4110-8e8c-9678e0e10a55"},"schemaVersion":1}
+    
+    503 !== 200
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 200
+  actual: 503
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/stokonn/Projects/Goldberg-Stage6-Cloud/services/community-bff/tests/runtime.test.mjs:21:9)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1383.33198

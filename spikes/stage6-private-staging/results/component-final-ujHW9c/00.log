@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: loopback caller requires authentication and forwards only fixed request through service binding
+ok 1 - loopback caller requires authentication and forwards only fixed request through service binding
+  ---
+  duration_ms: 89.239311
+  type: 'test'
+  ...
+# Subtest: fixed read with verified TLS and bounded connection/query settings;connection closed
+ok 2 - fixed read with verified TLS and bounded connection/query settings;connection closed
+  ---
+  duration_ms: 4.568353
+  type: 'test'
+  ...
+# Subtest: wrong role/host/SSL override/missing CA fail before constructing client
+ok 3 - wrong role/host/SSL override/missing CA fail before constructing client
+  ---
+  duration_ms: 2.289952
+  type: 'test'
+  ...
+# Subtest: connection/query failure and unexpected rows close client and deny
+ok 4 - connection/query failure and unexpected rows close client and deny
+  ---
+  duration_ms: 1.737868
+  type: 'test'
+  ...
+# Subtest: disabled by default and malformed configuration never touches adapter
+ok 5 - disabled by default and malformed configuration never touches adapter
+  ---
+  duration_ms: 68.720283
+  type: 'test'
+  ...
+# Subtest: missing/wrong/oversized credentials and alternate routes deny before database
+ok 6 - missing/wrong/oversized credentials and alternate routes deny before database
+  ---
+  duration_ms: 15.617846
+  type: 'test'
+  ...
+# Subtest: authenticated synthetic success; no credential,cookie,CORS or response caching
+ok 7 - authenticated synthetic success; no credential,cookie,CORS or response caching
+  ---
+  duration_ms: 7.426118
+  type: 'test'
+  ...
+# Subtest: database denial/outage/timeout and cryptographic error fail closed without leaking error text
+ok 8 - database denial/outage/timeout and cryptographic error fail closed without leaking error text
+  ---
+  duration_ms: 3.742711
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 400.145328
