@@ -3,7 +3,29 @@ package com.opus.piano.data.catalogue
 import org.json.JSONArray
 import org.json.JSONObject
 
+/** A display group retains every original row, including revision, rights and selection. */
+data class AssertionGroup(val field:String,val value:String,val language:String,val evidence:List<SourcedAssertion>)
+
 object CataloguePresentation {
+    fun groups(rows:List<SourcedAssertion>):List<AssertionGroup> = rows.groupBy {row->
+        val json=runCatching {JSONObject(row.assertion.valueJson)}.getOrNull()
+        // Exact scalar equivalence only. Case, punctuation and conflicting values stay separate.
+        Triple(row.assertion.field,json?.optString("value") ?: row.assertion.valueJson,json?.optString("language","und") ?: "und")
+    }.map {(key,evidence)->AssertionGroup(key.first,key.second,key.third,evidence)}
+
+    fun essentials(detail:DiscoverDetail):List<AssertionGroup> = groups(detail.assertions.filter {
+        it.assertion.selected && it.rights.reviewState=="approved" &&
+            it.assertion.field in setOf("subtitle","description","catalogue","catalogue_number","key","genre","epoch","birth","death")
+    }).filter {it.value.isNotBlank() && it.value!=detail.entity.title}
+
+    fun languageLabel(code:String,locale:java.util.Locale,unspecified:String):String =
+        if(code.isBlank() || code=="und")unspecified else java.util.Locale.forLanguageTag(code).getDisplayName(locale).ifBlank {code}
+
+    fun retrievedLabel(value:String,locale:java.util.Locale):String = runCatching {
+        java.time.format.DateTimeFormatter.ofLocalizedDate(java.time.format.FormatStyle.MEDIUM)
+            .withLocale(locale).withZone(java.time.ZoneId.systemDefault()).format(java.time.Instant.parse(value))
+    }.getOrDefault(value)
+
     /** A numeric legacy identifier or opaque key is never presented as an invented name.
      *  Digits alone only qualify for artists (e.g. a legacy composer id), so numeric-looking
      *  real titles such as an album named "1984" are preserved. */

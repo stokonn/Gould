@@ -9,11 +9,17 @@ class OpenOpusAdapter : ProviderAdapter {
     }
     override fun nextOffset(request:ProviderRequest,root:Map<String,Any?>):Int?=nextPage(root["next"],request.offset)
     override fun parse(request:ProviderRequest,root:Map<String,Any?>):List<ProviderRecord> {
-        require(root.obj("status").text("success")=="true")
+        val status=root.obj("status")
+        // OpenOpus uses a documented application-level empty envelope under HTTP 200.
+        // Accept only this exact empty condition; genuine schema/provider errors still fail.
+        if(status.text("success")=="false" && status.text("error")=="Nothing found" &&
+            listOf("results","works","composers").none {root.containsKey(it)})return emptyList()
+        require(status.text("success")=="true")
+        require(listOf("results","works","composers").any {root[it] is List<*>})
         fun artist(c:Map<String,Any?>):ProviderRecord? {
             val key=c.text("id");val name=c.text("complete_name").ifBlank {c.text("name")}
             if(!key.matches(Regex("[0-9]{1,16}")) || name.isBlank())return null
-            return ProviderRecord("composer",key,"artist",name, listOf("name","birth","death","epoch").mapNotNull { f->c.text(f).takeIf {it.isNotBlank()}?.let {FieldValue(f,it)} },listOf("und" to c.text("name")))
+            return ProviderRecord("composer",key,"artist",name, listOf("name","birth","death","epoch").mapNotNull { f->c.text(f).takeIf {it.isNotBlank()}?.let {FieldValue(f,it)} },listOf("und" to c.text("name")),subtype="person")
         }
         val results=mutableListOf<ProviderRecord>()
         val rows=root.rows("results").ifEmpty {root.rows("works").map {mapOf("work" to it,"composer" to root.obj("composer"))} + root.rows("composers").map {mapOf("composer" to it)}}

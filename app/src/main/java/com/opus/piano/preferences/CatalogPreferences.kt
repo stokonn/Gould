@@ -5,10 +5,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-/** Stage 7A: persisted "Include online catalogue results" preference, default OFF.
- *  Online catalogue search stays explicitly user-initiated in Discover; opening or
- *  restoring a screen never triggers a network request. Kept in SharedPreferences
- *  (not the Room database) so backup/restore and migrations are untouched. */
+/** Persisted, default-off consent for automatic debounced Discover provider search.
+ * Query text stays transient. Preference keys/backup compatibility are unchanged. */
 class CatalogPreferences(context: Context) {
     private val prefs = context.getSharedPreferences("goldberg-catalogue", Context.MODE_PRIVATE)
     private val _enabled = MutableStateFlow(prefs.getBoolean(KEY_ONLINE_CATALOGUE, false))

@@ -9,6 +9,7 @@ internal data class DiscoverFrame(
     val binding:String,val queryId:String,val generation:String,val lastId:String?,
     val seen:Set<String>,val seenCandidates:Set<String>,val providers:List<ProviderPosition>,
     val sources:List<SearchSource>,val ordinal:Int=0,
+    val providerEntityIds:Set<String> = emptySet(),
     val sort:String="append-relevance-uuid-v1"
 )
 

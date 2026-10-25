@@ -117,6 +117,7 @@ class ProviderClient(private val transport:ProviderTransport, private val permit
                 currentCoroutineContext().ensureActive()
                 if(!permitted())return@withLock ProviderResult(request,SourceState.UNAVAILABLE,error="network_policy")
                 gate.next=monotonic()+adapter.intervalMillis
+                var invalidPhase="json"
                 try {
                     val conditional=request.copy(headers=if(saved?.etag!=null)mapOf("If-None-Match" to saved.etag) else if(saved?.lastModified!=null)mapOf("If-Modified-Since" to saved.lastModified) else emptyMap())
                     val response=withTimeout(18000){transport.get(conditional)}
@@ -143,8 +144,12 @@ class ProviderClient(private val transport:ProviderTransport, private val permit
                         return@withLock ProviderResult(request,SourceState.MISSING,error="missing_entity")
                     gate.overloads=0
                     val hash=sha(response.body)
-                    val result=ProviderResult(request,SourceState.FRESH,adapter.parse(request,root),hash,hash,
-                        nextOffset=adapter.nextOffset(request,root),
+                    invalidPhase="provider_schema"
+                    val records=adapter.parse(request,root)
+                    invalidPhase="pagination"
+                    val continuation=adapter.nextOffset(request,root)
+                    val result=ProviderResult(request,SourceState.FRESH,records,hash,hash,
+                        nextOffset=continuation,
                         candidates=if(adapter is WikidataAdapter && request.kind=="candidate")adapter.observations(root) else emptyList(),
                         supplement=when(adapter){is WikipediaAdapter->adapter.project(root);is CommonsAdapter->adapter.project(root);else->emptyMap()},
                         license=if(adapter is WikipediaAdapter)"CC-BY-SA-4.0" else if(adapter is CommonsAdapter)"per-file" else "CC0-1.0",
@@ -154,7 +159,7 @@ class ProviderClient(private val transport:ProviderTransport, private val permit
                 } catch(e:TimeoutCancellationException){last=ProviderResult(request,SourceState.UNAVAILABLE,error="timeout")}
                 catch(e:CancellationException){throw e}
                 catch(_:BlockedRightsException){return@withLock ProviderResult(request,SourceState.BLOCKED_RIGHTS,error="rights_not_verified")}
-                catch(_:IllegalArgumentException){return@withLock ProviderResult(request,SourceState.INVALID,error="invalid_payload")}
+                catch(_:IllegalArgumentException){return@withLock ProviderResult(request,SourceState.INVALID,error="invalid_"+invalidPhase)}
                 catch(_:Exception){last=ProviderResult(request,SourceState.UNAVAILABLE,error="transport")}
                 if(attempt==0)delay(maxOf(adapter.intervalMillis,500L)+(Math.random()*500).toLong())
             }

@@ -878,7 +878,7 @@
     <string name="discover_stale">Uloženo, nutná aktualizace</string>
     <string name="discover_rate_limited">Zdroj je vytížený — zkuste později</string>
     <string name="discover_blocked">Práva k obsahu nejsou ověřena</string>
-    <string name="discover_invalid">Neplatná odpověď zdroje</string>
+    <string name="discover_invalid">Odpověď zdroje se nepodařilo přečíst. Zkuste to později nebo procházejte uložené výsledky.</string>
     <string name="discover_unavailable">Zdroj není dostupný; uložené výsledky zachovány</string>
     <string name="discover_load_encyclopedia">Načíst biografii a informace o portrétu ze zdrojů</string>
     <string name="discover_candidate">Neověřený kandidát katalogu — typ a vztahy vyžadují ověření</string>
@@ -944,7 +944,7 @@
     <string name="discover_field_evidence">Další údaje ze zdroje</string>
     <string name="label_library">Knihovna</string>
     <string name="stage7a_search_placeholder">Hledejte hudbu, umělce, díla…</string>
-    <string name="stage7a_privacy_notice">Vyhledávání zůstává na tomto zařízení. Když sami spustíte online hledání, dotaz se odešle externím poskytovatelům hudebních dat.</string>
+    <string name="stage7a_privacy_notice">Když je Online katalog vypnutý, vyhledávání zůstává v zařízení. Po zapnutí v Nastavení Objevovat po krátké pauze automaticky odesílá dotazy povoleným poskytovatelům hudebních dat. Nastavení mobilních dat platí i nadále.</string>
     <string name="stage7a_privacy_info">Informace o soukromí</string>
     <string name="stage7a_browse_categories">Procházet kategorie</string>
     <string name="stage7a_recently_viewed">Nedávno zobrazené</string>
@@ -961,9 +961,9 @@
     <string name="stage7a_about_me">O mně</string>
     <string name="stage7a_portrait_of_artist">Portrét umělce %1$s</string>
     <string name="stage7a_search_online">Hledat online</string>
-    <string name="stage7a_online_off_hint">Online výsledky katalogu jsou vypnuté. Zapněte je v Nastavení → Data a úložiště, abyste mohli sami hledat u externích poskytovatelů.</string>
+    <string name="stage7a_online_off_hint">Online výsledky katalogu jsou vypnuté. Pro automatické online hledání je zapněte v Nastavení → Data a úložiště.</string>
     <string name="stage7a_online_catalogue_setting">Zahrnout online výsledky katalogu</string>
-    <string name="stage7a_online_catalogue_setting_detail">Ve výchozím nastavení vypnuto. Když je zapnete, Objevovat nabídne výslovnou akci „Hledat online“; váš dotaz se pak odešle externím poskytovatelům hudebních dat. Otevření Objevovat nikdy nespouští síťový požadavek.</string>
+    <string name="stage7a_online_catalogue_setting_detail">Ve výchozím nastavení vypnuto. Po zapnutí Objevovat po krátké pauze automaticky odesílá dotazy s alespoň dvěma znaky povoleným poskytovatelům hudebních dat. Nejprve se zobrazí místní výsledky. Nastavení mobilních dat platí i nadále.</string>
     <string name="stage7a_from_catalogue">Z katalogu</string>
     <string name="stage7a_catalogue_not_saved">Veřejné záznamy katalogu k procházení — neukládají se do vaší knihovny.</string>
     <string name="stage7a_catalogue_artists">Umělci z katalogu</string>
@@ -1071,4 +1071,25 @@
     <string name="stage7b_updated">Změněno</string>
     <string name="stage7b_removed">Odstraněno z tohoto návrhu</string>
     <string name="stage7b_evidence_updated">Zdroje podkladů byly změněny</string>
+    <string name="discover_search_sources">Zdroje vyhledávání</string>
+    <string name="discover_cached_kept">Uložené výsledky jsou stále dostupné.</string>
+    <string name="discover_expanded">Rozbaleno</string>
+    <string name="discover_collapsed">Sbaleno</string>
+    <string name="discover_advanced">Pokročilé nástroje katalogu</string>
+    <string name="discover_read_more">Číst dál</string>
+    <string name="discover_show_less">Zobrazit méně</string>
+    <string name="discover_language_unspecified">Jazyk neuveden</string>
+    <string name="discover_evidence_count">Zdrojové záznamy: %1$d</string>
+    <string name="discover_license_cc0">CC0 1.0 · Věnování veřejnosti</string>
+    <string name="discover_license_by_sa">CC BY-SA 4.0 · Uvedení autora, zachování licence</string>
+    <string name="discover_license_public_domain">Volné dílo · ověřeno</string>
+    <string name="discover_source_warning">Některé zdroje se nepodařilo aktualizovat. Dostupné výsledky můžete procházet dál.</string>
+    <string name="discover_local_results">V tomto zařízení</string>
+    <string name="discover_online_results">Online výsledky</string>
+    <string name="discover_no_additional_results">Žádné další online výsledky.</string>
+    <string name="discover_related_people">Související osobnosti</string>
+    <string name="discover_related_music">Související hudba</string>
+    <string name="discover_composer">Skladatel</string>
+    <string name="discover_person">Osoba</string>
+    <string name="discover_group">Soubor</string>
 </resources>

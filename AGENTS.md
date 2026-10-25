@@ -2,11 +2,25 @@
 
 This is the canonical policy for every coding agent and every Goldberg version (0.9.2, 0.10 and beyond). Preserve it in future updates. Thin tool-specific instruction files reference this file; do not maintain competing copies. Newer explicit owner instructions and higher-priority system/security rules take precedence.
 
+## Permanent release policy — owner decision, October 25, 2026
+
+Applies to Goldberg 0.11 and all future Gould versions. This supersedes earlier automatic publication authorization and historical RC instructions below.
+
+- During development, build debug APKs only for internal testing and owner review. Do not create new release candidates, prerelease tags or GitHub Releases for development APKs.
+- Preserve the existing `v0.11-rc.1` release, tag and artifacts as immutable historical evidence.
+- Only after full implementation, verification and explicit owner approval, perform a fresh clean release build. It must be non-debuggable, signed with the trusted production certificate, pass all release-specific gates and support verified safe in-place upgrades.
+- Publish only the explicitly approved stable version. Merging into `main` and publishing a stable GitHub Release each require explicit owner approval; passing checks alone grants neither.
+- The current Stage 8 Discover repair delivers a debug APK and verification report for owner review, with no release publication.
+
 ## Work autonomously and protect data
 
 Inspect the current branch, status, remote, tags, releases, milestone and Issues before work. Document an implementation checklist. Perform routine inspection, editing, builds, tests and safe Git operations independently. Ask only for important product decisions, unavailable credentials or genuinely destructive/security-sensitive operations. Respect mandatory sandbox and permission controls; never bypass them. Preserve unrelated work, especially the existing untracked RELEASE_NOTES.md. Never force-push, reset unrelated work, commit secrets, rotate signing keys or overwrite release tags.
 
 Data integrity outranks feature completeness and visual polish. Preserve history, unfinished drafts, multi-piece attribution, repertoire, profile/avatar/nickname, settings, badge dates and showcase. Never use destructive Room migrations or database recreation. Add explicit tested migrations only when necessary. Preserve backup compatibility and isolate disposable media from critical data. Never silently replace/delete an unfinished draft; recovery retry and unchanged-data export must remain possible. New-session consent alone is not consent to delete the original recovery data.
+
+## Discover online search consent — owner decision, October 25, 2026
+
+Online Catalogue in Settings is explicit, default-off consent for automatic catalogue-provider search. Show local results immediately, debounce online requests approximately 500 ms for queries of at least two characters, cancel obsolete query/filter/consent work, and respect mobile-data policy and rate limits. Group local/online results clearly without duplicating verified entity IDs; preserve ranking, paging, cache and provenance. No per-query button is required. This does not authorize production community backend networking.
 
 ## Architecture and coding
 

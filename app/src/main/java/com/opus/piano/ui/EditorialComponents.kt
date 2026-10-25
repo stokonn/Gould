@@ -9,6 +9,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ChevronRight
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.PhoneAndroid
+import androidx.compose.material.icons.outlined.ExpandLess
+import androidx.compose.material.icons.outlined.ExpandMore
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -60,4 +62,41 @@ import com.opus.piano.data.compactPracticeTime
     OutlinedTextField(query, change, modifier.fillMaxWidth(), label = { Text(L.s(R.string.stage7a_search_placeholder), maxLines = 1, overflow = TextOverflow.Ellipsis) },
         leadingIcon = { Icon(Icons.Outlined.Search, null) }, singleLine = true,
         shape = androidx.compose.foundation.shape.RoundedCornerShape(14.dp))
+}
+
+/** Shared Library/Discover metadata card; stacks for narrow screens and large type. */
+@Composable internal fun EditorialMetadata(cells:List<Pair<String,String>>) {
+    if(cells.isEmpty())return
+    Surface(shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surface) {
+        BoxWithConstraints {
+            val stacked=maxWidth<340.dp || androidx.compose.ui.platform.LocalDensity.current.fontScale>1.15f
+            @Composable fun Cell(value:String,label:String,modifier:Modifier) {
+                Column(modifier.padding(horizontal=12.dp,vertical=JournalSpace.small),verticalArrangement=Arrangement.spacedBy(JournalSpace.tiny)) {
+                    Text(label,style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text(value,style=MaterialTheme.typography.bodyMedium)
+                }
+            }
+            if(stacked)Column(Modifier.fillMaxWidth()) {
+                cells.forEachIndexed {index,(value,label)->
+                    if(index>0)HorizontalDivider(color=MaterialTheme.colorScheme.outlineVariant)
+                    Cell(value,label,Modifier.fillMaxWidth())
+                }
+            } else Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
+                cells.forEachIndexed {index,(value,label)->
+                    if(index>0)VerticalDivider(Modifier.padding(vertical=10.dp),color=MaterialTheme.colorScheme.outlineVariant)
+                    Cell(value,label,Modifier.weight(1f))
+                }
+            }
+        }
+    }
+}
+
+@Composable internal fun EditorialDisclosure(title:String,expanded:Boolean,toggle:()->Unit) {
+    Surface(onClick=toggle,shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surface,
+        modifier=Modifier.fillMaxWidth().semantics {stateDescription=L.s(if(expanded)R.string.discover_expanded else R.string.discover_collapsed)}) {
+        Row(Modifier.padding(12.dp).heightIn(min=24.dp),verticalAlignment=Alignment.CenterVertically) {
+            Text(title,Modifier.weight(1f),style=MaterialTheme.typography.titleMedium)
+            Icon(if(expanded)Icons.Outlined.ExpandLess else Icons.Outlined.ExpandMore,null)
+        }
+    }
 }

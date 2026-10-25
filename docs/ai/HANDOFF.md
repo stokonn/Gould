@@ -1,3 +1,13 @@
+## Active handoff — Stage 8 Discover stabilization
+
+Work only in `/home/stokonn/Projects/Goldberg-011-Discover` on `fix/goldberg-0.11-discover-ux`; baseline is exact published RC `a73a7e2`. No new worktree/branch switch, main merge, production community activation or Release. Owner now requires debug-only development, no future RC/prerelease/development Releases, and explicit stable/main approval. Settings consent enables automatic 500 ms provider search with local/online sections.
+
+Read the [live checkpoint](../planning/goldberg-0.11/stage-8/discover-repair/CHECKPOINT.md) before continuing. Implementation and host verification are progressing; native acceptance requires existing dispatch-only API36 CI bound to the pushed commit, followed by actual PNG/tree inspection. Local `/dev/kvm` is absent and software emulator failed; no local native pass. Do not declare the original OpenOpus screenshot failure fixed merely because five live HTTP queries succeeded. Preserve original assertions, provider identities, data, signing and historical artifacts. Issue31/Project remain OPEN/In Progress.
+
+Earlier handoffs below remain source-bound history.
+
+---
+
 ## Isolated canonical integration — October 25, 2026
 
 Branch integrate/goldberg-0.11-canonical-client,base42f6897;source publication and

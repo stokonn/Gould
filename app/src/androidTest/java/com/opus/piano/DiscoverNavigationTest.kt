@@ -57,9 +57,8 @@ class DiscoverNavigationTest {
             settled("detail")
             instrumentation.runOnMainSync {assertTrue(nav.popBackStack())}
             settled("DISCOVER")
-            // Stage 7A refinement: the explicit online request moved out of the session into
-            // composable-local remember state, so it can never survive navigation or process
-            // death by construction; only the raw query remains transient memory state here.
+            // Query memory survives this entry's Back navigation, but not process death.
+            // Default-off Settings consent now controls automatic debounced provider search.
             instrumentation.runOnMainSync {assertSame(original,session);assertEquals("Authored transient query",session.query)}
             assertEquals("",DiscoverSearchSession().query)
         }

@@ -1,3 +1,7 @@
+## Stage 8 — Discover stabilization (October 25, 2026), IN PROGRESS
+
+Purpose/scope/tasks and live verification: [Discover repair checklist](stage-8/discover-repair/CHECKPOINT.md). Exact published RC baseline `a73a7e2`; isolated branch `fix/goldberg-0.11-discover-ux`. Search/provider/editorial repair authorized; final acceptance pending. No new release stage, production activation or release.
+
 ## Isolated canonical integration — October 25, 2026
 
 Branch integrate/goldberg-0.11-canonical-client,base42f6897;source publication and

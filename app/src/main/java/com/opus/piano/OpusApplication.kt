@@ -42,7 +42,7 @@ class OpusApplication : Application() {
     val providerCache by lazy { com.opus.piano.data.catalogue.providers.FileProviderCache(java.io.File(cacheDir,"catalogue-stage4/responses"),reserveBytes={catalogueStorage.requiredReserve()},intake=catalogueStorage.intake) }
     val discover by lazy {
         com.opus.piano.data.catalogue.DiscoverRepository(localCatalogue,
-            com.opus.piano.data.catalogue.providers.ProviderClient(com.opus.piano.data.catalogue.providers.HttpsProviderTransport { media.allowed() }, { media.allowed() }, cache=providerCache), { media.allowed() }, catalogueStorage)
+            com.opus.piano.data.catalogue.providers.ProviderClient(com.opus.piano.data.catalogue.providers.HttpsProviderTransport { catalogOnline.enabled.value && media.allowed() }, { catalogOnline.enabled.value && media.allowed() }, cache=providerCache), { catalogOnline.enabled.value && media.allowed() }, catalogueStorage)
     }
     val cataloguePortraits by lazy { com.opus.piano.data.catalogue.CataloguePortraits(java.io.File(cacheDir,"catalogue-stage4/portraits"),reserveBytes={catalogueStorage.requiredReserve()},intake=catalogueStorage.intake) { media.allowed() } }
     // Stage 5 offline bundles (D5.1 file store, D5.3 WorkManager, D7 budgets/consent).

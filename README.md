@@ -31,3 +31,9 @@ Build artifacts are under `app/build/outputs/apk/`. Compilation is not device ve
 [Signing](docs/SIGNING.md) · [Backup](docs/BACKUP.md) · [Google configuration](docs/GOOGLE-IDENTITY-SETUP.md) · [Changelog](CHANGELOG.md) · [Licenses](docs/LICENSES.md)
 
 created by stokonn with love <3
+
+### Development and release policy
+
+Development builds are internal debug APKs for verification and owner review. Goldberg 0.11 and future Gould versions do not create new release candidates, prerelease tags or development GitHub Releases. The historical [v0.11-rc.1](https://github.com/stokonn/Goldberg/releases/tag/v0.11-rc.1) and its original tag/assets remain preserved. A stable release requires completed verification, explicit owner approval, then a fresh clean non-debuggable build with the trusted signing certificate and verified in-place upgrades. Merging into main and publishing each require explicit approval.
+
+Current Stage 8 [Discover stabilization checklist](docs/planning/goldberg-0.11/stage-8/discover-repair/CHECKPOINT.md): debug APK/report only; native visual acceptance is tracked there.

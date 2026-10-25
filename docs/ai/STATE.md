@@ -1,3 +1,13 @@
+## Current Stage 8 — Discover stabilization, October 25, 2026
+
+IN PROGRESS on `fix/goldberg-0.11-discover-ux`, exact published RC baseline `a73a7e2`. Latest owner scope: automatic debounced provider search after default-off Settings consent; editorial detail/search repair; debug APK/report only. No new RC, tag, Release, main merge or community activation. Permanent policy is recorded in AGENTS.md and DECISIONS.md.
+
+Live purpose/scope/tasks/results/next steps: [Discover repair checkpoint](../planning/goldberg-0.11/stage-8/discover-repair/CHECKPOINT.md). Current reviewed-source host run:307 JVM/0 failures/errors/skips, APK/testAPK/lint PASS (0 errors/119 warnings/1 hint); automatic-search/native visual harness compiled. API36 CI execution and actual screenshot/tree review remain pending. Original OpenOpus screenshot failure is not marked fixed from live success alone.
+
+Earlier source-bound checkpoints below are historical and remain preserved.
+
+---
+
 ## Isolated canonical integration — October 25, 2026
 
 Branch integrate/goldberg-0.11-canonical-client,base42f6897;source publication and

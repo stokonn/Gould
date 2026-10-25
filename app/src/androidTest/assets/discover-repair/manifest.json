@@ -1,0 +1,56 @@
+[
+  {
+    "file": "chopin.json",
+    "query": "Frédéric Chopin",
+    "url": "https://api.openopus.org/omnisearch/Fr%C3%A9d%C3%A9ric%20Chopin/0.json",
+    "sha256": "a0e527b9ce869aa78fb462454dd53ea11ff5f19b6a3c76093f998639734ab100",
+    "license": "CC0-1.0",
+    "attribution": "Open Opus metadata",
+    "observedDate": "2026-10-25"
+  },
+  {
+    "file": "goldberg.json",
+    "query": "Goldberg Variations",
+    "url": "https://api.openopus.org/omnisearch/Goldberg%20Variations/0.json",
+    "sha256": "e24e6427ec492a4e6a804a3230950317bc89c3e63b09305408a15434777b3589",
+    "license": "CC0-1.0",
+    "attribution": "Open Opus metadata",
+    "observedDate": "2026-10-25"
+  },
+  {
+    "file": "bach.json",
+    "query": "Johann Sebastian Bach",
+    "url": "https://api.openopus.org/omnisearch/Johann%20Sebastian%20Bach/0.json",
+    "sha256": "361fac529037966e53f259479d748a4c6599df04382fb3b832a316d48ff65e26",
+    "license": "CC0-1.0",
+    "attribution": "Open Opus metadata",
+    "observedDate": "2026-10-25"
+  },
+  {
+    "file": "mozart.json",
+    "query": "Mozart",
+    "url": "https://api.openopus.org/omnisearch/Mozart/0.json",
+    "sha256": "f8722f8bfdade4536acef7c0df3e282209920816ec41565762bb629efb72414c",
+    "license": "CC0-1.0",
+    "attribution": "Open Opus metadata",
+    "observedDate": "2026-10-25"
+  },
+  {
+    "file": "ballade.json",
+    "query": "Ballade No. 1, Op. 23",
+    "url": "https://api.openopus.org/omnisearch/Ballade%20No.%201%2C%20Op.%2023/0.json",
+    "sha256": "936de3b9b36c9c442e7c23883e5ec0783bfba8ff55336749dff39e886d03d735",
+    "license": "CC0-1.0",
+    "attribution": "Open Opus metadata",
+    "observedDate": "2026-10-25"
+  },
+  {
+    "file": "empty.json",
+    "query": "zxqnonexistent",
+    "url": "https://api.openopus.org/omnisearch/zxqnonexistent/0.json",
+    "sha256": "7cbf259a23dd872c7009d2e56c2c10e2f07e1bc6c1ff47bd002cebe9c6d221f2",
+    "license": "CC0-1.0",
+    "attribution": "Open Opus metadata",
+    "observedDate": "2026-10-25"
+  }
+]

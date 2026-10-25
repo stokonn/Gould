@@ -108,3 +108,7 @@ No Git garbage collection, backup deletion or published-artifact removal was per
 Read this ledger and AGENTS.md first. Use rg and Git reachability to narrow investigation; consult the preserved-component list before repeating migration/icon/signing audits. Append only new findings, evidence and actual checks. Keep release work and maintenance commits separate, retain uncertain items, and record explicit deferred work. Do not publish a new application release solely for maintenance without authorization.
 
 created by stokonn with love <3
+
+### 2026-10-25 — bounded Stage 8 Discover repair
+
+The isolated `fix/goldberg-0.11-discover-ux` branch consolidates Library/Discover metadata rendering into the shared responsive `EditorialMetadata` component. Only the duplicated active layout is replaced; no historical source evidence, schema, migration, backup format, release artifact or unrelated asset is removed. This is part of the authorized UX repair, not substantial legacy cleanup or release publication. Source-bound verification is maintained in [the Stage 8 Discover checkpoint](../planning/goldberg-0.11/stage-8/discover-repair/CHECKPOINT.md); do not infer native execution from host compilation.

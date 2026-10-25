@@ -21,6 +21,6 @@ internal suspend fun CatalogueRepository.candidateId(provider:String,kind:String
 internal suspend fun CatalogueRepository.candidates(query:String,filter:SearchFilter,excluded:Set<String> = emptySet()):List<CatalogueCandidate> {
     val tokens=SearchText.normalize(query).split(' ').filter {it.isNotBlank()}
     return states("candidate:",200).mapNotNull {runCatching {candidateFromJson(it.value)}.getOrNull()}.filter {candidate->
-        candidate.id !in excluded && (candidate.kindHint=="unknown" || candidate.kindHint in filter.kinds) && entity(candidate.id)==null && tokens.all {SearchText.normalize(candidate.title).contains(it)}
+        candidate.id !in excluded && (candidate.kindHint in filter.kinds || filter.category=="all" && candidate.kindHint=="unknown") && entity(candidate.id)==null && tokens.all {SearchText.normalize(candidate.title).contains(it)}
     }.take(40)
 }

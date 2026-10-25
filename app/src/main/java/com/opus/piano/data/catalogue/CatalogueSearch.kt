@@ -20,19 +20,20 @@ data class SearchFilter(val category:String="all",val artistId:String?=null,val 
     val kinds get()=when(category){"works"->listOf("work","arrangement");"artists"->listOf("artist");"albums"->listOf("album");"lists"->listOf("collection");else->listOf("work","arrangement","artist","album","collection")}
 }
 data class SearchCursor(val queryHash:String,val generation:String,val lastRank:Int,val lastId:String) {
-    fun encode()=Base64.getUrlEncoder().withoutPadding().encodeToString(listOf("2",queryHash,generation,"relevance-id-v2",lastRank.toString(),lastId).joinToString("|").toByteArray())
+    fun encode()=Base64.getUrlEncoder().withoutPadding().encodeToString(listOf("2",queryHash,generation,"relevance-id-v3",lastRank.toString(),lastId).joinToString("|").toByteArray())
     companion object {
         fun decode(value:String,hash:String,generation:String):SearchCursor {
             require(value.length<=1024)
             val parts=String(Base64.getUrlDecoder().decode(value),Charsets.UTF_8).split('|')
-            require(parts.size==6 && parts[0]=="2" && parts[1]==hash && parts[2]==generation && parts[3]=="relevance-id-v2") {"Stale or incompatible search cursor"}
+            require(parts.size==6 && parts[0]=="2" && parts[1]==hash && parts[2]==generation && parts[3]=="relevance-id-v3") {"Stale or incompatible search cursor"}
             CatalogueValidation.uuid(parts[5]);return SearchCursor(hash,generation,parts[4].toInt().also {require(it in 0..3)},parts[5])
         }
     }
 }
 /** Work subtype (movement/part/medley/mashup/composition) travels with the page so rows can
  *  label results accurately without a per-row query. Disposable display data, not identity. */
-data class CatalogueSearchPage(val items:List<CatalogueEntity>,val nextCursor:String?,val generation:String,val workTypes:Map<String,String> = emptyMap())
+data class CatalogueRowInfo(val artistType:String?=null,val composers:List<String> = emptyList(),val providers:List<String> = emptyList())
+data class CatalogueSearchPage(val items:List<CatalogueEntity>,val nextCursor:String?,val generation:String,val workTypes:Map<String,String> = emptyMap(),val rowInfo:Map<String,CatalogueRowInfo> = emptyMap())
 
 internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFilter=SearchFilter(),cursor:String?=null,limit:Int=40,excluded:Set<String> = emptySet()):CatalogueSearchPage {
     require(query.length<=256 && limit in 1..40 && excluded.size<=500)
@@ -43,8 +44,13 @@ internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFi
     val args=mutableListOf<Any>()
     val placeholders=filter.kinds.joinToString(","){"?"}
     // Rank computed in SQLite; bounded aliases/FTS never materialize the catalogue in memory.
-    val rank="CASE WHEN EXISTS(SELECT 1 FROM aliases ax WHERE ax.entityId=e.id AND ax.normalized=?) THEN 0 WHEN EXISTS(SELECT 1 FROM aliases ax WHERE ax.entityId=e.id AND ax.normalized LIKE ? ESCAPE '\\') THEN 1 ELSE 2 END"
-    args+=normalized;args+="$normalized%"
+    val escaped=normalized.replace("\\","\\\\").replace("%","\\%").replace("_","\\_")
+    // A verified composer's complete surname token outranks unrelated prefix names.
+    // Composer evidence is an explicit credit or OpenOpus period, never a title identity merge.
+    val composer="e.kind='artist' AND (EXISTS(SELECT 1 FROM relationships r WHERE r.toId=e.id AND r.type='credit' AND r.role='composer') OR EXISTS(SELECT 1 FROM assertions a JOIN sources s ON s.id=a.sourceId WHERE a.entityId=e.id AND a.field='epoch' AND s.provider='openopus'))"
+    val rank="CASE WHEN EXISTS(SELECT 1 FROM aliases ax WHERE ax.entityId=e.id AND ax.normalized=?) THEN 0 WHEN ($composer) AND EXISTS(SELECT 1 FROM aliases ax WHERE ax.entityId=e.id AND (' ' || ax.normalized || ' ') LIKE ? ESCAPE '\\') THEN 1 WHEN EXISTS(SELECT 1 FROM aliases ax WHERE ax.entityId=e.id AND ax.normalized LIKE ? ESCAPE '\\') THEN 2 ELSE 3 END"
+    val rankArgs=listOf(normalized,"% $escaped %","$escaped%")
+    args.addAll(rankArgs)
     var where="e.status='active' AND e.kind IN ($placeholders)"
     where+=" AND NOT EXISTS(SELECT 1 FROM redirect_revisions rr WHERE rr.sourceId=e.id AND rr.targetId IS NOT NULL AND rr.revision=(SELECT MAX(latest.revision) FROM redirect_revisions latest WHERE latest.sourceId=e.id))"
     args.addAll(filter.kinds)
@@ -81,11 +87,12 @@ internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFi
     val next=if(rows.size>limit) {
         val last=page.last()
         // Same ranking predicate as SQL, queried only for the final item.
-        val exact=queryEntities(SimpleSQLiteQuery("SELECT e.* FROM entities e JOIN aliases a ON a.entityId=e.id WHERE e.id=? AND a.normalized=? LIMIT 1",arrayOf(last.id,normalized))).isNotEmpty()
-        val prefix=exact || queryEntities(SimpleSQLiteQuery("SELECT e.* FROM entities e JOIN aliases a ON a.entityId=e.id WHERE e.id=? AND a.normalized LIKE ? LIMIT 1",arrayOf(last.id,"$normalized%"))).isNotEmpty()
-        SearchCursor(binding,generation,if(exact)0 else if(prefix)1 else 2,last.id).encode()
+        val lastRank=(0..3).first {value->queryEntities(SimpleSQLiteQuery(
+            "SELECT e.* FROM entities e WHERE e.id=? AND ($rank)=?",
+            (listOf(last.id)+rankArgs+value).toTypedArray())).isNotEmpty()}
+        SearchCursor(binding,generation,lastRank,last.id).encode()
     } else null
     val workIds=page.filter {it.kind=="work"}.map {it.id}
     val subtypes=workTypes(workIds).associate {it.id to it.workType}
-    return CatalogueSearchPage(page,next,generation,subtypes)
+    return CatalogueSearchPage(page,next,generation,subtypes,rowInfo(page.map {it.id}))
 }

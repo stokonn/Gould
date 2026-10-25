@@ -1,3 +1,18 @@
+## Automatic Discover online search — owner decision, October 25, 2026
+
+The persisted default-off Online Catalogue setting is consent. Local results appear immediately; permitted online provider results follow after approximately 500 ms for queries with at least two characters. Query/filter/consent changes cancel obsolete work. Local/online sections deduplicate by verified canonical ID, never title. Keep paging, cache, provenance, mobile policy and rate limits. Remove per-query Search online. No community production networking is enabled. Regression/native visual acceptance is required before this implementation is marked verified.
+
+## Permanent release policy — owner decision, October 25, 2026
+
+Applies to Goldberg 0.11 and all future Gould versions. This supersedes earlier automatic publication authorization and historical RC instructions below.
+
+- During development, build debug APKs only for internal testing and owner review. Do not create new release candidates, prerelease tags or GitHub Releases for development APKs.
+- Preserve the existing `v0.11-rc.1` release, tag and artifacts as immutable historical evidence.
+- Only after full implementation, verification and explicit owner approval, perform a fresh clean release build. It must be non-debuggable, signed with the trusted production certificate, pass all release-specific gates and support verified safe in-place upgrades.
+- Publish only the explicitly approved stable version. Merging into `main` and publishing a stable GitHub Release each require explicit owner approval; passing checks alone grants neither.
+- The current Stage 8 Discover repair delivers a debug APK and verification report for owner review, with no release publication.
+
+
 ## Stage 8 — independent Android verification executed (October 25, 2026)
 
 Independent checks are VERIFIED; source publication/automatic CI receipt is in progress. This continues existing Stage8,without a new named stage. Full Stage8 integration and Goldberg0.11 release acceptance remain INCOMPLETE.

@@ -103,3 +103,9 @@ Stage 7B Android client verification is **READY FOR OWNER REVIEW**, not accepted
 Proposed owner disposition: ACCEPT WITH DOCUMENTED LIMITATIONS for the verified client scope. Three Admin Settings label/control pairs duplicate TalkBack focus stops; audible speech quality, subjective motion comfort and exhaustive configurations remain unverified. Live G1–G9/G11 integration is BLOCKED until Stage 6 authorization; Stage 8 integration/release gates remain separate. No main merge, production activation or release has occurred. See the branch's Stage 7B FINAL-OWNER-REPORT.md and existing Issue #31 for evidence and the pending owner decision.
 
 created by stokonn with love <3
+
+## Current development publication policy
+
+Owner decision, October 25, 2026: Goldberg 0.11 and future Gould versions use internal debug APKs during development and owner review. Do not create additional RCs, prerelease tags or development GitHub Releases. Preserve historical v0.11-rc.1 and its artifacts. Only after full verification and explicit owner approval, perform a fresh clean non-debuggable stable release build with the trusted certificate and verified safe in-place upgrades. Main merges and stable publication each require explicit approval. The Stage 8 Discover repair is a debug-only deliverable pending native visual acceptance.
+
+created by stokonn with love <3
