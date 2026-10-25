@@ -1,15 +1,15 @@
 ## Stage 8C — targeted UI corrections (authorized October 25, 2026)
 
-**IN PROGRESS.** Baseline `29ce6071741df7567f782730bd78d6d1e0192780`; branch `feature/goldberg-0.11-stage-8`. Owner explicitly authorized A8-1/A8-2 production UI corrections, A8-3 test-scaffold correction, focused/host/emulator/source-bound CI verification, evidence publication and private PMP checkpoint. No backend adoption or production networking/merge/deploy/release.
+**IN PROGRESS — source4d245b published;32 actual viewport configurations captured;local route/system-bar/scroll/artifact verification PASS;quality CI SUCCESS;native CI1 failed on test pointer hitting StatusBar;safe-inset test-only correction now3/3localPASS;publish correction then source-bound native CI2 pending. Findings NOT FIXED yet.** Baseline `29ce6071741df7567f782730bd78d6d1e0192780`; branch `feature/goldberg-0.11-stage-8`. Owner explicitly authorized A8-1/A8-2 production UI corrections, A8-3 test-scaffold correction, focused/host/emulator/source-bound CI verification, evidence publication and private PMP checkpoint. No backend adoption or production networking/merge/deploy/release.
 
 Purpose: remove duplicate Settings focus stops, preserve complete responsive bottom-navigation labels and make scaffold system bars reflect MainActivity. Scope: AdminSwitch, reusable navigation components/OpusApp, test scaffolds/regressions/recorder, Stage 8 records and private worktree PMP. No database/schema/backup/practice timing change planned.
 
 - [x] Recover policy/maintenance/AI/Stage 8B and inspect exact clean baseline, all worktrees, refreshed Issue31/Project/source heads; preserve APKs/raw evidence/private files. Cloud remains separately published c8b903b and untouched.
-- [ ] Implement coherent named Switch row semantics with state, disabled/key/touch and exactly-once behavior.
-- [ ] Implement full responsive labels, preserving five destinations/editorial tokens/font scaling/selected state/navigation.
-- [ ] Correct test-only window flags and share production navigation rendering in scaffold; keep production theme behavior unchanged.
-- [ ] Verify focused state/action/keyboard/semantics regressions and all 32 EN/CZ × Light/Dark × fonts1/1.3/1.5/2 × small/standard configurations.
-- [ ] Actual TalkBack before/after traversal, focus events/screenshots/trees and real navigation; retain unsuccessful attempts. Findings remain NOT FIXED until independent verification passes.
+- [x] Implement coherent named Switch row semantics with state, disabled/key/touch and exactly-once behavior.
+- [x] Implement full responsive labels, preserving five destinations/editorial tokens/font scaling/selected state/navigation.
+- [x] Correct test-only window flags and share production navigation rendering in scaffold; keep production theme behavior unchanged.
+- [x] Verify focused state/action/keyboard/semantics regressions and all 32 EN/CZ × Light/Dark × fonts1/1.3/1.5/2 × small/standard configurations.
+- [x] Actual TalkBack before/after traversal/focus events/screenshots/trees and real navigation retained and verified. Optional double-tap injection unsuccessful/unverified;native exact-action regressions passed. Findings remain NOT FIXED until independent native verification passes.
 - [ ] Appropriate wrapper JVM/build/lint, host checks and actual source-bound emulator CI; source/artifact/signing preservation.
 - [ ] Update private PMP, local checklist/matrix/AI and existing Issue31/Project; verified commit/push/exact remote SHA/CI receipt.
 

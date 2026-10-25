@@ -1,0 +1,1 @@
+/data/local/tmp/goldberg-stage7b/: 525 files pulled, 0 skipped. 27.3 MB/s (25657029 bytes in 0.896s)

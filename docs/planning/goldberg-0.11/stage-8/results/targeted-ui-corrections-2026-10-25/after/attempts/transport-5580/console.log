@@ -1,0 +1,39 @@
+en-light-1p0-small-navhost [{'step': 0, 'focus': []}, {'step': 1, 'focus': []}, {'step': 2, 'focus': []}, {'step': 3, 'focus': []}, {'step': 4, 'focus': []}, {'step': 5, 'focus': []}, {'step': 6, 'focus': []}, {'step': 7, 'focus': []}, {'step': 8, 'focus': []}, {'step': 9, 'focus': []}]
+en-light-1p0-small-navhost {'pid': 10133, 'uptime': 1312331, 'locale': 'en', 'fontScale': 1, 'densityDpi': 320, 'screenWidthDp': 360, 'screenHeightDp': 640, 'profileTheme': 'Light', 'touchExploration': 0, 'animatorScale': 1, 'transitionScale': 1, 'windowScale': 1, 'notificationGranted': False, 'activeNotificationIds': [], 'lightStatusBars': True, 'lightNavigationBars': True, 'systemNight': 16, 'scaffold': False, 'imeVisible': False, 'imeBottom': 0}
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/run_assessments.py", line 80, in run
+    tap(state,'Profile' if locale=='en' else 'Profil')
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/emulator_probe.py", line 58, in tap
+    adb('shell', 'input', 'tap', str((x1+x2)//2), str((y1+y2)//2))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/emulator_probe.py", line 20, in adb
+    result.check_returncode()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib64/python3.14/subprocess.py", line 509, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+                             self.stderr)
+subprocess.CalledProcessError: Command '['/home/stokonn/Android/Sdk/platform-tools/adb', '-s', 'emulator-5580', 'shell', 'input', 'tap', '648', '1152']' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8c/run_after_matrix.py", line 10, in <module>
+    matrix.run(locale,theme,font,size=size,with_talkback=size=='small' and (locale,theme,font) in [('en','Light','1.0'),('cs','Dark','1.3'),('en','Dark','2.0'),('cs','Light','1.5')])
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8c/assess.py", line 29, in guarded_run
+    try:return original_run(locale,theme,font,size,scaffold,with_talkback,system_dark)
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/run_assessments.py", line 100, in run
+    talkback(False)
+    ~~~~~~~~^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/run_assessments.py", line 16, in talkback
+    adb('shell','settings','delete','secure','enabled_accessibility_services')
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/emulator_probe.py", line 20, in adb
+    result.check_returncode()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib64/python3.14/subprocess.py", line 509, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+                             self.stderr)
+subprocess.CalledProcessError: Command '['/home/stokonn/Android/Sdk/platform-tools/adb', '-s', 'emulator-5580', 'shell', 'settings', 'delete', 'secure', 'enabled_accessibility_services']' returned non-zero exit status 1.

@@ -1,0 +1,100 @@
+{
+  "worktrees": [
+    {
+      "worktree": "/home/stokonn/Projects/Opus",
+      "originalUntrackedCount": 44,
+      "missingCount": 0,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/home/stokonn/Projects/Goldberg-Stage6-API",
+      "originalUntrackedCount": 63,
+      "missingCount": 0,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/home/stokonn/Projects/Goldberg-Stage6-Cloud",
+      "originalUntrackedCount": 119,
+      "missingCount": 1,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/home/stokonn/Projects/Goldberg-Stage7A",
+      "originalUntrackedCount": 6,
+      "missingCount": 0,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/home/stokonn/Projects/Goldberg-Stage7B",
+      "originalUntrackedCount": 2090,
+      "missingCount": 0,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/home/stokonn/Projects/goldberg-c2-spike",
+      "originalUntrackedCount": 0,
+      "missingCount": 0,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/home/stokonn/Projects/goldberg-stage6-docs",
+      "originalUntrackedCount": 0,
+      "missingCount": 0,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/home/stokonn/Projects/goldberg-stage7-docs",
+      "originalUntrackedCount": 0,
+      "missingCount": 0,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/tmp/goldberg-stage1-review-c3d5e03",
+      "originalUntrackedCount": 0,
+      "missingCount": 0,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/tmp/goldberg-stage6-android-local",
+      "originalUntrackedCount": 0,
+      "missingCount": 0,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/tmp/goldberg-stage6-handlers",
+      "originalUntrackedCount": 0,
+      "missingCount": 0,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/tmp/goldberg-stage6-public-admin-abuse",
+      "originalUntrackedCount": 0,
+      "missingCount": 0,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/tmp/goldberg-stage6-security-local",
+      "originalUntrackedCount": 0,
+      "missingCount": 0,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/tmp/opencode/c6-pg",
+      "originalUntrackedCount": 0,
+      "missingCount": 0,
+      "changedCount": 0
+    },
+    {
+      "worktree": "/tmp/opencode/goldberg-ci-only",
+      "originalUntrackedCount": 0,
+      "missingCount": 0,
+      "changedCount": 0
+    }
+  ],
+  "originalExternalUntrackedFiles": 2322,
+  "missing": 1,
+  "changed": 0,
+  "cloudHead": "56ff7245b3f837a3721e3a4138a3abe35bc78015",
+  "cloudTrackedStatus": [],
+  "note": "Read-only audit:2321/2322 original external untracked files still present with identical digests;one Stage6 Cloud CLI cache (.wrangler/cache/cf.json) absent after independent Cloud progression. No historical evidence/private PMP/APK changed or missing;no external worktree edited/restored by Stage8C. Cloud advanced independently to56ff724 and is not adopted. Original file inventory remains private."
+}

@@ -1,0 +1,347 @@
+{
+  "source": "4d245b46936d640740799dfcc6e8d61f3d44b249",
+  "validBaseConfigurations": 32,
+  "actualTalkBackTraversals": 4,
+  "actualFocusedSteps": 40,
+  "oppositeSystemPairs": 4,
+  "preservedStage8bFiles": 426,
+  "viewportClippedRows": [
+    {
+      "file": "after/cs-light-2p0-small-navhost-settings.json",
+      "name": "Povolit mobilní a měřená data pro správní kontroly",
+      "visibleHeightPx": 61
+    },
+    {
+      "file": "after/cs-dark-2p0-small-navhost-settings.json",
+      "name": "Povolit mobilní a měřená data pro správní kontroly",
+      "visibleHeightPx": 61
+    }
+  ],
+  "configurations": [
+    {
+      "file": "after/en-light-1p0-small-navhost-settings.json",
+      "locale": "en",
+      "theme": "Light",
+      "fontScale": 1.0,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/en-light-1p3-small-navhost-settings.json",
+      "locale": "en",
+      "theme": "Light",
+      "fontScale": 1.3,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/en-light-1p5-small-navhost-settings.json",
+      "locale": "en",
+      "theme": "Light",
+      "fontScale": 1.5,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/en-light-2p0-small-navhost-settings.json",
+      "locale": "en",
+      "theme": "Light",
+      "fontScale": 2.0,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/en-dark-1p0-small-navhost-settings.json",
+      "locale": "en",
+      "theme": "Dark",
+      "fontScale": 1.0,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/en-dark-1p3-small-navhost-settings.json",
+      "locale": "en",
+      "theme": "Dark",
+      "fontScale": 1.3,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/en-dark-1p5-small-navhost-settings.json",
+      "locale": "en",
+      "theme": "Dark",
+      "fontScale": 1.5,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/en-dark-2p0-small-navhost-settings.json",
+      "locale": "en",
+      "theme": "Dark",
+      "fontScale": 2.0,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/cs-light-1p0-small-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Light",
+      "fontScale": 1.0,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/cs-light-1p3-small-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Light",
+      "fontScale": 1.3,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/cs-light-1p5-small-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Light",
+      "fontScale": 1.5,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/cs-light-2p0-small-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Light",
+      "fontScale": 2.0,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/cs-dark-1p0-small-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Dark",
+      "fontScale": 1.0,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/cs-dark-1p3-small-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Dark",
+      "fontScale": 1.3,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/cs-dark-1p5-small-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Dark",
+      "fontScale": 1.5,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/cs-dark-2p0-small-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Dark",
+      "fontScale": 2.0,
+      "widthDp": 360,
+      "heightDp": 640
+    },
+    {
+      "file": "after/en-light-1p0-standard-navhost-settings.json",
+      "locale": "en",
+      "theme": "Light",
+      "fontScale": 1.0,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/en-light-1p3-standard-navhost-settings.json",
+      "locale": "en",
+      "theme": "Light",
+      "fontScale": 1.3,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/en-light-1p5-standard-navhost-settings.json",
+      "locale": "en",
+      "theme": "Light",
+      "fontScale": 1.5,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/en-light-2p0-standard-navhost-settings.json",
+      "locale": "en",
+      "theme": "Light",
+      "fontScale": 2.0,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/en-dark-1p0-standard-navhost-settings.json",
+      "locale": "en",
+      "theme": "Dark",
+      "fontScale": 1.0,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/en-dark-1p3-standard-navhost-settings.json",
+      "locale": "en",
+      "theme": "Dark",
+      "fontScale": 1.3,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/en-dark-1p5-standard-navhost-settings.json",
+      "locale": "en",
+      "theme": "Dark",
+      "fontScale": 1.5,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/en-dark-2p0-standard-navhost-settings.json",
+      "locale": "en",
+      "theme": "Dark",
+      "fontScale": 2.0,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/cs-light-1p0-standard-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Light",
+      "fontScale": 1.0,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/cs-light-1p3-standard-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Light",
+      "fontScale": 1.3,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/cs-light-1p5-standard-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Light",
+      "fontScale": 1.5,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/cs-light-2p0-standard-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Light",
+      "fontScale": 2.0,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/cs-dark-1p0-standard-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Dark",
+      "fontScale": 1.0,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/cs-dark-1p3-standard-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Dark",
+      "fontScale": 1.3,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/cs-dark-1p5-standard-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Dark",
+      "fontScale": 1.5,
+      "widthDp": 412,
+      "heightDp": 915
+    },
+    {
+      "file": "after/cs-dark-2p0-standard-navhost-settings.json",
+      "locale": "cs",
+      "theme": "Dark",
+      "fontScale": 2.0,
+      "widthDp": 412,
+      "heightDp": 915
+    }
+  ],
+  "traversals": [
+    {
+      "file": "after/cs-dark-1p3-small-navhost-traversal.json",
+      "steps": 10,
+      "singleSwitchStops": [
+        "Místní oznámení",
+        "Kontroly na pozadí (přibližně každé 3 hodiny)",
+        "Povolit mobilní a měřená data pro správní kontroly"
+      ]
+    },
+    {
+      "file": "after/cs-light-1p5-small-navhost-traversal.json",
+      "steps": 10,
+      "singleSwitchStops": [
+        "Místní oznámení",
+        "Kontroly na pozadí (přibližně každé 3 hodiny)",
+        "Povolit mobilní a měřená data pro správní kontroly"
+      ]
+    },
+    {
+      "file": "after/en-dark-2p0-small-navhost-traversal.json",
+      "steps": 10,
+      "singleSwitchStops": [
+        "Local notifications",
+        "Background checks (approximately every 3 hours)",
+        "Allow mobile and metered data for admin checks"
+      ]
+    },
+    {
+      "file": "after/en-light-1p0-small-navhost-traversal.json",
+      "steps": 10,
+      "singleSwitchStops": [
+        "Local notifications",
+        "Background checks (approximately every 3 hours)",
+        "Allow mobile and metered data for admin checks"
+      ]
+    }
+  ],
+  "oppositeSystem": [
+    {
+      "scaffold": "after/en-light-1p0-small-scaffold-settings.json",
+      "navhost": "after/opposite-system/en-light-1p0-small-navhost-settings.json",
+      "theme": "Light",
+      "locale": "en",
+      "statusAndNavigationFlagsMatch": true
+    },
+    {
+      "scaffold": "after/en-dark-1p0-small-scaffold-settings.json",
+      "navhost": "after/opposite-system/en-dark-1p0-small-navhost-settings.json",
+      "theme": "Dark",
+      "locale": "en",
+      "statusAndNavigationFlagsMatch": true
+    },
+    {
+      "scaffold": "after/cs-light-1p0-small-scaffold-settings.json",
+      "navhost": "after/opposite-system/cs-light-1p0-small-navhost-settings.json",
+      "theme": "Light",
+      "locale": "cs",
+      "statusAndNavigationFlagsMatch": true
+    },
+    {
+      "scaffold": "after/cs-dark-1p0-small-scaffold-settings.json",
+      "navhost": "after/opposite-system/cs-dark-1p0-small-navhost-settings.json",
+      "theme": "Dark",
+      "locale": "cs",
+      "statusAndNavigationFlagsMatch": true
+    }
+  ],
+  "limits": "Tree/geometry/source checks only; text overflow is verified by native TextLayoutResult; screenshots require human-agent visual inspection; no audible speech-quality claim."
+}

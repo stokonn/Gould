@@ -1,0 +1,30 @@
+{
+  "unchangedInputs": [
+    {
+      "file": "app/src/main/java/com/opus/piano/MainActivity.kt",
+      "sha256": "58574b73ba87b83c87ba02095baf08280f342b4457f4e9f12ce5a36993742f1b",
+      "unchangedSinceStage8b": true
+    },
+    {
+      "file": "app/src/main/java/com/opus/piano/ui/Theme.kt",
+      "sha256": "7aba373ccdfb8885fc9e353a3c2708e41344763d2418a51d30f02a8190b24a62",
+      "unchangedSinceStage8b": true
+    },
+    {
+      "file": "app/build.gradle.kts",
+      "sha256": "46b56e65a768014b2a8554506979d8ae7bf74f4e15891a4cd0677fcd8d353666",
+      "unchangedSinceStage8b": true
+    }
+  ],
+  "unchangedTrees": [
+    "app/schemas",
+    "contracts",
+    ".github"
+  ],
+  "changedProductionPaths": [
+    "app/src/main/java/com/opus/piano/ui/JournalNavigationBar.kt",
+    "app/src/main/java/com/opus/piano/ui/OpusApp.kt",
+    "app/src/main/java/com/opus/piano/ui/admin/AdminSettingsScreen.kt"
+  ],
+  "note": "Only AdminSettingsScreen,OpusApp,JournalNavigationBar production source changes;no database/backup/practice/theme/backend/version changes."
+}

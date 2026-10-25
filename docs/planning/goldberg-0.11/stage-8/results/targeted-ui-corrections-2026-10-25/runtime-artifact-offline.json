@@ -1,0 +1,14 @@
+{
+  "serial": "emulator-5588",
+  "qemu": true,
+  "bootCompleted": true,
+  "api": "36",
+  "installedAppSha256": "68d48b75436f6bd3f865d784714ec48570e2745c14aa0e9682514753009f3db0",
+  "settings": {
+    "global.airplane_mode_on": "1",
+    "global.wifi_on": "0",
+    "global.mobile_data": "0",
+    "secure.enabled_accessibility_services": "null"
+  },
+  "networkNote": "All radios remain off;no live app/backend integration performed. CI infrastructure downloads are separate from application networking."
+}

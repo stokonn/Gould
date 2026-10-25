@@ -1,0 +1,8 @@
+{
+  "validAfterTalkBack": false,
+  "viewportGuard": "PASS320dpi360dp",
+  "rootTreeDuringTalkBack": "empty;not accepted as verification",
+  "adb": "emulator5580 transport repeatedly disconnected;host server remained same PID",
+  "qemu": "still running/boot1,no app crash established",
+  "recovery": "preserve AVD,restart only own emulator on5588;do not restart owner ADB server"
+}

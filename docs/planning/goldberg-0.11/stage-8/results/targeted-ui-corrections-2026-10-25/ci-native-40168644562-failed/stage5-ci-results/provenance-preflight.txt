@@ -1,0 +1,1 @@
+PASS: 29 authored admin fixtures, distinct contract authorities, inactive mapping, replay/dual-revision/numeric cases and 15 pinned source hashes; no backend execution

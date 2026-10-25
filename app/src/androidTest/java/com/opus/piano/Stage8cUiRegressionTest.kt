@@ -70,7 +70,7 @@ class Stage8cUiRegressionTest {
                     expectedSwitchRole=activity.getString(androidx.compose.ui.R.string.switch_role)
                     activity.setContent {
                     var checked by remember { mutableStateOf(false) }
-                    OpusTheme("Light") { AdminTheme { Column(Modifier.fillMaxWidth()) {
+                    OpusTheme("Light") { AdminTheme { Column(Modifier.fillMaxWidth().windowInsetsPadding(WindowInsets.safeDrawing)) {
                         AdminSwitch(label,checked) { calls.incrementAndGet(); checked=it }
                         AdminSwitch(disabled,false,enabled=false) { disabledCalls.incrementAndGet() }
                     } } }
@@ -90,6 +90,12 @@ class Stage8cUiRegressionTest {
                 inst.sendKeyDownUpSync(KeyEvent.KEYCODE_SPACE)
                 waitUntil { !control()!!.isChecked };assertEquals(2,calls.get())
                 control()!!.getBoundsInScreen(bounds)
+                var statusInset=0
+                scenario.onActivity { activity ->
+                    statusInset=androidx.core.view.ViewCompat.getRootWindowInsets(activity.window.decorView)
+                        ?.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())?.top ?: 0
+                }
+                assertTrue("Pointer target must belong to app content below the status bar",bounds.centerY()>statusInset)
                 val now=android.os.SystemClock.uptimeMillis()
                 val down=android.view.MotionEvent.obtain(now,now,android.view.MotionEvent.ACTION_DOWN,bounds.centerX().toFloat(),bounds.centerY().toFloat(),0)
                 val up=android.view.MotionEvent.obtain(now,now+30,android.view.MotionEvent.ACTION_UP,bounds.centerX().toFloat(),bounds.centerY().toFloat(),0)
