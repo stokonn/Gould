@@ -97,7 +97,23 @@ Follow-up host build7 PASS3m3s; build8 PASS2m37s: **308 JVM/0 failures/errors/sk
 
 - [x] Investigate actual first-run native XML and inspect representative original screenshots/trees; retain all raw pairs.
 - [x] Implement and host-verify the demonstrated visual/localization/accessibility/JSON-thread fixes.
-- [ ] Commit/push reviewed follow-up and dispatch the existing exact-SHA API36 workflow after these meaningful verified fixes.
+- [x] Commit/push reviewed follow-up fc8a440 and dispatch exact-SHA workflow40225676513 after documented verified fixes; outcome recorded below.
 - [ ] Inspect final-source native/upgrade results and new actual PNG/tree frames; synchronize final report and owner-review debug APK.
 
 This remains Stage8 IN PROGRESS. First-source CI success does not transfer to changed source; updated native acceptance is pending. No release,main,cloud credential or production community action.
+
+## Follow-up source fc8a440 — native visibility failure under investigation
+
+Reviewed follow-up source committed/ordinary-pushed: `fc8a440be2e00321876acf5990bbf5ca82cc1604`; remote exact. Existing workflow [40225676513](https://github.com/stokonn/Goldberg/actions/runs/40225676513) dispatched after the documented screenshot-driven fixes; headSha readback exact. [Quality40225660057](https://github.com/stokonn/Goldberg/actions/runs/40225660057) SUCCESS; API36 seeded-upgrade job SUCCESS. Full instrumentation FAILED:207 cases,1failure,0errors,11existing skips (195passes). The reported failure is solely `DiscoverEditorialAcceptanceTest.automaticSearchAndEditorialJourneysWithPreservedEvidence`: `Unreachable Open existing repertoire entry`, at the expanded matrix's fully-visible action check (line297), through the forward-only `scrollTo` helper. This is not yet classified as an app or harness defect; original PNG/tree/JUnit artifacts are being retrieved before deciding a fix. No unchanged redispatch.
+
+The final source has NOT passed native/visual acceptance. The original 7db1d91 pass remains historical evidence. Local debug APK remains SHA2566a5669b17e6c7ef47b4adcbbee2c4df8a742b7532caa87628ac586fb842a31e0; no new release,main merge or community activation. Read-only CI inspection initially timed out in automatic permission review; its permitted single retry succeeded. No approval bypass or authentication change.
+
+Next: inspect the failed frame/hierarchy and XML; fix a demonstrated cause; compile/review and push only that correction, then execute the existing exact-SHA workflow and inspect actual final captures before owner-review delivery.
+
+## Demonstrated harness cause and correction (application unchanged)
+
+Downloaded raw fc8a440 artifact:207native/195PASS/1failure/11existing skips. Failure occurs at the FIRST standard/EN/Light/1× matrix action check, before later font configurations. The original `standard-en-Light-f1.0-detail.png` visibly shows the whole Open action; its hierarchy contains0scrollable containers, windowRect(0,0–824,1830),action textRect(212,652–613,692). Independent saved-geometry replay confirms full containment. The old helper required a non-null scrollable viewport even when content fit, so it failed despite a visible action. Original `discover-FAIL` shows the launcher AFTER ActivityScenario cleanup; it is preserved but is not an app-failure frame. Raw screenshots/hierarchies/JUnit and the hash-bound geometry receipt are retained under `ci-40225676513/`.
+
+Corrected test helper: choose the target's scrolling ancestor; use window bounds when scrolling is unnecessary; check the entire enabled clickable action, not just its text; scroll backward if the target is clipped above the viewport; retain a failure capture while the activity is still open. Assertions remain full-visibility/enabled bounds checks. Application code/APK are unchanged: every production-source hash and debug APK hash6a5669… still matches the follow-up host receipt. Native compilation build12 PASS24s; no unexecuted native pass claimed. A new exact-SHA workflow is justified by this demonstrated and independently replayed harness defect, not an unchanged retry.
+
+The fc8a440 journey completed automatic consent/debounce, history/no-refetch, filter cancellation, five searches, composer navigation/Back, expanded grouped evidence/date/license, repertoire add and optional Library study checks before the matrix assertion failed. These are observed completed substeps, not a passing whole test. Five original fc8a440 PNGs additionally inspected: standardEN1×detail,workdetail,expandedcomposerprovenance,Librarycomposition,automaticGoldberg. Source-app findings from the first run are visibly repaired in these frames; remaining CZ/theme/large-font matrix requires a successful final run.

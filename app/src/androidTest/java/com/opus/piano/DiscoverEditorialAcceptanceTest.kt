@@ -74,15 +74,43 @@ class DiscoverEditorialAcceptanceTest {
     }
     private fun scrollTo(label:String) {
         repeat(25) {
-            val viewport=tree().firstOrNull {it.isScrollable}?.let {Rect().also(it::getBoundsInScreen)}
-            val full=tree().filter {it.text?.toString()==label || it.contentDescription?.toString()==label}.any {node->
-                val bounds=Rect();node.getBoundsInScreen(bounds)
-                node.isVisibleToUser && viewport!=null && viewport.contains(bounds)
+            val snapshot=tree()
+            val matches=snapshot.filter {it.text?.toString()==label || it.contentDescription?.toString()==label}
+            fun ancestorScroller(node:AccessibilityNodeInfo):AccessibilityNodeInfo? {
+                var parent=node.parent
+                while(parent!=null) {
+                    if(parent.isScrollable)return parent
+                    parent=parent.parent
+                }
+                return null
             }
-            if(full)return
-            tree().firstOrNull {it.isScrollable}?.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
-            Thread.sleep(160);inst.waitForIdleSync()
+            val scroller=matches.firstNotNullOfOrNull(::ancestorScroller) ?: snapshot.firstOrNull {node->
+                node.isScrollable && node.actionList.any {it.id==AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_DOWN.id || it.id==AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_UP.id}
+            }
+            // A fitting LazyColumn has no scroll capability. Its visible action still needs
+            // to be wholly within the window; absence of scrolling is not an app failure.
+            val viewport=Rect().also {(scroller ?: automation.rootInActiveWindow)?.getBoundsInScreen(it)}
+            fun actionNode(node:AccessibilityNodeInfo):AccessibilityNodeInfo {
+                var parent:AccessibilityNodeInfo?=node
+                while(parent!=null && !parent.isScrollable) {
+                    if(parent.isClickable)return parent
+                    parent=parent.parent
+                }
+                return node
+            }
+            val target=matches.firstOrNull {node->
+                val action=actionNode(node)
+                val bounds=Rect();action.getBoundsInScreen(bounds)
+                action.isVisibleToUser && action.isEnabled && !bounds.isEmpty && viewport.contains(bounds)
+            }
+            if(target!=null)return
+            val bounds=matches.firstOrNull()?.let {Rect().also(actionNode(it)::getBoundsInScreen)}
+            val direction=if(bounds!=null && bounds.top<viewport.top)AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD else AccessibilityNodeInfo.ACTION_SCROLL_FORWARD
+            scroller?.performAction(direction)
+            Thread.sleep(250);inst.waitForIdleSync()
         }
+        // Retain the app frame before ActivityScenario.use closes it during unwinding.
+        runCatching {capture("discover-scroll-FAIL")}
         fail("Unreachable $label")
     }
     @android.annotation.SuppressLint("NewApi")
