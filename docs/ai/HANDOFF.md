@@ -6,7 +6,7 @@ transport with accepted signature verifier,explicit restricted-role PostgreSQL A
 RLS plan,pg socket-error cleanup,forced Kotlin integration execution andunique
 package receipts. Debug metadata now0.11-dev/code12,com.opus.piano/opus.db unchanged.
 
-Final514backend bodies PASS/0failures/skips inlocal-5646b8cd;independent source/raw
+Final515backend bodies PASS/0failures/skips inlocal-36fe0848;independent source/raw
 hashes and exact container/volume cleanup PASS. Actual restrictedPGlogins pass lifecycle and
 privilege denials. 8packaged workerd denials PASS;6archive/6actual localTLS+restore
 PASS. Actual forced Kotlin/HTTP/BFF/PG1PASS(timestamp22:12:37UTC);oldcachedXML
@@ -16,9 +16,9 @@ andAPI36 pending. APK SHA256a1213cfb3b4f081712d56e1fa096de3aed3ab4d67c64a0dc15e3
 trusted53efcertificate,baseline0.10.1 compatibility/ZIP/artwork/fixture exclusion PASS.
 No screenshots inspected in this continuation;no physical-device operations.
 
-Hosted fresh read-only20RLS/ledgerunchanged/intakefalse/anon-authdenial/0BFFroles;
-Advisor19INFO only. CFaccountGET403;no configured server credentials/trust.
-Google publicJWKSHTTP200/2keys;notrealOAuth. No hostedwrite/Worker/secret/session,
+Hosted fresh read-only20RLS/ledgerunchanged/intakefalse/anon-authdenial/runtimeNOLOGINrole/47grants/49policies;
+Advisor now1expected INFO;runtime NOLOGIN role/47grants/49policies hosted verified. CFaccountGET403;no configured server credentials/trust.
+Google publicJWKSHTTP200/2keys;notrealOAuth. Hosted inert role/grants/policies applied;noapplication-rowchanges/Worker/secret/session,
 publicendpoint,paidfallback,realdata,mainmerge,RC/tag/Release. Owner nowauthorizes
 safeprivate staging once actual prerequisites pass;do notrepeat obsolete blanket
 approval requests. WholeStage6 incomplete;Issue31 OPEN/ProjectInProgress.
@@ -27,6 +27,13 @@ Current tasks/results/exactminimalcredential action:
 `docs/planning/goldberg-0.11/stage-6/RUNTIME-CONTINUATION-2026-10-25.md`.
 Next:finish frozen backend run,commit/ordinarypush,exactsourceCI/API36;deploy only
 withusableCF/DB/TLScredentials andverifiedprivate/cost/security prerequisites.
+
+
+Hosted remaining runtime ACL transaction applied and exact readback PASS after PG17
+creator-membership regression. NOLOGIN/no inherited roles/no ownership/no bypass;
+only schema-owner ADMIN without INHERIT/SET. Initial failures rolled back fully.
+Ledger/RLS/intake/clientdenial/data unchanged. Do not reapply role creation/policies.
+Actual Worker/runtime login/hosted BFF requests remainblocked by credentials/CF403.
 
 ---
 

@@ -1,6 +1,6 @@
 # Stage 6 runtime continuation — October 25, 2026
 
-Status: implementation and verification IN PROGRESS. Whole Stage 6 remains
+Status: runtime implementation locally verified; inert hosted PostgreSQL permissions deployed; whole-stage verification IN PROGRESS. Whole Stage 6 remains
 incomplete. Starting source `2044cfac18e30d0fb353cda9ce812e200c40b7e5` on
 `feature/goldberg-0.11-stage-6-cloud`. Discover, Stage7/8, release-candidate and
 other worktrees are preserved. This execution creates no Release, tag or main merge.
@@ -17,7 +17,8 @@ other worktrees are preserved. This execution creates no Release, tag or main me
 - Explicit PostgreSQL runtime grant/RLS plan for18 application tables; no ALL,
   BYPASSRLS, SECURITY DEFINER, schema ownership or DDL. No migration-ledger/probe
   grants and no blanket default grants. Runtime role must exist separately, own no
-  objects, have no memberships or elevated flags. Policies are server-role only;
+  objects, have no inherited roles or elevated flags. PostgreSQL17 creator administration is
+permitted only for the schema owner with ADMIN=true/INHERIT=false/SET=false. Policies are server-role only;
   live BFF principal/ownership/role checks remain authoritative for user requests.
   This does not claim per-end-user PostgreSQL policies. Plan is transactional,
   replay fails on existing policies; it does not provision credentials or bootstrap.
@@ -34,9 +35,9 @@ other worktrees are preserved. This execution creates no Release, tag or main me
 
 ## Executed verification
 
-`python3 services/community-bff/run-local.py`:514 bodies PASS,0failures/skips;
+`python3 services/community-bff/run-local.py`:515 bodies PASS,0failures/skips;
 actual PostgreSQL17, local HTTP/workerd/TCP and unit venues separated in the receipt:
-`services/community-bff/results/local-5646b8cde59c4f3aad04642bfbfebe0a/result.json`.
+`services/community-bff/results/local-36fe08480372485284e8619d4c477e04/result.json`.
 Source remained unchanged during that run; UUID container and volumes were removed
 and absence verified. Focused runtime test uses actual restricted database logins,
 not SET ROLE from a superuser session. It executes sessions,contribution,open,
@@ -71,13 +72,27 @@ Final exact-source cleanCI/API36 receipts remain pending after source push. No c
 Supabase read-only fresh observation:ACTIVE_HEALTHY;20private tables/20RLS;
 ledger v1 checksum `d39a3afd68a2671dd642a17a82f96edea76dfc0ae1a09edb4be9ffde6aa5c935`;
 intake=false;anon/authenticated private schema USAGE and public DDL callback EXECUTE
-both denied. Marker-only probe role remains separate;0 BFF runtime roles.
-Security Advisor19INFO default-deny tables,no WARN/ERROR. No hosted SQL was changed.
+both denied. Marker-only probe role remains separate. A new goldberg_bff_runtime role and
+47 explicit table/command grants,2column-lock grants and49server-role RLS policies
+are now deployed. Exact hosted grant/policy comparison PASS;NOLOGIN,no elevated
+flags,no ownership,no inherited roles;only schema-owner maintenance ADMIN with
+INHERIT=false/SET=false. No password created or runtime login enabled.
+Runtime cannot enable intake,change receipt response,read ledger/probe;client
+schema denial andoriginal ledger/RLS preserved. No application rows changed.
+Advisor now1expected INFO(private ledger),0WARN/ERROR. Hosted runtime not tested.
+
+Initial strict guard rolled back fully. A metadata-only intentional rollback
+confirmed non-superuser PG17 CREATE ROLE automatically gives the creator ADMIN
+without INHERIT/SET. Added real PG regression rejects INHERIT/SET/non-ADMIN cases;
+the exact correction permits only the schema-owner maintenance grant.
+Readback/source SQL is retained in results/runtime-continuation-2026-10-25/.
+Do not replay role creation/grants:they are already applied;policies intentionally
+fail on replay. No existing object bootstrap/migration ordata replacement occurred.
 
 Existing Cloudflare credential account GET returned403 at22:01:45UTC. No configured
 Cloudflare/Supabase/Goldberg credential variable names were present. Connected
 Supabase management access is available;it is not a server database runtime credential.
-No new login,secret upload,session/Worker deployment,public route or real data enabled.
+No login enablement,secret upload,session/Worker deployment,public route or real data enabled.
 Accepted owner Free/no-card evidence retained;current Cloudflare account/config/cost
 cannot be independently read with403. No paid fallback or future-zero-cost promise.
 
@@ -93,8 +108,8 @@ The existing probe role is deliberately insufficient for application data.
 
 The owner now authorizes safe private staging within verified security,cost,privacy
 and backup prerequisites. Do not repeat obsolete blanket permission requests.
-Once credentials exist,verify private transport/account/resources,apply only the
-reviewed remaining runtime-role grant transaction(no bootstrap),upload server-only
+Once credentials exist,verify private transport/account/resources,reuse the already deployed NOLOGIN role and reviewed grants(no replay/bootstrap),
+provision its bounded runtime login through the confidential server channel,upload server-only
 secrets,deploy without workers.dev/preview/public routes and execute actual hosted
 synthetic acceptance/denial/TLS/outage/cleanup and cost readback. Stop if prerequisites
 fail;do not weaken authentication,RLS,TLS or default-deny contribution policies.
@@ -106,3 +121,14 @@ synthetic success. Existing24-requirement acceptance matrix remains PARTIAL;
 Issue31 OPEN/Goldberg Development In Progress. No public collection authorized.
 
 created by stokonn with love <3
+
+## API36 first run and corrected harness
+
+Run40239512295 at5b22ffb failed before native execution:multiline emulator-action
+script was run by /bin/sh and rejected pipefail;certificate parser discarded the
+actual signing output. No native PASS claimed. Preserve original failed log.
+Materialize the exact existing full-suite/acceptance bodies into two Bash scripts
+and invoke them as one command. Reuse the proven a73a7e2 signing step,retaining both
+streams/exit codes and digest extraction. No test exclusion or physical-device
+selection added;all ADB operations retain explicit verified emulator serials.
+YAML parsing and both bash -n checks PASS. Corrected-source dispatch follows.

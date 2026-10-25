@@ -112,19 +112,7 @@ jobs:
           avd-name: stage5-ci
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
-          script: |
-            set -euo pipefail
-            SERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"
-            case "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac
-            ATTACHED="$(adb devices | awk '$2=="device"' | wc -l)"
-            if [ "$ATTACHED" -ne 1 ]; then echo "ERROR: expected exactly one attached device, found $ATTACHED"; adb devices; exit 1; fi
-            QEMU="$(adb -s "$SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')"
-            if [ "$QEMU" != "1" ]; then echo "ERROR: $SERIAL is not a verified emulator (ro.kernel.qemu=$QEMU)"; exit 1; fi
-            export ANDROID_SERIAL="$SERIAL"
-            echo "Running the full connected suite on verified emulator $SERIAL"
-            mkdir -p stage5-ci-results
-            trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || true' EXIT
-            ./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest
+          script: bash scripts/ci_stage6_instrumentation.sh
       - name: Summarize instrumentation results
         if: always()
         run: |
@@ -209,24 +197,80 @@ jobs:
       - name: Verify signing-certificate compatibility (never using production credentials)
         run: |
           set -euo pipefail
+          # Run 39503450845: all three digests came back MISSING because the
+          # previous digest_of discarded apksigner's streams/exit codes
+          # (2>/dev/null). Now every raw stdout/stderr/exit code is captured to
+          # stage5-ci-results/ (uploaded as evidence) and echoed to the step log.
+          # The certificate-identity assertions below are UNCHANGED and strict.
           APKSIGNER="$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -n1)"
-          digest_of() { "$APKSIGNER" verify --print-certs "$1" 2>/dev/null | sed -n 's/^Signer #1 certificate SHA-256 digest: //p' | head -n1; }
+          {
+            echo "== signing verification environment =="
+            echo "apksigner used: $APKSIGNER"
+            echo "build-tools directory:"
+            ls -la "$ANDROID_HOME/build-tools" || true
+            echo "java: $(command -v java || true)"
+            java -version 2>&1 | head -n1 || true
+          } | tee stage5-ci-results/signing-environment.txt
+          : > stage5-ci-results/apksigner-exit-codes.txt
+          digest_of() {
+            local apk="$1" name="$2" rc digest
+            set +e
+            "$APKSIGNER" verify --print-certs "$apk" > "stage5-ci-results/apksigner-$name.log" 2> "stage5-ci-results/apksigner-$name.err"
+            rc=$?
+            set -e
+            echo "$name apksigner exit=$rc" >> stage5-ci-results/apksigner-exit-codes.txt
+            {
+              echo "== apksigner verify --print-certs [$name] exit=$rc"
+              echo "--- stdout (stage5-ci-results/apksigner-$name.log):"
+              cat "stage5-ci-results/apksigner-$name.log"
+              echo "--- stderr (stage5-ci-results/apksigner-$name.err):"
+              cat "stage5-ci-results/apksigner-$name.err"
+            } >&2
+            # Root cause of run 39503450845 MISSING digests: apksigner's print
+            # format changed in build-tools 37.0.0 (preinstalled on the runner,
+            # selected by sort -V | tail -n1) from 'Signer #1 certificate SHA-256
+            # digest:' to 'V2 Signer: certificate SHA-256 digest:' (verified
+            # locally: both versions report the same digest, only labels differ).
+            # Parse both formats and require exactly one distinct signer digest.
+            digest="$(sed -n 's/^.*certificate SHA-256 digest: //p' "stage5-ci-results/apksigner-$name.log" | sort -u)"
+            if [ "$(printf '%s\n' "$digest" | grep -c '^.' || true)" -gt 1 ]; then
+              echo "ERROR [$name]: multiple distinct signer certificate digests found:" >&2
+              printf '%s\n' "$digest" >&2
+              digest=""
+            fi
+            if [ -z "$digest" ]; then
+              digest="$(sed -n 's/^.*certificate SHA-256 digest: //p' "stage5-ci-results/apksigner-$name.err" | sort -u)"
+              [ -z "$digest" ] || echo "NOTE [$name]: certificate digest was found on stderr, not stdout" >&2
+            fi
+            printf '%s' "$digest"
+          }
           TRUSTED="53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e"
-          RELEASE="$(digest_of .gradle/release-artifacts/Goldberg-v0.10.1.apk)"
-          BASELINE="$(digest_of baseline-src/app/build/outputs/apk/debug/app-debug.apk)"
-          CANDIDATE="$(digest_of app/build/outputs/apk/debug/app-debug.apk)"
+          RELEASE="$(digest_of .gradle/release-artifacts/Goldberg-v0.10.1.apk release)"
+          BASELINE="$(digest_of baseline-src/app/build/outputs/apk/debug/app-debug.apk baseline)"
+          CANDIDATE="$(digest_of app/build/outputs/apk/debug/app-debug.apk candidate)"
           {
             echo "trusted release certificate SHA-256: $TRUSTED"
             echo "downloaded 0.10.1 release certificate SHA-256: ${RELEASE:-MISSING}"
             echo "v0.10.1 debug-rebuild certificate SHA-256: ${BASELINE:-MISSING}"
             echo "candidate certificate SHA-256: ${CANDIDATE:-MISSING}"
+            echo "apksigner exit codes:"
+            cat stage5-ci-results/apksigner-exit-codes.txt
           } | tee stage5-ci-results/signing-evidence.txt
-          if [ -z "$RELEASE" ] || [ "$RELEASE" != "$TRUSTED" ]; then
-            echo "ERROR: downloaded 0.10.1 release APK does not carry the trusted certificate"; exit 1
+          FAIL=""
+          if grep -qv "exit=0" stage5-ci-results/apksigner-exit-codes.txt; then
+            FAIL="$FAIL ERROR: apksigner exited non-zero for at least one APK (see apksigner-exit-codes.txt and apksigner-*.log/.err)."
           fi
-          if [ -z "$BASELINE" ] || [ -z "$CANDIDATE" ] || [ "$BASELINE" != "$CANDIDATE" ]; then
-            echo "ERROR: in-place upgrade baseline and candidate are not signed with the same runner key"; exit 1
+          if [ -z "$RELEASE" ]; then
+            FAIL="$FAIL ERROR: no certificate digest could be parsed from the release APK apksigner output (raw streams preserved in stage5-ci-results/apksigner-release.*)."
+          elif [ "$RELEASE" != "$TRUSTED" ]; then
+            FAIL="$FAIL ERROR: downloaded 0.10.1 release APK carries certificate $RELEASE, not the trusted $TRUSTED."
           fi
+          if [ -z "$BASELINE" ] || [ -z "$CANDIDATE" ]; then
+            FAIL="$FAIL ERROR: no certificate digest parsed for the in-place upgrade pair (raw streams preserved in stage5-ci-results/apksigner-baseline.* / apksigner-candidate.*)."
+          elif [ "$BASELINE" != "$CANDIDATE" ]; then
+            FAIL="$FAIL ERROR: in-place upgrade baseline ($BASELINE) and candidate ($CANDIDATE) are not signed with the same runner key."
+          fi
+          if [ -n "$FAIL" ]; then echo "$FAIL"; exit 1; fi
           echo "OK: release identity trusted; in-place upgrade pair signature-compatible"
       - name: Run acceptance checks on the emulator
         uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
@@ -238,136 +282,7 @@ jobs:
           avd-name: stage5-ci
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
-          script: |
-            set -euo pipefail
-            SERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"
-            case "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac
-            ATTACHED="$(adb devices | awk '$2=="device"' | wc -l)"
-            if [ "$ATTACHED" -ne 1 ]; then echo "ERROR: expected exactly one attached device, found $ATTACHED"; adb devices; exit 1; fi
-            QEMU="$(adb -s "$SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')"
-            if [ "$QEMU" != "1" ]; then echo "ERROR: $SERIAL is not a verified emulator (ro.kernel.qemu=$QEMU)"; exit 1; fi
-            export ANDROID_SERIAL="$SERIAL"
-            echo "Running acceptance subset on verified emulator $SERIAL"
-            mkdir -p stage5-ci-results
-            trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || true' EXIT
-            # (a) Seeded in-place upgrade from the debug rebuild of the exact v0.10.1
-            #     tag (same runner debug keystore as the candidate, so signatures
-            #     match). The helper asserts baseline schema, version and per-table
-            #     data equality after migration; disposable emulator seeding only.
-            python3 scripts/verify_emulator_upgrade.py \
-              --serial "$SERIAL" \
-              --baseline baseline-src/app/build/outputs/apk/debug/app-debug.apk \
-              --baseline-version 0.10.1 --baseline-schema 8 --expected-schema 10 \
-              --candidate app/build/outputs/apk/debug/app-debug.apk \
-              --output stage5-ci-results/upgrade \
-              --seed-disposable --offline --startup-runs 5
-            # (b) Wi-Fi -> mobile default-network transition and Data Saver, with real
-            #     state assertions (not just collected logs). The upgrade helper ran
-            #     with --offline (wifi AND mobile data disabled), so both are restored
-            #     before asserting the transition.
-            cat > stage5-ci-results/assert_default_network.py <<'PYEOF'
-            import re
-            import sys
-
-            expected, dump_path = sys.argv[1], sys.argv[2]
-            dump = open(dump_path, encoding='utf-8', errors='replace').read()
-            match = re.search(r'^\s*Active default network: (.*)$', dump, re.M)
-            if not match:
-                sys.exit('FATAL: "Active default network:" line missing from dumpsys connectivity')
-            net_id = match.group(1).strip()
-            if not re.fullmatch(r'\d+', net_id):
-                sys.exit(f'FATAL: expected a numeric active default network for transport {expected}, got: {net_id!r}')
-            blocks = re.findall(r'^[ \t]*NetworkAgentInfo\{network\{' + re.escape(net_id) + r'\}.*$', dump, re.M)
-            if not blocks:
-                sys.exit(f'FATAL: no NetworkAgentInfo block found for active default network {net_id}')
-            block = blocks[0]
-            ni = re.search(r'ni\{([^}]*)\}', block)
-            if not ni:
-                sys.exit(f'FATAL: no ni{{...}} token in active-network block: {block}')
-            transport = re.search(r'type: (\w+)', ni.group(1))
-            if not transport:
-                sys.exit(f'FATAL: no "type:" token in ni of active-network block: {ni.group(1)!r}')
-            found = transport.group(1)
-            if found != expected:
-                sys.exit(f'FATAL: active default network {net_id} transport is {found}, expected {expected}')
-            print(f'OK: active default network {net_id} uses transport {found}')
-            PYEOF
-            wait_for_transport() {
-              local expected="$1" deadline=$((SECONDS + 60))
-              while [ "$SECONDS" -lt "$deadline" ]; do
-                adb -s "$SERIAL" shell dumpsys connectivity > stage5-ci-results/connectivity-dump.txt 2>/dev/null || true
-                if python3 stage5-ci-results/assert_default_network.py "$expected" stage5-ci-results/connectivity-dump.txt >>stage5-ci-results/network-evidence.txt 2>&1; then
-                  sed -n 's/.*Active default network: /active default network: /p' stage5-ci-results/connectivity-dump.txt | head -n1
-                  return 0
-                fi
-                sleep 4
-              done
-              echo "FATAL: active default network never reached transport $expected within 60s"
-              return 1
-            }
-            {
-              echo "== restore mobile data and Wi-Fi (upgrade helper left both disabled) =="
-              adb -s "$SERIAL" shell svc data enable
-              adb -s "$SERIAL" shell svc wifi enable
-              echo "== expect Wi-Fi as active default network =="
-              WIFI_NET="$(wait_for_transport WIFI)"
-              echo "$WIFI_NET"
-              echo "== disable Wi-Fi, expect mobile fallback as active default network =="
-              adb -s "$SERIAL" shell svc wifi disable
-              MOBILE_NET="$(wait_for_transport MOBILE)"
-              echo "$MOBILE_NET"
-              if [ "$WIFI_NET" = "$MOBILE_NET" ]; then
-                echo "FATAL: default network did not change across the Wi-Fi -> mobile transition"; exit 1
-              fi
-              echo "OK: default network transitioned ($WIFI_NET -> $MOBILE_NET)"
-              echo "== restore Wi-Fi for the remainder of the run =="
-              adb -s "$SERIAL" shell svc wifi enable
-              wait_for_transport WIFI >/dev/null
-              echo "== Data Saver enable with state readback =="
-              adb -s "$SERIAL" shell cmd netpolicy set restrict-background true
-              sleep 2
-              DS_GET="$(adb -s "$SERIAL" shell cmd netpolicy get restrict-background | tr -d '\r')"
-              echo "cmd netpolicy get restrict-background: $DS_GET"
-              [ "$DS_GET" = "Restrict background status: enabled" ] || { echo "FATAL: Data Saver not enabled (readback: $DS_GET)"; exit 1; }
-              adb -s "$SERIAL" shell dumpsys netpolicy > stage5-ci-results/netpolicy-enabled.txt
-              grep -E "Restrict background: true" stage5-ci-results/netpolicy-enabled.txt || { echo "FATAL: dumpsys netpolicy does not report Restrict background: true"; exit 1; }
-              echo "== Data Saver disable with state readback =="
-              adb -s "$SERIAL" shell cmd netpolicy set restrict-background false
-              sleep 2
-              DS_GET="$(adb -s "$SERIAL" shell cmd netpolicy get restrict-background | tr -d '\r')"
-              echo "cmd netpolicy get restrict-background: $DS_GET"
-              [ "$DS_GET" = "Restrict background status: disabled" ] || { echo "FATAL: Data Saver not disabled (readback: $DS_GET)"; exit 1; }
-              adb -s "$SERIAL" shell dumpsys netpolicy > stage5-ci-results/netpolicy-disabled.txt
-              grep -E "Restrict background: false" stage5-ci-results/netpolicy-disabled.txt || { echo "FATAL: dumpsys netpolicy does not report Restrict background: false"; exit 1; }
-              echo "OK: Data Saver toggled with verified state readback"
-            } | tee stage5-ci-results/network-evidence.txt
-            # (c) Real process death + cold restart with database integrity check.
-            adb -s "$SERIAL" shell am start -W -n com.opus.piano/.MainActivity
-            sleep 5
-            test -n "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
-            adb -s "$SERIAL" shell am force-stop com.opus.piano
-            test -z "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
-            adb -s "$SERIAL" shell am start -W -n com.opus.piano/.MainActivity
-            sleep 5
-            test -n "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
-            adb -s "$SERIAL" shell run-as com.opus.piano ls databases | tee stage5-ci-results/process-death-db.txt
-            mkdir -p stage5-ci-results/db-after-restart
-            for SUFFIX in '' '-wal' '-shm'; do
-              adb -s "$SERIAL" exec-out run-as com.opus.piano cat databases/opus.db$SUFFIX > stage5-ci-results/db-after-restart/opus.db$SUFFIX 2>/dev/null || rm -f stage5-ci-results/db-after-restart/opus.db$SUFFIX
-            done
-            test -s stage5-ci-results/db-after-restart/opus.db
-            INTEGRITY="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA integrity_check;')"
-            echo "PRAGMA integrity_check: $INTEGRITY" | tee stage5-ci-results/process-death-integrity.txt
-            [ "$INTEGRITY" = "ok" ] || { echo "FATAL: database integrity_check failed"; exit 1; }
-            FK_VIOLATIONS="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA foreign_key_check;')"
-            echo "PRAGMA foreign_key_check violations: ${FK_VIOLATIONS:-none}" | tee -a stage5-ci-results/process-death-integrity.txt
-            [ -z "$FK_VIOLATIONS" ] || { echo "FATAL: foreign_key_check reported violations"; exit 1; }
-            SCHEMA="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA user_version;')"
-            echo "PRAGMA user_version: $SCHEMA" | tee -a stage5-ci-results/process-death-integrity.txt
-            [ "$SCHEMA" = "10" ] || { echo "FATAL: unexpected schema version $SCHEMA after restart (expected 10)"; exit 1; }
-            echo "OK: post-restart database passed integrity, foreign-key and schema checks"
-            # (d) Startup cost measurement (5 warm cold-process launches).
-            bash scripts/measure-startup.sh "$SERIAL" 5 | tee stage5-ci-results/startup-measurement.txt
+          script: bash scripts/ci_stage6_acceptance.sh
       - name: Upload acceptance evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

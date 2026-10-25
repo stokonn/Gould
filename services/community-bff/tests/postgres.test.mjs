@@ -140,3 +140,21 @@ test('runtime access plan rejects unsafe identifiers and elevated roles atomical
  try{await assert.rejects(v.db.query(runtimeAccessSql({schema:v.schema,role})),/unprivileged/);await v.db.query('ROLLBACK');assert.equal((await v.db.query('SELECT count(*) FROM pg_policy WHERE polrelid=$1::regclass',[v.schema+'.principals'])).rows[0].count,'0');}
  finally{await v.db.query('ROLLBACK');await v.db.query(`DROP ROLE "${role}"`);}
 });
+
+test('PG17 creator administration permits only schema-owner ADMIN without INHERIT or SET',async t=>{
+ const {runtimeAccessSql}=await import('../runtime-access.mjs');
+ const {connect}=await import('../../../spikes/stage6-api-v1-local/tests/pg-http-venue.mjs');
+ const v=await setup(t),role='goldberg_bff_'+randomUUID().replaceAll('-','');
+ await v.db.query(`CREATE ROLE "${role}" NOLOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS`);
+ t.after(async()=>{const c=await connect();try{await c.query(`DROP ROLE "${role}"`);}finally{await c.end();}});
+ const {rows:[owner]}=await v.db.query('SELECT pg_get_userbyid(nspowner) AS name FROM pg_namespace WHERE nspname=$1',[v.schema]);
+ assert.equal(owner.name,'schema_prototype');
+ for(const flags of ['ADMIN TRUE, INHERIT TRUE, SET FALSE','ADMIN TRUE, INHERIT FALSE, SET TRUE','ADMIN FALSE, INHERIT FALSE, SET FALSE']){
+  await v.db.query(`GRANT "${role}" TO schema_prototype WITH ${flags}`);
+  await assert.rejects(v.db.query(runtimeAccessSql({schema:v.schema,role})),/unprivileged/);await v.db.query('ROLLBACK');
+ }
+ await v.db.query(`GRANT "${role}" TO schema_prototype WITH ADMIN TRUE, INHERIT FALSE, SET FALSE`);
+ await v.db.query(runtimeAccessSql({schema:v.schema,role}));
+ const {rows:[member]}=await v.db.query('SELECT admin_option,inherit_option,set_option FROM pg_auth_members WHERE roleid=(SELECT oid FROM pg_roles WHERE rolname=$1)',[role]);
+ assert.deepEqual(member,{admin_option:true,inherit_option:false,set_option:false});
+});

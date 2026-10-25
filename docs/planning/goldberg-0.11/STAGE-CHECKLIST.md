@@ -10,18 +10,25 @@ Starting branch `feature/goldberg-0.11-stage-6-cloud`, commit `2044cfa`.
 - [x] Recheck Cloudflare account access:GET403;no configured credential variable names.
 - [x] Implement bounded fixed-origin Google JWKS transport using accepted IdentityVerifier.
 - [x] Implement explicit restricted-role grant/RLS plan and actual PostgreSQL lifecycle tests.
-- [x] Verify connection error cleanup,514 backend bodies and8 packaged workerd denials.
+- [x] Verify connection error cleanup,515 backend bodies and8 packaged workerd denials.
 - [x] Debug0.11-dev/code12 APK/testAPK/lint PASS;trusted signing/ZIP/baseline compatibility PASS.
 - [x] Actual forced Kotlin/HTTP/BFF/PG1PASS;cached XML explicitly excluded.
 - [ ] Current-source cleanCI/API36 execution pending after source push.
 - [ ] Execute private hosted runtime only after credentials/TLS/cost/privacy prerequisites.
 - [ ] Commit/push verified changes and synchronize Issue31/Project/private PMP.
 
-Verification:514 backend bodies PASS/0failures/skips with source/cleanup proof;
+Verification:515 backend bodies PASS/0failures/skips with source/cleanup proof;
 6archive and6actual localTLS/restore PASS. Actual forced Kotlin/HTTP/PG1PASS after excluding cached XML from the old runner. Hosted runtime, real OAuth,
 current-source native integration and final Stage6 acceptance remain unexecuted.
 Owner authorized safe private staging; missing credentials are an actual prerequisite,
 not a repeated authorization gate. No database bootstrap, public endpoint or release.
+
+
+Hosted remaining runtime ACL transaction applied and exact readback PASS after PG17
+creator-membership regression. NOLOGIN/no inherited roles/no ownership/no bypass;
+only schema-owner ADMIN without INHERIT/SET. Initial failures rolled back fully.
+Ledger/RLS/intake/clientdenial/data unchanged. Do not reapply role creation/policies.
+Actual Worker/runtime login/hosted BFF requests remainblocked by credentials/CF403.
 
 ---
 

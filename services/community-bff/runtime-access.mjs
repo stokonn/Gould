@@ -19,8 +19,10 @@ export const runtimePrivileges=Object.freeze({
 
 /** Returns a reviewable transaction. Never connects, creates a role, changes
  * credentials, runs bootstrap or modifies existing application rows. The role
- * must be freshly provisioned separately, have no memberships/ownership and no
- * elevated flags. Replay intentionally fails on existing policies. */
+ * must be freshly provisioned separately, have no inherited roles/ownership and
+ * no elevated flags. Only the schema owner's non-inheriting, non-SET creator
+ * administration is allowed (PostgreSQL 17 non-superuser CREATE ROLE behavior).
+ * Replay intentionally fails on existing policies. */
 export function runtimeAccessSql({schema='goldberg_private',role='goldberg_bff_runtime'}={}) {
  const q=identifier(schema);
  if(!/^goldberg_bff_[a-z0-9_]{1,32}$/.test(role))throw new TypeError('restricted BFF role required');
@@ -29,7 +31,9 @@ export function runtimeAccessSql({schema='goldberg_private',role='goldberg_bff_r
  `DO $guard$ DECLARE r pg_roles; BEGIN
  SELECT * INTO STRICT r FROM pg_roles WHERE rolname='${role}';
  IF r.rolsuper OR r.rolcreaterole OR r.rolcreatedb OR r.rolreplication OR r.rolbypassrls
- OR EXISTS(SELECT 1 FROM pg_auth_members WHERE member=r.oid OR roleid=r.oid)
+ OR EXISTS(SELECT 1 FROM pg_auth_members m WHERE m.member=r.oid OR
+  (m.roleid=r.oid AND NOT(m.member=(SELECT nspowner FROM pg_namespace WHERE nspname='${schema}')
+   AND m.admin_option AND NOT m.inherit_option AND NOT m.set_option)))
  OR EXISTS(SELECT 1 FROM pg_class WHERE relowner=r.oid)
  OR EXISTS(SELECT 1 FROM pg_namespace WHERE nspowner=r.oid)
  OR EXISTS(SELECT 1 FROM pg_proc WHERE proowner=r.oid)

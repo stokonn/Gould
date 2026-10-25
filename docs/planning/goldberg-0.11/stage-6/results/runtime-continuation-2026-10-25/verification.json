@@ -1,7 +1,7 @@
 {
   "baseCommit": "2044cfac18e30d0fb353cda9ce812e200c40b7e5",
-  "backendReceipt": "services/community-bff/results/local-5646b8cde59c4f3aad04642bfbfebe0a/result.json",
-  "backendTests": 514,
+  "backendReceipt": "services/community-bff/results/local-36fe08480372485284e8619d4c477e04/result.json",
+  "backendTests": 515,
   "failures": 0,
   "skips": 0,
   "forcedKotlinReceipt": "services/community-bff/results/local-0ea30b4861254709b2ba573f631738b7/result.json",
@@ -13,7 +13,7 @@
   "androidHostCommand": "ANDROID_HOME=/home/stokonn/Android/Sdk ./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1",
   "androidBuild": "PASS",
   "androidJvm": "234 cached XML;clean CI pending",
-  "androidNative": "NOT EXECUTED in this continuation",
+  "androidNative": "40239512295 failed before native execution;corrected Bash/signature harness awaiting dispatch",
   "screenshotsInspected": 0,
   "apkPath": "app/build/outputs/apk/debug/app-debug.apk",
   "apkSha256": "a1213cfb3b4f081712d56e1fa096de3aed3ab4d67c64a0dc15e36152f94adfe2",
@@ -21,7 +21,7 @@
   "package": "com.opus.piano",
   "versionName": "0.11-dev",
   "versionCode": 12,
-  "hostedWrites": 0,
+  "hostedWrites": 1,
   "hostedRuntime": "NOT EXECUTED",
   "stage6Acceptance": "INCOMPLETE",
   "artifacts": {
@@ -53,6 +53,30 @@
     "apk-quality.log": "2dce7b8a67476b07e9ded9ecd4547611f8bcae8d2813a145929b2e99c69b3dce",
     "hosted-readonly.json": "de79d3130c1bf9e186a28fae1360615229c0a7811fd95b3e7679dfd37c03ade0",
     "backend-final.log": "1f026b361a8a9f3a7cdb79c4454cdc022e63291f6ed9d22769d6f8e9e3b2d954",
-    "package-frozen.log": "d76afec7f7184c71be8389ade2bd8d274a90a1c6dd0c70853ed6d1a45d1c0037"
-  }
+    "package-frozen.log": "d76afec7f7184c71be8389ade2bd8d274a90a1c6dd0c70853ed6d1a45d1c0037",
+    "hosted-runtime-acl.json": "ba1b639b5df894064ecf4856547499e021e48053fc2c8244cc4cad11b9da363e",
+    "hosted-runtime-advisor.json": "dd102009c50ab17a4cbade3764b976028831932ae0f43a0b1d26a87083d4b86c",
+    "hosted-free-organization.json": "a4dcc5d64bc176c0c71353aabbb2f8d889160492ceec59a30bca4cf7ca209c51",
+    "hosted-runtime-access.sql": "98dffd9df26b3fc0f6babe51e64cbbae5b60f203b820643757582d7890bf653d",
+    "membership-final.log": "c4bcd48e8f29841070df67f6548752d8e5283c752a5bd4b51eb2fd014c48cde5",
+    "native-first-failure.log": "95eba4293f103ce5000fd4d60786f03c58bbd9121c6409b44d9d05c33f66e218"
+  },
+  "hostedApplicationRowWrites": 0,
+  "hostedRole": "goldberg_bff_runtime NOLOGIN",
+  "hostedAclReadback": "PASS:47table grants/49policies/clientdenial/intakefalse/ledgerunchanged",
+  "advisor": {
+    "INFO": 1,
+    "WARN": 0,
+    "ERROR": 0
+  },
+  "failedHostedTransactionsRolledBack": 2,
+  "backendSourceCi": {
+    "sha": "5b22ffbc799fdb87d55df9f4fe25bdfd6c55ded6",
+    "run": 40239495452,
+    "conclusion": "SUCCESS",
+    "tests": 514
+  },
+  "documentationAfterBackendRun": [
+    "services/community-bff/README.md"
+  ]
 }

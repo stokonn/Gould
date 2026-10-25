@@ -6,20 +6,27 @@ access,without changing other worktrees or bootstrapping hosted data.
 - [x] Fixed-origin bounded Google JWKS transport using accepted IdentityVerifier.
 - [x] Explicit runtime grants/RLS with actual restricted-login positive/negative tests.
 - [x] pg socket-error cleanup,forced client execution andnon-overwriting package evidence.
-- [x] Final514backend bodies/0failures/skips;independent source/raw/cleanup proof.
+- [x] Final515backend bodies/0failures/skips;independent source/raw/cleanup proof.
 - [x] Actual forced canonical Kotlin/HTTP/BFF/PG1PASS;8packagedworkerd denial requests.
 - [x] 6archive/6actual localTLS/export/restore PASS;sixhostcheck scripts PASS.
 - [x] 0.11-dev/code12debug APK/testAPK/lint PASS;trusted53efsigner/ZIP/baseline compatibility.
-- [x] Hosted read-only20RLS/ledgerunchanged/intakefalse/clientdenial/Advisor19INFO.
+- [x] Hosted read-only20RLS/ledgerunchanged/intakefalse/clientdenial/Advisor now1expected INFO;runtime NOLOGIN role/grants/policies verified.
 - [ ] Current-source cleanCI/API36 pending aftercommit/push;host234JVM wascached.
 - [ ] Hosted privateWorker/credentials/TLS/OAuth andfinalStage6 acceptance.
 
-No hostedwrite/publicendpoint/realdata/paidfallback/main/RC/tag/Release.
+Hosted inert role/grants/policies applied;noapplication-rowchanges/publicendpoint/realdata/paidfallback/main/RC/tag/Release.
 CloudflareaccountGET403;protectedruntimeconnection/trust notconfigured.
 Ownerauthorizes safeprivate staging onceprerequisitespass;no repeatedblanketapproval.
 Exactresults,failedattempts,unexecutedchecks,minimalcredentialaction andnextsteps:
 [RUNTIME-CONTINUATION-2026-10-25.md](RUNTIME-CONTINUATION-2026-10-25.md).
 WholeStage6 remainsINCOMPLETE/Issue31OPEN/ProjectInProgress;priorhistorybelow.
+
+
+Hosted remaining runtime ACL transaction applied and exact readback PASS after PG17
+creator-membership regression. NOLOGIN/no inherited roles/no ownership/no bypass;
+only schema-owner ADMIN without INHERIT/SET. Initial failures rolled back fully.
+Ledger/RLS/intake/clientdenial/data unchanged. Do not reapply role creation/policies.
+Actual Worker/runtime login/hosted BFF requests remainblocked by credentials/CF403.
 
 ---
 

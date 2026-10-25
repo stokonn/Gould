@@ -1,0 +1,221 @@
+{
+  "intake": false,
+  "ledger": "d39a3afd68a2671dd642a17a82f96edea76dfc0ae1a09edb4be9ffde6aa5c935",
+  "policies": 49,
+  "rls_tables": 20,
+  "anon_schema": false,
+  "memberships": [
+    {
+      "set": false,
+      "role": "goldberg_bff_runtime",
+      "admin": true,
+      "member": "postgres",
+      "inherit": false
+    }
+  ],
+  "probe_select": false,
+  "runtime_role": {
+    "login": false,
+    "createdb": false,
+    "bypassrls": false,
+    "superuser": false,
+    "createrole": false,
+    "replication": false
+  },
+  "table_grants": [
+    {
+      "table": "abuse_limits",
+      "privilege": "DELETE"
+    },
+    {
+      "table": "abuse_limits",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "abuse_limits",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "abuse_limits",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "audit_events",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "audit_events",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "audit_head",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "audit_head",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "auth_challenges",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "auth_challenges",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "auth_challenges",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "auth_families",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "auth_families",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "auth_families",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "auth_refresh",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "auth_refresh",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "auth_refresh",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "change_feed",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "change_feed",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "idempotency_results",
+      "privilege": "DELETE"
+    },
+    {
+      "table": "idempotency_results",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "idempotency_results",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "identity_mappings",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "identity_mappings",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "identity_mappings",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "intake_control",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "principals",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "principals",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "principals",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "published_entities",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "published_entities",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "published_entities",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "published_revisions",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "published_revisions",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "review_events",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "review_events",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "role_grants",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "role_grants",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "role_grants",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "sessions",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "sessions",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "sessions",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "submission_revisions",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "submission_revisions",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "submissions",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "submissions",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "submissions",
+      "privilege": "UPDATE"
+    }
+  ],
+  "ledger_select": false,
+  "application_rows": 0,
+  "can_enable_intake": false,
+  "wrong_policy_roles": 0,
+  "authenticated_schema": false,
+  "can_change_receipt_response": false
+}

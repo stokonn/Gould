@@ -48,7 +48,11 @@ grants and server-role RLS policies. It never connects or creates roles/credenti
 Runtime roles cannot own objects, inherit memberships or bypass RLS. Application
 requests still pass live ownership/session/role checks. Local integration uses
 actual restricted logins and tests denial of DDL, migration reads, intake edits
-and role escalation. No runtime grant transaction has been applied to Supabase.
+and role escalation. The reviewed NOLOGIN runtime role/grants/RLS transaction is now applied to the
+existing Supabase schema. No password, login enablement or Worker is deployed.
+Its only creator-maintenance membership is schema-owner ADMIN with INHERIT=false
+and SET=false. Hosted exact grants/policies/client denials and Advisor pass.
+Do not replay role creation/policies;actual hosted runtime acceptance remains open.
 
 TLS: Node pg uses the configured CA and servername. `pg-cloudflare`1.4.1 forwards
 `expectedServerHostname` to Workers StartTLS, whose documented type has no custom
@@ -70,8 +74,8 @@ and verifies absence. It never accepts a database URL. The client mode executes
 the actual isolated Android repository/transport against real HTTP and PostgreSQL.
 CI uses a separate explicitly disposable PostgreSQL service and the same bodies.
 
-Latest final backend execution:506 bodies/0failures/0skips,including8 Fetch,
-7 combined BFF/PG and1 actual local workerd/PG test. Production bundle:8 workerd
+Latest backend execution:515 bodies/0failures/0skips,including14 Fetch/identity,
+10 combined BFF/PG and1 actual local workerd/PG test. Production bundle:8 workerd
 fail-closed requests. Local first/warm wall times337.424ms/29.791ms,3 workerd
 requests;these are not hosted latency or CPU measurements. Kotlin real HTTP/PG
 execution:1 passed integration case,0skips. Full receipts live under results/.

@@ -1,0 +1,282 @@
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	﻿2026-10-25T22:21:47.6214593Z ##[group]Run reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6214869Z with:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6214977Z   api-level: 36
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6215088Z   target: google_apis
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6215199Z   arch: x86_64
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6215307Z   profile: pixel_6
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6215416Z   avd-name: stage5-ci
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6215535Z   disable-animations: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6216053Z   emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6217573Z   script: set -euo pipefail
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	SERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	case "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	ATTACHED="$(adb devices | awk '$2=="device"' | wc -l)"
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	if [ "$ATTACHED" -ne 1 ]; then echo "ERROR: expected exactly one attached device, found $ATTACHED"; adb devices; exit 1; fi
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	QEMU="$(adb -s "$SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')"
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	if [ "$QEMU" != "1" ]; then echo "ERROR: $SERIAL is not a verified emulator (ro.kernel.qemu=$QEMU)"; exit 1; fi
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	export ANDROID_SERIAL="$SERIAL"
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	echo "Running the full connected suite on verified emulator $SERIAL"
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	mkdir -p stage5-ci-results
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || true' EXIT
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6218973Z   cores: 2
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6219084Z   force-avd-creation: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6219216Z   emulator-boot-timeout: 600
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6219345Z   emulator-port: 5554
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6219468Z   disable-spellchecker: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6219603Z   disable-linux-hw-accel: auto
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6219735Z   enable-hw-keyboard: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6219859Z   channel: stable
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6220095Z env:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6220253Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6220507Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6220713Z   ANDROID_HOME: /usr/local/lib/android/sdk
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6220868Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6221014Z ##[endgroup]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6609821Z ##[group]Configure emulator
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6611097Z API level: 36
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6611358Z System image API level: 36
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6611675Z target: google_apis
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6611889Z CPU architecture: x86_64
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6612131Z Hardware profile: pixel_6
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6613983Z Cores: 2
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6614145Z RAM size: 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6614263Z Heap size: 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6614511Z SD card path or size: 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6617091Z Disk size: 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6617326Z AVD name: stage5-ci
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6617569Z force avd creation: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6618133Z Emulator boot timeout: 600
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6618404Z emulator port: 5554
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6618888Z emulator options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6619259Z disable animations: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6619541Z disable spellchecker: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6619850Z disable Linux hardware acceleration: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6620153Z enable hardware keyboard: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6620424Z Channel: 0 (stable)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6620614Z Script:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6620852Z set -euo pipefail
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6621222Z SERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6621756Z case "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6622168Z ATTACHED="$(adb devices | awk '$2=="device"' | wc -l)"
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6622713Z if [ "$ATTACHED" -ne 1 ]; then echo "ERROR: expected exactly one attached device, found $ATTACHED"; adb devices; exit 1; fi
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6623410Z QEMU="$(adb -s "$SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')"
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6623918Z if [ "$QEMU" != "1" ]; then echo "ERROR: $SERIAL is not a verified emulator (ro.kernel.qemu=$QEMU)"; exit 1; fi
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6624260Z export ANDROID_SERIAL="$SERIAL"
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6624643Z echo "Running the full connected suite on verified emulator $SERIAL"
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6624979Z mkdir -p stage5-ci-results
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6625368Z trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || true' EXIT
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6625880Z ./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6626197Z Pre emulator launch script:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6626596Z ##[endgroup]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6626888Z ##[group]Install Android SDK
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:47.6657888Z [command]/usr/bin/sh -c \yes | sdkmanager --licenses > /dev/null
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:49.7801204Z Installing latest build tools, platform tools, and platform.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:49.7809736Z [command]/usr/bin/sh -c \sdkmanager --install 'build-tools;37.0.0' platform-tools 'platforms;android-36'> /dev/null
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:50.6362747Z Installing latest emulator.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:50.6369928Z [command]/usr/bin/sh -c \sdkmanager --install emulator --channel=0 > /dev/null
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:59.1216330Z Installing system images.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:21:59.1223568Z [command]/usr/bin/sh -c \sdkmanager --install 'system-images;android-36;google_apis;x86_64' --channel=0 > /dev/null
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:13.4909524Z ##[endgroup]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:13.4910016Z ##[group]Create AVD
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:13.4910546Z Creating AVD.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:13.4919811Z [command]/usr/bin/sh -c \echo no | avdmanager create avd --force -n stage5-ci --package 'system-images;android-36;google_apis;x86_64' --device 'pixel_6'
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:13.9463782Z Loading local repository...                                                     
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:13.9471708Z [=========                              ] 25% Loading local repository...       
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:13.9472404Z [=========                              ] 25% Fetch remote repository...        
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:13.9472996Z [=======================================] 100% Fetch remote repository...       
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:13.9813760Z Auto-selecting single ABI x86_64
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.2539477Z [command]/usr/bin/sh -c \printf 'hw.cpu.ncore=2\n' >> /home/runner/.android/avd/stage5-ci.avd/config.ini
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.2553953Z ##[endgroup]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.2555516Z ##[group]Launch Emulator
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.2555722Z Starting emulator.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.2562577Z [command]/usr/bin/sh -c \/usr/local/lib/android/sdk/emulator/emulator -port 5554 -avd stage5-ci -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot &
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.2642046Z INFO         | Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.2642562Z INFO         | Graphics backend: gfxstream
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.2643105Z INFO         | Found systemPath /usr/local/lib/android/sdk/system-images/android-36/google_apis/x86_64/
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.3017469Z INFO         | Saving last run QEMU version for the AVD to 2
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.3018108Z INFO         | Guest usage of host flag 'VulkanVirtualQueue' will be ignored.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.3018572Z INFO         | Increasing RAM size to 2560MB
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.3018949Z INFO         | Guest GLES Driver: Auto (ext controls)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.3019460Z INFO         | emuglConfig_init: vulkan_mode_selected:swiftshader gles_mode_selected:swiftshader
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.3019933Z INFO         | Checking system compatibility:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.3020280Z INFO         |   Checking: hasSufficientDiskSpace
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.3020713Z INFO         |      Ok: Disk space requirements to run avd: `stage5-ci` are met
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.3021112Z INFO         |   Checking: hasSufficientHwGpu
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.3021540Z INFO         |      Ok: Hardware GPU compatibility checks are not required
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.3021930Z INFO         |   Checking: hasSufficientSystem
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.3022784Z INFO         |      Ok: System requirements to run avd: `stage5-ci` are met
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.3023644Z WARNING      | Feature QuickbootFileBacked is disabled due to stability issues, if you really want that, the environment variable ANDROID_EMU_FORCE_QUICKBOOT_FILE_BACKED need to set to 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6518146Z ERROR        | Unable to connect to adb daemon on port: 5037
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6524812Z INFO         | Storing crashdata in: /tmp/android-runner/emu-crash-37.2.12.db, detection is enabled for process: 3179
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6525374Z INFO         | Initializing gfxstream backend
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6532172Z INFO         | startOpenglesRendererImpl: gpu info
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6532439Z INFO         | 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6534245Z INFO         | initIcdPaths: ICD set to 'swiftshader', using Swiftshader ICD
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6534968Z INFO         | Setting ICD filenames for the loader = /usr/local/lib/android/sdk/emulator/lib64/vulkan/vk_swiftshader_icd.json
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6536070Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6536980Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so.1]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6537709Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6538344Z INFO         | Added library: /usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6746513Z INFO         | Selecting Vulkan device: SwiftShader Device (Subzero), Version: 1.3.0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6746993Z INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6841129Z INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6904180Z INFO         | SharedLibrary::open for [libX11]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6906845Z WARNING      | Could not open libX11.so, try libX11.so.6
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6907087Z INFO         | SharedLibrary::open for [libX11.so.6]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6907293Z INFO         | SharedLibrary::open for [libX11-xcb]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6907521Z WARNING      | Could not open libX11-xcb.so, try libX11-xcb.so.1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6907757Z INFO         | SharedLibrary::open for [libX11-xcb.so.1]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6972623Z INFO         | Initializing VkEmulation features:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6973031Z INFO         |     glInteropSupported: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6973259Z INFO         |     useDeferredCommands: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6973464Z INFO         |     createResourceWithRequirements: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6973668Z INFO         |     useVulkanComposition: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6973864Z INFO         |     useVulkanNativeSwapchain: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6974073Z INFO         |     enable guestRenderDoc: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6984858Z INFO         |     ASTC LDR emulation mode: Gpu
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6985211Z INFO         |     enable ETC2 emulation: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6985509Z INFO         |     enable Ycbcr emulation: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6985696Z INFO         |     guestVulkanOnly: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6986047Z INFO         |     useDedicatedAllocations: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6986248Z INFO         |     guestVulkanMaxApiVersion: 1.3.0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6986461Z INFO         |     enableProtectedMemoryEmulation: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6986942Z INFO         | Graphics Adapter Vendor Google (Google Inc.)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6987478Z INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (Google SwiftShader)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6987981Z INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6989344Z INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6990625Z INFO         | Graphics Device Extensions N/A
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.6990832Z INFO         | Disabling sparse binding feature support
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7042747Z INFO         | Sending adb public key [QAAAABd20jBZ3htwFHRdb67aICRE/nTONiq0yF/QWzqOIz03VuYqN4vGJ1iT/Ovrp8QiW4dOpsUq7E2cx+l4C/m+uyWiY24+OWIqJWu/uZZhyCSa5HQmX3U0UrOleT+zitMkWFXwB57r8xKp7p+HfzN88JRwZv11lrRZhTz+d8oEYyzwsoHb22AmLBb0KLUDpQv2cGwRIA3Y4ErfMhAvoDKiczPfn/sg+fsFDhGzeOKbgbJ53d13qVPT7pHe+/N5hyp536B0wpIpIe1wPKEr3fILyxXIL1b+0W0a4Fccy6ELHI8K0cMDaJagvctMEb0U3fomtkFg7E/Mg2psn8XD62k8vgT8hce810hH9DF3PN0EzlwFBNFgABrTdozyaemXcmBTzfqpZ5RCmlYdliy/apvhtfPREOAODm4FHt43xhuRfg+GWKP+FyJnEw8WCP5hzHM6fjUsreBqWYRvLAbmMPRiMHUvHQSVyUHtQXA96kYlWvC/v0Uj/GiHHmwtZTdFHmY007c5szfM24h2MgiH1SyN85Jas51g3QKzAadgQ55EBPl5FPUVy69eJzeVY6lnzWwcMmZ1BOIUhCNcB64jToFrAA6SMVO6Uix35JjA8wCC+0yRRxR/N+IHipi92FJBchawNNmKw7i6myvvdYzu3C286eUWvmVlmqWDWgm+TIBsli6uQd6uQQEAAQA= runner@unknown]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7044478Z INFO         | Userspace boot properties:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7044771Z INFO         |   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7045034Z INFO         |   androidboot.dalvik.vm.heapsize=576m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7045252Z INFO         |   androidboot.debug.hwui.renderer=skiagl
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7045471Z INFO         |   androidboot.debug.sf.nobootanimation=1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7045668Z INFO         |   androidboot.hardware=ranchu
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7046257Z INFO         |   androidboot.hardware.gltransport=pipe
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7046464Z INFO         |   androidboot.hardware.vulkan=ranchu
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7046654Z INFO         |   androidboot.logcat=*:V
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7046844Z INFO         |   androidboot.opengles.version=196608
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7047031Z INFO         |   androidboot.qemu=1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7049160Z INFO         |   androidboot.qemu.adb.pubkey=QAAAABd20jBZ3htwFHRdb67aICRE/nTONiq0yF/QWzqOIz03VuYqN4vGJ1iT/Ovrp8QiW4dOpsUq7E2cx+l4C/m+uyWiY24+OWIqJWu/uZZhyCSa5HQmX3U0UrOleT+zitMkWFXwB57r8xKp7p+HfzN88JRwZv11lrRZhTz+d8oEYyzwsoHb22AmLBb0KLUDpQv2cGwRIA3Y4ErfMhAvoDKiczPfn/sg+fsFDhGzeOKbgbJ53d13qVPT7pHe+/N5hyp536B0wpIpIe1wPKEr3fILyxXIL1b+0W0a4Fccy6ELHI8K0cMDaJagvctMEb0U3fomtkFg7E/Mg2psn8XD62k8vgT8hce810hH9DF3PN0EzlwFBNFgABrTdozyaemXcmBTzfqpZ5RCmlYdliy/apvhtfPREOAODm4FHt43xhuRfg+GWKP+FyJnEw8WCP5hzHM6fjUsreBqWYRvLAbmMPRiMHUvHQSVyUHtQXA96kYlWvC/v0Uj/GiHHmwtZTdFHmY007c5szfM24h2MgiH1SyN85Jas51g3QKzAadgQ55EBPl5FPUVy69eJzeVY6lnzWwcMmZ1BOIUhCNcB64jToFrAA6SMVO6Uix35JjA8wCC+0yRRxR/N+IHipi92FJBchawNNmKw7i6myvvdYzu3C286eUWvmVlmqWDWgm+TIBsli6uQd6uQQEAAQA= runner@unknown
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7050855Z INFO         |   androidboot.qemu.avd_name=stage5-ci
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7051075Z INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7051295Z INFO         |   androidboot.qemu.camera_protocol_ver=1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7051512Z INFO         |   androidboot.qemu.cpuvulkan.version=4206592
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7051760Z INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7051999Z INFO         |   androidboot.qemu.gltransport.name=pipe
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7052206Z INFO         |   androidboot.qemu.hwcodec.avcdec=2
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7052412Z INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7052615Z INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7052873Z INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7053117Z INFO         |   androidboot.qemu.skin=1080x2400
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7053310Z INFO         |   androidboot.qemu.virtiowifi=1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7053683Z INFO         |   androidboot.qemu.vsync=60
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7053906Z INFO         |   androidboot.serialno=EMULATOR37X2X12X0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7054225Z INFO         |   androidboot.vbmeta.digest=7466b5c28e6a3e1427b22ed2c317c6c7066294bde838d4d5243cce5d37992bd5
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7054518Z INFO         |   androidboot.vbmeta.hash_alg=sha256
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7054710Z INFO         |   androidboot.vbmeta.size=6848
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7054900Z INFO         |   androidboot.veritymode=enforcing
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7172709Z WARNING: cannnot unmap ptr 0x7fb6cc001000 as it is in the protected range from 0x7fb62c000000 to 0x7fb6cc200000
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:14.7305274Z INFO         | Monitoring duration of emulator setup.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:15.7341280Z INFO         | Activated packet streamer for uwb emulation
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:15.7352767Z INFO         | Successfully initialized netsim WiFi
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:15.7353364Z INFO         | Activated packet streamer for bluetooth emulation
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:15.7383387Z INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:15.7383841Z INFO         | setDisplayActiveConfig: id:0, 1080x2400
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:15.7384124Z INFO         | emulatorSetupEnvironment: Environment scene is not required
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:15.7433580Z USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:15.7436804Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:15.8723888Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:24.2602302Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:24.2647908Z * daemon not running; starting now at tcp:5037
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:24.3245552Z * daemon started successfully
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:24.3248897Z adb: device offline
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:24.3253161Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:26.3271551Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:26.3302041Z adb: device offline
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:26.3307395Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:28.3343342Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:28.3375699Z adb: device offline
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:28.3379600Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:30.3436660Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:30.3632847Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:32.3700285Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:32.3852551Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:34.3888659Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:34.4081981Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:36.4157450Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:36.4306264Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:38.4346767Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:38.4626525Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:40.4665532Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:40.4935700Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:42.5000108Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:42.5125218Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:44.5243933Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:44.5576531Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:46.5628498Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:46.6356762Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:47.3307150Z INFO         | Boot completed in 33041 ms
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:47.3316376Z INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:48.6372007Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:48.7897272Z 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:48.7956899Z Emulator booted.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:48.8008077Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell input keyevent 82
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.2197160Z Disabling animations.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.2200632Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global window_animation_scale 0.0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.5314021Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global transition_animation_scale 0.0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.5970722Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global animator_duration_scale 0.0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.6420575Z ##[endgroup]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.6462288Z [command]/usr/bin/sh -c set -euo pipefail
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.6506822Z /usr/bin/sh: 1: set: Illegal option -o pipefail
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.6548274Z ##[error]The process '/usr/bin/sh' failed with exit code 2
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.6576718Z ##[group]Terminate Emulator
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.6606594Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 emu kill
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.6607093Z OK: killing emulator, bye bye
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.6636149Z OK
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.6666267Z ##[endgroup]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.6672851Z INFO         | Wait for emulator (pid 3179) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.6673895Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.6752258Z USER_INFO    | Snapshots have been disabled by the user, save request is ignored.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.6766725Z INFO         | Saving snapshot 'default_boot' took 0 ms
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.7334970Z ERROR        | stop: Not implemented
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.7338360Z WARNING      | Emulator client has not yet been configured.. Call configure me first!
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.7437105Z INFO         | removeAll
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:23:49.8393449Z WARNING      | Netsim Wifi dns:///localhost:46149 is gone due to Stream removed (CANCELLED)
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	﻿2026-10-25T22:22:58.3629858Z ##[group]Run set -euo pipefail
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3630094Z ^[[36;1mset -euo pipefail^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3630326Z ^[[36;1mAPKSIGNER="$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -n1)"^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3630735Z ^[[36;1mdigest_of() { "$APKSIGNER" verify --print-certs "$1" 2>/dev/null | sed -n 's/^Signer #1 certificate SHA-256 digest: //p' | head -n1; }^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3631146Z ^[[36;1mTRUSTED="53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e"^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3631445Z ^[[36;1mRELEASE="$(digest_of .gradle/release-artifacts/Goldberg-v0.10.1.apk)"^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3631734Z ^[[36;1mBASELINE="$(digest_of baseline-src/app/build/outputs/apk/debug/app-debug.apk)"^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3632020Z ^[[36;1mCANDIDATE="$(digest_of app/build/outputs/apk/debug/app-debug.apk)"^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3632221Z ^[[36;1m{^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3632371Z ^[[36;1m  echo "trusted release certificate SHA-256: $TRUSTED"^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3632625Z ^[[36;1m  echo "downloaded 0.10.1 release certificate SHA-256: ${RELEASE:-MISSING}"^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3632945Z ^[[36;1m  echo "v0.10.1 debug-rebuild certificate SHA-256: ${BASELINE:-MISSING}"^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3633205Z ^[[36;1m  echo "candidate certificate SHA-256: ${CANDIDATE:-MISSING}"^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3633427Z ^[[36;1m} | tee stage5-ci-results/signing-evidence.txt^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3633633Z ^[[36;1mif [ -z "$RELEASE" ] || [ "$RELEASE" != "$TRUSTED" ]; then^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3633903Z ^[[36;1m  echo "ERROR: downloaded 0.10.1 release APK does not carry the trusted certificate"; exit 1^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3634135Z ^[[36;1mfi^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3634318Z ^[[36;1mif [ -z "$BASELINE" ] || [ -z "$CANDIDATE" ] || [ "$BASELINE" != "$CANDIDATE" ]; then^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3634650Z ^[[36;1m  echo "ERROR: in-place upgrade baseline and candidate are not signed with the same runner key"; exit 1^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3634906Z ^[[36;1mfi^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3635100Z ^[[36;1mecho "OK: release identity trusted; in-place upgrade pair signature-compatible"^[[0m
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3689378Z shell: /usr/bin/bash -e {0}
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3689539Z env:
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3689736Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3690023Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3690245Z   ANDROID_HOME: /usr/local/lib/android/sdk
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3690426Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:58.3690599Z ##[endgroup]
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:59.0670981Z trusted release certificate SHA-256: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:59.0671659Z downloaded 0.10.1 release certificate SHA-256: MISSING
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:59.0672035Z v0.10.1 debug-rebuild certificate SHA-256: MISSING
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:59.0672361Z candidate certificate SHA-256: MISSING
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:59.0672768Z ERROR: downloaded 0.10.1 release APK does not carry the trusted certificate
+5.11 acceptance subset — API 36 emulator	Verify signing-certificate compatibility (never using production credentials)	2026-10-25T22:22:59.0678559Z ##[error]Process completed with exit code 1.

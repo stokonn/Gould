@@ -1,0 +1,120 @@
+{
+  "run": "services/community-bff/results/local-36fe08480372485284e8619d4c477e04",
+  "acceptance": "PASS",
+  "counts": {
+    "fetch.tap": {
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "bff-postgres.tap": {
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "workerd-postgres.tap": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "shared-contract.tap": {
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "query-budget.tap": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "http-postgres.tap": {
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "int8-postgres.tap": {
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "auth.tap": {
+      "tests": 50,
+      "pass": 50,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "schema.tap": {
+      "tests": 34,
+      "pass": 34,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "handlers.tap": {
+      "tests": 87,
+      "pass": 87,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "operations-pg.tap": {
+      "tests": 34,
+      "pass": 34,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "operations-unit.tap": {
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "postgres.tap": {
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "m2-postgres.tap": {
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "api.tap": {
+      "tests": 122,
+      "pass": 122,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "t22.tap": {
+      "tests": 38,
+      "pass": 38,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "cleanup": true,
+  "sourceUnchanged": true
+}

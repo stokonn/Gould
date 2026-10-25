@@ -1,0 +1,10 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"id\":\"vbtindvolebbjfdxkyer\",\"name\":\"sto's org\",\"plan\":\"free\",\"tier\":\"tier_free\",\"opt_in_tags\":[],\"allowed_release_channels\":[\"ga\",\"preview\"]}"
+    }
+  ],
+  "structuredContent": null,
+  "isError": false
+}
