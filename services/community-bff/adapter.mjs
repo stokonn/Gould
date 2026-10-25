@@ -6,6 +6,7 @@ import {Validator} from '../../spikes/stage6-handlers-local/src/validation.mjs';
 import {ApiError,invalid,unauthenticated,unavailable} from '../../spikes/stage6-auth-local/src/errors.mjs';
 import {id,object,parseBody,decimal} from '../../spikes/stage6-api-v1-local/src/wire.mjs';
 import {Cursors} from '../../spikes/stage6-public-admin-abuse/src/cursor.mjs';
+import {AuthThrottle} from './auth-throttle.mjs';
 
 const routes=[
  [/^\/v1\/submissions$/,['POST'],'submission.create'],
@@ -28,6 +29,7 @@ export function createBffAdapter({connect,schema,verifier,clock=Date.now,validat
  const core=createLocalAdapter({localOnly:true,connect,schema,verifier,clock,validator,cursorKey});
  const operations=compose({connect,schema,authorization:core.authorization,idempotency:core.idempotency,validator,clock,cursorKey,ipKey,limits});
  const signed=new Cursors(cursorKey);
+ const authThrottle=new AuthThrottle({connect,schema,key:ipKey,clock,limit:limits.authBurst??30});
  const cursors={sign:value=>signed.sign({...value,high:value.high??'0',expiresAt:clock()+900000}),read:(value,scope)=>{const decoded=signed.read(value,scope);if(!Number.isSafeInteger(decoded.expiresAt)||decoded.expiresAt<=clock()||decoded.expiresAt>clock()+900000)throw invalid();return decoded;}};
  operations.catalogue.cursors=cursors;
  // Canonical moderation keeps its public receipt transaction and now enforces
@@ -36,7 +38,16 @@ export function createBffAdapter({connect,schema,verifier,clock=Date.now,validat
  return {core,operations,authorization:core.authorization,sessions:core.sessions,async invoke(request,transport={}) {
   const route=typeof request.path==='string'?request.path.split('?')[0]:'';
   const spec=routes.find(([pattern])=>pattern.test(route));
-  if(!spec)return core.invoke(request);
+  if(!spec){
+   if(request.method==='POST'&&['/v1/session/challenge','/v1/session','/v1/session/refresh'].includes(route)){
+    try{await authThrottle.consume(transport.remoteAddress);}
+    catch(error){
+     const e=error instanceof ApiError?error:unavailable(),requestId=crypto.randomUUID();
+     return {status:e.status,headers:{'Content-Type':'application/json','Cache-Control':'no-store','X-Request-ID':requestId,...(e.status===429?{'Retry-After':String(e.retryAfter)}:{})},body:{schemaVersion:1,error:{code:e.code,message:e.status===429?'Authentication limit reached':e.status===400?'Invalid request':'Service unavailable',requestId}}};
+    }
+   }
+   return core.invoke(request);
+  }
   let requestId=crypto.randomUUID();
   const reply=(status,body,extra={})=>({status,headers:{'X-Request-ID':requestId,'Content-Type':'application/json','Cache-Control':'no-store',...extra},body});
   try{

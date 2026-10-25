@@ -1,39 +1,79 @@
-## Stage 6 runtime continuation — active engineering, October25,2026
+## Stage6 independent hardening — in progress after owner hosted block
 
-Branch feature/goldberg-0.11-stage-6-cloud,base2044cfa. Existing isolated tree reused;
-Discover/Stage7/8/RC worktrees preserved. Added fixed-origin bounded Google JWKS
-transport with accepted signature verifier,explicit restricted-role PostgreSQL ACL/
-RLS plan,pg socket-error cleanup,forced Kotlin integration execution andunique
-package receipts. Debug metadata now0.11-dev/code12,com.opus.piano/opus.db unchanged.
+Purpose:close unauthenticated API abuse andactual emulator failures onthisbranch.
+Scope:BFF authentication throttle/reused abuse-limit table;three alreadyverified
+bundle implementation files,three fixture tests andoffline upgrade helper from
+preserved a73a7e2 source. No Room/schema migration orotherworktree edits.
 
-Final515backend bodies PASS/0failures/skips inlocal-36fe0848;independent source/raw
-hashes and exact container/volume cleanup PASS. Actual restrictedPGlogins pass lifecycle and
-privilege denials. 8packaged workerd denials PASS;6archive/6actual localTLS+restore
-PASS. Actual forced Kotlin/HTTP/BFF/PG1PASS(timestamp22:12:37UTC);oldcachedXML
-explicitly excluded after fixing runner. Versioned APK/testAPK/lint PASS2m48s;
-234JVM XML is cached in this host command,not newly executed. Exact-source cleanCI
-andAPI36 pending. APK SHA256a1213cfb3b4f081712d56e1fa096de3aed3ab4d67c64a0dc15e36152f94adfe2;
-trusted53efcertificate,baseline0.10.1 compatibility/ZIP/artwork/fixture exclusion PASS.
-No screenshots inspected in this continuation;no physical-device operations.
+- [x] Implement shared30/minute coarse-IP HMAC authentication budget,atomicPG
+  counter andRetry-After;failed credentials count;missing peer metadata shares a
+  bucket;outage denies beforechallenge. No rawIP/token storage orschema change.
+- [x] Focused12 BFF/PostgreSQL tests PASS,includingnewquota concurrency/recovery.
+- [ ] Final517-body backend/currentforcedKotlin run andfinalAndroidhost gates running.
+- [x] Preserve exactAPI36a3d99failure:182cases/13failures/2skips(167PASS),
+  all13 inoldStage5bundle runner/store/worker tests;upgradeofflineassertionfailed.
+- [x] Inspect/reuseverifieda73a7e2 offline core andfixture corrections;preserve
+  timestamps/retry/readPublished semantics;offlinehelperwaitsforactualradiodown,
+  acceptance restoresairplane/mobile_data before network transitions.
+- [ ] Corrected-sourceAPI36/upgrade execution pendingafterhostpass/commit/push.
 
-Hosted fresh read-only20RLS/ledgerunchanged/intakefalse/anon-authdenial/runtimeNOLOGINrole/47grants/49policies;
-Advisor now1expected INFO;runtime NOLOGIN role/47grants/49policies hosted verified. CFaccountGET403;no configured server credentials/trust.
-Google publicJWKSHTTP200/2keys;notrealOAuth. Hosted inert role/grants/policies applied;noapplication-rowchanges/Worker/secret/session,
-publicendpoint,paidfallback,realdata,mainmerge,RC/tag/Release. Owner nowauthorizes
-safeprivate staging once actual prerequisites pass;do notrepeat obsolete blanket
-approval requests. WholeStage6 incomplete;Issue31 OPEN/ProjectInProgress.
+Hosteddeployment/functionalverification remainsBLOCKEDbyowner IPv6/pooler-auth
+report. No hostedDBlogin/reset/retry/TLSweakening/paidIPv4/release. Existing inert
+runtimeACLs preserved. Priorquality/BFFCI a3d99PASS,notattributedtonewsource.
 
-Current tasks/results/exactminimalcredential action:
-`docs/planning/goldberg-0.11/stage-6/RUNTIME-CONTINUATION-2026-10-25.md`.
-Next:finish frozen backend run,commit/ordinarypush,exactsourceCI/API36;deploy only
-withusableCF/DB/TLScredentials andverifiedprivate/cost/security prerequisites.
+---
 
+## Owner connectivity directive — hosted BLOCKED (October25,2026)
 
-Hosted remaining runtime ACL transaction applied and exact readback PASS after PG17
-creator-membership regression. NOLOGIN/no inherited roles/no ownership/no bypass;
-only schema-owner ADMIN without INHERIT/SET. Initial failures rolled back fully.
-Ledger/RLS/intake/clientdenial/data unchanged. Do not reapply role creation/policies.
-Actual Worker/runtime login/hosted BFF requests remainblocked by credentials/CF403.
+Owner reports:no working host IPv6 route for directSupabase;sessionpooler reachable
+overIPv4 but rejects authentication after DB passwordrotation. These are owner
+observations,not agent-executed hostedlogin tests. Do not resetpasswords,retry
+authentication repeatedly,disableTLSverification orbuyIPv4addons. No release.
+Hosted deployment andfunctional verification explicitlyBLOCKED untilauthenticated
+connectivity/security prerequisites are resolved byowner. Continueindependent work.
+
+Cloudflareaccess is nowRESTORED:installedWrangler revalidatedexistinglogin;fresh
+GET-onlyinventory22:28UTC succeeded(1account/0Workers/services/domains/zones/MFAon).
+No newlogin/Worker/publicroute/secret. Billing403visibility limitation retained.
+Previouslyapplied NOLOGINrole/grants/policies remaininert;do not replayorundo them.
+No furtherhostedmutation/deploymentwhileblocked. No hostedDBlogin wasattempted.
+Next minimalowneraction:resolve authenticated session-pooler configuration outside
+thisagent run,thenprovide protectedserverconnection/TLStrust configurationand
+explicitlyconfirmconnectivity/securityprerequisites are resolved. No secret values
+inchat/Git/logs. GoogleOAuthconfigurationremainsneededforreal sign-in.
+
+---
+
+## Current source and verification — a3d99dc (October25,2026)
+
+Purpose/scope: finish Stage6 server runtime identity,least-privilege PostgreSQL
+access andsource-bound Android/backend verification;preserve allotherworktrees.
+Branch feature/goldberg-0.11-stage-6-cloud. Source/remote
+`a3d99dc928769cbbaf5dd01bb6f6b567192bb5c8`;current documentation update only.
+
+- [x] Reused existing20-table hosted schema/ledger;no bootstrap/data replacement.
+- [x] Fixed GoogleJWKS transport,pg socketcleanup,restrictedACLplan,forcedclientrun.
+- [x] 515backend bodies PASS/0failures/skips;exact source/rawhashes/fixturecleanup.
+- [x] Actual forced Kotlin/HTTP/BFF/PG1PASS;8workerdpackage/6archive/6TLSrestorePASS.
+- [x] Hosted NOLOGINrole/47tablegrants/49server-rolepolicies deployed;exact readback.
+  No elevatedflags/inheritedroles/ownership;onlyownerADMINwithoutINHERIT/SET.
+  Clientdenial/ledger/20RLS/intakefalse/applicationdata unchanged;Advisor1INFOonly.
+- [x] Initialguard/metadata-probe failures rolledback;PG17exactcorrection tested.
+- [x] Debug0.11-dev/code12com.opus.piano APK/testAPK/lint;trusted53efcertificate,
+  baseline0.10.1compatibility/ZIP/artwork/fixtureexclusionPASS. APK SHA256
+  `a1213cfb3b4f081712d56e1fa096de3aed3ab4d67c64a0dc15e36152f94adfe2`.
+- [x] Commit/ordinarypush/exactremote;prior5b22quality40239495426/BFF40239495452SUCCESS.
+- [ ] Currenta3d99quality40240146586/BFF40240146602/API36+upgrade40240154511running.
+  FirstAPI36run40239512295failed before native execution;Bash/certparserrepaired.
+- [ ] Worker/privateTLS/runtimepassword/login/realOAuth/hostedBFFacceptance:
+  CFaccessrestored;ownerDBIPv6/pooler-authblock. No publicroute/realuserdata.
+
+WholeStage6 INCOMPLETE;Issue31OPEN/ProjectInProgress. Existingroles/policiesare
+alreadydeployed:do not rerunbootstrap/CREATE ROLE/policyplan. No paidfallback,
+physicalphone,mainmerge,RC/tag/Release. No screenshots inspected thiscontinuation.
+Next:finish exact-sourceCI/nativeXML/upgrade readback,fix demonstrated failures,
+finalreceipt/docs/Issue/privatePMP. See stage-6/RUNTIME-CONTINUATION-2026-10-25.md.
+
 
 ---
 

@@ -1,3 +1,24 @@
+## Owner connectivity directive — hosted BLOCKED (October25,2026)
+
+Owner reports:no working host IPv6 route for directSupabase;sessionpooler reachable
+overIPv4 but rejects authentication after DB passwordrotation. These are owner
+observations,not agent-executed hostedlogin tests. Do not resetpasswords,retry
+authentication repeatedly,disableTLSverification orbuyIPv4addons. No release.
+Hosted deployment andfunctional verification explicitlyBLOCKED untilauthenticated
+connectivity/security prerequisites are resolved byowner. Continueindependent work.
+
+Cloudflareaccess is nowRESTORED:installedWrangler revalidatedexistinglogin;fresh
+GET-onlyinventory22:28UTC succeeded(1account/0Workers/services/domains/zones/MFAon).
+No newlogin/Worker/publicroute/secret. Billing403visibility limitation retained.
+Previouslyapplied NOLOGINrole/grants/policies remaininert;do not replayorundo them.
+No furtherhostedmutation/deploymentwhileblocked. No hostedDBlogin wasattempted.
+Next minimalowneraction:resolve authenticated session-pooler configuration outside
+thisagent run,thenprovide protectedserverconnection/TLStrust configurationand
+explicitlyconfirmconnectivity/securityprerequisites are resolved. No secret values
+inchat/Git/logs. GoogleOAuthconfigurationremainsneededforreal sign-in.
+
+---
+
 # Stage 6 runtime continuation — October 25, 2026
 
 Status: runtime implementation locally verified; inert hosted PostgreSQL permissions deployed; whole-stage verification IN PROGRESS. Whole Stage 6 remains
@@ -132,3 +153,27 @@ and invoke them as one command. Reuse the proven a73a7e2 signing step,retaining 
 streams/exit codes and digest extraction. No test exclusion or physical-device
 selection added;all ADB operations retain explicit verified emulator serials.
 YAML parsing and both bash -n checks PASS. Corrected-source dispatch follows.
+
+## Independent hardening after the hosted block
+
+Implemented shared authentication throttle over existing abuse_limits:30requests
+perminute/coarse-IP HMAC bydefault,failed attempts count,stable server IP_KEY,
+atomic acrossinstances,Retry-After,bounded missing-peer bucket,DBoutage failclosed.
+No new schema/hostedoperation/rawIP/user-token storage. Final517backend bodies PASS
+inlocal-6700c96d;12 BFF/PG groups include concurrency/nonce-failure/expiry/isolation.
+Initialfixtureerrors(stablekey/invalidsyntheticcredential) retained withcleanup.
+Actual forced Kotlin1PASS inlocal-03e4c53b;8packagedworkerd denials PASS.
+
+API36a3d99 execution produced182cases:167PASS/13failures/2externalfixture skips;
+all13failures are offline runner/store/worker integration/fixture defects absent
+fromtheoldbranchbutfixedintheverifiedRC. Copyexact3production/3testfilesfroma73
+andthetestedoffline-helperfix;provenance/hashesin offline-fix-adoption.json.
+No Room/personalDBmigration. Recoveredpublicationsemantics excludepartial states,
+retrycanfindworkingmanifests,timestampinvariantsretained,syntheticroutesunique.
+Offlineupgradeharnesswaitsforverifiedradiodownandrestoresairplane/mobile_data.
+No testskippingorweakeneddataassertions. Finalnative/upgrade rerunpending.
+
+Fresh Androidhost234JVM PASS/0failures/errors/skips at22:39UTC,APK/testAPK/lint
+PASS2m56s. Finaldebug com.opus.piano0.11-dev/code12 SHA256
+`86fc13739a9bcfbb9896e6bb146310afda81dd815d5dcad92412f75efb957f24`;trusted53ef
+signer/baselinecompatibility/ZIP/artworkPASS. PriorAPK/receiptsretained separately.

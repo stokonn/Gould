@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: SHARED-PG session challenge, identity/session binding, access expiry and absolute family expiry
+ok 1 - SHARED-PG session challenge, identity/session binding, access expiry and absolute family expiry
+  ---
+  duration_ms: 768.832959
+  type: 'test'
+  ...
+# Subtest: SHARED-PG refresh rotation, exact account binding, replay revokes the entire family
+ok 2 - SHARED-PG refresh rotation, exact account binding, replay revokes the entire family
+  ---
+  duration_ms: 675.150858
+  type: 'test'
+  ...
+# Subtest: SHARED-PG reference single-flight refresh and stale account response rejection
+ok 3 - SHARED-PG reference single-flight refresh and stale account response rejection
+  ---
+  duration_ms: 495.610233
+  type: 'test'
+  ...
+# Subtest: SHARED-PG actual lost refresh response requires fresh authentication; never resubmit consumed refresh
+ok 4 - SHARED-PG actual lost refresh response requires fresh authentication; never resubmit consumed refresh
+  ---
+  duration_ms: 589.703542
+  type: 'test'
+  ...
+# Subtest: SHARED-PG logout204, repeated logout, revoked access and immediate offline local clearing
+ok 5 - SHARED-PG logout204, repeated logout, revoked access and immediate offline local clearing
+  ---
+  duration_ms: 484.041798
+  type: 'test'
+  ...
+# Subtest: SHARED-PG role revocation, suspended principals and cross-role denial
+ok 6 - SHARED-PG role revocation, suspended principals and cross-role denial
+  ---
+  duration_ms: 492.469199
+  type: 'test'
+  ...
+# Subtest: SHARED-PG canonical open/detail/compare/approve and exact receipt replay within24h
+ok 7 - SHARED-PG canonical open/detail/compare/approve and exact receipt replay within24h
+  ---
+  duration_ms: 821.1478
+  type: 'test'
+  ...
+# Subtest: SHARED-PG reject/request_changes typed200 results and explicit legacy-body rejection
+ok 8 - SHARED-PG reject/request_changes typed200 results and explicit legacy-body rejection
+  ---
+  duration_ms: 571.613936
+  type: 'test'
+  ...
+# Subtest: SHARED-PG generic409 requires refetch and explicit acknowledged fresh review; no automatic decision retry
+ok 9 - SHARED-PG generic409 requires refetch and explicit acknowledged fresh review; no automatic decision retry
+  ---
+  duration_ms: 752.841454
+  type: 'test'
+  ...
+# Subtest: SHARED-PG consumer409 after preflight is not silently retried; revoked queued intent is cancelled
+ok 10 - SHARED-PG consumer409 after preflight is not silently retried; revoked queued intent is cancelled
+  ---
+  duration_ms: 582.77578
+  type: 'test'
+  ...
+# Subtest: SHARED-PG concurrent moderator decisions serialize and full response loss reconciles same exact intent
+ok 11 - SHARED-PG concurrent moderator decisions serialize and full response loss reconciles same exact intent
+  ---
+  duration_ms: 688.858
+  type: 'test'
+  ...
+# Subtest: SHARED-PG bounded queue filters, null metadata and signed scope-bound pagination
+ok 12 - SHARED-PG bounded queue filters, null metadata and signed scope-bound pagination
+  ---
+  duration_ms: 959.744024
+  type: 'test'
+  ...
+# Subtest: SHARED-PG audit immutable highwater, chain verification and scoped cursors
+ok 13 - SHARED-PG audit immutable highwater, chain verification and scoped cursors
+  ---
+  duration_ms: 623.553375
+  type: 'test'
+  ...
+# Subtest: SHARED-PG coherent exact statistics during concurrent publication and Prague DST SQL parity
+ok 14 - SHARED-PG coherent exact statistics during concurrent publication and Prague DST SQL parity
+  ---
+  duration_ms: 607.802336
+  type: 'test'
+  ...
+# Subtest: SHARED-PG source-policy default-deny and backend outage/timeout are honest unavailable states
+ok 15 - SHARED-PG source-policy default-deny and backend outage/timeout are honest unavailable states
+  ---
+  duration_ms: 738.079756
+  type: 'test'
+  ...
+# Subtest: SHARED-PG exact wire boundaries, unknown fields, supported UTF8 media type and unsafe legacy representations
+ok 16 - SHARED-PG exact wire boundaries, unknown fields, supported UTF8 media type and unsafe legacy representations
+  ---
+  duration_ms: 784.120612
+  type: 'test'
+  ...
+# Subtest: SHARED-PG maximum int8 publication round trip stays exact and next increment conflicts
+ok 17 - SHARED-PG maximum int8 publication round trip stays exact and next increment conflicts
+  ---
+  duration_ms: 690.9929
+  type: 'test'
+  ...
+# Subtest: SHARED-PG observed privilege loss invalidates acknowledgements even after a later role regrant
+ok 18 - SHARED-PG observed privilege loss invalidates acknowledgements even after a later role regrant
+  ---
+  duration_ms: 615.384195
+  type: 'test'
+  ...
+# Subtest: SHARED-PG reference refuses approval without verified existing current values or when recorded baseline needs rebase
+ok 19 - SHARED-PG reference refuses approval without verified existing current values or when recorded baseline needs rebase
+  ---
+  duration_ms: 700.704901
+  type: 'test'
+  ...
+# Subtest: SHARED-PG queue keyset is explicitly a live page walk, not a fabricated cross-request snapshot
+ok 20 - SHARED-PG queue keyset is explicitly a live page walk, not a fabricated cross-request snapshot
+  ---
+  duration_ms: 669.626934
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 13635.815062

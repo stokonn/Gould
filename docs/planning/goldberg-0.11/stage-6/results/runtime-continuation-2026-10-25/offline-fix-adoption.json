@@ -1,0 +1,34 @@
+{
+  "source": "a73a7e21adf656dcbe7ed6da351a71e9a681a384",
+  "reason": "Observed API36 offline/native failures on isolated Stage6 branch;reuse verified compatible implementation/fixtures,not all RC/UI changes",
+  "files": {
+    "app/src/main/java/com/opus/piano/data/offline/BundleJobRunner.kt": {
+      "beforeSha256": "9d099608cc938bbc174123fd6fda297bfa39ad1ad77ac528497210147467dc38",
+      "afterSha256": "f8fda9fd11846f4dcda811d40cf76280f090fca6d48e36ba6f089b35d7f83059"
+    },
+    "app/src/main/java/com/opus/piano/data/offline/BundleStore.kt": {
+      "beforeSha256": "2cdf7d9c0f915a7834ce098873425c003071ea35894e569577d5bbccdfb91d49",
+      "afterSha256": "3beddedec58547d7a0be46ac2da919693ce1f792cd2843055a0c2d616e342bb3"
+    },
+    "app/src/main/java/com/opus/piano/data/offline/OfflineBundle.kt": {
+      "beforeSha256": "7c69c214eed9bc73eb9ec13f0720a6b90be4fabb2e63d3a8293651c652628ae2",
+      "afterSha256": "e78e4de4f5de1b0a526d94ad46a9674293c00bfff80d362446dae60f2a92f4a0"
+    },
+    "app/src/androidTest/java/com/opus/piano/Stage5BundleJobRunnerTest.kt": {
+      "beforeSha256": "6f1180f5ee11266758d6f97ff5b11213f4eb07a96b01b1bf101926d139ac0c2f",
+      "afterSha256": "4561611c70e44100787f85066f65a23f95c91850e6942d46bad791a4c3ac4b13"
+    },
+    "app/src/androidTest/java/com/opus/piano/Stage5BundleStoreTest.kt": {
+      "beforeSha256": "bd7e4d09aeda6405503edff3d953f604e32a1c2d8173a180379b3bf220d5abb0",
+      "afterSha256": "48f9cf90fee29ff332c978d27c46cc3b6a47db29528925bfe427133bdaa06547"
+    },
+    "app/src/androidTest/java/com/opus/piano/Stage5BundleWorkerTest.kt": {
+      "beforeSha256": "3ba8ded65320ea6e976cf180b5baa691014897d1a3a6a227906e16392db1b0ec",
+      "afterSha256": "cad732e7cdc42442907fe5e96af5f492944d548f83311ca5dddf5a4a788c6832"
+    },
+    "scripts/verify_emulator_upgrade.py": {
+      "beforeSha256": "87767826688dd85969a3c00e701919c6c3ff58132dfa13270b59f76bbf146e08",
+      "afterSha256": "e29aabc89e7431de3ebc954c9a82cde1d8284e9cb2edc27521a019569cc2607a"
+    }
+  }
+}

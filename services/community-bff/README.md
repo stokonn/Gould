@@ -74,8 +74,8 @@ and verifies absence. It never accepts a database URL. The client mode executes
 the actual isolated Android repository/transport against real HTTP and PostgreSQL.
 CI uses a separate explicitly disposable PostgreSQL service and the same bodies.
 
-Latest backend execution:515 bodies/0failures/0skips,including14 Fetch/identity,
-10 combined BFF/PG and1 actual local workerd/PG test. Production bundle:8 workerd
+Latest backend execution:517 bodies/0failures/0skips,including14 Fetch/identity,
+12 combined BFF/PG and1 actual local workerd/PG test. Production bundle:8 workerd
 fail-closed requests. Local first/warm wall times337.424ms/29.791ms,3 workerd
 requests;these are not hosted latency or CPU measurements. Kotlin real HTTP/PG
 execution:1 passed integration case,0skips. Full receipts live under results/.
@@ -85,3 +85,11 @@ created by stokonn with love <3
 Continuation evidence and external prerequisites: [runtime continuation](../../docs/planning/goldberg-0.11/stage-6/RUNTIME-CONTINUATION-2026-10-25.md).
 The client runner forces Gradle execution; old cached XML is not fresh evidence.
 Package receipts use unique directories and preserve prior results.
+
+Authentication POST challenge/login/refresh share a database-backed30/minute
+coarse-IP budget by default (server-only authBurst configuration,max120). Failed
+credentials count;atomic counters survive new adapters with the stable IP_KEY.
+Only HMAC/domain-separated coarse-IP keys are stored;missing peer metadata shares
+a bounded bucket. 429includesRetry-After;counter/database failures deny requests.
+Hosted deployment/verification is BLOCKED by the owner's current connectivity
+directive;no database authentication retries or credential changes are allowed.

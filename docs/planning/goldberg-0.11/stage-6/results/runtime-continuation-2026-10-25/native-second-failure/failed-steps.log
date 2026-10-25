@@ -1,0 +1,1057 @@
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	﻿2026-10-25T22:31:46.7780635Z ##[group]Run reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7781150Z with:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7781339Z   api-level: 36
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7781542Z   target: google_apis
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7781747Z   arch: x86_64
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7781937Z   profile: pixel_6
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7782132Z   avd-name: stage5-ci
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7782346Z   disable-animations: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7782834Z   emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7783382Z   script: bash scripts/ci_stage6_instrumentation.sh
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7783675Z   cores: 2
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7783867Z   force-avd-creation: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7784112Z   emulator-boot-timeout: 600
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7784358Z   emulator-port: 5554
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7784593Z   disable-spellchecker: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7784839Z   disable-linux-hw-accel: auto
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7785085Z   enable-hw-keyboard: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7785335Z   channel: stable
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7785524Z env:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7785813Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7786650Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7787047Z   ANDROID_HOME: /usr/local/lib/android/sdk
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7787338Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.7787608Z ##[endgroup]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8392471Z ##[group]Configure emulator
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8407092Z API level: 36
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8407785Z System image API level: 36
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8408293Z target: google_apis
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8408732Z CPU architecture: x86_64
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8409223Z Hardware profile: pixel_6
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8409608Z Cores: 2
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8410280Z RAM size: 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8410596Z Heap size: 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8410993Z SD card path or size: 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8411366Z Disk size: 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8411753Z AVD name: stage5-ci
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8412171Z force avd creation: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8412634Z Emulator boot timeout: 600
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8412924Z emulator port: 5554
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8413541Z emulator options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8414107Z disable animations: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8414438Z disable spellchecker: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8414993Z disable Linux hardware acceleration: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8415461Z enable hardware keyboard: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8415884Z Channel: 0 (stable)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8416452Z Script:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8416889Z bash scripts/ci_stage6_instrumentation.sh
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8417329Z Pre emulator launch script:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8417860Z ##[endgroup]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8418251Z ##[group]Install Android SDK
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:46.8458169Z [command]/usr/bin/sh -c \yes | sdkmanager --licenses > /dev/null
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:50.0947777Z Installing latest build tools, platform tools, and platform.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:50.0967476Z [command]/usr/bin/sh -c \sdkmanager --install 'build-tools;37.0.0' platform-tools 'platforms;android-36'> /dev/null
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:51.6338184Z Installing latest emulator.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:31:51.6357900Z [command]/usr/bin/sh -c \sdkmanager --install emulator --channel=0 > /dev/null
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:00.1632948Z Installing system images.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:00.1651769Z [command]/usr/bin/sh -c \sdkmanager --install 'system-images;android-36;google_apis;x86_64' --channel=0 > /dev/null
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:28.1443019Z ##[endgroup]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:28.1444932Z ##[group]Create AVD
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:28.1445625Z Creating AVD.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:28.1466253Z [command]/usr/bin/sh -c \echo no | avdmanager create avd --force -n stage5-ci --package 'system-images;android-36;google_apis;x86_64' --device 'pixel_6'
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:28.9507943Z Loading local repository...                                                     
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:28.9509056Z [=========                              ] 25% Loading local repository...       
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:28.9510726Z [=========                              ] 25% Fetch remote repository...        
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:28.9511536Z [=======================================] 100% Fetch remote repository...       
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.1480088Z Auto-selecting single ABI x86_64
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.5405028Z [command]/usr/bin/sh -c \printf 'hw.cpu.ncore=2\n' >> /home/runner/.android/avd/stage5-ci.avd/config.ini
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.5427237Z ##[endgroup]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.5429271Z ##[group]Launch Emulator
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.5429639Z Starting emulator.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.5446522Z [command]/usr/bin/sh -c \/usr/local/lib/android/sdk/emulator/emulator -port 5554 -avd stage5-ci -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot &
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.5569181Z INFO         | Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.5570003Z INFO         | Graphics backend: gfxstream
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.5571050Z INFO         | Found systemPath /usr/local/lib/android/sdk/system-images/android-36/google_apis/x86_64/
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.6024087Z INFO         | Saving last run QEMU version for the AVD to 2
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.6025108Z INFO         | Guest usage of host flag 'VulkanVirtualQueue' will be ignored.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.6025907Z INFO         | Increasing RAM size to 2560MB
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.6027117Z INFO         | Guest GLES Driver: Auto (ext controls)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.6028563Z INFO         | emuglConfig_init: vulkan_mode_selected:swiftshader gles_mode_selected:swiftshader
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.6029832Z INFO         | Checking system compatibility:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.6030805Z INFO         |   Checking: hasSufficientDiskSpace
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.6031965Z INFO         |      Ok: Disk space requirements to run avd: `stage5-ci` are met
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.6033335Z INFO         |   Checking: hasSufficientHwGpu
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.6034458Z INFO         |      Ok: Hardware GPU compatibility checks are not required
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.6035525Z INFO         |   Checking: hasSufficientSystem
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.6036855Z INFO         |      Ok: System requirements to run avd: `stage5-ci` are met
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:29.6039011Z WARNING      | Feature QuickbootFileBacked is disabled due to stability issues, if you really want that, the environment variable ANDROID_EMU_FORCE_QUICKBOOT_FILE_BACKED need to set to 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2368522Z ERROR        | Unable to connect to adb daemon on port: 5037
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2383936Z INFO         | Storing crashdata in: /tmp/android-runner/emu-crash-37.2.12.db, detection is enabled for process: 3422
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2384952Z INFO         | Initializing gfxstream backend
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2394939Z INFO         | startOpenglesRendererImpl: gpu info
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2395403Z INFO         | 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2398149Z INFO         | initIcdPaths: ICD set to 'swiftshader', using Swiftshader ICD
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2399726Z INFO         | Setting ICD filenames for the loader = /usr/local/lib/android/sdk/emulator/lib64/vulkan/vk_swiftshader_icd.json
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2402534Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2404278Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so.1]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2405467Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2406634Z INFO         | Added library: /usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2541528Z INFO         | Selecting Vulkan device: SwiftShader Device (Subzero), Version: 1.3.0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2542278Z INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2680372Z INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2748192Z INFO         | SharedLibrary::open for [libX11]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2749409Z WARNING      | Could not open libX11.so, try libX11.so.6
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2750535Z INFO         | SharedLibrary::open for [libX11.so.6]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2751296Z INFO         | SharedLibrary::open for [libX11-xcb]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2752595Z WARNING      | Could not open libX11-xcb.so, try libX11-xcb.so.1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2753373Z INFO         | SharedLibrary::open for [libX11-xcb.so.1]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2804684Z INFO         | Initializing VkEmulation features:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2805572Z INFO         |     glInteropSupported: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2806852Z INFO         |     useDeferredCommands: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2807986Z INFO         |     createResourceWithRequirements: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2808744Z INFO         |     useVulkanComposition: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2809391Z INFO         |     useVulkanNativeSwapchain: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2810094Z INFO         |     enable guestRenderDoc: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2810882Z INFO         |     ASTC LDR emulation mode: Gpu
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2811619Z INFO         |     enable ETC2 emulation: true
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2813025Z INFO         |     enable Ycbcr emulation: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2813560Z INFO         |     guestVulkanOnly: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2814039Z INFO         |     useDedicatedAllocations: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2814536Z INFO         |     guestVulkanMaxApiVersion: 1.3.0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2815063Z INFO         |     enableProtectedMemoryEmulation: false
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2815617Z INFO         | Graphics Adapter Vendor Google (Google Inc.)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2816663Z INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (Google SwiftShader)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2817496Z INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2820839Z INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2822946Z INFO         | Graphics Device Extensions N/A
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2823346Z INFO         | Disabling sparse binding feature support
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2904327Z INFO         | Sending adb public key [QAAAAMXYb7/zGaJwCKF3//Z+UbLcpngvTEcJLz4AoRekM0mxm4y5Gg+z+NttSk66a1kAKRNwOffiOSjwDswY4+gB05Y85y91BOs2EvT+KigqsH+BwqWlwXBo2Ts9aNULmHNJyTQZWfdpcPEtuAARfH844XWHPejpVWrmVIccJmBuVnG7kvfDSM77oG/S8UgP2L46HQQ7kYL3DDu0Y4u4W/oM+gEPv3fb9wYbrtxIJDSEw9E9AwOV+Wqbw7zxRhgFNISbqd22hVsmB3wLQQLNenyTpBjj7Yg9k1bohhR5tcXo0Dm0biQplVqK6tJIi2WMpM1jnq1HVy3ct2P/wLRlzlZfnem/MnOvfa7BSgAMuWVDO33Cn2NSHBPWUeddbYVOyqGVrNMlVJKWn51akoHqdnhtYOr/YaDzr1yPFGNw9FKV4ed9GCHpOniO9NQ1l1Fy94mAystJXsJqhZHf7hyh+bcRI05DNCE08f3SY6JdQDUPp+EJbHtzp6kERXpPs/GANnXQ+ZOWuLsvBgK0dZgNgUo5sAJxZwIEfYHPj3y2OfYnfSn1ZosdmzCIJQjDbOTluq12BTCfVDaXvlNdPG7PHsBvLA+MPZ5uTfhpy6dvD7vjJLe1CNfzQnoNSCjaBAuTWBJX8s4gXm7aKb84xEQN4sp8Il/gacMi3iAx2Jp2WvVIUzbLsy98TQEAAQA= runner@unknown]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2910993Z INFO         | Userspace boot properties:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2912076Z INFO         |   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2912889Z INFO         |   androidboot.dalvik.vm.heapsize=576m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2913312Z INFO         |   androidboot.debug.hwui.renderer=skiagl
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2913726Z INFO         |   androidboot.debug.sf.nobootanimation=1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2914112Z INFO         |   androidboot.hardware=ranchu
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2914492Z INFO         |   androidboot.hardware.gltransport=pipe
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2915084Z INFO         |   androidboot.hardware.vulkan=ranchu
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2915437Z INFO         |   androidboot.logcat=*:V
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2915791Z INFO         |   androidboot.opengles.version=196608
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2916456Z INFO         |   androidboot.qemu=1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2920719Z INFO         |   androidboot.qemu.adb.pubkey=QAAAAMXYb7/zGaJwCKF3//Z+UbLcpngvTEcJLz4AoRekM0mxm4y5Gg+z+NttSk66a1kAKRNwOffiOSjwDswY4+gB05Y85y91BOs2EvT+KigqsH+BwqWlwXBo2Ts9aNULmHNJyTQZWfdpcPEtuAARfH844XWHPejpVWrmVIccJmBuVnG7kvfDSM77oG/S8UgP2L46HQQ7kYL3DDu0Y4u4W/oM+gEPv3fb9wYbrtxIJDSEw9E9AwOV+Wqbw7zxRhgFNISbqd22hVsmB3wLQQLNenyTpBjj7Yg9k1bohhR5tcXo0Dm0biQplVqK6tJIi2WMpM1jnq1HVy3ct2P/wLRlzlZfnem/MnOvfa7BSgAMuWVDO33Cn2NSHBPWUeddbYVOyqGVrNMlVJKWn51akoHqdnhtYOr/YaDzr1yPFGNw9FKV4ed9GCHpOniO9NQ1l1Fy94mAystJXsJqhZHf7hyh+bcRI05DNCE08f3SY6JdQDUPp+EJbHtzp6kERXpPs/GANnXQ+ZOWuLsvBgK0dZgNgUo5sAJxZwIEfYHPj3y2OfYnfSn1ZosdmzCIJQjDbOTluq12BTCfVDaXvlNdPG7PHsBvLA+MPZ5uTfhpy6dvD7vjJLe1CNfzQnoNSCjaBAuTWBJX8s4gXm7aKb84xEQN4sp8Il/gacMi3iAx2Jp2WvVIUzbLsy98TQEAAQA= runner@unknown
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2924313Z INFO         |   androidboot.qemu.avd_name=stage5-ci
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2924740Z INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2925166Z INFO         |   androidboot.qemu.camera_protocol_ver=1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2925580Z INFO         |   androidboot.qemu.cpuvulkan.version=4206592
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2926209Z INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2926665Z INFO         |   androidboot.qemu.gltransport.name=pipe
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2927061Z INFO         |   androidboot.qemu.hwcodec.avcdec=2
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2927443Z INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2927848Z INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2928529Z INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2928995Z INFO         |   androidboot.qemu.skin=1080x2400
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2929367Z INFO         |   androidboot.qemu.virtiowifi=1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2929753Z INFO         |   androidboot.qemu.vsync=60
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2930145Z INFO         |   androidboot.serialno=EMULATOR37X2X12X0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2930805Z INFO         |   androidboot.vbmeta.digest=7466b5c28e6a3e1427b22ed2c317c6c7066294bde838d4d5243cce5d37992bd5
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2931381Z INFO         |   androidboot.vbmeta.hash_alg=sha256
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2931743Z INFO         |   androidboot.vbmeta.size=6848
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.2932104Z INFO         |   androidboot.veritymode=enforcing
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.3068663Z WARNING: cannnot unmap ptr 0x7f792e801000 as it is in the protected range from 0x7f788e800000 to 0x7f792ea00000
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:30.3283054Z INFO         | Monitoring duration of emulator setup.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:31.3320776Z INFO         | Activated packet streamer for uwb emulation
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:31.3322298Z INFO         | Activated packet streamer for bluetooth emulation
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:31.3336603Z INFO         | Successfully initialized netsim WiFi
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:31.3386450Z INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:31.3387482Z INFO         | setDisplayActiveConfig: id:0, 1080x2400
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:31.3388487Z INFO         | emulatorSetupEnvironment: Environment scene is not required
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:31.3476293Z USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:31.3478049Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:31.5937429Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:39.5508506Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:39.5544872Z * daemon not running; starting now at tcp:5037
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:39.8507151Z * daemon started successfully
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:39.8513725Z adb: device offline
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:39.8521394Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:41.8564944Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:41.8604688Z adb: device offline
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:41.8611812Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:43.8636760Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:43.8676981Z adb: device offline
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:43.8684356Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:45.8732930Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:45.8773728Z adb: device offline
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:45.8780228Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:47.8828750Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:47.8869890Z adb: device offline
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:47.8876785Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:49.8927567Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:49.8974453Z adb: device offline
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:49.8981525Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:51.9013635Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:51.9059854Z adb: device offline
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:51.9065481Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:53.9123976Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:53.9446537Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:55.9501534Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:55.9704676Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:57.9776747Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:32:58.0056762Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:00.0099505Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:00.0391616Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:02.0468659Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:02.0703115Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:04.0778011Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:04.1170302Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:06.1257740Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:06.1684975Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:08.1721220Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:08.2076781Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:10.2120629Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:10.2528533Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:12.2613904Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:12.2885225Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:14.2942122Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:14.3233147Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:16.3307856Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:16.3756492Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:18.3787774Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:18.4975601Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:20.5107669Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:20.5586888Z 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:20.5617054Z Emulator booted.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:20.5707390Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell input keyevent 82
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:21.2090225Z INFO         | Boot completed in 51625 ms
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:21.2095287Z INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:22.0337090Z Disabling animations.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:22.0397196Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global window_animation_scale 0.0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:22.2678089Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global transition_animation_scale 0.0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:22.3748199Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global animator_duration_scale 0.0
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:22.6827347Z ##[endgroup]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:22.6887162Z [command]/usr/bin/sh -c bash scripts/ci_stage6_instrumentation.sh
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:22.7908198Z Running the full connected suite on verified emulator emulator-5554
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:24.5244182Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:27.2202480Z Daemon will be stopped at the end of the build 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:44.7265057Z > Task :app:preBuild UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:44.7296883Z > Task :app:preDebugBuild UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:44.8278054Z > Task :app:generateDebugResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:44.9237292Z > Task :app:packageDebugResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:46.4242843Z > Task :app:processDebugNavigationResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:46.4248090Z > Task :app:parseDebugLocalResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:46.5229696Z > Task :app:generateDebugRFile UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:47.2237298Z > Task :app:kspDebugKotlin UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:47.6222561Z > Task :app:compileDebugKotlin UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:47.6276668Z > Task :app:javaPreCompileDebug UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:47.6302065Z > Task :app:compileDebugJavaWithJavac NO-SOURCE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:47.8231926Z > Task :app:checkDebugAarMetadata UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:47.8251457Z > Task :app:mapDebugSourceSetPaths UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:47.8280152Z > Task :app:compileDebugNavigationResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.0242709Z > Task :app:mergeDebugResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.0316884Z > Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.0358524Z > Task :app:extractDeepLinksDebug UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.2237367Z > Task :app:processDebugMainManifest UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.2256695Z > Task :app:processDebugManifest UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.2257471Z > Task :app:processDebugManifestForPackage UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.7213420Z > Task :app:processDebugResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.8227142Z > Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.8266742Z > Task :app:preDebugAndroidTestBuild SKIPPED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.8366303Z > Task :app:generateDebugAndroidTestResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.8417355Z > Task :app:packageDebugAndroidTestResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.8486762Z > Task :app:processDebugAndroidTestNavigationResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.8537377Z > Task :app:parseDebugAndroidTestLocalResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.8566847Z > Task :app:generateDebugAndroidTestRFile UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:48.9217586Z > Task :app:kspDebugAndroidTestKotlin UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:49.1237274Z > Task :app:compileDebugAndroidTestKotlin UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:49.1247842Z > Task :app:javaPreCompileDebugAndroidTest UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:49.1267033Z > Task :app:compileDebugAndroidTestJavaWithJavac NO-SOURCE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:49.1297413Z > Task :app:generateDebugAssets UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:49.2233352Z > Task :app:mergeDebugAssets UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:49.2267054Z > Task :app:compressDebugAssets UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:49.2268359Z > Task :app:desugarDebugFileDependencies UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:49.3247146Z > Task :app:dexBuilderDebug UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.1202788Z > Task :app:mergeDebugGlobalSynthetics UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.1205794Z > Task :app:processDebugJavaRes UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.2237353Z > Task :app:mergeDebugJavaResource UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.3213627Z > Task :app:checkDebugDuplicateClasses UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.5208884Z > Task :app:mergeExtDexDebug UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.5234897Z > Task :app:mergeLibDexDebug UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.5256655Z > Task :app:mergeProjectDexDebug UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.5276710Z > Task :app:mergeDebugJniLibFolders UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.6227226Z > Task :app:mergeDebugNativeLibs UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.6236796Z > Task :app:stripDebugDebugSymbols UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.6237524Z > Task :app:validateSigningDebug UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.6238106Z > Task :app:writeDebugAppMetadata UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.6238718Z > Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.6239288Z > Task :app:packageDebug UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.6239886Z > Task :app:createDebugApkListingFileRedirect UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.6240553Z > Task :app:generateDebugAndroidTestAssets UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.7203586Z > Task :app:mergeDebugAndroidTestAssets UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.7228061Z > Task :app:compressDebugAndroidTestAssets UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.7257374Z > Task :app:desugarDebugAndroidTestFileDependencies UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.7286963Z > Task :app:checkDebugAndroidTestAarMetadata UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.7317033Z > Task :app:mapDebugAndroidTestSourceSetPaths UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.7337668Z > Task :app:compileDebugAndroidTestNavigationResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.8207304Z > Task :app:mergeDebugAndroidTestResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.9227292Z > Task :app:processDebugAndroidTestManifest UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.9267164Z > Task :app:processDebugAndroidTestResources UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:50.9297597Z > Task :app:dexBuilderDebugAndroidTest UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.0213017Z > Task :app:mergeDebugAndroidTestGlobalSynthetics UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.0237044Z > Task :app:processDebugAndroidTestJavaRes UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.0307049Z > Task :app:mergeDebugAndroidTestJavaResource UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.0320726Z > Task :app:checkDebugAndroidTestDuplicateClasses UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.0356973Z > Task :app:mergeExtDexDebugAndroidTest UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.0377517Z > Task :app:mergeLibDexDebugAndroidTest UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.1203526Z > Task :app:mergeProjectDexDebugAndroidTest UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.1217294Z > Task :app:mergeDebugAndroidTestJniLibFolders UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.1222780Z > Task :app:mergeDebugAndroidTestNativeLibs NO-SOURCE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.1224399Z > Task :app:stripDebugAndroidTestDebugSymbols NO-SOURCE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.1225424Z > Task :app:validateSigningDebugAndroidTest UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.1226771Z > Task :app:writeDebugAndroidTestSigningConfigVersions UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.1227719Z > Task :app:packageDebugAndroidTest UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:33:51.1228685Z > Task :app:createDebugAndroidTestApkListingFileRedirect UP-TO-DATE
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:34:13.6201384Z [EmulatorConsole]: Failed to start Emulator console for 5554
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:34:21.1203474Z > Task :app:connectedDebugAndroidTest
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:34:27.2202289Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:34:27.2204271Z Starting 182 tests on emulator-5554 - 16
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:34:37.3200753Z emulator-5554 - 16 Tests 0/182 completed. (0 skipped) (0 failed)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:34:47.2203256Z emulator-5554 - 16 Tests 9/182 completed. (0 skipped) (0 failed)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:34:57.2203828Z emulator-5554 - 16 Tests 17/182 completed. (0 skipped) (0 failed)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:35:05.7443949Z INFO         | Created VkInstance:0x56050cc84000 for application:'' engine:''.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:35:05.7509992Z INFO         | Destroyed VkInstance:0x56050cc84000 for application:'' engine:''.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:35:07.3229437Z emulator-5554 - 16 Tests 18/182 completed. (0 skipped) (0 failed)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:35:17.3203283Z emulator-5554 - 16 Tests 40/182 completed. (0 skipped) (0 failed)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:35:27.3202694Z emulator-5554 - 16 Tests 51/182 completed. (0 skipped) (0 failed)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:35:37.3201307Z emulator-5554 - 16 Tests 60/182 completed. (0 skipped) (0 failed)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:35:47.3200749Z emulator-5554 - 16 Tests 70/182 completed. (0 skipped) (0 failed)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:35:57.2199966Z emulator-5554 - 16 Tests 72/182 completed. (0 skipped) (0 failed)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:03.6201400Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:03.6204243Z com.opus.piano.Stage4ExternalPortraitTest > separatelyAcquiredLicensedOriginalCanBeVerifiedAndRenderedOffline[emulator-5554 - 16] ^[[33mSKIPPED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:03.6206589Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:03.6207616Z com.opus.piano.Stage4ExternalProviderTest > boundedObservedProviderResponsesPassNativeProjectionAndSearchPaging[emulator-5554 - 16] ^[[33mSKIPPED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:07.2199924Z emulator-5554 - 16 Tests 130/182 completed. (2 skipped) (0 failed)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:17.3200303Z emulator-5554 - 16 Tests 142/182 completed. (2 skipped) (0 failed)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.3201174Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.3204869Z com.opus.piano.Stage5BundleJobRunnerTest > concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle[emulator-5554 - 16] ^[[31mFAILED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.3207193Z 	java.lang.AssertionError: expected:<Completed> but was:<Retryable(error=integrity)>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.3208305Z 	at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.3208828Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.3210404Z com.opus.piano.Stage5BundleJobRunnerTest > interruptedDownloadLeavesRetryableStateAndCompletesOnRetry[emulator-5554 - 16] ^[[31mFAILED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.3220657Z 	java.lang.AssertionError: a partial bundle is never published expected null, but was:<BundleManifest(bundleId=cf7c2725-ca89-4081-8987-8bb70a6ec147, type=WORK, entityId=entity-cf7c2725-ca89-4081-8987-8bb70a6ec147, schemaVersion=1, revision=1, language=en, createdAt=1792967811843, validatedAt=null, dependencies=[], expectedBytes=28, files=[BundleFile(sha256=7c67aa2990a8aaeeb53ae183746191e834e53461522c934b1d5392b1353fc088, bytes=28, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=28, completedFiles=0), lastError=transport, updatedAt=1792967811859)>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.3227894Z 	at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.4205878Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.4213543Z com.opus.piano.Stage5BundleJobRunnerTest > interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete[emulator-5554 - 16] ^[[31mFAILED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.4218138Z 	java.lang.IllegalArgumentException: List has more than one element.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.4220453Z 	at kotlin.collections.CollectionsKt___CollectionsKt.single(_Collections.kt:618)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.4222023Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.4223527Z com.opus.piano.Stage5BundleJobRunnerTest > corruptSourceContentNeverReachesReady[emulator-5554 - 16] ^[[31mFAILED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.4232729Z 	java.lang.AssertionError: expected null, but was:<BundleManifest(bundleId=8817b96a-979c-4495-a9e3-5d55e89ff323, type=WORK, entityId=entity-8817b96a-979c-4495-a9e3-5d55e89ff323, schemaVersion=1, revision=1, language=en, createdAt=1792967811898, validatedAt=null, dependencies=[], expectedBytes=22, files=[BundleFile(sha256=e0f5dc7aa820c4f7b316035c62312e0ecf5aec2d3f0d29c7e86f4c996f92f933, bytes=22, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=22, completedFiles=0), lastError=integrity, updatedAt=1792967811916)>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.4240812Z 	at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.5199451Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.5204508Z com.opus.piano.Stage5BundleJobRunnerTest > corruptStoredBlobIsQuarantinedAndRepairedOnRetry[emulator-5554 - 16] ^[[31mFAILED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.5206632Z 	java.lang.AssertionError: repair re-downloads and republishes expected:<Completed> but was:<Retryable(error=transport:IllegalArgumentException)>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.5208267Z 	at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.6199540Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.6203957Z com.opus.piano.Stage5BundleJobRunnerTest > consentRevocationMidStreamPausesAndKeepsReadyContent[emulator-5554 - 16] ^[[31mFAILED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.6205437Z 	java.lang.AssertionError: prior ready content is never deleted expected:<1> but was:<2>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.6206414Z 	at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.7199902Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.7211684Z com.opus.piano.Stage5BundleStoreTest > interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote[emulator-5554 - 16] ^[[31mFAILED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.7212923Z 	java.lang.AssertionError
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.7213638Z 	at org.junit.Assert.fail(Assert.java:87)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.8199951Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.8203555Z com.opus.piano.Stage5BundleStoreTest > storeStateSurvivesReopenLikeAProcessRestart[emulator-5554 - 16] ^[[31mFAILED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.8206476Z 	java.lang.AssertionError: bytes survive reopen exactly expected: java.lang.Integer<22> but was: java.lang.Long<22>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.8207874Z 	at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.8208477Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.8210057Z com.opus.piano.Stage5BundleWorkerTest > queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker[emulator-5554 - 16] ^[[31mFAILED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.8211852Z 	java.lang.AssertionError: expected success, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:52.8212977Z 	at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.2199644Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.2203666Z com.opus.piano.Stage5BundleWorkerTest > offlineEnvironmentRetriesWithoutMovingAByte[emulator-5554 - 16] ^[[31mFAILED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.2205134Z 	java.lang.AssertionError: Waiting maps to WorkManager retry, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.2206350Z 	at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.2206774Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.2208019Z com.opus.piano.Stage5BundleWorkerTest > transportFailureRetriesAndRecordsTheAttempt[emulator-5554 - 16] ^[[31mFAILED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.2209712Z 	java.lang.AssertionError: transient failure maps to WorkManager retry, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.2210760Z 	at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.2211109Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.2212294Z com.opus.piano.Stage5BundleWorkerTest > cancelledJobSucceedsWithoutTouchingTheBundle[emulator-5554 - 16] ^[[31mFAILED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.2214030Z 	java.lang.AssertionError: cancelled while queued is a clean success, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.2215029Z 	at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.3199308Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.3208486Z com.opus.piano.Stage5BundleWorkerTest > missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable[emulator-5554 - 16] ^[[31mFAILED ^[[0m
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.3210364Z 	java.lang.AssertionError: Paused maps to WorkManager success, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:53.3211425Z 	at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.7215326Z Tests on emulator-5554 - 16 failed: There was 13 failure(s).
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.8209273Z Finished 184 tests on emulator-5554 - 16
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9224114Z Execute com.opus.piano.Stage5BundleJobRunnerTest.concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle: FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9264299Z java.lang.AssertionError: java.lang.AssertionError: expected:<Completed> but was:<Retryable(error=integrity)>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9364031Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9387372Z at org.junit.Assert.failNotEquals(Assert.java:835)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9407005Z at org.junit.Assert.assertEquals(Assert.java:120)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9437328Z at org.junit.Assert.assertEquals(Assert.java:146)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9453670Z at com.opus.piano.Stage5BundleJobRunnerTest$concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:442)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9455864Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9457594Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9458829Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9460015Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9461078Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9462102Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9463138Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9464273Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9466371Z at com.opus.piano.Stage5BundleJobRunnerTest.concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle(Stage5BundleJobRunnerTest.kt:423)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9467998Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9468653Z java.lang.AssertionError: expected:<Completed> but was:<Retryable(error=integrity)>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9469558Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9470241Z at org.junit.Assert.failNotEquals(Assert.java:835)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9470977Z at org.junit.Assert.assertEquals(Assert.java:120)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9471699Z at org.junit.Assert.assertEquals(Assert.java:146)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9473459Z at com.opus.piano.Stage5BundleJobRunnerTest$concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:442)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9475431Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9478937Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9481485Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9484978Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9486942Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9488018Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9488659Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9489271Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9490421Z at com.opus.piano.Stage5BundleJobRunnerTest.concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle(Stage5BundleJobRunnerTest.kt:423)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9492658Z Execute com.opus.piano.Stage5BundleJobRunnerTest.interruptedDownloadLeavesRetryableStateAndCompletesOnRetry: FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9497993Z java.lang.AssertionError: java.lang.AssertionError: a partial bundle is never published expected null, but was:<BundleManifest(bundleId=cf7c2725-ca89-4081-8987-8bb70a6ec147, type=WORK, entityId=entity-cf7c2725-ca89-4081-8987-8bb70a6ec147, schemaVersion=1, revision=1, language=en, createdAt=1792967811843, validatedAt=null, dependencies=[], expectedBytes=28, files=[BundleFile(sha256=7c67aa2990a8aaeeb53ae183746191e834e53461522c934b1d5392b1353fc088, bytes=28, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=28, completedFiles=0), lastError=transport, updatedAt=1792967811859)>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9501958Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9502350Z at org.junit.Assert.failNotNull(Assert.java:756)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9502751Z at org.junit.Assert.assertNull(Assert.java:738)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9503676Z at com.opus.piano.Stage5BundleJobRunnerTest$interruptedDownloadLeavesRetryableStateAndCompletesOnRetry$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:168)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9504698Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9505338Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9506444Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9507534Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9508452Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9509435Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9510623Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9511752Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9514184Z at com.opus.piano.Stage5BundleJobRunnerTest.interruptedDownloadLeavesRetryableStateAndCompletesOnRetry(Stage5BundleJobRunnerTest.kt:151)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9515401Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9521057Z java.lang.AssertionError: a partial bundle is never published expected null, but was:<BundleManifest(bundleId=cf7c2725-ca89-4081-8987-8bb70a6ec147, type=WORK, entityId=entity-cf7c2725-ca89-4081-8987-8bb70a6ec147, schemaVersion=1, revision=1, language=en, createdAt=1792967811843, validatedAt=null, dependencies=[], expectedBytes=28, files=[BundleFile(sha256=7c67aa2990a8aaeeb53ae183746191e834e53461522c934b1d5392b1353fc088, bytes=28, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=28, completedFiles=0), lastError=transport, updatedAt=1792967811859)>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9524717Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9525107Z at org.junit.Assert.failNotNull(Assert.java:756)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9525514Z at org.junit.Assert.assertNull(Assert.java:738)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9526756Z at com.opus.piano.Stage5BundleJobRunnerTest$interruptedDownloadLeavesRetryableStateAndCompletesOnRetry$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:168)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9527787Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9528683Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9529305Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9530212Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9531179Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9531737Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9532646Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9533246Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9534195Z at com.opus.piano.Stage5BundleJobRunnerTest.interruptedDownloadLeavesRetryableStateAndCompletesOnRetry(Stage5BundleJobRunnerTest.kt:151)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9535435Z Execute com.opus.piano.Stage5BundleJobRunnerTest.interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete: FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9540485Z java.lang.IllegalArgumentException: java.lang.IllegalArgumentException: List has more than one element.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9541727Z at kotlin.collections.CollectionsKt___CollectionsKt.single(_Collections.kt:618)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9543895Z at com.opus.piano.Stage5BundleJobRunnerTest$interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:204)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9545749Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9547120Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9548284Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9549473Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9550474Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9551417Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9552239Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9552863Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9553874Z at com.opus.piano.Stage5BundleJobRunnerTest.interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete(Stage5BundleJobRunnerTest.kt:179)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9554755Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9555039Z java.lang.IllegalArgumentException: List has more than one element.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9555659Z at kotlin.collections.CollectionsKt___CollectionsKt.single(_Collections.kt:618)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9557043Z at com.opus.piano.Stage5BundleJobRunnerTest$interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:204)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9558129Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9558780Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9560045Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9561239Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9562978Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9563574Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9564165Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9565058Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9566622Z at com.opus.piano.Stage5BundleJobRunnerTest.interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete(Stage5BundleJobRunnerTest.kt:179)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9567733Z Execute com.opus.piano.Stage5BundleJobRunnerTest.corruptSourceContentNeverReachesReady: FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9573445Z java.lang.AssertionError: java.lang.AssertionError: expected null, but was:<BundleManifest(bundleId=8817b96a-979c-4495-a9e3-5d55e89ff323, type=WORK, entityId=entity-8817b96a-979c-4495-a9e3-5d55e89ff323, schemaVersion=1, revision=1, language=en, createdAt=1792967811898, validatedAt=null, dependencies=[], expectedBytes=22, files=[BundleFile(sha256=e0f5dc7aa820c4f7b316035c62312e0ecf5aec2d3f0d29c7e86f4c996f92f933, bytes=22, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=22, completedFiles=0), lastError=integrity, updatedAt=1792967811916)>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9577383Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9577761Z at org.junit.Assert.failNotNull(Assert.java:756)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9578151Z at org.junit.Assert.assertNull(Assert.java:738)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9578675Z at org.junit.Assert.assertNull(Assert.java:748)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9580116Z at com.opus.piano.Stage5BundleJobRunnerTest$corruptSourceContentNeverReachesReady$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:346)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9581698Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9582365Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9582979Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9583602Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9584175Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9585009Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9585844Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9586584Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9587644Z at com.opus.piano.Stage5BundleJobRunnerTest.corruptSourceContentNeverReachesReady(Stage5BundleJobRunnerTest.kt:336)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9588769Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9594374Z java.lang.AssertionError: expected null, but was:<BundleManifest(bundleId=8817b96a-979c-4495-a9e3-5d55e89ff323, type=WORK, entityId=entity-8817b96a-979c-4495-a9e3-5d55e89ff323, schemaVersion=1, revision=1, language=en, createdAt=1792967811898, validatedAt=null, dependencies=[], expectedBytes=22, files=[BundleFile(sha256=e0f5dc7aa820c4f7b316035c62312e0ecf5aec2d3f0d29c7e86f4c996f92f933, bytes=22, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=22, completedFiles=0), lastError=integrity, updatedAt=1792967811916)>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9598097Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9598487Z at org.junit.Assert.failNotNull(Assert.java:756)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9598884Z at org.junit.Assert.assertNull(Assert.java:738)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9599274Z at org.junit.Assert.assertNull(Assert.java:748)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9600056Z at com.opus.piano.Stage5BundleJobRunnerTest$corruptSourceContentNeverReachesReady$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:346)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9600970Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9601609Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9602219Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9602842Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9603412Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9603947Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9604529Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9605125Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9606415Z at com.opus.piano.Stage5BundleJobRunnerTest.corruptSourceContentNeverReachesReady(Stage5BundleJobRunnerTest.kt:336)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9607452Z Execute com.opus.piano.Stage5BundleJobRunnerTest.corruptStoredBlobIsQuarantinedAndRepairedOnRetry: FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9608657Z java.lang.AssertionError: java.lang.AssertionError: repair re-downloads and republishes expected:<Completed> but was:<Retryable(error=transport:IllegalArgumentException)>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9609450Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9609828Z at org.junit.Assert.failNotEquals(Assert.java:835)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9610491Z at org.junit.Assert.assertEquals(Assert.java:120)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9611348Z at com.opus.piano.Stage5BundleJobRunnerTest$corruptStoredBlobIsQuarantinedAndRepairedOnRetry$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:413)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9612327Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9613428Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9614149Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9615072Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9615792Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9616471Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9617064Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9617659Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9618555Z at com.opus.piano.Stage5BundleJobRunnerTest.corruptStoredBlobIsQuarantinedAndRepairedOnRetry(Stage5BundleJobRunnerTest.kt:398)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9619302Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9620205Z java.lang.AssertionError: repair re-downloads and republishes expected:<Completed> but was:<Retryable(error=transport:IllegalArgumentException)>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9621177Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9621562Z at org.junit.Assert.failNotEquals(Assert.java:835)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9621968Z at org.junit.Assert.assertEquals(Assert.java:120)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9623324Z at com.opus.piano.Stage5BundleJobRunnerTest$corruptStoredBlobIsQuarantinedAndRepairedOnRetry$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:413)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9625008Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9626345Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9627413Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9628302Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9629431Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9630031Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9630612Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9631231Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9632443Z at com.opus.piano.Stage5BundleJobRunnerTest.corruptStoredBlobIsQuarantinedAndRepairedOnRetry(Stage5BundleJobRunnerTest.kt:398)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9634679Z Execute com.opus.piano.Stage5BundleJobRunnerTest.consentRevocationMidStreamPausesAndKeepsReadyContent: FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9636200Z java.lang.AssertionError: java.lang.AssertionError: prior ready content is never deleted expected:<1> but was:<2>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9636828Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9637223Z at org.junit.Assert.failNotEquals(Assert.java:835)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9637639Z at org.junit.Assert.assertEquals(Assert.java:647)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9638508Z at com.opus.piano.Stage5BundleJobRunnerTest$consentRevocationMidStreamPausesAndKeepsReadyContent$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:273)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9639671Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9640303Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9640910Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9641536Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9642105Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9642644Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9643512Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9644386Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9645313Z at com.opus.piano.Stage5BundleJobRunnerTest.consentRevocationMidStreamPausesAndKeepsReadyContent(Stage5BundleJobRunnerTest.kt:245)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9646462Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9646898Z java.lang.AssertionError: prior ready content is never deleted expected:<1> but was:<2>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9647802Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9648388Z at org.junit.Assert.failNotEquals(Assert.java:835)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9649084Z at org.junit.Assert.assertEquals(Assert.java:647)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9650242Z at com.opus.piano.Stage5BundleJobRunnerTest$consentRevocationMidStreamPausesAndKeepsReadyContent$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:273)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9651241Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9651874Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9652676Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9653301Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9653883Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9654416Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9654991Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9655606Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9656792Z at com.opus.piano.Stage5BundleJobRunnerTest.consentRevocationMidStreamPausesAndKeepsReadyContent(Stage5BundleJobRunnerTest.kt:245)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9657987Z Execute com.opus.piano.Stage5BundleStoreTest.interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote: FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9659044Z java.lang.AssertionError
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9659439Z at org.junit.Assert.fail(Assert.java: java.lang.AssertionError
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9659864Z at org.junit.Assert.fail(Assert.java:87)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9660228Z at org.junit.Assert.assertTrue(Assert.java:42)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9660608Z at org.junit.Assert.assertTrue(Assert.java:53)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9661488Z at com.opus.piano.Stage5BundleStoreTest$interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote$1.invokeSuspend(Stage5BundleStoreTest.kt:105)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9663333Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9663996Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9664609Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9665231Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9665819Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9666619Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9667417Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9668546Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9670750Z at com.opus.piano.Stage5BundleStoreTest.interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote(Stage5BundleStoreTest.kt:74)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9671953Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9672174Z java.lang.AssertionError
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9672957Z at org.junit.Assert.fail(Assert.java:87)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9673812Z at org.junit.Assert.assertTrue(Assert.java:42)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9674854Z at org.junit.Assert.assertTrue(Assert.java:53)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9676316Z at com.opus.piano.Stage5BundleStoreTest$interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote$1.invokeSuspend(Stage5BundleStoreTest.kt:105)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9677934Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9678788Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9680023Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9681497Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9745214Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9746252Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9747341Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9748362Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9749866Z at com.opus.piano.Stage5BundleStoreTest.interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote(Stage5BundleStoreTest.kt:74)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9751753Z Execute com.opus.piano.Stage5BundleStoreTest.storeStateSurvivesReopenLikeAProcessRestart: FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9753650Z java.lang.AssertionError: java.lang.AssertionError: bytes survive reopen exactly expected: java.lang.Integer<22> but was: java.lang.Long<22>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9755285Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9756266Z at org.junit.Assert.failNotEquals(Assert.java:835)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9757002Z at org.junit.Assert.assertEquals(Assert.java:120)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9758333Z at com.opus.piano.Stage5BundleStoreTest$storeStateSurvivesReopenLikeAProcessRestart$1.invokeSuspend(Stage5BundleStoreTest.kt:126)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9759875Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9760927Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9761958Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9763049Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9764069Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9764987Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9766605Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9767718Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9769076Z at com.opus.piano.Stage5BundleStoreTest.storeStateSurvivesReopenLikeAProcessRestart(Stage5BundleStoreTest.kt:111)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9770005Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9771616Z java.lang.AssertionError: bytes survive reopen exactly expected: java.lang.Integer<22> but was: java.lang.Long<22>
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9772292Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9772689Z at org.junit.Assert.failNotEquals(Assert.java:835)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9773311Z at org.junit.Assert.assertEquals(Assert.java:120)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9774574Z at com.opus.piano.Stage5BundleStoreTest$storeStateSurvivesReopenLikeAProcessRestart$1.invokeSuspend(Stage5BundleStoreTest.kt:126)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9776236Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9777277Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9778695Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9779790Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9780386Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9780937Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9781521Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9782343Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9783361Z at com.opus.piano.Stage5BundleStoreTest.storeStateSurvivesReopenLikeAProcessRestart(Stage5BundleStoreTest.kt:111)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9784403Z Execute com.opus.piano.Stage5BundleWorkerTest.queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker: FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9785356Z java.lang.AssertionError: java.lang.AssertionError: expected success, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9786105Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9786517Z at org.junit.Assert.assertTrue(Assert.java:42)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9787388Z at com.opus.piano.Stage5BundleWorkerTest$queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker$1.invokeSuspend(Stage5BundleWorkerTest.kt:193)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9788372Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9789859Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9790502Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9791134Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9791708Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9792467Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9793061Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9793687Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9794588Z at com.opus.piano.Stage5BundleWorkerTest.queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker(Stage5BundleWorkerTest.kt:186)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9795168Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9795467Z java.lang.AssertionError: expected success, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9796167Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9796677Z at org.junit.Assert.assertTrue(Assert.java:42)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9797532Z at com.opus.piano.Stage5BundleWorkerTest$queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker$1.invokeSuspend(Stage5BundleWorkerTest.kt:193)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9798511Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9799149Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9799754Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9800379Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9800942Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9801488Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9802070Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9803102Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9804018Z at com.opus.piano.Stage5BundleWorkerTest.queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker(Stage5BundleWorkerTest.kt:186)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9805032Z Execute com.opus.piano.Stage5BundleWorkerTest.offlineEnvironmentRetriesWithoutMovingAByte: FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9806430Z java.lang.AssertionError: java.lang.AssertionError: Waiting maps to WorkManager retry, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9807500Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9808065Z at org.junit.Assert.assertTrue(Assert.java:42)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9808868Z at com.opus.piano.Stage5BundleWorkerTest$offlineEnvironmentRetriesWithoutMovingAByte$1.invokeSuspend(Stage5BundleWorkerTest.kt:220)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9809833Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9810489Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9811105Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9811724Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9812303Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9812835Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9825829Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9826886Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9828582Z at com.opus.piano.Stage5BundleWorkerTest.offlineEnvironmentRetriesWithoutMovingAByte(Stage5BundleWorkerTest.kt:211)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9829127Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9829517Z java.lang.AssertionError: Waiting maps to WorkManager retry, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9830056Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9830493Z at org.junit.Assert.assertTrue(Assert.java:42)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9831430Z at com.opus.piano.Stage5BundleWorkerTest$offlineEnvironmentRetriesWithoutMovingAByte$1.invokeSuspend(Stage5BundleWorkerTest.kt:220)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9832361Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9833002Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9834113Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9834797Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9835385Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9835922Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9837160Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9838111Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9839408Z at com.opus.piano.Stage5BundleWorkerTest.offlineEnvironmentRetriesWithoutMovingAByte(Stage5BundleWorkerTest.kt:211)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9841018Z Execute com.opus.piano.Stage5BundleWorkerTest.transportFailureRetriesAndRecordsTheAttempt: FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9842013Z java.lang.AssertionError: java.lang.AssertionError: transient failure maps to WorkManager retry, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9842672Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9843044Z at org.junit.Assert.assertTrue(Assert.java:42)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9844460Z at com.opus.piano.Stage5BundleWorkerTest$transportFailureRetriesAndRecordsTheAttempt$1.invokeSuspend(Stage5BundleWorkerTest.kt:260)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9846360Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9847045Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9847694Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9848346Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9848932Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9849473Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9850048Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9850654Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9851670Z at com.opus.piano.Stage5BundleWorkerTest.transportFailureRetriesAndRecordsTheAttempt(Stage5BundleWorkerTest.kt:253)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9852188Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9852612Z java.lang.AssertionError: transient failure maps to WorkManager retry, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9853172Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9853536Z at org.junit.Assert.assertTrue(Assert.java:42)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9854321Z at com.opus.piano.Stage5BundleWorkerTest$transportFailureRetriesAndRecordsTheAttempt$1.invokeSuspend(Stage5BundleWorkerTest.kt:260)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9855237Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9855869Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9856625Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9857262Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9857848Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9858386Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9858966Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9859560Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9860383Z at com.opus.piano.Stage5BundleWorkerTest.transportFailureRetriesAndRecordsTheAttempt(Stage5BundleWorkerTest.kt:253)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9861343Z Execute com.opus.piano.Stage5BundleWorkerTest.cancelledJobSucceedsWithoutTouchingTheBundle: FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9862719Z java.lang.AssertionError: java.lang.AssertionError: cancelled while queued is a clean success, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9863705Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9864081Z at org.junit.Assert.assertTrue(Assert.java:42)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9864885Z at com.opus.piano.Stage5BundleWorkerTest$cancelledJobSucceedsWithoutTouchingTheBundle$1.invokeSuspend(Stage5BundleWorkerTest.kt:281)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9865812Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9866717Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9867339Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9867970Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9868548Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9869084Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9869665Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9870267Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9871093Z at com.opus.piano.Stage5BundleWorkerTest.cancelledJobSucceedsWithoutTouchingTheBundle(Stage5BundleWorkerTest.kt:273)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9871621Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9872021Z java.lang.AssertionError: cancelled while queued is a clean success, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9872568Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9872927Z at org.junit.Assert.assertTrue(Assert.java:42)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9873707Z at com.opus.piano.Stage5BundleWorkerTest$cancelledJobSucceedsWithoutTouchingTheBundle$1.invokeSuspend(Stage5BundleWorkerTest.kt:281)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9874623Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9875257Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9875868Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9876626Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9877528Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9878423Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9879021Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9879626Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9880459Z at com.opus.piano.Stage5BundleWorkerTest.cancelledJobSucceedsWithoutTouchingTheBundle(Stage5BundleWorkerTest.kt:273)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9881824Z Execute com.opus.piano.Stage5BundleWorkerTest.missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable: FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9882843Z java.lang.AssertionError: java.lang.AssertionError: Paused maps to WorkManager success, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9883591Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9884184Z at org.junit.Assert.assertTrue(Assert.java:42)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9885080Z at com.opus.piano.Stage5BundleWorkerTest$missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable$1.invokeSuspend(Stage5BundleWorkerTest.kt:241)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9886786Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9887458Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9888812Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9889520Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9890123Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9890678Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9891256Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9891851Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9892955Z at com.opus.piano.Stage5BundleWorkerTest.missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable(Stage5BundleWorkerTest.kt:232)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9893562Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9894010Z java.lang.AssertionError: Paused maps to WorkManager success, got Failure {mOutputData=Data {}}
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9894891Z at org.junit.Assert.fail(Assert.java:89)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9895565Z at org.junit.Assert.assertTrue(Assert.java:42)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9897001Z at com.opus.piano.Stage5BundleWorkerTest$missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable$1.invokeSuspend(Stage5BundleWorkerTest.kt:241)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9898015Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9898955Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9900082Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9901162Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9902198Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9903198Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9905230Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9906312Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:54.9907504Z at com.opus.piano.Stage5BundleWorkerTest.missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable(Stage5BundleWorkerTest.kt:232)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.0202228Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.0242508Z > Task :app:connectedDebugAndroidTest FAILED
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1246491Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1253779Z FAILURE: Build failed with an exception.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1277099Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1291290Z * What went wrong:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1292250Z Execution failed for task ':app:connectedDebugAndroidTest'.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1294200Z > There were failing tests. See the report at: file:///home/runner/work/Goldberg/Goldberg/app/build/reports/androidTests/connected/debug/index.html
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1300826Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1325501Z * Try:
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1326586Z > Run with --stacktrace option to get the stack trace.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1327641Z > Run with --info or --debug option to get more log output.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1328786Z > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1329811Z > Get more help at https://help.gradle.org.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1330327Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1330692Z BUILD FAILED in 3m 33s
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.1331407Z 69 actionable tasks: 1 executed, 68 up-to-date
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.8720167Z ##[error]The process '/usr/bin/sh' failed with exit code 1
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.8721790Z ##[group]Terminate Emulator
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.8736457Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 emu kill
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.8774708Z OK: killing emulator, bye bye
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.8775122Z OK
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.8777036Z INFO         | Wait for emulator (pid 3422) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.8778479Z 
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.8778971Z ##[endgroup]
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.8888342Z USER_INFO    | Snapshots have been disabled by the user, save request is ignored.
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:56.8889510Z INFO         | Saving snapshot 'default_boot' took 0 ms
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:57.4434252Z ERROR        | stop: Not implemented
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:57.4435292Z WARNING      | Emulator client has not yet been configured.. Call configure me first!
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:57.4576933Z INFO         | removeAll
+5.10 instrumentation — API 36 emulator	Run full instrumentation suite on the emulator	2026-10-25T22:36:57.5118674Z WARNING      | Netsim Wifi dns:///localhost:46053 is gone due to Stream removed (CANCELLED)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	﻿2026-10-25T22:33:00.5773854Z ##[group]Run reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5774772Z with:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5774971Z   api-level: 36
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5775178Z   target: google_apis
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5775387Z   arch: x86_64
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5775576Z   profile: pixel_6
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5775774Z   avd-name: stage5-ci
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5775990Z   disable-animations: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5776474Z   emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5777014Z   script: bash scripts/ci_stage6_acceptance.sh
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5777294Z   cores: 2
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5777484Z   force-avd-creation: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5777738Z   emulator-boot-timeout: 600
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5777982Z   emulator-port: 5554
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5778202Z   disable-spellchecker: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5778445Z   disable-linux-hw-accel: auto
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5778680Z   enable-hw-keyboard: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5778937Z   channel: stable
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5779126Z env:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5779416Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5779895Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5780286Z   ANDROID_HOME: /usr/local/lib/android/sdk
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5780579Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.5780846Z ##[endgroup]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6425605Z ##[group]Configure emulator
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6428066Z API level: 36
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6428614Z System image API level: 36
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6434986Z target: google_apis
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6445136Z CPU architecture: x86_64
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6445753Z Hardware profile: pixel_6
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6446188Z Cores: 2
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6446532Z RAM size: 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6446882Z Heap size: 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6447309Z SD card path or size: 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6447716Z Disk size: 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6448133Z AVD name: stage5-ci
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6448592Z force avd creation: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6449078Z Emulator boot timeout: 600
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6449556Z emulator port: 5554
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6450640Z emulator options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6451713Z disable animations: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6452238Z disable spellchecker: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6452780Z disable Linux hardware acceleration: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6453404Z enable hardware keyboard: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6454178Z Channel: 0 (stable)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6454577Z Script:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6455054Z bash scripts/ci_stage6_acceptance.sh
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6455652Z Pre emulator launch script:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6456417Z ##[endgroup]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6457037Z ##[group]Install Android SDK
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:00.6495808Z [command]/usr/bin/sh -c \yes | sdkmanager --licenses > /dev/null
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:04.4788851Z Installing latest build tools, platform tools, and platform.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:04.4806422Z [command]/usr/bin/sh -c \sdkmanager --install 'build-tools;37.0.0' platform-tools 'platforms;android-36'> /dev/null
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:06.2225788Z Installing latest emulator.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:06.2241733Z [command]/usr/bin/sh -c \sdkmanager --install emulator --channel=0 > /dev/null
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:14.1563048Z Installing system images.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:14.1580404Z [command]/usr/bin/sh -c \sdkmanager --install 'system-images;android-36;google_apis;x86_64' --channel=0 > /dev/null
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:53.5975096Z ##[endgroup]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:53.5978495Z ##[group]Create AVD
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:53.5978967Z Creating AVD.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:53.5999703Z [command]/usr/bin/sh -c \echo no | avdmanager create avd --force -n stage5-ci --package 'system-images;android-36;google_apis;x86_64' --device 'pixel_6'
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:54.4195534Z Loading local repository...                                                     
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:54.4197061Z [=========                              ] 25% Loading local repository...       
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:54.4224879Z [=========                              ] 25% Fetch remote repository...        
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:54.4225420Z [=======================================] 100% Fetch remote repository...       
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:54.6338106Z Auto-selecting single ABI x86_64
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.0812836Z [command]/usr/bin/sh -c \printf 'hw.cpu.ncore=2\n' >> /home/runner/.android/avd/stage5-ci.avd/config.ini
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.0836001Z ##[endgroup]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.0838198Z ##[group]Launch Emulator
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.0838568Z Starting emulator.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.0858134Z [command]/usr/bin/sh -c \/usr/local/lib/android/sdk/emulator/emulator -port 5554 -avd stage5-ci -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot &
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.0982219Z INFO         | Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1463317Z INFO         | Graphics backend: gfxstream
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1464953Z INFO         | Found systemPath /usr/local/lib/android/sdk/system-images/android-36/google_apis/x86_64/
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1466117Z INFO         | Saving last run QEMU version for the AVD to 2
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1467426Z INFO         | Guest usage of host flag 'VulkanVirtualQueue' will be ignored.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1471071Z INFO         | Increasing RAM size to 2560MB
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1472315Z INFO         | Guest GLES Driver: Auto (ext controls)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1473644Z INFO         | emuglConfig_init: vulkan_mode_selected:swiftshader gles_mode_selected:swiftshader
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1475018Z INFO         | Checking system compatibility:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1475913Z INFO         |   Checking: hasSufficientDiskSpace
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1477059Z INFO         |      Ok: Disk space requirements to run avd: `stage5-ci` are met
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1478102Z INFO         |   Checking: hasSufficientHwGpu
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1479151Z INFO         |      Ok: Hardware GPU compatibility checks are not required
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1480199Z INFO         |   Checking: hasSufficientSystem
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1481253Z INFO         |      Ok: System requirements to run avd: `stage5-ci` are met
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.1483385Z WARNING      | Feature QuickbootFileBacked is disabled due to stability issues, if you really want that, the environment variable ANDROID_EMU_FORCE_QUICKBOOT_FILE_BACKED need to set to 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6067747Z ERROR        | Unable to connect to adb daemon on port: 5037
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6083686Z INFO         | Storing crashdata in: /tmp/android-runner/emu-crash-37.2.12.db, detection is enabled for process: 3875
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6084820Z INFO         | Initializing gfxstream backend
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6094920Z INFO         | startOpenglesRendererImpl: gpu info
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6095463Z INFO         | 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6098514Z INFO         | initIcdPaths: ICD set to 'swiftshader', using Swiftshader ICD
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6099971Z INFO         | Setting ICD filenames for the loader = /usr/local/lib/android/sdk/emulator/lib64/vulkan/vk_swiftshader_icd.json
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6101152Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6102537Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so.1]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6103646Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6105095Z INFO         | Added library: /usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6156488Z INFO         | Selecting Vulkan device: SwiftShader Device (Subzero), Version: 1.3.0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6157887Z INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6287957Z INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6317712Z INFO         | SharedLibrary::open for [libX11]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6321349Z WARNING      | Could not open libX11.so, try libX11.so.6
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6321856Z INFO         | SharedLibrary::open for [libX11.so.6]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6322308Z INFO         | SharedLibrary::open for [libX11-xcb]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6322807Z WARNING      | Could not open libX11-xcb.so, try libX11-xcb.so.1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6323308Z INFO         | SharedLibrary::open for [libX11-xcb.so.1]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6373197Z INFO         | Initializing VkEmulation features:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6374464Z INFO         |     glInteropSupported: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6375308Z INFO         |     useDeferredCommands: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6376249Z INFO         |     createResourceWithRequirements: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6377075Z INFO         |     useVulkanComposition: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6378013Z INFO         |     useVulkanNativeSwapchain: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6378691Z INFO         |     enable guestRenderDoc: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6379562Z INFO         |     ASTC LDR emulation mode: Gpu
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6380420Z INFO         |     enable ETC2 emulation: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6381273Z INFO         |     enable Ycbcr emulation: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6382065Z INFO         |     guestVulkanOnly: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6382879Z INFO         |     useDedicatedAllocations: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6383640Z INFO         |     guestVulkanMaxApiVersion: 1.3.0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6384571Z INFO         |     enableProtectedMemoryEmulation: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6385344Z INFO         | Graphics Adapter Vendor Google (Google Inc.)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6386327Z INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (Google SwiftShader)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6387460Z INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6390579Z INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6392720Z INFO         | Graphics Device Extensions N/A
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6393122Z INFO         | Disabling sparse binding feature support
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6469515Z INFO         | Sending adb public key [QAAAAEP62F+VXUTOuoU/xBPpGKZbguzUnLLjWv4USgQ61eYfFU2LcqCsC3T30bIsiabtKnB28Qeo4D3NU5A6qolqWKL15weBLp5Id/Nxa+jYaLRiuhg5E/8H+XcYGmWbbKmlfsHFABWhzk5uRZ/TryN5ijnnVJEMVf1jcWJO0FR0DX54VMk08ll4SuwQxYdnLwKEL58HY0yGZZ5Cpq1oqunwrdGQN+cLXQstyJt4L4G4SAUX0wLVC5a2CaLLQuH+h2noI3ofOXn20qVVGplEOIz+1X/AZJqzr/cC+cfqTm0FItjguNKeLBvqQ3h6QZl7ltSAbL2UUdu2ww/8ae/qVH9crLj6lz3SZQSq1aX/fxjjzi8LMFa1FIf9vLyM8qiYlza2XC4FvOlDUaMRxeowMCXfQmlJ5mA0WAhS3WXMs9W3avnPXa4R+FSPX9CwafPq+KG7wQ9Z6Ok0/e7GGa2GGWl0HYcg8vNBQOQ5lew/uIkY6kyG/6ZTXdmssFK2avXC7HVJowG8RG4WuZe7D+yAA8Jl/jclb3WmlHJPjTW5WCGeE3M2l8Qcfqml3PML142qozmUnKOB9g8ojJalT2CO9usjq9gg7hErQ/ahm03HN2SXMPDWc4DBqcmVK95aZBpFBEUoXLZokAf9SKfrYXyHDrDDkQZzRLRTutO1X8I9hC9DdYcdKxGUUgEAAQA= runner@unknown]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6472959Z INFO         | Userspace boot properties:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6473510Z INFO         |   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6474366Z INFO         |   androidboot.dalvik.vm.heapsize=576m
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6474933Z INFO         |   androidboot.debug.hwui.renderer=skiagl
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6475607Z INFO         |   androidboot.debug.sf.nobootanimation=1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6475987Z INFO         |   androidboot.hardware=ranchu
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6476373Z INFO         |   androidboot.hardware.gltransport=pipe
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6476921Z INFO         |   androidboot.hardware.vulkan=ranchu
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6477284Z INFO         |   androidboot.logcat=*:V
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6477657Z INFO         |   androidboot.opengles.version=196608
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6478011Z INFO         |   androidboot.qemu=1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6482054Z INFO         |   androidboot.qemu.adb.pubkey=QAAAAEP62F+VXUTOuoU/xBPpGKZbguzUnLLjWv4USgQ61eYfFU2LcqCsC3T30bIsiabtKnB28Qeo4D3NU5A6qolqWKL15weBLp5Id/Nxa+jYaLRiuhg5E/8H+XcYGmWbbKmlfsHFABWhzk5uRZ/TryN5ijnnVJEMVf1jcWJO0FR0DX54VMk08ll4SuwQxYdnLwKEL58HY0yGZZ5Cpq1oqunwrdGQN+cLXQstyJt4L4G4SAUX0wLVC5a2CaLLQuH+h2noI3ofOXn20qVVGplEOIz+1X/AZJqzr/cC+cfqTm0FItjguNKeLBvqQ3h6QZl7ltSAbL2UUdu2ww/8ae/qVH9crLj6lz3SZQSq1aX/fxjjzi8LMFa1FIf9vLyM8qiYlza2XC4FvOlDUaMRxeowMCXfQmlJ5mA0WAhS3WXMs9W3avnPXa4R+FSPX9CwafPq+KG7wQ9Z6Ok0/e7GGa2GGWl0HYcg8vNBQOQ5lew/uIkY6kyG/6ZTXdmssFK2avXC7HVJowG8RG4WuZe7D+yAA8Jl/jclb3WmlHJPjTW5WCGeE3M2l8Qcfqml3PML142qozmUnKOB9g8ojJalT2CO9usjq9gg7hErQ/ahm03HN2SXMPDWc4DBqcmVK95aZBpFBEUoXLZokAf9SKfrYXyHDrDDkQZzRLRTutO1X8I9hC9DdYcdKxGUUgEAAQA= runner@unknown
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6485839Z INFO         |   androidboot.qemu.avd_name=stage5-ci
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6486280Z INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6486709Z INFO         |   androidboot.qemu.camera_protocol_ver=1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6487128Z INFO         |   androidboot.qemu.cpuvulkan.version=4206592
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6487598Z INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6488048Z INFO         |   androidboot.qemu.gltransport.name=pipe
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6488441Z INFO         |   androidboot.qemu.hwcodec.avcdec=2
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6488823Z INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6489205Z INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6489696Z INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6490205Z INFO         |   androidboot.qemu.skin=1080x2400
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6490570Z INFO         |   androidboot.qemu.virtiowifi=1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6490922Z INFO         |   androidboot.qemu.vsync=60
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6491292Z INFO         |   androidboot.serialno=EMULATOR37X2X12X0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6491905Z INFO         |   androidboot.vbmeta.digest=7466b5c28e6a3e1427b22ed2c317c6c7066294bde838d4d5243cce5d37992bd5
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6492471Z INFO         |   androidboot.vbmeta.hash_alg=sha256
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6492835Z INFO         |   androidboot.vbmeta.size=6848
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6493201Z INFO         |   androidboot.veritymode=enforcing
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6638100Z WARNING: cannnot unmap ptr 0x7f9924001000 as it is in the protected range from 0x7f9884000000 to 0x7f9924200000
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:55.6846844Z INFO         | Monitoring duration of emulator setup.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:56.6894358Z INFO         | Activated packet streamer for uwb emulation
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:56.6895320Z INFO         | Activated packet streamer for bluetooth emulation
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:56.6915260Z INFO         | Successfully initialized netsim WiFi
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:56.6953468Z INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:56.6954583Z INFO         | setDisplayActiveConfig: id:0, 1080x2400
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:56.6955488Z INFO         | emulatorSetupEnvironment: Environment scene is not required
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:56.7034743Z USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:56.7036792Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:33:56.7888191Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:05.0926732Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:05.0959762Z * daemon not running; starting now at tcp:5037
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:05.1701977Z * daemon started successfully
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:05.1705026Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:05.1716604Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:07.1756156Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:07.1794122Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:07.1800696Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:09.1849728Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:09.1893805Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:09.1899402Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:11.1953189Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:11.1993595Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:11.1999953Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:13.2048373Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:13.2089869Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:13.2094603Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:15.2141870Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:15.2188923Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:15.2195580Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:17.2242755Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:17.2289000Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:17.2293543Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:19.2355631Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:19.2747659Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:21.2803786Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:21.3102333Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:23.3172527Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:23.3469516Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:25.3540027Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:25.3784843Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:27.3845685Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:27.4178417Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:29.4266772Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:29.4529730Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:31.4595861Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:31.5005163Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:33.5066132Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:33.5236667Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:35.5327277Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:35.5612165Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:37.5676531Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:37.5988396Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:39.6045632Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:39.6272165Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:41.6436114Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:41.6819748Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:43.6925863Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:43.8014677Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:45.8075790Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:45.9310968Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:47.9495831Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:48.1460492Z 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:48.1467564Z Emulator booted.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:48.1525343Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell input keyevent 82
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:48.2335392Z INFO         | Boot completed in 53103 ms
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:48.2363686Z INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:49.0748407Z Disabling animations.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:49.0775507Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global window_animation_scale 0.0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:49.1979314Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global transition_animation_scale 0.0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:49.5564374Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global animator_duration_scale 0.0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:49.8525348Z ##[endgroup]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:49.8635020Z [command]/usr/bin/sh -c bash scripts/ci_stage6_acceptance.sh
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:50.0048020Z Running acceptance subset on verified emulator emulator-5554
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:58.7685469Z Performing Streamed Install
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:34:58.7724863Z Success
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:35:08.6816156Z stage5-ci-results/upgrade/seed.db: 1 file pushed, 0 skipped. 1.1 MB/s (147456 bytes in 0.130s)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:35:09.1617147Z stage5-ci-results/upgrade/goldberg-appearance.xml: 1 file pushed, 0 skipped. 0.1 MB/s (198 bytes in 0.002s)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:35:56.8824155Z Performing Streamed Install
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:35:56.8825040Z Success
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:09.0695828Z INFO         | Created VkInstance:0x55f12fa58000 for application:'' engine:''.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:09.0742609Z INFO         | Destroyed VkInstance:0x55f12fa58000 for application:'' engine:''.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:38.2135292Z Traceback (most recent call last):
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:38.2136889Z   File "/home/runner/work/Goldberg/Goldberg/scripts/verify_emulator_upgrade.py", line 143, in <module>
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:38.2158402Z     assert re.search(r'Active default network:\s*(?:none|null|-1)(?:\s|$)',adb('shell','dumpsys','connectivity').decode(),re.I), 'Offline state changed during upgrade'
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:38.2162613Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:38.2163801Z AssertionError: Offline state changed during upgrade
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:38.9842250Z ##[error]The process '/usr/bin/sh' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:38.9855278Z ##[group]Terminate Emulator
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:38.9888306Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 emu kill
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:38.9935337Z OK: killing emulator, bye bye
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:38.9935840Z OK
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:38.9937594Z INFO         | Wait for emulator (pid 3875) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:38.9938976Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:38.9939635Z ##[endgroup]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:39.0196366Z USER_INFO    | Snapshots have been disabled by the user, save request is ignored.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:39.0201730Z INFO         | Saving snapshot 'default_boot' took 1 ms
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:39.7792367Z ERROR        | stop: Not implemented
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:39.7793491Z WARNING      | Emulator client has not yet been configured.. Call configure me first!
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:39.7943438Z INFO         | removeAll
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:36:39.8666244Z WARNING      | Netsim Wifi dns:///localhost:36475 is gone due to Stream removed (CANCELLED)

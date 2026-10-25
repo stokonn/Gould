@@ -158,3 +158,28 @@ test('PG17 creator administration permits only schema-owner ADMIN without INHERI
  const {rows:[member]}=await v.db.query('SELECT admin_option,inherit_option,set_option FROM pg_auth_members WHERE roleid=(SELECT oid FROM pg_roles WHERE rolname=$1)',[role]);
  assert.deepEqual(member,{admin_option:true,inherit_option:false,set_option:false});
 });
+
+test('authentication throttle is atomic across adapters, coarse-IP bound and recovers after its minute',async t=>{
+ const v=await setup(t),ipKey=Buffer.alloc(32,7);await v.fresh({limits:{authBurst:3},ipKey});
+ const challenge=()=>v.fetch(null,'POST','/v1/session/challenge',{schemaVersion:1});
+ const before=Number((await v.db.query(`SELECT count(*) FROM ${v.q}.auth_challenges`)).rows[0].count);
+ const replies=await Promise.all(Array.from({length:8},challenge));assert.equal(replies.filter(r=>r.status===201).length,3);assert.equal(replies.filter(r=>r.status===429).length,5);
+ assert.equal(Number((await v.db.query(`SELECT count(*) FROM ${v.q}.auth_challenges`)).rows[0].count),before+3);
+ assert.ok(replies.filter(r=>r.status===429).every(r=>Number(r.headers.get('retry-after'))>=1&&Number(r.headers.get('retry-after'))<=60));
+ await v.fresh({limits:{authBurst:3},ipKey});assert.equal((await challenge()).status,429);
+ const invoke=ip=>v.adapter().invoke({method:'POST',path:'/v1/session/challenge',headers:{'content-type':'application/json'},body:JSON.stringify({schemaVersion:1})},{remoteAddress:ip});
+ assert.equal((await invoke('127.0.0.99')).status,429);assert.equal((await invoke('198.51.100.1')).status,201);
+ const rows=(await v.db.query(`SELECT scope_key,principal_id FROM ${v.q}.abuse_limits`)).rows;assert.ok(rows.every(r=>/^[a-f0-9]{64}$/.test(r.scope_key)&&r.principal_id===null));
+ v.advance(60000);assert.equal((await challenge()).status,201);
+});
+test('failed login consumes the same budget, absent peer metadata cannot bypass, database outage denies before challenge creation',async t=>{
+ const v=await setup(t);await v.fresh({limits:{authBurst:2}});
+ const ch=await v.fetch(null,'POST','/v1/session/challenge',{schemaVersion:1});assert.equal(ch.status,201);
+ const failed=await v.fetch(null,'POST','/v1/session',{schemaVersion:1,challenge:ch.body.challenge,credential:JSON.stringify({issuer:'https://synthetic.invalid',audience:'local-test',subject:'synthetic-failed-login',nonce:'wrong',iat:v.clock(),exp:v.clock()+120000})});assert.equal(failed.status,401);
+ assert.equal((await v.fetch(null,'POST','/v1/session/refresh',{schemaVersion:1,refreshToken:'invalid'})).status,429);
+ const unknown=()=>v.adapter().invoke({method:'POST',path:'/v1/session/challenge',headers:{'content-type':'application/json'},body:JSON.stringify({schemaVersion:1})});
+ // Missing metadata shares one budget; it never disables the limiter.
+ assert.equal((await unknown()).status,201);assert.equal((await unknown()).status,201);assert.equal((await unknown()).status,429);
+ v.setFault(sql=>{if(sql.includes('abuse_limits'))throw Error('private database detail');});
+ const unavailable=await v.fetch(null,'POST','/v1/session/challenge',{schemaVersion:1});assert.equal(unavailable.status,503);assert.ok(!JSON.stringify(unavailable).includes('private database detail'));
+});

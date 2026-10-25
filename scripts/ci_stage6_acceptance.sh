@@ -67,7 +67,9 @@ wait_for_transport() {
 }
 {
   echo "== restore mobile data and Wi-Fi (upgrade helper left both disabled) =="
+  adb -s "$SERIAL" shell cmd connectivity airplane-mode disable
   adb -s "$SERIAL" shell svc data enable
+  adb -s "$SERIAL" shell settings put global mobile_data 1
   adb -s "$SERIAL" shell svc wifi enable
   echo "== expect Wi-Fi as active default network =="
   WIFI_NET="$(wait_for_transport WIFI)"

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.data.offline.BundleJobTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-25T22:39:20.009Z" hostname="fedora" time="0.022">
+  <properties/>
+  <testcase name="jobCodecRejectsUnknownFormatAndMalformedBodies" classname="com.opus.piano.data.offline.BundleJobTest" time="0.005"/>
+  <testcase name="backgroundWorkIsUnmeteredUnlessTheJobHoldsConsent" classname="com.opus.piano.data.offline.BundleJobTest" time="0.001"/>
+  <testcase name="storeNeverTreatsCorruptRecordsAsConsent" classname="com.opus.piano.data.offline.BundleJobTest" time="0.007"/>
+  <testcase name="jobCodecRoundTripsEveryFieldIncludingNullEstimate" classname="com.opus.piano.data.offline.BundleJobTest" time="0.001"/>
+  <testcase name="confirmationFlagIsIndependentOfConsent" classname="com.opus.piano.data.offline.BundleJobTest" time="0.001"/>
+  <testcase name="storeListsOldestFirstAndKeepsIndependentJobs" classname="com.opus.piano.data.offline.BundleJobTest" time="0.002"/>
+  <testcase name="storePersistsGrantsRevocationsAndAttempts" classname="com.opus.piano.data.offline.BundleJobTest" time="0.003"/>
+  <testcase name="malformedJobShapeIsRejectedAtConstruction" classname="com.opus.piano.data.offline.BundleJobTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

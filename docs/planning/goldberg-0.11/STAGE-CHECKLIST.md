@@ -1,34 +1,79 @@
-## Stage 6 continuation — runtime identity and restricted PostgreSQL access (2026-10-25)
+## Stage6 independent hardening — in progress after owner hosted block
 
-Purpose: finish missing server identity transport and prove the existing BFF works
-with a restricted database role instead of the fixture owner. Scope: community BFF
-runtime, identity transport, ACL plan, regression tests and deployment verification.
-Starting branch `feature/goldberg-0.11-stage-6-cloud`, commit `2044cfa`.
+Purpose:close unauthenticated API abuse andactual emulator failures onthisbranch.
+Scope:BFF authentication throttle/reused abuse-limit table;three alreadyverified
+bundle implementation files,three fixture tests andoffline upgrade helper from
+preserved a73a7e2 source. No Room/schema migration orotherworktree edits.
 
-- [x] Recover existing isolated worktree, Issue31 and private PMP; preserve Discover/Stage8.
-- [x] Fresh hosted read-only check:20 tables/20 RLS;Advisor19 expected INFO findings.
-- [x] Recheck Cloudflare account access:GET403;no configured credential variable names.
-- [x] Implement bounded fixed-origin Google JWKS transport using accepted IdentityVerifier.
-- [x] Implement explicit restricted-role grant/RLS plan and actual PostgreSQL lifecycle tests.
-- [x] Verify connection error cleanup,515 backend bodies and8 packaged workerd denials.
-- [x] Debug0.11-dev/code12 APK/testAPK/lint PASS;trusted signing/ZIP/baseline compatibility PASS.
-- [x] Actual forced Kotlin/HTTP/BFF/PG1PASS;cached XML explicitly excluded.
-- [ ] Current-source cleanCI/API36 execution pending after source push.
-- [ ] Execute private hosted runtime only after credentials/TLS/cost/privacy prerequisites.
-- [ ] Commit/push verified changes and synchronize Issue31/Project/private PMP.
+- [x] Implement shared30/minute coarse-IP HMAC authentication budget,atomicPG
+  counter andRetry-After;failed credentials count;missing peer metadata shares a
+  bucket;outage denies beforechallenge. No rawIP/token storage orschema change.
+- [x] Focused12 BFF/PostgreSQL tests PASS,includingnewquota concurrency/recovery.
+- [ ] Final517-body backend/currentforcedKotlin run andfinalAndroidhost gates running.
+- [x] Preserve exactAPI36a3d99failure:182cases/13failures/2skips(167PASS),
+  all13 inoldStage5bundle runner/store/worker tests;upgradeofflineassertionfailed.
+- [x] Inspect/reuseverifieda73a7e2 offline core andfixture corrections;preserve
+  timestamps/retry/readPublished semantics;offlinehelperwaitsforactualradiodown,
+  acceptance restoresairplane/mobile_data before network transitions.
+- [ ] Corrected-sourceAPI36/upgrade execution pendingafterhostpass/commit/push.
 
-Verification:515 backend bodies PASS/0failures/skips with source/cleanup proof;
-6archive and6actual localTLS/restore PASS. Actual forced Kotlin/HTTP/PG1PASS after excluding cached XML from the old runner. Hosted runtime, real OAuth,
-current-source native integration and final Stage6 acceptance remain unexecuted.
-Owner authorized safe private staging; missing credentials are an actual prerequisite,
-not a repeated authorization gate. No database bootstrap, public endpoint or release.
+Hosteddeployment/functionalverification remainsBLOCKEDbyowner IPv6/pooler-auth
+report. No hostedDBlogin/reset/retry/TLSweakening/paidIPv4/release. Existing inert
+runtimeACLs preserved. Priorquality/BFFCI a3d99PASS,notattributedtonewsource.
 
+---
 
-Hosted remaining runtime ACL transaction applied and exact readback PASS after PG17
-creator-membership regression. NOLOGIN/no inherited roles/no ownership/no bypass;
-only schema-owner ADMIN without INHERIT/SET. Initial failures rolled back fully.
-Ledger/RLS/intake/clientdenial/data unchanged. Do not reapply role creation/policies.
-Actual Worker/runtime login/hosted BFF requests remainblocked by credentials/CF403.
+## Owner connectivity directive — hosted BLOCKED (October25,2026)
+
+Owner reports:no working host IPv6 route for directSupabase;sessionpooler reachable
+overIPv4 but rejects authentication after DB passwordrotation. These are owner
+observations,not agent-executed hostedlogin tests. Do not resetpasswords,retry
+authentication repeatedly,disableTLSverification orbuyIPv4addons. No release.
+Hosted deployment andfunctional verification explicitlyBLOCKED untilauthenticated
+connectivity/security prerequisites are resolved byowner. Continueindependent work.
+
+Cloudflareaccess is nowRESTORED:installedWrangler revalidatedexistinglogin;fresh
+GET-onlyinventory22:28UTC succeeded(1account/0Workers/services/domains/zones/MFAon).
+No newlogin/Worker/publicroute/secret. Billing403visibility limitation retained.
+Previouslyapplied NOLOGINrole/grants/policies remaininert;do not replayorundo them.
+No furtherhostedmutation/deploymentwhileblocked. No hostedDBlogin wasattempted.
+Next minimalowneraction:resolve authenticated session-pooler configuration outside
+thisagent run,thenprovide protectedserverconnection/TLStrust configurationand
+explicitlyconfirmconnectivity/securityprerequisites are resolved. No secret values
+inchat/Git/logs. GoogleOAuthconfigurationremainsneededforreal sign-in.
+
+---
+
+## Current source and verification — a3d99dc (October25,2026)
+
+Purpose/scope: finish Stage6 server runtime identity,least-privilege PostgreSQL
+access andsource-bound Android/backend verification;preserve allotherworktrees.
+Branch feature/goldberg-0.11-stage-6-cloud. Source/remote
+`a3d99dc928769cbbaf5dd01bb6f6b567192bb5c8`;current documentation update only.
+
+- [x] Reused existing20-table hosted schema/ledger;no bootstrap/data replacement.
+- [x] Fixed GoogleJWKS transport,pg socketcleanup,restrictedACLplan,forcedclientrun.
+- [x] 515backend bodies PASS/0failures/skips;exact source/rawhashes/fixturecleanup.
+- [x] Actual forced Kotlin/HTTP/BFF/PG1PASS;8workerdpackage/6archive/6TLSrestorePASS.
+- [x] Hosted NOLOGINrole/47tablegrants/49server-rolepolicies deployed;exact readback.
+  No elevatedflags/inheritedroles/ownership;onlyownerADMINwithoutINHERIT/SET.
+  Clientdenial/ledger/20RLS/intakefalse/applicationdata unchanged;Advisor1INFOonly.
+- [x] Initialguard/metadata-probe failures rolledback;PG17exactcorrection tested.
+- [x] Debug0.11-dev/code12com.opus.piano APK/testAPK/lint;trusted53efcertificate,
+  baseline0.10.1compatibility/ZIP/artwork/fixtureexclusionPASS. APK SHA256
+  `a1213cfb3b4f081712d56e1fa096de3aed3ab4d67c64a0dc15e36152f94adfe2`.
+- [x] Commit/ordinarypush/exactremote;prior5b22quality40239495426/BFF40239495452SUCCESS.
+- [ ] Currenta3d99quality40240146586/BFF40240146602/API36+upgrade40240154511running.
+  FirstAPI36run40239512295failed before native execution;Bash/certparserrepaired.
+- [ ] Worker/privateTLS/runtimepassword/login/realOAuth/hostedBFFacceptance:
+  CFaccessrestored;ownerDBIPv6/pooler-authblock. No publicroute/realuserdata.
+
+WholeStage6 INCOMPLETE;Issue31OPEN/ProjectInProgress. Existingroles/policiesare
+alreadydeployed:do not rerunbootstrap/CREATE ROLE/policyplan. No paidfallback,
+physicalphone,mainmerge,RC/tag/Release. No screenshots inspected thiscontinuation.
+Next:finish exact-sourceCI/nativeXML/upgrade readback,fix demonstrated failures,
+finalreceipt/docs/Issue/privatePMP. See stage-6/RUNTIME-CONTINUATION-2026-10-25.md.
+
 
 ---
 
