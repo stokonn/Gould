@@ -26,9 +26,10 @@ or release is authorized. Preparation publication does not discharge C4 or6.0f.
 - [x] Review scoped publication content:149 UTF8 files,no new credential patterns,
   private PMP,binary/build trees or destructive SQL. Two unchanged historical
   password-free127.0.0.1 examples retained. Final staged check precedes commit.
-- [ ] Commit/ordinary-push the reviewed readiness packet.
-- [ ] Verify remote SHA and inspect the existing quality workflow at that exact head.
-- [ ] Record actual CI disposition and publication receipts in Issue31/local/private PMP.
+- [x] Commit/ordinary-push the150-file readiness packet:source2c38177;remote exact.
+- [x] Verify source remote SHA and inspect existing exact-source quality CI:SUCCESS.
+- [x] Record exact-source CI disposition and publication receipts in local/private
+  tracking and Issue31. Final documentation head receives a separate live receipt.
 
 ## Actual local verification
 
@@ -100,3 +101,36 @@ Staged whitespace audit found raw PostgreSQL dump EOF blank lines,psql aligned
 headers and esbuild trailing spaces. Seven exact-path .gitattributes exceptions
 follow the existing raw-evidence policy;all source whitespace checks stay active,
 all raw bytes/hashes unchanged. No blanket pattern or test assertion disabled.
+
+## Source publication receipt — source CI SUCCESS
+
+Source2c38177c422d9b7b6cd697dec36d5484744423a6 ordinary-pushed and remote
+SHA read back exactly.150 committed files passed full scope/content/credential/
+private-artifact audit. The audit initially counted only unstaged files after
+staging and gave a false mismatch;commit occurred before recognizing its exit.
+The corrected full base→HEAD audit passed before any push. No history rewriting
+or historical evidence edits. Seven exact raw-file whitespace exceptions retained.
+
+Exact-source [quality CI40145692652](https://github.com/stokonn/Goldberg/actions/runs/40145692652)
+completed SUCCESS:Gradle clean assembleDebug/testDebugUnitTest/assembleDebugAndroidTest/
+lintDebug PASS5m12s,84tasks(83executed/1up-to-date);host data/policy checks PASS.
+No native instrumentation execution or detailed JVM case-count claim. [Pushed source checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6391267830).
+Final documentation HEAD is separately remote-verified and its exact-head CI
+status/result recorded in the final Issue31 checkpoint and private PMP;do not
+attribute this source CI to that later SHA. PRIVATE STAGING NO-GO.
+
+## Final continuation contract
+
+Read the latest Stage6 Cloud publication checkpoint in
+[Issue31](https://github.com/stokonn/Goldberg/issues/31) for the exact final
+documentation HEAD/remote SHA and its independently observed CI result. Source
+packet2c38177 and this documentation update change no app/runtime behavior.
+All local verification commands/source manifests/old raw bytes remain valid.
+Final documentation-only commit/push is part of this owner-authorized publication;
+no tag,main merge,Wiki/release or cloud deployment follows. Issue31 remains
+OPEN/Goldberg Development In Progress;C4 and6.0f remain open.
+
+CI runner warnings retain existing pinned-action/Node/setup-java and ubuntu-latest
+deprecation notices. They did not fail this run;no workflow/toolchain maintenance
+was mixed into this readiness packet. CI APKs use runner signing;no trusted
+release APK/certificate/hash or device acceptance is claimed.

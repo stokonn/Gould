@@ -6,12 +6,17 @@ push only. Branch `feature/goldberg-0.11-stage-6-cloud`;base006fa577.
 - [x] Recover Git/Issue31/private PMP;review all changed/new files;preserve old
   result bytes and all existing worktrees. Correct cf worker nesting;strengthen
   expected-error assertions and command/source/cleanup evidence.
-- [x]20 PostgreSQL checks PASS in332ae776;30 source Worker requests PASS;six
+- [x] 20 PostgreSQL checks PASS in332ae776;30 source Worker requests PASS;six
   validators/independent hashes PASS. Strict typecheck/local535-byte ESM bundle
   and30 bundled Worker requests PASS with pinned temporary toolchain.
-- [ ]Staged scope/credential review,scoped commit/push,remote-SHA/exact-head CI
-  verification and final Issue/Project/local/private checkpoint receipts.
-- [ ]C4 billing/privacy/security/backup/owner closure;hosted ACL/runtime/schema/
+- [x] Full150-file committed scope/credential/hash audit PASS;ordinary-pushed
+  source2c38177c422d9b7b6cd697dec36d5484744423a6;remote SHA exact.
+- [x] Exact-source CI40145692652 SUCCESS:Gradle clean assembly/JVM/instrumentation
+  compilation/lint and host checks PASS (5m12s,83executed/1up-to-date).
+- [x] Final documentation/source-CI receipt prepared. Final documentation HEAD
+  receives its own remote/CI readback in the final Issue31/private PMP receipt;
+  sourceCI is never attributed to a later SHA.
+- [ ] C4 billing/privacy/security/backup/owner closure;hosted ACL/runtime/schema/
   private-ingress authorization and6.0f acceptance remain open.
 
 Purpose/scope,commands/source/result paths and honest unexecuted checks:
@@ -19,6 +24,9 @@ Purpose/scope,commands/source/result paths and honest unexecuted checks:
 Exact next-stage gates:`docs/planning/goldberg-0.11/stage-6/NEXT-PRIVATE-DEPLOYMENT-CHECKLIST.md`.
 C4=8 PASS/19 PARTIAL/6 OPEN;Issue31 OPEN/Goldberg Development In Progress.
 No remote schema/Worker/OAuth/public/paid/data/merge/release action.
+
+Published source checkpoint:https://github.com/stokonn/Goldberg/issues/31#issuecomment-6391267830
+Final publication/CI receipt:consult the latest Stage6 Cloud checkpoint in Issue31.
 
 ---
 
