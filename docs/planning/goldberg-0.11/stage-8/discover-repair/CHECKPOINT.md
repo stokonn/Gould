@@ -1,5 +1,20 @@
 # Stage 8 — Discover stabilization and UX repair
 
+## Final Discover repair checkpoint — ready for owner review
+
+Verified source `04bf2025f991b1eb3ef4a30b43a0e227fae7b85a` on `fix/goldberg-0.11-discover-ux`; application implementation `fc8a440`. [Final report](REPORT.md). Exact-SHA API36 run40237642842 and quality40237601629 SUCCESS. 308 JVM / 0 failures/errors/skips; 207 native / 196 passed / 0 failures/errors / 11 existing skips; all four Discover cases passed. Seeded offline upgrade preserved every original cell across12tables, preferences and post-restart integrity. All41 original PNGs inspected with hierarchy evidence; see visual review for clipped initial small-screen2× action and accepted navigation wrapping limitations.
+
+- [x] Ranking/category/identity and automatic consented500ms search, cancellation and dedup regression verification.
+- [x] Malformed/empty/cache/offline/provider-failure handling and bounded retries, without claiming the unavailable original screenshot response reproduced.
+- [x] Shared editorial detail UI, localized selected metadata, grouped immutable source evidence and secondary advanced tools.
+- [x] Host JVM/lint/debug/testAPK/repository checks and actual source-bound API36 journeys.
+- [x] Visual review of41original PNG/tree pairs, EN/CZ, two sizes/themes and enlarged fonts; before is RC-layout replay, not RC-binary testing.
+- [x] Reviewed implementation ordinary-pushed with exact remote readback; final evidence/docs receipt follows without application changes.
+- [ ] Owner review of debug APK; fullStage8/canonical/hosted integration and release-specific gates remain open.
+- [ ] Exact historical OpenOpus screenshot request/response remains unavailable; do not infer its root cause from live success.
+
+Debug `.gradle/discover-review/Goldberg-0.11-discover-debug.apk`, SHA256 `6a5669b17e6c7ef47b4adcbbee2c4df8a742b7532caa87628ac586fb842a31e0`; trusted signer53eface… matches historicalRC. No data/schema/practice/backup/provenance loss, physical phone, newRC/tag/Release/main/community activation. Next: owner reviews debug/report; implement only concrete review findings, with new source-bound tests if code changes. Keep Issue31 OPEN / Project In Progress. Historical checkpoints below preserve their original source-bound results.
+
 Purpose: repair published RC catalogue relevance, provider feedback and editorial details without changing identities, source history or personal data. This continues Stage 8.
 
 Branch: `fix/goldberg-0.11-discover-ux`; baseline/RC tag: `a73a7e21adf656dcbe7ed6da351a71e9a681a384` (exact match, clean initial worktree). Release and all other worktrees/artifacts preserved. Issue #31 OPEN; Goldberg Development In Progress; milestone 4. Latest published-RC checkpoint read before implementation.
@@ -9,13 +24,13 @@ Scope: provider adapters/client, bounded catalogue search/paging, Discover prese
 - [x] Inspect baseline, policy, maintenance ledger, release, Issue/milestone/Project and latest checkpoint.
 - [x] Read provider parsing/ranking/intake and Discover/Library detail rendering.
 - [x] Fetch bounded public OpenOpus diagnostics for five acceptance searches plus empty-result control. HTTP JSON for five succeeds; empty result uses `success:"false", error:"Nothing found"`, currently rejected as invalid. Original screenshot failure is not yet independently reproduced for its exact request.
-- [ ] Repair relevance and category handling; retain independent provider identities and stable bounded paging.
-- [ ] Reproduce provider parsing/failure/cache handling with controlled fixtures; localize useful status and bound requests.
-- [ ] Editorial detail hierarchy, shared metadata layout, grouped/collapsible preserved provenance and advanced tools.
-- [ ] Meaningful JVM and instrumentation regressions.
-- [ ] API 36 before/after search/detail/repertoire/offline/failure/navigation journeys; EN/CZ, Ivory/Nocturne and enlarged fonts; inspect actual captures.
+- [x] Repair relevance and category handling; retain independent provider identities and stable bounded paging.
+- [x] Reproduce provider parsing/failure/cache handling with controlled fixtures; localize useful status and bound requests.
+- [x] Editorial detail hierarchy, shared metadata layout, grouped/collapsible preserved provenance and advanced tools.
+- [x] Meaningful JVM and instrumentation regressions.
+- [x] API 36 before/after search/detail/repertoire/offline/failure/navigation journeys; EN/CZ, Ivory/Nocturne and enlarged fonts; inspect actual captures.
 - [x] Host Gradle JVM/lint/APK/androidTest compilation and applicable repository checks PASS at build6; native execution remains a separate unchecked task.
-- [ ] Review diff, synchronize Issue description/comments/Project and local checkpoint; commit/push only verified scope on this branch.
+- [x] Review diff, synchronize Issue description/comments/Project and local checkpoint; commit/push only verified scope on this branch.
 
 Initial inspection checkpoint (historical): six public HTTP diagnostics; no build/native result at that point. Current verification and owner scope are recorded below. Implementation IN PROGRESS, native acceptance pending. No release publication authorized.
 
@@ -117,3 +132,11 @@ Downloaded raw fc8a440 artifact:207native/195PASS/1failure/11existing skips. Fai
 Corrected test helper: choose the target's scrolling ancestor; use window bounds when scrolling is unnecessary; check the entire enabled clickable action, not just its text; scroll backward if the target is clipped above the viewport; retain a failure capture while the activity is still open. Assertions remain full-visibility/enabled bounds checks. Application code/APK are unchanged: every production-source hash and debug APK hash6a5669… still matches the follow-up host receipt. Native compilation build12 PASS24s; no unexecuted native pass claimed. A new exact-SHA workflow is justified by this demonstrated and independently replayed harness defect, not an unchanged retry.
 
 The fc8a440 journey completed automatic consent/debounce, history/no-refetch, filter cancellation, five searches, composer navigation/Back, expanded grouped evidence/date/license, repertoire add and optional Library study checks before the matrix assertion failed. These are observed completed substeps, not a passing whole test. Five original fc8a440 PNGs additionally inspected: standardEN1×detail,workdetail,expandedcomposerprovenance,Librarycomposition,automaticGoldberg. Source-app findings from the first run are visibly repaired in these frames; remaining CZ/theme/large-font matrix requires a successful final run.
+
+## Corrected harness dispatched at exact source
+
+Native-only correction and retained diagnostics committed/ordinary-pushed: `04bf2025f991b1eb3ef4a30b43a0e227fae7b85a`; remote exact. New [API36 run40237642842](https://github.com/stokonn/Goldberg/actions/runs/40237642842) and [quality40237601629](https://github.com/stokonn/Goldberg/actions/runs/40237601629) IN PROGRESS; both headSha readbacks equal04bf2025f991b1eb3ef4a30b43a0e227fae7b85a. No unchanged redispatch: the concrete no-scroll viewport defect is fixed and independently replayed. Final application source remains byte-identical to fc8a440, debug APK still6a5669…. Final native/visual acceptance remains OPEN pending this run and actual matrix PNG/tree inspection. No new RC,Release,main merge or community action.
+
+Final-source quality milestone: [40237601629](https://github.com/stokonn/Goldberg/actions/runs/40237601629) SUCCESS at exact04bf2025f991b1eb3ef4a30b43a0e227fae7b85a. API36 run40237642842 has reached actual full instrumentation and upgrade acceptance; results/remaining matrix inspection are still pending. Application/debug APK hashes remain unchanged.
+
+Final synchronized [Issue31 checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6404212021); Project remains In Progress. Documentation/evidence receipt follows tested source04bf202 without application changes.

@@ -1,0 +1,29 @@
+{
+  "testedSource": "04bf2025f991b1eb3ef4a30b43a0e227fae7b85a",
+  "applicationSource": "fc8a440be2e00321876acf5990bbf5ca82cc1604",
+  "nativeRun": 40237642842,
+  "qualityRun": 40237601629,
+  "remoteReadbacks": "both completed/success/exact head SHA",
+  "jvm": {
+    "tests": 308,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "native": {
+    "tests": 207,
+    "passed": 196,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 11
+  },
+  "visualOriginalsInspected": 41,
+  "upgrade": "all original cells in 12 tables and preferences preserved; integrity/FK and restart PASS",
+  "issueCheckpoint": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6404212021",
+  "issueState": "OPEN",
+  "project": "https://github.com/users/stokonn/projects/2",
+  "projectStatus": "In Progress",
+  "debugApkSha256": "6a5669b17e6c7ef47b4adcbbee2c4df8a742b7532caa87628ac586fb842a31e0",
+  "productionInventory": "all source hashes equal host-results/visual-follow-up/HOST-VERIFICATION.json",
+  "docsReceipt": "Application unchanged; tests remain bound to testedSource, not any later code"
+}

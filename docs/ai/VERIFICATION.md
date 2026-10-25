@@ -1,3 +1,11 @@
+## Current Stage 8 — Discover debug ready for owner review, October 25, 2026
+
+Bounded Discover repair verified on `fix/goldberg-0.11-discover-ux`, source `04bf2025f991b1eb3ef4a30b43a0e227fae7b85a` (application `fc8a440`). Exact-SHA quality40237601629/API3640237642842 SUCCESS:308JVM/0failures/errors/skips;207native/196passed/0failures/errors/11existing skips,all4Discovercases passed. Seeded offline schema8→10 preserves all original12tables/preferences and restart integrity.41actual original emulator PNGs inspected alongside hierarchy evidence; small-screen2× needs scrolling and accepted navigation wraps. Before is RC-layout replay,not RC-binary execution.
+
+[Final report](../planning/goldberg-0.11/stage-8/discover-repair/REPORT.md),[living checklist](../planning/goldberg-0.11/stage-8/discover-repair/CHECKPOINT.md). Debug APK `.gradle/discover-review/Goldberg-0.11-discover-debug.apk`,SHA2566a5669b17e6c7ef47b4adcbbee2c4df8a742b7532caa87628ac586fb842a31e0,trustedRC-compatible signer. Next:owner review; no further unchanged native dispatch. Original screenshot OpenOpus response/cause unknown; robust malformed/empty/cache/failure behavior independently regression-tested. FullStage8 and hosted/release gates remain OPEN,Issue31 OPEN/ProjectInProgress. No newRC/tag/Release/main/community activation;permanent debug-only workflow applies. Earlier entries are source-bound history.
+
+---
+
 ## Isolated canonical integration — October 25, 2026
 
 Branch integrate/goldberg-0.11-canonical-client,base42f6897;source publication and

@@ -1,0 +1,22 @@
+{
+  "source": "04bf2025f991b1eb3ef4a30b43a0e227fae7b85a",
+  "native": {
+    "tests": 207,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 11
+  },
+  "discoverCases": 4,
+  "screenshotHierarchyPairs": 41,
+  "requiredPairs": 28,
+  "assertions": {
+    "before": 2,
+    "after": 2,
+    "unchanged": true
+  },
+  "requests": {
+    "calls": 10,
+    "cancelled": 1
+  },
+  "visualInspection": "REQUIRED: inspect original PNGs and hierarchy content separately"
+}

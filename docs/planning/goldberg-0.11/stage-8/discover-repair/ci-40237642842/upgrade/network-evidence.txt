@@ -1,0 +1,14 @@
+== restore mobile data and Wi-Fi (upgrade helper left both disabled; clear airplane mode in case the offline fallback engaged) ==
+== expect Wi-Fi as active default network ==
+active default network: 102
+== disable Wi-Fi, expect mobile fallback as active default network ==
+active default network: 101
+OK: default network transitioned (active default network: 102 -> active default network: 101)
+== restore Wi-Fi for the remainder of the run ==
+== Data Saver enable with state readback ==
+cmd netpolicy get restrict-background: Restrict background status: enabled
+Restrict background: true
+== Data Saver disable with state readback ==
+cmd netpolicy get restrict-background: Restrict background status: disabled
+Restrict background: false
+OK: Data Saver toggled with verified state readback

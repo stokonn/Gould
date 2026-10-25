@@ -1,6 +1,6 @@
-## Stage 8 — Discover stabilization (October 25, 2026), IN PROGRESS
+## Stage 8 — Discover repair verified; owner debug review pending (October 25, 2026)
 
-Purpose/scope/tasks and live verification: [Discover repair checklist](stage-8/discover-repair/CHECKPOINT.md). Exact published RC baseline `a73a7e2`; isolated branch `fix/goldberg-0.11-discover-ux`. Search/provider/editorial repair authorized; final acceptance pending. No new release stage, production activation or release.
+Purpose/scope/tasks and source-bound results: [Discover checklist](stage-8/discover-repair/CHECKPOINT.md), [final report](stage-8/discover-repair/REPORT.md). Exact RC baselinea73a7e2; isolatedbranchfix/goldberg-0.11-discover-ux; verifiedsource04bf202.308JVM,196native passes/11existing skips; exact-SHA API36/quality/seededupgrade PASS.41original PNGs inspected. Debug APK only; owner review and fullStage8/canonical/hosted/release gates remain OPEN. No new stage,RC/tag/Release,main merge or production activation.
 
 ## Isolated canonical integration — October 25, 2026
 

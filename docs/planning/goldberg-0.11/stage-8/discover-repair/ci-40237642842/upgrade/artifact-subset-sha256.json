@@ -1,0 +1,12 @@
+{
+  "source-commit.txt": "58c041847eb2208b97fd13ec56f1bd3e0098590211d221cada50538a1a94ea31",
+  "baseline-source.txt": "c17b5ff0870d7dbdf0657ec00e7d5996b06bdbedbc5e9018f4b5ae2f0b08de73",
+  "signing-evidence.txt": "f00db10300b8b70ae917a99e4c3e13db058677d3d11ce37eef374f6af7665f19",
+  "process-death-integrity.txt": "7b4222fc2e937a47958058ccecd46657867e59c3ccb3e24c9434725e2398649b",
+  "network-evidence.txt": "58f4d4f7332df5b33514bc635bcdbd8213e796524433c246a290e4c9d95d2130",
+  "netpolicy-enabled.txt": "4996780df9e2c6f68b52352d3e12fedd56716ecde182b3f86ecf40a3fe917f3b",
+  "netpolicy-disabled.txt": "5b9f26ff6c90d4decfdbe369f9660cc5c0ec7a28df6e1ab6d828e00914860a40",
+  "upgrade/result.json": "9a0f8c1e0d3c18b2367394ebe6327893560dc212d05075bbb4b76069de0c693b",
+  "upgrade/before.json": "adf27e939b535e07fb55c772780109731fb5da8e0e8c9b9be65349f70ed169f0",
+  "upgrade/after.json": "adf27e939b535e07fb55c772780109731fb5da8e0e8c9b9be65349f70ed169f0"
+}

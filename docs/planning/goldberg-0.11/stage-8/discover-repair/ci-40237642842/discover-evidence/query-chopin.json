@@ -1,0 +1,105 @@
+{
+  "query": "Frédéric Chopin",
+  "items": [
+    {
+      "id": "0a6825bc-73e7-4c95-8dbd-6948187156f3",
+      "kind": "artist",
+      "title": "Frédéric Chopin"
+    },
+    {
+      "id": "10e247b0-c9b6-450c-8443-e218d54ec6ed",
+      "kind": "work",
+      "title": "Sonata no. 2 in B flat minor, op. 35"
+    },
+    {
+      "id": "150f9bab-1c47-4c1a-b59b-0d111d43def9",
+      "kind": "work",
+      "title": "Scherzo no. 4 in E major, op. 54"
+    },
+    {
+      "id": "1b415976-ea51-4dc2-a757-e98fc7c04763",
+      "kind": "work",
+      "title": "Scherzo no. 1 in B minor, op. 20"
+    },
+    {
+      "id": "1bd6db70-c14b-4aa1-850b-351237e743e3",
+      "kind": "work",
+      "title": "Preludes, op. 28"
+    },
+    {
+      "id": "413ff39e-3831-410f-a3f5-e79041f5b03e",
+      "kind": "work",
+      "title": "Ballade no. 1 in G minor, op. 23"
+    },
+    {
+      "id": "4d66ffec-d69d-4494-ad79-9204880f20c2",
+      "kind": "work",
+      "title": "Scherzo no. 3 in C sharp minor, op. 39"
+    },
+    {
+      "id": "7f5b04a5-f250-4201-aa4f-2d80648a05de",
+      "kind": "work",
+      "title": "Ballade no. 4 in F minor, op. 52"
+    },
+    {
+      "id": "8669562a-f199-454a-9722-24551d83d5fb",
+      "kind": "work",
+      "title": "Nocturnes, op. 9"
+    },
+    {
+      "id": "972e68c1-5fe0-4fc7-aab4-6ce0d0e89ad8",
+      "kind": "work",
+      "title": "Scherzo no. 2 in B flat minor, op. 31"
+    },
+    {
+      "id": "9737b75b-dc6e-4bf8-befc-fcafe8cbd4bf",
+      "kind": "work",
+      "title": "Polonaise no. 6 in A flat major, op. 53, \"Heroic\""
+    },
+    {
+      "id": "a4f8485d-1058-4df4-b10b-1ba91e8b3f2f",
+      "kind": "work",
+      "title": "Ballade no. 3 in A flat major, op. 47"
+    },
+    {
+      "id": "b37bfba1-8d0d-433f-8a97-bbb77066bee2",
+      "kind": "work",
+      "title": "Etudes, op. 10"
+    },
+    {
+      "id": "b9e58ed1-f72d-4eb7-a0fd-0492d99936cd",
+      "kind": "work",
+      "title": "Etudes, op. 25"
+    },
+    {
+      "id": "bbcaeff4-e232-4a95-a7ad-41274d04d5bb",
+      "kind": "work",
+      "title": "Cello Sonata in G minor, op. 65"
+    },
+    {
+      "id": "c0e31a16-5243-461d-9f53-573cf4c65b63",
+      "kind": "work",
+      "title": "Andante spianato et grande polonaise brillante, op. 22"
+    },
+    {
+      "id": "ca7e296b-bb4c-4d12-b354-f438f48da3ed",
+      "kind": "work",
+      "title": "Sonata no. 3 in B minor, op. 58"
+    },
+    {
+      "id": "cb1bb417-d0d3-4887-bdcc-2646cba189db",
+      "kind": "work",
+      "title": "Piano Concerto no. 1 in E minor, op. 11"
+    },
+    {
+      "id": "ef1f2b90-b2bb-456b-8b6f-41c72be9a162",
+      "kind": "work",
+      "title": "Ballade no. 2 in F major, op. 38"
+    },
+    {
+      "id": "fc801101-b88f-40d3-8e37-a2373633e99d",
+      "kind": "work",
+      "title": "Variations on La ci darem la mano, op. 2"
+    }
+  ]
+}

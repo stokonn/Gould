@@ -1,0 +1,110 @@
+{
+  "query": "Johann Sebastian Bach",
+  "items": [
+    {
+      "id": "9fb2c95c-f68b-4023-9d54-6b8bbdc20c8d",
+      "kind": "artist",
+      "title": "Johann Sebastian Bach"
+    },
+    {
+      "id": "11a06598-0b51-4b7a-8079-31bc8e527877",
+      "kind": "work",
+      "title": "Brandenburg Concerto no. 1 in F major, BWV.1046"
+    },
+    {
+      "id": "15d03126-0bbc-40a9-8706-4dfadc886504",
+      "kind": "work",
+      "title": "Brandenburg Concerto no. 4 in G major, BWV.1049"
+    },
+    {
+      "id": "162772d3-5a01-4d06-a026-c58ebb05c371",
+      "kind": "work",
+      "title": "Toccata and fugue in D minor, BWV.565"
+    },
+    {
+      "id": "3d02d7ac-cdbb-4b24-87b8-16a63288b517",
+      "kind": "work",
+      "title": "Brandenburg Concerto no. 6 in B flat major, BWV.1051"
+    },
+    {
+      "id": "4c0eabea-b1fc-4913-9348-f79239fa3c97",
+      "kind": "work",
+      "title": "Passion According to St. Matthew, BWV.244"
+    },
+    {
+      "id": "51c62283-b130-4e08-8c60-421db2e7f330",
+      "kind": "work",
+      "title": "Christmas Oratorio, BWV.248"
+    },
+    {
+      "id": "61c213ca-75f3-445b-8bbd-aa3922e1445a",
+      "kind": "work",
+      "title": "Cello Suite no. 4 in E flat major, BWV.1010"
+    },
+    {
+      "id": "707402fb-0a5b-436a-8912-c6f34ead6cc8",
+      "kind": "work",
+      "title": "Passacaglia and Fugue in C minor, BWV.582"
+    },
+    {
+      "id": "73073f8a-a4d0-46a3-a3ba-b40b6dea0ffe",
+      "kind": "work",
+      "title": "Art of the Fugue, BWV.1080"
+    },
+    {
+      "id": "7f52e46c-0eb5-40a9-8adf-af9d4bf3f8c3",
+      "kind": "work",
+      "title": "Brandenburg Concerto no. 2 in F major, BWV.1047"
+    },
+    {
+      "id": "86b9366c-1dd0-4369-8b50-6b09dabede3a",
+      "kind": "work",
+      "title": "Cantata no. 147: Herz und Mund und Tat und Leben "
+    },
+    {
+      "id": "a3496af1-84a6-44d8-b53a-85c67e87ef57",
+      "kind": "work",
+      "title": "Violin Concerto in A minor, BWV.1041"
+    },
+    {
+      "id": "a8c473a9-35d4-4c31-8884-13d9110183b9",
+      "kind": "work",
+      "title": "Brandenburg Concerto no. 5 in D major, BWV.1050"
+    },
+    {
+      "id": "b8ecfc75-ea68-48a4-a33e-3c05575b76d4",
+      "kind": "work",
+      "title": "Cello Suite no. 6 in D major, BWV.1012"
+    },
+    {
+      "id": "bbed6518-a894-4157-afa7-52073bde54bd",
+      "kind": "work",
+      "title": "Goldberg Variations, BWV.988 "
+    },
+    {
+      "id": "be9aa0f0-0d41-4279-bcaa-bb80f1e1fb1c",
+      "kind": "work",
+      "title": "Cello Suite no. 1 in G major, BWV.1007"
+    },
+    {
+      "id": "c9fe3742-712d-4e08-bc1b-fc292944fe36",
+      "kind": "work",
+      "title": "Concerto in D minor for 3 Harpsichords, BWV.1063"
+    },
+    {
+      "id": "cda87314-f8f5-417d-b177-1740731227ec",
+      "kind": "work",
+      "title": "Brandenburg Concerto no. 3 in G major, BWV.1048"
+    },
+    {
+      "id": "e710d1ff-b7a7-4e4e-b2f1-2d1a2f7a97c6",
+      "kind": "work",
+      "title": "Orchestral Suite no. 3 in D major, BWV.1068"
+    },
+    {
+      "id": "f0ab2948-4b1e-4256-b834-33e7945a0a60",
+      "kind": "work",
+      "title": "Cantata no. 140, \"Wachet auf, ruft uns die Stimme\", BWV.140"
+    }
+  ]
+}
