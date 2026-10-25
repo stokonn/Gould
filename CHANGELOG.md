@@ -1,3 +1,9 @@
+## 0.11-rc.1 — release candidate
+
+Music database/offline/encyclopedia andaccepted Android Admin work integrated.
+Canonical community service tested locally;production community networking and
+real-user collection remain disabled. See docs/releases/GOLDBERG-0.11-rc.1.md.
+
 # Goldberg 0.10.1 — Final Redesign Polish
 
 - Refine Home, unified Library, saved-session completion, Profile, About, Tux and live appearance previews.
