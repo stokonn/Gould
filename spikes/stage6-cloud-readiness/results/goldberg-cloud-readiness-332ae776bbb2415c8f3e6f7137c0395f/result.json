@@ -1,0 +1,778 @@
+{
+  "status": "PASS",
+  "checks": [
+    "PostgreSQL 17",
+    "provider roles and representative trigger fixture",
+    "ACL transactional rollback",
+    "ACL fix",
+    "ACL replay",
+    "trigger preserved and unrelated grant retained",
+    "ACL guard rejects disabled trigger",
+    "schema rollback leaves no namespace",
+    "private schema apply",
+    "private schema idempotent replay",
+    "all tables RLS and no policies",
+    "all API roles have no schema/table/function access",
+    "direct anonymous access denied",
+    "direct authenticated access denied",
+    "synthetic seed",
+    "RLS denies after temporary schema/table grants",
+    "replay preserves synthetic record and intake disabled",
+    "checksum drift rejected atomically",
+    "synthetic logical backup restores in second disposable database",
+    "restored database remains private after re-hardening"
+  ],
+  "count": 20,
+  "cleanup": "removed-and-absence-verified",
+  "sources": {
+    "spikes/stage6-cloud-readiness/prepare.py": "484d7fa051f31f9a86817b1f755338eedf4f96384341e6ed7c437425a165cc7c",
+    "spikes/stage6-cloud-readiness/verify-local.py": "2fdc4637841cc88d0ca14fe1edbfbff28894405f995a02bc5a4bb7cfec9760b8",
+    "spikes/stage6-cloud-readiness/acl-fix.candidate.sql": "a77765b2a55e97eb0537926792fd9f49561b6cc6fa9c2128d6fdf8e441162138",
+    "spikes/stage6-cloud-readiness/private-schema.candidate.sql": "46c9149ba3db1f2d45028f69d83ffc2a065c64db59f730f782c51f446d75b3de",
+    "spikes/stage6-cloud-readiness/worker.mjs": "6502851dcee5c2f5476dc0ccb45e1bb0be51a48b6bfd850ed54b0b3df5314220",
+    "spikes/stage6-cloud-readiness/worker.test.mjs": "2b44131d67de4716eb69522a1789861613f42d562c9a393dd2e0af7a9c755382",
+    "spikes/stage6-cloud-readiness/cloudflare.config.ts.template": "38995586f542d75fe41ab172fb84238823de55487ca80feea27d00e84b5e07d9",
+    "spikes/stage6-cloud-readiness/verify-evidence.py": "935f85ec2cc9bbaadb10e097f74d349bb0e9b8bd8bad7cf8ed1618c1bbb4870d",
+    "spikes/stage6-schema-pg/migrations/001_entities.sql": "6ff749738f1c1194c213a1237e637d19f0ca2cf080257a27ef98d23d43e5030c",
+    "spikes/stage6-schema-pg/migrations/002_integrity.sql": "a368bfee1c8dc77159f655f46c3ab09a7c78b1ed218d4fa91c7abb57fb6feb1e",
+    "spikes/stage6-auth-local/migrations/003_auth.sql": "cccffe54b97e8dc2dcc90fb0f39a10298b857ee5d22375196e35b0746ea2df5e",
+    "spikes/stage6-public-admin-abuse/migrations/004_operations.sql": "d4aef06f7ba1f50e3b0bb822df744b340a12a3a12ef1f4f0673f13c5fd87b6dd"
+  },
+  "sourceUnchanged": true,
+  "image": "docker.io/library/postgres@sha256:e4cb93687b062cd25a0e8f672d85a7708235009d70d31f8a7698d9370092a9c4",
+  "syntheticOnly": true,
+  "remoteMutations": 0,
+  "commands": [
+    {
+      "argv": [
+        "podman",
+        "info",
+        "--format",
+        "{{.Host.Security.Rootless}}"
+      ],
+      "exitCode": 0,
+      "log": "command-000.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "run",
+        "--detach",
+        "--pull=never",
+        "--network=none",
+        "--name",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "--label",
+        "goldberg.scope=local-synthetic-cloud-readiness",
+        "--env",
+        "POSTGRES_HOST_AUTH_METHOD=trust",
+        "docker.io/library/postgres@sha256:e4cb93687b062cd25a0e8f672d85a7708235009d70d31f8a7698d9370092a9c4"
+      ],
+      "exitCode": 0,
+      "log": "command-001.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "inspect",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "--format",
+        "{{json .Mounts}}"
+      ],
+      "exitCode": 0,
+      "log": "command-002.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "command-003.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "command-004.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "command-005.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "command-006.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "command-007.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "command-008.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "command-009.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 2,
+      "log": "command-010.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "pg_isready",
+        "-U",
+        "postgres"
+      ],
+      "exitCode": 0,
+      "log": "command-011.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-012.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-013.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-014.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-015.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-016.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-017.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 3,
+      "log": "command-018.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-019.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-020.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-021.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-022.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-023.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-024.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 3,
+      "log": "command-025.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 3,
+      "log": "command-026.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-027.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-028.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-029.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 3,
+      "log": "command-030.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-031.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "pg_dump",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-n",
+        "goldberg_private",
+        "--no-owner",
+        "--no-privileges"
+      ],
+      "exitCode": 0,
+      "log": "command-032.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "exitCode": 0,
+      "log": "command-033.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "readiness_restore"
+      ],
+      "exitCode": 0,
+      "log": "command-034.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "-i",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "readiness_restore"
+      ],
+      "exitCode": 0,
+      "log": "command-035.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-U",
+        "postgres",
+        "-d",
+        "readiness_restore",
+        "-Atc",
+        "SELECT count(*)=1 AND NOT (SELECT enabled FROM goldberg_private.intake_control) FROM goldberg_private.principals;"
+      ],
+      "exitCode": 0,
+      "log": "command-036.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "exec",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "readiness_restore",
+        "-Atc",
+        "SET ROLE authenticated; SELECT * FROM goldberg_private.principals;"
+      ],
+      "exitCode": 1,
+      "log": "command-037.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "rm",
+        "--force",
+        "--volumes",
+        "--time",
+        "0",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f"
+      ],
+      "exitCode": 0,
+      "log": "command-038.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "container",
+        "exists",
+        "goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f"
+      ],
+      "exitCode": 1,
+      "log": "command-039.log"
+    },
+    {
+      "argv": [
+        "podman",
+        "volume",
+        "exists",
+        "686ef6fc9ac9017625c67d36248071e0245895fb1aba0c4be0a50c06124b2f6d"
+      ],
+      "exitCode": 1,
+      "log": "command-040.log"
+    }
+  ],
+  "artifacts": {
+    "command-000.log": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74",
+    "command-001.log": "08099af532ddc9c74a5ed4924b205a817089815bdd6536ea192a8fb2e8449f6d",
+    "command-002.log": "e5b18e9d7a0b75769ba01adca656184558e05cd491430a295916c4cad192bb75",
+    "command-003.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "command-004.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "command-005.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "command-006.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "command-007.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "command-008.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "command-009.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "command-010.log": "7c926b87e40b26ec6ffb4c78f403571ac977ece539b51f52b4a58a6943d143ea",
+    "command-011.log": "6e168fc3b5a0662104b5e5da92e87b870e8b7c65fec827d267115b5123d18614",
+    "command-012.log": "fe8edeeb98cc6d3b93cf2d57000254b84bd9eba34b4df7ce4b87db8b937b7703",
+    "00.log": "fe8edeeb98cc6d3b93cf2d57000254b84bd9eba34b4df7ce4b87db8b937b7703",
+    "command-013.log": "907cc964e9e986be49ee88667748666c0f4813a38dbe63d08479fdee22ad19b0",
+    "01.log": "907cc964e9e986be49ee88667748666c0f4813a38dbe63d08479fdee22ad19b0",
+    "command-014.log": "f35553d8c65fcfcf6f6c72176f00cbe612a9f807622eb9cdd13925974c9314d6",
+    "02.log": "f35553d8c65fcfcf6f6c72176f00cbe612a9f807622eb9cdd13925974c9314d6",
+    "command-015.log": "e037c72a97ecad0e7c9b0014db4763dfbcf2f7c386ba066ba0a9a54940111ed2",
+    "03.log": "e037c72a97ecad0e7c9b0014db4763dfbcf2f7c386ba066ba0a9a54940111ed2",
+    "command-016.log": "e037c72a97ecad0e7c9b0014db4763dfbcf2f7c386ba066ba0a9a54940111ed2",
+    "04.log": "e037c72a97ecad0e7c9b0014db4763dfbcf2f7c386ba066ba0a9a54940111ed2",
+    "command-017.log": "e805751f57008e773b7f8cc33d5c5e7253324003c940032e701bfcafff6c1645",
+    "05.log": "e805751f57008e773b7f8cc33d5c5e7253324003c940032e701bfcafff6c1645",
+    "command-018.log": "0f9323684ced40dd5ec16668dcdb85e27bf8c671463ecd44cd13579337cd90d3",
+    "06.log": "0f9323684ced40dd5ec16668dcdb85e27bf8c671463ecd44cd13579337cd90d3",
+    "command-019.log": "4f65852b1476b3119d671fbe3737aa6cfe5fb8a20f80e065db90d78e83d7c7f3",
+    "command-020.log": "575f1779c5b0e97442f49a25901b72fec4b611bc62170aca9ea31b689de22526",
+    "07.log": "575f1779c5b0e97442f49a25901b72fec4b611bc62170aca9ea31b689de22526",
+    "command-021.log": "5fb542dcf4b642dedf4fe6e9510f5aa6e1c8dc82a6d656e6973733dd28f673f0",
+    "08.log": "5fb542dcf4b642dedf4fe6e9510f5aa6e1c8dc82a6d656e6973733dd28f673f0",
+    "command-022.log": "5fb542dcf4b642dedf4fe6e9510f5aa6e1c8dc82a6d656e6973733dd28f673f0",
+    "09.log": "5fb542dcf4b642dedf4fe6e9510f5aa6e1c8dc82a6d656e6973733dd28f673f0",
+    "command-023.log": "fe8edeeb98cc6d3b93cf2d57000254b84bd9eba34b4df7ce4b87db8b937b7703",
+    "10.log": "fe8edeeb98cc6d3b93cf2d57000254b84bd9eba34b4df7ce4b87db8b937b7703",
+    "command-024.log": "fe8edeeb98cc6d3b93cf2d57000254b84bd9eba34b4df7ce4b87db8b937b7703",
+    "11.log": "fe8edeeb98cc6d3b93cf2d57000254b84bd9eba34b4df7ce4b87db8b937b7703",
+    "command-025.log": "c9b90cc77dd908ee99e28d6ef4ac4f51c6d03192520ee82b0236f5ecb2513d8a",
+    "12.log": "c9b90cc77dd908ee99e28d6ef4ac4f51c6d03192520ee82b0236f5ecb2513d8a",
+    "command-026.log": "c9b90cc77dd908ee99e28d6ef4ac4f51c6d03192520ee82b0236f5ecb2513d8a",
+    "13.log": "c9b90cc77dd908ee99e28d6ef4ac4f51c6d03192520ee82b0236f5ecb2513d8a",
+    "command-027.log": "2344f06a3effe34d8d7acd1c967f579fbc2a25060cc9b1424c6367b34a3de777",
+    "14.log": "2344f06a3effe34d8d7acd1c967f579fbc2a25060cc9b1424c6367b34a3de777",
+    "command-028.log": "b49786f15a707e659b87bfcad72e6da99f9ebabd6971c8bb9f1b3159d3be0623",
+    "15.log": "b49786f15a707e659b87bfcad72e6da99f9ebabd6971c8bb9f1b3159d3be0623",
+    "command-029.log": "403b99e5d5fb056d87b040b0d0ce6185b93ee13b8ba50789fa4088a040463f71",
+    "16.log": "403b99e5d5fb056d87b040b0d0ce6185b93ee13b8ba50789fa4088a040463f71",
+    "command-030.log": "e0be1b719227874840d79fd8fb913e092938c35caab917be513fbb3938ebb4e8",
+    "17.log": "e0be1b719227874840d79fd8fb913e092938c35caab917be513fbb3938ebb4e8",
+    "command-031.log": "f6657a32f2006e23f508c8f6a079ff930462fe497f786b05d96611c0e573f0f6",
+    "command-032.log": "c7600b354de3b3aba141163e413e346a89d5b1d6767075b6366e6854d51d3fd8",
+    "synthetic-backup.sql": "c7600b354de3b3aba141163e413e346a89d5b1d6767075b6366e6854d51d3fd8",
+    "command-033.log": "691e4b64d448c6cffd680247056c2f445e4fbf2dcbc9be821934064e906d1ce7",
+    "command-034.log": "78c61c0fa9ff426f107b4628c5bb333642e7c3df47487d06868df9a394bf5ee3",
+    "command-035.log": "ff2a1d54593b9ea8da31edf75fc7a45a13d54849bd1956e9997aaf94753d9bfa",
+    "command-036.log": "fe8edeeb98cc6d3b93cf2d57000254b84bd9eba34b4df7ce4b87db8b937b7703",
+    "command-037.log": "50ed45b18734aa6b7139f0ac6de861e1c0550c964e15d97eda8ad716b0dd728a",
+    "command-038.log": "48683aa8a05ceb8e699a4c4cc3e1b4c6f63f844815e81b5857ab59579f74f25c",
+    "command-039.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "command-040.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

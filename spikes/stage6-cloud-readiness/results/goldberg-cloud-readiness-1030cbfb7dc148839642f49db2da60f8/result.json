@@ -1,0 +1,12 @@
+{
+  "status": "FAILED",
+  "checks": [],
+  "count": 0,
+  "cleanup": "not-created",
+  "image": "docker.io/library/postgres@sha256:e4cb93687b062cd25a0e8f672d85a7708235009d70d31f8a7698d9370092a9c4",
+  "syntheticOnly": true,
+  "remoteMutations": 0,
+  "artifacts": {
+    "error.log": "075134201a333df626f0c76979c95cc124492e65ed487fe3cb513865b84ede20"
+  }
+}

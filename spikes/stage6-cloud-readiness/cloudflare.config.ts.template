@@ -1,0 +1,19 @@
+// Review template. Materialize only in an isolated directory for local checks.
+// Deployment/remote configuration remains gated; no deployment script exists.
+import { defineConfig } from 'cf/config';
+
+export default defineConfig({
+  worker: {
+    name: 'goldberg-private-verification',
+    compatibilityDate: '2026-10-24',
+    entrypoint: './worker.mjs',
+    workersDev: false,
+    previewUrls: false,
+    // No domains, fetch triggers, static assets or billable resource bindings.
+    observability: {
+      enabled: false,
+      logs: { enabled: false, invocationLogs: false, persist: false },
+      traces: { enabled: false, persist: false },
+    },
+  },
+});

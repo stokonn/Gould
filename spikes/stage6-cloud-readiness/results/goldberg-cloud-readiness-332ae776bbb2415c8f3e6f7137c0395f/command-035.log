@@ -1,0 +1,10 @@
+BEGIN
+SET
+SET
+ pg_advisory_xact_lock 
+-----------------------
+ 
+(1 row)
+
+DO
+COMMIT

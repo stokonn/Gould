@@ -121,3 +121,12 @@ individually and absence-verified; unrelated volumes retained. Evidence is in
 Final source-bound `pg-lg7ei69p` passed19 actual PostgreSQL tests and all focused
 regressions; container/volume cleanup verified. No system services, shared/hosted
 DBs, user data, migrations, backup formats, assets or signing identity changed.
+
+### 2026-10-24 — private cloud readiness preparation
+
+No cleanup or legacy component removal. New isolated readiness packet only;
+historical001–004 SQL,prototype source/evidence,Android/Room/backups/signing and
+all existing worktrees preserved. Disposable runner uses network=none/no ports,
+immutable cached PG17 image and UUID-owned container/volume removal plus absence
+verification.20 SQL checks passed in final source-bound run; no hosted mutations.
+See Stage6 PRIVATE-CLOUD-READINESS.md.

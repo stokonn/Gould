@@ -9,7 +9,7 @@ required = [
     "SECURITY DEFINER",
     "ensure_rls",
     "REVOKE EXECUTE ON FUNCTION public.rls_auto_enable()",
-    "has_function_privilege('public', f, 'EXECUTE')",
+    "a.grantee=0",
     "ROLLBACK",
 ]
 for fragment in required:

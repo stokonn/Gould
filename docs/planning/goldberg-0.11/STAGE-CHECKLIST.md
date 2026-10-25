@@ -1,3 +1,71 @@
+## Stage6 Cloud — re-verification/publication (2026-10-25)
+
+**PRIVATE STAGING NO-GO.** Owner authorized scoped review,reruns,commit/ordinary
+push only. Branch `feature/goldberg-0.11-stage-6-cloud`;base006fa577.
+
+- [x] Recover Git/Issue31/private PMP;review all changed/new files;preserve old
+  result bytes and all existing worktrees. Correct cf worker nesting;strengthen
+  expected-error assertions and command/source/cleanup evidence.
+- [x]20 PostgreSQL checks PASS in332ae776;30 source Worker requests PASS;six
+  validators/independent hashes PASS. Strict typecheck/local535-byte ESM bundle
+  and30 bundled Worker requests PASS with pinned temporary toolchain.
+- [ ]Staged scope/credential review,scoped commit/push,remote-SHA/exact-head CI
+  verification and final Issue/Project/local/private checkpoint receipts.
+- [ ]C4 billing/privacy/security/backup/owner closure;hosted ACL/runtime/schema/
+  private-ingress authorization and6.0f acceptance remain open.
+
+Purpose/scope,commands/source/result paths and honest unexecuted checks:
+`docs/planning/goldberg-0.11/stage-6/READINESS-PUBLICATION-2026-10-25.md`.
+Exact next-stage gates:`docs/planning/goldberg-0.11/stage-6/NEXT-PRIVATE-DEPLOYMENT-CHECKLIST.md`.
+C4=8 PASS/19 PARTIAL/6 OPEN;Issue31 OPEN/Goldberg Development In Progress.
+No remote schema/Worker/OAuth/public/paid/data/merge/release action.
+
+---
+
+## Historical October24 preparation checkpoint (preserved)
+
+## Stage 6 private cloud deployment readiness — 2026-10-24
+
+**Purpose/scope:** prepare Free-tier private schema/ACL/Worker/verification
+candidates locally. Authorized preparation complete; **private staging NO-GO**.
+Branch `feature/goldberg-0.11-stage-6-cloud`, base
+`006fa577ff4faef8ee7a25daf851620feb5bc3a8`; work remains uncommitted locally.
+
+- [x] Existing project/organization read-only metadata:healthy,Free,Frankfurt,PG17.11;
+  zero public/private application tables and recorded migrations;two ACL warnings.
+- [x] Assess33 C4 rows/9 day-of steps; retain8 PASS/19 PARTIAL/6 OPEN and billing gap.
+- [x] Prepare narrow ACL correction preserving ensure_rls; fix PUBLIC pseudo-role
+  assertion; prepare atomic checksum-guarded 001–004 private schema and inert
+  route-free Worker shell/cf template/server-only secret contract.
+- [x] 20 isolated synthetic PostgreSQL checks PASS,source hashes unchanged,container/
+  volumes absence verified. Six shell method cases/five paths each PASS (one Node
+  file wrapper reported). Schema replay/rollback,RLS with seeded row,ACL/trigger/
+  unrelated grants,logical restore and restored denial verified.
+- [ ] C4 closure:billing/cards/charges/add-ons/usage,terms/application,transfers/TIA/
+  retention/monitoring,MFA/SSL/API configuration and operational encrypted backup.
+- [ ] Separate owner/security authorization for exact hosted ACL fix,private schema,
+  runtime/secrets/private ingress and synthetic hosted restore/measurements.
+- [ ] Hosted Advisor postflight,connectivity/authorization/outage/CPU/backup acceptance;
+  6.0f owner disposition. C2 §12 and G1–G9/G11 integration remain independently open.
+
+**Verification/limits:** local preparation only;no hosted mutations,cloud runtime,
+Worker build/typecheck,encrypted drill rerun,Android/Gradle/APK/UI/screenshot/physical
+device checks. Historical Stage6 evidence/all other worktrees preserved. Stage7
+owner acceptance observed in latest Issue retained;Stage8 remains pending.
+No paid resources,OAuth,public routes,real data,commit/push/merge/tag/release.
+Issue31 OPEN / Goldberg Development In Progress.
+
+Detailed packet,next steps,source-bound final20-check result and remaining gates:
+`docs/planning/goldberg-0.11/stage-6/PRIVATE-CLOUD-READINESS.md`.
+Resume there and latest Issue checkpoint;obtain missing read-only evidence first.
+No SQL application or deployment until all required prerequisites and scoped
+authorizations are recorded.
+
+Six repository validators,independent evidence/hash audit and whitespace PASS.
+Issue description/checkpoint readback verified: https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388528121
+
+---
+
 ## Stage 6 HTTP → PostgreSQL integration — VERIFIED LOCALLY (2026-10-24)
 
 **Purpose/scope:** close the separate HTTP/PG venue gap, implement O1–O8 approved

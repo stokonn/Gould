@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-24",
+  "venue": "connected Supabase read-only tools",
+  "plan": "free",
+  "tier": "tier_free",
+  "status": "ACTIVE_HEALTHY",
+  "region": "eu-central-1",
+  "postgres": "17.11.0.003",
+  "application_table_schemas_checked": [
+    "public",
+    "goldberg_private"
+  ],
+  "application_tables_in_checked_schemas": 0,
+  "recorded_migrations": 0,
+  "security_advisor_warnings": 2,
+  "function": {
+    "name": "public.rls_auto_enable()",
+    "owner": "postgres",
+    "security_definer": true,
+    "search_path": "pg_catalog",
+    "acl": null,
+    "trigger": "ensure_rls",
+    "trigger_enabled": "O",
+    "tags": [
+      "CREATE TABLE",
+      "CREATE TABLE AS",
+      "SELECT INTO"
+    ]
+  },
+  "billing_verified": false,
+  "cloudflare_account_verified": false,
+  "remote_mutations": 0,
+  "worker_deployments": 0
+}

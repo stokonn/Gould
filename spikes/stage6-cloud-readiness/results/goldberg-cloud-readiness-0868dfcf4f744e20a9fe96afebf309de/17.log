@@ -1,0 +1,7 @@
+UPDATE 1
+BEGIN
+SET
+SET
+
+ERROR:  Deployment history/checksum mismatch
+CONTEXT:  PL/pgSQL function inline_code_block line 12 at RAISE

@@ -96,7 +96,9 @@ DECLARE
 BEGIN
   IF has_function_privilege('anon', f, 'EXECUTE')
      OR has_function_privilege('authenticated', f, 'EXECUTE')
-     OR has_function_privilege('public', f, 'EXECUTE') THEN
+     OR EXISTS (SELECT 1 FROM pg_proc p,
+       LATERAL aclexplode(coalesce(p.proacl, acldefault('f', p.proowner))) a
+       WHERE p.oid=f AND a.grantee=0 AND a.privilege_type='EXECUTE') THEN
     RAISE EXCEPTION 'Function EXECUTE remains available through a revoked role';
   END IF;
   IF NOT EXISTS (
@@ -137,3 +139,26 @@ RLS on a synthetic table. No hosted database was contacted. The candidate
 does not prove production authorization or provider configuration.
 
 created by stokonn with love <3
+
+## 2026-10-24 audit correction / executable review candidate
+
+`PUBLIC` is a PostgreSQL pseudo-role, not a catalog role suitable for the
+three-argument `has_function_privilege` call. The earlier PUBLIC assertion
+would fail; the corrected example above checks `aclexplode` grantee zero.
+Earlier local evidence is retained as supplied historical evidence; it does
+not establish execution of the formerly printed SQL. The new independently
+executable candidate is `spikes/stage6-cloud-readiness/acl-fix.candidate.sql`.
+It guards observed owner/search_path/tags and compares function definition,
+OID, trigger identity and unrelated grants before commit. No hosted fix applied.
+
+Current read-only audit: owner postgres, SECURITY DEFINER,
+search_path=pg_catalog, default (NULL) proacl, ensure_rls enabled O with
+CREATE TABLE/CREATE TABLE AS/SELECT INTO tags; two Advisor warnings confirmed.
+Function catches DDL errors and logs them; private-schema RLS is therefore
+explicitly enabled rather than relying on this public-only event trigger.
+
+Rollback before commit preserves exact catalog state including NULL proacl.
+After commit, restoring captured default grants restores effective privileges
+but not necessarily the NULL-versus-explicit-ACL representation; never update
+pg_proc directly to force equality. Any later ACL restoration must be explicitly
+reviewed against retained preflight evidence. Existing data stays in place.

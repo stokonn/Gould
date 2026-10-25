@@ -1,0 +1,7 @@
+ALTER EVENT TRIGGER
+BEGIN
+SET
+SET
+SELECT 1
+ERROR:  Unexpected function/trigger identity; stop for review
+CONTEXT:  PL/pgSQL function inline_code_block line 10 at RAISE

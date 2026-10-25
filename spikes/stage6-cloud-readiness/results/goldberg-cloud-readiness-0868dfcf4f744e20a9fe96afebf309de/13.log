@@ -1,0 +1,4 @@
+SET
+ERROR:  permission denied for schema goldberg_private
+LINE 1: SELECT * FROM goldberg_private.principals;
+                      ^

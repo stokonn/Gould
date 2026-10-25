@@ -1,0 +1,76 @@
+[
+  {
+    "argv": [
+      "node",
+      "--check",
+      "spikes/stage6-cloud-readiness/worker.mjs"
+    ],
+    "exitCode": 0,
+    "log": "00.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "node",
+      "--test",
+      "spikes/stage6-cloud-readiness/worker.test.mjs"
+    ],
+    "exitCode": 0,
+    "log": "01.log",
+    "sha256": "6f03fcc88428987195e9cce6fbe7980014dd022b2cd1a3bac18d3c5830da9c81"
+  },
+  {
+    "argv": [
+      "python3",
+      "scripts/check_migrations.py"
+    ],
+    "exitCode": 0,
+    "log": "02.log",
+    "sha256": "2683781d9410ad99f7634585601998139ec4b944eac46ce57c400c71c7b60aa6"
+  },
+  {
+    "argv": [
+      "python3",
+      "scripts/check_backup_fixtures.py"
+    ],
+    "exitCode": 0,
+    "log": "03.log",
+    "sha256": "c23f2f40581ef10309656bde7231951d9b70ff3869606898d72e744dff54db4e"
+  },
+  {
+    "argv": [
+      "python3",
+      "scripts/check_localization.py"
+    ],
+    "exitCode": 0,
+    "log": "04.log",
+    "sha256": "bc6b9cd8bafbe529660b80a7acd4e835d0905da1f364625d3d3ce34a7a2e69cf"
+  },
+  {
+    "argv": [
+      "python3",
+      "scripts/check_history_paging.py"
+    ],
+    "exitCode": 0,
+    "log": "05.log",
+    "sha256": "230d3f7596e00d9295a1a11890eddeb7bd82b4d4fcfb0db5a47e2d1b79d6ac78"
+  },
+  {
+    "argv": [
+      "python3",
+      "scripts/check_agent_policy.py"
+    ],
+    "exitCode": 0,
+    "log": "06.log",
+    "sha256": "a8d9aed2cee3751fe47bb59393012b73900212cb963edd81f04e0b9cc307c4bb"
+  },
+  {
+    "argv": [
+      "python3",
+      "scripts/check_stage6_acl_proposal.py"
+    ],
+    "exitCode": 0,
+    "log": "07.log",
+    "sha256": "ab09185293c47f7b43be5b27486e35a21c99b5e32855bd56289b5e58c6297a57"
+  }
+]

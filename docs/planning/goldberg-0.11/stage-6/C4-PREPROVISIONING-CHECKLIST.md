@@ -1,3 +1,7 @@
+> **2026-10-25 source publication:** local packet re-verified;C4 classifications
+> remain8 PASS/19 PARTIAL/6 OPEN. No fresh account/legal/billing/hosted acceptance
+> inferred. [Exact next-stage gates](NEXT-PRIVATE-DEPLOYMENT-CHECKLIST.md).
+
 # C4 — Pre-provisioning checklist (terms, pricing, DPA, subprocessors) — preparation snapshot
 
 > **Current status2026-10-23:** see §M for all33 PASS/PARTIAL/OPEN classifications,
@@ -623,3 +627,61 @@ Q1/C4 evidence only. The combined factual checkpoint is tracked under
 `c4-q1-owner-report-2026-10-23` in existing Issue31 after source publication;
 consult actual HEAD/status and latest Issue before continuing. No older unresolved
 Q1 snapshot or zero-project observation should override today's bounded record.
+
+## O. Private deployment readiness — 2026-10-24 (NO-GO)
+
+Current owner instruction authorizes local preparation/read-only verification only.
+All33 items and §M.4 D1–D9 assessed; **8 PASS/19 PARTIAL/6 OPEN**, C4 OPEN.
+Public-source refresh is not hosted/account/legal acceptance. Full evidence,
+verification limitations and exact remaining gates:
+[PRIVATE-CLOUD-READINESS.md](PRIVATE-CLOUD-READINESS.md). No remote mutation,
+Worker deployment, secrets upload, OAuth, public route or real-data operation.
+
+| ID | Status retained | Day-of evidence / exact gap |
+| --- | --- | --- |
+| CF-P1 | PARTIAL | SSSA fetched:2025-09-12; application/acceptance incomplete. |
+| CF-P2 | PASS | Website terms fetched:2025-08-01. |
+| CF-P3 | PARTIAL | DPA fetched:v6.4/2026-04-03; acceptance incomplete. |
+| CF-P4 | PARTIAL | DPA/EC transfer guidance fetched; actual safeguards/certification scope incomplete. |
+| CF-P5 | PASS | Pricing fetched:100k/day,10ms CPU; no account billing proof. |
+| CF-P6 | PARTIAL | Observability fetched:Dec1 transition retained; config/billing incomplete. |
+| CF-P7 | PASS | Limits fetched; real runtime/fail-closed quota proof pending. |
+| CF-P8 | PARTIAL | Account rules fetched; bounded Q1-D report retained. |
+| CF-P9 | OPEN | No current Cloudflare billing tool/CLI; no cards/charges/add-on proof. |
+| CF-P10 | PARTIAL | Subprocessor list fetched:2025-10-01; mapping/monitoring incomplete. |
+| CF-P11 | PARTIAL | Privacy2025-11-04/GDPR FAQ fetched; exact retention incomplete. |
+| CF-P12 | OPEN | Local template/logging OFF only; hosted inspection not run. |
+| CF-P13 | PARTIAL | Public Free fit refreshed; account/config/runtime proof missing. |
+| SB-P1 | PARTIAL | Terms fetched; version/date selector still hidden. |
+| SB-P2 | PARTIAL | DPA v1/2026-08-01 fetched; application/backup wording gap remains. |
+| SB-P3 | PASS | Free pricing fetched; direct free/tier_free organization metadata. |
+| SB-P4 | PARTIAL | Backups docs fetched; local plaintext synthetic restore only; entitlement/RPO unresolved. |
+| SB-P5 | PASS | Billing FAQ fetched; quota policy only, no invoice observation. |
+| SB-P6 | PARTIAL | Billing/pausing restriction documented; hosted outage/pause behavior unexecuted. |
+| SB-P7 | PASS | Regions fetched; existing eu-central-1/ACTIVE_HEALTHY metadata refreshed. |
+| SB-P8 | PARTIAL | Transfer FAQ v1/2026-10-06 fetched; no EU-only processing claim. |
+| SB-P9 | PARTIAL | October12 two-page PDF fetched; applicability/monitoring incomplete. |
+| SB-P10 | PARTIAL | Trust profile fetched (updated Oct23); no TIA or entitlement retrieved. |
+| SB-P11 | PARTIAL | Pricing retention reviewed; complete provider/security retention unresolved. |
+| SB-P12 | OPEN | Read-only catalog:0 public/private tables,0 migrations;2 ACL warnings; hosted fix/MFA/SSL/billing pending. |
+| SB-P13 | OPEN | New local logical restore passed; encrypted hosted target/scheduler/alerts/custody/RPO unverified. |
+| X-1 | PASS | Existing bounded Q1-D owner report carried; no new legal conclusion. |
+| X-2 | PARTIAL | Official EC guidance fetched; actual mapping/certification/legal review incomplete. |
+| X-3 | PARTIAL | Czech-locale Google terms fetch failed; OAuth remains excluded. |
+| X-4 | PARTIAL | Free metadata/public pricing only; account charges/cards/add-ons still unverified. |
+| X-5 | PASS | Stop rule enforced: no hosted writes/deployments or paid workaround. |
+| X-6 | OPEN | Official EUR-Lex retry returned anti-bot challenge, not regulation text. |
+| X-7 | OPEN | Optional MoJ translation not retried; prior failure remains open. |
+
+Official source URLs remain in §M.3/§N.3; all except optional MoJ were
+revisited2026-10-24 (Google CZ and EUR-Lex failed as stated above). Supabase
+changelog.md failed content-type handling; HTML changelog fallback succeeded.
+Relevant breaking change reviewed: explicit public-schema Data API grants roll
+out to all projects2026-10-30. This does not prove current exposure settings; the
+private candidate deliberately grants no client access and does not change public
+defaults. Official change: https://supabase.com/changelog/45329-breaking-change-tables-not-exposed-to-data-and-graphql-api-automatically
+
+No new PASS or owner closure inferred. D1 retains bounded Q1-D report; D2/D4/D6
+remain partial; D3/D5/D7/D8/D9 remain open as detailed in the linked report.
+Current contract/document currency must be rechecked immediately before any
+separately authorized hosted action.

@@ -1,3 +1,8 @@
+> **2026-10-24 current phase:** local private deployment preparation authorized;
+> see [PRIVATE-CLOUD-READINESS.md](PRIVATE-CLOUD-READINESS.md). Candidates locally
+> verified; private staging NO-GO; C4/6.0f open. No remote writes/deployments
+> authorized by this phase. Preserve the historical ORD-A sequence below.
+
 # Stage 6 — Cloud readiness plan: gate ordering + private-cloud verification runbook
 
 ## Current Q1/D5b outcome — owner report received 2026-10-23

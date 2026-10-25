@@ -1,0 +1,78 @@
+{
+  "checks": [
+    {
+      "argv": [
+        "node",
+        "--version"
+      ],
+      "exitCode": 0,
+      "log": "build-00.log",
+      "sha256": "b8139b18707113247bd3eba5bff8ee50ed8f6bfd5076113805af4e414abfdf23"
+    },
+    {
+      "argv": [
+        "/tmp/goldberg-cloud-local-build-20261025/node_modules/.bin/tsc",
+        "--version"
+      ],
+      "exitCode": 0,
+      "log": "build-01.log",
+      "sha256": "41024334022fa58f9c7337359517de307cbcfc6055c19f2b734245eacc2fe97a"
+    },
+    {
+      "argv": [
+        "/tmp/goldberg-cloud-local-build-20261025/node_modules/.bin/tsc",
+        "-p",
+        "/tmp/goldberg-cloud-local-build-20261025/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "log": "build-02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/tmp/goldberg-cloud-local-build-20261025/node_modules/.bin/esbuild",
+        "--version"
+      ],
+      "exitCode": 0,
+      "log": "build-03.log",
+      "sha256": "5a988f563b4e7f63fa09396db7bb2eed6011a42483ddf76464028588e5bd2d51"
+    },
+    {
+      "argv": [
+        "/tmp/goldberg-cloud-local-build-20261025/node_modules/.bin/esbuild",
+        "/tmp/goldberg-cloud-local-build-20261025/worker.mjs",
+        "--bundle",
+        "--format=esm",
+        "--platform=browser",
+        "--target=es2022",
+        "--outfile=/tmp/goldberg-cloud-local-build-20261025/worker.bundle.mjs",
+        "--metafile=/tmp/goldberg-cloud-local-build-20261025/build-meta.json"
+      ],
+      "exitCode": 0,
+      "log": "build-04.log",
+      "sha256": "3c7c23811de85ba3c335c12779d5499327a987ba30ad27b922ff02ca12285783"
+    },
+    {
+      "argv": [
+        "node",
+        "--check",
+        "/tmp/goldberg-cloud-local-build-20261025/worker.bundle.mjs"
+      ],
+      "exitCode": 0,
+      "log": "build-05.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "bundleRequests": 30,
+  "bundleSizeBytes": 535,
+  "bundleSha256": "7357204ecd68d68619596c97916edc7e8cb2baf8fd28b0fa06add62872422b48",
+  "sourceSha256": "6502851dcee5c2f5476dc0ccb45e1bb0be51a48b6bfd850ed54b0b3df5314220",
+  "templateSha256": "38995586f542d75fe41ab172fb84238823de55487ca80feea27d00e84b5e07d9",
+  "tools": {
+    "cf": "1.0.0-beta.21",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2"
+  },
+  "cfDeploymentOrProviderBuildExecuted": false,
+  "note": "Typecheck and esbuild local ESM bundle only; no configured provider build pipeline or deployed runtime. skipLibCheck applies to vendor declarations, own sources/config strict."
+}
