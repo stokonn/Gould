@@ -107,22 +107,20 @@ private enum class Destination(val label: String, val icon: ImageVector) {
         modifier = Modifier.imePadding(),
         snackbarHost = { SnackbarHost(snackbar) },
         bottomBar = {
-            NavigationBar(containerColor = MaterialTheme.colorScheme.surface, tonalElevation = 0.dp) {
-                listOf(Destination.OVERVIEW, Destination.REPERTOIRE, Destination.DISCOVER, Destination.PRACTICE, Destination.HOME).forEach { destination ->
-                    NavigationBarItem(colors = NavigationBarItemDefaults.colors(
-                        selectedIconColor = MaterialTheme.colorScheme.primary, selectedTextColor = MaterialTheme.colorScheme.primary,
-                        indicatorColor = androidx.compose.ui.graphics.Color.Transparent,
-                        unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                        unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant), selected = (if (current == SETTINGS_ROUTE) selectedTab(nav.previousBackStackEntry?.destination?.route ?: PROFILE_ROUTE) else selectedTab(current)) == destination.name, onClick = {
-                        focus.clearFocus()
-                        keyboard?.hide()
-                        nav.selectTopLevel(destination.name)
-                    }, icon = { Icon(destination.icon, contentDescription = null) }, label = { val navLabel = if(destination==Destination.DISCOVER)L.s(R.string.discover) else L.fixed(destination.label); Text(navLabel, // Stage 7A refinement: full-name content description so screen readers always
-                                // announce the complete tab name even when the visual label
-                                // ellipsizes at 2× font (five tabs in the NavigationBar).
-                                modifier = Modifier.semantics { contentDescription = navLabel }, style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis) })
-                }
-            }
+            val destinations = listOf(Destination.OVERVIEW, Destination.REPERTOIRE, Destination.DISCOVER, Destination.PRACTICE, Destination.HOME)
+            val selected = (if (current == SETTINGS_ROUTE) selectedTab(nav.previousBackStackEntry?.destination?.route ?: PROFILE_ROUTE) else selectedTab(current))
+            JournalNavigationBar(
+                items = destinations.map { destination ->
+                    JournalNavigationItem(destination.name,
+                        if (destination == Destination.DISCOVER) L.s(R.string.discover) else L.fixed(destination.label), destination.icon)
+                },
+                selectedRoute = selected,
+                onSelect = { route ->
+                    focus.clearFocus()
+                    keyboard?.hide()
+                    nav.selectTopLevel(route)
+                },
+            )
         }
     ) { padding ->
         Column(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)), horizontalAlignment = Alignment.CenterHorizontally) {

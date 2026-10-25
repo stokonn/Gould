@@ -1,0 +1,21 @@
+{
+  "pid": 4762,
+  "uptime": 178231,
+  "locale": "cs",
+  "fontScale": 1.3,
+  "profileTheme": "Dark",
+  "nodes": [],
+  "services": "com.google.android.marvin.talkback\/com.google.android.marvin.talkback.TalkBackService",
+  "touchExploration": 1,
+  "animatorScale": 1,
+  "transitionScale": 1,
+  "windowScale": 1,
+  "notificationGranted": false,
+  "activeNotificationIds": [],
+  "lightStatusBars": false,
+  "lightNavigationBars": false,
+  "systemNight": 32,
+  "scaffold": false,
+  "imeVisible": false,
+  "imeBottom": 0
+}

@@ -4,6 +4,10 @@ import android.graphics.Bitmap
 import android.graphics.Rect
 import android.view.accessibility.AccessibilityNodeInfo
 import androidx.activity.compose.setContent
+import androidx.compose.ui.graphics.luminance
+import androidx.core.view.WindowCompat
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.*
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -224,12 +228,9 @@ class Stage7bAcceptanceTest {
                                 activity.viewModelStore.put("stage7b-acceptance", model)
                                 activity.setContent {
                                     OpusTheme(theme) {
+                                        Stage8ScaffoldWindowAppearance(activity)
                                         Scaffold(bottomBar = {
-                                            NavigationBar {
-                                                listOf(R.string.label_home, R.string.label_repertoire, R.string.discover, R.string.label_practice, R.string.label_profile).forEach {
-                                                    NavigationBarItem(selected = false, onClick = {}, icon = {}, label = { Text(L.s(it), maxLines = 1) })
-                                                }
-                                            }
+                                            JournalNavigationBar(stage8NavigationItems(), "HOME", {})
                                         }) { padding ->
                                             Box(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding)
                                                 .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal))) {

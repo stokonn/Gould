@@ -102,23 +102,16 @@ class Stage8bAssessmentProbe : AndroidJUnitRunner() {
                         val appearance by app.appearance.state.collectAsStateWithLifecycle()
                         OpusTheme(settings.theme, settings.typography, appearance) {
                             val scaffold = InstrumentationRegistry.getArguments().getString("goldbergScaffold") == "true"
+                            Stage8ScaffoldWindowAppearance(activity)
                             if (scaffold) {
                                 androidx.compose.material3.Scaffold(bottomBar = {
-                                    androidx.compose.material3.NavigationBar {
-                                        listOf(R.string.label_home, R.string.label_repertoire, R.string.discover, R.string.label_practice, R.string.label_profile).forEach {
-                                            NavigationBarItem(selected=false,onClick={},icon={},label={androidx.compose.material3.Text(com.opus.piano.i18n.L.s(it),maxLines=1)})
-                                        }
-                                    }
+                                    JournalNavigationBar(stage8NavigationItems(), "HOME", {})
                                 }) { padding ->
                                     androidx.compose.foundation.layout.Box(androidx.compose.ui.Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).windowInsetsPadding(androidx.compose.foundation.layout.WindowInsets.safeDrawing.only(androidx.compose.foundation.layout.WindowInsetsSides.Top + androidx.compose.foundation.layout.WindowInsetsSides.Horizontal))) {
                                         AdminTheme { com.opus.piano.ui.admin.AdminSettingsScreen(admin) {} }
                                     }
                                 }
                             } else {
-                            val light = androidx.compose.material3.MaterialTheme.colorScheme.background.luminance() > .5f
-                            SideEffect { WindowCompat.getInsetsController(activity.window, activity.window.decorView).apply {
-                                isAppearanceLightStatusBars = light; isAppearanceLightNavigationBars = light
-                            } }
                             OpusApp(model,catalog,experience,profile,admin)
                             }
                         }
@@ -212,8 +205,10 @@ class Stage8bAssessmentProbe : AndroidJUnitRunner() {
             val index=nodes.length();val rect=Rect();node.getBoundsInScreen(rect)
             nodes.put(JSONObject().put("index",index).put("parent",parent).put("text",node.text?.toString())
                 .put("description",node.contentDescription?.toString()).put("bounds",rect.flattenToString())
+                .put("roleDescription",androidx.core.view.accessibility.AccessibilityNodeInfoCompat.wrap(node).roleDescription?.toString())
                 .put("class",node.className?.toString()).put("visible",node.isVisibleToUser)
                 .put("clickable",node.isClickable).put("enabled",node.isEnabled).put("editable",node.isEditable)
+                .put("selected",node.isSelected)
                 .put("focusable",node.isFocusable).put("focused",node.isFocused).put("accessibilityFocused",node.isAccessibilityFocused)
                 .put("checkable",node.isCheckable).put("checked",node.isChecked)
                 .put("actions",JSONArray(node.actionList.map {it.id})))
@@ -223,6 +218,9 @@ class Stage8bAssessmentProbe : AndroidJUnitRunner() {
         val state=JSONObject().put("pid",Process.myPid()).put("uptime",android.os.SystemClock.uptimeMillis())
             .put("locale",app.resources.configuration.locales[0].toLanguageTag())
             .put("fontScale",app.resources.configuration.fontScale)
+            .put("densityDpi",app.resources.displayMetrics.densityDpi)
+            .put("screenWidthDp",app.resources.configuration.screenWidthDp)
+            .put("screenHeightDp",app.resources.configuration.screenHeightDp)
             .put("profileTheme",manualProfile?.settings?.value?.theme)
             .put("nodes",nodes).put("services",Settings.Secure.getString(app.contentResolver,"enabled_accessibility_services"))
             .put("touchExploration",Settings.Secure.getInt(app.contentResolver,"touch_exploration_enabled",0))

@@ -8,3 +8,7 @@ local.properties
 docs/design/goldberg-0.10.1/references/
 # Regenerable Python verification bytecode.
 __pycache__/
+
+# Private worktree memory; publish curated docs/ai checkpoints only.
+.pmp/
+.pmp.yml

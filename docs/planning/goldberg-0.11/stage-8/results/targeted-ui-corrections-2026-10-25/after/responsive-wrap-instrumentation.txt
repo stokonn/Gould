@@ -1,0 +1,8 @@
+
+com.opus.piano.Stage8cUiRegressionTest:.
+
+Time: 66.134
+
+OK (1 test)
+
+

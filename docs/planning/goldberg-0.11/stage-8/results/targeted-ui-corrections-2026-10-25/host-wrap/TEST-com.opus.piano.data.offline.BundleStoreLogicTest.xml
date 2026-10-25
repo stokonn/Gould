@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.data.offline.BundleStoreLogicTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:08:28.731Z" hostname="fedora" time="0.017">
+  <properties/>
+  <testcase name="admissionRefusesCombinedCeilingOverflowInsteadOfEvicting" classname="com.opus.piano.data.offline.BundleStoreLogicTest" time="0.001"/>
+  <testcase name="sha256MatchesKnownVector" classname="com.opus.piano.data.offline.BundleStoreLogicTest" time="0.002"/>
+  <testcase name="admissionRefusesWhenReserveWouldBeViolated" classname="com.opus.piano.data.offline.BundleStoreLogicTest" time="0.0"/>
+  <testcase name="directoryBytesCountsOnlyExistingFiles" classname="com.opus.piano.data.offline.BundleStoreLogicTest" time="0.009"/>
+  <testcase name="sha256OfReadsFileContent" classname="com.opus.piano.data.offline.BundleStoreLogicTest" time="0.001"/>
+  <testcase name="orphanedStagedFilesAreExactlyTheUnreferencedOnes" classname="com.opus.piano.data.offline.BundleStoreLogicTest" time="0.001"/>
+  <testcase name="admissionAcceptsInsideCeilingAndReserve" classname="com.opus.piano.data.offline.BundleStoreLogicTest" time="0.0"/>
+  <testcase name="pendingManifestsKeepContentAliveDuringRefresh" classname="com.opus.piano.data.offline.BundleStoreLogicTest" time="0.002"/>
+  <testcase name="sharedContentStaysReferencedUntilLastManifestGoes" classname="com.opus.piano.data.offline.BundleStoreLogicTest" time="0.001"/>
+  <testcase name="shaValidationMatchesCodecRule" classname="com.opus.piano.data.offline.BundleStoreLogicTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

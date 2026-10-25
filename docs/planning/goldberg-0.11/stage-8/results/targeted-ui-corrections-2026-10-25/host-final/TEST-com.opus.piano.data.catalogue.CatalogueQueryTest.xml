@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.data.catalogue.CatalogueQueryTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-25T05:50:26.767Z" hostname="fedora" time="0.002">
+  <properties/>
+  <testcase name="uuidRequiresCanonicalSpelling" classname="com.opus.piano.data.catalogue.CatalogueQueryTest" time="0.001"/>
+  <testcase name="fts4PrefixesAreQuotedInsideTokens" classname="com.opus.piano.data.catalogue.CatalogueQueryTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

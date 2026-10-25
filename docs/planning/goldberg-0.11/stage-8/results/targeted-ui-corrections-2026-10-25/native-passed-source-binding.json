@@ -1,0 +1,26 @@
+{
+  "sourceInputs": {
+    "app/src/main/java/com/opus/piano/ui/OpusApp.kt": "1ceb1b050da623b3f767c5855a3fde320213be867fa11654e2a3927980aea2f3",
+    "app/src/main/java/com/opus/piano/ui/admin/AdminSettingsScreen.kt": "4a99d935684298b5347e00bb5b4b801d1f8a1f380ac080418dd6ec66b520c7bc",
+    "app/src/main/java/com/opus/piano/ui/JournalNavigationBar.kt": "633e2ea51ea1603a2454f7604908edb5a47b720053b0a83886310695c975c324",
+    "app/src/androidTest/java/com/opus/piano/Stage7bAcceptanceTest.kt": "e6070ae82e21e5ff7cd9c649fc9eea5c8f1b62880f449f03b8d2ad5db809c462",
+    "app/src/androidTest/java/com/opus/piano/Stage8bAssessmentProbe.kt": "e9e11d523571c374b99ec64ed8072edb3ed8225de8ac0e2dfc1e1bed32c31359",
+    "app/src/androidTest/java/com/opus/piano/Stage8cUiRegressionTest.kt": "77d87f0ee6ea12139864c3943313ebf1a0ebaf8d3c3a745d0b7081037018cd4b",
+    "app/build.gradle.kts": "46b56e65a768014b2a8554506979d8ae7bf74f4e15891a4cd0677fcd8d353666"
+  },
+  "apks": {
+    "candidate-app-native-passed.apk": "1c2436263903f18ba7081f7919c37f5d282833bd3d6d5e469db3e3823f72244a",
+    "candidate-default-test-native-passed.apk": "e176004bcd5d84b51065f82050abb14aa259bd73dcf06203f636e468848515ec",
+    "candidate-probe-native-passed.apk": "ef2b1ca58b418a6b29f59db3c9cfbc59563846efee013da57b525eac0e441529"
+  },
+  "hostCommand": "./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --offline --no-daemon --max-workers=1",
+  "host": "PASS2m1s;11executed/72up-to-date",
+  "probe": "PASS12s;3executed/48up-to-date",
+  "jvm": {
+    "tests": 275,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "focusedNative": "OK4tests75.972s"
+}

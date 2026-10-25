@@ -1,0 +1,109 @@
+[
+  {
+    "path": "/home/stokonn/Projects/Opus",
+    "head": "32cf5d93f19faef56fcb3bf7d7108088f66a1706",
+    "trackedStatus": [],
+    "untrackedCount": 44
+  },
+  {
+    "path": "/home/stokonn/Projects/Goldberg-Stage6-API",
+    "head": "006fa577ff4faef8ee7a25daf851620feb5bc3a8",
+    "trackedStatus": [],
+    "untrackedCount": 63
+  },
+  {
+    "path": "/home/stokonn/Projects/Goldberg-Stage6-Cloud",
+    "head": "c8b903bbab147b239683c21204f524f7201849f0",
+    "trackedStatus": [
+      " M .gitattributes",
+      " M docs/ai/HANDOFF.md",
+      " M docs/ai/STAGE6-CLOUD-CHECKPOINT.md",
+      " M docs/ai/STATE.md",
+      " M docs/ai/VERIFICATION.md",
+      " M docs/maintenance/LEGACY-CLEANUP.md",
+      " M docs/planning/goldberg-0.11/STAGE-CHECKLIST.md",
+      " M docs/planning/goldberg-0.11/stage-6/C4-PREPROVISIONING-CHECKLIST.md",
+      " M docs/planning/goldberg-0.11/stage-6/CHECKLIST.md",
+      " M docs/planning/goldberg-0.11/stage-6/NEXT-PRIVATE-DEPLOYMENT-CHECKLIST.md"
+    ],
+    "untrackedCount": 119
+  },
+  {
+    "path": "/home/stokonn/Projects/Goldberg-Stage7A",
+    "head": "1b97281ac639a045151ab4dd01e28c499c2e4ca7",
+    "trackedStatus": [],
+    "untrackedCount": 6
+  },
+  {
+    "path": "/home/stokonn/Projects/Goldberg-Stage7B",
+    "head": "4c6a91d600ad18455a280f941f89740694d5afa0",
+    "trackedStatus": [],
+    "untrackedCount": 2090
+  },
+  {
+    "path": "/home/stokonn/Projects/Goldberg-Stage8",
+    "head": "29ce6071741df7567f782730bd78d6d1e0192780",
+    "trackedStatus": [],
+    "untrackedCount": 0
+  },
+  {
+    "path": "/home/stokonn/Projects/goldberg-c2-spike",
+    "head": "7bc6976576353a244533792128e18b9343dc6c7c",
+    "trackedStatus": [],
+    "untrackedCount": 0
+  },
+  {
+    "path": "/home/stokonn/Projects/goldberg-stage6-docs",
+    "head": "b3edc2a25aa601b25561ec38cdaf912122dae4ec",
+    "trackedStatus": [],
+    "untrackedCount": 0
+  },
+  {
+    "path": "/home/stokonn/Projects/goldberg-stage7-docs",
+    "head": "467ad29422e2af09fe6f689fd61bf8121b298674",
+    "trackedStatus": [],
+    "untrackedCount": 0
+  },
+  {
+    "path": "/tmp/goldberg-stage1-review-c3d5e03",
+    "head": "c3d5e03b9a4936d8db393df664af209a8853c767",
+    "trackedStatus": [],
+    "untrackedCount": 0
+  },
+  {
+    "path": "/tmp/goldberg-stage6-android-local",
+    "head": "bcc779685d79e99451796b3fa45657b3bca8dd99",
+    "trackedStatus": [],
+    "untrackedCount": 0
+  },
+  {
+    "path": "/tmp/goldberg-stage6-handlers",
+    "head": "262847ebcdef18d186ded5b7af4825436a1dc4e3",
+    "trackedStatus": [],
+    "untrackedCount": 0
+  },
+  {
+    "path": "/tmp/goldberg-stage6-public-admin-abuse",
+    "head": "9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce",
+    "trackedStatus": [],
+    "untrackedCount": 0
+  },
+  {
+    "path": "/tmp/goldberg-stage6-security-local",
+    "head": "6dd3136269ec7f5932c8c4b3689fb065d4db9105",
+    "trackedStatus": [],
+    "untrackedCount": 0
+  },
+  {
+    "path": "/tmp/opencode/c6-pg",
+    "head": "c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab",
+    "trackedStatus": [],
+    "untrackedCount": 0
+  },
+  {
+    "path": "/tmp/opencode/goldberg-ci-only",
+    "head": "67d9cca864ad00c7214d465f81d1cc34c9d32eb3",
+    "trackedStatus": [],
+    "untrackedCount": 0
+  }
+]

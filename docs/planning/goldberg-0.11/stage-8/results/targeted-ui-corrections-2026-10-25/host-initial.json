@@ -1,0 +1,29 @@
+{
+  "command": "./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --offline --no-daemon --max-workers=1",
+  "result": "BUILD SUCCESSFUL in 3m31s;33executed/50up-to-date",
+  "jvm": {
+    "suites": 36,
+    "tests": 275,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "lint": {
+    "Error": 0,
+    "Fatal": 0,
+    "Warning": 119,
+    "Information": 0
+  },
+  "inputs": {
+    "app/src/main/java/com/opus/piano/ui/OpusApp.kt": "1ceb1b050da623b3f767c5855a3fde320213be867fa11654e2a3927980aea2f3",
+    "app/src/main/java/com/opus/piano/ui/admin/AdminSettingsScreen.kt": "31f7c9066f206b6f9e00841435dfd28666c11912b0946f2314837242e5c6081b",
+    "app/src/main/java/com/opus/piano/ui/JournalNavigationBar.kt": "af188e4739613c776113d6643dbd1792a0dd2913947920a7d633c785f8c67456",
+    "app/src/androidTest/java/com/opus/piano/Stage8cUiRegressionTest.kt": "da71e07a79b539b619692efe3a41b0d58830e161d8733440bcafe370751fa6f5",
+    "app/src/androidTest/java/com/opus/piano/Stage7bAcceptanceTest.kt": "e6070ae82e21e5ff7cd9c649fc9eea5c8f1b62880f449f03b8d2ad5db809c462",
+    "app/src/androidTest/java/com/opus/piano/Stage8bAssessmentProbe.kt": "59ba5a03ee6f653f345119b92fa02308aa2db121fcc83acd2e9284a845f7706e"
+  },
+  "apkHashes": {
+    "candidate-app-initial.apk": "3df2ca3dc2be646ae40126b8accfcb7b9324e26fc7e352a807796acf0c7b2dc3",
+    "candidate-default-test-initial.apk": "035054919b22d3912077d64826659bdd0150c2b69fd53ae616bfeb9346d50626"
+  }
+}

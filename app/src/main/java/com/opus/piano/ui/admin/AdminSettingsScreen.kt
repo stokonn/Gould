@@ -1,6 +1,7 @@
 package com.opus.piano.ui.admin
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -185,9 +186,18 @@ private fun EndpointDialog(initial: String, onDismiss: () -> Unit, onSave: (Stri
 private fun endpointValid(text: String): Boolean =
     text.trim().isEmpty() || com.opus.piano.admin.AdminApi.validateEndpoint(text.trim()) != null
 
-@Composable internal fun AdminSwitch(label: String, checked: Boolean, change: (Boolean) -> Unit) {
-    Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+/** One named switch owner for touch, keyboard and accessibility traversal. */
+@Composable internal fun AdminSwitch(label: String, checked: Boolean, enabled: Boolean = true, change: (Boolean) -> Unit) {
+    Row(
+        Modifier.fillMaxWidth().heightIn(min = 48.dp)
+            .semantics(mergeDescendants = true) {}
+            .adminToggleSemantics(label, checked, androidx.compose.ui.semantics.Role.Switch, enabled) { change(!checked) }
+            .toggleable(checked, enabled = enabled, role = androidx.compose.ui.semantics.Role.Switch, onValueChange = change)
+            .padding(vertical = 6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
         Text(label, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
-        Switch(checked, change, modifier = Modifier.adminToggleSemantics(label, checked, androidx.compose.ui.semantics.Role.Switch) { change(!checked) })
+        // The row owns the action; this indicator must not introduce another stop/action.
+        Switch(checked, onCheckedChange = null, enabled = enabled)
     }
 }

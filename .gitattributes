@@ -60,3 +60,24 @@ docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10
 
 # Preserve exact automatic Stage 8B source-quality diagnostics.
 docs/planning/goldberg-0.11/stage-8/results/automatic-quality-40147220442/quality.log -whitespace
+
+# Byte-exact Stage8C host/native diagnostic attempts.
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/focused-initial-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/focused-role-contract-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/focused-semantics-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/responsive-wrap-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/before/attempts/1792906622058539777/en-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/before/en-dark-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/before/en-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/before/en-light-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/candidate-signing.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/host-initial.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/refined-signing.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-build-role-contract.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-emulator-restart.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-host-final.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-host-semantics.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-host-wrap.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-probe-build.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-probe-density-build.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-probe-wrap-build.log -whitespace

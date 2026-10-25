@@ -1,0 +1,102 @@
+INFO         | Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /home/stokonn/Android/Sdk/system-images/android-36/google_apis/x86_64/
+INFO         | Guest usage of host flag 'VulkanVirtualQueue' will be ignored.
+INFO         | Increasing RAM size to 2560MB
+INFO         | Guest GLES Driver: Auto (ext controls)
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `Goldberg8C` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `Goldberg8C` are met
+WARNING      | File System is not ext4, disable QuickbootFileBacked feature
+INFO         | Storing crashdata in: /tmp/android-stokonn/emu-crash-37.2.12.db, detection is enabled for process: 615793
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'lavapipe', using Lavapipe ICD
+INFO         | Setting ICD filenames for the loader = /home/stokonn/Android/Sdk/emulator/lib64/vulkan/lvp_icd.json
+INFO         | SharedLibrary::open for [/home/stokonn/Android/Sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so]
+INFO         | SharedLibrary::open for [/home/stokonn/Android/Sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so.1]
+INFO         | SharedLibrary::open for [/home/stokonn/Android/Sdk/emulator/lib64/vulkan/libvulkan.so]
+INFO         | Added library: /home/stokonn/Android/Sdk/emulator/lib64/vulkan/libvulkan.so
+INFO         | Selecting Vulkan device: llvmpipe (LLVM 21.0.0, 256 bits), Version: 1.4.318
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | SharedLibrary::open for [libX11]
+WARNING      | Could not open libX11.so, try libX11.so.6
+INFO         | SharedLibrary::open for [libX11.so.6]
+INFO         | SharedLibrary::open for [libX11-xcb]
+WARNING      | Could not open libX11-xcb.so, try libX11-xcb.so.1
+INFO         | SharedLibrary::open for [libX11-xcb.so.1]
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Mesa))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Mesa, Vulkan 1.4.318 (llvmpipe (LLVM 21.0.0 256 bits) (0x00000000)), llvmpipe-25.2.4))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.17841 git hash: 5fa2e61da947))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+ERROR        | Setting read-only feature 'GLAsyncSwap' to '0'
+INFO         | Feature 'GLAsyncSwap' (50) is overridden to 'disabled'
+INFO         | Sending adb public key [QAAAAOVp354TVDxxDKvCHWv2WUSA9FdI3Fs7GVBMGtZ9fBEXpA0TsbbHIo4TJKMA87MLVAfFITBj0lhPrJSO0TPSy4aaDDb6uo+7EQm1gr7r62D2bDMOPHJDFguB6wGduxlJR0lWONC6y8RvFlTH9+YAwNns9ET3mgsGgbvC0AGO1Beu455Zl9GgHfQ+G5r68i91RuxzMcZY8YUEMIlaCW0FoJZ3zmvRi7LkKNX3/GNYgnZk/3BWnE6EkqM9e9L3/+zOJRRJ8xDWyP/b8YgtHxD9LYqz9rfHW+Xjilb+UOBaOU28C9c5DjUw02IH+JOhNfbdan8o0+O5A5ka0ond/zqWN578of/YfjemH4TtVq2zIUun7PP579uehm652mEGik/XGmd96iRcbMffYA1wsJKVRhDzEdKW10EHwQBvQvFFcN8ifek8lUw6tXzFt1sAoPAId/9BJpvCzF5XAQzFcum3DXWS2kvkVhAyPkGXEUy1jeiE9q0ybEN3p6Qreh+RKkRYAbG8IdwdxWRpoEZkM7HwXan57FLE1n2aGsYz30K79DjvuQ6aj65aTTP8x/fbvA6o5e5KkCiDnmgTJSYPq6I9Cr2ISqTmWg95YmGfvTnbq0W/MK2GjTQ3YOSLiNHG2VfHk/Q6ZYot2aJtpOs+g7/mwGG7eWUZAQxpf4sJ1YMh3WF48UocYAEAAQA= stokonn@fedora]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0
+INFO         |   androidboot.dalvik.vm.heapsize=576m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAOVp354TVDxxDKvCHWv2WUSA9FdI3Fs7GVBMGtZ9fBEXpA0TsbbHIo4TJKMA87MLVAfFITBj0lhPrJSO0TPSy4aaDDb6uo+7EQm1gr7r62D2bDMOPHJDFguB6wGduxlJR0lWONC6y8RvFlTH9+YAwNns9ET3mgsGgbvC0AGO1Beu455Zl9GgHfQ+G5r68i91RuxzMcZY8YUEMIlaCW0FoJZ3zmvRi7LkKNX3/GNYgnZk/3BWnE6EkqM9e9L3/+zOJRRJ8xDWyP/b8YgtHxD9LYqz9rfHW+Xjilb+UOBaOU28C9c5DjUw02IH+JOhNfbdan8o0+O5A5ka0ond/zqWN578of/YfjemH4TtVq2zIUun7PP579uehm652mEGik/XGmd96iRcbMffYA1wsJKVRhDzEdKW10EHwQBvQvFFcN8ifek8lUw6tXzFt1sAoPAId/9BJpvCzF5XAQzFcum3DXWS2kvkVhAyPkGXEUy1jeiE9q0ybEN3p6Qreh+RKkRYAbG8IdwdxWRpoEZkM7HwXan57FLE1n2aGsYz30K79DjvuQ6aj65aTTP8x/fbvA6o5e5KkCiDnmgTJSYPq6I9Cr2ISqTmWg95YmGfvTnbq0W/MK2GjTQ3YOSLiNHG2VfHk/Q6ZYot2aJtpOs+g7/mwGG7eWUZAQxpf4sJ1YMh3WF48UocYAEAAQA= stokonn@fedora
+INFO         |   androidboot.qemu.avd_name=Goldberg8C
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4206592
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=320x640
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X12X0
+INFO         |   androidboot.vbmeta.digest=7466b5c28e6a3e1427b22ed2c317c6c7066294bde838d4d5243cce5d37992bd5
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6848
+INFO         |   androidboot.veritymode=enforcing
+WARNING: cannnot unmap ptr 0x7f4764801000 as it is in the protected range from 0x7f46c4800000 to 0x7f4764a00000
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5589) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Successfully initialized netsim WiFi
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Activated packet streamer for uwb emulation
+INFO         | Setting display: 0 configuration to: 320x640, dpi: 160x160 
+INFO         | setDisplayActiveConfig: id:0, 320x640
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+INFO         | GPU Vendor=[Google (Google Inc. (Mesa))]
+INFO         | GPU Renderer=[Android Emulator OpenGL ES Translator (ANGLE (Mesa, Vulkan 1.4.318 (llvmpipe (LLVM 21.0.0 256 bits) (0x00000000)), llvmpipe-25.2.4))]
+INFO         | GPU Version=[OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.17841 git hash: 5fa2e61da947))]
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 23159 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
