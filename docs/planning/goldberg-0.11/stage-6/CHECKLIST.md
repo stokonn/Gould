@@ -1,3 +1,21 @@
+## Final source publication receipt — October25,2026
+
+Source be5104476cf6cb059b0f206b2c4f18027d6bc657 ordinary-pushed; remote exact.
+Automatic CI40188291121 COMPLETED/SUCCESS at that exact source: clean Gradle APK/
+JVM/instrumentation compilation/lint and host data/policy/backup/evidence checks.
+Local234 JVM/20canonical,6archive and6actual local TLS/restore results remain
+source-bound in android-json-final/; CI compilation is not native execution.
+Earlier5fddbd0 CI40177518593 SUCCESS retained separately. No manual rerun/dispatch.
+
+This final receipt changes documentation only; executable/test/schema/workflow
+inputs match the successful source. It uses[skip ci]toavoid repeating accepted
+unchanged tests; sourceCI is not falsely attributed to a later documentation SHA.
+Final documentation HEAD/remote and exact Issue/Project/private PMP readback are
+recorded in the final Issue31 comment. Stage6 BLOCKED; no hosted operation or
+whole-stage acceptance inferred from source publication. No main/Wiki/release.
+
+---
+
 ## Stage6 final source hardening — LOCALLY VERIFIED / HOSTED BLOCKED (2026-10-25)
 
 - [x] Android-independent normalized duplicate-key rejection and isolated GnuPG

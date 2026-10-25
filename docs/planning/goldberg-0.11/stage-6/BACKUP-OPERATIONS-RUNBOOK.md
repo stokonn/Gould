@@ -92,3 +92,18 @@ restore; and an owner-approved measurable RTO. Re-run the C4 day-of matrix and
 keep 6.0f open until its independent acceptance evidence exists.
 
 created by stokonn with love <3
+
+
+## Implemented local archive execution — October25,2026
+
+The local encrypted archive/health/isolated-output implementation is now available
+at scripts/stage6/backup_store.py. See [exact invocation and custody limits](LOCAL-BACKUP-EXECUTION.md).
+6 lifecycle tests and6 actual local PG TLS/archive/isolated-restore checks PASS;
+current immutable evidence is linked from END-TO-END-ACCEPTANCE.md. Earlier accepted
+encryption/key-rotation/audit tests remain separately source-bound and were reused.
+
+The tool selects no destination or key custodian, configures no scheduler/alert,
+connects to no database and deletes no archive. Durable storage/separate custody
+are explicitly unapproved per owner clarification; hosted RPO/RTO remain unknown.
+Only synthetic local dump files were used. Never point a restore at the existing
+project or treat a local temporary key/path as recovery custody approval.

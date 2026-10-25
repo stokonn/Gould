@@ -1,0 +1,14 @@
+{
+  "conclusion": "success",
+  "headSha": "be5104476cf6cb059b0f206b2c4f18027d6bc657",
+  "status": "completed",
+  "url": "https://github.com/stokonn/Goldberg/actions/runs/40188291121",
+  "rawLogSha256": "6f98546304b477eb29f8d79a97e1e7d8b68c026bc72435639278fac280e069a3",
+  "rawLogCustody": "private local receipt; raw source CI retained outside Git",
+  "observedSteps": [
+    "clean Gradle APK/JVM/instrumentation compilation/lint PASS",
+    "host data/policy checks PASS",
+    "6 archive tests PASS",
+    "source/raw acceptance verifier PASS"
+  ]
+}

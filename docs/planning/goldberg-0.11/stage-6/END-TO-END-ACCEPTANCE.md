@@ -1,3 +1,21 @@
+## Final source publication receipt — October25,2026
+
+Source be5104476cf6cb059b0f206b2c4f18027d6bc657 ordinary-pushed; remote exact.
+Automatic CI40188291121 COMPLETED/SUCCESS at that exact source: clean Gradle APK/
+JVM/instrumentation compilation/lint and host data/policy/backup/evidence checks.
+Local234 JVM/20canonical,6archive and6actual local TLS/restore results remain
+source-bound in android-json-final/; CI compilation is not native execution.
+Earlier5fddbd0 CI40177518593 SUCCESS retained separately. No manual rerun/dispatch.
+
+This final receipt changes documentation only; executable/test/schema/workflow
+inputs match the successful source. It uses[skip ci]toavoid repeating accepted
+unchanged tests; sourceCI is not falsely attributed to a later documentation SHA.
+Final documentation HEAD/remote and exact Issue/Project/private PMP readback are
+recorded in the final Issue31 comment. Stage6 BLOCKED; no hosted operation or
+whole-stage acceptance inferred from source publication. No main/Wiki/release.
+
+---
+
 # Stage6 end-to-end execution — LOCALLY VERIFIED / BLOCKED (2026-10-25)
 
 Purpose: finish executable Stage6 engineering and evaluate each requirement against
@@ -22,7 +40,7 @@ No accepted Stage7/8 source overwritten; Android production networking stays dis
   changed behavior only; retain accepted SQL/encryption/HTTP-PG suites.
 - [x] Reconcile6.0/6.1–6.18 and G1–G11 individually; real policy/public-version,
   hosted cost/security/backup/privacy facts remain explicit external prerequisites.
-- [ ] Commit/push verified scope; read exact remote/CI; sync existing Issue31/Project,
+- [x] Commit/push verified scope; read exact remote/CI; sync existing Issue31/Project,
   docs/ai/checklists/private PMP and final acceptance with a defined denominator.
 - [ ] Only if hard prerequisites pass: one exact hosted approval, then authorized
   execution and B7 acceptance. No hosted writes authorized by broad continuation.

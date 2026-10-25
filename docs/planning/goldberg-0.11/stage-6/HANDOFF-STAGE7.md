@@ -110,3 +110,16 @@ Overall6.12 remains PARTIAL. G10 stays closed on Android; G1–G9/G11 remain blo
 for actual integration, with no fixture activation, HTTP binding or6.17 freeze.
 See the current security matrix and STAGE7B-CONTRACT-READINESS.md. No repeat of
 this successful PostgreSQL run is needed solely to update evidence/publication.
+
+
+## Actual Stage6 contract-side update — October25,2026
+
+Canonical Kotlin API/session/review/audit support is implemented in
+app/src/main/java/com/opus/piano/data/community/canonical;20 focused tests/234 full
+JVM tests PASS. Shared canonical schema/captures are unchanged; local adapter
+coverage does not freeze a public version or approve real metadata policies.
+See CANONICAL-KOTLIN-ADAPTER.md and END-TO-END-ACCEPTANCE.md for actual source/
+commands/limits. Stage7A/7B owner acceptance is retained unchanged. This new
+Stage6 library has not been wired into the accepted Stage7 UI/storage/services;
+actual adoption/native verification follows the existing Stage8 sequence.
+G1–G9/G11 integration remain OPEN; G10 production networking remains disabled.
