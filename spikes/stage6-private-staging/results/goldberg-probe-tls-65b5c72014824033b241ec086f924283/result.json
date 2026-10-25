@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "checks": [
+    "verified CA/hostname/password actual SELECT",
+    "wrong password denied",
+    "wrong hostname denied",
+    "untrusted CA denied",
+    "actual synthetic pg_dump encrypted archive roundtrip byte equality",
+    "actual isolated database restore preserves marker/RLS/SELECT policy"
+  ],
+  "cleanup": "removed-and-absence-verified",
+  "container": "goldberg-probe-tls-65b5c72014824033b241ec086f924283",
+  "volumes": [
+    "db083909bf79c672ce571a39174ba5d709e5884ac124779fc95780c5a1798e9f"
+  ],
+  "hostedWrites": 0,
+  "sourceSha256": "e9df152398e65643ec64776c5bb145de69587d18511b0aca5b4da9104e616695",
+  "artifacts": {
+    "checks.json": "19d1611973a2611d422b0029f22510f51c65e55937949bdf8cef281b5748bfe9"
+  }
+}

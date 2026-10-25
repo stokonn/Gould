@@ -1,3 +1,5 @@
+> Continuation: [authenticated read-only inspection](CLOUDFLARE-READONLY-2026-10-25.md) supersedes the historical no-login status below. B1 SATISFIED; B2/B4/B5/B6 remain open in the precise scope recorded there.
+
 # Private deployment Phase 1/2 — 2026-10-25
 
 **Preparation advanced; hosted execution NO-GO.** The owner authorized fresh
@@ -190,7 +192,7 @@ Sources: [backups](https://supabase.com/docs/guides/platform/backups),
 
 | ID | Class | Status and next executable action |
 | --- | --- | --- |
-| B1 | Hard access prerequisite | Existing CF account not authenticated in available tools. Operator makes existing read-only access available; no new account/login/product activation initiated here. |
+| B1 | Access SATISFIED 2026-10-25 08:05 UTC | Owner login independently confirmed by Wrangler4.152.0 whoami and authenticated account/Workers GET. See CLOUDFLARE-READONLY-2026-10-25.md; earlier no-login observations are historical. |
 | B2 | Hard financial evidence | Current both-provider charges/add-ons/trials/usage and no-card posture not observable. Reuse dated valid console evidence; collect only missing sanitized facts, not card/account details. Public pricing is insufficient. |
 | B3 | Excluded path | Standard Zero Trust onboarding requires payment details. Do not activate it. Route-less service-binding candidate is prepared instead. |
 | B4 | Security/secret prerequisite | Fresh account MFA, external SSL enforcement, actual exposed schemas/Auth posture, verified pooler host/CA and confidential role-secret delivery remain unknown. Bounded catalog compatibility passed; this does not close these items. |
@@ -199,7 +201,7 @@ Sources: [backups](https://supabase.com/docs/guides/platform/backups),
 | B7 | Gated hosted acceptance | Actual authenticated remote-binding session, no-URL reachability, TLS/password auth, Advisor postflight, CPU/latency/quotas and hosted restore/cleanup. These are post-authorization tests under ORD-A, not impossible pre-deployment demands. |
 | B8 | Out of scope/reference-only | OAuth/country terms, optional translation/legal-source retrieval and production per-user moderation are not synthetic probe work. No activation or new owner decision sought here; production gates remain separate. |
 
-**No consolidated hosted approval is requested now:** B1/B2 and unresolved
+**No consolidated hosted approval is requested now:** B2 and unresolved
 security/operational/disposition evidence prevent satisfying the preconditions.
 The next executable step is existing-account read-only access plus missing
 sanitized account/security/backup facts, not another accepted test run.

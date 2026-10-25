@@ -718,3 +718,20 @@ configuration,Free backup entitlement or provider retention proof. Current terms
 HTML selector still does not expose version/date. Accepted operator/professional
 outcome remains intact;unquantified service/transfer/retention and operational
 inputs need evidence/disposition. No remote schema change or Worker deployed.
+
+
+## Q. End-to-end continuation — 2026-10-25
+
+B1 independently SATISFIED with existing Wrangler OAuth/account GET. CF user MFA
+ON, account enforce_twofactor=false,0 Workers/services/domains/zones; billing403,
+standard usage-model metadata not subscription proof. Existing Supabase healthy/
+Free/Frankfurt/PG17.11 observations refreshed;0 application tables/private schema
+absent;expected event trigger unchanged,two Advisor warnings remain. Connection
+and authenticator pgrst.db_schemas settings bothNULL: actual API exposure remains
+UNKNOWN, not proved disabled. No provider setting or resource changed.
+
+Owner explicitly confirms no independent current/upcoming charges/card/add-on/trial
+facts, no approved durable encrypted destination/separate custodian and no blanket
+C4 privacy/retention/transfer disposition. Retain Q1-D/D5b and8PASS/19PARTIAL/6OPEN.
+New local backup/restore/TLS and Kotlin adapter evidence does not close these rows.
+See END-TO-END-ACCEPTANCE.md and LOCAL-BACKUP-EXECUTION.md. Hosted remains NO-GO.

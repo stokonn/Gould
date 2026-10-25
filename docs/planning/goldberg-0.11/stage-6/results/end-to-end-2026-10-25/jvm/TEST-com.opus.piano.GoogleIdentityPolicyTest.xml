@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.GoogleIdentityPolicyTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-25T08:30:27.756Z" hostname="fedora" time="0.001">
+  <properties/>
+  <testcase name="initializesDefaultButPreservesLegacyNickname" classname="com.opus.piano.GoogleIdentityPolicyTest" time="0.001"/>
+  <testcase name="synchronizesOnlyUnmodifiedGoogleName" classname="com.opus.piano.GoogleIdentityPolicyTest" time="0.0"/>
+  <testcase name="missingAndOversizedNamesAreSafe" classname="com.opus.piano.GoogleIdentityPolicyTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

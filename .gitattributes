@@ -21,3 +21,10 @@ spikes/stage6-cloud-readiness/results/reverification-2026-10-25/build-04.log -wh
 # Preserve new private-probe esbuild raw output/hash,including generated trailing spaces.
 spikes/stage6-private-staging/results/component-verification/02.log -whitespace
 spikes/stage6-private-staging/results/component-final-8o7WsQ/02.log -whitespace
+
+# Retain byte-exact Gradle raw logs; narrow generated-space exceptions only.
+docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/goldberg-canonical-gradle-fourth.log -whitespace
+docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/goldberg-canonical-gradle-third.log -whitespace
+docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/goldberg-stage6-source-frozen-host.log -whitespace
+docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/historical-attempts/goldberg-canonical-gradle-first-host.log -whitespace
+docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/historical-attempts/goldberg-canonical-gradle-second.log -whitespace

@@ -116,7 +116,7 @@ console.log(JSON.stringify({status:'PASS',checks,hostedRequests:0}));
         if restored_row != 'synthetic-only\nt\n1': raise RuntimeError('Restored marker/RLS/policy mismatch')
         checks.append('actual isolated database restore preserves marker/RLS/SELECT policy')
         (out/'checks.json').write_text(json.dumps({'status':'PASS','checks':checks,'hostedRequests':0},indent=2)+'\n')
-        status = 'PASS' 
+        status = 'PASS'
 except Exception as failure:
     status = 'FAILED'
     # Suppress command/stdout/stderr because credential-bearing tools must never leak.

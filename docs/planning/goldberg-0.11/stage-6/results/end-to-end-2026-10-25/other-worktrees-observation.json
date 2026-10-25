@@ -1,0 +1,26 @@
+[
+  {
+    "worktree": "Goldberg-Stage6-API",
+    "head": "006fa577ff4faef8ee7a25daf851620feb5bc3a8",
+    "statusEntries": 2,
+    "accessThisTask": "read only; no integration or edits"
+  },
+  {
+    "worktree": "Goldberg-Stage7A",
+    "head": "1b97281ac639a045151ab4dd01e28c499c2e4ca7",
+    "statusEntries": 1,
+    "accessThisTask": "read only; no integration or edits"
+  },
+  {
+    "worktree": "Goldberg-Stage7B",
+    "head": "4c6a91d600ad18455a280f941f89740694d5afa0",
+    "statusEntries": 446,
+    "accessThisTask": "read only; no integration or edits"
+  },
+  {
+    "worktree": "Goldberg-Stage8",
+    "head": "22fb50bedec7b932e47640673e52fdb57bdc791a",
+    "statusEntries": 9,
+    "accessThisTask": "read only; no integration or edits"
+  }
+]

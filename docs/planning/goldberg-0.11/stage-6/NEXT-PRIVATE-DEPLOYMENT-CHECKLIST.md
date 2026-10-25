@@ -1,3 +1,7 @@
+> Current read-only continuation: [Cloudflare access evidence](CLOUDFLARE-READONLY-2026-10-25.md).
+> B1 SATISFIED (whoami + actual account/Workers GET). B2/B4/B5/B6 remain partial;
+> billing GET403 and standard usage-model reconciliation recorded. No hosted approval.
+
 > Current Phase1/2 investigation and hard-vs-post-authorization gate classification:
 > [PRIVATE-DEPLOYMENT-PHASE1-2.md](PRIVATE-DEPLOYMENT-PHASE1-2.md). Accepted decisions
 > and tests are retained. No repeated eligibility/provider-choice approval is requested.

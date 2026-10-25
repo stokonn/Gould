@@ -1,3 +1,72 @@
+## Stage6 end-to-end continuation — LOCAL ENGINEERING VERIFIED / BLOCKED (2026-10-25)
+
+Purpose/scope: canonical Kotlin contract/API/session/review/audit adapter and
+local encrypted archive/health/isolated restore implementation, new TLS/backup
+composition, acceptance/tracking. Preserve all accepted source/worktrees/history.
+
+- [x] Recover actual56ff724 baseline and prior uncommitted read-only docs; accepted
+  Stage7A/7B/8 status and shared490-body backend evidence retained.
+- [x] Existing CF OAuth/actual GET access confirmed; SB Free/healthy/Frankfurt/PG17.11
+  and unchanged expected function/trigger/two warnings; no hosted writes.
+- [x] New Kotlin canonical adapter: strict DTO/int8/microseconds/nulls/UTF8,
+  refresh/account/logout,exact replay/reconfirmation,server reads and audit integrity.
+  G10 production transport remains disabled; no accepted Stage7 source changed.
+- [x] Frozen-source host gate PASS:233JVM/32suites/0failures/errors/skips,19new;
+  debug APK/instrumentation compilation/lint0errors96warnings. Instrumentation NOT RUN.
+- [x]5new encrypted archive lifecycle tests;6new actual local PG TLS/archive/
+  isolated-restore checks PASS. Exact fixture container/volumes absent. All existing
+  data/policy/fixture/whitespace checks PASS; accepted backend/crypto suites reused.
+- [x] Per-requirement24-row evaluation:2complete decisions,9locally verified scopes,
+  2deferred actual-consumer/native integrations,11blocked. Formal closure2/24=8.3%;
+  local-or-complete11/24=45.8%,not a code-completion estimate. Stage6 INCOMPLETE.
+- [ ] B2 financial/B4 remaining security-secret/B5 durable custody/B6 disposition;
+  public-version/real policy/native adoption/hosted runtime/6.0f/6.17 remain open.
+- [ ] Single exact hosted approval only after prerequisites; no hosted request now.
+
+Details:docs/planning/goldberg-0.11/stage-6/END-TO-END-ACCEPTANCE.md,
+CANONICAL-KOTLIN-ADAPTER.md,LOCAL-BACKUP-EXECUTION.md and source/hash/raw evidence.
+No UI/ADB/screenshots/seeded upgrade/hosted/OAuth/real-data/paid/merge/release action.
+Issue31 OPEN/Goldberg Development In Progress; C4 remains8PASS/19PARTIAL/6OPEN.
+Source commit/push/exact remote/CI receipt is maintained in Issue31/private PMP.
+
+---
+
+## Stage6 authenticated read-only access — B1 SATISFIED (2026-10-25)
+
+Purpose/scope: recover existing preparation and verify Cloudflare account access,
+inventory, security and financial-read availability; documentation/tracking only.
+Branch feature/goldberg-0.11-stage-6-cloud; local/remote HEAD56ff7245b3f837a3721e3a4138a3abe35bc78015.
+**PRIVATE STAGING NO-GO; Stage6/6.0f incomplete.** Earlier no-login statements below
+are historical and superseded by this observation.
+
+- [x] Recover Git/Issue31/Project/milestone/private PMP and existing preparation.
+- [x] B1: Wrangler4.152.0 whoami and actual account/Workers GETs succeed; owner
+  login independently confirmed. No token values copied or reported.
+- [x] 0 Workers/services/custom domains/zones; proposed name unused. Subdomain
+  GET404; default_usage_model=standard is not billing proof. CF user MFA=true,
+  account-wide enforcement=false. No setting changed.
+- [x] Billing/subscriptions/profile GETs each403; retain Free decisions and prior
+  evidence without inferring current charges/card/add-ons/usage.
+- [x] Existing exact-HEAD CI40165862051 read back COMPLETED/SUCCESS; no rerun.
+- [x] Free/route-less design reviewed; accepted local tests/encryption reused.
+- [ ] B2 financial facts/model reconciliation; remaining B4 SB/security/host/CA/
+  confidential provisioning; B5 destination/custody/restore/schedule-alert binding
+  or scoped disposition; B6 applicability/transfer/retention/backup disposition.
+- [ ] One exact consolidated hosted approval after prerequisites; B7 session/TLS/
+  private denial/CPU/Advisor/restore/cleanup executed only inside that window.
+
+Full evidence, exact blockers/commands and next steps:
+`docs/planning/goldberg-0.11/stage-6/CLOUDFLARE-READONLY-2026-10-25.md` and JSON.
+First executable hosted action now: read-only missing-evidence collection.
+First future hosted mutation after approval: guarded narrow ACL transaction,
+then approved bootstrap/probe/disabled route-less Worker sequence. No deployment,
+SQL/config/resource/secret/session/public URL/paid action; no new tests/APK/UI.
+Issue31 OPEN / Goldberg Development In Progress; C4 remains8PASS/19PARTIAL/6OPEN.
+Exact description/comment readback PASS: https://github.com/stokonn/Goldberg/issues/31#issuecomment-6395235069
+Private PMP append/receipt saved; documentation remains uncommitted at56ff724.
+
+---
+
 ## Stage6 private deployment — Phase1/2 prepared,hosted NO-GO (2026-10-25)
 
 Purpose/scope:fresh read-only gate evaluation,new synthetic probe/access/private

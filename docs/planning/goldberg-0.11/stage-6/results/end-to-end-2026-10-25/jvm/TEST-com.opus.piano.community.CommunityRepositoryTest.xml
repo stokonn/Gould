@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.community.CommunityRepositoryTest" tests="40" skipped="0" failures="0" errors="0" timestamp="2026-10-25T08:30:28.230Z" hostname="fedora" time="0.455">
+  <properties/>
+  <testcase name="draftPersistsAcrossAnActualSeparateJvmProcess" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.148"/>
+  <testcase name="savedDraftSurvivesRepositoryAndStoreRecreation" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.017"/>
+  <testcase name="privateObjectSmugglingFailsAtEveryPayloadLevel" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.008"/>
+  <testcase name="externalIdentitiesStayTypedAndNeverImplyAnAutomaticMerge" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.003"/>
+  <testcase name="publicEnvelopeAndSequenceSizesAreBounded" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.006"/>
+  <testcase name="repositoryConstructionAndLocalEditingDoNotUploadOrFetch" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.011"/>
+  <testcase name="staleEditCannotSilentlyOverwrite" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.012"/>
+  <testcase name="signOutDuringFlightPreventsReceiptAndPreservesPendingRequest" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.014"/>
+  <testcase name="backupAndStartupBoundariesAreExplicitInAndroidSource" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.022"/>
+  <testcase name="dtoUsesExplicitNestedAllowlists" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.001"/>
+  <testcase name="missingRetryAfterNeverCausesImmediateResend" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.008"/>
+  <testcase name="conflictAndMismatchKeepDraftsAndRefuseAutomaticResend" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.014"/>
+  <testcase name="cachedOverlayIsExplicitlyStaleSyntheticAndSurvivesRestart" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.005"/>
+  <testcase name="failureBeforeRequestSnapshotPreventsTransport" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.005"/>
+  <testcase name="rateLimitHonorsRetryAfterAndReusesRequest" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.009"/>
+  <testcase name="disabledProductionBoundaryNeverSendsAndRetainsDraft" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.003"/>
+  <testcase name="changeFeedPreservesNumericOrderingAndRejectsLexicographicOrder" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.002"/>
+  <testcase name="atomicFaultPreservesOriginalDraft" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.004"/>
+  <testcase name="malformedEvidenceUrlIsValidationRatherThanAStorageOrNetworkFailure" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.003"/>
+  <testcase name="malformedSuccessIsNeverReportedAsSuccess" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.005"/>
+  <testcase name="callerCancellationLeavesDurableRetrySnapshot" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.008"/>
+  <testcase name="attemptedBodyCannotBeEditedOrSilentlyAssignedANewKey" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.012"/>
+  <testcase name="bigintReadsAreLosslessAndWritesRejectUnsafeJsonNumbers" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.001"/>
+  <testcase name="signOutClearsOnlyCredentialsAndRetainsAccountAndGuestDrafts" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.006"/>
+  <testcase name="reviseAndWithdrawAreTypedBoundedContractRequests" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.001"/>
+  <testcase name="completeWireBodyAndUrlCountLimitsAreEnforced" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.008"/>
+  <testcase name="corruptDraftIsNotSilentlyReplaced" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.008"/>
+  <testcase name="everyServerErrorRetainsDraftAndMapsDistinctly" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.043"/>
+  <testcase name="unknownFieldsAndInvalidInputsNeverBecomeWireBodies" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.001"/>
+  <testcase name="retryAfterParsesHttpDateAndRejectsInvalidOrOverflow" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.0"/>
+  <testcase name="credentialsAreRedactedAndNotInFixtureCallsOrPersistedDrafts" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.004"/>
+  <testcase name="offlineRetryKeepsExactBodyAndKeyAcrossRestart" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.007"/>
+  <testcase name="incompleteLocalDraftSurvivesAndCannotSubmit" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.004"/>
+  <testcase name="accountSwitchHidesOtherDraftsAndCannotSendThem" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.004"/>
+  <testcase name="fixtureReceiptIsExplicitlySyntheticAndNeverRemovesDraft" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.006"/>
+  <testcase name="strictSchemaVersionRejectsCoercions" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.001"/>
+  <testcase name="lostReceiptSaveCanOnlyRetryTheOriginalRequest" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.009"/>
+  <testcase name="guestWithoutCommunityAuthorizationCannotSubmit" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.003"/>
+  <testcase name="expiredAndUnprivilegedSessionsCannotSubmit" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.002"/>
+  <testcase name="transportTimeoutIsTruthfulAndKeepsFrozenDraft" classname="com.opus.piano.community.CommunityRepositoryTest" time="0.017"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

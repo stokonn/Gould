@@ -1,3 +1,7 @@
+> End-to-end continuation: hard B2/B4/B5/B6 inputs remain missing per explicit owner clarification. No hosted request/execution; see END-TO-END-ACCEPTANCE.md. Local backup/TLS preparation is implemented, not operational custody approval.
+
+> B1 read-only access now SATISFIED; see [current prerequisite evidence](CLOUDFLARE-READONLY-2026-10-25.md). B2/B4/B5/B6 still block this future authorization.
+
 # Exact private execution packet — NOT AUTHORIZED FOR EXECUTION
 
 This is the single future approval-request basis, not an approval request today.

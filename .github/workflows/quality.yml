@@ -35,6 +35,8 @@ jobs:
           python3 scripts/check_localization.py
           python3 scripts/check_history_paging.py
           python3 scripts/check_agent_policy.py
+          python3 -m unittest discover -s scripts/stage6 -p 'test_backup_store.py'
+          python3 scripts/stage6/verify_evidence.py
           git diff --exit-code -- app/schemas
 # This workflow never publishes APKs signed with a runner-generated key.
 # Emulator/UI/upgrade/signing acceptance and compatible release publication follow AGENTS.md.

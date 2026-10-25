@@ -1,0 +1,110 @@
+{
+  "observed_utc": "2026-10-25T08:05:48.452095+00:00",
+  "method": "GET only",
+  "observations": {
+    "accounts": {
+      "success": true,
+      "summary": {
+        "count": 1
+      },
+      "pagination": {
+        "page": 1,
+        "per_page": 50,
+        "total_pages": 1,
+        "count": 1,
+        "total_count": 1
+      }
+    },
+    "operator_security": {
+      "success": true,
+      "summary": {
+        "two_factor_authentication_enabled": true,
+        "suspended": false
+      },
+      "pagination": null
+    },
+    "account_settings": {
+      "success": true,
+      "summary": {
+        "settings": {
+          "enforce_twofactor": false,
+          "api_access_enabled": null,
+          "access_approval_expiry": null,
+          "abuse_contact_email": null,
+          "oauth_app_access_enabled": true
+        }
+      },
+      "pagination": null
+    },
+    "workers": {
+      "success": true,
+      "summary": {
+        "count": 0,
+        "candidate_name_present": false
+      },
+      "pagination": null
+    },
+    "services": {
+      "success": true,
+      "summary": {
+        "count": 0
+      },
+      "pagination": {
+        "page": 1,
+        "per_page": 100,
+        "count": 0,
+        "total_count": 0,
+        "total_pages": 0
+      }
+    },
+    "worker_custom_domains": {
+      "success": true,
+      "summary": {
+        "count": 0
+      },
+      "pagination": {
+        "page": 1,
+        "per_page": 0,
+        "count": 0,
+        "total_count": 0
+      }
+    },
+    "workers_subdomain": {
+      "success": false,
+      "http": 404
+    },
+    "workers_account_settings": {
+      "success": true,
+      "summary": {
+        "default_usage_model": "standard",
+        "green_compute": false
+      },
+      "pagination": null
+    },
+    "subscriptions": {
+      "success": false,
+      "http": 403
+    },
+    "billing_profile": {
+      "success": false,
+      "http": 403
+    },
+    "billing_history": {
+      "success": false,
+      "http": 403
+    },
+    "zones": {
+      "success": true,
+      "summary": {
+        "count": 0
+      },
+      "pagination": {
+        "page": 1,
+        "per_page": 50,
+        "total_pages": 0,
+        "count": 0,
+        "total_count": 0
+      }
+    }
+  }
+}

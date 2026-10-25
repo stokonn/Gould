@@ -1,0 +1,10 @@
+test_age_health_is_bounded_and_never_deletes_archives (test_backup_store.BackupStoreTest.test_age_health_is_bounded_and_never_deletes_archives) ... ok
+test_atomic_archive_restore_and_existing_data_preserved (test_backup_store.BackupStoreTest.test_atomic_archive_restore_and_existing_data_preserved) ... ok
+test_incomplete_archive_and_key_inside_destination_are_rejected (test_backup_store.BackupStoreTest.test_incomplete_archive_and_key_inside_destination_are_rejected) ... ok
+test_key_permissions_symlink_and_destination_are_rejected (test_backup_store.BackupStoreTest.test_key_permissions_symlink_and_destination_are_rejected) ... ok
+test_wrong_key_and_changed_ciphertext_never_publish_plaintext (test_backup_store.BackupStoreTest.test_wrong_key_and_changed_ciphertext_never_publish_plaintext) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.485s
+
+OK
