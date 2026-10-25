@@ -1,3 +1,11 @@
+## Stage 8B assessment COMPLETE — October 25, 2026
+
+A8-1 andA8-2 are reproduced actual-product Medium/P2 defects,NOT FIXED. A8-3 is reproduced in the scaffold's status-icon handling (~1.05–1.13:1);matching real NavHost uses correct appearance flags/status contrast5.56–19.48:1;navigation handles remain readable. No actual-product contrast defect demonstrated in tested scope. No fix/blank-screen defect inferred from a preview artifact; same-session recorder/direct content pixels match.
+
+Executed:28unique configurations,29Settings captures including retry,161PNG/tree pairs,four real TalkBack traversals/40steps. EN/CZ,Light/Dark,360dp/fonts1/1.3/1.5/2,four412dp samples and opposite app/system themes. [Severity,exact reproduction,proposed fixes and limits](8B-TECHNICAL-VERIFICATION.md). Production implementation remains separately approval-gated. Stage8 overall/release not complete; broader speech/motion/lifecycle/keyboard/device coverage remains unverified.
+
+---
+
 # Stage 8 — deferred accessibility and layout assessments
 
 Status: **assessment records PREPARED; release assessments NOT EXECUTED; all three findings NOT FIXED**. Owner explicitly deferred them to Stage8 release-readiness assessment when accepting Stage7B. Stage7 Android client/synthetic acceptance remains COMPLETE.

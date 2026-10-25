@@ -1,0 +1,98 @@
+[
+  {
+    "path": "/home/stokonn/Projects/Opus",
+    "head": "32cf5d93f19faef56fcb3bf7d7108088f66a1706",
+    "status": [],
+    "untrackedFileCount": 44
+  },
+  {
+    "path": "/home/stokonn/Projects/Goldberg-Stage6-API",
+    "head": "006fa577ff4faef8ee7a25daf851620feb5bc3a8",
+    "status": [],
+    "untrackedFileCount": 63
+  },
+  {
+    "path": "/home/stokonn/Projects/Goldberg-Stage6-Cloud",
+    "head": "2c38177c422d9b7b6cd697dec36d5484744423a6",
+    "status": [],
+    "untrackedFileCount": 0
+  },
+  {
+    "path": "/home/stokonn/Projects/Goldberg-Stage7A",
+    "head": "1b97281ac639a045151ab4dd01e28c499c2e4ca7",
+    "status": [],
+    "untrackedFileCount": 6
+  },
+  {
+    "path": "/home/stokonn/Projects/Goldberg-Stage7B",
+    "head": "4c6a91d600ad18455a280f941f89740694d5afa0",
+    "status": [],
+    "untrackedFileCount": 2090
+  },
+  {
+    "path": "/home/stokonn/Projects/Goldberg-Stage8",
+    "head": "2f4d1b87a31fb4d8167652a411813a7909416900",
+    "status": [],
+    "untrackedFileCount": 1
+  },
+  {
+    "path": "/home/stokonn/Projects/goldberg-c2-spike",
+    "head": "7bc6976576353a244533792128e18b9343dc6c7c",
+    "status": [],
+    "untrackedFileCount": 0
+  },
+  {
+    "path": "/home/stokonn/Projects/goldberg-stage6-docs",
+    "head": "b3edc2a25aa601b25561ec38cdaf912122dae4ec",
+    "status": [],
+    "untrackedFileCount": 0
+  },
+  {
+    "path": "/home/stokonn/Projects/goldberg-stage7-docs",
+    "head": "467ad29422e2af09fe6f689fd61bf8121b298674",
+    "status": [],
+    "untrackedFileCount": 0
+  },
+  {
+    "path": "/tmp/goldberg-stage1-review-c3d5e03",
+    "head": "c3d5e03b9a4936d8db393df664af209a8853c767",
+    "status": [],
+    "untrackedFileCount": 0
+  },
+  {
+    "path": "/tmp/goldberg-stage6-android-local",
+    "head": "bcc779685d79e99451796b3fa45657b3bca8dd99",
+    "status": [],
+    "untrackedFileCount": 0
+  },
+  {
+    "path": "/tmp/goldberg-stage6-handlers",
+    "head": "262847ebcdef18d186ded5b7af4825436a1dc4e3",
+    "status": [],
+    "untrackedFileCount": 0
+  },
+  {
+    "path": "/tmp/goldberg-stage6-public-admin-abuse",
+    "head": "9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce",
+    "status": [],
+    "untrackedFileCount": 0
+  },
+  {
+    "path": "/tmp/goldberg-stage6-security-local",
+    "head": "6dd3136269ec7f5932c8c4b3689fb065d4db9105",
+    "status": [],
+    "untrackedFileCount": 0
+  },
+  {
+    "path": "/tmp/opencode/c6-pg",
+    "head": "c21e550ceb5ec7a42317a4f2fe02e6d1225a2cab",
+    "status": [],
+    "untrackedFileCount": 0
+  },
+  {
+    "path": "/tmp/opencode/goldberg-ci-only",
+    "head": "67d9cca864ad00c7214d465f81d1cc34c9d32eb3",
+    "status": [],
+    "untrackedFileCount": 0
+  }
+]

@@ -91,6 +91,12 @@ No row is "Done"; no Stage 7 screenshot evidence exists.
 
 ## Cross-screen gates (all six)
 
+Current owner decision (2026-10-23): Stage 7A COMPLETE by final acceptance with a
+visual deviation; X9 ACCEPTED. X10 remains unfixed and unverified, deferred to
+Gould 0.12. Existing executed results below are historical evidence, not reruns.
+Stage 8 retains material readability/accessibility/touch-target checks.
+
+
 | # | Acceptance check | Status |
 |---|---|---|
 | X1 | One coherent editorial design system (Cormorant Garamond/Inter, tokens, spacing) | Approved |
@@ -101,7 +107,7 @@ No row is "Done"; no Stage 7 screenshot evidence exists.
 | X6 | Fresh emulator screenshots for all six screens, explicit emulator serial | **EXECUTED** (refinement pass 48 + round 2: 47 `r2-*` + round 3: **51 targeted `r3-*` captures** — 4 theme×language combos × all six screens at 1×, Data & Storage EN/CS, 1.5×/2× EN Ivory, 2× CS Nocturne, 720×1560 narrow, targeted Appearance & Customize previews; privacy popover cycle ×8 UIAutomator-asserted — at 1×/1.5×/2×/narrow, SHA-256 manifest; `emulator-5554` + `ro.kernel.qemu=1` asserted) |
 | X7 | Screenshot-vs-reference comparison + explicit mismatch report | This document + `stage-7a/results/README.md` (refinement + round-2 + round-3 sections, incl. honest limitations: bottom-nav visual ellipsis at 2× carried by verified full-name semantics; edge-cut third tab in the 2× scrollable tab row; round-3 capture-automation incidents documented) |
 | X8 | Personal data intact after changes (seeded upgrade check) | **EXECUTED** (refinement pass + round 2 + round 3 re-run) — `adb install -r` in-place upgrade over the seeded AVD; all table counts + profile_settings row (`Musician\|System`) byte-identical before/after; online-catalogue preference defaults OFF (read back `true`/`false` on-device, restored) |
-| X9 | Owner acceptance recorded before any "Stage 7 complete" claim | **🟧 CONDITIONAL ACCEPTANCE (owner, 2026-10-22)** — Stage 7A accepted **with reservation**: text alignment still appears inconsistent on the owner's physical Samsung device despite round 3. Recorded explicitly as conditional (not unconditional sign-off); "Stage 7 complete" is still **not** claimed (Stage 7B not started; no merge/release). The reservation is tracked as X10 |
-| X10 | Text alignment verified on the owner's real device (Stage 7A reservation) | **OPEN — required before the 0.11 release.** The owner reports text alignment still inconsistent on their physical Samsung device after round 3 (root-cause fix in the shared typography + row-centering fix; all host/emulator gates green and preserved as evidence). Emulator renders cannot reproduce or close a real-device rendering difference — the round-3 evidence does **not** close this issue. **A real-device regression check on the owner's Samsung device must PASS before release**; it is owner-performed (agents never test the owner's physical phone). No further UI changes were made in the documentation-only acceptance pass (owner instruction 2026-10-22) |
+| X9 | Owner acceptance recorded before any "Stage 7 complete" claim | **ACCEPTED — final owner acceptance, 2026-10-23. Stage 7A COMPLETE with documented visual deviation.** X10 is deferred to Gould 0.12, not passed. Stage 7 overall and release authorization remain separate. Earlier conditional decision is preserved in CHECKPOINT.md §7A.17; final decision §7A.18 supersedes it. |
+| X10 | Samsung text alignment follow-up | **DEFERRED TO GOULD 0.12 — NOT FIXED, NOT VERIFIED, NOT PASS** (owner, 2026-10-23). Owner-reported inconsistent Samsung alignment persists after round 3; emulator evidence does not close it. Minor cosmetic alignment no longer blocks Stage 7A/0.11 by itself. Stage 8 must independently verify material readability, accessibility and touch targets; those defects are not waived. [Original observations, hypothesis and future verification](../../gould-0.12/X10-SAMSUNG-TEXT-ALIGNMENT.md). |
 
 created by stokonn with love <3

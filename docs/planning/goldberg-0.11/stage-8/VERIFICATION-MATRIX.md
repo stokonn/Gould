@@ -1,3 +1,11 @@
+## Stage 8B verified execution delta — October 25, 2026
+
+V01:16worktrees/current heads/Issue31/milestone4/Project/releases reviewed;2203external untracked files unchanged,Cloud publication untouched. V02–V04:new opt-in recorder assembly PASS54s/default runner manifest PASS13s;no full CI/JVM/lint/native suite rerun. V05–V09:75historical CI25 critical cases mapped,not rerun;combined-source/true trusted-signer seeded upgrade remain pending. V10–V13:28unique emulator settings configurations,29captures including retry,161PNG/tree pairs,4actualTalkBack traversals/40swipes. A8-1/A8-2 actual Medium/P2 defects reproduced;A8-3 scaffold-only statuscontrast reproduced in tested scope,actual matching NavHost readable. Findings NOT FIXED. V19:retained/baseline ZIP/package/hash/trusted signer verified;source0.10.1/code11,no0.11candidate/version selection. Evidence verifier/Python/whitespace/production preservation PASS.
+
+V14,V16–V18,V20 and broader V05–V09 remain UNVERIFIED/PENDING/BLOCKED as applicable:audible speech,motion/fullkeyboard/lifecycle/full3h-reboot,combined data regression/live contracts/OAuth/hosted/backend/legal/operational/release. [Commands,counts,severity,scope and remaining gates](8B-TECHNICAL-VERIFICATION.md).8A matrix below is historical preparation scope; its unexecuted statuses do not override this bounded8B delta or transfer results to future combined source.
+
+---
+
 # Stage 8 — verification matrix
 
 **Planning matrix, not an execution report.** No application tests/builds/emulators/live calls were run for8A. Historical evidence stays bound to its original source. A preparation-base checkout does not transfer that evidence to future integrated source. New execution is needed only when relevant source/scope changes justify it, after authorization. No physical-device testing.

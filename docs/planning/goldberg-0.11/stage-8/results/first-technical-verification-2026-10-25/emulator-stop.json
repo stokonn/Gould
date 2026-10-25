@@ -1,0 +1,8 @@
+{
+  "serial": "emulator-5588",
+  "qemuGuardPassed": true,
+  "stopped": true,
+  "avdPreserved": ".gradle/stage8b-avds/Goldberg8B.avd",
+  "wiped": false,
+  "existingAvdsTouched": false
+}

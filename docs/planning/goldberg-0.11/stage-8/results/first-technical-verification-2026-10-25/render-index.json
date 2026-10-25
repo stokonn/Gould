@@ -1,0 +1,1510 @@
+[
+  {
+    "file": "attempts/1792887972326356814/en-dark-1p0-small-navhost-settings.json",
+    "locale": "en",
+    "fontScale": 1,
+    "theme": "Dark",
+    "scaffold": false,
+    "systemNight": 32,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        7314
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        408
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          21,
+          24,
+          25
+        ],
+        11076
+      ],
+      [
+        [
+          237,
+          237,
+          237
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 19.477985091057498,
+    "navDominantPairContrast": 15.245467308368356
+  },
+  {
+    "file": "attempts/1792887984194343604/cs-light-1p0-small-navhost-settings.json",
+    "locale": "cs",
+    "fontScale": 1,
+    "theme": "Light",
+    "scaffold": false,
+    "systemNight": 16,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        7314
+      ],
+      [
+        [
+          98,
+          96,
+          94
+        ],
+        408
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        11076
+      ],
+      [
+        [
+          102,
+          102,
+          102
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 5.561147559368726,
+    "navDominantPairContrast": 5.741836481454148
+  },
+  {
+    "file": "attempts/1792887996305969566/cs-dark-1p0-small-navhost-settings.json",
+    "locale": "cs",
+    "fontScale": 1,
+    "theme": "Dark",
+    "scaffold": false,
+    "systemNight": 32,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        7314
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        408
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          21,
+          24,
+          25
+        ],
+        11076
+      ],
+      [
+        [
+          237,
+          237,
+          237
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 19.477985091057498,
+    "navDominantPairContrast": 15.245467308368356
+  },
+  {
+    "file": "attempts/1792888046624145536/en-light-1p0-small-scaffold-settings.json",
+    "locale": "en",
+    "fontScale": 1,
+    "theme": "Light",
+    "scaffold": true,
+    "systemNight": 32,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        7318
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        414
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          243,
+          237,
+          247
+        ],
+        11076
+      ],
+      [
+        [
+          97,
+          95,
+          99
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 1.1258413535961895,
+    "navDominantPairContrast": 5.493495052074523
+  },
+  {
+    "file": "cs-dark-1p0-small-navhost-settings.json",
+    "locale": "cs",
+    "fontScale": 1,
+    "theme": "Dark",
+    "scaffold": false,
+    "systemNight": 16,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        7314
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        408
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          21,
+          24,
+          25
+        ],
+        11076
+      ],
+      [
+        [
+          237,
+          237,
+          237
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 19.477985091057498,
+    "navDominantPairContrast": 15.245467308368356
+  },
+  {
+    "file": "cs-dark-1p0-small-scaffold-settings.json",
+    "locale": "cs",
+    "fontScale": 1,
+    "theme": "Dark",
+    "scaffold": true,
+    "systemNight": 16,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        7320
+      ],
+      [
+        [
+          4,
+          5,
+          6
+        ],
+        413
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          33,
+          31,
+          38
+        ],
+        11076
+      ],
+      [
+        [
+          238,
+          237,
+          238
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 1.0472460916707231,
+    "navDominantPairContrast": 13.95547431117922
+  },
+  {
+    "file": "cs-dark-1p3-small-navhost-settings.json",
+    "locale": "cs",
+    "fontScale": 1.3,
+    "theme": "Dark",
+    "scaffold": false,
+    "systemNight": 32,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        6943
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        668
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          21,
+          24,
+          25
+        ],
+        11076
+      ],
+      [
+        [
+          237,
+          237,
+          237
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 19.477985091057498,
+    "navDominantPairContrast": 15.245467308368356
+  },
+  {
+    "file": "cs-dark-1p5-small-navhost-settings.json",
+    "locale": "cs",
+    "fontScale": 1.5,
+    "theme": "Dark",
+    "scaffold": false,
+    "systemNight": 32,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        6699
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        866
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          21,
+          24,
+          25
+        ],
+        11076
+      ],
+      [
+        [
+          237,
+          237,
+          237
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 19.477985091057498,
+    "navDominantPairContrast": 15.245467308368356
+  },
+  {
+    "file": "cs-dark-2p0-small-navhost-settings.json",
+    "locale": "cs",
+    "fontScale": 2,
+    "theme": "Dark",
+    "scaffold": false,
+    "systemNight": 32,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        6142
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        1297
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          21,
+          24,
+          25
+        ],
+        11076
+      ],
+      [
+        [
+          237,
+          237,
+          237
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 19.477985091057498,
+    "navDominantPairContrast": 15.245467308368356
+  },
+  {
+    "file": "cs-dark-2p0-standard-navhost-settings.json",
+    "locale": "cs",
+    "fontScale": 2,
+    "theme": "Dark",
+    "scaffold": false,
+    "systemNight": 32,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      824,
+      1830
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        6142
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        1297
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          21,
+          24,
+          25
+        ],
+        11076
+      ],
+      [
+        [
+          237,
+          237,
+          237
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 19.477985091057498,
+    "navDominantPairContrast": 15.245467308368356
+  },
+  {
+    "file": "cs-light-1p0-small-navhost-settings.json",
+    "locale": "cs",
+    "fontScale": 1,
+    "theme": "Light",
+    "scaffold": false,
+    "systemNight": 32,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        7314
+      ],
+      [
+        [
+          98,
+          96,
+          94
+        ],
+        408
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        11076
+      ],
+      [
+        [
+          102,
+          102,
+          102
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 5.561147559368726,
+    "navDominantPairContrast": 5.741836481454148
+  },
+  {
+    "file": "cs-light-1p0-small-scaffold-settings.json",
+    "locale": "cs",
+    "fontScale": 1,
+    "theme": "Light",
+    "scaffold": true,
+    "systemNight": 32,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        7318
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        414
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          243,
+          237,
+          247
+        ],
+        11076
+      ],
+      [
+        [
+          97,
+          95,
+          99
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 1.1258413535961895,
+    "navDominantPairContrast": 5.493495052074523
+  },
+  {
+    "file": "cs-light-1p3-small-navhost-settings.json",
+    "locale": "cs",
+    "fontScale": 1.3,
+    "theme": "Light",
+    "scaffold": false,
+    "systemNight": 16,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        6943
+      ],
+      [
+        [
+          98,
+          96,
+          94
+        ],
+        668
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        11076
+      ],
+      [
+        [
+          102,
+          102,
+          102
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 5.561147559368726,
+    "navDominantPairContrast": 5.741836481454148
+  },
+  {
+    "file": "cs-light-1p3-standard-navhost-settings.json",
+    "locale": "cs",
+    "fontScale": 1.3,
+    "theme": "Light",
+    "scaffold": false,
+    "systemNight": 16,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      824,
+      1830
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        6943
+      ],
+      [
+        [
+          98,
+          96,
+          94
+        ],
+        668
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        11076
+      ],
+      [
+        [
+          102,
+          102,
+          102
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 5.561147559368726,
+    "navDominantPairContrast": 5.741836481454148
+  },
+  {
+    "file": "cs-light-1p5-small-navhost-settings.json",
+    "locale": "cs",
+    "fontScale": 1.5,
+    "theme": "Light",
+    "scaffold": false,
+    "systemNight": 16,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        6699
+      ],
+      [
+        [
+          98,
+          96,
+          94
+        ],
+        866
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        11076
+      ],
+      [
+        [
+          102,
+          102,
+          102
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 5.561147559368726,
+    "navDominantPairContrast": 5.741836481454148
+  },
+  {
+    "file": "cs-light-2p0-small-navhost-settings.json",
+    "locale": "cs",
+    "fontScale": 2,
+    "theme": "Light",
+    "scaffold": false,
+    "systemNight": 16,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        6142
+      ],
+      [
+        [
+          98,
+          96,
+          94
+        ],
+        1297
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        11076
+      ],
+      [
+        [
+          102,
+          102,
+          102
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 5.561147559368726,
+    "navDominantPairContrast": 5.741836481454148
+  },
+  {
+    "file": "en-dark-1p0-small-navhost-settings.json",
+    "locale": "en",
+    "fontScale": 1,
+    "theme": "Dark",
+    "scaffold": false,
+    "systemNight": 16,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        7314
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        408
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          21,
+          24,
+          25
+        ],
+        11076
+      ],
+      [
+        [
+          237,
+          237,
+          237
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 19.477985091057498,
+    "navDominantPairContrast": 15.245467308368356
+  },
+  {
+    "file": "en-dark-1p0-small-scaffold-settings.json",
+    "locale": "en",
+    "fontScale": 1,
+    "theme": "Dark",
+    "scaffold": true,
+    "systemNight": 16,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        7320
+      ],
+      [
+        [
+          4,
+          5,
+          6
+        ],
+        413
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          33,
+          31,
+          38
+        ],
+        11076
+      ],
+      [
+        [
+          238,
+          237,
+          238
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 1.0472460916707231,
+    "navDominantPairContrast": 13.95547431117922
+  },
+  {
+    "file": "en-dark-1p0-standard-navhost-settings.json",
+    "locale": "en",
+    "fontScale": 1,
+    "theme": "Dark",
+    "scaffold": false,
+    "systemNight": 32,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      824,
+      1830
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        7314
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        408
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          21,
+          24,
+          25
+        ],
+        11076
+      ],
+      [
+        [
+          237,
+          237,
+          237
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 19.477985091057498,
+    "navDominantPairContrast": 15.245467308368356
+  },
+  {
+    "file": "en-dark-1p3-small-navhost-settings.json",
+    "locale": "en",
+    "fontScale": 1.3,
+    "theme": "Dark",
+    "scaffold": false,
+    "systemNight": 32,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        6943
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        668
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          21,
+          24,
+          25
+        ],
+        11076
+      ],
+      [
+        [
+          237,
+          237,
+          237
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 19.477985091057498,
+    "navDominantPairContrast": 15.245467308368356
+  },
+  {
+    "file": "en-dark-1p5-small-navhost-settings.json",
+    "locale": "en",
+    "fontScale": 1.5,
+    "theme": "Dark",
+    "scaffold": false,
+    "systemNight": 32,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        6699
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        866
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          21,
+          24,
+          25
+        ],
+        11076
+      ],
+      [
+        [
+          237,
+          237,
+          237
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 19.477985091057498,
+    "navDominantPairContrast": 15.245467308368356
+  },
+  {
+    "file": "en-dark-2p0-small-navhost-settings.json",
+    "locale": "en",
+    "fontScale": 2,
+    "theme": "Dark",
+    "scaffold": false,
+    "systemNight": 32,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          11,
+          13,
+          14
+        ],
+        6142
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        1297
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          21,
+          24,
+          25
+        ],
+        11076
+      ],
+      [
+        [
+          237,
+          237,
+          237
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 19.477985091057498,
+    "navDominantPairContrast": 15.245467308368356
+  },
+  {
+    "file": "en-light-1-settings.json",
+    "locale": "en-US",
+    "fontScale": 1,
+    "theme": "Light",
+    "scaffold": false,
+    "systemNight": 16,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        7314
+      ],
+      [
+        [
+          98,
+          96,
+          94
+        ],
+        408
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        11076
+      ],
+      [
+        [
+          102,
+          102,
+          102
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 5.561147559368726,
+    "navDominantPairContrast": 5.741836481454148
+  },
+  {
+    "file": "en-light-1p0-small-navhost-settings.json",
+    "locale": "en",
+    "fontScale": 1,
+    "theme": "Light",
+    "scaffold": false,
+    "systemNight": 32,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        7314
+      ],
+      [
+        [
+          98,
+          96,
+          94
+        ],
+        408
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        11076
+      ],
+      [
+        [
+          102,
+          102,
+          102
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 5.561147559368726,
+    "navDominantPairContrast": 5.741836481454148
+  },
+  {
+    "file": "en-light-1p0-small-scaffold-settings.json",
+    "locale": "en",
+    "fontScale": 1,
+    "theme": "Light",
+    "scaffold": true,
+    "systemNight": 32,
+    "lightStatusBars": false,
+    "lightNavigationBars": false,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        7318
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        414
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          243,
+          237,
+          247
+        ],
+        11076
+      ],
+      [
+        [
+          97,
+          95,
+          99
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 1.1258413535961895,
+    "navDominantPairContrast": 5.493495052074523
+  },
+  {
+    "file": "en-light-1p3-small-navhost-settings.json",
+    "locale": "en",
+    "fontScale": 1.3,
+    "theme": "Light",
+    "scaffold": false,
+    "systemNight": 16,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        6943
+      ],
+      [
+        [
+          98,
+          96,
+          94
+        ],
+        668
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        11076
+      ],
+      [
+        [
+          102,
+          102,
+          102
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 5.561147559368726,
+    "navDominantPairContrast": 5.741836481454148
+  },
+  {
+    "file": "en-light-1p5-small-navhost-settings.json",
+    "locale": "en",
+    "fontScale": 1.5,
+    "theme": "Light",
+    "scaffold": false,
+    "systemNight": 16,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        6699
+      ],
+      [
+        [
+          98,
+          96,
+          94
+        ],
+        866
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        11076
+      ],
+      [
+        [
+          102,
+          102,
+          102
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 5.561147559368726,
+    "navDominantPairContrast": 5.741836481454148
+  },
+  {
+    "file": "en-light-2p0-small-navhost-settings.json",
+    "locale": "en",
+    "fontScale": 2,
+    "theme": "Light",
+    "scaffold": false,
+    "systemNight": 16,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      720,
+      1280
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        6142
+      ],
+      [
+        [
+          98,
+          96,
+          94
+        ],
+        1297
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        11076
+      ],
+      [
+        [
+          102,
+          102,
+          102
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 5.561147559368726,
+    "navDominantPairContrast": 5.741836481454148
+  },
+  {
+    "file": "en-light-2p0-standard-navhost-settings.json",
+    "locale": "en",
+    "fontScale": 2,
+    "theme": "Light",
+    "scaffold": false,
+    "systemNight": 16,
+    "lightStatusBars": true,
+    "lightNavigationBars": true,
+    "pixels": [
+      824,
+      1830
+    ],
+    "statusDominantColors": [
+      [
+        [
+          245,
+          241,
+          234
+        ],
+        6142
+      ],
+      [
+        [
+          98,
+          96,
+          94
+        ],
+        1297
+      ]
+    ],
+    "navDominantColors": [
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        11076
+      ],
+      [
+        [
+          102,
+          102,
+          102
+        ],
+        1696
+      ]
+    ],
+    "statusDominantPairContrast": 5.561147559368726,
+    "navDominantPairContrast": 5.741836481454148
+  }
+]

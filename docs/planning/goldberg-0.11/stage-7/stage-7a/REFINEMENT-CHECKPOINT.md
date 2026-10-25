@@ -1,3 +1,10 @@
+> Current owner decision (2026-10-23): Stage 7A COMPLETE by FINAL ACCEPTANCE
+> with a documented visual deviation; X9 ACCEPTED. X10 NOT FIXED / NOT VERIFIED,
+> deferred to Gould 0.12. Stage 8 retains material readability/accessibility/touch
+> checks. See [CHECKPOINT.md §7A.18](CHECKPOINT.md) and
+> [X10 follow-up](../../../gould-0.12/X10-SAMSUNG-TEXT-ALIGNMENT.md).
+> All refinement entries below are preserved historical implementation/evidence.
+
 # Stage 7A refinement pass — durable checkpoint (2026-10-22, context ≈76 %)
 
 **Branch:** `feature/goldberg-0.11-stage-7a` (worktree Goldberg-Stage7A).

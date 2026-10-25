@@ -3,11 +3,36 @@
 Living log for owner-authorized **Stage 7A** implementation on branch
 `feature/goldberg-0.11-stage-7a` (worktree `/home/stokonn/Projects/Goldberg-Stage7A`).
 Canonical plan: [../README.md](../README.md) · matrix: [../UI-ACCEPTANCE-MATRIX.md](../UI-ACCEPTANCE-MATRIX.md).
-Policy: [AGENTS.md](../../../../AGENTS.md). Umbrella Issue: stokonn/Goldberg#31.
+Policy: [AGENTS.md](../../../../../AGENTS.md). Umbrella Issue: stokonn/Goldberg#31.
 
 **Authorization boundary (owner, 2026-10-22):** Stage 7A implementation only. NOT Stage 7B,
 NOT Stage 6 changes, NO main merge, NO release/APK publication, NO external cloud resources.
 Work only in this worktree; never touch Stage 6 branches/worktrees/credentials.
+
+## Stage 7A — FINAL OWNER ACCEPTANCE (2026-10-23)
+
+**Stage 7A Encyclopedia UX is COMPLETE by explicit owner acceptance with a
+ documented visual deviation. X9: ACCEPTED. X10: NOT FIXED, NOT VERIFIED,
+ deferred to Gould 0.12.** Minor cosmetic alignment polish no longer blocks
+ Stage 7A completion or the 0.11 release by itself. This supersedes the earlier
+ conditional-acceptance decision; historical evidence and checkpoints remain intact.
+
+The owner still reports inconsistent text alignment on their physical Samsung
+device after round 3. No agent performed physical-device verification; emulator
+renders do not resolve that observation. The potential Samsung font-metric cause
+is an unconfirmed hypothesis, not a diagnosis. Follow-up, original observations
+and future verification requirements: [X10 Gould 0.12 follow-up](../../../gould-0.12/X10-SAMSUNG-TEXT-ALIGNMENT.md).
+
+**Stage 8 must separately verify material readability, accessibility and touch
+targets.** Those defects are not waived by accepting minor cosmetic alignment.
+No speculative typography fix is implemented or authorized in 0.11 by this decision.
+Stage 6 and Stage 7B remain outside this documentation-only pass. No application
+source/data/schema, screenshots, logs or historical test evidence changed. No
+build/test/lint rerun, emulator/device operation, merge, deployment or release.
+The release-wide Issue #31 remains OPEN / Project In Progress; Stage 7A completion
+does not complete Stage 7 or authorize publication.
+
+created by stokonn with love <3
 
 ## Implementation checklist (7A)
 
@@ -304,7 +329,7 @@ log: `stage-7a/REFINEMENT-CHECKPOINT.md` (round-3 section); evidence report:
 
 created by stokonn with love <3
 
-### 7A.17 conditional owner acceptance — X9 🟧 CONDITIONAL, text-alignment issue OPEN (2026-10-22, documentation-only)
+### 7A.17 historical conditional owner acceptance (superseded by 7A.18) — X9 🟧 CONDITIONAL, text-alignment issue OPEN (2026-10-22, documentation-only)
 
 The owner reviewed the round-3 evidence and **accepted Stage 7A with one explicitly
 unresolved reservation** (owner instruction 2026-10-22). This entry supersedes the
@@ -334,3 +359,38 @@ unresolved reservation** (owner instruction 2026-10-22). This entry supersedes t
   authorization.
 
 created by stokonn with love <3
+
+
+### 7A.18 final owner acceptance and X10 deferral — 2026-10-23
+
+## Stage 7A — FINAL OWNER ACCEPTANCE (2026-10-23)
+
+**Stage 7A Encyclopedia UX is COMPLETE by explicit owner acceptance with a
+ documented visual deviation. X9: ACCEPTED. X10: NOT FIXED, NOT VERIFIED,
+ deferred to Gould 0.12.** Minor cosmetic alignment polish no longer blocks
+ Stage 7A completion or the 0.11 release by itself. This supersedes the earlier
+ conditional-acceptance decision; historical evidence and checkpoints remain intact.
+
+The owner still reports inconsistent text alignment on their physical Samsung
+device after round 3. No agent performed physical-device verification; emulator
+renders do not resolve that observation. The potential Samsung font-metric cause
+is an unconfirmed hypothesis, not a diagnosis. Follow-up, original observations
+and future verification requirements: [X10 Gould 0.12 follow-up](../../../gould-0.12/X10-SAMSUNG-TEXT-ALIGNMENT.md).
+
+**Stage 8 must separately verify material readability, accessibility and touch
+targets.** Those defects are not waived by accepting minor cosmetic alignment.
+No speculative typography fix is implemented or authorized in 0.11 by this decision.
+Stage 6 and Stage 7B remain outside this documentation-only pass. No application
+source/data/schema, screenshots, logs or historical test evidence changed. No
+build/test/lint rerun, emulator/device operation, merge, deployment or release.
+The release-wide Issue #31 remains OPEN / Project In Progress; Stage 7A completion
+does not complete Stage 7 or authorize publication.
+
+created by stokonn with love <3
+
+- [x] Record explicit owner final acceptance; X9 ACCEPTED.
+- [x] Keep X10 NOT FIXED / NOT VERIFIED and defer only cosmetic polish to Gould 0.12.
+- [x] Preserve prior observations, screenshots, test reports and historical checkpoints.
+- [x] Retain Stage 8 readability, accessibility and touch-target verification gates.
+- [x] Validate documentation consistency, relative follow-up links and source/evidence preservation.
+Publication evidence is recorded by this branch history and the final acceptance checkpoint in Issue #31; publish only this isolated documentation update.

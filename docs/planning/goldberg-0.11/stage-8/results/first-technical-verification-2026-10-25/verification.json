@@ -1,0 +1,13 @@
+{
+  "evidenceIntegrity": "PASS",
+  "uniqueSettingsConfigurations": 28,
+  "settingsCapturesIncludingRetriedScaffold": 29,
+  "talkbackTraversals": 4,
+  "swipeNextSteps": 40,
+  "newJUnitSuiteExecutions": 0,
+  "productionSourceUnchanged": true,
+  "productionApkByteIdentical": true,
+  "A8-1": "REPRODUCED, NOT FIXED",
+  "A8-2": "VISUALLY REPRODUCED, NOT FIXED",
+  "A8-3": "SCAFFOLD STATUS-CONTRAST REPRODUCED; PRODUCT DEFECT NOT DEMONSTRATED IN TESTED CONFIGURATIONS"
+}

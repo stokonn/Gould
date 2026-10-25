@@ -1,0 +1,12 @@
+{
+  "inputsAndOutputs": {
+    "app/build.gradle.kts": "46b56e65a768014b2a8554506979d8ae7bf74f4e15891a4cd0677fcd8d353666",
+    "app/src/androidTest/java/com/opus/piano/Stage8bAssessmentProbe.kt": "b1ccd3cb06c920192b774b46621a4c62c596a41f1d73160c1eb386a95c8806ef",
+    "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk": "13bc079020970ea3068c31dbc75a0ab0aa3c5a3250b0be1542d695f2d6c3ce92",
+    "app/build/outputs/apk/debug/app-debug.apk": "93ae9ec88472e4f07dc5328980786e9ce252887ccbac507c0034195cd9b51961"
+  },
+  "productionApkByteIdenticalToAccepted": true,
+  "command": "./gradlew assembleDebug assembleDebugAndroidTest -PgoldbergStage8Probe=true --offline --no-daemon --max-workers=1",
+  "result": "BUILD SUCCESSFUL in 54s;25 executed/43 up-to-date",
+  "jvmOrJUnitSuiteExecuted": false
+}

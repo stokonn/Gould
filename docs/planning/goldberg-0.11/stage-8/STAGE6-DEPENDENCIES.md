@@ -1,3 +1,11 @@
+## Stage 8B refreshed dependency observation — October 25, 2026
+
+Cloud branch advanced independently from006fa577 to `2c38177c422d9b7b6cd697dec36d5484744423a6` during this session (fresh remote readback). Subsequent receipt work remains concurrent; refresh latest HEAD/checkpoint before adoption. Its current record reports local readiness re-verification/source publication, **PRIVATE STAGING NO-GO**. No hosted SQL/deploy/OAuth/public route/paid operation authorized here. Cloud worktree was read only, never edited/copied/merged. Existing API foundation pin006fa577 and G1–G9/G11 remain separate Android-adoption dependencies.
+
+C4 remains8PASS/19PARTIAL/6OPEN;6.0f unchecked. Billing/0CZK, applicable terms/transfers/TIA/retention, security posture, encrypted backup custody/schedule/hosted restore/RPO and separate exact hosted ACL/private schema/runtime-role/transport/secrets/ingress permissions are still open. Local SQL/Worker tests and build are not hosted acceptance. No gate closed by8B.
+
+---
+
 ## Concurrent work observed during preparation
 
 Initial inventory found clean tracked trees in all15 existing worktrees. A later preservation check detected new uncommitted changes in `/home/stokonn/Projects/Goldberg-Stage6-Cloud` (ten tracked paths, plus new untracked readiness work). They were left untouched, not copied/merged, and are not accepted input evidence or a gate-closing decision. Published preparation pins remain unchanged; re-read the Cloud worktree's eventual published checkpoint/HEAD and Issue31 before dependent integration. All2203 originally inventoried untracked files remained byte-identical, including private PMP; Stage7B tracked/untracked evidence and existing APK were preserved. The complete private audit is retained outside Git.

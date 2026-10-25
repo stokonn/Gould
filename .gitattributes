@@ -14,3 +14,46 @@ docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-2
 docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/console-EV_ABS.txt -whitespace
 docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/console-EV_KEY.txt -whitespace
 docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/console-mouse.txt -whitespace
+
+# Preserve exact Stage 8B read-only Git comparison evidence, including diff context.
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/main-ci.diff -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/stage7a-unique-docs.diff -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/stage6-overlap.diff -whitespace
+
+# Byte-exact Stage 8B tool diagnostics retain native trailing/terminal blank lines.
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/apk-signing.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/attempts/1792887692339544587/en-light-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/attempts/1792887972326356814/en-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/attempts/1792887984194343604/cs-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/attempts/1792887996305969566/cs-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/attempts/1792888046624145536/en-light-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-1.3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-2p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-light-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-light-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-light-1p3-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-light-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-light-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/default-runner-manifest.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/emulator-boot.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-dark-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-dark-1p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-dark-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-dark-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-dark-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-light-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-light-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-light-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-light-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-light-2p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/recorder-compile-initial-failed.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/recorder-compile-passed.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/trusted-baseline-signing.txt -whitespace

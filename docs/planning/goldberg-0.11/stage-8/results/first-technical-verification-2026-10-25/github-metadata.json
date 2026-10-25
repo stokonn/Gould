@@ -1,0 +1,24 @@
+{
+  "issue": "https://github.com/stokonn/Goldberg/issues/31",
+  "state": "OPEN",
+  "milestone": "Goldberg 0.11 \u2014 The Music Database Update",
+  "project": {
+    "id": "PVT_kwHOBZNsL84BnaAU",
+    "number": 2,
+    "title": "Goldberg Development",
+    "status": "In Progress",
+    "priority": "Medium",
+    "version": "0.11",
+    "type": "Feature"
+  },
+  "wikiEnabled": true,
+  "latestRelease": "v0.10.1",
+  "sourcePins": {
+    "main": "3e7c25e1b624759f7ba537fbd8cbee4bed21bd04",
+    "stage7a": "1b97281ac639a045151ab4dd01e28c499c2e4ca7",
+    "stage7b": "4c6a91d600ad18455a280f941f89740694d5afa0",
+    "stage8": "2f4d1b87a31fb4d8167652a411813a7909416900",
+    "stage6api": "006fa577ff4faef8ee7a25daf851620feb5bc3a8",
+    "stage6cloudObservedPublishing": "2c38177c422d9b7b6cd697dec36d5484744423a6"
+  }
+}
