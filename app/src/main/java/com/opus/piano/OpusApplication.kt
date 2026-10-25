@@ -65,6 +65,32 @@ class OpusApplication : Application() {
     val repository by lazy { OpusRepository(database, achievements) }
     val catalogRepository by lazy { CatalogRepository(database, filesDir, achievements = achievements, mediaAllowed = { media.allowed() }) }
 
+    // Canonical Stage 6/8 service path. The accepted legacy UI stays disabled
+    // until its decimal-revision/dual-confirmation model is adopted explicitly.
+    @androidx.annotation.VisibleForTesting var canonicalAdminTransportOverride: com.opus.piano.admin.AdminTransport? = null
+    private val canonicalAdminGuard = Any()
+    @Volatile private var canonicalAdminInstance: com.opus.piano.data.community.canonical.CanonicalAdminRepository? = null
+    suspend fun canonicalAdminRepository(): com.opus.piano.data.community.canonical.CanonicalAdminRepository {
+        synchronized(canonicalAdminGuard) { canonicalAdminInstance }?.let { return it }
+        val created = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+        val contract = com.opus.piano.data.community.canonical.AdminContract(
+            assets.open("community/admin-canonical-schema.json").bufferedReader().use { it.readText() }
+        )
+        com.opus.piano.data.community.canonical.CanonicalAdminRepository(
+            com.opus.piano.data.community.canonical.CanonicalAdminClient(
+                contract,
+                com.opus.piano.data.community.canonical.CanonicalHttpTransport(
+                    endpoint = { adminSettings.endpoint },
+                    transport = canonicalAdminTransportOverride ?: com.opus.piano.admin.DisabledAdminTransport,
+                ),
+            )
+        )
+        }
+        return synchronized(canonicalAdminGuard) {
+            canonicalAdminInstance ?: created.also { canonicalAdminInstance = it }
+        }
+    }
+
     // Stage 7B: Administration foundation. LAZY — nothing in startup/journal/recovery
     // paths ever touches these. adminTransportOverride mirrors bundleConnectOverride:
     // hermetic seam for tests/previews, never set in production.

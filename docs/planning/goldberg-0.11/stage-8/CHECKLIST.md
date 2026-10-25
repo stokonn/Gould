@@ -1,3 +1,16 @@
+## Isolated canonical integration — October 25, 2026
+
+Branch integrate/goldberg-0.11-canonical-client,base42f6897;source publication and
+nativeCI pending. Canonical application service/repository/Android transport seam
+implemented with production networking disabled.302 JVM/0failures/skips,APK/testAPK
+compile andlint0errors132warnings1hint PASS;actual Kotlin/HTTP/BFF/PG1PASS at final reviewed source. Local emulator crashes retained;no native PASS inferred.
+Accepted legacy UI/Keystore adoption remains incomplete. FullStage8/Stage6 acceptance,
+public version/OAuth/policy/hosted runtime remain OPEN. No personal schema/migration,
+UI,practice orjournal change;no physicaldevice/main/release/public activation.
+Detailed purpose/scope/living tasks:[canonical adoption](https://github.com/stokonn/Goldberg/blob/integrate/goldberg-0.11-canonical-client/docs/planning/goldberg-0.11/stage-8/CANONICAL-ADOPTION.md).
+
+---
+
 ## Stage 8 — independent Android verification executed (October 25, 2026)
 
 Independent checks are VERIFIED; source publication/automatic CI receipt is in progress. This continues existing Stage8,without a new named stage. Full Stage8 integration and Goldberg0.11 release acceptance remain INCOMPLETE.

@@ -10,6 +10,8 @@ android {
     buildFeatures { compose = true }
     // Shared synthetic contract corpus is available to JVM tests only, never the APK.
     sourceSets.getByName("test").resources.srcDir("../contracts/admin/v1")
+    if (providers.gradleProperty("goldbergCanonicalIntegration").orNull == "true")
+        sourceSets.getByName("test").kotlin.srcDir("src/canonicalIntegration/java")
     bundle { language { enableSplit = false } }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
 }

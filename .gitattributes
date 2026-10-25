@@ -206,3 +206,7 @@ docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/test-
 docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/test-build-uuid.log -whitespace
 docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/upgradedJournalBackupRoundTripAndRejectedRestoreRetainData.txt -whitespace
 docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/verifyOfflineBundleAndPeriodicWorkAfterReboot.txt -whitespace
+
+# Preserve byte-exact canonical integration test evidence.
+docs/planning/goldberg-0.11/stage-8/results/canonical-integration-2026-10-25/*.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/canonical-integration-2026-10-25/*/*.log -whitespace

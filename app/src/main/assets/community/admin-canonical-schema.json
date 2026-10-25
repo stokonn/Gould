@@ -1,0 +1,1425 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PROPOSED admin-v1-decision-1 structural DTOs; x-* limits enforced by fixture verifier; source policy separate",
+  "$defs": {
+    "UUID": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "Timestamp": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}Z$",
+      "format": "date-time"
+    },
+    "Count": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)$",
+      "x-int8-min": "0",
+      "x-int8-max": "9223372036854775807"
+    },
+    "Revision": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$",
+      "x-int8-min": "1",
+      "x-int8-max": "9223372036854775807"
+    },
+    "Hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "Cursor": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$",
+      "minLength": 1,
+      "maxLength": 4096,
+      "x-base64url": true
+    },
+    "Text": {
+      "type": "string",
+      "minLength": 1,
+      "x-max-utf8-bytes": 2048,
+      "x-plain-text": true
+    },
+    "Reason": {
+      "type": "string",
+      "minLength": 1,
+      "x-max-utf8-bytes": 1000,
+      "x-plain-text": true
+    },
+    "Secret": {
+      "type": "string",
+      "minLength": 1,
+      "x-max-utf8-bytes": 8192
+    },
+    "Kind": {
+      "enum": [
+        "work",
+        "arrangement",
+        "artist",
+        "album",
+        "release",
+        "recording",
+        "collection"
+      ]
+    },
+    "QueueStatus": {
+      "enum": [
+        "submitted",
+        "in_review",
+        "changes_requested"
+      ]
+    },
+    "Status": {
+      "enum": [
+        "submitted",
+        "in_review",
+        "changes_requested",
+        "approved",
+        "published",
+        "rejected",
+        "withdrawn"
+      ]
+    },
+    "EmptyRequest": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        }
+      },
+      "required": [
+        "schemaVersion"
+      ],
+      "additionalProperties": false
+    },
+    "LoginRequest": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "credential": {
+          "$ref": "#/$defs/Secret"
+        },
+        "challenge": {
+          "$ref": "#/$defs/Secret"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "credential",
+        "challenge"
+      ],
+      "additionalProperties": false
+    },
+    "RefreshRequest": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "refreshToken": {
+          "$ref": "#/$defs/Secret"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "refreshToken"
+      ],
+      "additionalProperties": false
+    },
+    "OpenRequest": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "expectedEntityRevision": {
+          "$ref": "#/$defs/Count"
+        },
+        "expectedSubmissionRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "idempotencyKey": {
+          "$ref": "#/$defs/UUID"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "expectedEntityRevision",
+        "expectedSubmissionRevision",
+        "idempotencyKey"
+      ],
+      "additionalProperties": false
+    },
+    "ApproveRequest": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "expectedEntityRevision": {
+          "$ref": "#/$defs/Count"
+        },
+        "expectedSubmissionRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "idempotencyKey": {
+          "$ref": "#/$defs/UUID"
+        },
+        "decision": {
+          "const": "approve"
+        },
+        "reason": {
+          "$ref": "#/$defs/Reason"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "expectedEntityRevision",
+        "expectedSubmissionRevision",
+        "idempotencyKey",
+        "decision"
+      ],
+      "additionalProperties": false
+    },
+    "RejectRequest": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "expectedEntityRevision": {
+          "$ref": "#/$defs/Count"
+        },
+        "expectedSubmissionRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "idempotencyKey": {
+          "$ref": "#/$defs/UUID"
+        },
+        "decision": {
+          "const": "reject"
+        },
+        "reason": {
+          "$ref": "#/$defs/Reason"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "expectedEntityRevision",
+        "expectedSubmissionRevision",
+        "idempotencyKey",
+        "decision",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "ChangesRequest": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "expectedEntityRevision": {
+          "$ref": "#/$defs/Count"
+        },
+        "expectedSubmissionRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "idempotencyKey": {
+          "$ref": "#/$defs/UUID"
+        },
+        "decision": {
+          "const": "request_changes"
+        },
+        "reason": {
+          "$ref": "#/$defs/Reason"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "expectedEntityRevision",
+        "expectedSubmissionRevision",
+        "idempotencyKey",
+        "decision",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "Challenge": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "challenge": {
+          "$ref": "#/$defs/Secret"
+        },
+        "nonce": {
+          "$ref": "#/$defs/Secret"
+        },
+        "expiresAt": {
+          "$ref": "#/$defs/Timestamp"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "challenge",
+        "nonce",
+        "expiresAt"
+      ],
+      "additionalProperties": false
+    },
+    "Tokens": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "principalId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "sessionId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "accessToken": {
+          "$ref": "#/$defs/Secret"
+        },
+        "refreshToken": {
+          "$ref": "#/$defs/Secret"
+        },
+        "expiresAt": {
+          "$ref": "#/$defs/Timestamp"
+        },
+        "refreshExpiresAt": {
+          "$ref": "#/$defs/Timestamp"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "principalId",
+        "sessionId",
+        "accessToken",
+        "refreshToken",
+        "expiresAt",
+        "refreshExpiresAt"
+      ],
+      "additionalProperties": false
+    },
+    "Session": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "principalId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "sessionId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "expiresAt": {
+          "$ref": "#/$defs/Timestamp"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "principalId",
+        "sessionId",
+        "expiresAt"
+      ],
+      "additionalProperties": false
+    },
+    "Capabilities": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "principalId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "sessionId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "submit",
+              "queue.read",
+              "decide",
+              "quarantine",
+              "audit.read",
+              "roles.manage",
+              "submission.read.own",
+              "submission.revise.own",
+              "submission.withdraw.own"
+            ]
+          },
+          "maxItems": 9
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "principalId",
+        "sessionId",
+        "capabilities"
+      ],
+      "additionalProperties": false
+    },
+    "OpenResult": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "submissionId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "status": {
+          "const": "in_review"
+        },
+        "expectedEntityRevision": {
+          "$ref": "#/$defs/Count"
+        },
+        "submissionRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "submissionId",
+        "status",
+        "expectedEntityRevision",
+        "submissionRevision"
+      ],
+      "additionalProperties": false
+    },
+    "ApproveResult": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "submissionId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "decision": {
+          "const": "approve"
+        },
+        "status": {
+          "const": "published"
+        },
+        "submissionRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "entityId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "publishedEntityRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "submissionId",
+        "decision",
+        "status",
+        "submissionRevision",
+        "entityId",
+        "publishedEntityRevision"
+      ],
+      "additionalProperties": false
+    },
+    "RejectResult": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "submissionId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "decision": {
+          "const": "reject"
+        },
+        "status": {
+          "const": "rejected"
+        },
+        "submissionRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "submissionId",
+        "decision",
+        "status",
+        "submissionRevision"
+      ],
+      "additionalProperties": false
+    },
+    "ChangesResult": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "submissionId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "decision": {
+          "const": "request_changes"
+        },
+        "status": {
+          "const": "changes_requested"
+        },
+        "submissionRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "submissionId",
+        "decision",
+        "status",
+        "submissionRevision"
+      ],
+      "additionalProperties": false
+    },
+    "Evidence": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "source_url",
+            "reference"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "x-max-utf8-bytes": 2048
+        },
+        "license": {
+          "type": "string",
+          "minLength": 1,
+          "x-max-utf8-bytes": 80,
+          "x-plain-text": true
+        }
+      },
+      "required": [
+        "type",
+        "value",
+        "license"
+      ],
+      "additionalProperties": false
+    },
+    "Field": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "$ref": "#/$defs/Text"
+        },
+        "newValue": {
+          "$ref": "#/$defs/Text"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "maxItems": 10,
+          "minItems": 1
+        }
+      },
+      "required": [
+        "field",
+        "newValue",
+        "evidence"
+      ],
+      "additionalProperties": false
+    },
+    "ExternalIdentity": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "minLength": 1,
+          "x-max-utf8-bytes": 40
+        },
+        "providerKind": {
+          "type": "string",
+          "minLength": 1,
+          "x-max-utf8-bytes": 40
+        },
+        "externalId": {
+          "type": "string",
+          "minLength": 1,
+          "x-max-utf8-bytes": 128
+        }
+      },
+      "required": [
+        "provider",
+        "providerKind",
+        "externalId"
+      ],
+      "additionalProperties": false
+    },
+    "Target": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/$defs/Kind"
+        },
+        "catalogueUuid": {
+          "$ref": "#/$defs/UUID"
+        },
+        "externalIdentity": {
+          "$ref": "#/$defs/ExternalIdentity"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "Payload": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "target": {
+          "$ref": "#/$defs/Target"
+        },
+        "changeKind": {
+          "enum": [
+            "new_metadata",
+            "correction"
+          ]
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Field"
+          },
+          "maxItems": 20,
+          "minItems": 1
+        },
+        "intendedLicense": {
+          "$ref": "#/$defs/Text"
+        },
+        "contributorNote": {
+          "$ref": "#/$defs/Reason"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "target",
+        "changeKind",
+        "fields",
+        "intendedLicense"
+      ],
+      "additionalProperties": false
+    },
+    "QueueItem": {
+      "type": "object",
+      "properties": {
+        "submissionId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "authorId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "status": {
+          "$ref": "#/$defs/QueueStatus"
+        },
+        "kind": {
+          "$ref": "#/$defs/Kind"
+        },
+        "createdAt": {
+          "$ref": "#/$defs/Timestamp"
+        },
+        "updatedAt": {
+          "$ref": "#/$defs/Timestamp"
+        },
+        "expectedEntityRevision": {
+          "$ref": "#/$defs/Count"
+        },
+        "submissionRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "evidenceCount": {
+          "$ref": "#/$defs/Count"
+        },
+        "display": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Text"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "composer": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Text"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "title",
+            "composer"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "submissionId",
+        "authorId",
+        "status",
+        "kind",
+        "createdAt",
+        "updatedAt",
+        "expectedEntityRevision",
+        "submissionRevision",
+        "evidenceCount",
+        "display"
+      ],
+      "additionalProperties": false
+    },
+    "QueuePage": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QueueItem"
+          },
+          "maxItems": 20
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "coverage": {
+          "const": "page"
+        },
+        "searchScope": {
+          "const": "id_title_composer_kind"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "items",
+        "nextCursor",
+        "coverage",
+        "searchScope"
+      ],
+      "additionalProperties": false
+    },
+    "RevisionItem": {
+      "type": "object",
+      "properties": {
+        "submissionRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "payload": {
+          "$ref": "#/$defs/Payload"
+        },
+        "createdAt": {
+          "$ref": "#/$defs/Timestamp"
+        },
+        "previousHash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "hash": {
+          "$ref": "#/$defs/Hash"
+        }
+      },
+      "required": [
+        "submissionRevision",
+        "payload",
+        "createdAt",
+        "previousHash",
+        "hash"
+      ],
+      "additionalProperties": false
+    },
+    "Review": {
+      "type": "object",
+      "properties": {
+        "auditSeq": {
+          "$ref": "#/$defs/Revision"
+        },
+        "submissionRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "actorId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UUID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "from": {
+          "$ref": "#/$defs/Status"
+        },
+        "to": {
+          "$ref": "#/$defs/Status"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Reason"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "createdAt": {
+          "$ref": "#/$defs/Timestamp"
+        }
+      },
+      "required": [
+        "auditSeq",
+        "submissionRevision",
+        "actorId",
+        "from",
+        "to",
+        "reason",
+        "createdAt"
+      ],
+      "additionalProperties": false
+    },
+    "Detail": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "submissionId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "authorId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "status": {
+          "$ref": "#/$defs/Status"
+        },
+        "kind": {
+          "$ref": "#/$defs/Kind"
+        },
+        "targetEntityId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UUID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expectedEntityRevision": {
+          "$ref": "#/$defs/Count"
+        },
+        "submissionRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "createdAt": {
+          "$ref": "#/$defs/Timestamp"
+        },
+        "updatedAt": {
+          "$ref": "#/$defs/Timestamp"
+        },
+        "revisions": {
+          "type": "object",
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RevisionItem"
+              },
+              "maxItems": 20
+            },
+            "nextCursor": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Cursor"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "items",
+            "nextCursor"
+          ],
+          "additionalProperties": false
+        },
+        "reviews": {
+          "type": "object",
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Review"
+              },
+              "maxItems": 20
+            },
+            "nextCursor": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Cursor"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "items",
+            "nextCursor"
+          ],
+          "additionalProperties": false
+        },
+        "targetState": {
+          "enum": [
+            "new",
+            "existing",
+            "unmapped"
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "submissionId",
+        "authorId",
+        "status",
+        "kind",
+        "targetEntityId",
+        "expectedEntityRevision",
+        "submissionRevision",
+        "createdAt",
+        "updatedAt",
+        "revisions",
+        "reviews",
+        "targetState"
+      ],
+      "additionalProperties": false
+    },
+    "CurrentField": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "$ref": "#/$defs/Text"
+        },
+        "value": {
+          "$ref": "#/$defs/Text"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "maxItems": 10
+        }
+      },
+      "required": [
+        "field",
+        "value",
+        "evidence"
+      ],
+      "additionalProperties": false
+    },
+    "Comparison": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "submissionId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "entityId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "state": {
+          "const": "available"
+        },
+        "entityRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "entityStatus": {
+          "enum": [
+            "published",
+            "superseded",
+            "quarantined"
+          ]
+        },
+        "payloadHash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CurrentField"
+          },
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "submissionId",
+        "entityId",
+        "state",
+        "entityRevision",
+        "entityStatus",
+        "payloadHash",
+        "fields"
+      ],
+      "additionalProperties": false
+    },
+    "ComparisonUnavailable": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "submissionId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "entityId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UUID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "state": {
+          "const": "unavailable"
+        },
+        "reason": {
+          "enum": [
+            "absent",
+            "unmapped",
+            "projection_unavailable"
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "submissionId",
+        "entityId",
+        "state",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "Window": {
+      "type": "object",
+      "properties": {
+        "timeZone": {
+          "$ref": "#/$defs/Text"
+        },
+        "startInclusive": {
+          "$ref": "#/$defs/Timestamp"
+        },
+        "endExclusive": {
+          "$ref": "#/$defs/Timestamp"
+        }
+      },
+      "required": [
+        "timeZone",
+        "startInclusive",
+        "endExclusive"
+      ],
+      "additionalProperties": false
+    },
+    "Stats": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "asOf": {
+          "$ref": "#/$defs/Timestamp"
+        },
+        "auditHighwater": {
+          "$ref": "#/$defs/Count"
+        },
+        "window": {
+          "$ref": "#/$defs/Window"
+        },
+        "state": {
+          "const": "exact"
+        },
+        "pending": {
+          "$ref": "#/$defs/Count"
+        },
+        "needsInfo": {
+          "$ref": "#/$defs/Count"
+        },
+        "approvedInWindow": {
+          "$ref": "#/$defs/Count"
+        },
+        "rejectedInWindow": {
+          "$ref": "#/$defs/Count"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "asOf",
+        "auditHighwater",
+        "window",
+        "state",
+        "pending",
+        "needsInfo",
+        "approvedInWindow",
+        "rejectedInWindow"
+      ],
+      "additionalProperties": false
+    },
+    "StatsUnavailable": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "asOf": {
+          "$ref": "#/$defs/Timestamp"
+        },
+        "state": {
+          "const": "unavailable"
+        },
+        "reason": {
+          "enum": [
+            "window_unapproved",
+            "bounded_query_incomplete",
+            "service_unavailable"
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "asOf",
+        "state",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "AuditEvent": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "$ref": "#/$defs/Revision"
+        },
+        "createdAt": {
+          "$ref": "#/$defs/Timestamp"
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1,
+          "x-max-utf8-bytes": 200
+        },
+        "actor": {
+          "type": "object",
+          "properties": {
+            "principalId": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/UUID"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "principalId"
+          ],
+          "additionalProperties": false
+        },
+        "subject": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "$ref": "#/$defs/Text"
+            },
+            "id": {
+              "$ref": "#/$defs/UUID"
+            },
+            "revision": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Revision"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "id",
+            "revision"
+          ],
+          "additionalProperties": false
+        },
+        "beforeHash": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hash"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "afterHash": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hash"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Reason"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "prevHash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "thisHash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "canonicalContent": {
+          "type": "string",
+          "x-max-utf8-bytes": 16384
+        }
+      },
+      "required": [
+        "seq",
+        "createdAt",
+        "action",
+        "actor",
+        "subject",
+        "beforeHash",
+        "afterHash",
+        "reason",
+        "requestId",
+        "prevHash",
+        "thisHash",
+        "canonicalContent"
+      ],
+      "additionalProperties": false
+    },
+    "AuditPage": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "requestId": {
+          "$ref": "#/$defs/UUID"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AuditEvent"
+          },
+          "maxItems": 20
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "highwater": {
+          "$ref": "#/$defs/Count"
+        },
+        "headHash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "coverage": {
+          "enum": [
+            "filtered",
+            "chain"
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "items",
+        "nextCursor",
+        "highwater",
+        "headHash",
+        "coverage"
+      ],
+      "additionalProperties": false
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "enum": [
+                "validation_failed",
+                "unauthenticated",
+                "forbidden",
+                "not_found",
+                "conflict",
+                "idempotency_mismatch",
+                "rate_limited",
+                "service_unavailable",
+                "internal",
+                "method_not_allowed"
+              ]
+            },
+            "message": {
+              "$ref": "#/$defs/Text"
+            },
+            "requestId": {
+              "$ref": "#/$defs/UUID"
+            },
+            "details": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "minLength": 1,
+                  "x-max-utf8-bytes": 200
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "requestId"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "error"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

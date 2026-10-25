@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.data.community.canonical.CanonicalAdminRepositoryTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-25T13:01:32.963Z" hostname="fedora" time="0.036">
+  <properties/>
+  <testcase name="applicationTransportCannotBeEnabledByEndpointOrToken" classname="com.opus.piano.data.community.canonical.CanonicalAdminRepositoryTest" time="0.004"/>
+  <testcase name="accountClearRejectsLateQueueAndDiscardsCachedData" classname="com.opus.piano.data.community.canonical.CanonicalAdminRepositoryTest" time="0.007"/>
+  <testcase name="packagedSchemaIsExactlyTheApprovedContract" classname="com.opus.piano.data.community.canonical.CanonicalAdminRepositoryTest" time="0.003"/>
+  <testcase name="invalidUtf8RedirectAndOversizedResponsesFailClosed" classname="com.opus.piano.data.community.canonical.CanonicalAdminRepositoryTest" time="0.003"/>
+  <testcase name="canonicalServiceUsesActualAndroidTransportSeam" classname="com.opus.piano.data.community.canonical.CanonicalAdminRepositoryTest" time="0.007"/>
+  <testcase name="outageInvalidatesSensitiveCachedDocumentsAndFreshProcessHasNoSession" classname="com.opus.piano.data.community.canonical.CanonicalAdminRepositoryTest" time="0.006"/>
+  <testcase name="logoutClearsServiceStateBeforeBlockedTransport" classname="com.opus.piano.data.community.canonical.CanonicalAdminRepositoryTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
