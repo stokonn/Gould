@@ -39,7 +39,7 @@ No personal database migration, main merge, public activation or release.
 - [x] Prepare revised remaining-only packet; account403/pooler/trust/secret prerequisites still unbound.
 - [x] Publish Stage6 ce7ce21/af420b7 andStage8 f5fc296;exact remotes read back.
 - [x] Final CI:rootf300b09 quality40212884026/BFF40212884120 SUCCESS;RCa73a7e2 quality40212615987/native+upgrade40212684482 SUCCESS. Published prerelease andremote asset digest verified.
-- [ ] Reconcile 24 requirements, G1–G11, C4, handoffs, Issue/Project and private PMP.
+- [x] Reconcile24 requirements/G1–G11/C4/handoffs andactual source/CI/artifact results;Issue31 description/checkpoint6400636551 readback andProjectInProgress verified;private PMP saved.
 
 Current status: IN PROGRESS. No new hosted mutation, credential provisioning,
 Worker deployment or remote session activation authorized or performed.
@@ -48,7 +48,8 @@ automated visibility limitation. Operational Pi/SD backup automation is deferred
 production real-data collection remains blocked. Synthetic developer verification
 must be assessed separately from production privacy and backup acceptance.
 
-Verification recorded above is hosted read-only catalog/Advisor observation only.
-New source tests have not yet run. Earlier evidence remains historical and intact.
+Verification separates hosted read-only catalog/Advisor observations from executed
+local backend/client/operations andAPI36 native/upgrade evidence. No hosted Worker
+execution is inferred. Earlier raw failure andacceptance evidence remains intact.
 
 created by stokonn with love <3
