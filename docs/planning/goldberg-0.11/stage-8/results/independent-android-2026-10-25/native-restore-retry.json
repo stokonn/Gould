@@ -1,0 +1,7 @@
+{
+  "actualBeforeCommitKillRetry": true,
+  "badChecksumRetry": true,
+  "sessions": 2,
+  "durationMillis": 8000,
+  "originalDestinationDraftRetainedInEvidence": true
+}

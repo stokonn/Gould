@@ -1,0 +1,55 @@
+{
+  "mode": "rehearsal",
+  "apkSha256": "68d48b75436f6bd3f865d784714ec48570e2745c14aa0e9682514753009f3db0",
+  "package": "com.opus.piano",
+  "versionCode": 11,
+  "versionName": "0.10.1",
+  "certificateSha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+  "debuggable": true,
+  "zipIntegrity": "PASS",
+  "testProbeClassesExcluded": [
+    "Stage8IndependentPreservationTest",
+    "Stage8bAssessmentProbe",
+    "Stage7bAcceptanceTest",
+    "Stage3bProcessDeathTest",
+    "Stage8RestoreRetryTest"
+  ],
+  "testFixturesAndPrivateMaterialExcluded": true,
+  "assets": [
+    {
+      "path": "assets/legal/privacy.md",
+      "bytes": 3467,
+      "sha256": "ccea2fc3b89a0d3f3bdca24a4a1dfcbde258d7f53d21f88aac7fff7ac1230ad0"
+    },
+    {
+      "path": "assets/legal/third-party-notices.md",
+      "bytes": 13056,
+      "sha256": "2d65a1219f5739e10b83a429a324ca18c2fd9885511043e92b3d3754c1f5a710"
+    },
+    {
+      "path": "assets/licenses/Apache-2.0.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "assets/licenses/CormorantGaramond-OFL.txt",
+      "bytes": 4387,
+      "sha256": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956"
+    },
+    {
+      "path": "assets/licenses/Inter-OFL.txt",
+      "bytes": 4377,
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+    }
+  ],
+  "releaseDecision": "BLOCKED",
+  "releaseBlockers": [
+    "Version name is development0.10.1;official0.11 metadata not selected",
+    "Version code must exceed trusted published code11;owner choice remains pending",
+    "Inspected APK is debuggable;final release variant/signing/build acceptance pending",
+    "Stage6 integration and final combined-source clean/native/upgrade gates remain open",
+    "No owner main/tag/release authorization"
+  ],
+  "signingConfigurationChanged": false,
+  "versionMetadataChanged": false
+}

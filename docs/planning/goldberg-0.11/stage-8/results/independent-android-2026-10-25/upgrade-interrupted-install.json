@@ -1,0 +1,6 @@
+{
+  "sessionAbandoned": true,
+  "baselineRowsUnchanged": true,
+  "preferencesUnchanged": true,
+  "kind": "partial APK session abandoned before commit;not a crash during PackageManager atomic commit"
+}

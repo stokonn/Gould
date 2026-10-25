@@ -181,3 +181,28 @@ docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/c
 docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/instrumentation-gradle.log -whitespace
 docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/logcat.txt -whitespace
 docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/sdk-packages.txt -whitespace
+
+# Preserve independent Stage8 raw diagnostics and authored fixture correction patch.
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/actualKilledRestoreCanRetryAndChecksumFailureCanRetryWithoutDataLoss.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/background-prepare-valid-uuid.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/emulator-retry.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/forced-low-storage.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/ime-after-back.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/ime-before-back.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/practice-after-process-death.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/practice-after-reboot.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/prepareOfflineBundleAndPeriodicWorkForReboot.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/probes.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/recoveredPracticeCompletesExactlyOnce.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/restore-verify-after_commit.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/restore-verify-after_preferences.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/restore-verify-before_ack.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/restore-verify-before_commit.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/retryInterruptedMigrationRetainsEveryOriginalCell.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/test-build-background.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/test-build-fixed.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/test-build-restore-retry.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/test-build-retry.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/test-build-uuid.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/upgradedJournalBackupRoundTripAndRejectedRestoreRetainData.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/verifyOfflineBundleAndPeriodicWorkAfterReboot.txt -whitespace

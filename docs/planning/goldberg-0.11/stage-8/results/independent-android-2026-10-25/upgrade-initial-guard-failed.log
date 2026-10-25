@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/independent/rehearse_upgrade.py", line 35, in <module>
+    assert adb('shell','pm','path','com.opus.piano').strip()==b'', 'Baseline seeding requires a new unoccupied emulator;never replace existing app data'
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/independent/rehearse_upgrade.py", line 31, in adb
+    return subprocess.check_output(base + list(args), **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/subprocess.py", line 473, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               **kwargs).stdout
+               ^^^^^^^^^
+  File "/usr/lib64/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['/home/stokonn/Android/Sdk/platform-tools/adb', '-s', 'emulator-5592', 'shell', 'pm', 'path', 'com.opus.piano']' returned non-zero exit status 1.

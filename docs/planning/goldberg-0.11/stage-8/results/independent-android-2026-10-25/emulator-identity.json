@@ -1,0 +1,8 @@
+{
+  "serial": "emulator-5592",
+  "avd": "GoldbergStage8Independent",
+  "qemu": 1,
+  "api": "36",
+  "baselinePackageInitiallyAbsent": true,
+  "airplane": "1"
+}

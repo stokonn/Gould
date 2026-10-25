@@ -1,0 +1,13 @@
+{'method': 'prepareOfflineBundleAndPeriodicWorkForReboot', 'label': 'background-prepare-valid-uuid', 'result': 'PASS', 'junitPass': True, 'inputBinding': 'probe-input-binding-after-uuid.json'}
+{'method': 'recoverLivePracticeWithoutCountingDowntime', 'label': 'practice-after-reboot', 'result': 'PASS', 'junitPass': True, 'inputBinding': 'probe-input-binding-after-uuid.json'}
+{'method': 'verifyOfflineBundleAndPeriodicWorkAfterReboot', 'label': 'verifyOfflineBundleAndPeriodicWorkAfterReboot', 'result': 'PASS', 'junitPass': True, 'inputBinding': 'probe-input-binding-after-uuid.json'}
+{'method': 'recoveredPracticeCompletesExactlyOnce', 'label': 'recoveredPracticeCompletesExactlyOnce', 'result': 'PASS', 'junitPass': True, 'inputBinding': 'probe-input-binding-after-uuid.json'}
+{'method': 'prepareActualProcessDeath', 'label': 'restore-kill-before_commit', 'result': 'EXPECTED_PROCESS_TERMINATION', 'junitPass': False, 'inputBinding': 'probe-input-binding-after-uuid.json'}
+{'method': 'verifyAfterActualProcessDeath', 'label': 'restore-verify-before_commit', 'result': 'PASS', 'junitPass': True, 'inputBinding': 'probe-input-binding-after-uuid.json'}
+{'method': 'prepareActualProcessDeath', 'label': 'restore-kill-after_commit', 'result': 'EXPECTED_PROCESS_TERMINATION', 'junitPass': False, 'inputBinding': 'probe-input-binding-after-uuid.json'}
+{'method': 'verifyAfterActualProcessDeath', 'label': 'restore-verify-after_commit', 'result': 'PASS', 'junitPass': True, 'inputBinding': 'probe-input-binding-after-uuid.json'}
+{'method': 'prepareActualProcessDeath', 'label': 'restore-kill-after_preferences', 'result': 'EXPECTED_PROCESS_TERMINATION', 'junitPass': False, 'inputBinding': 'probe-input-binding-after-uuid.json'}
+{'method': 'verifyAfterActualProcessDeath', 'label': 'restore-verify-after_preferences', 'result': 'PASS', 'junitPass': True, 'inputBinding': 'probe-input-binding-after-uuid.json'}
+{'method': 'prepareActualProcessDeath', 'label': 'restore-kill-before_ack', 'result': 'EXPECTED_PROCESS_TERMINATION', 'junitPass': False, 'inputBinding': 'probe-input-binding-after-uuid.json'}
+{'method': 'verifyAfterActualProcessDeath', 'label': 'restore-verify-before_ack', 'result': 'PASS', 'junitPass': True, 'inputBinding': 'probe-input-binding-after-uuid.json'}
+Independent probes complete;source-bound raw outcomes retained

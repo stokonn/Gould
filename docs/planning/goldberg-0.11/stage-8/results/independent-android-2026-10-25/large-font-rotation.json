@@ -1,0 +1,30 @@
+[
+  {
+    "file": "cs-dark-f1p3-rotation0",
+    "locale": "cs",
+    "fontScale": 1.3,
+    "rotation": 0,
+    "fiveNamesPresent": true
+  },
+  {
+    "file": "cs-dark-f1p3-rotation1",
+    "locale": "cs",
+    "fontScale": 1.3,
+    "rotation": 1,
+    "fiveNamesPresent": true
+  },
+  {
+    "file": "cs-dark-f2p0-rotation0",
+    "locale": "cs",
+    "fontScale": 2.0,
+    "rotation": 0,
+    "fiveNamesPresent": true
+  },
+  {
+    "file": "cs-dark-f2p0-rotation1",
+    "locale": "cs",
+    "fontScale": 2.0,
+    "rotation": 1,
+    "fiveNamesPresent": true
+  }
+]

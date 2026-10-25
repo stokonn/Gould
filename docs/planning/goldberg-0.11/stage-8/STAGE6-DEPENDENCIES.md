@@ -1,3 +1,9 @@
+## Latest read-only Stage6 handoff (October25,2026)
+
+Receipt da2423bcea3b9ef8d0ea88a9b08a2e5468f173d6;engineering sourcebe5104476cf6cb059b0f206b2c4f18027d6bc657,CI40188291121SUCCESS.234JVM/20canonical pluslocal archive/TLS drills are externally verified source-bound facts;no native execution/accepted-client adoption isreported. G1–G9/G11 have additional contract-side implementation,effective adopted/native/live acceptance remainsOPEN.6.10/6.11 aredeferred adopted-client integration;C4/6.0f/6.17/B2/B4/B5/B6/publicversion/realpolicy/OAuth remainblocked orpending;G10 staysdisabled. Stage8 doesnot mergeorimplement thisexternally owned scope. Earlier pins below arehistorical. [Independent Android evidence](INDEPENDENT-ANDROID-VERIFICATION.md) doesnot close these gates.
+
+---
+
 ## Stage8C refresh
 
 Stage8C closes only A8-1/A8-2/A8-3. Stage6 G1–G9/G11,C4,6.0f/live remain OPEN. Concurrent Cloud independently advanced to56ff724 (Phase1/2 prepared,hosted NO-GO),not adopted. No hosted/operational/contract-consumer acceptance is inferred from UI tests. Current scope and remaining integration strategy: [8C completion](8C-TARGETED-UI-CORRECTIONS.md). Earlier pinned inputs below retain their historical evidence scope.

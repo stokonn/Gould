@@ -1,0 +1,6 @@
+{
+  "testSourceSha256": "627dc71ee95a592b46f2770a921f0122e433c61499fbd78d79d5283a1861e79f",
+  "testApkSha256": "bcf4a3ae737ad93efe616963e67548022987f853e230ef6140263bb152fdea21",
+  "correction": "Only background fixture IDs changed to valid deterministic UUIDs;completed earlier experiment methods unchanged;initial APK/source retained locally",
+  "initialBinding": "probe-input-binding.json"
+}

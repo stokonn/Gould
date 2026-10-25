@@ -1,0 +1,92 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:generateDebugRFile UP-TO-DATE
+> Task :app:kspDebugKotlin UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:generateDebugAndroidTestResources UP-TO-DATE
+> Task :app:packageDebugAndroidTestResources UP-TO-DATE
+> Task :app:processDebugAndroidTestNavigationResources UP-TO-DATE
+> Task :app:parseDebugAndroidTestLocalResources UP-TO-DATE
+> Task :app:generateDebugAndroidTestRFile UP-TO-DATE
+> Task :app:kspDebugAndroidTestKotlin
+
+> Task :app:compileDebugAndroidTestKotlin FAILED
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:13:38 Unresolved reference 'PersonalCatalogueBridge'.
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:67:141 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:67:141 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : Closeable?, R> T.use(block: (T) -> R): R
+    [R|Contract description]
+     <
+        CallsInPlace(block, EXACTLY_ONCE)
+    >
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:77:20 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:77:20 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : Closeable?, R> T.use(block: (T) -> R): R
+    [R|Contract description]
+     <
+        CallsInPlace(block, EXACTLY_ONCE)
+    >
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:87:76 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:94:9 Argument type mismatch: actual type is 'OpusDatabase', but 'Closeable?' was expected.
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:94:20 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:94:20 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : Closeable?, R> T.use(block: (T) -> R): R
+    [R|Contract description]
+     <
+        CallsInPlace(block, EXACTLY_ONCE)
+    >
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:109:15 Return type 'Nothing' needs to be specified explicitly.
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:130:60 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:133:9 Argument type mismatch: actual type is 'OpusDatabase', but 'Closeable?' was expected.
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:133:37 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:133:37 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : Closeable?, R> T.use(block: (T) -> R): R
+    [R|Contract description]
+     <
+        CallsInPlace(block, EXACTLY_ONCE)
+    >
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:150:55 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:152:9 Argument type mismatch: actual type is 'OpusDatabase', but 'Closeable?' was expected.
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:152:37 Cannot infer type for this parameter. Specify it explicitly.
+e: file:///home/stokonn/Projects/Goldberg-Stage8/app/src/androidTest/java/com/opus/piano/Stage8IndependentPreservationTest.kt:152:37 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : Closeable?, R> T.use(block: (T) -> R): R
+    [R|Contract description]
+     <
+        CallsInPlace(block, EXACTLY_ONCE)
+    >
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugAndroidTestKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 17s
+26 actionable tasks: 2 executed, 24 up-to-date

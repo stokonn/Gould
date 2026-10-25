@@ -1,3 +1,31 @@
+## Stage 8 — independent Android verification executed (October 25, 2026)
+
+Independent checks are VERIFIED; source publication/automatic CI receipt is in progress. This continues existing Stage8,without a new named stage. Full Stage8 integration and Goldberg0.11 release acceptance remain INCOMPLETE.
+
+Purpose/scope: trusted0.10.1 upgrade/data-preservation rehearsal, actual process/migration/restore/practice/reboot boundaries, missing orientation/platform observations and guarded artifact/readiness tooling. Baseline22fb50bedec7b932e47640673e52fdb57bdc791a on feature/goldberg-0.11-stage-8. Production source remains4d245b and APK68d48b…;only test/tool/docs/evidence changes. Accepted Stage7/Stage8C behavior retained.
+
+- [x] Recover policy/PMP/AI/readiness/Issue/Project and remote/worktree state; preserve externally owned Stage6.
+- [x] Trusted baseline854bbfeb…/certificate53eface… → unchanged development candidate68d48b… in-place install;schema8→10,all12 original tables/37sessions/37attribution rows/2pieces/4badges/profile/avatar/showcase/draft/archive/preferences retained;integrity/FK PASS.
+- [x] Abandoned partial installer leaves baseline unchanged;normal install retry PASS. Actual migration process kill rolls back,then retries with every original typed cell intact. Old binary's10→8 downgrade is refused without loss;forward reinstall recovers.
+- [x] V5 export/restore from upgraded journal,checksum-failure preservation/retry andfour actual restore kill phases/replay/retry PASS. Original destination recovery bytes remain exportable in evidence.
+- [x] Actual monotonic practice:6.008s credited during6.221s observed,per-piece/interval sums exact;actual process death/reboot preserve stopped recovery,raw draft andno downtime credit;completion idempotent.
+- [x] Actual reboot preserves WorkManager IDs/offline queue/READYblob;real cancellation PASS after54.159s (not3hdelivery). DataSaver/restricted bucket45/forcedLOW readbacks observed/restored;not actual ENOSPC/mobile transfer. Retain unchanged accepted SmartCache/interrupt/metered/notification and32-config UI evidence.
+- [x] Actual EN/Dark portrait/landscape plusfour CZ/Dark font1.3/2 rotations;allfive tabs,eight keyboard-focus steps andIMEBack PASS. Eight selected original frames inspected via two review sheets.
+- [x] Package/manifest/assets/ZIP/trusted signer/test-fixture exclusion/source traceability PASS. Rehearsal artifact isdebuggable0.10.1/code11;strict release guard correctlyBLOCKS it. No official version/signing/RC selection.
+- [ ] Commit/push verified scope,read exact remote and relevant automatic CI;final append-only Issue/private PMP/AI/matrix receipt. No unchanged full native CI redispatch.
+
+Counts:new12 targeted JUnit PASS,0new skips,6deliberate actual process terminations (notJUnit passes),1corrected invalid-UUID fixture failure retained,0unresolved app failures. New final AndroidTest compile PASS21s;no production/JVM logic changes. Retained CI40170295032:190native/188pass/2oldexternal skips and275JVM at its original source;not new executions here.
+
+Stage6 refreshed read-only:receipt da2423bcea3b9ef8d0ea88a9b08a2e5468f173d6,verified engineering source be5104476cf6cb059b0f206b2c4f18027d6bc657/[CI40188291121](https://github.com/stokonn/Goldberg/actions/runs/40188291121). Its234JVM/20canonical/localarchive/TLS evidence is externally reported,not executed here;native/accepted-consumer/hosted acceptance remainsOPEN. Actual-client G1–G9/G11,C4,6.0f/6.17,real policy/publicversion/OAuth andB2/B4/B5/B6 remain blocked or pending;G10 disabled. No Stage6 source/DTO/auth/session/repository/fixture adoption or external writes.
+
+Remaining gaps:final integrated/official-version/signed-release artifact acceptance;real three-hour/reboot notification delivery;audible speech/physical-device acceptance (not performed);real disk-full/production transfers (not performed). Existing accepted deterministic/transport evidence stays source-bound. Next shortest path:review final Stage6 consumer handoff/policy gates,obtain authorized integration scope,reconcile affected paths preserving current UI/data,then rerun only impacted combined-source/native/data checks plusfinal trusted-signer upgrade. No additional named stage,main merge,cloud activation,production networking,phone testing,tag orRelease.
+
+created by stokonn with love <3
+
+[Detailed commands,evidence,reproduction andlimits](../planning/goldberg-0.11/stage-8/INDEPENDENT-ANDROID-VERIFICATION.md).
+
+---
+
 ## Stage 8C complete — next executor handoff, October25,2026
 
 Do not repeat or reopen verified8C work without changed inputs/new evidence. Branch `feature/goldberg-0.11-stage-8`; production source `4d245b46936d640740799dfcc6e8d61f3d44b249`, corrected test source `a41cd11a1b32af2949c43cb6e5b6aac94a3c2a51`. Final docs receipt/remote SHA is in Git/Issue31. A8-1/A8-2/A8-3 FIXED;fullStage8 blocked.

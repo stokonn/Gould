@@ -1,0 +1,138 @@
+{
+  "junitPassed": 12,
+  "expectedProcessTerminations": 6,
+  "failures": 0,
+  "originalApplicationTablesUnchanged": true,
+  "actualReboots": 1,
+  "realThreeHourDeliveryVerified": false,
+  "results": [
+    {
+      "method": "upgradedJournalBackupRoundTripAndRejectedRestoreRetainData",
+      "label": "upgradedJournalBackupRoundTripAndRejectedRestoreRetainData",
+      "result": "PASS",
+      "junitPass": true
+    },
+    {
+      "method": "interruptRealMigrationProcess",
+      "label": "interruptRealMigrationProcess",
+      "result": "EXPECTED_PROCESS_TERMINATION",
+      "junitPass": false
+    },
+    {
+      "method": "retryInterruptedMigrationRetainsEveryOriginalCell",
+      "label": "retryInterruptedMigrationRetainsEveryOriginalCell",
+      "result": "PASS",
+      "junitPass": true
+    },
+    {
+      "method": "prepareLivePracticeAndTerminateProcess",
+      "label": "prepareLivePracticeAndTerminateProcess",
+      "result": "EXPECTED_PROCESS_TERMINATION",
+      "junitPass": false
+    },
+    {
+      "method": "recoverLivePracticeWithoutCountingDowntime",
+      "label": "practice-after-process-death",
+      "result": "PASS",
+      "junitPass": true
+    },
+    {
+      "method": "prepareOfflineBundleAndPeriodicWorkForReboot",
+      "label": "background-prepare-valid-uuid",
+      "result": "PASS",
+      "junitPass": true,
+      "inputBinding": "probe-input-binding-after-uuid.json"
+    },
+    {
+      "method": "recoverLivePracticeWithoutCountingDowntime",
+      "label": "practice-after-reboot",
+      "result": "PASS",
+      "junitPass": true,
+      "inputBinding": "probe-input-binding-after-uuid.json"
+    },
+    {
+      "method": "verifyOfflineBundleAndPeriodicWorkAfterReboot",
+      "label": "verifyOfflineBundleAndPeriodicWorkAfterReboot",
+      "result": "PASS",
+      "junitPass": true,
+      "inputBinding": "probe-input-binding-after-uuid.json"
+    },
+    {
+      "method": "recoveredPracticeCompletesExactlyOnce",
+      "label": "recoveredPracticeCompletesExactlyOnce",
+      "result": "PASS",
+      "junitPass": true,
+      "inputBinding": "probe-input-binding-after-uuid.json"
+    },
+    {
+      "method": "prepareActualProcessDeath",
+      "label": "restore-kill-before_commit",
+      "result": "EXPECTED_PROCESS_TERMINATION",
+      "junitPass": false,
+      "inputBinding": "probe-input-binding-after-uuid.json"
+    },
+    {
+      "method": "verifyAfterActualProcessDeath",
+      "label": "restore-verify-before_commit",
+      "result": "PASS",
+      "junitPass": true,
+      "inputBinding": "probe-input-binding-after-uuid.json"
+    },
+    {
+      "method": "prepareActualProcessDeath",
+      "label": "restore-kill-after_commit",
+      "result": "EXPECTED_PROCESS_TERMINATION",
+      "junitPass": false,
+      "inputBinding": "probe-input-binding-after-uuid.json"
+    },
+    {
+      "method": "verifyAfterActualProcessDeath",
+      "label": "restore-verify-after_commit",
+      "result": "PASS",
+      "junitPass": true,
+      "inputBinding": "probe-input-binding-after-uuid.json"
+    },
+    {
+      "method": "prepareActualProcessDeath",
+      "label": "restore-kill-after_preferences",
+      "result": "EXPECTED_PROCESS_TERMINATION",
+      "junitPass": false,
+      "inputBinding": "probe-input-binding-after-uuid.json"
+    },
+    {
+      "method": "verifyAfterActualProcessDeath",
+      "label": "restore-verify-after_preferences",
+      "result": "PASS",
+      "junitPass": true,
+      "inputBinding": "probe-input-binding-after-uuid.json"
+    },
+    {
+      "method": "prepareActualProcessDeath",
+      "label": "restore-kill-before_ack",
+      "result": "EXPECTED_PROCESS_TERMINATION",
+      "junitPass": false,
+      "inputBinding": "probe-input-binding-after-uuid.json"
+    },
+    {
+      "method": "verifyAfterActualProcessDeath",
+      "label": "restore-verify-before_ack",
+      "result": "PASS",
+      "junitPass": true,
+      "inputBinding": "probe-input-binding-after-uuid.json"
+    },
+    {
+      "method": "actualKilledRestoreCanRetryAndChecksumFailureCanRetryWithoutDataLoss",
+      "label": "actualKilledRestoreCanRetryAndChecksumFailureCanRetryWithoutDataLoss",
+      "result": "PASS",
+      "junitPass": true,
+      "inputBinding": "probe-input-binding-restore-retry.json"
+    }
+  ],
+  "unsuccessfulNativeAttemptsRetained": [
+    {
+      "method": "prepareOfflineBundleAndPeriodicWorkForReboot",
+      "reason": "Synthetic bundle ID was not aUUID;correct rejection before writes;fixed fixture only"
+    }
+  ],
+  "failureScope": "0 unresolved;one corrected native fixture failure is separately preserved"
+}

@@ -1,0 +1,6 @@
+{
+  "testSourceSha256": "961b4de4e911958bbba067c7db7bf75c8d6dc7f60ff4ceb2b4bba58ec2c6b0fa",
+  "testApkSha256": "debb92df18d05d9aa63db0e3c128c416b76dbdfbf419900e748ab69a75bc6539",
+  "class": "Stage8RestoreRetryTest",
+  "existingIndependentProbeSourceUnchanged": true
+}

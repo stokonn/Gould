@@ -1,0 +1,10 @@
+{
+  "syntheticOnly": true,
+  "baselineBinaryInstalledInPlace": true,
+  "schema10to8Refused": true,
+  "originalDataUnchanged": true,
+  "schemaStill10": true,
+  "forwardReinstallRecovered": true,
+  "uninstallUsed": false,
+  "expectation": "Binary rollback is not a supported database downgrade. Preserve source snapshots/compatible backups;never uninstall or destroy data to bypass this guard."
+}

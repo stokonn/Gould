@@ -1,0 +1,5 @@
+{
+  "expectedExit": 2,
+  "actualExit": 2,
+  "result": "PASS:development/debug APK refused as final release"
+}
