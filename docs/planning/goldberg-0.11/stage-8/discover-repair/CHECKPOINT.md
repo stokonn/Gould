@@ -59,3 +59,45 @@ Final pre-CI build6 PASS, 3m3s: **307 JVM / 0 failures/errors/skips; debug APK +
 APK: `.gradle/discover-review/Goldberg-0.11-discover-debug.apk`, `com.opus.piano`, `0.11-dev`/code12, **debuggable**, 24,404,807 bytes; SHA256 `877abadbcb74d8f2c25d6b664e52207473338e9390a61a1d4bfd0e7ad98bd36c`. Actual signer matches trusted `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e` and the actual downloaded RC. ZIP CRC PASS; six public fixtures and test-only RC layout replay excluded from app DEX/assets. Published RC remains byte-identical `c5662d8e…`. Full source hashes and commands: [host receipt](host-results/HOST-VERIFICATION.json); all successful/failed host logs retained alongside it. No release APK built.
 
 Checklist/review: localization1071 resources PASS; agent policy, history paging, migrations/backup fixture DDL and whitespace PASS. All six fixture query/URL/hash bindings PASS. No personal schema, database recreation, backup/practice history, source/rights deletion, cloud credentials, community enablement, main, other worktree or release artifact mutation. Source commit/push is solely to execute the owner's required exact-SHA API36 CI; this is not native acceptance or release approval. Existing workflow will run the full suite plus seeded upgrade on explicit guarded emulators. Native PNG/tree inspection and original OpenOpus screenshot disposition remain OPEN.
+
+## Exact-source publication for required emulator CI
+
+Reviewed source committed and ordinary-pushed to the existing isolated branch: **`7db1d91230d157d1f2033a2e61ec3ac86c1ba8c3`**, remote readback exact. Initial post-push worktree clean. Actual production files match every hash in HOST-VERIFICATION.json. Admin contract checker also PASS:29 fixtures/15 pinned hashes; no backend execution.
+
+[API36 full instrumentation + seeded upgrade run40221541462](https://github.com/stokonn/Goldberg/actions/runs/40221541462) is IN PROGRESS; headSha readback exactly `7db1d91230d157d1f2033a2e61ec3ac86c1ba8c3`. [Quality40221513320](https://github.com/stokonn/Goldberg/actions/runs/40221513320) is also in progress at the same source. NO CI success/native/UI pass is claimed yet. Existing dispatch-only workflow and guarded emulator serials retained; only its existing evidence collector adds the new test's PNG/tree directory. Full native suite is not narrowed or skipped. Current local documentation updates follow the frozen tested source; wait for actual artifacts before final acceptance.
+
+## Independent quality CI milestone
+
+[Quality40221513320](https://github.com/stokonn/Goldberg/actions/runs/40221513320) **SUCCESS**, exact headSha `7db1d91230d157d1f2033a2e61ec3ac86c1ba8c3` verified by readback. API36 workflow40221541462 has reached actual full instrumentation and seeded-upgrade execution; results/visual acceptance still pending. A local artifact verifier now checks immutable source binding, actual native JUnit execution, four new Discover cases, PNG CRCs/dimensions, paired accessibility trees, five query outputs and source-assertion preservation. It explicitly requires separate visual inspection and cannot turn compilation into a native pass.
+
+## API36 upgrade job milestone; full suite pending
+
+Workflow40221541462 `5.11 acceptance subset — API36 emulator` job reports SUCCESS at the dispatched source. Raw upgrade diagnostics/artifacts still need inspection before detailed preservation assertions are added. The full instrumentation job is still executing; no full native or visual acceptance claim yet.
+
+One bounded public MusicBrainz Chopin artist probe returned HTTP503 at 18:42UTC (October25), recorded without retry. Actual artist classifications for the screenshot's weak names cannot be inferred from that failed response. Adapter projection and controlled Person/Group/Orchestra/Choir/Character/Other tests are independent evidence; public source availability is not an application test result.
+
+Upgrade artifact inspection PASS: source-commit attestation exactly7db1d91; `upgrade/result.json` records offline schema8→10, unchanged original rows/preferences,37sessions and foreign keys PASS. Independently compared `before.json == after.json` for every cell of all12 original tables:4badges/2pieces/1draft/1recovery archive/profile/settings/37sessions/37parts, including empty original tables. Independently opened upgraded and post-process-restart SQLite snapshots read-only:integrity `ok`,0FK violations,schema10,37sessions both. CI baseline/candidate use the same temporary signer9b9ac2…; downloaded stable certificate53eface… and the separate local review APK's trusted signing are verified independently. This is not a claim that the CI APK carries the production key. Source-bound raw receipt subset preserved in `ci-40221541462/upgrade/`; full original artifact remains downloaded under /tmp and on the linked CI run. Full native/visual result still pending.
+
+## First native pass and actual visual findings — follow-up in progress
+
+Source7db1d91 [API36 workflow40221541462](https://github.com/stokonn/Goldberg/actions/runs/40221541462) SUCCESS. Raw JUnit/attestation inspection: **207 cases,196 PASS,0 failures/errors,11 existing skips** (2 optional external fixture cases and9 separately driven preservation/process/reboot probes). All3 DiscoverRepairTest methods and1 DiscoverEditorialAcceptanceTest method executed/passed. Artifact verifier PASS:28 PNG/tree pairs,5 native query outputs,10 controlled requests/1 actual cancelled in-flight request,work assertions2→2 unchanged. Original screenshots/trees/JUnit/source attestations preserved under `ci-40221541462/native/` with hashes.
+
+Actually inspected12 original PNGs plus their hierarchy evidence (names in follow-up host receipt): before/after work detail, automatic Chopin/Goldberg, provider failure/offline, Ballade, Library composition and representative CS/EN/light/dark/2× captures. Do not infer that all28 were visually inspected. Findings requiring the following bounded repair:
+
+- Default short search still exposed cache/history explanations and oversized source controls. These now live in collapsed Advanced catalogue tools; connection/error feedback remains compact beside online results.
+- Artist/work rows incorrectly shared the generic fallback icon because singular entity kinds did not match plural category keys. Explicit kind aliases fix actual types.
+- Czech main metadata showed the controlled genre `Keyboard` in English. Known genre/period labels now use existing localization mappings; original source values and all work/composer names remain unchanged.
+- Library showed an empty Overview and a large missing-movement panel. Empty Overview is omitted; the truthful explanation and original Listen & Study tools remain available through a shared secondary disclosure. No movements are fabricated or source tools removed.
+- Detail source JSON is prepared once per detail/language on Dispatchers.Default. Historical evidence stays intact, including malformed-scalar fallback; no database change.
+- History preference controls are named for accessibility and update local state without triggering unrelated provider searches.
+
+Existing accepted navigation/hyphenation behavior is preserved. At2× on small screens the primary action can require scrolling; the expanded matrix now explicitly scrolls it fully into view and retains action frames. Native coverage also adds filter-based cancellation, history preference/no-refetch, actual composer detail/Back, expanded repeated credits/license/date evidence and optional Library study tools.
+
+Follow-up host build7 PASS3m3s; build8 PASS2m37s: **308 JVM/0 failures/errors/skips,debug/testAPK assembly,lint0errors120warnings1hint**. Final expanded test-only compilation build10 PASS25s. Localization1073/policy/paging/whitespace PASS. New review APK SHA256 **`6a5669b17e6c7ef47b4adcbbee2c4df8a742b7532caa87628ac586fb842a31e0`**,24,405,679 bytes,0.11-dev/code12/debuggable/trusted53eface…; ZIP/test-fixture exclusion/source inventory PASS. Original debug7db APK is preserved separately. [Follow-up host receipt](host-results/visual-follow-up/HOST-VERIFICATION.json).
+
+- [x] Investigate actual first-run native XML and inspect representative original screenshots/trees; retain all raw pairs.
+- [x] Implement and host-verify the demonstrated visual/localization/accessibility/JSON-thread fixes.
+- [ ] Commit/push reviewed follow-up and dispatch the existing exact-SHA API36 workflow after these meaningful verified fixes.
+- [ ] Inspect final-source native/upgrade results and new actual PNG/tree frames; synchronize final report and owner-review debug APK.
+
+This remains Stage8 IN PROGRESS. First-source CI success does not transfer to changed source; updated native acceptance is pending. No release,main,cloud credential or production community action.

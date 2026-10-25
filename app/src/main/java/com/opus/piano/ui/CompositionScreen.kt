@@ -84,7 +84,7 @@ import com.opus.piano.data.*
                 ).filter { it.first.isNotBlank() }
                 EditorialMetadata(cells)
             }
-            item { EditorialSectionHeader(L.fixed("Overview")) }
+            if(!work?.subtitle.isNullOrBlank() || !personal?.notes.isNullOrBlank())item { EditorialSectionHeader(L.fixed("Overview")) }
             if (!work?.subtitle.isNullOrBlank()) item { Text(work!!.subtitle, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }
             if (!personal?.notes.isNullOrBlank()) item { Text(personal!!.notes, style = MaterialTheme.typography.bodyMedium) }
             item {
@@ -97,21 +97,12 @@ import com.opus.piano.data.*
                     }
                 }
             }
-            item { EditorialSectionHeader(L.s(R.string.stage7a_structure_movements)) }
-            item {
-                // Honest empty section (Stage 7A): soft panel, never invented movements.
-                Surface(shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = .55f)) {
-                    Row(Modifier.fillMaxWidth().padding(12.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                        Icon(Icons.Outlined.Info, null, Modifier.padding(top = 1.dp).size(18.dp), tint = MaterialTheme.colorScheme.primary)
-                        Column(verticalArrangement = Arrangement.spacedBy(JournalSpace.tiny)) {
-                            Text(L.s(R.string.msg_no_verified_movement_list_is_supplied_by_the_d571), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                            if (key != null) JournalTextButton(onClick = { studyExpanded = !studyExpanded }) { Text(L.s(R.string.msg_sources_study_bfcb)) }
-                        }
-                    }
-                }
+            if(key!=null)item {EditorialDisclosure(L.s(R.string.msg_sources_study_bfcb),studyExpanded,{studyExpanded=!studyExpanded})}
+            if(key!=null && studyExpanded)item {
+                Text(L.s(R.string.msg_no_verified_movement_list_is_supplied_by_the_d571),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+                ListenAndStudy(key,composerName,title,work?.catalogLabel.orEmpty(),recordings.filter {it.workKey==key},recordingsPage)
             }
-            if (key != null && studyExpanded) item { ListenAndStudy(key, composerName, title, work?.catalogLabel.orEmpty(), recordings.filter { it.workKey == key }, recordingsPage) }
-            item { EditorialSectionHeader(L.s(R.string.stage7a_sources_references)) }
+            if(composer!=null || sourceId!=null)item { EditorialSectionHeader(L.s(R.string.stage7a_sources_references)) }
             if (composer != null) item { JournalTextButton(onClick = { composerPage(composer.id) }) { Text(L.s(R.string.msg_explore_composer_e4ca)) } }
             if (personal != null) {
                 item {

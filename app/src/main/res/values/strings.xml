@@ -858,9 +858,9 @@
     <string name="discover_artists">Artists</string>
     <string name="discover_albums">Albums</string>
     <string name="discover_lists">Lists</string>
-    <string name="discover_work">Work / composition</string>
+    <string name="discover_work">Composition</string>
     <string name="discover_arrangement">Arrangement</string>
-    <string name="discover_artist">Artist / composer / group</string>
+    <string name="discover_artist">Artist</string>
     <string name="discover_album">Album family</string>
     <string name="discover_release">Release / edition</string>
     <string name="discover_recording">Recording</string>
@@ -877,8 +877,8 @@
     <string name="discover_invalid">This source returned an unreadable response. Try again later, or browse saved results.</string>
     <string name="discover_unavailable">Source unavailable; saved results retained</string>
     <string name="discover_load_encyclopedia">Load sourced biography and portrait information</string>
-    <string name="discover_candidate">Unresolved catalogue candidate — type and relationships require verification</string>
-    <string name="discover_verify_candidate">Load and verify catalogue detail</string>
+    <string name="discover_candidate">Load more details before adding this result.</string>
+    <string name="discover_verify_candidate">Load details</string>
     <string name="discover_refresh_metadata">Load or refresh linked catalogue metadata</string>
     <string name="discover_listen">Open verified listening link</string>
     <string name="discover_clear_cache">Clear disposable response cache</string>
@@ -1088,4 +1088,6 @@
     <string name="discover_composer">Composer</string>
     <string name="discover_person">Person</string>
     <string name="discover_group">Ensemble</string>
+    <string name="discover_connection_unavailable">Online search is unavailable on this connection.</string>
+    <string name="discover_results_to_check">More results to explore</string>
 </resources>

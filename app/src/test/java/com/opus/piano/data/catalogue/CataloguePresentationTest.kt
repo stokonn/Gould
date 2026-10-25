@@ -27,6 +27,18 @@ class CataloguePresentationTest {
         assertEquals("legacy raw evidence",group.value)
         assertEquals(original,group.evidence.single())
     }
+    @Test fun preparedDetailKeepsOriginalEvidenceAndDoesNotInventMissingContent() {
+        val rows=listOf(row("1","Keyboard"),row("2","Keyboard",selected=false))
+        val detail=DiscoverDetail(CatalogueEntity("entity","work","Original title"),emptyList(),rows,emptyList())
+        val prepared=CataloguePresentation.prepare(detail,"cs")
+        assertEquals("Original title",prepared.title)
+        assertEquals(rows,prepared.groups.single().evidence)
+        assertNull(prepared.biography);assertNull(prepared.biographyText);assertTrue(prepared.listeningUrls.isEmpty())
+        val broken=row("broken","value",field="preferred_name").let {it.copy(assertion=it.assertion.copy(valueJson="unchanged raw legacy evidence"))}
+        val recovered=CataloguePresentation.prepare(detail.copy(assertions=rows+broken),"cs")
+        assertEquals("Original title",recovered.title)
+        assertTrue(recovered.groups.flatMap {it.evidence}.contains(broken))
+    }
     @Test fun dateAndLanguageLabelsUseRequestedLocaleWithoutChangingEvidence() {
         assertEquals("English",CataloguePresentation.languageLabel("en",Locale.ENGLISH,"Unspecified"))
         assertEquals("Unspecified",CataloguePresentation.languageLabel("und",Locale.ENGLISH,"Unspecified"))

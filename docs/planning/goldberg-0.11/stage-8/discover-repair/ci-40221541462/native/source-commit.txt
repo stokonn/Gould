@@ -1,0 +1,3 @@
+github.sha: 7db1d91230d157d1f2033a2e61ec3ac86c1ba8c3
+github.ref: refs/heads/fix/goldberg-0.11-discover-ux
+checkout HEAD: 7db1d91230d157d1f2033a2e61ec3ac86c1ba8c3

@@ -1,10 +1,12 @@
 ## Current Stage 8 — Discover stabilization, October 25, 2026
 
-IN PROGRESS on `fix/goldberg-0.11-discover-ux`, exact published RC baseline `a73a7e2`. Latest owner scope: automatic debounced provider search after default-off Settings consent; editorial detail/search repair; debug APK/report only. No new RC, tag, Release, main merge or community activation. Permanent policy is recorded in AGENTS.md and DECISIONS.md.
+IN PROGRESS on `fix/goldberg-0.11-discover-ux`, exact RC baseline `a73a7e2`. Source7db1d91 verified:307JVM,qualityCI40221513320 SUCCESS;API36 workflow40221541462 SUCCESS (207native/196pass/0fail/11existing skips),seeded schema8→10 all original rows/preferences/process-restart integrity PASS.28 actual PNG/tree pairs preserved;12 original PNGs inspected, revealing bounded follow-up work.
 
-Live purpose/scope/tasks/results/next steps: [Discover repair checkpoint](../planning/goldberg-0.11/stage-8/discover-repair/CHECKPOINT.md). Current reviewed-source host run:307 JVM/0 failures/errors/skips, APK/testAPK/lint PASS (0 errors/119 warnings/1 hint); automatic-search/native visual harness compiled. API36 CI execution and actual screenshot/tree review remain pending. Original OpenOpus screenshot failure is not marked fixed from live success alone.
+Current follow-up: advanced search tools collapse technical footer, correct result icons, localized controlled genres, secondary Library missing-data explanation, background detail JSON preparation and accessible history/no-refetch. Host build8 PASS308JVM/0failures/errors/skips,APK/testAPK/lint0errors120warnings1hint;final expanded native compilation PASS25s. New debug SHA2566a5669b17e6c7ef47b4adcbbee2c4df8a742b7532caa87628ac586fb842a31e0; native acceptance of this changed source is PENDING.
 
-Earlier source-bound checkpoints below are historical and remain preserved.
+Live scope/tasks/raw evidence/next steps: [Discover checkpoint](../planning/goldberg-0.11/stage-8/discover-repair/CHECKPOINT.md). Next:commit/push reviewed follow-up for exact-SHA existing API36 CI,inspect actual final PNG/tree evidence,then deliver debug/report for owner review. Default-off Settings consent enables automatic500ms provider search; no per-query button. Original OpenOpus screenshot response remains unknown; robust fixture handling is verified independently. No new RC/tag/Release/main/community activation. Permanent policy in AGENTS.md/DECISIONS.md.
+
+Earlier source-bound checkpoints remain historical.
 
 ---
 

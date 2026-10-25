@@ -7,6 +7,25 @@ import org.json.JSONObject
 data class AssertionGroup(val field:String,val value:String,val language:String,val evidence:List<SourcedAssertion>)
 
 object CataloguePresentation {
+    data class Prepared(
+        val title:String,val biography:SourcedAssertion?,val biographyText:String?,val biographyLanguage:String?,
+        val biographyRevisionUrl:String?,val conflicts:List<String>,val essentials:List<AssertionGroup>,
+        val groups:List<AssertionGroup>,val listeningUrls:List<String>
+    )
+    /** Call on a background dispatcher: historical JSON is decoded once per detail/language. */
+    fun prepare(detail:DiscoverDetail,language:String):Prepared {
+        val biography=runCatching {biography(detail,language)}.getOrNull()
+        val body=biography?.let {runCatching {JSONObject(it.assertion.valueJson)}.getOrNull()}
+        val revision=biography?.let {row->detail.assertions.firstOrNull {
+            it.assertion.sourceId==row.source.id && it.assertion.field=="article_revision_url"
+        }}?.let {JSONObject(it.assertion.valueJson).optString("value")}
+            ?.takeIf {it.matches(Regex("https://(en|cs)\\.wikipedia\\.org/w/index\\.php\\?oldid=[0-9]+"))}
+        val listening=detail.assertions.filter {it.assertion.field=="listening_url" && it.rights.reviewState=="approved"}
+            .mapNotNull {runCatching {JSONObject(it.assertion.valueJson).optString("value")}.getOrNull()}
+            .filter {com.opus.piano.data.catalogue.providers.ListeningDestination.accepts(it,detail.entity.kind)}.distinct()
+        return Prepared(runCatching {title(detail,language)}.getOrDefault(detail.entity.title),biography,body?.optString("value"),body?.optString("language"),revision,
+            runCatching {conflicts(detail)}.getOrDefault(emptyList()),essentials(detail),groups(detail.assertions),listening)
+    }
     fun groups(rows:List<SourcedAssertion>):List<AssertionGroup> = rows.groupBy {row->
         val json=runCatching {JSONObject(row.assertion.valueJson)}.getOrNull()
         // Exact scalar equivalence only. Case, punctuation and conflicting values stay separate.

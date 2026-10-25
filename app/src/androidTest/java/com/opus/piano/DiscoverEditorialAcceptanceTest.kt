@@ -74,7 +74,12 @@ class DiscoverEditorialAcceptanceTest {
     }
     private fun scrollTo(label:String) {
         repeat(25) {
-            if(has(label))return
+            val viewport=tree().firstOrNull {it.isScrollable}?.let {Rect().also(it::getBoundsInScreen)}
+            val full=tree().filter {it.text?.toString()==label || it.contentDescription?.toString()==label}.any {node->
+                val bounds=Rect();node.getBoundsInScreen(bounds)
+                node.isVisibleToUser && viewport!=null && viewport.contains(bounds)
+            }
+            if(full)return
             tree().firstOrNull {it.isScrollable}?.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
             Thread.sleep(160);inst.waitForIdleSync()
         }
@@ -176,6 +181,16 @@ class DiscoverEditorialAcceptanceTest {
                 await("Goldberg work not shown"){tree().any {it.text?.contains("Goldberg Variations")==true}}
                 capture("en-light-auto-goldberg")
                 assertFalse(has(L.s(R.string.stage7a_search_online)))
+                assertFalse(has(L.s(R.string.discover_clear_cache)))
+                click(L.s(R.string.discover_advanced))
+                capture("en-light-search-advanced")
+                val beforeHistoryChange=calls.get()
+                scrollTo(L.s(R.string.discover_history))
+                click(L.s(R.string.discover_history));Thread.sleep(650)
+                click(L.s(R.string.discover_history));Thread.sleep(650)
+                assertEquals("History preferences must not refetch a query",beforeHistoryChange,calls.get())
+                repeat(3) {tree().firstOrNull {it.isScrollable}?.performAction(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD);Thread.sleep(150)}
+                click(L.s(R.string.discover_advanced))
                 // Fast edits never dispatch the intermediate empty/one-character queries.
                 val before=calls.get()
                 enter("");Thread.sleep(100);enter("x");Thread.sleep(100);enter("Mozart")
@@ -183,6 +198,8 @@ class DiscoverEditorialAcceptanceTest {
                 assertEquals(before+1,calls.get())
                 // Cancel a request that is already in flight, then display the new query.
                 enter("obsolete");await("Slow request did not start"){calls.get()==before+2}
+                click(L.s(R.string.discover_artists));Thread.sleep(100)
+                click(L.s(R.string.discover_all))
                 enter("Chopin");await("Obsolete request was not cancelled"){cancelled.get()==1}
                 await("Composer missing"){has("Frédéric Chopin")}
                 capture("en-light-auto-chopin")
@@ -207,12 +224,32 @@ class DiscoverEditorialAcceptanceTest {
                 invalid.set(true);enter("Goldberg")
                 await("Provider error not shown"){has(L.s(R.string.discover_source_warning))}
                 capture("en-light-provider-failure")
-                val networkCalls=calls.get();available.set(false);enter("Goldberg ");Thread.sleep(800)
+                val networkCalls=calls.get();available.set(false);enter("Goldberg ")
+                await("Connection state missing"){has(L.s(R.string.discover_connection_unavailable))}
                 assertEquals(networkCalls,calls.get());capture("en-light-offline")
                 available.set(true);invalid.set(false)
                 inst.runOnMainSync {nav.navigate("detail/${goldberg.id}")}
                 await("Missing primary action"){has(L.s(R.string.discover_add_work))}
                 capture("en-light-detail-after")
+                val composer=detail.relationships.first {it.first.role=="composer"}.second
+                click(composer.title)
+                await("Composer detail did not open"){has(L.s(R.string.discover_composer))}
+                capture("en-light-composer-detail")
+                scrollTo(L.s(R.string.discover_sources));click(L.s(R.string.discover_sources))
+                capture("en-light-composer-credits")
+                val composerDetail=(repository.detail(composer.id) as CatalogueAccess.Available).value!!
+                val duplicate=CataloguePresentation.groups(composerDetail.assertions).first {it.evidence.size>1}
+                val countLabel=L.s(R.string.discover_evidence_count,duplicate.evidence.size)
+                scrollTo(countLabel);click(countLabel)
+                val dateLabel=CataloguePresentation.retrievedLabel(duplicate.evidence.first().source.retrievedAt,L.locale)
+                scrollTo(dateLabel)
+                scrollTo(L.s(R.string.discover_license_cc0)+" · "+duplicate.evidence.first().rights.attribution)
+                capture("en-light-composer-evidence-expanded")
+                assertTrue(tree().any {it.text?.contains(L.s(R.string.discover_license_cc0))==true})
+                val afterCredits=(repository.detail(composer.id) as CatalogueAccess.Available).value!!
+                assertEquals(composerDetail.assertions,afterCredits.assertions)
+                inst.runOnMainSync {nav.popBackStack()}
+                await("Composer Back failed"){has(L.s(R.string.discover_add_work))}
                 inst.runOnMainSync {replay.value=true}
                 Thread.sleep(500);capture("en-light-detail-before-rc-layout")
                 inst.runOnMainSync {replay.value=false}
@@ -220,6 +257,10 @@ class DiscoverEditorialAcceptanceTest {
                 click(L.s(R.string.discover_add_work))
                 await("Add did not navigate to Library composition"){pieceId!=null && has(L.s(R.string.select_in_practice))}
                 capture("en-light-library-composition")
+                assertFalse(has(L.s(R.string.msg_no_verified_movement_list_is_supplied_by_the_d571)))
+                scrollTo(L.s(R.string.msg_sources_study_bfcb));click(L.s(R.string.msg_sources_study_bfcb))
+                await("Study explanation missing"){has(L.s(R.string.msg_no_verified_movement_list_is_supplied_by_the_d571))}
+                capture("en-light-library-study-expanded")
                 val saved=app.database.dao().piece(pieceId!!)!!
                 assertEquals(detail.entity.title,saved.title);assertTrue(saved.composer.contains("Johann Sebastian Bach"))
                 inst.runOnMainSync {nav.popBackStack()}
@@ -248,10 +289,13 @@ class DiscoverEditorialAcceptanceTest {
                                 }
                             }
                         }}
-                        await("Matrix detail missing"){has(L.s(R.string.discover_open_existing))}
+                        await("Matrix detail missing"){has(work.title)}
+                        await("Verified genre not localized"){has(L.s(R.string.genre_keyboard))}
                         assertEquals(font.toFloat(),app.resources.configuration.fontScale,0.01f)
                         assertEquals(locale,L.locale.language)
                         capture("$size-$locale-$mode-f$font-detail")
+                        scrollTo(L.s(R.string.discover_open_existing))
+                        capture("$size-$locale-$mode-f$font-action")
                         scrollTo(L.s(R.string.discover_sources));click(L.s(R.string.discover_sources))
                         capture("$size-$locale-$mode-f$font-credits")
                     }

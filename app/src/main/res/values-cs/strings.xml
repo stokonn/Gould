@@ -862,9 +862,9 @@
     <string name="discover_artists">Umělci</string>
     <string name="discover_albums">Alba</string>
     <string name="discover_lists">Seznamy</string>
-    <string name="discover_work">Dílo / skladba</string>
+    <string name="discover_work">Skladba</string>
     <string name="discover_arrangement">Úprava</string>
-    <string name="discover_artist">Umělec / skladatel / skupina</string>
+    <string name="discover_artist">Interpret</string>
     <string name="discover_album">Rodina alb</string>
     <string name="discover_release">Vydání / edice</string>
     <string name="discover_recording">Nahrávka</string>
@@ -881,8 +881,8 @@
     <string name="discover_invalid">Odpověď zdroje se nepodařilo přečíst. Zkuste to později nebo procházejte uložené výsledky.</string>
     <string name="discover_unavailable">Zdroj není dostupný; uložené výsledky zachovány</string>
     <string name="discover_load_encyclopedia">Načíst biografii a informace o portrétu ze zdrojů</string>
-    <string name="discover_candidate">Neověřený kandidát katalogu — typ a vztahy vyžadují ověření</string>
-    <string name="discover_verify_candidate">Načíst a ověřit detail katalogu</string>
+    <string name="discover_candidate">Před přidáním tohoto výsledku načtěte další podrobnosti.</string>
+    <string name="discover_verify_candidate">Načíst podrobnosti</string>
     <string name="discover_refresh_metadata">Načíst nebo obnovit související metadata katalogu</string>
     <string name="discover_listen">Otevřít ověřený odkaz k poslechu</string>
     <string name="discover_clear_cache">Vymazat dočasnou mezipaměť odpovědí</string>
@@ -1092,4 +1092,6 @@
     <string name="discover_composer">Skladatel</string>
     <string name="discover_person">Osoba</string>
     <string name="discover_group">Soubor</string>
+    <string name="discover_connection_unavailable">Online hledání není v tomto připojení dostupné.</string>
+    <string name="discover_results_to_check">Další výsledky k prozkoumání</string>
 </resources>
