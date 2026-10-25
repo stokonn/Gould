@@ -31,3 +31,7 @@ docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/historical-att
 
 # Final Android-portable JSON hardening host log, preserved byte-exact.
 docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/android-json-final/host-gradle.log -whitespace
+
+# Preserve byte-exact BFF raw logs and TAP failure evidence.
+services/community-bff/results/*/*.log -whitespace
+services/community-bff/results/*/*.tap -whitespace
