@@ -1,0 +1,7 @@
+{
+  "run": "services/community-bff/results/local-5e674aa060544fbba23f69852b8e993a",
+  "acceptance": "PASS",
+  "counts": {},
+  "cleanup": true,
+  "sourceUnchanged": true
+}

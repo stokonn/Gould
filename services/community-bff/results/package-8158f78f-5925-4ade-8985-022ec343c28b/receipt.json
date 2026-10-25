@@ -1,0 +1,50 @@
+{
+  "bundleSha256": "0a66bde53507cd8b5abea517290b76724c84cfee54a992d63982477fae02e76c",
+  "bundleBytes": 536178,
+  "conditions": [
+    "workerd"
+  ],
+  "runtime": "local workerd; not hosted",
+  "assertions": [
+    {
+      "enabled": false,
+      "path": "/v1/session",
+      "status": 503
+    },
+    {
+      "enabled": false,
+      "path": "/v1/admin/queue",
+      "status": 503
+    },
+    {
+      "enabled": false,
+      "path": "/v1/submissions",
+      "status": 503
+    },
+    {
+      "enabled": false,
+      "path": "/v1/catalogue/overlay",
+      "status": 503
+    },
+    {
+      "enabled": true,
+      "path": "/v1/session",
+      "status": 503
+    },
+    {
+      "enabled": true,
+      "path": "/v1/admin/queue",
+      "status": 503
+    },
+    {
+      "enabled": true,
+      "path": "/v1/submissions",
+      "status": 503
+    },
+    {
+      "enabled": true,
+      "path": "/v1/catalogue/overlay",
+      "status": 503
+    }
+  ]
+}

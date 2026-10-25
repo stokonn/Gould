@@ -1,3 +1,35 @@
+## Stage 6 runtime continuation — active engineering, October25,2026
+
+Branch feature/goldberg-0.11-stage-6-cloud,base2044cfa. Existing isolated tree reused;
+Discover/Stage7/8/RC worktrees preserved. Added fixed-origin bounded Google JWKS
+transport with accepted signature verifier,explicit restricted-role PostgreSQL ACL/
+RLS plan,pg socket-error cleanup,forced Kotlin integration execution andunique
+package receipts. Debug metadata now0.11-dev/code12,com.opus.piano/opus.db unchanged.
+
+Final514backend bodies PASS/0failures/skips inlocal-5646b8cd;independent source/raw
+hashes and exact container/volume cleanup PASS. Actual restrictedPGlogins pass lifecycle and
+privilege denials. 8packaged workerd denials PASS;6archive/6actual localTLS+restore
+PASS. Actual forced Kotlin/HTTP/BFF/PG1PASS(timestamp22:12:37UTC);oldcachedXML
+explicitly excluded after fixing runner. Versioned APK/testAPK/lint PASS2m48s;
+234JVM XML is cached in this host command,not newly executed. Exact-source cleanCI
+andAPI36 pending. APK SHA256a1213cfb3b4f081712d56e1fa096de3aed3ab4d67c64a0dc15e36152f94adfe2;
+trusted53efcertificate,baseline0.10.1 compatibility/ZIP/artwork/fixture exclusion PASS.
+No screenshots inspected in this continuation;no physical-device operations.
+
+Hosted fresh read-only20RLS/ledgerunchanged/intakefalse/anon-authdenial/0BFFroles;
+Advisor19INFO only. CFaccountGET403;no configured server credentials/trust.
+Google publicJWKSHTTP200/2keys;notrealOAuth. No hostedwrite/Worker/secret/session,
+publicendpoint,paidfallback,realdata,mainmerge,RC/tag/Release. Owner nowauthorizes
+safeprivate staging once actual prerequisites pass;do notrepeat obsolete blanket
+approval requests. WholeStage6 incomplete;Issue31 OPEN/ProjectInProgress.
+
+Current tasks/results/exactminimalcredential action:
+`docs/planning/goldberg-0.11/stage-6/RUNTIME-CONTINUATION-2026-10-25.md`.
+Next:finish frozen backend run,commit/ordinarypush,exactsourceCI/API36;deploy only
+withusableCF/DB/TLScredentials andverifiedprivate/cost/security prerequisites.
+
+---
+
 ## Published release candidate — October25,2026
 
 Goldberg0.11-rc.1 is published as a prerelease,source/tag a73a7e21adf656dcbe7ed6da351a71e9a681a384.

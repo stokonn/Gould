@@ -8,7 +8,7 @@ sys.path.insert(0,str(ROOT/'spikes/stage6-security-local'))
 from tap_report import parse_tap
 assert os.environ.get('GOLDBERG_DISPOSABLE_CI')=='true','explicit disposable CI required'
 out=ROOT/'.gradle/community-bff-ci';out.mkdir(parents=True,exist_ok=True)
-suites={'fetch.tap':['services/community-bff/tests/fetch.test.mjs'],'bff-postgres.tap':['services/community-bff/tests/postgres.test.mjs'],'workerd-postgres.tap':['services/community-bff/tests/runtime.test.mjs'],**tap_suites()}
+suites={'fetch.tap':['services/community-bff/tests/fetch.test.mjs','services/community-bff/tests/identity.test.mjs'],'bff-postgres.tap':['services/community-bff/tests/postgres.test.mjs'],'workerd-postgres.tap':['services/community-bff/tests/runtime.test.mjs'],**tap_suites()}
 counts={}
 for log,files in suites.items():
     p=subprocess.run(['node','--test','--test-reporter=tap',*files],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)

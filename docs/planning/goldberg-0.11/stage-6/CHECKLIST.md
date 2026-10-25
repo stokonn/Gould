@@ -1,3 +1,28 @@
+## Current Stage6 runtime continuation — locally verified, hosted incomplete
+
+Purpose/scope:complete the existing BFF runtime identity and restricted PostgreSQL
+access,without changing other worktrees or bootstrapping hosted data.
+
+- [x] Fixed-origin bounded Google JWKS transport using accepted IdentityVerifier.
+- [x] Explicit runtime grants/RLS with actual restricted-login positive/negative tests.
+- [x] pg socket-error cleanup,forced client execution andnon-overwriting package evidence.
+- [x] Final514backend bodies/0failures/skips;independent source/raw/cleanup proof.
+- [x] Actual forced canonical Kotlin/HTTP/BFF/PG1PASS;8packagedworkerd denial requests.
+- [x] 6archive/6actual localTLS/export/restore PASS;sixhostcheck scripts PASS.
+- [x] 0.11-dev/code12debug APK/testAPK/lint PASS;trusted53efsigner/ZIP/baseline compatibility.
+- [x] Hosted read-only20RLS/ledgerunchanged/intakefalse/clientdenial/Advisor19INFO.
+- [ ] Current-source cleanCI/API36 pending aftercommit/push;host234JVM wascached.
+- [ ] Hosted privateWorker/credentials/TLS/OAuth andfinalStage6 acceptance.
+
+No hostedwrite/publicendpoint/realdata/paidfallback/main/RC/tag/Release.
+CloudflareaccountGET403;protectedruntimeconnection/trust notconfigured.
+Ownerauthorizes safeprivate staging onceprerequisitespass;no repeatedblanketapproval.
+Exactresults,failedattempts,unexecutedchecks,minimalcredentialaction andnextsteps:
+[RUNTIME-CONTINUATION-2026-10-25.md](RUNTIME-CONTINUATION-2026-10-25.md).
+WholeStage6 remainsINCOMPLETE/Issue31OPEN/ProjectInProgress;priorhistorybelow.
+
+---
+
 ## Final source publication receipt — October25,2026
 
 Source be5104476cf6cb059b0f206b2c4f18027d6bc657 ordinary-pushed; remote exact.

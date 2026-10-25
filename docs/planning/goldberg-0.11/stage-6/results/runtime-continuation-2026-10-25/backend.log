@@ -1,0 +1,6 @@
+{
+  "run": "services/community-bff/results/local-fe27bca883c241f7974b14a2bfe7e688",
+  "acceptance": "FAILED",
+  "error": "rootless.log failed",
+  "sourceUnchanged": true
+}

@@ -1,0 +1,107 @@
+TAP version 13
+# ACTUAL POSTGRESQL PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+# Subtest: PG Comparison exact live DTO, matching baseline, Detail unchanged and no read mutations
+ok 1 - PG Comparison exact live DTO, matching baseline, Detail unchanged and no read mutations
+  ---
+  duration_ms: 428.901427
+  type: 'test'
+  ...
+# Subtest: PG changed live head independent of recorded baseline; stale decision no side effects
+ok 2 - PG changed live head independent of recorded baseline; stale decision no side effects
+  ---
+  duration_ms: 507.83861
+  type: 'test'
+  ...
+# Subtest: PG proposal changes independently; stale proposal decision conflicts with no effects
+ok 3 - PG proposal changes independently; stale proposal decision conflicts with no effects
+  ---
+  duration_ms: 445.801074
+  type: 'test'
+  ...
+# Subtest: PG coherent Comparison during concurrent committed publication with different values
+ok 4 - PG coherent Comparison during concurrent committed publication with different values
+  ---
+  duration_ms: 469.93014
+  type: 'test'
+  ...
+# Subtest: PG missing target absent; missing submission/wrong entity denied404 without mutations
+ok 5 - PG missing target absent; missing submission/wrong entity denied404 without mutations
+  ---
+  duration_ms: 272.057621
+  type: 'test'
+  ...
+# Subtest: PG live Comparison authorization hiding, account isolation, role/session revocation
+ok 6 - PG live Comparison authorization hiding, account isolation, role/session revocation
+  ---
+  duration_ms: 352.185377
+  type: 'test'
+  ...
+# Subtest: PG default-deny policy and rejected stored field never expose live values
+ok 7 - PG default-deny policy and rejected stored field never expose live values
+  ---
+  duration_ms: 299.975326
+  type: 'test'
+  ...
+# Subtest: PG unsupported kind projection unavailable without proposed-value fallback
+ok 8 - PG unsupported kind projection unavailable without proposed-value fallback
+  ---
+  duration_ms: 268.973695
+  type: 'test'
+  ...
+# Subtest: PG exact int8 live read above JS precision; full-range writes compare losslessly
+ok 9 - PG exact int8 live read above JS precision; full-range writes compare losslessly
+  ---
+  duration_ms: 317.41744
+  type: 'test'
+  ...
+# Subtest: PG strict Comparison query/body/method and no extra DTO timestamps
+ok 10 - PG strict Comparison query/body/method and no extra DTO timestamps
+  ---
+  duration_ms: 236.638852
+  type: 'test'
+  ...
+# Subtest: PG Comparison policy overflow refuses all values rather than truncating
+ok 11 - PG Comparison policy overflow refuses all values rather than truncating
+  ---
+  duration_ms: 289.17491
+  type: 'test'
+  ...
+# Subtest: PG suspended account loses Comparison access immediately
+ok 12 - PG suspended account loses Comparison access immediately
+  ---
+  duration_ms: 283.28715
+  type: 'test'
+  ...
+# Subtest: PG unresolved mapping returns unmapped union; no inferred entity values
+ok 13 - PG unresolved mapping returns unmapped union; no inferred entity values
+  ---
+  duration_ms: 232.397607
+  type: 'test'
+  ...
+# Subtest: PG actual unapproved stored fields and nested private provenance rejected
+ok 14 - PG actual unapproved stored fields and nested private provenance rejected
+  ---
+  duration_ms: 253.398856
+  type: 'test'
+  ...
+# Subtest: PG actual unsupported entity kind and >20 stored fields refuse whole projection
+ok 15 - PG actual unsupported entity kind and >20 stored fields refuse whole projection
+  ---
+  duration_ms: 219.388261
+  type: 'test'
+  ...
+# Subtest: PG deletion of published target is restricted; missing head uses absent without proposal fallback
+ok 16 - PG deletion of published target is restricted; missing head uses absent without proposal fallback
+  ---
+  duration_ms: 324.583288
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5865.686035

@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: Fetch → canonical BFF → PostgreSQL contribution, immutable revisions and exact replay
+ok 1 - Fetch → canonical BFF → PostgreSQL contribution, immutable revisions and exact replay
+  ---
+  duration_ms: 665.52361
+  type: 'test'
+  ...
+# Subtest: Fetch BFF default-deny authorization, strict JSON, quotas and kill switch
+ok 2 - Fetch BFF default-deny authorization, strict JSON, quotas and kill switch
+  ---
+  duration_ms: 647.196589
+  type: 'test'
+  ...
+# Subtest: Fetch BFF canonical moderation and public feed have actual PG effects
+ok 3 - Fetch BFF canonical moderation and public feed have actual PG effects
+  ---
+  duration_ms: 562.936608
+  type: 'test'
+  ...
+# Subtest: Fetch BFF request-changes, immutable revise, reopen and withdrawal lifecycle
+ok 4 - Fetch BFF request-changes, immutable revise, reopen and withdrawal lifecycle
+  ---
+  duration_ms: 524.70348
+  type: 'test'
+  ...
+# Subtest: Fetch BFF live role grants/revocation and suspension use server authorization
+ok 5 - Fetch BFF live role grants/revocation and suspension use server authorization
+  ---
+  duration_ms: 511.943054
+  type: 'test'
+  ...
+# Subtest: Fetch BFF public overlay exposes only approved projection and rollback follows feed sequence
+ok 6 - Fetch BFF public overlay exposes only approved projection and rollback follows feed sequence
+  ---
+  duration_ms: 593.614388
+  type: 'test'
+  ...
+# Subtest: Fetch BFF cursor boundary is bounded, principal-bound and expires
+ok 7 - Fetch BFF cursor boundary is bounded, principal-bound and expires
+  ---
+  duration_ms: 1056.16019
+  type: 'test'
+  ...
+# Subtest: restricted non-owner BFF role executes sessions, contribution/review/publication and denies DDL/ledger/intake edits
+not ok 8 - restricted non-owner BFF role executes sessions, contribution/review/publication and denies DDL/ledger/intake edits
+  ---
+  duration_ms: 681.590523
+  type: 'test'
+  location: '/home/stokonn/Projects/Goldberg-Stage6-Cloud/services/community-bff/tests/postgres.test.mjs:97:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///home/stokonn/Projects/Goldberg-Stage6-Cloud/services/community-bff/tests/postgres.test.mjs:129:147)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# synthetic runtime SQL: 42501 permission denied for schema proto_http_7110f4ac010d429a85f85473fa4cc1b2
+# synthetic runtime SQL: 42501 must be owner of table principals
+# synthetic runtime SQL: 42501 permission denied for table audit_events
+# synthetic runtime SQL: 42501 permission denied for table audit_events
+# synthetic runtime SQL: 42501 permission denied for table intake_control
+# synthetic runtime SQL: 42501 permission denied for table schema_migrations
+# synthetic runtime SQL: 42501 permission denied for table auth_migrations
+# synthetic runtime SQL: 42501 permission denied for table operations_migrations
+# Subtest: runtime access plan rejects unsafe identifiers and elevated roles atomically
+ok 9 - runtime access plan rejects unsafe identifiers and elevated roles atomically
+  ---
+  duration_ms: 387.492089
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 8
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6061.918229

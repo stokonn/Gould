@@ -1,3 +1,30 @@
+## Stage 6 continuation — runtime identity and restricted PostgreSQL access (2026-10-25)
+
+Purpose: finish missing server identity transport and prove the existing BFF works
+with a restricted database role instead of the fixture owner. Scope: community BFF
+runtime, identity transport, ACL plan, regression tests and deployment verification.
+Starting branch `feature/goldberg-0.11-stage-6-cloud`, commit `2044cfa`.
+
+- [x] Recover existing isolated worktree, Issue31 and private PMP; preserve Discover/Stage8.
+- [x] Fresh hosted read-only check:20 tables/20 RLS;Advisor19 expected INFO findings.
+- [x] Recheck Cloudflare account access:GET403;no configured credential variable names.
+- [x] Implement bounded fixed-origin Google JWKS transport using accepted IdentityVerifier.
+- [x] Implement explicit restricted-role grant/RLS plan and actual PostgreSQL lifecycle tests.
+- [x] Verify connection error cleanup,514 backend bodies and8 packaged workerd denials.
+- [x] Debug0.11-dev/code12 APK/testAPK/lint PASS;trusted signing/ZIP/baseline compatibility PASS.
+- [x] Actual forced Kotlin/HTTP/BFF/PG1PASS;cached XML explicitly excluded.
+- [ ] Current-source cleanCI/API36 execution pending after source push.
+- [ ] Execute private hosted runtime only after credentials/TLS/cost/privacy prerequisites.
+- [ ] Commit/push verified changes and synchronize Issue31/Project/private PMP.
+
+Verification:514 backend bodies PASS/0failures/skips with source/cleanup proof;
+6archive and6actual localTLS/restore PASS. Actual forced Kotlin/HTTP/PG1PASS after excluding cached XML from the old runner. Hosted runtime, real OAuth,
+current-source native integration and final Stage6 acceptance remain unexecuted.
+Owner authorized safe private staging; missing credentials are an actual prerequisite,
+not a repeated authorization gate. No database bootstrap, public endpoint or release.
+
+---
+
 ## Published release candidate — October25,2026
 
 Goldberg0.11-rc.1 is published as a prerelease,source/tag a73a7e21adf656dcbe7ed6da351a71e9a681a384.

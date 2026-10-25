@@ -7,7 +7,8 @@ export default defineConfig({worker:{
  env:{COMMUNITY_BFF_ENABLED:bindings.text('false'),
   DB_HOST:bindings.secret(),EXPECTED_DB_HOST:bindings.secret(),
   DB_PORT:bindings.secret(),DB_USER:bindings.secret(),DB_PASSWORD:bindings.secret(),
-  DB_CA_PEM:bindings.secret(),CURSOR_KEY:bindings.secret(),IP_KEY:bindings.secret()},
+  DB_CA_PEM:bindings.secret(),CURSOR_KEY:bindings.secret(),IP_KEY:bindings.secret(),
+  GOOGLE_CLIENT_ID:bindings.secret()},
  // Retain the accepted data-minimizing private-development posture.
  observability:{enabled:false,logs:{enabled:false,invocationLogs:false,persist:false},traces:{enabled:false,persist:false}},
 }});

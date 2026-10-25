@@ -1,0 +1,1 @@
+[{"Type":"volume","Name":"de088ae2632ae6db86d0893981642b4cc89b2b8def2bb90c11658c57b8734946","Source":"/home/stokonn/.local/share/containers/storage/volumes/de088ae2632ae6db86d0893981642b4cc89b2b8def2bb90c11658c57b8734946/_data","Destination":"/var/lib/postgresql/data","Driver":"local","Mode":"","Options":["nodev","exec","nosuid","rbind"],"RW":true,"Propagation":"rprivate"}]

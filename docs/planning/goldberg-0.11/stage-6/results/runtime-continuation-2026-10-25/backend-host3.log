@@ -1,0 +1,16 @@
+{
+  "run": "services/community-bff/results/local-2ecc97f660614f7884ed01c944d9bc37",
+  "acceptance": "FAILED",
+  "counts": {
+    "fetch.tap": {
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "error": "bff-postgres.tap failed",
+  "cleanup": true,
+  "sourceUnchanged": true
+}

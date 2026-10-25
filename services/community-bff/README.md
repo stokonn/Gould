@@ -36,11 +36,19 @@ principal/role locks remain authoritative. Raw database headers are not returned
 Database and internal errors are redacted. No shared connection pool, scheduled
 janitor, background retry, cookie authorization or browser credential is added.
 
-The production Worker additionally requires explicit enablement, private identity
-verifier binding, fixed DB host, restricted role, CA configuration and stable
-server-only cursor/IP keys. The identity binding supplies no authorization roles.
-It is deliberately absent from the inert candidate: real OAuth remains unconfigured.
-Application database grants are not provisioned by this code or the probe role.
+The production Worker additionally requires explicit enablement, an approved Google
+client ID (or a private identity verifier binding), fixed DB host, restricted role,
+CA configuration and stable server-only cursor/IP keys. The fixed Google JWKS
+transport bounds reads, rejects redirects and respects cache age; it reuses the
+accepted signature/issuer/audience/nonce verifier. Identity supplies no roles.
+Real OAuth client configuration remains absent from the inert candidate.
+Application database grants are not provisioned by the Worker or probe role.
+`runtime-access.mjs` emits a reviewable transaction with explicit table/command
+grants and server-role RLS policies. It never connects or creates roles/credentials.
+Runtime roles cannot own objects, inherit memberships or bypass RLS. Application
+requests still pass live ownership/session/role checks. Local integration uses
+actual restricted logins and tests denial of DDL, migration reads, intake edits
+and role escalation. No runtime grant transaction has been applied to Supabase.
 
 TLS: Node pg uses the configured CA and servername. `pg-cloudflare`1.4.1 forwards
 `expectedServerHostname` to Workers StartTLS, whose documented type has no custom
@@ -69,3 +77,7 @@ requests;these are not hosted latency or CPU measurements. Kotlin real HTTP/PG
 execution:1 passed integration case,0skips. Full receipts live under results/.
 
 created by stokonn with love <3
+
+Continuation evidence and external prerequisites: [runtime continuation](../../docs/planning/goldberg-0.11/stage-6/RUNTIME-CONTINUATION-2026-10-25.md).
+The client runner forces Gradle execution; old cached XML is not fresh evidence.
+Package receipts use unique directories and preserve prior results.

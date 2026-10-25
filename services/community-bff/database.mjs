@@ -3,11 +3,15 @@
 export function requestConnections({Client,options,signal}) {
  const active=new Set();let closed=false;
  const close=async()=>{closed=true;await Promise.allSettled([...active].map(c=>c.end()));};
- signal.addEventListener('abort',()=>{void close();},{once:true});
+ const abort=()=>{void close();};
+ signal.addEventListener('abort',abort,{once:true});
  return {
   connect:async()=>{
    if(closed||signal.aborted)throw new Error('request ended');
    const c=new Client(options),end=c.end.bind(c);let ending;
+   // pg emits errors on idle sockets too. Consume the event and retire the
+   // connection instead of letting EventEmitter terminate the Worker/request.
+   c.on?.('error',()=>{void c.end().catch(()=>{});});
    c.end=()=>{if(!ending)ending=Promise.resolve().then(end).finally(()=>active.delete(c));return ending;};
    active.add(c);
    try{await c.connect();if(closed||signal.aborted)throw new Error('request ended');return c;}

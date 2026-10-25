@@ -1,0 +1,52 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:processDebugNavigationResources
+> Task :app:parseDebugLocalResources
+> Task :app:generateDebugRFile
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///tmp/goldberg-stage8-canonical-integration/app/src/main/java/com/opus/piano/data/PersonalCatalogueBridge.kt:93:97 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged. This will become an error in a future release.
+w: file:///tmp/goldberg-stage8-canonical-integration/app/src/main/java/com/opus/piano/data/PersonalCatalogueBridge.kt:94:81 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged. This will become an error in a future release.
+w: file:///tmp/goldberg-stage8-canonical-integration/app/src/main/java/com/opus/piano/ui/DiscoverScreen.kt:277:170 'val Icons.Outlined.List: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.List.
+w: file:///tmp/goldberg-stage8-canonical-integration/app/src/main/java/com/opus/piano/ui/JournalComponents.kt:58:70 'val Icons.Outlined.ArrowBack: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.ArrowBack.
+w: file:///tmp/goldberg-stage8-canonical-integration/app/src/main/java/com/opus/piano/ui/RepertoireScreen.kt:84:123 'val Icons.Outlined.Sort: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.Sort.
+w: file:///tmp/goldberg-stage8-canonical-integration/app/src/main/java/com/opus/piano/ui/admin/AdminDashboardScreen.kt:101:35 'val Icons.Outlined.Rule: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.Rule.
+w: file:///tmp/goldberg-stage8-canonical-integration/app/src/main/java/com/opus/piano/ui/admin/AdminSettingsScreen.kt:85:35 'val Icons.Outlined.Logout: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.Logout.
+
+> Task :app:javaPreCompileDebug
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:checkDebugAarMetadata
+> Task :app:mapDebugSourceSetPaths
+> Task :app:compileDebugNavigationResources
+> Task :app:mergeDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:processDebugManifestForPackage
+> Task :app:processDebugResources
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+
+> Task :app:compileDebugUnitTestKotlin
+w: file:///tmp/goldberg-stage8-canonical-integration/app/src/test/java/com/opus/piano/data/offline/BundleTransferEngineTest.kt:171:70 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+w: file:///tmp/goldberg-stage8-canonical-integration/app/src/test/java/com/opus/piano/data/offline/BundleTransferEngineTest.kt:188:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+w: file:///tmp/goldberg-stage8-canonical-integration/app/src/test/java/com/opus/piano/data/offline/BundleTransferEngineTest.kt:233:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+w: file:///tmp/goldberg-stage8-canonical-integration/app/src/test/java/com/opus/piano/data/offline/BundleTransferEngineTest.kt:248:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+w: file:///tmp/goldberg-stage8-canonical-integration/app/src/test/java/com/opus/piano/data/offline/BundleTransferEngineTest.kt:257:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processDebugJavaRes
+> Task :app:processDebugUnitTestJavaRes
+> Task :app:testDebugUnitTest
+
+BUILD SUCCESSFUL in 2m 6s
+26 actionable tasks: 26 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.3.1/userguide/configuration_cache_enabling.html

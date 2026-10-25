@@ -93,3 +93,50 @@ test('Fetch BFF cursor boundary is bounded, principal-bound and expires',async t
  assert.equal((await v.fetch(refreshed.body,'GET',path)).status,400);
  assert.equal((await v.fetch(null,'GET','/v1/catalogue/changes?cursor=forged')).status,400);
 });
+
+test('restricted non-owner BFF role executes sessions, contribution/review/publication and denies DDL/ledger/intake edits',async t=>{
+ const {runtimeAccessSql,runtimePrivileges}=await import('../runtime-access.mjs');
+ const {connect}=await import('../../../spikes/stage6-api-v1-local/tests/pg-http-venue.mjs');
+ const v=await setup(t),role='goldberg_bff_'+randomUUID().replaceAll('-','');
+ await v.db.query(`CREATE ROLE "${role}" LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS`);
+ t.after(async()=>{const c=await connect();try{await c.query(`DROP ROLE "${role}"`);}finally{await c.end();}});
+ await v.db.query(runtimeAccessSql({schema:v.schema,role}));
+ const {default:pg}=await import('pg');
+ const login=async user=>{const c=new pg.Client({host:'127.0.0.1',port:Number(process.env.SCHEMA_PG_PORT??54339),database:'schema_prototype',user,password:'',connectionTimeoutMillis:3000});await c.connect();return c;};
+ const restricted=async()=>{const c=await login(role);const query=c.query.bind(c);c.query=async(...args)=>{try{return await query(...args);}catch(e){t.diagnostic("synthetic runtime SQL: "+e.code+" "+e.message);throw e;}};return c;};
+ await v.fresh({connect:restricted});
+ // setup's Fetch closure resolves the current adapter after fresh().
+ const ch=await v.fetch(null,'POST','/v1/session/challenge',{schemaVersion:1});assert.equal(ch.status,201);
+ const signed=await v.fetch(null,'POST','/v1/session',{schemaVersion:1,challenge:ch.body.challenge,credential:JSON.stringify({issuer:'https://synthetic.invalid',audience:'local-test',subject:'restricted-runtime',nonce:ch.body.nonce,iat:v.clock(),exp:v.clock()+120000})});assert.equal(signed.status,201,JSON.stringify(signed));
+ const created=await v.contribute();assert.equal(created.status,201,JSON.stringify(created));
+ const path='/v1/admin/submissions/'+created.body.id;
+ assert.equal((await v.fetch(v.other,'GET',path)).status,403);
+ assert.equal((await v.fetch(v.mod,'POST',path+'/open',intent())).status,200);
+ const decision=intent({decision:'approve'});
+ const approved=await v.fetch(v.mod,'POST',path+'/decisions',decision);assert.equal(approved.status,201,JSON.stringify(approved));
+ assert.deepEqual(await v.fetch(v.mod,'POST',path+'/decisions',decision),approved);
+ assert.equal((await v.fetch(null,'GET','/v1/catalogue/changes')).body.items.length,1);
+ assert.equal((await v.fetch(v.other,'GET','/v1/submissions/'+created.body.id)).status,404);
+ const refresh=await v.fetch(null,'POST','/v1/session/refresh',{schemaVersion:1,refreshToken:signed.body.refreshToken});assert.equal(refresh.status,200);
+ const c=await restricted();try{
+  for(const sql of [`CREATE TABLE ${v.q}.forbidden(id int)`,`ALTER TABLE ${v.q}.principals DISABLE ROW LEVEL SECURITY`,`TRUNCATE ${v.q}.audit_events`,`DELETE FROM ${v.q}.audit_events`,`UPDATE ${v.q}.intake_control SET enabled=true`,`SELECT * FROM ${v.q}.schema_migrations`,`SELECT * FROM ${v.q}.auth_migrations`,`SELECT * FROM ${v.q}.operations_migrations`])await assert.rejects(c.query(sql),e=>e.code==='42501',sql);
+  const {rows:[flags]}=await c.query('SELECT rolsuper,rolbypassrls,rolcreaterole FROM pg_roles WHERE rolname=current_user');assert.deepEqual(flags,{rolsuper:false,rolbypassrls:false,rolcreaterole:false});
+  const {rows:[n]}=await c.query('SELECT count(*) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname=$1 AND c.relkind=\'r\' AND c.relrowsecurity',[v.schema]);assert.equal(Number(n.count),Object.keys(runtimePrivileges).length);
+ }finally{await c.end();}
+ // Policies remain tied to the server role: table ACL alone grants no rows to a
+ // different client role. Revoke runtime membership and no user token can add it.
+ const outsider='goldberg_bff_'+randomUUID().replaceAll('-','');await v.db.query(`CREATE ROLE "${outsider}" LOGIN`);
+ try{
+  await v.db.query(`GRANT USAGE ON SCHEMA ${v.q} TO "${outsider}"; GRANT SELECT ON ${v.q}.principals TO "${outsider}"`);
+  const o=await login(outsider);try{assert.equal((await o.query(`SELECT * FROM ${v.q}.principals`)).rowCount,0);await assert.rejects(o.query(`SET ROLE "${role}"`),e=>e.code==='42501');}finally{await o.end();}
+ }finally{await v.db.query(`DROP OWNED BY "${outsider}"; DROP ROLE "${outsider}"`);}
+});
+
+test('runtime access plan rejects unsafe identifiers and elevated roles atomically',async t=>{
+ const {runtimeAccessSql}=await import('../runtime-access.mjs');
+ assert.throws(()=>runtimeAccessSql({schema:'public'}));assert.throws(()=>runtimeAccessSql({role:'postgres'}));assert.throws(()=>runtimeAccessSql({role:'goldberg_bff_a;drop'}));
+ const v=await setup(t),role='goldberg_bff_'+randomUUID().replaceAll('-','');
+ await v.db.query(`CREATE ROLE "${role}" NOLOGIN BYPASSRLS`);
+ try{await assert.rejects(v.db.query(runtimeAccessSql({schema:v.schema,role})),/unprivileged/);await v.db.query('ROLLBACK');assert.equal((await v.db.query('SELECT count(*) FROM pg_policy WHERE polrelid=$1::regclass',[v.schema+'.principals'])).rows[0].count,'0');}
+ finally{await v.db.query('ROLLBACK');await v.db.query(`DROP ROLE "${role}"`);}
+});

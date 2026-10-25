@@ -1,0 +1,72 @@
+TAP version 13
+# Subtest: Fetch → canonical BFF → PostgreSQL contribution, immutable revisions and exact replay
+ok 1 - Fetch → canonical BFF → PostgreSQL contribution, immutable revisions and exact replay
+  ---
+  duration_ms: 735.46066
+  type: 'test'
+  ...
+# Subtest: Fetch BFF default-deny authorization, strict JSON, quotas and kill switch
+ok 2 - Fetch BFF default-deny authorization, strict JSON, quotas and kill switch
+  ---
+  duration_ms: 783.664233
+  type: 'test'
+  ...
+# Subtest: Fetch BFF canonical moderation and public feed have actual PG effects
+ok 3 - Fetch BFF canonical moderation and public feed have actual PG effects
+  ---
+  duration_ms: 667.087079
+  type: 'test'
+  ...
+# Subtest: Fetch BFF request-changes, immutable revise, reopen and withdrawal lifecycle
+ok 4 - Fetch BFF request-changes, immutable revise, reopen and withdrawal lifecycle
+  ---
+  duration_ms: 630.427148
+  type: 'test'
+  ...
+# Subtest: Fetch BFF live role grants/revocation and suspension use server authorization
+ok 5 - Fetch BFF live role grants/revocation and suspension use server authorization
+  ---
+  duration_ms: 570.154846
+  type: 'test'
+  ...
+# Subtest: Fetch BFF public overlay exposes only approved projection and rollback follows feed sequence
+ok 6 - Fetch BFF public overlay exposes only approved projection and rollback follows feed sequence
+  ---
+  duration_ms: 654.525378
+  type: 'test'
+  ...
+# Subtest: Fetch BFF cursor boundary is bounded, principal-bound and expires
+ok 7 - Fetch BFF cursor boundary is bounded, principal-bound and expires
+  ---
+  duration_ms: 1255.119023
+  type: 'test'
+  ...
+# Subtest: restricted non-owner BFF role executes sessions, contribution/review/publication and denies DDL/ledger/intake edits
+ok 8 - restricted non-owner BFF role executes sessions, contribution/review/publication and denies DDL/ledger/intake edits
+  ---
+  duration_ms: 784.731773
+  type: 'test'
+  ...
+# synthetic runtime SQL: 42501 permission denied for schema proto_http_dabb8bfc054e4b3083d7fb3f3467ed53
+# synthetic runtime SQL: 42501 must be owner of table principals
+# synthetic runtime SQL: 42501 permission denied for table audit_events
+# synthetic runtime SQL: 42501 permission denied for table audit_events
+# synthetic runtime SQL: 42501 permission denied for table intake_control
+# synthetic runtime SQL: 42501 permission denied for table schema_migrations
+# synthetic runtime SQL: 42501 permission denied for table auth_migrations
+# synthetic runtime SQL: 42501 permission denied for table operations_migrations
+# Subtest: runtime access plan rejects unsafe identifiers and elevated roles atomically
+ok 9 - runtime access plan rejects unsafe identifiers and elevated roles atomically
+  ---
+  duration_ms: 397.302052
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6864.307486

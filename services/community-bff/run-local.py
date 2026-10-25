@@ -40,7 +40,7 @@ def main(client_worktree=None,client_only=False):
             if call(['podman','exec',name,'pg_isready','-U','schema_prototype'],f'ready-{i}.log',check=False).returncode==0:break
             time.sleep(.2)
         else:raise RuntimeError('PG not ready')
-        suites={'fetch.tap':['services/community-bff/tests/fetch.test.mjs'],'bff-postgres.tap':['services/community-bff/tests/postgres.test.mjs'],'workerd-postgres.tap':['services/community-bff/tests/runtime.test.mjs'],**tap_suites()}
+        suites={'fetch.tap':['services/community-bff/tests/fetch.test.mjs','services/community-bff/tests/identity.test.mjs'],'bff-postgres.tap':['services/community-bff/tests/postgres.test.mjs'],'workerd-postgres.tap':['services/community-bff/tests/runtime.test.mjs'],**tap_suites()}
         if client_only:suites={}
         result['counts']={}
         sys.path.insert(0,str(ROOT/'spikes/stage6-security-local'))
@@ -50,7 +50,9 @@ def main(client_worktree=None,client_only=False):
             result['counts'][log]=parse_tap(run/log,require_success=True)
         if client_worktree:
             env['GOLDBERG_BFF_SOURCE']=str(ROOT);env['ANDROID_HOME']='/home/stokonn/Android/Sdk'
-            call(['./gradlew','testDebugUnitTest','-PgoldbergCanonicalIntegration=true','--tests','com.opus.piano.data.community.canonical.CanonicalBffHttpIntegrationTest','--no-daemon','--max-workers=1'],'kotlin-bff-http.log',env,cwd=client_worktree)
+            # The BFF lives outside this Gradle project's inputs. Cached test
+            # XML can refer to a different server, so force actual execution.
+            call(['./gradlew','testDebugUnitTest','--rerun-tasks','-PgoldbergCanonicalIntegration=true','--tests','com.opus.piano.data.community.canonical.CanonicalBffHttpIntegrationTest','--no-daemon','--max-workers=1'],'kotlin-bff-http.log',env,cwd=client_worktree)
             import xml.etree.ElementTree as ET
             xml=client_worktree/'app/build/test-results/testDebugUnitTest/TEST-com.opus.piano.data.community.canonical.CanonicalBffHttpIntegrationTest.xml'
             data=xml.read_bytes();(run/'kotlin-bff-http.xml').write_bytes(data)

@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: Fetch uses real Request/Response, preserves receipts and emits bodyless 204
+ok 1 - Fetch uses real Request/Response, preserves receipts and emits bodyless 204
+  ---
+  duration_ms: 76.764028
+  type: 'test'
+  ...
+# Subtest: body limit stops dispatch, including unknown-length streams
+ok 2 - body limit stops dispatch, including unknown-length streams
+  ---
+  duration_ms: 3.880012
+  type: 'test'
+  ...
+# Subtest: deadline aborts database work, closes late scope and redacts failure
+ok 3 - deadline aborts database work, closes late scope and redacts failure
+  ---
+  duration_ms: 47.722234
+  type: 'test'
+  ...
+# Subtest: request connections close on failed connect, abort and repeated cleanup
+ok 4 - request connections close on failed connect, abort and repeated cleanup
+  ---
+  duration_ms: 2.680012
+  type: 'test'
+  ...
+# Subtest: TLS bindings require fixed provider host, CA and restricted user
+ok 5 - TLS bindings require fixed provider host, CA and restricted user
+  ---
+  duration_ms: 1.191284
+  type: 'test'
+  ...
+# Subtest: runtime identifier permits only canonical private schema and migration stays local
+ok 6 - runtime identifier permits only canonical private schema and migration stays local
+  ---
+  duration_ms: 1.320038
+  type: 'test'
+  ...
+# Subtest: stalled body deadline cancels stream before any database dispatch
+ok 7 - stalled body deadline cancels stream before any database dispatch
+  ---
+  duration_ms: 17.123662
+  type: 'test'
+  ...
+# Subtest: caller cancellation aborts scoped work and oversized output is unavailable
+ok 8 - caller cancellation aborts scoped work and oversized output is unavailable
+  ---
+  duration_ms: 16.996172
+  type: 'test'
+  ...
+# Subtest: asynchronous pg socket errors retire the connection exactly once
+ok 9 - asynchronous pg socket errors retire the connection exactly once
+  ---
+  duration_ms: 1.133414
+  type: 'test'
+  ...
+# Subtest: fixed Google transport verifies actual signatures, caches with Age and discloses only identity
+ok 10 - fixed Google transport verifies actual signatures, caches with Age and discloses only identity
+  ---
+  duration_ms: 139.014433
+  type: 'test'
+  ...
+# Subtest: missing client configuration and untrusted token key URLs fail closed
+ok 11 - missing client configuration and untrusted token key URLs fail closed
+  ---
+  duration_ms: 44.632677
+  type: 'test'
+  ...
+# Subtest: HTTP errors, wrong media, redirects and oversized streamed keys fail unavailable
+ok 12 - HTTP errors, wrong media, redirects and oversized streamed keys fail unavailable
+  ---
+  duration_ms: 350.841136
+  type: 'test'
+  ...
+# Subtest: no-store and expired cache headers never retain remote keys
+ok 13 - no-store and expired cache headers never retain remote keys
+  ---
+  duration_ms: 244.961904
+  type: 'test'
+  ...
+# Subtest: rejected key responses cancel their body without buffering private error text
+ok 14 - rejected key responses cancel their body without buffering private error text
+  ---
+  duration_ms: 55.128658
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1172.728618

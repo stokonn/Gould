@@ -1,0 +1,1 @@
+Failed to obtain podman configuration: set sticky bit on: chmod /run/user/1000/libpod: read-only file system

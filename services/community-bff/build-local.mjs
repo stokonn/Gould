@@ -3,7 +3,7 @@ import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
 import {mkdtemp,readFile,writeFile,rm,mkdir} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
-import {createHash} from 'node:crypto';
+import {createHash,randomUUID} from 'node:crypto';
 import assert from 'node:assert/strict';
 const out=await mkdtemp(join(tmpdir(),'goldberg-bff-package-'));
 let mf;
@@ -19,7 +19,8 @@ try {
   }
   await mf.dispose();mf=undefined;
  }
- await mkdir('services/community-bff/results/package',{recursive:true});
- await writeFile('services/community-bff/results/package/receipt.json',JSON.stringify({bundleSha256:createHash('sha256').update(bytes).digest('hex'),bundleBytes:bytes.length,conditions:['workerd'],runtime:'local workerd; not hosted',assertions},null,2)+'\n');
- console.log('Worker package: 8 actual workerd fail-closed requests PASS');
+ const resultDir='services/community-bff/results/package-'+randomUUID();
+ await mkdir(resultDir,{recursive:true});
+ await writeFile(join(resultDir,'receipt.json'),JSON.stringify({bundleSha256:createHash('sha256').update(bytes).digest('hex'),bundleBytes:bytes.length,conditions:['workerd'],runtime:'local workerd; not hosted',assertions},null,2)+'\n');
+ console.log('Worker package: 8 actual workerd fail-closed requests PASS; '+resultDir);
 }finally{await mf?.dispose();await rm(out,{recursive:true,force:true});}

@@ -1,0 +1,44 @@
+EE...E
+======================================================================
+ERROR: test_age_health_is_bounded_and_never_deletes_archives (__main__.BackupStoreTest.test_age_health_is_bounded_and_never_deletes_archives)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Goldberg-Stage6-Cloud/scripts/stage6/test_backup_store.py", line 56, in test_age_health_is_bounded_and_never_deletes_archives
+    archive = publish(self.dump, self.destination, self.key, self.when)
+  File "/home/stokonn/Projects/Goldberg-Stage6-Cloud/scripts/stage6/backup_store.py", line 86, in publish
+    run_gpg(key, ['--symmetric', '--cipher-algo', 'AES256', '--output', str(encrypted), str(source)])
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage6-Cloud/scripts/stage6/backup_store.py", line 52, in run_gpg
+    raise ValueError('Encryption or authentication failed')
+ValueError: Encryption or authentication failed
+
+======================================================================
+ERROR: test_atomic_archive_restore_and_existing_data_preserved (__main__.BackupStoreTest.test_atomic_archive_restore_and_existing_data_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Goldberg-Stage6-Cloud/scripts/stage6/test_backup_store.py", line 29, in test_atomic_archive_restore_and_existing_data_preserved
+    first = publish(self.dump, self.destination, self.key, self.when)
+  File "/home/stokonn/Projects/Goldberg-Stage6-Cloud/scripts/stage6/backup_store.py", line 86, in publish
+    run_gpg(key, ['--symmetric', '--cipher-algo', 'AES256', '--output', str(encrypted), str(source)])
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage6-Cloud/scripts/stage6/backup_store.py", line 52, in run_gpg
+    raise ValueError('Encryption or authentication failed')
+ValueError: Encryption or authentication failed
+
+======================================================================
+ERROR: test_wrong_key_and_changed_ciphertext_never_publish_plaintext (__main__.BackupStoreTest.test_wrong_key_and_changed_ciphertext_never_publish_plaintext)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Goldberg-Stage6-Cloud/scripts/stage6/test_backup_store.py", line 41, in test_wrong_key_and_changed_ciphertext_never_publish_plaintext
+    archive = publish(self.dump, self.destination, self.key, self.when)
+  File "/home/stokonn/Projects/Goldberg-Stage6-Cloud/scripts/stage6/backup_store.py", line 86, in publish
+    run_gpg(key, ['--symmetric', '--cipher-algo', 'AES256', '--output', str(encrypted), str(source)])
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage6-Cloud/scripts/stage6/backup_store.py", line 52, in run_gpg
+    raise ValueError('Encryption or authentication failed')
+ValueError: Encryption or authentication failed
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.063s
+
+FAILED (errors=3)

@@ -49,3 +49,9 @@ test('caller cancellation aborts scoped work and oversized output is unavailable
  const bounded=createFetchHandler({createAdapter:async()=>({adapter:{invoke:async()=>({status:200,body:{value:'x'.repeat(1048576)}})}})});
  assert.equal((await bounded(new Request('https://private.invalid'))).status,503);
 });
+test('asynchronous pg socket errors retire the connection exactly once',async()=>{
+ const {EventEmitter}=await import('node:events');let ends=0;
+ class Client extends EventEmitter{async connect(){}async end(){ends++;}}
+ const scope=requestConnections({Client,options:{},signal:new AbortController().signal});
+ const c=await scope.connect();c.emit('error',Error('private socket detail'));await scope.close();assert.equal(ends,1);
+});
