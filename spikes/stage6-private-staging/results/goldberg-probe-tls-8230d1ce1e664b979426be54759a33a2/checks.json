@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "checks": [
+    "verified CA/hostname/password actual SELECT",
+    "wrong password denied",
+    "wrong hostname denied",
+    "untrusted CA denied"
+  ],
+  "hostedRequests": 0
+}

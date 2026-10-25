@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "checks": [
+    "verified CA/hostname/password actual SELECT",
+    "wrong password denied",
+    "wrong hostname denied",
+    "untrusted CA denied"
+  ],
+  "cleanup": "removed-and-absence-verified",
+  "container": "goldberg-probe-tls-8230d1ce1e664b979426be54759a33a2",
+  "volumes": [
+    "ab447fc2ef6458f32526476841b447e3211b884b40d94b9d2ab50af48563e2a6"
+  ],
+  "hostedWrites": 0,
+  "sourceSha256": "4644182a58d49104f618980416764b11a9ed8673a34ec35f89729f78c6c8ec30",
+  "artifacts": {
+    "checks.json": "ffe317fc4bdee8572e7a5c9bc8645f503be6d59e83a299410dc2ed3a30cc3339"
+  }
+}

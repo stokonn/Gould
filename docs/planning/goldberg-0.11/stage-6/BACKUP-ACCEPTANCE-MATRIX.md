@@ -26,3 +26,14 @@ export 3,915 ms, restore 4,341 ms, rotation export 4,009 ms, total 30,033
 ms. They must not be presented as production RPO or RTO.
 
 created by stokonn with love <3
+
+
+## New local archive lifecycle evidence — 2026-10-25
+
+New executable store/health/isolated-output implementation and5 regressions PASS;
+new real synthetic pg_dump archive roundtrip and fresh-database marker/RLS/policy
+restore PASS. Existing encryption/key-rotation/community-audit proofs retained.
+Freshness/age detection is now LOCALLY VERIFIED by24h boundary/future/incomplete
+checks; scheduler/alert/durable destination/custody and hosted RPO/RTO remain OPEN.
+No automatic retention deletion or production backup operation configured.
+[Execution and limits](LOCAL-BACKUP-EXECUTION.md).
