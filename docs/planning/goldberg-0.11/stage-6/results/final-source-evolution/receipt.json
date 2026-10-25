@@ -1,0 +1,10 @@
+{
+  ".gitattributes": {
+    "historicalFile": "gitattributes.original",
+    "currentSha256": "223ee33d673111cd339a25d7e42f8ff519742a2399c8622ce64ae0c411eb71e6"
+  },
+  "scripts/stage6/verify_evidence.py": {
+    "historicalFile": "verify_evidence.original.py",
+    "currentSha256": "05f72bc932956dbb0b3ed6adb22642b19f836487e10434050bf78f4676593794"
+  }
+}

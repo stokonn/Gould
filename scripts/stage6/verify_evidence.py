@@ -8,8 +8,20 @@ ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / 'docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/android-json-final'
 record = json.loads((BASE/'verification.json').read_text())
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+# Preserve the original source acceptance while binding two reviewed tooling-only
+# changes separately. Every other original source/raw pin remains exact.
+EVOLUTION = ROOT / 'docs/planning/goldberg-0.11/stage-6/results/final-source-evolution'
+evolution = json.loads((EVOLUTION/'receipt.json').read_text())
+assert set(evolution) == {'.gitattributes', 'scripts/stage6/verify_evidence.py'}
 for name, expected in record['sourceSha256'].items():
-    assert sha(ROOT/name) == expected, 'Source differs from verified acceptance: ' + name
+    if name in evolution:
+        entry = evolution[name]
+        assert sha(EVOLUTION/entry['historicalFile']) == expected, 'Historical source changed: ' + name
+        assert sha(ROOT/name) == entry['currentSha256'], 'Reviewed tooling source changed: ' + name
+    else:
+        assert sha(ROOT/name) == expected, 'Source differs from verified acceptance: ' + name
+# The attribute delta can exempt only the new byte-exact raw evidence paths.
+assert (ROOT/'.gitattributes').read_bytes() == (EVOLUTION/'gitattributes.original').read_bytes() + b"\n# Preserve byte-exact BFF raw logs and TAP failure evidence.\nservices/community-bff/results/*/*.log -whitespace\nservices/community-bff/results/*/*.tap -whitespace\n"
 for name, expected in record['artifacts'].items():
     assert sha(BASE/name) == expected, 'Raw evidence changed: ' + name
 suites = sorted(BASE.glob('TEST-*.xml'))

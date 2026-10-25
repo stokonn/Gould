@@ -1,0 +1,33 @@
+# Preserve byte-exact failed Node TAP diagnostics and their recorded SHA-256.
+# Listed historical raw logs contain Node-generated blank-line spaces.
+spikes/stage6-api-v1-local/results/http-pg/pg-4klrg2um/http-postgres.tap -whitespace
+spikes/stage6-api-v1-local/results/http-pg/pg-c9rg4x5v/http-postgres.tap -whitespace
+
+# Retain the interrupted full-int8 operations failure byte-for-byte (lines29/31).
+spikes/stage6-api-v1-local/results/http-pg/pg-t9tcc9wr/operations-pg.tap -whitespace
+
+# Preserve the diagnosed initial shared-fixture failure byte-exact (Node blank lines).
+spikes/stage6-api-v1-local/results/http-pg/pg-d8h0hv95/shared-contract.tap -whitespace
+
+# Preserve byte-exact PostgreSQL dumps/psql tables and esbuild raw output/hashes.
+spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-0868dfcf4f744e20a9fe96afebf309de/synthetic-backup.sql -whitespace
+spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-36e27ec5fc4c4750b97cbdee6fb2d1ea/synthetic-backup.sql -whitespace
+spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f/synthetic-backup.sql -whitespace
+spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f/command-032.log -whitespace
+spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f/command-034.log -whitespace
+spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f/command-035.log -whitespace
+spikes/stage6-cloud-readiness/results/reverification-2026-10-25/build-04.log -whitespace
+
+# Preserve new private-probe esbuild raw output/hash,including generated trailing spaces.
+spikes/stage6-private-staging/results/component-verification/02.log -whitespace
+spikes/stage6-private-staging/results/component-final-8o7WsQ/02.log -whitespace
+
+# Retain byte-exact Gradle raw logs; narrow generated-space exceptions only.
+docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/goldberg-canonical-gradle-fourth.log -whitespace
+docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/goldberg-canonical-gradle-third.log -whitespace
+docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/goldberg-stage6-source-frozen-host.log -whitespace
+docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/historical-attempts/goldberg-canonical-gradle-first-host.log -whitespace
+docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/historical-attempts/goldberg-canonical-gradle-second.log -whitespace
+
+# Final Android-portable JSON hardening host log, preserved byte-exact.
+docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/android-json-final/host-gradle.log -whitespace
