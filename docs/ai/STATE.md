@@ -1,3 +1,24 @@
+## Stage6 final source hardening — LOCALLY VERIFIED / HOSTED BLOCKED (2026-10-25)
+
+- [x] Android-independent normalized duplicate-key rejection and isolated GnuPG
+  timeout cleanup implemented and meaningfully regression-tested.
+- [x] Final234 JVM/32suites/0failures/errors/skips,20new canonical; debug APK,
+  instrumentation compilation and lint0errors96warnings PASS. No native execution.
+- [x]6archive lifecycle and6actual local PG TLS/archive/isolated-restore checks
+  PASS; exact disposable container/volumes absent; source/raw verifier PASS.
+- [x] Prior source5fddbd0 ordinary-pushed/remote exact/CI40177518593 SUCCESS;
+  final hardening source publication/CI receipt pending at this checkpoint.
+- [ ] Hosted B2/B4/B5/B6,real policy/public version,actual Stage8 consumer/native
+  integration,6.0f/6.17 and whole-stage acceptance remain OPEN. G10 disabled.
+
+24-row evaluation unchanged:2complete decisions/9local/2deferred/11blocked;
+formal closure8.3%,local-or-complete coverage45.8%,not an estimated code percentage.
+Final current evidence:results/end-to-end-2026-10-25/android-json-final/ under
+stage-6; END-TO-END-ACCEPTANCE.md has exact scope/commands/artifact/limitations.
+No hosted writes,production networking,paid/public/OAuth/real-data/merge/release.
+
+---
+
 ## Stage6 end-to-end continuation — LOCAL ENGINEERING VERIFIED / BLOCKED (2026-10-25)
 
 Purpose/scope: canonical Kotlin contract/API/session/review/audit adapter and

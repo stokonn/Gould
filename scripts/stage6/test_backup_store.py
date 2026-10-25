@@ -5,7 +5,9 @@ import os
 from pathlib import Path
 import tempfile
 import unittest
-from backup_store import publish, restore_dump, health
+from backup_store import publish, restore_dump, health, run_gpg
+from unittest.mock import patch
+import subprocess
 
 class BackupStoreTest(unittest.TestCase):
     def setUp(self):
@@ -75,5 +77,19 @@ class BackupStoreTest(unittest.TestCase):
         local_key.write_text('synthetic'); local_key.chmod(0o600)
         with self.assertRaises(ValueError): publish(self.dump, self.destination, local_key)
         self.assertTrue(archive.exists())
+
+    def test_timeout_still_stops_only_the_invocations_isolated_agent(self):
+        commands = []
+        def execute(command, **kwargs):
+            commands.append(command)
+            if command[0] == 'gpg':
+                raise subprocess.TimeoutExpired(command[0], 120)
+            return subprocess.CompletedProcess(command, 0)
+        with patch('backup_store.subprocess.run', side_effect=execute):
+            with self.assertRaises(subprocess.TimeoutExpired):
+                run_gpg(self.key, ['--symmetric'])
+        self.assertEqual([c[0] for c in commands], ['gpg', 'gpgconf'])
+        self.assertEqual(commands[0][2], commands[1][2])
+        self.assertEqual(commands[1][-2:], ['--kill', 'gpg-agent'])
 
 if __name__ == '__main__': unittest.main()

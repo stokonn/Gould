@@ -42,3 +42,8 @@ acceptance does not close those native/consumer integration gates. Other worktre
 were read only; no wholesale merge or fixture/provenance replacement occurred.
 
 created by stokonn with love <3
+
+Final portability check: duplicate-key detection is enforced by the strict wire
+scanner itself, including escaped aliases, independently of Android/host org.json
+behavior.20 focused canonical tests PASS; final whole host suite234 PASS. Earlier
+source-bound19-test acceptance is preserved rather than relabeled.

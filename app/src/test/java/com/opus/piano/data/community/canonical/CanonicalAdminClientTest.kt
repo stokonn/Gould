@@ -295,4 +295,14 @@ class CanonicalAdminClientTest {
         assertEquals(0, venue.postCount)
     }
 
+    @Test fun lexicalDuplicateDetectionDoesNotDependOnOrgJsonImplementation() {
+        // Android and the host org.json implementation differ on duplicate keys.
+        // The wire scanner itself must reject them, including escaped aliases.
+        for (raw in listOf("{\"schemaVersion\":1,\"schemaVersion\":1}",
+            "{\"key\":1,\"\\u006bey\":2}", "{\"outer\":{\"a\":1,\"a\":2}}")) {
+            assertTrue(raw, runCatching { StrictAdminJson.check(raw) }.isFailure)
+        }
+        StrictAdminJson.check("{\"a\":{\"x\":1},\"b\":{\"x\":2}}")
+    }
+
 }

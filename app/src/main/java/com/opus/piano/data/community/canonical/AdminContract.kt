@@ -97,11 +97,12 @@ internal object StrictAdminJson {
         var at = 0
         var nodes = 0
         fun space() { while (at < raw.length && raw[at] in " \t\r\n") at++ }
-        fun string() {
+        fun string(): String {
+            val start = at
             require(at < raw.length && raw[at++] == '"')
             while (at < raw.length) {
                 val c = raw[at++]
-                if (c == '"') return
+                if (c == '"') return JSONTokener(raw.substring(start, at)).nextValue() as String
                 require(c >= ' ')
                 if (c == '\\') {
                     require(at < raw.length)
@@ -122,10 +123,11 @@ internal object StrictAdminJson {
                 '{', '[' -> {
                     val objectValue = raw[at++] == '{'
                     val close = if (objectValue) '}' else ']'
+                    val keys = mutableSetOf<String>()
                     space()
                     if (at < raw.length && raw[at] == close) { at++; return }
                     while (true) {
-                        if (objectValue) { space(); string(); space(); require(at < raw.length && raw[at++] == ':') }
+                        if (objectValue) { space(); require(keys.add(string())); space(); require(at < raw.length && raw[at++] == ':') }
                         value(depth + 1); space(); require(at < raw.length)
                         if (raw[at] == close) { at++; break }
                         require(raw[at++] == ',')

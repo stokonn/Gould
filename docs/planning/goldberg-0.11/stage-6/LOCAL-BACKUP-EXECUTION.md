@@ -43,3 +43,7 @@ whole community schema/audit acceptance comes from its separately pinned existin
 backup tests. No real user data or credential enters any of these fixtures.
 
 created by stokonn with love <3
+
+Final timeout hardening: agent teardown runs in finally, including encryption
+process timeout.6 lifecycle regressions now PASS; prior5-case evidence preserved.
+No custody/durable backup readiness follows from this local failure-path proof.

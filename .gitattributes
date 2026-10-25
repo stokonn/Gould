@@ -28,3 +28,6 @@ docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/goldberg-canon
 docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/goldberg-stage6-source-frozen-host.log -whitespace
 docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/historical-attempts/goldberg-canonical-gradle-first-host.log -whitespace
 docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/historical-attempts/goldberg-canonical-gradle-second.log -whitespace
+
+# Final Android-portable JSON hardening host log, preserved byte-exact.
+docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/android-json-final/host-gradle.log -whitespace

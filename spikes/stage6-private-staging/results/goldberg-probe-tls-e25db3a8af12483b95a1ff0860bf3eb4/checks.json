@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "checks": [
+    "verified CA/hostname/password actual SELECT",
+    "wrong password denied",
+    "wrong hostname denied",
+    "untrusted CA denied",
+    "actual synthetic pg_dump encrypted archive roundtrip byte equality",
+    "actual isolated database restore preserves marker/RLS/SELECT policy"
+  ],
+  "hostedRequests": 0
+}

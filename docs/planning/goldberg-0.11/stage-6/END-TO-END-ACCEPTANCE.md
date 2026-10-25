@@ -103,12 +103,12 @@ Worker candidate is deliberately a separate bounded probe.
 ## Final executed verification and source identity
 
 Command: `./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --offline --no-daemon --max-workers=1`.
-Frozen-source run PASS:233 JVM tests/32 suites,0 failures/errors/skips (19 new
+Frozen-source run PASS:234 JVM tests/32 suites,0 failures/errors/skips (20 new
 canonical tests); instrumentation COMPILED ONLY; lint0 errors/96 warnings; APK built.
 All six repository data/policy checks plus Stage3B fixture checker, schema no-diff
-and whitespace PASS. New archive lifecycle5 PASS; final actual TLS/archive/isolated
+and whitespace PASS. New archive lifecycle6 PASS; final actual TLS/archive/isolated
 PG venue6 PASS; exact container/recorded volume absence verified. Raw results and
-source/artifact SHA256 are in results/end-to-end-2026-10-25/verification.json.
+source/artifact SHA256 are in results/end-to-end-2026-10-25/android-json-final/verification.json.
 
 Prior accepted490-body HTTP/PG foundation,18 probe SQL and encrypted/key-rotation
 suites retained; no unnecessary rerun. Static verify-preparation PASS confirms
@@ -130,7 +130,7 @@ unwired library, but combined native acceptance remains open.
 APK: app/build/outputs/apk/debug/app-debug.apk; com.opus.piano, development0.10.1,
 code11; ZIP/resources verified; trusted signer retained. This is a local verification
 artifact, not a0.11 release or published APK. Final APK SHA256:
-`81acffe96317625465034492f048b91cf363b76b634e351c36e875c9534cb151`.
+`f2305e85b8fb7acb8d78a2fd3ecff9883372e77ac89ce05fa58dbc84cbbfd0ac`.
 Signer SHA256:`53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`.
 
 ## Hosted state, blockers and significant approval
@@ -169,3 +169,21 @@ Git publication/exact remote/CI and final Issue/PMP receipt are recorded in the
 existing Issue31 checkpoint to avoid a self-referential commit hash.
 
 created by stokonn with love <3
+
+## Final portability and failure-path hardening
+
+Final review found that Android and host org.json implementations differ on
+handling duplicate keys. The strict wire scanner now independently rejects
+normalized/escaped duplicate names, with a direct scanner regression. It does
+not rely on JSONObject's platform-specific behavior. New total234 JVM/20canonical
+PASS; no assertions weakened. The isolated GnuPG agent is stopped in finally,
+including timeout; a new mocked timeout regression proves only that invocation's
+agent home is targeted. New archive total6 PASS; actual local PG composition6PASS.
+Earlier233/19/5 results remain immutable at source5fddbd0, whose automatic
+CI40177518593 independently completed SUCCESS. Their raw files/manifests are not
+rewritten; new final-source XML/logs/manifest live under android-json-final/.
+
+One host-test escalation temporarily did not execute because automatic approval
+review hit a usage limit. Owner continuation resumed normal review, and the same
+authorized local checks then executed/passed. No permission control was bypassed.
+Final-source automatic CI receipt follows after this hardening commit is pushed.

@@ -40,12 +40,14 @@ def run_gpg(key, args):
     private_file(key)
     with tempfile.TemporaryDirectory(prefix='goldberg-gpg-') as home:
         os.chmod(home, 0o700)
-        result = subprocess.run(['gpg', '--homedir', home, '--batch', '--no-symkey-cache',
-                                 '--pinentry-mode', 'loopback', '--passphrase-file', str(key),
-                                 *args], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                                timeout=120)
-        subprocess.run(['gpgconf', '--homedir', home, '--kill', 'gpg-agent'],
-                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=10)
+        try:
+            result = subprocess.run(['gpg', '--homedir', home, '--batch', '--no-symkey-cache',
+                                     '--pinentry-mode', 'loopback', '--passphrase-file', str(key),
+                                     *args], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                                    timeout=120)
+        finally:
+            subprocess.run(['gpgconf', '--homedir', home, '--kill', 'gpg-agent'],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=10)
         if result.returncode:
             raise ValueError('Encryption or authentication failed')
 
