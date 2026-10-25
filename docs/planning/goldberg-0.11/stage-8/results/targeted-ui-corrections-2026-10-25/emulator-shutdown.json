@@ -1,0 +1,10 @@
+{
+  "avd": "Goldberg8C",
+  "serial": "emulator-5588",
+  "qemu": true,
+  "airplane": 1,
+  "wifi": 0,
+  "mobileData": 0,
+  "action": "Gracefully stop only this8C emulator after all local verification;AVD/data/APKs retained;owner ADB server untouched",
+  "result": "OK: killing emulator, bye bye\nOK"
+}

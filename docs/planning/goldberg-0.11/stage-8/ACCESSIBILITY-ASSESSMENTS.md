@@ -1,3 +1,17 @@
+## Stage 8C current disposition — all three targeted findings FIXED
+
+## Stage 8C — targeted UI corrections COMPLETE (October 25, 2026)
+
+**The bounded UI correction milestone is complete. A8-1, A8-2 and A8-3 are FIXED within the verified scope. Full Stage 8 integration/release remains PENDING/BLOCKED.**
+
+Branch `feature/goldberg-0.11-stage-8`; baseline `29ce6071741df7567f782730bd78d6d1e0192780`. Production correction source `4d245b46936d640740799dfcc6e8d61f3d44b249`; corrected test source `a41cd11a1b32af2949c43cb6e5b6aac94a3c2a51`. Later documentation/evidence receipts retain these exact runtime source bindings.
+
+A8-1/A8-2 are corrected Medium/P2 product findings; A8-3 is corrected Medium/P2 scaffold evidence handling.32 actual configurations/four real TalkBack traversals and independent [native CI2](https://github.com/stokonn/Goldberg/actions/runs/40170295032) passed. Production theme behavior is unchanged. Native action/keyboard/pointer/disabled checks passed; supplemental double-tap activation and audible speech remain unverified. [Complete current results, commands, source/artifact binding, screenshots and limitations](8C-TARGETED-UI-CORRECTIONS.md).
+
+The8B/8A sections below preserve historical assessments and their then-current statuses. Current Stage8C disposition supersedes their old NOT FIXED/proposed-approval wording; combined integration/release gates remain open.
+
+---
+
 ## Stage 8B assessment COMPLETE — October 25, 2026
 
 A8-1 andA8-2 are reproduced actual-product Medium/P2 defects,NOT FIXED. A8-3 is reproduced in the scaffold's status-icon handling (~1.05–1.13:1);matching real NavHost uses correct appearance flags/status contrast5.56–19.48:1;navigation handles remain readable. No actual-product contrast defect demonstrated in tested scope. No fix/blank-screen defect inferred from a preview artifact; same-session recorder/direct content pixels match.

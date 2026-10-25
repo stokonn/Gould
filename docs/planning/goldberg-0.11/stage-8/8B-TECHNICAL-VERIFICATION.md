@@ -1,3 +1,5 @@
+> Historical Stage8B assessment at its recorded source. Owner later authorized Stage8C; all three targeted findings are now FIXED in the separately verified scope. See [current8C completion](8C-TARGETED-UI-CORRECTIONS.md). Original8B observations/results below remain unchanged historical evidence.
+
 # Stage 8B — first technical verification
 
 Status: TECHNICAL ASSESSMENT COMPLETE / SOURCE PUBLISHED; documentation handoff receipt complete. Authorized October 25, 2026: read-only integration/artifact review, isolated emulator assessments, documentation/scripts/test-only evidence and verified branch publication. Production behavior, Android/backend source combination, networking activation, main merge, deploy and release remain unauthorized.

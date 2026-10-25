@@ -46,3 +46,14 @@ for i,f in enumerate(files):
     im=Image.open(f).resize((360,640));out.paste(im,(360*i,35));d.text((360*i+5,10),str(f.relative_to(OUT)),fill='white')
 out.save(REVIEW/'talkback-before-after.png')
 print('Review sheets/pixel observations written;visual acceptance requires inspection.')
+
+# CI1's eight Settings samples are independent scaffold renders, not real NavHost.
+ci1=OUT/'ci-native-40168644562-failed/stage5-ci-results/admin-evidence'
+files=sorted(ci1.glob('*settings.png'))
+if files:
+    assert len(files)==8
+    out=Image.new('RGB',(1440,660),'#888888');d=ImageDraw.Draw(out)
+    for i,f in enumerate(files):
+        im=Image.open(f);crop=im.crop((0,im.height-580,im.width,im.height));crop.thumbnail((360,290))
+        x=i%4*360;y=i//4*330;out.paste(crop,(x,y+35));d.text((x+5,y+10),f.stem,fill='white')
+    out.save(REVIEW/'ci1-scaffold-settings-navigation.png')

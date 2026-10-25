@@ -1,21 +1,12 @@
-> Stage8C current checkpoint: semantic candidate1c243626… passed host275JVM/lint and4native cases. Actual5588/320dpi/360dp ENLight1 TalkBack now verifies one Switch stop per row. Initial density/5580transport attempts excluded/preserved. New native linebreak/hyphenation+1dp label inset refinement addresses observed2x orphan letters;new host gate running,changed32-layout native/actual matrix/CI pending. No source commit/CI dispatch/FIXED claim yet. See8C report;private PMP snapshot updated.
+## Stage 8C approved corrections and acceptance — October25,2026
 
-## Stage 8C — targeted UI corrections (authorized October 25, 2026)
+Owner explicitly authorized A8-1/A8-2 production UI and A8-3 test-only corrections. Bounded milestone now COMPLETE/FIXED after actual observations and [independent native CI2](https://github.com/stokonn/Goldberg/actions/runs/40170295032) at `a41cd11a1b32af2949c43cb6e5b6aac94a3c2a51`;production correction source `4d245b46936d640740799dfcc6e8d61f3d44b249`. WholeStage8 integration/release remains blocked.
 
-**IN PROGRESS — source4d245b published;32 actual viewport configurations captured;local route/system-bar/scroll/artifact verification PASS;quality CI SUCCESS;native CI1 failed on test pointer hitting StatusBar;safe-inset test-only correction now3/3localPASS;publish correction then source-bound native CI2 pending. Findings NOT FIXED yet.** Baseline `29ce6071741df7567f782730bd78d6d1e0192780`; branch `feature/goldberg-0.11-stage-8`. Owner explicitly authorized A8-1/A8-2 production UI corrections, A8-3 test-scaffold correction, focused/host/emulator/source-bound CI verification, evidence publication and private PMP checkpoint. No backend adoption or production networking/merge/deploy/release.
+Use one merged48dp Switch row owner and a noninteractive visual indicator;retain exact names/roles/state/disabled/key/touch/actions. Use five equal responsive navigation columns with original editorial labelSmall metrics/icons/colors and full wrapping/native hyphenation;grow natural height,never shrink text or hide destinations. Share production navigation in test scaffolds;copy MainActivity-equivalent outer-theme window effect only in tests;no production theme change justified by the evidence.
 
-Purpose: remove duplicate Settings focus stops, preserve complete responsive bottom-navigation labels and make scaffold system bars reflect MainActivity. Scope: AdminSwitch, reusable navigation components/OpusApp, test scaffolds/regressions/recorder, Stage 8 records and private worktree PMP. No database/schema/backup/practice timing change planned.
+CI1pointer rejection explicitly targeted SystemUI StatusBar in an unsafe isolated test layout. Correct safeDrawing padding and add a pointer-center/inset assertion;keep all other assertions. Local3casePASS preceded one meaningful CI2 dispatch. Do not erase failed attempts,wrong initial class/selected-tab assumptions or source provenance. Actual TalkBack focus is verified;optional double-tap injection/audible speech remain unverified. No unchanged quality rerun after test-only correction;final docs receipt skips redundant CI.
 
-- [x] Recover policy/maintenance/AI/Stage 8B and inspect exact clean baseline, all worktrees, refreshed Issue31/Project/source heads; preserve APKs/raw evidence/private files. Cloud remains separately published c8b903b and untouched.
-- [x] Implement coherent named Switch row semantics with state, disabled/key/touch and exactly-once behavior.
-- [x] Implement full responsive labels, preserving five destinations/editorial tokens/font scaling/selected state/navigation.
-- [x] Correct test-only window flags and share production navigation rendering in scaffold; keep production theme behavior unchanged.
-- [x] Verify focused state/action/keyboard/semantics regressions and all 32 EN/CZ × Light/Dark × fonts1/1.3/1.5/2 × small/standard configurations.
-- [x] Actual TalkBack before/after traversal/focus events/screenshots/trees and real navigation retained and verified. Optional double-tap injection unsuccessful/unverified;native exact-action regressions passed. Findings remain NOT FIXED until independent native verification passes.
-- [ ] Appropriate wrapper JVM/build/lint, host checks and actual source-bound emulator CI; source/artifact/signing preservation.
-- [ ] Update private PMP, local checklist/matrix/AI and existing Issue31/Project; verified commit/push/exact remote SHA/CI receipt.
-
-[Execution checklist](../planning/goldberg-0.11/stage-8/8C-TARGETED-UI-CORRECTIONS.md). Stage7 acceptance remains COMPLETE; full Stage8 integration/release PENDING/BLOCKED. G1–G9/G11,C4,6.0f and live integration OPEN.
+No DB/schema/backup/practice/backend/contract/version changes or Stage6 gate closure. Cloud56ff724 remains independent/hosted NO-GO;G1–G9/G11,C4,6.0f/live OPEN. No main/cloud/physical phone/deploy/release. Next recommend separately scoped Stage8D contract/consumer readiness,then approved source adoption/combined data/upgrade acceptance. [Current report](../planning/goldberg-0.11/stage-8/8C-TARGETED-UI-CORRECTIONS.md).
 
 created by stokonn with love <3
 

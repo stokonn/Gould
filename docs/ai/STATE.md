@@ -1,21 +1,10 @@
-> Stage8C current checkpoint: semantic candidate1c243626… passed host275JVM/lint and4native cases. Actual5588/320dpi/360dp ENLight1 TalkBack now verifies one Switch stop per row. Initial density/5580transport attempts excluded/preserved. New native linebreak/hyphenation+1dp label inset refinement addresses observed2x orphan letters;new host gate running,changed32-layout native/actual matrix/CI pending. No source commit/CI dispatch/FIXED claim yet. See8C report;private PMP snapshot updated.
+## Stage 8C complete — current state, October25,2026
 
-## Stage 8C — targeted UI corrections (authorized October 25, 2026)
+A8-1/A8-2 product findings and A8-3 scaffold finding are FIXED in the verified bounded scope. Full Stage8/release remains PENDING/BLOCKED. Branch `feature/goldberg-0.11-stage-8`; production source `4d245b46936d640740799dfcc6e8d61f3d44b249`, test-only safe-inset recovery `a41cd11a1b32af2949c43cb6e5b6aac94a3c2a51`. Later receipt changes docs/evidence/scripts only.
 
-**IN PROGRESS — source4d245b published;32 actual viewport configurations captured;local route/system-bar/scroll/artifact verification PASS;quality CI SUCCESS;native CI1 failed on test pointer hitting StatusBar;safe-inset test-only correction now3/3localPASS;publish correction then source-bound native CI2 pending. Findings NOT FIXED yet.** Baseline `29ce6071741df7567f782730bd78d6d1e0192780`; branch `feature/goldberg-0.11-stage-8`. Owner explicitly authorized A8-1/A8-2 production UI corrections, A8-3 test-scaffold correction, focused/host/emulator/source-bound CI verification, evidence publication and private PMP checkpoint. No backend adoption or production networking/merge/deploy/release.
+Independent [native CI2](https://github.com/stokonn/Goldberg/actions/runs/40170295032) SUCCESS:190 cases/188 passed/2 existing external-source skips;all3 Stage8C and9 Stage7B cases;275 JVM/0 failures/errors/skips;lint0 errors/132 warnings/1 hint. Quality40168589919 SUCCESS at identical production source4d245b. Local32 actual configurations,40 actual TalkBack focus steps,five routes/two Back and2x scroll checks PASS. APK68d48b… remains trusted-signed0.10.1/code11. No database/backup/practice/theme/contracts/backend/version change.
 
-Purpose: remove duplicate Settings focus stops, preserve complete responsive bottom-navigation labels and make scaffold system bars reflect MainActivity. Scope: AdminSwitch, reusable navigation components/OpusApp, test scaffolds/regressions/recorder, Stage 8 records and private worktree PMP. No database/schema/backup/practice timing change planned.
-
-- [x] Recover policy/maintenance/AI/Stage 8B and inspect exact clean baseline, all worktrees, refreshed Issue31/Project/source heads; preserve APKs/raw evidence/private files. Cloud remains separately published c8b903b and untouched.
-- [x] Implement coherent named Switch row semantics with state, disabled/key/touch and exactly-once behavior.
-- [x] Implement full responsive labels, preserving five destinations/editorial tokens/font scaling/selected state/navigation.
-- [x] Correct test-only window flags and share production navigation rendering in scaffold; keep production theme behavior unchanged.
-- [x] Verify focused state/action/keyboard/semantics regressions and all 32 EN/CZ × Light/Dark × fonts1/1.3/1.5/2 × small/standard configurations.
-- [x] Actual TalkBack before/after traversal/focus events/screenshots/trees and real navigation retained and verified. Optional double-tap injection unsuccessful/unverified;native exact-action regressions passed. Findings remain NOT FIXED until independent native verification passes.
-- [ ] Appropriate wrapper JVM/build/lint, host checks and actual source-bound emulator CI; source/artifact/signing preservation.
-- [ ] Update private PMP, local checklist/matrix/AI and existing Issue31/Project; verified commit/push/exact remote SHA/CI receipt.
-
-[Execution checklist](../planning/goldberg-0.11/stage-8/8C-TARGETED-UI-CORRECTIONS.md). Stage7 acceptance remains COMPLETE; full Stage8 integration/release PENDING/BLOCKED. G1–G9/G11,C4,6.0f and live integration OPEN.
+Stage6 G1–G9/G11,C4,6.0f/live OPEN;concurrent Cloud56ff724/hosted NO-GO not adopted. CI1failed StatusBar pointer-harness attempt and all other attempts retained. Supplemental TalkBack double-tap/audible speech remain unverified. No main/cloud/phone/deploy/Release. [Full current report](../planning/goldberg-0.11/stage-8/8C-TARGETED-UI-CORRECTIONS.md).
 
 created by stokonn with love <3
 

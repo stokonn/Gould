@@ -168,3 +168,16 @@ docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/c
 docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40168644562-failed/stage5-ci-results/sdk-packages.txt -whitespace
 docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/native-insets.txt -whitespace
 docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/pointer-insets-build.log -whitespace
+
+# Preserve exact source-bound Stage8C native XML bytes.
+"docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40168644562-failed/app/build/outputs/androidTest-results/connected/debug/TEST-emulator-5554 - 16-_app-.xml" -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+"docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/app/build/outputs/androidTest-results/connected/debug/TEST-emulator-5554 - 16-_app-.xml" -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve Stage8C successful CI2 raw diagnostics exactly.
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/raw.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/adb-devices.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/emulator-version.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/host-gradle.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/instrumentation-gradle.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/logcat.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/sdk-packages.txt -whitespace

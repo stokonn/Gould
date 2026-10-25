@@ -1,3 +1,9 @@
+## Stage8C preservation update
+
+Targeted UI corrections are complete at production4d245b/testa41cd11;backend/Android integration remains unperformed. Existing13 potential overlaps retain5High/7Medium/1Low risk classifications. Future navigation integration must preserve JournalNavigationBar,allfive destination identities and the single named Switch owner. Concurrent Cloud56ff724 (Phase1/2 prepared,hosted NO-GO) is a separate unadopted input;refresh/review actual SHAs before any authorized adoption. G1–G9/G11,C4,6.0f/live remain OPEN. [8C verified report](8C-TARGETED-UI-CORRECTIONS.md).
+
+---
+
 ## Stage 8B review — October 25, 2026
 
 Documentation reconciliation is authorized and in progress; production source combination is not. The four isolated Stage7A acceptance/follow-up documents are adopted from `1b97281`; the adopted Stage7A checkpoint policy link is repaired to the actual root AGENTS.md; the five shared AI/master documents retain newer Stage7B/8 records and carry the same final decision explicitly. X10 is NOT FIXED/NOT VERIFIED, deferred only cosmetically to Gould0.12. Stage8 readability/accessibility/touch targets remain gates. No cherry-pick or merge occurred.

@@ -1,3 +1,9 @@
+## Stage8C refresh
+
+Stage8C closes only A8-1/A8-2/A8-3. Stage6 G1–G9/G11,C4,6.0f/live remain OPEN. Concurrent Cloud independently advanced to56ff724 (Phase1/2 prepared,hosted NO-GO),not adopted. No hosted/operational/contract-consumer acceptance is inferred from UI tests. Current scope and remaining integration strategy: [8C completion](8C-TARGETED-UI-CORRECTIONS.md). Earlier pinned inputs below retain their historical evidence scope.
+
+---
+
 ## Stage 8B refreshed dependency observation — October 25, 2026
 
 Cloud branch advanced independently from006fa577 to `2c38177c422d9b7b6cd697dec36d5484744423a6` during this session (fresh remote readback). Final Cloud documentation receipt `c8b903bbab147b239683c21204f524f7201849f0` is now remote-exact; its worktree is clean. Refresh latest HEAD/checkpoint before any future adoption. Its own source-CI claim is not an8B test execution. Its current record reports local readiness re-verification/source publication, **PRIVATE STAGING NO-GO**. No hosted SQL/deploy/OAuth/public route/paid operation authorized here. Cloud worktree was read only, never edited/copied/merged. Existing API foundation pin006fa577 and G1–G9/G11 remain separate Android-adoption dependencies.

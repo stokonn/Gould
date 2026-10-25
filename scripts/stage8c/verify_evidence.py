@@ -11,6 +11,10 @@ NAMES={'en':['Home','Library','Discover','Practice','Profile'], 'cs':['Domů','K
 
 
 def main():
+    manifest=OUT/'SHA256.json'
+    if manifest.exists():
+        for name,digest in json.loads(manifest.read_text()).items():
+            assert hashlib.sha256((OUT/name).read_bytes()).hexdigest()==digest,name
     binding=json.loads((OUT/'refined-source-binding.json').read_text())
     for name,digest in binding['inputs'].items():
         historic=subprocess.check_output(['git','show','4d245b46936d640740799dfcc6e8d61f3d44b249:'+name],cwd=ROOT)
@@ -53,17 +57,28 @@ def main():
                         if y2-y1<96:clippedRows.append({'file':str(f.relative_to(OUT)),'name':n['description'],'visibleHeightPx':y2-y1})
                     im=Image.open(f.with_suffix('.png'));assert im.size==(width*2,height*2);im.verify()
                     records.append({'file':str(f.relative_to(OUT)),'locale':locale,'theme':theme,'fontScale':font,'widthDp':width,'heightDp':height})
+    beforeTraversals=[]
+    for f in sorted((OUT/'before').glob('*-traversal.json')):
+        rows=json.loads(f.read_text());assert len(rows)==10
+        focus=[pair for row in rows for pair in row['focus']]
+        labels=[desc for text,desc in focus if desc]
+        assert len(labels)==3 and len(set(labels))==3,(f,focus)
+        for label in labels:
+            assert focus.count([label,None])==focus.count([None,label])==1,(f,label)
+        beforeTraversals.append({'file':str(f.relative_to(OUT)),'duplicateLabelControlPairs':3,'emptyFocusSteps':sum(not row['focus'] for row in rows)})
+    assert len(beforeTraversals)==2
     traversals=[]
     for f in sorted((OUT/'after').glob('*-traversal.json')):
         rows=json.loads(f.read_text());assert len(rows)==10,f
         descriptions=[]
+        events=[json.loads(l) for l in f.with_name(f.name.replace('-traversal.json','-events.jsonl')).read_text().splitlines()]
         for i in range(10):
             s=json.loads(f.with_name(f.name.replace('-traversal.json',f'-focus-{i}.json')).read_text())
             assert s['touchExploration']==1 and 'TalkBackService' in s['services'],f
             focused=[n for n in s['nodes'] if n['accessibilityFocused']];assert len(focused)==1,f
+            assert any(e['type']=='TYPE_VIEW_ACCESSIBILITY_FOCUSED' and e.get('package')=='com.opus.piano' and e.get('sourceDescription')==focused[0].get('description') and e.get('sourceText')==focused[0].get('text') and 0<=s['uptime']-e['uptime']<=2500 for e in events),(f,i,'no matching current focus event')
             if focused[0]['checkable']:descriptions.append(focused[0]['description'])
         assert len(descriptions)==len(set(descriptions))==3,(f,descriptions)
-        events=[json.loads(l) for l in f.with_name(f.name.replace('-traversal.json','-events.jsonl')).read_text().splitlines()]
         for name in descriptions:
             assert any(e['type']=='TYPE_VIEW_ACCESSIBILITY_FOCUSED' and e.get('sourceDescription')==name for e in events),(f,name)
         traversals.append({'file':str(f.relative_to(OUT)),'steps':10,'singleSwitchStops':descriptions})
@@ -80,7 +95,7 @@ def main():
                 assert s['profileTheme']==theme and s['systemNight']==(32 if theme=='Light' else 16)
                 assert s['lightStatusBars']==s['lightNavigationBars']==(theme=='Light')
             opposite.append({'scaffold':str(scaffold.relative_to(OUT)),'navhost':str(actual.relative_to(OUT)),'theme':theme,'locale':locale,'statusAndNavigationFlagsMatch':True})
-    result={'source':'4d245b46936d640740799dfcc6e8d61f3d44b249','validBaseConfigurations':len(records),'actualTalkBackTraversals':len(traversals),'actualFocusedSteps':40,'oppositeSystemPairs':len(opposite),'preservedStage8bFiles':len(old_manifest),'viewportClippedRows':clippedRows,'configurations':records,'traversals':traversals,'oppositeSystem':opposite,'limits':'Tree/geometry/source checks only; text overflow is verified by native TextLayoutResult; screenshots require human-agent visual inspection; no audible speech-quality claim.'}
+    result={'source':'4d245b46936d640740799dfcc6e8d61f3d44b249','validBaseConfigurations':len(records),'freshBaselineTraversals':beforeTraversals,'actualTalkBackTraversals':len(traversals),'actualFocusedSteps':40,'matchingCurrentFocusEvents':40,'oppositeSystemPairs':len(opposite),'preservedStage8bFiles':len(old_manifest),'viewportClippedRows':clippedRows,'configurations':records,'traversals':traversals,'oppositeSystem':opposite,'limits':'Tree/geometry/source checks only; text overflow is verified by native TextLayoutResult; screenshots require human-agent visual inspection; no audible speech-quality claim.'}
     (OUT/'evidence-verification.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print({k:v for k,v in result.items() if k not in ['configurations','traversals','oppositeSystem']})
 

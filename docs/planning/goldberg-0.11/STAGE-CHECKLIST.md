@@ -1,19 +1,24 @@
-## Stage 8C — targeted UI corrections (authorized October 25, 2026)
+## Stage 8C — targeted UI corrections COMPLETE (October 25, 2026)
 
-**IN PROGRESS — source4d245b published;32 actual viewport configurations captured;local route/system-bar/scroll/artifact verification PASS;quality CI SUCCESS;native CI1 failed on test pointer hitting StatusBar;safe-inset test-only correction now3/3localPASS;publish correction then source-bound native CI2 pending. Findings NOT FIXED yet.** Baseline `29ce6071741df7567f782730bd78d6d1e0192780`; branch `feature/goldberg-0.11-stage-8`. Owner explicitly authorized A8-1/A8-2 production UI corrections, A8-3 test-scaffold correction, focused/host/emulator/source-bound CI verification, evidence publication and private PMP checkpoint. No backend adoption or production networking/merge/deploy/release.
+**The bounded UI correction milestone is complete. A8-1, A8-2 and A8-3 are FIXED within the verified scope. Full Stage 8 integration/release remains PENDING/BLOCKED.**
 
-Purpose: remove duplicate Settings focus stops, preserve complete responsive bottom-navigation labels and make scaffold system bars reflect MainActivity. Scope: AdminSwitch, reusable navigation components/OpusApp, test scaffolds/regressions/recorder, Stage 8 records and private worktree PMP. No database/schema/backup/practice timing change planned.
+Branch `feature/goldberg-0.11-stage-8`; baseline `29ce6071741df7567f782730bd78d6d1e0192780`. Production correction source `4d245b46936d640740799dfcc6e8d61f3d44b249`; corrected test source `a41cd11a1b32af2949c43cb6e5b6aac94a3c2a51`. Later documentation/evidence receipts retain these exact runtime source bindings.
 
-- [x] Recover policy/maintenance/AI/Stage 8B and inspect exact clean baseline, all worktrees, refreshed Issue31/Project/source heads; preserve APKs/raw evidence/private files. Cloud remains separately published c8b903b and untouched.
-- [x] Implement coherent named Switch row semantics with state, disabled/key/touch and exactly-once behavior.
-- [x] Implement full responsive labels, preserving five destinations/editorial tokens/font scaling/selected state/navigation.
-- [x] Correct test-only window flags and share production navigation rendering in scaffold; keep production theme behavior unchanged.
-- [x] Verify focused state/action/keyboard/semantics regressions and all 32 EN/CZ × Light/Dark × fonts1/1.3/1.5/2 × small/standard configurations.
-- [x] Actual TalkBack before/after traversal/focus events/screenshots/trees and real navigation retained and verified. Optional double-tap injection unsuccessful/unverified;native exact-action regressions passed. Findings remain NOT FIXED until independent native verification passes.
-- [ ] Appropriate wrapper JVM/build/lint, host checks and actual source-bound emulator CI; source/artifact/signing preservation.
-- [ ] Update private PMP, local checklist/matrix/AI and existing Issue31/Project; verified commit/push/exact remote SHA/CI receipt.
+Purpose: remove duplicate Admin Settings focus stops, retain readable full navigation labels with Android font scaling and make test-scaffold system bars reflect MainActivity. Scope: three production UI files, three instrumentation files, host evidence scripts and Stage 8 records. Application ID/namespace `com.opus.piano`, database `opus.db`, schema, backup/practice logic, contracts, dependencies, production theme behavior and version metadata are unchanged.
 
-[Execution checklist](stage-8/8C-TARGETED-UI-CORRECTIONS.md). Stage7 acceptance remains COMPLETE; full Stage8 integration/release PENDING/BLOCKED. G1–G9/G11,C4,6.0f and live integration OPEN.
+- [x] Recover policy/readiness/AI/Issue31/Project and source heads; preserve all concurrent work and historical evidence.
+- [x] A8-1: one named, stateful Switch row; minimum48dp, disabled suppression, keyboard/touch/native accessibility actions and exactly-once callbacks verified.
+- [x] A8-2: all five destinations retain full names, original font metrics, icons/colors, selection and navigation; natural bar height/wrapping/hyphenation replaces ellipsis.
+- [x] A8-3: test-only system-bar effect mirrors MainActivity; production theme handling unchanged; four opposite-system scaffold/NavHost pairs agree.
+- [x] Verify32 EN/CZ × Light/Dark × fonts1.0/1.3/1.5/2.0 ×360×640/412×915dp configurations, four real TalkBack traversals/40 actual focused steps, five actual routes/two Back transitions and worst-case2x scroll reachability.
+- [x] Gradle/JVM/build/lint/host checks and independent source-bound native acceptance; preserve unsuccessful attempts and the failed first CI run.
+- [x] Update local reports/checklists/matrix/AI and publish verified source/evidence; synchronize existing Issue31/Project and private PMP checkpoints. Private PMP/APKs/secrets are excluded from Git.
+
+Verification:275 JVM cases/36 suites,0 failures/errors/skips; independent native190 cases/**188 passed/0 failures/0 errors/2 existing external-source skips**, including all3 Stage8C and9 Stage7B cases. CI lint0 errors/132 warnings/1 hint; local lint0 errors/119 warnings. [Native CI2](https://github.com/stokonn/Goldberg/actions/runs/40170295032) succeeded at `a41cd11a1b32af2949c43cb6e5b6aac94a3c2a51`; [quality](https://github.com/stokonn/Goldberg/actions/runs/40168589919) succeeded at identical production source `4d245b46936d640740799dfcc6e8d61f3d44b249`. Unchanged successful automatic quality was not repeated after the test-only correction.
+
+Limits: actual TalkBack focus/events are verified; audible speech quality and supplemental double-tap activation remain unverified (unsuccessful injections retained). Native ACTION_CLICK/Space/pointer/disabled and exact callback counts independently passed. Two terminal Czech baseline focus snapshots without a focused node are excluded from focus proof. Combined backend/source, trusted-release seeded upgrade, full lifecycle/three-hour/reboot/live operational acceptance and final release/version selection remain open. Stage6 G1–G9/G11, C4,6.0f and live integration remain OPEN; concurrent Cloud56ff724/hosted NO-GO was not adopted. No main merge, cloud activation, physical-device test, deployment or Release.
+
+Current verified APK: ignored local `app/build/outputs/apk/debug/app-debug.apk` (preserved copy `.gradle/stage8c-artifacts/candidate-app-wrap.apk`), development0.10.1/code11,23,067,944 bytes. SHA256 `68d48b75436f6bd3f865d784714ec48570e2745c14aa0e9682514753009f3db0`; trusted certificate SHA256 `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`. Installed-byte hash/ZIP/package/signature checks passed; CI uses its temporary debug signer and is not a release artifact.
 
 created by stokonn with love <3
 

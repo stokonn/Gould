@@ -1,8 +1,21 @@
 {
   "source": "4d245b46936d640740799dfcc6e8d61f3d44b249",
   "validBaseConfigurations": 32,
+  "freshBaselineTraversals": [
+    {
+      "file": "before/cs-dark-1p3-small-navhost-traversal.json",
+      "duplicateLabelControlPairs": 3,
+      "emptyFocusSteps": 2
+    },
+    {
+      "file": "before/en-light-1p0-small-navhost-traversal.json",
+      "duplicateLabelControlPairs": 3,
+      "emptyFocusSteps": 0
+    }
+  ],
   "actualTalkBackTraversals": 4,
   "actualFocusedSteps": 40,
+  "matchingCurrentFocusEvents": 40,
   "oppositeSystemPairs": 4,
   "preservedStage8bFiles": 426,
   "viewportClippedRows": [

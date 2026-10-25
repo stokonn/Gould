@@ -1,0 +1,445 @@
+{
+  "milestone": "Stage8C targeted UI corrections",
+  "status": "complete in bounded verified scope;fullStage8 blocked",
+  "branch": "feature/goldberg-0.11-stage-8",
+  "productionSource": "4d245b46936d640740799dfcc6e8d61f3d44b249",
+  "verifiedTestSource": "a41cd11a1b32af2949c43cb6e5b6aac94a3c2a51",
+  "ci": {
+    "run": 40170295032,
+    "url": "https://github.com/stokonn/Goldberg/actions/runs/40170295032",
+    "source": "a41cd11a1b32af2949c43cb6e5b6aac94a3c2a51",
+    "conclusion": "success",
+    "native": {
+      "tests": 190,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 2
+    },
+    "nativePassed": 188,
+    "nativeClasses": 47,
+    "stage8cCases": [
+      {
+        "name": "responsiveLabelsFitAndTabsKeepNamesSelectionAndActionsAcross32Configurations",
+        "seconds": 100.271
+      },
+      {
+        "name": "scaffoldWindowFlagsFollowAppThemeWhenSystemThemeDiffers",
+        "seconds": 10.539
+      },
+      {
+        "name": "switchRowHasOneNameStateRoleAndExactlyOneActionPerInput",
+        "seconds": 6.545
+      }
+    ],
+    "stage7bCases": 9,
+    "existingSkips": [
+      "com.opus.piano.Stage4ExternalPortraitTest.separatelyAcquiredLicensedOriginalCanBeVerifiedAndRenderedOffline",
+      "com.opus.piano.Stage4ExternalProviderTest.boundedObservedProviderResponsesPassNativeProjectionAndSearchPaging"
+    ],
+    "jvm": {
+      "tests": 275,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "jvmSuites": 36,
+    "lint": {
+      "Warning": 132,
+      "Hint": 1
+    },
+    "scaffoldPngTreePairs": 262,
+    "productionUnchangedFromQualitySource": "4d245b46936d640740799dfcc6e8d61f3d44b249",
+    "limitations": "CI runner uses its temporary debug signer;no trusted-signer seeded upgrade,live backend,physical phone orrelease acceptance inferred."
+  },
+  "actualEvidence": {
+    "source": "4d245b46936d640740799dfcc6e8d61f3d44b249",
+    "validBaseConfigurations": 32,
+    "freshBaselineTraversals": [
+      {
+        "file": "before/cs-dark-1p3-small-navhost-traversal.json",
+        "duplicateLabelControlPairs": 3,
+        "emptyFocusSteps": 2
+      },
+      {
+        "file": "before/en-light-1p0-small-navhost-traversal.json",
+        "duplicateLabelControlPairs": 3,
+        "emptyFocusSteps": 0
+      }
+    ],
+    "actualTalkBackTraversals": 4,
+    "actualFocusedSteps": 40,
+    "matchingCurrentFocusEvents": 40,
+    "oppositeSystemPairs": 4,
+    "preservedStage8bFiles": 426,
+    "viewportClippedRows": [
+      {
+        "file": "after/cs-light-2p0-small-navhost-settings.json",
+        "name": "Povolit mobiln\u00ed a m\u011b\u0159en\u00e1 data pro spr\u00e1vn\u00ed kontroly",
+        "visibleHeightPx": 61
+      },
+      {
+        "file": "after/cs-dark-2p0-small-navhost-settings.json",
+        "name": "Povolit mobiln\u00ed a m\u011b\u0159en\u00e1 data pro spr\u00e1vn\u00ed kontroly",
+        "visibleHeightPx": 61
+      }
+    ],
+    "configurations": [
+      {
+        "file": "after/en-light-1p0-small-navhost-settings.json",
+        "locale": "en",
+        "theme": "Light",
+        "fontScale": 1.0,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/en-light-1p3-small-navhost-settings.json",
+        "locale": "en",
+        "theme": "Light",
+        "fontScale": 1.3,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/en-light-1p5-small-navhost-settings.json",
+        "locale": "en",
+        "theme": "Light",
+        "fontScale": 1.5,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/en-light-2p0-small-navhost-settings.json",
+        "locale": "en",
+        "theme": "Light",
+        "fontScale": 2.0,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/en-dark-1p0-small-navhost-settings.json",
+        "locale": "en",
+        "theme": "Dark",
+        "fontScale": 1.0,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/en-dark-1p3-small-navhost-settings.json",
+        "locale": "en",
+        "theme": "Dark",
+        "fontScale": 1.3,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/en-dark-1p5-small-navhost-settings.json",
+        "locale": "en",
+        "theme": "Dark",
+        "fontScale": 1.5,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/en-dark-2p0-small-navhost-settings.json",
+        "locale": "en",
+        "theme": "Dark",
+        "fontScale": 2.0,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/cs-light-1p0-small-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Light",
+        "fontScale": 1.0,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/cs-light-1p3-small-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Light",
+        "fontScale": 1.3,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/cs-light-1p5-small-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Light",
+        "fontScale": 1.5,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/cs-light-2p0-small-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Light",
+        "fontScale": 2.0,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/cs-dark-1p0-small-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Dark",
+        "fontScale": 1.0,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/cs-dark-1p3-small-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Dark",
+        "fontScale": 1.3,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/cs-dark-1p5-small-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Dark",
+        "fontScale": 1.5,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/cs-dark-2p0-small-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Dark",
+        "fontScale": 2.0,
+        "widthDp": 360,
+        "heightDp": 640
+      },
+      {
+        "file": "after/en-light-1p0-standard-navhost-settings.json",
+        "locale": "en",
+        "theme": "Light",
+        "fontScale": 1.0,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/en-light-1p3-standard-navhost-settings.json",
+        "locale": "en",
+        "theme": "Light",
+        "fontScale": 1.3,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/en-light-1p5-standard-navhost-settings.json",
+        "locale": "en",
+        "theme": "Light",
+        "fontScale": 1.5,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/en-light-2p0-standard-navhost-settings.json",
+        "locale": "en",
+        "theme": "Light",
+        "fontScale": 2.0,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/en-dark-1p0-standard-navhost-settings.json",
+        "locale": "en",
+        "theme": "Dark",
+        "fontScale": 1.0,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/en-dark-1p3-standard-navhost-settings.json",
+        "locale": "en",
+        "theme": "Dark",
+        "fontScale": 1.3,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/en-dark-1p5-standard-navhost-settings.json",
+        "locale": "en",
+        "theme": "Dark",
+        "fontScale": 1.5,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/en-dark-2p0-standard-navhost-settings.json",
+        "locale": "en",
+        "theme": "Dark",
+        "fontScale": 2.0,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/cs-light-1p0-standard-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Light",
+        "fontScale": 1.0,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/cs-light-1p3-standard-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Light",
+        "fontScale": 1.3,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/cs-light-1p5-standard-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Light",
+        "fontScale": 1.5,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/cs-light-2p0-standard-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Light",
+        "fontScale": 2.0,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/cs-dark-1p0-standard-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Dark",
+        "fontScale": 1.0,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/cs-dark-1p3-standard-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Dark",
+        "fontScale": 1.3,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/cs-dark-1p5-standard-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Dark",
+        "fontScale": 1.5,
+        "widthDp": 412,
+        "heightDp": 915
+      },
+      {
+        "file": "after/cs-dark-2p0-standard-navhost-settings.json",
+        "locale": "cs",
+        "theme": "Dark",
+        "fontScale": 2.0,
+        "widthDp": 412,
+        "heightDp": 915
+      }
+    ],
+    "traversals": [
+      {
+        "file": "after/cs-dark-1p3-small-navhost-traversal.json",
+        "steps": 10,
+        "singleSwitchStops": [
+          "M\u00edstn\u00ed ozn\u00e1men\u00ed",
+          "Kontroly na pozad\u00ed (p\u0159ibli\u017en\u011b ka\u017ed\u00e9 3 hodiny)",
+          "Povolit mobiln\u00ed a m\u011b\u0159en\u00e1 data pro spr\u00e1vn\u00ed kontroly"
+        ]
+      },
+      {
+        "file": "after/cs-light-1p5-small-navhost-traversal.json",
+        "steps": 10,
+        "singleSwitchStops": [
+          "M\u00edstn\u00ed ozn\u00e1men\u00ed",
+          "Kontroly na pozad\u00ed (p\u0159ibli\u017en\u011b ka\u017ed\u00e9 3 hodiny)",
+          "Povolit mobiln\u00ed a m\u011b\u0159en\u00e1 data pro spr\u00e1vn\u00ed kontroly"
+        ]
+      },
+      {
+        "file": "after/en-dark-2p0-small-navhost-traversal.json",
+        "steps": 10,
+        "singleSwitchStops": [
+          "Local notifications",
+          "Background checks (approximately every 3 hours)",
+          "Allow mobile and metered data for admin checks"
+        ]
+      },
+      {
+        "file": "after/en-light-1p0-small-navhost-traversal.json",
+        "steps": 10,
+        "singleSwitchStops": [
+          "Local notifications",
+          "Background checks (approximately every 3 hours)",
+          "Allow mobile and metered data for admin checks"
+        ]
+      }
+    ],
+    "oppositeSystem": [
+      {
+        "scaffold": "after/en-light-1p0-small-scaffold-settings.json",
+        "navhost": "after/opposite-system/en-light-1p0-small-navhost-settings.json",
+        "theme": "Light",
+        "locale": "en",
+        "statusAndNavigationFlagsMatch": true
+      },
+      {
+        "scaffold": "after/en-dark-1p0-small-scaffold-settings.json",
+        "navhost": "after/opposite-system/en-dark-1p0-small-navhost-settings.json",
+        "theme": "Dark",
+        "locale": "en",
+        "statusAndNavigationFlagsMatch": true
+      },
+      {
+        "scaffold": "after/cs-light-1p0-small-scaffold-settings.json",
+        "navhost": "after/opposite-system/cs-light-1p0-small-navhost-settings.json",
+        "theme": "Light",
+        "locale": "cs",
+        "statusAndNavigationFlagsMatch": true
+      },
+      {
+        "scaffold": "after/cs-dark-1p0-small-scaffold-settings.json",
+        "navhost": "after/opposite-system/cs-dark-1p0-small-navhost-settings.json",
+        "theme": "Dark",
+        "locale": "cs",
+        "statusAndNavigationFlagsMatch": true
+      }
+    ],
+    "limits": "Tree/geometry/source checks only; text overflow is verified by native TextLayoutResult; screenshots require human-agent visual inspection; no audible speech-quality claim."
+  },
+  "apk": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "68d48b75436f6bd3f865d784714ec48570e2745c14aa0e9682514753009f3db0",
+    "certificateSha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+    "package": "com.opus.piano",
+    "versionName": "0.10.1",
+    "versionCode": 11,
+    "bytes": 23067944
+  },
+  "findings": {
+    "A8-1": "FIXED:Medium/P2 product focus",
+    "A8-2": "FIXED:Medium/P2 product labels",
+    "A8-3": "FIXED:Medium/P2 test-scaffold bars"
+  },
+  "remainingOpen": [
+    "Stage6 G1-G9/G11",
+    "C4",
+    "6.0f",
+    "live integration",
+    "combined-source verification",
+    "trusted-release seeded upgrade",
+    "release/version/owner publication gates"
+  ],
+  "unverified": [
+    "audible speech quality",
+    "supplemental actual TalkBack double-tap activation",
+    "broader lifecycle/three-hour/reboot acceptance"
+  ],
+  "publication": "Documentation-only receipt follows;exact remote receipt SHA in Issue31/final response;no runtime claim at later receipt SHA.",
+  "prohibitedActionsPerformed": false,
+  "privatePmpCommitted": false
+}
