@@ -1,3 +1,33 @@
+## Stage 6 private integration — 2026-10-26 21:33 UTC
+
+Current branch feature/goldberg-0.11-stage-6-cloud,base1ee1d1f;whole Stage6 **IN PROGRESS**.
+Current authoritative report: docs/planning/goldberg-0.11/stage-6/PRIVATE-INTEGRATION-2026-10-26.md.
+This supersedes historical connectivity-BLOCKED/no-Worker statements below.
+
+- [x] Owner dbname correction;actual verify-full TLS1.3/Node→Supabase catalogue200.
+- [x] Existing schema encrypted backup + isolated network-none restore PASS.
+- [x] New catalogue-only login,4SELECT+1lock column/5newpolicies,expiresOct27 03:00:38UTC.
+  Existing20RLS tables/data/roles/passwords/47BFFgrants preserved;intakefalse.
+- [x] Current local backend521 bodies PASS/0fail/skips;credential custody5PASS;
+  actual local workerd package14PASS. Containers/volumes removed andverified absent.
+- [x] Private BFF actually uploaded;8runtime secrets/no admin. workers.dev/previews
+  disabled/0publicdomains. Owner authorized accountsubdomainregistrationonly;done.
+- [x] Actual hosted negative requests503/401/400/405/404 PASS;redacted/no-store.
+- [ ] Hosted catalogue/feed positive readsFAIL503. Exact pooler TLS:system roots
+  fail19/approvedprivateCApasses/wronghostnamefails62. Raw Worker TLS protocolprobe
+  gets no encrypted response;never weakenverification. Temporary verifier removed.
+- [ ] Owner approval pending for concrete Free-only Hyperdrive verify-full/customCA,
+  cacheoff/privatebinding proposal;earlierpacketexcludedHyperdrive. GETaccess/0configs.
+- [x] API36 fullnative d86:182cases/180PASS/2expected external skips;1ee acceptance
+  40394903151 SUCCESS (254Androidfiles identical). Offline seededupgrade37sessions,
+  network/DataSaver/processrestart/integrity/FK PASS. Originals downloaded/hashrecorded.
+- [ ] Approved Google OAuth Web Client ID absent;ownerkeepsOAuthdisabled/no placeholder.
+  RealOAuth/authenticatedhostedworkflows/Android→hosted/operationalbackup/privacy
+  acceptance pending. No release/main merge/publiccommunity/realuserdata.
+- [ ] Final source/evidence commit/push/CI andIssue31/Project/privatePMPsync.
+
+---
+
 ## Owner connectivity directive — hosted BLOCKED (October25,2026)
 
 Owner reports:no working host IPv6 route for directSupabase;sessionpooler reachable

@@ -1,0 +1,49 @@
+{
+  "worker": "goldberg-community-bff-private",
+  "bindings": {
+    "text": {
+      "COMMUNITY_BFF_ENABLED": "true",
+      "GOOGLE_OAUTH_ENABLED": "false"
+    },
+    "serverSecretNames": [
+      "CURSOR_KEY",
+      "DB_CA_PEM",
+      "DB_HOST",
+      "DB_PASSWORD",
+      "DB_PORT",
+      "DB_USER",
+      "EXPECTED_DB_HOST",
+      "IP_KEY"
+    ]
+  },
+  "subdomain": {
+    "enabled": false,
+    "previews_enabled": false
+  },
+  "customDomains": 0,
+  "deployedSourceSha256": "489a6133f653808e11d768ddc5f6e80249736ddec34f802d674aae313774d12f",
+  "sourceMatches": true,
+  "deployment": {
+    "deployments": [
+      {
+        "id": "16c30fd5-d479-46e2-9b3e-afc1a0bc9e35",
+        "source": "cf_cli",
+        "strategy": "percentage",
+        "annotations": {
+          "workers/message": "Automatic deployment on upload.",
+          "workers/triggered_by": "upload"
+        },
+        "versions": [
+          {
+            "version_id": "8cfa680a-b28f-4927-836c-86668065ab6e",
+            "percentage": 100
+          }
+        ],
+        "created_on": "2026-10-26T21:05:50.375117Z"
+      }
+    ]
+  },
+  "observability": null,
+  "usageModel": "standard",
+  "hostedRequests": "not yet executed"
+}

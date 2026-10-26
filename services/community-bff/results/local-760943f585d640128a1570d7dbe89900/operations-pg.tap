@@ -1,0 +1,214 @@
+TAP version 13
+# Subtest: 004 migration repeat application is checksum verified and defaults intake off
+ok 1 - 004 migration repeat application is checksum verified and defaults intake off
+  ---
+  duration_ms: 370.575362
+  type: 'test'
+  ...
+# Subtest: public only approved current metadata, no private note, identity, audit or pending record
+ok 2 - public only approved current metadata, no private note, identity, audit or pending record
+  ---
+  duration_ms: 373.534791
+  type: 'test'
+  ...
+# Subtest: quarantine immediate exclusion even with older page cursor; immutable disclosure-safe tombstone
+ok 3 - quarantine immediate exclusion even with older page cursor; immutable disclosure-safe tombstone
+  ---
+  duration_ms: 1960.517698
+  type: 'test'
+  ...
+# Subtest: supersession, rollback, later publication use immutable monotonic revision allocation
+ok 4 - supersession, rollback, later publication use immutable monotonic revision allocation
+  ---
+  duration_ms: 532.148393
+  type: 'test'
+  ...
+# Subtest: numeric feed order beyond nine events, equal timestamps, multipage highwater and concurrent writes
+ok 5 - numeric feed order beyond nine events, equal timestamps, multipage highwater and concurrent writes
+  ---
+  duration_ms: 2170.477303
+  type: 'test'
+  ...
+# Subtest: cursor tampering, cross kind, invalid kind, page size and privilege fields fail 400
+ok 6 - cursor tampering, cross kind, invalid kind, page size and privilege fields fail 400
+  ---
+  duration_ms: 223.529143
+  type: 'test'
+  ...
+# Subtest: admin.quarantine live default-deny, reason and exact expected state
+ok 7 - admin.quarantine live default-deny, reason and exact expected state
+  ---
+  duration_ms: 419.943774
+  type: 'test'
+  ...
+# Subtest: admin.rollback live default-deny, reason and exact expected state
+ok 8 - admin.rollback live default-deny, reason and exact expected state
+  ---
+  duration_ms: 409.695546
+  type: 'test'
+  ...
+# Subtest: admin.quarantine replay, mismatch and concurrent distinct-key decisions
+ok 9 - admin.quarantine replay, mismatch and concurrent distinct-key decisions
+  ---
+  duration_ms: 794.581992
+  type: 'test'
+  ...
+# Subtest: admin.rollback replay, mismatch and concurrent distinct-key decisions
+ok 10 - admin.rollback replay, mismatch and concurrent distinct-key decisions
+  ---
+  duration_ms: 818.014389
+  type: 'test'
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at locked
+ok 11 - admin.quarantine T17 atomic rollback at locked
+  ---
+  duration_ms: 423.531781
+  type: 'test'
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at projection
+ok 12 - admin.quarantine T17 atomic rollback at projection
+  ---
+  duration_ms: 425.050303
+  type: 'test'
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at audit
+ok 13 - admin.quarantine T17 atomic rollback at audit
+  ---
+  duration_ms: 417.149458
+  type: 'test'
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at feed
+ok 14 - admin.quarantine T17 atomic rollback at feed
+  ---
+  duration_ms: 419.610133
+  type: 'test'
+  ...
+# Subtest: admin.quarantine T17 atomic rollback at deferred
+ok 15 - admin.quarantine T17 atomic rollback at deferred
+  ---
+  duration_ms: 427.979855
+  type: 'test'
+  ...
+# Subtest: admin.rollback T17 atomic rollback at locked
+ok 16 - admin.rollback T17 atomic rollback at locked
+  ---
+  duration_ms: 420.034516
+  type: 'test'
+  ...
+# Subtest: admin.rollback T17 atomic rollback at projection
+ok 17 - admin.rollback T17 atomic rollback at projection
+  ---
+  duration_ms: 423.568561
+  type: 'test'
+  ...
+# Subtest: admin.rollback T17 atomic rollback at audit
+ok 18 - admin.rollback T17 atomic rollback at audit
+  ---
+  duration_ms: 410.174813
+  type: 'test'
+  ...
+# Subtest: admin.rollback T17 atomic rollback at feed
+ok 19 - admin.rollback T17 atomic rollback at feed
+  ---
+  duration_ms: 417.546508
+  type: 'test'
+  ...
+# Subtest: admin.rollback T17 atomic rollback at deferred
+ok 20 - admin.rollback T17 atomic rollback at deferred
+  ---
+  duration_ms: 430.524179
+  type: 'test'
+  ...
+# Subtest: role/suspension integration reuses live Auth, denies escalation, self grant and revoked replay
+ok 21 - role/suspension integration reuses live Auth, denies escalation, self grant and revoked replay
+  ---
+  duration_ms: 401.146545
+  type: 'test'
+  ...
+# Subtest: principal operation fault rolls role and audit/idempotency back together
+ok 22 - principal operation fault rolls role and audit/idempotency back together
+  ---
+  duration_ms: 246.871881
+  type: 'test'
+  ...
+# Subtest: admin audit paginates numerically with hash head and has no mutation endpoint
+ok 23 - admin audit paginates numerically with hash head and has no mutation endpoint
+  ---
+  duration_ms: 779.339468
+  type: 'test'
+  ...
+# Subtest: daily limit atomic last slot, duplicate replay, mismatch and pending quota
+ok 24 - daily limit atomic last slot, duplicate replay, mismatch and pending quota
+  ---
+  duration_ms: 783.433642
+  type: 'test'
+  ...
+# Subtest: coarse IP last slot across different accounts, hashed storage and no raw diagnostics
+ok 25 - coarse IP last slot across different accounts, hashed storage and no raw diagnostics
+  ---
+  duration_ms: 270.066418
+  type: 'test'
+  ...
+# Subtest: quota rollback on principal counter fault
+ok 26 - quota rollback on principal counter fault
+  ---
+  duration_ms: 268.294447
+  type: 'test'
+  ...
+# Subtest: quota rollback on coarse_ip counter fault
+ok 27 - quota rollback on coarse_ip counter fault
+  ---
+  duration_ms: 288.761464
+  type: 'test'
+  ...
+# Subtest: kill switch truthful 503, committed replay and public/private reads stay available
+ok 28 - kill switch truthful 503, committed replay and public/private reads stay available
+  ---
+  duration_ms: 298.836152
+  type: 'test'
+  ...
+# Subtest: quota table unavailable is 503 without work loss; recovery permits same key
+ok 29 - quota table unavailable is 503 without work loss; recovery permits same key
+  ---
+  duration_ms: 274.43899
+  type: 'test'
+  ...
+# Subtest: BIGINT feed sequence boundaries remain lossless and numerically ordered
+ok 30 - BIGINT feed sequence boundaries remain lossless and numerically ordered
+  ---
+  duration_ms: 386.129306
+  type: 'test'
+  ...
+# Subtest: synthetic daily reset and coarse retention do not erase pending/audit history
+ok 31 - synthetic daily reset and coarse retention do not erase pending/audit history
+  ---
+  duration_ms: 289.227706
+  type: 'test'
+  ...
+# Subtest: quota boundary exactly resets the IP window without recounting prior idempotency replay
+ok 32 - quota boundary exactly resets the IP window without recounting prior idempotency replay
+  ---
+  duration_ms: 294.637209
+  type: 'test'
+  ...
+# Subtest: idempotency insert failure rolls quota, submission and audit back together
+ok 33 - idempotency insert failure rolls quota, submission and audit back together
+  ---
+  duration_ms: 288.557108
+  type: 'test'
+  ...
+# Subtest: independent janitor prunes expired coarse hashes with intake disabled and preserves evidence
+ok 34 - independent janitor prunes expired coarse hashes with intake disabled and preserves evidence
+  ---
+  duration_ms: 264.743389
+  type: 'test'
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 34
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18729.678626

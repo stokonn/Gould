@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: Fetch uses real Request/Response, preserves receipts and emits bodyless 204
+ok 1 - Fetch uses real Request/Response, preserves receipts and emits bodyless 204
+  ---
+  duration_ms: 68.962477
+  type: 'test'
+  ...
+# Subtest: body limit stops dispatch, including unknown-length streams
+ok 2 - body limit stops dispatch, including unknown-length streams
+  ---
+  duration_ms: 3.228397
+  type: 'test'
+  ...
+# Subtest: deadline aborts database work, closes late scope and redacts failure
+ok 3 - deadline aborts database work, closes late scope and redacts failure
+  ---
+  duration_ms: 48.65964
+  type: 'test'
+  ...
+# Subtest: request connections close on failed connect, abort and repeated cleanup
+ok 4 - request connections close on failed connect, abort and repeated cleanup
+  ---
+  duration_ms: 1.77042
+  type: 'test'
+  ...
+# Subtest: TLS bindings require fixed provider host, CA and restricted user
+ok 5 - TLS bindings require fixed provider host, CA and restricted user
+  ---
+  duration_ms: 0.772091
+  type: 'test'
+  ...
+# Subtest: runtime identifier permits only canonical private schema and migration stays local
+ok 6 - runtime identifier permits only canonical private schema and migration stays local
+  ---
+  duration_ms: 0.746983
+  type: 'test'
+  ...
+# Subtest: stalled body deadline cancels stream before any database dispatch
+ok 7 - stalled body deadline cancels stream before any database dispatch
+  ---
+  duration_ms: 16.986273
+  type: 'test'
+  ...
+# Subtest: caller cancellation aborts scoped work and oversized output is unavailable
+ok 8 - caller cancellation aborts scoped work and oversized output is unavailable
+  ---
+  duration_ms: 14.383931
+  type: 'test'
+  ...
+# Subtest: asynchronous pg socket errors retire the connection exactly once
+ok 9 - asynchronous pg socket errors retire the connection exactly once
+  ---
+  duration_ms: 1.271416
+  type: 'test'
+  ...
+# Subtest: connection diagnostics expose only bounded categories and never driver text or credentials
+ok 10 - connection diagnostics expose only bounded categories and never driver text or credentials
+  ---
+  duration_ms: 1.739079
+  type: 'test'
+  ...
+# Subtest: fixed Google transport verifies actual signatures, caches with Age and discloses only identity
+ok 11 - fixed Google transport verifies actual signatures, caches with Age and discloses only identity
+  ---
+  duration_ms: 101.671904
+  type: 'test'
+  ...
+# Subtest: missing client configuration and untrusted token key URLs fail closed
+ok 12 - missing client configuration and untrusted token key URLs fail closed
+  ---
+  duration_ms: 41.601478
+  type: 'test'
+  ...
+# Subtest: HTTP errors, wrong media, redirects and oversized streamed keys fail unavailable
+ok 13 - HTTP errors, wrong media, redirects and oversized streamed keys fail unavailable
+  ---
+  duration_ms: 353.376227
+  type: 'test'
+  ...
+# Subtest: no-store and expired cache headers never retain remote keys
+ok 14 - no-store and expired cache headers never retain remote keys
+  ---
+  duration_ms: 161.109222
+  type: 'test'
+  ...
+# Subtest: rejected key responses cancel their body without buffering private error text
+ok 15 - rejected key responses cancel their body without buffering private error text
+  ---
+  duration_ms: 45.410935
+  type: 'test'
+  ...
+# Subtest: OAuth stays disabled without a client ID and never trusts substitute identity bindings
+ok 16 - OAuth stays disabled without a client ID and never trusts substitute identity bindings
+  ---
+  duration_ms: 0.892468
+  type: 'test'
+  ...
+# Subtest: enabling OAuth requires a real configured client-ID shape and caches only the real verifier
+ok 17 - enabling OAuth requires a real configured client-ID shape and caches only the real verifier
+  ---
+  duration_ms: 0.526125
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 945.585237

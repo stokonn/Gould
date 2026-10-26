@@ -1,6 +1,12 @@
 /** Per-request connections. No shared pool crosses Workers request ownership.
  * No credential URLs: connection options and CA arrive as server-only bindings. */
-export function requestConnections({Client,options,signal}) {
+export function connectionFailure(error) {
+ const allowed=new Set(['ECONNREFUSED','ECONNRESET','ETIMEDOUT','ENOTFOUND','EHOSTUNREACH','ERR_TLS_CERT_ALTNAME_INVALID','UNABLE_TO_VERIFY_LEAF_SIGNATURE','SELF_SIGNED_CERT_IN_CHAIN','CERT_HAS_EXPIRED','ERR_NOT_IMPLEMENTED','28P01','42501','53300']);
+ const message=typeof error?.message==='string'?error.message:'';
+ return {code:allowed.has(error?.code)?error.code:'UNKNOWN',reason:error?.code==='ETIMEDOUT'?'timeout':/certificate|issuer|self.signed/i.test(message)?'certificate':/timeout|timed out/i.test(message)?'timeout':/not implemented|not supported|unsupported/i.test(message)?'unsupported':/password|authentication|SCRAM/i.test(message)?'authentication':/TLS|SSL/i.test(message)?'tls':'connection'};
+}
+
+export function requestConnections({Client,options,signal,onError}) {
  const active=new Set();let closed=false;
  const close=async()=>{closed=true;await Promise.allSettled([...active].map(c=>c.end()));};
  const abort=()=>{void close();};
@@ -15,7 +21,7 @@ export function requestConnections({Client,options,signal}) {
    c.end=()=>{if(!ending)ending=Promise.resolve().then(end).finally(()=>active.delete(c));return ending;};
    active.add(c);
    try{await c.connect();if(closed||signal.aborted)throw new Error('request ended');return c;}
-   catch{await c.end().catch(()=>{});throw new Error('database unavailable');}
+   catch(error){try{onError?.(connectionFailure(error));}catch{}await c.end().catch(()=>{});throw new Error('database unavailable');}
   },close
  };
 }

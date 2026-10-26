@@ -183,3 +183,22 @@ test('failed login consumes the same budget, absent peer metadata cannot bypass,
  v.setFault(sql=>{if(sql.includes('abuse_limits'))throw Error('private database detail');});
  const unavailable=await v.fetch(null,'POST','/v1/session/challenge',{schemaVersion:1});assert.equal(unavailable.status,503);assert.ok(!JSON.stringify(unavailable).includes('private database detail'));
 });
+
+test('catalogue-only login serves real BFF reads without OAuth and cannot access auth, private records or writes',async t=>{
+ const {execFileSync}=await import('node:child_process'),{configuredIdentityVerifier}=await import('../identity.mjs');
+ const {default:pg}=await import('pg');
+ const v=await setup(t),role='goldberg_bff_'+randomUUID().replaceAll('-','');
+ await v.db.query(`CREATE ROLE "${role}" LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT NOREPLICATION NOBYPASSRLS`);
+ t.after(async()=>{const c=await import('../../../spikes/stage6-api-v1-local/tests/pg-http-venue.mjs').then(m=>m.connect());try{await c.query(`DROP ROLE "${role}"`);}finally{await c.end();}});
+ const sql=JSON.parse(execFileSync('python3',['-c','import sys,json;sys.path.insert(0,"scripts/stage6");from provision_private_runtime import catalogue_grant_statements;print(json.dumps(catalogue_grant_statements(sys.argv[1],sys.argv[2])))',v.schema,role],{encoding:'utf8'}));
+ // Fixture tables must have RLS just like the hosted canonical schema.
+ for(const table of ['published_entities','published_revisions','change_feed','audit_head'])await v.db.query(`ALTER TABLE ${v.q}.${table} ENABLE ROW LEVEL SECURITY`);
+ for(const statement of sql)await v.db.query(statement);
+ const connect=async()=>{const c=new pg.Client({host:'127.0.0.1',port:Number(process.env.SCHEMA_PG_PORT??54339),database:'schema_prototype',user:role,password:'',connectionTimeoutMillis:3000});await c.connect();return c;};
+ await v.fresh({connect,verifier:configuredIdentityVerifier({GOOGLE_OAUTH_ENABLED:'false'})});
+ assert.equal((await v.fetch(null,'GET','/v1/catalogue/overlay')).status,200);
+ const feed=await v.fetch(null,'GET','/v1/catalogue/changes');assert.equal(feed.status,200);assert.deepEqual(feed.body.items,[]);assert.equal(typeof feed.body.pollCursor,'string');
+ const c=await connect();try{
+  for(const statement of [`SELECT * FROM ${v.q}.principals`,`SELECT * FROM ${v.q}.sessions`,`SELECT * FROM ${v.q}.submission_revisions`,`SELECT * FROM ${v.q}.intake_control`,`INSERT INTO ${v.q}.auth_challenges DEFAULT VALUES`,`UPDATE ${v.q}.audit_head SET last_seq=1`,`DELETE FROM ${v.q}.published_entities`,`CREATE TABLE ${v.q}.forbidden(id int)`])await assert.rejects(c.query(statement),e=>e.code==='42501',statement);
+ }finally{await c.end();}
+});

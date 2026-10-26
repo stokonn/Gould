@@ -55,3 +55,16 @@ test('asynchronous pg socket errors retire the connection exactly once',async()=
  const scope=requestConnections({Client,options:{},signal:new AbortController().signal});
  const c=await scope.connect();c.emit('error',Error('private socket detail'));await scope.close();assert.equal(ends,1);
 });
+
+
+test('connection diagnostics expose only bounded categories and never driver text or credentials',async()=>{
+ const {connectionFailure}=await import('../database.mjs');
+ const secret='postgres://administrator:PRIVATE-PASSWORD@host.invalid';
+ assert.deepEqual(connectionFailure({code:'28P01',message:'password authentication failed '+secret}),{code:'28P01',reason:'authentication'});
+ assert.deepEqual(connectionFailure({code:secret,message:'certificate failed '+secret}),{code:'UNKNOWN',reason:'certificate'});
+ let diagnostic;
+ class Bad {on(){}async connect(){throw {code:'ETIMEDOUT',message:secret};}async end(){}}
+ const scope=requestConnections({Client:Bad,options:{},signal:new AbortController().signal,onError:r=>{diagnostic=r;throw Error(secret);}});
+ await assert.rejects(scope.connect(),e=>e.message==='database unavailable');
+ assert.deepEqual(diagnostic,{code:'ETIMEDOUT',reason:'timeout'});assert.ok(!JSON.stringify(diagnostic).includes(secret));
+});

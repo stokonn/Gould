@@ -37,3 +37,13 @@ test('rejected key responses cancel their body without buffering private error t
  const f=await fixture(()=>new Response(new ReadableStream({pull(){},cancel(){cancelled=true;}}),{status:503}));
  await assert.rejects(f.verifier.verify(await f.sign()),e=>e.status===503);assert.equal(cancelled,true);
 });
+test('OAuth stays disabled without a client ID and never trusts substitute identity bindings',async()=>{
+ const {configuredIdentityVerifier}=await import('../identity.mjs');let calls=0;
+ const verifier=configuredIdentityVerifier({IDENTITY_VERIFIER:{verify:async()=>{calls++;return {subject:'forbidden'};}}});
+ await assert.rejects(verifier.verify('any credential'),e=>e.status===503);assert.equal(calls,0);
+});
+test('enabling OAuth requires a real configured client-ID shape and caches only the real verifier',async()=>{
+ const {configuredIdentityVerifier}=await import('../identity.mjs');
+ assert.throws(()=>configuredIdentityVerifier({GOOGLE_OAUTH_ENABLED:'true'}));
+ const env={GOOGLE_OAUTH_ENABLED:'true',GOOGLE_CLIENT_ID:audience};assert.equal(configuredIdentityVerifier(env),configuredIdentityVerifier(env));
+});

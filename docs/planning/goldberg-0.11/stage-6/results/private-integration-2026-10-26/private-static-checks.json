@@ -1,0 +1,50 @@
+[
+  {
+    "command": [
+      "python3",
+      "scripts/check_agent_policy.py"
+    ],
+    "exitCode": 0,
+    "output": "PASS: canonical policy, thin agent references, Cursor frontmatter and local Wiki navigation; runtime agent loading NOT TESTED\n"
+  },
+  {
+    "command": [
+      "python3",
+      "scripts/check_backup_fixtures.py"
+    ],
+    "exitCode": 0,
+    "output": "PASS goldberg-0.6.0-format1.json: schema 4 \u2192 10 DDL, every original portable field retained\nPASS goldberg-0.9.1-format2.json: schema 6 \u2192 10 DDL, every original portable field retained\nPASS goldberg-0.9.2-format3.json: schema 7 \u2192 10 DDL, every original portable field retained\n"
+  },
+  {
+    "command": [
+      "python3",
+      "scripts/check_history_paging.py"
+    ],
+    "exitCode": 0,
+    "output": "PASS: 106 sessions across 4 pages, equal timestamps, duplicate parts, legacy attribution, catalogue filtering, newer insert and empty result\nPASS: untimed legacy association visible once; original time unchanged\n"
+  },
+  {
+    "command": [
+      "python3",
+      "scripts/check_localization.py"
+    ],
+    "exitCode": 0,
+    "output": "PASS: 951 English/Czech resources, matching placeholders, Czech plural forms and declared locales\n"
+  },
+  {
+    "command": [
+      "python3",
+      "scripts/check_migrations.py"
+    ],
+    "exitCode": 0,
+    "output": "PASS v1 \u2192 v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests\nPASS v2 \u2192 v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests\nPASS v3 \u2192 v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests\nPASS v4 \u2192 v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests\nPASS v5 \u2192 v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests\nPASS v6 \u2192 v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests\nPASS v7 \u2192 v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests\nPASS v8 \u2192 v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests\nPASS v9 \u2192 v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests\n"
+  },
+  {
+    "command": [
+      "python3",
+      "scripts/check_stage6_acl_proposal.py"
+    ],
+    "exitCode": 0,
+    "output": "PASS: ACL proposal is function-scoped, trigger-guarded, and rollback-oriented\n"
+  }
+]

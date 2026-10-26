@@ -1,0 +1,238 @@
+TAP version 13
+# Subtest: T22 audit edit anonymous: approved403 before auth SQL or handler dispatch
+ok 1 - T22 audit edit anonymous: approved403 before auth SQL or handler dispatch
+  ---
+  duration_ms: 7.88075
+  type: 'test'
+  ...
+# Subtest: T22 audit edit malformed token: approved403 before auth SQL or handler dispatch
+ok 2 - T22 audit edit malformed token: approved403 before auth SQL or handler dispatch
+  ---
+  duration_ms: 0.621316
+  type: 'test'
+  ...
+# Subtest: T22 audit edit administrator: approved403 before auth SQL or handler dispatch
+ok 3 - T22 audit edit administrator: approved403 before auth SQL or handler dispatch
+  ---
+  duration_ms: 0.617508
+  type: 'test'
+  ...
+# Subtest: T22 same absent audit operation: Auth and composed adapters both403
+ok 4 - T22 same absent audit operation: Auth and composed adapters both403
+  ---
+  duration_ms: 0.938605
+  type: 'test'
+  ...
+# Subtest: T22 absent operation bootstrap.admin cannot dispatch via prototype
+ok 5 - T22 absent operation bootstrap.admin cannot dispatch via prototype
+  ---
+  duration_ms: 0.554129
+  type: 'test'
+  ...
+# Subtest: T22 absent operation roles.bootstrap cannot dispatch via prototype
+ok 6 - T22 absent operation roles.bootstrap cannot dispatch via prototype
+  ---
+  duration_ms: 0.563736
+  type: 'test'
+  ...
+# Subtest: T22 absent operation rpc cannot dispatch via prototype
+ok 7 - T22 absent operation rpc cannot dispatch via prototype
+  ---
+  duration_ms: 0.483434
+  type: 'test'
+  ...
+# Subtest: T22 absent operation deployment cannot dispatch via prototype
+ok 8 - T22 absent operation deployment cannot dispatch via prototype
+  ---
+  duration_ms: 0.43844
+  type: 'test'
+  ...
+# Subtest: T22 absent operation __proto__ cannot dispatch via prototype
+ok 9 - T22 absent operation __proto__ cannot dispatch via prototype
+  ---
+  duration_ms: 1.121051
+  type: 'test'
+  ...
+# Subtest: T22 absent operation constructor cannot dispatch via prototype
+ok 10 - T22 absent operation constructor cannot dispatch via prototype
+  ---
+  duration_ms: 0.900263
+  type: 'test'
+  ...
+# Subtest: T22 absent operation toString cannot dispatch via prototype
+ok 11 - T22 absent operation toString cannot dispatch via prototype
+  ---
+  duration_ms: 0.43343
+  type: 'test'
+  ...
+# Subtest: T22 registered role route missing denies401 without privilege writes
+ok 12 - T22 registered role route missing denies401 without privilege writes
+  ---
+  duration_ms: 1.266466
+  type: 'test'
+  ...
+# Subtest: T22 registered role route malformed denies401 without privilege writes
+ok 13 - T22 registered role route malformed denies401 without privilege writes
+  ---
+  duration_ms: 0.483555
+  type: 'test'
+  ...
+# Subtest: T22 registered role route unknown well formed denies401 without privilege writes
+ok 14 - T22 registered role route unknown well formed denies401 without privilege writes
+  ---
+  duration_ms: 1.873073
+  type: 'test'
+  ...
+# Subtest: T22 registered role route expired denies401 without privilege writes
+ok 15 - T22 registered role route expired denies401 without privilege writes
+  ---
+  duration_ms: 0.84026
+  type: 'test'
+  ...
+# Subtest: T22 registered role route revoked denies401 without privilege writes
+ok 16 - T22 registered role route revoked denies401 without privilege writes
+  ---
+  duration_ms: 0.491239
+  type: 'test'
+  ...
+# Subtest: T22 registered role route suspended denies403 without privilege writes
+ok 17 - T22 registered role route suspended denies403 without privilege writes
+  ---
+  duration_ms: 0.60766
+  type: 'test'
+  ...
+# Subtest: T22 registered role route contributor denies403 without privilege writes
+ok 18 - T22 registered role route contributor denies403 without privilege writes
+  ---
+  duration_ms: 1.260134
+  type: 'test'
+  ...
+# Subtest: T22 registered role route moderator denies403 without privilege writes
+ok 19 - T22 registered role route moderator denies403 without privilege writes
+  ---
+  duration_ms: 0.545582
+  type: 'test'
+  ...
+# Subtest: T22 registered role route no grants denies403 without privilege writes
+ok 20 - T22 registered role route no grants denies403 without privilege writes
+  ---
+  duration_ms: 0.598142
+  type: 'test'
+  ...
+# Subtest: T22 registered role route unknown role denies403 without privilege writes
+ok 21 - T22 registered role route unknown role denies403 without privilege writes
+  ---
+  duration_ms: 0.632306
+  type: 'test'
+  ...
+# Subtest: T22 authenticated administrator self grant canonical UUID denies403 before mutation
+ok 22 - T22 authenticated administrator self grant canonical UUID denies403 before mutation
+  ---
+  duration_ms: 1.967031
+  type: 'test'
+  ...
+# Subtest: T22 authenticated administrator self grant uppercase UUID denies403 before mutation
+ok 23 - T22 authenticated administrator self grant uppercase UUID denies403 before mutation
+  ---
+  duration_ms: 2.402014
+  type: 'test'
+  ...
+# Subtest: T22 malformed role request forged actor fails400 before authentication
+ok 24 - T22 malformed role request forged actor fails400 before authentication
+  ---
+  duration_ms: 0.699473
+  type: 'test'
+  ...
+# Subtest: T22 malformed role request schemaVersion fails400 before authentication
+ok 25 - T22 malformed role request schemaVersion fails400 before authentication
+  ---
+  duration_ms: 0.355473
+  type: 'test'
+  ...
+# Subtest: T22 malformed role request string revoke fails400 before authentication
+ok 26 - T22 malformed role request string revoke fails400 before authentication
+  ---
+  duration_ms: 0.312722
+  type: 'test'
+  ...
+# Subtest: T22 malformed role request bad principal UUID fails400 before authentication
+ok 27 - T22 malformed role request bad principal UUID fails400 before authentication
+  ---
+  duration_ms: 0.289668
+  type: 'test'
+  ...
+# Subtest: T22 malformed role request mixed suspend fields fails400 before authentication
+ok 28 - T22 malformed role request mixed suspend fields fails400 before authentication
+  ---
+  duration_ms: 0.377845
+  type: 'test'
+  ...
+# Subtest: T22 unsupported operator role denied400 after auth, no grant/audit SQL
+ok 29 - T22 unsupported operator role denied400 after auth, no grant/audit SQL
+  ---
+  duration_ms: 0.901556
+  type: 'test'
+  ...
+# Subtest: T22 known audit read authenticates and authorizes; admin only read SQL
+ok 30 - T22 known audit read authenticates and authorizes; admin only read SQL
+  ---
+  duration_ms: 1.660111
+  type: 'test'
+  ...
+# Subtest: T22 unavailable auth storage gives safe503, no role/audit mutation
+ok 31 - T22 unavailable auth storage gives safe503, no role/audit mutation
+  ---
+  duration_ms: 0.54975
+  type: 'test'
+  ...
+# Subtest: T22 approved array operation rejects400 before registered route authentication
+ok 32 - T22 approved array operation rejects400 before registered route authentication
+  ---
+  duration_ms: 0.296561
+  type: 'test'
+  ...
+# Subtest: T22 malformed outer envelope bounded body and getters deny400 before any SQL
+ok 33 - T22 malformed outer envelope bounded body and getters deny400 before any SQL
+  ---
+  duration_ms: 0.472775
+  type: 'test'
+  ...
+# Subtest: T22 malformed operation missing denies400 without dispatch
+ok 34 - T22 malformed operation missing denies400 without dispatch
+  ---
+  duration_ms: 0.299276
+  type: 'test'
+  ...
+# Subtest: T22 malformed operation null denies400 without dispatch
+ok 35 - T22 malformed operation null denies400 without dispatch
+  ---
+  duration_ms: 0.315397
+  type: 'test'
+  ...
+# Subtest: T22 malformed operation empty denies400 without dispatch
+ok 36 - T22 malformed operation empty denies400 without dispatch
+  ---
+  duration_ms: 0.23262
+  type: 'test'
+  ...
+# Subtest: T22 malformed operation object denies400 without dispatch
+ok 37 - T22 malformed operation object denies400 without dispatch
+  ---
+  duration_ms: 0.174821
+  type: 'test'
+  ...
+# Subtest: T22 malformed operation array denies400 without dispatch
+ok 38 - T22 malformed operation array denies400 without dispatch
+  ---
+  duration_ms: 0.168699
+  type: 'test'
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 299.562284

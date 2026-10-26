@@ -36,6 +36,8 @@ jobs:
           npm ci --prefix spikes/stage6-schema-pg --ignore-scripts --no-audit --no-fund
           npm ci --prefix spikes/stage6-auth-local --ignore-scripts --no-audit --no-fund
           npm ci --prefix services/community-bff --ignore-scripts --no-audit --no-fund
+      - name: Verify protected credential custody and least-privilege provisioning guards
+        run: python3 -m unittest discover -s scripts/stage6 -p test_private_runtime.py
       - name: Actual Fetch and workerd to PostgreSQL plus backend regressions
         run: python3 services/community-bff/ci.py
       - name: Verify production package fails closed

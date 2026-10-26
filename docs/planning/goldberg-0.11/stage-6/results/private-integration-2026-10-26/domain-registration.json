@@ -1,0 +1,10 @@
+{
+  "accountSubdomain": "goldberg-private-stage6-6e7aca1b",
+  "ownerAuthorized": true,
+  "worker": {
+    "enabled": false,
+    "previews_enabled": false
+  },
+  "publicDomains": 0,
+  "registrationOnly": true
+}

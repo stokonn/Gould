@@ -1,0 +1,244 @@
+{
+  "ledger": "d39a3afd68a2671dd642a17a82f96edea76dfc0ae1a09edb4be9ffde6aa5c935",
+  "intake": false,
+  "applicationRows": 0,
+  "rlsTables": 20,
+  "policies": 55,
+  "cataloguePolicies": 5,
+  "bffPolicies": 49,
+  "bffRoleInert": true,
+  "catalogueRoleSafe": true,
+  "expiresUtc": "2026-10-27T03:00:38.53547+00:00",
+  "catalogueMemberships": 0,
+  "catalogueOwnsObjects": 0,
+  "anonPrivate": false,
+  "authenticatedPrivate": false,
+  "bffTableGrants": [
+    {
+      "table": "abuse_limits",
+      "privilege": "DELETE"
+    },
+    {
+      "table": "abuse_limits",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "abuse_limits",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "abuse_limits",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "audit_events",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "audit_events",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "audit_head",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "audit_head",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "auth_challenges",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "auth_challenges",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "auth_challenges",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "auth_families",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "auth_families",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "auth_families",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "auth_refresh",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "auth_refresh",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "auth_refresh",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "change_feed",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "change_feed",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "idempotency_results",
+      "privilege": "DELETE"
+    },
+    {
+      "table": "idempotency_results",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "idempotency_results",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "identity_mappings",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "identity_mappings",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "identity_mappings",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "intake_control",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "principals",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "principals",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "principals",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "published_entities",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "published_entities",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "published_entities",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "published_revisions",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "published_revisions",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "review_events",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "review_events",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "role_grants",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "role_grants",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "role_grants",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "sessions",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "sessions",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "sessions",
+      "privilege": "UPDATE"
+    },
+    {
+      "table": "submission_revisions",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "submission_revisions",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "submissions",
+      "privilege": "INSERT"
+    },
+    {
+      "table": "submissions",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "submissions",
+      "privilege": "UPDATE"
+    }
+  ],
+  "catalogueTableGrants": [
+    {
+      "table": "audit_head",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "change_feed",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "published_entities",
+      "privilege": "SELECT"
+    },
+    {
+      "table": "published_revisions",
+      "privilege": "SELECT"
+    }
+  ],
+  "catalogueLockColumns": [
+    {
+      "table": "audit_head",
+      "column": "singleton",
+      "privilege": "UPDATE"
+    }
+  ],
+  "tableCounts": {
+    "principals": 0,
+    "sessions": 0,
+    "audit_events": 0,
+    "published_entities": 0,
+    "published_revisions": 0,
+    "change_feed": 0,
+    "staging_probe": 1
+  },
+  "status": "PASS",
+  "observedUtc": "2026-10-26T21:33:08.266097+00:00",
+  "metadataOnly": true,
+  "mutations": 0
+}

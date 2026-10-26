@@ -17,10 +17,14 @@ try {
   for(const path of ['/v1/session','/v1/admin/queue','/v1/submissions','/v1/catalogue/overlay']){
    const r=await mf.dispatchFetch('https://private.invalid'+path);assert.equal(r.status,503);const body=await r.text();assert.ok(!/password|postgres|DB_HOST|stack/i.test(body));assertions.push({enabled:!!bindings.COMMUNITY_BFF_ENABLED,path,status:r.status});
   }
+  for(const path of ['/v1/session/challenge','/v1/session','/v1/session/refresh']){
+   const r=await mf.dispatchFetch('https://private.invalid'+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({schemaVersion:1})});
+   assert.equal(r.status,503);assert.equal(r.headers.get('cache-control'),'no-store');const body=await r.json();assert.equal(body.error.code,'service_unavailable');assert.ok(!/password|postgres|DB_HOST|stack/i.test(JSON.stringify(body)));assertions.push({enabled:!!bindings.COMMUNITY_BFF_ENABLED,oauthConfigured:false,path,method:'POST',status:r.status});
+  }
   await mf.dispose();mf=undefined;
  }
  const resultDir='services/community-bff/results/package-'+randomUUID();
  await mkdir(resultDir,{recursive:true});
  await writeFile(join(resultDir,'receipt.json'),JSON.stringify({bundleSha256:createHash('sha256').update(bytes).digest('hex'),bundleBytes:bytes.length,conditions:['workerd'],runtime:'local workerd; not hosted',assertions},null,2)+'\n');
- console.log('Worker package: 8 actual workerd fail-closed requests PASS; '+resultDir);
+ console.log('Worker package: 14 actual workerd fail-closed requests PASS; '+resultDir);
 }finally{await mf?.dispose();await rm(out,{recursive:true,force:true});}

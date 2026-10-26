@@ -1,0 +1,36 @@
+{
+  "observedUtc": "2026-10-26T21:31:02.068871+00:00",
+  "host": "aws-1-eu-central-1.pooler.supabase.com",
+  "actualCredentialFreeTls": [
+    {
+      "case": "system-trust",
+      "exitCode": 1,
+      "expectedTlsSuccess": false,
+      "pass": true,
+      "verificationErrors": [
+        "19:self-signed certificate in certificate chain"
+      ],
+      "passwordSubmitted": false
+    },
+    {
+      "case": "approved-ca",
+      "exitCode": 0,
+      "expectedTlsSuccess": true,
+      "pass": true,
+      "verificationErrors": [],
+      "passwordSubmitted": false
+    },
+    {
+      "case": "wrong-hostname",
+      "exitCode": 1,
+      "expectedTlsSuccess": false,
+      "pass": true,
+      "verificationErrors": [
+        "62:hostname mismatch"
+      ],
+      "passwordSubmitted": false
+    }
+  ],
+  "caSubject": "Supabase Root 2021 CA",
+  "status": "PASS"
+}

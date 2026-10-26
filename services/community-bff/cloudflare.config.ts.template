@@ -4,7 +4,7 @@ export default defineConfig({worker:{
  name:'goldberg-community-bff',compatibilityDate:'2026-10-25',
  compatibilityFlags:['nodejs_compat'],entrypoint:'./worker.mjs',
  workersDev:false,previewUrls:false,
- env:{COMMUNITY_BFF_ENABLED:bindings.text('false'),
+ env:{COMMUNITY_BFF_ENABLED:bindings.text('false'),GOOGLE_OAUTH_ENABLED:bindings.text('false'),
   DB_HOST:bindings.secret(),EXPECTED_DB_HOST:bindings.secret(),
   DB_PORT:bindings.secret(),DB_USER:bindings.secret(),DB_PASSWORD:bindings.secret(),
   DB_CA_PEM:bindings.secret(),CURSOR_KEY:bindings.secret(),IP_KEY:bindings.secret(),

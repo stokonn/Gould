@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: INT8-PG entity increment crosses the safe-integer boundary losslessly end to end
+ok 1 - INT8-PG entity increment crosses the safe-integer boundary losslessly end to end
+  ---
+  duration_ms: 632.419427
+  type: 'test'
+  ...
+# Subtest: INT8-PG same-key replay of a full-range approval is byte-exact and effect-free
+ok 2 - INT8-PG same-key replay of a full-range approval is byte-exact and effect-free
+  ---
+  duration_ms: 572.120779
+  type: 'test'
+  ...
+# Subtest: INT8-PG entity at signed int8 maximum refuses overflow with conflict and zero effects
+ok 3 - INT8-PG entity at signed int8 maximum refuses overflow with conflict and zero effects
+  ---
+  duration_ms: 510.268352
+  type: 'test'
+  ...
+# Subtest: INT8-PG concurrent full-range approvals serialize to exactly one publication
+ok 4 - INT8-PG concurrent full-range approvals serialize to exactly one publication
+  ---
+  duration_ms: 515.048274
+  type: 'test'
+  ...
+# Subtest: INT8-PG storage fault during full-range approval rolls back every effect; unchanged retry recovers
+ok 5 - INT8-PG storage fault during full-range approval rolls back every effect; unchanged retry recovers
+  ---
+  duration_ms: 532.17861
+  type: 'test'
+  ...
+# Subtest: INT8-PG minimum valid revisions approve a new entity at exactly 1
+ok 6 - INT8-PG minimum valid revisions approve a new entity at exactly 1
+  ---
+  duration_ms: 480.794666
+  type: 'test'
+  ...
+# Subtest: INT8-PG malformed, underflow and above-max revision writes are rejected without dispatch effects
+ok 7 - INT8-PG malformed, underflow and above-max revision writes are rejected without dispatch effects
+  ---
+  duration_ms: 486.002559
+  type: 'test'
+  ...
+# Subtest: INT8-PG stale full-range expectations conflict exactly; correct values proceed
+ok 8 - INT8-PG stale full-range expectations conflict exactly; correct values proceed
+  ---
+  duration_ms: 514.394787
+  type: 'test'
+  ...
+# Subtest: INT8-PG queue, detail and comparison read full-range revisions back exactly
+ok 9 - INT8-PG queue, detail and comparison read full-range revisions back exactly
+  ---
+  duration_ms: 570.861146
+  type: 'test'
+  ...
+# Subtest: INT8-PG full-range request_changes then author revision chain stays exact
+ok 10 - INT8-PG full-range request_changes then author revision chain stays exact
+  ---
+  duration_ms: 597.34204
+  type: 'test'
+  ...
+# Subtest: INT8-PG exact odd above-safe entity revision increments without aliasing
+ok 11 - INT8-PG exact odd above-safe entity revision increments without aliasing
+  ---
+  duration_ms: 489.14356
+  type: 'test'
+  ...
+# Subtest: INT8-PG publication can reach maximum exactly, then rejects the next increment
+ok 12 - INT8-PG publication can reach maximum exactly, then rejects the next increment
+  ---
+  duration_ms: 588.695143
+  type: 'test'
+  ...
+# Subtest: INT8-PG concurrent same-principal full-range identical intent replays exactly once
+ok 13 - INT8-PG concurrent same-principal full-range identical intent replays exactly once
+  ---
+  duration_ms: 492.340377
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7296.666507

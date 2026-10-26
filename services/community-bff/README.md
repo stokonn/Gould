@@ -36,12 +36,13 @@ principal/role locks remain authoritative. Raw database headers are not returned
 Database and internal errors are redacted. No shared connection pool, scheduled
 janitor, background retry, cookie authorization or browser credential is added.
 
-The production Worker additionally requires explicit enablement, an approved Google
-client ID (or a private identity verifier binding), fixed DB host, restricted role,
+The production Worker requires explicit enablement, fixed DB host, restricted role,
 CA configuration and stable server-only cursor/IP keys. The fixed Google JWKS
 transport bounds reads, rejects redirects and respects cache age; it reuses the
 accepted signature/issuer/audience/nonce verifier. Identity supplies no roles.
-Real OAuth client configuration remains absent from the inert candidate.
+Google OAuth additionally requires GOOGLE_OAUTH_ENABLED=true and an approved client ID.
+Without that configuration all three session POST endpoints fail closed; catalogue
+reads remain independently available. No substitute identity binding is trusted.
 Application database grants are not provisioned by the Worker or probe role.
 `runtime-access.mjs` emits a reviewable transaction with explicit table/command
 grants and server-role RLS policies. It never connects or creates roles/credentials.
@@ -49,7 +50,8 @@ Runtime roles cannot own objects, inherit memberships or bypass RLS. Application
 requests still pass live ownership/session/role checks. Local integration uses
 actual restricted logins and tests denial of DDL, migration reads, intake edits
 and role escalation. The reviewed NOLOGIN runtime role/grants/RLS transaction is now applied to the
-existing Supabase schema. No password, login enablement or Worker is deployed.
+existing Supabase schema. A separate short-lived catalogue-only login and route-less private Worker are now deployed;
+full application login/write-role deployment remains pending.
 Its only creator-maintenance membership is schema-owner ADMIN with INHERIT=false
 and SET=false. Hosted exact grants/policies/client denials and Advisor pass.
 Do not replay role creation/policies;actual hosted runtime acceptance remains open.
@@ -74,8 +76,8 @@ and verifies absence. It never accepts a database URL. The client mode executes
 the actual isolated Android repository/transport against real HTTP and PostgreSQL.
 CI uses a separate explicitly disposable PostgreSQL service and the same bodies.
 
-Latest backend execution:517 bodies/0failures/0skips,including14 Fetch/identity,
-12 combined BFF/PG and1 actual local workerd/PG test. Production bundle:8 workerd
+Latest backend execution:521 bodies/0failures/0skips,including17 Fetch/identity,
+13 combined BFF/PG and1 actual local workerd/PG test. Production bundle:14 workerd
 fail-closed requests. Local first/warm wall times337.424ms/29.791ms,3 workerd
 requests;these are not hosted latency or CPU measurements. Kotlin real HTTP/PG
 execution:1 passed integration case,0skips. Full receipts live under results/.
@@ -93,3 +95,5 @@ Only HMAC/domain-separated coarse-IP keys are stored;missing peer metadata share
 a bounded bucket. 429includesRetry-After;counter/database failures deny requests.
 Hosted deployment/verification is BLOCKED by the owner's current connectivity
 directive;no database authentication retries or credential changes are allowed.
+
+Current private deployment evidence: [October26 integration](../../docs/planning/goldberg-0.11/stage-6/PRIVATE-INTEGRATION-2026-10-26.md).

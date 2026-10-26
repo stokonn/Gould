@@ -4,6 +4,14 @@ import {unavailable} from '../../spikes/stage6-auth-local/src/errors.mjs';
 // Configuration fixes the origin. JWT headers and request parameters cannot
 // select a key URL. The accepted verifier owns rotation, single-flight and TTL.
 export const GOOGLE_JWKS_URL='https://www.googleapis.com/oauth2/v3/certs';
+const configured=new WeakMap();
+export function configuredIdentityVerifier(env){
+ // Missing OAuth never prevents independent catalogue reads. It also never
+ // creates a synthetic identity or trusts a private verifier while disabled.
+ if(env.GOOGLE_OAUTH_ENABLED!=='true')return {verify:async()=>{throw unavailable();}};
+ if(!configured.has(env))configured.set(env,googleIdentityVerifier({audience:env.GOOGLE_CLIENT_ID}));
+ return configured.get(env);
+}
 export function googleIdentityVerifier({audience,fetcher=fetch,clock=Date.now}) {
  if(typeof audience!=='string'||!/^[A-Za-z0-9_-]{1,200}\.apps\.googleusercontent\.com$/.test(audience)||typeof fetcher!=='function')throw new TypeError('Google client ID required');
  return new IdentityVerifier({issuer:'https://accounts.google.com',audience,clock,algorithms:['RS256'],skewSeconds:60,timeoutMs:3000,maxAgeSeconds:300,

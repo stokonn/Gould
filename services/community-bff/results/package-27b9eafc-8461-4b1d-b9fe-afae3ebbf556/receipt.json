@@ -1,0 +1,92 @@
+{
+  "bundleSha256": "37aec08662ec29907d8e13297983f8f4c1e65f683e57137adaf3ea46ae0e2a33",
+  "bundleBytes": 540286,
+  "conditions": [
+    "workerd"
+  ],
+  "runtime": "local workerd; not hosted",
+  "assertions": [
+    {
+      "enabled": false,
+      "path": "/v1/session",
+      "status": 503
+    },
+    {
+      "enabled": false,
+      "path": "/v1/admin/queue",
+      "status": 503
+    },
+    {
+      "enabled": false,
+      "path": "/v1/submissions",
+      "status": 503
+    },
+    {
+      "enabled": false,
+      "path": "/v1/catalogue/overlay",
+      "status": 503
+    },
+    {
+      "enabled": false,
+      "oauthConfigured": false,
+      "path": "/v1/session/challenge",
+      "method": "POST",
+      "status": 503
+    },
+    {
+      "enabled": false,
+      "oauthConfigured": false,
+      "path": "/v1/session",
+      "method": "POST",
+      "status": 503
+    },
+    {
+      "enabled": false,
+      "oauthConfigured": false,
+      "path": "/v1/session/refresh",
+      "method": "POST",
+      "status": 503
+    },
+    {
+      "enabled": true,
+      "path": "/v1/session",
+      "status": 503
+    },
+    {
+      "enabled": true,
+      "path": "/v1/admin/queue",
+      "status": 503
+    },
+    {
+      "enabled": true,
+      "path": "/v1/submissions",
+      "status": 503
+    },
+    {
+      "enabled": true,
+      "path": "/v1/catalogue/overlay",
+      "status": 503
+    },
+    {
+      "enabled": true,
+      "oauthConfigured": false,
+      "path": "/v1/session/challenge",
+      "method": "POST",
+      "status": 503
+    },
+    {
+      "enabled": true,
+      "oauthConfigured": false,
+      "path": "/v1/session",
+      "method": "POST",
+      "status": 503
+    },
+    {
+      "enabled": true,
+      "oauthConfigured": false,
+      "path": "/v1/session/refresh",
+      "method": "POST",
+      "status": 503
+    }
+  ]
+}

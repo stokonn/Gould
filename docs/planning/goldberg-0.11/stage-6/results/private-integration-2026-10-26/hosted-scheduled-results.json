@@ -1,0 +1,562 @@
+{
+  "runs": [
+    {
+      "result": {
+        "kind": "goldberg-private-synthetic-v1",
+        "time": "2026-10-26T21:25:28.940Z",
+        "results": [
+          {
+            "name": "catalogue",
+            "status": 503,
+            "expected": 200,
+            "pass": false,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141,
+            "empty": false
+          },
+          {
+            "name": "changes",
+            "status": 503,
+            "expected": 200,
+            "pass": false,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141,
+            "empty": false
+          },
+          {
+            "name": "oauth-disabled",
+            "status": 503,
+            "expected": 503,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141
+          },
+          {
+            "name": "denied",
+            "status": 401,
+            "expected": 401,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141
+          },
+          {
+            "name": "bad-cursor",
+            "status": 400,
+            "expected": 400,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 135
+          },
+          {
+            "name": "wrong-method",
+            "status": 405,
+            "expected": 405,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 139
+          },
+          {
+            "name": "missing",
+            "status": 404,
+            "expected": 404,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 130
+          }
+        ]
+      },
+      "outcome": "ok",
+      "cpuMs": 1,
+      "wallMs": 847,
+      "scriptVersion": {
+        "id": "b53131ae-5459-448c-9502-a728ae1cabd7"
+      }
+    },
+    {
+      "result": {
+        "kind": "goldberg-private-synthetic-v1",
+        "time": "2026-10-26T21:26:24.276Z",
+        "results": [
+          {
+            "name": "catalogue",
+            "status": 503,
+            "expected": 200,
+            "pass": false,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141,
+            "empty": false
+          },
+          {
+            "name": "changes",
+            "status": 503,
+            "expected": 200,
+            "pass": false,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141,
+            "empty": false
+          },
+          {
+            "name": "oauth-disabled",
+            "status": 503,
+            "expected": 503,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141
+          },
+          {
+            "name": "denied",
+            "status": 401,
+            "expected": 401,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141
+          },
+          {
+            "name": "bad-cursor",
+            "status": 400,
+            "expected": 400,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 135
+          },
+          {
+            "name": "wrong-method",
+            "status": 405,
+            "expected": 405,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 139
+          },
+          {
+            "name": "missing",
+            "status": 404,
+            "expected": 404,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 130
+          }
+        ]
+      },
+      "outcome": "ok",
+      "cpuMs": 2,
+      "wallMs": 1005,
+      "scriptVersion": {
+        "id": "b53131ae-5459-448c-9502-a728ae1cabd7"
+      }
+    },
+    {
+      "result": {
+        "kind": "goldberg-tls-no-auth",
+        "phase": "tls",
+        "result": "PASS",
+        "authenticationAttempted": false
+      },
+      "outcome": "ok",
+      "cpuMs": 6,
+      "wallMs": 1409,
+      "scriptVersion": {
+        "id": "47b35cdd-48a8-473c-ab9c-0b0c3907c7ae"
+      }
+    },
+    {
+      "result": {
+        "kind": "goldberg-private-synthetic-v1",
+        "time": "2026-10-26T21:27:24.839Z",
+        "results": [
+          {
+            "name": "catalogue",
+            "status": 503,
+            "expected": 200,
+            "pass": false,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141,
+            "empty": false
+          },
+          {
+            "name": "changes",
+            "status": 503,
+            "expected": 200,
+            "pass": false,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141,
+            "empty": false
+          },
+          {
+            "name": "oauth-disabled",
+            "status": 503,
+            "expected": 503,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141
+          },
+          {
+            "name": "denied",
+            "status": 401,
+            "expected": 401,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141
+          },
+          {
+            "name": "bad-cursor",
+            "status": 400,
+            "expected": 400,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 135
+          },
+          {
+            "name": "wrong-method",
+            "status": 405,
+            "expected": 405,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 139
+          },
+          {
+            "name": "missing",
+            "status": 404,
+            "expected": 404,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 130
+          }
+        ]
+      },
+      "outcome": "ok",
+      "cpuMs": 6,
+      "wallMs": 1409,
+      "scriptVersion": {
+        "id": "47b35cdd-48a8-473c-ab9c-0b0c3907c7ae"
+      }
+    },
+    {
+      "result": {
+        "kind": "goldberg-tls-no-auth",
+        "phase": "tls",
+        "result": "PASS",
+        "authenticationAttempted": false
+      },
+      "outcome": "ok",
+      "cpuMs": 5,
+      "wallMs": 346,
+      "scriptVersion": {
+        "id": "47b35cdd-48a8-473c-ab9c-0b0c3907c7ae"
+      }
+    },
+    {
+      "result": {
+        "kind": "goldberg-private-synthetic-v1",
+        "time": "2026-10-26T21:28:23.944Z",
+        "results": [
+          {
+            "name": "catalogue",
+            "status": 503,
+            "expected": 200,
+            "pass": false,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141,
+            "empty": false
+          },
+          {
+            "name": "changes",
+            "status": 503,
+            "expected": 200,
+            "pass": false,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141,
+            "empty": false
+          },
+          {
+            "name": "oauth-disabled",
+            "status": 503,
+            "expected": 503,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141
+          },
+          {
+            "name": "denied",
+            "status": 401,
+            "expected": 401,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141
+          },
+          {
+            "name": "bad-cursor",
+            "status": 400,
+            "expected": 400,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 135
+          },
+          {
+            "name": "wrong-method",
+            "status": 405,
+            "expected": 405,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 139
+          },
+          {
+            "name": "missing",
+            "status": 404,
+            "expected": 404,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 130
+          }
+        ]
+      },
+      "outcome": "ok",
+      "cpuMs": 5,
+      "wallMs": 346,
+      "scriptVersion": {
+        "id": "47b35cdd-48a8-473c-ab9c-0b0c3907c7ae"
+      }
+    },
+    {
+      "result": {
+        "kind": "goldberg-tls-no-auth",
+        "phase": "tls",
+        "result": "PASS",
+        "authenticationAttempted": false
+      },
+      "outcome": "ok",
+      "cpuMs": 2,
+      "wallMs": 1998,
+      "scriptVersion": {
+        "id": "47b35cdd-48a8-473c-ab9c-0b0c3907c7ae"
+      }
+    },
+    {
+      "result": {
+        "kind": "goldberg-private-synthetic-v1",
+        "time": "2026-10-26T21:29:25.703Z",
+        "results": [
+          {
+            "name": "catalogue",
+            "status": 503,
+            "expected": 200,
+            "pass": false,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141,
+            "empty": false
+          },
+          {
+            "name": "changes",
+            "status": 503,
+            "expected": 200,
+            "pass": false,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141,
+            "empty": false
+          },
+          {
+            "name": "oauth-disabled",
+            "status": 503,
+            "expected": 503,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141
+          },
+          {
+            "name": "denied",
+            "status": 401,
+            "expected": 401,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 141
+          },
+          {
+            "name": "bad-cursor",
+            "status": 400,
+            "expected": 400,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 135
+          },
+          {
+            "name": "wrong-method",
+            "status": 405,
+            "expected": 405,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 139
+          },
+          {
+            "name": "missing",
+            "status": 404,
+            "expected": 404,
+            "pass": true,
+            "noStore": true,
+            "redacted": true,
+            "schema": 1,
+            "bytes": 130
+          }
+        ]
+      },
+      "outcome": "ok",
+      "cpuMs": 2,
+      "wallMs": 1998,
+      "scriptVersion": {
+        "id": "47b35cdd-48a8-473c-ab9c-0b0c3907c7ae"
+      }
+    },
+    {
+      "result": {
+        "kind": "goldberg-tls-no-password",
+        "phase": "tls-protocol",
+        "result": "FAIL",
+        "passwordSubmitted": false,
+        "message": "No encrypted protocol response"
+      },
+      "outcome": "ok",
+      "cpuMs": 2,
+      "wallMs": 62,
+      "scriptVersion": {
+        "id": "3f0b26bf-0893-4d8e-a86a-69e059205839"
+      }
+    },
+    {
+      "result": {
+        "kind": "goldberg-private-synthetic-v1",
+        "time": "2026-10-26T21:30:23.252Z",
+        "results": []
+      },
+      "outcome": "ok",
+      "cpuMs": 2,
+      "wallMs": 62,
+      "scriptVersion": {
+        "id": "3f0b26bf-0893-4d8e-a86a-69e059205839"
+      }
+    },
+    {
+      "result": {
+        "kind": "goldberg-tls-no-password",
+        "phase": "tls-protocol",
+        "result": "FAIL",
+        "passwordSubmitted": false,
+        "message": "No encrypted protocol response"
+      },
+      "outcome": "ok",
+      "cpuMs": 2,
+      "wallMs": 426,
+      "scriptVersion": {
+        "id": "3f0b26bf-0893-4d8e-a86a-69e059205839"
+      }
+    },
+    {
+      "result": {
+        "kind": "goldberg-private-synthetic-v1",
+        "time": "2026-10-26T21:31:23.852Z",
+        "results": []
+      },
+      "outcome": "ok",
+      "cpuMs": 2,
+      "wallMs": 426,
+      "scriptVersion": {
+        "id": "3f0b26bf-0893-4d8e-a86a-69e059205839"
+      }
+    },
+    {
+      "result": {
+        "kind": "goldberg-tls-no-password",
+        "phase": "tls-protocol",
+        "result": "FAIL",
+        "passwordSubmitted": false,
+        "message": "No encrypted protocol response"
+      },
+      "outcome": "ok",
+      "cpuMs": 2,
+      "wallMs": 153,
+      "scriptVersion": {
+        "id": "3f0b26bf-0893-4d8e-a86a-69e059205839"
+      }
+    },
+    {
+      "result": {
+        "kind": "goldberg-private-synthetic-v1",
+        "time": "2026-10-26T21:32:25.042Z",
+        "results": []
+      },
+      "outcome": "ok",
+      "cpuMs": 2,
+      "wallMs": 153,
+      "scriptVersion": {
+        "id": "3f0b26bf-0893-4d8e-a86a-69e059205839"
+      }
+    }
+  ],
+  "rawPrivateTailSha256": "90ef2eb6025dee181491827e6c34097007b1d97cd9076a22757b535dc87c1dc8",
+  "socketOpenOnlyDoesNotProveTls": true
+}

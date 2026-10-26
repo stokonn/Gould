@@ -1,0 +1,142 @@
+{
+  "run": 40394903151,
+  "conclusion": "success",
+  "files": {
+    "startup-measurement.txt": {
+      "sha256": "ff0c3f1f98253cdc4a056e220ef6b37c6d00b28d1e173703f9c5ccff1ef15e57",
+      "bytes": 833
+    },
+    "source-commit.txt": {
+      "sha256": "f08c2f9d6d73ddd56df792342debe716921f95deaaa92ae2fc33e612e4bb6a1d",
+      "bytes": 168
+    },
+    "signing-evidence.txt": {
+      "sha256": "ea77dba9acb554bbe953a153e65ea4aa9a260f54e818b64933af4e7dd0eb5a4c",
+      "bytes": 518
+    },
+    "signing-environment.txt": {
+      "sha256": "6cf8a4915c3fa3554d00d33d4e196a5e64483469cfc52092fe710d430afbe1c1",
+      "bytes": 640
+    },
+    "process-death-integrity.txt": {
+      "sha256": "7b4222fc2e937a47958058ccecd46657867e59c3ccb3e24c9434725e2398649b",
+      "bytes": 93
+    },
+    "process-death-db.txt": {
+      "sha256": "6a160f601d2c8c57865738b0264a78454fd3559ee854fea2f2614a5d7fcf78e4",
+      "bytes": 32
+    },
+    "network-evidence.txt": {
+      "sha256": "eb05008213ab0c03caca8c22c297198875e51e7b28a1765572284e2f1f6d6c21",
+      "bytes": 731
+    },
+    "netpolicy-enabled.txt": {
+      "sha256": "2b83489d2e0c46e5d5977566f309f0c9cc77fcb7d7d552ceb71b6d77e702709d",
+      "bytes": 88212
+    },
+    "netpolicy-disabled.txt": {
+      "sha256": "95cd470556f21d6526957a5ca4617abe85827eb9586e1356019989f3983ab26c",
+      "bytes": 87121
+    },
+    "logcat.txt": {
+      "sha256": "b90d0df1edbb510c63cf76f8d86142569185dd8c54cdb925f3b39064e927c6fd",
+      "bytes": 10920797
+    },
+    "disk-usage.txt": {
+      "sha256": "3862950873fa3822020d1b6061dac657f57f3800c50db9cbbcd69b87268f93c3",
+      "bytes": 89
+    },
+    "connectivity-dump.txt": {
+      "sha256": "e094fb8a6c8b465f0eb95b6e8369c043e91dab6063e7c490bd4dec3bd0be2339",
+      "bytes": 82063
+    },
+    "assert_default_network.py": {
+      "sha256": "816e161327a27f200c4df48e8f2545b76d6740fb4c7e34de8c34f1fe661d64d6",
+      "bytes": 1955
+    },
+    "apksigner-release.log": {
+      "sha256": "64c1c8c7db13315da592ad7d6e04645bc4fdd567f0c56dad5ea1e4e3f463d385",
+      "bytes": 311
+    },
+    "apksigner-release.err": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "apksigner-exit-codes.txt": {
+      "sha256": "8b3d7de3ae4d6e77d643dcc57845f6562ae535459214126ab8e95788cc97b73d",
+      "bytes": 78
+    },
+    "apksigner-candidate.log": {
+      "sha256": "01ca6416329becca1e4ee67635dfa0a8de58cb12a5a075c1533dfd9ef5d21668",
+      "bytes": 311
+    },
+    "apksigner-candidate.err": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "apksigner-baseline.log": {
+      "sha256": "01ca6416329becca1e4ee67635dfa0a8de58cb12a5a075c1533dfd9ef5d21668",
+      "bytes": 311
+    },
+    "apksigner-baseline.err": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "upgrade/validated.db": {
+      "sha256": "4b04230e8887dd132598a26edb6df28277a9a5d7c27cd548cbcbef1af8260b76",
+      "bytes": 249856
+    },
+    "upgrade/seed.db": {
+      "sha256": "c06824facc41585d431f7782bfa822fdacc03f10f0fcacf23b1603033aeb04b5",
+      "bytes": 147456
+    },
+    "upgrade/result.json": {
+      "sha256": "dcaf34e9689e14b7fc60bb0780f821abbe5d8a3f472d4313619512fc4c42ca9f",
+      "bytes": 818
+    },
+    "upgrade/offline-mobile-data-setting.txt": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "upgrade/goldberg-appearance.xml": {
+      "sha256": "fc30367884c2065e0ab9643f1d029a2a63ad3fe842d6766579c905d6e7cafa22",
+      "bytes": 198
+    },
+    "upgrade/connectivity-pre-upgrade.txt": {
+      "sha256": "9e7ebf96a21c7b1e6798593b5920fcbbd03a7988e0a2bda6248030f6d2a0762a",
+      "bytes": 30786
+    },
+    "upgrade/connectivity-offline-established.txt": {
+      "sha256": "4b24437fba09f8988935eece5ffc8f6ca4881070cc99efd3d5e0619fa5833aa1",
+      "bytes": 30786
+    },
+    "upgrade/connectivity-offline-attempt-01.txt": {
+      "sha256": "e422258f4e72ce231ba058ba34db50ed94f7648263c601f497de9e76838f2faa",
+      "bytes": 30786
+    },
+    "upgrade/connectivity-final.txt": {
+      "sha256": "9481ada12ece2111a55766dc7e8018193d7fef81682e970bd7d72bd316e4121d",
+      "bytes": 53603
+    },
+    "upgrade/before.json": {
+      "sha256": "ab9fa1acbcc7131847139b2cd1448ba327cf6c6a39f870f68824de20e721e84d",
+      "bytes": 10966
+    },
+    "upgrade/before.db": {
+      "sha256": "0c3744bdb40c0596066783d0cd6461ad41d6d0f93ee0ab6b963a773f4f319e93",
+      "bytes": 147456
+    },
+    "upgrade/after.json": {
+      "sha256": "ab9fa1acbcc7131847139b2cd1448ba327cf6c6a39f870f68824de20e721e84d",
+      "bytes": 10966
+    },
+    "upgrade/after.db": {
+      "sha256": "4b04230e8887dd132598a26edb6df28277a9a5d7c27cd548cbcbef1af8260b76",
+      "bytes": 249856
+    },
+    "db-after-restart/opus.db": {
+      "sha256": "4b04230e8887dd132598a26edb6df28277a9a5d7c27cd548cbcbef1af8260b76",
+      "bytes": 249856
+    }
+  }
+}

@@ -1,0 +1,18 @@
+TAP version 13
+# Subtest: actual local workerd Fetch → pg TCP → disposable PostgreSQL session and queue
+ok 1 - actual local workerd Fetch → pg TCP → disposable PostgreSQL session and queue
+  ---
+  duration_ms: 1530.179794
+  type: 'test'
+  ...
+# local first request wall milliseconds: 373.023
+# local warm request wall milliseconds: 45.416; 3 requests total; hosted CPU unmeasured
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1880.751531
