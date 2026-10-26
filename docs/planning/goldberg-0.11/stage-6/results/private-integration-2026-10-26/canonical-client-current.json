@@ -1,0 +1,16 @@
+{
+  "result": "services/community-bff/results/local-b8759afe3e5c495fac4dfc36328462de/result.json",
+  "kotlinIntegration": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "xmlTimestamp": "2026-10-26T21:46:37.153Z",
+  "xmlSha256": "c73459f1403a002e260c4f860cb314f66d8add794043fcad7e462c8dca8277c6",
+  "forcedActualExecution": true,
+  "gradleTasksExecuted": 26,
+  "sourceUnchanged": true,
+  "cleanup": true,
+  "venue": "canonical Kotlin client in existing isolated integration worktree -> actual loopback HTTP BFF at final source -> disposable PostgreSQL17;not hosted"
+}

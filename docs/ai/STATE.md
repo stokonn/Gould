@@ -8,6 +8,8 @@ This supersedes historical connectivity-BLOCKED/no-Worker statements below.
 - [x] Existing schema encrypted backup + isolated network-none restore PASS.
 - [x] New catalogue-only login,4SELECT+1lock column/5newpolicies,expiresOct27 03:00:38UTC.
   Existing20RLS tables/data/roles/passwords/47BFFgrants preserved;intakefalse.
+- [x] Fresh final-source canonical Kotlin→HTTP/BFF→PG1PASS,0fail/errors/skips;
+ 26/26Gradletasks executed/sourceunchanged/fixturecleanupverified.
 - [x] Current local backend521 bodies PASS/0fail/skips;credential custody5PASS;
   actual local workerd package14PASS. Containers/volumes removed andverified absent.
 - [x] Private BFF actually uploaded;8runtime secrets/no admin. workers.dev/previews

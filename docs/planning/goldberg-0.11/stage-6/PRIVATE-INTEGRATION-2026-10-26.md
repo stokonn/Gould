@@ -146,3 +146,10 @@ Loopback caller8787 and identified tail sessions closed; no listener remains.
 Temporary verifier/cron removed;only private BFF remains. All254 Android/contract
 file hashes match retained native source;local debug APK digest reverified.
 Hyperdrive approval remains pending;no Hyperdrive or CA resource created.
+
+Fresh final-source canonical integration additionally PASS:
+`python3 services/community-bff/run-local.py --client-worktree /tmp/goldberg-stage8-canonical-integration --client-only`.
+26/26 Gradle tasks executed (1m29s),actual Kotlin HTTP→BFF→PostgreSQL1case,
+0fail/errors/skips,source unchanged;fixture/container/volumes removed andabsence
+verified. Receipt local-b8759afe3e5c495fac4dfc36328462de. Existing integration
+worktree source preserved;this does not claim Android→hosted acceptance.
