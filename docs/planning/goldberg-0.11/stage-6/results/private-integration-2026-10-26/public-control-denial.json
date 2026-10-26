@@ -1,0 +1,21 @@
+{
+  "recordedUtc": "2026-10-26T21:38:29.172715+00:00",
+  "checks": [
+    {
+      "case": "disabled-workers-dev",
+      "status": 403,
+      "denied": true,
+      "privateBffResponseAbsent": true,
+      "bodySha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c"
+    },
+    {
+      "case": "malformed-control-token",
+      "status": 400,
+      "denied": true,
+      "privateBffResponseAbsent": true,
+      "bodySha256": "52cd3e3a4e60ac5221805fdee795683260b45c7e2fb440cdc6069ae617f448ed"
+    }
+  ],
+  "status": "PASS",
+  "qualification": "First assertion expected401/403 for control-token rejection;actual400 rejects malformed token before account data. This is not a valid-format invalid-signature token test. No retry performed."
+}

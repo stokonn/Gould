@@ -1,3 +1,44 @@
+# Current Stage 6 acceptance — October26 private integration
+
+**IN PROGRESS; whole-stage acceptance is not satisfied.** This ledger supersedes
+historical no-Worker/connectivity-blocked statements below. Verified source pushed
+on feature/goldberg-0.11-stage-6-cloud at11e9bad5c775838843d4a47e524328d69f35e229.
+Detailed executed evidence: [private integration](PRIVATE-INTEGRATION-2026-10-26.md).
+Local and hosted results remain separate; no owner sign-off inferred.
+
+| Requirement | Actual status and exact remainder |
+|---|---|
+|6.0a provider/Free decision|Approved existing Cloudflare+Supabase retained. Owner Free/no-card evidence;Cloudflare rejects paid-only CPU override. No upgrade.|
+|6.0b operator/privacy|OPEN:approved contact/retention/transfer/source/license dispositions before real collection. No real-user data.|
+|6.0c Admin/BFF design|Approved canonical architecture reused;no replacement API/session/moderation design.|
+|6.0d hosted provisioning|Private Worker deployed with runtime-only secrets;existing20RLS schema/ledger preserved. Public/previews disabled.|
+|6.0e real Google OAuth|OPEN:owner confirms no approved Web Client ID;explicitly disabled,no placeholder/substitute.|
+|6.0f runtime acceptance|PARTIAL:actual hosted negative cases PASS;catalogue/feed positive readsFAIL503 due custom-CA transport. Hyperdrive approval pending.|
+|6.1 PostgreSQL schema|HOSTED PASS:20RLS tables,ledger/intake/data preserved;existing47BFF grants unchanged;new catalogue role exactly4SELECT+1lock/5policies.|
+|6.2 auth/session|LOCAL PASS:real signature/JWKS/cache/session/nonce/refresh/replay/expiry/revocation cases;real OAuth/hosted authenticated scope OPEN.|
+|6.3 authorization|LOCAL PASS:live roles/ownership/suspension/no-self-grant/privilege denial;hosted narrow-role denials PASS,full authenticated scope OPEN.|
+|6.4 contributions/revisions|LOCAL PASS:Fetch/PG create/revise/withdraw/own-list/allowlists/immutable receipts. Real approved source/license policy and hosted writes OPEN/default-deny.|
+|6.5 moderation|LOCAL PASS:atomic canonical decisions/audit/feed/concurrent conflict;Kotlin confirmation path retained. Hosted authenticated workflow OPEN.|
+|6.6 idempotency|LOCAL PASS:atomic replay/mismatch/races/uncertain-intent boundaries;no automatic duplicate write. Hosted writes OPEN.|
+|6.7 public projection/feed|LOCAL/host Node PASS:private records excluded/signed cursors. Actual hosted Worker positive readsFAIL503;no public endpoint.|
+|6.8 Admin endpoints|LOCAL PASS:accepted queue/detail/review/roles/suspend/quarantine/rollback/audit/SSRF boundaries. Hosted authenticated scope OPEN.|
+|6.9 abuse controls|LOCAL PASS:principal/coarse-IP atomic limits/auth-throttle/kill switch. Actual hosted OAuth disabled503;real hosted quota scenarios OPEN.|
+|6.10 Android repository|LOCAL PASS retained typed canonical client,credential exclusion,draft protection and actual Kotlin/HTTP/BFF/PG1case. Android→hosted OPEN.|
+|6.11 offline/unavailable UX|API36 PASS:182native cases/180PASS/2expected external skips;seeded37session offline upgrade,network/DataSaver/restart checks. Current UI screenshots/API26 not executed.|
+|6.12 full threat matrix|PARTIAL:521local backend bodies,5custody tests,14workerd package cases;hosted negative boundaries PASS. Full real-provider/browser/integration rows OPEN.|
+|6.13 real role/replay/key integration|OPEN:local actual HTTP/PG cases pass;approved real OAuth configuration and authenticated hosted scope absent.|
+|6.14 budget/failure|PARTIAL:local quota/outage simulations and actual hosted redacted failure/latency/CPU evidence retained. Free runtime positive reads/complete failure matrix OPEN.|
+|6.15 export/isolated restore|PARTIAL:encrypted existing empty-application baseline restore20tables/counts/RLS/50policies PASS;local synthetic audit-chain restore retained. Operational RPO/offsite/retention/custody acceptance OPEN.|
+|6.16 pre-collection publication|OPEN:no newly approved cloud contact/privacy/license publication;no real collection activated.|
+|6.17 API freeze/handoff|OPEN:canonical local contract/fixtures preserved;public consumer/version and real-policy freeze remain separate.|
+|6.18 closure/tracking|IN PROGRESS:source11e9bad pushed,exact-source backend40405714480/quality40405714475 SUCCESS;Issue31/ProjectInProgress/localchecklists/privatePMP synchronized. Do not close Stage6.|
+
+No release/main merge/RC/tag/public community activation;all existing worktrees and
+previous artifacts preserved. Concrete transport option requires explicit owner
+approval: [Free-only Hyperdrive proposal](HYPERDRIVE-PRIVATE-TRANSPORT-PROPOSAL.md).
+
+---
+
 ## Stage6 independent hardening — in progress after owner hosted block
 
 Purpose:close unauthenticated API abuse andactual emulator failures onthisbranch.

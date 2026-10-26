@@ -1,0 +1,10 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"result\":{\"lints\":[{\"name\":\"rls_enabled_no_policy\",\"title\":\"RLS Enabled No Policy\",\"level\":\"INFO\",\"facing\":\"EXTERNAL\",\"categories\":[\"SECURITY\"],\"description\":\"Detects cases where row level security (RLS) has been enabled on a table but no RLS policies have been created.\",\"remediation\":\"https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy\",\"count\":1,\"findings\":[{\"detail\":\"Table \\\\`goldberg_private.deployment_migrations\\\\` has RLS enabled, but no policies exist\",\"metadata\":{\"name\":\"deployment_migrations\",\"type\":\"table\",\"schema\":\"goldberg_private\"},\"observed_at\":\"2026-10-26T21:40:44.520Z\"}]}]}}"
+    }
+  ],
+  "structuredContent": null,
+  "isError": false
+}

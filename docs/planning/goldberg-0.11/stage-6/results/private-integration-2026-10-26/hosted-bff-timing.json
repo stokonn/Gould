@@ -1,0 +1,300 @@
+{
+  "sampledEvents": 28,
+  "events": [
+    {
+      "cpuMs": 2,
+      "wallMs": 385,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": [
+        {
+          "code": "UNKNOWN",
+          "reason": "connection"
+        }
+      ]
+    },
+    {
+      "cpuMs": 0,
+      "wallMs": 0,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 1,
+      "wallMs": 1,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 0,
+      "wallMs": 0,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 0,
+      "wallMs": 0,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 0,
+      "wallMs": 1,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 11,
+      "wallMs": 406,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": [
+        {
+          "code": "UNKNOWN",
+          "reason": "connection"
+        }
+      ]
+    },
+    {
+      "cpuMs": 0,
+      "wallMs": 0,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 12,
+      "wallMs": 109,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": [
+        {
+          "code": "UNKNOWN",
+          "reason": "connection"
+        }
+      ]
+    },
+    {
+      "cpuMs": 2,
+      "wallMs": 2,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 1,
+      "wallMs": 1,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 2,
+      "wallMs": 100,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": [
+        {
+          "code": "UNKNOWN",
+          "reason": "connection"
+        }
+      ]
+    },
+    {
+      "cpuMs": 1,
+      "wallMs": 1,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 0,
+      "wallMs": 1,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 0,
+      "wallMs": 0,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 3,
+      "wallMs": 457,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": [
+        {
+          "code": "UNKNOWN",
+          "reason": "connection"
+        }
+      ]
+    },
+    {
+      "cpuMs": 2,
+      "wallMs": 2,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 1,
+      "wallMs": 1,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 1,
+      "wallMs": 1,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 0,
+      "wallMs": 1,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 13,
+      "wallMs": 479,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": [
+        {
+          "code": "UNKNOWN",
+          "reason": "connection"
+        }
+      ]
+    },
+    {
+      "cpuMs": 5,
+      "wallMs": 479,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": [
+        {
+          "code": "UNKNOWN",
+          "reason": "connection"
+        }
+      ]
+    },
+    {
+      "cpuMs": 20,
+      "wallMs": 500,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": [
+        {
+          "code": "UNKNOWN",
+          "reason": "connection"
+        }
+      ]
+    },
+    {
+      "cpuMs": 0,
+      "wallMs": 0,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 3,
+      "wallMs": 4,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 2,
+      "wallMs": 2,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 2,
+      "wallMs": 2,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    },
+    {
+      "cpuMs": 1,
+      "wallMs": 1,
+      "outcome": "ok",
+      "version": {
+        "id": "63b5089d-9e6b-4156-a10f-320ef0bc9f8f"
+      },
+      "connectionCategories": []
+    }
+  ],
+  "rawPrivateTailSha256": "d6e5ef4d5297574d1ef0c53962784c1e67d2f1014d4ecbae6a61ad3b59d1ebb7",
+  "positiveReadPerformance": "not accepted;reads503",
+  "freeLimitCaveat": "Observed CPU is a sample,not a guarantee that every future request fits the Free CPU budget."
+}

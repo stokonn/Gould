@@ -1,6 +1,6 @@
 ## Stage 6 private integration — 2026-10-26 21:33 UTC
 
-Current branch feature/goldberg-0.11-stage-6-cloud,base1ee1d1f;whole Stage6 **IN PROGRESS**.
+Current branch feature/goldberg-0.11-stage-6-cloud,source11e9bad;whole Stage6 **IN PROGRESS**.
 Current authoritative report: docs/planning/goldberg-0.11/stage-6/PRIVATE-INTEGRATION-2026-10-26.md.
 This supersedes historical connectivity-BLOCKED/no-Worker statements below.
 
@@ -24,7 +24,10 @@ This supersedes historical connectivity-BLOCKED/no-Worker statements below.
 - [ ] Approved Google OAuth Web Client ID absent;ownerkeepsOAuthdisabled/no placeholder.
   RealOAuth/authenticatedhostedworkflows/Android→hosted/operationalbackup/privacy
   acceptance pending. No release/main merge/publiccommunity/realuserdata.
-- [ ] Final source/evidence commit/push/CI andIssue31/Project/privatePMPsync.
+- [x] Source11e9bad5c775838843d4a47e524328d69f35e229 committed/ordinary-pushed;
+  exact-source BFF CI40405714480 andquality40405714475 bothSUCCESS.
+- [x] Final evidence/acceptance ledger/Issue31/Project/privatePMP checkpoint prepared.
+- [ ] Hyperdrive approval pending;GoogleclientID/realOAuth/fullhosted/operational gates open.
 
 ---
 

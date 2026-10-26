@@ -132,8 +132,17 @@ is a separate verified CI artifact; do not relabel its digest as the local APK.
 - [ ] Android→hosted private BFF end-to-end (local Kotlin HTTP→BFF→PG already passes).
 - [ ] Operational backup/retention/restore and applicable privacy/legal acceptance
   from existing approved contracts; baseline synthetic restore is bounded evidence.
-- [ ] Final commit/push/CI and synchronized Issue31/Project/private PMP checkpoint.
+- [x] Source11e9bad ordinary-pushed;BFF40405714480/quality40405714475 SUCCESS.
+  Final acceptance/evidence checkpoint follows separately;Issue31 OPEN/ProjectInProgress.
 
 Public community networking remains disabled. All unexecuted checks remain open.
 
 Latest diagnostics deployment: version `63b5089d-9e6b-4156-a10f-320ef0bc9f8f`, bundle SHA256 `02139f5b682b23774e60341d781d639b64fd20c7c6c2587bcb3316d1a32e0047`; remote bytes match. Static403 billing visibility limitation retained; no plan upgrade.
+
+Final inspection: known disabled public Worker URL403; malformed control token400
+before account data (not a valid-format invalid-signature token test). Fresh
+Supabase Advisor0WARN/0ERROR/1INFO for intentionally default-denied migration ledger.
+Loopback caller8787 and identified tail sessions closed; no listener remains.
+Temporary verifier/cron removed;only private BFF remains. All254 Android/contract
+file hashes match retained native source;local debug APK digest reverified.
+Hyperdrive approval remains pending;no Hyperdrive or CA resource created.
