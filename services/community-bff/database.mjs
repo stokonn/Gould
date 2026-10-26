@@ -30,3 +30,15 @@ export function privateDatabaseOptions(env) {
  if(!env||!/^([a-z0-9-]+\.)*(supabase\.co|supabase\.com)$/.test(env.DB_HOST??'')||env.DB_HOST!==env.EXPECTED_DB_HOST||!['5432','6543'].includes(env.DB_PORT)||!/^goldberg_[a-z0-9_]+(?:\.hlfsouvndjsbsaldttvi)?$/.test(env.DB_USER??'')||typeof env.DB_PASSWORD!=='string'||!env.DB_PASSWORD||!env.DB_CA_PEM?.includes('BEGIN CERTIFICATE'))throw new Error('invalid private database bindings');
  return {host:env.DB_HOST,port:Number(env.DB_PORT),database:'postgres',user:env.DB_USER,password:env.DB_PASSWORD,ssl:{rejectUnauthorized:true,ca:env.DB_CA_PEM,servername:env.DB_HOST,expectedServerHostname:env.DB_HOST},connectionTimeoutMillis:3000,query_timeout:5000,statement_timeout:5000,application_name:'goldberg-community-bff'};
 }
+
+/** Hyperdrive's private binding supplies a platform-local connection. Origin TLS
+ * is enforced by its separately verified CA/verify-full configuration; never
+ * fall back to a direct public connection when the binding is missing. */
+export function runtimeDatabaseOptions(env) {
+ if(env.DB_TRANSPORT===undefined||env.DB_TRANSPORT==='direct')return privateDatabaseOptions(env);
+ if(env.DB_TRANSPORT!=='hyperdrive'||typeof env.CATALOGUE_DB?.connectionString!=='string')throw new Error('invalid database transport');
+ let url;try{url=new URL(env.CATALOGUE_DB.connectionString);}catch{throw new Error('invalid private binding');}
+ const shape={protocol:['postgres:','postgresql:'].includes(url.protocol),privateHost:url.hostname==='hyperdrive.local'||url.hostname.endsWith('.hyperdrive.local'),database:/^\/[^/]{1,256}$/.test(url.pathname),username:!!url.username,password:!!url.password,query:[...url.searchParams.keys()].some(k=>!['sslmode','application_name'].includes(k))||url.searchParams.getAll('sslmode').length>1||(url.searchParams.has('sslmode')&&url.searchParams.get('sslmode')!=='disable'),fragment:!!url.hash};
+ if(!shape.protocol||!shape.privateHost||!shape.database||!shape.username||!shape.password||shape.query||shape.fragment){console.warn('hyperdrive_binding_shape',shape);throw new Error('invalid private binding');}
+ return {connectionString:env.CATALOGUE_DB.connectionString,connectionTimeoutMillis:3000,query_timeout:5000,statement_timeout:5000,application_name:'goldberg-community-bff'};
+}

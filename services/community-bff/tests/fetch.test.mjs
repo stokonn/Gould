@@ -68,3 +68,13 @@ test('connection diagnostics expose only bounded categories and never driver tex
  await assert.rejects(scope.connect(),e=>e.message==='database unavailable');
  assert.deepEqual(diagnostic,{code:'ETIMEDOUT',reason:'timeout'});assert.ok(!JSON.stringify(diagnostic).includes(secret));
 });
+
+
+test('Hyperdrive transport accepts only the explicit private binding and never falls back',async()=>{
+ const {runtimeDatabaseOptions}=await import('../database.mjs');
+ const env={DB_TRANSPORT:'hyperdrive',CATALOGUE_DB:{connectionString:'postgresql://synthetic:synthetic@hyperdrive.local:5432/postgres'}};
+ assert.equal(runtimeDatabaseOptions(env).connectionString,env.CATALOGUE_DB.connectionString);
+ assert.ok(runtimeDatabaseOptions({...env,CATALOGUE_DB:{connectionString:'postgresql://synthetic:synthetic@proxy.hyperdrive.local/virtual?sslmode=disable'}}));
+ for(const connectionString of ['postgresql://synthetic:synthetic@evil.invalid/postgres','postgresql://synthetic:synthetic@hyperdrive.local.evil.invalid/postgres','postgresql://synthetic:synthetic@hyperdrive.local/one/two','postgresql://synthetic:synthetic@hyperdrive.local/postgres?host=evil.invalid','invalid'])assert.throws(()=>runtimeDatabaseOptions({...env,CATALOGUE_DB:{connectionString}}));
+ assert.throws(()=>runtimeDatabaseOptions({DB_TRANSPORT:'hyperdrive'}));assert.throws(()=>runtimeDatabaseOptions({DB_TRANSPORT:'unknown'}));
+});

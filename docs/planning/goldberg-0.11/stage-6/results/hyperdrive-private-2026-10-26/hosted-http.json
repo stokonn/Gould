@@ -1,0 +1,133 @@
+{
+  "observedUtc": "2026-10-26T22:00:34.667006+00:00",
+  "venue": "local loopback caller -> authenticated remote service binding -> actual deployed private Worker -> Supabase PostgreSQL",
+  "syntheticOnly": true,
+  "privateCallerUnauthenticated": 403,
+  "results": [
+    {
+      "path": "/catalogue",
+      "status": 200,
+      "expected": 200,
+      "pass": true,
+      "redacted": true,
+      "schemaVersion": 1,
+      "errorCode": null,
+      "bytes": 99,
+      "bodySha256": "8e4458f5250d2714f6c65d82517e90e24bc56c2aa3b628c7095217dd47ac6f5e",
+      "milliseconds": 371,
+      "noStore": true,
+      "bodyKeys": [
+        "items",
+        "nextCursor",
+        "requestId",
+        "schemaVersion"
+      ]
+    },
+    {
+      "path": "/changes",
+      "status": 200,
+      "expected": 200,
+      "pass": true,
+      "redacted": true,
+      "schemaVersion": 1,
+      "errorCode": null,
+      "bytes": 297,
+      "bodySha256": "0a66602bc595807d5b82a58aa41dd4f52dd7312f2ed3c66c5fe680e419102224",
+      "milliseconds": 230,
+      "noStore": true,
+      "bodyKeys": [
+        "items",
+        "nextCursor",
+        "pollCursor",
+        "requestId",
+        "schemaVersion"
+      ]
+    },
+    {
+      "path": "/oauth-disabled",
+      "status": 503,
+      "expected": 503,
+      "pass": true,
+      "redacted": true,
+      "schemaVersion": 1,
+      "errorCode": "service_unavailable",
+      "bytes": 141,
+      "bodySha256": "8d3926ec28e6d2976d38968192d2251e1d197dbf160915b5379cedf976a76f80",
+      "milliseconds": 30,
+      "noStore": true,
+      "bodyKeys": [
+        "schemaVersion",
+        "error"
+      ]
+    },
+    {
+      "path": "/denied",
+      "status": 401,
+      "expected": 401,
+      "pass": true,
+      "redacted": true,
+      "schemaVersion": 1,
+      "errorCode": "unauthenticated",
+      "bytes": 141,
+      "bodySha256": "f5ce773f89e365b5f4bff26d5599d91876fef1adc8934afb5b0df4f9530065f0",
+      "milliseconds": 33,
+      "noStore": true,
+      "bodyKeys": [
+        "error",
+        "schemaVersion"
+      ]
+    },
+    {
+      "path": "/bad-cursor",
+      "status": 400,
+      "expected": 400,
+      "pass": true,
+      "redacted": true,
+      "schemaVersion": 1,
+      "errorCode": "validation_failed",
+      "bytes": 135,
+      "bodySha256": "65d90b67aab784dd7171eb0960e509ddb56a5c927d782497777ee55fb8db7961",
+      "milliseconds": 29,
+      "noStore": true,
+      "bodyKeys": [
+        "error",
+        "schemaVersion"
+      ]
+    },
+    {
+      "path": "/wrong-method",
+      "status": 405,
+      "expected": 405,
+      "pass": true,
+      "redacted": true,
+      "schemaVersion": 1,
+      "errorCode": "method_not_allowed",
+      "bytes": 139,
+      "bodySha256": "f0bd0f3bb8e1dd55e95776bab83772f6718d1c0bacb129439a6e1aa8f7cbd453",
+      "milliseconds": 33,
+      "noStore": true,
+      "bodyKeys": [
+        "error",
+        "schemaVersion"
+      ]
+    },
+    {
+      "path": "/missing",
+      "status": 404,
+      "expected": 404,
+      "pass": true,
+      "redacted": true,
+      "schemaVersion": 1,
+      "errorCode": "not_found",
+      "bytes": 130,
+      "bodySha256": "0c81710d312b2cba2cfb15f9ca8621b898273e219bacbea81495d3de09c050bc",
+      "milliseconds": 29,
+      "noStore": true,
+      "bodyKeys": [
+        "error",
+        "schemaVersion"
+      ]
+    }
+  ],
+  "status": "PASS"
+}

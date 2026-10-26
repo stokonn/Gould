@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: Fetch uses real Request/Response, preserves receipts and emits bodyless 204
+ok 1 - Fetch uses real Request/Response, preserves receipts and emits bodyless 204
+  ---
+  duration_ms: 63.229041
+  type: 'test'
+  ...
+# Subtest: body limit stops dispatch, including unknown-length streams
+ok 2 - body limit stops dispatch, including unknown-length streams
+  ---
+  duration_ms: 2.868257
+  type: 'test'
+  ...
+# Subtest: deadline aborts database work, closes late scope and redacts failure
+ok 3 - deadline aborts database work, closes late scope and redacts failure
+  ---
+  duration_ms: 46.817743
+  type: 'test'
+  ...
+# Subtest: request connections close on failed connect, abort and repeated cleanup
+ok 4 - request connections close on failed connect, abort and repeated cleanup
+  ---
+  duration_ms: 2.010603
+  type: 'test'
+  ...
+# Subtest: TLS bindings require fixed provider host, CA and restricted user
+ok 5 - TLS bindings require fixed provider host, CA and restricted user
+  ---
+  duration_ms: 0.728538
+  type: 'test'
+  ...
+# Subtest: runtime identifier permits only canonical private schema and migration stays local
+ok 6 - runtime identifier permits only canonical private schema and migration stays local
+  ---
+  duration_ms: 0.829098
+  type: 'test'
+  ...
+# Subtest: stalled body deadline cancels stream before any database dispatch
+ok 7 - stalled body deadline cancels stream before any database dispatch
+  ---
+  duration_ms: 17.387554
+  type: 'test'
+  ...
+# Subtest: caller cancellation aborts scoped work and oversized output is unavailable
+ok 8 - caller cancellation aborts scoped work and oversized output is unavailable
+  ---
+  duration_ms: 15.549417
+  type: 'test'
+  ...
+# Subtest: asynchronous pg socket errors retire the connection exactly once
+ok 9 - asynchronous pg socket errors retire the connection exactly once
+  ---
+  duration_ms: 1.139386
+  type: 'test'
+  ...
+# Subtest: connection diagnostics expose only bounded categories and never driver text or credentials
+ok 10 - connection diagnostics expose only bounded categories and never driver text or credentials
+  ---
+  duration_ms: 1.46442
+  type: 'test'
+  ...
+# Subtest: Hyperdrive transport accepts only the explicit private binding and never falls back
+ok 11 - Hyperdrive transport accepts only the explicit private binding and never falls back
+  ---
+  duration_ms: 4.114775
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 168.950309

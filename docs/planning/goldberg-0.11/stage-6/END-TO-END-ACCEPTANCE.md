@@ -1,3 +1,27 @@
+## Current private integration — Hyperdrive hosted PASS, October26
+
+The owner’s new deployment directive authorizes reversible Free-only transport
+completion. The earlier Hyperdrive exclusion/pending-decision checkpoint below
+is superseded for this exact private CA/verify-full/cache-off scope.
+
+- [x] Existing Worker/database reused;one necessary Hyperdrive and public CA added.
+  No schema/data/RLS/password/bootstrap changes. Runtime role remains read-only,
+  hard4connections,expiryOct27 03:00:38UTC;no admin runtime credential.
+- [x] Actual hosted private catalogue/feed200,OAuth503,admin401,cursor400,
+  method405,missing404 and anonymous caller403 PASS. No public routes/previews.
+- [x] Hyperdrive verify-full/exactCA/cacheoff readback PASS. Worker now carries
+  only cursor/IP keys;6obsolete directDB secretbindings removed in one bulk patch.
+- [x] Focused Fetch11PASS and actual local workerd14PASS;no full local regression
+  repetition. Existing comprehensive521/Android/native receipts remain historical.
+- [x] Database postflight20RLS/55policies/original47BFFgrants/data/intake preserved.
+- [ ] Commit/push/remote/clean +Issue31/PMP/handoff checkpoint before queued task.
+- [ ] Public catalogue activation is QUEUED;do not begin until private checkpoint
+  complete. OAuth remainsdisabled;wholeStage6 real-provider/operational gates open.
+
+See HYPERDRIVE-PRIVATE-VERIFIED-2026-10-26.md andresults/hyperdrive-private-2026-10-26.
+
+---
+
 # Current Stage 6 acceptance — October26 private integration
 
 **IN PROGRESS; whole-stage acceptance is not satisfied.** This ledger supersedes

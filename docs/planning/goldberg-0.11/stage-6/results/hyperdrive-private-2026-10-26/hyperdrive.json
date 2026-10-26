@@ -1,0 +1,24 @@
+{
+  "id": "3c684744936740c290361dcc0fb018dd",
+  "caId": "1c52bc7b-304f-4c7f-8179-dcb3e6df799f",
+  "name": "goldberg-stage6-catalogue",
+  "origin": {
+    "scheme": "postgres",
+    "host": "aws-1-eu-central-1.pooler.supabase.com",
+    "port": 5432,
+    "database": "postgres",
+    "user": "goldberg_bff_catalogue_login.hlfsouvndjsbsaldttvi"
+  },
+  "mtls": {
+    "ca_certificate_id": "1c52bc7b-304f-4c7f-8179-dcb3e6df799f",
+    "sslmode": "verify-full"
+  },
+  "caching": {
+    "disabled": true
+  },
+  "originConnectionLimit": 5,
+  "databaseHardConnectionLimitUnchanged": 4,
+  "adminCredentialUsed": false,
+  "paidUpgradeRequested": false,
+  "publicRoutesEnabled": false
+}

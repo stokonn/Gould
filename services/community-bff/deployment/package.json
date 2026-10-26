@@ -1,0 +1,12 @@
+{
+  "name": "goldberg-community-bff-deployment",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "cf-wrangler build"
+  },
+  "devDependencies": {
+    "cf": "1.0.0-beta.21",
+    "wrangler": "4.152.0"
+  }
+}
