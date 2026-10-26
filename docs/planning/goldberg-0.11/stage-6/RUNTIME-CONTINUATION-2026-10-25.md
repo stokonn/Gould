@@ -177,3 +177,17 @@ Fresh Androidhost234JVM PASS/0failures/errors/skips at22:39UTC,APK/testAPK/lint
 PASS2m56s. Finaldebug com.opus.piano0.11-dev/code12 SHA256
 `86fc13739a9bcfbb9896e6bb146310afda81dd815d5dcad92412f75efb957f24`;trusted53ef
 signer/baselinecompatibility/ZIP/artworkPASS. PriorAPK/receiptsretained separately.
+
+## Final native/upgrade evidence and connectivity-parser correction
+
+Run40241571850 atd86de8f:fullAPI36instrumentation182cases,180PASS,0failures/errors,
+2externalfixture skips. Actual source attestation matched. Offline schema8→10
+upgrade PASS:37sessions,originalrows/preferencesunchanged. Independent SQLite
+comparison verified everyoriginalcolumn/cell across16baseline tables;integrity/FK PASS.
+The overall acceptance job laterfailed onlybecause itsnetworkparser requiredlegacy
+ni{type:...};theactualsavedactive network101declared WIFI incapabilities.
+Reused verifieda73parser,with8positive/negative regressions PASS(including actual
+dump/wrongtransport/staleinactive networks). Acceptance-only rerun willcompare
+all254 Android source/contract inventoryhashes against retainedd86native evidence;
+no testfiltering ornewnativepass is implied. Android/backend executable code and
+APK86fc remainunchanged bythisharness-only correction.

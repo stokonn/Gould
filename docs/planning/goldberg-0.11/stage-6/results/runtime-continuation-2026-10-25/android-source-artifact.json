@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "a3d99dc928769cbbaf5dd01bb6f6b567192bb5c8",
+  "sourceCommit": "d86de8f50dece8d16ad7bd4af811c7facd1b974a",
   "files": {
     "app/build.gradle.kts": "4d28132b59ee043e971ca42555ff9e4e1b78d4b0ba48ba941469e6a5f2cf0888",
     "app/schemas/com.opus.piano.data.OpusDatabase/1.json": "f743ee92b1144f5258e4d386b916837ba76bfc490cb5d6971b0dab71a9a71ee6",
@@ -72,9 +72,9 @@
     "app/src/androidTest/java/com/opus/piano/Stage4SearchVerificationTest.kt": "ac789b7bf31d795a839b91089afa930d36156c1146c435106ee010e61a76748a",
     "app/src/androidTest/java/com/opus/piano/Stage4StorageAdmissionTest.kt": "6ea829e8feda7c64ac5c03f9a0e401a23cf4aeeab794e446487f7c852f6bb36d",
     "app/src/androidTest/java/com/opus/piano/Stage4TransportTest.kt": "8db9ce0d9171eed1f49ad5a073fb4726efe42dba8621076354412b193189932f",
-    "app/src/androidTest/java/com/opus/piano/Stage5BundleJobRunnerTest.kt": "6f1180f5ee11266758d6f97ff5b11213f4eb07a96b01b1bf101926d139ac0c2f",
-    "app/src/androidTest/java/com/opus/piano/Stage5BundleStoreTest.kt": "bd7e4d09aeda6405503edff3d953f604e32a1c2d8173a180379b3bf220d5abb0",
-    "app/src/androidTest/java/com/opus/piano/Stage5BundleWorkerTest.kt": "3ba8ded65320ea6e976cf180b5baa691014897d1a3a6a227906e16392db1b0ec",
+    "app/src/androidTest/java/com/opus/piano/Stage5BundleJobRunnerTest.kt": "4561611c70e44100787f85066f65a23f95c91850e6942d46bad791a4c3ac4b13",
+    "app/src/androidTest/java/com/opus/piano/Stage5BundleStoreTest.kt": "48f9cf90fee29ff332c978d27c46cc3b6a47db29528925bfe427133bdaa06547",
+    "app/src/androidTest/java/com/opus/piano/Stage5BundleWorkerTest.kt": "cad732e7cdc42442907fe5e96af5f492944d548f83311ca5dddf5a4a788c6832",
     "app/src/androidTest/java/com/opus/piano/Stage5Fixtures.kt": "e4e2c8de08d86d211a5064d4637523b0e82ecedc231abc359e08e3314959c2f3",
     "app/src/main/AndroidManifest.xml": "0980896976f167ce31ece510d62d0f5062f8b2470298976469af1d4c8a2d4a97",
     "app/src/main/assets/legal/privacy.md": "ccea2fc3b89a0d3f3bdca24a4a1dfcbde258d7f53d21f88aac7fff7ac1230ad0",
@@ -153,17 +153,17 @@
     "app/src/main/java/com/opus/piano/data/offline/AndroidBundleJobPreferences.kt": "9cf553d3ef1cd158f6f3bdaa6a11e3cb7d35ec2d4e1d0e8b2f3aba88d48e981e",
     "app/src/main/java/com/opus/piano/data/offline/BundleDownloadWorker.kt": "67a572a6e10b9dd5e24ca051792f7a495470f371a5414058cab9f6a3109657bb",
     "app/src/main/java/com/opus/piano/data/offline/BundleJob.kt": "99cb63185e67c0fd30eb2ed8153804c7ce486d8dd18f8e9e05fe7d6948e241ff",
-    "app/src/main/java/com/opus/piano/data/offline/BundleJobRunner.kt": "9d099608cc938bbc174123fd6fda297bfa39ad1ad77ac528497210147467dc38",
+    "app/src/main/java/com/opus/piano/data/offline/BundleJobRunner.kt": "f8fda9fd11846f4dcda811d40cf76280f090fca6d48e36ba6f089b35d7f83059",
     "app/src/main/java/com/opus/piano/data/offline/BundleJobStore.kt": "7c716c96218fbccf13dd2117373db03cf10882849036ff25e04b9c0fb2d9d810",
     "app/src/main/java/com/opus/piano/data/offline/BundleManifestCodec.kt": "db635c3d49560ec849d7a85a694269a8efb7e5404b7f1d9ce48816ce74b6abdd",
     "app/src/main/java/com/opus/piano/data/offline/BundleNetwork.kt": "793557109cf69b2d788a7b8d033626a22e528c6c9ee7ebf936a5689b06a4991b",
     "app/src/main/java/com/opus/piano/data/offline/BundlePolicy.kt": "59611b172d8b2eaac7c4b7dc538fa6aaf94ab8cebf4de1549de4156868252904",
     "app/src/main/java/com/opus/piano/data/offline/BundleScheduler.kt": "61ad2b07bbf2027eab2a04825f30ef5412d1cb016eca1b5cbdf5b8ac8fdedd70",
     "app/src/main/java/com/opus/piano/data/offline/BundleStateMachine.kt": "25ff4d3ca907b3696198b277e7daf3d87a75715db126cd780d86a3590624d878",
-    "app/src/main/java/com/opus/piano/data/offline/BundleStore.kt": "2cdf7d9c0f915a7834ce098873425c003071ea35894e569577d5bbccdfb91d49",
+    "app/src/main/java/com/opus/piano/data/offline/BundleStore.kt": "3beddedec58547d7a0be46ac2da919693ce1f792cd2843055a0c2d616e342bb3",
     "app/src/main/java/com/opus/piano/data/offline/BundleStoreLogic.kt": "b93e817ffb942be3f0fa209f6f29e6ef9ec741058b19356934c5c4efab2ad8f2",
     "app/src/main/java/com/opus/piano/data/offline/BundleTransferEngine.kt": "4cbc08d65fd119582b1539f3c35f0dd90d6b9ae8bdf1ade1bc999676e6c4cb27",
-    "app/src/main/java/com/opus/piano/data/offline/OfflineBundle.kt": "7c69c214eed9bc73eb9ec13f0720a6b90be4fabb2e63d3a8293651c652628ae2",
+    "app/src/main/java/com/opus/piano/data/offline/OfflineBundle.kt": "e78e4de4f5de1b0a526d94ad46a9674293c00bfff80d362446dae60f2a92f4a0",
     "app/src/main/java/com/opus/piano/i18n/JournalFormatting.kt": "05ae7d462f1db7648ae1e9bb2b5759d2470d26a3ca7fd531f7c1ee5fadf72cbd",
     "app/src/main/java/com/opus/piano/i18n/L.kt": "44bbd47c5cbdbf3e4a065483a1810a11ca3fcddaf55cb7a5f067adceac046b77",
     "app/src/main/java/com/opus/piano/identity/GoogleIdentity.kt": "79082332668c8da3a028ee25d4e7fecfe5302cefe2b7cee461edfb6a63cb4b0a",
@@ -256,5 +256,7 @@
     "app/src/test/java/com/opus/piano/data/offline/BundleTransferEngineTest.kt": "c4bc71ab5bd5d510fea651b81f39a1d0c852868cbb16f9de2c7897df5a024ff3",
     "contracts/admin/v1/decision-proposal/dto.schema.json": "d0802a9397d51a9c542a39c44f0cf4343c0ff9a5e4c536cb18cd3627f1afd9ca"
   },
-  "apkSha256": "a1213cfb3b4f081712d56e1fa096de3aed3ab4d67c64a0dc15e36152f94adfe2"
+  "apkSha256": "86fc13739a9bcfbb9896e6bb146310afda81dd815d5dcad92412f75efb957f24",
+  "zipIntegrity": "PASS",
+  "testPrivateFixturesExcluded": true
 }

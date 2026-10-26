@@ -9,13 +9,14 @@ preserved a73a7e2 source. No Room/schema migration orotherworktree edits.
   counter andRetry-After;failed credentials count;missing peer metadata shares a
   bucket;outage denies beforechallenge. No rawIP/token storage orschema change.
 - [x] Focused12 BFF/PostgreSQL tests PASS,includingnewquota concurrency/recovery.
-- [ ] Final517-body backend/currentforcedKotlin run andfinalAndroidhost gates running.
+- [x] Final517backend/actualforcedKotlin1/234freshJVM/APK/testAPK/lint PASS.
 - [x] Preserve exactAPI36a3d99failure:182cases/13failures/2skips(167PASS),
   all13 inoldStage5bundle runner/store/worker tests;upgradeofflineassertionfailed.
 - [x] Inspect/reuseverifieda73a7e2 offline core andfixture corrections;preserve
   timestamps/retry/readPublished semantics;offlinehelperwaitsforactualradiodown,
   acceptance restoresairplane/mobile_data before network transitions.
-- [ ] Corrected-sourceAPI36/upgrade execution pendingafterhostpass/commit/push.
+- [x] Commit/ordinarypush/remoteexact d86de8f50dece8d16ad7bd4af811c7facd1b974a.
+- [ ] Exactsourcequality40241558565/BFF40241558522/API36+upgrade40241571850running.
 
 Hosteddeployment/functionalverification remainsBLOCKEDbyowner IPv6/pooler-auth
 report. No hostedDBlogin/reset/retry/TLSweakening/paidIPv4/release. Existing inert

@@ -1,0 +1,256 @@
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	﻿2026-10-25T22:51:18.5825008Z ##[group]Run reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5825509Z with:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5825698Z   api-level: 36
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5825907Z   target: google_apis
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5826121Z   arch: x86_64
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5826319Z   profile: pixel_6
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5826519Z   avd-name: stage5-ci
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5826738Z   disable-animations: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5827221Z   emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5827785Z   script: bash scripts/ci_stage6_acceptance.sh
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5828060Z   cores: 2
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5828251Z   force-avd-creation: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5828498Z   emulator-boot-timeout: 600
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5828734Z   emulator-port: 5554
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5828953Z   disable-spellchecker: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5829203Z   disable-linux-hw-accel: auto
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5829441Z   enable-hw-keyboard: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5829696Z   channel: stable
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5829880Z env:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5830348Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5831167Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5831611Z   ANDROID_HOME: /usr/local/lib/android/sdk
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5831903Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.5832171Z ##[endgroup]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6392158Z ##[group]Configure emulator
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6394587Z API level: 36
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6395087Z System image API level: 36
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6395560Z target: google_apis
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6396271Z CPU architecture: x86_64
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6396896Z Hardware profile: pixel_6
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6397603Z Cores: 2
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6398286Z RAM size: 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6399106Z Heap size: 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6400050Z SD card path or size: 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6401141Z Disk size: 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6401587Z AVD name: stage5-ci
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6402288Z force avd creation: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6402815Z Emulator boot timeout: 600
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6403490Z emulator port: 5554
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6404728Z emulator options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6405686Z disable animations: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6406167Z disable spellchecker: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6406703Z disable Linux hardware acceleration: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6407265Z enable hardware keyboard: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6407719Z Channel: 0 (stable)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6408360Z Script:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6408897Z bash scripts/ci_stage6_acceptance.sh
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6409430Z Pre emulator launch script:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6410077Z ##[endgroup]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6411186Z ##[group]Install Android SDK
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:18.6453247Z [command]/usr/bin/sh -c \yes | sdkmanager --licenses > /dev/null
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:22.4118511Z Installing latest build tools, platform tools, and platform.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:22.4137833Z [command]/usr/bin/sh -c \sdkmanager --install 'build-tools;37.0.0' platform-tools 'platforms;android-36'> /dev/null
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:23.8020063Z Installing latest emulator.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:23.8037119Z [command]/usr/bin/sh -c \sdkmanager --install emulator --channel=0 > /dev/null
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:32.2202632Z Installing system images.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:51:32.2218227Z [command]/usr/bin/sh -c \sdkmanager --install 'system-images;android-36;google_apis;x86_64' --channel=0 > /dev/null
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:02.2673680Z ##[endgroup]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:02.2677697Z ##[group]Create AVD
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:02.2678170Z Creating AVD.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:02.2699620Z [command]/usr/bin/sh -c \echo no | avdmanager create avd --force -n stage5-ci --package 'system-images;android-36;google_apis;x86_64' --device 'pixel_6'
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.0361926Z Loading local repository...                                                     
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.0362966Z [=========                              ] 25% Loading local repository...       
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.0363943Z [=========                              ] 25% Fetch remote repository...        
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.0364608Z [=======================================] 100% Fetch remote repository...       
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.0994075Z Auto-selecting single ABI x86_64
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.5457161Z [command]/usr/bin/sh -c \printf 'hw.cpu.ncore=2\n' >> /home/runner/.android/avd/stage5-ci.avd/config.ini
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.5478425Z ##[endgroup]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.5480602Z ##[group]Launch Emulator
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.5480903Z Starting emulator.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.5499238Z [command]/usr/bin/sh -c \/usr/local/lib/android/sdk/emulator/emulator -port 5554 -avd stage5-ci -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot &
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.5618201Z INFO         | Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.5619054Z INFO         | Graphics backend: gfxstream
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.5620137Z INFO         | Found systemPath /usr/local/lib/android/sdk/system-images/android-36/google_apis/x86_64/
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.6076278Z INFO         | Saving last run QEMU version for the AVD to 2
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.6077324Z INFO         | Guest usage of host flag 'VulkanVirtualQueue' will be ignored.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.6078161Z INFO         | Increasing RAM size to 2560MB
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.6078869Z INFO         | Guest GLES Driver: Auto (ext controls)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.6079937Z INFO         | emuglConfig_init: vulkan_mode_selected:swiftshader gles_mode_selected:swiftshader
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.6080892Z INFO         | Checking system compatibility:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.6081593Z INFO         |   Checking: hasSufficientDiskSpace
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.6082489Z INFO         |      Ok: Disk space requirements to run avd: `stage5-ci` are met
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.6083294Z INFO         |   Checking: hasSufficientHwGpu
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.6084113Z INFO         |      Ok: Hardware GPU compatibility checks are not required
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.6085145Z INFO         |   Checking: hasSufficientSystem
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.6085962Z INFO         |      Ok: System requirements to run avd: `stage5-ci` are met
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:03.6087820Z WARNING      | Feature QuickbootFileBacked is disabled due to stability issues, if you really want that, the environment variable ANDROID_EMU_FORCE_QUICKBOOT_FILE_BACKED need to set to 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2134756Z ERROR        | Unable to connect to adb daemon on port: 5037
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2146707Z INFO         | Storing crashdata in: /tmp/android-runner/emu-crash-37.2.12.db, detection is enabled for process: 3867
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2147842Z INFO         | Initializing gfxstream backend
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2157422Z INFO         | startOpenglesRendererImpl: gpu info
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2158025Z INFO         | 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2160375Z INFO         | initIcdPaths: ICD set to 'swiftshader', using Swiftshader ICD
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2161870Z INFO         | Setting ICD filenames for the loader = /usr/local/lib/android/sdk/emulator/lib64/vulkan/vk_swiftshader_icd.json
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2163619Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2165532Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so.1]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2166976Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2168090Z INFO         | Added library: /usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2218853Z INFO         | Selecting Vulkan device: SwiftShader Device (Subzero), Version: 1.3.0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2220278Z INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2355190Z INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2387214Z INFO         | SharedLibrary::open for [libX11]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2388884Z WARNING      | Could not open libX11.so, try libX11.so.6
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2389676Z INFO         | SharedLibrary::open for [libX11.so.6]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2390526Z INFO         | SharedLibrary::open for [libX11-xcb]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2391072Z WARNING      | Could not open libX11-xcb.so, try libX11-xcb.so.1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2391611Z INFO         | SharedLibrary::open for [libX11-xcb.so.1]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2441070Z INFO         | Initializing VkEmulation features:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2443659Z INFO         |     glInteropSupported: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2444569Z INFO         |     useDeferredCommands: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2445295Z INFO         |     createResourceWithRequirements: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2446024Z INFO         |     useVulkanComposition: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2446718Z INFO         |     useVulkanNativeSwapchain: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2447421Z INFO         |     enable guestRenderDoc: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2447880Z INFO         |     ASTC LDR emulation mode: Gpu
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2448310Z INFO         |     enable ETC2 emulation: true
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2448865Z INFO         |     enable Ycbcr emulation: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2449562Z INFO         |     guestVulkanOnly: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2450193Z INFO         |     useDedicatedAllocations: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2450722Z INFO         |     guestVulkanMaxApiVersion: 1.3.0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2451128Z INFO         |     enableProtectedMemoryEmulation: false
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2451569Z INFO         | Graphics Adapter Vendor Google (Google Inc.)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2452106Z INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (Google SwiftShader)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2452736Z INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2456020Z INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2458174Z INFO         | Graphics Device Extensions N/A
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2458566Z INFO         | Disabling sparse binding feature support
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2539757Z INFO         | Sending adb public key [QAAAAIMV3y7VXv9jkj2UR2vISO5YLuV+IT+VE4zxTKImZ9H4e83ZpM5gQk+mD5ErRRZQzRFH9inVwdHabrrWB/hUpDw2tkQ5vxQw4aJxC5lz6ovuRi6mTs+xMmSe5kE9bzLejYV43wCxqMDtaaVGLlsM92EmJ+Op5nPRH+s2vGY4H2NZGSy8FUE9UBel02Y9gSWOyAWUqIqh+tAdVXJfDy1qN/6DZErJGVK5S8osCGwuXOsyzWZN78v9ocklmLjIpMjZy5F7kkCaE28SayX0+PWQB7l7noN+vcbiaW9W1DwfE5347XPb78rSy7/XkdY+zpyCBIZy/Zef4uunvBMdA1ObkTpLMy3teVP/aXcL1yB97gnPDU4DETQL/BHc8HJCrmIp03t8WnJ7hlig4PVuvid2OPAB9MN62yfFZLZVzpQnqBErLFb6C864Gp0JldguABrPzMwNIoP2rZKYqMoeBM0hpDFE+4fxzo/Irs+TBiVWVgRvvtSM/NmEIu1DGW1//2Zk+VDJrCd7nl190owJFsDKdbi3UmJVfLSKuiLa/VXgpFHGGhbnayC90MZ0r6A3nalwpDOjrl5VIb+tzYGUvH4CqKLnryBDkjpLdKpf3GREd7i0Sf5wqSv6A5MiFa3GrTP252hjgdxudvFP90eswk9qYMII+j2yl+HPWH18t125y9x7RNGOxgEAAQA= runner@unknown]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2543648Z INFO         | Userspace boot properties:
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2544211Z INFO         |   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2545389Z INFO         |   androidboot.dalvik.vm.heapsize=576m
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2546131Z INFO         |   androidboot.debug.hwui.renderer=skiagl
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2547210Z INFO         |   androidboot.debug.sf.nobootanimation=1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2547895Z INFO         |   androidboot.hardware=ranchu
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2548582Z INFO         |   androidboot.hardware.gltransport=pipe
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2549485Z INFO         |   androidboot.hardware.vulkan=ranchu
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2550098Z INFO         |   androidboot.logcat=*:V
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2550486Z INFO         |   androidboot.opengles.version=196608
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2550846Z INFO         |   androidboot.qemu=1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2555213Z INFO         |   androidboot.qemu.adb.pubkey=QAAAAIMV3y7VXv9jkj2UR2vISO5YLuV+IT+VE4zxTKImZ9H4e83ZpM5gQk+mD5ErRRZQzRFH9inVwdHabrrWB/hUpDw2tkQ5vxQw4aJxC5lz6ovuRi6mTs+xMmSe5kE9bzLejYV43wCxqMDtaaVGLlsM92EmJ+Op5nPRH+s2vGY4H2NZGSy8FUE9UBel02Y9gSWOyAWUqIqh+tAdVXJfDy1qN/6DZErJGVK5S8osCGwuXOsyzWZN78v9ocklmLjIpMjZy5F7kkCaE28SayX0+PWQB7l7noN+vcbiaW9W1DwfE5347XPb78rSy7/XkdY+zpyCBIZy/Zef4uunvBMdA1ObkTpLMy3teVP/aXcL1yB97gnPDU4DETQL/BHc8HJCrmIp03t8WnJ7hlig4PVuvid2OPAB9MN62yfFZLZVzpQnqBErLFb6C864Gp0JldguABrPzMwNIoP2rZKYqMoeBM0hpDFE+4fxzo/Irs+TBiVWVgRvvtSM/NmEIu1DGW1//2Zk+VDJrCd7nl190owJFsDKdbi3UmJVfLSKuiLa/VXgpFHGGhbnayC90MZ0r6A3nalwpDOjrl5VIb+tzYGUvH4CqKLnryBDkjpLdKpf3GREd7i0Sf5wqSv6A5MiFa3GrTP252hjgdxudvFP90eswk9qYMII+j2yl+HPWH18t125y9x7RNGOxgEAAQA= runner@unknown
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2559407Z INFO         |   androidboot.qemu.avd_name=stage5-ci
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2559843Z INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2560306Z INFO         |   androidboot.qemu.camera_protocol_ver=1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2560720Z INFO         |   androidboot.qemu.cpuvulkan.version=4206592
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2561188Z INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2561636Z INFO         |   androidboot.qemu.gltransport.name=pipe
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2562023Z INFO         |   androidboot.qemu.hwcodec.avcdec=2
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2562403Z INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2562786Z INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2563275Z INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2563731Z INFO         |   androidboot.qemu.skin=1080x2400
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2564092Z INFO         |   androidboot.qemu.virtiowifi=1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2564749Z INFO         |   androidboot.qemu.vsync=60
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2565166Z INFO         |   androidboot.serialno=EMULATOR37X2X12X0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2565786Z INFO         |   androidboot.vbmeta.digest=7466b5c28e6a3e1427b22ed2c317c6c7066294bde838d4d5243cce5d37992bd5
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2566344Z INFO         |   androidboot.vbmeta.hash_alg=sha256
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2566725Z INFO         |   androidboot.vbmeta.size=6848
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2567086Z INFO         |   androidboot.veritymode=enforcing
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2699034Z WARNING: cannnot unmap ptr 0x7fb084601000 as it is in the protected range from 0x7fafe4600000 to 0x7fb084800000
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:04.2895537Z INFO         | Monitoring duration of emulator setup.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:05.3026462Z INFO         | Activated packet streamer for bluetooth emulation
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:05.3027516Z INFO         | Activated packet streamer for uwb emulation
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:05.3034706Z INFO         | Successfully initialized netsim WiFi
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:05.3090057Z INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:05.3090930Z INFO         | setDisplayActiveConfig: id:0, 1080x2400
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:05.3091815Z INFO         | emulatorSetupEnvironment: Environment scene is not required
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:05.3169012Z USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:05.3170717Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:05.6299661Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:13.5566264Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:13.5604604Z * daemon not running; starting now at tcp:5037
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:13.7169723Z * daemon started successfully
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:13.7176157Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:13.7180704Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:15.7209872Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:15.7250413Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:15.7259826Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:17.7311447Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:17.7349996Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:17.7353565Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:19.7398586Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:19.7443459Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:19.7444730Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:21.7491541Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:21.7539481Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:21.7540394Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:23.7579807Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:23.7613524Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:23.7619136Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:25.7664318Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:25.7725205Z adb: device offline
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:25.7729320Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:27.7786154Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:27.8301625Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:29.8376494Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:29.8683612Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:31.8766814Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:31.8920111Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:33.8966085Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:33.9119211Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:35.9216140Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:35.9491815Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:37.9568925Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:38.0072963Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:40.0140299Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:40.0356986Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:42.0428146Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:42.0812602Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:44.0906268Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:44.1379442Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:46.1451136Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:46.1673926Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:48.1773335Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:48.2405397Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:50.2461027Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:50.3705924Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:52.3858376Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:52.4697568Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:53.3172521Z INFO         | Boot completed in 49726 ms
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:53.3196198Z INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:54.4766303Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:54.5142666Z 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:54.5158817Z Emulator booted.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:54.5198628Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell input keyevent 82
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:55.0435452Z Disabling animations.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:55.0456012Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global window_animation_scale 0.0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:55.2576381Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global transition_animation_scale 0.0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:55.6964997Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global animator_duration_scale 0.0
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:56.0678817Z ##[endgroup]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:56.0795308Z [command]/usr/bin/sh -c bash scripts/ci_stage6_acceptance.sh
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:52:56.1855751Z Running acceptance subset on verified emulator emulator-5554
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:53:12.0559873Z Performing Streamed Install
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:53:12.0567133Z Success
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:53:20.4110561Z stage5-ci-results/upgrade/seed.db: 1 file pushed, 0 skipped. 3.9 MB/s (147456 bytes in 0.036s)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:53:20.7869674Z stage5-ci-results/upgrade/goldberg-appearance.xml: 1 file pushed, 0 skipped. 2.9 MB/s (198 bytes in 0.000s)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:54:04.3060011Z Performing Streamed Install
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:54:04.3061972Z Success
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:54:32.1950109Z PASS: exact persistent-table equality after 0.10.1 upgrade; 37 sessions, notes, profile, badges, repertoire, recovery archive, draft bytes and preferences retained
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:54:32.2045555Z == restore mobile data and Wi-Fi (upgrade helper left both disabled) ==
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:54:32.3487215Z == expect Wi-Fi as active default network ==
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:54:35.7036322Z INFO         | Created VkInstance:0x5637f0da3000 for application:'' engine:''.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:54:35.7352249Z INFO         | Destroyed VkInstance:0x5637f0da3000 for application:'' engine:''.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.0237229Z ##[error]The process '/usr/bin/sh' failed with exit code 1
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.0239261Z ##[group]Terminate Emulator
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.0249167Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 emu kill
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.0284584Z OK: killing emulator, bye bye
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.0285130Z OK
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.0290620Z INFO         | Wait for emulator (pid 3867) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.0291537Z 
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.0291999Z ##[endgroup]
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.0451855Z USER_INFO    | Snapshots have been disabled by the user, save request is ignored.
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.0454952Z INFO         | Saving snapshot 'default_boot' took 0 ms
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.3875187Z ERROR        | stop: Not implemented
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.3876518Z WARNING      | Emulator client has not yet been configured.. Call configure me first!
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.4009352Z INFO         | removeAll
+5.11 acceptance subset — API 36 emulator	Run acceptance checks on the emulator	2026-10-25T22:55:34.4695624Z WARNING      | Netsim Wifi dns:///localhost:33641 is gone due to Stream removed (CANCELLED)

@@ -19,7 +19,15 @@
     "skipped": 0,
     "freshExecution": "2026-10-25T22:39 UTC"
   },
-  "androidNative": "a3d99 run182cases/13failures/2skips,observedoffline/fixture fixes adopted from verifieda73;newrun pending",
+  "androidNative": {
+    "source": "d86de8f50dece8d16ad7bd4af811c7facd1b974a",
+    "run": 40241571850,
+    "tests": 182,
+    "passed": 180,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2
+  },
   "screenshotsInspected": 0,
   "apkPath": "app/build/outputs/apk/debug/app-debug.apk",
   "apkSha256": "86fc13739a9bcfbb9896e6bb146310afda81dd815d5dcad92412f75efb957f24",
@@ -131,5 +139,17 @@
   "documentationAfterBackendRun": [
     "services/community-bff/README.md"
   ],
-  "cloudflareAccess": "RESTORED via existing Wrangler CLI;GET-only inventory22:28UTC"
+  "cloudflareAccess": "RESTORED via existing Wrangler CLI;GET-only inventory22:28UTC",
+  "upgrade": {
+    "source": "d86de8f50dece8d16ad7bd4af811c7facd1b974a",
+    "sessions": 37,
+    "tablesIndependentlyCompared": 16,
+    "originalRowsUnchanged": true,
+    "preferencesUnchanged": true,
+    "offlineVerified": true,
+    "integrity": "ok",
+    "foreignKeys": "PASS"
+  },
+  "connectivityParserRegressions": 8,
+  "acceptanceOverall": "Pending harness-only corrected acceptance rerun;native and seeded upgrade individually PASS"
 }

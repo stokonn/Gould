@@ -11,9 +11,11 @@ name: Goldberg Stage 5 emulator verification
 #     Debug APKs ARE signed — with the runner's temporary debug keystore only
 #     (a throwaway key generated inside the job; CI output is never a
 #     release artifact).
-#   - No test selection, weakening or skipping: job 5.10 runs the complete
+#   - Default full verification runs the complete
 #     connected suite via `connectedDebugAndroidTest` (all 42 androidTest
 #     classes; no runner-argument filters, no @Ignore, no excluded classes).
+#     Acceptance-only execution requires an exact Android source inventory match
+#     to retained full native evidence; it never claims a new instrumentation run.
 #   - Every adb use inside the scripts resolves and exports a single explicit
 #     `emulator-NNNN` serial and verifies `ro.kernel.qemu=1`; a physical device
 #     can never be selected (multiple attached devices abort the run).
@@ -59,6 +61,14 @@ name: Goldberg Stage 5 emulator verification
 #     docs/ai/VERIFICATION.md before claiming 5.11.
 on:
   workflow_dispatch:
+    inputs:
+      verification_scope:
+        description: 'Use acceptance only when the identical Android source already passed full instrumentation'
+        type: choice
+        default: all
+        options:
+          - all
+          - acceptance
 permissions:
   contents: read
 concurrency:
@@ -66,6 +76,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   stage5-instrumentation:
+    if: inputs.verification_scope != 'acceptance'
     name: "5.10 instrumentation — API 36 emulator"
     runs-on: ubuntu-24.04
     timeout-minutes: 150
@@ -164,6 +175,21 @@ jobs:
             echo "ERROR: checked-out commit does not match the dispatched commit"; exit 1
           fi
           df -h / | tee stage5-ci-results/disk-usage.txt
+      - name: Verify connectivity assertion parser
+        run: python3 scripts/test_emulator_network_assertion.py
+      - name: Verify retained native source for acceptance-only execution
+        if: inputs.verification_scope == 'acceptance'
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,subprocess
+          from pathlib import Path
+          record=json.loads(Path('docs/planning/goldberg-0.11/stage-6/results/runtime-continuation-2026-10-25/android-source-artifact.json').read_text())
+          actual=set(subprocess.check_output(['git','ls-files','app/src','app/build.gradle.kts','app/schemas','contracts/admin/v1/decision-proposal/dto.schema.json'],text=True).splitlines())
+          assert actual==set(record['files']), 'Native source inventory changed;run full instrumentation'
+          for name,digest in record['files'].items():
+              assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest, 'Native source changed:'+name
+          print('Android source matches retained full native run at',record['sourceCommit'])
+          PY
       - name: Check out trusted v0.10.1 tag for the baseline rebuild
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
