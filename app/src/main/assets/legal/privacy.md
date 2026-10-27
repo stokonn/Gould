@@ -1,10 +1,10 @@
 # Goldberg privacy notice — 0.11
 
-**Review copy dated October 27, 2026. Owner approval is pending. The public Goldberg catalogue API is not activated.** This notice describes the existing local application and the read-only cloud candidate. It does not authorize Google backend authentication, community participation or collection of personal practice data.
+**Review copy dated October 27, 2026. The owner approved the notice text for the next step and supplied the public developer identity below. Final public activation remains pending the listed requirements and final approval.** This notice describes the existing local application and the read-only cloud candidate. It does not authorize Google backend authentication, community participation or collection of personal practice data.
 
 ## Contact and scope
 
-The official privacy and support contact is **stokonn.us@gmail.com**. Use this address for privacy questions, rights requests and support. Do not post private journals, credentials or personal screenshots in public GitHub issues. This notice does not assert blanket legal compliance; the unresolved launch requirements below must be addressed before public activation.
+The public developer identity is **stokonn**. The official privacy and support contact is **stokonn.us@gmail.com**. The nickname is not claimed to satisfy formal legal identification of the data controller; that identification remains unresolved pending appropriate review. No legal name, residential address or other private identity details are published here. Use this address for privacy questions, rights requests and support. Do not post private journals, credentials or personal screenshots in public GitHub issues. This notice does not assert blanket legal compliance; the unresolved launch requirements below must be addressed before public activation.
 
 ## Personal practice data stays on your device
 
@@ -58,7 +58,7 @@ Email **stokonn.us@gmail.com** to explain your request. Include only information
 
 ## Unresolved before public activation
 
-Owner approval of this exact notice is required. The owner must also confirm the final public operator identification and applicable processing basis, provider logging/retention and international-processing arrangements, and a support-correspondence retention/deletion and rights-handling procedure. No missing fact, fixed period or legal approval is supplied by this draft. The previously accepted operator-model review is preserved; it is not a substitute for these specific unresolved details.
+The approved text and owner-directed public identity updates do not authorize launch. Formal legal identification of the data controller remains unresolved pending appropriate review. The applicable processing basis, provider logging/retention and international-processing arrangements, and a support-correspondence retention/deletion and rights-handling procedure must also be confirmed. No missing fact, fixed period or legal approval is supplied by this draft. The previously accepted operator-model review is preserved; it is not a substitute for these specific unresolved details.
 
 Public routes remain disabled until the required conditions are verified. Google OAuth, public community writes and personal-data collection are not authorized by approval of a read-only catalogue notice.
 

@@ -34,10 +34,12 @@ the existing Worker, Hyperdrive and Supabase resources.
 - [x] Recheck official Free pricing/limits. No subscription, trial, payment method,
   upgrade or paid fallback configured. Existing owner Free/no-card evidence is
   retained; billing API 403 remains a limit on independent invoice inspection.
-- [x] Owner supplied official privacy/support contact: stokonn.us@gmail.com.
+- [x] Owner supplied public developer identity `stokonn` and official privacy/support
+  contact `stokonn.us@gmail.com`; private identity details are not authorized.
 - [x] Prepare the 0.11 notice, synchronized Android asset and CZ/EN references.
-- [ ] Owner approval of the exact notice and resolution of the listed retention,
-  operator/basis and provider-processing requirements. See docs/LEGAL-REVIEW-0.11.md.
+- [x] Owner approved the exact notice text at commit `2f0cf0b`; approved copy preserved.
+- [ ] Resolution of the listed retention,
+  formal controller identification/basis and provider-processing requirements. See docs/LEGAL-REVIEW-0.11.md.
 - [ ] After applicable prerequisites pass, enable the existing HTTPS route and
   verify actual public reads, denied private/write requests, redaction and
   unchanged database security/data. **Public activation is not executed.**
@@ -46,12 +48,12 @@ the existing Worker, Hyperdrive and Supabase resources.
 
 The owner supplied the official contact and requested the final notice for approval.
 `docs/PRIVACY.md` now contains the 0.11 review copy, synchronized into Android.
-The current blocker is **owner approval of that exact text and the unresolved
-requirements explicitly listed in docs/LEGAL-REVIEW-0.11.md**, rather than a missing
-contact. Q1/D5b's accepted operator-model outcome is preserved.
+The owner has approved the exact notice text for the next step. The remaining
+blocker is **the unresolved factual and operational requirements listed in
+docs/LEGAL-REVIEW-0.11.md**, rather than missing contact or text approval. Q1/D5b's accepted operator-model outcome is preserved.
 
-The owner expressly requires public routes to remain disabled before notice
-approval. No public URL is activated; no incomplete notice is treated as approved.
+The owner expressly requires public routes to remain disabled pending the
+remaining requirements and final approval. Original text approval remains recorded. No public URL is activated; no incomplete notice is treated as approved.
 No identity, retention period, international-processing conclusion or compliance
 claim is invented. Read-only deployment preparation continues privately.
 
@@ -65,7 +67,7 @@ future ingestion requires the approved field/source/license/attribution policy.
 
 ## Remaining execution
 
-Once the approved notice/contact is available, record the exact public scope,
+Once remaining conditions and final approval are recorded, record the exact public scope,
 retain the catalogue boundary, OAuth disabled and intake false, change only the
 existing route configuration, and perform bounded actual HTTPS checks. Do not
 recreate working resources or introduce paid fallback.
@@ -79,3 +81,15 @@ Sources rechecked October 27:
 - https://developers.cloudflare.com/workers/platform/limits/
 - https://developers.cloudflare.com/hyperdrive/platform/pricing/
 - https://supabase.com/pricing
+
+## PR #39 and latest owner clarification
+
+Draft PR #39 was reviewed at head3cdd34f and reconciled, not merged. The newer
+public nickname/contact decision is authoritative; formal controller identification
+stays OPEN. Proposed support-email90-day retention is not adopted or implemented
+and is distinct from runtime credential expiry. See the operations-review document
+for remaining owner/guardian/reviewer decisions and safe rights-request desk review.
+Fresh Cloudflare API readback confirms public/previews OFF,0 custom domains and
+exact deployed source match. Android identity resource build/lint and packaged
+notice/signature/secret-scan PASS; detailed immutable receipts are in
+results/privacy-review-2026-10-27. No public HTTPS request is claimed.

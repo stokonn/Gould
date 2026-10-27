@@ -1,0 +1,26 @@
+{
+  "worker": "goldberg-community-bff-private",
+  "bindings": {
+    "text": {
+      "CATALOGUE_READ_ONLY": "true",
+      "COMMUNITY_BFF_ENABLED": "true",
+      "DB_TRANSPORT": "hyperdrive",
+      "GOOGLE_OAUTH_ENABLED": "false"
+    },
+    "serverSecretNames": [
+      "CURSOR_KEY",
+      "IP_KEY"
+    ]
+  },
+  "subdomain": {
+    "enabled": false,
+    "previews_enabled": false
+  },
+  "customDomains": 0,
+  "deployedSourceSha256": "145c7d15dfccda8b1a2596ca1cd0da4965c65036d55ed7fe00b7f0b3dc25534c",
+  "sourceMatches": true,
+  "observability": null,
+  "usageModel": "standard",
+  "recordedUtc": "2026-10-27T05:39:16.287182+00:00",
+  "operation": "read-only API routing/binding/source verification; no deploy or public request"
+}

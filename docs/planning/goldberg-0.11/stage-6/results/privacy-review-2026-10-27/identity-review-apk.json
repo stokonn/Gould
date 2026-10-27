@@ -1,0 +1,17 @@
+{
+  "recordedUtc": "2026-10-27T05:39:16.287182+00:00",
+  "artifact": "/home/stokonn/Projects/Goldberg-Stage6-Cloud/.gradle/stage6-delivery/Goldberg-0.11-dev-stage6-privacy-identity-review.apk",
+  "apkSha256": "4ed6b5b00497ba69e98c69a9a818975fbd12a21f7df93b36143d2ce73b26ee81",
+  "noticeSha256": "68356de457b28d726af6a836fbb841b7c47a927823ae31adafb3be8ee9d48586",
+  "package": "com.opus.piano",
+  "version": "0.11-dev",
+  "versionCode": 12,
+  "targetSdk": 36,
+  "signingSha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+  "zipVerified": true,
+  "packagedNoticeMatchesDocs": true,
+  "actualRuntimeSecretsAbsent": true,
+  "previousReviewApkPreserved": true,
+  "buildAndLint": "PASS;47 tasks,14 executed,33 up-to-date",
+  "newEmulatorOrPhysicalExecution": false
+}

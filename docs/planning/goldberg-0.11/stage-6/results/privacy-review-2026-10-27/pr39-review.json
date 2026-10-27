@@ -1,0 +1,22 @@
+{
+  "pr": 39,
+  "head": "3cdd34f62c54f607ad5182f54f3ec0283f229ce2",
+  "base": "2f0cf0b6a17eeeb7d916ab170e84e9998cc99e83",
+  "draft": true,
+  "merged": false,
+  "reviews": 0,
+  "inlineReviewThreads": 0,
+  "supportRetention90Days": "proposal only;not adopted or automated",
+  "formalControllerIdentification": "OPEN",
+  "publicRoutesEnabled": false,
+  "primarySourcesCheckedUtc": "2026-10-27T05:39:59.341032+00:00",
+  "sources": [
+    "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
+    "https://developers.cloudflare.com/observability/pricing/",
+    "https://www.cloudflare.com/cloudflare-customer-dpa/",
+    "https://supabase.com/legal/customer-resources/data-processing-addendum",
+    "https://supabase.com/legal/privacy-resources/data-residency-and-transfers-faq",
+    "https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/dealing-requests-individuals_en"
+  ],
+  "limits": "General source review does not prove account agreement applicability or provider-wide deletion. EUR-Lex direct page presented JS challenge; no new legal certification."
+}

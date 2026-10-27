@@ -1,9 +1,9 @@
-# Goldberg 0.11 privacy review — approval pending
+# Goldberg 0.11 privacy review — text approved; launch requirements remain
 
-The owner selected **stokonn.us@gmail.com** as the official privacy/support contact
-on October 27, 2026. This resolves the missing contact input; it does not constitute
-approval of the notice or permission to activate public routes. The owner expressly
-requires final notice approval before activation. The accepted Q1/D5b operator-model
+The owner confirmed public developer identity **stokonn** and selected **stokonn.us@gmail.com** as the official privacy/support contact
+on October 27, 2026. This resolves the public nickname/contact input. The earlier exact notice text
+was approved for the next step; that approval does not clear launch requirements.
+The owner expressly requires final approval before public activation. The accepted Q1/D5b operator-model
 review remains accepted within its recorded scope and is not reopened.
 
 ## Review copy and Android references
@@ -36,9 +36,15 @@ by the operator.
 
 ## Unresolved requirements — keep public routes disabled
 
-1. Owner approval of the **exact** review copy, followed by any requested revisions.
-2. Final approved public operator identification and applicable processing basis.
-   Do not publish private identity details or infer legal approval from an alias.
+1. **Complete:** the owner approved the exact review copy at commit `2f0cf0b`,
+   SHA-256 `b76e3479ccc2f4054302ad7a738406440c32cb0ab4420b283b77b8b3fa979759`,
+   for the next step. The approved copy is preserved byte-for-byte; this approval
+   does not clear the following requirements or authorize public activation.
+2. **Explicitly unresolved by owner:** formal legal identification of the data
+   controller, pending appropriate review. Publish only the authorized nickname
+   and contact; no legal name, residential address or other private details. The
+   nickname is not claimed to satisfy this requirement. The applicable processing
+   basis also remains to be confirmed.
 3. The deployment-specific provider logging/retention and international-processing
    arrangements. Frankfurt origin is not an EU-only edge/metadata guarantee, and
    a dashboard retention window is not a deletion guarantee for all provider copies.
@@ -69,3 +75,14 @@ been verified for this account. No support request or message was sent to a prov
 - https://www.edpb.europa.eu/topics/key-gdpr-concepts/data-subject-rights_en
 - https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/dealing-requests-individuals_en
 - https://uoou.gov.cz/
+
+## Draft PR #39 reconciliation
+
+Reviewed draft [PR #39](https://github.com/stokonn/Goldberg/pull/39), head
+`3cdd34f62c54f607ad5182f54f3ec0283f229ce2`, without merging it. Its safe operational
+proposals, source checks and outstanding owner/reviewer decisions are reconciled
+in [the operations review](planning/goldberg-0.11/stage-6/PRIVACY-LAUNCH-OPERATIONS-REVIEW-2026-10-27.md).
+The proposed routine-support-email deletion period of 90 days is **not adopted**,
+implemented or a provider-log retention setting. It does not change the current
+notice. Candidate legal bases remain candidates. No age, private identity or legal
+capacity finding is published. Formal controller identification remains **OPEN**.

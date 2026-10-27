@@ -1,0 +1,17 @@
+{
+  "recordedUtc": "2026-10-27T05:29:18.303103+00:00",
+  "ownerDecision": "Approve notice text for the next step",
+  "approvedSourceCommit": "2f0cf0b6a17eeeb7d916ab170e84e9998cc99e83",
+  "approvedNoticeSha256": "b76e3479ccc2f4054302ad7a738406440c32cb0ab4420b283b77b8b3fa979759",
+  "approvedTextPreservedByteForByte": true,
+  "publicActivationApprovedByThisDecision": false,
+  "remainingRequirementsClearedByThisDecision": false,
+  "publicRoutesEnabled": false,
+  "laterOwnerDirectedIdentityUpdate": {
+    "publicDeveloper": "stokonn",
+    "contact": "stokonn.us@gmail.com",
+    "formalControllerIdentification": "OPEN;nickname is not sufficient evidence",
+    "privateIdentityPublication": "prohibited",
+    "publicActivation": "held pending requirements and final approval"
+  }
+}

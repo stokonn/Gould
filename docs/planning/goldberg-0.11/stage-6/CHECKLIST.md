@@ -1,33 +1,49 @@
-## Current Stage 6 — privacy notice ready for owner review; public routes held
+## Current Stage 6 — PR #39 reconciled; public launch requirements OPEN
 
-Purpose: finish the read-only catalogue boundary and an accurate 0.11 privacy
-notice while preserving personal practice data and the existing cloud database.
-Scope: existing Worker/Hyperdrive/Supabase, legal documentation, bundled Android
-notice and CZ/EN legal references. No Android release or main merge.
+Purpose: verify private catalogue operation and reconcile privacy/retention work
+without replacing newer owner decisions. Scope: existing Worker/Hyperdrive/database,
+legal documentation, Android legal asset and English/Czech summaries.
 
-- [x] Runtime renewed manually for 90 days; expiry January25,2027 04:39:50UTC.
-  Password, privileges, RLS, memberships, four-connection limit and data unchanged.
-  No automatic renewal/admin credential in Cloudflare or GitHub.
-- [x] Deployed CATALOGUE_READ_ONLY=true privately. Actual catalogue/feed200;
-  OAuth/admin/submission404, method405, cursor400, unknown404; caller403.
-  Focused Fetch12 and actual workerd24 PASS. No full local regression rerun.
-- [x] Official privacy/support contact selected by owner: stokonn.us@gmail.com.
-- [x] Complete 0.11 notice in docs/PRIVACY.md, identical Android legal asset and
-  updated English/Czech summaries. Local Google profile versus disabled backend
-  OAuth, format5 backups/recovery and provider-controlled logging are distinguished.
-- [x] Localization951 resources PASS; debug build/lint PASS. Review APK contains
-  exact notice; trusted53ef signer/package/version/ZIP/icons/secret scan PASS.
-  New native/UI screenshots not executed; prior native evidence is historical.
-- [ ] Owner approval of exact notice and the unresolved items in
-  docs/LEGAL-REVIEW-0.11.md: operator/basis details, provider retention/transfers,
-  support-mail retention/deletion and rights-handling procedure.
-- [ ] Public route activation and actual public HTTPS verification. NOT executed.
-  Public/previews/customdomains remain off; no unapproved records published.
+- [x] Reviewed draft PR #39 at `3cdd34f62c54f607ad5182f54f3ec0283f229ce2`;
+  no merge. Reconciled its operations review with newer nickname/contact decisions.
+- [x] Public developer **stokonn**, privacy/support **stokonn.us@gmail.com**.
+  No private identity details published; no claim that nickname identifies the
+  controller legally. Exact original approved notice preserved byte-for-byte.
+- [x] Current notice and Android asset match; CZ/EN summaries synchronized.
+  `check_localization.py`:951 resources PASS; `assembleDebug lintDebug`:PASS,
+  47 tasks/14 executed. New identity review APK signature/package/version/ZIP,
+  exact notice and actual runtime-secret scan PASS. Prior APKs preserved.
+- [x] Fresh read-only Cloudflare API check: workers.dev/previews OFF,0 custom
+  domains, catalogue-only true, Google false,2 server keys, deployed source matches.
+  A stale session initially returned403; existing Wrangler session refreshed and
+  the check then passed. No routing/deployment/account/SQL modification.
+- [x] Prior actual private Worker→Hyperdrive→Supabase reads200 and negative
+  permission checks retained. No new hosted request, public HTTPS or native/UI
+  execution claimed for this documentation/resource change.
+- [x] Source2f0cf0b CI completed:backend523 tests/0fails/skips plus24 workerd
+  requests; host-quality build/JVM/instrumentation compilation/lint/policy SUCCESS.
+  Those CI runs precede this identity-only Android resource update.
+- [x] Runtime expiry remains2027-01-25T04:39:50.052095Z;90-day manual renewal
+  preserved password/ACL/RLS/limit4/data. No administrator-based automation.
+- [x] Provider primary pages rechecked; enabled-log visibility is not a universal
+  deletion deadline. Routine mailbox90-day deletion remains a proposal, not policy.
+  Synthetic rights-request desk review completed; no inbox configured/contact sent.
+- [ ] Formal legal controller identification/authority and any required guardian
+  or appropriate legal review. Processing basis and provider account-specific
+  retention/transfers remain OPEN; nickname/contact approval does not resolve them.
+- [ ] Owner adopts and operates mailbox schedule, restricted case storage,
+  reviewer and rights procedure. Future content licensing/fields before ingestion.
+- [ ] Required launch conditions and final public-route approval; public HTTPS
+  activation and live public checks NOT EXECUTED. OAuth/community/writes stay off.
 
-Notice SHA256: b76e3479ccc2f4054302ad7a738406440c32cb0ab4420b283b77b8b3fa979759.
-Current report: PUBLIC-CATALOGUE-ACTIVATION-2026-10-27.md. Evidence under
-results/privacy-review-2026-10-27 and results/public-catalogue-candidate-2026-10-27.
-Stage6 remains IN PROGRESS. Publication commit recorded in Issue31/private PMP.
+Stage6 remains IN PROGRESS; Issue31 OPEN/Project In Progress. No paid activation,
+main merge, tag, RC or Android release. Current records: LEGAL-REVIEW-0.11.md,
+PRIVACY-LAUNCH-OPERATIONS-REVIEW-2026-10-27.md and results/privacy-review-2026-10-27.
+New notice SHA256:68356de457b28d726af6a836fbb841b7c47a927823ae31adafb3be8ee9d48586.
+New APK SHA256:4ed6b5b00497ba69e98c69a9a818975fbd12a21f7df93b36143d2ce73b26ee81.
+Next: resolve owner/reviewer gates confidentially; do not collect identity details
+in public tracking. Only after required conditions and final approval activate
+read-only routing and execute minimal live security checks. Commit in Issue/PMP.
 
 ---
 

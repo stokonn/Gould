@@ -1,0 +1,89 @@
+{
+  "conclusion": "success",
+  "jobs": [
+    {
+      "completedAt": "2026-10-27T05:29:54Z",
+      "conclusion": "success",
+      "databaseId": 122025538329,
+      "name": "host-quality",
+      "startedAt": "2026-10-27T05:20:59Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-27T05:21:02Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-27T05:21:00Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T05:21:04Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 2,
+          "startedAt": "2026-10-27T05:21:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T05:21:04Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3",
+          "number": 3,
+          "startedAt": "2026-10-27T05:21:04Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T05:21:18Z",
+          "conclusion": "success",
+          "name": "Set up required Android SDK packages",
+          "number": 4,
+          "startedAt": "2026-10-27T05:21:04Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T05:29:48Z",
+          "conclusion": "success",
+          "name": "Build, JVM tests, instrumentation compilation and lint",
+          "number": 5,
+          "startedAt": "2026-10-27T05:21:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T05:29:52Z",
+          "conclusion": "success",
+          "name": "Host data and policy checks",
+          "number": 6,
+          "startedAt": "2026-10-27T05:29:48Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T05:29:52Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3",
+          "number": 11,
+          "startedAt": "2026-10-27T05:29:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T05:29:52Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 12,
+          "startedAt": "2026-10-27T05:29:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T05:29:53Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 13,
+          "startedAt": "2026-10-27T05:29:52Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/stokonn/Goldberg/actions/runs/40454807149/job/122025538329"
+    }
+  ],
+  "status": "completed"
+}
