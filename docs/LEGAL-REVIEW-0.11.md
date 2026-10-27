@@ -1,3 +1,39 @@
+# Current launch decision — October27 owner authorization reconciled
+
+[Owner decision6435585794](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6435585794)
+supersedes all older requests below for another public-route approval or identity
+acceptability review. Public read-only activation is authorized, conditional on
+remaining genuine prerequisites. Public nickname/contact acceptability is
+owner-reported; accepted Q1/D5b eligibility is preserved. No independent legal
+certification is claimed or requested by this checkpoint.
+
+The remaining concrete evidence gap is the adopted processing basis and actual
+support/rights procedure, plus the provider-account processing disposition.
+The operations review still labels these as candidates/proposals, not adopted
+outcomes. A routine mailbox90-day policy has not been implemented by this agent.
+No private identifying information should be placed in GitHub.
+
+Primary sources rechecked during this continuation:
+
+- [Cloudflare DPA](https://www.cloudflare.com/cloudflare-customer-dpa/), v6.4:
+  sets processor duties within the customer's agreement; reading it does not
+  establish the applicable account acceptance or this service's lawful basis.
+- [Supabase DPA](https://supabase.com/legal/customer-resources/data-processing-addendum),
+  v1: supplements its customer agreement and provides conditional transfer
+  safeguards. No separate signature requirement is invented. No account contract
+  was accepted or changed by this agent.
+- [Commission legal grounds](https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/legal-grounds-processing-data_en):
+  legitimate interests require checking the impact on individuals. The existing
+  candidate-basis matrix does not record a completed/adopted assessment.
+
+Exact next step: record the existing review outcome, adopted basis and real
+mailbox monitoring/retention/rights workflow without sensitive details. Once these
+prerequisites pass, activate under standing authorization and perform the single
+focused public smoke pass. Do not demand reauthorization. The local stage/AI
+checklists carry current CI and source evidence. Historical review follows.
+
+---
+
 # Goldberg 0.11 privacy review — text approved; launch requirements remain
 
 The owner confirmed public developer identity **stokonn** and selected **stokonn.us@gmail.com** as the official privacy/support contact

@@ -1,3 +1,21 @@
+## Current authorization — supersedes older approval holds below
+
+Owner decision [6435585794](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6435585794)
+explicitly authorizes public read-only routing after genuine prerequisites pass.
+Do not ask for the same activation approval again. Public identity/contact
+acceptability is owner-reported and Q1/D5b eligibility stays accepted.
+
+Remaining actual evidence: adopted processing basis, provider-account processing
+review outcome, monitored support mailbox and adopted retention/rights workflow.
+See the current entry in `docs/LEGAL-REVIEW-0.11.md` and stage checklist. No public
+activation or new smoke pass is claimed; previous source/security evidence reused.
+After resolution, run one focused public positive/negative pass, finish Stage6,
+then branch Database Simplifier from the verified integrated baseline. No new RC.
+
+---
+
+## Historical preparation — current authorization above governs
+
 # Online catalogue activation — privately deployed candidate
 
 The queued task started after the 90-day renewal, private verification, commit,

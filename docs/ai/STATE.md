@@ -1,3 +1,54 @@
+## Current Stage 6 — public activation authorized; processing/operations evidence missing
+
+Purpose: finish the existing read-only catalogue deployment before Database
+Simplifier and one 0.11 Stable release. Scope: existing Worker/Hyperdrive/catalogue,
+privacy operations and tracking; personal Room data/backups/drafts remain intact.
+
+- [x] Read owner decision [Issue31 comment6435585794](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6435585794).
+  Public read-only activation IS AUTHORIZED once genuine prerequisites pass.
+  No further route approval, RC or planning-only stage is required.
+- [x] Preserve accepted Q1/D5b operator eligibility. Accept public nickname/contact
+  acceptability as owner-reported; no independent certification or private identity
+  publication required. Earlier pending-approval/identity-review wording is superseded.
+- [x] Reuse exact-source3254326809f6661b3043ec81661731d31f687f05 successful
+  backend40456689283 and quality40456689257 CI (also40458676075/40458676124).
+  No unchanged test suite rerun or new Android execution claimed.
+- [x] Remote branch equals3254326; Issue31 OPEN, milestone4 OPEN, existing
+  Goldberg Development Project In Progress. Latest stable remains0.10.1;
+  historical0.11-rc.1 retained. No new release created.
+- [x] Recheck public provider DPAs and Commission legal-basis guidance. They
+  describe a processing framework, not evidence of this operator's completed
+  basis assessment or functioning mailbox/rights process.
+- [ ] Resolve the concrete legal/operational gap: record the adopted basis for
+  read-only request connection metadata (including necessity/balancing if relying
+  on legitimate interests), and the outcome of provider-account processing,
+  retention/transfer review. Existing operations review still labels bases as
+  candidates and account-specific disposition OPEN. No extra contract signature
+  or universal provider-log deletion deadline is presumed necessary.
+- [ ] Confirm actual mailbox monitoring, responsible handler, retention/deletion
+  criteria and private rights-request workflow. The existing90-day mailbox
+  proposal and hypothetical desk review are not implementation evidence.
+- [ ] Once those facts are supplied, activate the existing route under standing
+  authorization and run ONE focused positive/negative public HTTPS security pass.
+  Clear sources/fields/licences/provenance before any catalogue import; the
+  current empty projection is not a populated catalogue.
+- [ ] Finish Stage6 acceptance/integration, commit/push verified baseline; THEN
+  create the dedicated Database Simplifier branch, unify Discover/Library
+  catalogue without destructive personal-data migration; run only changed-scope
+  CI/migration/seeded-upgrade gates and publish0.11Stable when all blockers pass.
+
+Status: Stage6 IN PROGRESS, held on missing processing/operations evidence,
+not missing activation authorization. No public-route mutation, public smoke pass,
+Database Simplifier branch, APK rebuild, screenshots or release this checkpoint.
+Existing private hosted/security evidence and trusted APK remain unchanged.
+Next input requested is review outcome/procedure facts only, never private identity
+or account secrets. No user/provider contact, mailbox modification or legal
+acceptance performed on the owner's behalf.
+
+---
+
+## Historical checkpoint — superseded where inconsistent with the current entry
+
 ## Current Stage 6 — PR #39 reconciled; public launch requirements OPEN
 
 Purpose: verify private catalogue operation and reconcile privacy/retention work
