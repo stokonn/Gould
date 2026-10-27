@@ -1,3 +1,5 @@
+> Current continuation: [validated host acceptance, executed retirement and remaining administration](HOST-ACCEPTED-CLEANUP.md). Earlier blocked-state descriptions and inventories below retain their historical meaning.
+
 # Pre-0.12 cleanup and consolidation — October 27, 2026
 
 This is an index of retained work, not approval to merge experimental code. The permanent policy and maintenance history remain in [LEGACY-CLEANUP.md](LEGACY-CLEANUP.md).

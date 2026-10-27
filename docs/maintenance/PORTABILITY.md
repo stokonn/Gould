@@ -1,6 +1,6 @@
 # Gould development transfer
 
-Status on October 27, 2026: source consolidation is committed locally (`b87d238` plus subsequent maintenance commits); a fresh Android build and full portability acceptance remain blocked by the execution environment. Do not discard Gould-Preparation yet. No Gould 0.12 feature implementation has started.
+Status on October 27, 2026: consolidation at `0ffebeb` passed all 19 owner-executed host checks, with the report/source hashes independently validated by the agent. Nine obsolete worktrees, including Gould-Preparation, are retired with originals preserved. GitHub administration and remaining private-data dispositions are pending; see [current status](HOST-ACCEPTED-CLEANUP.md). No Gould 0.12 features have started.
 
 ## Development baseline and layout
 
@@ -125,9 +125,9 @@ The copied repository should report `.git` as its common directory and only itse
 - [x] Check full repository integrity, branches/tags, object independence and compatibility-sensitive source preservation.
 - [x] Remove the five owner-approved historical emulator/image directories after recording their inventory.
 - [ ] Complete an independent-copy Android build using the documented toolchain and freshly resolved dependencies.
-- [ ] Pass encrypted backup tests in an environment where GPG can start its agent.
-- [ ] Independently verify the consolidated Android APK and signing identity; execute no physical-phone tests.
-- [ ] Retire Gould-Preparation only after its changes are independently verified in Opus.
+- [x] Pass encrypted backup tests on the host: all six passed in the accepted 19-check report.
+- [x] Verify the consolidated host-built debug APK and trusted signing identity; no physical-phone tests.
+- [x] Retire Gould-Preparation after committed integration, accepted host verification and preservation of its originals.
 - [ ] Resolve external worktrees' unique/private content and activity before any ordinary safe removal.
 
 created by stokonn with love <3

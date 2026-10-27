@@ -1,9 +1,7 @@
-# Gould preparation — consolidated locally
+# Gould preparation — safely retired
 
-The original preparation verification and stop record remain in the [historical maintenance checkpoint](../ai/GOULD-MAINTENANCE-CHECKPOINT.md). The owner subsequently authorized portability consolidation and confirmed that other Opus/preparation sessions had saved and closed or relocated.
+Prepared Gould rebranding is committed in Opus. The original preparation worktree was removed with ordinary `git worktree remove` after the accepted 19-check host verification, exact source/artifact comparisons and owner confirmation that historical worktree sessions/services had closed or relocated. Its 21 original changed/untracked files remain in a named Git stash; 50 original verification records remain in private hash-checked custody.
 
-The prepared changes are now integrated into Opus and committed as `b87d238` on `maintenance/gould-portability`, based on verified current main `1c943dc`. Original owner work was preserved. The preparation worktree remains intact because a fresh independent Android build is blocked by execution-environment socket restrictions. Do not delete it until that gate passes. See [the current checkpoint](../ai/GOULD-PORTABILITY-CHECKPOINT.md) and [transfer instructions](PORTABILITY.md).
-
-No unfinished branch, remote-main merge, GitHub branch deletion, repository rename, publication or Gould 0.12 feature implementation occurred. Later verified cleanup and the repository rename are now explicitly approved, subject to the gates in [FINAL-CONSOLIDATION.md](FINAL-CONSOLIDATION.md). Gould 0.12 retains one planned development stage with no newly inferred feature scope.
+See [HOST-ACCEPTED-CLEANUP.md](HOST-ACCEPTED-CLEANUP.md) for executed results and the remaining GitHub administration blocker. The original stop/preparation checkpoints remain historical evidence. No application ID, schema, signing identity, release, original user data or Gould 0.12 feature scope changed.
 
 created by stokonn with love <3

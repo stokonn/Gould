@@ -44,4 +44,4 @@ Historical Stage 8 [Discover stabilization checklist](docs/planning/goldberg-0.1
 
 Gould 0.12 will use **one development stage** containing its complete owner-approved feature scope. No feature scope is inferred by this maintenance task. See [preparation and approval gates](docs/maintenance/GOULD-PREPARATION.md).
 
-For transfer to another Linux computer, see [toolchain, private configuration and USB instructions](docs/maintenance/PORTABILITY.md). Source consolidation is local; fresh Android/build portability acceptance remains blocked in the restricted execution environment. See [the current handoff](docs/ai/GOULD-PORTABILITY-CHECKPOINT.md).
+For transfer to another Linux computer, see [toolchain, private configuration and USB instructions](docs/maintenance/PORTABILITY.md). The committed consolidation passed all 19 host checks, including 348 JVM tests; final GitHub administration remains pending. See [current cleanup status](docs/maintenance/HOST-ACCEPTED-CLEANUP.md). See [the current handoff](docs/ai/GOULD-PORTABILITY-CHECKPOINT.md).

@@ -1,3 +1,5 @@
+> Host acceptance is now validated: all 19 checks passed at `0ffebeb`, including 348 JVM tests and local backend/encrypted-backup checks. Nine obsolete worktrees, including Gould-Preparation, have been retired with preservation verified. Current blocker is GitHub administration access, not the build. Read [HOST-ACCEPTED-CLEANUP.md](../maintenance/HOST-ACCEPTED-CLEANUP.md) first; older entries below are historical. Actual repository remains `stokonn/Goldberg` until the approved rename is confirmed.
+
 # Gould final consolidation — active handoff
 
 Continue the existing `maintenance/gould-portability` branch in `~/Projects/Opus`. Read [AGENTS.md](../../AGENTS.md), [current authorized scope](../maintenance/FINAL-CONSOLIDATION.md) and [portability/setup instructions](../maintenance/PORTABILITY.md). This handoff supersedes earlier statements that preparation is uncommitted or cleanup/rename lacks owner authorization. Their original evidence remains historical.

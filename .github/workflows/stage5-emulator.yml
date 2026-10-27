@@ -226,7 +226,7 @@ jobs:
         run: |
           mkdir -p .gradle/release-artifacts
           curl -fsSL -o .gradle/release-artifacts/Goldberg-v0.10.1.apk \
-            https://github.com/stokonn/Goldberg/releases/download/v0.10.1/Goldberg-v0.10.1.apk
+            https://github.com/${GITHUB_REPOSITORY}/releases/download/v0.10.1/Goldberg-v0.10.1.apk
           echo "854bbfebf617ec920df60d181a12e0dcbd2fed10052f2479903a78a290cef312  .gradle/release-artifacts/Goldberg-v0.10.1.apk" | sha256sum -c -
       - name: Verify signing-certificate compatibility (never using production credentials)
         run: |

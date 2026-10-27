@@ -1,3 +1,5 @@
+> Current continuation: [validated host acceptance, executed retirement and remaining administration](HOST-ACCEPTED-CLEANUP.md). Earlier blocked-state descriptions and inventories below retain their historical meaning.
+
 # Final Gould consolidation — current maintenance scope
 
 Owner authorization: October 27, 2026, “GOULD 0.12 — FINAL CONSOLIDATION, CLEANUP & REBRANDING”. Continue on `maintenance/gould-portability`; preserve existing work/history, standalone PianoApp Opus and the independent Project Memory Protocol repository. This is the same consolidation task, not a new implementation stage.
