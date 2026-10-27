@@ -1,6 +1,7 @@
 """Release gate: compare actual APK certificates, metadata, archives and supplied artwork."""
 import hashlib
 import io
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -9,7 +10,7 @@ import zipfile
 from PIL import Image
 
 root=Path(__file__).resolve().parents[1]
-sdk=Path('/home/stokonn/Android/Sdk/build-tools/36.0.0')
+sdk=Path(os.environ.get('ANDROID_HOME') or os.environ.get('ANDROID_SDK_ROOT') or Path.home() / 'Android/Sdk') / 'build-tools/36.0.0'
 baseline,candidate=map(Path,sys.argv[1:3])
 expected_version=sys.argv[3] if len(sys.argv)>3 else "0.9.1"
 expected_code=int(sys.argv[4]) if len(sys.argv)>4 else 8

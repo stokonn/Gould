@@ -1,4 +1,7 @@
-# Settings & Customization — Goldberg 0.11
+# Settings & Customization — Gould
+
+> Gould branding is in preparation. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+
 
 Ivory/Nocturne appearance, English/Czech, font scaling and existing appearance preferences are retained. Online catalogue search remains default-off until enabled in Settings; downloaded media and offline bundles retain their separate network and storage controls.
 

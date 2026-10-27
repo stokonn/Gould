@@ -1,5 +1,7 @@
 # Legacy Cleanup & Repository Maintenance
 
+Current portability continuation: [October 27 handoff](../ai/GOULD-PORTABILITY-CHECKPOINT.md) and [Linux transfer instructions](PORTABILITY.md). The owner authorized this continuation after the historical stop checkpoint.
+
 This is Goldberg's living, version-independent maintenance record. Read it with root AGENTS.md before development or maintenance. Append dated findings and verification; do not create a competing cleanup policy or a fresh version-specific ledger for every release.
 
 ## Maintenance policy
@@ -106,6 +108,34 @@ No Git garbage collection, backup deletion or published-artifact removal was per
 ## Future maintenance guidance
 
 Read this ledger and AGENTS.md first. Use rg and Git reachability to narrow investigation; consult the preserved-component list before repeating migration/icon/signing audits. Append only new findings, evidence and actual checks. Keep release work and maintenance commits separate, retain uncertain items, and record explicit deferred work. Do not publish a new application release solely for maintenance without authorization.
+
+## 2026-10-27 — pre-0.12 Phase 3 cleanup and consolidation
+
+Purpose: remove only independently verified obsolete development artifacts, retain unique work and make retained commits/evidence discoverable from the primary Opus repository. The owner requested no additional backups and no broad rebranding.
+
+- [x] Rechecked all candidate heads/status/ignored files, current GitHub heads and draft PRs #39/#40; neither PR nor GitHub was modified.
+- [x] Removed the clean Stage 1 detached review, CI-only, and Stage 6 docs worktrees with normal `git worktree remove`. All three had zero untracked/ignored files, zero commits outside Stable and no observed process use; their commits remain reachable from `v0.11`.
+- [x] Removed 71 source-equivalent Python bytecode files. Unchanged tracked source was checked against each worktree HEAD, regenerated code objects compared without executing modules, and current file-use checks performed. Five unmatched candidates were retained.
+- [x] Removed six merged, unused local branches with `git branch -d`: Stage 6 planning, Stage 1/2 planning and Stage 3A/3B/4. All original heads remain reachable. Git refused normal deletion of `ci/stage5-emulator-verification`; it remains untouched. No force deletion, remote deletion, tag change or history rewrite occurred.
+- [x] Verified `git fsck --full` (exit 0), original owner-file hashes/current source HEAD, exact unchanged tag/remaining-ref identities, Stable APK hash and existing Phase 2 backup checksums. Seventeen worktrees and 27 local branches remain.
+- [x] Added [the retained-work consolidation index](PRE012-CONSOLIDATION.md). Committed content is already accessible through the shared `Opus/.git`; no unfinished code or private evidence was copied into Stable.
+- [ ] Switching/updating the active primary checkout is deferred: shells, tmux and agents still use its older Stage 5 state. Catalogue, Stage 7A, Stage 7B, Stage 8, Cloud and C2 also have live process dependencies.
+- [ ] Remaining untracked/ignored/private evidence, large AVDs, dumps and dependency caches stay in place where unique-data or recovery questions remain. No extra backup was created and no signing material, user data or standalone PianoApp Opus was touched.
+
+Removed allocated-file footprint: **91,348,992 bytes (87.1 MiB)** across `/home` and tmpfs `/tmp`; this is not a guaranteed Btrfs physical-space delta. No Android build/test, emulator, ADB or physical-device verification was performed for this source-preserving cleanup. No application source, package ID/namespace `com.opus.piano`, database/schema, preferences or release artifact changed. `v0.11` remains `ab7d66ddafe0bcf2f23270682116ee2e02f828eb`; remote main remains the recorded publication receipt `1c943dc925231a3725a0e9d9aa6b3e34d19e445a`. Phase 3 documentation is left reviewable; no commit, push, release or Gould 0.12 implementation occurred.
+
+### 2026-10-27 — Phase 3 continuation, duplicate-dependency verification
+
+This checkpoint supersedes the initial Phase 3 counts above while preserving that earlier audit trail.
+
+- [x] Compared complete dependency trees under `/tmp/goldberg-stage6-handlers`, `/tmp/goldberg-stage6-public-admin-abuse` and `/tmp/goldberg-stage6-security-local` against retained Cloud copies. Relative paths, every regular-file hash/executable mode and symlink targets matched. Rechecked process use and both copies immediately before removing only the six redundant `spikes/stage6-auth-local/node_modules` / `spikes/stage6-schema-pg/node_modules` directories.
+- [x] Removed the handlers worktree with ordinary `git worktree remove` once status/untracked/ignored checks were empty and its original HEAD `262847e` was confirmed reachable from Stable.
+- [x] Removed local `ci/stage5-emulator-verification` (`67d9cca`) and `spike/goldberg-0.11-stage-6-handlers-local` (`262847e`) using ordinary `git branch -d` from the existing Cloud checkout at current main. The CI branch was merged into that HEAD, resolving the earlier refusal from old Stage 5 without any force flag, history rewrite or source checkout switch. Fresh GitHub branch/PR checks found no PR dependency; no GitHub branch was deleted.
+- [x] Preserved eight publication-record files under the public/admin and security temporary worktrees' ignored `.gradle` directories; before/after hashes match. Those worktrees remain because the records may be unique. No cache-name assumption was used to delete them.
+- [x] `git fsck --full` passed again; source HEADs/status and all refs other than the two explicitly removed local branches remained unchanged. Sixteen worktrees and 25 local branches remain, with all 33 remote branches and all 14 tags retained.
+- [ ] The primary source checkout transition remains deferred: a fresh host check still found 16 live processes with working directories under Opus, including shells, tmux and other agents. No sessions were terminated or modified.
+
+Second-batch removed allocated footprint: **42,057,728 bytes**, entirely under tmpfs `/tmp`; cumulative Phase 3 footprint: **133,406,720 bytes (127.2 MiB)**. These are allocated-file accounting figures, not guaranteed physical-space deltas. No extra backup, package installation, build/test, ADB action, release, rebranding, source implementation, commit or push occurred. Existing backups, primary owner files, standalone PianoApp Opus, `com.opus.piano`, signing and persistent-data identifiers remain protected.
 
 created by stokonn with love <3
 

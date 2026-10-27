@@ -1,4 +1,4 @@
-# Goldberg — permanent development policy
+# Gould — permanent development policy (formerly Goldberg)
 
 This is the canonical policy for every coding agent and every Goldberg version (0.9.2, 0.10 and beyond). Preserve it in future updates. Thin tool-specific instruction files reference this file; do not maintain competing copies. Newer explicit owner instructions and higher-priority system/security rules take precedence.
 
@@ -11,6 +11,10 @@ Applies to Goldberg 0.11 and all future Gould versions. This supersedes earlier 
 - Only after full implementation, verification and explicit owner approval, perform a fresh clean release build. It must be non-debuggable, signed with the trusted production certificate, pass all release-specific gates and support verified safe in-place upgrades.
 - Publish only the explicitly approved stable version. Merging into `main` and publishing a stable GitHub Release each require explicit owner approval; passing checks alone grants neither.
 - The current Stage 8 Discover repair delivers a debug APK and verification report for owner review, with no release publication.
+
+## Gould 0.12 — one development stage (owner decision, October 27, 2026)
+
+Gould 0.12 uses exactly one development stage covering the complete owner-approved feature scope. Internal commits and checkpoints are allowed; do not split it into seven stages or invent scope. Rebranding and repository preparation do not authorize feature implementation. Preserve historical Goldberg stage records. Keep application ID/namespace `com.opus.piano`, all compatibility-sensitive stored identifiers, signing identity, private PMP, existing backups and standalone PianoApp Opus unchanged.
 
 ## Work autonomously and protect data
 
@@ -38,7 +42,7 @@ Discover the actual repository (currently stokonn/Goldberg; legacy Opus URLs may
 
 Maintain English-only official Wiki pages and navigation: Home, Getting Started, User Guide, Settings & Customization, Developer Guide, FAQ & Troubleshooting, Changelog & Roadmap, Credits & Licenses. Document only actual working features; clearly label blocked integrations and unverified behavior. Use verified screenshots and licensed attribution; include `created by stokonn with love <3`. Keep local maintainable Wiki sources in docs/wiki. Check Wiki enablement/initialization and GitHub token permissions; report exact blockers without claiming success or starting unauthorized authentication.
 
-For each release: inspect → identify milestone/Issues → plan → implement → run relevant checks → build APK → verify acceptance → synchronize Project/Wiki → update README/changelog/docs → commit/push → publish release → report results. Commit/push/release are automatically authorized only after every mandatory gate passes. Never invoke an old release script without inspecting its actions; do not publish merely because Gradle succeeds.
+For each release: inspect → identify milestone/Issues → plan → implement → run relevant checks → build APK → verify acceptance → synchronize Project/Wiki → update README/changelog/docs → commit/push → publish release → report results. Passing mandatory gates does not authorize merging into main or publishing: both require explicit owner approval. Never invoke an old release script without inspecting its actions; do not publish merely because Gradle succeeds.
 
 ## Stage checklist documentation (permanent, from 2026-10-20)
 

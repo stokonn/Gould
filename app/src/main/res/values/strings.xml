@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="app_name">Gould</string>
   <string name="label_about">About</string>
   <string name="label_advanced">Advanced</string>
   <string name="label_all">All</string>
@@ -163,7 +164,7 @@
   <string name="msg_cache_management_d246">Cache Management</string>
   <string name="msg_cancel_77df">Cancel</string>
   <string name="msg_cannot_read_this_file_8312">Cannot read this file.</string>
-  <string name="msg_cannot_start_microphone_while_goldberg_is_no_ee1e">Cannot start microphone while Goldberg is not visible or permission is unavailable.</string>
+  <string name="msg_cannot_start_microphone_while_goldberg_is_no_ee1e">Cannot start microphone while Gould is not visible or permission is unavailable.</string>
   <string name="msg_cannot_write_export_0170">Cannot write export.</string>
   <string name="msg_cannot_write_this_file_151a">Cannot write this file.</string>
   <string name="msg_card_style_f910">Card style</string>
@@ -220,7 +221,7 @@
   <string name="msg_discard_36ff">Discard</string>
   <string name="msg_discard_session_38ed">Discard session</string>
   <string name="msg_discard_unfinished_practice_c660">Discard unfinished practice?</string>
-  <string name="msg_discover_a_classical_work_or_add_a_piece_man_3aa2">Discover a classical work or add a piece manually. Select it in Practice; Goldberg does not identify pieces from sound.</string>
+  <string name="msg_discover_a_classical_work_or_add_a_piece_man_3aa2">Discover a classical work or add a piece manually. Select it in Practice; Gould does not identify pieces from sound.</string>
   <string name="msg_discover_a_work_or_add_one_manually_change_t_fb4a">Discover a work or add one manually. Change the filters to explore your collection.</string>
   <string name="msg_discover_in_catalogue_28f0">Discover in catalogue</string>
   <string name="msg_discover_more_results_f817">Discover more results</string>
@@ -270,9 +271,9 @@
   <string name="msg_generated_searches_not_verified_recordings_a_0e42">Generated searches, not verified recordings. Availability and access are determined by each service.</string>
   <string name="msg_genre_2aa3">Genre</string>
   <string name="msg_goldberg_0_9_0_beta_the_redesign_update_e76b">Goldberg 0.9.0 Beta · The Redesign Update</string>
-  <string name="msg_goldberg_analyzes_ambient_microphone_sound_l_7f65">Goldberg analyzes ambient microphone sound locally, including while locked or in another app. No audio is stored or uploaded. A foreground service provides Pause and Stop controls. If notifications are blocked, use Goldberg or Android Active apps to stop. Detection is experimental.</string>
-  <string name="msg_goldberg_smart_practice_73e7">Goldberg — Smart Practice</string>
-  <string name="msg_goldberg_typography_6730">Goldberg Typography</string>
+  <string name="msg_goldberg_analyzes_ambient_microphone_sound_l_7f65">Gould analyzes ambient microphone sound locally, including while locked or in another app. No audio is stored or uploaded. A foreground service provides Pause and Stop controls. If notifications are blocked, use Gould or Android Active apps to stop. Detection is experimental.</string>
+  <string name="msg_goldberg_smart_practice_73e7">Gould — Smart Practice</string>
+  <string name="msg_goldberg_typography_6730">Gould Typography</string>
   <string name="msg_grouped_monthly_totals_labels_show_the_endin_1c56">Grouped monthly totals · labels show the ending month</string>
   <string name="msg_hide_musical_metadata_2704">Hide musical metadata</string>
   <string name="msg_hide_summary_c10e">Hide summary</string>
@@ -333,7 +334,7 @@
   <string name="msg_microphone_permission_granted_e72e">Microphone permission granted</string>
   <string name="msg_microphone_permission_not_granted_4124">Microphone permission not granted</string>
   <string name="msg_microphone_route_changed_5688">Microphone route changed</string>
-  <string name="msg_microphone_service_could_not_start_keep_gold_2f00">Microphone service could not start. Keep Goldberg visible and retry, or use Manual.</string>
+  <string name="msg_microphone_service_could_not_start_keep_gold_2f00">Microphone service could not start. Keep Gould visible and retry, or use Manual.</string>
   <string name="msg_missing_timing_intervals_eb3a">Missing timing intervals.</string>
   <string name="msg_more_saved_suggestions_d7e1">More saved suggestions</string>
   <string name="msg_most_practiced_1b36">Most practiced</string>
@@ -369,7 +370,7 @@
   <string name="msg_one_revolution_one_minute_1c74">One revolution · one minute</string>
   <string name="msg_open_android_settings_610e">Open Android settings</string>
   <string name="msg_open_cf9b">Open</string>
-  <string name="msg_open_goldberg_when_you_re_ready_to_practice_cf21">Open Goldberg when you’re ready to practice.</string>
+  <string name="msg_open_goldberg_when_you_re_ready_to_practice_cf21">Open Gould when you’re ready to practice.</string>
   <string name="msg_open_opus_is_temporarily_unavailable_47ca">Open Opus is temporarily unavailable.</string>
   <string name="msg_open_your_repertoire_a1aa">Open your repertoire</string>
   <string name="msg_operation_failed_please_retry_e_message_orem_bb69">Operation failed. Please retry. %1$s</string>
@@ -388,7 +389,7 @@
   <string name="msg_portrait_source_wikimedia_commons_a86c">Portrait source · Wikimedia Commons</string>
   <string name="msg_portrait_unavailable_6f4e">Portrait unavailable</string>
   <string name="msg_practice_activity_767e">Practice activity</string>
-  <string name="msg_practice_could_not_be_persisted_keep_goldber_8615">Practice could not be persisted. Keep Goldberg open and retry before leaving.</string>
+  <string name="msg_practice_could_not_be_persisted_keep_goldber_8615">Practice could not be persisted. Keep Gould open and retry before leaving.</string>
   <string name="msg_practice_history_4d00">Practice history</string>
   <string name="msg_practice_history_76e7">Practice History</string>
   <string name="msg_practice_interrupted_latest_checkpoint_retai_ee8b">Practice interrupted; latest checkpoint retained.</string>
@@ -450,7 +451,7 @@
   <string name="msg_save_session_8c74">Save session</string>
   <string name="msg_saved_interpretations_b15d">Saved interpretations</string>
   <string name="msg_saved_interpretations_recordings_size_499b">Saved interpretations · %1$s</string>
-  <string name="msg_saved_journal_could_not_be_loaded_restart_go_cfce">Saved journal could not be loaded. Restart Goldberg to retry. No stored data was removed.</string>
+  <string name="msg_saved_journal_could_not_be_loaded_restart_go_cfce">Saved journal could not be loaded. Restart Gould to retry. No stored data was removed.</string>
   <string name="msg_saved_on_device_instant_ofepochmilli_at_atzo_ab8d">Saved on device · %1$s</string>
   <string name="msg_saving_56a2">Saving…</string>
   <string name="msg_search_ignores_accents_offline_results_inclu_3f32">Search ignores accents. Offline results include previously loaded information; connect to discover more. Catalogue titles are supplied by Open Opus in their original language.</string>
@@ -541,7 +542,7 @@
   <string name="msg_view_all_badges_06e1">View All Badges</string>
   <string name="msg_view_all_efd8">View All</string>
   <string name="msg_welcome_name_5c46">Welcome, %1$s</string>
-  <string name="msg_welcome_to_goldberg_page_1_3_4211">WELCOME TO GOLDBERG · %1$s/3</string>
+  <string name="msg_welcome_to_goldberg_page_1_3_4211">WELCOME TO GOULD · %1$s/3</string>
   <string name="msg_works_bb38">Works</string>
   <string name="msg_works_could_not_be_refreshed_any_saved_works_28ff">Works could not be refreshed. Any saved works are shown below.</string>
   <string name="msg_wrapped_preview_fbae">Wrapped · preview</string>
@@ -656,9 +657,9 @@
   <string name="progress_fraction">%3$s: %1$d / %2$d</string>
   <string name="backup_summary">%1$s · %2$s · badges: %3$d</string>
   <string name="profile_period_summary">%1$s · %2$s</string>
-  <string name="notification_resume">%1$s — open Goldberg to resume</string>
+  <string name="notification_resume">%1$s — open Gould to resume</string>
   <string name="copyright_notices">Original third-party license texts follow.</string>
-  <string name="privacy_text">Goldberg keeps your practice journal on this device. Microphone processing stays local; format-5 backups may include drafts and recovery data. JSON/CSV exports are unencrypted and document providers may synchronize them. Online music requests contact their providers. The read-only Goldberg catalogue uses Cloudflare Workers/Hyperdrive and Supabase. Necessary request metadata is processed for catalogue delivery and security under legitimate interests; provider retention and international processing follow their applicable arrangements, with no EU-only or zero-log guarantee. Worker persisted application logs/traces are disabled. Voluntary support and legally required rights handling are evaluated separately. Ordinary support correspondence is retained for 90 days after closure, with justified legal exceptions and monthly review. The owner reports Tuesday/Friday inbox checks and private case tracking. Backend Google OAuth and community writes remain disabled. Public operator/developer: stokonn; privacy/support: stokonn.us@gmail.com. See the full bundled notice for details and your rights.</string>
+  <string name="privacy_text">Gould keeps your practice journal on this device. Microphone processing stays local; format-5 backups may include drafts and recovery data. JSON/CSV exports are unencrypted and document providers may synchronize them. Online music requests contact their providers. The read-only Goldberg catalogue uses Cloudflare Workers/Hyperdrive and Supabase. Necessary request metadata is processed for catalogue delivery and security under legitimate interests; provider retention and international processing follow their applicable arrangements, with no EU-only or zero-log guarantee. Worker persisted application logs/traces are disabled. Voluntary support and legally required rights handling are evaluated separately. Ordinary support correspondence is retained for 90 days after closure, with justified legal exceptions and monthly review. The owner reports Tuesday/Friday inbox checks and private case tracking. Backend Google OAuth and community writes remain disabled. Public operator/developer: stokonn; privacy/support: stokonn.us@gmail.com. See the full bundled notice for details and your rights.</string>
   <string name="minute_short">%1$d min</string>
   <string name="hours_minutes_short">%1$d h %2$d min</string>
   <string name="second_short">%1$d s</string>
@@ -696,7 +697,7 @@
   <string name="label_instrumentation">Instrumentation</string>
     <string name="practice_request_unavailable">Practice is not ready for this action. Open Practice and retry.</string>
     <string name="practice_start_failed">Practice could not start because the draft could not be saved. Retry when storage is available.</string>
-    <string name="practice_unsaved">Changes are not saved. Keep Goldberg open and retry saving.</string>
+    <string name="practice_unsaved">Changes are not saved. Keep Gould open and retry saving.</string>
     <string name="recovery_export">Export original recovery data</string>
     <string name="recovery_failed">Your unfinished practice could not be recovered. The original data is preserved. Retry, or export it before starting fresh.</string>
     <string name="recovery_fresh">Archive original &amp; start fresh</string>
@@ -726,9 +727,9 @@
 <string name="mobile_media">Allow media on metered data</string>
 <string name="mobile_media_description">Includes mobile data and metered Wi-Fi. Off by default.</string>
 <string name="supplementary_hint">Small portraits download on unmetered Wi-Fi. Download optional biographies on a composer page. Clear disposable downloads below; your journal is retained.</string>
-<string name="goldberg_logo">Goldberg logo</string>
+<string name="goldberg_logo">Gould logo</string>
 <string name="version_092">Goldberg 0.9.2 · The Final Redesign</string>
-<string name="tux_terminal">Goldberg recovery terminal</string>
+<string name="tux_terminal">Gould recovery terminal</string>
 <string name="google_setup_blocked">Google identity is not configured in this build. Local nickname and avatar remain available. No cloud synchronization is enabled.</string>
 <string name="quote_0">Play strictly in time!</string>
 <string name="quote_1">Learn betimes the fundamental principles of Harmony.</string>
@@ -794,7 +795,7 @@
     <string name="ui010_untimed_short">Untimed</string>
     <string name="ui010_remove">Remove</string>
     <string name="ui010_edit_explanation">Added pieces appear in history without additional practice credit. Measured times, the session total and existing notes stay unchanged.</string>
-    <string name="ui010_about_app">About Goldberg</string>
+    <string name="ui010_about_app">About Gould</string>
     <string name="ui010_data_storage">Data &amp; storage</string>
     <string name="ui010_identity_explanation">Your custom nickname and avatar take priority. Use the actions below only if you want to replace them with this Google account’s details. Practice data is never synchronized.</string>
     <string name="ui010_google_name">Use Google display name</string>

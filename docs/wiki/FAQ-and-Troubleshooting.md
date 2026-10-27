@@ -1,4 +1,7 @@
-# FAQ & Troubleshooting — Goldberg 0.11
+# FAQ & Troubleshooting — Gould
+
+> Gould branding is in preparation. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+
 
 **Does my journal upload?** No. Practice, notes, drafts/recovery and backups remain local. Online provider queries process their necessary network metadata; the catalogue backend has no journal-upload endpoint.
 

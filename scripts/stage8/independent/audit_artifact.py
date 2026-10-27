@@ -1,5 +1,6 @@
 """Read-only rehearsal/release guard;never signs,builds,installs,tags orpublishes."""
 import argparse,hashlib,json,re,subprocess,zipfile
+import os
 from pathlib import Path
 
 TRUSTED='53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e'
@@ -7,7 +8,7 @@ parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--apk',type=Path,required=True)
 parser.add_argument('--output',type=Path,required=True)
 parser.add_argument('--release-check',action='store_true')
-a=parser.parse_args();sdk=Path('/home/stokonn/Android/Sdk/build-tools/36.0.0')
+a=parser.parse_args();sdk=Path(os.environ.get('ANDROID_HOME') or os.environ.get('ANDROID_SDK_ROOT') or Path.home() / 'Android/Sdk') / 'build-tools/36.0.0'
 raw=subprocess.check_output([str(sdk/'aapt'),'dump','badging',str(a.apk)],text=True)
 manifest=subprocess.check_output([str(sdk/'aapt'),'dump','xmltree',str(a.apk),'AndroidManifest.xml'],text=True)
 signing=subprocess.check_output([str(sdk/'apksigner'),'verify','--print-certs',str(a.apk)],text=True)

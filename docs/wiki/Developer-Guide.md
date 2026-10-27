@@ -1,4 +1,7 @@
-# Developer Guide — Goldberg 0.11
+# Developer Guide — Gould
+
+> Gould branding is in preparation. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+
 
 The application remains native Kotlin/Compose/Material3 with application ID com.opus.piano. Personal Room schema10 in opus.db is authoritative; catalogue schema1 is separate and disposable. Backup format5 and readers1–4 are retained. Database Simplifier changes catalogue reads and idempotent local compatibility import, without destructive migration or personal-row replacement.
 

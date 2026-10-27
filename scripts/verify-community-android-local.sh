@@ -33,7 +33,7 @@ PYRESULTS
 # Device execution is opt-in and restricted to a named, confirmed emulator.
 if [[ -n "${EMULATOR_SERIAL:-}" ]]; then
  [[ "$EMULATOR_SERIAL" =~ ^emulator-[0-9]+$ ]] || { echo 'Named emulator required'; exit 1; }
- adb_bin=/home/stokonn/Android/Sdk/platform-tools/adb
+ adb_bin="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/Android/Sdk}}/platform-tools/adb"
  [[ "$("$adb_bin" -s "$EMULATOR_SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')" == 1 ]] || { echo 'Target is not a confirmed emulator'; exit 1; }
  "$adb_bin" -s "$EMULATOR_SERIAL" install -r app/build/outputs/apk/debug/app-debug.apk > "$results/emulator-install.log"
  "$adb_bin" -s "$EMULATOR_SERIAL" install -r app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk >> "$results/emulator-install.log"

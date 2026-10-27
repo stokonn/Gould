@@ -12,7 +12,7 @@ guard()
 check=subprocess.run(['git','grep','-n','fallbackToDestructiveMigration','v0.10.1','--','app/src/main'],capture_output=True);assert check.returncode==1
 adb('shell','am','force-stop','com.opus.piano')
 db=pull_db('opus.db','before-binary-rollback');original_rows(db);assert db.execute('PRAGMA user_version').fetchone()[0]==10;db.close()
-baseline=Path('/home/stokonn/Projects/Opus/.gradle/release-artifacts/Goldberg-v0.10.1.apk')
+baseline=Path(os.environ.get('GOLDBERG_ROLLBACK_APK', str(ROOT/'.gradle/release-artifacts/Goldberg-v0.10.1.apk')))
 assert hashlib.sha256(baseline.read_bytes()).hexdigest()=='854bbfebf617ec920df60d181a12e0dcbd2fed10052f2479903a78a290cef312'
 adb('install','-r',str(baseline));adb('shell','am','start','-W','-n','com.opus.piano/.MainActivity',check=False);time.sleep(2)
 log=adb('logcat','-d','-t','5000').decode(errors='replace');(ART/'rollback-logcat.txt').write_text(log)

@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="app_name">Gould</string>
   <string name="label_about">O aplikaci</string>
   <string name="label_advanced">Pokročilý</string>
   <string name="label_all">Vše</string>
@@ -163,7 +164,7 @@
   <string name="msg_cache_management_d246">Mezipaměť</string>
   <string name="msg_cancel_77df">Zrušit</string>
   <string name="msg_cannot_read_this_file_8312">Soubor nelze přečíst.</string>
-  <string name="msg_cannot_start_microphone_while_goldberg_is_no_ee1e">Mikrofon nelze spustit mimo otevřený Goldberg nebo bez oprávnění.</string>
+  <string name="msg_cannot_start_microphone_while_goldberg_is_no_ee1e">Mikrofon nelze spustit mimo otevřený Gould nebo bez oprávnění.</string>
   <string name="msg_cannot_write_export_0170">Export nelze zapsat.</string>
   <string name="msg_cannot_write_this_file_151a">Do tohoto souboru nelze zapisovat.</string>
   <string name="msg_card_style_f910">Styl karet</string>
@@ -220,7 +221,7 @@
   <string name="msg_discard_36ff">Zahodit</string>
   <string name="msg_discard_session_38ed">Zahodit cvičení</string>
   <string name="msg_discard_unfinished_practice_c660">Zahodit rozpracované cvičení?</string>
-  <string name="msg_discover_a_classical_work_or_add_a_piece_man_3aa2">Objevte skladbu v katalogu nebo ji přidejte ručně. Vyberte ji na obrazovce Cvičení; Goldberg skladby podle zvuku nerozpoznává.</string>
+  <string name="msg_discover_a_classical_work_or_add_a_piece_man_3aa2">Objevte skladbu v katalogu nebo ji přidejte ručně. Vyberte ji na obrazovce Cvičení; Gould skladby podle zvuku nerozpoznává.</string>
   <string name="msg_discover_a_work_or_add_one_manually_change_t_fb4a">Objevte skladbu nebo ji přidejte ručně. Zkuste také změnit filtry.</string>
   <string name="msg_discover_in_catalogue_28f0">Objevit v katalogu</string>
   <string name="msg_discover_more_results_f817">Hledat další výsledky</string>
@@ -270,9 +271,9 @@
   <string name="msg_generated_searches_not_verified_recordings_a_0e42">Jde o vyhledávání, nikoli ověřené nahrávky. Dostupnost a přístup určuje příslušná služba.</string>
   <string name="msg_genre_2aa3">Žánr</string>
   <string name="msg_goldberg_0_9_0_beta_the_redesign_update_e76b">Goldberg 0.9.0 Beta · Aktualizace vzhledu</string>
-  <string name="msg_goldberg_analyzes_ambient_microphone_sound_l_7f65">Goldberg zpracovává okolní zvuky pouze v zařízení, i při zamčení nebo v jiné aplikaci. Žádný zvuk se neukládá ani neodesílá. Služba na popředí nabízí Pozastavit a Zastavit. Při blokovaných oznámeních použijte Goldberg nebo Aktivní aplikace v Androidu. Detekce je experimentální.</string>
-  <string name="msg_goldberg_smart_practice_73e7">Goldberg — chytré cvičení</string>
-  <string name="msg_goldberg_typography_6730">Písmo Goldberg</string>
+  <string name="msg_goldberg_analyzes_ambient_microphone_sound_l_7f65">Gould zpracovává okolní zvuky pouze v zařízení, i při zamčení nebo v jiné aplikaci. Žádný zvuk se neukládá ani neodesílá. Služba na popředí nabízí Pozastavit a Zastavit. Při blokovaných oznámeních použijte Gould nebo Aktivní aplikace v Androidu. Detekce je experimentální.</string>
+  <string name="msg_goldberg_smart_practice_73e7">Gould — chytré cvičení</string>
+  <string name="msg_goldberg_typography_6730">Písmo Gould</string>
   <string name="msg_grouped_monthly_totals_labels_show_the_endin_1c56">Součty po měsících · popisek označuje poslední měsíc</string>
   <string name="msg_hide_musical_metadata_2704">Skrýt hudební údaje</string>
   <string name="msg_hide_summary_c10e">Skrýt shrnutí</string>
@@ -333,7 +334,7 @@
   <string name="msg_microphone_permission_granted_e72e">Přístup k mikrofonu povolen</string>
   <string name="msg_microphone_permission_not_granted_4124">Přístup k mikrofonu není povolen</string>
   <string name="msg_microphone_route_changed_5688">Změnil se vstup mikrofonu</string>
-  <string name="msg_microphone_service_could_not_start_keep_gold_2f00">Službu mikrofonu nelze spustit. Ponechte Goldberg na obrazovce a zkuste to znovu nebo použijte ruční režim.</string>
+  <string name="msg_microphone_service_could_not_start_keep_gold_2f00">Službu mikrofonu nelze spustit. Ponechte Gould na obrazovce a zkuste to znovu nebo použijte ruční režim.</string>
   <string name="msg_missing_timing_intervals_eb3a">Chybí časové intervaly.</string>
   <string name="msg_more_saved_suggestions_d7e1">Další uložené návrhy</string>
   <string name="msg_most_practiced_1b36">Nejčastěji hrané</string>
@@ -369,7 +370,7 @@
   <string name="msg_one_revolution_one_minute_1c74">Jedno otočení · jedna minuta</string>
   <string name="msg_open_android_settings_610e">Otevřít nastavení Androidu</string>
   <string name="msg_open_cf9b">Otevřít</string>
-  <string name="msg_open_goldberg_when_you_re_ready_to_practice_cf21">Až budete připraveni, otevřete Goldberg.</string>
+  <string name="msg_open_goldberg_when_you_re_ready_to_practice_cf21">Až budete připraveni, otevřete Gould.</string>
   <string name="msg_open_opus_is_temporarily_unavailable_47ca">Open Opus je dočasně nedostupný.</string>
   <string name="msg_open_your_repertoire_a1aa">Otevřít repertoár</string>
   <string name="msg_operation_failed_please_retry_e_message_orem_bb69">Operace se nezdařila. Zkuste to znovu. %1$s</string>
@@ -388,7 +389,7 @@
   <string name="msg_portrait_source_wikimedia_commons_a86c">Zdroj portrétu · Wikimedia Commons</string>
   <string name="msg_portrait_unavailable_6f4e">Portrét není dostupný</string>
   <string name="msg_practice_activity_767e">Aktivita cvičení</string>
-  <string name="msg_practice_could_not_be_persisted_keep_goldber_8615">Cvičení nelze uložit. Ponechte Goldberg otevřený a zkuste to znovu.</string>
+  <string name="msg_practice_could_not_be_persisted_keep_goldber_8615">Cvičení nelze uložit. Ponechte Gould otevřený a zkuste to znovu.</string>
   <string name="msg_practice_history_4d00">Historie cvičení</string>
   <string name="msg_practice_history_76e7">Historie cvičení</string>
   <string name="msg_practice_interrupted_latest_checkpoint_retai_ee8b">Cvičení přerušeno; poslední uložený bod zůstal zachován.</string>
@@ -450,7 +451,7 @@
   <string name="msg_save_session_8c74">Uložit cvičení</string>
   <string name="msg_saved_interpretations_b15d">Uložené interpretace</string>
   <string name="msg_saved_interpretations_recordings_size_499b">Uložené interpretace · %1$s</string>
-  <string name="msg_saved_journal_could_not_be_loaded_restart_go_cfce">Deník se nepodařilo načíst. Zkuste Goldberg restartovat. Žádná uložená data nebyla odstraněna.</string>
+  <string name="msg_saved_journal_could_not_be_loaded_restart_go_cfce">Deník se nepodařilo načíst. Zkuste Gould restartovat. Žádná uložená data nebyla odstraněna.</string>
   <string name="msg_saved_on_device_instant_ofepochmilli_at_atzo_ab8d">Uloženo v zařízení · %1$s</string>
   <string name="msg_saving_56a2">Ukládání…</string>
   <string name="msg_search_ignores_accents_offline_results_inclu_3f32">Vyhledávání nerozlišuje diakritiku. Offline jsou dostupná dříve načtená data; další objevy vyžadují připojení. Názvy z Open Opus zůstávají v původním jazyce.</string>
@@ -541,7 +542,7 @@
   <string name="msg_view_all_badges_06e1">Všechny odznaky</string>
   <string name="msg_view_all_efd8">Zobrazit vše</string>
   <string name="msg_welcome_name_5c46">Vítejte, %1$s</string>
-  <string name="msg_welcome_to_goldberg_page_1_3_4211">VÍTEJTE V GOLDBERGU · %1$s/3</string>
+  <string name="msg_welcome_to_goldberg_page_1_3_4211">VÍTEJTE V APLIKACI GOULD · %1$s/3</string>
   <string name="msg_works_bb38">Skladby</string>
   <string name="msg_works_could_not_be_refreshed_any_saved_works_28ff">Skladby nelze obnovit. Uložené skladby jsou zobrazeny níže.</string>
   <string name="msg_wrapped_preview_fbae">Ohlédnutí · náhled</string>
@@ -660,9 +661,9 @@
   <string name="progress_fraction">Počet %3$s: %1$d / %2$d</string>
   <string name="backup_summary">%1$s · %2$s · odznaky: %3$d</string>
   <string name="profile_period_summary">%1$s · %2$s</string>
-  <string name="notification_resume">%1$s — otevřete Goldberg a pokračujte</string>
+  <string name="notification_resume">%1$s — otevřete Gould a pokračujte</string>
   <string name="copyright_notices">Následují původní texty licencí třetích stran.</string>
-  <string name="privacy_text">Goldberg uchovává deník cvičení v tomto zařízení. Zvuk se zpracovává místně; zálohy formátu 5 mohou obsahovat rozpracované cvičení a data obnovy. Exporty JSON/CSV nejsou šifrované a poskytovatel dokumentů je může synchronizovat. Online hudební požadavky kontaktují příslušné poskytovatele. Katalog Goldberg pouze pro čtení využívá Cloudflare Workers/Hyperdrive a Supabase. Nezbytné technické údaje požadavků se zpracovávají pro doručení katalogu a zabezpečení na základě oprávněných zájmů; uchovávání a mezinárodní zpracování u poskytovatelů se řídí příslušnými podmínkami, bez záruky zpracování pouze v EU či nulových protokolů. Trvalé aplikační protokoly Workeru a trasování jsou vypnuté. Dobrovolná podpora a zákonné vyřizování žádostí o práva se posuzují odděleně. Běžná korespondence podpory se uchovává 90 dní po uzavření s odůvodněnými právními výjimkami a měsíční kontrolou. Vlastník potvrzuje kontroly schránky v úterý a pátek a soukromou evidenci případů. Přihlášení Google k backendu a komunitní zápisy zůstávají vypnuté. Veřejný provozovatel a vývojář: stokonn; soukromí a podpora: stokonn.us@gmail.com. Podrobnosti a práva najdete v úplném přiloženém oznámení.</string>
+  <string name="privacy_text">Gould uchovává deník cvičení v tomto zařízení. Zvuk se zpracovává místně; zálohy formátu 5 mohou obsahovat rozpracované cvičení a data obnovy. Exporty JSON/CSV nejsou šifrované a poskytovatel dokumentů je může synchronizovat. Online hudební požadavky kontaktují příslušné poskytovatele. Katalog Goldberg pouze pro čtení využívá Cloudflare Workers/Hyperdrive a Supabase. Nezbytné technické údaje požadavků se zpracovávají pro doručení katalogu a zabezpečení na základě oprávněných zájmů; uchovávání a mezinárodní zpracování u poskytovatelů se řídí příslušnými podmínkami, bez záruky zpracování pouze v EU či nulových protokolů. Trvalé aplikační protokoly Workeru a trasování jsou vypnuté. Dobrovolná podpora a zákonné vyřizování žádostí o práva se posuzují odděleně. Běžná korespondence podpory se uchovává 90 dní po uzavření s odůvodněnými právními výjimkami a měsíční kontrolou. Vlastník potvrzuje kontroly schránky v úterý a pátek a soukromou evidenci případů. Přihlášení Google k backendu a komunitní zápisy zůstávají vypnuté. Veřejný provozovatel a vývojář: stokonn; soukromí a podpora: stokonn.us@gmail.com. Podrobnosti a práva najdete v úplném přiloženém oznámení.</string>
   <string name="minute_short">%1$d min</string>
   <string name="hours_minutes_short">%1$d h %2$d min</string>
   <string name="second_short">%1$d s</string>
@@ -700,7 +701,7 @@
   <string name="label_instrumentation">Obsazení</string>
     <string name="practice_request_unavailable">Cvičení není na tuto akci připraveno. Otevřete Cvičení a zkuste to znovu.</string>
     <string name="practice_start_failed">Cvičení nelze spustit, protože se nepodařilo uložit koncept. Zkuste to znovu, až bude úložiště dostupné.</string>
-    <string name="practice_unsaved">Změny nejsou uložené. Nechte Goldberg otevřený a zkuste uložení znovu.</string>
+    <string name="practice_unsaved">Změny nejsou uložené. Nechte Gould otevřený a zkuste uložení znovu.</string>
     <string name="recovery_export">Exportovat původní data obnovy</string>
     <string name="recovery_failed">Rozpracované cvičení se nepodařilo obnovit. Původní data jsou zachována. Zkuste obnovu znovu nebo data exportujte před novým začátkem.</string>
     <string name="recovery_fresh">Archivovat originál a začít znovu</string>
@@ -730,9 +731,9 @@
 <string name="mobile_media">Povolit média na placených datech</string>
 <string name="mobile_media_description">Zahrnuje mobilní data a placené Wi-Fi. Ve výchozím stavu vypnuto.</string>
 <string name="supplementary_hint">Malé portréty se stahují na neplacené Wi-Fi. Volitelné životopisy stáhněte na stránce skladatele. Stažený obsah můžete vymazat níže; deník zůstane zachován.</string>
-<string name="goldberg_logo">Logo Goldberg</string>
+<string name="goldberg_logo">Logo Gould</string>
 <string name="version_092">Goldberg 0.9.2 · Finální redesign</string>
-<string name="tux_terminal">Obnovovací terminál Goldberg</string>
+<string name="tux_terminal">Obnovovací terminál Gould</string>
 <string name="google_setup_blocked">Identita Google není v této verzi nakonfigurována. Místní přezdívka a avatar zůstávají dostupné. Cloudová synchronizace není zapnuta.</string>
 <string name="quote_0">Hrajte přesně v rytmu!</string>
 <string name="quote_1">Osvojte si včas základní principy harmonie.</string>
@@ -798,7 +799,7 @@
     <string name="ui010_untimed_short">Bez času</string>
     <string name="ui010_remove">Odebrat</string>
     <string name="ui010_edit_explanation">Přidané skladby se zobrazí v historii bez dalšího započteného času. Naměřené časy, celková délka a původní poznámky zůstanou zachovány.</string>
-    <string name="ui010_about_app">O aplikaci Goldberg</string>
+    <string name="ui010_about_app">O aplikaci Gould</string>
     <string name="ui010_data_storage">Data a úložiště</string>
     <string name="ui010_identity_explanation">Vlastní přezdívka a avatar mají přednost. Následující volby použijte jen pro nahrazení údaji tohoto účtu Google. Data cvičení se nikdy nesynchronizují.</string>
     <string name="ui010_google_name">Použít jméno z Googlu</string>

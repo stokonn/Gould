@@ -67,7 +67,7 @@ packages:
 ```sh
 python3 services/community-bff/run-local.py
 node services/community-bff/build-local.mjs
-python3 services/community-bff/run-local.py --client-worktree /tmp/goldberg-stage8-canonical-integration --client-only
+python3 services/community-bff/run-local.py --client-worktree "$PWD" --client-only
 ```
 
 The local runner creates one UUID-named rootless PG fixture, records every command,

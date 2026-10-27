@@ -5,7 +5,7 @@ import subprocess,json,re,time,hashlib,sqlite3,os
 ROOT=Path(__file__).resolve().parents[3]
 ART=Path(os.environ.get('GOLDBERG_STAGE8_ARTIFACTS',str(ROOT/'.gradle/stage8-independent-artifacts')))
 OUT=Path(os.environ.get('GOLDBERG_STAGE8_OUTPUT',str(ROOT/'docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25')))
-ADB='/home/stokonn/Android/Sdk/platform-tools/adb';SERIAL=os.environ.get('GOLDBERG_STAGE8_SERIAL','emulator-5592');RUN=os.environ.get('GOLDBERG_STAGE8_RUN','oct25r1')
+ADB=str(Path(os.environ.get('ANDROID_HOME') or os.environ.get('ANDROID_SDK_ROOT') or Path.home() / 'Android/Sdk') / 'platform-tools/adb');SERIAL=os.environ.get('GOLDBERG_STAGE8_SERIAL','emulator-5592');RUN=os.environ.get('GOLDBERG_STAGE8_RUN','oct25r1')
 assert re.fullmatch(r'emulator-\d+',SERIAL),'Only explicit emulator serials are allowed'
 assert re.fullmatch(r'[a-zA-Z0-9]+',RUN)
 CLASS='com.opus.piano.Stage8IndependentPreservationTest'

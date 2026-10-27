@@ -49,7 +49,8 @@ def main(client_worktree=None,client_only=False):
             call(['node','--test','--test-reporter=tap',*files],log,env)
             result['counts'][log]=parse_tap(run/log,require_success=True)
         if client_worktree:
-            env['GOLDBERG_BFF_SOURCE']=str(ROOT);env['ANDROID_HOME']='/home/stokonn/Android/Sdk'
+            env['GOLDBERG_BFF_SOURCE']=str(ROOT)
+            env['ANDROID_HOME']=env.get('ANDROID_HOME') or env.get('ANDROID_SDK_ROOT') or str(Path.home()/'Android/Sdk')
             # The BFF lives outside this Gradle project's inputs. Cached test
             # XML can refer to a different server, so force actual execution.
             call(['./gradlew','testDebugUnitTest','--rerun-tasks','-PgoldbergCanonicalIntegration=true','--tests','com.opus.piano.data.community.canonical.CanonicalBffHttpIntegrationTest','--no-daemon','--max-workers=1'],'kotlin-bff-http.log',env,cwd=client_worktree)
@@ -75,5 +76,6 @@ def main(client_worktree=None,client_only=False):
 if __name__=='__main__':
     import argparse
     parser=argparse.ArgumentParser();parser.add_argument('--client-worktree',type=Path);parser.add_argument('--client-only',action='store_true');args=parser.parse_args()
+    if args.client_worktree:args.client_worktree=args.client_worktree.resolve()
     if args.client_only and not args.client_worktree:parser.error('--client-only requires --client-worktree')
     sys.exit(main(args.client_worktree,args.client_only))

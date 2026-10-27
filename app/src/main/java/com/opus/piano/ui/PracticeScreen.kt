@@ -95,7 +95,7 @@ import com.opus.piano.service.SmartPracticeService
         if (failedRecovery) {
             Text(L.s(R.string.recovery_failed))
             JournalPrimaryButton(onClick={model.practice.retryRecovery()}) { Text(L.s(R.string.practice_retry)) }
-            JournalSecondaryButton(onClick={export.launch("Goldberg-recovery.json")}) { Text(L.s(R.string.recovery_export)) }
+            JournalSecondaryButton(onClick={export.launch("Gould-recovery.json")}) { Text(L.s(R.string.recovery_export)) }
             if (exported != null) JournalTextButton(onClick={fresh=true}) { Text(L.s(R.string.recovery_fresh)) }
             return@Column
         }

@@ -171,7 +171,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
         item { Panel {
             SectionTitle(L.s(R.string.msg_backup_restore_3bdd))
             Text(L.s(R.string.msg_keep_a_local_copy_of_your_journal_profile_an_8f6d))
-            JournalPrimaryButton(onClick = { export.launch("Goldberg-backup.json") }, enabled = !busy) { Text(L.s(R.string.msg_export_backup_6043)) }
+            JournalPrimaryButton(onClick = { export.launch("Gould-backup.json") }, enabled = !busy) { Text(L.s(R.string.msg_export_backup_6043)) }
             JournalSecondaryButton(onClick = { restore.launch(arrayOf("application/json", "text/plain", "application/octet-stream")) }, enabled = !busy) { Text(L.s(R.string.msg_import_backup_1b40)) }
             Text(L.s(R.string.backup_v5_note))
             if(restoreState?.status=="pending") {
@@ -184,8 +184,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
         item { Panel {
             SectionTitle(L.s(R.string.msg_statistics_export_f996))
             Text(L.s(R.string.msg_separate_utf_8_reports_prevent_repeated_sess_ce91))
-            JournalSecondaryButton(onClick = { sessionCsv.launch("Goldberg-sessions.csv") }, enabled = !busy) { Text(L.s(R.string.msg_export_sessions_csv_688a)) }
-            JournalSecondaryButton(onClick = { partCsv.launch("Goldberg-pieces.csv") }, enabled = !busy) { Text(L.s(R.string.msg_export_piece_times_csv_bfc9)) }
+            JournalSecondaryButton(onClick = { sessionCsv.launch("Gould-sessions.csv") }, enabled = !busy) { Text(L.s(R.string.msg_export_sessions_csv_688a)) }
+            JournalSecondaryButton(onClick = { partCsv.launch("Gould-pieces.csv") }, enabled = !busy) { Text(L.s(R.string.msg_export_piece_times_csv_bfc9)) }
         } }
             }
             "Privacy & Permissions" -> item { Panel {
@@ -205,7 +205,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
                 context.packageManager.getApplicationIcon(context.packageName).toBitmap(192,192)
             }}
             icon?.let {Image(it.asImageBitmap(),L.s(R.string.goldberg_logo),Modifier.size(136.dp).combinedClickable(onClick={},onLongClick={tux=true}))}
-            Text("Goldberg",style=MaterialTheme.typography.headlineLarge)
+            Text(L.s(R.string.app_name),style=MaterialTheme.typography.headlineLarge)
             JournalTextButton(onClick = {
                 val now = android.os.SystemClock.elapsedRealtime()
                 taps = if (now-lastTap <= 1500) taps+1 else 1; lastTap=now

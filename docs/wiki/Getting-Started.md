@@ -1,4 +1,7 @@
-# Getting Started — Goldberg 0.11
+# Getting Started — Gould
+
+> Gould branding is in preparation. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+
 
 Download the signed APK from the [0.11 Stable release](https://github.com/stokonn/Goldberg/releases/tag/v0.11). Android 8.0 or later is required. Install over your existing Goldberg app; preserve a portable backup first. Never uninstall to bypass a signature error.
 

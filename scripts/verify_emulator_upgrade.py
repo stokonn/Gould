@@ -4,6 +4,7 @@ Never use on owner data. Every adb command targets an explicitly verified emulat
 import hashlib
 import argparse
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -26,7 +27,7 @@ parser.add_argument('--seed-disposable', action='store_true', required=True)
 a = parser.parse_args()
 if not re.fullmatch(r'emulator-\d+', a.serial):
     parser.error('Only emulator-NNNN is allowed')
-base = [shutil.which('adb') or '/home/stokonn/Android/Sdk/platform-tools/adb', '-s', a.serial]
+base = [shutil.which('adb') or str(Path(os.environ.get('ANDROID_HOME') or os.environ.get('ANDROID_SDK_ROOT') or Path.home() / 'Android/Sdk') / 'platform-tools/adb'), '-s', a.serial]
 def adb(*args, **kwargs):
     return subprocess.check_output(base + list(args), **kwargs)
 assert adb('shell', 'getprop', 'ro.kernel.qemu').strip() == b'1'

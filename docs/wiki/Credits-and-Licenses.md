@@ -1,4 +1,7 @@
-# Credits & Licenses — Goldberg 0.11
+# Credits & Licenses — Gould
+
+> Gould branding is in preparation. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+
 
 Source facts, encyclopedic prose, portraits, scores and recordings have different rights. Catalogue details retain source/licence/attribution information; an entity identifier or deceased composer does not license media. Provider metadata ingestion retains the existing source policies. Metadata lacking its original response stays unknown/unreviewed, rather than receiving an invented licence.
 

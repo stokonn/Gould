@@ -1,4 +1,6 @@
-# Goldberg
+# Gould
+
+Gould is the continuing product name for Goldberg. This maintenance branch prepares the branding; the latest published application remains **Goldberg 0.11 Stable**. Gould 0.12 features have not started.
 
 A native Android piano practice journal built with Kotlin, Jetpack Compose, Material 3 and Room. Android 8.0+; English and Czech; light and dark themes. Your journal stays local.
 
@@ -28,7 +30,7 @@ Read [AGENTS.md](AGENTS.md) for the canonical development and release policy, [t
 ./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1
 ```
 
-Build artifacts are under `app/build/outputs/apk/`. Compilation is not device verification. Mandatory quality, data-compatibility, rendered-UI and signing checks must pass before the automatic release workflow. Use emulators only; never target the owner's physical phone. The GitHub quality workflow runs host checks; compatible release signing and emulator/owner acceptance remain separate gates. Local and remote CI results are recorded separately.
+Build artifacts are under `app/build/outputs/apk/`. Compilation is not device verification. Mandatory quality, data-compatibility, rendered-UI and signing checks must pass before separately approved main integration and stable publication. Use emulators only; never target the owner's physical phone. The GitHub quality workflow runs host checks; compatible release signing and emulator/owner acceptance remain separate gates. Local and remote CI results are recorded separately.
 
 [Signing](docs/SIGNING.md) · [Backup](docs/BACKUP.md) · [Google configuration](docs/GOOGLE-IDENTITY-SETUP.md) · [Changelog](CHANGELOG.md) · [Licenses](docs/LICENSES.md)
 
@@ -38,4 +40,8 @@ created by stokonn with love <3
 
 Development builds are internal debug APKs for verification and owner review. Goldberg 0.11 and future Gould versions do not create new release candidates, prerelease tags or development GitHub Releases. The historical [v0.11-rc.1](https://github.com/stokonn/Goldberg/releases/tag/v0.11-rc.1) and its original tag/assets remain preserved. A stable release requires completed verification, explicit owner approval, then a fresh clean non-debuggable build with the trusted signing certificate and verified in-place upgrades. Merging into main and publishing each require explicit approval.
 
-Current Stage 8 [Discover stabilization checklist](docs/planning/goldberg-0.11/stage-8/discover-repair/CHECKPOINT.md): debug APK/report only; native visual acceptance is tracked there.
+Historical Stage 8 [Discover stabilization checklist](docs/planning/goldberg-0.11/stage-8/discover-repair/CHECKPOINT.md): retained acceptance history; final Stable status is in the release receipt.
+
+Gould 0.12 will use **one development stage** containing its complete owner-approved feature scope. No feature scope is inferred by this maintenance task. See [preparation and approval gates](docs/maintenance/GOULD-PREPARATION.md).
+
+For transfer to another Linux computer, see [toolchain, private configuration and USB instructions](docs/maintenance/PORTABILITY.md). Source consolidation is local; fresh Android/build portability acceptance remains blocked in the restricted execution environment. See [the current handoff](docs/ai/GOULD-PORTABILITY-CHECKPOINT.md).

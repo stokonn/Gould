@@ -1,12 +1,13 @@
 """Stage 8B host recorder. Explicit isolated emulator; no implicit device selection."""
 import argparse
 import json
+import os
 from pathlib import Path
 import subprocess
 import time
 
 SERIAL = 'emulator-5588'
-ADB = '/home/stokonn/Android/Sdk/platform-tools/adb'
+ADB = str(Path(os.environ.get('ANDROID_HOME') or os.environ.get('ANDROID_SDK_ROOT') or Path.home() / 'Android/Sdk') / 'platform-tools/adb')
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25'
 
