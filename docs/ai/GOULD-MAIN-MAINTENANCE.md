@@ -46,7 +46,9 @@ The original controller receipt conservatively flagged its unknown managed Copil
 
 **Maintenance remains partial:** seven historical worktrees contain private signing/runtime/PMP/incident/capture records whose independent backup/encrypted custody has not been established. The existing backup explicitly records incomplete private coverage; do not treat its source-history bundle as a backup of those files. Six unique historical branches remain preserved for owner decisions. Neither condition is a missing application build dependency, but neither authorizes deleting unresolved originals.
 
-Next: read the exact current main CI and final private receipts; arrange owner-approved encrypted custody/recipient or explicit per-file disposition for unresolved records, then independently verify backups before any further retirement. Source/toolchain/USB instructions are in PORTABILITY.md. **Do not declare full maintenance complete while these protected-data blockers remain. Gould 0.12 features have not started and require their own owner-approved scope.**
+Repository-wide maintenance review and the read-only independent OpenCode workflow are documented in [REPOSITORY-AUDIT.md](../maintenance/REPOSITORY-AUDIT.md) and [INDEPENDENT-REVIEW.md](../maintenance/INDEPENDENT-REVIEW.md). OpenCode startup is blocked by sandbox listen EPERM; no independent review has executed. The existing host architect agent/PMP wrapper command is ready without permission/configuration changes.
+
+Next: read the exact current main CI, final private receipts and host OpenCode findings; arrange owner-approved encrypted custody/recipient or explicit per-file disposition for unresolved records, then independently verify backups before any further retirement. Source/toolchain/USB instructions are in PORTABILITY.md. **Do not declare full maintenance complete while these protected-data blockers remain. Gould 0.12 features have not started and require their own owner-approved scope.**
 
 ## PMP
 

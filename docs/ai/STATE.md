@@ -1,3 +1,5 @@
+> Latest review continuation: interrupted Actions/RC outcome committed at `12746b8`; no destructive operations repeated. Repository-wide maintenance inventory is in [REPOSITORY-AUDIT.md](../maintenance/REPOSITORY-AUDIT.md). Independent OpenCode review is pending host execution because sandbox service listen returns EPERM; use [the existing read-only workflow](../maintenance/INDEPENDENT-REVIEW.md). PMP task facts are synchronized; private-data custody remains unresolved.
+
 # Gould — current state
 
 Repository: https://github.com/stokonn/Gould (ID 1421247418). Canonical checkout: `~/Projects/Opus`, branch **main**. Verified maintenance commit `bf837f2` was integrated by non-forced fast-forward from `1c943dc`. Current metadata SHA is reported by `git rev-parse HEAD` and the live GitHub main ref.
