@@ -42,7 +42,7 @@ The reviewed host controller below enumerates every workflow registration, compa
 
 Live API identity: prerelease **`v0.11-rc.1`, ID `423537826`, prerelease=true**. Stable is the distinct **`v0.11`, ID `425356546`, prerelease=false**; its original APK digest is `290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6`.
 
-Complete private backup: `.gradle/private-release-backups/v0.11-rc.1/`, owner-only directory/files. Metadata, release notes, Stable-before metadata, preserved tag refs and all three RC assets are present with SHA-256 checksums. Each asset's bytes and size matched live GitHub metadata:
+Complete private backup: `.gradle/private-release-backups/v0.11-rc.1/verified-backup/`, owner-only directory/files; original assets are in `assets/`, with the separate administrative `BACKUP-SHA256SUMS.txt` manifest. A pre-deletion check caught an earlier manifest/asset filename collision; the corrected backup was rebuilt from protected originals and all three assets were reverified. The superseded outer directory is not accepted as the deletion backup. Metadata, release notes, Stable-before metadata, preserved tag refs and all three RC assets are present with SHA-256 checksums. Each asset's bytes and size matched live GitHub metadata:
 
 - `Goldberg-v0.11-rc.1.apk`: `c5662d8ead2b175fac0be09145776e84936c2b8f794c85b967f71aaab1938bb5`.
 - `artifact-receipt.json`: `451b507179100367755c03ae1b3cea7d9ae447d7ab48bd7a8952d6e2959176ef`.
@@ -59,7 +59,7 @@ cd "$HOME/Projects/Opus"
 python3 scripts/finish_maintenance_admin.py --apply
 ```
 
-This single controller performs the full workflow API audit, guarded disabling, fresh checks/deletion of the four independently backed-up branch candidates, and deletion of only release ID 423537826 after re-verifying its backup. It preserves all tags, Stable/other releases and historical workflow runs, and records before/after inventories and hashes in `.gradle/final-maintenance-administration/report.json`. It stops on ambiguous security dependencies or changed candidate/backup state. It does not build an APK, publish a release, rewrite history or delete local data. Four workflow-classification regressions and the existing five deletion-guard regressions passed locally.
+This single controller performs the full workflow API audit, guarded disabling, fresh checks/deletion of the four independently backed-up branch candidates, and deletion of only release ID 423537826 after re-verifying its backup. It preserves all tags, Stable/other releases and historical workflow runs, and records before/after inventories and hashes in `.gradle/final-maintenance-administration/report.json`. It stops on ambiguous security dependencies or changed candidate/backup state. It does not build an APK, publish a release, rewrite history or delete local data. Five workflow/backup regressions, including preservation of an asset literally named SHA256SUMS, and the existing five deletion-guard regressions passed locally.
 
 Return that report path/outcome. The next agent must validate actual API outcomes, final active workflow count, main CI and remaining branch count; update this handoff and PMP; and continue preserving unresolved local records. **Readiness for Gould 0.12: BLOCKED on complete Actions audit/admin receipt and protected-data disposition.** No feature scope is inferred by maintenance.
 

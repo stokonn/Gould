@@ -48,6 +48,20 @@ def require_absent(endpoint):
     assert response.returncode != 0 and "HTTP 404" in response.stderr, "Resource absence not verified"
 
 
+def write_backup_manifest(backup):
+    """Keep published asset names separate from the administrative manifest."""
+    manifest = backup / "BACKUP-SHA256SUMS.txt"
+    hashes = {}
+    for path in backup.rglob("*"):
+        assert not path.is_symlink(), "Unexpected backup symlink"
+        if path.is_file() and path != manifest:
+            os.chmod(path, 0o600)
+            hashes[path.relative_to(backup).as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
+    manifest.write_text("".join(h + "  " + n + "\n" for n, h in sorted(hashes.items())))
+    os.chmod(manifest, 0o600)
+    return hashes
+
+
 def main():
     if not __debug__:
         raise RuntimeError("Safety assertions require non-optimized Python")
@@ -89,7 +103,7 @@ def main():
         assert stable["tag_name"] == "v0.11" and not stable["prerelease"] and not stable["draft"]
         other_releases = release_identity([r for r in releases if r["id"] != RC_ID])
         rc = next((r for r in releases if r["id"] == RC_ID), None)
-        backup = ROOT / ".gradle/private-release-backups/v0.11-rc.1"
+        backup = ROOT / ".gradle/private-release-backups/v0.11-rc.1/verified-backup"
         metadata = json.loads((backup / "metadata.json").read_text())
         assert metadata["id"] == RC_ID and metadata["tag_name"] == "v0.11-rc.1" and metadata["prerelease"]
         report["rc_backup"] = str(backup.relative_to(ROOT))
@@ -102,20 +116,17 @@ def main():
             (backup / "release-notes-at-deletion.md").write_text(rc["body"] or "")
         for asset in metadata["assets"]:
             assert Path(asset["name"]).name == asset["name"]
-            path = backup / asset["name"]
+            path = backup / "assets" / asset["name"]
             assert path.is_file() and not path.is_symlink()
             assert path.stat().st_size == asset["size"]
             assert "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest() == asset["digest"]
         saved_tags = json.loads((backup / "preserved-tag-refs.json").read_text())
         for tag, sha in saved_tags.items():
             assert ("refs/tags/" + tag, sha) in tags
-        hashes = {}
-        for path in backup.iterdir():
-            if path.is_file() and path.name != "SHA256SUMS":
-                os.chmod(path, 0o600)
-                hashes[path.name] = hashlib.sha256(path.read_bytes()).hexdigest()
-        (backup / "SHA256SUMS").write_text("".join(h + "  " + n + "\n" for n, h in sorted(hashes.items())))
-        os.chmod(backup / "SHA256SUMS", 0o600)
+        hashes = write_backup_manifest(backup)
+        # Recheck after manifest creation as well as before it.
+        for asset in metadata["assets"]:
+            assert "sha256:" + hashes["assets/" + asset["name"]] == asset["digest"]
         report["backup_sha256"] = hashes
         branch_plan = json.loads((ROOT / "docs/maintenance/BRANCH-DELETION-PLAN.json").read_text())
         history = json.loads((ROOT / ".git/portability-audit/verified-backup-heads.json").read_text())
