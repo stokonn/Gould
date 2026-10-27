@@ -17,6 +17,8 @@ Continuation after administration outcome `12746b8`, October 27, 2026. This audi
 
 The existing Gould project UUID, private history and recovery originals are preserved. The current task state is synchronized through `pmp task set`, with resolved GitHub administration facts and explicit private-data/OpenCode blockers. Native evidence is created only by checks actually executed through `pmp verify --run`; historic host results remain attributed reports, not invented native evidence. Use private `snapshot`, `handoff`, `check`, `resume`, `history` and `verify` at the final source checkpoint. `github: null` remains accurate; this task does not install hooks, publish private memory or change the independent PMP repository.
 
+A fresh PMP generic wrapper check exited zero, created entry/exit checkpoints and released its session. The observer recorded a transient writer-lock conflict; do not interpret process exit as full observer acceptance. Subsequent `doctor`, `check` and `resume` passed with no warnings or recovery uncertainty. Private receipts preserve the limitation; no locks were force-released and the standalone PMP implementation was not modified. PORTABILITY.md now explicitly includes the external Gould UUID checkpoint history in secure private transfer, since `.pmp/` alone is insufficient.
+
 OpenCode v2.1.4 is installed, but its service cannot listen inside this sandbox. PMP's adapter inspection certifies native runtime only for v2.0.32. The existing wrapper-based read-only host review avoids enabling unverified native hooks and preserves existing agent permissions. Independent review has not yet executed; do not treat a prepared command as a passed review.
 
 ## Remaining decisions
