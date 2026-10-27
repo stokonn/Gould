@@ -1,0 +1,6 @@
+PASS: packaged transparent artwork and circular/rounded-square bounds: res/30.png
+PASS: packaged transparent artwork and circular/rounded-square bounds: res/AN.png
+PASS: packaged transparent artwork and circular/rounded-square bounds: res/nc.png
+PASS: com.opus.piano 0.11 (13), published baseline code 11
+Signing SHA-256: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+APK SHA-256: 290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6

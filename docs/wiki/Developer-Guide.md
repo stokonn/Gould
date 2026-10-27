@@ -1,3 +1,16 @@
+# Developer Guide — Goldberg 0.11
+
+The application remains native Kotlin/Compose/Material3 with application ID com.opus.piano. Personal Room schema10 in opus.db is authoritative; catalogue schema1 is separate and disposable. Backup format5 and readers1–4 are retained. Database Simplifier changes catalogue reads and idempotent local compatibility import, without destructive migration or personal-row replacement.
+
+Library and Discover use the existing DiscoverRepository/LocalCatalogueStore and canonical detail route. Legacy provider response replay preserves source hashes/licences; normalized-only snapshots retain unknown rights. The existing public Worker exposes two catalogue GET routes with a read-only origin role, verified TLS and disabled query caching; OAuth/community writes stay off.
+
+[Release evidence](https://github.com/stokonn/Goldberg/blob/main/docs/releases/GOLDBERG-0.11.md) distinguishes full baseline, focused follow-up, compiled-only and unexecuted checks. The secret-free signing init is documented in docs/releases; keystores and credentials are never committed. Keep AGENTS.md and the living stage checklist authoritative. No new development RCs. The catalogue runtime role expires on 2027-01-25 under the accepted manual renewal policy; no administrator-based renewal or automatic reminder service is installed.
+
+created by stokonn with love <3
+
+<details>
+<summary>Preserved earlier documentation and dated development history</summary>
+
 ## Current owner decision — October 24, 2026
 
 **Stage7B ACCEPTED WITH DOCUMENTED LIMITATIONS; Stage7 Android client/synthetic acceptance scope COMPLETED.** Stage7A was already accepted. [Explicit owner decision](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388393525). Existing CI25 and emulator evidence is unchanged; no tests were rerun for this documentation-only decision.
@@ -109,3 +122,5 @@ created by stokonn with love <3
 Owner decision, October 25, 2026: Goldberg 0.11 and future Gould versions use internal debug APKs during development and owner review. Do not create additional RCs, prerelease tags or development GitHub Releases. Preserve historical v0.11-rc.1 and its artifacts. Only after full verification and explicit owner approval, perform a fresh clean non-debuggable stable release build with the trusted certificate and verified safe in-place upgrades. Main merges and stable publication each require explicit approval. The Stage 8 Discover repair is a debug-only deliverable pending native visual acceptance.
 
 created by stokonn with love <3
+
+</details>

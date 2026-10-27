@@ -2,7 +2,7 @@
 
 A native Android piano practice journal built with Kotlin, Jetpack Compose, Material 3 and Room. Android 8.0+; English and Czech; light and dark themes. Your journal stays local.
 
-**Goldberg 0.10.1 — Final Redesign Polish** refines the integrated Library, saved-session completion, Profile, About and appearance previews. See [release notes](docs/RELEASE-0.10.1.md) and [verification](docs/VERIFICATION-0.10.1.md).
+**Goldberg 0.11 Stable — The Music Database Update** integrates Discover, sourced details, offline bundles and a shared Discover/Library catalogue while keeping your journal local. [Release notes](docs/releases/GOLDBERG-0.11.md) · [Download 0.11](https://github.com/stokonn/Goldberg/releases/tag/v0.11).
 
 [Download](https://github.com/stokonn/Goldberg/releases) · [Official Wiki](https://github.com/stokonn/Goldberg/wiki) · [Issues](https://github.com/stokonn/Goldberg/issues) · [Development Project](https://github.com/users/stokonn/projects/2) (authorized collaborators)
 
@@ -16,11 +16,13 @@ A native Android piano practice journal built with Kotlin, Jetpack Compose, Mate
 
 ![Goldberg 0.10.1 Profile](docs/wiki/images/goldberg-0.10.1-profile.png)
 
+The public catalogue API is read-only and currently empty; backend OAuth, community writes and practice uploads remain disabled. Online provider search is optional and consent-controlled.
+
 Before updating, export a backup. Install over an existing Goldberg version; never uninstall to bypass a signing error. Google identity does not synchronize practice data. See [0.10.1 verification evidence](docs/VERIFICATION-0.10.1.md) and [release notes](docs/RELEASE-0.10.1.md). Historical provider verification remains in the older release ledgers.
 
 ## Development
 
-Read [AGENTS.md](AGENTS.md) for the canonical development and release policy, [the Developer Guide](docs/wiki/Developer-Guide.md) for architecture and AI-agent integrations, and [the 0.10.1 implementation checklist](docs/PLAN-0.10.1.md). Read [the permanent maintenance ledger](docs/maintenance/LEGACY-CLEANUP.md) before cleanup or development. Use the existing Gradle wrapper, JDK 17-compatible toolchain and Android SDK 36:
+Read [AGENTS.md](AGENTS.md) for the canonical development and release policy, [the Developer Guide](docs/wiki/Developer-Guide.md) for architecture and AI-agent integrations, and [the 0.11 stage checklist](docs/planning/goldberg-0.11/STAGE-CHECKLIST.md). Read [the permanent maintenance ledger](docs/maintenance/LEGACY-CLEANUP.md) before cleanup or development. Use the existing Gradle wrapper, JDK 17-compatible toolchain and Android SDK 36:
 
 ```sh
 ./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1

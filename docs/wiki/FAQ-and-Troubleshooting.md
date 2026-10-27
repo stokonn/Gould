@@ -1,3 +1,18 @@
+# FAQ & Troubleshooting — Goldberg 0.11
+
+**Does my journal upload?** No. Practice, notes, drafts/recovery and backups remain local. Online provider queries process their necessary network metadata; the catalogue backend has no journal-upload endpoint.
+
+**Why is the public Goldberg catalogue empty?** Its read-only routes are active, but no approved records have been imported. Optional provider search and existing saved catalogue records are separate. This is not a community contribution service.
+
+**Why are older metadata rights unknown?** A retained local snapshot is not new publication evidence. The original cache and personal records are preserved. Check Sources & credits or refresh through an approved provider when permitted.
+
+**Can I replace the app to fix a signature error?** Preserve your data and contact support; do not uninstall to bypass it. The 0.11 APK uses the existing trusted certificate. Send minimal support details to stokonn.us@gmail.com, never credentials or an entire journal by default.
+
+created by stokonn with love <3
+
+<details>
+<summary>Preserved earlier documentation and dated development history</summary>
+
 # FAQ & Troubleshooting
 
 **Can I use Goldberg without Google?** Yes. Local profiles and practice do not require an account. The owner reports successful Google authentication on a Samsung Galaxy A55, performed manually by the owner. The owner individually confirmed all six Google identity scenarios: PASS — owner-reported manual verification. See [Verification](Verification) for exact observations and evidence boundaries.
@@ -19,3 +34,5 @@
 **Where is development tracked?** The permanent [Goldberg Development Project](https://github.com/users/stokonn/projects/2) is private and accessible to authorized accounts. Public Issues and milestones live in [the repository](https://github.com/stokonn/Goldberg/issues). The Wiki is published separately from the Android release. The verification page separates owner-reported Google results from automated/emulator evidence.
 
 [Home](Home) · [Getting Started](Getting-Started)
+
+</details>

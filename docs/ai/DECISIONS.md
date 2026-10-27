@@ -1,3 +1,15 @@
+## Current owner-approved0.11completion scope
+
+Owner decision6435585794 and subsequent explicit instructions authorize the existing
+read-only API,DatabaseSimplifier,verified main integration and ONE0.11Stable.
+Do not request repeated activation/publication approval. Manual mailbox operation
+is owner-confirmed;no Gmail automation/access required. BackendOAuth/community
+writes/user-data uploads remain disabled. Draft planning/licensing PRs are not
+approval or automatic merge scope. No newRC,forcepush,paid resource ordestructive
+migration. Current verification/publication state is in STAGE-CHECKLIST.md.
+
+---
+
 ## Automatic Discover online search — owner decision, October 25, 2026
 
 The persisted default-off Online Catalogue setting is consent. Local results appear immediately; permitted online provider results follow after approximately 500 ms for queries with at least two characters. Query/filter/consent changes cancel obsolete work. Local/online sections deduplicate by verified canonical ID, never title. Keep paging, cache, provenance, mobile policy and rate limits. Remove per-query Search online. No community production networking is enabled. Regression/native visual acceptance is required before this implementation is marked verified.

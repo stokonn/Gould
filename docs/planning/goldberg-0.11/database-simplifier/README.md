@@ -1,33 +1,50 @@
-## Database Simplifier — correction checkpoint; final acceptance pending
+## Goldberg0.11 — Stage6 and Database Simplifier verified; Stable publication ready
 
-Branch feature/goldberg-0.11-database-simplifier; implementation405cf90 from
-verified integrated e05c692. No reset/clean/discard or physical-device operation.
+Purpose: complete the approved0.11 read-only catalogue launch and unify Library/
+Discover while protecting all offline personal data. Scope: existing Worker/
+Hyperdrive/Supabase,shared Android catalogue/compatibility import,UI,legal notice,
+source evidence,CI and release packaging; no personal schema or backup replacement.
 
-- [x] Host348JVM/0fail/errors/skips,APK/testAPK/lint0errors135warnings PASS.
-- [x] Existing405cf90 CIbackendSUCCESS;quality build/JVM/lint PASS but historical
-  tooling guard failed on integrated.gitattributes. Original pins/receipts retained;
-  reviewed integration evolution now binds both old snapshots and exact additive
-  raw-evidence attributes. Local historical-evidence verifier PASS.
-- [x] API36full native EXECUTED:217cases,204PASS,2fail,0errors,11existing skips.
-  Actual new sharedLibrary UIcase PASS;light/dark/2x frames retained. Light1x and
-  Dark2x component frames inspected;launcher failure frame identified as after
-  ActivityScenario unwind,not evidence of app appearance at failure.
-- [x] Same-source seeded0.10.1schema8→10 upgrade/offline/network/restart acceptance
-  PASS:37sessions,alloriginalrows/preferences preserved,integrity/FK PASS.
-- [x] Fix concrete rights-state mismatch (supported unknown state;guard retained).
-  Editorial assertion now uses recorded providerID rather than first similar
-  local snapshot. Corrected app/test compilation and lint PASS,35tasks/12executed.
-- [ ] Focused six-case native follow-up and corrected quality CI pending. Reuse
-  passed upgrade and200unaffected native cases/11documented skips from initial run.
-  Focused mode is explicit;not reported as another full instrumentation pass.
-- [x] Interrupted signing command had not executed;original secret-free init
-  reviewed/preserved. Its later projectsEvaluated hook produced an UNSIGNED APK;
-  build/lint passed,not signing. Unsigned bytes preserved/hash-verified. Correct
-  finalizeDsl init reviewed;final signed build/certificate verification pending.
-- [ ] Stable0.11/code13/com.opus.piano,non-debuggable,trusted53efcertificate,
-  source/artifactidentity,docs/Wiki/Project/commit/push/tag/Release gates pending.
+- [x] Stage6scope COMPLETE: owner-authorized existing public read-only routes,
+  proportionate catalogue Article6(1)(f)assessment,separate support/rights bases,
+  owner-reported manual mailbox operation and scoped provider-processing review.
+  ONE10/10publicHTTPS/security pass;20tablecounts/roleflags/intake unchanged.
+  APIprojection empty;OAuth/community/private-data writes intentionally disabled.
+- [x] Accepted Stage7/Stage8/Discover integrated without history rewriting;
+  verified e05c692baseline. Dedicated DatabaseSimplifier branch then created.
+- [x] DatabaseSimplifier COMPLETE: Library/Discover share canonical reads/details;
+  original caches replay locally,normalized-only records retain unknown rights;
+  providerIDs remain distinct. Atomic/idempotent retry and no personal writes.
+  Personalopus.db/schema10,catalogue1,backup5/readers1–4 unchanged.
+- [x]348JVM passed;corrected quality40491886948 SUCCESS at a7bb2aa.
+  Hostbuild/JVM/testAPK/lint/data-policy/evidence gates PASS;release lint PASS.
+  Local corrected compilation/lint35tasks/12executed;release51tasks/17executed.
+- [x] API36full40486014943:217cases/204PASS/2fail/0errors/11documentedskips.
+  Both failures corrected. Final explicit focused40491890436:6/6PASS,0fail/
+  errors/skips.200unaffected passes and11external/probe skips reused honestly;
+  no claim of a new full217case pass at corrected source. Backend40486014854
+  SUCCESS reused because backend inputs are unchanged.
+- [x] Seeded0.10.1schema8→10 offline/upgrade/network/restart acceptance PASS:
+  alloriginalcells/preferences,37sessions,integrity/FK retained. Same-runnerdebug
+  upgrade;trusted release certificate compatibility independently checked.
+- [x]9actual finalPNGframes inspected:both themes,EN/CZ,standard/small,1x/2x;
+  three newLibrarycomponentframes. Small2x primarybutton needs scrolling and is
+  fully visible in latercreditsframes;existing nav wrapping retained. No phone.
+- [x] Signed StableAPK0.11/code13/com.opus.piano,non-debuggable,ZIP/exactnotice/
+  optimizedresources/testfixtureexclusion/trusted53efcertificate PASS. SHA256
+  290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6.
+  Sourceinputs195files byte-identical to a7bb2aa;1293f16 preserves newer mainCI
+  history. Initial canceled/unsigned signing attempts preserved,not accepted.
+- [x] README/changelog/release notes/EnglishWiki sources updated for actual scope.
+  Draftprivacy/licensing PRs were reviewed where relevant,not blindly merged.
+- [ ] Commit/push final docs,fast-forward remote main,new annotatedv0.11tag;
+  publish ONEStable release/signedAPK/notes/checksum and verify remotebytes.
+- [ ] Publish matching Wiki sources,close release tracking only after readback;
+  record final commit/tag/release/Project/Wiki receipt. No newRC/tag replacement.
 
-Raw initial XML/upgrade/frames preserved in results/initial-ci-raw.zip;summary in
-initial-ci-results.json. No newRC,paid service,backendOAuth/communitywrites or
-personal-data migration. Standing publication authorization remains valid.
+Mandatory implementation/verification gates pass. Remaining publication tasks are
+operational,not missing owner approval. Issue31 OPEN/Project In Progress until
+published/readback. No physicalphone/API26rerun/realOAuth/communitywrite claims.
+Provider-wide deletion deadlines and independentCFinvoice audit remain evidence
+limits;no paid service activated. All original local work/history preserved.
 

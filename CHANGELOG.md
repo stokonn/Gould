@@ -1,3 +1,14 @@
+## 0.11 Stable — The Music Database Update
+
+- Integrate the verified catalogue, encyclopedia, offline/cache and Android work.
+- Share canonical catalogue data/details across Discover and Library; retain all
+  personal data, legacy caches/metadata, provider IDs and backup compatibility.
+- Activate the existing read-only public catalogue API; keep its empty projection,
+  disabled backend OAuth/community writes and local practice boundary explicit.
+- Correct unknown-rights preservation and immutable-evidence verification; pass
+  focused native, seeded upgrade, quality and trusted signed release gates.
+- [Release notes and verification](docs/releases/GOLDBERG-0.11.md).
+
 ## 0.11-rc.1 — release candidate
 
 Music database/offline/encyclopedia andaccepted Android Admin work integrated.

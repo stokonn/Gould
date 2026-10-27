@@ -1,3 +1,14 @@
+# Getting Started — Goldberg 0.11
+
+Download the signed APK from the [0.11 Stable release](https://github.com/stokonn/Goldberg/releases/tag/v0.11). Android 8.0 or later is required. Install over your existing Goldberg app; preserve a portable backup first. Never uninstall to bypass a signature error.
+
+Practice and your saved repertoire work offline. Library and Discover share catalogue entries and their source details. Enable optional automatic online catalogue search in Settings if you want provider searches. Keep media/download consent and mobile-data settings appropriate for your connection. Google profile identity does not synchronize your practice journal.
+
+created by stokonn with love <3
+
+<details>
+<summary>Preserved earlier documentation and dated development history</summary>
+
 # Getting Started
 
 Download the APK from [GitHub Releases](https://github.com/stokonn/Goldberg/releases). Android 8.0 or newer is required. Before updating, export a backup in Settings → Data & Storage and keep the file outside app-private storage.
@@ -11,3 +22,5 @@ Smart Practice is optional and experimental. Microphone permission is requested 
 Google identity is optional. Goldberg 0.10 integrates Credential Manager with the supplied Web client ID. The owner reports that sign-in, name/avatar import with consent, manual override preservation, restart persistence, sign-out/account switching and local-data preservation passed on a Samsung Galaxy A55. This was owner-performed manual testing, not Codex testing. See [Goldberg 0.10 Verification](Verification-0.10) for evidence boundaries. Local nickname/avatar editing works without an account. Signing in does not provide cloud backup or synchronization.
 
 [Home](Home) · [User Guide](User-Guide)
+
+</details>

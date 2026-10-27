@@ -1,3 +1,16 @@
+# User Guide — Goldberg 0.11
+
+Use Library for your personal repertoire and the shared local catalogue, and Discover to explore sourced music records. Both tabs open the same canonical catalogue details. Public catalogue rows are labelled separately from music saved in your repertoire; open details to add an eligible work or open its existing repertoire entry.
+
+Search uses saved catalogue data first. Automatic online provider search requires Settings consent. Source and licence information is available in Sources & credits. Existing cached metadata is retained; a local snapshot without its original provider response does not acquire approved rights merely by being copied.
+
+Manual and Smart Practice, session review, piece attribution, history, profile and backups remain local. Keep unfinished recovery data until it has been successfully recovered or separately exported. Network or catalogue failures do not authorize deleting the journal or draft.
+
+created by stokonn with love <3
+
+<details>
+<summary>Preserved earlier documentation and dated development history</summary>
+
 # User Guide
 
 ## Home
@@ -23,3 +36,5 @@ Local nickname and avatar editing remain independent of any account. Profile sup
 Catalogue data and original composer/work names are not automatically translated. Licensed small portraits may download on unmetered Wi-Fi; metered/cellular downloads need permission. Biography/large portrait content is optional and requested from composer details. Missing or unlicensed portraits use placeholders. Open portrait/source credits for artist, license and original source.
 
 [Home](Home) · [Settings](Settings-and-Customization)
+
+</details>

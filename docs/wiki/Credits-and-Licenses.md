@@ -1,3 +1,14 @@
+# Credits & Licenses — Goldberg 0.11
+
+Source facts, encyclopedic prose, portraits, scores and recordings have different rights. Catalogue details retain source/licence/attribution information; an entity identifier or deceased composer does not license media. Provider metadata ingestion retains the existing source policies. Metadata lacking its original response stays unknown/unreviewed, rather than receiving an invented licence.
+
+No new records were imported into the public cloud catalogue by this release. Draft source/licence proposals remain review drafts; they were not blindly merged or treated as ingest authorization. Existing project, font, artwork and source credits below remain preserved. See the [privacy notice](https://github.com/stokonn/Goldberg/blob/main/docs/PRIVACY.md) for processing information.
+
+created by stokonn with love <3
+
+<details>
+<summary>Preserved earlier documentation and dated development history</summary>
+
 # Credits & Licenses
 
 created by stokonn with love <3
@@ -13,3 +24,5 @@ Daily quotations are ten short Robert Schumann excerpts from the 1860 Henry Hugo
 The Classic Piano light/dark/monochrome icon comes from the owner-approved Goldberg 0.9.1 assets. The terminal easter egg uses locally authored monospaced ASCII artwork, not an externally downloaded image. Bach's Secret uses the existing synthesized audio engine, not licensed commercial recordings. No Apple interface assets are copied.
 
 [Home](Home) · [Developer Guide](Developer-Guide)
+
+</details>

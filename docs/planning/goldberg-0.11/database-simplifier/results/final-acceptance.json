@@ -1,0 +1,44 @@
+{
+  "applicationSourceCommit": "a7bb2aa7bc70fc546ff3d132c0609c784669e3ce",
+  "focusedRun": 40491890436,
+  "focusedCounts": {
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "qualityRun": 40491886948,
+  "quality": "SUCCESS:build/JVM/instrumentation compilation/lint/data-policy/source-evidence checks",
+  "unchangedBackendEvidence": 40486014854,
+  "priorFullNative": {
+    "run": 40486014943,
+    "source": "405cf902cbfbaedba84f6b63271d08289069fbec",
+    "tests": 217,
+    "passed": 204,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 11
+  },
+  "coverageDisposition": "Two failures fixed and six affected cases rerun successfully;200 unaffected passes and11 documented external/probe skips reused, not another full pass at a7bb2aa",
+  "upgradeEvidence": {
+    "run": 40486014943,
+    "job": 122127871719,
+    "source": "405cf902cbfbaedba84f6b63271d08289069fbec",
+    "result": "PASS",
+    "reuseReason": "Correction changes only optional catalogue rights enum; personal schema,backup,practice and migration code unchanged; corrected native test verifies every original personal cell unchanged"
+  },
+  "screenshotsInspected": [
+    "standard-en-Light-f1.0-detail.png",
+    "standard-cs-Dark-f1.0-action.png",
+    "small-en-Dark-f2.0-action.png",
+    "small-cs-Light-f2.0-action.png",
+    "small-en-Dark-f2.0-credits.png",
+    "small-cs-Light-f2.0-credits.png",
+    "simplifier-Light-1.png",
+    "simplifier-Dark-1.png",
+    "simplifier-Dark-2.png"
+  ],
+  "visualLimit": "Small2x action capture is clipped; subsequent credits captures show the entire reachable button. Existing navigation labels wrap at2x. Three simplifier frames are component renders, not full-app screenshots.",
+  "rawArchiveSha256": "f60b464a7ecff083d03e2789ae73e6f57c6a8471e2c9244d2e5a9e44ae72dc07",
+  "newUnexecuted": "No physical phone,API26rerun,realOAuth or community write tests; disabled scope retained"
+}
