@@ -1,4 +1,4 @@
-name: Gould quality checks
+name: Goldberg quality checks
 on:
   push:
   pull_request:

@@ -7,7 +7,7 @@ Owner authorization: October 27, 2026, “GOULD 0.12 — FINAL CONSOLIDATION, CL
 - [x] Commit the prepared branding/portable baseline as `b87d238a51ded7b2b7e33ecbb262827af7a655b9`.
 - [x] Discover available execution tools and attempt the previously approved unrestricted Gradle command once. Session policy rejected sandbox escalation; there is no alternate shell executor exposed.
 - [x] Recheck the actual GitHub repository, all 33 branch names and open review PRs #39/#40 through the connector.
-- [x] Audit all four workflow files and retain essential host/backend/emulator gates. Update current workflow display names without changing file paths, triggers, action pins or permissions.
+- [x] Audit all four workflow files and retain essential host/backend/emulator gates. Update unpinned current workflow display names without changing file paths, triggers, action pins or permissions.
 - [ ] Pass fresh Android build/JVM/instrumentation-compilation/lint, encrypted-backup and backend/PostgreSQL/workerd verification in an unrestricted environment.
 - [ ] Pass relevant exact-commit CI and signing/seeded-emulator upgrade acceptance.
 - [ ] Retire preparation and obsolete external worktrees after verification, content disposition and actual activity checks.
@@ -21,12 +21,12 @@ No Gould 0.12 feature scope is inferred or implemented. Application ID `com.opus
 
 | Workflow | Decision and evidence |
 | --- | --- |
-| `quality.yml` | Retain: Android debug build, JVM suite, instrumentation compilation, lint, migration/backup/localization/policy checks, encrypted-backup tests and historical evidence checks. Read-only contents permission; pinned actions; no signing secrets/publication. Display name becomes Gould. |
+| `quality.yml` | Retain: Android debug build, JVM suite, instrumentation compilation, lint, migration/backup/localization/policy checks, encrypted-backup tests and historical evidence checks. Read-only contents permission; pinned actions; no signing secrets/publication. Preserve its Goldberg display name because the historical acceptance verifier pins this file byte for byte. |
 | `community-bff.yml` | Retain: disposable PostgreSQL 17, locked npm installs, private-runtime security tests, actual backend/workerd regressions and fail-closed packaging. Read-only permission; no cloud secrets/deployment. Display name becomes Gould. |
 | `stage5-emulator.yml` | Retain: still the canonical dispatch-only instrumentation, seeded-upgrade and network/restart acceptance workflow used beyond Stage 5. Preserve its path, full-suite default, SHA binding and emulator guards. Update display name and stale intended-branch comment. |
 | `stage5-screenshots.yml` | Retain as historical, dispatch-only tooling pending replacement verification. Its `Home Repertoire Discover Practice Profile` capture loop targets an older layout; current product navigation no longer has a Repertoire tab. Do not dispatch it as current UI acceptance. Historical results remain valid for their original commits. Removal/repair waits for verified current screenshot coverage. |
 
-No workflow was proven safely redundant with all its acceptance evidence replaced. Consequently **zero workflows are removed**, and no write permission, automatic emulator trigger, release publication or production credential is added. YAML parsing, full action-pin checks, local-script reference checks and embedded Bash syntax checks are local validation only; GitHub execution of the new commit remains pending.
+No workflow was proven safely redundant with all its acceptance evidence replaced. Consequently **zero workflows are removed**, and no write permission, automatic emulator trigger, release publication or production credential is added. An independent-copy regression caught the quality workflow name violating a historical source hash; its original bytes were restored without weakening the verifier. YAML parsing, full action-pin checks, local-script reference checks and embedded Bash syntax checks are local validation only; GitHub execution of the new commit remains pending.
 
 ## Repository and branch audit
 
