@@ -1,0 +1,20 @@
+{
+  "recordedDate": "2026-10-27",
+  "source": "explicit owner operational confirmation in conversation",
+  "publicContact": "stokonn.us@gmail.com",
+  "ownerReports": {
+    "accessVerified": true,
+    "inboxAndSpamChecked": true,
+    "inboxSchedule": [
+      "Tuesday",
+      "Friday"
+    ],
+    "closedCaseReview": "first day of each month",
+    "caseTracking": "private receipt, applicable deadline, status, closure dates",
+    "ordinaryCorrespondenceRetention": "90 days after closure, justified legal exceptions"
+  },
+  "agentMailboxAccess": false,
+  "automationRequired": false,
+  "automationConfigured": false,
+  "realCorrespondencePublished": false
+}

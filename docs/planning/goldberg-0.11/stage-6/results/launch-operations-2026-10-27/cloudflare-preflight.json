@@ -1,0 +1,60 @@
+{
+  "recordedUtc": "2026-10-27T07:27:54.221223+00:00",
+  "operation": "authenticated GET-only existing deployment inspection",
+  "worker": "goldberg-community-bff-private",
+  "bindings": {
+    "CATALOGUE_READ_ONLY": "true",
+    "COMMUNITY_BFF_ENABLED": "true",
+    "DB_TRANSPORT": "hyperdrive",
+    "GOOGLE_OAUTH_ENABLED": "false"
+  },
+  "serverSecretNames": [
+    "CURSOR_KEY",
+    "IP_KEY"
+  ],
+  "publicRouting": {
+    "enabled": false,
+    "previews_enabled": false
+  },
+  "customDomains": 0,
+  "sourceMatches": true,
+  "bundleSha256": "145c7d15dfccda8b1a2596ca1cd0da4965c65036d55ed7fe00b7f0b3dc25534c",
+  "observability": null,
+  "logpush": false,
+  "tailConsumers": 0,
+  "hyperdrive": {
+    "caching": {
+      "disabled": true
+    },
+    "originSslMode": null,
+    "originKeys": [
+      "database",
+      "host",
+      "port",
+      "scheme",
+      "user"
+    ],
+    "configKeys": [
+      "caching",
+      "created_on",
+      "id",
+      "modified_on",
+      "mtls",
+      "name",
+      "origin",
+      "origin_connection_limit"
+    ],
+    "originConnectionLimit": 5,
+    "mtls": {
+      "sslmode": "verify-full",
+      "caReferencePresent": true
+    }
+  },
+  "accountAgreementAcceptanceReceipt": "not exposed by these configuration APIs",
+  "/subscriptions": {
+    "http": 403
+  },
+  "/billing/profile": {
+    "http": 403
+  }
+}

@@ -1,49 +1,34 @@
-## Current Stage 6 — public activation authorized; processing/operations evidence missing
+## Current Stage 6 — processing assessed; manual mailbox operation confirmed
 
-Purpose: finish the existing read-only catalogue deployment before Database
-Simplifier and one 0.11 Stable release. Scope: existing Worker/Hyperdrive/catalogue,
-privacy operations and tracking; personal Room data/backups/drafts remain intact.
+Purpose/scope: finish existing read-only Worker/Hyperdrive catalogue activation,
+then Database Simplifier from the verified integrated baseline and one0.11Stable.
 
-- [x] Read owner decision [Issue31 comment6435585794](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6435585794).
-  Public read-only activation IS AUTHORIZED once genuine prerequisites pass.
-  No further route approval, RC or planning-only stage is required.
-- [x] Preserve accepted Q1/D5b operator eligibility. Accept public nickname/contact
-  acceptability as owner-reported; no independent certification or private identity
-  publication required. Earlier pending-approval/identity-review wording is superseded.
-- [x] Reuse exact-source3254326809f6661b3043ec81661731d31f687f05 successful
-  backend40456689283 and quality40456689257 CI (also40458676075/40458676124).
-  No unchanged test suite rerun or new Android execution claimed.
-- [x] Remote branch equals3254326; Issue31 OPEN, milestone4 OPEN, existing
-  Goldberg Development Project In Progress. Latest stable remains0.10.1;
-  historical0.11-rc.1 retained. No new release created.
-- [x] Recheck public provider DPAs and Commission legal-basis guidance. They
-  describe a processing framework, not evidence of this operator's completed
-  basis assessment or functioning mailbox/rights process.
-- [ ] Resolve the concrete legal/operational gap: record the adopted basis for
-  read-only request connection metadata (including necessity/balancing if relying
-  on legitimate interests), and the outcome of provider-account processing,
-  retention/transfer review. Existing operations review still labels bases as
-  candidates and account-specific disposition OPEN. No extra contract signature
-  or universal provider-log deletion deadline is presumed necessary.
-- [ ] Confirm actual mailbox monitoring, responsible handler, retention/deletion
-  criteria and private rights-request workflow. The existing90-day mailbox
-  proposal and hypothetical desk review are not implementation evidence.
-- [ ] Once those facts are supplied, activate the existing route under standing
-  authorization and run ONE focused positive/negative public HTTPS security pass.
-  Clear sources/fields/licences/provenance before any catalogue import; the
-  current empty projection is not a populated catalogue.
-- [ ] Finish Stage6 acceptance/integration, commit/push verified baseline; THEN
-  create the dedicated Database Simplifier branch, unify Discover/Library
-  catalogue without destructive personal-data migration; run only changed-scope
-  CI/migration/seeded-upgrade gates and publish0.11Stable when all blockers pass.
+- [x] Standing public activation/release authorization from owner decision6435585794;
+  accepted Q1/D5b and owner-reported public identity/contact retained.
+- [x] Owner adopts90-day ordinary-mail retention with justified legal exceptions;
+  reports actual Inbox/Spam access/checks,Tuesday/Friday monitoring schedule,
+  first-of-month review and private case/deadline tracking. Manual implementation
+  verified as OWNER-REPORTED; no agent Gmail access or automation required/claimed.
+- [x] Proportionate Article6(1)(f) catalogue purpose/necessity/balance assessment;
+  voluntary support assessed separately; applicable rights handling Article6(1)(c).
+  See LAUNCH-PROCESSING-ASSESSMENT.md. No general compliance certification.
+- [x] Actual Supabase Free/healthy/Frankfurt/20RLS/55policies/log settings readback;
+  Cloudflare exactbundle/catalogue-only/OAuthfalse/2keys/logsoff/verify-full/CA/
+  cacheoff readback. Standard incorporated provider DPAs/transfers reviewed;
+  account acceptance receipts/billing403/provider-wide deletion periods remain
+  explicit evidence limits, not invented pass results. See PROVIDER-PROCESSING-2026-10-27.md.
+- [x] Current notice/Android asset/CZ/EN updated;951resource localization PASS,
+  whitespace PASS. Prior successful3254326 CI reused; no full suite rerun.
+- [ ] Enable existing public route and execute ONE focused HTTPS positive/negative
+  security pass, including data/security postflight. Public activation not yet executed.
+- [ ] Complete Stage6/integrated baseline, branch Database Simplifier, unify
+  Discover/Library catalogue preserving offline personal data; changed-scope
+  migration/upgrade/CI, trusted stable APK and final release gates remain pending.
 
-Status: Stage6 IN PROGRESS, held on missing processing/operations evidence,
-not missing activation authorization. No public-route mutation, public smoke pass,
-Database Simplifier branch, APK rebuild, screenshots or release this checkpoint.
-Existing private hosted/security evidence and trusted APK remain unchanged.
-Next input requested is review outcome/procedure facts only, never private identity
-or account secrets. No user/provider contact, mailbox modification or legal
-acceptance performed on the owner's behalf.
+Stage6 IN PROGRESS;Issue31 OPEN/Project In Progress. No catalogue content imported;
+empty projection is not a populated catalogue. Content source/field/licence/
+provenance approval precedes ingestion. OAuth/community writes remain disabled.
+
 
 ---
 

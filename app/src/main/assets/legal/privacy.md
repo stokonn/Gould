@@ -1,10 +1,10 @@
 # Goldberg privacy notice — 0.11
 
-**Review copy dated October 27, 2026. The owner approved the notice text for the next step and supplied the public developer identity below. Final public activation remains pending the listed requirements and final approval.** This notice describes the existing local application and the read-only cloud candidate. It does not authorize Google backend authentication, community participation or collection of personal practice data.
+**Updated October 27, 2026.** This notice describes the local application and the owner-authorized read-only catalogue service. It does not authorize Google backend authentication, community participation or collection of personal practice data.
 
 ## Contact and scope
 
-The public developer identity is **stokonn**. The official privacy and support contact is **stokonn.us@gmail.com**. The nickname is not claimed to satisfy formal legal identification of the data controller; that identification remains unresolved pending appropriate review. No legal name, residential address or other private identity details are published here. Use this address for privacy questions, rights requests and support. Do not post private journals, credentials or personal screenshots in public GitHub issues. This notice does not assert blanket legal compliance; the unresolved launch requirements below must be addressed before public activation.
+The operator is the project owner, publicly identified as **stokonn**, with privacy and support contact **stokonn.us@gmail.com**. Public identity/contact acceptability is owner-reported; no independent legal certification is claimed. Use this address for privacy questions, rights requests and support. Do not post private journals, credentials or personal screenshots in public GitHub issues.
 
 ## Personal practice data stays on your device
 
@@ -24,13 +24,13 @@ JSON backups and CSV exports are unencrypted files sent to the document provider
 
 ## Online Goldberg catalogue
 
-The prepared service allows only catalogue reads: `GET /v1/catalogue/overlay` and `GET /v1/catalogue/changes`. Authentication, administrator functions, submissions and other write routes are blocked. Google backend OAuth and community intake remain disabled. No approved catalogue records have been published by this deployment work.
+The service allows only catalogue reads: `GET /v1/catalogue/overlay` and `GET /v1/catalogue/changes`. Authentication, administrator functions, submissions and other write routes are blocked. Google backend OAuth and community intake remain disabled. No approved catalogue records have been published by this deployment work.
 
 When an online Goldberg catalogue request is made, Cloudflare Workers handles the HTTPS request and response. Cloudflare Hyperdrive connects the Worker to the existing Supabase PostgreSQL catalogue using verified TLS and a restricted server account. Hyperdrive query caching is disabled. Database credentials are not distributed in the Android APK or public responses.
 
 Requests necessarily involve connection metadata, including the IP address seen by Cloudflare, request time, endpoint, HTTP headers and any catalogue filter or pagination cursor supplied. A response may include a generated request identifier. The catalogue handler does not deliberately write an end-user IP, account or practice record into the catalogue database. Database connections come through the service/pooler; this is not a claim that infrastructure providers receive or retain no metadata. Do not put private information or credentials in catalogue URLs.
 
-The database origin is in Frankfurt. This does not mean every Cloudflare, Supabase, support or operational processing activity occurs only in the EU. International processing and applicable provider arrangements must be confirmed for launch; no EU-only or zero-transfer guarantee is made.
+The database origin is in Frankfurt. This does not mean every Cloudflare, Supabase, support or operational processing activity occurs only in the EU. Cloudflare and Supabase standard terms incorporate processing arrangements and applicable international-transfer safeguards. No EU-only or zero-transfer guarantee is made.
 
 ## Logging and retention
 
@@ -38,7 +38,7 @@ Persisted Worker application logs, invocation logs and traces are disabled in th
 
 These settings do not disable every provider security, account, network, database or operational log. Supabase logging can include service connection metadata and query/error information according to provider configuration. Cloudflare and Supabase can process metadata for their infrastructure and security purposes. A dashboard's log-access window does not establish deletion of every provider-held copy.
 
-An exact retention period for this deployment's provider-controlled operational/security metadata has not been verified. No zero-log or invented deletion-period claim is made. Final retention arrangements and the support mailbox's retention/deletion procedure remain unresolved launch requirements. The runtime credential's 90-day validity is a security setting, not a personal-data retention period.
+An exact retention period for this deployment's provider-controlled operational/security metadata has not been verified. No zero-log or invented deletion-period claim is made. Ordinary support correspondence is retained for 90 days after closure, subject to justified legal exceptions and monthly deletion-eligibility review. This period does not govern provider-controlled copies or security records. Mail-provider Trash and backup retention can delay final deletion outside the operator's control. The runtime credential's 90-day validity is a security setting, not a personal-data retention period.
 
 ## Third-party music and identity services
 
@@ -56,11 +56,17 @@ Depending on applicable law and circumstances, you may have rights to informatio
 
 Email **stokonn.us@gmail.com** to explain your request. Include only information needed to identify the issue or request; do not send passwords, tokens or your entire journal by default. Limited identity confirmation may be needed for a request involving data actually held by the operator. Correspondence necessarily includes your email address, message and any attachments you choose to send, and is handled to respond to the request through the support mailbox. Email to the published Gmail address also passes through Google and your email provider under their mail-service policies. Applicable legal response requirements still apply. No marketing email service is enabled.
 
-## Unresolved before public activation
+## Purposes, legal bases and support operation
 
-The approved text and owner-directed public identity updates do not authorize launch. Formal legal identification of the data controller remains unresolved pending appropriate review. The applicable processing basis, provider logging/retention and international-processing arrangements, and a support-correspondence retention/deletion and rights-handling procedure must also be confirmed. No missing fact, fixed period or legal approval is supplied by this draft. The previously accepted operator-model review is preserved; it is not a substitute for these specific unresolved details.
+For necessary catalogue request/connection metadata, Goldberg relies on Article 6(1)(f): legitimate interests in delivering the requested public music catalogue and protecting service availability/security. A proportionate purpose, necessity and balancing assessment supports this limited use with minimization, no account requirement, no persisted operator request history, restricted database access and offline practice preserved. This does not authorize advertising, profiling or collecting practice data. Provider processing for its independent purposes is governed separately.
 
-Public routes remain disabled until the required conditions are verified. Google OAuth, public community writes and personal-data collection are not authorized by approval of a read-only catalogue notice.
+Voluntary support correspondence is handled separately under legitimate interests in responding to the sender's request, using only necessary message/contact details. Where GDPR requires handling a rights request, necessary processing and minimal deadline/outcome records rely on the applicable legal obligation under Article 6(1)(c). Rights evidence is reviewed for necessity; the ordinary-support 90 days is not represented as a statutory retention rule for every legal case.
+
+The owner reports that Inbox and Spam access has been checked, with Tuesday/Friday inbox checks and closed-case/retention review on the first day of each month. Requests and applicable deadlines are tracked privately. Responding to applicable rights requests is required without undue delay, normally within one month; extensions and exceptions require their actual legal conditions. No Gmail monitoring or deletion automation is claimed.
+
+You may object to processing based on legitimate interests using the contact above. Objections are assessed individually; security is not an automatic ground to reject every request. Goldberg does not create additional visitor tracking solely to identify a requester. Ask about data actually held; do not send credentials or a whole journal. Provider-held information may require the applicable provider procedure. Local practice remains available without the online catalogue.
+
+The limited read-only service remains distinct from disabled backend Google OAuth, community writes and personal-data uploads. New purposes, providers, logging, accounts or community functionality require reassessment. The public catalogue currently has no approved published records; technical availability is not a claim of a populated catalogue.
 
 ## Further information
 

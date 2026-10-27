@@ -1,3 +1,17 @@
+## Current disposition — owner procedure adopted and manually confirmed
+
+The owner has adopted the mailbox policy and reports actual access/Inbox/Spam
+checks,Tuesday/Friday checks scheduled,monthly review on day1 and private case
+tracking. This supersedes older "unadopted" wording below; no Gmail automation
+or agent access is necessary. LAUNCH-PROCESSING-ASSESSMENT.md documents separate
+catalogue/support/rights bases and assessment. PROVIDER-PROCESSING-2026-10-27.md
+records actual account/configuration checks, incorporated DPAs and evidence limits.
+These resolve the generic processing/operations hold for the authorized read-only
+scope. Public activation and smoke pass remain to be executed; no new approval
+required. Current local stage/AI checklists govern; historical review follows.
+
+---
+
 # Goldberg 0.11 — Privacy launch operations and retention (REVIEW DRAFT)
 
 Status: **proposed operational policy; NOT adopted, NOT legal clearance, NOT permission to enable public routes**. Reconciled October 27, 2026 from draft PR #39, head `3cdd34f62c54f607ad5182f54f3ec0283f229ce2`, against newer owner instructions and Stage 6 work. The PR was inspected, not merged. No reviews or inline review threads existed at inspection. This file is a review artifact only; do not treat its creation or an eventual merge as owner approval.

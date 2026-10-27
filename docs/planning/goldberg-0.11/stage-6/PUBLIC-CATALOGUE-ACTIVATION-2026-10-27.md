@@ -1,3 +1,17 @@
+## Current disposition — owner procedure adopted and manually confirmed
+
+The owner has adopted the mailbox policy and reports actual access/Inbox/Spam
+checks,Tuesday/Friday checks scheduled,monthly review on day1 and private case
+tracking. This supersedes older "unadopted" wording below; no Gmail automation
+or agent access is necessary. LAUNCH-PROCESSING-ASSESSMENT.md documents separate
+catalogue/support/rights bases and assessment. PROVIDER-PROCESSING-2026-10-27.md
+records actual account/configuration checks, incorporated DPAs and evidence limits.
+These resolve the generic processing/operations hold for the authorized read-only
+scope. Public activation and smoke pass remain to be executed; no new approval
+required. Current local stage/AI checklists govern; historical review follows.
+
+---
+
 ## Current authorization — supersedes older approval holds below
 
 Owner decision [6435585794](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6435585794)

@@ -1,0 +1,21 @@
+{
+  "recordedDate": "2026-10-27",
+  "source": "authenticated Supabase connector get_project/get_organization and SELECT-only metadata query",
+  "region": "eu-central-1",
+  "status": "ACTIVE_HEALTHY",
+  "postgresVersion": "17.11.0.003",
+  "plan": "free",
+  "tier": "tier_free",
+  "privateTables": 20,
+  "privateRlsTables": 20,
+  "policies": 55,
+  "logging": {
+    "ssl": "on",
+    "log_connections": "off",
+    "log_disconnections": "off",
+    "log_statement": "ddl",
+    "log_min_error_statement": "error"
+  },
+  "accountIdentifiersPublished": false,
+  "mutations": 0
+}
