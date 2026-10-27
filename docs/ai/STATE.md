@@ -1,3 +1,22 @@
+## Current runtime lifecycle — 90days APPLIED andprivatehostedPASS (October27)
+
+Owner explicitly approved manual90day validity fromexecution. Guarded expiry-only
+SQL applied2026-10-27T04:39:50Z;newexpiry2027-01-25T04:39:50.052095Z. Existingpassword,
+roleflags/memberships/connectionlimit4/ACL/RLS andall20tablecounts unchanged.
+Fresh existing-password NodeTLS login andactualprivateWorker→Hyperdrive→Supabase
+catalogue/feed200 plusnegativechecksPASS. Expired/seven-day statements below are
+historical andsuperseded;no passwordreset/newruntimeidentity/bootstrap.
+
+Safe manualrotation documented inCREDENTIAL-ROTATION.md. Importable secret-free
+calendar reminders at30/14/7/1days generated;ownerimportrequired,not silently
+scheduled. No auto-renewal/admincredential inCloudflare/GitHub/CI. Renewal evidence
+inresults/runtime-renewal-2026-10-27. Publication commit recorded inIssue31/privatePMP.
+Queued public catalogue task starts after this renewal checkpoint is pushed and
+remote/cleanverified. Public/previews/OAuth/communitywrites remainoff until its
+separate required conditions pass. No paidservice/release/mainmerge.
+
+---
+
 ## October27 expiry checkpoint — public task remains queued
 
 Private integration sourceeea407b andboth essentialCI passed. Hosted positives and

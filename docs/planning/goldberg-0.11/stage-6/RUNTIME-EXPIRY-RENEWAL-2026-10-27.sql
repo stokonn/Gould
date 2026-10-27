@@ -1,8 +1,9 @@
--- REVIEWABLE ONLY: requires owner authorization for a new runtime window.
+-- Owner-authorized manual renewal:90days from this transaction execution.
 -- Changes expiry only. Never changes password, privileges, RLS, data or billing.
 BEGIN;
 SET LOCAL lock_timeout='2s';
 SET LOCAL statement_timeout='5s';
+SET LOCAL TIME ZONE 'UTC';
 DO $guard$
 DECLARE r pg_roles;
 BEGIN
@@ -13,6 +14,6 @@ BEGIN
  OR EXISTS(SELECT 1 FROM pg_class WHERE relowner=r.oid)
  OR (SELECT enabled FROM goldberg_private.intake_control)
  THEN RAISE EXCEPTION 'Catalogue scope changed; stop without repair'; END IF;
+ EXECUTE format('ALTER ROLE %I VALID UNTIL %L',r.rolname,transaction_timestamp()+interval '90 days');
 END $guard$;
-ALTER ROLE goldberg_bff_catalogue_login VALID UNTIL '2026-11-03 04:30:00+00';
 COMMIT;

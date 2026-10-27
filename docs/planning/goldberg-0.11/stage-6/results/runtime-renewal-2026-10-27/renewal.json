@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "executedBetweenUtc": [
+    "2026-10-27 04:39:50.034489+00",
+    "2026-10-27 04:39:50.082265+00"
+  ],
+  "previousExpiry": "2026-10-27 03:00:38.53547+00",
+  "newExpiry": "2027-01-25 04:39:50.052095+00",
+  "remainingSecondsAtVerification": 7775999.907666,
+  "validityDaysFromExecution": 90,
+  "unchangedRolePrivilegesMembershipsRlsAcl": true,
+  "tableCountsUnchanged": true,
+  "tableCounts": {
+    "abuse_limits": "0",
+    "audit_events": "0",
+    "audit_head": "1",
+    "auth_challenges": "0",
+    "auth_families": "0",
+    "auth_refresh": "0",
+    "change_feed": "0",
+    "deployment_migrations": "1",
+    "idempotency_results": "0",
+    "identity_mappings": "0",
+    "intake_control": "1",
+    "principals": "0",
+    "published_entities": "0",
+    "published_revisions": "0",
+    "review_events": "0",
+    "role_grants": "0",
+    "sessions": "0",
+    "staging_probe": "1",
+    "submission_revisions": "0",
+    "submissions": "0"
+  },
+  "unchangedSecuritySnapshotSha256": "3ff4ce1ee23aa85f96e319d44f20f84f4f2c26fa90448b7885debbcadaee1b72",
+  "passwordChanged": false,
+  "operation": "guarded expiry-only ALTER ROLE;no password clause",
+  "sqlSha256": "886f2bea72c31adb6c6ab57a967130d50059c5dcd8b02b2868bad1ce7137f15a",
+  "adminCredentialExported": false,
+  "automatedRenewalInstalled": false
+}

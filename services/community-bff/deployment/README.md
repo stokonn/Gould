@@ -27,6 +27,9 @@ The deployment project builds successfully. Bundles produced from this repositor
 path differ from the earlier temporary build in module source labels;deployed
 source is compared with the exact build actually uploaded,not a different output.
 
-Existing runtime credential expired2026-10-27T03:00:38Z. Do not reset it or silently
-extend expiry. The reviewed renewal SQL is a proposal pending owner approval;
-keep public access disabled until credential andpublication conditions are verified.
+Current runtime credential policy is manual90days fromexecution. Owner-authorized
+expiry-only renewal verified2026-10-27;currentexpiry2027-01-25T04:39:50.052095Z.
+Password/grants/RLS/connectionlimit/data preserved;freshprivatehostedreadsPASS.
+See stage-6/CREDENTIAL-ROTATION.md andruntime-expiry-reminders.ics. Calendarimport
+is required;no notification service oradmincredential-based renewal job installed.
+Public routes remainoff until separately required publication conditions pass.

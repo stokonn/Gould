@@ -1,0 +1,57 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Goldberg//Stage6 credential reminders//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:goldberg-stage6-20270125T043950Z-30d
+DTSTAMP:20261027T044142Z
+DTSTART:20261226T043950Z
+DURATION:PT15M
+SUMMARY:Goldberg catalogue credential expires in 30 days
+DESCRIPTION:Manual credential review and rotation. No automated renewal.
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Review Goldberg catalogue credential rotation.
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:goldberg-stage6-20270125T043950Z-14d
+DTSTAMP:20261027T044142Z
+DTSTART:20270111T043950Z
+DURATION:PT15M
+SUMMARY:Goldberg catalogue credential expires in 14 days
+DESCRIPTION:Manual credential review and rotation. No automated renewal.
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Review Goldberg catalogue credential rotation.
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:goldberg-stage6-20270125T043950Z-7d
+DTSTAMP:20261027T044142Z
+DTSTART:20270118T043950Z
+DURATION:PT15M
+SUMMARY:Goldberg catalogue credential expires in 7 days
+DESCRIPTION:Manual credential review and rotation. No automated renewal.
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Review Goldberg catalogue credential rotation.
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:goldberg-stage6-20270125T043950Z-1d
+DTSTAMP:20261027T044142Z
+DTSTART:20270124T043950Z
+DURATION:PT15M
+SUMMARY:Goldberg catalogue credential expires in 1 days
+DESCRIPTION:Manual credential review and rotation. No automated renewal.
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Review Goldberg catalogue credential rotation.
+END:VALARM
+END:VEVENT
+END:VCALENDAR
