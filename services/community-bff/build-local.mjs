@@ -23,8 +23,13 @@ try {
   }
   await mf.dispose();mf=undefined;
  }
+ const gated=convertV4MiniflareOptions({host:'127.0.0.1',port:0,cf:false,modules:true,rootPath:out,scriptPath:file,compatibilityDate:'2026-10-25',compatibilityFlags:['nodejs_compat'],bindings:{CATALOGUE_READ_ONLY:'true'}});gated.telemetry={enabled:false};mf=new Miniflare(gated);
+ for(const [method,path,status] of [['POST','/v1/session/challenge',404],['POST','/v1/session',404],['POST','/v1/session/refresh',404],['GET','/v1/admin/queue',404],['POST','/v1/submissions',404],['GET','/v1/not-found',404],['POST','/v1/catalogue/overlay',405],['POST','/v1/catalogue/changes',405],['GET','/v1/catalogue/overlay',503],['GET','/v1/catalogue/changes',503]]){
+  const r=await mf.dispatchFetch('https://catalogue.invalid'+path,{method});assert.equal(r.status,status);assert.equal(r.headers.get('cache-control'),'no-store');assert.ok(!/password|postgres|DB_HOST|stack/i.test(await r.text()));assertions.push({catalogueOnly:true,method,path,status});
+ }
+ await mf.dispose();mf=undefined;
  const resultDir='services/community-bff/results/package-'+randomUUID();
  await mkdir(resultDir,{recursive:true});
  await writeFile(join(resultDir,'receipt.json'),JSON.stringify({bundleSha256:createHash('sha256').update(bytes).digest('hex'),bundleBytes:bytes.length,conditions:['workerd'],runtime:'local workerd; not hosted',assertions},null,2)+'\n');
- console.log('Worker package: 14 actual workerd fail-closed requests PASS; '+resultDir);
+ console.log('Worker package: 24 actual workerd fail-closed requests PASS; '+resultDir);
 }finally{await mf?.dispose();await rm(out,{recursive:true,force:true});}

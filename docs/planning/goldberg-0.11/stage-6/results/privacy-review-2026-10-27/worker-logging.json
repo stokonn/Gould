@@ -1,0 +1,29 @@
+{
+  "/settings": {
+    "observability": null,
+    "logpush": false,
+    "tail_consumers": [],
+    "returnedKeys": [
+      "placement",
+      "compatibility_date",
+      "compatibility_flags",
+      "usage_model",
+      "tags",
+      "tail_consumers",
+      "logpush",
+      "annotations",
+      "bindings"
+    ]
+  },
+  "/script-settings": {
+    "observability": null,
+    "logpush": false,
+    "tail_consumers": null,
+    "returnedKeys": [
+      "logpush",
+      "tags",
+      "tail_consumers",
+      "observability"
+    ]
+  }
+}

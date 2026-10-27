@@ -1,3 +1,36 @@
+## Current Stage 6 — privacy notice ready for owner review; public routes held
+
+Purpose: finish the read-only catalogue boundary and an accurate 0.11 privacy
+notice while preserving personal practice data and the existing cloud database.
+Scope: existing Worker/Hyperdrive/Supabase, legal documentation, bundled Android
+notice and CZ/EN legal references. No Android release or main merge.
+
+- [x] Runtime renewed manually for 90 days; expiry January25,2027 04:39:50UTC.
+  Password, privileges, RLS, memberships, four-connection limit and data unchanged.
+  No automatic renewal/admin credential in Cloudflare or GitHub.
+- [x] Deployed CATALOGUE_READ_ONLY=true privately. Actual catalogue/feed200;
+  OAuth/admin/submission404, method405, cursor400, unknown404; caller403.
+  Focused Fetch12 and actual workerd24 PASS. No full local regression rerun.
+- [x] Official privacy/support contact selected by owner: stokonn.us@gmail.com.
+- [x] Complete 0.11 notice in docs/PRIVACY.md, identical Android legal asset and
+  updated English/Czech summaries. Local Google profile versus disabled backend
+  OAuth, format5 backups/recovery and provider-controlled logging are distinguished.
+- [x] Localization951 resources PASS; debug build/lint PASS. Review APK contains
+  exact notice; trusted53ef signer/package/version/ZIP/icons/secret scan PASS.
+  New native/UI screenshots not executed; prior native evidence is historical.
+- [ ] Owner approval of exact notice and the unresolved items in
+  docs/LEGAL-REVIEW-0.11.md: operator/basis details, provider retention/transfers,
+  support-mail retention/deletion and rights-handling procedure.
+- [ ] Public route activation and actual public HTTPS verification. NOT executed.
+  Public/previews/customdomains remain off; no unapproved records published.
+
+Notice SHA256: b76e3479ccc2f4054302ad7a738406440c32cb0ab4420b283b77b8b3fa979759.
+Current report: PUBLIC-CATALOGUE-ACTIVATION-2026-10-27.md. Evidence under
+results/privacy-review-2026-10-27 and results/public-catalogue-candidate-2026-10-27.
+Stage6 remains IN PROGRESS. Publication commit recorded in Issue31/private PMP.
+
+---
+
 ## Current runtime lifecycle — 90days APPLIED andprivatehostedPASS (October27)
 
 Owner explicitly approved manual90day validity fromexecution. Guarded expiry-only

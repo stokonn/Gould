@@ -1,85 +1,88 @@
 # Catalogue runtime credential lifecycle
 
-Policy:manual owner-authorized renewal gives **90 days from execution**. The
-renewal SQL uses the transaction timestamp in UTC,not a hard-coded date. It changes
-expiry only. It must not change the password,role permissions,RLS,memberships,
-connection limit,data or billing. The existing role owns no objects,has no elevated
-flags or inherited memberships,and retains four connections plus catalogue-only
-SELECT/row-lock privileges. A failed guard stops without repairing permissions.
+An owner-authorized manual renewal gives **90 days from execution**. The renewal
+SQL uses the transaction timestamp in UTC. It changes expiry only; it never
+changes the password, privileges, RLS, memberships, four-connection limit, data or
+billing. A failed guard stops without repairing permissions.
 
-Current expiry:2027-01-25T04:39:50.052095Z. Actual expiry-only renewal,unchanged
-security/counts,and fresh existing-password/hosted connectivity evidence are in
-results/runtime-renewal-2026-10-27. Earlier six-hour/seven-day proposals are history.
+Current expiry: **2027-01-25T04:39:50.052095Z**. Renewal, unchanged security/table
+counts, fresh authentication with the existing password and actual private
+Worker connectivity are recorded in `results/runtime-renewal-2026-10-27`.
+Earlier six-hour/seven-day windows are historical. Do not replay the original
+one-time provisioner or bootstrap an existing role.
 
 ## Advance reminders
 
-Import runtime-expiry-reminders.ics into an owner-controlled calendar. It contains
-DISPLAY reminders at30,14,7 and1 day before the verified expiry:December26,2026;
-January11,18 and24,2027,at04:39:50UTC. Calendar software displays local time.
-The file is generated andvalidated;**no calendar integration or notification
-service has been installed**. Import is required to receive reminders. No emails,
-third-party messages or scheduler were activated by this work.
+Import `runtime-expiry-reminders.ics` into an owner-controlled calendar. It has
+DISPLAY reminders 30, 14, 7 and 1 day before expiry: December 26, 2026, and January
+11, 18 and 24, 2027, at 04:39:50 UTC. Calendar software displays local time.
+**The file is generated; import is required. No calendar integration, notification
+service or scheduler was installed, and no message was sent to another person.**
 
-- 30days:review expiry,owner availability,Free status,backup custody androtation need.
-- 14days:prepare a confidential rotation window andverify the exact Hyperdrive/role.
-- 7days:perform an explicitly authorized rotation andfresh hosted verification.
-- 1day:escalate an unfinished rotation;keep failed/unverified access disabled.
-- Expiry:fail closed. Do not bootstrap,reset passwords or silently renew to hide it.
+- 30 days: review expiry, owner availability, Free status and backup custody.
+- 14 days: prepare the confidential rotation window and verify the exact role and
+  Hyperdrive configuration.
+- 7 days: perform an explicitly authorized rotation and fresh hosted verification.
+- 1 day: escalate unfinished work; keep failed or unverified access disabled.
 
-After every approved renewal/rotation,read back the actual server expiry,regenerate
-these reminder dates andreplace prior calendar events to avoid stale reminders.
-Read-only reminders may use only non-secret dates/role identifiers. They must not
-connect with administrator credentials or execute renewal SQL.
+Expiry blocks new PostgreSQL password authentication. Existing authenticated
+pooled sessions may survive: `VALID UNTIL` does not terminate them. Keep overdue
+public access disabled and close only identified runtime sessions/restart the
+approved pool during authorized maintenance. Do not bootstrap, reset passwords
+or silently renew to conceal an overdue lifecycle.
+
+After each authorized renewal/rotation, read back the server expiry and regenerate
+calendar dates. Replace previous events to avoid stale reminders. A reminder may
+use only non-secret dates/role identifiers; it must not connect as administrator
+or execute renewal SQL.
 
 ## Manual expiry-only renewal
 
-1. Owner authorizes the new window. Review RUNTIME-EXPIRY-RENEWAL-2026-10-27.sql.
-2. From the trusted host,use the protected0600 PostgreSQL service andverify-full
-   TLS. Keep its admin password inside libpq. Never put it in CLI arguments,
-   shell history,SQL tool transcripts,Cloudflare,GitHub,CI artifacts orsource.
-3. Run the guarded transaction once. On uncertain COMMIT outcome,inspect metadata
-   first;do not automatically replay andmove the expiry again.
-4. Compare role settings/memberships/ACL/RLS andall20 table counts before/after;
-   verify expiry is execution+90days andconnection limit remains4.
-5. Verify a **fresh** connection with the existing protected runtime password,
-   then actual private Worker→Hyperdrive→Supabase positive/negative requests.
-6. Record only sanitized timestamps,counts,hashes,statuses andresource identifiers;
-   update checkpoints/reminders. No password/verifier/connection string evidence.
+1. Obtain owner authorization and review `RUNTIME-EXPIRY-RENEWAL-2026-10-27.sql`.
+2. On the trusted host, use the owned 0600 PostgreSQL service with `verify-full`
+   TLS. Keep its admin password inside libpq. Never put it in arguments, history,
+   transcripts, Cloudflare, GitHub, CI artifacts or source.
+3. Execute the guarded transaction once. If COMMIT has an uncertain outcome,
+   inspect metadata first; do not automatically replay and move expiry again.
+4. Compare role settings, memberships, ACLs, RLS and all 20 table counts. Verify
+   expiry is execution + 90 days and the connection limit remains four.
+5. Establish a fresh connection using the existing protected runtime password,
+   then test the actual private Worker → Hyperdrive → Supabase positive and
+   negative paths. Do not treat a previously pooled session as fresh password proof.
+6. Record only sanitized dates, counts, hashes, statuses and resource identifiers;
+   update checkpoints and reminders. Never record passwords/verifiers/connection
+   strings as evidence.
 
-## Future password rotation — separate owner authorization
+## Future password rotation — separate authorization
 
-Expiry renewal is not password rotation. Routine renewal must preserve the
-password;rotation must be explicitly authorized and performed manually.
+Expiry renewal is not password rotation. The present renewal preserves the password.
 
-1. Identify only goldberg_bff_catalogue_login andits exact Hyperdrive configuration.
-   Arrange a bounded maintenance window;keep public reads disabled until verified.
-   Preserve offline Android functionality andexisting backups/records.
-2. Generate a new high-entropy password inside a new owned0700 local custody
-   directory. Save with exclusive0600 creation. Retain uncertain-outcome recovery
-   material;never overwrite an existing envelope orprint values.
-3. On the protected trusted host,prepare the SCRAM verifier in memory with the
-   established libpq helper. Apply an explicitly reviewed,password-only/expiry
-   transaction. Never send plaintext passwords in SQL. Preserve flags,connection
-   limit,memberships,grants,RLS andall data;do not rerun the bootstrap/provisioner.
-4. Update only Hyperdrive origin password through the supported CLI protected
-   @file input. Keep exact user/host/database,approvedCA,verify-full,cacheoff and
-   Free limits unchanged. The Worker retains only cursor/IP keys;it receives no
-   PostgreSQL admin credential. Never log the request body orsecret file contents.
-5. Restart only this Hyperdrive pool through its supported command so verification
-   uses the new credential rather than an old pooled connection. Check one fresh
-   new-password login,least-privilege denials,actual hosted catalogue responses,
-   redaction,unchanged data andprivate/public boundaries. Do not repeatedly retry
-   authentication ordisable certificate verification on failure.
-6. On failure,keep access disabled andrepair the authorized delivery path. Do not
-   automatically restore a retired/possibly compromised password,raise privileges,
-   add paid fallback ordelete/recreate data. Preserve confidential recovery material
-   until outcome is certain. Re-enable only separately approved public read scope.
-7. After successful cutover andretired-session verification,remove obsolete local
-   plaintext/verifier envelopes through an explicitly scoped custody cleanup;
-   preserve encrypted data backups andtheir independent keys. Record new expiry
-   andregenerate reminders. Publish only sanitized receipts.
+1. Identify `goldberg_bff_catalogue_login` and its exact Hyperdrive configuration.
+   Arrange an authorized maintenance window; keep public reads disabled until
+   verification succeeds. Preserve Android offline behavior and existing backups.
+2. Generate a high-entropy password inside new owned 0700 local custody. Save it
+   with exclusive 0600 creation. Preserve recovery material on uncertain outcomes;
+   never overwrite an existing envelope or print values.
+3. Use the established libpq helper to prepare SCRAM in memory. Verify statement
+   logging/redaction before the reviewed password/expiry transaction; stop if the
+   credential/verifier channel is not confidential. Never send plaintext passwords
+   in SQL. Preserve flags, connection limit, memberships, grants, RLS and data.
+4. Update only Hyperdrive's origin password using supported protected `@file` input.
+   Preserve user, host, database, approved CA, `verify-full`, cache-off and Free
+   limits. Worker secrets remain cursor/IP keys; no DB admin credential is uploaded.
+5. Restart only this Hyperdrive pool using its supported command. Verify a fresh
+   login with the new password, least-privilege denials, actual hosted catalogue
+   responses, redaction, data and private/public boundaries. Do not repeatedly
+   retry authentication or disable TLS verification on failure.
+6. On failure, leave access disabled and repair the authorized delivery path. Do
+   not automatically restore a retired/possibly compromised password, raise
+   privileges, buy fallback or recreate data. Preserve confidential recovery
+   material until the outcome is certain. Re-enable only separately approved scope.
+7. After successful cutover and retired-session verification, remove obsolete
+   plaintext/verifier envelopes through scoped custody cleanup. Preserve encrypted
+   data backups and their independent keys. Record expiry and regenerate reminders.
 
 **No automated renewal is configured.** Administrator credentials remain solely
-in the owner-protected local PostgreSQL service. Neither Cloudflare norGitHub stores
-an administrator password for a renewal job. Importable calendar reminders have
-no credential orrenewal capability.
+in the owner's protected local PostgreSQL service. Cloudflare and GitHub do not
+store a database administrator credential for renewal. Calendar reminders have no
+credential or renewal capability.

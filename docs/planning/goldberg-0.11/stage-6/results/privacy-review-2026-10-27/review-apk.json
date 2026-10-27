@@ -1,0 +1,21 @@
+{
+  "package": "com.opus.piano",
+  "version": "0.11-dev",
+  "versionCode": 12,
+  "targetSdk": 36,
+  "artifact": "/home/stokonn/Projects/Goldberg-Stage6-Cloud/.gradle/stage6-delivery/Goldberg-0.11-dev-stage6-privacy-review.apk",
+  "apkSha256": "11994c9da7cd4bfd38db3187b34db017b0a5bb37f7181750b97fc4a0f0ad0138",
+  "signingSha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+  "previousArtifactPreserved": true,
+  "previousApkSha256": "86fc13739a9bcfbb9896e6bb146310afda81dd815d5dcad92412f75efb957f24",
+  "noticeSha256": "b76e3479ccc2f4054302ad7a738406440c32cb0ab4420b283b77b8b3fa979759",
+  "packagedNoticeMatchesDocs": true,
+  "unchangedPackagedIcons": 3,
+  "zipVerified": true,
+  "actualRuntimeSecretsAbsent": true,
+  "newNativeOrPhysicalExecution": false,
+  "androidSourceChanges": "privacy asset and two localized string resources only",
+  "priorNativeEvidence": "historical;not claimed as exact new source",
+  "automaticAndroidBackupDisabled": true,
+  "debuggable": true
+}

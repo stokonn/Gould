@@ -78,3 +78,16 @@ test('Hyperdrive transport accepts only the explicit private binding and never f
  for(const connectionString of ['postgresql://synthetic:synthetic@evil.invalid/postgres','postgresql://synthetic:synthetic@hyperdrive.local.evil.invalid/postgres','postgresql://synthetic:synthetic@hyperdrive.local/one/two','postgresql://synthetic:synthetic@hyperdrive.local/postgres?host=evil.invalid','invalid'])assert.throws(()=>runtimeDatabaseOptions({...env,CATALOGUE_DB:{connectionString}}));
  assert.throws(()=>runtimeDatabaseOptions({DB_TRANSPORT:'hyperdrive'}));assert.throws(()=>runtimeDatabaseOptions({DB_TRANSPORT:'unknown'}));
 });
+
+
+test('catalogue-only Worker rejects private and write routes before reading credentials or opening a database',async()=>{
+ const {default:worker}=await import('../worker.mjs');
+ const env=new Proxy({CATALOGUE_READ_ONLY:'true'},{get(target,key){if(key==='CATALOGUE_READ_ONLY')return target[key];throw Error('must not access private configuration');}});
+ for(const path of ['/v1/session/challenge','/v1/session','/v1/session/refresh','/v1/admin/queue','/v1/submissions','/v1/catalogue/overlay/','/v1/catalogue/%6fverlay']){
+  const r=await worker.fetch(new Request('https://catalogue.invalid'+path,{method:'POST',body:'private-input-must-not-be-reflected'}),env,{});assert.equal(r.status,404);assert.equal(r.headers.get('cache-control'),'no-store');assert.ok(!(await r.text()).includes('private-input'));
+ }
+ for(const path of ['/v1/catalogue/overlay','/v1/catalogue/changes']){
+  const denied=await worker.fetch(new Request('https://catalogue.invalid'+path,{method:'POST'}),env,{});assert.equal(denied.status,405);assert.equal(denied.headers.get('allow'),'GET');
+  const read=await worker.fetch(new Request('https://catalogue.invalid'+path),{CATALOGUE_READ_ONLY:'true'},{});assert.equal(read.status,503);
+ }
+});

@@ -1,3 +1,5 @@
+> Historical 0.10.1 audit. The 0.11 cloud-catalogue review is in [LEGAL-REVIEW-0.11.md](LEGAL-REVIEW-0.11.md); its notice is pending owner approval.
+
 # Legal, privacy and licensing audit — Goldberg 0.10.1
 
 Technical applicability review, 2026-10-17; source/license verification refreshed 2026-10-18. This is not legal certification. Scope is the Android application and repository distribution; no hosted journal service was found. Owner/legal review remains necessary for distribution-specific obligations.

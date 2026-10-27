@@ -1,0 +1,13 @@
+{
+  "noticeSha256": "b76e3479ccc2f4054302ad7a738406440c32cb0ab4420b283b77b8b3fa979759",
+  "docsAndAndroidAssetIdentical": true,
+  "localizationResources": 951,
+  "localization": "PASS",
+  "debugBuildAndLint": "PASS",
+  "finalPackage": "PASS",
+  "currentNativeExecution": "NOT EXECUTED",
+  "priorApkPreserved": true,
+  "publicRoutesEnabled": false,
+  "ownerNoticeApproval": "PENDING",
+  "privacyAndSupportContact": "stokonn.us@gmail.com"
+}

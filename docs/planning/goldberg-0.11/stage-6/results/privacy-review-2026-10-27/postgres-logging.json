@@ -1,0 +1,10 @@
+{
+  "databaseSettings": {
+    "log_connections": "off",
+    "log_disconnections": "off",
+    "log_min_error_statement": "error",
+    "log_statement": "ddl"
+  },
+  "providerPlatformRetention": "not established by these PostgreSQL settings",
+  "changes": 0
+}

@@ -1,4 +1,5 @@
 import pg from 'pg';
+import {catalogueBoundary} from './catalogue-boundary.mjs';
 import {createFetchHandler} from './fetch.mjs';
 import {createBffAdapter} from './adapter.mjs';
 import {runtimeDatabaseOptions,requestConnections} from './database.mjs';
@@ -16,6 +17,7 @@ const handler=createFetchHandler({createAdapter:async({env,signal})=>{
  }catch{await scope.close();throw new Error('BFF unavailable');}
 }});
 export default {fetch(request,env,ctx){
+ const denied=catalogueBoundary(request,env);if(denied)return denied;
  if(env.GOOGLE_OAUTH_ENABLED!=='true'&&request.method==='POST'&&['/v1/session/challenge','/v1/session','/v1/session/refresh'].includes(new URL(request.url).pathname)){
   const requestId=crypto.randomUUID();
   return new Response(JSON.stringify({schemaVersion:1,error:{code:'service_unavailable',message:'Service unavailable',requestId}}),{status:503,headers:{'Content-Type':'application/json','Cache-Control':'no-store','X-Request-ID':requestId}});
