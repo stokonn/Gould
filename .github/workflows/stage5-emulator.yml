@@ -63,12 +63,13 @@ on:
   workflow_dispatch:
     inputs:
       verification_scope:
-        description: 'Use acceptance only when the identical Android source already passed full instrumentation'
+        description: 'all: full suite+upgrade; acceptance: identical-source upgrade; simplifier: focused follow-up to retained full run'
         type: choice
         default: all
         options:
           - all
           - acceptance
+          - simplifier
 permissions:
   contents: read
 concurrency:
@@ -80,6 +81,8 @@ jobs:
     name: "5.10 instrumentation — API 36 emulator"
     runs-on: ubuntu-24.04
     timeout-minutes: 150
+    env:
+      CI_VERIFICATION_SCOPE: ${{ inputs.verification_scope }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
@@ -111,8 +114,13 @@ jobs:
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
-      - name: Build app, JVM tests and instrumentation APKs
-        run: ./gradlew --no-daemon --max-workers=1 assembleDebug testDebugUnitTest assembleDebugAndroidTest
+      - name: Build app and instrumentation APKs (full mode also runs JVM tests)
+        run: |
+          if [ "$CI_VERIFICATION_SCOPE" = simplifier ]; then
+            ./gradlew --no-daemon --max-workers=1 assembleDebug assembleDebugAndroidTest
+          else
+            ./gradlew --no-daemon --max-workers=1 assembleDebug testDebugUnitTest assembleDebugAndroidTest
+          fi
       - name: Run full instrumentation suite on the emulator
         uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
         with:
@@ -155,6 +163,7 @@ jobs:
           retention-days: 30
 
   stage5-acceptance:
+    if: inputs.verification_scope != 'simplifier'
     name: "5.11 acceptance subset — API 36 emulator"
     runs-on: ubuntu-24.04
     timeout-minutes: 120

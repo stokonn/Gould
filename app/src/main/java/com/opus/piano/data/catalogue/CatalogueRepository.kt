@@ -30,7 +30,7 @@ class CatalogueRepository(private val db: CatalogueDatabase) {
         val source=CatalogueSource(java.util.UUID.randomUUID().toString(),"legacy-local","$kind:$external",digest,digest,
             java.time.Instant.now().toString(),"local:retained-catalogue-snapshot")
         addSource(source)
-        val rights=CatalogueRights(java.util.UUID.randomUUID().toString(),"unknown","","Retained local metadata; original provider response unavailable","unreviewed")
+        val rights=CatalogueRights(java.util.UUID.randomUUID().toString(),"unknown","","Retained local metadata; original provider response unavailable","unknown")
         addRights(rights)
         row.keys().forEach {field->if(field!="id")addAssertion(CatalogueAssertion(java.util.UUID.randomUUID().toString(),id,field,
             org.json.JSONObject().put("value",row.get(field)).put("language","und").toString(),source.id,rights.id,false))}

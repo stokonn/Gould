@@ -1,0 +1,19 @@
+{
+  "previousReceiptSha256": "52b3b968685770481118b80f01abb6ddad3e510023c9d08c8120377b4467b6d9",
+  "importedSourceCommit": "9b8266e14a07bed4a84385c1068ded7b3bb1e0b1",
+  "reason": "Preserve all original source/raw pins while adding previously accepted Stage8 raw evidence attributes and integration log exemptions",
+  "sources": {
+    ".gitattributes": {
+      "previousFile": "gitattributes.preintegration",
+      "currentSha256": "c4d6c4527d09588b8ca25986e7f9ce7fd6071bcd4cc67c6372aa3323cf75f83e"
+    },
+    "scripts/stage6/verify_evidence.py": {
+      "previousFile": "verifier.preintegration",
+      "currentSha256": "24df56c6a1cafb64b55512f84bcafed083443c4303618da16b150da4933e0965"
+    }
+  },
+  "attributeInputs": {
+    "gitattributes.stage8": "1ecd76c2ee8e80f6f302af2d25a10cc99727c074985134e7f561e5aebc13dbfe",
+    "gitattributes.additions": "0a892d816d47462cabeaba6d6854c289f276377728c4fce8d4d801a09759ca0b"
+  }
+}

@@ -1,33 +1,39 @@
-## Database Simplifier — implemented and host-verified; native acceptance pending
+## Database Simplifier — correction checkpoint; final acceptance pending
 
-Purpose: make Library and Discover use one canonical catalogue,while preserving
-personal practice/history/drafts/backups and all original legacy metadata.
-Branch feature/goldberg-0.11-database-simplifier from verified e05c692 baseline.
+Branch feature/goldberg-0.11-database-simplifier; implementation405cf90 from
+verified integrated e05c692. No reset/clean/discard or physical-device operation.
 
-- [x] Stage6public launch and integrated348JVM baseline verified/pushed; dedicated branch created.
-- [x] Library catalogue rows/detail now use the existing Discover repository/store,
-  provider identities and pagination; personal Library rows remain journal-owned.
-- [x] Local compatibility import preserves original response bytes/metadata and
-  all personal rows. Cache replay retains hash/license/source and splits before
-  adapter limits; unbacked normalized rows retain unknown/unreviewed rights.
-  Atomic per-response checkpoint permits idempotent retries; no network/Room
-  schema change/destructive migration or original-row deletion.
-- [x] Frozen-source host gates PASS:348JVM/0failures/errors/skips,debug APK,
-  testAPK compilation and lint0errors. Exact counts/task/artifact records in results/.
-  Earlier FIR lint crash retained; final run passed without disabling checks.
-- [ ] Four realSQLite/native preservation/idempotence/paging/retry cases and one
-  shared production-row/detail UI test,light/dark/2x component frames:written,
-  compiled successfully; actual native execution pending.
-- [ ] Final host/CI,seeded upgrade/native acceptance,stable APK identity/signing,
-  docs/Wiki/Project/release publication remain pending. No newRC.
+- [x] Host348JVM/0fail/errors/skips,APK/testAPK/lint0errors135warnings PASS.
+- [x] Existing405cf90 CIbackendSUCCESS;quality build/JVM/lint PASS but historical
+  tooling guard failed on integrated.gitattributes. Original pins/receipts retained;
+  reviewed integration evolution now binds both old snapshots and exact additive
+  raw-evidence attributes. Local historical-evidence verifier PASS.
+- [x] API36full native EXECUTED:217cases,204PASS,2fail,0errors,11existing skips.
+  Actual new sharedLibrary UIcase PASS;light/dark/2x frames retained. Light1x and
+  Dark2x component frames inspected;launcher failure frame identified as after
+  ActivityScenario unwind,not evidence of app appearance at failure.
+- [x] Same-source seeded0.10.1schema8→10 upgrade/offline/network/restart acceptance
+  PASS:37sessions,alloriginalrows/preferences preserved,integrity/FK PASS.
+- [x] Fix concrete rights-state mismatch (supported unknown state;guard retained).
+  Editorial assertion now uses recorded providerID rather than first similar
+  local snapshot. Corrected app/test compilation and lint PASS,35tasks/12executed.
+- [ ] Focused six-case native follow-up and corrected quality CI pending. Reuse
+  passed upgrade and200unaffected native cases/11documented skips from initial run.
+  Focused mode is explicit;not reported as another full instrumentation pass.
+- [x] Interrupted signing command had not executed;original secret-free init
+  reviewed/preserved. Its later projectsEvaluated hook produced an UNSIGNED APK;
+  build/lint passed,not signing. Unsigned bytes preserved/hash-verified. Correct
+  finalizeDsl init reviewed;final signed build/certificate verification pending.
+- [ ] Stable0.11/code13/com.opus.piano,non-debuggable,trusted53efcertificate,
+  source/artifactidentity,docs/Wiki/Project/commit/push/tag/Release gates pending.
 
-Source checkpoint committed/pushed before final CI/native dispatch; receipt in Issue31.
-Never infer final native acceptance from compilation.
-
+Raw initial XML/upgrade/frames preserved in results/initial-ci-raw.zip;summary in
+initial-ci-results.json. No newRC,paid service,backendOAuth/communitywrites or
+personal-data migration. Standing publication authorization remains valid.
 
 ---
 
- Verified integrated Stage6 baseline — October27
+erified integrated Stage6 baseline — October27
 
 - [x] Existing public catalogue backend10/10HTTPS/security requests passed once;
   database/security postflight unchanged,privacy/operational prerequisites recorded.

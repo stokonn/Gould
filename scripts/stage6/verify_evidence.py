@@ -13,15 +13,29 @@ sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 EVOLUTION = ROOT / 'docs/planning/goldberg-0.11/stage-6/results/final-source-evolution'
 evolution = json.loads((EVOLUTION/'receipt.json').read_text())
 assert set(evolution) == {'.gitattributes', 'scripts/stage6/verify_evidence.py'}
+INTEGRATION = ROOT / 'docs/planning/goldberg-0.11/stage-6/results/integration-tooling-evolution'
+integration = json.loads((INTEGRATION/'receipt.json').read_text())
+assert sha(EVOLUTION/'receipt.json') == integration['previousReceiptSha256']
+for name, entry in integration['sources'].items():
+    assert name in evolution
+    assert sha(INTEGRATION/entry['previousFile']) == evolution[name]['currentSha256']
+    assert sha(ROOT/name) == entry['currentSha256'], 'Reviewed integration tooling changed: ' + name
 for name, expected in record['sourceSha256'].items():
     if name in evolution:
         entry = evolution[name]
         assert sha(EVOLUTION/entry['historicalFile']) == expected, 'Historical source changed: ' + name
-        assert sha(ROOT/name) == entry['currentSha256'], 'Reviewed tooling source changed: ' + name
+        assert name in integration['sources'], 'Unreviewed tooling evolution: ' + name
     else:
         assert sha(ROOT/name) == expected, 'Source differs from verified acceptance: ' + name
 # The attribute delta can exempt only the new byte-exact raw evidence paths.
-assert (ROOT/'.gitattributes').read_bytes() == (EVOLUTION/'gitattributes.original').read_bytes() + b"\n# Preserve byte-exact BFF raw logs and TAP failure evidence.\nservices/community-bff/results/*/*.log -whitespace\nservices/community-bff/results/*/*.tap -whitespace\n"
+original = (EVOLUTION/'gitattributes.original').read_bytes() + b"\n# Preserve byte-exact BFF raw logs and TAP failure evidence.\nservices/community-bff/results/*/*.log -whitespace\nservices/community-bff/results/*/*.tap -whitespace\n"
+assert (INTEGRATION/'gitattributes.preintegration').read_bytes() == original
+for filename in ['gitattributes.stage8','gitattributes.additions']:
+    assert sha(INTEGRATION/filename) == integration['attributeInputs'][filename]
+    for line in (INTEGRATION/filename).read_text().splitlines():
+        preserved_crlf = filename == 'gitattributes.stage8' and '.xml' in line and line.endswith(' -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol')
+        assert not line.strip() or line.startswith('#') or line.endswith(' -whitespace') or preserved_crlf, 'Only raw whitespace rules may evolve'
+assert (ROOT/'.gitattributes').read_bytes() == original + b'\n' + (INTEGRATION/'gitattributes.stage8').read_bytes() + (INTEGRATION/'gitattributes.additions').read_bytes()
 for name, expected in record['artifacts'].items():
     assert sha(BASE/name) == expected, 'Raw evidence changed: ' + name
 suites = sorted(BASE.glob('TEST-*.xml'))

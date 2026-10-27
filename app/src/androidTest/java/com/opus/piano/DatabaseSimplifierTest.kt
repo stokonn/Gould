@@ -78,7 +78,7 @@ class DatabaseSimplifierTest {
         val detail=(discover.detail(row.id) as CatalogueAccess.Available).value!!
         assertEquals("Older Work",detail.entity.title)
         assertTrue(detail.identities.all {it.reviewState=="observed"})
-        assertTrue(detail.assertions.all {it.rights.license=="unknown" && it.rights.reviewState=="unreviewed"})
+        assertTrue(detail.assertions.all {it.rights.license=="unknown" && it.rights.reviewState=="unknown"})
         assertTrue(detail.relationships.any {it.second.title=="Older Artist"})
         assertEquals(before,dump(db))
     }}

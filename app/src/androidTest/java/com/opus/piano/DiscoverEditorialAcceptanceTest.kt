@@ -297,9 +297,14 @@ class DiscoverEditorialAcceptanceTest {
                 assertEquals(evidenceBefore,after.assertions.map {it.assertion.toString()+it.source.toString()+it.rights.toString()})
                 export("assertion-preservation.json",JSONObject().put("before",evidenceBefore.size).put("after",after.assertions.size).put("unchanged",true).toString().toByteArray())
             }
-            val work=repository.automaticSearch("Goldberg Variations",SearchFilter("works"),"en",false).let {flow->
-                var last:DiscoverSearch?=null;flow.collect {last=it};last!!.page.items.first {it.title.contains("Goldberg",true)}
-            }
+            // The shared catalogue also contains preserved, unreviewed journal snapshots.
+            // This provider-metadata assertion must target the recorded provider identity,
+            // not whichever similarly titled local work ranks first.
+            val fixtureWork=JSONObject(fixture("goldberg").toString(Charsets.UTF_8)).getJSONArray("results")
+            val external=(0 until fixtureWork.length()).map {fixtureWork.getJSONObject(it)}
+                .first {it.optJSONObject("work")!=null}.getJSONObject("work").getString("id")
+            val canonical=(app.localCatalogue.access {it.providerIdentity("openopus","work",external)} as CatalogueAccess.Available).value!!
+            val work=(repository.detail(canonical.entityId) as CatalogueAccess.Available).value!!.entity
             for((size,pixels) in listOf("standard" to "824x1830","small" to "720x1280")) {
                 shell("wm size $pixels");shell("wm density 320")
                 for((locale,mode,font) in listOf(Triple("en","Light","1.0"),Triple("en","Dark","2.0"),Triple("cs","Light","2.0"),Triple("cs","Dark","1.0"))) {

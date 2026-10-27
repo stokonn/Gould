@@ -28,7 +28,18 @@ collect() {
 }
 trap collect EXIT
 set -o pipefail
-./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest 2>&1 | tee stage5-ci-results/instrumentation-gradle.log
+case "${CI_VERIFICATION_SCOPE:-all}" in
+  simplifier)
+    CLASSES='com.opus.piano.DatabaseSimplifierTest,com.opus.piano.DatabaseSimplifierUiTest,com.opus.piano.DiscoverEditorialAcceptanceTest'
+    echo "Focused follow-up: $CLASSES; prior full-run and upgrade evidence retained separately" | tee stage5-ci-results/instrumentation-scope.txt
+    ./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest "-Pandroid.testInstrumentationRunnerArguments.class=$CLASSES" 2>&1 | tee stage5-ci-results/instrumentation-gradle.log
+    ;;
+  all|stage5|stage7b|stage7b-acceptance)
+    echo 'Full connected suite' | tee stage5-ci-results/instrumentation-scope.txt
+    ./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest 2>&1 | tee stage5-ci-results/instrumentation-gradle.log
+    ;;
+  *) echo 'Unsupported verification scope'; exit 1 ;;
+esac
 # A real UI smoke artifact, not proof of the Admin visual acceptance matrix.
 # The connected-test runner removes its installed app during suite teardown.
 # Restore the same built APK; keep signature compatibility strict with install -r.

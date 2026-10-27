@@ -1,0 +1,7 @@
+
+# Preserve imported, already-verified raw CI/native evidence byte-for-byte.
+docs/planning/goldberg-0.11/stage-5/results/** -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7a/results/** -whitespace
+docs/planning/goldberg-0.11/stage-8/discover-repair/ci-*/** -whitespace
+docs/planning/goldberg-0.11/stage-8/discover-repair/host-results/** -whitespace
+docs/planning/goldberg-0.11/stage-6/results/integrated-baseline-2026-10-27/host-gradle.log -whitespace

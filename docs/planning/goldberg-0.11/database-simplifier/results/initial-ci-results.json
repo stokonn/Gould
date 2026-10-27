@@ -1,0 +1,36 @@
+{
+  "source": "405cf902cbfbaedba84f6b63271d08289069fbec",
+  "nativeRun": 40486014943,
+  "native": {
+    "tests": 217,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 11
+  },
+  "nativePassed": 204,
+  "failures": [
+    {
+      "class": "com.opus.piano.DatabaseSimplifierTest",
+      "test": "normalizedMetadataWithoutResponseRemainsVisibleWithoutInventedRights",
+      "failure": "java.util.NoSuchElementException: List is empty."
+    },
+    {
+      "class": "com.opus.piano.DiscoverEditorialAcceptanceTest",
+      "test": "automaticSearchAndEditorialJourneysWithPreservedEvidence",
+      "failure": "java.lang.AssertionError: Verified genre not localized\n\n\n\n\n\n\n\n\n\n\nBack\n\nGoldberg Variations, BWV.988\nComposition\n\nSources & credits\n\nAdvanced catalogue tools\n\n\n\n\n\n\n"
+    }
+  ],
+  "upgrade": "PASS: originalRowsUnchanged/preferencesUnchanged/offlineVerified/37sessions/schema8to10/foreignKeys pass; process restart integrity pass",
+  "qualityRun": 40486014855,
+  "quality": "build,JVM,instrumentation compilation,lint PASS; evidence guard failed stale .gitattributes pin",
+  "backendRun": 40486014854,
+  "backend": "SUCCESS",
+  "rawZipSha256": "0afc8afdabd58e1c086ff783202e932eedd6e8e1970cbfe2be6f08f741b09cd6",
+  "screenshotsInspected": [
+    "simplifier-Light-1.png",
+    "simplifier-Dark-2.png",
+    "discover-FAIL.png"
+  ],
+  "failureFrameLimit": "discover-FAIL is launcher after ActivityScenario unwind; actual assertion tree is in raw XML",
+  "pending": "Correct supported rights state and target source identity; focused native follow-up and corrected evidence guard CI required"
+}
