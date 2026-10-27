@@ -95,6 +95,47 @@ class ControllerTest(unittest.TestCase):
             stack.enter_context(contextlib.redirect_stdout(io.StringIO()))
             return module.main()
 
+    def assert_required_registration_blocks(self, missing_path, disabled=False):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            rows = [{"id": i, "name": path, "path": path, "state": "active"}
+                    for i, path in enumerate(sorted(final.REQUIRED))]
+            if disabled:
+                next(w for w in rows if w["path"] == missing_path)["state"] = "disabled_manually"
+            else:
+                rows = [w for w in rows if w["path"] != missing_path]
+            # Include a removable registration: it must never be disabled here.
+            rows.append({"id": 99, "name": "obsolete", "path": ".github/workflows/old.yml", "state": "active"})
+            calls = Mock(side_effect=[result("", 1), result(URL + "\n")])
+            api = Mock(side_effect=[REPO, {"commit": {"sha": SHA}}])
+            forbidden = Mock(side_effect=AssertionError("reached past required registration gate"))
+            self.assertEqual(1, self.run_controller(final, root, api, calls,
+                definitions=Mock(return_value=final.REQUIRED), inventory=Mock(return_value=rows),
+                pages=forbidden, tag_identity=forbidden, write_backup_manifest=forbidden))
+            receipt = json.loads(next(root.glob(".gradle/final-maintenance-administration/run-*/report.json")).read_text())
+            self.assertIn(missing_path, receipt["error"])
+            self.assertIn("missing or inactive", receipt["error"])
+            self.assertEqual(rows, receipt["workflows_before"])
+            self.assertEqual([], receipt["disabled_workflows"])
+            self.assertEqual([], receipt["deleted_branches"])
+            self.assertFalse(receipt["release_deleted_by_this_run"])
+            # Only read-only Git config/remote lookups occurred; no GitHub call
+            # was delegated to call(), and no later API/write phase was reached.
+            self.assertTrue(all(c.args[0] == "git" and c.args[1] in ("config", "remote")
+                                for c in calls.call_args_list))
+            self.assertEqual(2, api.call_count)
+            forbidden.assert_not_called()
+
+    def test_missing_required_registration_stops_before_all_mutations(self):
+        for path in sorted(final.REQUIRED):
+            with self.subTest(path=path):
+                self.assert_required_registration_blocks(path)
+
+    def test_disabled_required_registration_stops_before_all_mutations(self):
+        for path in sorted(final.REQUIRED):
+            with self.subTest(path=path):
+                self.assert_required_registration_blocks(path, disabled=True)
+
     def test_blocked_workflow_stops_before_any_later_action_and_preserves_both_runs(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -165,8 +206,10 @@ class ControllerTest(unittest.TestCase):
             stable = {"id": final.STABLE_ID, "tag_name": "v0.11", "prerelease": False, "draft": False, "assets": []}
             pages = Mock(side_effect=lambda path: [stable] if "/releases?" in path else [])
             obsolete = {"id": 2, "name": "old", "path": ".github/workflows/old.yml", "state": "active"}
+            active_required = [{"id": i + 10, "name": path, "path": path, "state": "active"}
+                               for i, path in enumerate(sorted(final.REQUIRED))]
             self.assertEqual(1, self.run_controller(final, root, Mock(side_effect=api), Mock(side_effect=call),
-                definitions=Mock(return_value=final.REQUIRED), inventory=Mock(return_value=[obsolete]),
+                definitions=Mock(return_value=final.REQUIRED), inventory=Mock(return_value=active_required + [obsolete]),
                 pages=pages, tag_identity=Mock(return_value=[])))
             self.assertEqual("b" * 40, remote["head"])
             receipt = json.loads(next(root.glob(".gradle/final-maintenance-administration/run-*/report.json")).read_text())

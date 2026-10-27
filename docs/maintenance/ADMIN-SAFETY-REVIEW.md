@@ -2,6 +2,16 @@
 
 Overall maintenance: **INCOMPLETE**. Corrections belong to `maintenance/admin-safety-review`, based on accepted main `aa34ca788bffbb77c30d39a6b7dbaeb4c9508cb3`. Do not merge without owner approval. No cleanup controller is to be run against real resources during this task.
 
+## Second review and required-registration correction
+
+Second host review receipt: `.gradle/independent-review/admin-safety-tA7KgCnV/`; raw output SHA-256 `0baf96a2f3845a93dec40c094ee007e3ed8fb7797fb22cd6cd78751bed38f5f8`. Exit code 0, eight read tools, zero error events. The before/after commit is exactly `2c6eb1870b1681cef1480b87d755bc98d52f2f9a`; all seven supplied source hashes and all 971 numbered read lines matched that checkout. Original receipts and owner-only byte-exact copies/provenance remain in `.git/portability-audit/opencode-second-2c6eb18/`. This is independent source review, not independent test execution or merge approval.
+
+The reviewer confirmed all four original source findings addressed and confirmed the CI definition covers all three suites. Actual CI logs separately show 5+7+12 tests passed at `2c6eb18`. One MEDIUM finding remained: required source definitions were checked early, but required active registrations were checked only after mutations when branch candidates were already absent.
+
+The bounded follow-up checks `REQUIRED` against active paths in the **initial** inventory immediately after classification gating, before ruleset/backup processing or any administrative mutation. Missing or inactive required registrations raise a failure with the initial inventory preserved in a unique receipt. The original post-operation active-registration assertion remains unchanged. Two new mocked regressions cover missing and disabled registrations for each of the four required paths, with an obsolete active row present: every case proves no backup phase or GitHub/Git mutation is reached. The existing branch-race integration fixture now supplies all required active registrations so it still reaches and tests the retention guard.
+
+Current local administration results: **26 passed** (5 legacy, 7 workflow/backup, 14 safety/controller tests). The four workflow definitions, shared safety guards, older controller, Android/backend/contracts/spikes inputs and protected owner data are unchanged by this additional correction. No live cleanup controller, force push, deletion or main merge was performed. The final correction's exact SHA/CI are recorded in private receipts/PMP and the final report. **Third independent review is pending**, narrowly focused on the registration preflight and regressions while confirming that the previously reviewed guards remain unchanged. Maintenance remains INCOMPLETE pending that review, owner merge approval and protected historical-data custody.
+
 ## Original independent evidence and scope
 
 The host OpenCode architect review completed with wrapper exit 0. Its complete output is `.gradle/independent-review/opencode-review.jsonl`, SHA-256 `41f742134212ff0eab622168632d83fd770993b301243c9c30f0767aa7dacf53`; stderr is empty (SHA-256 `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`). Private byte-exact copies, parsed events and provenance are preserved in `.git/portability-audit/opencode-original-aa34ca7/`. No original receipt was overwritten. The output includes 10 step_start, 42 tool_use, 9 step_finish, 3 text and zero error events, followed by a pretty-printed PMP wrapper receipt. It is not strictly one JSON object per line at the end; parsing used consecutive JSON documents without altering the original.
@@ -22,7 +32,7 @@ Compared with maintenance baseline `bf837f2`, application/backend/contracts/spik
 
 Branch retirement is deliberately unavailable under the standing no-force-push policy. [GitHub's reference DELETE API](https://docs.github.com/en/rest/git/refs#delete-a-reference) has no expected-head request parameter. Git's explicit [force-with-lease](https://git-scm.com/docs/git-push) can guard a ref update, but this maintenance does not introduce or execute it under the owner's policy. A separately approved and independently verified atomic backend would be required before re-enabling branch deletion. Retention is the safe outcome, not a claim that another check removes the race.
 
-## Verification and preservation
+## Verification and preservation at the first correction (`2c6eb18`)
 
 Local administration regressions: **24 passed** (5 legacy guard, 7 workflow/backup, 12 controller/receipt/destination tests). Every controller Git/GitHub effect in integration tests is mocked and all fixture data lives in temporary directories. No real controller execution, deletion, rename, workflow disable or force push occurred.
 
@@ -30,7 +40,7 @@ Also passed: migration DDL 1–9→10, three historical backup fixtures, 1,103 E
 
 Seven historical worktrees remain protected pending approved independent private-data custody. The standalone PMP repository, original owner files, private review/administration receipts, signing identity, com.opus.piano, database compatibility, release assets and tags remain protected. Independent re-review is pending; Codex's corrections/tests do not constitute independent approval.
 
-## Fresh read-only host re-review
+## Third read-only host review — registration preflight
 
 Use the final commit SHA reported with this follow-up. The following command captures the actual checkout identity and hashes before invoking the existing architect/PMP wrapper, uses a new receipt directory, and verifies unchanged source afterward. Do not run it on dirty tracked source or another branch. Do not run either administration helper.
 
@@ -46,7 +56,7 @@ review_dir="$(mktemp -d "$PWD/.gradle/independent-review/admin-safety-XXXXXXXX")
 printf '%s\n' "$review_sha" > "$review_dir/commit.before"
 sha256sum scripts/maintenance_admin_safety.py scripts/finalize_github.py scripts/finish_maintenance_admin.py scripts/test_maintenance_admin_safety.py scripts/test_finalize_github.py scripts/test_finish_maintenance_admin.py .github/workflows/maintenance-admin.yml > "$review_dir/source.before.sha256"
 review_exit=0
-pmp --project "$PWD" launch opencode -- run --agent architect --format json --file docs/maintenance/ADMIN-SAFETY-REVIEW.md "Independently re-review the final maintenance correction at exact commit $review_sha. Read tracked source only; no shell, edits, delegation, private records, tests or GitHub mutations. Reassess all four findings and CI gap, including fail-closed branch retention, effective push destination, pre-mutation gates and immutable receipts. Report unresolved findings with severity and file/line. Do not infer executed tests or approval from Codex's report. Respond in English." > "$review_dir/opencode-review.jsonl" 2> "$review_dir/opencode-review.stderr" || review_exit=$?
+pmp --project "$PWD" launch opencode -- run --agent architect --model openai/gpt-6.1-sol --format json --file docs/maintenance/ADMIN-SAFETY-REVIEW.md "Perform the third independent review at exact commit $review_sha, narrowly covering the change since 2c6eb1870b1681cef1480b87d755bc98d52f2f9a: required active workflow registrations must be checked against the initial inventory before backup writes or administrative mutations, the post-operation check must remain, and missing/disabled registration regressions must prove zero mutations. Read scripts/finish_maintenance_admin.py and scripts/test_maintenance_admin_safety.py; confirm the previously reviewed retention/destination/blocked-decision/receipt guards and workflow definitions remain unchanged. Read tracked source only; no shell, edits, delegation, private records, tests or GitHub mutations. Report unresolved findings with severity and file/line. Do not infer executed tests or independent approval from Codex's report. Respond in English." > "$review_dir/opencode-review.jsonl" 2> "$review_dir/opencode-review.stderr" || review_exit=$?
 printf '%s\n' "$review_exit" > "$review_dir/exit-code.txt"
 git rev-parse HEAD > "$review_dir/commit.after"
 cmp "$review_dir/commit.before" "$review_dir/commit.after"

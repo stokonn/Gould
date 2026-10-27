@@ -92,6 +92,11 @@ def main():
                       "classification": classify_workflow(w, main_paths, maintenance_paths)} for w in before]
         report["workflow_decisions"] = decisions
         require_unblocked_workflows(decisions)
+        active_paths = {w["path"] for w in before if w["state"] == "active"}
+        missing_active = REQUIRED - active_paths
+        if missing_active:
+            raise RuntimeError("Required workflow registration missing or inactive: " +
+                               ", ".join(sorted(missing_active)))
         # Retain ambiguous required-check/ruleset dependencies rather than guessing.
         rules = pages(f"repos/{REPO}/rulesets?includes_parents=true&per_page=100")
         report["rulesets"] = rules
