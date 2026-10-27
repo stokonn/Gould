@@ -10,11 +10,15 @@ from pathlib import Path
 from urllib.parse import quote, unquote
 from finalize_github import api, call, pages, release_identity, candidate_errors, REPOSITORY_ID, ROOT
 
+from maintenance_admin_safety import (new_receipt_directory, write_receipt,
+                                      require_unblocked_workflows, verified_push_destination,
+                                      refuse_branch_deletion)
+
 REPO = "stokonn/Gould"
 RC_ID = 423537826
 STABLE_ID = 425356546
 REQUIRED = {".github/workflows/quality.yml", ".github/workflows/community-bff.yml",
-            ".github/workflows/stage5-emulator.yml"}
+            ".github/workflows/stage5-emulator.yml", ".github/workflows/maintenance-admin.yml"}
 
 
 def classify_workflow(workflow, main_paths, maintenance_paths):
@@ -70,12 +74,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
-    output = ROOT / ".gradle/final-maintenance-administration"
-    output.mkdir(parents=True, exist_ok=True, mode=0o700)
+    output = new_receipt_directory(ROOT, "final-maintenance-administration")
     report = {"complete": False, "repository": REPO, "disabled_workflows": [],
               "release_deleted_by_this_run": False, "workflow_runs_deleted": 0, "deleted_branches": []}
     try:
-        assert api(f"repos/{REPO}")["id"] == REPOSITORY_ID
+        repository = api(f"repos/{REPO}")
+        assert repository["id"] == REPOSITORY_ID
+        verified_push_destination(repository, call)
         report["main_commit"] = api(f"repos/{REPO}/branches/main")["commit"]["sha"]
         main_paths = definitions("main")
         maintenance_paths = definitions("maintenance/gould-portability")
@@ -86,6 +91,7 @@ def main():
         decisions = [{"id": w["id"], "name": w["name"], "path": w["path"], "state": w["state"],
                       "classification": classify_workflow(w, main_paths, maintenance_paths)} for w in before]
         report["workflow_decisions"] = decisions
+        require_unblocked_workflows(decisions)
         # Retain ambiguous required-check/ruleset dependencies rather than guessing.
         rules = pages(f"repos/{REPO}/rulesets?includes_parents=true&per_page=100")
         report["rulesets"] = rules
@@ -150,10 +156,6 @@ def main():
         if not args.apply:
             print(json.dumps(decisions, indent=2))
             return 0
-        for row in decisions:
-            if row["classification"] == "OBSOLETE_REGISTRATION" and row["state"] == "active":
-                call("gh", "api", f"repos/{REPO}/actions/workflows/{row['id']}/disable", "--method", "PUT")
-                report["disabled_workflows"].append(row["id"])
         used = {line.removeprefix("branch refs/heads/") for line in
                 call("git", "worktree", "list", "--porcelain").stdout.splitlines() if line.startswith("branch ")}
         for row in branch_plan:
@@ -176,8 +178,11 @@ def main():
                 for spelling in (branch, quote(branch, safe="")):
                     refs = call("git", "grep", "-l", "-F", f"/{kind}/{spelling}", "--", ".", check=False)
                     assert refs.returncode in (0, 1) and not refs.stdout.strip(), "Source link depends on branch"
-            call("git", "push", "origin", "--delete", branch)
-            report["deleted_branches"].append(branch)
+            refuse_branch_deletion(branch, expected)
+        for row in decisions:
+            if row["classification"] == "OBSOLETE_REGISTRATION" and row["state"] == "active":
+                call("gh", "api", f"repos/{REPO}/actions/workflows/{row['id']}/disable", "--method", "PUT")
+                report["disabled_workflows"].append(row["id"])
         if rc:
             call("gh", "api", f"repos/{REPO}/releases/{RC_ID}", "--method", "DELETE")
             report["release_deleted_by_this_run"] = True
@@ -199,8 +204,7 @@ def main():
     except (AssertionError, OSError, RuntimeError, ValueError) as error:
         report["error"] = str(error)
     finally:
-        path = output / "report.json"
-        path.write_text(json.dumps(report, indent=2) + "\n")
+        path = write_receipt(output, report)
         print("Final maintenance administration receipt: " + str(path))
     return 0 if report["complete"] else 1
 

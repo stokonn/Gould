@@ -1,0 +1,25 @@
+name: Gould maintenance administration regressions
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  administration-safety:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Run non-destructive administration regressions
+        run: |
+          python3 -m unittest discover -s scripts -p test_finalize_github.py
+          python3 -m unittest discover -s scripts -p test_finish_maintenance_admin.py
+          python3 -m unittest discover -s scripts -p test_maintenance_admin_safety.py
+# Every Git/GitHub effect in controller integration tests is mocked.
+# No live controller operation, account secret, deployment or publication.

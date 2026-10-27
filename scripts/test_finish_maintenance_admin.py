@@ -11,6 +11,10 @@ class WorkflowAuditTest(unittest.TestCase):
         row = {"path": ".github/workflows/quality.yml", "name": "Goldberg checks"}
         self.assertEqual("KEEP", classify_workflow(row, {row["path"]}, set()))
 
+    def test_admin_regressions_are_required_before_main_integration(self):
+        row = {"path": ".github/workflows/maintenance-admin.yml"}
+        self.assertEqual("KEEP", classify_workflow(row, set(), set()))
+
     def test_definition_on_maintenance_is_kept(self):
         row = {"path": ".github/workflows/still-needed.yml"}
         self.assertEqual("KEEP", classify_workflow(row, set(), {row["path"]}))

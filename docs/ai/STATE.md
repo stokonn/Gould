@@ -1,3 +1,5 @@
+> Administration-safety continuation: host architect review has completed (source review only); four findings and a CI gap are being corrected on `maintenance/admin-safety-review`, based on `aa34ca7`. Read [the findings/re-review runbook](../maintenance/ADMIN-SAFETY-REVIEW.md). Independent re-review, merge approval and protected-data custody remain open; no live administration was repeated.
+
 > Latest review continuation: interrupted Actions/RC outcome committed at `12746b8`; no destructive operations repeated. Repository-wide maintenance inventory is in [REPOSITORY-AUDIT.md](../maintenance/REPOSITORY-AUDIT.md). Independent OpenCode review is pending host execution because sandbox service listen returns EPERM; use [the existing read-only workflow](../maintenance/INDEPENDENT-REVIEW.md). PMP task facts are synchronized; private-data custody remains unresolved.
 
 # Gould — current state

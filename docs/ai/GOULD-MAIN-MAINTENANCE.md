@@ -1,3 +1,5 @@
+> Current follow-up: original OpenCode review completed on the host at accepted main `aa34ca7` and identified four controller defects plus missing CI coverage. Corrections are on `maintenance/admin-safety-review`, not merged. See [ADMIN-SAFETY-REVIEW.md](../maintenance/ADMIN-SAFETY-REVIEW.md) for scope provenance, dispositions, actual tests and the exact host re-review workflow. Overall maintenance remains INCOMPLETE pending independent re-review, merge approval and protected historical worktree custody. No historical cleanup is to be repeated. Earlier main integration/administration outcomes below are preserved history.
+
 # Gould main integration and final maintenance handoff
 
 Current repository: **https://github.com/stokonn/Gould**, repository ID `1421247418`. Canonical checkout: `~/Projects/Opus`, branch **main**. The owner explicitly authorized normal verified main integration and separately superseded the earlier RC retention policy: remove only the obsolete RC GitHub prerelease after private backup, preserving its tag and all Stable releases.

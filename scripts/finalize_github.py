@@ -10,6 +10,8 @@ import subprocess
 import tempfile
 import time
 from urllib.parse import quote
+from maintenance_admin_safety import (new_receipt_directory, write_receipt,
+                                      verified_push_destination, refuse_branch_deletion)
 
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY_ID = 1421247418
@@ -83,8 +85,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--apply", action="store_true", help="Execute the already approved, guarded administration")
     args = parser.parse_args()
-    output = ROOT / ".gradle/final-github-administration"
-    output.mkdir(parents=True, exist_ok=True, mode=0o700)
+    output = new_receipt_directory(ROOT, "final-github-administration")
     result = {"complete": False, "deleted_branches": [], "repository_renamed": False}
     try:
         head = validate_local()
@@ -98,6 +99,7 @@ def main():
         repo = repository["full_name"]
         assert repo in ("stokonn/Goldberg", "stokonn/Gould")
         result["repository"] = repo
+        push_destination = verified_push_destination(repository, call)
         assert api(f"repos/{repo}/branches/main")["commit"]["sha"] == MAIN, "Main changed; re-audit first"
         target = call("gh", "api", "repos/stokonn/Gould", check=False)
         if target.returncode == 0:
@@ -106,14 +108,14 @@ def main():
             raise RuntimeError("Target repository availability could not be established")
         releases = pages(f"repos/{repo}/releases?per_page=100")
         before_assets = release_identity(releases)
-        before_tags = sorted(call("git", "ls-remote", "--tags", "origin").stdout.splitlines())
+        before_tags = sorted(call("git", "ls-remote", "--tags", push_destination).stdout.splitlines())
         prs = pages(f"repos/{repo}/pulls?state=open&per_page=100")
         result["plan"] = {"rename": [repo, "stokonn/Gould"], "branch_candidates": CANDIDATES,
                           "required_ci": ["quality.yml", "community-bff.yml"], "main_merge": False}
         if not args.apply:
             print(json.dumps(result["plan"], indent=2))
             return 0
-        call("git", "push", "origin", "HEAD:refs/heads/maintenance/gould-portability")
+        call("git", "push", push_destination, "HEAD:refs/heads/maintenance/gould-portability")
         workflows = api(f"repos/{repo}/actions/workflows?per_page=100")["workflows"]
         ids = {w["id"] for w in workflows if w["path"] in
                (".github/workflows/quality.yml", ".github/workflows/community-bff.yml")}
@@ -152,15 +154,14 @@ def main():
                 assert references.returncode in (0, 1), "Reference audit failed"
                 assert not references.stdout.strip(), "A source link still needs this branch"
             call("git", "merge-base", "--is-ancestor", expected, MAIN)
-            call("git", "push", "origin", "--delete", branch)
-            result["deleted_branches"].append(branch)
+            refuse_branch_deletion(branch, expected)
         if repo == "stokonn/Goldberg":
             renamed = api(f"repos/{repo}", "--method", "PATCH", "--field", "name=Gould")
             assert renamed["id"] == REPOSITORY_ID and renamed["full_name"] == "stokonn/Gould"
             result["repository_renamed"] = True
         result["repository"] = "stokonn/Gould"
         call("git", "remote", "set-url", "origin", "https://github.com/stokonn/Gould.git")
-        assert sorted(call("git", "ls-remote", "--tags", "origin").stdout.splitlines()) == before_tags, "Tag refs changed"
+        assert sorted(call("git", "ls-remote", "--tags", push_destination).stdout.splitlines()) == before_tags, "Tag refs changed"
         assert release_identity(pages("repos/stokonn/Gould/releases?per_page=100")) == before_assets, "Release assets changed"
         assert api("repos/stokonn/Gould")["id"] == REPOSITORY_ID
         assert api("repos/stokonn/Gould/branches/main")["commit"]["sha"] == MAIN
@@ -177,8 +178,7 @@ def main():
     except (AssertionError, OSError, RuntimeError) as error:
         result["error"] = str(error)
     finally:
-        receipt = output / "report.json"
-        receipt.write_text(json.dumps(result, indent=2) + "\n")
+        receipt = write_receipt(output, result)
         print("Administration receipt: " + str(receipt))
     return 0 if result["complete"] else 1
 
