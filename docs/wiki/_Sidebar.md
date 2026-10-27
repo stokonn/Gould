@@ -1,5 +1,7 @@
 [Goldberg](Home)
 
+[Goldberg 0.11 Stable](https://github.com/stokonn/Goldberg/releases/tag/v0.11)
+
 - [Getting Started](Getting-Started)
 - [User Guide](User-Guide)
 - [Settings & Customization](Settings-and-Customization)

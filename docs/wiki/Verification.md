@@ -1,3 +1,19 @@
+# Goldberg 0.11 — verified Stable release
+
+[Goldberg 0.11 Stable](https://github.com/stokonn/Goldberg/releases/tag/v0.11) is a signed, non-debuggable com.opus.piano APK,version0.11/code13. The annotatedv0.11tag points to ab7d66d; its195application/build inputs match the accepted a7bb2aa source. Main history is preserved.
+
+APK SHA256: `290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6`. Trusted signer: `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`. GitHub asset digest and re-downloaded APK bytes match. Signed release lint/package/version/ZIP/notice/resource checks pass.
+
+348JVM passed;quality40491886948 passed. Initial full API36 run217cases had204passes,2subsequently corrected failures and11documented external/probe skips. Focused40491890436 then passed all6affected cases;200unaffected native passes are reused. This is not a claim of a new217case run. Seeded0.10.1schema8→10 offline/network/restart acceptance preserves every original row/preference and37sessions,with integrity/FK pass. CI uses disposable debug rebuilds;release certificate compatibility is checked independently.
+
+Nine actual final frames were inspected across both themes,EN/CZ,standard/small and1x/2x. Three sharedLibraryframes are component renders. Small2x primary action requires scrolling;latercreditsframes show it fully. Navigation labels retain existing wrapping. No physical-phone or newAPI26 execution is claimed.
+
+[Detailed evidence and limitations](https://github.com/stokonn/Goldberg/blob/main/docs/releases/GOLDBERG-0.11.md). Public catalogue API10/10security checks passed once;its projection remains empty. BackendOAuth/community writes/private-data uploads stay disabled.
+
+created by stokonn with love <3
+
+<details><summary>Preserved earlier verification history</summary>
+
 # Current verification
 
 See [Goldberg 0.10.1 verification](Verification-0.10.1) for the current release. Prior results below remain historical evidence.
@@ -48,3 +64,5 @@ Signing SHA-256: `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d5
 ## Goldberg 0.10
 
 See [Goldberg 0.10 Verification](Verification-0.10) for the release build, automated checks, screenshots and owner-reported Google results. The 0.9.2 verification above remains historical and release-specific.
+
+</details>

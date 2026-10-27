@@ -1,0 +1,40 @@
+{
+  "releaseUrl": "https://github.com/stokonn/Goldberg/releases/tag/v0.11",
+  "name": "Goldberg 0.11 Stable",
+  "tag": "v0.11",
+  "annotatedTagObject": "302d39041c1da47cb4e11ddd2b5a894db2520032",
+  "taggedSource": "ab7d66ddafe0bcf2f23270682116ee2e02f828eb",
+  "applicationSource": "a7bb2aa7bc70fc546ff3d132c0609c784669e3ce",
+  "publishedAt": "2026-10-27T11:17:43Z",
+  "isDraft": false,
+  "isPrerelease": false,
+  "latestReleaseApiVerified": true,
+  "assets": [
+    {
+      "name": "GOLDBERG-0.11.md",
+      "size": 3863,
+      "digest": "sha256:9efd32699beeaebd09dc51248e89db7bf9e1cabb4cc89d1ecec35011a7804d6a"
+    },
+    {
+      "name": "Goldberg-v0.11.apk",
+      "size": 16447395,
+      "digest": "sha256:290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "size": 85,
+      "digest": "sha256:0066c39b314c6949bc3675948ba04ef97c1fb57e2e3273b25567ddfbd5b4c28b"
+    }
+  ],
+  "allRemoteAssetDigestsMatchLocal": true,
+  "apkRedownloadSha256": "290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6",
+  "wikiUrl": "https://github.com/stokonn/Goldberg/wiki",
+  "wikiCommit": "721ef5c02438fc05fc40af5c9b2167641a4cce91",
+  "issue31": "CLOSED/completed",
+  "project": "Goldberg Development #2 / Done",
+  "milestone4": "closed",
+  "acceptanceComment": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6440551737",
+  "publicationComment": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6440664437",
+  "subsequentTrackingCommit": "documentation only; exact final HEAD/remote recorded in final Issue31 checkpoint",
+  "preserved": "ExistingRC/tag,all history,original caches/personal data,drafts/backups/signing identity;no forcepush,local clean/reset,paidresource orbackendOAuth/communitywrites"
+}
