@@ -1,4 +1,4 @@
-name: Community BFF local integration
+name: Gould community BFF integration
 on:
   push:
   pull_request:

@@ -1,3 +1,5 @@
+> Final continuation audit (October 27, 2026): the owner now authorizes verified obsolete remote-branch deletion. The GitHub connector freshly lists 33 branches and open review PRs #39/#40; API comparison confirms main remains `1c943dc`. Exact compare metadata was obtained for 32 of 33 branch heads; the catalogue-licence proposal ancestry compare remains unresolved; its exact head `b0d7c4b2c56a663a4e841cf1864c6f10899212a9` was independently read from open PR #40, which requires retention. All 33 branches are retained while project/CI verification and reference/activity checks remain incomplete. Earlier cached candidate lists below are historical starting points, not executed deletions. See [FINAL-CONSOLIDATION.md](FINAL-CONSOLIDATION.md).
+
 # Remote branch review — later cleanup only
 
 This is a local cached-ref ancestry screen against `origin/main` at `1c943dc`, not approval for deletion. Git CLI DNS access was unavailable during this session; recheck exact remote heads, protection, open PRs, worktree use, documentation links and owner approval before any deletion. All remote refs were preserved.

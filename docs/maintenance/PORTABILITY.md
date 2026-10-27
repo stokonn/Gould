@@ -1,6 +1,6 @@
 # Gould development transfer
 
-Status on October 27, 2026: source consolidation is implemented locally; a fresh Android build and full portability acceptance remain blocked by the execution environment. Do not discard Gould-Preparation yet. No Gould 0.12 feature implementation has started.
+Status on October 27, 2026: source consolidation is committed locally (`b87d238` plus subsequent maintenance commits); a fresh Android build and full portability acceptance remain blocked by the execution environment. Do not discard Gould-Preparation yet. No Gould 0.12 feature implementation has started.
 
 ## Development baseline and layout
 
@@ -131,3 +131,9 @@ The copied repository should report `.git` as its common directory and only itse
 - [ ] Resolve external worktrees' unique/private content and activity before any ordinary safe removal.
 
 created by stokonn with love <3
+
+## Final verification and PMP continuation
+
+The owner has approved later verified remote cleanup and the repository rename, gated on project/CI acceptance. Current outcome and the one-command host verification request are in [FINAL-CONSOLIDATION.md](FINAL-CONSOLIDATION.md); current private PMP recovery/readback is summarized in [the AI handoff](../ai/GOULD-FINAL-CONSOLIDATION.md). Historical restrictions above describe the earlier snapshot and do not revoke the newer owner authorization.
+
+Install PMP 1.0.0a1 from the reviewed standalone Project Memory Protocol source or its verified `project_memory_protocol-1.0.0a1-py3-none-any.whl`, with Python 3.11+, PyYAML 6.x and jsonschema 4.x. Keep that standalone project separate and unmodified. Restore `.pmp.yml` and `.pmp/` securely with owner-only permissions. Preserve historical private checkpoint storage from `${XDG_STATE_HOME:-$HOME/.local/state}/pmp/` separately in encrypted custody if needed. A moved checkout gets a new path-derived worktree identity: retain old history under its original identity; do not relabel it as freshly verified. The restored project state and tracked handoff describe the current task even without importing old private checkpoint records. Run `pmp --project "$HOME/Projects/Opus" check`, `status`, `resume`, and `verify` after restoration. Never run `pmp init` to replace the existing project UUID.

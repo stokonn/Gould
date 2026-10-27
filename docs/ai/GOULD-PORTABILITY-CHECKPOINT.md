@@ -1,3 +1,5 @@
+> Current Gould maintenance continuation (October 27, 2026): prepared branding and the complete current-main baseline are committed on `maintenance/gould-portability` (`b87d238` plus subsequent maintenance commits). Goldberg 0.11 Stable remains published; no 0.12 features have started. Actual repository: `stokonn/Goldberg`; the approved Gould rename awaits project/CI verification. Read [FINAL-CONSOLIDATION.md](../maintenance/FINAL-CONSOLIDATION.md) and [the current handoff](GOULD-FINAL-CONSOLIDATION.md) first. Historical entries below retain their original evidence.
+
 # Gould portability consolidation checkpoint — October 27, 2026
 
 ## Current outcome

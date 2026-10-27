@@ -1,4 +1,4 @@
-name: Goldberg Stage 5 emulator verification
+name: Gould Android emulator verification
 # Tasks 5.10 (instrumentation) and 5.11 (emulator acceptance subset) on a
 # GitHub-hosted Linux runner with KVM acceleration (hardware-accelerated
 # Android virtualization, GitHub Changelog 2024-04-02).
@@ -23,10 +23,9 @@ name: Goldberg Stage 5 emulator verification
 #     re-verified against its release tag before this workflow version.
 #   - Each job records and asserts `git rev-parse HEAD == GITHUB_SHA` into the
 #     uploaded evidence, so results are bound to the exact dispatched commit.
-#   - Intended dispatch ref: feature/goldberg-0.11-stage-5 (the Stage 5 code
-#     under verification). The acceptance job depends on the helper scripts as
-#     they exist on that branch (main still carries an older
-#     verify_emulator_upgrade.py without the schema/offline/startup flags).
+#   - Dispatch the reviewed current maintenance/development commit after it is
+#     available remotely. The historical Stage 5 branch is not the current
+#     development baseline; all helper scripts now live in the primary checkout.
 #
 # Signing resolution (verified 2026-10-20, AGENTS.md publication gates):
 #   - The trusted 0.10.1 release APK is signed with the trusted certificate
