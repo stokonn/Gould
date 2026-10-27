@@ -1,3 +1,36 @@
+## Current Stage 6 — public read-only backend verified; integrated baseline next
+
+Purpose/scope: existing public catalogue GET API on Worker/Hyperdrive/Supabase,
+with practice/history/drafts/backups offline and community/OAuth/writes disabled.
+
+- [x] Owner authorization6435585794; proportionate catalogue Article6(1)(f)
+  assessment; separate support/rights bases; incorporated provider arrangements
+  reviewed against actual accounts/configuration, with evidence limits disclosed.
+- [x] Owner-reported manual Inbox/Spam checks and Tuesday/Friday monitoring,
+  first-of-month retention review/private case tracking;90day ordinary-support
+  retention adopted with justified exceptions. No agent Gmail access/automation.
+- [x] Existing public workers.dev route enabled; previews remainOFF. ONE focused
+  actual HTTPS smoke pass:10/10PASS. Catalogue/feed200(empty),cursor/query400,
+  wrong method405,OAuth/submission/admin/practice/unknown404. JSON/no-store/
+  redaction PASS. No new provider/service/subscription or backend deployment.
+- [x] Postflight20exacttablecounts,intakefalse,runtime role flags/limit4/expiry
+  unchanged. Earlier20RLS/55policy/verify-full/CA/cacheoff/two-key/logsoff evidence
+  retained. See results/public-activation-2026-10-27 for actual request evidence.
+- [x] Current notice/Android asset/CZ/EN synchronized;951localizations/policy/
+  whitespace PASS.3254326 successful backend/quality CI reused; no full rerun.
+- [ ] Integrate accepted Stage7/Stage8/Discover source with current Stage6; verify
+  the integrated baseline before creating the dedicated Database Simplifier branch.
+- [ ] Shared Discover/Library catalogue, data-preserving changed-scope tests,
+  migration/upgrade/CI, final trusted Stable APK and release gates remain pending.
+
+Backend milestone verified; whole integrated Stage6/release acceptance not inferred.
+Issue31 OPEN/Project In Progress. Catalogue projection is empty,not populated;
+licence/field/provenance approval precedes ingestion. Existing RC preserved.
+
+---
+
+## Historical checkpoints — current entry above governs
+
 ## Current Stage 6 — PR #39 reconciled; public launch requirements OPEN
 
 Purpose: verify private catalogue operation and reconcile privacy/retention work

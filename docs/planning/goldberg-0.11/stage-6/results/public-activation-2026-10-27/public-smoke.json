@@ -1,0 +1,148 @@
+{
+  "startedUtc": "2026-10-27T07:35:28.275095+00:00",
+  "authorization": "owner Issue31 comment6435585794 and subsequent operational adoption/confirmation",
+  "endpoint": "https://goldberg-community-bff-private.goldberg-private-stage6-6e7aca1b.workers.dev",
+  "preflight": {
+    "catalogueOnly": true,
+    "oauthDisabled": true,
+    "twoServerKeys": true,
+    "logsDisabled": true,
+    "originTls": "verify-full",
+    "cacheDisabled": true
+  },
+  "cases": [
+    {
+      "case": "overlay",
+      "method": "GET",
+      "path": "/v1/catalogue/overlay",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "bytes": 99,
+      "noStore": true,
+      "json": true,
+      "topLevelKeys": [
+        "items",
+        "nextCursor",
+        "requestId",
+        "schemaVersion"
+      ],
+      "items": 0,
+      "passed": true
+    },
+    {
+      "case": "changes",
+      "method": "GET",
+      "path": "/v1/catalogue/changes",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "bytes": 297,
+      "noStore": true,
+      "json": true,
+      "topLevelKeys": [
+        "items",
+        "nextCursor",
+        "pollCursor",
+        "requestId",
+        "schemaVersion"
+      ],
+      "items": 0,
+      "passed": true
+    },
+    {
+      "case": "malformedCursor",
+      "method": "GET",
+      "path": "/v1/catalogue/overlay?cursor=invalid",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "bytes": 135,
+      "noStore": true,
+      "json": true,
+      "passed": true
+    },
+    {
+      "case": "unexpectedQuery",
+      "method": "GET",
+      "path": "/v1/catalogue/overlay?private_note=synthetic",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "bytes": 135,
+      "noStore": true,
+      "json": true,
+      "passed": true
+    },
+    {
+      "case": "readWrongMethod",
+      "method": "POST",
+      "path": "/v1/catalogue/overlay",
+      "expectedStatus": 405,
+      "actualStatus": 405,
+      "bytes": 139,
+      "noStore": true,
+      "json": true,
+      "passed": true
+    },
+    {
+      "case": "oauthDenied",
+      "method": "POST",
+      "path": "/v1/session/challenge",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "bytes": 130,
+      "noStore": true,
+      "json": true,
+      "passed": true
+    },
+    {
+      "case": "submissionDenied",
+      "method": "POST",
+      "path": "/v1/submissions",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "bytes": 130,
+      "noStore": true,
+      "json": true,
+      "passed": true
+    },
+    {
+      "case": "adminDenied",
+      "method": "POST",
+      "path": "/v1/admin/entities/00000000-0000-4000-8000-000000000001/quarantine",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "bytes": 130,
+      "noStore": true,
+      "json": true,
+      "passed": true
+    },
+    {
+      "case": "practiceDenied",
+      "method": "POST",
+      "path": "/v1/practice",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "bytes": 130,
+      "noStore": true,
+      "json": true,
+      "passed": true
+    },
+    {
+      "case": "unknownDenied",
+      "method": "GET",
+      "path": "/v1/no-such-resource",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "bytes": 130,
+      "noStore": true,
+      "json": true,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "routing": {
+    "enabled": true,
+    "previews_enabled": false
+  },
+  "requests": 10,
+  "rollback": false,
+  "finishedUtc": "2026-10-27T07:35:39.536767+00:00"
+}

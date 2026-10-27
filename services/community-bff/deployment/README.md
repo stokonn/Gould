@@ -1,8 +1,8 @@
-# Existing private Worker deployment
+# Existing catalogue Worker deployment
 
 This is the actual configuration for `goldberg-community-bff-private`, bound to
-its existing catalogue Hyperdrive. It creates no database schema and enables no
-public route or Google OAuth. Hyperdrive uses the approved Supabase CA,
+its existing catalogue Hyperdrive. It creates no database schema and keeps Google OAuth disabled. The existing workers.dev route is enabled
+for the two read-only catalogue paths; previews remain disabled. Hyperdrive uses the approved Supabase CA,
 `verify-full` origin TLS and disabled query caching.
 
 Use the locked cf 1.0.0-beta.21 / Wrangler 4.152.0 tools. Supply the existing
@@ -36,6 +36,10 @@ installed.
 
 The deployed candidate sets `CATALOGUE_READ_ONLY=true`. Only the two catalogue
 GET routes reach the BFF; auth, admin and write routes are rejected before
-configuration/database dispatch. Public routing remains disabled pending the
-approved cloud privacy notice/contact. Private candidate verification does not
-constitute public launch acceptance.
+configuration/database dispatch. Public routing was enabled under owner decision6435585794 after the documented
+processing assessment and owner-confirmed manual mailbox operation. The single
+public HTTPS smoke pass on October27 passed all10requests. Catalogue/feed are
+empty200; auth/admin/write/private paths404,method405,cursor/query400. All
+responses are JSON/no-store/redacted;20tablecounts/runtime flags/intake remain
+unchanged. See results/public-activation-2026-10-27 and launch assessment.
+No catalogue records were imported; this is not a populated music catalogue.

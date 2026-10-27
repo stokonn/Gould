@@ -1,33 +1,31 @@
-## Current Stage 6 — processing assessed; manual mailbox operation confirmed
+## Current Stage 6 — public read-only backend verified; integrated baseline next
 
-Purpose/scope: finish existing read-only Worker/Hyperdrive catalogue activation,
-then Database Simplifier from the verified integrated baseline and one0.11Stable.
+Purpose/scope: existing public catalogue GET API on Worker/Hyperdrive/Supabase,
+with practice/history/drafts/backups offline and community/OAuth/writes disabled.
 
-- [x] Standing public activation/release authorization from owner decision6435585794;
-  accepted Q1/D5b and owner-reported public identity/contact retained.
-- [x] Owner adopts90-day ordinary-mail retention with justified legal exceptions;
-  reports actual Inbox/Spam access/checks,Tuesday/Friday monitoring schedule,
-  first-of-month review and private case/deadline tracking. Manual implementation
-  verified as OWNER-REPORTED; no agent Gmail access or automation required/claimed.
-- [x] Proportionate Article6(1)(f) catalogue purpose/necessity/balance assessment;
-  voluntary support assessed separately; applicable rights handling Article6(1)(c).
-  See LAUNCH-PROCESSING-ASSESSMENT.md. No general compliance certification.
-- [x] Actual Supabase Free/healthy/Frankfurt/20RLS/55policies/log settings readback;
-  Cloudflare exactbundle/catalogue-only/OAuthfalse/2keys/logsoff/verify-full/CA/
-  cacheoff readback. Standard incorporated provider DPAs/transfers reviewed;
-  account acceptance receipts/billing403/provider-wide deletion periods remain
-  explicit evidence limits, not invented pass results. See PROVIDER-PROCESSING-2026-10-27.md.
-- [x] Current notice/Android asset/CZ/EN updated;951resource localization PASS,
-  whitespace PASS. Prior successful3254326 CI reused; no full suite rerun.
-- [ ] Enable existing public route and execute ONE focused HTTPS positive/negative
-  security pass, including data/security postflight. Public activation not yet executed.
-- [ ] Complete Stage6/integrated baseline, branch Database Simplifier, unify
-  Discover/Library catalogue preserving offline personal data; changed-scope
-  migration/upgrade/CI, trusted stable APK and final release gates remain pending.
+- [x] Owner authorization6435585794; proportionate catalogue Article6(1)(f)
+  assessment; separate support/rights bases; incorporated provider arrangements
+  reviewed against actual accounts/configuration, with evidence limits disclosed.
+- [x] Owner-reported manual Inbox/Spam checks and Tuesday/Friday monitoring,
+  first-of-month retention review/private case tracking;90day ordinary-support
+  retention adopted with justified exceptions. No agent Gmail access/automation.
+- [x] Existing public workers.dev route enabled; previews remainOFF. ONE focused
+  actual HTTPS smoke pass:10/10PASS. Catalogue/feed200(empty),cursor/query400,
+  wrong method405,OAuth/submission/admin/practice/unknown404. JSON/no-store/
+  redaction PASS. No new provider/service/subscription or backend deployment.
+- [x] Postflight20exacttablecounts,intakefalse,runtime role flags/limit4/expiry
+  unchanged. Earlier20RLS/55policy/verify-full/CA/cacheoff/two-key/logsoff evidence
+  retained. See results/public-activation-2026-10-27 for actual request evidence.
+- [x] Current notice/Android asset/CZ/EN synchronized;951localizations/policy/
+  whitespace PASS.3254326 successful backend/quality CI reused; no full rerun.
+- [ ] Integrate accepted Stage7/Stage8/Discover source with current Stage6; verify
+  the integrated baseline before creating the dedicated Database Simplifier branch.
+- [ ] Shared Discover/Library catalogue, data-preserving changed-scope tests,
+  migration/upgrade/CI, final trusted Stable APK and release gates remain pending.
 
-Stage6 IN PROGRESS;Issue31 OPEN/Project In Progress. No catalogue content imported;
-empty projection is not a populated catalogue. Content source/field/licence/
-provenance approval precedes ingestion. OAuth/community writes remain disabled.
+Backend milestone verified; whole integrated Stage6/release acceptance not inferred.
+Issue31 OPEN/Project In Progress. Catalogue projection is empty,not populated;
+licence/field/provenance approval precedes ingestion. Existing RC preserved.
 
 
 ---

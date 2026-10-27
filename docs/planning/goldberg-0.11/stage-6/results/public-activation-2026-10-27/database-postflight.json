@@ -1,0 +1,124 @@
+{
+  "source": "authenticated Supabase connector SELECT-only before/after",
+  "before": {
+    "roles": [
+      {
+        "name": "goldberg_staging_probe",
+        "canLogin": true,
+        "createDb": false,
+        "bypassRls": false,
+        "superuser": false,
+        "createRole": false,
+        "validUntil": null,
+        "connectionLimit": 2
+      },
+      {
+        "name": "goldberg_bff_runtime",
+        "canLogin": false,
+        "createDb": false,
+        "bypassRls": false,
+        "superuser": false,
+        "createRole": false,
+        "validUntil": null,
+        "connectionLimit": -1
+      },
+      {
+        "name": "goldberg_bff_catalogue_login",
+        "canLogin": true,
+        "createDb": false,
+        "bypassRls": false,
+        "superuser": false,
+        "createRole": false,
+        "validUntil": "2027-01-25T04:39:50.052095+00:00",
+        "connectionLimit": 4
+      }
+    ],
+    "counts": {
+      "sessions": 0,
+      "audit_head": 1,
+      "principals": 0,
+      "change_feed": 0,
+      "role_grants": 0,
+      "submissions": 0,
+      "abuse_limits": 0,
+      "audit_events": 0,
+      "auth_refresh": 0,
+      "auth_families": 0,
+      "review_events": 0,
+      "staging_probe": 1,
+      "intake_control": 1,
+      "auth_challenges": 0,
+      "identity_mappings": 0,
+      "published_entities": 0,
+      "idempotency_results": 0,
+      "published_revisions": 0,
+      "submission_revisions": 0,
+      "deployment_migrations": 1
+    },
+    "intake": {
+      "enabled": false,
+      "singleton": true
+    }
+  },
+  "after": {
+    "roles": [
+      {
+        "name": "goldberg_staging_probe",
+        "canLogin": true,
+        "createDb": false,
+        "bypassRls": false,
+        "superuser": false,
+        "createRole": false,
+        "validUntil": null,
+        "connectionLimit": 2
+      },
+      {
+        "name": "goldberg_bff_runtime",
+        "canLogin": false,
+        "createDb": false,
+        "bypassRls": false,
+        "superuser": false,
+        "createRole": false,
+        "validUntil": null,
+        "connectionLimit": -1
+      },
+      {
+        "name": "goldberg_bff_catalogue_login",
+        "canLogin": true,
+        "createDb": false,
+        "bypassRls": false,
+        "superuser": false,
+        "createRole": false,
+        "validUntil": "2027-01-25T04:39:50.052095+00:00",
+        "connectionLimit": 4
+      }
+    ],
+    "counts": {
+      "sessions": 0,
+      "audit_head": 1,
+      "principals": 0,
+      "change_feed": 0,
+      "role_grants": 0,
+      "submissions": 0,
+      "abuse_limits": 0,
+      "audit_events": 0,
+      "auth_refresh": 0,
+      "auth_families": 0,
+      "review_events": 0,
+      "staging_probe": 1,
+      "intake_control": 1,
+      "auth_challenges": 0,
+      "identity_mappings": 0,
+      "published_entities": 0,
+      "idempotency_results": 0,
+      "published_revisions": 0,
+      "submission_revisions": 0,
+      "deployment_migrations": 1
+    },
+    "intake": {
+      "enabled": false,
+      "singleton": true
+    }
+  },
+  "unchanged": true
+}
