@@ -1,11 +1,11 @@
 # Gould
 
-> Gould branding is in preparation. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+> Current development source uses Gould branding. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
 
 
 Goldberg is a native Android practice journal with a shared music catalogue in Discover and Library, sourced encyclopedia details, offline bundles and Smart Cache. Your repertoire, practice history, drafts and backups stay local.
 
-[Download Goldberg 0.11 Stable](https://github.com/stokonn/Goldberg/releases/tag/v0.11) · [Release notes and verified limits](https://github.com/stokonn/Goldberg/blob/main/docs/releases/GOLDBERG-0.11.md).
+[Download Goldberg 0.11 Stable](https://github.com/stokonn/Gould/releases/tag/v0.11) · [Release notes and verified limits](https://github.com/stokonn/Gould/blob/main/docs/releases/GOLDBERG-0.11.md).
 
 Use [Getting Started](Getting-Started), [User Guide](User-Guide), [Settings & Customization](Settings-and-Customization), [Developer Guide](Developer-Guide), [FAQ & Troubleshooting](FAQ-and-Troubleshooting), [Changelog & Roadmap](Changelog-and-Roadmap) and [Credits & Licenses](Credits-and-Licenses).
 
@@ -22,7 +22,7 @@ created by stokonn with love <3
 
 ## Goldberg 0.11-rc.1 — published release candidate (October 25, 2026)
 
-[Download Goldberg 0.11-rc.1](https://github.com/stokonn/Goldberg/releases/tag/v0.11-rc.1).
+[Download Goldberg 0.11-rc.1](https://github.com/stokonn/Gould/releases/tag/v0.11-rc.1).
 The candidate is a signed, non-debuggable release build, versionCode 12. Goldberg
 0.10.1 remains the latest stable release. Catalogue, encyclopedia, offline bundles,
 Smart Cache and accepted Android UI work are included; the Stage 8 Settings focus,
@@ -33,7 +33,7 @@ collection remain disabled. No private Cloudflare Worker has been deployed.**
 The existing private Supabase schema is deployed, but it is not a live public
 community service. Personal practice data remains local.
 
-[Candidate CI](https://github.com/stokonn/Goldberg/actions/runs/40212684482):302 JVM
+[Candidate CI](https://github.com/stokonn/Gould/actions/runs/40212684482):302 JVM
 cases passed;203 native cases,192 passed/11 existing fixture or probe-dependent
 skips/0 failures on API36. Seeded 0.10.1 upgrade preserved original rows, preferences
 and37 sessions;offline startup and process-death integrity checks passed. CI uses
@@ -50,7 +50,7 @@ status where they describe pending UI corrections or the absence of a candidate.
 
 Goldberg is a native Android music journal for classical pianists, created by stokonn. It combines a personal repertoire, manual and experimental Smart Practice timing, multi-piece session review, statistics and earned badges.
 
-The current release is [Goldberg 0.10.1](https://github.com/stokonn/Goldberg/releases/tag/v0.10.1). It refines the editorial interface, local composer favorites, Favorite Artist selection and historical session editing while preserving the existing practice journal. Google identity is optional profile identity, not cloud practice synchronization.
+The current release is [Goldberg 0.10.1](https://github.com/stokonn/Gould/releases/tag/v0.10.1). It refines the editorial interface, local composer favorites, Favorite Artist selection and historical session editing while preserving the existing practice journal. Google identity is optional profile identity, not cloud practice synchronization.
 
 Start with [Getting Started](Getting-Started), then read the [User Guide](User-Guide). See [Settings & Customization](Settings-and-Customization), [FAQ & Troubleshooting](FAQ-and-Troubleshooting), [Developer Guide](Developer-Guide), [Changelog & Roadmap](Changelog-and-Roadmap) and [Credits & Licenses](Credits-and-Licenses).
 

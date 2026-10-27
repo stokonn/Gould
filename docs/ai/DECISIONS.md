@@ -1,3 +1,5 @@
+> Current main maintenance: the repository is **stokonn/Gould**, the accepted history is integrated into **main**, and host 19/19 plus exact-source maintenance CI passed. Full workflow-registration audit/cleanup and the privately backed-up RC prerelease deletion remain mandatory pending administrative API access. Read [GOULD-MAIN-MAINTENANCE.md](GOULD-MAIN-MAINTENANCE.md) first. Earlier statements below are preserved history, not current repository identity or approval scope.
+
 ## Current owner-approved0.11completion scope
 
 Owner decision6435585794 and subsequent explicit instructions authorize the existing

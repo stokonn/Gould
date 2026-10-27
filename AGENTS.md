@@ -7,7 +7,7 @@ This is the canonical policy for every coding agent and every Goldberg version (
 Applies to Goldberg 0.11 and all future Gould versions. This supersedes earlier automatic publication authorization and historical RC instructions below.
 
 - During development, build debug APKs only for internal testing and owner review. Do not create new release candidates, prerelease tags or GitHub Releases for development APKs.
-- Preserve the existing `v0.11-rc.1` release, tag and artifacts as immutable historical evidence.
+- Owner update, final maintenance: remove only GitHub prerelease `v0.11-rc.1` (ID 423537826) and its assets after verifying a complete private metadata/notes/asset backup with SHA-256 hashes. Preserve its Git tag, historical commits, all Stable releases and other tags/assets. Earlier instructions to retain the published RC are superseded by this explicit owner decision.
 - Only after full implementation, verification and explicit owner approval, perform a fresh clean release build. It must be non-debuggable, signed with the trusted production certificate, pass all release-specific gates and support verified safe in-place upgrades.
 - Publish only the explicitly approved stable version. Merging into `main` and publishing a stable GitHub Release each require explicit owner approval; passing checks alone grants neither.
 - The current Stage 8 Discover repair delivers a debug APK and verification report for owner review, with no release publication.
@@ -18,7 +18,7 @@ Gould 0.12 uses exactly one development stage covering the complete owner-approv
 
 ## Final consolidation authorization — October 27, 2026
 
-Continue the existing `maintenance/gould-portability` task from [the host-accepted cleanup handoff](docs/maintenance/HOST-ACCEPTED-CLEANUP.md). All 19 host checks passed at `0ffebeb`; nine obsolete worktrees, including preparation, are safely retired. GitHub administration access and unresolved private records remain separate gates. Goldberg 0.11 Stable is published; Gould 0.12 features have not started. The local directory stays `Opus`; the actual repository remains `stokonn/Goldberg` until the approved rename succeeds. The owner authorizes meaningful maintenance commits, independently verified obsolete branch/workflow cleanup and the later `stokonn/Gould` repository rename. Required project/CI verification and unique-data preservation gate destructive actions and the rename. Never infer permission to publish a new application release or merge unfinished features. Preserve the independent `project-memory-protocol` repository and private memory.
+The verified Gould maintenance history is integrated into canonical `main` in `~/Projects/Opus`; actual repository is `stokonn/Gould` (ID 1421247418). The owner explicitly authorizes normal verified main integration and push, safe backed-up branch retirement, obsolete workflow definition/registration cleanup, and removal of the privately backed-up v0.11-rc.1 prerelease while retaining its tag. Preserve historical workflow runs. Follow [the current main handoff](docs/ai/GOULD-MAIN-MAINTENANCE.md); complete the full Actions API inventory and required main CI before declaring maintenance complete. Preserve the independent PMP repository, private records, application/signing/database identities and all Stable assets. Do not force-push, rewrite history, merge unresolved feature work, publish an application release or implement Gould 0.12 features.
 
 ## Work autonomously and protect data
 
@@ -42,7 +42,7 @@ Never install, launch, test, wipe or run ADB/instrumentation against the owner's
 
 ## Permanent GitHub workflow
 
-Discover the actual repository (currently stokonn/Goldberg; legacy Opus URLs may redirect). Inspect existing resources; do not duplicate them. Reuse one modern Project named Goldberg Development across releases. Track significant tasks with Issues, version milestones, labels and Status (Backlog/Todo/In Progress/Done); add Priority/Version/Type when supported. Keep unfinished/unverified work open; close tasks only after relevant implementation and verification, with commit/PR evidence. Do not invent future-version scope.
+Discover the actual repository (currently stokonn/Gould; legacy Goldberg/Opus URLs may redirect). Inspect existing resources; do not duplicate them. Reuse one modern Project named Goldberg Development across releases. Track significant tasks with Issues, version milestones, labels and Status (Backlog/Todo/In Progress/Done); add Priority/Version/Type when supported. Keep unfinished/unverified work open; close tasks only after relevant implementation and verification, with commit/PR evidence. Do not invent future-version scope.
 
 Maintain English-only official Wiki pages and navigation: Home, Getting Started, User Guide, Settings & Customization, Developer Guide, FAQ & Troubleshooting, Changelog & Roadmap, Credits & Licenses. Document only actual working features; clearly label blocked integrations and unverified behavior. Use verified screenshots and licensed attribution; include `created by stokonn with love <3`. Keep local maintainable Wiki sources in docs/wiki. Check Wiki enablement/initialization and GitHub token permissions; report exact blockers without claiming success or starting unauthorized authentication.
 

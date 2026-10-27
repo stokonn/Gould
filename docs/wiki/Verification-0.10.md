@@ -1,6 +1,6 @@
 # Goldberg 0.10 — Verification
 
-Goldberg 0.10 is published as a normal [GitHub Release](https://github.com/stokonn/Goldberg/releases/tag/v0.10). The APK was built as package `com.opus.piano`, version `0.10`, version code `10`. The APK uses the trusted compatible certificate. Its uploaded bytes were downloaded and compared against the tested local artifact. APK SHA-256: `20a5962cba89075a0d998b156097ddff86a22de1a0a2ac8ef636a8ff963e73d3`.
+Goldberg 0.10 is published as a normal [GitHub Release](https://github.com/stokonn/Gould/releases/tag/v0.10). The APK was built as package `com.opus.piano`, version `0.10`, version code `10`. The APK uses the trusted compatible certificate. Its uploaded bytes were downloaded and compared against the tested local artifact. APK SHA-256: `20a5962cba89075a0d998b156097ddff86a22de1a0a2ac8ef636a8ff963e73d3`.
 
 ## Automated and emulator checks
 
@@ -31,6 +31,6 @@ The emulator's Google account-entry screen was reached, but no emulator account 
 
 The owner waived personal screenshot review for this release. Possible 0.10.1 refinements include the open area on the ready-state Practice screen, sparse Repertoire appearance with small libraries, and scrolling at enlarged fonts. Live Wi-Fi and metered-data downloads were not certified end to end; consent, caching, offline fallback and download failure handling have automated coverage. No physical-device behavior is certified by Codex.
 
-Screenshots in the Wiki Home are actual emulator captures with controlled test data. More detailed evidence and the APK build path are maintained in the [repository verification ledger](https://github.com/stokonn/Goldberg/blob/main/docs/VERIFICATION-0.10.md).
+Screenshots in the Wiki Home are actual emulator captures with controlled test data. More detailed evidence and the APK build path are maintained in the [repository verification ledger](https://github.com/stokonn/Gould/blob/main/docs/VERIFICATION-0.10.md).
 
 [Home](Home) · [Changelog & Roadmap](Changelog-and-Roadmap) · [Developer Guide](Developer-Guide)

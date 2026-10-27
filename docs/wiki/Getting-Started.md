@@ -1,9 +1,9 @@
 # Getting Started — Gould
 
-> Gould branding is in preparation. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+> Current development source uses Gould branding. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
 
 
-Download the signed APK from the [0.11 Stable release](https://github.com/stokonn/Goldberg/releases/tag/v0.11). Android 8.0 or later is required. Install over your existing Goldberg app; preserve a portable backup first. Never uninstall to bypass a signature error.
+Download the signed APK from the [0.11 Stable release](https://github.com/stokonn/Gould/releases/tag/v0.11). Android 8.0 or later is required. Install over your existing Goldberg app; preserve a portable backup first. Never uninstall to bypass a signature error.
 
 Practice and your saved repertoire work offline. Library and Discover share catalogue entries and their source details. Enable optional automatic online catalogue search in Settings if you want provider searches. Keep media/download consent and mobile-data settings appropriate for your connection. Google profile identity does not synchronize your practice journal.
 
@@ -14,7 +14,7 @@ created by stokonn with love <3
 
 # Getting Started
 
-Download the APK from [GitHub Releases](https://github.com/stokonn/Goldberg/releases). Android 8.0 or newer is required. Before updating, export a backup in Settings → Data & Storage and keep the file outside app-private storage.
+Download the APK from [GitHub Releases](https://github.com/stokonn/Gould/releases). Android 8.0 or newer is required. Before updating, export a backup in Settings → Data & Storage and keep the file outside app-private storage.
 
 Install over the existing compatible Goldberg app. Allow installation from your chosen browser/file manager if Android asks. If Android rejects the certificate or version, retain the existing installation; do not uninstall to bypass the problem. The package remains com.opus.piano. See [FAQ](FAQ-and-Troubleshooting).
 

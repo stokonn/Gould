@@ -1,6 +1,6 @@
 # FAQ & Troubleshooting — Gould
 
-> Gould branding is in preparation. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+> Current development source uses Gould branding. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
 
 
 **Does my journal upload?** No. Practice, notes, drafts/recovery and backups remain local. Online provider queries process their necessary network metadata; the catalogue backend has no journal-upload endpoint.
@@ -34,7 +34,7 @@ created by stokonn with love <3
 
 **Who tested the owner's phone?** The owner personally reported the Google scenarios in [Verification](Verification). Codex performs no physical-phone operations. Automated and emulator results are recorded separately.
 
-**Where is development tracked?** The permanent [Goldberg Development Project](https://github.com/users/stokonn/projects/2) is private and accessible to authorized accounts. Public Issues and milestones live in [the repository](https://github.com/stokonn/Goldberg/issues). The Wiki is published separately from the Android release. The verification page separates owner-reported Google results from automated/emulator evidence.
+**Where is development tracked?** The permanent [Goldberg Development Project](https://github.com/users/stokonn/projects/2) is private and accessible to authorized accounts. Public Issues and milestones live in [the repository](https://github.com/stokonn/Gould/issues). The Wiki is published separately from the Android release. The verification page separates owner-reported Google results from automated/emulator evidence.
 
 [Home](Home) · [Getting Started](Getting-Started)
 

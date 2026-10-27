@@ -1,3 +1,5 @@
+> Current main maintenance: the repository is **stokonn/Gould**, the accepted history is integrated into **main**, and host 19/19 plus exact-source maintenance CI passed. Full workflow-registration audit/cleanup and the privately backed-up RC prerelease deletion remain mandatory pending administrative API access. Read [GOULD-MAIN-MAINTENANCE.md](GOULD-MAIN-MAINTENANCE.md) first. Earlier statements below are preserved history, not current repository identity or approval scope.
+
 > Host acceptance is now validated: all 19 checks passed at `0ffebeb`, including 348 JVM tests and local backend/encrypted-backup checks. Nine obsolete worktrees, including Gould-Preparation, have been retired with preservation verified. Current blocker is GitHub administration access, not the build. Read [HOST-ACCEPTED-CLEANUP.md](../maintenance/HOST-ACCEPTED-CLEANUP.md) first; older entries below are historical. Actual repository remains `stokonn/Goldberg` until the approved rename is confirmed.
 
 # Gould final consolidation — active handoff

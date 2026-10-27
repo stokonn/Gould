@@ -1,0 +1,18 @@
+[
+  {
+    "branch": "feature/goldberg-0.11-stage-6-api-v1-local",
+    "sha": "006fa577ff4faef8ee7a25daf851620feb5bc3a8"
+  },
+  {
+    "branch": "implement/goldberg-0.11-stage-6-7-9-local",
+    "sha": "9d7150c5b3f20880fe4d587d9c3bfd65a0f612ce"
+  },
+  {
+    "branch": "maintenance/legacy-cleanup-2026-10-18",
+    "sha": "556970ab7407ec6986e3678657adbd2168516468"
+  },
+  {
+    "branch": "verify/goldberg-0.11-stage-6-12-local",
+    "sha": "6dd3136269ec7f5932c8c4b3689fb065d4db9105"
+  }
+]

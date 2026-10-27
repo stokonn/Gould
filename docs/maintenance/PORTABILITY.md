@@ -1,10 +1,10 @@
 # Gould development transfer
 
-Status on October 27, 2026: consolidation at `0ffebeb` passed all 19 owner-executed host checks, with the report/source hashes independently validated by the agent. Nine obsolete worktrees, including Gould-Preparation, are retired with originals preserved. GitHub administration and remaining private-data dispositions are pending; see [current status](HOST-ACCEPTED-CLEANUP.md). No Gould 0.12 features have started.
+Current status: canonical development checkout `~/Projects/Opus` is on main in renamed repository `stokonn/Gould`. The integrated source passed 19 host checks/348 JVM tests and exact-source maintenance CI; remote clone verification passed. Full Actions registration cleanup and backed-up prerelease removal remain mandatory. Read [the main handoff](../ai/GOULD-MAIN-MAINTENANCE.md); no Gould 0.12 features have started.
 
 ## Development baseline and layout
 
-The sole intended development checkout is `~/Projects/Opus`. Its local branch is `maintenance/gould-portability`, based on current-main publication receipt `1c943dc925231a3725a0e9d9aa6b3e34d19e445a`. The verified Stable tag remains `v0.11` at `ab7d66ddafe0bcf2f23270682116ee2e02f828eb`. The GitHub repository remains `https://github.com/stokonn/Goldberg.git`.
+The sole intended development checkout is `~/Projects/Opus`. Its canonical branch is `main`, integrating the verified maintenance history based on publication receipt `1c943dc925231a3725a0e9d9aa6b3e34d19e445a`. The verified Stable tag remains `v0.11` at `ab7d66ddafe0bcf2f23270682116ee2e02f828eb`. The GitHub repository is `https://github.com/stokonn/Gould.git`.
 
 | Component | Classification | Treatment |
 | --- | --- | --- |
@@ -28,7 +28,7 @@ Current main already contains the integrated Android application and backend mod
 Versions below come from repository build files and the observed host, not a newly validated installation:
 
 - Linux x86_64; Git; Bash; Python 3 (host observed 3.14.8); GNU tar; GnuPG for encrypted backup tests. Pillow is needed by optional artwork/APK inspection scripts.
-- JDK 17 is the CI configuration. Existing host has OpenJDK 25.0.4.1; `./gradlew --version` starts with it, but the new build is blocked before compilation. Prefer JDK 17 for the documented CI setup.
+- JDK 17 is the CI configuration. Existing host has OpenJDK 25.0.4.1; the owner-executed 19-check host gate passed with the installed host toolchain. Prefer JDK 17 for the documented CI setup.
 - Gradle **9.3.1**, supplied by `./gradlew`; Android Gradle plugin **9.1.0**; Compose Kotlin plugin **2.2.10**; KSP **2.3.12**. Do not install a system Gradle in place of the wrapper.
 - Android SDK `platform-tools`, `platforms;android-36`, `build-tools;36.0.0`. Minimum app API 26; target/compile API 36. An emulator and its system image are optional, separate installations.
 - Node **22.23.1** and npm **10.9.8** were observed on the current host. Package lockfiles pin JS dependencies. PostgreSQL **17** is the synthetic backend test target; rootless Podman is used by the local runner.

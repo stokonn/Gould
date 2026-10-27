@@ -1,6 +1,6 @@
 # Goldberg 0.11 — verified Stable release
 
-[Goldberg 0.11 Stable](https://github.com/stokonn/Goldberg/releases/tag/v0.11) is a signed, non-debuggable com.opus.piano APK,version0.11/code13. The annotatedv0.11tag points to ab7d66d; its195application/build inputs match the accepted a7bb2aa source. Main history is preserved.
+[Goldberg 0.11 Stable](https://github.com/stokonn/Gould/releases/tag/v0.11) is a signed, non-debuggable com.opus.piano APK,version0.11/code13. The annotatedv0.11tag points to ab7d66d; its195application/build inputs match the accepted a7bb2aa source. Main history is preserved.
 
 APK SHA256: `290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6`. Trusted signer: `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`. GitHub asset digest and re-downloaded APK bytes match. Signed release lint/package/version/ZIP/notice/resource checks pass.
 
@@ -8,7 +8,7 @@ APK SHA256: `290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6`. 
 
 Nine actual final frames were inspected across both themes,EN/CZ,standard/small and1x/2x. Three sharedLibraryframes are component renders. Small2x primary action requires scrolling;latercreditsframes show it fully. Navigation labels retain existing wrapping. No physical-phone or newAPI26 execution is claimed.
 
-[Detailed evidence and limitations](https://github.com/stokonn/Goldberg/blob/main/docs/releases/GOLDBERG-0.11.md). Public catalogue API10/10security checks passed once;its projection remains empty. BackendOAuth/community writes/private-data uploads stay disabled.
+[Detailed evidence and limitations](https://github.com/stokonn/Gould/blob/main/docs/releases/GOLDBERG-0.11.md). Public catalogue API10/10security checks passed once;its projection remains empty. BackendOAuth/community writes/private-data uploads stay disabled.
 
 created by stokonn with love <3
 
@@ -20,7 +20,7 @@ See [Goldberg 0.10.1 verification](Verification-0.10.1) for the current release.
 
 # Verification — Goldberg 0.9.2
 
-Application acceptance review passes. The normal [Goldberg 0.9.2 release](https://github.com/stokonn/Goldberg/releases/tag/v0.9.2) uses the verified compatible APK. A build alone was not used as release acceptance.
+Application acceptance review passes. The normal [Goldberg 0.9.2 release](https://github.com/stokonn/Gould/releases/tag/v0.9.2) uses the verified compatible APK. A build alone was not used as release acceptance.
 
 ## Owner-reported manual Google results
 

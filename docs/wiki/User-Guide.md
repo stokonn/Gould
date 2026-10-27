@@ -1,6 +1,6 @@
 # User Guide — Gould
 
-> Gould branding is in preparation. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+> Current development source uses Gould branding. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
 
 
 Use Library for your personal repertoire and the shared local catalogue, and Discover to explore sourced music records. Both tabs open the same canonical catalogue details. Public catalogue rows are labelled separately from music saved in your repertoire; open details to add an eligible work or open its existing repertoire entry.
