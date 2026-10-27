@@ -179,7 +179,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 composable("admin/audit") { AdminTheme { AdminAuditScreen(admin) { nav.popBackStack() } } }
                 composable("admin/settings") { AdminTheme { AdminSettingsScreen(admin) { nav.popBackStack() } } }
                 composable(Destination.REPERTOIRE.name) {
-                    RepertoireScreen(library,catalogData,model,{nav.selectTopLevel("DISCOVER")},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")},catalog,{nav.navigate("catalog/work/$it")})
+                    RepertoireScreen(library,catalogData,model,{nav.selectTopLevel("DISCOVER")},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")},catalog,{nav.navigate("catalog/work/$it")},{nav.navigate("discover/entity/$it")})
                 }
                 composable(Destination.DISCOVER.name) { DiscoverScreen({ nav.navigate("discover/entity/$it") }, { nav.navigate("piece/$it") }, { nav.navigate("catalog/work/$it") }, library) }
                 composable("discover/entity/{id}") { route -> DiscoverDetailScreen(route.arguments?.getString("id").orEmpty(), {nav.popBackStack()}, {nav.navigate("discover/entity/$it")}, {nav.navigate("piece/$it")}) }

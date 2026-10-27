@@ -19,9 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.opus.piano.data.*
 
 @OptIn(ExperimentalLayoutApi::class, androidx.compose.foundation.ExperimentalFoundationApi::class)
-@Composable internal fun RepertoireScreen(state: LibraryState, catalog: CatalogSnapshot, model: OpusViewModel, explore: () -> Unit, detail: (Long) -> Unit, profile: ProfileViewModel, composerPage:(String)->Unit, catalogModel:CatalogViewModel, workPage:(String)->Unit) {
-    val results by catalogModel.savedResults.collectAsState()
-    val adding by catalogModel.adding.collectAsState()
+@Composable internal fun RepertoireScreen(state: LibraryState, catalog: CatalogSnapshot, model: OpusViewModel, explore: () -> Unit, detail: (Long) -> Unit, profile: ProfileViewModel, composerPage:(String)->Unit, catalogModel:CatalogViewModel, workPage:(String)->Unit, cataloguePage:(String)->Unit) {
     var view by rememberSaveable {mutableStateOf("all")}
     val mine=view=="mine"
     var limit by rememberSaveable {mutableIntStateOf(40)}
@@ -33,7 +31,6 @@ import com.opus.piano.data.*
     var editor by rememberSaveable { mutableStateOf(false) }
     var deleting by remember { mutableStateOf<Piece?>(null) }
     var query by rememberSaveable { mutableStateOf("") }
-    LaunchedEffect(query) {catalogModel.filterSaved(query)}
     var difficulty by rememberSaveable {mutableStateOf("All")}
     var status by rememberSaveable { mutableStateOf("All") }
     var composer by rememberSaveable { mutableStateOf("All") }
@@ -101,26 +98,7 @@ import com.opus.piano.data.*
             }
         }
         if(view=="artists") {
-            val artistRows=(favorites.mapNotNull {f->composerMap[f.composerId]}+results.composers).distinctBy {it.id}
-                .filter {author->query.isBlank() || catalogText(author.name).contains(catalogText(query))}
-            if (state.loading) item { EditorialSkeleton() }
-            // Stage 7A (owner): the Artists chip browses the PUBLIC catalogue; pinned
-            // favourites come from the user. Never presented as a personal collection.
-            if (!state.loading && artistRows.isNotEmpty()) item { EditorialSectionHeader(L.s(R.string.stage7a_catalogue_artists), L.s(R.string.stage7a_catalogue_artists_hint)) }
-            items(artistRows.take(limit),key={"artist:"+it.id}) {author->
-                ArtistRow(author,favorites.any {it.composerId==author.id},profile::favoriteComposer){composerPage(author.id)}
-            }
-            if(!state.loading && artistRows.isEmpty()) item {
-                // First-install reachability (Stage 7A, owner): an explicit, user-initiated
-                // bootstrap through the app's own featured() fetch — no silent downloads and
-                // no invented catalogue data.
-                if(results.composers.isEmpty() && favorites.isEmpty() && query.isBlank()) Panel {
-                    SectionTitle(L.s(R.string.stage7a_catalogue_artists))
-                    Text(L.s(R.string.stage7a_catalogue_artists_hint), color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    JournalSecondaryButton(onClick={catalogModel.startBrowsing()}) {Text(L.s(R.string.stage7a_load_catalogue_artists))}
-                } else JournalEmpty(L.s(R.string.msg_no_matching_compositions_391a),L.s(R.string.msg_try_a_different_title_composer_or_catalogue_16ea))
-            }
-            if(artistRows.size>limit) item {JournalSecondaryButton(onClick={limit+=40}) {Text(L.s(R.string.msg_more_saved_suggestions_d7e1))}}
+            item { SharedLibraryCatalogue(query,"artists",cataloguePage,explore) }
         } else {
         if(favorites.isNotEmpty()) item { FavoriteComposerStrip(catalog,favorites,composerPage,profile::favoriteComposer) }
         if (state.loading) item { EditorialSkeleton() }
@@ -148,36 +126,9 @@ import com.opus.piano.data.*
             }
         }
         if(!mine) {
-            val browsingWorks=if(query.isBlank() && (composer!="All" || era!="All" || genre!="All")) catalog.works else results.works
-            val visibleComposers=if(difficulty=="All" && status=="All" && instrument=="All" && genre=="All") results.composers.filter {author->
-                (composer=="All" || catalogText(author.name)==catalogText(composer)) && (era=="All" || catalogText(author.epoch)==catalogText(era))
-            } else emptyList()
-            val available=browsingWorks.filter {work->
-                val author=composerMap[work.composerId]
-                !alreadyAdded(work,author,state.pieces) && (composer=="All" || catalogText(author?.name.orEmpty())==catalogText(composer)) &&
-                    (era=="All" || catalogText(author?.epoch.orEmpty())==catalogText(era)) && (genre=="All" || catalogText(work.genre)==catalogText(genre)) && status=="All" && (difficulty=="All" || difficulty==Difficulty.UNRATED.label) && instrument=="All"
-            }.let {rows->when(sort) {"Composer"->rows.sortedBy {catalogText(composerMap[it.composerId]?.name.orEmpty())};"Alphabetical"->rows.sortedBy {catalogText(it.title)};else->rows}}
-            // Stage 7A (owner): personal collection and public catalogue entries are always
-            // visually separated; catalogue rows are clearly labelled, never shown as saved.
-            if(available.isNotEmpty()) item { EditorialSectionHeader(L.s(R.string.stage7a_from_catalogue), L.s(R.string.stage7a_catalogue_not_saved)) }
-            items(available.take(limit),key={"work:${it.id}"}) {work->WorkCard(work,composerMap[work.composerId],false,work.id in adding,{workPage(work.id)},{composerMap[work.composerId]?.let {catalogModel.add(work,it)}})}
-            if(available.size>limit || visibleComposers.size>limit) item {JournalSecondaryButton(onClick={limit+=40}) {Text(L.s(R.string.msg_more_saved_suggestions_d7e1))}}
-            if(visibleComposers.isNotEmpty()) {
-                item { EditorialSectionHeader(L.s(R.string.stage7a_catalogue_artists), L.s(R.string.stage7a_catalogue_not_saved)) }
-                items(visibleComposers.take(limit),key={"composer:${it.id}"}) {author->
-                    Surface(onClick={composerPage(author.id)},shape=androidx.compose.foundation.shape.RoundedCornerShape(14.dp),color=MaterialTheme.colorScheme.surface) {
-                        Row(Modifier.fillMaxWidth().padding(12.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
-                            ComposerPortrait(author)
-                            Text(author.name,Modifier.weight(1f),style=MaterialTheme.typography.titleMedium)
-                            ComposerFavoriteButton(author,favorites.any {it.composerId==author.id},profile::favoriteComposer)
-                        }
-                    }
-                }
-            }
-            if(pieces.isEmpty() && available.isEmpty() && visibleComposers.isEmpty()) item {
-                JournalEmpty(L.s(R.string.msg_no_matching_compositions_391a),L.s(R.string.msg_try_a_different_title_composer_or_catalogue_16ea))
-            }
-            item {JournalTextButton(onClick=explore) {Text(L.s(R.string.msg_discover_in_catalogue_28f0))}}
+            if(difficulty=="All" && status=="All" && instrument=="All" && composer=="All" && era=="All" && genre=="All")
+                item { SharedLibraryCatalogue(query,"all",cataloguePage,explore) }
+
         }
         }
 

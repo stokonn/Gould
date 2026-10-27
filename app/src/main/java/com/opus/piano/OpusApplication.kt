@@ -50,8 +50,10 @@ class OpusApplication : Application() {
     val providerCache by lazy { com.opus.piano.data.catalogue.providers.FileProviderCache(java.io.File(cacheDir,"catalogue-stage4/responses"),reserveBytes={catalogueStorage.requiredReserve()},intake=catalogueStorage.intake) }
     val discover by lazy {
         com.opus.piano.data.catalogue.DiscoverRepository(localCatalogue,
-            com.opus.piano.data.catalogue.providers.ProviderClient(com.opus.piano.data.catalogue.providers.HttpsProviderTransport { catalogOnline.enabled.value && media.allowed() }, { catalogOnline.enabled.value && media.allowed() }, cache=providerCache), { catalogOnline.enabled.value && media.allowed() }, catalogueStorage)
+            com.opus.piano.data.catalogue.providers.ProviderClient(com.opus.piano.data.catalogue.providers.HttpsProviderTransport { catalogOnline.enabled.value && media.allowed() }, { catalogOnline.enabled.value && media.allowed() }, cache=providerCache), { catalogOnline.enabled.value && media.allowed() }, catalogueStorage,
+            prepareLocal={legacyCatalogueImport.synchronize();Unit})
     }
+    val legacyCatalogueImport by lazy { com.opus.piano.data.catalogue.LegacyCatalogueImport(database,localCatalogue,catalogueStorage) }
     val cataloguePortraits by lazy { com.opus.piano.data.catalogue.CataloguePortraits(java.io.File(cacheDir,"catalogue-stage4/portraits"),reserveBytes={catalogueStorage.requiredReserve()},intake=catalogueStorage.intake) { media.allowed() } }
     // Stage 5 offline bundles (D5.1 file store, D5.3 WorkManager, D7 budgets/consent).
     // Lazy on purpose: nothing in journal/recovery/startup paths ever touches these.

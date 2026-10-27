@@ -1,0 +1,6 @@
+PASS: packaged transparent artwork and circular/rounded-square bounds: res/drawable-nodpi-v4/ic_goldberg_classic_foreground.png
+PASS: packaged transparent artwork and circular/rounded-square bounds: res/drawable-night-nodpi-v8/ic_goldberg_classic_foreground.png
+PASS: packaged transparent artwork and circular/rounded-square bounds: res/drawable-nodpi-v4/ic_goldberg_classic_monochrome.png
+PASS: com.opus.piano 0.11-dev (13), published baseline code 11
+Signing SHA-256: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+APK SHA-256: bbe5f5f9632146cb8aa6fac40ae3c0b75845db55438de1e5f6fdd6887617e679

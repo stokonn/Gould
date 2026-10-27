@@ -293,7 +293,7 @@ private class OfflineRow(val title:String,val composer:String,val meta:String,va
     }
 }
 private fun categoryIcon(key:String)=when(key){"works","work","arrangement"->Icons.Outlined.MusicNote;"artists","artist"->Icons.Outlined.Person;"albums","album","release"->Icons.Outlined.Album;"lists","collection"->Icons.Outlined.List;else->Icons.Outlined.LibraryMusic}
-@Composable private fun CatalogueRow(entity:CatalogueEntity,workType:String?=null,info:CatalogueRowInfo?=null,onClick:()->Unit) {
+@Composable internal fun CatalogueRow(entity:CatalogueEntity,workType:String?=null,info:CatalogueRowInfo?=null,onClick:()->Unit) {
     Surface(onClick=onClick,shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surface) {
         Row(Modifier.fillMaxWidth().padding(horizontal=12.dp,vertical=12.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
             Icon(categoryIcon(entity.kind),null,tint=MaterialTheme.colorScheme.primary,modifier=Modifier.size(20.dp))

@@ -5,6 +5,42 @@ import androidx.room.withTransaction
 /** Catalogue-only repository. No personal or practice writes. */
 class CatalogueRepository(private val db: CatalogueDatabase) {
     private val dao = db.dao()
+    internal suspend fun importLegacyResponse(marker:String,results:List<com.opus.piano.data.catalogue.providers.ProviderResult>)=db.withTransaction {
+        if(dao.state(marker)==null){results.forEach {CatalogueIngestion(db).accept(it)};dao.state(CatalogueState(marker,"ready"))}
+    }
+    /** Retained metadata without its original response is not new licence evidence. */
+    internal suspend fun importLegacySnapshot(kind:String,row:org.json.JSONObject)=db.withTransaction {
+        require(kind in setOf("artist","work"))
+        val external=row.getString("id");val title=row.getString(if(kind=="artist")"name" else "title")
+        require(external.isNotBlank() && title.isNotBlank())
+        val payload=row.toString();val digest=SearchText.hash(payload)
+        val marker="legacy-snapshot-v1:$kind:$external:$digest"
+        if(dao.state(marker)!=null)return@withTransaction
+        val provider=if(external.matches(Regex("[0-9]+")))"openopus" else "legacy"
+        val providerKind=if(kind=="artist")"composer" else "work"
+        val identity=dao.identity(provider,providerKind,external)
+        // Do not replace reviewed provider assertions with an old normalized cache.
+        if(identity?.reviewState=="reviewed"){dao.state(CatalogueState(marker,"ready"));return@withTransaction}
+        val id=identity?.entityId ?: java.util.UUID.randomUUID().toString()
+        if(dao.entity(id)==null) {
+            val entity=CatalogueEntity(id,kind,title)
+            if(kind=="artist")add(entity,CatalogueArtist(id,sortName=title))else add(entity,CatalogueWork(id))
+        }else if(!dao.hasAlias(id,"und",title))addAlias(CatalogueAlias(entityId=id,language="und",value=title,normalized=CatalogueValidation.normalized(title)))
+        if(identity==null)map(CatalogueExternalIdentity(provider,providerKind,external,id,"retained-local-normalized-snapshot;rights-unreviewed","observed"))
+        val source=CatalogueSource(java.util.UUID.randomUUID().toString(),"legacy-local","$kind:$external",digest,digest,
+            java.time.Instant.now().toString(),"local:retained-catalogue-snapshot")
+        addSource(source)
+        val rights=CatalogueRights(java.util.UUID.randomUUID().toString(),"unknown","","Retained local metadata; original provider response unavailable","unreviewed")
+        addRights(rights)
+        row.keys().forEach {field->if(field!="id")addAssertion(CatalogueAssertion(java.util.UUID.randomUUID().toString(),id,field,
+            org.json.JSONObject().put("value",row.get(field)).put("language","und").toString(),source.id,rights.id,false))}
+        if(kind=="work") {
+            val composer=row.optString("composerId")
+            val author=dao.identity(if(composer.matches(Regex("[0-9]+")))"openopus" else "legacy","composer",composer)
+            if(author!=null && !dao.hasEdge(id,author.entityId,"credit"))relate(CatalogueRelationship(java.util.UUID.randomUUID().toString(),"credit",id,"work",author.entityId,"artist",role="composer",creditedAs=dao.entity(author.entityId)?.title.orEmpty(),sourceId=source.id))
+        }
+        dao.state(CatalogueState(marker,"ready"))
+    }
     internal suspend fun ingest(result:com.opus.piano.data.catalogue.providers.ProviderResult)=CatalogueIngestion(db).accept(result)
     internal suspend fun supplement(id:String,result:com.opus.piano.data.catalogue.providers.ProviderResult)=db.withTransaction {
         require(result.license=="CC-BY-SA-4.0" && result.request.provider=="wikipedia" && dao.entity(id)!=null)

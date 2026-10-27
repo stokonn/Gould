@@ -1,0 +1,24 @@
+{
+  "command": "./gradlew testDebugUnitTest assembleDebug assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1",
+  "result": "PASS",
+  "tasks": 83,
+  "executed": 30,
+  "upToDate": 53,
+  "jvm": {
+    "tests": 348,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": 39,
+  "lint": {
+    "Error": 0,
+    "Warning": 135,
+    "Information": 0
+  },
+  "instrumentation": "compiled only; five new tests await actual API36 execution",
+  "debugApkSha256": "bbe5f5f9632146cb8aa6fac40ae3c0b75845db55438de1e5f6fdd6887617e679",
+  "initialLintFailure": "Kotlin FIR analysis crash; frozen-source final run passed; no lint checks disabled",
+  "baseline": "e05c692",
+  "schema": "personal10/catalogue1 unchanged; no destructive migration"
+}

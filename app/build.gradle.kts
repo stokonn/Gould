@@ -6,7 +6,7 @@ plugins {
 android {
     namespace = "com.opus.piano"
     compileSdk = 36
-    defaultConfig { applicationId = "com.opus.piano"; minSdk = 26; targetSdk = 36; versionCode = 12; versionName = "0.11-dev"; testInstrumentationRunner = if (providers.gradleProperty("goldbergStage8Probe").orNull == "true") "com.opus.piano.Stage8bAssessmentProbe" else "androidx.test.runner.AndroidJUnitRunner" }
+    defaultConfig { applicationId = "com.opus.piano"; minSdk = 26; targetSdk = 36; versionCode = 13; versionName = if (providers.gradleProperty("goldbergStable").orNull == "true") "0.11" else "0.11-dev"; testInstrumentationRunner = if (providers.gradleProperty("goldbergStage8Probe").orNull == "true") "com.opus.piano.Stage8bAssessmentProbe" else "androidx.test.runner.AndroidJUnitRunner" }
     buildFeatures { compose = true }
     // Shared synthetic contract corpus is available to JVM tests only, never the APK.
     sourceSets.getByName("test").resources.srcDir("../contracts/admin/v1")

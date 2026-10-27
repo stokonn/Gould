@@ -14,7 +14,8 @@ data class DiscoverSearch(val queryId:String,val page:CatalogueSearchPage,val so
 
 /** The only online entry point requires an explicit active search. Construction/landing are local. */
 class DiscoverRepository(private val store:LocalCatalogueStore,private val client:ProviderClient,private val permitted:()->Boolean,
-    private val storage:CatalogueStorage?=null, private val adapters:List<ProviderAdapter> = listOf(OpenOpusAdapter(),MusicBrainzAdapter(),WikidataAdapter()),private val now:()->Long=System::currentTimeMillis) {
+    private val storage:CatalogueStorage?=null, private val adapters:List<ProviderAdapter> = listOf(OpenOpusAdapter(),MusicBrainzAdapter(),WikidataAdapter()),private val now:()->Long=System::currentTimeMillis,
+    private val prepareLocal:suspend ()->Unit = {}) {
     private val paging=DiscoverPaging(now)
     private fun usable(state:SourceState)=state in setOf(SourceState.FRESH,SourceState.CACHED,SourceState.STALE)
     private suspend fun canStore(bytes:Long=CatalogueStorage.MAX_RESPONSE)=withContext(Dispatchers.IO){storage?.admits(bytes) ?: true}
@@ -27,7 +28,12 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
     suspend fun clearResponseCache(){client.clearCache()}
     private suspend fun local(query:String,filter:SearchFilter,cursor:String?=null,excluded:Set<String> = emptySet(),limit:Int=40):CatalogueSearchPage =
         when(val access=store.access {it.searchPage(query,filter,cursor,limit,excluded)}){is CatalogueAccess.Available->access.value;is CatalogueAccess.Rejected->throw IllegalArgumentException("Invalid or stale search cursor");else->CatalogueSearchPage(emptyList(),null,"unavailable")}
-    suspend fun landing():CatalogueSearchPage {store.initialize();return local("",SearchFilter())}
+    suspend fun landing():CatalogueSearchPage {store.initialize();prepareLocal();return local("",SearchFilter())}
+    /** Same local data, identity, pagination and detail path in both tabs. No network. */
+    suspend fun library(query:String,category:String="all",cursor:String?=null):CatalogueSearchPage {
+        require(query.length<=256 && category in setOf("all","artists","works"))
+        store.initialize();prepareLocal();return local(query,SearchFilter(category=category),cursor)
+    }
     suspend fun filters():DiscoverFilters = when(val access=store.access {repo->DiscoverFilters(
         repo.queryEntities(androidx.sqlite.db.SimpleSQLiteQuery("SELECT e.* FROM entities e WHERE e.kind='artist' AND e.status='active' AND EXISTS(SELECT 1 FROM relationships r WHERE r.type='credit' AND r.toId=e.id) ORDER BY e.title,e.id LIMIT 40")),repo.availablePeriods())}) {
         is CatalogueAccess.Available->access.value
@@ -83,6 +89,7 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
         }.toSet()} as? CatalogueAccess.Available)?.value.orEmpty()
     fun search(query:String,filter:SearchFilter,language:String,online:Boolean):Flow<DiscoverSearch> = channelFlow {
         require(query.length<=256 && language in setOf("cs","en"))
+        store.initialize();prepareLocal()
         val id=UUID.randomUUID().toString()
         val items=linkedMapOf<String,CatalogueEntity>()
         val first=local(query,filter);first.items.forEach {items[it.id]=it}
