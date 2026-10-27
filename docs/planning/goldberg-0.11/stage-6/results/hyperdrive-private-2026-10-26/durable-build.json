@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "command": "cf build",
+  "project": "services/community-bff/deployment",
+  "bundleSha256": "cb40f9b1fa8eb299c42ac6c38b28093772ea8793af0b77a8d221751fc0033c49",
+  "bundleBytes": 569320,
+  "uploaded": false,
+  "reason": "Already-deployed equivalent source is retained;canonical build changes module path labels."
+}

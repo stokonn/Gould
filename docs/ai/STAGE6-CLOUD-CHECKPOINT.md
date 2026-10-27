@@ -1,3 +1,14 @@
+## October27 expiry checkpoint — public task remains queued
+
+Private integration sourceeea407b andboth essentialCI passed. Hosted positives and
+negativecases passed within the October26 authorized window. Current clock is
+past runtimeexpiry2026-10-27T03:00:38Z:do not claim current availability orretry
+expiredlogin/resetpassword/extendrole automatically. Finish/push this truthful
+checkpoint;public activation remainsdisabled pending runtime lifecycle decision.
+No mainmerge/RC/release/newpublicendpoint. All prior source/evidence preserved.
+
+---
+
 ## Current private integration — Hyperdrive hosted PASS, October26
 
 The owner’s new deployment directive authorizes reversible Free-only transport
@@ -7,6 +18,7 @@ is superseded for this exact private CA/verify-full/cache-off scope.
 - [x] Existing Worker/database reused;one necessary Hyperdrive and public CA added.
   No schema/data/RLS/password/bootstrap changes. Runtime role remains read-only,
   hard4connections,expiryOct27 03:00:38UTC;no admin runtime credential.
+- [x] CIat eea407b:backend40409288204 SUCCESS522bodies;quality40409288198 SUCCESS.
 - [x] Actual hosted private catalogue/feed200,OAuth503,admin401,cursor400,
   method405,missing404 and anonymous caller403 PASS. No public routes/previews.
 - [x] Hyperdrive verify-full/exactCA/cacheoff readback PASS. Worker now carries
@@ -14,7 +26,8 @@ is superseded for this exact private CA/verify-full/cache-off scope.
 - [x] Focused Fetch11PASS and actual local workerd14PASS;no full local regression
   repetition. Existing comprehensive521/Android/native receipts remain historical.
 - [x] Database postflight20RLS/55policies/original47BFFgrants/data/intake preserved.
-- [ ] Commit/push/remote/clean +Issue31/PMP/handoff checkpoint before queued task.
+- [x] Sourceeea407b94254e7c8d5153da3eecbaf389f32e1cd committed/pushed;
+ exactremote/clean verified;Issue31comment6428398033/privatePMP/handoff updated.
 - [ ] Public catalogue activation is QUEUED;do not begin until private checkpoint
   complete. OAuth remainsdisabled;wholeStage6 real-provider/operational gates open.
 
