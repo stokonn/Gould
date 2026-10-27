@@ -42,6 +42,6 @@ Complete private backup: `.gradle/private-release-backups/v0.11-rc.1/verified-ba
 
 ## Remaining maintenance boundary
 
-The complete Actions audit and RC operation are resolved. **Overall maintenance is not declared complete:** seven historical worktrees retain private/ignored originals with unestablished independent custody/backup coverage, and six unique historical branches remain deliberately unmerged. Canonical source is on main, compiles/tests successfully and does not depend on those worktrees. Do not erase protected records to make directory counts smaller; do not infer Gould 0.12 feature scope from this audit.
+The complete Actions audit and RC operation are resolved. **Overall maintenance is not declared complete:** seven historical worktrees retain private/ignored originals with unestablished independent custody/backup coverage, and six blocked historical branches remain retained for unresolved work or backup coverage. The integrated maintenance branch is retained because its head is absent from the older verified bundle; this is not unfinished feature work. Canonical source is on main, compiles/tests successfully and does not depend on those worktrees. Do not erase protected records to make directory counts smaller; do not infer Gould 0.12 feature scope from this audit.
 
 created by stokonn with love <3
