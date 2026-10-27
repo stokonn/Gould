@@ -1,0 +1,171 @@
+{
+  "configurations": [
+    {
+      "configuration": "stage7b-small-en-Light-f1.0",
+      "dashboardPngSha256": "6a2ba8d20f61d7877a83ed29e3fb4e128fa68bc316062c0cde14b607dab76ad9",
+      "treeSha256": "00f54209b37dc280c00424342820236d147058fdc7a926604bd9eb8a152b3aa0"
+    },
+    {
+      "configuration": "stage7b-small-en-Light-f1.3",
+      "dashboardPngSha256": "7d6421eaea6962be47d4d881933b8a9b339f68356db0f71756b19b49c33a1e60",
+      "treeSha256": "19fb96e190b5a4bcf104269e7156cb54f04e444731c2510dc927a1efb5dfa4b3"
+    },
+    {
+      "configuration": "stage7b-small-en-Light-f1.5",
+      "dashboardPngSha256": "f2f994a7b963992a95b5f514696cb889a53118e3a7f787e05b96539af3829a18",
+      "treeSha256": "7552dd07384042ff6ba487089be35acaf0883870e618bbe067f46eac40850752"
+    },
+    {
+      "configuration": "stage7b-small-en-Light-f2.0",
+      "dashboardPngSha256": "d80a7566442ea0a0c60450eb6831936f2b7874daa6b8501898437d342f05b40c",
+      "treeSha256": "16ff7f799d3353f04fcde465e617dcc2ae80a40d57047ef12a2bd644c3c709fc"
+    },
+    {
+      "configuration": "stage7b-small-en-Dark-f1.0",
+      "dashboardPngSha256": "b010fea437cb8ee073df447a079fe2c99a9fb3fb1fffefdee1707b66d2721e85",
+      "treeSha256": "2625618b09caf013723ded57ee50b45c28374f179ca1664ad3ef2a9cdc580ef2"
+    },
+    {
+      "configuration": "stage7b-small-en-Dark-f1.3",
+      "dashboardPngSha256": "635c47e8517b586b9a7ad0a18658715204640c80da0bb7e6866aeaaf868bc8bf",
+      "treeSha256": "9d22404e48cac35920acdc19ec38c168486055286097a61ac5124dfece8e0f47"
+    },
+    {
+      "configuration": "stage7b-small-en-Dark-f1.5",
+      "dashboardPngSha256": "2ccca50885e89784714084fdff61952292a9a1ab1fd706b73c687b253522e067",
+      "treeSha256": "7552dd07384042ff6ba487089be35acaf0883870e618bbe067f46eac40850752"
+    },
+    {
+      "configuration": "stage7b-small-en-Dark-f2.0",
+      "dashboardPngSha256": "5a8217f5824265a171da65610f03d1c0bb1e95b7edb85fa559f0e3f5e0dd19c8",
+      "treeSha256": "16ff7f799d3353f04fcde465e617dcc2ae80a40d57047ef12a2bd644c3c709fc"
+    },
+    {
+      "configuration": "stage7b-small-cs-Light-f1.0",
+      "dashboardPngSha256": "b823ebbfd6743ef838115069790e3f66d1f71211274d0c8077d338c0a3397b05",
+      "treeSha256": "017e51e09991a04d30f4e59bbfb4f3ce3c11e0629a6653ddffa633aa34d0c176"
+    },
+    {
+      "configuration": "stage7b-small-cs-Light-f1.3",
+      "dashboardPngSha256": "e153815225c68b92973eae4535751996dbc4a556721146aec3bbe85ff1af996a",
+      "treeSha256": "c6350a3cf326e1935f866908fb6d3a47b831ac0547786994b6051348f7f89b50"
+    },
+    {
+      "configuration": "stage7b-small-cs-Light-f1.5",
+      "dashboardPngSha256": "e28dedc8863767ef7de481de2bd238e72540c4b8d8297be08fc1a442bbf59c23",
+      "treeSha256": "56fe7c2aa00c0bec35d97a1c93af8d00f9930d264303a13a9731952a5feae08f"
+    },
+    {
+      "configuration": "stage7b-small-cs-Light-f2.0",
+      "dashboardPngSha256": "18af0c71e008d6046896f6eff3e4099cfbc0bc94b2ed2423c0e05ee78e258d18",
+      "treeSha256": "907c0e9dd3af2101f20ca4e88f90633e8d3ed843319fc7bc7835c1a4fd1a4173"
+    },
+    {
+      "configuration": "stage7b-small-cs-Dark-f1.0",
+      "dashboardPngSha256": "6f84ef341e3bf626750ace59ade72233912c16ada8ff3db353ba16de52df3997",
+      "treeSha256": "78487bae664fd539c0fb6ccf5fa0549e12fc491f14d0dbabe34562b80924fe55"
+    },
+    {
+      "configuration": "stage7b-small-cs-Dark-f1.3",
+      "dashboardPngSha256": "a42b04be2fe6e25b43d9d74997dca01eacbae9fe2a1ed27688a0a14cfe76e4a7",
+      "treeSha256": "6ad211d9510a18a2c635093727d3c1e9be9740c0bce29b314c623ba2d942a5a2"
+    },
+    {
+      "configuration": "stage7b-small-cs-Dark-f1.5",
+      "dashboardPngSha256": "0738775f6355abf65c64014ed2c90e2965e53ef89622e39f4f2d8b8f5bc5b7a3",
+      "treeSha256": "56fe7c2aa00c0bec35d97a1c93af8d00f9930d264303a13a9731952a5feae08f"
+    },
+    {
+      "configuration": "stage7b-small-cs-Dark-f2.0",
+      "dashboardPngSha256": "41f0fd8032ca5888c29e2225d70e8f77d18ad8bba94532d2c576b3fe0f427c7b",
+      "treeSha256": "907c0e9dd3af2101f20ca4e88f90633e8d3ed843319fc7bc7835c1a4fd1a4173"
+    },
+    {
+      "configuration": "stage7b-standard-en-Light-f1.0",
+      "dashboardPngSha256": "9ab210f0b40ac26e80f847fec9fdd02ef4d887437878e0ff8ae461024559bcf6",
+      "treeSha256": "d4ad7ed27e8823e388542755b66e5440a5afc1d8ddcbe774ca5e96374fb020d7"
+    },
+    {
+      "configuration": "stage7b-standard-en-Light-f1.3",
+      "dashboardPngSha256": "6c48cd0d3a37d1af5812fd4a2aa0095d0c84112eceada6523062d42b03c53e41",
+      "treeSha256": "7504e771591bb3590972803ecf972b2d512bd5d8d7687ee8e0b25a18c8b23cc5"
+    },
+    {
+      "configuration": "stage7b-standard-en-Light-f1.5",
+      "dashboardPngSha256": "b273af8c5cb11c2fb6b26698a5a2d8bbb7e273bac894a34bc1d3194bfb5cebf3",
+      "treeSha256": "64b649a57e8d0e39a4197dc23d68e37372f13781977ede5831fabcafa32bf240"
+    },
+    {
+      "configuration": "stage7b-standard-en-Light-f2.0",
+      "dashboardPngSha256": "173f694640faf60c3ddd522b7d1452c0445bc47a998f56f55b7c691199afcfcf",
+      "treeSha256": "6bfdc45af8ec617e7bcefd88b9ceb3e01632ad6505311d3ba44721d458e900fe"
+    },
+    {
+      "configuration": "stage7b-standard-en-Dark-f1.0",
+      "dashboardPngSha256": "4aa169aa1cecb74d3ef52ad2277131c1cca8e5dd9d4d56e463ab65dbef903957",
+      "treeSha256": "6a80eb421f8a08ed685cbf4bb2402b28567ae3cfb5873c411c39d968ea27a322"
+    },
+    {
+      "configuration": "stage7b-standard-en-Dark-f1.3",
+      "dashboardPngSha256": "a3a81fafc3a64273c4bb8910890ac8b6bc1ceb3e4bbaa911814bc4361ed73216",
+      "treeSha256": "d27bd97e035b9204f2f547ecb7cbbb07ec2d3e46f911452b31dd1e1dee47d888"
+    },
+    {
+      "configuration": "stage7b-standard-en-Dark-f1.5",
+      "dashboardPngSha256": "aeb06e7dc2036546fa7b77efb5e35f28012aa0e38bbb3f32f052d17364cf8a91",
+      "treeSha256": "1d0addcd48828921dd185f5dbe8db358d18fd6bc92f033c10059362f5efe05f5"
+    },
+    {
+      "configuration": "stage7b-standard-en-Dark-f2.0",
+      "dashboardPngSha256": "907cfe51bfad1ab8b1b0564d3d02cb9f28aea52e76e283d9a76d55523061108b",
+      "treeSha256": "3d6ec0d000b1195eee53be3be7c96f492bfd7f21a45b26caef07aca97d5d5171"
+    },
+    {
+      "configuration": "stage7b-standard-cs-Light-f1.0",
+      "dashboardPngSha256": "9462eabb576cca05c28045346ee962b6c00ea1c8b26c8bb24062d6c3ebf440ec",
+      "treeSha256": "7066e2e0d0144f0de8bc33b5e36eb20458006615350dcbbae0ff30c5eac30c49"
+    },
+    {
+      "configuration": "stage7b-standard-cs-Light-f1.3",
+      "dashboardPngSha256": "bf38b1aa3a2775b2b70bf389f71ca322215d0957d8911e3cf2c86627e44d271e",
+      "treeSha256": "026cb69859c925cadbec0e0f7d6084d1a4b57b4fa52c92d4f5c1de1f486b0629"
+    },
+    {
+      "configuration": "stage7b-standard-cs-Light-f1.5",
+      "dashboardPngSha256": "29b800e558be9413b24b1cb0c95f6c918a4eb51f7ac062fc4fa4482352cb7bc0",
+      "treeSha256": "12d5537673629b53868e41fb5a52b3331d74acafb74af1e20f9c0a847079c70f"
+    },
+    {
+      "configuration": "stage7b-standard-cs-Light-f2.0",
+      "dashboardPngSha256": "94d25e4ab77b43fa0dd02746abe4c7640713713c0f5edb050a5d451ba954b4cf",
+      "treeSha256": "619a05a8bf23cc74a75d4ef6514421f3710f579e25f54f993346cf6bbdc0bdb1"
+    },
+    {
+      "configuration": "stage7b-standard-cs-Dark-f1.0",
+      "dashboardPngSha256": "023598497cf794ecca1000d1475b61abc0bf873bc660be231189a1cf83761088",
+      "treeSha256": "ee1efaeb6b7334aa4436d9eac7c2469a3e616fa4cd906fe15d1415a88f09b661"
+    },
+    {
+      "configuration": "stage7b-standard-cs-Dark-f1.3",
+      "dashboardPngSha256": "b7eb25b2e50e29d247472ad916528feadde2cba9450766c615879b8d58d6198d",
+      "treeSha256": "f8d154f5cba4a934010dac1c85e00030bad65e3fd80664bc5c97402ee10c192e"
+    },
+    {
+      "configuration": "stage7b-standard-cs-Dark-f1.5",
+      "dashboardPngSha256": "9e50ef8731f8c6d76fbe1f23beb0906f30208ce81bc1f34f9aa5448131e30f77",
+      "treeSha256": "12d5537673629b53868e41fb5a52b3331d74acafb74af1e20f9c0a847079c70f"
+    },
+    {
+      "configuration": "stage7b-standard-cs-Dark-f2.0",
+      "dashboardPngSha256": "61065a2140582ab59941551afe3f6485cb66933ed5a568cdde09c58ef4637135",
+      "treeSha256": "619a05a8bf23cc74a75d4ef6514421f3710f579e25f54f993346cf6bbdc0bdb1"
+    }
+  ],
+  "treeFiles": 243,
+  "namedCheckableOccurrences": 419,
+  "pngFiles": 242,
+  "enabledCheckableFocus": "PASS",
+  "requiredScreenshots": 242,
+  "result": "PASS",
+  "limits": "Static artifact checks do not establish TalkBack, complete navigation, platform permission revocation or live backend integration."
+}

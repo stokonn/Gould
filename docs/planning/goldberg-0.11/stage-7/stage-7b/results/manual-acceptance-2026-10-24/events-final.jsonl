@@ -1,0 +1,104 @@
+{"uptime":603486,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.apps.nexuslauncher","text":"[Home screen 1 of 1]"}
+{"uptime":603755,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Application icon]"}
+{"uptime":604621,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":604752,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":604891,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[]"}
+{"uptime":604915,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[]"}
+{"uptime":605374,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":658114,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.marvin.talkback","text":"[Android Accessibility Suite]"}
+{"uptime":658133,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.permissioncontroller","text":"[Permission request]"}
+{"uptime":658134,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.permissioncontroller","text":"[Permission request]"}
+{"uptime":659140,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.google.android.permissioncontroller","text":"[Allow]","sourceText":"Allow"}
+{"uptime":683345,"type":"TYPE_VIEW_CLICKED","package":"com.google.android.permissioncontroller","text":"[Allow]"}
+{"uptime":683429,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":684460,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":15631614,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Application icon]"}
+{"uptime":15631636,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":15631745,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":15632691,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Good evening"}
+{"uptime":15671108,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":15672602,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_START","text":"[]"}
+{"uptime":15672837,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_END","text":"[]"}
+{"uptime":15711706,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Audit Log"}
+{"uptime":15712575,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":""}
+{"uptime":15713440,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Search and filters cover fetched pages only. Load more for older or later matches; server search is unavailable."}
+{"uptime":15714423,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"All"}
+{"uptime":15715290,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"My actions"}
+{"uptime":15716290,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Moderation"}
+{"uptime":15717156,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"#1 · decision.reject"}
+{"uptime":15718140,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"sub_1"}
+{"uptime":15749157,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_START","text":"[]"}
+{"uptime":15749307,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_END","text":"[]"}
+{"uptime":15836882,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_START","text":"[]"}
+{"uptime":15836907,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":""}
+{"uptime":15837027,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_END","text":"[]"}
+{"uptime":15861903,"type":"TYPE_VIEW_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":15863072,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.inputmethod.latin","text":"[]"}
+{"uptime":15917367,"type":"TYPE_WINDOW_STATE_CHANGED","package":"android","text":"[]"}
+{"uptime":15946078,"type":"TYPE_VIEW_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":15946223,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.inputmethod.latin","text":"[]"}
+{"uptime":16008825,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_START","text":"[]"}
+{"uptime":16009576,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_END","text":"[]"}
+{"uptime":16010970,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_START","text":"[]"}
+{"uptime":16011725,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_END","text":"[]"}
+{"uptime":16012984,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_START","text":"[]"}
+{"uptime":16013010,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.android.systemui","text":"[Goldberg notification: ]","description":"Goldberg notification: ","sourceDescription":"Goldberg notification: "}
+{"uptime":16013739,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_END","text":"[]"}
+{"uptime":16015000,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_START","text":"[]"}
+{"uptime":16015750,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_END","text":"[]"}
+{"uptime":16017134,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_START","text":"[]"}
+{"uptime":16017888,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_END","text":"[]"}
+{"uptime":16019265,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_START","text":"[]"}
+{"uptime":16020020,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_END","text":"[]"}
+{"uptime":16135198,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.inputmethod.latin","text":"[]"}
+{"uptime":16173074,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[]"}
+{"uptime":16173131,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[]"}
+{"uptime":16174145,"type":"TYPE_VIEW_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":16174216,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.inputmethod.latin","text":"[]"}
+{"uptime":16176615,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":16207657,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":16209350,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_START","text":"[]"}
+{"uptime":16209373,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":""}
+{"uptime":16209492,"type":"TYPE_TOUCH_EXPLORATION_GESTURE_END","text":"[]"}
+{"uptime":16210923,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Audit Log"}
+{"uptime":16211923,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":16212969,"type":"TYPE_VIEW_CLICKED","package":"com.opus.piano","text":"[]"}
+{"uptime":16213556,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Moderator"}
+{"uptime":16427486,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.apps.nexuslauncher","text":"[Home screen 1 of 1]"}
+{"uptime":16666665,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.apps.nexuslauncher","text":"[Home screen 1 of 1]"}
+{"uptime":16667170,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Application icon]"}
+{"uptime":16668482,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":16668712,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":16823169,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano.test","text":"[Application icon]"}
+{"uptime":16823459,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano.test","text":"[androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity]"}
+{"uptime":16823512,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.apps.nexuslauncher","text":"[Home screen 1 of 1]"}
+{"uptime":16914517,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.apps.nexuslauncher","text":"[Home screen 1 of 1]"}
+{"uptime":16914772,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Application icon]"}
+{"uptime":16915562,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":16915682,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":16939126,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":16939907,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Auditní záznam"}
+{"uptime":16940945,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":""}
+{"uptime":16941940,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Hledání a filtry zahrnují jen načtené stránky. Další shody zobrazíte načtením dalších stránek; serverové hledání není dostupné."}
+{"uptime":16942807,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Vše"}
+{"uptime":16943673,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Moje akce"}
+{"uptime":16944674,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Moderace"}
+{"uptime":17004790,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Moje akce"}
+{"uptime":17005691,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Vše"}
+{"uptime":17006590,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Hledání a filtry zahrnují jen načtené stránky. Další shody zobrazíte načtením dalších stránek; serverové hledání není dostupné."}
+{"uptime":17007474,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":""}
+{"uptime":17008374,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Auditní záznam"}
+{"uptime":17009158,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":17010114,"type":"TYPE_VIEW_CLICKED","package":"com.opus.piano","text":"[]"}
+{"uptime":17010575,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Moderátor"}
+{"uptime":17013841,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":17014474,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Nastavení administrace"}
+{"uptime":17015473,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Ve výchozím stavu vypnuto. Kontroly používají neměřenou Wi-Fi, pokud výslovně nepovolíte mobilní data."}
+{"uptime":17016493,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Místní oznámení"}
+{"uptime":17017358,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Místní oznámení"}
+{"uptime":17018357,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Kontroly na pozadí (přibližně každé 3 hodiny)"}
+{"uptime":17106942,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Kontroly na pozadí (přibližně každé 3 hodiny)"}
+{"uptime":17107823,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Povolit mobilní a měřená data pro správní kontroly"}
+{"uptime":17108689,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Povolit mobilní a měřená data pro správní kontroly"}
+{"uptime":17109573,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":17110557,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}

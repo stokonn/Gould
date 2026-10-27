@@ -1,0 +1,47 @@
+{
+  "run": 40170295032,
+  "url": "https://github.com/stokonn/Goldberg/actions/runs/40170295032",
+  "source": "a41cd11a1b32af2949c43cb6e5b6aac94a3c2a51",
+  "conclusion": "success",
+  "native": {
+    "tests": 190,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2
+  },
+  "nativePassed": 188,
+  "nativeClasses": 47,
+  "stage8cCases": [
+    {
+      "name": "responsiveLabelsFitAndTabsKeepNamesSelectionAndActionsAcross32Configurations",
+      "seconds": 100.271
+    },
+    {
+      "name": "scaffoldWindowFlagsFollowAppThemeWhenSystemThemeDiffers",
+      "seconds": 10.539
+    },
+    {
+      "name": "switchRowHasOneNameStateRoleAndExactlyOneActionPerInput",
+      "seconds": 6.545
+    }
+  ],
+  "stage7bCases": 9,
+  "existingSkips": [
+    "com.opus.piano.Stage4ExternalPortraitTest.separatelyAcquiredLicensedOriginalCanBeVerifiedAndRenderedOffline",
+    "com.opus.piano.Stage4ExternalProviderTest.boundedObservedProviderResponsesPassNativeProjectionAndSearchPaging"
+  ],
+  "jvm": {
+    "tests": 275,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "jvmSuites": 36,
+  "lint": {
+    "Warning": 132,
+    "Hint": 1
+  },
+  "scaffoldPngTreePairs": 262,
+  "productionUnchangedFromQualitySource": "4d245b46936d640740799dfcc6e8d61f3d44b249",
+  "limitations": "CI runner uses its temporary debug signer;no trusted-signer seeded upgrade,live backend,physical phone orrelease acceptance inferred."
+}

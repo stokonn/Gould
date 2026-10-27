@@ -1,0 +1,39 @@
+{
+  "baselineVersion": "0.10.1",
+  "baselineSchemaVerified": 8,
+  "offlineVerified": true,
+  "personalSchema": 10,
+  "baselineApkSha256": "854bbfebf617ec920df60d181a12e0dcbd2fed10052f2479903a78a290cef312",
+  "candidateApkSha256": "68d48b75436f6bd3f865d784714ec48570e2745c14aa0e9682514753009f3db0",
+  "serial": "emulator-5592",
+  "originalRowsUnchanged": true,
+  "preferencesUnchanged": true,
+  "bridge": {
+    "identities": 3,
+    "anchors": 113
+  },
+  "sessions": 37,
+  "foreignKeys": "pass",
+  "integrityCheck": "ok",
+  "rowCounts": {
+    "badge_unlocks": 4,
+    "favorite_composers": 0,
+    "local_app_state": 1,
+    "pieces": 2,
+    "practice_drafts": 1,
+    "practice_recovery_archives": 1,
+    "profile_settings": 1,
+    "saved_recordings": 0,
+    "session_intervals": 0,
+    "session_parts": 37,
+    "session_piece_links": 0,
+    "sessions": 37
+  },
+  "interruptedInstallRetry": "pass",
+  "rehearsalOnly": "development0.10.1/code11;not final0.11acceptance",
+  "startupTotalTimeMs": {
+    "baseline": [],
+    "candidate": [],
+    "caveat": "Small emulator samples; cold process after initialization, not install/start-to-usable or device guarantee"
+  }
+}

@@ -3,7 +3,48 @@ package com.opus.piano.data.catalogue
 import org.json.JSONArray
 import org.json.JSONObject
 
+/** A display group retains every original row, including revision, rights and selection. */
+data class AssertionGroup(val field:String,val value:String,val language:String,val evidence:List<SourcedAssertion>)
+
 object CataloguePresentation {
+    data class Prepared(
+        val title:String,val biography:SourcedAssertion?,val biographyText:String?,val biographyLanguage:String?,
+        val biographyRevisionUrl:String?,val conflicts:List<String>,val essentials:List<AssertionGroup>,
+        val groups:List<AssertionGroup>,val listeningUrls:List<String>
+    )
+    /** Call on a background dispatcher: historical JSON is decoded once per detail/language. */
+    fun prepare(detail:DiscoverDetail,language:String):Prepared {
+        val biography=runCatching {biography(detail,language)}.getOrNull()
+        val body=biography?.let {runCatching {JSONObject(it.assertion.valueJson)}.getOrNull()}
+        val revision=biography?.let {row->detail.assertions.firstOrNull {
+            it.assertion.sourceId==row.source.id && it.assertion.field=="article_revision_url"
+        }}?.let {JSONObject(it.assertion.valueJson).optString("value")}
+            ?.takeIf {it.matches(Regex("https://(en|cs)\\.wikipedia\\.org/w/index\\.php\\?oldid=[0-9]+"))}
+        val listening=detail.assertions.filter {it.assertion.field=="listening_url" && it.rights.reviewState=="approved"}
+            .mapNotNull {runCatching {JSONObject(it.assertion.valueJson).optString("value")}.getOrNull()}
+            .filter {com.opus.piano.data.catalogue.providers.ListeningDestination.accepts(it,detail.entity.kind)}.distinct()
+        return Prepared(runCatching {title(detail,language)}.getOrDefault(detail.entity.title),biography,body?.optString("value"),body?.optString("language"),revision,
+            runCatching {conflicts(detail)}.getOrDefault(emptyList()),essentials(detail),groups(detail.assertions),listening)
+    }
+    fun groups(rows:List<SourcedAssertion>):List<AssertionGroup> = rows.groupBy {row->
+        val json=runCatching {JSONObject(row.assertion.valueJson)}.getOrNull()
+        // Exact scalar equivalence only. Case, punctuation and conflicting values stay separate.
+        Triple(row.assertion.field,json?.optString("value") ?: row.assertion.valueJson,json?.optString("language","und") ?: "und")
+    }.map {(key,evidence)->AssertionGroup(key.first,key.second,key.third,evidence)}
+
+    fun essentials(detail:DiscoverDetail):List<AssertionGroup> = groups(detail.assertions.filter {
+        it.assertion.selected && it.rights.reviewState=="approved" &&
+            it.assertion.field in setOf("subtitle","description","catalogue","catalogue_number","key","genre","epoch","birth","death")
+    }).filter {it.value.isNotBlank() && it.value!=detail.entity.title}
+
+    fun languageLabel(code:String,locale:java.util.Locale,unspecified:String):String =
+        if(code.isBlank() || code=="und")unspecified else java.util.Locale.forLanguageTag(code).getDisplayName(locale).ifBlank {code}
+
+    fun retrievedLabel(value:String,locale:java.util.Locale):String = runCatching {
+        java.time.format.DateTimeFormatter.ofLocalizedDate(java.time.format.FormatStyle.MEDIUM)
+            .withLocale(locale).withZone(java.time.ZoneId.systemDefault()).format(java.time.Instant.parse(value))
+    }.getOrDefault(value)
+
     /** A numeric legacy identifier or opaque key is never presented as an invented name.
      *  Digits alone only qualify for artists (e.g. a legacy composer id), so numeric-looking
      *  real titles such as an album named "1984" are preserved. */

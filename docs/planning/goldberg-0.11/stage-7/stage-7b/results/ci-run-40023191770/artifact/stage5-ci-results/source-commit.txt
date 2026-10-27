@@ -1,0 +1,3 @@
+github.sha: 3a4aac27e2eb8ae70716538d86acd374cdd38077
+github.ref: refs/heads/feature/goldberg-0.11-stage-7b
+checkout HEAD: 3a4aac27e2eb8ae70716538d86acd374cdd38077

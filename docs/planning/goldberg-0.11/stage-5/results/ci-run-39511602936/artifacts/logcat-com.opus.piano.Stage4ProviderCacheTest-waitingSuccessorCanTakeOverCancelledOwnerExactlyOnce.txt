@@ -1,0 +1,150 @@
+10-20 23:05:50.472  4034  4122 I TestRunner: started: waitingSuccessorCanTakeOverCancelledOwnerExactlyOnce(com.opus.piano.Stage4ProviderCacheTest)
+10-20 23:05:50.472   643   979 I WifiService: getConnectionInfo uid=1000
+10-20 23:05:50.473   643   979 V WifiService: Clearing REDACT_FOR_LOCAL_MAC_ADDRESS for com.android.settings(uid=1000)
+10-20 23:05:50.473   643   979 V WifiService: Clearing REDACT_FOR_NETWORK_SETTINGS for com.android.settings(uid=1000)
+10-20 23:05:50.474   643   979 V WifiService: Clearing REDACT_FOR_ACCESS_FINE_LOCATION for com.android.settings(uid=1000)
+10-20 23:05:50.474   643   661 I WifiService: isFeatureSupported uid=1000 returns [WIFI_FEATURE_INFRA, WIFI_FEATURE_P2P, WIFI_FEATURE_MOBILE_HOTSPOT, WIFI_FEATURE_WPA3_SAE, WIFI_FEATURE_WPA3_SUITE_B, WIFI_FEATURE_OWE, WIFI_FEATURE_DPP, WIFI_FEATURE_AP_RAND_MAC, WIFI_FEATURE_MBO, WIFI_FEATURE_FILS_SHA256, WIFI_FEATURE_FILS_SHA384, WIFI_FEATURE_SAE_PK, WIFI_FEATURE_DPP_ENROLLEE_RESPONDER, WIFI_FEATURE_PASSPOINT_TERMS_AND_CONDITIONS, WIFI_FEATURE_WFD_R2, WIFI_FEATURE_DECORATED_IDENTITY, WIFI_FEATURE_TRUST_ON_FIRST_USE, WIFI_FEATURE_SET_TLS_MINIMUM_VERSION, WIFI_FEATURE_TLS_V1_3, WIFI_FEATURE_WEP, WIFI_FEATURE_WPA_PERSONAL]
+10-20 23:05:50.475   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.475  1237  4752 V WifiPickerTracker: onWifiEntriesChanged: reason=0
+10-20 23:05:50.476  1237  4752 V WifiPickerTracker: Entry 1/1: [StandardWifiEntry][AndroidWifi][][Level:4][Connected][Internet][Primary][Saved]
+10-20 23:05:50.476  1237  4752 V WifiPickerTracker: MergedCarrierEntry: [MergedCarrierEntry][][][Level:-1][SubId:1]
+10-20 23:05:50.476   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.478   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.478   643  1741 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.478  1237  4752 V WifiPickerTracker: onWifiEntriesChanged: reason=0
+10-20 23:05:50.478  1237  4752 V WifiPickerTracker: Entry 1/1: [StandardWifiEntry][AndroidWifi][][Level:4][Connected][Internet][Primary][Saved]
+10-20 23:05:50.478  1237  4752 V WifiPickerTracker: MergedCarrierEntry: [MergedCarrierEntry][][][Level:-1][SubId:1]
+10-20 23:05:50.479   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.479   643   661 I WifiService: getWifiEnabledState uid=1000 state=3
+10-20 23:05:50.479   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.479  1237  4752 V WifiPickerTracker: onWifiEntriesChanged: reason=0
+10-20 23:05:50.479  1237  4752 V WifiPickerTracker: Entry 1/1: [StandardWifiEntry][AndroidWifi][][Level:4][Connected][Internet][Primary][Saved]
+10-20 23:05:50.479  1237  4752 V WifiPickerTracker: MergedCarrierEntry: [MergedCarrierEntry][][][Level:-1][SubId:1]
+10-20 23:05:50.479   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.479   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.479  1237  4752 V WifiPickerTracker: Received broadcast: android.net.wifi.STATE_CHANGE
+10-20 23:05:50.479   643   661 I WifiService: getConnectionInfo uid=1000
+10-20 23:05:50.479   643   661 V WifiService: Clearing REDACT_FOR_LOCAL_MAC_ADDRESS for com.android.settings(uid=1000)
+10-20 23:05:50.480   643   661 V WifiService: Clearing REDACT_FOR_NETWORK_SETTINGS for com.android.settings(uid=1000)
+10-20 23:05:50.480   643   661 V WifiService: Clearing REDACT_FOR_ACCESS_FINE_LOCATION for com.android.settings(uid=1000)
+10-20 23:05:50.480   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.480   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.480  1237  4752 V WifiPickerTracker: onWifiEntriesChanged: reason=0
+10-20 23:05:50.480  1237  4752 V WifiPickerTracker: Entry 1/1: [StandardWifiEntry][AndroidWifi][][Level:4][Connected][Internet][Primary][Saved]
+10-20 23:05:50.480  1237  4752 V WifiPickerTracker: MergedCarrierEntry: [MergedCarrierEntry][][][Level:-1][SubId:1]
+10-20 23:05:50.480   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.481   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.481   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.481  1237  4752 V WifiPickerTracker: onWifiEntriesChanged: reason=0
+10-20 23:05:50.481  1237  4752 V WifiPickerTracker: Entry 1/1: [StandardWifiEntry][AndroidWifi][][Level:4][Connected][Internet][Primary][Saved]
+10-20 23:05:50.481  1237  4752 V WifiPickerTracker: MergedCarrierEntry: [MergedCarrierEntry][][][Level:-1][SubId:1]
+10-20 23:05:50.481   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.482   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.482   643  1741 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.482   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.482   643   661 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.486  1236  1236 D wpa_supplicant: nl80211: Drv Event 33 (NL80211_CMD_TRIGGER_SCAN) received for wlan0
+10-20 23:05:50.486  1236  1236 D wpa_supplicant: wlan0: nl80211: Scan trigger
+10-20 23:05:50.487  1236  1236 D wpa_supplicant: wlan0: Event SCAN_STARTED (47) received
+10-20 23:05:50.487  1236  1236 D wpa_supplicant: wlan0: External program started a scan
+10-20 23:05:50.513  1237  1266 D WifiCallingSliceHelper: Wifi calling is either not provisioned or not enabled by Platform
+10-20 23:05:50.514  1237  2235 D SliceBuilder: Creating slice for: com.android.settings.fuelgauge.batterysaver.BatterySaverButtonPreferenceController
+10-20 23:05:50.517  1237  1332 D SlicesIndexer: Slices already indexed - returning.
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: Could not create slicedata for uri: content://android.settings.slices/action/airplane_mode
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: java.lang.IllegalStateException: Invalid Slices key from path: airplane_mode
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: 	at com.android.settings.slices.SlicesDatabaseAccessor.getIndexedSliceData(SlicesDatabaseAccessor.java:133)
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: 	at com.android.settings.slices.SlicesDatabaseAccessor.getSliceDataFromUri(SlicesDatabaseAccessor.java:76)
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: 	at com.android.settings.slices.SettingsSliceProvider.loadSlice(SettingsSliceProvider.java:426)
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: 	at com.android.settings.slices.SettingsSliceProvider.lambda$loadSliceInBackground$5(SettingsSliceProvider.java:457)
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: 	at com.android.settings.slices.SettingsSliceProvider.$r8$lambda$F6THPPOOlgUQrkUG5e2ThbF-zrY(SettingsSliceProvider.java:0)
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: 	at com.android.settings.slices.SettingsSliceProvider$$ExternalSyntheticLambda4.run(R8$$SyntheticClass:0)
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: 	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:131)
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: 	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:76)
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: 	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:82)
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:05:50.517  1237  1332 D SettingsSliceProvider: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:05:50.521  3593  3593 W HWUI    : Image decoding logging dropped!
+10-20 23:05:50.521  1237  2235 W SatelliteRepository: SatelliteManager is null
+10-20 23:05:50.523   643  1859 I WifiService: getWifiEnabledState uid=1000 state=3
+10-20 23:05:50.524  1237  2235 D WifiSlice: calling uid name : com.google.android.settings.intelligence
+10-20 23:05:50.526  1237  2235 W SatelliteRepository: SatelliteManager is null
+10-20 23:05:50.526  1237  1266 D SliceBroadcastRelay: Unregistering uri broadcast relay: content://android.settings.slices/action/bluetooth
+10-20 23:05:50.527  1237  2235 W SatelliteRepository: SatelliteManager is null
+10-20 23:05:50.532  1237  1237 D SettingsSliceProvider: Stopping background worker for: content://android.settings.slices/action/wifi
+10-20 23:05:50.532   643  1859 I WifiService: getVerboseLoggingLevel uid=1000
+10-20 23:05:50.532  1237  1237 V WifiPickerTracker: onStop
+10-20 23:05:50.532  1237  4752 I WifiPickerTracker: Scanning stopped
+10-20 23:05:50.534   643  1859 I WifiService: removeWifiStateChangedListener uid=1000
+10-20 23:05:51.008   643   914 D WifiClientModeImpl[34482:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=2 freq=2437 RxLinkSpeed=2
+10-20 23:05:51.009   643   914 D WifiDataStall: tx tput in kbps: 37000
+10-20 23:05:51.009   643   914 D WifiDataStall: rx tput in kbps: 37000
+10-20 23:05:51.009   643   914 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+10-20 23:05:51.009   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:51.009   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:51.009   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:51.009   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:51.009   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:51.009   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:51.009   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:51.009   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:51.009   643   914 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 14224604 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 2Mbps, Tx Link speed: 2Mbps, Max Supported Tx Link speed: 54Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+10-20 23:05:51.009   643   914 D WifiScoreCard: txRate: 1 txSpeed: 2
+10-20 23:05:51.009   643   914 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 1928051533 RSSI -50 txSpeed -1
+10-20 23:05:51.010   643   914 D WifiClientModeImpl[34482:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=60 link=2 tx=0.1, 0.0, 0.0 rx=0.9 bcn=0 [on:0 tx:0 rx:0 period:3003] from screen [on:0 period:1536188578] score=60
+10-20 23:05:51.124   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:05:51.124   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:05:51.124   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={10097} in 1ms
+10-20 23:05:51.266  1236  1236 D wpa_supplicant: nl80211: Drv Event 64 (NL80211_CMD_NOTIFY_CQM) received for wlan0
+10-20 23:05:51.266  1236  1236 D wpa_supplicant: nl80211: Beacon loss event
+10-20 23:05:51.266  1236  1236 D wpa_supplicant: wlan0: Event BEACON_LOSS (53) received
+10-20 23:05:51.266  1236  1236 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS
+10-20 23:05:51.266  1236  1236 D wpa_supplicant: nl80211: Drv Event 34 (NL80211_CMD_NEW_SCAN_RESULTS) received for wlan0
+10-20 23:05:51.266   643  1859 D WifiNl80211Manager: Scan result ready event
+10-20 23:05:51.266  1236  1236 D wpa_supplicant: wlan0: nl80211: New scan results available
+10-20 23:05:51.266  1236  1236 D wpa_supplicant: nl80211: Scan probed for SSID ''
+10-20 23:05:51.266  1236  1236 D wpa_supplicant: nl80211: Scan included frequencies: 2412 2417 2422 2427 2432 2437 2442 2447 2452 2457 2462 2467 2472 2484
+10-20 23:05:51.266  1236  1236 D wpa_supplicant: wlan0: Event SCAN_RESULTS (3) received
+10-20 23:05:51.266   643  1859 D WifiNative: Scan result ready event
+10-20 23:05:51.267  1236  1236 D wpa_supplicant: nl80211: Received scan results (1 BSSes)
+10-20 23:05:51.267  1236  1236 D wpa_supplicant: nl80211: Scan results indicate BSS status with 02:15:b2:00:00:01 as associated
+10-20 23:05:51.267  1236  1236 D wpa_supplicant: wlan0: BSS: Start scan result update 6
+10-20 23:05:51.267  1236  1236 D wpa_supplicant: BSS: last_scan_res_used=1/32
+10-20 23:05:51.267  1236  1236 D wpa_supplicant: wlan0: New scan results available (own=0 ext=1)
+10-20 23:05:51.267  1236  1236 D wpa_supplicant: wlan0: Do not use results from externally requested scan operation for network selection
+10-20 23:05:51.267  1236  1236 D wpa_supplicant: p2p-dev-wlan0: Updating scan results from sibling
+10-20 23:05:51.267  1236  1236 D wpa_supplicant: nl80211: Received scan results (1 BSSes)
+10-20 23:05:51.267  1236  1236 D wpa_supplicant: p2p-dev-wlan0: BSS: Start scan result update 6
+10-20 23:05:51.267  1236  1236 D wpa_supplicant: BSS: last_scan_res_used=1/32
+10-20 23:05:51.268  1236  1236 D wpa_supplicant: p2p-dev-wlan0: New scan results available (own=0 ext=1)
+10-20 23:05:51.268  1236  1236 D wpa_supplicant: p2p-dev-wlan0: Do not use results from externally requested scan operation for network selection
+10-20 23:05:51.268   643   918 D WifiNl80211Manager: get 1 scan results from wificond
+10-20 23:05:51.271   643   918 D WifiNative: get 1 scan results from wificond
+10-20 23:05:51.271  1237  2235 I WifiScanner: onFullResults
+10-20 23:05:51.271  2217  2351 I WifiScanner: onFullResults
+10-20 23:05:51.271   643   918 I WifiScanningService: singleScanResults: ClientInfo[uid=1000, package=com.android.settings, attributionTag=null, android.net.wifi.IWifiScannerListener$Stub$Proxy@b71017e],results=1
+10-20 23:05:51.271   643   918 I WifiScanningService: singleScanResults listener: ClientInfo[uid=1000, package=android, attributionTag=null, com.android.server.wifi.scanner.WifiScannerInternal$ScanListener@df40298],results=1
+10-20 23:05:51.271   643   918 I WifiScanningService: singleScanResults listener: ClientInfo[uid=1000, package=android, attributionTag=null, com.android.server.wifi.scanner.WifiScannerInternal$ScanListener@1a165d1],results=1
+10-20 23:05:51.271   643   918 I WifiScanningService: singleScanResults listener: ClientInfo[uid=1000, package=android, attributionTag=null, com.android.server.wifi.scanner.WifiScannerInternal$ScanListener@528714b],results=1
+10-20 23:05:51.271   643   918 I WifiScanningService: singleScanResults listener: ClientInfo[uid=10147, package=com.google.android.gms, attributionTag=network_location_provider, android.net.wifi.IWifiScannerListener$Stub$Proxy@f63beb8],results=1
+10-20 23:05:51.271   643   918 I WifiScanningService: Unregistering listener= android.net.wifi.IWifiScannerListener$Stub$Proxy@b71017e uid=1000 packageName=com.android.settings workSource=WorkSource{1000}
+10-20 23:05:51.272   643   914 D WifiScanRequestProxy: Scan results received
+10-20 23:05:51.272   643   914 D WifiScanRequestProxy: Received 1 scan results
+10-20 23:05:51.272   643   914 D WifiHealthMonitor:  2G scanResult count: 1, Above2g scanResult count: 0
+10-20 23:05:51.274   643   914 V WifiConfigManager: getSavedNetworkFromScanResult Found "AndroidWifi"NONE for AndroidWifi[[ESS]]
+10-20 23:05:51.280   643   914 I HalDevMgr: bestIfaceCreationProposal is null, requestIface=STA, existingIface=[name=wlan0 type=STA]
+10-20 23:05:51.280   643   914 V WifiConnectivityManager: Clearing blocklist for REASON_FRAMEWORK_DISCONNECT_FAST_RECONNECT
+10-20 23:05:51.281   643   914 V WifiConnectivityManager: AllSingleScanListener onResults: start network selection
+10-20 23:05:51.281   643   914 V WifiConfigManager: getSavedNetworkFromScanResult Found "AndroidWifi"NONE for AndroidWifi[[ESS]]
+10-20 23:05:51.283   643   914 D WifiNetworkSelector: Current connected network: 0
+10-20 23:05:51.283   643   914 D WifiNetworkSelector: wlan0: Current connected network already sufficient. Skip network selection.
+10-20 23:05:51.283   643   914 V WifiLastResortWatchdog: updateAvailableNetworks: size = 0
+10-20 23:05:51.283   643   914 V WifiLastResortWatchdog: mWatchdogFeatureEnabled: true
+10-20 23:05:51.283   643   914 V WifiLastResortWatchdog: mWatchdogAllowedToTrigger: true
+10-20 23:05:51.283   643   914 V WifiLastResortWatchdog: mRecentAvailableNetworks: 1
+10-20 23:05:51.283   643   914 V WifiLastResortWatchdog:  02:15:b2:00:00:01: "AndroidWifi" HasEverConnected: false, Failures: {Assoc: 0, Auth: 0, Dhcp: 0}, Age: 5
+10-20 23:05:51.283   643   914 V WifiLastResortWatchdog: mSsidFailureCount:
+10-20 23:05:51.283   643   914 V WifiLastResortWatchdog: "AndroidWifi": 1, HasEverConnected: false, Failures: {Assoc: 0, Auth: 0, Dhcp: 0}
+10-20 23:05:51.283   643   914 V WifiConnectivityManager: AllSingleScanListener:  No candidates
+10-20 23:05:51.676  4034  4122 I TestRunner: finished: waitingSuccessorCanTakeOverCancelledOwnerExactlyOnce(com.opus.piano.Stage4ProviderCacheTest)

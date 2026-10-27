@@ -11,6 +11,25 @@ import org.json.JSONObject
  * remain independent of catalogue UUIDs; portable v5 already preserves this evidence verbatim. */
 class CatalogueRepertoire(private val personal:OpusDatabase) {
     data class Added(val pieceId:Long,val created:Boolean,val selectionConflict:Boolean=false)
+    /** Read-only identity lookup for the Open action. Never match names or mutate a selection. */
+    suspend fun existingPiece(detail:DiscoverDetail):Long? = withContext(Dispatchers.IO) {
+        if(detail.entity.kind !in setOf("work","arrangement"))return@withContext null
+        val identities=detail.identities.filter {it.reviewState=="reviewed"}
+        val legacy=identities.firstOrNull {it.provider=="openopus" && it.providerKind=="work"}
+            ?.let {personal.dao().catalogPiece(it.externalId)}
+        if(legacy!=null)return@withContext legacy.id
+        val keys=identities.map {"${it.provider}/${it.providerKind}/${it.externalId}"}.toSet()
+        if(keys.isEmpty())return@withContext null
+        personal.openHelper.readableDatabase.query(
+            "SELECT a.ownerId,i.evidence FROM personal_catalogue_anchors a JOIN personal_catalogue_identities i ON i.identityKey=a.identityKey JOIN pieces p ON CAST(p.id AS TEXT)=a.ownerId WHERE a.ownerType='piece' AND a.role='work' AND i.evidence LIKE ?",
+            arrayOf("%catalogue-link-v1:%")
+        ).use {c->while(c.moveToNext()) {
+            val saved=runCatching {JSONObject(c.getString(1).substringAfter("catalogue-link-v1:"))}.getOrNull() ?: continue
+            val providers=saved.optJSONArray("providers") ?: continue
+            if((0 until providers.length()).any {providers.optString(it) in keys})return@withContext c.getString(0).toLongOrNull()
+        }}
+        null
+    }
     suspend fun add(detail:DiscoverDetail,parts:List<DiscoverDetail> = emptyList(),separateEntries:Boolean=false):List<Added> = withContext(Dispatchers.IO) {
         require(detail.entity.kind in setOf("work","arrangement"))
         require(parts.size<=100 && parts.map {it.entity.id}.distinct().size==parts.size)

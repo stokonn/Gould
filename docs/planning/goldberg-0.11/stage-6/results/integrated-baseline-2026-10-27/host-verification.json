@@ -1,0 +1,27 @@
+{
+  "command": "./gradlew compileDebugKotlin testDebugUnitTest --no-daemon --max-workers=1",
+  "result": "PASS",
+  "tasks": 26,
+  "executed": 12,
+  "upToDate": 14,
+  "jvm": {
+    "tests": 348,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": 39,
+  "inputs": {
+    "stage6": "6102b3f",
+    "stage7Stage8Discover": "9b8266e14a07bed4a84385c1068ded7b3bb1e0b1"
+  },
+  "integrationCorrections": [
+    "preserve both sets of metadata/history",
+    "explicit preserved authored fixture path for Stage7 tests",
+    "shared error types defined only in CommunityFailures",
+    "explicit emulator serial in CI helpers"
+  ],
+  "androidSchema": "unchanged, opus.db remains schema10; catalogue schema1",
+  "nativeExecution": "not rerun; final changed-scope acceptance pending",
+  "sourceStatus": "merge tree verified before merge commit; final commit recorded in Issue31"
+}

@@ -1,0 +1,33 @@
+
+com.opus.piano.Stage8cUiRegressionTest:
+Error in responsiveLabelsFitAndTabsKeepNamesSelectionAndActionsAcross32Configurations(com.opus.piano.Stage8cUiRegressionTest):
+java.lang.AssertionError: Tab clickable: Home
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at com.opus.piano.Stage8cUiRegressionTest.responsiveLabelsFitAndTabsKeepNamesSelectionAndActionsAcross32Configurations(Stage8cUiRegressionTest.kt:128)
+.
+Error in switchRowHasOneNameStateRoleAndExactlyOneActionPerInput(com.opus.piano.Stage8cUiRegressionTest):
+org.junit.ComparisonFailure: expected:<android.[widget.Switch]> but was:<android.[view.View]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.opus.piano.Stage8cUiRegressionTest.switchRowHasOneNameStateRoleAndExactlyOneActionPerInput(Stage8cUiRegressionTest.kt:78)
+
+com.opus.piano.Stage7bAcceptanceTest:.
+
+Time: 16.532
+There were 2 failures:
+1) responsiveLabelsFitAndTabsKeepNamesSelectionAndActionsAcross32Configurations(com.opus.piano.Stage8cUiRegressionTest)
+java.lang.AssertionError: Tab clickable: Home
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at com.opus.piano.Stage8cUiRegressionTest.responsiveLabelsFitAndTabsKeepNamesSelectionAndActionsAcross32Configurations(Stage8cUiRegressionTest.kt:128)
+2) switchRowHasOneNameStateRoleAndExactlyOneActionPerInput(com.opus.piano.Stage8cUiRegressionTest)
+org.junit.ComparisonFailure: expected:<android.[widget.Switch]> but was:<android.[view.View]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.opus.piano.Stage8cUiRegressionTest.switchRowHasOneNameStateRoleAndExactlyOneActionPerInput(Stage8cUiRegressionTest.kt:78)
+
+FAILURES!!!
+Tests run: 4,  Failures: 2
+
+

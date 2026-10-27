@@ -1,0 +1,11 @@
+10-20 23:06:22.893  4034  4122 I TestRunner: started: workManagerRunsTheScheduledWorkerToACompletedBundle(com.opus.piano.Stage5BundleWorkerTest)
+10-20 23:06:22.894  4034  4122 D WM-ForceStopRunnable: The default process name was not specified.
+10-20 23:06:22.894  4034  4122 D WM-ForceStopRunnable: Performing cleanup operations.
+10-20 23:06:22.912  4034  5090 D WM-PackageManagerHelper: androidx.work.impl.background.systemalarm.RescheduleReceiver enabled
+10-20 23:06:22.915  4034  4122 D WM-Processor: Processor: processing WorkGenerationalId(workSpecId=a6106a45-b28b-4420-a24e-02f24f568dd2, generation=0)
+10-20 23:06:22.919  4034  4122 D WM-WorkerWrapper: Starting work for com.opus.piano.data.offline.BundleDownloadWorker
+10-20 23:06:22.947  4034  5090 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=a6106a45-b28b-4420-a24e-02f24f568dd2, class=com.opus.piano.data.offline.BundleDownloadWorker, tags={ com.opus.piano.data.offline.BundleDownloadWorker,goldberg-bundle } ]
+10-20 23:06:22.947  4034  5090 D WM-Processor: Processor a6106a45-b28b-4420-a24e-02f24f568dd2 executed; reschedule = false
+10-20 23:06:22.949  4034  5090 D WM-StopWorkRunnable: StopWorkRunnable for a6106a45-b28b-4420-a24e-02f24f568dd2; Processor.stopWork = false, reason: -512
+10-20 23:06:22.950  4034  5090 D WM-PackageManagerHelper: androidx.work.impl.background.systemalarm.RescheduleReceiver disabled
+10-20 23:06:23.177  4034  4122 I TestRunner: finished: workManagerRunsTheScheduledWorkerToACompletedBundle(com.opus.piano.Stage5BundleWorkerTest)

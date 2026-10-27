@@ -1,3 +1,125 @@
+## Automatic Discover online search — owner decision, October 25, 2026
+
+The persisted default-off Online Catalogue setting is consent. Local results appear immediately; permitted online provider results follow after approximately 500 ms for queries with at least two characters. Query/filter/consent changes cancel obsolete work. Local/online sections deduplicate by verified canonical ID, never title. Keep paging, cache, provenance, mobile policy and rate limits. Remove per-query Search online. No community production networking is enabled. Regression/native visual acceptance is required before this implementation is marked verified.
+
+## Permanent release policy — owner decision, October 25, 2026
+
+Applies to Goldberg 0.11 and all future Gould versions. This supersedes earlier automatic publication authorization and historical RC instructions below.
+
+- During development, build debug APKs only for internal testing and owner review. Do not create new release candidates, prerelease tags or GitHub Releases for development APKs.
+- Preserve the existing `v0.11-rc.1` release, tag and artifacts as immutable historical evidence.
+- Only after full implementation, verification and explicit owner approval, perform a fresh clean release build. It must be non-debuggable, signed with the trusted production certificate, pass all release-specific gates and support verified safe in-place upgrades.
+- Publish only the explicitly approved stable version. Merging into `main` and publishing a stable GitHub Release each require explicit owner approval; passing checks alone grants neither.
+- The current Stage 8 Discover repair delivers a debug APK and verification report for owner review, with no release publication.
+
+
+## Stage 8 — independent Android verification executed (October 25, 2026)
+
+Independent checks are VERIFIED; source publication/automatic CI receipt is in progress. This continues existing Stage8,without a new named stage. Full Stage8 integration and Goldberg0.11 release acceptance remain INCOMPLETE.
+
+Purpose/scope: trusted0.10.1 upgrade/data-preservation rehearsal, actual process/migration/restore/practice/reboot boundaries, missing orientation/platform observations and guarded artifact/readiness tooling. Baseline22fb50bedec7b932e47640673e52fdb57bdc791a on feature/goldberg-0.11-stage-8. Production source remains4d245b and APK68d48b…;only test/tool/docs/evidence changes. Accepted Stage7/Stage8C behavior retained.
+
+- [x] Recover policy/PMP/AI/readiness/Issue/Project and remote/worktree state; preserve externally owned Stage6.
+- [x] Trusted baseline854bbfeb…/certificate53eface… → unchanged development candidate68d48b… in-place install;schema8→10,all12 original tables/37sessions/37attribution rows/2pieces/4badges/profile/avatar/showcase/draft/archive/preferences retained;integrity/FK PASS.
+- [x] Abandoned partial installer leaves baseline unchanged;normal install retry PASS. Actual migration process kill rolls back,then retries with every original typed cell intact. Old binary's10→8 downgrade is refused without loss;forward reinstall recovers.
+- [x] V5 export/restore from upgraded journal,checksum-failure preservation/retry andfour actual restore kill phases/replay/retry PASS. Original destination recovery bytes remain exportable in evidence.
+- [x] Actual monotonic practice:6.008s credited during6.221s observed,per-piece/interval sums exact;actual process death/reboot preserve stopped recovery,raw draft andno downtime credit;completion idempotent.
+- [x] Actual reboot preserves WorkManager IDs/offline queue/READYblob;real cancellation PASS after54.159s (not3hdelivery). DataSaver/restricted bucket45/forcedLOW readbacks observed/restored;not actual ENOSPC/mobile transfer. Retain unchanged accepted SmartCache/interrupt/metered/notification and32-config UI evidence.
+- [x] Actual EN/Dark portrait/landscape plusfour CZ/Dark font1.3/2 rotations;allfive tabs,eight keyboard-focus steps andIMEBack PASS. Eight selected original frames inspected via two review sheets.
+- [x] Package/manifest/assets/ZIP/trusted signer/test-fixture exclusion/source traceability PASS. Rehearsal artifact isdebuggable0.10.1/code11;strict release guard correctlyBLOCKS it. No official version/signing/RC selection.
+- [ ] Commit/push verified scope,read exact remote and relevant automatic CI;final append-only Issue/private PMP/AI/matrix receipt. No unchanged full native CI redispatch.
+
+Counts:new12 targeted JUnit PASS,0new skips,6deliberate actual process terminations (notJUnit passes),1corrected invalid-UUID fixture failure retained,0unresolved app failures. New final AndroidTest compile PASS21s;no production/JVM logic changes. Retained CI40170295032:190native/188pass/2oldexternal skips and275JVM at its original source;not new executions here.
+
+Stage6 refreshed read-only:receipt da2423bcea3b9ef8d0ea88a9b08a2e5468f173d6,verified engineering source be5104476cf6cb059b0f206b2c4f18027d6bc657/[CI40188291121](https://github.com/stokonn/Goldberg/actions/runs/40188291121). Its234JVM/20canonical/localarchive/TLS evidence is externally reported,not executed here;native/accepted-consumer/hosted acceptance remainsOPEN. Actual-client G1–G9/G11,C4,6.0f/6.17,real policy/publicversion/OAuth andB2/B4/B5/B6 remain blocked or pending;G10 disabled. No Stage6 source/DTO/auth/session/repository/fixture adoption or external writes.
+
+Remaining gaps:final integrated/official-version/signed-release artifact acceptance;real three-hour/reboot notification delivery;audible speech/physical-device acceptance (not performed);real disk-full/production transfers (not performed). Existing accepted deterministic/transport evidence stays source-bound. Next shortest path:review final Stage6 consumer handoff/policy gates,obtain authorized integration scope,reconcile affected paths preserving current UI/data,then rerun only impacted combined-source/native/data checks plusfinal trusted-signer upgrade. No additional named stage,main merge,cloud activation,production networking,phone testing,tag orRelease.
+
+created by stokonn with love <3
+
+[Detailed commands,evidence,reproduction andlimits](../planning/goldberg-0.11/stage-8/INDEPENDENT-ANDROID-VERIFICATION.md).
+
+---
+
+## Stage 8C approved corrections and acceptance — October25,2026
+
+Owner explicitly authorized A8-1/A8-2 production UI and A8-3 test-only corrections. Bounded milestone now COMPLETE/FIXED after actual observations and [independent native CI2](https://github.com/stokonn/Goldberg/actions/runs/40170295032) at `a41cd11a1b32af2949c43cb6e5b6aac94a3c2a51`;production correction source `4d245b46936d640740799dfcc6e8d61f3d44b249`. WholeStage8 integration/release remains blocked.
+
+Use one merged48dp Switch row owner and a noninteractive visual indicator;retain exact names/roles/state/disabled/key/touch/actions. Use five equal responsive navigation columns with original editorial labelSmall metrics/icons/colors and full wrapping/native hyphenation;grow natural height,never shrink text or hide destinations. Share production navigation in test scaffolds;copy MainActivity-equivalent outer-theme window effect only in tests;no production theme change justified by the evidence.
+
+CI1pointer rejection explicitly targeted SystemUI StatusBar in an unsafe isolated test layout. Correct safeDrawing padding and add a pointer-center/inset assertion;keep all other assertions. Local3casePASS preceded one meaningful CI2 dispatch. Do not erase failed attempts,wrong initial class/selected-tab assumptions or source provenance. Actual TalkBack focus is verified;optional double-tap injection/audible speech remain unverified. No unchanged quality rerun after test-only correction;final docs receipt skips redundant CI.
+
+No DB/schema/backup/practice/backend/contract/version changes or Stage6 gate closure. Cloud56ff724 remains independent/hosted NO-GO;G1–G9/G11,C4,6.0f/live OPEN. No main/cloud/physical phone/deploy/release. Next recommend separately scoped Stage8D contract/consumer readiness,then approved source adoption/combined data/upgrade acceptance. [Current report](../planning/goldberg-0.11/stage-8/8C-TARGETED-UI-CORRECTIONS.md).
+
+created by stokonn with love <3
+
+---
+
+## Stage 8B — first technical assessment verified, October 25, 2026
+
+**TECHNICAL ASSESSMENT COMPLETE / SOURCE PUBLISHED. Full Stage8 integration/release PENDING/BLOCKED.** Branch `feature/goldberg-0.11-stage-8`, baseline2f4d1b8. Stage7 client/synthetic acceptance remains COMPLETE.
+
+Automatic new-source quality [40147220442](https://github.com/stokonn/Goldberg/actions/runs/40147220442) **SUCCESS at394b6b58b2adcb0eb07b4f873161bbd7cc70ed3c**:clean Gradle build/JVM/androidTest compilation/lint PASS7m49s,83executed/1up-to-date;all six workflow validators PASS. Individual new JVM counts not exported;0 native suite executions. This supersedes earlier local-only no-full-host statements below;CI25 was not manually rerun. Documentation-only receipt skips redundant CI;source-bound success is not transferred to its later SHA.
+
+
+Purpose/scope: reconcile accepted7A documentation, audit mainCI/13 Stage 6 overlaps, assess A8-1/A8-2/A8-3 offline, verify retained APK/source/upgrade prerequisites and map critical-data coverage. Production behavior/database/schema/contracts/CI unchanged; new opt-in instrumentation recorder/host evidence tools only.
+
+- [x] Refresh16 worktrees/remotes/Issue31/milestone4/releases/Wiki/Goldberg Development; preserve all 2203 external original untracked files/APKs/PMP. Concurrent Cloud source 2c38177 / receipt c8b903b untouched, not adopted; PRIVATE STAGING NO-GO retained.
+- [x] Reconcile9 Stage 7A documentation deltas:four isolated acceptance/follow-up files adopted, shared current dashboards preserve newer Stage7B/8 decisions. X10 NOT FIXED/NOT VERIFIED,deferred Gould0.12; material accessibility retained.
+- [x] Audit main-onlyCI and classify all 13overlaps; stronger accepted Stage7B workflows retained; no source combination.
+- [x] New test-recorder wrapper assembly PASS54 s; default runner manifest PASS13 s. App APK byte-identical93ae9ec…; trusted package/signature/ZIP/source/version/baseline review PASS,still0.10.1/code11.75 historical critical CI25 cases inventoried,not rerun.
+- [x] Offline API36 emulator5588/qemu1:28 unique settings configurations (16small+4standard+4opposite-theme NavHost+4scaffold),29 captures including retry;161 PNG/tree pairs. Four real TalkBack traversals / 40 swipes with events. Emulator stopped; AVD/APKs retained.
+- [x] A8-1 actual duplicate Settings stops and A8-2 actual large-font label ellipsis reproduced, bothMedium/P2,NOT FIXED. A8-3 scaffold statuscontrast~1.05–1.13:1 reproduced; matching real NavHost5.56–19.48:1,gesture5.74–15.25:1; no product contrast defect demonstrated in tested scope. Proposed fixes await separate implementation approval.
+- [x] Evidence verifier,Python compilation,production-preservation and whitespace checks PASS. No new JUnit/full CI/lint/data-suite execution claimed; no audible speech/motion/full3h-reboot/live integration acceptance.
+- [x] Source `394b6b58b2adcb0eb07b4f873161bbd7cc70ed3c` ordinary-pushed and remote SHA exact; [authoritative Issue checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6391483885), Issue OPEN / Project In Progress synchronized/read back. Final documentation receipt follows without changing runtime evidence.
+
+[Full commands/results/limitations and next milestone](../planning/goldberg-0.11/stage-8/8B-TECHNICAL-VERIFICATION.md); [all 13risk resolutions](../planning/goldberg-0.11/stage-8/INTEGRATION-SEQUENCE.md). No production correction, networking activation, Android/backend combination, main merge, deploy or release.
+
+Next: retain published bounded evidence; seek separate Stage8C scope for targeted row semantics/responsive labels/scaffold-window correction and affected before/after regressions. Stage6 G1–G9/G11,C4,6.0f/public-version/real-policy/live/production dependencies remain OPEN. Trusted-signer seeded0.11upgrade/version selection and broader release gates remain pending.
+
+created by stokonn with love <3
+
+---
+
+## Stage8A preparation completion and publication receipt
+
+**8A readiness preparation COMPLETE / packet PREPARED AND PUBLISHED. Stage8 integration/release acceptance PENDING/BLOCKED.** Published preparation commit `ea1758c6fb10c9f4cdecf83d4c47523e9a5b553a` on `feature/goldberg-0.11-stage-8`, ordinary push and exact remote readback PASS. [Existing Issue31 source checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388549455) and Project overview/item readbacks PASS; Issue OPEN / umbrella In Progress. Documentation-only preservation checks passed; no runtime tests/builds/CI/merges/deploy/releases executed. Stage7 client/synthetic acceptance remains COMPLETE. Concurrent Stage6-Cloud WIP was recorded untouched, not adopted; all Stage6/live/production gates remain OPEN. Final handoff commit SHA is recorded in the next Issue31 receipt.
+
+Verified8A documentation/preservation milestone: [Issue31 checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388534366).270 source hashes,2203 original untracked files and Stage7B APK unchanged; document links/JSON/whitespace PASS. Concurrent Cloud WIP recorded untouched; no tests/builds/CI run. Publication/checkpoint checks completed; see the current receipt above.
+
+# Stage 8A readiness preparation — October 24, 2026
+
+**Stage7 Android client/synthetic acceptance COMPLETE and owner-approved. Stage8A preparation packet PREPARED; Stage8 integration/release acceptance remains PENDING/BLOCKED.** Current authorized scope: documentation, read-only inventories and separate worktree creation only. No source integration or live adoption is authorized.
+
+Worktree `/home/stokonn/Projects/Goldberg-Stage8`, branch `feature/goldberg-0.11-stage-8`, preparation base `4c6a91d600ad18455a280f941f89740694d5afa0`. All15 prior worktrees/53 cached refs and fresh remote heads/tags/Issue31 comments were inspected first. Stage7A's sole unique acceptance commit is documentation-only; Stage6 diverges54/78 with13 potential path overlaps; main diverges81/11. [Readiness packet](../planning/goldberg-0.11/stage-8/README.md), integration sequence, release checklist, accessibility assessments, Stage6 ledger and20-row verification matrix are prepared. Existing Stage7 evidence/PMP remains in its owning worktree; no copying, deletion or reset.
+
+Stage6 G1–G9/G11,C4,6.0f, Android/backend live integration and all production authorization gates remain OPEN. G10 is closed for disabled transport/actions only. Duplicate Settings TalkBack stops, large-font bottom-tab truncation and scaffold contrast remain NOT FIXED, awaiting explicit Stage8 release assessment. Speech/motion/exhaustive accessibility/real three-hour-reboot delivery remain UNVERIFIED. X10 remains under its existing Gould0.12 deferral.
+
+No tests/builds/emulators/live calls/merges/deploys/releases executed in8A. Earlier source-bound CI25/275JVM/262pairs/seeded-upgrade evidence remains accepted within Stage7 scope; no new candidate exists. Next: refresh input HEADs/concurrent published work and obtain separate implementation/integration scope before source adoption or new runtime work. Blocked Stage6 gates cannot be silently omitted; production authorization remains separate.
+
+created by stokonn with love <3
+
+<details>
+<summary>Earlier accepted Stage7 and verification checkpoints — historical evidence retained</summary>
+
+# Stage 7 owner acceptance — October 24, 2026
+
+**Stage 7B: ACCEPTED WITH DOCUMENTED LIMITATIONS. Stage 7 Android client/synthetic acceptance scope: COMPLETED.** Stage 7A was already owner-accepted. The owner explicitly approved the October 24 final owner report in this conversation; [permanent owner-decision checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388393525). This decision supersedes the earlier READY FOR OWNER REVIEW / pending-approval status. It covers the verified Android client/synthetic scope only.
+
+Purpose/scope: close owner acceptance of the existing Android Admin dashboard, Queue/re-review/decision safeguards, Audit, Settings, local sync/notifications and documented synthetic data safeguards. This update changes documentation only; application/test/CI source, the APK and historical evidence remain unchanged.
+
+- [x] Record explicit owner acceptance of Stage 7B with the October 24 documented limitations; Stage 7A + Stage 7B Android client/synthetic acceptance scope completed.
+- [x] Retain prior results without rerunning unchanged tests: CI #25 `40097540179` SUCCESS at tested source `fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c`, 187 native cases /185 passed /2 existing skips /0 failures or errors, all9 Stage7B cases;262 screenshot/tree pairs reviewed; seeded12 collections/37 sessions/schema8→10 preserved. Prior275 JVM tests and seven validation scripts passed; normal restored assembly/lint passed (0 errors/119 warnings/1 hint). Representative October24 EN/Light/1.0 and CZ/Dark/1.3 emulator TalkBack/touch/Back/keyboard/IME/reduced-motion/permission-revocation observations retained. No fresh execution is claimed.
+- [x] Retain exact manual tooling archive, default AndroidJUnitRunner, production APK and source manifest. Pre-decision published documentation HEAD `9f6adf806bff034e884d12bbb4259f920975248d`, branch `feature/goldberg-0.11-stage-7b`; the final publication checkpoint records this decision's documentation SHA.
+- [x] Owner-approved deferral to Stage 8 for explicit release-readiness assessment: duplicate Settings TalkBack focus stops, large-font bottom-tab truncation and scaffold contrast findings. **Deferred, NOT FIXED**; acceptance does not waive Stage 8 assessment.
+- [ ] **UNVERIFIED:** audible speech/pronunciation, subjective motion comfort/frame timing, exhaustive accessibility/font/keyboard/configuration coverage and real three-hour/reboot notification delivery. These checks remain unexecuted or bounded as originally recorded, not passed by owner approval.
+- [ ] **OPEN:** Stage 6 G1–G9/G11, C4, 6.0f, Android/backend live integration and every production authorization gate. Live integration remains blocked pending separate authorization. **Stage 8 remains PENDING.**
+- [ ] Separate integration/release verification and explicit authorization for any main merge, production activation or release remain outstanding. Issue #31 stays OPEN; Goldberg Development's umbrella item stays In Progress.
+
+Next executor: retain the accepted Stage 7 client/synthetic disposition; assess the three deferred findings only within separately authorized Stage 8 release-readiness work. Do not mark them fixed, infer unverified checks passed, reopen completed Stage 7 tests or treat acceptance as live/backend/release authorization. Original raw observations/hashes, screenshots, logs, test results and private PMP are preserved. Earlier packets below are historical records, not the current acceptance status.
+
+created by stokonn with love <3
+
 # Goldberg 0.11 — DECISIONS (Stage 5 view)
 
 ## API v1 O1–O8 — owner design outcomes, 2026-10-23
@@ -294,3 +416,82 @@ Hosted ACL/schema/role/Worker/secret/session/configuration writes require one la
 specific consolidated authorization after hard prerequisites pass. No approval is
 inferred from this continuation; no hosted write or real-user activation occurred.
 Final Stage6 local engineering/acceptance evidence:stage-6/END-TO-END-ACCEPTANCE.md.
+
+## Owner decisions on the two open Stage 5 acceptance items (2026-10-21, post-green session)
+
+Context: after run 39557624554 was fully green and the coverage mapping proved that
+consent revocation mid-stream + low disk were already executed on the emulator inside
+the 177-test suite, exactly two acceptance items remained genuinely open. Both were put
+to the owner with the honest constraints; both answered:
+
+1. **UI screenshots in both themes — APPROVED: "Build + dispatch the job".**
+   A purpose-built, dispatch-only CI job (`.github/workflows/stage5-screenshots.yml`)
+   boots the same proven API 36 / pixel_6 / KVM emulator configuration, installs the
+   candidate debug APK, drives the real UI (uiautomator accessibility tree; onboarding
+   dismissed via its own Skip button), switches the product's own persisted theme
+   (`profile_settings.theme` in `opus.db`: `Light` = Ivory, `Dark` = Nocturne — written
+   via `run-as` + `sqlite3` with readback assertion, app relaunched through its normal
+   startup path), and captures 12 screencaps (Home/Repertoire/Discover/Practice/Profile/
+   Settings × both themes) with SHA-256 manifest. Same safety rules as the green
+   workflow: dispatch-only, contents read-only, no production credentials, explicit
+   `emulator-NNNN` + `ro.kernel.qemu=1` guards, SHA-pinned actions, `HEAD == GITHUB_SHA`
+   assertion, no tests re-run, nothing published.
+
+2. **Real bundle-transfer disk/network costs — DECISION: "Document measured costs +
+   blocker" (recommended option).**
+   The requirement is dispositioned with the measured evidence that genuinely exists,
+   plus a formal record of why real-CDN numbers cannot be produced today:
+   - **Measured (executed) evidence accepted as the Stage 5 answer:** the run-6
+     instrumented suite exercised the real transfer engine end to end with exact byte
+     accounting (network bytes == manifest-declared bytes; staged/published file bytes;
+     admission refusal before any byte moves on low storage; mid-stream cancellation
+     byte accounting) on the emulator with real file I/O, plus `disk-usage.txt`
+     emulator snapshots.
+   - **Structural blocker (documented, not fabricated):** the product has **no
+     production bundle feed/CDN URL and no production enqueue path** — verified:
+     `BundleScheduler` has no non-test caller, no bundle URL exists anywhere in
+     `app/src/main`, and the user-facing download management UI is Stage 7 scope.
+     Real-CDN transfer costs therefore become measurable only when the bundle feed
+     exists (Stage 6/7 dependency) and must be measured then, against the real host.
+   No numbers were invented; nothing was claimed as a real-CDN measurement.
+
+Both decisions were recorded in the Issue #31 checkpoint thread as well. Stage 5 stays
+IN PROGRESS until the screenshot artifacts are captured + inspected and task 5.13
+finalizes.
+
+## Owner approval — Stage 5 completion claim APPROVED (2026-10-21, closing checkpoint)
+
+The owner approved the Goldberg 0.11 Stage 5 completion claim based on: the
+verified CI evidence (attempt-6 run 39557624554 and green screenshot run
+39576173002), the completed checklist (5.10–5.13), the archived screenshots
+(`results/ci-run-39576173002/`) and the final documentation. Actions taken:
+GitHub Project item #31 moved to **Done**; final approval checkpoint appended to
+Issue #31 (permanent audit trail preserved); docs synchronized.
+
+**Carried-forward production-CDN limitation (future integration dependency,
+explicitly preserved):** real bundle-transfer disk/network costs against a
+production CDN remain **unmeasurable until a production bundle feed/CDN URL and
+enqueue path exist** — none exists in the product today (`BundleScheduler` has
+no non-test caller; no bundle URL in `app/src/main`; download UI is Stage 7).
+The accepted Stage 5 evidence is the executed tests' exact byte accounting +
+real file I/O + emulator `disk-usage.txt` snapshots. This MUST be re-measured
+against the real host when the bundle feed ships (Stage 6/7); no numbers were
+fabricated.
+
+Explicitly NOT authorized by this approval: merging Stage 5 application code
+into `main`, tags, APK/release publication, cloud service provisioning, OAuth
+configuration, Stage 6/7 implementation. Each remains a separate owner decision.
+
+## Owner tracking correction — Issue #31 is the RELEASE umbrella, reopened (2026-10-21)
+
+The owner identified a tracking inconsistency: GitHub Issue #31 is the **umbrella issue for the entire Goldberg 0.11 release** (Stages 1–8), but it had been closed (and the GitHub Project item set to Done) when the **Stage 5** completion was approved. Because Stages 6–8 have not started, closing the release umbrella was incorrect.
+
+**Correction applied:**
+- Reopened Issue #31 (it stays **OPEN** as the release dashboard).
+- Set the umbrella GitHub Project item to **In Progress** (back from Done). **Stage 5 itself stays Done** in its stage checklist; no duplicate issue or project item was created.
+- Updated the Issue #31 description: master checklist now shows Stages 1–5 **complete**, Stages 6–8 **pending**, and **Goldberg 0.11 overall IN PROGRESS**; the stale Stage-5 "in-progress CI-attempt" status was replaced with the verified final results, while the historical audit trail (checkpoint comments, stages 1–4 summaries) is preserved unchanged.
+- Synchronized STATE/HANDOFF/VERIFICATION/DECISIONS + master checklist + this register.
+
+**Unchanged:** Stage 5 remains officially **COMPLETE and owner-approved**; it is NOT reopened or rerun. Still not authorized: merging application code, tags, releases/APK, cloud provisioning, OAuth, or Stage 6/7 implementation.
+
+</details>

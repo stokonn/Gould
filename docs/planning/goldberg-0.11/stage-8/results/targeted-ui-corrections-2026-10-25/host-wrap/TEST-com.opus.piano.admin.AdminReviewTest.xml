@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.admin.AdminReviewTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:08:28.516Z" hostname="fedora" time="0.075">
+  <properties/>
+  <testcase name="backgroundDuringFinalRoleVerificationCannotSubmitDecision" classname="com.opus.piano.admin.AdminReviewTest" time="0.012"/>
+  <testcase name="explicitConfirmationSendsExpectedRevisionAndKey" classname="com.opus.piano.admin.AdminReviewTest" time="0.007"/>
+  <testcase name="networkUncertaintyUsesSameKeyAndExactBodyOnExplicitReplay" classname="com.opus.piano.admin.AdminReviewTest" time="0.003"/>
+  <testcase name="nullCursorMeansEndOfResults" classname="com.opus.piano.admin.AdminReviewTest" time="0.001"/>
+  <testcase name="backgroundLockCancelsConfirmation" classname="com.opus.piano.admin.AdminReviewTest" time="0.002"/>
+  <testcase name="unknownServerStatusNeverGrantsDecisionSuccess" classname="com.opus.piano.admin.AdminReviewTest" time="0.003"/>
+  <testcase name="fieldDiffIncludesChangedAddedRemovedAndEvidenceOnlyChanges" classname="com.opus.piano.admin.AdminReviewTest" time="0.001"/>
+  <testcase name="confirmedConflictIsCountedOnce" classname="com.opus.piano.admin.AdminReviewTest" time="0.004"/>
+  <testcase name="cancelledSignOutStillClearsLocalCredentialsTrustAndMarkers" classname="com.opus.piano.admin.AdminReviewTest" time="0.004"/>
+  <testcase name="unknownOutcomeBlocksSwitchingToAnotherProposal" classname="com.opus.piano.admin.AdminReviewTest" time="0.002"/>
+  <testcase name="revokedRoleCannotDecideAndInvalidatesTrust" classname="com.opus.piano.admin.AdminReviewTest" time="0.002"/>
+  <testcase name="liveContractGateCannotBeBypassedByDirectServiceCall" classname="com.opus.piano.admin.AdminReviewTest" time="0.001"/>
+  <testcase name="mismatchedSuccessIsUnconfirmedAndReconcileable" classname="com.opus.piano.admin.AdminReviewTest" time="0.002"/>
+  <testcase name="conflictNeverResubmitsAndMarksRereview" classname="com.opus.piano.admin.AdminReviewTest" time="0.003"/>
+  <testcase name="unknownStatusesKeepMarkersAndAreNotDecidable" classname="com.opus.piano.admin.AdminReviewTest" time="0.0"/>
+  <testcase name="staleAcknowledgementCannotUnlockNewerRevision" classname="com.opus.piano.admin.AdminReviewTest" time="0.003"/>
+  <testcase name="selfDecisionIsBlocked" classname="com.opus.piano.admin.AdminReviewTest" time="0.002"/>
+  <testcase name="rejectRequiresNonblankReason" classname="com.opus.piano.admin.AdminReviewTest" time="0.003"/>
+  <testcase name="stateChangeAtSameRevisionInvalidatesConfirmation" classname="com.opus.piano.admin.AdminReviewTest" time="0.002"/>
+  <testcase name="accountSwitchDuringRequestDropsResponse" classname="com.opus.piano.admin.AdminReviewTest" time="0.002"/>
+  <testcase name="equalProposalSnapshotsDoNotFabricateChangedFields" classname="com.opus.piano.admin.AdminReviewTest" time="0.0"/>
+  <testcase name="revisionChangeWhileConfirmingPreventsPostAndRequiresReview" classname="com.opus.piano.admin.AdminReviewTest" time="0.002"/>
+  <testcase name="cancelledNetworkWriteRetainsOriginalPendingKey" classname="com.opus.piano.admin.AdminReviewTest" time="0.004"/>
+  <testcase name="changesRequireClearRequestAndConfirmedServerTransition" classname="com.opus.piano.admin.AdminReviewTest" time="0.003"/>
+  <testcase name="changedPrincipalClearsSensitiveReviewAndQueueState" classname="com.opus.piano.admin.AdminReviewTest" time="0.002"/>
+  <testcase name="capabilityLossBlocksPost" classname="com.opus.piano.admin.AdminReviewTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

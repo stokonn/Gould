@@ -1,0 +1,92 @@
+10-20 23:05:11.461  4034  4122 I TestRunner: started: reconnectingObserversNeverStartsOrDuplicatesTime(com.opus.piano.PracticeCoordinatorTest)
+10-20 23:05:11.480  2303  2303 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.findmydevice.spot.service.management.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsApiService }
+10-20 23:05:11.481  1704  3317 W abht    : (REDACTED) [%s] response code: %d
+10-20 23:05:11.482  2303  2303 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.chimera.container.moduleinstall.ModuleInstallService.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsApiService }
+10-20 23:05:11.506  1488  2060 I DownloadManager: DownloadManager$3.onProgress():514 Downloading __SP_transformer_concept with size 1493590
+10-20 23:05:11.513  2217  2735 I .gms.persistent: AssetManager2(0x7ef312df2278) locale list changing from [] to [en-US]
+10-20 23:05:11.538  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e0ac38) locale list changing from [] to [en-US]
+10-20 23:05:11.540  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e0c218) locale list changing from [] to [en-US]
+10-20 23:05:11.550  1488  2060 I DownloadManager: DownloadManager$4.onSuccess():564 download for __SP_transformer_concept is finished with files # mxp@9bd415
+10-20 23:05:11.552  1488  2055 I MDDSuperpacks: MDDSuperpacks.getPacks():548 getting packs for superpack: transformer_concept
+10-20 23:05:11.558  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: allSubInfos.size()=1
+10-20 23:05:11.558  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: newSubsInfoListPerPriority.size()=0
+10-20 23:05:11.558  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: no satellite subscription available
+10-20 23:05:11.559  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: allSubInfos.size()=1
+10-20 23:05:11.560  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: newSubsInfoListPerPriority.size()=0
+10-20 23:05:11.560  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: no satellite subscription available
+10-20 23:05:11.562  1488  2055 I MDDSuperpacks: MDDSuperpacks$3.onSuccess():558 packs [2023011913_en] got for superpack: transformer_concept
+10-20 23:05:11.564  1488  2060 I MDDSuperpacks: MDDSuperpacks$2.onSuccess():274 Sync success for transformer_concept with result: {old=[], new=[2023011913_en], metadata=false, last batch=true}
+10-20 23:05:11.564  1488  2060 I MDDSuperpacks: MDDSuperpacks.getPacks():548 getting packs for superpack: transformer_concept
+10-20 23:05:11.566  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e073f8) locale list changing from [] to [en-US]
+10-20 23:05:11.580  1488  2065 I DownloadManager: DownloadManager$3.onProgress():514 Downloading __SP_dynamic_art with size 44036
+10-20 23:05:11.586  1488  2065 I MDDSuperpacks: MDDSuperpacks$3.onSuccess():558 packs [2023011913_en] got for superpack: transformer_concept
+10-20 23:05:11.590  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e06db8) locale list changing from [] to [en-US]
+10-20 23:05:11.594  2217  2735 I .gms.persistent: AssetManager2(0x7ef312de8958) locale list changing from [] to [en-US]
+10-20 23:05:11.602  1488  2098 I Environment: Environment.isPackageInstalled():214 com.bitstrips.imoji is not installed
+10-20 23:05:11.647  1610  4622 E AiAiEcho: Reading elements from Geller failed with cause
+10-20 23:05:11.647  1610  4622 E AiAiEcho: ilw: Code: UNKNOWN, Message: Geller data fetch is not enabled
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at imn.a(PG:17)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at lhh.b(PG:20)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at abge.g(PG:11)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at kotlinx.coroutines.DispatchedTask.run(PG:112)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at xjo.a(PG:3)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at xir.run(PG:19)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at xjp.run(PG:5)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:348)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at hxw.run(PG:221)
+10-20 23:05:11.647  1610  4622 E AiAiEcho: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:05:11.649  1610  2415 I AiAiCaptions: TtsLangFetcherImpl::fetch(). Fetching locales en_US
+10-20 23:05:11.672  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e0d4d8) locale list changing from [] to [en-US]
+10-20 23:05:11.674  1610  2415 I ogle.android.as: AssetManager2(0x7ef312dfb558) locale list changing from [] to [en-US]
+10-20 23:05:11.675  1610  2415 I TextToSpeech: Sucessfully bound to com.google.android.tts
+10-20 23:05:11.676  1610  2415 I AiAiCaptions: TtsLangFetcherImpl::fetch(). Fetching locales en_US
+10-20 23:05:11.676  1610  2415 W AiAiCaptions: TtsSynthesizerImpl::initialize(): TTS engine is initializing
+10-20 23:05:11.681  1610  1945 I AiAiTextClassifier: [KnowledgeGraphCollectionsTableDownloaderImpl] Config changed, triggering a sync of KnowledgeGraphCollectionsTable
+10-20 23:05:11.684  1610  1945 I AiAiTextClassifier: Updating text classifier flags in CutoffProvider.
+10-20 23:05:11.700  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.710  2217  2217 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.gmscompliance.service.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+10-20 23:05:11.711  2535  2535 I GoogleTtsServicePeer: Creating Google TTS service, version googletts.google-speech-apk_20241125.02_p2.702443970
+10-20 23:05:11.712  2535  2535 I ExoPlayerImpl: Init 7728d04 [AndroidXMedia3/1.5.0] [emu64xa, sdk_gphone64_x86_64, Google, 36]
+10-20 23:05:11.718  1610  1943 E SP.Service.AiAi: captions_i18n_v0_en-US is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.720  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.721  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.721  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.721  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.721  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.722  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.722  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.723  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.723  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.723  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.723  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.724  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.724  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.725  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.726  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.726  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.728  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.728  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.729  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.729  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.729  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.730  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.730  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.730  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.730  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.730  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.730  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:11.730  1610  1943 I SP.Service.AiAi: UnspecifiedLegacyClient is already not in the set of current clients for captions_i18n_v0_mandatory
+10-20 23:05:11.742  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e09018) locale list changing from [] to [en-US]
+10-20 23:05:11.742  2217  2735 I .gms.persistent: AssetManager2(0x7ef312e01958) locale list changing from [] to [en-US]
+10-20 23:05:11.751  2535  2535 I ExoPlayerImpl: Init 7d572ed [AndroidXMedia3/1.5.0] [emu64xa, sdk_gphone64_x86_64, Google, 36]
+10-20 23:05:11.770  1610  1945 I AiAiNowPlaying: Now Playing config changed. Refreshing FA controller
+10-20 23:05:11.771  1610  1945 I AiAiNowPlaying: Now Playing config changed. Refreshing FA controller.
+10-20 23:05:11.771  1610  1945 I AiAiNowPlaying: Registering Now Playing population: NOW_PLAYING_USAGE
+10-20 23:05:11.772  1488  2060 I DownloadManager: DownloadManager$3.onProgress():514 Downloading __SP_dynamic_art with size 557904
+10-20 23:05:11.778  1610  1945 I AiAiNowPlaying: Registering Now Playing population: NOW_PLAYING_USAGE_WEEKLY
+10-20 23:05:11.804  4034  4122 I TestRunner: finished: reconnectingObserversNeverStartsOrDuplicatesTime(com.opus.piano.PracticeCoordinatorTest)

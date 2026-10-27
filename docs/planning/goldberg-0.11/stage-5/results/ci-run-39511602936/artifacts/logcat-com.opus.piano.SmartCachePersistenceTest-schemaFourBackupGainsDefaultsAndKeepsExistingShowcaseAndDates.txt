@@ -1,0 +1,3 @@
+10-20 23:05:17.449  4034  4122 I TestRunner: started: schemaFourBackupGainsDefaultsAndKeepsExistingShowcaseAndDates(com.opus.piano.SmartCachePersistenceTest)
+10-20 23:05:17.546  4034  4042 W com.opus.piano: Suspending all threads took: 9.902ms
+10-20 23:05:17.603  4034  4122 I TestRunner: finished: schemaFourBackupGainsDefaultsAndKeepsExistingShowcaseAndDates(com.opus.piano.SmartCachePersistenceTest)

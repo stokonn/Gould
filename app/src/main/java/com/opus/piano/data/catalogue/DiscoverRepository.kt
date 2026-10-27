@@ -5,10 +5,12 @@ import com.opus.piano.data.catalogue.providers.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.collect
 import java.util.UUID
 
 data class SearchSource(val provider:String,val state:SourceState,val error:String?=null,val refreshState:SourceState?=null,val requestKind:String?=null)
-data class DiscoverSearch(val queryId:String,val page:CatalogueSearchPage,val sources:List<SearchSource> = emptyList(),val candidates:List<CatalogueCandidate> = emptyList(),val continuation:String?=null,val limitReached:Boolean=false)
+data class DiscoverSearch(val queryId:String,val page:CatalogueSearchPage,val sources:List<SearchSource> = emptyList(),val candidates:List<CatalogueCandidate> = emptyList(),val continuation:String?=null,val limitReached:Boolean=false,val providerEntityIds:Set<String> = emptySet())
 
 /** The only online entry point requires an explicit active search. Construction/landing are local. */
 class DiscoverRepository(private val store:LocalCatalogueStore,private val client:ProviderClient,private val permitted:()->Boolean,
@@ -64,14 +66,28 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
     private suspend fun finish(query:String,filter:SearchFilter,frame:DiscoverFrame,page:CatalogueSearchPage,observations:List<CatalogueCandidate>):DiscoverSearch {
         val more=frame.providers.isNotEmpty() || local(query,filter,excluded=frame.seen,limit=1).items.isNotEmpty() || candidates(query,filter,frame.seenCandidates).isNotEmpty()
         val token=if(more)paging.issue(frame) else null
-        return DiscoverSearch(frame.queryId,page,frame.sources,observations,token,more && token==null)
+        return DiscoverSearch(frame.queryId,page,frame.sources,observations,token,more && token==null,frame.providerEntityIds)
     }
+    /** The persisted Settings toggle is consent. Callers cancel this flow on query/filter/toggle
+     * changes; local results precede the debounce and no empty/one-character query goes online. */
+    fun automaticSearch(query:String,filter:SearchFilter,language:String,online:Boolean):Flow<DiscoverSearch> = flow {
+        search(query,filter,language,false).collect {emit(it)}
+        if(online && query.trim().length>=2) {
+            delay(500)
+            search(query,filter,language,true).collect {emit(it)}
+        }
+    }
+    private suspend fun observedIds(result:ProviderResult):Set<String> =
+        (store.access {repo->result.records.mapNotNull {record->
+            repo.providerIdentity(result.request.provider,record.providerKind,record.externalId)?.entityId?.let {repo.resolve(it)?.id}
+        }.toSet()} as? CatalogueAccess.Available)?.value.orEmpty()
     fun search(query:String,filter:SearchFilter,language:String,online:Boolean):Flow<DiscoverSearch> = channelFlow {
         require(query.length<=256 && language in setOf("cs","en"))
         val id=UUID.randomUUID().toString()
         val items=linkedMapOf<String,CatalogueEntity>()
         val first=local(query,filter);first.items.forEach {items[it.id]=it}
         send(DiscoverSearch(id,first,candidates=candidates(query,filter)))
+        val providerIds=linkedSetOf<String>()
         val states=java.util.concurrent.ConcurrentHashMap<String,SearchSource>()
         val positions=linkedMapOf<String,ProviderPosition>()
         val emission=kotlinx.coroutines.sync.Mutex()
@@ -82,18 +98,23 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
                     val (result,source)=acquire(adapter,request)
                     emission.lock()
                     try {
+                        providerIds.addAll(observedIds(result).take(500-providerIds.size))
                         states[sourceKey(source)]=source
                         if(usable(result.state))result.nextOffset?.let {positions[adapter.id+":"+request.kind]=ProviderPosition(adapter.id,request.kind,it)}
-                        val page=local(query,filter);page.items.forEach {if(items.size<40 || it.id in items)items[it.id]=it}
-                        send(DiscoverSearch(id,page.copy(items=items.values.toList()),orderedSources(states.values),candidates(query,filter)))
+                        val page=local(query,filter);items.clear();page.items.forEach {items[it.id]=it}
+                        send(DiscoverSearch(id,page.copy(items=items.values.toList()),orderedSources(states.values),candidates(query,filter),providerEntityIds=providerIds.toSet()))
                     }finally {emission.unlock()}
                     if(result.state==SourceState.RATE_LIMITED)break
                 }
             }}
         }
-        val page=local(query,filter);page.items.forEach {if(items.size<40 || it.id in items)items[it.id]=it}
+        if(online && query.trim().length>=2 && !permitted())adapters.forEach {adapter->
+            val source=SearchSource(adapter.id,SourceState.UNAVAILABLE,"network_policy")
+            states[sourceKey(source)]=source
+        }
+        val page=local(query,filter);items.clear();page.items.forEach {items[it.id]=it}
         val candidates=candidates(query,filter)
-        val frame=DiscoverFrame(DiscoverPaging.binding(query,filter,language,online),id,page.generation,items.keys.lastOrNull(),items.keys.toSet(),candidates.map {it.id}.toSet(),positions.values.toList(),orderedSources(states.values))
+        val frame=DiscoverFrame(DiscoverPaging.binding(query,filter,language,online),id,page.generation,items.keys.lastOrNull(),items.keys.toSet(),candidates.map {it.id}.toSet(),positions.values.toList(),orderedSources(states.values),providerEntityIds=providerIds.toSet())
         send(finish(query,filter,frame,page.copy(items=items.values.toList()),candidates))
     }
     suspend fun continueSearch(query:String,filter:SearchFilter,language:String,online:Boolean,cursor:String):DiscoverSearch {
@@ -108,6 +129,7 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
             var page=local(query,filter,excluded=frame.seen,limit=minOf(40,500-frame.seen.size))
             var candidates=candidates(query,filter,frame.seenCandidates).take(500-frame.seenCandidates.size)
             var positions=frame.providers
+            val providerIds=frame.providerEntityIds.toMutableSet()
             val states=frame.sources.associateBy {sourceKey(it)}.toMutableMap()
             if(online && positions.isNotEmpty() && !permitted())positions.forEach {position->
                 val source=SearchSource(position.provider,SourceState.UNAVAILABLE,"network_policy",requestKind=position.kind);states[sourceKey(source)]=source
@@ -119,14 +141,14 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
                     val request=adapter.search(query.trim(),filter.category,language,position.offset).single {it.kind==position.kind}
                     Triple(position,request,acquire(adapter,request))
                 }}.awaitAll()}.forEach {(position,_,resultAndState)->
-                    val (result,source)=resultAndState;states[sourceKey(source)]=source
+                    val (result,source)=resultAndState;providerIds.addAll(observedIds(result).take(500-providerIds.size));states[sourceKey(source)]=source
                     if(usable(result.state))result.nextOffset?.let {next+=position.copy(offset=it)} else next+=position
                 }
                 positions=next
                 page=local(query,filter,excluded=frame.seen,limit=minOf(40,500-frame.seen.size));candidates=candidates(query,filter,frame.seenCandidates).take(500-frame.seenCandidates.size)
             }
             val seen=frame.seen+page.items.map {it.id};val observed=frame.seenCandidates+candidates.map {it.id}
-            val nextFrame=frame.copy(generation=page.generation,lastId=page.items.lastOrNull()?.id ?: frame.lastId,seen=seen,seenCandidates=observed,providers=positions,sources=orderedSources(states.values),ordinal=frame.ordinal+1)
+            val nextFrame=frame.copy(generation=page.generation,lastId=page.items.lastOrNull()?.id ?: frame.lastId,seen=seen,seenCandidates=observed,providers=positions,sources=orderedSources(states.values),ordinal=frame.ordinal+1,providerEntityIds=providerIds.toSet())
             return finish(query,filter,nextFrame,page,candidates).also {slot.replay=it}
         }finally {slot.lock.unlock()}
     }

@@ -1,0 +1,27 @@
+10-20 23:05:50.452  4034  4122 I TestRunner: started: legacyCacheForcesUnconditionalRefreshAndRejectsUnsolicitedNotModified(com.opus.piano.Stage4ProviderCacheTest)
+10-20 23:05:50.463   643   661 I WifiService: getWifiConfigsForMatchedNetworkSuggestions uid=1000
+10-20 23:05:50.463   643   661 W ScanResultUtil: Empty or null ScanResult list
+10-20 23:05:50.463   643   661 W WifiService: Attempt to retrieve WifiConfiguration with invalid scanResult List
+10-20 23:05:50.463   643   661 I WifiService: getPasspointConfigurations uid=1000
+10-20 23:05:50.464  1237  2235 D SliceBroadcastRelay: Unregistering uri broadcast relay: content://com.android.settings.slices/action/mobile_data
+10-20 23:05:50.465   643   979 I WifiService: getScanResults uid=1000
+10-20 23:05:50.467  1237  1237 D SettingsSliceProvider: Stopping background worker for: content://com.android.settings.slices/action/mobile_data
+10-20 23:05:50.467   643   979 I WifiService: getWifiEnabledState uid=1000 state=3
+10-20 23:05:50.467   643   979 I WifiService: getScanResults uid=1000
+10-20 23:05:50.468   643   979 I WifiService: getWifiConfigsForMatchedNetworkSuggestions uid=1000
+10-20 23:05:50.468   643   979 W ScanResultUtil: Empty or null ScanResult list
+10-20 23:05:50.468   643   979 W WifiService: Attempt to retrieve WifiConfiguration with invalid scanResult List
+10-20 23:05:50.468   643   979 I WifiService: getMatchingPasspointConfigurations uid=1000
+10-20 23:05:50.468   643   979 W ScanResultUtil: Empty or null ScanResult list
+10-20 23:05:50.468   643   979 E WifiService: Attempt to retrieve passpoint with invalid scanResult List
+10-20 23:05:50.468   643   918 D WifiScanningService: replySucceeded onSuccess
+10-20 23:05:50.469   643   661 I WifiService: getMatchingOsuProviders uid=1000
+10-20 23:05:50.469   643   661 W ScanResultUtil: Empty or null ScanResult list
+10-20 23:05:50.469   643   661 W WifiService: Attempt to retrieve OsuProviders with invalid scanResult List
+10-20 23:05:50.469   643   661 I WifiService: getMatchingPasspointConfigsForOsuProviders uid=1000
+10-20 23:05:50.470   643   661 I WifiService: getCurrentNetwork uid=1000
+10-20 23:05:50.470   643   661 I WifiService: getConnectionInfo uid=1000
+10-20 23:05:50.470   643   661 V WifiService: Clearing REDACT_FOR_LOCAL_MAC_ADDRESS for com.android.settings(uid=1000)
+10-20 23:05:50.470   643   661 V WifiService: Clearing REDACT_FOR_NETWORK_SETTINGS for com.android.settings(uid=1000)
+10-20 23:05:50.470   643   661 V WifiService: Clearing REDACT_FOR_ACCESS_FINE_LOCATION for com.android.settings(uid=1000)
+10-20 23:05:50.471  4034  4122 I TestRunner: finished: legacyCacheForcesUnconditionalRefreshAndRejectsUnsolicitedNotModified(com.opus.piano.Stage4ProviderCacheTest)

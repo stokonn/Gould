@@ -1,0 +1,35 @@
+{
+  "stage": "8A readiness preparation",
+  "date": "2026-10-24",
+  "base": "4c6a91d600ad18455a280f941f89740694d5afa0",
+  "preparationChecks": "PASS",
+  "checks": [
+    "new relative documentation links resolve",
+    "new JSON parses",
+    "git diff --check",
+    "270 accepted source-manifest hashes match",
+    "source/test/CI/Stage7-evidence diff empty",
+    "all2203 originally inventoried untracked files byte-identical",
+    "14 original tracked worktrees unchanged; concurrent Stage6-Cloud changes detected, recorded and untouched",
+    "Stage7B existing APK unchanged; no PMP copied"
+  ],
+  "concurrentWork": "Stage6-Cloud WIP excluded; refresh final published checkpoint before dependent integration",
+  "applicationTestsRun": false,
+  "buildsRun": false,
+  "emulatorRun": false,
+  "ciDispatched": false,
+  "merged": false,
+  "deployed": false,
+  "released": false,
+  "stage7Acceptance": "COMPLETE client/synthetic",
+  "stage8IntegrationRelease": "PENDING/BLOCKED",
+  "openGates": [
+    "G1-G9/G11",
+    "C4",
+    "6.0f",
+    "Android/backend live integration",
+    "all production authorization gates"
+  ],
+  "stage7bApkSha256": "93ae9ec88472e4f07dc5328980786e9ce252887ccbac507c0034195cd9b51961",
+  "milestoneCheckpoint": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388534366"
+}

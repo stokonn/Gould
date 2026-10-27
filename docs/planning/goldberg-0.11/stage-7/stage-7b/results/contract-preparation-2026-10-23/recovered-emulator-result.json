@@ -1,0 +1,27 @@
+{
+  "result": "exited",
+  "exitCode": -11,
+  "elapsedSeconds": 21.68,
+  "serial": "emulator-5582",
+  "readOnly": true,
+  "noSnapshot": true,
+  "noWipe": true,
+  "command": [
+    "/home/stokonn/Android/Sdk/emulator/emulator",
+    "-avd",
+    "stage5-api36",
+    "-port",
+    "5582",
+    "-read-only",
+    "-no-snapshot",
+    "-no-window",
+    "-no-audio",
+    "-no-boot-anim",
+    "-gpu",
+    "swiftshader_indirect",
+    "-memory",
+    "2048"
+  ],
+  "log": "/tmp/goldberg-7b-contract-emulator.log",
+  "instrumentationExecuted": false
+}

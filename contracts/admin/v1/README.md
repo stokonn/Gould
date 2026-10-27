@@ -37,3 +37,5 @@ revision, silent cursor coercion, field-before-value invention or partial count
 presented as a total. All HTTP methods/path bindings remain explicitly unapproved.
 
 created by stokonn with love <3
+
+Integration note October27: Stage7 authored-comparison JVM tests and validator explicitly use the preserved stage7b-comparison/ subtree. Current actual Stage6 captures at this root are retained unchanged.

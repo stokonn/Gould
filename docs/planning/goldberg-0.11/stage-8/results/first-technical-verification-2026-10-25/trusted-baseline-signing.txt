@@ -1,0 +1,22 @@
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: C=US, O=Android, CN=Android Debug
+Signer #1 certificate SHA-256 digest: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e
+Signer #1 certificate SHA-1 digest: 4fbb357f14740db36fce486727507557d4e3c420
+Signer #1 certificate MD5 digest: 99b2cb67071b64525b38e0e46271893c
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+Signer #1 public key SHA-256 digest: e8d6130d9eb1ac2da1049c07be8add424d5f1361202691fc8dbb67972d91d09b
+Signer #1 public key SHA-1 digest: b2382afda8881576d94afd3ea4233ed24d3159e1
+Signer #1 public key MD5 digest: 1689d620d08069204c5d23b10b58c7b5
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::loadLibrary has been called by org.conscrypt.NativeLibraryUtil in an unnamed module (file:/home/stokonn/Android/Sdk/build-tools/36.0.0/lib/apksigner.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+

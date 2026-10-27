@@ -1,0 +1,26 @@
+10-20 23:05:11.805  4034  4122 I TestRunner: started: oldBackupImportsAndDeviceStateDoesNotTravel(com.opus.piano.PracticeRecoveryTest)
+10-20 23:05:11.812  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e07a38) locale list changing from [] to [en-US]
+10-20 23:05:11.835  2535  2535 I PipelineReaderImpl: Initializing en-us-x-iog-lstm-embedded from disk
+10-20 23:05:11.919   643   914 D WifiClientModeImpl[34482:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=1 freq=2437 RxLinkSpeed=2
+10-20 23:05:11.919   643   914 D WifiDataStall: tx tput in kbps: 37000
+10-20 23:05:11.919   643   914 D WifiDataStall: rx tput in kbps: 37000
+10-20 23:05:11.920   643   914 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+10-20 23:05:11.920   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:11.920   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:11.920   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:11.920   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:11.922   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:11.922   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:11.922   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:11.922   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:11.931   643   914 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 14224604 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 54Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+10-20 23:05:11.934   643   914 D WifiScoreCard: txRate: 374 txSpeed: 1
+10-20 23:05:11.934   643   914 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 1928051533 RSSI -50 txSpeed 1
+10-20 23:05:11.934   643   914 D WifiClientModeImpl[34482:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=60 link=1 tx=373.0, 0.0, 0.0 rx=2093.6 bcn=0 [on:0 tx:0 rx:0 period:3029] from screen [on:0 period:1536149502] score=60
+10-20 23:05:11.986  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e086b8) locale list changing from [] to [en-US]
+10-20 23:05:12.006  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e07718) locale list changing from [] to [en-US]
+10-20 23:05:12.014  1747  1747 V ContactsProvider: Scheduled notifyChange started.
+10-20 23:05:12.049  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e07d58) locale list changing from [] to [en-US]
+10-20 23:05:12.055  1488  2098 I DownloadManager: DownloadManager$3.onProgress():514 Downloading __SP_dynamic_art with size 588418
+10-20 23:05:12.067  1535  1857 I .apps.wellbeing: AssetManager2(0x7ef312e0a918) locale list changing from [] to [en-US]
+10-20 23:05:12.073  4034  4122 I TestRunner: finished: oldBackupImportsAndDeviceStateDoesNotTravel(com.opus.piano.PracticeRecoveryTest)

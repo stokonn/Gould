@@ -1,0 +1,2 @@
+10-20 23:05:44.481  4034  4122 I TestRunner: started: openingDiscoverAndOfflineSearchSendNothing(com.opus.piano.Stage4CatalogueTest)
+10-20 23:05:44.530  4034  4122 I TestRunner: finished: openingDiscoverAndOfflineSearchSendNothing(com.opus.piano.Stage4CatalogueTest)

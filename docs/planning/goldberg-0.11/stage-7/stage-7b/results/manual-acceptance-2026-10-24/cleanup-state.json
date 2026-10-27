@@ -1,0 +1,13 @@
+{
+  "serial": "emulator-5586",
+  "qemu": 1,
+  "animationScales": {
+    "animator_duration_scale": "1",
+    "transition_animation_scale": "1",
+    "window_animation_scale": "1"
+  },
+  "TalkBackEnabled": false,
+  "POST_NOTIFICATIONS": "DENIED",
+  "defaultRunnerRestored": true,
+  "disposableProfile": "Czech,Dark,font1.3 retained only in new isolated AVD; existing AVDs untouched"
+}

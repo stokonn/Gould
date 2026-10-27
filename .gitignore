@@ -12,3 +12,8 @@ __pycache__/
 /spikes/stage6-schema-pg/node_modules
 /spikes/stage6-auth-local/node_modules
 /services/community-bff/node_modules
+
+
+# Private worktree memory; publish curated docs/ai checkpoints only.
+.pmp/
+.pmp.yml

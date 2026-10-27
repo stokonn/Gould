@@ -1,0 +1,45 @@
+{
+  "serial": "emulator-5588",
+  "polls": [
+    {
+      "code": 0,
+      "boot": "",
+      "error": ""
+    },
+    {
+      "code": 0,
+      "boot": "",
+      "error": ""
+    },
+    {
+      "code": 0,
+      "boot": "",
+      "error": ""
+    },
+    {
+      "code": 0,
+      "boot": "",
+      "error": ""
+    },
+    {
+      "code": 0,
+      "boot": "",
+      "error": ""
+    },
+    {
+      "code": 0,
+      "boot": "",
+      "error": ""
+    },
+    {
+      "code": 0,
+      "boot": "",
+      "error": ""
+    },
+    {
+      "code": 0,
+      "boot": "1",
+      "error": ""
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+sdk_gphone64_x86_64
+36
+Starting: Intent { cmp=com.opus.piano/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.opus.piano/.MainActivity
+TotalTime: 2262
+WaitTime: 2263
+Complete
+Starting: Intent { cmp=com.opus.piano/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.opus.piano/.MainActivity
+TotalTime: 2408
+WaitTime: 2412
+Complete
+Starting: Intent { cmp=com.opus.piano/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.opus.piano/.MainActivity
+TotalTime: 2587
+WaitTime: 2620
+Complete
+Starting: Intent { cmp=com.opus.piano/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.opus.piano/.MainActivity
+TotalTime: 2445
+WaitTime: 2489
+Complete
+Starting: Intent { cmp=com.opus.piano/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.opus.piano/.MainActivity
+TotalTime: 2004
+WaitTime: 2021
+Complete

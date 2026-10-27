@@ -1,0 +1,492 @@
+﻿2026-10-20T22:34:07.0131508Z ##[group]Run reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d
+2026-10-20T22:34:07.0131773Z with:
+2026-10-20T22:34:07.0131887Z   api-level: 36
+2026-10-20T22:34:07.0132004Z   target: google_apis
+2026-10-20T22:34:07.0132119Z   arch: x86_64
+2026-10-20T22:34:07.0132227Z   profile: pixel_6
+2026-10-20T22:34:07.0132341Z   avd-name: stage5-ci
+2026-10-20T22:34:07.0132465Z   disable-animations: true
+2026-10-20T22:34:07.0132733Z   emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+2026-10-20T22:34:07.0146903Z   script: # The action runs this script with /usr/bin/sh (dash): it rejects
+# 'set -o pipefail'. Materialize the real script into a file and
+# execute it explicitly with bash (run 39503450845 failed here in
+# the sibling job before this one could run).
+set -e
+cat > "$RUNNER_TEMP/stage5-acceptance-script.sh" <<'BASH_SCRIPT'
+set -euo pipefail
+SERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"
+case "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac
+ATTACHED="$(adb devices | awk '$2=="device"' | wc -l)"
+if [ "$ATTACHED" -ne 1 ]; then echo "ERROR: expected exactly one attached device, found $ATTACHED"; adb devices; exit 1; fi
+QEMU="$(adb -s "$SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')"
+if [ "$QEMU" != "1" ]; then echo "ERROR: $SERIAL is not a verified emulator (ro.kernel.qemu=$QEMU)"; exit 1; fi
+export ANDROID_SERIAL="$SERIAL"
+echo "Running acceptance subset on verified emulator $SERIAL"
+mkdir -p stage5-ci-results
+trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || true' EXIT
+# (a) Seeded in-place upgrade from the debug rebuild of the exact v0.10.1
+#     tag (same runner debug keystore as the candidate, so signatures
+#     match). The helper asserts baseline schema, version and per-table
+#     data equality after migration; disposable emulator seeding only.
+python3 scripts/verify_emulator_upgrade.py \
+  --serial "$SERIAL" \
+  --baseline baseline-src/app/build/outputs/apk/debug/app-debug.apk \
+  --baseline-version 0.10.1 --baseline-schema 8 --expected-schema 10 \
+  --candidate app/build/outputs/apk/debug/app-debug.apk \
+  --output stage5-ci-results/upgrade \
+  --seed-disposable --offline --startup-runs 5
+# (b) Wi-Fi -> mobile default-network transition and Data Saver, with real
+#     state assertions (not just collected logs). The upgrade helper ran
+#     with --offline (wifi AND mobile data disabled), so both are restored
+#     before asserting the transition.
+cat > stage5-ci-results/assert_default_network.py <<'PYEOF'
+import re
+import sys
+
+expected, dump_path = sys.argv[1], sys.argv[2]
+dump = open(dump_path, encoding='utf-8', errors='replace').read()
+match = re.search(r'^\s*Active default network: (.*)$', dump, re.M)
+if not match:
+    sys.exit('FATAL: "Active default network:" line missing from dumpsys connectivity')
+net_id = match.group(1).strip()
+if not re.fullmatch(r'\d+', net_id):
+    sys.exit(f'FATAL: expected a numeric active default network for transport {expected}, got: {net_id!r}')
+blocks = re.findall(r'^[ \t]*NetworkAgentInfo\{network\{' + re.escape(net_id) + r'\}.*$', dump, re.M)
+if not blocks:
+    sys.exit(f'FATAL: no NetworkAgentInfo block found for active default network {net_id}')
+block = blocks[0]
+ni = re.search(r'ni\{([^}]*)\}', block)
+if not ni:
+    sys.exit(f'FATAL: no ni{{...}} token in active-network block: {block}')
+transport = re.search(r'type: (\w+)', ni.group(1))
+if not transport:
+    sys.exit(f'FATAL: no "type:" token in ni of active-network block: {ni.group(1)!r}')
+found = transport.group(1)
+if found != expected:
+    sys.exit(f'FATAL: active default network {net_id} transport is {found}, expected {expected}')
+print(f'OK: active default network {net_id} uses transport {found}')
+PYEOF
+wait_for_transport() {
+  local expected="$1" deadline=$((SECONDS + 60))
+  while [ "$SECONDS" -lt "$deadline" ]; do
+    adb -s "$SERIAL" shell dumpsys connectivity > stage5-ci-results/connectivity-dump.txt 2>/dev/null || true
+    if python3 stage5-ci-results/assert_default_network.py "$expected" stage5-ci-results/connectivity-dump.txt >>stage5-ci-results/network-evidence.txt 2>&1; then
+      sed -n 's/.*Active default network: /active default network: /p' stage5-ci-results/connectivity-dump.txt | head -n1
+      return 0
+    fi
+    sleep 4
+  done
+  echo "FATAL: active default network never reached transport $expected within 60s"
+  return 1
+}
+{
+  echo "== restore mobile data and Wi-Fi (upgrade helper left both disabled) =="
+  adb -s "$SERIAL" shell svc data enable
+  adb -s "$SERIAL" shell svc wifi enable
+  echo "== expect Wi-Fi as active default network =="
+  WIFI_NET="$(wait_for_transport WIFI)"
+  echo "$WIFI_NET"
+  echo "== disable Wi-Fi, expect mobile fallback as active default network =="
+  adb -s "$SERIAL" shell svc wifi disable
+  MOBILE_NET="$(wait_for_transport MOBILE)"
+  echo "$MOBILE_NET"
+  if [ "$WIFI_NET" = "$MOBILE_NET" ]; then
+    echo "FATAL: default network did not change across the Wi-Fi -> mobile transition"; exit 1
+  fi
+  echo "OK: default network transitioned ($WIFI_NET -> $MOBILE_NET)"
+  echo "== restore Wi-Fi for the remainder of the run =="
+  adb -s "$SERIAL" shell svc wifi enable
+  wait_for_transport WIFI >/dev/null
+  echo "== Data Saver enable with state readback =="
+  adb -s "$SERIAL" shell cmd netpolicy set restrict-background true
+  sleep 2
+  DS_GET="$(adb -s "$SERIAL" shell cmd netpolicy get restrict-background | tr -d '\r')"
+  echo "cmd netpolicy get restrict-background: $DS_GET"
+  [ "$DS_GET" = "Restrict background status: enabled" ] || { echo "FATAL: Data Saver not enabled (readback: $DS_GET)"; exit 1; }
+  adb -s "$SERIAL" shell dumpsys netpolicy > stage5-ci-results/netpolicy-enabled.txt
+  grep -E "Restrict background: true" stage5-ci-results/netpolicy-enabled.txt || { echo "FATAL: dumpsys netpolicy does not report Restrict background: true"; exit 1; }
+  echo "== Data Saver disable with state readback =="
+  adb -s "$SERIAL" shell cmd netpolicy set restrict-background false
+  sleep 2
+  DS_GET="$(adb -s "$SERIAL" shell cmd netpolicy get restrict-background | tr -d '\r')"
+  echo "cmd netpolicy get restrict-background: $DS_GET"
+  [ "$DS_GET" = "Restrict background status: disabled" ] || { echo "FATAL: Data Saver not disabled (readback: $DS_GET)"; exit 1; }
+  adb -s "$SERIAL" shell dumpsys netpolicy > stage5-ci-results/netpolicy-disabled.txt
+  grep -E "Restrict background: false" stage5-ci-results/netpolicy-disabled.txt || { echo "FATAL: dumpsys netpolicy does not report Restrict background: false"; exit 1; }
+  echo "OK: Data Saver toggled with verified state readback"
+} | tee stage5-ci-results/network-evidence.txt
+# (c) Real process death + cold restart with database integrity check.
+adb -s "$SERIAL" shell am start -W -n com.opus.piano/.MainActivity
+sleep 5
+test -n "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
+adb -s "$SERIAL" shell am force-stop com.opus.piano
+test -z "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
+adb -s "$SERIAL" shell am start -W -n com.opus.piano/.MainActivity
+sleep 5
+test -n "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
+adb -s "$SERIAL" shell run-as com.opus.piano ls databases | tee stage5-ci-results/process-death-db.txt
+mkdir -p stage5-ci-results/db-after-restart
+for SUFFIX in '' '-wal' '-shm'; do
+  adb -s "$SERIAL" exec-out run-as com.opus.piano cat databases/opus.db$SUFFIX > stage5-ci-results/db-after-restart/opus.db$SUFFIX 2>/dev/null || rm -f stage5-ci-results/db-after-restart/opus.db$SUFFIX
+done
+test -s stage5-ci-results/db-after-restart/opus.db
+INTEGRITY="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA integrity_check;')"
+echo "PRAGMA integrity_check: $INTEGRITY" | tee stage5-ci-results/process-death-integrity.txt
+[ "$INTEGRITY" = "ok" ] || { echo "FATAL: database integrity_check failed"; exit 1; }
+FK_VIOLATIONS="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA foreign_key_check;')"
+echo "PRAGMA foreign_key_check violations: ${FK_VIOLATIONS:-none}" | tee -a stage5-ci-results/process-death-integrity.txt
+[ -z "$FK_VIOLATIONS" ] || { echo "FATAL: foreign_key_check reported violations"; exit 1; }
+SCHEMA="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA user_version;')"
+echo "PRAGMA user_version: $SCHEMA" | tee -a stage5-ci-results/process-death-integrity.txt
+[ "$SCHEMA" = "10" ] || { echo "FATAL: unexpected schema version $SCHEMA after restart (expected 10)"; exit 1; }
+echo "OK: post-restart database passed integrity, foreign-key and schema checks"
+# (d) Startup cost measurement (5 warm cold-process launches).
+bash scripts/measure-startup.sh "$SERIAL" 5 | tee stage5-ci-results/startup-measurement.txt
+BASH_SCRIPT
+exec bash "$RUNNER_TEMP/stage5-acceptance-script.sh"
+
+2026-10-20T22:34:07.0161002Z   cores: 2
+2026-10-20T22:34:07.0161125Z   force-avd-creation: true
+2026-10-20T22:34:07.0161265Z   emulator-boot-timeout: 600
+2026-10-20T22:34:07.0161404Z   emulator-port: 5554
+2026-10-20T22:34:07.0161535Z   disable-spellchecker: false
+2026-10-20T22:34:07.0161678Z   disable-linux-hw-accel: auto
+2026-10-20T22:34:07.0161823Z   enable-hw-keyboard: false
+2026-10-20T22:34:07.0161953Z   channel: stable
+2026-10-20T22:34:07.0162066Z env:
+2026-10-20T22:34:07.0162234Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-20T22:34:07.0162502Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-20T22:34:07.0162720Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-10-20T22:34:07.0162884Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-10-20T22:34:07.0163038Z ##[endgroup]
+2026-10-20T22:34:07.0665556Z ##[group]Configure emulator
+2026-10-20T22:34:07.0666362Z API level: 36
+2026-10-20T22:34:07.0666630Z System image API level: 36
+2026-10-20T22:34:07.0666866Z target: google_apis
+2026-10-20T22:34:07.0667132Z CPU architecture: x86_64
+2026-10-20T22:34:07.0667372Z Hardware profile: pixel_6
+2026-10-20T22:34:07.0669265Z Cores: 2
+2026-10-20T22:34:07.0669556Z RAM size: 
+2026-10-20T22:34:07.0669808Z Heap size: 
+2026-10-20T22:34:07.0670033Z SD card path or size: 
+2026-10-20T22:34:07.0670233Z Disk size: 
+2026-10-20T22:34:07.0670425Z AVD name: stage5-ci
+2026-10-20T22:34:07.0670645Z force avd creation: true
+2026-10-20T22:34:07.0670879Z Emulator boot timeout: 600
+2026-10-20T22:34:07.0671103Z emulator port: 5554
+2026-10-20T22:34:07.0671606Z emulator options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+2026-10-20T22:34:07.0671978Z disable animations: true
+2026-10-20T22:34:07.0672133Z disable spellchecker: false
+2026-10-20T22:34:07.0672308Z disable Linux hardware acceleration: false
+2026-10-20T22:34:07.0672493Z enable hardware keyboard: false
+2026-10-20T22:34:07.0672644Z Channel: 0 (stable)
+2026-10-20T22:34:07.0672803Z Script:
+2026-10-20T22:34:07.0672915Z set -e
+2026-10-20T22:34:07.0673120Z cat > "$RUNNER_TEMP/stage5-acceptance-script.sh" <<'BASH_SCRIPT'
+2026-10-20T22:34:07.0673352Z set -euo pipefail
+2026-10-20T22:34:07.0673776Z SERIAL="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-/ {print $1; exit}')"
+2026-10-20T22:34:07.0674421Z case "$SERIAL" in emulator-[0-9]*) : ;; *) echo "ERROR: no identified emulator-NNNN serial"; adb devices; exit 1 ;; esac
+2026-10-20T22:34:07.0675143Z ATTACHED="$(adb devices | awk '$2=="device"' | wc -l)"
+2026-10-20T22:34:07.0675811Z if [ "$ATTACHED" -ne 1 ]; then echo "ERROR: expected exactly one attached device, found $ATTACHED"; adb devices; exit 1; fi
+2026-10-20T22:34:07.0676423Z QEMU="$(adb -s "$SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')"
+2026-10-20T22:34:07.0676975Z if [ "$QEMU" != "1" ]; then echo "ERROR: $SERIAL is not a verified emulator (ro.kernel.qemu=$QEMU)"; exit 1; fi
+2026-10-20T22:34:07.0677408Z export ANDROID_SERIAL="$SERIAL"
+2026-10-20T22:34:07.0677743Z echo "Running acceptance subset on verified emulator $SERIAL"
+2026-10-20T22:34:07.0678444Z mkdir -p stage5-ci-results
+2026-10-20T22:34:07.0678871Z trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || true' EXIT
+2026-10-20T22:34:07.0679296Z python3 scripts/verify_emulator_upgrade.py \
+2026-10-20T22:34:07.0679571Z --serial "$SERIAL" \
+2026-10-20T22:34:07.0680083Z --baseline baseline-src/app/build/outputs/apk/debug/app-debug.apk \
+2026-10-20T22:34:07.0680548Z --baseline-version 0.10.1 --baseline-schema 8 --expected-schema 10 \
+2026-10-20T22:34:07.0680971Z --candidate app/build/outputs/apk/debug/app-debug.apk \
+2026-10-20T22:34:07.0681300Z --output stage5-ci-results/upgrade \
+2026-10-20T22:34:07.0681601Z --seed-disposable --offline --startup-runs 5
+2026-10-20T22:34:07.0681971Z cat > stage5-ci-results/assert_default_network.py <<'PYEOF'
+2026-10-20T22:34:07.0682251Z import re
+2026-10-20T22:34:07.0682416Z import sys
+2026-10-20T22:34:07.0682657Z expected, dump_path = sys.argv[1], sys.argv[2]
+2026-10-20T22:34:07.0683037Z dump = open(dump_path, encoding='utf-8', errors='replace').read()
+2026-10-20T22:34:07.0683475Z match = re.search(r'^\s*Active default network: (.*)$', dump, re.M)
+2026-10-20T22:34:07.0683765Z if not match:
+2026-10-20T22:34:07.0684137Z sys.exit('FATAL: "Active default network:" line missing from dumpsys connectivity')
+2026-10-20T22:34:07.0684700Z net_id = match.group(1).strip()
+2026-10-20T22:34:07.0684965Z if not re.fullmatch(r'\d+', net_id):
+2026-10-20T22:34:07.0685462Z sys.exit(f'FATAL: expected a numeric active default network for transport {expected}, got: {net_id!r}')
+2026-10-20T22:34:07.0686113Z blocks = re.findall(r'^[ \t]*NetworkAgentInfo\{network\{' + re.escape(net_id) + r'\}.*$', dump, re.M)
+2026-10-20T22:34:07.0686419Z if not blocks:
+2026-10-20T22:34:07.0686662Z sys.exit(f'FATAL: no NetworkAgentInfo block found for active default network {net_id}')
+2026-10-20T22:34:07.0686899Z block = blocks[0]
+2026-10-20T22:34:07.0687046Z ni = re.search(r'ni\{([^}]*)\}', block)
+2026-10-20T22:34:07.0687193Z if not ni:
+2026-10-20T22:34:07.0687395Z sys.exit(f'FATAL: no ni{{...}} token in active-network block: {block}')
+2026-10-20T22:34:07.0687636Z transport = re.search(r'type: (\w+)', ni.group(1))
+2026-10-20T22:34:07.0687815Z if not transport:
+2026-10-20T22:34:07.0688045Z sys.exit(f'FATAL: no "type:" token in ni of active-network block: {ni.group(1)!r}')
+2026-10-20T22:34:07.0688287Z found = transport.group(1)
+2026-10-20T22:34:07.0688438Z if found != expected:
+2026-10-20T22:34:07.0688699Z sys.exit(f'FATAL: active default network {net_id} transport is {found}, expected {expected}')
+2026-10-20T22:34:07.0689017Z print(f'OK: active default network {net_id} uses transport {found}')
+2026-10-20T22:34:07.0689204Z PYEOF
+2026-10-20T22:34:07.0689330Z wait_for_transport() {
+2026-10-20T22:34:07.0689500Z local expected="$1" deadline=$((SECONDS + 60))
+2026-10-20T22:34:07.0689694Z while [ "$SECONDS" -lt "$deadline" ]; do
+2026-10-20T22:34:07.0690022Z adb -s "$SERIAL" shell dumpsys connectivity > stage5-ci-results/connectivity-dump.txt 2>/dev/null || true
+2026-10-20T22:34:07.0690575Z if python3 stage5-ci-results/assert_default_network.py "$expected" stage5-ci-results/connectivity-dump.txt >>stage5-ci-results/network-evidence.txt 2>&1; then
+2026-10-20T22:34:07.0691128Z sed -n 's/.*Active default network: /active default network: /p' stage5-ci-results/connectivity-dump.txt | head -n1
+2026-10-20T22:34:07.0691397Z return 0
+2026-10-20T22:34:07.0691504Z fi
+2026-10-20T22:34:07.0691608Z sleep 4
+2026-10-20T22:34:07.0691710Z done
+2026-10-20T22:34:07.0691931Z echo "FATAL: active default network never reached transport $expected within 60s"
+2026-10-20T22:34:07.0692145Z return 1
+2026-10-20T22:34:07.0692244Z }
+2026-10-20T22:34:07.0692342Z {
+2026-10-20T22:34:07.0692606Z echo "== restore mobile data and Wi-Fi (upgrade helper left both disabled) =="
+2026-10-20T22:34:07.0692856Z adb -s "$SERIAL" shell svc data enable
+2026-10-20T22:34:07.0693034Z adb -s "$SERIAL" shell svc wifi enable
+2026-10-20T22:34:07.0693231Z echo "== expect Wi-Fi as active default network =="
+2026-10-20T22:34:07.0693554Z WIFI_NET="$(wait_for_transport WIFI)"
+2026-10-20T22:34:07.0693705Z echo "$WIFI_NET"
+2026-10-20T22:34:07.0693918Z echo "== disable Wi-Fi, expect mobile fallback as active default network =="
+2026-10-20T22:34:07.0694151Z adb -s "$SERIAL" shell svc wifi disable
+2026-10-20T22:34:07.0694426Z MOBILE_NET="$(wait_for_transport MOBILE)"
+2026-10-20T22:34:07.0694767Z echo "$MOBILE_NET"
+2026-10-20T22:34:07.0694916Z if [ "$WIFI_NET" = "$MOBILE_NET" ]; then
+2026-10-20T22:34:07.0695196Z echo "FATAL: default network did not change across the Wi-Fi -> mobile transition"; exit 1
+2026-10-20T22:34:07.0695420Z fi
+2026-10-20T22:34:07.0695607Z echo "OK: default network transitioned ($WIFI_NET -> $MOBILE_NET)"
+2026-10-20T22:34:07.0695853Z echo "== restore Wi-Fi for the remainder of the run =="
+2026-10-20T22:34:07.0696051Z adb -s "$SERIAL" shell svc wifi enable
+2026-10-20T22:34:07.0696223Z wait_for_transport WIFI >/dev/null
+2026-10-20T22:34:07.0696414Z echo "== Data Saver enable with state readback =="
+2026-10-20T22:34:07.0696660Z adb -s "$SERIAL" shell cmd netpolicy set restrict-background true
+2026-10-20T22:34:07.0696844Z sleep 2
+2026-10-20T22:34:07.0697063Z DS_GET="$(adb -s "$SERIAL" shell cmd netpolicy get restrict-background | tr -d '\r')"
+2026-10-20T22:34:07.0697337Z echo "cmd netpolicy get restrict-background: $DS_GET"
+2026-10-20T22:34:07.0697916Z [ "$DS_GET" = "Restrict background status: enabled" ] || { echo "FATAL: Data Saver not enabled (readback: $DS_GET)"; exit 1; }
+2026-10-20T22:34:07.0698559Z adb -s "$SERIAL" shell dumpsys netpolicy > stage5-ci-results/netpolicy-enabled.txt
+2026-10-20T22:34:07.0699448Z grep -E "Restrict background: true" stage5-ci-results/netpolicy-enabled.txt || { echo "FATAL: dumpsys netpolicy does not report Restrict background: true"; exit 1; }
+2026-10-20T22:34:07.0700138Z echo "== Data Saver disable with state readback =="
+2026-10-20T22:34:07.0700460Z adb -s "$SERIAL" shell cmd netpolicy set restrict-background false
+2026-10-20T22:34:07.0700646Z sleep 2
+2026-10-20T22:34:07.0700939Z DS_GET="$(adb -s "$SERIAL" shell cmd netpolicy get restrict-background | tr -d '\r')"
+2026-10-20T22:34:07.0701235Z echo "cmd netpolicy get restrict-background: $DS_GET"
+2026-10-20T22:34:07.0701606Z [ "$DS_GET" = "Restrict background status: disabled" ] || { echo "FATAL: Data Saver not disabled (readback: $DS_GET)"; exit 1; }
+2026-10-20T22:34:07.0702006Z adb -s "$SERIAL" shell dumpsys netpolicy > stage5-ci-results/netpolicy-disabled.txt
+2026-10-20T22:34:07.0702530Z grep -E "Restrict background: false" stage5-ci-results/netpolicy-disabled.txt || { echo "FATAL: dumpsys netpolicy does not report Restrict background: false"; exit 1; }
+2026-10-20T22:34:07.0702962Z echo "OK: Data Saver toggled with verified state readback"
+2026-10-20T22:34:07.0703187Z } | tee stage5-ci-results/network-evidence.txt
+2026-10-20T22:34:07.0703429Z adb -s "$SERIAL" shell am start -W -n com.opus.piano/.MainActivity
+2026-10-20T22:34:07.0703611Z sleep 5
+2026-10-20T22:34:07.0703799Z test -n "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
+2026-10-20T22:34:07.0704045Z adb -s "$SERIAL" shell am force-stop com.opus.piano
+2026-10-20T22:34:07.0704317Z test -z "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
+2026-10-20T22:34:07.0704717Z adb -s "$SERIAL" shell am start -W -n com.opus.piano/.MainActivity
+2026-10-20T22:34:07.0704901Z sleep 5
+2026-10-20T22:34:07.0705083Z test -n "$(adb -s "$SERIAL" shell pidof com.opus.piano | tr -d '\r')"
+2026-10-20T22:34:07.0705522Z adb -s "$SERIAL" shell run-as com.opus.piano ls databases | tee stage5-ci-results/process-death-db.txt
+2026-10-20T22:34:07.0705904Z mkdir -p stage5-ci-results/db-after-restart
+2026-10-20T22:34:07.0706094Z for SUFFIX in '' '-wal' '-shm'; do
+2026-10-20T22:34:07.0706701Z adb -s "$SERIAL" exec-out run-as com.opus.piano cat databases/opus.db$SUFFIX > stage5-ci-results/db-after-restart/opus.db$SUFFIX 2>/dev/null || rm -f stage5-ci-results/db-after-restart/opus.db$SUFFIX
+2026-10-20T22:34:07.0707178Z done
+2026-10-20T22:34:07.0707352Z test -s stage5-ci-results/db-after-restart/opus.db
+2026-10-20T22:34:07.0707935Z INTEGRITY="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA integrity_check;')"
+2026-10-20T22:34:07.0708415Z echo "PRAGMA integrity_check: $INTEGRITY" | tee stage5-ci-results/process-death-integrity.txt
+2026-10-20T22:34:07.0708767Z [ "$INTEGRITY" = "ok" ] || { echo "FATAL: database integrity_check failed"; exit 1; }
+2026-10-20T22:34:07.0709335Z FK_VIOLATIONS="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA foreign_key_check;')"
+2026-10-20T22:34:07.0709876Z echo "PRAGMA foreign_key_check violations: ${FK_VIOLATIONS:-none}" | tee -a stage5-ci-results/process-death-integrity.txt
+2026-10-20T22:34:07.0710373Z [ -z "$FK_VIOLATIONS" ] || { echo "FATAL: foreign_key_check reported violations"; exit 1; }
+2026-10-20T22:34:07.0710814Z SCHEMA="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA user_version;')"
+2026-10-20T22:34:07.0711173Z echo "PRAGMA user_version: $SCHEMA" | tee -a stage5-ci-results/process-death-integrity.txt
+2026-10-20T22:34:07.0711600Z [ "$SCHEMA" = "10" ] || { echo "FATAL: unexpected schema version $SCHEMA after restart (expected 10)"; exit 1; }
+2026-10-20T22:34:07.0711974Z echo "OK: post-restart database passed integrity, foreign-key and schema checks"
+2026-10-20T22:34:07.0712329Z bash scripts/measure-startup.sh "$SERIAL" 5 | tee stage5-ci-results/startup-measurement.txt
+2026-10-20T22:34:07.0712567Z BASH_SCRIPT
+2026-10-20T22:34:07.0712743Z exec bash "$RUNNER_TEMP/stage5-acceptance-script.sh"
+2026-10-20T22:34:07.0712943Z Pre emulator launch script:
+2026-10-20T22:34:07.0713276Z ##[endgroup]
+2026-10-20T22:34:07.0713584Z ##[group]Install Android SDK
+2026-10-20T22:34:07.0714427Z [command]/usr/bin/sh -c \yes | sdkmanager --licenses > /dev/null
+2026-10-20T22:34:10.8053626Z Installing latest build tools, platform tools, and platform.
+2026-10-20T22:34:10.8062707Z [command]/usr/bin/sh -c \sdkmanager --install 'build-tools;37.0.0' platform-tools 'platforms;android-36'> /dev/null
+2026-10-20T22:34:11.8994394Z Installing latest emulator.
+2026-10-20T22:34:11.9004600Z [command]/usr/bin/sh -c \sdkmanager --install emulator --channel=0 > /dev/null
+2026-10-20T22:34:20.9763287Z Installing system images.
+2026-10-20T22:34:20.9778458Z [command]/usr/bin/sh -c \sdkmanager --install 'system-images;android-36;google_apis;x86_64' --channel=0 > /dev/null
+2026-10-20T22:34:57.9013480Z ##[endgroup]
+2026-10-20T22:34:57.9016734Z ##[group]Create AVD
+2026-10-20T22:34:57.9018010Z Creating AVD.
+2026-10-20T22:34:57.9029489Z [command]/usr/bin/sh -c \echo no | avdmanager create avd --force -n stage5-ci --package 'system-images;android-36;google_apis;x86_64' --device 'pixel_6'
+2026-10-20T22:34:58.5270689Z Loading local repository...                                                     
+2026-10-20T22:34:58.5276782Z [=========                              ] 25% Loading local repository...       
+2026-10-20T22:34:58.5277321Z [=========                              ] 25% Fetch remote repository...        
+2026-10-20T22:34:58.5277851Z [=======================================] 100% Fetch remote repository...       
+2026-10-20T22:34:58.6992508Z Auto-selecting single ABI x86_64
+2026-10-20T22:34:58.9859206Z [command]/usr/bin/sh -c \printf 'hw.cpu.ncore=2\n' >> /home/runner/.android/avd/stage5-ci.avd/config.ini
+2026-10-20T22:34:58.9880349Z ##[endgroup]
+2026-10-20T22:34:58.9882022Z ##[group]Launch Emulator
+2026-10-20T22:34:58.9882303Z Starting emulator.
+2026-10-20T22:34:58.9891455Z [command]/usr/bin/sh -c \/usr/local/lib/android/sdk/emulator/emulator -port 5554 -avd stage5-ci -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot &
+2026-10-20T22:34:58.9989154Z INFO         | Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+2026-10-20T22:34:58.9989706Z INFO         | Graphics backend: gfxstream
+2026-10-20T22:34:58.9990139Z INFO         | Found systemPath /usr/local/lib/android/sdk/system-images/android-36/google_apis/x86_64/
+2026-10-20T22:34:59.0389088Z INFO         | Saving last run QEMU version for the AVD to 2
+2026-10-20T22:34:59.0389776Z INFO         | Guest usage of host flag 'VulkanVirtualQueue' will be ignored.
+2026-10-20T22:34:59.0390729Z INFO         | Increasing RAM size to 2560MB
+2026-10-20T22:34:59.0391149Z INFO         | Guest GLES Driver: Auto (ext controls)
+2026-10-20T22:34:59.0391685Z INFO         | emuglConfig_init: vulkan_mode_selected:swiftshader gles_mode_selected:swiftshader
+2026-10-20T22:34:59.0392403Z INFO         | Checking system compatibility:
+2026-10-20T22:34:59.0392756Z INFO         |   Checking: hasSufficientDiskSpace
+2026-10-20T22:34:59.0393197Z INFO         |      Ok: Disk space requirements to run avd: `stage5-ci` are met
+2026-10-20T22:34:59.0393607Z INFO         |   Checking: hasSufficientHwGpu
+2026-10-20T22:34:59.0394010Z INFO         |      Ok: Hardware GPU compatibility checks are not required
+2026-10-20T22:34:59.0394423Z INFO         |   Checking: hasSufficientSystem
+2026-10-20T22:34:59.0395016Z INFO         |      Ok: System requirements to run avd: `stage5-ci` are met
+2026-10-20T22:34:59.0395979Z WARNING      | Feature QuickbootFileBacked is disabled due to stability issues, if you really want that, the environment variable ANDROID_EMU_FORCE_QUICKBOOT_FILE_BACKED need to set to 1
+2026-10-20T22:34:59.7408708Z ERROR        | Unable to connect to adb daemon on port: 5037
+2026-10-20T22:34:59.7435153Z INFO         | Storing crashdata in: /tmp/android-runner/emu-crash-37.2.12.db, detection is enabled for process: 3678
+2026-10-20T22:34:59.7435792Z INFO         | Initializing gfxstream backend
+2026-10-20T22:34:59.7445797Z INFO         | startOpenglesRendererImpl: gpu info
+2026-10-20T22:34:59.7446109Z INFO         | 
+2026-10-20T22:34:59.7448286Z INFO         | initIcdPaths: ICD set to 'swiftshader', using Swiftshader ICD
+2026-10-20T22:34:59.7448982Z INFO         | Setting ICD filenames for the loader = /usr/local/lib/android/sdk/emulator/lib64/vulkan/vk_swiftshader_icd.json
+2026-10-20T22:34:59.7449939Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so]
+2026-10-20T22:34:59.7451000Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so.1]
+2026-10-20T22:34:59.7451860Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so]
+2026-10-20T22:34:59.7452707Z INFO         | Added library: /usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so
+2026-10-20T22:34:59.7589185Z INFO         | Selecting Vulkan device: SwiftShader Device (Subzero), Version: 1.3.0
+2026-10-20T22:34:59.7589872Z INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+2026-10-20T22:34:59.8074861Z INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+2026-10-20T22:34:59.8099630Z INFO         | SharedLibrary::open for [libX11]
+2026-10-20T22:34:59.8102202Z WARNING      | Could not open libX11.so, try libX11.so.6
+2026-10-20T22:34:59.8102501Z INFO         | SharedLibrary::open for [libX11.so.6]
+2026-10-20T22:34:59.8102777Z INFO         | SharedLibrary::open for [libX11-xcb]
+2026-10-20T22:34:59.8103062Z WARNING      | Could not open libX11-xcb.so, try libX11-xcb.so.1
+2026-10-20T22:34:59.8103324Z INFO         | SharedLibrary::open for [libX11-xcb.so.1]
+2026-10-20T22:34:59.8164652Z INFO         | Initializing VkEmulation features:
+2026-10-20T22:34:59.8165203Z INFO         |     glInteropSupported: false
+2026-10-20T22:34:59.8165768Z INFO         |     useDeferredCommands: true
+2026-10-20T22:34:59.8166159Z INFO         |     createResourceWithRequirements: true
+2026-10-20T22:34:59.8166516Z INFO         |     useVulkanComposition: false
+2026-10-20T22:34:59.8166864Z INFO         |     useVulkanNativeSwapchain: false
+2026-10-20T22:34:59.8167208Z INFO         |     enable guestRenderDoc: false
+2026-10-20T22:34:59.8167561Z INFO         |     ASTC LDR emulation mode: Gpu
+2026-10-20T22:34:59.8168154Z INFO         |     enable ETC2 emulation: true
+2026-10-20T22:34:59.8168483Z INFO         |     enable Ycbcr emulation: false
+2026-10-20T22:34:59.8173141Z INFO         |     guestVulkanOnly: false
+2026-10-20T22:34:59.8173707Z INFO         |     useDedicatedAllocations: false
+2026-10-20T22:34:59.8174080Z INFO         |     guestVulkanMaxApiVersion: 1.3.0
+2026-10-20T22:34:59.8174736Z INFO         |     enableProtectedMemoryEmulation: false
+2026-10-20T22:34:59.8181451Z INFO         | Graphics Adapter Vendor Google (Google Inc.)
+2026-10-20T22:34:59.8181994Z INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (Google SwiftShader)
+2026-10-20T22:34:59.8182574Z INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+2026-10-20T22:34:59.8185195Z INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
+2026-10-20T22:34:59.8187000Z INFO         | Graphics Device Extensions N/A
+2026-10-20T22:34:59.8187232Z INFO         | Disabling sparse binding feature support
+2026-10-20T22:34:59.8260280Z INFO         | Sending adb public key [QAAAAM2v+p77KtYy6rNF7Q6eBdzbCQiLA6Oe0KDaEO4B/re0S1fw2d2+/oFMAfGAMdTVQoY9e5EtxOrNNKsk1HDO0N6fHec16KcUieDvcOFNvWQLZKqoU8vbucr+7aT38ZjoqM/IJ4JW7v7x+n/0ejf0PIVhasLlmWwfqY2uh1ZvWTiS640MN+se724v5d6Dn2JyxfnWWWdW+5gKrcBXG6I9TsIhsuA8BJPRYsrw03zhqqpV4U2G1E7oaVT1BQdgiEpK4UD8T/QtXr6cMY+wukUeWJW997T/5OB3jZixSYqKv3FH1fFHZ0PDP/7uu0j1EWn/SRUtCKOaxODiD7CC7sZV2F46GwTB+NGv5msf6/rXILqGr5Y3klfQgVzNtryiy+bEIruV5GcHawvx+i81yYTiWYytkSziFkj7LLLzq4yf7jR+n1TtjDdR+G2E44Erqn+tn0ft6OWIlPozdjfVzhob+1RORNSRfGLX8ECaZLCSXH5+tJyXzFWRwcEvsTtdHONI/cw5hRsanFLp7aDuHE74TFOUlr+UhJaNQBe9KKPMF0Cxs5Cwt9Xm6lweEksrdPlmRr6u0FK+bZBjpkeColNwhJNkVaGu4XtBIT8wsO7REUC/ZCliLbqeUVVUCRZQEjNFK30rIq6FATg6sZk8FnktO2x+19Ay6D3SsECDq321w8+TPEuUGwEAAQA= runner@unknown]
+2026-10-20T22:34:59.8262353Z INFO         | Userspace boot properties:
+2026-10-20T22:34:59.8262692Z INFO         |   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0
+2026-10-20T22:34:59.8263008Z INFO         |   androidboot.dalvik.vm.heapsize=576m
+2026-10-20T22:34:59.8263244Z INFO         |   androidboot.debug.hwui.renderer=skiagl
+2026-10-20T22:34:59.8263485Z INFO         |   androidboot.debug.sf.nobootanimation=1
+2026-10-20T22:34:59.8263702Z INFO         |   androidboot.hardware=ranchu
+2026-10-20T22:34:59.8264129Z INFO         |   androidboot.hardware.gltransport=pipe
+2026-10-20T22:34:59.8264639Z INFO         |   androidboot.hardware.vulkan=ranchu
+2026-10-20T22:34:59.8264999Z INFO         |   androidboot.logcat=*:V
+2026-10-20T22:34:59.8265509Z INFO         |   androidboot.opengles.version=196608
+2026-10-20T22:34:59.8265815Z INFO         |   androidboot.qemu=1
+2026-10-20T22:34:59.8268465Z INFO         |   androidboot.qemu.adb.pubkey=QAAAAM2v+p77KtYy6rNF7Q6eBdzbCQiLA6Oe0KDaEO4B/re0S1fw2d2+/oFMAfGAMdTVQoY9e5EtxOrNNKsk1HDO0N6fHec16KcUieDvcOFNvWQLZKqoU8vbucr+7aT38ZjoqM/IJ4JW7v7x+n/0ejf0PIVhasLlmWwfqY2uh1ZvWTiS640MN+se724v5d6Dn2JyxfnWWWdW+5gKrcBXG6I9TsIhsuA8BJPRYsrw03zhqqpV4U2G1E7oaVT1BQdgiEpK4UD8T/QtXr6cMY+wukUeWJW997T/5OB3jZixSYqKv3FH1fFHZ0PDP/7uu0j1EWn/SRUtCKOaxODiD7CC7sZV2F46GwTB+NGv5msf6/rXILqGr5Y3klfQgVzNtryiy+bEIruV5GcHawvx+i81yYTiWYytkSziFkj7LLLzq4yf7jR+n1TtjDdR+G2E44Erqn+tn0ft6OWIlPozdjfVzhob+1RORNSRfGLX8ECaZLCSXH5+tJyXzFWRwcEvsTtdHONI/cw5hRsanFLp7aDuHE74TFOUlr+UhJaNQBe9KKPMF0Cxs5Cwt9Xm6lweEksrdPlmRr6u0FK+bZBjpkeColNwhJNkVaGu4XtBIT8wsO7REUC/ZCliLbqeUVVUCRZQEjNFK30rIq6FATg6sZk8FnktO2x+19Ay6D3SsECDq321w8+TPEuUGwEAAQA= runner@unknown
+2026-10-20T22:34:59.8270534Z INFO         |   androidboot.qemu.avd_name=stage5-ci
+2026-10-20T22:34:59.8270954Z INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+2026-10-20T22:34:59.8271353Z INFO         |   androidboot.qemu.camera_protocol_ver=1
+2026-10-20T22:34:59.8271989Z INFO         |   androidboot.qemu.cpuvulkan.version=4206592
+2026-10-20T22:34:59.8272446Z INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+2026-10-20T22:34:59.8272860Z INFO         |   androidboot.qemu.gltransport.name=pipe
+2026-10-20T22:34:59.8273386Z INFO         |   androidboot.qemu.hwcodec.avcdec=2
+2026-10-20T22:34:59.8273765Z INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+2026-10-20T22:34:59.8274144Z INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+2026-10-20T22:34:59.8274735Z INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+2026-10-20T22:34:59.8275220Z INFO         |   androidboot.qemu.skin=1080x2400
+2026-10-20T22:34:59.8275599Z INFO         |   androidboot.qemu.virtiowifi=1
+2026-10-20T22:34:59.8275954Z INFO         |   androidboot.qemu.vsync=60
+2026-10-20T22:34:59.8276338Z INFO         |   androidboot.serialno=EMULATOR37X2X12X0
+2026-10-20T22:34:59.8276894Z INFO         |   androidboot.vbmeta.digest=7466b5c28e6a3e1427b22ed2c317c6c7066294bde838d4d5243cce5d37992bd5
+2026-10-20T22:34:59.8277330Z INFO         |   androidboot.vbmeta.hash_alg=sha256
+2026-10-20T22:34:59.8277695Z INFO         |   androidboot.vbmeta.size=6848
+2026-10-20T22:34:59.8278055Z INFO         |   androidboot.veritymode=enforcing
+2026-10-20T22:34:59.8434389Z WARNING: cannnot unmap ptr 0x7fb695e01000 as it is in the protected range from 0x7fb5f5e00000 to 0x7fb696000000
+2026-10-20T22:34:59.8703764Z INFO         | Monitoring duration of emulator setup.
+2026-10-20T22:35:00.8591560Z INFO         | Activated packet streamer for uwb emulation
+2026-10-20T22:35:00.8592410Z INFO         | Activated packet streamer for bluetooth emulation
+2026-10-20T22:35:00.8593063Z INFO         | Successfully initialized netsim WiFi
+2026-10-20T22:35:00.8636800Z INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+2026-10-20T22:35:00.8637297Z INFO         | setDisplayActiveConfig: id:0, 1080x2400
+2026-10-20T22:35:00.8638036Z INFO         | emulatorSetupEnvironment: Environment scene is not required
+2026-10-20T22:35:00.8703426Z USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+2026-10-20T22:35:00.8704650Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+2026-10-20T22:35:01.1074994Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+2026-10-20T22:35:08.9935042Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:08.9971090Z * daemon not running; starting now at tcp:5037
+2026-10-20T22:35:09.1235799Z * daemon started successfully
+2026-10-20T22:35:09.1238142Z adb: device offline
+2026-10-20T22:35:09.1246447Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-20T22:35:11.1291552Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:11.1337067Z adb: device offline
+2026-10-20T22:35:11.1342419Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-20T22:35:13.1373818Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:13.1398515Z adb: device offline
+2026-10-20T22:35:13.1403913Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-20T22:35:15.1436995Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:15.1479081Z adb: device offline
+2026-10-20T22:35:15.1484995Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-20T22:35:17.1533422Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:17.1916519Z 
+2026-10-20T22:35:19.2006449Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:19.2344921Z 
+2026-10-20T22:35:21.2380483Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:21.2679554Z 
+2026-10-20T22:35:23.2773426Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:23.3153048Z 
+2026-10-20T22:35:25.3241958Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:25.3448003Z 
+2026-10-20T22:35:27.3536333Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:27.3809512Z 
+2026-10-20T22:35:29.3895148Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:29.4185755Z 
+2026-10-20T22:35:31.4215239Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:31.4377987Z 
+2026-10-20T22:35:33.4436480Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:33.5465809Z 
+2026-10-20T22:35:35.5502065Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:35.6896499Z 
+2026-10-20T22:35:37.6970328Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:37.8325100Z 
+2026-10-20T22:35:39.0825011Z INFO         | Boot completed in 40060 ms
+2026-10-20T22:35:39.0825568Z INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+2026-10-20T22:35:39.8379927Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T22:35:39.9371407Z 1
+2026-10-20T22:35:39.9388535Z Emulator booted.
+2026-10-20T22:35:39.9415041Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell input keyevent 82
+2026-10-20T22:35:40.3753284Z Disabling animations.
+2026-10-20T22:35:40.3846326Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global window_animation_scale 0.0
+2026-10-20T22:35:40.5847254Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global transition_animation_scale 0.0
+2026-10-20T22:35:41.2937383Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global animator_duration_scale 0.0
+2026-10-20T22:35:41.5257531Z ##[endgroup]
+2026-10-20T22:35:41.5321185Z [command]/usr/bin/sh -c set -e
+2026-10-20T22:35:41.5455689Z [command]/usr/bin/sh -c cat > "$RUNNER_TEMP/stage5-acceptance-script.sh" <<'BASH_SCRIPT'
+2026-10-20T22:35:41.5585603Z [command]/usr/bin/sh -c set -euo pipefail
+2026-10-20T22:35:41.5645991Z /usr/bin/sh: 1: set: Illegal option -o pipefail
+2026-10-20T22:35:41.5697746Z ##[error]The process '/usr/bin/sh' failed with exit code 2
+2026-10-20T22:35:41.5725368Z ##[group]Terminate Emulator
+2026-10-20T22:35:41.5760550Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 emu kill
+2026-10-20T22:35:41.5785559Z INFO         | Wait for emulator (pid 3678) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+2026-10-20T22:35:41.5787387Z 
+2026-10-20T22:35:41.5787670Z OK: killing emulator, bye bye
+2026-10-20T22:35:41.5788008Z OK
+2026-10-20T22:35:41.5788562Z ##[endgroup]
+2026-10-20T22:35:41.6005252Z USER_INFO    | Snapshots have been disabled by the user, save request is ignored.
+2026-10-20T22:35:41.6006200Z INFO         | Saving snapshot 'default_boot' took 0 ms
+2026-10-20T22:35:41.8851085Z ERROR        | stop: Not implemented
+2026-10-20T22:35:41.8851647Z WARNING      | Emulator client has not yet been configured.. Call configure me first!
+2026-10-20T22:35:41.8989505Z INFO         | removeAll
+2026-10-20T22:35:41.9423532Z WARNING      | Netsim Wifi dns:///localhost:33309 is gone due to Stream removed (CANCELLED)

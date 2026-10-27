@@ -1,0 +1,2 @@
+10-20 23:05:44.407  4034  4122 I TestRunner: started: stablePagingRejectsOldGenerationAndDoesNotOverlap(com.opus.piano.Stage4CatalogueTest)
+10-20 23:05:44.480  4034  4122 I TestRunner: finished: stablePagingRejectsOldGenerationAndDoesNotOverlap(com.opus.piano.Stage4CatalogueTest)

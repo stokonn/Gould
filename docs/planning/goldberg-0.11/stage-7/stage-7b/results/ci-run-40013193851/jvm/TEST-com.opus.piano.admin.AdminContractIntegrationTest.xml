@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.admin.AdminContractIntegrationTest" tests="24" skipped="0" failures="0" errors="0" timestamp="2026-10-23T19:47:37.654Z" hostname="runnervm8k3b6" time="0.117">
+  <properties/>
+  <testcase name="unsafeConflictDetailsAreUnknownRatherThanRounded" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <testcase name="entityProposalAndPublishedRevisionsStayExplicitlyDifferent" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.013"/>
+  <testcase name="applicationDefaultUnconfiguredRemainsHonestWithZeroCredentialsRead" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <testcase name="candidateCapabilitiesCannotGrantAnUnboundPrincipal" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.006"/>
+  <testcase name="allCandidateFailureClassesRemainDistinct" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.02"/>
+  <testcase name="supportedLegacyQueueAndDetailRemainReadable" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.008"/>
+  <testcase name="invalidAuditIntegerBecomesTypedPayloadError" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.003"/>
+  <testcase name="signedLongMaximumIsAcceptedWithoutRounding" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.003"/>
+  <testcase name="candidateDetailIsRejectedRatherThanDefaultedToProposalRevisionOne" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.005"/>
+  <testcase name="applicationTransportStaysDisabledWithConfiguredEndpointAndCredentials" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <testcase name="candidateQueueCursorCannotBeStringifiedIntoLegacyCursor" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.003"/>
+  <testcase name="applicationFixtureSeamIsExplicitAndNeverRequiresNetworking" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.003"/>
+  <testcase name="auditBigintBeyondJavaScriptPrecisionIsExact" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.003"/>
+  <testcase name="replayFixtureRequiresIdenticalBodyKeyAndOriginalResponse" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.004"/>
+  <testcase name="candidateRejectWithoutRevisionIsNotInventedAsLegacySuccess" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.004"/>
+  <testcase name="corpusSeparatesAuthoritiesAndDoesNotApproveMapping" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.003"/>
+  <testcase name="malformedBigintRepresentationsAreRejected" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.015"/>
+  <testcase name="nonStringCapabilityCannotBecomeAClaim" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <testcase name="opaqueLegacyCursorIsPreservedByteForByte" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <testcase name="malformedAuditRowsCannotBeSilentlyDroppedIntoAnEmptySuccess" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.001"/>
+  <testcase name="candidateAuditCannotBeMistakenForLegacyEventOrTimestamp" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.003"/>
+  <testcase name="revisionOverflowFractionOrMissingNeverDefaults" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.006"/>
+  <testcase name="candidateConflictHasNoInventedCurrentRevisionOrStatus" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <testcase name="candidateAuditVocabularyIsNotSilentlyCountedAsLegacyDecision" classname="com.opus.piano.admin.AdminContractIntegrationTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

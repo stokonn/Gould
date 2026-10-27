@@ -1,0 +1,9 @@
+10-20 23:05:14.391  4034  4122 I TestRunner: started: missingOrAlreadyMeasuredPieceCannotBecomeAnotherCredit(com.opus.piano.Redesign010PersistenceTest)
+10-20 23:05:14.418  2217  4228 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService finished executing. cause:4 result: 3 elapsed_millis: 170 uptime_millis: 170 exec_start_elapsed_seconds: 139 [CONTEXT service_id=218 ]
+10-20 23:05:14.427  1488  2067 I DownloadManager: DownloadManager$3.onProgress():514 Downloading __KLP_delight__en-840 with size 20742144
+10-20 23:05:14.439   643  1150 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:14.440  1610  1943 I SP.AiAi : Scheduling: job start ({W:b:u:l, bg}), 2 started, 0 paused, 0 scheduled, 7 pending: manifests:kg_collections_table-21051103 {W:C:I:l, bg}, manifests:spelling_correction-22110320 {W:C:I:l, bg}, manifests:text-classifier-annotator-272525175 {W:C:I:l, bg}, manifests:text-classifier-actions-1140547708 {W:C:I:l, bg}, manifests:text-classifier-langid-1941001461 {W:C:I:l, bg}, captions_i18n_v0_mandatory:sound_recognition_v7 @ * {W:b:u:l, bg}, captions_i18n_v0_mandatory:emotion_recognition_v4 @ * {W:b:u:l, bg}
+10-20 23:05:14.441  1610  1943 I SP.AiAi : Requesting download of URL https://storage.googleapis.com/captions/sound_recognition_v7.zip to sound_recognition_v7.zip.fetched (constraints: W:b:u:l)
+10-20 23:05:14.442  1610  1943 I SP.AiAi : Requesting download of URL https://storage.googleapis.com/captions/emotion_recognition_v4.zip to emotion_recognition_v4.zip.fetched (constraints: W:b:u:l)
+10-20 23:05:14.442  1610  2109 I SP.AiAi : Syncing captions_i18n_v0_en-US (20240825) with slices: [{asr_en-US_v3056, W:b:u:l, bg}, {input_predictions_en-US_v4, W:b:u:l, bg}], metadata: false
+10-20 23:05:14.458  4034  4122 I TestRunner: finished: missingOrAlreadyMeasuredPieceCannotBecomeAnotherCredit(com.opus.piano.Redesign010PersistenceTest)

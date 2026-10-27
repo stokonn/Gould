@@ -1,0 +1,2 @@
+10-20 23:05:25.199  4034  4122 I TestRunner: started: provenanceAndRightsDefaultDeny(com.opus.piano.Stage3aCatalogueTest)
+10-20 23:05:25.222  4034  4122 I TestRunner: finished: provenanceAndRightsDefaultDeny(com.opus.piano.Stage3aCatalogueTest)

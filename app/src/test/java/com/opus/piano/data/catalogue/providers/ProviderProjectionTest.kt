@@ -44,6 +44,27 @@ class ProviderProjectionTest {
         val result=adapter.parse(request,mapOf("status" to mapOf("success" to "true","rows" to 999),"results" to listOf(row)))
         assertEquals(2,result.size);assertFalse(result.toString().contains("blocked"));assertEquals("87",result.last().credits.single().id)
     }
+    @Test fun openOpusEmptyEnvelopeIsNotMalformedButOtherErrorsRemainRejected() {
+        val adapter=OpenOpusAdapter();val request=adapter.search("nothing","works","en").single()
+        val empty=mapOf("status" to mapOf("success" to "false","error" to "Nothing found"))
+        assertTrue(adapter.parse(request,empty).isEmpty())
+        assertNull(adapter.nextOffset(request,empty))
+        assertTrue(runCatching {adapter.parse(request,mapOf("status" to mapOf("success" to "false","error" to "Database unavailable")))}.isFailure)
+        assertTrue(runCatching {adapter.parse(request,empty+("results" to listOf(mapOf("work" to mapOf("id" to "1","title" to "Contradiction")))))}.isFailure)
+        assertTrue(runCatching {adapter.parse(request,emptyMap())}.isFailure)
+    }
+    @Test fun artistTypesStayTruthfulAndRequestedKindsStayBounded() {
+        val adapter=MusicBrainzAdapter()
+        for((type,expected) in listOf("Person" to "person","Group" to "group","Orchestra" to "group","Choir" to "group","Character" to "other","Other" to "other","" to "other")) {
+            val request=adapter.search("Example","artists","en").single()
+            assertEquals("artist",request.kind)
+            val record=adapter.parse(request,mapOf("artists" to listOf(mapOf("id" to mbid,"name" to "Example","type" to type)))).single()
+            assertEquals(expected,record.subtype)
+        }
+        assertEquals("work",adapter.search("Example","works","en").single().kind)
+        assertEquals("release-group",adapter.search("Example","albums","en").single().kind)
+        assertTrue(OpenOpusAdapter().search("Example","albums","en").isEmpty())
+    }
     @Test fun jsonErrorsAreFailuresEvenUnderHttp200() {
         assertEquals(SourceState.RATE_LIMITED,ProviderErrors.classify(200,mapOf("error" to mapOf("code" to "maxlag"))))
         assertEquals(SourceState.INVALID,ProviderErrors.classify(200,mapOf("error" to mapOf("code" to "badvalue"))))

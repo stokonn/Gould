@@ -1,0 +1,18 @@
+10-20 23:05:32.817  4034  4122 I TestRunner: started: restoredForeignScopeRebuildsCatalogueAndKeepsCanonicalIds(com.opus.piano.Stage3bBackupTest)
+10-20 23:05:32.981   643   914 D WifiClientModeImpl[34482:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=2 freq=2437 RxLinkSpeed=2
+10-20 23:05:32.981   643   914 D WifiDataStall: tx tput in kbps: 37000
+10-20 23:05:32.981   643   914 D WifiDataStall: rx tput in kbps: 37000
+10-20 23:05:32.982   643   914 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+10-20 23:05:32.982   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:32.982   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:32.982   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:32.982   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:32.982   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:32.982   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:32.982   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:32.982   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:32.983   643   914 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 14224604 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 2Mbps, Tx Link speed: 2Mbps, Max Supported Tx Link speed: 54Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+10-20 23:05:32.983   643   914 D WifiScoreCard: txRate: 57 txSpeed: 2
+10-20 23:05:32.983   643   914 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 1928051533 RSSI -50 txSpeed 2
+10-20 23:05:32.983   643   914 D WifiClientModeImpl[34482:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=60 link=2 tx=56.0, 0.0, 0.0 rx=379.3 bcn=0 [on:0 tx:0 rx:0 period:3000] from screen [on:0 period:1536170551] score=60
+10-20 23:05:32.987  4034  4122 I TestRunner: finished: restoredForeignScopeRebuildsCatalogueAndKeepsCanonicalIds(com.opus.piano.Stage3bBackupTest)

@@ -1,0 +1,21 @@
+{
+  "originalPersonalTables": 12,
+  "sessions": 37,
+  "sessionParts": 37,
+  "pieces": 2,
+  "badges": 4,
+  "showcase": "first_notes",
+  "originalDrafts": 1,
+  "originalArchives": 1,
+  "allOriginalRowsUnchanged": true,
+  "schema": 10,
+  "integrityCheck": "ok",
+  "foreignKeyViolations": 0,
+  "preferences": {
+    "goldberg-appearance": "fc30367884c2065e0ab9643f1d029a2a63ad3fe842d6766579c905d6e7cafa22",
+    "goldberg-media": "58a8e13011b82ccbd4795d2215f221f41911f5d418d48c01280dcffac7b4feea",
+    "goldberg-identity": "03544065c6d7786ad8fdc1fb238038a8c91648bc68eb78db8b5010003aac4cec"
+  },
+  "installedApkSha256": "68d48b75436f6bd3f865d784714ec48570e2745c14aa0e9682514753009f3db0",
+  "offlineGuard": true
+}

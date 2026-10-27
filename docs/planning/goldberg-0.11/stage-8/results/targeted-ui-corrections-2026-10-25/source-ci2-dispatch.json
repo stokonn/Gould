@@ -1,0 +1,11 @@
+{
+  "conclusion": "",
+  "databaseId": 40170295032,
+  "headSha": "a41cd11a1b32af2949c43cb6e5b6aac94a3c2a51",
+  "status": "queued",
+  "url": "https://github.com/stokonn/Goldberg/actions/runs/40170295032",
+  "source": "a41cd11a1b32af2949c43cb6e5b6aac94a3c2a51",
+  "scope": "stage7b full native;upgrade job excluded",
+  "reason": "Verified test-only safe-inset correction afterCI1 StatusBar-target rejection;unchanged production hash68d48b;local3focusedPASS72.838s",
+  "previousFailedRun": 40168644562
+}

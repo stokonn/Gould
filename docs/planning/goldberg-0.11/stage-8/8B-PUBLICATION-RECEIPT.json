@@ -1,0 +1,21 @@
+{
+  "source": "394b6b58b2adcb0eb07b4f873161bbd7cc70ed3c",
+  "checkpoint": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6391483885",
+  "issue": "open",
+  "projectStatus": "In Progress",
+  "project": "https://github.com/users/stokonn/projects/2",
+  "readback": "PASS",
+  "qualityRun": 40147220442,
+  "qualityAtCheckpoint": "IN PROGRESS",
+  "fullStage8IntegrationRelease": "PENDING/BLOCKED",
+  "finalDocumentationReceipt": "complete; exact final documentation HEAD is recorded in the subsequent Issue31 receipt",
+  "testApkSha256": "13bc079020970ea3068c31dbc75a0ab0aa3c5a3250b0be1542d695f2d6c3ce92",
+  "applicationApkSha256": "93ae9ec88472e4f07dc5328980786e9ce252887ccbac507c0034195cd9b51961",
+  "productionChanged": false,
+  "databaseOrMigrationChanged": false,
+  "privatePmpIncluded": false,
+  "actualTalkBackServiceTouchExplorationAndFocusedNodeSnapshots": 40,
+  "qualityFinal": "SUCCESS",
+  "qualitySource": "394b6b58b2adcb0eb07b4f873161bbd7cc70ed3c",
+  "qualityReport": "results/automatic-quality-40147220442/result.json"
+}

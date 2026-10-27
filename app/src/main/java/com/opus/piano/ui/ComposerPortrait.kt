@@ -18,7 +18,8 @@ import com.opus.piano.i18n.L
 import com.opus.piano.R
 import kotlinx.coroutines.CancellationException
 
-@Composable internal fun ComposerPortrait(composer: CatalogComposer?, modifier: Modifier = Modifier.size(width=44.dp,height=54.dp)) {
+@Composable internal fun ComposerPortrait(composer: CatalogComposer?, modifier: Modifier = Modifier.size(width=44.dp,height=54.dp),
+    fallbackIcon: androidx.compose.ui.graphics.vector.ImageVector = Icons.Outlined.PersonOutline, placeholderDescription: String? = null) {
     val app=LocalContext.current.applicationContext as OpusApplication
     val consent by app.media.cellular.collectAsState()
     var credit by remember(composer?.id) { mutableStateOf<com.opus.piano.data.Portrait?>(null) }
@@ -31,7 +32,7 @@ import kotlinx.coroutines.CancellationException
     var details by remember { mutableStateOf(false) }
     Surface(onClick={if(credit!=null) details=true},modifier=modifier,shape=androidx.compose.foundation.shape.RoundedCornerShape(10.dp),color=MaterialTheme.colorScheme.surfaceVariant) {
         if(bitmap!=null) Image(bitmap!!.asImageBitmap(),composer?.name,contentScale=ContentScale.Crop)
-        else Icon(Icons.Outlined.PersonOutline,L.s(R.string.msg_portrait_unavailable_6f4e),Modifier.padding(8.dp))
+        else Icon(fallbackIcon, placeholderDescription ?: L.s(R.string.msg_portrait_unavailable_6f4e), Modifier.padding(8.dp))
     }
     if(details) AlertDialog(onDismissRequest={details=false},title={Text(composer?.name.orEmpty())},text={Column { credit?.let { p -> Text(p.artist);Text(p.credit);SourceLink(p.license,p.licenseUrl);SourceLink(L.s(R.string.msg_portrait_source_wikimedia_commons_a86c),p.sourceUrl) } }},confirmButton={JournalTextButton(onClick={details=false}) {Text(L.s(R.string.msg_close_bbfa))}})
 }

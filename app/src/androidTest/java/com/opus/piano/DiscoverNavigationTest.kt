@@ -13,6 +13,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.opus.piano.ui.DiscoverScreen
 import com.opus.piano.ui.DiscoverSearchSession
+import com.opus.piano.ui.LibraryState
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -34,7 +35,7 @@ class DiscoverNavigationTest {
                     composable("DISCOVER") {
                         val state:DiscoverSearchSession=viewModel()
                         SideEffect {session=state;ready.countDown()}
-                        DiscoverScreen {controller.navigate("detail")}
+                        DiscoverScreen({controller.navigate("detail")},{},{}, LibraryState(loading = false))
                     }
                     composable("detail"){Text("Authored local detail")}
                 }
@@ -52,14 +53,14 @@ class DiscoverNavigationTest {
             }
             settled("DISCOVER")
             val original=session
-            instrumentation.runOnMainSync {session.query="Authored transient query";session.online=false;nav.navigate("detail")}
+            instrumentation.runOnMainSync {session.query="Authored transient query";nav.navigate("detail")}
             settled("detail")
             instrumentation.runOnMainSync {assertTrue(nav.popBackStack())}
             settled("DISCOVER")
-            instrumentation.runOnMainSync {assertSame(original,session);assertEquals("Authored transient query",session.query);assertFalse(session.online)}
-            // Fresh state contains neither query nor online choice. This is a memory-state
-            // assertion, not a substitute for an actual process-death/restart experiment.
-            assertEquals("",DiscoverSearchSession().query);assertFalse(DiscoverSearchSession().online)
+            // Query memory survives this entry's Back navigation, but not process death.
+            // Default-off Settings consent now controls automatic debounced provider search.
+            instrumentation.runOnMainSync {assertSame(original,session);assertEquals("Authored transient query",session.query)}
+            assertEquals("",DiscoverSearchSession().query)
         }
     }
 }

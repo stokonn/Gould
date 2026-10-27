@@ -41,14 +41,19 @@ import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.*
 import com.opus.piano.data.*
+import com.opus.piano.ui.admin.AdminDashboardScreen
+import com.opus.piano.ui.admin.AdminQueueScreen
+import com.opus.piano.ui.admin.AdminAuditScreen
+import com.opus.piano.ui.admin.AdminSettingsScreen
+import com.opus.piano.ui.admin.AdminProposalScreen
 import java.time.*
 import java.time.format.DateTimeFormatter
 
 private enum class Destination(val label: String, val icon: ImageVector) {
-    OVERVIEW("Home", Icons.Outlined.Home), HOME("Profile", Icons.Outlined.Person), REPERTOIRE("Repertoire", Icons.Outlined.LibraryMusic),
+    OVERVIEW("Home", Icons.Outlined.Home), HOME("Profile", Icons.Outlined.Person), REPERTOIRE("Library", Icons.Outlined.LibraryMusic),
     DISCOVER("Discover", Icons.Outlined.Explore), PRACTICE("Practice", Icons.Outlined.Piano), BADGES("Badges", Icons.Outlined.EmojiEvents), WRAPPED("Wrapped", Icons.Outlined.Insights)
 }
-@Composable fun OpusApp(model: OpusViewModel, catalog: CatalogViewModel, experience: ExperienceViewModel, profile: ProfileViewModel) {
+@Composable fun OpusApp(model: OpusViewModel, catalog: CatalogViewModel, experience: ExperienceViewModel, profile: ProfileViewModel, admin: com.opus.piano.ui.admin.AdminViewModel) {
     val context = LocalContext.current
     val focus = androidx.compose.ui.platform.LocalFocusManager.current
     val keyboard = androidx.compose.ui.platform.LocalSoftwareKeyboardController.current
@@ -102,19 +107,20 @@ private enum class Destination(val label: String, val icon: ImageVector) {
         modifier = Modifier.imePadding(),
         snackbarHost = { SnackbarHost(snackbar) },
         bottomBar = {
-            NavigationBar(containerColor = MaterialTheme.colorScheme.surface, tonalElevation = 0.dp) {
-                listOf(Destination.OVERVIEW, Destination.REPERTOIRE, Destination.DISCOVER, Destination.PRACTICE, Destination.HOME).forEach { destination ->
-                    NavigationBarItem(colors = NavigationBarItemDefaults.colors(
-                        selectedIconColor = MaterialTheme.colorScheme.primary, selectedTextColor = MaterialTheme.colorScheme.primary,
-                        indicatorColor = androidx.compose.ui.graphics.Color.Transparent,
-                        unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                        unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant), selected = (if (current == SETTINGS_ROUTE) selectedTab(nav.previousBackStackEntry?.destination?.route ?: PROFILE_ROUTE) else selectedTab(current)) == destination.name, onClick = {
-                        focus.clearFocus()
-                        keyboard?.hide()
-                        nav.selectTopLevel(destination.name)
-                    }, icon = { Icon(destination.icon, contentDescription = null) }, label = { Text(if(destination==Destination.DISCOVER)L.s(R.string.discover) else L.fixed(destination.label), style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis) })
-                }
-            }
+            val destinations = listOf(Destination.OVERVIEW, Destination.REPERTOIRE, Destination.DISCOVER, Destination.PRACTICE, Destination.HOME)
+            val selected = (if (current == SETTINGS_ROUTE) selectedTab(nav.previousBackStackEntry?.destination?.route ?: PROFILE_ROUTE) else selectedTab(current))
+            JournalNavigationBar(
+                items = destinations.map { destination ->
+                    JournalNavigationItem(destination.name,
+                        if (destination == Destination.DISCOVER) L.s(R.string.discover) else L.fixed(destination.label), destination.icon)
+                },
+                selectedRoute = selected,
+                onSelect = { route ->
+                    focus.clearFocus()
+                    keyboard?.hide()
+                    nav.selectTopLevel(route)
+                },
+            )
         }
     ) { padding ->
         Column(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -125,11 +131,57 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                     BalancedHome(library, settings.username, { nav.navigate("piece/$it") }, { nav.navigate("history") }, {nav.navigate(SETTINGS_ROUTE)})
                 }
                 composable(SETTINGS_ROUTE) { SettingsScreen(profile, model, { replay = true }) { nav.popBackStack() } }
-                composable(Destination.HOME.name) { ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }) { nav.navigate("badge/$it") } }
+                composable(Destination.HOME.name) {
+                    val adminCaps by admin.caps.collectAsStateWithLifecycle()
+                    val adminFailure by admin.capsFailure.collectAsStateWithLifecycle()
+                    val administration: (() -> Unit)? =
+                        if (admin.entryVisible(adminCaps, adminFailure)) ({ nav.navigate("admin") }) else null
+                    ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }, administration = administration, badgeDetail = { nav.navigate("badge/$it") })
+                }
+                // Stage 7B: role-gated Administration (entry is convenience only — the
+                // server always enforces capabilities on every admin endpoint).
+                composable("admin") {
+                    AdminTheme { AdminDashboardScreen(
+                        admin,
+                        onQueue = { filter ->
+                            nav.navigate(if (filter == null) "admin/queue" else "admin/queue?filter=$filter")
+                        },
+                        onAudit = { tile ->
+                            admin.auditInitialFilter = when (tile) {
+                                com.opus.piano.admin.AdminTile.APPROVED_TODAY -> "today_approve"
+                                com.opus.piano.admin.AdminTile.REJECTED_TODAY -> "today_reject"
+                                else -> "all"
+                            }
+                            nav.navigate("admin/audit")
+                        },
+                        onSettings = { nav.navigate("admin/settings") },
+                    ) }
+                }
+                composable(
+                    "admin/queue?filter={filter}",
+                    arguments = listOf(
+                        androidx.navigation.navArgument("filter") {
+                            type = androidx.navigation.NavType.StringType
+                            nullable = true
+                            defaultValue = null
+                        }
+                    ),
+                ) { route ->
+                    AdminTheme { AdminQueueScreen(admin, route.arguments?.getString("filter"), { nav.popBackStack() }, { id -> nav.navigate("admin/proposal/${android.net.Uri.encode(id)}") }) }
+                }
+                composable("admin/proposal/{id}") { route ->
+                    AdminTheme { AdminProposalScreen(admin, route.arguments?.getString("id").orEmpty(), { nav.popBackStack() }, { id ->
+                        nav.navigate("admin/proposal/${android.net.Uri.encode(id)}") {
+                            popUpTo("admin/proposal/{id}") { inclusive = true }
+                        }
+                    }) }
+                }
+                composable("admin/audit") { AdminTheme { AdminAuditScreen(admin) { nav.popBackStack() } } }
+                composable("admin/settings") { AdminTheme { AdminSettingsScreen(admin) { nav.popBackStack() } } }
                 composable(Destination.REPERTOIRE.name) {
                     RepertoireScreen(library,catalogData,model,{nav.selectTopLevel("DISCOVER")},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")},catalog,{nav.navigate("catalog/work/$it")})
                 }
-                composable(Destination.DISCOVER.name) { DiscoverScreen { nav.navigate("discover/entity/$it") } }
+                composable(Destination.DISCOVER.name) { DiscoverScreen({ nav.navigate("discover/entity/$it") }, { nav.navigate("piece/$it") }, { nav.navigate("catalog/work/$it") }, library) }
                 composable("discover/entity/{id}") { route -> DiscoverDetailScreen(route.arguments?.getString("id").orEmpty(), {nav.popBackStack()}, {nav.navigate("discover/entity/$it")}, {nav.navigate("piece/$it")}) }
                 composable("catalog") { CatalogScreen(catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("catalog/work/$it") }, { nav.navigate("piece/$it") },profile=profile) }
                 composable("catalog/composer/{id}") { route -> ComposerScreen(route.arguments?.getString("id").orEmpty(), catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/work/$it") },identity=profile) }

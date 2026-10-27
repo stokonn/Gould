@@ -1,0 +1,26 @@
+{"uptime":87280,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.apps.nexuslauncher","text":"[Home screen 1 of 1]"}
+{"uptime":362872,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.apps.nexuslauncher","text":"[Home screen 1 of 1]"}
+{"uptime":363364,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Application icon]"}
+{"uptime":364491,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":364732,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":364755,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[]"}
+{"uptime":364812,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[]"}
+{"uptime":365439,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":392618,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.marvin.talkback","text":"[Android Accessibility Suite]"}
+{"uptime":392852,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.permissioncontroller","text":"[Permission request]"}
+{"uptime":392852,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.permissioncontroller","text":"[Permission request]"}
+{"uptime":393791,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.google.android.permissioncontroller","text":"[Allow]","sourceText":"Allow"}
+{"uptime":401183,"type":"TYPE_VIEW_CLICKED","package":"com.google.android.permissioncontroller","text":"[Allow]"}
+{"uptime":401199,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":401680,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.marvin.talkback","text":"[Android Accessibility Suite]"}
+{"uptime":402366,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":417624,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Admin Settings"}
+{"uptime":418375,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Off by default. Background checks use unmetered Wi-Fi unless you explicitly allow mobile data."}
+{"uptime":419323,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Local notifications"}
+{"uptime":420106,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Local notifications"}
+{"uptime":421025,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Background checks (approximately every 3 hours)"}
+{"uptime":421829,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Background checks (approximately every 3 hours)"}
+{"uptime":422773,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Allow mobile and metered data for admin checks"}
+{"uptime":423557,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Allow mobile and metered data for admin checks"}
+{"uptime":424457,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":425240,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}

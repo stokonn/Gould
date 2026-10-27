@@ -1,3 +1,11 @@
+## Current owner decision — October 24, 2026
+
+**Stage7B ACCEPTED WITH DOCUMENTED LIMITATIONS; Stage7 Android client/synthetic acceptance scope COMPLETED.** Stage7A was already accepted. [Explicit owner decision](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388393525). Existing CI25 and emulator evidence is unchanged; no tests were rerun for this documentation-only decision.
+
+Duplicate Settings TalkBack focus stops, large-font bottom-tab truncation and scaffold contrast findings are deferred to Stage8 for explicit release-readiness assessment, **NOT FIXED**. Speech quality, subjective motion, exhaustive accessibility coverage and real three-hour/reboot notification delivery remain UNVERIFIED. Stage6 G1–G9/G11, C4, 6.0f, Android/backend live integration and all production authorization gates remain OPEN. Stage8 remains PENDING; no main merge, production activation or release is authorized. Issue31 remains OPEN and its umbrella Project item In Progress. Prior entries below are historical.
+
+created by stokonn with love <3
+
 # Developer Guide
 
 Goldberg is the existing Kotlin/Jetpack Compose/Material 3 app in the stokonn/Goldberg repository. Legacy stokonn/Opus links redirect. The Android app module is app/, package/namespace com.opus.piano, database opus.db. The Compose plugin uses Kotlin 2.2.10, AGP 9.1.0, KSP 2.3.12 and Gradle wrapper 9.3.1; compile/target SDK 36, min SDK 26, JVM target 17. Use a compatible installed JDK and Android SDK.
@@ -75,3 +83,29 @@ Published production remains **0.10.1**. The [Stage 4 feature branch](https://gi
 The development branch adds native local-first Discover, explicit bounded provider actions, typed identities/relationships, immutable accepted evidence, isolated disposable observations and strictly licensed optional portraits. Repertoire filtering uses saved content only, independently from explicit online catalogue search. Accepted contradictions remain evidence and never merge identities by title. Same-journal catalogue rebuilding retains readable accepted provenance and regenerates FTS; explicit corruption recovery retains the unreadable generation and its bytes. Failure must leave the personal journal, backups and recovery available.
 
 Verification is incremental: [the recovery ledger](https://github.com/stokonn/Goldberg/blob/feature/goldberg-0.11-stage-4/docs/planning/goldberg-0.11/stage-4/RESUME-CHECKPOINT.md) records exact source/artifact scopes, executed emulator matrices, deliberate failure/fix evidence, bounded provider observations and measured synthetic search vectors. Earlier full suites/upgrades do not certify newer APKs. Wikidata overload and MusicBrainz throttling stop further probing. Large-font navigation, broader localized details/accessibility, storage/native/startup measurements and final complete suites/process-death/seeded upgrades remain acceptance work. No Stage 4 completion, publication readiness or real provider-identity certification is claimed.
+
+
+## Goldberg 0.11 Stage 7B — verified synthetic recovery, October 24, 2026
+
+Published production remains Goldberg 0.10.1. The unreleased Stage7B branch's test-only correction `fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c` respects the required changed-revision acknowledgement before preparing decisions; production code, personal database, backups and practice behavior are unchanged. [Exact-source acceptance40097540179](https://github.com/stokonn/Goldberg/actions/runs/40097540179) and automatic quality40097530580 passed. Independent raw XML:187 tests,0 failures/errors,2 existing external-fixture skips; all9 Stage7B cases passed. Clean local verification:275 JVM tests,0 failures/errors/skips;lint0 errors,119 warnings,1 hint;seven validation scripts passed.
+
+All262 required screenshot/tree pairs were retained and inspected, covering32 dashboard configurations and16 actual Queue/Audit row frames, native focus checks and row-open/Back. Seeded same-runner debug upgrade from immutable0.10.1 preserves all12 personal collections/37 sessions, preferences and schema8→10 integrity. Temporary CI signing is not release-signed installation verification. [Owner report, actual evidence and limitations](https://github.com/stokonn/Goldberg/blob/feature/goldberg-0.11-stage-7b/docs/planning/goldberg-0.11/stage-7/stage-7b/FINAL-OWNER-REPORT.md).
+
+Stage7B remains **In Progress**: owner acceptance, manual TalkBack/complete app navigation/reduced motion, separate-process platform notification-permission revocation and live G1–G9/G11 integration remain open. Larger-font navigation-label truncation, dark-parent status-bar contrast, awkward wrapping and timed-frame limitations remain disclosed. Production networking/moderation stay disabled. No phone testing, production activation, main merge or new release. [Issue31](https://github.com/stokonn/Goldberg/issues/31) is the current release dashboard; earlier development notes are historical checkpoints.
+
+created by stokonn with love <3
+
+
+### October 24, 2026 — Stage 7B manual verification closure
+
+Stage 7B Android client verification is **READY FOR OWNER REVIEW**, not accepted or released. CI #25 remains the verified source-bound result (187 native tests, 2 existing skips, no failures; 262 screenshot/tree pairs; seeded upgrade preserved). Representative emulator checks now cover real English/Czech TalkBack navigation and accessible Back, touch exploration, keyboard/IME/system Back, reduced-motion navigation and cross-process notification-permission revocation. The temporary recorder is archived; normal app/test/CI sources and AndroidJUnitRunner are restored.
+
+Proposed owner disposition: ACCEPT WITH DOCUMENTED LIMITATIONS for the verified client scope. Three Admin Settings label/control pairs duplicate TalkBack focus stops; audible speech quality, subjective motion comfort and exhaustive configurations remain unverified. Live G1–G9/G11 integration is BLOCKED until Stage 6 authorization; Stage 8 integration/release gates remain separate. No main merge, production activation or release has occurred. See the branch's Stage 7B FINAL-OWNER-REPORT.md and existing Issue #31 for evidence and the pending owner decision.
+
+created by stokonn with love <3
+
+## Current development publication policy
+
+Owner decision, October 25, 2026: Goldberg 0.11 and future Gould versions use internal debug APKs during development and owner review. Do not create additional RCs, prerelease tags or development GitHub Releases. Preserve historical v0.11-rc.1 and its artifacts. Only after full verification and explicit owner approval, perform a fresh clean non-debuggable stable release build with the trusted certificate and verified safe in-place upgrades. Main merges and stable publication each require explicit approval. The Stage 8 Discover repair is a debug-only deliverable pending native visual acceptance.
+
+created by stokonn with love <3

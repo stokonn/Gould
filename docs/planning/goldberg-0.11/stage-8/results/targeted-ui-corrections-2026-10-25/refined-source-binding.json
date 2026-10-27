@@ -1,0 +1,20 @@
+{
+  "inputs": {
+    "app/src/main/java/com/opus/piano/ui/OpusApp.kt": "1ceb1b050da623b3f767c5855a3fde320213be867fa11654e2a3927980aea2f3",
+    "app/src/main/java/com/opus/piano/ui/admin/AdminSettingsScreen.kt": "4a99d935684298b5347e00bb5b4b801d1f8a1f380ac080418dd6ec66b520c7bc",
+    "app/src/main/java/com/opus/piano/ui/JournalNavigationBar.kt": "58576eba418a9bea84e81b1d28b16a3af516a981010a37e05c0f2d8ac183005e",
+    "app/src/androidTest/java/com/opus/piano/Stage7bAcceptanceTest.kt": "e6070ae82e21e5ff7cd9c649fc9eea5c8f1b62880f449f03b8d2ad5db809c462",
+    "app/src/androidTest/java/com/opus/piano/Stage8bAssessmentProbe.kt": "04575809e5baaf483d73c613dccaf22bd138788057ce12ab74dc32b2cebe1e2a",
+    "app/src/androidTest/java/com/opus/piano/Stage8cUiRegressionTest.kt": "8cd2fcf8fbb489006eec4969d8acaed93338c3cdc63df08a3488d6c176763a9e"
+  },
+  "apkHashes": {
+    "candidate-app-wrap.apk": "68d48b75436f6bd3f865d784714ec48570e2745c14aa0e9682514753009f3db0",
+    "candidate-default-test-wrap.apk": "dc10c454bc695431312ac90c05e44a1615307a19046072d7bfa528130ede2c95",
+    "candidate-probe-wrap.apk": "ee88b7b44e838be2b3884c8f057314009fbfa796ead88550262203956bdee916"
+  },
+  "host": "PASS2m27s;23executed/60up-to-date;275JVM/0failure/error/skip;lint0errors119warnings",
+  "changedNativeCase": "OK1test66.134s;32 configurations,160 tab transitions,no overflow/ellipsis/original text retained",
+  "unchangedFocusedCases": "Prior4case75.972s result retained;Switch/input/scaffold sources unchanged;independent full native CI pending",
+  "probeBuild": "PASS17s;3executed/48up-to-date",
+  "findings": "NOT FIXED until after evidence/independent CI"
+}

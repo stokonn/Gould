@@ -1,0 +1,1421 @@
+{
+  "pid": 8175,
+  "uptime": 17015144,
+  "locale": "cs",
+  "fontScale": 1.3,
+  "profileTheme": "Dark",
+  "nodes": [
+    {
+      "index": 0,
+      "parent": -1,
+      "bounds": "0 0 720 1280",
+      "class": "android.widget.FrameLayout",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        4,
+        8,
+        64,
+        16908342
+      ]
+    },
+    {
+      "index": 1,
+      "parent": 0,
+      "bounds": "0 0 720 1280",
+      "class": "android.widget.FrameLayout",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        4,
+        8,
+        64,
+        16908342
+      ]
+    },
+    {
+      "index": 2,
+      "parent": 1,
+      "bounds": "0 0 720 1280",
+      "class": "android.widget.FrameLayout",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        4,
+        8,
+        64,
+        16908342
+      ]
+    },
+    {
+      "index": 3,
+      "parent": 2,
+      "bounds": "0 0 720 1280",
+      "class": "android.widget.LinearLayout",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        4,
+        8,
+        64,
+        16908342
+      ]
+    },
+    {
+      "index": 4,
+      "parent": 3,
+      "bounds": "0 0 720 1280",
+      "class": "android.widget.FrameLayout",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        4,
+        8,
+        64,
+        16908342
+      ]
+    },
+    {
+      "index": 5,
+      "parent": 4,
+      "bounds": "0 0 720 1280",
+      "class": "androidx.compose.ui.platform.ComposeView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        4,
+        8,
+        64,
+        16908342
+      ]
+    },
+    {
+      "index": 6,
+      "parent": 5,
+      "bounds": "0 0 720 1280",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 7,
+      "parent": 6,
+      "bounds": "0 0 720 1280",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 8,
+      "parent": 7,
+      "bounds": "0 48 720 1072",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 9,
+      "parent": 8,
+      "bounds": "0 48 720 1072",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 10,
+      "parent": 9,
+      "bounds": "0 48 720 1072",
+      "class": "android.widget.ScrollView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        4096,
+        16908346
+      ]
+    },
+    {
+      "index": 11,
+      "parent": 10,
+      "bounds": "40 100 136 196",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        1,
+        16
+      ]
+    },
+    {
+      "index": 12,
+      "parent": 11,
+      "description": "Zpět",
+      "bounds": "64 124 112 172",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 13,
+      "parent": 11,
+      "bounds": "48 108 128 188",
+      "class": "android.widget.Button",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 14,
+      "parent": 10,
+      "text": "Nastavení administrace",
+      "bounds": "136 80 680 216",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": true,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        128,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 15,
+      "parent": 10,
+      "text": "Ve výchozím stavu vypnuto. Kontroly používají neměřenou Wi-Fi, pokud výslovně nepovolíte mobilní data.",
+      "bounds": "40 224 680 356",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 16,
+      "parent": 10,
+      "text": "Místní oznámení",
+      "bounds": "40 394 576 439",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 17,
+      "parent": 10,
+      "description": "Místní oznámení",
+      "bounds": "576 368 680 464",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": true,
+      "checked": false,
+      "actions": [
+        64,
+        1,
+        16,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 18,
+      "parent": 10,
+      "text": "Kontroly na pozadí (přibližně každé 3 hodiny)",
+      "bounds": "40 488 576 590",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 19,
+      "parent": 10,
+      "description": "Kontroly na pozadí (přibližně každé 3 hodiny)",
+      "bounds": "576 491 680 587",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": true,
+      "checked": false,
+      "actions": [
+        64,
+        1,
+        16,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 20,
+      "parent": 10,
+      "text": "Povolit mobilní a měřená data pro správní kontroly",
+      "bounds": "40 614 576 716",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 21,
+      "parent": 10,
+      "description": "Povolit mobilní a měřená data pro správní kontroly",
+      "bounds": "576 617 680 713",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": true,
+      "checked": false,
+      "actions": [
+        64,
+        1,
+        16,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 22,
+      "parent": 10,
+      "bounds": "40 728 680 865",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        1,
+        16,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 23,
+      "parent": 22,
+      "description": "URL administrace: Nenakonfigurováno",
+      "bounds": "40 728 680 865",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 24,
+      "parent": 22,
+      "text": "URL administrace",
+      "bounds": "132 752 459 799",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 25,
+      "parent": 22,
+      "text": "Nenakonfigurováno",
+      "bounds": "132 803 419 841",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 26,
+      "parent": 10,
+      "bounds": "40 881 680 1018",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": false,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 27,
+      "parent": 26,
+      "description": "Moderátor: Moderátor",
+      "bounds": "40 881 680 1018",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 28,
+      "parent": 26,
+      "text": "Moderátor",
+      "bounds": "132 905 328 952",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 29,
+      "parent": 26,
+      "text": "Moderátor",
+      "bounds": "132 956 286 994",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 30,
+      "parent": 10,
+      "bounds": "40 1035 680 1072",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        1,
+        16,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 31,
+      "parent": 30,
+      "description": "Odhlásit",
+      "bounds": "40 1035 680 1072",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 32,
+      "parent": 30,
+      "text": "Odhlásit",
+      "bounds": "132 1059 285 1072",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 33,
+      "parent": 7,
+      "bounds": "0 1072 720 1280",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 34,
+      "parent": 33,
+      "bounds": "0 1072 720 1232",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 35,
+      "parent": 34,
+      "bounds": "0 1072 132 1232",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        1,
+        16
+      ]
+    },
+    {
+      "index": 36,
+      "parent": 35,
+      "bounds": "18 1079 114 1175",
+      "class": "android.view.View",
+      "visible": false,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 37,
+      "parent": 35,
+      "bounds": "18 1137 114 1233",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 38,
+      "parent": 37,
+      "text": "Domů",
+      "description": "Domů",
+      "bounds": "26 1167 105 1202",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 39,
+      "parent": 35,
+      "bounds": "42 1103 90 1151",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 40,
+      "parent": 35,
+      "bounds": "2 1079 130 1175",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 41,
+      "parent": 35,
+      "bounds": "0 1072 132 1232",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 42,
+      "parent": 34,
+      "bounds": "148 1072 279 1232",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        1,
+        16
+      ]
+    },
+    {
+      "index": 43,
+      "parent": 42,
+      "bounds": "165 1079 261 1167",
+      "class": "android.view.View",
+      "visible": false,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 44,
+      "parent": 42,
+      "bounds": "150 1137 276 1233",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 45,
+      "parent": 44,
+      "text": "Knihovna",
+      "description": "Knihovna",
+      "bounds": "150 1167 276 1202",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 46,
+      "parent": 42,
+      "bounds": "189 1103 237 1151",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 47,
+      "parent": 42,
+      "bounds": "149 1079 277 1175",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 48,
+      "parent": 42,
+      "bounds": "148 1072 279 1232",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 49,
+      "parent": 34,
+      "bounds": "295 1072 426 1232",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        1,
+        16
+      ]
+    },
+    {
+      "index": 50,
+      "parent": 49,
+      "bounds": "312 1079 408 1167",
+      "class": "android.view.View",
+      "visible": false,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 51,
+      "parent": 49,
+      "bounds": "295 1137 426 1233",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 52,
+      "parent": 51,
+      "text": "Objevovat",
+      "description": "Objevovat",
+      "bounds": "295 1167 426 1202",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 53,
+      "parent": 49,
+      "bounds": "336 1103 384 1151",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 54,
+      "parent": 49,
+      "bounds": "296 1079 424 1175",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 55,
+      "parent": 49,
+      "bounds": "295 1072 426 1232",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 56,
+      "parent": 34,
+      "bounds": "442 1072 573 1232",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        1,
+        16
+      ]
+    },
+    {
+      "index": 57,
+      "parent": 56,
+      "bounds": "459 1079 555 1167",
+      "class": "android.view.View",
+      "visible": false,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 58,
+      "parent": 56,
+      "bounds": "457 1137 558 1233",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 59,
+      "parent": 58,
+      "text": "Cvičení",
+      "description": "Cvičení",
+      "bounds": "457 1167 558 1202",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 60,
+      "parent": 56,
+      "bounds": "483 1103 531 1151",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 61,
+      "parent": 56,
+      "bounds": "443 1079 571 1175",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 62,
+      "parent": 56,
+      "bounds": "442 1072 573 1232",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 63,
+      "parent": 34,
+      "bounds": "589 1072 720 1232",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        1
+      ]
+    },
+    {
+      "index": 64,
+      "parent": 63,
+      "bounds": "590 1079 718 1175",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 65,
+      "parent": 63,
+      "bounds": "607 1137 703 1233",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 66,
+      "parent": 65,
+      "text": "Profil",
+      "description": "Profil",
+      "bounds": "619 1167 690 1202",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 67,
+      "parent": 63,
+      "bounds": "630 1103 678 1151",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 68,
+      "parent": 63,
+      "bounds": "590 1079 718 1175",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 69,
+      "parent": 63,
+      "bounds": "589 1072 720 1232",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    }
+  ],
+  "services": "com.google.android.marvin.talkback\/com.google.android.marvin.talkback.TalkBackService",
+  "touchExploration": 1,
+  "animatorScale": 1,
+  "transitionScale": 1,
+  "windowScale": 1,
+  "notificationGranted": false,
+  "activeNotificationIds": [],
+  "imeVisible": false,
+  "imeBottom": 0
+}

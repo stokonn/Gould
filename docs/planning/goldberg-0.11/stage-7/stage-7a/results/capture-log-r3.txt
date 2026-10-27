@@ -1,0 +1,120 @@
+guards OK on emulator-5554 (qemu=1, booted)
+wm size reset at start: Physical size: 1080x2400
+seeded catalogue present: 23 composers
+adb install -r -> rc=0 Performing Streamed Install
+Success 
+SEEDED UPGRADE OK: every table count and the profile_settings row are unchanged
+system font_scale set to 1.0
+app locale set to en
+theme set to Light (readback OK)
+=== combo r3-ivory-en ===
+captured r3-ivory-en-home.png (149105 bytes)
+captured r3-ivory-en-library.png (166658 bytes)
+captured r3-ivory-en-discover_landing.png (207913 bytes)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-ivory-en landing keeps no persistent privacy card)
+captured r3-ivory-en-privacy_popover.png (228661 bytes)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-ivory-en popover dismissed by outside tap)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-ivory-en popover dismissed by Back)
+privacy popover cycle verified (r3-ivory-en): open / outside-tap / Back
+captured r3-ivory-en-discover_search_off.png (180765 bytes)
+captured r3-ivory-en-practice.png (98861 bytes)
+captured r3-ivory-en-profile.png (142721 bytes)
+captured r3-ivory-en-settings_landing.png (120648 bytes)
+theme set to Dark (readback OK)
+=== combo r3-nocturne-en ===
+captured r3-nocturne-en-home.png (151858 bytes)
+captured r3-nocturne-en-library.png (168099 bytes)
+captured r3-nocturne-en-discover_landing.png (209536 bytes)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-nocturne-en landing keeps no persistent privacy card)
+captured r3-nocturne-en-privacy_popover.png (229189 bytes)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-nocturne-en popover dismissed by outside tap)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-nocturne-en popover dismissed by Back)
+privacy popover cycle verified (r3-nocturne-en): open / outside-tap / Back
+captured r3-nocturne-en-discover_search_off.png (181661 bytes)
+captured r3-nocturne-en-practice.png (99634 bytes)
+captured r3-nocturne-en-profile.png (143693 bytes)
+captured r3-nocturne-en-settings_landing.png (122294 bytes)
+app locale set to cs
+theme set to Light (readback OK)
+=== combo r3-ivory-cs ===
+captured r3-ivory-cs-home.png (141173 bytes)
+captured r3-ivory-cs-library.png (167826 bytes)
+captured r3-ivory-cs-discover_landing.png (212660 bytes)
+confirmed absent: 'Vyhledávání zůstává na tomto zařízení. Když sami spustíte online hledání, dotaz se odešle externím poskytovatelům hudebních dat.' (r3-ivory-cs landing keeps no persistent privacy card)
+captured r3-ivory-cs-privacy_popover.png (239036 bytes)
+confirmed absent: 'Vyhledávání zůstává na tomto zařízení. Když sami spustíte online hledání, dotaz se odešle externím poskytovatelům hudebních dat.' (r3-ivory-cs popover dismissed by outside tap)
+confirmed absent: 'Vyhledávání zůstává na tomto zařízení. Když sami spustíte online hledání, dotaz se odešle externím poskytovatelům hudebních dat.' (r3-ivory-cs popover dismissed by Back)
+privacy popover cycle verified (r3-ivory-cs): open / outside-tap / Back
+captured r3-ivory-cs-discover_search_off.png (196277 bytes)
+captured r3-ivory-cs-practice.png (104359 bytes)
+captured r3-ivory-cs-profile.png (146298 bytes)
+captured r3-ivory-cs-settings_landing.png (115871 bytes)
+theme set to Dark (readback OK)
+=== combo r3-nocturne-cs ===
+captured r3-nocturne-cs-home.png (143616 bytes)
+captured r3-nocturne-cs-library.png (168848 bytes)
+captured r3-nocturne-cs-discover_landing.png (213882 bytes)
+confirmed absent: 'Vyhledávání zůstává na tomto zařízení. Když sami spustíte online hledání, dotaz se odešle externím poskytovatelům hudebních dat.' (r3-nocturne-cs landing keeps no persistent privacy card)
+captured r3-nocturne-cs-privacy_popover.png (238939 bytes)
+confirmed absent: 'Vyhledávání zůstává na tomto zařízení. Když sami spustíte online hledání, dotaz se odešle externím poskytovatelům hudebních dat.' (r3-nocturne-cs popover dismissed by outside tap)
+confirmed absent: 'Vyhledávání zůstává na tomto zařízení. Když sami spustíte online hledání, dotaz se odešle externím poskytovatelům hudebních dat.' (r3-nocturne-cs popover dismissed by Back)
+privacy popover cycle verified (r3-nocturne-cs): open / outside-tap / Back
+captured r3-nocturne-cs-discover_search_off.png (198023 bytes)
+captured r3-nocturne-cs-practice.png (106309 bytes)
+captured r3-nocturne-cs-profile.png (147730 bytes)
+captured r3-nocturne-cs-settings_landing.png (118797 bytes)
+app locale set to en
+theme set to Light (readback OK)
+captured r3-ivory-en-settings_data.png (238229 bytes)
+app locale set to cs
+theme set to Dark (readback OK)
+captured r3-nocturne-cs-settings_data.png (243604 bytes)
+app locale set to en
+theme set to Light (readback OK)
+system font_scale set to 1.5
+=== font 1.5 EN Ivory ===
+captured r3-ivory-en-15-home.png (201404 bytes)
+captured r3-ivory-en-15-discover_landing.png (210996 bytes)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-ivory-en-15 landing keeps no persistent privacy card)
+captured r3-ivory-en-15-privacy_popover.png (244205 bytes)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-ivory-en-15 popover dismissed by outside tap)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-ivory-en-15 popover dismissed by Back)
+privacy popover cycle verified (r3-ivory-en-15): open / outside-tap / Back
+captured r3-ivory-en-15-profile.png (191107 bytes)
+captured r3-ivory-en-15-settings_landing.png (159369 bytes)
+system font_scale set to 2.0
+=== font 2.0 EN Ivory ===
+captured r3-ivory-en-20-home.png (201403 bytes)
+captured r3-ivory-en-20-discover_landing.png (203132 bytes)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-ivory-en-20 landing keeps no persistent privacy card)
+captured r3-ivory-en-20-privacy_popover.png (241984 bytes)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-ivory-en-20 popover dismissed by outside tap)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-ivory-en-20 popover dismissed by Back)
+privacy popover cycle verified (r3-ivory-en-20): open / outside-tap / Back
+captured r3-ivory-en-20-profile.png (212426 bytes)
+captured r3-ivory-en-20-settings_landing.png (175335 bytes)
+app locale set to cs
+theme set to Dark (readback OK)
+=== font 2.0 CS Nocturne ===
+captured r3-nocturne-cs-20-discover_landing.png (206490 bytes)
+confirmed absent: 'Vyhledávání zůstává na tomto zařízení. Když sami spustíte online hledání, dotaz se odešle externím poskytovatelům hudebních dat.' (r3-nocturne-cs-20 landing keeps no persistent privacy card)
+captured r3-nocturne-cs-20-privacy_popover.png (247000 bytes)
+confirmed absent: 'Vyhledávání zůstává na tomto zařízení. Když sami spustíte online hledání, dotaz se odešle externím poskytovatelům hudebních dat.' (r3-nocturne-cs-20 popover dismissed by outside tap)
+confirmed absent: 'Vyhledávání zůstává na tomto zařízení. Když sami spustíte online hledání, dotaz se odešle externím poskytovatelům hudebních dat.' (r3-nocturne-cs-20 popover dismissed by Back)
+privacy popover cycle verified (r3-nocturne-cs-20): open / outside-tap / Back
+captured r3-nocturne-cs-20-profile.png (230830 bytes)
+system font_scale set to 1.0
+=== narrow 720×1560 ===
+app locale set to en
+theme set to Light (readback OK)
+captured r3-small-en-home.png (102318 bytes)
+captured r3-small-en-discover_landing.png (103619 bytes)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-small-en landing keeps no persistent privacy card)
+captured r3-small-en-privacy_popover.png (114071 bytes)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-small-en popover dismissed by outside tap)
+confirmed absent: 'Searches stay on this device. When you start an online search, your query is sent to external music-data providers.' (r3-small-en popover dismissed by Back)
+privacy popover cycle verified (r3-small-en): open / outside-tap / Back
+wm size reset: Physical size: 1080x2400
+system font_scale set to 1.0
+theme set to System (readback OK)
+CAPTURE COMPLETE: 50 round-3 screenshots

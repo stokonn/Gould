@@ -1,0 +1,10 @@
+{
+  "productionSource": "4d245b46936d640740799dfcc6e8d61f3d44b249",
+  "baseReceipt": "22fb50bedec7b932e47640673e52fdb57bdc791a",
+  "testSourceSha256": "b7458f5b6f086d094a1cae2df1fc6d390b7dd2babbebd6a878606741d6f2911a",
+  "testApkSha256": "03a1e38b1c6364aaad5425dcd3ccf46fc43e9e771cd471a66fe6c09a2bcc6201",
+  "productionApkSha256": "68d48b75436f6bd3f865d784714ec48570e2745c14aa0e9682514753009f3db0",
+  "serial": "emulator-5592",
+  "avd": "GoldbergStage8Independent",
+  "run": "oct25r1"
+}

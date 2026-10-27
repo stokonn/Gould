@@ -1,0 +1,2 @@
+10-20 23:05:46.452  4034  4122 I TestRunner: started: newRelationshipUsesItsOwnObservationRatherThanTheOriginalIdentitySource(com.opus.piano.Stage4GraphTest)
+10-20 23:05:46.476  4034  4122 I TestRunner: finished: newRelationshipUsesItsOwnObservationRatherThanTheOriginalIdentitySource(com.opus.piano.Stage4GraphTest)

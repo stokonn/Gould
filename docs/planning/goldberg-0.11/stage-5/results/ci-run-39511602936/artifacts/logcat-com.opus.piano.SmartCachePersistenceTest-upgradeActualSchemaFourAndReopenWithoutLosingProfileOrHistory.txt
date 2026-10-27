@@ -1,0 +1,108 @@
+10-20 23:05:17.604  4034  4122 I TestRunner: started: upgradeActualSchemaFourAndReopenWithoutLosingProfileOrHistory(com.opus.piano.SmartCachePersistenceTest)
+10-20 23:05:17.636  2303  4676 W gle.android.gms: Long monitor contention with owner [com.google.android.gms.chimera.container.intentoperation.GmsIntentOperationChimeraService-Executor] processing com.google.android.gms.mdi.download.service.SystemEventIntentOperation for action com.google.android.gms.phenotype.com.google.android.gms.icing.mdd.COMMITTED (4648) at void vzd.run()(:com.google.android.gms@252635038@25.26.35 (260800-783060121):67) waiters=0 in void vzd.run() for 722ms
+10-20 23:05:17.679  1153  3377 I AdapterProperties: getBondedDevices: length=0
+10-20 23:05:17.680  2303  4676 I DckStubModuleInit: Loading stub module components [CONTEXT service_id=289 ]
+10-20 23:05:17.681  2303  4676 W Dck     : Disable DCK module - Android debug build without fullaccess [CONTEXT service_id=289 ]
+10-20 23:05:17.681  2303  4676 W Dck     : Dck module not eligible for asynchronous downloading [CONTEXT service_id=289 ]
+10-20 23:05:17.782  3655  3804 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=63 ]
+10-20 23:05:17.782  3655  3849 I StateMachineV2: Pretend sent message 5 to dkiu@343e6b9
+10-20 23:05:17.783  3655  4682 I BugleRcsEngine: RequestWithImsiState: event HTTP Response [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.783  3655  4682 I BugleRcsEngine: InProgressState: event HTTP Response [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.783  3655  4682 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=120 ]
+10-20 23:05:17.784  3655  4088 I StateMachineV2: Pretend sent message 1004 to dkiu@343e6b9
+10-20 23:05:17.784  3655  4682 I BugleRcsEngine: RequestWithImsiState: event HTTP 503 (Unavailable) [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.784  3655  4682 I BugleRcsEngine: InProgressState: event HTTP 503 (Unavailable) [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.785  3655  4682 I BugleRcsEngine: Connection unavailable. Retry in 3869 seconds [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.785  3655  4682 I StateMachineV2: Added deferred 11
+10-20 23:05:17.786  3655  4682 W StateMachineV2: Current state 19 and its parents requested to transition to more than 1 state. Requests: [(1, 14), (14, 14), (14, 3), (14, 3), (3, 19), (3, 19), (19, 24)]
+10-20 23:05:17.787  3655  4682 I BugleRcsEngine: transitionTo: destState=ReplayRequestState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.788  3655  4682 I BugleRcsEngine: onTransitionRequested RequestWithImsiState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.791  3655  4682 I BugleRcsEngine: Exit RequestWithImsiState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.792  3655  4682 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=120 ]
+10-20 23:05:17.792  3655  4682 I BugleRcsEngine: Exit InProgressState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.799  3655  4682 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=120 ]
+10-20 23:05:17.802  3655  4682 I BugleRcsEngine: Enter ReplayRequestState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.807   589  4529 I AttributionAndPermissionUtils: checkPermission (forDataDelivery 0 startDataDelivery 0): Permission hard denied for client attribution [uid 10147, pid 2303, packageName "<unknown>"]
+10-20 23:05:17.807  3655  4682 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=120 ]
+10-20 23:05:17.807  2303  4676 W PrereqChecker: No rear-facing camera detected.
+10-20 23:05:17.807  3655  4682 I StateMachineV2: Queuing delayed 9 for PT5M
+10-20 23:05:17.808  3655  4682 I BugleRcsEngine: ReplayRequestState: event Retry after [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.808  3655  3804 I StateMachineV2: State transition requested, from 19 to 24
+10-20 23:05:17.809  3655  3804 I StateMachineV2: Pretend exiting dkiu@343e6b9
+10-20 23:05:17.810  3655  4682 I BugleRcsWorker: [seqId=0][workId=9de8473d-00a8-4fd3-8b06-0aa2a8f60f30] Provisioning Engine entered ReplayRequestState, request will be re-attempted in 3869
+10-20 23:05:17.810  3655  4088 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=106 ]
+10-20 23:05:17.811  2303  4676 I OcrModelUpStIntentOp: Downloading text recognizer
+10-20 23:05:17.811  3655  4682 I BugleRcsWorker: [seqId=0][workId=9de8473d-00a8-4fd3-8b06-0aa2a8f60f30] finish provisioning task with result Success {mOutputData=Data {}}
+10-20 23:05:17.811  3655  4682 I BugleRcsWorker: [seqId=0][workId=9de8473d-00a8-4fd3-8b06-0aa2a8f60f30] RCS provisioning task has finished with result Success {mOutputData=Data {}}
+10-20 23:05:17.812  3655  4682 I BugleClearcutLogger: qosTierResolver for LOG_SPEC_LEGACY_LOGGING is null. Using DEFAULT QoS tier as there's no specific QoS configuration for this log spec.
+10-20 23:05:17.812  3655  3804 I StateMachineV2: Pretend exiting dkio@b943d26
+10-20 23:05:17.813  3655  4087 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=c2a7fc1b-4ade-4083-9428-2829c67a95cf, tags={ com.google.android.apps.messaging.shared.rcsprovisioning.RcsProvisioningListenableWorker,provisioning } ]
+10-20 23:05:17.814  3655  3849 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false] [CONTEXT thread_id=69 ]
+10-20 23:05:17.814  3655  3655 D WM-Processor: pst c2a7fc1b-4ade-4083-9428-2829c67a95cf executed; reschedule = false
+10-20 23:05:17.814  3655  3655 D WM-GreedyScheduler: Stopping tracking for WorkGenerationalId(workSpecId=c2a7fc1b-4ade-4083-9428-2829c67a95cf, generation=0)
+10-20 23:05:17.815  3655  3655 D WM-SystemJobService: c2a7fc1b-4ade-4083-9428-2829c67a95cf executed on JobScheduler
+10-20 23:05:17.815  3655  3804 W StateMachineV2: State machine has quit, can't enter dkir@e7e0714
+10-20 23:05:17.815  3655  3804 I StateMachineV2: Sending deferred 11 to dkkq@e8775fc
+10-20 23:05:17.815  3655  3804 W StateMachineV2: Can't send message 11 on a StateMachineV2 instance that has already quit.
+10-20 23:05:17.819  3655  4086 I BugleRcsEngine: quit [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=104 ]
+10-20 23:05:17.820  3655  4682 I BugleRcsEngine: transitionTo: destState=djko [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.820  3655  4682 I BugleRcsEngine: Exit ReplayRequestState [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.821  3655  4682 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=120 ]
+10-20 23:05:17.821  3655  4682 W BugleRcsEngine: onQuitting [b6ebf3b3-0efd-4d84-8415-d2406d04a8d7] [CONTEXT log_prefix="(PEv2-SM63544877-DefaultCallSmsData-1-492)" thread_id=120 ]
+10-20 23:05:17.825  3655  3849 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=69 ]
+10-20 23:05:17.833  3655  4682 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false] [CONTEXT thread_id=120 ]
+10-20 23:05:17.833  3655  4682 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=120 ]
+10-20 23:05:17.834  3655  3849 I BugleRcsEngine: Scheduled provisioning task with 3869 seconds delay, APPEND policy, trigger is STATE_MACHINE_REPLAY, workerId is b4eb5f81-c8c1-4abb-aab8-5eadfff80363, simId is redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="provisioning" thread_id=69 ]
+10-20 23:05:17.834  3655  4682 I BugleRcsProvisioning: RcsAvailability configuration availability and enabled status: simId: redacted-pii:sim_id[chars:20,last3:897], SipConnectionType: DUAL_REG, isConfigurationAvailableAndEnabled: false
+10-20 23:05:17.834  3655  4682 I BugleRcsProvisioning: Checking isConfigServerUrlAvailable with simId: redacted-pii:sim_id[chars:20,last3:897],
+10-20 23:05:17.835  3655  4682 I BugleRcsEngine: getConfigServerUrl with simId: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=120 ]
+10-20 23:05:17.836  3655  4682 I BugleRcsEngine: Using config server URL from chgq [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=120 ]
+10-20 23:05:17.839  3655  4086 D WM-GreedyScheduler: Cancelling work ID c2a7fc1b-4ade-4083-9428-2829c67a95cf
+10-20 23:05:17.839  3655  3768 I ForwardSyncCache: reclaimMemory: Clearing caches
+10-20 23:05:17.840  3655  3768 W BugleSpam: trimming memory: closing msg model.
+10-20 23:05:17.842  3655  3768 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+10-20 23:05:17.843  3655  4682 I BugleRcsProvisioning: RcsAvailability: Subscription Id: 1, simId: redacted-pii:sim_id[chars:20,last3:897], sipConnectionType: DUAL_REG, isRcsAvailable: false
+10-20 23:05:17.844  3655  4682 I BugleRcsEngine: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897] [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=120 ]
+10-20 23:05:17.844  3655  4682 I BugleRcsProvisioning: updateAvailabilityForRcsProvisioningId. SimId: redacted-pii:sim_id[chars:20,last3:897], currentAvailability: 10, newAvailability: 10, hint: NO_HINT
+10-20 23:05:17.850  3655  4087 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : availability is updated to Carrier RCS is not set up, lastAvailabilityLocal is Carrier RCS is not set up, simId hash = 8233018065341670324, simId = redacted-pii:sim_id[chars:20,last3:897], isPev3Enabled = true
+10-20 23:05:17.853  3655  3847 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=67 ]
+10-20 23:05:17.860  3655  4086 D WM-GreedyScheduler: Ignoring {WorkSpec: 0fe54e10-28cb-4ad0-823c-a340f3c0657c}. Requires device idle.
+10-20 23:05:17.860  3655  4086 D WM-GreedyScheduler: Ignoring {WorkSpec: 013a35ea-bb8c-414f-9a5c-af2c0d1fe6db}. Requires device idle.
+10-20 23:05:17.861  3655  4087 D WM-NetworkStateTracker: Unregistering network callback
+10-20 23:05:17.891  3655  3849 D WM-SystemJobScheduler: Scheduling work ID 4c8a5c1c-d728-441d-af3b-5391694b06d4Job ID 1022
+10-20 23:05:17.892  2303  4634 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+10-20 23:05:17.897  3655  3849 D WM-GreedyScheduler: Ignoring {WorkSpec: 0fe54e10-28cb-4ad0-823c-a340f3c0657c}. Requires device idle.
+10-20 23:05:17.897  3655  3849 D WM-GreedyScheduler: Ignoring {WorkSpec: 013a35ea-bb8c-414f-9a5c-af2c0d1fe6db}. Requires device idle.
+10-20 23:05:17.929  2303  2303 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.chimera.container.moduleinstall.ModuleInstallService.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsApiService }
+10-20 23:05:17.948  2303  2303 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.ocr.service.internal.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+10-20 23:05:17.950  2303  2303 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.ocr.service.internal.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+10-20 23:05:17.955   643   914 D WifiClientModeImpl[34482:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=1 freq=2437 RxLinkSpeed=2
+10-20 23:05:17.955   643   914 D WifiDataStall: tx tput in kbps: 37000
+10-20 23:05:17.956   643   914 D WifiDataStall: rx tput in kbps: 37000
+10-20 23:05:17.956   643   914 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+10-20 23:05:17.956   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:17.956   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:17.956   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:17.956   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:17.956   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:17.956   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:17.957   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:17.957   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:17.957   643   914 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 14224604 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 54Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+10-20 23:05:17.957   643   914 D WifiScoreCard: txRate: 715 txSpeed: 1
+10-20 23:05:17.957   643   914 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 1928051533 RSSI -50 txSpeed 1
+10-20 23:05:17.957   643   914 D WifiClientModeImpl[34482:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=60 link=1 tx=714.0, 0.0, 0.0 rx=4908.2 bcn=0 [on:0 tx:0 rx:0 period:3015] from screen [on:0 period:1536155525] score=60
+10-20 23:05:17.970  2303  4634 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2526359260800+mlkit.ocr.common+vision.ocr,tflite_dynamite:2640104055100800+tflite_dynamite
+10-20 23:05:17.973  2303  4676 I Pay     : A Phenotype flag has been updated. [CONTEXT service_id=198 ]
+10-20 23:05:17.979  2303  4676 I Pay     : Requested check of feature migrations. [CONTEXT service_id=198 ]
+10-20 23:05:17.983  2303  4676 I Pay     : Scheduling sync auth setting task. [CONTEXT service_id=198 ]
+10-20 23:05:17.990  2303  4634 I GmsDebugLogger: [73] 1801
+10-20 23:05:17.997  2303  4634 W ZappDownloader: No successful Zapp module downloads for requested modules [MlkitOcrCommon.optional:252635100800:permitMetered, VisionOcr.optional:252635100000:permitMetered, TfliteDynamiteDynamite.integ:264010405100800:permitMetered].
+10-20 23:05:17.997  2303  4634 I GmsDebugLogger: [30] [MlkitOcrCommon.optional:252635100800],[VisionOcr.optional:252635100000],[TfliteDynamiteDynamite.integ:264010405100800]
+10-20 23:05:18.002  2303  4634 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+10-20 23:05:18.002  2303  4634 I GmsDebugLogger: [83] 1 [vision.ocr]
+10-20 23:05:18.006  2303  4648 W Vision  : Request for optional module download of ocr failed. Request again.
+10-20 23:05:18.007  2303  4648 W Vision  : Would have logged:
+10-20 23:05:18.007  2303  4648 W Vision  : # gptm@37884fe7
+10-20 23:05:18.007  2303  4648 I Vision  : Schedule retrying download ocr at 143589 with backoff 10 seconds
+10-20 23:05:18.088  4034  4122 I TestRunner: finished: upgradeActualSchemaFourAndReopenWithoutLosingProfileOrHistory(com.opus.piano.SmartCachePersistenceTest)

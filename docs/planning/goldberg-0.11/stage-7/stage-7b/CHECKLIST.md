@@ -1,0 +1,616 @@
+# Stage 7 owner acceptance — October 24, 2026
+
+**Stage 7B: ACCEPTED WITH DOCUMENTED LIMITATIONS. Stage 7 Android client/synthetic acceptance scope: COMPLETED.** Stage 7A was already owner-accepted. The owner explicitly approved the October 24 final owner report in this conversation; [permanent owner-decision checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388393525). This decision supersedes the earlier READY FOR OWNER REVIEW / pending-approval status. It covers the verified Android client/synthetic scope only.
+
+Purpose/scope: close owner acceptance of the existing Android Admin dashboard, Queue/re-review/decision safeguards, Audit, Settings, local sync/notifications and documented synthetic data safeguards. This update changes documentation only; application/test/CI source, the APK and historical evidence remain unchanged.
+
+- [x] Record explicit owner acceptance of Stage 7B with the October 24 documented limitations; Stage 7A + Stage 7B Android client/synthetic acceptance scope completed.
+- [x] Retain prior results without rerunning unchanged tests: CI #25 `40097540179` SUCCESS at tested source `fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c`, 187 native cases /185 passed /2 existing skips /0 failures or errors, all9 Stage7B cases;262 screenshot/tree pairs reviewed; seeded12 collections/37 sessions/schema8→10 preserved. Prior275 JVM tests and seven validation scripts passed; normal restored assembly/lint passed (0 errors/119 warnings/1 hint). Representative October24 EN/Light/1.0 and CZ/Dark/1.3 emulator TalkBack/touch/Back/keyboard/IME/reduced-motion/permission-revocation observations retained. No fresh execution is claimed.
+- [x] Retain exact manual tooling archive, default AndroidJUnitRunner, production APK and source manifest. Pre-decision published documentation HEAD `9f6adf806bff034e884d12bbb4259f920975248d`, branch `feature/goldberg-0.11-stage-7b`; the final publication checkpoint records this decision's documentation SHA.
+- [x] Owner-approved deferral to Stage 8 for explicit release-readiness assessment: duplicate Settings TalkBack focus stops, large-font bottom-tab truncation and scaffold contrast findings. **Deferred, NOT FIXED**; acceptance does not waive Stage 8 assessment.
+- [ ] **UNVERIFIED:** audible speech/pronunciation, subjective motion comfort/frame timing, exhaustive accessibility/font/keyboard/configuration coverage and real three-hour/reboot notification delivery. These checks remain unexecuted or bounded as originally recorded, not passed by owner approval.
+- [ ] **OPEN:** Stage 6 G1–G9/G11, C4, 6.0f, Android/backend live integration and every production authorization gate. Live integration remains blocked pending separate authorization. **Stage 8 remains PENDING.**
+- [ ] Separate integration/release verification and explicit authorization for any main merge, production activation or release remain outstanding. Issue #31 stays OPEN; Goldberg Development's umbrella item stays In Progress.
+
+Next executor: retain the accepted Stage 7 client/synthetic disposition; assess the three deferred findings only within separately authorized Stage 8 release-readiness work. Do not mark them fixed, infer unverified checks passed, reopen completed Stage 7 tests or treat acceptance as live/backend/release authorization. Original raw observations/hashes, screenshots, logs, test results and private PMP are preserved. Earlier packets below are historical records, not the current acceptance status.
+
+created by stokonn with love <3
+
+<details>
+<summary>Historical verification and pre-approval decision packets — retained unchanged</summary>
+
+## Final administrative closure — October 24, 2026
+
+**READY FOR OWNER REVIEW — NOT ACCEPTED. Recommendation: ACCEPT WITH DOCUMENTED LIMITATIONS**, subject to the owner's explicit disposition of the limitations below. This recommendation covers the completed Stage 7B Android client and synthetic/offline verification scope; it does not authorize live integration or release.
+
+- [x] Admin dashboard, Queue/re-review/decision safeguards, Audit, Settings and local sync/notification behavior verified within the documented synthetic scope.
+- [x] CI #25 retained unchanged: 187 native tests, 185 passed, 2 existing skips, no failures/errors; all 9 Stage 7B tests passed. All 262 screenshot/tree pairs reviewed; seeded upgrade retained 12 collections/37 sessions, schema 8→10. Prior clean host gate: 275 JVM tests passed and seven validation scripts passed.
+- [x] October 24 emulator observations retained: real EN/CZ TalkBack traversal and accessible Back, touch exploration, Tab order, IME/insets/system Back, zero-animation navigation and cross-process POST_NOTIFICATIONS revocation/restart/worker suppression. EN/Light/1.0 and CZ/Dark/1.3 are representative samples, not an exhaustive configuration matrix.
+- [x] Unique temporary manual recorder and exact Gradle patch archived under `results/manual-acceptance-2026-10-24/sources/`, with byte/hash receipts, before removal from the active test tree. The 270-file source manifest matches; active app, tests, Gradle and CI match the verified baseline. Default AndroidJUnitRunner restored. No production behavior changed.
+- [x] Restored normal build: `./gradlew assembleDebug assembleDebugAndroidTest lintDebug --offline --no-daemon --max-workers=1` PASS in 2m08s (13 executed/64 up-to-date); lint 0 errors/119 warnings/1 hint. This compiled instrumentation; it did not execute a fresh complete native suite. CI #25 was not repeated.
+- [x] Production APK ZIP integrity, unchanged SHA-256 `93ae9ec88472e4f07dc5328980786e9ce252887ccbac507c0034195cd9b51961`, package/version and trusted signing verified. Evidence-consistency verifier PASS; original screenshots/logs/JSON/hash inventory and historical failures preserved.
+- [ ] Owner explicitly approves final disposition. Stage remains READY FOR OWNER REVIEW; Issue #31 stays OPEN and the umbrella Project stays In Progress.
+- [ ] Proposed Stage 8 deferral, requiring owner agreement: duplicate TalkBack label/control focus stops in three Admin Settings rows; existing large-font bottom-tab truncation and historical scaffold status contrast limitation. Controls remain named, reachable and checkable; no semantics fix is claimed.
+- [ ] Unverified quality limits retained: audible speech/pronunciation, subjective motion comfort/frame timing, exhaustive accessibility/font/keyboard matrix and real three-hour/reboot delivery. These checks are not marked passed.
+- [ ] Stage 6 authorization/approved live backend contracts and credentials: G1–G9/G11 remain explicitly BLOCKED. Stage 8 broader integration/release gates remain separate; no backend activation, merge or release is authorized by this packet.
+
+Evidence: `results/manual-acceptance-2026-10-24/verified-results.json`, `closure-verification.json`, `raw-evidence-inventory.json` and `sources/archive-receipt.json`. The final publication receipt in existing Issue #31 records the exact documentation commit; CI evidence remains bound to `fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c`. Private PMP and unrelated historical files remain local and uncommitted. Earlier checkpoints below are chronological history and do not reopen completed verification.
+
+created by stokonn with love <3
+
+## Stage7B — manual acceptance preparation executed; owner decision OPEN
+
+Purpose: complete feasible emulator-only accessibility/navigation/motion/permission
+checks without repeating CI25. Scope: new isolated AVD, opt-in test recorder and
+build flag, retained evidence/checklists/Issue31/Project/Wiki. Production APK,
+Kotlin/resources, schema, migrations, backups and practice behavior unchanged.
+
+- [x] Preserve private/history; retain CI25 source-bound results without rerun.
+- [x] Boot changed Lavapipe/ANGLE+llvmpipe API36 venue; explicit emulator-5586/qemu1.
+- [x] Real TalkBack EN/Light/1.0 and CZ/Dark/1.3 Audit order, kernel touch exploration
+  and accessible Back; Settings control order sampled. Record duplicate focus stops.
+- [x] Audit Tab8, Queue/endpoint IME558px, layered system Back and real NavHost.
+- [x] All3 animation scales0; route/Back behavior; original1 scales restored.
+- [x] Host-process notification revoke: PID6176→absent→restart7748/DENIED;
+  new worker7815 executes6 fixture calls/signature change/zero notifications.
+- [x] Final recorder compile/lint PASS1m05s; default runner compile/lint PASS13s,
+  lint0errors/119warnings/1hint; default runner restored, isolated AVD stopped.
+- [x] Retain107 PNG observations, native events/state/commands/setup history and
+  read-only evidence verifier PASS. No new JVM/full-suite/CI execution claimed.
+- [ ] Owner disposition on the3 repeated Settings label/control TalkBack focus
+  stops, audible-speech/subjective-motion and non-exhaustive matrix limits.
+- [ ] Explicit Stage7B approval; live G1–G9/G11 stays BLOCKED pending Stage6.
+- [ ] Real3h/reboot-delivery evidence remains unexecuted.
+
+Verification/completion: representative checks executed; preparation complete,
+Stage7B NOT accepted. Decision: approve verified client scope with explicitly
+accepted limitations, or hold for focused accessibility/further review. Neither
+selected. See [owner report](FINAL-OWNER-REPORT.md) and [manual record](MANUAL-ACCEPTANCE.md) for exact commands,
+source/APK identities, raw results, screenshots inspected and limitations.
+No phone, other-worktree edits, production activation, merge or release.
+
+---
+
+> **Current verified checkpoint — 2026-10-24:** correction `fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c`; exact-SHA acceptance40097540179 and automatic quality40097530580 SUCCESS. Independent raw187 tests/0 failures/errors/2 existing skips, all9Stage7B cases PASS; **262 required screenshot/tree pairs** and all262 PNGs inspected in33 contact sheets,32dashboards/16actual row frames/516named-focus-checked occurrences. Seeded12collections/37sessions/schema8→10/integrity PASS; temporary CI signing limits disclosed. Clean host275JVM/0fail,lint0errors119warnings1hint/seven scripts PASS. **Stage7B remains IN PROGRESS; explicit owner acceptance and manual/live gates remain open.** [Authoritative owner report and exact limitations](FINAL-OWNER-REPORT.md). Earlier entries below are historical; their pending states/counts do not describe the latest source.
+
+## Stage 7B — final recovery verified; owner acceptance OPEN
+
+**Purpose:** finish interrupted verification without bypassing the legitimate
+changed-revision acknowledgement. **Scope:** Stage7bAcceptanceTest, CI evidence,
+checklists/AI handoffs and existing Issue31/Project/Wiki. No production/database/
+migration/backup/practice changes.
+
+- [x] Preserve initialdc60e83 work/private PMP/historical artifacts; independently
+  inventory CI24 using existing ZIPs (732 member hashes, no repeat downloads).
+- [x] Review the existing test-only acknowledgement → completion → verification
+  flow; retain all earlier assertions and production safeguards.
+- [x] Focused gate13s and mandatory clean host3m58s PASS:275JVM/36suites/0 failures,
+  errors or skips;lint0errors119warnings1hint;seven validation scripts PASS.
+- [x] Ordinary-push correctionfb1d3f971ed79de09dccbdc771e1c45a09dc0a6c, remote exact;
+  dispatch full acceptance40097540179 exactly once;both jobs and quality40097530580 SUCCESS.
+- [x] Independently verify187native XML cases/185passed/0 failures/errors/2existing
+  external-fixture skips;all9Stage7B cases PASS. No locally executed instrumentation.
+- [x] Inventory262PNG/tree pairs and visually inspect all262 through33sheets plus
+  selected originals;32dashboard configs/16actual row frames/516named-focus-checked
+  occurrences. Native focus/toggle/disabled guard and actual row-open/Back PASS.
+- [x] Seeded immutable0.10.1→candidate upgrade:12personal collections equal,
+  37sessions/preferences preserved,schema8→10/integrity/foreign keys PASS;
+  temporary CI signing versus trusted local/release certificate disclosed.
+- [x] Prepare owner report and synchronize existing Issue description+checkpoint,
+  Project In Progress and English Wiki/local sources;preserve prior history.
+- [ ] Explicit owner acceptance;manual TalkBack/complete navigation/system Back/
+  keyboard/reduced motion/platform-permission revocation/real3h-reboot delivery.
+- [ ] Approved live G1–G9/G11 integration;production network/decisions stay disabled.
+
+**Verification/completion:** synthetic recovery PASS;Stage7B remains IN PROGRESS.
+Timed snapshot, existing navigation/contrast/extreme-font limitations and exact
+commands/artifact/source hashes are in [the owner report](FINAL-OWNER-REPORT.md).
+[Final independent Issue checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6384951524). No phone, other-worktree edits,
+production activation, main merge or release. The entries below are historical.
+
+---
+
+## Stage 7B recovery and final acceptance — October 24, 2026
+
+**Purpose:** resolve inaccessible Admin checkable owners and dashboard Refresh, then independently verify actual UI/data preservation. **Status: IN PROGRESS, final owner acceptance not ready.** Green CI alone is not visual acceptance.
+
+**Scope:** native AdminDashboard/Queue/Audit/Proposal/Settings, shared FilterChip/checkable focus semantics and AdminListViewport; Stage7bAcceptanceTest; evidence and English checkpoints. Existing ViewModel/repositories/navigation callbacks, database opus.db/schema10, practice timing/data and backups are unchanged. No Stage6/7A worktree changes.
+
+- [x] Recover actual initial HEAD1bb5aac, branch/status/remote/tags/releases/milestone/Issue31/Project/checkpoints; preserve private PMP and all old untracked evidence.
+- [x] Audit exact Material3 1.3.2/Compose1.9 synthetic-child semantics. Explicit named owners preserve role, selection/toggle, click, disabled guard and real FocusRequester-backed input focus; native EN/CZ assertions pass on5591e76.
+- [x] Fix async dashboard scroll synchronization and failure captures; require complete48dp actions, no-scroll≤1.3, actual locale/font. Natural labels remove ordinary1.3 ellipses and extreme-font clipping. All32dashboard+16footer5591e76 renders inspected.
+- [x] Independently inspect5591e76 CI40080892105:187 instrumentation/0 failures/0 errors/2 existing external-fixture skips; all9Stage7B cases PASS.242state pairs/243trees/419named-focus-checked occurrences and artifact digests PASS. Seeded schema8→10/all12 personal collections equal/37sessions/preferences/integrity/signing limits verified. These are bounded historical results, not proof of later source.
+- [x] Reject final visual acceptance after detailed32destination review found small2.0 list collapse (Queue60.5dp EN/12.5dp CZ; Audit0) and stale previous-route hierarchies.
+- [x] Implement finite accessibility list viewport only above1.3; preserve normal layout/anchors. Clear UiAutomation cache and require actual destination/authorized controls; add Queue/Audit row reachability and actual row-open/Back at8configs,16extra captures. Focused36s and clean host4m03s PASS275 JVM/0failures/errors/skips,lint0 errors/119warnings/1hint; seven scripts PASS.
+- [x] Publish viewport follow-updc60e8379114b44f758e0bb5184a0b6b83d7a465, remote exact; dispatch40083355927 once.
+- [ ] Verify this viewport follow-up on its exactSHA: full API36 native suite,258state pairs/fresh matching hierarchies,32dashboard configurations, actual list rows and seeded preservation.
+- [ ] Manual emulator TalkBack/full navigation/platform notification-permission revocation, approved G1–G9/G11 integration and explicit owner acceptance remain open. Production networking/decisions stay disabled; no merge/release.
+
+**Verification environment:** local Java25/SDK36 host builds; Ubuntu24.04/KVM/API36/emulator-5554/qemu guard in existing dispatch-only CI. Local emulator known SIGSEGV was not retried; no phone used. Two existing Stage4 external-provider/portrait cases lack separately acquired fixtures and remain honestly skipped. No new skips/exclusions/weakened assertions.
+
+**Completion:** Stage7B remains IN PROGRESS; current viewport follow-up runtime/visual acceptance pending. [Detailed living tasks, commands, hashes, screenshots, failures and next steps](RECOVERY-2026-10-24.md).
+
+---
+
+## Stage 7B recovery — 2026-10-24, IN PROGRESS
+
+Current purpose, scope, implementation checklist, verification and pending gates: [recovery checklist](RECOVERY-2026-10-24.md). Initial HEAD `1bb5aac`; acceptance is not complete. Earlier checkpoints below are historical.
+
+## Stage 7B coordinated acceptance continuation — 2026-10-23
+
+**Current: IN PROGRESS; owner acceptance pending.** Scope: approved remaining
+Admin visual/no-scroll/accessibility, sync/notification runtime, seeded upgrade and
+contract/session verification. Initial HEAD/remote3dc8488; prior CI40023191770 at
+3a4aac2 retained. Concrete matrix and running tasks: [OWNER-REVIEW.md](OWNER-REVIEW.md).
+
+- [x] Recover exact state/pinned contracts/criteria; private PMP and Stage6 preserved.
+- [x] Changed read-only local emulator5584 attempt: host SIGSEGV139 before ADB,
+  zero app executions/screenshots. Use existing KVM CI; no unchanged retry.
+- [x] Test-only production-screen render harness and controlled WorkManager/permission
+  checks compile. Host assembly/JVM/lint gate PASS, 275 JVM/0 failures/errors/skips; six host scripts PASS. Default app networking/decisions remain disabled.
+- [x] Source63f7e21 normal-pushed/read back; run40027522387 executing full suite.
+- [x] Upgrade job failed before boot: corrupt API36 system-image ZIP; zero upgrade
+  checks. Trusted baseline/release signer checks PASS; raw evidence retained.
+- [x] Bounded image-install preflight synthetic command harness PASS; additional
+  worker-delivery fixture source compiled/host gate PASS2m25s. Runtime pending.
+- [ ] Execute source-bound CI and immutable-v0.10.1 same-runner upgrade; inspect
+  actual Admin screenshots, document limitations and synchronize publication.
+- [ ] G1–G9/G11 approved live integration BLOCKED; explicit owner acceptance pending.
+
+This section supersedes older current-status text. Stage7A FINAL ACCEPTED; X10
+NOT FIXED/NOT VERIFIED, deferred Gould0.12. No main merge/release/production activation.
+
+---
+
+## Stage 7B Android Admin — preserved implementation and verified CI (2026-10-23)
+
+**CI recovery COMPLETE; Stage 7B acceptance remains IN PROGRESS.**
+Purpose: preserve the interrupted Android Admin work and recover reproducible
+verification. Scope: existing queue/review/conflict/audit/settings/sync, contract
+fixtures, native tests, dispatch-only CI and durable evidence. Personal Room,
+backup and practice systems have no recovery-session changes. Production Admin
+networking and decisions remain disabled.
+
+- [x] Preserve original cee9330 work in checkpoint0703cd8, with private PMP excluded.
+- [x] Publish corrected source `3a4aac27e2eb8ae70716538d86acd374cdd38077`;
+  ordinary push and exact remote SHA readback PASS.
+- [x] [Run40023191770 SUCCESS](https://github.com/stokonn/Goldberg/actions/runs/40023191770),
+  exact source binding/Ubuntu24.04/KVM/API36/emulator-5554/qemu1 verified.
+- [x] Fresh full host gate SUCCESS7m41s:275 JVM tests,0 failures/errors/skips;
+  lint0 errors/132 warnings/1 hint; six host scripts PASS,1050 EN/CZ resources.
+- [x] Full connected task SUCCESS3m38s: XML182 tests,0 failures/errors,2 existing
+  external-fixture skips; all4 Stage7bAdminRuntimeTest bodies PASS. No filters,
+  added skips or weakened assertions. Console184/XML182 discrepancy retained;
+  XML182 testcase elements are authoritative. Skip messages are empty in XML;
+  unchanged source guards require external portrait/provider files not supplied.
+- [x] Teardown removal verified in actual logcat. Same-built-APK install-r Success;
+  MainActivity cold launch Status:ok. Both smoke screenshots inspected: Home with
+  onboarding. These are not Admin/no-scroll/theme/font/accessibility acceptance.
+- [x] Artifact12532680601 ZIP integrity and remote SHA256 digest verified:
+  5c23ceb0ede9690a82934eae9fa87f75930839aa5859d85bc535bb7ac58ac525.
+  Raw logs/XML/skip details/screenshots/file hashes retained in results/ci-run-40023191770.
+- [x] Raw evidence retained byte-for-byte; narrow CRLF EOL allowance leaves normal
+  source whitespace checks active. Old-source run40015851111 is historical only.
+- [x] Issue31 dashboard/checkpoint and local handoffs/checklists synchronized;
+  umbrella OPEN / Goldberg Development Project In Progress; private PMP unchanged.
+- [ ] Admin visual/no-scroll/locale/font/accessibility, notification/WorkManager
+  runtime, seeded upgrade, approved live contract/session integration and owner
+  acceptance remain OPEN. G1–G9/G11 integration unresolved; G10 locally closed.
+
+[Final CI checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6374873953) · [Recovery record](SAFE-RECOVERY.md).
+The final docs-only checkpoint contains this evidence; its exact SHA/readback is
+recorded in Issue31 after publication. No source/runtime claim is transferred from
+3a4aac2 to another commit. Next: execute the remaining Admin fixture screenshot/
+no-scroll matrix on an explicitly identified emulator, retaining all other gates.
+Stage7A final owner acceptance and X10 deferred Gould0.12 remain unchanged; Stage8
+readability/accessibility/touch-target checks remain required. No physical device,
+main merge, release, deployment or production activation.
+
+---
+
+# Goldberg 0.11 — Stage 7B Android Admin — IMPLEMENTATION CHECKLIST
+
+**Branch:** `feature/goldberg-0.11-stage-7b` (based on Stage 7A `576f0d2`) ·
+**Started:** 2026-10-23 · **Owner authorization:** local Stage 7B Android implementation
+authorized subject to all backend/security/cloud/release gates. NOT authorization for
+production backend deployment, merge, release, or physical-device testing.
+
+**Separation of duties (2026-10-23):** another agent handles Stage 6 backend. This
+branch/worktree owns **Stage 7B Android** and the **Stage 7A X10** status tracking only (no new X10 investigation authorized in the Codex takeover).
+Do not overwrite, merge or reset the other agent's work. Verify actual API contracts
+before integration; never rely on or alter another session's uncommitted Stage 6 changes.
+
+**Non-negotiable:** Administration Dashboard fits ONE normal supported screen with NO
+vertical/horizontal scrolling. Accessible scroll fallback permitted only at extreme
+font scaling; never clip controls or shrink text to unreadable sizes.
+
+## Current Codex continuation (2026-10-23)
+
+7B.4 queue and Android-side 7B.5–7B.7 implementation are in place; host verification
+and acceptance preparation are recorded below. **No final stage acceptance** while
+screenshots/instrumentation/live contracts remain blocked. Production moderation
+writes are disabled pending the G6 dual-revision contract freeze. See
+[ACCEPTANCE.md](ACCEPTANCE.md) and the latest Codex checkpoint at the end of this file.
+Stage 6 coordination: [Issue #31 comment 6362661598](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6362661598).
+
+## Historical OpenCode checkpoint (2026-10-23) — 7B.1 ✅ · 7B.2 ✅ · 7B.3 🟧 (emulator BLOCKED) · 7B.4–7B.8 then pending
+
+- **Branch/commit:** `feature/goldberg-0.11-stage-7b`, based on Stage 7A `576f0d2`;
+  commits `49680da` (7B.1+7B.2) and this 7B.3 checkpoint (see `git log`).
+- **Done:** 7B.1 contract audit (G1/G2/G3 + owner decisions); 7B.2 foundation
+  (`admin/` package: models, contract client + transport seam, Keystore session,
+  trust policy, markers, repository) — **204 unit tests 0 failures, lint PASS,
+  5 check scripts PASS, EN/CZ 993 keys PASS, debug APK
+  SHA-256 `7fef49b1900643f4e4ec68ddd405ac493ca51a60a351c3162c83794fa2d3f19c`**;
+  7B.3 dashboard + Profile entry + stats derivation + destination routes (implemented,
+  JVM-verified).
+- **Blockers:** (1) **Host emulator is unusable — qemu SIGSEGV on every launch**
+  (3 crashes today, systemd-coredump SIGSEGV, matches upstream Google #566807521 from
+  Stage 5) ⇒ scroll-free screenshot gate, instrumentation execution and all visual
+  verification are **BLOCKED, not passed**; (2) no deployed Stage 6 backend anywhere ⇒
+  every admin screen correctly shows honest not-configured/unavailable states;
+  live-data verification awaits Stage 6 (6.0d/6.0e, not authorized).
+- **X10 (Stage 7A text alignment): UNCHANGED — still OPEN**, real-device-only,
+  not reproduced, no code shipped, no claim of resolution (see cross-cutting section).
+- **Exact next steps for a new agent:** (a) retry emulator when the host upstream
+  SIGSEGV is worked around (e.g. CI workflow like `.github/workflows/stage5-emulator.yml`,
+  a different host/AVD, or an emulator version fix) and execute the 7B.3 scroll-free
+  screenshot gate; (b) continue 7B.4 Moderation Queue (search per owner decision,
+  detail hydration, update pill, scroll/filter restoration); then 7B.5 detail +
+  decisions, 7B.6 conflict, 7B.7 audit/notifications/sync, 7B.8 verification.
+  Keep Issue #31 updated at every milestone; no release/deployment without approval.
+
+## Stage 7B.1 — Contract and readiness audit — ✅ COMPLETE
+
+- [x] Inspect Stage 6 normative contract, C6 spike, C2 BFF spike, cloud reality.
+- [x] Produce contract matrix + recorded gaps G1/G2/G3 (no invented endpoints).
+- [x] Obtain owner decisions for the two open forks (stats derivation, search bounds).
+- Evidence: [CONTRACT-AUDIT.md](CONTRACT-AUDIT.md). Owner answers 2026-10-23:
+  exact-or-unavailable stats (never partial-as-total, `/v1/admin/stats` = durable fix);
+  ID search via verified detail endpoint, deep search only if fully exhaustible within
+  safe bounds, never silently omit matches, server-side search = Stage 6 dependency.
+
+## Stage 7B.2 — Security/data foundation
+
+- [x] `admin/AdminModels.kt` — contract-shaped data classes + org.json codecs (queue
+      item, submission detail, review event, audit event, decision request/result).
+      Unknown fields tolerated; no invented fields; payload bodies passed through raw.
+- [x] `admin/AdminApi.kt` — single contract-shaped client (capabilities, queue, detail,
+      decide, audit); base URL empty by default → honest `NotConfigured` without any
+      network call; https-only/default-port/no-userinfo; bounded bodies (512 KiB);
+      no redirects; injectable `AdminTransport` seam (mirrors `bundleConnectOverride`)
+      + production `HttpsAdminTransport`.
+- [x] Error taxonomy mapping (400/401/403/404/409/422/429/503) → typed `AdminFailure`
+      results (`NotConfigured`, `InvalidEndpoint`, `Unreachable`, `Validation`,
+      `Unauthorized`, `Forbidden`, `NotFound`, `Conflict`, `RateLimited`,
+      `ServerError`, `InvalidPayload`); no partial success with hidden errors.
+- [x] `admin/AdminSessionStore.kt` — interface + `KeystoreAdminSessionStore` (AES-GCM
+      via AndroidKeyStore, ciphertext in private prefs; backup already fully excluded
+      by `allowBackup=false`; Keystore failure degrades to clear, never plaintext) +
+      in-memory fake for tests.
+- [x] `admin/AdminTrustPolicy.kt` — 10-minute NON-sliding trust window (fixed at fresh
+      grant, proven never to extend without re-grant); invalidated on logout/
+      revocation; in-memory → every process restart begins untrusted.
+- [x] `admin/AdminMarkers.kt` — account-scoped DEFERRED + RE_REVIEW markers (ids only,
+      non-sensitive); persist until confirmed non-pending server status or manual
+      removal; cleared per-account only; never bled across accounts.
+- [x] Role gate wired: `GET /v1/me/capabilities` client verified (tested); Profile →
+      Administration entry + dashboard role chip wired (server always enforces
+      regardless; entry visibility rule documented in `AdminViewModel.entryVisible`).
+- [x] Strings `stage7b_*` in both `values/strings.xml` and `values-cs/strings.xml`
+      (993 keys, EN/CZ parity + placeholder check PASS via `scripts/check_localization.py`).
+- [x] JVM tests for codecs, error mapping, trust window, markers —
+      **21 `AdminFoundationTest` cases green; full suite 195/195 green**
+      (`./gradlew testDebugUnitTest`, 2026-10-23).
+
+## Stage 7B.3 — Dashboard (scroll-free hard gate) — 🟧 IMPLEMENTED, EMULATOR GATE BLOCKED
+
+- [x] `ui/admin/AdminDashboardScreen.kt` — exactly 4 stat tiles (Pending, Needs info,
+      Approved today, Rejected today) + 3 destinations (Moderation Queue, Audit Log,
+      Admin Settings). Resume #ID = optional 2nd line INSIDE Moderation Queue row only
+      (deterministic account-scoped marker; empty while no markers exist).
+- [x] Role label (server-derived chip), section label, last-updated, manual refresh,
+      no polling; first-load placeholder is "…", never a fabricated count.
+- [x] Stats source: owner-approved exact-or-unavailable derivation (`AdminStatsService`,
+      gap G1): complete bounded walks only (≤8 queue pages + ≤8 audit pages per manual
+      refresh); incomplete walk, upstream failure or missing config ⇒ explicit
+      per-tile unavailable state with reason text; `GET /v1/admin/stats` remains the
+      durable Stage 6 fix.
+- [x] Role-gated Profile → Administration entry (`entryVisible` rule: hidden only after
+      a verified no-surface answer or explicit 403; convenience only — server enforces);
+      no extra bottom tab (`selectedTab` maps admin routes to Profile).
+- [x] Destination routes registered (`admin`, `admin/queue?filter=`, `admin/audit`,
+      `admin/settings`) with real first-pass server-backed Queue/Audit/Settings
+      screens so deep links resolve end-to-end; their full stage requirements
+      continue in 7B.4/7B.7/7B.8.
+- [ ] **Scroll-free on normal supported screens (HARD GATE — NOT VERIFIED):** requires
+      emulator screenshots (small + standard sizes, both themes, normal font scale).
+      **BLOCKED 2026-10-23:** every emulator launch on this host dies with qemu
+      SIGSEGV (see Verification below). Implementation uses a fixed-height layout
+      with bottom-anchored footer and no `verticalScroll` at font scale ≤1.3
+      (`SCROLL_FALLBACK_FONT_SCALE`), but this is a code-level property only — the
+      visual gate is NOT passed until screenshots exist.
+
+### 7B.3 verification (executed 2026-10-23, host only)
+
+| Check | Result |
+|---|---|
+| `./gradlew testDebugUnitTest` | **PASS — 204 tests, 0 failures, 0 errors** (25 `AdminFoundationTest` + 6 `AdminStatsTest` incl. partial-walk-never-total, not-configured, per-tile failure mapping, contract-only query params, trust-window semantics, marker scoping) |
+| `./gradlew lintDebug` | **PASS** (no fatal findings) |
+| `./gradlew assembleDebug` | **PASS** — `app/build/outputs/apk/debug/app-debug.apk`, SHA-256 `7fef49b1900643f4e4ec68ddd405ac493ca51a60a351c3162c83794fa2d3f19c` (0 source files newer than APK) |
+| `./gradlew assembleDebugAndroidTest` | **PASS — instrumentation COMPILED only, NOT executed** |
+| `scripts/check_*.py` (5 scripts) | **PASS** all |
+| EN/CZ parity | **PASS — 993 keys**, matching placeholders |
+| Emulator screenshots / instrumentation | **BLOCKED — not executed** (host emulator SIGSEGV) |
+| Visual comparison vs `docs/design/stage-7b/` mockups | **BLOCKED** (needs screenshots) |
+
+**Emulator blocker evidence (2026-10-23):** bounded recovery performed — adb server
+restarted (`kill-server`/`start-server`, daemon healthy, 0 devices), `adb connect
+127.0.0.1:5555/5557` → connection refused (qemu dead), startup logs inspected.
+Three launch attempts (Medium_Phone_API_37.0 ×2 — one GUI-capable, one headless
+`-no-window -gpu swiftshader_indirect`; stage5-api36 ×1 headless swiftshader with
+`-no-snapshot`) all died during early boot; systemd-coredump records **SIGSEGV in
+`qemu-system-x86_64`** for PIDs 1187010 (08:42:06), 1256430 (08:43:35) and
+1321999 (08:56:40 CEST), plus one on 2026-10-22 23:35 — 39 historical qemu coredumps
+on this host. Consistent with the upstream emulator SIGSEGV already recorded in the
+Stage 5 STATE.md (Google Issue #566807521). A first-run crash-consent dialog was also
+suspected of blocking boot; clearing the crash-report cache did not prevent the
+subsequent SIGSEGV. **No AVD data was wiped; no physical device was used.**
+
+## Stage 7B.4 — Moderation Queue — HOST-VERIFIED; RENDERED ACCEPTANCE PENDING
+
+- [x] Compact server-backed rows hydrated via verified detail endpoint; honest ID-only fallback.
+- [x] All/Pending/Needs info + personal Re-review/Deferred filters and row labels.
+- [x] Debounced ID search; exhaustive bounded title/composer/type scan or explicit
+  server-search-required state. No silent partial search matches.
+- [x] Cursor paging/dedup/retry, stable server order and repeated-cursor bounds.
+- [x] Opportunistic update pill, including revision/status/removal changes;
+  failed/partial apply preserves rows and pill; no polling.
+- [x] Collapsed Deferred section, account-scoped markers and query/filter/scroll
+  preservation on detail navigation. Original incomplete service continued in place.
+- [ ] Actual rendered interactions, foreground/account lifecycle and full backend
+  integration: BLOCKED/UNEXECUTED. Host tests do not pass visual acceptance.
+
+## Stage 7B.5 — Proposal detail + decisions — FIXTURE-VERIFIED; LIVE CONTRACT BLOCKED
+
+- [x] Read-only proposed fields, supplied revision/request timeline and full nested
+  evidence/source/license/note content. Never label a prior proposal as current catalogue.
+- [x] Contextual Approve/Reject/Request Changes confirmations; required reject/request
+  text; fresh role + revision checks; matching atomic response required for success.
+- [x] Same-key/body explicit replay on uncertain outcomes; pending action blocks a new
+  decision/proposal. Smart next only after confirmed success (fixture tests only).
+- [ ] Actual before/after catalogue comparison: G4 lacks verified current values.
+- [ ] Live decisions/session integration: G5/G6 BLOCKED. Production writes explicitly
+  disabled; no invented dual-revision mapping/open endpoint.
+- [ ] Rendered detail/confirmations and live server acceptance (emulator/backend blocked).
+
+## Stage 7B.6 — Conflict recovery — HOST IMPLEMENTATION; VISUAL/INTEGRATION PENDING
+
+- [x] Entry/foreground/pre-confirm validation; stale revision/status invalidates
+  confirmation. Background lock invalidates in-flight verification; no automatic resubmit.
+- [x] Prior reviewed proposal retained in memory, all supplied intermediate snapshots,
+  missing-history warning and acknowledgement tied to the latest verified revision.
+- [x] Stability advisory after three conflicts; account/revocation clearing and
+  cancellation/idempotency regressions pass on JVM fixtures.
+- [x] Field-level old/new proposal diff, including additions/removals and evidence-only
+  changes; old value struck through, current value and updated evidence shown.
+- [ ] Rendered diff/catch-up/accessibility and equivalence to mockup 07 require
+  emulator verification; not accepted from host compilation alone.
+- [ ] Live atomic dual-revision conflict proof: G6 BLOCKED.
+
+## Stage 7B.7 — Audit / notifications / sync — HOST IMPLEMENTATION; RUNTIME PENDING
+
+- [x] Role-scoped immutable audit projection, chronological paging/dedup, fetched-page
+  search/My actions/Moderation filters and today-specific dashboard shortcuts.
+- [x] Separate notification/background opt-ins OFF; approximate 3h WorkManager;
+  unmetered Wi-Fi default, explicit mobile/metered confirmation and platform permission.
+- [x] Complete bounded queue digest only; no notification from failed/partial walks,
+  generic private notification, role checks around scans, scope/account/logout guards.
+- [x] No privileged APK credentials, no persisted sensitive review drafts, no offline
+  decision queue; role trust uses monotonic fixed 10-minute windows.
+- [ ] WorkManager/notification/permission/network/reboot execution and live audit
+  integration are UNEXECUTED; host policy tests are not runtime acceptance.
+
+## Stage 7B.8 — Verification and owner acceptance
+
+- [x] Build + JVM tests + lint + `scripts/check_*.py` — final Codex checkpoint below.
+- [ ] Emulator screenshots of Dashboard/Queue/Detail/Confirmations/Re-review/Audit/
+      Settings vs mockups; accessibility, insets, dynamic type, dark/light, targets.
+- [ ] Regression: Profile, Repertoire, Practice, existing data + upgrade unaffected.
+- [ ] Dashboard scroll-free gate re-verified.
+- [ ] Owner acceptance (separate gate; not claimed by implementation).
+
+---
+
+## Cross-cutting: Stage 7A X10 (text alignment, real-device) — 🚧 INVESTIGATED, BLOCKED ON VERIFICATION
+
+- [x] Locate original X10 report (Stage 7A CHECKPOINT 7A.16/7A.17 + UI-ACCEPTANCE-MATRIX
+      X10 + Issue #31). **Reported symptom:** inconsistent text alignment on the owner's
+      **physical Samsung device** after round 3.
+- [x] Attempt reproduction. **RESULT: cannot reproduce on emulator** — documented, not a
+      shortcut: round-3 checkpoint `d7c0aef` and acceptance entry 7A.17 both record that
+      emulator renders cannot reproduce/close this real-device difference; it appears
+      only under Samsung font metrics. Agent is also forbidden from the owner's phone.
+- [ ] **BLOCKED:** the mandated "verify fix with emulator screenshots" step is not
+      achievable for a real-device-only defect on any permitted device. Making an
+      unverified speculative change to shared global typography would risk regressing
+      every screen and could not be honestly claimed as a fix.
+- Candidate root cause to CONFIRM with the owner (not yet changed): Samsung One UI
+  substitutes its own system sans/serif and applies a per-app "Font size / Display"
+  scale that Compose maps partly to fontPadding and line-height; the round-3
+  `includeFontPadding=false` fix assumed AOSP line metrics. If the residual X10 is
+  line-height vs Samsung-font ascent/descent mismatch, the smallest safe fix is a
+  per-style `lineHeight`/`baseline` trim — but this REQUIRES a real-device render to
+  confirm and cannot be validated on emulator.
+- **X10 stays OPEN.** Two unblock paths for the owner: perform the Samsung capture/check themselves and report the result. Agents must
+  not operate the physical device; any targeted fix requires its own authorization. No change shipped; no claim of resolution.
+
+---
+
+created by stokonn with love <3
+
+## Codex takeover checkpoint — 2026-10-23 (7B.4 host milestone)
+
+Recovered `cee9330` on `feature/goldberg-0.11-stage-7b`; only pre-existing
+uncommitted file was `AdminQueueService.kt`. Its original bytes are retained at
+`/tmp/goldberg-7b-AdminQueueService-opencode.kt`. No Stage 6 tree changed.
+
+- [x] Wire retained queue service, debounced search, all five filters, collapsed
+  Deferred section, scroll/filter/query context and manual update action.
+- [x] Remove obsolete FULL_DEPTH documentation; every walk is bounded (8 pages,
+  20 display hydrations, 8 unknown-marker hydrations). Larger queue/search limitation
+  is visible; no extra server parameters.
+- [x] Fix duplicate IDs within/across pages, update baselines (unloaded rows are not
+  new), revision/status/removal detection, repeated cursors and failed/partial
+  refresh preserving existing rows + pending pill. Explicit ID lookup via detail.
+- [x] `:app:compileDebugKotlin :app:testDebugUnitTest --no-daemon --max-workers=1`
+  PASS (34 s); all 12 new AdminQueueTest cases PASS. Existing baseline also PASS.
+  Gradle requires sandbox escalation for local socket creation; initial sandboxed
+  attempt failed before compilation (wildcard IP), not an application failure.
+- [ ] Queue rendered UI, lifecycle/account revocation stress and live backend checks
+  still pending; emulator blocker unchanged. Stage 7B.4 not finally accepted.
+
+Next: implement/test detail/decisions and conflict recovery, then audit/consent-safe
+sync and acceptance preparation. No production deploy, physical device, merge or
+release. Stage 7A X10 stays OPEN.
+
+## Codex verified milestone and handoff — 2026-10-23
+
+**Branch:** `feature/goldberg-0.11-stage-7b`; **HEAD:** `cee9330f82cf2e57dcdc66a63d94b7a4e3749888` +
+uncommitted continuation. No commit/push, merge, release or deployment. Stage 6
+working trees untouched; only immutable committed objects inspected. Original
+OpenCode untracked service preserved at
+`/home/stokonn/.cache/goldberg-stage7b/AdminQueueService-opencode-2026-10-23.kt`,
+SHA-256 `83b2ac4ee50cf1d6ce917ea54103a5e6bf0e89f2603875fbc4bee3877ce5f2d0`.
+
+**Implementation:** queue service recovered/wired and corrected; proposal fields,
+evidence and history; explicit moderation confirmations and same-key uncertain
+replay; role/revision/background guards; guided field-level re-review including
+source-only changes; chronological audit; opt-in consent-safe WorkManager/local
+notifications. Admin dark sans surface is scoped to Admin, with 4 tiles + 3
+Dashboard destinations and no normal-scale scroll implementation. Personal Room
+schemas, backup formats, journal and practice code unchanged.
+
+**Executed final source verification:**
+
+- `./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1`
+  **BUILD SUCCESSFUL, 2m41s**, 83 tasks (31 executed, 52 up-to-date).
+- **251 JVM tests / 0 failures / 0 errors / 0 skipped**; 47 new cases:
+  Queue 12, Review 26, Audit/Sync 9. Full report XMLs retained.
+- Lint **0 fatal/errors, 132 warnings** (plus a state-boxing hint); Admin warnings
+  are SharedPreferences KTX suggestions, not suppressed. Prior overlapping lint
+  runs produced an empty incremental report; the final explicit report above
+  supersedes them. No clean-warning claim.
+- Five `scripts/check_*.py` **PASS**: policy, backup fixtures, history paging,
+  localization (**1050 EN/CZ resources**) and migrations v1–9→10 DDL.
+- `git diff --check` PASS. Source hashes retained; **0 source files newer than APK**.
+- APK: `app/build/outputs/apk/debug/app-debug.apk`, **24,140,673 bytes**, SHA-256
+  `d23a98b25dc5da8069a04d629d04408bf2135929872ef624c803910d0c03f8c6`. Package `com.opus.piano`, unchanged version **0.10.1/code 11**;
+  this is a development artifact, not a published 0.11 release. Signature verified:
+  `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`.
+- Instrumentation **compiled only; NOT executed**. No actual UI screenshots,
+  accessibility/TalkBack, WorkManager runtime or seeded upgrade executed here.
+  All 11 supplied reference images were inspected; they are not runtime evidence.
+- Intermediate compile failures (missing localized Cancel key, recursive type
+  inference at principal scope) are preserved in results; fixed before final pass.
+
+**Blockers / not accepted:** 7B.3 screenshot/no-scroll and all rendered UI checks
+remain **BLOCKED** by the retained emulator SIGSEGV (no new boot attempts).
+7A X10 remains **OPEN**. G1/G2/G3 server queries, G4 catalogue before-values,
+G5 live session and **G6 dual entity/submission revision HTTP contract** remain
+Stage 6 dependencies. Production decisions are **disabled by default and explicitly
+in OpusApplication**; C6 fixture tests are not a backend integration pass. The
+current Stage 6 local candidate at `2f1524e` is not a frozen/deployed HTTP API.
+
+**Tracking:** Issue #31 remains OPEN; Goldberg Development Project status read back
+**In Progress**. Queue milestone [6362355770](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6362355770);
+Stage 6 coordination [6362661598](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6362661598).
+Connector writes returned 403; existing authenticated `gh` used successfully.
+
+**Exact next steps:** read CONTRACT-AUDIT and ACCEPTANCE; agree shared Stage 6
+session/capability/queue/detail/open/dual-revision/audit fixtures, adapt the single
+Android facade, then obtain an allowed emulator venue and execute every unchecked
+visual/runtime/upgrade gate. Never enable production decisions by guessing a wire
+mapping, operate a physical phone, or edit Stage 6's worktree. Owner acceptance,
+merge and release remain separate gates. Preserve all uncommitted continuation.
+
+Evidence: [results/codex-2026-10-23](results/codex-2026-10-23/), including source
+manifest, test XMLs, final log, actual lint XML, signing/badging and artifact identity.
+
+Final GitHub checkpoint read back and dashboard synchronized: [6362810877](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6362810877). Issue OPEN, Project In Progress; all historical comments retained.
+
+
+## Stage 7B contract preparation — recovered verified checkpoint (2026-10-23)
+
+**Current status: local preparation verified; Stage 7B acceptance remains IN PROGRESS / BLOCKED.**
+Branch `feature/goldberg-0.11-stage-7b`, HEAD `cee9330f82cf2e57dcdc66a63d94b7a4e3749888`
+plus preserved uncommitted continuation. No application code was changed by this
+recovery session. Stage 6 trees untouched; no commit/push, merge, release or deploy.
+`.pmp/` and `.pmp.yml` remain private/untracked. This entry supersedes older current-status
+summaries below; historical checkpoints and earlier counts remain audit history.
+
+**Purpose/scope:** finish the interrupted API contract integration preparation by
+recovering source/evidence, retaining supported Android safety changes, and making
+contract decisions explicit without inventing or activating a backend mapping.
+
+- [x] Read policy, PMP sequence-3 audit checkpoint, AI handoffs, Stage 7B checklist /
+  acceptance, latest Issue #31 comments, branch/status/diffs and existing evidence.
+- [x] Recover immutable `bcc7796` audit and `faf9ba3` comparison; 29 synthetic cases
+  and 15 pinned hashes. Normative design, legacy C6, local candidate and inactive
+  mapping proposal stay separate. No Stage 6 backend tests executed here.
+- [x] Retain already implemented application-disabled transport even with a saved
+  endpoint/token; independent decision disable; strict capability principal/string
+  validation, exact legacy Int revisions and Long audit sequences, cursor type
+  rejection, typed malformed-payload errors. No candidate dialect adapter enabled.
+- [x] Preserve recovered successful Gradle outputs: 36 suites / **275 JVM tests,
+  0 failures/errors/skips**, including **24 AdminContractIntegrationTest cases**.
+  `./gradlew testDebugUnitTest assembleDebug assembleDebugAndroidTest lintDebug
+  --no-daemon --max-workers=1` completed in 2m26s; retained follow-up 13s pass.
+  These are **prior-session executions inspected now**, not new JVM executions.
+  Initial two capability-test failures remain preserved and are superseded by
+  the passing reports after their pre-interruption fix.
+- [x] Lint recovered: **0 errors/fatal, 132 warnings, 1 hint**. Instrumentation APK
+  compiled/assembled only; **0 instrumentation bodies executed**.
+- [x] Recovery session executed all six host scripts: contract fixtures/provenance,
+  agent policy, backup formats 1–3, history paging, localization (1050 EN/CZ), and
+  migrations v1–9→10 DDL; all PASS. `git diff --check` PASS.
+- [x] Recovery session verified APK signing, badging, ZIP integrity and exclusion of
+  test corpus. APK `app/build/outputs/apk/debug/app-debug.apk`, 24,140,673 bytes,
+  SHA-256 `6976d76e9bd936cd5b45e26f1910f86c3105863a8fe2bbf6f1269aaafc7e269b`;
+  `com.opus.piano`, development version **0.10.1/code 11**; trusted signer
+  `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`.
+  No application source file newer than APK; test-only corpus files are newer.
+  Source manifest reconstructed on recovery, not contemporaneous build/CI proof.
+- [x] Recover bounded emulator investigation: read-only `stage5-api36`, explicit
+  intended serial `emulator-5582`, no snapshot/wipe; **SIGSEGV / exit -11 after
+  21.68s**. This is host setup failure, not application evidence. No new launch,
+  ADB operation or physical device use in recovery; no screenshots inspected.
+- [ ] Stage 6/owner contract approval and actual Android/backend integration.
+- [ ] Functioning permitted emulator; rendered/no-scroll screenshots, accessibility,
+  WorkManager/notification runtime, seeded upgrade and owner acceptance.
+
+**Unresolved G1–G6:** G1 server stats; G2 server queue search/display labels;
+G3 audit server filtering/search; G4 verified current catalogue before-values;
+G5 live credential/session/principal lifecycle; G6 explicit open + two revision
+expectations and result/conflict/replay HTTP semantics. All remain OPEN. Existing
+bounded exact-or-unavailable/client-side fallbacks do not close server gaps.
+Additional G7 public DTO/cursor/HTTP binding, G8 numeric representation, G9 audit
+vocabulary/time windows and G11 validation/reason/license policy remain OPEN.
+**G10 local Android production networking boundary is closed**; this is no backend
+approval. Production networking and moderation decisions remain DISABLED. X10 OPEN.
+Personal database/schema/backup/practice data unchanged.
+
+**Next milestone:** obtain explicit approval of versioned shared public
+session/capability/queue/detail/open/dual-revision/audit/error/validation fixtures;
+then implement one approved adapter and run isolated integration tests. Obtain a
+working allowed emulator venue before executing the remaining acceptance matrix.
+Do not select a dialect heuristically, default missing expectations, revive
+networking from an endpoint setting or retry the known crashing emulator unchanged.
+
+Evidence: `docs/planning/goldberg-0.11/stage-7/stage-7b/results/contract-preparation-2026-10-23/`
+(recovered raw logs/XML, failure history, emulator diagnostics, source hashes,
+artifact identity and recovery host checks). [Recovery Issue checkpoint](https://github.com/stokonn/Goldberg/issues/31#issuecomment-6368949572). Final PMP checkpoint is read through
+`pmp resume` / `pmp history`; native PMP test-count evidence is not fabricated from
+recovered JUnit outputs. Issue #31 remains OPEN; Project remains In Progress.
+
+</details>

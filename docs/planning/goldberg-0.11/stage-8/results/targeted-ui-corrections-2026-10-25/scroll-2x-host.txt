@@ -1,0 +1,2 @@
+cs-dark-2p0-small-navhost {'pid': 16708, 'uptime': 1131587, 'locale': 'cs', 'fontScale': 2, 'densityDpi': 320, 'screenWidthDp': 360, 'screenHeightDp': 640, 'profileTheme': 'Dark', 'touchExploration': 0, 'animatorScale': 1, 'transitionScale': 1, 'windowScale': 1, 'notificationGranted': False, 'activeNotificationIds': [], 'lightStatusBars': False, 'lightNavigationBars': False, 'systemNight': 32, 'scaffold': False, 'imeVisible': False, 'imeBottom': 0}
+PASS:full lower Switch row reachable above all5tabs after scroll

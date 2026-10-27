@@ -1,0 +1,525 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuites tests="187" failures="1" errors="0" skipped="2" time="361.995" timestamp="2026-10-24T10:01:17" hostname="localhost">
+  <testsuite name="com.opus.piano.AppLanguageTest" tests="1" failures="0" errors="0" skipped="0" time="12.796" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="languageOverrideUsesAppCompatAndCanReturnToSystem" classname="com.opus.piano.AppLanguageTest" time="12.796" />
+  </testsuite>
+  <testsuite name="com.opus.piano.CatalogDatabaseTest" tests="2" failures="0" errors="0" skipped="0" time="2.667" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="migrationPreservesVersionOneRepertoireAndSessions" classname="com.opus.piano.CatalogDatabaseTest" time="1.657" />
+    <testcase name="importsAreIdempotentAndSameTitlesFromDifferentComposersStayDistinct" classname="com.opus.piano.CatalogDatabaseTest" time="1.01" />
+  </testsuite>
+  <testsuite name="com.opus.piano.DatabaseTest" tests="1" failures="0" errors="0" skipped="0" time="0.507" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="repertoireCrudAndHistorySurviveReopening" classname="com.opus.piano.DatabaseTest" time="0.507" />
+  </testsuite>
+  <testsuite name="com.opus.piano.DiscoverNavigationTest" tests="1" failures="0" errors="0" skipped="0" time="9.808" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="realDiscoverEntryRetainsTransientQueryAcrossDetailAndBack" classname="com.opus.piano.DiscoverNavigationTest" time="9.808" />
+  </testsuite>
+  <testsuite name="com.opus.piano.ExperiencePersistenceTest" tests="2" failures="0" errors="0" skipped="0" time="2.004" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="savedInterpretationsRetainDatesAndPreferenceAndSupportEditsAndRemoval" classname="com.opus.piano.ExperiencePersistenceTest" time="0.846" />
+    <testcase name="upgradeFromV2RetainsCatalogueHistoryAndFirstVerifiedUnlockAcrossRestart" classname="com.opus.piano.ExperiencePersistenceTest" time="1.158" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Goldberg08MigrationTest" tests="1" failures="0" errors="0" skipped="0" time="0.731" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="schemaFiveMigrationKeepsHistoryAndSkipsOnboarding" classname="com.opus.piano.Goldberg08MigrationTest" time="0.731" />
+  </testsuite>
+  <testsuite name="com.opus.piano.GoldbergPersistenceTest" tests="2" failures="0" errors="0" skipped="0" time="4.1" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="multiplePiecesReopenAndBackupRestoreIntoExistingJournalIsIdempotent" classname="com.opus.piano.GoldbergPersistenceTest" time="3.795" />
+    <testcase name="opus05UpgradePreservesIdsNotesHistoryUnlocksAndLinks" classname="com.opus.piano.GoldbergPersistenceTest" time="0.305" />
+  </testsuite>
+  <testsuite name="com.opus.piano.GoogleIdentityPersistenceTest" tests="2" failures="0" errors="0" skipped="0" time="0.283" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="manualAvatarChoiceSurvivesIdentityRepositoryRestart" classname="com.opus.piano.GoogleIdentityPersistenceTest" time="0.027" />
+    <testcase name="googleAvatarDecodePreservesSmallImagesAndBoundsLargeImages" classname="com.opus.piano.GoogleIdentityPersistenceTest" time="0.256" />
+  </testsuite>
+  <testsuite name="com.opus.piano.NavigationRegressionTest" tests="2" failures="0" errors="0" skipped="0" time="15.754" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="searchProfileSettingsAndRepeatedTabSwitchesKeepBackStackCorrect" classname="com.opus.piano.NavigationRegressionTest" time="7.473" />
+    <testcase name="homeOverviewKeepsProfileSettingsAndSearchBackStacksCorrect" classname="com.opus.piano.NavigationRegressionTest" time="8.281" />
+  </testsuite>
+  <testsuite name="com.opus.piano.PracticeCoordinatorTest" tests="3" failures="0" errors="0" skipped="0" time="0.61" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="obsoleteCaptureCannotInterruptAResumedManualSession" classname="com.opus.piano.PracticeCoordinatorTest" time="0.152" />
+    <testcase name="failedRestoreKeepsThePausedDraft" classname="com.opus.piano.PracticeCoordinatorTest" time="0.052" />
+    <testcase name="reconnectingObserversNeverStartsOrDuplicatesTime" classname="com.opus.piano.PracticeCoordinatorTest" time="0.406" />
+  </testsuite>
+  <testsuite name="com.opus.piano.PracticeRecoveryTest" tests="2" failures="0" errors="0" skipped="0" time="1.113" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="oldBackupImportsAndDeviceStateDoesNotTravel" classname="com.opus.piano.PracticeRecoveryTest" time="0.556" />
+    <testcase name="durableDraftCompletesOnceAndRoundTripsNewBackup" classname="com.opus.piano.PracticeRecoveryTest" time="0.557" />
+  </testsuite>
+  <testsuite name="com.opus.piano.PracticeServicePolicyTest" tests="2" failures="0" errors="0" skipped="0" time="0.057" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="staleNotificationActionsNeverStartRecording" classname="com.opus.piano.PracticeServicePolicyTest" time="0.055" />
+    <testcase name="serviceIsPrivateAndApplicationContextCannotStartMicrophone" classname="com.opus.piano.PracticeServicePolicyTest" time="0.002" />
+  </testsuite>
+  <testsuite name="com.opus.piano.ProfileCompatibilityTest" tests="1" failures="0" errors="0" skipped="0" time="0.83" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="restore060FormatIntoExistingJournalAndKeepProfileAcrossThemeChanges" classname="com.opus.piano.ProfileCompatibilityTest" time="0.83" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Quality092PersistenceTest" tests="4" failures="0" errors="0" skipped="0" time="0.488" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="mediaConsentCacheOfflineFailureAndRevocationAreEnforced" classname="com.opus.piano.Quality092PersistenceTest" time="0.027" />
+    <testcase name="dailyQuoteRequestsOnceAndOfflineFallbackSurvivesRestart" classname="com.opus.piano.Quality092PersistenceTest" time="0.002" />
+    <testcase name="personalizationAndOriginalRecoveryArchiveRoundTripWithoutTouchingJournal" classname="com.opus.piano.Quality092PersistenceTest" time="0.179" />
+    <testcase name="formatTwoSchemaSixBackupKeepsAllOriginalFieldsAndAddsSafeDefaults" classname="com.opus.piano.Quality092PersistenceTest" time="0.28" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Redesign010PersistenceTest" tests="5" failures="0" errors="0" skipped="0" time="1.57" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="legacyRecordAndNotesSurviveAssociationAndBackupRoundTrip" classname="com.opus.piano.Redesign010PersistenceTest" time="0.353" />
+    <testcase name="missingOrAlreadyMeasuredPieceCannotBecomeAnotherCredit" classname="com.opus.piano.Redesign010PersistenceTest" time="0.027" />
+    <testcase name="schemaSevenMigrationPreservesEveryFixtureFieldAndUnfinishedDraft" classname="com.opus.piano.Redesign010PersistenceTest" time="0.584" />
+    <testcase name="omittedPieceIsIdempotentUntimedAndDoesNotChangeOriginalJournal" classname="com.opus.piano.Redesign010PersistenceTest" time="0.127" />
+    <testcase name="favoritesRemainIndependentOfFeaturedArtistAndSurviveBackup" classname="com.opus.piano.Redesign010PersistenceTest" time="0.479" />
+  </testsuite>
+  <testsuite name="com.opus.piano.RedesignPersistenceTest" tests="2" failures="0" errors="0" skipped="0" time="0.078" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="appearancePersistsAndResetNeverTouchesPersonalDatabase" classname="com.opus.piano.RedesignPersistenceTest" time="0.077" />
+    <testcase name="czechPluralResourcesAndEnglishFallbackAreRealAndroidResources" classname="com.opus.piano.RedesignPersistenceTest" time="0.001" />
+  </testsuite>
+  <testsuite name="com.opus.piano.RepertoireSearchPrivacyTest" tests="1" failures="0" errors="0" skipped="0" time="0.931" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="privateSavedFilteringAndClearingNeverCallsHttpOrChangesOnlineQueryState" classname="com.opus.piano.RepertoireSearchPrivacyTest" time="0.931" />
+  </testsuite>
+  <testsuite name="com.opus.piano.SmartCachePersistenceTest" tests="4" failures="0" errors="0" skipped="0" time="1.338" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="freshCatalogueAvoidsRequestsAndExpiredCatalogueRemainsAvailableOffline" classname="com.opus.piano.SmartCachePersistenceTest" time="0.08" />
+    <testcase name="clearingDownloadsPreservesJournalCatalogueUnlocksAndPreferences" classname="com.opus.piano.SmartCachePersistenceTest" time="0.453" />
+    <testcase name="schemaFourBackupGainsDefaultsAndKeepsExistingShowcaseAndDates" classname="com.opus.piano.SmartCachePersistenceTest" time="0.352" />
+    <testcase name="upgradeActualSchemaFourAndReopenWithoutLosingProfileOrHistory" classname="com.opus.piano.SmartCachePersistenceTest" time="0.453" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage3aBackupTest" tests="2" failures="0" errors="0" skipped="0" time="9.716" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="legacyRestorePreservesUnfinishedRecoveryWithoutChangingBytes" classname="com.opus.piano.Stage3aBackupTest" time="0.784" />
+    <testcase name="historicalReadersAndV4WriterKeepFieldsAndNoStaleLocalAnchors" classname="com.opus.piano.Stage3aBackupTest" time="8.932" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage3aCatalogueTest" tests="5" failures="0" errors="0" skipped="0" time="5.236" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="catalogueFailureDeletionRebuildAndJournalOffline" classname="com.opus.piano.Stage3aCatalogueTest" time="1.823" />
+    <testcase name="interruptedCopyAndRepeatedInitialization" classname="com.opus.piano.Stage3aCatalogueTest" time="2.65" />
+    <testcase name="authoredMultiGenreFixtureAndTypedRelationships" classname="com.opus.piano.Stage3aCatalogueTest" time="0.456" />
+    <testcase name="reversibleEvidenceMappingAndRedirects" classname="com.opus.piano.Stage3aCatalogueTest" time="0.154" />
+    <testcase name="provenanceAndRightsDefaultDeny" classname="com.opus.piano.Stage3aCatalogueTest" time="0.153" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage3aMigrationTest" tests="10" failures="0" errors="0" skipped="0" time="3.264" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="schema9PreservesExistingUuidRegistryAndSeedsCompletionEvidence" classname="com.opus.piano.Stage3aMigrationTest" time="0.682" />
+    <testcase name="failureRollsBackPersonalMigration" classname="com.opus.piano.Stage3aMigrationTest" time="0.934" />
+    <testcase name="schema1" classname="com.opus.piano.Stage3aMigrationTest" time="0.204" />
+    <testcase name="schema2" classname="com.opus.piano.Stage3aMigrationTest" time="0.128" />
+    <testcase name="schema3" classname="com.opus.piano.Stage3aMigrationTest" time="0.177" />
+    <testcase name="schema4" classname="com.opus.piano.Stage3aMigrationTest" time="0.228" />
+    <testcase name="schema5" classname="com.opus.piano.Stage3aMigrationTest" time="0.203" />
+    <testcase name="schema6" classname="com.opus.piano.Stage3aMigrationTest" time="0.202" />
+    <testcase name="schema7" classname="com.opus.piano.Stage3aMigrationTest" time="0.228" />
+    <testcase name="schema8" classname="com.opus.piano.Stage3aMigrationTest" time="0.278" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage3aPerformanceTest" tests="1" failures="0" errors="0" skipped="0" time="8.461" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="boundedQueriesAndJournalPriorityUnderCatalogueLoad" classname="com.opus.piano.Stage3aPerformanceTest" time="8.461" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage3bBackupTest" tests="19" failures="0" errors="0" skipped="0" time="15.802" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="minimalAndRepeatedRestoreWorkWithoutCatalogueOrAccount" classname="com.opus.piano.Stage3bBackupTest" time="0.478" />
+    <testcase name="unstartedNotesAndSelectionRecoverWithoutInventingPracticeCredit" classname="com.opus.piano.Stage3bBackupTest" time="0.151" />
+    <testcase name="duplicateCompletionCannotRemoveAnUnrelatedActiveDraft" classname="com.opus.piano.Stage3bBackupTest" time="0.101" />
+    <testcase name="destinationIdentityEvidenceSurvivesEvenWithoutDraftsOrArchives" classname="com.opus.piano.Stage3bBackupTest" time="0.127" />
+    <testcase name="restoredForeignScopeRebuildsCatalogueAndKeepsCanonicalIds" classname="com.opus.piano.Stage3bBackupTest" time="0.202" />
+    <testcase name="malformedDraftTimingIsPreservedRatherThanInvented" classname="com.opus.piano.Stage3bBackupTest" time="0.829" />
+    <testcase name="validDraftRegeneratesExecutionOnlyAndCompletesExactlyOnce" classname="com.opus.piano.Stage3bBackupTest" time="0.202" />
+    <testcase name="freshRestoreCannotReuseDeletedOwnerIdsAndAdoptTheirUuid" classname="com.opus.piano.Stage3bBackupTest" time="0.102" />
+    <testcase name="coordinatorReplacementCannotClearTheImportedDraft" classname="com.opus.piano.Stage3bBackupTest" time="0.102" />
+    <testcase name="exportIsAtomicOnLowSpaceAndInterruptedWritesAndInputIsBounded" classname="com.opus.piano.Stage3bBackupTest" time="0.227" />
+    <testcase name="unreadableBinaryDraftCanBeExportedAndArchivedWithoutRepair" classname="com.opus.piano.Stage3bBackupTest" time="0.102" />
+    <testcase name="measuredJournalAndLargeRawEvidenceRoundTripWithoutCursorTruncation" classname="com.opus.piano.Stage3bBackupTest" time="10.987" />
+    <testcase name="historicalOneThroughFourRemainReadableAndRetainOriginalFields" classname="com.opus.piano.Stage3bBackupTest" time="0.603" />
+    <testcase name="destinationDraftArchivesAndIdentityContextSurviveReplacement" classname="com.opus.piano.Stage3bBackupTest" time="0.101" />
+    <testcase name="failureBeforeCommitLeavesDestinationIntactAndAfterCommitReplaysIdempotently" classname="com.opus.piano.Stage3bBackupTest" time="0.83" />
+    <testcase name="fullV5PreservesIdentitiesJournalRawArchivesAndAllowlistedPreferences" classname="com.opus.piano.Stage3bBackupTest" time="0.152" />
+    <testcase name="conflictingEvidenceIdsKeepBothPayloads" classname="com.opus.piano.Stage3bBackupTest" time="0.102" />
+    <testcase name="conflictingTokenRetainsBothRecordsAndBlocksAutomaticCredit" classname="com.opus.piano.Stage3bBackupTest" time="0.127" />
+    <testcase name="badHashesSectionsReferencesEnumsAndVersionsRejectBeforeReplacement" classname="com.opus.piano.Stage3bBackupTest" time="0.277" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage3bProcessDeathTest" tests="2" failures="0" errors="0" skipped="0" time="0.002" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="verifyAfterActualProcessDeath" classname="com.opus.piano.Stage3bProcessDeathTest" time="0.001" />
+    <testcase name="prepareActualProcessDeath" classname="com.opus.piano.Stage3bProcessDeathTest" time="0.001" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4CatalogueTest" tests="7" failures="0" errors="0" skipped="0" time="0.357" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="providerPartialSuccessAndJsonOverloadRemainIndependent" classname="com.opus.piano.Stage4CatalogueTest" time="0.101" />
+    <testcase name="repeatedProviderImportKeepsIdentityAndContradictionsWithoutPersonalWrites" classname="com.opus.piano.Stage4CatalogueTest" time="0.026" />
+    <testcase name="explicitCrossIdEvidenceReconcilesButNamesDoNot" classname="com.opus.piano.Stage4CatalogueTest" time="0.051" />
+    <testcase name="hostileJsonDepthDuplicateKeysAndOversizeRejected" classname="com.opus.piano.Stage4CatalogueTest" time="0.0" />
+    <testcase name="stablePagingRejectsOldGenerationAndDoesNotOverlap" classname="com.opus.piano.Stage4CatalogueTest" time="0.102" />
+    <testcase name="openingDiscoverAndOfflineSearchSendNothing" classname="com.opus.piano.Stage4CatalogueTest" time="0.051" />
+    <testcase name="repertoireDuplicateAddPreservesUuidManualEditsHistoryAndRawDraft" classname="com.opus.piano.Stage4CatalogueTest" time="0.026" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4DocumentTest" tests="5" failures="0" errors="0" skipped="0" time="1.409" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="missingSelectedLanguageTitleUsesVerifiedFallbackWithoutInventingTranslation" classname="com.opus.piano.Stage4DocumentTest" time="0.051" />
+    <testcase name="overloadStopsBeforeEnglishAndOfflineNeverSendsAnArticleRequest" classname="com.opus.piano.Stage4DocumentTest" time="0.051" />
+    <testcase name="detailExposesActualMovementSubtypeWithoutChangingItsIdentity" classname="com.opus.piano.Stage4DocumentTest" time="0.051" />
+    <testcase name="missingRequestedDocumentFallsBackOnlyToVerifiedEnglishTitleWithItsOwnRevision" classname="com.opus.piano.Stage4DocumentTest" time="1.23" />
+    <testcase name="unapprovedOrUnsupportedTitleEvidenceCannotTriggerOnlineContentLookup" classname="com.opus.piano.Stage4DocumentTest" time="0.026" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4EvidenceLifecycleTest" tests="8" failures="0" errors="0" skipped="0" time="0.635" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="pendingWorkCanBeReplayedAfterItsTypedIdentityArrives" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.026" />
+    <testcase name="assertionsKeepAllLanguagesAndValuesAndRemainImmutableAfterReopen" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.051" />
+    <testcase name="concurrentReplayIsIdempotentAndCancelledTransactionCannotPublishEvidence" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.051" />
+    <testcase name="identicalDocumentBodiesInDifferentEditionsAndEntitiesRetainTheirOwnSources" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.051" />
+    <testcase name="reverseArtistIntakeConfirmsTheSameIdentityWithoutTitleMatching" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.026" />
+    <testcase name="activeRedirectsAffectSearchAndDetailAndReversalInvalidatesOldCursors" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.076" />
+    <testcase name="rebuildRetainsAcceptedAssertionsIdentityRevisionsAndRedirectReversal" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.077" />
+    <testcase name="contradictoryClaimRetainsEvidenceAndNeverMergesPreviouslyDistinctArtists" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.277" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4ExternalPortraitTest" tests="1" failures="0" errors="0" skipped="1" time="0.002" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="separatelyAcquiredLicensedOriginalCanBeVerifiedAndRenderedOffline" classname="com.opus.piano.Stage4ExternalPortraitTest" time="0.002">
+      <skipped />
+    </testcase>
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4ExternalProviderTest" tests="1" failures="0" errors="0" skipped="1" time="0.001" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="boundedObservedProviderResponsesPassNativeProjectionAndSearchPaging" classname="com.opus.piano.Stage4ExternalProviderTest" time="0.001">
+      <skipped />
+    </testcase>
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4GraphTest" tests="7" failures="0" errors="0" skipped="0" time="0.181" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="quarantinedConflictingParentPositionCannotPromoteACompositionToPart" classname="com.opus.piano.Stage4GraphTest" time="0.051" />
+    <testcase name="searchCandidateCannotBeAddedBeforeTypedLookupAndArrangementKeepsIdentity" classname="com.opus.piano.Stage4GraphTest" time="0.051" />
+    <testcase name="partsOrderAndRecordingPerformanceAreDifferentEdges" classname="com.opus.piano.Stage4GraphTest" time="0.0" />
+    <testcase name="newRelationshipUsesItsOwnObservationRatherThanTheOriginalIdentitySource" classname="com.opus.piano.Stage4GraphTest" time="0.051" />
+    <testcase name="streamingLinksAreBoundToRecordingAndExactPlatformDestination" classname="com.opus.piano.Stage4GraphTest" time="0.001" />
+    <testcase name="aliasesCreditsCatalogueNumbersAndBoundedTypoRetrieval" classname="com.opus.piano.Stage4GraphTest" time="0.026" />
+    <testcase name="linkedReleaseTrackProjectionDropsUnknownNestedRightsFields" classname="com.opus.piano.Stage4GraphTest" time="0.001" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4ObservationCacheTest" tests="3" failures="0" errors="0" skipped="0" time="0.179" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="legacyRowsAreBoundedAndEvictionCountsSaturateWithoutOverflow" classname="com.opus.piano.Stage4ObservationCacheTest" time="0.127" />
+    <testcase name="leastRecentlyAccessedObservationsEvictWithoutTouchingAcceptedRows" classname="com.opus.piano.Stage4ObservationCacheTest" time="0.026" />
+    <testcase name="protectedPrefixesAndOversizedValuesCannotEnterEvictionPath" classname="com.opus.piano.Stage4ObservationCacheTest" time="0.026" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4PagingTest" tests="7" failures="0" errors="0" skipped="0" time="1.06" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider" classname="com.opus.piano.Stage4PagingTest" time="0.076" />
+    <testcase name="providerContinuationReplaysWithoutDuplicatesAndRejectsOtherQueryLanguageCategoryOrGeneration" classname="com.opus.piano.Stage4PagingTest" time="0.227" />
+    <testcase name="multipleEndpointsAppendAtMostFortyAndPageUnseenLocalRowsWithoutRefetch" classname="com.opus.piano.Stage4PagingTest" time="0.277" />
+    <testcase name="externalGenerationChangeRejectsBeforeSendingProviderQuery" classname="com.opus.piano.Stage4PagingTest" time="0.101" />
+    <testcase name="revokedNetworkPolicyNeverSendsContinuation" classname="com.opus.piano.Stage4PagingTest" time="0.126" />
+    <testcase name="localPagingAndConcurrentContinuationStayBoundedAndNetworkFree" classname="com.opus.piano.Stage4PagingTest" time="0.227" />
+    <testcase name="opaquePagingStateExpiresAndEvictsOnlyTransientSessions" classname="com.opus.piano.Stage4PagingTest" time="0.026" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4PortraitTest" tests="4" failures="0" errors="0" skipped="0" time="0.079" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="missingConsentBlocksTransferAndInsufficientReserveCannotReplaceSavedPortrait" classname="com.opus.piano.Stage4PortraitTest" time="0.001" />
+    <testcase name="verifiedOriginalRetainsCreditsAndOfflineReadRejectsTamperedRightsOrBytes" classname="com.opus.piano.Stage4PortraitTest" time="0.026" />
+    <testcase name="changedLengthDimensionsMimeOrRevisionNeverPublishesAndFailedRefreshKeepsPriorPortrait" classname="com.opus.piano.Stage4PortraitTest" time="0.026" />
+    <testcase name="displayedSnapshotRetainsItsOwnAttributionAcrossRefreshAndRejectsUnverifiedCredits" classname="com.opus.piano.Stage4PortraitTest" time="0.026" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4ProviderCacheTest" tests="9" failures="0" errors="0" skipped="0" time="5.428" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="noStoreDoesNotPersistAndNoCacheRequiresRevalidation" classname="com.opus.piano.Stage4ProviderCacheTest" time="1.205" />
+    <testcase name="failedRefreshRetainsAcceptedRevisionAndHonorsBackoff" classname="com.opus.piano.Stage4ProviderCacheTest" time="0.001" />
+    <testcase name="invalidRightsAndJsonErrorsNeverBecomeSuccessfulEmptyContent" classname="com.opus.piano.Stage4ProviderCacheTest" time="0.025" />
+    <testcase name="corruptCacheIsDisposableAndDoesNotHideValidProviderData" classname="com.opus.piano.Stage4ProviderCacheTest" time="1.208" />
+    <testcase name="invalidJsonIsNotRetriedButTransportFailuresRemainUnavailable" classname="com.opus.piano.Stage4ProviderCacheTest" time="0.553" />
+    <testcase name="legacyCacheForcesUnconditionalRefreshAndRejectsUnsolicitedNotModified" classname="com.opus.piano.Stage4ProviderCacheTest" time="0.026" />
+    <testcase name="waitingSuccessorCanTakeOverCancelledOwnerExactlyOnce" classname="com.opus.piano.Stage4ProviderCacheTest" time="1.205" />
+    <testcase name="concurrentCallsCoalesceAndCancelledOwnerDoesNotPoisonLaterRequests" classname="com.opus.piano.Stage4ProviderCacheTest" time="1.205" />
+    <testcase name="projectedCacheIsPersistentPrivateBoundedAndConditionallyRevalidated" classname="com.opus.piano.Stage4ProviderCacheTest" time="0.0" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4SafetyTest" tests="6" failures="0" errors="0" skipped="0" time="0.132" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="groupedPartsSnapshotAndExplicitSeparateEntriesNeverCreatePracticeCredit" classname="com.opus.piano.Stage4SafetyTest" time="0.026" />
+    <testcase name="portableV5RetainsOptionalLinksGroupedSnapshotsUuidAndRawRecoveryWithoutCatalogue" classname="com.opus.piano.Stage4SafetyTest" time="0.102" />
+    <testcase name="arrangementPersonalUuidIsIndependentAndLegacyOpenOpusPieceIsNotDuplicated" classname="com.opus.piano.Stage4SafetyTest" time="0.001" />
+    <testcase name="portraitDecoderRejectsUnsupportedAndOversizedContent" classname="com.opus.piano.Stage4SafetyTest" time="0.001" />
+    <testcase name="correctionExportContainsOnlyCatalogueEvidenceAndRemainsUnsubmitted" classname="com.opus.piano.Stage4SafetyTest" time="0.001" />
+    <testcase name="persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles" classname="com.opus.piano.Stage4SafetyTest" time="0.001" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4SearchVerificationTest" tests="4" failures="0" errors="0" skipped="0" time="40.249" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="measuredBoundedSearchAtOneTenAndFiftyThousandWithPracticeUnderLoad" classname="com.opus.piano.Stage4SearchVerificationTest" time="40.071" />
+    <testcase name="historyIsBoundedOptionalAndIndependentOfJournal" classname="com.opus.piano.Stage4SearchVerificationTest" time="0.026" />
+    <testcase name="searchPagesCarryWorkSubtypesForAccurateRowLabels" classname="com.opus.piano.Stage4SearchVerificationTest" time="0.051" />
+    <testcase name="authoredRelevanceNamesakesDiacriticsGenresAndFilters" classname="com.opus.piano.Stage4SearchVerificationTest" time="0.101" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4StorageAdmissionTest" tests="1" failures="0" errors="0" skipped="0" time="0.101" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="refusedCopyAndRebuildPreserveJournalAcceptedLedgerAndGenerationFiles" classname="com.opus.piano.Stage4StorageAdmissionTest" time="0.101" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4TransportTest" tests="3" failures="0" errors="0" skipped="0" time="0.027" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="redirectsAndUnexpectedHostsDoNotBecomeContentOrForwardCredentials" classname="com.opus.piano.Stage4TransportTest" time="0.001" />
+    <testcase name="oversizedStreamsAndNetworkPolicyRevocationFailBeforeAcceptance" classname="com.opus.piano.Stage4TransportTest" time="0.026" />
+    <testcase name="cancellationClosesBlockingReadWithoutWaitingForSocketTimeout" classname="com.opus.piano.Stage4TransportTest" time="0.0" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage5BundleJobRunnerTest" tests="13" failures="0" errors="0" skipped="0" time="0.337" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.051" />
+    <testcase name="interruptedDownloadLeavesRetryableStateAndCompletesOnRetry" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.027" />
+    <testcase name="interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.051" />
+    <testcase name="corruptSourceContentNeverReachesReady" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.001" />
+    <testcase name="dataSaverPausesEvenWithPerJobConsent" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.001" />
+    <testcase name="invalidRightsOnDiskQuarantinesManifestAndDeactivatesJob" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.026" />
+    <testcase name="offlineNetworkWaitsWithoutMovingBytes" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.0" />
+    <testcase name="corruptStoredBlobIsQuarantinedAndRepairedOnRetry" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.051" />
+    <testcase name="lowStorageRefusesBeforeAnyByteMoves" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.026" />
+    <testcase name="inFlightStatesFromProcessDeathResumeLegally" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.051" />
+    <testcase name="futureReaderRequirementQuarantinesInsteadOfRenderingGarbage" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.0" />
+    <testcase name="consentRevocationMidStreamPausesAndKeepsReadyContent" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.026" />
+    <testcase name="queuedBundleDownloadsValidatesAndPublishesAtomically" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.026" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage5BundleStoreTest" tests="9" failures="0" errors="0" skipped="0" time="0.102" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote" classname="com.opus.piano.Stage5BundleStoreTest" time="0.025" />
+    <testcase name="corruptManifestIsQuarantinedWithBytesPreservedAndOthersSurvive" classname="com.opus.piano.Stage5BundleStoreTest" time="0.0" />
+    <testcase name="sharedBlobSurvivesUntilTheLastReferencingBundleIsRemoved" classname="com.opus.piano.Stage5BundleStoreTest" time="0.025" />
+    <testcase name="admissionRefusesInsteadOfEvictingPinnedContent" classname="com.opus.piano.Stage5BundleStoreTest" time="0.0" />
+    <testcase name="concurrentRemovalsAndClearNeverCorruptTheStoreOrDeleteSharedMediaEarly" classname="com.opus.piano.Stage5BundleStoreTest" time="0.0" />
+    <testcase name="removingAllBundlesLeavesPersonalJournalDataIntact" classname="com.opus.piano.Stage5BundleStoreTest" time="0.025" />
+    <testcase name="storeStateSurvivesReopenLikeAProcessRestart" classname="com.opus.piano.Stage5BundleStoreTest" time="0.0" />
+    <testcase name="quarantineBlobPreservesBytesAndRemovesFromBlobStore" classname="com.opus.piano.Stage5BundleStoreTest" time="0.001" />
+    <testcase name="sweepReclaimsOnlyUnreferencedContent" classname="com.opus.piano.Stage5BundleStoreTest" time="0.026" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage5BundleWorkerTest" tests="12" failures="0" errors="0" skipped="0" time="0.607" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.05" />
+    <testcase name="missingInputDataFailsTheWork" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.025" />
+    <testcase name="workManagerRunsTheScheduledWorkerToACompletedBundle" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.301" />
+    <testcase name="revocationWithdrawsConsentCancelsWorkAndPausesTheManifest" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.026" />
+    <testcase name="offlineEnvironmentRetriesWithoutMovingAByte" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.026" />
+    <testcase name="transportFailureRetriesAndRecordsTheAttempt" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.026" />
+    <testcase name="cancelledJobSucceedsWithoutTouchingTheBundle" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.026" />
+    <testcase name="missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.026" />
+    <testcase name="reconciliationRecoversInFlightWorkAndNeverStartsUnconfirmedBundles" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.025" />
+    <testcase name="unknownBundleJobFailsTheWork" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.025" />
+    <testcase name="enqueueBindsOneUniqueWorkPerRevisionWithTheD7NetworkConstraint" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.025" />
+    <testcase name="cancelDeactivatesTheJobAndPreservesPreviouslyReadyContent" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.026" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage7aCatalogueBootstrapTest" tests="1" failures="0" errors="0" skipped="0" time="1.231" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="appOwnCatalogueBootstrapFeedsEditorialScreens" classname="com.opus.piano.Stage7aCatalogueBootstrapTest" time="1.231" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage7bAcceptanceTest" tests="2" failures="1" errors="0" skipped="0" time="205.453" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="renderApprovedAdminMatrixAndRetainAccessibilityTrees" classname="com.opus.piano.Stage7bAcceptanceTest" time="197.081">
+      <failure>java.lang.AssertionError: standard/en/Light/1.0: null
+standard/en/Dark/1.0: null
+standard/cs/Light/1.0: null
+standard/cs/Dark/1.0: null
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.opus.piano.Stage7bAcceptanceTest.renderApprovedAdminMatrixAndRetainAccessibilityTrees(Stage7bAcceptanceTest.kt:426)
+</failure>
+    </testcase>
+    <testcase name="adminCheckablesExportNameStateAndClickOnSameNode" classname="com.opus.piano.Stage7bAcceptanceTest" time="8.372" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage7bAdminRuntimeTest" tests="4" failures="0" errors="0" skipped="0" time="1.04" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="keystoreSessionSurvivesStoreRecreationAndTamperingClearsIt" classname="com.opus.piano.Stage7bAdminRuntimeTest" time="1.014" />
+    <testcase name="nativeJsonPreservesExactAuditBigintAndRejectsRevisionOverflow" classname="com.opus.piano.Stage7bAdminRuntimeTest" time="0.001" />
+    <testcase name="androidMarkersPersistAcrossStoreRecreationAndStayAccountScoped" classname="com.opus.piano.Stage7bAdminRuntimeTest" time="0.0" />
+    <testcase name="savedEndpointAndKeystoreTokenCannotEnableApplicationNetworking" classname="com.opus.piano.Stage7bAdminRuntimeTest" time="0.025" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage7bNotificationRuntimeTest" tests="1" failures="0" errors="0" skipped="0" time="2.911" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="completeChangedScanPermissionFailureRevocationCancellationAndOfflineAreFailClosed" classname="com.opus.piano.Stage7bNotificationRuntimeTest" time="2.911" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage7bSyncRuntimeTest" tests="2" failures="0" errors="0" skipped="0" time="0.102" timestamp="2026-10-24T10:01:17" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="uniqueThreeHourWorkUsesConsentConstraintsAndCancels" classname="com.opus.piano.Stage7bSyncRuntimeTest" time="0.076" />
+    <testcase name="staleEndpointAndMissingSessionCannotNotify" classname="com.opus.piano.Stage7bSyncRuntimeTest" time="0.026" />
+  </testsuite>
+</testsuites>

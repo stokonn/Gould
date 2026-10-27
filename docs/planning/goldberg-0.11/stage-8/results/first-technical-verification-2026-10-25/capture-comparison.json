@@ -1,0 +1,5 @@
+{
+  "sameSession": true,
+  "contentPixelDifferenceBounds": null,
+  "scope": "recorder screenshot versus direct ADB screencap, excluding changing status-clock region; no blank application frame verified"
+}

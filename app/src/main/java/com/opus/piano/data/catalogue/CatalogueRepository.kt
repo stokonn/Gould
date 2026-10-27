@@ -39,6 +39,28 @@ class CatalogueRepository(private val db: CatalogueDatabase) {
     suspend fun linked(id:String)=dao.allRelationships(id)
     suspend fun state(key:String)=dao.state(key)?.value
     suspend fun state(key:String,value:String)=dao.state(CatalogueState(key,value))
+    /** Three bounded page-wide reads, never per-row UI I/O. Display context is not identity. */
+    internal fun rowInfo(ids:List<String>):Map<String,CatalogueRowInfo> {
+        if(ids.isEmpty())return emptyMap()
+        require(ids.size<=40)
+        val placeholders=ids.joinToString(","){"?"};val args=ids.toTypedArray()
+        val types=mutableMapOf<String,String>();val providers=mutableMapOf<String,MutableSet<String>>()
+        val composers=mutableMapOf<String,MutableSet<String>>()
+        db.openHelper.readableDatabase.query("SELECT id,artistType FROM artists WHERE id IN ($placeholders)",args).use {c->
+            while(c.moveToNext())types[c.getString(0)]=c.getString(1)
+        }
+        db.openHelper.readableDatabase.query("SELECT entityId,provider,providerKind FROM external_identities WHERE reviewState='reviewed' AND entityId IN ($placeholders) ORDER BY provider",args).use {c->
+            while(c.moveToNext()) {
+                val id=c.getString(0);val provider=c.getString(1)
+                providers.getOrPut(id){linkedSetOf()}.add(provider)
+                if(provider=="openopus" && c.getString(2)=="composer")types[id]="composer"
+            }
+        }
+        db.openHelper.readableDatabase.query("SELECT r.fromId,e.title FROM relationships r JOIN entities e ON e.id=r.toId WHERE r.type='credit' AND r.role='composer' AND r.fromId IN ($placeholders) ORDER BY r.position,e.id",args).use {c->
+            while(c.moveToNext())composers.getOrPut(c.getString(0)){linkedSetOf()}.add(c.getString(1))
+        }
+        return ids.associateWith {CatalogueRowInfo(types[it],composers[it]?.toList().orEmpty(),providers[it]?.toList().orEmpty())}
+    }
     internal suspend fun aliasPrefix(prefix:String)=dao.aliasPrefix(prefix,prefix+"\uffff")
     internal suspend fun availablePeriods()=dao.availablePeriods().mapNotNull {runCatching {org.json.JSONObject(it).getString("value").takeIf {v->v.isNotBlank() && v.length<=80}}.getOrNull()}.distinct()
     internal suspend fun queryEntities(query:androidx.sqlite.db.SupportSQLiteQuery)=dao.queryEntities(query)

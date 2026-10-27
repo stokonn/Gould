@@ -1,0 +1,2 @@
+10-20 23:05:45.949  4034  4122 I TestRunner: started: assertionsKeepAllLanguagesAndValuesAndRemainImmutableAfterReopen(com.opus.piano.Stage4EvidenceLifecycleTest)
+10-20 23:05:45.988  4034  4122 I TestRunner: finished: assertionsKeepAllLanguagesAndValuesAndRemainImmutableAfterReopen(com.opus.piano.Stage4EvidenceLifecycleTest)

@@ -1,0 +1,11 @@
+{
+  "serial": "emulator-5588",
+  "preservedAvd": "Goldberg8C",
+  "polls": [
+    {
+      "code": 0,
+      "boot": "1",
+      "error": ""
+    }
+  ]
+}

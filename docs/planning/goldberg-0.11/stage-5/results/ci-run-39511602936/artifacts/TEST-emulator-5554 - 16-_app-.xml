@@ -1,0 +1,674 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuites tests="177" failures="13" errors="0" skipped="2" time="103.545" timestamp="2026-10-20T23:06:24" hostname="localhost">
+  <testsuite name="com.opus.piano.AppLanguageTest" tests="1" failures="0" errors="0" skipped="0" time="9.208" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="languageOverrideUsesAppCompatAndCanReturnToSystem" classname="com.opus.piano.AppLanguageTest" time="9.208" />
+  </testsuite>
+  <testsuite name="com.opus.piano.CatalogDatabaseTest" tests="2" failures="0" errors="0" skipped="0" time="0.456" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="migrationPreservesVersionOneRepertoireAndSessions" classname="com.opus.piano.CatalogDatabaseTest" time="0.128" />
+    <testcase name="importsAreIdempotentAndSameTitlesFromDifferentComposersStayDistinct" classname="com.opus.piano.CatalogDatabaseTest" time="0.328" />
+  </testsuite>
+  <testsuite name="com.opus.piano.DatabaseTest" tests="1" failures="0" errors="0" skipped="0" time="0.228" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="repertoireCrudAndHistorySurviveReopening" classname="com.opus.piano.DatabaseTest" time="0.228" />
+  </testsuite>
+  <testsuite name="com.opus.piano.DiscoverNavigationTest" tests="1" failures="0" errors="0" skipped="0" time="4.661" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="realDiscoverEntryRetainsTransientQueryAcrossDetailAndBack" classname="com.opus.piano.DiscoverNavigationTest" time="4.661" />
+  </testsuite>
+  <testsuite name="com.opus.piano.ExperiencePersistenceTest" tests="2" failures="0" errors="0" skipped="0" time="1.089" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="savedInterpretationsRetainDatesAndPreferenceAndSupportEditsAndRemoval" classname="com.opus.piano.ExperiencePersistenceTest" time="0.686" />
+    <testcase name="upgradeFromV2RetainsCatalogueHistoryAndFirstVerifiedUnlockAcrossRestart" classname="com.opus.piano.ExperiencePersistenceTest" time="0.403" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Goldberg08MigrationTest" tests="1" failures="0" errors="0" skipped="0" time="0.152" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="schemaFiveMigrationKeepsHistoryAndSkipsOnboarding" classname="com.opus.piano.Goldberg08MigrationTest" time="0.152" />
+  </testsuite>
+  <testsuite name="com.opus.piano.GoldbergPersistenceTest" tests="2" failures="0" errors="0" skipped="0" time="1.259" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="multiplePiecesReopenAndBackupRestoreIntoExistingJournalIsIdempotent" classname="com.opus.piano.GoldbergPersistenceTest" time="0.906" />
+    <testcase name="opus05UpgradePreservesIdsNotesHistoryUnlocksAndLinks" classname="com.opus.piano.GoldbergPersistenceTest" time="0.353" />
+  </testsuite>
+  <testsuite name="com.opus.piano.GoogleIdentityPersistenceTest" tests="2" failures="0" errors="0" skipped="0" time="0.104" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="manualAvatarChoiceSurvivesIdentityRepositoryRestart" classname="com.opus.piano.GoogleIdentityPersistenceTest" time="0.002" />
+    <testcase name="googleAvatarDecodePreservesSmallImagesAndBoundsLargeImages" classname="com.opus.piano.GoogleIdentityPersistenceTest" time="0.102" />
+  </testsuite>
+  <testsuite name="com.opus.piano.NavigationRegressionTest" tests="2" failures="0" errors="0" skipped="0" time="12.75" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="searchProfileSettingsAndRepeatedTabSwitchesKeepBackStackCorrect" classname="com.opus.piano.NavigationRegressionTest" time="5.87" />
+    <testcase name="homeOverviewKeepsProfileSettingsAndSearchBackStacksCorrect" classname="com.opus.piano.NavigationRegressionTest" time="6.88" />
+  </testsuite>
+  <testsuite name="com.opus.piano.PracticeCoordinatorTest" tests="3" failures="0" errors="0" skipped="0" time="0.841" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="obsoleteCaptureCannotInterruptAResumedManualSession" classname="com.opus.piano.PracticeCoordinatorTest" time="0.46" />
+    <testcase name="failedRestoreKeepsThePausedDraft" classname="com.opus.piano.PracticeCoordinatorTest" time="0.026" />
+    <testcase name="reconnectingObserversNeverStartsOrDuplicatesTime" classname="com.opus.piano.PracticeCoordinatorTest" time="0.355" />
+  </testsuite>
+  <testsuite name="com.opus.piano.PracticeRecoveryTest" tests="2" failures="0" errors="0" skipped="0" time="0.53" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="oldBackupImportsAndDeviceStateDoesNotTravel" classname="com.opus.piano.PracticeRecoveryTest" time="0.277" />
+    <testcase name="durableDraftCompletesOnceAndRoundTripsNewBackup" classname="com.opus.piano.PracticeRecoveryTest" time="0.253" />
+  </testsuite>
+  <testsuite name="com.opus.piano.PracticeServicePolicyTest" tests="2" failures="0" errors="0" skipped="0" time="0.055" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="staleNotificationActionsNeverStartRecording" classname="com.opus.piano.PracticeServicePolicyTest" time="0.028" />
+    <testcase name="serviceIsPrivateAndApplicationContextCannotStartMicrophone" classname="com.opus.piano.PracticeServicePolicyTest" time="0.027" />
+  </testsuite>
+  <testsuite name="com.opus.piano.ProfileCompatibilityTest" tests="1" failures="0" errors="0" skipped="0" time="1.084" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="restore060FormatIntoExistingJournalAndKeepProfileAcrossThemeChanges" classname="com.opus.piano.ProfileCompatibilityTest" time="1.084" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Quality092PersistenceTest" tests="4" failures="0" errors="0" skipped="0" time="0.561" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="mediaConsentCacheOfflineFailureAndRevocationAreEnforced" classname="com.opus.piano.Quality092PersistenceTest" time="0.078" />
+    <testcase name="dailyQuoteRequestsOnceAndOfflineFallbackSurvivesRestart" classname="com.opus.piano.Quality092PersistenceTest" time="0.027" />
+    <testcase name="personalizationAndOriginalRecoveryArchiveRoundTripWithoutTouchingJournal" classname="com.opus.piano.Quality092PersistenceTest" time="0.177" />
+    <testcase name="formatTwoSchemaSixBackupKeepsAllOriginalFieldsAndAddsSafeDefaults" classname="com.opus.piano.Quality092PersistenceTest" time="0.279" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Redesign010PersistenceTest" tests="5" failures="0" errors="0" skipped="0" time="1.29" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="legacyRecordAndNotesSurviveAssociationAndBackupRoundTrip" classname="com.opus.piano.Redesign010PersistenceTest" time="0.354" />
+    <testcase name="missingOrAlreadyMeasuredPieceCannotBecomeAnotherCredit" classname="com.opus.piano.Redesign010PersistenceTest" time="0.077" />
+    <testcase name="schemaSevenMigrationPreservesEveryFixtureFieldAndUnfinishedDraft" classname="com.opus.piano.Redesign010PersistenceTest" time="0.68" />
+    <testcase name="omittedPieceIsIdempotentUntimedAndDoesNotChangeOriginalJournal" classname="com.opus.piano.Redesign010PersistenceTest" time="0.052" />
+    <testcase name="favoritesRemainIndependentOfFeaturedArtistAndSurviveBackup" classname="com.opus.piano.Redesign010PersistenceTest" time="0.127" />
+  </testsuite>
+  <testsuite name="com.opus.piano.RedesignPersistenceTest" tests="2" failures="0" errors="0" skipped="0" time="0.028" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="appearancePersistsAndResetNeverTouchesPersonalDatabase" classname="com.opus.piano.RedesignPersistenceTest" time="0.028" />
+    <testcase name="czechPluralResourcesAndEnglishFallbackAreRealAndroidResources" classname="com.opus.piano.RedesignPersistenceTest" time="0.0" />
+  </testsuite>
+  <testsuite name="com.opus.piano.RepertoireSearchPrivacyTest" tests="1" failures="0" errors="0" skipped="0" time="0.805" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="privateSavedFilteringAndClearingNeverCallsHttpOrChangesOnlineQueryState" classname="com.opus.piano.RepertoireSearchPrivacyTest" time="0.805" />
+  </testsuite>
+  <testsuite name="com.opus.piano.SmartCachePersistenceTest" tests="4" failures="0" errors="0" skipped="0" time="1.916" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="freshCatalogueAvoidsRequestsAndExpiredCatalogueRemainsAvailableOffline" classname="com.opus.piano.SmartCachePersistenceTest" time="0.103" />
+    <testcase name="clearingDownloadsPreservesJournalCatalogueUnlocksAndPreferences" classname="com.opus.piano.SmartCachePersistenceTest" time="1.183" />
+    <testcase name="schemaFourBackupGainsDefaultsAndKeepsExistingShowcaseAndDates" classname="com.opus.piano.SmartCachePersistenceTest" time="0.152" />
+    <testcase name="upgradeActualSchemaFourAndReopenWithoutLosingProfileOrHistory" classname="com.opus.piano.SmartCachePersistenceTest" time="0.478" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage3aBackupTest" tests="2" failures="0" errors="0" skipped="0" time="4.656" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="legacyRestorePreservesUnfinishedRecoveryWithoutChangingBytes" classname="com.opus.piano.Stage3aBackupTest" time="0.077" />
+    <testcase name="historicalReadersAndV4WriterKeepFieldsAndNoStaleLocalAnchors" classname="com.opus.piano.Stage3aBackupTest" time="4.579" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage3aCatalogueTest" tests="5" failures="0" errors="0" skipped="0" time="2.492" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="catalogueFailureDeletionRebuildAndJournalOffline" classname="com.opus.piano.Stage3aCatalogueTest" time="1.407" />
+    <testcase name="interruptedCopyAndRepeatedInitialization" classname="com.opus.piano.Stage3aCatalogueTest" time="0.78" />
+    <testcase name="authoredMultiGenreFixtureAndTypedRelationships" classname="com.opus.piano.Stage3aCatalogueTest" time="0.227" />
+    <testcase name="reversibleEvidenceMappingAndRedirects" classname="com.opus.piano.Stage3aCatalogueTest" time="0.051" />
+    <testcase name="provenanceAndRightsDefaultDeny" classname="com.opus.piano.Stage3aCatalogueTest" time="0.027" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage3aMigrationTest" tests="10" failures="0" errors="0" skipped="0" time="1.294" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="schema9PreservesExistingUuidRegistryAndSeedsCompletionEvidence" classname="com.opus.piano.Stage3aMigrationTest" time="0.077" />
+    <testcase name="failureRollsBackPersonalMigration" classname="com.opus.piano.Stage3aMigrationTest" time="0.578" />
+    <testcase name="schema1" classname="com.opus.piano.Stage3aMigrationTest" time="0.052" />
+    <testcase name="schema2" classname="com.opus.piano.Stage3aMigrationTest" time="0.052" />
+    <testcase name="schema3" classname="com.opus.piano.Stage3aMigrationTest" time="0.076" />
+    <testcase name="schema4" classname="com.opus.piano.Stage3aMigrationTest" time="0.076" />
+    <testcase name="schema5" classname="com.opus.piano.Stage3aMigrationTest" time="0.077" />
+    <testcase name="schema6" classname="com.opus.piano.Stage3aMigrationTest" time="0.102" />
+    <testcase name="schema7" classname="com.opus.piano.Stage3aMigrationTest" time="0.102" />
+    <testcase name="schema8" classname="com.opus.piano.Stage3aMigrationTest" time="0.102" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage3aPerformanceTest" tests="1" failures="0" errors="0" skipped="0" time="5.595" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="boundedQueriesAndJournalPriorityUnderCatalogueLoad" classname="com.opus.piano.Stage3aPerformanceTest" time="5.595" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage3bBackupTest" tests="19" failures="0" errors="0" skipped="0" time="12.11" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="minimalAndRepeatedRestoreWorkWithoutCatalogueOrAccount" classname="com.opus.piano.Stage3bBackupTest" time="0.377" />
+    <testcase name="unstartedNotesAndSelectionRecoverWithoutInventingPracticeCredit" classname="com.opus.piano.Stage3bBackupTest" time="0.101" />
+    <testcase name="duplicateCompletionCannotRemoveAnUnrelatedActiveDraft" classname="com.opus.piano.Stage3bBackupTest" time="0.076" />
+    <testcase name="destinationIdentityEvidenceSurvivesEvenWithoutDraftsOrArchives" classname="com.opus.piano.Stage3bBackupTest" time="0.102" />
+    <testcase name="restoredForeignScopeRebuildsCatalogueAndKeepsCanonicalIds" classname="com.opus.piano.Stage3bBackupTest" time="0.177" />
+    <testcase name="malformedDraftTimingIsPreservedRatherThanInvented" classname="com.opus.piano.Stage3bBackupTest" time="0.628" />
+    <testcase name="validDraftRegeneratesExecutionOnlyAndCompletesExactlyOnce" classname="com.opus.piano.Stage3bBackupTest" time="0.151" />
+    <testcase name="freshRestoreCannotReuseDeletedOwnerIdsAndAdoptTheirUuid" classname="com.opus.piano.Stage3bBackupTest" time="0.076" />
+    <testcase name="coordinatorReplacementCannotClearTheImportedDraft" classname="com.opus.piano.Stage3bBackupTest" time="0.077" />
+    <testcase name="exportIsAtomicOnLowSpaceAndInterruptedWritesAndInputIsBounded" classname="com.opus.piano.Stage3bBackupTest" time="0.177" />
+    <testcase name="unreadableBinaryDraftCanBeExportedAndArchivedWithoutRepair" classname="com.opus.piano.Stage3bBackupTest" time="0.102" />
+    <testcase name="measuredJournalAndLargeRawEvidenceRoundTripWithoutCursorTruncation" classname="com.opus.piano.Stage3bBackupTest" time="8.303" />
+    <testcase name="historicalOneThroughFourRemainReadableAndRetainOriginalFields" classname="com.opus.piano.Stage3bBackupTest" time="0.477" />
+    <testcase name="destinationDraftArchivesAndIdentityContextSurviveReplacement" classname="com.opus.piano.Stage3bBackupTest" time="0.102" />
+    <testcase name="failureBeforeCommitLeavesDestinationIntactAndAfterCommitReplaysIdempotently" classname="com.opus.piano.Stage3bBackupTest" time="0.653" />
+    <testcase name="fullV5PreservesIdentitiesJournalRawArchivesAndAllowlistedPreferences" classname="com.opus.piano.Stage3bBackupTest" time="0.127" />
+    <testcase name="conflictingEvidenceIdsKeepBothPayloads" classname="com.opus.piano.Stage3bBackupTest" time="0.076" />
+    <testcase name="conflictingTokenRetainsBothRecordsAndBlocksAutomaticCredit" classname="com.opus.piano.Stage3bBackupTest" time="0.101" />
+    <testcase name="badHashesSectionsReferencesEnumsAndVersionsRejectBeforeReplacement" classname="com.opus.piano.Stage3bBackupTest" time="0.227" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage3bProcessDeathTest" tests="2" failures="0" errors="0" skipped="0" time="0.002" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="verifyAfterActualProcessDeath" classname="com.opus.piano.Stage3bProcessDeathTest" time="0.001" />
+    <testcase name="prepareActualProcessDeath" classname="com.opus.piano.Stage3bProcessDeathTest" time="0.001" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4CatalogueTest" tests="7" failures="0" errors="0" skipped="0" time="0.282" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="providerPartialSuccessAndJsonOverloadRemainIndependent" classname="com.opus.piano.Stage4CatalogueTest" time="0.076" />
+    <testcase name="repeatedProviderImportKeepsIdentityAndContradictionsWithoutPersonalWrites" classname="com.opus.piano.Stage4CatalogueTest" time="0.026" />
+    <testcase name="explicitCrossIdEvidenceReconcilesButNamesDoNot" classname="com.opus.piano.Stage4CatalogueTest" time="0.026" />
+    <testcase name="hostileJsonDepthDuplicateKeysAndOversizeRejected" classname="com.opus.piano.Stage4CatalogueTest" time="0.001" />
+    <testcase name="stablePagingRejectsOldGenerationAndDoesNotOverlap" classname="com.opus.piano.Stage4CatalogueTest" time="0.076" />
+    <testcase name="openingDiscoverAndOfflineSearchSendNothing" classname="com.opus.piano.Stage4CatalogueTest" time="0.051" />
+    <testcase name="repertoireDuplicateAddPreservesUuidManualEditsHistoryAndRawDraft" classname="com.opus.piano.Stage4CatalogueTest" time="0.026" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4DocumentTest" tests="5" failures="0" errors="0" skipped="0" time="1.361" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="missingSelectedLanguageTitleUsesVerifiedFallbackWithoutInventingTranslation" classname="com.opus.piano.Stage4DocumentTest" time="0.052" />
+    <testcase name="overloadStopsBeforeEnglishAndOfflineNeverSendsAnArticleRequest" classname="com.opus.piano.Stage4DocumentTest" time="0.027" />
+    <testcase name="detailExposesActualMovementSubtypeWithoutChangingItsIdentity" classname="com.opus.piano.Stage4DocumentTest" time="0.026" />
+    <testcase name="missingRequestedDocumentFallsBackOnlyToVerifiedEnglishTitleWithItsOwnRevision" classname="com.opus.piano.Stage4DocumentTest" time="1.255" />
+    <testcase name="unapprovedOrUnsupportedTitleEvidenceCannotTriggerOnlineContentLookup" classname="com.opus.piano.Stage4DocumentTest" time="0.001" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4EvidenceLifecycleTest" tests="8" failures="0" errors="0" skipped="0" time="0.409" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="pendingWorkCanBeReplayedAfterItsTypedIdentityArrives" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.001" />
+    <testcase name="assertionsKeepAllLanguagesAndValuesAndRemainImmutableAfterReopen" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.051" />
+    <testcase name="concurrentReplayIsIdempotentAndCancelledTransactionCannotPublishEvidence" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.026" />
+    <testcase name="identicalDocumentBodiesInDifferentEditionsAndEntitiesRetainTheirOwnSources" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.051" />
+    <testcase name="reverseArtistIntakeConfirmsTheSameIdentityWithoutTitleMatching" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.001" />
+    <testcase name="activeRedirectsAffectSearchAndDetailAndReversalInvalidatesOldCursors" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.026" />
+    <testcase name="rebuildRetainsAcceptedAssertionsIdentityRevisionsAndRedirectReversal" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.077" />
+    <testcase name="contradictoryClaimRetainsEvidenceAndNeverMergesPreviouslyDistinctArtists" classname="com.opus.piano.Stage4EvidenceLifecycleTest" time="0.176" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4ExternalPortraitTest" tests="1" failures="0" errors="0" skipped="1" time="0.001" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="separatelyAcquiredLicensedOriginalCanBeVerifiedAndRenderedOffline" classname="com.opus.piano.Stage4ExternalPortraitTest" time="0.001">
+      <skipped />
+    </testcase>
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4ExternalProviderTest" tests="1" failures="0" errors="0" skipped="1" time="0.0" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="boundedObservedProviderResponsesPassNativeProjectionAndSearchPaging" classname="com.opus.piano.Stage4ExternalProviderTest" time="0.0">
+      <skipped />
+    </testcase>
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4GraphTest" tests="7" failures="0" errors="0" skipped="0" time="0.133" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="quarantinedConflictingParentPositionCannotPromoteACompositionToPart" classname="com.opus.piano.Stage4GraphTest" time="0.051" />
+    <testcase name="searchCandidateCannotBeAddedBeforeTypedLookupAndArrangementKeepsIdentity" classname="com.opus.piano.Stage4GraphTest" time="0.026" />
+    <testcase name="partsOrderAndRecordingPerformanceAreDifferentEdges" classname="com.opus.piano.Stage4GraphTest" time="0.001" />
+    <testcase name="newRelationshipUsesItsOwnObservationRatherThanTheOriginalIdentitySource" classname="com.opus.piano.Stage4GraphTest" time="0.026" />
+    <testcase name="streamingLinksAreBoundToRecordingAndExactPlatformDestination" classname="com.opus.piano.Stage4GraphTest" time="0.001" />
+    <testcase name="aliasesCreditsCatalogueNumbersAndBoundedTypoRetrieval" classname="com.opus.piano.Stage4GraphTest" time="0.027" />
+    <testcase name="linkedReleaseTrackProjectionDropsUnknownNestedRightsFields" classname="com.opus.piano.Stage4GraphTest" time="0.001" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4ObservationCacheTest" tests="3" failures="0" errors="0" skipped="0" time="0.128" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="legacyRowsAreBoundedAndEvictionCountsSaturateWithoutOverflow" classname="com.opus.piano.Stage4ObservationCacheTest" time="0.101" />
+    <testcase name="leastRecentlyAccessedObservationsEvictWithoutTouchingAcceptedRows" classname="com.opus.piano.Stage4ObservationCacheTest" time="0.0" />
+    <testcase name="protectedPrefixesAndOversizedValuesCannotEnterEvictionPath" classname="com.opus.piano.Stage4ObservationCacheTest" time="0.027" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4PagingTest" tests="7" failures="0" errors="0" skipped="0" time="0.757" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="invalidEndpointDoesNotHideSuccessfulEndpointsOfSameProvider" classname="com.opus.piano.Stage4PagingTest" time="0.051" />
+    <testcase name="providerContinuationReplaysWithoutDuplicatesAndRejectsOtherQueryLanguageCategoryOrGeneration" classname="com.opus.piano.Stage4PagingTest" time="0.201" />
+    <testcase name="multipleEndpointsAppendAtMostFortyAndPageUnseenLocalRowsWithoutRefetch" classname="com.opus.piano.Stage4PagingTest" time="0.201" />
+    <testcase name="externalGenerationChangeRejectsBeforeSendingProviderQuery" classname="com.opus.piano.Stage4PagingTest" time="0.101" />
+    <testcase name="revokedNetworkPolicyNeverSendsContinuation" classname="com.opus.piano.Stage4PagingTest" time="0.076" />
+    <testcase name="localPagingAndConcurrentContinuationStayBoundedAndNetworkFree" classname="com.opus.piano.Stage4PagingTest" time="0.126" />
+    <testcase name="opaquePagingStateExpiresAndEvictsOnlyTransientSessions" classname="com.opus.piano.Stage4PagingTest" time="0.001" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4PortraitTest" tests="4" failures="0" errors="0" skipped="0" time="0.053" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="missingConsentBlocksTransferAndInsufficientReserveCannotReplaceSavedPortrait" classname="com.opus.piano.Stage4PortraitTest" time="0.0" />
+    <testcase name="verifiedOriginalRetainsCreditsAndOfflineReadRejectsTamperedRightsOrBytes" classname="com.opus.piano.Stage4PortraitTest" time="0.026" />
+    <testcase name="changedLengthDimensionsMimeOrRevisionNeverPublishesAndFailedRefreshKeepsPriorPortrait" classname="com.opus.piano.Stage4PortraitTest" time="0.026" />
+    <testcase name="displayedSnapshotRetainsItsOwnAttributionAcrossRefreshAndRejectsUnverifiedCredits" classname="com.opus.piano.Stage4PortraitTest" time="0.001" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4ProviderCacheTest" tests="9" failures="0" errors="0" skipped="0" time="5.423" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="noStoreDoesNotPersistAndNoCacheRequiresRevalidation" classname="com.opus.piano.Stage4ProviderCacheTest" time="1.204" />
+    <testcase name="failedRefreshRetainsAcceptedRevisionAndHonorsBackoff" classname="com.opus.piano.Stage4ProviderCacheTest" time="0.025" />
+    <testcase name="invalidRightsAndJsonErrorsNeverBecomeSuccessfulEmptyContent" classname="com.opus.piano.Stage4ProviderCacheTest" time="0.001" />
+    <testcase name="corruptCacheIsDisposableAndDoesNotHideValidProviderData" classname="com.opus.piano.Stage4ProviderCacheTest" time="1.204" />
+    <testcase name="invalidJsonIsNotRetriedButTransportFailuresRemainUnavailable" classname="com.opus.piano.Stage4ProviderCacheTest" time="0.553" />
+    <testcase name="legacyCacheForcesUnconditionalRefreshAndRejectsUnsolicitedNotModified" classname="com.opus.piano.Stage4ProviderCacheTest" time="0.002" />
+    <testcase name="waitingSuccessorCanTakeOverCancelledOwnerExactlyOnce" classname="com.opus.piano.Stage4ProviderCacheTest" time="1.205" />
+    <testcase name="concurrentCallsCoalesceAndCancelledOwnerDoesNotPoisonLaterRequests" classname="com.opus.piano.Stage4ProviderCacheTest" time="1.204" />
+    <testcase name="projectedCacheIsPersistentPrivateBoundedAndConditionallyRevalidated" classname="com.opus.piano.Stage4ProviderCacheTest" time="0.025" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4SafetyTest" tests="6" failures="0" errors="0" skipped="0" time="0.129" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="groupedPartsSnapshotAndExplicitSeparateEntriesNeverCreatePracticeCredit" classname="com.opus.piano.Stage4SafetyTest" time="0.026" />
+    <testcase name="portableV5RetainsOptionalLinksGroupedSnapshotsUuidAndRawRecoveryWithoutCatalogue" classname="com.opus.piano.Stage4SafetyTest" time="0.077" />
+    <testcase name="arrangementPersonalUuidIsIndependentAndLegacyOpenOpusPieceIsNotDuplicated" classname="com.opus.piano.Stage4SafetyTest" time="0.0" />
+    <testcase name="portraitDecoderRejectsUnsupportedAndOversizedContent" classname="com.opus.piano.Stage4SafetyTest" time="0.0" />
+    <testcase name="correctionExportContainsOnlyCatalogueEvidenceAndRemainsUnsubmitted" classname="com.opus.piano.Stage4SafetyTest" time="0.026" />
+    <testcase name="persistentCacheEvictsByLastAccessAndNeverTouchesOtherFiles" classname="com.opus.piano.Stage4SafetyTest" time="0.0" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4SearchVerificationTest" tests="4" failures="0" errors="0" skipped="0" time="29.305" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="measuredBoundedSearchAtOneTenAndFiftyThousandWithPracticeUnderLoad" classname="com.opus.piano.Stage4SearchVerificationTest" time="29.176" />
+    <testcase name="historyIsBoundedOptionalAndIndependentOfJournal" classname="com.opus.piano.Stage4SearchVerificationTest" time="0.026" />
+    <testcase name="searchPagesCarryWorkSubtypesForAccurateRowLabels" classname="com.opus.piano.Stage4SearchVerificationTest" time="0.051" />
+    <testcase name="authoredRelevanceNamesakesDiacriticsGenresAndFilters" classname="com.opus.piano.Stage4SearchVerificationTest" time="0.052" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4StorageAdmissionTest" tests="1" failures="0" errors="0" skipped="0" time="0.101" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="refusedCopyAndRebuildPreserveJournalAcceptedLedgerAndGenerationFiles" classname="com.opus.piano.Stage4StorageAdmissionTest" time="0.101" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage4TransportTest" tests="3" failures="0" errors="0" skipped="0" time="0.0" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="redirectsAndUnexpectedHostsDoNotBecomeContentOrForwardCredentials" classname="com.opus.piano.Stage4TransportTest" time="0.0" />
+    <testcase name="oversizedStreamsAndNetworkPolicyRevocationFailBeforeAcceptance" classname="com.opus.piano.Stage4TransportTest" time="0.0" />
+    <testcase name="cancellationClosesBlockingReadWithoutWaitingForSocketTimeout" classname="com.opus.piano.Stage4TransportTest" time="0.0" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage5BundleJobRunnerTest" tests="13" failures="6" errors="0" skipped="0" time="0.297" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.053">
+      <failure>java.lang.AssertionError: expected:&lt;Completed&gt; but was:&lt;Retryable(error=integrity)&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.opus.piano.Stage5BundleJobRunnerTest$concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:442)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.opus.piano.Stage5BundleJobRunnerTest.concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle(Stage5BundleJobRunnerTest.kt:423)
+</failure>
+    </testcase>
+    <testcase name="interruptedDownloadLeavesRetryableStateAndCompletesOnRetry" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.001">
+      <failure>java.lang.AssertionError: a partial bundle is never published expected null, but was:&lt;BundleManifest(bundleId=0cb906ce-ab1a-446e-9a42-4e612f9a13e6, type=WORK, entityId=entity-0cb906ce-ab1a-446e-9a42-4e612f9a13e6, schemaVersion=1, revision=1, language=en, createdAt=1792537582484, validatedAt=null, dependencies=[], expectedBytes=28, files=[BundleFile(sha256=7c67aa2990a8aaeeb53ae183746191e834e53461522c934b1d5392b1353fc088, bytes=28, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=28, completedFiles=0), lastError=transport, updatedAt=1792537582490)&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotNull(Assert.java:756)
+at org.junit.Assert.assertNull(Assert.java:738)
+at com.opus.piano.Stage5BundleJobRunnerTest$interruptedDownloadLeavesRetryableStateAndCompletesOnRetry$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:168)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.opus.piano.Stage5BundleJobRunnerTest.interruptedDownloadLeavesRetryableStateAndCompletesOnRetry(Stage5BundleJobRunnerTest.kt:151)
+</failure>
+    </testcase>
+    <testcase name="interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.027">
+      <failure>java.lang.IllegalArgumentException: List has more than one element.
+at kotlin.collections.CollectionsKt___CollectionsKt.single(_Collections.kt:618)
+at com.opus.piano.Stage5BundleJobRunnerTest$interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:204)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.opus.piano.Stage5BundleJobRunnerTest.interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete(Stage5BundleJobRunnerTest.kt:179)
+</failure>
+    </testcase>
+    <testcase name="corruptSourceContentNeverReachesReady" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.027">
+      <failure>java.lang.AssertionError: expected null, but was:&lt;BundleManifest(bundleId=b20c35c3-6ef7-4cf8-9fec-84a19cdb28b7, type=WORK, entityId=entity-b20c35c3-6ef7-4cf8-9fec-84a19cdb28b7, schemaVersion=1, revision=1, language=en, createdAt=1792537582519, validatedAt=null, dependencies=[], expectedBytes=22, files=[BundleFile(sha256=e0f5dc7aa820c4f7b316035c62312e0ecf5aec2d3f0d29c7e86f4c996f92f933, bytes=22, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=22, completedFiles=0), lastError=integrity, updatedAt=1792537582529)&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotNull(Assert.java:756)
+at org.junit.Assert.assertNull(Assert.java:738)
+at org.junit.Assert.assertNull(Assert.java:748)
+at com.opus.piano.Stage5BundleJobRunnerTest$corruptSourceContentNeverReachesReady$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:346)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.opus.piano.Stage5BundleJobRunnerTest.corruptSourceContentNeverReachesReady(Stage5BundleJobRunnerTest.kt:336)
+</failure>
+    </testcase>
+    <testcase name="dataSaverPausesEvenWithPerJobConsent" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.0" />
+    <testcase name="invalidRightsOnDiskQuarantinesManifestAndDeactivatesJob" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.001" />
+    <testcase name="offlineNetworkWaitsWithoutMovingBytes" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.001" />
+    <testcase name="corruptStoredBlobIsQuarantinedAndRepairedOnRetry" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.054">
+      <failure>java.lang.AssertionError: repair re-downloads and republishes expected:&lt;Completed&gt; but was:&lt;Retryable(error=transport:IllegalArgumentException)&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at com.opus.piano.Stage5BundleJobRunnerTest$corruptStoredBlobIsQuarantinedAndRepairedOnRetry$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:413)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.opus.piano.Stage5BundleJobRunnerTest.corruptStoredBlobIsQuarantinedAndRepairedOnRetry(Stage5BundleJobRunnerTest.kt:398)
+</failure>
+    </testcase>
+    <testcase name="lowStorageRefusesBeforeAnyByteMoves" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.026" />
+    <testcase name="inFlightStatesFromProcessDeathResumeLegally" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.027" />
+    <testcase name="futureReaderRequirementQuarantinesInsteadOfRenderingGarbage" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.026" />
+    <testcase name="consentRevocationMidStreamPausesAndKeepsReadyContent" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.001">
+      <failure>java.lang.AssertionError: prior ready content is never deleted expected:&lt;1&gt; but was:&lt;2&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:647)
+at com.opus.piano.Stage5BundleJobRunnerTest$consentRevocationMidStreamPausesAndKeepsReadyContent$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:273)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.opus.piano.Stage5BundleJobRunnerTest.consentRevocationMidStreamPausesAndKeepsReadyContent(Stage5BundleJobRunnerTest.kt:245)
+</failure>
+    </testcase>
+    <testcase name="queuedBundleDownloadsValidatesAndPublishesAtomically" classname="com.opus.piano.Stage5BundleJobRunnerTest" time="0.053" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage5BundleStoreTest" tests="9" failures="2" errors="0" skipped="0" time="0.132" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote" classname="com.opus.piano.Stage5BundleStoreTest" time="0.052">
+      <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertTrue(Assert.java:53)
+at com.opus.piano.Stage5BundleStoreTest$interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote$1.invokeSuspend(Stage5BundleStoreTest.kt:105)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.opus.piano.Stage5BundleStoreTest.interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote(Stage5BundleStoreTest.kt:74)
+</failure>
+    </testcase>
+    <testcase name="corruptManifestIsQuarantinedWithBytesPreservedAndOthersSurvive" classname="com.opus.piano.Stage5BundleStoreTest" time="0.0" />
+    <testcase name="sharedBlobSurvivesUntilTheLastReferencingBundleIsRemoved" classname="com.opus.piano.Stage5BundleStoreTest" time="0.0" />
+    <testcase name="admissionRefusesInsteadOfEvictingPinnedContent" classname="com.opus.piano.Stage5BundleStoreTest" time="0.001" />
+    <testcase name="concurrentRemovalsAndClearNeverCorruptTheStoreOrDeleteSharedMediaEarly" classname="com.opus.piano.Stage5BundleStoreTest" time="0.026" />
+    <testcase name="removingAllBundlesLeavesPersonalJournalDataIntact" classname="com.opus.piano.Stage5BundleStoreTest" time="0.026" />
+    <testcase name="storeStateSurvivesReopenLikeAProcessRestart" classname="com.opus.piano.Stage5BundleStoreTest" time="0.001">
+      <failure>java.lang.AssertionError: bytes survive reopen exactly expected: java.lang.Integer&lt;22&gt; but was: java.lang.Long&lt;22&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at com.opus.piano.Stage5BundleStoreTest$storeStateSurvivesReopenLikeAProcessRestart$1.invokeSuspend(Stage5BundleStoreTest.kt:126)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.opus.piano.Stage5BundleStoreTest.storeStateSurvivesReopenLikeAProcessRestart(Stage5BundleStoreTest.kt:111)
+</failure>
+    </testcase>
+    <testcase name="quarantineBlobPreservesBytesAndRemovesFromBlobStore" classname="com.opus.piano.Stage5BundleStoreTest" time="0.0" />
+    <testcase name="sweepReclaimsOnlyUnreferencedContent" classname="com.opus.piano.Stage5BundleStoreTest" time="0.026" />
+  </testsuite>
+  <testsuite name="com.opus.piano.Stage5BundleWorkerTest" tests="12" failures="5" errors="0" skipped="0" time="0.465" timestamp="2026-10-20T23:06:24" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554 - 16" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.001">
+      <failure>java.lang.AssertionError: expected success, got Failure {mOutputData=Data {}}
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.opus.piano.Stage5BundleWorkerTest$queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker$1.invokeSuspend(Stage5BundleWorkerTest.kt:193)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.opus.piano.Stage5BundleWorkerTest.queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker(Stage5BundleWorkerTest.kt:186)
+</failure>
+    </testcase>
+    <testcase name="missingInputDataFailsTheWork" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.026" />
+    <testcase name="workManagerRunsTheScheduledWorkerToACompletedBundle" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.277" />
+    <testcase name="revocationWithdrawsConsentCancelsWorkAndPausesTheManifest" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.026" />
+    <testcase name="offlineEnvironmentRetriesWithoutMovingAByte" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.001">
+      <failure>java.lang.AssertionError: Waiting maps to WorkManager retry, got Failure {mOutputData=Data {}}
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.opus.piano.Stage5BundleWorkerTest$offlineEnvironmentRetriesWithoutMovingAByte$1.invokeSuspend(Stage5BundleWorkerTest.kt:220)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.opus.piano.Stage5BundleWorkerTest.offlineEnvironmentRetriesWithoutMovingAByte(Stage5BundleWorkerTest.kt:211)
+</failure>
+    </testcase>
+    <testcase name="transportFailureRetriesAndRecordsTheAttempt" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.001">
+      <failure>java.lang.AssertionError: transient failure maps to WorkManager retry, got Failure {mOutputData=Data {}}
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.opus.piano.Stage5BundleWorkerTest$transportFailureRetriesAndRecordsTheAttempt$1.invokeSuspend(Stage5BundleWorkerTest.kt:260)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.opus.piano.Stage5BundleWorkerTest.transportFailureRetriesAndRecordsTheAttempt(Stage5BundleWorkerTest.kt:253)
+</failure>
+    </testcase>
+    <testcase name="cancelledJobSucceedsWithoutTouchingTheBundle" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.001">
+      <failure>java.lang.AssertionError: cancelled while queued is a clean success, got Failure {mOutputData=Data {}}
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.opus.piano.Stage5BundleWorkerTest$cancelledJobSucceedsWithoutTouchingTheBundle$1.invokeSuspend(Stage5BundleWorkerTest.kt:281)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.opus.piano.Stage5BundleWorkerTest.cancelledJobSucceedsWithoutTouchingTheBundle(Stage5BundleWorkerTest.kt:273)
+</failure>
+    </testcase>
+    <testcase name="missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.027">
+      <failure>java.lang.AssertionError: Paused maps to WorkManager success, got Failure {mOutputData=Data {}}
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.opus.piano.Stage5BundleWorkerTest$missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable$1.invokeSuspend(Stage5BundleWorkerTest.kt:241)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.opus.piano.Stage5BundleWorkerTest.missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable(Stage5BundleWorkerTest.kt:232)
+</failure>
+    </testcase>
+    <testcase name="reconciliationRecoversInFlightWorkAndNeverStartsUnconfirmedBundles" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.026" />
+    <testcase name="unknownBundleJobFailsTheWork" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.001" />
+    <testcase name="enqueueBindsOneUniqueWorkPerRevisionWithTheD7NetworkConstraint" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.026" />
+    <testcase name="cancelDeactivatesTheJobAndPreservesPreviouslyReadyContent" classname="com.opus.piano.Stage5BundleWorkerTest" time="0.052" />
+  </testsuite>
+</testsuites>

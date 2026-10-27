@@ -69,7 +69,10 @@ class Stage4CatalogueTest {
             db.openHelper.writableDatabase
             val external=id();val entity=CatalogueEntity(id(),"work","Authored jazz work")
             val detail=DiscoverDetail(entity,listOf(CatalogueExternalIdentity("musicbrainz","work",external,entity.id,"fixture evidence","reviewed")),emptyList(),emptyList())
-            val repo=CatalogueRepertoire(db);val added=repo.add(detail).single();assertTrue(added.created)
+            val repo=CatalogueRepertoire(db);assertNull(repo.existingPiece(detail))
+            val added=repo.add(detail).single();assertTrue(added.created)
+            assertEquals(added.pieceId,repo.existingPiece(detail))
+            assertNull(repo.existingPiece(detail.copy(identities=listOf(detail.identities.single().copy(externalId=id())))))
             val anchor=db.personalCatalogueDao().anchors("piece",added.pieceId.toString()).single();val before=db.personalCatalogueDao().identity(anchor.identityKey)!!
             val original=db.dao().piece(added.pieceId)!!;db.dao().save(original.copy(title="My private title",composer="My creator",notes="Private notes"))
             val again=repo.add(detail).single();assertFalse(again.created);assertEquals(added.pieceId,again.pieceId)

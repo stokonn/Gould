@@ -144,3 +144,7 @@ build folder. Audited as new session-generated cache (absent at recovery),copied
 byte-identically to private/tmp custody and hash-verified before removing only
 that generated file and its now-empty directories. No metadata contents published.
 Final runner cf:false/telemetry:false prevents another lookup.
+
+### 2026-10-25 — bounded Stage 8 Discover repair
+
+The isolated `fix/goldberg-0.11-discover-ux` branch consolidates Library/Discover metadata rendering into the shared responsive `EditorialMetadata` component. Only the duplicated active layout is replaced; no historical source evidence, schema, migration, backup format, release artifact or unrelated asset is removed. This is part of the authorized UX repair, not substantial legacy cleanup or release publication. Source-bound verification is maintained in [the Stage 8 Discover checkpoint](../planning/goldberg-0.11/stage-8/discover-repair/CHECKPOINT.md); do not infer native execution from host compilation.

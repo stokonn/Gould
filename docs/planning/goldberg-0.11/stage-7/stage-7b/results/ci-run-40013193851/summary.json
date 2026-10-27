@@ -1,0 +1,40 @@
+{
+  "source": "de792fc06f0e8d8ef898d4d2254489783e3310a5",
+  "workflow": "failure: post-test smoke launch missing installed app",
+  "connectedTask": "BUILD SUCCESSFUL in3m22s",
+  "jvm": {
+    "tests": 275,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 132,
+    "hints": 1
+  },
+  "instrumentation": {
+    "tests": 182,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2
+  },
+  "stage7bNative": {
+    "tests": 4,
+    "passed": 4
+  },
+  "screenshots": "one final-screen.png; smoke capture not reached",
+  "skipped": [
+    {
+      "class": "com.opus.piano.Stage4ExternalPortraitTest",
+      "test": "separatelyAcquiredLicensedOriginalCanBeVerifiedAndRenderedOffline",
+      "reason": {}
+    },
+    {
+      "class": "com.opus.piano.Stage4ExternalProviderTest",
+      "test": "boundedObservedProviderResponsesPassNativeProjectionAndSearchPaging",
+      "reason": {}
+    }
+  ],
+  "xmlTestcases": 182
+}

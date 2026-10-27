@@ -1,0 +1,38 @@
+--- initial-probe-source
++++ uuid-corrected-probe-source
+@@ -158,16 +158,17 @@
+             write("practice-completion.json",JSONObject().put("sessionId",first).put("sessionCount",1).put("credited",sessions.single().durationMillis).put("originalDraftArchived",true))
+         }
+     }
++    private fun bundleId(kind:String)=java.util.UUID.nameUUIDFromBytes((kind+run).toByteArray()).toString()
+     @Test fun prepareOfflineBundleAndPeriodicWorkForReboot()=runBlocking {
+         val app=context.applicationContext as OpusApplication
+         assertFalse(app.bundleNetwork.facts().connected)
+         val bytes="Synthetic Stage8 offline blob Ž".toByteArray()
+         val file=Stage5Fixtures.bundleFile(bytes)
+-        val ready=Stage5Fixtures.manifest("stage8ready$run",files=listOf(file),state=com.opus.piano.data.offline.BundleState.READY)
++        val ready=Stage5Fixtures.manifest(bundleId("ready"),files=listOf(file),state=com.opus.piano.data.offline.BundleState.READY)
+         val staging=File(directory,"bundle.bin").apply{writeBytes(bytes)}
+         assertTrue(app.bundleStore.installBlob(staging,file.sha256,bytes.size.toLong()))
+         app.bundleStore.save(ready)
+-        val queued=Stage5Fixtures.manifest("stage8queue$run",files=listOf(file))
++        val queued=Stage5Fixtures.manifest(bundleId("queued"),files=listOf(file))
+         val enqueued=app.bundleScheduler.enqueue(queued,false,true)
+         assertTrue(enqueued.enqueued)
+         app.adminSettings.syncPolicy=com.opus.piano.admin.AdminSyncPolicy(background=true)
+@@ -190,12 +191,12 @@
+         val periodic=wm.getWorkInfoById(java.util.UUID.fromString(old.getString("periodicWorkId"))).get()!!
+         assertEquals(androidx.work.WorkInfo.State.ENQUEUED,bundle.state)
+         assertEquals(androidx.work.WorkInfo.State.ENQUEUED,periodic.state)
+-        val ready=app.bundleStore.readPublished().manifests.single{it.bundleId=="stage8ready$run"}
++        val ready=app.bundleStore.readPublished().manifests.single{it.bundleId==bundleId("ready")}
+         assertEquals(com.opus.piano.data.offline.BundleState.READY,ready.state)
+         val bytes=app.bundleStore.blobFile(old.getString("blobSha256")).readBytes()
+         assertEquals(old.getString("blobSha256"),Stage5Fixtures.shaOf(bytes))
+-        assertFalse(requireNotNull(app.bundleJobs.get(com.opus.piano.data.offline.BundleJob.id("stage8queue$run",1))).meteredAllowed)
+-        assertTrue(app.bundleScheduler.cancel("stage8queue$run",1))
++        assertFalse(requireNotNull(app.bundleJobs.get(com.opus.piano.data.offline.BundleJob.id(bundleId("queued"),1))).meteredAllowed)
++        assertTrue(app.bundleScheduler.cancel(bundleId("queued"),1))
+         app.adminSettings.syncPolicy=com.opus.piano.admin.AdminSyncPolicy()
+         com.opus.piano.admin.AdminSyncWorker.cancel(app)
+         val until=SystemClock.elapsedRealtime()+10000

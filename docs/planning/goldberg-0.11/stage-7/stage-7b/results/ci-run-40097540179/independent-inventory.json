@@ -1,0 +1,144 @@
+{
+  "run": "40097540179",
+  "source": "fb1d3f971ed79de09dccbdc771e1c45a09dc0a6c",
+  "junit": {
+    "tests": 187,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2
+  },
+  "selectedCases": [
+    {
+      "class": "com.opus.piano.Stage4ExternalPortraitTest",
+      "name": "separatelyAcquiredLicensedOriginalCanBeVerifiedAndRenderedOffline",
+      "status": "skipped",
+      "details": "<testcase name=\"separatelyAcquiredLicensedOriginalCanBeVerifiedAndRenderedOffline\" classname=\"com.opus.piano.Stage4ExternalPortraitTest\" time=\"0.003\">\n      <skipped />\n    </testcase>\n  "
+    },
+    {
+      "class": "com.opus.piano.Stage4ExternalProviderTest",
+      "name": "boundedObservedProviderResponsesPassNativeProjectionAndSearchPaging",
+      "status": "skipped",
+      "details": "<testcase name=\"boundedObservedProviderResponsesPassNativeProjectionAndSearchPaging\" classname=\"com.opus.piano.Stage4ExternalProviderTest\" time=\"0.002\">\n      <skipped />\n    </testcase>\n  "
+    },
+    {
+      "class": "com.opus.piano.Stage7bAcceptanceTest",
+      "name": "renderApprovedAdminMatrixAndRetainAccessibilityTrees",
+      "status": "pass",
+      "details": null
+    },
+    {
+      "class": "com.opus.piano.Stage7bAcceptanceTest",
+      "name": "adminCheckablesExportNameStateAndClickOnSameNode",
+      "status": "pass",
+      "details": null
+    },
+    {
+      "class": "com.opus.piano.Stage7bAdminRuntimeTest",
+      "name": "keystoreSessionSurvivesStoreRecreationAndTamperingClearsIt",
+      "status": "pass",
+      "details": null
+    },
+    {
+      "class": "com.opus.piano.Stage7bAdminRuntimeTest",
+      "name": "nativeJsonPreservesExactAuditBigintAndRejectsRevisionOverflow",
+      "status": "pass",
+      "details": null
+    },
+    {
+      "class": "com.opus.piano.Stage7bAdminRuntimeTest",
+      "name": "androidMarkersPersistAcrossStoreRecreationAndStayAccountScoped",
+      "status": "pass",
+      "details": null
+    },
+    {
+      "class": "com.opus.piano.Stage7bAdminRuntimeTest",
+      "name": "savedEndpointAndKeystoreTokenCannotEnableApplicationNetworking",
+      "status": "pass",
+      "details": null
+    },
+    {
+      "class": "com.opus.piano.Stage7bNotificationRuntimeTest",
+      "name": "completeChangedScanPermissionFailureRevocationCancellationAndOfflineAreFailClosed",
+      "status": "pass",
+      "details": null
+    },
+    {
+      "class": "com.opus.piano.Stage7bSyncRuntimeTest",
+      "name": "uniqueThreeHourWorkUsesConsentConstraintsAndCancels",
+      "status": "pass",
+      "details": null
+    },
+    {
+      "class": "com.opus.piano.Stage7bSyncRuntimeTest",
+      "name": "staleEndpointAndMissingSessionCannotNotify",
+      "status": "pass",
+      "details": null
+    }
+  ],
+  "personalCollectionsEqual": 12,
+  "databases": [
+    {
+      "database": "before",
+      "userVersion": 8,
+      "integrity": "ok",
+      "foreignKeyViolations": 0
+    },
+    {
+      "database": "after",
+      "userVersion": 10,
+      "integrity": "ok",
+      "foreignKeyViolations": 0
+    }
+  ],
+  "upgradeResult": {
+    "baselineVersion": "0.10.1",
+    "baselineSchemaVerified": 8,
+    "offlineVerified": true,
+    "personalSchema": 10,
+    "baselineApkSha256": "849903e2d1d326a021ac3808081e234c8a03b5be2b1c2d2bc1f9dfc4ff0cd28d",
+    "candidateApkSha256": "3b0afc1e5e8318dcec628db7b97ea4dd0977188423e7a587cb5b70eb51da08d0",
+    "serial": "emulator-5554",
+    "originalRowsUnchanged": true,
+    "preferencesUnchanged": true,
+    "bridge": {
+      "identities": 3,
+      "anchors": 113
+    },
+    "sessions": 37,
+    "foreignKeys": "pass",
+    "startupTotalTimeMs": {
+      "baseline": [
+        3388,
+        3608,
+        3101,
+        1755,
+        1410
+      ],
+      "candidate": [
+        1555,
+        1433,
+        1597,
+        1716,
+        1474
+      ],
+      "caveat": "Small emulator samples; cold process after initialization, not install/start-to-usable or device guarantee"
+    }
+  },
+  "pngFiles": 262,
+  "treeTextFiles": 263,
+  "archives": [
+    {
+      "id": 12561801732,
+      "kind": "instrumentation",
+      "zip": "/tmp/goldberg-final-run-40097540179/instrumentation.zip",
+      "sha256": "8a75b0c22423cb792f893fa8ce06b04b1ca58bfba023f5b22ef1dfbaf5426223"
+    },
+    {
+      "id": 12561432389,
+      "kind": "upgrade",
+      "zip": "/tmp/goldberg-final-run-40097540179/upgrade.zip",
+      "sha256": "c195d8743bce8fa5b2a2e7f6b711b552f82693cd595b4c0a3e85d9be1053d191"
+    }
+  ],
+  "result": "PASS"
+}

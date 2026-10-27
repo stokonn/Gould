@@ -1,0 +1,1863 @@
+[
+  {
+    "original": "accessibility-after-allow.txt",
+    "bytes": 5698,
+    "sha256": "01a465a9a92ab5c9ab07832d1a5ade824bd46287438468ae7ada436b11a0ef56",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/accessibility-after-allow.txt",
+    "published": "accessibility-after-allow.txt"
+  },
+  {
+    "original": "accessibility-enabled.txt",
+    "bytes": 6062,
+    "sha256": "7f62954d37646e9c620a9bc3c2131b4bafa8633bbeaa6ffa7fcd0f60953c883d",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/accessibility-enabled.txt",
+    "published": "accessibility-enabled.txt"
+  },
+  {
+    "original": "accessibility-services-before.txt",
+    "bytes": 5,
+    "sha256": "38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/accessibility-services-before.txt",
+    "published": "accessibility-services-before.txt"
+  },
+  {
+    "original": "admin-before-talkback.json",
+    "bytes": 33537,
+    "sha256": "ab6d07403870e608b603e06b840f44682849f62dc771dfce1204501e71d900d4",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/admin-before-talkback.json",
+    "published": "admin-before-talkback.json"
+  },
+  {
+    "original": "admin-before-talkback.png",
+    "bytes": 73160,
+    "sha256": "624c5ba9aee97d1b6ca18b91562529ad6c507d35b17955beb87d186972b1d7ae",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/admin-before-talkback.png",
+    "published": "admin-before-talkback.png"
+  },
+  {
+    "original": "after-handwriting-tutorial-back.json",
+    "bytes": 30561,
+    "sha256": "76e790ecdd43f11eff9aa2456b89867ea9f7af78beec723de8daa82a1ab80432",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/after-handwriting-tutorial-back.json",
+    "published": "after-handwriting-tutorial-back.json"
+  },
+  {
+    "original": "after-handwriting-tutorial-back.png",
+    "bytes": 64551,
+    "sha256": "7b734e216859924bc77974af4ee9d30e945c2ea972be1e707bcd6118c70711e3",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/after-handwriting-tutorial-back.png",
+    "published": "after-handwriting-tutorial-back.png"
+  },
+  {
+    "original": "after-revocation-worker.json",
+    "bytes": 15210,
+    "sha256": "dc33dd460f4d10d3aa833f060b629ab21990927f5d9b0d9014f35fbb3ec5d7ea",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/after-revocation-worker.json",
+    "published": "after-revocation-worker.json"
+  },
+  {
+    "original": "after-revocation-worker.png",
+    "bytes": 602171,
+    "sha256": "5826b8d028035291369b4ec86c0ec91a688d41f911f5b64795c22062b023e376",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/after-revocation-worker.png",
+    "published": "after-revocation-worker.png"
+  },
+  {
+    "original": "app-evidence-before-extra.tar",
+    "bytes": 8195584,
+    "sha256": "2d0a52e38c29b7b26136fcf9d856d94fc567dbd73125b12fc1962843f0b66267",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/app-evidence-before-extra.tar",
+    "published": false,
+    "reason": "Complete original app-side archives retained locally; individual observations and hashes published."
+  },
+  {
+    "original": "app-evidence-final.tar",
+    "bytes": 12143104,
+    "sha256": "ec37429738638cb6ac14a1515d2ba605aa4a5fc8b94dcdd4d41085ed8050f4bb",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/app-evidence-final.tar",
+    "published": false,
+    "reason": "Complete original app-side archives retained locally; individual observations and hashes published."
+  },
+  {
+    "original": "avd-create.log",
+    "bytes": 1125,
+    "sha256": "73d0faef9d45c2733b379b862aaf305b5f02e764c8379dfe6c8c8b4f89fdada9",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/avd-create.log",
+    "published": "avd-create.log"
+  },
+  {
+    "original": "avd-disk-create.log",
+    "bytes": 1125,
+    "sha256": "73d0faef9d45c2733b379b862aaf305b5f02e764c8379dfe6c8c8b4f89fdada9",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/avd-disk-create.log",
+    "published": "avd-disk-create.log"
+  },
+  {
+    "original": "before-profile.json",
+    "bytes": 41106,
+    "sha256": "0fb811ff2b1a7e5a8d432dcfb81db9a53ed63e5c91606ad6e1e1b86674c724da",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/before-profile.json",
+    "published": "before-profile.json"
+  },
+  {
+    "original": "before-profile.png",
+    "bytes": 88157,
+    "sha256": "3bd85d6c388dcaff563b4faa0ff86ad276c528b5289d233ed8e199d257b65dd8",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/before-profile.png",
+    "published": "before-profile.png"
+  },
+  {
+    "original": "before-queue-ime.json",
+    "bytes": 28845,
+    "sha256": "2b34f5f121184ee363edf2a404996d85bb759b9b17489cfdf17569575c2c5ae9",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/before-queue-ime.json",
+    "published": "before-queue-ime.json"
+  },
+  {
+    "original": "before-queue-ime.png",
+    "bytes": 66627,
+    "sha256": "2fd22a7db56c01ad17116faeeecd7c465887fefd5ea69a8abbd89f8ddd5c173e",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/before-queue-ime.png",
+    "published": "before-queue-ime.png"
+  },
+  {
+    "original": "before-talkback-calibration.json",
+    "bytes": 30560,
+    "sha256": "e850c4ac455694a0d6aace79f631087e5dd58c95f85bced8b58d247be54ae081",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/before-talkback-calibration.json",
+    "published": "before-talkback-calibration.json"
+  },
+  {
+    "original": "before-talkback-calibration.png",
+    "bytes": 85399,
+    "sha256": "0bef4362ffc457723c13bd61426dea2efe37fc4710c1b6bc46523090eefcf3c1",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/before-talkback-calibration.png",
+    "published": "before-talkback-calibration.png"
+  },
+  {
+    "original": "boot.json",
+    "bytes": 413,
+    "sha256": "ee567f1476291c0154043285f148dd56894b1bd44f282ddf8b5c6c45a62b424d",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/boot.json",
+    "published": "boot.json"
+  },
+  {
+    "original": "cleanup-package-permission.txt",
+    "bytes": 9142,
+    "sha256": "a95641e300e3338fe72855b2682dbecca7d6ed796216c6682e58e5b52bc38227",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cleanup-package-permission.txt",
+    "published": "cleanup-package-permission.txt"
+  },
+  {
+    "original": "cleanup-state.json",
+    "bytes": 380,
+    "sha256": "ff755fe9c04c1b684b12186563ceca1150841258750394d77af5613f1da41278",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cleanup-state.json",
+    "published": "cleanup-state.json"
+  },
+  {
+    "original": "console-EV_ABS.txt",
+    "bytes": 875,
+    "sha256": "d92083a848da65a236f611c81981f3074cf2eca487674af7d4f179a711d9d0d0",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/console-EV_ABS.txt",
+    "published": "console-EV_ABS.txt"
+  },
+  {
+    "original": "console-EV_KEY.txt",
+    "bytes": 7556,
+    "sha256": "7318247f56427c2528068ee42eb06268be2c455cd1e48f011770e1ec092f9912",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/console-EV_KEY.txt",
+    "published": "console-EV_KEY.txt"
+  },
+  {
+    "original": "console-mouse.txt",
+    "bytes": 380,
+    "sha256": "34972f5c3d9cad99e569b0a6962975ba5a8a8321e4cb70d5610b0c29c216e105",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/console-mouse.txt",
+    "published": "console-mouse.txt"
+  },
+  {
+    "original": "cross-process-revoke.json",
+    "bytes": 426,
+    "sha256": "19c8cf49410538b4ddb83fd314839ad7444a76174447a04056e5f8b3282060a4",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cross-process-revoke.json",
+    "published": "cross-process-revoke.json"
+  },
+  {
+    "original": "cs-accessible-back-pass.json",
+    "bytes": 33726,
+    "sha256": "79b1bfd4987f1b51335a3ab60f86ae38bd4c9d30dae5094c4757cd84da65c2c0",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-accessible-back-pass.json",
+    "published": "cs-accessible-back-pass.json"
+  },
+  {
+    "original": "cs-accessible-back-pass.png",
+    "bytes": 86119,
+    "sha256": "a101ec2abbe47ff428398451688707162dae3ce3560eb75d0b944bb9445d0052",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-accessible-back-pass.png",
+    "published": "cs-accessible-back-pass.png"
+  },
+  {
+    "original": "cs-back-traversal-0.json",
+    "bytes": 29044,
+    "sha256": "209dd6780432db08e9127272335cb1a80d2b2ac9a4a729b492b232640fdcd13a",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-0.json",
+    "published": "cs-back-traversal-0.json"
+  },
+  {
+    "original": "cs-back-traversal-0.png",
+    "bytes": 87398,
+    "sha256": "9341c8d73ab8636bed3432fb78af5fb58ee2a51218c78107d0255981d3cb4136",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-0.png",
+    "published": "cs-back-traversal-0.png"
+  },
+  {
+    "original": "cs-back-traversal-1.json",
+    "bytes": 29044,
+    "sha256": "095ef9a65ded653d2b2058360f21f7cc2c6fabd06a69a72fcbe014a4981350ed",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-1.json",
+    "published": "cs-back-traversal-1.json"
+  },
+  {
+    "original": "cs-back-traversal-1.png",
+    "bytes": 87454,
+    "sha256": "c7842a0b6a547320ef31c1c2c4319e4311c1e817d3c54e55bd5d79a87bc08dbe",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-1.png",
+    "published": "cs-back-traversal-1.png"
+  },
+  {
+    "original": "cs-back-traversal-2.json",
+    "bytes": 29044,
+    "sha256": "d1f4081418eed2c423629ae80e0f513da865b3581ed3ec94e7bf4bf7559746bb",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-2.json",
+    "published": "cs-back-traversal-2.json"
+  },
+  {
+    "original": "cs-back-traversal-2.png",
+    "bytes": 87451,
+    "sha256": "d72c958ecb27c68ed3654b3c59ca0a6f4361f2828724c98d24608aebfb05d8b0",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-2.png",
+    "published": "cs-back-traversal-2.png"
+  },
+  {
+    "original": "cs-back-traversal-3.json",
+    "bytes": 29044,
+    "sha256": "37df82485c30319529c14798f08b26c801227cd6c33274cebbc82b3bcf1f80ce",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-3.json",
+    "published": "cs-back-traversal-3.json"
+  },
+  {
+    "original": "cs-back-traversal-3.png",
+    "bytes": 87872,
+    "sha256": "ebfe474c3cf1e5580033d8be0e8c0658c2ba97acc177b49493d62a38fd6802ed",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-3.png",
+    "published": "cs-back-traversal-3.png"
+  },
+  {
+    "original": "cs-back-traversal-4.json",
+    "bytes": 29044,
+    "sha256": "f831315264228ae85aa445a6d27bb9f287f7502f93c282504779ffca73356d54",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-4.json",
+    "published": "cs-back-traversal-4.json"
+  },
+  {
+    "original": "cs-back-traversal-4.png",
+    "bytes": 87183,
+    "sha256": "32bd7107e4d82b343c4437d837d4790d787f88b7b2a6d62f3c267a502e9e1290",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-4.png",
+    "published": "cs-back-traversal-4.png"
+  },
+  {
+    "original": "cs-back-traversal-5.json",
+    "bytes": 29044,
+    "sha256": "ea1df7837569f5956a5042ff88e0d38d9f4a9bb48109d442fb3e42425d6f2684",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-5.json",
+    "published": "cs-back-traversal-5.json"
+  },
+  {
+    "original": "cs-back-traversal-5.png",
+    "bytes": 87361,
+    "sha256": "ba43320b0465a928ff6ae23b63f89b7345d64db18a371f3cdb1d1b5c7a13f7ec",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-5.png",
+    "published": "cs-back-traversal-5.png"
+  },
+  {
+    "original": "cs-back-traversal-6.json",
+    "bytes": 29044,
+    "sha256": "b4ce26a98f845236e7676328c72735e14a0f2a93a219c9cba6d4ad85395886a0",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-6.json",
+    "published": "cs-back-traversal-6.json"
+  },
+  {
+    "original": "cs-back-traversal-6.png",
+    "bytes": 87379,
+    "sha256": "f88c6e7c171b006e230f8a7824427b27e96945a99dc02289fe170cf01e0dab51",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-back-traversal-6.png",
+    "published": "cs-back-traversal-6.png"
+  },
+  {
+    "original": "cs-before-settings.json",
+    "bytes": 33622,
+    "sha256": "8b1e9dfb1a58b9e09489d2d99e5c9d0e98914921cc4453fe2034ee16692ca621",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-before-settings.json",
+    "published": "cs-before-settings.json"
+  },
+  {
+    "original": "cs-before-settings.png",
+    "bytes": 85670,
+    "sha256": "74cc0a56f5bec920435e8ac87960bb3a1379ead1770699aa7b5a28f9cc84f7f5",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-before-settings.png",
+    "published": "cs-before-settings.png"
+  },
+  {
+    "original": "cs-dark-ready-settled.json",
+    "bytes": 38525,
+    "sha256": "9bb45dd134728c037ba30bd310812258df4157aaa7b26a16438bed4db4ca9c1f",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-dark-ready-settled.json",
+    "published": "cs-dark-ready-settled.json"
+  },
+  {
+    "original": "cs-dark-ready-settled.png",
+    "bytes": 77689,
+    "sha256": "ce9ce0085339c5bcc24edfd58ef3b798152b3c56512780c7501c128348f804b4",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-dark-ready-settled.png",
+    "published": "cs-dark-ready-settled.png"
+  },
+  {
+    "original": "cs-dark-ready.json",
+    "bytes": 38525,
+    "sha256": "3337d2e958f34f081e01c65a84bdd6f60dae6c46336df5c949c2c4884f012242",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-dark-ready.json",
+    "published": "cs-dark-ready.json"
+  },
+  {
+    "original": "cs-dark-ready.png",
+    "bytes": 78109,
+    "sha256": "0fdcffc602d4d97b0911497e1af4eb44149301fc0d363248e56c5192daba6322",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-dark-ready.png",
+    "published": "cs-dark-ready.png"
+  },
+  {
+    "original": "cs-dark-verified-audit.json",
+    "bytes": 28940,
+    "sha256": "93f330187931e7707fcdd097ffb385a14c1ad91c6687534ca1279d70c2f1215f",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-dark-verified-audit.json",
+    "published": "cs-dark-verified-audit.json"
+  },
+  {
+    "original": "cs-dark-verified-audit.png",
+    "bytes": 87526,
+    "sha256": "5fd27883cfe7d1852de12298ef76d308a37d5c9bcfb0d6cab0c2b5b903ff6f6f",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-dark-verified-audit.png",
+    "published": "cs-dark-verified-audit.png"
+  },
+  {
+    "original": "cs-dark-verified-dashboard.json",
+    "bytes": 33622,
+    "sha256": "b818525945bd0a3cc22baca6355c9775b2ba12488f02a5255d5af601db9a41f7",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-dark-verified-dashboard.json",
+    "published": "cs-dark-verified-dashboard.json"
+  },
+  {
+    "original": "cs-dark-verified-dashboard.png",
+    "bytes": 86046,
+    "sha256": "5934af3b7c4fcd9d19c66c4c9f499a7fe2fa3cbd52b2a4cc09dcee3c3c512978",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-dark-verified-dashboard.png",
+    "published": "cs-dark-verified-dashboard.png"
+  },
+  {
+    "original": "cs-dark-verified-profile.json",
+    "bytes": 34879,
+    "sha256": "e95e001c6b8bb78f3a70bb0830a31b13b9cddc01ef422532f94e1d1d1fd56cae",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-dark-verified-profile.json",
+    "published": "cs-dark-verified-profile.json"
+  },
+  {
+    "original": "cs-dark-verified-profile.png",
+    "bytes": 93031,
+    "sha256": "250f085d55a3b8b9dfacbbda54eb8807035e58a3d1c3a4dd33af9624341f80cc",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-dark-verified-profile.png",
+    "published": "cs-dark-verified-profile.png"
+  },
+  {
+    "original": "cs-dark-verified-ready.json",
+    "bytes": 38523,
+    "sha256": "070e80e0b94083c82ee606b88c6a5be18c53be83c59abb8d728ac628c0e427bc",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-dark-verified-ready.json",
+    "published": "cs-dark-verified-ready.json"
+  },
+  {
+    "original": "cs-dark-verified-ready.png",
+    "bytes": 79113,
+    "sha256": "71f166e8696d67e0b70cfd80bc0e48bae11521f89f78a4e176eb45a642e71307",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-dark-verified-ready.png",
+    "published": "cs-dark-verified-ready.png"
+  },
+  {
+    "original": "cs-pre-theme-setup-fix.tar",
+    "bytes": 8419840,
+    "sha256": "07b1132844c0f991d715fc7d36d18b5a73910a1de48ac7215639eb431c753fb8",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-pre-theme-setup-fix.tar",
+    "published": false,
+    "reason": "Complete original app-side archives retained locally; individual observations and hashes published."
+  },
+  {
+    "original": "cs-settings-focus-1.json",
+    "bytes": 30952,
+    "sha256": "aa28b26d78256dec1054eda81eaf85f62a391aa5fa852791069ee2fca476e5e6",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-1.json",
+    "published": "cs-settings-focus-1.json"
+  },
+  {
+    "original": "cs-settings-focus-1.png",
+    "bytes": 112683,
+    "sha256": "d650f70327d2bde872d8fd488d6cd50a38da157bae69f5385aaa0c0fe73cbcbe",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-1.png",
+    "published": "cs-settings-focus-1.png"
+  },
+  {
+    "original": "cs-settings-focus-10.json",
+    "bytes": 30952,
+    "sha256": "44963a51a74302256d9a39e6b91613b3e6820edab824c20a7372477f792f96e4",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-10.json",
+    "published": "cs-settings-focus-10.json"
+  },
+  {
+    "original": "cs-settings-focus-10.png",
+    "bytes": 112648,
+    "sha256": "b9794cffcfcbeb6d8b731d375253d5c50c2c5ca85096ba37c253f9b8e6f8c4ea",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-10.png",
+    "published": "cs-settings-focus-10.png"
+  },
+  {
+    "original": "cs-settings-focus-2.json",
+    "bytes": 30952,
+    "sha256": "44852737b5761464e6e6b1bc9a5f70084e4a4dae30211697100821404793ca97",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-2.json",
+    "published": "cs-settings-focus-2.json"
+  },
+  {
+    "original": "cs-settings-focus-2.png",
+    "bytes": 113000,
+    "sha256": "00e7cb0a4e50bf7e2455997387857c92acb100e222998442ac49cc45829801f2",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-2.png",
+    "published": "cs-settings-focus-2.png"
+  },
+  {
+    "original": "cs-settings-focus-3.json",
+    "bytes": 30952,
+    "sha256": "7ad6a53c27be80cc2bb916b799eb0ef6b0e2954d00e40ae3cedbdf1b6474f105",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-3.json",
+    "published": "cs-settings-focus-3.json"
+  },
+  {
+    "original": "cs-settings-focus-3.png",
+    "bytes": 112478,
+    "sha256": "93cfc92f74edc39dae92a4e5c6494785285da419c4e8e00600673a682d1fc20e",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-3.png",
+    "published": "cs-settings-focus-3.png"
+  },
+  {
+    "original": "cs-settings-focus-4.json",
+    "bytes": 30952,
+    "sha256": "d09315b9cdd86fee14aece388906b54f25755f57dc6a5d10cb47f57f4fc36e4b",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-4.json",
+    "published": "cs-settings-focus-4.json"
+  },
+  {
+    "original": "cs-settings-focus-4.png",
+    "bytes": 112530,
+    "sha256": "37f11062ba1c97f7c166947f0f01620bac2a65c96473bd01ce89a8cbfc55e6ae",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-4.png",
+    "published": "cs-settings-focus-4.png"
+  },
+  {
+    "original": "cs-settings-focus-5.json",
+    "bytes": 30952,
+    "sha256": "65aaf2b4bd02eff40dc135d949eb94eb594b13ff74265cec6366334b107dd63f",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-5.json",
+    "published": "cs-settings-focus-5.json"
+  },
+  {
+    "original": "cs-settings-focus-5.png",
+    "bytes": 112605,
+    "sha256": "c819a61edd60a439e8dd4df58b005c969a686778bccc7bbdbd458ee72816e5fe",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-5.png",
+    "published": "cs-settings-focus-5.png"
+  },
+  {
+    "original": "cs-settings-focus-6.json",
+    "bytes": 30952,
+    "sha256": "3f29252e67c4bbf9ec55aff981b45bf073e20bf532b6c5713a937d0ea7df69f7",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-6.json",
+    "published": "cs-settings-focus-6.json"
+  },
+  {
+    "original": "cs-settings-focus-6.png",
+    "bytes": 112964,
+    "sha256": "0be64dd3c94e9b6d625a789974310f297089e6941afce5b3b0ada4d711ee2024",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-6.png",
+    "published": "cs-settings-focus-6.png"
+  },
+  {
+    "original": "cs-settings-focus-7.json",
+    "bytes": 30952,
+    "sha256": "239ed8c8bcfb54f42bcd431f6af09a44f608c2dfee347a14eb3ba09935c1b267",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-7.json",
+    "published": "cs-settings-focus-7.json"
+  },
+  {
+    "original": "cs-settings-focus-7.png",
+    "bytes": 113154,
+    "sha256": "890d3dc4c4e9c96eeec6e1bf6e48eaada35b79025dee9c61aaf74b9ffec75d31",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-7.png",
+    "published": "cs-settings-focus-7.png"
+  },
+  {
+    "original": "cs-settings-focus-8.json",
+    "bytes": 30952,
+    "sha256": "20dd4c872ec1baa0abb1da1c52c9a76b2b86e678ea9da159336e92eea5581194",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-8.json",
+    "published": "cs-settings-focus-8.json"
+  },
+  {
+    "original": "cs-settings-focus-8.png",
+    "bytes": 112880,
+    "sha256": "3411a137c583b82e15185daaa8b1d2d43c9dfc6faae19f19a537de051c996d79",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-8.png",
+    "published": "cs-settings-focus-8.png"
+  },
+  {
+    "original": "cs-settings-focus-9.json",
+    "bytes": 30952,
+    "sha256": "20f18b076ae5dc1f20fa97c5a33d8fe78360219c35420507859ab3867a698b29",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-9.json",
+    "published": "cs-settings-focus-9.json"
+  },
+  {
+    "original": "cs-settings-focus-9.png",
+    "bytes": 112611,
+    "sha256": "1e04db1218543f1deab75162613646a97445249cc657180537d72fc67494a794",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-9.png",
+    "published": "cs-settings-focus-9.png"
+  },
+  {
+    "original": "cs-settings-focus-observed.json",
+    "bytes": 6431,
+    "sha256": "17ddcd6c28171686ca97d773c806bf62cbab84020882ebbf0f99f0f7912069e8",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-focus-observed.json",
+    "published": "cs-settings-focus-observed.json"
+  },
+  {
+    "original": "cs-settings-talkback-order.json",
+    "bytes": 307,
+    "sha256": "27a0b4450bf7bab1bd619f425192ea974c169d048698892906a6218f605f05b0",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-settings-talkback-order.json",
+    "published": "cs-settings-talkback-order.json"
+  },
+  {
+    "original": "cs-verified-order-1.json",
+    "bytes": 29044,
+    "sha256": "5851ea5d186d7800e056e7ea5467232f79d4938374c91dcfb4f284ff7229161f",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-verified-order-1.json",
+    "published": "cs-verified-order-1.json"
+  },
+  {
+    "original": "cs-verified-order-1.png",
+    "bytes": 87836,
+    "sha256": "61c2d995168c31f41cd27ed78f8627ddbef4695d4771c973218f823e38349599",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-verified-order-1.png",
+    "published": "cs-verified-order-1.png"
+  },
+  {
+    "original": "cs-verified-order-2.json",
+    "bytes": 29044,
+    "sha256": "6c87d69e96eb598e1bad61a7efa8405facb474c7e0027f2521031675a04e7b26",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-verified-order-2.json",
+    "published": "cs-verified-order-2.json"
+  },
+  {
+    "original": "cs-verified-order-2.png",
+    "bytes": 87665,
+    "sha256": "d519c452b17b01a71b5c3c015941d22ac269b073802abeb0f5281ecf548ab15c",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-verified-order-2.png",
+    "published": "cs-verified-order-2.png"
+  },
+  {
+    "original": "cs-verified-order-3.json",
+    "bytes": 29044,
+    "sha256": "8cd8ba356038bd0ae039a6eb52786651e4a5b8ae38f63608e652fb0d6a94504b",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-verified-order-3.json",
+    "published": "cs-verified-order-3.json"
+  },
+  {
+    "original": "cs-verified-order-3.png",
+    "bytes": 88356,
+    "sha256": "67e8e792b1ef2bbd6c48c2215ff7490a71666539a0fc5cf45769ffe2814f0386",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-verified-order-3.png",
+    "published": "cs-verified-order-3.png"
+  },
+  {
+    "original": "cs-verified-order-4.json",
+    "bytes": 29044,
+    "sha256": "1c3f4c9a11c1ebc9ae7dbbd217f02d99eeef03e94a8fa75d98a8a80f2bbae985",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-verified-order-4.json",
+    "published": "cs-verified-order-4.json"
+  },
+  {
+    "original": "cs-verified-order-4.png",
+    "bytes": 87927,
+    "sha256": "1104d75a0a2f0be155c9ec5739193fd04634d94744abce6527959056d2254b19",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-verified-order-4.png",
+    "published": "cs-verified-order-4.png"
+  },
+  {
+    "original": "cs-verified-order-5.json",
+    "bytes": 29044,
+    "sha256": "f007a0334ffb6ed84e90e345c53aebbe21fd3863f9f1391faa8f98c2971e1434",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-verified-order-5.json",
+    "published": "cs-verified-order-5.json"
+  },
+  {
+    "original": "cs-verified-order-5.png",
+    "bytes": 87932,
+    "sha256": "32609aca825c31a503ee81fd612316c041f26fa040826737141b04b1fa9c5a1e",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-verified-order-5.png",
+    "published": "cs-verified-order-5.png"
+  },
+  {
+    "original": "cs-verified-order-6.json",
+    "bytes": 29044,
+    "sha256": "94d3c0fb0b1f9cb2f8083efe826c10b371a79ccdfff2a806a5485f0a53fcd4ea",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-verified-order-6.json",
+    "published": "cs-verified-order-6.json"
+  },
+  {
+    "original": "cs-verified-order-6.png",
+    "bytes": 87873,
+    "sha256": "319be816b017efcb7821cdd7e400fda62a00f01e22da69e79ef60ce7468aa23a",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-verified-order-6.png",
+    "published": "cs-verified-order-6.png"
+  },
+  {
+    "original": "cs-verified-talkback-order.json",
+    "bytes": 315,
+    "sha256": "f4dc7266ae40f76e17eb3fa6f348316d5009fe0e7928be6649abea9277f50264",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/cs-verified-talkback-order.json",
+    "published": "cs-verified-talkback-order.json"
+  },
+  {
+    "original": "czech-dark-interactive.log",
+    "bytes": 143,
+    "sha256": "5872b6a64ea3ebd765944a47725fd1fb4e8478848d58d6d87fa79467becaf4d6",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/czech-dark-interactive.log",
+    "published": "czech-dark-interactive.log"
+  },
+  {
+    "original": "czech-dark-verified-session.log",
+    "bytes": 143,
+    "sha256": "5872b6a64ea3ebd765944a47725fd1fb4e8478848d58d6d87fa79467becaf4d6",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/czech-dark-verified-session.log",
+    "published": "czech-dark-verified-session.log"
+  },
+  {
+    "original": "default-instrumentation-restored.txt",
+    "bytes": 100,
+    "sha256": "31a4951df7fd3bc5de557c6df3c1ac4d743ff84f59ce6ae62d4c719a3880c064",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/default-instrumentation-restored.txt",
+    "published": "default-instrumentation-restored.txt"
+  },
+  {
+    "original": "default-runner-final-check.log",
+    "bytes": 4012,
+    "sha256": "a67ab54d589b0a0df526b42d7bebf986e0d2605fbcf8e0b5b5a8150dacb83891",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/default-runner-final-check.log",
+    "published": "default-runner-final-check.log"
+  },
+  {
+    "original": "emulator-lavapipe-2g.log",
+    "bytes": 1154,
+    "sha256": "774c2a651f180d9c85fcddbc521cb84cfd158c7d4cc7310500ddcd60607abdf3",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/emulator-lavapipe-2g.log",
+    "published": "emulator-lavapipe-2g.sanitized.log",
+    "publishedSha256": "774c2a651f180d9c85fcddbc521cb84cfd158c7d4cc7310500ddcd60607abdf3",
+    "note": "Sanitized copy; not byte-identical to private original"
+  },
+  {
+    "original": "emulator-lavapipe-config2g.log",
+    "bytes": 1154,
+    "sha256": "9e80199ecf0d71da63f7ba8672e4db19878f41094e285ee4a6ab7f04dd832ee3",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/emulator-lavapipe-config2g.log",
+    "published": "emulator-lavapipe-config2g.sanitized.log",
+    "publishedSha256": "9e80199ecf0d71da63f7ba8672e4db19878f41094e285ee4a6ab7f04dd832ee3",
+    "note": "Sanitized copy; not byte-identical to private original"
+  },
+  {
+    "original": "emulator-lavapipe-disk.log",
+    "bytes": 9798,
+    "sha256": "6cf97ac2d32dd9d6cd527d641287837d44755e8ef15c91b077afc5d70f3a8601",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/emulator-lavapipe-disk.log",
+    "published": "emulator-lavapipe-disk.sanitized.log",
+    "publishedSha256": "0372c54620454665fa63583c32ac040f8054c3f87c90af22017491731fc5171a",
+    "note": "Sanitized copy; not byte-identical to private original"
+  },
+  {
+    "original": "emulator-lavapipe-verified2g.log",
+    "bytes": 1154,
+    "sha256": "9e80199ecf0d71da63f7ba8672e4db19878f41094e285ee4a6ab7f04dd832ee3",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/emulator-lavapipe-verified2g.log",
+    "published": "emulator-lavapipe-verified2g.sanitized.log",
+    "publishedSha256": "9e80199ecf0d71da63f7ba8672e4db19878f41094e285ee4a6ab7f04dd832ee3",
+    "note": "Sanitized copy; not byte-identical to private original"
+  },
+  {
+    "original": "emulator-lavapipe.log",
+    "bytes": 1215,
+    "sha256": "8a6f435d0b7582c594864116fff20d90d6a7e6535385a0778f650cdbe9c5fe3e",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/emulator-lavapipe.log",
+    "published": "emulator-lavapipe.sanitized.log",
+    "publishedSha256": "8a6f435d0b7582c594864116fff20d90d6a7e6535385a0778f650cdbe9c5fe3e",
+    "note": "Sanitized copy; not byte-identical to private original"
+  },
+  {
+    "original": "endpoint-dialog-real.json",
+    "bytes": 9310,
+    "sha256": "e36cf0c87071f8c2800ba4552225664b6100dd6b9c538003eb808c5019bb9a86",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/endpoint-dialog-real.json",
+    "published": "endpoint-dialog-real.json"
+  },
+  {
+    "original": "endpoint-dialog-real.png",
+    "bytes": 73773,
+    "sha256": "68046f250563c060b0131100a42c3c124affd86191f461cebcae49e918561bc0",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/endpoint-dialog-real.png",
+    "published": "endpoint-dialog-real.png"
+  },
+  {
+    "original": "endpoint-normal-first-back.json",
+    "bytes": 8517,
+    "sha256": "025d1d65baca039f71c857e0c7066e84650cfc18c4c18158fe541f82c553e379",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/endpoint-normal-first-back.json",
+    "published": "endpoint-normal-first-back.json"
+  },
+  {
+    "original": "endpoint-normal-first-back.png",
+    "bytes": 76753,
+    "sha256": "b7683aaa8859654cc1265b11d53ecf7b0b2977856715d00a5da6b4692c3e2dde",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/endpoint-normal-first-back.png",
+    "published": "endpoint-normal-first-back.png"
+  },
+  {
+    "original": "endpoint-normal-ime.json",
+    "bytes": 8518,
+    "sha256": "db5bd558d4d09720f2b838470330044efe6b40bd1e13a27671b3e5a4155d655e",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/endpoint-normal-ime.json",
+    "published": "endpoint-normal-ime.json"
+  },
+  {
+    "original": "endpoint-normal-ime.png",
+    "bytes": 86829,
+    "sha256": "56da7ea0adeeda56d992de556b0ea29b04c7182bccd3d1aedecc5b6dd3a089f2",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/endpoint-normal-ime.png",
+    "published": "endpoint-normal-ime.png"
+  },
+  {
+    "original": "endpoint-normal-second-back.json",
+    "bytes": 30676,
+    "sha256": "45573b483246f0c8e8d533345a17f35c4a79b5e7c31865801928aadbf24dab4f",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/endpoint-normal-second-back.json",
+    "published": "endpoint-normal-second-back.json"
+  },
+  {
+    "original": "endpoint-normal-second-back.png",
+    "bytes": 92560,
+    "sha256": "be65833ca2de1b1fbecf1887f80cb104b894c7e745bde54f6346a6baadfef290",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/endpoint-normal-second-back.png",
+    "published": "endpoint-normal-second-back.png"
+  },
+  {
+    "original": "events-final.jsonl",
+    "bytes": 12059,
+    "sha256": "d055b8deca8f5982a8eb805446fc20c13c9530aface91392efc21bf6a14e1819",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/events-final.jsonl",
+    "published": "events-final.jsonl"
+  },
+  {
+    "original": "events-kernel.jsonl",
+    "bytes": 2291,
+    "sha256": "831b657497ad5d4fdf801ce53866b0f10dec5ddb7be3b3ce8dd8d8d6b102cdc7",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/events-kernel.jsonl",
+    "published": "events-kernel.jsonl"
+  },
+  {
+    "original": "events-so-far.jsonl",
+    "bytes": 1595,
+    "sha256": "610ab4e27d7e9d1a075247be5f6a79936dac11b8e67b1c212b2e9ffe57f2073e",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/events-so-far.jsonl",
+    "published": "events-so-far.jsonl"
+  },
+  {
+    "original": "events-talkback-order.jsonl",
+    "bytes": 3410,
+    "sha256": "90b21feb9057840692b194f0cc7417647b9c98003228214dd127b4aaa9de15c3",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/events-talkback-order.jsonl",
+    "published": "events-talkback-order.jsonl"
+  },
+  {
+    "original": "events.jsonl",
+    "bytes": 7020,
+    "sha256": "5e9bc2d3b0393902ad172eddf291765efb4a70e24d43837fd92d5ced35418997",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/events.jsonl",
+    "published": "events.jsonl"
+  },
+  {
+    "original": "first-app.png",
+    "bytes": 96046,
+    "sha256": "b196183a8df4e6ad76964c35a5c9d39faa8a18d7fa00c8b1ea9cae4f3bb509c5",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/first-app.png",
+    "published": "first-app.png"
+  },
+  {
+    "original": "host-commands.jsonl",
+    "bytes": 3705315,
+    "sha256": "f64d88e16ed2f62c5e45b82c41c93adff77fe7dfcfcc00788daf13d27ea66146",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/host-commands.jsonl",
+    "published": "host-commands.jsonl"
+  },
+  {
+    "original": "initial-manual.json",
+    "bytes": 41106,
+    "sha256": "80879c495cf3542339ad65c368158a4d491035547aa0ad5a12e2d7d9f2998592",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/initial-manual.json",
+    "published": "initial-manual.json"
+  },
+  {
+    "original": "initial-manual.png",
+    "bytes": 88157,
+    "sha256": "3bd85d6c388dcaff563b4faa0ff86ad276c528b5289d233ed8e199d257b65dd8",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/initial-manual.png",
+    "published": "initial-manual.png"
+  },
+  {
+    "original": "interactive-instrumentation.log",
+    "bytes": 867,
+    "sha256": "5dd88ff4e1ae92c30c016d9a3ee666a125a172048ed8dbb23685670713296c63",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/interactive-instrumentation.log",
+    "published": "interactive-instrumentation.log"
+  },
+  {
+    "original": "interactive-opt-in.log",
+    "bytes": 143,
+    "sha256": "5872b6a64ea3ebd765944a47725fd1fb4e8478848d58d6d87fa79467becaf4d6",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/interactive-opt-in.log",
+    "published": "interactive-opt-in.log"
+  },
+  {
+    "original": "interactive-session2.log",
+    "bytes": 74,
+    "sha256": "cc376fcd260b55a01f82c04af5e0a9ead88516f600131a38bdea1a3e05b10a8d",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/interactive-session2.log",
+    "published": "interactive-session2.log"
+  },
+  {
+    "original": "kernel-touch-back.json",
+    "bytes": 28950,
+    "sha256": "a42e031b861c7252611605471de8161e16c41a26248c333412f7edb712a4e789",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/kernel-touch-back.json",
+    "published": "kernel-touch-back.json"
+  },
+  {
+    "original": "kernel-touch-back.png",
+    "bytes": 65426,
+    "sha256": "cffe05d1ed18c177651e8216f567237cea67f4e5165c2bd4cd50820be6b76bde",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/kernel-touch-back.png",
+    "published": "kernel-touch-back.png"
+  },
+  {
+    "original": "keyboard-setup-dashboard.json",
+    "bytes": 33539,
+    "sha256": "1917bb4aaa6fb1c8d061859efeb54f0696ac7363165eb941be6e26a641beb396",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-setup-dashboard.json",
+    "published": "keyboard-setup-dashboard.json"
+  },
+  {
+    "original": "keyboard-setup-dashboard.png",
+    "bytes": 73111,
+    "sha256": "0a9f73870e2a11593f3e5ed52826d3fdfabf86a896e20743e74126b6b699f213",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-setup-dashboard.png",
+    "published": "keyboard-setup-dashboard.png"
+  },
+  {
+    "original": "keyboard-tab-1.json",
+    "bytes": 28845,
+    "sha256": "9a956cc3379372dba5bb58c541553e8eb877065ff79be2f720da744e46468dac",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-1.json",
+    "published": "keyboard-tab-1.json"
+  },
+  {
+    "original": "keyboard-tab-1.png",
+    "bytes": 66407,
+    "sha256": "f0dbc089820699ba5949add2cacf09185770f621ab2fec70cbb9ff740731eb19",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-1.png",
+    "published": "keyboard-tab-1.png"
+  },
+  {
+    "original": "keyboard-tab-2.json",
+    "bytes": 28845,
+    "sha256": "268199c8d94531faaa9da05b35aecbb1963021200a1b6ae9a6b0e915de8b4822",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-2.json",
+    "published": "keyboard-tab-2.json"
+  },
+  {
+    "original": "keyboard-tab-2.png",
+    "bytes": 64353,
+    "sha256": "0e2aa1d4eb20138abe284c088b234bf1c095e1ab0c770edb9e19f380bfeceabf",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-2.png",
+    "published": "keyboard-tab-2.png"
+  },
+  {
+    "original": "keyboard-tab-3.json",
+    "bytes": 28845,
+    "sha256": "13e3056c48a32e5e0af7e9227217a197227a15d6984806257fe7917ad2316eaf",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-3.json",
+    "published": "keyboard-tab-3.json"
+  },
+  {
+    "original": "keyboard-tab-3.png",
+    "bytes": 65374,
+    "sha256": "39fc9c265ece21957a1cb35b86cfcdc5986045584337ce9e65a2a8abc1e39b1c",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-3.png",
+    "published": "keyboard-tab-3.png"
+  },
+  {
+    "original": "keyboard-tab-4.json",
+    "bytes": 28845,
+    "sha256": "9d0271d8741ef0f11dec607885de5893623893c45b247b8e352652a391bf428e",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-4.json",
+    "published": "keyboard-tab-4.json"
+  },
+  {
+    "original": "keyboard-tab-4.png",
+    "bytes": 67711,
+    "sha256": "3e30d548f7737127a2cf41288940371f4770feb4630a63ff37cb4b4acf4b6f64",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-4.png",
+    "published": "keyboard-tab-4.png"
+  },
+  {
+    "original": "keyboard-tab-5.json",
+    "bytes": 28845,
+    "sha256": "10d4f515a12fde912cc1a7143f408d933ab93285ee3ff829b8d2f2a137a396aa",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-5.json",
+    "published": "keyboard-tab-5.json"
+  },
+  {
+    "original": "keyboard-tab-5.png",
+    "bytes": 67741,
+    "sha256": "edcbd20ba637ea926abddadbde0fa416479006c5e8805b6b12d5d42d976f77ce",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-5.png",
+    "published": "keyboard-tab-5.png"
+  },
+  {
+    "original": "keyboard-tab-6.json",
+    "bytes": 28845,
+    "sha256": "44c7f3e043a5592632982b82a8845d17e058d4fca8eedb7821283a271253e6f7",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-6.json",
+    "published": "keyboard-tab-6.json"
+  },
+  {
+    "original": "keyboard-tab-6.png",
+    "bytes": 66565,
+    "sha256": "775db53671f6b26b0e11d01c095f85a580b80e8bd16e20bfd3cf85c3012e9a0c",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-6.png",
+    "published": "keyboard-tab-6.png"
+  },
+  {
+    "original": "keyboard-tab-7.json",
+    "bytes": 28845,
+    "sha256": "8a85cc8ba46701464a256e9fe10584458358056881aea6b1c7e8ea50c733bc5d",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-7.json",
+    "published": "keyboard-tab-7.json"
+  },
+  {
+    "original": "keyboard-tab-7.png",
+    "bytes": 66544,
+    "sha256": "db01ee4430ff9c061bf6915705ed11cf2543b903273da2b21d047f81a99682ab",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-7.png",
+    "published": "keyboard-tab-7.png"
+  },
+  {
+    "original": "keyboard-tab-8.json",
+    "bytes": 28845,
+    "sha256": "b0fbd57cd8d99cdab629fec2137a5d5bc4c7612f88701ec929956a90a69cf326",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-8.json",
+    "published": "keyboard-tab-8.json"
+  },
+  {
+    "original": "keyboard-tab-8.png",
+    "bytes": 66627,
+    "sha256": "2fd22a7db56c01ad17116faeeecd7c465887fefd5ea69a8abbd89f8ddd5c173e",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-8.png",
+    "published": "keyboard-tab-8.png"
+  },
+  {
+    "original": "keyboard-tab-order.json",
+    "bytes": 207,
+    "sha256": "8c3ed0b52ea1b38045477177dd52486062e1f83fa431d6f36d267801185c985b",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/keyboard-tab-order.json",
+    "published": "keyboard-tab-order.json"
+  },
+  {
+    "original": "motion-original.json",
+    "bytes": 113,
+    "sha256": "5f9aa4c8a6bb5b85eae828516479d9b6358fbdd5d1f1556d280938c07e6bb6dc",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/motion-original.json",
+    "published": "motion-original.json"
+  },
+  {
+    "original": "packages-before.txt",
+    "bytes": 10998,
+    "sha256": "3ebd33f64b6b949f42548c16f5727e6df6024ad87a71f316b3a55baa8018f2af",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/packages-before.txt",
+    "published": "packages-before.txt"
+  },
+  {
+    "original": "permission-after-package.txt",
+    "bytes": 9142,
+    "sha256": "7a257dd25944cdb93ebb21b9b7830725701fba6b0e6972b4c25d0963a0195e0f",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/permission-after-package.txt",
+    "published": "permission-after-package.txt"
+  },
+  {
+    "original": "permission-before-host-revoke.json",
+    "bytes": 36981,
+    "sha256": "cbd731394e32b8f19d317d17a274f083ff12c9c47d9aa18aba72c64c1521ebaa",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/permission-before-host-revoke.json",
+    "published": "permission-before-host-revoke.json"
+  },
+  {
+    "original": "permission-before-host-revoke.png",
+    "bytes": 87859,
+    "sha256": "d64d0f8119c742175c028752545c2e7e04328114f895e89442263b34eee18bed",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/permission-before-host-revoke.png",
+    "published": "permission-before-host-revoke.png"
+  },
+  {
+    "original": "permission-before-package.txt",
+    "bytes": 9141,
+    "sha256": "70b6de880101e1f90971e50318d10a172b11dbfc71997135a74c1b829b065dd0",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/permission-before-package.txt",
+    "published": "permission-before-package.txt"
+  },
+  {
+    "original": "permission-restart-screen.png",
+    "bytes": 96182,
+    "sha256": "d1dd91657b358a59c183a94c37d6bca7848dfe9b556df0fe49821b3fc63fbccc",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/permission-restart-screen.png",
+    "published": "permission-restart-screen.png"
+  },
+  {
+    "original": "permission-restarted-package.txt",
+    "bytes": 9142,
+    "sha256": "28468fe14ba2c9daf4289bd27105160555d9a827e52352a983ba6543f2b39052",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/permission-restarted-package.txt",
+    "published": "permission-restarted-package.txt"
+  },
+  {
+    "original": "permission-revoke-screen.png",
+    "bytes": 689622,
+    "sha256": "83cd329435c5928478b60553577e71dce5a8b2ec5b3f05a1b1c305aad6f8d8eb",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/permission-revoke-screen.png",
+    "published": "permission-revoke-screen.png"
+  },
+  {
+    "original": "pointer-calibration.png",
+    "bytes": 77627,
+    "sha256": "0435ff75e68b5c9949d7d7bc0b5cd12ead0e971cb37787be9fa954228d9de0e8",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/pointer-calibration.png",
+    "published": "pointer-calibration.png"
+  },
+  {
+    "original": "probe-compile.log",
+    "bytes": 5152,
+    "sha256": "96ff93a93342cc9119c4c095788f779006db300faabcf82cc0fe7f9a19ee2421",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/probe-compile.log",
+    "published": "probe-compile.log"
+  },
+  {
+    "original": "probe-final-compile-lint.log",
+    "bytes": 5231,
+    "sha256": "aa48fd99922c0f767979f071cab1f0e6fffdf345958ae63770b925ee826c6881",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/probe-final-compile-lint.log",
+    "published": "probe-final-compile-lint.log"
+  },
+  {
+    "original": "probe-final-verified-build.log",
+    "bytes": 5172,
+    "sha256": "073dad4e9274610055cfddbe17358b0c514c44e5d1df34e25fcbea5932ac88ca",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/probe-final-verified-build.log",
+    "published": "probe-final-verified-build.log"
+  },
+  {
+    "original": "probe-opt-in-compile.log",
+    "bytes": 3750,
+    "sha256": "f0cc8d2076c4ef2ff7e5e9382f63afd854c54f17eae4e5a7870d2c93bc9d3570",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/probe-opt-in-compile.log",
+    "published": "probe-opt-in-compile.log"
+  },
+  {
+    "original": "profile-admin-entry.json",
+    "bytes": 36979,
+    "sha256": "d6f96be6d9aa670fd7896e895754198d7ab8fe1aefdfd49f23f0996e95072f62",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/profile-admin-entry.json",
+    "published": "profile-admin-entry.json"
+  },
+  {
+    "original": "profile-admin-entry.png",
+    "bytes": 87553,
+    "sha256": "b9c3b3d5c16cbf5cbf13781cf32efdb325772c7803426a78c21167592eb177b2",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/profile-admin-entry.png",
+    "published": "profile-admin-entry.png"
+  },
+  {
+    "original": "profile.json",
+    "bytes": 36979,
+    "sha256": "f11caecfbfee04bd85893bd4e18d375f56f110d3da19b724e6dc47f41a7887c0",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/profile.json",
+    "published": "profile.json"
+  },
+  {
+    "original": "profile.png",
+    "bytes": 87606,
+    "sha256": "b9be3222fb0425ea7edfea34965c19ffc2f3ba873d2c177c1c42b989aa87dbf3",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/profile.png",
+    "published": "profile.png"
+  },
+  {
+    "original": "queue-before-ime.json",
+    "bytes": 30562,
+    "sha256": "e3e7a6d23136812c61437b5a40f6c4c276d48ffe660bdc6847d46db7a9a73b0c",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/queue-before-ime.json",
+    "published": "queue-before-ime.json"
+  },
+  {
+    "original": "queue-before-ime.png",
+    "bytes": 65576,
+    "sha256": "8340b45de15376c5a6ec8fc45a758a03583fd51fa32a4df292d6ba086313e55c",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/queue-before-ime.png",
+    "published": "queue-before-ime.png"
+  },
+  {
+    "original": "queue-ime-window.txt",
+    "bytes": 40443,
+    "sha256": "71596ced76c55f3188e8538925d9e2e8c9236452695adaa80e7f76980e145f49",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/queue-ime-window.txt",
+    "published": "queue-ime-window.txt"
+  },
+  {
+    "original": "queue-keyboard-insets.json",
+    "bytes": 30560,
+    "sha256": "d1b6f120091e094921fa42d7eb86b7208b6c4d5e00a41261675f36b8c508cdf9",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/queue-keyboard-insets.json",
+    "published": "queue-keyboard-insets.json"
+  },
+  {
+    "original": "queue-keyboard-insets.png",
+    "bytes": 71205,
+    "sha256": "f2b371e682392c1d2d8d947e7afa436aefc3eb5b8a7d87183bc6ae89ebbf2a7d",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/queue-keyboard-insets.png",
+    "published": "queue-keyboard-insets.png"
+  },
+  {
+    "original": "queue-normal-first-back.json",
+    "bytes": 27961,
+    "sha256": "7f5f179d383fcf4e5ac8e1600c7bd9db5c6ab990f87a23aee19aa050bc478293",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/queue-normal-first-back.json",
+    "published": "queue-normal-first-back.json"
+  },
+  {
+    "original": "queue-normal-first-back.png",
+    "bytes": 56923,
+    "sha256": "165ca0566b900be6b75928f48d178d82d6b5bf4feea639084cc7ab723b12fe54",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/queue-normal-first-back.png",
+    "published": "queue-normal-first-back.png"
+  },
+  {
+    "original": "queue-normal-ime.json",
+    "bytes": 27007,
+    "sha256": "199cbfb643bac7d5d7a0ae27eb470c23c4705debfadeb654eb217b3c233250b1",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/queue-normal-ime.json",
+    "published": "queue-normal-ime.json"
+  },
+  {
+    "original": "queue-normal-ime.png",
+    "bytes": 89579,
+    "sha256": "4d3851ade8e20be23b69be74b6489cabf67115e833e23a9592bf4229979d86ca",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/queue-normal-ime.png",
+    "published": "queue-normal-ime.png"
+  },
+  {
+    "original": "queue-normal-keyboard-start.json",
+    "bytes": 30561,
+    "sha256": "03f8002be77efa1e58ae79a59b93e6ced36f73174a52e495464568569a89f579",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/queue-normal-keyboard-start.json",
+    "published": "queue-normal-keyboard-start.json"
+  },
+  {
+    "original": "queue-normal-keyboard-start.png",
+    "bytes": 64529,
+    "sha256": "a6a8dae76b08a58acf32edab98b266e64e80fe20bfb53721edeb570a89f0f9fd",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/queue-normal-keyboard-start.png",
+    "published": "queue-normal-keyboard-start.png"
+  },
+  {
+    "original": "queue-normal-second-back.json",
+    "bytes": 33539,
+    "sha256": "9cbac423ee70dd89fd1672dba19f614954917d4eb49ab8c0f89ea43e82bab60d",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/queue-normal-second-back.json",
+    "published": "queue-normal-second-back.json"
+  },
+  {
+    "original": "queue-normal-second-back.png",
+    "bytes": 72630,
+    "sha256": "a205d3ec1596f43525ba2cebab3e507198fec6aa5722e0d695fd957ccf0fbac5",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/queue-normal-second-back.png",
+    "published": "queue-normal-second-back.png"
+  },
+  {
+    "original": "reduced-back-admin-settings.json",
+    "bytes": 33539,
+    "sha256": "a7f6dbb885c183bbd58d469da07bcf7c6454ac2e99435b7eee38f3b8d3adcd1a",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-back-admin-settings.json",
+    "published": "reduced-back-admin-settings.json"
+  },
+  {
+    "original": "reduced-back-admin-settings.png",
+    "bytes": 73134,
+    "sha256": "037aa2b06ecf1e414ebc49a00fa6dff49e76a4562e027d7a40f1cb4584862b61",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-back-admin-settings.png",
+    "published": "reduced-back-admin-settings.png"
+  },
+  {
+    "original": "reduced-back-audit-log.json",
+    "bytes": 33539,
+    "sha256": "3ee82387c93527ac1a820d45316c3cab9c6c70891de61fee6c6d3ddd05d60a17",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-back-audit-log.json",
+    "published": "reduced-back-audit-log.json"
+  },
+  {
+    "original": "reduced-back-audit-log.png",
+    "bytes": 73134,
+    "sha256": "037aa2b06ecf1e414ebc49a00fa6dff49e76a4562e027d7a40f1cb4584862b61",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-back-audit-log.png",
+    "published": "reduced-back-audit-log.png"
+  },
+  {
+    "original": "reduced-back-moderation-queue.json",
+    "bytes": 33539,
+    "sha256": "70581978c1180c0d03e5250b36537337da0f3e55b185cb030be16b746f05c1d8",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-back-moderation-queue.json",
+    "published": "reduced-back-moderation-queue.json"
+  },
+  {
+    "original": "reduced-back-moderation-queue.png",
+    "bytes": 73134,
+    "sha256": "037aa2b06ecf1e414ebc49a00fa6dff49e76a4562e027d7a40f1cb4584862b61",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-back-moderation-queue.png",
+    "published": "reduced-back-moderation-queue.png"
+  },
+  {
+    "original": "reduced-motion-admin-settings.json",
+    "bytes": 30676,
+    "sha256": "6c6a4931053f5a956aa0a18f7b98a7ab84ec2fddc92212c6ba661eff73e0b3ad",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-motion-admin-settings.json",
+    "published": "reduced-motion-admin-settings.json"
+  },
+  {
+    "original": "reduced-motion-admin-settings.png",
+    "bytes": 92818,
+    "sha256": "d114628b432eeb7f64cd9939805f7740d456bb5935493ee5bc57e3d297a82dd9",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-motion-admin-settings.png",
+    "published": "reduced-motion-admin-settings.png"
+  },
+  {
+    "original": "reduced-motion-audit-log.json",
+    "bytes": 28846,
+    "sha256": "89d09faa38db1fa6386e796a2ece52daa0b92d81858d3d004b3376441e0998a0",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-motion-audit-log.json",
+    "published": "reduced-motion-audit-log.json"
+  },
+  {
+    "original": "reduced-motion-audit-log.png",
+    "bytes": 65914,
+    "sha256": "66e2aeb3992517f0c06c2442f6c5f3649288213eefcdd8bf5ca6f5cdd2ba1b79",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-motion-audit-log.png",
+    "published": "reduced-motion-audit-log.png"
+  },
+  {
+    "original": "reduced-motion-dashboard.json",
+    "bytes": 33539,
+    "sha256": "505ce05e75fe7240d2f1aabbe100e4986a87bd3b297cdce5712a962aab989822",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-motion-dashboard.json",
+    "published": "reduced-motion-dashboard.json"
+  },
+  {
+    "original": "reduced-motion-dashboard.png",
+    "bytes": 72890,
+    "sha256": "10cd611f787401daf15940381465a49041aa4dba3d7d8b19dc2435ba1fdff75e",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-motion-dashboard.png",
+    "published": "reduced-motion-dashboard.png"
+  },
+  {
+    "original": "reduced-motion-moderation-queue.json",
+    "bytes": 27962,
+    "sha256": "e517447920187e580f4017de36594374423a833d36205199074f8fa026c61912",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-motion-moderation-queue.json",
+    "published": "reduced-motion-moderation-queue.json"
+  },
+  {
+    "original": "reduced-motion-moderation-queue.png",
+    "bytes": 57144,
+    "sha256": "b11b8868005522dc495e0a3f0610ed0055cf8928fb17fa51804625d73c3654d5",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-motion-moderation-queue.png",
+    "published": "reduced-motion-moderation-queue.png"
+  },
+  {
+    "original": "reduced-motion-profile-back.json",
+    "bytes": 36981,
+    "sha256": "4aedd9be839b604fe206e36986bcac5079dfc9b261d0de21161f75feeb9de883",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-motion-profile-back.json",
+    "published": "reduced-motion-profile-back.json"
+  },
+  {
+    "original": "reduced-motion-profile-back.png",
+    "bytes": 87812,
+    "sha256": "7cecf9c6663c758454e042b8e52099816ec39fd5b1d7e137064b267cb349387a",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-motion-profile-back.png",
+    "published": "reduced-motion-profile-back.png"
+  },
+  {
+    "original": "reduced-motion-results.json",
+    "bytes": 557,
+    "sha256": "b0e843e58e0dc3d927e6aceeb95749caf63b3a67a10a6c9f919535264e0579e5",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/reduced-motion-results.json",
+    "published": "reduced-motion-results.json"
+  },
+  {
+    "original": "revoked-worker-probe.log",
+    "bytes": 139,
+    "sha256": "9580ee231e5d2f5e6bfd1edda154feebc9ae1554234b199eef02b77da52202dd",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/revoked-worker-probe.log",
+    "published": "revoked-worker-probe.log"
+  },
+  {
+    "original": "session2-audit.json",
+    "bytes": 28846,
+    "sha256": "251c969f47ae6389cb586fc772697386eb7ca5c65d774fc539d8a922b7e556d8",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/session2-audit.json",
+    "published": "session2-audit.json"
+  },
+  {
+    "original": "session2-audit.png",
+    "bytes": 65110,
+    "sha256": "2ec36760998e6ccc8827d7d78ef985374dbce8dbba9c89131282f78b6978dc6c",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/session2-audit.png",
+    "published": "session2-audit.png"
+  },
+  {
+    "original": "session2-dashboard.json",
+    "bytes": 33539,
+    "sha256": "775d066931bd026d59b40695b91db0b8934f7f908312e95f560a5426a988dcf6",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/session2-dashboard.json",
+    "published": "session2-dashboard.json"
+  },
+  {
+    "original": "session2-dashboard.png",
+    "bytes": 72408,
+    "sha256": "134067f454b73fc87fc2ccc08c9ccb5c04960fa32de7a715c5e5a308a4c25f86",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/session2-dashboard.png",
+    "published": "session2-dashboard.png"
+  },
+  {
+    "original": "session2-profile.json",
+    "bytes": 36981,
+    "sha256": "ffb306923a977d8af1fbba82fb26189d650fa1ca956cfbb98837096bd5e8db02",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/session2-profile.json",
+    "published": "session2-profile.json"
+  },
+  {
+    "original": "session2-profile.png",
+    "bytes": 86916,
+    "sha256": "c3482cd97d518e2008224c78078850afd134cd51c206768aa6eae606da04d42e",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/session2-profile.png",
+    "published": "session2-profile.png"
+  },
+  {
+    "original": "session2-ready.json",
+    "bytes": 41106,
+    "sha256": "a348acee4b3115c7f62a9113ce1d6adccdddb458ccc071214706b892ad825bb9",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/session2-ready.json",
+    "published": "session2-ready.json"
+  },
+  {
+    "original": "session2-ready.png",
+    "bytes": 87638,
+    "sha256": "caf4e2e91ad6b23f43de2efb1393c40062dae16b025fa3e4fda668c310d3129a",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/session2-ready.png",
+    "published": "session2-ready.png"
+  },
+  {
+    "original": "settings-normal-system-back.json",
+    "bytes": 33539,
+    "sha256": "8fc0eb917bba3262ff1bb0b6d2ad4b96a4ef844221255037fd0b9a855570ee25",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/settings-normal-system-back.json",
+    "published": "settings-normal-system-back.json"
+  },
+  {
+    "original": "settings-normal-system-back.png",
+    "bytes": 72630,
+    "sha256": "a205d3ec1596f43525ba2cebab3e507198fec6aa5722e0d695fd957ccf0fbac5",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/settings-normal-system-back.png",
+    "published": "settings-normal-system-back.png"
+  },
+  {
+    "original": "settings-real-navigation.json",
+    "bytes": 30676,
+    "sha256": "c72e49cb74744c85ec6a6c3a8fd663158879ca1fc619aef310786961cabf2475",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/settings-real-navigation.json",
+    "published": "settings-real-navigation.json"
+  },
+  {
+    "original": "settings-real-navigation.png",
+    "bytes": 92560,
+    "sha256": "be65833ca2de1b1fbecf1887f80cb104b894c7e745bde54f6346a6baadfef290",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/settings-real-navigation.png",
+    "published": "settings-real-navigation.png"
+  },
+  {
+    "original": "talkback-after-allow.json",
+    "bytes": 28948,
+    "sha256": "fc8bc18e3874ccde9ed5220c0648ecb66795beb58333017617d6624c39bec903",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-after-allow.json",
+    "published": "talkback-after-allow.json"
+  },
+  {
+    "original": "talkback-after-allow.png",
+    "bytes": 65930,
+    "sha256": "d7e3b3897c69fbfaa003825d43d8b4d855eecafe4ccd12457a2da2d41ebfd961",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-after-allow.png",
+    "published": "talkback-after-allow.png"
+  },
+  {
+    "original": "talkback-alt-right.json",
+    "bytes": 28948,
+    "sha256": "cf05c337181fa591ca314d312d10db11087ae4ecd59c18af105b8dc3b108d350",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-alt-right.json",
+    "published": "talkback-alt-right.json"
+  },
+  {
+    "original": "talkback-alt-right.png",
+    "bytes": 65084,
+    "sha256": "11a12528bd4faab2d86e2271d9b35361fef5c956de500380f1a1e67d51376990",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-alt-right.png",
+    "published": "talkback-alt-right.png"
+  },
+  {
+    "original": "talkback-audit-fresh-focus.json",
+    "bytes": 28950,
+    "sha256": "4a42c10d48bc6fc6197bd36746ae8c73e0d0c20fda2d809dd74e0d7946478672",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-audit-fresh-focus.json",
+    "published": "talkback-audit-fresh-focus.json"
+  },
+  {
+    "original": "talkback-audit-fresh-focus.png",
+    "bytes": 66004,
+    "sha256": "e69482a862a9770d50240b9b1537ff8a416de37d985be4f7e85cbe9e1d8ebd36",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-audit-fresh-focus.png",
+    "published": "talkback-audit-fresh-focus.png"
+  },
+  {
+    "original": "talkback-back-activated.json",
+    "bytes": 28950,
+    "sha256": "838b92cb0708f82f2c50af226aed61c917c2b0305e5174a2dc7a123f7f238af0",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-back-activated.json",
+    "published": "talkback-back-activated.json"
+  },
+  {
+    "original": "talkback-back-activated.png",
+    "bytes": 66144,
+    "sha256": "acca058a8c9ce84c96b62edc12c0dbf3be4a8717f54f54ad69026e155239e5d2",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-back-activated.png",
+    "published": "talkback-back-activated.png"
+  },
+  {
+    "original": "talkback-before-previous-0.json",
+    "bytes": 28950,
+    "sha256": "b74f5659e3152da521428612e14b50f29df52e88df210578af0358022a8acf18",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-before-previous-0.json",
+    "published": "talkback-before-previous-0.json"
+  },
+  {
+    "original": "talkback-before-previous-0.png",
+    "bytes": 65816,
+    "sha256": "914ce90114ba41ee83816dde2467386b09f8b3c926e3bb6ee3ea4e2c5dfa880e",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-before-previous-0.png",
+    "published": "talkback-before-previous-0.png"
+  },
+  {
+    "original": "talkback-before-previous-1.json",
+    "bytes": 28950,
+    "sha256": "2755549e3dea5b638afe2f80c2193423326db45d11002590f3b6fa993bfd7ec3",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-before-previous-1.json",
+    "published": "talkback-before-previous-1.json"
+  },
+  {
+    "original": "talkback-before-previous-1.png",
+    "bytes": 65969,
+    "sha256": "3a1d7bc468536d0dad28985081fd2945248b93e2800ac86fd2f53d886fb5c381",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-before-previous-1.png",
+    "published": "talkback-before-previous-1.png"
+  },
+  {
+    "original": "talkback-before-previous-2.json",
+    "bytes": 28950,
+    "sha256": "3e0bb9b0b97a2291d6fcf4e6f817ade891ba6107c5896bea6281809bb7373ab3",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-before-previous-2.json",
+    "published": "talkback-before-previous-2.json"
+  },
+  {
+    "original": "talkback-before-previous-2.png",
+    "bytes": 66004,
+    "sha256": "e69482a862a9770d50240b9b1537ff8a416de37d985be4f7e85cbe9e1d8ebd36",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-before-previous-2.png",
+    "published": "talkback-before-previous-2.png"
+  },
+  {
+    "original": "talkback-doubletap-back.json",
+    "bytes": 33643,
+    "sha256": "b2f15fdf5b6e3c531627d38ef7f7eafa0564619285c1a503ead35e4a39abcf05",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-doubletap-back.json",
+    "published": "talkback-doubletap-back.json"
+  },
+  {
+    "original": "talkback-doubletap-back.png",
+    "bytes": 73035,
+    "sha256": "88e25a721586cd04cf00f64077f9b18b61beb0b33d2da0876103a0ac9f820aa7",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-doubletap-back.png",
+    "published": "talkback-doubletap-back.png"
+  },
+  {
+    "original": "talkback-explore-back-screen-coordinates.json",
+    "bytes": 28950,
+    "sha256": "7024a90dbc8fc12312ae77802c02012598ece9d4337c8219fdc4985045ea2889",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-explore-back-screen-coordinates.json",
+    "published": "talkback-explore-back-screen-coordinates.json"
+  },
+  {
+    "original": "talkback-explore-back-screen-coordinates.png",
+    "bytes": 65629,
+    "sha256": "03a29b2fe337af9a3a5375438d651647c94aaa2ac68c854cfae82c268f08d61d",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-explore-back-screen-coordinates.png",
+    "published": "talkback-explore-back-screen-coordinates.png"
+  },
+  {
+    "original": "talkback-explore-back.json",
+    "bytes": 28950,
+    "sha256": "8ee2663b2a17c2058c8c47f39f5863539b95bd4abe347f008211461badf4bafe",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-explore-back.json",
+    "published": "talkback-explore-back.json"
+  },
+  {
+    "original": "talkback-explore-back.png",
+    "bytes": 66144,
+    "sha256": "acca058a8c9ce84c96b62edc12c0dbf3be4a8717f54f54ad69026e155239e5d2",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-explore-back.png",
+    "published": "talkback-explore-back.png"
+  },
+  {
+    "original": "talkback-initial.json",
+    "bytes": 6424,
+    "sha256": "cecd0e604cfc7ac555fddf17a1863d57ceea4314289c2e34cbdb4d77f249cbb6",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-initial.json",
+    "published": "talkback-initial.json"
+  },
+  {
+    "original": "talkback-initial.png",
+    "bytes": 71141,
+    "sha256": "c29976a1267305d612ed042c4b8a0241132ac2c2831dec3289d716e3248bcf3f",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-initial.png",
+    "published": "talkback-initial.png"
+  },
+  {
+    "original": "talkback-next-01.json",
+    "bytes": 28948,
+    "sha256": "b682fc3a2991d74cad8ffad2c5ccb9402736e0971ce391d7b17ac3e688796148",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-next-01.json",
+    "published": "talkback-next-01.json"
+  },
+  {
+    "original": "talkback-next-01.png",
+    "bytes": 65982,
+    "sha256": "19f127f651e2203cefa1157dc9e3b2a4be710238b61a34b06c7786881f7db74a",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-next-01.png",
+    "published": "talkback-next-01.png"
+  },
+  {
+    "original": "talkback-order-1.json",
+    "bytes": 28950,
+    "sha256": "9dcd0f42b9669628f56911bc413d427baad229c150e43e91167676c869a9c884",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-1.json",
+    "published": "talkback-order-1.json"
+  },
+  {
+    "original": "talkback-order-1.png",
+    "bytes": 65905,
+    "sha256": "a4c568b2e2f98414b9220d7b4a7a2dcf460fe09b175a4d5a7fe63e89bb669144",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-1.png",
+    "published": "talkback-order-1.png"
+  },
+  {
+    "original": "talkback-order-2.json",
+    "bytes": 28950,
+    "sha256": "e856d9c0a5d788e5710abecfbf4f52203c8e2ea41493ec6217ca1d8d0af112b6",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-2.json",
+    "published": "talkback-order-2.json"
+  },
+  {
+    "original": "talkback-order-2.png",
+    "bytes": 65752,
+    "sha256": "bbf32ca171392c517f19ada7164a425abe340f9d9ee4ec7e1bdedfe0a58fa3c6",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-2.png",
+    "published": "talkback-order-2.png"
+  },
+  {
+    "original": "talkback-order-3.json",
+    "bytes": 28950,
+    "sha256": "70be799e1eb207fc00f817cd3a7d9de2cc3e69bef50544da9f4039b3921783a2",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-3.json",
+    "published": "talkback-order-3.json"
+  },
+  {
+    "original": "talkback-order-3.png",
+    "bytes": 66060,
+    "sha256": "a8a00ecea16d599ac95449f7ddbf55af150aaaa2bbd26406989cec7a2dc7823f",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-3.png",
+    "published": "talkback-order-3.png"
+  },
+  {
+    "original": "talkback-order-4.json",
+    "bytes": 28950,
+    "sha256": "ab80bb4b32244890b8ecced780dd4c8bd8d9051d35b3502167e0009197a04e23",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-4.json",
+    "published": "talkback-order-4.json"
+  },
+  {
+    "original": "talkback-order-4.png",
+    "bytes": 66042,
+    "sha256": "d408f2451e78f47f0bedcef2ad32dd35fc04bb5a7bec108b87366950c273fb8a",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-4.png",
+    "published": "talkback-order-4.png"
+  },
+  {
+    "original": "talkback-order-5.json",
+    "bytes": 28950,
+    "sha256": "e02804af5e11ba6426779f3493c53cef155b768a644a3c4171dade1a00712b6c",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-5.json",
+    "published": "talkback-order-5.json"
+  },
+  {
+    "original": "talkback-order-5.png",
+    "bytes": 66476,
+    "sha256": "e17425072daca03c787b5009b309fd2271c78450da6c3c3736e6b8694700cb1c",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-5.png",
+    "published": "talkback-order-5.png"
+  },
+  {
+    "original": "talkback-order-6.json",
+    "bytes": 28950,
+    "sha256": "3b13556103f6d88f5bc26c5bf730eebc1ca0c458fee23c0880eb6a7fb7927a76",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-6.json",
+    "published": "talkback-order-6.json"
+  },
+  {
+    "original": "talkback-order-6.png",
+    "bytes": 66456,
+    "sha256": "ff46fb4dcdeba0c73f2d12fe3553f88f5df2fc4dc8ea147be33e5f92356423ba",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-6.png",
+    "published": "talkback-order-6.png"
+  },
+  {
+    "original": "talkback-order-7.json",
+    "bytes": 28950,
+    "sha256": "c1cbbdfb9248ab70a7eb118a53b71808093ff0d9b0ef9b15cec32ac9fc3afc8c",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-7.json",
+    "published": "talkback-order-7.json"
+  },
+  {
+    "original": "talkback-order-7.png",
+    "bytes": 65920,
+    "sha256": "9aec8ed4ed58b406fef0a634fc74e71bd62278687a8eb5c2053a9326fc3d49a0",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-7.png",
+    "published": "talkback-order-7.png"
+  },
+  {
+    "original": "talkback-order-8.json",
+    "bytes": 28950,
+    "sha256": "afd6534471d68c0932d5e8c73d0e34b16cfb76acc66f923a2c74413bbeb61082",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-8.json",
+    "published": "talkback-order-8.json"
+  },
+  {
+    "original": "talkback-order-8.png",
+    "bytes": 65907,
+    "sha256": "c9cbf1ed4010db01736ef82e389df9a502f1873836de1f3f32e16776f5ea965c",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-8.png",
+    "published": "talkback-order-8.png"
+  },
+  {
+    "original": "talkback-order-observed.json",
+    "bytes": 336,
+    "sha256": "88111f7ea10db2854626df4e9bc63ba5b341f9d260b62286d611886866e86f0f",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-order-observed.json",
+    "published": "talkback-order-observed.json"
+  },
+  {
+    "original": "talkback-package.txt",
+    "bytes": 21969,
+    "sha256": "df2a80a820031d075c8d9c841b580862b8a3ccaf9f7a467cf543b68cd85496b6",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-package.txt",
+    "published": "talkback-package.txt"
+  },
+  {
+    "original": "talkback-second-audit-setup.json",
+    "bytes": 33539,
+    "sha256": "dcdaf985489cdd815fd84298f3956b3dc5e083562f4fa4851624b8c2fca4e9f9",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-second-audit-setup.json",
+    "published": "talkback-second-audit-setup.json"
+  },
+  {
+    "original": "talkback-second-audit-setup.png",
+    "bytes": 72631,
+    "sha256": "fbf4f65a39986e3cc17ff3210339bf811c92e882302bfd9324f5bcfa18ebc296",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-second-audit-setup.png",
+    "published": "talkback-second-audit-setup.png"
+  },
+  {
+    "original": "talkback-touch-search.json",
+    "bytes": 28950,
+    "sha256": "c18432abde2cffcc7ca24f6dd81721b88e3bf0c8faed291cda780ae83f420da6",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-touch-search.json",
+    "published": "talkback-touch-search.json"
+  },
+  {
+    "original": "talkback-touch-search.png",
+    "bytes": 65816,
+    "sha256": "914ce90114ba41ee83816dde2467386b09f8b3c926e3bb6ee3ea4e2c5dfa880e",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/talkback-touch-search.png",
+    "published": "talkback-touch-search.png"
+  },
+  {
+    "original": "touch-grid-0.json",
+    "bytes": 30731,
+    "sha256": "5ecd30b73066980afaad2c742358e6dd1602a261344bec6e8bb741c04554fe29",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/touch-grid-0.json",
+    "published": "touch-grid-0.json"
+  },
+  {
+    "original": "touch-grid-0.png",
+    "bytes": 85399,
+    "sha256": "0bef4362ffc457723c13bd61426dea2efe37fc4710c1b6bc46523090eefcf3c1",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/touch-grid-0.png",
+    "published": "touch-grid-0.png"
+  },
+  {
+    "original": "touch-grid-1.json",
+    "bytes": 30731,
+    "sha256": "9176782f2b97cab65da005b4ec4aba150224f68ca622508128897226e1b78c79",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/touch-grid-1.json",
+    "published": "touch-grid-1.json"
+  },
+  {
+    "original": "touch-grid-1.png",
+    "bytes": 85399,
+    "sha256": "0bef4362ffc457723c13bd61426dea2efe37fc4710c1b6bc46523090eefcf3c1",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/touch-grid-1.png",
+    "published": "touch-grid-1.png"
+  },
+  {
+    "original": "touch-grid-2.json",
+    "bytes": 30731,
+    "sha256": "4c61eccd19566b3bbeeb3f675c602d25002d6b1c0344bcc57066183ca1a88fc2",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/touch-grid-2.json",
+    "published": "touch-grid-2.json"
+  },
+  {
+    "original": "touch-grid-2.png",
+    "bytes": 85687,
+    "sha256": "250b16bed048c89e7ce171dc4817e54cdfc1fbb9f0f190ef6f18686868051a09",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/touch-grid-2.png",
+    "published": "touch-grid-2.png"
+  },
+  {
+    "original": "touch-grid-3.json",
+    "bytes": 30731,
+    "sha256": "08035e6d0dd85b8e8f253a9a194f4e2b94a2fc4bcb7d1b7aa96b874035ddb7ac",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/touch-grid-3.json",
+    "published": "touch-grid-3.json"
+  },
+  {
+    "original": "touch-grid-3.png",
+    "bytes": 85593,
+    "sha256": "efdfc1fc014f19524529fcc32bfe35a7fa64023cb9c2db4f48b73612718cac35",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/touch-grid-3.png",
+    "published": "touch-grid-3.png"
+  },
+  {
+    "original": "touch-grid-4.json",
+    "bytes": 30731,
+    "sha256": "f40ee82ccc5778ea3488af5027f4f577da0bed50fb917cb0347bd58fcf13df04",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/touch-grid-4.json",
+    "published": "touch-grid-4.json"
+  },
+  {
+    "original": "touch-grid-4.png",
+    "bytes": 85593,
+    "sha256": "efdfc1fc014f19524529fcc32bfe35a7fa64023cb9c2db4f48b73612718cac35",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/touch-grid-4.png",
+    "published": "touch-grid-4.png"
+  },
+  {
+    "original": "touch-grid-5.json",
+    "bytes": 30731,
+    "sha256": "9d6403c00db2a050f139caf7b8f714c922c279b96184b11dbdc74b3282cd8789",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/touch-grid-5.json",
+    "published": "touch-grid-5.json"
+  },
+  {
+    "original": "touch-grid-5.png",
+    "bytes": 85593,
+    "sha256": "efdfc1fc014f19524529fcc32bfe35a7fa64023cb9c2db4f48b73612718cac35",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/touch-grid-5.png",
+    "published": "touch-grid-5.png"
+  },
+  {
+    "original": "worker-granted-phase2.json",
+    "bytes": 115,
+    "sha256": "23d3ac577053c2592d6e5457a2f5dcde5b86f0c3ba7e82556cf87389aa7a76b4",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/worker-granted-phase2.json",
+    "published": "worker-granted-phase2.json"
+  },
+  {
+    "original": "worker-granted.json",
+    "bytes": 115,
+    "sha256": "c2afab31435fad93779b6715c4a5e874e3f8edbe2204033972e3a27e987887c1",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/worker-granted.json",
+    "published": "worker-granted.json"
+  },
+  {
+    "original": "worker-revoked-phase1.json",
+    "bytes": 117,
+    "sha256": "8591ad543f82dca87f70f54660d6dcc57c00ee3d5df1620cd2d7385759e8d3ed",
+    "rawPreservedAt": ".gradle/manual-acceptance-artifacts/raw-evidence/worker-revoked-phase1.json",
+    "published": "worker-revoked-phase1.json"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "source": "5d3f0ccd03411666ff741ccc894bc85ad98cd280",
+  "hostGate": "BUILD SUCCESSFUL in7m37s",
+  "jvm": {
+    "tests": 275,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": 36,
+  "instrumentation": "0 bodies; blocked by shallow checkout provenance before emulator action"
+}

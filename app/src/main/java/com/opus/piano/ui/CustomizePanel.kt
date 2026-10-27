@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.LocalContext
 import com.opus.piano.OpusApplication
@@ -43,7 +44,9 @@ import com.opus.piano.preferences.*
                 else->listOf("Arabesque" to "Claude Debussy","Prelude" to "J. S. Bach")
             }
             examples.take(if(listPreview) 2 else 1).forEach {(title,composer)->
-                Row(Modifier.fillMaxWidth().padding(vertical=if(a.density=="Compact") 2.dp else 8.dp),horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                // Stage 7A round 3 (owner alignment audit): center the single-line note glyph
+                // against the two-line title block instead of the default top alignment.
+                Row(Modifier.fillMaxWidth().padding(vertical=if(a.density=="Compact") 2.dp else 8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)) {
                     Text("♫",color=MaterialTheme.colorScheme.primary)
                     Column(Modifier.weight(1f)) {Text(title,style=MaterialTheme.typography.titleLarge);Text(composer,style=MaterialTheme.typography.bodySmall)}
                 }

@@ -1,0 +1,399 @@
+{
+  "pid": 6176,
+  "uptime": 16175538,
+  "nodes": [
+    {
+      "index": 0,
+      "parent": -1,
+      "bounds": "40 120 680 649",
+      "class": "android.widget.FrameLayout",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        4,
+        8,
+        64,
+        16908342
+      ]
+    },
+    {
+      "index": 1,
+      "parent": 0,
+      "bounds": "40 120 680 649",
+      "class": "android.widget.FrameLayout",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        4,
+        8,
+        64,
+        16908342
+      ]
+    },
+    {
+      "index": 2,
+      "parent": 1,
+      "bounds": "40 120 680 649",
+      "class": "android.widget.FrameLayout",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        4,
+        8,
+        64,
+        16908342
+      ]
+    },
+    {
+      "index": 3,
+      "parent": 2,
+      "bounds": "40 120 680 649",
+      "class": "android.view.ViewGroup",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        4,
+        8,
+        64,
+        16908342
+      ]
+    },
+    {
+      "index": 4,
+      "parent": 3,
+      "bounds": "40 120 680 649",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 5,
+      "parent": 4,
+      "bounds": "40 120 680 649",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 6,
+      "parent": 5,
+      "bounds": "40 120 680 649",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 7,
+      "parent": 6,
+      "bounds": "40 120 680 649",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 8,
+      "parent": 7,
+      "text": "Admin service URL",
+      "bounds": "88 168 518 232",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 9,
+      "parent": 7,
+      "text": "http:\/\/synthetic-invalid.invalid",
+      "bounds": "88 264 632 376",
+      "class": "android.widget.EditText",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": true,
+      "focusable": true,
+      "focused": true,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        2,
+        16,
+        32,
+        2097152,
+        16908372,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 10,
+      "parent": 9,
+      "bounds": "88 264 632 376",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 11,
+      "parent": 9,
+      "bounds": "120 299 600 341",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 12,
+      "parent": 7,
+      "text": "Leave empty to keep the service disabled (not configured). Only https URLs are accepted.",
+      "bounds": "88 392 632 457",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 13,
+      "parent": 7,
+      "bounds": "359 505 500 601",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        1,
+        16
+      ]
+    },
+    {
+      "index": 14,
+      "parent": 13,
+      "text": "Cancel",
+      "bounds": "383 533 476 573",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 15,
+      "parent": 13,
+      "bounds": "359 513 500 593",
+      "class": "android.widget.Button",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    },
+    {
+      "index": 16,
+      "parent": 7,
+      "bounds": "516 505 632 601",
+      "class": "android.view.View",
+      "visible": true,
+      "clickable": true,
+      "enabled": true,
+      "editable": false,
+      "focusable": true,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        1,
+        16
+      ]
+    },
+    {
+      "index": 17,
+      "parent": 16,
+      "text": "Save",
+      "bounds": "541 533 607 573",
+      "class": "android.widget.TextView",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64,
+        131072,
+        256,
+        512
+      ]
+    },
+    {
+      "index": 18,
+      "parent": 16,
+      "bounds": "516 513 632 593",
+      "class": "android.widget.Button",
+      "visible": true,
+      "clickable": false,
+      "enabled": true,
+      "editable": false,
+      "focusable": false,
+      "focused": false,
+      "accessibilityFocused": false,
+      "checkable": false,
+      "checked": false,
+      "actions": [
+        64
+      ]
+    }
+  ],
+  "touchExploration": 0,
+  "animatorScale": 1,
+  "transitionScale": 1,
+  "windowScale": 1,
+  "notificationGranted": true,
+  "activeNotificationIds": [
+    701
+  ],
+  "imeVisible": true,
+  "imeBottom": 558
+}

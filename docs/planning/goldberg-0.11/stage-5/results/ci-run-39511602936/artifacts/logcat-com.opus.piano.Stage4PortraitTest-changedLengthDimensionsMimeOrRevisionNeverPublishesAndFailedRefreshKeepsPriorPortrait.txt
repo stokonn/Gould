@@ -1,0 +1,7 @@
+10-20 23:05:47.425  4034  4122 I TestRunner: started: changedLengthDimensionsMimeOrRevisionNeverPublishesAndFailedRefreshKeepsPriorPortrait(com.opus.piano.Stage4PortraitTest)
+10-20 23:05:47.431  4034  4120 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.436  4034  4120 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.439  4034  4120 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.441  4034  4120 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.444  4034  4120 W HWUI    : Image decoding logging dropped!
+10-20 23:05:47.445  4034  4122 I TestRunner: finished: changedLengthDimensionsMimeOrRevisionNeverPublishesAndFailedRefreshKeepsPriorPortrait(com.opus.piano.Stage4PortraitTest)

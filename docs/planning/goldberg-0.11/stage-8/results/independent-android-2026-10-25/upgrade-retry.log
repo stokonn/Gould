@@ -1,0 +1,8 @@
+Performing Streamed Install
+Success
+.gradle/stage8-independent-artifacts/upgrade/seed.db: 1 file pushed, 0 skipped. 78.9 MB/s (147456 bytes in 0.002s)
+.gradle/stage8-independent-artifacts/upgrade/goldberg-appearance.xml: 1 file pushed, 0 skipped. 1.4 MB/s (198 bytes in 0.000s)
+.gradle/stage8-independent-artifacts/upgrade/candidate-partial.bin: 1 file pushed, 0 skipped. 107.3 MB/s (65536 bytes in 0.001s)
+Performing Streamed Install
+Success
+PASS: exact persistent-table equality after 0.10.1 upgrade; 37 sessions, notes, profile, badges, repertoire, recovery archive, draft bytes and preferences retained

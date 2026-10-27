@@ -1,0 +1,17 @@
+{
+  "allThreeScalesZero": true,
+  "realNavHostRoutesAndSystemBack": [
+    "Moderation Queue",
+    "Audit Log",
+    "Admin Settings"
+  ],
+  "administrationBackToProfile": true,
+  "profileEditLabelKind": "contentDescription; initial controller text-only assertion was wrong, actual snapshot proves Profile",
+  "restorationPending": false,
+  "limits": "No subjective vestibular assessment or frame-duration measurements.",
+  "restoredScales": {
+    "animator_duration_scale": "1",
+    "transition_animation_scale": "1",
+    "window_animation_scale": "1"
+  }
+}

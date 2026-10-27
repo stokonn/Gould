@@ -1,0 +1,13 @@
+{
+  "qemu": "1",
+  "boot": "1",
+  "api": "36",
+  "airplane": "1",
+  "wifi": "0",
+  "mobileData": "0",
+  "accessibilityEnabled": "0",
+  "activeDefaultNetwork": [
+    "Active default network: none"
+  ],
+  "installedApkSha256": "93ae9ec88472e4f07dc5328980786e9ce252887ccbac507c0034195cd9b51961"
+}

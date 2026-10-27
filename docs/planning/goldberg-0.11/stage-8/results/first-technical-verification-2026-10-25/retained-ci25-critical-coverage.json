@@ -1,0 +1,452 @@
+[
+  {
+    "class": "com.opus.piano.Goldberg08MigrationTest",
+    "name": "schemaFiveMigrationKeepsHistoryAndSkipsOnboarding",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.PracticeCoordinatorTest",
+    "name": "obsoleteCaptureCannotInterruptAResumedManualSession",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.PracticeCoordinatorTest",
+    "name": "failedRestoreKeepsThePausedDraft",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.PracticeCoordinatorTest",
+    "name": "reconnectingObserversNeverStartsOrDuplicatesTime",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.PracticeRecoveryTest",
+    "name": "oldBackupImportsAndDeviceStateDoesNotTravel",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.PracticeRecoveryTest",
+    "name": "durableDraftCompletesOnceAndRoundTripsNewBackup",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.PracticeServicePolicyTest",
+    "name": "staleNotificationActionsNeverStartRecording",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.PracticeServicePolicyTest",
+    "name": "serviceIsPrivateAndApplicationContextCannotStartMicrophone",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3aBackupTest",
+    "name": "legacyRestorePreservesUnfinishedRecoveryWithoutChangingBytes",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3aBackupTest",
+    "name": "historicalReadersAndV4WriterKeepFieldsAndNoStaleLocalAnchors",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3aMigrationTest",
+    "name": "schema9PreservesExistingUuidRegistryAndSeedsCompletionEvidence",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3aMigrationTest",
+    "name": "failureRollsBackPersonalMigration",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3aMigrationTest",
+    "name": "schema1",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3aMigrationTest",
+    "name": "schema2",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3aMigrationTest",
+    "name": "schema3",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3aMigrationTest",
+    "name": "schema4",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3aMigrationTest",
+    "name": "schema5",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3aMigrationTest",
+    "name": "schema6",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3aMigrationTest",
+    "name": "schema7",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3aMigrationTest",
+    "name": "schema8",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "minimalAndRepeatedRestoreWorkWithoutCatalogueOrAccount",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "unstartedNotesAndSelectionRecoverWithoutInventingPracticeCredit",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "duplicateCompletionCannotRemoveAnUnrelatedActiveDraft",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "destinationIdentityEvidenceSurvivesEvenWithoutDraftsOrArchives",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "restoredForeignScopeRebuildsCatalogueAndKeepsCanonicalIds",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "malformedDraftTimingIsPreservedRatherThanInvented",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "validDraftRegeneratesExecutionOnlyAndCompletesExactlyOnce",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "freshRestoreCannotReuseDeletedOwnerIdsAndAdoptTheirUuid",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "coordinatorReplacementCannotClearTheImportedDraft",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "exportIsAtomicOnLowSpaceAndInterruptedWritesAndInputIsBounded",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "unreadableBinaryDraftCanBeExportedAndArchivedWithoutRepair",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "measuredJournalAndLargeRawEvidenceRoundTripWithoutCursorTruncation",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "historicalOneThroughFourRemainReadableAndRetainOriginalFields",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "destinationDraftArchivesAndIdentityContextSurviveReplacement",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "failureBeforeCommitLeavesDestinationIntactAndAfterCommitReplaysIdempotently",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "fullV5PreservesIdentitiesJournalRawArchivesAndAllowlistedPreferences",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "conflictingEvidenceIdsKeepBothPayloads",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "conflictingTokenRetainsBothRecordsAndBlocksAutomaticCredit",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bBackupTest",
+    "name": "badHashesSectionsReferencesEnumsAndVersionsRejectBeforeReplacement",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bProcessDeathTest",
+    "name": "verifyAfterActualProcessDeath",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage3bProcessDeathTest",
+    "name": "prepareActualProcessDeath",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleJobRunnerTest",
+    "name": "concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleJobRunnerTest",
+    "name": "interruptedDownloadLeavesRetryableStateAndCompletesOnRetry",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleJobRunnerTest",
+    "name": "interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleJobRunnerTest",
+    "name": "corruptSourceContentNeverReachesReady",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleJobRunnerTest",
+    "name": "dataSaverPausesEvenWithPerJobConsent",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleJobRunnerTest",
+    "name": "invalidRightsOnDiskQuarantinesManifestAndDeactivatesJob",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleJobRunnerTest",
+    "name": "offlineNetworkWaitsWithoutMovingBytes",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleJobRunnerTest",
+    "name": "corruptStoredBlobIsQuarantinedAndRepairedOnRetry",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleJobRunnerTest",
+    "name": "lowStorageRefusesBeforeAnyByteMoves",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleJobRunnerTest",
+    "name": "inFlightStatesFromProcessDeathResumeLegally",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleJobRunnerTest",
+    "name": "futureReaderRequirementQuarantinesInsteadOfRenderingGarbage",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleJobRunnerTest",
+    "name": "consentRevocationMidStreamPausesAndKeepsReadyContent",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleJobRunnerTest",
+    "name": "queuedBundleDownloadsValidatesAndPublishesAtomically",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleStoreTest",
+    "name": "interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleStoreTest",
+    "name": "corruptManifestIsQuarantinedWithBytesPreservedAndOthersSurvive",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleStoreTest",
+    "name": "sharedBlobSurvivesUntilTheLastReferencingBundleIsRemoved",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleStoreTest",
+    "name": "admissionRefusesInsteadOfEvictingPinnedContent",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleStoreTest",
+    "name": "concurrentRemovalsAndClearNeverCorruptTheStoreOrDeleteSharedMediaEarly",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleStoreTest",
+    "name": "removingAllBundlesLeavesPersonalJournalDataIntact",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleStoreTest",
+    "name": "storeStateSurvivesReopenLikeAProcessRestart",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleStoreTest",
+    "name": "quarantineBlobPreservesBytesAndRemovesFromBlobStore",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleStoreTest",
+    "name": "sweepReclaimsOnlyUnreferencedContent",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleWorkerTest",
+    "name": "queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleWorkerTest",
+    "name": "missingInputDataFailsTheWork",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleWorkerTest",
+    "name": "workManagerRunsTheScheduledWorkerToACompletedBundle",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleWorkerTest",
+    "name": "revocationWithdrawsConsentCancelsWorkAndPausesTheManifest",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleWorkerTest",
+    "name": "offlineEnvironmentRetriesWithoutMovingAByte",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleWorkerTest",
+    "name": "transportFailureRetriesAndRecordsTheAttempt",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleWorkerTest",
+    "name": "cancelledJobSucceedsWithoutTouchingTheBundle",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleWorkerTest",
+    "name": "missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleWorkerTest",
+    "name": "reconciliationRecoversInFlightWorkAndNeverStartsUnconfirmedBundles",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleWorkerTest",
+    "name": "unknownBundleJobFailsTheWork",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleWorkerTest",
+    "name": "enqueueBindsOneUniqueWorkPerRevisionWithTheD7NetworkConstraint",
+    "skipped": false,
+    "failed": false
+  },
+  {
+    "class": "com.opus.piano.Stage5BundleWorkerTest",
+    "name": "cancelDeactivatesTheJobAndPreservesPreviouslyReadyContent",
+    "skipped": false,
+    "failed": false
+  }
+]

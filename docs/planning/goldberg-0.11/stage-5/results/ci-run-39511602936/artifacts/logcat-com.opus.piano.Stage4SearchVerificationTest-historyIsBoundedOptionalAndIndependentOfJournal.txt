@@ -1,0 +1,2 @@
+10-20 23:06:22.204  4034  4122 I TestRunner: started: historyIsBoundedOptionalAndIndependentOfJournal(com.opus.piano.Stage4SearchVerificationTest)
+10-20 23:06:22.241  4034  4122 I TestRunner: finished: historyIsBoundedOptionalAndIndependentOfJournal(com.opus.piano.Stage4SearchVerificationTest)

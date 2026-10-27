@@ -1,0 +1,20 @@
+{
+  "source": "fc8a440be2e00321876acf5990bbf5ca82cc1604",
+  "hierarchySha256": "39263070d44b765ea582c2706ca9a18f35dc2d321e6bd43b8e529c17e994806d",
+  "windowBounds": [
+    0,
+    0,
+    824,
+    1830
+  ],
+  "actionTextBounds": [
+    212,
+    652,
+    613,
+    692
+  ],
+  "scrollableContainers": 0,
+  "actionFullyInsideWindow": true,
+  "cause": "Harness required a scrollable container even when all content fit; actual PNG independently inspected",
+  "applicationSourceChanged": false
+}

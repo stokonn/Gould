@@ -1,0 +1,2 @@
+10-20 23:05:45.989  4034  4122 I TestRunner: started: concurrentReplayIsIdempotentAndCancelledTransactionCannotPublishEvidence(com.opus.piano.Stage4EvidenceLifecycleTest)
+10-20 23:05:46.019  4034  4122 I TestRunner: finished: concurrentReplayIsIdempotentAndCancelledTransactionCannotPublishEvidence(com.opus.piano.Stage4EvidenceLifecycleTest)

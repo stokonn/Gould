@@ -1,0 +1,199 @@
+{
+  "actualMainActivity": true,
+  "portraitTabs": 5,
+  "landscapeTabs": 5,
+  "rotation": "1",
+  "keyboardSteps": 8,
+  "focusedSteps": 8,
+  "focus": [
+    [
+      {
+        "index": "3",
+        "text": "",
+        "resource-id": "",
+        "class": "android.view.View",
+        "package": "com.opus.piano",
+        "content-desc": "",
+        "checkable": "false",
+        "checked": "false",
+        "clickable": "true",
+        "enabled": "true",
+        "focusable": "true",
+        "focused": "true",
+        "scrollable": "false",
+        "long-clickable": "false",
+        "password": "false",
+        "selected": "false",
+        "bounds": "[1306,118][2314,272]",
+        "drawing-order": "3",
+        "hint": ""
+      }
+    ],
+    [
+      {
+        "index": "1",
+        "text": "",
+        "resource-id": "",
+        "class": "android.view.View",
+        "package": "com.opus.piano",
+        "content-desc": "",
+        "checkable": "false",
+        "checked": "false",
+        "clickable": "true",
+        "enabled": "true",
+        "focusable": "true",
+        "focused": "true",
+        "scrollable": "false",
+        "long-clickable": "false",
+        "password": "false",
+        "selected": "false",
+        "bounds": "[2125,669][2277,795]",
+        "drawing-order": "1",
+        "hint": ""
+      }
+    ],
+    [
+      {
+        "index": "4",
+        "text": "",
+        "resource-id": "",
+        "class": "android.view.View",
+        "package": "com.opus.piano",
+        "content-desc": "",
+        "checkable": "false",
+        "checked": "false",
+        "clickable": "true",
+        "enabled": "true",
+        "focusable": "true",
+        "focused": "true",
+        "scrollable": "false",
+        "long-clickable": "false",
+        "password": "false",
+        "selected": "false",
+        "bounds": "[2130,681][2314,807]",
+        "drawing-order": "4",
+        "hint": ""
+      }
+    ],
+    [
+      {
+        "index": "0",
+        "text": "",
+        "resource-id": "",
+        "class": "android.view.View",
+        "package": "com.opus.piano",
+        "content-desc": "",
+        "checkable": "false",
+        "checked": "false",
+        "clickable": "true",
+        "enabled": "true",
+        "focusable": "true",
+        "focused": "true",
+        "scrollable": "false",
+        "long-clickable": "false",
+        "password": "false",
+        "selected": "false",
+        "bounds": "[241,649][2288,807]",
+        "drawing-order": "0",
+        "hint": ""
+      }
+    ],
+    [
+      {
+        "index": "1",
+        "text": "",
+        "resource-id": "",
+        "class": "android.view.View",
+        "package": "com.opus.piano",
+        "content-desc": "",
+        "checkable": "false",
+        "checked": "false",
+        "clickable": "true",
+        "enabled": "true",
+        "focusable": "true",
+        "focused": "true",
+        "scrollable": "false",
+        "long-clickable": "false",
+        "password": "false",
+        "selected": "false",
+        "bounds": "[241,649][2288,807]",
+        "drawing-order": "1",
+        "hint": ""
+      }
+    ],
+    [
+      {
+        "index": "0",
+        "text": "",
+        "resource-id": "",
+        "class": "android.view.View",
+        "package": "com.opus.piano",
+        "content-desc": "Home",
+        "checkable": "false",
+        "checked": "false",
+        "clickable": "false",
+        "enabled": "true",
+        "focusable": "true",
+        "focused": "true",
+        "scrollable": "false",
+        "long-clickable": "false",
+        "password": "false",
+        "selected": "true",
+        "bounds": "[0,807][480,1017]",
+        "drawing-order": "0",
+        "hint": ""
+      }
+    ],
+    [
+      {
+        "index": "1",
+        "text": "",
+        "resource-id": "",
+        "class": "android.view.View",
+        "package": "com.opus.piano",
+        "content-desc": "Library",
+        "checkable": "false",
+        "checked": "false",
+        "clickable": "true",
+        "enabled": "true",
+        "focusable": "true",
+        "focused": "true",
+        "scrollable": "false",
+        "long-clickable": "false",
+        "password": "false",
+        "selected": "false",
+        "bounds": "[480,807][960,1017]",
+        "drawing-order": "1",
+        "hint": ""
+      }
+    ],
+    [
+      {
+        "index": "2",
+        "text": "",
+        "resource-id": "",
+        "class": "android.view.View",
+        "package": "com.opus.piano",
+        "content-desc": "Discover",
+        "checkable": "false",
+        "checked": "false",
+        "clickable": "true",
+        "enabled": "true",
+        "focusable": "true",
+        "focused": "true",
+        "scrollable": "false",
+        "long-clickable": "false",
+        "password": "false",
+        "selected": "false",
+        "bounds": "[960,807][1440,1017]",
+        "drawing-order": "2",
+        "hint": ""
+      }
+    ]
+  ],
+  "ime": {
+    "editableFound": true,
+    "imeDismissalVerified": true
+  },
+  "limits": "Existing8C EN/CZ/theme/font matrix retained;this is additional actual orientation/keyboard evidence,not audible TalkBack acceptance."
+}

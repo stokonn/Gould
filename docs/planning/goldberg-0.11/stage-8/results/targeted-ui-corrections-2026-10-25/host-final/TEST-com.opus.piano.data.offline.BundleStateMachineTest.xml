@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.data.offline.BundleStateMachineTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-10-25T05:50:26.868Z" hostname="fedora" time="0.007">
+  <properties/>
+  <testcase name="everyStateHasAtLeastOneOutgoingTransition" classname="com.opus.piano.data.offline.BundleStateMachineTest" time="0.001"/>
+  <testcase name="quarantinedManifestCanAlwaysReachAQueuedRetryLegally" classname="com.opus.piano.data.offline.BundleStateMachineTest" time="0.001"/>
+  <testcase name="staleContentRemainsRetryableButIsNotReady" classname="com.opus.piano.data.offline.BundleStateMachineTest" time="0.0"/>
+  <testcase name="requiredPipelineIsFullyAllowed" classname="com.opus.piano.data.offline.BundleStateMachineTest" time="0.0"/>
+  <testcase name="processRestartNeverResurrectsInFlightWorkAsReady" classname="com.opus.piano.data.offline.BundleStateMachineTest" time="0.001"/>
+  <testcase name="recoveryPathsAreLegalAndNeverPassThroughReady" classname="com.opus.piano.data.offline.BundleStateMachineTest" time="0.002"/>
+  <testcase name="readyCannotReenterTransferPipeline" classname="com.opus.piano.data.offline.BundleStateMachineTest" time="0.0"/>
+  <testcase name="transferStepRequiresExplicitPolicyStates" classname="com.opus.piano.data.offline.BundleStateMachineTest" time="0.001"/>
+  <testcase name="requireTransitionThrowsWithActionableMessage" classname="com.opus.piano.data.offline.BundleStateMachineTest" time="0.0"/>
+  <testcase name="partialBundleCanNeverJumpToReady" classname="com.opus.piano.data.offline.BundleStateMachineTest" time="0.0"/>
+  <testcase name="interruptedInFlightStatesRecoverToPausedNotReady" classname="com.opus.piano.data.offline.BundleStateMachineTest" time="0.0"/>
+  <testcase name="validateAndPublishStepsArePhaseLocked" classname="com.opus.piano.data.offline.BundleStateMachineTest" time="0.0"/>
+  <testcase name="quarantinedCannotReachReadyDirectly" classname="com.opus.piano.data.offline.BundleStateMachineTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

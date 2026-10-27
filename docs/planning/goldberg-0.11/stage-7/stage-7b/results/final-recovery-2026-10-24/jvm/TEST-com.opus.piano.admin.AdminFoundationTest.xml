@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.admin.AdminFoundationTest" tests="24" skipped="0" failures="0" errors="0" timestamp="2026-10-24T13:14:45.069Z" hostname="fedora" time="0.04">
+  <properties/>
+  <testcase name="emptyBaseUrlFailsHonestNotConfiguredWithoutNetworkCall" classname="com.opus.piano.admin.AdminFoundationTest" time="0.002"/>
+  <testcase name="decisionPostUsesVerifiedEndpointAndReturnsAtomicResult" classname="com.opus.piano.admin.AdminFoundationTest" time="0.002"/>
+  <testcase name="failureKeysAreStableForUiMapping" classname="com.opus.piano.admin.AdminFoundationTest" time="0.0"/>
+  <testcase name="successWithNonContractBodyIsInvalidPayloadNotSilentSuccess" classname="com.opus.piano.admin.AdminFoundationTest" time="0.002"/>
+  <testcase name="capabilitiesParsingToleratesUnknownRolesButKeepsServerValues" classname="com.opus.piano.admin.AdminFoundationTest" time="0.001"/>
+  <testcase name="queueLimitIsClampedToContractMaximum" classname="com.opus.piano.admin.AdminFoundationTest" time="0.002"/>
+  <testcase name="removalAndReAddRoundTrip" classname="com.opus.piano.admin.AdminFoundationTest" time="0.002"/>
+  <testcase name="signOutUsesContractSessionEndpoint" classname="com.opus.piano.admin.AdminFoundationTest" time="0.003"/>
+  <testcase name="conflictCarriesCurrentServerStateFromErrorEnvelope" classname="com.opus.piano.admin.AdminFoundationTest" time="0.002"/>
+  <testcase name="submissionDetailParsesSnakeCaseReviewEventsAndLatestRevision" classname="com.opus.piano.admin.AdminFoundationTest" time="0.002"/>
+  <testcase name="plainHttpOrUserInfoEndpointIsRejectedBeforeAnyCall" classname="com.opus.piano.admin.AdminFoundationTest" time="0.002"/>
+  <testcase name="trustWindowIsTenMinutesNonSlidingAndInvalidatedExplicitly" classname="com.opus.piano.admin.AdminFoundationTest" time="0.002"/>
+  <testcase name="pendingStatusesAreDecidableAndNeedsInfoMapsToChangesRequested" classname="com.opus.piano.admin.AdminFoundationTest" time="0.001"/>
+  <testcase name="httpStatusesMapToTypedFailures" classname="com.opus.piano.admin.AdminFoundationTest" time="0.004"/>
+  <testcase name="queueItemMatchesC6WireShapeAndToleratesUnknownFields" classname="com.opus.piano.admin.AdminFoundationTest" time="0.001"/>
+  <testcase name="trustWindowNeverExtendsWithoutFreshGrant" classname="com.opus.piano.admin.AdminFoundationTest" time="0.001"/>
+  <testcase name="transportFailureMapsToUnreachableAndKeepsCancellationIntact" classname="com.opus.piano.admin.AdminFoundationTest" time="0.001"/>
+  <testcase name="markersAreAccountScopedAndMinimal" classname="com.opus.piano.admin.AdminFoundationTest" time="0.001"/>
+  <testcase name="bearerTokenIsAttachedOnlyWhenPresent" classname="com.opus.piano.admin.AdminFoundationTest" time="0.002"/>
+  <testcase name="queueRequestsOnlyContractDefinedParameters" classname="com.opus.piano.admin.AdminFoundationTest" time="0.001"/>
+  <testcase name="auditPageParsesHashChainFields" classname="com.opus.piano.admin.AdminFoundationTest" time="0.0"/>
+  <testcase name="decisionBodyCarriesMandatoryConflictFieldsAndOptionalReason" classname="com.opus.piano.admin.AdminFoundationTest" time="0.0"/>
+  <testcase name="markersClearOnlyOnConfirmedServerResolution" classname="com.opus.piano.admin.AdminFoundationTest" time="0.001"/>
+  <testcase name="queuePageParsesCursorAndEmptyPage" classname="com.opus.piano.admin.AdminFoundationTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

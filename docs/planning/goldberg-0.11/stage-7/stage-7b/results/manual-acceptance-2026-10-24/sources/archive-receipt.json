@@ -1,0 +1,9 @@
+{
+  "originalSourcePath": "app/src/androidTest/java/com/opus/piano/Stage7bManualProbe.kt",
+  "archivedSourcePath": "docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/sources/Stage7bManualProbe.kt",
+  "sourceSha256": "0f28ab71f4f1ba1801c34a9337bef129ab6f99ac6534776ac3b93337cdeda20d",
+  "archivedGradlePatchSha256": "7553230827ad83fee0c252fbb46e764ce60815c186b63a88005474eecdad171e",
+  "originalGradleSha256": "c2df95969d44ede3eed6b1a4c448444d5e757f070d1887d8b1053949bd259527",
+  "temporaryGradleSha256": "434f9252789f5ffef4acf694f49d8e203558d24abae76ba2d4123cc0fc266182",
+  "reason": "Owner final closure: preserve unique manual tooling, restore active app/default test/CI source exactly to verified CI25 baseline."
+}

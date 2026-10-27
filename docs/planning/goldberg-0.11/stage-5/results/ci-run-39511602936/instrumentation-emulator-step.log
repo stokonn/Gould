@@ -1,0 +1,786 @@
+﻿2026-10-20T23:01:29.5266506Z ##[group]Run reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d
+2026-10-20T23:01:29.5267088Z with:
+2026-10-20T23:01:29.5267257Z   api-level: 36
+2026-10-20T23:01:29.5267432Z   target: google_apis
+2026-10-20T23:01:29.5267630Z   arch: x86_64
+2026-10-20T23:01:29.5267800Z   profile: pixel_6
+2026-10-20T23:01:29.5294252Z   avd-name: stage5-ci
+2026-10-20T23:01:29.5294511Z   disable-animations: true
+2026-10-20T23:01:29.5294939Z   emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+2026-10-20T23:01:29.5295409Z   script: bash "$RUNNER_TEMP/stage5-instrumentation.sh"
+2026-10-20T23:01:29.5295669Z   cores: 2
+2026-10-20T23:01:29.5295856Z   force-avd-creation: true
+2026-10-20T23:01:29.5296051Z   emulator-boot-timeout: 600
+2026-10-20T23:01:29.5296248Z   emulator-port: 5554
+2026-10-20T23:01:29.5296447Z   disable-spellchecker: false
+2026-10-20T23:01:29.5296674Z   disable-linux-hw-accel: auto
+2026-10-20T23:01:29.5296892Z   enable-hw-keyboard: false
+2026-10-20T23:01:29.5297154Z   channel: stable
+2026-10-20T23:01:29.5297338Z env:
+2026-10-20T23:01:29.5297601Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-20T23:01:29.5298014Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-20T23:01:29.5298326Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-10-20T23:01:29.5298567Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-10-20T23:01:29.5298788Z ##[endgroup]
+2026-10-20T23:01:29.5839847Z ##[group]Configure emulator
+2026-10-20T23:01:29.5840517Z API level: 36
+2026-10-20T23:01:29.5841066Z System image API level: 36
+2026-10-20T23:01:29.5841577Z target: google_apis
+2026-10-20T23:01:29.5841955Z CPU architecture: x86_64
+2026-10-20T23:01:29.5844140Z Hardware profile: pixel_6
+2026-10-20T23:01:29.5844507Z Cores: 2
+2026-10-20T23:01:29.5845407Z RAM size: 
+2026-10-20T23:01:29.5845696Z Heap size: 
+2026-10-20T23:01:29.5846021Z SD card path or size: 
+2026-10-20T23:01:29.5846358Z Disk size: 
+2026-10-20T23:01:29.5846730Z AVD name: stage5-ci
+2026-10-20T23:01:29.5847086Z force avd creation: true
+2026-10-20T23:01:29.5847417Z Emulator boot timeout: 600
+2026-10-20T23:01:29.5847742Z emulator port: 5554
+2026-10-20T23:01:29.5848594Z emulator options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+2026-10-20T23:01:29.5849347Z disable animations: true
+2026-10-20T23:01:29.5849758Z disable spellchecker: false
+2026-10-20T23:01:29.5850206Z disable Linux hardware acceleration: false
+2026-10-20T23:01:29.5850640Z enable hardware keyboard: false
+2026-10-20T23:01:29.5850994Z Channel: 0 (stable)
+2026-10-20T23:01:29.5851261Z Script:
+2026-10-20T23:01:29.5851626Z bash "$RUNNER_TEMP/stage5-instrumentation.sh"
+2026-10-20T23:01:29.5852051Z Pre emulator launch script:
+2026-10-20T23:01:29.5852657Z ##[endgroup]
+2026-10-20T23:01:29.5853144Z ##[group]Install Android SDK
+2026-10-20T23:01:29.5894307Z [command]/usr/bin/sh -c \yes | sdkmanager --licenses > /dev/null
+2026-10-20T23:01:32.4595114Z Installing latest build tools, platform tools, and platform.
+2026-10-20T23:01:32.4608356Z [command]/usr/bin/sh -c \sdkmanager --install 'build-tools;37.0.0' platform-tools 'platforms;android-36'> /dev/null
+2026-10-20T23:01:33.7439564Z Installing latest emulator.
+2026-10-20T23:01:33.7451718Z [command]/usr/bin/sh -c \sdkmanager --install emulator --channel=0 > /dev/null
+2026-10-20T23:01:54.4389687Z Installing system images.
+2026-10-20T23:01:54.4401424Z [command]/usr/bin/sh -c \sdkmanager --install 'system-images;android-36;google_apis;x86_64' --channel=0 > /dev/null
+2026-10-20T23:02:51.7600766Z ##[endgroup]
+2026-10-20T23:02:51.7601749Z ##[group]Create AVD
+2026-10-20T23:02:51.7602395Z Creating AVD.
+2026-10-20T23:02:51.7622954Z [command]/usr/bin/sh -c \echo no | avdmanager create avd --force -n stage5-ci --package 'system-images;android-36;google_apis;x86_64' --device 'pixel_6'
+2026-10-20T23:02:52.3798534Z Loading local repository...                                                     
+2026-10-20T23:02:52.3800117Z [=========                              ] 25% Loading local repository...       
+2026-10-20T23:02:52.3802945Z [=========                              ] 25% Fetch remote repository...        
+2026-10-20T23:02:52.3803554Z [=======================================] 100% Fetch remote repository...       
+2026-10-20T23:02:52.4205110Z Auto-selecting single ABI x86_64
+2026-10-20T23:02:52.7345726Z [command]/usr/bin/sh -c \printf 'hw.cpu.ncore=2\n' >> /home/runner/.android/avd/stage5-ci.avd/config.ini
+2026-10-20T23:02:52.7364697Z ##[endgroup]
+2026-10-20T23:02:52.7366140Z ##[group]Launch Emulator
+2026-10-20T23:02:52.7366547Z Starting emulator.
+2026-10-20T23:02:52.7378187Z [command]/usr/bin/sh -c \/usr/local/lib/android/sdk/emulator/emulator -port 5554 -avd stage5-ci -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot &
+2026-10-20T23:02:52.7491012Z INFO         | Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+2026-10-20T23:02:52.7491614Z INFO         | Graphics backend: gfxstream
+2026-10-20T23:02:52.7492425Z INFO         | Found systemPath /usr/local/lib/android/sdk/system-images/android-36/google_apis/x86_64/
+2026-10-20T23:02:52.7923863Z INFO         | Saving last run QEMU version for the AVD to 2
+2026-10-20T23:02:52.7924691Z INFO         | Guest usage of host flag 'VulkanVirtualQueue' will be ignored.
+2026-10-20T23:02:52.7925285Z INFO         | Increasing RAM size to 2560MB
+2026-10-20T23:02:52.7925771Z INFO         | Guest GLES Driver: Auto (ext controls)
+2026-10-20T23:02:52.7926501Z INFO         | emuglConfig_init: vulkan_mode_selected:swiftshader gles_mode_selected:swiftshader
+2026-10-20T23:02:52.7927163Z INFO         | Checking system compatibility:
+2026-10-20T23:02:52.7927658Z INFO         |   Checking: hasSufficientDiskSpace
+2026-10-20T23:02:52.7928264Z INFO         |      Ok: Disk space requirements to run avd: `stage5-ci` are met
+2026-10-20T23:02:52.7928819Z INFO         |   Checking: hasSufficientHwGpu
+2026-10-20T23:02:52.7929380Z INFO         |      Ok: Hardware GPU compatibility checks are not required
+2026-10-20T23:02:52.7929929Z INFO         |   Checking: hasSufficientSystem
+2026-10-20T23:02:52.7930481Z INFO         |      Ok: System requirements to run avd: `stage5-ci` are met
+2026-10-20T23:02:52.7931828Z WARNING      | Feature QuickbootFileBacked is disabled due to stability issues, if you really want that, the environment variable ANDROID_EMU_FORCE_QUICKBOOT_FILE_BACKED need to set to 1
+2026-10-20T23:02:53.3117292Z ERROR        | Unable to connect to adb daemon on port: 5037
+2026-10-20T23:02:53.3149256Z INFO         | Storing crashdata in: /tmp/android-runner/emu-crash-37.2.12.db, detection is enabled for process: 3241
+2026-10-20T23:02:53.3150096Z INFO         | Initializing gfxstream backend
+2026-10-20T23:02:53.3158931Z INFO         | startOpenglesRendererImpl: gpu info
+2026-10-20T23:02:53.3159220Z INFO         | 
+2026-10-20T23:02:53.3161586Z INFO         | initIcdPaths: ICD set to 'swiftshader', using Swiftshader ICD
+2026-10-20T23:02:53.3162603Z INFO         | Setting ICD filenames for the loader = /usr/local/lib/android/sdk/emulator/lib64/vulkan/vk_swiftshader_icd.json
+2026-10-20T23:02:53.3163883Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so]
+2026-10-20T23:02:53.3165084Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so.1]
+2026-10-20T23:02:53.3165766Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so]
+2026-10-20T23:02:53.3166765Z INFO         | Added library: /usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so
+2026-10-20T23:02:53.3205167Z INFO         | Selecting Vulkan device: SwiftShader Device (Subzero), Version: 1.3.0
+2026-10-20T23:02:53.3205897Z INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+2026-10-20T23:02:53.3782049Z INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+2026-10-20T23:02:53.3807935Z INFO         | SharedLibrary::open for [libX11]
+2026-10-20T23:02:53.3808583Z WARNING      | Could not open libX11.so, try libX11.so.6
+2026-10-20T23:02:53.3809083Z INFO         | SharedLibrary::open for [libX11.so.6]
+2026-10-20T23:02:53.3809624Z INFO         | SharedLibrary::open for [libX11-xcb]
+2026-10-20T23:02:53.3810583Z WARNING      | Could not open libX11-xcb.so, try libX11-xcb.so.1
+2026-10-20T23:02:53.3811006Z INFO         | SharedLibrary::open for [libX11-xcb.so.1]
+2026-10-20T23:02:53.3884083Z INFO         | Initializing VkEmulation features:
+2026-10-20T23:02:53.3884611Z INFO         |     glInteropSupported: false
+2026-10-20T23:02:53.3885045Z INFO         |     useDeferredCommands: true
+2026-10-20T23:02:53.3885517Z INFO         |     createResourceWithRequirements: true
+2026-10-20T23:02:53.3885992Z INFO         |     useVulkanComposition: false
+2026-10-20T23:02:53.3886449Z INFO         |     useVulkanNativeSwapchain: false
+2026-10-20T23:02:53.3886900Z INFO         |     enable guestRenderDoc: false
+2026-10-20T23:02:53.3887383Z INFO         |     ASTC LDR emulation mode: Gpu
+2026-10-20T23:02:53.3893292Z INFO         |     enable ETC2 emulation: true
+2026-10-20T23:02:53.3893859Z INFO         |     enable Ycbcr emulation: false
+2026-10-20T23:02:53.3894328Z INFO         |     guestVulkanOnly: false
+2026-10-20T23:02:53.3894825Z INFO         |     useDedicatedAllocations: false
+2026-10-20T23:02:53.3895310Z INFO         |     guestVulkanMaxApiVersion: 1.3.0
+2026-10-20T23:02:53.3895819Z INFO         |     enableProtectedMemoryEmulation: false
+2026-10-20T23:02:53.3896404Z INFO         | Graphics Adapter Vendor Google (Google Inc.)
+2026-10-20T23:02:53.3896972Z INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (Google SwiftShader)
+2026-10-20T23:02:53.3897479Z INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+2026-10-20T23:02:53.3899516Z INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
+2026-10-20T23:02:53.3901269Z INFO         | Graphics Device Extensions N/A
+2026-10-20T23:02:53.3901586Z INFO         | Disabling sparse binding feature support
+2026-10-20T23:02:53.3980003Z INFO         | Sending adb public key [QAAAAHWaC0QjGpL2p2EWRASSf+27rFtouI1bTSHGhz48gVNZY4ix3UMZBHHhLljp29xWmecXLiIMZbZRgh2/3J3bw9qljnqIjP+Xp5Nb5EaZFooh+qM/TpfPUv4o5dlYBKtWWJKVL+oI7BjF4FKjYd5IF3M7HJ5fUE0StI9vhWJJVLFlYKbWLqKL2wrp+im++Cgy0PKVXP2xRAVMGK2YpanpQ2lN9yeoQjKoXo8DqOm/PWbBEZc+XOrfCPEbiexyz9prNLA/7TiUEqC6H1p0YVHzL1ZOxjSFXTf5R+MiXcduz2SvNKNoP4XQTdK2zZNN3l6NwKY1BN0gFFniXT2ZYZRhZjtn5l7e/n5fNC72UtCVIbcVMPy3Bt5Rc5PwuuQ2PhwHtelUG2okGC/hzx0i418hfDPc7NomaIPlBykw6qGiRsRFVXYT6KNgs2O/ObrgecEej7T3fbddYjUe3ZmsvSAnXKykY/T1A4hojyBZqYG+Z5Bheo1BNmKK9aGfmoeIj4fh+8Q8yuKRnJujxYJB1d4DMwb0VRbeoOd9HTnP3OpqTHl2UpmEMVxEQfLsBMoZ4WJrvHj/E45b7+/3UK63wXpsWCbCiQGhgrbKN2PXG5RAd2IcR2YCHjgYYDkHhwnbTKd9LT0WE3jUIsCYZ5Ezq44+AFMnefClx9PpPJHhopeyYJIjhKRfowEAAQA= runner@unknown]
+2026-10-20T23:02:53.3984440Z INFO         | Userspace boot properties:
+2026-10-20T23:02:53.3985216Z INFO         |   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0
+2026-10-20T23:02:53.3985888Z INFO         |   androidboot.dalvik.vm.heapsize=576m
+2026-10-20T23:02:53.3986259Z INFO         |   androidboot.debug.hwui.renderer=skiagl
+2026-10-20T23:02:53.3986610Z INFO         |   androidboot.debug.sf.nobootanimation=1
+2026-10-20T23:02:53.3986911Z INFO         |   androidboot.hardware=ranchu
+2026-10-20T23:02:53.3987225Z INFO         |   androidboot.hardware.gltransport=pipe
+2026-10-20T23:02:53.3987732Z INFO         |   androidboot.hardware.vulkan=ranchu
+2026-10-20T23:02:53.3988168Z INFO         |   androidboot.logcat=*:V
+2026-10-20T23:02:53.3988477Z INFO         |   androidboot.opengles.version=196608
+2026-10-20T23:02:53.3988763Z INFO         |   androidboot.qemu=1
+2026-10-20T23:02:53.3991895Z INFO         |   androidboot.qemu.adb.pubkey=QAAAAHWaC0QjGpL2p2EWRASSf+27rFtouI1bTSHGhz48gVNZY4ix3UMZBHHhLljp29xWmecXLiIMZbZRgh2/3J3bw9qljnqIjP+Xp5Nb5EaZFooh+qM/TpfPUv4o5dlYBKtWWJKVL+oI7BjF4FKjYd5IF3M7HJ5fUE0StI9vhWJJVLFlYKbWLqKL2wrp+im++Cgy0PKVXP2xRAVMGK2YpanpQ2lN9yeoQjKoXo8DqOm/PWbBEZc+XOrfCPEbiexyz9prNLA/7TiUEqC6H1p0YVHzL1ZOxjSFXTf5R+MiXcduz2SvNKNoP4XQTdK2zZNN3l6NwKY1BN0gFFniXT2ZYZRhZjtn5l7e/n5fNC72UtCVIbcVMPy3Bt5Rc5PwuuQ2PhwHtelUG2okGC/hzx0i418hfDPc7NomaIPlBykw6qGiRsRFVXYT6KNgs2O/ObrgecEej7T3fbddYjUe3ZmsvSAnXKykY/T1A4hojyBZqYG+Z5Bheo1BNmKK9aGfmoeIj4fh+8Q8yuKRnJujxYJB1d4DMwb0VRbeoOd9HTnP3OpqTHl2UpmEMVxEQfLsBMoZ4WJrvHj/E45b7+/3UK63wXpsWCbCiQGhgrbKN2PXG5RAd2IcR2YCHjgYYDkHhwnbTKd9LT0WE3jUIsCYZ5Ezq44+AFMnefClx9PpPJHhopeyYJIjhKRfowEAAQA= runner@unknown
+2026-10-20T23:02:53.3994670Z INFO         |   androidboot.qemu.avd_name=stage5-ci
+2026-10-20T23:02:53.3995008Z INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+2026-10-20T23:02:53.3995354Z INFO         |   androidboot.qemu.camera_protocol_ver=1
+2026-10-20T23:02:53.3995689Z INFO         |   androidboot.qemu.cpuvulkan.version=4206592
+2026-10-20T23:02:53.3996068Z INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+2026-10-20T23:02:53.3996444Z INFO         |   androidboot.qemu.gltransport.name=pipe
+2026-10-20T23:02:53.3996762Z INFO         |   androidboot.qemu.hwcodec.avcdec=2
+2026-10-20T23:02:53.3997072Z INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+2026-10-20T23:02:53.3997382Z INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+2026-10-20T23:02:53.3997771Z INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+2026-10-20T23:02:53.3998139Z INFO         |   androidboot.qemu.skin=1080x2400
+2026-10-20T23:02:53.3998439Z INFO         |   androidboot.qemu.virtiowifi=1
+2026-10-20T23:02:53.3998899Z INFO         |   androidboot.qemu.vsync=60
+2026-10-20T23:02:53.3999250Z INFO         |   androidboot.serialno=EMULATOR37X2X12X0
+2026-10-20T23:02:53.3999747Z INFO         |   androidboot.vbmeta.digest=7466b5c28e6a3e1427b22ed2c317c6c7066294bde838d4d5243cce5d37992bd5
+2026-10-20T23:02:53.4000214Z INFO         |   androidboot.vbmeta.hash_alg=sha256
+2026-10-20T23:02:53.4000514Z INFO         |   androidboot.vbmeta.size=6848
+2026-10-20T23:02:53.4000812Z INFO         |   androidboot.veritymode=enforcing
+2026-10-20T23:02:53.4184970Z WARNING: cannnot unmap ptr 0x7ff66ba01000 as it is in the protected range from 0x7ff5cba00000 to 0x7ff66bc00000
+2026-10-20T23:02:53.4418924Z INFO         | Monitoring duration of emulator setup.
+2026-10-20T23:02:54.4623821Z INFO         | Successfully initialized netsim WiFi
+2026-10-20T23:02:54.4624648Z INFO         | Activated packet streamer for uwb emulation
+2026-10-20T23:02:54.4625281Z INFO         | Activated packet streamer for bluetooth emulation
+2026-10-20T23:02:54.4676001Z INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+2026-10-20T23:02:54.4676715Z INFO         | setDisplayActiveConfig: id:0, 1080x2400
+2026-10-20T23:02:54.4677820Z INFO         | emulatorSetupEnvironment: Environment scene is not required
+2026-10-20T23:02:54.4741021Z USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+2026-10-20T23:02:54.4742186Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+2026-10-20T23:02:54.6115204Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+2026-10-20T23:03:02.7426725Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:02.7462418Z * daemon not running; starting now at tcp:5037
+2026-10-20T23:03:02.8194380Z * daemon started successfully
+2026-10-20T23:03:02.8195492Z adb: device offline
+2026-10-20T23:03:02.8206231Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-20T23:03:04.8241589Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:04.8277675Z adb: device offline
+2026-10-20T23:03:04.8290871Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-20T23:03:06.8330442Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:06.8369470Z adb: device offline
+2026-10-20T23:03:06.8372848Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-20T23:03:08.8409829Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:08.8434932Z adb: device offline
+2026-10-20T23:03:08.8440865Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-20T23:03:10.8476272Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:10.8509738Z adb: device offline
+2026-10-20T23:03:10.8513498Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+2026-10-20T23:03:12.8586489Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:12.9224524Z 
+2026-10-20T23:03:14.9305871Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:14.9637492Z 
+2026-10-20T23:03:16.9735682Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:16.9894177Z 
+2026-10-20T23:03:18.9979505Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:19.0289287Z 
+2026-10-20T23:03:21.0378684Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:21.0567347Z 
+2026-10-20T23:03:23.0619519Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:23.1099286Z 
+2026-10-20T23:03:25.1180252Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:25.1372629Z 
+2026-10-20T23:03:27.1422714Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:27.1692352Z 
+2026-10-20T23:03:29.1733392Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:29.2002344Z 
+2026-10-20T23:03:31.2043548Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:31.2630560Z 
+2026-10-20T23:03:33.2712681Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:33.3406019Z 
+2026-10-20T23:03:35.3475542Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:35.3874799Z 
+2026-10-20T23:03:36.3825044Z INFO         | Boot completed in 43603 ms
+2026-10-20T23:03:36.3826187Z INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+2026-10-20T23:03:37.3959812Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed
+2026-10-20T23:03:37.6068203Z 1
+2026-10-20T23:03:37.6105380Z Emulator booted.
+2026-10-20T23:03:37.6134073Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell input keyevent 82
+2026-10-20T23:03:37.9634805Z Disabling animations.
+2026-10-20T23:03:37.9675581Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global window_animation_scale 0.0
+2026-10-20T23:03:38.0207780Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global transition_animation_scale 0.0
+2026-10-20T23:03:38.1685570Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global animator_duration_scale 0.0
+2026-10-20T23:03:38.4120898Z ##[endgroup]
+2026-10-20T23:03:38.4171156Z [command]/usr/bin/sh -c bash "$RUNNER_TEMP/stage5-instrumentation.sh"
+2026-10-20T23:03:38.5325145Z Running the full connected suite on verified emulator emulator-5554
+2026-10-20T23:03:40.0406833Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+2026-10-20T23:03:42.2355043Z Daemon will be stopped at the end of the build 
+2026-10-20T23:03:57.8358026Z > Task :app:preBuild UP-TO-DATE
+2026-10-20T23:03:57.8428115Z > Task :app:preDebugBuild UP-TO-DATE
+2026-10-20T23:03:58.0394836Z > Task :app:generateDebugResources UP-TO-DATE
+2026-10-20T23:03:58.0395560Z > Task :app:packageDebugResources UP-TO-DATE
+2026-10-20T23:03:59.2405128Z > Task :app:processDebugNavigationResources UP-TO-DATE
+2026-10-20T23:03:59.2444360Z > Task :app:parseDebugLocalResources UP-TO-DATE
+2026-10-20T23:03:59.2514946Z > Task :app:generateDebugRFile UP-TO-DATE
+2026-10-20T23:03:59.8435058Z > Task :app:kspDebugKotlin UP-TO-DATE
+2026-10-20T23:04:00.2354992Z > Task :app:compileDebugKotlin UP-TO-DATE
+2026-10-20T23:04:00.2390103Z > Task :app:javaPreCompileDebug UP-TO-DATE
+2026-10-20T23:04:00.2425228Z > Task :app:compileDebugJavaWithJavac NO-SOURCE
+2026-10-20T23:04:00.3385052Z > Task :app:checkDebugAarMetadata UP-TO-DATE
+2026-10-20T23:04:00.3385731Z > Task :app:mapDebugSourceSetPaths UP-TO-DATE
+2026-10-20T23:04:00.3444563Z > Task :app:compileDebugNavigationResources UP-TO-DATE
+2026-10-20T23:04:00.5364814Z > Task :app:mergeDebugResources UP-TO-DATE
+2026-10-20T23:04:00.5394506Z > Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+2026-10-20T23:04:00.5424500Z > Task :app:extractDeepLinksDebug UP-TO-DATE
+2026-10-20T23:04:00.9354897Z > Task :app:processDebugMainManifest UP-TO-DATE
+2026-10-20T23:04:00.9414654Z > Task :app:processDebugManifest UP-TO-DATE
+2026-10-20T23:04:00.9475350Z > Task :app:processDebugManifestForPackage UP-TO-DATE
+2026-10-20T23:04:01.3350561Z > Task :app:processDebugResources UP-TO-DATE
+2026-10-20T23:04:01.3384956Z > Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+2026-10-20T23:04:01.3424543Z > Task :app:preDebugAndroidTestBuild SKIPPED
+2026-10-20T23:04:01.3454979Z > Task :app:generateDebugAndroidTestResources UP-TO-DATE
+2026-10-20T23:04:01.3514608Z > Task :app:packageDebugAndroidTestResources UP-TO-DATE
+2026-10-20T23:04:01.3530973Z > Task :app:processDebugAndroidTestNavigationResources UP-TO-DATE
+2026-10-20T23:04:01.3580314Z > Task :app:parseDebugAndroidTestLocalResources UP-TO-DATE
+2026-10-20T23:04:01.4403630Z > Task :app:generateDebugAndroidTestRFile UP-TO-DATE
+2026-10-20T23:04:01.5364073Z > Task :app:kspDebugAndroidTestKotlin UP-TO-DATE
+2026-10-20T23:04:01.6379222Z > Task :app:compileDebugAndroidTestKotlin UP-TO-DATE
+2026-10-20T23:04:01.6421767Z > Task :app:javaPreCompileDebugAndroidTest UP-TO-DATE
+2026-10-20T23:04:01.6455090Z > Task :app:compileDebugAndroidTestJavaWithJavac NO-SOURCE
+2026-10-20T23:04:01.6504592Z > Task :app:generateDebugAssets UP-TO-DATE
+2026-10-20T23:04:01.6511208Z > Task :app:mergeDebugAssets UP-TO-DATE
+2026-10-20T23:04:01.6530634Z > Task :app:compressDebugAssets UP-TO-DATE
+2026-10-20T23:04:01.6546807Z > Task :app:desugarDebugFileDependencies UP-TO-DATE
+2026-10-20T23:04:01.8425910Z > Task :app:dexBuilderDebug UP-TO-DATE
+2026-10-20T23:04:02.5349756Z > Task :app:mergeDebugGlobalSynthetics UP-TO-DATE
+2026-10-20T23:04:02.5465599Z > Task :app:processDebugJavaRes UP-TO-DATE
+2026-10-20T23:04:02.6358575Z > Task :app:mergeDebugJavaResource UP-TO-DATE
+2026-10-20T23:04:02.7355257Z > Task :app:checkDebugDuplicateClasses UP-TO-DATE
+2026-10-20T23:04:02.8350385Z > Task :app:mergeExtDexDebug UP-TO-DATE
+2026-10-20T23:04:02.8379912Z > Task :app:mergeLibDexDebug UP-TO-DATE
+2026-10-20T23:04:02.9395154Z > Task :app:mergeProjectDexDebug UP-TO-DATE
+2026-10-20T23:04:02.9424760Z > Task :app:mergeDebugJniLibFolders UP-TO-DATE
+2026-10-20T23:04:02.9474693Z > Task :app:mergeDebugNativeLibs UP-TO-DATE
+2026-10-20T23:04:02.9514533Z > Task :app:stripDebugDebugSymbols UP-TO-DATE
+2026-10-20T23:04:02.9584861Z > Task :app:validateSigningDebug UP-TO-DATE
+2026-10-20T23:04:02.9650951Z > Task :app:writeDebugAppMetadata UP-TO-DATE
+2026-10-20T23:04:03.0365654Z > Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+2026-10-20T23:04:03.0416961Z > Task :app:packageDebug UP-TO-DATE
+2026-10-20T23:04:03.0434615Z > Task :app:createDebugApkListingFileRedirect UP-TO-DATE
+2026-10-20T23:04:03.0485461Z > Task :app:generateDebugAndroidTestAssets UP-TO-DATE
+2026-10-20T23:04:03.2353574Z > Task :app:mergeDebugAndroidTestAssets UP-TO-DATE
+2026-10-20T23:04:03.2378203Z > Task :app:compressDebugAndroidTestAssets UP-TO-DATE
+2026-10-20T23:04:03.2394950Z > Task :app:desugarDebugAndroidTestFileDependencies UP-TO-DATE
+2026-10-20T23:04:03.2438816Z > Task :app:checkDebugAndroidTestAarMetadata UP-TO-DATE
+2026-10-20T23:04:03.3361274Z > Task :app:mapDebugAndroidTestSourceSetPaths UP-TO-DATE
+2026-10-20T23:04:03.3362259Z > Task :app:compileDebugAndroidTestNavigationResources UP-TO-DATE
+2026-10-20T23:04:03.4435057Z > Task :app:mergeDebugAndroidTestResources UP-TO-DATE
+2026-10-20T23:04:03.4464611Z > Task :app:processDebugAndroidTestManifest UP-TO-DATE
+2026-10-20T23:04:03.4474624Z > Task :app:processDebugAndroidTestResources UP-TO-DATE
+2026-10-20T23:04:03.5394185Z > Task :app:dexBuilderDebugAndroidTest UP-TO-DATE
+2026-10-20T23:04:03.6351416Z > Task :app:mergeDebugAndroidTestGlobalSynthetics UP-TO-DATE
+2026-10-20T23:04:03.6374870Z > Task :app:processDebugAndroidTestJavaRes UP-TO-DATE
+2026-10-20T23:04:03.6405716Z > Task :app:mergeDebugAndroidTestJavaResource UP-TO-DATE
+2026-10-20T23:04:03.6406569Z > Task :app:checkDebugAndroidTestDuplicateClasses UP-TO-DATE
+2026-10-20T23:04:03.6434587Z > Task :app:mergeExtDexDebugAndroidTest UP-TO-DATE
+2026-10-20T23:04:03.6435356Z > Task :app:mergeLibDexDebugAndroidTest UP-TO-DATE
+2026-10-20T23:04:03.6436106Z > Task :app:mergeProjectDexDebugAndroidTest UP-TO-DATE
+2026-10-20T23:04:03.6436905Z > Task :app:mergeDebugAndroidTestJniLibFolders UP-TO-DATE
+2026-10-20T23:04:03.6437707Z > Task :app:mergeDebugAndroidTestNativeLibs NO-SOURCE
+2026-10-20T23:04:03.6438413Z > Task :app:stripDebugAndroidTestDebugSymbols NO-SOURCE
+2026-10-20T23:04:03.6439096Z > Task :app:validateSigningDebugAndroidTest UP-TO-DATE
+2026-10-20T23:04:03.6439905Z > Task :app:writeDebugAndroidTestSigningConfigVersions UP-TO-DATE
+2026-10-20T23:04:03.6440630Z > Task :app:packageDebugAndroidTest UP-TO-DATE
+2026-10-20T23:04:03.6464494Z > Task :app:createDebugAndroidTestApkListingFileRedirect UP-TO-DATE
+2026-10-20T23:04:29.9385561Z [EmulatorConsole]: Failed to start Emulator console for 5554
+2026-10-20T23:04:33.6348680Z > Task :app:connectedDebugAndroidTest
+2026-10-20T23:04:41.2346514Z 
+2026-10-20T23:04:41.2347173Z Starting 177 tests on emulator-5554 - 16
+2026-10-20T23:04:51.2367203Z emulator-5554 - 16 Tests 4/177 completed. (0 skipped) (0 failed)
+2026-10-20T23:04:58.1471091Z INFO         | Created VkInstance:0x55e686c13800 for application:'' engine:''.
+2026-10-20T23:04:58.1806085Z INFO         | Destroyed VkInstance:0x55e686c13800 for application:'' engine:''.
+2026-10-20T23:05:01.2346929Z emulator-5554 - 16 Tests 12/177 completed. (0 skipped) (0 failed)
+2026-10-20T23:05:11.2347913Z emulator-5554 - 16 Tests 14/177 completed. (0 skipped) (0 failed)
+2026-10-20T23:05:21.2346906Z emulator-5554 - 16 Tests 39/177 completed. (0 skipped) (0 failed)
+2026-10-20T23:05:31.2346744Z emulator-5554 - 16 Tests 55/177 completed. (0 skipped) (0 failed)
+2026-10-20T23:05:41.2346379Z emulator-5554 - 16 Tests 67/177 completed. (0 skipped) (0 failed)
+2026-10-20T23:05:46.7351461Z 
+2026-10-20T23:05:46.7353310Z com.opus.piano.Stage4ExternalPortraitTest > separatelyAcquiredLicensedOriginalCanBeVerifiedAndRenderedOffline[emulator-5554 - 16] [33mSKIPPED [0m
+2026-10-20T23:05:46.7354868Z 
+2026-10-20T23:05:46.7356015Z com.opus.piano.Stage4ExternalProviderTest > boundedObservedProviderResponsesPassNativeProjectionAndSearchPaging[emulator-5554 - 16] [33mSKIPPED [0m
+2026-10-20T23:05:51.2346014Z emulator-5554 - 16 Tests 128/177 completed. (2 skipped) (0 failed)
+2026-10-20T23:06:01.2345772Z emulator-5554 - 16 Tests 137/177 completed. (2 skipped) (0 failed)
+2026-10-20T23:06:22.9355529Z 
+2026-10-20T23:06:22.9357471Z com.opus.piano.Stage5BundleJobRunnerTest > concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle[emulator-5554 - 16] [31mFAILED [0m
+2026-10-20T23:06:22.9358962Z 	java.lang.AssertionError: expected:<Completed> but was:<Retryable(error=integrity)>
+2026-10-20T23:06:22.9359739Z 	at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:22.9360083Z 
+2026-10-20T23:06:22.9361105Z com.opus.piano.Stage5BundleJobRunnerTest > interruptedDownloadLeavesRetryableStateAndCompletesOnRetry[emulator-5554 - 16] [31mFAILED [0m
+2026-10-20T23:06:22.9367889Z 	java.lang.AssertionError: a partial bundle is never published expected null, but was:<BundleManifest(bundleId=0cb906ce-ab1a-446e-9a42-4e612f9a13e6, type=WORK, entityId=entity-0cb906ce-ab1a-446e-9a42-4e612f9a13e6, schemaVersion=1, revision=1, language=en, createdAt=1792537582484, validatedAt=null, dependencies=[], expectedBytes=28, files=[BundleFile(sha256=7c67aa2990a8aaeeb53ae183746191e834e53461522c934b1d5392b1353fc088, bytes=28, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=28, completedFiles=0), lastError=transport, updatedAt=1792537582490)>
+2026-10-20T23:06:22.9394277Z 	at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:22.9411034Z 
+2026-10-20T23:06:22.9412389Z com.opus.piano.Stage5BundleJobRunnerTest > interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete[emulator-5554 - 16] [31mFAILED [0m
+2026-10-20T23:06:22.9413940Z 	java.lang.IllegalArgumentException: List has more than one element.
+2026-10-20T23:06:22.9415204Z 	at kotlin.collections.CollectionsKt___CollectionsKt.single(_Collections.kt:618)
+2026-10-20T23:06:22.9415755Z 
+2026-10-20T23:06:22.9416688Z com.opus.piano.Stage5BundleJobRunnerTest > corruptSourceContentNeverReachesReady[emulator-5554 - 16] [31mFAILED [0m
+2026-10-20T23:06:22.9422597Z 	java.lang.AssertionError: expected null, but was:<BundleManifest(bundleId=b20c35c3-6ef7-4cf8-9fec-84a19cdb28b7, type=WORK, entityId=entity-b20c35c3-6ef7-4cf8-9fec-84a19cdb28b7, schemaVersion=1, revision=1, language=en, createdAt=1792537582519, validatedAt=null, dependencies=[], expectedBytes=22, files=[BundleFile(sha256=e0f5dc7aa820c4f7b316035c62312e0ecf5aec2d3f0d29c7e86f4c996f92f933, bytes=22, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=22, completedFiles=0), lastError=integrity, updatedAt=1792537582529)>
+2026-10-20T23:06:22.9427982Z 	at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:23.0345651Z 
+2026-10-20T23:06:23.0347541Z com.opus.piano.Stage5BundleJobRunnerTest > corruptStoredBlobIsQuarantinedAndRepairedOnRetry[emulator-5554 - 16] [31mFAILED [0m
+2026-10-20T23:06:23.0348775Z 	java.lang.AssertionError: repair re-downloads and republishes expected:<Completed> but was:<Retryable(error=transport:IllegalArgumentException)>
+2026-10-20T23:06:23.0349843Z 	at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:23.1349211Z 
+2026-10-20T23:06:23.1350468Z com.opus.piano.Stage5BundleJobRunnerTest > consentRevocationMidStreamPausesAndKeepsReadyContent[emulator-5554 - 16] [31mFAILED [0m
+2026-10-20T23:06:23.1351292Z 	java.lang.AssertionError: prior ready content is never deleted expected:<1> but was:<2>
+2026-10-20T23:06:23.1351746Z 	at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:23.2345598Z 
+2026-10-20T23:06:23.2350362Z com.opus.piano.Stage5BundleStoreTest > interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote[emulator-5554 - 16] [31mFAILED [0m
+2026-10-20T23:06:23.2350994Z 	java.lang.AssertionError
+2026-10-20T23:06:23.2351268Z 	at org.junit.Assert.fail(Assert.java:87)
+2026-10-20T23:06:23.2351440Z 
+2026-10-20T23:06:23.2351931Z com.opus.piano.Stage5BundleStoreTest > storeStateSurvivesReopenLikeAProcessRestart[emulator-5554 - 16] [31mFAILED [0m
+2026-10-20T23:06:23.2352697Z 	java.lang.AssertionError: bytes survive reopen exactly expected: java.lang.Integer<22> but was: java.lang.Long<22>
+2026-10-20T23:06:23.2353200Z 	at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:23.3345874Z 
+2026-10-20T23:06:23.3347177Z com.opus.piano.Stage5BundleWorkerTest > queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker[emulator-5554 - 16] [31mFAILED [0m
+2026-10-20T23:06:23.3347959Z 	java.lang.AssertionError: expected success, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:23.3348359Z 	at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:23.6346097Z 
+2026-10-20T23:06:23.6347980Z com.opus.piano.Stage5BundleWorkerTest > offlineEnvironmentRetriesWithoutMovingAByte[emulator-5554 - 16] [31mFAILED [0m
+2026-10-20T23:06:23.6349418Z 	java.lang.AssertionError: Waiting maps to WorkManager retry, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:23.6350714Z 	at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:23.6351711Z 
+2026-10-20T23:06:23.6352688Z com.opus.piano.Stage5BundleWorkerTest > transportFailureRetriesAndRecordsTheAttempt[emulator-5554 - 16] [31mFAILED [0m
+2026-10-20T23:06:23.6354658Z 	java.lang.AssertionError: transient failure maps to WorkManager retry, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:23.6355161Z 	at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:23.6355451Z 
+2026-10-20T23:06:23.6356347Z com.opus.piano.Stage5BundleWorkerTest > cancelledJobSucceedsWithoutTouchingTheBundle[emulator-5554 - 16] [31mFAILED [0m
+2026-10-20T23:06:23.6357244Z 	java.lang.AssertionError: cancelled while queued is a clean success, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:23.6357693Z 	at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:23.7345734Z 
+2026-10-20T23:06:23.7347074Z com.opus.piano.Stage5BundleWorkerTest > missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable[emulator-5554 - 16] [31mFAILED [0m
+2026-10-20T23:06:23.7347910Z 	java.lang.AssertionError: Paused maps to WorkManager success, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:23.7348345Z 	at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.7395319Z Tests on emulator-5554 - 16 failed: There was 13 failure(s).
+2026-10-20T23:06:24.7396281Z Finished 179 tests on emulator-5554 - 16
+2026-10-20T23:06:24.8355700Z Execute com.opus.piano.Stage5BundleJobRunnerTest.concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle: FAILED
+2026-10-20T23:06:24.8405034Z java.lang.AssertionError: java.lang.AssertionError: expected:<Completed> but was:<Retryable(error=integrity)>
+2026-10-20T23:06:24.8464770Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8524866Z at org.junit.Assert.failNotEquals(Assert.java:835)
+2026-10-20T23:06:24.8584783Z at org.junit.Assert.assertEquals(Assert.java:120)
+2026-10-20T23:06:24.8585536Z at org.junit.Assert.assertEquals(Assert.java:146)
+2026-10-20T23:06:24.8615625Z at com.opus.piano.Stage5BundleJobRunnerTest$concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:442)
+2026-10-20T23:06:24.8617408Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8623507Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8624693Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8625619Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8626419Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8627165Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8628088Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8629016Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8630463Z at com.opus.piano.Stage5BundleJobRunnerTest.concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle(Stage5BundleJobRunnerTest.kt:423)
+2026-10-20T23:06:24.8631559Z 
+2026-10-20T23:06:24.8632152Z java.lang.AssertionError: expected:<Completed> but was:<Retryable(error=integrity)>
+2026-10-20T23:06:24.8632999Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8633789Z at org.junit.Assert.failNotEquals(Assert.java:835)
+2026-10-20T23:06:24.8634482Z at org.junit.Assert.assertEquals(Assert.java:120)
+2026-10-20T23:06:24.8635172Z at org.junit.Assert.assertEquals(Assert.java:146)
+2026-10-20T23:06:24.8636645Z at com.opus.piano.Stage5BundleJobRunnerTest$concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:442)
+2026-10-20T23:06:24.8638275Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8639312Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8640315Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8641324Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8642252Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8643153Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8644187Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8645174Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8646739Z at com.opus.piano.Stage5BundleJobRunnerTest.concurrentBundlesSharingOneDependencyKeepTheSharedContentSingle(Stage5BundleJobRunnerTest.kt:423)
+2026-10-20T23:06:24.8648617Z Execute com.opus.piano.Stage5BundleJobRunnerTest.interruptedDownloadLeavesRetryableStateAndCompletesOnRetry: FAILED
+2026-10-20T23:06:24.8655809Z java.lang.AssertionError: java.lang.AssertionError: a partial bundle is never published expected null, but was:<BundleManifest(bundleId=0cb906ce-ab1a-446e-9a42-4e612f9a13e6, type=WORK, entityId=entity-0cb906ce-ab1a-446e-9a42-4e612f9a13e6, schemaVersion=1, revision=1, language=en, createdAt=1792537582484, validatedAt=null, dependencies=[], expectedBytes=28, files=[BundleFile(sha256=7c67aa2990a8aaeeb53ae183746191e834e53461522c934b1d5392b1353fc088, bytes=28, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=28, completedFiles=0), lastError=transport, updatedAt=1792537582490)>
+2026-10-20T23:06:24.8661596Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8662248Z at org.junit.Assert.failNotNull(Assert.java:756)
+2026-10-20T23:06:24.8662912Z at org.junit.Assert.assertNull(Assert.java:738)
+2026-10-20T23:06:24.8664346Z at com.opus.piano.Stage5BundleJobRunnerTest$interruptedDownloadLeavesRetryableStateAndCompletesOnRetry$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:168)
+2026-10-20T23:06:24.8668411Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8669452Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8670467Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8671490Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8672528Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8673434Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8674527Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8675531Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8677030Z at com.opus.piano.Stage5BundleJobRunnerTest.interruptedDownloadLeavesRetryableStateAndCompletesOnRetry(Stage5BundleJobRunnerTest.kt:151)
+2026-10-20T23:06:24.8678064Z 
+2026-10-20T23:06:24.8684327Z java.lang.AssertionError: a partial bundle is never published expected null, but was:<BundleManifest(bundleId=0cb906ce-ab1a-446e-9a42-4e612f9a13e6, type=WORK, entityId=entity-0cb906ce-ab1a-446e-9a42-4e612f9a13e6, schemaVersion=1, revision=1, language=en, createdAt=1792537582484, validatedAt=null, dependencies=[], expectedBytes=28, files=[BundleFile(sha256=7c67aa2990a8aaeeb53ae183746191e834e53461522c934b1d5392b1353fc088, bytes=28, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=28, completedFiles=0), lastError=transport, updatedAt=1792537582490)>
+2026-10-20T23:06:24.8689516Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8690145Z at org.junit.Assert.failNotNull(Assert.java:756)
+2026-10-20T23:06:24.8690799Z at org.junit.Assert.assertNull(Assert.java:738)
+2026-10-20T23:06:24.8692231Z at com.opus.piano.Stage5BundleJobRunnerTest$interruptedDownloadLeavesRetryableStateAndCompletesOnRetry$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:168)
+2026-10-20T23:06:24.8693943Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8694934Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8695870Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8696858Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8697813Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8698712Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8699662Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8700625Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8702363Z at com.opus.piano.Stage5BundleJobRunnerTest.interruptedDownloadLeavesRetryableStateAndCompletesOnRetry(Stage5BundleJobRunnerTest.kt:151)
+2026-10-20T23:06:24.8704352Z Execute com.opus.piano.Stage5BundleJobRunnerTest.interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete: FAILED
+2026-10-20T23:06:24.8705714Z java.lang.IllegalArgumentException: java.lang.IllegalArgumentException: List has more than one element.
+2026-10-20T23:06:24.8706734Z at kotlin.collections.CollectionsKt___CollectionsKt.single(_Collections.kt:618)
+2026-10-20T23:06:24.8708251Z at com.opus.piano.Stage5BundleJobRunnerTest$interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:204)
+2026-10-20T23:06:24.8709936Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8711280Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8712199Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8713161Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8714259Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8715169Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8716122Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8717117Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8718699Z at com.opus.piano.Stage5BundleJobRunnerTest.interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete(Stage5BundleJobRunnerTest.kt:179)
+2026-10-20T23:06:24.8719811Z 
+2026-10-20T23:06:24.8720288Z java.lang.IllegalArgumentException: List has more than one element.
+2026-10-20T23:06:24.8721250Z at kotlin.collections.CollectionsKt___CollectionsKt.single(_Collections.kt:618)
+2026-10-20T23:06:24.8722899Z at com.opus.piano.Stage5BundleJobRunnerTest$interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:204)
+2026-10-20T23:06:24.8724708Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8725790Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8726748Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8727899Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8728754Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8729369Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8730066Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8730696Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8731708Z at com.opus.piano.Stage5BundleJobRunnerTest.interruptedRefreshKeepsTheOldReadyRevisionAndPublishesWhenComplete(Stage5BundleJobRunnerTest.kt:179)
+2026-10-20T23:06:24.8732697Z Execute com.opus.piano.Stage5BundleJobRunnerTest.corruptSourceContentNeverReachesReady: FAILED
+2026-10-20T23:06:24.8791939Z java.lang.AssertionError: java.lang.AssertionError: expected null, but was:<BundleManifest(bundleId=b20c35c3-6ef7-4cf8-9fec-84a19cdb28b7, type=WORK, entityId=entity-b20c35c3-6ef7-4cf8-9fec-84a19cdb28b7, schemaVersion=1, revision=1, language=en, createdAt=1792537582519, validatedAt=null, dependencies=[], expectedBytes=22, files=[BundleFile(sha256=e0f5dc7aa820c4f7b316035c62312e0ecf5aec2d3f0d29c7e86f4c996f92f933, bytes=22, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=22, completedFiles=0), lastError=integrity, updatedAt=1792537582529)>
+2026-10-20T23:06:24.8796865Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8797413Z at org.junit.Assert.failNotNull(Assert.java:756)
+2026-10-20T23:06:24.8797890Z at org.junit.Assert.assertNull(Assert.java:738)
+2026-10-20T23:06:24.8798347Z at org.junit.Assert.assertNull(Assert.java:748)
+2026-10-20T23:06:24.8799322Z at com.opus.piano.Stage5BundleJobRunnerTest$corruptSourceContentNeverReachesReady$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:346)
+2026-10-20T23:06:24.8800465Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8801454Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8802208Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8802968Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8803635Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8804396Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8805053Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8805723Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8806665Z at com.opus.piano.Stage5BundleJobRunnerTest.corruptSourceContentNeverReachesReady(Stage5BundleJobRunnerTest.kt:336)
+2026-10-20T23:06:24.8807271Z 
+2026-10-20T23:06:24.8812235Z java.lang.AssertionError: expected null, but was:<BundleManifest(bundleId=b20c35c3-6ef7-4cf8-9fec-84a19cdb28b7, type=WORK, entityId=entity-b20c35c3-6ef7-4cf8-9fec-84a19cdb28b7, schemaVersion=1, revision=1, language=en, createdAt=1792537582519, validatedAt=null, dependencies=[], expectedBytes=22, files=[BundleFile(sha256=e0f5dc7aa820c4f7b316035c62312e0ecf5aec2d3f0d29c7e86f4c996f92f933, bytes=22, mime=image/jpeg, relativePath=media/fixture.jpg, language=en, rights=BundleRights(license=CC0 1.0, licenseUrl=https://creativecommons.org/publicdomain/zero/1.0/, attribution=Open Opus contributors, sourceName=Wikimedia Commons, sourceUrl=https://commons.wikimedia.org/wiki/File:Stage5Fixture.jpg))], providerKind=openopus, providerRevision=fixture, attribution=Open Opus contributors, minReaderVersion=1, state=FAILED_RETRYABLE, progress=BundleProgress(completedBytes=0, totalBytes=22, completedFiles=0), lastError=integrity, updatedAt=1792537582529)>
+2026-10-20T23:06:24.8817562Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8817992Z at org.junit.Assert.failNotNull(Assert.java:756)
+2026-10-20T23:06:24.8818386Z at org.junit.Assert.assertNull(Assert.java:738)
+2026-10-20T23:06:24.8818719Z at org.junit.Assert.assertNull(Assert.java:748)
+2026-10-20T23:06:24.8819341Z at com.opus.piano.Stage5BundleJobRunnerTest$corruptSourceContentNeverReachesReady$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:346)
+2026-10-20T23:06:24.8820066Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8820559Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8821041Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8821535Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8822003Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8822614Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8823137Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8823642Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8824846Z at com.opus.piano.Stage5BundleJobRunnerTest.corruptSourceContentNeverReachesReady(Stage5BundleJobRunnerTest.kt:336)
+2026-10-20T23:06:24.8825821Z Execute com.opus.piano.Stage5BundleJobRunnerTest.corruptStoredBlobIsQuarantinedAndRepairedOnRetry: FAILED
+2026-10-20T23:06:24.8826758Z java.lang.AssertionError: java.lang.AssertionError: repair re-downloads and republishes expected:<Completed> but was:<Retryable(error=transport:IllegalArgumentException)>
+2026-10-20T23:06:24.8827357Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8827694Z at org.junit.Assert.failNotEquals(Assert.java:835)
+2026-10-20T23:06:24.8828033Z at org.junit.Assert.assertEquals(Assert.java:120)
+2026-10-20T23:06:24.8828708Z at com.opus.piano.Stage5BundleJobRunnerTest$corruptStoredBlobIsQuarantinedAndRepairedOnRetry$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:413)
+2026-10-20T23:06:24.8829453Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8830073Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8830551Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8831038Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8831491Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8831919Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8832373Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8832880Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8833595Z at com.opus.piano.Stage5BundleJobRunnerTest.corruptStoredBlobIsQuarantinedAndRepairedOnRetry(Stage5BundleJobRunnerTest.kt:398)
+2026-10-20T23:06:24.8834205Z 
+2026-10-20T23:06:24.8834680Z java.lang.AssertionError: repair re-downloads and republishes expected:<Completed> but was:<Retryable(error=transport:IllegalArgumentException)>
+2026-10-20T23:06:24.8835228Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8835531Z at org.junit.Assert.failNotEquals(Assert.java:835)
+2026-10-20T23:06:24.8835853Z at org.junit.Assert.assertEquals(Assert.java:120)
+2026-10-20T23:06:24.8836526Z at com.opus.piano.Stage5BundleJobRunnerTest$corruptStoredBlobIsQuarantinedAndRepairedOnRetry$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:413)
+2026-10-20T23:06:24.8837297Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8837796Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8838275Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8838758Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8839202Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8839639Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8840096Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8840559Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8841245Z at com.opus.piano.Stage5BundleJobRunnerTest.corruptStoredBlobIsQuarantinedAndRepairedOnRetry(Stage5BundleJobRunnerTest.kt:398)
+2026-10-20T23:06:24.8842080Z Execute com.opus.piano.Stage5BundleJobRunnerTest.consentRevocationMidStreamPausesAndKeepsReadyContent: FAILED
+2026-10-20T23:06:24.8842815Z java.lang.AssertionError: java.lang.AssertionError: prior ready content is never deleted expected:<1> but was:<2>
+2026-10-20T23:06:24.8843273Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8843565Z at org.junit.Assert.failNotEquals(Assert.java:835)
+2026-10-20T23:06:24.8844011Z at org.junit.Assert.assertEquals(Assert.java:647)
+2026-10-20T23:06:24.8844690Z at com.opus.piano.Stage5BundleJobRunnerTest$consentRevocationMidStreamPausesAndKeepsReadyContent$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:273)
+2026-10-20T23:06:24.8845445Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8846069Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8846545Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8847033Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8847481Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8847900Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8848347Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8848810Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8849513Z at com.opus.piano.Stage5BundleJobRunnerTest.consentRevocationMidStreamPausesAndKeepsReadyContent(Stage5BundleJobRunnerTest.kt:245)
+2026-10-20T23:06:24.8850077Z 
+2026-10-20T23:06:24.8850352Z java.lang.AssertionError: prior ready content is never deleted expected:<1> but was:<2>
+2026-10-20T23:06:24.8850740Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8851039Z at org.junit.Assert.failNotEquals(Assert.java:835)
+2026-10-20T23:06:24.8851361Z at org.junit.Assert.assertEquals(Assert.java:647)
+2026-10-20T23:06:24.8852035Z at com.opus.piano.Stage5BundleJobRunnerTest$consentRevocationMidStreamPausesAndKeepsReadyContent$1.invokeSuspend(Stage5BundleJobRunnerTest.kt:273)
+2026-10-20T23:06:24.8852780Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8853272Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8853886Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8854474Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8854931Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8855351Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8856035Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8857363Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8858217Z at com.opus.piano.Stage5BundleJobRunnerTest.consentRevocationMidStreamPausesAndKeepsReadyContent(Stage5BundleJobRunnerTest.kt:245)
+2026-10-20T23:06:24.8859617Z Execute com.opus.piano.Stage5BundleStoreTest.interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote: FAILED
+2026-10-20T23:06:24.8860412Z java.lang.AssertionError
+2026-10-20T23:06:24.8860875Z at org.junit.Assert.fail(Assert.java: java.lang.AssertionError
+2026-10-20T23:06:24.8861274Z at org.junit.Assert.fail(Assert.java:87)
+2026-10-20T23:06:24.8861568Z at org.junit.Assert.assertTrue(Assert.java:42)
+2026-10-20T23:06:24.8861876Z at org.junit.Assert.assertTrue(Assert.java:53)
+2026-10-20T23:06:24.8862562Z at com.opus.piano.Stage5BundleStoreTest$interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote$1.invokeSuspend(Stage5BundleStoreTest.kt:105)
+2026-10-20T23:06:24.8863343Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8864043Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8864692Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8865192Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8865639Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8866059Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8866511Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8866973Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8867697Z at com.opus.piano.Stage5BundleStoreTest.interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote(Stage5BundleStoreTest.kt:74)
+2026-10-20T23:06:24.8868312Z 
+2026-10-20T23:06:24.8868418Z java.lang.AssertionError
+2026-10-20T23:06:24.8868663Z at org.junit.Assert.fail(Assert.java:87)
+2026-10-20T23:06:24.8868951Z at org.junit.Assert.assertTrue(Assert.java:42)
+2026-10-20T23:06:24.8869251Z at org.junit.Assert.assertTrue(Assert.java:53)
+2026-10-20T23:06:24.8869932Z at com.opus.piano.Stage5BundleStoreTest$interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote$1.invokeSuspend(Stage5BundleStoreTest.kt:105)
+2026-10-20T23:06:24.8870696Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8871371Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8872069Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8872751Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8873197Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8873625Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8874506Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8875110Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8876049Z at com.opus.piano.Stage5BundleStoreTest.interruptedRefreshKeepsPreviousReadyRevisionUntilAtomicPromote(Stage5BundleStoreTest.kt:74)
+2026-10-20T23:06:24.8876855Z Execute com.opus.piano.Stage5BundleStoreTest.storeStateSurvivesReopenLikeAProcessRestart: FAILED
+2026-10-20T23:06:24.8877635Z java.lang.AssertionError: java.lang.AssertionError: bytes survive reopen exactly expected: java.lang.Integer<22> but was: java.lang.Long<22>
+2026-10-20T23:06:24.8878153Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8878467Z at org.junit.Assert.failNotEquals(Assert.java:835)
+2026-10-20T23:06:24.8878797Z at org.junit.Assert.assertEquals(Assert.java:120)
+2026-10-20T23:06:24.8879425Z at com.opus.piano.Stage5BundleStoreTest$storeStateSurvivesReopenLikeAProcessRestart$1.invokeSuspend(Stage5BundleStoreTest.kt:126)
+2026-10-20T23:06:24.8880134Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8880630Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8881103Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8881607Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8882238Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8882684Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8883133Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8883598Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8884407Z at com.opus.piano.Stage5BundleStoreTest.storeStateSurvivesReopenLikeAProcessRestart(Stage5BundleStoreTest.kt:111)
+2026-10-20T23:06:24.8884805Z 
+2026-10-20T23:06:24.8885159Z java.lang.AssertionError: bytes survive reopen exactly expected: java.lang.Integer<22> but was: java.lang.Long<22>
+2026-10-20T23:06:24.8885611Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8885909Z at org.junit.Assert.failNotEquals(Assert.java:835)
+2026-10-20T23:06:24.8886228Z at org.junit.Assert.assertEquals(Assert.java:120)
+2026-10-20T23:06:24.8886830Z at com.opus.piano.Stage5BundleStoreTest$storeStateSurvivesReopenLikeAProcessRestart$1.invokeSuspend(Stage5BundleStoreTest.kt:126)
+2026-10-20T23:06:24.8887521Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8888005Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8888478Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8888973Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8889555Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8889972Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8890412Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8890873Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8891489Z at com.opus.piano.Stage5BundleStoreTest.storeStateSurvivesReopenLikeAProcessRestart(Stage5BundleStoreTest.kt:111)
+2026-10-20T23:06:24.8892438Z Execute com.opus.piano.Stage5BundleWorkerTest.queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker: FAILED
+2026-10-20T23:06:24.8893155Z java.lang.AssertionError: java.lang.AssertionError: expected success, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:24.8893869Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8894282Z at org.junit.Assert.assertTrue(Assert.java:42)
+2026-10-20T23:06:24.8894943Z at com.opus.piano.Stage5BundleWorkerTest$queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker$1.invokeSuspend(Stage5BundleWorkerTest.kt:193)
+2026-10-20T23:06:24.8895698Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8896186Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8896683Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8897183Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8897631Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8898051Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8898518Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8898989Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8899706Z at com.opus.piano.Stage5BundleWorkerTest.queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker(Stage5BundleWorkerTest.kt:186)
+2026-10-20T23:06:24.8900154Z 
+2026-10-20T23:06:24.8900389Z java.lang.AssertionError: expected success, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:24.8900757Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8901044Z at org.junit.Assert.assertTrue(Assert.java:42)
+2026-10-20T23:06:24.8901695Z at com.opus.piano.Stage5BundleWorkerTest$queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker$1.invokeSuspend(Stage5BundleWorkerTest.kt:193)
+2026-10-20T23:06:24.8902441Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8902927Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8903398Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8904080Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8904536Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8904969Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8905417Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8905872Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8906562Z at com.opus.piano.Stage5BundleWorkerTest.queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker(Stage5BundleWorkerTest.kt:186)
+2026-10-20T23:06:24.8907342Z Execute com.opus.piano.Stage5BundleWorkerTest.offlineEnvironmentRetriesWithoutMovingAByte: FAILED
+2026-10-20T23:06:24.8908087Z java.lang.AssertionError: java.lang.AssertionError: Waiting maps to WorkManager retry, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:24.8908566Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8908869Z at org.junit.Assert.assertTrue(Assert.java:42)
+2026-10-20T23:06:24.8909615Z at com.opus.piano.Stage5BundleWorkerTest$offlineEnvironmentRetriesWithoutMovingAByte$1.invokeSuspend(Stage5BundleWorkerTest.kt:220)
+2026-10-20T23:06:24.8910459Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8911070Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8911552Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8912036Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8912480Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8912913Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8913487Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8914121Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8914884Z at com.opus.piano.Stage5BundleWorkerTest.offlineEnvironmentRetriesWithoutMovingAByte(Stage5BundleWorkerTest.kt:211)
+2026-10-20T23:06:24.8915292Z 
+2026-10-20T23:06:24.8915576Z java.lang.AssertionError: Waiting maps to WorkManager retry, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:24.8915978Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8916268Z at org.junit.Assert.assertTrue(Assert.java:42)
+2026-10-20T23:06:24.8916868Z at com.opus.piano.Stage5BundleWorkerTest$offlineEnvironmentRetriesWithoutMovingAByte$1.invokeSuspend(Stage5BundleWorkerTest.kt:220)
+2026-10-20T23:06:24.8917566Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8918141Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8918879Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8919373Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8919832Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8920257Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8920709Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8921169Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8921799Z at com.opus.piano.Stage5BundleWorkerTest.offlineEnvironmentRetriesWithoutMovingAByte(Stage5BundleWorkerTest.kt:211)
+2026-10-20T23:06:24.8922531Z Execute com.opus.piano.Stage5BundleWorkerTest.transportFailureRetriesAndRecordsTheAttempt: FAILED
+2026-10-20T23:06:24.8923273Z java.lang.AssertionError: java.lang.AssertionError: transient failure maps to WorkManager retry, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:24.8923912Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8924198Z at org.junit.Assert.assertTrue(Assert.java:42)
+2026-10-20T23:06:24.8924810Z at com.opus.piano.Stage5BundleWorkerTest$transportFailureRetriesAndRecordsTheAttempt$1.invokeSuspend(Stage5BundleWorkerTest.kt:260)
+2026-10-20T23:06:24.8925513Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8925999Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8926466Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8927013Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8927541Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8927983Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8928428Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8928889Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8929525Z at com.opus.piano.Stage5BundleWorkerTest.transportFailureRetriesAndRecordsTheAttempt(Stage5BundleWorkerTest.kt:253)
+2026-10-20T23:06:24.8929919Z 
+2026-10-20T23:06:24.8930231Z java.lang.AssertionError: transient failure maps to WorkManager retry, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:24.8930793Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8931073Z at org.junit.Assert.assertTrue(Assert.java:42)
+2026-10-20T23:06:24.8931798Z at com.opus.piano.Stage5BundleWorkerTest$transportFailureRetriesAndRecordsTheAttempt$1.invokeSuspend(Stage5BundleWorkerTest.kt:260)
+2026-10-20T23:06:24.8932515Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8933006Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8933478Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8934104Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8934668Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8935083Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8935540Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8935994Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8936617Z at com.opus.piano.Stage5BundleWorkerTest.transportFailureRetriesAndRecordsTheAttempt(Stage5BundleWorkerTest.kt:253)
+2026-10-20T23:06:24.8937348Z Execute com.opus.piano.Stage5BundleWorkerTest.cancelledJobSucceedsWithoutTouchingTheBundle: FAILED
+2026-10-20T23:06:24.8938084Z java.lang.AssertionError: java.lang.AssertionError: cancelled while queued is a clean success, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:24.8938576Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8938865Z at org.junit.Assert.assertTrue(Assert.java:42)
+2026-10-20T23:06:24.8939471Z at com.opus.piano.Stage5BundleWorkerTest$cancelledJobSucceedsWithoutTouchingTheBundle$1.invokeSuspend(Stage5BundleWorkerTest.kt:281)
+2026-10-20T23:06:24.8940178Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8940663Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8941128Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8941610Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8942047Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8942461Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8942905Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8943357Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8944086Z at com.opus.piano.Stage5BundleWorkerTest.cancelledJobSucceedsWithoutTouchingTheBundle(Stage5BundleWorkerTest.kt:273)
+2026-10-20T23:06:24.8944545Z 
+2026-10-20T23:06:24.8945055Z java.lang.AssertionError: cancelled while queued is a clean success, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:24.8945536Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8945825Z at org.junit.Assert.assertTrue(Assert.java:42)
+2026-10-20T23:06:24.8946431Z at com.opus.piano.Stage5BundleWorkerTest$cancelledJobSucceedsWithoutTouchingTheBundle$1.invokeSuspend(Stage5BundleWorkerTest.kt:281)
+2026-10-20T23:06:24.8947129Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8947611Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8948091Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8948577Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8949013Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8949435Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8949878Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8950479Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8951118Z at com.opus.piano.Stage5BundleWorkerTest.cancelledJobSucceedsWithoutTouchingTheBundle(Stage5BundleWorkerTest.kt:273)
+2026-10-20T23:06:24.8951920Z Execute com.opus.piano.Stage5BundleWorkerTest.missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable: FAILED
+2026-10-20T23:06:24.8952698Z java.lang.AssertionError: java.lang.AssertionError: Paused maps to WorkManager success, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:24.8953167Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8953454Z at org.junit.Assert.assertTrue(Assert.java:42)
+2026-10-20T23:06:24.8954344Z at com.opus.piano.Stage5BundleWorkerTest$missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable$1.invokeSuspend(Stage5BundleWorkerTest.kt:241)
+2026-10-20T23:06:24.8955218Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8955723Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8956206Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8956689Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8957130Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8958007Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8958465Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8958930Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8959638Z at com.opus.piano.Stage5BundleWorkerTest.missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable(Stage5BundleWorkerTest.kt:232)
+2026-10-20T23:06:24.8960103Z 
+2026-10-20T23:06:24.8960398Z java.lang.AssertionError: Paused maps to WorkManager success, got Failure {mOutputData=Data {}}
+2026-10-20T23:06:24.8960803Z at org.junit.Assert.fail(Assert.java:89)
+2026-10-20T23:06:24.8961090Z at org.junit.Assert.assertTrue(Assert.java:42)
+2026-10-20T23:06:24.8961750Z at com.opus.piano.Stage5BundleWorkerTest$missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable$1.invokeSuspend(Stage5BundleWorkerTest.kt:241)
+2026-10-20T23:06:24.8962503Z at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+2026-10-20T23:06:24.8962988Z at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+2026-10-20T23:06:24.8963458Z at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+2026-10-20T23:06:24.8964066Z at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+2026-10-20T23:06:24.8964691Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+2026-10-20T23:06:24.8965119Z at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+2026-10-20T23:06:24.8965561Z at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+2026-10-20T23:06:24.8966018Z at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+2026-10-20T23:06:24.8966724Z at com.opus.piano.Stage5BundleWorkerTest.missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable(Stage5BundleWorkerTest.kt:232)
+2026-10-20T23:06:25.6354457Z 
+2026-10-20T23:06:25.6391574Z > Task :app:connectedDebugAndroidTest FAILED
+2026-10-20T23:06:25.7350560Z 
+2026-10-20T23:06:25.7352101Z FAILURE: Build failed with an exception.
+2026-10-20T23:06:25.7382948Z 
+2026-10-20T23:06:25.7384253Z * What went wrong:
+2026-10-20T23:06:25.7392856Z Execution failed for task ':app:connectedDebugAndroidTest'.
+2026-10-20T23:06:25.7397810Z > There were failing tests. See the report at: file:///home/runner/work/Goldberg/Goldberg/app/build/reports/androidTests/connected/debug/index.html
+2026-10-20T23:06:25.7398721Z 
+2026-10-20T23:06:25.7398958Z * Try:
+2026-10-20T23:06:25.7399520Z > Run with --stacktrace option to get the stack trace.
+2026-10-20T23:06:25.7400225Z > Run with --info or --debug option to get more log output.
+2026-10-20T23:06:25.7401435Z > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+2026-10-20T23:06:25.7402155Z > Get more help at https://help.gradle.org.
+2026-10-20T23:06:25.7402509Z 
+2026-10-20T23:06:25.7402762Z BUILD FAILED in 2m 47s
+2026-10-20T23:06:25.7403278Z 69 actionable tasks: 1 executed, 68 up-to-date
+2026-10-20T23:06:26.3732478Z ##[error]The process '/usr/bin/sh' failed with exit code 1
+2026-10-20T23:06:26.3734509Z ##[group]Terminate Emulator
+2026-10-20T23:06:26.3743278Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 emu kill
+2026-10-20T23:06:26.3773103Z OK: killing emulator, bye bye
+2026-10-20T23:06:26.3773582Z OK
+2026-10-20T23:06:26.3779716Z INFO         | Wait for emulator (pid 3241) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+2026-10-20T23:06:26.3781182Z 
+2026-10-20T23:06:26.3781726Z ##[endgroup]
+2026-10-20T23:06:26.4038120Z USER_INFO    | Snapshots have been disabled by the user, save request is ignored.
+2026-10-20T23:06:26.4039128Z INFO         | Saving snapshot 'default_boot' took 1 ms
+2026-10-20T23:06:26.5597932Z ERROR        | stop: Not implemented
+2026-10-20T23:06:26.5598640Z WARNING      | Emulator client has not yet been configured.. Call configure me first!
+2026-10-20T23:06:26.5745389Z INFO         | removeAll
+2026-10-20T23:06:26.6230077Z WARNING      | Netsim Wifi dns:///localhost:40707 is gone due to Stream removed (CANCELLED)

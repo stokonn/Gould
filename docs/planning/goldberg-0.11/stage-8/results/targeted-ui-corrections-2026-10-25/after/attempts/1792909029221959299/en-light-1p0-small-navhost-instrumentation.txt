@@ -1,0 +1,8 @@
+android.util.AndroidException: INSTRUMENTATION_FAILED: com.opus.piano.test/com.opus.piano.Stage8bAssessmentProbe
+	at com.android.commands.am.Instrument.run(Instrument.java:543)
+	at com.android.commands.am.Am.runInstrument(Am.java:213)
+	at com.android.commands.am.Am.onRun(Am.java:85)
+	at com.android.internal.os.BaseCommand.run(BaseCommand.java:63)
+	at com.android.commands.am.Am.main(Am.java:54)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:371)

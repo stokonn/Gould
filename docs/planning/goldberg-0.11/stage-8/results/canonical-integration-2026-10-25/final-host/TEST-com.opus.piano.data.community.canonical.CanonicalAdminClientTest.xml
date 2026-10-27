@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-10-25T13:01:32.713Z" hostname="fedora" time="0.249">
+  <properties/>
+  <testcase name="lostDecisionResponseReplaysExactBodyOnlyOnExplicitAction" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.046"/>
+  <testcase name="unavailableStatisticsAndQueueFiltersStayCanonical" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.01"/>
+  <testcase name="lostRefreshResponseRequiresFreshAuthentication" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.008"/>
+  <testcase name="logoutClearsBeforeIoAndAcceptsOnlyEmpty204" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.008"/>
+  <testcase name="uncertainIntentExpiresWithoutAnotherPostAndOfflineIsTyped" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.02"/>
+  <testcase name="actualAuditHashesAndFieldsVerifyAndTamperingIsDenied" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.015"/>
+  <testcase name="responseIdentityMismatchClearsAuthentication" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.007"/>
+  <testcase name="auditWalkRejectsChangedSnapshotAndCannotCrossAccountGeneration" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.017"/>
+  <testcase name="reasonUsesUtf8BytesAndDocumentDoesNotExposeMutableOrSecretState" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.007"/>
+  <testcase name="strictWireRejectsLegacyNumbersUnknownRequestsAndInvalidJson" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.005"/>
+  <testcase name="httpStatusesKeepDistinctErrorsAndNeverInventStats" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.013"/>
+  <testcase name="staleAccountResponseCannotReplaceNewIdentity" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.007"/>
+  <testcase name="actualAcceptedHttpPostgresCapturesValidateInKotlin" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.023"/>
+  <testcase name="fullInt8MicrosecondsNullsAndAdditiveResponsesRemainExact" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.007"/>
+  <testcase name="concurrentRefreshCoalescesAndRotatesIdentity" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.007"/>
+  <testcase name="lexicalDuplicateDetectionDoesNotDependOnOrgJsonImplementation" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.003"/>
+  <testcase name="conflictDropsIntentAndNeverAutomaticallyRetries" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.014"/>
+  <testcase name="changedReviewOrMissingAcknowledgementCannotPublish" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.012"/>
+  <testcase name="invalidUnicodeAndLeapSecondAreRejectedWithoutWeakeningSchema" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.005"/>
+  <testcase name="revocationCancelsUncertainIntentBeforeAnyReplayPost" classname="com.opus.piano.data.community.canonical.CanonicalAdminClientTest" time="0.012"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

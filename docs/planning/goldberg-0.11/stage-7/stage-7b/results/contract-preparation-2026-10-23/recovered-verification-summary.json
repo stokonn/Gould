@@ -1,0 +1,52 @@
+{
+  "evidenceKind": "Recovered prior-session outputs; tests not re-executed in recovery session",
+  "branch": "feature/goldberg-0.11-stage-7b",
+  "head": "cee9330f82cf2e57dcdc66a63d94b7a4e3749888",
+  "dirty": true,
+  "jvmSuites": 36,
+  "jvm": {
+    "tests": 275,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "contractTests": {
+    "name": "com.opus.piano.admin.AdminContractIntegrationTest",
+    "tests": "24",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-23T13:12:25.158Z",
+    "hostname": "fedora",
+    "time": "0.078"
+  },
+  "lint": {
+    "Warning": 132,
+    "Hint": 1
+  },
+  "apk": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "bytes": 24140673,
+    "sha256": "6976d76e9bd936cd5b45e26f1910f86c3105863a8fe2bbf6f1269aaafc7e269b",
+    "sourceFilesNewerThanApk": [
+      "contracts/admin/v1/README.md",
+      "contracts/admin/v1/fixtures.json",
+      "contracts/admin/v1/mapping-proposal.json",
+      "contracts/admin/v1/source-provenance.json"
+    ],
+    "identityLimit": "Source manifest reconstructed on recovery, not captured contemporaneously with prior build; no commit-level CI identity claimed",
+    "applicationSourceFilesNewerThanApk": [],
+    "zipIntegrity": "PASS",
+    "testCorpusPackaged": false
+  },
+  "recoverySessionChecks": [
+    "check_admin_contract_fixtures.py: PASS (29 synthetic cases / 15 source hashes)",
+    "check_agent_policy.py: PASS",
+    "check_backup_fixtures.py: PASS (formats 1-3)",
+    "check_history_paging.py: PASS",
+    "check_localization.py: PASS (1050 EN/CZ resources)",
+    "check_migrations.py: PASS (v1-9 to v10 DDL)",
+    "git diff --check: PASS",
+    "APK signing/badging/ZIP/test-corpus exclusion: PASS"
+  ]
+}

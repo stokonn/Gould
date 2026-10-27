@@ -1,0 +1,92 @@
+[
+  {
+    "step": 0,
+    "focus": [
+      [
+        "Admin Settings",
+        null
+      ]
+    ]
+  },
+  {
+    "step": 1,
+    "focus": [
+      [
+        "Off by default. Background checks use unmetered Wi-Fi unless you explicitly allow mobile data.",
+        null
+      ]
+    ]
+  },
+  {
+    "step": 2,
+    "focus": [
+      [
+        "Local notifications",
+        null
+      ]
+    ]
+  },
+  {
+    "step": 3,
+    "focus": [
+      [
+        null,
+        "Local notifications"
+      ]
+    ]
+  },
+  {
+    "step": 4,
+    "focus": [
+      [
+        "Background checks (approximately every 3 hours)",
+        null
+      ]
+    ]
+  },
+  {
+    "step": 5,
+    "focus": [
+      [
+        null,
+        "Background checks (approximately every 3 hours)"
+      ]
+    ]
+  },
+  {
+    "step": 6,
+    "focus": [
+      [
+        "Allow mobile and metered data for admin checks",
+        null
+      ]
+    ]
+  },
+  {
+    "step": 7,
+    "focus": [
+      [
+        null,
+        "Allow mobile and metered data for admin checks"
+      ]
+    ]
+  },
+  {
+    "step": 8,
+    "focus": [
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  {
+    "step": 9,
+    "focus": [
+      [
+        null,
+        null
+      ]
+    ]
+  }
+]

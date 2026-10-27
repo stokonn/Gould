@@ -1,0 +1,54 @@
+{'method': 'upgradedJournalBackupRoundTripAndRejectedRestoreRetainData', 'label': 'upgradedJournalBackupRoundTripAndRejectedRestoreRetainData', 'result': 'PASS', 'junitPass': True}
+{'method': 'interruptRealMigrationProcess', 'label': 'interruptRealMigrationProcess', 'result': 'EXPECTED_PROCESS_TERMINATION', 'junitPass': False}
+{'method': 'retryInterruptedMigrationRetainsEveryOriginalCell', 'label': 'retryInterruptedMigrationRetainsEveryOriginalCell', 'result': 'PASS', 'junitPass': True}
+{'method': 'prepareLivePracticeAndTerminateProcess', 'label': 'prepareLivePracticeAndTerminateProcess', 'result': 'EXPECTED_PROCESS_TERMINATION', 'junitPass': False}
+{'method': 'recoverLivePracticeWithoutCountingDowntime', 'label': 'practice-after-process-death', 'result': 'PASS', 'junitPass': True}
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/independent/run_probes.py", line 68, in <module>
+    instrument('prepareOfflineBundleAndPeriodicWorkForReboot')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/independent/run_probes.py", line 36, in instrument
+    assert re.search(r'OK \(1 test\)',output) and 'FAILURES' not in output,output
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 
+com.opus.piano.Stage8IndependentPreservationTest:
+Error in prepareOfflineBundleAndPeriodicWorkForReboot(com.opus.piano.Stage8IndependentPreservationTest):
+java.lang.IllegalArgumentException: bundleId must be a UUID
+	at com.opus.piano.data.offline.BundleManifest.<init>(OfflineBundle.kt:108)
+	at com.opus.piano.Stage5Fixtures.manifest(Stage5Fixtures.kt:54)
+	at com.opus.piano.Stage5Fixtures.manifest$default(Stage5Fixtures.kt:46)
+	at com.opus.piano.Stage8IndependentPreservationTest$prepareOfflineBundleAndPeriodicWorkForReboot$1.invokeSuspend(Stage8IndependentPreservationTest.kt:166)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.opus.piano.Stage8IndependentPreservationTest.prepareOfflineBundleAndPeriodicWorkForReboot(Stage8IndependentPreservationTest.kt:161)
+
+
+Time: 0.068
+There was 1 failure:
+1) prepareOfflineBundleAndPeriodicWorkForReboot(com.opus.piano.Stage8IndependentPreservationTest)
+java.lang.IllegalArgumentException: bundleId must be a UUID
+	at com.opus.piano.data.offline.BundleManifest.<init>(OfflineBundle.kt:108)
+	at com.opus.piano.Stage5Fixtures.manifest(Stage5Fixtures.kt:54)
+	at com.opus.piano.Stage5Fixtures.manifest$default(Stage5Fixtures.kt:46)
+	at com.opus.piano.Stage8IndependentPreservationTest$prepareOfflineBundleAndPeriodicWorkForReboot$1.invokeSuspend(Stage8IndependentPreservationTest.kt:166)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.opus.piano.Stage8IndependentPreservationTest.prepareOfflineBundleAndPeriodicWorkForReboot(Stage8IndependentPreservationTest.kt:161)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+

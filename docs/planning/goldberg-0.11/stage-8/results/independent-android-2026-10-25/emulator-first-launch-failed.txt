@@ -1,0 +1,5 @@
+INFO         | Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+ERROR        | Unknown AVD name [GoldbergStage8Independent], use -list-avds to see valid list.
+ERROR        | ANDROID_AVD_HOME is defined but there is no file GoldbergStage8Independent.ini in $ANDROID_AVD_HOME
+ERROR        | (Note: Directories are searched in the order $ANDROID_AVD_HOME, $ANDROID_SDK_HOME/avd and $HOME/.android/avd)

@@ -1,0 +1,175 @@
+10-20 23:05:24.150  4034  4122 I TestRunner: started: interruptedCopyAndRepeatedInitialization(com.opus.piano.Stage3aCatalogueTest)
+10-20 23:05:24.160  2303  4640 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.160  2303  4640 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.160  2303  4640 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:24.160  2303  4640 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.166   643  1741 D ConnectivityService: requestNetwork for uid/pid:10136/2927 activeRequest: null callbackRequest: 176 [NetworkRequest [ REQUEST id=177, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10136 RequestorUid: 10136 RequestorPkg: com.google.android.dialer UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647 isUidTracked: false declaredMethods: AVAIL|LOST|NC
+10-20 23:05:24.167   643   914 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=177, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10136 RequestorUid: 10136 RequestorPkg: com.google.android.dialer UnderlyingNetworks: Null] ]
+10-20 23:05:24.167   643   914 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=177, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10136 RequestorUid: 10136 RequestorPkg: com.google.android.dialer UnderlyingNetworks: Null] ]
+10-20 23:05:24.167   643   914 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=177, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10136 RequestorUid: 10136 RequestorPkg: com.google.android.dialer UnderlyingNetworks: Null] ]
+10-20 23:05:24.167   643   914 V WifiNetworkFactory: Accepted network request NetworkRequest [ REQUEST id=177, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10136 RequestorUid: 10136 RequestorPkg: com.google.android.dialer UnderlyingNetworks: Null] ]
+10-20 23:05:24.167   643   920 D ConnectivityService: NetReassign [177 : null → 100] [c 0] [a 0] [i 0]
+10-20 23:05:24.167   643   914 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=177, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10136 RequestorUid: 10136 RequestorPkg: com.google.android.dialer UnderlyingNetworks: Null] ]
+10-20 23:05:24.178  2303  4634 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:24.186  2303  4525 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:24.186  2303  4633 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:24.187  2303  4648 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:24.187  2303  4648 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.audit [CONTEXT service_id=340 ]
+10-20 23:05:24.187  2303  4641 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.187  2303  4641 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:24.187  2303  4641 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:24.188  2217  2473 I PTCommittedOperation: Receive new configuration for com.google.android.gms.audit
+10-20 23:05:24.189  2927  3289 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=12000Kbps LinkDnBandwidth>=30000Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 54Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Frequency: 2437MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -50 UnderlyingNetworks: Null]
+10-20 23:05:24.191  2303  4525 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:24.191  2217  4661 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.192  2927  3003 D WM-GreedyScheduler: Constraints met: Scheduling work ID WorkGenerationalId(workSpecId=5f521270-a473-4799-92fe-9fc48f47c701, generation=0)
+10-20 23:05:24.194  2303  4641 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:24.199  2927  2998 I DialerVvmExecutorImpl: com.android.dialer.voicemail.service.impl.scheduler.VvmExecutorImpl.execute:229 Beginning VVM action: SYNC with retryCount: 0 for ComponentInfo{com.android.phone/com.android.services.telephony.TelephonyConnectionService}, 1, UserHandle{0} [CONTEXT enable_persistent_logger=true ]
+10-20 23:05:24.205  2927  3003 D WM-Processor: Work WorkGenerationalId(workSpecId=5f521270-a473-4799-92fe-9fc48f47c701, generation=0) is already enqueued for processing
+10-20 23:05:24.221  2927  2998 E DialerRestVvmCarrierService: com.android.dialer.voicemail.service.impl.vvmclients.rest.RestVvmCarrierService.getMsisdn:420 Retrieved phone number in an unexpected format: +15551234567 [CONTEXT disable_client_error_logging=true ]
+10-20 23:05:24.221  2927  2998 E DialerRestVvmCarrierService: zxo: MEDIUM
+10-20 23:05:24.221  2927  2998 E DialerRestVvmCarrierService: 	at a.cN(PG:15)
+10-20 23:05:24.221  2927  2998 E DialerRestVvmCarrierService: 	at pxq.apply(PG:489)
+10-20 23:05:24.221  2927  2998 E DialerRestVvmCarrierService: 	at zcp.apply(PG:13)
+10-20 23:05:24.221  2927  2998 E DialerRestVvmCarrierService: 	at aaka.d(PG:3)
+10-20 23:05:24.221  2927  2998 E DialerRestVvmCarrierService: 	at aakb.run(PG:38)
+10-20 23:05:24.221  2927  2998 E DialerRestVvmCarrierService: 	at umz.run(PG:7)
+10-20 23:05:24.221  2927  2998 E DialerRestVvmCarrierService: 	at aadu.run(PG:44)
+10-20 23:05:24.221  2927  2998 E DialerRestVvmCarrierService: 	at tdt.run(PG:78)
+10-20 23:05:24.221  2927  2998 E DialerRestVvmCarrierService: 	at cp.run(PG:143)
+10-20 23:05:24.221  2927  2998 E DialerRestVvmCarrierService: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:05:24.221  2927  2998 E DialerRestVvmCarrierService: 	at uoe.run(PG:61)
+10-20 23:05:24.223  2927  2998 I DialerLogcatLoggingBindings: com.android.dialer.logging.logcat.LogcatLoggingBindings.logImpression:54 Impression: ANDROID_API_UNEXPECTED_PHONE_NUMBER_FORMAT
+10-20 23:05:24.227  2927  3023 I DialerLogcatLoggingBindings: com.android.dialer.logging.logcat.LogcatLoggingBindings.logImpression:47 Impression: VVM_SYNC_STARTED
+10-20 23:05:24.244  2927  2998 W DialerGbaCredentialProvider: com.android.dialer.voicemail.service.impl.vvmclients.rest.GbaCredentialProvider$1.onAuthenticationFailure:93 GBA failed with reason: 1 [CONTEXT disable_client_error_logging=true ]
+10-20 23:05:24.244  2927  3023 I DialerSingletonScopedExternalsLogging: com.google.android.dialershared.externals.logging.SingletonScopedExternalsLogging.recordCallMethodInvocation:75 event: TELEPHONY_BOOTSTRAP_AUTHENTICATION_REQUEST, function parameters: [], return value: Default
+10-20 23:05:24.247  2927  3023 W DialerVvmExecutorImpl: com.android.dialer.voicemail.service.impl.scheduler.VvmExecutorImpl.executeWorkOnCarrierService:444 Could not complete vvm work with action: SYNC. Error: [GeneralFailureReason: UNSPECIFIED, RestFailureReason: GBA_AUTHENTICATION_FAILURE_FEATURE_NOT_SUPPORTED, OmtpFailureReason: OMTP_UNSPECIFIED] for ComponentInfo{com.android.phone/com.android.services.telephony.TelephonyConnectionService}, 1, UserHandle{0} [CONTEXT disable_client_error_logging=true enable_persistent_logger=true ]
+10-20 23:05:24.248  2927  3023 I DialerVvmExecutorImpl: com.android.dialer.voicemail.service.impl.scheduler.VvmExecutorImpl.executeWork:204 VvmResult is: # pug@1db0ddb for ComponentInfo{com.android.phone/com.android.services.telephony.TelephonyConnectionService}, 1, UserHandle{0}
+10-20 23:05:24.269  2927  3023 I DialerSingletonScopedExternalsLogging: com.google.android.dialershared.externals.logging.SingletonScopedExternalsLogging.recordCallMethodInvocation:75 event: TIKTOK_WORK_EXECUTION_MONITOR_ON_WORK_FINISHED, function parameters: [5f521270-a473-4799-92fe-9fc48f47c701,com.android.dialer.voicemail.service.impl.VvmTaskWorker], return value: Retry
+10-20 23:05:24.271  2927  3004 I WM-WorkerWrapper: Worker result RETRY for Work [ id=5f521270-a473-4799-92fe-9fc48f47c701, tags={ com.google.apps.tiktok.contrib.work.TikTokListenableWorker,1,SYNC,TikTokWorker#com.android.dialer.voicemail.service.impl.VvmTaskWorker } ]
+10-20 23:05:24.278  1610  1943 I SP.AiAi : Scheduling: download stopped, 0 started, 0 paused, 5 scheduled, 5 pending: manifests:kg_collections_table-21051103 * {W:C:I:l, bg}, manifests:spelling_correction-22110320 * {W:C:I:l, bg}, manifests:text-classifier-annotator-272525175 * {W:C:I:l, bg}, manifests:text-classifier-actions-1140547708 * {W:C:I:l, bg}, manifests:text-classifier-langid-1941001461 * {W:C:I:l, bg}
+10-20 23:05:24.289  2927  2927 D WM-Processor: fgy 5f521270-a473-4799-92fe-9fc48f47c701 executed; reschedule = true
+10-20 23:05:24.290  2927  2927 D WM-GreedyScheduler: Stopping tracking for WorkGenerationalId(workSpecId=5f521270-a473-4799-92fe-9fc48f47c701, generation=0)
+10-20 23:05:24.290  2927  2927 D WM-SystemJobService: 5f521270-a473-4799-92fe-9fc48f47c701 executed on JobScheduler
+10-20 23:05:24.305  2927  2998 I DialerSingletonScopedExternalsLogging: com.google.android.dialershared.externals.logging.SingletonScopedExternalsLogging.recordCallMethodInvocation:75 event: BROADCAST_RECEIVER, function parameters: [Broadcast to com.google.apps.tiktok.experiments.phenotype.ConfigurationUpdatedReceiver_Receiver com.google.android.gms.phenotype.UPDATE,2026-10-20 23:05:05.014], return value: <empty>
+10-20 23:05:24.306  2927  3003 D WM-GreedyScheduler: Cancelling work ID 5f521270-a473-4799-92fe-9fc48f47c701
+10-20 23:05:24.311  2927  3003 D WM-SystemJobScheduler: Scheduling work ID d48d2fde-bd98-42ca-b916-32b933e60da9Job ID 27
+10-20 23:05:24.315  2927  3003 D WM-GreedyScheduler: Ignoring {WorkSpec: 5a7c1593-c1d1-408a-8efb-fe33d69ceabd}. Requires device idle.
+10-20 23:05:24.315  2927  3003 D WM-GreedyScheduler: Ignoring {WorkSpec: 3f6358fe-0dfb-41c6-82d2-a3252edb30eb}. Requires device idle.
+10-20 23:05:24.315  2927  3003 D WM-GreedyScheduler: Ignoring {WorkSpec: 87893f46-1158-4b5c-916e-7973b54af90a}. Requires device idle.
+10-20 23:05:24.315  2927  3003 D WM-GreedyScheduler: Ignoring {WorkSpec: c6245fbb-6ea1-4743-9b6e-c09e79a3dfd9}. Requires device idle.
+10-20 23:05:24.315  2927  3003 D WM-GreedyScheduler: Ignoring {WorkSpec: ae484cac-a8ca-4247-99a6-f92f8228dad2}. Requires device idle.
+10-20 23:05:24.315  2927  3004 D WM-NetworkStateTracker: Unregistering network callback
+10-20 23:05:24.327  2927  3023 I DialerLoggingConsentCheckerImpl: com.google.android.dialershared.logging.consent.impl.LoggingConsentCheckerImpl.getConsent:72 timer stop with success, timer present: false
+10-20 23:05:24.333  2217  4662 I PTCommittedOperation: Receive new configuration for com.google.android.gms.drive
+10-20 23:05:24.334  2927  3023 I DialerLoggingConsentCheckerImpl: com.google.android.dialershared.logging.consent.impl.LoggingConsentCheckerImpl.getConsent:72 timer stop with success, timer present: false
+10-20 23:05:24.339  2927  3023 I DialerLoggingConsentCheckerImpl: com.google.android.dialershared.logging.consent.impl.LoggingConsentCheckerImpl.getConsent:72 timer stop with success, timer present: false
+10-20 23:05:24.341  2303  4633 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.341  2303  4640 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.341  2303  4640 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:24.342  2303  4642 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.342  2303  4642 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:24.343  2927  3023 I DialerLoggingConsentCheckerImpl: com.google.android.dialershared.logging.consent.impl.LoggingConsentCheckerImpl.getConsent:72 timer stop with success, timer present: false
+10-20 23:05:24.344  2217  4661 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.345  2303  4640 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:24.347  2303  4634 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:24.347  2303  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.347  2303  4673 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:24.348  2303  4675 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:24.348  2303  4675 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.drive [CONTEXT service_id=340 ]
+10-20 23:05:24.348  2303  4673 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:24.348  2303  4673 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:24.349  2303  4640 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:24.444   643   675 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:24.448  2303  4272 I Icing   : updateResources: need to parse buqq{com.google.android.googlequicksearchbox}
+10-20 23:05:24.477   643   675 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:24.499  2303  2766 I Auth.Api.Credentials: [WebauthnCredentialDataClient#subscribe()] Operation started. [CONTEXT service_id=68 ]
+10-20 23:05:24.501  2303  2766 I Auth.Api.Credentials: [WebauthnCredentialDataClient#subscribe()] Operation succeeded with result: null. [CONTEXT service_id=68 ]
+10-20 23:05:24.545  2303  4272 I gle.android.gms: AssetManager2(0x7ef312e028f8) locale list changing from [] to [en-US]
+10-20 23:05:24.623  2303  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.624  2217  4656 I PTCommittedOperation: Receive new configuration for com.google.android.gms.test_process_stable
+10-20 23:05:24.626  2217  4659 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.628  2303  4646 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.628  2303  4646 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.629  2303  4648 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:24.630  2303  4640 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:24.630  2303  4648 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:24.631  2303  4525 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:24.631  2303  4525 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:24.631  2303  4525 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.test_process_stable [CONTEXT service_id=340 ]
+10-20 23:05:24.631  2303  4646 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.631  2303  4634 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:24.632  2303  4272 I Icing   : updateResources: need to parse buqq{com.google.android.gms}
+10-20 23:05:24.632  2303  4634 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:24.633  2303  4634 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:24.633  2303  4673 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:24.658  2303  4646 V Backup  : [CustomDownloadSchedulingIO] Received Action: com.google.android.gms.phenotype.com.google.android.gms.backup.COMMITTED
+10-20 23:05:24.658  2303  4646 V Backup  : [CustomDownloadSchedulingIO] customBackupDownloadEnableSuwTriggerWithGmsUpdateCheck flag on
+10-20 23:05:24.658  2303  4673 V Backup  : [G1ModuleInitIntentOperation] Flags updated
+10-20 23:05:24.659  2303  4673 V Backup  : [G1ModuleInitIntentOperation] Running restore operation is disabled by flag
+10-20 23:05:24.670  2303  4673 W ChimeraUtils: Module com.google.android.gms.backup_g1 missing resource null(0)
+10-20 23:05:24.671  2303  4525 V Backup  : [GmsBackupSchedulerIO] Phenotype updated, attempting to schedule backup tasks
+10-20 23:05:24.672  2303  4673 W ChimeraUtils: Module com.google.android.gms.backup_g1 missing resource null(0)
+10-20 23:05:24.672  2303  4673 W ChimeraUtils: Module com.google.android.gms.backup_g1 missing resource null(0)
+10-20 23:05:24.673  2303  4525 V Backup  : [RequireWifiAndChargingBackupTask] Scheduled
+10-20 23:05:24.673  2303  4525 V Backup  : [RequireIdleWifiAndChargingBackupTask] Scheduled
+10-20 23:05:24.674  2303  4525 D Backup  : [KeyValueSchedulerFrequencySetter] Target value already set: key_value_backup_interval_milliseconds=43200000
+10-20 23:05:24.696  2303  4525 W SystemServiceRegistry: No service published for: persistent_data_block
+10-20 23:05:24.697  2303  4525 I FRP     : [FrpUpdateIntentOperation] Intent received: Intent { act=com.google.android.gms.auth.FRP_CONFIG_CHANGED cat=[targeted_intent_op_prefix:.auth.frp.FrpUpdateIntentOperation] xflg=0x4 cmp=com.google.android.gms/.chimera.GmsIntentOperationService } [CONTEXT service_id=341 ]
+10-20 23:05:24.697  2303  4525 W FRP     : [FrpUpdateIntentOperation] FRP is not supported for this device / user [CONTEXT service_id=341 ]
+10-20 23:05:24.715  2217  4665 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.com.google.android.gms.nearby.COMMITTED
+10-20 23:05:24.715  2217  4650 I NearbyConnections: Runtime state initialization complete. Nearby connections setting is disabled
+10-20 23:05:24.716   643  1741 I WifiService: getWifiEnabledState uid=10147 state=3
+10-20 23:05:24.717   643  1741 I WifiService: is5GHzBandSupported uid=10147
+10-20 23:05:24.718   643  1741 I WifiService: getWifiEnabledState uid=10147 state=3
+10-20 23:05:24.719   643  1062 I WifiService: is6GHzBandSupported uid=10147
+10-20 23:05:24.720  2303  4525 I NearbyFastPair: TaskSchedulerUtils cancelTask TAG_FOOTPRINTS_PERIODIC_SCHEDULE success. [CONTEXT service_id=265 ]
+10-20 23:05:24.723  2217  2388 I Nearby  : Beginning attempt #1 out of 3 for RestoreDeviceName... [CONTEXT service_id=49 ]
+10-20 23:05:24.724  2217  2388 I NearbyMediums: BluetoothAdapter's name was not set by Nearby Connections, ignoring call to restore default scan mode.
+10-20 23:05:24.724  2217  2388 I NearbyMediums: BluetoothAdapter's name was not set by Nearby Connections, ignoring call to restore device name
+10-20 23:05:24.735  2303  4646 I NearbySharing: onBindSlice failed since shareTargets is empty
+10-20 23:05:24.737  2217  4247 I NearbySharing: There is no account metadata, return default instance.
+10-20 23:05:24.739  2303  4646 I NearbySharing: Granted slice and uri permissions to android
+10-20 23:05:24.740  2303  4646 I NearbySharing: Granted slice and uri permissions to com.google.android.apps.nbu.files
+10-20 23:05:24.742  2303  4646 I NearbySharing: com.google.android.gms.nearby.sharing.receive.SamsungQrCodeActivity enable=false
+10-20 23:05:24.748  2217  2217 I NearbySharing: ReceiveSurfaceService started
+10-20 23:05:24.749  2217  2217 I NearbySharing: SendSurfaceService started
+10-20 23:05:24.750  2303  4646 I NearbySharing: Runtime state initialization complete. Sharing is enabled.
+10-20 23:05:24.758  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.758  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.758  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.758  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.758  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.758  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.758  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.758  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.782  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.782  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.782  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.790  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.790  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.790  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.790  2303  4741 E feyh    : FileGroupManager: Trying to add expired group enpromo-state-config.
+10-20 23:05:24.790  2303  4741 W feyh    : MDDManager class fegg
+10-20 23:05:24.791  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.791  2303  4741 E feyh    : DataFileGroupValidator Group name missing in added group
+10-20 23:05:24.846  2217  4658 I WestworldConfigOp: Received westworld committed action [CONTEXT service_id=251 ]
+10-20 23:05:24.877  2303  4646 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.877  2303  4646 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.877  2303  4642 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:24.877  2303  4646 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.878  2303  4633 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:24.878  2303  4640 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:24.881  2303  4673 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:24.881  2217  4274 I PTCommittedOperation: Receive new configuration for com.google.android.gms.clearcut.public
+10-20 23:05:24.881  2303  4633 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:24.881  2303  4633 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.clearcut.public [CONTEXT service_id=340 ]
+10-20 23:05:24.882  2303  4634 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.882  2303  4634 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:24.882  2303  4634 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:24.882  2303  4634 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:24.882  2303  4634 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:24.886  2217  4665 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:24.911  2217  4658 I PTCommittedOperation: Receive new configuration for com.google.android.gms
+10-20 23:05:24.911  2217  4658 I PTCommittedOperation: Running Fixer Framework for com.google.android.gms
+10-20 23:05:24.935  4034  4122 I TestRunner: finished: interruptedCopyAndRepeatedInitialization(com.opus.piano.Stage3aCatalogueTest)

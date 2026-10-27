@@ -1,0 +1,39 @@
+{"uptime":91030,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.apps.nexuslauncher","text":"[Home screen 1 of 1]"}
+{"uptime":92023,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Application icon]"}
+{"uptime":94719,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":95113,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":95393,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[]"}
+{"uptime":95491,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[]"}
+{"uptime":96858,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":107029,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano.test","text":"[Application icon]"}
+{"uptime":138464,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.apps.nexuslauncher","text":"[Home screen 1 of 1]"}
+{"uptime":138778,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Application icon]"}
+{"uptime":139987,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":140129,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":147254,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":148043,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Admin Settings"}
+{"uptime":148991,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Off by default. Background checks use unmetered Wi-Fi unless you explicitly allow mobile data."}
+{"uptime":149909,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Local notifications"}
+{"uptime":150843,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Local notifications"}
+{"uptime":151791,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Background checks (approximately every 3 hours)"}
+{"uptime":152577,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Background checks (approximately every 3 hours)"}
+{"uptime":153491,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Allow mobile and metered data for admin checks"}
+{"uptime":154274,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Allow mobile and metered data for admin checks"}
+{"uptime":155190,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":156928,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano.test","text":"[Application icon]"}
+{"uptime":157021,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano.test","text":"[androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity]"}
+{"uptime":157080,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.apps.nexuslauncher","text":"[Home screen 1 of 1]"}
+{"uptime":157554,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.apps.nexuslauncher","text":"[Home screen 1 of 1]"}
+{"uptime":161276,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.google.android.apps.nexuslauncher","text":"[Home screen 1 of 1]"}
+{"uptime":161587,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Application icon]"}
+{"uptime":162830,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":163144,"type":"TYPE_WINDOW_STATE_CHANGED","package":"com.opus.piano","text":"[Goldberg]"}
+{"uptime":170032,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]"}
+{"uptime":170241,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Nastavení administrace"}
+{"uptime":171010,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Ve výchozím stavu vypnuto. Kontroly používají neměřenou Wi-Fi, pokud výslovně nepovolíte mobilní data."}
+{"uptime":171924,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Místní oznámení"}
+{"uptime":172711,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Místní oznámení"}
+{"uptime":173994,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Kontroly na pozadí (přibližně každé 3 hodiny)"}
+{"uptime":174910,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Kontroly na pozadí (přibližně každé 3 hodiny)"}
+{"uptime":175860,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceText":"Povolit mobilní a měřená data pro správní kontroly"}
+{"uptime":176775,"type":"TYPE_VIEW_ACCESSIBILITY_FOCUSED","package":"com.opus.piano","text":"[]","sourceDescription":"Povolit mobilní a měřená data pro správní kontroly"}

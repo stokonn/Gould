@@ -1,0 +1,13 @@
+{
+  "preparedSource": "ea1758c6fb10c9f4cdecf83d4c47523e9a5b553a",
+  "checkpoint": "https://github.com/stokonn/Goldberg/issues/31#issuecomment-6388549455",
+  "issueState": "open",
+  "projectStatus": "In Progress",
+  "stage7": "COMPLETE client/synthetic",
+  "stage8a": "PREPARATION COMPLETE",
+  "stage8IntegrationRelease": "PENDING/BLOCKED",
+  "concurrentStage6IssueContent": "preserved",
+  "preparationChecks": "PASS",
+  "sourceChanged": false,
+  "noMergeDeployRelease": true
+}

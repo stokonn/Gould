@@ -1,0 +1,110 @@
+{
+  "query": "Johann Sebastian Bach",
+  "items": [
+    {
+      "id": "22c1ce68-4147-4000-9b58-8733f75e2f23",
+      "kind": "artist",
+      "title": "Johann Sebastian Bach"
+    },
+    {
+      "id": "026627e4-7c02-490c-9917-c2532027b709",
+      "kind": "work",
+      "title": "Concerto in D minor for 3 Harpsichords, BWV.1063"
+    },
+    {
+      "id": "10ba6eb1-a4df-46e5-800a-5ee466ca9978",
+      "kind": "work",
+      "title": "Brandenburg Concerto no. 2 in F major, BWV.1047"
+    },
+    {
+      "id": "1ca5d919-cfcc-4c0c-8758-9fc1437ff63b",
+      "kind": "work",
+      "title": "Violin Concerto in A minor, BWV.1041"
+    },
+    {
+      "id": "1d8a5db8-0b5b-4b22-92cf-c789b85e79d1",
+      "kind": "work",
+      "title": "Goldberg Variations, BWV.988 "
+    },
+    {
+      "id": "3f0c09f2-98ed-4167-a4da-0d54a41e7f67",
+      "kind": "work",
+      "title": "Passion According to St. Matthew, BWV.244"
+    },
+    {
+      "id": "45ff558d-dd7a-4159-b202-4ed279cc4de8",
+      "kind": "work",
+      "title": "Orchestral Suite no. 3 in D major, BWV.1068"
+    },
+    {
+      "id": "54ab1018-1c32-41a0-8ee9-9e98a4962414",
+      "kind": "work",
+      "title": "Cello Suite no. 6 in D major, BWV.1012"
+    },
+    {
+      "id": "61b6f407-157f-4fa4-8483-f2822b21b353",
+      "kind": "work",
+      "title": "Art of the Fugue, BWV.1080"
+    },
+    {
+      "id": "6b360708-45f7-4533-b432-4a40b850c45e",
+      "kind": "work",
+      "title": "Brandenburg Concerto no. 1 in F major, BWV.1046"
+    },
+    {
+      "id": "7a99a5c0-af87-44e6-836b-fb911c328d01",
+      "kind": "work",
+      "title": "Cello Suite no. 4 in E flat major, BWV.1010"
+    },
+    {
+      "id": "83a498f8-ce6f-4ea0-b1f0-dd342f101f40",
+      "kind": "work",
+      "title": "Brandenburg Concerto no. 4 in G major, BWV.1049"
+    },
+    {
+      "id": "9cef9e14-b766-42f2-80b3-2ed510d75c59",
+      "kind": "work",
+      "title": "Cantata no. 140, \"Wachet auf, ruft uns die Stimme\", BWV.140"
+    },
+    {
+      "id": "a5908cd7-712b-4838-a4be-e28e37329926",
+      "kind": "work",
+      "title": "Brandenburg Concerto no. 6 in B flat major, BWV.1051"
+    },
+    {
+      "id": "b56075e3-b83c-461c-8e62-13880dc19210",
+      "kind": "work",
+      "title": "Toccata and fugue in D minor, BWV.565"
+    },
+    {
+      "id": "c170a545-0860-4c09-8cca-a1aa74742120",
+      "kind": "work",
+      "title": "Brandenburg Concerto no. 5 in D major, BWV.1050"
+    },
+    {
+      "id": "d03e8014-a32a-4069-845f-d2a7f8d70f90",
+      "kind": "work",
+      "title": "Christmas Oratorio, BWV.248"
+    },
+    {
+      "id": "d41129e8-f88a-4aa7-a5e6-a4d29d71c3ae",
+      "kind": "work",
+      "title": "Cello Suite no. 1 in G major, BWV.1007"
+    },
+    {
+      "id": "da621a7b-d534-4d3d-8667-86a6e1d7f735",
+      "kind": "work",
+      "title": "Passacaglia and Fugue in C minor, BWV.582"
+    },
+    {
+      "id": "e19bc0f4-d66d-4791-b620-9c615c372e5c",
+      "kind": "work",
+      "title": "Brandenburg Concerto no. 3 in G major, BWV.1048"
+    },
+    {
+      "id": "fcd2cde6-0c82-4e93-84b3-180748eb71dc",
+      "kind": "work",
+      "title": "Cantata no. 147: Herz und Mund und Tat und Leben "
+    }
+  ]
+}

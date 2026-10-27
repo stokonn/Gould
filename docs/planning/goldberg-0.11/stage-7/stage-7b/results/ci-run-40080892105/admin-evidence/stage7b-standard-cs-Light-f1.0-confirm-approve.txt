@@ -1,0 +1,21 @@
+locale=cs font=1.0 size=Physical size: 1080x2400
+Override size: 824x1830 density=Physical density: 420
+Override density: 320
+bounds=Rect(92, 680 - 732, 1200) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.FrameLayout actions=[4, 8, 64, 16908342]
+bounds=Rect(92, 680 - 732, 1200) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.FrameLayout actions=[4, 8, 64, 16908342]
+bounds=Rect(92, 680 - 732, 1200) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.FrameLayout actions=[4, 8, 64, 16908342]
+bounds=Rect(92, 680 - 732, 1200) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.ViewGroup actions=[4, 8, 64, 16908342]
+bounds=Rect(92, 680 - 732, 1200) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(92, 680 - 732, 1200) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(92, 680 - 732, 1200) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(92, 680 - 732, 1200) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(140, 728 - 320, 792) text=Schválit description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]
+bounds=Rect(140, 824 - 684, 1008) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.ScrollView actions=[64]
+bounds=Rect(140, 824 - 518, 866) text=#sub_1 · revize 2 · Odesláno description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]
+bounds=Rect(140, 882 - 684, 1008) text=Potvrďte kontrolu této revize, všech změn, zdrojů a podkladů. Rozhodnutí ověří server. description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]
+bounds=Rect(387, 1056 - 513, 1152) text=null description=null clickable=true enabled=true scrollable=false focusable=true checkable=false checked=false class=android.view.View actions=[64, 1, 16]
+bounds=Rect(411, 1084 - 489, 1124) text=Zrušit description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]
+bounds=Rect(387, 1064 - 513, 1144) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.Button actions=[64]
+bounds=Rect(529, 1056 - 684, 1152) text=null description=null clickable=true enabled=true scrollable=false focusable=true checkable=false checked=false class=android.view.View actions=[64, 1, 16]
+bounds=Rect(553, 1084 - 660, 1124) text=Schválit description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]
+bounds=Rect(529, 1064 - 684, 1144) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.Button actions=[64]

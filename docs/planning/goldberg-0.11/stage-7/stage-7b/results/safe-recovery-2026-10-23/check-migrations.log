@@ -1,0 +1,9 @@
+PASS v1 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v2 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v3 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v4 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v5 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v6 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v7 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v8 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+PASS v9 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests

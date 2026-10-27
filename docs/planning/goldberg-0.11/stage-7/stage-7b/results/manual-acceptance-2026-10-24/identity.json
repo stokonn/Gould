@@ -1,0 +1,17 @@
+{
+  "productionApkSha256": "93ae9ec88472e4f07dc5328980786e9ce252887ccbac507c0034195cd9b51961",
+  "manualProbeApkSha256": "3a6bc0b50c7b4224a83282a6e874dee8bc81b37dbae497b68b2ef8b48cb09bde",
+  "manualProbeSourceSha256": "0f28ab71f4f1ba1801c34a9337bef129ab6f99ac6534776ac3b93337cdeda20d",
+  "buildConfigSha256": "434f9252789f5ffef4acf694f49d8e203558d24abae76ba2d4123cc0fc266182",
+  "lint": {
+    "Warning": 119,
+    "Hint": 1
+  },
+  "newJvmTestsExecuted": 0,
+  "fullCI25Repeated": false,
+  "baseCommit": "0887d3fe33cf5d49d46e14e1de95168f08a493a2",
+  "executedEnConfiguration": "API36/small360x640dp/EN/Light/font1.0",
+  "executedCsConfiguration": "API36/small360x640dp/CS/Dark/font1.3",
+  "defaultRunnerRestored": true,
+  "stageAccepted": false
+}

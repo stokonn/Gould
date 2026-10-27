@@ -1,0 +1,453 @@
+10-20 23:04:50.187  4034  4122 I TestRunner: started: importsAreIdempotentAndSameTitlesFromDifferentComposersStayDistinct(com.opus.piano.CatalogDatabaseTest)
+10-20 23:04:50.200  1638  1673 I sww     : Initializing all components
+10-20 23:04:50.203  1638  2080 I wxp     : (REDACTED) onIsEnabledChanged, isEnabled: %s
+10-20 23:04:50.203  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.203  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.203  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.203  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.203  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.204  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.204  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.204  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.204  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.204  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.204  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.204  2303  3752 W gle.android.gms: Weak pointer dereference blocked for 13 milliseconds.
+10-20 23:04:50.204  1638  2080 I xlz     : (REDACTED) Setting session to type: %s
+10-20 23:04:50.204  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.204  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.204  1638  2002 I tuc     : (REDACTED) on opa visibility changed %s
+10-20 23:04:50.205  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.205  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.205  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.205  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.205  1638  2002 I tuc     : (REDACTED) on opa visibility changed %s
+10-20 23:04:50.206  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.206  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.206  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.206  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.206  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.206  1638  2080 W zdf     : Disposing empty manager. Did you forgot to subscribe observables?
+10-20 23:04:50.211  1638  2080 D StrictMode: StrictMode policy violation: android.os.strictmode.DiskReadViolation
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at android.os.StrictMode$AndroidBlockGuardPolicy.onReadFromDisk(StrictMode.java:1728)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at android.app.SharedPreferencesImpl.awaitLoadedLocked(SharedPreferencesImpl.java:283)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at android.app.SharedPreferencesImpl.getBoolean(SharedPreferencesImpl.java:352)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at agme.j(PG:7)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at agme.i(PG:19)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at wvg.a(PG:11)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at aags.b(PG:7)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at xii.apply(PG:9)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at br$$ExternalSyntheticApiModelOutline1.m(D8$$SyntheticClass:36)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at zdo.b(PG:15)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at zcw.c(PG:1)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at zdt.b(PG:45)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at zcw.c(PG:1)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at zdo.b(PG:7)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at zcw.d(PG:17)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at zcw.d(PG:44)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at zdz.d(PG:8)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at zdf.c(PG:4)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at wxi.run(PG:142)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at dnqr.run(PG:9)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at agie.b(PG:3)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at agih.run(PG:1)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at fmrq.run(PG:68)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at djui.run(PG:5)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at fler.run(PG:44)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at djtz.run(PG:42)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:50.211  1638  2080 D StrictMode: 	at djvl.run(PG:62)
+10-20 23:04:50.213  2217  2217 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.time.trustedtime.singleuserapi.service.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.PersistentSingleUserInternalApiService }
+10-20 23:04:50.215  3655  3803 I BugleSimStateTracker: Default SMS SIM changed. Old simId redacted-pii:sim_id[chars:0,last3:], new simId: redacted-pii:sim_id[chars:20,last3:897]
+10-20 23:04:50.216  3655  3803 I BugleSimStateTracker: Handling SIM loaded event for all SIMs on first update: [(redacted-pii[20-chars], fb15fce9-3ea0-4c40-9acc-30af098b5492)]
+10-20 23:04:50.217  1638  2002 D StrictMode: StrictMode policy violation: android.os.strictmode.DiskReadViolation
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at android.os.StrictMode$AndroidBlockGuardPolicy.onReadFromDisk(StrictMode.java:1728)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at android.app.SharedPreferencesImpl.awaitLoadedLocked(SharedPreferencesImpl.java:283)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at android.app.SharedPreferencesImpl.getBoolean(SharedPreferencesImpl.java:352)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at agme.j(PG:7)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at agme.i(PG:19)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at ypw.b(PG:13)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at tkz.d(PG:10)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at tkz.a(PG:38)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at tkt.apply(PG:17)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at j$.util.concurrent.atomic.DesugarAtomicReference.getAndUpdate(SourceFile:5)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at tjz.accept(PG:22)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at j$.util.Optional.ifPresent(SourceFile:5)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at tkj.a(PG:10)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at dnqs.apply(PG:36)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at fmnz.e(PG:3)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at fmob.run(PG:38)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at djui.run(PG:5)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at fler.run(PG:44)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at djtz.run(PG:42)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:50.217  1638  2002 D StrictMode: 	at djvl.run(PG:62)
+10-20 23:04:50.225  3655  3850 I BugleSelfIdentity: Create new MyIdentity 7e82bc15-4053-4171-8b40-b03570bf1c38, existing identities on SIM 0 [CONTEXT sub_id=1 messaging_identity="redacted-pii[12-chars]" icc_id="89860318640220133897" rcs_provisioning_id="redacted-pii[20-chars]" ]
+10-20 23:04:50.235  3655  3850 I BugleDataModel: SubscriptionsTracker#refreshSelfParticipantList([1])
+10-20 23:04:50.247  3655  3850 I BugleSelfIdentity: Phone number for MyIdentity 7e82bc15-4053-4171-8b40-b03570bf1c38 does not change [CONTEXT sub_id=1 icc_id="89860318640220133897" messaging_identity="redacted-pii[12-chars]" rcs_provisioning_id="redacted-pii[0-chars]" ]
+10-20 23:04:50.255  3655  3910 I BugleRcsProvisioning: RcsProvisioningTrigger: SIM swap detected, restarting provisioning
+10-20 23:04:50.256  3655  3910 I BugleRcsProvisioning: RcsProvisioningTrigger: updateRcsAvailabilityForProvisioningId : rcsProvisioningId = redacted-pii:sim_id[chars:35,last3:97)] hint = SIM_SWAP, logTriggerEvent = true
+10-20 23:04:50.256  3655  3910 I BugleClearcutLogger: qosTierResolver for LOG_SPEC_LEGACY_LOGGING is null. Using DEFAULT QoS tier as there's no specific QoS configuration for this log spec.
+10-20 23:04:50.258  3655  3850 I BugleDataModel: set token for new self participant [CONTEXT sub_id=1 icc_id="89860318640220133897" my_identity_token="7e82bc15-4053-4171-8b40-b03570bf1c38" ]
+10-20 23:04:50.258  3655  3850 I BugleDataModel: SubscriptionsTracker: insertSelfParticipant. participantId: 2, selfParticipantId: 2, subId: 1
+10-20 23:04:50.259  3655  3910 I RcsAvailabilityCache: Cached availability not found for simId: redacted-pii:sim_id[chars:20,last3:897]
+10-20 23:04:50.276  3655  3850 I Bugle   : CountryCodeDetector: updateSmsNetworkCountry from default subscription network country. detected country: us
+10-20 23:04:50.306  1638  2080 I xnl     : (REDACTED) setNavBarVisible: %s
+10-20 23:04:50.309  1638  2080 I tkz     : (REDACTED) TNG:MA active state changed to %s
+10-20 23:04:50.311  3655  3910 W Bugle   : MobileConfigurationRetriever: Cannot find configuration from the current mobileConfigurationDataId
+10-20 23:04:50.312  3655  3910 W Bugle   : MobileConfigurationRetriever: config is not cached when running on background thread.
+10-20 23:04:50.312  3655  3910 W Bugle   : eoex: FULL
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at chgq.f(PG:281)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at chgq.c(PG:55)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at cmjh.d(PG:45)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at cmjh.b(PG:10)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at cmuz.o(PG:9)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at cmuz.b(PG:82)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at cktk.u(PG:271)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at cktk.i(PG:2)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at cktr.p(PG:3)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at cnce.y(PG:62)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at cnce.m(PG:86)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at com.google.android.apps.messaging.rcsprovisioning.RcsProvisioningBroadcastReceiver.h(PG:183)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at cnup.run(PG:7)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at elst.run(PG:21)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at esfe.a(PG:3)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at eseb.run(PG:19)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at esff.run(PG:5)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at dubu.run(PG:7)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at dubb.run(PG:6)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:50.312  3655  3910 W Bugle   : 	at ducv.run(PG:61)
+10-20 23:04:50.317  3655  3803 W ConfigurationContentLdr: ContentProvider query returned null cursor, using default values
+10-20 23:04:50.323  1638  2080 E tkr     : Calling getConfiguration() before NgaConfigurationManager is initialized.
+10-20 23:04:50.323  1638  2080 E tkr     : fkpr: MEDIUM
+10-20 23:04:50.323  1638  2080 E tkr     : 	at tkr.c(PG:29)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at vaw.hb(PG:3)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at uue.a(PG:4)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at uue.R(PG:1)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at uuk.V(PG:11)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at uuk.hd(PG:21)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at wkx.a(PG:9)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at yng.hl(PG:5)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at yni.a(PG:27)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at dnqq.call(PG:34)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at fmrp.run(PG:3)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at fmrq.run(PG:68)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at djui.run(PG:5)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at fler.run(PG:44)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at djtz.run(PG:42)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:50.323  1638  2080 E tkr     : 	at djvl.run(PG:62)
+10-20 23:04:50.324  3655  3910 I Bugle   : MobileConfigurationRetriever: Cannot retrieve rcs onboarding flags in configuration right now, return default flags instead.
+10-20 23:04:50.324  3655  3910 I Bugle   : eoex: MEDIUM
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at chgq.c(PG:110)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at cmjh.d(PG:45)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at cmjh.b(PG:10)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at cmuz.o(PG:9)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at cmuz.b(PG:82)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at cktk.u(PG:271)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at cktk.i(PG:2)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at cktr.p(PG:3)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at cnce.y(PG:62)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at cnce.m(PG:86)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at com.google.android.apps.messaging.rcsprovisioning.RcsProvisioningBroadcastReceiver.h(PG:183)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at cnup.run(PG:7)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at elst.run(PG:21)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at esfe.a(PG:3)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at eseb.run(PG:19)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at esff.run(PG:5)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at dubu.run(PG:7)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:04:50.324  3655  3910 I Bugle   : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:04:50.329   643   751 I RoleService: Granting default roles...
+10-20 23:04:50.335  3655  3850 I BugleDataModel: SubscriptionsTracker bindToTrackingMap bound participants: [ParticipantId=1 subId=-1, ParticipantId=2 subId=1]
+10-20 23:04:50.336   643  1108 W SignedPackage: Package doesn't have required signing certificate: com.google.android.retaildemo
+10-20 23:04:50.336   643  1108 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+10-20 23:04:50.337  3655  3850 I BugleDataModel: set orderedRowIdAndTokenPairs: [rowId=2 subId= 1 token=7e82bc15-4053-4171-8b40-b03570bf1c38, rowId=1 subId= -1 token=feac90ef-1e22-4d1f-9aba-dc9770612cc2]
+10-20 23:04:50.338   643  1108 W SignedPackage: Package doesn't have required signing certificate: com.google.android.apps.work.clouddpc
+10-20 23:04:50.338  3655  3850 I BugleConnectivity: Connection state change: SIM loaded, data connection: UNKNOWN, manual connection eligibility: false, ntn roaming: false
+10-20 23:04:50.338  3655  3910 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false] [CONTEXT thread_id=95 ]
+10-20 23:04:50.338  3655  3850 I BugleSatellite: Attempting to register registerForCarrierRoamingNtnModeChanged listener
+10-20 23:04:50.339  3655  3910 I BugleRcsProvisioning: RcsAvailability configuration availability and enabled status: simId: redacted-pii:sim_id[chars:20,last3:897], SipConnectionType: DUAL_REG, isConfigurationAvailableAndEnabled: false
+10-20 23:04:50.339  3655  3910 I BugleRcsProvisioning: Checking isConfigServerUrlAvailable without simId because either of the following flag are false, amber_full_launch: true, useMobileConfigurationRetrieverForFlags: false
+10-20 23:04:50.339  3655  3910 I BugleRcsEngine: getConfigServerUrl without simId [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=95 ]
+10-20 23:04:50.340  3655  3910 I BugleRcsEngine: No config URL. RCS not configured for dual-registration. [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=95 ]
+10-20 23:04:50.342  3655  3910 I BugleRcsProvisioning: updateAvailabilityForRcsProvisioningId. SimId: redacted-pii:sim_id[chars:20,last3:897], currentAvailability: 1, newAvailability: 2, hint: SIM_SWAP
+10-20 23:04:50.342  3655  3910 I RcsProvisioningManager: Receive onRcsAvailabilityUpdate, SIM = redacted-pii:sim_id[chars:20,last3:897], availability = RcsAvailability{mAvailability=DISABLED_VIA_GSERVICES (RCS is disabled for this carrier by Google)}
+10-20 23:04:50.343  1638  2080 E tkr     : Calling getConfiguration() before NgaConfigurationManager is initialized.
+10-20 23:04:50.343  1638  2080 E tkr     : fkpr: MEDIUM
+10-20 23:04:50.343  1638  2080 E tkr     : 	at tkr.c(PG:29)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at uuh.hb(PG:3)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at uue.a(PG:4)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at uue.R(PG:1)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at uuk.V(PG:11)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at uuk.hd(PG:21)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at wkx.a(PG:9)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at yng.hl(PG:5)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at yni.a(PG:27)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at dnqq.call(PG:34)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at fmrp.run(PG:3)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at fmrq.run(PG:68)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at djui.run(PG:5)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at fler.run(PG:44)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at djtz.run(PG:42)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at djvl.run(PG:62)
+10-20 23:04:50.343  1638  2080 E tkr     : Calling getConfiguration() before NgaConfigurationManager is initialized.
+10-20 23:04:50.343  1638  2080 E tkr     : fkpr: MEDIUM
+10-20 23:04:50.343  1638  2080 E tkr     : 	at tkr.c(PG:29)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at tqq.hb(PG:3)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at uue.a(PG:4)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at uue.R(PG:1)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at uuk.V(PG:11)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at uuk.hd(PG:21)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at wkx.a(PG:9)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at yng.hl(PG:5)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at yni.a(PG:27)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at dnqq.call(PG:34)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at fmrp.run(PG:3)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at fmrq.run(PG:68)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at djui.run(PG:5)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at fler.run(PG:44)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at djtz.run(PG:42)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:50.343  1638  2080 E tkr     : 	at djvl.run(PG:62)
+10-20 23:04:50.346  3655  3777 I RcsProvisioningManager: Cannot notify RcsVerifiedPhoneNumberListener because current availability is DISABLED_VIA_GSERVICES instead of AVAILABLE.
+10-20 23:04:50.347  2303  2485 I GmsDebugLogger: [73] 1801
+10-20 23:04:50.348  3655  3910 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false] [CONTEXT thread_id=95 ]
+10-20 23:04:50.349  3655  3910 I BugleRcsEngine: Restart provisioning: 7 [CONTEXT log_prefix="provisioning" thread_id=95 ]
+10-20 23:04:50.349  3655  3910 I BugleRcsEngine: RcsAvailabilityLogWorkerScheduler is cancelled [CONTEXT thread_id=95 ]
+10-20 23:04:50.350  3655  3910 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.rcsprovisioning.RcsProvisioningBroadcastReceiver@31a1f61
+10-20 23:04:50.350  3655  3793 D WM-GreedyScheduler: Ignoring {WorkSpec: 0fe54e10-28cb-4ad0-823c-a340f3c0657c}. Requires device idle.
+10-20 23:04:50.350  3655  3793 D WM-GreedyScheduler: Ignoring {WorkSpec: 013a35ea-bb8c-414f-9a5c-af2c0d1fe6db}. Requires device idle.
+10-20 23:04:50.351  1638  2080 E tkr     : Calling getConfiguration() before NgaConfigurationManager is initialized.
+10-20 23:04:50.351  1638  2080 E tkr     : fkpr: MEDIUM
+10-20 23:04:50.351  1638  2080 E tkr     : 	at tkr.c(PG:29)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at uhc.hb(PG:3)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at uue.a(PG:4)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at uue.R(PG:1)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at uuk.V(PG:11)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at uuk.hd(PG:21)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at wkx.a(PG:9)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at yng.hl(PG:5)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at yni.a(PG:27)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at dnqq.call(PG:34)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at fmrp.run(PG:3)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at fmrq.run(PG:68)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at djui.run(PG:5)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at fler.run(PG:44)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at djtz.run(PG:42)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:50.351  1638  2080 E tkr     : 	at djvl.run(PG:62)
+10-20 23:04:50.351  1638  2080 I tol     : Disconnecting from SysUi, flag disabled [IVR-C]
+10-20 23:04:50.351  1638  2080 I tol     : (REDACTED) Disconnecting from SysUi, dictation ineligible. hasSubscribed=%s [IVR-C]
+10-20 23:04:50.352  3655  3777 I RcsProvisioningManager: CommonRcsProvisioningChangeListenerHandler.notifyListener : Notify RcsProvisioningChangeListener deym@2a78174 onRcsProvisioningChange, SIM = redacted-pii:sim_id[chars:35,last3:97)], available rcs provisioning ids  =
+10-20 23:04:50.352  3655  3848 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : availability is updated to RCS is disabled for this carrier by Google, lastAvailabilityLocal is null, simId hash = 8233018065341670324, simId = redacted-pii:sim_id[chars:20,last3:897], isPev3Enabled = true
+10-20 23:04:50.355  3655  3908 I RcsProvisioningManager: AvailabilityObserver.onUpdate : Notify RcsAvailabilityListener crrt@3f41561 onRcsAvailabilityUpdate, SIM = redacted-pii:sim_id[chars:20,last3:897], availability = 2
+10-20 23:04:50.356  3655  3766 I RcsProvisioningManager: CommonRcsProvisioningChangeListenerHandler.notifyListener : Notify RcsProvisioningChangeListener chop@e7ba69d onRcsProvisioningChange, SIM = redacted-pii:sim_id[chars:35,last3:97)], available rcs provisioning ids  =
+10-20 23:04:50.356  2303  2485 W ZappDownloader: No successful Zapp module downloads for requested modules [MlkitOcrCommon.optional:252635100800:permitMetered, Wasmlibs.optional:252635100800:permitMetered, MlkitBarcodeUi.optional:252635100800:permitMetered, VisionBarcode.optional:252635100800:permitMetered, VisionOcr.optional:252635100000:permitMetered, Appsearch.optional:252635100800:permitMetered, TfliteDynamiteDynamite.integ:264010405100800].
+10-20 23:04:50.357  2303  2485 I GmsDebugLogger: [30] [MlkitOcrCommon.optional:252635100800],[Wasmlibs.optional:252635100800],[MlkitBarcodeUi.optional:252635100800],[VisionBarcode.optional:252635100800],[VisionOcr.optional:252635100000],[Appsearch.optional:252635100800],[TfliteDynamiteDynamite.integ:264010405100800]
+10-20 23:04:50.360  3655  3841 I BugleConnectivity: Connection state change: SubID = 1 onCarrierRoamingNtnModeChanged (false), data connection: UNKNOWN, manual connection eligibility: false, ntn roaming: false
+10-20 23:04:50.360  3655  3846 I BugleConnectivity: Connection state change: SubID = 1 onCarrierRoamingNtnEligibleStateChanged (false), data connection: UNKNOWN, manual connection eligibility: false, ntn roaming: false
+10-20 23:04:50.360  3655  3846 I BugleConnectivity: Lost eligibility for manual satellite.
+10-20 23:04:50.360  3655  4086 D WM-GreedyScheduler: Ignoring {WorkSpec: 0fe54e10-28cb-4ad0-823c-a340f3c0657c}. Requires device idle.
+10-20 23:04:50.367  3655  4086 D WM-GreedyScheduler: Ignoring {WorkSpec: 013a35ea-bb8c-414f-9a5c-af2c0d1fe6db}. Requires device idle.
+10-20 23:04:50.368  3655  3910 I BugleTransport: Retrieved RCS available simIds: []
+10-20 23:04:50.368  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312df44d8) locale list changing from [] to [en-US]
+10-20 23:04:50.368  3655  3804 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: TACHYGRAM.
+10-20 23:04:50.368  2303  2649 I RecoverableKeyStoreGms: [RecoverableKeyStoreGmsInitOperation] Initializing auth_folsom
+10-20 23:04:50.368  3655  3906 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: DUAL_REGISTRATION.
+10-20 23:04:50.369  3655  3766 I BugleRcsEngine: Cancel All Provisioning work operation result is: SUCCESS, trigger is SIM_SWAP [CONTEXT thread_id=48 ]
+10-20 23:04:50.371  3655  3802 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: SINGLE_REGISTRATION.
+10-20 23:04:50.371  3655  3804 I RcsClientLib: Connecting RcsEngineLifecycleServiceV2
+10-20 23:04:50.371  3655  3766 I RcsClientLib: Connecting RcsEngineLifecycleServiceV2
+10-20 23:04:50.371  3655  3848 I BugleClearcutLogger: qosTierResolver for LOG_SPEC_LEGACY_LOGGING is null. Using DEFAULT QoS tier as there's no specific QoS configuration for this log spec.
+10-20 23:04:50.372  3655  3848 I RcsProvisioningManager: Receive onRcsAvailabilityUpdate, SIM = redacted-pii:sim_id[chars:20,last3:897], availability = RcsAvailability{mAvailability=DISABLED_VIA_GSERVICES (RCS is disabled for this carrier by Google)}
+10-20 23:04:50.372  3655  3847 I RcsProvisioningManager: CommonRcsProvisioningChangeListenerHandler.notifyListener : Notify RcsProvisioningChangeListener chop@e7ba69d onRcsProvisioningChange, SIM = redacted-pii:sim_id[chars:35,last3:97)], available rcs provisioning ids  =
+10-20 23:04:50.372  3655  3848 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : isPreviousDisabled = true, isCurrentDisabled = true, config[simId:redacted-pii:sim_id[chars:20,last3:897]] = [Type: 0, Version: 0, Validity: 0, Last updated: 0, Remaining validity: 0, Reconfiguration requested: false, Messaging technology: SIMPLE_IM, rcsVolteSingleRegistration: false], hasToken: false, isValidAndUpdated: false
+10-20 23:04:50.373  3655  3841 I BugleConnectivity: Notifying listeners of manual satellite eligibility change: false
+10-20 23:04:50.373  3655  3846 I BugleConnectivity: Notifying listeners of manual satellite eligibility change: false
+10-20 23:04:50.373  3655  4086 I RcsProvisioningManager: Cannot notify RcsVerifiedPhoneNumberListener because current availability is DISABLED_VIA_GSERVICES instead of AVAILABLE.
+10-20 23:04:50.374  3655  3910 I RcsProvisioningManager: CommonRcsProvisioningChangeListenerHandler.notifyListener : Notify RcsProvisioningChangeListener deym@2a78174 onRcsProvisioningChange, SIM = redacted-pii:sim_id[chars:35,last3:97)], available rcs provisioning ids  =
+10-20 23:04:50.375  3655  3766 W RcsClientLib: No CS.apk RCS service found. Is RCS running in Bugle?
+10-20 23:04:50.376  3655  3766 I RcsClientLib: shouldUseCarrierServicesJibeService: false, CarrierServices rcs service found: false
+10-20 23:04:50.377  3655  3804 W RcsClientLib: No CS.apk RCS service found. Is RCS running in Bugle?
+10-20 23:04:50.377  2303  2649 I RecoverableKeyStoreGms: [RecoverableKeyStoreGmsInitOperation] Enabling com.google.android.gms.auth.folsom.service.FolsomPublicKeyUpdateService.
+10-20 23:04:50.377  3655  3906 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false] [CONTEXT thread_id=91 ]
+10-20 23:04:50.377  3655  3793 I RcsProvisioningManager: AvailabilityObserver.onUpdate : Notify RcsAvailabilityListener crrt@3f41561 onRcsAvailabilityUpdate, SIM = redacted-pii:sim_id[chars:20,last3:897], availability = 2
+10-20 23:04:50.378  1638  2002 I tkr     : (REDACTED) Nga on-device enabled based on TNG:MA active state: %b
+10-20 23:04:50.379  2217  3852 W EasyUnlock: [HostValidator] Invalid account list. [CONTEXT service_id=234 ]
+10-20 23:04:50.380  2303  3989 I Wear_Controller: Wearable module requires a companion app to be installed.
+10-20 23:04:50.380  2303  3989 I Wear_Controller: onStartup - Wear is not available on this device.
+10-20 23:04:50.380  3655  3804 I RcsClientLib: shouldUseCarrierServicesJibeService: false, CarrierServices rcs service found: false
+10-20 23:04:50.381  3655  3906 I BugleRcsEngine: Skipping provisioning scheduling since RCS is disabled [CONTEXT log_prefix="provisioning" thread_id=91 ]
+10-20 23:04:50.381  3655  3802 I Phlogger: Unable to retrieve flag snapshot for com.google.android.libraries.mobileconfiguration#com.google.android.apps.messaging, using defaults.
+10-20 23:04:50.381  3655  3793 I Phlogger: Shared storage file not found for com.google.android.libraries.mobileconfiguration#com.google.android.apps.messaging
+10-20 23:04:50.385  3240  3547 I DynamiteModule: Considering local module com.google.android.gms.googlecertificates:7 and remote module com.google.android.gms.googlecertificates:7
+10-20 23:04:50.385  3240  3547 I DynamiteModule: Selected local version of com.google.android.gms.googlecertificates
+10-20 23:04:50.385  2303  4278 I Authzen : [AuthZenEventHandler] Handling event: android.intent.action.BOOT_COMPLETED
+10-20 23:04:50.386  3655  4088 D WM-SystemJobScheduler: Scheduling work ID db4a2bf2-19fd-4101-9a10-503f5b9bd225Job ID 1013
+10-20 23:04:50.387  3655  3841 I Bugle   : RcsAvailabilityUtilForProvisioningEngineV2: updateAvailabilityForAllSimsAsync, hint: NO_HINT
+10-20 23:04:50.387  3655  3841 I BugleRcsProvisioning: updateAvailabilityForAllSimsAsync: scheduling updateAvailabilityForRcsProvisioningId call. Hint: NO_HINT, enableWelcomePopupWithoutGoogleTos: false, reshowSuccessPopup: false
+10-20 23:04:50.389  2303  3982 I Auth    : [AuthManaged, PasswordComplexityHelperImpl] Updating password complexity components state.
+10-20 23:04:50.389  2303  3982 I Auth    : [AuthManaged, PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.admin.DeviceAdminReceiver
+10-20 23:04:50.390  3655  3777 I BugleRcsProvisioning: updateRcsAvailabilityForDefaultCallSim: hint: NO_HINT, canReshowWelcomeMessage: false
+10-20 23:04:50.390  1638  2002 I tkr     : (REDACTED) Nga on-device enabled based on TNG:MA active state: %b
+10-20 23:04:50.391  2303  3982 I Auth    : [AuthManaged, PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.ui.SetNewPasswordActivity
+10-20 23:04:50.393  2303  2649 I RecoverableKeyStoreGms: [RecoverableKeyStoreGmsInitOperation] Enabling com.google.android.gms.auth.folsom.service.GcmReceiverService.
+10-20 23:04:50.393  2303  4278 I Authzen : [TransactionCache] Clearing transaction cache
+10-20 23:04:50.396  3655  3849 I RcsClientLib: com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2 connected
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: Actively accessing legacy Rcs services [CONTEXT log_prefix="JibeServiceBase<IRcsEngineController>" thread_id=65 ]
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: java.lang.RuntimeException
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at eimo.a(PG:14)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2.stopAllRcsTransportsExcept(PG:4)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at ckzg.a(PG:8)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at ckze.call(PG:5)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at eluo.a(PG:3)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at elsk.a(PG:13)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at esfd.a(PG:3)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at eseb.run(PG:19)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at esff.run(PG:5)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at dubu.run(PG:7)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at eosd.run(PG:44)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at duem.run(PG:18)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at dubc.run(PG:8)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:50.398  3655  3846 W BugleRcsEngine: 	at ducv.run(PG:61)
+10-20 23:04:50.400  3655  4088 D WM-GreedyScheduler: Ignoring {WorkSpec: 0fe54e10-28cb-4ad0-823c-a340f3c0657c}. Requires device idle.
+10-20 23:04:50.400  3655  4088 D WM-GreedyScheduler: Ignoring {WorkSpec: 013a35ea-bb8c-414f-9a5c-af2c0d1fe6db}. Requires device idle.
+10-20 23:04:50.401  2303  3982 I Auth    : [AuthManaged, AuthManagedModuleInitIntentOperation] enabling com.google.android.gms.auth.managed.ui.EmmActivity
+10-20 23:04:50.402  2303  2485 I ChimeraConfigService: Scheduling checkin for one-off execution between [3300,43201] seconds from now (1792537490402) [CONTEXT service_id=264 ]
+10-20 23:04:50.402  2303  2485 I ChimeraConfigurator: Update complete: success
+10-20 23:04:50.402  3655  4088 I RcsClientLib: com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2 connected
+10-20 23:04:50.403  3655  3804 D WM-GreedyScheduler: Ignoring {WorkSpec: 0fe54e10-28cb-4ad0-823c-a340f3c0657c}. Requires device idle.
+10-20 23:04:50.403  3655  3804 D WM-GreedyScheduler: Ignoring {WorkSpec: 013a35ea-bb8c-414f-9a5c-af2c0d1fe6db}. Requires device idle.
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: Actively accessing legacy Rcs services [CONTEXT log_prefix="JibeServiceBase<IRcsEngineController>" thread_id=66 ]
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: java.lang.RuntimeException
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at eimo.a(PG:14)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2.stopAllRcsTransportsExcept(PG:4)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at ckzg.a(PG:8)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at ckze.call(PG:5)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at eluo.a(PG:3)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at elsk.a(PG:13)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at esfd.a(PG:3)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at eseb.run(PG:19)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at esff.run(PG:5)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at dubu.run(PG:7)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at eosd.run(PG:44)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at duem.run(PG:18)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at dubc.run(PG:8)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:50.404  3655  3841 W BugleRcsEngine: 	at ducv.run(PG:61)
+10-20 23:04:50.406  2303  3982 I Auth    : [AuthManaged, AuthManagedModuleInitIntentOperation] enabling com.google.android.gms.auth.managed.ui.PhoneskyDpcInstallActivity
+10-20 23:04:50.407  3945  3960 I BugleRcsEngine: stopAllRcsTransportsExcept: ignoring stopping the RcsEngine. RcsEngine is still running [CONTEXT log_prefix="RcsEngineProxyImpl:[e95cd8ef-f765]" thread_id=37 ]
+10-20 23:04:50.408  3655  3846 I RcsClientLib: Disconnecting RcsEngineLifecycleServiceV2
+10-20 23:04:50.408  2303  3982 W Auth    : [AuthManaged, SettingsSecurityDeviceOwnerChimeraActivity] device owner: n/a
+10-20 23:04:50.410   643  1842 D CleanupManager: Storing serial number for user 0.
+10-20 23:04:50.410  2303  3982 I Auth    : [AuthManaged, AuthManagedModuleInitIntentOperation] disabling com.google.android.gms.auth.managed.ui.SettingsSecurityDeviceOwnerActivity
+10-20 23:04:50.412  3945  4199 I BugleRcsEngine: stopAllRcsTransportsExcept: ignoring stopping the RcsEngine. RcsEngine is still running [CONTEXT log_prefix="RcsEngineProxyImpl:[e95cd8ef-f765]" thread_id=66 ]
+10-20 23:04:50.413  1535  1822 I .apps.wellbeing: AssetManager2(0x7ef312dfd178) locale list changing from [] to [en-US]
+10-20 23:04:50.415  3655  3841 I RcsClientLib: Disconnecting RcsEngineLifecycleServiceV2
+10-20 23:04:50.419  3655  3847 I MobileConfigurationApi: registerParameters successfully stored 4 parameters
+10-20 23:04:50.422  3655  3847 I BugleClearcutLogger: qosTierResolver for LOG_SPEC_LEGACY_LOGGING is null. Using DEFAULT QoS tier as there's no specific QoS configuration for this log spec.
+10-20 23:04:50.422  3655  3847 I SyncScheduler: scheduling sync for 0 seconds later, policy = REPLACE
+10-20 23:04:50.422  3655  3847 I BugleClearcutLogger: qosTierResolver for LOG_SPEC_LEGACY_LOGGING is null. Using DEFAULT QoS tier as there's no specific QoS configuration for this log spec.
+10-20 23:04:50.425  2303  3982 I Auth    : [AuthManaged, PasswordComplexityHelperImpl] Updating password complexity components state.
+10-20 23:04:50.425  2303  3982 I Auth    : [AuthManaged, PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.admin.DeviceAdminReceiver
+10-20 23:04:50.425  2303  3982 I Auth    : [AuthManaged, PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.ui.SetNewPasswordActivity
+10-20 23:04:50.426  3655  3849 I BugleTransport: Retrieved RCS available simIds: []
+10-20 23:04:50.426  3655  3847 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: TACHYGRAM.
+10-20 23:04:50.426  3655  4088 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: SINGLE_REGISTRATION.
+10-20 23:04:50.427  3655  3847 I BugleTransport: Deregister all SIMs except for SIMs with subIds: [] from chat transport: DUAL_REGISTRATION.
+10-20 23:04:50.428  3655  3804 I RcsClientLib: Connecting RcsEngineLifecycleServiceV2
+10-20 23:04:50.431  3655  3804 W RcsClientLib: No CS.apk RCS service found. Is RCS running in Bugle?
+10-20 23:04:50.432  3655  3849 I RcsClientLib: Connecting RcsEngineLifecycleServiceV2
+10-20 23:04:50.432  3655  3804 I RcsClientLib: shouldUseCarrierServicesJibeService: false, CarrierServices rcs service found: false
+10-20 23:04:50.433  3655  3849 W RcsClientLib: No CS.apk RCS service found. Is RCS running in Bugle?
+10-20 23:04:50.433  3655  3849 I RcsClientLib: shouldUseCarrierServicesJibeService: false, CarrierServices rcs service found: false
+10-20 23:04:50.435  3655  3766 W JobInfo : Requested important-while-foreground flag for job1014 is ignored and takes no effect
+10-20 23:04:50.435  3655  3766 D WM-SystemJobScheduler: Scheduling work ID 8344fd0c-1ba9-4b41-8904-9654ec4d1431Job ID 1014
+10-20 23:04:50.435  3655  3847 I RcsClientLib: com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2 connected
+10-20 23:04:50.437  1638  2002 I egel    : showGestureNav
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: Actively accessing legacy Rcs services [CONTEXT log_prefix="JibeServiceBase<IRcsEngineController>" thread_id=65 ]
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: java.lang.RuntimeException
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at eimo.a(PG:14)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2.stopAllRcsTransportsExcept(PG:4)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at ckzg.a(PG:8)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at ckze.call(PG:5)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at eluo.a(PG:3)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at elsk.a(PG:13)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at esfd.a(PG:3)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at eseb.run(PG:19)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at esff.run(PG:5)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at dubu.run(PG:7)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at eosd.run(PG:44)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at duem.run(PG:18)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at dubc.run(PG:8)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:50.438  3655  3846 W BugleRcsEngine: 	at ducv.run(PG:61)
+10-20 23:04:50.438  1638  2002 I egej    : (REDACTED) setUiHints(hints = %s)
+10-20 23:04:50.442  3945  4199 I BugleRcsEngine: stopAllRcsTransportsExcept: ignoring stopping the RcsEngine. RcsEngine is still running [CONTEXT log_prefix="RcsEngineProxyImpl:[e95cd8ef-f765]" thread_id=66 ]
+10-20 23:04:50.442  3655  3846 I RcsClientLib: Disconnecting RcsEngineLifecycleServiceV2
+10-20 23:04:50.443  3655  3804 I RcsClientLib: com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2 connected
+10-20 23:04:50.444  2217  2451 I .gms.persistent: AssetManager2(0x7ef312dfb558) locale list changing from [] to [en-US]
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: Actively accessing legacy Rcs services [CONTEXT log_prefix="JibeServiceBase<IRcsEngineController>" thread_id=66 ]
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: java.lang.RuntimeException
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at eimo.a(PG:14)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at com.google.android.rcs.client.lifecycle.RcsEngineLifecycleServiceV2.stopAllRcsTransportsExcept(PG:4)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at ckzg.a(PG:8)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at ckze.call(PG:5)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at eluo.a(PG:3)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at elsk.a(PG:13)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at esfd.a(PG:3)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at eseb.run(PG:19)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at esff.run(PG:5)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at dubu.run(PG:7)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at eosd.run(PG:44)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at duem.run(PG:18)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at dubc.run(PG:8)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:50.445  3655  3841 W BugleRcsEngine: 	at ducv.run(PG:61)
+10-20 23:04:50.445  3240  3547 W GoogleCertificates: GoogleCertificates has been initialized already
+10-20 23:04:50.445  3945  3960 I BugleRcsEngine: stopAllRcsTransportsExcept: ignoring stopping the RcsEngine. RcsEngine is still running [CONTEXT log_prefix="RcsEngineProxyImpl:[e95cd8ef-f765]" thread_id=37 ]
+10-20 23:04:50.446  3655  3841 I RcsClientLib: Disconnecting RcsEngineLifecycleServiceV2
+10-20 23:04:50.454  3655  3777 I BugleRcsEngine: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false] [CONTEXT thread_id=57 ]
+10-20 23:04:50.454  3655  3777 I BugleRcsProvisioning: RcsAvailability configuration availability and enabled status: simId: redacted-pii:sim_id[chars:20,last3:897], SipConnectionType: DUAL_REG, isConfigurationAvailableAndEnabled: false
+10-20 23:04:50.454  3655  3777 I BugleRcsProvisioning: Checking isConfigServerUrlAvailable without simId because either of the following flag are false, amber_full_launch: true, useMobileConfigurationRetrieverForFlags: false
+10-20 23:04:50.455  3655  3777 I BugleRcsEngine: getConfigServerUrl without simId [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=57 ]
+10-20 23:04:50.455  3655  3777 I BugleRcsEngine: No config URL. RCS not configured for dual-registration. [CONTEXT log_prefix="ProvisioningServerUtil" thread_id=57 ]
+10-20 23:04:50.460   643  1842 I RecoverableKeyStoreMgr: Initialized secret types.
+10-20 23:04:50.460  3655  3655 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=8344fd0c-1ba9-4b41-8904-9654ec4d1431, generation=0)
+10-20 23:04:50.460  3240  3263 I fkev    : Shared storage file not found for com.google.android.gms.gmsplatform#com.google.android.gms
+10-20 23:04:50.461  3655  3766 D WM-GreedyScheduler: Ignoring {WorkSpec: 0fe54e10-28cb-4ad0-823c-a340f3c0657c}. Requires device idle.
+10-20 23:04:50.461  3655  3766 D WM-GreedyScheduler: Ignoring {WorkSpec: 013a35ea-bb8c-414f-9a5c-af2c0d1fe6db}. Requires device idle.
+10-20 23:04:50.461  3655  3766 D WM-GreedyScheduler: Starting tracking for 8344fd0c-1ba9-4b41-8904-9654ec4d1431
+10-20 23:04:50.461  3240  3263 I fkev    : Unable to retrieve flag snapshot for com.google.android.gms.gmsplatform#com.google.android.gms, using defaults.
+10-20 23:04:50.462  2303  2485 I GmsModuleFndr: Beginning GMS chimera module scan
+10-20 23:04:50.463  3655  3766 D WM-Processor: pst: processing WorkGenerationalId(workSpecId=8344fd0c-1ba9-4b41-8904-9654ec4d1431, generation=0)
+10-20 23:04:50.463  2303  3982 I ProximityAuth: [FeatureLoader] auth_easyunlock module load status: 1
+10-20 23:04:50.464  3655  3766 D MddListenableWorkerFactory: createWorker for class: com.google.android.libraries.communications.mobileconfiguration.sync.SyncWorker
+10-20 23:04:50.465  3655  3655 D WM-WorkerWrapper: Starting work for com.google.android.libraries.communications.mobileconfiguration.sync.SyncWorker
+10-20 23:04:50.465  3655  3655 I SyncHelper: [fad4ebd9-ccbd-4b69-b209-5803242ceaff] sync started, workRequestId:8344fd0c-1ba9-4b41-8904-9654ec4d1431
+10-20 23:04:50.466  3655  3655 I BugleClearcutLogger: qosTierResolver for LOG_SPEC_LEGACY_LOGGING is null. Using DEFAULT QoS tier as there's no specific QoS configuration for this log spec.
+10-20 23:04:50.469  3655  3849 D WM-ConstraintTracker: pxn: initial state = NetworkState(isConnected=true, isValidated=true, isMetered=false, isNotRoaming=true)
+10-20 23:04:50.469  3655  3849 D WM-NetworkStateTracker: Registering network callback
+10-20 23:04:50.470  2303  2485 I ModuleSetResolution: Computing pending module set with APKs: [[AdsFdrDynamite.integ:250505301100000], [Cronetdynamite:252635260800], [Dynamiteloader:252635260000], [Dynamitemodulesa:252635260000], [Dynamitemodulesc:252635260000], [Googlecertificates:252635260000], [Mapsdynamite:252635260000], [Measurementdynamite:252635260000]]
+10-20 23:04:50.472  2303  2485 I ModuleSetResolution: Pending container module APKs: []
+10-20 23:04:50.472  2303  2485 I ModuleSetResolution: Pending non-container module APKs: []
+10-20 23:04:50.475   643  1881 D ConnectivityService: requestNetwork for uid/pid:10145/3655 activeRequest: null callbackRequest: 148 [NetworkRequest [ TRACK_DEFAULT id=149, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10145 RequestorUid: 10145 RequestorPkg: com.google.android.apps.messaging UnderlyingNetworks: Null] ], NetworkRequest [ REQUEST id=150, [ Transports: SATELLITE Capabilities: INTERNET&TRUSTED&NOT_VCN_MANAGED Uid: 10145 RequestorUid: 10145 RequestorPkg: com.google.android.apps.messaging UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647 isUidTracked: false declaredMethods: AVAIL|LOST|NC
+10-20 23:04:50.478  3655  3766 D WM-GreedyScheduler: Constraints met: Scheduling work ID WorkGenerationalId(workSpecId=8344fd0c-1ba9-4b41-8904-9654ec4d1431, generation=0)
+10-20 23:04:50.479  3655  3766 D WM-Processor: Work WorkGenerationalId(workSpecId=8344fd0c-1ba9-4b41-8904-9654ec4d1431, generation=0) is already enqueued for processing
+10-20 23:04:50.483   643   920 D ConnectivityService: NetReassign [149 : null → 100] [c 0] [a 0] [i 1]
+10-20 23:04:50.483  3655  4279 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=12000Kbps LinkDnBandwidth>=30000Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 54Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Frequency: 2437MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -50 UnderlyingNetworks: Null]
+10-20 23:04:50.487  3655  3846 I CronetEngineBuilderFact: Found Cronet providers: Google-Play-Services-Cronet-Provider, App-Packaged-Cronet-Provider, Fallback-Cronet-Provider
+10-20 23:04:50.489  3655  3846 I CronetEngineBuilderFact: Selected Cronet provider is App-Packaged-Cronet-Provider, version 135.0.7012.3
+10-20 23:04:50.494  4034  4122 I TestRunner: finished: importsAreIdempotentAndSameTitlesFromDifferentComposersStayDistinct(com.opus.piano.CatalogDatabaseTest)

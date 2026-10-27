@@ -1,0 +1,14 @@
+{
+  "source": "4d245b46936d640740799dfcc6e8d61f3d44b249",
+  "actualNavHostTabTransitions": [
+    "Library",
+    "Discover",
+    "Practice",
+    "Profile",
+    "Home"
+  ],
+  "actualAndroidBack": 2,
+  "realTalkBackDoubleTapActivation": "UNVERIFIED:retained unsuccessful injection attempts;native exactly-once actions and actual TalkBack focus are separately verified",
+  "noPracticeStarted": true,
+  "radioActivation": false
+}

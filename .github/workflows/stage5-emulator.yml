@@ -123,7 +123,7 @@ jobs:
           avd-name: stage5-ci
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
-          script: bash scripts/ci_stage6_instrumentation.sh
+          script: bash scripts/ci_android_instrumentation.sh
       - name: Summarize instrumentation results
         if: always()
         run: |

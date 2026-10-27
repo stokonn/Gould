@@ -1,0 +1,442 @@
+10-20 23:05:18.168  4034  4122 I TestRunner: started: historicalReadersAndV4WriterKeepFieldsAndNoStaleLocalAnchors(com.opus.piano.Stage3aBackupTest)
+10-20 23:05:18.176  2217  2737 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:7 result: 1 elapsed_millis: 80 uptime_millis: 80 exec_start_elapsed_seconds: 143 [CONTEXT service_id=218 ]
+10-20 23:05:18.197  2303  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:18.198  2303  4676 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:18.199  2303  4640 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:18.199  2303  4640 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:18.199  2303  4677 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:18.200  2303  4677 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:18.200  2303  4633 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:18.200  2303  4633 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:18.201  2303  4633 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:18.201  2303  4633 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:18.201  2303  4633 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:18.201  2303  4525 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:18.201  2303  4525 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.ulr [CONTEXT service_id=340 ]
+10-20 23:05:18.201  2303  4525 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:18.202  2217  4639 I PTCommittedOperation: Receive new configuration for com.google.android.gms.ulr
+10-20 23:05:18.205  2217  4274 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:18.270  4034  4042 W com.opus.piano: Suspending all threads took: 18.299ms
+10-20 23:05:18.299   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:05:18.302   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:05:18.302   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={10150} in 3ms
+10-20 23:05:18.302   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:05:18.303   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:05:18.303   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={20150} in 0ms
+10-20 23:05:18.314  2217  4683 I GCoreUlr: Unbound from all signal providers.
+10-20 23:05:18.333  2217  2217 I GCoreUlr: Unbound from all signal providers.
+10-20 23:05:18.334  2217  2217 I GCoreUlr: Stopping handler for UlrDispSvcFast
+10-20 23:05:18.338  2303  4648 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:18.338  2303  4648 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:18.338  2303  4641 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:18.338  2303  4641 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:18.339  2303  4641 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:18.340  2303  4648 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:18.340  2303  4676 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:18.340  2303  4676 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:18.340  2303  4676 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.appinvite [CONTEXT service_id=340 ]
+10-20 23:05:18.341  2303  4675 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:18.341  2303  4675 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:18.342  2303  4675 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:18.342  2303  4675 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:18.344  2217  4662 I PTCommittedOperation: Receive new configuration for com.google.android.gms.appinvite
+10-20 23:05:18.345  2217  4663 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:18.346  2303  4634 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:18.373   449   449 W Zygote  : forkRepeatedly terminated due to non-simple command
+10-20 23:05:18.373   449   449 D Zygote  : mbuffer starts with 1 , nice name is , mEnd = 35, mNext = 35, mLinesLeft = 0, mFd = 6
+10-20 23:05:18.443  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: allSubInfos.size()=1
+10-20 23:05:18.443  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: newSubsInfoListPerPriority.size()=0
+10-20 23:05:18.443  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: no satellite subscription available
+10-20 23:05:18.496  4034  4041 I com.opus.piano: Compiler allocated 4713KB to compile java.lang.Object com.opus.piano.data.HistoricalBackup$validateTables$2.invokeSuspend(java.lang.Object)
+10-20 23:05:18.522  2054  3229 I HttpGrpcBindableService: [pfd-write] DOWNLOAD COMPLETE: Downloaded 20492528 bytes from URL [https://storage.googleapis.com/captions/emotion_recognition_v4.zip].
+10-20 23:05:18.523  2054  3229 W System.err: val in interceptor: null
+10-20 23:05:18.531  1610  2631 I AstreaHttpConnection: DOWNLOAD COMPLETE: Downloaded unknown number of bytes from https://storage.googleapis.com/captions/emotion_recognition_v4.zip.
+10-20 23:05:18.556  2303  4634 I ActiveUnlock_FeatureEna: enableSetupEnhancements: true isAllowlisted: false hash: 7984DE9EEFC53253D0A8B7E4F972A04B1ED2E77C1F8AFD2BF2B94E6EB2D160CA
+10-20 23:05:18.557  2303  4634 W ChimeraUtils: Module com.google.android.gms.activeunlock_primary missing resource null(0)
+10-20 23:05:18.558  2303  4634 I ActiveUnlock_FeatureEna: enableSetupEnhancements: true isAllowlisted: false hash: 7984DE9EEFC53253D0A8B7E4F972A04B1ED2E77C1F8AFD2BF2B94E6EB2D160CA
+10-20 23:05:18.577  1610  1943 I SP.AiAi : Download stopped: captions_i18n_v0_mandatory:emotion_recognition_v4, succeeded, size: 20492528
+10-20 23:05:18.587  2054  2575 W System.err: Seeding context with ref: 262997529
+10-20 23:05:18.588  2054  2575 I HttpGrpcBindableService: Downloading requested for URL 'https://storage.googleapis.com/captions/soda-en-US-v3056.zip'
+10-20 23:05:18.634  1610  1943 I SP.AiAi : Scheduling: download stopped, 0 started, 0 paused, 0 scheduled, 7 pending: manifests:kg_collections_table-21051103 {W:C:I:l, bg}, manifests:spelling_correction-22110320 {W:C:I:l, bg}, manifests:text-classifier-annotator-272525175 {W:C:I:l, bg}, manifests:text-classifier-actions-1140547708 {W:C:I:l, bg}, manifests:text-classifier-langid-1941001461 {W:C:I:l, bg}, captions_i18n_v0_en-US:asr_en-US_v3056 @ {W:b:u:l, bg}, captions_i18n_v0_en-US:input_predictions_en-US_v4 @ {W:b:u:l, bg}
+10-20 23:05:18.645  4034  4146 I com.opus.piano: IncrementDisableThreadFlip blocked for 6.685ms
+10-20 23:05:18.655  2054  2575 I HttpGrpcBindableService: Responding with header information for URL 'https://storage.googleapis.com/captions/soda-en-US-v3056.zip'
+10-20 23:05:18.659  1610  2637 I AstreaHttpConnection: Started download from url='https://storage.googleapis.com/captions/soda-en-US-v3056.zip'
+10-20 23:05:18.694  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: allSubInfos.size()=1
+10-20 23:05:18.694  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: newSubsInfoListPerPriority.size()=0
+10-20 23:05:18.694  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: no satellite subscription available
+10-20 23:05:18.739   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:05:18.746   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:05:18.746   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={10140} in 8ms
+10-20 23:05:18.747   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:05:18.754   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:05:18.754   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={20140} in 8ms
+10-20 23:05:18.787   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:05:18.789   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:05:18.789   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={10196} in 2ms
+10-20 23:05:18.929   446   476 I netd    : tetherGetStats() -> {[]} <0.25ms>
+10-20 23:05:18.950   446   476 I netd    : bandwidthSetGlobalAlert(2097152) <0.09ms>
+10-20 23:05:18.952   446   476 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.50ms>
+10-20 23:05:18.954   446   476 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.35ms>
+10-20 23:05:18.966   643   912 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:643/1000(android) for DataUsageRequest [ requestId=10, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, thresholdInBytes=3438177 ] accessLevel:3
+10-20 23:05:18.966   643  1004 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:643/1000(android) for DataUsageRequest [ requestId=9, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, thresholdInBytes=3440899 ] accessLevel:3
+10-20 23:05:18.986   446   476 I netd    : tetherGetStats() -> {[]} <0.25ms>
+10-20 23:05:18.988   446   476 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.54ms>
+10-20 23:05:19.002   446   476 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.64ms>
+10-20 23:05:19.011  2303  4642 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:19.017  2303  4642 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:19.017  2303  4642 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:19.018  2303  4648 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:19.019  2303  3526 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:19.021  2303  4648 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:19.039  2217  4650 I PTCommittedOperation: Receive new configuration for com.google.android.gms.feedback
+10-20 23:05:19.040  2217  4663 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:19.044  2303  3526 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:19.044  2303  3526 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:19.044  2303  3526 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.feedback [CONTEXT service_id=340 ]
+10-20 23:05:19.050  2303  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:19.050  2303  4675 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:19.051  2303  4673 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:19.051  2303  4673 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:19.051  2303  4673 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:19.363  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: allSubInfos.size()=1
+10-20 23:05:19.363  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: newSubsInfoListPerPriority.size()=0
+10-20 23:05:19.363  1152  1427 D SatelliteController: evaluateESOSProfilesPrioritization: no satellite subscription available
+10-20 23:05:19.418  2217  2270 I .gms.persistent: Waiting for a blocking GC ProfileSaver
+10-20 23:05:19.499  2217  4683 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.clearcut.uploader.QosUploaderService finished executing. cause:5 result: 1 elapsed_millis: 4644 uptime_millis: 4644 exec_start_elapsed_seconds: 140 [CONTEXT service_id=218 ]
+10-20 23:05:19.698  2303  4634 I AdservicesStatusTask: scheduling task by handle intent
+10-20 23:05:19.813  2303  4676 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:19.814  2217  4652 I PTCommittedOperation: Receive new configuration for com.google.android.gms.analytics
+10-20 23:05:19.815  2217  4652 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:19.818  2303  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:19.819  2303  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:19.821  2303  4673 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:19.822  2303  4673 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:19.824  2303  4648 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:19.826  2303  4677 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:19.827  2303  4677 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:19.827  2303  4677 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.analytics [CONTEXT service_id=340 ]
+10-20 23:05:19.828  2303  4641 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:19.829  2303  4641 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:19.829  2303  4641 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:19.829  2303  4641 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:19.832  2303  4642 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:19.978  2217  2270 I .gms.persistent: WaitForGcToComplete blocked ProfileSaver on Background for 560.325ms
+10-20 23:05:20.020  2217  4652 W .gms.persistent: Long monitor contention with owner [com.google.android.gms.chimera.container.intentoperation.PersistentIntentOperationChimeraService-Executor] processing com.google.android.gms.common.config.PhenotypeUpdateOperation for action com.google.android.gms.phenotype.UPDATE (4665) at void vzd.run()(:com.google.android.gms@252635038@25.26.35 (260800-783060121):67) waiters=0 in void vzd.run() for 204ms
+10-20 23:05:20.044  1598  1703 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.044  1598  1703 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Locked by thread fg]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.044  1598  1703 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.044  1598  1703 D PickerDataLayer: Cloud provider allowlist was changed, and the current cloud provider is no longer on the allowlist. Allowlist: [com.google.android.apps.photos] Current Provider: null
+10-20 23:05:20.044  1598  1703 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.044  1598  1703 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Locked by thread fg]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.044  1598  1703 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.050  1598  1654 I MediaProvider: Changed PhotoPickerGetContentActivity component state to STATE_ENABLED ( 1 )
+10-20 23:05:20.053  2677  2677 D PhotopickerDeviceConfigReceiver: onReceive: will evaluate Photopicker components with new DeviceConfig.
+10-20 23:05:20.054  2677  2677 D PhotopickerDeviceConfigReceiver: Setting true state for com.android.photopicker.MainActivity
+10-20 23:05:20.058  2677  2677 D PhotopickerDeviceConfigReceiver: Setting true state for com.android.photopicker.PhotopickerGetContentActivity
+10-20 23:05:20.059  2677  2677 D PhotopickerDeviceConfigReceiver: Setting true state for com.android.photopicker.PhotopickerUserSelectActivity
+10-20 23:05:20.069   446   476 I netd    : tetherGetStats() -> {[]} <0.42ms>
+10-20 23:05:20.089  1598  1654 I MediaProvider: Changed PhotoPickerActivity component state to STATE_ENABLED ( 1 )
+10-20 23:05:20.089  1598  1654 I MediaProvider: Changed PhotoPickerUserSelectActivity component state to STATE_ENABLED ( 1 )
+10-20 23:05:20.089  1598  1654 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.089  1598  1654 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Locked by thread com.android.providers.media.internal.modules.utils.BackgroundThread]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.111   446   476 I netd    : tetherGetStats() -> {[]} <0.24ms>
+10-20 23:05:20.126  4230  4239 W opus.piano.test: Cleared Reference was only reachable from finalizer (only reported once)
+10-20 23:05:20.154   446   476 I netd    : bandwidthSetGlobalAlert(2097152) <0.09ms>
+10-20 23:05:20.175  1598  1654 D CloudProviderUtils: Available CloudMediaProvider-s: [CloudProviderInfo{authority='com.google.android.apps.photos.cloudpicker', pkg='com.google.android.apps.photos', uid=10161}]
+10-20 23:05:20.175  1598  1654 I PickerSyncController: Only 1 cloud provider found, hence com.google.android.apps.photos.cloudpicker is the default
+10-20 23:05:20.178  1598  1654 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Locked by thread com.android.providers.media.internal.modules.utils.BackgroundThread]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.178  1598  1654 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Locked by thread com.android.providers.media.internal.modules.utils.BackgroundThread]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.178  1598  1654 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Locked by thread com.android.providers.media.internal.modules.utils.BackgroundThread]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.178  1598  1654 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Locked by thread com.android.providers.media.internal.modules.utils.BackgroundThread]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.178  1598  1654 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Locked by thread com.android.providers.media.internal.modules.utils.BackgroundThread]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.182  1598  1654 D PickerSyncController: Updated cloud provider to: com.google.android.apps.photos.cloudpicker
+10-20 23:05:20.182  1598  1654 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Locked by thread com.android.providers.media.internal.modules.utils.BackgroundThread]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+10-20 23:05:20.184  1598  1654 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Locked by thread com.android.providers.media.internal.modules.utils.BackgroundThread]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.185  1598  1654 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Locked by thread com.android.providers.media.internal.modules.utils.BackgroundThread]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.196  1610  2109 I SP.AiAi : Sync for captions_i18n_v0_mandatory succeeded in 6119 ms: {added: [emotion_recognition_v4, sound_recognition_v7], removed: [sound_recognition_v1], metadata: false
+10-20 23:05:20.228  1598  1654 D PickerNotificationSender: Sending a notification for available providers update
+10-20 23:05:20.230  1598  1654 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Locked by thread com.android.providers.media.internal.modules.utils.BackgroundThread]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.231  1598  1654 D PickerSyncController: Initialized cloud provider to: com.google.android.apps.photos.cloudpicker
+10-20 23:05:20.231  1598  1654 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@7eecbbe[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-20 23:05:20.236  1598  1654 I MediaApplication: PhotoPickerSettingsActivity is now enabled
+10-20 23:05:20.252  1610  2109 I SP.AiAi : GC for 'captions_i18n_v0_mandatory' (10) with ttl of 0 ms took 0 ms (0/0/0)
+10-20 23:05:20.254  1610  2109 I AiAiNowPlaying: Superpacks changed. Refreshing FA controller
+10-20 23:05:20.258  1610  3239 I AiAiCaptions: downloadSuperpack(): Sync of superpack 'captions_i18n_v0_mandatory' version 20240825 was completed but currently using active version 20210623
+10-20 23:05:20.258  1610  3239 I AiAiCaptions: downloadSuperpack(): Successfully downloaded superpack 'captions_i18n_v0_mandatory' version 20240825.
+10-20 23:05:20.310  1598  1654 I SyncWorkManager: Scheduling periodic proactive syncs
+10-20 23:05:20.323  1610  1943 E SP.Service.AiAi: captions_i18n_v0_mandatory is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:20.334  2217  4652 I WestworldConfigOp: Received westworld committed action [CONTEXT service_id=251 ]
+10-20 23:05:20.382  1598  1746 W JobInfo : Requested important-while-foreground flag for job1 is ignored and takes no effect
+10-20 23:05:20.383  1598  1746 D WM-SystemJobScheduler: Scheduling work ID 075f6dd9-eca7-43f6-93ee-cbdd333da2ffJob ID 1
+10-20 23:05:20.410  1598  1746 D WM-GreedyScheduler: Ignoring {WorkSpec: 075f6dd9-eca7-43f6-93ee-cbdd333da2ff}. Requires device idle.
+10-20 23:05:20.450  1598  1654 I SyncWorkManager: Scheduling periodic picker album data resets
+10-20 23:05:20.457  1598  1746 W JobInfo : Requested important-while-foreground flag for job2 is ignored and takes no effect
+10-20 23:05:20.457  1598  1746 D WM-SystemJobScheduler: Scheduling work ID 796b54b1-78eb-4702-bd07-49c1fafa5015Job ID 2
+10-20 23:05:20.463  1598  1746 D WM-GreedyScheduler: Ignoring {WorkSpec: 075f6dd9-eca7-43f6-93ee-cbdd333da2ff}. Requires device idle.
+10-20 23:05:20.463  1598  1746 D WM-GreedyScheduler: Ignoring {WorkSpec: 796b54b1-78eb-4702-bd07-49c1fafa5015}. Requires device idle.
+10-20 23:05:20.464  1598  1654 I TranscodeHelper: Empty transcode compat stale
+10-20 23:05:20.464  1598  1654 I TranscodeHelper: Parsed 0 packages from resource
+10-20 23:05:20.464  1598  1654 I TranscodeHelper: Parsed 8 packages from device config
+10-20 23:05:20.465  1598  1746 D WM-GreedyScheduler: Ignoring {WorkSpec: 075f6dd9-eca7-43f6-93ee-cbdd333da2ff}. Requires device idle.
+10-20 23:05:20.466  1598  1746 D WM-GreedyScheduler: Ignoring {WorkSpec: 796b54b1-78eb-4702-bd07-49c1fafa5015}. Requires device idle.
+10-20 23:05:20.520  1006  1129 E FrameTracker: force finish cuj, time out: J<DEFAULT_TASK_TO_TASK_ANIMATION>
+10-20 23:05:20.532  2303  4634 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:20.540  2303  4634 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:20.542  2303  4640 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:20.544  2303  4640 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:20.545  2217  4665 I PTCommittedOperation: Receive new configuration for com.google.android.gms.subscribedfeeds
+10-20 23:05:20.547  2217  2473 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:20.550  2303  4634 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:20.550  2303  4676 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:20.552  2303  4633 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:20.552  2303  4633 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:20.552  2303  4633 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.subscribedfeeds [CONTEXT service_id=340 ]
+10-20 23:05:20.556  2303  4676 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:20.557  2303  4673 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:20.557  2303  4673 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:20.557  2303  4673 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:20.561  2303  4634 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:20.655  2303  4641 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:20.656  2303  4633 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:20.660  2303  4641 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:20.660  2303  4641 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:20.665  2217  4659 I PTCommittedOperation: Receive new configuration for com.google.android.gms.auth_cryptauth
+10-20 23:05:20.667  2217  4639 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:20.668  2303  4676 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:20.668  2303  4646 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:20.669  2303  4646 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:20.669  2303  4646 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.auth_cryptauth [CONTEXT service_id=340 ]
+10-20 23:05:20.671  2303  3526 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:20.672  2303  3526 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:20.673  2303  4635 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:20.679  2303  4634 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:20.680  2303  4634 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:20.680  2303  4634 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:20.779   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:05:20.780   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:05:20.780   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={10217} in 1ms
+10-20 23:05:20.949  2217  4162 I MagicTether: [LaunchUtils] No accounts found for enabling Instant Wifi. [CONTEXT service_id=276 ]
+10-20 23:05:20.958   643   914 D WifiClientModeImpl[34482:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=1 freq=2437 RxLinkSpeed=2
+10-20 23:05:20.958   643   914 D WifiDataStall: tx tput in kbps: 37000
+10-20 23:05:20.958   643   914 D WifiDataStall: rx tput in kbps: 37000
+10-20 23:05:20.958   643   914 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+10-20 23:05:20.958   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:20.958   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:20.958   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:20.958   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:20.958   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:20.958   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:20.958   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:20.958   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:20.960   643   914 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 14224604 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 54Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+10-20 23:05:20.960   643   914 D WifiScoreCard: txRate: 868 txSpeed: 1
+10-20 23:05:20.960   643   914 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 1928051533 RSSI -50 txSpeed 1
+10-20 23:05:20.960   643   914 D WifiClientModeImpl[34482:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=60 link=1 tx=867.8, 0.0, 0.0 rx=6433.9 bcn=0 [on:0 tx:0 rx:0 period:3003] from screen [on:0 period:1536158528] score=60
+10-20 23:05:20.971  2217  2423 I MagicTether: [LaunchUtils] No accounts found for enabling Instant Wifi. [CONTEXT service_id=276 ]
+10-20 23:05:21.030  2217  2423 W MagicTether: [HostEnablementUtils] Invalid account list. [CONTEXT service_id=276 ]
+10-20 23:05:21.032  2217  2217 I MagicTether: [LaunchUtils] No accounts found for enabling Instant Wifi. [CONTEXT service_id=276 ]
+10-20 23:05:21.034  2217  2217 I MagicTether: [LaunchUtils] No accounts found for enabling Instant Wifi. [CONTEXT service_id=276 ]
+10-20 23:05:21.043  2217  2217 I MagicTether: [AutoDisconnectIntentOperation] Canceling task. [CONTEXT service_id=276 ]
+10-20 23:05:21.059  2217  4665 I MagicTether: [AutoDisconnectIntentOperation] Canceling task. [CONTEXT service_id=276 ]
+10-20 23:05:21.060  2217  4665 I MagicTether: [LaunchUtils] No accounts found for enabling Instant Wifi. [CONTEXT service_id=276 ]
+10-20 23:05:21.068  1006  1006 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+10-20 23:05:21.070  1152  1152 D CarrierSvcBindHelper: onPackageModified: com.google.android.providers.media.module
+10-20 23:05:21.071  1152  1152 D CarrierSvcBindHelper: No carrier app for: 0
+10-20 23:05:21.077  1152  1152 E SmsApplication: com.google.android.apps.messaging lost android:read_cell_broadcasts:  (fixing)
+10-20 23:05:21.082  1152  1427 I SatelliteAppTracker: onPackageModified : com.google.android.providers.media.module
+10-20 23:05:21.085  1152  1427 I SatelliteAppTracker: onPackageModified : com.google.android.photopicker
+10-20 23:05:21.094  1006  1006 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+10-20 23:05:21.137  1020  2413 I PermissionControllerServiceImpl: Updating user sensitive for uid 10197
+10-20 23:05:21.146   643   675 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:21.147  1252  1276 D PackageUpdatedTask: Package updated: mOp=UPDATE packages=[com.google.android.providers.media.module], user=UserHandle{0}
+10-20 23:05:21.149   643   675 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:21.151  1252  1276 W AllAppsList: updatePackage: no Activities matched updated package, removing any AppInfo with package=com.google.android.providers.media.module, user=UserHandle{0}
+10-20 23:05:21.151  1610  2397 I AiAiEcho: AppIndexer Package:[com.google.android.photopicker] UserProfile:[0] Enabled:[true].
+10-20 23:05:21.152   446   476 I netd    : tetherGetStats() -> {[]} <0.36ms>
+10-20 23:05:21.154  1252  1276 D PackageUpdatedTask: Package updated: mOp=UPDATE packages=[com.google.android.photopicker], user=UserHandle{0}
+10-20 23:05:21.155  1610  2397 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.photopicker], userId:[0], reason:[package is updated.].
+10-20 23:05:21.159   643   751 I RoleService: Granting default roles...
+10-20 23:05:21.160  1252  1276 W AllAppsList: updatePackage: no Activities matched updated package, removing any AppInfo with package=com.google.android.photopicker, user=UserHandle{0}
+10-20 23:05:21.166  1152  1425 D ImsResolver: maybeAddedImsService, packageName: com.google.android.providers.media.module
+10-20 23:05:21.167  1152  1425 V ImsResolver: searchForImsServices: package=com.google.android.providers.media.module, users=[UserHandle{0}]
+10-20 23:05:21.168  1610  2651 I AiAiEcho: AppIndexer Package:[com.google.android.providers.media.module] UserProfile:[0] Enabled:[true].
+10-20 23:05:21.168  1610  2651 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.providers.media.module], userId:[0], reason:[package is updated.].
+10-20 23:05:21.169  1152  1425 V ImsResolver: searchForImsServices: package=com.google.android.providers.media.module, users=[UserHandle{0}]
+10-20 23:05:21.171   643  1108 W SignedPackage: Package doesn't have required signing certificate: com.google.android.retaildemo
+10-20 23:05:21.174   643  1108 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+10-20 23:05:21.177   643  1108 W SignedPackage: Package doesn't have required signing certificate: com.google.android.apps.work.clouddpc
+10-20 23:05:21.185  1152  1152 D SatelliteController: packageStateChanged: package:com.google.android.providers.media.module DefaultSmsPackageName:com.google.android.apps.messaging
+10-20 23:05:21.186  1152  1152 V SatelliteController: Neither SMS or SatelliteGateway package
+10-20 23:05:21.191  1020  2413 I PermissionControllerServiceImpl: Updating user sensitive for uid 10196
+10-20 23:05:21.196  1488  2067 I DownloadManager: DownloadManager$4.onSuccess():564 download for __KLP_delight__en-840 is finished with files # mxp@a55544ca
+10-20 23:05:21.197  1488  1931 I DataFileManager: DataFileManager.addDataWithoutNotify():185 adding data en-840 mdd
+10-20 23:05:21.197  1488  2067 I ForegroundDownloadTaskWorker: ForegroundDownloadTaskWorker$1.onSuccess():69 onSuccess
+10-20 23:05:21.197  1488  1931 I DelightKLPDownloader: DelightKLPDownloader$2.onSuccess():222 klp en_840 downloaded with version 2025031300
+10-20 23:05:21.199  1488  1930 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=0993669b-dbab-4bc0-8dc4-3640e8b4ffb8, tags={ com.google.android.libraries.inputmethod.mdd.ForegroundDownloadTaskWorker,foreground_download_work } ]
+10-20 23:05:21.203  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.215  1152  1152 E SmsApplication: com.google.android.apps.messaging lost android:read_cell_broadcasts:  (fixing)
+10-20 23:05:21.217  1152  1152 D SatelliteAccessController: Current default SMS app:ComponentInfo{com.google.android.apps.messaging/com.google.android.apps.messaging.shared.receiver.SmsDeliverReceiver}
+10-20 23:05:21.217  1152  1152 D SatelliteController: getSelectedSatelliteSubId: subId=-1
+10-20 23:05:21.218  1152  1152 D SatelliteAccessController: supportedMsgApps:com.google.android.apps.messaging
+10-20 23:05:21.221  1488  2069 E MDDSuperpacks: MDDSuperpacks.parseManifest():476 cannot find metadata for delight_overrides
+10-20 23:05:21.221   643  1108 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.WALLET
+10-20 23:05:21.223  1488  2060 I SuperDelight: SuperDelightBundledMetadataParser.addSystemLms():202 system lm dir /system/usr/share/ime/google/d3_lms does not exist or is not readable
+10-20 23:05:21.224   643  1108 W SignedPackage: Cannot get ApplicationInfo for package: com.google.android.devicelockcontroller
+10-20 23:05:21.224  1488  2060 I SuperDelight: SuperDelightBundledMetadataParser.parse():192 SuperDelightBundledMetadataParser#parse(): manifest parsed with 1 packs
+10-20 23:05:21.230  1152  1152 D CarrierSvcBindHelper: onPackageModified: com.google.android.photopicker
+10-20 23:05:21.230  1152  1152 D CarrierSvcBindHelper: No carrier app for: 0
+10-20 23:05:21.231  1152  1152 E SmsApplication: com.google.android.apps.messaging lost android:read_cell_broadcasts:  (fixing)
+10-20 23:05:21.235  1152  1425 D ImsResolver: maybeAddedImsService, packageName: com.google.android.photopicker
+10-20 23:05:21.236  1152  1425 V ImsResolver: searchForImsServices: package=com.google.android.photopicker, users=[UserHandle{0}]
+10-20 23:05:21.236  1152  1425 V ImsResolver: searchForImsServices: package=com.google.android.photopicker, users=[UserHandle{0}]
+10-20 23:05:21.238  1152  1152 D SatelliteController: packageStateChanged: package:com.google.android.photopicker DefaultSmsPackageName:com.google.android.apps.messaging
+10-20 23:05:21.238  1152  1152 V SatelliteController: Neither SMS or SatelliteGateway package
+10-20 23:05:21.239  1152  1152 E SmsApplication: com.google.android.apps.messaging lost android:read_cell_broadcasts:  (fixing)
+10-20 23:05:21.245  1152  1152 D SatelliteAccessController: Current default SMS app:ComponentInfo{com.google.android.apps.messaging/com.google.android.apps.messaging.shared.receiver.SmsDeliverReceiver}
+10-20 23:05:21.245  1152  1152 D SatelliteController: getSelectedSatelliteSubId: subId=-1
+10-20 23:05:21.245   643   643 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:21.245   643   643 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:21.245   643   643 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:21.245  1152  1152 D SatelliteAccessController: supportedMsgApps:com.google.android.apps.messaging
+10-20 23:05:21.246   643   643 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:21.246   643   643 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:21.246   643   643 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:21.291  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.295  1704  2846 W acsw    : Account id is not cached
+10-20 23:05:21.305  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.318  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.335  1704  2846 W akhw    : Refreshing not complete, unable to upload top contacts.
+10-20 23:05:21.335   446   476 I netd    : tetherGetStats() -> {[]} <0.26ms>
+10-20 23:05:21.337  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.337  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.337  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.341  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.343   446   476 I netd    : bandwidthSetGlobalAlert(2097152) <0.09ms>
+10-20 23:05:21.345   446   476 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.37ms>
+10-20 23:05:21.346   446   476 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.28ms>
+10-20 23:05:21.362  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.362  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.362  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.364   643   657 I system_server: Background concurrent mark compact GC freed 26MB AllocSpace bytes, 63(1776KB) LOS objects, 44% free, 29MB/53MB, paused 1.275ms,1.897ms total 402.743ms
+10-20 23:05:21.364  1704  1993 I sey     : (REDACTED) Attempting to cache the data for corpora %s.
+10-20 23:05:21.367  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.367  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.368  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.368  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.375  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.376  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.379  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.379  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.379  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.380  1704  2820 I sjn     : Canceling restore - user account is null
+10-20 23:05:21.384  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.384  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.384  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.390  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.394  1006  1187 E FrameTracker: force finish cuj, time out: J<SPLASHSCREEN_EXIT_ANIM>
+10-20 23:05:21.395  1704  2830 I sgv     : (REDACTED) No accounts found for %s, not syncing anything.
+10-20 23:05:21.396  2303  4634 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:21.398  2303  4635 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:21.398  2303  4635 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:21.398  2303  4635 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:21.399  2303  4674 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:21.399  2303  4674 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:21.399  2303  4674 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.clearcut.public [CONTEXT service_id=340 ]
+10-20 23:05:21.400  2303  4676 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:21.400  2303  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:21.400  2303  4673 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:21.401  2303  4646 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:21.401  2303  4648 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:21.401  2303  4673 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:21.402  2217  4274 I PTCommittedOperation: Receive new configuration for com.google.android.gms.clearcut.public
+10-20 23:05:21.402  2217  4274 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:21.402  2303  4673 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:21.403  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.403  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.403  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.403  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.404  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.404  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.416  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.417  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.418  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.421  1704  1993 I sey     : (REDACTED) Attempting to cache the data for corpora %s.
+10-20 23:05:21.426  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.426  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.426  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.430  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.430  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.436  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.436  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.437  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.438  1704  1993 I sey     : (REDACTED) Attempting to cache the data for corpora %s.
+10-20 23:05:21.445  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.445  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.445  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.448  1704  1704 I avrd    : (REDACTED) Starting %s background task %s.
+10-20 23:05:21.451  1704  2820 I sig     : Uploading hotword settings to server.
+10-20 23:05:21.452  1704  2239 W achh    : Abort, client detached.
+10-20 23:05:21.558  2303  4641 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:21.558  2303  4641 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:21.558  2303  4641 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:21.558  2303  4641 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:21.567  2217  4662 I PTCommittedOperation: Receive new configuration for com.google.android.gms.auth_api_early_update
+10-20 23:05:21.571  2303  4633 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:21.571  2217  2473 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:21.572  2303  4646 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:21.572  2303  4646 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:21.572  2303  4646 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.auth_api_early_update [CONTEXT service_id=340 ]
+10-20 23:05:21.573  2303  3526 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:21.574  2303  4640 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:21.574  2303  4633 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:21.575  2303  4633 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:21.576  2303  4633 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:21.577  2303  3526 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:21.603  2217  4652 I Auth    : [AuthManaged, PasswordComplexityHelperImpl] Updating password complexity components state.
+10-20 23:05:21.603  2217  4652 I Auth    : [AuthManaged, PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.admin.DeviceAdminReceiver
+10-20 23:05:21.604  2217  4652 I Auth    : [AuthManaged, PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.ui.SetNewPasswordActivity
+10-20 23:05:21.666  2217  4274 I PTCommittedOperation: Receive new configuration for com.google.android.gms
+10-20 23:05:21.666  2217  4274 I PTCommittedOperation: Running Fixer Framework for com.google.android.gms
+10-20 23:05:21.689  2217  4694 I FA-SVC  : App measurement initialized, version: 252635
+10-20 23:05:21.965  2303  3526 I GmsThreadNetwork: [ThreadNetworkModuleInitIntentOperation] phenotype flags updated [CONTEXT service_id=305 ]
+10-20 23:05:21.966  2303  3526 I GmsThreadNetwork: [ThreadNetworkModuleInitIntentOperation] Enable component com.google.android.gms.threadnetwork.credentials.ui.ShareCredentialsActivity [CONTEXT service_id=305 ]
+10-20 23:05:21.969  2303  3526 I GmsThreadNetwork: [BorderRouterSynchronizer] Scheduled periodic Border Router sync task: PeriodicBrSync [CONTEXT service_id=305 ]
+10-20 23:05:21.970  2303  3526 W GmsThreadNetwork: [ThreadNetworkModuleInitIntentOperation] Skip joining preferred or random network: flag disabled [CONTEXT service_id=305 ]
+10-20 23:05:22.117  2303  4646 I PhenotypeChangedIntOp: New flags committed. [CONTEXT service_id=247 ]
+10-20 23:05:22.130   643   675 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:22.131  2303  2303 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.findmydevice.spot.service.management.START dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsApiService }
+10-20 23:05:22.151  2303  2303 I MdmInitializer: Updated FMD enabled state successfully. [CONTEXT service_id=247 ]
+10-20 23:05:22.190  2303  3138 I ChangeFmdSettings: FMD on [CONTEXT service_id=284 ]
+10-20 23:05:22.196  2217  2217 D WearableService: Creating wearable service asynchronously.
+10-20 23:05:22.203  2217  2324 D WearableService: onGetService: waiting for onCreate to be completed.
+10-20 23:05:22.211  2303  4272 I GmsModuleFndr: Beginning GMS chimera module scan
+10-20 23:05:22.217  2217  2355 I Wear_Controller: Wearable module requires a companion app to be installed.
+10-20 23:05:22.217  2217  2355 I WearableService: onCreate: Wearable Services not starting. Wear is not available on this device.
+10-20 23:05:22.221  2217  2324 W WearableService: onGetService: Wear is not available on this device.
+10-20 23:05:22.277  2303  3526 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:22.279  2303  3526 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:22.282  2303  3526 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }. [CONTEXT service_id=80 ]
+10-20 23:05:22.286  2303  4675 I fpnvgms : [FpnvIntentOperation] Received intent: Intent { act=com.google.android.gms.phenotype.COMMITTED xflg=0x4 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) } [CONTEXT service_id=429 ]
+10-20 23:05:22.286  2303  4640 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:22.290  2303  4633 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:22.290  2303  4633 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-20 23:05:22.292  2303  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:22.292  2217  4652 I PTCommittedOperation: Receive new configuration for com.google.android.gms.locationsharing
+10-20 23:05:22.293  2303  4673 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-20 23:05:22.296  2217  4660 I NearbyMediums: ModuleInitializer handles incoming intent com.google.android.gms.phenotype.COMMITTED
+10-20 23:05:22.297  2303  4673 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-20 23:05:22.297  2303  4673 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-20 23:05:22.298  2303  4641 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-20 23:05:22.298  2303  4640 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-20 23:05:22.298  2303  4640 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.locationsharing [CONTEXT service_id=340 ]
+10-20 23:05:22.312  2303  4272 I ModuleSetResolution: Computing pending module set with APKs: [[AdsFdrDynamite.integ:250505301100000], [Cronetdynamite:252635260800], [Dynamiteloader:252635260000], [Dynamitemodulesa:252635260000], [Dynamitemodulesc:252635260000], [Googlecertificates:252635260000], [Mapsdynamite:252635260000], [Measurementdynamite:252635260000]]
+10-20 23:05:22.351  2303  4272 I ModuleSetResolution: Pending container module APKs: []
+10-20 23:05:22.450  2303  4272 I ModuleSetResolution: Pending non-container module APKs: []
+10-20 23:05:22.549  2303  4272 I gle.android.gms: AssetManager2(0x7ef312e01f98) locale list changing from [] to [en-US]
+10-20 23:05:22.637  2303  4272 I gle.android.gms: AssetManager2(0x7ef312e01f98) locale list changing from [] to [en-US]
+10-20 23:05:22.650  2217  4274 I PlatformConfigurator: updateFromConfigurations using legacy put method [CONTEXT service_id=204 ]
+10-20 23:05:22.685   643   667 I GnssBlocklistHelper: Update GNSS satellite blocklist:
+10-20 23:05:22.695   446   476 I netd    : tetherGetStats() -> {[]} <0.32ms>
+10-20 23:05:22.704   446   476 I netd    : bandwidthSetGlobalAlert(2097152) <0.07ms>
+10-20 23:05:22.713  1152  1427 D SatelliteController: iisInCarrierRoamingNbIotNtn: satellite is disabled
+10-20 23:05:22.730  4034  4122 I TestRunner: finished: historicalReadersAndV4WriterKeepFieldsAndNoStaleLocalAnchors(com.opus.piano.Stage3aBackupTest)

@@ -33,7 +33,7 @@ import java.time.*
     val catalog by app.catalogRepository.snapshot.collectAsState(initial=CatalogSnapshot(emptyList(),emptyList()))
     BoxWithConstraints(Modifier.fillMaxSize()) {
         val availableWidth=maxWidth
-        val recentLimit=if(maxHeight>=720.dp && fontScale<=1.15f) 3 else 2
+        val recentLimit=2
         JournalViewport {
             val greeting:@Composable ()->Unit={Column(verticalArrangement=Arrangement.spacedBy(4.dp)) {
                 Text(L.s(when(LocalTime.now().hour) {in 5..11->R.string.ui010_morning;in 12..17->R.string.ui010_afternoon;else->R.string.ui010_evening}),style=MaterialTheme.typography.bodyMedium.copy(fontSize=MaterialTheme.typography.bodyMedium.fontSize * 1.06f),color=MaterialTheme.colorScheme.onSurfaceVariant)
@@ -53,7 +53,7 @@ import java.time.*
             else Row(horizontalArrangement=Arrangement.spacedBy(12.dp),verticalAlignment=Alignment.CenterVertically) {
                 Box(Modifier.weight(1.05f)) {greeting()};Box(Modifier.weight(1f)) {quotation()}
             }
-            Row(horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+            Row(horizontalArrangement=Arrangement.spacedBy(12.dp)) {
                 JournalCard(Modifier.weight(1f)) {
                     Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {Icon(Icons.Outlined.CalendarToday,null,Modifier.size(20.dp),tint=MaterialTheme.colorScheme.primary);Text(L.s(R.string.today_practice),style=MaterialTheme.typography.bodySmall)}
                     Text(localizedPracticeTime(PracticeInsights.metric("today",library.pieces,library.sessions,today,ZoneId.systemDefault())),style=MaterialTheme.typography.headlineMedium.copy(fontFamily=MaterialTheme.typography.bodyLarge.fontFamily,fontFeatureSettings="tnum"))
@@ -78,7 +78,7 @@ import java.time.*
                         val title=parts.filter {it.durationMillis>0}.joinToString(" · ") {it.displayTitle}.ifBlank {if(session.pieceTitle=="Free practice") L.fixed("Free practice") else session.pieceTitle}
                         val composer=parts.firstOrNull()?.composer.orEmpty()
                         val artist=catalog.composers.firstOrNull {catalogText(it.name)==catalogText(composer)}
-                        Row(Modifier.fillMaxWidth().clickable(role=Role.Button) {if(saved!=null) piece(saved.id) else review=true}.heightIn(min=60.dp).padding(vertical=8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                        Row(Modifier.fillMaxWidth().clickable(role=Role.Button) {if(saved!=null) piece(saved.id) else review=true}.heightIn(min=60.dp).padding(vertical=8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
                             if(artist!=null) ComposerPortrait(artist,Modifier.size(width=38.dp,height=46.dp)) else Surface(shape=MaterialTheme.shapes.small,color=MaterialTheme.colorScheme.primary.copy(alpha=.12f)) {Icon(Icons.Outlined.MusicNote,null,Modifier.size(42.dp).padding(9.dp),tint=MaterialTheme.colorScheme.primary)}
                             Column(Modifier.weight(1f)) {Text(title,style=MaterialTheme.typography.bodyMedium,maxLines=2,overflow=TextOverflow.Ellipsis);if(composer.isNotBlank()) Text(composer,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
                             Column(horizontalAlignment=Alignment.End) {Text(localizedPracticeTime(session.durationMillis),style=MaterialTheme.typography.bodySmall);Text(Instant.ofEpochMilli(session.completedAt).atZone(ZoneId.systemDefault()).format(java.time.format.DateTimeFormatter.ofPattern("d MMM").withLocale(L.locale)),style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
@@ -99,9 +99,9 @@ import java.time.*
     val zone=ZoneId.systemDefault();val days=(6 downTo 0).map {today.minusDays(it.toLong())}
     val totals=days.map {day->sessions.filter {AchievementEngine.valid(it) && AchievementEngine.recordedDay(it,zone)==day}.sumOf {it.durationMillis}}
     val peak=totals.maxOrNull()?.coerceAtLeast(1) ?: 1
-    Column(verticalArrangement=Arrangement.spacedBy(10.dp)) {
+    Column(verticalArrangement=Arrangement.spacedBy(12.dp)) {
         Row(verticalAlignment=Alignment.CenterVertically) {Text(L.s(R.string.ui010_weekly_activity),Modifier.weight(1f),style=MaterialTheme.typography.titleSmall);JournalTextButton(onClick=history,contentPadding=PaddingValues(0.dp)) {Text(localizedPracticeTime(totals.sum()),style=MaterialTheme.typography.labelSmall);Icon(Icons.Outlined.ChevronRight,null,Modifier.size(16.dp))}}
-        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(12.dp)) {
             days.forEachIndexed {i,day->val label=com.opus.piano.i18n.JournalFormatting.weekday(day,L.locale)
                 Column(Modifier.weight(1f).semantics(mergeDescendants=true) {contentDescription="$label: ${localizedPracticeTime(totals[i])}"},horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(6.dp)) {
                     Box(Modifier.fillMaxWidth().height(60.dp),contentAlignment=Alignment.BottomCenter) {

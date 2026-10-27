@@ -1,0 +1,16 @@
+{
+  "newTargetedJunitPasses": 12,
+  "newJunitSkips": 0,
+  "expectedActualProcessTerminations": 6,
+  "correctedFixtureFailuresRetained": 1,
+  "unresolvedApplicationFailures": 0,
+  "actualReboots": 1,
+  "originalTablesCompared": 12,
+  "originalSessionsRetained": 37,
+  "newActualOrientationConfigurations": 6,
+  "keyboardFocusSteps": 8,
+  "realThreeHourDeliveryVerified": false,
+  "physicalDeviceTested": false,
+  "productionSourceChanged": false,
+  "fullStage8Accepted": false
+}

@@ -1,0 +1,2 @@
+10-20 23:06:22.545  4034  4122 I TestRunner: started: invalidRightsOnDiskQuarantinesManifestAndDeactivatesJob(com.opus.piano.Stage5BundleJobRunnerTest)
+10-20 23:06:22.549  4034  4122 I TestRunner: finished: invalidRightsOnDiskQuarantinesManifestAndDeactivatesJob(com.opus.piano.Stage5BundleJobRunnerTest)

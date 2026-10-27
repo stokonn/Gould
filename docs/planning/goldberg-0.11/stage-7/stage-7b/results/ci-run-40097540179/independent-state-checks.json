@@ -1,0 +1,232 @@
+{
+  "result": "PASS",
+  "configurationMetadataAndPngDimensions": "PASS for all matrix states",
+  "freshDestinationHeadingsAndBack": "PASS for32base destination captures",
+  "rowCaptures": [
+    {
+      "tree": "stage7b-small-cs-Dark-f2.0-audit-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          558,
+          218,
+          638
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 558 - 218, 638) text=sub_1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-small-cs-Dark-f2.0-queue-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          785,
+          451,
+          843
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 785 - 451, 843) text=#sub_1 \u00b7 revize 1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-small-cs-Light-f2.0-audit-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          558,
+          218,
+          638
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 558 - 218, 638) text=sub_1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-small-cs-Light-f2.0-queue-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          785,
+          451,
+          843
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 785 - 451, 843) text=#sub_1 \u00b7 revize 1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-small-en-Dark-f2.0-audit-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          558,
+          218,
+          638
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 558 - 218, 638) text=sub_1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-small-en-Dark-f2.0-queue-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          785,
+          385,
+          843
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 785 - 385, 843) text=#sub_1 \u00b7 rev 1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-small-en-Light-f2.0-audit-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          558,
+          218,
+          638
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 558 - 218, 638) text=sub_1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-small-en-Light-f2.0-queue-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          785,
+          385,
+          843
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 785 - 385, 843) text=#sub_1 \u00b7 rev 1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-standard-cs-Dark-f1.0-audit-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          583,
+          149,
+          627
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 583 - 149, 627) text=sub_1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-standard-cs-Dark-f1.0-queue-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          750,
+          257,
+          779
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 750 - 257, 779) text=#sub_1 \u00b7 revize 1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-standard-cs-Light-f1.0-audit-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          583,
+          149,
+          627
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 583 - 149, 627) text=sub_1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-standard-cs-Light-f1.0-queue-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          750,
+          257,
+          779
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 750 - 257, 779) text=#sub_1 \u00b7 revize 1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-standard-en-Dark-f1.0-audit-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          583,
+          149,
+          627
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 583 - 149, 627) text=sub_1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-standard-en-Dark-f1.0-queue-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          750,
+          225,
+          779
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 750 - 225, 779) text=#sub_1 \u00b7 rev 1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-standard-en-Light-f1.0-audit-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          583,
+          149,
+          627
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 583 - 149, 627) text=sub_1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    },
+    {
+      "tree": "stage7b-standard-en-Light-f1.0-queue-row-reachable.txt",
+      "sub1Bounds": [
+        [
+          64,
+          750,
+          225,
+          779
+        ]
+      ],
+      "actualSub1Nodes": [
+        "bounds=Rect(64, 750 - 225, 779) text=#sub_1 \u00b7 rev 1 description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]"
+      ]
+    }
+  ],
+  "limits": "Static nodes are supplemented by runtime assertions and separately inspected PNGs; complete app/system Back and TalkBack remain unexecuted."
+}

@@ -1,0 +1,3 @@
+10-20 23:04:57.924  4034  4122 I TestRunner: started: manualAvatarChoiceSurvivesIdentityRepositoryRestart(com.opus.piano.GoogleIdentityPersistenceTest)
+10-20 23:04:57.928  4357  4454 W chromium: [WARNING:viz_main_impl.cc(85)] VizNullHypothesis is disabled (not a warning)
+10-20 23:04:57.929  4034  4122 I TestRunner: finished: manualAvatarChoiceSurvivesIdentityRepositoryRestart(com.opus.piano.GoogleIdentityPersistenceTest)

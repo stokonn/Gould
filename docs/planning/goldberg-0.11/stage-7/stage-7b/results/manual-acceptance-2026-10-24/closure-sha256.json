@@ -1,0 +1,11 @@
+{
+  "closure-verification.json": "eaf135e7642a0a4c9ceab7e45ad18b4420552c38cfe4270e1d359163ef83ed2f",
+  "closure-restored-build.log": "e2fdbfdfa389492f931ef467a8bb5928fa280232d8e574dbe4d984bbd6a11fb1",
+  "closure-artifact-identity.txt": "66ba7dba6ee76fa4b85a884b9fd42c1e5ba7dea44905e7b772e47b9d7d4bf137",
+  "sources/Stage7bManualProbe.kt": "0f28ab71f4f1ba1801c34a9337bef129ab6f99ac6534776ac3b93337cdeda20d",
+  "sources/manual-probe-build.patch": "7553230827ad83fee0c252fbb46e764ce60815c186b63a88005474eecdad171e",
+  "sources/archive-receipt.json": "adaf7635f22ff2ae727775f9ed6688746ba1439fa55b408a006a56bb37823670",
+  "sources/README.md": "ab215c1625e79cfd47b9973ec896d86b3461ed0216bb5b14fbf9796ec5432a79",
+  "verify-observations.py": "3491d56777042b5f3276c52e7dab3c7421f85cfaec899de170439af24969823f",
+  "verified-results.json": "17998ab31e7e970abafcf78b7ba66aec00b6c19ab9dfe37d771bd44fd94d34ec"
+}

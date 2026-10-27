@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.admin.AdminQueueTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-24T08:11:37.972Z" hostname="fedora" time="0.058">
+  <properties/>
+  <testcase name="revisionChangeCreatesPillWithoutReplacingVisibleRows" classname="com.opus.piano.admin.AdminQueueTest" time="0.02"/>
+  <testcase name="partialApplyPreservesPreviouslyLoadedRows" classname="com.opus.piano.admin.AdminQueueTest" time="0.004"/>
+  <testcase name="explicitIdLookupWorksOutsideQueue" classname="com.opus.piano.admin.AdminQueueTest" time="0.004"/>
+  <testcase name="pageBudgetStopsRepeatedManualAppend" classname="com.opus.piano.admin.AdminQueueTest" time="0.003"/>
+  <testcase name="clearDropsQueueAndSearchState" classname="com.opus.piano.admin.AdminQueueTest" time="0.004"/>
+  <testcase name="existingUnloadedRowsDoNotCreateFalseUpdatePill" classname="com.opus.piano.admin.AdminQueueTest" time="0.004"/>
+  <testcase name="incompleteTextSearchNeverReturnsPartialMatches" classname="com.opus.piano.admin.AdminQueueTest" time="0.003"/>
+  <testcase name="terminalHydrationClearsPersonalMarkersOnlyAfterServerConfirmation" classname="com.opus.piano.admin.AdminQueueTest" time="0.004"/>
+  <testcase name="titleSearchHydratesAllEligibleRows" classname="com.opus.piano.admin.AdminQueueTest" time="0.001"/>
+  <testcase name="detailFailureAbortsWholeTextSearch" classname="com.opus.piano.admin.AdminQueueTest" time="0.003"/>
+  <testcase name="duplicateIdsWithinAndAcrossPagesAreMerged" classname="com.opus.piano.admin.AdminQueueTest" time="0.005"/>
+  <testcase name="failedApplyPreservesRowsAndUpdatePill" classname="com.opus.piano.admin.AdminQueueTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

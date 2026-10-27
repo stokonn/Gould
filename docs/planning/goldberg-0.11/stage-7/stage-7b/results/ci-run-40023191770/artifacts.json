@@ -1,0 +1,25 @@
+{
+  "total_count": 1,
+  "artifacts": [
+    {
+      "id": 12532680601,
+      "node_id": "MDg6QXJ0aWZhY3QxMjUzMjY4MDYwMQ==",
+      "name": "stage7b-instrumentation-api36-3a4aac27e2eb8ae70716538d86acd374cdd38077",
+      "size_in_bytes": 2983387,
+      "url": "https://api.github.com/repos/stokonn/Goldberg/actions/artifacts/12532680601",
+      "archive_download_url": "https://api.github.com/repos/stokonn/Goldberg/actions/artifacts/12532680601/zip",
+      "expired": false,
+      "digest": "sha256:5c23ceb0ede9690a82934eae9fa87f75930839aa5859d85bc535bb7ac58ac525",
+      "created_at": "2026-10-23T21:11:24Z",
+      "updated_at": "2026-10-23T21:11:24Z",
+      "expires_at": "2026-11-06T21:11:23Z",
+      "workflow_run": {
+        "id": 40023191770,
+        "repository_id": 1421247418,
+        "head_repository_id": 1421247418,
+        "head_branch": "feature/goldberg-0.11-stage-7b",
+        "head_sha": "3a4aac27e2eb8ae70716538d86acd374cdd38077"
+      }
+    }
+  ]
+}

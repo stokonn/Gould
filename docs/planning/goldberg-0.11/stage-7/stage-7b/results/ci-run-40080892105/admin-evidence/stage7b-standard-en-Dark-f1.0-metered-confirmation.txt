@@ -1,0 +1,18 @@
+locale=en font=1.0 size=Physical size: 1080x2400
+Override size: 824x1830 density=Physical density: 420
+Override density: 320
+bounds=Rect(92, 757 - 732, 1123) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.FrameLayout actions=[4, 8, 64, 16908342]
+bounds=Rect(92, 757 - 732, 1123) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.FrameLayout actions=[4, 8, 64, 16908342]
+bounds=Rect(92, 757 - 732, 1123) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.FrameLayout actions=[4, 8, 64, 16908342]
+bounds=Rect(92, 757 - 732, 1123) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.ViewGroup actions=[4, 8, 64, 16908342]
+bounds=Rect(92, 757 - 732, 1123) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(92, 757 - 732, 1123) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(92, 757 - 732, 1123) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(92, 757 - 732, 1123) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.view.View actions=[64]
+bounds=Rect(140, 805 - 684, 931) text=Allow admin checks to use mobile and metered data? Your provider may charge for data. description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]
+bounds=Rect(411, 979 - 552, 1075) text=null description=null clickable=true enabled=true scrollable=false focusable=true checkable=false checked=false class=android.view.View actions=[64, 1, 16]
+bounds=Rect(435, 1007 - 528, 1047) text=Cancel description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]
+bounds=Rect(411, 987 - 552, 1067) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.Button actions=[64]
+bounds=Rect(568, 979 - 684, 1075) text=null description=null clickable=true enabled=true scrollable=false focusable=true checkable=false checked=false class=android.view.View actions=[64, 1, 16]
+bounds=Rect(593, 1007 - 659, 1047) text=Save description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.TextView actions=[64, 131072, 256, 512]
+bounds=Rect(568, 987 - 684, 1067) text=null description=null clickable=false enabled=true scrollable=false focusable=false checkable=false checked=false class=android.widget.Button actions=[64]

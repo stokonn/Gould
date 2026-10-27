@@ -1,0 +1,47 @@
+{
+  "run": "40023191770",
+  "source": "3a4aac27e2eb8ae70716538d86acd374cdd38077",
+  "workflow": "SUCCESS",
+  "sourceBinding": "PASS",
+  "jvm": {
+    "tests": 275,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "instrumentation": {
+    "tests": 182,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2
+  },
+  "nativeAdminPassed": [
+    "keystoreSessionSurvivesStoreRecreationAndTamperingClearsIt",
+    "nativeJsonPreservesExactAuditBigintAndRejectsRevisionOverflow",
+    "androidMarkersPersistAcrossStoreRecreationAndStayAccountScoped",
+    "savedEndpointAndKeystoreTokenCannotEnableApplicationNetworking"
+  ],
+  "skips": [
+    {
+      "class": "com.opus.piano.Stage4ExternalPortraitTest",
+      "test": "separatelyAcquiredLicensedOriginalCanBeVerifiedAndRenderedOffline",
+      "xmlMessage": null,
+      "sourceGuardReason": "Requires separately acquired original and per-file metadata; stage4PortraitMetadata/stage4PortraitOriginal not supplied"
+    },
+    {
+      "class": "com.opus.piano.Stage4ExternalProviderTest",
+      "test": "boundedObservedProviderResponsesPassNativeProjectionAndSearchPaging",
+      "xmlMessage": null,
+      "sourceGuardReason": "Requires separately acquired bounded public provider responses; stage4ProviderDirectory not supplied"
+    }
+  ],
+  "lint": {
+    "Warning": 132,
+    "Hint": 1
+  },
+  "smokeInstall": "Performing Streamed Install\nSuccess\n",
+  "smokeLaunch": "Starting: Intent { cmp=com.opus.piano/.MainActivity }\nStatus: ok\nLaunchState: COLD\nActivity: com.opus.piano/.MainActivity\nTotalTime: 2774\nWaitTime: 2775\nComplete\n",
+  "screenshots": "app-smoke.png and final-screen.png visually inspected: Goldberg Home with onboarding; app startup smoke only, no Admin acceptance",
+  "zipSha256": "5c23ceb0ede9690a82934eae9fa87f75930839aa5859d85bc535bb7ac58ac525",
+  "zipDigestVerified": true
+}

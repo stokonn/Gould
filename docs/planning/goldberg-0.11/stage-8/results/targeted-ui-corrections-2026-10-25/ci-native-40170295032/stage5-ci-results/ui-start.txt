@@ -1,0 +1,7 @@
+Starting: Intent { cmp=com.opus.piano/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.opus.piano/.MainActivity
+TotalTime: 2535
+WaitTime: 2537
+Complete

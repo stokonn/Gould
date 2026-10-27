@@ -1,0 +1,353 @@
+stage7b full instrumentation — API 36	Set up job	﻿2026-10-23T19:23:59.9055219Z Current runner version: '2.338.0'
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9080822Z ##[group]Runner Image Provisioner
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9081795Z Hosted Compute Agent
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9082440Z Version: 20261012.601
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9083196Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9083985Z Build Date: 2026-10-12T17:48:21Z
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9084779Z Worker ID: {07761f88-5c4d-4f5c-9ffb-ca30fa3fd61a}
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9085660Z Region: westcentralus
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9086282Z Cloud: Azure
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9087286Z ##[endgroup]
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9089596Z ##[group]Operating System
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9090735Z Ubuntu
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9091752Z 24.04.5
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9092674Z LTS
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9094108Z ##[endgroup]
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9095235Z ##[group]Runner Image
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9096446Z Image: ubuntu-24.04
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9097878Z Version: 20261012.334.1
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9099875Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9103064Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9104916Z ##[endgroup]
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9107275Z ##[group]GITHUB_TOKEN Permissions
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9110341Z Contents: read
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9111515Z Metadata: read
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9112534Z ##[endgroup]
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9115933Z Secret source: Actions
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9117795Z Cache mode: write
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9119670Z Prepare workflow directory
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9686013Z Prepare all required actions
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:23:59.9738455Z Getting action download info
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:24:00.3052320Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:24:00.4166712Z Download action repository 'actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3' (SHA:cf277c60eb25467037889841efdb72551f06f6c3)
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:24:01.2371692Z Download action repository 'android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407' (SHA:9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407)
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:24:01.7579720Z Download action repository 'reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d' (SHA:a421e43855164a8197daf9d8d40fe71c6996bb0d)
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:24:02.3519686Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+stage7b full instrumentation — API 36	Set up job	2026-10-23T19:24:02.5543292Z Complete job name: stage7b full instrumentation — API 36
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	﻿2026-10-23T19:24:02.6358235Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6359290Z with:
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6359801Z   persist-credentials: false
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6360388Z   repository: stokonn/Goldberg
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6363513Z   token: ***
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6364006Z   ssh-strict: true
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6364434Z   ssh-user: git
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6364836Z   clean: true
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6365378Z   sparse-checkout-cone-mode: true
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6365851Z   fetch-depth: 1
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6366323Z   fetch-tags: false
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6366774Z   show-progress: true
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6367404Z   lfs: false
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6367865Z   submodules: false
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6368299Z   set-safe-directory: true
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6368776Z   allow-unsafe-pr-checkout: false
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6369597Z env:
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6370028Z   CI_VERIFICATION_SCOPE: stage7b
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.6370579Z ##[endgroup]
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7454154Z Syncing repository: stokonn/Goldberg
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7456488Z ##[group]Getting Git version info
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7457706Z Working directory is '/home/runner/work/Goldberg/Goldberg'
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7458974Z [command]/usr/bin/git version
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7526820Z git version 2.55.0
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7547661Z ##[endgroup]
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7562879Z Temporarily overriding HOME='/home/runner/work/_temp/e88c0138-99f4-418f-b12d-e0f358f5c907' before making global git config changes
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7565353Z Adding repository directory to the temporary git global config as a safe directory
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7567832Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goldberg/Goldberg
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7617119Z Deleting the contents of '/home/runner/work/Goldberg/Goldberg'
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7621115Z ##[group]Initializing the repository
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7624980Z [command]/usr/bin/git init /home/runner/work/Goldberg/Goldberg
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7719108Z hint: Using 'master' as the name for the initial branch. This default branch name
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7720613Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7722094Z hint: to use in all of your new repositories, which will suppress this warning,
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7723387Z hint: call:
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7724186Z hint:
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7725127Z hint: 	git config --global init.defaultBranch <name>
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7726174Z hint:
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7727376Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7729099Z hint: 'development'. The just-created branch can be renamed via this command:
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7730346Z hint:
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7731164Z hint: 	git branch -m <name>
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7731946Z hint:
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7732918Z hint: Disable this message with "git config set advice.defaultBranchName false"
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7734312Z Initialized empty Git repository in /home/runner/work/Goldberg/Goldberg/.git/
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7737436Z [command]/usr/bin/git remote add origin https://github.com/stokonn/Goldberg
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7776430Z ##[endgroup]
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7777774Z ##[group]Disabling automatic garbage collection
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7781452Z [command]/usr/bin/git config --local gc.auto 0
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7812687Z ##[endgroup]
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7813573Z ##[group]Setting up auth
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7818691Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.7855337Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.8261134Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.8302280Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.8533571Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.8571481Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.8802246Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.8844382Z ##[endgroup]
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.8845253Z ##[group]Fetching the repository
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:02.8854160Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e:refs/remotes/origin/feature/goldberg-0.11-stage-7b
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.5105448Z From https://github.com/stokonn/Goldberg
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.5117415Z  * [new ref]         0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e -> origin/feature/goldberg-0.11-stage-7b
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.5120271Z ##[endgroup]
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.5121052Z ##[group]Determining the checkout info
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.5121902Z ##[endgroup]
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.5122477Z [command]/usr/bin/git sparse-checkout disable
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.5173815Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.5208568Z ##[group]Checking out the ref
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.5216333Z [command]/usr/bin/git checkout --progress --force -B feature/goldberg-0.11-stage-7b refs/remotes/origin/feature/goldberg-0.11-stage-7b
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.9663231Z Switched to a new branch 'feature/goldberg-0.11-stage-7b'
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.9668699Z branch 'feature/goldberg-0.11-stage-7b' set up to track 'origin/feature/goldberg-0.11-stage-7b'.
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.9702091Z ##[endgroup]
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.9740793Z [command]/usr/bin/git log -1 --format=%H
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.9771773Z 0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.9781693Z ##[group]Removing auth
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.9785479Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:07.9819460Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:08.0067946Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:08.0091766Z http.https://github.com/.extraheader
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:08.0098844Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:08.0133993Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:08.0370535Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:08.0404159Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+stage7b full instrumentation — API 36	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:08.0644454Z ##[endgroup]
+stage7b full instrumentation — API 36	Record verified source commit	﻿2026-10-23T19:24:08.0845246Z ##[group]Run mkdir -p stage5-ci-results
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.0845658Z ^[[36;1mmkdir -p stage5-ci-results^[[0m
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.0845993Z ^[[36;1mCHECKED_OUT="$(git rev-parse HEAD)"^[[0m
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.0846288Z ^[[36;1m{^[[0m
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.0846499Z ^[[36;1m  echo "github.sha: $GITHUB_SHA"^[[0m
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.0846825Z ^[[36;1m  echo "github.ref: $GITHUB_REF"^[[0m
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.0847360Z ^[[36;1m  echo "checkout HEAD: $CHECKED_OUT"^[[0m
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.0847694Z ^[[36;1m} | tee stage5-ci-results/source-commit.txt^[[0m
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.0848046Z ^[[36;1mif [ "$CHECKED_OUT" != "$GITHUB_SHA" ]; then^[[0m
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.0848485Z ^[[36;1m  echo "ERROR: checked-out commit does not match the dispatched commit"; exit 1^[[0m
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.0848904Z ^[[36;1mfi^[[0m
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.0849161Z ^[[36;1mdf -h / | tee stage5-ci-results/disk-usage.txt^[[0m
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.1095071Z shell: /usr/bin/bash -e {0}
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.1095408Z env:
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.1095669Z   CI_VERIFICATION_SCOPE: stage7b
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.1096038Z ##[endgroup]
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.1232461Z github.sha: 0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.1233162Z github.ref: refs/heads/feature/goldberg-0.11-stage-7b
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.1233592Z checkout HEAD: 0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.1285931Z Filesystem      Size  Used Avail Use% Mounted on
+stage7b full instrumentation — API 36	Record verified source commit	2026-10-23T19:24:08.1286987Z /dev/root       145G   59G   86G  41% /
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	﻿2026-10-23T19:24:08.1398706Z ##[group]Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1399119Z with:
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1399327Z   distribution: temurin
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1399550Z   java-version: 17
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1399764Z   cache: gradle
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1399965Z   java-package: jdk
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1400182Z   check-latest: false
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1400395Z   server-id: github
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1400610Z   server-username: GITHUB_ACTOR
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1400865Z   server-password: GITHUB_TOKEN
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1401114Z   overwrite-settings: true
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1401347Z   job-status: success
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1404042Z   token: ***
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1404241Z env:
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1404436Z   CI_VERIFICATION_SCOPE: stage7b
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.1404689Z ##[endgroup]
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3014051Z ##[warning]setup-java v4 is deprecated and will no longer receive updates. Please migrate to actions/setup-java@v5.
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3021890Z ##[group]Installed distributions
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3060340Z Resolved Java 17.0.20+1 from tool-cache
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3060843Z Setting Java 17.0.20+1 as the default
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3072001Z (node:2437) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3073208Z (Use `node --trace-deprecation ...` to show where the warning was created)
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3075194Z Creating toolchains.xml for JDK version 17 from temurin
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3152017Z Writing to /home/runner/.m2/toolchains.xml
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3152498Z 
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3152716Z Java configuration:
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3153182Z   Distribution: temurin
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3153639Z   Version: 17.0.20+1
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3154288Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3154906Z 
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3155390Z ##[endgroup]
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3174178Z Creating settings.xml with server-id: github
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.3174825Z Writing to /home/runner/.m2/settings.xml
+stage7b full instrumentation — API 36	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:08.7384463Z gradle cache is not found
+stage7b full instrumentation — API 36	Set up required Android SDK packages	﻿2026-10-23T19:24:08.7548498Z ##[group]Run android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.7548962Z with:
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.7549255Z   packages: platform-tools platforms;android-36 build-tools;36.0.0
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.7549660Z   log-accepted-android-sdk-licenses: false
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.7549975Z   cmdline-tools-version: 12266719
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.7550248Z   accept-android-sdk-licenses: true
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.7550499Z env:
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.7550692Z   CI_VERIFICATION_SCOPE: stage7b
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.7551059Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.7551561Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.7551963Z ##[endgroup]
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.8227274Z Found preinstalled sdkmanager in /usr/local/lib/android/sdk/cmdline-tools/latest with following source.properties:
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.8228666Z Pkg.Revision=12.0
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.8229061Z Pkg.Path=cmdline-tools;12.0
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.8229579Z Pkg.Desc=Android SDK Command-line Tools
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.8229908Z 
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.8230109Z Wrong version in preinstalled sdkmanager
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:08.8231104Z Downloading commandline tools from https://dl.google.com/android/repository/commandlinetools-linux-12266719_latest.zip
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:09.8509009Z [command]/usr/bin/unzip -o -q /home/runner/work/_temp/7f4c8841-7bfb-4ac3-ae43-172cb1766b42
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:10.6271722Z Accepting Android SDK licenses
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:13.1301556Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager platform-tools
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:13.8968105Z Loading package information...                                                  
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.0037995Z Loading local repository...                                                     
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.0039126Z [                                       ] 3% Loading local repository...        
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.0126194Z [                                       ] 3% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.3548011Z [=                                      ] 3% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.4200732Z [=                                      ] 4% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.4700135Z [=                                      ] 5% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.5185815Z [==                                     ] 5% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.6021849Z [==                                     ] 6% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.6838241Z [==                                     ] 7% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.6877850Z [==                                     ] 7% Computing updates...               
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.6965027Z [===                                    ] 8% Computing updates...               
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.7029275Z [===                                    ] 10% Computing updates...              
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.7030223Z [=======================================] 100% Computing updates...             
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.7031062Z 
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:14.7345204Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager platforms;android-36
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:15.5218630Z Loading package information...                                                  
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:15.6237306Z Loading local repository...                                                     
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:15.6240404Z [                                       ] 3% Loading local repository...        
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:15.6331239Z [                                       ] 3% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:16.0408631Z [=                                      ] 3% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:16.1150014Z [=                                      ] 4% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:16.1476675Z [=                                      ] 5% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:16.2095046Z [==                                     ] 5% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:16.2854201Z [==                                     ] 6% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:16.3788203Z [==                                     ] 7% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:16.3789493Z [==                                     ] 7% Computing updates...               
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:16.3929266Z [===                                    ] 8% Computing updates...               
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:16.3974729Z [===                                    ] 10% Computing updates...              
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:16.3975804Z [=======================================] 100% Computing updates...             
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:16.3976720Z 
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:16.4364063Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager build-tools;36.0.0
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:17.2615623Z Loading package information...                                                  
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:17.3680370Z Loading local repository...                                                     
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:17.3690253Z [                                       ] 3% Loading local repository...        
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:17.3772740Z [                                       ] 3% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:17.6558437Z [=                                      ] 3% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:17.7939706Z [=                                      ] 4% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:17.8440481Z [=                                      ] 5% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:17.9042066Z [==                                     ] 5% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:17.9844060Z [==                                     ] 6% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:18.0772884Z [==                                     ] 7% Fetch remote repository...         
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:18.0797703Z [==                                     ] 7% Computing updates...               
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:18.0904822Z [===                                    ] 8% Computing updates...               
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:18.0987815Z [===                                    ] 10% Computing updates...              
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:18.0988833Z [=======================================] 100% Computing updates...             
+stage7b full instrumentation — API 36	Set up required Android SDK packages	2026-10-23T19:24:18.1021302Z 
+stage7b full instrumentation — API 36	Enable KVM group perms	﻿2026-10-23T19:24:18.1348621Z ##[group]Run echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+stage7b full instrumentation — API 36	Enable KVM group perms	2026-10-23T19:24:18.1349510Z ^[[36;1mecho 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules^[[0m
+stage7b full instrumentation — API 36	Enable KVM group perms	2026-10-23T19:24:18.1350256Z ^[[36;1msudo udevadm control --reload-rules^[[0m
+stage7b full instrumentation — API 36	Enable KVM group perms	2026-10-23T19:24:18.1350574Z ^[[36;1msudo udevadm trigger --name-match=kvm^[[0m
+stage7b full instrumentation — API 36	Enable KVM group perms	2026-10-23T19:24:18.1412248Z shell: /usr/bin/bash -e {0}
+stage7b full instrumentation — API 36	Enable KVM group perms	2026-10-23T19:24:18.1412506Z env:
+stage7b full instrumentation — API 36	Enable KVM group perms	2026-10-23T19:24:18.1412715Z   CI_VERIFICATION_SCOPE: stage7b
+stage7b full instrumentation — API 36	Enable KVM group perms	2026-10-23T19:24:18.1413092Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+stage7b full instrumentation — API 36	Enable KVM group perms	2026-10-23T19:24:18.1413591Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+stage7b full instrumentation — API 36	Enable KVM group perms	2026-10-23T19:24:18.1414008Z   ANDROID_HOME: /usr/local/lib/android/sdk
+stage7b full instrumentation — API 36	Enable KVM group perms	2026-10-23T19:24:18.1414309Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+stage7b full instrumentation — API 36	Enable KVM group perms	2026-10-23T19:24:18.1414587Z ##[endgroup]
+stage7b full instrumentation — API 36	Enable KVM group perms	2026-10-23T19:24:18.1558682Z KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	﻿2026-10-23T19:24:18.1888175Z ##[group]Run java -version 2> stage5-ci-results/java-version.txt
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.1888670Z ^[[36;1mjava -version 2> stage5-ci-results/java-version.txt^[[0m
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.1889221Z ^[[36;1m"$ANDROID_HOME/emulator/emulator" -version > stage5-ci-results/emulator-version.txt 2>&1^[[0m
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.1889848Z ^[[36;1m"$ANDROID_HOME/emulator/emulator" -accel-check > stage5-ci-results/kvm.txt 2>&1^[[0m
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.1890414Z ^[[36;1msdkmanager --list_installed > stage5-ci-results/sdk-packages.txt^[[0m
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.1890833Z ^[[36;1mtest -r /dev/kvm && test -w /dev/kvm^[[0m
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.1946625Z shell: /usr/bin/bash -e {0}
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.1947133Z env:
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.1947355Z   CI_VERIFICATION_SCOPE: stage7b
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.1947728Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.1948254Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.1948672Z   ANDROID_HOME: /usr/local/lib/android/sdk
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.1949010Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.1949285Z ##[endgroup]
+stage7b full instrumentation — API 36	Record SDK, KVM and emulator diagnostics	2026-10-23T19:24:18.2399797Z ##[error]Process completed with exit code 127.
+stage7b full instrumentation — API 36	Summarize instrumentation results	﻿2026-10-23T19:24:18.2467333Z ##[group]Run python3 - <<'PYEOF' | tee stage5-ci-results/instrumentation-counts.txt | tee -a "$GITHUB_STEP_SUMMARY"
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2468769Z ^[[36;1mpython3 - <<'PYEOF' | tee stage5-ci-results/instrumentation-counts.txt | tee -a "$GITHUB_STEP_SUMMARY"^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2469675Z ^[[36;1mimport glob^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2470073Z ^[[36;1mimport xml.etree.ElementTree as ET^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2470979Z ^[[36;1mxmls = sorted(glob.glob('app/build/outputs/androidTest-results/connected/**/*.xml', recursive=True))^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2471862Z ^[[36;1mif not xmls:^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2472640Z ^[[36;1m    print('No instrumentation result XML files found (suite may have failed before producing results).')^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2473544Z ^[[36;1m    raise SystemExit(0)^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2474102Z ^[[36;1mtotals = dict(tests=0, failures=0, errors=0, skipped=0)^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2474686Z ^[[36;1mfor path in xmls:^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2475115Z ^[[36;1m    root = ET.parse(path).getroot()^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2475649Z ^[[36;1m    for key in totals:^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2476119Z ^[[36;1m        totals[key] += int(root.get(key, 0) or 0)^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2476671Z ^[[36;1mprint(f'Result files: {len(xmls)}')^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2477711Z ^[[36;1mprint('Tests: {tests}  Failures: {failures}  Errors: {errors}  Skipped: {skipped}'.format(**totals))^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2478532Z ^[[36;1mPYEOF^[[0m
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2550506Z shell: /usr/bin/bash -e {0}
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2550757Z env:
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2550957Z   CI_VERIFICATION_SCOPE: stage7b
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2551335Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2551832Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2552256Z   ANDROID_HOME: /usr/local/lib/android/sdk
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2552568Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2552847Z ##[endgroup]
+stage7b full instrumentation — API 36	Summarize instrumentation results	2026-10-23T19:24:18.2848489Z No instrumentation result XML files found (suite may have failed before producing results).
+stage7b full instrumentation — API 36	Upload instrumentation evidence	﻿2026-10-23T19:24:18.2957572Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2958024Z with:
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2958387Z   name: stage7b-instrumentation-api36-0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2959616Z   path: app/build/outputs/androidTest-results/connected/**
+stage7b full instrumentation — API 36	Upload instrumentation evidence	app/build/reports/androidTests/**
+stage7b full instrumentation — API 36	Upload instrumentation evidence	app/build/test-results/testDebugUnitTest/**
+stage7b full instrumentation — API 36	Upload instrumentation evidence	app/build/reports/tests/testDebugUnitTest/**
+stage7b full instrumentation — API 36	Upload instrumentation evidence	app/build/reports/lint-results-debug.*
+stage7b full instrumentation — API 36	Upload instrumentation evidence	app/build/outputs/logs/**
+stage7b full instrumentation — API 36	Upload instrumentation evidence	stage5-ci-results/**
+stage7b full instrumentation — API 36	Upload instrumentation evidence	
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2960710Z   if-no-files-found: warn
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2960936Z   retention-days: 14
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2961147Z   compression-level: 6
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2961360Z   overwrite: false
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2961574Z   include-hidden-files: false
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2961804Z env:
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2961991Z   CI_VERIFICATION_SCOPE: stage7b
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2962358Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2962849Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2963281Z   ANDROID_HOME: /usr/local/lib/android/sdk
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2963579Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.2963850Z ##[endgroup]
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.4565767Z (node:2814) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.4567549Z (Use `node --trace-deprecation ...` to show where the warning was created)
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.4638097Z Multiple search paths detected. Calculating the least common ancestor of all paths
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.4666637Z The least common ancestor is /home/runner/work/Goldberg/Goldberg. This will be the root directory of the artifact
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.4668006Z With the provided path, there will be 5 files uploaded
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.4668889Z Artifact name is valid!
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.4669398Z Root directory input is valid!
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.7902938Z Beginning upload of artifact content to blob storage
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:18.8156605Z (node:2814) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:19.0402438Z Uploaded bytes 1368
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:19.1016017Z Finished uploading artifact content to blob storage!
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:19.1018063Z SHA256 digest of uploaded artifact zip is cf4fd1040124d460998c033a252320f04f21f82c9aac8f96da15653e0885bf1d
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:19.1019322Z Finalizing artifact upload
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:19.6189480Z Artifact stage7b-instrumentation-api36-0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e.zip successfully finalized. Artifact ID 12525568699
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:19.6191079Z Artifact stage7b-instrumentation-api36-0703cd8ec40a86e6f92e7fd9cf172c5921e1e90e has been successfully uploaded! Final size is 1368 bytes. Artifact ID is 12525568699
+stage7b full instrumentation — API 36	Upload instrumentation evidence	2026-10-23T19:24:19.6195830Z Artifact download URL: https://github.com/stokonn/Goldberg/actions/runs/40011091868/artifacts/12525568699
+stage7b full instrumentation — API 36	Post Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	﻿2026-10-23T19:24:19.6377982Z Post job cleanup.
+stage7b full instrumentation — API 36	Post Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:19.7690134Z (node:2826) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+stage7b full instrumentation — API 36	Post Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-23T19:24:19.7691344Z (Use `node --trace-deprecation ...` to show where the warning was created)
+stage7b full instrumentation — API 36	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	﻿2026-10-23T19:24:19.7933388Z Post job cleanup.
+stage7b full instrumentation — API 36	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:19.8852512Z [command]/usr/bin/git version
+stage7b full instrumentation — API 36	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:19.8894327Z git version 2.55.0
+stage7b full instrumentation — API 36	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:19.8935115Z Temporarily overriding HOME='/home/runner/work/_temp/7a3091fd-7e3e-46df-938f-149b5fe08b61' before making global git config changes
+stage7b full instrumentation — API 36	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:19.8937357Z Adding repository directory to the temporary git global config as a safe directory
+stage7b full instrumentation — API 36	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:19.8941152Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goldberg/Goldberg
+stage7b full instrumentation — API 36	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:19.8980687Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+stage7b full instrumentation — API 36	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:19.9015635Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+stage7b full instrumentation — API 36	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:19.9261149Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+stage7b full instrumentation — API 36	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:19.9298960Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+stage7b full instrumentation — API 36	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:19.9552404Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+stage7b full instrumentation — API 36	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-23T19:24:19.9590160Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+stage7b full instrumentation — API 36	Complete job	﻿2026-10-23T19:24:19.9987580Z Cleaning up orphan processes
+stage7b full instrumentation — API 36	Complete job	2026-10-23T19:24:20.0457961Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02, android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

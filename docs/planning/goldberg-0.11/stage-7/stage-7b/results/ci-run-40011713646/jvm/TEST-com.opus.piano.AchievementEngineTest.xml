@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.AchievementEngineTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-23T19:34:20.822Z" hostname="runnervm8k3b6" time="0.232">
+  <properties/>
+  <testcase name="weekAndMonthNeedConsecutiveCalendarDaysAndSkipMissingDays" classname="com.opus.piano.AchievementEngineTest" time="0.107"/>
+  <testcase name="repeatedEvaluationKeepsTheFirstVerificationTimestampAndNeverRevokes" classname="com.opus.piano.AchievementEngineTest" time="0.005"/>
+  <testcase name="collectionThresholdsAreExactAndMasteryUsesExistingReadyStatus" classname="com.opus.piano.AchievementEngineTest" time="0.034"/>
+  <testcase name="baroquePracticeCountsDistinctWorksAndSurvivesRepertoireDeletion" classname="com.opus.piano.AchievementEngineTest" time="0.003"/>
+  <testcase name="allDefinedMilestonesCanBeEarnedFromRealFacts" classname="com.opus.piano.AchievementEngineTest" time="0.041"/>
+  <testcase name="daylightSavingUsesDatesRatherThanElapsed24HourWindows" classname="com.opus.piano.AchievementEngineTest" time="0.017"/>
+  <testcase name="stableComposerIdWinsOverAnEditedDisplayName" classname="com.opus.piano.AchievementEngineTest" time="0.001"/>
+  <testcase name="midnightUsesTheCompletionDayAndTimeZoneChangesDoNotRewriteIt" classname="com.opus.piano.AchievementEngineTest" time="0.005"/>
+  <testcase name="tenSessionThresholdAndDurationProgressUseOnlyValidSessions" classname="com.opus.piano.AchievementEngineTest" time="0.002"/>
+  <testcase name="keyboardGenreDoesNotFabricatePianoInstrumentation" classname="com.opus.piano.AchievementEngineTest" time="0.004"/>
+  <testcase name="appLaunchAndSubsecondSessionsDoNotUnlockPracticeBadges" classname="com.opus.piano.AchievementEngineTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

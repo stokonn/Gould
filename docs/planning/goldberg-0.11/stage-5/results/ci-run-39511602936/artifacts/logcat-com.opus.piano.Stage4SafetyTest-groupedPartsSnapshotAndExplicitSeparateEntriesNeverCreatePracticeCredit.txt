@@ -1,0 +1,2 @@
+10-20 23:05:52.899  4034  4122 I TestRunner: started: groupedPartsSnapshotAndExplicitSeparateEntriesNeverCreatePracticeCredit(com.opus.piano.Stage4SafetyTest)
+10-20 23:05:52.913  4034  4122 I TestRunner: finished: groupedPartsSnapshotAndExplicitSeparateEntriesNeverCreatePracticeCredit(com.opus.piano.Stage4SafetyTest)

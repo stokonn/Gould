@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8c/verify_navigation.py", line 64, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8c/verify_navigation.py", line 52, in main
+    assert next(n for n in state['nodes'] if n.get('description')==target)['checked']==expected
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+StopIteration

@@ -1,0 +1,17 @@
+== restore mobile data and Wi-Fi (upgrade helper left both disabled; clear airplane mode in case the offline fallback engaged) ==
+== expect Wi-Fi as active default network ==
+FATAL: expected a numeric active default network for transport WIFI, got: 'none'
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '
+FATAL: no "type:" token in ni of active-network block: 'WIFI CONNECTED extra: '

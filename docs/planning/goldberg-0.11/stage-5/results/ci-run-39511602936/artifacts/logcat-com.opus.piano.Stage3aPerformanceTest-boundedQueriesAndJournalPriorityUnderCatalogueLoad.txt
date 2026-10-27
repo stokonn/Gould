@@ -1,0 +1,63 @@
+10-20 23:05:26.544  4034  4122 I TestRunner: started: boundedQueriesAndJournalPriorityUnderCatalogueLoad(com.opus.piano.Stage3aPerformanceTest)
+10-20 23:05:26.977   643   914 D WifiClientModeImpl[34482:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=2 freq=2437 RxLinkSpeed=2
+10-20 23:05:26.977   643   914 D WifiDataStall: tx tput in kbps: 37000
+10-20 23:05:26.977   643   914 D WifiDataStall: rx tput in kbps: 37000
+10-20 23:05:26.977   643   914 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+10-20 23:05:26.977   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:26.977   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:26.977   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:26.977   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:26.977   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:26.977   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:26.977   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:26.977   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:26.977   643   914 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 14224604 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 2Mbps, Tx Link speed: 2Mbps, Max Supported Tx Link speed: 54Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+10-20 23:05:26.977   643   914 D WifiScoreCard: txRate: 415 txSpeed: 2
+10-20 23:05:26.977   643   914 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 1928051533 RSSI -50 txSpeed 2
+10-20 23:05:26.977   643   914 D WifiClientModeImpl[34482:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=60 link=2 tx=414.5, 0.0, 0.0 rx=2807.4 bcn=0 [on:0 tx:0 rx:0 period:3003] from screen [on:0 period:1536164545] score=60
+10-20 23:05:27.436   643   686 I WifiService: isFeatureSupported uid=1000 returns [WIFI_FEATURE_INFRA, WIFI_FEATURE_P2P, WIFI_FEATURE_MOBILE_HOTSPOT, WIFI_FEATURE_WPA3_SAE, WIFI_FEATURE_WPA3_SUITE_B, WIFI_FEATURE_OWE, WIFI_FEATURE_DPP, WIFI_FEATURE_AP_RAND_MAC, WIFI_FEATURE_MBO, WIFI_FEATURE_FILS_SHA256, WIFI_FEATURE_FILS_SHA384, WIFI_FEATURE_SAE_PK, WIFI_FEATURE_DPP_ENROLLEE_RESPONDER, WIFI_FEATURE_PASSPOINT_TERMS_AND_CONDITIONS, WIFI_FEATURE_WFD_R2, WIFI_FEATURE_DECORATED_IDENTITY, WIFI_FEATURE_TRUST_ON_FIRST_USE, WIFI_FEATURE_SET_TLS_MINIMUM_VERSION, WIFI_FEATURE_TLS_V1_3, WIFI_FEATURE_WEP, WIFI_FEATURE_WPA_PERSONAL]
+10-20 23:05:28.031  2303  4636 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+10-20 23:05:28.038   446   476 I netd    : tetherGetStats() -> {[]} <3.04ms>
+10-20 23:05:28.057  2303  4636 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2526359260800+mlkit.ocr.common+vision.ocr,tflite_dynamite:2640104055100800+tflite_dynamite
+10-20 23:05:28.066   643  1957 D FileUtils: Rounded bytes from 2593067008 to 4000000000
+10-20 23:05:28.067  2303  4636 I GmsDebugLogger: [73] 1801
+10-20 23:05:28.069  2303  4636 W ZappDownloader: No successful Zapp module downloads for requested modules [MlkitOcrCommon.optional:252635100800:permitMetered, VisionOcr.optional:252635100000:permitMetered, TfliteDynamiteDynamite.integ:264010405100800:permitMetered].
+10-20 23:05:28.072  2303  4636 I GmsDebugLogger: [30] [MlkitOcrCommon.optional:252635100800],[VisionOcr.optional:252635100000],[TfliteDynamiteDynamite.integ:264010405100800]
+10-20 23:05:28.076  2303  4636 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+10-20 23:05:28.077  2303  4636 I GmsDebugLogger: [83] 1 [vision.ocr]
+10-20 23:05:28.081  2303  4648 W Vision  : Request for optional module download of ocr failed. Request again.
+10-20 23:05:28.082  2303  4648 W Vision  : Would have logged:
+10-20 23:05:28.082  2303  4648 W Vision  : # gptm@37884fe7
+10-20 23:05:28.082  2303  4648 I Vision  : Schedule retrying download ocr at 153664 with backoff 20 seconds
+10-20 23:05:29.298   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:05:29.298   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:05:29.298   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={10136} in 1ms
+10-20 23:05:29.299   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:05:29.299   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:05:29.299   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={20136} in 1ms
+10-20 23:05:29.978   643   914 D WifiClientModeImpl[34482:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=2 freq=2437 RxLinkSpeed=2
+10-20 23:05:29.978   643   914 D WifiDataStall: tx tput in kbps: 37000
+10-20 23:05:29.978   643   914 D WifiDataStall: rx tput in kbps: 37000
+10-20 23:05:29.978   643   914 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+10-20 23:05:29.978   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:29.978   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:29.978   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:29.978   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:29.978   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:29.978   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:29.978   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:05:29.978   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:05:29.979   643   914 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 14224604 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 2Mbps, Tx Link speed: 2Mbps, Max Supported Tx Link speed: 54Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+10-20 23:05:29.980   643   914 D WifiScoreCard: txRate: 153 txSpeed: 2
+10-20 23:05:29.980   643   914 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 1928051533 RSSI -50 txSpeed 2
+10-20 23:05:29.982   643   914 D WifiClientModeImpl[34482:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=60 link=2 tx=152.4, 0.0, 0.0 rx=1032.1 bcn=0 [on:0 tx:0 rx:0 period:3005] from screen [on:0 period:1536167550] score=60
+10-20 23:05:30.068   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:05:30.068   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:05:30.068   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={10196} in 1ms
+10-20 23:05:31.250   446   476 I netd    : tetherGetStats() -> {[]} <0.32ms>
+10-20 23:05:31.392   643   675 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:31.393   643   675 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:31.393   643   675 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:05:31.838  4034  4130 I SQLiteConnection: Long db operation: /data/user/0/com.opus.piano/databases/stage3a-perf-7b68130a-153d-4651-830a-1c2e0550ff5f.db
+10-20 23:05:32.146  4034  4122 I System.out: STAGE3A_PERFORMANCE {"api":36,"rows":10000,"buildMs":5292.771879,"querySamplesMs":[4.769735,1.281455,1.080687,1.120045,1.001288,1.039035,1.20405,1.068979,0.997102,1.038613,1.086065,1.171742,1.001649,1.006827,1.065494,1.004764,0.997994,1.040346,1.018003,1.006757,1.073285,1.048358,1.095048,1.010352,1.029229,1.193084,1.04968,1.00912,0.983091,1.123009,1.042279],"queryMedianMs":1.042279,"queryP95Ms":1.281455,"journalReadyUnderLoadMs":12.0951,"databaseBytes":7348224,"sessionDurationMillis":250,"singleCreditReconciled":true}
+10-20 23:05:32.150  4034  4122 I TestRunner: finished: boundedQueriesAndJournalPriorityUnderCatalogueLoad(com.opus.piano.Stage3aPerformanceTest)

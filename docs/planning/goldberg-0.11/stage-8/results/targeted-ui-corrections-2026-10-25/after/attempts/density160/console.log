@@ -1,0 +1,41 @@
+en-light-1p0-small-navhost [{'step': 0, 'focus': [('Admin Settings', None)]}, {'step': 1, 'focus': [('Off by default. Background checks use unmetered Wi-Fi unless you explicitly allow mobile data.', None)]}, {'step': 2, 'focus': [(None, 'Local notifications')]}, {'step': 3, 'focus': [(None, 'Background checks (approximately every 3 hours)')]}, {'step': 4, 'focus': [(None, 'Allow mobile and metered data for admin checks')]}, {'step': 5, 'focus': [(None, None)]}, {'step': 6, 'focus': [(None, None)]}, {'step': 7, 'focus': [(None, None)]}, {'step': 8, 'focus': [(None, 'Home')]}, {'step': 9, 'focus': [(None, 'Library')]}]
+en-light-1p0-small-navhost {'pid': 7740, 'uptime': 1097070, 'locale': 'en', 'fontScale': 1, 'profileTheme': 'Light', 'touchExploration': 0, 'animatorScale': 1, 'transitionScale': 1, 'windowScale': 1, 'notificationGranted': False, 'activeNotificationIds': [], 'lightStatusBars': True, 'lightNavigationBars': True, 'systemNight': 16, 'scaffold': False, 'imeVisible': False, 'imeBottom': 0}
+en-light-1p3-small-navhost {'pid': 8237, 'uptime': 1117257, 'locale': 'en', 'fontScale': 1.3, 'profileTheme': 'Light', 'touchExploration': 0, 'animatorScale': 1, 'transitionScale': 1, 'windowScale': 1, 'notificationGranted': False, 'activeNotificationIds': [], 'lightStatusBars': True, 'lightNavigationBars': True, 'systemNight': 16, 'scaffold': False, 'imeVisible': False, 'imeBottom': 0}
+en-light-1p5-small-navhost {'pid': 8478, 'uptime': 1128374, 'locale': 'en', 'fontScale': 1.5, 'profileTheme': 'Light', 'touchExploration': 0, 'animatorScale': 1, 'transitionScale': 1, 'windowScale': 1, 'notificationGranted': False, 'activeNotificationIds': [], 'lightStatusBars': True, 'lightNavigationBars': True, 'systemNight': 16, 'scaffold': False, 'imeVisible': False, 'imeBottom': 0}
+en-light-2p0-small-navhost {'pid': 8716, 'uptime': 1139268, 'locale': 'en', 'fontScale': 2, 'profileTheme': 'Light', 'touchExploration': 0, 'animatorScale': 1, 'transitionScale': 1, 'windowScale': 1, 'notificationGranted': False, 'activeNotificationIds': [], 'lightStatusBars': True, 'lightNavigationBars': True, 'systemNight': 16, 'scaffold': False, 'imeVisible': False, 'imeBottom': 0}
+en-dark-1p0-small-navhost {'pid': 8957, 'uptime': 1150516, 'locale': 'en', 'fontScale': 1, 'profileTheme': 'Dark', 'touchExploration': 0, 'animatorScale': 1, 'transitionScale': 1, 'windowScale': 1, 'notificationGranted': False, 'activeNotificationIds': [], 'lightStatusBars': False, 'lightNavigationBars': False, 'systemNight': 32, 'scaffold': False, 'imeVisible': False, 'imeBottom': 0}
+en-dark-1p3-small-navhost {'pid': 9196, 'uptime': 1161398, 'locale': 'en', 'fontScale': 1.3, 'profileTheme': 'Dark', 'touchExploration': 0, 'animatorScale': 1, 'transitionScale': 1, 'windowScale': 1, 'notificationGranted': False, 'activeNotificationIds': [], 'lightStatusBars': False, 'lightNavigationBars': False, 'systemNight': 32, 'scaffold': False, 'imeVisible': False, 'imeBottom': 0}
+en-dark-1p5-small-navhost {'pid': 9431, 'uptime': 1172300, 'locale': 'en', 'fontScale': 1.5, 'profileTheme': 'Dark', 'touchExploration': 0, 'animatorScale': 1, 'transitionScale': 1, 'windowScale': 1, 'notificationGranted': False, 'activeNotificationIds': [], 'lightStatusBars': False, 'lightNavigationBars': False, 'systemNight': 32, 'scaffold': False, 'imeVisible': False, 'imeBottom': 0}
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/run_assessments.py", line 93, in run
+    s=snap(prefix+'-focus-'+str(i))
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/emulator_probe.py", line 31, in snap
+    adb('shell', 'run-as', 'com.opus.piano', 'touch', 'files/manual-capture-' + name)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/emulator_probe.py", line 20, in adb
+    result.check_returncode()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib64/python3.14/subprocess.py", line 509, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+                             self.stderr)
+subprocess.CalledProcessError: Command '['/home/stokonn/Android/Sdk/platform-tools/adb', '-s', 'emulator-5580', 'shell', 'run-as', 'com.opus.piano', 'touch', 'files/manual-capture-en-dark-2p0-small-navhost-focus-2']' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8c/run_after_matrix.py", line 10, in <module>
+    matrix.run(locale,theme,font,size=size,with_talkback=size=='small' and (locale,theme,font) in [('en','Light','1.0'),('cs','Dark','1.3'),('en','Dark','2.0'),('cs','Light','1.5')])
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/run_assessments.py", line 100, in run
+    talkback(False)
+    ~~~~~~~~^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/run_assessments.py", line 16, in talkback
+    adb('shell','settings','delete','secure','enabled_accessibility_services')
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/stokonn/Projects/Goldberg-Stage8/scripts/stage8/emulator_probe.py", line 20, in adb
+    result.check_returncode()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib64/python3.14/subprocess.py", line 509, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+                             self.stderr)
+subprocess.CalledProcessError: Command '['/home/stokonn/Android/Sdk/platform-tools/adb', '-s', 'emulator-5580', 'shell', 'settings', 'delete', 'secure', 'enabled_accessibility_services']' returned non-zero exit status 1.

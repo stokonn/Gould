@@ -35,3 +35,223 @@ docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/android-json-f
 # Preserve byte-exact BFF raw logs and TAP failure evidence.
 services/community-bff/results/*/*.log -whitespace
 services/community-bff/results/*/*.tap -whitespace
+
+# Preserve raw Stage 7B tool diagnostics byte-for-byte, including emitted whitespace.
+# Source, structured results and documentation retain normal whitespace checks.
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/**/*.log -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/apk-signing.txt -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/**/emulator-version.txt -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/**/sdk-packages.txt -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/ci-run-*/artifact/stage5-ci-results/*.txt -whitespace
+# Android's raw instrumentation XML uses CRLF; retain all other whitespace checks.
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/ci-run-*/instrumentation/*.xml -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve original manual Android service/console diagnostics, including CRLF/spaces.
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/accessibility-after-allow.txt -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/accessibility-enabled.txt -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/console-EV_ABS.txt -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/console-EV_KEY.txt -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/console-mouse.txt -whitespace
+
+# Preserve exact Stage 8B read-only Git comparison evidence, including diff context.
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/main-ci.diff -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/stage7a-unique-docs.diff -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/stage6-overlap.diff -whitespace
+
+# Byte-exact Stage 8B tool diagnostics retain native trailing/terminal blank lines.
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/apk-signing.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/attempts/1792887692339544587/en-light-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/attempts/1792887972326356814/en-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/attempts/1792887984194343604/cs-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/attempts/1792887996305969566/cs-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/attempts/1792888046624145536/en-light-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-1.3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-dark-2p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-light-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-light-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-light-1p3-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-light-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/cs-light-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/default-runner-manifest.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/emulator-boot.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-dark-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-dark-1p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-dark-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-dark-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-dark-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-light-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-light-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-light-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-light-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/en-light-2p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/recorder-compile-initial-failed.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/recorder-compile-passed.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/trusted-baseline-signing.txt -whitespace
+
+# Preserve exact automatic Stage 8B source-quality diagnostics.
+docs/planning/goldberg-0.11/stage-8/results/automatic-quality-40147220442/quality.log -whitespace
+
+# Byte-exact Stage8C host/native diagnostic attempts.
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/focused-initial-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/focused-role-contract-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/focused-semantics-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/responsive-wrap-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/before/attempts/1792906622058539777/en-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/before/en-dark-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/before/en-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/before/en-light-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/candidate-signing.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/host-initial.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/refined-signing.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-build-role-contract.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-emulator-restart.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-host-final.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-host-semantics.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-host-wrap.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-probe-build.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-probe-density-build.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/stage8c-probe-wrap-build.log -whitespace
+
+# Preserve Stage8C completed recorder/transport/CI raw diagnostics exactly.
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/adb-drop-logcat.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/density160/en-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/density160/en-dark-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/density160/en-dark-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/density160/en-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/density160/en-light-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/density160/en-light-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/density160/en-light-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/cs-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/cs-dark-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/cs-dark-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/cs-dark-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/cs-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/cs-light-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/cs-light-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/cs-light-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/en-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/en-dark-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/en-dark-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/en-dark-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/en-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/en-light-1p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/en-light-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/en-light-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/initial-wrap/en-light-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/navigation-1792909596246086956/instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/navigation-1792909646910570133/instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/navigation-1792909723606525864/instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/navigation-1792909775848179355/instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/navigation-1792909836936654517/instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/attempts/transport-5580/emulator.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-dark-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-dark-1p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-dark-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-dark-1p3-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-dark-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-dark-1p5-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-dark-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-dark-2p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-light-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-light-1p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-light-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-light-1p3-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-light-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-light-1p5-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-light-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/cs-light-2p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-dark-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-dark-1p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-dark-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-dark-1p3-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-dark-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-dark-1p5-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-dark-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-dark-2p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-light-1p0-small-scaffold-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-light-1p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-light-1p3-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-light-1p3-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-light-1p5-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-light-1p5-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-light-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/en-light-2p0-standard-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/navigation/instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/opposite-system/cs-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/opposite-system/cs-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/opposite-system/en-dark-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/opposite-system/en-light-1p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/after/scroll-2x/cs-dark-2p0-small-navhost-instrumentation.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-quality-40168589919/raw.log -whitespace
+
+# Preserve source-bound Stage8C CI1 diagnostics and native XML bytes.
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40168644562-failed/raw.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40168644562-failed/stage5-ci-results/adb-devices.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40168644562-failed/stage5-ci-results/emulator-version.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40168644562-failed/stage5-ci-results/host-gradle.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40168644562-failed/stage5-ci-results/instrumentation-gradle.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40168644562-failed/stage5-ci-results/logcat.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40168644562-failed/stage5-ci-results/sdk-packages.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/native-insets.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/pointer-insets-build.log -whitespace
+
+# Preserve exact source-bound Stage8C native XML bytes.
+"docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40168644562-failed/app/build/outputs/androidTest-results/connected/debug/TEST-emulator-5554 - 16-_app-.xml" -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+"docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/app/build/outputs/androidTest-results/connected/debug/TEST-emulator-5554 - 16-_app-.xml" -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve Stage8C successful CI2 raw diagnostics exactly.
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/raw.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/adb-devices.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/emulator-version.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/host-gradle.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/instrumentation-gradle.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/logcat.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/targeted-ui-corrections-2026-10-25/ci-native-40170295032/stage5-ci-results/sdk-packages.txt -whitespace
+
+# Preserve independent Stage8 raw diagnostics and authored fixture correction patch.
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/actualKilledRestoreCanRetryAndChecksumFailureCanRetryWithoutDataLoss.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/background-prepare-valid-uuid.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/emulator-retry.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/forced-low-storage.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/ime-after-back.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/ime-before-back.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/practice-after-process-death.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/practice-after-reboot.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/prepareOfflineBundleAndPeriodicWorkForReboot.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/probes.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/recoveredPracticeCompletesExactlyOnce.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/restore-verify-after_commit.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/restore-verify-after_preferences.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/restore-verify-before_ack.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/restore-verify-before_commit.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/retryInterruptedMigrationRetainsEveryOriginalCell.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/test-build-background.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/test-build-fixed.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/test-build-restore-retry.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/test-build-retry.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/test-build-uuid.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/upgradedJournalBackupRoundTripAndRejectedRestoreRetainData.txt -whitespace
+docs/planning/goldberg-0.11/stage-8/results/independent-android-2026-10-25/verifyOfflineBundleAndPeriodicWorkAfterReboot.txt -whitespace
+
+# Preserve byte-exact canonical integration test evidence.
+docs/planning/goldberg-0.11/stage-8/results/canonical-integration-2026-10-25/*.log -whitespace
+docs/planning/goldberg-0.11/stage-8/results/canonical-integration-2026-10-25/*/*.log -whitespace
+
+# Preserve imported, already-verified raw CI/native evidence byte-for-byte.
+docs/planning/goldberg-0.11/stage-5/results/** -whitespace
+docs/planning/goldberg-0.11/stage-7/stage-7a/results/** -whitespace
+docs/planning/goldberg-0.11/stage-8/discover-repair/ci-*/** -whitespace
+docs/planning/goldberg-0.11/stage-8/discover-repair/host-results/** -whitespace
+docs/planning/goldberg-0.11/stage-6/results/integrated-baseline-2026-10-27/host-gradle.log -whitespace

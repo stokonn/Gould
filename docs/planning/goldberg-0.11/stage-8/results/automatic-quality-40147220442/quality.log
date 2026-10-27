@@ -1,0 +1,436 @@
+host-quality	Set up job	﻿2026-10-25T00:34:28.6059997Z Current runner version: '2.338.0'
+host-quality	Set up job	2026-10-25T00:34:28.6084793Z ##[group]Runner Image Provisioner
+host-quality	Set up job	2026-10-25T00:34:28.6085735Z Hosted Compute Agent
+host-quality	Set up job	2026-10-25T00:34:28.6086361Z Version: 20261021.618
+host-quality	Set up job	2026-10-25T00:34:28.6087030Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+host-quality	Set up job	2026-10-25T00:34:28.6087832Z Build Date: 2026-10-21T00:45:21Z
+host-quality	Set up job	2026-10-25T00:34:28.6088972Z Worker ID: {6d7f59d8-6110-4b57-bd20-d647d01eae4a}
+host-quality	Set up job	2026-10-25T00:34:28.6089896Z Region: centralus
+host-quality	Set up job	2026-10-25T00:34:28.6090515Z Cloud: Azure
+host-quality	Set up job	2026-10-25T00:34:28.6091084Z ##[endgroup]
+host-quality	Set up job	2026-10-25T00:34:28.6092682Z ##[group]Operating System
+host-quality	Set up job	2026-10-25T00:34:28.6093337Z Ubuntu
+host-quality	Set up job	2026-10-25T00:34:28.6093845Z 24.04.5
+host-quality	Set up job	2026-10-25T00:34:28.6094426Z LTS
+host-quality	Set up job	2026-10-25T00:34:28.6094968Z ##[endgroup]
+host-quality	Set up job	2026-10-25T00:34:28.6095542Z ##[group]Runner Image
+host-quality	Set up job	2026-10-25T00:34:28.6096203Z Image: ubuntu-24.04
+host-quality	Set up job	2026-10-25T00:34:28.6096750Z Version: 20261012.334.1
+host-quality	Set up job	2026-10-25T00:34:28.6097881Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+host-quality	Set up job	2026-10-25T00:34:28.6099927Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+host-quality	Set up job	2026-10-25T00:34:28.6100986Z ##[endgroup]
+host-quality	Set up job	2026-10-25T00:34:28.6102080Z ##[group]GITHUB_TOKEN Permissions
+host-quality	Set up job	2026-10-25T00:34:28.6104276Z Contents: read
+host-quality	Set up job	2026-10-25T00:34:28.6104907Z Metadata: read
+host-quality	Set up job	2026-10-25T00:34:28.6105896Z ##[endgroup]
+host-quality	Set up job	2026-10-25T00:34:28.6107989Z Secret source: Actions
+host-quality	Set up job	2026-10-25T00:34:28.6109285Z Cache mode: write
+host-quality	Set up job	2026-10-25T00:34:28.6110395Z Prepare workflow directory
+host-quality	Set up job	2026-10-25T00:34:28.6458005Z Prepare all required actions
+host-quality	Set up job	2026-10-25T00:34:28.6506422Z Getting action download info
+host-quality	Set up job	2026-10-25T00:34:28.9063396Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+host-quality	Set up job	2026-10-25T00:34:29.0272351Z Download action repository 'actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3' (SHA:cf277c60eb25467037889841efdb72551f06f6c3)
+host-quality	Set up job	2026-10-25T00:34:29.6311404Z Download action repository 'android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407' (SHA:9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407)
+host-quality	Set up job	2026-10-25T00:34:30.0693910Z Complete job name: host-quality
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	﻿2026-10-25T00:34:30.1715010Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1716949Z with:
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1717855Z   persist-credentials: false
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1719142Z   repository: stokonn/Goldberg
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1727721Z   token: ***
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1728714Z   ssh-strict: true
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1729635Z   ssh-user: git
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1730494Z   clean: true
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1731411Z   sparse-checkout-cone-mode: true
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1732495Z   fetch-depth: 1
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1733391Z   fetch-tags: false
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1734302Z   show-progress: true
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1735224Z   lfs: false
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1736083Z   submodules: false
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1737007Z   set-safe-directory: true
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1738059Z   allow-unsafe-pr-checkout: false
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.1739563Z ##[endgroup]
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.2845209Z Syncing repository: stokonn/Goldberg
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.2849900Z ##[group]Getting Git version info
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.2852191Z Working directory is '/home/runner/work/Goldberg/Goldberg'
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.2855658Z [command]/usr/bin/git version
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.2914639Z git version 2.55.0
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.2937037Z ##[endgroup]
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.2951839Z Temporarily overriding HOME='/home/runner/work/_temp/b58cfbb4-f95e-4950-862e-d61b982cd59e' before making global git config changes
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.2956886Z Adding repository directory to the temporary git global config as a safe directory
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.2961194Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goldberg/Goldberg
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3011901Z Deleting the contents of '/home/runner/work/Goldberg/Goldberg'
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3021145Z ##[group]Initializing the repository
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3031017Z [command]/usr/bin/git init /home/runner/work/Goldberg/Goldberg
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3167929Z hint: Using 'master' as the name for the initial branch. This default branch name
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3171774Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3174017Z hint: to use in all of your new repositories, which will suppress this warning,
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3175605Z hint: call:
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3176672Z hint:
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3177718Z hint: 	git config --global init.defaultBranch <name>
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3179691Z hint:
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3181072Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3183033Z hint: 'development'. The just-created branch can be renamed via this command:
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3184586Z hint:
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3185454Z hint: 	git branch -m <name>
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3186456Z hint:
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3187766Z hint: Disable this message with "git config set advice.defaultBranchName false"
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3190830Z Initialized empty Git repository in /home/runner/work/Goldberg/Goldberg/.git/
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3210620Z [command]/usr/bin/git remote add origin https://github.com/stokonn/Goldberg
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3261723Z ##[endgroup]
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3263656Z ##[group]Disabling automatic garbage collection
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3265521Z [command]/usr/bin/git config --local gc.auto 0
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3297714Z ##[endgroup]
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3300197Z ##[group]Setting up auth
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3309393Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3355271Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3779156Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.3820244Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.4047583Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.4087843Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.4312546Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.4353819Z ##[endgroup]
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.4357713Z ##[group]Fetching the repository
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:30.4366828Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +394b6b58b2adcb0eb07b4f873161bbd7cc70ed3c:refs/remotes/origin/feature/goldberg-0.11-stage-8
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:36.3315323Z From https://github.com/stokonn/Goldberg
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:36.3317779Z  * [new ref]         394b6b58b2adcb0eb07b4f873161bbd7cc70ed3c -> origin/feature/goldberg-0.11-stage-8
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:36.3322130Z ##[endgroup]
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:36.3323232Z ##[group]Determining the checkout info
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:36.3324076Z ##[endgroup]
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:36.3329270Z [command]/usr/bin/git sparse-checkout disable
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:36.3385753Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:36.3419242Z ##[group]Checking out the ref
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:36.3424664Z [command]/usr/bin/git checkout --progress --force -B feature/goldberg-0.11-stage-8 refs/remotes/origin/feature/goldberg-0.11-stage-8
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2220579Z Switched to a new branch 'feature/goldberg-0.11-stage-8'
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2225039Z branch 'feature/goldberg-0.11-stage-8' set up to track 'origin/feature/goldberg-0.11-stage-8'.
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2262683Z ##[endgroup]
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2311710Z [command]/usr/bin/git log -1 --format=%H
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2339575Z 394b6b58b2adcb0eb07b4f873161bbd7cc70ed3c
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2348541Z ##[group]Removing auth
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2352002Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2390701Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2617414Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2647122Z http.https://github.com/.extraheader
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2656073Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2694079Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2919508Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.2951107Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+host-quality	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:34:37.3174877Z ##[endgroup]
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	﻿2026-10-25T00:34:37.3526263Z ##[group]Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.3526699Z with:
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.3526919Z   distribution: temurin
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.3527147Z   java-version: 17
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.3527363Z   java-package: jdk
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.3527600Z   check-latest: false
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.3527839Z   server-id: github
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.3528062Z   server-username: GITHUB_ACTOR
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.3528321Z   server-password: GITHUB_TOKEN
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.3528914Z   overwrite-settings: true
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.3529163Z   job-status: success
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.3531549Z   token: ***
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.3531760Z ##[endgroup]
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5120621Z ##[warning]setup-java v4 is deprecated and will no longer receive updates. Please migrate to actions/setup-java@v5.
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5128127Z ##[group]Installed distributions
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5184681Z Resolved Java 17.0.20+1 from tool-cache
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5185232Z Setting Java 17.0.20+1 as the default
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5195893Z (node:2353) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5197219Z (Use `node --trace-deprecation ...` to show where the warning was created)
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5200701Z Creating toolchains.xml for JDK version 17 from temurin
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5276379Z Writing to /home/runner/.m2/toolchains.xml
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5276776Z 
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5277014Z Java configuration:
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5277419Z   Distribution: temurin
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5277797Z   Version: 17.0.20+1
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5278328Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5279068Z 
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5279518Z ##[endgroup]
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5294409Z Creating settings.xml with server-id: github
+host-quality	Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:34:37.5328173Z Writing to /home/runner/.m2/settings.xml
+host-quality	Set up required Android SDK packages	﻿2026-10-25T00:34:37.5533815Z ##[group]Run android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.5534556Z with:
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.5535027Z   packages: platform-tools platforms;android-36 build-tools;36.0.0
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.5535668Z   log-accepted-android-sdk-licenses: false
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.5536155Z   cmdline-tools-version: 12266719
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.5536591Z   accept-android-sdk-licenses: true
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.5537003Z env:
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.5537469Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.5538277Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.5539157Z ##[endgroup]
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.6532959Z Found preinstalled sdkmanager in /usr/local/lib/android/sdk/cmdline-tools/latest with following source.properties:
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.6534565Z Pkg.Revision=12.0
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.6534983Z Pkg.Path=cmdline-tools;12.0
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.6535440Z Pkg.Desc=Android SDK Command-line Tools
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.6535864Z 
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.6536042Z Wrong version in preinstalled sdkmanager
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:37.6536715Z Downloading commandline tools from https://dl.google.com/android/repository/commandlinetools-linux-12266719_latest.zip
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:38.6450495Z [command]/usr/bin/unzip -o -q /home/runner/work/_temp/cb1cde3e-e1ea-4a6e-a996-1043d88c5dc7
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:39.4088321Z Accepting Android SDK licenses
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:45.4474736Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager platform-tools
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:46.2272068Z Loading package information...                                                  
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:46.3293753Z Loading local repository...                                                     
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:46.3295316Z [                                       ] 3% Loading local repository...        
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:46.3385062Z [                                       ] 3% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:46.6509495Z [=                                      ] 3% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:46.7819485Z [=                                      ] 4% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:46.8193946Z [=                                      ] 5% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:46.8722205Z [==                                     ] 5% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:46.9595777Z [==                                     ] 6% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:47.0489752Z [==                                     ] 7% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:47.0509322Z [==                                     ] 7% Computing updates...               
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:47.0629677Z [===                                    ] 8% Computing updates...               
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:47.0691697Z [===                                    ] 10% Computing updates...              
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:47.0692674Z [=======================================] 100% Computing updates...             
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:47.0693422Z 
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:47.0909747Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager platforms;android-36
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:47.8762536Z Loading package information...                                                  
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:47.9892828Z Loading local repository...                                                     
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:47.9895079Z [                                       ] 3% Loading local repository...        
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:48.0008150Z [                                       ] 3% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:48.3450177Z [=                                      ] 3% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:48.4239921Z [=                                      ] 4% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:48.4559093Z [=                                      ] 5% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:48.5068282Z [==                                     ] 5% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:48.6005274Z [==                                     ] 6% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:48.6849685Z [==                                     ] 7% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:48.6860647Z [==                                     ] 7% Computing updates...               
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:48.6999440Z [===                                    ] 8% Computing updates...               
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:48.7059105Z [===                                    ] 10% Computing updates...              
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:48.7069465Z [=======================================] 100% Computing updates...             
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:48.7070372Z 
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:48.7591588Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager build-tools;36.0.0
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:49.5440434Z Loading package information...                                                  
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:49.6621341Z Loading local repository...                                                     
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:49.6624164Z [                                       ] 3% Loading local repository...        
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:49.6727246Z [                                       ] 3% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:49.9650453Z [=                                      ] 3% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:50.0121855Z [=                                      ] 4% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:50.0338138Z [=                                      ] 5% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:50.0680982Z [==                                     ] 5% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:50.1330010Z [==                                     ] 6% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:50.2019755Z [==                                     ] 7% Fetch remote repository...         
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:50.2049370Z [==                                     ] 7% Computing updates...               
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:50.2161546Z [===                                    ] 8% Computing updates...               
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:50.2213538Z [===                                    ] 10% Computing updates...              
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:50.2214495Z [=======================================] 100% Computing updates...             
+host-quality	Set up required Android SDK packages	2026-10-25T00:34:50.2215162Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	﻿2026-10-25T00:34:50.2626733Z ##[group]Run ./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:50.2627725Z ^[[36;1m./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1^[[0m
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:50.2907379Z shell: /usr/bin/bash -e {0}
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:50.2907668Z env:
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:50.2907995Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:50.2908802Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:50.2909250Z   ANDROID_HOME: /usr/local/lib/android/sdk
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:50.2909564Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:50.2909860Z ##[endgroup]
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:50.4103875Z Downloading https://services.gradle.org/distributions/gradle-9.3.1-bin.zip
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:52.1879306Z .............10%.............20%.............30%.............40%.............50%.............60%.............70%.............80%.............90%.............100%
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:53.4887997Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:53.4890228Z Welcome to Gradle 9.3.1!
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:53.4890670Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:53.4894592Z Here are the highlights of this release:
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:53.4896245Z  - Test reporting improvements
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:53.4904291Z  - Error and warning improvements
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:53.4905074Z  - Build authoring improvements
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:53.4905925Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:53.4907310Z For more details see https://docs.gradle.org/9.3.1/release-notes.html
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:53.4908197Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:53.5885202Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:34:54.8881385Z Daemon will be stopped at the end of the build 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:35:57.9909009Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:35:57.9929570Z > Configure project :app
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:35:57.9931465Z w: file:///home/runner/work/Goldberg/Goldberg/app/build.gradle.kts:12:44: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:36:00.2879200Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:36:00.2880462Z > Task :app:clean UP-TO-DATE
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:36:00.2881598Z > Task :app:preBuild UP-TO-DATE
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:36:00.2882464Z > Task :app:preDebugBuild UP-TO-DATE
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:36:00.2883527Z > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:36:00.3918609Z > Task :app:generateDebugResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:36:00.6879269Z > Task :app:packageDebugResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:36:22.8879418Z > Task :app:processDebugNavigationResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:36:23.8919675Z > Task :app:parseDebugLocalResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:36:23.9880035Z > Task :app:generateDebugRFile
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:36:50.2901154Z > Task :app:kspDebugKotlin
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:20.2881951Z > Task :app:compileDebugKotlin
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.0919142Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/data/PersonalCatalogueBridge.kt:93:97 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged. This will become an error in a future release.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.0952484Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/data/PersonalCatalogueBridge.kt:94:81 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged. This will become an error in a future release.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.0980837Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/ui/DiscoverScreen.kt:277:170 'val Icons.Outlined.List: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.List.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.1010893Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/ui/JournalComponents.kt:58:70 'val Icons.Outlined.ArrowBack: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.ArrowBack.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.1040708Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/ui/RepertoireScreen.kt:84:123 'val Icons.Outlined.Sort: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.Sort.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.1044517Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/ui/admin/AdminDashboardScreen.kt:101:35 'val Icons.Outlined.Rule: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.Rule.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.1070926Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/main/java/com/opus/piano/ui/admin/AdminSettingsScreen.kt:84:35 'val Icons.Outlined.Logout: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Outlined.Logout.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.3879585Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.3897724Z > Task :app:javaPreCompileDebug
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.3912670Z > Task :app:compileDebugJavaWithJavac NO-SOURCE
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.3924591Z > Task :app:generateDebugAssets UP-TO-DATE
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.4929456Z > Task :app:mergeDebugAssets
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.5882235Z > Task :app:compressDebugAssets
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.5884897Z > Task :app:desugarDebugFileDependencies
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.6879954Z > Task :app:checkDebugAarMetadata
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:53.6887909Z > Task :app:mapDebugSourceSetPaths
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:54.1904840Z > Task :app:compileDebugNavigationResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:56.6880660Z > Task :app:mergeDebugResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:56.6881634Z > Task :app:createDebugCompatibleScreenManifests
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:56.6882426Z > Task :app:extractDeepLinksDebug
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:57.0901447Z > Task :app:processDebugMainManifest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:57.1879537Z > Task :app:processDebugManifest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:57.1881782Z > Task :app:processDebugManifestForPackage
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:37:58.4890409Z > Task :app:processDebugResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:38:20.1929794Z > Task :app:dexBuilderDebug
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:38:50.1880279Z > Task :app:mergeDebugGlobalSynthetics
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:35.8889715Z > Task :app:processDebugJavaRes
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:37.9880082Z > Task :app:mergeDebugJavaResource
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:38.1879861Z > Task :app:checkDebugDuplicateClasses
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:44.7884000Z > Task :app:mergeExtDexDebug
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:44.7884897Z > Task :app:mergeLibDexDebug
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:45.3883002Z > Task :app:mergeProjectDexDebug
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:45.3888832Z > Task :app:mergeDebugJniLibFolders
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:45.4879982Z > Task :app:mergeDebugNativeLibs
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:45.5884244Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:45.5885277Z > Task :app:stripDebugDebugSymbols
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:45.5887048Z Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so. Run with --info option to learn more.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:46.1878261Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:46.1881046Z > Task :app:validateSigningDebug
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:46.1881979Z > Task :app:writeDebugAppMetadata
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:46.1882828Z > Task :app:writeDebugSigningConfigVersions
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:46.9880340Z > Task :app:packageDebug
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:46.9882578Z > Task :app:createDebugApkListingFileRedirect
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:46.9883568Z > Task :app:assembleDebug
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:47.0880267Z > Task :app:bundleDebugClassesToRuntimeJar
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:47.1879501Z > Task :app:bundleDebugClassesToCompileJar
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:47.8884657Z > Task :app:kspDebugUnitTestKotlin
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:47.8885731Z > Task :app:preDebugUnitTestBuild UP-TO-DATE
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:53.4949117Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:53.4950219Z > Task :app:compileDebugUnitTestKotlin
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:53.4952910Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/test/java/com/opus/piano/data/offline/BundleTransferEngineTest.kt:171:70 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:53.4957051Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/test/java/com/opus/piano/data/offline/BundleTransferEngineTest.kt:188:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:53.4961474Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/test/java/com/opus/piano/data/offline/BundleTransferEngineTest.kt:233:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:53.4965220Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/test/java/com/opus/piano/data/offline/BundleTransferEngineTest.kt:248:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:53.4969121Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/test/java/com/opus/piano/data/offline/BundleTransferEngineTest.kt:257:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:53.5908946Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:53.5909717Z > Task :app:javaPreCompileDebugUnitTest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:53.5969493Z > Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:53.6884109Z > Task :app:processDebugUnitTestJavaRes
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:58.0888798Z > Task :app:testDebugUnitTest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:58.0889974Z > Task :app:preDebugAndroidTestBuild SKIPPED
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:58.0890962Z > Task :app:generateDebugAndroidTestResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:58.0891843Z > Task :app:packageDebugAndroidTestResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:58.0892785Z > Task :app:processDebugAndroidTestNavigationResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:58.0893745Z > Task :app:parseDebugAndroidTestLocalResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:39:58.0894623Z > Task :app:generateDebugAndroidTestRFile
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:00.2881451Z > Task :app:kspDebugAndroidTestKotlin
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.4928064Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.4959662Z > Task :app:compileDebugAndroidTestKotlin
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.4989220Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage3bBackupTest.kt:264:174 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged. This will become an error in a future release.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5020851Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage5BundleJobRunnerTest.kt:141:63 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5040769Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage5BundleJobRunnerTest.kt:169:53 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5044329Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage5BundleJobRunnerTest.kt:282:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5070716Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage5BundleJobRunnerTest.kt:336:72 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5100986Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage5BundleJobRunnerTest.kt:353:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5130749Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage5BundleJobRunnerTest.kt:354:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5160798Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage5BundleJobRunnerTest.kt:400:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'Array<(out) File!>?'.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5220438Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage7bAcceptanceTest.kt:124:232 'var isChecked: Boolean' is deprecated. Deprecated in Java.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5250273Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage7bAcceptanceTest.kt:163:50 'var isChecked: Boolean' is deprecated. Deprecated in Java.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5280376Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage7bAcceptanceTest.kt:170:49 'var isChecked: Boolean' is deprecated. Deprecated in Java.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5310352Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage7bAcceptanceTest.kt:172:49 'var isChecked: Boolean' is deprecated. Deprecated in Java.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5340387Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage7bAcceptanceTest.kt:179:99 'var isChecked: Boolean' is deprecated. Deprecated in Java.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5400713Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage8bAssessmentProbe.kt:61:90 'static field TYPE_ANNOUNCEMENT: Int' is deprecated. Deprecated in Java.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5431221Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage8bAssessmentProbe.kt:192:84 The corresponding parameter in the supertype 'WorkerFactory' is named 'appContext'. This may cause problems when calling this function with named arguments.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5461117Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage8bAssessmentProbe.kt:192:100 The corresponding parameter in the supertype 'WorkerFactory' is named 'workerClassName'. This may cause problems when calling this function with named arguments.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5476193Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage8bAssessmentProbe.kt:192:112 The corresponding parameter in the supertype 'WorkerFactory' is named 'workerParameters'. This may cause problems when calling this function with named arguments.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5500421Z w: file:///home/runner/work/Goldberg/Goldberg/app/src/androidTest/java/com/opus/piano/Stage8bAssessmentProbe.kt:218:71 'var isChecked: Boolean' is deprecated. Deprecated in Java.
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5908890Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5924352Z > Task :app:javaPreCompileDebugAndroidTest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.5999652Z > Task :app:compileDebugAndroidTestJavaWithJavac NO-SOURCE
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.6021987Z > Task :app:generateDebugAndroidTestAssets UP-TO-DATE
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.7879976Z > Task :app:mergeDebugAndroidTestAssets
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.8879712Z > Task :app:compressDebugAndroidTestAssets
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.8889821Z > Task :app:desugarDebugAndroidTestFileDependencies
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.8890922Z > Task :app:checkDebugAndroidTestAarMetadata
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.8891907Z > Task :app:mapDebugAndroidTestSourceSetPaths
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:14.8893003Z > Task :app:compileDebugAndroidTestNavigationResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:15.0882299Z > Task :app:mergeDebugAndroidTestResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:15.0884354Z > Task :app:processDebugAndroidTestManifest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:15.2879603Z > Task :app:processDebugAndroidTestResources
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:18.4878899Z > Task :app:dexBuilderDebugAndroidTest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:19.6897386Z > Task :app:mergeDebugAndroidTestGlobalSynthetics
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:19.7880364Z > Task :app:processDebugAndroidTestJavaRes
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:19.7881377Z > Task :app:mergeDebugAndroidTestJavaResource
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:19.8881702Z > Task :app:checkDebugAndroidTestDuplicateClasses
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:19.9879658Z > Task :app:mergeExtDexDebugAndroidTest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:19.9880697Z > Task :app:mergeLibDexDebugAndroidTest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:20.0880061Z > Task :app:mergeProjectDexDebugAndroidTest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:20.1879657Z > Task :app:mergeDebugAndroidTestJniLibFolders
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:20.1884643Z > Task :app:mergeDebugAndroidTestNativeLibs NO-SOURCE
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:20.1885647Z > Task :app:stripDebugAndroidTestDebugSymbols NO-SOURCE
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:20.1886570Z > Task :app:validateSigningDebugAndroidTest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:20.1887475Z > Task :app:writeDebugAndroidTestSigningConfigVersions
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:20.1888357Z > Task :app:packageDebugAndroidTest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:20.1889471Z > Task :app:createDebugAndroidTestApkListingFileRedirect
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:20.1890369Z > Task :app:assembleDebugAndroidTest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:22.5879536Z > Task :app:generateDebugAndroidTestLintModel
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:22.5880495Z > Task :app:extractProguardFiles
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:22.7879385Z > Task :app:generateDebugLintReportModel
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:22.7880284Z > Task :app:generateDebugUnitTestLintModel
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:40:52.7879997Z > Task :app:lintAnalyzeDebug
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:42:32.6879603Z > Task :app:lintAnalyzeDebugAndroidTest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:42:39.6881215Z > Task :app:lintAnalyzeDebugUnitTest
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:42:40.1889432Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:42:40.1890629Z > Task :app:lintReportDebug
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:42:40.1911560Z Wrote HTML report to file:///home/runner/work/Goldberg/Goldberg/app/build/reports/lint-results-debug.html
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:42:40.1913133Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:42:40.1959272Z > Task :app:lintDebug
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:42:40.1988771Z 
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:42:40.1989304Z BUILD SUCCESSFUL in 7m 49s
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:42:40.2019096Z 84 actionable tasks: 83 executed, 1 up-to-date
+host-quality	Build, JVM tests, instrumentation compilation and lint	2026-10-25T00:42:40.2702739Z Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.3.1/userguide/configuration_cache_enabling.html
+host-quality	Host data and policy checks	﻿2026-10-25T00:42:40.5960774Z ##[group]Run python3 scripts/check_migrations.py
+host-quality	Host data and policy checks	2026-10-25T00:42:40.5961217Z ^[[36;1mpython3 scripts/check_migrations.py^[[0m
+host-quality	Host data and policy checks	2026-10-25T00:42:40.5961554Z ^[[36;1mpython3 scripts/check_backup_fixtures.py^[[0m
+host-quality	Host data and policy checks	2026-10-25T00:42:40.5961956Z ^[[36;1mpython3 docs/planning/goldberg-0.11/stage-3b/check_fixtures.py^[[0m
+host-quality	Host data and policy checks	2026-10-25T00:42:40.5962364Z ^[[36;1mpython3 scripts/check_localization.py^[[0m
+host-quality	Host data and policy checks	2026-10-25T00:42:40.5962683Z ^[[36;1mpython3 scripts/check_history_paging.py^[[0m
+host-quality	Host data and policy checks	2026-10-25T00:42:40.5962995Z ^[[36;1mpython3 scripts/check_agent_policy.py^[[0m
+host-quality	Host data and policy checks	2026-10-25T00:42:40.5963303Z ^[[36;1mgit diff --exit-code -- app/schemas^[[0m
+host-quality	Host data and policy checks	2026-10-25T00:42:40.6025670Z shell: /usr/bin/bash -e {0}
+host-quality	Host data and policy checks	2026-10-25T00:42:40.6026106Z env:
+host-quality	Host data and policy checks	2026-10-25T00:42:40.6026420Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+host-quality	Host data and policy checks	2026-10-25T00:42:40.6026933Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+host-quality	Host data and policy checks	2026-10-25T00:42:40.6027335Z   ANDROID_HOME: /usr/local/lib/android/sdk
+host-quality	Host data and policy checks	2026-10-25T00:42:40.6027625Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+host-quality	Host data and policy checks	2026-10-25T00:42:40.6027929Z ##[endgroup]
+host-quality	Host data and policy checks	2026-10-25T00:42:40.7068195Z PASS v1 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+host-quality	Host data and policy checks	2026-10-25T00:42:40.7070352Z PASS v2 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+host-quality	Host data and policy checks	2026-10-25T00:42:40.7072117Z PASS v3 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+host-quality	Host data and policy checks	2026-10-25T00:42:40.7073817Z PASS v4 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+host-quality	Host data and policy checks	2026-10-25T00:42:40.7075489Z PASS v5 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+host-quality	Host data and policy checks	2026-10-25T00:42:40.7077138Z PASS v6 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+host-quality	Host data and policy checks	2026-10-25T00:42:40.7079030Z PASS v7 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+host-quality	Host data and policy checks	2026-10-25T00:42:40.7080695Z PASS v8 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+host-quality	Host data and policy checks	2026-10-25T00:42:40.7082382Z PASS v9 → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests
+host-quality	Host data and policy checks	2026-10-25T00:42:40.7780540Z PASS goldberg-0.6.0-format1.json: schema 4 → 10 DDL, every original portable field retained
+host-quality	Host data and policy checks	2026-10-25T00:42:40.7782094Z PASS goldberg-0.9.1-format2.json: schema 6 → 10 DDL, every original portable field retained
+host-quality	Host data and policy checks	2026-10-25T00:42:40.7783513Z PASS goldberg-0.9.2-format3.json: schema 7 → 10 DDL, every original portable field retained
+host-quality	Host data and policy checks	2026-10-25T00:42:40.8261672Z PASS {"file": "full-v5.json", "bytes": 20498, "sha256": "3687fdaa257cf085085782544e5557e2d464c45f88b92d8e23b057b79f31087f", "pieces": 4, "sessions": 2, "creditMillis": 8000}
+host-quality	Host data and policy checks	2026-10-25T00:42:40.8264006Z PASS {"file": "minimal-v5.json", "bytes": 2283, "sha256": "e88f2bdaef69ab7a92a85879639a079944624519163721d9dc8c6adbb07c3f57", "pieces": 0, "sessions": 0, "creditMillis": 0}
+host-quality	Host data and policy checks	2026-10-25T00:42:40.8266280Z PASS {"file": "unknown-v5.json", "bytes": 19006, "sha256": "4117c63786344812f39bbf4a6b32a5188fbbef52ca3d30e76f5d057fe1136c37", "pieces": 4, "sessions": 2, "creditMillis": 8000}
+host-quality	Host data and policy checks	2026-10-25T00:42:40.8631491Z PASS: 1050 English/Czech resources, matching placeholders, Czech plural forms and declared locales
+host-quality	Host data and policy checks	2026-10-25T00:42:40.9030056Z PASS: 106 sessions across 4 pages, equal timestamps, duplicate parts, legacy attribution, catalogue filtering, newer insert and empty result
+host-quality	Host data and policy checks	2026-10-25T00:42:40.9031647Z PASS: untimed legacy association visible once; original time unchanged
+host-quality	Host data and policy checks	2026-10-25T00:42:40.9320223Z PASS: canonical policy, thin agent references, Cursor frontmatter and local Wiki navigation; runtime agent loading NOT TESTED
+host-quality	Post Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	﻿2026-10-25T00:42:40.9505532Z Post job cleanup.
+host-quality	Post Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:42:41.0874707Z (node:3224) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+host-quality	Post Run actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3	2026-10-25T00:42:41.0875757Z (Use `node --trace-deprecation ...` to show where the warning was created)
+host-quality	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	﻿2026-10-25T00:42:41.1098924Z Post job cleanup.
+host-quality	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:42:41.2039376Z [command]/usr/bin/git version
+host-quality	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:42:41.2089997Z git version 2.55.0
+host-quality	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:42:41.2139885Z Temporarily overriding HOME='/home/runner/work/_temp/b6d3c07e-ac97-4b4e-b781-f14c84773624' before making global git config changes
+host-quality	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:42:41.2149493Z Adding repository directory to the temporary git global config as a safe directory
+host-quality	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:42:41.2199563Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goldberg/Goldberg
+host-quality	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:42:41.2219455Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+host-quality	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:42:41.2232053Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+host-quality	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:42:41.2488213Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+host-quality	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:42:41.2536511Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+host-quality	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:42:41.2895234Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+host-quality	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-25T00:42:41.2939329Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+host-quality	Complete job	﻿2026-10-25T00:42:41.3401687Z Cleaning up orphan processes
+host-quality	Complete job	2026-10-25T00:42:41.3711986Z Terminate orphan process: pid (2840) (java)
+host-quality	Complete job	2026-10-25T00:42:41.3787715Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3, android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

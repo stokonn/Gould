@@ -1,0 +1,82 @@
+[
+  {
+    "step": 0,
+    "focus": [
+      [
+        "Nastavení administrace",
+        null
+      ]
+    ]
+  },
+  {
+    "step": 1,
+    "focus": [
+      [
+        "Ve výchozím stavu vypnuto. Kontroly používají neměřenou Wi-Fi, pokud výslovně nepovolíte mobilní data.",
+        null
+      ]
+    ]
+  },
+  {
+    "step": 2,
+    "focus": [
+      [
+        "Místní oznámení",
+        null
+      ]
+    ]
+  },
+  {
+    "step": 3,
+    "focus": [
+      [
+        null,
+        "Místní oznámení"
+      ]
+    ]
+  },
+  {
+    "step": 4,
+    "focus": [
+      [
+        "Kontroly na pozadí (přibližně každé 3 hodiny)",
+        null
+      ]
+    ]
+  },
+  {
+    "step": 5,
+    "focus": [
+      [
+        null,
+        "Kontroly na pozadí (přibližně každé 3 hodiny)"
+      ]
+    ]
+  },
+  {
+    "step": 6,
+    "focus": [
+      [
+        "Povolit mobilní a měřená data pro správní kontroly",
+        null
+      ]
+    ]
+  },
+  {
+    "step": 7,
+    "focus": [
+      [
+        null,
+        "Povolit mobilní a měřená data pro správní kontroly"
+      ]
+    ]
+  },
+  {
+    "step": 8,
+    "focus": []
+  },
+  {
+    "step": 9,
+    "focus": []
+  }
+]

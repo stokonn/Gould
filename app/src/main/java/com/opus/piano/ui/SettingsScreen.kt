@@ -146,9 +146,20 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
             "Data & Storage" -> {
         item { SettingsRow(L.s(R.string.community_local_title),action={page="Community drafts"},trailing={Text("›")}) }
         item {
-            SectionTitle(L.s(R.string.downloaded_content))
-            SettingsRow(L.s(R.string.mobile_media),L.s(R.string.mobile_media_description),action={scope.launch(kotlinx.coroutines.Dispatchers.IO) {app.media.consent(!metered)}},trailing={Switch(metered,{value->scope.launch(kotlinx.coroutines.Dispatchers.IO) {app.media.consent(value)}},modifier=Modifier.semantics {contentDescription=L.s(R.string.mobile_media)})})
-            Text(L.s(R.string.supplementary_hint),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+            // Stage 7A refinement: explicit JournalSpace grouping so the section header,
+            // toggle cards and the supplementary hint never touch (20-24 sections /
+            // 12-16 groups spacing audit). The online-catalogue preference and every
+            // warning are preserved unchanged.
+            Column(verticalArrangement=Arrangement.spacedBy(JournalSpace.medium)) {
+                SectionTitle(L.s(R.string.downloaded_content))
+                SettingsRow(L.s(R.string.mobile_media),L.s(R.string.mobile_media_description),action={scope.launch(kotlinx.coroutines.Dispatchers.IO) {app.media.consent(!metered)}},trailing={Switch(metered,{value->scope.launch(kotlinx.coroutines.Dispatchers.IO) {app.media.consent(value)}},modifier=Modifier.semantics {contentDescription=L.s(R.string.mobile_media)})})
+                Text(L.s(R.string.supplementary_hint),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+                // Stage 7A (owner): the "Include online catalogue results" preference moved here
+                // from Discover; persisted, default OFF. Online searches still only run when the
+                // user explicitly starts them in Discover.
+                val onlineCatalogue by app.catalogOnline.enabled.collectAsStateWithLifecycle()
+                SettingsRow(L.s(R.string.stage7a_online_catalogue_setting),L.s(R.string.stage7a_online_catalogue_setting_detail),action={app.catalogOnline.setEnabled(!onlineCatalogue)},trailing={Switch(onlineCatalogue,{app.catalogOnline.setEnabled(it)},modifier=Modifier.semantics {contentDescription=L.s(R.string.stage7a_online_catalogue_setting)})})
+            }
         }
 
         item { Panel {

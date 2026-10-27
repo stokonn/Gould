@@ -1,0 +1,248 @@
+10-20 23:04:56.648  4034  4122 I TestRunner: started: multiplePiecesReopenAndBackupRestoreIntoExistingJournalIsIdempotent(com.opus.piano.GoldbergPersistenceTest)
+10-20 23:04:56.673  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312dfa298) locale list changing from [] to [en-US]
+10-20 23:04:56.675  2217  4228 W NetworkScheduler: Immediate task was not started com.google.android.gms/.pay.gcmtask.PayGcmTaskService{u=0 tag="issuerlocationsoneoff.sync" trigger=window{start=0s,end=1s,earliest=0s,latest=0s} requirements=[NET_UNMETERED,PREFERRED_NET_UNMETERED,PREFERRED_CHARGING] attributes=[] scheduled=0s last_run=N/A exec_window_multiplier=1.0000 jid=N/A status=PENDING retries=0 client_lib=GMS_TASK_SCHEDULER-252635000}. Rescheduling immediate tasks can cause excessive battery drain.
+10-20 23:04:56.685  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312dfa5b8) locale list changing from [] to [en-US]
+10-20 23:04:56.688  2217  2388 I SQLiteConnection: Long db operation: /data/user/0/com.google.android.gms/databases/phenotype.db
+10-20 23:04:56.690  2303  2485 W ChimeraUtils: Module com.google.android.gms.container missing resource null(0)
+10-20 23:04:56.686  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312dfc818) locale list changing from [] to [en-US]
+10-20 23:04:56.705   643  1852 D FileUtils: Rounded bytes from 2593067008 to 4000000000
+10-20 23:04:56.710  2217  4228 W NetworkScheduler: Immediate task was not started com.google.android.gms/.pay.gcmtask.PayGcmTaskService{u=0 tag="passnotification.reschedule.oneoff" trigger=window{start=0s,end=1s,earliest=0s,latest=0s} requirements=[NET_ANY,PREFERRED_CHARGING] attributes=[] scheduled=0s last_run=N/A exec_window_multiplier=1.0000 jid=N/A status=PENDING retries=0 client_lib=GMS_TASK_SCHEDULER-252635000}. Rescheduling immediate tasks can cause excessive battery drain.
+10-20 23:04:56.718  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df7d18) locale list changing from [] to [en-US]
+10-20 23:04:56.718  4357  4370 I dmna    : (REDACTED) Device Compliance Fetch time taken = %sms
+10-20 23:04:56.719  4357  4370 I dmna    : Device is compliant!
+10-20 23:04:56.724  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312dfbb98) locale list changing from [] to [en-US]
+10-20 23:04:56.726  4357  4370 I dmna    : Invoking "compliant" action...
+10-20 23:04:56.729  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df8358) locale list changing from [] to [en-US]
+10-20 23:04:56.730  2217  4228 W NetworkScheduler: Immediate task was not started com.google.android.gms/.pay.gcmtask.PayGcmTaskService{u=0 tag="hceserviceinitoneoff.sync" trigger=window{start=0s,end=1s,earliest=0s,latest=0s} requirements=[NET_ANY,PREFERRED_CHARGING] attributes=[PERSISTED] scheduled=0s last_run=N/A exec_window_multiplier=1.0000 jid=N/A status=PENDING retries=0 client_lib=GMS_TASK_SCHEDULER-252635000}. Rescheduling immediate tasks can cause excessive battery drain.
+10-20 23:04:56.742  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df6738) locale list changing from [] to [en-US]
+10-20 23:04:56.751  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df0978) locale list changing from [] to [en-US]
+10-20 23:04:56.753  2217  4228 W NetworkScheduler: Immediate task was not started com.google.android.gms/.pay.gcmtask.PayGcmTaskService{u=0 tag="accountfreshener.oneoff" trigger=window{start=0s,end=1s,earliest=0s,latest=0s} requirements=[NET_ANY,PREFERRED_CHARGING] attributes=[] scheduled=0s last_run=N/A exec_window_multiplier=1.0000 jid=N/A status=PENDING retries=0 client_lib=GMS_TASK_SCHEDULER-252635000}. Rescheduling immediate tasks can cause excessive battery drain.
+10-20 23:04:56.768  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312de6d38) locale list changing from [] to [en-US]
+10-20 23:04:56.775  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312decaf8) locale list changing from [] to [en-US]
+10-20 23:04:56.776  2217  4228 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService started execution. cause:5 exec_start_elapsed_seconds: 122 [CONTEXT service_id=218 ]
+10-20 23:04:56.777  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312deb1f8) locale list changing from [] to [en-US]
+10-20 23:04:56.794  2217  2737 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService finished executing. cause:5 result: 1 elapsed_millis: 19 uptime_millis: 19 exec_start_elapsed_seconds: 122 [CONTEXT service_id=218 ]
+10-20 23:04:56.795  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312deb838) locale list changing from [] to [en-US]
+10-20 23:04:56.796  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312de7378) locale list changing from [] to [en-US]
+10-20 23:04:56.811  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312de98f8) locale list changing from [] to [en-US]
+10-20 23:04:56.820  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df0338) locale list changing from [] to [en-US]
+10-20 23:04:56.841  2303  2649 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-20 23:04:56.846  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312de7ff8) locale list changing from [] to [en-US]
+10-20 23:04:56.849  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df28b8) locale list changing from [] to [en-US]
+10-20 23:04:56.858  2303  2649 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@252635038@25.26.35 (260800-783060121):204)
+10-20 23:04:56.858  2303  2649 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@252635038@25.26.35 (260800-783060121):4)
+10-20 23:04:56.860  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df5ab8) locale list changing from [] to [en-US]
+10-20 23:04:56.872  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df41b8) locale list changing from [] to [en-US]
+10-20 23:04:56.876   643   914 D WifiClientModeImpl[34482:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=1 freq=2437 RxLinkSpeed=2
+10-20 23:04:56.876   643   914 D WifiDataStall: tx tput in kbps: 37000
+10-20 23:04:56.876   643   914 D WifiDataStall: rx tput in kbps: 37000
+10-20 23:04:56.877   643   914 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+10-20 23:04:56.877   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:04:56.877   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:04:56.877   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:04:56.877   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:04:56.877   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:04:56.877   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:04:56.877   643   914 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+10-20 23:04:56.877   643   914 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+10-20 23:04:56.877   643   914 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 14224604 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 54Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+10-20 23:04:56.878   643   914 D WifiScoreCard: txRate: 24 txSpeed: 1
+10-20 23:04:56.878   643   914 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 1928051533 RSSI -50 txSpeed 1
+10-20 23:04:56.878   643   914 D WifiClientModeImpl[34482:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=60 link=1 tx=23.4, 0.0, 0.0 rx=37.1 bcn=0 [on:0 tx:0 rx:0 period:3003] from screen [on:0 period:1536134446] score=60
+10-20 23:04:56.882  2303  2303 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.notifications.registration.service.NotificationsRegistrationTaskBoundService.ACTION_TASK_READY dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsInternalBoundBrokerService }
+10-20 23:04:56.882  2303  2303 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.notifications.registration.service.NotificationsRegistrationTaskBoundService.ACTION_TASK_READY dat=chimera-action:/... xflg=0x4 cmp=com.google.android.gms/.chimera.GmsInternalBoundBrokerService }
+10-20 23:04:56.884  2303  2303 I GmsCoreXrpcWrapper: Returning a channel provider with trafficStatsTag=67175169 trafficStatsUid=-1
+10-20 23:04:56.884   643  1852 I RemoteProvisionSysSvc: getRegistration(android.hardware.security.keymint.IRemotelyProvisionedComponent/default)
+10-20 23:04:56.887   643   643 I RegistrationProxy: onServiceConnected: com.android.rkpdapp.service.RemoteProvisioningService
+10-20 23:04:56.894   643  1852 I RegistrationProxy: IGetRegistrationCallback.onSuccess
+10-20 23:04:56.896  4357  4381 I chbox:googleapp: AssetManager2(0x7ef312de1bf8) locale list changing from [] to [en-US]
+10-20 23:04:56.896  4357  4381 I WebViewFactory: Loading com.google.android.webview version 133.0.6943.137 (code 694313738)
+10-20 23:04:56.896   643  1852 I RemoteProvisionSysSvc: Fetching key 10147 for client 261070921
+10-20 23:04:56.896   643  1852 I RegistrationProxy: getKeyAsync operation started with callback 74689870
+10-20 23:04:56.897  3437  3482 I RkpdRegistrationBinder: Key requested for : android.hardware.security.keymint.IRemotelyProvisionedComponent/default, clientUid: 1017, keyId: 10147, callback: 82401953
+10-20 23:04:56.897  3437  3482 I RkpdRegistrationBinder: Key successfully assigned to client
+10-20 23:04:56.897   643   643 I RemoteProvisionSysSvc: Successfully fetched key for client 261070921
+10-20 23:04:56.898  4357  4381 I chbox:googleapp: AssetManager2(0x7ef312de31d8) locale list changing from [] to [en-US]
+10-20 23:04:56.898  4357  4381 I chbox:googleapp: AssetManager2(0x7ef312de9f38) locale list changing from [] to [en-US]
+10-20 23:04:56.903   235   235 D SoftKeymaster: system/keymaster/km_openssl/certificate_utils.cpp, Line 148: Using TAG_CERTIFICATE_NOT_BEFORE: 0
+10-20 23:04:56.903   235   235 D SoftKeymaster: system/keymaster/km_openssl/certificate_utils.cpp, Line 154: Using TAG_CERTIFICATE_NOT_AFTER: 2461449600000
+10-20 23:04:56.903   235   235 D SoftKeymaster: system/keymaster/km_openssl/certificate_utils.cpp, Line 159: Got certificate date params:  NotBefore = 0, NotAfter = 2461449600000
+10-20 23:04:56.903   235   235 D SoftKeymaster: system/keymaster/km_openssl/certificate_utils.cpp, Line 273: Setting notBefore to 0
+10-20 23:04:56.903   235   235 D SoftKeymaster: system/keymaster/km_openssl/certificate_utils.cpp, Line 282: Setting notAfter to 2461449600
+10-20 23:04:56.913  4357  4381 W chbox:googleapp: Failed to find entry 'classes.dex': Entry not found
+10-20 23:04:56.920  4357  4381 D nativeloader: Configuring clns-11 for other apk /data/app/~~ccCLY4oheuF6nAN9A0XalA==/com.google.android.trichromelibrary_694313738-fb5D5LzVbtfRpWibz-ez3A==/TrichromeLibrary.apk. target_sdk_version=34, uses_libraries=ALL, library_path=/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/lib/x86_64:/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/WebViewGoogle.apk!/lib/x86_64:/data/app/~~ccCLY4oheuF6nAN9A0XalA==/com.google.android.trichromelibrary_694313738-fb5D5LzVbtfRpWibz-ez3A==/TrichromeLibrary.apk!/lib/x86_64, permitted_path=/data:/mnt/expand
+10-20 23:04:56.920  4357  4381 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+10-20 23:04:56.922  4357  4381 D nativeloader: Configuring clns-12 for other apk /data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/WebViewGoogle.apk. target_sdk_version=34, uses_libraries=, library_path=/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/lib/x86_64:/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/WebViewGoogle.apk!/lib/x86_64:/data/app/~~ccCLY4oheuF6nAN9A0XalA==/com.google.android.trichromelibrary_694313738-fb5D5LzVbtfRpWibz-ez3A==/TrichromeLibrary.apk!/lib/x86_64, permitted_path=/data:/mnt/expand
+10-20 23:04:56.942  2217  2224 W .gms.persistent: Suspending all threads took: 54.146ms
+10-20 23:04:56.966  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df0fb8) locale list changing from [] to [en-US]
+10-20 23:04:56.969  2217  4228 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.notifications.registration.service.NotificationsRegistrationTaskBoundService started execution. cause:5 exec_start_elapsed_seconds: 122 [CONTEXT service_id=218 ]
+10-20 23:04:56.987  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df3e98) locale list changing from [] to [en-US]
+10-20 23:04:56.987  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312deea38) locale list changing from [] to [en-US]
+10-20 23:04:56.990  2217  2451 I .gms.persistent: IncrementDisableThreadFlip blocked for 23.779ms
+10-20 23:04:56.993  4357  4381 I cr_WVCFactoryProvider: version=133.0.6943.137 (694313738) minSdkVersion=29 isBundle=false multiprocess=true packageId=2
+10-20 23:04:56.995  4357  4381 I chbox:googleapp: AssetManager2(0x7ef312dec198) locale list changing from [] to [en-US]
+10-20 23:04:57.003  4357  4381 D nativeloader: Load /data/app/~~ccCLY4oheuF6nAN9A0XalA==/com.google.android.trichromelibrary_694313738-fb5D5LzVbtfRpWibz-ez3A==/TrichromeLibrary.apk!/lib/x86_64/libmonochrome_64.so using class loader ns clns-12 (caller=/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/WebViewGoogle.apk): ok
+10-20 23:04:57.007  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df5478) locale list changing from [] to [en-US]
+10-20 23:04:57.009  4357  4381 D nativeloader: Load /system/lib64/libwebviewchromium_plat_support.so using class loader ns clns-12 (caller=/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/WebViewGoogle.apk): ok
+10-20 23:04:57.023  4357  4393 I chromium: [1020/230457.014425:INFO:variations_seed_loader.cc(67)] Failed to open file for reading.: No such file or directory (2)
+10-20 23:04:57.024  4357  4393 I cr_VariationsUtils: Failed reading seed file "/data/user/0/com.google.android.googlequicksearchbox/app_webview_assistant/variations_seed_new"
+10-20 23:04:57.024  4357  4393 I chromium: [1020/230457.024804:INFO:variations_seed_loader.cc(67)] Failed to open file for reading.: No such file or directory (2)
+10-20 23:04:57.024  4357  4393 I cr_VariationsUtils: Failed reading seed file "/data/user/0/com.google.android.googlequicksearchbox/app_webview_assistant/variations_seed"
+10-20 23:04:57.025  4357  4393 I cr_VariationsUtils: Requesting new seed from IVariationsSeedServer
+10-20 23:04:57.028  4357  4357 I cr_LibraryLoader: Successfully loaded native library
+10-20 23:04:57.028   643  1852 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10166, packageName = null, attributionTag = null, token = android.os.Binder@a425a3b, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-20 23:04:57.030  4357  4357 I cr_CachingUmaRecorder: Flushed 8 samples from 7 histograms, 0 samples were dropped.
+10-20 23:04:57.037  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df2ef8) locale list changing from [] to [en-US]
+10-20 23:04:57.039   449   449 D Zygote  : Forked child process 4394
+10-20 23:04:57.044  4357  4357 I cr_CombinedPProvider: #registerProvider() provider:WV.C8@8f45163 isPolicyCacheEnabled:false policyProvidersSize:0
+10-20 23:04:57.046  4357  4357 I cr_PolicyProvider: #setManagerAndSource() 0
+10-20 23:04:57.052   643  1852 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 99000, packageName = null, attributionTag = null, token = android.os.Binder@a425a3b, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-20 23:04:57.065  1080  1080 I Zygote  : Entering forkRepeatedly native zygote loop
+10-20 23:04:57.070  4394  4394 I webview_service: Using CollectorTypeCMC GC.
+10-20 23:04:57.071  4394  4394 W webview_service: Unexpected CPU variant for x86: x86_64.
+10-20 23:04:57.071  4394  4394 W webview_service: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
+10-20 23:04:57.072  2303  2649 I gle.android.gms: AssetManager2(0x7ef312dffd38) locale list changing from [] to [en-US]
+10-20 23:04:57.072  2303  2649 W ContextImpl: Failed to ensure /data/user/0/com.google.android.gsf/shared_prefs: mkdir failed: ENOENT (No such file or directory)
+10-20 23:04:57.072  2303  2649 W ContextImpl: Failed to ensure /data/user/0/com.google.android.gsf/files: mkdir failed: ENOENT (No such file or directory)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: Cannot write token, exception in Context lookup [CONTEXT service_id=130 ]
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: java.io.FileNotFoundException: /data/user/0/com.google.android.gsf/files/security_token: open failed: ENOENT (No such file or directory)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at android.app.ContextImpl.openFileOutput(ContextImpl.java:794)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at atym.a(:com.google.android.gms@252635038@25.26.35 (260800-783060121):1738)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at atzw.a(:com.google.android.gms@252635038@25.26.35 (260800-783060121):834)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at com.google.android.gms.checkin.CheckinIntentOperation.onHandleIntent(:com.google.android.gms@252635038@25.26.35 (260800-783060121):30)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@252635038@25.26.35 (260800-783060121):2)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at aumo.onHandleIntent(:com.google.android.gms@252635038@25.26.35 (260800-783060121):8)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at vzd.run(:com.google.android.gms@252635038@25.26.35 (260800-783060121):64)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at vzc.run(:com.google.android.gms@252635038@25.26.35 (260800-783060121):132)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at fyac.run(:com.google.android.gms@252635038@25.26.35 (260800-783060121):21)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at java.lang.Thread.run(Thread.java:1119)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at libcore.io.Linux.open(Native Method)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:568)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:568)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8953)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+10-20 23:04:57.073  2303  2649 E GoogleSettingsUtils: 	... 13 more
+10-20 23:04:57.073  2303  2649 I Checkin : [CheckinRequestProcessor] updateCheckinIdTokenFileFromResponse, Reading existing AID
+10-20 23:04:57.073  2303  2649 I Checkin : [CheckinRequestProcessor] Default Task : Checkin Succeeded: https://android.googleapis.com/checkin (fragment #1).
+10-20 23:04:57.084  4394  4394 E webview_service: Not starting debugger since process cannot load the jdwp agent.
+10-20 23:04:57.102  1080  1080 D Zygote  : Forked child process 4402
+10-20 23:04:57.106  4402  4402 I ocessService0:0: Using CollectorTypeCMC GC.
+10-20 23:04:57.107  4402  4402 W ocessService0:0: Unexpected CPU variant for x86: x86_64.
+10-20 23:04:57.107  4402  4402 W ocessService0:0: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
+10-20 23:04:57.115  4402  4402 E ocessService0:0: Not starting debugger since process cannot load the jdwp agent.
+10-20 23:04:57.117  4402  4402 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-20 23:04:57.119  2303  2303 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.safetynet.service.START xflg=0x4 pkg=com.google.android.gms }
+10-20 23:04:57.119  2303  2303 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.safetynet.service.START xflg=0x4 pkg=com.google.android.gms }
+10-20 23:04:57.124  4394  4394 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-20 23:04:57.124  2217  2451 I HeterodyneSyncScheduler: Scheduling Phenotype for a PhenotypeSyncImmediately(6, com.google.android.libraries.mdi.sync#com.google.android.youtube) one off with window [1, 2] in seconds [CONTEXT service_id=51 ]
+10-20 23:04:57.130  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312deed58) locale list changing from [] to [en-US]
+10-20 23:04:57.134  2303  2303 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.auth.service.START xflg=0x4 pkg=com.google.android.gms }
+10-20 23:04:57.134  2303  2303 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.auth.service.START xflg=0x4 pkg=com.google.android.gms }
+10-20 23:04:57.135  2303  2649 I Checkin : [CheckinOperation] Checkin Operation finished with result: SUCCESS finish time: 122717.
+10-20 23:04:57.135  2303  2649 W ContextImpl: Failed to ensure /data/user/0/com.google.android.gsf/files: mkdir failed: ENOENT (No such file or directory)
+10-20 23:04:57.135  2303  2649 W ContextImpl: Failed to ensure /data/user/0/com.google.android.gsf/shared_prefs: mkdir failed: ENOENT (No such file or directory)
+10-20 23:04:57.136  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312dea258) locale list changing from [] to [en-US]
+10-20 23:04:57.147  2303  3526 I EnterpriseLoader: [ConditionsChecker] ZT config not present. [CONTEXT service_id=225 ]
+10-20 23:04:57.149   446  4415 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10147 0}
+10-20 23:04:57.149  2303  2485 I AccountSeedingPrefetchI: AccountSeedingPrefetchInit intent operation started. [CONTEXT service_id=42 ]
+10-20 23:04:57.150  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312ded138) locale list changing from [] to [en-US]
+10-20 23:04:57.151  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312dec198) locale list changing from [] to [en-US]
+10-20 23:04:57.152  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312deb518) locale list changing from [] to [en-US]
+10-20 23:04:57.161   643  1858 D FileUtils: Rounded bytes from 2593067008 to 4000000000
+10-20 23:04:57.160  3240  3240 W binder:3240_5: type=1400 audit(0.0:43): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=338 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+10-20 23:04:57.170  3240  3547 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+10-20 23:04:57.168  3240  3240 W binder:3240_5: type=1400 audit(0.0:44): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=63 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+10-20 23:04:57.176  3240  3547 W libc    : Access denied finding property "service.adb.tls.port"
+10-20 23:04:57.177  3240  3547 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+10-20 23:04:57.177  4394  4394 D CompatChangeReporter: Compat change id reported: 242716250; UID 10166; state: ENABLED
+10-20 23:04:57.180  4357  4357 I cr_CombinedPProvider: #linkNativeInternal() 1
+10-20 23:04:57.180  4357  4357 I cr_AppResProvider: #getApplicationRestrictionsFromUserManager() Bundle[EMPTY_PARCEL]
+10-20 23:04:57.180  4357  4357 I cr_PolicyProvider: #notifySettingsAvailable() 0
+10-20 23:04:57.180  4357  4357 I cr_CombinedPProvider: #onSettingsAvailable() 0
+10-20 23:04:57.180  4357  4357 I cr_CombinedPProvider: #flushPolicies()
+10-20 23:04:57.181  3240  3547 I EGL_emulation: Opening libGLESv2_emulation.so
+10-20 23:04:57.189  4402  4402 D CompatChangeReporter: Compat change id reported: 242716250; UID 99000; state: ENABLED
+10-20 23:04:57.198  4394  4394 W webview_service: Failed to find entry 'classes.dex': Entry not found
+10-20 23:04:57.199  4394  4394 D nativeloader: Configuring clns-9 for other apk /data/app/~~ccCLY4oheuF6nAN9A0XalA==/com.google.android.trichromelibrary_694313738-fb5D5LzVbtfRpWibz-ez3A==/TrichromeLibrary.apk. target_sdk_version=34, uses_libraries=ALL, library_path=/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/lib/x86_64:/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/WebViewGoogle.apk!/lib/x86_64:/data/app/~~ccCLY4oheuF6nAN9A0XalA==/com.google.android.trichromelibrary_694313738-fb5D5LzVbtfRpWibz-ez3A==/TrichromeLibrary.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.webview
+10-20 23:04:57.201  4394  4394 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+10-20 23:04:57.208  4402  4402 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+10-20 23:04:57.210  4394  4394 D nativeloader: Configuring clns-10 for other apk /data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/WebViewGoogle.apk. target_sdk_version=34, uses_libraries=, library_path=/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/lib/x86_64:/data/app/~~BqRN4Mh1wfYEaix7umhZ4g==/com.google.android.webview-TKBcSJd0tldbM4hzSUxbQQ==/WebViewGoogle.apk!/lib/x86_64:/data/app/~~ccCLY4oheuF6nAN9A0XalA==/com.google.android.trichromelibrary_694313738-fb5D5LzVbtfRpWibz-ez3A==/TrichromeLibrary.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.webview
+10-20 23:04:57.218  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df0018) locale list changing from [] to [en-US]
+10-20 23:04:57.219  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312deda98) locale list changing from [] to [en-US]
+10-20 23:04:57.221  4394  4394 I webview_service: AssetManager2(0x7ef312de2b98) locale list changing from [] to [en-US]
+10-20 23:04:57.224  2217  2451 I HeterodyneSyncer: Removed 0 invalid users [CONTEXT service_id=51 ]
+10-20 23:04:57.229  4402  4402 I ocessService0:0: AssetManager2(0x7ef312de4df8) locale list changing from [] to [en-US]
+10-20 23:04:57.245  4402  4402 I LoadedApk: No resource references to update in package com.google.android.trichromelibrary
+10-20 23:04:57.251  4402  4402 I cr_WebViewApkApp: version=133.0.6943.137 (694313738) minSdkVersion=29 isBundle=false processName=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0
+10-20 23:04:57.258  4394  4394 V GraphicsEnvironment: Currently set values for:
+10-20 23:04:57.258  4394  4394 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-20 23:04:57.258  4394  4394 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-20 23:04:57.258  4394  4394 V GraphicsEnvironment: com.google.android.webview is not listed in per-application setting
+10-20 23:04:57.259  4394  4394 V GraphicsEnvironment: ANGLE allowlist from config: com.dreamgames.royalmatch com.dts.freefiremax com.dxx.firenow com.gramgames.mergedragons com.ludo.king com.mojang.minecraftpe com.my.defense com.nintendo.zaka com.os.airforce com.playrix.fishdomdd.gplay io.teslatech.callbreak jp.konami.prospia net.peakgames.toonblast
+10-20 23:04:57.259  4394  4394 V GraphicsEnvironment: com.google.android.webview is not listed in ANGLE allowlist or settings, returning default
+10-20 23:04:57.259  4394  4394 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-20 23:04:57.262  4357  4357 I chbox:googleapp: AssetManager2(0x7ef312de95d8) locale list changing from [] to [en-US]
+10-20 23:04:57.269  4394  4394 I LoadedApk: No resource references to update in package com.google.android.trichromelibrary
+10-20 23:04:57.269  4357  4357 I chbox:googleapp: AssetManager2(0x7ef312ded778) locale list changing from [] to [en-US]
+10-20 23:04:57.277   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:04:57.281  4357  4357 E ashmem  : Pinning is deprecated since Android Q. Please use trim or other methods.
+10-20 23:04:57.281  4357  4357 D DesktopModeFlags: Toggle override initialized to: OVERRIDE_UNSET
+10-20 23:04:57.285  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312df3858) locale list changing from [] to [en-US]
+10-20 23:04:57.287   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:04:57.288  4402  4402 I cr_ChildProcessService: Creating new ChildProcessService pid=4402
+10-20 23:04:57.289  4394  4394 I cr_WebViewApkApp: version=133.0.6943.137 (694313738) minSdkVersion=29 isBundle=false processName=com.google.android.webview:webview_service
+10-20 23:04:57.292   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={10136} in 16ms
+10-20 23:04:57.292   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-20 23:04:57.297   643   920 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-20 23:04:57.302   643   920 D InetDiagMessage: Destroyed live tcp sockets for uids={20136} in 10ms
+10-20 23:04:57.329   643   751 I RoleService: Granting default roles...
+10-20 23:04:57.333   643  1108 W SignedPackage: Package doesn't have required signing certificate: com.google.android.retaildemo
+10-20 23:04:57.333   643  1108 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+10-20 23:04:57.335  1020  2413 I PermissionControllerServiceImpl: Updating user sensitive for uid 10147
+10-20 23:04:57.337   643  1108 W SignedPackage: Package doesn't have required signing certificate: com.google.android.apps.work.clouddpc
+10-20 23:04:57.343  1252  1252 W InteractionJankMonitor: CUJ cancelled due to timeout, CUJ=LAUNCHER_APP_CLOSE_TO_HOME_FALLBACK
+10-20 23:04:57.353  1704  1704 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=878e7c03-e287-4474-8882-e0d78543bd32, generation=0)
+10-20 23:04:57.357  1704  1995 D WM-Processor: Work WorkGenerationalId(workSpecId=878e7c03-e287-4474-8882-e0d78543bd32, generation=0) is already enqueued for processing
+10-20 23:04:57.363   643  1108 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.WALLET
+10-20 23:04:57.368   643  1108 I system_server: AssetManager2(0x7ef312e103b8) locale list changing from [] to [en-US]
+10-20 23:04:57.371   643  1108 W SignedPackage: Cannot get ApplicationInfo for package: com.google.android.devicelockcontroller
+10-20 23:04:57.371  2217  2374 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+10-20 23:04:57.398   643   643 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:04:57.400   643   643 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:04:57.428  2217  2387 I .gms.persistent: AssetManager2(0x7ef312dfce58) locale list changing from [] to [en-US]
+10-20 23:04:57.429  4357  4443 I CameraManagerGlobal: Connecting to camera service
+10-20 23:04:57.434   643   675 W IPCThreadState: Sending oneway calls to frozen process.
+10-20 23:04:57.435  1252  1276 D PackageUpdatedTask: Package updated: mOp=UPDATE packages=[com.google.android.gms], user=UserHandle{0}
+10-20 23:04:57.436  1610  2652 I AiAiEcho: AppIndexer Package:[com.google.android.gms] UserProfile:[0] Enabled:[true].
+10-20 23:04:57.438  1610  2652 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.gms], userId:[0], reason:[package is updated.].
+10-20 23:04:57.440  1252  1276 W AllAppsList: updatePackage: no Activities matched updated package, removing any AppInfo with package=com.google.android.gms, user=UserHandle{0}
+10-20 23:04:57.442  4065  4065 E adservices: Measurement API is disabled
+10-20 23:04:57.446  4065  4065 E adservices: Measurement API is disabled
+10-20 23:04:57.449   589   629 I AttributionAndPermissionUtils: checkPermission (forDataDelivery 0 startDataDelivery 0): Permission hard denied for client attribution [uid 10146, pid 4357, packageName "<unknown>"]
+10-20 23:04:57.453  4394  4394 D CompatChangeReporter: Compat change id reported: 253665015; UID 10166; state: ENABLED
+10-20 23:04:57.454   643  1858 D ConnectivityService: requestNetwork for uid/pid:1000/643 asUid: 10166 activeRequest: null callbackRequest: 161 [NetworkRequest [ REQUEST id=162, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10166 RequestorUid: 1000 RequestorPkg: android UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647 isUidTracked: false declaredMethods: AVAIL|LOST|BLK
+10-20 23:04:57.457  4357  4441 E adservices: Failed to bind to measurement service: com.android.adservices.shared.common.exception.ServiceUnavailableException: Service is not available.
+10-20 23:04:57.373  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312de7698) locale list changing from [] to [en-US]
+10-20 23:04:57.469   643   742 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10166, packageName = null, attributionTag = null, token = android.os.Binder@a425a3b, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-20 23:04:57.482   449   449 D Zygote  : Forked child process 4452
+10-20 23:04:57.488   643   914 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=162, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10166 RequestorUid: 1000 RequestorPkg: android UnderlyingNetworks: Null] ]
+10-20 23:04:57.492   446   476 I netd    : tetherGetStats() -> {[]} <0.72ms>
+10-20 23:04:57.495   643   914 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=162, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10166 RequestorUid: 1000 RequestorPkg: android UnderlyingNetworks: Null] ]
+10-20 23:04:57.497   643   914 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=162, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10166 RequestorUid: 1000 RequestorPkg: android UnderlyingNetworks: Null] ]
+10-20 23:04:57.497   643   914 V WifiNetworkFactory: Accepted network request NetworkRequest [ REQUEST id=162, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10166 RequestorUid: 1000 RequestorPkg: android UnderlyingNetworks: Null] ]
+10-20 23:04:57.500   643   914 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=162, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10166 RequestorUid: 1000 RequestorPkg: android UnderlyingNetworks: Null] ]
+10-20 23:04:57.502  4452  4452 I iew:webview_apk: Using CollectorTypeCMC GC.
+10-20 23:04:57.502  4452  4452 W iew:webview_apk: Unexpected CPU variant for x86: x86_64.
+10-20 23:04:57.502  4452  4452 W iew:webview_apk: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
+10-20 23:04:57.504  4452  4452 E iew:webview_apk: Not starting debugger since process cannot load the jdwp agent.
+10-20 23:04:57.505  4452  4452 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-20 23:04:57.506   643   920 D ConnectivityService: NetReassign [162 : null → 100] [c 3] [a 30] [i 19]
+10-20 23:04:57.512  4394  4455 I cr_VariationsUtils: Scheduling seed download job
+10-20 23:04:57.543  1535  1851 I .apps.wellbeing: AssetManager2(0x7ef312dece18) locale list changing from [] to [en-US]
+10-20 23:04:57.551  4034  4122 I TestRunner: finished: multiplePiecesReopenAndBackupRestoreIntoExistingJournalIsIdempotent(com.opus.piano.GoldbergPersistenceTest)

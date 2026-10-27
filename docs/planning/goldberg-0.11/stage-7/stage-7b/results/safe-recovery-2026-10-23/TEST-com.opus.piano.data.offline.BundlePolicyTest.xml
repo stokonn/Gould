@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.data.offline.BundlePolicyTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-23T19:21:28.264Z" hostname="fedora" time="0.003">
+  <properties/>
+  <testcase name="dataSaverBlocksMeteredBackgroundTrafficButNotUnmetered" classname="com.opus.piano.data.offline.BundlePolicyTest" time="0.001"/>
+  <testcase name="confirmationGatesFollowD7Thresholds" classname="com.opus.piano.data.offline.BundlePolicyTest" time="0.0"/>
+  <testcase name="meteredRequiresExplicitPerJobAllowance" classname="com.opus.piano.data.offline.BundlePolicyTest" time="0.0"/>
+  <testcase name="unmeteredValidatedNetworkNeedsNoConsent" classname="com.opus.piano.data.offline.BundlePolicyTest" time="0.0"/>
+  <testcase name="policyConstantsMatchApprovedD7Values" classname="com.opus.piano.data.offline.BundlePolicyTest" time="0.0"/>
+  <testcase name="unvalidatedOrDisconnectedNeverTransfers" classname="com.opus.piano.data.offline.BundlePolicyTest" time="0.001"/>
+  <testcase name="inconsistentNetworkFactsAreRejected" classname="com.opus.piano.data.offline.BundlePolicyTest" time="0.0"/>
+  <testcase name="revokingAllowanceDuringStreamingStopsTheJob" classname="com.opus.piano.data.offline.BundlePolicyTest" time="0.0"/>
+  <testcase name="backgroundJobsAreNeverMetered" classname="com.opus.piano.data.offline.BundlePolicyTest" time="0.001"/>
+  <testcase name="stopReasonDistinguishesWaitingFromConsent" classname="com.opus.piano.data.offline.BundlePolicyTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

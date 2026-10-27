@@ -1,0 +1,11 @@
+{
+  "conclusion": "",
+  "databaseId": 40168644562,
+  "headSha": "4d245b46936d640740799dfcc6e8d61f3d44b249",
+  "status": "queued",
+  "url": "https://github.com/stokonn/Goldberg/actions/runs/40168644562",
+  "source": "4d245b46936d640740799dfcc6e8d61f3d44b249",
+  "scope": "stage7b full instrumentation;upgrade job excluded for UI-only scope",
+  "manuallyDispatched": true,
+  "productionNetworkingAuthorized": false
+}

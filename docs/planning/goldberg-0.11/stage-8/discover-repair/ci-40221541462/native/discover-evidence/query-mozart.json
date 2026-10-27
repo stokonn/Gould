@@ -1,0 +1,105 @@
+{
+  "query": "Mozart",
+  "items": [
+    {
+      "id": "edcfd5ea-b486-4219-b467-51bf6ce955e2",
+      "kind": "artist",
+      "title": "Wolfgang Amadeus Mozart"
+    },
+    {
+      "id": "041ad061-7e0b-4740-8f3e-c6ba2d354f17",
+      "kind": "work",
+      "title": "Variations and Fugue on a Theme of Mozart, op. 132"
+    },
+    {
+      "id": "116531cf-c3cf-42f4-bca4-cf9da9386af7",
+      "kind": "work",
+      "title": "Ave verum corpus, K.618"
+    },
+    {
+      "id": "15eacb9a-d73a-49b7-995f-00e733e59664",
+      "kind": "work",
+      "title": "Coronation Mass in C major, K.317"
+    },
+    {
+      "id": "172c8080-5fc4-438e-9328-afc43c46b624",
+      "kind": "work",
+      "title": "Piano Quartet no. 1 in G minor, K.478"
+    },
+    {
+      "id": "1c045d83-6a26-4b90-aa23-469883971771",
+      "kind": "work",
+      "title": "Piano Sonata no. 11 in A major, K.331, \"Alla turca\""
+    },
+    {
+      "id": "3b1a0592-320b-4ea1-8559-3e88f392b3c4",
+      "kind": "work",
+      "title": "Don Giovanni, K.527"
+    },
+    {
+      "id": "4573b7c8-2ef6-4192-94e8-ca7947aabf9c",
+      "kind": "work",
+      "title": "Clarinet Concerto in A major, K.622"
+    },
+    {
+      "id": "4a9d55f6-803e-4000-9aa3-25d4fdebac8b",
+      "kind": "work",
+      "title": "Piano Concerto no. 20 in D minor, K.466"
+    },
+    {
+      "id": "6f289c41-180d-4e05-bcfb-1b0677bc8629",
+      "kind": "work",
+      "title": "Symphony no. 25 in G minor, K.183"
+    },
+    {
+      "id": "86cdc1cc-196e-4497-9b79-d5b865f4640e",
+      "kind": "work",
+      "title": "The Magic Flute, K.620"
+    },
+    {
+      "id": "9d7ebb91-300f-4595-a327-e50afe74b9ee",
+      "kind": "work",
+      "title": "String Quartet no. 19 in C major, K.465, \"Dissonance\""
+    },
+    {
+      "id": "a5330f15-f29a-49a0-a6a5-0a51a60d7c75",
+      "kind": "work",
+      "title": "Symphony no. 40 in G minor, K.550"
+    },
+    {
+      "id": "b9d40b04-0e36-436d-8546-3a8d5d2a5f49",
+      "kind": "work",
+      "title": "Requiem in D minor, K.626"
+    },
+    {
+      "id": "c069fee7-184a-4e33-b9ea-f4cf48eeddc1",
+      "kind": "work",
+      "title": "Fantasia in D minor, K.397"
+    },
+    {
+      "id": "c86dc615-9119-47e4-9095-5fadd5fff3d3",
+      "kind": "work",
+      "title": "Clarinet Quintet in A major, K.581"
+    },
+    {
+      "id": "d20432b6-8b2a-480b-a2b8-9106e4229bfd",
+      "kind": "work",
+      "title": "Piano Concerto no. 21 in C major, K.467"
+    },
+    {
+      "id": "da45d48d-c18c-430f-a0ef-52b0655ddb3b",
+      "kind": "work",
+      "title": "Così fan tutte, K.588"
+    },
+    {
+      "id": "ec02f21f-8853-4ddb-8162-3c170b16a2c7",
+      "kind": "work",
+      "title": "Concerto for Flute and Harp in C major, K.299"
+    },
+    {
+      "id": "fd3321fd-b314-4740-9068-27b7cd9f449b",
+      "kind": "work",
+      "title": "Sinfonia concertante in E flat major, K.364"
+    }
+  ]
+}

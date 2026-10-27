@@ -1,0 +1,10 @@
+{
+  "beforePid": "6176",
+  "afterRevokePid": "",
+  "restartedPid": "7748",
+  "runtimePermissionAfterRevoke": "DENIED",
+  "runtimePermissionAfterRestart": "DENIED",
+  "hostRevokeSeparateProcess": true,
+  "beforeNotification701Present": true,
+  "launch": "Starting: Intent { cmp=com.opus.piano/.MainActivity }\nStatus: ok\nLaunchState: COLD\nActivity: com.opus.piano/.MainActivity\nTotalTime: 1325\nWaitTime: 1329\nComplete\n"
+}

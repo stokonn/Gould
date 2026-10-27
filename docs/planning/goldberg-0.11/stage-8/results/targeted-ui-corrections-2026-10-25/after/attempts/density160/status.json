@@ -1,0 +1,9 @@
+{
+  "validRepresentativeViewport": false,
+  "actualDensityDpi": 160,
+  "intendedDensityDpi": 320,
+  "cause": "Native test teardown restored display defaults;old capture helper resized pixels only",
+  "additionalFailure": "transient adb device emulator-5580 not found;subsequent qemu1/boot1 verified",
+  "applicationDefectInferred": false,
+  "preserved": true
+}

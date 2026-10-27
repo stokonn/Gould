@@ -1,0 +1,5 @@
+10-20 23:05:13.472  4034  4122 I TestRunner: started: mediaConsentCacheOfflineFailureAndRevocationAreEnforced(com.opus.piano.Quality092PersistenceTest)
+10-20 23:05:13.480  4034  4119 W HWUI    : Image decoding logging dropped!
+10-20 23:05:13.483  4034  4434 W HWUI    : Image decoding logging dropped!
+10-20 23:05:13.484  4034  4123 W HWUI    : Image decoding logging dropped!
+10-20 23:05:13.540  4034  4122 I TestRunner: finished: mediaConsentCacheOfflineFailureAndRevocationAreEnforced(com.opus.piano.Quality092PersistenceTest)

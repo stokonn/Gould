@@ -1,3 +1,27 @@
+## Verified integrated Stage6 baseline — October27
+
+- [x] Existing public catalogue backend10/10HTTPS/security requests passed once;
+  database/security postflight unchanged,privacy/operational prerequisites recorded.
+- [x] Integrate accepted Stage7/Stage8/Discover9b8266e with Stage6source6102b3f.
+  Preserve both histories,legal/security settings,fixtures and all personal data.
+- [x] Final integrated Kotlin compilation/JVM suite PASS; exact counts/command
+  in stage-6/results/integrated-baseline-2026-10-27/host-verification.json.
+  Localization1102,authored29fixture/provenance/policy/whitespace checks PASS.
+  Shared error redeclaration found/fixed; no Room/backup/practice schema change.
+- [x] Stage6 read-only release scope implemented and verified. Community intake,
+  backend OAuth and remote personal-data writes intentionally remain disabled;
+  real-provider authenticated workflows are outside the approved0.11launch scope.
+- [ ] Commit/push integrated baseline; create dedicated Database Simplifier branch.
+- [ ] Unify active Discover/Library catalogue data; final changed-scope native,
+  migration/upgrade/CI,stable APK/signing/docs/Wiki/Project/release gates pending.
+
+This is a scoped Stage6/backend+host acceptance,not a claim of final integrated
+native acceptance or a populated public catalogue. Existing native/upgrade evidence
+is retained with its original source identities; final release regression pending.
+Issue31 OPEN/Project In Progress. No newRC or stable publication yet.
+
+---
+
 ## Current Stage 6 — public read-only backend verified; integrated baseline next
 
 Purpose/scope: existing public catalogue GET API on Worker/Hyperdrive/Supabase,

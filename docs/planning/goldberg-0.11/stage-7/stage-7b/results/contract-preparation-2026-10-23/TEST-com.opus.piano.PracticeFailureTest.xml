@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.PracticeFailureTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-23T13:12:24.863Z" hostname="fedora" time="0.114">
+  <properties/>
+  <testcase name="continuousNotesFlushWithinMaximumDirtyAge" classname="com.opus.piano.PracticeFailureTest" time="0.065"/>
+  <testcase name="completionPublishedOnlyAfterSuccessfulSaveAndNeverTwice" classname="com.opus.piano.PracticeFailureTest" time="0.012"/>
+  <testcase name="freshSessionRequiresMatchingExportAndLeavesDraftOnMismatch" classname="com.opus.piano.PracticeFailureTest" time="0.006"/>
+  <testcase name="restoreCannotCheckpointOverUnreadableRecoveryData" classname="com.opus.piano.PracticeFailureTest" time="0.002"/>
+  <testcase name="failedManualStartupNeverPublishesRunningOrReplacesDraft" classname="com.opus.piano.PracticeFailureTest" time="0.003"/>
+  <testcase name="failedArchiveCannotReplaceTheOriginalRecoveryDraft" classname="com.opus.piano.PracticeFailureTest" time="0.003"/>
+  <testcase name="immediateSmartStartWaitsForRecoveryWithoutDeadlock" classname="com.opus.piano.PracticeFailureTest" time="0.003"/>
+  <testcase name="failedSmartStartupDoesNotExposeCaptureIdentity" classname="com.opus.piano.PracticeFailureTest" time="0.002"/>
+  <testcase name="failedRestoreFromIdleDoesNotFabricateARecoveryDraft" classname="com.opus.piano.PracticeFailureTest" time="0.004"/>
+  <testcase name="failedRecoveryCanRetryWithoutOverwritingOriginalOrStartingCapture" classname="com.opus.piano.PracticeFailureTest" time="0.003"/>
+  <testcase name="failedPauseKeepsUnsavedStateAndCanRetry" classname="com.opus.piano.PracticeFailureTest" time="0.004"/>
+  <testcase name="duplicateStartsAreIdempotent" classname="com.opus.piano.PracticeFailureTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

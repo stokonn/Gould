@@ -8,13 +8,16 @@ import com.opus.piano.R
 object L {
     @Volatile private var app: android.app.Application? = null
     @Volatile private var localized: android.content.res.Resources? = null
+    @Volatile private var explicitLocale: String? = null
     fun initialize(context: Context) { app=context.applicationContext as android.app.Application;localized=app?.resources }
-    fun refresh() {
+    fun refresh(overrideTag: String? = null) {
         val base=app ?: return
-        val locales=AppCompatDelegate.getApplicationLocales()
-        localized=(if(!locales.isEmpty) base.createConfigurationContext(android.content.res.Configuration(base.resources.configuration).apply { setLocales(android.os.LocaleList.forLanguageTags(locales.toLanguageTags())) }) else androidx.core.content.ContextCompat.getContextForLanguage(base)).resources
+        if (overrideTag != null) explicitLocale = overrideTag
+        val tags = explicitLocale ?: AppCompatDelegate.getApplicationLocales().toLanguageTags()
+        localized=(if(tags.isNotBlank()) base.createConfigurationContext(android.content.res.Configuration(base.resources.configuration).apply { setLocales(android.os.LocaleList.forLanguageTags(tags)) }) else androidx.core.content.ContextCompat.getContextForLanguage(base)).resources
     }
-    private fun context(): android.content.res.Resources? = localized
+    fun clearOverride() { explicitLocale = null; refresh() }
+    fun context(): android.content.res.Resources? = localized
     val locale: java.util.Locale get() = context()?.configuration?.locales?.get(0) ?: java.util.Locale.getDefault()
     fun s(id: Int, vararg args: Any?): String {
         val c=context() ?: return ""
@@ -27,6 +30,8 @@ object L {
     fun fixed(label:String):String = when(label) {
         "Home" -> s(R.string.label_home)
         "Repertoire" -> s(R.string.label_repertoire)
+        "Library" -> s(R.string.label_library)
+        "See all" -> s(R.string.stage7a_see_all)
         "Practice" -> s(R.string.label_practice)
         "Profile" -> s(R.string.label_profile)
         "Good morning" -> s(R.string.label_good_morning)

@@ -1,0 +1,13 @@
+fatal: path 'docs/planning/goldberg-0.11/stage-6/API-CONTRACTS.md' does not exist in 'bcc779685d79e99451796b3fa45657b3bca8dd99'
+Traceback (most recent call last):
+  File "/home/runner/work/Goldberg/Goldberg/scripts/check_admin_contract_fixtures.py", line 59, in <module>
+    check()
+  File "/home/runner/work/Goldberg/Goldberg/scripts/check_admin_contract_fixtures.py", line 53, in check
+    data = subprocess.check_output(['git', '-C', str(ROOT), 'show', provenance['commit'] + ':' + name])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', '-C', '/home/runner/work/Goldberg/Goldberg', 'show', 'bcc779685d79e99451796b3fa45657b3bca8dd99:docs/planning/goldberg-0.11/stage-6/API-CONTRACTS.md']' returned non-zero exit status 128.

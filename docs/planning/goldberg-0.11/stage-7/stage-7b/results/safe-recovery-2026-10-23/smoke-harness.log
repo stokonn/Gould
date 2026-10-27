@@ -1,0 +1,1 @@
+PASS: synthetic host command harness; emulator-only targeting; suite teardown then install -r before smoke; install failure remains fatal; no real adb/device used.

@@ -1,0 +1,18 @@
+{
+  "source": "4d245b46936d640740799dfcc6e8d61f3d44b249",
+  "native": {
+    "tests": 190,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 2,
+    "passed": 187
+  },
+  "failedTest": "Stage8cUiRegressionTest.switchRowHasOneNameStateRoleAndExactlyOneActionPerInput",
+  "cause": "Test-only Column lacks safe insets;injected pointer center hits StatusBar owned by SystemUI.Confirmed InputDispatcher diagnostic below;not a production Switch action failure.",
+  "rawDiagnostic": [
+    "10-25 06:38:33.124   653   769 W InputDispatcher: Dropping injected touch event: Injected event targeted at uid 10216 would be dispatched to window 'e66fa6d StatusBar' owned by uid 10185."
+  ],
+  "correction": "Pad isolated regression content by WindowInsets.safeDrawing;assert pointer center below system-bar inset;keep all name/role/state/keyboard/pointer/action-count assertions unchanged.",
+  "independentResponsiveAndScaffoldTests": "PASS;95.103s and11.379s respectively",
+  "next": "Locally compile/run corrected3cases before publishing test fix and one meaningful full-native redispatch;production hash unchanged."
+}

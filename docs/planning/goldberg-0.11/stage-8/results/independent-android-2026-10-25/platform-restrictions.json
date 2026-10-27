@@ -1,0 +1,8 @@
+{
+  "dataSaverReadback": "Restrict background status: enabled",
+  "restrictedBucket": "45",
+  "forcedLowStorageObserved": true,
+  "realDiskEnospcTested": false,
+  "actualMeteredNetworkOrTransferTested": false,
+  "limits": "Platform flags with all radios off;retained deterministic policy/lowspace/interrupt fixtures cover application decisions;not a real disk-full or mobile-transfer result."
+}

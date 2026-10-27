@@ -1,0 +1,3 @@
+Starting: Intent { cmp=com.opus.piano/.MainActivity }
+Error type 3
+Error: Activity class {com.opus.piano/com.opus.piano.MainActivity} does not exist.

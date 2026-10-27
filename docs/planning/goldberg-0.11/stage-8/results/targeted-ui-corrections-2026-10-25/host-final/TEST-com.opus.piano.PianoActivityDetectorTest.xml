@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.PianoActivityDetectorTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-25T05:50:25.963Z" hostname="fedora" time="0.138">
+  <properties/>
+  <testcase name="isolatedImpulsesAreNotSustainedPlaying" classname="com.opus.piano.PianoActivityDetectorTest" time="0.033"/>
+  <testcase name="tonalAttackCanTriggerButIsNotProofOfPiano" classname="com.opus.piano.PianoActivityDetectorTest" time="0.023"/>
+  <testcase name="sensitivityChangesQuietToneThreshold" classname="com.opus.piano.PianoActivityDetectorTest" time="0.039"/>
+  <testcase name="silenceAndBroadbandNoiseDoNotTrigger" classname="com.opus.piano.PianoActivityDetectorTest" time="0.042"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

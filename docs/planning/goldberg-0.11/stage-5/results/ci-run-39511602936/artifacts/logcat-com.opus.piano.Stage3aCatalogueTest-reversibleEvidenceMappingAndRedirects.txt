@@ -1,0 +1,8 @@
+10-20 23:05:25.146  4034  4122 I TestRunner: started: reversibleEvidenceMappingAndRedirects(com.opus.piano.Stage3aCatalogueTest)
+10-20 23:05:25.176  1610  2109 I SP.AiAi : Sync for captions_i18n_v0_en-US succeeded in 10736 ms: {added: [asr_en-US_v3056, input_predictions_en-US_v4], removed: [asr_en-US_v3003], metadata: false
+10-20 23:05:25.188  1610  2109 I SP.AiAi : GC for 'captions_i18n_v0_en-US' (10) with ttl of 0 ms took 0 ms (0/0/0)
+10-20 23:05:25.188  1610  2109 I AiAiNowPlaying: Superpacks changed. Refreshing FA controller
+10-20 23:05:25.189  1610  3239 I AiAiCaptions: downloadSuperpack(): Sync of superpack 'captions_i18n_v0_en-US' version 20240825 was completed but currently using active version 20210623
+10-20 23:05:25.190  1610  3239 I AiAiCaptions: downloadSuperpack(): Successfully downloaded superpack 'captions_i18n_v0_en-US' version 20240825.
+10-20 23:05:25.197  1610  1943 E SP.Service.AiAi: captions_i18n_v0_en-US is opened by other clients. It will stay open until all clients close it.
+10-20 23:05:25.198  4034  4122 I TestRunner: finished: reversibleEvidenceMappingAndRedirects(com.opus.piano.Stage3aCatalogueTest)

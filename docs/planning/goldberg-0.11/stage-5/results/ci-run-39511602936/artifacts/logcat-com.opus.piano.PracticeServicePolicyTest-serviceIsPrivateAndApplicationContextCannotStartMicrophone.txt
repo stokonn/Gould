@@ -1,0 +1,2 @@
+10-20 23:05:12.372  4034  4122 I TestRunner: started: serviceIsPrivateAndApplicationContextCannotStartMicrophone(com.opus.piano.PracticeServicePolicyTest)
+10-20 23:05:12.377  4034  4122 I TestRunner: finished: serviceIsPrivateAndApplicationContextCannotStartMicrophone(com.opus.piano.PracticeServicePolicyTest)

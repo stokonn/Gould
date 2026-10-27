@@ -1,0 +1,28 @@
+{
+  "run": 40083355927,
+  "workflow": "Goldberg Stage 5 emulator verification",
+  "conclusion": "failure",
+  "headSha": "dc60e8379114b44f758e0bb5184a0b6b83d7a465",
+  "retrievedUtc": "2026-10-24T10:53:05Z",
+  "jobs": {
+    "stage7b-acceptance full instrumentation \u2014 API 36": "failure (1 test failed of 187; 2 existing designed skips)",
+    "5.11 acceptance subset \u2014 API 36 emulator": "success (seeded upgrade all-green)"
+  },
+  "artifacts": [
+    {
+      "id": 12555758828,
+      "name": "stage7b-acceptance-instrumentation-api36-dc60e8379114b44f758e0bb5184a0b6b83d7a465",
+      "size": 21966034,
+      "zipSha256": "4b6b7ae9c439c1196247c923d1d1fd6480dfb4d152d46203a7cdbc6eccaa4137",
+      "zipIntegrity": "PASS"
+    },
+    {
+      "id": 12556611238,
+      "name": "stage5-acceptance-results",
+      "size": 1694034,
+      "zipSha256": "849fe2d34a4d19a5f841c78695a3369294e4bb2bdec005ae958fa7b5509a6fb4",
+      "zipIntegrity": "PASS"
+    }
+  ],
+  "sourceBinding": "both artifacts' source-commit.txt verify checkout HEAD dc60e8379114b44f758e0bb5184a0b6b83d7a465"
+}

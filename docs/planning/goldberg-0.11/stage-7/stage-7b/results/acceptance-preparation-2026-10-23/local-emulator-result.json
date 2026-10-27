@@ -1,0 +1,12 @@
+{
+  "serial": "emulator-5584",
+  "api": 36,
+  "readOnly": true,
+  "snapshots": false,
+  "gpu": "swiftshader",
+  "vulkan": false,
+  "exitCode": 139,
+  "result": "host SIGSEGV before ADB boot",
+  "appTestsExecuted": 0,
+  "screenshots": 0
+}

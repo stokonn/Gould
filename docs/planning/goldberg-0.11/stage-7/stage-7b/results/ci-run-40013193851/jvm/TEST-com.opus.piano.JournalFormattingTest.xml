@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.opus.piano.JournalFormattingTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-23T19:47:37.049Z" hostname="runnervm8k3b6" time="0.13">
+  <properties/>
+  <testcase name="weekdaysFollowApplicationLocale" classname="com.opus.piano.JournalFormattingTest" time="0.119"/>
+  <testcase name="dateTimeUsesExplicitLocaleAndZoneAcrossMidnight" classname="com.opus.piano.JournalFormattingTest" time="0.011"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

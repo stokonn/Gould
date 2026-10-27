@@ -1,0 +1,17 @@
+{
+  "parentSource": "4d245b46936d640740799dfcc6e8d61f3d44b249",
+  "inputs": {
+    "app/src/main/java/com/opus/piano/ui/OpusApp.kt": "1ceb1b050da623b3f767c5855a3fde320213be867fa11654e2a3927980aea2f3",
+    "app/src/main/java/com/opus/piano/ui/admin/AdminSettingsScreen.kt": "4a99d935684298b5347e00bb5b4b801d1f8a1f380ac080418dd6ec66b520c7bc",
+    "app/src/main/java/com/opus/piano/ui/JournalNavigationBar.kt": "58576eba418a9bea84e81b1d28b16a3af516a981010a37e05c0f2d8ac183005e",
+    "app/src/androidTest/java/com/opus/piano/Stage7bAcceptanceTest.kt": "e6070ae82e21e5ff7cd9c649fc9eea5c8f1b62880f449f03b8d2ad5db809c462",
+    "app/src/androidTest/java/com/opus/piano/Stage8bAssessmentProbe.kt": "04575809e5baaf483d73c613dccaf22bd138788057ce12ab74dc32b2cebe1e2a",
+    "app/src/androidTest/java/com/opus/piano/Stage8cUiRegressionTest.kt": "a34b818f82e5293981359cafe8551e0fd41c29b81cb84eedc3293337e3993533"
+  },
+  "productionApkSha256": "68d48b75436f6bd3f865d784714ec48570e2745c14aa0e9682514753009f3db0",
+  "defaultTestApkSha256": "f683e9c7cee06d4c290f9086c9f196791d192d47ff462b0c81cb9d085b9b5098",
+  "scope": "Test-only safeDrawing padding and target-statusbar assertion;production/recorder source unchanged.Original actual captures remain bound to4d245b and original probe APK.",
+  "build": "PASS25s;8executed/43up-to-date",
+  "focusedNativeOutput": "native-insets.txt",
+  "independentCI": "PENDING new published test-source commit;CI40168644562 failed solely on pointer hitting StatusBar;raw preserved."
+}

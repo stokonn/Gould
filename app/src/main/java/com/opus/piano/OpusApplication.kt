@@ -34,6 +34,8 @@ class OpusApplication : Application() {
     val portablePreferences by lazy { com.opus.piano.data.backup.PortablePreferences(this,live=true) }
     val identity by lazy { com.opus.piano.identity.GoogleIdentity(this, database) }
     val media by lazy { com.opus.piano.preferences.MediaPreferences(this) }
+    // Stage 7A: persisted online-catalogue toggle (default OFF); online search stays explicit.
+    val catalogOnline by lazy { com.opus.piano.preferences.CatalogPreferences(this) }
     val quotes by lazy { com.opus.piano.data.DailyQuotes(this) }
     val appearance by lazy { com.opus.piano.preferences.AppearanceStore(this) }
     val practiceRequest = kotlinx.coroutines.flow.MutableStateFlow("")
@@ -48,7 +50,7 @@ class OpusApplication : Application() {
     val providerCache by lazy { com.opus.piano.data.catalogue.providers.FileProviderCache(java.io.File(cacheDir,"catalogue-stage4/responses"),reserveBytes={catalogueStorage.requiredReserve()},intake=catalogueStorage.intake) }
     val discover by lazy {
         com.opus.piano.data.catalogue.DiscoverRepository(localCatalogue,
-            com.opus.piano.data.catalogue.providers.ProviderClient(com.opus.piano.data.catalogue.providers.HttpsProviderTransport { media.allowed() }, { media.allowed() }, cache=providerCache), { media.allowed() }, catalogueStorage)
+            com.opus.piano.data.catalogue.providers.ProviderClient(com.opus.piano.data.catalogue.providers.HttpsProviderTransport { catalogOnline.enabled.value && media.allowed() }, { catalogOnline.enabled.value && media.allowed() }, cache=providerCache), { catalogOnline.enabled.value && media.allowed() }, catalogueStorage)
     }
     val cataloguePortraits by lazy { com.opus.piano.data.catalogue.CataloguePortraits(java.io.File(cacheDir,"catalogue-stage4/portraits"),reserveBytes={catalogueStorage.requiredReserve()},intake=catalogueStorage.intake) { media.allowed() } }
     // Stage 5 offline bundles (D5.1 file store, D5.3 WorkManager, D7 budgets/consent).
@@ -70,4 +72,56 @@ class OpusApplication : Application() {
     val recordings by lazy { RecordingRepository(database) }
     val repository by lazy { OpusRepository(database, achievements) }
     val catalogRepository by lazy { CatalogRepository(database, filesDir, achievements = achievements, mediaAllowed = { media.allowed() }) }
+
+    // Canonical Stage 6/8 service path. The accepted legacy UI stays disabled
+    // until its decimal-revision/dual-confirmation model is adopted explicitly.
+    @androidx.annotation.VisibleForTesting var canonicalAdminTransportOverride: com.opus.piano.admin.AdminTransport? = null
+    private val canonicalAdminGuard = Any()
+    @Volatile private var canonicalAdminInstance: com.opus.piano.data.community.canonical.CanonicalAdminRepository? = null
+    suspend fun canonicalAdminRepository(): com.opus.piano.data.community.canonical.CanonicalAdminRepository {
+        synchronized(canonicalAdminGuard) { canonicalAdminInstance }?.let { return it }
+        val created = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+        val contract = com.opus.piano.data.community.canonical.AdminContract(
+            assets.open("community/admin-canonical-schema.json").bufferedReader().use { it.readText() }
+        )
+        com.opus.piano.data.community.canonical.CanonicalAdminRepository(
+            com.opus.piano.data.community.canonical.CanonicalAdminClient(
+                contract,
+                com.opus.piano.data.community.canonical.CanonicalHttpTransport(
+                    endpoint = { adminSettings.endpoint },
+                    transport = canonicalAdminTransportOverride ?: com.opus.piano.admin.DisabledAdminTransport,
+                ),
+            )
+        )
+        }
+        return synchronized(canonicalAdminGuard) {
+            canonicalAdminInstance ?: created.also { canonicalAdminInstance = it }
+        }
+    }
+
+    // Stage 7B: Administration foundation. LAZY — nothing in startup/journal/recovery
+    // paths ever touches these. adminTransportOverride mirrors bundleConnectOverride:
+    // hermetic seam for tests/previews, never set in production.
+    @androidx.annotation.VisibleForTesting var adminTransportOverride: com.opus.piano.admin.AdminTransport? = null
+    val adminSettings by lazy { com.opus.piano.admin.AdminSettingsStore(this) }
+    val adminSession by lazy { com.opus.piano.admin.KeystoreAdminSessionStore(this) }
+    val adminRepository: com.opus.piano.admin.AdminRepository by lazy {
+        val api = com.opus.piano.admin.AdminApi.forApplication(
+            baseUrl = { adminSettings.endpoint },
+            fixtureTransportOverride = adminTransportOverride,
+            token = { adminSession.readToken() },
+        )
+        com.opus.piano.admin.AdminRepository(
+            api = api,
+            session = adminSession,
+            trust = com.opus.piano.admin.AdminTrustPolicy(),
+            markers = com.opus.piano.admin.AdminMarkers(com.opus.piano.admin.AndroidAdminMarkerStore(this)) {
+                com.opus.piano.admin.adminFingerprint("${identity.account.value.orEmpty()}:${adminSettings.endpoint}:${adminRepository.principalId.orEmpty()}")
+            },
+            stats = com.opus.piano.admin.AdminStatsService(api),
+            // New local Stage 6 candidate requires dual revision expectations;
+            // no frozen HTTP mapping exists yet. Never send legacy C6 live decisions.
+            decisionsEnabled = false,
+        )
+    }
 }

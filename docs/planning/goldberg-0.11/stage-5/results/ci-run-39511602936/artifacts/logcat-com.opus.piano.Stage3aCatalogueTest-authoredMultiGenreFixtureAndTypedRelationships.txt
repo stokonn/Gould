@@ -1,0 +1,9 @@
+10-20 23:05:24.937  4034  4122 I TestRunner: started: authoredMultiGenreFixtureAndTypedRelationships(com.opus.piano.Stage3aCatalogueTest)
+10-20 23:05:24.945  2303  4649 I AutofillFlagChangeInten: onHandleIntent() [CONTEXT service_id=177 ]
+10-20 23:05:24.950  2303  4272 I GmsSyncPolicyEngine: Periodic sync 7 disabled
+10-20 23:05:24.951  2303  4272 I GmsSyncPolicyEngine: Periodic sync 4 disabled by policy, cancelled.
+10-20 23:05:24.962  2303  4649 I AutofillImeRegisterTask: cancelTask(): AutofillImeRegisterTask cancelled [CONTEXT service_id=177 ]
+10-20 23:05:24.981  2303  4649 I SettingsChangedIntentOp: telephonyspam phenotype flag changed [CONTEXT service_id=150 ]
+10-20 23:05:24.981  2303  4649 I SpamListSync: schedulePeriodicTask [CONTEXT service_id=150 ]
+10-20 23:05:25.030  2303  4272 I ChimeraPrvdrProxy: Shutting down chimera ContentProvider com.google.android.gms.reminders.provider.RemindersChimeraProvider
+10-20 23:05:25.144  4034  4122 I TestRunner: finished: authoredMultiGenreFixtureAndTypedRelationships(com.opus.piano.Stage3aCatalogueTest)

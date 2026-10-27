@@ -1,0 +1,14 @@
+== signing verification environment ==
+apksigner used: /usr/local/lib/android/sdk/build-tools/37.0.0/apksigner
+build-tools directory:
+total 32
+drwxrwxrwx  8 root root 4096 Oct 12 21:33 .
+drwxrwxrwx 11 root root 4096 Oct 23 21:32 ..
+drwxrwxrwx  6 root root 4096 Oct 12 21:33 34.0.0
+drwxrwxrwx  6 root root 4096 Oct 12 21:33 35.0.0
+drwxrwxrwx  6 root root 4096 Oct 12 21:33 35.0.1
+drwxrwxrwx  6 root root 4096 Oct 12 21:33 36.0.0
+drwxrwxrwx  6 root root 4096 Oct 12 21:33 36.1.0
+drwxrwxrwx  6 root root 4096 Oct 12 21:33 37.0.0
+java: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64/bin/java
+openjdk version "17.0.20.1" 2026-08-18

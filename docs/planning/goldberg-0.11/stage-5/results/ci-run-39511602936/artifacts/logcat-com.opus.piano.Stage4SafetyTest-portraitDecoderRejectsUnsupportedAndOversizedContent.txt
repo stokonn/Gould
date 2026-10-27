@@ -1,0 +1,4 @@
+10-20 23:05:53.016  4034  4122 I TestRunner: started: portraitDecoderRejectsUnsupportedAndOversizedContent(com.opus.piano.Stage4SafetyTest)
+10-20 23:05:53.017  4034  4122 D HWUI    : --- Failed to create image decoder with message 'unimplemented'
+10-20 23:05:53.018  4034  4122 W HWUI    : Image decoding logging dropped!
+10-20 23:05:53.018  4034  4122 I TestRunner: finished: portraitDecoderRejectsUnsupportedAndOversizedContent(com.opus.piano.Stage4SafetyTest)
