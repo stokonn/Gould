@@ -21,6 +21,8 @@ def classify_workflow(workflow, main_paths, maintenance_paths):
     path = workflow["path"]
     if path in main_paths or path in maintenance_paths or path in REQUIRED:
         return "KEEP"
+    if path == "dynamic/copilot-swe-agent/copilot":
+        return "KEEP_MANAGED_COPILOT_INTEGRATION"
     if path.startswith(".github/workflows/") and path.endswith((".yml", ".yaml")):
         return "OBSOLETE_REGISTRATION"
     return "BLOCKED_UNKNOWN_OR_MANAGED_SECURITY_WORKFLOW"

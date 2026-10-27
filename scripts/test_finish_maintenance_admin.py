@@ -23,6 +23,10 @@ class WorkflowAuditTest(unittest.TestCase):
         row = {"path": "dynamic/github-code-scanning/codeql"}
         self.assertTrue(classify_workflow(row, set(), set()).startswith("BLOCKED"))
 
+    def test_known_github_managed_copilot_integration_is_kept(self):
+        row = {"path": "dynamic/copilot-swe-agent/copilot"}
+        self.assertEqual("KEEP_MANAGED_COPILOT_INTEGRATION", classify_workflow(row, set(), set()))
+
     def test_release_checksum_asset_is_never_overwritten_by_backup_manifest(self):
         with tempfile.TemporaryDirectory() as directory:
             backup = Path(directory)

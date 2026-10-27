@@ -1,6 +1,6 @@
 # Gould development transfer
 
-Current status: canonical development checkout `~/Projects/Opus` is on main in renamed repository `stokonn/Gould`. The integrated source passed 19 host checks/348 JVM tests and exact-source maintenance CI; remote clone verification passed. Full Actions registration cleanup and backed-up prerelease removal remain mandatory. Read [the main handoff](../ai/GOULD-MAIN-MAINTENANCE.md); no Gould 0.12 features have started.
+Current status: canonical development checkout `~/Projects/Opus` is on main in renamed repository `stokonn/Gould`. The integrated source passed 19 host checks/348 JVM tests and exact-source maintenance CI; remote clone verification passed. Full Actions registration review and the backed-up RC prerelease removal are verified; unresolved private-worktree data remain protected. Read [the main handoff](../ai/GOULD-MAIN-MAINTENANCE.md); no Gould 0.12 features have started.
 
 ## Development baseline and layout
 

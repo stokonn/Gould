@@ -1,3 +1,5 @@
+> Execution verified: the four SAFE candidates below were deleted by the reviewed host controller; 29 remote branches remain (23 KEEP, six BLOCKED/retained). All release tags remain unchanged. See [Actions and RC execution audit](FINAL-ACTIONS-AND-RC-AUDIT.md). The table preserves the reviewed pre-deletion classification.
+
 # Gould remote branch classification
 
 Live API audit against main `bf837f2`; 33 branches. Existing independent history bundle checksum and integrity passed (101 refs). Public Issue #31 and all 217 historical comments were checked for branch-addressed source links, in addition to local source/docs, worktree, PR and release dependencies. Do not delete historically linked heads merely because they are merged.

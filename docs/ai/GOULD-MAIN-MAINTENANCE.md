@@ -14,7 +14,7 @@ Application ID/namespace `com.opus.piano`, `opus.db`, personal schema 10, catalo
 
 ## Branch and worktree disposition
 
-All 33 current remote branches were audited against integrated main, existing independent bundle coverage, source links, PRs, releases and worktrees. The original history bundle checksum and integrity passed (101 refs). Public Issue #31 and all 217 comments were inspected for historical branch links. [FINAL-BRANCH-AUDIT.md](../maintenance/FINAL-BRANCH-AUDIT.md) classifies **23 KEEP, four SAFE TO DELETE and six BLOCKED / NEEDS OWNER DECISION**. The four reviewed deletion candidates are pinned in `docs/maintenance/BRANCH-DELETION-PLAN.json`; execution requires fresh dependency/head checks. Historical source-link branches are retained even when merged. Unique/unmerged work is not blindly merged.
+All 33 pre-deletion remote branches were audited against integrated main, existing independent bundle coverage, source links, PRs, releases and worktrees. The original history bundle checksum and integrity passed (101 refs). Public Issue #31 and all 217 comments were inspected for historical branch links. [FINAL-BRANCH-AUDIT.md](../maintenance/FINAL-BRANCH-AUDIT.md) classifies **23 KEEP, four SAFE TO DELETE and six BLOCKED / NEEDS OWNER DECISION**. The four reviewed deletion candidates are pinned in `docs/maintenance/BRANCH-DELETION-PLAN.json`; execution subsequently passed fresh dependency/head checks and removed only those four heads. Historical source-link branches are retained even when merged. Unique/unmerged work is not blindly merged.
 
 Nine worktrees were previously safely retired. The remaining seven historical worktrees were re-audited by file: **6,769 non-generated file hashes** are recorded privately in `.git/portability-audit/remaining-worktree-file-audit.json`. All their commits remain under retained local branches; no commit is known to exist only in a worktree. Independent coverage of their unresolved ignored/private files has not been established, so originals remain protected:
 
@@ -30,41 +30,26 @@ Nine worktrees were previously safely retired. The remaining seven historical wo
 
 The owner previously confirmed historical sessions/services had saved and closed or relocated. This executor still cannot inspect all host processes; that limitation is recorded rather than represented as a fresh host observation. No further worktree is removed until private originals/backups are fully accounted for. These worktrees are not source/build dependencies of Opus. Original owner untracked files, private PMP, protected backups and standalone PianoApp Opus remain untouched.
 
-## Complete Actions audit — mandatory outstanding gate
+## Actions and RC cleanup — executed and reviewed
 
-Final main source has three workflow definitions: `quality.yml`, `community-bff.yml`, `stage5-emulator.yml`. They cover Android/JVM/lint/migration/backup/security, backend/PostgreSQL/workerd, and dispatch-only instrumentation/upgrade/network/restart respectively. The old five-tab screenshot YAML was removed. The historical quality display name remains because its source is byte-exact pinned by the evidence verifier; its name alone does not make it obsolete.
+Read [FINAL-ACTIONS-AND-RC-AUDIT.md](../maintenance/FINAL-ACTIONS-AND-RC-AUDIT.md) for the complete API inventory, historical-record distinction, managed-workflow review and release deletion evidence. Three repository workflow definitions remain. The full API lists four active registrations: those three plus the existing GitHub-managed Copilot cloud-agent integration. No obsolete registration remains; no historical workflow runs were deleted. The old screenshot YAML is removed from main and its original successful historical run remains available.
 
-**A complete workflow-registration inventory, including disabled records, has not yet been obtained through this executor.** Its connector rejects `/actions/workflows` as an unsupported endpoint, while shell Git/gh has no DNS access. The live source-definition count is not a claim about active API registrations. Do not declare workflow cleanup or maintenance complete until the full inventory, disable results and exact-current main CI are verified.
+The four backed-up SAFE branch candidates were deleted; 29 remote branches remain (23 KEEP, six BLOCKED/retained). Exact heads and reasons are recorded in the branch audit. Stable and all 14 tags are unchanged.
 
-The reviewed host controller below enumerates every workflow registration, compares both main and maintenance definitions, retains essential/defined workflows, checks ruleset/protection dependencies, and disables only registrations whose YAML is absent from both canonical definitions. Unknown managed/security workflows are blocked for review. Historical registrations may remain visible as disabled records; **no historical workflow runs are deleted**.
+The obsolete RC prerelease ID423537826 and its three assets were deleted after complete private backup. Direct API reads confirm 404 for the prerelease and all asset endpoints. Its Git tag remains object4cb0059e36ed9e918ae1408e14f0c84a28ac2402. Stable ID425356546 and every other release/asset identity are unchanged. Private backup is `.gradle/private-release-backups/v0.11-rc.1/verified-backup/`, with exact original asset names in `assets/` and a distinct `BACKUP-SHA256SUMS.txt` manifest.
 
-## Obsolete RC prerelease — backed up, deletion pending
+The original controller receipt conservatively flagged its unknown managed Copilot row; manual review identified that exact existing integration as KEEP. The original receipt remains unchanged, with the review recorded separately. There is no need to rerun destructive administration just to change that flag. Current code recognizes only that exact managed integration; unrelated unknown security/managed workflows remain blocked.
 
-Live API identity: prerelease **`v0.11-rc.1`, ID `423537826`, prerelease=true**. Stable is the distinct **`v0.11`, ID `425356546`, prerelease=false**; its original APK digest is `290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6`.
+## Remaining blockers and readiness
 
-Complete private backup: `.gradle/private-release-backups/v0.11-rc.1/verified-backup/`, owner-only directory/files; original assets are in `assets/`, with the separate administrative `BACKUP-SHA256SUMS.txt` manifest. A pre-deletion check caught an earlier manifest/asset filename collision; the corrected backup was rebuilt from protected originals and all three assets were reverified. The superseded outer directory is not accepted as the deletion backup. Metadata, release notes, Stable-before metadata, preserved tag refs and all three RC assets are present with SHA-256 checksums. Each asset's bytes and size matched live GitHub metadata:
+**Verified development baseline:** canonical Gould main, all application/backend/database/signing inputs unchanged from accepted host source, host 19/19 checks and 348 JVM tests, independent Git/source/remote clone checks, and required quality/backend CI on integrated main. Final metadata commit CI is checked against its exact SHA.
 
-- `Goldberg-v0.11-rc.1.apk`: `c5662d8ead2b175fac0be09145776e84936c2b8f794c85b967f71aaab1938bb5`.
-- `artifact-receipt.json`: `451b507179100367755c03ae1b3cea7d9ae447d7ab48bd7a8952d6e2959176ef`.
-- `SHA256SUMS`: `245c92c93b967b55fc62744da6b9093d2af67242dec6a35140529e39a066a20a`.
+**Maintenance remains partial:** seven historical worktrees contain private signing/runtime/PMP/incident/capture records whose independent backup/encrypted custody has not been established. The existing backup explicitly records incomplete private coverage; do not treat its source-history bundle as a backup of those files. Six unique historical branches remain preserved for owner decisions. Neither condition is a missing application build dependency, but neither authorizes deleting unresolved originals.
 
-**Deletion has not been executed.** Release-delete and workflow-disable operations are not exposed by the connected tools. Do not claim absence until the API returns 404 for the prerelease and its three assets, its tag remains unchanged, and all other releases/assets are unchanged. Preserve the private backup permanently; the source-only USB archive excludes `.gradle`, so transfer this backup separately and securely when required.
-
-## Minimum remaining administrative action
-
-After the current reviewed source is saved on main, run in a normal authenticated host terminal:
-
-```sh
-cd "$HOME/Projects/Opus"
-python3 scripts/finish_maintenance_admin.py --apply
-```
-
-This single controller performs the full workflow API audit, guarded disabling, fresh checks/deletion of the four independently backed-up branch candidates, and deletion of only release ID 423537826 after re-verifying its backup. It preserves all tags, Stable/other releases and historical workflow runs, and records before/after inventories and hashes in `.gradle/final-maintenance-administration/report.json`. It stops on ambiguous security dependencies or changed candidate/backup state. It does not build an APK, publish a release, rewrite history or delete local data. Five workflow/backup regressions, including preservation of an asset literally named SHA256SUMS, and the existing five deletion-guard regressions passed locally.
-
-Return that report path/outcome. The next agent must validate actual API outcomes, final active workflow count, main CI and remaining branch count; update this handoff and PMP; and continue preserving unresolved local records. **Readiness for Gould 0.12: BLOCKED on complete Actions audit/admin receipt and protected-data disposition.** No feature scope is inferred by maintenance.
+Next: read the exact current main CI and final private receipts; arrange owner-approved encrypted custody/recipient or explicit per-file disposition for unresolved records, then independently verify backups before any further retirement. Source/toolchain/USB instructions are in PORTABILITY.md. **Do not declare full maintenance complete while these protected-data blockers remain. Gould 0.12 features have not started and require their own owner-approved scope.**
 
 ## PMP
 
-Standalone `~/Projects/project-memory-protocol` remains separate and unchanged. Keep project UUID `ac3a7942-cde5-4e79-8a43-e1a0d2c7df81`, private state/history and original recovery records. Public handoff and private reported facts distinguish successful host/CI checks from pending administration. Keep `.pmp/` and `.pmp.yml` out of public commits; `github: null` remains truthful. Use `pmp check`, `resume`, `history`, `verify` and a private snapshot after final source reconciliation. No native PMP evidence is fabricated from historical results.
+Standalone `~/Projects/project-memory-protocol` remains separate and unchanged. Keep project UUID `ac3a7942-cde5-4e79-8a43-e1a0d2c7df81`, private state/history and original recovery records. Public handoff and private reported facts distinguish successful host/CI checks and resolved administration from unresolved private-data custody. Keep `.pmp/` and `.pmp.yml` out of public commits; `github: null` remains truthful. Use `pmp check`, `resume`, `history`, `verify` and a private snapshot after final source reconciliation. No native PMP evidence is fabricated from historical results.
 
 created by stokonn with love <3

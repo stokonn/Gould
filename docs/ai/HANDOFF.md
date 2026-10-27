@@ -11,9 +11,9 @@ Read [GOULD-MAIN-MAINTENANCE.md](GOULD-MAIN-MAINTENANCE.md) first for the comple
 - Complete source/Git portability checks and independent remote clone passed. Private configuration and signing keys require secure separate restoration.
 - Nine obsolete worktrees were retired with preservation verified. Seven historical worktrees retain unresolved private/evidence state; their commits remain referenced. Do not discard them.
 - Branch audit: 23 KEEP, four SAFE TO DELETE, six BLOCKED; independent history bundle verified. Execute only fresh-rechecked, backed-up deletion candidates.
-- Final maintenance remains **BLOCKED** on the complete Actions API inventory/registration cleanup, RC prerelease deletion/readback and unresolved protected-data disposition. Three source workflow definitions are not proof of the final API active count.
-- The obsolete prerelease v0.11-rc.1 is privately backed up (metadata, notes, three SHA-verified assets). Only release ID423537826 and its assets may be deleted; preserve its tag, all Stable releases/assets and historical workflow runs.
-- Use the reviewed `python3 scripts/finish_maintenance_admin.py --apply` from a normal authenticated host terminal for unsupported administrative endpoints; return `.gradle/final-maintenance-administration/report.json` for validation. Do not repeat the cleared host build merely for this access blocker.
+- Actions/RC administration is resolved: four backed-up branches and the obsolete RC prerelease/assets were deleted; all tags/Stable are unchanged. Full API inventory: three required YAML workflows plus one existing managed Copilot integration, four active total. Historical runs remain. Overall maintenance remains **BLOCKED** on protected private-worktree custody/disposition.
+- The obsolete prerelease v0.11-rc.1 and only its assets are deleted; its tag, all Stable releases/assets and historical workflow runs are preserved. The complete private backup is retained securely.
+- Administrative receipt and live API outcomes were verified; read [the final Actions/RC audit](../maintenance/FINAL-ACTIONS-AND-RC-AUDIT.md). Do not rerun destructive administration merely to replace the conservative original managed-workflow flag.
 
 Keep original owner untracked files, private PMP and the independent `~/Projects/project-memory-protocol` repository intact. Preserve `com.opus.piano`, `opus.db`, schema/backup compatibility and the trusted signing identity. No application release, force push, history rewrite or Gould 0.12 feature is authorized by this maintenance task.
 
