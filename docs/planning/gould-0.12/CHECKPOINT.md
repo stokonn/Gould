@@ -423,3 +423,16 @@ remaining Studio/metronome/queue/Undo/notes, remaining full acceptance and owner
 visual sign-off. No release or main integration. Do not rerun a full host gate
 for minor unchanged-source inspections; use targeted compile/affected regressions
 until the next meaningful verified batch. Do not repeat completed architecture.
+
+
+Published recovery pointer: source026874928f1298601b01c52cbdf396bcbc7639af,
+feature/gould-0.12; ordinary push and exact remote SHA verified. Issue41 dashboard
+and comment6483665427 synchronized. Canonical supported PMP snapshot37
+23ccc71e-5372-471d-b308-32fb1ba9ff67 binds this feature source explicitly; canonical Git
+metadata remains main, correctly distinguished from feature verification.
+No Gradle/native check remains running; local disposable emulator-5582 is still
+available for next launcher validation. Earlier in-progress host notices above
+are chronological history, superseded by the successful final widget gate.
+Next agent should inspect status/HEAD and this latest checkpoint, then continue
+actual launcher/widget acceptance without repeating completed architecture or
+unchanged-source gates. Remaining scope and all owner/safety/data controls remain.
