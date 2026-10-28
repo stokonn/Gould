@@ -1,3 +1,5 @@
+> Backup v6/media archive host gate 2026-10-28: verified at `ec08926` on `feature/gould-0.12` — 363 JVM tests/0 failures/errors/skips (5 new RecordingArchiveTest), lint 0 errors/145warnings, instrumentation compiled only, debug APK 0.12-dev/code14 signer 53eface4 trusted, source manifest(302) 037cacf9. [Evidence](../planning/gould-0.12/verification/backup-v6-host.json).
+
 > Phase2 foundation checkpoint2026-10-28: [current implementation](../planning/gould-0.12/CHECKPOINT.md), Issue41/milestone5 InProgress. Source-bound358JVM/0failures/errors/skips; debug/testAPK compilation and lint0errors/132warnings; all390inputs unchanged, signer/ZIP/reference exclusion passed. Instrumentation NOT EXECUTED. Additive schema11/audio/event/icon foundations only; full approved scope and native/data/UI/backup/widget/upgrade/release acceptance PENDING. Canonical PMP supported CLI retains private history and binds the feature SHA explicitly. Main unchanged; no release. Earlier planning/maintenance statuses below are history.
 
 ## Gould 0.12 Phase 1 — October28,2026
