@@ -140,9 +140,59 @@ Host verification: compileDebugKotlin BUILD SUCCESSFUL. JVM tests 42 suites /
 Agent policy check PASS. git diff --check PASS.
 Native instrumentation and emulator execution NOT performed in this batch.
 
-Next: Studio history glyph → Previous route, Previous screen (Practice History +
-Recordings tabs), local WAV player, achievements wiring, Profile 2×2/era/draft,
-both widgets, Tux/quote, metronome/queue-Undo. None complete yet.
+### Previous screen (LB-01) — implemented, host-verified, committed d937cdc 2026-10-28
+
+PreviousScreen (new): two tabs — Practice History (bounded keyset paging,
+reuses history DAO) and Recordings (newest-first, MediaPlayer play/pause with
+lifecycle disposal, SAF CreateDocument export, explicit delete confirmation,
+Recoverable state shown honestly). "previous" route in OpusApp NavHost;
+selectedTab maps to REPERTOIRE. Studio header history icon + Library discreet
+Previous entry. Host gate: 363 JVM tests pass, lint 0 errors/146 warnings,
+localization PASS (1118 resources).
+
+### Achievements (AC-01–03) — implemented, host-verified 2026-10-28
+
+Achievements.kt: 3 new MedalArt (MICROPHONE/PEN/EAR), 5 new metrics
+(RECORDING_SAVED_COUNT, SESSION_NOTES_COUNT, VERSATILE_SESSIONS, PLAYBACK_COUNT,
+FOUNDING_PRACTICE), 6 new definitions (first_take, recording_artist,
+versatile_pianist, musical_journal, critical_listener, founding_pianist),
+distinctNotes() helper, facts() extended with studioEvents + foundingVerifiedAt
+(defaulted; backward compatible).
+
+AchievementStore: studio events (db.studioDao().recordings()/events()) merged
+into badges flow and evaluateInTransaction; newly earned awards enqueue a
+durable BadgeNotice (acknowledgedAt=0) for the unlock popup; migration
+backfills historical unlocks as already-acknowledged. FoundingPolicy.
+stableOneCutoffMillis stays null until a real 1.0 release.
+
+BadgeLocalization + EN/CZ strings: 6 new badge entries (24 strings) +
+msg_view_badge/msg_dismiss_11a3.
+
+MedalArtwork: MICROPHONE (capsule + grille + stand), PEN (nib + ink),
+EAR (ear curve + sound arcs); metric-aware inscription (REC/NOTE/LISTEN/
+1.0·FOUNDING).
+
+OpusApp: durable unlock popup replaces the old Snackbar unlock notification.
+One themed AlertDialog per new award (medal icon, rarity, description,
+View Badge → BADGES route / Dismiss). Defers while practice or recording is
+active; acknowledges via studioDao.acknowledge() on dismiss/view.
+
+AchievementEngineTest.allDefinedMilestonesCanBeEarnedFromRealFacts updated:
+studio-event fixtures with 64-hex subjects via StudioAchievementRules.recordingKey(),
+foundingVerifiedAt=3e12; studio badges verified individually (first_take,
+critical_listener, founding_pianist earned; recording_artist/versatile_pianist/
+musical_journal correctly not earned from the base fixture).
+
+Host verification (this batch): compile OK, JVM tests 42 suites / 363 tests /
+0 failures / 0 errors / 0 skipped, lint 0 errors / 147 warnings,
+localization PASS (1144 EN/CZ resources), agent policy PASS, git diff --check
+PASS. Native instrumentation and emulator execution NOT performed.
+
+Next: Profile 2×2 centered statistics + era autocomplete (distinct local
+catalogue eras, accent-insensitive) + SavedStateHandle edit draft with
+Save/Discard/Keep-editing guards (PR-01–02); both widgets (WG-01–04);
+Tux mono TextStyle fix + Home quote licensed image + scrim; metronome/queue-Undo
+(ST-03); then native/emulator acceptance. None complete yet.
 
 Canonical PMP active task gould-0.12-complete, supported CLI (missing feature-state
 not fabricated). Previous main maintenance task was explicitly archived through

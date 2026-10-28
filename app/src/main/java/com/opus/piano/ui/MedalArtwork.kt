@@ -103,13 +103,43 @@ import kotlin.math.*
                     drawLine(light, Offset(76f, 115f), Offset(124f, 115f), 3f)
                     listOf(Offset(70f, 80f), Offset(100f, 71f), Offset(130f, 80f)).forEach { drawCircle(light, 2.8f, it) }
                 }
+                MedalArt.MICROPHONE -> {
+                    // Capsule microphone with grille lines and stand arc.
+                    drawRoundRect(light, Offset(91f, 68f), Size(18f, 36f), androidx.compose.ui.geometry.CornerRadius(9f))
+                    repeat(4) { i -> drawLine(metal, Offset(93f, 75f + i * 7), Offset(107f, 75f + i * 7), .8f) }
+                    drawArc(light, 0f, 180f, false, Offset(85f, 96f), Size(30f, 18f), style = Stroke(2.5f))
+                    drawLine(light, Offset(100f, 114f), Offset(100f, 122f), 2.5f)
+                    drawLine(light, Offset(91f, 122f), Offset(109f, 122f), 2.5f)
+                }
+                MedalArt.PEN -> {
+                    // Fountain pen nib with ink line.
+                    val nib = Path().apply { moveTo(100f, 66f); lineTo(108f, 88f); lineTo(100f, 116f); lineTo(92f, 88f); close() }
+                    drawPath(nib, Brush.verticalGradient(listOf(light, metal), 66f, 116f))
+                    drawCircle(dark, 1.8f, Offset(100f, 92f))
+                    drawLine(metal, Offset(100f, 116f), Offset(100f, 126f), 1.2f)
+                }
+                MedalArt.EAR -> {
+                    // Stylized ear with sound arc.
+                    val ear = Path().apply { moveTo(100f, 68f); cubicTo(112f, 68f, 116f, 82f, 112f, 96f); cubicTo(108f, 108f, 104f, 112f, 102f, 118f) }
+                    drawPath(ear, light, style = Stroke(3.5f))
+                    val inner = Path().apply { moveTo(100f, 80f); cubicTo(106f, 80f, 108f, 88f, 105f, 96f) }
+                    drawPath(inner, metal, style = Stroke(2f))
+                    listOf(0f, 1f).forEach { i -> drawArc(light, -40f + i * 20, 60f, false, Offset(112f + i * 6, 78f), Size(14f + i * 4, 18f + i * 4), style = Stroke(1.5f)) }
+                }
                 else -> {
                     val monogram = when (badge.definition.artwork) { MedalArt.CHOPIN -> "FC"; MedalArt.BACH -> "JSB"; MedalArt.MOZART -> "WA"; else -> if (badge.definition.target == 7L) "VII" else "XXX" }
                     drawContext.canvas.nativeCanvas.drawText(monogram, 100f, 109f, android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG).apply { color = light.toArgb(); textSize = if (monogram.length > 2) 30f else 37f; textAlign = android.graphics.Paint.Align.CENTER; typeface = Typeface.create("serif", Typeface.BOLD) })
                 }
             }
             drawLine(metal, Offset(78f, 136f), Offset(122f, 136f), .7f)
-            val inscription = if (badge.definition.metric == AchievementMetric.PRACTICE_MILLIS) "100 h" else "${L.fixed("Practice").uppercase()} · ${badge.definition.target}"
+            val inscription = when {
+                badge.definition.metric == AchievementMetric.PRACTICE_MILLIS -> "100 h"
+                badge.definition.metric == AchievementMetric.RECORDING_SAVED_COUNT -> "REC · ${badge.definition.target}"
+                badge.definition.metric == AchievementMetric.SESSION_NOTES_COUNT -> "NOTE · ${badge.definition.target}"
+                badge.definition.metric == AchievementMetric.FOUNDING_PRACTICE -> "1.0 · FOUNDING"
+                badge.definition.metric == AchievementMetric.PLAYBACK_COUNT -> "LISTEN · ${badge.definition.target}"
+                else -> "${L.fixed("Practice").uppercase()} · ${badge.definition.target}"
+            }
             drawContext.canvas.nativeCanvas.drawText(inscription, 100f, 150f, android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG).apply { color = light.toArgb(); textSize = 8f; textAlign = android.graphics.Paint.Align.CENTER; isSubpixelText = true; typeface = Typeface.create("serif", Typeface.NORMAL) })
             drawCircle(light, 2f, Offset(100f, 39f))
             drawLine(light, Offset(94f, 165f), Offset(106f, 159f), 1.5f)

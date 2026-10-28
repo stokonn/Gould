@@ -32,12 +32,32 @@ class AchievementEngineTest {
         val works = pieces.map { p -> CatalogWork(p.id.toString(), when (p.id) { in 1..25 -> ComposerIdentity.CHOPIN; in 26..30 -> ComposerIdentity.BACH; in 31..35 -> ComposerIdentity.MOZART; else -> "999" }, p.title) }
         val composers = listOf(CatalogComposer(ComposerIdentity.CHOPIN, "Fixture Chopin", epoch = "Romantic"), CatalogComposer(ComposerIdentity.BACH, "Fixture Bach", epoch = "Baroque"), CatalogComposer(ComposerIdentity.MOZART, "Fixture Mozart", epoch = "Classical"))
         val sessions = (0..29).map { i -> session(LocalDate.of(2026, 1, 1).plusDays(i.toLong()).toString(), if (i == 0) 358260000 else 60000, if (i < 5) 26L + i else 1L, i.toLong()) }
-        val measured = facts(pieces, sessions, CatalogSnapshot(composers, works))
+        // Studio events for the Gould 0.12 new badges: recordings, playback and notes.
+        val events = listOf(
+            AchievementEvent(StudioAchievementRules.recordingKey("a".repeat(64)), StudioAchievementRules.RECORDING_SAVED, "a".repeat(64), 1000),
+            AchievementEvent(StudioAchievementRules.recordingKey("b".repeat(64)), StudioAchievementRules.RECORDING_SAVED, "b".repeat(64), 1001),
+            AchievementEvent("${StudioAchievementRules.PLAYBACK_VERIFIED}:${"a".repeat(64)}", StudioAchievementRules.PLAYBACK_VERIFIED, "a".repeat(64), 1002, 15000),
+            AchievementEvent("note_saved:n1", StudioAchievementRules.NOTE_SAVED, "n1", 1003)
+        )
+        val measured = AchievementEngine.facts(pieces, sessions, CatalogSnapshot(composers, works), utc, studioEvents = events, foundingVerifiedAt = 3_000_000_000_000L)
         assertEquals(360000000L, measured[AchievementMetric.PRACTICE_MILLIS])
         assertEquals(30L, measured[AchievementMetric.STREAK])
         assertEquals(25L, measured[AchievementMetric.PIANO_MASTERED])
         assertEquals(5L, measured[AchievementMetric.BAROQUE_PRACTICED])
-        assertEquals(AchievementRegistry.definitions.filter { it.metric != AchievementMetric.DISCOVERY }.map { it.id }.toSet(), eligible(measured))
+        assertEquals(2L, measured[AchievementMetric.RECORDING_SAVED_COUNT])
+        assertEquals(1L, measured[AchievementMetric.PLAYBACK_COUNT])
+        assertEquals(1L, measured[AchievementMetric.FOUNDING_PRACTICE])
+        // Studio-dependent badges require their own qualifying events; filter them from the
+        // "all existing badges earnable" assertion and verify them separately.
+        val studioBadges = setOf("first_take", "recording_artist", "versatile_pianist", "musical_journal", "critical_listener", "founding_pianist")
+        val eligibleNow = eligible(measured)
+        assertEquals(AchievementRegistry.definitions.filter { it.metric != AchievementMetric.DISCOVERY && it.id !in studioBadges }.map { it.id }.toSet(), eligibleNow.filter { it !in studioBadges }.toSet())
+        assertTrue("first_take" in eligibleNow)
+        assertTrue("critical_listener" in eligibleNow)
+        assertTrue("founding_pianist" in eligibleNow)
+        assertFalse("recording_artist" in eligibleNow) // Needs 10 distinct recordings; only 2 fixtures.
+        assertFalse("versatile_pianist" in eligibleNow) // Needs 3 distinct pieces in one session; fixture has single-piece sessions.
+        assertFalse("musical_journal" in eligibleNow) // Needs 10 distinct notes; fixture has none.
     }
     @Test fun collectionThresholdsAreExactAndMasteryUsesExistingReadyStatus() {
         listOf(1 to "first_piece", 10 to "growing_collection", 25 to "dedicated_collector", 50 to "grand_repertoire").forEach { (target, badge) ->

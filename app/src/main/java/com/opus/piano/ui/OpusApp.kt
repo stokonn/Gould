@@ -29,6 +29,7 @@ import androidx.compose.material.icons.automirrored.outlined.Sort
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -91,17 +92,32 @@ private enum class Destination(val label: String, val icon: ImageVector) {
     val profileNotice by profile.notice.collectAsStateWithLifecycle()
     var knownUnlocks by remember { mutableStateOf<Set<String>?>(null) }
     val snackbar = remember { SnackbarHostState() }
-    LaunchedEffect(badges) {
-        if (badges.isNotEmpty()) {
-            val unlocked = badges.filter { it.unlocked }.map { it.definition.id }.toSet()
-            val previous = knownUnlocks; knownUnlocks = unlocked
-            if (previous != null) badges.firstOrNull { it.unlocked && it.definition.id !in previous }?.let { snackbar.showSnackbar(L.s(R.string.badge_unlocked,it.definition.localizedName)) }
-        }
-    }
     LaunchedEffect(profileNotice) { profileNotice?.let { snackbar.showSnackbar(it); profile.notice.value = null } }
     LaunchedEffect(message) { message?.let { snackbar.showSnackbar(it); model.dismissMessage() } }
     LaunchedEffect(catalogNotice) { catalogNotice?.let { snackbar.showSnackbar(it); catalog.dismissNotice() } }
     LaunchedEffect(experienceNotice) { experienceNotice?.let { snackbar.showSnackbar(it); experience.dismissNotice() } }
+    // Durable unlock popup: one themed popup per new award; deferred during active play/capture.
+    val app = context.applicationContext as com.opus.piano.OpusApplication
+    val pendingNotices by app.database.studioDao().pendingNotices().collectAsStateWithLifecycle(initialValue = emptyList())
+    val timerState by model.timer.collectAsStateWithLifecycle()
+    val recState by model.recordingState.collectAsStateWithLifecycle()
+    val captureActive = timerState.running || recState.phase == com.opus.piano.audio.RecordingController.Phase.Recording
+    var shownNotice by remember { mutableStateOf<com.opus.piano.data.BadgeNotice?>(null) }
+    val popupScope = rememberCoroutineScope()
+    fun acknowledge(notice: com.opus.piano.data.BadgeNotice) { popupScope.launch { kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { app.database.studioDao().acknowledge(notice.achievementId, System.currentTimeMillis()) } } }
+    LaunchedEffect(pendingNotices, captureActive) {
+        if (shownNotice == null && !captureActive) shownNotice = pendingNotices.firstOrNull()
+    }
+    shownNotice?.let { notice ->
+        val badge = badges.firstOrNull { it.definition.id == notice.achievementId }
+        if (badge != null) {
+            AlertDialog(onDismissRequest = { shownNotice = null; acknowledge(notice) }, icon = { MedalArtwork(badge, Modifier.size(80.dp)) },
+                title = { Text(badge.definition.localizedName) },
+                text = { Text("${L.fixed(badge.definition.rarity.label)} · ${badge.definition.localizedDescription}") },
+                confirmButton = { JournalTextButton(onClick = { shownNotice = null; acknowledge(notice); nav.navigate("BADGES") }) { Text(L.s(R.string.msg_view_badge)) } },
+                dismissButton = { JournalTextButton(onClick = { shownNotice = null; acknowledge(notice) }) { Text(L.s(R.string.msg_dismiss_11a3)) } })
+        }
+    }
     // Apply keyboard avoidance once, before measuring navigation and child screens.
     Scaffold(
         modifier = Modifier.imePadding(),

@@ -6,8 +6,8 @@ import java.time.ZoneId
 
 enum class BadgeCategory(val label: String) { PRACTICE("Practice"), REPERTOIRE("Repertoire"), COMPOSERS("Composers") }
 enum class BadgeRarity(val label: String) { COMMON("Common"), RARE("Rare"), EPIC("Epic"), LEGENDARY("Legendary") }
-enum class MedalArt { NOTE, LYRE, CALENDAR, PIANO, ARCHIVE, CROWN, CHOPIN, BACH, MOZART, BAROQUE }
-enum class AchievementMetric { DISCOVERY, SESSIONS, STREAK, PRACTICE_MILLIS, PIECES, MASTERED, PIANO_MASTERED, CHOPIN_PIECES, CHOPIN_MASTERED, BACH_PIECES, MOZART_PIECES, BAROQUE_PRACTICED }
+enum class MedalArt { NOTE, LYRE, CALENDAR, PIANO, ARCHIVE, CROWN, CHOPIN, BACH, MOZART, BAROQUE, MICROPHONE, PEN, EAR }
+enum class AchievementMetric { DISCOVERY, SESSIONS, STREAK, PRACTICE_MILLIS, PIECES, MASTERED, PIANO_MASTERED, CHOPIN_PIECES, CHOPIN_MASTERED, BACH_PIECES, MOZART_PIECES, BAROQUE_PRACTICED, RECORDING_SAVED_COUNT, SESSION_NOTES_COUNT, VERSATILE_SESSIONS, PLAYBACK_COUNT, FOUNDING_PRACTICE }
 data class AchievementDefinition(
     val id: String, val name: String, val description: String, val category: BadgeCategory,
     val rarity: BadgeRarity, val artwork: MedalArt, val metric: AchievementMetric,
@@ -31,7 +31,14 @@ object AchievementRegistry {
         AchievementDefinition("chopin_master", "Chopin Master", "A deep understanding of Chopin's world.", BadgeCategory.COMPOSERS, BadgeRarity.LEGENDARY, MedalArt.CHOPIN, AchievementMetric.CHOPIN_MASTERED, 25, "Mark 25 Chopin compositions Performance ready.", "mastered Chopin works"),
         AchievementDefinition("baroque_lover", "Baroque Lover", "Explore the voices of the Baroque.", BadgeCategory.COMPOSERS, BadgeRarity.RARE, MedalArt.BAROQUE, AchievementMetric.BAROQUE_PRACTICED, 5, "Complete valid practice on 5 distinct compositions identified as Baroque.", "distinct Baroque works"),
         AchievementDefinition("bach_explorer", "Bach Explorer", "Find new paths through counterpoint.", BadgeCategory.COMPOSERS, BadgeRarity.RARE, MedalArt.BACH, AchievementMetric.BACH_PIECES, 5, "Have 5 compositions by Johann Sebastian Bach in repertoire.", "Bach works"),
-        AchievementDefinition("mozart_admirer", "Mozart Admirer", "Clarity, grace, and musical discovery.", BadgeCategory.COMPOSERS, BadgeRarity.RARE, MedalArt.MOZART, AchievementMetric.MOZART_PIECES, 5, "Have 5 compositions by Wolfgang Amadeus Mozart in repertoire.", "Mozart works")
+        AchievementDefinition("mozart_admirer", "Mozart Admirer", "Clarity, grace, and musical discovery.", BadgeCategory.COMPOSERS, BadgeRarity.RARE, MedalArt.MOZART, AchievementMetric.MOZART_PIECES, 5, "Have 5 compositions by Wolfgang Amadeus Mozart in repertoire.", "Mozart works"),
+        // Gould 0.12 additions: genuine qualifying events only; no click awards.
+        AchievementDefinition("first_take", "First Take", "Your first recording saved on this device.", BadgeCategory.PRACTICE, BadgeRarity.COMMON, MedalArt.MICROPHONE, AchievementMetric.RECORDING_SAVED_COUNT, 1, "Save one verified, nonempty recording.", "recordings"),
+        AchievementDefinition("recording_artist", "Recording Artist", "A growing library of your own performances.", BadgeCategory.PRACTICE, BadgeRarity.RARE, MedalArt.MICROPHONE, AchievementMetric.RECORDING_SAVED_COUNT, 10, "Save 10 distinct verified recordings, each counted once.", "recordings"),
+        AchievementDefinition("versatile_pianist", "Versatile Pianist", "Three voices in a single sitting.", BadgeCategory.PRACTICE, BadgeRarity.RARE, MedalArt.PIANO, AchievementMetric.VERSATILE_SESSIONS, 1, "Practice three distinct compositions in one valid session.", "sessions"),
+        AchievementDefinition("musical_journal", "Musical Journal", "Words that shape your musical story.", BadgeCategory.PRACTICE, BadgeRarity.RARE, MedalArt.PEN, AchievementMetric.SESSION_NOTES_COUNT, 10, "Write 10 distinct practice notes, each counted once.", "notes"),
+        AchievementDefinition("critical_listener", "Critical Listener", "Listening is its own discipline.", BadgeCategory.PRACTICE, BadgeRarity.RARE, MedalArt.EAR, AchievementMetric.PLAYBACK_COUNT, 1, "Listen through one of your saved recordings.", "listening sessions"),
+        AchievementDefinition("founding_pianist", "Founding Pianist", "You were here before version 1.0.", BadgeCategory.PRACTICE, BadgeRarity.LEGENDARY, MedalArt.CROWN, AchievementMetric.FOUNDING_PRACTICE, 1, "Complete valid practice before the first stable release.", "founder")
     )
     init { require(definitions.map { it.id }.distinct().size == definitions.size) }
 }
@@ -61,7 +68,7 @@ object AchievementEngine {
         }
         return best
     }
-    fun facts(pieces: List<Piece>, sessions: List<PracticeSession>, catalog: CatalogSnapshot, legacyZone: ZoneId, parts: List<SessionPart> = emptyList()): AchievementFacts {
+    fun facts(pieces: List<Piece>, sessions: List<PracticeSession>, catalog: CatalogSnapshot, legacyZone: ZoneId, parts: List<SessionPart> = emptyList(), studioEvents: List<AchievementEvent> = emptyList(), foundingVerifiedAt: Long = 0): AchievementFacts {
         val works = catalog.works.associateBy { it.id }
         val composers = catalog.composers.associateBy { it.id }
         val byId = pieces.associateBy { it.id }
@@ -86,7 +93,13 @@ object AchievementEngine {
             AchievementMetric.CHOPIN_MASTERED to byComposer[ComposerIdentity.CHOPIN].orEmpty().count(::mastered).toLong(),
             AchievementMetric.BACH_PIECES to byComposer[ComposerIdentity.BACH].orEmpty().size.toLong(),
             AchievementMetric.MOZART_PIECES to byComposer[ComposerIdentity.MOZART].orEmpty().size.toLong(),
-            AchievementMetric.BAROQUE_PRACTICED to baroque
+            AchievementMetric.BAROQUE_PRACTICED to baroque,
+            // Gould 0.12: genuine qualifying events from studio data; no click awards.
+            AchievementMetric.RECORDING_SAVED_COUNT to StudioAchievementRules.distinctRecordings(studioEvents),
+            AchievementMetric.SESSION_NOTES_COUNT to distinctNotes(valid, parts),
+            AchievementMetric.VERSATILE_SESSIONS to if (StudioAchievementRules.versatile(valid, parts)) 1 else 0,
+            AchievementMetric.PLAYBACK_COUNT to studioEvents.count { it.kind == StudioAchievementRules.PLAYBACK_VERIFIED && it.value > 0 }.toLong(),
+            AchievementMetric.FOUNDING_PRACTICE to if (foundingVerifiedAt > 0 && StudioAchievementRules.foundingPractice(valid, foundingVerifiedAt, FoundingPolicy.stableOneCutoffMillis)) 1 else 0
         ))
     }
     fun evaluate(facts: AchievementFacts, unlocked: List<BadgeUnlock>): List<BadgeProgress> {
@@ -95,4 +108,10 @@ object AchievementEngine {
     }
     fun newlyEarned(facts: AchievementFacts, unlocked: List<BadgeUnlock>, verifiedAt: Long): List<BadgeUnlock> =
         evaluate(facts, unlocked).filter { !it.unlocked && it.current >= it.definition.target }.map { BadgeUnlock(it.definition.id, verifiedAt) }
+    /** Distinct nonblank notes from valid sessions/parts; repeated edits/whitespace do not count. */
+    private fun distinctNotes(sessions: List<PracticeSession>, parts: List<SessionPart>): Long {
+        val sessionNotes = sessions.filter(::valid).mapNotNull { s -> s.notes.trim().takeIf { it.isNotBlank() } }
+        val partNotes = parts.filter { p -> p.notes.trim().isNotBlank() && sessions.any { it.id == p.sessionId && valid(it) } }.map { it.notes.trim() }
+        return (sessionNotes + partNotes).distinct().size.toLong()
+    }
 }

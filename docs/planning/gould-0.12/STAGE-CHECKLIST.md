@@ -79,5 +79,27 @@ practice+recording lifecycle watcher, Studio UI with Record/Stop controls,
 recording consent dialog, EN/CZ localization. Host gate: compile OK, 363 JVM
 tests pass, lint 0 errors/147 warnings, localization PASS (1118 resources).
 Native/emulator execution of recording lifecycle NOT performed yet.
+
+Previous screen (LB-01) committed d937cdc 2026-10-28: PreviousScreen two tabs
+(Practice History keyset-paged + Recordings with play/pause/export/delete),
+"previous" route Library-associated, Studio history icon + Library Previous entry.
+Host gate: 363 tests pass, lint 0 errors/146 warnings, localization PASS.
+
+Achievements (AC-01–03) implemented 2026-10-28 (host-verified): 6 new badges
+(first_take, recording_artist, versatile_pianist, musical_journal,
+critical_listener, founding_pianist) with 5 new metrics and 3 new MedalArt
+engravings; studio events wired into AchievementEngine/AchievementStore;
+durable BadgeNotice unlock popup replacing Snackbar (defers during capture,
+acknowledges on dismiss/view); FoundingPolicy cutoff stays null until real 1.0.
+AchievementEngineTest extended with 64-hex studio-event fixtures; founding
+verified before cutoff. Host gate: compile OK, 363 JVM tests pass (42 suites,
+0 failures/errors/skips), lint 0 errors/147 warnings, localization PASS
+(1144 EN/CZ resources), policy PASS. Native/emulator execution NOT performed.
+BadgeNotice unlock popup is host-verified only; on-device popup behavior is
+pending emulator acceptance. No badge is claimed earned on a device from
+host-test evidence alone.
+
+Next: Profile 2×2 statistics + era autocomplete + edit draft guards (PR-01–02);
+widgets WG-01–04; Tux/quote; metronome/queue-Undo; native/emulator acceptance.
 See verification/foundation-host.json and CHECKPOINT.md; do not promote the
 whole persistence/audio/icon tasks to complete from these bounded results.

@@ -22,6 +22,12 @@ private fun AchievementDefinition.localized(index:Int):String {
         "baroque_lover" -> intArrayOf(R.string.badge_baroque_lover_name,R.string.badge_baroque_lover_description,R.string.badge_baroque_lover_requirement,R.string.badge_baroque_lover_unit)
         "bach_explorer" -> intArrayOf(R.string.badge_bach_explorer_name,R.string.badge_bach_explorer_description,R.string.badge_bach_explorer_requirement,R.string.badge_bach_explorer_unit)
         "mozart_admirer" -> intArrayOf(R.string.badge_mozart_admirer_name,R.string.badge_mozart_admirer_description,R.string.badge_mozart_admirer_requirement,R.string.badge_mozart_admirer_unit)
+        "first_take" -> intArrayOf(R.string.badge_first_take_name,R.string.badge_first_take_description,R.string.badge_first_take_requirement,R.string.badge_first_take_unit)
+        "recording_artist" -> intArrayOf(R.string.badge_recording_artist_name,R.string.badge_recording_artist_description,R.string.badge_recording_artist_requirement,R.string.badge_recording_artist_unit)
+        "versatile_pianist" -> intArrayOf(R.string.badge_versatile_pianist_name,R.string.badge_versatile_pianist_description,R.string.badge_versatile_pianist_requirement,R.string.badge_versatile_pianist_unit)
+        "musical_journal" -> intArrayOf(R.string.badge_musical_journal_name,R.string.badge_musical_journal_description,R.string.badge_musical_journal_requirement,R.string.badge_musical_journal_unit)
+        "critical_listener" -> intArrayOf(R.string.badge_critical_listener_name,R.string.badge_critical_listener_description,R.string.badge_critical_listener_requirement,R.string.badge_critical_listener_unit)
+        "founding_pianist" -> intArrayOf(R.string.badge_founding_pianist_name,R.string.badge_founding_pianist_description,R.string.badge_founding_pianist_requirement,R.string.badge_founding_pianist_unit)
         else -> return listOf(name,description,requirement,unit)[index]
     }
     return L.s(ids[index])

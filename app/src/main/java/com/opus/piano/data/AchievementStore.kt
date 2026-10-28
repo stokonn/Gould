@@ -10,9 +10,10 @@ class AchievementStore(private val db: OpusDatabase, private val now: () -> Long
     private val base = combine(db.dao().observePieces(), db.dao().observeSessions(), db.catalogDao().composers(), db.catalogDao().works(), db.experienceDao().unlocks()) { pieces, sessions, composers, works, unlocks ->
         Pair(Triple(pieces, sessions, CatalogSnapshot(composers, works)), unlocks)
     }.distinctUntilChanged().flowOn(Dispatchers.Default)
-    val badges = combine(base, db.personalDao().parts()) { data, parts ->
+    val badges = combine(base, db.personalDao().parts(), db.studioDao().recordings()) { data, parts, _ ->
         val (pieces, sessions, catalog) = data.first
-        AchievementEngine.evaluate(AchievementEngine.facts(pieces, sessions, catalog, zone(), parts), data.second)
+        val events = db.studioDao().events()
+        AchievementEngine.evaluate(AchievementEngine.facts(pieces, sessions, catalog, zone(), parts, events, now()), data.second)
     }.distinctUntilChanged().flowOn(Dispatchers.Default)
     suspend fun evaluate() = db.withTransaction { evaluateInTransaction() }
 
@@ -40,8 +41,12 @@ class AchievementStore(private val db: OpusDatabase, private val now: () -> Long
             if (session != old) db.dao().updateSession(session)
             session
         }
-        val facts = AchievementEngine.facts(pieces, sessions, catalog, evaluationZone, db.personalDao().allParts())
+        val facts = AchievementEngine.facts(pieces, sessions, catalog, evaluationZone, db.personalDao().allParts(), db.studioDao().events(), now())
         val newlyEarned = AchievementEngine.newlyEarned(facts, db.experienceDao().allUnlocks(), now())
-        if (newlyEarned.isNotEmpty()) db.experienceDao().unlock(newlyEarned)
+        if (newlyEarned.isNotEmpty()) {
+            db.experienceDao().unlock(newlyEarned)
+            // Queue unlock popup notices; backfilled historical awards are already acknowledged.
+            newlyEarned.forEach { db.studioDao().notice(BadgeNotice(it.achievementId, it.unlockedAt)) }
+        }
     }
 }
