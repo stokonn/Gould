@@ -1,3 +1,14 @@
+## Gould 0.12 — owner workflow, October28,2026
+
+Owner explicitly starts Phase1 only: architecture/review/planning, complete v2
+specification and all14 references mandatory; stop for approval before Phase2.
+Exactly two main phases; one complete implementation stage. General permanent
+policy wording and unresolved product-rule details are proposed in
+[the complete plan](../planning/gould-0.12/ARCHITECTURE-AND-PLAN.md), not approved
+by the agent. Both Android widgets are mandatory. Keep private PNGs local.
+Preserve `created by stokonn with love <3` exactly. Existing release/data/phone
+controls continue. Older0.11 decisions below retain their historical provenance.
+
 > Current execution readback: Gould main is integrated; four approved branches and only the obsolete RC prerelease/assets were deleted after verified backup. All 14 tags and Stable are intact. Full Actions audit is resolved: three repository YAML workflows plus one retained managed Copilot registration (four active); historical runs are preserved. Read [GOULD-MAIN-MAINTENANCE.md](GOULD-MAIN-MAINTENANCE.md) and [the execution audit](../maintenance/FINAL-ACTIONS-AND-RC-AUDIT.md). Remaining blockers concern protected private worktree data, not repository rename or RC/Actions access.
 
 > Current main maintenance: the repository is **stokonn/Gould**, the accepted history is integrated into **main**, and host 19/19 plus exact-source maintenance CI passed. Full workflow-registration audit/cleanup and the privately backed-up RC prerelease deletion remain mandatory pending administrative API access. Read [GOULD-MAIN-MAINTENANCE.md](GOULD-MAIN-MAINTENANCE.md) first. Earlier statements below are preserved history, not current repository identity or approval scope.

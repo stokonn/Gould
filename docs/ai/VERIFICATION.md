@@ -1,3 +1,14 @@
+## Gould 0.12 Phase 1 — October28,2026
+
+Source analysis and actual Git/GitHub/PMP inventory only. All14 v2 PNG hashes
+match; all14 images inspected. Isolated worktree received28 additional files
+with byte-identical copy verification, including private historical references
+and existing project configuration. Existing main ef82898 CI3/3 read back, not
+rerun. Private references excluded from Git; owner files retained. No new app
+build/JVM/native/emulator/migration/backup/upgrade/performance execution; no APK.
+[Complete findings, plan, acceptance and limitations](../planning/gould-0.12/ARCHITECTURE-AND-PLAN.md).
+Phase2 pending owner approval. Historical evidence below is not new execution.
+
 ## Goldberg 0.11 Stable — published and remotely verified
 
 Purpose and scope: complete the approved read-only launch, integrate accepted

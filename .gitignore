@@ -17,3 +17,6 @@ __pycache__/
 # Private worktree memory; publish curated docs/ai checkpoints only.
 .pmp/
 .pmp.yml
+
+# Private Gould design references, never app resources or public commits.
+docs/design/gould-0.12/references/
