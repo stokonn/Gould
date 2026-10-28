@@ -188,3 +188,10 @@ See verification/widgets-core-host-native.json. Existing high-risk audio/backup/
 practice source hashes still match the prior15-case native gate; retain that
 bound evidence without redundant reruns during unrelated widget layout edits.
 Full combined mandatory acceptance remains required before Stable publication.
+
+
+Owner decision2026-10-29: personal visual sign-off waived for0.12 Stable; all
+references above to owner visual approval are historical and now require documented
+actual emulator visual/layout/accessibility/screenshots/automated acceptance instead.
+All mandatory functional/data/security/native/signing/upgrade/CI gates remain open
+until proven. No new stage; conditional unattended main/Stable authorization applies.

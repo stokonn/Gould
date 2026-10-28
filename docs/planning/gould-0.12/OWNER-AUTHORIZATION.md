@@ -1,5 +1,32 @@
 # Gould 0.12 — Phase 2 owner authorization
 
+## Final unattended completion authorization — owner decision, 2026-10-29
+
+The owner explicitly authorizes autonomous completion of the entire remaining
+approved Gould 0.12 Phase 2, verified commits/pushes, final main integration and
+signed Gould 0.12 Stable tag/GitHub Release with APK and release notes, **only if
+every mandatory gate genuinely passes**. No additional owner confirmation is
+required within this authorization.
+
+The owner explicitly **waives personal visual sign-off for Gould 0.12 Stable**.
+Replace that earlier gate with documented emulator visual QA, actual screenshots,
+layout/accessibility checks and automated acceptance evidence. This supersedes
+older personal-sign-off requirements below and in historical checkpoints. Critical
+UI functionality/accessibility are not waived. Minor purely cosmetic imperfections
+may be documented for possible 0.12.1 maintenance; no critical defect may ship.
+
+All functional/native/emulator, recording/playback/backup integrity, migrations,
+historical data, trusted signing/in-place upgrade, security/privacy/licensing,
+release and required CI gates remain mandatory. Unverified/failed gates or missing
+credentials/irreplaceable decisions prohibit release; preserve feature work and a
+complete recovery checkpoint rather than inventing PASS or bypassing the blocker.
+Use API36 and the existing required compatibility matrix; API37 is deferred.
+No physical phone, RC, new stage, destructive protected-data action or independent
+PMP modification is authorized. Efficient coherent batches/targeted iteration and
+normal PMP/Issue41/checklist/handoff continuity remain required.
+
+created by stokonn with love <3
+
 The owner explicitly approved Phase2 from planning commit29bb4d1 on2026-10-28,
 including its complete single-stage plan and proposed product-rule details.
 The same instruction adds mandatory launcher icon requirement APP_ICON_ADDENDUM.md

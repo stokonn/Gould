@@ -436,3 +436,15 @@ are chronological history, superseded by the successful final widget gate.
 Next agent should inspect status/HEAD and this latest checkpoint, then continue
 actual launcher/widget acceptance without repeating completed architecture or
 unchanged-source gates. Remaining scope and all owner/safety/data controls remain.
+
+
+### Owner unattended authorization — 2026-10-29
+
+Personal visual sign-off is explicitly waived for0.12 Stable, replaced by actual
+emulator visual/screenshots/layout/accessibility/automated acceptance. Full remaining
+scope, verified push, main integration and Stable publication are authorized only
+after all unchanged mandatory gates/required CI pass. API36/existing compatibility
+matrix only; API37 deferred. Current OWNER-AUTHORIZATION.md and AGENTS.md record the
+decision. Do not treat historical personal-sign-off text as a new blocker. No
+critical gate or physical-phone/data/signing restriction is waived. Continue actual
+launcher/widget acceptance from verified0268749 / docs3cdf49d, then remaining scope.

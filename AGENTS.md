@@ -121,3 +121,21 @@ already the applicable merge/publication authorization; do not ask redundantly.
 Failure/security blockers/material scope changes stop affected release actions.
 Read docs/planning/gould-0.12/OWNER-AUTHORIZATION.md. No authorization for deleting
 protected historical data or modifying independent PMP is implied.
+
+
+## Gould 0.12 unattended completion — owner decision October29,2026
+
+The owner explicitly waives personal visual sign-off for Gould0.12 Stable and
+replaces it with documented actual emulator visual QA/screenshots/layout and
+accessibility checks/automated acceptance. Full remaining approved implementation,
+verified commits/pushes, main integration and signed Stable publication are
+conditionally authorized without another confirmation, **only after ALL mandatory
+functional/native/audio/backup/migration/data/signing/upgrade/security/privacy/
+licensing/UI/accessibility/release/CI gates genuinely pass**. Failed/unverifiable
+gates or unavailable essential credentials/decisions stop release and require a
+complete recovery checkpoint. Minor nonfunctional/nonaccessibility/nonsafety
+cosmetic issues may be documented for possible0.12.1; never ship critical defects.
+Use API36 and the existing compatibility matrix; API37 is deferred. No physical
+phone, RC, new stage, protected-data deletion or independent PMP modification.
+Read docs/planning/gould-0.12/OWNER-AUTHORIZATION.md. This decision supersedes older
+personal visual-approval requirements specifically for Gould0.12.
