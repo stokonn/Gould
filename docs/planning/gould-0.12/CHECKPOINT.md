@@ -198,3 +198,138 @@ Canonical PMP active task gould-0.12-complete, supported CLI (missing feature-st
 not fabricated). Previous main maintenance task was explicitly archived through
 CLI after preserving a snapshot; maintenance remains incomplete/private originals
 protected. Feature foundation checkpoint sources actual5c32259+manifest, not main.
+
+
+### Codex resumption / Profile and native recording blocker — 2026-10-28
+
+Actual inherited HEAD `4f4b256`, branch `feature/gould-0.12`; intentional
+OpenCode HANDOFF/STATE edits preserved and pushed as `096c9d3`. Read canonical
+PMP via supported CLI (task gould-0.12-complete, sequence 34), Issue #41 dashboard
+and all three comments. Dashboard synchronized to actual inherited milestones.
+All 15 private references match SHA-256/ignore rules; no protected data changed.
+Inherited reports checked: 42 suites/363 tests/0 failures/errors/skips and lint
+0 errors/147 warnings. These are inspected earlier host reports.
+
+PR-01–02 sources implemented: centered 2×2 row-equal statistics (one column for
+constrained widths/200% fonts), local accent-insensitive distinct-era suggestions,
+SavedStateHandle original/current draft, private staged photo, Save/Discard/Keep
+editing, atomic complete profile commit, three-way conflict protection and locked
+manual identity override intent. Eight new JVM cases and three native editor cases.
+Profile host gate: 43 suites/371 tests/0 failures/errors/skips; debug APK and
+instrumentation compile, lint task BUILD SUCCESSFUL. Two inherited obsolete
+OpusViewModel instrumentation constructors first failed and were corrected.
+
+Disposable local API36 AVD resides only under ignored `.gradle/profile-avds`,
+serial emulator-5582, ro.kernel.qemu=1 verified. Initial SwiftShader boot attempts
+segfaulted; alternate renderer eventually booted. An initial native attempt was
+killed by Android startup ANR during heavily contended first-boot verification;
+raw logs retained. Subsequent targeted native execution completed 11 cases:
+**3 ProfileEditorTest PASS; 8 StudioRecordingTest/StudioBackupTest FAIL**, all at
+`Files.createLink` in DurableWav.finish with AccessDeniedException. This is a real
+Android recording blocker; host success did not establish native acceptance.
+
+Correction underway before widgets: replace both recording/restore hard links
+with shared per-directory/cross-process locked atomic rename; retain archive
+originals, fail closed on collisions. Add four host publication regressions and
+two real Android media-archive collision/interruption/retry tests. Rebuild and
+native rerun pending. Sources are not release-ready; do not mark audio/backup or
+full Profile rendered acceptance complete. Full mandatory scope remains open.
+Private raw evidence: `.gradle/gould012-checks/profile-*`.
+
+Also corrected malformed inherited backup-v6-host.json signature syntax without
+changing any evidence claim; `created by stokonn with love <3` is retained exactly.
+
+
+### Corrected host/native gate — 2026-10-29 (local)
+
+RecordingPublication now serializes all recording-name publishers (writer and
+media restore) using one private persistent directory lock plus FileChannel lock,
+checks collisions inside that guard and performs same-directory atomic rename.
+Restore copies/syncs/hash-verifies a temporary duplicate and retains archive
+staging. No hard links remain in either path; no existing destination is replaced.
+Added four host publication cases and two Android archive collision/retry cases.
+
+Final gate `./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest
+lintDebug --offline --no-daemon --max-workers=1` PASSED: **44 suites/375 JVM tests/
+0 failures/errors/skips; lint 0 errors/153 warnings; debug/test APK built**.
+**13 actual native tests PASS** on emulator-5582/API36/qemu=1 (Profile3,
+recording4, backup/media6; 4.123 seconds). This includes original-byte recovery,
+recording dedup/deletion/integrity, journal v5/v6 and new streaming archive
+interruption/publication collision checks. It is not full microphone/service,
+player/UI/export/migration/upgrade/widget acceptance.
+
+All 336 runtime/test/build inputs match the before manifest after these gates;
+manifest SHA256 `46589d6f56e39784dca5c41e93c6887676fa0e6c40ee99dc716f2322914203eb`.
+Debug APK `app/build/outputs/apk/debug/app-debug.apk`, package com.opus.piano,
+0.12-dev/code14, SHA256
+`f9665dc7c78c30a8657a116a117b7021da28f314ea075a2510ce0c4491e1fba2`;
+apksigner verifies trusted `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`.
+APK ZIP contains no private references/PMP. Policy/localization1151, host migration
+DDL1–10→11, historic backup fixtures and history paging checks PASS. Full clean
+release/production/security/seeded upgrade gates remain open.
+
+Actual Ivory Profile and editor renders inspected locally. Profile shows centered
+2×2 stats with avatar beside name. Dirty Back displayed Save/Discard/Keep editing;
+real background process-death/recreation and wider theme/font acceptance in progress.
+[Machine-readable evidence](verification/profile-publication-host-native.json).
+Next commit this verified source/checkpoint, synchronize Issue #41/PMP, continue
+both required widgets. No release/main integration or owner visual approval.
+
+
+### PR-02 real process-death gap — correction in progress, 2026-10-29
+
+Real UI test: typed synthetic MusicianDraft, Back showed all three choices and
+Keep editing retained it. `am kill` did not kill PID5754 (HOT/same-PID readback),
+so was NOT counted as process-death verification. After backgrounding and killing
+only that disposable app PID, cold launch PID6199 did not restore the editor.
+SavedStateHandle-only persistence is insufficient for this tested task/restart
+path. **PR-02 remains open**; the previous host/native13 gate does not prove this
+acceptance item.
+
+Correction uses a private AtomicFile editor-v1.json alongside SavedStateHandle,
+o database schema change. Off-main serialized generation-checked writes retain
+small original/current fields and staged-photo identity, never avatar bitmap bytes.
+Save/discard await draft-file clear; a saved profile with failed draft cleanup is
+reported explicitly and can retry idempotently. Unreadable original draft fails
+closed, offers Retry/unchanged SAF export and is never silently replaced. Added
+native cold-task-without-Bundle and corrupt-draft-preservation regressions.
+Rebuild `.gradle/gould012-checks/profile-durable-host.log` and native/real cold
+restart retest pending; no acceptance promotion yet.
+
+
+Additional rendered evidence: actual Profile at Nocturne/Czech/font2.0 inspected,
+with single-column centered statistic blocks, full labels and retained avatar/name
+layout. Navigation wraps long Czech labels at 2× as in the existing app; this is
+not owner visual sign-off. No application crash in the inspected emulator crash
+buffer. Captures are private ignored `.gradle/gould012-checks/profile-cs-2x.png`
+and profile-ivory-en.png, plus inspected editor/dirty guard captures. The first
+cold-death path lost only synthetic test edits, never owner data.
+PMP canonical snapshot35 (`202e9be2-c4b0-4848-800d-b256347740d5`) and Issue #41
+comment6483046606 record the corrected native recording gate and open draft gap.
+
+
+### Final durable Profile verification PASSED — 2026-10-29
+
+Private AtomicFile fallback resolves the reproduced cold-task loss. All15 native
+cases PASS (Profile5/recording4/backup6;2.948s). Actual UI test: MusicianKept was
+persisted, app backgrounded and only its emulator PID6650 killed; COLD restart
+PID6858 restored the editor/name and byte-identical draft. Dirty Back offered all
+three choices; confirmed Discard cleared only this synthetic draft file. Before
+this correction the same real process-death path lost the synthetic draft.
+
+Final host gate BUILD SUCCESSFUL:375 JVM/0failures/errors/skips,44suites;
+assembleDebug/assembleDebugAndroidTest/lintDebug; lint0errors/153warnings;
+localization1157/policy/hostDDL/backup-fixture/paging/whitespace PASS. All336 source
+inputs unchanged, manifest SHA256
+`fba671866ebd9cf259eea85a7e64c0a44abe3a3eff293243ef7db63f7c6b599f`.
+Final debug APK SHA256
+`d851e54cff4526c0c57b10e3ee74f1edb3fdc5d4ad86b0d04fb510ac4726e12c`,
+com.opus.piano0.12-dev/code14, trusted signer53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e verified. No private references/PMP in ZIP.
+[Final evidence](verification/profile-durable-host-native.json). Intermediate
+13-case evidence remains historical; final15-case evidence governs this source.
+
+Remaining: full Profile theme/size/font/avatar/autocomplete/export interactions
+and owner visual approval; both widgets next, then Tux/quote and remaining Studio
+metronome/queue/Undo/notes; full real capture/player/backup/migration/seeded upgrade,
+security/signing/performance/release gates. Main/releases unchanged. One Phase2
+stage remains IN PROGRESS; no source-only/host-only acceptance promotion.

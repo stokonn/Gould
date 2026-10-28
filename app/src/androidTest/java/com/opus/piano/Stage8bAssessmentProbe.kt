@@ -87,10 +87,10 @@ class Stage8bAssessmentProbe : AndroidJUnitRunner() {
                 runOnMainSync { androidx.appcompat.app.AppCompatDelegate.setApplicationLocales(androidx.core.os.LocaleListCompat.forLanguageTags(requestedLocale)); com.opus.piano.i18n.L.refresh(requestedLocale) }
                 scenario = ActivityScenario.launch(MainActivity::class.java)
                 scenario!!.onActivity { activity ->
-                    val profile = ProfileViewModel(app)
+                    val profile = ProfileViewModel(app, androidx.lifecycle.SavedStateHandle())
                     manualProfile = profile
                     profile.finishOnboarding() // Only this new disposable emulator's synthetic local profile.
-                    val model = OpusViewModel(app.repository, SavedStateHandle(), app.practice)
+                    val model = OpusViewModel(app.repository, SavedStateHandle(), app.practice, app.recording, app)
                     val catalog = CatalogViewModel(app.catalogRepository, SavedStateHandle())
                     val experience = ExperienceViewModel(app.achievements, app.recordings)
                     val admin = AdminViewModel(app, repository())

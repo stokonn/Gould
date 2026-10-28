@@ -33,5 +33,5 @@
     "native instrumentation (StudioRecordingTest/StudioBackupTest/migration suites)",
     "emulator UI/launcher/widget/upgrade/signing acceptance"
   ],
-  "created by stokonn with love <3"
+  "signature": "created by stokonn with love <3"
 }

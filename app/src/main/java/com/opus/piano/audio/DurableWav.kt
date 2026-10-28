@@ -2,7 +2,6 @@ package com.opus.piano.audio
 
 import java.io.File
 import java.io.RandomAccessFile
-import java.nio.file.Files
 import java.security.MessageDigest
 
 /** Streaming mono PCM16 file. A crash only invalidates the repairable header;
@@ -41,10 +40,7 @@ class DurableWav private constructor(
         check(actual.contentEquals(header(sampleRate, dataBytes)))
         val digest = hash(staging)
         close()
-        // Atomic no-clobber publication. ATOMIC_MOVE may replace a racing destination
-        // on some providers even without REPLACE_EXISTING; link creation cannot.
-        Files.createLink(destination.toPath(), staging.toPath())
-        Files.delete(staging.toPath())
+        RecordingPublication.publish(staging, destination)
         return Saved(destination, dataBytes / 2, digest)
     }
 

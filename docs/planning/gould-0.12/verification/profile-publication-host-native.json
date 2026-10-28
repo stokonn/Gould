@@ -1,0 +1,59 @@
+{
+  "checkpoint": "profile-pr01-pr02-and-android-recording-publication",
+  "date_local": "2026-10-29",
+  "branch": "feature/gould-0.12",
+  "base_commit": "096c9d3",
+  "source_manifest": {
+    "count": 336,
+    "sha256": "46589d6f56e39784dca5c41e93c6887676fa0e6c40ee99dc716f2322914203eb",
+    "all_unchanged": true
+  },
+  "command": "./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --offline --no-daemon --max-workers=1",
+  "jvm": {
+    "suites": 44,
+    "tests": 375,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "error": 0,
+    "warning": 153
+  },
+  "instrumentation": {
+    "serial": "emulator-5582",
+    "api": 36,
+    "qemu": 1,
+    "tests": 13,
+    "failures": 0,
+    "ignored": 0,
+    "classes": {
+      "ProfileEditorTest": 3,
+      "StudioRecordingTest": 4,
+      "StudioBackupTest": 6
+    },
+    "runner": "adb -s emulator-5582 shell am instrument -w -r -e class com.opus.piano.ProfileEditorTest,com.opus.piano.StudioRecordingTest,com.opus.piano.StudioBackupTest com.opus.piano.test/androidx.test.runner.AndroidJUnitRunner",
+    "raw_log_sha256": "3883436b1c9d5d5780729a8ded774c398300f228bc1193f3d0cb2b03ed9118ae"
+  },
+  "prior_failure": {
+    "tests": 11,
+    "failures": 8,
+    "cause": "Android AccessDeniedException at Files.createLink; Profile editor 3 passed; replaced recording and media-restore publication with shared directory locks and atomic rename"
+  },
+  "apk": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "package": "com.opus.piano",
+    "version": "0.12-dev",
+    "code": 14,
+    "sha256": "f9665dc7c78c30a8657a116a117b7021da28f314ea075a2510ce0c4491e1fba2",
+    "certificate_sha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+    "private_reference_exclusion": true
+  },
+  "pending": [
+    "full emulator/UI matrix and owner approval",
+    "real microphone capture/service and media playback/export UI",
+    "widgets/Tux/quote/metronome/queue/Undo implementation",
+    "full migration/backup/seeded in-place upgrade/security/release acceptance"
+  ],
+  "signature": "created by stokonn with love <3"
+}

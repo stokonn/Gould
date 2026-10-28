@@ -1,0 +1,86 @@
+{
+  "checkpoint": "durable-profile-and-android-safe-recording-publication",
+  "date_local": "2026-10-29",
+  "branch": "feature/gould-0.12",
+  "base_commit": "096c9d3",
+  "source_manifest": {
+    "count": 336,
+    "sha256": "fba671866ebd9cf259eea85a7e64c0a44abe3a3eff293243ef7db63f7c6b599f",
+    "all_unchanged": true
+  },
+  "host_command": "./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --offline --no-daemon --max-workers=1",
+  "jvm": {
+    "suites": 44,
+    "tests": 375,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "error": 0,
+    "warning": 153
+  },
+  "native": {
+    "serial": "emulator-5582",
+    "api": 36,
+    "qemu": 1,
+    "tests": 15,
+    "failures": 0,
+    "ignored": 0,
+    "seconds": 2.948,
+    "classes": {
+      "ProfileEditorTest": 5,
+      "StudioRecordingTest": 4,
+      "StudioBackupTest": 6
+    },
+    "raw_log_sha256": "946da29f2edf772f01a0fc895c2551448d1e085077a816cb5c1792fca909ea6b"
+  },
+  "real_process_death": {
+    "serial": "emulator-5582",
+    "qemu": 1,
+    "before_pid": 6650,
+    "after_pid": 6858,
+    "launch": "Starting: Intent { cmp=com.opus.piano/.MainActivity }\nStatus: ok\nLaunchState: COLD\nActivity: com.opus.piano/.MainActivity\nTotalTime: 3878\nWaitTime: 3881\nComplete\n",
+    "expected_name": "MusicianKept",
+    "restored": true,
+    "draft_bytes_retained": true
+  },
+  "renders_inspected": [
+    "profile-ivory-en.png: normal 2x2 statistics",
+    "profile-cs-2x.png: Nocturne/Czech/200 percent, single centered column",
+    "profile-ui-editor.png",
+    "profile-durable-real-cold-restored.png"
+  ],
+  "ui_verified": [
+    "dirty Back Save/Discard/Keep editing dialog",
+    "Keep editing retains unfinished text",
+    "cold process death restores exact persisted draft bytes and edited name",
+    "confirmed Discard clears the synthetic private draft file"
+  ],
+  "apk": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "d851e54cff4526c0c57b10e3ee74f1edb3fdc5d4ad86b0d04fb510ac4726e12c",
+    "package": "com.opus.piano",
+    "version": "0.12-dev",
+    "code": 14,
+    "certificate_sha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+    "trusted": true,
+    "private_reference_exclusion": true
+  },
+  "checks": {
+    "localization": "PASS:1157 EN/CZ resources",
+    "agent_policy": "PASS",
+    "host_migrations": "PASS:DDL1-10 to11; native migration execution pending",
+    "backup_fixtures": "PASS:historical v1-v3 fixtures",
+    "history_paging": "PASS",
+    "diff_check": "PASS"
+  },
+  "limitations": [
+    "Complete Studio/microphone/service/playback/export UI acceptance not performed",
+    "Full 320/360/412dp, fonts1/1.5/2, theme/locale matrix and owner visual approval pending",
+    "Both widgets, Tux/nature quote and remaining Studio/metronome/queue/Undo implementation pending",
+    "Full native migration/seeded trusted upgrade/security/release gates pending",
+    "No main integration or release"
+  ],
+  "signature": "created by stokonn with love <3"
+}

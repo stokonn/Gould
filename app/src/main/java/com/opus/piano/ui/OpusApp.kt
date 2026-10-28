@@ -55,6 +55,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
     DISCOVER("Discover", Icons.Outlined.Explore), PRACTICE("Studio", Icons.Outlined.Piano), BADGES("Badges", Icons.Outlined.EmojiEvents), WRAPPED("Wrapped", Icons.Outlined.Insights)
 }
 @Composable fun OpusApp(model: OpusViewModel, catalog: CatalogViewModel, experience: ExperienceViewModel, profile: ProfileViewModel, admin: com.opus.piano.ui.admin.AdminViewModel) {
+    ProfileEditor(profile)
     val context = LocalContext.current
     val focus = androidx.compose.ui.platform.LocalFocusManager.current
     val keyboard = androidx.compose.ui.platform.LocalSoftwareKeyboardController.current
@@ -101,16 +102,17 @@ private enum class Destination(val label: String, val icon: ImageVector) {
     val pendingNotices by app.database.studioDao().pendingNotices().collectAsStateWithLifecycle(initialValue = emptyList())
     val timerState by model.timer.collectAsStateWithLifecycle()
     val recState by model.recordingState.collectAsStateWithLifecycle()
+    val profileDraft by profile.editDraft.collectAsStateWithLifecycle()
     val captureActive = timerState.running || recState.phase == com.opus.piano.audio.RecordingController.Phase.Recording
     var shownNotice by remember { mutableStateOf<com.opus.piano.data.BadgeNotice?>(null) }
     val popupScope = rememberCoroutineScope()
     fun acknowledge(notice: com.opus.piano.data.BadgeNotice) { popupScope.launch { kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { app.database.studioDao().acknowledge(notice.achievementId, System.currentTimeMillis()) } } }
-    LaunchedEffect(pendingNotices, captureActive) {
-        if (shownNotice == null && !captureActive) shownNotice = pendingNotices.firstOrNull()
+    LaunchedEffect(pendingNotices, captureActive, profileDraft) {
+        if (shownNotice == null && !captureActive && profileDraft == null) shownNotice = pendingNotices.firstOrNull()
     }
     shownNotice?.let { notice ->
         val badge = badges.firstOrNull { it.definition.id == notice.achievementId }
-        if (badge != null) {
+        if (badge != null && !captureActive && profileDraft == null) {
             AlertDialog(onDismissRequest = { shownNotice = null; acknowledge(notice) }, icon = { MedalArtwork(badge, Modifier.size(80.dp)) },
                 title = { Text(badge.definition.localizedName) },
                 text = { Text("${L.fixed(badge.definition.rarity.label)} · ${badge.definition.localizedDescription}") },

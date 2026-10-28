@@ -1166,4 +1166,17 @@
   <string name="badge_founding_pianist_unit">zakladatel</string>
   <string name="msg_view_badge">Zobrazit odznak</string>
   <string name="msg_dismiss_11a3">Odmítnout</string>
+    <string name="profile_edit_failed">Úpravy se nepodařilo uložit. Koncept zůstává zachován; zkuste to znovu.</string>
+    <string name="profile_edit_saved">Profil byl uložen.</string>
+    <string name="profile_edit_conflict">Profil se během úprav změnil. Koncept zůstává zachován. Pokračujte v úpravách, nebo jej zahoďte a otevřete aktuální profil.</string>
+    <string name="profile_edit_unsaved">Uložit změny profilu?</string>
+    <string name="profile_edit_leave_message">Změny zatím nejsou uloženy. Můžete je uložit, zahodit nebo pokračovat v úpravách.</string>
+    <string name="profile_edit_discard">Zahodit změny</string>
+    <string name="profile_edit_keep">Pokračovat v úpravách</string>
+    <string name="profile_draft_storage_failed">Profil zůstává beze změny. Koncept se nepodařilo uchovat na disku; ponechte editor otevřený a zkuste to znovu.</string>
+    <string name="profile_saved_draft_retained">Profil byl uložen, ale uchovaný koncept se nepodařilo odstranit. Dokončete uložení opětovným stisknutím Uložit.</string>
+    <string name="profile_draft_recovery_title">Koncept profilu vyžaduje obnovu</string>
+    <string name="profile_draft_recovery_message">Rozpracovaný koncept profilu se nepodařilo přečíst. Originál zůstává zachován. Zkuste obnovu znovu, nebo exportujte původní nezměněná data. Uložený profil zůstává beze změny.</string>
+    <string name="profile_draft_retry">Zkusit obnovu znovu</string>
+    <string name="profile_draft_export">Exportovat původní koncept</string>
 </resources>

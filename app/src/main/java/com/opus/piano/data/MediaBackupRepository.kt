@@ -3,6 +3,7 @@ package com.opus.piano.data
 import android.content.Context
 import android.util.AtomicFile
 import com.opus.piano.audio.DurableWav
+import com.opus.piano.audio.RecordingPublication
 import com.opus.piano.data.backup.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -11,7 +12,6 @@ import kotlinx.coroutines.sync.withLock
 import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
-import java.nio.file.Files
 import java.util.UUID
 
 /** Explicit, local media backup. All bytes validate in staging before journal replacement.
@@ -87,7 +87,7 @@ class MediaBackupRepository(
             if(target.exists())require(target.isFile && target.length()==entry.bytes && DurableWav.hash(target)==entry.sha256) {"Existing recording conflicts; originals retained"}
         }
         staged.entries.forEach {entry->val target=File(audioDirectory,entry.file.name)
-            if(!target.exists())Files.createLink(target.toPath(),entry.file.toPath())
+            if(!target.exists())RecordingPublication.publish(entry.file,target,keepSource=true)
         }
         receipt(staged.directory,"media_published")
         // On a crash, new files remain referenced by this replayable staging receipt;

@@ -21,6 +21,13 @@ class GoogleIdentity(private val context: Context, private val db: OpusDatabase)
     fun manualName() { check(prefs.edit().putBoolean("manual-name", true).commit()) }
     fun manualAvatar() { check(prefs.edit().putBoolean("manual-avatar", true).commit()) }
 
+    /** Serialize editor writes with optional provider imports; never undo an explicit local identity intent. */
+    suspend fun <T> editLocalProfile(name: Boolean, avatar: Boolean, write: suspend () -> T): T = lock.withLock {
+        if (name) manualName()
+        if (avatar) manualAvatar()
+        write()
+    }
+
     suspend fun signIn(activity: Context) = lock.withLock {
         val nonce = android.util.Base64.encodeToString(ByteArray(32).also { SecureRandom().nextBytes(it) }, android.util.Base64.NO_WRAP or android.util.Base64.URL_SAFE)
         val option = GetSignInWithGoogleOption.Builder(context.getString(R.string.google_web_client_id)).setNonce(nonce).build()

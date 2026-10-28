@@ -33,7 +33,9 @@ class MainActivity : androidx.appcompat.app.AppCompatActivity() {
             val experience: ExperienceViewModel = viewModel(factory = viewModelFactory {
                 initializer { ExperienceViewModel((application as OpusApplication).achievements, (application as OpusApplication).recordings) }
             })
-            val profile: ProfileViewModel = viewModel()
+            val profile: ProfileViewModel = viewModel(factory = viewModelFactory {
+                initializer { ProfileViewModel(application, createSavedStateHandle()) }
+            })
             val admin: com.opus.piano.ui.admin.AdminViewModel = viewModel()
             val settings by profile.settings.collectAsStateWithLifecycle()
             val appearance by (application as OpusApplication).appearance.state.collectAsStateWithLifecycle()

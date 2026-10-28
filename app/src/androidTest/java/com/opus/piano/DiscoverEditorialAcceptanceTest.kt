@@ -169,7 +169,7 @@ class DiscoverEditorialAcceptanceTest {
                 scenario.onActivity {activity->
                     val catalog=CatalogViewModel(app.catalogRepository,SavedStateHandle())
                     val experience=ExperienceViewModel(app.achievements,app.recordings)
-                    val model=OpusViewModel(app.repository,SavedStateHandle(),app.practice)
+                    val model=OpusViewModel(app.repository,SavedStateHandle(),app.practice,app.recording,app)
                     activity.viewModelStore.put("discover-catalog",catalog)
                     activity.viewModelStore.put("discover-experience",experience)
                     activity.viewModelStore.put("discover-model",model)

@@ -75,4 +75,41 @@ class StudioBackupTest {
             assertEquals(original.sha256,com.opus.piano.audio.DurableWav.hash(File(targetRoot,"audio/${original.id}.wav")))
         }
     } }
+    @Test fun mediaArchivePublicationIsAndroidCompatibleAndInterruptedRestoreCanRetry()=runBlocking { fixture { source,root ->
+        val original=take(source,root,31)
+        val archive=java.io.ByteArrayOutputStream()
+        MediaBackupRepository(context,source,File(root,"audio"),File(root,"operations"),backup(source,root)).export(archive)
+        fixture { target,targetRoot ->
+            target.personalDao().saveSettings(ProfileSettings(username="Before media restore"))
+            var interrupt=true
+            val media=MediaBackupRepository(context,target,File(targetRoot,"audio"),File(targetRoot,"operations"),backup(target,targetRoot)) {
+                if(it=="media_published" && interrupt) throw java.io.IOException("injected after publication")
+            }
+            val operation=media.receive(archive.toByteArray().inputStream())
+            try {media.restore(operation);fail("Expected injected interruption")} catch(_:java.io.IOException) { }
+            assertEquals("Before media restore",target.personalDao().getSettings()!!.username)
+            val published=File(targetRoot,"audio/${original.id}.wav")
+            assertEquals(original.sha256,com.opus.piano.audio.DurableWav.hash(published))
+            assertTrue(operation in media.pendingOperations())
+            interrupt=false;media.restore(operation)
+            assertEquals("Saved",target.studioDao().audio(original.id)!!.state)
+            assertEquals(original.sha256,com.opus.piano.audio.DurableWav.hash(LocalRecordingRepository(target,File(targetRoot,"audio")).playable(original.id)))
+            assertFalse(operation in media.pendingOperations())
+            assertEquals(original.sha256,com.opus.piano.audio.DurableWav.hash(File(root,"audio/${original.id}.wav")))
+        }
+    } }
+    @Test fun conflictingArchivePublicationNeverReplacesDestinationBytes()=runBlocking { fixture { source,root ->
+        val original=take(source,root,37)
+        val archive=java.io.ByteArrayOutputStream()
+        MediaBackupRepository(context,source,File(root,"audio"),File(root,"operations"),backup(source,root)).export(archive)
+        fixture { target,targetRoot ->
+            val media=MediaBackupRepository(context,target,File(targetRoot,"audio"),File(targetRoot,"operations"),backup(target,targetRoot))
+            val operation=media.receive(archive.toByteArray().inputStream())
+            val destination=File(targetRoot,"audio/${original.id}.wav").apply {parentFile!!.mkdirs();writeText("Owner recovery bytes")}
+            try {media.restore(operation);fail("Expected collision rejection")} catch(_:IllegalArgumentException) { }
+            assertEquals("Owner recovery bytes",destination.readText())
+            assertTrue(operation in media.pendingOperations())
+            assertTrue(target.studioDao().allAudio().isEmpty())
+        }
+    } }
 }

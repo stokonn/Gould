@@ -1162,4 +1162,17 @@
   <string name="badge_founding_pianist_unit">founder</string>
   <string name="msg_view_badge">View Badge</string>
   <string name="msg_dismiss_11a3">Dismiss</string>
+    <string name="profile_edit_failed">Could not save these edits. Your draft is kept; please retry.</string>
+    <string name="profile_edit_saved">Profile saved.</string>
+    <string name="profile_edit_conflict">This profile changed while you were editing. Your draft is kept. Keep editing or discard it and reopen the latest profile.</string>
+    <string name="profile_edit_unsaved">Save profile changes?</string>
+    <string name="profile_edit_leave_message">Your changes have not been saved. Save them, discard them, or keep editing.</string>
+    <string name="profile_edit_discard">Discard changes</string>
+    <string name="profile_edit_keep">Keep editing</string>
+    <string name="profile_draft_storage_failed">The profile is unchanged. Could not retain this draft on disk; keep the editor open and retry.</string>
+    <string name="profile_saved_draft_retained">Your profile was saved, but the retained draft could not be cleared. Retry Save to finish.</string>
+    <string name="profile_draft_recovery_title">Profile draft needs recovery</string>
+    <string name="profile_draft_recovery_message">An unfinished profile draft could not be read. The original is retained. Retry, or export its unchanged bytes for recovery. Your saved profile is unchanged.</string>
+    <string name="profile_draft_retry">Retry draft recovery</string>
+    <string name="profile_draft_export">Export original draft</string>
 </resources>
