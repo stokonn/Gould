@@ -10,7 +10,7 @@ internal fun selectedTab(route: String): String = when {
     route == SETTINGS_ROUTE || route == PROFILE_ROUTE -> PROFILE_ROUTE
     route.startsWith("admin") -> PROFILE_ROUTE // Stage 7B: Administration lives under Profile.
     route.startsWith("discover/") -> "DISCOVER"
-    route.startsWith("catalog") || route.startsWith("piece/") || route.startsWith("recordings/") -> "REPERTOIRE"
+    route.startsWith("catalog") || route.startsWith("piece/") || route.startsWith("recordings/") || route.startsWith("previous") -> "REPERTOIRE"
     route.startsWith("badge/") || route == "BADGES" -> PROFILE_ROUTE
     route.startsWith("history") -> PROFILE_ROUTE
     else -> route

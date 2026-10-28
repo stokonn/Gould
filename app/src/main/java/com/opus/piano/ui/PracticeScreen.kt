@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.History
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.*
@@ -21,7 +23,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.opus.piano.service.SmartPracticeService
 
-@Composable internal fun PracticeScreen(library: LibraryState, model: OpusViewModel, profile: ProfileViewModel, motion: Boolean = true) {
+@Composable internal fun PracticeScreen(library: LibraryState, model: OpusViewModel, profile: ProfileViewModel, motion: Boolean = true, previous: () -> Unit = {}) {
     val timer by model.timer.collectAsStateWithLifecycle()
     val recordingState by model.recordingState.collectAsStateWithLifecycle()
     val settings by profile.settings.collectAsStateWithLifecycle()
@@ -122,7 +124,7 @@ import com.opus.piano.service.SmartPracticeService
             Text(L.s(R.string.practice_unsaved), color=MaterialTheme.colorScheme.error)
             JournalTextButton(onClick={model.practice.retryPersistence()}) { Text(L.s(R.string.practice_retry)) }
         }
-        EditorialHeader(L.fixed("Studio"))
+        EditorialHeader(L.fixed("Studio"), actions = { IconButton(onClick = previous) { Icon(Icons.Outlined.History, L.fixed("Previous")) } })
         JournalCard {
             Column(Modifier.fillMaxWidth().padding(vertical=16.dp),horizontalAlignment=androidx.compose.ui.Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(12.dp)) {
         Text(timer.parts[timer.active].displayTitle,style=MaterialTheme.typography.headlineMedium)

@@ -179,7 +179,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 composable("admin/audit") { AdminTheme { AdminAuditScreen(admin) { nav.popBackStack() } } }
                 composable("admin/settings") { AdminTheme { AdminSettingsScreen(admin) { nav.popBackStack() } } }
                 composable(Destination.REPERTOIRE.name) {
-                    RepertoireScreen(library,catalogData,model,{nav.selectTopLevel("DISCOVER")},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")},catalog,{nav.navigate("catalog/work/$it")},{nav.navigate("discover/entity/$it")})
+                    RepertoireScreen(library,catalogData,model,{nav.selectTopLevel("DISCOVER")},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")},catalog,{nav.navigate("catalog/work/$it")},{nav.navigate("discover/entity/$it")},{nav.navigate("previous")})
                 }
                 composable(Destination.DISCOVER.name) { DiscoverScreen({ nav.navigate("discover/entity/$it") }, { nav.navigate("piece/$it") }, { nav.navigate("catalog/work/$it") }, library) }
                 composable("discover/entity/{id}") { route -> DiscoverDetailScreen(route.arguments?.getString("id").orEmpty(), {nav.popBackStack()}, {nav.navigate("discover/entity/$it")}, {nav.navigate("piece/$it")}) }
@@ -207,10 +207,11 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                     RecordingsScreen(key, title ?: L.s(R.string.reference_shelf), experience) { nav.popBackStack() }
                 }
                 composable("history") { PracticeHistoryScreen({ nav.popBackStack() }) }
+                composable("previous") { PreviousScreen({ nav.popBackStack() }) }
                 composable("history/piece/{id}") { e -> PracticeHistoryScreen({ nav.popBackStack() }, e.arguments?.getString("id")?.toLongOrNull()) }
                 composable("history/catalog/{id}") { e -> PracticeHistoryScreen({ nav.popBackStack() }, catalogId=e.arguments?.getString("id")) }
                 composable("badge/{id}") { route -> BadgeDetailScreen(route.arguments?.getString("id").orEmpty(), experience) { nav.popBackStack() } }
-                composable(Destination.PRACTICE.name) { PracticeScreen(library, model, profile, motionScale != 0f) }
+                composable(Destination.PRACTICE.name) { PracticeScreen(library, model, profile, motionScale != 0f, { nav.navigate("previous") }) }
                 composable(Destination.BADGES.name) { BadgesScreen(experience, profile) { nav.navigate("badge/$it") } }
                 composable(Destination.WRAPPED.name) { ComingSoon(library, "Wrapped", "Your music.\nYour story.", L.s(R.string.future_wrapped), Icons.Outlined.Insights, listOf("Monthly reflections", "Your year at the piano", "Repertoire highlights")) }
             }

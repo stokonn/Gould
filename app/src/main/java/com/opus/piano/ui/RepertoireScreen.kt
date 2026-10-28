@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.icons.outlined.History
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -19,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.opus.piano.data.*
 
 @OptIn(ExperimentalLayoutApi::class, androidx.compose.foundation.ExperimentalFoundationApi::class)
-@Composable internal fun RepertoireScreen(state: LibraryState, catalog: CatalogSnapshot, model: OpusViewModel, explore: () -> Unit, detail: (Long) -> Unit, profile: ProfileViewModel, composerPage:(String)->Unit, catalogModel:CatalogViewModel, workPage:(String)->Unit, cataloguePage:(String)->Unit) {
+@Composable internal fun RepertoireScreen(state: LibraryState, catalog: CatalogSnapshot, model: OpusViewModel, explore: () -> Unit, detail: (Long) -> Unit, profile: ProfileViewModel, composerPage:(String)->Unit, catalogModel:CatalogViewModel, workPage:(String)->Unit, cataloguePage:(String)->Unit, previous: () -> Unit = {}) {
     var view by rememberSaveable {mutableStateOf("all")}
     val mine=view=="mine"
     var limit by rememberSaveable {mutableIntStateOf(40)}
@@ -60,6 +61,9 @@ import com.opus.piano.data.*
             Text(L.s(R.string.stage7a_library_title),style=MaterialTheme.typography.headlineLarge,modifier=Modifier.semantics {heading()})
             Text(L.s(R.string.stage7a_library_subtitle),style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
         }}
+        item { Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+            JournalTextButton(onClick = previous) { Icon(Icons.Outlined.History, null, Modifier.size(18.dp)); Text(L.fixed("Previous")) }
+        } }
         stickyHeader { Surface(color=MaterialTheme.colorScheme.background) { Row(Modifier.fillMaxWidth().padding(bottom=8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(JournalSpace.small)) {
             OutlinedTextField(query, { query = it; limit=40 }, Modifier.weight(1f), label = { Text(L.s(R.string.ui101_search),maxLines=1,overflow=TextOverflow.Ellipsis) }, leadingIcon = { Icon(Icons.Outlined.Search, null) }, singleLine = true,shape=androidx.compose.foundation.shape.RoundedCornerShape(14.dp))
             Box { IconButton(onClick={addMenu=true}) { Icon(Icons.Outlined.Add,L.s(R.string.msg_add_piece_2cfc)) }
