@@ -51,7 +51,7 @@ import java.time.format.DateTimeFormatter
 
 private enum class Destination(val label: String, val icon: ImageVector) {
     OVERVIEW("Home", Icons.Outlined.Home), HOME("Profile", Icons.Outlined.Person), REPERTOIRE("Library", Icons.Outlined.LibraryMusic),
-    DISCOVER("Discover", Icons.Outlined.Explore), PRACTICE("Practice", Icons.Outlined.Piano), BADGES("Badges", Icons.Outlined.EmojiEvents), WRAPPED("Wrapped", Icons.Outlined.Insights)
+    DISCOVER("Discover", Icons.Outlined.Explore), PRACTICE("Studio", Icons.Outlined.Piano), BADGES("Badges", Icons.Outlined.EmojiEvents), WRAPPED("Wrapped", Icons.Outlined.Insights)
 }
 @Composable fun OpusApp(model: OpusViewModel, catalog: CatalogViewModel, experience: ExperienceViewModel, profile: ProfileViewModel, admin: com.opus.piano.ui.admin.AdminViewModel) {
     val context = LocalContext.current

@@ -1126,4 +1126,18 @@
     <string name="discover_connection_unavailable">Online hledání není v tomto připojení dostupné.</string>
     <string name="discover_results_to_check">Další výsledky k prozkoumání</string>
   <string name="studio_backup_audio_excluded">Zálohy samotného deníku neobsahují zvukové soubory. Metadata nahrávek a získané odznaky zůstávají zachovány.</string>
+  <string name="label_studio">Studio</string>
+  <string name="msg_record_audio">Nahrávat zvuk</string>
+  <string name="msg_stop_recording">Zastavit nahrávání</string>
+  <string name="msg_recording_saved">Nahrávka uložena</string>
+  <string name="msg_recording_interrupted">Nahrávání přerušeno. Částečný zvuk je uložen pro obnovení.</string>
+  <string name="msg_recording_title">Nahrávka</string>
+  <string name="msg_studio_recording">Studio nahrávání</string>
+  <string name="msg_recording_consent">Nahrávky se ukládají pouze v tomto zařízení a nikdy se neodesílají. Zvuk se nepřetržitě nahrává, dokud nekleknete na Zastavit.</string>
+  <string name="label_recording">Nahrávání</string>
+  <string name="label_preparing">Příprava</string>
+  <string name="label_finalizing">Dokončování</string>
+  <string name="msg_record_error">Nahrávání nelze spustit</string>
+  <string name="label_previous">Předchozí</string>
+  <string name="msg_recordings">Nahrávky</string>
 </resources>

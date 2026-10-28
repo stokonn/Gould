@@ -70,5 +70,14 @@ Backup v6 + recording repository + streaming media archive host gate PASSED
 145warnings, debug APK signer verified, source manifest bound. Native execution of
 StudioRecordingTest/StudioBackupTest still pending; see verification/backup-v6-host.json.
 Do not mark the audio-backup task complete from host evidence alone.
+
+Shared capture/recording lifecycle (ST-01–03) implemented 2026-10-28:
+RecordingController state machine (Idle→Preparing→Recording→Finalizing→Saved
++Recoverable), MicrophoneController fan-out (one AudioRecord, detection+recording
+consumers), SmartPracticeService dual-action (START/START_RECORDING), combined
+practice+recording lifecycle watcher, Studio UI with Record/Stop controls,
+recording consent dialog, EN/CZ localization. Host gate: compile OK, 363 JVM
+tests pass, lint 0 errors/147 warnings, localization PASS (1118 resources).
+Native/emulator execution of recording lifecycle NOT performed yet.
 See verification/foundation-host.json and CHECKPOINT.md; do not promote the
 whole persistence/audio/icon tasks to complete from these bounded results.

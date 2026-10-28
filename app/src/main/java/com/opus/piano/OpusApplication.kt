@@ -17,6 +17,8 @@ class OpusApplication : Application() {
             // Stage 5: restore durable bundle state after process death (D5.1/D5.3/D7).
             // File + WorkManager metadata only; never touches the journal or recovery data.
             runCatching { bundleScheduler.reconcileAfterRestart() }
+            // Recording: metadata reconciliation only; never capture or automatic publication.
+            runCatching { recording.reconcile() }
         }
     }
     override fun onConfigurationChanged(newConfig: android.content.res.Configuration) {
@@ -70,6 +72,7 @@ class OpusApplication : Application() {
     val catalogueRepertoire by lazy { com.opus.piano.data.catalogue.CatalogueRepertoire(database) }
     val practiceRepository by lazy { PracticeRepository(database, repository) }
     val practice by lazy { com.opus.piano.practice.PracticeCoordinator(practiceRepository) }
+    val recording by lazy { com.opus.piano.audio.RecordingController(LocalRecordingRepository(database, java.io.File(filesDir,"recordings"))) }
     val achievements by lazy { AchievementStore(database) }
     val recordings by lazy { RecordingRepository(database) }
     val repository by lazy { OpusRepository(database, achievements) }

@@ -6,14 +6,24 @@ import android.media.*
 import android.os.Build
 import kotlinx.coroutines.*
 import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicReference
 
-/** The service is the sole owner. No sample leaves this bounded in-memory buffer. */
+/** The service is the sole owner. No sample leaves this bounded in-memory buffer
+ *  except through the explicitly attached recording sink. Detection and recording
+ *  are separate consumers of the same PCM stream; one AudioRecord, no second capture. */
 class MicrophoneController(private val context: android.content.Context) {
     @Volatile private var recorder: AudioRecord? = null
     private val stopped = AtomicBoolean(false)
-    suspend fun capture(sensitivity: () -> Int, evidence: suspend (Boolean) -> Unit) = withContext(Dispatchers.IO) {
+    suspend fun capture(
+        sensitivity: () -> Int,
+        preferredRate: Int = 0,
+        recordingSink: AtomicReference<((ShortArray, Int) -> Unit)?>? = null,
+        detectionEnabled: () -> Boolean = { true },
+        evidence: suspend (Boolean) -> Unit
+    ) = withContext(Dispatchers.IO) {
         check(androidx.core.content.ContextCompat.checkSelfPermission(context,android.Manifest.permission.RECORD_AUDIO) == android.content.pm.PackageManager.PERMISSION_GRANTED) { "Microphone permission unavailable" }
-        val rate = listOf(22050,44100,16000).firstOrNull { AudioRecord.getMinBufferSize(it, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT) > 0 } ?: error(L.s(R.string.msg_microphone_format_unavailable_f7b8))
+        val rate = if (preferredRate > 0 && AudioRecord.getMinBufferSize(preferredRate, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT) > 0) preferredRate
+            else listOf(22050,44100,16000).firstOrNull { AudioRecord.getMinBufferSize(it, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT) > 0 } ?: error(L.s(R.string.msg_microphone_format_unavailable_f7b8))
         val min = AudioRecord.getMinBufferSize(rate, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT)
         val format = AudioFormat.Builder().setSampleRate(rate).setChannelMask(AudioFormat.CHANNEL_IN_MONO).setEncoding(AudioFormat.ENCODING_PCM_16BIT).build()
         val source = if (context.getSystemService(AudioManager::class.java).getProperty(AudioManager.PROPERTY_SUPPORT_AUDIO_SOURCE_UNPROCESSED) == "true") MediaRecorder.AudioSource.UNPROCESSED else MediaRecorder.AudioSource.VOICE_RECOGNITION
@@ -36,7 +46,9 @@ class MicrophoneController(private val context: android.content.Context) {
                 check(count > 0) { L.s(R.string.msg_microphone_interrupted_b420) }
                 if (Build.VERSION.SDK_INT >= 29) check(audio.activeRecordingConfiguration?.isClientSilenced != true) { L.s(R.string.msg_microphone_is_unavailable_0f16) }
                 if (warmed++ > 3) check(!route.getAndSet(false)) { L.s(R.string.msg_microphone_route_changed_5688) } else route.set(false)
-                evidence(detector.likely(samples,count,sensitivity()))
+                // Fan out to recording sink first; detection is a separate consumer.
+                recordingSink?.get()?.invoke(samples, count)
+                if (detectionEnabled()) evidence(detector.likely(samples,count,sensitivity()))
             }
         } finally {
             audio.removeOnRoutingChangedListener(listener)

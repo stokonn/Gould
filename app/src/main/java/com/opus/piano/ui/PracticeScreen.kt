@@ -23,6 +23,7 @@ import com.opus.piano.service.SmartPracticeService
 
 @Composable internal fun PracticeScreen(library: LibraryState, model: OpusViewModel, profile: ProfileViewModel, motion: Boolean = true) {
     val timer by model.timer.collectAsStateWithLifecycle()
+    val recordingState by model.recordingState.collectAsStateWithLifecycle()
     val settings by profile.settings.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val app=context.applicationContext as com.opus.piano.OpusApplication
@@ -39,6 +40,8 @@ import com.opus.piano.service.SmartPracticeService
     var discard by remember { mutableStateOf(false) }
     var choose by remember { mutableStateOf(false) }
     var expanded by remember { mutableStateOf(false) }
+    var recordConsent by remember { mutableStateOf(false) }
+    var permissionForRecording by remember { mutableStateOf(false) }
     val failedRecovery by model.practice.recoveryFailed.collectAsStateWithLifecycle()
     val unsaved by model.practice.unsaved.collectAsStateWithLifecycle()
     val scope = rememberCoroutineScope()
@@ -63,7 +66,10 @@ import com.opus.piano.service.SmartPracticeService
         SmartPracticeService.start(context)
     }
     val permission = rememberLauncherForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
-        if (result[Manifest.permission.RECORD_AUDIO] == true || ContextCompat.checkSelfPermission(context,Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) startSmart()
+        if (result[Manifest.permission.RECORD_AUDIO] == true || ContextCompat.checkSelfPermission(context,Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+            if (permissionForRecording) { permissionForRecording = false; model.startRecording() }
+            else startSmart()
+        }
         else { model.practice.captureIssue.value="PermissionDenied";model.practice.notice.value = L.s(R.string.msg_microphone_permission_denied_manual_practice_bac5) }
     }
     fun start() {
@@ -88,7 +94,19 @@ import com.opus.piano.service.SmartPracticeService
                 if(timer.running) model.practice.command { pause() }
                 else if(timer.token.isNotEmpty() && timer.smart!=smart) convert=true else start()
             },modifier=Modifier.fillMaxWidth().heightIn(min=52.dp),enabled=timer.ready && !timer.saving) { Text(if(timer.running) L.s(R.string.msg_pause_7819) else if(timer.token.isEmpty()) L.s(R.string.msg_start_practice_ae1b) else L.s(R.string.msg_resume_b3bd)) }
-            JournalTextButton(onClick=model::finish,enabled=timer.token.isNotEmpty() || timer.notes.isNotBlank() || timer.parts.any { it.notes.isNotBlank() },modifier=Modifier.fillMaxWidth()) { Text(L.s(R.string.msg_finish_review_04ae)) }
+            if (recordingState.phase == com.opus.piano.audio.RecordingController.Phase.Recording) {
+                JournalSecondaryButton(onClick={ model.stopRecording() },modifier=Modifier.fillMaxWidth()) { Text(L.s(R.string.msg_stop_recording)) }
+            } else {
+                JournalTextButton(onClick={ recordConsent = true },enabled=timer.ready && recordingState.phase != com.opus.piano.audio.RecordingController.Phase.Preparing && recordingState.phase != com.opus.piano.audio.RecordingController.Phase.Finalizing,modifier=Modifier.fillMaxWidth()) { Text(L.s(R.string.msg_record_audio)) }
+            }
+            JournalTextButton(onClick={
+                // Finish practice: stop recording first, then review.
+                if (recordingState.phase == com.opus.piano.audio.RecordingController.Phase.Recording) {
+                    model.stopRecording()
+                    // Give the finalize a moment; review() will call releaseCapture which stops mic.
+                    kotlinx.coroutines.MainScope().launch { kotlinx.coroutines.delay(300); model.finish() }
+                } else model.finish()
+            },enabled=timer.token.isNotEmpty() || timer.notes.isNotBlank() || timer.parts.any { it.notes.isNotBlank() },modifier=Modifier.fillMaxWidth()) { Text(L.s(R.string.msg_finish_review_04ae)) }
         }
     }) { padding ->
     Column(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).verticalScroll(rememberScrollState()).padding(20.dp),verticalArrangement=Arrangement.spacedBy(20.dp)) {
@@ -104,7 +122,7 @@ import com.opus.piano.service.SmartPracticeService
             Text(L.s(R.string.practice_unsaved), color=MaterialTheme.colorScheme.error)
             JournalTextButton(onClick={model.practice.retryPersistence()}) { Text(L.s(R.string.practice_retry)) }
         }
-        EditorialHeader(L.fixed("Practice"))
+        EditorialHeader(L.fixed("Studio"))
         JournalCard {
             Column(Modifier.fillMaxWidth().padding(vertical=16.dp),horizontalAlignment=androidx.compose.ui.Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(12.dp)) {
         Text(timer.parts[timer.active].displayTitle,style=MaterialTheme.typography.headlineMedium)
@@ -112,6 +130,14 @@ import com.opus.piano.service.SmartPracticeService
         Text(L.s(R.string.msg_credited_practice_elapsed_duration_timer_wal_0c94, (duration(timer.wallElapsed))),style=MaterialTheme.typography.bodyMedium)
         if(timer.mode!="Manual") Text(L.s(R.string.msg_detected_active_duration_timer_detectedactiv_764f, (duration(timer.detectedActive))))
         ActivityIndicator(if(smart && issue.isNotEmpty()) issue else if(timer.running && timer.smart && timer.status!="Automatically paused") timer.signal else timer.status,timer.running && timer.smart,motion)
+        if (recordingState.phase == com.opus.piano.audio.RecordingController.Phase.Recording) {
+            Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)) {
+                androidx.compose.foundation.Canvas(Modifier.size(8.dp)) { drawCircle(color=androidx.compose.ui.graphics.Color(0xFFE53935)) }
+                Text(L.s(R.string.label_recording),style=MaterialTheme.typography.bodySmall,color=androidx.compose.ui.graphics.Color(0xFFE53935))
+            }
+        } else if (recordingState.phase == com.opus.piano.audio.RecordingController.Phase.Saved) {
+            Text(L.s(R.string.msg_recording_saved),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.primary)
+        }
             }
         }
         Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically) {
@@ -145,6 +171,13 @@ import com.opus.piano.service.SmartPracticeService
         if (Build.VERSION.SDK_INT >= 33) permissions += Manifest.permission.POST_NOTIFICATIONS
         permission.launch(permissions.toTypedArray())
     }) { Text(L.s(R.string.msg_enable_listening_d7de)) } },dismissButton = { JournalTextButton(onClick = { privacy = false }) { Text(L.s(R.string.msg_cancel_77df)) } })
+    if (recordConsent) AlertDialog(onDismissRequest = { recordConsent = false },title = { Text(L.s(R.string.msg_record_audio)) },text = { Text(L.s(R.string.msg_recording_consent)) },confirmButton = { JournalTextButton(onClick = {
+        recordConsent = false
+        val permissions = mutableListOf(Manifest.permission.RECORD_AUDIO)
+        if (Build.VERSION.SDK_INT >= 33) permissions += Manifest.permission.POST_NOTIFICATIONS
+        if (ContextCompat.checkSelfPermission(context,Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) model.startRecording()
+        else { permissionForRecording = true; permission.launch(permissions.toTypedArray()) }
+    }) { Text(L.s(R.string.msg_record_audio)) } },dismissButton = { JournalTextButton(onClick = { recordConsent = false }) { Text(L.s(R.string.msg_cancel_77df)) } })
     if (convert) AlertDialog(onDismissRequest = { convert = false },title = { Text(L.s(R.string.msg_change_timing_mode_38a6)) },text = { Text(L.s(R.string.msg_this_becomes_a_mixed_session_existing_credit_768a)) },confirmButton = { JournalTextButton(onClick = { convert = false; start() }) { Text(L.s(R.string.msg_convert_continue_2747)) } },dismissButton = { JournalTextButton(onClick = { convert = false }) { Text(L.s(R.string.msg_cancel_77df)) } })
     if (discard) AlertDialog(onDismissRequest = { discard = false },title = { Text(L.s(R.string.msg_discard_unfinished_practice_c660)) },text = { Text(L.s(R.string.msg_this_deletes_the_unfinished_draft_and_its_no_875d)) },confirmButton = { JournalTextButton(onClick = { model.reset(); discard = false }) { Text(L.s(R.string.msg_discard_36ff)) } },dismissButton = { JournalTextButton(onClick = { discard = false }) { Text(L.s(R.string.msg_keep_466f)) } })
 }

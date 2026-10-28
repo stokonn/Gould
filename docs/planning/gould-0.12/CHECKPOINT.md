@@ -92,10 +92,57 @@ verification/backup-v6-host.json; raw logs privately in .gradle/gould012-checks.
 This verifies the Backup v6 + recording repository + media archive host surface
 only; native StudioRecordingTest/StudioBackupTest execution remains PENDING.
 
-Next immediate work: shared service/recording capture lifecycle with truthful
-record states and one microphone owner, then Studio/Previous UI, achievements/
-Profile/widgets/Tux/quote wiring, then native/emulator acceptance. None of those
-unimplemented features may be marked complete.
+### Shared capture/recording lifecycle (ST-01–03) — implemented, host-verified 2026-10-28
+
+RecordingController (new): application-scoped state machine Idle → Preparing →
+Recording → Finalizing → Saved (+ Recoverable). Durable identity (DB row +
+staging file) precedes any sample via LocalRecordingRepository.prepare().
+WriterLock serializes append/finish races between capture loop and stop().
+Sink (AtomicReference) is read atomically each capture-loop iteration.
+selectRate() probes the same rates as MicrophoneController (22050/44100/16000).
+reconcile() delegates to repository for startup metadata-only recovery.
+No auto-start on recovery, reboot or process death.
+
+MicrophoneController: extended with recordingSink (AtomicReference of
+(ShortArray,Int)->Unit), detectionEnabled flag and preferredRate. One AudioRecord;
+detection and recording are separate consumers of the same PCM stream. Recording
+sink fed first each iteration; detection runs only when enabled. No second capture.
+
+SmartPracticeService: dual-action (START / START_RECORDING). Single capture loop;
+combine(practice.running, recording.phase==Recording) watcher keeps service alive
+while either is active. releaseCapture stops mic only when recording is not also
+consuming it. Recording-only mode skips practice.startSmart(). Notification title
+reflects recording state. START_RECORDING companion method added.
+
+OpusApplication: recording lazy property wired to LocalRecordingRepository
+(filesDir/recordings). Startup reconcile() called (metadata only, never capture).
+
+OpusViewModel: recordingState flow, startRecording()/stopRecording() commands.
+AppContext passed as constructor parameter (ViewModel, not AndroidViewModel).
+
+PracticeScreen: Studio header (L.fixed("Studio")), Record audio / Stop recording
+button in bottom bar, recording consent dialog (separate from Smart consent),
+red recording dot indicator, Finish stops recording before review (300ms delay
+for finalize). permissionForRecording flag routes permission result correctly.
+
+Destination enum: PRACTICE label changed "Practice" → "Studio" (route unchanged).
+
+L.kt: added Studio, Recording, Preparing, Finalizing, Previous fixed labels.
+
+Strings EN/CZ: 14 new resources (label_studio, msg_record_audio, msg_stop_recording,
+msg_recording_saved, msg_recording_interrupted, msg_recording_title,
+msg_studio_recording, msg_recording_consent, label_recording, label_preparing,
+label_finalizing, msg_record_error, label_previous, msg_recordings).
+
+Host verification: compileDebugKotlin BUILD SUCCESSFUL. JVM tests 42 suites /
+363 tests / 0 failures / 0 errors / 0 skipped. Lint 0 errors / 147 warnings
+(2 new from new code). Localization check PASS (1118 resources).
+Agent policy check PASS. git diff --check PASS.
+Native instrumentation and emulator execution NOT performed in this batch.
+
+Next: Studio history glyph → Previous route, Previous screen (Practice History +
+Recordings tabs), local WAV player, achievements wiring, Profile 2×2/era/draft,
+both widgets, Tux/quote, metronome/queue-Undo. None complete yet.
 
 Canonical PMP active task gould-0.12-complete, supported CLI (missing feature-state
 not fabricated). Previous main maintenance task was explicitly archived through

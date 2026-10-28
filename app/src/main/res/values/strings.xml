@@ -1122,4 +1122,18 @@
     <string name="discover_connection_unavailable">Online search is unavailable on this connection.</string>
     <string name="discover_results_to_check">More results to explore</string>
   <string name="studio_backup_audio_excluded">Audio files are excluded from journal-only backups. Recording metadata and earned achievements are preserved.</string>
+  <string name="label_studio">Studio</string>
+  <string name="msg_record_audio">Record audio</string>
+  <string name="msg_stop_recording">Stop recording</string>
+  <string name="msg_recording_saved">Recording saved</string>
+  <string name="msg_recording_interrupted">Recording interrupted. Your partial audio is saved for recovery.</string>
+  <string name="msg_recording_title">Recording</string>
+  <string name="msg_studio_recording">Studio recording</string>
+  <string name="msg_recording_consent">Recordings are saved only on this device and never uploaded. Audio is captured continuously until you tap Stop.</string>
+  <string name="label_recording">Recording</string>
+  <string name="label_preparing">Preparing</string>
+  <string name="label_finalizing">Finalizing</string>
+  <string name="msg_record_error">Recording could not be started</string>
+  <string name="label_previous">Previous</string>
+  <string name="msg_recordings">Recordings</string>
 </resources>

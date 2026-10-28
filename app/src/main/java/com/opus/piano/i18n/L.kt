@@ -194,6 +194,11 @@ object L {
         "Available" -> s(R.string.label_available)
         "Medieval" -> s(R.string.era_medieval)
         "Renaissance" -> s(R.string.era_renaissance)
+        "Studio" -> s(R.string.label_studio)
+        "Recording" -> s(R.string.label_recording)
+        "Preparing" -> s(R.string.label_preparing)
+        "Finalizing" -> s(R.string.label_finalizing)
+        "Previous" -> s(R.string.label_previous)
         else -> label
     }
 }

@@ -25,7 +25,7 @@ class MainActivity : androidx.appcompat.app.AppCompatActivity() {
         enableEdgeToEdge()
         setContent {
             val model: OpusViewModel = viewModel(factory = viewModelFactory {
-                initializer { OpusViewModel((application as OpusApplication).repository, createSavedStateHandle(), (application as OpusApplication).practice) }
+                initializer { OpusViewModel((application as OpusApplication).repository, createSavedStateHandle(), (application as OpusApplication).practice, (application as OpusApplication).recording, application) }
             })
             val catalog: CatalogViewModel = viewModel(factory = viewModelFactory {
                 initializer { CatalogViewModel((application as OpusApplication).catalogRepository, createSavedStateHandle()) }

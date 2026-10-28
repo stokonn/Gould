@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 data class LibraryState(val pieces: List<Piece> = emptyList(), val sessions: List<PracticeSession> = emptyList(), val loading: Boolean = true, val parts: List<SessionPart> = emptyList(), val summary: JournalSummary = JournalSummary(), val links:List<SessionPieceLink> = emptyList())
 typealias TimerState = com.opus.piano.practice.PracticeState
 
-class OpusViewModel(private val repository: OpusRepository, private val saved: SavedStateHandle, val practice: com.opus.piano.practice.PracticeCoordinator) : ViewModel() {
+class OpusViewModel(private val repository: OpusRepository, private val saved: SavedStateHandle, val practice: com.opus.piano.practice.PracticeCoordinator, val recording: com.opus.piano.audio.RecordingController, private val appContext: android.content.Context) : ViewModel() {
     val library = repository.journal.map { (pieces, sessions, parts, links) -> LibraryState(pieces, sessions, false, parts, traceOperation("Journal.summary") { summarizeJournal(sessions, parts) },links) }
         .distinctUntilChanged().flowOn(kotlinx.coroutines.Dispatchers.Default)
         .catch { error ->
@@ -22,6 +22,23 @@ class OpusViewModel(private val repository: OpusRepository, private val saved: S
         }.stateIn(viewModelScope, SharingStarted.Eagerly, LibraryState())
     val timer = practice.state
     val message = practice.notice
+    val recordingState = recording.state
+    fun startRecording() = viewModelScope.launch {
+        try {
+            val t = practice.state.value
+            val title = t.selected?.title ?: L.s(R.string.msg_recording_title)
+            val composer = t.selected?.composer ?: ""
+            val rate = com.opus.piano.audio.RecordingController.selectRate()
+            recording.start(rate, title, composer, t.token.takeIf { it.isNotBlank() })
+            com.opus.piano.service.SmartPracticeService.startRecording(appContext)
+        } catch (c: kotlinx.coroutines.CancellationException) { throw c }
+        catch (_: Exception) { practice.notice.value = L.s(R.string.msg_record_error) }
+    }
+    fun stopRecording() = viewModelScope.launch {
+        try { recording.stop() }
+        catch (c: kotlinx.coroutines.CancellationException) { throw c }
+        catch (_: Exception) { practice.notice.value = L.s(R.string.msg_recording_interrupted) }
+    }
     fun select(piece: Piece?) = practice.command { select(piece) }
     fun selectPart(index: Int) { timer.value.parts.getOrNull(index)?.let { p -> select(p.pieceId?.let { Piece(it, p.title, p.composer, catalogWorkId = p.catalogWorkId, musicalEra = p.musicalEra) }) } }
     fun remove(index: Int) = practice.command { remove(index) }
