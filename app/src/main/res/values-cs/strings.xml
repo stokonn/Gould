@@ -264,7 +264,7 @@
   <string name="msg_five_day_totals_labels_show_the_ending_day_01e3">Součty za pět dní · popisek označuje poslední den</string>
   <string name="msg_follow_system_1b16">Podle systému</string>
   <string name="msg_for_now_make_music_your_practice_sessions_ar_474c">Teď je čas na hudbu. Vaše cvičení už se ukládají pro další cestu.</string>
-  <string name="msg_format_1_backups_from_0_6_and_0_7_remain_imp_8590">Zálohy formátů 1–4 lze nadále importovat. Nové zálohy používají formát 5. Zálohy nejsou šifrované.</string>
+  <string name="msg_format_1_backups_from_0_6_and_0_7_remain_imp_8590">Zálohy formátů 1–5 lze nadále importovat. Nové zálohy deníku používají formát 6. Exporty nejsou šifrované.</string>
   <string name="msg_free_practice_524f">Volné cvičení</string>
   <string name="msg_from_your_repertoire_f345">Z vašeho repertoáru</string>
   <string name="msg_full_detail_is_unavailable_showing_saved_inf_b632">Úplné podrobnosti nejsou dostupné. Zobrazují se uložené údaje.</string>
@@ -825,7 +825,7 @@
 <string name="ui101_link_note_hint">Poznámka k dodatečně přidané skladbě se uloží s jejím názvem do poznámky ke cvičení. Čas cvičení se nezmění.</string>
 <string name="ui101_note_limit">Poznámky se nepodařilo uložit. Celková poznámka ke cvičení musí mít nejvýše 10 000 znaků. Zkuste to znovu; text zůstává zde.</string>
 <string name="ui101_search">Hledat v knihovně</string>
-  <string name="backup_v5_note">Verze 5 uchovává deník, identity skladeb, nastavení a původní data obnovy. Importované cvičení zůstane pozastavené; použití mobilních dat musíte znovu povolit.</string>
+  <string name="backup_v5_note">Verze 6 uchovává deník, metadata nahrávek, odznaky, identity skladeb, nastavení a původní data obnovy. Importované cvičení zůstane pozastavené; použití mobilních dat musíte znovu povolit.</string>
   <string name="backup_v5_pending">Váš deník byl obnoven. Některá nastavení je ještě nutné použít. Zkuste to znovu níže; deník znovu neimportujte.</string>
   <string name="backup_v5_retry">Znovu obnovit nastavení</string>
   <string name="backup_storage_failed">Soubor zálohy nelze zapsat nebo přečíst. Zkontrolujte volné místo a přístup k souboru. Původní kopie pro obnovu zůstávají zachovány.</string>
@@ -1125,4 +1125,5 @@
     <string name="discover_group">Soubor</string>
     <string name="discover_connection_unavailable">Online hledání není v tomto připojení dostupné.</string>
     <string name="discover_results_to_check">Další výsledky k prozkoumání</string>
+  <string name="studio_backup_audio_excluded">Zálohy samotného deníku neobsahují zvukové soubory. Metadata nahrávek a získané odznaky zůstávají zachovány.</string>
 </resources>

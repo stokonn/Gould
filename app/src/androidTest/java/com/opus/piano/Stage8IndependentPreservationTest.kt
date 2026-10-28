@@ -75,7 +75,7 @@ class Stage8IndependentPreservationTest {
             assertEquals(BackupJson.hash(expected),BackupJson.hash(sqliteSnapshot(sql,expected)))
         }
         open(name).scoped{db->
-            assertEquals(10,db.openHelper.writableDatabase.version)
+            assertEquals(11,db.openHelper.writableDatabase.version)
             SQLiteDatabase.openDatabase(context.getDatabasePath(name).path,null,SQLiteDatabase.OPEN_READONLY).use{sql->
                 assertEquals(BackupJson.hash(expected),BackupJson.hash(sqliteSnapshot(sql,expected)))
                 sql.rawQuery("PRAGMA integrity_check",null).use{assertTrue(it.moveToFirst());assertEquals("ok",it.getString(0))}

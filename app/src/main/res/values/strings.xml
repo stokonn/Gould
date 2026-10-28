@@ -264,7 +264,7 @@
   <string name="msg_five_day_totals_labels_show_the_ending_day_01e3">Five-day totals · labels show the ending day</string>
   <string name="msg_follow_system_1b16">Follow system</string>
   <string name="msg_for_now_make_music_your_practice_sessions_ar_474c">For now, make music. Your practice sessions are already being saved for the journey ahead.</string>
-  <string name="msg_format_1_backups_from_0_6_and_0_7_remain_imp_8590">Backup formats 1–4 remain importable. New backups use format 5. Backups are not encrypted.</string>
+  <string name="msg_format_1_backups_from_0_6_and_0_7_remain_imp_8590">Backup formats 1–5 remain importable. New journal backups use format 6. Exports are not encrypted.</string>
   <string name="msg_free_practice_524f">Free practice</string>
   <string name="msg_from_your_repertoire_f345">From your repertoire</string>
   <string name="msg_full_detail_is_unavailable_showing_saved_inf_b632">Full detail is unavailable. Showing saved information.</string>
@@ -821,7 +821,7 @@
 <string name="ui101_link_note_hint">Notes for an untimed added piece are labeled with its title in the session note. No practice time is added.</string>
 <string name="ui101_note_limit">Notes could not be saved. Keep the combined session note within 10,000 characters, then retry. Your input remains here.</string>
 <string name="ui101_search">Search Library</string>
-  <string name="backup_v5_note">Version 5 preserves your journal, catalogue identities, settings and original recovery data. Imported practice stays paused; mobile-data permission must be chosen again.</string>
+  <string name="backup_v5_note">Version 6 preserves your journal, recording metadata, achievements, catalogue identities, settings and original recovery data. Imported practice stays paused; mobile-data permission must be chosen again.</string>
   <string name="backup_v5_pending">Your journal has been restored. Some settings still need to be applied. Retry below; do not import the journal again.</string>
   <string name="backup_v5_retry">Retry restoring settings</string>
   <string name="backup_storage_failed">Backup file could not be written or read. Check free storage and file access. Original recovery copies are retained.</string>
@@ -1121,4 +1121,5 @@
     <string name="discover_group">Ensemble</string>
     <string name="discover_connection_unavailable">Online search is unavailable on this connection.</string>
     <string name="discover_results_to_check">More results to explore</string>
+  <string name="studio_backup_audio_excluded">Audio files are excluded from journal-only backups. Recording metadata and earned achievements are preserved.</string>
 </resources>

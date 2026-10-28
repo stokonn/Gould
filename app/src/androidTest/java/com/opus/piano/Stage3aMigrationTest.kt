@@ -93,7 +93,7 @@ class Stage3aMigrationTest {
         val original=seed(name,version)
         var db=open(name)
         try {
-            assertEquals(10,db.openHelper.writableDatabase.version)
+            assertEquals(11,db.openHelper.writableDatabase.version)
             db.openHelper.readableDatabase.query("PRAGMA foreign_key_check").use { assertFalse(it.moveToFirst()) }
             SQLiteDatabase.openDatabase(context.getDatabasePath(name).path,null,SQLiteDatabase.OPEN_READONLY).use { sql ->
                 original.forEach { (table,data) -> assertEquals("v$version $table original bytes",data.second,snapshot(sql,table,data.first)) }
@@ -134,7 +134,7 @@ class Stage3aMigrationTest {
         }
         val db=open(name)
         try {
-            assertEquals(10,db.openHelper.writableDatabase.version)
+            assertEquals(11,db.openHelper.writableDatabase.version)
             assertEquals(uuid,db.personalCatalogueDao().identity("legacy:work:87")!!.canonicalId)
             assertEquals(scope,db.personalCatalogueDao().scope()!!.scope)
             assertEquals("Original title",db.personalCatalogueDao().anchors("piece","7").single().originalTitle)

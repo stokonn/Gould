@@ -56,3 +56,48 @@ SHA25656f7825c9b14acdc43529ce1f976010af063e29a13ff96a2e6894f637b098c68.
 Trusted signer53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e.
 ZIP/private-reference exclusion passed. This foundation APK is not an owner
 acceptance candidate or Stable release; most approved feature wiring is pending.
+
+## Current continuation after published foundation5c32259
+
+Uncommitted continuation is preserved in the feature worktree:
+LocalRecordingRepository plus4 native filesystem/repository cases compile;
+StudioBackup v6 metadata section and backward-compatible v1–v5 import compile.
+Journal restore merges (never deletes) destination recordings/events, preserves
+permanent awards and labels imported excluded audio Missing. Added4 native backup
+cases for explicit exclusions, preserved destination audio, repeated-import event
+dedup, v5 compatibility and transaction interruption (not yet executed). English/
+Czech journal-only disclosure added before export and to success notice; format
+copy updated6 with old resource keys preserved. Native target-version assertions
+changed10→11 without changing historical fixture/data-preservation assertions.
+The streaming media archive (RecordingArchive + MediaBackupRepository) with
+staged hash/size/path-traversal validation, duplicate-entry rejection, no-clobber
+hard-link publication before journal replacement and replayable receipt is
+implemented; the previously flagged Missing-row promotion on verified media
+restore is present in StudioBackup.merge.
+
+### Verified host gate on this continuation (2026-10-28, post-Codex-limit resumption)
+
+Full host command PASSED: clean assembleDebug testDebugUnitTest
+assembleDebugAndroidTest lintDebug (--no-daemon --max-workers=1).
+JVM:42 suites/363 tests/0 failures/0 errors/0 skipped (358 foundation +
+5 new RecordingArchiveTest cases, freshly rerun with --rerun-tasks). Instrumentation
+COMPILED ONLY (not executed). Lint0 errors/145 warnings (foundation baseline132;
+delta is UseKtx/UsableSpace/ModifierParameter style classes from new sources).
+Policy/migration/backup-fixture/localization/paging checks all PASS. Debug APK
+com.opus.piano0.12-dev/code14, SHA256 b5ea9e1def70ea1b1b22988cfa31efc7e9f9494370de5442336685e86eafbc43,
+signer53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e verified
+against the trusted certificate. Source manifest(302 app inputs)
+037cacf9f7fa5ca395a804b30b25642c4bd704fe148a1adf1e61737613d4c38e. Evidence:
+verification/backup-v6-host.json; raw logs privately in .gradle/gould012-checks.
+This verifies the Backup v6 + recording repository + media archive host surface
+only; native StudioRecordingTest/StudioBackupTest execution remains PENDING.
+
+Next immediate work: shared service/recording capture lifecycle with truthful
+record states and one microphone owner, then Studio/Previous UI, achievements/
+Profile/widgets/Tux/quote wiring, then native/emulator acceptance. None of those
+unimplemented features may be marked complete.
+
+Canonical PMP active task gould-0.12-complete, supported CLI (missing feature-state
+not fabricated). Previous main maintenance task was explicitly archived through
+CLI after preserving a snapshot; maintenance remains incomplete/private originals
+protected. Feature foundation checkpoint sources actual5c32259+manifest, not main.

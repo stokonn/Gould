@@ -14,11 +14,11 @@ import org.json.JSONObject
 import java.io.File
 import java.util.UUID
 
-/** v5 critical journal snapshot; historical 1–4 normalization stays in HistoricalBackup. */
+/** v6 personal journal/Studio metadata; v1–v5 remain readable. Audio files are explicitly excluded. */
 class BackupRepository(
     private val context:Context,private val db:OpusDatabase,
     private val preferences:PortablePreferences=PortablePreferences(context,live=(context.applicationContext as? OpusApplication)?.database===db),
-    private val files:BackupFiles=BackupFiles(),private val storageDirectory:File=File(context.filesDir,"personal-backups"),private val phase:(String)->Unit={}
+    private val files:BackupFiles=BackupFiles(),private val storageDirectory:File=File(context.filesDir,"personal-backups"),private val phase:(String)->Unit={}, private val audioDirectory:File=File(context.filesDir,"recordings")
 ) {
     companion object {
         const val MAX_BYTES=BackupJson.MAX_BYTES
@@ -67,7 +67,7 @@ class BackupRepository(
         val budget=Budget()
         val local=db.practiceDao().localNow() ?: LocalAppState()
         fun section(data:JSONObject)=JSONObject().put("version",1).put("data",data).put("sha256",BackupJson.hash(data))
-        val root=JSONObject().put("format","goldberg-backup").put("version",5).put("journalSchema",10).put("createdAt",System.currentTimeMillis())
+        val root=JSONObject().put("format","goldberg-backup").put("version",6).put("journalSchema",11).put("createdAt",System.currentTimeMillis())
         val journal=JSONObject();journalTables.forEach {journal.put(it,rows(it,budget))}
         val identities=JSONObject();identityTables.forEach {identities.put(it,rows(it,budget))}
         val pending=db.backupStateDao().state()?.takeIf{it.status=="pending"}
@@ -75,6 +75,7 @@ class BackupRepository(
         val settings=desired.put("local",JSONObject().put("onboardingDone",local.onboardingDone).put("reminderEnabled",local.reminderEnabled).put("reminderHour",local.reminderHour).put("reminderMinute",local.reminderMinute))
         root.put("sections",JSONObject().put("journal",section(journal)).put("identities",section(identities)).put("preferences",section(settings))
             .put("recovery",section(JSONObject().put("drafts",rawRows("practice_drafts",budget)).put("archives",rawRows("practice_recovery_archives",budget)).put("evidence",evidenceRows(budget)).put("completions",rows("practice_completion_evidence",budget)))))
+        root.getJSONObject("sections").put("studio",section(StudioBackup.document {rows(it,budget)}))
         root.put("sha256",BackupJson.hash(root));root
     }
     suspend fun export():String=withContext(Dispatchers.IO) {
@@ -86,10 +87,10 @@ class BackupRepository(
     suspend fun receive(input:java.io.InputStream):File=withContext(Dispatchers.IO){files.receive(File(directory,"input-${UUID.randomUUID()}.json"),input)}
     private fun sections(root:JSONObject):Map<String,JSONObject> {
         BackupJson.keys(root,setOf("format","version","journalSchema","createdAt","sections","sha256"))
-        require(root.getString("format")=="goldberg-backup" && root.integer("version")==5L && root.integer("journalSchema")==10L && root.integer("createdAt")>0)
+        require(root.getString("format")=="goldberg-backup" && ((root.integer("version")==5L && root.integer("journalSchema")==10L) || (root.integer("version")==6L && root.integer("journalSchema")==11L)) && root.integer("createdAt")>0)
         val expected=root.getString("sha256");root.remove("sha256")
         try {require(BackupJson.hash(root)==expected){"Backup integrity mismatch"}} finally {root.put("sha256",expected)}
-        val sections=root.getJSONObject("sections");BackupJson.keys(sections,setOf("journal","identities","preferences","recovery"))
+        val sections=root.getJSONObject("sections");BackupJson.keys(sections,setOf("journal","identities","preferences","recovery") + if(root.integer("version")==6L)setOf("studio") else emptySet())
         return sections.keys().asSequence().associateWith {key->
             val section=sections.getJSONObject(key);BackupJson.keys(section,setOf("version","sha256","data"));require(section.integer("version")==1L)
             section.getJSONObject("data").also {require(BackupJson.hash(it)==section.getString("sha256")){"Backup section integrity mismatch"}}
@@ -123,7 +124,7 @@ class BackupRepository(
         }
     }
     private suspend fun validate(root:JSONObject):String {
-        if(root.integer("version")!=5L)return legacy.validate(root.toString())
+        if(root.integer("version") !in setOf(5L,6L))return legacy.validate(root.toString())
         val s=sections(root);val settings=s.getValue("preferences")
         BackupJson.keys(settings,setOf("appearance","locale","previousMeteredConsent","local"))
         val portable=JSONObject(settings.toString()).apply{remove("local")};PortablePreferences.validate(portable)
@@ -147,7 +148,9 @@ class BackupRepository(
                 for(table in identityTables)insertRows(stage,table,identities.getJSONArray(table))
                 insertRows(stage,"practice_completion_evidence",recovery.getJSONArray("completions"))
                 insertRecovery(stage,recovery)
+                s["studio"]?.let {studio->val data=StudioBackup.tables(studio);StudioSchema.tables.forEach {table->insertRows(stage,table,data.getJSONArray(table))}}
             }
+            if(s.containsKey("studio")) StudioBackup.validate(stage)
             val uuids=mutableSetOf<String>()
             stage.openHelper.readableDatabase.query("SELECT canonicalId,kind,provider,identityKey FROM personal_catalogue_identities").use {c->while(c.moveToNext()){
                 require(UUID.fromString(c.getString(0)).toString()==c.getString(0) && uuids.add(c.getString(0)))
@@ -180,10 +183,11 @@ class BackupRepository(
         val previous=exportSnapshot();phase("destination_preserved")
         val source=files.publish(File(directory,"import-${BackupJson.hash(root)}.json"),root)
         val sourceHash=BackupJson.hash(root)
-        val isV5=root.integer("version")==5L
+        val isV5=root.integer("version") in setOf(5L,6L)
         val sections=if(isV5)sections(root) else emptyMap()
         db.withTransaction {
             val sql=db.openHelper.writableDatabase
+            val originalUnlocks=db.experienceDao().allUnlocks()
             val oldDraft=BackupState.rawDraft(db)
             val oldArchives=rawRows("practice_recovery_archives")
             val oldLocal=db.practiceDao().localNow() ?: LocalAppState()
@@ -223,6 +227,10 @@ class BackupRepository(
                 legacy.insert(db,legacy.parse(root.toString()))
                 sql.execSQL("INSERT INTO personal_catalogue_state VALUES(1,?)",arrayOf(UUID.randomUUID().toString()))
             }
+            db.experienceDao().unlock(originalUnlocks) // Permanent awards survive restoring an older journal.
+            if(root.integer("version")==6L) StudioBackup.merge(db,sections.getValue("studio"),audioDirectory)
+            // Old imported awards are history; an absent notice never means a fresh unlock.
+            db.openHelper.writableDatabase.execSQL("INSERT OR IGNORE INTO badge_notices SELECT achievementId,unlockedAt,unlockedAt FROM badge_unlocks")
             // Destination archives remain alongside imported archives; retain original IDs in evidence.
             for(i in 0 until oldArchives.length()) {
                 val row=oldArchives.getJSONObject(i);val raw=raw(row)

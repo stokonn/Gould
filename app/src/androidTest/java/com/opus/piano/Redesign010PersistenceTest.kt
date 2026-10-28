@@ -47,7 +47,7 @@ class Redesign010PersistenceTest {
             assertEquals("Existing manual artist",db.personalDao().getSettings()!!.favoriteArtist)
             assertEquals(123456789L,db.experienceDao().allUnlocks().first {it.achievementId=="first_notes"}.unlockedAt)
             assertTrue(db.journalEditsDao().allLinks().isEmpty());assertTrue(db.journalEditsDao().allFavorites().isEmpty())
-            assertEquals(10,db.openHelper.writableDatabase.version)
+            assertEquals(11,db.openHelper.writableDatabase.version)
         } finally {db.close();context.deleteDatabase(name)}
     }
     @Test fun omittedPieceIsIdempotentUntimedAndDoesNotChangeOriginalJournal() = runBlocking {

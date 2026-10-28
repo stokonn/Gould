@@ -64,5 +64,11 @@ Icon reference SHA256 `fb962bdc0ba9798d676e7be86f934a69159d586e22679aea470464b5c
 Internal foundation host gate PASSED:358JVM/0failures/errors/skips, debug/test APK
 compilation, lint0errors/132warnings;390unchanged source inputs. Host DDL10paths
 passed. Native schema/backup/UI/audio/widget/launcher/upgrade acceptance pending.
+
+Backup v6 + recording repository + streaming media archive host gate PASSED
+2026-10-28:363JVM/0failures/errors/skips (5new RecordingArchiveTest), lint0errors/
+145warnings, debug APK signer verified, source manifest bound. Native execution of
+StudioRecordingTest/StudioBackupTest still pending; see verification/backup-v6-host.json.
+Do not mark the audio-backup task complete from host evidence alone.
 See verification/foundation-host.json and CHECKPOINT.md; do not promote the
 whole persistence/audio/icon tasks to complete from these bounded results.

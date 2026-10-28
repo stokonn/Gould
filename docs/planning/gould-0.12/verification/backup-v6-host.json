@@ -1,0 +1,37 @@
+{
+  "checkpoint": "backup-v6-media-archive-host-gate",
+  "branch": "feature/gould-0.12",
+  "ancestor_commit": "5c32259abb144affaa705c3819da6a4cd244646f",
+  "date": "2026-10-28",
+  "host": "fedora, JDK via Gradle 9.3.1 wrapper, --no-daemon --max-workers=1",
+  "command": "./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug",
+  "results": {
+    "jvm_tests": { "suites": 42, "tests": 363, "failures": 0, "errors": 0, "skipped": 0, "new_cases": "RecordingArchiveTest (5): traversal/absolute/unknown-extension rejection, streaming export with explicit media manifest, isolated staging escape, staging retention, duplicate ZIP name rejection" },
+    "instrumentation": "compiled only (assembleDebugAndroidTest BUILD SUCCESSFUL); StudioRecordingTest (4) and StudioBackupTest (4) NOT executed on a device/emulator in this gate",
+    "lint": { "errors": 0, "warnings": 145, "baseline_at_foundation": 132, "delta": "new warnings are UseKtx/UsableSpace/ModifierParameter code-style classes from new sources; no Error-severity findings" },
+    "build": "assembleDebug BUILD SUCCESSFUL; app/build/outputs/apk/debug/app-debug.apk",
+    "apk": {
+      "application_id": "com.opus.piano",
+      "version_name": "0.12-dev",
+      "version_code": 14,
+      "sha256": "b5ea9e1def70ea1b1b22988cfa31efc7e9f9494370de5442336685e86eafbc43",
+      "signer_sha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+      "signer_matches_trusted": true
+    },
+    "policy_checks": {
+      "check_agent_policy.py": "PASS",
+      "check_migrations.py": "PASS (DDL 8/9/10 -> 11)",
+      "check_backup_fixtures.py": "PASS (historical fixtures preserved)",
+      "check_localization.py": "PASS (1104 EN/CZ resources)",
+      "check_history_paging.py": "PASS",
+      "git_diff_check": "PASS"
+    },
+    "source_manifest": { "app_source_inputs": 302, "sha256": "037cacf9f7fa5ca395a804b30b25642c4bd704fe148a1adf1e61737613d4c38e" }
+  },
+  "scope_covered": "Inherited uncommitted work: LocalRecordingRepository, StudioBackup v6 metadata/merge, RecordingArchive streaming codec, MediaBackupRepository staged restore, BackupRepository v6 journal + studio section + permanent-award reassertion, EN/CZ journal-only disclosure, native target-version assertions 10->11.",
+  "not_executed": [
+    "native instrumentation (StudioRecordingTest/StudioBackupTest/migration suites)",
+    "emulator UI/launcher/widget/upgrade/signing acceptance"
+  ],
+  "created by stokonn with love <3"
+}

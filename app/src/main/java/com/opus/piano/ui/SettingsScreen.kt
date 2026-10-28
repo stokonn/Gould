@@ -170,6 +170,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
         } }
         item { Panel {
             SectionTitle(L.s(R.string.msg_backup_restore_3bdd))
+            Text(L.s(R.string.studio_backup_audio_excluded),style=MaterialTheme.typography.bodySmall)
             Text(L.s(R.string.msg_keep_a_local_copy_of_your_journal_profile_an_8f6d))
             JournalPrimaryButton(onClick = { export.launch("Gould-backup.json") }, enabled = !busy) { Text(L.s(R.string.msg_export_backup_6043)) }
             JournalSecondaryButton(onClick = { restore.launch(arrayOf("application/json", "text/plain", "application/octet-stream")) }, enabled = !busy) { Text(L.s(R.string.msg_import_backup_1b40)) }

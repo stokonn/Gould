@@ -137,7 +137,7 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
     fun export(uri: Uri) = backupAction {
         val file = backup.exportSnapshot()
         getApplication<Application>().contentResolver.openOutputStream(uri, "wt")?.use { out->file.inputStream().use {it.copyTo(out)} } ?: error(L.s(R.string.msg_cannot_write_this_file_151a))
-        notice.value = L.s(R.string.msg_backup_exported_6f92)
+        notice.value = L.s(R.string.msg_backup_exported_6f92)+" · "+L.s(R.string.studio_backup_audio_excluded)
     }
     fun inspect(uri: Uri) = backupAction {
         pending = null; preview.value = null
