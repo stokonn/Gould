@@ -163,3 +163,28 @@ All336 inputs unchanged through verification; APK SHA256
 `d851e54cff4526c0c57b10e3ee74f1edb3fdc5d4ad86b0d04fb510ac4726e12c`,
 trusted certificate verified. Prior 13-case gate and earlier failures remain in
 the chronological checkpoint. This is one internal milestone, not a new stage.
+
+
+## Widgets WG-01–04 — implementation in progress, 2026-10-29
+
+- [x] Implement Quick Practice and Weekly Activity platform providers with immutable explicit activity PendingIntents; no practiceRequest/start action or microphone path.
+- [x] Await coordinator recovery before widget/notification navigation; preserve existing active/draft state without selecting over it or creating a session.
+- [x] Implement one transactional, week-bounded persisted ledger projection (Mon–Sun, stored-day compatibility, no expanded part/elapsed/audio double count).
+- [x] Implement local verified display cache with unavailable/stale distinction, old-week dates, coherent total/day values and semantic theme/accent/font resources.
+- [x] Implement API31 responsive RemoteViews and pre31 option sizing; Quick1×1/extended, Weekly compact/2×2/4×2; no tiny chart in constrained/high-font form.
+- [x] Implement bounded data/context observation, six-hour WorkManager refresh and local-date rollover; date/zone/locale/package/boot invalidation, no network.
+- [x] Verify installed SDK appCategory enum: Education does not exist in Android's manifest category. Use supported audio category for this music app; Education remains a distribution category only where actually supported. No Play/store metadata or publication invented.
+- [x] Add 13 host projection/recovery/stale/date/overflow/DST rollover regressions.
+- [x] Complete core host/native checkpoint:388JVM/0failures, lint0errors/166warnings, debug/test APK and7 real API36 WidgetTest cases PASS; actual launcher acceptance remains separate.
+- [ ] Real launcher add/resize/tap/stale/offline/locale/theme/font/date/reboot acceptance and owner visual approval.
+
+No widget acceptance is claimed from source implementation or compilation. The
+one Phase2 stage remains in progress; next source checkpoint follows real checks.
+
+
+Widget core checkpoint host/native PASSED; source manifest348 unchanged. Native7
+cases cover framework inflation and state safety, not actual launcher acceptance.
+See verification/widgets-core-host-native.json. Existing high-risk audio/backup/
+practice source hashes still match the prior15-case native gate; retain that
+bound evidence without redundant reruns during unrelated widget layout edits.
+Full combined mandatory acceptance remains required before Stable publication.

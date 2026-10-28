@@ -1175,4 +1175,19 @@
     <string name="profile_draft_recovery_message">An unfinished profile draft could not be read. The original is retained. Retry, or export its unchanged bytes for recovery. Your saved profile is unchanged.</string>
     <string name="profile_draft_retry">Retry draft recovery</string>
     <string name="profile_draft_export">Export original draft</string>
+    <string name="widget_open_studio">Open Studio</string>
+    <string name="widget_quick_title">Quick Practice</string>
+    <string name="widget_weekly_title">Weekly Activity</string>
+    <string name="widget_unavailable">Unavailable · open Gould to retry</string>
+    <string name="widget_ready">Ready to practice</string>
+    <string name="widget_active">Return to current practice</string>
+    <string name="widget_draft">Unfinished practice · review in Studio</string>
+    <string name="widget_review">Practice ready for review</string>
+    <string name="widget_recovery">Practice recovery needs attention</string>
+    <string name="widget_verified">Verified %1$s</string>
+    <string name="widget_stale">Last verified %1$s · may be out of date</string>
+    <string name="widget_week_of">Week of %1$s</string>
+    <string name="widget_details">%1$s · %2$s</string>
+    <string name="widget_hours_short">%1$s h</string>
+    <string name="widget_accessibility">%1$s. %2$s. %3$s. Opens Studio without starting or resuming practice.</string>
 </resources>

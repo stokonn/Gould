@@ -1,0 +1,80 @@
+{
+  "checkpoint": "widgets-core-host-native",
+  "date_local": "2026-10-29",
+  "branch": "feature/gould-0.12",
+  "base_commit": "80650b1a054533873610d712765fd8161bf93338",
+  "source_manifest": {
+    "count": 348,
+    "sha256": "d3e5fa6c6f1c575773739912a433cc502faf10cad121ee24e9aaa1ef860a61ec",
+    "all_unchanged": true
+  },
+  "host": {
+    "command": "./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --offline --no-daemon --max-workers=1",
+    "result": "BUILD SUCCESSFUL",
+    "jvm": {
+      "suites": 45,
+      "tests": 388,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "lint": {
+      "error": 0,
+      "warning": 166
+    },
+    "instrumentation_compilation": "PASS",
+    "localization": "PASS:1172 EN/CZ resources",
+    "policy": "PASS",
+    "diff_check": "PASS"
+  },
+  "native": {
+    "serial": "emulator-5582",
+    "api": 36,
+    "qemu": 1,
+    "class": "com.opus.piano.WidgetTest",
+    "tests": 7,
+    "failures": 0,
+    "ignored": 0,
+    "seconds": 28.564,
+    "coverage": [
+      "verified cache versus missing/invalid/zero",
+      "strict corruption rejection",
+      "actual RemoteViews apply across sizes/themes/font1 and2",
+      "two provider registrations and immutable distinct activity intents",
+      "bounded recorded-day Room projection without part double count",
+      "ready tap preserves session/draft/audio/controller state",
+      "active and paused taps preserve token/running or paused state without duplicate session"
+    ],
+    "raw_log_sha256": "e044b99c8695c2235258802986a0af0686106030f1e0f65901a91244e09972af"
+  },
+  "apk": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "2dad30e77d4a57ac826f3e4ef3e04946b1cc7fd4d30bacc66d58bdbc99734d92",
+    "package": "com.opus.piano",
+    "version": "0.12-dev",
+    "code": 14,
+    "trusted_signer_sha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+    "private_reference_exclusion": true
+  },
+  "unchanged_high_risk_source": {
+    "all_match_prior_profile_native_gate": true,
+    "files": [
+      "app/src/main/java/com/opus/piano/audio/DurableWav.kt",
+      "app/src/main/java/com/opus/piano/audio/RecordingPublication.kt",
+      "app/src/main/java/com/opus/piano/data/LocalRecordingRepository.kt",
+      "app/src/main/java/com/opus/piano/data/MediaBackupRepository.kt",
+      "app/src/main/java/com/opus/piano/data/BackupRepository.kt",
+      "app/src/main/java/com/opus/piano/data/PracticeRepository.kt"
+    ],
+    "prior_evidence": "profile-durable-host-native.json",
+    "limitation": "Unchanged core evidence is retained; combined real widget/capture performance and final full native acceptance remain pending."
+  },
+  "platform_category": "SDK36 has no education appCategory enum; supported audio used. No store metadata or publication changed.",
+  "pending": [
+    "actual launcher add/resize/tap/provider refresh/rollover/stale/offline/process-death/reboot and rendered widget matrix",
+    "owner visual approval for widgets and all required screens",
+    "Tux and nature quote, remaining Studio/metronome/queue/Undo/notes",
+    "full final native/audio/backup/migration/upgrade/security/UI/performance/release gates"
+  ],
+  "signature": "created by stokonn with love <3"
+}

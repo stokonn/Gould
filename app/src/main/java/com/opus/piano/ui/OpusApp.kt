@@ -82,7 +82,11 @@ private enum class Destination(val label: String, val icon: ImageVector) {
         if (!library.loading && !fullyDrawn) { (context as? android.app.Activity)?.reportFullyDrawn(); fullyDrawn = true }
     }
     val openPractice by (context.applicationContext as com.opus.piano.OpusApplication).openPractice.collectAsStateWithLifecycle()
-    LaunchedEffect(openPractice) { if (openPractice > 0) nav.selectTopLevel("PRACTICE") }
+    val timerState by model.timer.collectAsStateWithLifecycle()
+    val recoveryFailed by model.practice.recoveryFailed.collectAsStateWithLifecycle()
+    LaunchedEffect(openPractice, timerState.ready, recoveryFailed) {
+        if (openPractice > 0 && (timerState.ready || recoveryFailed)) nav.selectTopLevel("PRACTICE")
+    }
     val local by profile.local.collectAsStateWithLifecycle()
     var replay by remember { mutableStateOf(false) }
     if (local != null && (!local!!.onboardingDone || replay)) OnboardingScreen({ profile.finishOnboarding(); replay = false })
@@ -100,7 +104,6 @@ private enum class Destination(val label: String, val icon: ImageVector) {
     // Durable unlock popup: one themed popup per new award; deferred during active play/capture.
     val app = context.applicationContext as com.opus.piano.OpusApplication
     val pendingNotices by app.database.studioDao().pendingNotices().collectAsStateWithLifecycle(initialValue = emptyList())
-    val timerState by model.timer.collectAsStateWithLifecycle()
     val recState by model.recordingState.collectAsStateWithLifecycle()
     val profileDraft by profile.editDraft.collectAsStateWithLifecycle()
     val captureActive = timerState.running || recState.phase == com.opus.piano.audio.RecordingController.Phase.Recording

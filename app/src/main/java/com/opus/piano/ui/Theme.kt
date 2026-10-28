@@ -55,6 +55,15 @@ private fun journalTypography(system: Boolean): Typography {
 }
 @Composable fun OpusTheme(theme: String = "System", typography: String = "Editorial", appearance: com.opus.piano.preferences.Appearance = com.opus.piano.preferences.Appearance(), content: @Composable () -> Unit) {
     val dark=theme=="Dark" || (theme=="System" && androidx.compose.foundation.isSystemInDarkTheme())
+    androidx.compose.runtime.CompositionLocalProvider(LocalAppearance provides appearance) {
+        MaterialTheme(colorScheme=journalColors(dark, appearance),
+            typography=androidx.compose.runtime.remember(typography) { journalTypography(typography=="System") },
+            shapes=Shapes(small=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),medium=androidx.compose.foundation.shape.RoundedCornerShape(if(appearance.cards=="Open") 0.dp else 14.dp),large=androidx.compose.foundation.shape.RoundedCornerShape(20.dp)),content=content)
+    }
+}
+
+/** Shared semantic palette for Compose and platform RemoteViews; no widget-only accent copies. */
+internal fun journalColors(dark: Boolean, appearance: com.opus.piano.preferences.Appearance): ColorScheme {
     val base=if(dark) Palette else LightPalette
     val accent=when(appearance.accent) {
         "Olive" -> if(dark) Color(0xFFB4BF95) else Color(0xFF516344)
@@ -62,11 +71,7 @@ private fun journalTypography(system: Boolean): Typography {
         "Slate" -> if(dark) Color(0xFFA6BACC) else Color(0xFF466179)
         else -> base.primary
     }
-    androidx.compose.runtime.CompositionLocalProvider(LocalAppearance provides appearance) {
-        MaterialTheme(colorScheme=base.copy(primary=accent,secondary=accent,surface=if(appearance.cards=="Open") base.background else base.surface),
-            typography=androidx.compose.runtime.remember(typography) { journalTypography(typography=="System") },
-            shapes=Shapes(small=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),medium=androidx.compose.foundation.shape.RoundedCornerShape(if(appearance.cards=="Open") 0.dp else 14.dp),large=androidx.compose.foundation.shape.RoundedCornerShape(20.dp)),content=content)
-    }
+    return base.copy(primary=accent,secondary=accent,surface=if(appearance.cards=="Open") base.background else base.surface)
 }
 
 /** Decorative palettes stay centralized; never use these for ordinary screen text. */

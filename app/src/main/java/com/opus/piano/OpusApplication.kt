@@ -9,6 +9,7 @@ class OpusApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         com.opus.piano.i18n.L.initialize(this)
+        com.opus.piano.widgets.WidgetRefresh.observe(this)
         kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.IO).launch {
             runCatching { BackupRepository(this@OpusApplication, database).replayPendingPreferences() }
             portablePreferences.restoreDesiredLocale()
@@ -24,6 +25,7 @@ class OpusApplication : Application() {
     override fun onConfigurationChanged(newConfig: android.content.res.Configuration) {
         super.onConfigurationChanged(newConfig)
         com.opus.piano.i18n.L.refresh()
+        com.opus.piano.widgets.WidgetRefresh.request(this)
     }
     // Stage 6: no endpoint, fixture, startup job or Google-profile authorization.
     val community by lazy {
@@ -71,7 +73,11 @@ class OpusApplication : Application() {
     val discoverHistory by lazy { com.opus.piano.data.catalogue.DiscoverHistory(this) }
     val catalogueRepertoire by lazy { com.opus.piano.data.catalogue.CatalogueRepertoire(database) }
     val practiceRepository by lazy { PracticeRepository(database, repository) }
-    val practice by lazy { com.opus.piano.practice.PracticeCoordinator(practiceRepository) }
+    private val practiceDelegate = lazy {
+        com.opus.piano.practice.PracticeCoordinator(practiceRepository).also { com.opus.piano.widgets.WidgetRefresh.watchPractice(this, it) }
+    }
+    val practice by practiceDelegate
+    fun currentPracticeForWidgets(): com.opus.piano.practice.PracticeCoordinator? = if (practiceDelegate.isInitialized()) practice else null
     val recording by lazy { com.opus.piano.audio.RecordingController(LocalRecordingRepository(database, java.io.File(filesDir,"recordings"))) }
     val achievements by lazy { AchievementStore(database) }
     val recordings by lazy { RecordingRepository(database) }

@@ -16,6 +16,10 @@ data class LocalAppState(@PrimaryKey val id: Int = 1, val onboardingDone: Boolea
 data class RecoveryArchive(@PrimaryKey(autoGenerate = true) val id: Long = 0, val payload: String, val updatedAt: Long, val archivedAt: Long)
 @Dao
 interface PracticeDao {
+    @Query("""SELECT * FROM sessions WHERE
+        (practiceDay >= :monday AND practiceDay <= :sunday)
+        OR (completedAt >= :start AND completedAt < :end)""")
+    suspend fun widgetSessions(monday: String, sunday: String, start: Long, end: Long): List<PracticeSession>
     @Query("SELECT * FROM practice_drafts WHERE id=1") suspend fun draft(): PracticeDraft?
     @Upsert suspend fun checkpoint(value: PracticeDraft)
     @Insert suspend fun archive(value: RecoveryArchive)

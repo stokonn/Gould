@@ -333,3 +333,93 @@ and owner visual approval; both widgets next, then Tux/quote and remaining Studi
 metronome/queue/Undo/notes; full real capture/player/backup/migration/seeded upgrade,
 security/signing/performance/release gates. Main/releases unchanged. One Phase2
 stage remains IN PROGRESS; no source-only/host-only acceptance promotion.
+
+
+### Active widget batch and efficient continuation — 2026-10-29
+
+Verified/pushed base80650b1a054533873610d712765fd8161bf93338. Working-tree changes
+implement both required providers: widgets/WidgetProjection, WidgetSnapshot,
+WidgetRenderer, WidgetRefresh and PracticeWidgets; XML layouts/provider metadata,
+immutable explicit per-instance Studio PendingIntents, coordinator-ready navigation,
+transactional week-bounded PracticeDao query, semantic journalColors shared with
+Compose, AppearanceStore.current, application observers and appCategory=audio.
+Installed SDK36 and official Android docs have no appCategory education enum;
+no unsupported manifest flag or storefront update is used. Week values are
+credited session rows, stored-day semantics retained, never expanded parts,
+elapsed or audio time. Missing/invalid cache shows unavailable, stale cache keeps
+its verified week/date. No new dependency, schema migration or backend networking.
+
+New tests: WidgetProjectionTest13 host cases; WidgetTest7 native cases (cache,
+strict corruption/zero distinction, actual RemoteViews inflation across sizes/
+themes/fonts, provider/immutable intent identities, bounded Room projection and
+ready/active/paused zero-auto-start taps). These are source additions, not yet
+claimed executed. Initial widget compile/build/test-APK gate passed before final
+regression additions. Full meaningful-checkpoint host gate now running:
+`.gradle/gould012-checks/widgets-host.log`, tool session65968, command
+`./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug
+--offline --no-daemon --max-workers=1`. Frozen348-input manifest:
+`.gradle/gould012-checks/widgets-source-before.json`. Read completion/failures;
+do not start competing Gradle processes. Native WidgetTest7, launcher add/resize/
+tap/rollover/stale/locale/theme/font/reboot and owner visual approval are pending.
+
+Host emulator remains disposable API36/qemu=1 **emulator-5582**, AVDgould012-profile
+under ignored `.gradle/profile-avds`; it booted with `-gpu lavapipe -feature -Vulkan`,
+1.5GB RAM,2cores, no snapshot/audio/window. Earlier SwiftShader boots segfaulted;
+logs are retained. ADB must always explicitly use this identified emulator serial;
+no physical phone. Current synthetic app is idle with no practice draft after
+Profile confirmed discard. Do not rerun the old Profile typing helper blindly.
+`adb shell cmd appwidget help` reports no shell implementation; actual launcher
+widget binding must use supported UI/native host tooling, not invented commands.
+
+Owner efficiency steering: implement coherent batches. During development use
+`:app:compileDebugKotlin`, targeted `testDebugUnitTest --tests ...` and focused
+native classes as needed. Use complete host gates at meaningful checkpoints;
+retain all high-risk recording/backup/migration/data-integrity regression tests
+and the full final native/emulator/security/migration/UI/release acceptance matrix.
+Do not reread unchanged approved architecture or duplicate unchanged-source gates.
+Preserve one Phase2 stage, routine checkpoint commits/pushes/PMP/Issue41 continuity.
+Latest verified source80650b1 retains375JVM/15native/trusted APK evidence; widget
+work is uncommitted and unaccepted. Issue41 checkpoint6483220816 and canonical
+PMP feature binding preserve that baseline; update them at the widget milestone.
+Next: inspect current host completion; fix genuine failures with targeted checks;
+run WidgetTest and actual launcher verification; checkpoint verified widget source,
+then Tux/quote and remaining Studio/metronome/queue/Undo/notes/full acceptance.
+
+
+Widget checkpoint progress (same frozen348 inputs): JVM45suites/388tests/
+0failures/errors/skips; debug/testAPK compilation PASS. Focused actual API36
+WidgetTest **7/7 PASS** (28.564s): strict disposable cache/privacy/zero distinction,
+real RemoteViews apply for both kinds across small/large/light/dark/font1/2,
+provider registration and immutable per-instance activity identities, bounded Room
+week projection, ready/no-row/no-capture tap and active/paused preservation.
+This is native core evidence, NOT actual launcher/add/resize/widget-host refresh
+or full rendered UI acceptance. Current checkpoint lint is still running; inspect
+`.gradle/gould012-checks/widgets-host.log` before declaring the host gate passed.
+Native raw log `.gradle/gould012-checks/widgets-native.log`; test command used only
+`adb -s emulator-5582 ... -e class com.opus.piano.WidgetTest`.
+Manifest348 SHA256d3e5fa6c6f1c575773739912a433cc502faf10cad121ee24e9aaa1ef860a61ec;
+all hashes unchanged. Candidate debugAPK SHA256
+2dad30e77d4a57ac826f3e4ef3e04946b1cc7fd4d30bacc66d58bdbc99734d92;
+trusted signer53eface4… and private-reference/PMP ZIP exclusion PASS.
+
+
+### Widgets core verified checkpoint — 2026-10-29
+
+The in-flight host gate finished BUILD SUCCESSFUL (4m31s):45suites/388JVM/
+0failures/errors/skips; lint0errors/166warnings; debug/testAPK compilation.
+Native WidgetTest7/7 PASS on emulator-5582/API36/qemu=1 (28.564s). All348 before
+hashes unchanged; source manifestd3e5fa6c6f1c575773739912a433cc502faf10cad121ee24e9aaa1ef860a61ec.
+APK SHA2562dad30e77d4a57ac826f3e4ef3e04946b1cc7fd4d30bacc66d58bdbc99734d92;
+trusted signer verified and private-reference/PMP ZIP exclusion PASS. Native
+coverage/limits: [evidence](verification/widgets-core-host-native.json).
+High-risk writer/publication/recording/media-backup/journal-backup/practice-
+persistence source hashes exactly match the prior verified80650b1 core; no high-
+risk check is skipped for a changed file. Final full combined native/migration/
+backup/microphone/upgrade/security/UI/performance/release gates remain mandatory.
+
+Current next action: actual launcher add both widgets, resize/tap/refresh/date/
+stale/offline/reboot and rendered theme/locale/font checks. Then Tux/quote and
+remaining Studio/metronome/queue/Undo/notes, remaining full acceptance and owner
+visual sign-off. No release or main integration. Do not rerun a full host gate
+for minor unchanged-source inspections; use targeted compile/affected regressions
+until the next meaningful verified batch. Do not repeat completed architecture.

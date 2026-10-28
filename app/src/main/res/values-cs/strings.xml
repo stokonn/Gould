@@ -1179,4 +1179,19 @@
     <string name="profile_draft_recovery_message">Rozpracovaný koncept profilu se nepodařilo přečíst. Originál zůstává zachován. Zkuste obnovu znovu, nebo exportujte původní nezměněná data. Uložený profil zůstává beze změny.</string>
     <string name="profile_draft_retry">Zkusit obnovu znovu</string>
     <string name="profile_draft_export">Exportovat původní koncept</string>
+    <string name="widget_open_studio">Otevřít Studio</string>
+    <string name="widget_quick_title">Rychlé cvičení</string>
+    <string name="widget_weekly_title">Týdenní aktivita</string>
+    <string name="widget_unavailable">Nedostupné · otevřete Gould a zkuste to znovu</string>
+    <string name="widget_ready">Připraveno ke cvičení</string>
+    <string name="widget_active">Zpět k probíhajícímu cvičení</string>
+    <string name="widget_draft">Nedokončené cvičení · zkontrolujte ve Studiu</string>
+    <string name="widget_review">Cvičení je připraveno ke kontrole</string>
+    <string name="widget_recovery">Obnova cvičení vyžaduje pozornost</string>
+    <string name="widget_verified">Ověřeno %1$s</string>
+    <string name="widget_stale">Naposledy ověřeno %1$s · může být neaktuální</string>
+    <string name="widget_week_of">Týden od %1$s</string>
+    <string name="widget_details">%1$s · %2$s</string>
+    <string name="widget_hours_short">%1$s h</string>
+    <string name="widget_accessibility">%1$s. %2$s. %3$s. Otevře Studio bez spuštění nebo obnovení cvičení.</string>
 </resources>

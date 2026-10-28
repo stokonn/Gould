@@ -37,6 +37,7 @@ class AppearanceStore(context: Context) {
     private val prefs=context.getSharedPreferences("goldberg-appearance",Context.MODE_PRIVATE)
     private val mutable=MutableStateFlow(Appearance())
     val state=mutable.asStateFlow()
+    suspend fun current(): Appearance { loaded.await(); return state.value }
     private val loaded=scope.async { gate.withLock {
         fun list(key:String,default:List<String>)=prefs.getString(key,null)?.split(',') ?: default
         val d=Appearance()

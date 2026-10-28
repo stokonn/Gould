@@ -16,7 +16,12 @@ import com.opus.piano.ui.*
 class MainActivity : androidx.appcompat.app.AppCompatActivity() {
     override fun onNewIntent(intent: android.content.Intent) {
         super.onNewIntent(intent)
+        setIntent(intent)
         if (intent.getBooleanExtra("practice",false)) (application as OpusApplication).openPractice.value = System.nanoTime()
+    }
+    override fun onResume() {
+        super.onResume()
+        com.opus.piano.widgets.WidgetRefresh.request(this)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
