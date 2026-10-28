@@ -26,7 +26,7 @@ def add_bridge_ddl(db):
         db.execute(statement)
 
 
-for starting_version in (1, 2, 3, 4, 5, 6, 7, 8, 9):
+for starting_version in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10):
     db = sqlite3.connect(":memory:")
     db.execute("PRAGMA foreign_keys = ON")
     make_schema(db, starting_version)
@@ -69,8 +69,14 @@ for starting_version in (1, 2, 3, 4, 5, 6, 7, 8, 9):
     backup_source=(ROOT / "app/src/main/java/com/opus/piano/data/BackupState.kt").read_text()
     for sql in re.findall(r'"(CREATE [^"\n]+)"',backup_source.split('val ddl=listOf(',1)[1].split('\n    )',1)[0]):
         db.execute(sql)
+    studio_source=(ROOT / "app/src/main/java/com/opus/piano/data/StudioData.kt").read_text()
+    for sql in re.findall(r'db\.execSQL\("([^"\n]+)"\)', studio_source):
+        db.execute(sql)
+    if starting_version >= 3:
+        assert db.execute("SELECT unlockedAt,acknowledgedAt FROM badge_notices WHERE achievementId='first_piece'").fetchone() == (123,123)
+    assert db.execute("SELECT COUNT(*) FROM local_audio").fetchone() == (0,)
     expected = sqlite3.connect(":memory:")
-    for entity in make_schema(expected, 10)["entities"]:
+    for entity in make_schema(expected, 11)["entities"]:
         table = entity["tableName"]
         assert db.execute(f"PRAGMA table_info({table})").fetchall() == expected.execute(f"PRAGMA table_info({table})").fetchall(), table
         assert db.execute(f"PRAGMA index_list({table})").fetchall() == expected.execute(f"PRAGMA index_list({table})").fetchall(), table
@@ -81,4 +87,4 @@ for starting_version in (1, 2, 3, 4, 5, 6, 7, 8, 9):
     db.execute("INSERT OR IGNORE INTO badge_unlocks VALUES('first_piece', 123)")
     db.execute("INSERT OR IGNORE INTO badge_unlocks VALUES('first_piece', 999)")
     assert db.execute("SELECT unlockedAt FROM badge_unlocks").fetchone() == (123,)
-    print(f"PASS v{starting_version} → v10 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests")
+    print(f"PASS v{starting_version} → v11 DDL: legacy data retained, Room export matches; bridge allocation/triggers require Android tests")

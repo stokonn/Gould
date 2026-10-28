@@ -69,9 +69,10 @@ interface OpusDao {
     @Delete suspend fun delete(piece: Piece)
     @Insert suspend fun insert(session: PracticeSession): Long
 }
-@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class, RecoveryArchive::class, SessionPieceLink::class, FavoriteComposer::class, PersonalCatalogueIdentity::class, PersonalCatalogueAnchor::class, PersonalCatalogueState::class, BackupRestoreState::class, RecoveryEvidence::class, CompletionEvidence::class], version = 10, exportSchema = true)
+@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class, RecoveryArchive::class, SessionPieceLink::class, FavoriteComposer::class, PersonalCatalogueIdentity::class, PersonalCatalogueAnchor::class, PersonalCatalogueState::class, BackupRestoreState::class, RecoveryEvidence::class, CompletionEvidence::class, LocalAudio::class, LocalAudioPart::class, AchievementEvent::class, BadgeNotice::class], version = 11, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class OpusDatabase : RoomDatabase() {
+    abstract fun studioDao(): StudioDao
     abstract fun backupStateDao(): BackupStateDao
     abstract fun personalCatalogueDao(): PersonalCatalogueDao
     abstract fun journalEditsDao(): JournalEditsDao
@@ -81,6 +82,9 @@ abstract class OpusDatabase : RoomDatabase() {
     abstract fun catalogDao(): CatalogDao
     abstract fun experienceDao(): ExperienceDao
     companion object {
+        val MIGRATION_10_11 = object : Migration(10, 11) {
+            override fun migrate(db: SupportSQLiteDatabase) = StudioSchema.migrate(db)
+        }
         val MIGRATION_9_10 = object : Migration(9, 10) {
             override fun migrate(db: SupportSQLiteDatabase) { BackupState.install(db) }
         }
@@ -166,7 +170,7 @@ abstract class OpusDatabase : RoomDatabase() {
                 db.execSQL("CREATE TABLE IF NOT EXISTS catalog_cache (cacheKey TEXT NOT NULL PRIMARY KEY, payload TEXT NOT NULL, fetchedAt INTEGER NOT NULL)")
             }
         }
-        val ALL_MIGRATIONS = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10)
+        val ALL_MIGRATIONS = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10, MIGRATION_10_11)
     }
 }
 class OpusRepository(private val db: OpusDatabase, private val achievements: AchievementStore) {

@@ -1,0 +1,22 @@
+{
+  "jvm": {
+    "tests": 358,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "Fatal": 0,
+    "Error": 0,
+    "Warning": 132,
+    "Information": 0
+  },
+  "sourceFiles": 390,
+  "sourceManifestSha256": "4adcc1b35733f0b9fd9369f898ade45e775976bea27d5740e23b14a1b8e1fc1e",
+  "apk": "app/build/outputs/apk/debug/app-debug.apk",
+  "apkSha256": "56f7825c9b14acdc43529ce1f976010af063e29a13ff96a2e6894f637b098c68",
+  "signer": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+  "instrumentation": "compiled only; not executed",
+  "nativeMigration": "not executed",
+  "scope": "internal foundation, not full0.12 acceptance"
+}

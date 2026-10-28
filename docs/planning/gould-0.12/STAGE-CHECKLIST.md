@@ -1,6 +1,6 @@
 # Gould 0.12 — single development stage
 
-Status: **Phase 1 plan prepared; Phase 2 NOT STARTED / awaiting owner approval.**
+Status: **Phase 2 IN PROGRESS — owner-approved complete scope plus mandatory icon.**
 Exactly two main phases; one complete implementation stage. The owner-supplied
 scope is now available; the earlier maintenance placeholder is superseded.
 
@@ -11,7 +11,7 @@ scope is now available; the earlier maintenance placeholder is superseded.
 - [x] Review existing practice/audio/data/backup/navigation/Profile/badge/Home/Tux source and historical approvals.
 - [x] Prepare one complete [architectural review and plan](ARCHITECTURE-AND-PLAN.md), dependencies, risks and acceptance gates.
 - [x] Verify all mandatory handoffs/specs/private visual references in the isolated worktree; protect PNGs from public commits.
-- [ ] Obtain explicit owner approval for Phase 2 and proposed product-rule details.
+- [x] Obtain explicit owner approval for Phase2 and proposed product-rule details; see OWNER-AUTHORIZATION.md.
 
 ## Stage 1 — Complete approved Gould 0.12 scope (Phase 2)
 
@@ -23,7 +23,9 @@ extensions, EN/CZ resources, tests and documentation. Catalogue identity and
 production backend permissions remain unchanged. Exact files and schema are
 recorded as implementation proceeds. Internal batches are not additional stages.
 
-- [ ] Approve technical/product details and establish the feature branch from the verified baseline.
+- [x] Approve technical/product details and establish feature/gould-0.12 from29bb4d1 in the existing isolated worktree.
+- [x] Read icon addendum, inspect reference15, copy both into development worktree and verify SHA-256/private exclusion.
+- [ ] Faithful three-ivory/two-black/gold launcher icon: adaptive layers, monochrome, legacy densities; actual masks/sizes/emulator/upgrade acceptance.
 - [ ] Add tested additive persistence, compatible old-backup import and new journal/audio backup/restore contracts.
 - [ ] Studio rename, credited Smart timing characterization/corrections, truthful detection/interruption states and manual fallback.
 - [ ] One capture pipeline; explicit continuous Record→Stop, safe finalization/recovery/export/delete, separate media duration.
@@ -39,7 +41,8 @@ recorded as implementation proceeds. Internal batches are not additional stages.
 - [ ] Run host/JVM/lint/debug/instrumentation compilation and actual emulator/launcher/UI/data/upgrade/backup gates in the plan.
 - [ ] Synchronize living issue description/checkpoints/Project, PMP, README/changelog/English Wiki and AI handoff with executed evidence.
 - [ ] Deliver source-bound debug APK/path/hash/certificate/report; owner visual/product acceptance for every required surface including both widgets.
-- [ ] Separate owner main integration authorization; separate approved clean production-signed build and stable publication after all gates.
+- [x] Record conditional owner authorization for final main integration and Stable publication, gated on all mandatory checks and acceptance.
+- [ ] After every gate passes, clean production-signed non-debuggable Stable build, trusted upgrade, main/tag/publication and remote asset verification.
 
 Verification: Phase 1 source/reference/inventory checks only. No new 0.12 Gradle,
 JVM, instrumentation, emulator, schema/backup execution or APK. Prior main CI3/3
@@ -49,3 +52,17 @@ Completion: pending. Phase 1 proposal does not mark implementation or acceptance
 Overall historical maintenance remains INCOMPLETE due to protected-data custody.
 
 created by stokonn with love <3
+
+## Phase2 checkpoint — 2026-10-28
+
+Icon reference SHA256 `fb962bdc0ba9798d676e7be86f934a69159d586e22679aea470464b5ca63b37d`; addendum SHA256 `62917de87128aec514bed62208c035197506c53d1fac248395219455ba7e394c`. Both development-worktree copies match originals; reference remains ignored. Phase2 is one stage; no acceptance execution yet.
+
+- [ ] Audio backup disclosure/media integrity/interrupted restore preservation verified.
+- [ ] Genuine distinct recording deduplication, legacy Goldberg eligibility and durable backup-compatible notices verified.
+- [ ] Canonical supported PMP checkpoints bind exact feature commits and source manifests; private history preserved.
+
+Internal foundation host gate PASSED:358JVM/0failures/errors/skips, debug/test APK
+compilation, lint0errors/132warnings;390unchanged source inputs. Host DDL10paths
+passed. Native schema/backup/UI/audio/widget/launcher/upgrade acceptance pending.
+See verification/foundation-host.json and CHECKPOINT.md; do not promote the
+whole persistence/audio/icon tasks to complete from these bounded results.

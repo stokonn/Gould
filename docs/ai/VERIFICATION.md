@@ -1,3 +1,5 @@
+> Phase2 foundation checkpoint2026-10-28: [current implementation](../planning/gould-0.12/CHECKPOINT.md), Issue41/milestone5 InProgress. Source-bound358JVM/0failures/errors/skips; debug/testAPK compilation and lint0errors/132warnings; all390inputs unchanged, signer/ZIP/reference exclusion passed. Instrumentation NOT EXECUTED. Additive schema11/audio/event/icon foundations only; full approved scope and native/data/UI/backup/widget/upgrade/release acceptance PENDING. Canonical PMP supported CLI retains private history and binds the feature SHA explicitly. Main unchanged; no release. Earlier planning/maintenance statuses below are history.
+
 ## Gould 0.12 Phase 1 — October28,2026
 
 Source analysis and actual Git/GitHub/PMP inventory only. All14 v2 PNG hashes

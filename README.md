@@ -2,7 +2,7 @@
 
 [![Android quality](https://github.com/stokonn/Gould/actions/workflows/quality.yml/badge.svg?branch=main)](https://github.com/stokonn/Gould/actions/workflows/quality.yml) [![Backend verification](https://github.com/stokonn/Gould/actions/workflows/community-bff.yml/badge.svg?branch=main)](https://github.com/stokonn/Gould/actions/workflows/community-bff.yml)
 
-Gould is the continuing product name for Goldberg. The verified maintenance source is integrated into main; the latest published application remains **Goldberg 0.11 Stable**. Gould 0.12 features have not started.
+Gould is the continuing product name for Goldberg. The verified maintenance source is integrated into main; the latest published application remains **Goldberg 0.11 Stable**. Gould 0.12 is in active development as one approved stage; it is not released. [Current checklist](docs/planning/gould-0.12/STAGE-CHECKLIST.md) · [Implementation checkpoint](docs/planning/gould-0.12/CHECKPOINT.md) · [Issue #41](https://github.com/stokonn/Gould/issues/41).
 
 A native Android piano practice journal built with Kotlin, Jetpack Compose, Material 3 and Room. Android 8.0+; English and Czech; light and dark themes. Your journal stays local.
 

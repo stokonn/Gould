@@ -102,3 +102,22 @@ Use docs/design/goldberg-0.10/README.md and manifest.json; 01_HOME_APPROVED and 
 ## Legacy Cleanup & Repository Maintenance
 
 Before development or repository maintenance, read [docs/maintenance/LEGACY-CLEANUP.md](docs/maintenance/LEGACY-CLEANUP.md). Follow its documented policy for identifying obsolete code, redundant assets, unused files and technical debt; remove only verified unnecessary components. Preserve user data, migrations, backup formats, release history, legal documentation, signing identity and compatibility-sensitive identifiers. Do not start substantial cleanup during unfinished release verification. Perform safe routine maintenance autonomously, using automated checks and explicitly targeted emulators rather than physical user devices. Document cleanup changes and actual verification in the permanent maintenance record, preserving its history across future Goldberg versions. Do not publish a new application release solely for maintenance without authorization.
+
+## Permanent two-phase Gould workflow — owner approval October28,2026
+
+Exactly two main phases per Gould version: Phase1 Architecture, Review & Planning
+produces one complete architecture/compatibility/visual/test/acceptance plan with
+no application features; explicit owner approval precedes Phase2 Implementation,
+Verification & Release. Phase2 uses one complete development stage, allowing
+internal commits/checkpoints/verification batches. Preserve historical stages.
+Verify required handoffs/private reference availability in the development
+worktree. Maintain the single checklist, issue dashboard/history, Project, PMP
+and truthful AI handoff. Existing data/signing/release/phone controls apply.
+
+Gould0.12 Phase2 is explicitly approved from29bb4d1, with mandatory icon addendum.
+The owner also explicitly authorizes final main integration and Gould0.12Stable
+publication conditionally after ALL mandatory gates and acceptance pass. This is
+already the applicable merge/publication authorization; do not ask redundantly.
+Failure/security blockers/material scope changes stop affected release actions.
+Read docs/planning/gould-0.12/OWNER-AUTHORIZATION.md. No authorization for deleting
+protected historical data or modifying independent PMP is implied.

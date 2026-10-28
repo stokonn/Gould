@@ -1,3 +1,12 @@
+## Gould 0.12 — unreleased, implementation in progress
+
+- Begin the approved single-stage scope and mandatory launcher icon: production
+  adaptive/monochrome and legacy resources are constructed; actual launcher
+  acceptance remains pending.
+- Add internal persistence/audio-recovery/achievement-rule foundations and
+  regression tests; new Studio/backup/widget functionality is not yet complete.
+- [Actual checkpoint and limitations](docs/planning/gould-0.12/CHECKPOINT.md).
+
 ## 0.11 Stable — The Music Database Update
 
 - Integrate the verified catalogue, encyclopedia, offline/cache and Android work.
