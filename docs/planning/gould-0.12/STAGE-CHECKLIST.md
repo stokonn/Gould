@@ -195,3 +195,29 @@ references above to owner visual approval are historical and now require documen
 actual emulator visual/layout/accessibility/screenshots/automated acceptance instead.
 All mandatory functional/data/security/native/signing/upgrade/CI gates remain open
 until proven. No new stage; conditional unattended main/Stable authorization applies.
+
+
+Current visual/widget batch: actual launcher added both providers, verified empty
+week/ready state, resized Weekly4×2 and inspected screenshots. Quick2×1 context
+responsive key correction and Tux/nature integration are compiled, awaiting focused
+native/actual UI verification. Audio/Studio/player/media-backup UI gaps identified
+in CHECKPOINT.md remain mandatory implementation, not cosmetic deferrals.
+
+
+### Recovered visual batch — targeted checkpoint, 2026-10-29
+
+Preserved and completed inherited changes on feature/gould-0.12 from1d4234a.
+Targeted debug/test APK build PASS39s; two actual affected native WidgetTest cases
+PASS on emulator-5582/API36/qemu=1. Trusted certificate verified; debug APK hash
+b81a15a6f76eebdb4e73ed40de57957b4b98ac2fa44af67bb18dda46da1b770b.
+Actual settled Home nature and normal pink aligned Tux screenshots inspected.
+Font recreation now remains About instead of replaying widget Studio navigation;
+Tux dialog itself requires reopening. Initial blank Home capture is not accepted.
+Widget safe initial Studio action, actual2×1 context size and4×2 large-font size
+threshold implemented. Full launcher/offline/resize/reboot/font/theme matrix pending.
+All14 v2 reference hashes match; separate original penguin remains private.
+See verification/visual-recovery-targeted.json. Prior388JVM/7native widget evidence
+is unchanged-source history, not a fresh complete gate for this batch. Remaining
+critical audio/Studio/player/archive and final acceptance gates block publication.
+Next coherent batch: serialize writer lifecycle, fix resumed Activity recording
+start, await finalization at a frozen practice boundary and repair notification Stop.

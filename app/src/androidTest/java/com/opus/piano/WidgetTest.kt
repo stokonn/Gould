@@ -67,12 +67,12 @@ class WidgetTest {
                 val config = Configuration(context.resources.configuration).apply { fontScale = font }
                 val target = context.createConfigurationContext(config)
                 val data = s.copy(theme = if (dark) "Dark" else "Light")
-                for ((width, height) in listOf(48f to 48f, 120f to 52f, 250f to 180f)) {
+                for ((width, height) in listOf(48f to 48f, 120f to 52f, 120f to 90f, 250f to 180f)) {
                     val view = WidgetRenderer.view(target, data, true, 11, width, height).apply(target, FrameLayout(target))
                     assertTrue(view.contentDescription.isNotBlank())
                     if (width < 96) assertEquals(View.GONE, view.findViewById<View>(R.id.widget_text).visibility)
                 }
-                for ((width, height) in listOf(120f to 80f, 140f to 160f, 280f to 230f)) {
+                for ((width, height) in listOf(120f to 80f, 140f to 160f, 280f to 220f)) {
                     val view = WidgetRenderer.view(target, data, false, 12, width, height).apply(target, FrameLayout(target))
                     assertTrue(view.contentDescription.isNotBlank())
                     assertTrue(view.findViewById<TextView>(R.id.widget_value).text.isNotBlank())
@@ -127,6 +127,7 @@ class WidgetTest {
         val audio = app.database.studioDao().allAudio()
         val recording = app.recording.state.value
         tap(41)
+        assertEquals(0L, app.openPractice.value)
         assertEquals(before, app.practice.state.value)
         assertEquals(sessions, app.database.dao().allSessions()); assertEquals(draft, app.database.practiceDao().draft())
         assertEquals(audio, app.database.studioDao().allAudio()); assertEquals(recording, app.recording.state.value)

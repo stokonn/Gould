@@ -1,0 +1,24 @@
+{
+  "base": "1d4234a",
+  "branch": "feature/gould-0.12",
+  "target": "emulator-5582 / API36 / ro.kernel.qemu=1",
+  "build": "assembleDebug assembleDebugAndroidTest --offline --no-daemon --max-workers=1: PASS 39s",
+  "native": "WidgetTest affected responsive inflation + ready tap: 2/2 PASS 6.345s; prior 7-case core evidence remains separate",
+  "apk_sha256": "b81a15a6f76eebdb4e73ed40de57957b4b98ac2fa44af67bb18dda46da1b770b",
+  "certificate_sha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+  "source_manifest_sha256": "4c2a37d7f6b5841db5bdf966265a03d1d3c1047eb472c9cacba197d0ba079ccb",
+  "screenshots_inspected": [
+    "visual-ui/nature-home-settled.png",
+    "visual-ui/tux-normal-final.png",
+    "widget-launcher/both-settled.png",
+    "widget-launcher/weekly-4x2.png"
+  ],
+  "pending": [
+    "Full themed/localized/font widget launcher matrix, offline/reboot/rollover",
+    "Tux2x and quote themed matrix",
+    "Recording lifecycle/service context/finish/notification fixes",
+    "Metronome/queue/Undo/notes, player/recovery/archive UI",
+    "Full mandatory host/native/migration/security/upgrade/CI/release gates"
+  ],
+  "release": "BLOCKED; mandatory functionality and acceptance incomplete; personal visual sign-off waived, emulator QA required"
+}

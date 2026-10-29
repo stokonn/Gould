@@ -47,8 +47,8 @@ object WidgetRenderer {
         listOf(QuickPracticeWidget::class.java to true, WeeklyActivityWidget::class.java to false).forEach { (type, quick) ->
             manager.getAppWidgetIds(ComponentName(context, type)).forEach { id ->
                 val views = if (Build.VERSION.SDK_INT >= 31) {
-                    val sizes = if (quick) listOf(SizeF(48f, 48f), SizeF(120f, 52f), SizeF(250f, 90f), SizeF(250f, 180f))
-                        else listOf(SizeF(120f, 80f), SizeF(140f, 160f), SizeF(280f, 160f), SizeF(280f, 230f))
+                    val sizes = if (quick) listOf(SizeF(48f, 48f), SizeF(120f, 52f), SizeF(120f, 90f), SizeF(250f, 90f), SizeF(250f, 180f))
+                        else listOf(SizeF(120f, 80f), SizeF(140f, 160f), SizeF(280f, 160f), SizeF(280f, 220f))
                     RemoteViews(sizes.associateWith { view(context, snapshot, quick, id, it.width, it.height, forceStale) })
                 } else {
                     val options = manager.getAppWidgetOptions(id)

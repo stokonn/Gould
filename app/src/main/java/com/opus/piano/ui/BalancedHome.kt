@@ -40,7 +40,7 @@ import java.time.*
                 Text(name.takeUnless {it.isBlank()||it=="Musician"} ?: L.s(R.string.ui010_pianist),style=MaterialTheme.typography.headlineLarge.copy(fontSize=MaterialTheme.typography.headlineLarge.fontSize * 1.04f),maxLines=2,overflow=TextOverflow.Ellipsis)
                 Text(L.s(R.string.ui010_home_support),style=MaterialTheme.typography.bodySmall.copy(fontSize=MaterialTheme.typography.bodySmall.fontSize * 1.06f),color=MaterialTheme.colorScheme.onSurfaceVariant)
             }}
-            val quotation:@Composable ()->Unit={JournalCard(Modifier.clickable(onClickLabel=L.s(R.string.ui010_read_quote),role=Role.Button) {quoteExpanded=true},padding=PaddingValues(12.dp)) {
+            val quotation:@Composable ()->Unit={NatureQuoteCard(Modifier.clickable(onClickLabel=L.s(R.string.ui010_read_quote),role=Role.Button) {quoteExpanded=true}) {
                 Row(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
                     Icon(Icons.Outlined.FormatQuote,null,Modifier.size(20.dp),tint=MaterialTheme.colorScheme.primary)
                     Column(verticalArrangement=Arrangement.spacedBy(6.dp),modifier=Modifier.semantics(mergeDescendants=true) {contentDescription=L.s(quote.textResource)+" · "+L.s(R.string.quote_attribution)}) {

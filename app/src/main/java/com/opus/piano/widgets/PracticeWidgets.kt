@@ -10,6 +10,10 @@ import kotlinx.coroutines.launch
 
 abstract class PracticeWidget : AppWidgetProvider() {
     private fun refresh(context: Context) {
+        // Install an explicit safe tap immediately. The framework's XML-only initial
+        // view can otherwise fall back to the app's Home launcher intent while the
+        // verified snapshot is loading. No file/database access in this fast path.
+        runCatching { WidgetRenderer.renderAll(context, null) }
         val pending = goAsync()
         WidgetRefresh.scope.launch {
             try {

@@ -17,7 +17,10 @@ class MainActivity : androidx.appcompat.app.AppCompatActivity() {
     override fun onNewIntent(intent: android.content.Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-        if (intent.getBooleanExtra("practice",false)) (application as OpusApplication).openPractice.value = System.nanoTime()
+        if (intent.getBooleanExtra("practice",false)) {
+            (application as OpusApplication).openPractice.value = System.nanoTime()
+            intent.removeExtra("practice")
+        }
     }
     override fun onResume() {
         super.onResume()
@@ -26,7 +29,9 @@ class MainActivity : androidx.appcompat.app.AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         com.opus.piano.i18n.L.refresh()
-        if (intent.getBooleanExtra("practice",false)) (application as OpusApplication).openPractice.value = System.nanoTime()
+        if (savedInstanceState == null && intent.getBooleanExtra("practice",false))
+            (application as OpusApplication).openPractice.value = System.nanoTime()
+        intent.removeExtra("practice")
         enableEdgeToEdge()
         setContent {
             val model: OpusViewModel = viewModel(factory = viewModelFactory {

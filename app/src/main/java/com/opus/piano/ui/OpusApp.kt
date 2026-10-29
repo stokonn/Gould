@@ -85,7 +85,12 @@ private enum class Destination(val label: String, val icon: ImageVector) {
     val timerState by model.timer.collectAsStateWithLifecycle()
     val recoveryFailed by model.practice.recoveryFailed.collectAsStateWithLifecycle()
     LaunchedEffect(openPractice, timerState.ready, recoveryFailed) {
-        if (openPractice > 0 && (timerState.ready || recoveryFailed)) nav.selectTopLevel("PRACTICE")
+        if (openPractice > 0 && (timerState.ready || recoveryFailed)) {
+            nav.selectTopLevel("PRACTICE")
+            // One-shot navigation: rotation/font/locale recreation must not replay
+            // an old widget tap over the destination the user selected afterward.
+            (context.applicationContext as com.opus.piano.OpusApplication).openPractice.compareAndSet(openPractice, 0L)
+        }
     }
     val local by profile.local.collectAsStateWithLifecycle()
     var replay by remember { mutableStateOf(false) }

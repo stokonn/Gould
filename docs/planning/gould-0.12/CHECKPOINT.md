@@ -448,3 +448,80 @@ matrix only; API37 deferred. Current OWNER-AUTHORIZATION.md and AGENTS.md record
 decision. Do not treat historical personal-sign-off text as a new blocker. No
 critical gate or physical-phone/data/signing restriction is waived. Continue actual
 launcher/widget acceptance from verified0268749 / docs3cdf49d, then remaining scope.
+
+
+### Actual widget launcher and visual batch — 2026-10-29, in progress
+
+On identified API36 emulator-5582, added both providers through real Pixel launcher
+Widgets picker. Live provider refresh showed ready/Free Practice and true empty
+Mon–Sun week of2026-10-26 with0s, all seven day labels and verified timestamp.
+Moved Weekly one grid row and resized to4columns×2rows through actual touch resize
+handles; expanded sessions/day metadata visible. Actual captures inspected:
+widget-launcher/both-settled.png and weekly-4x2.png under ignored checks directory.
+Initial unavailable placeholder was honest; subsequent ready snapshot verified.
+Quick2×1 actual host had room for context, but responsive52dp key hid it. Added
+120×90dp responsive key plus focused regression case; retest pending.
+
+Visual batch: reused existing authorized original quote_nature.png (production
+provenance and SHA256ff0ff48d02ca298ceacec4c99eeb22689c0a12cf1882d9abe8dc8a18aaeae603
+verified; no regeneration/reference pixels). NatureQuoteCard decodes off main,
+keeps semantic accent/source/text and a strong theme scrim with solid fallback.
+Tux uses isolated explicit mono metrics/font features; original ASCII bytes and
+exact signature unchanged. Targeted assembleDebug/assembleDebugAndroidTest PASS
+(58s); focused native inflation and actual Home/Tux/widget visuals in progress.
+
+Remaining source audit found release-critical unfinished paths to complete in the
+next coherent audio/Studio batch, not defer cosmetically: RecordingController
+lifecycle is not mutex-serialized; interrupt drops writer without closing; retained
+sink can append after finalization. Studio Finish uses an unsafe300ms delay instead
+of awaiting finalization. Studio notes/metronome/queue Undo controls absent.
+Previous player prepares on main, lacks true pause/seek/focus/lifecycle handling,
+verified-playback event and recovery action; row observation is not paged despite
+its comment. Media archive repository has no Settings UI entry. All require actual
+implementation/regressions before release; none is accepted from earlier host gates.
+
+
+### Usage-limit recovery — actual1d4234a, 2026-10-29
+
+Actual branch/HEADfeature/gould-0.12@1d4234a matches confirmed remote; no later local
+commit. Preserved all8 inherited modified/untracked visual/widget files and private
+references. Latest Issue41 still open with unattended visual-waiver authorization.
+Widget7/JVM388 prior evidence unchanged; inherited visual targeted build and focused
+RemoteViews1case passed. Actual real launcher both providers+Weekly4×2 captures
+inspected. First XML placeholder tap used Home fallback; provider now installs an
+explicit Studio tap immediately before snapshot I/O (compiled, runtime retest pending).
+
+Recovered Tux normal screenshot is correctly aligned and pink with original ASCII
+and signature. The file named tux-large-en.png is **not Tux evidence**: font change
+replayed the unconsumed widget navigation request and opened Studio. Corrected
+OpusApp to consume openPractice via compareAndSet after routing; added native ready-
+widget assertion. Targeted build now in visual-navigation-targeted-build.log;
+retest two affected WidgetTest methods and actual Home/Tux/widget paths. Preserve
+that failed/misnamed capture as historical diagnostics, never count it as Tux2×.
+
+Additional critical audio gap found: OpusViewModel passes Application context to
+SmartPracticeService.startRecording, whose resumed-LifecycleOwner guard always
+rejects it; returned false was ignored. Thus controller could claim Recording
+without a started microphone. Must pass actual visible Activity context and handle
+FGS failure honestly, alongside controller serialization/close/late-sink/Finish
+awaiting, notification Stop, player/media-backup UI and remaining Studio features.
+All remain release blockers; no current release readiness claim.
+
+
+### Recovered visual batch — targeted checkpoint, 2026-10-29
+
+Preserved and completed inherited changes on feature/gould-0.12 from1d4234a.
+Targeted debug/test APK build PASS39s; two actual affected native WidgetTest cases
+PASS on emulator-5582/API36/qemu=1. Trusted certificate verified; debug APK hash
+b81a15a6f76eebdb4e73ed40de57957b4b98ac2fa44af67bb18dda46da1b770b.
+Actual settled Home nature and normal pink aligned Tux screenshots inspected.
+Font recreation now remains About instead of replaying widget Studio navigation;
+Tux dialog itself requires reopening. Initial blank Home capture is not accepted.
+Widget safe initial Studio action, actual2×1 context size and4×2 large-font size
+threshold implemented. Full launcher/offline/resize/reboot/font/theme matrix pending.
+All14 v2 reference hashes match; separate original penguin remains private.
+See verification/visual-recovery-targeted.json. Prior388JVM/7native widget evidence
+is unchanged-source history, not a fresh complete gate for this batch. Remaining
+critical audio/Studio/player/archive and final acceptance gates block publication.
+Next coherent batch: serialize writer lifecycle, fix resumed Activity recording
+start, await finalization at a frozen practice boundary and repair notification Stop.
