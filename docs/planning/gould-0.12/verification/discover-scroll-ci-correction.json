@@ -1,0 +1,34 @@
+{
+  "base_commit": "02c529851af1192e77c59ff76e01461fb893ef8e",
+  "test_source_sha256": "eff4bb1181955525ed30f63d3ec2a30f638b9b617dac8fef881de6d4133e1dd2",
+  "production_changed": false,
+  "failed_ci": {
+    "run": 40931469588,
+    "tests": 269,
+    "passed": 255,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 13,
+    "failure": "DiscoverEditorialAcceptanceTest automaticSearchAndEditorialJourneysWithPreservedEvidence: Unreachable Oct29,2026",
+    "upgrade": "PASS debug-rebuilt0.10.1/schema8\u219211,37sessions; not published trusted0.11 upgrade"
+  },
+  "fix": "Bounded search reverses at list boundary when virtualized target semantics absent; assertions unchanged",
+  "build": "PASS31s assembleDebugAndroidTest",
+  "isolated": {
+    "serial": "emulator-5590",
+    "avd": "gould012-pristine",
+    "qemu": 1,
+    "sdk": 36,
+    "tests": 1,
+    "passed": 1,
+    "seconds": 151.288,
+    "assertions_before": 2,
+    "assertions_after": 2,
+    "unchanged": true,
+    "screenshot_inspected": "en-light-composer-evidence-expanded.png"
+  },
+  "api26_delta": "3/3 PASS0.317s;28tables/37sessions/1draft/4WAV hashes exact",
+  "full_corrected_ci": "PENDING",
+  "private_evidence": ".gradle/gould012-checks/samsung-blockers/",
+  "signature": "created by stokonn with love <3"
+}

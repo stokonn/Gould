@@ -120,3 +120,35 @@ application/storage/signing identity, protected data or independent PMP changed.
 See verification/samsung-blockers.json for source/artifact/log binding.
 
 created by stokonn with love <3
+
+## Exact-source CI follow-up —02c5298
+
+Required automatic CI3/3 PASS. Full workflow40931469588 acceptance/upgrade job PASS
+(debug-rebuilt0.10.1/schema8→11,37 sessions/prefs/integrity/FK preserved; not a
+trusted published0.11 release-artifact upgrade). Full native job FAILED: canonical
+269 cases,255PASS,1FAIL,13 explicit fixture/probe skips. Failure is Discover
+automaticSearchAndEditorialJourneysWithPreservedEvidence: Unreachable Oct29,2026.
+Preserved frame/tree shows expanded evidence above a virtualized credits list,
+helper stranded at bottom while searching only forward when target semantics are
+absent. Test-only boundary reversal added, assertions unchanged; build PASS31s and isolated
+pristine-AVD journey PASS1/1,151.288s. Corrected expanded composer frame inspected,
+exact date/license present; before/after2 assertions unchanged. Full corrected CI pending. No unchanged retry, no application defect
+inferred solely from test scroll failure, no clean-full-native PASS claimed.
+
+API26 current-source delta3/3 PASS0.317s (media/focus,font metrics,compact marker),
+ALL28 tables/37 sessions/1draft/4WAV hashes exact, integrity/FK PASS. Its already
+upgraded fixture was updated debug→debug compatibly; not a fresh0.11 upgrade.
+Profile5582 retained on disk unchanged; pristine5590 is the disposable test venue.
+
+### Retained finite-layout review (partial; no blanket acceptance)
+
+Inspected four matrix-v3 contact sheets from source1d06f08: EN Light412dp/font1,
+EN Dark320dp/font2, CZ Light360dp/font1.5 and CZ Dark320dp/font2. Home, Profile,
+badges, Studio, notes, queue and Previous captures are retained. Large fonts
+wrap narrow statistics, names and historical date columns heavily; scrollable
+content remains available. Current Previous availability/Library header/metronome
+changes have separate newer acceptance; old captures do not replace that evidence.
+The files named data-storage actually show Settings (normal) or scrolled Settings
+(large), not the Data & Storage screen. They are INVALID for that screen's visual
+acceptance; recapture the actual destination rather than claiming the matrix passed.
+No additional exploratory accessibility scope is introduced.

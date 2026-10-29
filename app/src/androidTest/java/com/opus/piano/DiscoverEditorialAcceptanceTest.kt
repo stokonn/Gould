@@ -79,6 +79,9 @@ class DiscoverEditorialAcceptanceTest {
         inst.waitForIdleSync()
     }
     private fun scrollTo(label:String) {
+        // LazyColumn removes offscreen semantics. A target absent from the tree may
+        // be above us after expansion/scrolling, so reverse at a real list boundary.
+        var searchDirection=AccessibilityNodeInfo.ACTION_SCROLL_FORWARD
         repeat(25) {
             val snapshot=tree()
             val matches=snapshot.filter {it.text?.toString()==label || it.contentDescription?.toString()==label}
@@ -111,8 +114,15 @@ class DiscoverEditorialAcceptanceTest {
             }
             if(target!=null)return
             val bounds=matches.firstOrNull()?.let {Rect().also(actionNode(it)::getBoundsInScreen)}
-            val direction=if(bounds!=null && bounds.top<viewport.top)AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD else AccessibilityNodeInfo.ACTION_SCROLL_FORWARD
-            scroller?.performAction(direction)
+            val direction=when {
+                bounds!=null && bounds.top<viewport.top->AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD
+                bounds!=null && bounds.bottom>viewport.bottom->AccessibilityNodeInfo.ACTION_SCROLL_FORWARD
+                else->searchDirection
+            }
+            if(scroller?.performAction(direction)!=true) {
+                searchDirection=if(direction==AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
+                    AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD else AccessibilityNodeInfo.ACTION_SCROLL_FORWARD
+            }
             Thread.sleep(250);inst.waitForIdleSync()
         }
         // Retain the app frame before ActivityScenario.use closes it during unwinding.
