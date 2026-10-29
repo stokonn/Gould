@@ -386,3 +386,10 @@ pass from the failed253-case run or assumption skips. Discover whole-control
 helper correction needs rerun. Final non-debuggable Stable remains unbuilt/unpublished.
 Active emulator5584/API26; preserved profile5582/API36 stopped, can restart for
 final full UI matrix. No physical phone, data reset, new stage or main integration.
+
+### Full API 36 CI follow-up — 2026-10-29
+
+Exact source `1d06f0830d013ec443071982cf55651d8218ebed` passed the three required automatic CI workflows and the API36 acceptance-subset job in [run40849112564](https://github.com/stokonn/Gould/actions/runs/40849112564). The full native job **FAILED** two widget cases: a preceding actual-microphone test left its own paused practice, violating their empty-fixture precondition. The recording test now resets only its own matching synthetic token in `finally`, preserving actual WAVs and unrelated recovery data. Native test compilation passed; corrected full-suite execution remains pending. Application source and its prior393JVM/affected-native evidence are unchanged. Raw CI logs/reports are retained under ignored `.gradle/gould012-checks/`.
+
+Actual320dp/font2 UI checking is in progress on identified `emulator-5584`/API26. A driver gesture that began over Studio's fixed footer failed to scroll its content; the driver now derives gestures from the observed scrollable viewport. Captures alone are not visual/accessibility acceptance. Remaining full UI/widgets/SAF/process-death/native/security/Stable artifact gates stay open. No main integration, release build, tag or publication.
+

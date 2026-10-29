@@ -35,7 +35,7 @@ class RecordingServiceTest {
         val manualToken=app.practice.state.value.token
         assertTrue(app.practice.state.value.running)
         val sessionsBefore=app.database.dao().allSessions().size
-        ActivityScenario.launch(MainActivity::class.java).use { scenario ->
+        try { ActivityScenario.launch(MainActivity::class.java).use { scenario ->
             var previousId: String? = null
             repeat(2) { take ->
                 SmartPracticeService.awaitReadyForNewTake(app)
@@ -65,6 +65,14 @@ class RecordingServiceTest {
             assertTrue("Stopping audio must preserve manual timing",app.practice.state.value.running)
             app.practice.command { pause() }.join()
             assertEquals(sessionsBefore,app.database.dao().allSessions().size)
+        } } finally {
+            app.recording.stop()
+            SmartPracticeService.awaitReadyForNewTake(app)
+            // Remove only this test's explicitly created practice. Preserve unrelated
+            // recovery data and the actual recorded WAVs used as integrity evidence.
+            if (app.practice.state.value.token == manualToken) {
+                app.practice.command { pause(); reset() }.join()
+            }
         }
     }
     @Test fun recordOnlyOnRecoveredDraftKeepsExactDraftAndDoesNotStartPractice()=runBlocking {
