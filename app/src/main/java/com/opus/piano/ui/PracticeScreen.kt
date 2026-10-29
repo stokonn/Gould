@@ -133,10 +133,15 @@ import com.opus.piano.service.SmartPracticeService
         if(timer.mode!="Manual") Text(L.s(R.string.msg_detected_active_duration_timer_detectedactiv_764f, (duration(timer.detectedActive))))
         ActivityIndicator(if(smart && issue.isNotEmpty()) issue else if(timer.running && timer.smart && timer.status!="Automatically paused") timer.signal else timer.status,timer.running && timer.smart,motion)
         if (recordingState.phase == com.opus.piano.audio.RecordingController.Phase.Recording) {
+            val recordingInk=MaterialTheme.colorScheme.error
             Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)) {
-                androidx.compose.foundation.Canvas(Modifier.size(8.dp)) { drawCircle(color=androidx.compose.ui.graphics.Color(0xFFE53935)) }
-                Text(L.s(R.string.label_recording),style=MaterialTheme.typography.bodySmall,color=androidx.compose.ui.graphics.Color(0xFFE53935))
+                androidx.compose.foundation.Canvas(Modifier.size(8.dp)) { drawCircle(color=recordingInk) }
+                Text(L.s(R.string.studio_recording_duration,duration(recordingState.durationMillis)),style=MaterialTheme.typography.bodySmall,color=recordingInk)
             }
+        } else if (recordingState.phase == com.opus.piano.audio.RecordingController.Phase.Preparing) {
+            Text(L.s(R.string.studio_recording_preparing),style=MaterialTheme.typography.bodySmall)
+        } else if (recordingState.phase == com.opus.piano.audio.RecordingController.Phase.Recoverable) {
+            Text(L.s(R.string.msg_recording_interrupted),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.error)
         } else if (recordingState.phase == com.opus.piano.audio.RecordingController.Phase.Saved) {
             Text(L.s(R.string.msg_recording_saved),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.primary)
         }
@@ -169,7 +174,7 @@ import com.opus.piano.service.SmartPracticeService
             queue.forEachIndexed { position, i ->
                 val p = timer.parts[i]
                 Column {
-                    JournalTextButton(onClick = { model.selectPart(i) }, Modifier.fillMaxWidth()) {
+                    JournalTextButton(onClick = { model.selectPart(i) }, Modifier.fillMaxWidth().semantics { selected = i == timer.active }) {
                         Text(L.s(R.string.msg_if_i_timer_active_else_p_title_duration_p_du_9c1d,
                             if (i == timer.active) "▶ " else "", p.displayTitle, duration(p.durationMillis)))
                     }
@@ -190,13 +195,13 @@ import com.opus.piano.service.SmartPracticeService
         }
     }
     }
-    if (privacy) AlertDialog(onDismissRequest = { privacy = false },title = { Text(L.s(R.string.msg_listen_during_practice_cc91)) },text = { Text(L.s(R.string.msg_goldberg_analyzes_ambient_microphone_sound_l_7f65)) },confirmButton = { JournalTextButton(onClick = {
+    if (privacy) AlertDialog(onDismissRequest = { privacy = false },title = { Text(L.s(R.string.msg_listen_during_practice_cc91)) },text = { Text(L.s(R.string.msg_goldberg_analyzes_ambient_microphone_sound_l_7f65),Modifier.heightIn(max=280.dp).verticalScroll(rememberScrollState())) },confirmButton = { JournalTextButton(onClick = {
         privacy = false
         val permissions = mutableListOf(Manifest.permission.RECORD_AUDIO)
         if (Build.VERSION.SDK_INT >= 33) permissions += Manifest.permission.POST_NOTIFICATIONS
         permission.launch(permissions.toTypedArray())
     }) { Text(L.s(R.string.msg_enable_listening_d7de)) } },dismissButton = { JournalTextButton(onClick = { privacy = false }) { Text(L.s(R.string.msg_cancel_77df)) } })
-    if (recordConsent) AlertDialog(onDismissRequest = { recordConsent = false },title = { Text(L.s(R.string.msg_record_audio)) },text = { Text(L.s(R.string.msg_recording_consent)) },confirmButton = { JournalTextButton(onClick = {
+    if (recordConsent) AlertDialog(onDismissRequest = { recordConsent = false },title = { Text(L.s(R.string.msg_record_audio)) },text = { Text(L.s(R.string.msg_recording_consent),Modifier.heightIn(max=280.dp).verticalScroll(rememberScrollState())) },confirmButton = { JournalTextButton(onClick = {
         recordConsent = false
         val permissions = mutableListOf(Manifest.permission.RECORD_AUDIO)
         if (Build.VERSION.SDK_INT >= 33) permissions += Manifest.permission.POST_NOTIFICATIONS

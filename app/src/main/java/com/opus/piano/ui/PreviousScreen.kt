@@ -97,6 +97,11 @@ import java.io.File
     var operationFailed by remember { mutableStateOf(false) }
     var busy by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
+    var reviewId by rememberSaveable { mutableStateOf<Long?>(null) }
+    val reviewed by produceState<Pair<PracticeSession,List<SessionPart>>?>(null,reviewId) {
+        value = reviewId?.let { id -> app.database.practiceDao().session(id)?.let { it to app.database.practiceDao().historyParts(listOf(id)) } }
+    }
+    reviewed?.let { HistoricalReview(it.first,it.second) { reviewId = null } }
     DisposableEffect(owner,player) {
         val observer = androidx.lifecycle.LifecycleEventObserver { _,event ->
             if (event == androidx.lifecycle.Lifecycle.Event.ON_STOP) player.pause()
@@ -134,20 +139,32 @@ import java.io.File
         item { JournalTextButton(onClick = { player.stop(); reload() }, enabled = !loading && !busy) { Text(L.s(R.string.practice_retry)) } }
         if (!loading && !failed && visible.isEmpty()) item { Text(L.s(R.string.msg_no_sessions_yet_your_practice_will_appear_he_37e7)) }
         items(visible,key = { it.id }) { audio ->
+            val associations by produceState<List<LocalAudioPart>>(emptyList(),audio.id,audio.state) {
+                value = app.database.studioDao().audioPartPreview(audio.id,6)
+            }
+            val session by produceState<PracticeSession?>(null,audio.id,audio.sessionToken) {
+                value = audio.sessionToken?.let { app.database.practiceDao().completed(it) }
+            }
             JournalCard {
                 Column(verticalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
                     Text(audio.title.ifBlank { L.s(R.string.msg_recording_title) },style = MaterialTheme.typography.titleMedium)
                     if (audio.composer.isNotBlank()) Text(audio.composer,style = MaterialTheme.typography.bodySmall)
+                    if (associations.isNotEmpty()) Text(L.s(R.string.studio_recorded_pieces,
+                        associations.take(5).map { if(it.pieceKey=="free") L.s(R.string.msg_free_practice_524f) else it.title }.distinct().joinToString(" · ") + if(associations.size>5) " …" else ""),style=MaterialTheme.typography.bodySmall)
+                    session?.let { related -> JournalTextButton(onClick = { player.pause(); reviewId = related.id }) { Text(L.s(R.string.studio_view_practice)) } }
                     Text(localDateTime(audio.createdAt),style = MaterialTheme.typography.bodySmall,color = MaterialTheme.colorScheme.onSurfaceVariant)
                     if (audio.durationMillis > 0) Text(duration(audio.durationMillis),style = MaterialTheme.typography.labelMedium)
-                    if (audio.state != "Saved") Text(L.s(R.string.msg_recording_interrupted),color = MaterialTheme.colorScheme.error)
+                    if (audio.state != "Saved") {
+                        Text(L.s(R.string.msg_recording_interrupted),color = MaterialTheme.colorScheme.error)
+                        Text(L.s(R.string.studio_recovery_export_note),style=MaterialTheme.typography.bodySmall)
+                    }
                     Row(horizontalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
                         if (audio.state == "Saved") IconButton(onClick = { player.play(audio.id) },enabled = !busy) {
                             Icon(if (playback.id == audio.id && playback.playing) Icons.Outlined.Pause else Icons.Outlined.PlayArrow,
                                 L.s(if (playback.id == audio.id && playback.playing) R.string.msg_pause_7819 else R.string.studio_play))
                         }
-                        IconButton(onClick = { exportItem = audio; exportLauncher.launch("Gould-recording-${audio.id}.wav") },enabled = !busy) {
-                            Icon(Icons.Outlined.FileDownload,L.s(R.string.studio_export_original))
+                        IconButton(onClick = { exportItem = audio; exportLauncher.launch("Gould-recording-${audio.id}.wav"+if(audio.state=="Saved") "" else ".part") },enabled = !busy) {
+                            Icon(Icons.Outlined.FileDownload,L.s(if(audio.state=="Saved") R.string.studio_export_original else R.string.studio_export_recovery))
                         }
                         IconButton(onClick = { deleting = audio },enabled = !busy) { Icon(Icons.Outlined.Delete,L.s(R.string.msg_delete_f6fd)) }
                     }
@@ -168,6 +185,7 @@ import java.io.File
                                 onValueChange = { player.seek(it.toLong()) },valueRange = 0f..playback.duration.toFloat(),
                                 modifier = Modifier.semantics { contentDescription = L.s(R.string.studio_seek) })
                         }
+                        if (playback.blockedByCapture) Text(L.s(R.string.studio_playback_capture_blocked),color=MaterialTheme.colorScheme.error)
                         if (playback.failed) Text(L.s(R.string.msg_recording_interrupted),color = MaterialTheme.colorScheme.error)
                     }
                 }

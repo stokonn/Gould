@@ -111,10 +111,14 @@ private enum class Destination(val label: String, val icon: ImageVector) {
     val pendingNotices by app.database.studioDao().pendingNotices().collectAsStateWithLifecycle(initialValue = emptyList())
     val recState by model.recordingState.collectAsStateWithLifecycle()
     val profileDraft by profile.editDraft.collectAsStateWithLifecycle()
-    val captureActive = timerState.running || recState.phase == com.opus.piano.audio.RecordingController.Phase.Recording
+    val captureActive = timerState.running || recState.phase in setOf(com.opus.piano.audio.RecordingController.Phase.Preparing, com.opus.piano.audio.RecordingController.Phase.Recording, com.opus.piano.audio.RecordingController.Phase.Finalizing)
     var shownNotice by remember { mutableStateOf<com.opus.piano.data.BadgeNotice?>(null) }
     val popupScope = rememberCoroutineScope()
-    fun acknowledge(notice: com.opus.piano.data.BadgeNotice) { popupScope.launch { kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { app.database.studioDao().acknowledge(notice.achievementId, System.currentTimeMillis()) } } }
+    fun acknowledge(notice: com.opus.piano.data.BadgeNotice) { popupScope.launch {
+        try { kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { app.database.studioDao().acknowledge(notice.achievementId,System.currentTimeMillis()) } }
+        catch (c: kotlinx.coroutines.CancellationException) { throw c }
+        catch (_: Exception) { model.practice.notice.value = L.s(R.string.studio_badge_dismiss_retry) }
+    } }
     LaunchedEffect(pendingNotices, captureActive, profileDraft) {
         if (shownNotice == null && !captureActive && profileDraft == null) shownNotice = pendingNotices.firstOrNull()
     }

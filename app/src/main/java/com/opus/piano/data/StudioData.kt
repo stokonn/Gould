@@ -49,7 +49,9 @@ interface StudioDao {
     @Update suspend fun updateAudio(value: LocalAudio)
     @Query("DELETE FROM local_audio WHERE id=:id") suspend fun deleteAudio(id: String)
     @Insert(onConflict = OnConflictStrategy.IGNORE) suspend fun associate(value: LocalAudioPart)
+    @Upsert suspend fun capturedAssociation(value: LocalAudioPart)
     @Query("SELECT * FROM local_audio_parts WHERE recordingId=:id ORDER BY offsetSamples") suspend fun audioParts(id: String): List<LocalAudioPart>
+    @Query("SELECT * FROM local_audio_parts WHERE recordingId=:id ORDER BY offsetSamples LIMIT :limit") suspend fun audioPartPreview(id: String, limit: Int): List<LocalAudioPart>
     @Insert(onConflict = OnConflictStrategy.IGNORE) suspend fun event(value: AchievementEvent): Long
     @Query("SELECT * FROM achievement_events ORDER BY occurredAt,eventKey") suspend fun events(): List<AchievementEvent>
     @Insert(onConflict = OnConflictStrategy.IGNORE) suspend fun notice(value: BadgeNotice)

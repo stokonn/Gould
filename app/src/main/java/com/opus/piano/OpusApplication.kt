@@ -75,13 +75,27 @@ class OpusApplication : Application() {
     val practiceRepository by lazy { PracticeRepository(database, repository) }
     private val practiceDelegate = lazy {
         com.opus.piano.practice.PracticeCoordinator(practiceRepository).also {
+            val coordinator = it
+            suspend fun audioMetadata(block: suspend () -> Unit) {
+                try { block() }
+                catch (c: kotlinx.coroutines.CancellationException) { throw c }
+                catch (_: Exception) {
+                    recording.interrupt("AssociationStorage")
+                    coordinator.notice.value = com.opus.piano.i18n.L.s(com.opus.piano.R.string.msg_recording_interrupted)
+                }
+            }
             it.finishRecording = { recording.stop() }
+            it.selectionChanged = { part -> audioMetadata { recording.associate(part) } }
+            it.sessionStarted = { token -> audioMetadata { recording.linkSession(token) } }
             com.opus.piano.widgets.WidgetRefresh.watchPractice(this, it)
         }
     }
     val practice by practiceDelegate
     fun currentPracticeForWidgets(): com.opus.piano.practice.PracticeCoordinator? = if (practiceDelegate.isInitialized()) practice else null
-    val localPlayback by lazy { com.opus.piano.audio.LocalPlaybackController(this, LocalRecordingRepository(database, java.io.File(filesDir,"recordings"))) }
+    val localPlayback by lazy { com.opus.piano.audio.LocalPlaybackController(this, LocalRecordingRepository(database, java.io.File(filesDir,"recordings"))) {
+        recording.state.value.phase !in setOf(com.opus.piano.audio.RecordingController.Phase.Preparing,com.opus.piano.audio.RecordingController.Phase.Recording) &&
+            !(practice.state.value.running && practice.state.value.smart) && !com.opus.piano.service.SmartPracticeService.captureActive.value
+    } }
     val metronome by lazy { com.opus.piano.audio.MetronomeController(this) }
     val recording by lazy { com.opus.piano.audio.RecordingController(LocalRecordingRepository(database, java.io.File(filesDir,"recordings"))) }
     val achievements by lazy { AchievementStore(database) }

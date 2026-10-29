@@ -12,12 +12,14 @@ import java.util.concurrent.atomic.AtomicLong
 /** Application owner of a bounded AudioTrack loop. Stops on focus/route/lifecycle loss;
  * never starts automatically and never writes to the journal or capture pipeline. */
 class MetronomeController(context: Context) {
-    data class State(val bpm: Int = 80, val beats: Int = 4, val playing: Boolean = false, val failed: Boolean = false)
+    data class State(val bpm: Int = 80, val beats: Int = 4, val playing: Boolean = false, val failed: Boolean = false,
+        val starting: Boolean = false, val appliedBpm: Int = 80, val appliedBeats: Int = 4)
     private val app = context.applicationContext
     private val manager = app.getSystemService(AudioManager::class.java)
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private val mutex = Mutex()
     private val generation = AtomicLong()
+    private val requested = java.util.concurrent.atomic.AtomicBoolean(false)
     private val mutable = MutableStateFlow(State())
     val state = mutable.asStateFlow()
     private var track: AudioTrack? = null
@@ -28,10 +30,12 @@ class MetronomeController(context: Context) {
     }
     fun configure(bpm: Int, beats: Int) {
         mutable.value = mutable.value.copy(bpm = bpm.coerceIn(40,240), beats = beats.coerceIn(1,12))
-        if (mutable.value.playing) start()
+        if (requested.get()) start()
     }
     fun start() {
+        requested.set(true)
         val request = generation.incrementAndGet()
+        mutable.value = mutable.value.copy(starting=true,failed=false)
         scope.launch {
             mutex.withLock {
                 cleanup()
@@ -61,19 +65,24 @@ class MetronomeController(context: Context) {
                     ContextCompat.registerReceiver(app, noisy, IntentFilter(AudioManager.ACTION_AUDIO_BECOMING_NOISY), ContextCompat.RECEIVER_NOT_EXPORTED)
                     routeRegistered = true
                     candidate.play()
-                    mutable.value = mutable.value.copy(playing = true, failed = false)
+                    mutable.update { current -> if (request == generation.get()) current.copy(playing=true,failed=false,starting=false,
+                        appliedBpm=settings.bpm,appliedBeats=settings.beats) else current }
                 } catch (error: Exception) {
                     android.util.Log.e("GouldMetronome", "Audio output failed", error)
                     if (track !== candidate) runCatching { candidate?.release() }
                     cleanup()
-                    mutable.value = mutable.value.copy(playing = false, failed = true)
+                    if (request == generation.get()) {
+                        requested.set(false)
+                        mutable.value = mutable.value.copy(playing=false,starting=false,failed=true)
+                    }
                 }
             }
         }
     }
     fun stop() {
+        requested.set(false)
         generation.incrementAndGet()
-        mutable.value = mutable.value.copy(playing = false)
+        mutable.value = mutable.value.copy(playing=false,starting=false)
         scope.launch { mutex.withLock { cleanup() } }
     }
     private fun cleanup() {

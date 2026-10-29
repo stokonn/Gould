@@ -1,6 +1,6 @@
-# Goldberg privacy notice — 0.11
+# Gould privacy notice — 0.12
 
-**Updated October 27, 2026.** This notice describes the local application and the owner-authorized read-only catalogue service. It does not authorize Google backend authentication, community participation or collection of personal practice data.
+**Updated October 29, 2026.** This notice describes the local application and the owner-authorized read-only catalogue service. It does not authorize Google backend authentication, community participation or collection of personal practice data.
 
 ## Contact and scope
 
@@ -12,15 +12,15 @@ Goldberg stores repertoire, profile/avatar, practice history, notes, settings, b
 
 Goldberg does not add advertising, behavioural analytics, session replay or a crash-reporting SDK to the Android app. Infrastructure providers can still process operational metadata as described below. Bundled fonts make no web-font requests. App reminders are local and optional; they do not start microphone capture.
 
-Smart Practice analyzes short-lived microphone samples on the device only after you explicitly start it, including during an active session while the device is locked or another app is open. Ambient sound may include voices. Goldberg does not save raw audio, upload it, transcribe speech or identify compositions. Its bounded memory buffer is reused and cleared when capture ends. Explicit pause or finish releases capture; automatic silence pauses continue listening. Detection is experimental and Android permissions or power controls can interrupt it.
+Smart Practice analyzes short-lived microphone samples on the device only after you explicitly start it, including while locked or in another app. Ambient sound may include voices. Analysis alone does not save audio, transcribe speech or identify compositions. Its bounded buffer is reused and cleared when capture ends. The separate explicit Record audio action saves continuous mono PCM/WAV in private local storage. Recordings are never uploaded automatically. Pause stops practice credit while an explicit recording continues; Stop recording or Finish ends that recording. Automatic silence pauses continue Smart listening. Android permissions, routes, storage or power controls can interrupt capture; interrupted original bytes are retained for explicit recovery/export, never automatic microphone resumption. Detection is experimental.
 
 ## Local files, exports and recovery
 
 Personal data remains in app storage until you edit/delete it, replace data through a confirmed restore, clear app storage or uninstall. Restore can retain destination snapshots, original draft/recovery bytes and completion evidence to prevent data loss or duplicate credit. Those retained recovery copies are not automatically deleted on a fixed timetable; explicit later management, clearing app storage or uninstalling is needed. Deleting a current record is not a promise that every recovery copy or previously exported file is erased.
 
-Goldberg 0.11 portable format-5 backups include personal journal/settings data and practice draft/recovery material. Google credentials, administrator privileges, device permissions and network credentials are excluded. Community contribution drafts are separate local data and are not submitted merely because a backup is made. Android automatic backup is disabled.
+Gould 0.12 format-6 JSON backups include journal/settings, practice draft/recovery material, recording metadata and earned event evidence, while excluding audio file bytes. Formats 1–5 remain importable. An explicitly chosen media ZIP also includes private saved and recoverable recording bytes, validates hashes before restore, and retains durable recovery receipts. Personal audio is separate from disposable caches and is deleted only by an explicit user deletion; that action does not erase previously exported copies or earned achievements. Google credentials, administrator privileges, device permissions and network credentials are excluded. Community contribution drafts are separate local data and are not submitted merely because a backup is made. Android automatic backup is disabled.
 
-JSON backups and CSV exports are unencrypted files sent to the document provider you choose; that provider may synchronize them elsewhere. CSV is not a restorable backup. Keep independent copies before restoration. Deleting app data does not delete exports held by your document provider or its retained copies. Downloaded catalogue/media caches are separate from critical journal data, can be refreshed or evicted, and can be cleared through app controls.
+JSON backups, CSV exports and audio ZIP archives are unencrypted files sent to the document provider you choose; that provider may synchronize them elsewhere. CSV is not a restorable backup. Keep independent copies before restoration. Deleting app data does not delete exports held by your document provider or its retained copies. Downloaded catalogue/media caches are separate from critical journal data, can be refreshed or evicted, and can be cleared through app controls.
 
 ## Online Goldberg catalogue
 

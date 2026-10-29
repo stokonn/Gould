@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import shlex
 import sqlite3
 import subprocess
 import time
@@ -24,6 +25,7 @@ parser.add_argument('--startup-runs', type=int, choices=range(0,31), default=0, 
 parser.add_argument('--candidate', type=Path, required=True)
 parser.add_argument('--output', type=Path, required=True)
 parser.add_argument('--seed-disposable', action='store_true', required=True)
+parser.add_argument('--root-fresh-emulator', action='store_true', help='Published trusted 0.11 -> 0.12 only; require an empty API26/36 AVD before root access')
 a = parser.parse_args()
 if not re.fullmatch(r'emulator-\d+', a.serial):
     parser.error('Only emulator-NNNN is allowed')
@@ -31,17 +33,40 @@ base = [shutil.which('adb') or str(Path(os.environ.get('ANDROID_HOME') or os.env
 def adb(*args, **kwargs):
     return subprocess.check_output(base + list(args), **kwargs)
 assert adb('shell', 'getprop', 'ro.kernel.qemu').strip() == b'1'
+assert adb('shell','getprop','ro.build.version.sdk').strip() in {b'26',b'36'}, 'Only the approved API26/36 matrix is allowed'
+if a.root_fresh_emulator:
+    assert a.baseline_version=='0.11' and a.baseline_schema==10 and a.expected_schema==11
+    assert hashlib.sha256(a.baseline.read_bytes()).hexdigest()=='290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6', 'Published baseline digest mismatch'
+    sdk=Path(os.environ.get('ANDROID_HOME') or os.environ.get('ANDROID_SDK_ROOT') or Path.home()/'Android/Sdk')/'build-tools/36.0.0'
+    for apk in (a.baseline,a.candidate):
+        report=subprocess.check_output([str(sdk/'apksigner'),'verify','--print-certs',str(apk)],text=True)
+        assert 'certificate SHA-256 digest: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e' in report
+    assert not adb('shell','pm','list','packages','com.opus.piano').strip(), 'Root seeding requires a fresh AVD; preserve any existing installation'
+    adb('root');adb('wait-for-device')
+    assert adb('shell','id','-u').strip()==b'0', 'Root unavailable; do not substitute a debuggable baseline'
+def app_command(*args):
+    if a.root_fresh_emulator:
+        return base+['exec-out','cd /data/user/0/com.opus.piano && '+shlex.join(args)]
+    return base+['exec-out','run-as','com.opus.piano',*args]
+def app_run(*args):
+    return subprocess.check_output(app_command(*args))
+def restore_fixture_ownership():
+    if a.root_fresh_emulator:
+        uid=adb('shell','stat','-c','%u','/data/user/0/com.opus.piano').decode().strip()
+        assert re.fullmatch(r'[0-9]+',uid) and int(uid)>=10000
+        adb('shell',f'chown -R {uid}:{uid} /data/user/0/com.opus.piano && restorecon -RF /data/user/0/com.opus.piano')
+
 a.output.mkdir(parents=True, exist_ok=True)
 def stop():
     adb('shell', 'am', 'force-stop', 'com.opus.piano')
 def launch():
     adb('shell', 'am', 'start', '-W', '-n', 'com.opus.piano/.MainActivity')
-    time.sleep(2)
+    time.sleep(8 if a.root_fresh_emulator else 2)
 def snapshot(name):
     stop()
     path = a.output / (name + '.db')
     for suffix in ['', '-wal', '-shm']:
-        result = subprocess.run(base + ['exec-out', 'run-as', 'com.opus.piano', 'cat', 'databases/opus.db' + suffix], capture_output=True)
+        result = subprocess.run(app_command('cat','databases/opus.db'+suffix), capture_output=True)
         if result.returncode == 0:
             Path(str(path) + suffix).write_bytes(result.stdout)
         elif not suffix:
@@ -116,14 +141,16 @@ for table, rows in fixture.items():
         db.execute(f'INSERT INTO {table} ({",".join(keys)}) VALUES ({",".join("?" for _ in keys)})', list(row.values()))
 db.execute("INSERT OR REPLACE INTO local_app_state VALUES(1,1,0,18,0,0,'')")
 draft = dict(version=1, execution=1, token='upgrade-fixture-draft', start=1700000000000, credited=3000, elapsed=3000, detected=0, mode='Manual', smart=False, active=0, notes='Preserve unfinished notes', reflection='Preserve reflection', sensitivity=50, pause=5, status='Paused', quality='Complete', removed=[], intervals=[], parts=[dict(piece=1, title='Invention No. 1', composer='Johann Sebastian Bach', catalog=None, era='Baroque', duration=3000, notes='Preserve piece draft')])
+draft['intervals']=[dict(part=0,start=0,end=3000,credit=3000,reason='Manual')]
 db.execute('INSERT OR REPLACE INTO practice_drafts VALUES(1,?,123)', (json.dumps(draft),))
 db.commit()
 db.execute('PRAGMA wal_checkpoint(TRUNCATE)')  # Commit AND checkpoint before copying the main file.
 db.close()
 adb('push', str(path), '/data/local/tmp/goldberg-upgrade-fixture.db')
-adb('shell', 'run-as', 'com.opus.piano', 'cp', '/data/local/tmp/goldberg-upgrade-fixture.db', 'databases/opus.db')
+app_run('cp','/data/local/tmp/goldberg-upgrade-fixture.db','databases/opus.db')
 for suffix in ['-wal', '-shm']:
-    adb('shell', 'run-as', 'com.opus.piano', 'truncate', '-s', '0', 'databases/opus.db' + suffix)
+    app_run('truncate','-s','0','databases/opus.db'+suffix)
+restore_fixture_ownership()
 def values(name):
     _, conn = snapshot(name)
     excluded = {'android_metadata', 'room_master_table', 'sqlite_sequence', 'catalog_cache', 'catalog_composers', 'catalog_works'}
@@ -131,6 +158,8 @@ def values(name):
         excluded.update({'personal_catalogue_identities','personal_catalogue_anchors','personal_catalogue_state'})
     if a.expected_schema >= 10:
         excluded.update({'backup_restore_state','recovery_evidence','practice_completion_evidence'})
+    if a.expected_schema >= 11:
+        excluded.update({'local_audio','local_audio_parts','achievement_events','badge_notices'})
     tables = sorted(r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'") if r[0] not in excluded)
     data = {t: conn.execute(f'SELECT * FROM {t} ORDER BY rowid').fetchall() for t in tables}
     conn.close()
@@ -139,8 +168,9 @@ def values(name):
 prefs_path=a.output / 'goldberg-appearance.xml'
 prefs_path.write_text('<?xml version="1.0" encoding="utf-8"?><map><string name="accent">Slate</string><string name="cards">Outline</string><string name="density">Compact</string><string name="sort">Composer</string></map>')
 adb('push',str(prefs_path),'/data/local/tmp/goldberg-appearance.xml')
-adb('shell','run-as','com.opus.piano','mkdir','-p','shared_prefs')
-adb('shell','run-as','com.opus.piano','cp','/data/local/tmp/goldberg-appearance.xml','shared_prefs/goldberg-appearance.xml')
+app_run('mkdir','-p','shared_prefs')
+app_run('cp','/data/local/tmp/goldberg-appearance.xml','shared_prefs/goldberg-appearance.xml')
+restore_fixture_ownership()
 def startup_samples():
     samples=[]
     for _ in range(a.startup_runs):
@@ -155,7 +185,7 @@ def startup_samples():
 def preference_hashes():
     hashes={}
     for name in ['goldberg-appearance','goldberg-media','goldberg-identity']:
-        result=subprocess.run(base+['exec-out','run-as','com.opus.piano','cat','shared_prefs/'+name+'.xml'],capture_output=True)
+        result=subprocess.run(app_command('cat','shared_prefs/'+name+'.xml'),capture_output=True)
         hashes[name]=hashlib.sha256(result.stdout).hexdigest() if result.returncode==0 else None
     return hashes
 # Let 0.10 itself perform its normal metadata/badge backfill on the legacy fixture.
@@ -168,10 +198,27 @@ launch()
 candidate_startup=startup_samples()
 after = values('after')
 assert prefs_before==preference_hashes(), 'Appearance/media/identity preferences changed'
-assert before == after, 'Persistent data changed: ' + ', '.join(t for t in before if before[t] != after.get(t))
+allowed_new_badges={'first_take','recording_artist','versatile_pianist','musical_journal','critical_listener','founding_pianist'} if a.expected_schema>=11 else set()
+for table,original in before.items():
+    incoming=after.get(table)
+    if table=='badge_unlocks' and allowed_new_badges:
+        assert all(row in incoming for row in original), 'Historical badge identity/date changed'
+        assert all(row in original or row[0] in allowed_new_badges for row in incoming), 'Unexpected new badge'
+    else:
+        assert original==incoming, 'Persistent data changed: '+table
+assert set(before)==set(after), 'Unexpected critical table loss/addition'
+
 _, final_db = snapshot('validated')
 assert final_db.execute('PRAGMA user_version').fetchone()[0] == a.expected_schema
 assert final_db.execute('PRAGMA foreign_key_check').fetchall() == []
+assert final_db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+if a.expected_schema>=11:
+    for table in ('local_audio','local_audio_parts','achievement_events'):
+        assert final_db.execute(f'SELECT count(*) FROM {table}').fetchone()[0]==0, 'Upgrade manufactured audio/events'
+    for badge in before['badge_unlocks']:
+        notice=final_db.execute('SELECT acknowledgedAt FROM badge_notices WHERE achievementId=?',(badge[0],)).fetchone()
+        assert notice and notice[0]==badge[1], 'Old badge became a new popup'
+
 bridge = None
 if a.expected_schema >= 9:
     import uuid
@@ -183,11 +230,11 @@ final_db.close()
 if a.offline or a.offline_preconfigured:
     final_dump = connectivity_dump('final')
     assert re.search(r'Active default network:\s*(?:none|null|-1)(?:\s|$)',final_dump,re.I), 'Offline state changed during upgrade'
-result = {'baselineVersion': a.baseline_version, 'baselineSchemaVerified': a.baseline_schema, 'offlineVerified': a.offline or a.offline_preconfigured, 'personalSchema': a.expected_schema,
+result = {'baselineVersion': a.baseline_version, 'publishedTrustedBaseline': a.root_fresh_emulator, 'baselineSchemaVerified': a.baseline_schema, 'offlineVerified': a.offline or a.offline_preconfigured, 'personalSchema': a.expected_schema,
           'baselineApkSha256': hashlib.sha256(a.baseline.read_bytes()).hexdigest(),
           'candidateApkSha256': hashlib.sha256(a.candidate.read_bytes()).hexdigest(),
           'serial': a.serial, 'originalRowsUnchanged': True, 'preferencesUnchanged': True,
           'bridge': bridge, 'sessions': len(before['sessions']), 'foreignKeys': 'pass',
           'startupTotalTimeMs': {'baseline': baseline_startup, 'candidate': candidate_startup, 'caveat': 'Small emulator samples; cold process after initialization, not install/start-to-usable or device guarantee'}}
 (a.output/'result.json').write_text(json.dumps(result,indent=2)+'\n')
-print(f'PASS: exact persistent-table equality after {a.baseline_version} upgrade; {len(before["sessions"])} sessions, notes, profile, badges, repertoire, recovery archive, draft bytes and preferences retained')
+print(f'PASS: original persistent rows and badge dates retained after {a.baseline_version} upgrade; {len(before["sessions"])} sessions, notes, profile, badges, repertoire, recovery archive, draft bytes and preferences retained')

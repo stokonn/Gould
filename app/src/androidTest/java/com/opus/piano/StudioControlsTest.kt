@@ -72,12 +72,30 @@ class StudioControlsTest {
             player.pause();withTimeout(3000){player.state.first {!it.playing}}
             val paused=player.state.value.position
             delay(200);assertEquals(paused,player.state.value.position)
-            player.seek(1700);delay(200)
+            player.seek(1000);player.seek(1200);player.seek(1700);delay(200)
             player.play(row.id)
             withTimeout(5000){player.state.first {!it.playing && it.position>=1900}}
             assertTrue(db.studioDao().events().none {it.kind==StudioAchievementRules.PLAYBACK_VERIFIED})
             assertEquals(64044L,repo.playable(row.id).length())
         } finally { player.stopAndAwait();db.close();dir.deleteRecursively() }
+    }
+    @Test fun completeDecodedShortTakeCreatesOneVerifiedPlaybackEvent()=runBlocking {
+        val db=Room.inMemoryDatabaseBuilder(context,OpusDatabase::class.java).build()
+        val dir=File(context.cacheDir,"listener-${UUID.randomUUID()}")
+        val repo=LocalRecordingRepository(db,dir)
+        val (row,w)=repo.prepare(16000,"Listener fixture","",null)
+        w.append(ShortArray(16000){i->(kotlin.math.sin(i*2*kotlin.math.PI*440/16000)*1000).toInt().toShort()},16000)
+        repo.finalize(row.id,w)
+        val player=LocalPlaybackController(context,repo)
+        try {
+            player.play(row.id)
+            withTimeout(8000) {player.state.first {!it.loading && !it.playing && it.position>=1000}}
+            player.stopAndAwait()
+            assertEquals(32044L,repo.playable(row.id).length())
+            repo.delete(row.id)
+            assertEquals("Deleted",db.studioDao().audio(row.id)!!.state)
+            assertEquals(1,db.studioDao().events().count {it.kind==StudioAchievementRules.PLAYBACK_VERIFIED})
+        } finally {player.stopAndAwait();db.close();dir.deleteRecursively()}
     }
     @Test fun nativeMetronomeStartsAndStopsWithoutCreatingPractice()=runBlocking {
         val controller=MetronomeController(context)
@@ -85,6 +103,9 @@ class StudioControlsTest {
         try {
             withTimeout(5000){controller.state.first {it.playing || it.failed}}
             assertFalse(controller.state.value.failed);assertTrue(controller.state.value.playing)
+            for(bpm in 130..200 step 5) controller.configure(bpm,5)
+            withTimeout(5000){controller.state.first {it.playing && !it.starting && it.appliedBpm==200 && it.appliedBeats==5}}
+            assertEquals(200,controller.state.value.bpm)
             controller.stop()
             assertFalse(controller.state.value.playing)
         } finally {controller.stop()}

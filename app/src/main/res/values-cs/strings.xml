@@ -247,7 +247,7 @@
   <string name="msg_era_composer_epoch_ifblank_not_supplied_6765">Období · %1$s</string>
   <string name="msg_era_f37a">Období</string>
   <string name="msg_every_return_to_the_piano_counts_125f">Každý návrat ke klavíru se počítá.</string>
-  <string name="msg_experimental_piano_like_activity_detection_r_19fb">Experimentální rozpoznávání hraní probíhá místně. Přesnost ovlivňují řeč, nahrávky i tiché pasáže. Při aktivní službě mikrofon poslouchá i po zamčení obrazovky. Zvuk se neukládá ani neodesílá.</string>
+  <string name="msg_experimental_piano_like_activity_detection_r_19fb">Experimentální rozpoznávání hraní probíhá místně. Přesnost ovlivňují řeč, nahrávky i tiché pasáže. Poslech pokračuje při zamčené obrazovce, dokud je služba mikrofonu aktivní. Analýza je dočasná. Zvuk se ukládá pouze po výslovné volbě Nahrát zvuk; žádná nahrávka se automaticky neodesílá.</string>
   <string name="msg_explore_composer_e4ca">Prozkoumat skladatele</string>
   <string name="msg_explore_works_size_loaded_works_c20f">Procházet načtené skladby (%1$s)</string>
   <string name="msg_export_backup_6043">Exportovat zálohu</string>
@@ -271,7 +271,7 @@
   <string name="msg_generated_searches_not_verified_recordings_a_0e42">Jde o vyhledávání, nikoli ověřené nahrávky. Dostupnost a přístup určuje příslušná služba.</string>
   <string name="msg_genre_2aa3">Žánr</string>
   <string name="msg_goldberg_0_9_0_beta_the_redesign_update_e76b">Goldberg 0.9.0 Beta · Aktualizace vzhledu</string>
-  <string name="msg_goldberg_analyzes_ambient_microphone_sound_l_7f65">Gould zpracovává okolní zvuky pouze v zařízení, i při zamčení nebo v jiné aplikaci. Žádný zvuk se neukládá ani neodesílá. Služba na popředí nabízí Pozastavit a Zastavit. Při blokovaných oznámeních použijte Gould nebo Aktivní aplikace v Androidu. Detekce je experimentální.</string>
+  <string name="msg_goldberg_analyzes_ambient_microphone_sound_l_7f65">Chytrý poslech analyzuje zvuk místně i při zamčené obrazovce. Analýza je dočasná; pouze výslovná volba Nahrát zvuk uloží souvislou nahrávku do tohoto zařízení. Nahrávky se nikdy automaticky neodesílají. Pauza ovlivňuje čas cvičení; nahrávání ukončíte volbou Zastavit nahrávání nebo Dokončit. Při zablokovaných oznámeních zastavte záznam v aplikaci Gould nebo v nabídce Aktivní aplikace systému Android. Detekce je experimentální.</string>
   <string name="msg_goldberg_smart_practice_73e7">Gould — chytré cvičení</string>
   <string name="msg_goldberg_typography_6730">Písmo Gould</string>
   <string name="msg_grouped_monthly_totals_labels_show_the_endin_1c56">Součty po měsících · popisek označuje poslední měsíc</string>
@@ -537,7 +537,7 @@
   <string name="msg_up_2038">Nahoru</string>
   <string name="msg_use_a_valid_https_recording_or_score_url_fro_277c">Použijte platný HTTPS odkaz na nahrávku nebo noty ze Spotify, YouTube, IMSLP či MuseScore.</string>
   <string name="msg_use_default_avatar_62c9">Použít výchozí avatar</string>
-  <string name="msg_use_the_manual_timer_or_optional_experimenta_3128">Použijte ruční časovač nebo volitelné experimentální chytré cvičení. Zvuk se zpracovává místně i při zamčené obrazovce. Žádný zvuk se neukládá ani neodesílá. O mikrofon požádáme až při zapnutí poslechu.</string>
+  <string name="msg_use_the_manual_timer_or_optional_experimenta_3128">Použijte ruční časovač nebo volitelné experimentální chytré cvičení. Analýza je místní a dočasná i při zamčené obrazovce. Nahrát zvuk je samostatná výslovná volba pro uložení souvislého zvuku do zařízení. O mikrofon požádáme jen pro výslovně zahájený poslech nebo nahrávání; nic se automaticky neodesílá.</string>
   <string name="msg_user_saved_link_not_independently_verified_bf46">Odkaz uložený uživatelem · nezávisle neověřeno</string>
   <string name="msg_view_all_badges_06e1">Všechny odznaky</string>
   <string name="msg_view_all_efd8">Zobrazit vše</string>
@@ -663,7 +663,7 @@
   <string name="profile_period_summary">%1$s · %2$s</string>
   <string name="notification_resume">%1$s — otevřete Gould a pokračujte</string>
   <string name="copyright_notices">Následují původní texty licencí třetích stran.</string>
-  <string name="privacy_text">Gould uchovává deník cvičení v tomto zařízení. Zvuk se zpracovává místně; zálohy formátu 5 mohou obsahovat rozpracované cvičení a data obnovy. Exporty JSON/CSV nejsou šifrované a poskytovatel dokumentů je může synchronizovat. Online hudební požadavky kontaktují příslušné poskytovatele. Katalog Goldberg pouze pro čtení využívá Cloudflare Workers/Hyperdrive a Supabase. Nezbytné technické údaje požadavků se zpracovávají pro doručení katalogu a zabezpečení na základě oprávněných zájmů; uchovávání a mezinárodní zpracování u poskytovatelů se řídí příslušnými podmínkami, bez záruky zpracování pouze v EU či nulových protokolů. Trvalé aplikační protokoly Workeru a trasování jsou vypnuté. Dobrovolná podpora a zákonné vyřizování žádostí o práva se posuzují odděleně. Běžná korespondence podpory se uchovává 90 dní po uzavření s odůvodněnými právními výjimkami a měsíční kontrolou. Vlastník potvrzuje kontroly schránky v úterý a pátek a soukromou evidenci případů. Přihlášení Google k backendu a komunitní zápisy zůstávají vypnuté. Veřejný provozovatel a vývojář: stokonn; soukromí a podpora: stokonn.us@gmail.com. Podrobnosti a práva najdete v úplném přiloženém oznámení.</string>
+  <string name="privacy_text">Gould uchovává deník i výslovně uložené nahrávky v tomto zařízení. Chytrá analýza je dočasná; samostatná volba Nahrát zvuk ukládá souvislý PCM/WAV. Nahrávky se automaticky neodesílají. Zálohy JSON formátu 6 obsahují deník, rozpracovaná cvičení, data obnovy a metadata nahrávek; volitelné zvukové ZIPy obsahují i zvukové soubory. Exporty JSON/CSV/ZIP nejsou šifrované a poskytovatel dokumentů je může synchronizovat. Online hudební požadavky kontaktují příslušné poskytovatele. Katalog Goldberg pouze pro čtení využívá Cloudflare Workers/Hyperdrive a Supabase. Nezbytné technické údaje požadavků se zpracovávají pro doručení katalogu a zabezpečení na základě oprávněných zájmů; uchovávání a mezinárodní zpracování u poskytovatelů se řídí příslušnými podmínkami, bez záruky zpracování pouze v EU či nulových protokolů. Trvalé aplikační protokoly Workeru a trasování jsou vypnuté. Dobrovolná podpora a zákonné vyřizování žádostí o práva se posuzují odděleně. Běžná korespondence podpory se uchovává 90 dní po uzavření s odůvodněnými právními výjimkami a měsíční kontrolou. Vlastník potvrzuje kontroly schránky v úterý a pátek a soukromou evidenci případů. Přihlášení Google k backendu a komunitní zápisy zůstávají vypnuté. Veřejný provozovatel a vývojář: stokonn; soukromí a podpora: stokonn.us@gmail.com. Podrobnosti a práva najdete v úplném přiloženém oznámení.</string>
   <string name="minute_short">%1$d min</string>
   <string name="hours_minutes_short">%1$d h %2$d min</string>
   <string name="second_short">%1$d s</string>
@@ -1133,7 +1133,7 @@
   <string name="msg_recording_interrupted">Nahrávání přerušeno. Částečný zvuk je uložen pro obnovení.</string>
   <string name="msg_recording_title">Nahrávka</string>
   <string name="msg_studio_recording">Studio nahrávání</string>
-  <string name="msg_recording_consent">Nahrávky se ukládají pouze v tomto zařízení a nikdy se neodesílají. Zvuk se nepřetržitě nahrává, dokud nekleknete na Zastavit.</string>
+  <string name="msg_recording_consent">Ukládat souvislý zvuk mikrofonu do tohoto zařízení? Pauzy cvičení nahrávání nepřeruší. Zastavíte jej volbou Zastavit nahrávání nebo Dokončit. Přerušené nahrávky zůstanou dostupné pro obnovu. Nic se automaticky neodesílá. PCM/WAV může zabrat přibližně až 320 MB za hodinu; exporty obsahují soukromý zvuk.</string>
   <string name="label_recording">Nahrávání</string>
   <string name="label_preparing">Příprava</string>
   <string name="label_finalizing">Dokončování</string>
@@ -1215,7 +1215,7 @@
     <string name="studio_recover_take">Obnovit nahrávku</string>
     <string name="studio_older_recordings">Zobrazit starší nahrávky</string>
     <string name="studio_delete_audio_confirm">Smazat tuto místní nahrávku? Historie cvičení a získané odznaky zůstanou zachovány.</string>
-    <string name="studio_audio_operation_failed">Operace s nahrávkou selhala. Původní i obnovovací data zůstávají zachována; zkuste to znovu nebo exportujte původní soubor beze změn.</string>
+    <string name="studio_audio_operation_failed">Operace s nahrávkou selhala. Zkuste to znovu nebo exportujte dostupný původní soubor; obnovovací data zůstávají zachována.</string>
     <string name="studio_archive_disclosure">Volitelný ZIP deníku a zvuku obsahuje soukromé nahrávky i obnovitelné původní soubory. Uložte jej soukromě a ponechte místo pro přípravu a ověřenou obnovu. Zálohy JSON obsahují pouze deník.</string>
     <string name="studio_archive_stop_first">Před zálohou nebo obnovou zvuku zastavte nahrávání.</string>
     <string name="studio_archive_export">Exportovat ZIP deníku a zvuku</string>
@@ -1223,4 +1223,12 @@
     <string name="studio_archive_retry">Zkontrolovat čekající obnovu zvuku</string>
     <string name="studio_archive_complete">Operace se zvukovým archivem byla dokončena.</string>
     <string name="studio_archive_confirm">Obnovit tento ověřený archiv? Chráněný postup nahradí deník a nastavení a sloučí zvuk bez přepsání původních souborů. Snímek cílových dat i záznamy pro obnovu zůstanou zachovány.</string>
+    <string name="studio_recording_preparing">Připravuji nahrávání…</string>
+    <string name="studio_recorded_pieces">Nahrané skladby: %1$s</string>
+    <string name="studio_view_practice">Zobrazit související cvičení</string>
+    <string name="studio_badge_dismiss_retry">Zavření odznaku se nepodařilo uložit. Po opětovném otevření aplikace se odznak zobrazí znovu.</string>
+    <string name="studio_export_recovery">Exportovat původní obnovovací data</string>
+    <string name="studio_recovery_export_note">Exporty pro obnovu mohou být neúplné nebo nepřehratelné. Původní data zůstávají zachována beze změn.</string>
+    <string name="studio_playback_capture_blocked">Před přehráváním zastavte nahrávání nebo chytrý poslech.</string>
+    <string name="studio_recording_duration">Nahrávání · %1$s</string>
 </resources>

@@ -36,6 +36,8 @@ class PracticeCoordinator(
     private var publishedAt = 0L
     private var restoring = false
     private val revision = java.util.concurrent.atomic.AtomicLong(0)
+    @Volatile var selectionChanged: (suspend (SessionPart) -> Unit)? = null
+    @Volatile var sessionStarted: (suspend (String) -> Unit)? = null
     @Volatile var finishRecording: (suspend () -> Unit)? = null
     @Volatile var releaseCapture: (() -> Unit)? = null
     suspend fun startSmart(sensitivity: Int, pause: Int): PracticeState {
@@ -132,6 +134,7 @@ class PracticeCoordinator(
             engine.begin(now(), System.currentTimeMillis(), UUID.randomUUID().toString(), smart)
             // No observer or microphone sees a running identity before the durable write succeeds.
             checkpoint()
+            sessionStarted?.invoke(engine.state.token)
             engine.replace(engine.state, now())
             publish()
         } catch (error: Exception) {
@@ -151,13 +154,13 @@ class PracticeCoordinator(
         catch (_: Exception) { notice.value = message(R.string.msg_recording_interrupted) }
         finally { releaseCapture?.invoke() }
     }
-    suspend fun select(piece: Piece?) { if (state.value.status != "Review") { engine.queueSelect(now(), piece); publish(); checkpoint() } else notice.value = message(R.string.practice_request_unavailable) }
+    suspend fun select(piece: Piece?) { if (state.value.status != "Review") { engine.queueSelect(now(), piece); selectionChanged?.invoke(engine.state.parts[engine.state.active]); publish(); checkpoint() } else notice.value = message(R.string.practice_request_unavailable) }
     suspend fun note(index: Int, text: String) { engine.edit { it.copy(parts = it.parts.mapIndexed { i, p -> if (i == index) p.copy(notes = text.take(10000)) else p }) }; notesDirty = true; if (dirtySince == null) dirtySince = now(); notesChangedAt = now(); unsaved.value = true; publish() }
     suspend fun sessionNotes(notes: String, reflection: String) { engine.edit { it.copy(notes = notes.take(10000), reflection = reflection.take(10000)) }; notesDirty = true; if (dirtySince == null) dirtySince = now(); notesChangedAt = now(); unsaved.value = true; publish() }
     suspend fun configure(sensitivity: Int, pause: Int) { engine.edit { it.copy(sensitivity = sensitivity.coerceIn(0,100), pauseSeconds = pause.coerceIn(2,30)) }; publish(); checkpoint() }
     suspend fun remove(index: Int) {
         if (state.value.status == "Review") return
-        engine.queueRemove(now(), index); publish(); checkpoint()
+        engine.queueRemove(now(), index); selectionChanged?.invoke(engine.state.parts[engine.state.active]); publish(); checkpoint()
     }
     suspend fun move(index: Int, delta: Int) {
         if (state.value.status == "Review") return
@@ -165,7 +168,7 @@ class PracticeCoordinator(
     }
     suspend fun undoQueue() {
         if (state.value.status == "Review") return
-        engine.undoQueue(now()); publish(); checkpoint()
+        engine.undoQueue(now()); selectionChanged?.invoke(engine.state.parts[engine.state.active]); publish(); checkpoint()
     }
     suspend fun reset() { completed.value=null; releaseCapture?.invoke(); repository.clear(); revision.incrementAndGet(); notesDirty = false; dirtySince = null; unsaved.value = false; engine.replace(PracticeState(ready = true), now()); publish() }
     suspend fun save() {

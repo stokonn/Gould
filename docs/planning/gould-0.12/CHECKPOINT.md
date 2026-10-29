@@ -578,3 +578,136 @@ and capture-start acknowledgment; do not promote final audio acceptance prematur
 Actual new controls/badge/player/archive flow and full widget/font/theme/locale/
 reboot/rollover matrix, API26, seeded trusted upgrade, security/release and required
 CI remain pending. No Stable tag/build/publication or main integration performed.
+
+
+### Live full-native/capture follow-up recovery — 2026-10-29
+
+Remote09b1fe4 is pushed; required CI3/3 PASS: quality40835545804, maintenance
+40835545828, backend40835545895. Canonical PMP snapshot40/30e537c2-457f-413e-8a98-
+7b816c2ae095; Issue41 comment6490687721. Unfiltered actual API36 native run
+full-native-09b1fe4.log (tool session33894) is still running through253 cases;
+do NOT start another run or modify emulator configuration while it runs. It began
+with inherited font2/offline settings. Current known failures: obsolete-request
+fixture assumes exactly one cancellation though filter changes can start another;
+direct receiver invocation has no PendingResult; controlled-worker test requires
+a default network, unavailable because offline was retained. Known gated external/
+synthetic assumptions are skips, not passes. Final counts pending; retain all logs.
+
+Uncommitted follow-up is intentional and must be preserved: AudioRecord startup
+acknowledgment keeps controller Preparing until capture really starts; service
+tracks closing/active ownership, stops microphone after recording even during
+manual timing, and waits before a new explicit take. Preparing interruption retains
+bytes; notifications update at phase transitions; duplicate UI start jobs guarded.
+Native real-service two-take/manual-timer preservation test and acknowledgment
+regressions added. Receiver null PendingResult guard and all-obsolete-jobs fixture
+accounting fixed. Also discovered unused audio association table: now records exact
+PCM boundaries/title/composer snapshots on manual switch/Undo and links practice
+started after recording; Previous shows bounded previews and related saved practice.
+Native exact sample/recovery/backup validation and complete decoded playback award
+regressions added. All are pending current-source verification.
+
+Single frozen host gate capture-associations-final-host.log (session23543) runs
+assembleDebug/assembleDebugAndroidTest/testDebugUnitTest/lintDebug with3GB/in-process
+compiler. Earlier capture-ownership-build.log passed but source changed during
+that build, so it is NOT final evidence for the newest ownership/association fixes.
+Do not duplicate Gradle or install its new APK over the running old-source suite.
+When suite ends, restore network online/font1 for nominal targeted native cases;
+classify offline controlled-worker failure as setup, not an application pass/fail.
+Then install the final built APKs and execute RecordingLifecycleTest,
+RecordingServiceTest, StudioControlsTest, StudioBackupTest, PracticeServicePolicyTest,
+DiscoverEditorialAcceptanceTest and affected worker test; fix genuine failures.
+New RecordingServiceTest expects no unrelated pending practice and creates/pauses
+a named emulator-owned manual draft without discarding data. Preserve it honestly.
+
+API26 image installed and isolated gould012-api26 AVD prepared under .gradle/profile-
+avds (not booted yet). Never API37/phone. New badge/widget layouts compile and
+focused widget footer2/2 passed at09b1fe4; full actual new badge/Studio/player/archive
+visual matrix and final font-change launcher retest remain pending. Additional
+audit item: popup acknowledgement currently lacks graceful storage-failure handling;
+fix before final release if not yet addressed. Main/Stable untouched.
+
+
+### API26 trusted upgrade and native correction checkpoint — 2026-10-29
+
+Unfiltered API36 source09b1fe4 finished253:238PASS/3FAIL/12assumption skips.
+Full log retained, not accepted as a clean full-native pass. Failures: obsolete
+query fixture's exact-one cancellation assumption; direct receiver PendingResult
+null; controlled-worker expected network absent under inherited offline state.
+Current source fixes accounting of every obsolete request and null receiver token.
+Online nominal worker then revealed its second fixture requirement: notifications
+must start denied. After pre-run emulator-only revoke, worker passed fully. No
+application check was weakened. Discover progressed beyond cancellation, then its
+helper clicked a different partially visible duplicate Source records button;
+whole-control viewport selection fixed in the test, native retest pending.
+
+Current capture/association full host PASS11m50s:393JVM/0failures/errors/skips,
+debug/testAPK and lint0errors/165warnings/1hint. API36 affected native26 had25PASS
+and1worker-fixture failure; the worker subsequently passed with correct preconditions.
+Exact sample-boundary associations and archive roundtrip tests added, positive
+full decoded short-take award verified. Burst metronome settings now apply the last
+requested tempo/beat state; serialized queued seeks exclude jump credit; popup
+dismissal storage errors retain durable notices instead of crashing.
+
+Actual published Goldberg-v0.11.apk downloaded SHA256290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6,
+trusted signer53eface4… verified. Isolated API26 gould012-api26/emulator-5584 booted
+(qemu=1). Guarded root-fresh upgrade from actual non-debuggable0.11/schema10 to
+debug0.12-dev/schema11 PASS:37 original sessions, original tables/notes/profile/
+badge dates/draft bytes/preferences retained, integrity/FK PASS, no manufactured
+audio/events. Candidate83e96f8e5c77886aac65169fd59b8a6edff7f114a7f9a088ce13f2e246a6b774.
+Evidence: .gradle/gould012-checks/trusted-upgrade-api26/result.json and snapshots.
+Upgrade harness now requires exact published digest/trusted certificates and an
+empty identified API26/36 AVD before root seeding; normal CI keeps throwaway signing.
+Current CI acceptance expected schema updated10→11; old stable tags/history unchanged.
+
+API26 actual native compatibility33/33 PASS5.351s: recording lifecycle/clock/
+associations, repository/media backup8, decoded playback/seek/metronome, historical
+migration and focused widget inflation/footer/provider/DAO. No global widget tests
+that reset the seeded recovery were used. Real API26 microphone record-only test
+PASS1/1/4.291s, saved validated WAV and exact original draft/token/notes/credit and
+37-session count unchanged. Initial test helper used UiAutomation method unavailable
+onAPI26; preserved failure and corrected to shell permission grant + assertion.
+API36 emulator-5582 was stopped gracefully with userdata retained, never wiped;
+its profile AVD can be restarted. Current active target is emulator-5584/API26 only.
+
+Final privacy/focus polish is uncommitted: actual capture now blocks local playback
+(and no idle playback polling), recording duration uses semantic error ink, saved
+vs incomplete export labels are honest, analysis/record consent/onboarding and
+bundled/full privacy notices distinguish saved PCM and unencrypted audio ZIPs.
+Privacy dialogs scroll at200%. Current single final host gate is capture-privacy-
+final-host.log (session to recover from tool if needed); do not duplicate Gradle.
+Then install final APK/testAPK on identified emulator, reverify capture/playback
+block/regressions and actual UI renders, commit/push and synchronize Issue41/PMP.
+Full final API36 CI/native run, actual new UI/widget matrix, boot/rollover/recovery/
+SAF exports/backups/security/licensing and final Stable artifact gates remain open.
+No main merge, release build, tag or publication; owner visual waiver stays valid.
+
+
+### Verified capture/privacy/compatibility source checkpoint — 2026-10-29
+
+Final full host PASS393JVM/0failures/errors/skips; debug/testAPK; lint0errors/165
+warnings/1hint,6m54s. Localization1207/policy PASS. Follow-up bounded frame ownership/
+prompt teardown build2m52s and playback-delete integrity build2m16s PASS.
+API26 final affected18/18 PASS7.205s, then final playback/delete/real microphone
+6/6 PASS6.303s. Already-started frames are not assigned retroactively to a new
+take; stopped/replaced sinks cannot append. Recording uses actual microphone-start
+acknowledgment and stops capture promptly when only manual timing remains.
+Playback is blocked during microphone use, has no idle polling, serializes queued
+seeks and awaits verified listening event commits before explicit deletion/restore.
+Exact original recovered draft/token/notes/credit and37 original sessions remained
+unchanged through actual API26 microphone tests. Earlier33/33 compatibility and
+actual published trusted0.11 upgrade remain separately source/artifact-bound.
+
+Consent/onboarding/settings/public+bundled privacy now truthfully distinguish
+analysis from explicit recorded PCM/WAV, storage/export privacy, optional audio
+ZIPs and incomplete unchanged exports; original backend/legal policy retained.
+Profile/signature/15 private references and protected worktrees remain intact.
+Final debug APK e109904ab46e1e6de197848eb776fe718adb8592f47d5e4bba33353d1af1b613;
+trusted signer53eface4… verified. See verification/capture-privacy-api26-checkpoint.json.
+
+Next: push this checkpoint, synchronize canonical PMP/Issue41, dispatch existing
+API36 full native+upgrade CI on exact source; continue actual rendered UI/widget/
+recovery/SAF/backup/security/licensing acceptance. Do not claim a clean full native
+pass from the failed253-case run or assumption skips. Discover whole-control
+helper correction needs rerun. Final non-debuggable Stable remains unbuilt/unpublished.
+Active emulator5584/API26; preserved profile5582/API36 stopped, can restart for
+final full UI matrix. No physical phone, data reset, new stage or main integration.

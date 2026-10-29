@@ -23,23 +23,42 @@ class OpusViewModel(private val repository: OpusRepository, private val saved: S
     val timer = practice.state
     val message = practice.notice
     val recordingState = recording.state
-    fun startRecording(visibleContext: android.content.Context) = viewModelScope.launch {
+    private var recordingStartJob: kotlinx.coroutines.Job? = null
+    fun startRecording(visibleContext: android.content.Context): kotlinx.coroutines.Job {
+        recordingStartJob?.takeIf { it.isActive }?.let { return it }
+        return viewModelScope.launch {
+        var ownedId: String? = null
         try {
+            com.opus.piano.service.SmartPracticeService.awaitReadyForNewTake(visibleContext)
             (appContext.applicationContext as com.opus.piano.OpusApplication).localPlayback.stopAndAwait()
             val t = practice.state.value
-            val title = t.selected?.title ?: L.s(R.string.msg_recording_title)
-            val composer = t.selected?.composer ?: ""
+            val part = t.parts[t.active]
+            val title = part.title.takeIf { part.pieceId != null } ?: L.s(R.string.msg_recording_title)
+            val composer = part.composer
             val rate = com.opus.piano.audio.RecordingController.selectRate()
-            recording.start(rate, title, composer, t.token.takeIf { it.isNotBlank() })
+            recording.start(rate, title, composer, t.token.takeIf { it.isNotBlank() }, awaitCapture = true, pieceKey = part.pieceId?.let { "piece:$it" } ?: "free")
+            ownedId = recording.state.value.id
             if (!com.opus.piano.service.SmartPracticeService.startRecording(visibleContext)) {
                 recording.interrupt("ForegroundStartRejected")
                 practice.notice.value = L.s(R.string.msg_cannot_start_microphone_while_goldberg_is_no_ee1e)
+            } else {
+                val started = kotlinx.coroutines.withTimeoutOrNull(5000) { recording.state.first { it.phase != com.opus.piano.audio.RecordingController.Phase.Preparing } }
+                if (started == null) recording.interrupt("CaptureStartTimeout")
+                if (recording.state.value.phase != com.opus.piano.audio.RecordingController.Phase.Recording)
+                    practice.notice.value = L.s(R.string.msg_recording_interrupted)
             }
         } catch (c: kotlinx.coroutines.CancellationException) {
-            kotlinx.coroutines.withContext(kotlinx.coroutines.NonCancellable) { recording.interrupt("StartCancelled") }
+            kotlinx.coroutines.withContext(kotlinx.coroutines.NonCancellable) {
+                if (ownedId != null && recording.state.value.id == ownedId) recording.interrupt("StartCancelled")
+            }
             throw c
         }
-        catch (_: Exception) { practice.notice.value = L.s(R.string.msg_record_error) }
+        catch (_: Exception) {
+            if (ownedId != null && recording.state.value.id == ownedId && recording.state.value.phase == com.opus.piano.audio.RecordingController.Phase.Preparing)
+                recording.interrupt("StartFailed")
+            practice.notice.value = L.s(R.string.msg_record_error)
+        }
+        }.also { recordingStartJob = it }
     }
     fun stopRecording() = viewModelScope.launch {
         try { recording.stop() }

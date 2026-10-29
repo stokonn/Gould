@@ -16,7 +16,7 @@ trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || t
 python3 scripts/verify_emulator_upgrade.py \
   --serial "$SERIAL" \
   --baseline baseline-src/app/build/outputs/apk/debug/app-debug.apk \
-  --baseline-version 0.10.1 --baseline-schema 8 --expected-schema 10 \
+  --baseline-version 0.10.1 --baseline-schema 8 --expected-schema 11 \
   --candidate app/build/outputs/apk/debug/app-debug.apk \
   --output stage5-ci-results/upgrade \
   --seed-disposable --offline --startup-runs 5
@@ -137,7 +137,7 @@ echo "PRAGMA foreign_key_check violations: ${FK_VIOLATIONS:-none}" | tee -a stag
 [ -z "$FK_VIOLATIONS" ] || { echo "FATAL: foreign_key_check reported violations"; exit 1; }
 SCHEMA="$(sqlite3 stage5-ci-results/db-after-restart/opus.db 'PRAGMA user_version;')"
 echo "PRAGMA user_version: $SCHEMA" | tee -a stage5-ci-results/process-death-integrity.txt
-[ "$SCHEMA" = "10" ] || { echo "FATAL: unexpected schema version $SCHEMA after restart (expected 10)"; exit 1; }
+[ "$SCHEMA" = "11" ] || { echo "FATAL: unexpected schema version $SCHEMA after restart (expected 11)"; exit 1; }
 echo "OK: post-restart database passed integrity, foreign-key and schema checks"
 # (d) Startup cost measurement (5 warm cold-process launches).
 bash scripts/measure-startup.sh "$SERIAL" 5 | tee stage5-ci-results/startup-measurement.txt

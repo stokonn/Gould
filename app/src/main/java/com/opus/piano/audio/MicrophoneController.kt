@@ -19,6 +19,7 @@ class MicrophoneController(private val context: android.content.Context) {
         preferredRate: Int = 0,
         recordingSink: AtomicReference<((ShortArray, Int) -> Unit)?>? = null,
         detectionEnabled: () -> Boolean = { true },
+        started: suspend () -> Unit = {},
         evidence: suspend (Boolean) -> Unit
     ) = withContext(Dispatchers.IO) {
         check(androidx.core.content.ContextCompat.checkSelfPermission(context,android.Manifest.permission.RECORD_AUDIO) == android.content.pm.PackageManager.PERMISSION_GRANTED) { "Microphone permission unavailable" }
@@ -39,15 +40,18 @@ class MicrophoneController(private val context: android.content.Context) {
             check(!stopped.get() && audio.state == AudioRecord.STATE_INITIALIZED)
             audio.addOnRoutingChangedListener(listener, android.os.Handler(android.os.Looper.getMainLooper()))
             audio.startRecording()
+            check(audio.recordingState == AudioRecord.RECORDSTATE_RECORDING)
+            started()
             // Initial routing is expected; later changes interrupt rather than silently changing calibration.
             var warmed = 0
             while (currentCoroutineContext().isActive && !stopped.get()) {
+                val consumer = recordingSink?.get()
                 val count = audio.read(samples,0,samples.size,AudioRecord.READ_BLOCKING)
                 check(count > 0) { L.s(R.string.msg_microphone_interrupted_b420) }
                 if (Build.VERSION.SDK_INT >= 29) check(audio.activeRecordingConfiguration?.isClientSilenced != true) { L.s(R.string.msg_microphone_is_unavailable_0f16) }
                 if (warmed++ > 3) check(!route.getAndSet(false)) { L.s(R.string.msg_microphone_route_changed_5688) } else route.set(false)
                 // Fan out to recording sink first; detection is a separate consumer.
-                recordingSink?.get()?.invoke(samples, count)
+                captureConsumer(consumer,recordingSink?.get())?.invoke(samples,count)
                 if (detectionEnabled()) evidence(detector.likely(samples,count,sensitivity()))
             }
         } finally {

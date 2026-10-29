@@ -8,6 +8,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -33,7 +35,7 @@ import com.opus.piano.i18n.L
                     Icon(Icons.Outlined.Remove,L.s(R.string.studio_less_tempo))
                 }
                 Slider(value = state.bpm.toFloat(), onValueChange = { controller.configure(it.toInt(),state.beats) },
-                    valueRange = 40f..240f, modifier = Modifier.weight(1f))
+                    valueRange = 40f..240f, modifier = Modifier.weight(1f).semantics { contentDescription = L.s(R.string.studio_tempo,state.bpm) })
                 IconButton(onClick = { controller.configure(state.bpm+5,state.beats) }, enabled = state.bpm < 240) {
                     Icon(Icons.Outlined.Add,L.s(R.string.studio_more_tempo))
                 }
@@ -47,8 +49,8 @@ import com.opus.piano.i18n.L
                     Icon(Icons.Outlined.Add,L.s(R.string.studio_more_beats))
                 }
             }
-            JournalSecondaryButton(onClick = { if (state.playing) controller.stop() else controller.start() }) {
-                Text(L.s(if (state.playing) R.string.studio_stop_clicks else R.string.studio_start_clicks))
+            JournalSecondaryButton(onClick = { if (state.playing || state.starting) controller.stop() else controller.start() }) {
+                Text(L.s(if (state.playing || state.starting) R.string.studio_stop_clicks else R.string.studio_start_clicks))
             }
             if (state.failed) Text(L.s(R.string.studio_clicks_error),color = MaterialTheme.colorScheme.error)
         }

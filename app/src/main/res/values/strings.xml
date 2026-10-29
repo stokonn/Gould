@@ -247,7 +247,7 @@
   <string name="msg_era_composer_epoch_ifblank_not_supplied_6765">Era · %1$s</string>
   <string name="msg_era_f37a">Era</string>
   <string name="msg_every_return_to_the_piano_counts_125f">Every return to the piano counts.</string>
-  <string name="msg_experimental_piano_like_activity_detection_r_19fb">Experimental piano-like activity detection runs locally. Speech, recorded music and quiet passages can affect accuracy. Listening continues through screen lock while the microphone foreground service is active. No raw audio is stored or uploaded.</string>
+  <string name="msg_experimental_piano_like_activity_detection_r_19fb">Experimental piano-like activity detection runs locally. Speech, recorded music and quiet passages can affect accuracy. Listening continues through screen lock while the microphone service is active. Analysis is temporary. Audio is saved only when you explicitly choose Record audio; no recording uploads automatically.</string>
   <string name="msg_explore_composer_e4ca">Explore composer</string>
   <string name="msg_explore_works_size_loaded_works_c20f">Explore %1$s loaded works</string>
   <string name="msg_export_backup_6043">Export backup</string>
@@ -271,7 +271,7 @@
   <string name="msg_generated_searches_not_verified_recordings_a_0e42">Generated searches, not verified recordings. Availability and access are determined by each service.</string>
   <string name="msg_genre_2aa3">Genre</string>
   <string name="msg_goldberg_0_9_0_beta_the_redesign_update_e76b">Goldberg 0.9.0 Beta · The Redesign Update</string>
-  <string name="msg_goldberg_analyzes_ambient_microphone_sound_l_7f65">Gould analyzes ambient microphone sound locally, including while locked or in another app. No audio is stored or uploaded. A foreground service provides Pause and Stop controls. If notifications are blocked, use Gould or Android Active apps to stop. Detection is experimental.</string>
+  <string name="msg_goldberg_analyzes_ambient_microphone_sound_l_7f65">Smart listening analyzes sound locally, including while locked. Analysis is temporary; explicit Record audio saves a continuous recording on this device. Recordings are never uploaded automatically. Pause affects practice credit; use Stop recording or Finish to end an explicit recording. If notifications are blocked, use Gould or Android Active apps to stop capture. Detection is experimental.</string>
   <string name="msg_goldberg_smart_practice_73e7">Gould — Smart Practice</string>
   <string name="msg_goldberg_typography_6730">Gould Typography</string>
   <string name="msg_grouped_monthly_totals_labels_show_the_endin_1c56">Grouped monthly totals · labels show the ending month</string>
@@ -537,7 +537,7 @@
   <string name="msg_up_2038">Up</string>
   <string name="msg_use_a_valid_https_recording_or_score_url_fro_277c">Use a valid HTTPS recording or score URL from Spotify, YouTube, IMSLP or MuseScore.</string>
   <string name="msg_use_default_avatar_62c9">Use default avatar</string>
-  <string name="msg_use_the_manual_timer_or_optional_experimenta_3128">Use the manual timer or optional experimental Smart Practice. Smart Practice analyzes ambient sound locally and can continue while your screen is locked. No audio is stored or uploaded. Microphone permission is requested only when you enable listening.</string>
+  <string name="msg_use_the_manual_timer_or_optional_experimenta_3128">Use the manual timer or optional experimental Smart Practice. Analysis is local and temporary, including while locked. Record audio is a separate explicit choice that saves continuous audio on this device. Microphone permission is requested only for explicit listening or recording; nothing uploads automatically.</string>
   <string name="msg_user_saved_link_not_independently_verified_bf46">User-saved link · not independently verified</string>
   <string name="msg_view_all_badges_06e1">View All Badges</string>
   <string name="msg_view_all_efd8">View All</string>
@@ -659,7 +659,7 @@
   <string name="profile_period_summary">%1$s · %2$s</string>
   <string name="notification_resume">%1$s — open Gould to resume</string>
   <string name="copyright_notices">Original third-party license texts follow.</string>
-  <string name="privacy_text">Gould keeps your practice journal on this device. Microphone processing stays local; format-5 backups may include drafts and recovery data. JSON/CSV exports are unencrypted and document providers may synchronize them. Online music requests contact their providers. The read-only Goldberg catalogue uses Cloudflare Workers/Hyperdrive and Supabase. Necessary request metadata is processed for catalogue delivery and security under legitimate interests; provider retention and international processing follow their applicable arrangements, with no EU-only or zero-log guarantee. Worker persisted application logs/traces are disabled. Voluntary support and legally required rights handling are evaluated separately. Ordinary support correspondence is retained for 90 days after closure, with justified legal exceptions and monthly review. The owner reports Tuesday/Friday inbox checks and private case tracking. Backend Google OAuth and community writes remain disabled. Public operator/developer: stokonn; privacy/support: stokonn.us@gmail.com. See the full bundled notice for details and your rights.</string>
+  <string name="privacy_text">Gould keeps your journal and explicitly saved recordings on this device. Smart analysis is temporary; Record audio separately saves continuous PCM/WAV. No recording uploads automatically. Format-6 JSON backups include journal, drafts, recovery and recording metadata; optional media ZIPs include audio bytes. JSON/CSV/ZIP exports are unencrypted and document providers may synchronize them. Online music requests contact their providers. The read-only Goldberg catalogue uses Cloudflare Workers/Hyperdrive and Supabase. Necessary request metadata is processed for catalogue delivery and security under legitimate interests; provider retention and international processing follow their applicable arrangements, with no EU-only or zero-log guarantee. Worker persisted application logs/traces are disabled. Voluntary support and legally required rights handling are evaluated separately. Ordinary support correspondence is retained for 90 days after closure, with justified legal exceptions and monthly review. The owner reports Tuesday/Friday inbox checks and private case tracking. Backend Google OAuth and community writes remain disabled. Public operator/developer: stokonn; privacy/support: stokonn.us@gmail.com. See the full bundled notice for details and your rights.</string>
   <string name="minute_short">%1$d min</string>
   <string name="hours_minutes_short">%1$d h %2$d min</string>
   <string name="second_short">%1$d s</string>
@@ -1129,7 +1129,7 @@
   <string name="msg_recording_interrupted">Recording interrupted. Your partial audio is saved for recovery.</string>
   <string name="msg_recording_title">Recording</string>
   <string name="msg_studio_recording">Studio recording</string>
-  <string name="msg_recording_consent">Recordings are saved only on this device and never uploaded. Audio is captured continuously until you tap Stop.</string>
+  <string name="msg_recording_consent">Save microphone audio continuously on this device? Practice pauses do not pause recording. Use Stop recording or Finish to stop. Interrupted takes remain available for recovery. Nothing uploads automatically. PCM/WAV can use up to about 320 MB/hour; exports contain private audio.</string>
   <string name="label_recording">Recording</string>
   <string name="label_preparing">Preparing</string>
   <string name="label_finalizing">Finalizing</string>
@@ -1211,7 +1211,7 @@
     <string name="studio_recover_take">Recover recording</string>
     <string name="studio_older_recordings">Show older recordings</string>
     <string name="studio_delete_audio_confirm">Delete this local audio file? Practice history and earned achievements will be kept.</string>
-    <string name="studio_audio_operation_failed">Audio operation failed. The original and recovery data are retained; retry or export the unchanged original.</string>
+    <string name="studio_audio_operation_failed">Audio operation failed. Retry or export an available original; recovery data is kept.</string>
     <string name="studio_archive_disclosure">Optional journal and audio ZIP: includes private recordings and recoverable original bytes. Store it privately; allow space for staging and verified restore. JSON backups remain journal-only.</string>
     <string name="studio_archive_stop_first">Stop recording before audio backup or restore.</string>
     <string name="studio_archive_export">Export journal and audio ZIP</string>
@@ -1219,4 +1219,12 @@
     <string name="studio_archive_retry">Review pending audio restore</string>
     <string name="studio_archive_complete">Audio archive operation completed.</string>
     <string name="studio_archive_confirm">Restore this verified archive? It replaces journal and settings using the protected backup flow and merges audio without overwriting originals. A destination snapshot and recovery receipts are retained.</string>
+    <string name="studio_recording_preparing">Preparing recording…</string>
+    <string name="studio_recorded_pieces">Recorded pieces: %1$s</string>
+    <string name="studio_view_practice">View related practice</string>
+    <string name="studio_badge_dismiss_retry">Could not save this dismissal. The badge will appear again after reopening the app.</string>
+    <string name="studio_export_recovery">Export unchanged recovery bytes</string>
+    <string name="studio_recovery_export_note">Recovery exports may be incomplete or unplayable. The original bytes are preserved unchanged.</string>
+    <string name="studio_playback_capture_blocked">Stop recording or Smart listening before playing audio.</string>
+    <string name="studio_recording_duration">Recording · %1$s</string>
 </resources>

@@ -135,4 +135,23 @@ class StudioBackupTest {
         }
     } }
 
+    @Test fun mediaArchivePreservesEveryPieceOffsetSnapshotAndSample()=runBlocking { fixture { source,root ->
+        val repo=LocalRecordingRepository(source,File(root,"audio"))
+        val (row,writer)=repo.prepare(16000,"First","Bach",null,pieceKey="piece:7")
+        writer.append(ShortArray(8000){11},8000)
+        repo.associate(row.id,8000,"piece:8","Second","Mozart")
+        writer.append(ShortArray(8000){13},8000)
+        val saved=repo.finalize(row.id,writer)
+        val associations=source.studioDao().audioParts(row.id)
+        val archive=java.io.ByteArrayOutputStream()
+        MediaBackupRepository(context,source,File(root,"audio"),File(root,"operations"),backup(source,root)).export(archive)
+        fixture { target,targetRoot ->
+            val media=MediaBackupRepository(context,target,File(targetRoot,"audio"),File(targetRoot,"operations"),backup(target,targetRoot))
+            media.restore(media.receive(archive.toByteArray().inputStream()))
+            assertEquals(associations,target.studioDao().audioParts(row.id))
+            assertEquals(listOf(0L,8000L),target.studioDao().audioParts(row.id).map {it.offsetSamples})
+            assertEquals(saved.sha256,com.opus.piano.audio.DurableWav.hash(LocalRecordingRepository(target,File(targetRoot,"audio")).playable(row.id)))
+        }
+    } }
+
 }

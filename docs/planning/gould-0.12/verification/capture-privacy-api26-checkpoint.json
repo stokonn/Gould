@@ -1,0 +1,58 @@
+{
+  "base_commit": "09b1fe4",
+  "branch": "feature/gould-0.12",
+  "source_manifest_sha256": "ea6e5ad2acf1aa32f93699008fdd6205aaacb5d179834b1d4c904247b9eb078c",
+  "debug_apk_sha256": "e109904ab46e1e6de197848eb776fe718adb8592f47d5e4bba33353d1af1b613",
+  "certificate_sha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+  "host": {
+    "full": "393 JVM /0 failures/errors/skips; debug/testAPK; lint0errors/165warnings/1hint,6m54s",
+    "followup": "Capture frame/teardown targeted build PASS2m52s; immediate playback-delete integrity build PASS2m16s. Those bounded fixes have actual affected native evidence; final exact-source CI still pending.",
+    "localization": "1207 EN/CZ resources and policy PASS"
+  },
+  "api36_history": {
+    "full_native": "09b1fe4:253 cases,238PASS/3FAIL/12assumption skips; retained failed run, NOT a clean full gate",
+    "affected": "capture/association26:25PASS/1worker precondition failure; corrected online/denied-permission worker later PASS",
+    "discover": "cancellation accounting now passes; later duplicate partially-visible button helper failure corrected in source, native rerun pending"
+  },
+  "api26": {
+    "target": "emulator-5584 / API26 / qemu=1; isolated gould012-api26",
+    "trusted_upgrade": {
+      "baselineVersion": "0.11",
+      "publishedTrustedBaseline": true,
+      "baselineSchemaVerified": 10,
+      "offlineVerified": true,
+      "personalSchema": 11,
+      "baselineApkSha256": "290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6",
+      "candidateApkSha256": "83e96f8e5c77886aac65169fd59b8a6edff7f114a7f9a088ce13f2e246a6b774",
+      "serial": "emulator-5584",
+      "originalRowsUnchanged": true,
+      "preferencesUnchanged": true,
+      "bridge": {
+        "identities": 3,
+        "anchors": 113
+      },
+      "sessions": 37,
+      "foreignKeys": "pass",
+      "startupTotalTimeMs": {
+        "baseline": [],
+        "candidate": [],
+        "caveat": "Small emulator samples; cold process after initialization, not install/start-to-usable or device guarantee"
+      }
+    },
+    "compatibility": "33/33 actual native PASS5.351s: lifecycle, backup8, playback, metronome, migration and focused widgets",
+    "real_recording": "1/1 actual AudioRecord PASS4.291s: exact recovered draft/token/notes/credit and37-session count retained; initial incompatible test API failure preserved and fixed",
+    "final_capture": "18/18 PASS7.205s including read-frame consent boundary, actual microphone/playback exclusion, queued seeks, exact offsets and startup/finish clock boundaries",
+    "final_delete": "6/6 PASS6.303s, full decoded short recording award survives immediate deletion, real microphone leaves upgraded draft unchanged",
+    "limitations": "Emulator audio input only; no physical-device or acoustic piano-fidelity claim"
+  },
+  "privacy": "Smart consent/onboarding/settings and identical public/bundled notice distinguish transient analysis from explicit continuous PCM/WAV, optional unencrypted media ZIPs, and recoverable original exports. Dialogs scroll at large fonts. No new networking/dependency/schema.",
+  "ci": "09b1fe4 required quality40835545804/admin40835545828/backend40835545895 PASS; final source CI and complete native pending. Upgrade CI current schema corrected10\u219211 while retaining baseline8.",
+  "pending": [
+    "Final exact-source full API36 CI/native, gated synthetic/external evidence applicability",
+    "Actual new Studio/Previous/Profile/badge/Tux/quote/widget rendered QA matrix and accessibility",
+    "Actual recording process death/recovery, SAF exports and journal/media backup UI",
+    "Widget boot/rollover/zone/offline/size/tap/launcher matrix",
+    "Final security/licensing/performance/signing/upgrade/clean non-debuggable Stable artifact/release gates"
+  ],
+  "release": "BLOCKED until all mandatory gates pass; owner personal visual signoff waived and replaced by emulator QA; main/Stable untouched"
+}

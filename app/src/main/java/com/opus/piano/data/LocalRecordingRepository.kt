@@ -17,7 +17,7 @@ class LocalRecordingRepository(private val db: OpusDatabase, private val directo
         require(target.canonicalFile.parentFile == directory.canonicalFile)
         return target
     }
-    suspend fun prepare(rate: Int, title: String, composer: String, token: String?): Pair<LocalAudio,DurableWav> = withContext(Dispatchers.IO) {
+    suspend fun prepare(rate: Int, title: String, composer: String, token: String?, pieceKey: String = "free"): Pair<LocalAudio,DurableWav> = withContext(Dispatchers.IO) {
         require(rate in 8000..96000)
         val id=UUID.randomUUID().toString()
         val row=LocalAudio(id,System.currentTimeMillis(),relativeFile="$id.wav.part",sampleRate=rate,
@@ -26,6 +26,7 @@ class LocalRecordingRepository(private val db: OpusDatabase, private val directo
         db.studioDao().insertAudio(row)
         var writer: DurableWav? = null
         try {
+            db.studioDao().associate(LocalAudioPart(id,0,pieceKey.take(1024),row.title,row.composer))
             writer=DurableWav.create(file(row.relativeFile),rate)
             val running=row.copy(state="Recording");db.studioDao().updateAudio(running)
             running to writer
@@ -34,6 +35,20 @@ class LocalRecordingRepository(private val db: OpusDatabase, private val directo
             runCatching { db.studioDao().updateAudio(row.copy(state="Recoverable",error="Storage")) }
             throw PreparationFailure(id, error)
         }
+    }
+    suspend fun associate(id: String, offset: Long, key: String, title: String, composer: String) = withContext(Dispatchers.IO) {
+        val row = requireNotNull(db.studioDao().audio(id))
+        require(row.state in setOf("Preparing","Recording"))
+        require(offset in 0..((file(row.relativeFile).length()-DurableWav.HEADER).coerceAtLeast(0)/2))
+        // Two explicit selections without intervening samples share a boundary;
+        // the last intent owns future samples, never any already captured samples.
+        db.studioDao().capturedAssociation(LocalAudioPart(id,offset,key.take(1024),title.take(1000),composer.take(500)))
+    }
+    suspend fun linkSession(id: String, token: String) = withContext(Dispatchers.IO) {
+        require(token.length in 1..256)
+        val row = requireNotNull(db.studioDao().audio(id))
+        require(row.state in setOf("Preparing","Recording"))
+        if (row.sessionToken == null) db.studioDao().updateAudio(row.copy(sessionToken=token))
     }
     suspend fun interrupted(id: String, reason: String) = withContext(Dispatchers.IO) {
         db.studioDao().audio(id)?.let { row ->

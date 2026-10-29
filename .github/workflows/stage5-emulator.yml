@@ -37,8 +37,8 @@ name: Gould Android emulator verification
 #   - Therefore the in-place upgrade test uses a debug rebuild of the exact
 #     v0.10.1 tag built in the same job - same runner debug keystore as the
 #     candidate - so signatures match by construction and the genuine data
-#     migration path (schema 8 -> 10) is exercised end to end.
-#   - Release-signature compatibility of the future 0.11 release APK remains a
+#     migration path (schema 8 -> 11) is exercised end to end.
+#   - Release-signature compatibility of the future 0.12 release APK remains a
 #     separate publication gate: this job asserts the trusted 0.10.1 release
 #     APK really carries the trusted certificate, and the release gate asserts
 #     the new release APK carries the same certificate (transitive proof).

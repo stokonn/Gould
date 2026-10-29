@@ -60,7 +60,13 @@ class DiscoverEditorialAcceptanceTest {
         await("Missing action $label") {
             node=tree().filter {it.isVisibleToUser && (it.text?.toString()==label || it.contentDescription?.toString()==label)}.mapNotNull {
                 var n:AccessibilityNodeInfo?=it;while(n!=null && !n.isClickable)n=n.parent;n
-            }.firstOrNull {it.isEnabled};node!=null
+            }.firstOrNull { action ->
+                val bounds=Rect();action.getBoundsInScreen(bounds)
+                var parent=action.parent
+                while(parent!=null && !parent.isScrollable)parent=parent.parent
+                val viewport=Rect().also {(parent ?: automation.rootInActiveWindow)?.getBoundsInScreen(it)}
+                action.isEnabled && action.isVisibleToUser && !bounds.isEmpty && viewport.contains(bounds)
+            };node!=null
         }
         assertTrue(node!!.performAction(AccessibilityNodeInfo.ACTION_CLICK))
         inst.waitForIdleSync()
@@ -143,7 +149,7 @@ class DiscoverEditorialAcceptanceTest {
         val originalConsent=app.catalogOnline.enabled.value
         val oldLocales=AppCompatDelegate.getApplicationLocales()
         val oldFont=shell("settings get system font_scale").trim()
-        val calls=AtomicInteger();val cancelled=AtomicInteger()
+        val calls=AtomicInteger();val cancelled=AtomicInteger();val obsoleteStarted=AtomicInteger()
         val available=AtomicBoolean(true);val invalid=AtomicBoolean(false)
         val adapter=object:ProviderAdapter by OpenOpusAdapter(){override val intervalMillis=0L}
         val cacheDirectory=File(app.cacheDir,"discover-editorial-test-cache")
@@ -152,7 +158,7 @@ class DiscoverEditorialAcceptanceTest {
             check(app.catalogOnline.enabled.value && available.get())
             calls.incrementAndGet()
             val query=URLDecoder.decode(request.url.substringAfter("/omnisearch/").substringBeforeLast('/'),"UTF-8")
-            if(query=="obsolete")try {awaitCancellation()} finally {cancelled.incrementAndGet()}
+            if(query=="obsolete")try {obsoleteStarted.incrementAndGet();awaitCancellation()} finally {cancelled.incrementAndGet()}
             if(invalid.get())ProviderResponse(200,"{}".toByteArray())
             else ProviderResponse(200,fixture(responses[query] ?: "empty"),mapOf("Cache-Control" to "max-age=0"))
         },{app.catalogOnline.enabled.value && available.get()},cache=FileProviderCache(cacheDirectory))
@@ -228,7 +234,7 @@ class DiscoverEditorialAcceptanceTest {
                 enter("obsolete");await("Slow request did not start"){calls.get()==before+2}
                 click(L.s(R.string.discover_artists));Thread.sleep(100)
                 click(L.s(R.string.discover_all))
-                enter("Chopin");await("Obsolete request was not cancelled"){cancelled.get()==1}
+                enter("Chopin");await("Obsolete request was not cancelled"){cancelled.get()>=1 && cancelled.get()==obsoleteStarted.get()}
                 await("Composer missing"){has("Frédéric Chopin")}
                 capture("en-light-auto-chopin")
                 // Every required public query runs through native parsing/intake/search.
