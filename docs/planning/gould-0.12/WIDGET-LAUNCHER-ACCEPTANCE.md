@@ -41,15 +41,14 @@ is IN PROGRESS; Stable remains blocked by all outstanding mandatory gates.
 - [x] Actual app Appearance → Dark updates all three widgets with readable dark
   surfaces/ink, preserving context, total and verified status.
 - [x] CZ locale selected through real Settings; dark normal/200% captures inspected.
-- [ ] Complete remaining accent and larger-size combinations.
+- [x] Remaining accent refresh: actualGold→Rose→Gold through Appearance; persisted snapshot tracks both changes/new generation; settled launcher captures inspected and originalGold restored. All required larger-size combinations are recorded below. Zero-activity profile does not visually exercise nonzero accent-colored bars.
 - [x] Actual added Quick 2×2 and 4×1 layouts; 4×1 normal/200% Czech dark captures inspected. Original Quick restored2×1 and Weekly4×2; added ID5 retained on adjacent page.
 - [x] Opt-in actual-host unavailable/stale/accessibility probe passes on all3 then-visible instances: honest localized descriptions, actionable roots, minimum48dp bounds, unchanged persisted cache.
 - [x] Added4×1 instance independently opens the same Interrupted00:00:07 practice with Resume.
 - [x] Settled offline reboot after Gradle completion: no ANR since boot, live original widgets, Weekly tap opens same Interrupted00:00:07/Resume.
 - [x] Offline reboot/post-reboot recovery/tap and controlled real-host stale/unavailable display; date/timezone logic reuses unchanged host tests.
 - [x] Final ALL28 database tables exact,3 WAV hashes exact, integrity/FK PASS; original widget IDs retained, system locale/theme/font1 restored.
-- [ ] Source-bound evidence manifest, Issue dashboard/history, Project, PMP and
-  local handoff/checklist synchronization.
+- [x] Source-bound evidence manifest, Issue dashboard/history, ProjectInProgress and canonicalPMP/checkpoint synchronization at05a92c8/f62e41c, retained history.
 - [ ] Remaining finite full UI matrix, security/privacy/licensing/performance and
   final clean trusted non-debuggable Stable artifact/in-place upgrade/release gates.
 
@@ -137,3 +136,18 @@ for the recorded passing run; current adjacent-page placement does not meet that
 probe precondition. Do not misclassify a fixture mismatch as an application result.
 
 created by stokonn with love <3
+
+## Recovered final accent/readback evidence
+
+Production source02c5298/f62e41c, debugAPK614521a6…. Actual Gold→Rose→Gold
+selection and live snapshot refresh verified (generated1793301370951 →
+1793301447405 →1793301487200). Settled widget-accent-rose and
+widget-accent-gold-restored actual launcher PNGs retained; Rose PNG inspected.
+Full private readback after UI: ALL28 tables and3WAV hashes exact vs original
+protected-before baseline; integrityok/FKempty. Font1/window default restored;
+subsequent interrupted DataStorage locale venue is Czech with system-following
+theme, originalGold; restore system-following language when that visual check ends.
+Evidence: .gradle/gould012-checks/samsung-blockers/accent-*-full.tar,
+profile-after-final-ui.tar, profile-final-ui-integrity.json. No practice seeded
+for colors, no nonzero-Rose-bar visualPASS. New metronome correction does not
+change these widget/DataStorage production inputs.

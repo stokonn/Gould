@@ -1,0 +1,21 @@
+{
+  "base": "f62e41cfa877de2110f49d98b37c413f725ae679",
+  "root_cause": "Queued stale start/stop cleanup can release latest playback before ownership check",
+  "ci_failed_run": 40937907162,
+  "ci_counts": {
+    "tests": 269,
+    "passed": 255,
+    "failures": 1,
+    "errors": 0,
+    "skips": 13
+  },
+  "pre_fix_controlled_native": "FAIL1/1,0.108s, stale start released latest actual AudioTrack",
+  "fixed_host": "PASS3m53s;393JVM/48suites;lint0errors165warnings1hint;debug/testAPK",
+  "fixed_api36": "StudioControls6/6 PASS3.773s",
+  "fixed_api26": "Affected2/2 PASS0.298s;28tables/37sessions/1draft/8WAV exact; integrity/FK PASS",
+  "apk_sha256": "f62854078215bc2d9434b268d349658cee65f7968ea7f69e9ddecc1314cdcf30",
+  "signer_sha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+  "full_corrected_ci": "PENDING",
+  "owner_physical": "Galaxy A55 owner-reported PASS3 at02c5298, Issue41comment6505538907; no agent phone use",
+  "signature": "created by stokonn with love <3"
+}

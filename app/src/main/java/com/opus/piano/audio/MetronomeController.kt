@@ -11,12 +11,13 @@ import java.util.concurrent.atomic.AtomicLong
 
 /** Application owner of a bounded AudioTrack loop. Stops on focus/route/lifecycle loss;
  * never starts automatically and never writes to the journal or capture pipeline. */
-class MetronomeController(context: Context) {
+class MetronomeController internal constructor(context: Context, dispatcher: CoroutineDispatcher) {
+    constructor(context: Context) : this(context, Dispatchers.IO)
     data class State(val bpm: Int = 80, val beats: Int = 4, val playing: Boolean = false, val failed: Boolean = false,
         val starting: Boolean = false, val appliedBpm: Int = 80, val appliedBeats: Int = 4)
     private val app = context.applicationContext
     private val manager = app.getSystemService(AudioManager::class.java)
-    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    private val scope = CoroutineScope(SupervisorJob() + dispatcher)
     private val mutex = Mutex()
     private val generation = AtomicLong()
     private val requested = java.util.concurrent.atomic.AtomicBoolean(false)
@@ -29,7 +30,7 @@ class MetronomeController(context: Context) {
         override fun onReceive(context: Context?, intent: Intent?) { if (intent?.action == AudioManager.ACTION_AUDIO_BECOMING_NOISY) stop() }
     }
     fun configure(bpm: Int, beats: Int) {
-        mutable.value = mutable.value.copy(bpm = bpm.coerceIn(40,240), beats = beats.coerceIn(1,12))
+        mutable.update { it.copy(bpm = bpm.coerceIn(40,240), beats = beats.coerceIn(1,12)) }
         if (requested.get()) start()
     }
     // Musical playback belongs to media volume, independently of UI/system sounds.
@@ -39,11 +40,12 @@ class MetronomeController(context: Context) {
     fun start() {
         requested.set(true)
         val request = generation.incrementAndGet()
-        mutable.value = mutable.value.copy(starting=true,failed=false)
+        mutable.update { it.copy(starting=true,failed=false) }
         scope.launch {
             mutex.withLock {
-                cleanup()
+                // A superseded launch must not tear down a newer track that won the lock.
                 if (request != generation.get()) return@withLock
+                cleanup()
                 val settings = mutable.value
                 var candidate: AudioTrack? = null
                 try {
@@ -76,7 +78,7 @@ class MetronomeController(context: Context) {
                     cleanup()
                     if (request == generation.get()) {
                         requested.set(false)
-                        mutable.value = mutable.value.copy(playing=false,starting=false,failed=true)
+                        mutable.update { it.copy(playing=false,starting=false,failed=true) }
                     }
                 }
             }
@@ -84,12 +86,17 @@ class MetronomeController(context: Context) {
     }
     fun stop() {
         requested.set(false)
-        generation.incrementAndGet()
-        mutable.value = mutable.value.copy(playing=false,starting=false)
-        scope.launch { mutex.withLock { cleanup() } }
+        val request = generation.incrementAndGet()
+        mutable.update { it.copy(playing=false,starting=false) }
+        scope.launch {
+            mutex.withLock {
+                // A later explicit start owns its own cleanup and playback.
+                if (request == generation.get()) cleanup()
+            }
+        }
     }
     private fun cleanup() {
-        mutable.value = mutable.value.copy(playing = false)
+        mutable.update { it.copy(playing = false) }
         track?.let { runCatching { it.stop() }; it.release() }; track = null
         focus?.let { manager.abandonAudioFocusRequest(it) }; focus = null
         if (routeRegistered) { runCatching { app.unregisterReceiver(noisy) }; routeRegistered = false }

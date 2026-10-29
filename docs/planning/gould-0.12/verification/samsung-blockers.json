@@ -132,5 +132,15 @@
     "Required CI/full API36 suite and upgrade on exact committed source",
     "API26 affected compatibility smoke for current font/media/header delta",
     "Residual finite widget/app UI/security/privacy/licensing/performance and final clean non-debuggable production artifact/upgrade/release gates"
-  ]
+  ],
+  "owner_physical_acceptance": {
+    "device": "Samsung Galaxy A55",
+    "source": "02c529851af1192e77c59ff76e01461fb893ef8e",
+    "category": "owner-reported physical-device manual PASS; not agent-operated",
+    "confirmation": "https://github.com/stokonn/Gould/issues/41#issuecomment-6505538907",
+    "metronome_media_routing": "PASS",
+    "tux_rendering": "PASS",
+    "library_previous_alignment": "PASS",
+    "additional_coverage_inferred": false
+  }
 }

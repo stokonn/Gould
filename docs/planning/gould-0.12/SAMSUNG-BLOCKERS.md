@@ -1,3 +1,5 @@
+> Owner acceptance synchronized — Samsung Galaxy A55: the owner personally installed the0.12-dev debug build containing02c5298 and reports metronome media routing, Tux ASCII rendering and Library Previous alignment PASS. Durable confirmation: [Issue41 comment6505538907](https://github.com/stokonn/Gould/issues/41#issuecomment-6505538907). This is owner-reported physical-device manual acceptance, not agent-operated testing; no additional device/audio/locale coverage is inferred. Full CI40937907162 atf62e41c failed solely the metronome native test with a5000ms timeout (269cases/255pass/1failure/13skips); acceptance subset PASS. Focused diagnosis is in progress; no unchanged full-suite rerun or timeout increase. All other mandatory gates remain binding, Phase2 In Progress, no Stable/main/tag.
+
 # Gould0.12 — owner-reported Samsung corrections
 
 ## Owner-reported Samsung Stable blockers — 2026-10-29
@@ -152,3 +154,16 @@ The files named data-storage actually show Settings (normal) or scrolled Setting
 (large), not the Data & Storage screen. They are INVALID for that screen's visual
 acceptance; recapture the actual destination rather than claiming the matrix passed.
 No additional exploratory accessibility scope is introduced.
+
+### Recovered actual Data & Storage captures
+
+The actual destination was subsequently opened via its row (not Settings section
+heading). Inspected actual-data-storage-en-light-normal and en-light-backup PNGs:
+consent defaults, disposable-cache warning, JSON/audio exclusions and privacy
+disclosures and all four export/restore buttons readable. Actual320dp/font2
+normal/backup/json-actions/audio-actions captures retained: JSON buttons fully
+visible/reachable by scrolling, ZIP privacy disclosure reflows; file named
+audio-actions still shows the disclosure rather than ZIP buttons, so its button
+reachability remains pending (do not inferPASS from filename). No export/import/
+restore/cache-clear action was invoked. Next CzechLight destination capture
+exists; locale restoration/further finite cells pending after metronome priority.

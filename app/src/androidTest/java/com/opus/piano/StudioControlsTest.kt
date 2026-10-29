@@ -97,6 +97,35 @@ class StudioControlsTest {
             assertEquals(1,db.studioDao().events().count {it.kind==StudioAchievementRules.PLAYBACK_VERIFIED})
         } finally {player.stopAndAwait();db.close();dir.deleteRecursively()}
     }
+    @Test fun supersededMetronomeJobsCannotReleaseTheLatestPlayback() {
+        // Model IO scheduling explicitly: the newest launch runs before older queued work.
+        val pending = mutableListOf<Runnable>()
+        val dispatcher = object : CoroutineDispatcher() {
+            override fun dispatch(context: kotlin.coroutines.CoroutineContext, block: Runnable) { pending += block }
+        }
+        val controller = MetronomeController(context, dispatcher)
+        try {
+            controller.start()
+            controller.configure(200, 5)
+            pending.removeAt(pending.lastIndex).run()
+            assertTrue("Newest configuration must start", controller.state.value.playing)
+            assertEquals(200, controller.state.value.appliedBpm)
+            pending.removeAt(0).run()
+            assertTrue("Superseded start must retain latest playback", controller.state.value.playing)
+
+            controller.stop()
+            assertFalse(controller.state.value.playing)
+            controller.start()
+            pending.removeAt(pending.lastIndex).run()
+            assertTrue("Explicit restart must start", controller.state.value.playing)
+            pending.removeAt(0).run()
+            assertTrue("Superseded stop must retain restarted playback", controller.state.value.playing)
+        } finally {
+            controller.stop()
+            while (pending.isNotEmpty()) pending.removeAt(0).run()
+            assertFalse(controller.state.value.playing)
+        }
+    }
     @Test fun nativeMetronomeStartsAndStopsWithoutCreatingPractice(): Unit = runBlocking {
         val controller=MetronomeController(context)
         val attributes = controller.playbackAttributes()
