@@ -4,6 +4,18 @@ Phase2 remains ONE IN-PROGRESS development stage. No main merge, release build, 
 publication. Owner unattended release authorization/visual waiver remain valid once every
 mandatory gate passes. This document is the authoritative handoff for the next agent.
 
+## Post-checkpoint addendum (same session, after `f2757dc`)
+
+The widget fixture blocker described above was resolved **without discarding the protected
+interrupted draft**: `activeAndPausedWidgetTaps…`'s blank-token precondition was analyzed in
+source and found load-bearing (`PracticeEngine.begin` reuses a non-blank token, and the test's
+`finally { pause(); reset() }` would then delete the fixture), so it was left unchanged; instead
+a fresh pristine AVD `gould012-pristine` (API36, `emulator-5590`, qemu=1) was created and
+**WidgetTest passed 8/8** there — three full-class runs plus each formerly blocked test
+individually OK(1). Logs: `.gradle/gould012-checks/widget-pristine-5590*.log`. The profile
+emulator-5582 was stopped cleanly beforehand (data preserved on disk). Widget unit cases are
+now complete; the actual launcher matrix and all other gates listed below remain open.
+
 ## Current Git / continuity state
 
 - Branch `feature/gould-0.12`, HEAD `791b36d9bceed9147b85390aab0c6a98b2f6020f`, **pushed and
