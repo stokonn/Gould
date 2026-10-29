@@ -1,6 +1,6 @@
 # FAQ & Troubleshooting — Gould
 
-> Current development source uses Gould branding. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+> Gould 0.12 development documentation. These features are implemented on `feature/gould-0.12`; full emulator and release acceptance is still in progress. The latest published release remains [Goldberg 0.11 Stable](https://github.com/stokonn/Gould/releases/tag/v0.11). Historical sections below retain their original evidence.
 
 
 **Does my journal upload?** No. Practice, notes, drafts/recovery and backups remain local. Online provider queries process their necessary network metadata; the catalogue backend has no journal-upload endpoint.
@@ -10,6 +10,12 @@
 **Why are older metadata rights unknown?** A retained local snapshot is not new publication evidence. The original cache and personal records are preserved. Check Sources & credits or refresh through an approved provider when permitted.
 
 **Can I replace the app to fix a signature error?** Preserve your data and contact support; do not uninstall to bypass it. The 0.11 APK uses the existing trusted certificate. Send minimal support details to stokonn.us@gmail.com, never credentials or an entire journal by default.
+
+**Why is a recording missing after a JSON-only restore?** JSON carries its metadata. Transfer the separately exported media archive to restore its actual bytes. A missing file is shown as unavailable; it is not silently recreated.
+
+**Does Pause stop a take?** Practice Pause freezes credit. Explicit recording continues through silence until Stop recording or Finish & Review. Reopening the app after interruption does not restart capture; inspect Previous for explicit recovery.
+
+**Can a widget start recording?** No. Widget taps only open the existing Studio state. Start or resume practice and recording explicitly in the app.
 
 created by stokonn with love <3
 

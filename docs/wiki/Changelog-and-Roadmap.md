@@ -1,8 +1,14 @@
+# Gould 0.12 — development
+
+> Gould 0.12 development documentation. These features are implemented on `feature/gould-0.12`; full emulator and release acceptance is still in progress. The latest published release remains [Goldberg 0.11 Stable](https://github.com/stokonn/Gould/releases/tag/v0.11). Historical sections below retain their original evidence.
+
+Implemented: explicit local WAV recording and recovery/media archive controls; Studio metronome, durable queue/Undo/notes; Previous history/recordings and local playback; centered Profile and persistent editor drafts; six evidence-based badges and durable notices; both adaptive launcher widgets; corrected original ASCII Tux and subtle local Home landscape. Full acceptance and Stable publication remain pending.
+
 # Changelog & Roadmap — Goldberg 0.11
 
 0.11 Stable integrates the approved Music Database Update: shared Discover/Library catalogue, sourced details, optional provider search, offline bundles/cache and verified Android work. Personal data and backup compatibility are preserved.
 
-The existing public catalogue API is read-only and currently empty. Backend OAuth, community writes and practice sync remain disabled. No future-version scope or live integration is implied. Historical v0.11-rc.1 is preserved unchanged; no additional RC was created.
+The existing public catalogue API is read-only and currently empty. Backend OAuth, community writes and practice sync remain disabled. No future-version scope or live integration is implied. The privately backed-up obsolete v0.11-rc.1 prerelease/assets were removed by owner-authorized maintenance; its tag and all Stable history remain. No additional RC was created.
 
 [0.11 release](https://github.com/stokonn/Gould/releases/tag/v0.11) · [Exact validation and limits](https://github.com/stokonn/Gould/blob/main/docs/releases/GOLDBERG-0.11.md).
 

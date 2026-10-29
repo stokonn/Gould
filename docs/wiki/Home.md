@@ -1,6 +1,6 @@
 # Gould
 
-> Current development source uses Gould branding. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+> Gould 0.12 development documentation. These features are implemented on `feature/gould-0.12`; full emulator and release acceptance is still in progress. The latest published release remains [Goldberg 0.11 Stable](https://github.com/stokonn/Gould/releases/tag/v0.11). Historical sections below retain their original evidence.
 
 
 Goldberg is a native Android practice journal with a shared music catalogue in Discover and Library, sourced encyclopedia details, offline bundles and Smart Cache. Your repertoire, practice history, drafts and backups stay local.

@@ -1,6 +1,6 @@
 # User Guide — Gould
 
-> Current development source uses Gould branding. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+> Gould 0.12 development documentation. These features are implemented on `feature/gould-0.12`; full emulator and release acceptance is still in progress. The latest published release remains [Goldberg 0.11 Stable](https://github.com/stokonn/Gould/releases/tag/v0.11). Historical sections below retain their original evidence.
 
 
 Use Library for your personal repertoire and the shared local catalogue, and Discover to explore sourced music records. Both tabs open the same canonical catalogue details. Public catalogue rows are labelled separately from music saved in your repertoire; open details to add an eligible work or open its existing repertoire entry.
@@ -8,6 +8,22 @@ Use Library for your personal repertoire and the shared local catalogue, and Dis
 Search uses saved catalogue data first. Automatic online provider search requires Settings consent. Source and licence information is available in Sources & credits. Existing cached metadata is retained; a local snapshot without its original provider response does not acquire approved rights merely by being copied.
 
 Manual and Smart Practice, session review, piece attribution, history, profile and backups remain local. Keep unfinished recovery data until it has been successfully recovered or separately exported. Network or catalogue failures do not authorize deleting the journal or draft.
+
+## Studio and local audio in 0.12
+
+Studio keeps credited practice time separate from recording duration. Manual timing, Smart Practice and explicit audio recording share the existing practice coordinator and one microphone owner. Smart Practice is experimental. It analyzes transient sound to estimate active practice; it does not identify a piano perfectly. Recording starts only after explicit Record audio consent. Pause affects practice credit; an explicitly started take continues through silence until Stop recording or Finish & Review. Recovery never restarts the microphone automatically.
+
+Expand Metronome for tempo and beats per bar. It stops when Studio leaves the foreground. Pieces played opens the session queue: choose, reorder or remove future intentions and use Undo for the latest queue change. Existing credited intervals remain assigned to the piece that earned them. Session and piece notes use the same durable draft as timing.
+
+The upper-right Previous action opens separate Practice History and Recordings tabs. Local recordings retain the title/composer and piece changes captured during the take. Open a saved recording to play, pause or seek; export its WAV through the Android file picker. Playback stops before capture. Deletion requires confirmation. Interrupted audio offers explicit recovery or unchanged original-byte export; do not delete it while recovery is unresolved. Existing external recording links remain separate.
+
+## Profile, badges and widgets in 0.12
+
+Profile presents four centered statistics in a 2×2 grid. The editor offers composer and era suggestions while preserving manual entries. Draft edits survive interruption. Leaving a changed editor offers Save, Discard or Keep editing; successful persistence is required before a save is acknowledged.
+
+Existing badges and unlock dates are retained. Six new badges use persisted practice, notes, verified recording and listening evidence. Unlock notices queue in the app and defer during active practice. Their View Badge action opens the corresponding badge.
+
+Add Quick Practice and Weekly Activity from the Android launcher widget picker. Both open Studio without starting a timer or microphone. Quick Practice reflects the current or interrupted draft. Weekly Activity uses credited practice on Monday–Sunday local calendar days, with compact and expanded layouts. An unavailable or stale snapshot is labelled; it is not a newly verified zero. The widgets work from local data without online catalogue consent.
 
 created by stokonn with love <3
 

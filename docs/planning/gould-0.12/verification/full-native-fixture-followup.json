@@ -1,0 +1,36 @@
+{
+  "source": "1d06f0830d013ec443071982cf55651d8218ebed",
+  "run": 40849112564,
+  "native": {
+    "tests": 262,
+    "passed": 249,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 11
+  },
+  "failure": "Two WidgetTest empty-fixture preconditions; actual recording test retained its own synthetic paused draft",
+  "correction_source": "2c5420cb21fa0323083fc05609b65c66f8372814",
+  "rerun": 40871204814,
+  "acceptance_subset": "PASS; debug rebuilt baseline with CI signer; not production artifact upgrade",
+  "reports": [
+    {
+      "path": "app/build/outputs/androidTest-results/connected/debug/TEST-emulator-5554 - 16-_app-.xml",
+      "sha256": "1164e5f083cc9fc878e3ee9209a7fc0c59b12e7801f971c5dc4af7daffe88c68"
+    }
+  ],
+  "corrected_run": {
+    "source": "2c5420cb21fa0323083fc05609b65c66f8372814",
+    "run": 40871204814,
+    "native": {
+      "tests": 262,
+      "passed": 251,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 11
+    },
+    "acceptance_subset": "PASS",
+    "required_automatic_ci": "3/3 PASS",
+    "raw_log_sha256": "313cacef2214a5e1437ee173622f68f4b39c35c0beef0f57517b39e6444cbf9f",
+    "skips": "Two separately acquired provider/portrait fixture tests plus nine explicitly opt-in synthetic preservation/kill/reboot probes. Separate applicable execution pending; no skips promoted to PASS."
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "source": "1d06f0830d013ec443071982cf55651d8218ebed",
+  "serial": "emulator-5584",
+  "sdk": 26,
+  "actual_process_termination": true,
+  "cold_start_no_capture_service": true,
+  "original_draft_exact": true,
+  "legacy_sessions": 37,
+  "saf_original_export_exact": true,
+  "explicit_recovery_pcm_exact": true,
+  "wav_bytes": 1323052,
+  "samples": 661504,
+  "sample_rate": 22050,
+  "sha256": "816cb1c3761994e4c323e4e28d92f921b351553f629dc793a3409d00c316927f",
+  "original_sha256": "865f495a71b5fc7cc579c5ab9e28946576ecf83edf1516d029b02d875c2d6052",
+  "limits": "Emulator input; no acoustic piano/physical-device fidelity claim. Full UI/ZIP/widget/Stable acceptance still pending.",
+  "actual_playback_pause_seek_resume_ui": {
+    "paused-player": [
+      "00:00:03 / 00:00:30"
+    ],
+    "paused-stable": [
+      "00:00:03 / 00:00:30"
+    ],
+    "seek-paused": [
+      "00:00:21 / 00:00:30"
+    ],
+    "resume-after-seek": [
+      "00:00:23 / 00:00:30"
+    ]
+  },
+  "saf_saved_export_exact": true,
+  "archive_export": {
+    "source": "1d06f0830d013ec443071982cf55651d8218ebed",
+    "serial": "emulator-5584",
+    "sdk": 26,
+    "actual_saf_json": {
+      "version": 6,
+      "schema": 11,
+      "sha256": "451e76505f13cb3f84b00cc00aa56c1d2b36d97c798475b5d53c707bda68d878"
+    },
+    "actual_saf_zip": {
+      "audio_entries": 4,
+      "all_bytes_hashes_exact": true,
+      "sha256": "49fdf8e35de0b0b893b80788a06ce75215130ec79a00c882d0a5652091b3431c"
+    },
+    "restore": "pending"
+  }
+}

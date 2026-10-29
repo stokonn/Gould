@@ -1,11 +1,13 @@
 # Credits & Licenses — Gould
 
-> Current development source uses Gould branding. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+> Gould 0.12 development documentation. These features are implemented on `feature/gould-0.12`; full emulator and release acceptance is still in progress. The latest published release remains [Goldberg 0.11 Stable](https://github.com/stokonn/Gould/releases/tag/v0.11). Historical sections below retain their original evidence.
 
 
 Source facts, encyclopedic prose, portraits, scores and recordings have different rights. Catalogue details retain source/licence/attribution information; an entity identifier or deceased composer does not license media. Provider metadata ingestion retains the existing source policies. Metadata lacking its original response stays unknown/unreviewed, rather than receiving an invented licence.
 
 No new records were imported into the public cloud catalogue by this release. Draft source/licence proposals remain review drafts; they were not blindly merged or treated as ingest authorization. Existing project, font, artwork and source credits below remain preserved. See the [privacy notice](https://github.com/stokonn/Gould/blob/main/docs/PRIVACY.md) for processing information.
+
+The 0.12 Home quote card uses original AI-generated landscape artwork authorized for this project, not a third-party photograph or a copy of the private moodboard. Its production hash and provenance are recorded in `docs/design/gould-0.12/PRODUCTION-ASSETS.md`. The quotation source and translator credits remain unchanged. Private design references are excluded from the app and public repository.
 
 created by stokonn with love <3
 

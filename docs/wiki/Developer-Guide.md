@@ -1,9 +1,9 @@
 # Developer Guide — Gould
 
-> Current development source uses Gould branding. The latest published release is Goldberg 0.11 Stable; historical screenshots and release evidence below describe that release. No Gould 0.12 features are claimed.
+> Gould 0.12 development documentation. These features are implemented on `feature/gould-0.12`; full emulator and release acceptance is still in progress. The latest published release remains [Goldberg 0.11 Stable](https://github.com/stokonn/Gould/releases/tag/v0.11). Historical sections below retain their original evidence.
 
 
-The application remains native Kotlin/Compose/Material3 with application ID com.opus.piano. Personal Room schema10 in opus.db is authoritative; catalogue schema1 is separate and disposable. Backup format5 and readers1–4 are retained. Database Simplifier changes catalogue reads and idempotent local compatibility import, without destructive migration or personal-row replacement.
+The application remains native Kotlin/Compose/Material3 with application ID com.opus.piano. Personal Room schema11 in opus.db is authoritative; catalogue schema1 is separate and disposable. Additive migration10→11 adds local audio/associations, achievement events and durable unlock notices. Backup format6 retains readers1–5; optional media archives validate byte hashes and paths separately. Database Simplifier changes catalogue reads and idempotent local compatibility import, without destructive migration or personal-row replacement.
 
 Library and Discover use the existing DiscoverRepository/LocalCatalogueStore and canonical detail route. Legacy provider response replay preserves source hashes/licences; normalized-only snapshots retain unknown rights. The existing public Worker exposes two catalogue GET routes with a read-only origin role, verified TLS and disabled query caching; OAuth/community writes stay off.
 

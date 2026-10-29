@@ -1,5 +1,18 @@
 # Gould0.12 — current single-stage implementation checkpoint
 
+## Current verification checkpoint — 2026-10-29, source2c5420c
+
+- **Required automatic CI3/3 PASS**, and [full API36 native + upgrade run40871204814 PASS](https://github.com/stokonn/Gould/actions/runs/40871204814). Canonical XML totals:262 cases,251 passed,0 failures/errors,11 fixture/probe-dependent skips. Two separately acquired provider/portrait cases and nine opt-in synthetic migration/restore/process-death/reboot probes still need separate applicable execution; skips are not passes. The preceding failed run remains preserved.
+- Actual API26 visible recording consent → capture → intentional app force-stop → cold start produced a recoverable take with no restarted capture service. The original3s draft payload/updatedAt and37 sessions remained exact. Android SAF export of interrupted bytes is byte-identical; explicit recovery retains all661504 PCM samples at22050Hz,1323052-byte WAV SHA256 `816cb1c3761994e4c323e4e28d92f921b351553f629dc793a3409d00c316927f`. Actual player pause remains3s across observations, seek moves to21s and resume advances23s. Saved WAV SAF export is byte-identical. Emulator input only; no acoustic piano fidelity claim.
+- Actual SAF format6/schema11 JSON and journal/audio ZIP validate; all4 actual audio entries match manifest sizes/hashes and recovered PCM. Same-state restore UI validation is in progress. Evidence: [audio UI](verification/actual-audio-ui-recovery-api26.json), [native CI](verification/full-native-fixture-followup.json).
+- EN/CZ, Light/Dark,320/360/412dp and1/1.5/2 font extreme captures exist; only inspected scenes count as review. Full meaningful visual/accessibility/widget matrix remains open. The temporary driver now excludes decorative headings and derives scroll gestures from the actual viewport. Earlier Data & Storage captures showing Settings root are invalid for backup-page acceptance and are retained as diagnostics. Official open-source Google TalkBack QA-tool build is in progress with isolated throwaway signing; no spoken/TalkBack PASS inferred.
+- English Wiki sources now describe implemented0.12 behavior and format6/schema11 while clearly retaining0.11 as latest published Stable. No Wiki publication or Stable claim is implied. App inputs/debug APK remain unchanged from1d06f08,393JVM host and affected API26 evidence retained. Owner unattended conditional publication/visual waiver remain applicable.
+
+**Phase2 remains IN PROGRESS.** Complete actual UI/widgets/editor/queue/IME/TalkBack, remaining applicable synthetic/backup/recording/privacy/security/licensing/performance, then final clean trusted non-debuggable Stable artifact/upgrade gates. No main merge/tag/release build/publication. API36 + API26 only; no physical phone. Preserve all15 private references and original drafts/recordings.
+
+Historical chronological checkpoints below retain their original source-bound scope; this current dashboard supersedes their pending implementation descriptions.
+
+
 Branch: feature/gould-0.12; planning ancestor29bb4d1, canonical main ef82898.
 Issue41 / milestone5 / Goldberg Development InProgress, High, Feature, Version0.12.
 Owner approved full scope and icon15, plus conditional main/Stable authorization;
