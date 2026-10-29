@@ -1,0 +1,44 @@
+{
+  "base": "e2e0b0a",
+  "branch": "feature/gould-0.12",
+  "host": {
+    "command": ":app:testDebugUnitTest :app:assembleDebug :app:assembleDebugAndroidTest :app:lintDebug --offline --no-daemon --max-workers=1 -Dorg.gradle.jvmargs=-Xmx2g -Pkotlin.compiler.execution.strategy=in-process",
+    "result": "PASS 7m28s before bounded native corrections and layout follow-up",
+    "jvm": 393,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "lint_errors": 0,
+    "lint_warnings": 165,
+    "lint_hints": 1,
+    "followup": "Targeted JVM/build PASS3m33s after native fixes; final layout debug/testAPK PASS2m43s. Final lint/full native still required."
+  },
+  "native": {
+    "target": "emulator-5582 / API36 / qemu=1",
+    "initial": "RecordingLifecycle6 + StudioRecording4:10/10 PASS",
+    "combined": "34 executed:32PASS,2FAIL (static AudioTrack initial state; optional fixture indices), retained diagnostics",
+    "corrected": "13/13 affected native cases PASS0.643s including RecordingLifecycle7, repository4, migration1 and metronome1",
+    "final_layout": "2/2 affected WidgetTest PASS0.379s including actual host-font-change freshness footer measurement",
+    "full_suite": "PENDING"
+  },
+  "actual_microphone": {
+    "flow": "visible Studio consent -> actual emulator AudioRecord -> Stop -> saved WAV",
+    "rate": 22050,
+    "channels": 1,
+    "frames": 2054144,
+    "duration_ms": 93158,
+    "bytes": 4108332,
+    "sha256": "4fd881e67f2472f26348effde76cb83606c7cb5de714fd1df4f4a7758f1b57b1",
+    "limits": "Emulator input; acoustic piano and route fidelity not inferred. Original retained."
+  },
+  "scripts": "localization1199/policy/migration DDL1-10\u219211/historic backup fixtures PASS; fixed history query extractor then106-session paging/legacy association PASS",
+  "final_debug_apk_sha256": "571d2a9608826735f3b0cc497c43886dfbe361f55014ad821c8ac02fb62e48cf",
+  "source_manifest_sha256": "4e2c19d664c0a3e52e34b4d884a09c34a7b520d88e278c8b609234330b39feb0",
+  "pending": [
+    "Full native and required CI on checkpoint",
+    "Actual badge/control/player/archive and final widget font-change renders",
+    "API26 compatibility, full migration/backup/recovery/upgrade/security/signing/artifact/visual acceptance",
+    "Rapid capture stop/restart service ownership audit and regressions"
+  ],
+  "release": "BLOCKED; mandatory gates pending; owner personal visual sign-off waived, emulator QA mandatory"
+}

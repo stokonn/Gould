@@ -74,10 +74,15 @@ class OpusApplication : Application() {
     val catalogueRepertoire by lazy { com.opus.piano.data.catalogue.CatalogueRepertoire(database) }
     val practiceRepository by lazy { PracticeRepository(database, repository) }
     private val practiceDelegate = lazy {
-        com.opus.piano.practice.PracticeCoordinator(practiceRepository).also { com.opus.piano.widgets.WidgetRefresh.watchPractice(this, it) }
+        com.opus.piano.practice.PracticeCoordinator(practiceRepository).also {
+            it.finishRecording = { recording.stop() }
+            com.opus.piano.widgets.WidgetRefresh.watchPractice(this, it)
+        }
     }
     val practice by practiceDelegate
     fun currentPracticeForWidgets(): com.opus.piano.practice.PracticeCoordinator? = if (practiceDelegate.isInitialized()) practice else null
+    val localPlayback by lazy { com.opus.piano.audio.LocalPlaybackController(this, LocalRecordingRepository(database, java.io.File(filesDir,"recordings"))) }
+    val metronome by lazy { com.opus.piano.audio.MetronomeController(this) }
     val recording by lazy { com.opus.piano.audio.RecordingController(LocalRecordingRepository(database, java.io.File(filesDir,"recordings"))) }
     val achievements by lazy { AchievementStore(database) }
     val recordings by lazy { RecordingRepository(database) }

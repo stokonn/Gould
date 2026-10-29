@@ -103,7 +103,7 @@ object WidgetRenderer {
                 val title = if (practice.freePractice) L.s(R.string.msg_free_practice_524f) else practice.title
                 "$state · $title"
             } ?: L.s(R.string.widget_unavailable)
-            text(R.id.widget_title, if (titleOnly) L.fixed("Practice") else L.s(R.string.widget_open_studio), true)
+            text(R.id.widget_title, if (width < 180f) L.fixed("Studio") else L.s(R.string.widget_open_studio), true)
             views.setTextViewTextSize(R.id.widget_title, TypedValue.COMPLEX_UNIT_SP, if (titleOnly) 13f else 15f)
             text(R.id.widget_context, label)
             text(R.id.widget_status, status)
@@ -140,7 +140,7 @@ object WidgetRenderer {
             views.setTextViewTextSize(R.id.widget_value, TypedValue.COMPLEX_UNIT_SP, if (compact) 16f else 24f)
             views.setViewVisibility(R.id.widget_chart, if (showChart) View.VISIBLE else View.GONE)
             views.setViewVisibility(R.id.widget_details, if (expanded) View.VISIBLE else View.GONE)
-            views.setViewVisibility(R.id.widget_title, if (compact && font > 1.25f) View.GONE else View.VISIBLE)
+            views.setViewVisibility(R.id.widget_title, if (compact) View.GONE else View.VISIBLE)
             views.setViewVisibility(R.id.widget_context, if (compact) View.GONE else View.VISIBLE)
             if (compact) {
                 val padding = (8 * context.resources.displayMetrics.density).toInt()

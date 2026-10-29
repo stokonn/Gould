@@ -221,3 +221,35 @@ is unchanged-source history, not a fresh complete gate for this batch. Remaining
 critical audio/Studio/player/archive and final acceptance gates block publication.
 Next coherent batch: serialize writer lifecycle, fix resumed Activity recording
 start, await finalization at a frozen practice boundary and repair notification Stop.
+
+
+### Studio integrity and controls batch — 2026-10-29, implementation in progress
+
+- [x] Serialized capture writer lifecycle, identity-checked retained callbacks, synced interrupted files and recoverable preparation identity.
+- [x] Visible Activity context and honest foreground-start failure; removed arbitrary Finish delay; frozen practice credit before awaited finalization; record-only notification Stop implemented.
+- [x] Actual API36 native recording lifecycle6 + prior repository4:10/10 PASS on intermediate audio source. Actual UI consent→AudioRecord→Stop saved93.158s WAV,22050Hz/mono/PCM16/4108332bytes, SHA2564fd881e67f2472f26348effde76cb83606c7cb5de714fd1df4f4a7758f1b57b1. Acoustic performance is not established.
+- [ ] Verify combined queue intent/order/one-level Undo persistence with stable interval indexes, piece/session note fields and bounded manual metronome. Sources/tests added; full host gate running.
+- [ ] Verify async lifecycle/focus/seek/pause player, advancing-playback achievement evidence, keyset audio pages, explicit recovery and failure-retaining deletion. Sources/tests added.
+- [ ] Verify explicit SAF journal+audio archive UI, durable pending receipts and active-capture restore rejection/locking. High-risk native backup regression added.
+- [ ] Complete badge equal-row layout, full launcher/UI/native/data/upgrade/security/CI/release matrix. No acceptance inferred from source presence.
+
+Full batch log: .gradle/gould012-checks/studio-combined-host.log. Previous failed metronome syntax attempt retained in studio-controls-targeted.log and corrected before this gate. Remaining functions and acceptance still block Stable.
+
+
+### Corrected native and layout checkpoint — 2026-10-29
+
+Native retest13/13 PASS (RecordingLifecycle7/StudioRecording4/schema10→11 migration1/
+metronome1),0.643s. Corrected both genuine failures from the34-case run; do not hide
+that failed run. Delayed startup reconciliation cannot interrupt the current live
+take. Final widget RemoteViews/font-change footer2/2 PASS,0.379s; final targeted
+debug/test APK build2m43s PASS. Source/evidence in verification/studio-controls-
+checkpoint.json. Full393JVM host gate and lint0errors/165warnings/1hint preceded
+these bounded native/layout fixes; final lint/full native remain pending.
+Current required quality CI e2e0b0a failure40832264736 is the same paging extractor
+bug now fixed locally; backend and maintenance CI passed. No unchanged CI retry.
+New source checkpoint must be pushed then quality/full native/acceptance verified.
+Additional source audit to finish: rapid recording stop/new-start service ownership
+and capture-start acknowledgment; do not promote final audio acceptance prematurely.
+Actual new controls/badge/player/archive flow and full widget/font/theme/locale/
+reboot/rollover matrix, API26, seeded trusted upgrade, security/release and required
+CI remain pending. No Stable tag/build/publication or main integration performed.

@@ -23,15 +23,22 @@ class OpusViewModel(private val repository: OpusRepository, private val saved: S
     val timer = practice.state
     val message = practice.notice
     val recordingState = recording.state
-    fun startRecording() = viewModelScope.launch {
+    fun startRecording(visibleContext: android.content.Context) = viewModelScope.launch {
         try {
+            (appContext.applicationContext as com.opus.piano.OpusApplication).localPlayback.stopAndAwait()
             val t = practice.state.value
             val title = t.selected?.title ?: L.s(R.string.msg_recording_title)
             val composer = t.selected?.composer ?: ""
             val rate = com.opus.piano.audio.RecordingController.selectRate()
             recording.start(rate, title, composer, t.token.takeIf { it.isNotBlank() })
-            com.opus.piano.service.SmartPracticeService.startRecording(appContext)
-        } catch (c: kotlinx.coroutines.CancellationException) { throw c }
+            if (!com.opus.piano.service.SmartPracticeService.startRecording(visibleContext)) {
+                recording.interrupt("ForegroundStartRejected")
+                practice.notice.value = L.s(R.string.msg_cannot_start_microphone_while_goldberg_is_no_ee1e)
+            }
+        } catch (c: kotlinx.coroutines.CancellationException) {
+            kotlinx.coroutines.withContext(kotlinx.coroutines.NonCancellable) { recording.interrupt("StartCancelled") }
+            throw c
+        }
         catch (_: Exception) { practice.notice.value = L.s(R.string.msg_record_error) }
     }
     fun stopRecording() = viewModelScope.launch {
@@ -42,6 +49,9 @@ class OpusViewModel(private val repository: OpusRepository, private val saved: S
     fun select(piece: Piece?) = practice.command { select(piece) }
     fun selectPart(index: Int) { timer.value.parts.getOrNull(index)?.let { p -> select(p.pieceId?.let { Piece(it, p.title, p.composer, catalogWorkId = p.catalogWorkId, musicalEra = p.musicalEra) }) } }
     fun remove(index: Int) = practice.command { remove(index) }
+    fun move(index: Int, delta: Int) = practice.command { move(index, delta) }
+    fun undoQueue() = practice.command { undoQueue() }
+    fun sessionNotes(text: String) = practice.command { sessionNotes(text, state.value.reflection) }
     fun note(index: Int, text: String) = practice.command { note(index, text) }
     fun focus(piece: Piece): Boolean { if (timer.value.saving || timer.value.status == "Review") return false; select(piece); return true }
     fun toggle() = practice.command { if (state.value.running) pause() else start(false) }

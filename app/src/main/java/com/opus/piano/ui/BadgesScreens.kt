@@ -42,7 +42,24 @@ private fun localDate(timestamp: Long): String = DateTimeFormatter.ofLocalizedDa
         when (sort) { "Rarity" -> filtered.sortedByDescending { it.definition.rarity.ordinal }; "Name" -> filtered.sortedBy { it.definition.localizedName }; "Recently unlocked" -> filtered.sortedByDescending { it.unlockedAt ?: Long.MIN_VALUE }; else -> filtered }
     }
     val minCard = if (LocalDensity.current.fontScale > 1.35f) 180.dp else 136.dp
-    LazyVerticalGrid(columns = GridCells.Adaptive(minCard), modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    BoxWithConstraints(Modifier.fillMaxSize()) {
+    val density = LocalDensity.current
+    val columns = (((maxWidth - 40.dp + 12.dp) / (minCard + 12.dp)).toInt()).coerceAtLeast(1)
+    val textWidth = with(density) { ((maxWidth - 40.dp - 12.dp * (columns-1)) / columns - 24.dp).roundToPx().coerceAtLeast(1) }
+    val measurer = androidx.compose.ui.text.rememberTextMeasurer()
+    val titleStyle = MaterialTheme.typography.titleMedium
+    val rarityStyle = MaterialTheme.typography.labelSmall
+    val detailStyle = MaterialTheme.typography.bodySmall
+    val details = matches.map { badge -> if (badge.unlocked) L.s(R.string.msg_unlocked_localdate_badge_unlockedat_5f9a,localDate(badge.unlockedAt!!)) else badge.definition.localizedRequirement }
+    // Real localized text determines shared slots; no fixed line limits or font shrinking.
+    fun slot(texts: List<String>, style: androidx.compose.ui.text.TextStyle) = with(density) {
+        (texts.maxOfOrNull { measurer.measure(it,style,constraints=androidx.compose.ui.unit.Constraints(maxWidth=textWidth)).size.height } ?: 0).toDp()
+    }
+    val titleHeight = slot(matches.map { it.definition.localizedName },titleStyle)
+    val rarityHeight = slot(matches.map { L.fixed(it.definition.rarity.label) },rarityStyle)
+    val detailHeight = slot(details,detailStyle)
+    val progressHeight = slot(matches.map { it.localizedProgressText },detailStyle)
+    LazyVerticalGrid(columns = GridCells.Fixed(columns), modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item(span = { GridItemSpan(maxLineSpan) }) { Heading(L.s(R.string.msg_the_permanent_collection_1719), L.s(R.string.msg_badges_2c57), L.s(R.string.msg_your_musical_achievements_496e)) }
         error?.let { message -> item(span = { GridItemSpan(maxLineSpan) }) { CatalogFeedback(message) { model.retryEvaluation() } } }
         item(span = { GridItemSpan(maxLineSpan) }) {
@@ -65,21 +82,27 @@ private fun localDate(timestamp: Long): String = DateTimeFormatter.ofLocalizedDa
         if (matches.isEmpty() && badges.isNotEmpty()) item(span = { GridItemSpan(maxLineSpan) }) { Panel { Text(L.s(R.string.msg_no_achievements_in_this_selection_yet_5a00), color = MaterialTheme.colorScheme.onSurfaceVariant) } }
         items(matches, key = { it.definition.id }) { badge ->
             Surface(onClick = { detail(badge.definition.id) }, shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
-                Column(Modifier.padding(12.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    androidx.compose.animation.Crossfade(badge.unlocked, label = "Badge unlock") { unlocked ->
-                        MedalArtwork(badge.copy(unlockedAt = if (unlocked) badge.unlockedAt else null), Modifier.size(100.dp))
+                Column(Modifier.fillMaxWidth().padding(12.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    MedalArtwork(badge,Modifier.size(100.dp))
+                    Box(Modifier.fillMaxWidth().height(titleHeight),contentAlignment=Alignment.Center) {
+                        Text(badge.definition.localizedName,style=titleStyle,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
                     }
-                    Text(badge.definition.localizedName, style = MaterialTheme.typography.titleMedium)
-                    Text(L.fixed(badge.definition.rarity.label), style = MaterialTheme.typography.labelSmall, color = if (badge.unlocked) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant)
-                    if (badge.unlocked) Text(L.s(R.string.msg_unlocked_localdate_badge_unlockedat_5f9a, (localDate(badge.unlockedAt!!))), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    else {
-                        Text(badge.definition.localizedRequirement, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        LinearProgressIndicator(progress = { badge.fraction }, modifier = Modifier.fillMaxWidth().height(3.dp))
-                        Text(badge.localizedProgressText, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Box(Modifier.fillMaxWidth().height(rarityHeight),contentAlignment=Alignment.Center) {
+                        Text(L.fixed(badge.definition.rarity.label),style=rarityStyle,color=if(badge.unlocked) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
+                    }
+                    Box(Modifier.fillMaxWidth().height(detailHeight),contentAlignment=Alignment.TopCenter) {
+                        Text(if(badge.unlocked) L.s(R.string.msg_unlocked_localdate_badge_unlockedat_5f9a,localDate(badge.unlockedAt!!)) else badge.definition.localizedRequirement,
+                            style=detailStyle,color=MaterialTheme.colorScheme.onSurfaceVariant,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
+                    }
+                    if(!badge.unlocked) LinearProgressIndicator(progress={badge.fraction},modifier=Modifier.fillMaxWidth().height(3.dp))
+                    else Spacer(Modifier.height(3.dp))
+                    Box(Modifier.fillMaxWidth().height(progressHeight),contentAlignment=Alignment.TopCenter) {
+                        if(!badge.unlocked) Text(badge.localizedProgressText,style=detailStyle,color=MaterialTheme.colorScheme.onSurfaceVariant,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
                     }
                 }
             }
         }
+    }
     }
 }
 

@@ -332,7 +332,11 @@ class ProfileViewModel(app: Application, private val savedState: SavedStateHandl
     fun restore() = backupAction {
         val raw = pending ?: error(L.s(R.string.msg_select_a_backup_again_ca8b))
         (getApplication<Application>() as OpusApplication).practice.replacing(preservesRecovery=true) {
-            (getApplication<Application>() as OpusApplication).catalogRepository.restoreJournal { backup.restore(raw) }
+            val app = getApplication<Application>() as OpusApplication
+            app.recording.whileIdle {
+                app.localPlayback.stopAndAwait(); app.metronome.stop()
+                app.catalogRepository.restoreJournal { backup.restore(raw) }
+            }
         }; pending = null; preview.value = null; notice.value = L.s(R.string.msg_backup_restored_52ad)
     }
 }

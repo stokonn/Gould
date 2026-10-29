@@ -124,7 +124,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
             AlertDialog(onDismissRequest = { shownNotice = null; acknowledge(notice) }, icon = { MedalArtwork(badge, Modifier.size(80.dp)) },
                 title = { Text(badge.definition.localizedName) },
                 text = { Text("${L.fixed(badge.definition.rarity.label)} · ${badge.definition.localizedDescription}") },
-                confirmButton = { JournalTextButton(onClick = { shownNotice = null; acknowledge(notice); nav.navigate("BADGES") }) { Text(L.s(R.string.msg_view_badge)) } },
+                confirmButton = { JournalTextButton(onClick = { shownNotice = null; acknowledge(notice); nav.navigate("badge/${notice.achievementId}") }) { Text(L.s(R.string.msg_view_badge)) } },
                 dismissButton = { JournalTextButton(onClick = { shownNotice = null; acknowledge(notice) }) { Text(L.s(R.string.msg_dismiss_11a3)) } })
         }
     }

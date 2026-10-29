@@ -525,3 +525,56 @@ is unchanged-source history, not a fresh complete gate for this batch. Remaining
 critical audio/Studio/player/archive and final acceptance gates block publication.
 Next coherent batch: serialize writer lifecycle, fix resumed Activity recording
 start, await finalization at a frozen practice boundary and repair notification Stop.
+
+
+### Combined Studio host and native audit — 2026-10-29
+
+Implemented serialized recording lifecycle and resumed-Activity startup, frozen
+Finish boundary/notification Stop; persistent stable-index queue/Undo and notes;
+bounded deterministic manual metronome; async lifecycle/focus/pause/seek playback
+with verified advancing-playback events; keyset recordings/recovery/delete retry;
+explicit SAF audio archive/receipt UI and live-capture restore guards.
+Full meaningful host gate studio-combined-host.log PASS7m28s:393JVM/0failures/errors/
+skips, debug/testAPK and lint0errors/165warnings/1hint. Localization1199/policy,
+host migration1–10→11 DDL and historic backup fixtures pass. Paging checker query
+extractor swallowed the newer widget query; fixed bounded extraction then all106
+sessions/4pages/ties/catalogue/legacy/newer-insert assertions PASS.
+Actual combined native run34:32PASS,2FAIL, retained studio-combined-native.log.
+Failures: static AudioTrack is NO_STATIC_DATA until initial write (fixed state
+check order); migration test fixture wrongly required optional schema indices
+(fixed optJSONArray while retaining all existing indexes). Native retest running
+in studio-native-fixes.log, plus new delayed-startup reconcile regression.
+Actual consent→microphone→Stop saved93.158s/22050Hz/monoPCM16 WAV4108332bytes,
+SHA2564fd881e67f2472f26348effde76cb83606c7cb5de714fd1df4f4a7758f1b57b1;
+original remains on emulator. No acoustic-piano fidelity is inferred.
+Offline large-font widget tap opened Studio ready/no auto-start; first assertion
+was obscured by genuine First Take popup, dismissed before Start Practice check.
+Normal and2× Tux inspected (2× horizontally scrollable text, Close visible).
+Refreshed2× weekly chart/week/verified label fit; transient old RemoteViews after
+font change clipped the footer. New pinned footer/flexible chart and short compact
+Studio title fix this; native footer regression and actual retest pending.
+Badge cards now measure real localized slots at available width for equal size/
+alignment without clipping/shrinking; popup View Badge routes to actual detail.
+API26 required compatibility image installed; not booted/tested yet.
+Next: finish corrected native/layout checks, checkpoint/push, then complete full
+mandatory native/launcher/visual/data/upgrade/security/CI/release gates. Stable
+remains blocked by unverified mandatory acceptance, never by waived owner sign-off.
+
+
+### Corrected native and layout checkpoint — 2026-10-29
+
+Native retest13/13 PASS (RecordingLifecycle7/StudioRecording4/schema10→11 migration1/
+metronome1),0.643s. Corrected both genuine failures from the34-case run; do not hide
+that failed run. Delayed startup reconciliation cannot interrupt the current live
+take. Final widget RemoteViews/font-change footer2/2 PASS,0.379s; final targeted
+debug/test APK build2m43s PASS. Source/evidence in verification/studio-controls-
+checkpoint.json. Full393JVM host gate and lint0errors/165warnings/1hint preceded
+these bounded native/layout fixes; final lint/full native remain pending.
+Current required quality CI e2e0b0a failure40832264736 is the same paging extractor
+bug now fixed locally; backend and maintenance CI passed. No unchanged CI retry.
+New source checkpoint must be pushed then quality/full native/acceptance verified.
+Additional source audit to finish: rapid recording stop/new-start service ownership
+and capture-start acknowledgment; do not promote final audio acceptance prematurely.
+Actual new controls/badge/player/archive flow and full widget/font/theme/locale/
+reboot/rollover matrix, API26, seeded trusted upgrade, security/release and required
+CI remain pending. No Stable tag/build/publication or main integration performed.

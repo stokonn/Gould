@@ -84,6 +84,22 @@ class WidgetTest {
             }
         }
     }
+    @Test fun weeklyFreshnessFooterRemainsInsideHostAtLargeFontsBeforeProviderRefresh() {
+        InstrumentationRegistry.getInstrumentation().runOnMainSync {
+            val normal = context.createConfigurationContext(Configuration(context.resources.configuration).apply { fontScale = 1f })
+            val large = context.createConfigurationContext(Configuration(context.resources.configuration).apply { fontScale = 2f })
+            val data = snapshot()
+            // RemoteViews can be retained by the launcher while its font changes.
+            val view = WidgetRenderer.view(normal,data,false,99,280f,220f).apply(large,FrameLayout(large))
+            val density = large.resources.displayMetrics.density
+            val width = (280*density).toInt(); val height = (220*density).toInt()
+            view.measure(View.MeasureSpec.makeMeasureSpec(width,View.MeasureSpec.EXACTLY),View.MeasureSpec.makeMeasureSpec(height,View.MeasureSpec.EXACTLY))
+            view.layout(0,0,width,height)
+            val footer = view.findViewById<TextView>(R.id.widget_status)
+            assertTrue(footer.text.isNotBlank())
+            assertTrue("Freshness footer clipped after host font change",footer.bottom <= height && footer.top >= 0)
+        }
+    }
     @Test fun widgetRegistrationsAndImmutablePerInstanceActivityIntentsAreCorrect() {
         val names = AppWidgetManager.getInstance(context).installedProviders.filter { it.provider.packageName == context.packageName }
         assertEquals(setOf(QuickPracticeWidget::class.java.name, WeeklyActivityWidget::class.java.name), names.map { it.provider.className }.toSet())

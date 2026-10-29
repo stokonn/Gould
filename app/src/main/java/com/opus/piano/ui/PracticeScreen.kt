@@ -13,6 +13,9 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.History
+import androidx.compose.material.icons.outlined.ArrowUpward
+import androidx.compose.material.icons.outlined.ArrowDownward
+import com.opus.piano.practice.visibleQueue
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.*
@@ -41,6 +44,8 @@ import com.opus.piano.service.SmartPracticeService
     var convert by remember { mutableStateOf(false) }
     var discard by remember { mutableStateOf(false) }
     var choose by remember { mutableStateOf(false) }
+    var notesExpanded by androidx.compose.runtime.saveable.rememberSaveable { mutableStateOf(false) }
+    var metronomeExpanded by androidx.compose.runtime.saveable.rememberSaveable { mutableStateOf(false) }
     var expanded by remember { mutableStateOf(false) }
     var recordConsent by remember { mutableStateOf(false) }
     var permissionForRecording by remember { mutableStateOf(false) }
@@ -69,7 +74,7 @@ import com.opus.piano.service.SmartPracticeService
     }
     val permission = rememberLauncherForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
         if (result[Manifest.permission.RECORD_AUDIO] == true || ContextCompat.checkSelfPermission(context,Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
-            if (permissionForRecording) { permissionForRecording = false; model.startRecording() }
+            if (permissionForRecording) { permissionForRecording = false; model.startRecording(context) }
             else startSmart()
         }
         else { model.practice.captureIssue.value="PermissionDenied";model.practice.notice.value = L.s(R.string.msg_microphone_permission_denied_manual_practice_bac5) }
@@ -102,12 +107,7 @@ import com.opus.piano.service.SmartPracticeService
                 JournalTextButton(onClick={ recordConsent = true },enabled=timer.ready && recordingState.phase != com.opus.piano.audio.RecordingController.Phase.Preparing && recordingState.phase != com.opus.piano.audio.RecordingController.Phase.Finalizing,modifier=Modifier.fillMaxWidth()) { Text(L.s(R.string.msg_record_audio)) }
             }
             JournalTextButton(onClick={
-                // Finish practice: stop recording first, then review.
-                if (recordingState.phase == com.opus.piano.audio.RecordingController.Phase.Recording) {
-                    model.stopRecording()
-                    // Give the finalize a moment; review() will call releaseCapture which stops mic.
-                    kotlinx.coroutines.MainScope().launch { kotlinx.coroutines.delay(300); model.finish() }
-                } else model.finish()
+                model.finish()
             },enabled=timer.token.isNotEmpty() || timer.notes.isNotBlank() || timer.parts.any { it.notes.isNotBlank() },modifier=Modifier.fillMaxWidth()) { Text(L.s(R.string.msg_finish_review_04ae)) }
         }
     }) { padding ->
@@ -146,6 +146,14 @@ import com.opus.piano.service.SmartPracticeService
             Switch(smart,{ value -> if(!timer.running) { smart=value;profile.smartPreference(value) } },enabled=!timer.running,modifier=Modifier.semantics { contentDescription=L.fixed("Smart Practice") })
             Text(L.s(R.string.msg_smart_practice_experimental_34d8),Modifier.padding(start=12.dp))
         }
+        StudioMetronome(app.metronome, metronomeExpanded) { metronomeExpanded = !metronomeExpanded }
+        JournalTextButton(onClick = { notesExpanded = !notesExpanded }) { Text(L.s(R.string.msg_session_notes_a84f)) }
+        if (notesExpanded) {
+            OutlinedTextField(value = timer.notes, onValueChange = model::sessionNotes,
+                label = { Text(L.s(R.string.msg_session_notes_a84f)) }, modifier = Modifier.fillMaxWidth(), minLines = 2, maxLines = 5)
+            OutlinedTextField(value = timer.parts[timer.active].notes, onValueChange = { model.note(timer.active,it) },
+                label = { Text(L.s(R.string.msg_piece_notes_for_this_session_3a65)) }, modifier = Modifier.fillMaxWidth(), minLines = 2, maxLines = 5)
+        }
         if(timer.token.isNotEmpty()) JournalTextButton(onClick={discard=true}) { Text(L.s(R.string.msg_discard_session_38ed)) }
         JournalTextButton(onClick={expanded=!expanded}) { Text(L.s(R.string.practice_expand)) }
         if (expanded) {
@@ -156,12 +164,27 @@ import com.opus.piano.service.SmartPracticeService
                 DropdownMenuItem(text = { Text(L.s(R.string.msg_free_practice_524f)) },onClick = { model.select(null); choose = false })
                 library.pieces.forEach { piece -> DropdownMenuItem(text = { Text("${piece.title} · ${piece.composer}") },onClick = { model.select(piece); choose = false }) }
             }
-            timer.parts.forEachIndexed { i,p -> if (p.pieceId !in timer.removed) {
-                Row {
-                    JournalTextButton(onClick = { model.selectPart(i) },Modifier.weight(1f)) { Text(L.s(R.string.msg_if_i_timer_active_else_p_title_duration_p_du_9c1d, (if (i == timer.active) "▶ " else ""), (p.displayTitle), (duration(p.durationMillis)))) }
-                    if (p.pieceId != null) JournalTextButton(onClick = { model.remove(i) }) { Text(L.s(R.string.msg_remove_e963)) }
+            val queue = timer.visibleQueue()
+            if (timer.queueUndo != null) JournalTextButton(onClick = { model.undoQueue() }) { Text(L.s(R.string.studio_queue_undo)) }
+            queue.forEachIndexed { position, i ->
+                val p = timer.parts[i]
+                Column {
+                    JournalTextButton(onClick = { model.selectPart(i) }, Modifier.fillMaxWidth()) {
+                        Text(L.s(R.string.msg_if_i_timer_active_else_p_title_duration_p_du_9c1d,
+                            if (i == timer.active) "▶ " else "", p.displayTitle, duration(p.durationMillis)))
+                    }
+                    Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                        IconButton(onClick = { model.move(i,-1) }, enabled = position > 0) {
+                            Icon(Icons.Outlined.ArrowUpward,L.s(R.string.studio_queue_up))
+                        }
+                        IconButton(onClick = { model.move(i,1) }, enabled = position < queue.lastIndex) {
+                            Icon(Icons.Outlined.ArrowDownward,L.s(R.string.studio_queue_down))
+                        }
+                        if (p.pieceId != null) JournalTextButton(onClick = { model.remove(i) }) { Text(L.s(R.string.msg_remove_e963)) }
+                    }
                 }
-            } }
+            }
+
         }
         Text(L.s(R.string.msg_repertoire_notes_are_separate_session_notes_97f9))
         }
@@ -177,7 +200,7 @@ import com.opus.piano.service.SmartPracticeService
         recordConsent = false
         val permissions = mutableListOf(Manifest.permission.RECORD_AUDIO)
         if (Build.VERSION.SDK_INT >= 33) permissions += Manifest.permission.POST_NOTIFICATIONS
-        if (ContextCompat.checkSelfPermission(context,Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) model.startRecording()
+        if (ContextCompat.checkSelfPermission(context,Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) model.startRecording(context)
         else { permissionForRecording = true; permission.launch(permissions.toTypedArray()) }
     }) { Text(L.s(R.string.msg_record_audio)) } },dismissButton = { JournalTextButton(onClick = { recordConsent = false }) { Text(L.s(R.string.msg_cancel_77df)) } })
     if (convert) AlertDialog(onDismissRequest = { convert = false },title = { Text(L.s(R.string.msg_change_timing_mode_38a6)) },text = { Text(L.s(R.string.msg_this_becomes_a_mixed_session_existing_credit_768a)) },confirmButton = { JournalTextButton(onClick = { convert = false; start() }) { Text(L.s(R.string.msg_convert_continue_2747)) } },dismissButton = { JournalTextButton(onClick = { convert = false }) { Text(L.s(R.string.msg_cancel_77df)) } })

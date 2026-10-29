@@ -17,6 +17,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
@@ -78,75 +79,114 @@ import java.io.File
     }
 }
 
-/** Recordings tab: bounded newest-first paging, real durations, play/pause/export/delete. */
+/** Bounded keyset pages; foreground lifecycle-owned playback and explicit recovery. */
 @Composable private fun RecordingsTab() {
     val app = LocalContext.current.applicationContext as OpusApplication
-    val repository = remember { com.opus.piano.data.LocalRecordingRepository(app.database, java.io.File(app.filesDir, "recordings")) }
-    val recordings by repository.recordings.collectAsState(initial = emptyList())
-    val visible = recordings.filter { it.state == "Saved" || it.state == "Recoverable" }
-    var player by remember { mutableStateOf<MediaPlayer?>(null) }
-    var playingId by remember { mutableStateOf<String?>(null) }
+    val repository = remember { LocalRecordingRepository(app.database, File(app.filesDir,"recordings")) }
+    val player = app.localPlayback
+    val playback by player.state.collectAsState()
+    val owner = androidx.lifecycle.compose.LocalLifecycleOwner.current
+    var visible by remember { mutableStateOf<List<LocalAudio>>(emptyList()) }
+    var request by remember { mutableIntStateOf(0) }
+    var refresh by remember { mutableIntStateOf(0) }
+    var more by remember { mutableStateOf(true) }
+    var loading by remember { mutableStateOf(false) }
+    var failed by remember { mutableStateOf(false) }
     var deleting by remember { mutableStateOf<LocalAudio?>(null) }
     var exportItem by remember { mutableStateOf<LocalAudio?>(null) }
-    var playError by remember { mutableStateOf<String?>(null) }
+    var operationFailed by remember { mutableStateOf(false) }
+    var busy by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
+    DisposableEffect(owner,player) {
+        val observer = androidx.lifecycle.LifecycleEventObserver { _,event ->
+            if (event == androidx.lifecycle.Lifecycle.Event.ON_STOP) player.pause()
+        }
+        owner.lifecycle.addObserver(observer)
+        onDispose { owner.lifecycle.removeObserver(observer); player.stop() }
+    }
+    LaunchedEffect(request,refresh) {
+        loading = true; failed = false
+        try {
+            val cursor = visible.lastOrNull()
+            val page = app.database.studioDao().audioPage(cursor?.createdAt ?: Long.MAX_VALUE, cursor?.id ?: "~",31)
+            visible = (visible + page.take(30)).distinctBy { it.id }
+            more = page.size > 30
+        } catch (c: CancellationException) { throw c }
+        catch (_: Exception) { failed = true }
+        finally { loading = false }
+    }
+    fun reload() { visible = emptyList(); refresh++ }
     val exportLauncher = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("audio/wav")) { uri ->
         val item = exportItem; exportItem = null
         if (uri != null && item != null) scope.launch {
+            busy = true
             try {
                 withContext(Dispatchers.IO) {
-                    requireNotNull(app.contentResolver.openOutputStream(uri, "wt")).use { out ->
-                        repository.exportOriginal(item.id, out)
-                    }
+                    requireNotNull(app.contentResolver.openOutputStream(uri,"wt")).use { repository.exportOriginal(item.id,it) }
                 }
+                operationFailed = false
             } catch (c: CancellationException) { throw c }
-            catch (_: Exception) { playError = L.s(R.string.practice_unsaved) }
+            catch (_: Exception) { operationFailed = true }
+            finally { busy = false }
         }
     }
-    DisposableEffect(Unit) { onDispose { player?.release(); player = null } }
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(JournalSpace.page), verticalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
-        if (visible.isEmpty()) item { Text(L.s(R.string.msg_no_sessions_yet_your_practice_will_appear_he_37e7)) }
-        items(visible, key = { it.id }) { audio ->
+        item { JournalTextButton(onClick = { player.stop(); reload() }, enabled = !loading && !busy) { Text(L.s(R.string.practice_retry)) } }
+        if (!loading && !failed && visible.isEmpty()) item { Text(L.s(R.string.msg_no_sessions_yet_your_practice_will_appear_he_37e7)) }
+        items(visible,key = { it.id }) { audio ->
             JournalCard {
-                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
-                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(JournalSpace.tiny)) {
-                        Text(audio.title.ifBlank { L.s(R.string.msg_recording_title) }, style = MaterialTheme.typography.titleMedium, maxLines = 2, overflow = TextOverflow.Ellipsis)
-                        Text(localDateTime(audio.createdAt), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        if (audio.durationMillis > 0) Text(duration(audio.durationMillis), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        if (audio.state == "Recoverable") Text(L.s(R.string.msg_recording_interrupted), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.error)
-                    }
-                    IconButton(onClick = {
-                        if (playingId == audio.id) { player?.release(); player = null; playingId = null }
-                        else {
-                            player?.release(); player = null; playingId = null; playError = null
-                            scope.launch {
-                                try {
-                                    val file = withContext(Dispatchers.IO) { repository.playable(audio.id) }
-                                    val m = MediaPlayer().apply { setDataSource(file.absolutePath); prepare(); start() }
-                                    m.setOnCompletionListener { playingId = null; m.release(); if (player === m) player = null }
-                                    player = m; playingId = audio.id
-                                } catch (c: CancellationException) { throw c }
-                                catch (_: Exception) { playError = audio.id }
-                            }
+                Column(verticalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
+                    Text(audio.title.ifBlank { L.s(R.string.msg_recording_title) },style = MaterialTheme.typography.titleMedium)
+                    if (audio.composer.isNotBlank()) Text(audio.composer,style = MaterialTheme.typography.bodySmall)
+                    Text(localDateTime(audio.createdAt),style = MaterialTheme.typography.bodySmall,color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    if (audio.durationMillis > 0) Text(duration(audio.durationMillis),style = MaterialTheme.typography.labelMedium)
+                    if (audio.state != "Saved") Text(L.s(R.string.msg_recording_interrupted),color = MaterialTheme.colorScheme.error)
+                    Row(horizontalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
+                        if (audio.state == "Saved") IconButton(onClick = { player.play(audio.id) },enabled = !busy) {
+                            Icon(if (playback.id == audio.id && playback.playing) Icons.Outlined.Pause else Icons.Outlined.PlayArrow,
+                                L.s(if (playback.id == audio.id && playback.playing) R.string.msg_pause_7819 else R.string.studio_play))
                         }
-                    }) {
-                        Icon(if (playingId == audio.id) Icons.Outlined.Pause else Icons.Outlined.PlayArrow, L.s(R.string.msg_record_audio))
+                        IconButton(onClick = { exportItem = audio; exportLauncher.launch("Gould-recording-${audio.id}.wav") },enabled = !busy) {
+                            Icon(Icons.Outlined.FileDownload,L.s(R.string.studio_export_original))
+                        }
+                        IconButton(onClick = { deleting = audio },enabled = !busy) { Icon(Icons.Outlined.Delete,L.s(R.string.msg_delete_f6fd)) }
                     }
-                    IconButton(onClick = { exportItem = audio; exportLauncher.launch("${audio.title.ifBlank { "recording" }}.wav") }) {
-                        Icon(Icons.Outlined.Share, L.s(R.string.msg_record_audio))
-                    }
-                    if (audio.state == "Saved") IconButton(onClick = { deleting = audio }) {
-                        Icon(Icons.Outlined.Delete, L.s(R.string.msg_delete_f6fd))
+                    if (audio.state == "Recoverable") JournalSecondaryButton(enabled = !busy,onClick = {
+                        scope.launch {
+                            busy = true
+                            try { repository.recover(audio.id); operationFailed = false; reload() }
+                            catch (c: CancellationException) { throw c }
+                            catch (_: Exception) { operationFailed = true }
+                            finally { busy = false }
+                        }
+                    }) { Text(L.s(R.string.studio_recover_take)) }
+                    if (playback.id == audio.id) {
+                        if (playback.loading) LinearProgressIndicator(Modifier.fillMaxWidth())
+                        if (playback.duration > 0) {
+                            Text("${duration(playback.position)} / ${duration(playback.duration)}",style = MaterialTheme.typography.bodySmall)
+                            Slider(value = playback.position.toFloat().coerceIn(0f,playback.duration.toFloat()),
+                                onValueChange = { player.seek(it.toLong()) },valueRange = 0f..playback.duration.toFloat(),
+                                modifier = Modifier.semantics { contentDescription = L.s(R.string.studio_seek) })
+                        }
+                        if (playback.failed) Text(L.s(R.string.msg_recording_interrupted),color = MaterialTheme.colorScheme.error)
                     }
                 }
             }
         }
-        if (playError != null) item { Text(L.s(R.string.msg_recording_interrupted), color = MaterialTheme.colorScheme.error) }
+        if (loading) item { LinearProgressIndicator(Modifier.fillMaxWidth()) }
+        if (failed || operationFailed) item { Text(L.s(R.string.studio_audio_operation_failed),color = MaterialTheme.colorScheme.error) }
+        if (more && !loading && !failed) item { JournalTextButton(onClick = { request++ }) { Text(L.s(R.string.studio_older_recordings)) } }
     }
     deleting?.let { audio ->
-        AlertDialog(onDismissRequest = { deleting = null }, title = { Text(L.s(R.string.msg_delete_f6fd)) },
-            text = { Text(L.s(R.string.msg_remove_p_title_your_completed_practice_histo_32b9, (audio.title.ifBlank { L.s(R.string.msg_recording_title) }))) },
-            confirmButton = { JournalTextButton(onClick = { scope.launch { try { withContext(Dispatchers.IO) { repository.delete(audio.id) } } catch (_: Exception) { } }; deleting = null }) { Text(L.s(R.string.msg_delete_f6fd)) } },
-            dismissButton = { JournalTextButton(onClick = { deleting = null }) { Text(L.s(R.string.msg_keep_piece_c264)) } })
+        AlertDialog(onDismissRequest = { if (!busy) deleting = null }, title = { Text(L.s(R.string.msg_delete_f6fd)) },
+            text = { Column { Text(L.s(R.string.studio_delete_audio_confirm)); if (operationFailed) Text(L.s(R.string.studio_audio_operation_failed),color = MaterialTheme.colorScheme.error) } },
+            confirmButton = { JournalTextButton(enabled = !busy,onClick = { scope.launch {
+                busy = true
+                try { player.stopAndAwait(); repository.delete(audio.id); operationFailed = false; deleting = null; reload() }
+                catch (c: CancellationException) { throw c }
+                catch (_: Exception) { operationFailed = true }
+                finally { busy = false }
+            } }) { Text(L.s(R.string.msg_delete_f6fd)) } },
+            dismissButton = { JournalTextButton(enabled = !busy,onClick = { deleting = null }) { Text(L.s(R.string.msg_keep_466f)) } })
     }
 }

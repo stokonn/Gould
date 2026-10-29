@@ -174,6 +174,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
             Text(L.s(R.string.msg_keep_a_local_copy_of_your_journal_profile_an_8f6d))
             JournalPrimaryButton(onClick = { export.launch("Gould-backup.json") }, enabled = !busy) { Text(L.s(R.string.msg_export_backup_6043)) }
             JournalSecondaryButton(onClick = { restore.launch(arrayOf("application/json", "text/plain", "application/octet-stream")) }, enabled = !busy) { Text(L.s(R.string.msg_import_backup_1b40)) }
+            MediaBackupControls()
             Text(L.s(R.string.backup_v5_note))
             if(restoreState?.status=="pending") {
                 Text(L.s(R.string.backup_v5_pending))

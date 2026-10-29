@@ -1,9 +1,10 @@
 package com.opus.piano.audio
 
-import com.opus.piano.data.LocalAudio
 import com.opus.piano.data.LocalRecordingRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import java.util.concurrent.atomic.AtomicReference
 
 /** Recording state machine: Idle → Preparing → Recording → Finalizing → Saved, with Recoverable.
@@ -15,84 +16,105 @@ class RecordingController(
 ) {
     private val mutable = MutableStateFlow(State())
     val state = mutable.asStateFlow()
+    private val lifecycle = Mutex()
+    private val maintenanceRevision = java.util.concurrent.atomic.AtomicLong()
     private var writer: DurableWav? = null
-    private var activeId: String = ""
-    private var activeRate: Int = 0
-    private val writerLock = Object()
-    /** The capture loop reads this each iteration; null means no recording consumer.
-     *  Synchronized on writerLock to prevent append/finish races. */
+    @Volatile private var activeRate: Int = 0
+    private val writerLock = Any()
+    /** A capture iteration may retain a callback after detach. Its identity check under
+     * writerLock makes that callback harmless across stop, interruption and a new take. */
     val sink = AtomicReference<((ShortArray, Int) -> Unit)?>(null)
 
-    /** Explicit user action only. Durable identity precedes any sample. Never auto-called. */
+    /** Durable identity precedes samples. Transition completion survives caller cancellation. */
     suspend fun start(rate: Int, title: String, composer: String, token: String?) {
-        val current = mutable.value
-        check(current.phase == Phase.Idle || current.phase == Phase.Saved || current.phase == Phase.Recoverable) {
-            "Recording cannot start from ${current.phase}"
+        val revision = maintenanceRevision.get()
+        lifecycle.withLock {
+        check(revision == maintenanceRevision.get()) { "Retry recording after data maintenance" }
+        check(mutable.value.phase in setOf(Phase.Idle, Phase.Saved, Phase.Recoverable)) {
+            "Recording cannot start from ${mutable.value.phase}"
         }
-        mutable.value = current.copy(phase = Phase.Preparing)
-        try {
-            val (row, w) = repository.prepare(rate, title, composer, token)
-            activeId = row.id
-            activeRate = rate
-            writer = w
-            val safeAppend: (ShortArray, Int) -> Unit = { samples, count ->
-                synchronized(writerLock) { w.append(samples, count) }
+        withContext(NonCancellable) {
+            mutable.value = State(Phase.Preparing)
+            try {
+                val (row, w) = repository.prepare(rate, title, composer, token)
+                synchronized(writerLock) {
+                    writer = w
+                    activeRate = rate
+                    mutable.value = State(Phase.Recording, id = row.id, title = row.title,
+                        composer = row.composer, sessionToken = row.sessionToken)
+                    var samplesWritten = 0L
+                    sink.set { samples, count ->
+                        synchronized(writerLock) {
+                            if (writer === w && mutable.value.phase == Phase.Recording) {
+                                w.append(samples, count)
+                                samplesWritten += count
+                                val duration = samplesWritten * 1000 / rate
+                                // Publish at most ten duration updates per second.
+                                if (duration / 100 != mutable.value.durationMillis / 100)
+                                    mutable.value = mutable.value.copy(durationMillis = duration)
+                            }
+                        }
+                    }
+                }
+            } catch (error: Exception) {
+                val id = (error as? LocalRecordingRepository.PreparationFailure)?.recordingId.orEmpty()
+                mutable.value = State(Phase.Recoverable, id = id, error = error.message ?: "Storage")
+                throw error
             }
-            sink.set(safeAppend)
-            mutable.value = State(
-                Phase.Recording, id = row.id, title = row.title,
-                composer = row.composer, sessionToken = row.sessionToken
-            )
-        } catch (error: Exception) {
-            mutable.value = State(Phase.Recoverable, id = activeId, error = error.message ?: "Storage")
-            throw error
         }
     }
 
-    /** Stop recording and finalize audio. Never completes practice.
-     *  Safe to call while capture loop is still appending: writerLock serializes. */
-    suspend fun stop() {
+    }
+
+    /** Lock order is practice coordinator → recording lifecycle → backup repository. */
+    suspend fun <T> whileIdle(block: suspend () -> T): T = lifecycle.withLock {
+        check(mutable.value.phase !in setOf(Phase.Preparing, Phase.Recording, Phase.Finalizing)) { "Stop recording first" }
+        maintenanceRevision.incrementAndGet()
+        try { block() } finally { maintenanceRevision.incrementAndGet() }
+    }
+
+    private fun detach(): DurableWav? = synchronized(writerLock) {
+        sink.set(null)
+        activeRate = 0
+        writer.also { writer = null }
+    }
+
+    /** Serialized with interruption/new starts; detached callbacks cannot append to this take. */
+    suspend fun stop() = lifecycle.withLock {
         val current = mutable.value
-        if (current.phase != Phase.Recording) return
-        synchronized(writerLock) { sink.set(null) }
-        mutable.value = current.copy(phase = Phase.Finalizing)
-        val w = writer ?: run {
-            mutable.value = mutable.value.copy(phase = Phase.Recoverable, error = "Writer")
-            return
-        }
-        try {
-            val saved = repository.finalize(activeId, w)
-            writer = null
-            mutable.value = State(
-                Phase.Saved, id = saved.id, durationMillis = saved.durationMillis,
-                title = saved.title, composer = saved.composer
-            )
-        } catch (error: Exception) {
-            runCatching { repository.interrupted(activeId, "Finalize") }
-            writer = null
-            mutable.value = mutable.value.copy(phase = Phase.Recoverable, error = error.message ?: "Finalize")
-            throw error
+        if (current.phase != Phase.Recording) return@withLock
+        withContext(NonCancellable) {
+            val w = detach()
+            mutable.value = current.copy(phase = Phase.Finalizing)
+            try {
+                val saved = repository.finalize(current.id, checkNotNull(w))
+                mutable.value = State(Phase.Saved, id = saved.id, durationMillis = saved.durationMillis,
+                    title = saved.title, composer = saved.composer, sessionToken = saved.sessionToken)
+            } catch (error: Exception) {
+                withContext(Dispatchers.IO) { runCatching { w?.close() } }
+                runCatching { repository.interrupted(current.id, "Finalize") }
+                mutable.value = current.copy(phase = Phase.Recoverable, error = error.message ?: "Finalize")
+                throw error
+            }
         }
     }
 
-    /** Fatal capture error: detach sink, mark recoverable. Never silently continue. */
-    suspend fun interrupt(reason: String) {
+    /** Preserve and sync interrupted bytes. Recovery is a separate explicit user action. */
+    suspend fun interrupt(reason: String) = lifecycle.withLock {
         val current = mutable.value
-        if (current.phase == Phase.Recording || current.phase == Phase.Preparing) {
-            synchronized(writerLock) { sink.set(null) }
-            writer = null
-            runCatching { repository.interrupted(activeId, reason) }
-            mutable.value = current.copy(phase = Phase.Recoverable, error = reason)
+        if (current.phase != Phase.Recording) return@withLock
+        withContext(NonCancellable) {
+            val w = detach()
+            val closed = withContext(Dispatchers.IO) { runCatching { w?.close() } }
+            val marked = runCatching { repository.interrupted(current.id, reason) }
+            mutable.value = current.copy(phase = Phase.Recoverable,
+                error = if (closed.isFailure || marked.isFailure) "$reason: Storage" else reason)
         }
     }
 
-    /** Current sample rate for the capture loop; 0 if not recording. */
     fun currentRate(): Int = activeRate
-
-    /** Startup reconciliation only; never capture or automatic publication. */
-    suspend fun reconcile() { repository.reconcile() }
-
-    fun close() { scope.cancel() }
+    suspend fun reconcile() = lifecycle.withLock { repository.reconcile(mutable.value.id.takeIf { mutable.value.phase == Phase.Recording }) }
+    fun close() { scope.launch { try { interrupt("Closed") } finally { scope.cancel() } } }
 
     enum class Phase { Idle, Preparing, Recording, Finalizing, Saved, Recoverable }
 

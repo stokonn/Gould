@@ -112,4 +112,27 @@ class StudioBackupTest {
             assertTrue(target.studioDao().allAudio().isEmpty())
         }
     } }
+    @Test fun liveRecordingBlocksJournalAndMediaRestoreBeforePublication()=runBlocking { fixture { source,root ->
+        val original=take(source,root,41)
+        val text=backup(source,root).export()
+        val archive=java.io.ByteArrayOutputStream()
+        MediaBackupRepository(context,source,File(root,"audio"),File(root,"operations"),backup(source,root)).export(archive)
+        fixture { target,targetRoot ->
+            val repo=LocalRecordingRepository(target,File(targetRoot,"audio"))
+            val (live,writer)=repo.prepare(16000,"Live destination","",null)
+            writer.append(ShortArray(1600){7},1600)
+            val bytes=File(targetRoot,"audio/${live.id}.wav.part").readBytes()
+            try {
+                try {backup(target,targetRoot).restore(text);fail("Must reject live capture")} catch(_:IllegalArgumentException) { }
+                val media=MediaBackupRepository(context,target,File(targetRoot,"audio"),File(targetRoot,"operations"),backup(target,targetRoot))
+                val operation=media.receive(archive.toByteArray().inputStream())
+                try {media.restore(operation);fail("Must reject before publication")} catch(_:IllegalArgumentException) { }
+                assertArrayEquals(bytes,File(targetRoot,"audio/${live.id}.wav.part").readBytes())
+                assertFalse(File(targetRoot,"audio/${original.id}.wav").exists())
+                assertEquals("Recording",target.studioDao().audio(live.id)!!.state)
+                assertTrue(operation in media.pendingOperations())
+            } finally {writer.close()}
+        }
+    } }
+
 }

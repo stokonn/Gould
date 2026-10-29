@@ -78,6 +78,7 @@ class MediaBackupRepository(
         require(rows.values.none {it.state in setOf("Preparing","Recording","Finalizing","Deleting")})
     }
     suspend fun restore(id:String)=withContext(Dispatchers.IO){gate.withLock {
+        require(db.studioDao().allAudio().none { it.state in setOf("Preparing","Recording","Finalizing","Deleting") }) { "Stop recording and finish pending deletion before restore" }
         val staged=RecordingArchive.inspect(operation(id))
         journal.validate(staged.journal);validateMedia(staged)
         audioDirectory.mkdirs()

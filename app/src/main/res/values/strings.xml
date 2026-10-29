@@ -1190,4 +1190,33 @@
     <string name="widget_details">%1$s · %2$s</string>
     <string name="widget_hours_short">%1$s h</string>
     <string name="widget_accessibility">%1$s. %2$s. %3$s. Opens Studio without starting or resuming practice.</string>
+
+    <!-- Gould 0.12 Studio controls -->
+    <string name="studio_metronome">Metronome</string>
+    <string name="studio_tempo">Tempo: %1$d BPM</string>
+    <string name="studio_beats">Beats per bar: %1$d</string>
+    <string name="studio_start_clicks">Start metronome</string>
+    <string name="studio_stop_clicks">Stop metronome</string>
+    <string name="studio_clicks_error">Metronome unavailable. Check audio output and retry.</string>
+    <string name="studio_less_tempo">Slower tempo</string>
+    <string name="studio_more_tempo">Faster tempo</string>
+    <string name="studio_less_beats">Fewer beats</string>
+    <string name="studio_more_beats">More beats</string>
+    <string name="studio_queue_undo">Undo queue change</string>
+    <string name="studio_queue_up">Move earlier in queue</string>
+    <string name="studio_queue_down">Move later in queue</string>
+    <string name="studio_play">Play recording</string>
+    <string name="studio_seek">Recording position</string>
+    <string name="studio_export_original">Export original recording</string>
+    <string name="studio_recover_take">Recover recording</string>
+    <string name="studio_older_recordings">Show older recordings</string>
+    <string name="studio_delete_audio_confirm">Delete this local audio file? Practice history and earned achievements will be kept.</string>
+    <string name="studio_audio_operation_failed">Audio operation failed. The original and recovery data are retained; retry or export the unchanged original.</string>
+    <string name="studio_archive_disclosure">Optional journal and audio ZIP: includes private recordings and recoverable original bytes. Store it privately; allow space for staging and verified restore. JSON backups remain journal-only.</string>
+    <string name="studio_archive_stop_first">Stop recording before audio backup or restore.</string>
+    <string name="studio_archive_export">Export journal and audio ZIP</string>
+    <string name="studio_archive_import">Restore journal and audio ZIP</string>
+    <string name="studio_archive_retry">Review pending audio restore</string>
+    <string name="studio_archive_complete">Audio archive operation completed.</string>
+    <string name="studio_archive_confirm">Restore this verified archive? It replaces journal and settings using the protected backup flow and merges audio without overwriting originals. A destination snapshot and recovery receipts are retained.</string>
 </resources>

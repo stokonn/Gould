@@ -9,7 +9,9 @@ db=sqlite3.connect(':memory:')
 for entity in schema['entities']:
     db.execute(entity['createSql'].replace('${TABLE_NAME}',entity['tableName']))
 source=(root/'app/src/main/java/com/opus/piano/data/PracticeData.kt').read_text()
-sql=re.search(r'@Query\("""(.*?)"""\)\s*suspend fun historyPage',source,re.S).group(1)
+queries=re.findall(r'@Query\("""((?:(?!""").)*)"""\)\s*suspend fun historyPage',source,re.S)
+assert len(queries)==1, "Expected exactly the historyPage query, without adjacent Room annotations"
+sql=queries[0]
 for i in range(1,106):
     db.execute('INSERT INTO sessions(id,pieceId,pieceTitle,startedAt,completedAt,durationMillis) VALUES(?,NULL,?,1,?,60000)',(i,f'Session {i}',i//3))
     for unused in range(2):

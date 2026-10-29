@@ -105,6 +105,7 @@ class SmartPracticeService : Service() {
                 }
             }
         } catch (_: Exception) {
+            scope.launch { recording.interrupt("ForegroundStartFailed") }
             microphone?.stop(); practice.notice.value = L.s(R.string.msg_microphone_service_could_not_start_keep_gold_2f00)
             stopForeground(STOP_FOREGROUND_REMOVE); stopSelf()
         }
@@ -112,7 +113,7 @@ class SmartPracticeService : Service() {
     private fun notification(status: String): Notification {
         val state = practice.state.value
         fun action(name: String) = PendingIntent.getBroadcast(this, if (name == PAUSE) 1 else 2,
-            Intent(this,PracticeActionReceiver::class.java).setAction(name).putExtra("token",state.token).putExtra("execution",state.execution), PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+            Intent(this,PracticeActionReceiver::class.java).setAction(name).putExtra("token",state.token).putExtra("execution",state.execution).putExtra("recordingId",recording.state.value.id), PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
         val open = PendingIntent.getActivity(this,0,Intent(this,MainActivity::class.java).putExtra("practice",true).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
         val recordingActive = recording.state.value.phase == RecordingController.Phase.Recording
         val title = if (recordingActive && !state.running) L.s(R.string.msg_studio_recording) else L.s(R.string.msg_goldberg_smart_practice_73e7)
@@ -121,10 +122,11 @@ class SmartPracticeService : Service() {
             status == "Listening" -> L.s(R.string.msg_listening_for_piano_playing_93b1)
             else -> L.fixed(status)
         }
-        return NotificationCompat.Builder(this,CHANNEL).setSmallIcon(com.opus.piano.R.drawable.ic_goldberg_monochrome)
+        val builder = NotificationCompat.Builder(this,CHANNEL).setSmallIcon(com.opus.piano.R.drawable.ic_goldberg_monochrome)
             .setContentTitle(title).setContentText(text)
             .setContentIntent(open).setOngoing(true).setOnlyAlertOnce(true).setSilent(true).setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-            .addAction(0,L.fixed("Pause"),action(PAUSE)).addAction(0,L.fixed("Stop"),action(STOP)).build()
+        if (state.running) builder.addAction(0,L.fixed("Pause"),action(PAUSE))
+        return builder.addAction(0,L.fixed("Stop"),action(STOP)).build()
     }
     override fun onDestroy() { microphone?.stop(); scope.cancel(); super.onDestroy() }
     companion object {
@@ -146,13 +148,23 @@ class SmartPracticeService : Service() {
 }
 class PracticeActionReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val practice = (context.applicationContext as OpusApplication).practice
+        val app = context.applicationContext as OpusApplication
+        val practice = app.practice
         val token = intent.getStringExtra("token")
         val execution = intent.getLongExtra("execution",-1)
+        val audioId = intent.getStringExtra("recordingId")
+        val pending = goAsync()
         practice.command {
-            if (state.value.token == token && state.value.execution == execution && state.value.running) {
-                when (intent.action) { SmartPracticeService.PAUSE -> pause(); SmartPracticeService.STOP -> review() }
+            val sameSession = state.value.token == token && state.value.execution == execution
+            val sameRecording = !audioId.isNullOrEmpty() && app.recording.state.value.id == audioId &&
+                app.recording.state.value.phase == RecordingController.Phase.Recording
+            when (intent.action) {
+                SmartPracticeService.PAUSE -> if (sameSession && state.value.running) pause()
+                SmartPracticeService.STOP -> {
+                    if (sameSession && state.value.token.isNotEmpty()) review()
+                    else if (sameRecording) app.recording.stop()
+                }
             }
-        }
+        }.invokeOnCompletion { pending.finish() }
     }
 }

@@ -1194,4 +1194,33 @@
     <string name="widget_details">%1$s · %2$s</string>
     <string name="widget_hours_short">%1$s h</string>
     <string name="widget_accessibility">%1$s. %2$s. %3$s. Otevře Studio bez spuštění nebo obnovení cvičení.</string>
+
+    <!-- Gould 0.12 Studio controls -->
+    <string name="studio_metronome">Metronom</string>
+    <string name="studio_tempo">Tempo: %1$d BPM</string>
+    <string name="studio_beats">Dob v taktu: %1$d</string>
+    <string name="studio_start_clicks">Spustit metronom</string>
+    <string name="studio_stop_clicks">Zastavit metronom</string>
+    <string name="studio_clicks_error">Metronom není dostupný. Zkontrolujte zvukový výstup a zkuste to znovu.</string>
+    <string name="studio_less_tempo">Pomalejší tempo</string>
+    <string name="studio_more_tempo">Rychlejší tempo</string>
+    <string name="studio_less_beats">Méně dob</string>
+    <string name="studio_more_beats">Více dob</string>
+    <string name="studio_queue_undo">Vrátit změnu pořadníku</string>
+    <string name="studio_queue_up">Posunout v pořadníku výše</string>
+    <string name="studio_queue_down">Posunout v pořadníku níže</string>
+    <string name="studio_play">Přehrát nahrávku</string>
+    <string name="studio_seek">Pozice v nahrávce</string>
+    <string name="studio_export_original">Exportovat původní nahrávku</string>
+    <string name="studio_recover_take">Obnovit nahrávku</string>
+    <string name="studio_older_recordings">Zobrazit starší nahrávky</string>
+    <string name="studio_delete_audio_confirm">Smazat tuto místní nahrávku? Historie cvičení a získané odznaky zůstanou zachovány.</string>
+    <string name="studio_audio_operation_failed">Operace s nahrávkou selhala. Původní i obnovovací data zůstávají zachována; zkuste to znovu nebo exportujte původní soubor beze změn.</string>
+    <string name="studio_archive_disclosure">Volitelný ZIP deníku a zvuku obsahuje soukromé nahrávky i obnovitelné původní soubory. Uložte jej soukromě a ponechte místo pro přípravu a ověřenou obnovu. Zálohy JSON obsahují pouze deník.</string>
+    <string name="studio_archive_stop_first">Před zálohou nebo obnovou zvuku zastavte nahrávání.</string>
+    <string name="studio_archive_export">Exportovat ZIP deníku a zvuku</string>
+    <string name="studio_archive_import">Obnovit ZIP deníku a zvuku</string>
+    <string name="studio_archive_retry">Zkontrolovat čekající obnovu zvuku</string>
+    <string name="studio_archive_complete">Operace se zvukovým archivem byla dokončena.</string>
+    <string name="studio_archive_confirm">Obnovit tento ověřený archiv? Chráněný postup nahradí deník a nastavení a sloučí zvuk bez přepsání původních souborů. Snímek cílových dat i záznamy pro obnovu zůstanou zachovány.</string>
 </resources>

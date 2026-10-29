@@ -9,6 +9,7 @@ import java.util.UUID
 
 /** Personal audio is durable data, never a media cache. All paths are repository-owned IDs. */
 class LocalRecordingRepository(private val db: OpusDatabase, private val directory: File) {
+    class PreparationFailure(val recordingId: String, cause: Exception) : Exception("Storage", cause)
     val recordings = db.studioDao().recordings()
     private fun file(name: String): File {
         require(name.matches(Regex("[0-9a-f-]{36}\\.wav(?:\\.part)?")))
@@ -23,12 +24,15 @@ class LocalRecordingRepository(private val db: OpusDatabase, private val directo
             title=title.take(1000),composer=composer.take(500),sessionToken=token?.takeIf { it.isNotBlank() })
         // Identity is durable before any sample or running state is published.
         db.studioDao().insertAudio(row)
+        var writer: DurableWav? = null
         try {
-            val writer=DurableWav.create(file(row.relativeFile),rate)
+            writer=DurableWav.create(file(row.relativeFile),rate)
             val running=row.copy(state="Recording");db.studioDao().updateAudio(running)
             running to writer
         } catch(error:Exception) {
-            db.studioDao().updateAudio(row.copy(state="Recoverable",error="Storage"));throw error
+            runCatching { writer?.close() }
+            runCatching { db.studioDao().updateAudio(row.copy(state="Recoverable",error="Storage")) }
+            throw PreparationFailure(id, error)
         }
     }
     suspend fun interrupted(id: String, reason: String) = withContext(Dispatchers.IO) {
@@ -55,8 +59,8 @@ class LocalRecordingRepository(private val db: OpusDatabase, private val directo
         saved
     }
     /** Startup performs metadata reconciliation only; never capture or automatic publication. */
-    suspend fun reconcile() = withContext(Dispatchers.IO) {
-        db.studioDao().allAudio().filter { it.state in setOf("Preparing","Recording","Finalizing") }.forEach {
+    suspend fun reconcile(activeId: String? = null) = withContext(Dispatchers.IO) {
+        db.studioDao().allAudio().filter { it.id != activeId && it.state in setOf("Preparing","Recording","Finalizing") }.forEach {
             interrupted(it.id,"Interrupted")
         }
     }

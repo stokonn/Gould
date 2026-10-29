@@ -178,6 +178,7 @@ class BackupRepository(
     suspend fun restore(file:File)=restoreRoot(withContext(Dispatchers.IO){BackupJson.parse(file)})
     private suspend fun restoreRoot(root:JSONObject)=withContext(Dispatchers.IO){gate.withLock {
         validate(root);phase("validated")
+        require(db.studioDao().allAudio().none { it.state in setOf("Preparing","Recording","Finalizing","Deleting") }) { "Stop recording and finish pending deletion before restore" }
         require(db.backupStateDao().state()?.status!="pending"){"Journal already restored; finish pending settings before another import"}
         // Immutable complete destination snapshot precedes replacement, including unknown bytes.
         val previous=exportSnapshot();phase("destination_preserved")

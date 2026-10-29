@@ -71,6 +71,10 @@ class PracticeRepository(private val db: OpusDatabase, private val journal: Opus
             put("execution", s.execution); put("version", 1); put("token", s.token); put("start", s.startedAt); put("credited", s.elapsed); put("elapsed", s.wallElapsed)
             put("detected", s.detectedActive); put("mode", s.mode); put("smart", s.smart); put("active", s.active)
             put("notes", s.notes); put("reflection", s.reflection); put("sensitivity", s.sensitivity); put("pause", s.pauseSeconds)
+            s.queueOrder?.let { put("queue", JSONArray(it)) }
+            s.queueUndo?.let { u -> put("queueUndo", JSONObject().apply {
+                put("active", u.active); put("order", JSONArray(u.order)); put("removed", JSONArray(u.removed.toList()))
+            }) }
             put("status", s.status); put("quality", s.timingQuality); put("removed", JSONArray(s.removed.toList()))
             put("parts", JSONArray().apply { s.parts.forEach { p -> put(JSONObject().apply {
                 put("piece", p.pieceId ?: JSONObject.NULL); put("title", p.title); put("composer", p.composer)
@@ -110,7 +114,30 @@ class PracticeRepository(private val db: OpusDatabase, private val journal: Opus
             parts.forEachIndexed {index,part->
                 require(rows.filter{it.partIndex==index}.fold(0L){sum,row->Math.addExact(sum,row.creditedMillis)}==part.durationMillis) {"Conflicting draft part timing; original retained"}
             }
-            return s
+            fun order(value: JSONArray): List<Int> {
+                require(value.length() in 1..parts.size)
+                val indexes = (0 until value.length()).map { i ->
+                    val n = value.get(i); require(n is Long || n is Int)
+                    (n as Number).toLong().also { require(it in parts.indices.first.toLong()..parts.indices.last.toLong()) }.toInt()
+                }
+                require(indexes.distinct().size == indexes.size)
+                return indexes
+            }
+            val queue = if (o.has("queue")) order(o.getJSONArray("queue")) else null
+            require(queue == null || s.active in queue)
+            val undo = if (o.has("queueUndo")) o.getJSONObject("queueUndo").let { u ->
+                typed(u, emptyList(), listOf("active"))
+                val previous = order(u.getJSONArray("order"))
+                val active = u.getInt("active"); require(active in previous)
+                val removed = u.getJSONArray("removed").let { a ->
+                    require(a.length() <= parts.size)
+                    (0 until a.length()).map { i ->
+                        require(a.get(i) is Long || a.get(i) is Int); a.getLong(i)
+                    }.toSet()
+                }
+                com.opus.piano.practice.QueueIntent(active, previous, removed)
+            } else null
+            return s.copy(queueOrder = queue, queueUndo = undo)
         }
         fun validateTiming(credited: Long, elapsed: Long?, detected: Long?, mode: String, rows: List<SessionInterval>, partCount: Int) {
             require(mode in listOf("Manual", "Smart", "Mixed"))

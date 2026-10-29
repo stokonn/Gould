@@ -4,16 +4,22 @@ import com.opus.piano.i18n.L
 import com.opus.piano.R
 import com.opus.piano.data.*
 
+data class QueueIntent(val active: Int, val order: List<Int>, val removed: Set<Long>)
+
 data class PracticeState(
     val token: String = "", val execution: Long = 0, val startedAt: Long = 0, val elapsed: Long = 0, val wallElapsed: Long = 0,
     val detectedActive: Long = 0, val mode: String = "Manual", val smart: Boolean = false,
     val signal: String = "Ready", val running: Boolean = false, val status: String = "Ready", val saving: Boolean = false,
     val parts: List<SessionPart> = listOf(SessionPart()), val active: Int = 0,
+    val queueOrder: List<Int>? = null, val queueUndo: QueueIntent? = null,
     val removed: Set<Long> = emptySet(), val selected: Piece? = null,
     val notes: String = "", val reflection: String = "", val intervals: List<SessionInterval> = emptyList(),
     val sensitivity: Int = 50, val pauseSeconds: Int = 5, val timingQuality: String = "Measured",
     val ready: Boolean = false
 )
+
+/** Stable part indexes are ledger identities; display order never renumbers them. */
+fun PracticeState.visibleQueue(): List<Int> = queueOrder ?: parts.indices.filter { parts[it].pieceId !in removed }
 
 /** One monotonic clock; UI, capture and notification commands are serialized by the coordinator. */
 class PracticeEngine(initial: PracticeState = PracticeState()) {
@@ -102,6 +108,42 @@ class PracticeEngine(initial: PracticeState = PracticeState()) {
         val index = state.parts.indexOfFirst { it.pieceId == piece?.id }
         val parts = if (index >= 0) state.parts else state.parts + SessionPart(pieceId = piece?.id, title = piece?.title ?: "Free practice", composer = piece?.composer.orEmpty(), catalogWorkId = piece?.catalogWorkId, musicalEra = piece?.musicalEra.orEmpty())
         state = state.copy(parts = parts, active = if (index >= 0) index else parts.lastIndex, selected = piece, removed = state.removed - (piece?.id ?: 0), status = if (state.running && state.smart) "Listening" else state.status)
+    }
+    private fun queueIntent() = QueueIntent(state.active, state.visibleQueue(), state.removed)
+    private fun pieceAt(index: Int): Piece? = state.parts[index].let { p ->
+        p.pieceId?.let { Piece(it, p.title, p.composer, catalogWorkId = p.catalogWorkId, musicalEra = p.musicalEra) }
+    }
+    fun queueSelect(now: Long, piece: Piece?) {
+        advance(now)
+        val previous = queueIntent()
+        select(now, piece)
+        state = state.copy(queueOrder = (previous.order + state.active).distinct(), queueUndo = previous)
+    }
+    fun queueRemove(now: Long, index: Int) {
+        if (index !in state.visibleQueue() || state.parts[index].pieceId == null) return
+        advance(now)
+        val previous = queueIntent()
+        if (state.active == index) select(now, null)
+        state = state.copy(queueOrder = (previous.order - index + state.active).distinct(),
+            removed = state.removed + requireNotNull(state.parts[index].pieceId), queueUndo = previous)
+    }
+    fun queueMove(now: Long, index: Int, delta: Int) {
+        require(delta == -1 || delta == 1)
+        val order = state.visibleQueue().toMutableList()
+        val from = order.indexOf(index)
+        val to = from + delta
+        if (from < 0 || to !in order.indices) return
+        advance(now)
+        val previous = queueIntent()
+        order.removeAt(from); order.add(to, index)
+        state = state.copy(queueOrder = order, queueUndo = previous)
+    }
+    fun undoQueue(now: Long) {
+        val intent = state.queueUndo ?: return
+        // Charge through the Undo boundary to the current piece first. Never restore credit.
+        advance(now)
+        select(now, pieceAt(intent.active))
+        state = state.copy(queueOrder = intent.order, removed = intent.removed, queueUndo = null)
     }
     fun edit(transform: (PracticeState) -> PracticeState) { state = transform(state) }
 }

@@ -36,6 +36,7 @@ class PracticeCoordinator(
     private var publishedAt = 0L
     private var restoring = false
     private val revision = java.util.concurrent.atomic.AtomicLong(0)
+    @Volatile var finishRecording: (suspend () -> Unit)? = null
     @Volatile var releaseCapture: (() -> Unit)? = null
     suspend fun startSmart(sensitivity: Int, pause: Int): PracticeState {
         initialized.await()
@@ -141,19 +142,30 @@ class PracticeCoordinator(
     }
     suspend fun pause(interrupted: Boolean = false) { releaseCapture?.invoke(); engine.pause(now(), interrupted); publish(); checkpoint() }
     suspend fun review() {
-        releaseCapture?.invoke()
-        if (engine.state.token.isEmpty()) engine.begin(now(), System.currentTimeMillis(), UUID.randomUUID().toString(), false)
-        engine.review(now()); publish(); checkpoint()
+        // Freeze credit at the command boundary, before file sync/hash/publication waits.
+        val boundary = now()
+        if (engine.state.token.isEmpty()) engine.begin(boundary, System.currentTimeMillis(), UUID.randomUUID().toString(), false)
+        engine.review(boundary); publish(); checkpoint()
+        try { finishRecording?.invoke() }
+        catch (c: CancellationException) { throw c }
+        catch (_: Exception) { notice.value = message(R.string.msg_recording_interrupted) }
+        finally { releaseCapture?.invoke() }
     }
-    suspend fun select(piece: Piece?) { if (state.value.status != "Review") { engine.select(now(), piece); publish(); checkpoint() } else notice.value = message(R.string.practice_request_unavailable) }
+    suspend fun select(piece: Piece?) { if (state.value.status != "Review") { engine.queueSelect(now(), piece); publish(); checkpoint() } else notice.value = message(R.string.practice_request_unavailable) }
     suspend fun note(index: Int, text: String) { engine.edit { it.copy(parts = it.parts.mapIndexed { i, p -> if (i == index) p.copy(notes = text.take(10000)) else p }) }; notesDirty = true; if (dirtySince == null) dirtySince = now(); notesChangedAt = now(); unsaved.value = true; publish() }
     suspend fun sessionNotes(notes: String, reflection: String) { engine.edit { it.copy(notes = notes.take(10000), reflection = reflection.take(10000)) }; notesDirty = true; if (dirtySince == null) dirtySince = now(); notesChangedAt = now(); unsaved.value = true; publish() }
     suspend fun configure(sensitivity: Int, pause: Int) { engine.edit { it.copy(sensitivity = sensitivity.coerceIn(0,100), pauseSeconds = pause.coerceIn(2,30)) }; publish(); checkpoint() }
     suspend fun remove(index: Int) {
-        val part = state.value.parts.getOrNull(index) ?: return
-        if (part.pieceId == null) return
-        if (index == state.value.active) select(null)
-        engine.edit { it.copy(removed = it.removed + part.pieceId) }; publish(); checkpoint()
+        if (state.value.status == "Review") return
+        engine.queueRemove(now(), index); publish(); checkpoint()
+    }
+    suspend fun move(index: Int, delta: Int) {
+        if (state.value.status == "Review") return
+        engine.queueMove(now(), index, delta); publish(); checkpoint()
+    }
+    suspend fun undoQueue() {
+        if (state.value.status == "Review") return
+        engine.undoQueue(now()); publish(); checkpoint()
     }
     suspend fun reset() { completed.value=null; releaseCapture?.invoke(); repository.clear(); revision.incrementAndGet(); notesDirty = false; dirtySince = null; unsaved.value = false; engine.replace(PracticeState(ready = true), now()); publish() }
     suspend fun save() {
