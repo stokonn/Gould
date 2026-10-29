@@ -1231,4 +1231,8 @@
     <string name="studio_recovery_export_note">Exporty pro obnovu mohou být neúplné nebo nepřehratelné. Původní data zůstávají zachována beze změn.</string>
     <string name="studio_playback_capture_blocked">Před přehráváním zastavte nahrávání nebo chytrý poslech.</string>
     <string name="studio_recording_duration">Nahrávání · %1$s</string>
+    <string name="studio_recordings_empty">Zatím žádné místní nahrávky. Ve Studiu můžete výslovně spustit nahrávání.</string>
+    <string name="studio_audio_in_progress">Tato nahrávka ještě není dokončená. Její stav najdete ve Studiu; export a smazání budou dostupné po ukončení nahrávání.</string>
+    <string name="studio_audio_missing">V tomto zařízení není ověřený zvuk této nahrávky. Obnovte ZIP s deníkem a zvukem. Případné zachované původní bajty lze stále exportovat.</string>
+    <string name="studio_audio_deletion_pending">Smazání nebylo dokončeno. Zvolte znovu Smazat; do dokončení zůstávají údaje o nahrávce zachované.</string>
 </resources>

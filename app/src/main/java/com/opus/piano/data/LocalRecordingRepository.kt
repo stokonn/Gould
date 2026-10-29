@@ -99,10 +99,15 @@ class LocalRecordingRepository(private val db: OpusDatabase, private val directo
     suspend fun exportOriginal(id: String, output: java.io.OutputStream) = withContext(Dispatchers.IO) {
         val row=requireNotNull(db.studioDao().audio(id))
         require(row.state!="Deleted")
+        require(row.state !in setOf("Preparing","Recording","Finalizing")) { "Stop recording before exporting this take" }
         // Recovery export deliberately preserves unchanged bytes even when playback
         // integrity fails. The caller labels it as an original/unverified export.
         val source=file("$id.wav").takeIf { it.isFile } ?: file("$id.wav.part")
         source.inputStream().use { it.copyTo(output,64*1024) }
+    }
+    /** Presence only, not playback verification: corrupt retained bytes remain exportable. */
+    suspend fun originalAvailable(id: String): Boolean = withContext(Dispatchers.IO) {
+        file("$id.wav").isFile || file("$id.wav.part").isFile
     }
     /** Only an explicit confirmed user deletion calls this; never cache clearing or retention. */
     suspend fun delete(id: String) = withContext(Dispatchers.IO) {

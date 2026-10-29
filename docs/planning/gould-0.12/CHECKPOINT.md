@@ -1,5 +1,9 @@
 # Gould0.12 — current single-stage implementation checkpoint
 
+> **Resumed verification:** DNS/HTTPS restored,5de87c6 pushed, Issue41 comment6499082257 and canonical PMP snapshot45 synchronized. Preserved Previous patch now compiles;393JVM PASS, final debug/test build and lint0errors/165warnings PASS after correcting one genuine Compose initializer lint error without suppression. Actual affected API36 native31/31 PASS; trusted debug APK13e1fd55… package/version/ZIP/artwork/masks PASS. Actual permission/Previous UI and remaining finite widget/layout/final release gates IN PROGRESS. Effective emulator RAM correction is recorded in controlled-integrity-api36.json (both earlier boots2560MB; CPU/boot-idle changed). Earlier infrastructure-blocked notices below are history.
+
+> **Current infrastructure recovery (superseded — history):** the earlier notice that5de87c6 was unpushed and the Previous patch uncompiled is resolved; see the Resumed verification notice above and [RECOVERY-2026-10-29.md](RECOVERY-2026-10-29.md). Stable remains blocked only by the still-open mandatory gates.
+
 ## Verified integrity and bounded accessibility checkpoint — 2026-10-29
 
 Ordinary fullAPI36 CI40871204814 remains251PASS/0failures/errors/11 explicit opt-in skips. The2 bounded-public-response/portrait cases separately PASS on API26. The existing controlled preservation sequence now completes **12 JUnit PASS plus6 deliberately verified process terminations**, with2 actual reboots, offline queued work/blob preservation, migration transaction rollback/retry to11, exact manual-credit recovery, idempotent completion, restore interruption at four boundaries and checksum/restore retry. **All14 original critical typed tables and37 sessions remain unchanged.** The9 probe-dependent methods have been exercised separately; deliberate kills are not JUnit passes. [Evidence](verification/controlled-integrity-api36.json).

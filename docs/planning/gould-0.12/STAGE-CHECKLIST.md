@@ -419,3 +419,14 @@ Live official-source TalkBack on API36 was bound with touch exploration and not 
 
 Next: correct observed Previous state presentation for metadata-only/missing and live recordings, verify those actual flows, complete launcher/resize/offline/week/instances and finite full changed-layout matrix, then remaining security/licensing/performance/clean trusted non-debuggable Stable/upgrade gates. Current ordinary app source remains1d06f08; no Stable build/main/tag/release. Preserve all15 private references and all AVD data. No physical phone/API37.
 
+
+## Current infrastructure recovery — 2026-10-29 (updated)
+
+- [x] Preserve controlled integrity12JUnitPASS/6expectedkills/37sessions and bounded actual accessibility evidence at local5de87c6.
+- [x] Prepare Previous availability/export-safety correction and2 meaningful native regressions; localization1211/diff check PASS.
+- [x] Compile and execute the new functional patch/regressions: host gate393 JVM tests (48 suites)0 failures/errors/skips; lint follow-up PASS0 errors/165 warnings after correcting one genuine Compose StateFlowValueCalledInComposition initializer issue without suppression; actual affected API36 native31/31 PASS (StudioRecordingTest6, RecordingLifecycleTest12, StudioBackupTest8, StudioControlsTest5) on emulator-5586. Debug APK13e1fd55… package/version/ZIP/artwork/masks/quality and trusted signer53eface4… PASS. [Evidence](verification/previous-availability-host-native.json).
+- [x] Push5de87c6 and synchronize Issue41 comment6499082257 and canonical PMP snapshot45 after owner-confirmed DNS/HTTPS restoration.
+- [ ] Complete actual Previous UI live/missing/deletion transitions, finite widget/layout matrix and remaining security/licensing/performance/final release gates.
+- [ ] Complete all remaining mandatory gates and conditionally authorized Stable publication.
+
+Earlier DNS-failure/pending-compile notices below are retained history and no longer current. [Exact recovery](RECOVERY-2026-10-29.md).

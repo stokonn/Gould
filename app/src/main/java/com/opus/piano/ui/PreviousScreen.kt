@@ -22,10 +22,13 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.opus.piano.OpusApplication
 import com.opus.piano.data.*
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -86,6 +89,13 @@ import java.io.File
     val player = app.localPlayback
     val playback by player.state.collectAsState()
     val owner = androidx.lifecycle.compose.LocalLifecycleOwner.current
+    val initialCaptureKey = remember(app.recording) {
+        app.recording.state.value.let { it.id to it.phase }
+    }
+    val captureKey by remember(app.recording) {
+        app.recording.state.map { it.id to it.phase }.distinctUntilChanged()
+    }.collectAsStateWithLifecycle(initialValue = initialCaptureKey)
+    var observedCapture by remember { mutableStateOf(captureKey) }
     var visible by remember { mutableStateOf<List<LocalAudio>>(emptyList()) }
     var request by remember { mutableIntStateOf(0) }
     var refresh by remember { mutableIntStateOf(0) }
@@ -121,6 +131,12 @@ import java.io.File
         finally { loading = false }
     }
     fun reload() { visible = emptyList(); refresh++ }
+    LaunchedEffect(captureKey) {
+        if (captureKey != observedCapture) {
+            observedCapture = captureKey
+            reload()
+        }
+    }
     val exportLauncher = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("audio/wav")) { uri ->
         val item = exportItem; exportItem = null
         if (uri != null && item != null) scope.launch {
@@ -137,8 +153,14 @@ import java.io.File
     }
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(JournalSpace.page), verticalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
         item { JournalTextButton(onClick = { player.stop(); reload() }, enabled = !loading && !busy) { Text(L.s(R.string.practice_retry)) } }
-        if (!loading && !failed && visible.isEmpty()) item { Text(L.s(R.string.msg_no_sessions_yet_your_practice_will_appear_he_37e7)) }
+        if (!loading && !failed && visible.isEmpty()) item { Text(L.s(R.string.studio_recordings_empty)) }
         items(visible,key = { it.id }) { audio ->
+            val active = audio.state in setOf("Preparing","Recording","Finalizing")
+            val originalAvailable by produceState<Boolean?>(null,audio.id,audio.state) {
+                value = try { repository.originalAvailable(audio.id) }
+                    catch (c: CancellationException) { throw c }
+                    catch (_: Exception) { false }
+            }
             val associations by produceState<List<LocalAudioPart>>(emptyList(),audio.id,audio.state) {
                 value = app.database.studioDao().audioPartPreview(audio.id,6)
             }
@@ -154,19 +176,24 @@ import java.io.File
                     session?.let { related -> JournalTextButton(onClick = { player.pause(); reviewId = related.id }) { Text(L.s(R.string.studio_view_practice)) } }
                     Text(localDateTime(audio.createdAt),style = MaterialTheme.typography.bodySmall,color = MaterialTheme.colorScheme.onSurfaceVariant)
                     if (audio.durationMillis > 0) Text(duration(audio.durationMillis),style = MaterialTheme.typography.labelMedium)
-                    if (audio.state != "Saved") {
-                        Text(L.s(R.string.msg_recording_interrupted),color = MaterialTheme.colorScheme.error)
-                        Text(L.s(R.string.studio_recovery_export_note),style=MaterialTheme.typography.bodySmall)
+                    when (audio.state) {
+                        "Preparing","Recording","Finalizing" -> Text(L.s(R.string.studio_audio_in_progress),style=MaterialTheme.typography.bodySmall)
+                        "Missing" -> Text(L.s(R.string.studio_audio_missing),style=MaterialTheme.typography.bodySmall)
+                        "Deleting" -> Text(L.s(R.string.studio_audio_deletion_pending),style=MaterialTheme.typography.bodySmall)
+                        "Recoverable" -> {
+                            Text(L.s(R.string.msg_recording_interrupted),color = MaterialTheme.colorScheme.error)
+                            Text(L.s(R.string.studio_recovery_export_note),style=MaterialTheme.typography.bodySmall)
+                        }
                     }
                     Row(horizontalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
                         if (audio.state == "Saved") IconButton(onClick = { player.play(audio.id) },enabled = !busy) {
                             Icon(if (playback.id == audio.id && playback.playing) Icons.Outlined.Pause else Icons.Outlined.PlayArrow,
                                 L.s(if (playback.id == audio.id && playback.playing) R.string.msg_pause_7819 else R.string.studio_play))
                         }
-                        IconButton(onClick = { exportItem = audio; exportLauncher.launch("Gould-recording-${audio.id}.wav"+if(audio.state=="Saved") "" else ".part") },enabled = !busy) {
+                        IconButton(onClick = { exportItem = audio; exportLauncher.launch("Gould-recording-${audio.id}.wav"+if(audio.state=="Saved") "" else ".part") },enabled = !busy && !active && originalAvailable == true) {
                             Icon(Icons.Outlined.FileDownload,L.s(if(audio.state=="Saved") R.string.studio_export_original else R.string.studio_export_recovery))
                         }
-                        IconButton(onClick = { deleting = audio },enabled = !busy) { Icon(Icons.Outlined.Delete,L.s(R.string.msg_delete_f6fd)) }
+                        IconButton(onClick = { deleting = audio },enabled = !busy && !active) { Icon(Icons.Outlined.Delete,L.s(R.string.msg_delete_f6fd)) }
                     }
                     if (audio.state == "Recoverable") JournalSecondaryButton(enabled = !busy,onClick = {
                         scope.launch {

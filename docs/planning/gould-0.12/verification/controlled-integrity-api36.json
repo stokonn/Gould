@@ -10,8 +10,8 @@
   "retainedFailedAttempts": [
     {
       "label": "practice-after-reboot",
-      "result": "Startup ANR under1536MB/two-core immediate-boot instrumentation; trace main idle with24s scheduling wait/boot low-memory pressure",
-      "correction": "2048MB/four cores, Android boot broadcast-idle verified; exact recovery rerun PASS, new exit-info has no ANR"
+      "result": "Immediate-boot startup ANR at two vCPU; requested1536MB, emulator effective2560MB. Main thread idle with24s scheduling wait amid boot pressure.",
+      "correction": "Four vCPU plus verified broadcast-idle; requested2048MB, effective2560MB. Exact recovery PASS; no new ANR."
     }
   ],
   "realThreeHourDeliveryVerified": false,
@@ -180,5 +180,19 @@
     "final-integrity-probes.log": "7490fa424f4d424c80872ae2d316900c2a57a719e58493215e1541f57ec95185",
     "final-integrity-resume.log": "d0d3523fb4496e3ebedffa3cbb096d3219921bccc5ff2a9ef10088a9d8d776e0"
   },
-  "limits": "Actual Android process termination and reboot, named synthetic DBs. No real three-hour notification delivery, physical phone or final production artifact acceptance inferred."
+  "limits": "Actual Android process termination and reboot, named synthetic DBs. No real three-hour notification delivery, physical phone or final production artifact acceptance inferred.",
+  "fixture_resource_clarification": {
+    "original_requested_ram_mb": 1536,
+    "followup_requested_ram_mb": 2048,
+    "emulator_effective_ram_mb_both": 2560,
+    "verified_changes": [
+      "two to four virtual CPU cores",
+      "wait for boot broadcasts idle before instrumentation"
+    ],
+    "evidence_logs": [
+      ".gradle/gould012-checks/final-integrity-emulator.log",
+      ".gradle/gould012-checks/final-integrity/emulator-standard-resources.log"
+    ],
+    "correction": "Earlier shorthand described requested RAM as effective RAM. Both logs explicitly say Increasing RAM size to2560MB; recovery PASS is unchanged."
+  }
 }

@@ -1,0 +1,43 @@
+{
+  "base_head": "5de87c641fbe2a2766d14bbcd18db796e14fbd93",
+  "scope": "Uncommitted coherent Previous availability/export correction; no schema or backup-format changes",
+  "jvm": {
+    "tests": 393,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": ".gradle/gould012-checks/previous-availability-host.log",
+    "boundary": "Before one UI-only remember-initializer lint correction; unchanged JVM logic/tests retained"
+  },
+  "build_lint": {
+    "result": "PASS",
+    "log": ".gradle/gould012-checks/previous-availability-lint-followup.log",
+    "lint_errors": 0,
+    "warnings": 165,
+    "initial_failure": "One StateFlowValueCalledInComposition; fixed using remembered initial seed plus lifecycle collection, no suppression"
+  },
+  "native": {
+    "serial": "emulator-5586",
+    "sdk": 36,
+    "cases": 31,
+    "failures": 0,
+    "elapsed_seconds": 5.385,
+    "classes": [
+      "StudioRecordingTest6",
+      "RecordingLifecycleTest12",
+      "StudioBackupTest8",
+      "StudioControlsTest5"
+    ],
+    "log_sha256": "5b57a8b3b6e79d5406636e29e4b30224bc7fb630736481d68670fbcb30db6559"
+  },
+  "apk": {
+    "version": "0.12-dev",
+    "code": 14,
+    "sha256": "13e1fd55d645dfcc5544a1a4dfac82cec72572b26d17a927341c06b02cd95586",
+    "signer_sha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+    "package_artwork_masks": "PASS; verify_quality_apk.py against published0.11"
+  },
+  "localization": 1211,
+  "actual_ui": "IN PROGRESS; not accepted from native repository tests",
+  "remaining": "Required functional/widget/layout/security/performance/final non-debuggable Stable artifact/upgrade gates open"
+}

@@ -1227,4 +1227,8 @@
     <string name="studio_recovery_export_note">Recovery exports may be incomplete or unplayable. The original bytes are preserved unchanged.</string>
     <string name="studio_playback_capture_blocked">Stop recording or Smart listening before playing audio.</string>
     <string name="studio_recording_duration">Recording · %1$s</string>
+    <string name="studio_recordings_empty">No local recordings yet. Start an explicit recording in Studio to save a take.</string>
+    <string name="studio_audio_in_progress">This take is still in progress. Check its status in Studio; export and deletion are available after it stops.</string>
+    <string name="studio_audio_missing">This device has no verified audio for this recording. Restore the journal and audio ZIP. Any retained original bytes can still be exported.</string>
+    <string name="studio_audio_deletion_pending">Deletion did not finish. Retry Delete to complete it; the recording metadata is retained until then.</string>
 </resources>

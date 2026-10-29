@@ -60,4 +60,34 @@ class StudioRecordingTest {
         assertEquals("Deleted",db.studioDao().audio(row.id)!!.state)
         assertEquals(1L,StudioAchievementRules.distinctRecordings(db.studioDao().events()))
     } }
+    @Test fun activeExportWritesNothingAndPreservesOriginalForExplicitStoppedExport()=runBlocking { fixture { db,repo,directory ->
+        val (row,writer)=repo.prepare(16000,"Active take","",null)
+        writer.append(ShortArray(2048){37},2048)
+        val original=File(directory,row.relativeFile).readBytes()
+        try {
+            for (state in listOf("Preparing","Recording","Finalizing")) {
+                db.studioDao().updateAudio(row.copy(state=state))
+                val output=java.io.ByteArrayOutputStream()
+                assertTrue(runCatching { repo.exportOriginal(row.id,output) }.isFailure)
+                assertEquals(0,output.size())
+                assertArrayEquals(original,File(directory,row.relativeFile).readBytes())
+                assertEquals(state,db.studioDao().audio(row.id)!!.state)
+            }
+        } finally { writer.close() }
+        repo.interrupted(row.id,"Explicit fixture interruption")
+        val stopped=java.io.ByteArrayOutputStream();repo.exportOriginal(row.id,stopped)
+        assertArrayEquals(original,stopped.toByteArray())
+    } }
+    @Test fun metadataOnlyAudioIsUnavailableButRetainedUnverifiedBytesStayExportable()=runBlocking { fixture { db,repo,directory ->
+        val id=UUID.randomUUID().toString()
+        db.studioDao().insertAudio(LocalAudio(id,1,stoppedAt=2,state="Missing",relativeFile="$id.wav",sampleRate=16000,
+            sampleCount=16000,byteCount=32044,sha256="1".repeat(64)))
+        assertFalse(repo.originalAvailable(id))
+        directory.mkdirs();val original=byteArrayOf(1,2,3);File(directory,"$id.wav").writeBytes(original)
+        assertTrue(repo.originalAvailable(id))
+        val output=java.io.ByteArrayOutputStream();repo.exportOriginal(id,output)
+        assertArrayEquals(original,output.toByteArray())
+        assertTrue(runCatching { repo.playable(id) }.isFailure)
+        assertEquals("Missing",db.studioDao().audio(id)!!.state)
+    } }
 }
