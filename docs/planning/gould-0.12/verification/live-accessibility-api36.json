@@ -1,0 +1,25 @@
+{
+  "actual_live_talkback": true,
+  "service_not_suppressed": true,
+  "touch_exploration": true,
+  "raw_emulator_focus_navigation": "Observed Studio/Profile tab and Settings header/action focus transitions",
+  "actual_double_tap": "Record audio opens consent; Cancel returns Studio",
+  "keyboard": "Existing full native32-configuration keyboard/focus/action regression PASS. Exploratory guessed Meta shortcuts did not activate and are not PASS evidence. No further shortcut exploration.",
+  "limits": "No audible speech fidelity claim; no critical app failure observed in bounded live flow. Full layout/widget functional acceptance remains open.",
+  "owner_steering": "Stop prolonged exploratory TalkBack testing; prioritize mandatory functional/data/release gates",
+  "source": "production unchanged from1d06f08; test-only read-only recorder extension",
+  "serial": "emulator-5582",
+  "sdk": 36,
+  "evidence": ".gradle/gould012-checks/final-ui/live-a11y/oct29goulda",
+  "probe_binding": {
+    "application_apk_sha256": "e109904ab46e1e6de197848eb776fe718adb8592f47d5e4bba33353d1af1b613",
+    "probe_apk_sha256": "d905230caf81c79a7d0fffc17f09dac1680aef2862d99b398683854bdc04b434",
+    "probe_source_sha256": "41e4fd095ae49abe1fb8aa14c6bb9c68a1be4b665027beb9cdf9957cd505cf2d",
+    "application_source": "unchanged production inputs from1d06f08; native runner only extended",
+    "serial": "emulator-5582",
+    "sdk": 36,
+    "run": "oct29goulda",
+    "purpose": "Read-only actual Activity/live-service focus event capture; no JUnit PASS inferred"
+  },
+  "remaining": "Complete remaining mandatory layout/touch/accessibility observations as part of final functional UI/widget matrix; no further exploratory TalkBack testing."
+}

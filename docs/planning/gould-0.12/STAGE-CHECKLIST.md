@@ -406,3 +406,16 @@ Actual320dp/font2 UI checking is in progress on identified `emulator-5584`/API26
 
 Historical chronological checkpoints below retain their original source-bound scope; this current dashboard supersedes their pending implementation descriptions.
 
+
+## Verified integrity and bounded accessibility checkpoint — 2026-10-29
+
+Ordinary fullAPI36 CI40871204814 remains251PASS/0failures/errors/11 explicit opt-in skips. The2 bounded-public-response/portrait cases separately PASS on API26. The existing controlled preservation sequence now completes **12 JUnit PASS plus6 deliberately verified process terminations**, with2 actual reboots, offline queued work/blob preservation, migration transaction rollback/retry to11, exact manual-credit recovery, idempotent completion, restore interruption at four boundaries and checksum/restore retry. **All14 original critical typed tables and37 sessions remain unchanged.** The9 probe-dependent methods have been exercised separately; deliberate kills are not JUnit passes. [Evidence](verification/controlled-integrity-api36.json).
+
+Retained failure: immediate post-boot instrumentation on the1536MB/two-core AVD hit a startup ANR. The trace main thread was idle with about24s scheduling wait amid boot low-memory pressure. The same recovery code PASS after preserving/restarting the AVD at2048MB/four cores and waiting for all boot broadcasts idle; new exit-info has no ANR. No app timeout was weakened and the original failure/trace remain retained. Final production-artifact startup remains required.
+
+ActualAPI26 same-state SAF audio ZIP restore passed13 critical table comparisons plus historic badge preservation and all4 WAV hashes, with exact original3s draft/37sessions. Genuine decoded playback produced the Critical Listener notice; View Badge opened its permanent-earned detail. [Audio evidence](verification/actual-audio-ui-recovery-api26.json).
+
+Live official-source TalkBack on API36 was bound with touch exploration and not suppressed by the read-only real-Activity recorder. Raw emulator gestures moved actual focus, real double-tap opened recording consent, Cancel returned Studio, and Profile/Settings focus events/screenshots were retained. Existing full native32-configuration keyboard/focus/action cases pass. Exploratory injected/guessed shortcut attempts did not establish navigation and are not passes. No audible speech fidelity claim. **Owner steering: stop prolonged exploratory TalkBack; prioritize mandatory functional/data/release checks.** The recorder stopped and previous no-service setting was restored. Remaining meaningful layout/touch/IME/Back/widget semantics are part of finite final functional QA. [Bounded evidence](verification/live-accessibility-api36.json).
+
+Next: correct observed Previous state presentation for metadata-only/missing and live recordings, verify those actual flows, complete launcher/resize/offline/week/instances and finite full changed-layout matrix, then remaining security/licensing/performance/clean trusted non-debuggable Stable/upgrade gates. Current ordinary app source remains1d06f08; no Stable build/main/tag/release. Preserve all15 private references and all AVD data. No physical phone/API37.
+

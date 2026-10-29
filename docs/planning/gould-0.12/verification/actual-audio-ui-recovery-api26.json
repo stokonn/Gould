@@ -13,7 +13,7 @@
   "sample_rate": 22050,
   "sha256": "816cb1c3761994e4c323e4e28d92f921b351553f629dc793a3409d00c316927f",
   "original_sha256": "865f495a71b5fc7cc579c5ab9e28946576ecf83edf1516d029b02d875c2d6052",
-  "limits": "Emulator input; no acoustic piano/physical-device fidelity claim. Full UI/ZIP/widget/Stable acceptance still pending.",
+  "limits": "Emulator silent input; no acoustic piano/physical-device fidelity. Full visual/widget/TalkBack/synthetic/security/Stable acceptance remains pending.",
   "actual_playback_pause_seek_resume_ui": {
     "paused-player": [
       "00:00:03 / 00:00:30"
@@ -43,6 +43,37 @@
       "all_bytes_hashes_exact": true,
       "sha256": "49fdf8e35de0b0b893b80788a06ce75215130ec79a00c882d0a5652091b3431c"
     },
-    "restore": "pending"
+    "restore": {
+      "actual_saf_selection_confirmation_completion": true,
+      "critical_tables_exact": [
+        "pieces",
+        "sessions",
+        "session_parts",
+        "session_intervals",
+        "practice_drafts",
+        "saved_recordings",
+        "favorite_composers",
+        "session_piece_links",
+        "personal_catalogue_identities",
+        "personal_catalogue_anchors",
+        "profile_settings",
+        "local_audio",
+        "local_audio_parts"
+      ],
+      "all_existing_badge_rows_preserved": true,
+      "audio_files": 4,
+      "all_original_audio_hashes_unchanged": true,
+      "integrity": "ok",
+      "foreign_keys": "ok",
+      "original_sessions": 37,
+      "original_draft_exact": true
+    }
+  },
+  "genuine_unlock_ui": {
+    "badge": "critical_listener",
+    "name": "Critical Listener",
+    "popup": "Actual verified playback generated queued notice after cold restart",
+    "view_badge": "Actual detail opened and visually inspected; permanent earned status/date shown",
+    "raw_evidence": ".gradle/gould012-checks/final-ui/audio-process-death/flow/{earned-listening-popup,listening-badge-detail}.{png,xml}"
   }
 }

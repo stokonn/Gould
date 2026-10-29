@@ -64,7 +64,9 @@ class Stage8IndependentPreservationTest {
             write("migration-killed.json",JSONObject().put("pid",Process.myPid()).put("point","after8to9insideRoomTransaction"))
             Process.killProcess(Process.myPid());error("Process was not terminated")
         }}
-        Room.databaseBuilder(context,OpusDatabase::class.java,name).addMigrations(interruptedMigration,OpusDatabase.MIGRATION_9_10).build().scoped{it.openHelper.writableDatabase}
+        Room.databaseBuilder(context,OpusDatabase::class.java,name)
+            .addMigrations(interruptedMigration,OpusDatabase.MIGRATION_9_10,OpusDatabase.MIGRATION_10_11)
+            .build().scoped{it.openHelper.writableDatabase}
         fail("Expected actual process termination")
     }
     @Test fun retryInterruptedMigrationRetainsEveryOriginalCell()=runBlocking {
@@ -81,8 +83,8 @@ class Stage8IndependentPreservationTest {
                 sql.rawQuery("PRAGMA integrity_check",null).use{assertTrue(it.moveToFirst());assertEquals("ok",it.getString(0))}
                 sql.rawQuery("PRAGMA foreign_key_check",null).use{assertFalse(it.moveToFirst())}
             }
+            write("migration-retry.json",JSONObject().put("schema",db.openHelper.writableDatabase.version).put("allOriginalTypedCellsEqual",true).put("pid",Process.myPid()))
         }
-        write("migration-retry.json",JSONObject().put("schema",10).put("allOriginalTypedCellsEqual",true).put("pid",Process.myPid()))
     }
     @Test fun upgradedJournalBackupRoundTripAndRejectedRestoreRetainData()=runBlocking {
         val source=(context.applicationContext as OpusApplication).database
@@ -103,7 +105,7 @@ class Stage8IndependentPreservationTest {
             val after=repo.export()
             for(section in listOf("journal","identities","recovery","preferences"))assertEquals(section,BackupJson.hash(JSONObject(before).getJSONObject("sections").getJSONObject(section).getJSONObject("data")),BackupJson.hash(JSONObject(after).getJSONObject("sections").getJSONObject(section).getJSONObject("data")))
             assertArrayEquals(originalDraft,BackupState.rawDraft(source)!!.first)
-            write("backup-roundtrip.json",JSONObject().put("version",5).put("sourceSessions",source.dao().allSessions().size).put("restoredSessions",destination.dao().allSessions().size).put("originalDraftUnchanged",true).put("badChecksumRejectedWithoutMutation",true))
+            write("backup-roundtrip.json",JSONObject().put("version",old.getInt("version")).put("sourceSessions",source.dao().allSessions().size).put("restoredSessions",destination.dao().allSessions().size).put("originalDraftUnchanged",true).put("badChecksumRejectedWithoutMutation",true))
         }
     }
     @Test fun prepareLivePracticeAndTerminateProcess():Unit=runBlocking<Unit> {

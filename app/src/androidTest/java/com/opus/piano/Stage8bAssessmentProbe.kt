@@ -44,7 +44,7 @@ import java.io.File
  */
 class Stage8bAssessmentProbe : AndroidJUnitRunner() {
     private val app get() = targetContext.applicationContext as OpusApplication
-    private val directory get() = File(app.filesDir, "stage7b-manual").apply { mkdirs() }
+    private val directory get() = File(app.filesDir, if (readOnlyGould()) "gould012-a11y-${gouldRun()}" else "stage7b-manual").apply { mkdirs() }
     private val eventLock = Any()
     private var scenario: ActivityScenario<MainActivity>? = null
     private var manualProfile: ProfileViewModel? = null
@@ -53,8 +53,16 @@ class Stage8bAssessmentProbe : AndroidJUnitRunner() {
     override fun onStart() {
         val phase = InstrumentationRegistry.getArguments().getString("goldbergManual")
         try {
-            require(phase in listOf("interactive", "revoked")) { "Explicit goldbergManual phase required" }
+            require(phase in listOf("interactive", "revoked", "gould012")) { "Explicit goldbergManual phase required" }
             require(android.os.Build.FINGERPRINT.contains("generic") || android.os.Build.FINGERPRINT.contains("emu"))
+            if (readOnlyGould()) {
+                require(android.os.Build.VERSION.SDK_INT == 36)
+                val qemu = automation.executeShellCommand("getprop ro.kernel.qemu").use {
+                    android.os.ParcelFileDescriptor.AutoCloseInputStream(it).bufferedReader().readText().trim()
+                }
+                require(qemu == "1")
+                require(directory.listFiles().orEmpty().isEmpty()) { "Use a fresh QA run ID; preserve previous evidence" }
+            }
             automation.setOnAccessibilityEventListener { event ->
                 if (event.eventType in listOf(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED,
                         AccessibilityEvent.TYPE_VIEW_FOCUSED, AccessibilityEvent.TYPE_VIEW_CLICKED,
@@ -71,7 +79,24 @@ class Stage8bAssessmentProbe : AndroidJUnitRunner() {
                     synchronized(eventLock) { File(directory,"events.jsonl").appendText("$item\n") }
                 }
             }
-            if (phase == "revoked") {
+            if (phase == "gould012") {
+                // Observe the actual production Activity. Do not seed a profile,
+                // replace its content, alter preferences or install synthetic transport.
+                scenario = ActivityScenario.launch(MainActivity::class.java)
+                File(directory,"ready.txt").writeText("pid=${Process.myPid()}; read-only real Activity; no acceptance inferred\n")
+                val prefix = "gould012-a11y-${gouldRun()}-"
+                val deadline = android.os.SystemClock.uptimeMillis()+20*60*1000
+                while (android.os.SystemClock.uptimeMillis()<deadline) {
+                    for (request in app.filesDir.listFiles().orEmpty().filter { it.name.startsWith(prefix+"capture-") }) {
+                        val name = request.name.removePrefix(prefix+"capture-")
+                        require(name.matches(Regex("[A-Za-z0-9_-]+")))
+                        require(!File(directory,"$name.json").exists()) { "Preserve the previous capture" }
+                        snapshot(name); request.delete()
+                    }
+                    if (File(app.filesDir,prefix+"stop").exists()) break
+                    Thread.sleep(100)
+                }
+            } else if (phase == "revoked") {
                 check(ContextCompat.checkSelfPermission(app, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_DENIED)
                 check(app.getSystemService(NotificationManager::class.java).activeNotifications.none { it.id == AdminSyncWorker.NOTIFICATION_ID })
                 workerPermissionProbe(false)
@@ -145,10 +170,16 @@ class Stage8bAssessmentProbe : AndroidJUnitRunner() {
             scenario?.close()
             finish(Activity.RESULT_OK, Bundle().apply { putString("stream","Manual probe finished: $phase; inspect retained evidence, no JUnit pass implied.\n") })
         } catch(failure:Throwable) {
-            File(directory,"probe-failure.txt").writeText(failure.stackTraceToString())
+            val failureFile = if (readOnlyGould()) File(targetContext.cacheDir,"gould012-a11y-failure-${System.nanoTime()}.txt")
+                else File(directory,"probe-failure.txt")
+            failureFile.writeText(failure.stackTraceToString())
             finish(Activity.RESULT_CANCELED,Bundle().apply {putString("stream",failure.stackTraceToString())})
         }
     }
+
+    private fun readOnlyGould() = InstrumentationRegistry.getArguments().getString("goldbergManual") == "gould012"
+    private fun gouldRun() = requireNotNull(InstrumentationRegistry.getArguments().getString("gouldQaRun"))
+        .also { require(it.matches(Regex("[A-Za-z0-9]+"))) }
 
     private fun repository(): AdminRepository {
         val api=AdminApi({"https://synthetic-manual.invalid"},AdminTransport { _,url,_,_ ->

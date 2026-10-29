@@ -31,6 +31,27 @@
     "acceptance_subset": "PASS",
     "required_automatic_ci": "3/3 PASS",
     "raw_log_sha256": "313cacef2214a5e1437ee173622f68f4b39c35c0beef0f57517b39e6444cbf9f",
-    "skips": "Two separately acquired provider/portrait fixture tests plus nine explicitly opt-in synthetic preservation/kill/reboot probes. Separate applicable execution pending; no skips promoted to PASS."
+    "skips": "Two separately acquired provider/portrait fixture tests plus nine explicitly opt-in synthetic preservation/kill/reboot probes. Separate applicable execution pending; no skips promoted to PASS.",
+    "reports": [
+      {
+        "path": "app/build/outputs/androidTest-results/connected/debug/TEST-emulator-5554 - 16-_app-.xml",
+        "sha256": "9b5d8013412e82f7bd2be2492c3ff361b1d4cb5a9adbfe9711d7a1d0fbfcef76"
+      }
+    ]
+  },
+  "separate_public_fixture_native": {
+    "serial": "emulator-5584",
+    "sdk": 26,
+    "tests": 2,
+    "failures": 0,
+    "time_seconds": 0.154,
+    "source": "2c5420cb21fa0323083fc05609b65c66f8372814",
+    "log_sha256": "0aa5647919f0e2cc610f8a828746ee045822805defe3a46f3b24da32910d6f94",
+    "limits": "Previously acquired bounded public original responses, native projection/offline licensed portrait decode; no live request or new ingest authorization."
+  },
+  "production_manifest_comparison": {
+    "baseline": "capture-privacy-source-manifest.json358 entries",
+    "unchanged_production_inputs": true,
+    "only_difference": "app/src/androidTest/java/com/opus/piano/RecordingServiceTest.kt; verified synthetic-token teardown"
   }
 }
