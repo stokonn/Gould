@@ -1,3 +1,31 @@
+> Current Samsung-correction checkpoint — 2026-10-29: three owner-reported Stable blockers implemented and targeted emulator acceptance passed: metronome shared media audio/focus (native1/1 and actual unmuted ST3 track at sound effects0/Stop releases focus), bundled licensed fixed-advance Tux (unchanged ASCII/signature; metric1/1; actual Android font2/About and corrected both-theme probe1/1), Library heading/Previous same row with subtitle below (six-case responsive/touch/action1/1 and real route). Frozen381-input host PASS393JVM/48suites/0failures/errors/skips, debug/testAPK, lint0errors165warnings1hint,3m25s. All28 DB tables/3 WAV hashes exact, widgets retained, emulator font1/sound effects1 restored. No Samsung/phone agent verification claimed. Source base05a92c8 with current verified corrections; commit/CI/compatibility and remaining mandatory release gates OPEN. [Correction evidence](SAMSUNG-BLOCKERS.md) · [Source-bound report](verification/samsung-blockers.json). Earlier pending/failed test-fixture notes below are preserved history. No release/main/tag.
+
+
+## Owner-reported Samsung Stable blockers — 2026-10-29
+
+Confirmed by owner testing on Samsung; no agent physical-device verification.
+These are mandatory0.12 Stable blockers within the existing single Phase2 stage.
+The accidental pasted terminal transcript introduced no instructions. Widget
+checkpoint05a92c8 is pushed; Issue41 comment6503995190, canonical PMP snapshot51
+61258e08-3801-47a8-b3df-77be56839ab3 (check valid/no errors/warnings), Project In Progress.
+
+- [x] Metronome: replace system-sonification usage with media-volume playback;
+  preserve focus, explicit start/stop, route/lifecycle handling. Verify system
+  sounds muted/media audible routing, stop and focus loss with targeted native
+  evidence. Do not equate emulator audio routing with Samsung acoustic testing.
+- [x] Tux: inspect actual before rendering, whitespace and font metrics; isolate
+  from OEM font substitution/variable advances. Preserve original ASCII/pink
+  character and exact signature `created by stokonn with love <3`. Verify actual
+  normal/large-font emulator renders and glyph advance/line alignment. Existing
+  system Monospace styling is owner-confirmed insufficient on Samsung.
+- [x] Library: align Previous horizontally with main heading Vaše sbírky; keep
+  Vaše hudba below as subtitle. Verify EN/CZ, normal/large fonts and constrained
+  widths, touch target, navigation and no clipping/overlap.
+- [ ] Synchronize actual results/source/evidence with Issue41/PMP/Project/handoff;
+  retain remaining mandatory gates. Stable remains blocked until all pass.
+
+created by stokonn with love <3
+
 > Current launcher acceptance continuation — 2026-10-29: resumed from50e32ed without repeating pristine WidgetTest8/8 or unchanged13 calendar/projection tests. Actual API36 launcher resize/independent instances/EN-CZ/light-dark/font1–2/offline and protected-data checks executed; found and fixed a clipped200% compact stale marker. Targeted debug/test build PASS37s, new native regression1/1 and actual-host fixed stale/unavailable/accessibility probe1/1 PASS, lint0errors/165warnings/1hint PASS4m25s, localization1211/policy/APK/trusted signer PASS. Exact draft/3WAVs/recording rows/history/badge rows retained; original widget IDs2/3 and added5 preserved. First offline boot Pixel Launcher ANR is retained; corrected settled repeat has no ANR and both original widgets render live. Final readback: ALL28 tables exact,3 WAV hashes exact, integrity/FK PASS; original system-following preferences/font1 restored. Residual accent/spec-cell review and remaining release gates are OPEN. [Current acceptance checklist](WIDGET-LAUNCHER-ACCEPTANCE.md) · [Source-bound evidence](verification/widget-launcher-current.json). Earlier checkpoint counts/statuses below are historical; no main/release/tag or phone operation.
 
 # Gould0.12 — current single-stage implementation checkpoint

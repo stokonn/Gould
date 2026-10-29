@@ -1,0 +1,136 @@
+{
+  "status": "Targeted correction acceptance PASS on emulator; overall Phase2/release gates IN_PROGRESS",
+  "owner_report": "Owner confirmed3 Samsung Stable blockers on2026-10-29; no agent phone verification",
+  "source_base": "05a92c893aeb27d18efc676961c5298da6e7ed03",
+  "branch": "feature/gould-0.12",
+  "apk_sha256": "614521a6e18c2361548dbbf83e0b62ec6f320a4b4a3cf1200ae9867de53a5db7",
+  "trusted_certificate_sha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+  "debuggable": true,
+  "emulator": {
+    "serial": "emulator-5582",
+    "avd": "gould012-profile",
+    "sdk": 36,
+    "qemu": 1
+  },
+  "metronome": {
+    "implementation": "Shared USAGE_MEDIA/CONTENT_TYPE_MUSIC attrs for focus and AudioTrack; existing ownership/generation/start/stop/noisy/lifecycle unchanged",
+    "native": "PASS1/1,0.112s; STREAM_MUSIC and stop/restart/competing-focus-loss assertions",
+    "actual_foreground": "App UI Start/Stop; active unmuted AudioFlinger track ST3/Usg1/CT2 with advancing frames, media focus; explicit Stop leaves focus stack empty",
+    "system_sounds": "sound_effects_enabled0 verified during actual UI; restored1",
+    "limitation": "STREAM_SYSTEM volume-zero command did not stick:5 remained. No zero-volume or acoustic/Samsung auditory PASS claimed."
+  },
+  "tux": {
+    "original_literal_sha256": "f3c892437710d700240168e8266011527c8a87c6ad89f20362a92b815aa46f3f",
+    "ascii_literal_unchanged": true,
+    "signature": "created by stokonn with love <3",
+    "font": "Unmodified AOSP DroidSansMono; Apache2.0 with original bundled NOTICE",
+    "font_sha256": "089bdaac95caeed25a8392a6f0606328d009473119f1c7465b642d5cebe5320c",
+    "native_metrics": "PASS1/1; original ASCII and signature have equal advances, line metrics fit1/1.5/2",
+    "fixture_warning": "Dialog ignored simulated LocalDensity2; original files named tux-2.0-* are normal-font diagnostic captures, not200% evidence",
+    "real_system_font2": "PASS actual Android font_scale2.0; full About dialog screenshot plus corrected native probe1/1,9.09s in both themes; column alignment and Close inspected; signature horizontal pan reveals love <3",
+    "screenshots_inspected": [
+      "actual-tux-fixed-normal.png",
+      "actual-tux-fixed-font2.png",
+      "actual-tux-font2-signature-pan.png",
+      "tux-platform-2.0-Light.png",
+      "tux-platform-2.0-Dark.png"
+    ]
+  },
+  "library": {
+    "implementation": "Main heading/action share row; subtitle below;48dp accessible icon action at constrained large fonts",
+    "native_ui": "PASS1/1,16.622s, six cases EN/CZ,320/360/412dp,font1/1.5/2,Light/Dark; same-row/subtitle/touch/click assertions",
+    "actual_navigation": "Full app Library\u2192Previous route verified",
+    "screenshots_inspected": [
+      "library-360-1.0-cs-Light",
+      "library-320-2.0-cs-Dark",
+      "library-360-1.5-en-Light",
+      "library-412-2.0-en-Light"
+    ]
+  },
+  "retained_failures": [
+    "JUnit coroutine return initialization failure; corrected explicit Unit and affected native rerun passed",
+    "UI fixture stale English button lambda after direct locale override; keyed subtree recreation matches real locale lifecycle; corrected matrix passed",
+    "Simulated dialog font2 captures mislabeled; actual Android font2 venue required"
+  ],
+  "host": {
+    "command": "./gradlew assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1 --console=plain",
+    "result": "PASS3m25s;393JVM/0failures/errors/skips;debug/testAPK;lint0errors165warnings1hint",
+    "frozen_inputs": 381,
+    "post_host_delta": [
+      "SamsungBlockerAcceptanceTest.kt: honest actual-platform Dialog scale/label correction only; compiled28s and actual-font2 native1/1 PASS9.09s"
+    ],
+    "production_and_jvm_inputs_unchanged": true
+  },
+  "issue": 41,
+  "pmp_owner_snapshot": 52,
+  "release": "Blocked; no main integration/tag/Stable publication",
+  "signature": "created by stokonn with love <3",
+  "protected_final": {
+    "database_tables_exact": {
+      "android_metadata": 1,
+      "pieces": 0,
+      "sqlite_sequence": 0,
+      "sessions": 0,
+      "catalog_composers": 0,
+      "catalog_works": 0,
+      "catalog_cache": 0,
+      "saved_recordings": 0,
+      "badge_unlocks": 1,
+      "session_parts": 0,
+      "profile_settings": 1,
+      "session_intervals": 0,
+      "practice_drafts": 1,
+      "local_app_state": 1,
+      "practice_recovery_archives": 0,
+      "session_piece_links": 0,
+      "favorite_composers": 0,
+      "personal_catalogue_identities": 0,
+      "personal_catalogue_anchors": 0,
+      "personal_catalogue_state": 1,
+      "backup_restore_state": 0,
+      "recovery_evidence": 3,
+      "practice_completion_evidence": 0,
+      "local_audio": 3,
+      "local_audio_parts": 2,
+      "achievement_events": 3,
+      "badge_notices": 1,
+      "room_master_table": 1
+    },
+    "wav_sha256_exact": 3,
+    "integrity": "ok",
+    "foreign_keys": []
+  },
+  "source_final_manifest_sha256": "1ee600d68d17cc8a7dbd2ed3747cd660abc61e505df723a9d18ce6cf97b700a5",
+  "source_manifest_private_path": ".gradle/gould012-checks/samsung-blockers/source-final.json",
+  "source_hashes": {
+    "app/src/androidTest/java/com/opus/piano/SamsungBlockerAcceptanceTest.kt": "931e07b59accc26c638cba8bba7e3599ed129fa2f8c526c90eae7a8eace4c462",
+    "app/src/androidTest/java/com/opus/piano/StudioControlsTest.kt": "cf5aded7398e453a710dbce0f644fe609ed07f3c754c782d39c62b34b621265e",
+    "app/src/main/assets/legal/droid-sans-mono-NOTICE.txt": "38751245389e1e23f73e6f5384b5cbe7fa972cc4410c5adc9c04b082a0b9561a",
+    "app/src/main/assets/legal/third-party-notices.md": "7b826997ab29ee1b49b0d5f02080c85587c524749f21a78d5ed930d63769d213",
+    "app/src/main/java/com/opus/piano/audio/MetronomeController.kt": "12f588a077d0dfde5ea88502334339c1ed5527246b0365d8fc9cf198b7919738",
+    "app/src/main/java/com/opus/piano/ui/RepertoireScreen.kt": "83c507054ed06afcbd523e605b1878e317e74f582f52e1362342ac4e87bdba1c",
+    "app/src/main/java/com/opus/piano/ui/TuxScreen.kt": "d273aeb96981d6682052f1434b78e4da0b9c25bd9b3350eeb589f7ac5ad48459",
+    "app/src/main/res/font/droid_sans_mono.ttf": "089bdaac95caeed25a8392a6f0606328d009473119f1c7465b642d5cebe5320c"
+  },
+  "raw_logs": {
+    "targeted-build.log": "d93fafd2ea758e22ab1c4d8f5402d2f4511a1befbed55ae04fef0037c3dc794b",
+    "final-targeted-test-build.log": "59325c115fc79e962b6bd8cc59b9b16da07e2da2351a2b14663f8e655a25d070",
+    "native-routing-metrics.log": "7fc9209ad77dc3fc120fb4cb731a57444f9ae48dd40863d5d4727c9757cdcc10",
+    "void-test-build.log": "3be9879ef79c0e75e71028ca6e38af60f8d63a84e4ceb745988992dfbb188321",
+    "metronome-media-focus.log": "c38f80006e0899af27bb51b70ff8159cbda757e8160a8d3df836a8dc7eb38f53",
+    "apk-quality.log": "fccf33f1ebb3c5cdeea45cad0a4143ee09c6f4a3d27e26ea0af32f3378bca7a1",
+    "responsive-ui.log": "6a87ab13ab049456a6529cbd222dfffe2f03be5629abd7070713128411b54ef7",
+    "ui-diagnostics-build.log": "c0ae7b78f6d21be0800c7ec2af2f64cbced6eae580be0a1cd9ad0b4e12a4263b",
+    "responsive-ui-diagnostics.log": "f137412b5b79f84ff488f9a768628eb200159e932712b78997d767cb39f18e57",
+    "ui-locale-fixture-build.log": "170ab6f207f417e8eb1f27721fe52f65c1e7b8d87427d9fceec7f5e0de896529",
+    "responsive-ui-final.log": "763ffd9396592f594aa81095cf9054246df95b743f46cda8e389a9781a52b34b",
+    "final-host.log": "647f38635ae1ad804ec95e25f97068ab5c4b3e8d3310dbed55b4c153d41dc08c",
+    "platform-font-fixture-build.log": "25ffb608da6828375e1638cee8634d06d1f5267a7d8a95d1e01ee792fbfe8fa6",
+    "tux-real-platform-font2.log": "b4c7888885d00cd5da46910faf5dc79b12c1518197dc1b6e0d272463bd1f3774"
+  },
+  "remaining": [
+    "Required CI/full API36 suite and upgrade on exact committed source",
+    "API26 affected compatibility smoke for current font/media/header delta",
+    "Residual finite widget/app UI/security/privacy/licensing/performance and final clean non-debuggable production artifact/upgrade/release gates"
+  ]
+}

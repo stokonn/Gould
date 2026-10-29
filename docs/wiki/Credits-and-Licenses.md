@@ -31,3 +31,10 @@ The Classic Piano light/dark/monochrome icon comes from the owner-approved Goldb
 [Home](Home) · [Developer Guide](Developer-Guide)
 
 </details>
+
+### Tux terminal font
+
+The Tux terminal uses the original Droid Sans Mono font from the Android Open
+Source Project, bundled to preserve fixed ASCII advances independently of device
+font choices. Apache License2.0; original notice included in the app at
+`legal/droid-sans-mono-NOTICE.txt`. [Pinned source and license](https://android.googlesource.com/platform/frameworks/base/+/c049f9a/data/fonts/).

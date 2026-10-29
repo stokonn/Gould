@@ -32,6 +32,10 @@ class MetronomeController(context: Context) {
         mutable.value = mutable.value.copy(bpm = bpm.coerceIn(40,240), beats = beats.coerceIn(1,12))
         if (requested.get()) start()
     }
+    // Musical playback belongs to media volume, independently of UI/system sounds.
+    // The exact same attributes are used for focus and the AudioTrack.
+    internal fun playbackAttributes(): AudioAttributes = AudioAttributes.Builder()
+        .setUsage(AudioAttributes.USAGE_MEDIA).setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).build()
     fun start() {
         requested.set(true)
         val request = generation.incrementAndGet()
@@ -43,8 +47,7 @@ class MetronomeController(context: Context) {
                 val settings = mutable.value
                 var candidate: AudioTrack? = null
                 try {
-                    val attributes = AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
-                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build()
+                    val attributes = playbackAttributes()
                     val focusRequest = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
                         .setAudioAttributes(attributes).setOnAudioFocusChangeListener({ change ->
                             if (change != AudioManager.AUDIOFOCUS_GAIN) stop()

@@ -9,3 +9,13 @@ The harpsichord uses mathematical synthesis. Android/Compose Material icons reta
 ## Goldberg 0.9 audit
 
 The resolved debug runtime dependency graph contains 123 coordinates after adding AndroidX AppCompat 1.7.1 for per-app languages. Cached published POM licenses were reviewed; runtime notices are recorded in app/src/main/assets/legal/third-party-notices.md. Original Inter and Cormorant Garamond OFL notices remain bundled. The new launcher artwork is original vector geometry and introduces no external image license.
+
+## Gould0.12 terminal font
+
+Tux uses an unmodified bundled Droid Sans Mono from the Android Open Source
+Project, pinned tree c049f9a/data/fonts (117072bytes, SHA256
+089bdaac95caeed25a8392a6f0606328d009473119f1c7465b642d5cebe5320c).
+The tree README explicitly licenses its platform fonts under Apache2.0; the
+original complete NOTICE is shipped in assets/legal/droid-sans-mono-NOTICE.txt.
+Source: https://android.googlesource.com/platform/frameworks/base/+/c049f9a/data/fonts/
+The terminal alone selects this font; app editorial typography remains unchanged.

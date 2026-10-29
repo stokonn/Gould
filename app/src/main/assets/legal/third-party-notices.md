@@ -137,3 +137,11 @@ org.jspecify:jspecify:1.0.0 — The Apache License, Version 2.0
 Goldberg 0.9.2 identity integration adds AndroidX Credentials and Credentials Play Services Auth 1.5.0 (Apache License 2.0), and Google ID 1.1.1. Google ID and Google Play services artifacts are distributed under the Android Software Development Kit License: https://developer.android.com/studio/terms.html . They are not represented as Apache-licensed AndroidX code. Optional Google account identity uses Google's services; it does not synchronize the journal.
 
 Daily quotations use short excerpts from Robert Schumann, Advice to Young Musicians, Henry Hugo Pierson translation (1860), Project Gutenberg ebook 28219: https://www.gutenberg.org/ebooks/28219 . Czech translations are Goldberg's own renderings. See the English Wiki for provenance and regional copyright considerations.
+
+Droid Sans Mono (Tux terminal only): original Android Open Source Project font,
+Apache License2.0; unmodified117072-byte font SHA256
+089bdaac95caeed25a8392a6f0606328d009473119f1c7465b642d5cebe5320c.
+Source: https://android.googlesource.com/platform/frameworks/base/+/c049f9a/data/fonts/DroidSansMono.ttf
+License/readme: same pinned tree NOTICE and README.txt. Full original NOTICE is
+bundled as legal/droid-sans-mono-NOTICE.txt. Bundled explicit font selection keeps
+ASCII glyph advances independent of OEM/system-font substitution.

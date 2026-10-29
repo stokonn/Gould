@@ -57,13 +57,7 @@ import com.opus.piano.data.*
     }
     fun options(values: List<String>) = listOf("All") + values.filter { it.isNotBlank() }.distinctBy(::catalogText).sortedBy(::catalogText)
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        item {Column(verticalArrangement=Arrangement.spacedBy(JournalSpace.tiny)) {
-            Text(L.s(R.string.stage7a_library_title),style=MaterialTheme.typography.headlineLarge,modifier=Modifier.semantics {heading()})
-            Text(L.s(R.string.stage7a_library_subtitle),style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
-        }}
-        item { Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-            JournalTextButton(onClick = previous) { Icon(Icons.Outlined.History, null, Modifier.size(18.dp)); Text(L.fixed("Previous")) }
-        } }
+        item { LibraryHeader(previous) }
         stickyHeader { Surface(color=MaterialTheme.colorScheme.background) { Row(Modifier.fillMaxWidth().padding(bottom=8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(JournalSpace.small)) {
             OutlinedTextField(query, { query = it; limit=40 }, Modifier.weight(1f), label = { Text(L.s(R.string.ui101_search),maxLines=1,overflow=TextOverflow.Ellipsis) }, leadingIcon = { Icon(Icons.Outlined.Search, null) }, singleLine = true,shape=androidx.compose.foundation.shape.RoundedCornerShape(14.dp))
             Box { IconButton(onClick={addMenu=true}) { Icon(Icons.Outlined.Add,L.s(R.string.msg_add_piece_2cfc)) }
@@ -152,6 +146,31 @@ import com.opus.piano.data.*
             }
             ComposerFavoriteButton(author,favorite,toggle)
             Icon(Icons.Outlined.ChevronRight,null,Modifier.size(18.dp),tint=MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+    }
+}
+
+/** Keep the action beside the main heading; the subtitle always gets its own full-width line. */
+@Composable internal fun LibraryHeader(previous: () -> Unit) {
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
+        val compactAction = maxWidth < 400.dp && androidx.compose.ui.platform.LocalDensity.current.fontScale >= 1.5f
+        Column(verticalArrangement = Arrangement.spacedBy(JournalSpace.tiny)) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
+                Text(L.s(R.string.stage7a_library_title), style = MaterialTheme.typography.headlineLarge,
+                    modifier = Modifier.weight(1f).semantics { heading() })
+                if (compactAction) {
+                    IconButton(onClick = previous) { Icon(Icons.Outlined.History, L.fixed("Previous")) }
+                } else {
+                    JournalTextButton(onClick = previous) {
+                        Icon(Icons.Outlined.History, null, Modifier.size(18.dp))
+                        Spacer(Modifier.width(4.dp))
+                        Text(L.fixed("Previous"))
+                    }
+                }
+            }
+            Text(L.s(R.string.stage7a_library_subtitle), style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
 }

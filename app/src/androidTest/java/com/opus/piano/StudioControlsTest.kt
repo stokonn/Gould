@@ -97,8 +97,12 @@ class StudioControlsTest {
             assertEquals(1,db.studioDao().events().count {it.kind==StudioAchievementRules.PLAYBACK_VERIFIED})
         } finally {player.stopAndAwait();db.close();dir.deleteRecursively()}
     }
-    @Test fun nativeMetronomeStartsAndStopsWithoutCreatingPractice()=runBlocking {
+    @Test fun nativeMetronomeStartsAndStopsWithoutCreatingPractice(): Unit = runBlocking {
         val controller=MetronomeController(context)
+        val attributes = controller.playbackAttributes()
+        assertEquals(android.media.AudioAttributes.USAGE_MEDIA, attributes.usage)
+        assertEquals(android.media.AudioAttributes.CONTENT_TYPE_MUSIC, attributes.contentType)
+        assertEquals(android.media.AudioManager.STREAM_MUSIC, attributes.volumeControlStream)
         controller.configure(120,3);controller.start()
         try {
             withTimeout(5000){controller.state.first {it.playing || it.failed}}
@@ -108,6 +112,15 @@ class StudioControlsTest {
             assertEquals(200,controller.state.value.bpm)
             controller.stop()
             assertFalse(controller.state.value.playing)
+            controller.start()
+            withTimeout(5000) { controller.state.first { it.playing && !it.starting } }
+            val manager = context.getSystemService(android.media.AudioManager::class.java)
+            val competingFocus = android.media.AudioFocusRequest.Builder(android.media.AudioManager.AUDIOFOCUS_GAIN_TRANSIENT)
+                .setAudioAttributes(attributes).setOnAudioFocusChangeListener({}, android.os.Handler(android.os.Looper.getMainLooper())).build()
+            try {
+                assertEquals(android.media.AudioManager.AUDIOFOCUS_REQUEST_GRANTED, manager.requestAudioFocus(competingFocus))
+                withTimeout(5000) { controller.state.first { !it.playing && !it.starting } }
+            } finally { manager.abandonAudioFocusRequest(competingFocus) }
         } finally {controller.stop()}
     }
 }
