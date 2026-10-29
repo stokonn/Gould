@@ -17,6 +17,7 @@
                 android:textSize="10sp" android:fontFamily="@font/inter" android:maxLines="1" android:ellipsize="end" />
         </LinearLayout>
     </LinearLayout>
-    <TextView android:id="@+id/widget_compact_status" android:layout_width="20dp" android:layout_height="24dp" android:layout_gravity="bottom|end"
+    <TextView android:id="@+id/widget_compact_status" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="20dp" android:minHeight="24dp" android:layout_gravity="bottom|end"
+        android:layout_marginEnd="4dp" android:layout_marginBottom="4dp" android:maxLines="1"
         android:textSize="12sp" android:gravity="center" android:textStyle="bold" android:importantForAccessibility="no" />
 </FrameLayout>

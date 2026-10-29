@@ -100,6 +100,23 @@ class WidgetTest {
             assertTrue("Freshness footer clipped after host font change",footer.bottom <= height && footer.top >= 0)
         }
     }
+    @Test fun compactStaleMarkerFitsAtLargeFontIncludingRetainedRemoteViews() {
+        instrumentation.runOnMainSync {
+            val normal = context.createConfigurationContext(Configuration(context.resources.configuration).apply { fontScale = 1f })
+            val large = context.createConfigurationContext(Configuration(context.resources.configuration).apply { fontScale = 2f })
+            for (renderContext in listOf(normal, large)) for (data in listOf(snapshot(), null)) {
+                val view = WidgetRenderer.view(renderContext, data, true, 98, 48f, 48f, forceStale = true).apply(large, FrameLayout(large))
+                val size = (48 * large.resources.displayMetrics.density).toInt()
+                view.measure(View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.EXACTLY))
+                view.layout(0, 0, size, size)
+                val marker = view.findViewById<TextView>(R.id.widget_compact_status)
+                assertEquals(View.VISIBLE, marker.visibility)
+                assertEquals("!", marker.text.toString())
+                assertTrue("Complete stale glyph must fit inside its text box", marker.layout.getLineBottom(0) <= marker.height - marker.compoundPaddingTop - marker.compoundPaddingBottom)
+                assertTrue("Stale marker stays within the host", marker.top >= 0 && marker.left >= 0 && marker.bottom <= size && marker.right <= size)
+            }
+        }
+    }
     @Test fun widgetRegistrationsAndImmutablePerInstanceActivityIntentsAreCorrect() {
         val names = AppWidgetManager.getInstance(context).installedProviders.filter { it.provider.packageName == context.packageName }
         assertEquals(setOf(QuickPracticeWidget::class.java.name, WeeklyActivityWidget::class.java.name), names.map { it.provider.className }.toSet())

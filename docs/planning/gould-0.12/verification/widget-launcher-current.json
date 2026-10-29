@@ -1,0 +1,249 @@
+{
+  "status": "IN_PROGRESS; no release readiness claim",
+  "source_base_head": "50e32edf18cceb9b6d0918a7a683f420199424a2",
+  "branch": "feature/gould-0.12",
+  "production_delta": "Only widget_quick_practice.xml: wrap and inset compact stale marker to prevent 200% clipping. No Kotlin production/database/backend/signing changes.",
+  "source_inputs_manifest": ".gradle/gould012-checks/widget-current/source-inputs.json",
+  "source_inputs_manifest_sha256": "c4ebb3d42eb13557ce77bdc87644e03a959bd74a417ed304e9f1c3333db9a541",
+  "changed_from_previous_host_manifest": [
+    "app/src/androidTest/java/com/opus/piano/StudioRecordingTest.kt",
+    "app/src/androidTest/java/com/opus/piano/WidgetTest.kt",
+    "app/src/main/java/com/opus/piano/data/StudioData.kt",
+    "app/src/main/res/layout/widget_quick_practice.xml"
+  ],
+  "widget_source_hashes": {
+    "app/src/main/java/com/opus/piano/widgets/PracticeWidgets.kt": "d45484c742dff0bac285895f39ac66cf9462f42e3a8dead77d5e87d89516b612",
+    "app/src/main/java/com/opus/piano/widgets/WidgetProjection.kt": "396280067b6838e411eb576079d4cb09e5b630a47f047ff5d7a6eba07585b67e",
+    "app/src/main/java/com/opus/piano/widgets/WidgetRefresh.kt": "165b6d42783f66a3005b0571c71a8180f120e4f486b5e3d5415e269ae2ca904d",
+    "app/src/main/java/com/opus/piano/widgets/WidgetRenderer.kt": "17abda24feaa7c83489f58f6e2b42c1f162d37eeaf2514fab98efedda5dd1c94",
+    "app/src/main/java/com/opus/piano/widgets/WidgetSnapshot.kt": "aef2a867796d251d7192168c9f0e04a3dd4277ec1728c8ec72e028b43617de1c",
+    "app/src/main/res/layout/widget_quick_practice.xml": "83f55cdcf490d356bdbd8aa497cab7c66bc8486323a00f7f5b003d2922758434",
+    "app/src/main/res/layout/widget_weekly_activity.xml": "b07b8f0e48e73e5e3e92ec2a46a11e9eaed1065bc6d7a8fc6cb9308f38146d97",
+    "app/src/test/java/com/opus/piano/WidgetProjectionTest.kt": "90db93ef54c98ca62f50d84b9aadeb97c477dbb59179190d149e0cdd2b6d6e7d"
+  },
+  "emulator": {
+    "serial": "emulator-5582",
+    "avd": "gould012-profile",
+    "sdk": 36,
+    "qemu": 1,
+    "physical_device": false
+  },
+  "artifact": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "18d1062adf031283b7c7e4487efd4278a3a7618bb8af4feba1e53c8761d85d70",
+    "certificate_sha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e",
+    "debuggable": true,
+    "package": "com.opus.piano",
+    "version": "0.12-dev",
+    "version_code": 14,
+    "previous_installed_sha256": "30b281eb39074169d80d0520cfc7c6df4e029c78518f2b1ab540f09d55e6f618"
+  },
+  "reused_evidence": {
+    "WidgetTest": "8/8 pristine emulator-5590; not rerun on protected profile",
+    "WidgetProjectionTest": "13/13 source and report unchanged; Mon-Sun/DST/calendar rollover/timezone/credit/staleness",
+    "JVM": "393/48 suites from prior source-bound host gate; JVM production inputs unchanged, no fresh full run claimed",
+    "Previous_native": "32/32 at791b36d covers StudioData query/StudioRecordingTest changes since previous-availability host manifest; unchanged by widget fix"
+  },
+  "executed": {
+    "assembleDebug_assembleDebugAndroidTest": "PASS37s",
+    "lintDebug": "PASS4m25s; 0 errors/165 warnings/1 hint",
+    "compact_marker_native": "PASS1/1,0.094s",
+    "actual_launcher_probe_before_fix": "PASS1/1 semantics; screenshot inspection FAILED clipped marker; retained diagnostic",
+    "actual_launcher_probe_fixed": "PASS1/1,3.816s; fixed screenshot inspected",
+    "apk_quality": "PASS certificate/package/version/ZIP/artwork/masks",
+    "localization": "PASS1211 EN/CZ resources",
+    "agent_policy": "PASS",
+    "git_diff_check": "PASS",
+    "offline_reboot": "First boot Pixel Launcher ANR retained; settled repeat after build completion PASS, no ANR, live widgets and safe Weekly tap to Interrupted00:00:07/Resume"
+  },
+  "logs": {
+    "commands.log": "941a4bdd4b076a0b30f52a07c286ccc08d5a840d0c9523b87fba966dfff99e2f",
+    "probe-build.log": "ae9914ac0e32d8b1c2668c5e9ce96735cd7a8efac4dc93d71cd53d819bd07bb6",
+    "post-reboot-crash.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "launcher-probe.log": "8178ae18744fa68b68022db1cc18c7a3bdfe5cc0d4acc8b253f639c0a999b40d",
+    "compact-marker-build.log": "96d3fa49c01b3ac630e816a7d95caaf70bae581bc2e04da8c7e90719eed70b52",
+    "compact-marker-native.log": "bbd39c9617dbe164b3a9e855aa5d12d0cc38effad34f49cc031997dcd635e100",
+    "localization.log": "463ef1ba03b3d7f0e8ad71eba557a537d972e8ead6c501528583cc063744c936",
+    "policy.log": "a8d9aed2cee3751fe47bb59393012b73900212cb963edd81f04e0b9cc307c4bb",
+    "launcher-probe-fixed.log": "b4a1e81ffad9ae7c6f5d89a007d414d154598695b8c2b8408385c43f640090ab",
+    "marker-lint.log": "11412b69e3d02060ee964f4450732b1351a4c4c7ce6a0ff3e3a15b0477304bbf",
+    "apk-quality.log": "33bbcbad2d23a46004612ab55f9ce230bab3be8c2fe6f18d8f03fed3c246b134"
+  },
+  "protected_mid_comparison": {
+    "practice_drafts": "1 row exact",
+    "local_audio": "3 rows exact",
+    "wav_files": "3 SHA-256 exact",
+    "sessions": "0 exact",
+    "session_parts": "0 exact",
+    "badge_unlocks": "1 row exact",
+    "saved_recordings": "0 exact",
+    "integrity_check": "ok",
+    "original_widget_ids": [
+      2,
+      3
+    ],
+    "added_quick_id": 5
+  },
+  "remaining": [
+    "Complete finite residual widget acceptance: accent refresh and any uncovered explicit spec cells; do not repeat verified tests",
+    "Synchronize Issue41/Project/PMP and verify new-commit CI",
+    "Remaining finite app UI/security/privacy/licensing/performance and clean production Stable/upgrade gates"
+  ],
+  "signature": "created by stokonn with love <3",
+  "protected_final_comparison": {
+    "tables": {
+      "android_metadata": {
+        "before": 1,
+        "after": 1,
+        "exact": true
+      },
+      "pieces": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "sqlite_sequence": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "sessions": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "catalog_composers": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "catalog_works": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "catalog_cache": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "saved_recordings": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "badge_unlocks": {
+        "before": 1,
+        "after": 1,
+        "exact": true
+      },
+      "session_parts": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "profile_settings": {
+        "before": 1,
+        "after": 1,
+        "exact": true
+      },
+      "session_intervals": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "practice_drafts": {
+        "before": 1,
+        "after": 1,
+        "exact": true
+      },
+      "local_app_state": {
+        "before": 1,
+        "after": 1,
+        "exact": true
+      },
+      "practice_recovery_archives": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "session_piece_links": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "favorite_composers": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "personal_catalogue_identities": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "personal_catalogue_anchors": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "personal_catalogue_state": {
+        "before": 1,
+        "after": 1,
+        "exact": true
+      },
+      "backup_restore_state": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "recovery_evidence": {
+        "before": 3,
+        "after": 3,
+        "exact": true
+      },
+      "practice_completion_evidence": {
+        "before": 0,
+        "after": 0,
+        "exact": true
+      },
+      "local_audio": {
+        "before": 3,
+        "after": 3,
+        "exact": true
+      },
+      "local_audio_parts": {
+        "before": 2,
+        "after": 2,
+        "exact": true
+      },
+      "achievement_events": {
+        "before": 3,
+        "after": 3,
+        "exact": true
+      },
+      "badge_notices": {
+        "before": 1,
+        "after": 1,
+        "exact": true
+      },
+      "room_master_table": {
+        "before": 1,
+        "after": 1,
+        "exact": true
+      }
+    },
+    "wav_hashes_exact": 3,
+    "integrity_check": "ok",
+    "foreign_key_check": [],
+    "locale_final": "Locales for com.opus.piano for user 0 are []",
+    "font_final": "1.0",
+    "reboot_lastanr": "ACTIVITY MANAGER LAST ANR (dumpsys activity lastanr)\n  <no ANR has occurred since boot>"
+  },
+  "screenshots_inspected_fixed_apk": {
+    "probe-fixed/stale.png": "08236e50237cfdc8396d05e4a01e5432927ed0f69e0cf599c4264dd9f0a1b902",
+    "quick-4x1-font1.png": "ad5b0cfd07f6d398b5a8663d787c8e8c6b4d875e15f129e3894236f47b3978ef",
+    "quick-4x1-font2.png": "98d8864e8b9a92792c9983d15eeaa9d4251589840c32c1934c351dc64664c299",
+    "repeat-boot-passive-late.png": "7d28ad94153084cdebf7c8303e1e5c0fcbc73733d5dc04a323fc51ea14129db5"
+  }
+}
