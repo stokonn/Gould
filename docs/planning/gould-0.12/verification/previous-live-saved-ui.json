@@ -1,0 +1,51 @@
+{
+  "base_head": "8ccdd0e9702ee468e7bedb9d8f929a5fabcf3986",
+  "scope": "Corrected Previous paged query so live/in-progress takes render, and verified actual Previous live/saved/interrupted UI states on a real emulator recording",
+  "defect_found": "StudioDao.audioPage filtered state IN ('Saved','Recoverable','Missing','Deleting'), excluding Preparing/Recording/Finalizing, so an active take never appeared in Previous and the new studio_audio_in_progress branch was unreachable. The prior agent's actual-UI driver failed on exactly this assertion.",
+  "fix": "audioPage now uses state != 'Deleted' so every non-deleted take (including live) is paged newest-first; keyset paging and LIMIT unchanged.",
+  "new_regression": "StudioRecordingTest.activeTakeAppearsInPagedRecordingsUntilExplicitDeletion asserts the live Recording-state take appears in audioPage, persists through finalize, and is excluded only after explicit deletion (tombstone retained).",
+  "affected_native": {
+    "serial": "emulator-5586",
+    "sdk": 36,
+    "qemu": 1,
+    "classes": "StudioRecordingTest(7), StudioControlsTest, RecordingLifecycleTest, StudioBackupTest",
+    "result": "32/32 PASS",
+    "log_sha256": "6d56b288695e4ff261d6237c5377d9d98d3e7d41b14b49bdb48a43af0ed5766d",
+    "boundary": "StudioRecordingTest now7 cases; the 2 earlier availability regressions plus the new paged-live regression all pass"
+  },
+  "actual_ui_live_saved": {
+    "method": "Real-app uiautomator driver: cold launch -> Studio -> real microphone consent+permission -> live recording -> Previous/Recordings -> Stop -> Previous/Recordings again",
+    "serial": "emulator-5586",
+    "live_state": "Live take renders studio_audio_in_progress message; its Export/Delete IconButtons are enabled=false. A leftover interrupted take on the same screen shows the interrupted message with Export/Delete enabled=true and a Recover action.",
+    "saved_state": "Newly saved take shows Play recording, Export original recording and Delete all enabled=true.",
+    "artifacts": [
+      ".gradle/gould012-checks/final-ui/previous-functional/flow/previous-live.xml",
+      ".gradle/gould012-checks/final-ui/previous-functional/flow/previous-saved.xml",
+      ".gradle/gould012-checks/final-ui/previous-functional/flow/previous-live.png",
+      ".gradle/gould012-checks/final-ui/previous-functional/flow/previous-saved.png"
+    ],
+    "driver": ".gradle/gould012-checks/previous_ui_livesaved.py",
+    "not_claimed": "No acoustic-piano fidelity. Real microphone recording on a no-audio emulator produces silence-encoded PCM; this verifies capture lifecycle and state presentation, not audio quality."
+  },
+  "fast_checks": {
+    "localization": "1211 EN/CZ resources PASS (unchanged this batch; no new strings)",
+    "agent_policy": "PASS",
+    "git_diff_check": "PASS",
+    "history_paging": "PASS (keyset/LIMIT semantics retained by state != 'Deleted')"
+  },
+  "apk": {
+    "version": "0.12-dev",
+    "code": 14,
+    "sha256": "30b281eb39074169d80d0520cfc7c6df4e029c78518f2b1ab540f09d55e6f618",
+    "signer_sha256": "53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e"
+  },
+  "jvm": {
+    "tests": 393,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "boundary": "Unchanged from committed8ccdd0e; the audioPage @Query string change is Room-compiled/native-only and introduces no JVM surface. Not rerun to avoid a redundant unchanged-source host gate."
+  },
+  "widgetTest_note": "WidgetTest run on this controlled-probe AVD failed2 empty-fixture cases because the AVD carries a protected upgrade-fixture-draft practice draft; widgets belong on the clean gould012-profile AVD. Unrelated to audioPage; widgets do not use that query. Not counted as an application failure.",
+  "remaining": "Finite widget/layout/font/theme/locale matrix on the correct AVD, security/licensing/performance, required CI on8ccdd0e+ this fix, and final clean trusted non-debuggable Stable artifact/upgrade gates remain open."
+}

@@ -78,6 +78,20 @@ class StudioRecordingTest {
         val stopped=java.io.ByteArrayOutputStream();repo.exportOriginal(row.id,stopped)
         assertArrayEquals(original,stopped.toByteArray())
     } }
+    @Test fun activeTakeAppearsInPagedRecordingsUntilExplicitDeletion()=runBlocking { fixture { db,repo,_ ->
+        val (row,writer)=repo.prepare(16000,"Live take","",null)
+        writer.append(ShortArray(2048){11},2048)
+        val first=db.studioDao().audioPage(Long.MAX_VALUE,"~",31)
+        assertEquals(listOf(row.id),first.map {it.id})
+        assertEquals("Recording",first.single().state)
+        val saved=repo.finalize(row.id,writer)
+        assertEquals(listOf(saved.id),db.studioDao().audioPage(Long.MAX_VALUE,"~",31).map {it.id})
+        repo.delete(row.id)
+        assertEquals("Deleted",db.studioDao().audio(row.id)!!.state)
+        assertTrue(db.studioDao().audioPage(Long.MAX_VALUE,"~",31).isEmpty())
+        assertEquals(1,db.studioDao().allAudio().size)
+        assertEquals("Deleted",db.studioDao().allAudio().single().state)
+    } }
     @Test fun metadataOnlyAudioIsUnavailableButRetainedUnverifiedBytesStayExportable()=runBlocking { fixture { db,repo,directory ->
         val id=UUID.randomUUID().toString()
         db.studioDao().insertAudio(LocalAudio(id,1,stoppedAt=2,state="Missing",relativeFile="$id.wav",sampleRate=16000,

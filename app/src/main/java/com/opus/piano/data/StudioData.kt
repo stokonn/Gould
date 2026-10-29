@@ -41,7 +41,7 @@ data class BadgeNotice(@PrimaryKey val achievementId: String, val unlockedAt: Lo
 @Dao
 interface StudioDao {
     @Query("SELECT * FROM local_audio ORDER BY createdAt DESC,id DESC LIMIT :limit") fun recordings(limit: Int = 100): Flow<List<LocalAudio>>
-    @Query("SELECT * FROM local_audio WHERE state IN ('Saved','Recoverable','Missing','Deleting') AND (createdAt < :beforeCreated OR (createdAt = :beforeCreated AND id < :beforeId)) ORDER BY createdAt DESC,id DESC LIMIT :limit")
+    @Query("SELECT * FROM local_audio WHERE state != 'Deleted' AND (createdAt < :beforeCreated OR (createdAt = :beforeCreated AND id < :beforeId)) ORDER BY createdAt DESC,id DESC LIMIT :limit")
     suspend fun audioPage(beforeCreated: Long, beforeId: String, limit: Int): List<LocalAudio>
     @Query("SELECT * FROM local_audio ORDER BY createdAt DESC,id DESC") suspend fun allAudio(): List<LocalAudio>
     @Query("SELECT * FROM local_audio WHERE id=:id") suspend fun audio(id: String): LocalAudio?
