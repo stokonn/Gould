@@ -137,7 +137,10 @@ class WidgetTest {
     @Test fun readyWidgetTapDoesNotCreateSessionDraftAudioOrStartCapture() = runBlocking {
         ready()
         val before = app.practice.state.value
-        check(before.token.isBlank() && !before.running) { "Requires the disposable emulator's ready fixture" }
+        // A recovered, non-running (Interrupted/paused) practice is a valid starting fixture: the
+        // ready-widget tap must leave it exactly as-is and must not create anything. Only an
+        // actively running capture would make the "does not start capture" invariant ambiguous.
+        check(!before.running) { "Requires a non-running (ready or recovered-paused) fixture" }
         val sessions = app.database.dao().allSessions()
         val draft = app.database.practiceDao().draft()
         val audio = app.database.studioDao().allAudio()
