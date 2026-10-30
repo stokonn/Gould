@@ -99,6 +99,32 @@ Final reports must include significant files/architecture/database changes, exac
 
 Use docs/design/goldberg-0.10/README.md and manifest.json; 01_HOME_APPROVED and 02_PROFILE_APPROVED are the primary references. Inspect all supplied screens, retain four tabs/top-right Settings and every appearance preference, and never package reference images in the APK. Compare actual emulator renders in both themes/font scales and document meaningful differences. Obtain explicit owner visual approval before publication unless the owner explicitly waives screenshot review for that release. For 0.10 the owner waived personal screenshot review on 2026-10-17; minor differences are listed for possible 0.10.1 improvements. Earlier mockup approval and passing automated tests alone are not final visual sign-off.
 
+## Three-tier verification workflow — owner priority for Gould 0.13+
+
+Verify changes at the smallest tier that genuinely covers them; use
+[docs/planning/gould-0.13/VERIFICATION-MATRIX.md](docs/planning/gould-0.13/VERIFICATION-MATRIX.md)
+to decide what a change invalidates. Every tier run appends an exact-commit
+audit line to `docs/planning/gould-0.13/verification-audit.jsonl`.
+
+- **FAST (everyday):** `scripts/verify-fast.sh [--tests <pattern>]` — affected
+  module compilation, JVM unit tests and fast pure-Python static checks. Uses
+  the Gradle daemon and incremental builds; no clean build, no emulator.
+- **INTEGRATION (feature boundary):** `scripts/verify-integration.sh` — full
+  JVM suite, lint, instrumentation compilation and, when
+  `INSTRUMENTATION_CLASSES` is set, execution of affected native classes on
+  exactly ONE identified disposable emulator (`ro.kernel.qemu=1` guard; never
+  the owner's phone; refuses concurrent emulators on this host).
+- **RELEASE (final source freeze):** `scripts/verify-release.sh` — the exact
+  mandatory policy command (`clean assembleDebug testDebugUnitTest
+  assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1`) plus all
+  mandatory policy checks. Release-only artifact/signing/upgrade/security
+  gates run afterwards per the matrix; publication decisions stay separate.
+
+Rules: no blind retries of failed full suites; no repeating PASSing checks
+without a recorded source/environment invalidation reason; diagnose failures
+at the smallest reproducing scope; compilation evidence is never claimed as
+instrumentation execution; mandatory RELEASE gates are never weakened.
+
 ## Legacy Cleanup & Repository Maintenance
 
 Before development or repository maintenance, read [docs/maintenance/LEGACY-CLEANUP.md](docs/maintenance/LEGACY-CLEANUP.md). Follow its documented policy for identifying obsolete code, redundant assets, unused files and technical debt; remove only verified unnecessary components. Preserve user data, migrations, backup formats, release history, legal documentation, signing identity and compatibility-sensitive identifiers. Do not start substantial cleanup during unfinished release verification. Perform safe routine maintenance autonomously, using automated checks and explicitly targeted emulators rather than physical user devices. Document cleanup changes and actual verification in the permanent maintenance record, preserving its history across future Goldberg versions. Do not publish a new application release solely for maintenance without authorization.

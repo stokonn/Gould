@@ -1,0 +1,2 @@
+{"time": "2026-10-30T17:29:54+00:00", "tier": "FAST", "status": "PASS", "seconds": 126, "commit": "d10aa49-dirty", "detail": "compileDebugKotlin testDebugUnitTest static:localization+migrations+backup+history"}
+{"time": "2026-10-30T17:30:19+00:00", "tier": "FAST", "status": "PASS", "seconds": 6, "commit": "d10aa49-dirty", "detail": "compileDebugKotlin testDebugUnitTest static:localization+migrations+backup+history"}
