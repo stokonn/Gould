@@ -58,6 +58,7 @@ production signing/publication, Stable changes or main integration.
 - [x] Batched recordings-page metadata loading: one association query, one completion-token query and one filesystem batch replace per-row work for each fetched page.
 - [x] Prepared Gould 0.13 development metadata: versionName `0.13-dev` / stable property `0.13`, versionCode `15`.
 - [x] Targeted FAST PASS after the source/build changes: `scripts/verify-fast.sh --tests '*Recording*Test'`, 85 seconds; `compileDebugKotlin`, focused JVM tests and all four static checks passed.
+- [x] Reviewed batched-query regression: SQL now returns at most six associations per recording; synthetic SQLite benchmark returned 180 rather than 3,000 rows. Android instrumentation source compiles, but execution remains unrun because no emulator was available.
 
 Read-only GitHub inspection found repository `stokonn/Gould`, Stable `v0.12`,
 no open issues and no 0.13 milestone/issue (including closed issue search).

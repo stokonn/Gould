@@ -130,7 +130,7 @@ import java.io.File
             visible = (visible + batch).distinctBy { it.id }
             if (batch.isNotEmpty()) {
                 val ids = batch.map { it.id }
-                val associations = app.database.studioDao().audioPartPreviews(ids)
+                val associations = app.database.studioDao().audioPartPreviews(ids, 6)
                     .groupBy(LocalAudioPart::recordingId)
                     .mapValues { (_, values) -> values.take(6) }
                 val tokens = batch.mapNotNull { it.sessionToken }.distinct()
@@ -147,7 +147,7 @@ import java.io.File
         catch (_: Exception) { failed = true }
         finally { loading = false }
     }
-    fun reload() { visible = emptyList(); refresh++ }
+    fun reload() { visible = emptyList(); details = emptyMap(); refresh++ }
     LaunchedEffect(captureKey) {
         if (captureKey != observedCapture) {
             observedCapture = captureKey

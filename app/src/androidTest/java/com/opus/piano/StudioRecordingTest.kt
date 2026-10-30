@@ -92,6 +92,20 @@ class StudioRecordingTest {
         assertEquals(1,db.studioDao().allAudio().size)
         assertEquals("Deleted",db.studioDao().allAudio().single().state)
     } }
+    @Test fun batchedAssociationPreviewIsBoundedPerRecording()=runBlocking { fixture { db,_,_ ->
+        val ids = (0 until 30).map { UUID.randomUUID().toString() }
+        ids.forEachIndexed { index, id ->
+            db.studioDao().insertAudio(LocalAudio(id,index.toLong(),relativeFile="$id.wav",sampleRate=16000))
+            db.studioDao().associate((0 until 100).map { offset ->
+                LocalAudioPart(id,offset.toLong(),"piece:$offset","Piece $offset","Composer")
+            })
+        }
+        val previews = db.studioDao().audioPartPreviews(ids,6)
+        assertEquals(30 * 6,previews.size)
+        assertTrue(previews.groupBy { it.recordingId }.values.all { rows ->
+            rows.map { it.offsetSamples } == (0L until 6L).toList()
+        })
+    } }
     @Test fun metadataOnlyAudioIsUnavailableButRetainedUnverifiedBytesStayExportable()=runBlocking { fixture { db,repo,directory ->
         val id=UUID.randomUUID().toString()
         db.studioDao().insertAudio(LocalAudio(id,1,stoppedAt=2,state="Missing",relativeFile="$id.wav",sampleRate=16000,

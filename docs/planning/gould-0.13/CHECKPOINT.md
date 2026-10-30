@@ -105,6 +105,14 @@ development metadata is prepared as versionName `0.13-dev` (stable property
 `0.13`) and versionCode `15`. Targeted FAST passed in 85 seconds with
 `compileDebugKotlin`, `*Recording*Test` JVM tests and all four static checks.
 
+The association query now caps results in SQL at six rows per recording using
+only correlated subqueries supported by Android API 26; it no longer loads all
+association rows before Kotlin truncation. A synthetic SQLite run with 30
+recordings x 100 associations returned 3,000 rows / 3.17 ms median before the
+cap and 180 rows / 7.51 ms median after it. The bounded query trades a few
+milliseconds of CPU for 16.7x lower result materialization; no emulator was
+available for Room instrumentation execution.
+
 ## Remaining work and boundaries
 
 1. The recordings page now batches association/session metadata and filesystem
