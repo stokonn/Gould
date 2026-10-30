@@ -1,11 +1,20 @@
-## Gould 0.12 — unreleased, implementation in progress
+## Gould 0.12 Stable — The Practice Studio Update
 
-- Begin the approved single-stage scope and mandatory launcher icon: production
-  adaptive/monochrome and legacy resources are constructed; actual launcher
-  acceptance remains pending.
-- Add internal persistence/audio-recovery/achievement-rule foundations and
-  regression tests; new Studio/backup/widget functionality is not yet complete.
-- [Actual checkpoint and limitations](docs/planning/gould-0.12/CHECKPOINT.md).
+- Add the Studio record/stop flow with Previous takes, playback, export and
+  restart-safe recovery; the metronome now plays through media volume with
+  proper focus, and the multi-piece queue gains safe Undo and notes.
+- Add four launcher widgets (Quick Practice, Weekly Activity, Monday–Sunday and
+  adaptive) with offline snapshots, honest stale/unavailable states and bounded
+  refresh; widget taps never start practice or recording on their own.
+- Preserve all personal data through additive schema 10→11 and backup format 6
+  (JSON plus journal/audio ZIP); 17 original badges, dates, profile, repertoire
+  and drafts retained, joined by five new awards and Founding Pianist.
+- Ship the faithful adaptive/monochrome/legacy launcher icon, bundled Tux font
+  rendering, Library Previous alignment, Profile 2×2 statistics and EN/CZ
+  localization.
+- Trusted published 0.11→0.12 in-place upgrade, security/privacy/licensing,
+  performance and release-artifact gates pass; required CI green.
+- [Release notes and verification](docs/releases/GOULD-0.12.md).
 
 ## 0.11 Stable — The Music Database Update
 

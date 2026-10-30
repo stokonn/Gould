@@ -1,6 +1,6 @@
 # Gould 0.12 — development
 
-> Gould 0.12 development documentation. These features are implemented on `feature/gould-0.12`; full emulator and release acceptance is still in progress. The latest published release remains [Goldberg 0.11 Stable](https://github.com/stokonn/Gould/releases/tag/v0.11). Historical sections below retain their original evidence.
+> Gould 0.12 documentation — [Gould 0.12 Stable](https://github.com/stokonn/Gould/releases/tag/v0.12) is the latest published release. Sections describing 0.12 behavior now document the shipped application; historical sections below retain their original evidence.
 
 Implemented: explicit local WAV recording and recovery/media archive controls; Studio metronome, durable queue/Undo/notes; Previous history/recordings and local playback; centered Profile and persistent editor drafts; six evidence-based badges and durable notices; both adaptive launcher widgets; corrected original ASCII Tux and subtle local Home landscape. Full acceptance and Stable publication remain pending.
 

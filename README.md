@@ -2,11 +2,11 @@
 
 [![Android quality](https://github.com/stokonn/Gould/actions/workflows/quality.yml/badge.svg?branch=main)](https://github.com/stokonn/Gould/actions/workflows/quality.yml) [![Backend verification](https://github.com/stokonn/Gould/actions/workflows/community-bff.yml/badge.svg?branch=main)](https://github.com/stokonn/Gould/actions/workflows/community-bff.yml)
 
-Gould is the continuing product name for Goldberg. The verified maintenance source is integrated into main; the latest published application remains **Goldberg 0.11 Stable**. Gould 0.12 is in active development as one approved stage; it is not released. [Current checklist](docs/planning/gould-0.12/STAGE-CHECKLIST.md) · [Implementation checkpoint](docs/planning/gould-0.12/CHECKPOINT.md) · [Issue #41](https://github.com/stokonn/Gould/issues/41).
+Gould is the continuing product name for Goldberg. The latest published application is **Gould 0.12 Stable**, integrating the approved Studio/widgets/achievements scope; Goldberg 0.11 Stable remains available for historical reference. [Release notes](docs/releases/GOULD-0.12.md) · [Current checklist](docs/planning/gould-0.12/STAGE-CHECKLIST.md) · [Implementation checkpoint](docs/planning/gould-0.12/CHECKPOINT.md) · [Issue #41](https://github.com/stokonn/Gould/issues/41).
 
 A native Android piano practice journal built with Kotlin, Jetpack Compose, Material 3 and Room. Android 8.0+; English and Czech; light and dark themes. Your journal stays local.
 
-**Goldberg 0.11 Stable — The Music Database Update** integrates Discover, sourced details, offline bundles and a shared Discover/Library catalogue while keeping your journal local. [Release notes](docs/releases/GOLDBERG-0.11.md) · [Download 0.11](https://github.com/stokonn/Gould/releases/tag/v0.11).
+**Gould 0.12 Stable — The Practice Studio Update** adds the Studio record flow, metronome on media volume, four launcher widgets, new achievements and backup format 6 while keeping your journal local. [Release notes](docs/releases/GOULD-0.12.md) · [Download 0.12](https://github.com/stokonn/Gould/releases/tag/v0.12). **Goldberg 0.11 Stable — The Music Database Update** remains available. [Release notes](docs/releases/GOLDBERG-0.11.md) · [Download 0.11](https://github.com/stokonn/Gould/releases/tag/v0.11).
 
 [Download](https://github.com/stokonn/Gould/releases) · [Official Wiki](https://github.com/stokonn/Gould/wiki) · [Issues](https://github.com/stokonn/Gould/issues) · [Development Project](https://github.com/users/stokonn/projects/2) (authorized collaborators)
 

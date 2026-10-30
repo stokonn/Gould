@@ -1,6 +1,6 @@
 # User Guide — Gould
 
-> Gould 0.12 development documentation. These features are implemented on `feature/gould-0.12`; full emulator and release acceptance is still in progress. The latest published release remains [Goldberg 0.11 Stable](https://github.com/stokonn/Gould/releases/tag/v0.11). Historical sections below retain their original evidence.
+> Gould 0.12 documentation — [Gould 0.12 Stable](https://github.com/stokonn/Gould/releases/tag/v0.12) is the latest published release. Sections describing 0.12 behavior now document the shipped application; historical sections below retain their original evidence.
 
 
 Use Library for your personal repertoire and the shared local catalogue, and Discover to explore sourced music records. Both tabs open the same canonical catalogue details. Public catalogue rows are labelled separately from music saved in your repertoire; open details to add an eligible work or open its existing repertoire entry.

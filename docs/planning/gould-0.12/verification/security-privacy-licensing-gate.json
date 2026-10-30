@@ -1,0 +1,26 @@
+{
+  "gate": "Gould 0.12 Stable security/privacy/licensing",
+  "date": "2026-10-30",
+  "source_base": "38825d7e65a7353d2d30111471ba7108d08e83c1",
+  "security_privacy": {
+    "manifest_delta_vs_ab7d66d": "application line only adds appCategory=audio and label=@string/app_name; two widget receivers added (exported=false); allowBackup=false, fullBackupContent=false, dataExtractionRules retained; zero uses-permission changes",
+    "release_permissions_vs_published_v011": "identical (aapt permission diff empty)",
+    "dependencies": "app/build.gradle.kts diff vs v0.11 release commit ab7d66d is versionCode/versionName only; no dependency changes",
+    "backup": "allowBackup=false and fullBackupContent=false confirmed in packaged manifest (aapt xmltree 0x0)",
+    "secret_scan_release_payload": "0 hits for ghp_, github_pat_, AIza, AKIA, PEM private-key blocks across all 542 APK entries",
+    "private_reference_images": "15 private design reference PNG SHA-256 hashes checked against full payload, 0 present",
+    "private_material": "no keystore/jks/p12/pem, no PMP files, no policy docs in payload; supabase.co string occurs only in bundled assets/legal/privacy.md documentation text",
+    "networking": "INTERNET + ACCESS_NETWORK_STATE unchanged from v0.11; no new endpoints or community-backend networking introduced; online catalogue remains default-off consent"
+  },
+  "licensing": {
+    "bundled_legal_assets": ["assets/legal/droid-sans-mono-NOTICE.txt", "assets/legal/privacy.md", "assets/legal/third-party-notices.md", "assets/licenses/Apache-2.0.txt", "assets/licenses/CormorantGaramond-OFL.txt", "assets/licenses/Inter-OFL.txt"],
+    "droid_sans_mono_ttf": "app/src/main/res/font/droid_sans_mono.ttf sha256 089bdaac95caeed25a8392a6f0606328d009473119f1c7465b642d5cebe5320c, 117072 bytes, matches bundled NOTICE",
+    "cormorant_garamond_ttf": "sha256 b20b7d9626dd956b2c5e558692ad328b1f19e3275e2782db4fa07670d83f35e0, OFL license asset bundled",
+    "inter_ttf": "sha256 29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031, OFL license asset bundled",
+    "quote_nature_png": "app/src/main/res/drawable-nodpi/quote_nature.png sha256 ff0ff48d02ca298ceacec4c99eeb22689c0a12cf1882d9abe8dc8a18aaeae603 matches docs/design/gould-0.12/PRODUCTION-ASSETS.md (original AI artwork, no third-party license)",
+    "attribution": "Schumann/Gutenberg attribution and all third-party notices retained; private design mockups excluded from APK (15/15 reference hashes absent)"
+  },
+  "artifact_gate_evidence": "docs/planning/gould-0.12/verification/release-artifact-gate.json",
+  "status": "PASS",
+  "signature": "created by stokonn with love <3"
+}

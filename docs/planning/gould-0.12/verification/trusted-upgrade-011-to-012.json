@@ -1,0 +1,24 @@
+{
+  "gate": "Gould 0.12 Stable trusted published 0.11 -> 0.12 in-place upgrade",
+  "date": "2026-10-30",
+  "source_base": "38825d7e65a7353d2d30111471ba7108d08e83c1",
+  "emulator": "emulator-5586, AVD gould012-release, API36 x86_64, ro.kernel.qemu=1, root-mode disposable AVD, -gpu swangle",
+  "baseline": {"apk": ".gradle/gould012-checks/upgrade-baseline/Goldberg-v0.11.apk", "sha256": "290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6", "versionName": "0.11", "schema": 10},
+  "candidate": {"apk": ".gradle/stable-delivery/Gould-v0.12.apk", "sha256": "14f4ef28e13901f0dbbf54510fb9b5bd668e35b0a409e9e14d057bae00d932e8", "versionName": "0.12", "schema": 11},
+  "method": "scripts/verify_emulator_upgrade.py --seed-disposable --root-fresh-emulator --startup-runs 30; publishes trusted v0.11 APK, seeds the protected format-3 fixture (37 sessions, notes, profile, badges, repertoire, recovery archive, paused draft with piece part, appearance preferences), then installs the candidate over it without data loss",
+  "result": {
+    "persistent_rows_unchanged": true,
+    "preferences_unchanged": true,
+    "sessions_compared": 37,
+    "final_schema": 11,
+    "foreign_keys": "pass",
+    "integrity_check": "ok",
+    "badge_history": "original badge identity/dates retained; badge_notices rows match earned dates; no unexpected new badges",
+    "no_manufactured_audio_or_events": "local_audio, local_audio_parts, achievement_events all empty after upgrade",
+    "personal_catalogue_bridge": {"identities": 3, "anchors": 113, "identity_format": "UUIDv4 verified"}
+  },
+  "verdict": "PASS: original persistent rows and badge dates retained after 0.11 upgrade; 37 sessions, notes, profile, badges, repertoire, recovery archive, draft bytes and preferences retained",
+  "private_evidence": ".gradle/gould012-checks/stable-release/upgrade/{result.json,before.db,after.db,validated.db,before.json,after.json}",
+  "attempts_note": "Two earlier attempts failed with emulator-side SIGSEGV in the host GPU renderer (see performance-gate.json environment_note); the third attempt completed on the software renderer. No application failure occurred in any attempt.",
+  "signature": "created by stokonn with love <3"
+}

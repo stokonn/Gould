@@ -1,0 +1,44 @@
+{
+  "gate": "Gould 0.12 Stable performance acceptance",
+  "date": "2026-10-30",
+  "source_base": "38825d7e65a7353d2d30111471ba7108d08e83c1",
+  "apk_sha256": "14f4ef28e13901f0dbbf54510fb9b5bd668e35b0a409e9e14d057bae00d932e8",
+  "emulator": "emulator-5586, AVD gould012-release, API36 x86_64 google_apis, ro.kernel.qemu=1, 2048MB/4cores, headless -gpu swangle",
+  "environment_note": "Emulator 37.2.12 host-GL gfxstream segfaults on this host (SIGSEGV in TextureResize/ColorBuffer, coredumps at 03:26, 03:30 and a boot-time swiftshader_indirect crash at 03:32). All reported emulator numbers were therefore measured under the fully software ANGLE/SwiftShader swangle renderer; absolute timings are inflated versus GPU rendering and matched A/B comparisons under the identical renderer are the governing signal.",
+  "guards": {
+    "startup_investigate_threshold_ms": 1980,
+    "idle_pss_investigate_threshold_kib": 143471,
+    "min_comparable_samples": 30,
+    "source": "docs/planning/goldberg-0.11/stage-2/MEASUREMENTS.md"
+  },
+  "startup_ab_matched": {
+    "method": "trusted 0.11 published APK seeded with identical protected fixture, then in-place upgrade to 0.12; am start -W TotalTime after force-stop; 30 samples per side on the same emulator/renderer/fixture (scripts/verify_emulator_upgrade.py)",
+    "baseline_0_11": {"n": 30, "median_ms": 1623, "min_ms": 1320, "max_ms": 2915},
+    "candidate_0_12": {"n": 30, "median_ms": 1587, "min_ms": 1417, "max_ms": 2531},
+    "median_ratio_candidate_over_baseline": 0.978,
+    "result": "PASS — no startup regression; candidate median is 2.2% lower than the matched 0.11 baseline and both medians are below the 1980 ms investigation threshold even under software rendering",
+    "caveat": "Emulator cold-process samples after initialization, not install-to-usable or physical-device timing."
+  },
+  "corroborating_host_gpu_run": "Pre-harness 0.11 baseline on the same AVD with host Mesa GPU (before the gfxstream instability surfaced): 5 launches median 883 ms, idle PSS 55766-56805 KiB — recorded as .gradle/gould012-checks/stable-release/perf-baseline-hostgl.json; confirms the app is not intrinsically slow on a GPU renderer.",
+  "idle_pss": {
+    "baseline_0_11_fresh_under_swangle_kib": [52337, 78364],
+    "candidate_0_12_postupgrade_under_swangle_kib": [64584, 66715],
+    "result": "PASS — post-upgrade idle PSS sits inside the 0.11 baseline range and far below the 143471 KiB investigation threshold; +12 MB vs the fresh baseline is explained by the seeded 37-session fixture data."
+  },
+  "frames": {
+    "method": "deterministic monkey sweep, seed 20261029, 400 events, throttle 40ms, dumpsys gfxinfo",
+    "baseline_0_11": {"totalFrames": 76, "jankyFrames": 76, "p50_ms": 650, "p90_ms": 2000, "p95_ms": 4000},
+    "candidate_0_12": {"totalFrames": 96, "jankyFrames": 96, "p50_ms": 500, "p90_ms": 1400, "p95_ms": 1850},
+    "result": "No regression — candidate percentiles are lower than baseline (p90 1400 vs 2000, p95 1850 vs 4000). Janky-frame saturation is a software-renderer artifact affecting both sides equally; no numeric frame gate exists in the documented guards."
+  },
+  "storage": {
+    "baseline_0_11_fresh_total_bytes": 3051520,
+    "candidate_0_12_postupgrade_total_bytes": 2658304,
+    "candidate_databases_bytes": 376832,
+    "result": "PASS — no abnormal growth; candidate total is below the fresh baseline and databases grow only ~74 KB for the seeded 37-session data."
+  },
+  "widget_wakeups": "Not re-measured at release; widget provider XML retains updatePeriodMillis=0 (no implicit system wakeups) and the bounded 6h WorkManager refresh was accepted in docs/planning/gould-0.12/WIDGET-LAUNCHER-ACCEPTANCE.md. Recorded as reused prior acceptance, not a new measurement.",
+  "raw_artifacts": ".gradle/gould012-checks/stable-release/{upgrade/result.json,perf-baseline-swangle.json,perf-baseline-hostgl.json,perf-postupgrade.json,gfxinfo-baseline.txt,gfxinfo-postupgrade.txt}",
+  "status": "PASS",
+  "signature": "created by stokonn with love <3"
+}
