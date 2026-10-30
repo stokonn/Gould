@@ -10,6 +10,9 @@
 # scripts against the exact frozen commit — see VERIFICATION-MATRIX.md.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+if [[ "${GOULD_GRADLE_LOCK_HELD:-}" != 1 ]]; then
+  exec scripts/gradle-lock.sh "$PWD/scripts/verify-release.sh" "$@"
+fi
 
 start=$(date +%s)
 detail_parts=()
@@ -21,7 +24,7 @@ fail() {
 
 echo "== RELEASE: mandatory policy build & tests (clean, no-daemon, max-workers=1) =="
 ./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug \
-  --no-daemon --max-workers=1 || fail
+  --no-daemon --max-workers=1 --no-parallel || fail
 detail_parts+=("policy-clean-gate")
 
 echo "== RELEASE: mandatory policy checks =="

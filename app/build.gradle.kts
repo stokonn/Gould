@@ -13,6 +13,20 @@ android {
     if (providers.gradleProperty("goldbergCanonicalIntegration").orNull == "true")
         sourceSets.getByName("test").kotlin.srcDir("src/canonicalIntegration/java")
     bundle { language { enableSplit = false } }
+    buildTypes {
+        release {
+            // Gould 0.13: R8 code + resource shrinking for the release APK.
+            // The published 0.12 baseline shipped unminified (50.7 MB of DEX).
+            // Entry points (manifest activities/services/receivers, Room generated
+            // code, WorkManager workers) are kept by manifest/AAR consumer rules;
+            // app code uses no reflection (platform org.json only).
+            // Signing is attached by the trusted private init script at
+            // publication time; never embed keystore material here.
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+    }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
 }
 kotlin { compilerOptions { jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17) } }

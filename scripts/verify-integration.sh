@@ -14,6 +14,9 @@
 #   INSTRUMENTATION_CLASSES=... INSTRUMENTATION_SERIAL=emulator-5586 scripts/verify-integration.sh
 set -euo pipefail
 cd "$(dirname "$0")/.."
+if [[ "${GOULD_GRADLE_LOCK_HELD:-}" != 1 ]]; then
+  exec scripts/gradle-lock.sh "$PWD/scripts/verify-integration.sh" "$@"
+fi
 
 start=$(date +%s)
 detail_parts=()
@@ -25,7 +28,7 @@ fail() {
 
 # 1. Full host JVM suite + lint + instrumentation compilation (no execution yet).
 echo "== INTEGRATION: full JVM suite, lint, androidTest compilation =="
-./gradlew :app:testDebugUnitTest :app:lintDebug :app:assembleDebugAndroidTest || fail
+./gradlew :app:testDebugUnitTest :app:lintDebug :app:assembleDebugAndroidTest --max-workers=1 --no-parallel || fail
 detail_parts+=("full-JVM+lint+androidTest-compile")
 
 # 2. Optional native execution of affected classes on a single identified emulator.
@@ -43,7 +46,7 @@ if [[ -n "${INSTRUMENTATION_CLASSES:-}" ]]; then
   COUNT="$(adb devices | awk '$2=="device" && $1 ~ /^emulator-[0-9]+$/ {n++} END {print n+0}')"
   [[ "$COUNT" -eq 1 ]] || { echo "Refusing: $COUNT emulators running on this host"; fail; }
   echo "== INTEGRATION: native classes on $SERIAL =="
-  ANDROID_SERIAL="$SERIAL" ./gradlew :app:connectedDebugAndroidTest \
+  ANDROID_SERIAL="$SERIAL" ./gradlew :app:connectedDebugAndroidTest --max-workers=1 --no-parallel \
     "-Pandroid.testInstrumentationRunnerArguments.class=$INSTRUMENTATION_CLASSES" || fail
   detail_parts+=("native($INSTRUMENTATION_CLASSES)@$SERIAL")
 fi

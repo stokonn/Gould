@@ -1,0 +1,141 @@
+{
+  "baseline": {
+    "path": "/home/stokonn/Projects/Opus/.gradle/worktrees/gould-0.12/.gradle/stable-delivery/Gould-v0.12.apk",
+    "bytes": 18757232,
+    "sha256": "14f4ef28e13901f0dbbf54510fb9b5bd668e35b0a409e9e14d057bae00d932e8",
+    "zip_crc": "PASS",
+    "dex_files": 3,
+    "dex_uncompressed_bytes": 50747224,
+    "dex_compressed_bytes": 14032148,
+    "zip_entries": 542,
+    "resources_arsc_bytes": 1453692
+  },
+  "unsigned_candidate": {
+    "path": "/home/stokonn/Projects/Opus/.gradle/worktrees/gould-0.13/app/build/outputs/apk/release/app-release-unsigned.apk",
+    "bytes": 6492506,
+    "sha256": "2cfbd10d13bfa2a2c366f4c6176dadf65d05dbae2dd7b5e418d1a58faa43cdda",
+    "zip_crc": "PASS",
+    "dex_files": 1,
+    "dex_uncompressed_bytes": 4725240,
+    "dex_compressed_bytes": 2354560,
+    "zip_entries": 414,
+    "resources_arsc_bytes": 957264
+  },
+  "reduction_bytes": 12264726,
+  "reduction_percent": 65.38665193243864,
+  "gradle_duration_seconds": 246,
+  "wall_seconds": 247.29,
+  "build_status": "PASS",
+  "mapping_sha256": "5ae2ed8fbd8692abc9afc6381dcc554c91f9974d437c94f70287f6626ce2d056",
+  "source_manifest_sha256": "d976b1c39d2730233ba60747d75a4b9181d3b2e300f3a21713df219241f6ec06",
+  "note": "local unsigned non-debuggable release variant; not a published release; inherited version metadata 0.12-dev/code14",
+  "source": {
+    "head": "7a132f12f468ae01a5a8deaa62fcdf24fd44ca50",
+    "main_tree": "ba22c993cfb29ce0f79ac6e86a1c5c81fbc768ef",
+    "build_script_sha256": "0cdf430463467c5efaee07f76edd34c642db10ec92284716d47389f6f887b50c",
+    "proguard_rules_sha256": "ceef6b4ebe1da1ceadaaa56b66f202ec7462e4e9c2bd69ca74b84b76e3c43999",
+    "source_sha256": "1fe7e4fc4848285f9a0a360d4d1e3456ca85418cd8ae839f680c3a20e25fc2dc",
+    "source_files": 238
+  },
+  "test_signing": {
+    "source": "app/build/outputs/apk/release/app-release-unsigned.apk",
+    "test_apk": ".gradle/renaissance/r8-isolated/optimized-test.apk",
+    "all_payload_entries_identical": true,
+    "payload_entries": 414,
+    "bytes": 6532669,
+    "sha256": "bae4a44516b0199a71612b2a13b8c9a640cebbf374cec8ce2fceab7c9f3636a5",
+    "certificate_sha256": "cfa9f2436c9ece144e5eafff5094cc7e05395f1befe10b26ea4cc7d3521f9d1f"
+  },
+  "runtime": {
+    "status": "PASS, focused optimized-payload acceptance",
+    "emulator": "gould013-r8-isolated / emulator-5592 / API36 x86_64 / QEMU=1 / two cores / swangle",
+    "guest_ram_mib": 2560,
+    "resolution": "1080x2400/density420 during startup A/B; 540x1200/density210 during core journeys",
+    "checks": [
+      "non-debuggable startup",
+      "Room initialization and integrity/FK readback",
+      "test-signed baseline in-place update without data clear",
+      "production WidgetRefreshWorker execution SUCCESS in logs and WorkSpec",
+      "real launcher Quick Practice and Weekly Activity binding/rendering",
+      "both widget taps open Ready Studio without starting practice/capture",
+      "explicit consent and microphone/notification permissions",
+      "Studio microphone recording, finalization, WAV/hash validation",
+      "actual playback, advancing position and active AudioFlinger track",
+      "saved recording survives process and emulator restart",
+      "installed APK SHA equals test-signed artifact"
+    ],
+    "serial": "emulator-5592",
+    "package": "com.opus.piano",
+    "installed_sha256": "bae4a44516b0199a71612b2a13b8c9a640cebbf374cec8ce2fceab7c9f3636a5",
+    "payload_matches_unsigned": true,
+    "saved_recording_survives_process_and_emulator_restart": true
+  },
+  "data_readback": {
+    "room_integrity": "ok",
+    "foreign_key_violations": 0,
+    "schema": 11,
+    "tables_including_sqlite": 28,
+    "baseline_table_changes": [
+      {
+        "table": "achievement_events",
+        "before_rows": 0,
+        "after_rows": 2
+      },
+      {
+        "table": "local_app_state",
+        "before_rows": 0,
+        "after_rows": 1
+      },
+      {
+        "table": "local_audio",
+        "before_rows": 0,
+        "after_rows": 1
+      },
+      {
+        "table": "local_audio_parts",
+        "before_rows": 0,
+        "after_rows": 1
+      }
+    ],
+    "saved_recordings": 1,
+    "wav_sha256": "2dce58ba9c9358385daef76d4059ff28b2d1d83b9cb5fcbce8bbb9a250ad36de",
+    "wav": {
+      "rate": 22050,
+      "frames": 274432,
+      "channels": 1,
+      "sample_width": 2,
+      "duration_seconds": 12.445895691609977
+    },
+    "crash_buffer_empty": true,
+    "scope": "fresh disposable emulator only; test-signed in-place baseline upgrade; no owner data or production signer tested",
+    "workmanager_widget_states": [
+      {
+        "state": 0,
+        "attempts": 0
+      },
+      {
+        "state": 0,
+        "attempts": 0
+      },
+      {
+        "state": 2,
+        "attempts": 1
+      }
+    ]
+  },
+  "accepted_evidence_reused": {
+    "FAST_seconds": 29,
+    "host_INTEGRATION_seconds": 3930,
+    "instrumentation": "APK compiled only; androidTest runner not executed",
+    "reason": "All 238 saved application/schema/build file hashes unchanged; workflow-only edits checked separately."
+  },
+  "not_verified": [
+    "audible acoustic output (emulator host audio driver unavailable)",
+    "full optimized native/instrumentation suite",
+    "production signer / trusted-certificate upgrade",
+    "full release gate / final version metadata / CI for new commit",
+    "full theme/locale/API/widget visual matrix"
+  ],
+  "raw_artifacts": ".gradle/renaissance/r8-isolated/; R8 outputs app/build/outputs/mapping/release/; original source manifest .gradle/renaissance/source-manifest.json",
+  "signature": "created by stokonn with love <3"
+}

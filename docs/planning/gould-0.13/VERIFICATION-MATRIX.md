@@ -2,7 +2,7 @@
 
 Three tiers, defined in `AGENTS.md`. Read this matrix to decide what a change
 invalidates; do not rerun tiers wholesale without an invalidation reason.
-Every executed run appends one line to `verification-audit.jsonl` via
+Every executed tier run appends one line to `verification-audit.jsonl` via
 `scripts/verify-audit.py` (called automatically by the tier scripts).
 
 | Change area | FAST (everyday) | INTEGRATION (feature boundary) | RELEASE (source freeze, additive) |
@@ -26,8 +26,12 @@ Every executed run appends one line to `verification-audit.jsonl` via
   tiers that compile or test those files; docs-only edits invalidate nothing.
 - **Environment invalidation:** SDK/AGP/Kotlin/Gradle/JDK change, new AVD, or
   dependency refresh invalidates INTEGRATION and RELEASE even if source is unchanged.
-- **Evidence invalidation:** a PASS bound to commit X cannot evidence commit Y.
-  `verification-audit.jsonl` records the exact commit of every run.
+- **Evidence identity:** retain the exact run commit and dirty-state annotation.
+  New audit rows also bind application/build inputs and verification tooling by
+  SHA-256. Reuse across docs/tooling commits requires matching relevant app/build
+  hashes, unchanged environment and an explicit reuse reason; tooling edits get
+  their own small checks. A different commit alone does not justify replaying
+  accepted app tests. Older rows may be bound through a preserved source manifest.
 - **Failed-gate rule:** a failed mandatory RELEASE gate blocks publication until
   resolved at the smallest reproducing scope; no blind full-suite retries.
 
@@ -45,3 +49,19 @@ RELEASE-only artifact/signing/upgrade/security gates keep their existing
 documented scripts (`verify_quality_apk.py`, `verify-upgrade-signing.sh`,
 `verify_emulator_upgrade.py`, `scripts/verify-emulator-upgrade.py` where used)
 and are executed by the release runbook, not duplicated here.
+
+## Host resource discipline (confirmed OOM recovery)
+
+All tier scripts hold one shared host lock via `scripts/gradle-lock.sh`; child
+processes/idle daemons do not inherit the lock descriptor. Gradle calls use
+`--max-workers=1 --no-parallel`. Never start another heavyweight Gradle operation
+while one runs. Finish the build before starting an emulator.
+
+For an invalidated local unsigned R8 experiment only:
+`scripts/build-optimized-local.sh` — bounded heap/CPU, offline caches, retained
+fresh logs, no clean/signing/publication. It refuses a running emulator and takes
+the same host lock. This artifact build does not constitute full RELEASE or
+native acceptance. Do not rerun it merely because documentation changed.
+
+Current accepted evidence: [CHECKPOINT.md](CHECKPOINT.md). Full RELEASE remains
+reserved for final source freeze; publication/main approval remain separate.

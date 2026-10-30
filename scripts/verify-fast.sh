@@ -11,6 +11,9 @@
 #   FAST_STATIC=skip scripts/verify-fast.sh    # compile + JVM tests, skip python checks
 set -euo pipefail
 cd "$(dirname "$0")/.."
+if [[ "${GOULD_GRADLE_LOCK_HELD:-}" != 1 ]]; then
+  exec scripts/gradle-lock.sh "$PWD/scripts/verify-fast.sh" "$@"
+fi
 
 TEST_FILTER=()
 if [[ "${1:-}" == "--tests" ]]; then
@@ -30,12 +33,12 @@ fail() {
 
 # 1. Affected-module compilation (single-module project: :app Kotlin/Compose/KSP).
 echo "== FAST: compileDebugKotlin =="
-./gradlew :app:compileDebugKotlin "$@" || fail
+./gradlew :app:compileDebugKotlin --max-workers=1 --no-parallel "$@" || fail
 detail_parts+=("compileDebugKotlin")
 
 # 2. JVM unit tests (full suite by default; focused with --tests).
 echo "== FAST: testDebugUnitTest ${TEST_FILTER[*]:-} =="
-./gradlew :app:testDebugUnitTest "${TEST_FILTER[@]}" || fail
+./gradlew :app:testDebugUnitTest --max-workers=1 --no-parallel "${TEST_FILTER[@]}" || fail
 detail_parts+=("testDebugUnitTest${TEST_FILTER[*]:+ (${TEST_FILTER[*]})}")
 
 # 3. Fast static checks (pure Python against source; seconds, no Android runtime).

@@ -165,3 +165,17 @@ Use API36 and the existing compatibility matrix; API37 is deferred. No physical
 phone, RC, new stage, protected-data deletion or independent PMP modification.
 Read docs/planning/gould-0.12/OWNER-AUTHORIZATION.md. This decision supersedes older
 personal visual-approval requirements specifically for Gould0.12.
+
+
+## Gould 0.13 resource discipline — owner update October 30, 2026
+
+Resume from [the current checkpoint](docs/planning/gould-0.13/CHECKPOINT.md).
+Run exactly one heavyweight Gradle workflow at a time. Tier scripts share a host
+lock and use one worker/no parallel tasks; use `scripts/build-optimized-local.sh`
+for an invalidated local unsigned R8 build, with no emulator running. Reuse the
+accepted FAST 29 s / host INTEGRATION 3930 s evidence when source/environment identity
+holds; never repeat the 65-minute run without a real invalidation reason. The 6 s
+warm result measured unchanged sources, not a source-change rebuild. Record exact
+source/tool hashes and distinguish optimized runtime journeys from debug tests.
+No 0.13 main integration, Stable tag/publication, production signing-key use,
+physical-phone testing or private PMP modification is authorized by this update.
