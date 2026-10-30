@@ -1,49 +1,97 @@
-# Gould
+<div align="center">
 
-[![Android quality](https://github.com/stokonn/Gould/actions/workflows/quality.yml/badge.svg?branch=main)](https://github.com/stokonn/Gould/actions/workflows/quality.yml) [![Backend verification](https://github.com/stokonn/Gould/actions/workflows/community-bff.yml/badge.svg?branch=main)](https://github.com/stokonn/Gould/actions/workflows/community-bff.yml)
+<img src="app/src/main/res/mipmap-xxxhdpi/ic_goldberg.png" alt="Gould app icon" width="104" />
 
-Gould is the continuing product name for Goldberg. The latest published application is **Gould 0.12 Stable**, integrating the approved Studio/widgets/achievements scope; Goldberg 0.11 Stable remains available for historical reference. [Release notes](docs/releases/GOULD-0.12.md) · [Current checklist](docs/planning/gould-0.12/STAGE-CHECKLIST.md) · [Implementation checkpoint](docs/planning/gould-0.12/CHECKPOINT.md) · [Issue #41](https://github.com/stokonn/Gould/issues/41).
+<h1>Gould</h1>
 
-A native Android piano practice journal built with Kotlin, Jetpack Compose, Material 3 and Room. Android 8.0+; English and Czech; light and dark themes. Your journal stays local.
+<p><strong>Make every practice session count.</strong></p>
 
-**Gould 0.12 Stable — The Practice Studio Update** adds the Studio record flow, metronome on media volume, four launcher widgets, new achievements and backup format 6 while keeping your journal local. [Release notes](docs/releases/GOULD-0.12.md) · [Download 0.12](https://github.com/stokonn/Gould/releases/tag/v0.12). **Goldberg 0.11 Stable — The Music Database Update** remains available. [Release notes](docs/releases/GOLDBERG-0.11.md) · [Download 0.11](https://github.com/stokonn/Gould/releases/tag/v0.11).
+<p>A thoughtful, local-first piano practice companion for Android.<br />
+Build your repertoire, record your sessions, and see how far you've come.</p>
 
-[Download](https://github.com/stokonn/Gould/releases) · [Official Wiki](https://github.com/stokonn/Gould/wiki) · [Issues](https://github.com/stokonn/Gould/issues) · [Development Project](https://github.com/users/stokonn/projects/2) (authorized collaborators)
+<p><a href="https://github.com/stokonn/Gould/releases/download/v0.12/Gould-v0.12.apk"><strong>Download Gould 0.12 Stable</strong></a> · <a href="docs/releases/GOULD-0.12.md">What's new</a> · <a href="docs/wiki/User-Guide.md">User guide</a></p>
 
-- Durable manual and experimental Smart Practice, multi-piece sessions, notes and review.
-- Local repertoire, catalogue information, paged history and per-piece accounting.
-- Profile, earned badges and a five-badge showcase.
-- Weekly activity, local composer favorites and searchable Favorite Artist selection.
-- Post-session piece-list edits that preserve recorded session time.
-- Portable backups, restore, CSV exports and optional reminders.
-- Classic Piano branding and Bach’s Secret.
+<p>
+<img alt="Android 8.0+" src="https://img.shields.io/badge/Android-8.0%2B-3DDC84?logo=android&amp;logoColor=white" />
+<img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-Jetpack%20Compose-7F52FF?logo=kotlin&amp;logoColor=white" />
+<img alt="Languages" src="https://img.shields.io/badge/Languages-EN%20%7C%20CZ-64748b" />
+<img alt="Offline-first" src="https://img.shields.io/badge/Practice%20data-on%20device-256b5b" />
+<a href="https://github.com/stokonn/Gould/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/stokonn/Gould?style=flat&amp;logo=github&amp;label=Stars" /></a>
+</p>
 
-![Goldberg 0.10.1 Profile](docs/wiki/images/goldberg-0.10.1-profile.png)
+</div>
+---
 
-The public catalogue API is read-only and currently empty; backend OAuth, community writes and practice uploads remain disabled. Online provider search is optional and consent-controlled.
+## Your music. Your progress.
 
-Before updating, export a backup. Install over an existing Goldberg version; never uninstall to bypass a signing error. Google identity does not synchronize practice data. See [0.10.1 verification evidence](docs/VERIFICATION-0.10.1.md) and [release notes](docs/RELEASE-0.10.1.md). Historical provider verification remains in the older release ledgers.
+Gould brings the practical parts of piano practice together without turning your journal into another social network.
 
-## Development
+| 🎼 **Repertoire & history** | ⏱️ **Practice Studio** | 🎙️ **Local recordings** |
+| :--- | :--- | :--- |
+| Organize your pieces, browse the local catalogue and revisit past sessions. | Track manual sessions, use experimental Smart Practice, add notes, switch pieces and use the metronome. | Record deliberately from **Record → Stop**, then replay, export or recover saved takes. |
 
-Read [AGENTS.md](AGENTS.md) for the canonical development and release policy, [the Developer Guide](docs/wiki/Developer-Guide.md) for architecture and AI-agent integrations, and [the 0.11 stage checklist](docs/planning/goldberg-0.11/STAGE-CHECKLIST.md). Read [the permanent maintenance ledger](docs/maintenance/LEGACY-CLEANUP.md) before cleanup or development. Use the existing Gradle wrapper, JDK 17-compatible toolchain and Android SDK 36:
+| 📊 **Progress & achievements** | 📱 **Home-screen widgets** | 💾 **Backups & control** |
+| :--- | :--- | :--- |
+| Follow weekly activity, statistics and earned badges. | Quick Practice and Weekly Activity bring your journal to the launcher without automatically starting the microphone or timer. | Export and restore portable journal backups, with a separate option for audio files. |
 
-```sh
-./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1
-```
+## A look inside
 
-Build artifacts are under `app/build/outputs/apk/`. Compilation is not device verification. Mandatory quality, data-compatibility, rendered-UI and signing checks must pass before separately approved main integration and stable publication. Use emulators only; never target the owner's physical phone. The GitHub quality workflow runs host checks; compatible release signing and emulator/owner acceptance remain separate gates. Local and remote CI results are recorded separately.
+<table>
+  <tr>
+    <th align="center">Home</th>
+    <th align="center">Profile</th>
+    <th align="center">A little personality</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/wiki/images/home-development.png" width="220" alt="Gould Home development preview"></td>
+    <td align="center"><img src="docs/wiki/images/profile-czech-development.png" width="220" alt="Gould Profile development preview in Czech"></td>
+    <td align="center"><img src="docs/wiki/images/tux-development.png" width="220" alt="Gould Tux development preview"></td>
+  </tr>
+</table>
 
-[Signing](docs/SIGNING.md) · [Backup](docs/BACKUP.md) · [Google configuration](docs/GOOGLE-IDENTITY-SETUP.md) · [Changelog](CHANGELOG.md) · [Licenses](docs/LICENSES.md)
+<sub>These are archived **development previews**, not verified final screenshots of the 0.12 Stable build. The shipped interface may differ. [Explore more historical screenshots](docs/wiki/images).</sub>
 
-created by stokonn with love <3
+## Get Gould
 
-### Development and release policy
+**Latest published version: [Gould 0.12 Stable — The Practice Studio Update](https://github.com/stokonn/Gould/releases/tag/v0.12)**
 
-Development builds are internal debug APKs for verification and owner review. Goldberg 0.11 and future Gould versions do not create new release candidates, prerelease tags or development GitHub Releases. The historical [v0.11-rc.1 tag](https://github.com/stokonn/Gould/tree/v0.11-rc.1) remains preserved. Its obsolete prerelease was removed after a verified private metadata/asset backup; the tag and Stable releases remain intact. A stable release requires completed verification, explicit owner approval, then a fresh clean non-debuggable build with the trusted signing certificate and verified in-place upgrades. Merging into main and publishing each require explicit approval.
+- **Android:** 8.0 or newer (API 26+).
+- **Languages:** English and Czech, with light and dark appearance.
+- **Install:** download the signed [Gould-v0.12.apk](https://github.com/stokonn/Gould/releases/download/v0.12/Gould-v0.12.apk) from GitHub Releases.
+- **Already using Goldberg/Gould?** Export a backup before updating, then install over your existing compatible application. **Do not uninstall** just to bypass a signing or version mismatch.
+- **Release integrity:** the [published SHA-256 checksum](https://github.com/stokonn/Gould/releases/download/v0.12/Gould-v0.12.apk.sha256) is available alongside the APK.
 
-Historical Stage 8 [Discover stabilization checklist](docs/planning/goldberg-0.11/stage-8/discover-repair/CHECKPOINT.md): retained acceptance history; final Stable status is in the release receipt.
+[All releases](https://github.com/stokonn/Gould/releases) · [Getting started](docs/wiki/Getting-Started.md) · [FAQ & troubleshooting](docs/wiki/FAQ-and-Troubleshooting.md)
 
-Gould 0.12 will use **one development stage** containing its complete owner-approved feature scope. No feature scope is inferred by this maintenance task. See [preparation and approval gates](docs/maintenance/GOULD-PREPARATION.md).
+## Privacy by design
 
-For transfer to another Linux computer, see [toolchain, private configuration and USB instructions](docs/maintenance/PORTABILITY.md). The committed consolidation passed all 19 host checks, including 348 JVM tests; the Gould repository rename and main integration are verified. Actions registration review and the backed-up RC prerelease removal are verified; protected private-worktree disposition remains pending; see [current maintenance handoff](docs/ai/GOULD-MAIN-MAINTENANCE.md). See [the current handoff](docs/ai/GOULD-PORTABILITY-CHECKPOINT.md).
+Your practice journal, repertoire, saved recordings, profile and backups are local to your device unless you deliberately export them. Optional online catalogue-provider searches require separate consent; Google profile sign-in does **not** synchronize your practice data. Microphone recording starts only when you explicitly request it.
+
+The public catalogue API currently has an empty publication set. Community writes, backend OAuth and practice-data uploads remain disabled. Smart Practice sound detection is experimental, not a perfect measure of piano activity.
+
+[Privacy information](docs/PRIVACY.md) · [Settings & data controls](docs/wiki/Settings-and-Customization.md)
+
+## Built for pianists, built with Kotlin
+
+Gould is a native Android app using **Kotlin**, **Jetpack Compose**, **Material 3** and **Room**. Its roots are in **Opus → Goldberg → Gould**; earlier names remain in some technical paths to preserve app and database compatibility.
+
+For developers:
+
+- Start with [AGENTS.md](AGENTS.md) for repository and release-safety rules, and the [Developer Guide](docs/wiki/Developer-Guide.md) for architecture.
+- Use **JDK 17**, **Android SDK 36** and the committed Gradle wrapper.
+- Gould **0.13 Project Renaissance** is in development on [`feature/gould-0.13`](https://github.com/stokonn/Gould/tree/feature/gould-0.13); it is **not** a published Stable release. See its [checkpoint](https://github.com/stokonn/Gould/blob/feature/gould-0.13/docs/planning/gould-0.13/CHECKPOINT.md).
+- Source compilation and CI are not substitutes for on-device, upgrade or release-signing acceptance. Published releases undergo separate checks.
+
+[Changelog](CHANGELOG.md) · [Third-party licences and credits](docs/LICENSES.md) · [Signing guidance](docs/SIGNING.md) · [Wiki](https://github.com/stokonn/Gould/wiki)
+
+## Enjoy using Gould?
+
+If Gould helps your practice or you find the code useful, consider **[starring the repository ⭐](https://github.com/stokonn/Gould/stargazers)**. It makes the project easier for other musicians and Android developers to discover. Feedback and reproducible bug reports are welcome in [Issues](https://github.com/stokonn/Gould/issues).
+
+---
+
+<div align="center">
+
+<sub>created by stokonn with love &lt;3</sub>
+
+</div>
