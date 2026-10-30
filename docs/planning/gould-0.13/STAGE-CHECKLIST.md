@@ -22,9 +22,9 @@ schema change unless strictly necessary, no backend expansion.
 - [x] T1 Environment audit: main/tags/releases/worktree state verified; untracked owner files and PMP preserved; `feature/gould-0.13` worktree created from `d10aa49`.
 - [x] T2 Three-tier verification workflow implemented (FAST / INTEGRATION / RELEASE scripts + decision matrix + audit trail).
 - [x] T3 Developer build/CI speed measured and improved (Gradle daemon/caching; before/after timings recorded).
-- [ ] T4 Application hotspots profiled (startup, recomposition, Room, audio, memory); small measurable optimizations applied where justified.
+- [ ] T4 Application hotspots profiled (startup, recomposition, Room, audio, memory); one justified Room N+1 optimization is applied to the paged recordings UI. Dedicated Compose/audio profiles remain open; current traces are framework- or emulator-dominated, so no speculative rewrite was made.
 - [x] T5 Release APK composition inspected; local optimized artifact and focused runtime accepted: 6,492,506 B unsigned / 6,532,669 B test-signed, both below 10 MB. Final release gates remain T8.
-- [ ] T6 Handoff/documentation simplified: one authoritative current-state doc, AGENTS.md documents three tiers, Issue/Project/PMP kept consistent.
+- [ ] T6 Handoff/documentation simplified: `docs/ai/HANDOFF.md` is now a short pointer to the authoritative 0.13 planning files; historical entries remain in `HANDOFF-HISTORY.md`. Issue/Project/PMP synchronization remains pending because no 0.13 issue/milestone exists and private PMP access is out of scope.
 - [x] T7 R8 boundary acceptance: reuse accepted host JVM/lint/instrumentation compilation plus actual optimized-APK startup/Room/WorkManager/widgets/Studio recording/playback/persistence journeys. No androidTest-runner execution or final release gate inferred.
 - [ ] T8 Final release verification prepared and executed against frozen 0.13 source; report produced.
 
@@ -38,7 +38,7 @@ _Updated as runs execute; each line mirrors `verification-audit.jsonl`._
 
 ### Completion status
 
-**IN PROGRESS** — T1–T3 were committed previously; T5/T7 local R8 milestone verified. T4 profiling and T6 tracking/handoff remain in progress; T8 final-source release verification is pending. See [current checkpoint](CHECKPOINT.md). No final release acceptance is implied.
+**IN PROGRESS** — T1–T3, T5 and T7 are complete for the current development milestone. T4 focused profiling, T6 remote tracking synchronization and T8 final-source release verification remain pending; no final release acceptance is implied. See [current checkpoint](CHECKPOINT.md).
 
 ### R8 continuation — October 30, 2026
 
@@ -55,6 +55,9 @@ production signing/publication, Stable changes or main integration.
 - [x] Host INTEGRATION PASS 3930 s: JVM task outputs reused, lint and instrumentation APK compilation passed. No native execution. Accepted evidence retained; do not rerun without invalidation.
 - [ ] Profile focused runtime flows before considering application changes.
 - [x] Consolidated source-bound artifact/runtime/performance reports, inspected screenshots, [current checkpoint](CHECKPOINT.md), shared host locking and exact source/tool audit fingerprints.
+- [x] Batched recordings-page metadata loading: one association query, one completion-token query and one filesystem batch replace per-row work for each fetched page.
+- [x] Prepared Gould 0.13 development metadata: versionName `0.13-dev` / stable property `0.13`, versionCode `15`.
+- [x] Targeted FAST PASS after the source/build changes: `scripts/verify-fast.sh --tests '*Recording*Test'`, 85 seconds; `compileDebugKotlin`, focused JVM tests and all four static checks passed.
 
 Read-only GitHub inspection found repository `stokonn/Gould`, Stable `v0.12`,
 no open issues and no 0.13 milestone/issue (including closed issue search).

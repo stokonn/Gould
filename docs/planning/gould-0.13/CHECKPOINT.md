@@ -97,16 +97,26 @@ Raw logs, source manifest, mappings, profiles and disposable synthetic snapshots
 remain in `.gradle/renaissance/` and `app/build/outputs/mapping/release/`.
 Test keystore/raw app data are ignored and must never be committed or published.
 
+## October 30 continuation
+
+The paged recordings UI now loads association previews, linked practice
+sessions and original-file availability in batches instead of per-row. The
+development metadata is prepared as versionName `0.13-dev` (stable property
+`0.13`) and versionCode `15`. Targeted FAST passed in 85 seconds with
+`compileDebugKotlin`, `*Recording*Test` JVM tests and all four static checks.
+
 ## Remaining work and boundaries
 
-1. Finish the still-unmeasured focused profiles if they can justify an actual
-   application optimization; otherwise document the limits. Do not infer Compose
-   recomposition counts or Room/audio hotspots from framework-only samples.
+1. The recordings page now batches association/session metadata and filesystem
+   availability checks per fetched page, replacing the former per-row N+1
+   pattern. Focused Compose/audio traces remain framework- or emulator-dominated;
+   no further application rewrite is justified without new app-owned evidence.
 2. Keep the checklist/audit current. No 0.13 issue/milestone exists remotely;
    Issue/Project synchronization remains pending. Private PMP stays untouched by
-   explicit owner instruction. Historical handoffs remain available below the
-   current pointer in `docs/ai/HANDOFF.md`.
-3. Prepare correct 0.13 metadata and freeze final source before mandatory RELEASE
+   explicit owner instruction. Historical handoff entries remain in
+   `docs/ai/HANDOFF-HISTORY.md`.
+3. Development metadata is now prepared as versionName `0.13-dev` /
+   stable-property `0.13`, versionCode `15`. Freeze final source before mandatory RELEASE
    verification. No final clean gate, full native/visual matrix, trusted signer
    upgrade/security/licensing release acceptance or new-commit CI is implied.
 4. Commit/push only verified development milestones on `feature/gould-0.13`.

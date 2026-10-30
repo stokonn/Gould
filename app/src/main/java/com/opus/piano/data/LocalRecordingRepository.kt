@@ -109,6 +109,9 @@ class LocalRecordingRepository(private val db: OpusDatabase, private val directo
     suspend fun originalAvailable(id: String): Boolean = withContext(Dispatchers.IO) {
         file("$id.wav").isFile || file("$id.wav.part").isFile
     }
+    suspend fun originalAvailability(ids: Collection<String>): Map<String, Boolean> = withContext(Dispatchers.IO) {
+        ids.associateWith { id -> file("$id.wav").isFile || file("$id.wav.part").isFile }
+    }
     /** Only an explicit confirmed user deletion calls this; never cache clearing or retention. */
     suspend fun delete(id: String) = withContext(Dispatchers.IO) {
         val row=requireNotNull(db.studioDao().audio(id));require(row.state !in setOf("Preparing","Recording","Finalizing"))

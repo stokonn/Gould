@@ -26,6 +26,7 @@ interface PracticeDao {
     @Query("SELECT * FROM practice_recovery_archives ORDER BY id") suspend fun archives(): List<RecoveryArchive>
     @Query("DELETE FROM practice_drafts") suspend fun clearDraft()
     @Query("SELECT * FROM sessions WHERE completionToken=:token") suspend fun completed(token: String): PracticeSession?
+    @Query("SELECT * FROM sessions WHERE completionToken IN (:tokens)") suspend fun completed(tokens: List<String>): List<PracticeSession>
     @Query("""SELECT * FROM sessions s WHERE
         (s.completedAt < :beforeTime OR (s.completedAt = :beforeTime AND s.id < :beforeId))
         AND ((:pieceId IS NULL AND :catalogId IS NULL) OR
