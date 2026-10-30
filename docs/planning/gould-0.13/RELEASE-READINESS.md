@@ -20,8 +20,10 @@ publication, tagging, or merging into `main`.
 
 ## Open gates
 
-- [ ] Focused `StudioRecordingTest` instrumentation executes on disposable API
-  36 CI emulator; dispatch scope `recordings` is prepared for this purpose.
+- [x] Focused `StudioRecordingTest` instrumentation passed 8/8 with zero
+  failures/errors/skips on disposable API 36 CI emulator `emulator-5554`,
+  run [41146502208](https://github.com/stokonn/Gould/actions/runs/41146502208)
+  at exact commit `e812b7c`.
 - [ ] Dedicated Compose/recomposition and recording-CPU profiling demonstrates
   an app-owned hotspot, or is closed with documented negative evidence.
 - [ ] Final frozen-source RELEASE verification: clean policy build, full native

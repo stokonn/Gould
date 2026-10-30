@@ -130,7 +130,12 @@ export blocking and paged visibility. The new Android regression additionally
 checks six-row-per-recording association bounds.
 
 See the concise [release-readiness checklist](RELEASE-READINESS.md). The
-focused instrumentation gate is still open until CI executes it.
+focused instrumentation gate passed on exact commit `e812b7c`: CI run
+[41146502208](https://github.com/stokonn/Gould/actions/runs/41146502208)
+executed `StudioRecordingTest` 8/8 with zero failures, errors or skips on
+API 36/QEMU emulator `emulator-5554` at 1080x2400/density 420. The unrelated
+acceptance job was skipped. This closes the focused bounded-association native
+regression gate; it does not close final RELEASE acceptance.
 
 ## Remaining work and boundaries
 

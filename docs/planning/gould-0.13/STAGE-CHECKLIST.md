@@ -60,6 +60,7 @@ production signing/publication, Stable changes or main integration.
 - [x] Targeted FAST PASS after the source/build changes: `scripts/verify-fast.sh --tests '*Recording*Test'`, 85 seconds; `compileDebugKotlin`, focused JVM tests and all four static checks passed.
 - [x] Reviewed batched-query regression: SQL now returns at most six associations per recording; synthetic SQLite benchmark returned 180 rather than 3,000 rows. Android instrumentation source compiles, but execution remains unrun because no emulator was available.
 - [x] Existing Stage 5 CI was reviewed; a bounded `recordings` dispatch scope now runs only `StudioRecordingTest` on the disposable API 36 emulator and skips the unrelated acceptance job. See [release-readiness checklist](RELEASE-READINESS.md).
+- [x] Focused CI run `41146502208` at `e812b7c`: `StudioRecordingTest` 8/8 passed with zero failures/errors/skips on API 36/QEMU `emulator-5554`; acceptance job skipped.
 
 Read-only GitHub inspection found repository `stokonn/Gould`, Stable `v0.12`,
 no open issues and no 0.13 milestone/issue (including closed issue search).
