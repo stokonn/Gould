@@ -113,6 +113,25 @@ cap and 180 rows / 7.51 ms median after it. The bounded query trades a few
 milliseconds of CPU for 16.7x lower result materialization; no emulator was
 available for Room instrumentation execution.
 
+## October 31 continuation
+
+The existing Stage 5 emulator workflow had no focused recording scope. It now
+supports `verification_scope=recordings`, which builds the debug and
+instrumentation APKs and executes only `com.opus.piano.StudioRecordingTest` on
+the disposable API 36/KVM emulator; the acceptance job is skipped. This is the
+least expensive safe native path and does not change automatic triggers.
+
+Recording correctness evidence is bounded as follows: capture-state changes
+invalidate the page through `captureKey`; recovery and confirmed deletion call
+`reload`; manual retry calls the same reload path; reload clears both visible
+rows and cached details before querying. Existing repository tests cover
+retained recovery bytes, explicit deletion tombstones/events, active-state
+export blocking and paged visibility. The new Android regression additionally
+checks six-row-per-recording association bounds.
+
+See the concise [release-readiness checklist](RELEASE-READINESS.md). The
+focused instrumentation gate is still open until CI executes it.
+
 ## Remaining work and boundaries
 
 1. The recordings page now batches association/session metadata and filesystem
