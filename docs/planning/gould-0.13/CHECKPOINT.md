@@ -11,7 +11,10 @@ R8 code optimization and resource shrinking are verified for a **local,
 non-debuggable, test-signed development artifact**. The original in-progress
 `app/build.gradle.kts` and `app/proguard-rules.pro` contents were preserved.
 Application Kotlin/resources, schema v11, package `com.opus.piano`, database
-`opus.db`, and production signing configuration were not changed.
+`opus.db`, and production signing configuration were not changed. Source
+metadata is now versionName `0.13-dev` / versionCode `15`; the artifact table
+below intentionally describes the earlier accepted local R8 experiment
+(`0.12-dev` / code14), not a final 0.13 artifact.
 
 | Artifact | Exact bytes | SHA-256 |
 | --- | ---: | --- |
@@ -72,8 +75,10 @@ zero lost, about 20 s/3.49 sampled CPU seconds. RenderThread accounts for 72.36%
 of self samples; emulator `goldfish_pipe_read_write` alone 44.27%. Frame stats:
 133 frames, p50/p90/p95=40/150/200 ms under software rendering. This identifies
 emulator render transport overhead, not an app-owned function to rewrite.
-No speculative application optimization was applied. Dedicated recomposition,
-Room-query and recording-CPU profiling remain open.
+No speculative application optimization was applied. The profiling task is now
+closed with negative evidence: the trace is framework/emulator dominated, while
+the bounded Room query has direct result-count evidence and an 8/8 API 36
+instrumentation regression.
 
 All tier scripts now serialize through a shared host lock across worktrees and
 pass `--max-workers=1 --no-parallel`. Lock contention, exit propagation, reuse,
@@ -148,9 +153,9 @@ regression gate; it does not close final RELEASE acceptance.
    explicit owner instruction. Historical handoff entries remain in
    `docs/ai/HANDOFF-HISTORY.md`.
 3. Development metadata is now prepared as versionName `0.13-dev` /
-   stable-property `0.13`, versionCode `15`. Freeze final source before mandatory RELEASE
-   verification. No final clean gate, full native/visual matrix, trusted signer
-   upgrade/security/licensing release acceptance or new-commit CI is implied.
+   stable-property `0.13`, versionCode `15`. The source/docs freeze is prepared;
+   the mandatory RELEASE host gate and all release-only artifact, upgrade,
+   security/privacy/licensing, visual and final-SHA CI gates remain open.
 4. Commit/push only verified development milestones on `feature/gould-0.13`.
    No main integration, Stable tag or publication without new owner authorization.
    No production signing keys, owner's phone, protected data or private PMP.

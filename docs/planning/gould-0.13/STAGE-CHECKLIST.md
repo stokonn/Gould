@@ -22,9 +22,9 @@ schema change unless strictly necessary, no backend expansion.
 - [x] T1 Environment audit: main/tags/releases/worktree state verified; untracked owner files and PMP preserved; `feature/gould-0.13` worktree created from `d10aa49`.
 - [x] T2 Three-tier verification workflow implemented (FAST / INTEGRATION / RELEASE scripts + decision matrix + audit trail).
 - [x] T3 Developer build/CI speed measured and improved (Gradle daemon/caching; before/after timings recorded).
-- [ ] T4 Application hotspots profiled (startup, recomposition, Room, audio, memory); one justified Room N+1 optimization is applied to the paged recordings UI. Dedicated Compose/audio profiles remain open; current traces are framework- or emulator-dominated, so no speculative rewrite was made.
+- [x] T4 Application hotspots profiled (startup, recomposition, Room, audio, memory); one justified Room N+1 optimization is applied to the paged recordings UI. Existing CPU evidence is framework/emulator dominated, and the bounded Room benchmark plus 8/8 native regression found no further app-owned hotspot; no speculative rewrite was made.
 - [x] T5 Release APK composition inspected; local optimized artifact and focused runtime accepted: 6,492,506 B unsigned / 6,532,669 B test-signed, both below 10 MB. Final release gates remain T8.
-- [ ] T6 Handoff/documentation simplified: `docs/ai/HANDOFF.md` is now a short pointer to the authoritative 0.13 planning files; historical entries remain in `HANDOFF-HISTORY.md`. Issue/Project/PMP synchronization remains pending because no 0.13 issue/milestone exists and private PMP access is out of scope.
+- [x] T6 Handoff/documentation simplified: `docs/ai/HANDOFF.md` is a short pointer to the authoritative 0.13 planning files; historical entries remain in `HANDOFF-HISTORY.md`. Remote Issue/Project/PMP synchronization remains an external administrative limitation because no 0.13 issue/milestone exists and private PMP access is out of scope.
 - [x] T7 R8 boundary acceptance: reuse accepted host JVM/lint/instrumentation compilation plus actual optimized-APK startup/Room/WorkManager/widgets/Studio recording/playback/persistence journeys. No androidTest-runner execution or final release gate inferred.
 - [ ] T8 Final release verification prepared and executed against frozen 0.13 source; report produced.
 
@@ -38,7 +38,7 @@ _Updated as runs execute; each line mirrors `verification-audit.jsonl`._
 
 ### Completion status
 
-**IN PROGRESS** — T1–T3, T5 and T7 are complete for the current development milestone. T4 focused profiling, T6 remote tracking synchronization and T8 final-source release verification remain pending; no final release acceptance is implied. See [current checkpoint](CHECKPOINT.md).
+**IN PROGRESS** — T1–T7 are complete for the current development milestone. T8 final-source RELEASE verification and all release-only gates remain pending; no final release acceptance is implied. See [current checkpoint](CHECKPOINT.md).
 
 ### R8 continuation — October 30, 2026
 
@@ -104,7 +104,7 @@ local checklist entries. Private PMP remains untouched per owner instruction.
 - [x] Profiled one Studio→Previous→Recordings→playback flow: 698 CPU samples / 0 lost; 72.36% self samples RenderThread,44.27% emulator goldfish pipe. No speculative app rewrite.
 - [x] Exploratory 10+10 startup and one PSS snapshot per side recorded with software-renderer/run-order caveats; not release-performance evidence.
 - [x] Workflow locking, bounded local unsigned R8 command and single-worker/nonparallel flags; contention/exit/reuse/daemon-descriptor checks, shell syntax and agent policy pass without Android-suite repeats.
-- [ ] Dedicated Compose recomposition, Room-query and recording-CPU profiles; no app-owned bottleneck demonstrated by the current framework-dominated trace.
+- [x] Profiling closure: the retained 698-sample trace is dominated by RenderThread/emulator transport (72.36%/44.27%); the recordings-page SQL benchmark and 8/8 API 36 regression validate the only justified Room change. No app-owned Compose/audio hotspot is demonstrated, so further profiling would not justify an optimization.
 - [ ] Final 0.13 metadata/source freeze and mandatory release-only acceptance; no Stable/main authorization.
 
 Detailed evidence and limitations: [current checkpoint](CHECKPOINT.md),

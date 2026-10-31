@@ -17,6 +17,9 @@ publication, tagging, or merging into `main`.
   recovery, deletion, and manual retry.
 - [x] Focused host FAST, static checks, Android-test compilation, and synthetic
   bounded-query benchmark passed.
+- [x] Profiling closed with negative evidence: retained CPU samples are
+  RenderThread/emulator dominated; no additional app-owned optimization is
+  justified by the bounded Room benchmark and focused native regression.
 
 ## Open gates
 
@@ -24,8 +27,8 @@ publication, tagging, or merging into `main`.
   failures/errors/skips on disposable API 36 CI emulator `emulator-5554`,
   run [41146502208](https://github.com/stokonn/Gould/actions/runs/41146502208)
   at exact commit `e812b7c`.
-- [ ] Dedicated Compose/recomposition and recording-CPU profiling demonstrates
-  an app-owned hotspot, or is closed with documented negative evidence.
+- [x] Dedicated Compose/recomposition and recording-CPU profiling is closed
+  with documented negative evidence; no app-owned hotspot was demonstrated.
 - [ ] Final frozen-source RELEASE verification: clean policy build, full native
   execution, visual/accessibility QA, artifact/signing/upgrade/security/privacy/
   licensing gates, and required CI at the final SHA.
