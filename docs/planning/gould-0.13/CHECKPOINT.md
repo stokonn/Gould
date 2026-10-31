@@ -227,9 +227,11 @@ seeds historical badge notices as acknowledged; no production code changed.
    host gate, final-SHA CI, trusted artifact, authentic upgrade, focused
    visual/accessibility smoke and artifact-specific security/privacy/licensing
    checks are PASS.
-4. The authorized remaining actions are commit/push, safe main integration,
-   tag `v0.13`, and GitHub pre-release publication. The release must remain a
-   pre-release, not Stable or Latest Stable. No owner's phone, protected data
-   or private PMP was touched.
+4. Release completion: documentation commit `c43b32a` was pushed, integrated
+   into `main` at `f9ba9b7`, and tagged `v0.13`. GitHub release
+   [Gould 0.13 — Project Renaissance](https://github.com/stokonn/Gould/releases/tag/v0.13)
+   is published as a pre-release, not Stable or Latest Stable. Its downloaded
+   APK and checksum match the trusted artifact; no owner's phone, protected
+   data or private PMP was touched.
 
 created by stokonn with love <3

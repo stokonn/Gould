@@ -82,6 +82,6 @@ publication, tagging, or merging into `main`.
 | CI native/data acceptance at final SHA | PASS | Run 41149284775; instrumentation 271/0/0/13 skipped; acceptance passed |
 | Visual/accessibility matrix | PASS (focused) | API 36 English/Czech, dark appearance/settings/profile, 200% font scale, semantics and touch controls inspected |
 | Security/privacy/licensing | PASS | Source-bound checks plus exact trusted APK quality/signing rerun |
-| Publication/main/tag | OPEN | Ready for safe integration and pre-release publication |
+| Publication/main/tag | PASS | Main `f9ba9b7`, annotated tag `v0.13`, GitHub pre-release published and assets verified |
 
 created by stokonn with love <3

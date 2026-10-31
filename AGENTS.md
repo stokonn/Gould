@@ -11,7 +11,9 @@ Applies to Goldberg 0.11 and all future Gould versions. This supersedes earlier 
 - Public release descriptions must focus on verified user-visible changes, preserve compatibility and safety warnings, and link to detailed engineering evidence rather than reproducing it. Release titles must accurately reflect pre-release classification.
 - Owner update, final maintenance: remove only GitHub prerelease `v0.11-rc.1` (ID 423537826) and its assets after verifying a complete private metadata/notes/asset backup with SHA-256 hashes. Preserve its Git tag, historical commits, all Stable releases and other tags/assets. Earlier instructions to retain the published RC are superseded by this explicit owner decision.
 - Only after full implementation, verification and explicit owner approval, perform a fresh clean release build. It must be non-debuggable, signed with the trusted production certificate, pass all release-specific gates and support verified safe in-place upgrades.
-- Publish only the explicitly approved stable version. Merging into `main` and publishing a stable GitHub Release each require explicit owner approval; passing checks alone grants neither.
+- Publish only the explicitly approved version and release classification. Merging into
+  `main` and publishing a GitHub Release each require explicit owner approval;
+  passing checks alone grants neither.
 - The current Stage 8 Discover repair delivers a debug APK and verification report for owner review, with no release publication.
 
 ## Gould 0.12 — one development stage (owner decision, October 27, 2026)
@@ -184,5 +186,5 @@ accepted FAST 29 s / host INTEGRATION 3930 s evidence when source/environment id
 holds; never repeat the 65-minute run without a real invalidation reason. The 6 s
 warm result measured unchanged sources, not a source-change rebuild. Record exact
 source/tool hashes and distinguish optimized runtime journeys from debug tests.
-No 0.13 main integration, Stable tag/publication, production signing-key use,
+No 0.13 Stable tag/publication, production signing-key use,
 physical-phone testing or private PMP modification is authorized by this update.
