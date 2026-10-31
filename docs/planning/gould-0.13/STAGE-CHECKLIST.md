@@ -65,7 +65,10 @@ production signing/publication, Stable changes or main integration.
 - [x] Final-SHA CI run `41149284775` at `6dbd2b8`: instrumentation 271 tests, 0 failures/errors, 13 skipped; seeded acceptance and data-integrity job passed.
 - [x] Stable-metadata unsigned R8 artifact preflight: 289 seconds, package/version/code 0.13/15, ZIP/artwork checks passed; local test-signed quality comparison passed against published v0.12.
 - [x] Clean trusted-signed non-debuggable 0.13/15 artifact and final artifact quality/signing preflight passed; APK SHA-256 `5325fb6c…bfbd`.
-- [ ] Genuine published-signed 0.12→0.13 in-place upgrade, visual/accessibility matrix and final artifact-specific security/privacy/licensing review. Upgrade is currently blocked because disposable local API 36 AVD startup failed before ADB availability.
+- [x] Genuine published-signed 0.12→0.13 in-place upgrade passed on disposable
+  `emulator-5574`; focused visual/accessibility smoke and exact trusted-artifact
+  security/privacy/licensing checks passed. The full supported configuration
+  cross-product was not executed.
 
 Read-only GitHub inspection found repository `stokonn/Gould`, Stable `v0.12`,
 no open issues and no 0.13 milestone/issue (including closed issue search).

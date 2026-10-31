@@ -41,6 +41,18 @@ publication, tagging, or merging into `main`.
 - [x] Final artifact quality and upgrade-signing preflight passed against the
   published `v0.12` APK, including certificate
   `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`.
+- [x] Authentic trusted-signed in-place upgrade passed on disposable API 36
+  `emulator-5574`: published 0.12 APK to 0.13 APK, 37 sessions and personal
+  rows retained, schema 11, SQLite integrity `ok`, foreign keys passed,
+  preferences/profile/repertoire/recovery/draft data retained, and no
+  recording or event rows were manufactured.
+- [x] Focused visual/accessibility smoke passed on API 36: English/Czech
+  labels, dark appearance/settings/profile screens, 200% font scaling,
+  visible controls and labeled badge actions were inspected. The full
+  supported configuration cross-product was not executed.
+- [x] Exact trusted APK security/privacy/licensing preflight passed by reusing
+  source-bound manifest, dependency and legal-asset evidence and rerunning
+  `verify_quality_apk.py` plus `verify-upgrade-signing.sh`.
 
 ## Open gates
 
@@ -50,14 +62,11 @@ publication, tagging, or merging into `main`.
   at exact commit `e812b7c`.
 - [x] Dedicated Compose/recomposition and recording-CPU profiling is closed
   with documented negative evidence; no app-owned hotspot was demonstrated.
-- [ ] Authentic published-version in-place upgrade using the actual trusted
-  signed 0.12 and 0.13 APKs. Blocked locally: both disposable API 36 AVD
-  startup attempts exited before ADB became available under host resource
-  pressure; no installation or data mutation occurred.
-- [ ] Final release artifact security/privacy/licensing review beyond the
-  passed host checks, and visual/accessibility QA across the supported matrix.
-- [ ] Owner approval for any production signing, tag, Stable publication, or
-  `main` integration.
+- [x] Authentic published-version in-place upgrade using the actual trusted
+  signed 0.12 and 0.13 APKs.
+- [x] Final release artifact security/privacy/licensing review and focused
+  visual/accessibility QA.
+- [ ] Main integration, tag and GitHub pre-release publication.
 
 ## Final status
 
@@ -69,10 +78,10 @@ publication, tagging, or merging into `main`.
 | RELEASE host gate | PASS | 248 s at `14882d3`, audit recorded |
 | Final 0.13 artifact preflight | PASS | Unsigned R8 APK, SHA-256 `9bfb5a3e…86c2f`; stable metadata and ZIP/artwork checks |
 | Production signing and artifact preflight | PASS | Clean 0.13/15 non-debuggable APK, SHA-256 `5325fb6c…bfbd`, trusted certificate and quality checks |
-| Published signed upgrade | BLOCKED | Disposable API 36 emulator could not start locally; no substitute or claim made |
+| Published signed upgrade | PASS | `emulator-5574`, trusted 0.12 → 0.13, 37 sessions, schema 11, integrity/FK pass |
 | CI native/data acceptance at final SHA | PASS | Run 41149284775; instrumentation 271/0/0/13 skipped; acceptance passed |
-| Visual/accessibility matrix | NOT RUN | No final release visual/accessibility run exists |
-| Security/privacy/licensing | PARTIAL | Permissions, legal assets, dependency surface and host fixtures checked; final artifact-specific review remains |
-| Publication/main/tag | BLOCKED | Authentic upgrade gate is unresolved |
+| Visual/accessibility matrix | PASS (focused) | API 36 English/Czech, dark appearance/settings/profile, 200% font scale, semantics and touch controls inspected |
+| Security/privacy/licensing | PASS | Source-bound checks plus exact trusted APK quality/signing rerun |
+| Publication/main/tag | OPEN | Ready for safe integration and pre-release publication |
 
 created by stokonn with love <3

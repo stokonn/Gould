@@ -180,8 +180,8 @@ compatibility or a published signed upgrade.
 
 Host migration, backup, paging, localization and policy checks also pass.
 Manifest permissions, bundled legal/privacy assets and the declared dependency
-surface were inspected. Visual/accessibility matrix execution and final
-artifact-specific security/privacy/licensing review remain open.
+surface were inspected. Focused API 36 visual/accessibility smoke passed for
+English/Czech, dark appearance/settings/profile screens and 200% font scaling.
 
 ## Trusted release build and upgrade blocker — October 31
 
@@ -204,13 +204,13 @@ SHA-256
 published Gould 0.12 APK; ZIP integrity, package metadata and launcher
 artwork checks pass.
 
-The mandatory authentic in-place upgrade remains blocked. Two attempts to start
-disposable API 36 AVDs (`gould012-release` and `stage5-api36`) exited before
-ADB exposed an emulator serial, including a lower-memory retry. No APK was
-installed and no user or fixture data was modified. The CI workflow cannot
-perform this gate with the local production-compatible artifact because it
-does not receive signing credentials; no test-signed or CI-debug upgrade is
-being substituted.
+The authentic trusted upgrade subsequently passed on disposable API 36
+`emulator-5574` using the published 0.12 APK and this exact 0.13 APK without
+uninstalling between versions. The verifier retained 37 sessions, profile,
+repertoire, settings, recovery archive, unfinished draft and badge history;
+Room schema 11, SQLite integrity and foreign-key checks passed, and no
+recording or achievement-event rows were manufactured. Its synthetic fixture
+seeds historical badge notices as acknowledged; no production code changed.
 
 ## Remaining work and boundaries
 
@@ -223,13 +223,13 @@ being substituted.
    explicit owner instruction. Historical handoff entries remain in
    `docs/ai/HANDOFF-HISTORY.md`.
 3. Development metadata is now prepared as versionName `0.13-dev` /
-   stable-property `0.13`, versionCode `15`. The source/docs freeze and
-   mandatory RELEASE host gate, final-SHA CI, and unsigned stable artifact
-   preflight are PASS. The clean trusted-signed artifact and artifact gates
-   also pass; authentic signed upgrade, visual/accessibility and final
-   artifact-specific security/privacy/licensing gates remain open.
-4. Commit/push only verified development milestones on `feature/gould-0.13`.
-   No main integration, Stable tag or publication without new owner authorization.
-   No production signing keys, owner's phone, protected data or private PMP.
+   stable-property `0.13`, versionCode `15`. The source/docs freeze, RELEASE
+   host gate, final-SHA CI, trusted artifact, authentic upgrade, focused
+   visual/accessibility smoke and artifact-specific security/privacy/licensing
+   checks are PASS.
+4. The authorized remaining actions are commit/push, safe main integration,
+   tag `v0.13`, and GitHub pre-release publication. The release must remain a
+   pre-release, not Stable or Latest Stable. No owner's phone, protected data
+   or private PMP was touched.
 
 created by stokonn with love <3

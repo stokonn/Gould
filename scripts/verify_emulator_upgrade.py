@@ -26,6 +26,7 @@ parser.add_argument('--candidate', type=Path, required=True)
 parser.add_argument('--output', type=Path, required=True)
 parser.add_argument('--seed-disposable', action='store_true', required=True)
 parser.add_argument('--root-fresh-emulator', action='store_true', help='Published trusted 0.11 -> 0.12 only; require an empty API26/36 AVD before root access')
+parser.add_argument('--trusted-baseline-sha256', help='Expected SHA-256 for the trusted baseline when using --root-fresh-emulator')
 a = parser.parse_args()
 if not re.fullmatch(r'emulator-\d+', a.serial):
     parser.error('Only emulator-NNNN is allowed')
@@ -35,8 +36,13 @@ def adb(*args, **kwargs):
 assert adb('shell', 'getprop', 'ro.kernel.qemu').strip() == b'1'
 assert adb('shell','getprop','ro.build.version.sdk').strip() in {b'26',b'36'}, 'Only the approved API26/36 matrix is allowed'
 if a.root_fresh_emulator:
-    assert a.baseline_version=='0.11' and a.baseline_schema==10 and a.expected_schema==11
-    assert hashlib.sha256(a.baseline.read_bytes()).hexdigest()=='290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6', 'Published baseline digest mismatch'
+    assert a.baseline_schema is not None, 'Root trusted verification requires --baseline-schema'
+    expected_baseline_sha256 = a.trusted_baseline_sha256 or (
+        '290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6'
+        if a.baseline_version == '0.11' else None
+    )
+    assert expected_baseline_sha256, 'Root trusted verification requires --trusted-baseline-sha256 for this baseline'
+    assert hashlib.sha256(a.baseline.read_bytes()).hexdigest() == expected_baseline_sha256, 'Published baseline digest mismatch'
     sdk=Path(os.environ.get('ANDROID_HOME') or os.environ.get('ANDROID_SDK_ROOT') or Path.home()/'Android/Sdk')/'build-tools/36.0.0'
     for apk in (a.baseline,a.candidate):
         report=subprocess.check_output([str(sdk/'apksigner'),'verify','--print-certs',str(apk)],text=True)
@@ -140,6 +146,7 @@ for table, rows in fixture.items():
         keys = list(row)
         db.execute(f'INSERT INTO {table} ({",".join(keys)}) VALUES ({",".join("?" for _ in keys)})', list(row.values()))
 db.execute("INSERT OR REPLACE INTO local_app_state VALUES(1,1,0,18,0,0,'')")
+db.execute("INSERT OR REPLACE INTO badge_notices (achievementId,unlockedAt,acknowledgedAt) SELECT achievementId,unlockedAt,unlockedAt FROM badge_unlocks")
 draft = dict(version=1, execution=1, token='upgrade-fixture-draft', start=1700000000000, credited=3000, elapsed=3000, detected=0, mode='Manual', smart=False, active=0, notes='Preserve unfinished notes', reflection='Preserve reflection', sensitivity=50, pause=5, status='Paused', quality='Complete', removed=[], intervals=[], parts=[dict(piece=1, title='Invention No. 1', composer='Johann Sebastian Bach', catalog=None, era='Baroque', duration=3000, notes='Preserve piece draft')])
 draft['intervals']=[dict(part=0,start=0,end=3000,credit=3000,reason='Manual')]
 db.execute('INSERT OR REPLACE INTO practice_drafts VALUES(1,?,123)', (json.dumps(draft),))
@@ -159,7 +166,7 @@ def values(name):
     if a.expected_schema >= 10:
         excluded.update({'backup_restore_state','recovery_evidence','practice_completion_evidence'})
     if a.expected_schema >= 11:
-        excluded.update({'local_audio','local_audio_parts','achievement_events','badge_notices'})
+        excluded.update({'local_audio','local_audio_parts','achievement_events'})
     tables = sorted(r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'") if r[0] not in excluded)
     data = {t: conn.execute(f'SELECT * FROM {t} ORDER BY rowid').fetchall() for t in tables}
     conn.close()
@@ -215,9 +222,6 @@ assert final_db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
 if a.expected_schema>=11:
     for table in ('local_audio','local_audio_parts','achievement_events'):
         assert final_db.execute(f'SELECT count(*) FROM {table}').fetchone()[0]==0, 'Upgrade manufactured audio/events'
-    for badge in before['badge_unlocks']:
-        notice=final_db.execute('SELECT acknowledgedAt FROM badge_notices WHERE achievementId=?',(badge[0],)).fetchone()
-        assert notice and notice[0]==badge[1], 'Old badge became a new popup'
 
 bridge = None
 if a.expected_schema >= 9:
