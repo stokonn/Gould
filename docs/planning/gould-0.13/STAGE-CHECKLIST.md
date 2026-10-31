@@ -62,6 +62,9 @@ production signing/publication, Stable changes or main integration.
 - [x] Existing Stage 5 CI was reviewed; a bounded `recordings` dispatch scope now runs only `StudioRecordingTest` on the disposable API 36 emulator and skips the unrelated acceptance job. See [release-readiness checklist](RELEASE-READINESS.md).
 - [x] Focused CI run `41146502208` at `e812b7c`: `StudioRecordingTest` 8/8 passed with zero failures/errors/skips on API 36/QEMU `emulator-5554`; acceptance job skipped.
 - [x] RELEASE host gate PASS at `14882d3`, 248 seconds: clean debug policy build, JVM tests, instrumentation compilation, lint and five policy checks; no release-only gates inferred.
+- [x] Final-SHA CI run `41149284775` at `6dbd2b8`: instrumentation 271 tests, 0 failures/errors, 13 skipped; seeded acceptance and data-integrity job passed.
+- [x] Stable-metadata unsigned R8 artifact preflight: 289 seconds, package/version/code 0.13/15, ZIP/artwork checks passed; local test-signed quality comparison passed against published v0.12.
+- [ ] Production-signed 0.13 artifact, genuine published-signed upgrade, visual/accessibility matrix and final artifact-specific security/privacy/licensing review.
 
 Read-only GitHub inspection found repository `stokonn/Gould`, Stable `v0.12`,
 no open issues and no 0.13 milestone/issue (including closed issue search).

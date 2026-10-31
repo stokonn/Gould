@@ -154,7 +154,34 @@ performed.
 No app/build source changed between focused CI commit `e812b7c` and the
 documentation/audit-only freeze commits. The focused native evidence is
 therefore retained for the unchanged app source, but final-SHA CI is still
-open under the release checklist.
+open under the release checklist at this checkpoint; it is closed by the
+final-SHA run recorded below.
+
+## Final-SHA and artifact preflight — October 31
+
+Workflow run
+[41149284775](https://github.com/stokonn/Gould/actions/runs/41149284775)
+passed at exact commit `6dbd2b8`. The full instrumentation job recorded 271
+tests with zero failures and zero errors; 13 tests were skipped. The acceptance
+job passed the seeded CI-debug in-place migration/data-preservation sequence,
+Data Saver transitions, process restart, and post-restart Room integrity,
+foreign-key and schema checks. Its certificate pairing is only for the two
+same-run CI debug rebuilds, not production signing evidence.
+
+The final stable-metadata unsigned R8 build passed in 289 seconds. The artifact
+is `app/build/outputs/apk/release/app-release-unsigned.apk`, package
+`com.opus.piano`, versionName `0.13`, versionCode `15`, minSdk 26 and targetSdk
+36. ZIP integrity passed and SHA-256 is
+`9bfb5a3e166bfcbab1069265eff3e46bf296e49af84c8ce0df558dcf26086c2f`.
+The local test-signed copy passed `verify_quality_apk.py` against the published
+0.12 APK for metadata progression, trusted-fingerprint preflight, ZIP integrity
+and packaged launcher artwork bounds. This does not prove production-key
+compatibility or a published signed upgrade.
+
+Host migration, backup, paging, localization and policy checks also pass.
+Manifest permissions, bundled legal/privacy assets and the declared dependency
+surface were inspected. Visual/accessibility matrix execution and final
+artifact-specific security/privacy/licensing review remain open.
 
 ## Remaining work and boundaries
 
@@ -168,8 +195,9 @@ open under the release checklist.
    `docs/ai/HANDOFF-HISTORY.md`.
 3. Development metadata is now prepared as versionName `0.13-dev` /
    stable-property `0.13`, versionCode `15`. The source/docs freeze and
-   mandatory RELEASE host gate are PASS; release-only artifact, upgrade,
-   security/privacy/licensing, visual and final-SHA CI gates remain open.
+   mandatory RELEASE host gate, final-SHA CI, and unsigned stable artifact
+   preflight are PASS; production-signature upgrade, visual/accessibility and
+   final artifact-specific security/privacy/licensing gates remain open.
 4. Commit/push only verified development milestones on `feature/gould-0.13`.
    No main integration, Stable tag or publication without new owner authorization.
    No production signing keys, owner's phone, protected data or private PMP.
