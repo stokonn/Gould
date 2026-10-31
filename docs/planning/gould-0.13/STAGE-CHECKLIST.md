@@ -26,7 +26,9 @@ schema change unless strictly necessary, no backend expansion.
 - [x] T5 Release APK composition inspected; local optimized artifact and focused runtime accepted: 6,492,506 B unsigned / 6,532,669 B test-signed, both below 10 MB. Final release gates remain T8.
 - [x] T6 Handoff/documentation simplified: `docs/ai/HANDOFF.md` is a short pointer to the authoritative 0.13 planning files; historical entries remain in `HANDOFF-HISTORY.md`. Remote Issue/Project/PMP synchronization remains an external administrative limitation because no 0.13 issue/milestone exists and private PMP access is out of scope.
 - [x] T7 R8 boundary acceptance: reuse accepted host JVM/lint/instrumentation compilation plus actual optimized-APK startup/Room/WorkManager/widgets/Studio recording/playback/persistence journeys. No androidTest-runner execution or final release gate inferred.
-- [ ] T8 Final release verification prepared and executed against frozen 0.13 source; report produced.
+- [x] T8 Final release verification executed against frozen 0.13 source; report
+  produced, main integration completed, and the authorized GitHub pre-release
+  published with verified APK/checksum assets.
 
 ### Verification (actual results)
 
