@@ -35,6 +35,12 @@ publication, tagging, or merging into `main`.
   APK metadata progression, trusted-fingerprint check, ZIP integrity and
   packaged launcher artwork/circle bounds. This is not production-signature
   evidence and does not prove a published signed upgrade.
+- [x] Clean trusted-signed release build passed in 284 seconds with
+  `assembleRelease lintRelease`; the artifact is non-debuggable and has
+  SHA-256 `5325fb6c37c9f8acf977dfbb7d2dd00c8e602cddca3f40384a62d467c739bfbd`.
+- [x] Final artifact quality and upgrade-signing preflight passed against the
+  published `v0.12` APK, including certificate
+  `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`.
 
 ## Open gates
 
@@ -44,8 +50,10 @@ publication, tagging, or merging into `main`.
   at exact commit `e812b7c`.
 - [x] Dedicated Compose/recomposition and recording-CPU profiling is closed
   with documented negative evidence; no app-owned hotspot was demonstrated.
-- [ ] Production-signature compatibility and published-version in-place
-  upgrade using the actual trusted production-signed 0.12 and 0.13 APKs.
+- [ ] Authentic published-version in-place upgrade using the actual trusted
+  signed 0.12 and 0.13 APKs. Blocked locally: both disposable API 36 AVD
+  startup attempts exited before ADB became available under host resource
+  pressure; no installation or data mutation occurred.
 - [ ] Final release artifact security/privacy/licensing review beyond the
   passed host checks, and visual/accessibility QA across the supported matrix.
 - [ ] Owner approval for any production signing, tag, Stable publication, or
@@ -60,10 +68,11 @@ publication, tagging, or merging into `main`.
 | Profiling and justified optimization | PASS | Negative evidence; no further app-owned hotspot |
 | RELEASE host gate | PASS | 248 s at `14882d3`, audit recorded |
 | Final 0.13 artifact preflight | PASS | Unsigned R8 APK, SHA-256 `9bfb5a3e…86c2f`; stable metadata and ZIP/artwork checks |
-| Production signing and published upgrade | NOT RUN | Requires actual production-signed 0.13 APK and owner-authorized release action |
+| Production signing and artifact preflight | PASS | Clean 0.13/15 non-debuggable APK, SHA-256 `5325fb6c…bfbd`, trusted certificate and quality checks |
+| Published signed upgrade | BLOCKED | Disposable API 36 emulator could not start locally; no substitute or claim made |
 | CI native/data acceptance at final SHA | PASS | Run 41149284775; instrumentation 271/0/0/13 skipped; acceptance passed |
 | Visual/accessibility matrix | NOT RUN | No final release visual/accessibility run exists |
 | Security/privacy/licensing | PARTIAL | Permissions, legal assets, dependency surface and host fixtures checked; final artifact-specific review remains |
-| Publication/main/tag | BLOCKED | Explicit owner authorization required |
+| Publication/main/tag | BLOCKED | Authentic upgrade gate is unresolved |
 
 created by stokonn with love <3

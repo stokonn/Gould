@@ -54,6 +54,11 @@ Discover the actual repository (currently stokonn/Gould; legacy Goldberg/Opus UR
 
 Maintain English-only official Wiki pages and navigation: Home, Getting Started, User Guide, Settings & Customization, Developer Guide, FAQ & Troubleshooting, Changelog & Roadmap, Credits & Licenses. Document only actual working features; clearly label blocked integrations and unverified behavior. Use verified screenshots and licensed attribution; include `created by stokonn with love <3`. Keep local maintainable Wiki sources in docs/wiki. Check Wiki enablement/initialization and GitHub token permissions; report exact blockers without claiming success or starting unauthorized authentication.
 
+Do not add coding agents or AI systems as Git commit co-authors, contributors,
+maintainers or authors. Never append `Co-authored-by` trailers for agents or AI.
+Preserve existing human authorship and `created by stokonn with love <3`; do not
+rewrite existing commits or Git history to remove historical attribution.
+
 For each release: inspect → identify milestone/Issues → plan → implement → run relevant checks → build APK → verify acceptance → synchronize Project/Wiki → update README/changelog/docs → commit/push → publish release → report results. Passing mandatory gates does not authorize merging into main or publishing: both require explicit owner approval. Never invoke an old release script without inspecting its actions; do not publish merely because Gradle succeeds.
 
 ## Stage checklist documentation (permanent, from 2026-10-20)

@@ -183,6 +183,35 @@ Manifest permissions, bundled legal/privacy assets and the declared dependency
 surface were inspected. Visual/accessibility matrix execution and final
 artifact-specific security/privacy/licensing review remain open.
 
+## Trusted release build and upgrade blocker — October 31
+
+The clean build using the preserved trusted signing init completed successfully
+in 284 seconds:
+
+```text
+./gradlew -I /home/stokonn/Projects/Opus/docs/releases/goldberg-0.11-stable-signing.init.gradle \
+  -PgoldbergStable=true clean assembleRelease lintRelease --no-daemon \
+  --max-workers=1 --no-parallel --offline
+```
+
+The resulting non-debuggable APK is
+`app/build/outputs/apk/release/app-release.apk`, package `com.opus.piano`,
+versionName `0.13`, versionCode `15`, certificate SHA-256
+`53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`, and
+SHA-256
+`5325fb6c37c9f8acf977dfbb7d2dd00c8e602cddca3f40384a62d467c739bfbd`.
+`verify_quality_apk.py` and `verify-upgrade-signing.sh` both pass against the
+published Gould 0.12 APK; ZIP integrity, package metadata and launcher
+artwork checks pass.
+
+The mandatory authentic in-place upgrade remains blocked. Two attempts to start
+disposable API 36 AVDs (`gould012-release` and `stage5-api36`) exited before
+ADB exposed an emulator serial, including a lower-memory retry. No APK was
+installed and no user or fixture data was modified. The CI workflow cannot
+perform this gate with the local production-compatible artifact because it
+does not receive signing credentials; no test-signed or CI-debug upgrade is
+being substituted.
+
 ## Remaining work and boundaries
 
 1. The recordings page now batches association/session metadata and filesystem
@@ -196,8 +225,9 @@ artifact-specific security/privacy/licensing review remain open.
 3. Development metadata is now prepared as versionName `0.13-dev` /
    stable-property `0.13`, versionCode `15`. The source/docs freeze and
    mandatory RELEASE host gate, final-SHA CI, and unsigned stable artifact
-   preflight are PASS; production-signature upgrade, visual/accessibility and
-   final artifact-specific security/privacy/licensing gates remain open.
+   preflight are PASS. The clean trusted-signed artifact and artifact gates
+   also pass; authentic signed upgrade, visual/accessibility and final
+   artifact-specific security/privacy/licensing gates remain open.
 4. Commit/push only verified development milestones on `feature/gould-0.13`.
    No main integration, Stable tag or publication without new owner authorization.
    No production signing keys, owner's phone, protected data or private PMP.
