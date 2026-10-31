@@ -34,6 +34,11 @@ case "${CI_VERIFICATION_SCOPE:-all}" in
     echo "Focused follow-up: $CLASSES; prior full-run and upgrade evidence retained separately" | tee stage5-ci-results/instrumentation-scope.txt
     ./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest "-Pandroid.testInstrumentationRunnerArguments.class=$CLASSES" 2>&1 | tee stage5-ci-results/instrumentation-gradle.log
     ;;
+  recordings)
+    CLASSES='com.opus.piano.StudioRecordingTest'
+    echo "Focused recording regression: $CLASSES" | tee stage5-ci-results/instrumentation-scope.txt
+    ./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest "-Pandroid.testInstrumentationRunnerArguments.class=$CLASSES" 2>&1 | tee stage5-ci-results/instrumentation-gradle.log
+    ;;
   all|stage5|stage7b|stage7b-acceptance)
     echo 'Full connected suite' | tee stage5-ci-results/instrumentation-scope.txt
     ./gradlew --no-daemon --max-workers=1 connectedDebugAndroidTest 2>&1 | tee stage5-ci-results/instrumentation-gradle.log

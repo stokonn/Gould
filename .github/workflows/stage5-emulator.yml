@@ -69,6 +69,7 @@ on:
           - all
           - acceptance
           - simplifier
+          - recordings
 permissions:
   contents: read
 concurrency:
@@ -115,7 +116,7 @@ jobs:
           sudo udevadm trigger --name-match=kvm
       - name: Build app and instrumentation APKs (full mode also runs JVM tests)
         run: |
-          if [ "$CI_VERIFICATION_SCOPE" = simplifier ]; then
+          if [ "$CI_VERIFICATION_SCOPE" = simplifier ] || [ "$CI_VERIFICATION_SCOPE" = recordings ]; then
             ./gradlew --no-daemon --max-workers=1 assembleDebug assembleDebugAndroidTest
           else
             ./gradlew --no-daemon --max-workers=1 assembleDebug testDebugUnitTest assembleDebugAndroidTest
@@ -162,7 +163,7 @@ jobs:
           retention-days: 30
 
   stage5-acceptance:
-    if: inputs.verification_scope != 'simplifier'
+    if: inputs.verification_scope != 'simplifier' && inputs.verification_scope != 'recordings'
     name: "5.11 acceptance subset — API 36 emulator"
     runs-on: ubuntu-24.04
     timeout-minutes: 120

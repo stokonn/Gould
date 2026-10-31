@@ -84,6 +84,7 @@ import java.io.File
 
 /** Bounded keyset pages; foreground lifecycle-owned playback and explicit recovery. */
 @Composable private fun RecordingsTab() {
+    data class RecordingDetails(val originalAvailable: Boolean, val associations: List<LocalAudioPart>, val session: PracticeSession?)
     val app = LocalContext.current.applicationContext as OpusApplication
     val repository = remember { LocalRecordingRepository(app.database, File(app.filesDir,"recordings")) }
     val player = app.localPlayback
@@ -104,6 +105,7 @@ import java.io.File
     var failed by remember { mutableStateOf(false) }
     var deleting by remember { mutableStateOf<LocalAudio?>(null) }
     var exportItem by remember { mutableStateOf<LocalAudio?>(null) }
+    var details by remember { mutableStateOf<Map<String, RecordingDetails>>(emptyMap()) }
     var operationFailed by remember { mutableStateOf(false) }
     var busy by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
@@ -124,13 +126,28 @@ import java.io.File
         try {
             val cursor = visible.lastOrNull()
             val page = app.database.studioDao().audioPage(cursor?.createdAt ?: Long.MAX_VALUE, cursor?.id ?: "~",31)
-            visible = (visible + page.take(30)).distinctBy { it.id }
+            val batch = page.take(30)
+            visible = (visible + batch).distinctBy { it.id }
+            if (batch.isNotEmpty()) {
+                val ids = batch.map { it.id }
+                val associations = app.database.studioDao().audioPartPreviews(ids, 6)
+                    .groupBy(LocalAudioPart::recordingId)
+                    .mapValues { (_, values) -> values.take(6) }
+                val tokens = batch.mapNotNull { it.sessionToken }.distinct()
+                val sessions = if (tokens.isEmpty()) emptyMap() else
+                    app.database.practiceDao().completed(tokens).associateBy { it.completionToken }
+                val available = repository.originalAvailability(ids)
+                details = details + ids.associateWith { id ->
+                    val audio = batch.first { it.id == id }
+                    RecordingDetails(available[id] == true, associations[id].orEmpty(), audio.sessionToken?.let(sessions::get))
+                }
+            }
             more = page.size > 30
         } catch (c: CancellationException) { throw c }
         catch (_: Exception) { failed = true }
         finally { loading = false }
     }
-    fun reload() { visible = emptyList(); refresh++ }
+    fun reload() { visible = emptyList(); details = emptyMap(); refresh++ }
     LaunchedEffect(captureKey) {
         if (captureKey != observedCapture) {
             observedCapture = captureKey
@@ -156,17 +173,10 @@ import java.io.File
         if (!loading && !failed && visible.isEmpty()) item { Text(L.s(R.string.studio_recordings_empty)) }
         items(visible,key = { it.id }) { audio ->
             val active = audio.state in setOf("Preparing","Recording","Finalizing")
-            val originalAvailable by produceState<Boolean?>(null,audio.id,audio.state) {
-                value = try { repository.originalAvailable(audio.id) }
-                    catch (c: CancellationException) { throw c }
-                    catch (_: Exception) { false }
-            }
-            val associations by produceState<List<LocalAudioPart>>(emptyList(),audio.id,audio.state) {
-                value = app.database.studioDao().audioPartPreview(audio.id,6)
-            }
-            val session by produceState<PracticeSession?>(null,audio.id,audio.sessionToken) {
-                value = audio.sessionToken?.let { app.database.practiceDao().completed(it) }
-            }
+            val recordingDetails = details[audio.id]
+            val originalAvailable = recordingDetails?.originalAvailable == true
+            val associations = recordingDetails?.associations.orEmpty()
+            val session = recordingDetails?.session
             JournalCard {
                 Column(verticalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
                     Text(audio.title.ifBlank { L.s(R.string.msg_recording_title) },style = MaterialTheme.typography.titleMedium)

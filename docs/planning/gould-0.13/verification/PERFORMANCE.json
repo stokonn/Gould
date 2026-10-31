@@ -1,0 +1,72 @@
+{
+  "source_sha256": "1fe7e4fc4848285f9a0a360d4d1e3456ca85418cd8ae839f680c3a20e25fc2dc",
+  "baseline": {
+    "label": "baseline",
+    "serial": "emulator-5592",
+    "samples_ms": [
+      10686,
+      4879,
+      9308,
+      5761,
+      6067,
+      7470,
+      7364,
+      3819,
+      5627,
+      7086
+    ],
+    "median_ms": 6576.5,
+    "min_ms": 3819,
+    "max_ms": 10686,
+    "n": 10,
+    "method": "force-stop then am start -W, 0.5s stop gap, 1s settle; cold-process launches after initialization, software swangle renderer; exploratory only"
+  },
+  "optimized": {
+    "label": "optimized",
+    "serial": "emulator-5592",
+    "samples_ms": [
+      4908,
+      5072,
+      4386,
+      5781,
+      4578,
+      5200,
+      3521,
+      4495,
+      4854,
+      4774
+    ],
+    "median_ms": 4814.0,
+    "min_ms": 3521,
+    "max_ms": 5781,
+    "n": 10,
+    "method": "force-stop then am start -W, 0.5s stop gap, 1s settle; cold-process launches after initialization, software swangle renderer; exploratory only"
+  },
+  "median_change_percent": -26.799969588686988,
+  "idle_pss_kib": {
+    "baseline": 55982,
+    "optimized": 38852,
+    "samples_each": 1
+  },
+  "cpu_profile": {
+    "flow": "Studio -> Previous -> Recordings -> playback",
+    "seconds": 19.9946,
+    "samples": 698,
+    "lost": 0,
+    "sampled_cpu_seconds": 3.49,
+    "RenderThread_self_percent": 72.36,
+    "goldfish_pipe_read_write_self_percent": 44.27,
+    "kernel_page_pinning_self_percent": 8.45,
+    "kernel_irq_scheduling_self_percent": 6.59
+  },
+  "frames": {
+    "rendered": 133,
+    "janky": 133,
+    "p50_ms": 40,
+    "p90_ms": 150,
+    "p95_ms": 200
+  },
+  "interpretation": "Exploratory evidence favors R8 but is not a production startup/memory gate: 10 samples, sequential run order, onboarding screen, software rendering and host contention. CPU profile is dominated by emulator render transport/kernel overhead; no app-owned hotspot justifies an application rewrite. Recomposition counts, Room query microbenchmarks, recording CPU and acoustic quality remain unmeasured. No leak claim from a single PSS sample.",
+  "raw_artifacts": ".gradle/renaissance/r8-isolated/{baseline-startup.json,optimized-startup.json,baseline-meminfo.txt,optimized-meminfo.txt,navigation.perf,simpleperf-self.txt,gfxinfo-flow.txt}",
+  "signature": "created by stokonn with love <3"
+}

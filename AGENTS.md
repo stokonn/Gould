@@ -7,6 +7,8 @@ This is the canonical policy for every coding agent and every Goldberg version (
 Applies to Goldberg 0.11 and all future Gould versions. This supersedes earlier automatic publication authorization and historical RC instructions below.
 
 - During development, build debug APKs only for internal testing and owner review. Do not create new release candidates, prerelease tags or GitHub Releases for development APKs.
+- Before version 1.0, publish Gould GitHub releases as pre-releases unless the owner explicitly decides otherwise. Use concise, user-focused English release notes with accurate classification titles, installation/compatibility and safety information; keep detailed engineering evidence in repository documentation.
+- Public release descriptions must focus on verified user-visible changes, preserve compatibility and safety warnings, and link to detailed engineering evidence rather than reproducing it. Release titles must accurately reflect pre-release classification.
 - Owner update, final maintenance: remove only GitHub prerelease `v0.11-rc.1` (ID 423537826) and its assets after verifying a complete private metadata/notes/asset backup with SHA-256 hashes. Preserve its Git tag, historical commits, all Stable releases and other tags/assets. Earlier instructions to retain the published RC are superseded by this explicit owner decision.
 - Only after full implementation, verification and explicit owner approval, perform a fresh clean release build. It must be non-debuggable, signed with the trusted production certificate, pass all release-specific gates and support verified safe in-place upgrades.
 - Publish only the explicitly approved stable version. Merging into `main` and publishing a stable GitHub Release each require explicit owner approval; passing checks alone grants neither.
@@ -54,6 +56,11 @@ Discover the actual repository (currently stokonn/Gould; legacy Goldberg/Opus UR
 
 Maintain English-only official Wiki pages and navigation: Home, Getting Started, User Guide, Settings & Customization, Developer Guide, FAQ & Troubleshooting, Changelog & Roadmap, Credits & Licenses. Document only actual working features; clearly label blocked integrations and unverified behavior. Use verified screenshots and licensed attribution; include `created by stokonn with love <3`. Keep local maintainable Wiki sources in docs/wiki. Check Wiki enablement/initialization and GitHub token permissions; report exact blockers without claiming success or starting unauthorized authentication.
 
+Do not add coding agents or AI systems as Git commit co-authors, contributors,
+maintainers or authors. Never append `Co-authored-by` trailers for agents or AI.
+Preserve existing human authorship and `created by stokonn with love <3`; do not
+rewrite existing commits or Git history to remove historical attribution.
+
 For each release: inspect → identify milestone/Issues → plan → implement → run relevant checks → build APK → verify acceptance → synchronize Project/Wiki → update README/changelog/docs → commit/push → publish release → report results. Passing mandatory gates does not authorize merging into main or publishing: both require explicit owner approval. Never invoke an old release script without inspecting its actions; do not publish merely because Gradle succeeds.
 
 ## Stage checklist documentation (permanent, from 2026-10-20)
@@ -99,6 +106,32 @@ Final reports must include significant files/architecture/database changes, exac
 
 Use docs/design/goldberg-0.10/README.md and manifest.json; 01_HOME_APPROVED and 02_PROFILE_APPROVED are the primary references. Inspect all supplied screens, retain four tabs/top-right Settings and every appearance preference, and never package reference images in the APK. Compare actual emulator renders in both themes/font scales and document meaningful differences. Obtain explicit owner visual approval before publication unless the owner explicitly waives screenshot review for that release. For 0.10 the owner waived personal screenshot review on 2026-10-17; minor differences are listed for possible 0.10.1 improvements. Earlier mockup approval and passing automated tests alone are not final visual sign-off.
 
+## Three-tier verification workflow — owner priority for Gould 0.13+
+
+Verify changes at the smallest tier that genuinely covers them; use
+[docs/planning/gould-0.13/VERIFICATION-MATRIX.md](docs/planning/gould-0.13/VERIFICATION-MATRIX.md)
+to decide what a change invalidates. Every tier run appends an exact-commit
+audit line to `docs/planning/gould-0.13/verification-audit.jsonl`.
+
+- **FAST (everyday):** `scripts/verify-fast.sh [--tests <pattern>]` — affected
+  module compilation, JVM unit tests and fast pure-Python static checks. Uses
+  the Gradle daemon and incremental builds; no clean build, no emulator.
+- **INTEGRATION (feature boundary):** `scripts/verify-integration.sh` — full
+  JVM suite, lint, instrumentation compilation and, when
+  `INSTRUMENTATION_CLASSES` is set, execution of affected native classes on
+  exactly ONE identified disposable emulator (`ro.kernel.qemu=1` guard; never
+  the owner's phone; refuses concurrent emulators on this host).
+- **RELEASE (final source freeze):** `scripts/verify-release.sh` — the exact
+  mandatory policy command (`clean assembleDebug testDebugUnitTest
+  assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1`) plus all
+  mandatory policy checks. Release-only artifact/signing/upgrade/security
+  gates run afterwards per the matrix; publication decisions stay separate.
+
+Rules: no blind retries of failed full suites; no repeating PASSing checks
+without a recorded source/environment invalidation reason; diagnose failures
+at the smallest reproducing scope; compilation evidence is never claimed as
+instrumentation execution; mandatory RELEASE gates are never weakened.
+
 ## Legacy Cleanup & Repository Maintenance
 
 Before development or repository maintenance, read [docs/maintenance/LEGACY-CLEANUP.md](docs/maintenance/LEGACY-CLEANUP.md). Follow its documented policy for identifying obsolete code, redundant assets, unused files and technical debt; remove only verified unnecessary components. Preserve user data, migrations, backup formats, release history, legal documentation, signing identity and compatibility-sensitive identifiers. Do not start substantial cleanup during unfinished release verification. Perform safe routine maintenance autonomously, using automated checks and explicitly targeted emulators rather than physical user devices. Document cleanup changes and actual verification in the permanent maintenance record, preserving its history across future Goldberg versions. Do not publish a new application release solely for maintenance without authorization.
@@ -139,3 +172,17 @@ Use API36 and the existing compatibility matrix; API37 is deferred. No physical
 phone, RC, new stage, protected-data deletion or independent PMP modification.
 Read docs/planning/gould-0.12/OWNER-AUTHORIZATION.md. This decision supersedes older
 personal visual-approval requirements specifically for Gould0.12.
+
+
+## Gould 0.13 resource discipline — owner update October 30, 2026
+
+Resume from [the current checkpoint](docs/planning/gould-0.13/CHECKPOINT.md).
+Run exactly one heavyweight Gradle workflow at a time. Tier scripts share a host
+lock and use one worker/no parallel tasks; use `scripts/build-optimized-local.sh`
+for an invalidated local unsigned R8 build, with no emulator running. Reuse the
+accepted FAST 29 s / host INTEGRATION 3930 s evidence when source/environment identity
+holds; never repeat the 65-minute run without a real invalidation reason. The 6 s
+warm result measured unchanged sources, not a source-change rebuild. Record exact
+source/tool hashes and distinguish optimized runtime journeys from debug tests.
+No 0.13 main integration, Stable tag/publication, production signing-key use,
+physical-phone testing or private PMP modification is authorized by this update.
