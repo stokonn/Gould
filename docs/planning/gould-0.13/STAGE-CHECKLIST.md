@@ -38,7 +38,7 @@ _Updated as runs execute; each line mirrors `verification-audit.jsonl`._
 
 ### Completion status
 
-**IN PROGRESS** — T1–T7 are complete for the current development milestone. T8 final-source RELEASE verification and all release-only gates remain pending; no final release acceptance is implied. See [current checkpoint](CHECKPOINT.md).
+**IN PROGRESS** — T1–T7 are complete and the RELEASE host gate passes for the current development milestone. T8 release-only verification, final-SHA CI and owner release authorization remain pending; no final release acceptance is implied. See [current checkpoint](CHECKPOINT.md).
 
 ### R8 continuation — October 30, 2026
 
@@ -53,14 +53,15 @@ production signing/publication, Stable changes or main integration.
 - [x] ZIP-validated unsigned APK 6,492,506 B, 65.3867% below verified 18,757,232 B baseline. Test-signed copy 6,532,669 B; every payload entry identical. Runtime acceptance remains pending.
 - [x] Exact optimized payload accepted on disposable API 36: Room persistence, actual WorkManager worker SUCCESS, both live launcher widgets and safe taps, microphone recording, WAV/hash validation, playback and recording retained through process/emulator restart.
 - [x] Host INTEGRATION PASS 3930 s: JVM task outputs reused, lint and instrumentation APK compilation passed. No native execution. Accepted evidence retained; do not rerun without invalidation.
-- [ ] Profile focused runtime flows before considering application changes.
+- [x] Profile focused runtime flows before considering application changes; retained trace and bounded Room/native evidence found no additional app-owned optimization target.
 - [x] Consolidated source-bound artifact/runtime/performance reports, inspected screenshots, [current checkpoint](CHECKPOINT.md), shared host locking and exact source/tool audit fingerprints.
 - [x] Batched recordings-page metadata loading: one association query, one completion-token query and one filesystem batch replace per-row work for each fetched page.
 - [x] Prepared Gould 0.13 development metadata: versionName `0.13-dev` / stable property `0.13`, versionCode `15`.
 - [x] Targeted FAST PASS after the source/build changes: `scripts/verify-fast.sh --tests '*Recording*Test'`, 85 seconds; `compileDebugKotlin`, focused JVM tests and all four static checks passed.
-- [x] Reviewed batched-query regression: SQL now returns at most six associations per recording; synthetic SQLite benchmark returned 180 rather than 3,000 rows. Android instrumentation source compiles, but execution remains unrun because no emulator was available.
+- [x] Reviewed batched-query regression: SQL now returns at most six associations per recording; synthetic SQLite benchmark returned 180 rather than 3,000 rows. Android instrumentation source compiled locally and later passed 8/8 on CI.
 - [x] Existing Stage 5 CI was reviewed; a bounded `recordings` dispatch scope now runs only `StudioRecordingTest` on the disposable API 36 emulator and skips the unrelated acceptance job. See [release-readiness checklist](RELEASE-READINESS.md).
 - [x] Focused CI run `41146502208` at `e812b7c`: `StudioRecordingTest` 8/8 passed with zero failures/errors/skips on API 36/QEMU `emulator-5554`; acceptance job skipped.
+- [x] RELEASE host gate PASS at `14882d3`, 248 seconds: clean debug policy build, JVM tests, instrumentation compilation, lint and five policy checks; no release-only gates inferred.
 
 Read-only GitHub inspection found repository `stokonn/Gould`, Stable `v0.12`,
 no open issues and no 0.13 milestone/issue (including closed issue search).

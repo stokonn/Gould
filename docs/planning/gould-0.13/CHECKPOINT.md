@@ -142,6 +142,20 @@ API 36/QEMU emulator `emulator-5554` at 1080x2400/density 420. The unrelated
 acceptance job was skipped. This closes the focused bounded-association native
 regression gate; it does not close final RELEASE acceptance.
 
+## Final host verification — October 31
+
+The source/docs freeze at `14882d3` passed the mandatory non-production
+RELEASE host gate in 248 seconds: clean `assembleDebug`,
+`testDebugUnitTest`, `assembleDebugAndroidTest`, `lintDebug`, and all five
+policy checks. The audit row records `RELEASE PASS` with 238 source files.
+No production signing, release APK, tag, publication or main integration was
+performed.
+
+No app/build source changed between focused CI commit `e812b7c` and the
+documentation/audit-only freeze commits. The focused native evidence is
+therefore retained for the unchanged app source, but final-SHA CI is still
+open under the release checklist.
+
 ## Remaining work and boundaries
 
 1. The recordings page now batches association/session metadata and filesystem
@@ -153,8 +167,8 @@ regression gate; it does not close final RELEASE acceptance.
    explicit owner instruction. Historical handoff entries remain in
    `docs/ai/HANDOFF-HISTORY.md`.
 3. Development metadata is now prepared as versionName `0.13-dev` /
-   stable-property `0.13`, versionCode `15`. The source/docs freeze is prepared;
-   the mandatory RELEASE host gate and all release-only artifact, upgrade,
+   stable-property `0.13`, versionCode `15`. The source/docs freeze and
+   mandatory RELEASE host gate are PASS; release-only artifact, upgrade,
    security/privacy/licensing, visual and final-SHA CI gates remain open.
 4. Commit/push only verified development milestones on `feature/gould-0.13`.
    No main integration, Stable tag or publication without new owner authorization.
