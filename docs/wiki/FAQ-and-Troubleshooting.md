@@ -1,23 +1,47 @@
 # FAQ & Troubleshooting — Gould
 
-> **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
+> Gould 0.12 documentation — [Gould 0.12 Stable](https://github.com/stokonn/Gould/releases/tag/v0.12) is the latest published release. Sections describing 0.12 behavior now document the shipped application; historical sections below retain their original evidence.
 
-**Which APK should I install?** Download the current [Gould 0.13 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13). Android 8.0+ is required.
 
-**Is my practice journal uploaded?** No. Repertoire, practice, notes, drafts, recordings and backups remain local unless you export files. Optional music queries may transmit ordinary network request metadata. There is no journal-upload endpoint.
+**Does my journal upload?** No. Practice, notes, drafts/recovery and backups remain local. Online provider queries process their necessary network metadata; the catalogue backend has no journal-upload endpoint.
 
-**Why is the public catalogue empty?** The read-only catalogue has no approved published records. Local catalogue data and optional provider searches are separate; community submissions are disabled.
+**Why is the public Goldberg catalogue empty?** Its read-only routes are active, but no approved records have been imported. Optional provider search and existing saved catalogue records are separate. This is not a community contribution service.
 
-**An APK update reports a signature/version error.** Preserve the installed app and backups; do not uninstall to bypass the error. The application ID and compatible signing identity are intentionally retained.
+**Why are older metadata rights unknown?** A retained local snapshot is not new publication evidence. The original cache and personal records are preserved. Check Sources & credits or refresh through an approved provider when permitted.
 
-**My restored recording has no audio.** JSON carries recording metadata, not WAV bytes. Restore the separately exported media ZIP as well. Missing audio is not silently recreated.
+**Can I replace the app to fix a signature error?** Preserve your data and contact support; do not uninstall to bypass it. The current 0.13 release retains the compatible signing identity. Send minimal support details to stokonn.us@gmail.com, never credentials or an entire journal by default.
 
-**Does Pause stop an audio take?** No. It pauses practice credit; an explicitly started recording continues until Stop recording or Finish & Review. Interrupted takes require explicit recovery.
+**Why is a recording missing after a JSON-only restore?** JSON carries its metadata. Transfer the separately exported media archive to restore its actual bytes. A missing file is shown as unavailable; it is not silently recreated.
 
-**Can widgets start recording?** No. They open Studio without starting recording or practice.
+**Does Pause stop a take?** Practice Pause freezes credit. Explicit recording continues through silence until Stop recording or Finish & Review. Reopening the app after interruption does not restart capture; inspect Previous for explicit recovery.
 
-**Does Google profile identity sync practice?** No. Profile sign-in is optional and does not implement cloud journal backup.
+**Can a widget start recording?** No. Widget taps only open the existing Studio state. Start or resume practice and recording explicitly in the app.
+
+created by stokonn with love <3
+
+<details>
+<summary>Preserved earlier documentation and dated development history</summary>
+
+# FAQ & Troubleshooting
+
+**Can I use Goldberg without Google?** Yes. Local profiles and practice do not require an account. The owner reports successful Google authentication on a Samsung Galaxy A55, performed manually by the owner. The owner individually confirmed all six Google identity scenarios: PASS — owner-reported manual verification. See [Verification](Verification) for exact observations and evidence boundaries.
+
+**Does Google mean cloud backup?** No. No practice synchronization is implemented. Export portable backups yourself.
+
+**Android refuses an update.** Check package, version code and actual signing compatibility. Keep the installed app and backup; never uninstall solely to bypass an unknown signing mismatch.
+
+**An unfinished session cannot be recovered.** Keep the app/data intact, retry, then export the unchanged recovery payload where possible. Do not start a new session by deleting files. The 0.9.2 workflow archives the original before a confirmed fresh session; archive failure prevents replacement. Recovery never restarts capture by itself.
+
+**Images are missing.** A placeholder may mean no reusable licensed image is available, no connection exists, or metered-media permission is off. Existing cached portraits remain usable offline. Download optional composer content explicitly, and see Settings for consent/storage controls.
+
+**The quotation did not download.** The exactly-ten bundled verified library remains available offline. Selection is stable for the local calendar day. No anonymous replacement quote is invented.
+
+**My new backup will not import into an old app.** Format 4/schema 8 is for 0.10 and later. Goldberg 0.10 can import formats 1–3; older app versions do not support format 4. Keep previous backups.
+
+**Who tested the owner's phone?** The owner personally reported the Google scenarios in [Verification](Verification). Codex performs no physical-phone operations. Automated and emulator results are recorded separately.
+
+**Where is development tracked?** The permanent [Goldberg Development Project](https://github.com/users/stokonn/projects/2) is private and accessible to authorized accounts. Public Issues and milestones live in [the repository](https://github.com/stokonn/Gould/issues). The Wiki is published separately from the Android release. The verification page separates owner-reported Google results from automated/emulator evidence.
 
 [Home](Home) · [Getting Started](Getting-Started)
 
-created by stokonn with love <3
+</details>
