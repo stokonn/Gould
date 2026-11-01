@@ -1,5 +1,11 @@
 # Gould 0.13 — current development checkpoint
 
+> **Historical record:** Gould 0.13 is now published as a GitHub pre-release.
+> For current instructions and maintenance priorities, read
+> [the current Gould status](../../ai/GOULD-CURRENT-STATUS.md) and
+> [the current handoff](../../ai/HANDOFF.md). Do not rewrite this checkpoint;
+> its development-era verification evidence is retained for provenance.
+
 Project Renaissance is **in progress** on `feature/gould-0.13`, based on
 Gould 0.12 Stable `d10aa49`. This is the authoritative resume entry point.
 The [living checklist](STAGE-CHECKLIST.md) retains task history; the
