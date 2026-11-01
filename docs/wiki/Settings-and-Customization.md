@@ -1,6 +1,6 @@
 # Settings & Customization — Gould
 
-> **Releases:** [0.12 Stable](https://github.com/stokonn/Gould/releases/tag/v0.12) · [0.13 Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). **0.13 is not Stable.**
+> **Releases:** [0.12 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.12) · [0.13 Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). **Both releases are pre-releases; 0.13 is newer.**
 
 Choose Czech, English or system language, supported Ivory/Nocturne appearance, typography and layout preferences. Online catalogue/provider search requires separate opt-in; downloaded media has its own settings and storage controls.
 
