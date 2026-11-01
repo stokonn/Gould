@@ -1,4 +1,13 @@
-## Gould 0.12 Stable — The Practice Studio Update
+## Gould 0.13 — Project Renaissance (pre-release)
+
+- Reduce APK size to approximately 6.3 MB.
+- Optimize recording metadata loads and database queries.
+- Improve Studio recording-list refresh and recovery reliability.
+- Preserve compatibility with 0.12 application identity, database and signing certificate.
+- This is a **pre-release**, not Stable.
+- [Release notes and verification](docs/releases/GOULD-0.13.md).
+
+## Gould 0.12 Pre-release — The Practice Studio Update
 
 - Add the Studio record/stop flow with Previous takes, playback, export and
   restart-safe recovery; the metronome now plays through media volume with
@@ -16,7 +25,7 @@
   performance and release-artifact gates pass; required CI green.
 - [Release notes and verification](docs/releases/GOULD-0.12.md).
 
-## 0.11 Stable — The Music Database Update
+## 0.11 — The Music Database Update
 
 - Integrate the verified catalogue, encyclopedia, offline/cache and Android work.
 - Share canonical catalogue data/details across Discover and Library; retain all
