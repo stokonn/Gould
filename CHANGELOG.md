@@ -7,7 +7,7 @@
 - This is a **pre-release**, not Stable.
 - [Release notes and verification](docs/releases/GOULD-0.13.md).
 
-## Gould 0.12 Stable — The Practice Studio Update
+## Gould 0.12 Pre-release — The Practice Studio Update
 
 - Add the Studio record/stop flow with Previous takes, playback, export and
   restart-safe recovery; the metronome now plays through media volume with
