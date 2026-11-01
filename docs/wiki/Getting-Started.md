@@ -1,8 +1,8 @@
 # Getting Started — Gould
 
-> **Releases:** [0.12 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.12) · [0.13 Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). **Both releases are pre-releases; 0.13 is newer.**
+> **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
 
-Download a signed APK from [0.12 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.12) or, if you want the newest test release, [0.13 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13). **Android 8.0 or later** is required.
+Download the latest signed APK from [Gould 0.13 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13). **Android 8.0 or later** is required.
 
 Before updating, export a portable backup from **Settings → Data & Storage** and keep a copy outside app-private storage. Install over the existing compatible app; the application ID is still `com.opus.piano`. Never uninstall to bypass a signing or version mismatch.
 
