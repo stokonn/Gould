@@ -1,3 +1,12 @@
+## Gould 0.13 — Project Renaissance (pre-release)
+
+- Reduce APK size to approximately 6.3 MB.
+- Optimize recording metadata loads and database queries.
+- Improve Studio recording-list refresh and recovery reliability.
+- Preserve compatibility with 0.12 application identity, database and signing certificate.
+- This is a **pre-release**, not Stable.
+- [Release notes and verification](docs/releases/GOULD-0.13.md).
+
 ## Gould 0.12 Stable — The Practice Studio Update
 
 - Add the Studio record/stop flow with Previous takes, playback, export and
