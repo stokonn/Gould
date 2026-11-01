@@ -2,6 +2,10 @@
 
 This is the canonical policy for every coding agent and every Goldberg version (0.9.2, 0.10 and beyond). Preserve it in future updates. Thin tool-specific instruction files reference this file; do not maintain competing copies. Newer explicit owner instructions and higher-priority system/security rules take precedence.
 
+## Current documentation status — November 1, 2026
+
+For current documentation and maintenance state, [the current Gould status](docs/ai/GOULD-CURRENT-STATUS.md) and [maintenance handoff](docs/ai/HANDOFF.md) take precedence over superseded development-era handoffs and checkpoints. Gould 0.13 is already published as a GitHub pre-release from tag `v0.13`; documentation PR #45 is merged into `main`. Preserve historical checkpoint, verification, release, signing and security records as evidence rather than rewriting them to look current. This note changes documentation precedence only; it does not relax any security, signing, compatibility, data-preservation, backend-boundary or release-approval policy below.
+
 ## Permanent release policy — owner decision, October 25, 2026
 
 Applies to Goldberg 0.11 and all future Gould versions. This supersedes earlier automatic publication authorization and historical RC instructions below.
