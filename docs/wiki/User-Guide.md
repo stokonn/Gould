@@ -1,8 +1,8 @@
 # User Guide — Gould
 
-> **Releases:** [0.12 Stable](https://github.com/stokonn/Gould/releases/tag/v0.12) · [0.13 Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). **0.13 is not Stable.**
+> **Releases:** [0.12 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.12) · [0.13 Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). **Both releases are pre-releases; 0.13 is newer.**
 
-The features below shipped with 0.12 Stable and remain in 0.13 Pre-release, which focuses on size, performance and recording recovery reliability.
+The features below shipped with 0.12 Pre-release and remain in 0.13 Pre-release, which focuses on size, performance and recording recovery reliability.
 
 ## Library and Discover
 
