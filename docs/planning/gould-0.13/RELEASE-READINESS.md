@@ -1,5 +1,11 @@
 # Gould 0.13 development release-readiness checklist
 
+> **Historical record:** this checklist documents the pre-publication
+> verification process. Gould 0.13 is now published as a GitHub pre-release;
+> see [the current Gould status](../../ai/GOULD-CURRENT-STATUS.md) for active
+> instructions. Preserve this checklist and its evidence unchanged apart from
+> this pointer.
+
 This is a development checklist only. It does not authorize signing,
 publication, tagging, or merging into `main`.
 
