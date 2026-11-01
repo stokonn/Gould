@@ -9,7 +9,7 @@
 <p>A thoughtful, local-first piano practice companion for Android.<br />
 Build your repertoire, record your sessions, and see how far you've come.</p>
 
-<p><a href="https://github.com/stokonn/Gould/releases/download/v0.12/Gould-v0.12.apk"><strong>Download Gould 0.12 Stable</strong></a> · <a href="docs/releases/GOULD-0.12.md">What's new</a> · <a href="docs/wiki/User-Guide.md">User guide</a></p>
+<p><a href="https://github.com/stokonn/Gould/releases/tag/v0.13"><strong>Gould 0.13 — latest pre-release</strong></a> · <a href="https://github.com/stokonn/Gould/releases/tag/v0.12">Gould 0.12</a> · <a href="docs/wiki/User-Guide.md">User guide</a></p>
 
 <p>
 <img alt="Android 8.0+" src="https://img.shields.io/badge/Android-8.0%2B-3DDC84?logo=android&amp;logoColor=white" />
@@ -39,27 +39,27 @@ Gould brings the practical parts of piano practice together without turning your
 <table>
   <tr>
     <th align="center">Home</th>
+    <th align="center">Practice Studio</th>
     <th align="center">Profile</th>
-    <th align="center">A little personality</th>
   </tr>
   <tr>
-    <td align="center"><img src="docs/wiki/images/home-development.png" width="220" alt="Gould Home development preview"></td>
-    <td align="center"><img src="docs/wiki/images/profile-czech-development.png" width="220" alt="Gould Profile development preview in Czech"></td>
-    <td align="center"><img src="docs/wiki/images/tux-development.png" width="220" alt="Gould Tux development preview"></td>
+    <td align="center"><img src="docs/wiki/images/gould-0.13/home-en-ivory.png" width="220" alt="Gould 0.13 Home in English"></td>
+    <td align="center"><img src="docs/wiki/images/gould-0.13/practice-en-nocturne.png" width="220" alt="Gould 0.13 Practice Studio in English"></td>
+    <td align="center"><img src="docs/wiki/images/gould-0.13/profile-en-ivory.png" width="220" alt="Gould 0.13 Profile in English"></td>
   </tr>
 </table>
 
-<sub>These are archived **development previews**, not verified final screenshots of the 0.12 Stable build. The shipped interface may differ. [Explore more historical screenshots](docs/wiki/images).</sub>
+<sub>Screenshots captured from the Gould 0.13 pre-release on an Android API 36 emulator, using fictional demo data. See the [capture evidence](docs/wiki/images/gould-0.13/CAPTURE-EVIDENCE.md) and [English screenshot plan](docs/planning/gould-0.13/README-SCREENSHOT-CAPTURE.md).</sub>
 
 ## Get Gould
 
-**Latest published version: [Gould 0.12 Stable — The Practice Studio Update](https://github.com/stokonn/Gould/releases/tag/v0.12)**
+**Latest published pre-release: [Gould 0.13 — Project Renaissance](https://github.com/stokonn/Gould/releases/tag/v0.13)**. [Gould 0.12 — The Practice Studio Update](https://github.com/stokonn/Gould/releases/tag/v0.12) remains available as an earlier release.
 
 - **Android:** 8.0 or newer (API 26+).
 - **Languages:** English and Czech, with light and dark appearance.
-- **Install:** download the signed [Gould-v0.12.apk](https://github.com/stokonn/Gould/releases/download/v0.12/Gould-v0.12.apk) from GitHub Releases.
+- **Install:** download the signed [Gould-v0.13.apk](https://github.com/stokonn/Gould/releases/download/v0.13/Gould-v0.13.apk) from GitHub Releases; this is a **pre-release**, not Stable.
 - **Already using Goldberg/Gould?** Export a backup before updating, then install over your existing compatible application. **Do not uninstall** just to bypass a signing or version mismatch.
-- **Release integrity:** the [published SHA-256 checksum](https://github.com/stokonn/Gould/releases/download/v0.12/Gould-v0.12.apk.sha256) is available alongside the APK.
+- **Release integrity:** the [published SHA-256 checksum](https://github.com/stokonn/Gould/releases/download/v0.13/Gould-v0.13.apk.sha256) is available alongside the APK.
 
 [All releases](https://github.com/stokonn/Gould/releases) · [Getting started](docs/wiki/Getting-Started.md) · [FAQ & troubleshooting](docs/wiki/FAQ-and-Troubleshooting.md)
 
@@ -67,7 +67,7 @@ Gould brings the practical parts of piano practice together without turning your
 
 Your practice journal, repertoire, saved recordings, profile and backups are local to your device unless you deliberately export them. Optional online catalogue-provider searches require separate consent; Google profile sign-in does **not** synchronize your practice data. Microphone recording starts only when you explicitly request it.
 
-The public catalogue API currently has an empty publication set. Community writes, backend OAuth and practice-data uploads remain disabled. Smart Practice sound detection is experimental, not a perfect measure of piano activity.
+The restricted first-party catalogue service exposes read-only catalogue endpoints and currently has no approved published catalogue records. Community submissions, backend OAuth and practice-data uploads remain disabled; this does not affect local practice. [Backend architecture and deployment boundaries](docs/architecture/BACKEND-DECISION-2026-10-31.md). Smart Practice sound detection is experimental, not a perfect measure of piano activity.
 
 [Privacy information](docs/PRIVACY.md) · [Settings & data controls](docs/wiki/Settings-and-Customization.md)
 
@@ -79,7 +79,7 @@ For developers:
 
 - Start with [AGENTS.md](AGENTS.md) for repository and release-safety rules, and the [Developer Guide](docs/wiki/Developer-Guide.md) for architecture.
 - Use **JDK 17**, **Android SDK 36** and the committed Gradle wrapper.
-- Gould **0.13 Project Renaissance** is in development on [`feature/gould-0.13`](https://github.com/stokonn/Gould/tree/feature/gould-0.13); it is **not** a published Stable release. See its [checkpoint](https://github.com/stokonn/Gould/blob/feature/gould-0.13/docs/planning/gould-0.13/CHECKPOINT.md).
+- Gould **0.13 Project Renaissance** is published as a [pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13), not Stable. See its [release notes](docs/releases/GOULD-0.13.md), [release readiness](docs/planning/gould-0.13/RELEASE-READINESS.md), and the [English screenshot capture plan](docs/planning/gould-0.13/README-SCREENSHOT-CAPTURE.md).
 - Source compilation and CI are not substitutes for on-device, upgrade or release-signing acceptance. Published releases undergo separate checks.
 
 [Changelog](CHANGELOG.md) · [Third-party licences and credits](docs/LICENSES.md) · [Signing guidance](docs/SIGNING.md) · [Wiki](https://github.com/stokonn/Gould/wiki)
