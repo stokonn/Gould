@@ -1,6 +1,8 @@
 # User Guide — Gould
 
-> Gould 0.12 documentation — [Gould 0.12 Stable](https://github.com/stokonn/Gould/releases/tag/v0.12) is the latest published release. Sections describing 0.12 behavior now document the shipped application; historical sections below retain their original evidence.
+> **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
+
+Gould 0.13 retains these workflows and adds performance and recording-list reliability improvements.
 
 
 Use Library for your personal repertoire and the shared local catalogue, and Discover to explore sourced music records. Both tabs open the same canonical catalogue details. Public catalogue rows are labelled separately from music saved in your repertoire; open details to add an eligible work or open its existing repertoire entry.
@@ -9,7 +11,7 @@ Search uses saved catalogue data first. Automatic online provider search require
 
 Manual and Smart Practice, session review, piece attribution, history, profile and backups remain local. Keep unfinished recovery data until it has been successfully recovered or separately exported. Network or catalogue failures do not authorize deleting the journal or draft.
 
-## Studio and local audio in 0.12
+## Studio and local audio
 
 Studio keeps credited practice time separate from recording duration. Manual timing, Smart Practice and explicit audio recording share the existing practice coordinator and one microphone owner. Smart Practice is experimental. It analyzes transient sound to estimate active practice; it does not identify a piano perfectly. Recording starts only after explicit Record audio consent. Pause affects practice credit; an explicitly started take continues through silence until Stop recording or Finish & Review. Recovery never restarts the microphone automatically.
 
@@ -17,7 +19,7 @@ Expand Metronome for tempo and beats per bar. It stops when Studio leaves the fo
 
 The upper-right Previous action opens separate Practice History and Recordings tabs. Local recordings retain the title/composer and piece changes captured during the take. Open a saved recording to play, pause or seek; export its WAV through the Android file picker. Playback stops before capture. Deletion requires confirmation. Interrupted audio offers explicit recovery or unchanged original-byte export; do not delete it while recovery is unresolved. Existing external recording links remain separate.
 
-## Profile, badges and widgets in 0.12
+## Profile, badges and widgets
 
 Profile presents four centered statistics in a 2×2 grid. The editor offers composer and era suggestions while preserving manual entries. Draft edits survive interruption. Leaving a changed editor offers Save, Discard or Keep editing; successful persistence is required before a save is acknowledged.
 
