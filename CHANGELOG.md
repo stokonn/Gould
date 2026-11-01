@@ -25,7 +25,7 @@
   performance and release-artifact gates pass; required CI green.
 - [Release notes and verification](docs/releases/GOULD-0.12.md).
 
-## 0.11 Stable — The Music Database Update
+## 0.11 — The Music Database Update
 
 - Integrate the verified catalogue, encyclopedia, offline/cache and Android work.
 - Share canonical catalogue data/details across Discover and Library; retain all
