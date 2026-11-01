@@ -1,10 +1,10 @@
 # Gould — Piano Practice Journal
 
-> **Releases:** [0.12 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.12) · [0.13 Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). **Both releases are pre-releases; 0.13 is newer.**
+> **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
 
 Gould is a local-first Android music practice journal for repertoire, sessions, notes, recordings and achievements. Library and Discover share sourced music catalogue data; Studio supports manual or experimental Smart Practice and explicit local audio recording.
 
-**Download:** [0.12 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.12) · [0.13 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13) · [All releases](https://github.com/stokonn/Gould/releases).
+**Download:** [Gould 0.13 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13) · [All releases](https://github.com/stokonn/Gould/releases).
 
 **0.13 changes:** approximately 6.3 MB APK, faster recording metadata/database queries, more consistent Studio recording-list refresh and recovery. [Release notes](https://github.com/stokonn/Gould/blob/main/docs/releases/GOULD-0.13.md).
 
