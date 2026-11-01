@@ -39,17 +39,17 @@ Gould brings the practical parts of piano practice together without turning your
 <table>
   <tr>
     <th align="center">Home</th>
+    <th align="center">Practice Studio</th>
     <th align="center">Profile</th>
-    <th align="center">A little personality</th>
   </tr>
   <tr>
-    <td align="center"><img src="docs/wiki/images/home-development.png" width="220" alt="Gould Home development preview"></td>
-    <td align="center"><img src="docs/wiki/images/profile-czech-development.png" width="220" alt="Gould Profile development preview in Czech"></td>
-    <td align="center"><img src="docs/wiki/images/tux-development.png" width="220" alt="Gould Tux development preview"></td>
+    <td align="center"><img src="docs/wiki/images/gould-0.13/home-en-ivory.png" width="220" alt="Gould 0.13 Home in English"></td>
+    <td align="center"><img src="docs/wiki/images/gould-0.13/practice-en-nocturne.png" width="220" alt="Gould 0.13 Practice Studio in English"></td>
+    <td align="center"><img src="docs/wiki/images/gould-0.13/profile-en-ivory.png" width="220" alt="Gould 0.13 Profile in English"></td>
   </tr>
 </table>
 
-<sub>These are **archived development previews**, not screenshots verified against Gould 0.13. The actual release UI may differ. [View the verification-first English screenshot plan](docs/planning/gould-0.13/README-SCREENSHOT-CAPTURE.md). The images will be replaced only after real emulator captures have been checked.</sub>
+<sub>Screenshots captured from the Gould 0.13 pre-release on an Android API 36 emulator, using fictional demo data. See the [capture evidence](docs/wiki/images/gould-0.13/CAPTURE-EVIDENCE.md) and [English screenshot plan](docs/planning/gould-0.13/README-SCREENSHOT-CAPTURE.md).</sub>
 
 ## Get Gould
 
