@@ -2,7 +2,7 @@
 
 > **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
 
-**Which APK should I install?** Download the current [Gould 0.13 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13). Both require Android 8.0+.
+**Which APK should I install?** Download the current [Gould 0.13 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13). Android 8.0+ is required.
 
 **Is my practice journal uploaded?** No. Repertoire, practice, notes, drafts, recordings and backups remain local unless you export files. Optional music queries may transmit ordinary network request metadata. There is no journal-upload endpoint.
 
