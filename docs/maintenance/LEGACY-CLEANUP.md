@@ -190,3 +190,24 @@ The owner-provided independent OpenCode source review identified four controller
 Second independent review confirmed the four original controller fixes at `2c6eb18`; a further required-active-registration preflight correction and missing/disabled regressions pass 26 local administration tests. The post-operation check and all workflow definitions remain unchanged. Third read-only host review is required with the owner-specified model; no main merge or cleanup operation is authorized by this checkpoint.
 
 Third independent review at `85b237f` passed its defined source scope with no unresolved findings. Exact receipt, commit/hash validation, limitations and preservation are recorded in ADMIN-SAFETY-REVIEW.md. The separate administration CI executed 26 passing tests. Acceptance handoff changes are documentation only; no main merge or destructive cleanup occurred. Owner merge approval and protected private-data custody remain outstanding.
+
+
+## 2026-11-11 — documentation and repository-state maintenance
+
+Scope: reconcile the current maintenance entry points with the live GitHub repository after Gould 0.13 publication. This is a documentation/inventory pass, not application cleanup.
+
+- [x] Read root `AGENTS.md`, this permanent maintenance policy, current status/handoff, the final branch and Actions/RC audits, and the 0.13 release documentation.
+- [x] Verify the canonical `main` SHA, merged PR #48, published `v0.13` pre-release, and exact-base CI at `c8980539`.
+- [x] Confirm the GitHub repository reports Wiki enabled; keep `docs/wiki/` as the maintained source. Separate Wiki repository/API returned 404 in this audit, so public Wiki synchronization remains **unverified**.
+- [x] Confirm no open PRs or Issues at the start of this audit.
+- [x] Record that GitHub reports `main` unprotected; no repository settings were changed.
+- [x] Preserve the existing branch/worktree classifications and private-data custody blockers. No branch, tag, release, worktree, application/backend source, workflow, asset or user data was changed.
+- [ ] Review/merge the documentation-only maintenance PR after its exact-commit CI passes and the owner approves.
+- [ ] Verify/synchronize the public Wiki through an authorized, non-destructive path.
+- [ ] Resolve seven protected historical-worktree custody blockers and six blocked historical branches only through their existing separately reviewed procedures.
+
+Verification: GitHub API readback confirmed `main=c8980539bb76408d6f1284e4b3a885cdb71af6fc`; required checks `host-quality`, `synthetic-postgres` and `administration-safety` all completed successfully at that exact base commit. These are **base-commit** results, not results for the maintenance branch. No Gradle build, Android test, emulator, ADB, application test or physical-device operation was performed for this docs-only pass.
+
+The repository is **not declared fully maintained** while protected custody, Wiki synchronization and branch-protection configuration remain unresolved. Do not start Gould 0.14 implementation from this record; use the separate Phase 1 workflow.
+
+created by stokonn with love <3
