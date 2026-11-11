@@ -1,3 +1,22 @@
+# Live maintenance readback — 2026-11-11
+
+> **Current entry point:** [Gould current status](GOULD-CURRENT-STATUS.md) and [maintenance handoff](HANDOFF.md). This note supersedes older dated statements below wherever they describe current GitHub state; all older checkpoint text remains preserved as history.
+>
+> - Canonical repository: `stokonn/Gould`; default branch `main`.
+> - Verified base SHA: `c8980539bb76408d6f1284e4b3a885cdb71af6fc` (November 2, 2026), including merged documentation PR [#48](https://github.com/stokonn/Gould/pull/48).
+> - Published release: [Gould 0.13](https://github.com/stokonn/Gould/releases/tag/v0.13), GitHub pre-release; not Stable.
+> - Exact-base checks all passed: [host-quality 41500959420](https://github.com/stokonn/Gould/actions/runs/41500959420), [synthetic-postgres 41500959252](https://github.com/stokonn/Gould/actions/runs/41500959252), [administration-safety 41500959177](https://github.com/stokonn/Gould/actions/runs/41500959177). Do not attribute these results to later commits without exact-SHA readback.
+> - No open PRs or Issues were found at the start of this audit.
+> - GitHub reports Wiki enabled, but the Wiki API/repository endpoint returned 404; the public Wiki synchronization remains unverified. Canonical source remains `docs/wiki/`.
+> - GitHub reports `main` unprotected. This pass did not alter repository settings.
+> - Overall maintenance remains **INCOMPLETE**: seven historical worktrees still contain protected private/ignored originals; six historical branches remain blocked. No cleanup or deletion is authorized by this readback.
+> - A documentation-only maintenance branch/PR is being prepared from the exact base above. Review its own CI and obtain owner approval before merge.
+> - Gould 0.14 has not started. It requires a separate Phase 1 architecture/review/planning pass and explicit approval before implementation.
+>
+> No application/backend source, workflow, release asset, tag, branch, worktree, signing material or user data was changed in this maintenance pass.
+
+---
+
 > Current Gould 0.12 Phase 1 checkpoint — 2026-10-28: the complete v2 scope and all14 private PNGs have been reviewed and transferred/hash-verified in the isolated `planning/gould-0.12-architecture` worktree. Read [the architectural review and proposed plan](../planning/gould-0.12/ARCHITECTURE-AND-PLAN.md) and [living checklist](../planning/gould-0.12/STAGE-CHECKLIST.md). Phase2 is NOT STARTED; explicit owner approval is required. Live main is ef82898 with CI3/3 successful; PMP sequence29 confirms owner-approved safety integration, superseding older pending-merge notices below. Five current active Actions registrations include maintenance-admin and managed Copilot. Overall maintenance remains INCOMPLETE due to seven protected historical-worktree custody blockers. No application features/builds/emulator/release or historical administration performed.
 
 > Verified acceptance: third independent host source review PASSED at `85b237f` with no unresolved findings within its defined scope; receipt `admin-safety-KAtPTcmL` and hashes validated. All three CI workflows passed at that exact source, including 26 administration tests, Android quality and backend verification. Acceptance changes after this reviewed commit are documentation only; final exact-branch CI is checked separately. Read [ADMIN-SAFETY-REVIEW.md](../maintenance/ADMIN-SAFETY-REVIEW.md). Overall maintenance remains INCOMPLETE pending explicit owner main-merge approval and protected historical-data custody. Main remains `aa34ca7`; no live cleanup or Gould 0.12 implementation occurred. Earlier pending-review notices below are preserved checkpoints.
