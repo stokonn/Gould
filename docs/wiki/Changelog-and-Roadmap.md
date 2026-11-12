@@ -1,16 +1,19 @@
-# Gould 0.12 — development
+# Changelog & Roadmap — Gould
 
-> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
+> **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
 
-Implemented: explicit local WAV recording and recovery/media archive controls; Studio metronome, durable queue/Undo/notes; Previous history/recordings and local playback; centered Profile and persistent editor drafts; six evidence-based badges and durable notices; both adaptive launcher widgets; corrected original ASCII Tux and subtle local Home landscape. Full acceptance and Stable publication remain pending.
+> Gould 0.14 remains in development and is not included in the published 0.13 APK.
 
-# Changelog & Roadmap — Goldberg 0.11
+## Gould 0.13 — Project Renaissance (pre-release)
 
-0.11 Stable integrates the approved Music Database Update: shared Discover/Library catalogue, sourced details, optional provider search, offline bundles/cache and verified Android work. Personal data and backup compatibility are preserved.
+- Reduce APK size to approximately 6.3 MB.
+- Optimize recording metadata loading and database queries.
+- Improve Studio recordings-list refresh and recovery reliability.
+- Retain existing application, database and signing compatibility for in-place upgrades.
 
-The existing public catalogue API is read-only and currently empty. Backend OAuth, community writes and practice sync remain disabled. No future-version scope or live integration is implied. The privately backed-up obsolete v0.11-rc.1 prerelease/assets were removed by owner-authorized maintenance; its tag and all Stable history remain. No additional RC was created.
+[0.13 release notes](https://github.com/stokonn/Gould/blob/main/docs/releases/GOULD-0.13.md) · [Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13)
 
-[0.11 release](https://github.com/stokonn/Gould/releases/tag/v0.11) · [Exact validation and limits](https://github.com/stokonn/Gould/blob/main/docs/releases/GOLDBERG-0.11.md).
+Older release information is maintained in [CHANGELOG.md](https://github.com/stokonn/Gould/blob/main/CHANGELOG.md), Git history and historical checkpoints. Earlier development roadmaps do not represent the current published state. See [current project status](https://github.com/stokonn/Gould/blob/main/docs/ai/GOULD-CURRENT-STATUS.md).
 
 created by stokonn with love <3
 

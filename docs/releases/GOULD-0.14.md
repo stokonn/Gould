@@ -17,6 +17,8 @@ The branch retains package/namespace `com.opus.piano`, database `opus.db`, Room 
 
 Development version is code 16 / `0.14.0-dev`, with minSdk 30 and compile/target SDK 37. The published Gould 0.13 APK remains API 26+; these branch targets are not instructions to update an installed release.
 
+The Android 17 SDK is publicly available as the 37.0 preview platform. The quality workflow must install the SDK Manager package `platforms;android-37.0`; requesting `platforms;android-37` fails because that package ID is not published. AGP 9.1.1 supports API 37 with Gradle 9.3.1, Kotlin 2.2.10 and JDK 17. See the [official Android 17 SDK setup](https://developer.android.com/about/versions/17/setup-sdk) and [AGP 9.1 compatibility table](https://developer.android.com/build/releases/agp-9-1-0-release-notes).
+
 Raising minSdk to 30 means Android 8–10 devices on Gould 0.13 will not be eligible to install 0.14. Their local databases are not migrated or erased, but those users remain on their installed version. This compatibility effect must be prominent in eventual release installation guidance.
 
 ## Verification status at this checkpoint

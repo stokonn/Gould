@@ -6,6 +6,10 @@
 
 The 0.14 development branch retains Ivory, Nocturne and system theme selection. Discover and the visible moderation/administration entry are temporarily hidden while their source and routes remain preserved. Their future reactivation requires separate issue review and regression validation; no specific currently reproducible moderation defect is asserted by these notes.
 
+> **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
+
+This guide describes the current 0.13 settings and retained backup compatibility.
+
 
 Ivory/Nocturne appearance, English/Czech, font scaling and existing appearance preferences are retained. Online catalogue search remains default-off until enabled in Settings; downloaded media and offline bundles retain their separate network and storage controls.
 
