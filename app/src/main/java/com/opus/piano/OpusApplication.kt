@@ -99,6 +99,7 @@ class OpusApplication : Application() {
     val metronome by lazy { com.opus.piano.audio.MetronomeController(this) }
     val recording by lazy { com.opus.piano.audio.RecordingController(LocalRecordingRepository(database, java.io.File(filesDir,"recordings"))) }
     val achievements by lazy { AchievementStore(database) }
+    val activityRepository by lazy { ActivityRepository(database) }
     val recordings by lazy { RecordingRepository(database) }
     val repository by lazy { OpusRepository(database, achievements) }
     val catalogRepository by lazy { CatalogRepository(database, filesDir, achievements = achievements, mediaAllowed = { media.allowed() }) }

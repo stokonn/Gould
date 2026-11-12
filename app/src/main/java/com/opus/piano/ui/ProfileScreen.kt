@@ -33,8 +33,10 @@ import kotlinx.coroutines.withContext
 import java.time.*
 
 @OptIn(ExperimentalLayoutApi::class)
-@Composable internal fun ProfileScreen(state: LibraryState, badges: List<BadgeProgress>, profile: ProfileViewModel, settingsAction: () -> Unit, allBadges: () -> Unit, history: () -> Unit, badgeDetail: (String) -> Unit, administration: (() -> Unit)? = null) {
+@Composable internal fun ProfileScreen(state: LibraryState, badges: List<BadgeProgress>, profile: ProfileViewModel, settingsAction: () -> Unit, allBadges: () -> Unit, history: () -> Unit, badgeDetail: (String) -> Unit, administration: (() -> Unit)? = null, customizeCosmetics: (() -> Unit)? = null, activity: ActivityViewModel? = null) {
     val settings by profile.settings.collectAsStateWithLifecycle()
+    val cosmeticState by activity?.state?.collectAsStateWithLifecycle() ?: remember { mutableStateOf(ActivityUiState()) }
+    val equipped = cosmeticState.loadout.associate { it.category to ActivityCosmetics.byId[it.cosmeticId] }
     val busy by profile.busy.collectAsStateWithLifecycle()
     val googleAccount by profile.googleAccount.collectAsStateWithLifecycle()
     val context=androidx.compose.ui.platform.LocalContext.current
@@ -52,6 +54,16 @@ import java.time.*
             IconButton(onClick=allBadges) {Icon(Icons.Outlined.EmojiEvents,L.s(R.string.msg_badges_2c57),tint=MaterialTheme.colorScheme.primary)}
             IconButton(onClick=settingsAction) {Icon(Icons.Outlined.Settings,L.fixed("Settings"),tint=MaterialTheme.colorScheme.primary)}
         })
+        customizeCosmetics?.let { action ->
+            Surface(onClick=action, shape=MaterialTheme.shapes.medium, color=MaterialTheme.colorScheme.surface,
+                border=androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha=.45f))) {
+                Row(Modifier.fillMaxWidth().heightIn(min=52.dp).padding(horizontal=14.dp, vertical=10.dp), verticalAlignment=Alignment.CenterVertically, horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+                    Icon(Icons.Outlined.CollectionsBookmark, null, Modifier.size(20.dp), tint=MaterialTheme.colorScheme.primary)
+                    Text(L.s(R.string.activity_collection), style=MaterialTheme.typography.titleMedium, modifier=Modifier.weight(1f))
+                    Icon(Icons.Outlined.ChevronRight, null, Modifier.size(20.dp), tint=MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
+        }
         // Stage 7B: role-gated Administration entry (convenience only; server enforces).
         if (administration != null) {
             Surface(
@@ -74,9 +86,13 @@ import java.time.*
         JournalCard(padding=PaddingValues(10.dp)) {
             Row(Modifier.padding(top=2.dp,bottom=4.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(16.dp)) {
                 Box {
-                    Surface(onClick=profile::beginProfileEdit,modifier=Modifier.size(104.dp),shape=CircleShape,color=MaterialTheme.colorScheme.primary.copy(alpha=.1f),border=androidx.compose.foundation.BorderStroke(2.dp,MaterialTheme.colorScheme.primary.copy(alpha=.35f))) {
+                    equipped["BACKGROUND"]?.let { Box(Modifier.size(112.dp).align(Alignment.Center).then(Modifier), contentAlignment=Alignment.Center) {
+                        Surface(Modifier.fillMaxSize(), shape=CircleShape, color=androidx.compose.ui.graphics.Color(it.color.toInt()).copy(alpha=.28f)) {}
+                    } }
+                    Surface(onClick=profile::beginProfileEdit,modifier=Modifier.size(104.dp),shape=CircleShape,color=MaterialTheme.colorScheme.primary.copy(alpha=.1f),border=androidx.compose.foundation.BorderStroke(3.dp,equipped["FRAME"]?.let { androidx.compose.ui.graphics.Color(it.color.toInt()) } ?: MaterialTheme.colorScheme.primary.copy(alpha=.35f))) {
                         if(avatar!=null) Image(avatar!!.asImageBitmap(),L.s(R.string.msg_profile_avatar_1671),contentScale=ContentScale.Crop)
-                        else Icon(Icons.Outlined.Person,L.s(R.string.msg_default_avatar_400b),Modifier.padding(24.dp),tint=MaterialTheme.colorScheme.primary)
+                        else equipped["AVATAR"]?.let { Text(if(it.id.contains("golden")) "𝄞" else "♫", style=MaterialTheme.typography.headlineLarge, color=androidx.compose.ui.graphics.Color(it.color.toInt()), modifier=Modifier.fillMaxSize().wrapContentSize(Alignment.Center)) }
+                            ?: Icon(Icons.Outlined.Person,L.s(R.string.msg_default_avatar_400b),Modifier.padding(24.dp),tint=MaterialTheme.colorScheme.primary)
                     }
                     IconButton(onClick=profile::beginProfileEdit,modifier=Modifier.align(Alignment.BottomEnd).size(48.dp)) {Surface(shape=CircleShape,color=MaterialTheme.colorScheme.surfaceVariant) {Icon(Icons.Outlined.Edit,L.s(R.string.msg_edit_profile_cd28),Modifier.size(32.dp).padding(7.dp))}}
                 }
