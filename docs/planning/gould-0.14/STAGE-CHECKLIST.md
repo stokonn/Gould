@@ -34,7 +34,7 @@ Scope: shared-ready domain rules; Android/Room persistence and backup; Activity 
 - [x] Complete API 37/minSdk 30 compatibility assessment and changes.
 - [x] Update user/developer/release documentation; emulator screenshots remain pending.
 - [x] Run source-final host JVM, static migration/backup/localization, lint and instrumentation compilation checks.
-- [ ] Execute populated v11 migration/backup/repository instrumentation and Activity UI acceptance on a disposable emulator.
+- [ ] Execute populated v11 migration/backup/repository instrumentation and Activity UI acceptance on a disposable Android 17/API 37.0 emulator (dispatch-only workflow updated; run pending).
 - [ ] Verify release artifact identity, signature, upgrade safety, and CI.
 
 ### Phase 5 — GitHub integration and prerelease
