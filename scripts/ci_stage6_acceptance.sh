@@ -16,7 +16,7 @@ trap 'adb -s "$SERIAL" logcat -d > stage5-ci-results/logcat.txt 2>/dev/null || t
 python3 scripts/verify_emulator_upgrade.py \
   --serial "$SERIAL" \
   --baseline baseline-src/app/build/outputs/apk/debug/app-debug.apk \
-  --baseline-version 0.10.1 --baseline-schema 8 --expected-schema 11 \
+  --baseline-version 0.10.1 --baseline-schema 8 --expected-schema 12 \
   --candidate app/build/outputs/apk/debug/app-debug.apk \
   --output stage5-ci-results/upgrade \
   --seed-disposable --offline --startup-runs 5
