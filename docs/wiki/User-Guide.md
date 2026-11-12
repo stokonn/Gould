@@ -1,6 +1,14 @@
 # User Guide — Gould
 
-> Gould 0.12 documentation — [Gould 0.12 Stable](https://github.com/stokonn/Gould/releases/tag/v0.12) is the latest published release. Sections describing 0.12 behavior now document the shipped application; historical sections below retain their original evidence.
+> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
+
+> **0.14 development note — unreleased:** The Activity destination replaces Discover in the development build. Its annual heatmap groups days into Training, Day Off and Miss; tapping a day shows its date, workout count and exercise minutes. Week Overview reports sessions and optional minutes progress. These development features are not in the published 0.13 APK. Discover code remains in the app but its navigation entry is hidden.
+
+Activity's manual entries are local records separate from practice-session and microphone-detection evidence. They can be added through yesterday within Gould Activity history and deleted with confirmation. They count as one workout and their entered duration contributes to Activity progress. They do not rewrite the historical practice journal or assert microphone verification. Existing practice statistics retain their existing meaning.
+
+Weekly session goals determine weekly streak success. Goal changes take effect the following Monday. The first partial week after Activity is initialized is a non-streak Beta Week; a Monday start is a normal week. Inactive dates use the weekly Day Off allowance, assigned chronologically; remaining inactive dates are Miss. A Miss does not itself fail the weekly streak. Optional weekly minutes can grant a cosmetic and never affect the streak. One automatic Freeze is available initially, capped at three, and historical outcomes are recomputed from the activity record.
+
+Year navigation shows historical dates and hides future dates. Activity uses local calendar dates and records a time-zone identifier per observed week; existing practice session dates are not rewritten. Correcting manual history recomputes progression. A cosmetic already granted remains owned after a later correction.
 
 
 Use Library for your personal repertoire and the shared local catalogue, and Discover to explore sourced music records. Both tabs open the same canonical catalogue details. Public catalogue rows are labelled separately from music saved in your repertoire; open details to add an eligible work or open its existing repertoire entry.

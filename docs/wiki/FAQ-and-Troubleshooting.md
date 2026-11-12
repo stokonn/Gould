@@ -1,6 +1,16 @@
 # FAQ & Troubleshooting — Gould
 
-> Gould 0.12 documentation — [Gould 0.12 Stable](https://github.com/stokonn/Gould/releases/tag/v0.12) is the latest published release. Sections describing 0.12 behavior now document the shipped application; historical sections below retain their original evidence.
+## Gould 0.14 development status
+
+Gould 0.14 is not released. The latest published app remains Gould 0.13. On the development branch, the first partial Activity week is Beta Week and is excluded from streak evaluation; starting on Monday makes that a normal week. A daily Miss is not by itself a failed weekly goal. A Freeze protects a missed weekly session goal automatically; it does not protect or respond to a missed optional minutes goal.
+
+Manual Activity is a separate local record, not a historical practice session and not microphone-verified activity. It cannot be entered for today or a future date, and deletion requires confirmation. Existing practice journal dates and microphone-related achievements are not fabricated or rewritten.
+
+If a cosmetic pool has no unowned items, a successful eligible reward week is recorded as collection complete without issuing a duplicate. A cosmetic that was already granted remains owned if later historical edits change the week's calculations.
+
+Discover and the visible administration entry are hidden only in the 0.14 development build. Their code is preserved. The exact historical Discover screenshot issue and any moderation defect have not been reproduced as part of this branch; reactivation needs source review and focused regression tests.
+
+> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
 
 
 **Does my journal upload?** No. Practice, notes, drafts/recovery and backups remain local. Online provider queries process their necessary network metadata; the catalogue backend has no journal-upload endpoint.

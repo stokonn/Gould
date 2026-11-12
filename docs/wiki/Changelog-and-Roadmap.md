@@ -1,6 +1,6 @@
 # Gould 0.12 — development
 
-> Gould 0.12 documentation — [Gould 0.12 Stable](https://github.com/stokonn/Gould/releases/tag/v0.12) is the latest published release. Sections describing 0.12 behavior now document the shipped application; historical sections below retain their original evidence.
+> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
 
 Implemented: explicit local WAV recording and recovery/media archive controls; Studio metronome, durable queue/Undo/notes; Previous history/recordings and local playback; centered Profile and persistent editor drafts; six evidence-based badges and durable notices; both adaptive launcher widgets; corrected original ASCII Tux and subtle local Home landscape. Full acceptance and Stable publication remain pending.
 
@@ -52,6 +52,12 @@ Duplicate Settings TalkBack focus stops, large-font bottom-tab truncation and sc
 created by stokonn with love <3
 
 # Changelog & Roadmap
+
+## Gould 0.14 — in development, not released
+
+The active 0.14 development branch adds a deterministic weekly Activity model, a yearly heatmap, retrospective manual records, historical weekly goals, Beta Week, automatic Streak Freeze and durable cosmetic rewards. It retains Room, introduces an additive personal database migration, and adds a shared-ready Kotlin domain module. Discover and visible moderation/admin navigation are hidden temporarily while implementations remain preserved. API 37/minSdk 30 changes and the final migration, emulator, release-signing and upgrade gates are still under verification. See [the draft release and verification status](../releases/GOULD-0.14.md).
+
+The latest published release remains [Gould 0.13](https://github.com/stokonn/Gould/releases/tag/v0.13). No 0.14 tag, merge or release is represented here as completed.
 
 **[0.10.1 — Final Redesign Polish](https://github.com/stokonn/Gould/releases/tag/v0.10.1)** refines the unified Library, saved completion/notes, Profile, About, Tux and compact previews. Package/signing identity, schema 8 and format 4 remain unchanged. See [verification](Verification-0.10.1).
 

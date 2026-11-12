@@ -1,11 +1,11 @@
 # Getting Started — Gould
 
-> Gould 0.12 documentation — [Gould 0.12 Stable](https://github.com/stokonn/Gould/releases/tag/v0.12) is the latest published release. Sections describing 0.12 behavior now document the shipped application; historical sections below retain their original evidence.
+> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
 
 
-Download the signed APK from the [0.11 Stable release](https://github.com/stokonn/Gould/releases/tag/v0.11). Android 8.0 or later is required. Install over your existing Goldberg app; preserve a portable backup first. Never uninstall to bypass a signature error.
+Download the signed APK from the [Gould 0.13 pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13). Android 8.0 or later is required. Install over your existing Goldberg app; preserve a portable backup first. Never uninstall to bypass a signature error.
 
-Practice and your saved repertoire work offline. Library and Discover share catalogue entries and their source details. Enable optional automatic online catalogue search in Settings if you want provider searches. Keep media/download consent and mobile-data settings appropriate for your connection. Google profile identity does not synchronize your practice journal.
+Practice and your saved repertoire work offline. Gould 0.13 includes Home, Library, Discover, Studio and Profile functionality. Enable optional automatic online catalogue search in Settings if you want provider searches. Keep media/download consent and mobile-data settings appropriate for your connection. Google profile identity does not synchronize your practice journal.
 
 created by stokonn with love <3
 

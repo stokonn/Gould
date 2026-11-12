@@ -1,6 +1,10 @@
 # Settings & Customization — Gould
 
-> Gould 0.12 documentation — [Gould 0.12 Stable](https://github.com/stokonn/Gould/releases/tag/v0.12) is the latest published release. Sections describing 0.12 behavior now document the shipped application; historical sections below retain their original evidence.
+> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
+
+> **0.14 development note — unreleased:** Customize Profile includes development cosmetics for avatars, frames, backgrounds, heatmaps and graphs. Owned items can be equipped; locked items show rarity and unlock information. The weekly optional minutes goal can grant one automatically saved cosmetic per eligible week. Repeated evaluation does not grant duplicates; if the catalog is exhausted, no cosmetic is issued. These changes are not available in the published 0.13 APK.
+
+The 0.14 development branch retains Ivory, Nocturne and system theme selection. Discover and the visible moderation/administration entry are temporarily hidden while their source and routes remain preserved. Their future reactivation requires separate issue review and regression validation; no specific currently reproducible moderation defect is asserted by these notes.
 
 
 Ivory/Nocturne appearance, English/Czech, font scaling and existing appearance preferences are retained. Online catalogue search remains default-off until enabled in Settings; downloaded media and offline bundles retain their separate network and storage controls.
