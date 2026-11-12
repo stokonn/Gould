@@ -1,6 +1,16 @@
 # Developer Guide — Gould
 
-> Gould 0.12 documentation — [Gould 0.12 Stable](https://github.com/stokonn/Gould/releases/tag/v0.12) is the latest published release. Sections describing 0.12 behavior now document the shipped application; historical sections below retain their original evidence.
+> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
+
+## Gould 0.14 development branch — unreleased
+
+The branch adds `:activity-domain`, a Kotlin Multiplatform module with `commonMain` rules and a JVM target. Calendar identity and deterministic weekly projections are platform-free; Room, Android date pickers, Compose, ViewModels and lifecycle remain in `:app`. This prepares a possible later KMP boundary but does not create an iOS app. Rust was not introduced: current progression logic is small deterministic Kotlin and no measured CPU-bound hotspot justifies JNI/ABI/build maintenance.
+
+The personal database remains `opus.db`, Room schema 12, with additive migration 11→12. Backup format 7 uses journal schema 12, retains readers for prior formats 1–6, validates through isolated Room, and merges Activity ownership/records without replacing the personal journal. Manual Activity is a separate source from `PracticeSession`; do not infer microphone verification or rewrite historic practice dates. Activity progression is recalculated chronologically; cosmetic ownership and per-week grant records are durable and idempotent.
+
+Development toolchain: AGP 9.1.1, Gradle wrapper 9.3.1, Kotlin 2.2.10, JVM 17, minSdk 30, compile/target SDK 37, versionCode 16 and `0.14.0-dev`. API 37 is required by this branch's current configuration, but native API 37 execution and final release-signing/upgrade gates remain pending. Read [`docs/releases/GOULD-0.14.md`](../releases/GOULD-0.14.md) and [`docs/planning/gould-0.14/STAGE-CHECKLIST.md`](../planning/gould-0.14/STAGE-CHECKLIST.md) for verified scope and limitations.
+
+Migration and backup checks are not complete on schema-shape inspection alone: run populated v11 migration and backup restore instrumentation on an identified disposable emulator. Instrumentation compilation must not be reported as execution. Never target the owner's phone.
 
 
 The application remains native Kotlin/Compose/Material3 with application ID com.opus.piano. Personal Room schema11 in opus.db is authoritative; catalogue schema1 is separate and disposable. Additive migration10→11 adds local audio/associations, achievement events and durable unlock notices. Backup format6 retains readers1–5; optional media archives validate byte hashes and paths separately. Database Simplifier changes catalogue reads and idempotent local compatibility import, without destructive migration or personal-row replacement.

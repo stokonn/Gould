@@ -1,19 +1,17 @@
 # Gould
 
-> Gould 0.12 documentation — [Gould 0.12 Stable](https://github.com/stokonn/Gould/releases/tag/v0.12) is the latest published release. Sections describing 0.12 behavior now document the shipped application; historical sections below retain their original evidence.
+> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
 
 
-Goldberg is a native Android practice journal with a shared music catalogue in Discover and Library, sourced encyclopedia details, offline bundles and Smart Cache. Your repertoire, practice history, drafts and backups stay local.
+Gould is a local-first Android piano practice journal with repertoire, practice history, drafts, profile and backups kept on device unless you choose to export them. Gould 0.13 is the latest published pre-release.
 
-[Download Goldberg 0.11 Stable](https://github.com/stokonn/Gould/releases/tag/v0.11) · [Release notes and verified limits](https://github.com/stokonn/Gould/blob/main/docs/releases/GOLDBERG-0.11.md).
+[Download Gould 0.13 pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13) · [Release notes and verified limits](https://github.com/stokonn/Gould/blob/main/docs/releases/GOULD-0.13.md).
 
 Use [Getting Started](Getting-Started), [User Guide](User-Guide), [Settings & Customization](Settings-and-Customization), [Developer Guide](Developer-Guide), [FAQ & Troubleshooting](FAQ-and-Troubleshooting), [Changelog & Roadmap](Changelog-and-Roadmap) and [Credits & Licenses](Credits-and-Licenses).
 
-The public catalogue API allows reads and currently has no published records. Backend OAuth, community writes and practice uploads remain disabled. Optional provider search is separate and requires the app's online-search consent.
+Optional online catalogue-provider searches require explicit consent. Backend OAuth, community writes and practice uploads remain disabled. Gould 0.14 Activity and weekly progression are under development and are not present in the published 0.13 app.
 
-![Goldberg 0.11 catalogue detail](images/goldberg-0.11-catalogue-detail.png)
-
-Verified API36 emulator render from a7bb2aa; recorded provider fixture, not physical-device or live-provider evidence.
+See the [Gould 0.13 guide screenshots](images/gould-0.13/CAPTURE-EVIDENCE.md) for verified emulator captures. They are not physical-device evidence.
 
 created by stokonn with love <3
 
