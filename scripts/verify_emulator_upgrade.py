@@ -216,7 +216,28 @@ for table,original in before.items():
         assert all(row in original or row[0] in allowed_new_badges for row in incoming), 'Unexpected new badge'
     else:
         assert original==incoming, 'Persistent data changed: '+table
-assert set(before)==set(after), 'Unexpected critical table loss/addition'
+schema12_activity_tables = {
+    'activity_reward_grants', 'activity_settings', 'activity_weekly_goals',
+    'activity_weeks', 'cosmetic_loadout', 'cosmetic_ownership',
+    'manual_activity_entries',
+}
+expected_additive_tables = set()
+if a.expected_schema >= 9:
+    expected_additive_tables.update({
+        'personal_catalogue_anchors', 'personal_catalogue_identities',
+        'personal_catalogue_state',
+    })
+if a.expected_schema >= 11:
+    expected_additive_tables.add('badge_notices')
+if a.expected_schema >= 12:
+    expected_additive_tables.update(schema12_activity_tables)
+removed_tables = set(before) - set(after)
+added_tables = set(after) - set(before)
+assert not removed_tables, f'Critical table loss: {sorted(removed_tables)}'
+assert added_tables == expected_additive_tables, (
+    f'Unexpected additive migration tables; expected {sorted(expected_additive_tables)}, '
+    f'found {sorted(added_tables)}'
+)
 
 _, final_db = snapshot('validated')
 assert final_db.execute('PRAGMA user_version').fetchone()[0] == a.expected_schema
@@ -225,6 +246,11 @@ assert final_db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
 if a.expected_schema>=11:
     for table in ('local_audio','local_audio_parts','achievement_events'):
         assert final_db.execute(f'SELECT count(*) FROM {table}').fetchone()[0]==0, 'Upgrade manufactured audio/events'
+if a.expected_schema>=12:
+    for table in sorted(schema12_activity_tables):
+        assert final_db.execute(
+            "SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,)
+        ).fetchone(), f'Missing additive schema-12 table: {table}'
 
 bridge = None
 if a.expected_schema >= 9:
@@ -241,6 +267,7 @@ result = {'baselineVersion': a.baseline_version, 'publishedTrustedBaseline': a.r
           'baselineApkSha256': hashlib.sha256(a.baseline.read_bytes()).hexdigest(),
           'candidateApkSha256': hashlib.sha256(a.candidate.read_bytes()).hexdigest(),
           'serial': a.serial, 'originalRowsUnchanged': True, 'preferencesUnchanged': True,
+          'additiveTables': sorted(added_tables),
           'bridge': bridge, 'sessions': len(before['sessions']), 'foreignKeys': 'pass',
           'startupTotalTimeMs': {'baseline': baseline_startup, 'candidate': candidate_startup, 'caveat': 'Small emulator samples; cold process after initialization, not install/start-to-usable or device guarantee'}}
 (a.output/'result.json').write_text(json.dumps(result,indent=2)+'\n')

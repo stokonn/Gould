@@ -131,7 +131,9 @@ jobs:
           profile: pixel_6
           avd-name: stage5-ci
           disable-animations: true
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+          # API37 swiftshader_indirect has repeatedly crashed graphics/system_server
+          # on hosted runners. swangle is the previously accepted software ANGLE path.
+          emulator-options: -no-window -gpu swangle -noaudio -no-boot-anim -camera-back none -no-snapshot
           script: bash scripts/ci_android_instrumentation.sh
       - name: Summarize instrumentation results
         if: always()
