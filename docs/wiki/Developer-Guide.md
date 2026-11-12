@@ -12,6 +12,8 @@ Development toolchain: AGP 9.1.1, Gradle wrapper 9.3.1, Kotlin 2.2.10, JVM 17, m
 
 Migration and backup checks are not complete on schema-shape inspection alone: run populated v11 migration and backup restore instrumentation on an identified disposable emulator. Instrumentation compilation must not be reported as execution. Never target the owner's phone.
 
+> **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
+
 
 The application remains native Kotlin/Compose/Material3 with application ID com.opus.piano. Personal Room schema11 in opus.db is authoritative; catalogue schema1 is separate and disposable. Additive migration10→11 adds local audio/associations, achievement events and durable unlock notices. Backup format6 retains readers1–5; optional media archives validate byte hashes and paths separately. Database Simplifier changes catalogue reads and idempotent local compatibility import, without destructive migration or personal-row replacement.
 

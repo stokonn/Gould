@@ -1,11 +1,20 @@
 # Getting Started — Gould
 
-> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
+> **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
 
+> Gould 0.14 remains in development and is not included in the published 0.13 APK.
 
-Download the signed APK from the [Gould 0.13 pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13). Android 8.0 or later is required. Install over your existing Goldberg app; preserve a portable backup first. Never uninstall to bypass a signature error.
+Download the latest signed APK from [Gould 0.13 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13). **Android 8.0 or later** is required.
 
 Practice and your saved repertoire work offline. Gould 0.13 includes Home, Library, Discover, Studio and Profile functionality. Enable optional automatic online catalogue search in Settings if you want provider searches. Keep media/download consent and mobile-data settings appropriate for your connection. Google profile identity does not synchronize your practice journal.
+
+Before updating, export a portable backup from **Settings → Data & Storage** and keep a copy outside app-private storage. Install over the existing compatible app; the application ID is still `com.opus.piano`. Never uninstall to bypass a signing or version mismatch.
+
+Add works in Library, explore sources in Discover, then open Studio/Practice and explicitly start a session. Manual practice works offline. Smart Practice is optional and experimental and requests microphone permission when enabled. Continuous audio recording requires its own explicit Record action. Recovery never starts capture automatically.
+
+Profile identity is optional; Google sign-in does not back up or synchronize your journal. Online provider search is optional and subject to Settings consent. Export JSON and any audio media ZIP separately when you need a transferable backup.
+
+[Home](Home) · [User Guide](User-Guide) · [Settings](Settings-and-Customization) · [FAQ](FAQ-and-Troubleshooting)
 
 created by stokonn with love <3
 

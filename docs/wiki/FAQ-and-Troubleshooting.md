@@ -10,7 +10,11 @@ If a cosmetic pool has no unowned items, a successful eligible reward week is re
 
 Discover and the visible administration entry are hidden only in the 0.14 development build. Their code is preserved. The exact historical Discover screenshot issue and any moderation defect have not been reproduced as part of this branch; reactivation needs source review and focused regression tests.
 
-> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
+> **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
+
+> Gould 0.14 remains in development and is not included in the published 0.13 APK.
+
+**Where can I install the current release?** Download [Gould 0.13 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13). Android 8.0+ is required.
 
 
 **Does my journal upload?** No. Practice, notes, drafts/recovery and backups remain local. Online provider queries process their necessary network metadata; the catalogue backend has no journal-upload endpoint.
@@ -19,7 +23,7 @@ Discover and the visible administration entry are hidden only in the 0.14 develo
 
 **Why are older metadata rights unknown?** A retained local snapshot is not new publication evidence. The original cache and personal records are preserved. Check Sources & credits or refresh through an approved provider when permitted.
 
-**Can I replace the app to fix a signature error?** Preserve your data and contact support; do not uninstall to bypass it. The 0.11 APK uses the existing trusted certificate. Send minimal support details to stokonn.us@gmail.com, never credentials or an entire journal by default.
+**Can I replace the app to fix a signature error?** Preserve your data and contact support; do not uninstall to bypass it. The current 0.13 release retains the compatible signing identity. Send minimal support details to stokonn.us@gmail.com, never credentials or an entire journal by default.
 
 **Why is a recording missing after a JSON-only restore?** JSON carries its metadata. Transfer the separately exported media archive to restore its actual bytes. A missing file is shown as unavailable; it is not silently recreated.
 
