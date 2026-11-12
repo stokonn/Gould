@@ -25,6 +25,7 @@ class BackupRepository(
         val tables=HistoricalBackup.tables
         val journalTables=tables.filterNot {it in setOf("catalog_cache","practice_recovery_archives")}
         val identityTables=listOf("personal_catalogue_identities","personal_catalogue_anchors","personal_catalogue_state")
+        val activityTables=listOf("activity_settings","activity_weekly_goals","activity_weeks","manual_activity_entries","cosmetic_ownership","activity_reward_grants","cosmetic_loadout")
         private val gate=Mutex()
     }
     private val directory get()=storageDirectory
@@ -67,7 +68,7 @@ class BackupRepository(
         val budget=Budget()
         val local=db.practiceDao().localNow() ?: LocalAppState()
         fun section(data:JSONObject)=JSONObject().put("version",1).put("data",data).put("sha256",BackupJson.hash(data))
-        val root=JSONObject().put("format","goldberg-backup").put("version",6).put("journalSchema",11).put("createdAt",System.currentTimeMillis())
+        val root=JSONObject().put("format","goldberg-backup").put("version",7).put("journalSchema",12).put("createdAt",System.currentTimeMillis())
         val journal=JSONObject();journalTables.forEach {journal.put(it,rows(it,budget))}
         val identities=JSONObject();identityTables.forEach {identities.put(it,rows(it,budget))}
         val pending=db.backupStateDao().state()?.takeIf{it.status=="pending"}
@@ -76,6 +77,8 @@ class BackupRepository(
         root.put("sections",JSONObject().put("journal",section(journal)).put("identities",section(identities)).put("preferences",section(settings))
             .put("recovery",section(JSONObject().put("drafts",rawRows("practice_drafts",budget)).put("archives",rawRows("practice_recovery_archives",budget)).put("evidence",evidenceRows(budget)).put("completions",rows("practice_completion_evidence",budget)))))
         root.getJSONObject("sections").put("studio",section(StudioBackup.document {rows(it,budget)}))
+        val activity=JSONObject();activityTables.forEach {activity.put(it,rows(it,budget))}
+        root.getJSONObject("sections").put("activity",section(activity))
         root.put("sha256",BackupJson.hash(root));root
     }
     suspend fun export():String=withContext(Dispatchers.IO) {
@@ -87,10 +90,10 @@ class BackupRepository(
     suspend fun receive(input:java.io.InputStream):File=withContext(Dispatchers.IO){files.receive(File(directory,"input-${UUID.randomUUID()}.json"),input)}
     private fun sections(root:JSONObject):Map<String,JSONObject> {
         BackupJson.keys(root,setOf("format","version","journalSchema","createdAt","sections","sha256"))
-        require(root.getString("format")=="goldberg-backup" && ((root.integer("version")==5L && root.integer("journalSchema")==10L) || (root.integer("version")==6L && root.integer("journalSchema")==11L)) && root.integer("createdAt")>0)
+        require(root.getString("format")=="goldberg-backup" && ((root.integer("version")==5L && root.integer("journalSchema")==10L) || (root.integer("version")==6L && root.integer("journalSchema")==11L) || (root.integer("version")==7L && root.integer("journalSchema")==12L)) && root.integer("createdAt")>0)
         val expected=root.getString("sha256");root.remove("sha256")
         try {require(BackupJson.hash(root)==expected){"Backup integrity mismatch"}} finally {root.put("sha256",expected)}
-        val sections=root.getJSONObject("sections");BackupJson.keys(sections,setOf("journal","identities","preferences","recovery") + if(root.integer("version")==6L)setOf("studio") else emptySet())
+        val sections=root.getJSONObject("sections");BackupJson.keys(sections,setOf("journal","identities","preferences","recovery") + (if(root.integer("version")>=6L)setOf("studio") else emptySet()) + (if(root.integer("version")==7L)setOf("activity") else emptySet()))
         return sections.keys().asSequence().associateWith {key->
             val section=sections.getJSONObject(key);BackupJson.keys(section,setOf("version","sha256","data"));require(section.integer("version")==1L)
             section.getJSONObject("data").also {require(BackupJson.hash(it)==section.getString("sha256")){"Backup section integrity mismatch"}}
@@ -102,15 +105,41 @@ class BackupRepository(
         require(Base64.encodeToString(decoded,Base64.NO_WRAP)==encoded && BackupState.sha(decoded)==row.getString("sha256")){"Recovery byte integrity mismatch"}
         require(row.integer("updatedAt")>=0);return decoded
     }
-    private fun insertRows(target:OpusDatabase,table:String,array:JSONArray) {
+    private fun insertRows(target:OpusDatabase,table:String,array:JSONArray,ignore:Boolean=false) {
         val sql=target.openHelper.writableDatabase
         val columns=sql.query("PRAGMA table_info(`$table`)").use {c->buildList {while(c.moveToNext())add(Triple(c.getString(1),c.getString(2),c.getInt(3)==1))}}
         require(array.length()<=100000)
         for(i in 0 until array.length()) {
             val row=array.getJSONObject(i);BackupJson.keys(row,columns.map{it.first}.toSet())
             val values=columns.map<Triple<String,String,Boolean>,Any?> {(key,type,required)->val v=row.get(key);when {v===JSONObject.NULL->{require(!required);null};type=="INTEGER"->{require(v is Long || v is Int);(v as Number).toLong()};else->{require(v is String);v}}}.toTypedArray()
-            sql.execSQL("INSERT INTO `$table` (${columns.joinToString {"`${it.first}`"}}) VALUES (${columns.joinToString {"?"}})",values)
+            sql.execSQL("INSERT ${if(ignore)"OR IGNORE " else ""}INTO `$table` (${columns.joinToString {"`${it.first}`"}}) VALUES (${columns.joinToString {"?"}})",values)
         }
+    }
+    private suspend fun validateActivityRows(target:OpusDatabase) {
+        fun date(value:String):java.time.LocalDate = java.time.LocalDate.parse(value).also { require(it.toString()==value) }
+        fun zone(value:String) { require(java.time.ZoneId.of(value).id==value) }
+        val dao=target.activityDao()
+        val settings=dao.settings()
+        require(settings==null || settings.id==1)
+        settings?.let { date(it.firstUseDay);zone(it.firstUseZoneId) }
+        dao.allGoals().forEach { goal ->
+            require(date(goal.effectiveMonday).dayOfWeek==java.time.DayOfWeek.MONDAY)
+            require(goal.requiredSessions in 1..7 && (goal.minutesGoal==null || goal.minutesGoal>0))
+        }
+        dao.weeks().forEach { week -> require(date(week.monday).dayOfWeek==java.time.DayOfWeek.MONDAY && week.firstObservedAt>0);zone(week.zoneId) }
+        dao.allManualEntries().forEach { entry ->
+            require(java.util.UUID.fromString(entry.id).toString()==entry.id)
+            date(entry.activityDay);zone(entry.zoneId)
+            require(entry.durationMillis in 60_000L..86_400_000L && entry.durationMillis%60_000L==0L && entry.createdAt>0)
+        }
+        val owned=dao.allOwnedCosmetics().associateBy { it.cosmeticId }
+        require(owned.values.all { it.cosmeticId in ActivityCosmetics.byId && it.earnedAt>0 && (it.sourceWeekMonday==null || date(it.sourceWeekMonday).dayOfWeek==java.time.DayOfWeek.MONDAY) })
+        dao.grants().forEach { grant ->
+            require(date(grant.weekMonday).dayOfWeek==java.time.DayOfWeek.MONDAY && grant.grantedAt>0 && grant.acknowledgedAt>=0)
+            if(grant.result=="COSMETIC") require(grant.cosmeticId?.let(owned::get)?.sourceWeekMonday==grant.weekMonday)
+            else require(grant.result=="COLLECTION_COMPLETE" && grant.cosmeticId==null)
+        }
+        dao.allLoadout().forEach { equipped -> require(equipped.category in setOf("AVATAR","FRAME","BACKGROUND","HEATMAP","GRAPH") && equipped.cosmeticId in owned && ActivityCosmetics.byId[equipped.cosmeticId]?.category?.name==equipped.category) }
     }
     private fun insertRecovery(target:OpusDatabase,recovery:JSONObject,includeDraft:Boolean=true) {
         val sql=target.openHelper.writableDatabase
@@ -124,7 +153,7 @@ class BackupRepository(
         }
     }
     private suspend fun validate(root:JSONObject):String {
-        if(root.integer("version") !in setOf(5L,6L))return legacy.validate(root.toString())
+        if(root.integer("version") !in setOf(5L,6L,7L))return legacy.validate(root.toString())
         val s=sections(root);val settings=s.getValue("preferences")
         BackupJson.keys(settings,setOf("appearance","locale","previousMeteredConsent","local"))
         val portable=JSONObject(settings.toString()).apply{remove("local")};PortablePreferences.validate(portable)
@@ -149,6 +178,7 @@ class BackupRepository(
                 insertRows(stage,"practice_completion_evidence",recovery.getJSONArray("completions"))
                 insertRecovery(stage,recovery)
                 s["studio"]?.let {studio->val data=StudioBackup.tables(studio);StudioSchema.tables.forEach {table->insertRows(stage,table,data.getJSONArray(table))}}
+                s["activity"]?.let {activity->activityTables.forEach {table->insertRows(stage,table,activity.getJSONArray(table))};validateActivityRows(stage)}
             }
             if(s.containsKey("studio")) StudioBackup.validate(stage)
             val uuids=mutableSetOf<String>()
@@ -184,8 +214,8 @@ class BackupRepository(
         val previous=exportSnapshot();phase("destination_preserved")
         val source=files.publish(File(directory,"import-${BackupJson.hash(root)}.json"),root)
         val sourceHash=BackupJson.hash(root)
-        val isV5=root.integer("version") in setOf(5L,6L)
-        val sections=if(isV5)sections(root) else emptyMap()
+        val isStructured=root.integer("version") in setOf(5L,6L,7L)
+        val sections=if(isStructured)sections(root) else emptyMap()
         db.withTransaction {
             val sql=db.openHelper.writableDatabase
             val originalUnlocks=db.experienceDao().allUnlocks()
@@ -197,12 +227,18 @@ class BackupRepository(
             oldDraft?.let{BackupState.preserve(db,it.first,it.second,"destination:$oldScope","replaced_destination")}
             if(oldDraft!=null || oldArchives.length()>0 || oldIdentityContext.getJSONArray("personal_catalogue_identities").length()>0) BackupState.preserve(db,oldIdentityContext.toString().toByteArray(Charsets.UTF_8),0,"destination-context:$oldScope","identity_context")
             PersonalCatalogueBridge.suspendCapture(sql)
-            sql.execSQL("DELETE FROM personal_catalogue_anchors");if(isV5)sql.execSQL("DELETE FROM personal_catalogue_identities");sql.execSQL("DELETE FROM personal_catalogue_state")
+            sql.execSQL("DELETE FROM personal_catalogue_anchors");if(isStructured)sql.execSQL("DELETE FROM personal_catalogue_identities");sql.execSQL("DELETE FROM personal_catalogue_state")
             tables.asReversed().forEach {sql.execSQL("DELETE FROM `$it`")};sql.execSQL("DELETE FROM practice_drafts")
-            if(isV5) {
+            if(isStructured) {
                 val journal=JSONObject(sections.getValue("journal").toString()).put("catalog_cache",JSONArray()).put("practice_recovery_archives",JSONArray())
                 legacy.insert(db,journal)
                 for(table in identityTables)insertRows(db,table,sections.getValue("identities").getJSONArray(table))
+                sections["activity"]?.let { activity ->
+                    activityTables.forEach { table ->
+                        val values=activity.getJSONArray(table)
+                        for(index in 0 until values.length()) insertRows(db,table,JSONArray().put(values.getJSONObject(index)),ignore=true)
+                    }
+                }
                 val recovery=sections.getValue("recovery")
                 for(i in 0 until recovery.getJSONArray("completions").length()) {
                     val row=recovery.getJSONArray("completions").getJSONObject(i);db.backupStateDao().completed(CompletionEvidence(row.getString("token"),row.integer("durationMillis")))
@@ -229,7 +265,7 @@ class BackupRepository(
                 sql.execSQL("INSERT INTO personal_catalogue_state VALUES(1,?)",arrayOf(UUID.randomUUID().toString()))
             }
             db.experienceDao().unlock(originalUnlocks) // Permanent awards survive restoring an older journal.
-            if(root.integer("version")==6L) StudioBackup.merge(db,sections.getValue("studio"),audioDirectory)
+            if(root.integer("version")>=6L) StudioBackup.merge(db,sections.getValue("studio"),audioDirectory)
             // Old imported awards are history; an absent notice never means a fresh unlock.
             db.openHelper.writableDatabase.execSQL("INSERT OR IGNORE INTO badge_notices SELECT achievementId,unlockedAt,unlockedAt FROM badge_unlocks")
             // Destination archives remain alongside imported archives; retain original IDs in evidence.
