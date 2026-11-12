@@ -81,6 +81,13 @@ object MusicalColors {
     val terminal=Color(0xFF211323);val terminalInk=Color(0xFFFFAFD7)
 }
 
+/** Fixed semantic colors keep Activity states recognizable in both Ivory and Nocturne. */
+internal object ActivityColors {
+    val training = Color(0xFF4F8A62)
+    val dayOff = Color(0xFFB59C67)
+    val miss = Color(0xFFB65C63)
+}
+
 /** Stage 7B owner-approved dark admin surface. Keep app-wide Ivory/Nocturne and
  * typography preferences intact; admin headings use the selected sans family. */
 @Composable internal fun AdminTheme(content: @Composable () -> Unit) {

@@ -47,6 +47,9 @@ class MainActivity : androidx.appcompat.app.AppCompatActivity() {
                 initializer { ProfileViewModel(application, createSavedStateHandle()) }
             })
             val admin: com.opus.piano.ui.admin.AdminViewModel = viewModel()
+            val activity: ActivityViewModel = viewModel(factory = viewModelFactory {
+                initializer { ActivityViewModel((application as OpusApplication).activityRepository) }
+            })
             val settings by profile.settings.collectAsStateWithLifecycle()
             val appearance by (application as OpusApplication).appearance.state.collectAsStateWithLifecycle()
             OpusTheme(settings.theme, settings.typography, appearance) {
@@ -56,7 +59,7 @@ class MainActivity : androidx.appcompat.app.AppCompatActivity() {
                         isAppearanceLightStatusBars = light; isAppearanceLightNavigationBars = light
                     }
                 }
-                OpusApp(model, catalog, experience, profile, admin)
+                OpusApp(model, catalog, experience, profile, admin, activity)
             }
         }
     }

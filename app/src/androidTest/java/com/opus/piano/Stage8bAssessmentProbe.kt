@@ -119,7 +119,8 @@ class Stage8bAssessmentProbe : AndroidJUnitRunner() {
                     val catalog = CatalogViewModel(app.catalogRepository, SavedStateHandle())
                     val experience = ExperienceViewModel(app.achievements, app.recordings)
                     val admin = AdminViewModel(app, repository())
-                    for ((key,value) in listOf("profile" to profile,"model" to model,"catalog" to catalog,"experience" to experience,"admin" to admin)) {
+                    val activityViewModel = com.opus.piano.ui.ActivityViewModel(app.activityRepository)
+                    for ((key,value) in listOf("profile" to profile,"model" to model,"catalog" to catalog,"experience" to experience,"admin" to admin,"activity" to activityViewModel)) {
                         activity.viewModelStore.put("manual-$key",value)
                     }
                     activity.setContent {
@@ -137,7 +138,7 @@ class Stage8bAssessmentProbe : AndroidJUnitRunner() {
                                     }
                                 }
                             } else {
-                            OpusApp(model,catalog,experience,profile,admin)
+                            OpusApp(model,catalog,experience,profile,admin,activityViewModel)
                             }
                         }
                     }
