@@ -146,7 +146,10 @@ for table, rows in fixture.items():
         keys = list(row)
         db.execute(f'INSERT INTO {table} ({",".join(keys)}) VALUES ({",".join("?" for _ in keys)})', list(row.values()))
 db.execute("INSERT OR REPLACE INTO local_app_state VALUES(1,1,0,18,0,0,'')")
-db.execute("INSERT OR REPLACE INTO badge_notices (achievementId,unlockedAt,acknowledgedAt) SELECT achievementId,unlockedAt,unlockedAt FROM badge_unlocks")
+# Older baselines (such as schema 8) predate badge_notices; let the real
+# Room migrations create that table instead of inserting a future-schema row.
+if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='badge_notices'").fetchone():
+    db.execute("INSERT OR REPLACE INTO badge_notices (achievementId,unlockedAt,acknowledgedAt) SELECT achievementId,unlockedAt,unlockedAt FROM badge_unlocks")
 draft = dict(version=1, execution=1, token='upgrade-fixture-draft', start=1700000000000, credited=3000, elapsed=3000, detected=0, mode='Manual', smart=False, active=0, notes='Preserve unfinished notes', reflection='Preserve reflection', sensitivity=50, pause=5, status='Paused', quality='Complete', removed=[], intervals=[], parts=[dict(piece=1, title='Invention No. 1', composer='Johann Sebastian Bach', catalog=None, era='Baroque', duration=3000, notes='Preserve piece draft')])
 draft['intervals']=[dict(part=0,start=0,end=3000,credit=3000,reason='Manual')]
 db.execute('INSERT OR REPLACE INTO practice_drafts VALUES(1,?,123)', (json.dumps(draft),))

@@ -17,7 +17,12 @@ test "$(awk 'NR>1 && NF>=2 {count++} END {print count+0}' stage5-ci-results/adb-
   adb -s "$SERIAL" shell wm density
   adb -s "$SERIAL" shell settings get system font_scale
 } > stage5-ci-results/emulator-identity.txt
-test "$(adb -s "$SERIAL" shell getprop ro.build.version.sdk | tr -d '\r')" = 36
+EXPECTED_API_LEVEL="${CI_EXPECTED_API_LEVEL:-36}"
+ACTUAL_API_LEVEL="$(adb -s "$SERIAL" shell getprop ro.build.version.sdk | tr -d '\r')"
+test "$ACTUAL_API_LEVEL" = "$EXPECTED_API_LEVEL" || {
+  echo "Expected emulator API $EXPECTED_API_LEVEL, got $ACTUAL_API_LEVEL"
+  exit 1
+}
 collect() {
   # Instrumentation exports synthetic Admin renders before suite uninstall.
   adb -s "$SERIAL" pull /data/local/tmp/goldberg-discover stage5-ci-results/discover-evidence > stage5-ci-results/discover-evidence-pull.txt 2>&1 || true
