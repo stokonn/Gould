@@ -5,8 +5,8 @@ plugins {
 }
 android {
     namespace = "com.opus.piano"
-    compileSdk = 36
-    defaultConfig { applicationId = "com.opus.piano"; minSdk = 26; targetSdk = 36; versionCode = 15; versionName = if (providers.gradleProperty("goldbergStable").orNull == "true") "0.13" else "0.13-dev"; testInstrumentationRunner = if (providers.gradleProperty("goldbergStage8Probe").orNull == "true") "com.opus.piano.Stage8bAssessmentProbe" else "androidx.test.runner.AndroidJUnitRunner" }
+    compileSdk = 37
+    defaultConfig { applicationId = "com.opus.piano"; minSdk = 30; targetSdk = 37; versionCode = 16; versionName = if (providers.gradleProperty("goldbergStable").orNull == "true") "0.14.0" else "0.14.0-dev"; testInstrumentationRunner = if (providers.gradleProperty("goldbergStage8Probe").orNull == "true") "com.opus.piano.Stage8bAssessmentProbe" else "androidx.test.runner.AndroidJUnitRunner" }
     buildFeatures { compose = true }
     // Shared synthetic contract corpus is available to JVM tests only, never the APK.
     sourceSets.getByName("test").resources.srcDir("../contracts/admin/v1")
@@ -32,6 +32,7 @@ android {
 kotlin { compilerOptions { jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17) } }
 ksp { arg("room.schemaLocation", "$projectDir/schemas") }
 dependencies {
+    implementation(project(":activity-domain"))
     implementation("androidx.credentials:credentials:1.5.0")
     implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
     implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")

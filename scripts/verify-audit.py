@@ -38,7 +38,7 @@ def fingerprint(pathspecs):
 
 source_sha, source_files = fingerprint([
     "app/src/main", "app/schemas", "app/build.gradle.kts", "app/proguard-rules.pro",
-    "build.gradle.kts", "settings.gradle.kts", "gradle.properties", "gradle", "gradlew", "gradlew.bat",
+    "activity-domain", "build.gradle.kts", "settings.gradle.kts", "gradle.properties", "gradle", "gradlew", "gradlew.bat",
 ])
 tools_sha, _ = fingerprint([
     "scripts/verify-*.sh", "scripts/verify-audit.py", "scripts/gradle-lock.sh", "scripts/build-optimized-local.sh",
