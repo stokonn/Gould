@@ -35,7 +35,13 @@ class MediaBackupRepository(
         phase(state)
     }
     private fun rows(file:File):List<LocalAudio> {
-        val root=BackupJson.parse(file);require(root.integer("version")==6L)
+        val root=BackupJson.parse(file)
+        // export() always writes the current v7 snapshot; restore must also
+        // accept v6 media archives exported before 0.14 (v5 predates the studio
+        // section). Full format validation already ran in BackupRepository
+        // validate() for every restore path; this gate is the studio-section
+        // contract for the local_audio rows below.
+        require(root.integer("version") in setOf(6L,7L))
         val data=root.getJSONObject("sections").getJSONObject("studio").getJSONObject("data")
         val array=StudioBackup.tables(data).getJSONArray("local_audio")
         return (0 until array.length()).map {StudioBackup.audio(array.getJSONObject(it))}
