@@ -39,8 +39,15 @@ class ActivityRepositoryTest {
         assertEquals(1, summary.totals.sessions)
         assertEquals(25L, summary.totals.minutes)
         assertEquals(DayKind.TRAINING, summary.days.first { it.epochDay == day("2026-11-16").toEpochDay() }.kind)
+        // Upper bound: activity can only be added through yesterday.
         assertThrows(IllegalArgumentException::class.java) { runBlocking { repo.addManualActivity(day("2026-11-17"), 10, day("2026-11-17"), zone) } }
-        assertThrows(IllegalArgumentException::class.java) { runBlocking { repo.addManualActivity(day("2026-11-15"), 10, day("2026-11-17"), zone) } }
+        // Lower bound: a day before firstUseDay (2026-11-12) is outside Gould
+        // Activity history. In-range past days remain valid - the shipped rule
+        // is firstUseDay..yesterday (User Guide), not current-week-only, so a
+        // previous-week day such as 2026-11-15 is accepted and cleaned up here.
+        assertThrows(IllegalArgumentException::class.java) { runBlocking { repo.addManualActivity(day("2026-11-11"), 10, day("2026-11-17"), zone) } }
+        val older = repo.addManualActivity(day("2026-11-15"), 10, day("2026-11-17"), zone, now=42)
+        repo.deleteManualActivity(older)
         repo.deleteManualActivity(id)
         assertEquals(0, repo.snapshot(day("2026-11-17"), zone, now=6).totals.sessions)
         assertEquals("2026-11-12", db.activityDao().settings()!!.firstUseDay)
