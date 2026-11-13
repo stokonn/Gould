@@ -13,11 +13,13 @@ import sqlite3
 import subprocess
 import time
 
+from upgrade_table_expectations import assert_table_transition
+
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--serial', required=True)
 parser.add_argument('--baseline', type=Path, required=True)
 parser.add_argument('--baseline-version', default='0.10')
-parser.add_argument('--baseline-schema', type=int, help='Require a genuinely older initialized schema before seeding')
+parser.add_argument('--baseline-schema', type=int, help='Require a genuinely older initialized schema before seeding; also required for post-upgrade table-set verification against the checked-in Room schema JSONs')
 parser.add_argument('--expected-schema', type=int, default=8)
 parser.add_argument('--offline', action='store_true')
 parser.add_argument('--offline-preconfigured', action='store_true', help='Require no default network after a Settings UI transition, without privileged Wi-Fi commands')
@@ -216,27 +218,23 @@ for table,original in before.items():
         assert all(row in original or row[0] in allowed_new_badges for row in incoming), 'Unexpected new badge'
     else:
         assert original==incoming, 'Persistent data changed: '+table
-schema12_activity_tables = {
-    'activity_reward_grants', 'activity_settings', 'activity_weekly_goals',
-    'activity_weeks', 'cosmetic_loadout', 'cosmetic_ownership',
-    'manual_activity_entries',
-}
-expected_additive_tables = set()
-if a.expected_schema >= 9:
-    expected_additive_tables.update({
-        'personal_catalogue_anchors', 'personal_catalogue_identities',
-        'personal_catalogue_state',
-    })
-if a.expected_schema >= 11:
-    expected_additive_tables.add('badge_notices')
-if a.expected_schema >= 12:
-    expected_additive_tables.update(schema12_activity_tables)
-removed_tables = set(before) - set(after)
-added_tables = set(after) - set(before)
-assert not removed_tables, f'Critical table loss: {sorted(removed_tables)}'
-assert added_tables == expected_additive_tables, (
-    f'Unexpected additive migration tables; expected {sorted(expected_additive_tables)}, '
-    f'found {sorted(added_tables)}'
+# Table-set verification derives expectations from the checked-in Room schema
+# JSONs (single source of truth) and compares RAW sqlite_master table sets, so
+# tables excluded from row comparison above (migration-generated
+# personal_catalogue_*/backup/audio/event tables) are still required to exist
+# and a dropped excluded table is still detected. The previous hand-maintained
+# expected set disagreed with those exclusions - personal_catalogue_* can never
+# appear as "added" while values() filters them from both snapshots - and failed
+# a correct 8 -> 12 migration in run 43246507990 job 5.11.
+def sqlite_master_names(name):
+    conn = sqlite3.connect(a.output / (name + '.db'))
+    try:
+        return [row[0] for row in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")]
+    finally:
+        conn.close()
+added_tables = assert_table_transition(
+    sqlite_master_names('before'), sqlite_master_names('after'),
+    a.baseline_schema, a.expected_schema,
 )
 
 _, final_db = snapshot('validated')
@@ -246,11 +244,6 @@ assert final_db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
 if a.expected_schema>=11:
     for table in ('local_audio','local_audio_parts','achievement_events'):
         assert final_db.execute(f'SELECT count(*) FROM {table}').fetchone()[0]==0, 'Upgrade manufactured audio/events'
-if a.expected_schema>=12:
-    for table in sorted(schema12_activity_tables):
-        assert final_db.execute(
-            "SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,)
-        ).fetchone(), f'Missing additive schema-12 table: {table}'
 
 bridge = None
 if a.expected_schema >= 9:

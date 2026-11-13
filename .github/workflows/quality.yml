@@ -36,6 +36,7 @@ jobs:
           python3 scripts/check_localization.py
           python3 scripts/check_history_paging.py
           python3 scripts/check_agent_policy.py
+          python3 -m unittest discover -s scripts -p 'test_upgrade_table_expectations.py'
           python3 -m unittest discover -s scripts/stage6 -p 'test_backup_store.py'
           git diff --exit-code -- app/schemas
       # Historical Stage 6 acceptance is source-bound to its original immutable tree.

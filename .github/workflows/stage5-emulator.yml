@@ -16,6 +16,18 @@ name: Gould Android emulator verification
 #     classes; no runner-argument filters, no @Ignore, no excluded classes).
 #     Acceptance-only execution requires an exact Android source inventory match
 #     to retained full native evidence; it never claims a new instrumentation run.
+#   - Infrastructure-only retry (both jobs): the emulator step may run a
+#     second time, and only when ZERO test evidence exists (no instrumentation
+#     result XML or only XML reporting tests="0" / the acceptance script never
+#     reached system-service readiness). This absorbs the known upstream boot
+#     race - the pinned android-emulator-runner v2.38.0 runs `input keyevent 82`
+#     immediately after sys.boot_completed without waiting for system services
+#     (upstream ReactiveCircus/android-emulator-runner#432 and #489; fix PR #495
+#     is not in v2.38.0; observed in run 43246507990 job 5.10) - and the
+#     system-service-not-yet-published install abort (StorageManager NPE /
+#     Broken pipe, observed in run 43243176345 job 5.10 and locally on API 37)
+#     without ever retrying a run that produced results. A genuine test/harness
+#     failure fails both the first attempt and the final outcome gate.
 #   - Every adb use inside the scripts resolves and exports a single explicit
 #     `emulator-NNNN` serial and verifies `ro.kernel.qemu=1`; a physical device
 #     can never be selected (multiple attached devices abort the run).
@@ -37,7 +49,7 @@ name: Gould Android emulator verification
 #   - Therefore the in-place upgrade test uses a debug rebuild of the exact
 #     v0.10.1 tag built in the same job - same runner debug keystore as the
 #     candidate - so signatures match by construction and the genuine data
-#     migration path (schema 8 -> 11) is exercised end to end.
+#     migration path (schema 8 -> 12) is exercised end to end.
 #   - Release-signature compatibility of the future 0.12 release APK remains a
 #     separate publication gate: this job asserts the trusted 0.10.1 release
 #     APK really carries the trusted certificate, and the release gate asserts
@@ -107,9 +119,59 @@ jobs:
       - name: Set up required Android SDK packages
         uses: android-actions/setup-android@be39fa834029ff78f1a44aa3bb0819b8fc2bd8fd # v4.0.4
         with:
-          cmdline-tools-version: '12266719'
+          cmdline-tools-version: '16111833'
           packages: 'platform-tools platforms;android-36 platforms;android-37.0 build-tools;36.0.0'
           log-accepted-android-sdk-licenses: false
+      - name: Ensure cmdline-tools >= 23 before AVD creation (API 37 target fix)
+        run: |
+          # Root cause of the API 37 crash-loop failures (run 43246507990 job
+          # 5.10; reproduced locally): cmdline-tools < 22 cannot parse the dotted
+          # API level "37.0" - avdmanager exits 0 but writes target=android-0
+          # into the AVD .ini, gfxstream is misconfigured and the guest
+          # surfaceflinger aborts in mapper.ranchu.so
+          # (Assertion failed: !rcEnc->featureInfo()->hasReadColorBufferDma),
+          # crash-looping graphics/system_server while sys.boot_completed stays
+          # 1, so package installs and tests abort with missing services. The
+          # pinned android-emulator-runner v2.38.0 resolves avdmanager from
+          # $ANDROID_HOME/cmdline-tools/latest/bin and only installs
+          # cmdline-tools when that directory is missing, so the ubuntu-24.04
+          # image's preinstalled revision 12.0 was used
+          # (actions/runner-images#14484). Upstream fix
+          # ReactiveCircus/android-emulator-runner#494 bundles revision 23.0
+          # but is not released in v2.38.0. Local A/B on this host: revision
+          # 12.0 -> target=android-0 + surfaceflinger crash loop; revision 23.0
+          # -> target=android-37.0 + 0 surfaceflinger crashes over 30s and all
+          # system services published.
+          set -euo pipefail
+          CT="${ANDROID_HOME:-$ANDROID_SDK_ROOT}/cmdline-tools"
+          CLT_BUILD=16111833 # cmdline-tools 23.0, the revision bundled by #494
+          revision_of() { sed -n 's/^Pkg.Revision=//p' "$1/source.properties" 2>/dev/null | head -n1; }
+          major_of() { m="${1%%.*}"; case "$m" in ''|*[!0-9]*) echo 0 ;; *) echo "$m" ;; esac; }
+          current="$(revision_of "$CT/latest")"
+          if [ "$(major_of "$current")" -lt 23 ]; then
+            echo "cmdline-tools/latest revision '${current:-missing}' is below 23; replacing with 23.0 (build $CLT_BUILD)."
+            curl -fsSLo /tmp/cmdline-tools.zip "https://dl.google.com/android/repository/commandlinetools-linux-${CLT_BUILD}_latest.zip"
+            rm -rf "$CT/latest" /tmp/cmdline-tools-clt
+            mkdir -p /tmp/cmdline-tools-clt
+            unzip -q /tmp/cmdline-tools.zip -d /tmp/cmdline-tools-clt
+            mv /tmp/cmdline-tools-clt/cmdline-tools "$CT/latest"
+          fi
+          # Fail closed: the avdmanager the action uses
+          # (cmdline-tools/latest/bin) and the one resolving on PATH now must
+          # both be revision >= 23, or AVD creation would silently write
+          # target=android-0 again.
+          seen=""
+          for candidate in "$CT/latest/bin/avdmanager" "$(command -v avdmanager || true)"; do
+            [ -n "$candidate" ] || continue
+            case " $seen " in *" $candidate "*) continue ;; esac
+            seen="$seen $candidate"
+            rev="$(revision_of "$(dirname "$candidate")/..")"
+            echo "avdmanager: $candidate -> cmdline-tools revision ${rev:-unknown}"
+            if [ "$(major_of "$rev")" -lt 23 ]; then
+              echo "ERROR: avdmanager revision ${rev:-unknown} cannot parse API level 37.0 (writes target=android-0; surfaceflinger crash loop)."
+              exit 1
+            fi
+          done
       - name: Enable KVM group perms
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -122,7 +184,9 @@ jobs:
           else
             ./gradlew --no-daemon --max-workers=1 assembleDebug testDebugUnitTest assembleDebugAndroidTest
           fi
-      - name: Run full instrumentation suite on the emulator
+      - name: Run full instrumentation suite on the emulator (attempt 1)
+        id: instrumentation-attempt1
+        continue-on-error: true
         uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
         with:
           api-level: '37.0'
@@ -135,16 +199,80 @@ jobs:
           # on hosted runners. swangle is the previously accepted software ANGLE path.
           emulator-options: -no-window -gpu swangle -noaudio -no-boot-anim -camera-back none -no-snapshot
           script: bash scripts/ci_android_instrumentation.sh
-      - name: Summarize instrumentation results
-        if: always()
+      - name: Decide whether an infrastructure retry is required
+        id: instrumentation-retry
+        if: steps.instrumentation-attempt1.outcome == 'failure'
         run: |
-          python3 - <<'PYEOF' | tee stage5-ci-results/instrumentation-counts.txt | tee -a "$GITHUB_STEP_SUMMARY"
+          mkdir -p stage5-ci-results
+          # Zero test evidence = no XML OR only XML reporting zero tests (a
+          # pre-script abort still writes a well-formed tests="0" XML that
+          # Gradle then refuses to load - observed locally on API 37).
+          # Any XML with tests > 0 is real evidence and is never retried.
+          if python3 - <<'PYEOF' > stage5-ci-results/attempt1-evidence.txt
           import glob
+          import sys
           import xml.etree.ElementTree as ET
+          xmls = sorted(glob.glob('app/build/outputs/androidTest-results/**/*.xml', recursive=True))
+          ran = 0
+          for path in xmls:
+              try:
+                  root = ET.parse(path).getroot()
+              except Exception as exc:  # malformed XML carries no test counts
+                  print(f'unparseable {path}: {exc}')
+                  continue
+              count = int(root.get('tests', 0) or 0)
+              if root.tag == 'testsuites':
+                  count = max(count, sum(int(ts.get('tests', 0) or 0) for ts in root.findall('testsuite')))
+              print(f'{path}: tests={count}')
+              ran += count
+          print(f'total tests across result XML: {ran}')
+          sys.exit(0 if ran > 0 else 1)
+          PYEOF
+          then
+            echo "Result XML reports executed tests; the failure produced evidence and is not a zero-test infrastructure abort - no retry."
+            echo "retry=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Zero tests executed (no result XML, or only tests=0 XML); preserving attempt 1 evidence, then retrying once."
+            mkdir -p stage5-ci-results/attempt1
+            find stage5-ci-results -maxdepth 1 -type f -exec mv -t stage5-ci-results/attempt1/ {} + 2>/dev/null || true
+            if [ -f stage5-ci-results/attempt1/source-commit.txt ]; then
+              cp stage5-ci-results/attempt1/source-commit.txt stage5-ci-results/
+            fi
+            echo "retry=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Run full instrumentation suite on the emulator (attempt 2)
+        id: instrumentation-attempt2
+        if: steps.instrumentation-retry.outputs.retry == 'true'
+        continue-on-error: true
+        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
+        with:
+          api-level: '37.0'
+          target: google_apis_playstore
+          arch: x86_64
+          profile: pixel_6
+          avd-name: stage5-ci
+          disable-animations: true
+          # API37 swiftshader_indirect has repeatedly crashed graphics/system_server
+          # on hosted runners. swangle is the previously accepted software ANGLE path.
+          emulator-options: -no-window -gpu swangle -noaudio -no-boot-anim -camera-back none -no-snapshot
+          script: bash scripts/ci_android_instrumentation.sh
+      - name: Summarize and enforce instrumentation results
+        if: always()
+        id: instrumentation-summary
+        env:
+          FINAL_OUTCOME: ${{ steps.instrumentation-attempt2.outcome == 'skipped' && steps.instrumentation-attempt1.outcome || steps.instrumentation-attempt2.outcome }}
+        run: |
+          RC=0
+          python3 - > stage5-ci-results/instrumentation-counts.txt <<'PYEOF' || RC=$?
+          import glob
+          import os
+          import sys
+          import xml.etree.ElementTree as ET
+          final_outcome = os.environ.get('FINAL_OUTCOME', '')
           xmls = sorted(glob.glob('app/build/outputs/androidTest-results/connected/**/*.xml', recursive=True))
           if not xmls:
-              print('No instrumentation result XML files found (suite may have failed before producing results).')
-              raise SystemExit(0)
+              print(f'No instrumentation result XML files found (zero tests executed; final attempt outcome: {final_outcome}).')
+              sys.exit(1)
           totals = dict(tests=0, failures=0, errors=0, skipped=0)
           for path in xmls:
               root = ET.parse(path).getroot()
@@ -152,7 +280,17 @@ jobs:
                   totals[key] += int(root.get(key, 0) or 0)
           print(f'Result files: {len(xmls)}')
           print('Tests: {tests}  Failures: {failures}  Errors: {errors}  Skipped: {skipped}'.format(**totals))
+          if final_outcome != 'success':
+              print(f'FAIL: final emulator attempt outcome is {final_outcome!r}.')
+              sys.exit(1)
+          if totals['tests'] == 0 or totals['failures'] or totals['errors']:
+              print('FAIL: instrumentation did not complete with a clean result set.')
+              sys.exit(1)
+          print('PASS: instrumentation executed with zero failures/errors.')
           PYEOF
+          cat stage5-ci-results/instrumentation-counts.txt
+          cat stage5-ci-results/instrumentation-counts.txt >> "$GITHUB_STEP_SUMMARY" || true
+          exit "$RC"
       - name: Upload instrumentation evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -187,8 +325,10 @@ jobs:
             echo "ERROR: checked-out commit does not match the dispatched commit"; exit 1
           fi
           df -h / | tee stage5-ci-results/disk-usage.txt
-      - name: Verify connectivity assertion parser
-        run: python3 scripts/test_emulator_network_assertion.py
+      - name: Verify connectivity assertion parser and upgrade table expectations
+        run: |
+          python3 scripts/test_emulator_network_assertion.py
+          python3 scripts/test_upgrade_table_expectations.py
       - name: Verify retained native source for acceptance-only execution
         if: inputs.verification_scope == 'acceptance'
         run: |
@@ -215,9 +355,44 @@ jobs:
       - name: Set up required Android SDK packages
         uses: android-actions/setup-android@be39fa834029ff78f1a44aa3bb0819b8fc2bd8fd # v4.0.4
         with:
-          cmdline-tools-version: '12266719'
+          cmdline-tools-version: '16111833'
           packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
           log-accepted-android-sdk-licenses: false
+      - name: Ensure cmdline-tools >= 23 before AVD creation (API 37 target fix)
+        run: |
+          # Same cmdline-tools guarantee as job 5.10: the pinned
+          # android-emulator-runner v2.38.0 creates the acceptance AVD with
+          # cmdline-tools/latest/bin/avdmanager, and revision < 22 silently
+          # writes target=android-0 for the dotted API level "37.0"
+          # (surfaceflinger crash loop while sys.boot_completed stays 1).
+          # Upstream fix: ReactiveCircus/android-emulator-runner#494
+          # (revision 23.0), not released in v2.38.0.
+          set -euo pipefail
+          CT="${ANDROID_HOME:-$ANDROID_SDK_ROOT}/cmdline-tools"
+          CLT_BUILD=16111833 # cmdline-tools 23.0, the revision bundled by #494
+          revision_of() { sed -n 's/^Pkg.Revision=//p' "$1/source.properties" 2>/dev/null | head -n1; }
+          major_of() { m="${1%%.*}"; case "$m" in ''|*[!0-9]*) echo 0 ;; *) echo "$m" ;; esac; }
+          current="$(revision_of "$CT/latest")"
+          if [ "$(major_of "$current")" -lt 23 ]; then
+            echo "cmdline-tools/latest revision '${current:-missing}' is below 23; replacing with 23.0 (build $CLT_BUILD)."
+            curl -fsSLo /tmp/cmdline-tools.zip "https://dl.google.com/android/repository/commandlinetools-linux-${CLT_BUILD}_latest.zip"
+            rm -rf "$CT/latest" /tmp/cmdline-tools-clt
+            mkdir -p /tmp/cmdline-tools-clt
+            unzip -q /tmp/cmdline-tools.zip -d /tmp/cmdline-tools-clt
+            mv /tmp/cmdline-tools-clt/cmdline-tools "$CT/latest"
+          fi
+          seen=""
+          for candidate in "$CT/latest/bin/avdmanager" "$(command -v avdmanager || true)"; do
+            [ -n "$candidate" ] || continue
+            case " $seen " in *" $candidate "*) continue ;; esac
+            seen="$seen $candidate"
+            rev="$(revision_of "$(dirname "$candidate")/..")"
+            echo "avdmanager: $candidate -> cmdline-tools revision ${rev:-unknown}"
+            if [ "$(major_of "$rev")" -lt 23 ]; then
+              echo "ERROR: avdmanager revision ${rev:-unknown} cannot parse API level 37.0 (writes target=android-0; surfaceflinger crash loop)."
+              exit 1
+            fi
+          done
       - name: Enable KVM group perms
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -311,7 +486,9 @@ jobs:
           fi
           if [ -n "$FAIL" ]; then echo "$FAIL"; exit 1; fi
           echo "OK: release identity trusted; in-place upgrade pair signature-compatible"
-      - name: Run acceptance checks on the emulator
+      - name: Run acceptance checks on the emulator (attempt 1)
+        id: acceptance-attempt1
+        continue-on-error: true
         uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
         with:
           api-level: 36
@@ -322,6 +499,57 @@ jobs:
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
           script: bash scripts/ci_stage6_acceptance.sh
+      - name: Decide whether an infrastructure retry is required
+        id: acceptance-retry
+        if: steps.acceptance-attempt1.outcome == 'failure'
+        run: |
+          mkdir -p stage5-ci-results
+          if [ -f stage5-ci-results/services-ready.txt ]; then
+            echo "The acceptance script reached system-service readiness; its failure is not a boot/service race - no retry."
+            echo "retry=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "The acceptance script never reached system-service readiness (boot race or service wedge); preserving attempt 1 evidence, then retrying once."
+            mkdir -p stage5-ci-results/attempt1
+            find stage5-ci-results -maxdepth 1 -type f -exec mv -t stage5-ci-results/attempt1/ {} + 2>/dev/null || true
+            if [ -f stage5-ci-results/attempt1/source-commit.txt ]; then
+              cp stage5-ci-results/attempt1/source-commit.txt stage5-ci-results/
+            fi
+            echo "retry=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Run acceptance checks on the emulator (attempt 2)
+        id: acceptance-attempt2
+        if: steps.acceptance-retry.outputs.retry == 'true'
+        continue-on-error: true
+        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
+        with:
+          api-level: 36
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          avd-name: stage5-ci
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+          script: bash scripts/ci_stage6_acceptance.sh
+      - name: Enforce acceptance outcome
+        if: always()
+        id: acceptance-summary
+        env:
+          FINAL_OUTCOME: ${{ steps.acceptance-attempt2.outcome == 'skipped' && steps.acceptance-attempt1.outcome || steps.acceptance-attempt2.outcome }}
+        run: |
+          RC=0
+          if [ "$FINAL_OUTCOME" != "success" ]; then
+            echo "FAIL: final acceptance attempt outcome is '$FINAL_OUTCOME'."
+            RC=1
+          fi
+          if [ ! -f stage5-ci-results/upgrade/result.json ]; then
+            echo "FAIL: upgrade verification result.json is missing (acceptance did not complete)."
+            RC=1
+          fi
+          if [ "$RC" -eq 0 ]; then
+            echo "PASS: acceptance attempt completed (upgrade result present)."
+            cat stage5-ci-results/upgrade/result.json
+          fi
+          exit "$RC"
       - name: Upload acceptance evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
