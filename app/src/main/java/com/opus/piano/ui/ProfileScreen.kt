@@ -52,18 +52,9 @@ import java.time.*
     JournalViewport(spacing=12.dp) {
         EditorialHeader(L.fixed("Profile"),actions={
             IconButton(onClick=allBadges) {Icon(Icons.Outlined.EmojiEvents,L.s(R.string.msg_badges_2c57),tint=MaterialTheme.colorScheme.primary)}
+            customizeCosmetics?.let { action -> IconButton(onClick=action) { Icon(Icons.Outlined.CollectionsBookmark,L.s(R.string.activity_view_collection),tint=MaterialTheme.colorScheme.primary) } }
             IconButton(onClick=settingsAction) {Icon(Icons.Outlined.Settings,L.fixed("Settings"),tint=MaterialTheme.colorScheme.primary)}
         })
-        customizeCosmetics?.let { action ->
-            Surface(onClick=action, shape=MaterialTheme.shapes.medium, color=MaterialTheme.colorScheme.surface,
-                border=androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha=.45f))) {
-                Row(Modifier.fillMaxWidth().heightIn(min=52.dp).padding(horizontal=14.dp, vertical=10.dp), verticalAlignment=Alignment.CenterVertically, horizontalArrangement=Arrangement.spacedBy(12.dp)) {
-                    Icon(Icons.Outlined.CollectionsBookmark, null, Modifier.size(20.dp), tint=MaterialTheme.colorScheme.primary)
-                    Text(L.s(R.string.activity_collection), style=MaterialTheme.typography.titleMedium, modifier=Modifier.weight(1f))
-                    Icon(Icons.Outlined.ChevronRight, null, Modifier.size(20.dp), tint=MaterialTheme.colorScheme.onSurfaceVariant)
-                }
-            }
-        }
         // Stage 7B: role-gated Administration entry (convenience only; server enforces).
         if (administration != null) {
             Surface(
@@ -102,7 +93,8 @@ import java.time.*
                     if(googleAccount==null) JournalTextButton(enabled=!busy,onClick={profile.googleSignIn(context)},contentPadding=PaddingValues(0.dp)) {Text(L.s(R.string.google_sign_in),style=MaterialTheme.typography.labelMedium)}
                 }
             }
-            val metrics=mapOf("time" to (localizedPracticeTime(state.summary.totalMillis) to L.fixed("Total practice")),"pieces" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(state.pieces.size) to L.fixed("Repertoire pieces")),"sessions" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(state.sessions.count(AchievementEngine::valid)) to L.fixed("Practice sessions")),"streak" to (L.quantity(R.plurals.days_count,currentPracticeStreak(state.sessions,LocalDate.now(),ZoneId.systemDefault())) to L.fixed("Current streak")))
+            val combined = cosmeticState.snapshot
+            val metrics=mapOf("time" to (localizedPracticeTime(combined?.allTimeDurationMillis ?: state.summary.totalMillis) to L.fixed("Total practice")),"pieces" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(state.pieces.size) to L.fixed("Repertoire pieces")),"sessions" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(combined?.allTimeWorkouts ?: state.sessions.count(AchievementEngine::valid)) to L.fixed("Practice sessions")),"streak" to (L.quantity(R.plurals.days_count,combined?.dailyStreak ?: currentPracticeStreak(state.sessions,LocalDate.now(),ZoneId.systemDefault())) to L.fixed("Current streak")))
             BoxWithConstraints {
                 val columns=if(maxWidth<260.dp || fontScale>=1.8f) 1 else 2
                 Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
@@ -147,7 +139,6 @@ import java.time.*
         }
     }
     if(showcaseEdit) ShowcaseEditor(settings,badges,busy,profile) {showcaseEdit=false}
-
 }
 
 @Composable internal fun ArtistAutocomplete(value:String,change:(String)->Unit, enabled:Boolean = true) {

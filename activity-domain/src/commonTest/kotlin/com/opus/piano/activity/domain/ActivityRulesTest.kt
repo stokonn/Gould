@@ -49,6 +49,50 @@ class ActivityRulesTest {
         assertEquals(DayKind.MISS, classifyWeek(week, goal, rows).last().kind)
     }
 
+    @Test fun manualActivityWindowContainsOnlyTodayAndTwoPriorDays() {
+        assertEquals(listOf(monday, monday + 1, monday + 2), manualActivityDates(monday + 2))
+        assertEquals(listOf(20_088L, 20_089L, 20_090L), manualActivityDates(20_090L)) // Year boundary
+    }
+
+    @Test fun dailyStreakCombinesSourcesCountsCalendarDaysOnceAndStopsAtMissedDay() {
+        val rows = listOf(
+            Workout(monday + 4, 60_000, "manual:1", WorkoutSource.MANUAL_ENTRY),
+            Workout(monday + 4, 90_000, "practice:2", WorkoutSource.PRACTICE_SESSION),
+            Workout(monday + 5, 60_000, "practice:3", WorkoutSource.PRACTICE_SESSION),
+        )
+        assertEquals(2, currentActivityStreak(rows, monday + 5))
+        assertEquals(0, currentActivityStreak(rows, monday + 7))
+        assertEquals(2, currentActivityStreak(rows, monday + 6)) // yesterday starts the run when today is empty
+    }
+
+    @Test fun dayOffLabelsDoNotTouchFreezeAndOnlyClosedWeeklyGoalFailureConsumesOne() {
+        val fivePracticeDays = (0..4).map { Workout(monday + it, 60_000, "practice:$it", WorkoutSource.PRACTICE_SESSION) }
+        val goal = WeeklyGoal(monday, 5, null)
+        assertEquals(2, classifyWeek(week, goal, fivePracticeDays).count { it.kind == DayKind.DAY_OFF })
+        val starting = FreezeState(balance = 2, currentStreak = 3, longestStreak = 3)
+        val (success, usedOnSuccess) = closeWeek(starting, success = weekSuccess(week, goal, fivePracticeDays, week.sunday)!!)
+        assertFalse(usedOnSuccess)
+        assertEquals(2, success.balance)
+        val fourPracticeDays = fivePracticeDays.take(4)
+        assertFalse(weekSuccess(week, goal, fourPracticeDays, week.sunday)!!)
+        val (rescued, consumed) = closeWeek(success, success = false)
+        assertTrue(consumed)
+        assertEquals(1, rescued.balance)
+        assertEquals(success.currentStreak, rescued.currentStreak)
+    }
+
+    @Test fun cosmeticWeekRequiresConfiguredGoalsEvenDuringBetaButBetaNeverAdvancesStreak() {
+        val sessions = (0..2).map { Workout(monday + it, 10 * 60_000, "s$it", WorkoutSource.MANUAL_ENTRY) }
+        assertTrue(perfectWeek(week, WeeklyGoal(monday, 3, null), sessions))
+        assertFalse(perfectWeek(week, WeeklyGoal(monday, 4, null), sessions))
+        assertFalse(perfectWeek(week, WeeklyGoal(monday, 3, 31), sessions))
+        assertTrue(perfectWeek(week, WeeklyGoal(monday, 3, 30), sessions))
+        val betaWeek = week.copy(beta = true)
+        assertTrue(perfectWeek(betaWeek, WeeklyGoal(monday, 3, null), sessions))
+        assertNull(weekSuccess(betaWeek, WeeklyGoal(monday, 3, null), sessions, week.sunday))
+        assertFalse(perfectWeek(betaWeek, WeeklyGoal(monday, 3, 31), sessions))
+    }
+
     @Test fun freezeCapEarningPauseConsumptionAndBreakAreDeterministic() {
         var state = FreezeState()
         repeat(4) { state = closeWeek(state, true).first }
@@ -65,6 +109,23 @@ class ActivityRulesTest {
         val broken = closeWeek(frozen.copy(balance = 0), false).first
         assertEquals(0, broken.currentStreak)
         assertEquals(5, broken.longestStreak)
+    }
+
+    @Test fun fourWeekFreezeMilestoneIsSeparateAndAWeeklyFailureResetsOnlyItsProgress() {
+        var state = FreezeState(balance = 0)
+        repeat(3) { state = closeWeek(state, success = true).first }
+        assertEquals(0, state.balance)
+        assertEquals(3, state.successfulWeeksTowardFreeze)
+
+        state = closeWeek(state, success = false).first
+        assertEquals(0, state.successfulWeeksTowardFreeze)
+        repeat(3) { state = closeWeek(state, success = true).first }
+        assertEquals(0, state.balance)
+        assertEquals(3, state.successfulWeeksTowardFreeze)
+
+        state = closeWeek(state, success = true).first
+        assertEquals(1, state.balance)
+        assertEquals(0, state.successfulWeeksTowardFreeze)
     }
 
     @Test fun orderedEvaluationIsIdempotentAndRejectsDuplicateWeeks() {

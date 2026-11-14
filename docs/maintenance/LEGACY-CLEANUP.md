@@ -211,3 +211,26 @@ Verification: GitHub API readback confirmed `main=c8980539bb76408d6f1284e4b3a885
 The repository is **not declared fully maintained** while protected custody, Wiki synchronization and branch-protection configuration remain unresolved. Do not start Gould 0.14 implementation from this record; use the separate Phase 1 workflow.
 
 created by stokonn with love <3
+
+### 2026-11-13 — Fedora API 37 emulator crash recovery
+
+No application runtime workaround or Fedora security-policy relaxation was
+introduced. The repeated API 37 exit 139 was traced from two retained QEMU core
+dumps to `RenderThread` SIGSEGV/`SEGV_ACCERR`; Fedora audit records an SELinux
+`execheap` denial immediately before each fault while running
+`swiftshader_indirect`. The affected API 37 Play Store AVD also had bad metadata
+(`target=android-0`) despite pointing at the API 37 system image. Recovery uses
+the existing correctly generated API 37 Google APIs AVD and headless `swangle`;
+no AVD was deleted, no package installed, and host KVM/SELinux configuration was
+not changed. Host `/dev/kvm` is readable/writable and `emulator -accel-check`
+passes; sandbox-hidden KVM/ADB access was not misattributed to the Fedora host.
+The repeatable start/readiness/instrumentation/shutdown gate and evidence are in
+[`ANDROID-EMULATOR-FEDORA.md`](ANDROID-EMULATOR-FEDORA.md) and
+[`run-gould014-emulator-verification.sh`](../../scripts/run-gould014-emulator-verification.sh).
+The focused API 37 runtime batch passed 21 instrumentation tests after correcting
+three test-fixture expectations and adding cosmetic Apply persistence coverage;
+the batch also passed responsive navigation/accessibility checks across 32
+configurations.
+Full suite, launcher-host widget placement, signed build and upgrade gates remain
+tracked as pending in the Gould 0.14 checklist. No release, GitHub, or Git
+integration action occurred.

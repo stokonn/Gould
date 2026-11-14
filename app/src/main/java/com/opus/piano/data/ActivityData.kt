@@ -75,7 +75,32 @@ interface ActivityDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE) suspend fun own(value: CosmeticOwnership): Long
     @Query("SELECT * FROM activity_reward_grants ORDER BY weekMonday") suspend fun grants(): List<ActivityRewardGrant>
     @Query("SELECT * FROM activity_reward_grants WHERE weekMonday=:monday") suspend fun grant(monday: String): ActivityRewardGrant?
-    @Query("SELECT * FROM activity_reward_grants WHERE acknowledgedAt=0 ORDER BY weekMonday LIMIT 1") fun pendingReward(): Flow<ActivityRewardGrant?>
+    @Query("""SELECT g.* FROM activity_reward_grants AS g
+        WHERE g.acknowledgedAt=0 AND g.result='COSMETIC' AND g.cosmeticId IS NOT NULL
+        AND NOT EXISTS (
+            SELECT 1 FROM cosmetic_ownership AS o
+            WHERE o.cosmeticId=g.cosmeticId AND o.sourceWeekMonday=g.weekMonday
+        )
+        ORDER BY g.weekMonday LIMIT 1""") fun pendingReward(): Flow<ActivityRewardGrant?>
+    @Query("""SELECT g.* FROM activity_reward_grants AS g
+        WHERE g.acknowledgedAt=0 AND g.result='COSMETIC' AND g.cosmeticId IS NOT NULL
+        AND NOT EXISTS (
+            SELECT 1 FROM cosmetic_ownership AS o
+            WHERE o.cosmeticId=g.cosmeticId AND o.sourceWeekMonday=g.weekMonday
+        )
+        ORDER BY g.weekMonday LIMIT 1""") suspend fun currentPendingReward(): ActivityRewardGrant?
+    @Query("""SELECT g.* FROM activity_reward_grants AS g
+        WHERE g.result='COSMETIC' AND (g.acknowledgedAt>0 OR EXISTS (
+            SELECT 1 FROM cosmetic_ownership AS o
+            WHERE o.cosmeticId=g.cosmeticId AND o.sourceWeekMonday=g.weekMonday
+        ))
+        ORDER BY g.weekMonday DESC LIMIT 1""") fun latestClaimedReward(): Flow<ActivityRewardGrant?>
+    @Query("""SELECT g.* FROM activity_reward_grants AS g
+        WHERE g.result='COSMETIC' AND (g.acknowledgedAt>0 OR EXISTS (
+            SELECT 1 FROM cosmetic_ownership AS o
+            WHERE o.cosmeticId=g.cosmeticId AND o.sourceWeekMonday=g.weekMonday
+        ))
+        ORDER BY g.weekMonday DESC LIMIT 1""") suspend fun currentClaimedReward(): ActivityRewardGrant?
     @Insert(onConflict = OnConflictStrategy.IGNORE) suspend fun grant(value: ActivityRewardGrant): Long
     @Query("UPDATE activity_reward_grants SET acknowledgedAt=:now WHERE weekMonday=:monday AND acknowledgedAt=0") suspend fun acknowledgeReward(monday: String, now: Long): Int
 

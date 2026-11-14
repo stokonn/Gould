@@ -158,7 +158,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 enterTransition = { fadeIn(tween(if (motionScale == 0f) 0 else 220)) }, exitTransition = { fadeOut(tween(if (motionScale == 0f) 0 else 150)) }) {
                 composable(Destination.OVERVIEW.name) {
                     val settings by profile.settings.collectAsStateWithLifecycle()
-                    BalancedHome(library, settings.username, { nav.navigate("piece/$it") }, { nav.navigate("history") }, {nav.navigate(SETTINGS_ROUTE)})
+                    BalancedHome(library, settings.username, { nav.navigate("piece/$it") }, { nav.navigate("history") }, {nav.navigate(SETTINGS_ROUTE)}, activity)
                 }
                 composable(SETTINGS_ROUTE) { SettingsScreen(profile, model, { replay = true }) { nav.popBackStack() } }
                 composable(Destination.HOME.name) {

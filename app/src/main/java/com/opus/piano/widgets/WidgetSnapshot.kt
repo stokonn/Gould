@@ -65,9 +65,10 @@ internal suspend fun loadWidgetSnapshot(app: OpusApplication, now: Long = System
         val settings = app.database.personalDao().getSettings() ?: ProfileSettings()
         val sessions = app.database.practiceDao().widgetSessions(monday.toString(), monday.plusDays(6).toString(),
             monday.atStartOfDay(zone).toInstant().toEpochMilli(), monday.plusDays(7).atStartOfDay(zone).toInstant().toEpochMilli())
+        val manualEntries = app.database.activityDao().allManualEntries()
         val raw = app.database.practiceDao().draft()
         val decoded = raw?.let { runCatching { PracticeRepository.decode(it.payload) } }
-        WidgetSnapshot(now, zone.id, widgetWeek(sessions, today, zone),
+        WidgetSnapshot(now, zone.id, widgetWeek(sessions, today, zone, manualEntries),
             widgetPractice(live, decoded?.getOrNull(), decoded?.isFailure == true),
             settings.theme, settings.typography, appearance.accent, appearance.cards)
     }
