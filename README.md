@@ -9,10 +9,10 @@
 <p>A thoughtful, local-first piano practice companion for Android.<br />
 Build your repertoire, record your sessions, and see how far you've come.</p>
 
-<p><a href="https://github.com/stokonn/Gould/releases/tag/v0.13"><strong>Gould 0.13 — latest pre-release</strong></a> · <a href="https://github.com/stokonn/Gould/releases/tag/v0.12">Gould 0.12</a> · <a href="docs/wiki/User-Guide.md">User guide</a></p>
+<p><a href="https://github.com/stokonn/Gould/releases/tag/v0.14.0"><strong>Gould 0.14.0 — latest pre-release</strong></a> · <a href="https://github.com/stokonn/Gould/releases/tag/v0.13">Gould 0.13</a> · <a href="docs/wiki/User-Guide.md">User guide</a></p>
 
 <p>
-<img alt="Android 8.0+" src="https://img.shields.io/badge/Android-8.0%2B-3DDC84?logo=android&amp;logoColor=white" />
+<img alt="Android 11+" src="https://img.shields.io/badge/Android-11%2B-3DDC84?logo=android&amp;logoColor=white" />
 <img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-Jetpack%20Compose-7F52FF?logo=kotlin&amp;logoColor=white" />
 <img alt="Languages" src="https://img.shields.io/badge/Languages-EN%20%7C%20CZ-64748b" />
 <img alt="Offline-first" src="https://img.shields.io/badge/Practice%20data-on%20device-256b5b" />
@@ -24,9 +24,9 @@ Build your repertoire, record your sessions, and see how far you've come.</p>
 
 ## Your music. Your progress.
 
-> **Gould 0.14 is in development and is not available as a release.** The Activity, weekly goals, streak protection and cosmetic reward features described in the development documentation are not part of the published 0.13 APK. The latest published version remains [Gould 0.13](https://github.com/stokonn/Gould/releases/tag/v0.13).
+> **Gould 0.14.0 is the latest published pre-release, not Stable.** It adds Activity, weekly goals, Streak protection and cosmetic rewards. See the [release notes](docs/releases/GOULD-0.14.md) for behavior and verification details.
 
-In 0.14 development, each eligible perfect week can earn its own claimable cosmetic. Beta Week can earn that weekly reward but does not count toward official Streak or Freeze progress; four consecutive perfect official Streak weeks award one additional Freeze.
+Each eligible perfect week can earn its own claimable cosmetic. Beta Week can earn that weekly reward but does not count toward official Streak or Freeze progress; four consecutive perfect official Streak weeks award one additional Freeze.
 
 Gould brings the practical parts of piano practice together without turning your journal into another social network.
 
@@ -57,15 +57,15 @@ Gould brings the practical parts of piano practice together without turning your
 
 ## Get Gould
 
-**Latest published pre-release: [Gould 0.13 — Project Renaissance](https://github.com/stokonn/Gould/releases/tag/v0.13)**. [Gould 0.12 — The Practice Studio Update](https://github.com/stokonn/Gould/releases/tag/v0.12) remains available as an earlier release.
+**Latest published pre-release: [Gould 0.14.0](https://github.com/stokonn/Gould/releases/tag/v0.14.0)**. This is a pre-release, not Stable. [Gould 0.13 — Project Renaissance](https://github.com/stokonn/Gould/releases/tag/v0.13) remains available as an earlier release.
 
-- **Android:** 8.0 or newer (API 26+).
+- **Android:** 11 or newer (API 30+).
 - **Languages:** English and Czech, with light and dark appearance.
-- **Install:** download the signed [Gould-v0.13.apk](https://github.com/stokonn/Gould/releases/download/v0.13/Gould-v0.13.apk) from GitHub Releases; this is a **pre-release**, not Stable.
+- **Install:** download the signed [gould-0.14.0.apk](https://github.com/stokonn/Gould/releases/download/v0.14.0/gould-0.14.0.apk) from GitHub Releases; this is a **pre-release**, not Stable.
 - **Already using Goldberg/Gould?** Export a backup before updating, then install over your existing compatible application. **Do not uninstall** just to bypass a signing or version mismatch.
-- **Release integrity:** the [published SHA-256 checksum](https://github.com/stokonn/Gould/releases/download/v0.13/Gould-v0.13.apk.sha256) is available alongside the APK.
+- **Release integrity:** SHA-256 `62c83ddef804a83b71bd05f3f0b09cec29a0784902ad79b0b16ec8bae75b1f2c`.
 
-The 0.14 development branch currently targets Android 11 (API 30) and compile/target API 37. This is not the minimum SDK of the published 0.13 release.
+Gould 0.14.0 targets Android 11 (API 30) and compile/target API 37. Android 8–10 remain supported only by earlier releases.
 
 [All releases](https://github.com/stokonn/Gould/releases) · [Getting started](docs/wiki/Getting-Started.md) · [FAQ & troubleshooting](docs/wiki/FAQ-and-Troubleshooting.md)
 
@@ -84,9 +84,9 @@ Gould is a native Android app using **Kotlin**, **Jetpack Compose**, **Material 
 For developers:
 
 - Start with [AGENTS.md](AGENTS.md) for repository and release-safety rules, and the [Developer Guide](docs/wiki/Developer-Guide.md) for architecture.
-- Use **JDK 17**, the **Android SDK 37 platform** and the committed Gradle wrapper for the 0.14 development branch.
-- Gould 0.14 development adds a JVM-targeted Kotlin Multiplatform domain module and keeps Room as the Android personal database. Its SDK/toolchain direction and verification status are documented in [the 0.14 development notes](docs/releases/GOULD-0.14.md); these are not release instructions.
-- Gould **0.13 Project Renaissance** is published as a [pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13), not Stable. See its [release notes](docs/releases/GOULD-0.13.md), [release readiness](docs/planning/gould-0.13/RELEASE-READINESS.md), and the [English screenshot capture plan](docs/planning/gould-0.13/README-SCREENSHOT-CAPTURE.md).
+- Use **JDK 17**, the **Android SDK 37 platform** and the committed Gradle wrapper.
+- Gould 0.14.0 includes a JVM-targeted Kotlin Multiplatform domain module and keeps Room as the Android personal database. See [the 0.14 release notes](docs/releases/GOULD-0.14.md) for implementation and verification details.
+- Gould **0.13 Project Renaissance** remains available as an earlier [pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13). See its [release notes](docs/releases/GOULD-0.13.md), [release readiness](docs/planning/gould-0.13/RELEASE-READINESS.md), and the [English screenshot capture plan](docs/planning/gould-0.13/README-SCREENSHOT-CAPTURE.md).
 - Source compilation and CI are not substitutes for on-device, upgrade or release-signing acceptance. Published releases undergo separate checks.
 
 [Changelog](CHANGELOG.md) · [Third-party licences and credits](docs/LICENSES.md) · [Signing guidance](docs/SIGNING.md) · [Wiki](https://github.com/stokonn/Gould/wiki)

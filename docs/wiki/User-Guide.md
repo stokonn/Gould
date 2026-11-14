@@ -1,8 +1,8 @@
 # User Guide — Gould
 
-> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
+> Gould 0.14.0 is the latest published pre-release, not Stable. Historical sections retain their original evidence.
 
-> **0.14 development note — unreleased:** The Activity destination replaces Discover in the development build. Its annual heatmap groups days into Training, Day Off and Miss; tapping a day shows its date, workout count and exercise minutes. Week Overview reports sessions and optional minutes progress. These development features are not in the published 0.13 APK. Discover code remains in the app but its navigation entry is hidden.
+> **Gould 0.14.0:** Activity replaces Discover in visible navigation. Its annual heatmap groups days into Training, Day Off and Miss; tapping a day shows its date, workout count and exercise minutes. Week Overview reports sessions and optional minutes progress. Discover code remains in the app but its navigation entry is hidden.
 
 Activity's manual entries are local records separate from practice-session and microphone-detection evidence. They can be added for today or either of the previous two local calendar dates, including dates before Activity was first opened, and deleted with confirmation. They count as one workout and their entered duration contributes to Activity progress, global activity totals and daily streaks. They do not rewrite the historical practice journal or assert microphone verification. The same source activity is included once; separate workouts on the same day remain separate.
 
@@ -12,12 +12,12 @@ The first partial week after Activity is initialized is a non-streak Beta Week; 
 
 Year navigation shows historical dates and hides future dates. Activity uses local calendar dates and records a time-zone identifier per observed week; existing practice session dates are not rewritten. Correcting manual history recomputes progression. A cosmetic already granted remains owned after a later correction.
 
-> **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
+> **Latest release:** [Gould 0.14.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.14.0). This is not Stable.
 
-Gould 0.13 retains these workflows and adds performance and recording-list reliability improvements.
+Gould 0.14.0 retains local practice workflows and adds Activity, weekly goals and progression. The [release notes](https://github.com/stokonn/Gould/blob/main/docs/releases/GOULD-0.14.md) describe the new reward behavior.
 
 
-Use Library for your personal repertoire and the shared local catalogue, and Discover to explore sourced music records. Both tabs open the same canonical catalogue details. Public catalogue rows are labelled separately from music saved in your repertoire; open details to add an eligible work or open its existing repertoire entry.
+Use Library for your personal repertoire and the shared local catalogue. Discover is temporarily hidden from Gould 0.14.0 navigation while its implementation is preserved. Public catalogue rows are labelled separately from music saved in your repertoire; open details to add an eligible work or open its existing repertoire entry.
 
 Search uses saved catalogue data first. Automatic online provider search requires Settings consent. Source and licence information is available in Sources & credits. Existing cached metadata is retained; a local snapshot without its original provider response does not acquire approved rights merely by being copied.
 

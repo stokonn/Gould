@@ -1,12 +1,30 @@
 # Gould current status
 
-**Status date:** 2026-11-11
-**Canonical branch:** `main` at `c8980539bb76408d6f1284e4b3a885cdb71af6fc`
-**Published release:** [`v0.13`](https://github.com/stokonn/Gould/releases/tag/v0.13), Gould 0.13 — Project Renaissance, GitHub pre-release (not Stable).
+## Current publication status — November 14, 2026
+
+Gould 0.14.0 is published as the latest GitHub pre-release (not Stable):
+[`v0.14.0`](https://github.com/stokonn/Gould/releases/tag/v0.14.0). Tag
+`v0.14.0` points to the Gould 0.14.0 PR merge commit
+`b507aaeb47187ac2280ecce2873bdf05cf2b40ee`. The signed APK asset is
+`gould-0.14.0.apk`, SHA-256
+`62c83ddef804a83b71bd05f3f0b09cec29a0784902ad79b0b16ec8bae75b1f2c`.
+Package `com.opus.piano`, version 0.14.0, versionCode 16, non-debuggable, and
+the trusted signing certificate were verified. Signed in-place upgrade and
+visual emulator/screenshot review remain unexecuted; owner phone review is
+separate from automated evidence.
+
+The November 11 maintenance snapshot below remains historical evidence for its
+date. Its release and next-work statements are superseded by this update; its
+unrelated maintenance findings remain open where still applicable.
+
+## Maintenance snapshot — November 11, 2026
+
+**Snapshot branch:** `main` at `c8980539bb76408d6f1284e4b3a885cdb71af6fc`
+**Published release at snapshot:** [`v0.13`](https://github.com/stokonn/Gould/releases/tag/v0.13), Gould 0.13 — Project Renaissance, GitHub pre-release (not Stable).
 
 ## Current verified repository state
 
-- The latest verified `main` commit is `c8980539` (November 2, 2026), a documentation-only merge of [PR #48](https://github.com/stokonn/Gould/pull/48), updating the canonical Wiki sidebar source for Gould 0.13.
+- The latest verified `main` commit at this snapshot is `c8980539` (November 2, 2026), a documentation-only merge of [PR #48](https://github.com/stokonn/Gould/pull/48), updating the canonical Wiki sidebar source for Gould 0.13.
 - PR #48 is merged. At the maintenance inventory on November 11, there were no open pull requests and no open Issues.
 - Exact-commit CI at `c8980539` passed all three required checks: `host-quality` ([run 41500959420](https://github.com/stokonn/Gould/actions/runs/41500959420)), `synthetic-postgres` ([run 41500959252](https://github.com/stokonn/Gould/actions/runs/41500959252)) and `administration-safety` ([run 41500959177](https://github.com/stokonn/Gould/actions/runs/41500959177)).
 - The repository has GitHub Wiki enabled and `docs/wiki/` is the canonical maintained source. PR #48 explicitly requires a separate Wiki synchronization. The Wiki repository/API could not be read during this audit (the expected `Gould.wiki` API endpoint returned 404); **public Wiki synchronization is therefore unverified**, not claimed complete.
@@ -14,7 +32,7 @@
 
 ## Current product and data boundaries
 
-- Gould 0.13 is the latest published pre-release; it is not Stable.
+- At this snapshot, Gould 0.13 was the latest published pre-release; it was not Stable.
 - Gould remains local-first. Practice data, recordings, repertoire and backups remain on the device unless the user deliberately exports them.
 - Community submissions, backend OAuth and practice-data uploads remain disabled. The restricted read-only catalogue remains optional and has no approved published records.
 - Application ID/namespace `com.opus.piano`, database `opus.db`, signing compatibility, stored identifiers, migrations, backup formats, legal notices and historical release assets remain protected.
@@ -36,7 +54,7 @@ No application source, backend source, CI workflow, release asset, tag, branch, 
 - Review and merge the documentation-only maintenance PR after its own checks pass and owner approval.
 - Resolve Wiki repository access/synchronization without overwriting existing pages or history.
 - Resolve protected historical-data custody only through a separately reviewed, backed-up procedure.
-- Start Gould 0.14 only as a separate Phase 1 architecture/review/planning effort. No 0.14 feature scope, implementation or release authorization is created by this maintenance record.
+- The Gould 0.14 publication status is recorded at the top of this document. No unrelated maintenance authorization is changed by that release.
 
 ## Instructions versus history
 

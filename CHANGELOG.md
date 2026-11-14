@@ -1,11 +1,13 @@
-## Gould 0.14 — in development, not released
+## Gould 0.14.0 — pre-release
 
 - Add a deterministic Kotlin Multiplatform domain module with `commonMain` rules for Monday-first weeks, historical goals, Beta Week, daily Training/Day Off/Miss classification and weekly streak/Freeze projections. It has a JVM target; Android remains the only application platform in this update.
 - Add a Room 11→12 additive Activity schema and backup format 7 while retaining legacy backup readers and existing journal records.
 - Add Activity navigation, annual heatmap, week overview, statistics details and retrospective manual Activity records distinct from microphone evidence.
 - Add a data-driven cosmetic collection, equipped appearance items and idempotent weekly rewards; temporarily hide Discover and the visible administration entry while preserving their implementation.
-- Development targets Android 11 (minSdk 30), compile/target API 37, versionCode 16, versionName `0.14.0-dev`; current verification is incomplete and this work is not a public release.
-- See [the 0.14 implementation and verification status](docs/releases/GOULD-0.14.md). The latest published release remains Gould 0.13.
+- Targets Android 11 (minSdk 30), compile/target API 37, versionCode 16 and versionName `0.14.0`.
+- Each eligible perfect week earns an independent cosmetic. Four consecutive perfect official Streak weeks grant one additional Freeze; Beta Week may earn its weekly cosmetic but does not advance official Streak or Freeze progress.
+- The signed, non-debuggable APK is distributed as a GitHub pre-release, not Stable. Signed in-place upgrade verification and visual emulator review remain unexecuted.
+- [Release notes and verification](docs/releases/GOULD-0.14.md) · [GitHub pre-release](https://github.com/stokonn/Gould/releases/tag/v0.14.0).
 
 ## Gould 0.13 — Project Renaissance (pre-release)
 
