@@ -4,7 +4,7 @@
 
 Purpose: add a deterministic Activity experience and weekly progression while preserving the existing personal journal and preparing a clean shared Kotlin domain boundary.
 
-Scope: shared-ready domain rules; Android/Room persistence and backup; Activity navigation/UI; historical goals, Beta Week, manual activity, weekly streak and Freeze; cosmetic ownership/rewards; temporary navigation hiding; SDK compatibility; documentation, verification, integration, and prerelease.
+Scope: deterministic domain rules; Android/Room persistence and backup; Activity navigation/UI; historical goals, Beta Week, manual activity, weekly streak and Freeze; cosmetic ownership/rewards; temporary navigation hiding; SDK compatibility; documentation, verification, integration, and prerelease.
 
 ### Phase 0 — Preflight
 - [x] Confirm canonical repository identity and active worktree.
@@ -502,5 +502,46 @@ integrity valid, and has trusted certificate SHA-256
 `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e` and APK
 SHA-256 `62c83ddef804a83b71bd05f3f0b09cec29a0784902ad79b0b16ec8bae75b1f2c`.
 No commit, push, merge, tag, or publication was performed.
+
+## 2026-11-14 — final PR audit
+
+Reviewed the workflow-dispatch emulator gate, service-readiness helper, local
+API 37 runner, changed schema/backup paths, CI SDK configuration and modified
+0.14 documentation. Kept the emulator workflow workflow-dispatch-only and did
+not dispatch it.
+
+- [x] Require the shared two-probe readiness gate before the local API 37
+  runner installs or launches the app; reject a missing mount service using an
+  exact positive match rather than the ambiguous substring `found`.
+- [x] Preserve evidence by refusing an existing results directory, use a
+  unique default evidence path, validate even emulator console ports, and
+  terminate only the emulator PID started by this runner if console shutdown
+  does not stop it.
+- [x] Retry instrumentation only for absent or clean zero-test XML. Malformed
+  or invalid-count XML, failures, errors and skipped-test evidence are not
+  retried as infrastructure; the final result gate still fails on malformed
+  results, command failures, failures, errors or zero tests.
+- [x] Correct the API 37 SDK/platform and deterministic Kotlin domain wording;
+  append current final verification without changing historical APK hashes or
+  prior dated verification entries.
+- [ ] Provide a downloadable PR APK artifact. Existing Actions workflows do
+  not access the trusted signing identity, and the CLI has no supported APK
+  attachment route; preserve the APK outside Git and report this limitation.
+
+The Room 11→12 migration is additive and provides storage for Activity weeks,
+goals, manual entries, cosmetic ownership, reward grants and loadout. Backup
+format 7 carries those records while retaining readers for formats 1–6. The CI
+API 37 platform installation matches the configured compile/target SDK; the
+separate historical acceptance emulator remains API 36. Raising minSdk to 30
+still means Android 8–10 cannot install 0.14; this compatibility limit is
+documented and was not changed in this audit.
+
+Focused verification after this audit: shell syntax, YAML parsing and embedded
+workflow shell syntax passed; synthetic retry accounting covered absent/zero,
+passing, failure, error, malformed and invalid-count XML; agent policy,
+migration DDL and backup-fixture checks passed. No Gradle build, app test,
+emulator run, visual check or APK rebuild was performed because this audit made
+no application-source change. The previously recorded 410 app JVM tests and
+15/15 API 37 repository tests remain the latest executed application tests.
 
 created by stokonn with love <3

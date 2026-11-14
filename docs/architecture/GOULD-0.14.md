@@ -4,7 +4,7 @@
 
 ## Boundaries
 
-The Android application remains in `:app` and owns Compose screens, Android ViewModels, Room, widgets, audio, microphone services, notifications, WorkManager and file access. `:activity-domain` is a Kotlin Multiplatform module with deterministic week, goal, classification, streak, Freeze and aggregate rules in `commonMain`; it currently declares and validates a JVM target. This boundary is shared-ready, not an iOS application or a claim that Android persistence is cross-platform.
+The Android application remains in `:app` and owns Compose screens, Android ViewModels, Room, widgets, audio, microphone services, notifications, WorkManager and file access. `:activity-domain` is a Kotlin Multiplatform module with deterministic week, goal, classification, streak, Freeze and aggregate rules in `commonMain`; it declares and validates a JVM target. Android remains the only application platform in this update; no iOS app or cross-platform persistence is included.
 
 PracticeCoordinator and PracticeEngine remain authoritative for practice timing and session completion. Activity reads valid existing sessions through their recorded practice day/time zone and adds separately typed manual entries. It does not create or rewrite PracticeSession rows. Manual entries are accepted for today and the previous two local calendar dates, including dates before Activity was first opened. UI and repository validation use the same local-date window; the repository resolves today's date and zone at submission. New activity dates use local Monday-first calendar weeks; observed week records retain their zone. Rules accept dates/zone metadata explicitly rather than reading the global clock.
 

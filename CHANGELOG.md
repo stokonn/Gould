@@ -1,6 +1,6 @@
 ## Gould 0.14 — in development, not released
 
-- Add a shared-ready deterministic Kotlin domain for Monday-first weeks, historical goals, Beta Week, daily Training/Day Off/Miss classification and weekly streak/Freeze projections.
+- Add a deterministic Kotlin Multiplatform domain module with `commonMain` rules for Monday-first weeks, historical goals, Beta Week, daily Training/Day Off/Miss classification and weekly streak/Freeze projections. It has a JVM target; Android remains the only application platform in this update.
 - Add a Room 11→12 additive Activity schema and backup format 7 while retaining legacy backup readers and existing journal records.
 - Add Activity navigation, annual heatmap, week overview, statistics details and retrospective manual Activity records distinct from microphone evidence.
 - Add a data-driven cosmetic collection, equipped appearance items and idempotent weekly rewards; temporarily hide Discover and the visible administration entry while preserving their implementation.

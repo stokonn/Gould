@@ -2,7 +2,7 @@
 
 ## Gould 0.14 development status
 
-Gould 0.14 is not released. The latest published app remains Gould 0.13. Beta Week is a transition period: it can earn an independent weekly cosmetic when configured goals are met, but is excluded from official Streak and Freeze progress. Starting official tracking on Monday begins a normal week. A daily Miss is not by itself a failed weekly goal. Optional weekly minutes, when configured, are part of a perfect week's eligibility. A Freeze protects a closed week that missed its session goal.
+Gould 0.14 is not released. The latest published app remains Gould 0.13. Beta Week is a transition period: it can earn an independent weekly cosmetic when configured goals are met, but is excluded from official Streak and Freeze progress. Starting official tracking on Monday begins a normal week. A daily Miss is not by itself a failed weekly goal. Optional weekly minutes, when configured, are part of a perfect week's eligibility. A Freeze protects a closed week that missed its configured weekly requirements.
 
 Manual Activity is a separate local record, not a historical practice session and not microphone-verified activity. It may be entered for today or the previous two local calendar dates; future and older dates are rejected. This window does not depend on when Activity was first opened. Deletion requires confirmation. Existing practice journal dates and microphone-related achievements are not fabricated or rewritten.
 
