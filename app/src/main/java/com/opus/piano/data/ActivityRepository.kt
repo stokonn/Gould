@@ -23,6 +23,10 @@ data class ActivitySnapshot(
     val currentWeeklyStreak: Int,
     val longestWeeklyStreak: Int,
     val freezes: FreezeState,
+    val todayDurationMillis: Long,
+    val dailyStreak: Int,
+    val recentDailyDurationMillis: List<Long>,
+    val allTimeDurationMillis: Long,
 )
 
 /** Android/Room adapter for the platform-free weekly rules. */
@@ -32,6 +36,16 @@ class ActivityRepository(private val db: OpusDatabase) {
     val ownedCosmetics: Flow<List<CosmeticOwnership>> get() = db.activityDao().ownedCosmetics()
     val loadout: Flow<List<CosmeticLoadout>> get() = db.activityDao().loadout()
     val pendingReward: Flow<ActivityRewardGrant?> get() = db.activityDao().pendingReward()
+    val claimedReward: Flow<ActivityRewardGrant?> get() = db.activityDao().latestClaimedReward()
+    val practiceSessions: Flow<List<PracticeSession>> get() = db.dao().observeSessions()
+
+    fun activityChanges(): Flow<Pair<List<PracticeSession>, List<ManualActivityEntry>>> =
+        kotlinx.coroutines.flow.combine(practiceSessions, manualEntries) { sessions, manual -> sessions to manual }
+
+    suspend fun rewardState(): Pair<ActivityRewardGrant?, ActivityRewardGrant?> = db.withTransaction {
+        val dao = db.activityDao()
+        dao.currentPendingReward() to dao.currentClaimedReward()
+    }
 
     suspend fun initialize(today: LocalDate = LocalDate.now(), zone: ZoneId = ZoneId.systemDefault(), now: Long = System.currentTimeMillis()): ActivitySettings = db.withTransaction {
         val dao = db.activityDao()
@@ -54,8 +68,9 @@ class ActivityRepository(private val db: OpusDatabase) {
     suspend fun addManualActivity(day: LocalDate, minutes: Int, today: LocalDate = LocalDate.now(), zone: ZoneId = ZoneId.systemDefault(), now: Long = System.currentTimeMillis()): String {
         require(minutes in 1..1440) { "Enter a duration from 1 to 1,440 minutes." }
         val settings = initialize(today, zone)
-        require(day < today) { "Activity can only be added through yesterday." }
-        require(day >= LocalDate.parse(settings.firstUseDay)) { "Activity must be within Gould Activity history." }
+        require(day.toEpochDay() in manualActivityDates(today.toEpochDay())) {
+            "Activity can only be added today or up to two days ago."
+        }
         val id = UUID.randomUUID().toString()
         db.activityDao().addManualEntry(ManualActivityEntry(id, day.toString(), zone.id, minutes * 60_000L, now))
         return id
@@ -82,9 +97,14 @@ class ActivityRepository(private val db: OpusDatabase) {
         val state = closed.lastOrNull()?.streak ?: FreezeState()
         val currentMet = !week.beta && totals.sessions >= goal.sessions
         val visibleStreak = state.currentStreak + if (currentMet) 1 else 0
-        ActivitySnapshot(firstUse, week, goal, daily, totals, workouts.size,
-            workouts.fold(0L) { total, item -> saturatingAdd(total, item.durationMillis) } / 60_000L,
-            visibleStreak, maxOf(state.longestStreak, visibleStreak), state.copy(currentStreak = visibleStreak, longestStreak = maxOf(state.longestStreak, visibleStreak)))
+        val uniqueWorkouts = workouts.distinctBy { it.sourceId }
+        ActivitySnapshot(firstUse, week, goal, daily, totals, uniqueWorkouts.size,
+            uniqueWorkouts.fold(0L) { total, item -> saturatingAdd(total, item.durationMillis) } / 60_000L,
+            visibleStreak, maxOf(state.longestStreak, visibleStreak), state.copy(currentStreak = visibleStreak, longestStreak = maxOf(state.longestStreak, visibleStreak)),
+            uniqueWorkouts.filter { it.epochDay == today.toEpochDay() }.fold(0L) { total, item -> saturatingAdd(total, item.durationMillis) },
+            currentActivityStreak(uniqueWorkouts, today.toEpochDay()),
+            (6 downTo 0).map { offset -> uniqueWorkouts.filter { it.epochDay == today.minusDays(offset.toLong()).toEpochDay() }.fold(0L) { total, item -> saturatingAdd(total, item.durationMillis) } },
+            uniqueWorkouts.fold(0L) { total, item -> saturatingAdd(total, item.durationMillis) })
     }
 
     suspend fun yearActivity(year: Int, today: LocalDate = LocalDate.now(), zone: ZoneId = ZoneId.systemDefault()): List<DayActivity> = withContext(Dispatchers.Default) {
@@ -130,17 +150,40 @@ class ActivityRepository(private val db: OpusDatabase) {
         }
     }
 
-    suspend fun acknowledgeReward(weekMonday: String, now: Long = System.currentTimeMillis()) {
-        db.activityDao().acknowledgeReward(weekMonday, now)
+    /** Claim is one durable transaction: ownership and the claimed timestamp either both
+     * commit or neither does. Calling it again for an already-claimed week is a no-op. */
+    suspend fun claimReward(weekMonday: String, now: Long = System.currentTimeMillis()): Boolean = db.withTransaction {
+        val dao = db.activityDao()
+        val reward = dao.grant(weekMonday) ?: return@withTransaction false
+        val cosmeticId = reward.cosmeticId ?: return@withTransaction false
+        if (reward.result != "COSMETIC" || reward.acknowledgedAt != 0L) return@withTransaction false
+
+        // Older 0.14 builds granted ownership automatically. Treat such rows as claimed
+        // during upgrade instead of offering the same cosmetic a second time.
+        if (dao.owns(cosmeticId)) {
+            dao.acknowledgeReward(weekMonday, now)
+            return@withTransaction false
+        }
+        check(dao.own(CosmeticOwnership(cosmeticId, now, weekMonday)) != -1L) {
+            "Cosmetic ownership already exists."
+        }
+        check(dao.acknowledgeReward(weekMonday, now) == 1) { "Reward is no longer claimable." }
+        true
     }
 
     private suspend fun evaluateRewards(firstUse: LocalDate, currentMonday: LocalDate, goals: List<WeeklyGoal>, workouts: List<Workout>, now: Long) {
         var monday = monday(firstUse)
         while (monday <= currentMonday) {
-            val week = Week(monday.toEpochDay(), db.activityDao().week(monday.toString())?.zoneId ?: "UTC")
+            val record = db.activityDao().week(monday.toString())
+            val beta = record?.beta ?: (monday == monday(firstUse) && firstUse.dayOfWeek != DayOfWeek.MONDAY)
+            val week = Week(monday.toEpochDay(), record?.zoneId ?: "UTC", beta)
             val goal = activeGoal(goals, week.monday)
-            val minutesTarget = goal.minutes
-            if (minutesTarget != null && aggregate(workouts, week).minutes >= minutesTarget) grantReward(monday, now)
+            // Cosmetics follow weekly goals independently of Streak eligibility.
+            // A fulfilled active Beta Week can grant immediately; regular weeks
+            // still grant only after closing. Streak evaluation separately
+            // treats Beta as neutral in weekSuccess/evaluateHistory.
+            val closedWeek = monday < currentMonday
+            if ((closedWeek || week.beta) && perfectWeek(week, goal, workouts)) grantReward(monday, now)
             monday = monday.plusWeeks(1)
         }
     }
@@ -149,10 +192,13 @@ class ActivityRepository(private val db: OpusDatabase) {
         val dao = db.activityDao()
         val key = monday.toString()
         if (dao.grant(key) != null) return@withTransaction
-        val owned = dao.allOwnedCosmetics().mapTo(mutableSetOf()) { it.cosmeticId }
-        val available = ActivityCosmetics.all.filterNot { it.id in owned }
+        val reserved = buildSet {
+            dao.allOwnedCosmetics().forEach { add(it.cosmeticId) }
+            dao.grants().mapNotNullTo(this) { it.cosmeticId }
+        }
+        val available = ActivityCosmetics.all.filterNot { it.id in reserved }
         if (available.isEmpty()) {
-            dao.grant(ActivityRewardGrant(key, null, "COLLECTION_COMPLETE", now))
+            dao.grant(ActivityRewardGrant(key, null, "COLLECTION_COMPLETE", now, acknowledgedAt = now))
             return@withTransaction
         }
         val random = Random(key.hashCode())
@@ -162,7 +208,6 @@ class ActivityRepository(private val db: OpusDatabase) {
         val selectedRarity = rarities.first { rarity -> choice -= rarity.weight; choice < 0 }
         val sameRarity = available.filter { it.rarity == selectedRarity }
         val selected = sameRarity[random.nextInt(sameRarity.size)]
-        check(dao.own(CosmeticOwnership(selected.id, now, key)) != -1L) { "Cosmetic ownership already exists." }
         check(dao.grant(ActivityRewardGrant(key, selected.id, "COSMETIC", now)) != -1L) { "Reward grant already exists." }
     }
 

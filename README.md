@@ -26,7 +26,7 @@ Build your repertoire, record your sessions, and see how far you've come.</p>
 
 > **Gould 0.14 is in development and is not available as a release.** The Activity, weekly goals, streak protection and cosmetic reward features described in the development documentation are not part of the published 0.13 APK. The latest published version remains [Gould 0.13](https://github.com/stokonn/Gould/releases/tag/v0.13).
 
-> **Gould 0.14 is in development and is not available as a release.** The Activity, weekly goals, streak protection and cosmetic reward features described in the development documentation are not part of the published 0.13 APK. The latest published version remains [Gould 0.13](https://github.com/stokonn/Gould/releases/tag/v0.13).
+In 0.14 development, each eligible perfect week can earn its own claimable cosmetic. Beta Week can earn that weekly reward but does not count toward official Streak or Freeze progress; four consecutive perfect official Streak weeks award one additional Freeze.
 
 Gould brings the practical parts of piano practice together without turning your journal into another social network.
 
@@ -67,8 +67,6 @@ Gould brings the practical parts of piano practice together without turning your
 
 The 0.14 development branch currently targets Android 11 (API 30) and compile/target API 37. This is not the minimum SDK of the published 0.13 release.
 
-The 0.14 development branch currently targets Android 11 (API 30) and compile/target API 37. This is not the minimum SDK of the published 0.13 release.
-
 [All releases](https://github.com/stokonn/Gould/releases) · [Getting started](docs/wiki/Getting-Started.md) · [FAQ & troubleshooting](docs/wiki/FAQ-and-Troubleshooting.md)
 
 ## Privacy by design
@@ -87,7 +85,6 @@ For developers:
 
 - Start with [AGENTS.md](AGENTS.md) for repository and release-safety rules, and the [Developer Guide](docs/wiki/Developer-Guide.md) for architecture.
 - Use **JDK 17**, the **Android SDK 37 platform** and the committed Gradle wrapper for the 0.14 development branch.
-- Gould 0.14 development adds a JVM-targeted Kotlin Multiplatform domain module and keeps Room as the Android personal database. Its SDK/toolchain direction and verification status are documented in [the 0.14 development notes](docs/releases/GOULD-0.14.md); these are not release instructions.
 - Gould 0.14 development adds a JVM-targeted Kotlin Multiplatform domain module and keeps Room as the Android personal database. Its SDK/toolchain direction and verification status are documented in [the 0.14 development notes](docs/releases/GOULD-0.14.md); these are not release instructions.
 - Gould **0.13 Project Renaissance** is published as a [pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13), not Stable. See its [release notes](docs/releases/GOULD-0.13.md), [release readiness](docs/planning/gould-0.13/RELEASE-READINESS.md), and the [English screenshot capture plan](docs/planning/gould-0.13/README-SCREENSHOT-CAPTURE.md).
 - Source compilation and CI are not substitutes for on-device, upgrade or release-signing acceptance. Published releases undergo separate checks.

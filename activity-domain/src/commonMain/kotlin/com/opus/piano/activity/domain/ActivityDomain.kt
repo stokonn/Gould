@@ -47,6 +47,25 @@ fun aggregate(workouts: List<Workout>, week: Week): WeekTotals {
     return WeekTotals(rows.size, rows.fold(0L) { total, row -> saturatingAdd(total, row.durationMillis) } / 60_000L)
 }
 
+/** Manual entries are limited to today and the previous two calendar days. */
+fun manualActivityDates(today: Long): List<Long> = (today - 2L..today).toList()
+
+/** Daily activity streak across all persisted workout sources. Multiple activities on
+ * one calendar date count as one streak day; a gap breaks the streak. */
+fun currentActivityStreak(workouts: List<Workout>, today: Long): Int {
+    val days = workouts.asSequence().map { it.epochDay }.filter { it <= today }.toSet()
+    var cursor = if (today in days) today else today - 1L
+    var count = 0
+    while (cursor in days) { count++; cursor-- }
+    return count
+}
+
+/** A cosmetic reward requires a completed, non-Beta week that met every configured goal. */
+fun perfectWeek(week: Week, goal: WeeklyGoal, workouts: List<Workout>): Boolean {
+    val totals = aggregate(workouts, week)
+    return totals.sessions >= goal.sessions && (goal.minutes == null || totals.minutes >= goal.minutes)
+}
+
 /** Actual work wins; then the earliest inactive dates use the allowance. */
 fun classifyWeek(week: Week, goal: WeeklyGoal, workouts: List<Workout>, through: Long = week.sunday): List<DayActivity> {
     require(goal.effectiveMonday <= week.monday)
@@ -65,7 +84,7 @@ fun classifyWeek(week: Week, goal: WeeklyGoal, workouts: List<Workout>, through:
 
 /** A current or Beta Week is not a failed week. */
 fun weekSuccess(week: Week, goal: WeeklyGoal, workouts: List<Workout>, evaluatedThrough: Long): Boolean? =
-    if (week.beta || evaluatedThrough < week.sunday) null else aggregate(workouts, week).sessions >= goal.sessions
+    if (week.beta || evaluatedThrough < week.sunday) null else perfectWeek(week, goal, workouts)
 
 /** A protected failed week preserves the streak but earns no freeze progress. */
 fun closeWeek(previous: FreezeState, success: Boolean, beta: Boolean = false): Pair<FreezeState, Boolean> {

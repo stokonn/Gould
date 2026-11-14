@@ -2,11 +2,13 @@
 
 ## Gould 0.14 development status
 
-Gould 0.14 is not released. The latest published app remains Gould 0.13. On the development branch, the first partial Activity week is Beta Week and is excluded from streak evaluation; starting on Monday makes that a normal week. A daily Miss is not by itself a failed weekly goal. A Freeze protects a missed weekly session goal automatically; it does not protect or respond to a missed optional minutes goal.
+Gould 0.14 is not released. The latest published app remains Gould 0.13. Beta Week is a transition period: it can earn an independent weekly cosmetic when configured goals are met, but is excluded from official Streak and Freeze progress. Starting official tracking on Monday begins a normal week. A daily Miss is not by itself a failed weekly goal. Optional weekly minutes, when configured, are part of a perfect week's eligibility. A Freeze protects a closed week that missed its session goal.
 
-Manual Activity is a separate local record, not a historical practice session and not microphone-verified activity. It cannot be entered for today or a future date, and deletion requires confirmation. Existing practice journal dates and microphone-related achievements are not fabricated or rewritten.
+Manual Activity is a separate local record, not a historical practice session and not microphone-verified activity. It may be entered for today or the previous two local calendar dates; future and older dates are rejected. This window does not depend on when Activity was first opened. Deletion requires confirmation. Existing practice journal dates and microphone-related achievements are not fabricated or rewritten.
 
-If a cosmetic pool has no unowned items, a successful eligible reward week is recorded as collection complete without issuing a duplicate. A cosmetic that was already granted remains owned if later historical edits change the week's calculations.
+Day Off labels an inactive date within the weekly session allowance. It does not consume or grant a streak Freeze. A Freeze protects a completed week that missed its configured weekly requirements; daily labels alone do not decide whether a weekly streak is rescued.
+
+Eligible rewards stay pending until Claim is tapped in Activity's Weekly Goal section. Ownership and the claim timestamp are saved together; an app restart preserves an unclaimed reward, and a claimed reward is not offered again. Older rewards already granted automatically remain owned and are not offered twice. If no unowned or pending cosmetic remains, a successful eligible week is recorded as collection complete without issuing a duplicate. Owned cosmetics are available through the Profile collection shortcut and can be equipped with Apply.
 
 Discover and the visible administration entry are hidden only in the 0.14 development build. Their code is preserved. The exact historical Discover screenshot issue and any moderation defect have not been reproduced as part of this branch; reactivation needs source review and focused regression tests.
 
