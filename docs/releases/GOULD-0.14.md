@@ -123,3 +123,38 @@ SHA-256 `a49a77a453b8de1c584e1c9537328d0d927491bcea09e9aaeb1e4b8b42205b8e`.
 Signature, ZIP integrity, package metadata and release lint checks passed. This
 is an internal review artifact; owner phone review remains pending. No Git or
 publication operation occurred.
+
+## November 14, 2026 — final PR review verification
+
+Executed checks:
+
+- `scripts/verify-fast.sh` passed with 410/410 app JVM tests and the
+  localization, migration, backup-fixture and history-paging checks.
+- API 37 `ActivityRepositoryTest` passed 15/15. This includes the exact active
+  Beta Week regression: six sessions against a goal of three and 96 minutes
+  against a goal of 90 grant one persisted cosmetic; repeated evaluation does
+  not duplicate it. Beta Week leaves official Streak and Freeze progress
+  unchanged.
+- `scripts/verify-release.sh` passed after the reward correction. The host
+  release gate executed the app JVM tests and passed the clean debug build,
+  lint and repository policy checks.
+- The signed review APK was checked without rebuilding. It is package
+  `com.opus.piano`, version `0.14.0`, versionCode 16, `debuggable=false`, with a
+  valid v2 signature and ZIP structure. Certificate SHA-256 is the trusted
+  identity `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`.
+  APK SHA-256 is
+  `62c83ddef804a83b71bd05f3f0b09cec29a0784902ad79b0b16ec8bae75b1f2c`.
+
+Compilation-only and unexecuted checks:
+
+- Android instrumentation APK compilation passed. `ActivityGoalEditorUiTest`
+  compiled, but its API 36 emulator failed to register with ADB before its
+  assertions ran; it is not runtime-test evidence.
+- No visual emulator tests or screenshot comparisons were performed.
+- Signed in-place upgrade verification remains unexecuted. Owner phone review
+  is separate from automated verification and remains pending.
+- The emulator workflow remains `workflow_dispatch`-only and was not
+  dispatched for this audit.
+
+The APK is a private review build, not a release asset. No release or tag was
+created.
