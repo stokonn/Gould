@@ -1,5 +1,17 @@
 # User Guide — Gould
 
+> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
+
+> **0.14 development note — unreleased:** The Activity destination replaces Discover in the development build. Its annual heatmap groups days into Training, Day Off and Miss; tapping a day shows its date, workout count and exercise minutes. Week Overview reports sessions and optional minutes progress. These development features are not in the published 0.13 APK. Discover code remains in the app but its navigation entry is hidden.
+
+Activity's manual entries are local records separate from practice-session and microphone-detection evidence. They can be added for today or either of the previous two local calendar dates, including dates before Activity was first opened, and deleted with confirmation. They count as one workout and their entered duration contributes to Activity progress, global activity totals and daily streaks. They do not rewrite the historical practice journal or assert microphone verification. The same source activity is included once; separate workouts on the same day remain separate.
+
+Edit weekly goals from the pencil action in Activity's header; changes take effect the following Monday. The initial Beta Week is a transition period: it can grant its own claimable cosmetic when the configured session and optional minutes goals are met, but it does not count as an official Streak week or advance Freeze progress. From the official start, each eligible perfect week has an independent cosmetic reward to claim in Activity's Weekly Goal section. Four consecutive perfect official Streak weeks grant one additional Freeze; a broken streak resets only this milestone progress. Claiming one cosmetic does not affect other weeks' rewards. Open the Profile collection shortcut to apply claimed cosmetics.
+
+The first partial week after Activity is initialized is a non-streak Beta Week; a Monday start is a normal week. Inactive dates use the weekly Day Off allowance, assigned chronologically; remaining inactive dates are Miss. Day Off is a daily calendar label and does not use or grant a Freeze. A Freeze protects a closed week that missed its configured weekly requirements; a daily Miss alone does not fail the weekly streak. Historical outcomes are recomputed from the activity record.
+
+Year navigation shows historical dates and hides future dates. Activity uses local calendar dates and records a time-zone identifier per observed week; existing practice session dates are not rewritten. Correcting manual history recomputes progression. A cosmetic already granted remains owned after a later correction.
+
 > **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
 
 Gould 0.13 retains these workflows and adds performance and recording-list reliability improvements.

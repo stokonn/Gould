@@ -52,9 +52,9 @@ import java.time.format.DateTimeFormatter
 
 private enum class Destination(val label: String, val icon: ImageVector) {
     OVERVIEW("Home", Icons.Outlined.Home), HOME("Profile", Icons.Outlined.Person), REPERTOIRE("Library", Icons.Outlined.LibraryMusic),
-    DISCOVER("Discover", Icons.Outlined.Explore), PRACTICE("Studio", Icons.Outlined.Piano), BADGES("Badges", Icons.Outlined.EmojiEvents), WRAPPED("Wrapped", Icons.Outlined.Insights)
+    DISCOVER("Discover", Icons.Outlined.Explore), ACTIVITY("Activity", Icons.Outlined.CalendarMonth), PRACTICE("Studio", Icons.Outlined.Piano), BADGES("Badges", Icons.Outlined.EmojiEvents), WRAPPED("Wrapped", Icons.Outlined.Insights)
 }
-@Composable fun OpusApp(model: OpusViewModel, catalog: CatalogViewModel, experience: ExperienceViewModel, profile: ProfileViewModel, admin: com.opus.piano.ui.admin.AdminViewModel) {
+@Composable fun OpusApp(model: OpusViewModel, catalog: CatalogViewModel, experience: ExperienceViewModel, profile: ProfileViewModel, admin: com.opus.piano.ui.admin.AdminViewModel, activity: ActivityViewModel) {
     ProfileEditor(profile)
     val context = LocalContext.current
     val focus = androidx.compose.ui.platform.LocalFocusManager.current
@@ -137,12 +137,12 @@ private enum class Destination(val label: String, val icon: ImageVector) {
         modifier = Modifier.imePadding(),
         snackbarHost = { SnackbarHost(snackbar) },
         bottomBar = {
-            val destinations = listOf(Destination.OVERVIEW, Destination.REPERTOIRE, Destination.DISCOVER, Destination.PRACTICE, Destination.HOME)
+            val destinations = listOf(Destination.OVERVIEW, Destination.REPERTOIRE, Destination.ACTIVITY, Destination.PRACTICE, Destination.HOME)
             val selected = (if (current == SETTINGS_ROUTE) selectedTab(nav.previousBackStackEntry?.destination?.route ?: PROFILE_ROUTE) else selectedTab(current))
             JournalNavigationBar(
                 items = destinations.map { destination ->
                     JournalNavigationItem(destination.name,
-                        if (destination == Destination.DISCOVER) L.s(R.string.discover) else L.fixed(destination.label), destination.icon)
+                        if (destination == Destination.ACTIVITY) L.s(R.string.activity_title) else L.fixed(destination.label), destination.icon)
                 },
                 selectedRoute = selected,
                 onSelect = { route ->
@@ -158,15 +158,11 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 enterTransition = { fadeIn(tween(if (motionScale == 0f) 0 else 220)) }, exitTransition = { fadeOut(tween(if (motionScale == 0f) 0 else 150)) }) {
                 composable(Destination.OVERVIEW.name) {
                     val settings by profile.settings.collectAsStateWithLifecycle()
-                    BalancedHome(library, settings.username, { nav.navigate("piece/$it") }, { nav.navigate("history") }, {nav.navigate(SETTINGS_ROUTE)})
+                    BalancedHome(library, settings.username, { nav.navigate("piece/$it") }, { nav.navigate("history") }, {nav.navigate(SETTINGS_ROUTE)}, activity)
                 }
                 composable(SETTINGS_ROUTE) { SettingsScreen(profile, model, { replay = true }) { nav.popBackStack() } }
                 composable(Destination.HOME.name) {
-                    val adminCaps by admin.caps.collectAsStateWithLifecycle()
-                    val adminFailure by admin.capsFailure.collectAsStateWithLifecycle()
-                    val administration: (() -> Unit)? =
-                        if (admin.entryVisible(adminCaps, adminFailure)) ({ nav.navigate("admin") }) else null
-                    ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }, administration = administration, badgeDetail = { nav.navigate("badge/$it") })
+                    ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }, administration = null, badgeDetail = { nav.navigate("badge/$it") }, customizeCosmetics = { nav.navigate("COSMETICS") }, activity = activity)
                 }
                 // Stage 7B: role-gated Administration (entry is convenience only — the
                 // server always enforces capabilities on every admin endpoint).
@@ -211,6 +207,8 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 composable(Destination.REPERTOIRE.name) {
                     RepertoireScreen(library,catalogData,model,{nav.selectTopLevel("DISCOVER")},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")},catalog,{nav.navigate("catalog/work/$it")},{nav.navigate("discover/entity/$it")},{nav.navigate("previous")})
                 }
+                composable(Destination.ACTIVITY.name) { ActivityScreen(activity) { nav.navigate("COSMETICS") } }
+                composable("COSMETICS") { CosmeticCollectionScreen(activity) { nav.popBackStack() } }
                 composable(Destination.DISCOVER.name) { DiscoverScreen({ nav.navigate("discover/entity/$it") }, { nav.navigate("piece/$it") }, { nav.navigate("catalog/work/$it") }, library) }
                 composable("discover/entity/{id}") { route -> DiscoverDetailScreen(route.arguments?.getString("id").orEmpty(), {nav.popBackStack()}, {nav.navigate("discover/entity/$it")}, {nav.navigate("piece/$it")}) }
                 composable("catalog") { CatalogScreen(catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("catalog/work/$it") }, { nav.navigate("piece/$it") },profile=profile) }

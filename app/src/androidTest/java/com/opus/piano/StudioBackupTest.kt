@@ -30,7 +30,7 @@ class StudioBackupTest {
     }
     @Test fun journalOnlyDisclosesExcludedBytesAndRestoresMissingRatherThanFakePlayableAudio()=runBlocking { fixture { source,root ->
         val saved=take(source,root,17);val text=backup(source,root).export();val document=JSONObject(text)
-        assertEquals(6,document.getInt("version"));assertEquals(11,document.getInt("journalSchema"))
+        assertEquals(7,document.getInt("version"));assertEquals(12,document.getInt("journalSchema"))
         val studio=document.getJSONObject("sections").getJSONObject("studio").getJSONObject("data")
         assertFalse(studio.getBoolean("audioFilesIncluded"));assertFalse(text.contains("rawAudio"))
         fixture { target,targetRoot ->
@@ -41,6 +41,28 @@ class StudioBackupTest {
             assertEquals(1L,StudioAchievementRules.distinctRecordings(target.studioDao().events()))
         }
         assertEquals(saved.sha256,com.opus.piano.audio.DurableWav.hash(File(root,"audio/${saved.id}.wav")))
+    } }
+    @Test fun activityRecordsAndRewardOwnershipRoundTripInBackupV7()=runBlocking { fixture { source,root ->
+        val week="2026-11-09"
+        val cosmetic=ActivityCosmetics.all.first()
+        source.activityDao().initialize(ActivitySettings(firstUseDay=week,firstUseZoneId="Europe/Prague"))
+        source.activityDao().saveGoal(ActivityWeeklyGoal(week,3,60))
+        source.activityDao().observeWeek(ActivityWeekRecord(week,"Europe/Prague",false,1))
+        source.activityDao().addManualEntry(ManualActivityEntry(UUID.randomUUID().toString(),"2026-11-10","Europe/Prague",45*60_000L,2))
+        source.activityDao().own(CosmeticOwnership(cosmetic.id,3,week))
+        source.activityDao().grant(ActivityRewardGrant(week,cosmetic.id,"COSMETIC",3))
+        source.activityDao().equip(CosmeticLoadout(cosmetic.category.name,cosmetic.id))
+        val text=backup(source,root).export()
+        assertTrue(backup(source,root).validate(text).isNotBlank())
+        fixture { target,targetRoot ->
+            backup(target,targetRoot).restore(text)
+            assertEquals("2026-11-09",target.activityDao().settings()!!.firstUseDay)
+            assertEquals(60,target.activityDao().allGoals().single().minutesGoal)
+            assertEquals(45*60_000L,target.activityDao().allManualEntries().single().durationMillis)
+            assertEquals(cosmetic.id,target.activityDao().allOwnedCosmetics().single().cosmeticId)
+            assertEquals(cosmetic.id,target.activityDao().grants().single().cosmeticId)
+            assertEquals(cosmetic.id,target.activityDao().allLoadout().single().cosmeticId)
+        }
     } }
     @Test fun journalRestorePreservesDestinationAudioAndRepeatedImportsDoNotFarmEvents()=runBlocking { fixture { source,root ->
         take(source,root,17);val text=backup(source,root).export()
@@ -55,12 +77,22 @@ class StudioBackupTest {
     @Test fun historicalV5StillImportsWithoutErasingNewAudio()=runBlocking { fixture { source,root ->
         source.personalDao().saveSettings(ProfileSettings(username="Historical Goldberg",favoriteEra="Baroque"))
         val old=JSONObject(backup(source,root).export());old.put("version",5);old.put("journalSchema",10)
-        old.getJSONObject("sections").remove("studio");old.remove("sha256");old.put("sha256",BackupJson.hash(old))
+        old.getJSONObject("sections").remove("studio");old.getJSONObject("sections").remove("activity");old.remove("sha256");old.put("sha256",BackupJson.hash(old))
         fixture { target,targetRoot ->
             val original=take(target,targetRoot,21);backup(target,targetRoot).restore(old.toString())
             assertEquals("Historical Goldberg",target.personalDao().getSettings()!!.username)
             assertEquals("Baroque",target.personalDao().getSettings()!!.favoriteEra)
             assertEquals(original,target.studioDao().audio(original.id))
+        }
+    } }
+    @Test fun historicalV6WithoutActivitySectionStillImports()=runBlocking { fixture { source,root ->
+        source.personalDao().saveSettings(ProfileSettings(username="Historical v6"))
+        val old=JSONObject(backup(source,root).export());old.put("version",6);old.put("journalSchema",11)
+        old.getJSONObject("sections").remove("activity");old.remove("sha256");old.put("sha256",BackupJson.hash(old))
+        fixture { target,targetRoot ->
+            backup(target,targetRoot).restore(old.toString())
+            assertEquals("Historical v6",target.personalDao().getSettings()!!.username)
+            assertNull(target.activityDao().settings())
         }
     } }
     @Test fun interruptedJournalTransactionRetainsDestinationAndAudio()=runBlocking { fixture { source,root ->

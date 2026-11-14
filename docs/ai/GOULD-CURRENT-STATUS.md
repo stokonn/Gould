@@ -1,7 +1,7 @@
 # Gould current status
 
-**Status date:** 2026-11-11  
-**Canonical branch:** `main` at `c8980539bb76408d6f1284e4b3a885cdb71af6fc`  
+**Status date:** 2026-11-11
+**Canonical branch:** `main` at `c8980539bb76408d6f1284e4b3a885cdb71af6fc`
 **Published release:** [`v0.13`](https://github.com/stokonn/Gould/releases/tag/v0.13), Gould 0.13 — Project Renaissance, GitHub pre-release (not Stable).
 
 ## Current verified repository state

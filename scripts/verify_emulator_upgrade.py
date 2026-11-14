@@ -13,11 +13,13 @@ import sqlite3
 import subprocess
 import time
 
+from upgrade_table_expectations import assert_table_transition
+
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--serial', required=True)
 parser.add_argument('--baseline', type=Path, required=True)
 parser.add_argument('--baseline-version', default='0.10')
-parser.add_argument('--baseline-schema', type=int, help='Require a genuinely older initialized schema before seeding')
+parser.add_argument('--baseline-schema', type=int, help='Require a genuinely older initialized schema before seeding; also required for post-upgrade table-set verification against the checked-in Room schema JSONs')
 parser.add_argument('--expected-schema', type=int, default=8)
 parser.add_argument('--offline', action='store_true')
 parser.add_argument('--offline-preconfigured', action='store_true', help='Require no default network after a Settings UI transition, without privileged Wi-Fi commands')
@@ -146,7 +148,10 @@ for table, rows in fixture.items():
         keys = list(row)
         db.execute(f'INSERT INTO {table} ({",".join(keys)}) VALUES ({",".join("?" for _ in keys)})', list(row.values()))
 db.execute("INSERT OR REPLACE INTO local_app_state VALUES(1,1,0,18,0,0,'')")
-db.execute("INSERT OR REPLACE INTO badge_notices (achievementId,unlockedAt,acknowledgedAt) SELECT achievementId,unlockedAt,unlockedAt FROM badge_unlocks")
+# Older baselines (such as schema 8) predate badge_notices; let the real
+# Room migrations create that table instead of inserting a future-schema row.
+if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='badge_notices'").fetchone():
+    db.execute("INSERT OR REPLACE INTO badge_notices (achievementId,unlockedAt,acknowledgedAt) SELECT achievementId,unlockedAt,unlockedAt FROM badge_unlocks")
 draft = dict(version=1, execution=1, token='upgrade-fixture-draft', start=1700000000000, credited=3000, elapsed=3000, detected=0, mode='Manual', smart=False, active=0, notes='Preserve unfinished notes', reflection='Preserve reflection', sensitivity=50, pause=5, status='Paused', quality='Complete', removed=[], intervals=[], parts=[dict(piece=1, title='Invention No. 1', composer='Johann Sebastian Bach', catalog=None, era='Baroque', duration=3000, notes='Preserve piece draft')])
 draft['intervals']=[dict(part=0,start=0,end=3000,credit=3000,reason='Manual')]
 db.execute('INSERT OR REPLACE INTO practice_drafts VALUES(1,?,123)', (json.dumps(draft),))
@@ -213,7 +218,24 @@ for table,original in before.items():
         assert all(row in original or row[0] in allowed_new_badges for row in incoming), 'Unexpected new badge'
     else:
         assert original==incoming, 'Persistent data changed: '+table
-assert set(before)==set(after), 'Unexpected critical table loss/addition'
+# Table-set verification derives expectations from the checked-in Room schema
+# JSONs (single source of truth) and compares RAW sqlite_master table sets, so
+# tables excluded from row comparison above (migration-generated
+# personal_catalogue_*/backup/audio/event tables) are still required to exist
+# and a dropped excluded table is still detected. The previous hand-maintained
+# expected set disagreed with those exclusions - personal_catalogue_* can never
+# appear as "added" while values() filters them from both snapshots - and failed
+# a correct 8 -> 12 migration in run 43246507990 job 5.11.
+def sqlite_master_names(name):
+    conn = sqlite3.connect(a.output / (name + '.db'))
+    try:
+        return [row[0] for row in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")]
+    finally:
+        conn.close()
+added_tables = assert_table_transition(
+    sqlite_master_names('before'), sqlite_master_names('after'),
+    a.baseline_schema, a.expected_schema,
+)
 
 _, final_db = snapshot('validated')
 assert final_db.execute('PRAGMA user_version').fetchone()[0] == a.expected_schema
@@ -238,6 +260,7 @@ result = {'baselineVersion': a.baseline_version, 'publishedTrustedBaseline': a.r
           'baselineApkSha256': hashlib.sha256(a.baseline.read_bytes()).hexdigest(),
           'candidateApkSha256': hashlib.sha256(a.candidate.read_bytes()).hexdigest(),
           'serial': a.serial, 'originalRowsUnchanged': True, 'preferencesUnchanged': True,
+          'additiveTables': sorted(added_tables),
           'bridge': bridge, 'sessions': len(before['sessions']), 'foreignKeys': 'pass',
           'startupTotalTimeMs': {'baseline': baseline_startup, 'candidate': candidate_startup, 'caveat': 'Small emulator samples; cold process after initialization, not install/start-to-usable or device guarantee'}}
 (a.output/'result.json').write_text(json.dumps(result,indent=2)+'\n')

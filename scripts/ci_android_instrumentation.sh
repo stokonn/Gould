@@ -9,6 +9,11 @@ test "$QEMU" = 1 || { echo 'Refusing non-emulator target'; exit 1; }
 # Reject additional devices rather than allowing Gradle to select them.
 adb -s "$SERIAL" devices > stage5-ci-results/adb-devices.txt
 test "$(awk 'NR>1 && NF>=2 {count++} END {print count+0}' stage5-ci-results/adb-devices.txt)" = 1
+# Refuse to start the connected suite until system_server has published the
+# services installation and the runner depend on; the pinned action only
+# gates on sys.boot_completed (see scripts/ci_wait_for_system_services.sh).
+source "$(dirname "${BASH_SOURCE[0]}")/ci_wait_for_system_services.sh"
+wait_for_system_services "$SERIAL" stage5-ci-results
 {
   echo "serial=$SERIAL"
   adb -s "$SERIAL" shell getprop ro.build.version.sdk
@@ -17,7 +22,12 @@ test "$(awk 'NR>1 && NF>=2 {count++} END {print count+0}' stage5-ci-results/adb-
   adb -s "$SERIAL" shell wm density
   adb -s "$SERIAL" shell settings get system font_scale
 } > stage5-ci-results/emulator-identity.txt
-test "$(adb -s "$SERIAL" shell getprop ro.build.version.sdk | tr -d '\r')" = 36
+EXPECTED_API_LEVEL="${CI_EXPECTED_API_LEVEL:-36}"
+ACTUAL_API_LEVEL="$(adb -s "$SERIAL" shell getprop ro.build.version.sdk | tr -d '\r')"
+test "$ACTUAL_API_LEVEL" = "$EXPECTED_API_LEVEL" || {
+  echo "Expected emulator API $EXPECTED_API_LEVEL, got $ACTUAL_API_LEVEL"
+  exit 1
+}
 collect() {
   # Instrumentation exports synthetic Admin renders before suite uninstall.
   adb -s "$SERIAL" pull /data/local/tmp/goldberg-discover stage5-ci-results/discover-evidence > stage5-ci-results/discover-evidence-pull.txt 2>&1 || true

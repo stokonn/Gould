@@ -154,7 +154,10 @@ class DiscoverEditorialAcceptanceTest {
     private fun fixture(name:String)=inst.context.assets.open("discover-repair/$name.json").use {it.readBytes()}
 
     @Test fun automaticSearchAndEditorialJourneysWithPreservedEvidence()=runBlocking {
-        check(android.os.Build.VERSION.SDK_INT==36)
+        // Venue gate: emulator only, on the supported verification matrix.
+        // The original pin to API 36 predates 0.14, whose matrix runs API 37;
+        // the journey assertions below are API-independent.
+        check(android.os.Build.VERSION.SDK_INT in 36..37)
         check(android.os.Build.HARDWARE in setOf("ranchu","goldfish"))
         val originalConsent=app.catalogOnline.enabled.value
         val oldLocales=AppCompatDelegate.getApplicationLocales()
