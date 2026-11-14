@@ -69,7 +69,7 @@ interface OpusDao {
     @Delete suspend fun delete(piece: Piece)
     @Insert suspend fun insert(session: PracticeSession): Long
 }
-@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class, RecoveryArchive::class, SessionPieceLink::class, FavoriteComposer::class, PersonalCatalogueIdentity::class, PersonalCatalogueAnchor::class, PersonalCatalogueState::class, BackupRestoreState::class, RecoveryEvidence::class, CompletionEvidence::class, LocalAudio::class, LocalAudioPart::class, AchievementEvent::class, BadgeNotice::class], version = 11, exportSchema = true)
+@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class, RecoveryArchive::class, SessionPieceLink::class, FavoriteComposer::class, PersonalCatalogueIdentity::class, PersonalCatalogueAnchor::class, PersonalCatalogueState::class, BackupRestoreState::class, RecoveryEvidence::class, CompletionEvidence::class, LocalAudio::class, LocalAudioPart::class, AchievementEvent::class, BadgeNotice::class, ActivitySettings::class, ActivityWeeklyGoal::class, ActivityWeekRecord::class, ManualActivityEntry::class, CosmeticOwnership::class, ActivityRewardGrant::class, CosmeticLoadout::class], version = 12, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class OpusDatabase : RoomDatabase() {
     abstract fun studioDao(): StudioDao
@@ -81,7 +81,21 @@ abstract class OpusDatabase : RoomDatabase() {
     abstract fun dao(): OpusDao
     abstract fun catalogDao(): CatalogDao
     abstract fun experienceDao(): ExperienceDao
+    abstract fun activityDao(): ActivityDao
     companion object {
+        val MIGRATION_11_12 = object : Migration(11, 12) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("CREATE TABLE IF NOT EXISTS activity_settings (id INTEGER NOT NULL PRIMARY KEY, firstUseDay TEXT NOT NULL, firstUseZoneId TEXT NOT NULL)")
+                db.execSQL("CREATE TABLE IF NOT EXISTS activity_weekly_goals (effectiveMonday TEXT NOT NULL PRIMARY KEY, requiredSessions INTEGER NOT NULL, minutesGoal INTEGER)")
+                db.execSQL("CREATE TABLE IF NOT EXISTS activity_weeks (monday TEXT NOT NULL PRIMARY KEY, zoneId TEXT NOT NULL, beta INTEGER NOT NULL, firstObservedAt INTEGER NOT NULL)")
+                db.execSQL("CREATE TABLE IF NOT EXISTS manual_activity_entries (id TEXT NOT NULL PRIMARY KEY, activityDay TEXT NOT NULL, zoneId TEXT NOT NULL, durationMillis INTEGER NOT NULL, createdAt INTEGER NOT NULL)")
+                db.execSQL("CREATE INDEX IF NOT EXISTS index_manual_activity_entries_activityDay ON manual_activity_entries(activityDay)")
+                db.execSQL("CREATE TABLE IF NOT EXISTS cosmetic_ownership (cosmeticId TEXT NOT NULL PRIMARY KEY, earnedAt INTEGER NOT NULL, sourceWeekMonday TEXT)")
+                db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS index_cosmetic_ownership_sourceWeekMonday ON cosmetic_ownership(sourceWeekMonday)")
+                db.execSQL("CREATE TABLE IF NOT EXISTS activity_reward_grants (weekMonday TEXT NOT NULL PRIMARY KEY, cosmeticId TEXT, result TEXT NOT NULL, grantedAt INTEGER NOT NULL, acknowledgedAt INTEGER NOT NULL)")
+                db.execSQL("CREATE TABLE IF NOT EXISTS cosmetic_loadout (category TEXT NOT NULL PRIMARY KEY, cosmeticId TEXT NOT NULL)")
+            }
+        }
         val MIGRATION_10_11 = object : Migration(10, 11) {
             override fun migrate(db: SupportSQLiteDatabase) = StudioSchema.migrate(db)
         }
@@ -170,7 +184,7 @@ abstract class OpusDatabase : RoomDatabase() {
                 db.execSQL("CREATE TABLE IF NOT EXISTS catalog_cache (cacheKey TEXT NOT NULL PRIMARY KEY, payload TEXT NOT NULL, fetchedAt INTEGER NOT NULL)")
             }
         }
-        val ALL_MIGRATIONS = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10, MIGRATION_10_11)
+        val ALL_MIGRATIONS = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10, MIGRATION_10_11, MIGRATION_11_12)
     }
 }
 class OpusRepository(private val db: OpusDatabase, private val achievements: AchievementStore) {

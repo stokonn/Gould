@@ -27,6 +27,34 @@ class WidgetProjectionTest {
         val second = row("2026-10-29", 23_000, 999_999_999)
         assertEquals(35_000L, widgetWeek(listOf(first, second), today, prague).total)
     }
+    @Test fun weeklyHeatmapProjectionUsesValidPracticeAndStoredManualActivityDays() {
+        val valid = row("2026-10-29", 12_000)
+        val invalid = row("2026-10-29", 999)
+        val manual = ManualActivityEntry("manual-1", "2026-10-28", prague.id, 90_000, 1)
+        val week = widgetWeek(listOf(valid, invalid), today, prague, listOf(manual))
+        assertEquals(listOf(0L, 0L, 90_000L, 12_000L, 0L, 0L, 0L), week.credited)
+        assertEquals(2, week.sessions)
+        assertEquals(102_000L, week.total)
+    }
+    @Test fun weeklyHeatmapIntensityHasFourOrderedLevelsAndAnInactiveState() {
+        assertEquals(0, widgetIntensityBucket(0, 100))
+        assertEquals(1, widgetIntensityBucket(1, 100))
+        assertEquals(2, widgetIntensityBucket(25, 100))
+        assertEquals(3, widgetIntensityBucket(50, 100))
+        assertEquals(4, widgetIntensityBucket(75, 100))
+        assertEquals(4, widgetIntensityBucket(100, 100))
+        assertEquals(0, widgetIntensityBucket(0, 0))
+    }
+    @Test fun weeklyHeatmapCellsKeepSmallConsistentGapsAcrossWidgetSizes() {
+        listOf(80f to 20f, 160f to 36f, 320f to 64f).forEach { (width, height) ->
+            val slot = width / 7f
+            val size = widgetHeatmapCellSize(slot, height)
+            assertEquals(.04f, (slot - size.width) / slot, .0001f)
+            assertEquals(.06f, (height - size.height) / height, .0001f)
+            assertTrue(size.width < slot)
+            assertTrue(size.height < height)
+        }
+    }
     @Test fun yearBoundaryKeepsOneCalendarWeekAcrossBothYears() {
         val week = widgetWeek(listOf(row("2026-12-28"), row("2027-01-01"), row("2027-01-03")), LocalDate.parse("2027-01-01"), prague)
         assertEquals(LocalDate.parse("2026-12-28"), week.monday); assertEquals(180_000L, week.total)
@@ -54,7 +82,7 @@ class WidgetProjectionTest {
         assertEquals(List(7) { 0L }, week.credited); assertEquals(0, week.sessions)
     }
     @Test(expected = ArithmeticException::class) fun overflowFailsInsteadOfPublishingWrappedTotals() {
-        widgetWeek(listOf(row("2026-10-29", Long.MAX_VALUE), row("2026-10-29", 1)), today, prague)
+        widgetWeek(listOf(row("2026-10-29", Long.MAX_VALUE), row("2026-10-29", 1000)), today, prague)
     }
     @Test(expected = IllegalArgumentException::class) fun corruptNegativeCreditCannotBecomeFreshZero() {
         widgetWeek(listOf(row("2026-10-29", -1)), today, prague)

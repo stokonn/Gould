@@ -8,6 +8,7 @@ import android.content.res.Configuration
 import android.os.Build
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -76,11 +77,14 @@ class WidgetTest {
                     val view = WidgetRenderer.view(target, data, false, 12, width, height).apply(target, FrameLayout(target))
                     assertTrue(view.contentDescription.isNotBlank())
                     assertTrue(view.findViewById<TextView>(R.id.widget_value).text.isNotBlank())
-                    if (height < 100) assertEquals(View.GONE, view.findViewById<View>(R.id.widget_chart).visibility)
+                    val heatmap = view.findViewById<ImageView>(R.id.widget_heatmap)
+                    assertEquals(View.VISIBLE, heatmap.visibility)
+                    assertNotNull(heatmap.drawable)
+                    assertTrue(heatmap.drawable.intrinsicWidth > 0 && heatmap.drawable.intrinsicHeight > 0)
                 }
                 val unavailable = WidgetRenderer.view(target, null, false, 13, 140f, 160f).apply(target, FrameLayout(target))
                 assertEquals("—", unavailable.findViewById<TextView>(R.id.widget_value).text.toString())
-                assertEquals(View.GONE, unavailable.findViewById<View>(R.id.widget_chart).visibility)
+                assertEquals(View.GONE, unavailable.findViewById<View>(R.id.widget_heatmap).visibility)
             }
         }
     }

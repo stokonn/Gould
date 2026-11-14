@@ -2,6 +2,8 @@
 
 > **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
 
+> Gould 0.14 remains in development and is not included in the published 0.13 APK.
+
 ## Gould 0.13 — Project Renaissance (pre-release)
 
 - Reduce APK size to approximately 6.3 MB.
@@ -53,6 +55,12 @@ Duplicate Settings TalkBack focus stops, large-font bottom-tab truncation and sc
 created by stokonn with love <3
 
 # Changelog & Roadmap
+
+## Gould 0.14 — in development, not released
+
+The active 0.14 development branch adds a deterministic weekly Activity model, a yearly heatmap, retrospective manual records, historical weekly goals, Beta Week, automatic Streak Freeze and durable cosmetic rewards. It retains Room, introduces an additive personal database migration, and adds a Kotlin Multiplatform domain module with `commonMain` rules and a JVM target; Android remains the only application platform in this update. Discover and visible moderation/admin navigation are hidden temporarily while implementations remain preserved. Cosmetic rewards are granted per eligible perfect week, independently of the four-consecutive-official-week Freeze milestone; Beta Week may earn a cosmetic but does not advance Streak or Freeze progress. The API 37 host gate, focused emulator instrumentation and signed review APK checks have passed; signed upgrade acceptance and owner visual review remain outstanding. See [the draft release and verification status](../releases/GOULD-0.14.md).
+
+The latest published release remains [Gould 0.13](https://github.com/stokonn/Gould/releases/tag/v0.13). Gould 0.14 remains unreleased; this branch is prepared for review and has not been merged into `main` or tagged.
 
 **[0.10.1 — Final Redesign Polish](https://github.com/stokonn/Gould/releases/tag/v0.10.1)** refines the unified Library, saved completion/notes, Profile, About, Tux and compact previews. Package/signing identity, schema 8 and format 4 remain unchanged. See [verification](Verification-0.10.1).
 

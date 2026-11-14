@@ -36,7 +36,7 @@ class StudioMigrationTest {
         }
         val db = Room.databaseBuilder(context, OpusDatabase::class.java, name).addMigrations(*OpusDatabase.ALL_MIGRATIONS).build()
         try {
-            assertEquals(11, db.openHelper.writableDatabase.version)
+            assertEquals(12, db.openHelper.writableDatabase.version)
             assertEquals("Žlutá hudba", db.personalDao().getSettings()!!.biography)
             assertEquals("Baroque", db.personalDao().getSettings()!!.favoriteEra)
             db.openHelper.readableDatabase.query("SELECT hex(CAST(payload AS BLOB)) FROM practice_drafts").use { c ->

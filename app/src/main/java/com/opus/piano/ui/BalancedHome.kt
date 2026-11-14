@@ -19,11 +19,13 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.opus.piano.OpusApplication
 import com.opus.piano.data.*
 import java.time.*
 
-@Composable internal fun BalancedHome(library:LibraryState,name:String,piece:(Long)->Unit,history:()->Unit,settings:()->Unit) {
+@Composable internal fun BalancedHome(library:LibraryState,name:String,piece:(Long)->Unit,history:()->Unit,settings:()->Unit,activity:ActivityViewModel) {
+    val activityState by activity.state.collectAsStateWithLifecycle()
     val app=LocalContext.current.applicationContext as OpusApplication
     val lifecycle=LocalLifecycleOwner.current.lifecycle
     val today by produceState(LocalDate.now(),lifecycle) {lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {while(true) {value=LocalDate.now();kotlinx.coroutines.delay(30000)}}}
@@ -56,14 +58,14 @@ import java.time.*
             Row(horizontalArrangement=Arrangement.spacedBy(12.dp)) {
                 JournalCard(Modifier.weight(1f)) {
                     Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {Icon(Icons.Outlined.CalendarToday,null,Modifier.size(20.dp),tint=MaterialTheme.colorScheme.primary);Text(L.s(R.string.today_practice),style=MaterialTheme.typography.bodySmall)}
-                    Text(localizedPracticeTime(PracticeInsights.metric("today",library.pieces,library.sessions,today,ZoneId.systemDefault())),style=MaterialTheme.typography.headlineMedium.copy(fontFamily=MaterialTheme.typography.bodyLarge.fontFamily,fontFeatureSettings="tnum"))
+                    Text(localizedPracticeTime(activityState.snapshot?.todayDurationMillis ?: PracticeInsights.metric("today",library.pieces,library.sessions,today,ZoneId.systemDefault())),style=MaterialTheme.typography.headlineMedium.copy(fontFamily=MaterialTheme.typography.bodyLarge.fontFamily,fontFeatureSettings="tnum"))
                 }
                 JournalCard(Modifier.weight(1f)) {
                     Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {Icon(Icons.Outlined.LocalFireDepartment,null,Modifier.size(20.dp),tint=MaterialTheme.colorScheme.primary);Text(L.fixed("Current streak"),style=MaterialTheme.typography.bodySmall)}
-                    Text(L.quantity(R.plurals.days_count,currentPracticeStreak(library.sessions,today,ZoneId.systemDefault())),style=MaterialTheme.typography.headlineMedium.copy(fontFamily=MaterialTheme.typography.bodyLarge.fontFamily,fontFeatureSettings="tnum"))
+                    Text(L.quantity(R.plurals.days_count,activityState.snapshot?.dailyStreak ?: currentPracticeStreak(library.sessions,today,ZoneId.systemDefault())),style=MaterialTheme.typography.headlineMedium.copy(fontFamily=MaterialTheme.typography.bodyLarge.fontFamily,fontFeatureSettings="tnum"))
                 }
             }
-            JournalCard {WeeklyJournalChart(library.sessions,today,history)}
+            JournalCard {WeeklyJournalChart(activityState.snapshot?.recentDailyDurationMillis,library.sessions,today,history)}
             Column(verticalArrangement=Arrangement.spacedBy(4.dp)) {
                 CompactSection(L.fixed("Recently practiced"),L.s(R.string.msg_view_all_efd8),history)
                 val recent=library.sessions.filter(AchievementEngine::valid).sortedWith(compareByDescending<PracticeSession> {it.completedAt}.thenByDescending {it.id}).take(recentLimit)
@@ -94,10 +96,10 @@ import java.time.*
 @Composable internal fun MetricTile(value:String,label:String,modifier:Modifier=Modifier) {
     Column(modifier,verticalArrangement=Arrangement.spacedBy(4.dp)) {Text(label,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant);Text(value,style=MaterialTheme.typography.headlineMedium.copy(fontFamily=MaterialTheme.typography.bodyLarge.fontFamily,fontFeatureSettings="tnum"))}
 }
-@Composable internal fun WeeklyJournalChart(sessions:List<PracticeSession>,today:LocalDate,history:()->Unit={}) {
+@Composable internal fun WeeklyJournalChart(activityDurations:List<Long>?,sessions:List<PracticeSession>,today:LocalDate,history:()->Unit={}) {
     val color=MaterialTheme.colorScheme.primary
     val zone=ZoneId.systemDefault();val days=(6 downTo 0).map {today.minusDays(it.toLong())}
-    val totals=days.map {day->sessions.filter {AchievementEngine.valid(it) && AchievementEngine.recordedDay(it,zone)==day}.sumOf {it.durationMillis}}
+    val totals=activityDurations ?: days.map {day->sessions.filter {AchievementEngine.valid(it) && AchievementEngine.recordedDay(it,zone)==day}.sumOf {it.durationMillis}}
     val peak=totals.maxOrNull()?.coerceAtLeast(1) ?: 1
     Column(verticalArrangement=Arrangement.spacedBy(12.dp)) {
         Row(verticalAlignment=Alignment.CenterVertically) {Text(L.s(R.string.ui010_weekly_activity),Modifier.weight(1f),style=MaterialTheme.typography.titleSmall);JournalTextButton(onClick=history,contentPadding=PaddingValues(0.dp)) {Text(localizedPracticeTime(totals.sum()),style=MaterialTheme.typography.labelSmall);Icon(Icons.Outlined.ChevronRight,null,Modifier.size(16.dp))}}

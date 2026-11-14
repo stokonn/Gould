@@ -1,5 +1,17 @@
 # Developer Guide — Gould
 
+> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
+
+## Gould 0.14 development branch — unreleased
+
+The branch adds `:activity-domain`, a Kotlin Multiplatform module with `commonMain` rules and a JVM target. Calendar identity and deterministic weekly projections are platform-free; Room, Android date pickers, Compose, ViewModels and lifecycle remain in `:app`. This prepares a possible later KMP boundary but does not create an iOS app. Rust was not introduced: current progression logic is small deterministic Kotlin and no measured CPU-bound hotspot justifies JNI/ABI/build maintenance.
+
+The personal database remains `opus.db`, Room schema 12, with additive migration 11→12. Backup format 7 uses journal schema 12, retains readers for prior formats 1–6, validates through isolated Room, and merges Activity ownership/records without replacing the personal journal. Manual Activity is a separate source from `PracticeSession`; do not infer microphone verification or rewrite historic practice dates. Activity progression is recalculated chronologically; cosmetic ownership and per-week grant records are durable and idempotent.
+
+Development toolchain: AGP 9.1.1, Gradle wrapper 9.3.1, Kotlin 2.2.10, JVM 17, minSdk 30, compile/target SDK 37, versionCode 16 and `0.14.0-dev`. Focused API 37 repository instrumentation has executed successfully, and a trusted-signed non-debuggable review APK passed package, version and certificate checks. Signed in-place upgrade verification remains pending. Read [`docs/releases/GOULD-0.14.md`](../releases/GOULD-0.14.md) and [`docs/planning/gould-0.14/STAGE-CHECKLIST.md`](../planning/gould-0.14/STAGE-CHECKLIST.md) for verified scope and limitations.
+
+Focused API 37 instrumentation executed repository/reward tests and a populated v11 migration test; the final Beta eligibility follow-up separately passed all 15 `ActivityRepositoryTest` cases. The full instrumentation suite and signed upgrade from the published baseline remain unexecuted. Instrumentation compilation must not be reported as execution. Never target the owner's phone.
+
 > **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
 
 

@@ -1,5 +1,11 @@
 # Settings & Customization — Gould
 
+> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
+
+> **0.14 development note — unreleased:** Customize Profile includes development cosmetics for avatars, frames, backgrounds, heatmaps and graphs. Owned items can be equipped; locked items show rarity and unlock information. Each eligible perfect week grants its own cosmetic reward to claim in Activity. Beta Week can grant its cosmetic when configured weekly goals are met, but does not advance official Streak or Freeze progress. Four consecutive perfect official Streak weeks grant one additional Freeze. Repeated evaluation does not duplicate rewards; if the catalog is exhausted, the eligible week is recorded without duplicate ownership. These changes are not available in the published 0.13 APK.
+
+The 0.14 development branch retains Ivory, Nocturne and system theme selection. Discover and the visible moderation/administration entry are temporarily hidden while their source and routes remain preserved. Their future reactivation requires separate issue review and regression validation; no specific currently reproducible moderation defect is asserted by these notes.
+
 > **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
 
 This guide describes the current 0.13 settings and retained backup compatibility.

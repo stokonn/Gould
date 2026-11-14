@@ -22,6 +22,8 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.opus.piano.i18n.L
 import com.opus.piano.ui.*
 import com.opus.piano.ui.admin.AdminSwitch
+import com.opus.piano.data.*
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -50,10 +52,85 @@ class Stage8cUiRegressionTest {
     private fun waitUntil(check: () -> Boolean) {
         val until=android.os.SystemClock.uptimeMillis()+15000
         do { inst.waitForIdleSync(); if(check())return; Thread.sleep(60) } while(android.os.SystemClock.uptimeMillis()<until)
-        fail("Stage8C UI condition timed out")
+        fail("Stage8C UI condition timed out; visible nodes="+nodes().mapNotNull { node ->
+            listOfNotNull(node.text?.toString(),node.contentDescription?.toString()).joinToString(" | ").takeIf(String::isNotBlank)
+        }.distinct().take(80).joinToString(" ; "))
     }
     private fun shell(command:String)=inst.uiAutomation.executeShellCommand(command).use {
         android.os.ParcelFileDescriptor.AutoCloseInputStream(it).bufferedReader().readText()
+    }
+    private fun tap(node:AccessibilityNodeInfo) {
+        var candidate:AccessibilityNodeInfo?=node
+        while(candidate!=null) {
+            if(candidate.isClickable && candidate.performAction(AccessibilityNodeInfo.ACTION_CLICK)) { inst.waitForIdleSync();return }
+            candidate=candidate.parent
+        }
+        val bounds=Rect();node.getBoundsInScreen(bounds);check(!bounds.isEmpty)
+        shell("input tap ${bounds.centerX()} ${bounds.centerY()}");inst.waitForIdleSync()
+    }
+
+    @Test fun profileCollectionShortcutShowsOwnershipAndApplyUpdatesEquippedState() {
+        val dbName="cosmetic-ui-${java.util.UUID.randomUUID()}.db"
+        var db=androidx.room.Room.databaseBuilder(inst.targetContext,OpusDatabase::class.java,dbName).build()
+        var repository=ActivityRepository(db)
+        var activityModel=ActivityViewModel(repository)
+        val modelState=mutableStateOf(activityModel)
+        val profileStore=androidx.lifecycle.ViewModelStore()
+        val activityStore=androidx.lifecycle.ViewModelStore().also { it.put("activity",activityModel) }
+        val owned=ActivityCosmetics.all.first()
+        val locked=ActivityCosmetics.all.first { it.id!=owned.id }
+        runBlocking { db.activityDao().own(CosmeticOwnership(owned.id,1L,"2026-11-09")) }
+        try {
+            ActivityScenario.launch(MainActivity::class.java).use { scenario ->
+                scenario.onActivity { activity ->
+                    val profile=ProfileViewModel(activity.application as android.app.Application,androidx.lifecycle.SavedStateHandle())
+                    profileStore.put("profile",profile)
+                    activity.setContent {
+                        var collection by remember { mutableStateOf(false) }
+                        OpusTheme("Light") {
+                            if(collection) CosmeticCollectionScreen(modelState.value) { collection=false }
+                            else ProfileScreen(LibraryState(loading=false),emptyList(),profile,{},{},{},{},customizeCosmetics={collection=true},activity=modelState.value)
+                        }
+                    }
+                }
+                waitUntil { activityModel.state.value.snapshot!=null }
+                val collectionLabel=L.s(R.string.activity_view_collection)
+                waitUntil { nodes().any { it.contentDescription?.toString()==collectionLabel } }
+                val profileNodes=nodes()
+                fun spoken(node:AccessibilityNodeInfo)=listOfNotNull(node.text?.toString(),node.contentDescription?.toString()).joinToString(" ").lowercase()
+                val edit=profileNodes.firstOrNull { spoken(it).contains("edit profile") || spoken(it).contains("upravit profil") }
+                val goal=profileNodes.firstOrNull { spoken(it).contains("weekly session goal") || spoken(it).contains("týdenní cíl") }
+                assertNotNull("Profile edit action is accessible: ${profileNodes.map(::spoken)}",edit)
+                assertNull("Weekly Goal settings belong to Activity, not Profile",goal)
+                tap(nodes().single { it.contentDescription?.toString()==collectionLabel })
+                val ownedName=if(L.locale.language=="cs") owned.nameCs else owned.nameEn
+                val lockedName=if(L.locale.language=="cs") locked.nameCs else locked.nameEn
+                waitUntil { nodes().any { it.text?.toString()==ownedName } && nodes().any { it.text?.toString()==L.s(R.string.activity_locked) } }
+                val ownedNode=nodes().single { it.text?.toString()==ownedName }
+                tap(ownedNode)
+                val apply=L.s(R.string.activity_apply_cosmetic)
+                waitUntil { nodes().any { it.text?.toString()==apply } }
+                val lockedNode=nodes().firstOrNull { it.text?.toString()==lockedName }
+                assertNotNull("Locked cosmetic remains visible",lockedNode)
+                tap(lockedNode!!)
+                assertTrue("A locked item leaves the owned selection unchanged",nodes().any { it.text?.toString()==apply })
+                tap(nodes().single { it.text?.toString()==apply })
+                waitUntil { runBlocking { db.activityDao().allLoadout().any { it.cosmeticId==owned.id } } }
+                waitUntil { nodes().any { it.text?.toString()==L.s(R.string.activity_equipped) } }
+                assertFalse("An equipped item has no Apply action",nodes().any { it.text?.toString()==apply })
+                tap(lockedNode)
+                assertFalse("Locked cosmetic cannot expose Apply",nodes().any { it.text?.toString()==apply })
+                assertEquals(owned.id,runBlocking { db.activityDao().allLoadout().single().cosmeticId })
+                activityStore.clear();db.close()
+                db=androidx.room.Room.databaseBuilder(inst.targetContext,OpusDatabase::class.java,dbName).build()
+                repository=ActivityRepository(db);activityModel=ActivityViewModel(repository);activityStore.put("activity",activityModel)
+                inst.runOnMainSync { modelState.value=activityModel }
+                waitUntil { nodes().any { it.text?.toString()==L.s(R.string.activity_equipped) } }
+                assertEquals("Apply remains persisted after database/ViewModel restart",owned.id,runBlocking { db.activityDao().allLoadout().single().cosmeticId })
+            }
+        } finally {
+            profileStore.clear();activityStore.clear();db.close();inst.targetContext.deleteDatabase(dbName)
+        }
     }
 
     @Test fun switchRowHasOneNameStateRoleAndExactlyOneActionPerInput() {
