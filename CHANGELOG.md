@@ -1,11 +1,14 @@
-## Gould 0.14 — in development, not released
+## Gould 0.14.0 — prepared GitHub prerelease
 
-- Add a deterministic Kotlin Multiplatform domain module with `commonMain` rules for Monday-first weeks, historical goals, Beta Week, daily Training/Day Off/Miss classification and weekly streak/Freeze projections. It has a JVM target; Android remains the only application platform in this update.
-- Add a Room 11→12 additive Activity schema and backup format 7 while retaining legacy backup readers and existing journal records.
-- Add Activity navigation, annual heatmap, week overview, statistics details and retrospective manual Activity records distinct from microphone evidence.
-- Add a data-driven cosmetic collection, equipped appearance items and idempotent weekly rewards; temporarily hide Discover and the visible administration entry while preserving their implementation.
-- Development targets Android 11 (minSdk 30), compile/target API 37, versionCode 16, versionName `0.14.0-dev`; current verification is incomplete and this work is not a public release.
-- See [the 0.14 implementation and verification status](docs/releases/GOULD-0.14.md). The latest published release remains Gould 0.13.
+- Add Activity with a Monday-first annual heatmap, day details, weekly overview, statistics and retrospective manual activity entries.
+- Replace Discover in visible bottom navigation while retaining its implementation; temporarily hide the visible administration entry without removing its underlying implementation.
+- Add weekly session goals, historical goal handling, Beta Week rules, daily Training/Day Off/Miss classification and official Streak progression.
+- Award an individually claimable cosmetic for each eligible perfect week. Beta Week can earn its own weekly cosmetic but does not advance official Streak or Freeze progress; four consecutive perfect official Streak weeks award one additional Streak Freeze.
+- Add persistent cosmetic ownership, claiming and Profile collection/apply flows, with shared activity totals across Home, Activity and Profile.
+- Preserve the existing application identity and personal journal while adding Room schema 12 and backup format 7. Gould 0.14 requires Android 11 (API 30) or newer; Gould 0.13 remains compatible with Android 8.0+.
+- Final PR #51 verification: 410/410 app JVM tests passed; API 37 ActivityRepositoryTest passed 15/15; release verification passed. Instrumentation APK compilation passed, but compilation is not evidence that every instrumentation test executed. Owner-reported signed in-place update and visual review were completed on a Samsung Galaxy A55; these are distinct from automated test results.
+- Prepared for publication as a GitHub **pre-release**, not Stable. The tag and downloadable release asset will be linked here after publication.
+- [Gould 0.14 release notes](docs/releases/GOULD-0.14.md).
 
 ## Gould 0.13 — Project Renaissance (pre-release)
 
