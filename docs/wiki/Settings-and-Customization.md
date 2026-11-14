@@ -1,21 +1,21 @@
 # Settings & Customization — Gould
 
-> Gould 0.13 is the latest published pre-release, not Stable. Gould 0.14 is under development and is not available as a release; development-only changes are clearly labelled below. Historical sections retain their original evidence.
+> Gould 0.14.0 is the latest published pre-release, not Stable. Historical sections retain their original evidence.
 
-> **0.14 development note — unreleased:** Customize Profile includes development cosmetics for avatars, frames, backgrounds, heatmaps and graphs. Owned items can be equipped; locked items show rarity and unlock information. Each eligible perfect week grants its own cosmetic reward to claim in Activity. Beta Week can grant its cosmetic when configured weekly goals are met, but does not advance official Streak or Freeze progress. Four consecutive perfect official Streak weeks grant one additional Freeze. Repeated evaluation does not duplicate rewards; if the catalog is exhausted, the eligible week is recorded without duplicate ownership. These changes are not available in the published 0.13 APK.
+> **Gould 0.14.0:** Customize Profile includes cosmetics for avatars, frames, backgrounds, heatmaps and graphs. Owned items can be equipped; locked items show rarity and unlock information. Each eligible perfect week grants its own cosmetic reward to claim in Activity. Beta Week can grant its cosmetic when configured weekly goals are met, but does not advance official Streak or Freeze progress. Four consecutive perfect official Streak weeks grant one additional Freeze. Repeated evaluation does not duplicate rewards; if the catalog is exhausted, the eligible week is recorded without duplicate ownership.
 
-The 0.14 development branch retains Ivory, Nocturne and system theme selection. Discover and the visible moderation/administration entry are temporarily hidden while their source and routes remain preserved. Their future reactivation requires separate issue review and regression validation; no specific currently reproducible moderation defect is asserted by these notes.
+Gould 0.14.0 retains Ivory, Nocturne and system theme selection. Discover and the visible moderation/administration entry are temporarily hidden while their source and routes remain preserved. Their future reactivation requires separate issue review and regression validation; no specific currently reproducible moderation defect is asserted by these notes.
 
-> **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
+> **Latest release:** [Gould 0.14.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.14.0). This is not Stable.
 
-This guide describes the current 0.13 settings and retained backup compatibility.
+This guide describes the current 0.14 settings and retained backup compatibility.
 
 
 Ivory/Nocturne appearance, English/Czech, font scaling and existing appearance preferences are retained. Online catalogue search remains default-off until enabled in Settings; downloaded media and offline bundles retain their separate network and storage controls.
 
 The bundled privacy notice describes request metadata, provider processing and the manual support/rights procedure. Privacy/support contact: stokonn.us@gmail.com. Backend Google OAuth, community writes and practice uploads remain disabled; optional local Google profile identity is separate.
 
-Data & Storage exports a format-6/schema-11 portable JSON backup and retains readers for formats 1–5. JSON preserves recording metadata; the optional media ZIP is the separate transfer of local audio bytes. These exports are not encrypted. Choose their destination carefully and retain original backups. Restore validates the archive and requires explicit confirmation; active capture must end first. Missing audio remains explicitly unavailable rather than becoming a fabricated recording. Diagnostic recovery exports and CSV reports serve different purposes from portable backups.
+Data & Storage exports a format-7/schema-12 portable JSON backup and retains readers for formats 1–6. JSON preserves recording metadata and Activity records; the optional media ZIP is the separate transfer of local audio bytes. These exports are not encrypted. Choose their destination carefully and retain original backups. Restore validates the archive and requires explicit confirmation; active capture must end first. Missing audio remains explicitly unavailable rather than becoming a fabricated recording. Diagnostic recovery exports and CSV reports serve different purposes from portable backups.
 
 Smart Practice transient analysis and explicit continuous WAV recording have distinct consent and privacy disclosures. Recorded audio stays in app-private local storage unless you explicitly export it. Neither starts an upload or cloud synchronization.
 

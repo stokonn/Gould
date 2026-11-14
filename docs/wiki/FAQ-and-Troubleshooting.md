@@ -1,8 +1,8 @@
 # FAQ & Troubleshooting — Gould
 
-## Gould 0.14 development status
+## Gould 0.14.0 pre-release
 
-Gould 0.14 is not released. The latest published app remains Gould 0.13. Beta Week is a transition period: it can earn an independent weekly cosmetic when configured goals are met, but is excluded from official Streak and Freeze progress. Starting official tracking on Monday begins a normal week. A daily Miss is not by itself a failed weekly goal. Optional weekly minutes, when configured, are part of a perfect week's eligibility. A Freeze protects a closed week that missed its configured weekly requirements.
+Gould 0.14.0 is a pre-release, not Stable. Beta Week is a transition period: it can earn an independent weekly cosmetic when configured goals are met, but is excluded from official Streak and Freeze progress. Starting official tracking on Monday begins a normal week. A daily Miss is not by itself a failed weekly goal. Optional weekly minutes, when configured, are part of a perfect week's eligibility. A Freeze protects a closed week that missed its configured weekly requirements.
 
 Manual Activity is a separate local record, not a historical practice session and not microphone-verified activity. It may be entered for today or the previous two local calendar dates; future and older dates are rejected. This window does not depend on when Activity was first opened. Deletion requires confirmation. Existing practice journal dates and microphone-related achievements are not fabricated or rewritten.
 
@@ -10,13 +10,13 @@ Day Off labels an inactive date within the weekly session allowance. It does not
 
 Eligible rewards stay pending until Claim is tapped in Activity's Weekly Goal section. Ownership and the claim timestamp are saved together; an app restart preserves an unclaimed reward, and a claimed reward is not offered again. Older rewards already granted automatically remain owned and are not offered twice. If no unowned or pending cosmetic remains, a successful eligible week is recorded as collection complete without issuing a duplicate. Owned cosmetics are available through the Profile collection shortcut and can be equipped with Apply.
 
-Discover and the visible administration entry are hidden only in the 0.14 development build. Their code is preserved. The exact historical Discover screenshot issue and any moderation defect have not been reproduced as part of this branch; reactivation needs source review and focused regression tests.
+Discover and the visible administration entry are hidden in Gould 0.14.0 while their code is preserved. The exact historical Discover screenshot issue and any moderation defect have not been reproduced as part of this update; reactivation needs source review and focused regression tests.
 
-> **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
+> **Latest release:** [Gould 0.14.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.14.0). This is not Stable.
 
-> Gould 0.14 remains in development and is not included in the published 0.13 APK.
+> Gould 0.14.0 requires Android 11 (API 30) or later; Android 8–10 are supported by earlier releases only.
 
-**Where can I install the current release?** Download [Gould 0.13 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13). Android 8.0+ is required.
+**Where can I install the current release?** Download [Gould 0.14.0 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.14.0). Android 11+ is required.
 
 
 **Does my journal upload?** No. Practice, notes, drafts/recovery and backups remain local. Online provider queries process their necessary network metadata; the catalogue backend has no journal-upload endpoint.

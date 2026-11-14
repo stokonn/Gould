@@ -158,3 +158,23 @@ Compilation-only and unexecuted checks:
 
 The APK is a private review build, not a release asset. No release or tag was
 created.
+
+## November 14, 2026 — prerelease publication
+
+Published [Gould 0.14.0](https://github.com/stokonn/Gould/releases/tag/v0.14.0)
+as a GitHub prerelease (not Stable). Annotated tag `v0.14.0` points exactly to
+the PR #51 merge commit `b507aaeb47187ac2280ecce2873bdf05cf2b40ee`.
+
+The release asset is
+[`gould-0.14.0.apk`](https://github.com/stokonn/Gould/releases/download/v0.14.0/gould-0.14.0.apk),
+SHA-256
+`62c83ddef804a83b71bd05f3f0b09cec29a0784902ad79b0b16ec8bae75b1f2c`. The
+uploaded asset was downloaded from GitHub and compared byte-for-byte with the
+verified local APK. Package `com.opus.piano`, version `0.14.0`, versionCode
+16, `debuggable=false`, v2 APK signature, and trusted certificate SHA-256
+`53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e` were
+confirmed. The APK was not rebuilt for publication.
+
+Signed in-place upgrade verification remains unexecuted. No visual emulator or
+screenshot comparison was performed; owner phone review is separate from this
+automated evidence.

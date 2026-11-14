@@ -548,3 +548,23 @@ no application-source change. The previously recorded 410 app JVM tests and
 15/15 API 37 repository tests remain the latest executed application tests.
 
 created by stokonn with love <3
+
+## 2026-11-14 — Gould 0.14.0 prerelease publication
+
+The owner-authorized publication gates passed. Fetched `origin/main` contained
+the PR #51 merge `b507aaeb47187ac2280ecce2873bdf05cf2b40ee`; annotated tag
+`v0.14.0` points to that exact commit. GitHub confirms the release title
+`Gould 0.14.0`, prerelease flag enabled, and uploaded asset
+`gould-0.14.0.apk`. The uploaded asset was downloaded and byte-compared with
+the verified local APK; SHA-256 is
+`62c83ddef804a83b71bd05f3f0b09cec29a0784902ad79b0b16ec8bae75b1f2c`.
+
+Package `com.opus.piano`, version `0.14.0`, versionCode 16,
+`debuggable=false`, APK v2 signature and trusted certificate fingerprint
+`53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e` were
+verified on both the local and downloaded asset. No rebuild occurred.
+
+This release asset provides the downloadable APK after the PR-only artifact
+route proved unavailable. The PR binary was never committed. Signed in-place
+upgrade verification remains unexecuted; visual emulator/screenshot comparison
+was not performed, and owner phone review is separate from automated evidence.

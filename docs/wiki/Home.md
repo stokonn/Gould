@@ -1,18 +1,18 @@
 # Gould — Piano Practice Journal
 
-> **Latest release:** [Gould 0.13 — Project Renaissance (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.13). This is the current published pre-release.
+> **Latest release:** [Gould 0.14.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.14.0). It is not Stable.
 
-> Gould 0.14 remains in development and is not included in the published 0.13 APK.
+> Gould 0.14.0 is now published as a pre-release; its signed APK requires Android 11 (API 30) or later.
 
-Gould is a local-first Android music practice journal for repertoire, sessions, notes, recordings and achievements. Library and Discover share sourced music catalogue data; Studio supports manual or experimental Smart Practice and explicit local audio recording.
+Gould is a local-first Android music practice journal for repertoire, sessions, notes, recordings and achievements. Library includes sourced music catalogue data; Studio supports manual or experimental Smart Practice and explicit local audio recording. Discover remains preserved but is temporarily hidden in 0.14.0.
 
-**Download:** [Gould 0.13 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13) · [All releases](https://github.com/stokonn/Gould/releases).
+**Download:** [Gould 0.14.0 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.14.0) · [All releases](https://github.com/stokonn/Gould/releases).
 
 **0.13 changes:** approximately 6.3 MB APK, faster recording metadata/database queries, more consistent Studio recording-list refresh and recovery. [Release notes](https://github.com/stokonn/Gould/blob/main/docs/releases/GOULD-0.13.md).
 
 [Getting Started](Getting-Started) · [User Guide](User-Guide) · [Settings & Customization](Settings-and-Customization) · [Developer Guide](Developer-Guide) · [FAQ & Troubleshooting](FAQ-and-Troubleshooting) · [Changelog & Roadmap](Changelog-and-Roadmap) · [Credits & Licenses](Credits-and-Licenses)
 
-Optional online catalogue-provider searches require explicit consent. Backend OAuth, community writes and practice uploads remain disabled. Gould 0.14 Activity and weekly progression are under development and are not present in the published 0.13 app.
+Gould 0.14.0 adds Activity and weekly progression. Each eligible perfect week can grant one cosmetic; Beta Week can earn its cosmetic but does not advance official Streak or Freeze progress. Four consecutive perfect official Streak weeks grant an additional Freeze. Optional online catalogue-provider searches require explicit consent. Backend OAuth, community writes and practice uploads remain disabled.
 
 See the [Gould 0.13 guide screenshots](images/gould-0.13/CAPTURE-EVIDENCE.md) for verified emulator captures. They are not physical-device evidence.
 

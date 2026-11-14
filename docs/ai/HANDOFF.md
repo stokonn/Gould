@@ -1,5 +1,14 @@
 # Gould current maintenance handoff
 
+## Current release handoff — November 14, 2026
+
+Gould 0.14.0 has been published as GitHub pre-release `v0.14.0` from merged
+commit `b507aaeb47187ac2280ecce2873bdf05cf2b40ee`. See the [current status](GOULD-CURRENT-STATUS.md)
+and [release verification](../releases/GOULD-0.14.md). Do not publish another
+release or retag this version. Signed in-place upgrade verification and visual
+emulator review remain unexecuted. The maintenance checkpoint below is dated
+historical context; its Gould 0.14 planning statements are superseded.
+
 Start with [the current Gould status](GOULD-CURRENT-STATUS.md), then read the root [AGENTS.md](../../AGENTS.md) and [legacy cleanup policy](../maintenance/LEGACY-CLEANUP.md).
 
 ## Current task
