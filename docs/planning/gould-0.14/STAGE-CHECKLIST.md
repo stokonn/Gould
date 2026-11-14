@@ -517,10 +517,13 @@ not dispatch it.
   unique default evidence path, validate even emulator console ports, and
   terminate only the emulator PID started by this runner if console shutdown
   does not stop it.
-- [x] Retry instrumentation only for absent or clean zero-test XML. Malformed
-  or invalid-count XML, failures, errors and skipped-test evidence are not
-  retried as infrastructure; the final result gate still fails on malformed
-  results, command failures, failures, errors or zero tests.
+- [x] Retry instrumentation only when there is no result evidence and a
+  positive infrastructure marker exists: the emulator action failed before
+  the script-start marker, or the shared readiness gate timed out before its
+  ready marker. Missing XML alone is not enough. Malformed/invalid-count XML,
+  failures, errors, skipped-test evidence and failures after readiness are not
+  retried; the final result gate still fails on malformed results, command
+  failures, failures, errors or zero tests.
 - [x] Correct the API 37 SDK/platform and deterministic Kotlin domain wording;
   append current final verification without changing historical APK hashes or
   prior dated verification entries.

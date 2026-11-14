@@ -16,11 +16,12 @@ name: Gould Android emulator verification
 #     `@Ignore` overrides, or class exclusions.
 #     Acceptance-only execution requires an exact Android source inventory match
 #     to retained full native evidence; it never claims a new instrumentation run.
-#   - Infrastructure-only retry (both jobs): the emulator step may run a
-#     second time only when instrumentation has no result XML or only clean,
-#     well-formed XML with all counts zero; the acceptance script must not have
-#     reached system-service readiness. Malformed XML, failures, errors or
-#     skipped-test results are not classified as infrastructure. This absorbs
+#   - Infrastructure-only retry (both jobs): retry instrumentation only when
+#     result XML has no test evidence AND the action failed before its explicit
+#     script-start marker, or the shared readiness gate recorded a service
+#     timeout before its ready marker. Retry acceptance only before readiness.
+#     Test failures, malformed XML, and failures after readiness are never
+#     classified as infrastructure. This absorbs
 #     the known upstream boot race: the pinned android-emulator-runner v2.38.0
 #     runs `input keyevent 82`
 #     immediately after sys.boot_completed without waiting for system services
@@ -200,15 +201,15 @@ jobs:
           # API37 swiftshader_indirect has repeatedly crashed graphics/system_server
           # on hosted runners. swangle is the previously accepted software ANGLE path.
           emulator-options: -no-window -gpu swangle -noaudio -no-boot-anim -camera-back none -no-snapshot
-          script: bash scripts/ci_android_instrumentation.sh
+          script: printf '%s\n' "$GITHUB_SHA" > stage5-ci-results/instrumentation-script-started.txt && bash scripts/ci_android_instrumentation.sh
       - name: Decide whether an infrastructure retry is required
         id: instrumentation-retry
         if: steps.instrumentation-attempt1.outcome == 'failure'
         run: |
           mkdir -p stage5-ci-results
-          # Retry only when XML is absent or clean, well-formed XML reports
-          # exactly zero tests. Malformed XML, failures, errors, or skipped
-          # test results are evidence/ambiguous and must not be retried.
+          # First reject any XML test/failure/error/skip evidence, including
+          # malformed or invalid-count XML. Without evidence, retry only on a
+          # positive pre-script abort or explicit service-readiness timeout.
           if python3 - <<'PYEOF' > stage5-ci-results/attempt1-evidence.txt
           import glob
           import sys
@@ -255,13 +256,25 @@ jobs:
             echo "Instrumentation result evidence is present or ambiguous; no infrastructure retry."
             echo "retry=false" >> "$GITHUB_OUTPUT"
           else
-            echo "No result evidence (no XML or only clean tests=0 XML); preserving attempt 1 evidence, then retrying once."
-            mkdir -p stage5-ci-results/attempt1
-            find stage5-ci-results -maxdepth 1 -type f -exec mv -t stage5-ci-results/attempt1/ {} + 2>/dev/null || true
-            if [ -f stage5-ci-results/attempt1/source-commit.txt ]; then
-              cp stage5-ci-results/attempt1/source-commit.txt stage5-ci-results/
+            RETRY=false
+            if [ ! -f stage5-ci-results/instrumentation-script-started.txt ]; then
+              echo "Emulator action failed before the instrumentation script marker; this is a pre-script infrastructure failure."
+              RETRY=true
+            elif [ -f stage5-ci-results/services-not-ready-logcat.txt ] && [ ! -f stage5-ci-results/services-ready.txt ]; then
+              echo "The readiness gate recorded a service timeout before readiness; this is an infrastructure failure."
+              RETRY=true
+            else
+              echo "Instrumentation script started without a positive infrastructure marker; no retry."
             fi
-            echo "retry=true" >> "$GITHUB_OUTPUT"
+            if [ "$RETRY" = true ]; then
+              echo "Preserving attempt 1 evidence, then retrying once."
+              mkdir -p stage5-ci-results/attempt1
+              find stage5-ci-results -maxdepth 1 -type f -exec mv -t stage5-ci-results/attempt1/ {} + 2>/dev/null || true
+              if [ -f stage5-ci-results/attempt1/source-commit.txt ]; then
+                cp stage5-ci-results/attempt1/source-commit.txt stage5-ci-results/
+              fi
+            fi
+            echo "retry=$RETRY" >> "$GITHUB_OUTPUT"
           fi
       - name: Run full instrumentation suite on the emulator (attempt 2)
         id: instrumentation-attempt2
@@ -278,7 +291,7 @@ jobs:
           # API37 swiftshader_indirect has repeatedly crashed graphics/system_server
           # on hosted runners. swangle is the previously accepted software ANGLE path.
           emulator-options: -no-window -gpu swangle -noaudio -no-boot-anim -camera-back none -no-snapshot
-          script: bash scripts/ci_android_instrumentation.sh
+          script: printf '%s\n' "$GITHUB_SHA" > stage5-ci-results/instrumentation-script-started.txt && bash scripts/ci_android_instrumentation.sh
       - name: Summarize and enforce instrumentation results
         if: always()
         id: instrumentation-summary
