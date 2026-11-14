@@ -11,16 +11,18 @@ name: Gould Android emulator verification
 #     Debug APKs ARE signed — with the runner's temporary debug keystore only
 #     (a throwaway key generated inside the job; CI output is never a
 #     release artifact).
-#   - Default full verification runs the complete
-#     connected suite via `connectedDebugAndroidTest` (all 42 androidTest
-#     classes; no runner-argument filters, no @Ignore, no excluded classes).
+#   - Default full verification runs the complete registered
+#     `connectedDebugAndroidTest` suite; it applies no runner-argument filters,
+#     `@Ignore` overrides, or class exclusions.
 #     Acceptance-only execution requires an exact Android source inventory match
 #     to retained full native evidence; it never claims a new instrumentation run.
 #   - Infrastructure-only retry (both jobs): the emulator step may run a
-#     second time, and only when ZERO test evidence exists (no instrumentation
-#     result XML or only XML reporting tests="0" / the acceptance script never
-#     reached system-service readiness). This absorbs the known upstream boot
-#     race - the pinned android-emulator-runner v2.38.0 runs `input keyevent 82`
+#     second time only when instrumentation has no result XML or only clean,
+#     well-formed XML with all counts zero; the acceptance script must not have
+#     reached system-service readiness. Malformed XML, failures, errors or
+#     skipped-test results are not classified as infrastructure. This absorbs
+#     the known upstream boot race: the pinned android-emulator-runner v2.38.0
+#     runs `input keyevent 82`
 #     immediately after sys.boot_completed without waiting for system services
 #     (upstream ReactiveCircus/android-emulator-runner#432 and #489; fix PR #495
 #     is not in v2.38.0; observed in run 43246507990 job 5.10) - and the
@@ -204,35 +206,56 @@ jobs:
         if: steps.instrumentation-attempt1.outcome == 'failure'
         run: |
           mkdir -p stage5-ci-results
-          # Zero test evidence = no XML OR only XML reporting zero tests (a
-          # pre-script abort still writes a well-formed tests="0" XML that
-          # Gradle then refuses to load - observed locally on API 37).
-          # Any XML with tests > 0 is real evidence and is never retried.
+          # Retry only when XML is absent or clean, well-formed XML reports
+          # exactly zero tests. Malformed XML, failures, errors, or skipped
+          # test results are evidence/ambiguous and must not be retried.
           if python3 - <<'PYEOF' > stage5-ci-results/attempt1-evidence.txt
           import glob
           import sys
           import xml.etree.ElementTree as ET
           xmls = sorted(glob.glob('app/build/outputs/androidTest-results/**/*.xml', recursive=True))
           ran = 0
+          ambiguous = False
           for path in xmls:
               try:
                   root = ET.parse(path).getroot()
-              except Exception as exc:  # malformed XML carries no test counts
+              except Exception as exc:
                   print(f'unparseable {path}: {exc}')
+                  ambiguous = True
                   continue
-              count = int(root.get('tests', 0) or 0)
-              if root.tag == 'testsuites':
-                  count = max(count, sum(int(ts.get('tests', 0) or 0) for ts in root.findall('testsuite')))
-              print(f'{path}: tests={count}')
-              ran += count
+              counts = {}
+              for key in ('tests', 'failures', 'errors', 'skipped'):
+                  try:
+                      root_count = int(root.get(key, 0) or 0)
+                      child_count = 0
+                      for suite in root.iter('testsuite'):
+                          if suite is root:
+                              continue
+                          child_count += int(suite.get(key, 0) or 0)
+                      counts[key] = max(root_count, child_count)
+                  except ValueError:
+                      print(f'invalid {key} count in {path}')
+                      ambiguous = True
+                      counts[key] = 0
+              tests = counts['tests']
+              failures = counts['failures']
+              errors = counts['errors']
+              skipped = counts['skipped']
+              print(f'{path}: tests={tests} failures={failures} errors={errors} skipped={skipped}')
+              ran += tests
+              if failures or errors or skipped:
+                  ambiguous = True
           print(f'total tests across result XML: {ran}')
+          if ambiguous:
+              print('Result XML is malformed or contains result evidence; do not retry as infrastructure.')
+              sys.exit(0)
           sys.exit(0 if ran > 0 else 1)
           PYEOF
           then
-            echo "Result XML reports executed tests; the failure produced evidence and is not a zero-test infrastructure abort - no retry."
+            echo "Instrumentation result evidence is present or ambiguous; no infrastructure retry."
             echo "retry=false" >> "$GITHUB_OUTPUT"
           else
-            echo "Zero tests executed (no result XML, or only tests=0 XML); preserving attempt 1 evidence, then retrying once."
+            echo "No result evidence (no XML or only clean tests=0 XML); preserving attempt 1 evidence, then retrying once."
             mkdir -p stage5-ci-results/attempt1
             find stage5-ci-results -maxdepth 1 -type f -exec mv -t stage5-ci-results/attempt1/ {} + 2>/dev/null || true
             if [ -f stage5-ci-results/attempt1/source-commit.txt ]; then
@@ -277,7 +300,12 @@ jobs:
           for path in xmls:
               root = ET.parse(path).getroot()
               for key in totals:
-                  totals[key] += int(root.get(key, 0) or 0)
+                  root_count = int(root.get(key, 0) or 0)
+                  child_count = sum(
+                      int(suite.get(key, 0) or 0)
+                      for suite in root.iter('testsuite') if suite is not root
+                  )
+                  totals[key] += max(root_count, child_count)
           print(f'Result files: {len(xmls)}')
           print('Tests: {tests}  Failures: {failures}  Errors: {errors}  Skipped: {skipped}'.format(**totals))
           if final_outcome != 'success':
