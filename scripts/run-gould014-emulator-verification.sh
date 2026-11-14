@@ -6,7 +6,9 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
+fail() { echo "ERROR: $*" >&2; exit 1; }
 SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/Android/Sdk}}"
+export PATH="$SDK/platform-tools:$PATH"
 ADB="$SDK/platform-tools/adb"
 EMULATOR="$SDK/emulator/emulator"
 AVD="${GOULD014_AVD:-gould014-api37-gapi}"
@@ -17,13 +19,13 @@ AVD_INI="$AVD_HOME/$AVD.ini"
 AVD_CONFIG="$AVD_HOME/$AVD.avd/config.ini"
 CLASSES="${GOULD014_TEST_CLASSES:-com.opus.piano.ActivityRepositoryTest,com.opus.piano.ActivityMigrationTest,com.opus.piano.WidgetTest,com.opus.piano.Stage8cUiRegressionTest}"
 SMOKE_CLASS="${GOULD014_SMOKE_TEST_CLASS:-com.opus.piano.AppLanguageTest}"
-RESULTS="${GOULD014_RESULTS_DIR:-/tmp/gould014-emulator-verification}"
+RESULTS="${GOULD014_RESULTS_DIR:-/tmp/gould014-emulator-verification-$(date -u +%Y%m%dT%H%M%SZ)-$$}"
+[[ ! -e "$RESULTS" ]] || fail "Results directory already exists; choose a new path to preserve prior evidence: $RESULTS"
 mkdir -p "$RESULTS"
 LOG="$RESULTS/emulator.log"
 GRADLE_LOG="$RESULTS/instrumentation.log"
 EMU_PID=""
 
-fail() { echo "ERROR: $*" >&2; exit 1; }
 [[ -x "$ADB" && -x "$EMULATOR" ]] || fail "Android SDK tools not found under $SDK"
 [[ -x "$SDK/cmdline-tools/latest/bin/avdmanager" ]] || fail "cmdline-tools 23.0 avdmanager is required"
 grep -qx 'Pkg.Revision=23.0' "$SDK/cmdline-tools/latest/source.properties" || fail "cmdline-tools/latest must be revision 23.0"
@@ -31,7 +33,7 @@ grep -qx 'Pkg.Revision=23.0' "$SDK/cmdline-tools/latest/source.properties" || fa
 grep -qx 'target=android-37.0' "$AVD_INI" || fail "AVD metadata target is not android-37.0: $AVD_INI"
 grep -qx 'target=android-37.0' "$AVD_CONFIG" || fail "AVD config target is not android-37.0: $AVD_CONFIG"
 grep -qx 'image.sysdir.1=system-images/android-37.0/google_apis/x86_64/' "$AVD_CONFIG" || fail "AVD must use the API 37 Google APIs x86_64 image"
-[[ "$PORT" =~ ^[0-9]{4}$ ]] && (( PORT >= 5555 && PORT <= 5586 )) || fail "Choose an emulator port in 5555–5586"
+[[ "$PORT" =~ ^[0-9]{4}$ ]] && (( PORT >= 5554 && PORT <= 5586 && PORT % 2 == 0 )) || fail "Choose an even emulator console port in 5554–5586"
 [[ "$CLASSES" =~ ^com\.opus\.piano\.[A-Za-z0-9_]+(\#[A-Za-z0-9_]+)?(,com\.opus\.piano\.[A-Za-z0-9_]+(\#[A-Za-z0-9_]+)?)*$ ]] || fail "Test selectors must be comma-separated Gould instrumentation classes, optionally Class#method"
 [[ "$SMOKE_CLASS" =~ ^com\.opus\.piano\.[A-Za-z0-9_]+$ ]] || fail "Smoke test must be a Gould instrumentation class"
 
@@ -66,8 +68,18 @@ cleanup() {
       sleep 1
     done
     if kill -0 "$EMU_PID" 2>/dev/null; then
-      echo "ERROR: emulator did not exit after console shutdown; see $LOG" >&2
-      status=1
+      echo "Emulator did not exit after console shutdown; sending TERM to launched PID $EMU_PID; see $LOG" >&2
+      kill -TERM "$EMU_PID" 2>/dev/null || true
+      for _ in $(seq 1 10); do
+        kill -0 "$EMU_PID" 2>/dev/null || break
+        sleep 1
+      done
+      if kill -0 "$EMU_PID" 2>/dev/null; then
+        echo "ERROR: emulator PID $EMU_PID ignored TERM; sending KILL to that launched PID." >&2
+        kill -KILL "$EMU_PID" 2>/dev/null || true
+        status=1
+      fi
+      wait "$EMU_PID" 2>/dev/null || true
     else
       wait "$EMU_PID" 2>/dev/null || true
     fi
@@ -84,17 +96,20 @@ for _ in $(seq 1 180); do
   state=$("$ADB" -s "$SERIAL" get-state 2>/dev/null || true)
   if [[ "$state" == device ]]; then
     boot=$("$ADB" -s "$SERIAL" shell getprop sys.boot_completed 2>/dev/null | tr -d '\r' || true)
-    mount=$("$ADB" -s "$SERIAL" shell service check mount 2>/dev/null | tr -d '\r' || true)
     qemu=$("$ADB" -s "$SERIAL" shell getprop ro.kernel.qemu 2>/dev/null | tr -d '\r' || true)
     api=$("$ADB" -s "$SERIAL" shell getprop ro.build.version.sdk 2>/dev/null | tr -d '\r' || true)
-    if [[ "$boot" == 1 && "$mount" == *found* && "$qemu" == 1 && "$api" == 37 ]]; then
+    if [[ "$boot" == 1 && "$qemu" == 1 && "$api" == 37 ]]; then
       ready=1
       break
     fi
   fi
   sleep 2
 done
-[[ "$ready" -eq 1 ]] || { tail -100 "$LOG" >&2; fail "Timed out waiting for API 37 boot and mount service"; }
+[[ "$ready" -eq 1 ]] || { tail -100 "$LOG" >&2; fail "Timed out waiting for API 37 boot"; }
+source scripts/ci_wait_for_system_services.sh
+wait_for_system_services "$SERIAL" "$RESULTS"
+mount=$("$ADB" -s "$SERIAL" shell service check mount | tr -d '\r')
+[[ "$mount" =~ :\ found$ ]] || fail "Mount service is unavailable after readiness gate: $mount"
 for _ in 1 2 3 4 5; do
   [[ $("$ADB" -s "$SERIAL" get-state) == device ]] || fail "Emulator went offline after boot"
   [[ $("$ADB" -s "$SERIAL" shell getprop sys.boot_completed | tr -d '\r') == 1 ]] || fail "Android boot state regressed"
