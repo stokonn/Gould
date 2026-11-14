@@ -57,7 +57,7 @@ Gould brings the practical parts of piano practice together without turning your
 
 ## Get Gould
 
-**Latest available pre-release: [Gould 0.13 — Project Renaissance](https://github.com/stokonn/Gould/releases/tag/v0.13)**. [Gould 0.12 — The Practice Studio Update](https://github.com/stokonn/Gould/releases/tag/v0.12) remains available as an earlier release. Gould 0.14.0 is being prepared separately and is not downloadable yet.
+**Latest available pre-release: [Gould 0.13 — Project Renaissance](https://github.com/stokonn/Gould/releases/tag/v0.13)**. [Gould 0.12 — The Practice Studio Update](https://github.com/stokonn/Gould/releases/tag/v0.12) remains available as an earlier release. The 0.14.0 release notes describe the upcoming update.
 
 - **Android:** 8.0 or newer (API 26+) for the currently available Gould 0.13 release. Gould 0.14 requires Android 11 or newer (API 30+).
 - **Languages:** English and Czech, with light and dark appearance.
@@ -84,7 +84,7 @@ Gould is a native Android app using **Kotlin**, **Jetpack Compose**, **Material 
 For developers:
 
 - Start with [AGENTS.md](AGENTS.md) for repository and release-safety rules, and the [Developer Guide](docs/wiki/Developer-Guide.md) for architecture.
-- Use **JDK 17**, the **Android SDK 37 platform** and the committed Gradle wrapper for the 0.14 development branch.
+- To build Gould 0.14 from source, use **JDK 17**, the **Android SDK 37 platform** and the committed Gradle wrapper.
 - Gould 0.14 adds a JVM-targeted Kotlin Multiplatform domain module and keeps Room as the Android personal database. See [Gould 0.14 release notes](docs/releases/GOULD-0.14.md) for the feature overview and compatibility details.
 - Gould **0.13 Project Renaissance** is published as a [pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13), not Stable. See its [release notes](docs/releases/GOULD-0.13.md), [release readiness](docs/planning/gould-0.13/RELEASE-READINESS.md), and the [English screenshot capture plan](docs/planning/gould-0.13/README-SCREENSHOT-CAPTURE.md).
 - Source compilation and CI are not substitutes for on-device, upgrade or release-signing acceptance. Published releases undergo separate checks.
