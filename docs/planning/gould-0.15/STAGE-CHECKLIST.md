@@ -681,11 +681,22 @@ Status remains **IN PROGRESS** pending the runtime/owner checks above.
       instruction, which supersedes the earlier "squash-merge" wording
       above. Google Sign-In code is unchanged in 0.15; its replacement
       investigation is deferred to Gould 0.16.
+      **Executed 2026-11-16:** PR
+      [#53](https://github.com/stokonn/Gould/pull/53) merged with regular
+      merge commit `06282c5aad4887b472373e925e6ead01e24c4cba` (exactly two
+      parents; no squash/rebase), all three PR CI workflows passed;
+      annotated tag `v0.15.0` → the merge commit; prerelease
+      [Gould 0.15.0](https://github.com/stokonn/Gould/releases/tag/v0.15.0)
+      published with the single asset `gould-0.15.0.apk` (97,931,121 bytes),
+      downloaded back byte-identical, SHA-256
+      `f3df006e36aa55fb940b5a938cc36737156c3ff77a5c960a9c5da10b53ade8ea`,
+      signer `53eface4…d59e`. Full record in `CHECKPOINT.md`.
 
-Status: **publication executed under explicit owner authorization** (2026-11-16).
-The two earlier gates are disposed of as follows: the APK-retest gate is
-superseded by publishing the already owner-tested artifact; the dependency-
-license gate is **not resolved** — it is transparently documented and the
-owner explicitly authorized release despite it. Android instrumentation was
-compiled but not executed. Exact results and commands are in
-`RELEASE-VERIFICATION.md`.
+Status: **RELEASED as a GitHub prerelease under explicit owner
+authorization** (2026-11-16). The two earlier gates are disposed of as
+follows: the APK-retest gate is superseded by publishing the already
+owner-tested artifact; the dependency-license gate is **not resolved** — it
+is transparently documented and the owner explicitly authorized release
+despite it. Android instrumentation was compiled but not executed. Exact
+results, commands and the publication record are in `RELEASE-VERIFICATION.md`
+and `CHECKPOINT.md`.

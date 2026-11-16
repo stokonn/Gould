@@ -1321,3 +1321,51 @@ push, open the Gould 0.15 PR, watch `quality.yml`, merge with a **regular
 merge commit** (owner: no squash, no rebase), tag `v0.15.0` at the merge
 commit, publish the prerelease with `gould-0.15.0.apk`, verify everything,
 then record the actual URLs/SHAs in a post-release docs commit on `main`.
+
+## Publication record — 2026-11-16 (completed)
+
+All steps executed and verified on 2026-11-16:
+
+- **Commits on `feature/gould-0.15`:** `a2233f6`
+  (`feat(gould-0.15): curated catalogue, Library/Artist redesign, guided
+  tour, admin retirement`, 169 files) and `42eda13`
+  (`docs(gould-0.15): release notes, licensing audit addendum, verification
+  records`, 67 files), pushed to origin. Working tree clean; no
+  `.gould-015-*` build trees, no `provenance-evidence/{raw,reproduction,
+  gnupg}` material and no secrets committed (largest committed file:
+  `app/src/main/assets/catalogue/musicbrainz-core-20261114/catalogue.dbz`,
+  89,123,721 bytes, under GitHub's 100 MB limit).
+- **PR:** [#53 — Gould 0.15](https://github.com/stokonn/Gould/pull/53).
+  CI on the PR: `host-quality` **pass** (7m40s), `synthetic-postgres`
+  **pass** (2m4s), `administration-safety` **pass** (11s); the push-triggered
+  duplicates of the same three workflows also passed. PR state MERGED,
+  mergeable CLEAN at merge time.
+- **Merge:** **regular merge commit**
+  `06282c5aad4887b472373e925e6ead01e24c4cba` ("Merge pull request #53 from
+  stokonn/feature/gould-0.15"), exactly **2 parents** (`a908c96…` old main +
+  `42eda13…` branch head) — no squash, no rebase; both feature commits are
+  ancestors of `origin/main`.
+- **Tag:** annotated `v0.15.0` (tag object `35efbf0027108edc51962c10edc9949b11cdd1ca`)
+  → resolves to the merge commit `06282c5…`; pushed to origin.
+- **Release:** [Gould 0.15.0](https://github.com/stokonn/Gould/releases/tag/v0.15.0)
+  — title "Gould 0.15.0", `isPrerelease: true`, `isDraft: false`, target
+  `main`, published `2026-11-16T12:35:11Z`.
+- **Asset:** exactly one asset `gould-0.15.0.apk`, 97,931,121 bytes. It was
+  first uploaded by gh as `app-release.apk` (the `#label` suffix was not
+  applied by gh 2.97.0); the correctly named copy was uploaded and the
+  misnamed asset (ID 754791140) deleted, leaving the conventional name.
+  Downloaded back from the release: SHA-256
+  `f3df006e36aa55fb940b5a938cc36737156c3ff77a5c960a9c5da10b53ade8ea`,
+  `cmp`-byte-identical to the owner-tested APK, signer cert
+  `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`.
+- **Release notes:** user-focused body covering features, backup/upgrade
+  safety, API 30+ requirement, the transparent unresolved-licensing note
+  (owner authorization; questions NOT resolved), verification summary and
+  the APK SHA-256.
+
+Not executed: Android instrumentation (compiled only), emulator journeys,
+owner device access by the agent. The Google SDK licensing questions remain
+**unresolved** (audit verdict LEGAL REVIEW REQUIRED); publication proceeded
+under the owner's explicit authorization, recorded in audit §12 and
+`docs/LICENSES.md`. This entry is recorded in the post-release documentation
+commit on `main`.

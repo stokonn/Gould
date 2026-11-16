@@ -1,5 +1,18 @@
 # Gould 0.15.0 — Pre-release (published)
 
+**Published 2026-11-16:** GitHub pre-release
+[Gould 0.15.0](https://github.com/stokonn/Gould/releases/tag/v0.15.0) from
+annotated tag `v0.15.0` at regular merge commit
+`06282c5aad4887b472373e925e6ead01e24c4cba` (PR
+[#53](https://github.com/stokonn/Gould/pull/53), merged with a regular merge
+commit — no squash, no rebase). Single asset `gould-0.15.0.apk`,
+97,931,121 bytes, SHA-256
+`f3df006e36aa55fb940b5a938cc36737156c3ff77a5c960a9c5da10b53ade8ea`
+(verified byte-identical after download from the release), signer
+certificate SHA-256
+`53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`.
+`isPrerelease: true`; all three PR CI workflows passed.
+
 **Owner release authorization (2026-11-16):** the owner explicitly
 authorized completing and publishing Gould 0.15 as a GitHub prerelease
 **despite the unresolved Google SDK licensing questions** documented in
