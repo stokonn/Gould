@@ -1,6 +1,6 @@
 # Changelog & Roadmap — Gould
 
-> **Latest release:** [Gould 0.14.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.14.0). This is not Stable.
+> **Latest release:** [Gould 0.15.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.15.0). This is not Stable.
 
 ## Gould 0.13 — Project Renaissance (pre-release)
 
@@ -54,11 +54,15 @@ created by stokonn with love <3
 
 # Changelog & Roadmap
 
+## Gould 0.15.0 — pre-release
+
+Gould 0.15.0 adds a curated offline catalogue from the verified MusicBrainz Core snapshot `20261114-002230` (100 composers, 105,032 works and 105,421 composer relationships; MusicBrainz Core data is CC0) with repository provenance evidence, plus opt-in online MusicBrainz search using the existing debounce, cancellation, rate-limit and cache behaviour. Private Repertoire stays separate from public Catalogue records. The Library gains full-width equal Repertoire/Catalogue tabs; Artist pages gain scoped search, deterministic sorting and work-type/period filters. Guided onboarding and safer community-draft recovery are added, and a successful Activity week now consistently requires both configured weekly goals. The release is a pre-release, not Stable; the published APK is the exact artifact the owner tested on a Samsung Galaxy A55, and Android instrumentation was compiled but not executed. The Google dependency licensing question remains unresolved and is transparently recorded together with the owner's explicit release authorization. See [the release notes and verification status](../releases/GOULD-0.15.md) and [the licensing audit](../planning/gould-0.15/GOOGLE-DEPENDENCY-LICENSING-AUDIT.md).
+
 ## Gould 0.14.0 — pre-release
 
 Gould 0.14.0 adds a deterministic weekly Activity model, a yearly heatmap, retrospective manual records, historical weekly goals, Beta Week, automatic Streak Freeze and durable cosmetic rewards. It retains Room, adds an additive personal database migration, and includes a Kotlin Multiplatform domain module with `commonMain` rules and a JVM target; Android remains the only application platform. Discover and visible moderation/admin navigation are hidden temporarily while implementations remain preserved. Cosmetic rewards are granted per eligible perfect week, independently of the four-consecutive-official-week Freeze milestone; Beta Week may earn a cosmetic but does not advance Streak or Freeze progress. The release is a pre-release, not Stable. Signed in-place upgrade verification and visual emulator review remain outstanding. See [the release notes and verification status](../releases/GOULD-0.14.md).
 
-The latest published release is [Gould 0.14.0](https://github.com/stokonn/Gould/releases/tag/v0.14.0), a pre-release. [Gould 0.13](https://github.com/stokonn/Gould/releases/tag/v0.13) remains available as an earlier release.
+The latest published release is [Gould 0.15.0](https://github.com/stokonn/Gould/releases/tag/v0.15.0), a pre-release. [Gould 0.14.0](https://github.com/stokonn/Gould/releases/tag/v0.14.0) and [Gould 0.13](https://github.com/stokonn/Gould/releases/tag/v0.13) remain available as earlier releases.
 
 **[0.10.1 — Final Redesign Polish](https://github.com/stokonn/Gould/releases/tag/v0.10.1)** refines the unified Library, saved completion/notes, Profile, About, Tux and compact previews. Package/signing identity, schema 8 and format 4 remain unchanged. See [verification](Verification-0.10.1).
 

@@ -1,0 +1,5 @@
+docs/planning/gould-0.15/provenance-evidence/raw/original-transfer/SHA256SUMS\t903\t2026-11-14 19:58:57.318196443 +0100
+docs/planning/gould-0.15/provenance-evidence/raw/original-transfer/SHA256SUMS.asc\t488\t2026-11-14 19:58:56.325924306 +0100
+docs/planning/gould-0.15/provenance-evidence/raw/original-transfer/key.asc\t1878\t2026-11-15 00:19:46.090556622 +0100
+docs/planning/gould-0.15/provenance-evidence/raw/original-transfer/mbdump.tar.bz2\t7738103395\t2026-11-15 00:56:10.181824455 +0100
+docs/planning/gould-0.15/provenance-evidence/raw/original-transfer/mbdump.tar.bz2.asc\t488\t2026-11-14 19:58:58.332453919 +0100

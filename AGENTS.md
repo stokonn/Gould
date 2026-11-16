@@ -52,9 +52,22 @@ Gould (formerly Goldberg) is an existing native Kotlin / Jetpack Compose / Mater
 
 Extend the central design system and reusable components. Use centralized semantic theme tokens, Cormorant Garamond/Inter, consistent spacing, responsive layouts, accessible touch targets and Android font scaling. Support Ivory/Nocturne and CZ/EN; use localized resources, proper plurals, application-locale dates/numbers and accessibility descriptions. Never automatically translate user-entered text or original catalogue work/composer names. Respect reduced motion. Keep network/storage/decoding work off the main thread. Metered media downloads require explicit permission; retain attribution/license metadata and safe offline fallbacks.
 
-## Never use the owner's physical phone
+## Owner physical-device acceptance testing
 
-Never install, launch, test, wipe or run ADB/instrumentation against the owner's physical Android phone. Use host tests and emulators. Every ADB operation must explicitly target an identified emulator serial (emulator-NNNN); never use implicit device selection. Never claim that an agent performed physical-device verification. Explicit owner-reported manual results may be recorded with clear attribution; never infer additional checks from them. Emulator screenshots are not physical-device evidence.
+The owner tests Gould on a real Android device, primarily a Samsung Galaxy A55.
+Emulator/AVD availability, `/dev/kvm`, emulator binaries and emulator
+instrumentation are not Gould acceptance prerequisites. Run available host
+tests, JVM tests, Android compilation, lint and static checks; classify
+emulator-dependent instrumentation as not executed when unavailable, and never
+claim compilation is execution. Keep a practical owner-run physical-device
+checklist and record actual device results only after the owner reports them.
+
+Agents must never install, launch, test, wipe or run ADB/instrumentation against
+the owner's physical phone. Do not configure an emulator solely to unblock
+acceptance. Owner authorization to perform manual device testing does not
+authorize agent device access. Any owner-reported results must retain clear
+attribution; never infer checks from a screenshot or APK build. Emulator
+screenshots are not physical-device evidence.
 
 ## Permanent GitHub workflow
 
@@ -96,13 +109,13 @@ Implement appropriate persistent workflow safeguards where supported; do not ass
 
 ## Quality and publication gates
 
-Run appropriate existing/new JVM tests, migration and backup checks, localization/paging checks, lint, debug APK build and instrumentation compilation/execution where available. Add meaningful regression tests for data/timing/cache/permission changes. Inspect rendered UI across light/dark themes, representative sizes and larger fonts. Verify network/offline behavior, recovery and an in-place upgrade on a seeded emulator when required. Distinguish executed/passed, failed, compiled-only and unexecuted checks. No fabricated results.
+Run appropriate existing/new JVM tests, migration and backup checks, localization/paging checks, lint, debug APK build and instrumentation compilation/execution where available. Add meaningful regression tests for data/timing/cache/permission changes. The owner performs visual, accessibility, network/offline, recovery and upgrade acceptance on a real device (primarily Samsung Galaxy A55); emulator/AVD availability is never an acceptance prerequisite. Instrumentation unavailable in the environment is recorded as not executed. Distinguish executed/passed, failed, compiled-only and unexecuted checks. No fabricated results.
 
 Use the project's Gradle wrapper; typical checks:
 `./gradlew clean assembleDebug testDebugUnitTest assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1`
 Run relevant `scripts/check_*.py` checks. Do not treat APK compilation as instrumentation execution. Verify actual package/version/code, ZIP/resources, compatible certificate against the trusted previous APK, APK SHA-256 and source/artifact identity. Trusted signing SHA-256: 53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e. Preserve existing compatible signing configuration; never uninstall to bypass mismatch.
 
-Emulator verification (Stage 5 and beyond) may run through the dispatch-only CI workflow `.github/workflows/stage5-emulator.yml` (KVM `ubuntu-24.04`, explicit `emulator-NNNN` + `ro.kernel.qemu=1` guards, SHA binding between the run and the dispatched commit, raw tool diagnostics preserved as artifacts, never the owner's physical phone, never production signing credentials). Treat CI results as evidence only for the exact dispatched commit; classify pre-test/setup failures honestly as CI failures rather than application results, and never re-dispatch without a meaningful verified fix.
+Optional emulator CI (including `.github/workflows/stage5-emulator.yml`) can provide supplemental evidence on its exact dispatched commit; it is not required for Gould acceptance and must never access the owner's physical phone or production signing credentials. Classify pre-test/setup failures honestly as CI failures rather than application results; do not dispatch or retry unless that optional CI evidence is needed and a meaningful verified fix justifies it.
 
 If a mandatory check fails or cannot be verified, stop publication, explain the blocker, and continue independent safe work. Missing Google OAuth configuration must be reported; never fake sign-in. Release type follows the explicit owner requirement for that version (0.9.2: normal release titled Goldberg 0.9.2, only after its mandatory gates pass). Safely integrate verified source without history rewriting, create a new annotated version tag, upload the verified APK/changelog, verify remote release/asset digests and update tracking/docs. Never overwrite conflicting tags/releases.
 

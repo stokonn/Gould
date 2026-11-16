@@ -1,0 +1,353 @@
+{
+  "manifest_version": 1,
+  "generated_at_utc": "2026-11-16T09:21:02Z",
+  "snapshot": "MusicBrainz Core 20261114-002230",
+  "scope": "provenance evidence only; no production catalogue regeneration or application changes",
+  "hash_algorithm": "SHA-256",
+  "files": [
+    {
+      "path": "ARCHIVE-VERIFICATION.md",
+      "size_bytes": 2242,
+      "sha256": "336752388f2e7c3822123da9dfc4762f67f1fa0713d270fd5b2a9c5a28f91634",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "CATALOGUE-EXTRACTION-AUDIT.md",
+      "size_bytes": 6568,
+      "sha256": "632b8007c7071a06039f84a2a9e195d6b1d13235bc92c207bcb4922ca9ca0e99",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "FINAL-PROVENANCE-REPORT.md",
+      "size_bytes": 4189,
+      "sha256": "384c415718fba8f113d1c22b03ad97ce04dc9060c55034ff0e1639391162a4a4",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "LICENSING-ASSESSMENT.md",
+      "size_bytes": 2046,
+      "sha256": "31eb7fcdea633997ed383db92ec8e5d0a483c81cf33f866fb5d51bc8b46a3223",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "SIGNING-KEY-AUTHENTICATION.md",
+      "size_bytes": 3761,
+      "sha256": "ea088e629138bf33f35a27f3f03de24a4bdc2482c49f330b0e51d4c6dff07882",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "SNAPSHOT-IDENTITY.md",
+      "size_bytes": 2264,
+      "sha256": "547bcf0faed5f24eeb2cef37ef464758850f811b069261624a02e75b9d9f495f",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "gnupg/pubring.kbx",
+      "size_bytes": 1530,
+      "sha256": "302d651d1b1953d9f243cccdf6c0502f0aa442a8c9c2c06734162f48d039cd30",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "gnupg/pubring.kbx~",
+      "size_bytes": 32,
+      "sha256": "80aafa40907d9c1d50bed46bd07dddf8d33aabd5a7361c096f31fdb7ec4e5e87",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "gnupg/trustdb.gpg",
+      "size_bytes": 1200,
+      "sha256": "16a3771202c2ae8a860c363914693d74adf95de267c6b55027e7aecc060be649",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "logs/catalogue-table-and-field-audit.json",
+      "size_bytes": 45473,
+      "sha256": "db3ed888e5aa227755a9afa31b13b50981ba97e18808bf0806121c6b8266b03f",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "logs/check-existing-signed-apk-payload.json",
+      "size_bytes": 469,
+      "sha256": "9d00068ffa7bbb03d6d48e055e4e08807dd221968a057b2dda9d43e430634bd2",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "logs/check-reproduced-curated-catalogue.json",
+      "size_bytes": 382,
+      "sha256": "0904342ecddae47941ffd2df2a0dc36ede219919e5b6ecaca63e5f7938b9fe46",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "logs/compressed-payload-decode.txt",
+      "size_bytes": 179,
+      "sha256": "b09dce625a9a8489d866cbbeca8d59174f1564bac747dbf0621fa629c5eb448a",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "logs/copied-evidence-sha256.txt",
+      "size_bytes": 733,
+      "sha256": "82c84e4daea513d0245586103899cc768c204d6b573b8fdf6c68af98295ec404",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "logs/copied-evidence-stat.txt",
+      "size_bytes": 621,
+      "sha256": "c0469d74f10c2989a6e1c8f4e927544f6527301decc9a36e098ef57d9c0c48d9",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "logs/gpg-verification.txt",
+      "size_bytes": 2884,
+      "sha256": "820aec89a03d9b0c9744068cb08296becbdc30b68c49d5234c8e75a804e0d4e6",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "logs/reproduction-curation.log",
+      "size_bytes": 623,
+      "sha256": "d0d2357c5e7ebcc4e4530401f4f7db0d65032a67e14876980fbe5e8009de0b48",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "logs/reproduction-generation.log",
+      "size_bytes": 11068,
+      "sha256": "5538a52944d484f02adcdac450c55bcb78a5804af96939a830ad3bdbadf95afb",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "logs/reproduction-packaging.log",
+      "size_bytes": 535,
+      "sha256": "d1ec18dcd29ef5286a24db29711ac96c3ca46be5223945c8f46d6d9b864f4b9a",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "logs/target-archive-checksum-entry.txt",
+      "size_bytes": 31,
+      "sha256": "c395ef9b5bbe6bcdd65c81b1410ed924399596315a8b65b18628940fd71dc1ea",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "logs/text-escape-audit.txt",
+      "size_bytes": 1733,
+      "sha256": "65da78d3287e620b20cae7216e1b60ed7db44e39278a6614449959e8b4e9e2dc",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "official-sources/SOURCES.md",
+      "size_bytes": 2889,
+      "sha256": "10fbd4b4210f5dd0326ca90c7a3fbc27f28642c47d70db1f9be0801f1745f773",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "raw/original-transfer/SHA256SUMS",
+      "size_bytes": 903,
+      "sha256": "e09d4470c42548ef73f8d1cf3762af9f1bc9b03a74a4370a1be531887a953f09",
+      "source_url": "https://ftp.musicbrainz.org/pub/musicbrainz/data/fullexport/20261114-002230/SHA256SUMS",
+      "verification_outcome": "PASS: signature verified; Core archive entry independently matched",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "raw/original-transfer/SHA256SUMS.asc",
+      "size_bytes": 488,
+      "sha256": "7ff8b1de19df6787ff1861464cb9157564c8fe883456f43af552fdad7cb8f001",
+      "source_url": "https://ftp.musicbrainz.org/pub/musicbrainz/data/fullexport/20261114-002230/SHA256SUMS.asc",
+      "verification_outcome": "PASS: detached signature verified by GnuPG 2.4.9 under default policy",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "raw/original-transfer/key.asc",
+      "size_bytes": 1878,
+      "sha256": "6b5a59c190d89b3c4993813c0ae932b6c070f922de44aef47331880c1d6a6f8b",
+      "source_url": "https://musicbrainz.org/doc/MusicBrainz_Database/Download (fingerprint corroboration; key file was locally preserved, retrieval route not recorded)",
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "raw/original-transfer/mbdump.tar.bz2",
+      "size_bytes": 7738103395,
+      "sha256": "da4f1afcbca8ca54eb6362ae45173543f079e8491d097a376d060551d1a03335",
+      "source_url": "https://ftp.musicbrainz.org/pub/musicbrainz/data/fullexport/20261114-002230/mbdump.tar.bz2",
+      "verification_outcome": "PASS: detached GPG signature and signed SHA256SUMS entry; reproduced downstream",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "raw/original-transfer/mbdump.tar.bz2.asc",
+      "size_bytes": 488,
+      "sha256": "ec0016687eb4657d15c6f9ae41a9f666445cd2469bc4a0c71db532fecacd41c1",
+      "source_url": "https://ftp.musicbrainz.org/pub/musicbrainz/data/fullexport/20261114-002230/mbdump.tar.bz2.asc",
+      "verification_outcome": "PASS: detached signature verified by GnuPG 2.4.9 under default policy",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "reproduction/curated-seed/catalogue.db",
+      "size_bytes": 283987968,
+      "sha256": "2b4c67b414dd985f7caa4e2303b5a54562340ed947d83670a85d32c2820b428f",
+      "source_url": null,
+      "verification_outcome": "PASS: reproduced curated database hash/counts match preserved output",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "reproduction/curated-seed/catalogue.dbz",
+      "size_bytes": 89123721,
+      "sha256": "c96a16be03720d18a606efd1517b30d1daea9fdd2b7467203add7ab930b20a5f",
+      "source_url": null,
+      "verification_outcome": "PASS: deterministic package output byte-identical to production asset",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "reproduction/curated-seed/manifest.json",
+      "size_bytes": 1149,
+      "sha256": "f569a0768c4d44ff7e2ac6c62251d73be6e892ab41cd1700e996d079a8f7defe",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "reproduction/full-core-db/catalogue.db",
+      "size_bytes": 6864670720,
+      "sha256": "7dcd72951f21f3647c7a4e6e08efddba6855debe731156a6df30ea4f6dbadce5",
+      "source_url": null,
+      "verification_outcome": "PASS: reproduced full database hash matches preserved diagnostic database",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    },
+    {
+      "path": "reproduction/full-core-db/manifest.json",
+      "size_bytes": 1097,
+      "sha256": "c4fdf49485f6de72dd8f01d0a45f154411c496f1c18f6493b6ddd19316d535b0",
+      "source_url": null,
+      "verification_outcome": "evidence artifact preserved; see linked report/log for verification disposition",
+      "evidence_inventory_recorded_at_utc": "2026-11-16T09:21:02Z",
+      "source_retrieval_timestamp_utc": null,
+      "source_retrieval_note": "Original transfer timestamps/redirect transcript were not retained; see SNAPSHOT-IDENTITY.md. Signature signing times are recorded in the key and archive reports."
+    }
+  ],
+  "external_references": [
+    {
+      "path": "app/src/main/assets/catalogue/musicbrainz-core-20261114/catalogue.dbz",
+      "size_bytes": 89123721,
+      "sha256": "c96a16be03720d18a606efd1517b30d1daea9fdd2b7467203add7ab930b20a5f",
+      "source_url": "generated locally from the verified archive and curated database",
+      "verification_outcome": "PASS: byte-identical to isolated reproduction/release payload checker passed"
+    },
+    {
+      "path": ".gould-015-diagnostics/generated-catalogue/catalogue.db",
+      "size_bytes": 6864670720,
+      "sha256": "7dcd72951f21f3647c7a4e6e08efddba6855debe731156a6df30ea4f6dbadce5",
+      "source_url": null,
+      "verification_outcome": "PASS: byte-identical to isolated full-core reproduction"
+    },
+    {
+      "path": ".gould-015-diagnostics/catalogue-performance-20261115/before-host/catalogue.db",
+      "size_bytes": 283987968,
+      "sha256": "2b4c67b414dd985f7caa4e2303b5a54562340ed947d83670a85d32c2820b428f",
+      "source_url": null,
+      "verification_outcome": "PASS: byte-identical to isolated curated reproduction"
+    }
+  ],
+  "manifest_self_hash": "omitted to avoid recursive hashing; hash this manifest externally if needed"
+}
