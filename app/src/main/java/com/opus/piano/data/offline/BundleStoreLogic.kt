@@ -15,7 +15,7 @@ internal object BundleStoreLogic {
 
     val SHA256 = Regex("[0-9a-f]{64}")
 
-    /** Aligned with D7 / CatalogueStorage.MAX_TOTAL; injected at wiring so tests can vary it. */
+    /** Downloaded bundle ceiling; the larger APK-bundled catalogue has a separate storage budget. */
     const val DEFAULT_MAX_TOTAL_BYTES = 256L * 1024 * 1024
 
     fun isValidSha(sha256: String): Boolean = SHA256.matches(sha256)

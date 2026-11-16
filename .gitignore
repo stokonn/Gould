@@ -2,6 +2,15 @@
 .kotlin/
 local.properties
 **/build/
+/.gould-015-diagnostics/
+# Gould 0.15 local isolated build/verification trees and preserved APK evidence
+# (kept on disk; never committed — see docs/planning/gould-0.15/RELEASE-VERIFICATION.md).
+/.gould-015-*/
+# Catalogue provenance raw archive, reproduced databases and private key material:
+# preserved locally as evidence, excluded from Git per the provenance report.
+/docs/planning/gould-0.15/provenance-evidence/raw/
+/docs/planning/gould-0.15/provenance-evidence/reproduction/
+/docs/planning/gould-0.15/provenance-evidence/gnupg/
 .idea/
 *.iml
 # Private owner design references; never stage or distribute.

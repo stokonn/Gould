@@ -26,7 +26,8 @@ def add_bridge_ddl(db):
         db.execute(statement)
 
 
-for starting_version in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11):
+latest_version = max(int(path.stem) for path in SCHEMAS.glob("*.json"))
+for starting_version in range(1, latest_version):
     db = sqlite3.connect(":memory:")
     db.execute("PRAGMA foreign_keys = ON")
     make_schema(db, starting_version)
@@ -41,12 +42,15 @@ for starting_version in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11):
         db.execute("INSERT INTO session_parts(sessionId,pieceId,title,composer,musicalEra,durationMillis,notes) VALUES(3,7,'Legacy','Composer','',60000,'')")
         db.execute("INSERT INTO profile_settings(id,username,avatar,theme,showcase) VALUES(1,'Existing musician','','Dark','first_piece')")
     if starting_version >= 6:
-        db.execute("INSERT INTO local_app_state VALUES(1,1,0,18,0,4,'2026-10-15')")
+        db.execute("INSERT INTO local_app_state(id,onboardingDone,reminderEnabled,reminderHour,reminderMinute,generation,lastReminderDay) VALUES(1,1,0,18,0,4,'2026-10-15')")
         db.execute("INSERT INTO practice_drafts VALUES(1,'unchanged original draft',123)")
-    for version in range(starting_version, 8):
+    for version in range(starting_version, latest_version):
         block = SOURCE.split(f"val MIGRATION_{version}_{version + 1} =", 1)[1].split("\n        }", 1)[0]
         statements = re.findall(r'db\.execSQL\("([^"]+)"\)', block)
-        assert statements, f"Migration {version} not found"
+        if not statements:
+            # These migrations delegate to schema installers whose DDL is
+            # applied below from their canonical source definitions.
+            assert any(name in block for name in ("PersonalCatalogueBridge.install", "BackupState.install", "StudioSchema.migrate")), f"Migration {version} not found"
         for sql in statements:
             db.execute(sql)
     assert db.execute("SELECT id, title, notes, status FROM pieces").fetchone() == (7, "Legacy", "Keep notes", "POLISHING")
@@ -72,24 +76,21 @@ for starting_version in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11):
     studio_source=(ROOT / "app/src/main/java/com/opus/piano/data/StudioData.kt").read_text()
     for sql in re.findall(r'db\.execSQL\("([^"\n]+)"\)', studio_source):
         db.execute(sql)
-    migration=SOURCE.split("val MIGRATION_11_12 =",1)[1].split("\n        }",1)[0]
-    for sql in re.findall(r'db\.execSQL\("([^"\n]+)"\)', migration):
-        db.execute(sql)
     if starting_version >= 3:
         assert db.execute("SELECT unlockedAt,acknowledgedAt FROM badge_notices WHERE achievementId='first_piece'").fetchone() == (123,123)
     assert db.execute("SELECT COUNT(*) FROM local_audio").fetchone() == (0,)
     expected = sqlite3.connect(":memory:")
-    for entity in make_schema(expected, 12)["entities"]:
+    for entity in make_schema(expected, latest_version)["entities"]:
         table = entity["tableName"]
         assert db.execute(f"PRAGMA table_info({table})").fetchall() == expected.execute(f"PRAGMA table_info({table})").fetchall(), table
         assert db.execute(f"PRAGMA index_list({table})").fetchall() == expected.execute(f"PRAGMA index_list({table})").fetchall(), table
         assert db.execute(f"PRAGMA foreign_key_list({table})").fetchall() == expected.execute(f"PRAGMA foreign_key_list({table})").fetchall(), table
     assert db.execute("PRAGMA foreign_key_check").fetchall() == []
-    assert db.execute("SELECT onboardingDone, reminderEnabled FROM local_app_state").fetchone() == (1, 0)
+    assert db.execute("SELECT onboardingDone, reminderEnabled, tourVersion, tourCompleted, tourSkipped, tourSeenSteps FROM local_app_state").fetchone() == (1, 0, 0, 0, 0, "")
     assert db.execute("SELECT elapsedMillis, detectedActiveMillis, notes FROM sessions").fetchone() == (None, None, '')
     db.execute("INSERT OR IGNORE INTO badge_unlocks VALUES('first_piece', 123)")
     db.execute("INSERT OR IGNORE INTO badge_unlocks VALUES('first_piece', 999)")
     assert db.execute("SELECT unlockedAt FROM badge_unlocks").fetchone() == (123,)
     assert db.execute("SELECT COUNT(*) FROM activity_weekly_goals").fetchone() == (0,)
     assert db.execute("SELECT COUNT(*) FROM manual_activity_entries").fetchone() == (0,)
-    print(f"PASS v{starting_version} → v12 DDL: legacy data retained, additive Activity tables empty, Room export matches; bridge allocation/triggers require Android tests")
+    print(f"PASS v{starting_version} → v{latest_version} DDL: legacy data retained, additive tables empty, Room export matches; bridge allocation/triggers require Android tests")

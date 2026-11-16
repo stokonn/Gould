@@ -1,0 +1,65 @@
+name: Bug report
+description: Report a reproducible problem in Gould
+labels: ["bug"]
+body:
+  - type: input
+    id: app_version
+    attributes:
+      label: Gould version
+      description: Include the version name and version code if available.
+      placeholder: 0.14.0 (16)
+    validations:
+      required: true
+  - type: input
+    id: apk_sha256
+    attributes:
+      label: APK SHA-256
+      description: Find this with sha256sum (Linux/macOS) or Get-FileHash (PowerShell).
+      placeholder: Optional for an official GitHub release
+  - type: input
+    id: device
+    attributes:
+      label: Device and Android version
+      placeholder: Pixel 8a, Android 16
+    validations:
+      required: true
+  - type: dropdown
+    id: locale
+    attributes:
+      label: App language
+      options:
+        - English
+        - Czech
+        - System default
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Appearance
+      options:
+        - Ivory
+        - Nocturne
+        - System default
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps and expected behavior
+      description: Provide a short sequence that reproduces the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: >-
+        Do not attach journal backups, private recordings, credentials, personal
+        screenshots or other sensitive data. Redact account and device identifiers.

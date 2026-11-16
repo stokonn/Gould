@@ -47,6 +47,10 @@ fun aggregate(workouts: List<Workout>, week: Week): WeekTotals {
     return WeekTotals(rows.size, rows.fold(0L) { total, row -> saturatingAdd(total, row.durationMillis) } / 60_000L)
 }
 
+/** One canonical weekly goal predicate for UI, streaks, freezes and rewards. */
+fun goalMet(totals: WeekTotals, goal: WeeklyGoal): Boolean =
+    totals.sessions >= goal.sessions && (goal.minutes == null || totals.minutes >= goal.minutes)
+
 /** Manual entries are limited to today and the previous two calendar days. */
 fun manualActivityDates(today: Long): List<Long> = (today - 2L..today).toList()
 
@@ -60,10 +64,9 @@ fun currentActivityStreak(workouts: List<Workout>, today: Long): Int {
     return count
 }
 
-/** A cosmetic reward requires a completed, non-Beta week that met every configured goal. */
+/** Tests whether a week's totals meet every configured goal; callers decide eligibility timing and Beta treatment. */
 fun perfectWeek(week: Week, goal: WeeklyGoal, workouts: List<Workout>): Boolean {
-    val totals = aggregate(workouts, week)
-    return totals.sessions >= goal.sessions && (goal.minutes == null || totals.minutes >= goal.minutes)
+    return goalMet(aggregate(workouts, week), goal)
 }
 
 /** Actual work wins; then the earliest inactive dates use the allowance. */

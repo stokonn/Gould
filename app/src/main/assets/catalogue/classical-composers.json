@@ -1,0 +1,602 @@
+[
+  {
+    "name": "Johann Sebastian Bach",
+    "coreName": "Johann Sebastian Bach",
+    "mbid": "24f1766e-9635-4d58-a4d4-9413f9f98a4c",
+    "period": "Baroque"
+  },
+  {
+    "name": "George Frideric Handel",
+    "coreName": "George Frideric Handel",
+    "mbid": "27870d47-bb98-42d1-bf2b-c7e972e6befc",
+    "period": "Baroque"
+  },
+  {
+    "name": "Antonio Vivaldi",
+    "coreName": "Antonio Vivaldi",
+    "mbid": "ad79836d-9849-44df-8789-180bbc823f3c",
+    "period": "Baroque"
+  },
+  {
+    "name": "Domenico Scarlatti",
+    "coreName": "Domenico Scarlatti",
+    "mbid": "95c7a1d1-5cfd-41d5-99f9-0611262de8e1",
+    "period": "Baroque"
+  },
+  {
+    "name": "Henry Purcell",
+    "coreName": "Henry Purcell",
+    "mbid": "ddea5540-2c7d-4266-8507-b367c2635d35",
+    "period": "Baroque"
+  },
+  {
+    "name": "Georg Philipp Telemann",
+    "coreName": "Georg Philipp Telemann",
+    "mbid": "8f831f50-e409-47c3-8598-71a61bc8cfb3",
+    "period": "Baroque"
+  },
+  {
+    "name": "Jean-Philippe Rameau",
+    "coreName": "Jean‐Philippe Rameau",
+    "mbid": "b29a3b55-785c-4072-9daf-0153cac864b6",
+    "period": "Baroque"
+  },
+  {
+    "name": "Arcangelo Corelli",
+    "coreName": "Arcangelo Corelli",
+    "mbid": "a3546087-fe59-47d3-a3a8-42d58e2573c7",
+    "period": "Baroque"
+  },
+  {
+    "name": "Claudio Monteverdi",
+    "coreName": "Claudio Monteverdi",
+    "mbid": "9a33a7ad-f725-473a-b50a-1d1796183af1",
+    "period": "Baroque"
+  },
+  {
+    "name": "Jean-Baptiste Lully",
+    "coreName": "Jean‐Baptiste Lully",
+    "mbid": "7f9989b0-8f5e-41dd-bbab-1fff052609e3",
+    "period": "Baroque"
+  },
+  {
+    "name": "François Couperin",
+    "coreName": "François Couperin",
+    "mbid": "86523090-6085-42c1-80b7-772f1bc80472",
+    "period": "Baroque"
+  },
+  {
+    "name": "Dieterich Buxtehude",
+    "coreName": "Dieterich Buxtehude",
+    "mbid": "f106fb52-0b54-4135-bdfd-9ccfd7e320cb",
+    "period": "Baroque"
+  },
+  {
+    "name": "Johann Pachelbel",
+    "coreName": "Johann Pachelbel",
+    "mbid": "2251b277-2dfb-4cf1-83f3-27e29f902440",
+    "period": "Baroque"
+  },
+  {
+    "name": "Tomaso Giovanni Albinoni",
+    "coreName": "Tomaso Giovanni Albinoni",
+    "mbid": "83903121-f611-4875-984c-673ae7173e56",
+    "period": "Baroque"
+  },
+  {
+    "name": "Benedetto Marcello",
+    "coreName": "Benedetto Marcello",
+    "mbid": "16f1e308-ae3e-4001-baf1-f6877aca7f15",
+    "period": "Baroque"
+  },
+  {
+    "name": "Francesco Geminiani",
+    "coreName": "Francesco Geminiani",
+    "mbid": "8cb0e5cc-fdad-4836-8214-1a84566f75fc",
+    "period": "Baroque"
+  },
+  {
+    "name": "Pietro Antonio Locatelli",
+    "coreName": "Pietro Antonio Locatelli",
+    "mbid": "8dc575fe-7a0d-435b-8fb7-9c76ea8eb109",
+    "period": "Baroque"
+  },
+  {
+    "name": "Jan Dismas Zelenka",
+    "coreName": "Jan Dismas Zelenka",
+    "mbid": "34a4fc02-82fb-4168-9787-ab5e10a662f2",
+    "period": "Baroque"
+  },
+  {
+    "name": "Giovanni Battista Pergolesi",
+    "coreName": "Giovanni Battista Pergolesi",
+    "mbid": "7640225e-5758-40e2-a37b-971c2a7994b0",
+    "period": "Baroque"
+  },
+  {
+    "name": "Carl Philipp Emanuel Bach",
+    "coreName": "Carl Philipp Emanuel Bach",
+    "mbid": "f6486fc7-90ef-48ad-8ca3-905af1354afe",
+    "period": "Baroque"
+  },
+  {
+    "name": "Joseph Haydn",
+    "coreName": "Joseph Haydn",
+    "mbid": "c130b0fb-5dce-449d-9f40-1437f889f7fe",
+    "period": "Classical"
+  },
+  {
+    "name": "Wolfgang Amadeus Mozart",
+    "coreName": "Wolfgang Amadeus Mozart",
+    "mbid": "b972f589-fb0e-474e-b64a-803b0364fa75",
+    "period": "Classical"
+  },
+  {
+    "name": "Ludwig van Beethoven",
+    "coreName": "Ludwig van Beethoven",
+    "mbid": "1f9df192-a621-4f54-8850-2c5373b7eac9",
+    "period": "Classical"
+  },
+  {
+    "name": "Christoph Willibald Gluck",
+    "coreName": "Christoph Willibald Gluck",
+    "mbid": "22790383-30ea-4dcc-a8d6-882fb1eb4669",
+    "period": "Classical"
+  },
+  {
+    "name": "Luigi Boccherini",
+    "coreName": "Luigi Boccherini",
+    "mbid": "5c1a3f8f-d5e5-4dcd-9e44-9443f06bb77d",
+    "period": "Classical"
+  },
+  {
+    "name": "Muzio Clementi",
+    "coreName": "Muzio Clementi",
+    "mbid": "25f46ed2-ac8a-4428-ad09-5a3fa5162086",
+    "period": "Classical"
+  },
+  {
+    "name": "Jan Ladislav Dusík",
+    "coreName": "Jan Ladislav Dusík",
+    "mbid": "489c293d-c9bc-4e6a-83d7-660984370cbf",
+    "period": "Classical"
+  },
+  {
+    "name": "Johann Nepomuk Hummel",
+    "coreName": "Johann Nepomuk Hummel",
+    "mbid": "f7ef501b-2bc0-4083-ac52-3518255883a2",
+    "period": "Classical"
+  },
+  {
+    "name": "Antonio Salieri",
+    "coreName": "Antonio Salieri",
+    "mbid": "bb5329a8-8995-4f30-9f25-f7e7ce7b0183",
+    "period": "Classical"
+  },
+  {
+    "name": "Luigi Cherubini",
+    "coreName": "Luigi Cherubini",
+    "mbid": "375d52ad-5b7a-4f96-80e2-6d9ad13f5160",
+    "period": "Classical"
+  },
+  {
+    "name": "Carl Maria von Weber",
+    "coreName": "Carl Maria von Weber",
+    "mbid": "c2d17829-1424-435b-9386-c77d3a920abe",
+    "period": "Classical"
+  },
+  {
+    "name": "Domenico Cimarosa",
+    "coreName": "Domenico Cimarosa",
+    "mbid": "993640e8-4b19-42d2-8db6-f72bbaeafd8b",
+    "period": "Classical"
+  },
+  {
+    "name": "Giovanni Paisiello",
+    "coreName": "Giovanni Paisiello",
+    "mbid": "253b7a54-38a2-41da-a075-7db61a01ab53",
+    "period": "Classical"
+  },
+  {
+    "name": "Johann Christian Bach",
+    "coreName": "Johann Christian Bach",
+    "mbid": "470967b1-f9ef-4712-82df-6971b517ebdb",
+    "period": "Classical"
+  },
+  {
+    "name": "Leopold Mozart",
+    "coreName": "Leopold Mozart",
+    "mbid": "45993ba5-2083-4011-8d76-9497067bd092",
+    "period": "Classical"
+  },
+  {
+    "name": "Carl Ditters von Dittersdorf",
+    "coreName": "Carl Ditters von Dittersdorf",
+    "mbid": "68fc3352-2940-4a55-add1-57c3d31f567b",
+    "period": "Classical"
+  },
+  {
+    "name": "Carl Stamitz",
+    "coreName": "Carl Stamitz",
+    "mbid": "53c0e27d-3015-443c-b533-a7fc34bad3f0",
+    "period": "Classical"
+  },
+  {
+    "name": "Johann Stamitz",
+    "coreName": "Johann Stamitz",
+    "mbid": "d82b930c-87d0-451f-b0b0-7e7fa5e2b243",
+    "period": "Classical"
+  },
+  {
+    "name": "Thomas Arne",
+    "coreName": "Thomas Arne",
+    "mbid": "4e7f1926-8704-4545-a1a1-ded91651c884",
+    "period": "Classical"
+  },
+  {
+    "name": "Ignace Joseph Pleyel",
+    "coreName": "Ignace Joseph Pleyel",
+    "mbid": "9b937242-0492-4056-b430-137eff78f194",
+    "period": "Classical"
+  },
+  {
+    "name": "Frédéric Chopin",
+    "coreName": "Fryderyk Chopin",
+    "mbid": "09ff1fe8-d61c-4b98-bb82-18487c74d7b7",
+    "period": "Romantic"
+  },
+  {
+    "name": "Franz Liszt",
+    "coreName": "Franz Liszt",
+    "mbid": "2cd475bb-1abd-40c4-9904-6d4b691c752c",
+    "period": "Romantic"
+  },
+  {
+    "name": "Robert Schumann",
+    "coreName": "Robert Schumann",
+    "mbid": "3cd3882c-00f8-4362-a0c2-ad89ed248533",
+    "period": "Romantic"
+  },
+  {
+    "name": "Clara Schumann",
+    "coreName": "Clara Schumann",
+    "mbid": "36df8e64-6ec6-4342-9045-e962ab9effb3",
+    "period": "Romantic"
+  },
+  {
+    "name": "Johannes Brahms",
+    "coreName": "Johannes Brahms",
+    "mbid": "c70d12a2-24fe-4f83-a6e6-57d84f8efb51",
+    "period": "Romantic"
+  },
+  {
+    "name": "Richard Wagner",
+    "coreName": "Richard Wagner",
+    "mbid": "eefd7c1e-abcf-4ccc-ba60-0fd435c9061f",
+    "period": "Romantic"
+  },
+  {
+    "name": "Giuseppe Verdi",
+    "coreName": "Giuseppe Verdi",
+    "mbid": "f1bedf1f-4445-4651-9c35-f4a3f3860a13",
+    "period": "Romantic"
+  },
+  {
+    "name": "Pyotr Ilyich Tchaikovsky",
+    "coreName": "Пётр Ильич Чайковский",
+    "mbid": "9ddd7abc-9e1b-471d-8031-583bc6bc8be9",
+    "period": "Romantic"
+  },
+  {
+    "name": "Antonín Dvořák",
+    "coreName": "Antonín Dvořák",
+    "mbid": "819eaeb2-8dd8-48a5-ad07-0bcd137985ef",
+    "period": "Romantic"
+  },
+  {
+    "name": "Bedřich Smetana",
+    "coreName": "Bedřich Smetana",
+    "mbid": "6eb5695e-cf7b-4b94-b441-a09901127ef9",
+    "period": "Romantic"
+  },
+  {
+    "name": "Edvard Grieg",
+    "coreName": "Edvard Grieg",
+    "mbid": "013c8e5b-d72a-4cd3-8dee-6c64d6125823",
+    "period": "Romantic"
+  },
+  {
+    "name": "Felix Mendelssohn",
+    "coreName": "Felix Mendelssohn",
+    "mbid": "0e85eb79-1c05-44ba-827c-7b259a3d941a",
+    "period": "Romantic"
+  },
+  {
+    "name": "Hector Berlioz",
+    "coreName": "Hector Berlioz",
+    "mbid": "274774a7-1cde-486a-bc3d-375ec54d552d",
+    "period": "Romantic"
+  },
+  {
+    "name": "Gustav Mahler",
+    "coreName": "Gustav Mahler",
+    "mbid": "8d610e51-64b4-4654-b8df-064b0fb7a9d9",
+    "period": "Romantic"
+  },
+  {
+    "name": "Anton Bruckner",
+    "coreName": "Anton Bruckner",
+    "mbid": "9debb4c3-dc10-440f-9c96-b777d51ea998",
+    "period": "Romantic"
+  },
+  {
+    "name": "Richard Strauss",
+    "coreName": "Richard Strauss",
+    "mbid": "4cb43d82-824e-4034-b03d-1a98f36f6e16",
+    "period": "Romantic"
+  },
+  {
+    "name": "Sergei Rachmaninoff",
+    "coreName": "Сергей Васильевич Рахманинов",
+    "mbid": "44b16e44-da77-4580-b851-0d765904573e",
+    "period": "Romantic"
+  },
+  {
+    "name": "Alexander Scriabin",
+    "coreName": "Александр Николаевич Скрябин",
+    "mbid": "a4eba7b5-aceb-4acf-b297-3c0a3cd42757",
+    "period": "Romantic"
+  },
+  {
+    "name": "Modest Mussorgsky",
+    "coreName": "Модест Петрович Мусоргский",
+    "mbid": "c1380b12-3909-47d8-a5fd-d20e76123310",
+    "period": "Romantic"
+  },
+  {
+    "name": "Nikolai Rimsky-Korsakov",
+    "coreName": "Николай Андреевич Римский‐Корсаков",
+    "mbid": "4cfe7051-f649-4d07-83b3-7a732abe7249",
+    "period": "Romantic"
+  },
+  {
+    "name": "Alexander Borodin",
+    "coreName": "Александр Порфирьевич Бородин",
+    "mbid": "560b5e65-8d53-41b4-9913-83368f4721a0",
+    "period": "Romantic"
+  },
+  {
+    "name": "Mikhail Glinka",
+    "coreName": "Михаил Иванович Глинка",
+    "mbid": "e539699a-5cb3-4f73-b60f-691b1499d0af",
+    "period": "Romantic"
+  },
+  {
+    "name": "Mily Balakirev",
+    "coreName": "Милий Алексеевич Балакирев",
+    "mbid": "482dc0a4-0c39-40dc-9d6d-ca250a5ef833",
+    "period": "Romantic"
+  },
+  {
+    "name": "Anton Rubinstein",
+    "coreName": "Антон Григорьевич Рубинштейн",
+    "mbid": "0f4d7f2c-69e9-4795-90f8-024b29a67cbe",
+    "period": "Romantic"
+  },
+  {
+    "name": "César Franck",
+    "coreName": "César Franck",
+    "mbid": "69802473-e361-4e15-bbd8-53fe83cd1587",
+    "period": "Romantic"
+  },
+  {
+    "name": "Gabriel Fauré",
+    "coreName": "Gabriel Fauré",
+    "mbid": "fa19a8b6-e7f4-40d4-af15-7a7c41ac7d8f",
+    "period": "Romantic"
+  },
+  {
+    "name": "Camille Saint-Saëns",
+    "coreName": "Camille Saint‐Saëns",
+    "mbid": "4137c070-15b2-4d00-a9f0-3517d02a9ba8",
+    "period": "Romantic"
+  },
+  {
+    "name": "Georges Bizet",
+    "coreName": "Georges Bizet",
+    "mbid": "9bd20e6a-b41d-4983-a5b6-c0ff849fa235",
+    "period": "Romantic"
+  },
+  {
+    "name": "Jules Massenet",
+    "coreName": "Jules Massenet",
+    "mbid": "85d783d6-6795-4726-b817-9d83095ad7be",
+    "period": "Romantic"
+  },
+  {
+    "name": "Jacques Offenbach",
+    "coreName": "Jacques Offenbach",
+    "mbid": "27bc8cf5-72e1-4888-87de-259fbcaac3ff",
+    "period": "Romantic"
+  },
+  {
+    "name": "Giacomo Puccini",
+    "coreName": "Giacomo Puccini",
+    "mbid": "a693df4a-8762-4a45-b7fd-6695b558385e",
+    "period": "Romantic"
+  },
+  {
+    "name": "Gaetano Donizetti",
+    "coreName": "Gaetano Donizetti",
+    "mbid": "b8ecf204-6be8-4041-ab11-6d9971ea2711",
+    "period": "Romantic"
+  },
+  {
+    "name": "Vincenzo Bellini",
+    "coreName": "Vincenzo Bellini",
+    "mbid": "6f5bfd20-84cc-4879-8a40-05631ad576c7",
+    "period": "Romantic"
+  },
+  {
+    "name": "Gioachino Rossini",
+    "coreName": "Gioachino Rossini",
+    "mbid": "846be3c9-5f94-46ab-97b9-531335dd3658",
+    "period": "Romantic"
+  },
+  {
+    "name": "Niccolò Paganini",
+    "coreName": "Niccolò Paganini",
+    "mbid": "d581b2f2-f945-4566-a249-2d0171466993",
+    "period": "Romantic"
+  },
+  {
+    "name": "Charles-Valentin Alkan",
+    "coreName": "Charles‐Valentin Alkan",
+    "mbid": "62000bf9-9919-4dfb-9929-15f013fca57b",
+    "period": "Romantic"
+  },
+  {
+    "name": "Charles Gounod",
+    "coreName": "Charles Gounod",
+    "mbid": "cd4636e1-06a3-41fc-848a-624b84bbb023",
+    "period": "Romantic"
+  },
+  {
+    "name": "Édouard Lalo",
+    "coreName": "Édouard Lalo",
+    "mbid": "9736c049-7923-49a8-bfc8-73f71bcc77be",
+    "period": "Romantic"
+  },
+  {
+    "name": "Max Bruch",
+    "coreName": "Max Bruch",
+    "mbid": "e3d5cfcd-e42b-411d-add2-716a5029f59b",
+    "period": "Romantic"
+  },
+  {
+    "name": "Edward Elgar",
+    "coreName": "Edward Elgar",
+    "mbid": "4e60a56a-514a-4a19-a3cc-49927c96b3cb",
+    "period": "Romantic"
+  },
+  {
+    "name": "Claude Debussy",
+    "coreName": "Claude Debussy",
+    "mbid": "be50643c-0377-4968-b48c-47e06b2e2a3b",
+    "period": "Impressionist"
+  },
+  {
+    "name": "Maurice Ravel",
+    "coreName": "Maurice Ravel",
+    "mbid": "6fdd3b3e-1ea6-4da9-8d6f-8f8de01c133a",
+    "period": "Impressionist"
+  },
+  {
+    "name": "Manuel de Falla",
+    "coreName": "Manuel de Falla",
+    "mbid": "17268036-f51c-427c-a8a2-241fac69d39f",
+    "period": "Impressionist"
+  },
+  {
+    "name": "Erik Satie",
+    "coreName": "Erik Satie",
+    "mbid": "e1d521ea-5b97-4981-987c-ba988b2a87d7",
+    "period": "Impressionist"
+  },
+  {
+    "name": "Isaac Albéniz",
+    "coreName": "Isaac Albéniz",
+    "mbid": "0a46cf2a-61bd-447d-b8fd-a2b32eb20282",
+    "period": "Impressionist"
+  },
+  {
+    "name": "Enrique Granados",
+    "coreName": "Enrique Granados",
+    "mbid": "e378c6b3-7d74-48b5-ab04-9aac0df7562c",
+    "period": "Impressionist"
+  },
+  {
+    "name": "Jean Sibelius",
+    "coreName": "Jean Sibelius",
+    "mbid": "691b0e9d-9e57-41cf-932d-a3d21b068e75",
+    "period": "Modern"
+  },
+  {
+    "name": "Carl Nielsen",
+    "coreName": "Carl Nielsen",
+    "mbid": "1be1367d-119f-4b08-bdfe-50b95043e544",
+    "period": "Modern"
+  },
+  {
+    "name": "Leoš Janáček",
+    "coreName": "Leoš Janáček",
+    "mbid": "edfced8a-01bc-4c22-96b2-da58edd6b8af",
+    "period": "Modern"
+  },
+  {
+    "name": "Béla Bartók",
+    "coreName": "Bartók Béla",
+    "mbid": "fd14da1b-3c2d-4cc8-9ca6-fc8c62ce6988",
+    "period": "Modern"
+  },
+  {
+    "name": "Igor Stravinsky",
+    "coreName": "Игорь Фёдорович Стравинский",
+    "mbid": "c278de2c-9696-4fdf-a919-0781cd945e2c",
+    "period": "Modern"
+  },
+  {
+    "name": "Sergei Prokofiev",
+    "coreName": "Сергей Сергеевич Прокофьев",
+    "mbid": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+    "period": "Modern"
+  },
+  {
+    "name": "Dmitri Shostakovich",
+    "coreName": "Дмитрий Дмитриевич Шостакович",
+    "mbid": "519dd32e-8f30-4380-8826-7aa99169e1bb",
+    "period": "Modern"
+  },
+  {
+    "name": "Gustav Holst",
+    "coreName": "Gustav Holst",
+    "mbid": "3ba68671-e3b5-4263-81dc-76b16b29bbc6",
+    "period": "Modern"
+  },
+  {
+    "name": "Ralph Vaughan Williams",
+    "coreName": "Ralph Vaughan Williams",
+    "mbid": "4f3b96ed-f1f1-4a68-be73-0e0657837096",
+    "period": "Modern"
+  },
+  {
+    "name": "Benjamin Britten",
+    "coreName": "Benjamin Britten",
+    "mbid": "49ae5227-605a-47a8-9b8e-cd89bf01a97c",
+    "period": "Modern"
+  },
+  {
+    "name": "George Gershwin",
+    "coreName": "George Gershwin",
+    "mbid": "65744963-191a-44ef-a3c7-b693a808a158",
+    "period": "Modern"
+  },
+  {
+    "name": "Aaron Copland",
+    "coreName": "Aaron Copland",
+    "mbid": "aad3af83-5b59-4b86-a569-1a8409149b09",
+    "period": "Modern"
+  },
+  {
+    "name": "Charles Ives",
+    "coreName": "Charles Ives",
+    "mbid": "eb87b85e-857d-4c11-8aa9-4c55f3b54880",
+    "period": "Modern"
+  },
+  {
+    "name": "Olivier Messiaen",
+    "coreName": "Olivier Messiaen",
+    "mbid": "c6e5c5f4-984e-432a-87b8-b6afa288bca1",
+    "period": "Modern"
+  }
+]

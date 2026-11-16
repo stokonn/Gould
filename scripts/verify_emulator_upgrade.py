@@ -147,7 +147,7 @@ for table, rows in fixture.items():
             row.update(username='Emulator Review', biography='A little music every day.', avatar='')
         keys = list(row)
         db.execute(f'INSERT INTO {table} ({",".join(keys)}) VALUES ({",".join("?" for _ in keys)})', list(row.values()))
-db.execute("INSERT OR REPLACE INTO local_app_state VALUES(1,1,0,18,0,0,'')")
+db.execute("INSERT OR REPLACE INTO local_app_state(id,onboardingDone,reminderEnabled,reminderHour,reminderMinute,generation,lastReminderDay) VALUES(1,1,0,18,0,0,'')")
 # Older baselines (such as schema 8) predate badge_notices; let the real
 # Room migrations create that table instead of inserting a future-schema row.
 if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='badge_notices'").fetchone():

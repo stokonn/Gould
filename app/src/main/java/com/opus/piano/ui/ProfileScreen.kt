@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import com.opus.piano.i18n.L
 import com.opus.piano.R
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -33,14 +35,14 @@ import kotlinx.coroutines.withContext
 import java.time.*
 
 @OptIn(ExperimentalLayoutApi::class)
-@Composable internal fun ProfileScreen(state: LibraryState, badges: List<BadgeProgress>, profile: ProfileViewModel, settingsAction: () -> Unit, allBadges: () -> Unit, history: () -> Unit, badgeDetail: (String) -> Unit, administration: (() -> Unit)? = null, customizeCosmetics: (() -> Unit)? = null, activity: ActivityViewModel? = null) {
+@Composable internal fun ProfileScreen(state: LibraryState, badges: List<BadgeProgress>, profile: ProfileViewModel, settingsAction: () -> Unit, allBadges: () -> Unit, history: () -> Unit, badgeDetail: (String) -> Unit, customizeCosmetics: (() -> Unit)? = null, activity: ActivityViewModel? = null) {
     val settings by profile.settings.collectAsStateWithLifecycle()
     val cosmeticState by activity?.state?.collectAsStateWithLifecycle() ?: remember { mutableStateOf(ActivityUiState()) }
     val equipped = cosmeticState.loadout.associate { it.category to ActivityCosmetics.byId[it.cosmeticId] }
     val busy by profile.busy.collectAsStateWithLifecycle()
     val googleAccount by profile.googleAccount.collectAsStateWithLifecycle()
     val context=androidx.compose.ui.platform.LocalContext.current
-    val app=context.applicationContext as com.opus.piano.OpusApplication
+    val app=context.appContainer
     val metered by app.media.cellular.collectAsStateWithLifecycle()
     LaunchedEffect(googleAccount,metered) {if(googleAccount!=null) profile.refreshGooglePhoto()}
     var showcaseEdit by rememberSaveable {mutableStateOf(false)}
@@ -50,30 +52,11 @@ import java.time.*
     val showcased=settings.badgeIds.mapNotNull {id->badges.firstOrNull {it.definition.id==id && it.unlocked}}.take(5)
     val fontScale=LocalDensity.current.fontScale
     JournalViewport(spacing=12.dp) {
-        EditorialHeader(L.fixed("Profile"),actions={
+        TourAnchor("profile") { EditorialHeader(L.fixed("Profile"),actions={
             IconButton(onClick=allBadges) {Icon(Icons.Outlined.EmojiEvents,L.s(R.string.msg_badges_2c57),tint=MaterialTheme.colorScheme.primary)}
             customizeCosmetics?.let { action -> IconButton(onClick=action) { Icon(Icons.Outlined.CollectionsBookmark,L.s(R.string.activity_view_collection),tint=MaterialTheme.colorScheme.primary) } }
             IconButton(onClick=settingsAction) {Icon(Icons.Outlined.Settings,L.fixed("Settings"),tint=MaterialTheme.colorScheme.primary)}
-        })
-        // Stage 7B: role-gated Administration entry (convenience only; server enforces).
-        if (administration != null) {
-            Surface(
-                onClick = administration,
-                shape = MaterialTheme.shapes.medium,
-                color = MaterialTheme.colorScheme.surface,
-                border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = .45f)),
-            ) {
-                Row(
-                    Modifier.fillMaxWidth().heightIn(min = 52.dp).padding(horizontal = 14.dp, vertical = 10.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                ) {
-                    Icon(Icons.Outlined.AdminPanelSettings, null, Modifier.size(20.dp), tint = MaterialTheme.colorScheme.primary)
-                    Text(L.s(com.opus.piano.R.string.stage7b_administration), style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
-                    Icon(Icons.Outlined.ChevronRight, null, Modifier.size(20.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
-                }
-            }
-        }
+        }) }
         JournalCard(padding=PaddingValues(10.dp)) {
             Row(Modifier.padding(top=2.dp,bottom=4.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(16.dp)) {
                 Box {
@@ -94,7 +77,7 @@ import java.time.*
                 }
             }
             val combined = cosmeticState.snapshot
-            val metrics=mapOf("time" to (localizedPracticeTime(combined?.allTimeDurationMillis ?: state.summary.totalMillis) to L.fixed("Total practice")),"pieces" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(state.pieces.size) to L.fixed("Repertoire pieces")),"sessions" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(combined?.allTimeWorkouts ?: state.sessions.count(AchievementEngine::valid)) to L.fixed("Practice sessions")),"streak" to (L.quantity(R.plurals.days_count,combined?.dailyStreak ?: currentPracticeStreak(state.sessions,LocalDate.now(),ZoneId.systemDefault())) to L.fixed("Current streak")))
+            val metrics=mapOf("time" to (localizedPracticeTime(combined?.allTimeDurationMillis ?: state.summary.totalMillis) to L.fixed("Total practice")),"pieces" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(state.pieces.size) to L.fixed("Repertoire pieces")),"sessions" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(combined?.allTimeWorkouts ?: state.sessions.count(AchievementEngine::valid)) to L.fixed("Practice sessions")),"streak" to (L.quantity(R.plurals.days_count,combined?.dailyStreak ?: currentPracticeStreak(state.sessions,LocalDate.now(),ZoneId.systemDefault(),cosmeticState.manualEntries)) to L.fixed("Current streak")))
             BoxWithConstraints {
                 val columns=if(maxWidth<260.dp || fontScale>=1.8f) 1 else 2
                 Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
@@ -142,7 +125,7 @@ import java.time.*
 }
 
 @Composable internal fun ArtistAutocomplete(value:String,change:(String)->Unit, enabled:Boolean = true) {
-    val app=androidx.compose.ui.platform.LocalContext.current.applicationContext as com.opus.piano.OpusApplication
+    val app=androidx.compose.ui.platform.LocalContext.current.appContainer
     val catalog by app.catalogRepository.snapshot.collectAsStateWithLifecycle(CatalogSnapshot(emptyList(),emptyList()))
     var expanded by remember {mutableStateOf(false)}
     val matches=remember(value,catalog.composers) {composerSuggestions(catalog.composers,value)}

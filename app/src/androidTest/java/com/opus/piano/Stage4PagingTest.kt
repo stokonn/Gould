@@ -25,11 +25,16 @@ class Stage4PagingTest {
         val store=LocalCatalogueStore(context,personal,name)
         try {block(store)}finally {store.close();personal.close();context.deleteDatabase(name)}
     }
-    private val adapter=object:ProviderAdapter by OpenOpusAdapter() {override val intervalMillis=0L}
+    private val musicBrainz=MusicBrainzAdapter()
+    private val adapter=object:ProviderAdapter by musicBrainz {
+        override val intervalMillis=0L
+        override fun parse(request:ProviderRequest,root:Map<String,Any?>)=musicBrainz.parse(request.copy(kind="work"),root)
+        override fun nextOffset(request:ProviderRequest,root:Map<String,Any?>)=musicBrainz.nextOffset(request.copy(kind="work"),root)
+    }
     private fun response(offset:Int):ProviderResponse {
         val count=if(offset<40)20 else 3
-        val rows=JSONArray((1..count).map {n->JSONObject().put("work",JSONObject().put("id",(offset+n).toString()).put("title","Authored work ${offset+n}"))})
-        return ProviderResponse(200,JSONObject().put("status",JSONObject().put("success","true")).put("results",rows).put("next",if(offset<40)offset+20 else JSONObject.NULL).toString().toByteArray())
+        val rows=JSONArray((1..count).map {n->JSONObject().put("id",UUID.nameUUIDFromBytes("work:${offset+n}".toByteArray()).toString()).put("title","Authored work ${offset+n}").put("type","Waltz")})
+        return ProviderResponse(200,JSONObject().put("works",rows).put("count",43).put("offset",offset).toString().toByteArray())
     }
     @Test fun providerContinuationReplaysWithoutDuplicatesAndRejectsOtherQueryLanguageCategoryOrGeneration()=runBlocking {
         environment {store->
@@ -85,16 +90,19 @@ class Stage4PagingTest {
     }
     @Test fun multipleEndpointsAppendAtMostFortyAndPageUnseenLocalRowsWithoutRefetch()=runBlocking {
         environment {store->
-            val multi=object:ProviderAdapter by OpenOpusAdapter() {
+            val multi=object:ProviderAdapter by adapter {
                 override val intervalMillis=0L
                 override fun search(query:String,category:String,language:String,offset:Int)=listOf(0,20,40).map {start->
-                    ProviderRequest("https://api.openopus.org/omnisearch/Authored/$start.json",id,"source-$start",offset=start)
+                    ProviderRequest("https://musicbrainz.org/ws/2/work/?fmt=json&offset=$start",id,"work-$start",offset=start)
                 }
+                override fun parse(request:ProviderRequest,root:Map<String,Any?>)=adapter.parse(request,root)
+                override fun nextOffset(request:ProviderRequest,root:Map<String,Any?>)=adapter.nextOffset(request,root)
             }
             val calls=AtomicInteger()
             val repository=DiscoverRepository(store,ProviderClient(ProviderTransport {r->calls.incrementAndGet();
-                val rows=JSONArray((1..20).map {n->JSONObject().put("work",JSONObject().put("id",(r.offset+n).toString()).put("title","Authored work ${r.offset+n}"))})
-                ProviderResponse(200,JSONObject().put("status",JSONObject().put("success","true")).put("results",rows).toString().toByteArray())
+                val offset=r.offset
+                val rows=JSONArray((1..20).map {n->JSONObject().put("id",UUID.nameUUIDFromBytes("work:${offset+n}".toByteArray()).toString()).put("title","Authored work ${offset+n}").put("type","Waltz")})
+                ProviderResponse(200,JSONObject().put("works",rows).put("count",60).put("offset",offset).toString().toByteArray())
             },{true}),{true},adapters=listOf(multi))
             val emissions=repository.search("Authored",SearchFilter("works"),"en",true).toList()
             assertTrue(emissions.all {it.page.items.size<=40});assertEquals(40,emissions.last().page.items.size)

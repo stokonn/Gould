@@ -27,12 +27,19 @@ class ProfileMaintenanceTest {
         assertEquals(3, currentPracticeStreak(sessions + session(today), today, zone))
         assertEquals(0, currentPracticeStreak(listOf(session(today, 999)), today, zone))
     }
+    @Test fun currentStreakFallbackCountsManualActivityLikeTheActivitySnapshot() {
+        val yesterday=today.minusDays(1)
+        val manual=listOf(ManualActivityEntry("manual",yesterday.toString(),zone.id,15*60_000L,1))
+        assertEquals(1,currentPracticeStreak(emptyList(),today,zone,manual))
+        assertEquals(0,currentPracticeStreak(emptyList(),today.minusDays(2),zone,manual))
+    }
     @Test fun formattingKeepsLongPracticeTotalsAndShortSessionsReadable() {
         assertEquals("0m", compactPracticeTime(0)); assertEquals("42s", compactPracticeTime(42000))
         assertEquals("59m", compactPracticeTime(59 * 60000)); assertEquals("125h 7m", compactPracticeTime((125 * 60 + 7) * 60000L))
     }
     @Test fun settingsAndSearchSelectTheirOwningTabs() {
         assertEquals("HOME", selectedTab("HOME")); assertEquals("HOME", selectedTab("settings"))
+        assertEquals("REPERTOIRE", selectedTab("DISCOVER"))
         listOf("catalog", "catalog/work/87", "catalog/composer/87", "piece/1", "recordings/piece:1").forEach { assertEquals("REPERTOIRE", selectedTab(it)) }
         assertEquals("HOME", selectedTab("badge/first_notes")); assertEquals("PRACTICE", selectedTab("PRACTICE"))
     }

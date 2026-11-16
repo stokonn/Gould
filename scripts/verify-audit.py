@@ -13,7 +13,12 @@ import sys
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
-audit = root / "docs/planning/gould-0.13/verification-audit.jsonl"
+# Active version's audit trail; older versions' files remain historical evidence.
+# Override with GOULD_AUDIT_FILE for cross-version investigations.
+audit = Path(__import__("os").environ.get(
+    "GOULD_AUDIT_FILE", "docs/planning/gould-0.15/verification-audit.jsonl"))
+if not audit.is_absolute():
+    audit = root / audit
 
 tier, status, duration, detail = sys.argv[1:5]
 assert tier in {"FAST", "INTEGRATION", "RELEASE"}, tier

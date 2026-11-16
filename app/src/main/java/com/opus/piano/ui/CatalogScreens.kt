@@ -34,7 +34,7 @@ import java.time.format.DateTimeFormatter
 
 @Composable internal fun CatalogBack(label: String, back: () -> Unit) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        IconButton(onClick = back) { Icon(Icons.AutoMirrored.Outlined.ArrowBack, L.s(R.string.msg_back_b52b)) }
+        JournalBackButton(back)
         Text(L.fixed(label).uppercase(), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
     }
 }

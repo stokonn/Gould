@@ -4,7 +4,9 @@ Cormorant Garamond and Inter are bundled under SIL Open Font License 1.1. Their 
 
 AndroidX (including Compose, Material, Navigation, Lifecycle and Room), Kotlin, kotlinx.coroutines, JetBrains annotations and Guava ListenableFuture use Apache License 2.0. Android Material icons derive from the Material icon collection, Apache License 2.0. License text: https://www.apache.org/licenses/LICENSE-2.0
 
-Catalogue data is supplied by Open Opus: https://openopus.org/ and https://github.com/openopus-org/openopus_api (CC0 catalogue dataset). Wikidata structured data is CC0. Wikipedia text is supplied with source links and is generally CC BY-SA; attribution and applicable license: https://en.wikipedia.org/wiki/Wikipedia:Copyrights . Wikimedia portraits have individual licenses and author/source credits displayed on each composer’s Sources and credits section. Availability and licenses vary by item; no ownership is claimed by Goldberg.
+The built-in composer/work catalogue uses MusicBrainz Core snapshot `20261114-002230`, preserving MusicBrainz identifiers and relationships. MusicBrainz Core database contents are released under CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/ . Source and snapshot provenance are recorded in the app catalogue manifest and Gould 0.15 provenance policy. Supplementary MusicBrainz data and derived data are not included.
+
+Catalogue data is also supplied by Open Opus: https://openopus.org/ and https://github.com/openopus-org/openopus_api (CC0 catalogue dataset). Wikidata structured data is CC0. Wikipedia text is supplied with source links and is generally CC BY-SA; attribution and applicable license: https://en.wikipedia.org/wiki/Wikipedia:Copyrights . Wikimedia portraits have individual licenses and author/source credits displayed on each composer’s Sources and credits section. Availability and licenses vary by item; no ownership is claimed by Goldberg.
 
 The hidden harpsichord uses original mathematical synthesis; it contains no third-party audio recordings.
 

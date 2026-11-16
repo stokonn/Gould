@@ -1,27 +1,26 @@
 package com.opus.piano.data.community.canonical
 
-import com.opus.piano.admin.AdminTransport
-import com.opus.piano.admin.DisabledAdminTransport
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import java.net.URI
 import java.nio.ByteBuffer
 import java.nio.charset.CodingErrorAction
 
-/** Existing Android transport seam, with an explicit canonical schema. Production
- * uses DisabledAdminTransport; no URL or token can override that boundary. */
+/** Canonical HTTP exchange boundary; the app supplies no live implementation by default. */
+fun interface CanonicalHttpExchange {
+    suspend fun call(method: String, url: String, headers: Map<String, String>, body: ByteArray?): CanonicalHttpResponse
+}
+class CanonicalHttpResponse(val code: Int, val body: ByteArray, val retryAfterSeconds: Long? = null)
+
 class CanonicalHttpTransport(
     private val endpoint: () -> String?,
-    private val transport: AdminTransport = DisabledAdminTransport,
+    private val transport: CanonicalHttpExchange = CanonicalHttpExchange { _, _, _, _ -> error("Community networking disabled") },
 ) : CanonicalAdminTransport {
     override suspend fun exchange(method: String, path: String, body: String?, accessToken: String?): AdminResponse {
-        check(transport.available) { "Community networking disabled" }
         val base = URI(endpoint().orEmpty())
         require(base.scheme == "https" && base.host != null && base.rawUserInfo == null &&
-            base.port in setOf(-1, 443) && base.rawQuery == null && base.rawFragment == null &&
-            base.rawPath in setOf("", "/"))
-        require(path.startsWith("/v1/") && !path.contains('#') && !path.contains('\\') &&
-            URI(path).rawAuthority == null && URI(path).scheme == null)
+            base.port in setOf(-1, 443) && base.rawQuery == null && base.rawFragment == null && base.rawPath in setOf("", "/"))
+        require(path.startsWith("/v1/") && !path.contains('#') && !path.contains('\\') && URI(path).rawAuthority == null && URI(path).scheme == null)
         require(method in setOf("GET", "POST", "DELETE"))
         val bytes = body?.toByteArray(Charsets.UTF_8)
         require(bytes == null || bytes.size <= 16384)

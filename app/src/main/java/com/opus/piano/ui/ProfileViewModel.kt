@@ -11,7 +11,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import androidx.room.withTransaction
-import com.opus.piano.OpusApplication
+import com.opus.piano.appContainer
 import com.opus.piano.data.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
@@ -21,8 +21,8 @@ import java.io.ByteArrayOutputStream
 
 class ProfileViewModel(app: Application, private val savedState: SavedStateHandle,
     private val draftDirectory: java.io.File = java.io.File(app.filesDir, "profile-drafts")) : AndroidViewModel(app) {
-    private val db = (app as OpusApplication).database
-    private val identity = (app as OpusApplication).identity
+    private val db = app.appContainer.database
+    private val identity = app.appContainer.identity
     val googleAccount = identity.account
     val favoriteComposers=db.journalEditsDao().favorites().stateIn(viewModelScope,SharingStarted.Eagerly,emptyList())
     fun favoriteComposer(id:String,selected:Boolean) {viewModelScope.launch {try {JournalEdits(db).favorite(id,selected)} catch(c:CancellationException) {throw c} catch(_:Exception) {notice.value=L.s(R.string.ui010_favorite_failed)}}}
@@ -34,7 +34,7 @@ class ProfileViewModel(app: Application, private val savedState: SavedStateHandl
             try {
                 identity.signIn(context)
                 // A photo failure must not undo a successful account selection.
-                try { identity.importPhoto { (getApplication<Application>() as OpusApplication).media.allowed() } }
+                try { identity.importPhoto { getApplication<Application>().appContainer.media.allowed() } }
                 catch (e: CancellationException) { throw e }
                 catch (_: Exception) { /* Keep successful identity when optional picture is unavailable. */ }
                 notice.value = L.s(R.string.google_signed_in)
@@ -58,12 +58,20 @@ class ProfileViewModel(app: Application, private val savedState: SavedStateHandl
         }
     }
     fun useGoogleName()=action {identity.useGoogleName()}
-    fun replaceGooglePhoto()=action {check((getApplication<Application>() as OpusApplication).media.allowed());check(identity.photo()!=null);identity.importPhoto(replaceExisting=true) {(getApplication<Application>() as OpusApplication).media.allowed()}}
-    fun refreshGooglePhoto() = action { identity.importPhoto { (getApplication<Application>() as OpusApplication).media.allowed() } }
+    fun replaceGooglePhoto()=action {check(getApplication<Application>().appContainer.media.allowed());check(identity.photo()!=null);identity.importPhoto(replaceExisting=true) {getApplication<Application>().appContainer.media.allowed()}}
+    fun refreshGooglePhoto() = action { identity.importPhoto { getApplication<Application>().appContainer.media.allowed() } }
     private val backup = BackupRepository(app, db)
     val settings = db.personalDao().settings().map { it ?: ProfileSettings() }.stateIn(viewModelScope, SharingStarted.Eagerly, ProfileSettings())
     val local = db.practiceDao().local().map { it ?: LocalAppState() }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
     fun finishOnboarding() = action { db.withTransaction { db.practiceDao().local((db.practiceDao().localNow() ?: LocalAppState()).copy(onboardingDone = true)) } }
+    suspend fun persistTour(seen: Set<String>, completed: Boolean?, skipped: Boolean?) = withContext(Dispatchers.IO) {
+        db.withTransaction {
+            val old=db.practiceDao().localNow() ?: LocalAppState()
+            db.practiceDao().local(old.copy(onboardingDone=old.onboardingDone || completed == true || skipped == true,
+                tourVersion=1,tourCompleted=completed ?: old.tourCompleted,tourSkipped=skipped ?: old.tourSkipped,
+                tourSeenSteps=listOf("home","activity","streaks","profile","collection","settings").filter { it in seen }.joinToString(",")))
+        }
+    }
     fun smartPreference(enabled: Boolean) = edit { it.copy(smartEnabled = enabled) }
     fun smartSettings(sensitivity: Int, pause: Int) = edit { it.copy(sensitivity = sensitivity.coerceIn(0,100), pauseSeconds = pause.coerceIn(2,30)) }
     fun reminder(enabled: Boolean, hour: Int, minute: Int) = action { com.opus.piano.reminders.ReminderScheduler(getApplication()).configure(enabled,hour,minute) }
@@ -278,7 +286,7 @@ class ProfileViewModel(app: Application, private val savedState: SavedStateHandl
     fun username(value: String) = edit { identity.manualName(); it.copy(username = value.trim().take(80).ifBlank { "Musician" }) }
     fun resetAppearance() = action {
         db.withTransaction { val old=db.personalDao().getSettings() ?: ProfileSettings();db.personalDao().saveSettings(old.copy(theme="System",typography="Editorial",statistics="time,pieces,sessions,streak")) }
-        (getApplication<Application>() as OpusApplication).appearance.reset()
+        getApplication<Application>().appContainer.appearance.reset()
     }
     fun theme(value: String) = edit { require(value in listOf("System", "Light", "Dark")); it.copy(theme = value) }
     fun showcase(ids: List<String>) = action {
@@ -291,9 +299,9 @@ class ProfileViewModel(app: Application, private val savedState: SavedStateHandl
     fun typography(value: String) = edit { require(value in listOf("Editorial", "System")); it.copy(typography = value) }
     fun statistics(ids: List<String>) = edit { it.copy(statistics = StatisticLayout.normalize(ids).joinToString(",")) }
     val cacheUsage = MutableStateFlow<Long?>(null)
-    fun measureCache() = action { cacheUsage.value = (getApplication<Application>() as OpusApplication).catalogRepository.cacheBytes() }
+    fun measureCache() = action { cacheUsage.value = getApplication<Application>().appContainer.catalogRepository.cacheBytes() }
     fun clearCache() = action {
-        val catalog = (getApplication<Application>() as OpusApplication).catalogRepository
+        val catalog = getApplication<Application>().appContainer.catalogRepository
         catalog.clearCache(); cacheUsage.value = catalog.cacheBytes()
         notice.value = L.s(R.string.msg_disposable_cache_cleared_your_journal_and_sa_18c6)
     }
@@ -331,8 +339,8 @@ class ProfileViewModel(app: Application, private val savedState: SavedStateHandl
     fun cancelRestore() { if (!busy.value) { preview.value = null; pending = null } }
     fun restore() = backupAction {
         val raw = pending ?: error(L.s(R.string.msg_select_a_backup_again_ca8b))
-        (getApplication<Application>() as OpusApplication).practice.replacing(preservesRecovery=true) {
-            val app = getApplication<Application>() as OpusApplication
+        getApplication<Application>().appContainer.practice.replacing(preservesRecovery=true) {
+            val app = getApplication<Application>().appContainer
             app.recording.whileIdle {
                 app.localPlayback.stopAndAwait(); app.metronome.stop()
                 app.catalogRepository.restoreJournal { backup.restore(raw) }

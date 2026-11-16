@@ -7,16 +7,58 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.sync.withLock
 import java.util.UUID
+import java.util.concurrent.atomic.AtomicLong
 
 data class SearchSource(val provider:String,val state:SourceState,val error:String?=null,val refreshState:SourceState?=null,val requestKind:String?=null)
 data class DiscoverSearch(val queryId:String,val page:CatalogueSearchPage,val sources:List<SearchSource> = emptyList(),val candidates:List<CatalogueCandidate> = emptyList(),val continuation:String?=null,val limitReached:Boolean=false,val providerEntityIds:Set<String> = emptySet())
+internal fun isActiveCatalogueSearchProvider(provider:String)=provider=="musicbrainz"
 
 /** The only online entry point requires an explicit active search. Construction/landing are local. */
 class DiscoverRepository(private val store:LocalCatalogueStore,private val client:ProviderClient,private val permitted:()->Boolean,
-    private val storage:CatalogueStorage?=null, private val adapters:List<ProviderAdapter> = listOf(OpenOpusAdapter(),MusicBrainzAdapter(),WikidataAdapter()),private val now:()->Long=System::currentTimeMillis,
+    private val storage:CatalogueStorage?=null, adapters:List<ProviderAdapter> = listOf(MusicBrainzAdapter()),private val now:()->Long=System::currentTimeMillis,
     private val prepareLocal:suspend ()->Unit = {}) {
+    private val adapters = adapters.filter { isActiveCatalogueSearchProvider(it.id) }
     private val paging=DiscoverPaging(now)
+    private val localPreparation = kotlinx.coroutines.sync.Mutex()
+    private var localPrepared = false
+    @Volatile private var localReady = false
+    private val localSearchCount = AtomicLong()
+    private suspend fun prepareLocalOnce(context: CataloguePerformance.Context) = localPreparation.withLock {
+        val reusedAt = CataloguePerformance.start()
+        if (localReady) {
+            CataloguePerformance.finish("catalogue_initialize_reused", reusedAt, "outcome=ok", context)
+            return@withLock
+        }
+        var initialization = CataloguePerformance.measureSuspend("catalogue_initialize", context=context) { store.initialize(context) }
+        logInitializationResult(initialization, context)
+        val preparationStartedAt = CataloguePerformance.start()
+        if (!localPrepared) {
+            CataloguePerformance.measureSuspend("catalogue_prepare", context=context) { prepareLocal() }
+            localPrepared = true
+            if (initialization !is CatalogueAccess.Available) {
+                initialization = CataloguePerformance.measureSuspend("catalogue_initialize_retry_after_prepare", context=context) { store.initialize(context) }
+                logInitializationResult(initialization, context)
+            }
+        } else {
+            CataloguePerformance.finish("catalogue_prepare_reused", preparationStartedAt, "outcome=ok", context)
+        }
+        val complete = when (initialization) {
+            is CatalogueAccess.Available -> initialization.value
+            is CatalogueAccess.Rejected -> throw IllegalArgumentException(initialization.reason)
+            is CatalogueAccess.Unavailable -> throw IllegalStateException(initialization.reason, initialization.cause)
+        }
+        CataloguePerformance.event("catalogue_initialization_state", "outcome=${if(complete)"complete" else "incomplete"}", context)
+        localReady = complete
+    }
+    private fun logInitializationResult(result: CatalogueAccess<Boolean>, context: CataloguePerformance.Context) {
+        CataloguePerformance.event("catalogue_initialize_result", when (result) {
+            is CatalogueAccess.Available -> "outcome=available complete=${result.value}"
+            is CatalogueAccess.Rejected -> "outcome=rejected"
+            is CatalogueAccess.Unavailable -> "outcome=unavailable"
+        }, context)
+    }
     private fun usable(state:SourceState)=state in setOf(SourceState.FRESH,SourceState.CACHED,SourceState.STALE)
     private suspend fun canStore(bytes:Long=CatalogueStorage.MAX_RESPONSE)=withContext(Dispatchers.IO){storage?.admits(bytes) ?: true}
     /** Admission and commit share the store lock: parallel providers cannot spend the same space. */
@@ -26,41 +68,68 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
     }
     suspend fun portraitMetadata(id:String):org.json.JSONObject? = (store.access {it.state("portrait:$id")?.let {value->org.json.JSONObject(value)}} as? CatalogueAccess.Available)?.value
     suspend fun clearResponseCache(){client.clearCache()}
-    private suspend fun local(query:String,filter:SearchFilter,cursor:String?=null,excluded:Set<String> = emptySet(),limit:Int=40):CatalogueSearchPage =
-        when(val access=store.access {it.searchPage(query,filter,cursor,limit,excluded)}){is CatalogueAccess.Available->access.value;is CatalogueAccess.Rejected->throw IllegalArgumentException("Invalid or stale search cursor");else->CatalogueSearchPage(emptyList(),null,"unavailable")}
-    suspend fun landing():CatalogueSearchPage {store.initialize();prepareLocal();return local("",SearchFilter())}
+    private suspend fun local(query:String,filter:SearchFilter,cursor:String?=null,excluded:Set<String> = emptySet(),limit:Int=40,sessionId:String="startup"):CatalogueSearchPage {
+        val context = CataloguePerformance.Context(sessionId, "local", filter.category)
+        val requestStartedAt = CataloguePerformance.start()
+        var startedAt:Long?=null
+        var phase="catalogue_local_query"
+        try {
+            prepareLocalOnce(context)
+            val sequence = localSearchCount.incrementAndGet()
+            phase = if(sequence==1L)"local_search_first" else "local_search_repeat"
+            val queryStartedAt=CataloguePerformance.start()
+            startedAt=queryStartedAt
+            val page = when(val access=store.access(context) {it.searchPage(query,filter,cursor,limit,excluded)}){
+                is CatalogueAccess.Available->access.value
+                is CatalogueAccess.Rejected->throw IllegalArgumentException("Invalid or stale search cursor")
+                is CatalogueAccess.Unavailable->throw IllegalStateException(access.reason,access.cause)
+            }
+            CataloguePerformance.finish(phase,queryStartedAt,"outcome=ok result_count=${page.items.size}",context)
+            CataloguePerformance.finish("catalogue_local_result",requestStartedAt,"outcome=ok result_count=${page.items.size}",context)
+            return page
+        } catch(e:CancellationException) {
+            startedAt?.let {CataloguePerformance.finish(phase,it,"outcome=cancelled result_count=0",context)}
+            CataloguePerformance.finish("catalogue_local_result",requestStartedAt,"outcome=cancelled result_count=0",context)
+            throw e
+        } catch(e:Exception) {
+            startedAt?.let {CataloguePerformance.finish(phase,it,"outcome=error result_count=0 error_class=${e.javaClass.simpleName}",context)}
+            CataloguePerformance.finish("catalogue_local_result",requestStartedAt,"outcome=error result_count=0 error_class=${e.javaClass.simpleName}",context)
+            throw e
+        }
+    }
+    suspend fun landing(sessionId:String=UUID.randomUUID().toString()):CatalogueSearchPage = local("",SearchFilter(),sessionId=sessionId)
     /** Same local data, identity, pagination and detail path in both tabs. No network. */
-    suspend fun library(query:String,category:String="all",cursor:String?=null):CatalogueSearchPage {
+    suspend fun library(query:String,category:String="all",cursor:String?=null,sessionId:String=UUID.randomUUID().toString()):CatalogueSearchPage {
         require(query.length<=256 && category in setOf("all","artists","works"))
-        store.initialize();prepareLocal();return local(query,SearchFilter(category=category),cursor)
+        return local(query,SearchFilter(category=category),cursor,sessionId=sessionId)
     }
-    suspend fun filters():DiscoverFilters = when(val access=store.access {repo->DiscoverFilters(
-        repo.queryEntities(androidx.sqlite.db.SimpleSQLiteQuery("SELECT e.* FROM entities e WHERE e.kind='artist' AND e.status='active' AND EXISTS(SELECT 1 FROM relationships r WHERE r.type='credit' AND r.toId=e.id) ORDER BY e.title,e.id LIMIT 40")),repo.availablePeriods())}) {
-        is CatalogueAccess.Available->access.value
-        else->DiscoverFilters()
+    suspend fun filters():DiscoverFilters = filters(CataloguePerformance.Context())
+    internal suspend fun filters(context:CataloguePerformance.Context):DiscoverFilters {
+        val startedAt=CataloguePerformance.start()
+        val access=store.access(context) {repo->DiscoverFilters(
+            repo.queryEntities(androidx.sqlite.db.SimpleSQLiteQuery("SELECT e.* FROM entities e WHERE e.kind='artist' AND e.status='active' AND EXISTS(SELECT 1 FROM relationships r WHERE r.type='credit' AND r.toId=e.id) ORDER BY e.title,e.id LIMIT 40")),repo.availablePeriods())
+        }
+        val outcome=when(access) {
+            is CatalogueAccess.Available->"ok"
+            is CatalogueAccess.Rejected->"rejected"
+            is CatalogueAccess.Unavailable->"unavailable"
+        }
+        val value=(access as? CatalogueAccess.Available)?.value ?: DiscoverFilters()
+        CataloguePerformance.finish("discover_filter_load",startedAt,"outcome=$outcome result_count=${value.artists.size+value.periods.size}",context)
+        return value
     }
-    suspend fun page(query:String,filter:SearchFilter,cursor:String)=local(query,filter,cursor)
+    suspend fun page(query:String,filter:SearchFilter,cursor:String?=null)=local(query,filter,cursor)
     private fun combine(previous:SearchSource?,next:SearchSource):SearchSource {
         fun severity(state:SourceState)=when(state){SourceState.FRESH,SourceState.CACHED->0;SourceState.STALE->1;SourceState.MISSING->2;SourceState.UNAVAILABLE->3;SourceState.INVALID->4;SourceState.BLOCKED_RIGHTS->5;SourceState.RATE_LIMITED->6}
         return if(previous!=null && maxOf(severity(previous.state),previous.refreshState?.let(::severity) ?: 0)>maxOf(severity(next.state),next.refreshState?.let(::severity) ?: 0))previous else next
     }
     private fun orderedSources(states:Collection<SearchSource>)=adapters.flatMap {adapter->states.filter {it.provider==adapter.id}.sortedBy {it.requestKind}}
     private fun sourceKey(source:SearchSource)=source.provider+":"+source.requestKind.orEmpty()
-    private suspend fun acquire(adapter:ProviderAdapter,request:ProviderRequest):Pair<ProviderResult,SearchSource> {
-        val result=client.fetch(adapter,request)
+    private suspend fun acquire(adapter:ProviderAdapter,request:ProviderRequest,sessionId:String,category:String):Pair<ProviderResult,SearchSource> {
+        require(isActiveCatalogueSearchProvider(adapter.id) && isActiveCatalogueSearchProvider(request.provider))
+        val context=CataloguePerformance.Context(sessionId,"online",category)
+        val result=CataloguePerformance.measureSuspend("online_search", "provider=${adapter.id} request_kind=${request.kind}",context) { client.fetch(adapter,request) }
         var source=SearchSource(adapter.id,result.state,result.error,result.refreshState)
-        if(adapter is WikidataAdapter && usable(result.state)) {
-            for(candidate in result.candidates.take(3)) {
-                if(canStore(8192))store.access {repo->repo.observeCandidate(result,ProviderRecord("entity",candidate.id,"unknown",candidate.title),"unverified_music_identity")}
-                val typed=client.fetch(adapter,adapter.lookup(candidate.id))
-                if(usable(typed.state) && typed.records.isNotEmpty()) {
-                    if(intake {it.ingest(typed.copy(state=SourceState.FRESH))} !is CatalogueAccess.Available)
-                        source=combine(source,SearchSource(adapter.id,SourceState.UNAVAILABLE,"storage_budget"))
-                }
-                source=combine(source,SearchSource(adapter.id,typed.state,typed.error,typed.refreshState))
-                if(typed.state==SourceState.RATE_LIMITED)break
-            }
-        }
         if(usable(result.state)) {
             if(canStore()) {
                 val accepted=intake {it.ingest(result.copy(state=SourceState.FRESH))}
@@ -70,46 +139,74 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
         return result to source.copy(requestKind=request.kind)
     }
     private suspend fun finish(query:String,filter:SearchFilter,frame:DiscoverFrame,page:CatalogueSearchPage,observations:List<CatalogueCandidate>):DiscoverSearch {
-        val more=frame.providers.isNotEmpty() || local(query,filter,excluded=frame.seen,limit=1).items.isNotEmpty() || candidates(query,filter,frame.seenCandidates).isNotEmpty()
+        val context=CataloguePerformance.Context(frame.queryId,"local",filter.category)
+        val moreStartedAt=CataloguePerformance.start()
+        val more=frame.providers.isNotEmpty() || local(query,filter,excluded=frame.seen,limit=1,sessionId=frame.queryId).items.isNotEmpty() || candidates(query,filter,frame.seenCandidates,frame.queryId).isNotEmpty()
         val token=if(more)paging.issue(frame) else null
+        CataloguePerformance.finish("catalogue_paging_availability",moreStartedAt,"outcome=ok result_count=${page.items.size} has_more=$more",context)
         return DiscoverSearch(frame.queryId,page,frame.sources,observations,token,more && token==null,frame.providerEntityIds)
     }
     /** The persisted Settings toggle is consent. Callers cancel this flow on query/filter/toggle
      * changes; local results precede the debounce and no empty/one-character query goes online. */
-    fun automaticSearch(query:String,filter:SearchFilter,language:String,online:Boolean):Flow<DiscoverSearch> = flow {
-        search(query,filter,language,false).collect {emit(it)}
-        if(online && query.trim().length>=2) {
-            delay(500)
-            search(query,filter,language,true).collect {emit(it)}
+    fun automaticSearch(query:String,filter:SearchFilter,language:String,online:Boolean,sessionId:String=UUID.randomUUID().toString()):Flow<DiscoverSearch> = flow {
+        val sessionStartedAt=CataloguePerformance.start()
+        var initial:DiscoverSearch?=null
+        search(query,filter,language,false,sessionId,sessionStartedAt).collect {initial=it;emit(it)}
+        val context=CataloguePerformance.Context(sessionId,"online",filter.category)
+        if(!online)CataloguePerformance.event("catalogue_online_skipped","outcome=consent_off result_count=0",context)
+        else if(query.trim().length<2)CataloguePerformance.event("catalogue_online_skipped","outcome=query_too_short result_count=0",context)
+        else {
+            CataloguePerformance.measureSuspend("catalogue_online_debounce","target_ms=500",context) {delay(500)}
+            search(query,filter,language,true,sessionId,sessionStartedAt,initial).collect {emit(it)}
         }
     }
     private suspend fun observedIds(result:ProviderResult):Set<String> =
         (store.access {repo->result.records.mapNotNull {record->
             repo.providerIdentity(result.request.provider,record.providerKind,record.externalId)?.entityId?.let {repo.resolve(it)?.id}
         }.toSet()} as? CatalogueAccess.Available)?.value.orEmpty()
-    fun search(query:String,filter:SearchFilter,language:String,online:Boolean):Flow<DiscoverSearch> = channelFlow {
+    fun search(query:String,filter:SearchFilter,language:String,online:Boolean,sessionId:String=UUID.randomUUID().toString(),onlineStartedAtNanos:Long?=null,initial:DiscoverSearch?=null):Flow<DiscoverSearch> = channelFlow {
         require(query.length<=256 && language in setOf("cs","en"))
-        store.initialize();prepareLocal()
-        val id=UUID.randomUUID().toString()
+        val id=sessionId
+        val searchContext=CataloguePerformance.Context(id,"local",filter.category)
+        val searchStartedAt=CataloguePerformance.start()
+        val onlineStartedAt=onlineStartedAtNanos ?: searchStartedAt
+        CataloguePerformance.event("catalogue_search_started","outcome=started result_count=0 online_requested=$online",searchContext)
         val items=linkedMapOf<String,CatalogueEntity>()
-        val first=local(query,filter);first.items.forEach {items[it.id]=it}
-        send(DiscoverSearch(id,first,candidates=candidates(query,filter)))
+        val first=initial?.page ?: local(query,filter,sessionId=id);first.items.forEach {items[it.id]=it}
+        val firstCandidates=initial?.candidates ?: candidates(query,filter,sessionId=id)
+        if(initial==null) {
+            send(DiscoverSearch(id,first,candidates=firstCandidates))
+            CataloguePerformance.finish("catalogue_first_local_result",searchStartedAt,"outcome=ok result_count=${first.items.size}",searchContext)
+        } else CataloguePerformance.event("catalogue_local_seed_reused","outcome=ok result_count=${first.items.size}",searchContext)
         val providerIds=linkedSetOf<String>()
         val states=java.util.concurrent.ConcurrentHashMap<String,SearchSource>()
         val positions=linkedMapOf<String,ProviderPosition>()
+        var currentPage=first
+        var currentCandidates=firstCandidates
         val emission=kotlinx.coroutines.sync.Mutex()
+        var firstOnlineResult=true
         if(online && query.trim().length>=2 && permitted())supervisorScope {
             adapters.forEach {adapter->launch {
                 for(request in adapter.search(query.trim(),filter.category,language)) {
                     currentCoroutineContext().ensureActive()
-                    val (result,source)=acquire(adapter,request)
+                    val (result,source)=acquire(adapter,request,id,filter.category)
                     emission.lock()
                     try {
+                        val mergeStartedAt=CataloguePerformance.start()
                         providerIds.addAll(observedIds(result).take(500-providerIds.size))
                         states[sourceKey(source)]=source
                         if(usable(result.state))result.nextOffset?.let {positions[adapter.id+":"+request.kind]=ProviderPosition(adapter.id,request.kind,it)}
-                        val page=local(query,filter);items.clear();page.items.forEach {items[it.id]=it}
-                        send(DiscoverSearch(id,page.copy(items=items.values.toList()),orderedSources(states.values),candidates(query,filter),providerEntityIds=providerIds.toSet()))
+                        val page=if(usable(result.state) && result.records.isNotEmpty()) local(query,filter,sessionId=id) else currentPage
+                        if(page!==currentPage){currentPage=page;items.clear();page.items.forEach {items[it.id]=it}}
+                        CataloguePerformance.event("catalogue_provider_result","provider=${adapter.id} request_kind=${request.kind} outcome=${result.state.name.lowercase(java.util.Locale.ROOT)} result_count=${result.records.size}",CataloguePerformance.Context(id,"online",filter.category))
+                        if(firstOnlineResult) {
+                            firstOnlineResult=false
+                            CataloguePerformance.finish("catalogue_first_online_result",onlineStartedAt,"outcome=${result.state.name.lowercase(java.util.Locale.ROOT)} result_count=${result.records.size}",CataloguePerformance.Context(id,"online",filter.category))
+                        }
+                        val merged=page.copy(items=items.values.toList())
+                        val unresolved=currentCandidates
+                        CataloguePerformance.finish("catalogue_provider_result_refresh",mergeStartedAt,"outcome=ok result_count=${merged.items.size} candidate_count=${unresolved.size}",CataloguePerformance.Context(id,"local_online",filter.category))
+                        send(DiscoverSearch(id,merged,orderedSources(states.values),unresolved,providerEntityIds=providerIds.toSet()))
                     }finally {emission.unlock()}
                     if(result.state==SourceState.RATE_LIMITED)break
                 }
@@ -119,8 +216,9 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
             val source=SearchSource(adapter.id,SourceState.UNAVAILABLE,"network_policy")
             states[sourceKey(source)]=source
         }
-        val page=local(query,filter);items.clear();page.items.forEach {items[it.id]=it}
-        val candidates=candidates(query,filter)
+        if(online && query.trim().length>=2 && !permitted())CataloguePerformance.event("catalogue_online_skipped","outcome=network_policy result_count=0",CataloguePerformance.Context(id,"online",filter.category))
+        val page=currentPage
+        val candidates=currentCandidates
         val frame=DiscoverFrame(DiscoverPaging.binding(query,filter,language,online),id,page.generation,items.keys.lastOrNull(),items.keys.toSet(),candidates.map {it.id}.toSet(),positions.values.toList(),orderedSources(states.values),providerEntityIds=providerIds.toSet())
         send(finish(query,filter,frame,page.copy(items=items.values.toList()),candidates))
     }
@@ -131,10 +229,10 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
         try {
             val frame=slot.frame
             val expected=slot.replay?.page?.generation ?: frame.generation
-            require(local(query,filter,limit=1).generation==expected){"Stale catalogue generation"}
+            require(local(query,filter,limit=1,sessionId=frame.queryId).generation==expected){"Stale catalogue generation"}
             slot.replay?.let {return it}
-            var page=local(query,filter,excluded=frame.seen,limit=minOf(40,500-frame.seen.size))
-            var candidates=candidates(query,filter,frame.seenCandidates).take(500-frame.seenCandidates.size)
+            var page=local(query,filter,excluded=frame.seen,limit=minOf(40,500-frame.seen.size),sessionId=frame.queryId)
+            var candidates=candidates(query,filter,frame.seenCandidates,frame.queryId).take(500-frame.seenCandidates.size)
             var positions=frame.providers
             val providerIds=frame.providerEntityIds.toMutableSet()
             val states=frame.sources.associateBy {sourceKey(it)}.toMutableMap()
@@ -146,35 +244,43 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
                 supervisorScope {positions.map {position->async {
                     val adapter=requireNotNull(adapters.firstOrNull {it.id==position.provider})
                     val request=adapter.search(query.trim(),filter.category,language,position.offset).single {it.kind==position.kind}
-                    Triple(position,request,acquire(adapter,request))
+                    Triple(position,request,acquire(adapter,request,frame.queryId,filter.category))
                 }}.awaitAll()}.forEach {(position,_,resultAndState)->
                     val (result,source)=resultAndState;providerIds.addAll(observedIds(result).take(500-providerIds.size));states[sourceKey(source)]=source
                     if(usable(result.state))result.nextOffset?.let {next+=position.copy(offset=it)} else next+=position
                 }
                 positions=next
-                page=local(query,filter,excluded=frame.seen,limit=minOf(40,500-frame.seen.size));candidates=candidates(query,filter,frame.seenCandidates).take(500-frame.seenCandidates.size)
+                page=local(query,filter,excluded=frame.seen,limit=minOf(40,500-frame.seen.size),sessionId=frame.queryId);candidates=candidates(query,filter,frame.seenCandidates,frame.queryId).take(500-frame.seenCandidates.size)
             }
             val seen=frame.seen+page.items.map {it.id};val observed=frame.seenCandidates+candidates.map {it.id}
             val nextFrame=frame.copy(generation=page.generation,lastId=page.items.lastOrNull()?.id ?: frame.lastId,seen=seen,seenCandidates=observed,providers=positions,sources=orderedSources(states.values),ordinal=frame.ordinal+1,providerEntityIds=providerIds.toSet())
             return finish(query,filter,nextFrame,page,candidates).also {slot.replay=it}
         }finally {slot.lock.unlock()}
     }
-    private suspend fun candidates(query:String,filter:SearchFilter,excluded:Set<String> = emptySet())=when(val access=store.access {it.candidates(query,filter,excluded)}){is CatalogueAccess.Available->access.value;else->emptyList()}
+    private suspend fun candidates(query:String,filter:SearchFilter,excluded:Set<String> = emptySet(),sessionId:String="startup"):List<CatalogueCandidate> {
+        val startedAt=CataloguePerformance.start()
+        val context=CataloguePerformance.Context(sessionId,"local_cache",filter.category)
+        return try {
+            val access=store.access(context) {it.candidates(query,filter,excluded)}
+            val outcome=when(access) {
+                is CatalogueAccess.Available->"ok"
+                is CatalogueAccess.Rejected->"rejected"
+                is CatalogueAccess.Unavailable->"unavailable"
+            }
+            val rows=(access as? CatalogueAccess.Available)?.value.orEmpty().filter { isActiveCatalogueSearchProvider(it.provider) }
+            CataloguePerformance.finish("catalogue_candidate_results",startedAt,"outcome=$outcome result_count=${rows.size}",context)
+            rows
+        } catch(e:CancellationException) {
+            CataloguePerformance.finish("catalogue_candidate_results",startedAt,"outcome=cancelled result_count=0",context)
+            throw e
+        } catch(e:Exception) {
+            CataloguePerformance.finish("catalogue_candidate_results",startedAt,"outcome=error result_count=0 error_class=${e.javaClass.simpleName}",context)
+            throw e
+        }
+    }
     suspend fun candidate(id:String):CatalogueCandidate?=when(val access=store.access {repo->repo.states("candidate:",200).firstOrNull {runCatching {candidateFromJson(it.value).id==id}.getOrDefault(false)}?.let {repo.touchObservation(it.key);candidateFromJson(it.value)}}){is CatalogueAccess.Available->access.value;else->null}
     suspend fun resolveCandidate(candidate:CatalogueCandidate):String? {
-        if(!permitted())return null
-        if(candidate.provider=="wikidata") {
-            val wd=WikidataAdapter();val observed=client.fetch(wd,wd.lookup(candidate.externalId))
-            if(!usable(observed.state))return null
-            val cross=observed.records.singleOrNull()?.fields?.singleOrNull {it.field=="verified_musicbrainz_identity"}?.value?.split('/') ?: return null
-            if(cross.size!=2)return null
-            val mb=MusicBrainzAdapter();val typed=client.fetch(mb,mb.lookup(cross[0],cross[1]))
-            if(!usable(typed.state))return null
-            val accepted=intake {repo->repo.ingest(typed.copy(state=SourceState.FRESH));repo.ingest(observed.copy(state=SourceState.FRESH))}
-            if(accepted !is CatalogueAccess.Available)return null
-            return accepted.value.singleOrNull()
-        }
-        if(candidate.provider!="musicbrainz")return null
+        if(!isActiveCatalogueSearchProvider(candidate.provider) || !permitted())return null
         val adapter=MusicBrainzAdapter()
         val result=client.fetch(adapter,adapter.lookup(candidate.providerKind,candidate.externalId))
         if(!usable(result.state))return null

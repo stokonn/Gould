@@ -6,10 +6,14 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import com.opus.piano.R
 import com.opus.piano.i18n.L
 import com.opus.piano.data.community.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.util.UUID
 
 /** Settings subpage only: no navigation redesign, fixture success or auth provider. */
@@ -25,14 +29,54 @@ import java.util.UUID
     var problem by remember {mutableStateOf<CommunityProblem?>(null)}
     var retryAt by remember {mutableStateOf<Long?>(null)}
     var busy by remember {mutableStateOf(false)}
+    var archiveMessage by remember {mutableStateOf<Int?>(null)}
+    var archiveRestoredCount by remember {mutableStateOf(0)}
     val selected=drafts.firstOrNull {it.id==selectedId}
     fun select(d: CommunityDraft) {selectedId=d.id;title=d.payload.fields.firstOrNull()?.newValue.orEmpty();evidence=d.payload.fields.firstOrNull()?.evidence?.firstOrNull()?.value.orEmpty();license=d.payload.intendedLicense;preview=null;problem=null}
+    val exportArchive=rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument(CommunityDraftArchive.MIME_TYPE)) { uri ->
+        uri?.let { destination -> scope.launch {
+            busy=true
+            try {
+                withContext(Dispatchers.IO) {
+                    val bytes=repository.exportDraftArchive()
+                    (context.contentResolver.openOutputStream(destination,"wt") ?: error("Cannot open destination")).use {it.write(bytes)}
+                }
+                archiveMessage=R.string.community_archive_exported
+            } catch(e: kotlinx.coroutines.CancellationException) {throw e}
+            catch(_: Exception) {archiveMessage=R.string.community_archive_export_failed}
+            finally {busy=false}
+        } }
+    }
+    val importArchive=rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        uri?.let { source -> scope.launch {
+            busy=true
+            try {
+                val restored=withContext(Dispatchers.IO) {
+                    val bytes=(context.contentResolver.openInputStream(source) ?: error("Cannot open source")).use(CommunityDraftArchive::readBounded)
+                    repository.importDraftArchive(bytes)
+                }
+                drafts=repository.drafts()
+                archiveMessage=if(restored==0) R.string.community_archive_empty else R.plurals.community_archive_imported
+                archiveRestoredCount=restored
+            } catch(e: kotlinx.coroutines.CancellationException) {throw e}
+            catch(_: Exception) {archiveMessage=R.string.community_archive_import_failed}
+            finally {busy=false}
+        } }
+    }
     LaunchedEffect(repository) {runCatching {repository.drafts()}.onSuccess {drafts=it}.onFailure {problem=CommunityProblem.STORAGE}}
     fun action(block: suspend ()->Unit) {scope.launch {busy=true;try {block()}catch(e: kotlinx.coroutines.CancellationException){throw e}catch(_: Exception){problem=CommunityProblem.STORAGE}finally {busy=false}}}
     Column(verticalArrangement=Arrangement.spacedBy(12.dp)) {
         Text(L.s(R.string.community_local_title),style=MaterialTheme.typography.titleLarge)
         Text(L.s(R.string.community_disabled))
         Text(L.s(R.string.community_privacy),style=MaterialTheme.typography.bodySmall)
+        Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+            JournalSecondaryButton(enabled=!busy,onClick={exportArchive.launch("Gould-community-drafts.json")}) {Text(L.s(R.string.community_archive_export))}
+            JournalTextButton(enabled=!busy,onClick={importArchive.launch(arrayOf(CommunityDraftArchive.MIME_TYPE,"application/json"))}) {Text(L.s(R.string.community_archive_import))}
+        }
+        archiveMessage?.let {message ->
+            val text=if(message==R.plurals.community_archive_imported) L.quantity(message,archiveRestoredCount) else L.s(message)
+            Text(text,color=if(message==R.string.community_archive_import_failed||message==R.string.community_archive_export_failed) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant,style=MaterialTheme.typography.bodySmall)
+        }
         JournalSecondaryButton(enabled=!busy,onClick={action {
             val p=ContributionPayload(CatalogueUuid(UUID.randomUUID().toString()),CommunityKind.WORK,listOf(ContributionField("title","",listOf(SourceEvidence("reference","","")))),"")
             val d=repository.create(p);drafts=repository.drafts();select(d)

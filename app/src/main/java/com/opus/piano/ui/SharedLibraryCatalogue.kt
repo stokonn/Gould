@@ -1,11 +1,12 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import com.opus.piano.OpusApplication
 import com.opus.piano.R
 import com.opus.piano.data.catalogue.*
 import com.opus.piano.i18n.L
@@ -13,8 +14,9 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 
 /** Library is a local view of Discover's catalogue, not a second provider search. */
-@Composable internal fun SharedLibraryCatalogue(query:String,category:String,open:(String)->Unit,explore:()->Unit) {
-    val app=LocalContext.current.applicationContext as OpusApplication
+@Composable internal fun SharedLibraryCatalogue(query:String,category:String,open:(String)->Unit,explore:()->Unit,repository:DiscoverRepository?=null) {
+    val app=LocalContext.current.appContainer
+    val discover=repository ?: app.discover
     val scope=rememberCoroutineScope()
     var page by remember(query,category){mutableStateOf<CatalogueSearchPage?>(null)}
     var loading by remember(query,category){mutableStateOf(true)}
@@ -22,7 +24,7 @@ import kotlinx.coroutines.launch
     var retry by remember{mutableIntStateOf(0)}
     LaunchedEffect(query,category,retry) {
         loading=true;failed=false
-        try {page=app.discover.library(query.take(256),category)}
+        try {page=discover.library(query.take(256),category)}
         catch(e:CancellationException){throw e}
         catch(_:Exception){failed=true}
         finally {loading=false}
@@ -41,7 +43,7 @@ import kotlinx.coroutines.launch
             JournalSecondaryButton(enabled=!loading,onClick={scope.launch {
                 loading=true
                 try {
-                    val next=app.discover.library(query.take(256),category,cursor)
+                    val next=discover.library(query.take(256),category,cursor)
                     val previous=page
                     page=next.copy(items=(previous?.items.orEmpty()+next.items).distinctBy {it.id},
                         workTypes=previous?.workTypes.orEmpty()+next.workTypes,rowInfo=previous?.rowInfo.orEmpty()+next.rowInfo)

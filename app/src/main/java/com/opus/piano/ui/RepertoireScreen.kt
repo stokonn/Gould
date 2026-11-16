@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import com.opus.piano.i18n.L
 import com.opus.piano.R
 import androidx.compose.foundation.layout.*
@@ -9,70 +11,44 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material.icons.outlined.History
 import androidx.compose.material3.*
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.opus.piano.data.*
+import com.opus.piano.data.catalogue.DiscoverRepository
 
-@OptIn(ExperimentalLayoutApi::class, androidx.compose.foundation.ExperimentalFoundationApi::class)
-@Composable internal fun RepertoireScreen(state: LibraryState, catalog: CatalogSnapshot, model: OpusViewModel, explore: () -> Unit, detail: (Long) -> Unit, profile: ProfileViewModel, composerPage:(String)->Unit, catalogModel:CatalogViewModel, workPage:(String)->Unit, cataloguePage:(String)->Unit, previous: () -> Unit = {}) {
-    var view by rememberSaveable {mutableStateOf("all")}
-    val mine=view=="mine"
-    var limit by rememberSaveable {mutableIntStateOf(40)}
-    val favorites by profile.favoriteComposers.collectAsState()
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable internal fun RepertoireScreen(state: LibraryState, catalog: CatalogSnapshot, model: OpusViewModel, detail: (Long) -> Unit, cataloguePage:(String)->Unit, previous: () -> Unit = {}, catalogueRepository: DiscoverRepository? = null) {
+    var selectedTab by rememberSaveable { mutableIntStateOf(0) }
     val appearance=LocalAppearance.current
-    val store=(androidx.compose.ui.platform.LocalContext.current.applicationContext as com.opus.piano.OpusApplication).appearance
+    val store=(androidx.compose.ui.platform.LocalContext.current.appContainer).appearance
     var addMenu by remember { mutableStateOf(false) }
     var editingId by rememberSaveable { mutableStateOf<Long?>(null) }
     var editor by rememberSaveable { mutableStateOf(false) }
     var deleting by remember { mutableStateOf<Piece?>(null) }
-    var query by rememberSaveable { mutableStateOf("") }
-    var difficulty by rememberSaveable {mutableStateOf("All")}
-    var status by rememberSaveable { mutableStateOf("All") }
-    var composer by rememberSaveable { mutableStateOf("All") }
-    var era by rememberSaveable { mutableStateOf("All") }
-    var instrument by rememberSaveable { mutableStateOf("All") }
-    var genre by rememberSaveable { mutableStateOf("All") }
     val sort=appearance.sort
-    var filters by rememberSaveable { mutableStateOf(false) }
     val works = remember(catalog.works) { catalog.works.associateBy { it.id } }
     val composerMap = remember(catalog.composers) { catalog.composers.associateBy { it.id } }
-    val eras = remember(state.pieces, works, composerMap) { state.pieces.associate { p -> p.id to p.musicalEra.ifBlank { composerMap[ComposerIdentity.resolve(p, works)]?.epoch.orEmpty() } } }
-    val genres = remember(state.pieces, works) { state.pieces.associate { p -> p.id to p.genre.ifBlank { works[p.catalogWorkId]?.genre.orEmpty() } } }
     val lastPractice = state.summary.lastPractice
     val practiceTotals = state.summary.practiceTotals
-    val pieces = remember(state.pieces, query, status, difficulty, composer, era, instrument, genre, sort, eras, genres, lastPractice, works) {
-        val tokens = catalogText(query).split(' ').filter { it.isNotBlank() }
-        val matches = state.pieces.filter { p ->
-            val text = catalogText("${p.title} ${p.composer} ${works[p.catalogWorkId]?.catalogLabel.orEmpty()}")
-            tokens.all { text.contains(it) } && (difficulty=="All" || p.difficulty.label==difficulty) && (status == "All" || p.status.label == status) && (composer == "All" || catalogText(p.composer) == catalogText(composer)) &&
-                (era == "All" || catalogText(eras[p.id].orEmpty()) == catalogText(era)) && (instrument == "All" || catalogText(p.instrument) == catalogText(instrument)) && (genre == "All" || catalogText(genres[p.id].orEmpty()) == catalogText(genre))
+    val pieces = remember(state.pieces,sort,lastPractice) { PracticeInsights.sorted(state.pieces,sort,lastPractice) }
+    Column(Modifier.fillMaxSize()) {
+        LibraryHeader(previous)
+        PrimaryTabRow(selectedTabIndex=selectedTab,modifier=Modifier.fillMaxWidth(),
+            containerColor=MaterialTheme.colorScheme.background,contentColor=MaterialTheme.colorScheme.primary) {
+            listOf(L.s(R.string.ui101_my_repertoire),L.s(R.string.msg_catalogue_5a24)).forEachIndexed { index,label ->
+                Tab(selectedTab==index,onClick={selectedTab=index},modifier=Modifier.heightIn(min=64.dp),
+                    text={Text(label,textAlign=androidx.compose.ui.text.style.TextAlign.Center,maxLines=2,overflow=androidx.compose.ui.text.style.TextOverflow.Ellipsis,modifier=Modifier.fillMaxWidth())})
+            }
         }
-        PracticeInsights.sorted(matches,sort,lastPractice)
-    }
-    fun options(values: List<String>) = listOf("All") + values.filter { it.isNotBlank() }.distinctBy(::catalogText).sortedBy(::catalogText)
-    LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        item { LibraryHeader(previous) }
-        stickyHeader { Surface(color=MaterialTheme.colorScheme.background) { Row(Modifier.fillMaxWidth().padding(bottom=8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(JournalSpace.small)) {
-            OutlinedTextField(query, { query = it; limit=40 }, Modifier.weight(1f), label = { Text(L.s(R.string.ui101_search),maxLines=1,overflow=TextOverflow.Ellipsis) }, leadingIcon = { Icon(Icons.Outlined.Search, null) }, singleLine = true,shape=androidx.compose.foundation.shape.RoundedCornerShape(14.dp))
-            Box { IconButton(onClick={addMenu=true}) { Icon(Icons.Outlined.Add,L.s(R.string.msg_add_piece_2cfc)) }
-                DropdownMenu(addMenu,{addMenu=false}) {
-                    DropdownMenuItem(text={Text(L.s(R.string.msg_discover_in_catalogue_28f0))},onClick={addMenu=false;explore()})
-                    DropdownMenuItem(text={Text(L.s(R.string.msg_add_manually_a1d9))},onClick={addMenu=false;editingId=null;editor=true})
-                }
-            }
-        } } }
+        if(selectedTab==1) DiscoverScreen({cataloguePage(it)},{detail(it)},{cataloguePage(it)},state,repository=catalogueRepository,embedded=true,modifier=Modifier.weight(1f))
+        else LazyColumn(Modifier.weight(1f),contentPadding=PaddingValues(16.dp),verticalArrangement=Arrangement.spacedBy(8.dp)) {
         item {
-            FlowRow(horizontalArrangement=Arrangement.spacedBy(JournalSpace.small)) {
-                listOf("all" to L.fixed("All"),"mine" to L.s(R.string.ui101_my_repertoire),"artists" to L.s(R.string.discover_artists)).forEach {(key,label)->
-                    FilterChip(view==key,{view=key;limit=40},label={Text(label)},shape=androidx.compose.foundation.shape.RoundedCornerShape(14.dp))
-                }
-            }
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
                 var sorting by remember { mutableStateOf(false) }
                 Box(Modifier.weight(1f)) {
@@ -83,24 +59,24 @@ import com.opus.piano.data.*
                         }
                     }
                 }
-                JournalSecondaryButton(onClick = { filters = !filters },modifier=Modifier.weight(1f)) { Icon(Icons.Outlined.Tune, null); Text(L.s(R.string.msg_filters_96e5)) }
-            }
-            if (filters) FlowRow(horizontalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
-                Choice(L.fixed("Difficulty"),listOf("All")+Difficulty.entries.map {it.label},difficulty) {difficulty=it}
-                Choice(L.s(R.string.msg_status_bae7), listOf("All") + LearningStatus.entries.map { it.label }, status) { status = it }
-                Choice(L.s(R.string.msg_composer_10c3), options(state.pieces.map { it.composer } + catalog.composers.map {it.name}), composer, translateOptions=false) { composer = it }
-                Choice(L.s(R.string.msg_era_f37a), options(eras.values.toList()), era, translateOptions=false) { era = it }
-                Choice(L.s(R.string.msg_instrument_f05f), options(state.pieces.map { it.instrument }), instrument, translateOptions=false) { instrument = it }
-                Choice(L.s(R.string.msg_genre_2aa3), options(genres.values.toList()), genre, translateOptions=false) { genre = it }
-                JournalTextButton(onClick = { difficulty="All"; status = "All"; composer = "All"; era = "All"; instrument = "All"; genre = "All"; query = "";limit=40 }) { Text(L.s(R.string.msg_clear_filters_4122)) }
+                Box(Modifier.weight(1f)) {
+                    JournalSecondaryButton(onClick={addMenu=true},modifier=Modifier.fillMaxWidth()) {Icon(Icons.Outlined.Add,null);Text(L.s(R.string.msg_add_piece_2cfc))}
+                    DropdownMenu(addMenu,{addMenu=false}) {
+                        DropdownMenuItem(text={Text(L.s(R.string.msg_catalogue_5a24))},onClick={addMenu=false;selectedTab=1})
+                        DropdownMenuItem(text={Text(L.s(R.string.msg_add_manually_a1d9))},onClick={addMenu=false;editingId=null;editor=true})
+                    }
+                }
             }
         }
-        if(view=="artists") {
-            item { SharedLibraryCatalogue(query,"artists",cataloguePage,explore) }
-        } else {
-        if(favorites.isNotEmpty()) item { FavoriteComposerStrip(catalog,favorites,composerPage,profile::favoriteComposer) }
         if (state.loading) item { EditorialSkeleton() }
-        if (!state.loading && pieces.isEmpty() && mine) item { Panel { SectionTitle(if (state.pieces.isEmpty()) L.s(R.string.msg_your_collection_begins_here_ca6c) else L.s(R.string.msg_no_matching_compositions_391a)); Text(L.s(R.string.msg_discover_a_work_or_add_one_manually_change_t_fb4a), color = MaterialTheme.colorScheme.onSurfaceVariant); JournalTextButton(onClick=explore) { Text(L.s(R.string.msg_discover_in_catalogue_28f0)) } } }
+        if (!state.loading && pieces.isEmpty()) item {
+            Panel {
+                Icon(Icons.Outlined.LibraryMusic,null,tint=MaterialTheme.colorScheme.primary)
+                SectionTitle(L.s(R.string.library_repertoire_empty_title))
+                Text(L.s(R.string.library_repertoire_empty_body),color=MaterialTheme.colorScheme.onSurfaceVariant)
+                JournalPrimaryButton(onClick={selectedTab=1}){Text(L.s(R.string.library_browse_catalogue))}
+            }
+        }
         items(pieces, key = { it.id }) { piece ->
             Surface(modifier = Modifier.animateItem(), onClick = { detail(piece.id) }, shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.surface) {
                 Column(Modifier.padding(horizontal = 12.dp, vertical = if(appearance.density=="Compact") 8.dp else 12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -123,39 +99,17 @@ import com.opus.piano.data.*
                 }
             }
         }
-        if(!mine) {
-            if(difficulty=="All" && status=="All" && instrument=="All" && composer=="All" && era=="All" && genre=="All")
-                item { SharedLibraryCatalogue(query,"all",cataloguePage,explore) }
-
-        }
-        }
-
+    }
     }
     if (editor) PieceEditor(state.pieces.firstOrNull { it.id == editingId }, { editor = false }, model::save)
     deleting?.let { p -> AlertDialog(onDismissRequest = { deleting = null }, title = { Text(L.s(R.string.msg_delete_piece_1c9a)) }, text = { Text(L.s(R.string.msg_remove_p_title_your_completed_practice_histo_32b9, (p.title))) }, confirmButton = { JournalTextButton(onClick = { model.delete(p); deleting = null }) { Text(L.s(R.string.msg_delete_f6fd)) } }, dismissButton = { JournalTextButton(onClick = { deleting = null }) { Text(L.s(R.string.msg_keep_piece_c264)) } }) }
 }
 
-/** Compact artist row for the Library "Artists" chip (Stage 7A). */
-@Composable private fun ArtistRow(author: CatalogComposer, favorite: Boolean, toggle: (String, Boolean) -> Unit, open: () -> Unit) {
-    Surface(onClick=open,shape=androidx.compose.foundation.shape.RoundedCornerShape(14.dp),color=MaterialTheme.colorScheme.surface) {
-        Row(Modifier.fillMaxWidth().padding(12.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
-            ComposerPortrait(author)
-            Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(JournalSpace.tiny)) {
-                Text(author.name,style=MaterialTheme.typography.titleMedium,maxLines=2,overflow=TextOverflow.Ellipsis)
-                Text(listOf(L.fixed(author.epoch),author.years).filter {it.isNotBlank()}.joinToString(" · "),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant,maxLines=1,overflow=TextOverflow.Ellipsis)
-            }
-            ComposerFavoriteButton(author,favorite,toggle)
-            Icon(Icons.Outlined.ChevronRight,null,Modifier.size(18.dp),tint=MaterialTheme.colorScheme.onSurfaceVariant)
-        }
-    }
-}
-
-/** Keep the action beside the main heading; the subtitle always gets its own full-width line. */
+/** Keep the previous-history action beside the Library heading at narrow widths and large fonts. */
 @Composable internal fun LibraryHeader(previous: () -> Unit) {
-    BoxWithConstraints(Modifier.fillMaxWidth()) {
+    BoxWithConstraints(Modifier.fillMaxWidth().padding(horizontal=20.dp).padding(top=12.dp,bottom=4.dp)) {
         val compactAction = maxWidth < 400.dp && androidx.compose.ui.platform.LocalDensity.current.fontScale >= 1.5f
-        Column(verticalArrangement = Arrangement.spacedBy(JournalSpace.tiny)) {
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
+        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
                 Text(L.s(R.string.stage7a_library_title), style = MaterialTheme.typography.headlineLarge,
                     modifier = Modifier.weight(1f).semantics { heading() })
@@ -168,9 +122,6 @@ import com.opus.piano.data.*
                         Text(L.fixed("Previous"))
                     }
                 }
-            }
-            Text(L.s(R.string.stage7a_library_subtitle), style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
 }

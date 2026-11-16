@@ -3,6 +3,7 @@ package com.opus.piano.ui
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.*
 import com.opus.piano.i18n.L
 import com.opus.piano.R
@@ -55,10 +56,13 @@ import androidx.compose.ui.unit.dp
 }
 @Composable internal fun EditorialHeader(title:String,subtitle:String="",back:(()->Unit)?=null,actions:@Composable RowScope.()->Unit={}) {
     Row(Modifier.fillMaxWidth().padding(top=8.dp,bottom=4.dp),verticalAlignment=Alignment.CenterVertically) {
-        if(back!=null) IconButton(onClick=back) {Icon(Icons.Outlined.ArrowBack,L.s(R.string.msg_back_b52b))}
+        if(back!=null) JournalBackButton(back)
         Column(Modifier.weight(1f)) {Text(title,style=MaterialTheme.typography.headlineMedium);if(subtitle.isNotBlank()) Text(subtitle,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
         actions()
     }
+}
+@Composable internal fun JournalBackButton(onClick: () -> Unit, label: String = L.s(R.string.msg_back_b52b)) {
+    IconButton(onClick = onClick) { Icon(Icons.AutoMirrored.Outlined.ArrowBack, label) }
 }
 @Composable internal fun CompactSection(title:String,actionLabel:String?=null,action:()->Unit={}) {
     Row(Modifier.fillMaxWidth().heightIn(min=32.dp),verticalAlignment=Alignment.CenterVertically) {

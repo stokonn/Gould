@@ -30,7 +30,7 @@ class StudioBackupTest {
     }
     @Test fun journalOnlyDisclosesExcludedBytesAndRestoresMissingRatherThanFakePlayableAudio()=runBlocking { fixture { source,root ->
         val saved=take(source,root,17);val text=backup(source,root).export();val document=JSONObject(text)
-        assertEquals(7,document.getInt("version"));assertEquals(12,document.getInt("journalSchema"))
+        assertEquals(8,document.getInt("version"));assertEquals(13,document.getInt("journalSchema"))
         val studio=document.getJSONObject("sections").getJSONObject("studio").getJSONObject("data")
         assertFalse(studio.getBoolean("audioFilesIncluded"));assertFalse(text.contains("rawAudio"))
         fixture { target,targetRoot ->
@@ -42,7 +42,7 @@ class StudioBackupTest {
         }
         assertEquals(saved.sha256,com.opus.piano.audio.DurableWav.hash(File(root,"audio/${saved.id}.wav")))
     } }
-    @Test fun activityRecordsAndRewardOwnershipRoundTripInBackupV7()=runBlocking { fixture { source,root ->
+    @Test fun activityAndTourStateRoundTripInBackupV8()=runBlocking { fixture { source,root ->
         val week="2026-11-09"
         val cosmetic=ActivityCosmetics.all.first()
         source.activityDao().initialize(ActivitySettings(firstUseDay=week,firstUseZoneId="Europe/Prague"))
@@ -52,6 +52,7 @@ class StudioBackupTest {
         source.activityDao().own(CosmeticOwnership(cosmetic.id,3,week))
         source.activityDao().grant(ActivityRewardGrant(week,cosmetic.id,"COSMETIC",3))
         source.activityDao().equip(CosmeticLoadout(cosmetic.category.name,cosmetic.id))
+        source.practiceDao().local(LocalAppState(tourVersion=1,tourCompleted=true,tourSkipped=false,tourSeenSteps=TourRules.stepIds.joinToString(",")))
         val text=backup(source,root).export()
         assertTrue(backup(source,root).validate(text).isNotBlank())
         fixture { target,targetRoot ->
@@ -62,6 +63,8 @@ class StudioBackupTest {
             assertEquals(cosmetic.id,target.activityDao().allOwnedCosmetics().single().cosmeticId)
             assertEquals(cosmetic.id,target.activityDao().grants().single().cosmeticId)
             assertEquals(cosmetic.id,target.activityDao().allLoadout().single().cosmeticId)
+            assertEquals(TourRules.stepIds.joinToString(","),target.practiceDao().localNow()!!.tourSeenSteps)
+            assertTrue(target.practiceDao().localNow()!!.tourCompleted)
         }
     } }
     @Test fun journalRestorePreservesDestinationAudioAndRepeatedImportsDoNotFarmEvents()=runBlocking { fixture { source,root ->
@@ -77,6 +80,7 @@ class StudioBackupTest {
     @Test fun historicalV5StillImportsWithoutErasingNewAudio()=runBlocking { fixture { source,root ->
         source.personalDao().saveSettings(ProfileSettings(username="Historical Goldberg",favoriteEra="Baroque"))
         val old=JSONObject(backup(source,root).export());old.put("version",5);old.put("journalSchema",10)
+        old.getJSONObject("sections").getJSONObject("preferences").getJSONObject("data").getJSONObject("local").apply { remove("tourVersion");remove("tourCompleted");remove("tourSkipped");remove("tourSeenSteps") }
         old.getJSONObject("sections").remove("studio");old.getJSONObject("sections").remove("activity");old.remove("sha256");old.put("sha256",BackupJson.hash(old))
         fixture { target,targetRoot ->
             val original=take(target,targetRoot,21);backup(target,targetRoot).restore(old.toString())
@@ -88,6 +92,7 @@ class StudioBackupTest {
     @Test fun historicalV6WithoutActivitySectionStillImports()=runBlocking { fixture { source,root ->
         source.personalDao().saveSettings(ProfileSettings(username="Historical v6"))
         val old=JSONObject(backup(source,root).export());old.put("version",6);old.put("journalSchema",11)
+        old.getJSONObject("sections").getJSONObject("preferences").getJSONObject("data").getJSONObject("local").apply { remove("tourVersion");remove("tourCompleted");remove("tourSkipped");remove("tourSeenSteps") }
         old.getJSONObject("sections").remove("activity");old.remove("sha256");old.put("sha256",BackupJson.hash(old))
         fixture { target,targetRoot ->
             backup(target,targetRoot).restore(old.toString())

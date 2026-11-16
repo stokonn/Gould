@@ -5,6 +5,11 @@ import androidx.room.withTransaction
 /** Catalogue-only repository. No personal or practice writes. */
 class CatalogueRepository(private val db: CatalogueDatabase) {
     private val dao = db.dao()
+    internal suspend fun quarantinePrivateIdentity(id:String) {
+        db.openHelper.writableDatabase.execSQL("""UPDATE entities SET status='quarantined' WHERE id=? AND status='active'
+            AND NOT EXISTS(SELECT 1 FROM assertions a JOIN rights r ON r.id=a.rightsId
+                WHERE a.entityId=entities.id AND a.field='title' AND a.selected=1 AND r.reviewState='approved')""",arrayOf(id))
+    }
     internal suspend fun importLegacyResponse(marker:String,results:List<com.opus.piano.data.catalogue.providers.ProviderResult>)=db.withTransaction {
         if(dao.state(marker)==null){results.forEach {CatalogueIngestion(db).accept(it)};dao.state(CatalogueState(marker,"ready"))}
     }
