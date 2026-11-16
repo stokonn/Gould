@@ -4,7 +4,10 @@ import re
 import sqlite3
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
-schema=json.loads((root/'app/schemas/com.opus.piano.data.OpusDatabase/8.json').read_text())['database']
+# Always validate against the newest exported schema so query checks cannot go stale.
+_schema_dir=root/'app/schemas/com.opus.piano.data.OpusDatabase'
+_latest=max((int(p.stem) for p in _schema_dir.glob('*.json')))
+schema=json.loads((_schema_dir/f'{_latest}.json').read_text())['database']
 db=sqlite3.connect(':memory:')
 for entity in schema['entities']:
     db.execute(entity['createSql'].replace('${TABLE_NAME}',entity['tableName']))

@@ -11,7 +11,9 @@ data class PracticeDraft(@PrimaryKey val id: Int = 1, val payload: String, val u
 @Entity(tableName = "local_app_state")
 data class LocalAppState(@PrimaryKey val id: Int = 1, val onboardingDone: Boolean = false,
     val reminderEnabled: Boolean = false, val reminderHour: Int = 18, val reminderMinute: Int = 0,
-    val generation: Long = 0, val lastReminderDay: String = "")
+    val generation: Long = 0, val lastReminderDay: String = "", @ColumnInfo(defaultValue = "0") val tourVersion: Int = 0,
+    @ColumnInfo(defaultValue = "0") val tourCompleted: Boolean = false, @ColumnInfo(defaultValue = "0") val tourSkipped: Boolean = false,
+    @ColumnInfo(defaultValue = "''") val tourSeenSteps: String = "")
 @Entity(tableName = "practice_recovery_archives")
 data class RecoveryArchive(@PrimaryKey(autoGenerate = true) val id: Long = 0, val payload: String, val updatedAt: Long, val archivedAt: Long)
 @Dao

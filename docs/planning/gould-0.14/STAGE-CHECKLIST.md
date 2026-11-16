@@ -40,7 +40,8 @@ Scope: deterministic domain rules; Android/Room persistence and backup; Activity
 ### Phase 5 — GitHub integration and prerelease
 - [ ] Synchronize one Issue/checklist and Project state when GitHub access is available.
 - [ ] Push branch, open one PR, pass CI, and merge normally preserving commits.
-- [ ] Publish and verify prerelease v0.14.0.
+- [x] Publish and verify prerelease v0.14.0. Completed 2026-11-14; immutable
+      publication evidence is recorded in the dated final checkpoint below.
 
 ### Verification and completion status
 - Status: IN PROGRESS; domain, persistence, and UI implementation exists, but final verification and review remain open.

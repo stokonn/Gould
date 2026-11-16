@@ -1,0 +1,5 @@
+started_utc=2026-11-16T09:13:27+00:00
+command=python3 scripts/package_musicbrainz_catalogue.py <evidence>/reproduction/curated-seed/catalogue.db <evidence>/reproduction/curated-seed/catalogue.dbz
+phase=gzip complete {'source_bytes': 283987968, 'source_sha256': '2b4c67b414dd985f7caa4e2303b5a54562340ed947d83670a85d32c2820b428f', 'gzip_bytes': 89123721, 'gzip_sha256': 'c96a16be03720d18a606efd1517b30d1daea9fdd2b7467203add7ab930b20a5f', 'round_trip': 'verified', 'elapsed_seconds': 3}
+finished_utc=2026-11-16T09:13:31+00:00
+exit_code=0

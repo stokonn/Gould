@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import com.opus.piano.i18n.L
 import com.opus.piano.R
 import android.Manifest
@@ -31,7 +33,7 @@ import com.opus.piano.service.SmartPracticeService
     val recordingState by model.recordingState.collectAsStateWithLifecycle()
     val settings by profile.settings.collectAsStateWithLifecycle()
     val context = LocalContext.current
-    val app=context.applicationContext as com.opus.piano.OpusApplication
+    val app=context.appContainer
     val completedId by model.practice.completedSession.collectAsStateWithLifecycle()
     val completedSession by produceState<com.opus.piano.data.PracticeSession?>(null,completedId) {
         value=completedId?.let {app.database.practiceDao().session(it)}

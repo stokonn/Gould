@@ -18,10 +18,27 @@ data class WidgetWeek(val monday: LocalDate, val credited: List<Long>, val sessi
 
 data class WidgetHeatmapCellSize(val width: Float, val height: Float)
 
+internal enum class WeeklyWidgetLayout { COMPACT, WIDE }
+
+internal fun weeklyWidgetLayout(widthDp: Float, heightDp: Float, fontScale: Float): WeeklyWidgetLayout =
+    if (widthDp >= 250f && heightDp >= 150f && fontScale <= 1.5f) WeeklyWidgetLayout.WIDE
+    else WeeklyWidgetLayout.COMPACT
+
+internal fun widgetHeatmapHeight(widgetHeightDp: Float, fontScale: Float, wide: Boolean): Float {
+    require(widgetHeightDp > 0f && fontScale > 0f)
+    val reserved = (if (wide) 88f else 100f) * fontScale.coerceAtMost(2f)
+    return minOf(96f * fontScale.coerceAtMost(1.5f), (widgetHeightDp - reserved).coerceAtLeast(24f))
+}
+
+internal fun widgetHeatmapLabelsVisible(chartWidthDp: Float, chartHeightDp: Float): Boolean =
+    chartWidthDp >= 96f && chartHeightDp >= 42f
+
+internal fun widgetDayLabel(label: String, slotWidthDp: Float): String = label.take(if (slotWidthDp < 26f) 1 else 2)
+
 /** Keep only a small, proportional inset around contribution cells at every widget size. */
 fun widgetHeatmapCellSize(slotWidth: Float, gridHeight: Float): WidgetHeatmapCellSize {
     require(slotWidth > 0f && gridHeight > 0f)
-    return WidgetHeatmapCellSize(width = slotWidth * .96f, height = gridHeight * .94f)
+    return WidgetHeatmapCellSize(width = slotWidth * .88f, height = minOf(gridHeight * .82f, slotWidth * 1.15f))
 }
 
 /** Compact four-step intensity for the weekly heatmap; zero remains visibly inactive. */

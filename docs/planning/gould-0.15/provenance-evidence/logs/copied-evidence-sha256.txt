@@ -1,0 +1,5 @@
+e09d4470c42548ef73f8d1cf3762af9f1bc9b03a74a4370a1be531887a953f09  docs/planning/gould-0.15/provenance-evidence/raw/original-transfer/SHA256SUMS
+7ff8b1de19df6787ff1861464cb9157564c8fe883456f43af552fdad7cb8f001  docs/planning/gould-0.15/provenance-evidence/raw/original-transfer/SHA256SUMS.asc
+6b5a59c190d89b3c4993813c0ae932b6c070f922de44aef47331880c1d6a6f8b  docs/planning/gould-0.15/provenance-evidence/raw/original-transfer/key.asc
+da4f1afcbca8ca54eb6362ae45173543f079e8491d097a376d060551d1a03335  docs/planning/gould-0.15/provenance-evidence/raw/original-transfer/mbdump.tar.bz2
+ec0016687eb4657d15c6f9ae41a9f666445cd2469bc4a0c71db532fecacd41c1  docs/planning/gould-0.15/provenance-evidence/raw/original-transfer/mbdump.tar.bz2.asc

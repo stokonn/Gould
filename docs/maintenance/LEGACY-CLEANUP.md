@@ -139,6 +139,23 @@ Second-batch removed allocated footprint: **42,057,728 bytes**, entirely under t
 
 created by stokonn with love <3
 
+### 2026-11-14 — Gould 0.15 owner-device screenshot quarantine
+
+Five accidentally tracked owner-device screenshots were copied to the private
+mode-0700 directory `/tmp/gould-015-owner-screenshots`, SHA-256 compared
+byte-for-byte, then removed from the repository tree. Backup files remain
+present; no image content was opened or republished. Hashes:
+
+- `Screenshot_20261113_181702_One UI Home.png` — `3bc143c410a43ab6d444c34bcc998fa01a809de3c64b61bed0f309eac256f1fc`
+- `Screenshot_20261113_183842_Gould.png` — `bad51dfb99d82d884b757321c2bf87e669ca8392e77df72b1269d84566bcaabb`
+- `Screenshot_20261113_183856_Gould.png` — `732ca3c91eaeed1ae08590e115fec52fdb574e0387e1a86f645bcae13c34c0a1`
+- `Screenshot_20261113_183903_Gould.png` — `1e3d9a05e248edbab4a0a3b0ceef0eba73aec2be8fcb972824afbd1d688b9ae9`
+- `Screenshot_20261113_183906_Gould.png` — `2e6e3ccb28cb8e1e6ed8781e4b0f963a6ccf7d8a63e9b56de53b2179c7c8c946`
+
+This is custody evidence only; it is not emulator or physical-device QA. The
+private `/tmp` copy is session-local and must be dispositioned by the owner
+before that temporary filesystem is cleared.
+
 ### 2026-10-23 — local API M2 disposable resource cleanup
 
 No application/legacy components removed. Scoped API M2 rootless PostgreSQL runner

@@ -1,6 +1,8 @@
 # Credits & Licenses — Gould
 
-> Gould 0.14.0 is the latest published pre-release, not Stable. Historical sections retain their original evidence.
+> Gould 0.15.0 is the latest published pre-release, not Stable. Historical sections retain their original evidence.
+
+Project-owned application source is licensed under [GPL-3.0-or-later](https://github.com/stokonn/Gould/blob/main/LICENSE); project-owned documentation and original prose are licensed under [CC-BY-SA-4.0](https://github.com/stokonn/Gould/blob/main/LICENSE-DOCS). Third-party dependencies, fonts, artwork, quotations, provider content and catalogue data retain their own applicable terms. The bundled MusicBrainz Core subset is CC0; its snapshot and extraction evidence are documented in the [Gould 0.15 provenance report](../planning/gould-0.15/provenance-evidence/FINAL-PROVENANCE-REPORT.md).
 
 
 Source facts, encyclopedic prose, portraits, scores and recordings have different rights. Catalogue details retain source/licence/attribution information; an entity identifier or deceased composer does not license media. Provider metadata ingestion retains the existing source policies. Metadata lacking its original response stays unknown/unreviewed, rather than receiving an invented licence.

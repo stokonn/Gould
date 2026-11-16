@@ -1,4 +1,4 @@
-name: Goldberg quality checks
+name: Gould quality checks
 on:
   push:
   pull_request:
@@ -20,6 +20,7 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+          cache: gradle
       - name: Set up required Android SDK packages
         uses: android-actions/setup-android@be39fa834029ff78f1a44aa3bb0819b8fc2bd8fd # v4.0.4
         with:
@@ -35,7 +36,12 @@ jobs:
           python3 docs/planning/goldberg-0.11/stage-3b/check_fixtures.py
           python3 scripts/check_localization.py
           python3 scripts/check_history_paging.py
+          python3 scripts/check_ui_literals.py
           python3 scripts/check_agent_policy.py
+          python3 scripts/check_admin_retirement.py
+          python3 scripts/check_publication_workflows.py
+          python3 scripts/check_curated_catalogue.py
+          python3 -m unittest discover -s scripts -p 'test_publication_workflows.py'
           python3 -m unittest discover -s scripts -p 'test_upgrade_table_expectations.py'
           python3 -m unittest discover -s scripts/stage6 -p 'test_backup_store.py'
           git diff --exit-code -- app/schemas
@@ -52,4 +58,4 @@ jobs:
           test "$(git -C stage6-accepted-src rev-parse HEAD)" = 048f1ba582ccd87ed124f0d3fcd8e029790748ba
           python3 stage6-accepted-src/scripts/stage6/verify_evidence.py
 # This workflow never publishes APKs signed with a runner-generated key.
-# Emulator/UI/upgrade/signing acceptance and compatible release publication follow AGENTS.md.
+# Owner physical-device UI/upgrade acceptance and release signing/publication follow AGENTS.md; emulator CI is optional.

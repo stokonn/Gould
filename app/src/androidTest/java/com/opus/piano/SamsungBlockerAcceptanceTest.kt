@@ -94,7 +94,6 @@ class SamsungBlockerAcceptanceTest {
                     }
                     SystemClock.sleep(500); inst.waitForIdleSync()
                     val title = L.s(R.string.stage7a_library_title)
-                    val subtitle = L.s(R.string.stage7a_library_subtitle)
                     var current = tree()
                     for (attempt in 0 until 15) {
                         if (current.any { it.text?.toString() == title }) break
@@ -102,14 +101,13 @@ class SamsungBlockerAcceptanceTest {
                     }
                     capture("library-${case.width}-${case.font}-${case.locale}-${case.theme}-observed")
                     val heading = requireNotNull(current.firstOrNull { it.text?.toString() == title }) { "Missing heading: $title for $case; observed=${current.map { it.text }}" }
-                    val sub = requireNotNull(current.firstOrNull { it.text?.toString() == subtitle }) { "Missing subtitle: $subtitle for $case" }
+                    assertFalse("Library subtitle should be absent", current.any { it.text?.toString() == L.s(R.string.stage7a_library_subtitle) })
                     val actionLabel = L.fixed("Previous")
                     val action = requireNotNull(current.firstOrNull { it.text?.toString() == actionLabel || it.contentDescription?.toString() == actionLabel }) { "Missing action: $actionLabel for $case; observed=${current.map { it.text to it.contentDescription }}" }
                     var button = action
                     while (!button.isClickable && button.parent != null) button = button.parent
-                    val h = bounds(heading); val b = bounds(button); val s = bounds(sub)
+                    val h = bounds(heading); val b = bounds(button)
                     assertTrue("Previous stays beside heading", h.right <= b.left && h.top < b.bottom && b.top < h.bottom)
-                    assertTrue("Subtitle stays below the heading/action row", s.top >= maxOf(h.bottom,b.bottom))
                     assertTrue("Action touch target", b.width() >= 48 * context.resources.displayMetrics.density && b.height() >= 48 * context.resources.displayMetrics.density)
                     capture("library-${case.width}-${case.font}-${case.locale}-${case.theme}")
                     assertTrue(button.performAction(AccessibilityNodeInfo.ACTION_CLICK))

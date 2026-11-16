@@ -1,3 +1,14 @@
+## Gould 0.15.0 — pre-release
+
+- Bundle a curated offline catalogue from the verified MusicBrainz Core snapshot `20261114-002230`: 100 composers, 105,032 works and 105,421 composer relationships (MusicBrainz Core data is CC0), with provenance and licence boundaries documented in the repository.
+- Add opt-in online catalogue search through the public MusicBrainz service with the existing debounce, cancellation, rate-limit and cache behaviour; local results always appear first and offline use is unaffected.
+- Keep private Repertoire separate from public Catalogue records: browsing, adding or removing repertoire entries never deletes catalogue data.
+- Redesign the Library with full-width equal Repertoire/Catalogue tabs and give Artist pages scoped search, deterministic sorting and work-type/period filters.
+- Add guided onboarding and safer export/recovery for unfinished community drafts; a successful Activity week now consistently requires both configured weekly goals.
+- Targets Android 11 (minSdk 30), compile/target API 37, versionCode 17 and versionName `0.15.0-dev` (the owner-tested build's metadata).
+- The signed, non-debuggable APK is distributed as a GitHub pre-release, not Stable. The published artifact is the exact APK the owner tested on a Samsung Galaxy A55; Android instrumentation was compiled but not executed. The Google dependency licensing question remains unresolved and is transparently recorded — see [the licensing audit](docs/planning/gould-0.15/GOOGLE-DEPENDENCY-LICENSING-AUDIT.md) and the owner's release authorization in [docs/LICENSES.md](docs/LICENSES.md).
+- [Release notes and verification](docs/releases/GOULD-0.15.md) · [GitHub pre-release](https://github.com/stokonn/Gould/releases/tag/v0.15.0).
+
 ## Gould 0.14.0 — pre-release
 
 - Add a deterministic Kotlin Multiplatform domain module with `commonMain` rules for Monday-first weeks, historical goals, Beta Week, daily Training/Day Off/Miss classification and weekly streak/Freeze projections. It has a JVM target; Android remains the only application platform in this update.
@@ -18,7 +29,7 @@
 - This is a **pre-release**, not Stable.
 - [Release notes and verification](docs/releases/GOULD-0.13.md).
 
-## Gould 0.12 Pre-release — The Practice Studio Update
+## Gould 0.12 Stable — The Practice Studio Update
 
 - Add the Studio record/stop flow with Previous takes, playback, export and
   restart-safe recovery; the metronome now plays through media volume with

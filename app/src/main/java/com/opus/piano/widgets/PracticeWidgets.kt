@@ -5,7 +5,7 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.opus.piano.OpusApplication
+import com.opus.piano.appContainer
 import kotlinx.coroutines.launch
 
 abstract class PracticeWidget : AppWidgetProvider() {
@@ -19,7 +19,7 @@ abstract class PracticeWidget : AppWidgetProvider() {
             try {
                 com.opus.piano.i18n.L.refresh()
                 WidgetRenderer.renderAll(context, WidgetSnapshotStore(context).read())
-                WidgetRefresh.observe(context.applicationContext as OpusApplication)
+                WidgetRefresh.observe(context.applicationContext, context.appContainer)
                 WidgetRefresh.request(context)
             } catch (_: Exception) {
                 // Keep the previous display if a host rejects an update; retry off the receiver.

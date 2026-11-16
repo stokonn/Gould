@@ -20,6 +20,47 @@ class DiscoverRepairTest {
     private val context=InstrumentationRegistry.getInstrumentation().targetContext
     private fun id()=UUID.randomUUID().toString()
 
+    @Test fun onlineOnlyKanyeIsMergedOnceAndProviderCacheServesOffline()=runBlocking {
+        val personalName="kanye-personal-${id()}";val catalogueName="kanye-catalogue-${id()}"
+        val personal=Room.databaseBuilder(context,OpusDatabase::class.java,personalName)
+            .addMigrations(*OpusDatabase.ALL_MIGRATIONS).addCallback(PersonalCatalogueBridge.callback).addCallback(BackupState.callback).build()
+        val store=LocalCatalogueStore(context,personal,catalogueName)
+        val directory=File(context.cacheDir,"kanye-provider-cache-${id()}")
+        val cache=FileProviderCache(directory)
+        val adapter=MusicBrainzAdapter()
+        val request=adapter.search("Kanye West","artists","en").single()
+        val mbid="b9e0a0cc-19fe-4a4f-9a7e-0f8b1e0a2b11"
+        val body="""{"artists":[{"id":"$mbid","name":"Kanye West","sort-name":"West, Kanye","type":"Person","score":100}],"count":1,"offset":0}""".toByteArray()
+        var networkCalls=0
+        val client=ProviderClient(ProviderTransport { sent->
+            networkCalls++
+            assertTrue(sent.url.startsWith("https://musicbrainz.org/ws/2/artist/"))
+            assertTrue(sent.url.contains("Kanye%20West"))
+            ProviderResponse(200,body,mapOf("Cache-Control" to "max-age=3600"))
+        },{true},cache=cache)
+        try {
+            val repository=DiscoverRepository(store,client,{true},adapters=listOf(adapter))
+            val first=repository.search("Kanye West",SearchFilter("artists"),"en",online=true).toList().last()
+            assertEquals("Kanye West",first.page.items.single().title)
+            assertEquals(1,networkCalls)
+            val mbidIdentity=store.access {it.providerIdentity("musicbrainz","artist",mbid)} as CatalogueAccess.Available
+            assertEquals(first.page.items.single().id,mbidIdentity.value?.entityId)
+            val cached=repository.search("Kanye West",SearchFilter("artists"),"en",online=true).toList().last()
+            assertEquals(1,cached.page.items.count {it.id==mbidIdentity.value?.entityId})
+            assertEquals(1,networkCalls)
+            val offline=ProviderClient(ProviderTransport {error("Offline lookup must use the response cache")},{false},cache=FileProviderCache(directory))
+            val cachedResponse=offline.fetch(adapter,request)
+            assertEquals(SourceState.CACHED,cachedResponse.state)
+            assertEquals("Kanye West",cachedResponse.records.single().title)
+        } finally {
+            store.close();personal.close();context.deleteDatabase(personalName)
+            context.getDatabasePath(catalogueName).parentFile?.listFiles()
+                ?.filter {it.name==catalogueName || it.name.startsWith("$catalogueName.") || it.name.startsWith("$catalogueName-")}
+                ?.forEach {it.delete()}
+            directory.deleteRecursively()
+        }
+    }
+
     @Test fun composerSurnameOutranksLooseNamesAndPaginationKeepsRankAndIdentity()=runBlocking {
         val name="discover-repair-${id()}";val db=CatalogueDatabase.builder(context,name).build();val repo=CatalogueRepository(db)
         try {
@@ -49,10 +90,11 @@ class DiscoverRepairTest {
             .addMigrations(*OpusDatabase.ALL_MIGRATIONS).addCallback(PersonalCatalogueBridge.callback).addCallback(BackupState.callback).build()
         val store=LocalCatalogueStore(context,personal,catalogueName)
         var consent=true;var calls=0
-        val adapter=object:ProviderAdapter by OpenOpusAdapter(){override val intervalMillis=0L}
+        val adapter=object:ProviderAdapter by MusicBrainzAdapter(){override val intervalMillis=0L}
+        val mbid=id()
         val client=ProviderClient(ProviderTransport {
             calls++
-            ProviderResponse(200,"""{"status":{"success":"true"},"results":[{"composer":{"id":"152","complete_name":"Frédéric Chopin","epoch":"Romantic"}}]}""".toByteArray())
+            ProviderResponse(200,"""{"artists":[{"id":"$mbid","name":"Frédéric Chopin","sort-name":"Chopin, Frédéric","type":"Person"}],"count":1,"offset":0}""".toByteArray())
         },{consent})
         val repository=DiscoverRepository(store,client,{consent},adapters=listOf(adapter))
         try {
@@ -64,6 +106,7 @@ class DiscoverRepairTest {
             val localId=id();store.access {it.add(CatalogueEntity(localId,"artist","Chopin University Press"),CatalogueArtist(localId,artistType="group"))}
             val results=repository.automaticSearch("Chopin",SearchFilter("artists"),"en",true).toList()
             assertEquals(1,calls);assertEquals(localId,results.first().page.items.single().id)
+            assertEquals("One search session must correlate local and online results",1,results.map {it.queryId}.distinct().size)
             assertEquals("Frédéric Chopin",results.last().page.items.first().title)
             val onlineId=results.last().page.items.first().id
             assertEquals(setOf(onlineId),results.last().providerEntityIds)

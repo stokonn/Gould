@@ -60,7 +60,7 @@ private fun localDate(timestamp: Long): String = DateTimeFormatter.ofLocalizedDa
     val detailHeight = slot(details,detailStyle)
     val progressHeight = slot(matches.map { it.localizedProgressText },detailStyle)
     LazyVerticalGrid(columns = GridCells.Fixed(columns), modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        item(span = { GridItemSpan(maxLineSpan) }) { Heading(L.s(R.string.msg_the_permanent_collection_1719), L.s(R.string.msg_badges_2c57), L.s(R.string.msg_your_musical_achievements_496e)) }
+        item(span = { GridItemSpan(maxLineSpan) }) { TourAnchor("collection") { Heading(L.s(R.string.msg_the_permanent_collection_1719), L.s(R.string.msg_badges_2c57), L.s(R.string.msg_your_musical_achievements_496e)) } }
         error?.let { message -> item(span = { GridItemSpan(maxLineSpan) }) { CatalogFeedback(message) { model.retryEvaluation() } } }
         item(span = { GridItemSpan(maxLineSpan) }) {
             FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {

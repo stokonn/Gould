@@ -48,6 +48,34 @@ class Stage4SafetyTest {
             assertEquals(2,db.dao().allPieces().size)
         }finally{db.close()}
     }
+    @Test fun deletingAddedPieceDoesNotDeleteItsPublicCatalogueRecord()=runBlocking {
+        val personal=Room.inMemoryDatabaseBuilder(context,OpusDatabase::class.java).addCallback(PersonalCatalogueBridge.callback).build()
+        val publicName="stage4-public-${id()}"
+        val public=CatalogueDatabase.builder(context,publicName).build()
+        try {
+            val work=detail()
+            CatalogueRepository(public).add(work.entity,CatalogueWork(work.entity.id))
+            val linked=CatalogueRepertoire(personal).add(work).single()
+            assertTrue(linked.created)
+            personal.dao().delete(requireNotNull(personal.dao().piece(linked.pieceId)))
+            assertNull(personal.dao().piece(linked.pieceId))
+            assertEquals(work.entity,public.dao().entity(work.entity.id))
+        }finally{personal.close();public.close();context.deleteDatabase(publicName)}
+    }
+    @Test fun addingCatalogueWorkCreatesOnePersonalRepertoireEntry()=runBlocking {
+        val personal=Room.inMemoryDatabaseBuilder(context,OpusDatabase::class.java).addCallback(PersonalCatalogueBridge.callback).build()
+        try {
+            val work=detail()
+            val repository=CatalogueRepertoire(personal)
+            val first=repository.add(work).single()
+            val repeated=repository.add(work).single()
+            assertTrue(first.created)
+            assertFalse(repeated.created)
+            assertEquals(first.pieceId,repeated.pieceId)
+            assertEquals(1,personal.dao().allPieces().size)
+            assertEquals(work.entity.title,personal.dao().piece(first.pieceId)?.title)
+        }finally{personal.close()}
+    }
     @Test fun portableV5RetainsOptionalLinksGroupedSnapshotsUuidAndRawRecoveryWithoutCatalogue()=runBlocking {
         fun database()=Room.inMemoryDatabaseBuilder(context,OpusDatabase::class.java).addCallback(PersonalCatalogueBridge.callback).addCallback(BackupState.callback).build()
         val source=database();val target=database();val key=id()

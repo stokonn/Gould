@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -12,7 +14,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.opus.piano.OpusApplication
 import com.opus.piano.data.CatalogComposer
 import com.opus.piano.i18n.L
 import com.opus.piano.R
@@ -20,7 +21,7 @@ import kotlinx.coroutines.CancellationException
 
 @Composable internal fun ComposerPortrait(composer: CatalogComposer?, modifier: Modifier = Modifier.size(width=44.dp,height=54.dp),
     fallbackIcon: androidx.compose.ui.graphics.vector.ImageVector = Icons.Outlined.PersonOutline, placeholderDescription: String? = null) {
-    val app=LocalContext.current.applicationContext as OpusApplication
+    val app=LocalContext.current.appContainer
     val consent by app.media.cellular.collectAsState()
     var credit by remember(composer?.id) { mutableStateOf<com.opus.piano.data.Portrait?>(null) }
     val bitmap by produceState<android.graphics.Bitmap?>(null,composer?.id,consent) {

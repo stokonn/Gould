@@ -20,6 +20,20 @@ object AppearanceRules {
     val metrics = listOf("today","week","month","streak","sessions","pieces")
     val accents = listOf("Gold","Olive","Rose","Slate")
     val sorts = listOf("Recently practiced","Alphabetical","Composer","Recently added")
+    fun read(prefs: android.content.SharedPreferences): Appearance {
+        fun list(key:String,default:List<String>)=prefs.getString(key,null)?.split(',') ?: default
+        val d=Appearance()
+        return normalize(d.copy(accent=prefs.getString("accent",d.accent)!!,cards=prefs.getString("cards",d.cards)!!,
+            homeSections=list("home",d.homeSections),hiddenHome=list("homeHidden",emptyList()).toSet(),metrics=list("metrics",d.metrics),
+            profileSections=list("profile",d.profileSections),hiddenProfile=list("profileHidden",emptyList()).toSet(),
+            density=prefs.getString("density",d.density)!!,sort=prefs.getString("sort",d.sort)!!))
+    }
+    fun write(prefs: android.content.SharedPreferences, a: Appearance) {
+        check(prefs.edit().putString("accent",a.accent).putString("cards",a.cards).putString("home",a.homeSections.joinToString(","))
+            .putString("homeHidden",a.hiddenHome.joinToString(",")).putString("metrics",a.metrics.joinToString(","))
+            .putString("profile",a.profileSections.joinToString(",")).putString("profileHidden",a.hiddenProfile.joinToString(","))
+            .putString("density",a.density).putString("sort",a.sort).commit())
+    }
     fun order(raw: List<String>, allowed: List<String>) = (raw.filter { it in allowed }.distinct()+allowed).distinct()
     fun normalize(a: Appearance) = a.copy(accent=a.accent.takeIf { it in accents } ?: "Gold",cards=a.cards.takeIf { it in listOf("Soft","Outline","Open") } ?: "Soft",
         homeSections=order(a.homeSections,home),hiddenHome=a.hiddenHome.intersect(home.toSet()),metrics=order(a.metrics,metrics).take(2),
@@ -39,20 +53,12 @@ class AppearanceStore(context: Context) {
     val state=mutable.asStateFlow()
     suspend fun current(): Appearance { loaded.await(); return state.value }
     private val loaded=scope.async { gate.withLock {
-        fun list(key:String,default:List<String>)=prefs.getString(key,null)?.split(',') ?: default
-        val d=Appearance()
-        mutable.value=AppearanceRules.normalize(d.copy(accent=prefs.getString("accent",d.accent)!!,cards=prefs.getString("cards",d.cards)!!,
-            homeSections=list("home",d.homeSections),hiddenHome=list("homeHidden",emptyList()).toSet(),metrics=list("metrics",d.metrics),
-            profileSections=list("profile",d.profileSections),hiddenProfile=list("profileHidden",emptyList()).toSet(),
-            density=prefs.getString("density",d.density)!!,sort=prefs.getString("sort",d.sort)!!))
+        mutable.value=AppearanceRules.read(prefs)
     } }
     fun edit(change: (Appearance)->Appearance) { val expected=generation.get();scope.launch { loaded.await();gate.withLock {
         if(expected!=generation.get()) return@withLock
         val a=AppearanceRules.normalize(change(mutable.value))
-        check(prefs.edit().putString("accent",a.accent).putString("cards",a.cards).putString("home",a.homeSections.joinToString(","))
-            .putString("homeHidden",a.hiddenHome.joinToString(",")).putString("metrics",a.metrics.joinToString(","))
-            .putString("profile",a.profileSections.joinToString(",")).putString("profileHidden",a.hiddenProfile.joinToString(","))
-            .putString("density",a.density).putString("sort",a.sort).commit())
+        AppearanceRules.write(prefs,a)
         mutable.value=a
     } } }
     suspend fun restore(a:Appearance) {

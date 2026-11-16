@@ -23,8 +23,9 @@ fun profilePeriod(sessions: List<PracticeSession>, period: String, today: LocalD
     val from = today.minusDays(when (period) { "Week" -> 6; "Month" -> 29; else -> 364 }.toLong())
     return sessions.filter { AchievementEngine.recordedDay(it, zone) in from..today }
 }
-fun currentPracticeStreak(sessions: List<PracticeSession>, today: LocalDate, zone: ZoneId): Int {
-    val days = sessions.filter(AchievementEngine::valid).map { AchievementEngine.recordedDay(it, zone) }.toSet()
+fun currentPracticeStreak(sessions: List<PracticeSession>, today: LocalDate, zone: ZoneId, manualEntries: List<ManualActivityEntry> = emptyList()): Int {
+    val days = sessions.filter(AchievementEngine::valid).map { AchievementEngine.recordedDay(it, zone) }.toSet() +
+        manualEntries.mapNotNull { runCatching { LocalDate.parse(it.activityDay) }.getOrNull() }.filter { it <= today }
     var day = if (today in days) today else today.minusDays(1)
     var count = 0
     while (day in days) { count++; day = day.minusDays(1) }

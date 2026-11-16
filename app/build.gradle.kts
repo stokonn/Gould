@@ -6,8 +6,9 @@ plugins {
 android {
     namespace = "com.opus.piano"
     compileSdk = 37
-    defaultConfig { applicationId = "com.opus.piano"; minSdk = 30; targetSdk = 37; versionCode = 16; versionName = if (providers.gradleProperty("goldbergStable").orNull == "true") "0.14.0" else "0.14.0-dev"; testInstrumentationRunner = if (providers.gradleProperty("goldbergStage8Probe").orNull == "true") "com.opus.piano.Stage8bAssessmentProbe" else "androidx.test.runner.AndroidJUnitRunner" }
+    defaultConfig { applicationId = "com.opus.piano"; minSdk = 30; targetSdk = 37; versionCode = 17; versionName = if (providers.gradleProperty("goldbergStable").orNull == "true") "0.15.0" else "0.15.0-dev"; testInstrumentationRunner = if (providers.gradleProperty("goldbergStage8Probe").orNull == "true") "com.opus.piano.Stage8bAssessmentProbe" else "androidx.test.runner.AndroidJUnitRunner" }
     buildFeatures { compose = true }
+    androidResources { noCompress += "dbz" }
     // Shared synthetic contract corpus is available to JVM tests only, never the APK.
     sourceSets.getByName("test").resources.srcDir("../contracts/admin/v1")
     if (providers.gradleProperty("goldbergCanonicalIntegration").orNull == "true")
@@ -50,6 +51,7 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.12.0")
     ksp("androidx.room:room-compiler:2.7.2")
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
     // Test-only real org.json so JVM unit tests can execute the manifest codec; the
     // Android mockable jar stubs org.json and throws "not mocked". Not shipped in the APK.
     testImplementation("org.json:json:20240303")

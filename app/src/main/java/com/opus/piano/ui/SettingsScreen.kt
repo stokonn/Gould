@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import com.opus.piano.i18n.L
 import com.opus.piano.R
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -25,7 +27,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
     androidx.activity.compose.BackHandler(page.isNotEmpty()) { page="" }
     val context = androidx.compose.ui.platform.LocalContext.current
     val local by profile.local.collectAsStateWithLifecycle()
-    val app=context.applicationContext as com.opus.piano.OpusApplication
+    val app=context.appContainer
     val scope=rememberCoroutineScope()
     val restoreState by profile.restoreState.collectAsStateWithLifecycle()
     val metered by app.media.cellular.collectAsStateWithLifecycle()
@@ -51,7 +53,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
     LaunchedEffect(Unit) { profile.measureCache() }
     replaceIdentity?.let {kind -> AlertDialog(onDismissRequest={replaceIdentity=null},title={Text(L.s(if(kind=="name") R.string.ui010_google_name else R.string.ui010_google_photo))},text={Text(L.s(R.string.ui010_identity_confirm))},confirmButton={JournalTextButton(onClick={if(kind=="name") profile.useGoogleName() else profile.replaceGooglePhoto();replaceIdentity=null}) {Text(L.s(R.string.ui010_apply))}},dismissButton={JournalTextButton(onClick={replaceIdentity=null}) {Text(L.s(R.string.ui010_keep_local))}})}
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        item { CatalogBack(if(page.isEmpty()) L.s(R.string.msg_settings_c7f7) else if(page=="Community drafts") L.s(R.string.community_local_title) else page) { if(page.isEmpty()) back() else page="" } }
+        item { if(page.isEmpty()) TourAnchor("settings") { CatalogBack(L.s(R.string.msg_settings_c7f7)) { back() } }
+            else CatalogBack(if(page=="Community drafts") L.s(R.string.community_local_title) else page) { page="" } }
         if(page.isEmpty()) {
             listOf(
                 R.string.google_account to listOf("Google"),

@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.Image
 import androidx.compose.ui.graphics.asImageBitmap
@@ -24,19 +26,28 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.opus.piano.OpusApplication
 import com.opus.piano.R
 import com.opus.piano.i18n.L
 import com.opus.piano.data.catalogue.*
 import com.opus.piano.data.catalogue.providers.SourceState
 import kotlinx.coroutines.*
 
+internal fun artistWorkProjection(rows:List<CatalogueEntity>,workTypes:Map<String,String>,selectedType:String,descending:Boolean):List<CatalogueEntity> =
+    rows.filter {selectedType=="All" || workTypes[it.id]==selectedType}.sortedWith(
+        if(descending) compareByDescending<CatalogueEntity>{SearchText.normalize(it.title)}.thenBy {it.id}
+        else compareBy<CatalogueEntity>({SearchText.normalize(it.title)},{it.id})
+    )
+
 /** Nav-entry memory only. Queries survive detail/Back and recreation, never process storage. */
 internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     var query by mutableStateOf("")
 }
-@Composable internal fun DiscoverScreen(open:(String)->Unit,openPiece:(Long)->Unit,openCatalogWork:(String)->Unit,library:LibraryState,repository:DiscoverRepository?=null) {
-    val app=LocalContext.current.applicationContext as OpusApplication
+private sealed interface DiscoverSearchUpdate {
+    data class Landing(val page:CatalogueSearchPage):DiscoverSearchUpdate
+    data class Results(val search:DiscoverSearch):DiscoverSearchUpdate
+}
+@Composable internal fun DiscoverScreen(open:(String)->Unit,openPiece:(Long)->Unit,openCatalogWork:(String)->Unit,library:LibraryState,repository:DiscoverRepository?=null,embedded:Boolean=false,modifier:Modifier=Modifier) {
+    val app=LocalContext.current.appContainer
     val discover=repository ?: app.discover
     // Raw catalogue queries are transient; exclude them from persisted saved state.
     val session:DiscoverSearchSession=androidx.lifecycle.viewmodel.compose.viewModel()
@@ -51,19 +62,18 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     var artistId by rememberSaveable {mutableStateOf<String?>(null)}
     var period by rememberSaveable {mutableStateOf<String?>(null)}
     var availableFilters by remember {mutableStateOf(DiscoverFilters())}
+    var supportError by remember {mutableStateOf(false)}
+    var supportRetry by remember {mutableIntStateOf(0)}
     var filtersExpanded by rememberSaveable {mutableStateOf(false)}
     var artistMenu by remember {mutableStateOf(false)}
     var periodMenu by remember {mutableStateOf(false)}
     var paging by remember {mutableStateOf(false)}
     var pageJob by remember {mutableStateOf<Job?>(null)}
     var searchEpoch by remember {mutableLongStateOf(0L)}
+    val searchLifecycle=remember {DiscoverSearchLifecycle()}
     var limitReached by remember {mutableStateOf(false)}
     val filter=SearchFilter(category,artistId,period)
-    val searchKey=listOf(query,category,artistId,period,active.toString(),catalogOnline.toString())
-    val currentSearchKey by rememberUpdatedState(searchKey)
     var rows by remember {mutableStateOf(emptyList<CatalogueEntity>())}
-    var initialLocalIds by remember {mutableStateOf(emptySet<String>())}
-    var providerEntityIds by remember {mutableStateOf(emptySet<String>())}
     var recent by remember {mutableStateOf(emptyList<CatalogueEntity>())}
     var workTypes by remember {mutableStateOf(emptyMap<String,String>())}
     var rowInfo by remember {mutableStateOf(emptyMap<String,CatalogueRowInfo>())}
@@ -77,28 +87,91 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
     var revision by remember {mutableIntStateOf(0)}
     var cacheBytes by remember {mutableLongStateOf(0L)}
     var historyEnabled by remember {mutableStateOf(app.discoverHistory.enabled)}
+    var renderStartedAt by remember {mutableLongStateOf(0L)}
+    var renderReported by remember {mutableStateOf(false)}
+    var performanceSessionId by remember {mutableStateOf("startup")}
+    var categorySwitchStartedAt by remember {mutableLongStateOf(0L)}
     val scope=rememberCoroutineScope()
     val language=LocalConfiguration.current.locales[0].language.let {if(it=="cs")"cs" else "en"}
+    val searchKey=listOf(query,category,artistId,period,active.toString(),catalogOnline.toString(),revision.toString(),language)
+    val currentSearchKey by rememberUpdatedState(searchKey)
+    val recentTitleStyle=MaterialTheme.typography.titleSmall
+    val recentTitleMeasurer=androidx.compose.ui.text.rememberTextMeasurer()
+    val recentTitleHeight=with(androidx.compose.ui.platform.LocalDensity.current) {
+        val width=130.dp.roundToPx()
+        recent.maxOfOrNull { entity ->
+            recentTitleMeasurer.measure(shownTitle(entity.kind,entity.title),recentTitleStyle,
+                constraints=androidx.compose.ui.unit.Constraints(maxWidth=width),maxLines=2,overflow=TextOverflow.Ellipsis).size.height
+        }?.toDp() ?: 0.dp
+    }
     LaunchedEffect(query,category,artistId,period,active,catalogOnline,revision,language) {
-        pageJob?.cancel();searchEpoch++;paging=false;limitReached=false;sources=emptyList();candidates=emptyList()
-        error=false;loading=true;rows=emptyList();initialLocalIds=emptySet();providerEntityIds=emptySet()
-        cacheBytes=app.providerCache.bytes()
-        try {
-            if(!active) {val page=discover.landing();rows=page.items;workTypes=page.workTypes;rowInfo=page.rowInfo;cursor=null;sources=emptyList()}
-            else {
-                var initial:List<CatalogueEntity>?=null
-                discover.automaticSearch(query,filter,language,catalogOnline).collect {result->
-                    if(initial==null){initial=result.page.items;initialLocalIds=result.page.items.map {it.id}.toSet()}
-                    rows=(initial.orEmpty()+result.page.items.filterNot {it.id in initialLocalIds}).take(500)
-                    providerEntityIds=result.providerEntityIds
+        val sessionId=java.util.UUID.randomUUID().toString()
+        val requestKey=searchKey
+        val performanceContext=com.opus.piano.data.catalogue.CataloguePerformance.Context(sessionId,"local",category)
+        searchLifecycle.run(
+            onStart={request->
+                performanceSessionId=sessionId
+                renderStartedAt=com.opus.piano.data.catalogue.CataloguePerformance.start()
+                renderReported=false
+                pageJob?.cancel();searchEpoch=request;paging=false;limitReached=false;sources=emptyList();candidates=emptyList()
+                error=false;loading=true;rows=emptyList();workTypes=emptyMap();rowInfo=emptyMap()
+            },
+            execute={emit->
+                val bytes=com.opus.piano.data.catalogue.CataloguePerformance.measureSuspend("discover_provider_cache_measure",context=performanceContext) {app.providerCache.bytes()}
+                if(currentSearchKey==requestKey)cacheBytes=bytes
+                if(!active)emit(DiscoverSearchUpdate.Landing(discover.landing(sessionId)))
+                else discover.automaticSearch(query,filter,language,catalogOnline,sessionId).collect {result->
+                    emit(DiscoverSearchUpdate.Results(result))
+                }
+            },
+            onResult={_,update->if(currentSearchKey==requestKey)when(update) {
+                is DiscoverSearchUpdate.Landing->{rows=update.page.items;workTypes=update.page.workTypes;rowInfo=update.page.rowInfo;cursor=null;sources=emptyList()}
+                is DiscoverSearchUpdate.Results->{val result=update.search
+                    rows=(rows+result.page.items).distinctBy {it.id}.take(500)
                     workTypes=workTypes+result.page.workTypes;rowInfo=rowInfo+result.page.rowInfo;cursor=result.continuation;sources=result.sources
                     candidates=result.candidates;limitReached=result.limitReached
                 }
+            }},
+            onFailure={_,_->if(currentSearchKey==requestKey)error=true},
+            onFinish={_->if(currentSearchKey==requestKey) {
+                loading=false
+                com.opus.piano.data.catalogue.CataloguePerformance.event(
+                    "discover_search_completed","outcome=${if(error)"error" else if(rows.isEmpty())"empty" else "results"} result_count=${rows.size}",performanceContext
+                )
+            }}
+        )
+    }
+    LaunchedEffect(discover,supportRetry) {
+        val context=com.opus.piano.data.catalogue.CataloguePerformance.Context(performanceSessionId,"support",category)
+        supportError=false
+        try {
+            availableFilters=discover.filters(context)
+            val opened=com.opus.piano.data.catalogue.CataloguePerformance.measureSuspend("discover_history_load",context=context) {
+                withContext(Dispatchers.IO){app.discoverHistory.entries().mapNotNull {id->(discover.detail(id) as? CatalogueAccess.Available)?.value}}
             }
-            availableFilters=discover.filters()
-            val opened=withContext(Dispatchers.IO){app.discoverHistory.entries().mapNotNull {id->(discover.detail(id) as? CatalogueAccess.Available)?.value}}
+            com.opus.piano.data.catalogue.CataloguePerformance.event("discover_history_results","outcome=ok result_count=${opened.size}",context)
             recent=opened.map {it.entity};recentTypes=opened.mapNotNull {detail->detail.workType?.let {detail.entity.id to it}}.toMap()
-        } catch(e:CancellationException){throw e} catch(_:Exception){error=true} finally {loading=false}
+        } catch(e:CancellationException){throw e} catch(_:Exception){supportError=true}
+    }
+    LaunchedEffect(rows,loading,error,active,performanceSessionId,category) {
+        if(renderStartedAt!=0L && !renderReported && (rows.isNotEmpty() || !loading)) {
+            withFrameNanos { }
+            val context=com.opus.piano.data.catalogue.CataloguePerformance.Context(
+                performanceSessionId,if(sources.isEmpty())"local" else "local_online",category
+            )
+            com.opus.piano.data.catalogue.CataloguePerformance.finish(
+                if(embedded)"library_catalogue_result_frame" else "discover_result_frame",
+                renderStartedAt,"outcome=${if(error)"error" else if(rows.isEmpty())"empty" else "results"} result_count=${rows.size}",context
+            )
+            renderReported=true
+            if(categorySwitchStartedAt!=0L) {
+                com.opus.piano.data.catalogue.CataloguePerformance.finish(
+                    "catalogue_category_switch_first_frame",categorySwitchStartedAt,
+                    "outcome=${if(error)"error" else if(rows.isEmpty())"empty" else "results"} result_count=${rows.size}",context
+                )
+                categorySwitchStartedAt=0L
+            }
+        }
     }
     // "Available offline" shows only genuinely local content: the user's catalogue-linked
     // repertoire plus locally cached catalogue works. Stage 5 bundles ship no management UI yet,
@@ -114,8 +187,8 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
             worksById[piece.catalogWorkId]?.catalogLabel.orEmpty(),piece.id,piece.catalogWorkId ?: "",composersById[worksById[piece.catalogWorkId]?.composerId])}+
             cached.map {work->OfflineRow(work.title,composersById[work.composerId]?.name.orEmpty(),work.catalogLabel,null,work.id,composersById[work.composerId])}
     }
-    LazyColumn(contentPadding=PaddingValues(20.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {
-        item {
+    LazyColumn(modifier.fillMaxSize(),contentPadding=PaddingValues(if(embedded)12.dp else 20.dp),verticalArrangement=Arrangement.spacedBy(if(embedded)8.dp else 12.dp)) {
+        if(!embedded)item {
             // Stage 7A round 3 (owner): header row with the privacy affordance in the
             // upper-right, browser site-information style. The persistent privacy card
             // below the search field is removed; the same truthful disclosure opens as a
@@ -136,12 +209,15 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
                 }
             }
         }
-        item {EditorialSearchField(query,{session.query=it;active=true})}
+        item {EditorialSearchField(query,{searchEpoch=searchLifecycle.invalidate();session.query=it;active=true})}
         if(active && !catalogOnline)item {
             Text(L.s(R.string.stage7a_online_off_hint),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
         }
         item {LazyRow(horizontalArrangement=Arrangement.spacedBy(JournalSpace.tiny),contentPadding=PaddingValues(horizontal=JournalSpace.small)) {
-            items(listOf("all","works","artists","albums","lists")) {key->CategoryTile(key,category==key){category=key;active=true}}
+            items(listOf("all","works","artists","albums","lists")) {key->CategoryTile(key,category==key){
+                if(category!=key)categorySwitchStartedAt=com.opus.piano.data.catalogue.CataloguePerformance.start()
+                searchEpoch=searchLifecycle.invalidate();category=key;active=true
+            }}
         }}
         if(availableFilters.artists.isNotEmpty() || availableFilters.periods.isNotEmpty())item {
             TextButton({filtersExpanded=!filtersExpanded}){Text(L.s(R.string.discover_filters))}
@@ -149,41 +225,37 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
                 Box {
                     TextButton({artistMenu=true}){Text(availableFilters.artists.firstOrNull {it.id==artistId}?.let {shownTitle("artist",it.title)} ?: L.s(R.string.discover_any_artist))}
                     DropdownMenu(artistMenu,{artistMenu=false}) {
-                        DropdownMenuItem(text={Text(L.s(R.string.discover_any_artist))},onClick={artistId=null;artistMenu=false;active=true})
-                        availableFilters.artists.forEach {artist->DropdownMenuItem(text={Text(shownTitle("artist",artist.title))},onClick={artistId=artist.id;artistMenu=false;active=true})}
+                        DropdownMenuItem(text={Text(L.s(R.string.discover_any_artist))},onClick={searchEpoch=searchLifecycle.invalidate();artistId=null;artistMenu=false;active=true})
+                        availableFilters.artists.forEach {artist->DropdownMenuItem(text={Text(shownTitle("artist",artist.title))},onClick={searchEpoch=searchLifecycle.invalidate();artistId=artist.id;artistMenu=false;active=true})}
                     }
                 }
                 Box {
                     TextButton({periodMenu=true}){Text(period ?: L.s(R.string.discover_any_period))}
                     DropdownMenu(periodMenu,{periodMenu=false}) {
-                        DropdownMenuItem(text={Text(L.s(R.string.discover_any_period))},onClick={period=null;periodMenu=false;active=true})
-                        availableFilters.periods.forEach {value->DropdownMenuItem(text={Text(value)},onClick={period=value;periodMenu=false;active=true})}
+                        DropdownMenuItem(text={Text(L.s(R.string.discover_any_period))},onClick={searchEpoch=searchLifecycle.invalidate();period=null;periodMenu=false;active=true})
+                        availableFilters.periods.forEach {value->DropdownMenuItem(text={Text(value)},onClick={searchEpoch=searchLifecycle.invalidate();period=value;periodMenu=false;active=true})}
                     }
                 }
             }
         }
         if(loading && rows.isEmpty())item {LinearProgressIndicator(Modifier.fillMaxWidth())}
-        if(error)item {Text(L.s(R.string.discover_error));TextButton({revision++}){Text(L.s(R.string.discover_retry))}}
+        if(error)item {Text(L.s(R.string.discover_error));TextButton({searchEpoch=searchLifecycle.invalidate();revision++}){Text(L.s(R.string.discover_retry))}}
+        if(supportError)item {Text(L.s(R.string.discover_support_unavailable));TextButton({supportRetry++}){Text(L.s(R.string.discover_retry))}}
         val sourceFailure=sources.any {it.state !in setOf(SourceState.FRESH,SourceState.CACHED) || it.refreshState!=null}
         // Stage 7A (owner): never claim "no local content" on the landing screen while the
         // "Available offline" rows below show real local results — only a search with no
         // matches shows this.
         if(active && rows.isEmpty() && !loading)item {Text(L.s(R.string.discover_empty))}
-        val localRows=rows.filter {it.id in initialLocalIds || it.id !in providerEntityIds}
-        val onlineRows=rows.filter {it.id !in initialLocalIds && it.id in providerEntityIds}
-        if(active && localRows.isNotEmpty())item {EditorialSectionHeader(L.s(R.string.discover_local_results))}
-        items(if(active)localRows else rows,key={it.id}) {entity->CatalogueRow(entity,workTypes[entity.id],rowInfo[entity.id]){open(entity.id)}}
+        items(rows,key={it.id}) {entity->CatalogueRow(entity,workTypes[entity.id],rowInfo[entity.id]){open(entity.id)}}
         if(active && catalogOnline && query.trim().length>=2) {
-            item {EditorialSectionHeader(L.s(R.string.discover_online_results))}
             if(loading)item {LinearProgressIndicator(Modifier.fillMaxWidth())}
             if(sourceFailure)item {
                 val unavailableConnection=sources.any {it.error=="network_policy"}
                 Text(L.s(if(unavailableConnection)R.string.discover_connection_unavailable else R.string.discover_source_warning),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
                 TextButton(enabled=!loading,onClick={revision++}){Text(L.s(R.string.discover_retry))}
             }
-            if(!loading && !sourceFailure && onlineRows.isEmpty())item {Text(L.s(R.string.discover_no_additional_results),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
+            if(!loading && !sourceFailure && rows.isEmpty())item {Text(L.s(R.string.discover_no_additional_results),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
         }
-        items(onlineRows,key={it.id}) {entity->CatalogueRow(entity,workTypes[entity.id],rowInfo[entity.id]){open(entity.id)}}
         val unresolved=candidates.filterNot {candidate->rows.any {it.id==candidate.id}}
         if(unresolved.isNotEmpty())item {EditorialSectionHeader(L.s(R.string.discover_results_to_check),L.s(R.string.discover_candidate))}
         items(unresolved,key={"candidate:"+it.id}) {candidate->
@@ -198,7 +270,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
                 try {
                     val result=discover.continueSearch(requestedQuery,requestedFilter,language,requestedOnline,next)
                     val page=result.page
-                    if(searchEpoch==requestedEpoch && currentSearchKey==requestedKey){rows=(rows+page.items).distinctBy {it.id};workTypes=workTypes+page.workTypes;rowInfo=rowInfo+page.rowInfo;cursor=result.continuation;candidates=(candidates+result.candidates).distinctBy {it.id};sources=result.sources;providerEntityIds=providerEntityIds+result.providerEntityIds;limitReached=result.limitReached}
+                    if(searchEpoch==requestedEpoch && currentSearchKey==requestedKey){rows=(rows+page.items).distinctBy {it.id};workTypes=workTypes+page.workTypes;rowInfo=rowInfo+page.rowInfo;cursor=result.continuation;candidates=(candidates+result.candidates).distinctBy {it.id};sources=result.sources;limitReached=result.limitReached}
                 } catch(e:CancellationException){throw e}catch(_:Exception){if(searchEpoch==requestedEpoch && currentSearchKey==requestedKey){cursor=null;error=true}}
                 finally {if(searchEpoch==requestedEpoch && currentSearchKey==requestedKey)paging=false}
             }
@@ -207,11 +279,11 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
             item {EditorialSectionHeader(L.s(R.string.stage7a_recently_viewed))}
             item {LazyRow(horizontalArrangement=Arrangement.spacedBy(JournalSpace.tiny),contentPadding=PaddingValues(horizontal=JournalSpace.small)) {
                 items(recent,key={"recent:"+it.id}) {entity->
-                    RecentCard(entity,recentTypes[entity.id],{open(entity.id)}) {scope.launch {withContext(Dispatchers.IO){app.discoverHistory.remove(entity.id)};recent=recent.filterNot {it.id==entity.id}}}
+                    RecentCard(entity,recentTypes[entity.id],recentTitleHeight,{open(entity.id)}) {scope.launch {withContext(Dispatchers.IO){app.discoverHistory.remove(entity.id)};recent=recent.filterNot {it.id==entity.id}}}
                 }
             }}
         }
-        if(!active && offlineRows.isNotEmpty()) {
+        if(!embedded && !active && offlineRows.isNotEmpty()) {
             item {EditorialSectionHeader(L.s(R.string.stage7a_available_offline),L.s(R.string.stage7a_offline_subtitle))}
             items(offlineRows,key={"offline:"+(it.pieceId ?: it.workId)}) {row->
                 OfflineRowCard(row) {if(row.pieceId!=null) openPiece(row.pieceId) else openCatalogWork(row.workId)}
@@ -274,7 +346,7 @@ private class OfflineRow(val title:String,val composer:String,val meta:String,va
         }
     }
 }
-@Composable private fun RecentCard(entity:CatalogueEntity,workType:String?,open:()->Unit,remove:()->Unit) {
+@Composable private fun RecentCard(entity:CatalogueEntity,workType:String?,titleHeight: androidx.compose.ui.unit.Dp,open:()->Unit,remove:()->Unit) {
     Surface(onClick=open,shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surface) {
         Column(Modifier.width(150.dp)) {
             Box(Modifier.fillMaxWidth().height(88.dp)) {
@@ -283,7 +355,9 @@ private class OfflineRow(val title:String,val composer:String,val meta:String,va
                 IconButton(onClick=remove,modifier=Modifier.align(Alignment.TopEnd).size(32.dp)) {Icon(Icons.Outlined.Close,L.s(R.string.discover_remove),Modifier.size(16.dp),tint=MaterialTheme.colorScheme.onSurfaceVariant)}
             }
             Column(Modifier.padding(start=10.dp,end=10.dp,top=8.dp,bottom=10.dp),verticalArrangement=Arrangement.spacedBy(2.dp)) {
-                Text(shownTitle(entity.kind,entity.title),style=MaterialTheme.typography.titleSmall,maxLines=2,overflow=TextOverflow.Ellipsis)
+                Box(Modifier.fillMaxWidth().height(titleHeight),contentAlignment=Alignment.CenterStart) {
+                    Text(shownTitle(entity.kind,entity.title),style=MaterialTheme.typography.titleSmall,maxLines=2,overflow=TextOverflow.Ellipsis)
+                }
                 Row(verticalAlignment=Alignment.CenterVertically) {
                     Text(kindLabel(workType ?: entity.kind),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant,modifier=Modifier.weight(1f),maxLines=1,overflow=TextOverflow.Ellipsis)
                     Icon(Icons.Outlined.ChevronRight,null,Modifier.size(16.dp),tint=MaterialTheme.colorScheme.onSurfaceVariant)
@@ -309,7 +383,7 @@ private fun categoryIcon(key:String)=when(key){"works","work","arrangement"->Ico
     }
 }
 @Composable internal fun DiscoverDetailScreen(id:String,back:()->Unit,open:(String)->Unit,openPiece:(Long)->Unit) {
-    val app=LocalContext.current.applicationContext as OpusApplication
+    val app=LocalContext.current.appContainer
     val scope=rememberCoroutineScope();val uri=LocalUriHandler.current
     val language=LocalConfiguration.current.locales[0].language.let {if(it=="cs")"cs" else "en"}
     var supplementSources by remember {mutableStateOf(emptyList<SearchSource>())}
@@ -322,6 +396,13 @@ private fun categoryIcon(key:String)=when(key){"works","work","arrangement"->Ico
     var notice by remember {mutableStateOf<String?>(null)}
     var existingPiece by remember {mutableStateOf<Long?>(null)}
     var portraitSnapshot by remember(id){mutableStateOf<com.opus.piano.data.catalogue.CataloguePortraits.Snapshot?>(null)}
+    var artistQuery by rememberSaveable(id){mutableStateOf("")}
+    var artistWorks by remember(id){mutableStateOf<CatalogueSearchPage?>(null)}
+    var artistWorksLoading by remember(id){mutableStateOf(false)}
+    var artistWorksError by remember(id){mutableStateOf(false)}
+    var artistRetry by remember(id){mutableIntStateOf(0)}
+    var artistSort by rememberSaveable(id){mutableStateOf("Title A–Z")}
+    var artistType by rememberSaveable(id){mutableStateOf("All")}
     val portrait=portraitSnapshot?.bitmap
     val portraitCredit=portraitSnapshot?.credits
     var creditsExpanded by rememberSaveable(id){mutableStateOf(false)}
@@ -344,6 +425,14 @@ private fun categoryIcon(key:String)=when(key){"works","work","arrangement"->Ico
     LaunchedEffect(id) {
         detail=(app.discover.detail(id) as? CatalogueAccess.Available)?.value;candidate=if(detail==null)app.discover.candidate(id) else null;loaded=true
         if(detail!=null){existingPiece=app.catalogueRepertoire.existingPiece(detail!!);val canonical=detail!!.entity.id;withContext(Dispatchers.IO){app.discoverHistory.opened(id)};portraitSnapshot=app.cataloguePortraits.snapshot(canonical)}
+    }
+    LaunchedEffect(id,detail?.entity?.kind,artistQuery,artistRetry) {
+        val artist=detail?.entity?.takeIf {it.kind=="artist"} ?: return@LaunchedEffect
+        artistWorks=null;artistWorksError=false;artistWorksLoading=true
+        try {artistWorks=app.discover.page(artistQuery,SearchFilter("works",artist.id),null)}
+        catch(e:CancellationException){throw e}
+        catch(_:Exception){artistWorksError=true}
+        finally {artistWorksLoading=false}
     }
     val presentation by produceState<CataloguePresentation.Prepared?>(null,detail,language) {
         value=detail?.let {withContext(Dispatchers.Default){CataloguePresentation.prepare(it,language)}}
@@ -376,6 +465,27 @@ private fun categoryIcon(key:String)=when(key){"works","work","arrangement"->Ico
             val metadata=essentials.filterNot {it.field in setOf("description","subtitle")}
             if(metadata.isNotEmpty())item {EditorialMetadata(metadata.take(3).map {essentialValue(it) to fieldLabel(it.field)})}
 
+            if(data.entity.kind=="artist") {
+                item {EditorialSectionHeader(L.s(R.string.discover_artist_works),L.s(R.string.discover_artist_works_scope))}
+                item {OutlinedTextField(artistQuery,{artistQuery=it.take(256)},Modifier.fillMaxWidth(),singleLine=true,
+                    label={Text(L.s(R.string.msg_find_a_composition_bfc2))},trailingIcon={if(artistQuery.isNotEmpty())IconButton({artistQuery=""}){Icon(Icons.Outlined.Close,L.s(R.string.msg_clear_search_6730))}})}
+                val types=artistWorks?.workTypes.orEmpty().values.filter {it.isNotBlank()}.distinct().sorted()
+                if(types.isNotEmpty())item {Choice(L.s(R.string.discover_work_type),listOf("All") + types,artistType,translateOptions=false){artistType=it}}
+                val sortOptions=listOf(L.s(R.string.artist_sort_title_az),L.s(R.string.artist_sort_title_za))
+                item {Choice(L.s(R.string.msg_sort_adc4),sortOptions,sortOptions[if(artistSort=="za")1 else 0],translateOptions=false){artistSort=if(it==sortOptions[1])"za" else "az"}}
+                item {TextButton(onClick={artistQuery="";artistType="All";artistSort="az"}){Text(L.s(R.string.artist_reset_filters))}}
+                val matchingWorks=artistWorks?.let {artistWorkProjection(it.items,it.workTypes,artistType,artistSort=="za")}.orEmpty()
+                if(artistWorksLoading && artistWorks==null)item {LinearProgressIndicator(Modifier.fillMaxWidth())}
+                if(artistWorksError)item {Text(L.s(R.string.discover_error));TextButton({artistRetry++}){Text(L.s(R.string.discover_retry))}}
+                if(!artistWorksLoading && !artistWorksError && matchingWorks.isEmpty())item {Text(L.s(R.string.discover_artist_works_empty),color=MaterialTheme.colorScheme.onSurfaceVariant)}
+                items(matchingWorks,key={"artist-work:"+it.id}) {work->CatalogueRow(work,artistWorks?.workTypes?.get(work.id)){open(work.id)}}
+                artistWorks?.nextCursor?.let {nextCursor->item {JournalSecondaryButton(enabled=!artistWorksLoading,onClick={scope.launch {
+                    val previous=artistWorks ?: return@launch;val requestedQuery=artistQuery;artistWorksLoading=true
+                    try {val next=app.discover.page(requestedQuery,SearchFilter("works",data.entity.id),nextCursor);if(artistQuery==requestedQuery && detail?.entity?.id==data.entity.id)artistWorks=next.copy(items=(previous.items+next.items).distinctBy {it.id},workTypes=previous.workTypes+next.workTypes,rowInfo=previous.rowInfo+next.rowInfo)}
+                    catch(e:CancellationException){throw e}catch(_:Exception){notice=L.s(R.string.discover_error)}finally{artistWorksLoading=false}
+                }}){Text(L.s(R.string.discover_more_works))}}}
+            }
+
             if(presentation?.conflicts?.isNotEmpty()==true)item {Text(L.s(R.string.discover_conflict_notice))}
             if(data.entity.kind in setOf("work","arrangement") && data.identities.any {it.reviewState=="reviewed"}) {
                 val parts=data.relationships.filter {it.first.type=="part" && it.first.toId==data.entity.id}
@@ -403,7 +513,7 @@ private fun categoryIcon(key:String)=when(key){"works","work","arrangement"->Ico
             if(notice!=null)existingPiece?.let {piece->item {TextButton({openPiece(piece)}){Text(L.s(R.string.discover_open_existing))}}}
             val related=data.relationships.distinctBy {Triple(it.first.type,it.first.role,it.second.id)}.filterNot {
                 it.first.type=="credit" && it.first.role=="composer" && it.first.fromId==data.entity.id
-            }
+            }.filterNot {data.entity.kind=="artist" && it.second.kind in setOf("work","arrangement")}
             related.groupBy {it.second.kind=="artist"}.forEach {(people,edges)->
                 item {EditorialSectionHeader(L.s(if(people)R.string.discover_related_people else R.string.discover_related_music))}
                 items(edges,key={"edge:"+it.first.id}) {(_,entity)->CatalogueRow(entity,data.workTypes[entity.id]){open(entity.id)}}
@@ -500,7 +610,7 @@ private fun fieldLabel(key:String)=L.s(when(key) {
     "catalogue","catalogue_number"->R.string.discover_field_catalogue;"epoch"->R.string.discover_field_period;"genre"->R.string.discover_field_genre
     "birth"->R.string.discover_field_birth;"death"->R.string.discover_field_death;"durationMillis"->R.string.discover_field_duration
     "country"->R.string.discover_field_country;"date","first-release-date"->R.string.discover_field_date;"type","primary-type"->R.string.discover_field_type
-    "sort-name"->R.string.discover_field_sort_name;"listening_url"->R.string.discover_listen
+    "sort-name"->R.string.discover_field_sort_name;"disambiguation"->R.string.discover_field_disambiguation;"listening_url"->R.string.discover_listen
     else->R.string.discover_field_evidence
 })
 private fun kindLabel(key:String)=L.s(when(key){"work","composition"->R.string.discover_work;"movement"->R.string.discover_movement;"part"->R.string.discover_part;"medley"->R.string.discover_medley;"mashup"->R.string.discover_mashup;"arrangement"->R.string.discover_arrangement;"artist"->R.string.discover_artist;"album"->R.string.discover_album;"release"->R.string.discover_release;"recording"->R.string.discover_recording;"collection"->R.string.discover_collection;else->R.string.discover_unknown_entity})

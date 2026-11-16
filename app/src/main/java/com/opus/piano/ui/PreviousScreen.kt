@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import com.opus.piano.i18n.L
 import com.opus.piano.R
 import android.media.MediaPlayer
@@ -23,7 +25,6 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.opus.piano.OpusApplication
 import com.opus.piano.data.*
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
@@ -52,7 +53,7 @@ import java.io.File
 
 /** Practice History tab: bounded keyset paging, same data as the standalone history route. */
 @Composable private fun PracticeHistoryTab() {
-    val dao = (LocalContext.current.applicationContext as OpusApplication).database.practiceDao()
+    val dao = (LocalContext.current.appContainer).database.practiceDao()
     var sessions by remember { mutableStateOf<List<PracticeSession>>(emptyList()) }
     var parts by remember { mutableStateOf<Map<Long, List<SessionPart>>>(emptyMap()) }
     var request by remember { mutableIntStateOf(0) }
@@ -85,8 +86,8 @@ import java.io.File
 /** Bounded keyset pages; foreground lifecycle-owned playback and explicit recovery. */
 @Composable private fun RecordingsTab() {
     data class RecordingDetails(val originalAvailable: Boolean, val associations: List<LocalAudioPart>, val session: PracticeSession?)
-    val app = LocalContext.current.applicationContext as OpusApplication
-    val repository = remember { LocalRecordingRepository(app.database, File(app.filesDir,"recordings")) }
+    val app = LocalContext.current.appContainer
+    val repository = remember { LocalRecordingRepository(app.database, File(app.context.filesDir,"recordings")) }
     val player = app.localPlayback
     val playback by player.state.collectAsState()
     val owner = androidx.lifecycle.compose.LocalLifecycleOwner.current
@@ -160,7 +161,7 @@ import java.io.File
             busy = true
             try {
                 withContext(Dispatchers.IO) {
-                    requireNotNull(app.contentResolver.openOutputStream(uri,"wt")).use { repository.exportOriginal(item.id,it) }
+                    requireNotNull(app.context.contentResolver.openOutputStream(uri,"wt")).use { repository.exportOriginal(item.id,it) }
                 }
                 operationFailed = false
             } catch (c: CancellationException) { throw c }
