@@ -156,6 +156,32 @@ checks PASS. Fast checks (10 policy scripts, 4 unit suites, curated-APK
 payload on the published artifact, schema immutability, `git diff --check`)
 all PASS; logs in `.gould-015-verification-tmp/`.
 
-**Publication record** (PR URL, merge commit, tag, prerelease URL, asset
-digests, final verification) is appended after execution in the post-release
-documentation commit on `main`, mirroring the 0.14.0 practice.
+**Publication record** (executed 2026-11-16, verified; appended in the
+post-release documentation commit on `main`):
+
+- PR: <https://github.com/stokonn/Gould/pull/53> (all three CI workflows
+  passed on the PR: host-quality, synthetic-postgres, administration-safety).
+- Merge: regular merge commit
+  `06282c5aad4887b472373e925e6ead01e24c4cba` with exactly two parents
+  (`a908c96` + `42eda13`) — no squash, no rebase; both feature commits
+  preserved as ancestors of `main`.
+- Tag: annotated `v0.15.0` → the merge commit.
+- Prerelease: <https://github.com/stokonn/Gould/releases/tag/v0.15.0>
+  (`isPrerelease: true`, not a draft, target `main`, published
+  2026-11-16T12:35:11Z).
+- Asset: `gould-0.15.0.apk`, 97,931,121 bytes, downloaded back from the
+  release: SHA-256
+  `f3df006e36aa55fb940b5a938cc36737156c3ff77a5c960a9c5da10b53ade8ea`,
+  byte-identical (`cmp`) to the owner-tested APK, signer certificate
+  `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`.
+  (First upload landed as `app-release.apk` because gh 2.97.0 did not apply
+  the `#label`; the correctly named asset was uploaded and the misnamed one
+  deleted, leaving exactly the conventional single asset.)
+- Release notes: user-focused body with pre-release/compatibility/safety
+  information, APK SHA-256, and a transparent unresolved-licensing note
+  linking the audit; the licensing questions are **not** claimed resolved.
+
+Still not executed: Android instrumentation (compiled only), emulator
+journeys, agent access to any physical device. The Google SDK licensing
+questions remain **unresolved** (audit verdict LEGAL REVIEW REQUIRED);
+publication proceeded under the owner's explicit 2026-11-16 authorization.
