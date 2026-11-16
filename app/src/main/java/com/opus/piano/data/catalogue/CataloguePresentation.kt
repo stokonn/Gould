@@ -34,7 +34,7 @@ object CataloguePresentation {
 
     fun essentials(detail:DiscoverDetail):List<AssertionGroup> = groups(detail.assertions.filter {
         it.assertion.selected && it.rights.reviewState=="approved" &&
-            it.assertion.field in setOf("subtitle","description","catalogue","catalogue_number","key","genre","epoch","birth","death")
+            it.assertion.field in setOf("subtitle","description","catalogue","catalogue_number","key","genre","epoch","birth","death","type","sort-name","disambiguation")
     }).filter {it.value.isNotBlank() && it.value!=detail.entity.title}
 
     fun languageLabel(code:String,locale:java.util.Locale,unspecified:String):String =

@@ -69,7 +69,7 @@ interface OpusDao {
     @Delete suspend fun delete(piece: Piece)
     @Insert suspend fun insert(session: PracticeSession): Long
 }
-@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class, RecoveryArchive::class, SessionPieceLink::class, FavoriteComposer::class, PersonalCatalogueIdentity::class, PersonalCatalogueAnchor::class, PersonalCatalogueState::class, BackupRestoreState::class, RecoveryEvidence::class, CompletionEvidence::class, LocalAudio::class, LocalAudioPart::class, AchievementEvent::class, BadgeNotice::class, ActivitySettings::class, ActivityWeeklyGoal::class, ActivityWeekRecord::class, ManualActivityEntry::class, CosmeticOwnership::class, ActivityRewardGrant::class, CosmeticLoadout::class], version = 12, exportSchema = true)
+@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class, RecoveryArchive::class, SessionPieceLink::class, FavoriteComposer::class, PersonalCatalogueIdentity::class, PersonalCatalogueAnchor::class, PersonalCatalogueState::class, BackupRestoreState::class, RecoveryEvidence::class, CompletionEvidence::class, LocalAudio::class, LocalAudioPart::class, AchievementEvent::class, BadgeNotice::class, ActivitySettings::class, ActivityWeeklyGoal::class, ActivityWeekRecord::class, ManualActivityEntry::class, CosmeticOwnership::class, ActivityRewardGrant::class, CosmeticLoadout::class], version = 13, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class OpusDatabase : RoomDatabase() {
     abstract fun studioDao(): StudioDao
@@ -94,6 +94,14 @@ abstract class OpusDatabase : RoomDatabase() {
                 db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS index_cosmetic_ownership_sourceWeekMonday ON cosmetic_ownership(sourceWeekMonday)")
                 db.execSQL("CREATE TABLE IF NOT EXISTS activity_reward_grants (weekMonday TEXT NOT NULL PRIMARY KEY, cosmeticId TEXT, result TEXT NOT NULL, grantedAt INTEGER NOT NULL, acknowledgedAt INTEGER NOT NULL)")
                 db.execSQL("CREATE TABLE IF NOT EXISTS cosmetic_loadout (category TEXT NOT NULL PRIMARY KEY, cosmeticId TEXT NOT NULL)")
+            }
+        }
+        val MIGRATION_12_13 = object : Migration(12, 13) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE local_app_state ADD COLUMN tourVersion INTEGER NOT NULL DEFAULT 0")
+                db.execSQL("ALTER TABLE local_app_state ADD COLUMN tourCompleted INTEGER NOT NULL DEFAULT 0")
+                db.execSQL("ALTER TABLE local_app_state ADD COLUMN tourSkipped INTEGER NOT NULL DEFAULT 0")
+                db.execSQL("ALTER TABLE local_app_state ADD COLUMN tourSeenSteps TEXT NOT NULL DEFAULT ''")
             }
         }
         val MIGRATION_10_11 = object : Migration(10, 11) {
@@ -184,7 +192,7 @@ abstract class OpusDatabase : RoomDatabase() {
                 db.execSQL("CREATE TABLE IF NOT EXISTS catalog_cache (cacheKey TEXT NOT NULL PRIMARY KEY, payload TEXT NOT NULL, fetchedAt INTEGER NOT NULL)")
             }
         }
-        val ALL_MIGRATIONS = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10, MIGRATION_10_11, MIGRATION_11_12)
+        val ALL_MIGRATIONS = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10, MIGRATION_10_11, MIGRATION_11_12, MIGRATION_12_13)
     }
 }
 class OpusRepository(private val db: OpusDatabase, private val achievements: AchievementStore) {

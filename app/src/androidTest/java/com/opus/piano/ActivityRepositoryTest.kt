@@ -35,19 +35,30 @@ class ActivityRepositoryTest {
         }
     }
 
+    @Test fun snapshotIsReadOnlyAndRefreshOwnsRewardEvaluation() = runBlocking { withRepository { db, repo ->
+        val today = day("2026-12-14")
+        repo.initialize(day("2026-11-09"), zone, now=1)
+        addPerfectWeek(db, day("2026-12-07"), "read-only")
+        assertTrue(db.activityDao().grants().isEmpty())
+        repo.snapshot(today, zone, now=2)
+        assertTrue("A read must not grant rewards", db.activityDao().grants().isEmpty())
+        repo.refresh(today, zone, now=3)
+        assertEquals(1, db.activityDao().grants().count { it.weekMonday == "2026-12-07" })
+    } }
+
     @Test fun betaWeekGoalEffectiveDateAndManualBoundsArePersisted() = runBlocking { withRepository { db, repo ->
-        val beta = repo.snapshot(day("2026-11-12"), zone, now=1)
+        val beta = repo.refresh(day("2026-11-12"), zone, now=1)
         assertTrue(beta.week.beta)
         assertEquals(3, beta.goal.sessions)
         repo.changeGoals(2, 90, day("2026-11-12"), zone)
-        assertEquals(3, repo.snapshot(day("2026-11-12"), zone, now=2).goal.sessions)
-        val nextWeek = repo.snapshot(day("2026-11-16"), zone, now=3)
+        assertEquals(3, repo.refresh(day("2026-11-12"), zone, now=2).goal.sessions)
+        val nextWeek = repo.refresh(day("2026-11-16"), zone, now=3)
         assertFalse(nextWeek.week.beta)
         assertEquals(2, nextWeek.goal.sessions)
         val id = repo.addManualActivity(day("2026-11-16"), 25, day("2026-11-17"), zone, now=4)
         val todayId = repo.addManualActivity(day("2026-11-17"), 10, day("2026-11-17"), zone, now=5)
         val twoDaysAgoId = repo.addManualActivity(day("2026-11-15"), 10, day("2026-11-17"), zone, now=6)
-        val summary = repo.snapshot(day("2026-11-17"), zone, now=5)
+        val summary = repo.refresh(day("2026-11-17"), zone, now=5)
         // Weekly totals exclude the valid manual entry from the prior Sunday.
         assertEquals(2, summary.totals.sessions)
         assertEquals(35L, summary.totals.minutes)
@@ -61,7 +72,7 @@ class ActivityRepositoryTest {
         repo.deleteManualActivity(todayId)
         repo.deleteManualActivity(twoDaysAgoId)
         repo.deleteManualActivity(id)
-        assertEquals(0, repo.snapshot(day("2026-11-17"), zone, now=7).totals.sessions)
+        assertEquals(0, repo.refresh(day("2026-11-17"), zone, now=7).totals.sessions)
         assertEquals("2026-11-12", db.activityDao().settings()!!.firstUseDay)
     } }
 
@@ -71,7 +82,7 @@ class ActivityRepositoryTest {
         addPerfectWeek(db, betaMonday, "beta-cosmetic")
 
         val officialMonday = day("2026-11-16")
-        val official = repo.snapshot(officialMonday, zone, now=2)
+        val official = repo.refresh(officialMonday, zone, now=2)
         assertFalse(official.week.beta)
         assertEquals(1, db.activityDao().grants().count { it.weekMonday == betaMonday.toString() && it.result == "COSMETIC" })
         assertEquals("The Beta Week did not enter the Freeze milestone", 0, official.freezes.successfulWeeksTowardFreeze)
@@ -90,7 +101,7 @@ class ActivityRepositoryTest {
             ))
         }
 
-        val fulfilled = repo.snapshot(today, zone, now=2)
+        val fulfilled = repo.refresh(today, zone, now=2)
         assertTrue("Beta Week remains active", fulfilled.week.beta)
         assertEquals(6, fulfilled.totals.sessions)
         assertEquals(96L, fulfilled.totals.minutes)
@@ -100,7 +111,7 @@ class ActivityRepositoryTest {
         assertEquals(betaMonday.toString(), repo.pendingReward.first()?.weekMonday)
         assertEquals("The Beta week does not enter Freeze progress", 0, fulfilled.freezes.successfulWeeksTowardFreeze)
 
-        val repeated = repo.snapshot(today, zone, now=3)
+        val repeated = repo.refresh(today, zone, now=3)
         assertEquals(1, db.activityDao().grants().size)
         assertEquals(betaMonday.toString(), repo.pendingReward.first()?.weekMonday)
         assertEquals(0, repeated.freezes.successfulWeeksTowardFreeze)
@@ -123,7 +134,7 @@ class ActivityRepositoryTest {
             }
             db.dao().insert(practice(day("2026-11-16"), 15))
             db.dao().insert(practice(today, 5))
-            val combined = repo.snapshot(today, zone, now=5)
+            val combined = repo.refresh(today, zone, now=5)
             assertEquals(5, combined.allTimeWorkouts)
             assertEquals(75L, combined.allTimeMinutes)
             assertEquals(75 * 60_000L, combined.allTimeDurationMillis)
@@ -133,7 +144,7 @@ class ActivityRepositoryTest {
             db.close()
             db = Room.databaseBuilder(context, OpusDatabase::class.java, name).build()
             repo = ActivityRepository(db)
-            val restarted = repo.snapshot(today, zone, now=6)
+            val restarted = repo.refresh(today, zone, now=6)
             assertEquals(combined.allTimeWorkouts, restarted.allTimeWorkouts)
             assertEquals(combined.allTimeDurationMillis, restarted.allTimeDurationMillis)
             assertEquals(combined.dailyStreak, restarted.dailyStreak)
@@ -147,11 +158,11 @@ class ActivityRepositoryTest {
         val monday = day("2026-10-19")
         val prague = ZoneId.of("Europe/Prague")
         val honolulu = ZoneId.of("Pacific/Honolulu")
-        repo.snapshot(day("2026-10-19"), prague, now=1)
-        val sameWeek = repo.snapshot(day("2026-10-23"), honolulu, now=2)
+        repo.refresh(day("2026-10-19"), prague, now=1)
+        val sameWeek = repo.refresh(day("2026-10-23"), honolulu, now=2)
         assertEquals("Europe/Prague", sameWeek.week.zoneId)
         assertEquals("Europe/Prague", db.activityDao().week(monday.toString())!!.zoneId)
-        val nextWeek = repo.snapshot(day("2026-10-26"), honolulu, now=3)
+        val nextWeek = repo.refresh(day("2026-10-26"), honolulu, now=3)
         assertEquals("Pacific/Honolulu", nextWeek.week.zoneId)
         assertEquals(7, com.opus.piano.activity.domain.Week(monday.toEpochDay(), "Europe/Prague").dates().size)
     } }
@@ -176,36 +187,36 @@ class ActivityRepositoryTest {
     } }
 
     @Test fun retrospectiveCorrectionRecomputesWeeksAndNeverConsumesFreezeTwice() = runBlocking { withRepository { _, repo ->
-        repo.snapshot(day("2026-11-09"), zone, now=1) // Monday start: not Beta Week.
+        repo.refresh(day("2026-11-09"), zone, now=1) // Monday start: not Beta Week.
         val ids = (0..2).map { repo.addManualActivity(day("2026-11-09"), 10, day("2026-11-10"), zone, now=2L+it) }
-        val closed = repo.snapshot(day("2026-11-16"), zone, now=10)
+        val closed = repo.refresh(day("2026-11-16"), zone, now=10)
         assertEquals(1, closed.currentWeeklyStreak)
         assertEquals(1, closed.freezes.balance)
         repo.deleteManualActivity(ids.first())
-        val corrected = repo.snapshot(day("2026-11-16"), zone, now=11)
+        val corrected = repo.refresh(day("2026-11-16"), zone, now=11)
         assertEquals(0, corrected.currentWeeklyStreak)
         assertEquals(0, corrected.freezes.balance)
-        val repeated = repo.snapshot(day("2026-11-16"), zone, now=12)
+        val repeated = repo.refresh(day("2026-11-16"), zone, now=12)
         assertEquals(corrected.freezes, repeated.freezes)
     } }
 
     @Test fun onePerfectWeekCreatesItsOwnClaimableCosmeticAndClaimPersists() = runBlocking { withRepository { db, repo ->
-        repo.snapshot(day("2026-11-16"), zone, now=1)
+        repo.refresh(day("2026-11-16"), zone, now=1)
         repo.changeGoals(1, 30, day("2026-11-16"), zone)
         val perfectMonday = day("2026-11-23")
         addPerfectWeek(db, perfectMonday, "one-perfect-week")
-        repo.snapshot(perfectMonday, zone, now=2)
+        repo.refresh(perfectMonday, zone, now=2)
         assertTrue("The active week is not yet eligible", db.activityDao().grants().isEmpty())
         assertNull(repo.pendingReward.first())
         assertNull(repo.claimedReward.first())
 
-        repo.snapshot(day("2026-11-30"), zone, now=3)
+        repo.refresh(day("2026-11-30"), zone, now=3)
         val grant=db.activityDao().grants().single()
         assertEquals("COSMETIC",grant.result)
         assertEquals("2026-11-23", grant.weekMonday)
         assertTrue(db.activityDao().allOwnedCosmetics().isEmpty())
         assertEquals(grant.cosmeticId, repo.pendingReward.first()?.cosmeticId)
-        repo.snapshot(day("2026-11-30"),zone,now=4)
+        repo.refresh(day("2026-11-30"),zone,now=4)
         assertEquals(1,db.activityDao().grants().size)
         assertFalse(db.activityDao().owns(checkNotNull(grant.cosmeticId)))
         assertTrue(repo.claimReward(grant.weekMonday, now=5))
@@ -215,7 +226,7 @@ class ActivityRepositoryTest {
         assertFalse(repo.claimReward(grant.weekMonday, now=6))
         assertEquals(5L, db.activityDao().grant(grant.weekMonday)?.acknowledgedAt)
         db.activityDao().deleteManualEntry("one-perfect-week-0")
-        repo.snapshot(day("2026-11-30"),zone,now=7)
+        repo.refresh(day("2026-11-30"),zone,now=7)
         assertEquals(1,db.activityDao().allOwnedCosmetics().size)
         assertEquals(grant.cosmeticId,db.activityDao().allOwnedCosmetics().single().cosmeticId)
     } }
@@ -225,7 +236,7 @@ class ActivityRepositoryTest {
         var db = Room.databaseBuilder(context, OpusDatabase::class.java, name).build()
         try {
             var repo = ActivityRepository(db)
-            repo.snapshot(day("2026-11-09"), zone, now=1)
+            repo.refresh(day("2026-11-09"), zone, now=1)
             val completedWeeks = listOf("2026-11-09", "2026-11-16", "2026-11-23", "2026-11-30")
             completedWeeks.forEachIndexed { weekIndex, monday -> addPerfectWeek(db, day(monday), "perfect-$weekIndex") }
             // A fifth closed week with only two sessions is not perfect and earns nothing.
@@ -235,20 +246,20 @@ class ActivityRepositoryTest {
                     20 * 60_000L, 100L + offset,
                 ))
             }
-            repo.snapshot(day("2026-12-14"), zone, now=200)
+            repo.refresh(day("2026-12-14"), zone, now=200)
             val initialGrants = db.activityDao().grants()
             assertEquals(4, initialGrants.size)
             assertEquals(completedWeeks.toSet(), initialGrants.map { it.weekMonday }.toSet())
             assertTrue("Eligibility creates pending claims, not ownership", db.activityDao().allOwnedCosmetics().isEmpty())
             assertEquals(initialGrants.first().weekMonday, repo.pendingReward.first()?.weekMonday)
             assertEquals(4, initialGrants.mapNotNull { it.cosmeticId }.toSet().size)
-            repo.snapshot(day("2026-12-14"), zone, now=201)
+            repo.refresh(day("2026-12-14"), zone, now=201)
             assertEquals(initialGrants, db.activityDao().grants())
 
             db.close()
             db = Room.databaseBuilder(context, OpusDatabase::class.java, name).build()
             repo = ActivityRepository(db)
-            repo.snapshot(day("2026-12-14"), zone, now=202)
+            repo.refresh(day("2026-12-14"), zone, now=202)
             assertEquals(initialGrants, db.activityDao().grants())
             assertEquals(initialGrants.first().weekMonday, repo.pendingReward.first()?.weekMonday)
             val reward = initialGrants.first()
@@ -273,29 +284,29 @@ class ActivityRepositoryTest {
     }
 
     @Test fun fourPerfectWeeksGrantFourCosmeticsAndExactlyOneAdditionalFreeze() = runBlocking { withRepository { db, repo ->
-        repo.snapshot(day("2026-11-09"), zone, now=1)
+        repo.refresh(day("2026-11-09"), zone, now=1)
         listOf("2026-11-09", "2026-11-16", "2026-11-23", "2026-11-30")
             .forEachIndexed { index, monday -> addPerfectWeek(db, day(monday), "milestone-$index") }
 
-        val completed = repo.snapshot(day("2026-12-07"), zone, now=10)
+        val completed = repo.refresh(day("2026-12-07"), zone, now=10)
         assertEquals(4, db.activityDao().grants().size)
         assertTrue(db.activityDao().grants().all { it.result == "COSMETIC" })
         assertEquals(4, db.activityDao().grants().mapNotNull { it.cosmeticId }.toSet().size)
         assertEquals("One separate milestone Freeze is added to the initial balance", 2, completed.freezes.balance)
         assertEquals(0, completed.freezes.successfulWeeksTowardFreeze)
 
-        val repeated = repo.snapshot(day("2026-12-07"), zone, now=11)
+        val repeated = repo.refresh(day("2026-12-07"), zone, now=11)
         assertEquals(4, db.activityDao().grants().size)
         assertEquals(2, repeated.freezes.balance)
         assertEquals(0, repeated.freezes.successfulWeeksTowardFreeze)
     } }
 
     @Test fun brokenPerfectWeekRunResetsOnlyFreezeProgressAndKeepsEarlierCosmeticsClaimable() = runBlocking { withRepository { db, repo ->
-        repo.snapshot(day("2026-11-09"), zone, now=1)
+        repo.refresh(day("2026-11-09"), zone, now=1)
         listOf("2026-11-09", "2026-11-16", "2026-11-30", "2026-12-07", "2026-12-14")
             .forEachIndexed { index, monday -> addPerfectWeek(db, day(monday), "broken-run-$index") }
 
-        val afterThreeSinceBreak = repo.snapshot(day("2026-12-21"), zone, now=10)
+        val afterThreeSinceBreak = repo.refresh(day("2026-12-21"), zone, now=10)
         assertEquals(5, db.activityDao().grants().size)
         assertEquals(0, afterThreeSinceBreak.freezes.balance)
         assertEquals(3, afterThreeSinceBreak.freezes.successfulWeeksTowardFreeze)
@@ -308,11 +319,11 @@ class ActivityRepositoryTest {
         assertEquals(5, db.activityDao().grants().size)
 
         addPerfectWeek(db, day("2026-12-21"), "after-break-fourth")
-        val afterFourthSinceBreak = repo.snapshot(day("2026-12-28"), zone, now=12)
+        val afterFourthSinceBreak = repo.refresh(day("2026-12-28"), zone, now=12)
         assertEquals(6, db.activityDao().grants().size)
         assertEquals(1, afterFourthSinceBreak.freezes.balance)
         assertEquals(0, afterFourthSinceBreak.freezes.successfulWeeksTowardFreeze)
-        val repeated = repo.snapshot(day("2026-12-28"), zone, now=13)
+        val repeated = repo.refresh(day("2026-12-28"), zone, now=13)
         assertEquals(6, db.activityDao().grants().size)
         assertEquals(1, repeated.freezes.balance)
     } }
@@ -377,14 +388,14 @@ class ActivityRepositoryTest {
     }
 
     @Test fun exhaustedCosmeticCollectionProducesSafeNonDuplicateResult() = runBlocking { withRepository { db, repo ->
-        repo.snapshot(day("2026-11-16"),zone,now=1)
+        repo.refresh(day("2026-11-16"),zone,now=1)
         repo.changeGoals(1,20,day("2026-11-16"),zone)
         ActivityCosmetics.all.forEachIndexed { index, item -> db.activityDao().own(CosmeticOwnership(item.id,index+1L,null)) }
         listOf("2026-11-23", "2026-11-30", "2026-12-07", "2026-12-14").forEachIndexed { index, monday ->
             addPerfectWeek(db, day(monday), "complete-$index")
         }
         // A completed collection is recorded for each eligible perfect week.
-        repo.snapshot(day("2026-12-21"),zone,now=3)
+        repo.refresh(day("2026-12-21"),zone,now=3)
         assertEquals(4, db.activityDao().grants().size)
         assertTrue(db.activityDao().grants().all { it.result == "COLLECTION_COMPLETE" })
         assertTrue(db.activityDao().grants().all { it.cosmeticId == null && it.acknowledgedAt > 0L })

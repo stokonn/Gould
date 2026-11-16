@@ -1,14 +1,14 @@
 # Settings & Customization — Gould
 
-> Gould 0.14.0 is the latest published pre-release, not Stable. Historical sections retain their original evidence.
+> Gould 0.15.0 is the latest published pre-release, not Stable. Historical sections retain their original evidence.
 
 > **Gould 0.14.0:** Customize Profile includes cosmetics for avatars, frames, backgrounds, heatmaps and graphs. Owned items can be equipped; locked items show rarity and unlock information. Each eligible perfect week grants its own cosmetic reward to claim in Activity. Beta Week can grant its cosmetic when configured weekly goals are met, but does not advance official Streak or Freeze progress. Four consecutive perfect official Streak weeks grant one additional Freeze. Repeated evaluation does not duplicate rewards; if the catalog is exhausted, the eligible week is recorded without duplicate ownership.
 
 Gould 0.14.0 retains Ivory, Nocturne and system theme selection. Discover and the visible moderation/administration entry are temporarily hidden while their source and routes remain preserved. Their future reactivation requires separate issue review and regression validation; no specific currently reproducible moderation defect is asserted by these notes.
 
-> **Latest release:** [Gould 0.14.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.14.0). This is not Stable.
+> **Latest release:** [Gould 0.15.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.15.0). This is not Stable.
 
-This guide describes the current 0.14 settings and retained backup compatibility.
+This guide describes the current 0.15 settings and retained backup compatibility.
 
 
 Ivory/Nocturne appearance, English/Czech, font scaling and existing appearance preferences are retained. Online catalogue search remains default-off until enabled in Settings; downloaded media and offline bundles retain their separate network and storage controls.

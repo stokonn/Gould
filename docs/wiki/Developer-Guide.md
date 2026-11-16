@@ -1,6 +1,10 @@
 # Developer Guide — Gould
 
-> Gould 0.14.0 is the latest published pre-release, not Stable. Historical sections retain their original evidence.
+> Gould 0.15.0 is the latest published pre-release, not Stable. Historical sections retain their original evidence.
+
+## Gould 0.15.0 release implementation
+
+Gould 0.15.0 bundles the curated MusicBrainz Core catalogue (snapshot `20261114-002230`; 100 composers, 105,032 works, 105,421 relationships, CC0 data) as an app asset installed into the existing offline store through additive Room migration 12→13 (schema 13); opt-in online search uses the rate-limited MusicBrainz client with the existing debounce/cancellation behaviour. The `:activity-domain` module, Room and the existing repositories remain in place; versionCode is 17 and the owner-tested build carries versionName `0.15.0-dev`. The published APK is the exact artifact the owner tested on a Samsung Galaxy A55 (SHA-256 `f3df006e36aa55fb940b5a938cc36737156c3ff77a5c960a9c5da10b53ade8ea`), signed with the trusted certificate `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`. Host verification, lint, instrumentation compilation (not executed) and catalogue checks are recorded in [`docs/releases/GOULD-0.15.md`](../releases/GOULD-0.15.md). The Google dependency licensing question remains unresolved; see the [licensing audit](../planning/gould-0.15/GOOGLE-DEPENDENCY-LICENSING-AUDIT.md) and the owner's explicit release authorization in [`docs/LICENSES.md`](../LICENSES.md).
 
 ## Gould 0.14.0 release implementation
 
@@ -12,7 +16,7 @@ Release toolchain: AGP 9.1.1, Gradle wrapper 9.3.1, Kotlin 2.2.10, JVM 17, minSd
 
 Focused API 37 instrumentation executed repository/reward tests and a populated v11 migration test; the final Beta eligibility follow-up separately passed all 15 `ActivityRepositoryTest` cases. The full instrumentation suite and signed upgrade from the published baseline remain unexecuted. Instrumentation compilation must not be reported as execution. Never target the owner's phone.
 
-> **Latest release:** [Gould 0.14.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.14.0). This is not Stable.
+> **Latest release:** [Gould 0.15.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.15.0). This is not Stable.
 
 
 The application remains native Kotlin/Compose/Material3 with application ID com.opus.piano. Personal Room schema12 in opus.db is authoritative; catalogue schema1 is separate and disposable. Additive migration11→12 adds Activity and reward data. Backup format7 retains readers1–6; optional media archives validate byte hashes and paths separately. Database Simplifier changes catalogue reads and idempotent local compatibility import, without destructive migration or personal-row replacement.

@@ -1,0 +1,46 @@
+2026-11-16T08:52:14+00:00
+gpg (GnuPG) 2.4.9
+libgcrypt 1.12.2-unknown
+gpg: keybox '/home/stokonn/Projects/Gould/.worktrees/gould-0.15/docs/planning/gould-0.15/provenance-evidence/gnupg/pubring.kbx' created
+gpg: key B8FC2375C777580F: 1 signature not checked due to a missing key
+gpg: /home/stokonn/Projects/Gould/.worktrees/gould-0.15/docs/planning/gould-0.15/provenance-evidence/gnupg/trustdb.gpg: trustdb created
+gpg: key B8FC2375C777580F: public key "MusicBrainz (MusicBrainz data dump signing key) <support@musicbrainz.org>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+gpg: no ultimately trusted keys found
+
+--- CERTIFICATE FIELDS ---
+tru::1:1794819134:0:3:1:5
+pub:-:2048:1:B8FC2375C777580F:1347989918:::-:::scESC::::::23::0:
+fpr:::::::::D5E63B4BDCCE195642948684B8FC2375C777580F:
+uid:-::::1347989918::DDB2B757F6CF2E27832A93599836E1B6179A3B17::MusicBrainz (MusicBrainz data dump signing key) <support@musicbrainz.org>::::::::::0:
+sub:-:2048:1:19AF6A3243513089:1347989918::::::e::::::23:
+fpr:::::::::3CA330EE23B47A79AB76FA3619AF6A3243513089:
+
+--- SHA256SUMS SIGNATURE ---
+[GNUPG:] NEWSIG
+gpg: Signature made Sat Nov 14 06:08:46 2026 CET
+gpg:                using RSA key D5E63B4BDCCE195642948684B8FC2375C777580F
+[GNUPG:] KEY_CONSIDERED D5E63B4BDCCE195642948684B8FC2375C777580F 0
+[GNUPG:] SIG_ID cNM1SJKc9TS47No5diprJFr+11I 2026-11-14 1794632926
+[GNUPG:] GOODSIG B8FC2375C777580F MusicBrainz (MusicBrainz data dump signing key) <support@musicbrainz.org>
+gpg: Good signature from "MusicBrainz (MusicBrainz data dump signing key) <support@musicbrainz.org>" [unknown]
+[GNUPG:] VALIDSIG D5E63B4BDCCE195642948684B8FC2375C777580F 2026-11-14 1794632926 0 4 0 1 10 00 D5E63B4BDCCE195642948684B8FC2375C777580F
+[GNUPG:] TRUST_UNDEFINED 0 pgp
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: D5E6 3B4B DCCE 1956 4294  8684 B8FC 2375 C777 580F
+
+--- ARCHIVE SIGNATURE ---
+[GNUPG:] NEWSIG
+gpg: Signature made Sat Nov 14 02:47:57 2026 CET
+gpg:                using RSA key D5E63B4BDCCE195642948684B8FC2375C777580F
+[GNUPG:] KEY_CONSIDERED D5E63B4BDCCE195642948684B8FC2375C777580F 0
+[GNUPG:] SIG_ID mzG8KHSZZt0yf8vBlFHqi/WzcIU 2026-11-14 1794620877
+[GNUPG:] GOODSIG B8FC2375C777580F MusicBrainz (MusicBrainz data dump signing key) <support@musicbrainz.org>
+gpg: Good signature from "MusicBrainz (MusicBrainz data dump signing key) <support@musicbrainz.org>" [unknown]
+[GNUPG:] VALIDSIG D5E63B4BDCCE195642948684B8FC2375C777580F 2026-11-14 1794620877 0 4 0 1 10 00 D5E63B4BDCCE195642948684B8FC2375C777580F
+[GNUPG:] TRUST_UNDEFINED 0 pgp
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: D5E6 3B4B DCCE 1956 4294  8684 B8FC 2375 C777 580F

@@ -34,6 +34,7 @@ class ActivityMigrationTest {
             sql.execSQL("INSERT INTO profile_settings(id,username,avatar,theme,showcase,favoriteEra,biography) VALUES(1,'Musician','opaque-avatar','Nocturne','first_notes','Romantic','Keep profile')")
             sql.execSQL("INSERT INTO badge_unlocks(achievementId,unlockedAt) VALUES('first_notes',123)")
             sql.execSQL("INSERT INTO practice_drafts VALUES(1,'unchanged draft',456)")
+            sql.execSQL("INSERT INTO local_app_state(id,onboardingDone,reminderEnabled,reminderHour,reminderMinute,generation,lastReminderDay) VALUES(1,1,1,9,30,4,'2026-11-10')")
             sql.execSQL("INSERT INTO local_audio VALUES('audio-id',1,2,'Saved','recordings/audio.wav','WAV_PCM16',16000,16000,32000,'sha','Take','','', '')")
             sql.version = 11
         }
@@ -42,7 +43,7 @@ class ActivityMigrationTest {
             .addMigrations(*OpusDatabase.ALL_MIGRATIONS).build()
         try {
             val sql = db.openHelper.writableDatabase
-            assertEquals(12, sql.version)
+            assertEquals(13, sql.version)
             assertEquals("Keep this", db.dao().piece(7)!!.notes)
             val session = db.dao().allSessions().single()
             assertEquals(9L, session.id)
@@ -52,6 +53,13 @@ class ActivityMigrationTest {
             assertEquals(123L, db.experienceDao().allUnlocks().single().unlockedAt)
             sql.query("SELECT updatedAt FROM practice_drafts WHERE id=1").use { assertTrue(it.moveToFirst()); assertEquals(456L, it.getLong(0)) }
             assertEquals("sha", db.studioDao().allAudio().single().sha256)
+            val local=db.practiceDao().localNow()!!
+            assertTrue(local.onboardingDone)
+            assertEquals(4, local.generation)
+            assertEquals(0, local.tourVersion)
+            assertFalse(local.tourCompleted)
+            assertFalse(local.tourSkipped)
+            assertEquals("", local.tourSeenSteps)
             sql.query("SELECT creditedMillis FROM session_intervals WHERE sessionId=9").use { assertTrue(it.moveToFirst()); assertEquals(60000L, it.getLong(0)) }
             for (table in listOf("activity_settings", "activity_weekly_goals", "activity_weeks", "manual_activity_entries", "cosmetic_ownership", "activity_reward_grants", "cosmetic_loadout")) {
                 sql.query("SELECT COUNT(*) FROM `$table`").use { assertTrue(it.moveToFirst()); assertEquals("new table $table remains empty", 0L, it.getLong(0)) }

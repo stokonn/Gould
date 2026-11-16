@@ -3,6 +3,7 @@ package com.opus.piano.community
 import com.opus.piano.data.community.*
 import kotlinx.coroutines.*
 import org.json.JSONObject
+import org.json.JSONArray
 import org.junit.Assert.*
 import org.junit.Test
 import java.io.File
@@ -68,6 +69,130 @@ class CommunityRepositoryTest {
         val v=Venue();val d=v.repo.create(payload());val fault=CommunityDraftStore(File(v.root,"drafts")){throw java.io.IOException("synthetic storage failure")}
         assertThrows(java.io.IOException::class.java){fault.save(d.copy(payload=payload("Lost write")),d.version)}
         assertEquals(d,v.store.get(d.owner,d.id))
+    }
+    private fun draftFiles(root: File): Map<String, String> = root.walkTopDown().filter { it.isFile }
+        .associate { file -> file.relativeTo(root).path to file.readBytes().joinToString("") { "%02x".format(it) } }
+
+    @Test fun userChosenArchiveRoundTripsFrozenRequestExactlyIntoMatchingPrincipal()=runBlocking {
+        val principal=id();val receiptId=id();val source=Venue(listOf(
+            TransportResult.Response(429,"{}","2"),
+            TransportResult.Response(201,"{\"id\":\"$receiptId\",\"status\":\"submitted\"}"),
+        ))
+        source.credentials.value=CommunitySession(principal,"source-secret",Long.MAX_VALUE,true)
+        val draft=source.repo.create(payload("Keep this frozen"));source.repo.submit(draft.id)
+        val receiptDraft=source.repo.create(payload("Keep receipt"));source.repo.submit(receiptDraft.id)
+        val frozen=source.repo.drafts().first {it.id==draft.id};val receipted=source.repo.drafts().first {it.id==receiptDraft.id}
+        assertNotNull(frozen.pending);assertEquals(receiptId,receipted.receipt);assertNotNull(receipted.pending)
+        val bytes=source.repo.exportDraftArchive()
+        val target=Venue();target.credentials.value=CommunitySession(principal,"different-local-secret",Long.MAX_VALUE,true)
+        assertEquals(2,target.repo.importDraftArchive(bytes))
+        val restoredDrafts=target.repo.drafts()
+        val restored=restoredDrafts.first {it.id==frozen.id};val restoredReceipt=restoredDrafts.first {it.id==receipted.id}
+        assertEquals(frozen,restored)
+        assertEquals(receipted,restoredReceipt)
+        assertEquals(frozen.pending!!.body,restored.pending!!.body)
+        assertEquals(frozen.pending!!.key,restored.pending!!.key)
+        assertEquals(frozen.pending!!.outcome,restored.pending!!.outcome)
+        assertEquals(3000L,restored.pending!!.retryAtMillis)
+        assertEquals(receiptId,restoredReceipt.receipt)
+        assertTrue(target.fixture.calls.isEmpty())
+    }
+
+    @Test fun userChosenArchivePreservesIntentionallyIncompleteEditableDraft()=runBlocking {
+        val source=Venue();val principal=source.credentials.value!!.principalId
+        val draft=source.repo.create(payload(""));val archive=source.repo.exportDraftArchive()
+        val target=Venue();target.credentials.value=CommunitySession(principal,"local-secret",Long.MAX_VALUE,true)
+        assertEquals(1,target.repo.importDraftArchive(archive))
+        val restored=target.repo.drafts().single()
+        assertEquals(draft.id,restored.id);assertEquals("",restored.payload.fields.single().newValue)
+        val edited=target.repo.edit(restored.id,restored.version,payload("Completed after recovery"))
+        assertEquals("Completed after recovery",edited.payload.fields.single().newValue)
+    }
+
+    @Test fun archiveRejectsTamperedFrozenRequestBeforeAnyDestinationWrite()=runBlocking {
+        val source=Venue(listOf(TransportResult.Response(429,"{}","2")))
+        val principal=source.credentials.value!!.principalId
+        val draft=source.repo.create(payload());source.repo.submit(draft.id)
+        val archive=JSONObject(source.repo.exportDraftArchive().toString(Charsets.UTF_8))
+        archive.getJSONArray("drafts").getJSONObject(0).getJSONObject("pending").put("body","{}")
+        val target=Venue();target.credentials.value=CommunitySession(principal,"local-secret",Long.MAX_VALUE,true)
+        val before=draftFiles(File(target.root,"drafts"))
+        assertThrows(IllegalArgumentException::class.java){runBlocking {target.repo.importDraftArchive(archive.toString().toByteArray())}}
+        assertEquals(before,draftFiles(File(target.root,"drafts")));assertTrue(target.repo.drafts().isEmpty())
+    }
+
+    @Test fun guestArchiveRestoresOnlyToCurrentGuestScopeAndRetainsDraftId()=runBlocking {
+        val source=Venue();source.credentials.clear();val draft=source.repo.create(payload("Guest archive"))
+        val bytes=source.repo.exportDraftArchive();val target=Venue();target.credentials.clear()
+        assertEquals(1,target.repo.importDraftArchive(bytes))
+        val restored=target.repo.drafts().single()
+        assertEquals(draft.id,restored.id);assertEquals(draft.version,restored.version);assertEquals(draft.payload,restored.payload)
+        assertNotEquals(draft.owner,restored.owner);assertTrue(restored.owner.key.startsWith("guest:"))
+        val account=Venue();assertThrows(IllegalArgumentException::class.java){runBlocking {account.repo.importDraftArchive(bytes)}}
+        assertTrue(account.repo.drafts().isEmpty());assertTrue(account.fixture.calls.isEmpty())
+    }
+
+    @Test fun principalArchiveCannotCrossAccountsOrChangeDestinationDrafts()=runBlocking {
+        val source=Venue();val account=source.credentials.value!!;source.repo.create(payload("account-owned"))
+        val bytes=source.repo.exportDraftArchive()
+        val target=Venue();val other=CommunitySession(id(),"other-account-secret",Long.MAX_VALUE,true)
+        target.credentials.value=other;val existing=target.repo.create(payload("keep existing"))
+        val before=draftFiles(File(target.root,"drafts"))
+        assertThrows(IllegalArgumentException::class.java){runBlocking {target.repo.importDraftArchive(bytes)}}
+        assertEquals(before,draftFiles(File(target.root,"drafts")))
+        assertEquals(existing,target.repo.drafts().single());assertTrue(target.fixture.calls.isEmpty())
+        assertNotEquals(account.principalId,other.principalId)
+    }
+
+    @Test fun emptyArchiveIsValidAndDoesNotCreateOrReplaceDrafts()=runBlocking {
+        val v=Venue();val owner=CommunityOwner("principal:${v.credentials.value!!.principalId}")
+        val archive=CommunityDraftArchive.encode(owner,emptyList())
+        assertEquals(0,v.repo.importDraftArchive(archive));assertTrue(v.repo.drafts().isEmpty())
+    }
+
+    @Test fun malformedOrIncompleteArchiveIsRejectedWithoutChangingDraftStorage()=runBlocking {
+        val v=Venue();val d=v.repo.create(payload());val valid=v.repo.exportDraftArchive()
+        val parsed=JSONObject(valid.toString(Charsets.UTF_8));val record=parsed.getJSONArray("drafts").getJSONObject(0)
+        val incomplete=JSONObject(valid.toString(Charsets.UTF_8)).put("drafts",JSONArray().put(JSONObject(record.toString()).also {it.remove("payload")})).toString().toByteArray()
+        val missingCollection=JSONObject(valid.toString(Charsets.UTF_8)).also {it.remove("drafts")}.toString().toByteArray()
+        val incompatibleVersion=JSONObject(valid.toString(Charsets.UTF_8)).put("version",2).toString().toByteArray()
+        val before=draftFiles(File(v.root,"drafts"))
+        for(invalid in listOf("not-json".toByteArray(),incomplete,missingCollection,incompatibleVersion)) {
+            assertThrows(IllegalArgumentException::class.java){runBlocking {v.repo.importDraftArchive(invalid)}}
+            assertEquals(before,draftFiles(File(v.root,"drafts")))
+            assertEquals(d,v.store.get(d.owner,d.id))
+        }
+    }
+
+    @Test fun duplicateArchiveIdsAndExistingIdConflictsFailBeforeAnyPartialImport()=runBlocking {
+        val source=Venue();val one=source.repo.create(payload("one"));val two=source.repo.create(payload("two"))
+        val full=JSONObject(source.repo.exportDraftArchive().toString(Charsets.UTF_8))
+        val rows=full.getJSONArray("drafts")
+        val duplicate=JSONObject(full.toString()).put("drafts",JSONArray().put(rows.getJSONObject(0)).put(rows.getJSONObject(0))).toString().toByteArray()
+        val target=Venue();target.credentials.value=source.credentials.value
+        target.repo.drafts();val beforeDuplicate=draftFiles(File(target.root,"drafts"))
+        assertThrows(IllegalArgumentException::class.java){runBlocking {target.repo.importDraftArchive(duplicate)}}
+        assertEquals(beforeDuplicate,draftFiles(File(target.root,"drafts")))
+
+        val existing=target.repo.create(payload("already here"));val conflictedRows=JSONArray()
+            .put(JSONObject(rows.getJSONObject(0).toString()).put("id",existing.id))
+            .put(rows.getJSONObject(1))
+        val conflict=JSONObject(full.toString()).put("drafts",conflictedRows).toString().toByteArray()
+        val beforeConflict=draftFiles(File(target.root,"drafts"))
+        assertThrows(IllegalArgumentException::class.java){runBlocking {target.repo.importDraftArchive(conflict)}}
+        assertEquals(beforeConflict,draftFiles(File(target.root,"drafts")))
+        assertEquals(existing,target.store.get(existing.owner,existing.id))
+        assertNull(target.store.get(existing.owner,one.id));assertNull(target.store.get(existing.owner,two.id))
+    }
+
+    @Test fun archivePublishFaultRollsBackEarlierFilesAndKeepsStorageUnchanged()=runBlocking {
+        val root=Files.createTempDirectory("community-archive-rollback-").toFile();val owner=CommunityDraftStore(root).guest()
+        val before=draftFiles(root);var publications=0
+        val failing=CommunityDraftStore(root){publications++;if(publications==2)throw java.io.IOException("synthetic archive publish fault")}
+        val drafts=listOf(CommunityDraft(id(),owner,1,payload("first")),CommunityDraft(id(),owner,3,payload("second")))
+        assertThrows(java.io.IOException::class.java){failing.importAll(drafts)}
+        assertEquals(before,draftFiles(root));assertTrue(failing.list(owner).isEmpty())
+        assertFalse(root.listFiles().orEmpty().any {it.isDirectory && it.name.length==64})
     }
     @Test fun corruptDraftIsNotSilentlyReplaced()=runBlocking {
         val v=Venue();val d=v.repo.create(payload());val file=File(v.root,"drafts").walk().first {it.name==d.id+".json"};file.writeText("broken synthetic JSON")

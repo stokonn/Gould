@@ -62,7 +62,13 @@ object WidgetRenderer {
         }
     }
     internal fun view(context: Context, snapshot: WidgetSnapshot?, quick: Boolean, id: Int, width: Float, height: Float, forceStale: Boolean = false): RemoteViews {
-        val views = RemoteViews(context.packageName, if (quick) R.layout.widget_quick_practice else R.layout.widget_weekly_activity)
+        val wideWeekly = !quick && weeklyWidgetLayout(width, height, context.resources.configuration.fontScale) == WeeklyWidgetLayout.WIDE
+        val layout = when {
+            quick -> R.layout.widget_quick_practice
+            wideWeekly -> R.layout.widget_weekly_activity_wide
+            else -> R.layout.widget_weekly_activity
+        }
+        val views = RemoteViews(context.packageName, layout)
         val dark = when (snapshot?.theme) {
             "Dark" -> true
             "Light" -> false
@@ -121,7 +127,7 @@ object WidgetRenderer {
             views.setContentDescription(R.id.widget_root, L.s(R.string.widget_accessibility, L.s(R.string.widget_open_studio), label, status))
         } else {
             val showHeatmap = snapshot != null && height >= 60f && width >= 120f
-            val expanded = width >= 250f && height >= 150f && font <= 1.5f
+            val expanded = weeklyWidgetLayout(width, height, font) == WeeklyWidgetLayout.WIDE
             val compact = height < 140f || width < 150f
             val tiny = height < 100f || width < 130f
             val value = snapshot?.week?.total?.let { total ->
@@ -154,9 +160,14 @@ object WidgetRenderer {
                 val padding = (4 * context.resources.displayMetrics.density).toInt()
                 views.setViewPadding(R.id.widget_content, padding, padding, padding, padding)
             }
-            if (showHeatmap) views.setImageViewBitmap(R.id.widget_heatmap,
-                heatmap(context, snapshot!!.week, width - if (compact) 24f else 36f, if (tiny) 28f else 64f,
-                    colors.primary.toArgb(), colors.outlineVariant.toArgb(), labels = !tiny && width >= 175f && font <= 1.5f))
+            if (showHeatmap) {
+                val chartWidth = if (expanded) (width - 20f) * (1.2f / 2.2f) else width - if (compact) 8f else 20f
+                val chartHeight = widgetHeatmapHeight(height, font, expanded)
+                val labels = widgetHeatmapLabelsVisible(chartWidth, chartHeight)
+                views.setImageViewBitmap(R.id.widget_heatmap,
+                    heatmap(context, snapshot!!.week, chartWidth, chartHeight,
+                        colors.primary.toArgb(), colors.outlineVariant.toArgb(), colors.onSurfaceVariant.toArgb(), labels))
+            }
             val days = snapshot?.week?.credited?.mapIndexed { index, millis ->
                 val day = snapshot.week.monday.plusDays(index.toLong()).dayOfWeek.getDisplayName(TextStyle.FULL, L.locale)
                 "$day ${localizedPracticeTime(millis)}"
@@ -166,10 +177,10 @@ object WidgetRenderer {
         }
         return views
     }
-    private fun heatmap(context: Context, week: WidgetWeek, widthDp: Float, heightDp: Float, accent: Int, baseline: Int, labels: Boolean): Bitmap {
+    private fun heatmap(context: Context, week: WidgetWeek, widthDp: Float, heightDp: Float, accent: Int, baseline: Int, labelColor: Int, labels: Boolean): Bitmap {
         val density = context.resources.displayMetrics.density
         val width = (widthDp.coerceIn(80f, 500f) * density).toInt()
-        val height = (heightDp.coerceIn(20f, 64f) * density).toInt()
+        val height = (heightDp.coerceAtLeast(24f) * density).toInt()
         val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
         val paint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -191,8 +202,9 @@ object WidgetRenderer {
             val top = (gridHeight - cellHeight) / 2f
             canvas.drawRoundRect(x - cellWidth / 2f, top, x + cellWidth / 2f, top + cellHeight, 3 * density, 3 * density, paint)
             if (labels) {
-                paint.color = android.graphics.Color.WHITE
-                val label = week.monday.plusDays(index.toLong()).dayOfWeek.getDisplayName(TextStyle.SHORT_STANDALONE, L.locale).take(2)
+                paint.color = labelColor
+                val label = widgetDayLabel(week.monday.plusDays(index.toLong()).dayOfWeek
+                    .getDisplayName(TextStyle.SHORT_STANDALONE, L.locale), widthDp / 7f)
                 canvas.drawText(label, x, height - paint.fontMetrics.bottom, paint)
             }
         }

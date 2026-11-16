@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import com.opus.piano.i18n.L
 import com.opus.piano.R
 import androidx.compose.foundation.Image
@@ -11,6 +13,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ChevronRight
 import androidx.compose.material.icons.outlined.PersonOutline
+import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -42,7 +45,7 @@ import kotlinx.coroutines.launch
     var query by rememberSaveable(id) { mutableStateOf("") }
     var genre by rememberSaveable(id) { mutableStateOf("All") }
     var collection by rememberSaveable(id) { mutableStateOf("All") }
-    var sort by rememberSaveable(id) { mutableStateOf("Title") }
+    var sort by rememberSaveable(id) { mutableStateOf("az") }
     var limit by rememberSaveable(id, query, genre, collection, sort) { mutableIntStateOf(40) }
     val profile = page.takeIf { it.id == id }?.profile
     val personal = remember(library.pieces, composer, snapshot) { if (composer == null) emptyList() else library.pieces.filter { pieceComposerMatches(it, composer, snapshot) } }
@@ -52,7 +55,11 @@ import kotlinx.coroutines.launch
         val tokens = catalogText(query).split(' ').filter { it.isNotBlank() }
         val found = works.filter { w -> tokens.all { catalogText("${w.title} ${w.catalogLabel} ${w.subtitle}").contains(it) } &&
             (genre == "All" || w.genre == genre) && (collection == "All" || (w.id in linked) == (collection == "In repertoire")) }
-        if (sort == "Catalogue") found.sortedWith(compareBy({ it.catalogue }, { it.catalogueNumber.toIntOrNull() ?: Int.MAX_VALUE }, { it.title })) else found.sortedBy { catalogText(it.title) }
+        when (sort) {
+            "catalogue" -> found.sortedWith(compareBy<CatalogWork>({ it.catalogue }, { it.catalogueNumber.toIntOrNull() ?: Int.MAX_VALUE }, { catalogText(it.title) }, { it.id }))
+            "za" -> found.sortedWith(compareByDescending<CatalogWork> { catalogText(it.title) }.thenBy { it.id })
+            else -> found.sortedWith(compareBy<CatalogWork>({ catalogText(it.title) }, { it.id }))
+        }
     }
     LaunchedEffect(id) { model.loadComposer(id) }
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(JournalSpace.medium)) {
@@ -63,7 +70,7 @@ import kotlinx.coroutines.launch
                 ArtistHeroHeader(composer, profile?.portrait, model.repository, favorites.any { it.composerId == id }) { identity.favoriteComposer(id, !favorites.any { it.composerId == id }) }
             }
             item {
-                val app=androidx.compose.ui.platform.LocalContext.current.applicationContext as com.opus.piano.OpusApplication
+                val app=androidx.compose.ui.platform.LocalContext.current.appContainer
                 val allowed by app.media.cellular.collectAsStateWithLifecycle()
                 JournalTextButton(onClick={if(app.media.allowed()) model.loadComposer(id,true,download=true) else model.repository.let { app.practice.notice.value=L.s(R.string.media_consent_needed) }}) {Text(L.s(if(profile?.portrait!=null || !profile?.text.isNullOrBlank()) R.string.refresh_supplement else R.string.download_supplement))}
                 if(profile?.portrait!=null || !profile?.text.isNullOrBlank()) JournalTextButton(onClick={scope.launch {try {model.repository.removeSupplement(id);model.loadComposer(id)} catch(c:CancellationException) {throw c} catch(_:Exception) {app.practice.notice.value=L.s(R.string.media_remove_failed)}}}) {Text(L.s(R.string.remove_supplement))}
@@ -107,11 +114,14 @@ import kotlinx.coroutines.launch
                     if (works.isNotEmpty()) item { JournalSecondaryButton(onClick = { tab = 1 }) { Text(L.s(R.string.msg_explore_works_size_loaded_works_c20f, (works.size))) } }
                 }
                 1 -> {
-                    item { OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth(), singleLine = true, label = { Text(L.s(R.string.msg_find_a_composition_bfc2)) }) }
+                    item { OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth(), singleLine = true, label = { Text(L.s(R.string.msg_find_a_composition_bfc2)) },
+                        trailingIcon = { if (query.isNotEmpty()) IconButton(onClick = { query = "" }) { Icon(Icons.Outlined.Close, L.s(R.string.msg_clear_search_6730)) } }) }
                     item { FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Choice(L.s(R.string.msg_genre_2aa3), listOf("All") + works.map { it.genre }.filter { it.isNotBlank() }.distinct().sorted(), genre) { genre = it }
                         Choice(L.s(R.string.msg_collection_30c5), listOf("All", "In repertoire", "Not added"), collection) { collection = it }
-                        Choice(L.s(R.string.msg_sort_adc4), listOf("Title", "Catalogue"), sort) { sort = it }
+                        val sortOptions=listOf(L.s(R.string.artist_sort_title_az),L.s(R.string.artist_sort_title_za),L.s(R.string.msg_catalogue_5a24))
+                        Choice(L.s(R.string.msg_sort_adc4),sortOptions,sortOptions[when(sort){"za"->1;"catalogue"->2;else->0}],translateOptions=false) { option->sort=when(sortOptions.indexOf(option)){1->"za";2->"catalogue";else->"az"} }
+                        JournalTextButton(onClick = { query = ""; genre = "All"; collection = "All"; sort = "az" }) { Text(L.s(R.string.artist_reset_filters)) }
                     } }
                     if (page.loading) item { LinearProgressIndicator(Modifier.fillMaxWidth()) }
                     if (!page.loading && matches.isEmpty()) item { Text(L.s(R.string.msg_no_works_match_this_selection_85cd), color = MaterialTheme.colorScheme.onSurfaceVariant) }

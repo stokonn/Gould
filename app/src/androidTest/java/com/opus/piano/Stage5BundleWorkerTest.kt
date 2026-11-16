@@ -40,7 +40,7 @@ import java.util.UUID
  * [androidx.work.testing.TestDriver]).
  *
  * Hermetic by construction: network facts and HTTP connections are injected through the
- * `OpusApplication` test seams (`bundleNetworkOverride` / `bundleConnectOverride`), so no
+ * `AppContainer.testHooks` network and connection seams, so no
  * provider host, real socket or mobile byte is ever touched. Worker fixtures live in the
  * application's real bundle store and job preferences — the worker is bound to them by design —
  * and are removed again in [tearDown]; scheduler fixtures use isolated stores that cannot
@@ -83,7 +83,7 @@ class Stage5BundleWorkerTest {
         // application created during startup, so every assertion below observes this WorkManager.
         WorkManagerTestInitHelper.initializeTestWorkManager(context)
         workManager = WorkManager.getInstance(context)
-        app.bundleNetworkOverride = BundleNetwork { wifi }
+        app.container.testHooks.bundleNetwork = BundleNetwork { wifi }
     }
 
     @After
@@ -105,8 +105,8 @@ class Stage5BundleWorkerTest {
         File(context.filesDir, "offline-bundles/quarantine").listFiles()?.forEach { it.delete() }
         isolatedRoots.forEach { it.deleteRecursively() }
         isolatedRoots.clear()
-        app.bundleNetworkOverride = null
-        app.bundleConnectOverride = null
+        app.container.testHooks.bundleNetwork = null
+        app.container.testHooks.bundleConnect = null
         runCatching { WorkManagerTestInitHelper.closeWorkDatabase() }
     }
 
@@ -188,7 +188,7 @@ class Stage5BundleWorkerTest {
     @Test
     fun queuedBundleIsDownloadedVerifiedAndPublishedByTheWorker() = runBlocking {
         val content = "worker happy path payload".toByteArray()
-        app.bundleConnectOverride = { Stage5Fixtures.FakeEndpoint(content) }
+        app.container.testHooks.bundleConnect = { Stage5Fixtures.FakeEndpoint(content) }
         val fixture = seedAppBundle(content)
 
         val result = runWorker(fixture.manifest.bundleId, fixture.manifest.revision)
@@ -214,8 +214,8 @@ class Stage5BundleWorkerTest {
     fun offlineEnvironmentRetriesWithoutMovingAByte() = runBlocking {
         var opened = 0
         val content = "offline worker payload".toByteArray()
-        app.bundleNetworkOverride = BundleNetwork { NetworkFacts.DISCONNECTED }
-        app.bundleConnectOverride = { opened++; Stage5Fixtures.FakeEndpoint(content) }
+        app.container.testHooks.bundleNetwork = BundleNetwork { NetworkFacts.DISCONNECTED }
+        app.container.testHooks.bundleConnect = { opened++; Stage5Fixtures.FakeEndpoint(content) }
         val fixture = seedAppBundle(content)
 
         val result = runWorker(fixture.manifest.bundleId, fixture.manifest.revision)
@@ -235,8 +235,8 @@ class Stage5BundleWorkerTest {
     fun missingMeteredConsentPausesAsSuccessAndKeepsRefusalDurable() = runBlocking {
         var opened = 0
         val content = "metered worker payload".toByteArray()
-        app.bundleNetworkOverride = BundleNetwork { mobile }
-        app.bundleConnectOverride = { opened++; Stage5Fixtures.FakeEndpoint(content) }
+        app.container.testHooks.bundleNetwork = BundleNetwork { mobile }
+        app.container.testHooks.bundleConnect = { opened++; Stage5Fixtures.FakeEndpoint(content) }
         val fixture = seedAppBundle(content, meteredAllowed = false)
 
         val result = runWorker(fixture.manifest.bundleId, fixture.manifest.revision)
@@ -255,7 +255,7 @@ class Stage5BundleWorkerTest {
     @Test
     fun transportFailureRetriesAndRecordsTheAttempt() = runBlocking {
         val content = "transport failure payload".toByteArray()
-        app.bundleConnectOverride = { Stage5Fixtures.FakeEndpoint(content, failAfterReads = 0) }
+        app.container.testHooks.bundleConnect = { Stage5Fixtures.FakeEndpoint(content, failAfterReads = 0) }
         val fixture = seedAppBundle(content)
 
         val result = runWorker(fixture.manifest.bundleId, fixture.manifest.revision)
@@ -276,7 +276,7 @@ class Stage5BundleWorkerTest {
     fun cancelledJobSucceedsWithoutTouchingTheBundle() = runBlocking {
         var opened = 0
         val content = "cancelled job payload".toByteArray()
-        app.bundleConnectOverride = { opened++; Stage5Fixtures.FakeEndpoint(content) }
+        app.container.testHooks.bundleConnect = { opened++; Stage5Fixtures.FakeEndpoint(content) }
         val fixture = seedAppBundle(content, active = false)
 
         val result = runWorker(fixture.manifest.bundleId, fixture.manifest.revision)
@@ -308,7 +308,7 @@ class Stage5BundleWorkerTest {
     @Test
     fun workManagerRunsTheScheduledWorkerToACompletedBundle() = runBlocking {
         val content = "workmanager end-to-end payload".toByteArray()
-        app.bundleConnectOverride = { Stage5Fixtures.FakeEndpoint(content) }
+        app.container.testHooks.bundleConnect = { Stage5Fixtures.FakeEndpoint(content) }
         val fixture = seedAppBundle(content)
         val scheduler = BundleScheduler(
             workManager, app.bundleJobs, app.bundleStore, BundleNetwork { wifi }

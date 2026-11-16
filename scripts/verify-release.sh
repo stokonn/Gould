@@ -29,14 +29,15 @@ detail_parts+=("policy-clean-gate")
 
 echo "== RELEASE: mandatory policy checks =="
 for check in check_agent_policy check_localization check_migrations \
-             check_backup_fixtures check_history_paging; do
+             check_backup_fixtures check_history_paging check_ui_literals \
+             check_curated_catalogue; do
   python3 "scripts/$check.py" || fail
 done
-detail_parts+=("policy-checks(5)")
+detail_parts+=("policy-checks(7)")
 
 elapsed=$(($(date +%s) - start))
 scripts/verify-audit.py RELEASE PASS "$elapsed" "${detail_parts[*]}"
 echo "== RELEASE host gate PASS in ${elapsed}s =="
-echo "Remaining release gates (signing artifact, upgrade, security/privacy/licensing,"
-echo "performance, emulator acceptance) are executed separately per VERIFICATION-MATRIX.md"
+echo "Remaining release gates (signing artifact, compatible upgrade, security/privacy/licensing,"
+echo "performance, owner physical-device acceptance) are executed separately per VERIFICATION-MATRIX.md"
 echo "against this exact commit before any publication decision."

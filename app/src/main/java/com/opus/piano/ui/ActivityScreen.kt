@@ -41,6 +41,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.opus.piano.R
 import com.opus.piano.activity.domain.DayActivity
 import com.opus.piano.activity.domain.DayKind
+import com.opus.piano.activity.domain.goalMet
 import com.opus.piano.activity.domain.manualActivityDates
 import com.opus.piano.data.*
 import com.opus.piano.i18n.L
@@ -67,11 +68,11 @@ import java.util.Locale
 
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
       Column(Modifier.fillMaxHeight().widthIn(max = 720.dp).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 18.dp, vertical = 14.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        EditorialHeader(L.s(R.string.activity_title), actions = {
+        TourAnchor("activity") { EditorialHeader(L.s(R.string.activity_title), actions = {
             IconButton(onClick = { goalEditor = true }, enabled = state.snapshot != null, modifier = Modifier.testTag("activity-edit-goal-header")) {
                 Icon(Icons.Outlined.Edit, L.s(R.string.activity_edit_goal))
             }
-        })
+        }) }
         Text(L.s(R.string.activity_subtitle), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         state.error?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
 
@@ -88,7 +89,7 @@ import java.util.Locale
                     LinearProgressIndicator(progress = { (summary.totals.sessions.toFloat() / summary.goal.sessions).coerceIn(0f, 1f) }, Modifier.fillMaxWidth(), color = graphAccent ?: MaterialTheme.colorScheme.primary)
                     Text(if (summary.goal.minutes == null) L.s(R.string.activity_minutes_unset, summary.totals.minutes) else L.s(R.string.activity_minutes_progress, summary.totals.minutes, summary.goal.minutes), style = MaterialTheme.typography.titleMedium)
                     summary.goal.minutes?.let { target -> LinearProgressIndicator(progress = { (summary.totals.minutes.toFloat() / target).coerceIn(0f, 1f) }, Modifier.fillMaxWidth(), color = graphAccent ?: MaterialTheme.colorScheme.secondary) }
-                    if (summary.totals.sessions >= summary.goal.sessions) Text(L.s(R.string.activity_goal_met), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
+                    if (goalMet(summary.totals, summary.goal)) Text(L.s(R.string.activity_goal_met), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
                     else Text(L.s(R.string.activity_goal_waiting, summary.goal.sessions), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
                 when (val reward = rewardUiState) {
@@ -158,7 +159,7 @@ import java.util.Locale
                 L.s(R.string.activity_current_streak) to L.quantity(R.plurals.activity_week_streak, summary.currentWeeklyStreak),
                 L.s(R.string.activity_longest_streak) to L.quantity(R.plurals.activity_week_streak, summary.longestWeeklyStreak),
             )
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            TourAnchor("streaks") { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 metrics.chunked(2).forEachIndexed { rowIndex, row ->
                     Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         row.forEachIndexed { columnIndex, (label, value) ->
@@ -173,7 +174,7 @@ import java.util.Locale
                         }
                     }
                 }
-            }
+            } }
 
             BoxWithConstraints(Modifier.fillMaxWidth()) {
                 if (maxWidth < 420.dp) {
@@ -483,7 +484,7 @@ import java.util.Locale
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
         Column(Modifier.fillMaxHeight().widthIn(max = 720.dp).fillMaxWidth().verticalScroll(rememberScrollState()).padding(18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                IconButton(onClick = back) { Icon(Icons.AutoMirrored.Outlined.ArrowBack, L.s(R.string.activity_cancel)) }
+                JournalBackButton(back, L.s(R.string.activity_cancel))
                 Text(L.s(R.string.activity_collection), style = MaterialTheme.typography.headlineMedium)
             }
             Text(L.s(R.string.activity_collection_unlock_description), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)

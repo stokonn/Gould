@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
@@ -9,7 +11,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.opus.piano.OpusApplication
 import com.opus.piano.R
 import com.opus.piano.audio.RecordingController
 import com.opus.piano.data.MediaBackupRepository
@@ -19,8 +20,8 @@ import kotlinx.coroutines.*
 /** Explicit SAF-only audio archive flow. Staging receipts survive UI/process loss. */
 @Composable internal fun MediaBackupControls() {
     val context = LocalContext.current
-    val app = context.applicationContext as OpusApplication
-    val media = remember { MediaBackupRepository(app,app.database) }
+    val app = context.appContainer
+    val media = remember { MediaBackupRepository(app.context,app.database) }
     val scope = rememberCoroutineScope()
     val recording by app.recording.state.collectAsStateWithLifecycle()
     var pending by remember { mutableStateOf<List<String>>(emptyList()) }

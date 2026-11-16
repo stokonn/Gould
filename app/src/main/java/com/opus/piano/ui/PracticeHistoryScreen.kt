@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import com.opus.piano.i18n.L
 import com.opus.piano.R
 import androidx.activity.compose.BackHandler
@@ -10,13 +12,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import com.opus.piano.OpusApplication
 import com.opus.piano.data.*
 import kotlinx.coroutines.CancellationException
 
 /** Keyset paging stays bounded and stable even when newer sessions arrive. */
 @Composable internal fun PracticeHistoryScreen(back:()->Unit, pieceId:Long?=null, catalogId:String?=null) {
-    val dao=(LocalContext.current.applicationContext as OpusApplication).database.practiceDao()
+    val dao=(LocalContext.current.appContainer).database.practiceDao()
     var sessions by remember(pieceId,catalogId) { mutableStateOf<List<PracticeSession>>(emptyList()) }
     var parts by remember(pieceId,catalogId) { mutableStateOf<Map<Long,List<SessionPart>>>(emptyMap()) }
     var request by remember(pieceId,catalogId) { mutableIntStateOf(0) }

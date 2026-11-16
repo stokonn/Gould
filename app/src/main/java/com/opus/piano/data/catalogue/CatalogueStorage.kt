@@ -17,10 +17,16 @@ class CatalogueStorage(context:Context) {
         return CatalogueBudget.reserve(personal,backups)
     }
     fun admits(estimatedBytes:Long):Boolean {val u=usage();return estimatedBytes in 0..MAX_TOTAL && u.databaseBytes<=MAX_TOTAL-u.mediaBytes-estimatedBytes && CatalogueBudget.fits(u.freeBytes,estimatedBytes,requiredReserve())}
+    fun admitsInstall(databaseBytes:Long,copies:Int=1):Boolean {
+        if(databaseBytes !in 1..MAX_TOTAL || copies !in 1..2 || databaseBytes>Long.MAX_VALUE/copies) return false
+        return CatalogueBudget.fits(directory.usableSpace,databaseBytes*copies,requiredReserve())
+    }
     fun trimMedia(now:Long=System.currentTimeMillis()) {
         val files=media.listFiles()?.filter {it.isFile}?.sortedBy {it.lastModified()}.orEmpty()
         var size=files.sumOf {it.length()}
         files.forEach {file->if(size>MAX_MEDIA || now-file.lastModified()>MAX_AGE){val bytes=file.length();if(file.delete())size-=bytes}}
     }
-    companion object {const val MAX_TOTAL=256L*1024*1024;const val MAX_MEDIA=16L*1024*1024;const val MAX_RESPONSE=2L*1024*1024;const val MAX_INTAKE=8*MAX_RESPONSE;const val FREE_RESERVE=128L*1024*1024;const val MAX_AGE=30L*86400000}
+    // The pinned offline MusicBrainz Core generation is ~6.4 GiB; keep separate
+    // downloaded BundleStore limits at 256 MiB.
+    companion object {const val MAX_TOTAL=8L*1024*1024*1024;const val MAX_MEDIA=16L*1024*1024;const val MAX_RESPONSE=2L*1024*1024;const val MAX_INTAKE=8*MAX_RESPONSE;const val FREE_RESERVE=128L*1024*1024;const val MAX_AGE=30L*86400000}
 }

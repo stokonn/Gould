@@ -93,6 +93,19 @@ class ActivityRulesTest {
         assertFalse(perfectWeek(betaWeek, WeeklyGoal(monday, 3, 31), sessions))
     }
 
+    @Test fun weeklySuccessRequiresSessionsAndMinutesTogether() {
+        val goal = WeeklyGoal(monday, sessions = 2, minutes = 30)
+        val mixed = listOf(
+            Workout(monday, 10 * 60_000L, "one", WorkoutSource.PRACTICE_SESSION),
+            Workout(monday + 1, 10 * 60_000L, "two", WorkoutSource.MANUAL_ENTRY),
+        )
+        assertEquals(2, aggregate(mixed, week).sessions)
+        assertEquals(20, aggregate(mixed, week).minutes)
+        assertFalse(goalMet(aggregate(mixed, week), goal))
+        assertFalse(weekSuccess(week, goal, mixed, week.sunday)!!)
+        assertTrue(goalMet(aggregate(mixed + Workout(monday + 2, 10 * 60_000L, "three", WorkoutSource.PRACTICE_SESSION), week), goal))
+    }
+
     @Test fun freezeCapEarningPauseConsumptionAndBreakAreDeterministic() {
         var state = FreezeState()
         repeat(4) { state = closeWeek(state, true).first }

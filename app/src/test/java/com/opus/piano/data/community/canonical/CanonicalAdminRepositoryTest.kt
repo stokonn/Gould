@@ -1,7 +1,5 @@
 package com.opus.piano.data.community.canonical
 
-import com.opus.piano.admin.AdminHttpResponse
-import com.opus.piano.admin.AdminTransport
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
@@ -35,7 +33,7 @@ class CanonicalAdminRepositoryTest {
     }
     @Test fun canonicalServiceUsesActualAndroidTransportSeam() = runBlocking {
         val calls = mutableListOf<String>()
-        val t = AdminTransport { method, url, headers, body ->
+        val t = CanonicalHttpExchange { method, url, headers, body ->
             calls += "$method $url"
             assertTrue(url.startsWith("https://fixture.invalid/v1/"))
             val pair = when {
@@ -43,7 +41,7 @@ class CanonicalAdminRepositoryTest {
                 url.endsWith("capabilities") -> 200 to raw("Capabilities")
                 else -> 200 to raw("QueuePage")
             }
-            AdminHttpResponse(pair.first, pair.second.toByteArray(), null)
+            CanonicalHttpResponse(pair.first, pair.second.toByteArray(), null)
         }
         val r = repo(CanonicalHttpTransport({ "https://fixture.invalid" }, t))
         r.authenticate("test", "test"); r.queue()
@@ -93,8 +91,8 @@ class CanonicalAdminRepositoryTest {
         assertFalse(repo(CanonicalAdminTransport { _, _, _, _ -> error("must not call") }).authenticated)
     }
     @Test fun invalidUtf8RedirectAndOversizedResponsesFailClosed() = runBlocking {
-        for (response in listOf(AdminHttpResponse(200, byteArrayOf(0xc3.toByte(), 0x28), null), AdminHttpResponse(302, byteArrayOf(), null), AdminHttpResponse(200, ByteArray(524289), null), AdminHttpResponse(204, byteArrayOf(32), null))) {
-            val t = CanonicalHttpTransport({ "https://fixture.invalid" }, AdminTransport { _, _, _, _ -> response })
+        for (response in listOf(CanonicalHttpResponse(200, byteArrayOf(0xc3.toByte(), 0x28)), CanonicalHttpResponse(302, byteArrayOf()), CanonicalHttpResponse(200, ByteArray(524289)), CanonicalHttpResponse(204, byteArrayOf(32)))) {
+            val t = CanonicalHttpTransport({ "https://fixture.invalid" }, CanonicalHttpExchange { _, _, _, _ -> response })
             val result = runCatching { t.exchange("GET", "/v1/session", null, null) }
             if (response.code == 302) assertEquals(302, result.getOrThrow().status) else assertTrue(result.isFailure)
         }

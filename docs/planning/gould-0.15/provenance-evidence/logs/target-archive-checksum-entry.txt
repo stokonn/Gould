@@ -1,0 +1,2 @@
+mbdump.tar.bz2: OK
+exit_code=0

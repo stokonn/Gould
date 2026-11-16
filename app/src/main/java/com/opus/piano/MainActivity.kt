@@ -18,7 +18,7 @@ class MainActivity : androidx.appcompat.app.AppCompatActivity() {
         super.onNewIntent(intent)
         setIntent(intent)
         if (intent.getBooleanExtra("practice",false)) {
-            (application as OpusApplication).openPractice.value = System.nanoTime()
+            application.appContainer.openPractice.value = System.nanoTime()
             intent.removeExtra("practice")
         }
     }
@@ -28,30 +28,30 @@ class MainActivity : androidx.appcompat.app.AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val app = application.appContainer
         com.opus.piano.i18n.L.refresh()
         if (savedInstanceState == null && intent.getBooleanExtra("practice",false))
-            (application as OpusApplication).openPractice.value = System.nanoTime()
+            app.openPractice.value = System.nanoTime()
         intent.removeExtra("practice")
         enableEdgeToEdge()
         setContent {
             val model: OpusViewModel = viewModel(factory = viewModelFactory {
-                initializer { OpusViewModel((application as OpusApplication).repository, createSavedStateHandle(), (application as OpusApplication).practice, (application as OpusApplication).recording, application) }
+                initializer { OpusViewModel(app.repository, createSavedStateHandle(), app.practice, app.recording, application) }
             })
             val catalog: CatalogViewModel = viewModel(factory = viewModelFactory {
-                initializer { CatalogViewModel((application as OpusApplication).catalogRepository, createSavedStateHandle()) }
+                initializer { CatalogViewModel(app.catalogRepository, createSavedStateHandle()) }
             })
             val experience: ExperienceViewModel = viewModel(factory = viewModelFactory {
-                initializer { ExperienceViewModel((application as OpusApplication).achievements, (application as OpusApplication).recordings) }
+                initializer { ExperienceViewModel(app.achievements, app.recordings) }
             })
             val profile: ProfileViewModel = viewModel(factory = viewModelFactory {
                 initializer { ProfileViewModel(application, createSavedStateHandle()) }
             })
-            val admin: com.opus.piano.ui.admin.AdminViewModel = viewModel()
             val activity: ActivityViewModel = viewModel(factory = viewModelFactory {
-                initializer { ActivityViewModel((application as OpusApplication).activityRepository) }
+                initializer { ActivityViewModel(app.activityRepository) }
             })
             val settings by profile.settings.collectAsStateWithLifecycle()
-            val appearance by (application as OpusApplication).appearance.state.collectAsStateWithLifecycle()
+            val appearance by app.appearance.state.collectAsStateWithLifecycle()
             OpusTheme(settings.theme, settings.typography, appearance) {
                 val light = androidx.compose.material3.MaterialTheme.colorScheme.background.luminance() > .5f
                 androidx.compose.runtime.SideEffect {
@@ -59,7 +59,7 @@ class MainActivity : androidx.appcompat.app.AppCompatActivity() {
                         isAppearanceLightStatusBars = light; isAppearanceLightNavigationBars = light
                     }
                 }
-                OpusApp(model, catalog, experience, profile, admin, activity)
+                OpusApp(model, catalog, experience, profile, activity)
             }
         }
     }

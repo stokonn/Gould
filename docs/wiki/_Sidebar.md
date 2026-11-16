@@ -1,6 +1,6 @@
 [**Gould**](Home)
 
-**Latest:** [Gould 0.14.0 (Pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.14.0)
+**Latest:** [Gould 0.15.0 (Pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.15.0)
 
 ### Guides
 - [Getting Started](Getting-Started)

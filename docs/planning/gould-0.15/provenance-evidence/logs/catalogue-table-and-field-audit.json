@@ -1,0 +1,2059 @@
+{
+  "full_core_db": {
+    "path": "docs/planning/gould-0.15/provenance-evidence/reproduction/full-core-db/catalogue.db",
+    "tables": [
+      {
+        "name": "albums",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "albumType",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "alias_fts",
+        "rows": 3411998,
+        "columns": [
+          {
+            "name": "normalized",
+            "declared_type": ""
+          }
+        ]
+      },
+      {
+        "name": "alias_fts_docsize",
+        "rows": 3411998,
+        "columns": [
+          {
+            "name": "docid",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "size",
+            "declared_type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "alias_fts_segdir",
+        "rows": 21,
+        "columns": [
+          {
+            "name": "level",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "idx",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "start_block",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "leaves_end_block",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "end_block",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "root",
+            "declared_type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "alias_fts_segments",
+        "rows": 14297,
+        "columns": [
+          {
+            "name": "blockid",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "block",
+            "declared_type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "alias_fts_stat",
+        "rows": 1,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "value",
+            "declared_type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "aliases",
+        "rows": 3411998,
+        "columns": [
+          {
+            "name": "rowid",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "language",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "value",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "normalized",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "aliasType",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "arrangements",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "instrumentation",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "artists",
+        "rows": 202867,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "artistType",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sortName",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "birth",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "birthPrecision",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "death",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "deathPrecision",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "assertions",
+        "rows": 5499021,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "field",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "valueJson",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "rightsId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "selected",
+            "declared_type": "INTEGER"
+          }
+        ]
+      },
+      {
+        "name": "catalogue_state",
+        "rows": 10,
+        "columns": [
+          {
+            "name": "key",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "value",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "collections",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "description",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "documents",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "language",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "contentSha256",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "rightsId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "relativePath",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revisionUrl",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "historyUrl",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "fallbackReason",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "entities",
+        "rows": 3105804,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "title",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "status",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "external_identities",
+        "rows": 3105804,
+        "columns": [
+          {
+            "name": "provider",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "providerKind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "externalId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "evidence",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reviewState",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "identity_revisions",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "provider",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "providerKind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "externalId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "evidence",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reviewState",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "media",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "contentSha256",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "bytes",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "rightsId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "relativePath",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "recordings",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "durationMillis",
+            "declared_type": "INTEGER"
+          }
+        ]
+      },
+      {
+        "name": "redirect_revisions",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "targetId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reason",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "evidence",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reviewer",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "relationships",
+        "rows": 2488215,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "type",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "fromId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "fromKind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "toId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "toKind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "position",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "medium",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "role",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "creditedAs",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "releases",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "edition",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "date",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "datePrecision",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "rights",
+        "rows": 1,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "license",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "licenseUrl",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "attribution",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reviewState",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "adaptation",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "room_master_table",
+        "rows": 1,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "identity_hash",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "sources",
+        "rows": 1,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "provider",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "recordId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "payloadSha256",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "retrievedAt",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceUrl",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "works",
+        "rows": 2902937,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "workType",
+            "declared_type": "TEXT"
+          }
+        ]
+      }
+    ],
+    "rights": [
+      [
+        "CC0-1.0",
+        "https://creativecommons.org/publicdomain/zero/1.0/",
+        "MusicBrainz Core snapshot 20261114-002230; CC0 1.0 Universal",
+        "approved"
+      ]
+    ],
+    "sources": [
+      [
+        "musicbrainz",
+        "20261114-002230",
+        "da4f1afcbca8ca54eb6362ae45173543f079e8491d097a376d060551d1a03335",
+        "da4f1afcbca8ca54eb6362ae45173543f079e8491d097a376d060551d1a03335",
+        "2026-11-15T00:56:00+01:00",
+        "https://data.metabrainz.org/pub/musicbrainz/data/fullexport/20261114-002230/mbdump.tar.bz2"
+      ]
+    ]
+  },
+  "reproduced_curated_db": {
+    "path": "docs/planning/gould-0.15/provenance-evidence/reproduction/curated-seed/catalogue.db",
+    "tables": [
+      {
+        "name": "albums",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "albumType",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "alias_fts",
+        "rows": 149881,
+        "columns": [
+          {
+            "name": "normalized",
+            "declared_type": ""
+          }
+        ]
+      },
+      {
+        "name": "alias_fts_docsize",
+        "rows": 149881,
+        "columns": [
+          {
+            "name": "docid",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "size",
+            "declared_type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "alias_fts_segdir",
+        "rows": 11,
+        "columns": [
+          {
+            "name": "level",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "idx",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "start_block",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "leaves_end_block",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "end_block",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "root",
+            "declared_type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "alias_fts_segments",
+        "rows": 1576,
+        "columns": [
+          {
+            "name": "blockid",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "block",
+            "declared_type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "alias_fts_stat",
+        "rows": 1,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "value",
+            "declared_type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "aliases",
+        "rows": 149881,
+        "columns": [
+          {
+            "name": "rowid",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "language",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "value",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "normalized",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "aliasType",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "arrangements",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "instrumentation",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "artists",
+        "rows": 100,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "artistType",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sortName",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "birth",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "birthPrecision",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "death",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "deathPrecision",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "assertions",
+        "rows": 145508,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "field",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "valueJson",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "rightsId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "selected",
+            "declared_type": "INTEGER"
+          }
+        ]
+      },
+      {
+        "name": "catalogue_state",
+        "rows": 10,
+        "columns": [
+          {
+            "name": "key",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "value",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "collections",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "description",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "documents",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "language",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "contentSha256",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "rightsId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "relativePath",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revisionUrl",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "historyUrl",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "fallbackReason",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "entities",
+        "rows": 105132,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "title",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "status",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "external_identities",
+        "rows": 105132,
+        "columns": [
+          {
+            "name": "provider",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "providerKind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "externalId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "evidence",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reviewState",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "identity_revisions",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "provider",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "providerKind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "externalId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "evidence",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reviewState",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "media",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "contentSha256",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "bytes",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "rightsId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "relativePath",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "recordings",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "durationMillis",
+            "declared_type": "INTEGER"
+          }
+        ]
+      },
+      {
+        "name": "redirect_revisions",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "targetId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reason",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "evidence",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reviewer",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "relationships",
+        "rows": 105421,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "type",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "fromId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "fromKind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "toId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "toKind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "position",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "medium",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "role",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "creditedAs",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "releases",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "edition",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "date",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "datePrecision",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "rights",
+        "rows": 1,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "license",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "licenseUrl",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "attribution",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reviewState",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "adaptation",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "room_master_table",
+        "rows": 1,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "identity_hash",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "sources",
+        "rows": 1,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "provider",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "recordId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "payloadSha256",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "retrievedAt",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceUrl",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "works",
+        "rows": 105032,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "workType",
+            "declared_type": "TEXT"
+          }
+        ]
+      }
+    ],
+    "rights": [
+      [
+        "CC0-1.0",
+        "https://creativecommons.org/publicdomain/zero/1.0/",
+        "MusicBrainz Core snapshot 20261114-002230; CC0 1.0 Universal",
+        "approved"
+      ]
+    ],
+    "sources": [
+      [
+        "musicbrainz",
+        "20261114-002230",
+        "da4f1afcbca8ca54eb6362ae45173543f079e8491d097a376d060551d1a03335",
+        "da4f1afcbca8ca54eb6362ae45173543f079e8491d097a376d060551d1a03335",
+        "2026-11-15T00:56:00+01:00",
+        "https://data.metabrainz.org/pub/musicbrainz/data/fullexport/20261114-002230/mbdump.tar.bz2"
+      ]
+    ],
+    "backslash_in_source_text_fields": {
+      "entities.title": 0,
+      "artists.sortName": 0,
+      "artists.birth": 0,
+      "artists.death": 0,
+      "works.workType": 0,
+      "aliases.value": 0,
+      "aliases.normalized": 0,
+      "aliases.language": 0,
+      "aliases.aliasType": 0,
+      "assertions.valueJson": 15740,
+      "relationships.creditedAs": 0
+    }
+  },
+  "existing_curated_db": {
+    "path": ".gould-015-diagnostics/catalogue-performance-20261115/before-host/catalogue.db",
+    "tables": [
+      {
+        "name": "albums",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "albumType",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "alias_fts",
+        "rows": 149881,
+        "columns": [
+          {
+            "name": "normalized",
+            "declared_type": ""
+          }
+        ]
+      },
+      {
+        "name": "alias_fts_docsize",
+        "rows": 149881,
+        "columns": [
+          {
+            "name": "docid",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "size",
+            "declared_type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "alias_fts_segdir",
+        "rows": 11,
+        "columns": [
+          {
+            "name": "level",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "idx",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "start_block",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "leaves_end_block",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "end_block",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "root",
+            "declared_type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "alias_fts_segments",
+        "rows": 1576,
+        "columns": [
+          {
+            "name": "blockid",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "block",
+            "declared_type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "alias_fts_stat",
+        "rows": 1,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "value",
+            "declared_type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "aliases",
+        "rows": 149881,
+        "columns": [
+          {
+            "name": "rowid",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "language",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "value",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "normalized",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "aliasType",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "arrangements",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "instrumentation",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "artists",
+        "rows": 100,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "artistType",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sortName",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "birth",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "birthPrecision",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "death",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "deathPrecision",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "assertions",
+        "rows": 145508,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "field",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "valueJson",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "rightsId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "selected",
+            "declared_type": "INTEGER"
+          }
+        ]
+      },
+      {
+        "name": "catalogue_state",
+        "rows": 10,
+        "columns": [
+          {
+            "name": "key",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "value",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "collections",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "description",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "documents",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "language",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "contentSha256",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "rightsId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "relativePath",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revisionUrl",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "historyUrl",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "fallbackReason",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "entities",
+        "rows": 105132,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "title",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "status",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "external_identities",
+        "rows": 105132,
+        "columns": [
+          {
+            "name": "provider",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "providerKind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "externalId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "evidence",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reviewState",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "identity_revisions",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "provider",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "providerKind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "externalId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "entityId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "evidence",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reviewState",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "media",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "contentSha256",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "bytes",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "rightsId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "relativePath",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "recordings",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "durationMillis",
+            "declared_type": "INTEGER"
+          }
+        ]
+      },
+      {
+        "name": "redirect_revisions",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "targetId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reason",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "evidence",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reviewer",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "relationships",
+        "rows": 105421,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "type",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "fromId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "fromKind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "toId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "toKind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "position",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "medium",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "role",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "creditedAs",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceId",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "releases",
+        "rows": 0,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "edition",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "date",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "datePrecision",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "rights",
+        "rows": 1,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "license",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "licenseUrl",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "attribution",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "reviewState",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "adaptation",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "room_master_table",
+        "rows": 1,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "INTEGER"
+          },
+          {
+            "name": "identity_hash",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "sources",
+        "rows": 1,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "provider",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "recordId",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "revision",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "payloadSha256",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "retrievedAt",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "sourceUrl",
+            "declared_type": "TEXT"
+          }
+        ]
+      },
+      {
+        "name": "works",
+        "rows": 105032,
+        "columns": [
+          {
+            "name": "id",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "kind",
+            "declared_type": "TEXT"
+          },
+          {
+            "name": "workType",
+            "declared_type": "TEXT"
+          }
+        ]
+      }
+    ],
+    "rights": [
+      [
+        "CC0-1.0",
+        "https://creativecommons.org/publicdomain/zero/1.0/",
+        "MusicBrainz Core snapshot 20261114-002230; CC0 1.0 Universal",
+        "approved"
+      ]
+    ],
+    "sources": [
+      [
+        "musicbrainz",
+        "20261114-002230",
+        "da4f1afcbca8ca54eb6362ae45173543f079e8491d097a376d060551d1a03335",
+        "da4f1afcbca8ca54eb6362ae45173543f079e8491d097a376d060551d1a03335",
+        "2026-11-15T00:56:00+01:00",
+        "https://data.metabrainz.org/pub/musicbrainz/data/fullexport/20261114-002230/mbdump.tar.bz2"
+      ]
+    ],
+    "backslash_in_source_text_fields": {
+      "entities.title": 0,
+      "artists.sortName": 0,
+      "artists.birth": 0,
+      "artists.death": 0,
+      "works.workType": 0,
+      "aliases.value": 0,
+      "aliases.normalized": 0,
+      "aliases.language": 0,
+      "aliases.aliasType": 0,
+      "assertions.valueJson": 15740,
+      "relationships.creditedAs": 0
+    }
+  }
+}

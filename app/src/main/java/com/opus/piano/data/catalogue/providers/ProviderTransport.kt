@@ -55,7 +55,7 @@ class HttpsProviderTransport(private val connect:(URL)->HttpURLConnection={it.op
         val cancellation=CoroutineScope(currentCoroutineContext()).launch(Dispatchers.IO, start=CoroutineStart.UNDISPATCHED) { try { awaitCancellation() } finally { connection.disconnect() } }
         try {
             connection.connectTimeout=10000;connection.readTimeout=12000;connection.instanceFollowRedirects=false
-            connection.setRequestProperty("User-Agent","Goldberg/0.11-stage4 (https://github.com/stokonn/Goldberg)")
+            connection.setRequestProperty("User-Agent","Gould/0.15.0 (https://github.com/stokonn/Gould)")
             connection.setRequestProperty("Accept","application/json")
             connection.setRequestProperty("Accept-Encoding","identity")
             request.headers.filterKeys {it in setOf("If-None-Match","If-Modified-Since")}.forEach { (name,value)->

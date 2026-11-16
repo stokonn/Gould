@@ -19,27 +19,21 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.luminance
-import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.test.core.app.ActivityScenario
 import androidx.test.runner.AndroidJUnitRunner
 import androidx.test.platform.app.InstrumentationRegistry
-import androidx.work.*
-import androidx.work.testing.TestListenableWorkerBuilder
-import com.opus.piano.admin.*
 import com.opus.piano.ui.*
-import com.opus.piano.ui.admin.AdminViewModel
-import kotlinx.coroutines.runBlocking
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 
 /** Disposable-emulator-only, explicitly selected instrumentation component.
- * Uses the real OpusApp/NavHost with an in-memory Admin transport. No production
- * transport/decision enablement. No @Test methods or changes to the CI suite.
+ * Uses the real OpusApp/NavHost. No @Test methods or changes to the CI suite.
  * Host commands and TalkBack perform interactions; this probe only records them.
  */
 class Stage8bAssessmentProbe : AndroidJUnitRunner() {
@@ -53,7 +47,7 @@ class Stage8bAssessmentProbe : AndroidJUnitRunner() {
     override fun onStart() {
         val phase = InstrumentationRegistry.getArguments().getString("goldbergManual")
         try {
-            require(phase in listOf("interactive", "revoked", "gould012")) { "Explicit goldbergManual phase required" }
+            require(phase in listOf("interactive", "gould012")) { "Explicit goldbergManual phase required" }
             require(android.os.Build.FINGERPRINT.contains("generic") || android.os.Build.FINGERPRINT.contains("emu"))
             if (readOnlyGould()) {
                 require(android.os.Build.VERSION.SDK_INT == 36)
@@ -96,15 +90,10 @@ class Stage8bAssessmentProbe : AndroidJUnitRunner() {
                     if (File(app.filesDir,prefix+"stop").exists()) break
                     Thread.sleep(100)
                 }
-            } else if (phase == "revoked") {
-                check(ContextCompat.checkSelfPermission(app, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_DENIED)
-                check(app.getSystemService(NotificationManager::class.java).activeNotifications.none { it.id == AdminSyncWorker.NOTIFICATION_ID })
-                workerPermissionProbe(false)
-                snapshot("after-revocation-worker")
             } else {
                 val expectedPermission = InstrumentationRegistry.getArguments().getString("goldbergExpectedPermission") ?: "granted"
                 require(expectedPermission in listOf("granted", "denied"))
-                // Offline assessment intentionally excludes the unrelated worker connectivity preflight.
+                // Offline assessment uses the real production navigation graph.
                 val requestedTheme = InstrumentationRegistry.getArguments().getString("goldbergTheme")
                 require(requestedTheme == null || requestedTheme in listOf("Light", "Dark"))
                 val requestedLocale = InstrumentationRegistry.getArguments().getString("goldbergLocale") ?: "en"
@@ -118,28 +107,16 @@ class Stage8bAssessmentProbe : AndroidJUnitRunner() {
                     val model = OpusViewModel(app.repository, SavedStateHandle(), app.practice, app.recording, app)
                     val catalog = CatalogViewModel(app.catalogRepository, SavedStateHandle())
                     val experience = ExperienceViewModel(app.achievements, app.recordings)
-                    val admin = AdminViewModel(app, repository())
                     val activityViewModel = com.opus.piano.ui.ActivityViewModel(app.activityRepository)
-                    for ((key,value) in listOf("profile" to profile,"model" to model,"catalog" to catalog,"experience" to experience,"admin" to admin,"activity" to activityViewModel)) {
+                    for ((key,value) in listOf("profile" to profile,"model" to model,"catalog" to catalog,"experience" to experience,"activity" to activityViewModel)) {
                         activity.viewModelStore.put("manual-$key",value)
                     }
                     activity.setContent {
                         val settings by profile.settings.collectAsStateWithLifecycle()
                         val appearance by app.appearance.state.collectAsStateWithLifecycle()
                         OpusTheme(settings.theme, settings.typography, appearance) {
-                            val scaffold = InstrumentationRegistry.getArguments().getString("goldbergScaffold") == "true"
                             Stage8ScaffoldWindowAppearance(activity)
-                            if (scaffold) {
-                                androidx.compose.material3.Scaffold(bottomBar = {
-                                    JournalNavigationBar(stage8NavigationItems(), "HOME", {})
-                                }) { padding ->
-                                    androidx.compose.foundation.layout.Box(androidx.compose.ui.Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).windowInsetsPadding(androidx.compose.foundation.layout.WindowInsets.safeDrawing.only(androidx.compose.foundation.layout.WindowInsetsSides.Top + androidx.compose.foundation.layout.WindowInsetsSides.Horizontal))) {
-                                        AdminTheme { com.opus.piano.ui.admin.AdminSettingsScreen(admin) {} }
-                                    }
-                                }
-                            } else {
-                            OpusApp(model,catalog,experience,profile,admin,activityViewModel)
-                            }
+                            OpusApp(model,catalog,experience,profile,activityViewModel)
                         }
                     }
                 }
@@ -181,53 +158,6 @@ class Stage8bAssessmentProbe : AndroidJUnitRunner() {
     private fun readOnlyGould() = InstrumentationRegistry.getArguments().getString("goldbergManual") == "gould012"
     private fun gouldRun() = requireNotNull(InstrumentationRegistry.getArguments().getString("gouldQaRun"))
         .also { require(it.matches(Regex("[A-Za-z0-9]+"))) }
-
-    private fun repository(): AdminRepository {
-        val api=AdminApi({"https://synthetic-manual.invalid"},AdminTransport { _,url,_,_ ->
-            val body=when {
-                url.contains("capabilities") -> """{"principalId":"synthetic-moderator","capabilities":["queue.read","audit.read","decide"]}"""
-                url.contains("/submissions/") -> """{"id":"sub_1","owner":"synthetic-author","status":"submitted","revision":1,"revisions":[{"revision":1,"createdAt":1700000000000,"payload":{"title":"Synthetic manual proposal","composer":"Johann Sebastian Bach","fields":[{"field":"title","newValue":"Synthetic manual proposal","evidence":{"url":"https://source.invalid/fixture","license":"CC0 synthetic fixture"}}]}}],"reviewEvents":[]}"""
-                url.contains("/queue") -> """{"items":[{"id":"sub_1","owner":"synthetic-author","status":"submitted","revision":1,"evidenceCount":1,"createdAt":1700000000000}],"nextCursor":null}"""
-                else -> """{"items":[{"seq":1,"ts":1700000000000,"actor":"synthetic-moderator","action":"decision.reject","subject":"sub_1","prevHash":"synthetic","thisHash":"synthetic"}],"nextCursor":null,"chainHead":"synthetic"}"""
-            }
-            AdminHttpResponse(200,body.toByteArray(),null)
-        },{"synthetic-not-a-credential"})
-        return AdminRepository(api,InMemoryAdminSessionStore(),AdminTrustPolicy(),
-            AdminMarkers(InMemoryAdminMarkerStore()){"synthetic-manual"},AdminStatsService(api),decisionsEnabled=true)
-    }
-
-    private fun workerPermissionProbe(granted:Boolean)= runBlocking {
-        val endpoint=app.adminSettings.endpoint;val policy=app.adminSettings.syncPolicy;val token=app.adminSession.readToken()
-        val notices=app.getSystemService(NotificationManager::class.java)
-        var revision=1;var calls=0
-        try {
-            check((ContextCompat.checkSelfPermission(app,Manifest.permission.POST_NOTIFICATIONS)==PackageManager.PERMISSION_GRANTED)==granted)
-            app.adminSettings.endpoint="https://synthetic-manual-permission.invalid"
-            app.adminSettings.syncPolicy=AdminSyncPolicy(true,true,true);app.adminSession.writeToken("synthetic-not-a-credential")
-            val api=AdminApi({app.adminSettings.endpoint},AdminTransport { _,url,_,_ ->
-                calls++
-                AdminHttpResponse(200,(if(url.contains("capabilities"))
-                    """{"principalId":"synthetic-permission-moderator","capabilities":["queue.read"]}"""
-                    else """{"items":[{"id":"synthetic-permission","owner":"synthetic-author","status":"submitted","revision":$revision,"createdAt":1}],"nextCursor":null}""").toByteArray(),null)
-            },{"synthetic-not-a-credential"})
-            val repo=AdminRepository(api,InMemoryAdminSessionStore(),AdminTrustPolicy(),AdminMarkers(InMemoryAdminMarkerStore()){"synthetic-manual-permission"},AdminStatsService(api))
-            val scope=AdminSyncWorker.scope(app)
-            val key=adminFingerprint("$scope:synthetic-permission-moderator")
-            suspend fun execute()=TestListenableWorkerBuilder<AdminSyncWorker>(app).setInputData(workDataOf("scope" to scope))
-                .setWorkerFactory(object:WorkerFactory(){override fun createWorker(context:Context,name:String,parameters:WorkerParameters):ListenableWorker=AdminSyncWorker(context,parameters,repo)})
-                .build().doWork()
-            execute();val before=app.adminSettings.syncSignature(key);check(before!=null)
-            revision=2;execute();check(app.adminSettings.syncSignature(key)!=before);check(calls>0)
-            val until=android.os.SystemClock.uptimeMillis()+5000
-            if(granted) while(notices.activeNotifications.none {it.id==AdminSyncWorker.NOTIFICATION_ID} && android.os.SystemClock.uptimeMillis()<until) Thread.sleep(50)
-            val posted=notices.activeNotifications.any {it.id==AdminSyncWorker.NOTIFICATION_ID};check(posted==granted)
-            File(directory,if(granted)"worker-granted.json" else "worker-revoked.json").writeText(
-                JSONObject().put("pid",Process.myPid()).put("granted",granted).put("fixtureCalls",calls).put("signatureChanged",true).put("notificationPosted",posted).toString(2))
-        } finally {
-            app.adminSettings.endpoint=endpoint;app.adminSettings.syncPolicy=policy
-            if(token==null)app.adminSession.clear() else app.adminSession.writeToken(token)
-        }
-    }
 
     @android.annotation.SuppressLint("NewApi") // Explicit API36 emulator venue.
     private fun snapshot(name:String) {

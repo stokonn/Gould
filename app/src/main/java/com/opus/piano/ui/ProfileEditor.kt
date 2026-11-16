@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -116,7 +118,7 @@ import kotlinx.coroutines.withContext
 }
 
 @Composable private fun EraAutocomplete(value: String, change: (String) -> Unit, enabled: Boolean) {
-    val app = androidx.compose.ui.platform.LocalContext.current.applicationContext as com.opus.piano.OpusApplication
+    val app = androidx.compose.ui.platform.LocalContext.current.appContainer
     val catalog by app.catalogRepository.snapshot.collectAsStateWithLifecycle(CatalogSnapshot(emptyList(), emptyList()))
     var expanded by remember { mutableStateOf(false) }
     // Deliberately use local catalogue periods; this field must never start online discovery.
