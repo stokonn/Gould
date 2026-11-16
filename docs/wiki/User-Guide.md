@@ -1,6 +1,6 @@
 # User Guide — Gould
 
-> Gould 0.14.0 is the latest published pre-release, not Stable. Historical sections retain their original evidence.
+> Gould 0.15.0 is the latest published pre-release, not Stable. Historical sections retain their original evidence.
 
 > **Gould 0.14.0:** Activity replaces Discover in visible navigation. Its annual heatmap groups days into Training, Day Off and Miss; tapping a day shows its date, workout count and exercise minutes. Week Overview reports sessions and optional minutes progress. Discover code remains in the app but its navigation entry is hidden.
 
@@ -12,12 +12,12 @@ The first partial week after Activity is initialized is a non-streak Beta Week; 
 
 Year navigation shows historical dates and hides future dates. Activity uses local calendar dates and records a time-zone identifier per observed week; existing practice session dates are not rewritten. Correcting manual history recomputes progression. A cosmetic already granted remains owned after a later correction.
 
-> **Latest release:** [Gould 0.14.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.14.0). This is not Stable.
+> **Latest release:** [Gould 0.15.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.15.0). This is not Stable.
 
-Gould 0.14.0 retains local practice workflows and adds Activity, weekly goals and progression. The [release notes](https://github.com/stokonn/Gould/blob/main/docs/releases/GOULD-0.14.md) describe the new reward behavior.
+Gould 0.15.0 retains local practice workflows and adds the curated offline catalogue with opt-in online search, redesigned Library and Artist pages, guided onboarding and safer draft recovery. The [0.15 release notes](https://github.com/stokonn/Gould/blob/main/docs/releases/GOULD-0.15.md) describe this update; Activity and reward behaviour is described above.
 
 
-Use Library for your personal repertoire and the shared local catalogue. Discover is temporarily hidden from Gould 0.14.0 navigation while its implementation is preserved. Public catalogue rows are labelled separately from music saved in your repertoire; open details to add an eligible work or open its existing repertoire entry.
+Use Library for your personal repertoire and the shared local catalogue. Discover is temporarily hidden from the current navigation while its implementation is preserved. Public catalogue rows are labelled separately from music saved in your repertoire; open details to add an eligible work or open its existing repertoire entry.
 
 Search uses saved catalogue data first. Automatic online provider search requires Settings consent. Source and licence information is available in Sources & credits. Existing cached metadata is retained; a local snapshot without its original provider response does not acquire approved rights merely by being copied.
 

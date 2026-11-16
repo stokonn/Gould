@@ -1,0 +1,184 @@
+started_utc=2026-11-16T08:56:45+00:00
+command=python3 -u scripts/generate_musicbrainz_catalogue.py <isolated-copy>/mbdump.tar.bz2 --output <evidence>/reproduction/full-core-db
+phase=read-core starting
+phase=read table=artist rows=100,000 checkpoint=0 elapsed=1s
+phase=read table=artist rows=200,000 checkpoint=0 elapsed=1s
+phase=read table=artist rows=300,000 checkpoint=0 elapsed=2s
+phase=read table=artist rows=400,000 checkpoint=0 elapsed=2s
+phase=read table=artist rows=500,000 checkpoint=0 elapsed=3s
+phase=read table=artist rows=600,000 checkpoint=0 elapsed=3s
+phase=read table=artist rows=700,000 checkpoint=0 elapsed=4s
+phase=read table=artist rows=800,000 checkpoint=0 elapsed=4s
+phase=read table=artist rows=900,000 checkpoint=0 elapsed=5s
+phase=read table=artist rows=1,000,000 checkpoint=0 elapsed=5s
+phase=read table=artist rows=1,100,000 checkpoint=0 elapsed=6s
+phase=read table=artist rows=1,200,000 checkpoint=0 elapsed=6s
+phase=read table=artist rows=1,300,000 checkpoint=0 elapsed=7s
+phase=read table=artist rows=1,400,000 checkpoint=0 elapsed=7s
+phase=read table=artist rows=1,500,000 checkpoint=0 elapsed=8s
+phase=read table=artist rows=1,600,000 checkpoint=0 elapsed=9s
+phase=read table=artist rows=1,700,000 checkpoint=0 elapsed=9s
+phase=read table=artist rows=1,800,000 checkpoint=0 elapsed=10s
+phase=read table=artist rows=1,900,000 checkpoint=0 elapsed=10s
+phase=read table=artist rows=2,000,000 checkpoint=0 elapsed=11s
+phase=read table=artist rows=2,100,000 checkpoint=0 elapsed=11s
+phase=read table=artist rows=2,200,000 checkpoint=0 elapsed=12s
+phase=read table=artist rows=2,300,000 checkpoint=0 elapsed=12s
+phase=read table=artist rows=2,400,000 checkpoint=0 elapsed=13s
+phase=read table=artist rows=2,500,000 checkpoint=0 elapsed=13s
+phase=read table=artist rows=2,600,000 checkpoint=0 elapsed=14s
+phase=read table=artist rows=2,700,000 checkpoint=0 elapsed=14s
+phase=read table=artist rows=2,800,000 checkpoint=0 elapsed=15s
+phase=read table=artist rows=2,900,000 checkpoint=0 elapsed=15s
+phase=read table=artist rows=3,000,000 checkpoint=0 elapsed=16s
+phase=read table=artist rows=3,041,882 complete elapsed=16s
+phase=read table=artist_alias rows=100,000 checkpoint=0 elapsed=16s
+phase=read table=artist_alias rows=200,000 checkpoint=0 elapsed=17s
+phase=read table=artist_alias rows=300,000 checkpoint=0 elapsed=17s
+phase=read table=artist_alias rows=400,000 checkpoint=0 elapsed=17s
+phase=read table=artist_alias rows=500,000 checkpoint=0 elapsed=18s
+phase=read table=artist_alias rows=553,891 complete elapsed=18s
+phase=read table=artist_alias_type rows=3 complete elapsed=18s
+phase=read table=artist_type rows=6 complete elapsed=32s
+phase=read table=instrument rows=1,062 complete elapsed=37s
+phase=read table=l_artist_work rows=100,000 checkpoint=0 elapsed=65s
+phase=read table=l_artist_work rows=200,000 checkpoint=0 elapsed=65s
+phase=read table=l_artist_work rows=300,000 checkpoint=0 elapsed=65s
+phase=read table=l_artist_work rows=400,000 checkpoint=0 elapsed=66s
+phase=read table=l_artist_work rows=500,000 checkpoint=0 elapsed=66s
+phase=read table=l_artist_work rows=600,000 checkpoint=0 elapsed=66s
+phase=read table=l_artist_work rows=700,000 checkpoint=0 elapsed=66s
+phase=read table=l_artist_work rows=800,000 checkpoint=0 elapsed=66s
+phase=read table=l_artist_work rows=900,000 checkpoint=0 elapsed=66s
+phase=read table=l_artist_work rows=1,000,000 checkpoint=0 elapsed=67s
+phase=read table=l_artist_work rows=1,100,000 checkpoint=0 elapsed=67s
+phase=read table=l_artist_work rows=1,200,000 checkpoint=0 elapsed=67s
+phase=read table=l_artist_work rows=1,300,000 checkpoint=0 elapsed=67s
+phase=read table=l_artist_work rows=1,400,000 checkpoint=0 elapsed=67s
+phase=read table=l_artist_work rows=1,500,000 checkpoint=0 elapsed=67s
+phase=read table=l_artist_work rows=1,600,000 checkpoint=0 elapsed=68s
+phase=read table=l_artist_work rows=1,700,000 checkpoint=0 elapsed=68s
+phase=read table=l_artist_work rows=1,800,000 checkpoint=0 elapsed=68s
+phase=read table=l_artist_work rows=1,900,000 checkpoint=0 elapsed=68s
+phase=read table=l_artist_work rows=2,000,000 checkpoint=0 elapsed=68s
+phase=read table=l_artist_work rows=2,100,000 checkpoint=0 elapsed=68s
+phase=read table=l_artist_work rows=2,200,000 checkpoint=0 elapsed=69s
+phase=read table=l_artist_work rows=2,300,000 checkpoint=0 elapsed=69s
+phase=read table=l_artist_work rows=2,400,000 checkpoint=0 elapsed=69s
+phase=read table=l_artist_work rows=2,500,000 checkpoint=0 elapsed=69s
+phase=read table=l_artist_work rows=2,600,000 checkpoint=0 elapsed=69s
+phase=read table=l_artist_work rows=2,700,000 checkpoint=0 elapsed=69s
+phase=read table=l_artist_work rows=2,800,000 checkpoint=0 elapsed=70s
+phase=read table=l_artist_work rows=2,900,000 checkpoint=0 elapsed=70s
+phase=read table=l_artist_work rows=3,000,000 checkpoint=0 elapsed=70s
+phase=read table=l_artist_work rows=3,100,000 checkpoint=0 elapsed=70s
+phase=read table=l_artist_work rows=3,200,000 checkpoint=0 elapsed=70s
+phase=read table=l_artist_work rows=3,300,000 checkpoint=0 elapsed=70s
+phase=read table=l_artist_work rows=3,400,000 checkpoint=0 elapsed=71s
+phase=read table=l_artist_work rows=3,500,000 checkpoint=0 elapsed=71s
+phase=read table=l_artist_work rows=3,600,000 checkpoint=0 elapsed=71s
+phase=read table=l_artist_work rows=3,700,000 checkpoint=0 elapsed=71s
+phase=read table=l_artist_work rows=3,800,000 checkpoint=0 elapsed=71s
+phase=read table=l_artist_work rows=3,900,000 checkpoint=0 elapsed=71s
+phase=read table=l_artist_work rows=4,000,000 checkpoint=0 elapsed=72s
+phase=read table=l_artist_work rows=4,100,000 checkpoint=0 elapsed=72s
+phase=read table=l_artist_work rows=4,200,000 checkpoint=0 elapsed=72s
+phase=read table=l_artist_work rows=4,300,000 checkpoint=0 elapsed=72s
+phase=read table=l_artist_work rows=4,400,000 checkpoint=0 elapsed=72s
+phase=read table=l_artist_work rows=4,500,000 checkpoint=0 elapsed=72s
+phase=read table=l_artist_work rows=4,600,000 checkpoint=0 elapsed=73s
+phase=read table=l_artist_work rows=4,700,000 checkpoint=0 elapsed=73s
+phase=read table=l_artist_work rows=4,800,000 checkpoint=0 elapsed=73s
+phase=read table=l_artist_work rows=4,807,826 complete elapsed=73s
+phase=read table=link rows=100,000 checkpoint=0 elapsed=102s
+phase=read table=link rows=200,000 checkpoint=0 elapsed=103s
+phase=read table=link rows=300,000 checkpoint=0 elapsed=103s
+phase=read table=link rows=400,000 checkpoint=0 elapsed=103s
+phase=read table=link rows=500,000 checkpoint=0 elapsed=103s
+phase=read table=link rows=600,000 checkpoint=0 elapsed=103s
+phase=read table=link rows=700,000 checkpoint=0 elapsed=103s
+phase=read table=link rows=800,000 checkpoint=0 elapsed=103s
+phase=read table=link rows=900,000 checkpoint=0 elapsed=104s
+phase=read table=link rows=1,000,000 checkpoint=0 elapsed=104s
+phase=read table=link rows=1,100,000 checkpoint=0 elapsed=104s
+phase=read table=link rows=1,161,081 complete elapsed=104s
+phase=read table=link_type rows=697 complete elapsed=105s
+phase=read table=work rows=100,000 checkpoint=0 elapsed=454s
+phase=read table=work rows=200,000 checkpoint=0 elapsed=454s
+phase=read table=work rows=300,000 checkpoint=0 elapsed=455s
+phase=read table=work rows=400,000 checkpoint=0 elapsed=455s
+phase=read table=work rows=500,000 checkpoint=0 elapsed=455s
+phase=read table=work rows=600,000 checkpoint=0 elapsed=456s
+phase=read table=work rows=700,000 checkpoint=0 elapsed=456s
+phase=read table=work rows=800,000 checkpoint=0 elapsed=456s
+phase=read table=work rows=900,000 checkpoint=0 elapsed=457s
+phase=read table=work rows=1,000,000 checkpoint=0 elapsed=457s
+phase=read table=work rows=1,100,000 checkpoint=0 elapsed=457s
+phase=read table=work rows=1,200,000 checkpoint=0 elapsed=458s
+phase=read table=work rows=1,300,000 checkpoint=0 elapsed=458s
+phase=read table=work rows=1,400,000 checkpoint=0 elapsed=458s
+phase=read table=work rows=1,500,000 checkpoint=0 elapsed=459s
+phase=read table=work rows=1,600,000 checkpoint=0 elapsed=459s
+phase=read table=work rows=1,700,000 checkpoint=0 elapsed=459s
+phase=read table=work rows=1,800,000 checkpoint=0 elapsed=460s
+phase=read table=work rows=1,900,000 checkpoint=0 elapsed=460s
+phase=read table=work rows=2,000,000 checkpoint=0 elapsed=460s
+phase=read table=work rows=2,100,000 checkpoint=0 elapsed=461s
+phase=read table=work rows=2,200,000 checkpoint=0 elapsed=461s
+phase=read table=work rows=2,300,000 checkpoint=0 elapsed=461s
+phase=read table=work rows=2,400,000 checkpoint=0 elapsed=462s
+phase=read table=work rows=2,500,000 checkpoint=0 elapsed=462s
+phase=read table=work rows=2,600,000 checkpoint=0 elapsed=462s
+phase=read table=work rows=2,700,000 checkpoint=0 elapsed=463s
+phase=read table=work rows=2,800,000 checkpoint=0 elapsed=463s
+phase=read table=work rows=2,900,000 checkpoint=0 elapsed=463s
+phase=read table=work rows=2,902,937 complete elapsed=463s
+phase=read table=work_alias rows=100,000 checkpoint=0 elapsed=464s
+phase=read table=work_alias rows=164,312 complete elapsed=464s
+phase=read table=work_alias_type rows=2 complete elapsed=464s
+phase=read table=work_type rows=29 complete elapsed=466s
+phase=read-core complete tables=12 elapsed=466s
+phase=index start=raw_law_link_idx ON artist_work_raw(link)
+phase=index complete=raw_law_link_idx ON artist_work_raw(link) elapsed=1s
+phase=index start=raw_links_type_idx ON links_raw(link_type)
+phase=index complete=raw_links_type_idx ON links_raw(link_type) elapsed=0s
+phase=index start=raw_artist_id_idx ON artists_raw(id)
+phase=index complete=raw_artist_id_idx ON artists_raw(id) elapsed=1s
+phase=index start=raw_work_id_idx ON works_raw(id)
+phase=index complete=raw_work_id_idx ON works_raw(id) elapsed=1s
+phase=index start=raw_links_id_idx ON links_raw(id)
+phase=index complete=raw_links_id_idx ON links_raw(id) elapsed=0s
+phase=index start=raw_link_type_gid_idx ON link_types_raw(gid)
+phase=index complete=raw_link_type_gid_idx ON link_types_raw(gid) elapsed=0s
+phase=index start=raw_instrument_name_idx ON instruments_raw(name)
+phase=index complete=raw_instrument_name_idx ON instruments_raw(name) elapsed=0s
+phase=populate entities/aliases/assertions/relationships starting
+phase=populate complete elapsed=726s
+phase=validate integrity/foreign-keys/Room-hash starting
+phase=database complete bytes=6,864,670,720 elapsed=959s
+phase=manifest complete sha256=7dcd72951f21f3647c7a4e6e08efddba6855debe731156a6df30ea4f6dbadce5 elapsed=961s
+{
+  "works": 2902937,
+  "composers": 202867,
+  "composer_relationships": 2488215,
+  "works_linked_to_composers": 2059464,
+  "title_contains_piano_candidates": 23980,
+  "direct_piano_instrument_links": 0,
+  "database_bytes": 6864670720,
+  "database_sha256": "7dcd72951f21f3647c7a4e6e08efddba6855debe731156a6df30ea4f6dbadce5",
+  "table_members": {
+    "artist": 3041882,
+    "artist_alias": 553891,
+    "artist_alias_type": 3,
+    "artist_type": 6,
+    "instrument": 1062,
+    "l_artist_work": 4807826,
+    "link": 1161081,
+    "link_type": 697,
+    "work": 2902937,
+    "work_alias": 164312,
+    "work_alias_type": 2,
+    "work_type": 29
+  }
+}
+finished_utc=2026-11-16T09:12:50+00:00

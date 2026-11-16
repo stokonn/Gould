@@ -1,0 +1,20 @@
+database=docs/planning/gould-0.15/provenance-evidence/reproduction/curated-seed/catalogue.db
+PostgreSQL COPY parser review: _decoded() splits fields and maps empty/\N to NULL but does not decode PostgreSQL COPY backslash escapes.
+Scope checked: all source-derived text columns retained in this curated output.
+entities.title: values_with_backslash=0
+artists.sortName: values_with_backslash=0
+artists.birth: values_with_backslash=0
+artists.death: values_with_backslash=0
+works.workType: values_with_backslash=0
+aliases.value: values_with_backslash=0
+aliases.normalized: values_with_backslash=0
+aliases.language: values_with_backslash=0
+aliases.aliasType: values_with_backslash=0
+relationships.creditedAs: values_with_backslash=0
+assertions title: decoded_values_with_backslash=0; raw_JSON_backslash_rows=15367 (JSON serialization escapes, not source COPY evidence)
+assertions type: decoded_values_with_backslash=0; raw_JSON_backslash_rows=0 (JSON serialization escapes, not source COPY evidence)
+assertions disambiguation: decoded_values_with_backslash=0; raw_JSON_backslash_rows=373 (JSON serialization escapes, not source COPY evidence)
+assertions sort-name: decoded_values_with_backslash=0; raw_JSON_backslash_rows=0 (JSON serialization escapes, not source COPY evidence)
+assertions birth: decoded_values_with_backslash=0; raw_JSON_backslash_rows=0 (JSON serialization escapes, not source COPY evidence)
+assertions death: decoded_values_with_backslash=0; raw_JSON_backslash_rows=0 (JSON serialization escapes, not source COPY evidence)
+result: no literal backslash sequences are present in the retained source-derived text values or decoded assertion values; no bundled curated text field shows a COPY-escape corruption signature.

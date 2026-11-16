@@ -1,0 +1,14 @@
+started_utc=2026-11-16T09:13:07+00:00
+command=python3 scripts/build_curated_catalogue.py <reproduced-full-core-db> app/src/main/assets/catalogue/classical-composers.json <evidence>/reproduction/curated-seed
+{
+  "composers": 100,
+  "works": 105032,
+  "composer_relationships": 105421,
+  "database_bytes": 283987968,
+  "database_sha256": "2b4c67b414dd985f7caa4e2303b5a54562340ed947d83670a85d32c2820b428f",
+  "scope_entity_count": 105132,
+  "source_snapshot": "20261114-002230",
+  "source_archive_sha256": "da4f1afcbca8ca54eb6362ae45173543f079e8491d097a376d060551d1a03335"
+}
+finished_utc=2026-11-16T09:13:16+00:00
+exit_code=0

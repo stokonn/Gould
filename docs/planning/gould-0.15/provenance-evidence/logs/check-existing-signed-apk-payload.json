@@ -1,0 +1,12 @@
+{
+  "apk_bytes": 97931121,
+  "catalogue_entries": [
+    "assets/catalogue/musicbrainz-core-20261114/catalogue.dbz"
+  ],
+  "catalogue_payload_bytes": 89123721,
+  "catalogue_payload_sha256": "c96a16be03720d18a606efd1517b30d1daea9fdd2b7467203add7ab930b20a5f",
+  "seed_bytes": 283987968,
+  "seed_sha256": "2b4c67b414dd985f7caa4e2303b5a54562340ed947d83670a85d32c2820b428f",
+  "diagnostic_full_database_sha256_absent": true,
+  "diagnostic_full_payload_sha256_absent": true
+}

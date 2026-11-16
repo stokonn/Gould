@@ -1,12 +1,12 @@
 # Getting Started — Gould
 
-> **Latest release:** [Gould 0.14.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.14.0). This is not Stable.
+> **Latest release:** [Gould 0.15.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.15.0). This is not Stable.
 
-> Gould 0.14.0 requires Android 11 (API 30) or later. Android 8–10 are supported by earlier releases only.
+> Gould 0.15.0 requires Android 11 (API 30) or later. Android 8–10 are supported by earlier releases only.
 
-Download the latest signed APK from [Gould 0.14.0 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.14.0). **Android 11 or later** is required.
+Download the latest signed APK from [Gould 0.15.0 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.15.0). **Android 11 or later** is required.
 
-Practice and your saved repertoire work offline. Gould 0.14.0 includes Activity, Library, Studio and Profile; Discover and visible moderation/admin navigation are temporarily hidden. Enable optional automatic online catalogue search in Settings if you want provider searches. Keep media/download consent and mobile-data settings appropriate for your connection. Google profile identity does not synchronize your practice journal.
+Practice and your saved repertoire work offline. Gould 0.15.0 includes Activity, Library, Studio and Profile; Discover and visible moderation/admin navigation are temporarily hidden. Enable optional automatic online catalogue search in Settings if you want provider searches. Keep media/download consent and mobile-data settings appropriate for your connection. Google profile identity does not synchronize your practice journal.
 
 Before updating, export a portable backup from **Settings → Data & Storage** and keep a copy outside app-private storage. Install over the existing compatible app; the application ID is still `com.opus.piano`. Never uninstall to bypass a signing or version mismatch.
 

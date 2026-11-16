@@ -1,3 +1,49 @@
+# Gould 0.15.0 — pre-release verification
+
+[Gould 0.15.0](https://github.com/stokonn/Gould/releases/tag/v0.15.0) is a
+signed, non-debuggable pre-release for `com.opus.piano` (versionCode 17,
+version name `0.15.0-dev`). The published artifact is the exact APK the owner
+tested on a Samsung Galaxy A55: 97,931,121 bytes, SHA-256
+`f3df006e36aa55fb940b5a938cc36737156c3ff77a5c960a9c5da10b53ade8ea`,
+signed with the trusted certificate SHA-256
+`53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`.
+
+The RELEASE-tier host gate `scripts/verify-release.sh` passed on 2026-11-16
+(76 s): the exact mandatory policy command (clean build, no daemon, single
+worker) plus all seven mandatory policy checks. The app JVM suite passed
+**338 tests, 0 failures, 0 errors, 0 skipped** (the test task restored
+identical inputs from the Gradle build cache after `clean`), `lintDebug`
+executed and passed, and the Android-test APK compiled. Fast policy checks
+also passed in the same session (agent policy, localization, migrations,
+backup fixtures, history/paging, UI literals, curated catalogue, admin
+retirement, publication workflows, MusicBrainz catalogue, fixture and
+publication/upgrade/backup unit suites, curated-APK payload check, schema
+immutability, `git diff --check`). The 13-test activity-domain JVM suite and
+additional lint/Release-assembly evidence come from the earlier
+final-verification run recorded in
+[the detailed release record](../releases/GOULD-0.15.md) and
+`docs/planning/gould-0.15/RELEASE-VERIFICATION.md`.
+
+Android instrumentation was compiled but **not executed**; this is not
+reported as an instrumentation pass. The agent did not access the owner's
+device.
+
+The Google dependency licensing audit verdict remains **LEGAL REVIEW
+REQUIRED** and the questions are **unresolved**; the owner explicitly
+authorized publishing this prerelease despite them. See
+[the licensing audit](../planning/gould-0.15/GOOGLE-DEPENDENCY-LICENSING-AUDIT.md)
+and [Licenses](../LICENSES.md).
+
+created by stokonn with love <3
+
+# Gould 0.14.0 — pre-release verification
+
+[Gould 0.14.0](https://github.com/stokonn/Gould/releases/tag/v0.14.0) is a
+signed, non-debuggable pre-release for `com.opus.piano` (versionCode 16). The
+published APK and trusted signing certificate were verified against the
+release source. Signed in-place upgrade verification and visual emulator
+review remain unexecuted; see [the detailed release record](../releases/GOULD-0.14.md).
+
 # Goldberg 0.11 — verified Stable release
 
 [Goldberg 0.11 Stable](https://github.com/stokonn/Gould/releases/tag/v0.11) is a signed, non-debuggable com.opus.piano APK,version0.11/code13. The annotatedv0.11tag points to ab7d66d; its195application/build inputs match the accepted a7bb2aa source. Main history is preserved.

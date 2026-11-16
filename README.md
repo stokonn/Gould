@@ -9,7 +9,7 @@
 <p>A thoughtful, local-first piano practice companion for Android.<br />
 Build your repertoire, record your sessions, and see how far you've come.</p>
 
-<p><a href="https://github.com/stokonn/Gould/releases/tag/v0.14.0"><strong>Gould 0.14.0 — latest pre-release</strong></a> · <a href="https://github.com/stokonn/Gould/releases/tag/v0.13">Gould 0.13</a> · <a href="docs/wiki/User-Guide.md">User guide</a></p>
+<p><a href="https://github.com/stokonn/Gould/releases/tag/v0.15.0"><strong>Gould 0.15.0 — latest pre-release</strong></a> · <a href="https://github.com/stokonn/Gould/releases/tag/v0.14.0">Gould 0.14.0</a> · <a href="docs/wiki/User-Guide.md">User guide</a></p>
 
 <p>
 <img alt="Android 11+" src="https://img.shields.io/badge/Android-11%2B-3DDC84?logo=android&amp;logoColor=white" />
@@ -24,7 +24,7 @@ Build your repertoire, record your sessions, and see how far you've come.</p>
 
 ## Your music. Your progress.
 
-> **Gould 0.14.0 is the latest published pre-release, not Stable.** It adds Activity, weekly goals, Streak protection and cosmetic rewards. See the [release notes](docs/releases/GOULD-0.14.md) for behavior and verification details.
+> **Gould 0.15.0 is the latest published pre-release, not Stable.** It adds the curated offline catalogue with opt-in online MusicBrainz search, a redesigned Library and Artist pages, guided onboarding and safer community-draft recovery. See the [release notes](docs/releases/GOULD-0.15.md) for behavior and verification details.
 
 Each eligible perfect week can earn its own claimable cosmetic. Beta Week can earn that weekly reward but does not count toward official Streak or Freeze progress; four consecutive perfect official Streak weeks award one additional Freeze.
 
@@ -57,15 +57,16 @@ Gould brings the practical parts of piano practice together without turning your
 
 ## Get Gould
 
-**Latest published pre-release: [Gould 0.14.0](https://github.com/stokonn/Gould/releases/tag/v0.14.0)**. This is a pre-release, not Stable. [Gould 0.13 — Project Renaissance](https://github.com/stokonn/Gould/releases/tag/v0.13) remains available as an earlier release.
+**Latest published pre-release: [Gould 0.15.0](https://github.com/stokonn/Gould/releases/tag/v0.15.0)**. This is a pre-release, not Stable. [Gould 0.14.0](https://github.com/stokonn/Gould/releases/tag/v0.14.0) and [Gould 0.13 — Project Renaissance](https://github.com/stokonn/Gould/releases/tag/v0.13) remain available as earlier releases.
 
 - **Android:** 11 or newer (API 30+).
 - **Languages:** English and Czech, with light and dark appearance.
-- **Install:** download the signed [gould-0.14.0.apk](https://github.com/stokonn/Gould/releases/download/v0.14.0/gould-0.14.0.apk) from GitHub Releases; this is a **pre-release**, not Stable.
+- **Install:** download the signed [gould-0.15.0.apk](https://github.com/stokonn/Gould/releases/download/v0.15.0/gould-0.15.0.apk) from GitHub Releases; this is a **pre-release**, not Stable.
+- **Sideload safely:** read [Is it safe to sideload Gould?](docs/SAFE-SIDELOADING.md) for source, hash, compatibility and update checks.
 - **Already using Goldberg/Gould?** Export a backup before updating, then install over your existing compatible application. **Do not uninstall** just to bypass a signing or version mismatch.
-- **Release integrity:** SHA-256 `62c83ddef804a83b71bd05f3f0b09cec29a0784902ad79b0b16ec8bae75b1f2c`.
+- **Release integrity:** SHA-256 `f3df006e36aa55fb940b5a938cc36737156c3ff77a5c960a9c5da10b53ade8ea`.
 
-Gould 0.14.0 targets Android 11 (API 30) and compile/target API 37. Android 8–10 remain supported only by earlier releases.
+Gould 0.15.0 targets Android 11 (API 30) and compile/target API 37. Android 8–10 remain supported only by earlier releases.
 
 [All releases](https://github.com/stokonn/Gould/releases) · [Getting started](docs/wiki/Getting-Started.md) · [FAQ & troubleshooting](docs/wiki/FAQ-and-Troubleshooting.md)
 
@@ -85,11 +86,16 @@ For developers:
 
 - Start with [AGENTS.md](AGENTS.md) for repository and release-safety rules, and the [Developer Guide](docs/wiki/Developer-Guide.md) for architecture.
 - Use **JDK 17**, the **Android SDK 37 platform** and the committed Gradle wrapper.
+- Gould 0.15.0 bundles the curated MusicBrainz Core catalogue for offline browsing, keeps Room as the Android personal database, and retains the JVM-targeted Kotlin Multiplatform domain module. See [the 0.15 release notes](docs/releases/GOULD-0.15.md) for implementation and verification details.
 - Gould 0.14.0 includes a JVM-targeted Kotlin Multiplatform domain module and keeps Room as the Android personal database. See [the 0.14 release notes](docs/releases/GOULD-0.14.md) for implementation and verification details.
 - Gould **0.13 Project Renaissance** remains available as an earlier [pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13). See its [release notes](docs/releases/GOULD-0.13.md), [release readiness](docs/planning/gould-0.13/RELEASE-READINESS.md), and the [English screenshot capture plan](docs/planning/gould-0.13/README-SCREENSHOT-CAPTURE.md).
 - Source compilation and CI are not substitutes for on-device, upgrade or release-signing acceptance. Published releases undergo separate checks.
 
 [Changelog](CHANGELOG.md) · [Third-party licences and credits](docs/LICENSES.md) · [Signing guidance](docs/SIGNING.md) · [Wiki](https://github.com/stokonn/Gould/wiki)
+
+## License
+
+Project-owned application source is available under [GPL-3.0-or-later](LICENSE). Project-owned documentation and original prose are available under [CC-BY-SA-4.0](LICENSE-DOCS). These licenses do not replace the separate terms for third-party code, fonts, artwork, quotations, or data; see [third-party licenses and provenance](docs/LICENSES.md). The bundled MusicBrainz catalogue is a separate CC0-derived data set.
 
 ## Enjoy using Gould?
 

@@ -1,0 +1,16 @@
+{
+  "composers": 100,
+  "works": 105032,
+  "composer_relationships": 105421,
+  "database_bytes": 283987968,
+  "database_sha256": "2b4c67b414dd985f7caa4e2303b5a54562340ed947d83670a85d32c2820b428f",
+  "compressed_bytes": 89123721,
+  "source_snapshot": "20261114-002230",
+  "selection_periods": [
+    "Baroque",
+    "Classical",
+    "Impressionist",
+    "Modern",
+    "Romantic"
+  ]
+}
