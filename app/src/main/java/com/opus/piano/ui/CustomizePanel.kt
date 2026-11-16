@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import com.opus.piano.i18n.L
 import com.opus.piano.R
 import androidx.compose.foundation.layout.*
@@ -9,12 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.LocalContext
-import com.opus.piano.OpusApplication
 import com.opus.piano.preferences.*
 
 @Composable internal fun CustomizePanel(profile:ProfileViewModel) {
     val a=LocalAppearance.current
-    val store=(LocalContext.current.applicationContext as OpusApplication).appearance
+    val store=(LocalContext.current.appContainer).appearance
     var reset by remember { mutableStateOf(false) }
     JournalCard {
         CompactSection(L.s(R.string.ui010_color_and_surfaces))

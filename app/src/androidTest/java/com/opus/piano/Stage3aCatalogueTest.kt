@@ -6,6 +6,9 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.opus.piano.data.*
 import com.opus.piano.data.catalogue.*
+import com.opus.piano.data.catalogue.providers.ProviderClient
+import com.opus.piano.data.catalogue.providers.ProviderTransport
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
 import org.junit.Assert.*
@@ -21,6 +24,38 @@ class Stage3aCatalogueTest {
     private fun id()=UUID.randomUUID().toString()
     private suspend fun rejects(block:suspend ()->Unit) { assertTrue("Must reject invalid catalogue data",runCatching { block() }.isFailure) }
     private fun cleanup(name:String) { context.getDatabasePath(name).parentFile!!.listFiles()?.filter {it.name==name || it.name.startsWith("$name.") || it.name.startsWith("$name-") }?.forEach { it.delete() } }
+    @Test fun personalRepertoireIdentityIsNeverACatalogueSearchResult()=runBlocking {
+        val personalName="stage3a-private-personal-${id()}.db";val catalogueName="stage3a-private-catalogue-${id()}.db"
+        val personal=Room.databaseBuilder(context,OpusDatabase::class.java,personalName)
+            .addMigrations(*OpusDatabase.ALL_MIGRATIONS).addCallback(PersonalCatalogueBridge.callback).addCallback(BackupState.callback).build()
+        val store=LocalCatalogueStore(context,personal,catalogueName)
+        try {
+            personal.openHelper.writableDatabase
+            val pieceId=personal.dao().insertCatalogPiece(Piece(title="Chopin Ballade in G minor",composer="Frédéric Chopin",difficulty=Difficulty.UNRATED,createdAt=1L))
+            val identityKey=personal.personalCatalogueDao().anchors("piece",pieceId.toString()).single().identityKey
+            val identity=requireNotNull(personal.personalCatalogueDao().identity(identityKey))
+            store.access {it.add(CatalogueEntity(identity.canonicalId,identity.kind,"Chopin Ballade in G minor"),CatalogueWork(identity.canonicalId))}
+            assertTrue(store.initialize() is CatalogueAccess.Available)
+            assertEquals("quarantined",(store.access {it.entity(identity.canonicalId)} as CatalogueAccess.Available).value?.status)
+            val results=(store.access {it.searchPage("Chopin")} as CatalogueAccess.Available).value.items
+            assertTrue(results.isEmpty())
+            assertEquals("Chopin Ballade in G minor",personal.dao().piece(pieceId)?.title)
+            assertEquals(identity,personal.personalCatalogueDao().identity(identityKey))
+        } finally {store.close();personal.close();context.deleteDatabase(personalName);cleanup(catalogueName)}
+    }
+    @Test fun discoverPropagatesInitializationFailureInsteadOfReportingNoMatches()=runBlocking {
+        val personalName="stage3a-failed-personal-${id()}.db";val catalogueName="stage3a-failed-catalogue-${id()}.db"
+        val personal=Room.databaseBuilder(context,OpusDatabase::class.java,personalName)
+            .addMigrations(*OpusDatabase.ALL_MIGRATIONS).addCallback(PersonalCatalogueBridge.callback).addCallback(BackupState.callback).build()
+        val store=LocalCatalogueStore(context,personal,catalogueName,opener={throw java.io.IOException("fixture open failure")})
+        try {
+            personal.openHelper.writableDatabase
+            val repository=DiscoverRepository(store,ProviderClient(ProviderTransport {error("Offline fixture")},{false}),{false})
+            val failure=runCatching {repository.search("Chopin",SearchFilter(),"en",online=false).first()}.exceptionOrNull()
+            assertTrue(failure is IllegalStateException)
+            assertTrue(failure?.cause is java.io.IOException)
+        } finally {store.close();personal.close();context.deleteDatabase(personalName);cleanup(catalogueName)}
+    }
     @Test fun authoredMultiGenreFixtureAndTypedRelationships()=runBlocking {
         val name="stage3a-catalogue-${id()}.db";val db=CatalogueDatabase.builder(context,name).build();val repo=CatalogueRepository(db)
         try {
@@ -127,7 +162,8 @@ class Stage3aCatalogueTest {
             context.deleteDatabase(name);val corrupt=context.getDatabasePath(name);corrupt.writeText("Not a SQLite database; preserve me")
             val bytes=corrupt.readBytes()
             store=LocalCatalogueStore(context,journal,name)
-            assertTrue(store.initialize() is CatalogueAccess.Unavailable)
+            val failure=store.initialize() as CatalogueAccess.Unavailable
+            assertNotNull(failure.cause)
             assertArrayEquals(bytes,corrupt.readBytes())
             assertEquals(CatalogueAccess.Available(Unit),store.rebuild())
             assertArrayEquals(bytes,corrupt.readBytes())

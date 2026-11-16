@@ -9,7 +9,7 @@ import android.os.*
 import androidx.core.app.NotificationCompat
 import androidx.core.app.ServiceCompat
 import com.opus.piano.MainActivity
-import com.opus.piano.OpusApplication
+import com.opus.piano.appContainer
 import com.opus.piano.audio.MicrophoneController
 import com.opus.piano.audio.RecordingController
 import kotlinx.coroutines.*
@@ -19,8 +19,8 @@ import kotlinx.coroutines.flow.*
  *  Detection and recording are separate consumers of the same PCM stream. */
 class SmartPracticeService : Service() {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
-    private val practice get() = (application as OpusApplication).practice
-    private val recording get() = (application as OpusApplication).recording
+    private val practice get() = application.appContainer.practice
+    private val recording get() = application.appContainer.recording
     private var microphone: MicrophoneController? = null
     private var capture: Job? = null
     @Volatile private var closing = false
@@ -51,7 +51,7 @@ class SmartPracticeService : Service() {
             if (detection && !practice.state.value.running) {
                 scope.launch {
                     try {
-                        val settings = (application as OpusApplication).database.personalDao().getSettings() ?: com.opus.piano.data.ProfileSettings()
+                        val settings = application.appContainer.database.personalDao().getSettings() ?: com.opus.piano.data.ProfileSettings()
                         val started = practice.startSmart(settings.sensitivity, settings.pauseSeconds)
                         token = started.token; execution = started.execution
                     } catch (_: Exception) { }
@@ -68,7 +68,7 @@ class SmartPracticeService : Service() {
                     var startedToken = ""
                     var startedExecution = -1L
                     if (detection) {
-                        val settings = (application as OpusApplication).database.personalDao().getSettings() ?: com.opus.piano.data.ProfileSettings()
+                        val settings = application.appContainer.database.personalDao().getSettings() ?: com.opus.piano.data.ProfileSettings()
                         val started = practice.startSmart(settings.sensitivity, settings.pauseSeconds)
                         startedToken = started.token; startedExecution = started.execution
                     }
@@ -167,7 +167,7 @@ class SmartPracticeService : Service() {
         /** A new explicit take waits for an old record-only service to release its
          * stream. An already running Smart stream is intentionally shared. */
         suspend fun awaitReadyForNewTake(context: Context) {
-            val state = (context.applicationContext as OpusApplication).practice.state.value
+            val state = context.appContainer.practice.state.value
             if (state.running && state.smart) return
             withTimeout(5000) { combine(captureActive,stopping) { active,closing -> !active && !closing }.first { it } }
         }
@@ -180,7 +180,7 @@ class SmartPracticeService : Service() {
         fun start(context: Context): Boolean = try {
             check((context as? androidx.lifecycle.LifecycleOwner)?.lifecycle?.currentState?.isAtLeast(androidx.lifecycle.Lifecycle.State.RESUMED) == true) { "Open Goldberg to start listening" }
             androidx.core.content.ContextCompat.startForegroundService(context,Intent(context,SmartPracticeService::class.java).setAction(START)); true
-        } catch (_: Exception) { (context.applicationContext as OpusApplication).practice.notice.value = L.s(R.string.msg_cannot_start_microphone_while_goldberg_is_no_ee1e); false }
+        } catch (_: Exception) { context.appContainer.practice.notice.value = L.s(R.string.msg_cannot_start_microphone_while_goldberg_is_no_ee1e); false }
         fun startRecording(context: Context): Boolean = try {
             check((context as? androidx.lifecycle.LifecycleOwner)?.lifecycle?.currentState?.isAtLeast(androidx.lifecycle.Lifecycle.State.RESUMED) == true) { "Open Goldberg to start recording" }
             androidx.core.content.ContextCompat.startForegroundService(context,Intent(context,SmartPracticeService::class.java).setAction(START_RECORDING)); true
@@ -189,7 +189,7 @@ class SmartPracticeService : Service() {
 }
 class PracticeActionReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val app = context.applicationContext as OpusApplication
+        val app = context.appContainer
         val practice = app.practice
         val token = intent.getStringExtra("token")
         val execution = intent.getLongExtra("execution",-1)

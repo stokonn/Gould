@@ -5,12 +5,14 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.content.SharedPreferences
 import android.content.res.Configuration
+import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.room.Room
+import androidx.compose.ui.graphics.toArgb
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.opus.piano.data.*
@@ -81,6 +83,12 @@ class WidgetTest {
                     assertEquals(View.VISIBLE, heatmap.visibility)
                     assertNotNull(heatmap.drawable)
                     assertTrue(heatmap.drawable.intrinsicWidth > 0 && heatmap.drawable.intrinsicHeight > 0)
+                    if (!dark && font == 1f && width == 280f && height == 220f) {
+                        val bitmap = (heatmap.drawable as BitmapDrawable).bitmap
+                        val expectedLabelColor = com.opus.piano.ui.journalColors(false, data.appearance).onSurfaceVariant.toArgb()
+                        assertTrue("Light-theme weekday labels use the semantic text color",
+                            (0 until bitmap.height).any { y -> (0 until bitmap.width).any { x -> bitmap.getPixel(x, y) == expectedLabelColor } })
+                    }
                 }
                 val unavailable = WidgetRenderer.view(target, null, false, 13, 140f, 160f).apply(target, FrameLayout(target))
                 assertEquals("—", unavailable.findViewById<TextView>(R.id.widget_value).text.toString())

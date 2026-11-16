@@ -56,7 +56,7 @@ class WidgetSnapshotStore(context: Context) {
 }
 
 /** One persisted transaction, independent of the capture pipeline and expanded attribution. */
-internal suspend fun loadWidgetSnapshot(app: OpusApplication, now: Long = System.currentTimeMillis(), zone: ZoneId = ZoneId.systemDefault()): WidgetSnapshot {
+internal suspend fun loadWidgetSnapshot(app: com.opus.piano.AppContainer, now: Long = System.currentTimeMillis(), zone: ZoneId = ZoneId.systemDefault()): WidgetSnapshot {
     val today = Instant.ofEpochMilli(now).atZone(zone).toLocalDate()
     val monday = widgetMonday(today)
     val live = app.currentPracticeForWidgets()?.state?.value

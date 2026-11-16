@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import com.opus.piano.i18n.L
 import com.opus.piano.R
 import androidx.compose.foundation.layout.*
@@ -14,7 +16,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.window.Dialog
-import com.opus.piano.OpusApplication
 import com.opus.piano.data.*
 import kotlinx.coroutines.*
 
@@ -40,7 +41,7 @@ import kotlinx.coroutines.*
 }
 @OptIn(ExperimentalLayoutApi::class)
 @Composable internal fun HistoricalReview(session: PracticeSession, original: List<SessionPart>, completion:Boolean=false, close: () -> Unit) {
-    val app = LocalContext.current.applicationContext as OpusApplication
+    val app = LocalContext.current.appContainer
     val catalog by app.catalogRepository.snapshot.collectAsStateWithLifecycle(CatalogSnapshot(emptyList(),emptyList()))
     val scope = rememberCoroutineScope()
     var notes by remember { mutableStateOf("") }

@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import com.opus.piano.i18n.L
 import com.opus.piano.R
 import androidx.compose.foundation.clickable
@@ -20,13 +22,12 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.opus.piano.OpusApplication
 import com.opus.piano.data.*
 import java.time.*
 
 @Composable internal fun BalancedHome(library:LibraryState,name:String,piece:(Long)->Unit,history:()->Unit,settings:()->Unit,activity:ActivityViewModel) {
     val activityState by activity.state.collectAsStateWithLifecycle()
-    val app=LocalContext.current.applicationContext as OpusApplication
+    val app=LocalContext.current.appContainer
     val lifecycle=LocalLifecycleOwner.current.lifecycle
     val today by produceState(LocalDate.now(),lifecycle) {lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {while(true) {value=LocalDate.now();kotlinx.coroutines.delay(30000)}}}
     val quote by produceState(QuoteLibrary.forDay(today),today) {value=app.quotes.daily(today)}
@@ -51,9 +52,9 @@ import java.time.*
                     }
                 }
             }}
-            if(availableWidth<330.dp || fontScale>1.2f) {greeting();quotation()}
+            if(availableWidth<330.dp || fontScale>1.2f) {TourAnchor("home") { greeting() };quotation()}
             else Row(horizontalArrangement=Arrangement.spacedBy(12.dp),verticalAlignment=Alignment.CenterVertically) {
-                Box(Modifier.weight(1.05f)) {greeting()};Box(Modifier.weight(1f)) {quotation()}
+                Box(Modifier.weight(1.05f)) {TourAnchor("home") { greeting() }};Box(Modifier.weight(1f)) {quotation()}
             }
             Row(horizontalArrangement=Arrangement.spacedBy(12.dp)) {
                 JournalCard(Modifier.weight(1f)) {
@@ -62,7 +63,7 @@ import java.time.*
                 }
                 JournalCard(Modifier.weight(1f)) {
                     Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {Icon(Icons.Outlined.LocalFireDepartment,null,Modifier.size(20.dp),tint=MaterialTheme.colorScheme.primary);Text(L.fixed("Current streak"),style=MaterialTheme.typography.bodySmall)}
-                    Text(L.quantity(R.plurals.days_count,activityState.snapshot?.dailyStreak ?: currentPracticeStreak(library.sessions,today,ZoneId.systemDefault())),style=MaterialTheme.typography.headlineMedium.copy(fontFamily=MaterialTheme.typography.bodyLarge.fontFamily,fontFeatureSettings="tnum"))
+                    Text(L.quantity(R.plurals.days_count,activityState.snapshot?.dailyStreak ?: currentPracticeStreak(library.sessions,today,ZoneId.systemDefault(),activityState.manualEntries)),style=MaterialTheme.typography.headlineMedium.copy(fontFamily=MaterialTheme.typography.bodyLarge.fontFamily,fontFeatureSettings="tnum"))
                 }
             }
             JournalCard {WeeklyJournalChart(activityState.snapshot?.recentDailyDurationMillis,library.sessions,today,history)}

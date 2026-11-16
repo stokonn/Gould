@@ -16,11 +16,7 @@ class PortablePreferences(private val context:Context,private val namespace:Stri
     private val local=context.getSharedPreferences(namespace+"goldberg-backup-settings",Context.MODE_PRIVATE)
     private val app get()=context.applicationContext as? OpusApplication
     suspend fun snapshot():JSONObject {
-        val d=Appearance()
-        fun list(k:String,default:List<String>)=appearance.getString(k,null)?.split(',') ?: default
-        val a=AppearanceRules.normalize(d.copy(accent=appearance.getString("accent",d.accent)!!,cards=appearance.getString("cards",d.cards)!!,
-            homeSections=list("home",d.homeSections),hiddenHome=list("homeHidden",emptyList()).toSet(),metrics=list("metrics",d.metrics),
-            profileSections=list("profile",d.profileSections),hiddenProfile=list("profileHidden",emptyList()).toSet(),density=appearance.getString("density",d.density)!!,sort=appearance.getString("sort",d.sort)!!))
+        val a=AppearanceRules.read(appearance)
         val tag=local.getString("locale",null) ?: if(namespace.isEmpty()) withContext(Dispatchers.Main){AppCompatDelegate.getApplicationLocales().toLanguageTags()} else ""
         return JSONObject().put("appearance",encode(a)).put("locale",tag).put("previousMeteredConsent",media.getBoolean("metered-consent",false))
     }
@@ -61,10 +57,6 @@ class PortablePreferences(private val context:Context,private val namespace:Stri
             return Appearance(a.getString("accent"),a.getString("cards"),list("homeSections",AppearanceRules.home,true),list("hiddenHome",AppearanceRules.home).toSet(),metrics,
                 list("profileSections",AppearanceRules.profile,true),list("hiddenProfile",AppearanceRules.profile).toSet(),a.getString("density"),a.getString("sort"))
         }
-        fun writeAppearance(p:android.content.SharedPreferences,a:Appearance) {
-            check(p.edit().putString("accent",a.accent).putString("cards",a.cards).putString("home",a.homeSections.joinToString(",")).putString("homeHidden",a.hiddenHome.joinToString(","))
-                .putString("metrics",a.metrics.joinToString(",")).putString("profile",a.profileSections.joinToString(",")).putString("profileHidden",a.hiddenProfile.joinToString(","))
-                .putString("density",a.density).putString("sort",a.sort).commit())
-        }
+        fun writeAppearance(p:android.content.SharedPreferences,a:Appearance) = AppearanceRules.write(p,a)
     }
 }

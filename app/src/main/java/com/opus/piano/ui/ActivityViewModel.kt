@@ -12,6 +12,7 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.Job
 import java.time.LocalDate
 import java.time.ZoneId
 
@@ -49,6 +50,7 @@ sealed interface WeeklyCosmeticRewardState {
 class ActivityViewModel(private val repository: ActivityRepository) : ViewModel() {
     private val _state = MutableStateFlow(ActivityUiState())
     val state = _state.asStateFlow()
+    private var refreshJob: Job? = null
     init {
         viewModelScope.launch { repository.manualEntries.collect { _state.value = _state.value.copy(manualEntries = it) } }
         viewModelScope.launch { repository.goals.collect { _state.value = _state.value.copy(goalHistory = it) } }
@@ -86,17 +88,20 @@ class ActivityViewModel(private val repository: ActivityRepository) : ViewModel(
         refresh()
     }
 
-    fun refresh() = viewModelScope.launch {
+    fun refresh() {
+        refreshJob?.cancel()
+        refreshJob = viewModelScope.launch {
         val previous = _state.value
         _state.value = previous.copy(loading = true, error = null)
         try {
             val today = LocalDate.now()
             val zone = ZoneId.systemDefault()
-            val summary = repository.snapshot(today, zone)
+            val summary = repository.refresh(today, zone)
             val dates = repository.yearActivity(_state.value.year, today, zone)
             _state.value = _state.value.copy(loading = false, snapshot = summary, yearDays = dates, error = null)
         } catch (cancelled: CancellationException) { throw cancelled }
         catch (_: Exception) { _state.value = _state.value.copy(loading = false, error = L.s(R.string.activity_load_failed)) }
+        }
     }
 
     fun changeGoals(sessions: Int, minutes: Int?) = viewModelScope.launch {

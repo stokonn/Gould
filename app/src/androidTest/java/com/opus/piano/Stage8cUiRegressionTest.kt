@@ -21,7 +21,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.opus.piano.i18n.L
 import com.opus.piano.ui.*
-import com.opus.piano.ui.admin.AdminSwitch
 import com.opus.piano.data.*
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
@@ -130,59 +129,6 @@ class Stage8cUiRegressionTest {
             }
         } finally {
             profileStore.clear();activityStore.clear();db.close();inst.targetContext.deleteDatabase(dbName)
-        }
-    }
-
-    @Test fun switchRowHasOneNameStateRoleAndExactlyOneActionPerInput() {
-        for(locale in listOf("en","cs")) {
-            val context=inst.targetContext.createConfigurationContext(android.content.res.Configuration().apply {
-                setLocales(android.os.LocaleList.forLanguageTags(locale))
-            })
-            val label=context.getString(R.string.stage7b_notifications)
-            val disabled=context.getString(R.string.stage7b_mobile_consent)
-            val calls=AtomicInteger(); val disabledCalls=AtomicInteger()
-            var expectedSwitchRole=""
-            ActivityScenario.launch(MainActivity::class.java).use { scenario ->
-                scenario.onActivity { activity ->
-                    expectedSwitchRole=activity.getString(androidx.compose.ui.R.string.switch_role)
-                    activity.setContent {
-                    var checked by remember { mutableStateOf(false) }
-                    OpusTheme("Light") { AdminTheme { Column(Modifier.fillMaxWidth().windowInsetsPadding(WindowInsets.safeDrawing)) {
-                        AdminSwitch(label,checked) { calls.incrementAndGet(); checked=it }
-                        AdminSwitch(disabled,false,enabled=false) { disabledCalls.incrementAndGet() }
-                    } } }
-                } }
-                fun control()=nodes().singleOrNull { it.contentDescription?.toString()==label && it.isCheckable }
-                waitUntil { control()!=null }
-                assertEquals("One spoken name, with no separate label leaf",1,nodes().count { it.text?.toString()==label || it.contentDescription?.toString()==label })
-                assertEquals("Localized Switch role",expectedSwitchRole,
-                    androidx.core.view.accessibility.AccessibilityNodeInfoCompat.wrap(control()!!).roleDescription?.toString())
-                val bounds=Rect();control()!!.getBoundsInScreen(bounds)
-                assertTrue(bounds.height()>=48*inst.targetContext.resources.displayMetrics.density)
-                assertFalse(control()!!.isChecked)
-                assertTrue(control()!!.performAction(AccessibilityNodeInfo.ACTION_CLICK))
-                waitUntil { control()!!.isChecked };assertEquals(1,calls.get())
-                assertTrue(control()!!.performAction(AccessibilityNodeInfo.ACTION_FOCUS))
-                waitUntil { control()!!.isFocused }
-                inst.sendKeyDownUpSync(KeyEvent.KEYCODE_SPACE)
-                waitUntil { !control()!!.isChecked };assertEquals(2,calls.get())
-                control()!!.getBoundsInScreen(bounds)
-                var statusInset=0
-                scenario.onActivity { activity ->
-                    statusInset=androidx.core.view.ViewCompat.getRootWindowInsets(activity.window.decorView)
-                        ?.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())?.top ?: 0
-                }
-                assertTrue("Pointer target must belong to app content below the status bar",bounds.centerY()>statusInset)
-                val now=android.os.SystemClock.uptimeMillis()
-                val down=android.view.MotionEvent.obtain(now,now,android.view.MotionEvent.ACTION_DOWN,bounds.centerX().toFloat(),bounds.centerY().toFloat(),0)
-                val up=android.view.MotionEvent.obtain(now,now+30,android.view.MotionEvent.ACTION_UP,bounds.centerX().toFloat(),bounds.centerY().toFloat(),0)
-                inst.sendPointerSync(down);inst.sendPointerSync(up);down.recycle();up.recycle()
-                waitUntil { control()!!.isChecked };assertEquals(3,calls.get())
-                val off=nodes().single { it.contentDescription?.toString()==disabled && it.isCheckable }
-                assertFalse(off.isEnabled);assertFalse(off.isFocusable);assertFalse(off.isChecked)
-                off.performAction(AccessibilityNodeInfo.ACTION_CLICK)
-                inst.waitForIdleSync();assertEquals(0,disabledCalls.get())
-            }
         }
     }
 

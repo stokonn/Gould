@@ -4,6 +4,8 @@ import androidx.room.withTransaction
 import com.opus.piano.activity.domain.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -31,6 +33,7 @@ data class ActivitySnapshot(
 
 /** Android/Room adapter for the platform-free weekly rules. */
 class ActivityRepository(private val db: OpusDatabase) {
+    private val refreshMutex = Mutex()
     val goals: Flow<List<ActivityWeeklyGoal>> get() = db.activityDao().goals()
     val manualEntries: Flow<List<ManualActivityEntry>> get() = db.activityDao().manualEntries()
     val ownedCosmetics: Flow<List<CosmeticOwnership>> get() = db.activityDao().ownedCosmetics()
@@ -58,6 +61,15 @@ class ActivityRepository(private val db: OpusDatabase) {
         settings
     }
 
+    /** Serial write path for startup/week creation and idempotent reward evaluation. */
+    suspend fun refresh(today: LocalDate = LocalDate.now(), zone: ZoneId = ZoneId.systemDefault(), now: Long = System.currentTimeMillis()): ActivitySnapshot = refreshMutex.withLock {
+        val settings = initialize(today, zone, now)
+        val firstUse = LocalDate.parse(settings.firstUseDay)
+        val goals = db.activityDao().allGoals().map { WeeklyGoal(LocalDate.parse(it.effectiveMonday).toEpochDay(), it.requiredSessions, it.minutesGoal) }
+        evaluateRewards(firstUse, monday(today), goals, workouts(today, zone.id), now)
+        snapshot(today, zone, now)
+    }
+
     suspend fun changeGoals(sessions: Int, minutes: Int?, today: LocalDate = LocalDate.now(), zone: ZoneId = ZoneId.systemDefault()) {
         require(sessions in 1..7 && (minutes == null || minutes > 0))
         initialize(today, zone)
@@ -81,7 +93,7 @@ class ActivityRepository(private val db: OpusDatabase) {
     }
 
     suspend fun snapshot(today: LocalDate = LocalDate.now(), zone: ZoneId = ZoneId.systemDefault(), now: Long = System.currentTimeMillis()): ActivitySnapshot = withContext(Dispatchers.Default) {
-        val settings = initialize(today, zone, now)
+        val settings = checkNotNull(db.activityDao().settings()) { "Activity must be initialized before reading its snapshot." }
         val firstUse = LocalDate.parse(settings.firstUseDay)
         val monday = monday(today)
         val weekRecord = checkNotNull(db.activityDao().week(monday.toString()))
@@ -89,13 +101,12 @@ class ActivityRepository(private val db: OpusDatabase) {
         val goals = db.activityDao().allGoals().map { WeeklyGoal(LocalDate.parse(it.effectiveMonday).toEpochDay(), it.requiredSessions, it.minutesGoal) }
         val goal = activeGoal(goals, week.monday)
         val workouts = workouts(today, weekRecord.zoneId)
-        evaluateRewards(firstUse, monday, goals, workouts, now)
         val currentWorkouts = workouts.filter { it.epochDay in week.monday..week.sunday }
         val totals = aggregate(currentWorkouts, week)
         val daily = classifyWeek(week, goal, currentWorkouts, today.toEpochDay())
         val closed = evaluateHistory(firstUse, monday, settings, goals, workouts)
         val state = closed.lastOrNull()?.streak ?: FreezeState()
-        val currentMet = !week.beta && totals.sessions >= goal.sessions
+        val currentMet = !week.beta && goalMet(totals, goal)
         val visibleStreak = state.currentStreak + if (currentMet) 1 else 0
         val uniqueWorkouts = workouts.distinctBy { it.sourceId }
         ActivitySnapshot(firstUse, week, goal, daily, totals, uniqueWorkouts.size,
@@ -109,7 +120,7 @@ class ActivityRepository(private val db: OpusDatabase) {
 
     suspend fun yearActivity(year: Int, today: LocalDate = LocalDate.now(), zone: ZoneId = ZoneId.systemDefault()): List<DayActivity> = withContext(Dispatchers.Default) {
         require(year in 1..today.year)
-        val settings = initialize(today, zone)
+        val settings = checkNotNull(db.activityDao().settings()) { "Activity must be initialized before reading its history." }
         val firstUse = LocalDate.parse(settings.firstUseDay)
         val first = LocalDate.of(year, 1, 1)
         val last = minOf(LocalDate.of(year, 12, 31), today)

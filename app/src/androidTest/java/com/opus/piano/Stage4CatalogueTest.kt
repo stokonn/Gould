@@ -88,14 +88,19 @@ class Stage4CatalogueTest {
         assertTrue(runCatching {ProviderJson.parse(ByteArray(ProviderJson.MAX_BYTES+1))}.isFailure)
         assertEquals("Žluťoučký",ProviderJson.parse("{\"name\":\"Žluťoučký\",\"decimal\":1.25}".toByteArray())["name"])
     }
-    @Test fun providerPartialSuccessAndJsonOverloadRemainIndependent()=runBlocking {
+    @Test fun activeSearchUsesMusicBrainzAndRejectsLegacyCandidateResolution()=runBlocking {
         val name="stage4-personal-${id()}";val db=personal(name);val cat="stage4-catalogue-${id()}";val store=LocalCatalogueStore(context,db,cat)
-        val transport=ProviderTransport {request->when(request.provider){"openopus"->ProviderResponse(200,"{\"status\":{\"success\":\"true\"},\"results\":[{\"composer\":{\"id\":\"1\",\"complete_name\":\"Fixture artist\"},\"work\":{\"id\":\"2\",\"title\":\"Fixture song\"}}]}".toByteArray());else->ProviderResponse(200,"{\"error\":{\"code\":\"maxlag\"}}".toByteArray(),mapOf("Retry-After" to "60"))}}
-        val discover=DiscoverRepository(store,ProviderClient(transport,{true}),{true},adapters=listOf(OpenOpusAdapter(),WikidataAdapter()))
+        val called=mutableListOf<String>();val mbid=id()
+        val transport=ProviderTransport {request->called+=request.provider
+            ProviderResponse(200,"""{"works":[{"id":"$mbid","title":"Fixture Work","type":"Waltz"}],"count":1,"offset":0}""".toByteArray())
+        }
+        val discover=DiscoverRepository(store,ProviderClient(transport,{true}),{true},adapters=listOf(OpenOpusAdapter(),WikidataAdapter(),MusicBrainzAdapter()))
         try {
-            val results=discover.search("Fixture",SearchFilter(),"en",true).toList();val final=results.last()
-            assertTrue(final.page.items.any {it.title=="Fixture song"});assertEquals(SourceState.RATE_LIMITED,final.sources.first {it.provider=="wikidata"}.state)
-            assertTrue(discover.landing().items.isNotEmpty())
+            val final=discover.search("Fixture",SearchFilter("works"),"en",true).toList().last()
+            assertTrue(final.page.items.any {it.title=="Fixture Work"});assertEquals(listOf("musicbrainz"),called)
+            assertNull(discover.resolveCandidate(CatalogueCandidate(id(),"wikidata","entity","Q123","work","Legacy candidate","test")))
+            assertNull(discover.resolveCandidate(CatalogueCandidate(id(),"openopus","work","123","work","Legacy candidate","test")))
+            assertEquals("Candidate resolution must not invoke another provider",listOf("musicbrainz"),called)
         } finally {store.close();db.close();context.deleteDatabase(name);context.deleteDatabase(cat)}
     }
 }

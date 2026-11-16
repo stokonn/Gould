@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import com.opus.piano.i18n.L
 import com.opus.piano.R
 import android.os.SystemClock
@@ -30,7 +32,7 @@ class OpusViewModel(private val repository: OpusRepository, private val saved: S
         var ownedId: String? = null
         try {
             com.opus.piano.service.SmartPracticeService.awaitReadyForNewTake(visibleContext)
-            (appContext.applicationContext as com.opus.piano.OpusApplication).localPlayback.stopAndAwait()
+            (appContext.appContainer).localPlayback.stopAndAwait()
             val t = practice.state.value
             val part = t.parts[t.active]
             val title = part.title.takeIf { part.pieceId != null } ?: L.s(R.string.msg_recording_title)

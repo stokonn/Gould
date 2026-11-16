@@ -24,6 +24,8 @@ sealed interface CommunityAttempt {
 interface CommunityRepository {
     val availability: CommunityAvailability
     suspend fun drafts(): List<CommunityDraft>
+    suspend fun exportDraftArchive(): ByteArray
+    suspend fun importDraftArchive(bytes: ByteArray): Int
     suspend fun create(payload: ContributionPayload): CommunityDraft
     suspend fun edit(id: String, expectedVersion: Long, payload: ContributionPayload): CommunityDraft
     suspend fun copyForNewRequest(id: String): CommunityDraft
@@ -48,6 +50,17 @@ class LocalCommunityRepository(
     private fun owner()=session()?.let {CommunityOwner("principal:"+it.principalId)}?:store.guest()
     private fun get(id: String)=requireNotNull(store.get(owner(),id)) {"Draft unavailable for this account"}
     override suspend fun drafts()=withContext(Dispatchers.IO) {mutex.withLock {store.list(owner())}}
+    override suspend fun exportDraftArchive()=withContext(Dispatchers.IO) {mutex.withLock {
+        val currentOwner=owner()
+        CommunityDraftArchive.encode(currentOwner,store.list(currentOwner))
+    }}
+    override suspend fun importDraftArchive(bytes: ByteArray)=withContext(Dispatchers.IO) {mutex.withLock {
+        val auth=session()
+        val contents=CommunityDraftArchive.decode(bytes,auth?.principalId)
+        if(contents.drafts.isEmpty()) return@withLock 0
+        val currentOwner=auth?.let {CommunityOwner("principal:${it.principalId}")} ?: store.guest()
+        store.importAll(contents.drafts.map {it.copy(owner=currentOwner)})
+    }}
     override suspend fun create(payload: ContributionPayload)=withContext(Dispatchers.IO) {mutex.withLock {store.save(CommunityDraft(UUID.randomUUID().toString(),owner(),0,payload),0)}}
     override suspend fun edit(id: String,expectedVersion: Long,payload: ContributionPayload)=withContext(Dispatchers.IO) {mutex.withLock {
         val d=get(id);check(d.pending==null&&d.receipt==null) {"Request frozen; keep original and explicitly copy after review"};store.save(d.copy(payload=payload),expectedVersion)

@@ -151,7 +151,40 @@ class DiscoverEditorialAcceptanceTest {
         }
         export("$name.txt",text.toByteArray())
     }
-    private fun fixture(name:String)=inst.context.assets.open("discover-repair/$name.json").use {it.readBytes()}
+    private fun legacyFixture(name:String)=inst.context.assets.open("discover-repair/$name.json").use {it.readBytes()}
+
+    /** Isolated deterministic Core-shaped test double; active Discover never uses Open Opus. */
+    private object MusicBrainzFixtureAdapter:ProviderAdapter {
+        override val id="musicbrainz"
+        override val intervalMillis=0L
+        private val bach="00000000-0000-4000-8000-000000000001"
+        private val chopin="00000000-0000-4000-8000-000000000002"
+        private val mozart="00000000-0000-4000-8000-000000000003"
+        private val goldberg="00000000-0000-4000-8000-000000000011"
+        private val ballade="00000000-0000-4000-8000-000000000012"
+        override fun search(query:String,category:String,language:String,offset:Int)=listOf(
+            ProviderRequest("https://musicbrainz.org/ws/2/work/?query=${java.net.URLEncoder.encode(query,"UTF-8")}&fmt=json&limit=20&offset=$offset",id,"work",offset=offset))
+        override fun parse(request:ProviderRequest,root:Map<String,Any?>):List<ProviderRecord> {
+            require(root.containsKey("works"))
+            val q=URLDecoder.decode(request.url.substringAfter("query="),"UTF-8").lowercase()
+            fun artist(id:String,title:String)=ProviderRecord("artist",id,"artist",title,
+                listOf(FieldValue("type","Person")),subtype="person")
+            fun work(id:String,title:String,composer:ProviderRecord)=ProviderRecord("work",id,"work",title,
+                fields=listOf(FieldValue("type","Song")),subtype="composition",
+                credits=listOf(ProviderCredit(composer.externalId,composer.title,"composer")))
+            val johann=artist(bach,"Johann Sebastian Bach")
+            val frederic=artist(chopin,"Frédéric Chopin")
+            val wolfgang=artist(mozart,"Wolfgang Amadeus Mozart")
+            return when {
+                q.contains("goldberg") -> listOf(work(goldberg,"Goldberg Variations",johann),johann)
+                q.contains("ballade") -> listOf(work(ballade,"Ballade No. 1, Op. 23",frederic),frederic)
+                q.contains("chopin") -> listOf(frederic)
+                q.contains("bach") -> listOf(johann)
+                q.contains("mozart") -> listOf(wolfgang)
+                else -> emptyList()
+            }
+        }
+    }
 
     @Test fun automaticSearchAndEditorialJourneysWithPreservedEvidence()=runBlocking {
         // Venue gate: emulator only, on the supported verification matrix.
@@ -164,16 +197,15 @@ class DiscoverEditorialAcceptanceTest {
         val oldFont=shell("settings get system font_scale").trim()
         val calls=AtomicInteger();val cancelled=AtomicInteger();val obsoleteStarted=AtomicInteger()
         val available=AtomicBoolean(true);val invalid=AtomicBoolean(false)
-        val adapter=object:ProviderAdapter by OpenOpusAdapter(){override val intervalMillis=0L}
+        val adapter=MusicBrainzFixtureAdapter
         val cacheDirectory=File(app.cacheDir,"discover-editorial-test-cache")
-        val responses=mapOf("Frédéric Chopin" to "chopin","Chopin" to "chopin","Ballade No. 1, Op. 23" to "ballade","Goldberg Variations" to "goldberg","Goldberg" to "goldberg","Johann Sebastian Bach" to "bach","Mozart" to "mozart")
         val client=ProviderClient(ProviderTransport {request->
             check(app.catalogOnline.enabled.value && available.get())
             calls.incrementAndGet()
-            val query=URLDecoder.decode(request.url.substringAfter("/omnisearch/").substringBeforeLast('/'),"UTF-8")
+            val query=URLDecoder.decode(request.url.substringAfter("query="),"UTF-8")
             if(query=="obsolete")try {obsoleteStarted.incrementAndGet();awaitCancellation()} finally {cancelled.incrementAndGet()}
             if(invalid.get())ProviderResponse(200,"{}".toByteArray())
-            else ProviderResponse(200,fixture(responses[query] ?: "empty"),mapOf("Cache-Control" to "max-age=0"))
+            else ProviderResponse(200,"{\"works\":[]}".toByteArray(),mapOf("Cache-Control" to "max-age=0"))
         },{app.catalogOnline.enabled.value && available.get()},cache=FileProviderCache(cacheDirectory))
         val repository=DiscoverRepository(app.localCatalogue,client,{app.catalogOnline.enabled.value && available.get()},adapters=listOf(adapter))
         var evidenceBefore=emptyList<String>()
@@ -319,7 +351,7 @@ class DiscoverEditorialAcceptanceTest {
             // The shared catalogue also contains preserved, unreviewed journal snapshots.
             // This provider-metadata assertion must target the recorded provider identity,
             // not whichever similarly titled local work ranks first.
-            val fixtureWork=JSONObject(fixture("goldberg").toString(Charsets.UTF_8)).getJSONArray("results")
+            val fixtureWork=JSONObject(legacyFixture("goldberg").toString(Charsets.UTF_8)).getJSONArray("results")
             val external=(0 until fixtureWork.length()).map {fixtureWork.getJSONObject(it)}
                 .first {it.optJSONObject("work")!=null}.getJSONObject("work").getString("id")
             val canonical=(app.localCatalogue.access {it.providerIdentity("openopus","work",external)} as CatalogueAccess.Available).value!!

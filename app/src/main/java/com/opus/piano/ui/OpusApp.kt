@@ -1,5 +1,7 @@
 package com.opus.piano.ui
 
+import com.opus.piano.appContainer
+
 import com.opus.piano.i18n.L
 import com.opus.piano.R
 import androidx.compose.animation.*
@@ -40,13 +42,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
 import com.opus.piano.data.*
-import com.opus.piano.ui.admin.AdminDashboardScreen
-import com.opus.piano.ui.admin.AdminQueueScreen
-import com.opus.piano.ui.admin.AdminAuditScreen
-import com.opus.piano.ui.admin.AdminSettingsScreen
-import com.opus.piano.ui.admin.AdminProposalScreen
 import java.time.*
 import java.time.format.DateTimeFormatter
 
@@ -54,7 +52,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
     OVERVIEW("Home", Icons.Outlined.Home), HOME("Profile", Icons.Outlined.Person), REPERTOIRE("Library", Icons.Outlined.LibraryMusic),
     DISCOVER("Discover", Icons.Outlined.Explore), ACTIVITY("Activity", Icons.Outlined.CalendarMonth), PRACTICE("Studio", Icons.Outlined.Piano), BADGES("Badges", Icons.Outlined.EmojiEvents), WRAPPED("Wrapped", Icons.Outlined.Insights)
 }
-@Composable fun OpusApp(model: OpusViewModel, catalog: CatalogViewModel, experience: ExperienceViewModel, profile: ProfileViewModel, admin: com.opus.piano.ui.admin.AdminViewModel, activity: ActivityViewModel) {
+@Composable fun OpusApp(model: OpusViewModel, catalog: CatalogViewModel, experience: ExperienceViewModel, profile: ProfileViewModel, activity: ActivityViewModel) {
     ProfileEditor(profile)
     val context = LocalContext.current
     val focus = androidx.compose.ui.platform.LocalFocusManager.current
@@ -75,26 +73,27 @@ private enum class Destination(val label: String, val icon: ImageVector) {
     val message by model.message.collectAsStateWithLifecycle()
     val nav = rememberNavController()
     val entry by nav.currentBackStackEntryAsState()
-    val current = entry?.destination?.route ?: Destination.HOME.name
+    val current = entry?.destination?.route ?: Routes.PROFILE
     ObserveConnectivity(catalog, current)
     var fullyDrawn by remember { mutableStateOf(false) }
     LaunchedEffect(library.loading) {
         if (!library.loading && !fullyDrawn) { (context as? android.app.Activity)?.reportFullyDrawn(); fullyDrawn = true }
     }
-    val openPractice by (context.applicationContext as com.opus.piano.OpusApplication).openPractice.collectAsStateWithLifecycle()
+    val openPractice by (context.appContainer).openPractice.collectAsStateWithLifecycle()
     val timerState by model.timer.collectAsStateWithLifecycle()
     val recoveryFailed by model.practice.recoveryFailed.collectAsStateWithLifecycle()
     LaunchedEffect(openPractice, timerState.ready, recoveryFailed) {
         if (openPractice > 0 && (timerState.ready || recoveryFailed)) {
-            nav.selectTopLevel("PRACTICE")
+            nav.selectTopLevel(Routes.PRACTICE)
             // One-shot navigation: rotation/font/locale recreation must not replay
             // an old widget tap over the destination the user selected afterward.
-            (context.applicationContext as com.opus.piano.OpusApplication).openPractice.compareAndSet(openPractice, 0L)
+            (context.appContainer).openPractice.compareAndSet(openPractice, 0L)
         }
     }
     val local by profile.local.collectAsStateWithLifecycle()
     var replay by remember { mutableStateOf(false) }
-    if (local != null && (!local!!.onboardingDone || replay)) OnboardingScreen({ profile.finishOnboarding(); replay = false })
+    val tourAnchors = remember { TourAnchorRegistry() }
+    val tourViewModel: TourViewModel = viewModel()
     val catalogNotice by catalog.notice.collectAsStateWithLifecycle()
     val experienceNotice by experience.notice.collectAsStateWithLifecycle()
     val catalogData by catalog.snapshot.collectAsStateWithLifecycle()
@@ -107,7 +106,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
     LaunchedEffect(catalogNotice) { catalogNotice?.let { snackbar.showSnackbar(it); catalog.dismissNotice() } }
     LaunchedEffect(experienceNotice) { experienceNotice?.let { snackbar.showSnackbar(it); experience.dismissNotice() } }
     // Durable unlock popup: one themed popup per new award; deferred during active play/capture.
-    val app = context.applicationContext as com.opus.piano.OpusApplication
+    val app = context.appContainer
     val pendingNotices by app.database.studioDao().pendingNotices().collectAsStateWithLifecycle(initialValue = emptyList())
     val recState by model.recordingState.collectAsStateWithLifecycle()
     val profileDraft by profile.editDraft.collectAsStateWithLifecycle()
@@ -153,99 +152,81 @@ private enum class Destination(val label: String, val icon: ImageVector) {
             )
         }
     ) { padding ->
-        Column(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)), horizontalAlignment = Alignment.CenterHorizontally) {
-            NavHost(navController = nav, startDestination = Destination.OVERVIEW.name, modifier = Modifier.widthIn(max = 840.dp).fillMaxSize(),
+        Box(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal))) {
+          Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+            CompositionLocalProvider(LocalTourAnchorRegistry provides tourAnchors) {
+              NavHost(navController = nav, startDestination = Routes.OVERVIEW, modifier = Modifier.widthIn(max = 840.dp).fillMaxSize(),
                 enterTransition = { fadeIn(tween(if (motionScale == 0f) 0 else 220)) }, exitTransition = { fadeOut(tween(if (motionScale == 0f) 0 else 150)) }) {
-                composable(Destination.OVERVIEW.name) {
+                composable(Routes.OVERVIEW) {
                     val settings by profile.settings.collectAsStateWithLifecycle()
                     BalancedHome(library, settings.username, { nav.navigate("piece/$it") }, { nav.navigate("history") }, {nav.navigate(SETTINGS_ROUTE)}, activity)
                 }
-                composable(SETTINGS_ROUTE) { SettingsScreen(profile, model, { replay = true }) { nav.popBackStack() } }
-                composable(Destination.HOME.name) {
-                    ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }, administration = null, badgeDetail = { nav.navigate("badge/$it") }, customizeCosmetics = { nav.navigate("COSMETICS") }, activity = activity)
+                composable(Routes.SETTINGS) { SettingsScreen(profile, model, { replay = true }) { nav.popBackStack() } }
+                composable(Routes.PROFILE) {
+                    ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }, badgeDetail = { nav.navigate("badge/$it") }, customizeCosmetics = { nav.navigate("COSMETICS") }, activity = activity)
                 }
-                // Stage 7B: role-gated Administration (entry is convenience only — the
-                // server always enforces capabilities on every admin endpoint).
-                composable("admin") {
-                    AdminTheme { AdminDashboardScreen(
-                        admin,
-                        onQueue = { filter ->
-                            nav.navigate(if (filter == null) "admin/queue" else "admin/queue?filter=$filter")
-                        },
-                        onAudit = { tile ->
-                            admin.auditInitialFilter = when (tile) {
-                                com.opus.piano.admin.AdminTile.APPROVED_TODAY -> "today_approve"
-                                com.opus.piano.admin.AdminTile.REJECTED_TODAY -> "today_reject"
-                                else -> "all"
-                            }
-                            nav.navigate("admin/audit")
-                        },
-                        onSettings = { nav.navigate("admin/settings") },
-                    ) }
+                composable(Routes.REPERTOIRE) {
+                    RepertoireScreen(library,catalogData,model,{nav.navigate("piece/$it")},{nav.navigate("discover/entity/$it")},{nav.navigate("previous")})
                 }
-                composable(
-                    "admin/queue?filter={filter}",
-                    arguments = listOf(
-                        androidx.navigation.navArgument("filter") {
-                            type = androidx.navigation.NavType.StringType
-                            nullable = true
-                            defaultValue = null
-                        }
-                    ),
-                ) { route ->
-                    AdminTheme { AdminQueueScreen(admin, route.arguments?.getString("filter"), { nav.popBackStack() }, { id -> nav.navigate("admin/proposal/${android.net.Uri.encode(id)}") }) }
-                }
-                composable("admin/proposal/{id}") { route ->
-                    AdminTheme { AdminProposalScreen(admin, route.arguments?.getString("id").orEmpty(), { nav.popBackStack() }, { id ->
-                        nav.navigate("admin/proposal/${android.net.Uri.encode(id)}") {
-                            popUpTo("admin/proposal/{id}") { inclusive = true }
-                        }
-                    }) }
-                }
-                composable("admin/audit") { AdminTheme { AdminAuditScreen(admin) { nav.popBackStack() } } }
-                composable("admin/settings") { AdminTheme { AdminSettingsScreen(admin) { nav.popBackStack() } } }
-                composable(Destination.REPERTOIRE.name) {
-                    RepertoireScreen(library,catalogData,model,{nav.selectTopLevel("DISCOVER")},{nav.navigate("piece/$it")},profile,{nav.navigate("catalog/composer/$it")},catalog,{nav.navigate("catalog/work/$it")},{nav.navigate("discover/entity/$it")},{nav.navigate("previous")})
-                }
-                composable(Destination.ACTIVITY.name) { ActivityScreen(activity) { nav.navigate("COSMETICS") } }
-                composable("COSMETICS") { CosmeticCollectionScreen(activity) { nav.popBackStack() } }
-                composable(Destination.DISCOVER.name) { DiscoverScreen({ nav.navigate("discover/entity/$it") }, { nav.navigate("piece/$it") }, { nav.navigate("catalog/work/$it") }, library) }
-                composable("discover/entity/{id}") { route -> DiscoverDetailScreen(route.arguments?.getString("id").orEmpty(), {nav.popBackStack()}, {nav.navigate("discover/entity/$it")}, {nav.navigate("piece/$it")}) }
-                composable("catalog") { CatalogScreen(catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("catalog/work/$it") }, { nav.navigate("piece/$it") },profile=profile) }
-                composable("catalog/composer/{id}") { route -> ComposerScreen(route.arguments?.getString("id").orEmpty(), catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/work/$it") },identity=profile) }
-                composable("catalog/work/{id}") { route ->
+                composable(Routes.ACTIVITY) { ActivityScreen(activity) { nav.navigate(Routes.COSMETICS) } }
+                composable(Routes.COSMETICS) { CosmeticCollectionScreen(activity) { nav.popBackStack() } }
+                composable(Routes.DISCOVER) { DiscoverScreen({ nav.navigate("discover/entity/$it") }, { nav.navigate("piece/$it") }, { nav.navigate("catalog/work/$it") }, library) }
+                composable(Routes.DISCOVER_ENTITY) { route -> DiscoverDetailScreen(route.arguments?.getString("id").orEmpty(), {nav.popBackStack()}, {nav.navigate("discover/entity/$it")}, {nav.navigate("piece/$it")}) }
+                composable(Routes.CATALOG) { CatalogScreen(catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("catalog/work/$it") }, { nav.navigate("piece/$it") },profile=profile) }
+                composable(Routes.CATALOG_COMPOSER) { route -> ComposerScreen(route.arguments?.getString("id").orEmpty(), catalog, library, { nav.popBackStack() }, { nav.navigate("catalog/work/$it") },identity=profile) }
+                composable(Routes.CATALOG_WORK) { route ->
                     CompositionScreen(route.arguments?.getString("id"), null, catalog, experience, library, model, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("recordings/$it") }, { id, source -> if (id != null) nav.navigate("history/piece/$id") else if (source != null) nav.navigate("history/catalog/${android.net.Uri.encode(source)}") }) { piece ->
                         model.practice.command {
                             if (state.value.token.isEmpty()) select(piece) else notice.value=L.s(R.string.pending_session)
                         }
-                        nav.navigate(Destination.PRACTICE.name) { launchSingleTop = true }
+                        nav.navigate(Routes.PRACTICE) { launchSingleTop = true }
                     }
                 }
-                composable("piece/{id}") { route ->
+                composable(Routes.PIECE) { route ->
                     CompositionScreen(null, route.arguments?.getString("id")?.toLongOrNull(), catalog, experience, library, model, { nav.popBackStack() }, { nav.navigate("catalog/composer/$it") }, { nav.navigate("recordings/$it") }, { id, source -> if (id != null) nav.navigate("history/piece/$id") else if (source != null) nav.navigate("history/catalog/${android.net.Uri.encode(source)}") }) { piece ->
                         model.practice.command {
                             if (state.value.token.isEmpty()) select(piece) else notice.value=L.s(R.string.pending_session)
                         }
-                        nav.navigate(Destination.PRACTICE.name) { launchSingleTop = true }
+                        nav.navigate(Routes.PRACTICE) { launchSingleTop = true }
                     }
                 }
-                composable("recordings/{key}") { route ->
+                composable(Routes.RECORDINGS) { route ->
                     val key = route.arguments?.getString("key").orEmpty()
                     val title = if (key.startsWith("catalog:")) catalogData.works.firstOrNull { it.id == key.substringAfter(':') }?.title else library.pieces.firstOrNull { it.id.toString() == key.substringAfter(':') }?.title
                     RecordingsScreen(key, title ?: L.s(R.string.reference_shelf), experience) { nav.popBackStack() }
                 }
-                composable("history") { PracticeHistoryScreen({ nav.popBackStack() }) }
-                composable("previous") { PreviousScreen({ nav.popBackStack() }) }
-                composable("history/piece/{id}") { e -> PracticeHistoryScreen({ nav.popBackStack() }, e.arguments?.getString("id")?.toLongOrNull()) }
-                composable("history/catalog/{id}") { e -> PracticeHistoryScreen({ nav.popBackStack() }, catalogId=e.arguments?.getString("id")) }
-                composable("badge/{id}") { route -> BadgeDetailScreen(route.arguments?.getString("id").orEmpty(), experience) { nav.popBackStack() } }
-                composable(Destination.PRACTICE.name) { PracticeScreen(library, model, profile, motionScale != 0f, { nav.navigate("previous") }) }
-                composable(Destination.BADGES.name) { BadgesScreen(experience, profile) { nav.navigate("badge/$it") } }
-                composable(Destination.WRAPPED.name) { ComingSoon(library, "Wrapped", "Your music.\nYour story.", L.s(R.string.future_wrapped), Icons.Outlined.Insights, listOf("Monthly reflections", "Your year at the piano", "Repertoire highlights")) }
+                composable(Routes.HISTORY) { PracticeHistoryScreen({ nav.popBackStack() }) }
+                composable(Routes.PREVIOUS) { PreviousScreen({ nav.popBackStack() }) }
+                composable(Routes.HISTORY_PIECE) { e -> PracticeHistoryScreen({ nav.popBackStack() }, e.arguments?.getString("id")?.toLongOrNull()) }
+                composable(Routes.HISTORY_CATALOG) { e -> PracticeHistoryScreen({ nav.popBackStack() }, catalogId=e.arguments?.getString("id")) }
+                composable(Routes.BADGE) { route -> BadgeDetailScreen(route.arguments?.getString("id").orEmpty(), experience) { nav.popBackStack() } }
+                composable(Routes.PRACTICE) { PracticeScreen(library, model, profile, motionScale != 0f, { nav.navigate(Routes.PREVIOUS) }) }
+                composable(Routes.BADGES) { BadgesScreen(experience, profile) { nav.navigate("badge/$it") } }
+                composable(Routes.WRAPPED) { ComingSoon(library, "Wrapped", "Your music.\nYour story.", L.s(R.string.future_wrapped), Icons.Outlined.Insights, listOf("Monthly reflections", "Your year at the piano", "Repertoire highlights")) }
+              }
             }
+          }
+          if (local != null && (replay || !local!!.onboardingDone ||
+                  (local!!.tourVersion > 0 && !local!!.tourCompleted && !local!!.tourSkipped))) {
+              CompositionLocalProvider(LocalTourAnchorRegistry provides tourAnchors) {
+                  GuidedTourHost(
+                      state = local!!,
+                      tour = tourViewModel,
+                      registry = tourAnchors,
+                      replay = replay,
+                      persist = profile::persistTour,
+                      navigate = { route ->
+                          if (route in setOf(Routes.OVERVIEW, Routes.ACTIVITY, Routes.PROFILE, Routes.REPERTOIRE, Routes.PRACTICE)) nav.selectTopLevel(route)
+                          else nav.navigate(route) { launchSingleTop = true }
+                      },
+                      done = { replay = false },
+                  )
+              }
+          }
         }
     }
 }
+/** Heading values are localized by callers when they are UI copy; catalogue/user values pass through unchanged. */
 @Composable internal fun Heading(eyebrow: String, title: String, subtitle: String) {
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text(L.fixed(eyebrow).uppercase(), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)

@@ -4,7 +4,8 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import androidx.work.*
-import com.opus.piano.OpusApplication
+import com.opus.piano.AppContainer
+import com.opus.piano.appContainer
 import com.opus.piano.practice.PracticeCoordinator
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
@@ -12,6 +13,13 @@ import java.time.Duration
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.util.concurrent.TimeUnit
+
+internal val widgetObservedTables = setOf(
+    "sessions", "session_parts", "pieces", "profile_settings",
+    "activity_settings", "activity_weekly_goals", "activity_weeks",
+    "manual_activity_entries", "activity_reward_grants",
+    "cosmetic_ownership", "cosmetic_loadout",
+)
 
 object WidgetRefresh {
     internal val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
@@ -24,30 +32,32 @@ object WidgetRefresh {
         return listOf(QuickPracticeWidget::class.java, WeeklyActivityWidget::class.java)
             .any { manager.getAppWidgetIds(ComponentName(context, it)).isNotEmpty() }
     }
-    @Synchronized fun observe(app: OpusApplication) {
-        if (!installed(app)) return
+    @Synchronized fun observe(context: Context, app: AppContainer) {
+        val applicationContext = app.context.applicationContext
+        if (!installed(context)) return
         if (observations?.isActive != true) observations = scope.launch {
             coroutineScope {
                 launch {
-                    app.database.invalidationTracker.createFlow("sessions", "session_parts", "pieces", "profile_settings")
-                        .drop(1).debounce(750).collect { request(app) }
+                    app.database.invalidationTracker.createFlow(*widgetObservedTables.toTypedArray())
+                        .drop(1).debounce(750).collect { request(context) }
                 }
-                launch { app.appearance.state.map { it.accent to it.cards }.distinctUntilChanged().drop(1).collect { request(app) } }
+                launch { app.appearance.state.map { it.accent to it.cards }.distinctUntilChanged().drop(1).collect { request(context) } }
             }
         }
         app.currentPracticeForWidgets()?.let { watchPractice(app, it) }
         val periodic = PeriodicWorkRequestBuilder<WidgetRefreshWorker>(6, TimeUnit.HOURS).addTag(TAG).build()
-        WorkManager.getInstance(app).enqueueUniquePeriodicWork("gould-widget-periodic", ExistingPeriodicWorkPolicy.KEEP, periodic)
+        WorkManager.getInstance(applicationContext).enqueueUniquePeriodicWork("gould-widget-periodic", ExistingPeriodicWorkPolicy.KEEP, periodic)
     }
-    @Synchronized fun watchPractice(app: OpusApplication, coordinator: PracticeCoordinator) {
-        if (!installed(app) || watchedPractice === coordinator) return
+    @Synchronized fun watchPractice(app: AppContainer, coordinator: PracticeCoordinator) {
+        val context = app.context
+        if (!installed(context) || watchedPractice === coordinator) return
         practiceObservation?.cancel(); watchedPractice = coordinator
         practiceObservation = scope.launch {
             // Exclude credit ticks and notes. Only navigation-relevant context changes trigger work.
             coordinator.state.map { state ->
                 val context = widgetPractice(state, null, false)
                 Triple(state.ready, context, state.token.isNotBlank())
-            }.distinctUntilChanged().drop(1).debounce(750).collect { request(app) }
+            }.distinctUntilChanged().drop(1).debounce(750).collect { request(context) }
         }
     }
     fun request(context: Context) {
@@ -72,19 +82,19 @@ object WidgetRefresh {
 class WidgetRefreshWorker(context: Context, parameters: WorkerParameters) : CoroutineWorker(context, parameters) {
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
         if (!WidgetRefresh.installed(applicationContext)) return@withContext Result.success()
-        val app = applicationContext as OpusApplication
-        val store = WidgetSnapshotStore(app)
+        val app = applicationContext.appContainer
+        val store = WidgetSnapshotStore(applicationContext)
         try {
             com.opus.piano.i18n.L.refresh()
             val snapshot = loadWidgetSnapshot(app)
             store.write(snapshot)
-            WidgetRenderer.renderAll(app, snapshot)
-            WidgetRefresh.rollover(app)
+            WidgetRenderer.renderAll(applicationContext, snapshot)
+            WidgetRefresh.rollover(applicationContext)
             Result.success()
         } catch (c: CancellationException) { throw c }
         catch (_: Exception) {
             // A failed projection never becomes a verified fresh zero. Retain the previous week/date.
-            runCatching { WidgetRenderer.renderAll(app, store.read(), forceStale = true) }
+            runCatching { WidgetRenderer.renderAll(applicationContext, store.read(), forceStale = true) }
             Result.retry()
         }
     }

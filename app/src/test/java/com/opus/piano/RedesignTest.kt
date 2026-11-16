@@ -34,6 +34,12 @@ class RedesignTest {
         assertEquals(AppearanceRules.profile,a.profileSections);assertEquals("Gold",a.accent)
         assertEquals(listOf("statistics","recent"),AppearanceRules.move(a.homeSections,"recent",1))
     }
+    @Test fun portableAppearanceRoundTripsThroughSharedNormalizedDefinition() {
+        val appearance=AppearanceRules.normalize(Appearance(accent="Rose",metrics=listOf("week","today"),hiddenHome=setOf("recent")))
+        val payload=org.json.JSONObject().put("appearance",com.opus.piano.data.backup.PortablePreferences.encode(appearance))
+            .put("locale","cs").put("previousMeteredConsent",false)
+        assertEquals(appearance,com.opus.piano.data.backup.PortablePreferences.validate(payload))
+    }
     @Test fun repertoireDefaultsToRecentlyPracticedAndNeverPracticedIsDeterministic() {
         val pieces=listOf(Piece(3,"Z","B"),Piece(2,"A","B"),Piece(1,"B","B"))
         assertEquals("Recently practiced",Appearance().sort)

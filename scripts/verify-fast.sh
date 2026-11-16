@@ -48,7 +48,9 @@ if [[ "${FAST_STATIC:-run}" != "skip" ]]; then
   python3 scripts/check_migrations.py || fail
   python3 scripts/check_backup_fixtures.py || fail
   python3 scripts/check_history_paging.py || fail
-  detail_parts+=("static:localization+migrations+backup+history")
+  python3 scripts/check_ui_literals.py || fail
+  python3 scripts/check_curated_catalogue.py || fail
+  detail_parts+=("static:localization+migrations+backup+history+ui-literals+curated-catalogue")
 fi
 
 elapsed=$(($(date +%s) - start))

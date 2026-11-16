@@ -41,7 +41,7 @@ object BundlePolicy {
     /** D7: jobs above this size need explicit confirmation before any byte moves. */
     const val LARGE_JOB_BYTES = 8L * 1024 * 1024
 
-    /** D7: combined catalogue/cache/offline ceiling (aligned with CatalogueStorage.MAX_TOTAL). */
+    /** D7: ceiling for downloaded bundle files; the built-in catalogue is packaged separately. */
     const val MAX_TOTAL_BYTES = 256L * 1024 * 1024
 
     /** D7: free-space floor; the real reserve may grow (CatalogueBudget.reserve). */

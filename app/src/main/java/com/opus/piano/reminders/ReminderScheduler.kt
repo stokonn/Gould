@@ -21,7 +21,7 @@ object ReminderSchedule {
     }
 }
 class ReminderScheduler(private val context: Context) {
-    private val app get() = context.applicationContext as OpusApplication
+    private val app get() = context.appContainer
     suspend fun schedule() {
         val settings = app.database.practiceDao().localNow() ?: LocalAppState()
         val alarm = context.getSystemService(AlarmManager::class.java)

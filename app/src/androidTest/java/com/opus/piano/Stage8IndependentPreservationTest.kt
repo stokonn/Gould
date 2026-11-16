@@ -161,7 +161,7 @@ class Stage8IndependentPreservationTest {
         }
     }
     private fun bundleId(kind:String)=java.util.UUID.nameUUIDFromBytes((kind+run).toByteArray()).toString()
-    @Test fun prepareOfflineBundleAndPeriodicWorkForReboot()=runBlocking {
+    @Test fun prepareOfflineBundleForReboot()=runBlocking {
         val app=context.applicationContext as OpusApplication
         assertFalse(app.bundleNetwork.facts().connected)
         val bytes="Synthetic Stage8 offline blob Ž".toByteArray()
@@ -173,16 +173,10 @@ class Stage8IndependentPreservationTest {
         val queued=Stage5Fixtures.manifest(bundleId("queued"),files=listOf(file))
         val enqueued=app.bundleScheduler.enqueue(queued,false,true)
         assertTrue(enqueued.enqueued)
-        app.adminSettings.syncPolicy=com.opus.piano.admin.AdminSyncPolicy(background=true)
-        com.opus.piano.admin.AdminSyncWorker.schedule(app)
         val wm=androidx.work.WorkManager.getInstance(app)
-        val until=SystemClock.elapsedRealtime()+10000
-        while(wm.getWorkInfosForUniqueWork(com.opus.piano.admin.AdminSyncWorker.NAME).get().isEmpty() && SystemClock.elapsedRealtime()<until)delay(100)
         val bundle=wm.getWorkInfosForUniqueWork(enqueued.jobId).get().single()
-        val periodic=wm.getWorkInfosForUniqueWork(com.opus.piano.admin.AdminSyncWorker.NAME).get().single()
         assertEquals(androidx.work.WorkInfo.State.ENQUEUED,bundle.state)
-        assertEquals(androidx.work.WorkInfo.State.ENQUEUED,periodic.state)
-        write("background-before.json",JSONObject().put("bundleWorkId",bundle.id.toString()).put("periodicWorkId",periodic.id.toString()).put("blobSha256",file.sha256).put("actualNetworkConnected",false).put("wallTime",System.currentTimeMillis()))
+        write("background-before.json",JSONObject().put("bundleWorkId",bundle.id.toString()).put("blobSha256",file.sha256).put("actualNetworkConnected",false).put("wallTime",System.currentTimeMillis()))
     }
     @Test fun verifyOfflineBundleAndPeriodicWorkAfterReboot()=runBlocking {
         val app=context.applicationContext as OpusApplication
@@ -190,21 +184,14 @@ class Stage8IndependentPreservationTest {
         val old=JSONObject(File(directory,"background-before.json").readText())
         val wm=androidx.work.WorkManager.getInstance(app)
         val bundle=wm.getWorkInfoById(java.util.UUID.fromString(old.getString("bundleWorkId"))).get()!!
-        val periodic=wm.getWorkInfoById(java.util.UUID.fromString(old.getString("periodicWorkId"))).get()!!
         assertEquals(androidx.work.WorkInfo.State.ENQUEUED,bundle.state)
-        assertEquals(androidx.work.WorkInfo.State.ENQUEUED,periodic.state)
         val ready=app.bundleStore.readPublished().manifests.single{it.bundleId==bundleId("ready")}
         assertEquals(com.opus.piano.data.offline.BundleState.READY,ready.state)
         val bytes=app.bundleStore.blobFile(old.getString("blobSha256")).readBytes()
         assertEquals(old.getString("blobSha256"),Stage5Fixtures.shaOf(bytes))
         assertFalse(requireNotNull(app.bundleJobs.get(com.opus.piano.data.offline.BundleJob.id(bundleId("queued"),1))).meteredAllowed)
         assertTrue(app.bundleScheduler.cancel(bundleId("queued"),1))
-        app.adminSettings.syncPolicy=com.opus.piano.admin.AdminSyncPolicy()
-        com.opus.piano.admin.AdminSyncWorker.cancel(app)
-        val until=SystemClock.elapsedRealtime()+10000
-        while(wm.getWorkInfoById(periodic.id).get()?.state!=androidx.work.WorkInfo.State.CANCELLED && SystemClock.elapsedRealtime()<until)delay(100)
-        assertEquals(androidx.work.WorkInfo.State.CANCELLED,wm.getWorkInfoById(periodic.id).get()!!.state)
-        write("background-after.json",JSONObject().put("workIdsPersisted",true).put("queuedOffline",true).put("readyBlobUnchanged",true).put("cancelled",true).put("wallElapsedMs",System.currentTimeMillis()-old.getLong("wallTime")).put("realThreeHourDeliveryVerified",false))
+        write("background-after.json",JSONObject().put("workIdsPersisted",true).put("queuedOffline",true).put("readyBlobUnchanged",true).put("wallElapsedMs",System.currentTimeMillis()-old.getLong("wallTime")))
     }
 
 }

@@ -8,6 +8,31 @@ import org.junit.Test
 import java.time.*
 
 class WidgetProjectionTest {
+    @Test fun weeklyWidgetChangesCompositionOnlyWhenBothDimensionsHaveRoom() {
+        assertEquals(WeeklyWidgetLayout.COMPACT, weeklyWidgetLayout(120f, 220f, 1f))
+        assertEquals(WeeklyWidgetLayout.COMPACT, weeklyWidgetLayout(300f, 90f, 1f))
+        assertEquals(WeeklyWidgetLayout.COMPACT, weeklyWidgetLayout(300f, 180f, 1.6f))
+        assertEquals(WeeklyWidgetLayout.WIDE, weeklyWidgetLayout(300f, 180f, 1f))
+        assertEquals(WeeklyWidgetLayout.WIDE, weeklyWidgetLayout(280f, 160f, 1.5f))
+    }
+    @Test fun widgetChartHeightTracksAvailableSpaceAndFontScaleWithoutStretching() {
+        assertEquals(60f, widgetHeatmapHeight(160f, 1f, false), .001f)
+        assertEquals(96f, widgetHeatmapHeight(300f, 1f, false), .001f)
+        assertEquals(32f, widgetHeatmapHeight(120f, 1f, true), .001f)
+        assertEquals(24f, widgetHeatmapHeight(80f, 2f, false), .001f)
+        assertTrue(widgetHeatmapLabelsVisible(112f, 48f))
+        assertFalse(widgetHeatmapLabelsVisible(95f, 48f))
+        assertFalse(widgetHeatmapLabelsVisible(112f, 41f))
+        assertEquals("T", widgetDayLabel("Thu", 24f))
+        assertEquals("Th", widgetDayLabel("Thu", 30f))
+        assertEquals("čt", widgetDayLabel("čt", 30f))
+    }
+    @Test fun widgetRefreshObservesAllActivityAndCosmeticMutationTables() {
+        assertTrue(widgetObservedTables.containsAll(setOf(
+            "activity_settings", "activity_weekly_goals", "activity_weeks",
+            "manual_activity_entries", "activity_reward_grants", "cosmetic_ownership", "cosmetic_loadout",
+        )))
+    }
     private val prague = ZoneId.of("Europe/Prague")
     private val today = LocalDate.of(2026, 10, 29)
     private fun row(day: String, duration: Long = 60_000, elapsed: Long = 999_999): PracticeSession {
@@ -45,12 +70,12 @@ class WidgetProjectionTest {
         assertEquals(4, widgetIntensityBucket(100, 100))
         assertEquals(0, widgetIntensityBucket(0, 0))
     }
-    @Test fun weeklyHeatmapCellsKeepSmallConsistentGapsAcrossWidgetSizes() {
-        listOf(80f to 20f, 160f to 36f, 320f to 64f).forEach { (width, height) ->
+    @Test fun weeklyHeatmapCellsStayBalancedAcrossNarrowWideShortAndTallWidgets() {
+        listOf(80f to 20f, 160f to 36f, 320f to 64f, 160f to 240f).forEach { (width, height) ->
             val slot = width / 7f
             val size = widgetHeatmapCellSize(slot, height)
-            assertEquals(.04f, (slot - size.width) / slot, .0001f)
-            assertEquals(.06f, (height - size.height) / height, .0001f)
+            assertEquals(.12f, (slot - size.width) / slot, .0001f)
+            assertTrue(size.height <= slot * 1.15f)
             assertTrue(size.width < slot)
             assertTrue(size.height < height)
         }

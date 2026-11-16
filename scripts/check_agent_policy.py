@@ -12,9 +12,11 @@ assert rule.startswith('---\n') and 'alwaysApply: true\n' in rule and '@AGENTS.m
 assert '../AGENTS.md' in (root/'.github/copilot-instructions.md').read_text()
 for path in ['CLAUDE.md','GEMINI.md','.cursor/rules/goldberg.mdc','.github/copilot-instructions.md']:
     assert len((root/path).read_text().splitlines())<20,'Adapter must stay thin'
+for path in (root/'app/src/main/java').rglob('*.kt'):
+    assert not re.search(r'\bas\s+OpusApplication\b',path.read_text()),f'Use AppContainer boundary instead of concrete Application cast: {path.relative_to(root)}'
 for path in (root/'docs/wiki').glob('*.md'):
     for target in re.findall(r'\]\(([^)]+)\)',path.read_text()):
         if '://' not in target:
             destination=path.parent/target
             assert destination.is_file() or (path.parent/(target+'.md')).is_file(),(path,target)
-print('PASS: canonical policy, thin agent references, Cursor frontmatter and local Wiki navigation; runtime agent loading NOT TESTED')
+print('PASS: canonical policy, AppContainer boundary, thin agent references, Cursor frontmatter and local Wiki navigation; runtime agent loading NOT TESTED')
