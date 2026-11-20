@@ -2,23 +2,27 @@
 
 > **Latest release:** [Gould 0.15.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.15.0). It is not Stable.
 
-> Gould 0.15.0 is now published as a pre-release; its signed APK requires Android 11 (API 30) or later.
-
-Gould is a local-first Android music practice journal for repertoire, sessions, notes, recordings and achievements. Library includes sourced music catalogue data; Studio supports manual or experimental Smart Practice and explicit local audio recording. Discover remains preserved but is temporarily hidden.
+Gould is a local-first Android music practice journal for repertoire, sessions, notes, recordings and achievements. Library includes a curated, sourced music catalogue. Studio supports manual or experimental Smart Practice and explicit local audio recording. Discover remains preserved but is temporarily hidden from the current navigation.
 
 **Download:** [Gould 0.15.0 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.15.0) · [All releases](https://github.com/stokonn/Gould/releases).
 
-**0.13 changes:** approximately 6.3 MB APK, faster recording metadata/database queries, more consistent Studio recording-list refresh and recovery. [Release notes](https://github.com/stokonn/Gould/blob/main/docs/releases/GOULD-0.13.md).
+## Gould 0.15.0
+
+The current pre-release adds a curated offline catalogue (100 composers, 105,032 works and 105,421 composer relationships), opt-in online MusicBrainz search, redesigned Library and Artist pages, guided onboarding and safer community-draft recovery. Activity week completion consistently requires both configured weekly goals.
+
+The published APK is the exact artifact the owner tested on a Samsung Galaxy A55. Android instrumentation was compiled but **not executed**; this is not an instrumentation pass. See the [0.15 release notes](https://github.com/stokonn/Gould/blob/main/docs/releases/GOULD-0.15.md) and [verification report](https://github.com/stokonn/Gould/blob/main/docs/planning/gould-0.15/RELEASE-VERIFICATION.md).
+
+## Next development cycle
+
+Gould 0.16 planning is focused on catalogue/database loading and search performance, plus UI responsiveness and loading states. The implementation scope is still under review. No performance improvement is claimed before repeatable measurements, and no database or language rewrite has been approved.
+
+## Data and privacy
+
+Practice data and recordings remain local unless deliberately exported. The optional public catalogue API is read-only and currently has no approved published records. Online catalogue search requires explicit consent. Backend OAuth, community submissions and practice uploads remain disabled.
+
+See the [Gould 0.13 guide screenshots](images/gould-0.13/CAPTURE-EVIDENCE.md) for historical verified emulator captures. They are not physical-device evidence.
 
 [Getting Started](Getting-Started) · [User Guide](User-Guide) · [Settings & Customization](Settings-and-Customization) · [Developer Guide](Developer-Guide) · [FAQ & Troubleshooting](FAQ-and-Troubleshooting) · [Changelog & Roadmap](Changelog-and-Roadmap) · [Credits & Licenses](Credits-and-Licenses)
-
-Gould 0.15.0 adds the curated offline catalogue with opt-in online MusicBrainz search, redesigned Library and Artist pages, guided onboarding and safer community-draft recovery. Gould 0.14.0 added Activity and weekly progression. Each eligible perfect week can grant one cosmetic; Beta Week can earn its cosmetic but does not advance official Streak or Freeze progress. Four consecutive perfect official Streak weeks grant an additional Freeze. Optional online catalogue-provider searches require explicit consent. Backend OAuth, community writes and practice uploads remain disabled.
-
-See the [Gould 0.13 guide screenshots](images/gould-0.13/CAPTURE-EVIDENCE.md) for verified emulator captures. They are not physical-device evidence.
-
-Practice data and recordings remain local unless deliberately exported. The optional public catalogue API is read-only and currently has no approved published records. Backend OAuth, community submissions and practice uploads remain disabled.
-
-Historical Goldberg screenshots and release evidence are preserved in Git history, not misrepresented as new Gould 0.13 captures.
 
 created by stokonn with love <3
 

@@ -2,16 +2,31 @@
 
 > **Latest release:** [Gould 0.15.0 (pre-release)](https://github.com/stokonn/Gould/releases/tag/v0.15.0). This is not Stable.
 
-## Gould 0.13 — Project Renaissance (pre-release)
+## Gould 0.15.0 — published pre-release
 
-- Reduce APK size to approximately 6.3 MB.
-- Optimize recording metadata loading and database queries.
-- Improve Studio recordings-list refresh and recovery reliability.
-- Retain existing application, database and signing compatibility for in-place upgrades.
+- Curated offline catalogue from the verified MusicBrainz Core snapshot: 100 composers, 105,032 works and 105,421 composer relationships.
+- Opt-in online MusicBrainz search with existing debounce, cancellation, rate-limit and cache behaviour.
+- Redesigned Library and Artist pages, scoped search, deterministic sorting and work-type/period filters.
+- Guided onboarding and safer community-draft recovery.
+- Consistent Activity week completion based on both configured weekly goals.
 
-[0.13 release notes](https://github.com/stokonn/Gould/blob/main/docs/releases/GOULD-0.13.md) · [Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.13)
+The published APK is the exact artifact the owner tested on a Samsung Galaxy A55. Android instrumentation was compiled but **not executed**. The unresolved Google SDK licensing questions and the owner's explicit release authorization are documented transparently.
 
-Older release information is maintained in [CHANGELOG.md](https://github.com/stokonn/Gould/blob/main/CHANGELOG.md), Git history and historical checkpoints. Earlier development roadmaps do not represent the current published state. See [current project status](https://github.com/stokonn/Gould/blob/main/docs/ai/GOULD-CURRENT-STATUS.md).
+[Release notes and verification](https://github.com/stokonn/Gould/blob/main/docs/releases/GOULD-0.15.md) · [Dependency licensing audit](https://github.com/stokonn/Gould/blob/main/docs/planning/gould-0.15/GOOGLE-DEPENDENCY-LICENSING-AUDIT.md) · [GitHub pre-release](https://github.com/stokonn/Gould/releases/tag/v0.15.0)
+
+## Gould 0.16 — planning
+
+The current planning focus is catalogue/database loading and search performance, plus UI responsiveness and loading states. The architecture and implementation scope remain under review; this is not a promise that a particular optimization or rewrite will ship. Performance claims must be based on repeatable measurements on representative Android hardware. Room/SQLite remain the baseline unless profiling demonstrates a concrete reason to change them.
+
+The Google Sign-In replacement investigation was deferred from 0.15 and remains a separate scope decision; it is not silently included in the performance work.
+
+## Earlier published releases
+
+- [Gould 0.14.0](https://github.com/stokonn/Gould/releases/tag/v0.14.0) — deterministic weekly Activity, yearly heatmap, retrospective manual records, historical goals, Beta Week, Streak Freeze and durable cosmetic rewards.
+- [Gould 0.13](https://github.com/stokonn/Gould/releases/tag/v0.13) — Project Renaissance, including recording metadata/database query improvements and Studio recordings-list refresh/recovery fixes.
+- Earlier releases are listed in [GitHub Releases](https://github.com/stokonn/Gould/releases) and [CHANGELOG.md](https://github.com/stokonn/Gould/blob/main/CHANGELOG.md).
+
+See [current project status](https://github.com/stokonn/Gould/blob/main/docs/ai/GOULD-CURRENT-STATUS.md) for the engineering handoff. Older development notes below are preserved as historical records, not current status.
 
 created by stokonn with love <3
 
