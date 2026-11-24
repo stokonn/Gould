@@ -29,7 +29,7 @@ enum ActivityRewardsInteropCheck {
             historyWeeks: [], currentWeek: week, goals: [goal], workouts: workouts
         )
         _ = streak.currentStreak
-        _ = ActivityDomainKt.activityBoard(year: Int32(2024), today: monday, activities: [])
+        _ = ActivityBoardKt.activityBoard(year: Int32(2024), today: monday, activities: [])
         _ = ActivityDomainKt.classifyWeek(week: week, goal: goal, workouts: workouts, through: week.sunday)
         _ = ActivityDomainKt.goalMet(totals: WeekTotals(sessions: 1, minutes: 1), goal: goal)
         _ = rewards.eligible(

@@ -19,84 +19,10 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section(tr("settings.appearance")) {
-                    Picker(tr("settings.theme"), selection: $appearance.theme) {
-                        Text(tr("settings.followSystem")).tag("System")
-                        Text(tr("settings.light")).tag("Light")
-                        Text(tr("settings.dark")).tag("Dark")
-                    }
-                    Picker(tr("settings.typography"), selection: $appearance.typography) {
-                        Text(tr("settings.editorial")).tag("Editorial")
-                        Text(tr("settings.systemFont")).tag("System")
-                    }
-                    Picker(tr("settings.accent"), selection: $appearance.accent) {
-                        ForEach(AppAppearance.accents, id: \.self) { Text(tr("settings.accent.\($0.lowercased())")).tag($0) }
-                    }
-                    Picker(tr("settings.cards"), selection: $appearance.cards) {
-                        Text(tr("settings.soft")).tag("Soft")
-                        Text(tr("settings.outline")).tag("Outline")
-                        Text(tr("settings.open")).tag("Open")
-                    }
-                    Picker(tr("settings.language"), selection: $appearance.localeOverride) {
-                        Text(tr("settings.followSystem")).tag("")
-                        Text(tr("settings.czech")).tag("cs")
-                        Text(tr("settings.english")).tag("en")
-                    }
-                    Button(tr("settings.resetAppearance"), role: .destructive) { confirmAppearanceReset = true }
-                }
-
-                Section(tr("settings.data")) {
-                    LabeledContent(tr("settings.localEntries")) { Text("\(store.workouts.count)").monospacedDigit() }
-                    LabeledContent(tr("settings.localGoals")) { Text("\(store.goals.count)").monospacedDigit() }
-                    LabeledContent(tr("settings.ownedCosmetics")) { Text("\(store.ownedCosmetics.count)").monospacedDigit() }
-                    Button(tr("settings.exportBackup")) {
-                        guard let data = store.backupData() else { store.lastError = tr("activity.loadFailed"); return }
-                        exportDocument = ActivityFileDocument(data: data)
-                        showBackupExporter = true
-                    }
-                    Button(tr("settings.importBackup")) { showBackupImporter = true }
-                    Button(tr("settings.exportCSV")) {
-                        exportDocument = ActivityFileDocument(data: store.activityCSV())
-                        showCSVExporter = true
-                    }
-                    Button(tr("settings.reset"), role: .destructive) { confirmReset = true }
-                }
-
-                Section(tr("settings.privacy")) {
-                    Toggle(tr("settings.reminders"), isOn: Binding(
-                        get: { reminders.enabled },
-                        set: { enabled in Task { await reminders.update(enabled: enabled) } }
-                    ))
-                    if reminders.enabled {
-                        DatePicker(tr("settings.reminderTime"), selection: reminderTime, displayedComponents: .hourAndMinute)
-                    }
-                    if let error = reminders.error {
-                        Text(error).journalFont(.bodySmall).foregroundStyle(.red)
-                    }
-                    Text(tr("settings.privacyNote"))
-                        .journalFont(.bodySmall)
-                        .foregroundStyle(.secondary)
-                    Text(tr("settings.platformLimitations"))
-                        .journalFont(.bodySmall)
-                        .foregroundStyle(.secondary)
-                    Button(tr("settings.iosSettings")) {
-                        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-                        UIApplication.shared.open(url)
-                    }
-                }
-
-                Section(tr("settings.about")) {
-                    LabeledContent(tr("settings.version")) {
-                        Text(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "-")
-                    }
-                    Text(tr("settings.sharedRulesNote"))
-                        .journalFont(.bodySmall)
-                        .foregroundStyle(.secondary)
-                    Button(tr("settings.fontLicenses")) { showFontLicenses = true }
-                    Text("created by stokonn with love <3")
-                        .journalFont(.bodySmall)
-                        .foregroundStyle(.secondary)
-                }
+                appearanceSection
+                dataSection
+                privacySection
+                aboutSection
             }
             .scrollContentBackground(.hidden)
             .background(colors.background)
@@ -148,6 +74,93 @@ struct SettingsView: View {
                         .toolbar { ToolbarItem(placement: .confirmationAction) { Button(tr("common.close")) { showFontLicenses = false } } }
                 }
             }
+        }
+    }
+
+    private var appearanceSection: some View {
+        Section(tr("settings.appearance")) {
+            Picker(tr("settings.theme"), selection: $appearance.theme) {
+                Text(tr("settings.followSystem")).tag("System")
+                Text(tr("settings.light")).tag("Light")
+                Text(tr("settings.dark")).tag("Dark")
+            }
+            Picker(tr("settings.typography"), selection: $appearance.typography) {
+                Text(tr("settings.editorial")).tag("Editorial")
+                Text(tr("settings.systemFont")).tag("System")
+            }
+            Picker(tr("settings.accent"), selection: $appearance.accent) {
+                ForEach(AppAppearance.accents, id: \.self) { Text(tr("settings.accent.\($0.lowercased())")).tag($0) }
+            }
+            Picker(tr("settings.cards"), selection: $appearance.cards) {
+                Text(tr("settings.soft")).tag("Soft")
+                Text(tr("settings.outline")).tag("Outline")
+                Text(tr("settings.open")).tag("Open")
+            }
+            Picker(tr("settings.language"), selection: $appearance.localeOverride) {
+                Text(tr("settings.followSystem")).tag("")
+                Text(tr("settings.czech")).tag("cs")
+                Text(tr("settings.english")).tag("en")
+            }
+            Button(tr("settings.resetAppearance"), role: .destructive) { confirmAppearanceReset = true }
+        }
+    }
+
+    private var dataSection: some View {
+        Section(tr("settings.data")) {
+            LabeledContent(tr("settings.localEntries")) { Text("\(store.workouts.count)").monospacedDigit() }
+            LabeledContent(tr("settings.localGoals")) { Text("\(store.goals.count)").monospacedDigit() }
+            LabeledContent(tr("settings.ownedCosmetics")) { Text("\(store.ownedCosmetics.count)").monospacedDigit() }
+            Button(tr("settings.exportBackup")) {
+                guard let data = store.backupData() else { store.lastError = tr("activity.loadFailed"); return }
+                exportDocument = ActivityFileDocument(data: data)
+                showBackupExporter = true
+            }
+            Button(tr("settings.importBackup")) { showBackupImporter = true }
+            Button(tr("settings.exportCSV")) {
+                exportDocument = ActivityFileDocument(data: store.activityCSV())
+                showCSVExporter = true
+            }
+            Button(tr("settings.reset"), role: .destructive) { confirmReset = true }
+        }
+    }
+
+    private var privacySection: some View {
+        Section(tr("settings.privacy")) {
+            Toggle(tr("settings.reminders"), isOn: Binding(
+                get: { reminders.enabled },
+                set: { enabled in Task { await reminders.update(enabled: enabled) } }
+            ))
+            if reminders.enabled {
+                DatePicker(tr("settings.reminderTime"), selection: reminderTime, displayedComponents: .hourAndMinute)
+            }
+            if let error = reminders.error {
+                Text(error).journalFont(.bodySmall).foregroundStyle(.red)
+            }
+            Text(tr("settings.privacyNote"))
+                .journalFont(.bodySmall)
+                .foregroundStyle(.secondary)
+            Text(tr("settings.platformLimitations"))
+                .journalFont(.bodySmall)
+                .foregroundStyle(.secondary)
+            Button(tr("settings.iosSettings")) {
+                guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+                UIApplication.shared.open(url)
+            }
+        }
+    }
+
+    private var aboutSection: some View {
+        Section(tr("settings.about")) {
+            LabeledContent(tr("settings.version")) {
+                Text(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "-")
+            }
+            Text(tr("settings.sharedRulesNote"))
+                .journalFont(.bodySmall)
+                .foregroundStyle(.secondary)
+            Button(tr("settings.fontLicenses")) { showFontLicenses = true }
+            Text("created by stokonn with love <3")
+                .journalFont(.bodySmall)
+                .foregroundStyle(.secondary)
         }
     }
 
