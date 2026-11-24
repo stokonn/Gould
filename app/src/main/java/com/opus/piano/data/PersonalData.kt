@@ -35,6 +35,7 @@ interface PersonalDao {
     @Query("SELECT * FROM session_parts ORDER BY id") fun parts(): Flow<List<SessionPart>>
     @Query("SELECT * FROM session_parts ORDER BY id") suspend fun allParts(): List<SessionPart>
     @Insert suspend fun insertParts(parts: List<SessionPart>)
+    @Query("DELETE FROM session_parts WHERE sessionId=:id") suspend fun deleteParts(id: Long): Int
     @Query("SELECT * FROM profile_settings WHERE id = 1") fun settings(): Flow<ProfileSettings?>
     @Query("SELECT * FROM profile_settings WHERE id = 1") suspend fun getSettings(): ProfileSettings?
     @Upsert suspend fun saveSettings(settings: ProfileSettings)

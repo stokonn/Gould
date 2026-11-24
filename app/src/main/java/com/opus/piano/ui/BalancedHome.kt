@@ -23,6 +23,10 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.opus.piano.data.*
+import com.opus.piano.data.ActivityHistoryEntry
+import com.opus.piano.data.ManualHistoryEntry
+import com.opus.piano.data.PracticeHistoryEntry
+import com.opus.piano.data.unifiedActivityHistory
 import java.time.*
 
 @Composable internal fun BalancedHome(library:LibraryState,name:String,piece:(Long)->Unit,history:()->Unit,settings:()->Unit,activity:ActivityViewModel) {
@@ -56,37 +60,60 @@ import java.time.*
             else Row(horizontalArrangement=Arrangement.spacedBy(12.dp),verticalAlignment=Alignment.CenterVertically) {
                 Box(Modifier.weight(1.05f)) {TourAnchor("home") { greeting() }};Box(Modifier.weight(1f)) {quotation()}
             }
-            Row(horizontalArrangement=Arrangement.spacedBy(12.dp)) {
-                JournalCard(Modifier.weight(1f)) {
-                    Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {Icon(Icons.Outlined.CalendarToday,null,Modifier.size(20.dp),tint=MaterialTheme.colorScheme.primary);Text(L.s(R.string.today_practice),style=MaterialTheme.typography.bodySmall)}
-                    Text(localizedPracticeTime(activityState.snapshot?.todayDurationMillis ?: PracticeInsights.metric("today",library.pieces,library.sessions,today,ZoneId.systemDefault())),style=MaterialTheme.typography.headlineMedium.copy(fontFamily=MaterialTheme.typography.bodyLarge.fontFamily,fontFeatureSettings="tnum"))
+            Row(Modifier.height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+                JournalCard(Modifier.weight(1f).fillMaxHeight()) {
+                    Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {Icon(Icons.Outlined.CalendarToday,null,Modifier.size(20.dp),tint=MaterialTheme.colorScheme.primary);Text(L.s(R.string.today_practice),style=MaterialTheme.typography.bodySmall,maxLines=2,overflow=TextOverflow.Ellipsis)}
+                    Text(localizedPracticeTime(activityState.snapshot?.todayDurationMillis ?: PracticeInsights.metric("today",library.pieces,library.sessions,today,ZoneId.systemDefault())),style=MaterialTheme.typography.headlineMedium.copy(fontFamily=MaterialTheme.typography.bodyLarge.fontFamily,fontFeatureSettings="tnum"),maxLines=2,overflow=TextOverflow.Ellipsis)
                 }
-                JournalCard(Modifier.weight(1f)) {
-                    Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {Icon(Icons.Outlined.LocalFireDepartment,null,Modifier.size(20.dp),tint=MaterialTheme.colorScheme.primary);Text(L.fixed("Current streak"),style=MaterialTheme.typography.bodySmall)}
-                    Text(L.quantity(R.plurals.days_count,activityState.snapshot?.dailyStreak ?: currentPracticeStreak(library.sessions,today,ZoneId.systemDefault(),activityState.manualEntries)),style=MaterialTheme.typography.headlineMedium.copy(fontFamily=MaterialTheme.typography.bodyLarge.fontFamily,fontFeatureSettings="tnum"))
+                JournalCard(Modifier.weight(1f).fillMaxHeight()) {
+                    Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {Icon(Icons.Outlined.LocalFireDepartment,null,Modifier.size(20.dp),tint=MaterialTheme.colorScheme.primary);Text(L.s(R.string.activity_current_streak),style=MaterialTheme.typography.bodySmall,maxLines=2,overflow=TextOverflow.Ellipsis)}
+                    Text(L.quantity(R.plurals.activity_week_streak,activityState.snapshot?.currentWeeklyStreak ?: 0),style=MaterialTheme.typography.headlineMedium.copy(fontFamily=MaterialTheme.typography.bodyLarge.fontFamily,fontFeatureSettings="tnum"),maxLines=2,overflow=TextOverflow.Ellipsis)
+                }
+                JournalCard(Modifier.weight(1f).fillMaxHeight()) {
+                    Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {Icon(Icons.Outlined.LocalFireDepartment,null,Modifier.size(20.dp),tint=MaterialTheme.colorScheme.primary);Text(L.s(R.string.activity_daily_streak),style=MaterialTheme.typography.bodySmall,maxLines=2,overflow=TextOverflow.Ellipsis)}
+                    Text(L.quantity(R.plurals.days_count,activityState.snapshot?.dailyStreak ?: 0),style=MaterialTheme.typography.headlineMedium.copy(fontFamily=MaterialTheme.typography.bodyLarge.fontFamily,fontFeatureSettings="tnum"),maxLines=2,overflow=TextOverflow.Ellipsis)
                 }
             }
             JournalCard {WeeklyJournalChart(activityState.snapshot?.recentDailyDurationMillis,library.sessions,today,history)}
+            activityState.snapshot?.weekly?.let { weekly ->
+                JournalCard {
+                    Text(L.fixed("This week"), style = MaterialTheme.typography.titleSmall)
+                    Text(L.fixed("${weekly.sessions} sessions · ${weekly.minutes} min · ${weekly.activeDays} active days"), style = MaterialTheme.typography.bodyMedium)
+                    Text(L.fixed("Last week: ${weekly.previousSessions} sessions · ${weekly.previousMinutes} min · ${weekly.previousActiveDays} active days"), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
             Column(verticalArrangement=Arrangement.spacedBy(4.dp)) {
                 CompactSection(L.fixed("Recently practiced"),L.s(R.string.msg_view_all_efd8),history)
-                val recent=library.sessions.filter(AchievementEngine::valid).sortedWith(compareByDescending<PracticeSession> {it.completedAt}.thenByDescending {it.id}).take(recentLimit)
-                if(recent.isEmpty()) JournalCard {Text(L.s(R.string.home_no_activity),style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)}
+                val recentHistory=remember(library.sessions,activityState.manualEntries,today) { unifiedActivityHistory(library.sessions,activityState.manualEntries,today,ZoneId.systemDefault()).take(recentLimit) }
+                if(recentHistory.isEmpty()) JournalCard {Text(L.s(R.string.home_no_activity),style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)}
                 else JournalCard(padding=PaddingValues(horizontal=10.dp,vertical=2.dp)) {
-                    recent.forEachIndexed {index,session->
-                        val parts=library.parts.filter {it.sessionId==session.id}
-                        val ids=parts.mapNotNull {it.pieceId}.distinct().ifEmpty {listOfNotNull(session.pieceId)}
-                        val saved=ids.singleOrNull()?.let {id->library.pieces.firstOrNull {it.id==id}}
-                        var review by remember(session.id) {mutableStateOf(false)}
-                        if(review) HistoricalReview(session,parts) {review=false}
-                        val title=parts.filter {it.durationMillis>0}.joinToString(" · ") {it.displayTitle}.ifBlank {if(session.pieceTitle=="Free practice") L.fixed("Free practice") else session.pieceTitle}
-                        val composer=parts.firstOrNull()?.composer.orEmpty()
-                        val artist=catalog.composers.firstOrNull {catalogText(it.name)==catalogText(composer)}
-                        Row(Modifier.fillMaxWidth().clickable(role=Role.Button) {if(saved!=null) piece(saved.id) else review=true}.heightIn(min=60.dp).padding(vertical=8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
-                            if(artist!=null) ComposerPortrait(artist,Modifier.size(width=38.dp,height=46.dp)) else Surface(shape=MaterialTheme.shapes.small,color=MaterialTheme.colorScheme.primary.copy(alpha=.12f)) {Icon(Icons.Outlined.MusicNote,null,Modifier.size(42.dp).padding(9.dp),tint=MaterialTheme.colorScheme.primary)}
-                            Column(Modifier.weight(1f)) {Text(title,style=MaterialTheme.typography.bodyMedium,maxLines=2,overflow=TextOverflow.Ellipsis);if(composer.isNotBlank()) Text(composer,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
-                            Column(horizontalAlignment=Alignment.End) {Text(localizedPracticeTime(session.durationMillis),style=MaterialTheme.typography.bodySmall);Text(Instant.ofEpochMilli(session.completedAt).atZone(ZoneId.systemDefault()).format(java.time.format.DateTimeFormatter.ofPattern("d MMM").withLocale(L.locale)),style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
+                    recentHistory.forEachIndexed {index,entry->
+                        when(entry) {
+                            is PracticeHistoryEntry -> {
+                                val session=entry.session
+                                val parts=library.parts.filter {it.sessionId==session.id}
+                                val ids=parts.mapNotNull {it.pieceId}.distinct().ifEmpty {listOfNotNull(session.pieceId)}
+                                val saved=ids.singleOrNull()?.let {id->library.pieces.firstOrNull {it.id==id}}
+                                var review by remember(session.id) {mutableStateOf(false)}
+                                if(review) HistoricalReview(session,parts) {review=false}
+                                val title=parts.filter {it.durationMillis>0}.joinToString(" · ") {it.displayTitle}.ifBlank {if(session.pieceTitle=="Free practice") L.fixed("Free practice") else session.pieceTitle}
+                                val composer=parts.firstOrNull()?.composer.orEmpty()
+                                val artist=catalog.composers.firstOrNull {catalogText(it.name)==catalogText(composer)}
+                                Row(Modifier.fillMaxWidth().clickable(role=Role.Button) {if(saved!=null) piece(saved.id) else review=true}.heightIn(min=60.dp).padding(vertical=8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+                                    if(artist!=null) ComposerPortrait(artist,Modifier.size(width=38.dp,height=46.dp)) else Surface(shape=MaterialTheme.shapes.small,color=MaterialTheme.colorScheme.primary.copy(alpha=.12f)) {Icon(Icons.Outlined.MusicNote,null,Modifier.size(42.dp).padding(9.dp),tint=MaterialTheme.colorScheme.primary)}
+                                    Column(Modifier.weight(1f)) {Text(title,style=MaterialTheme.typography.bodyMedium,maxLines=2,overflow=TextOverflow.Ellipsis);if(composer.isNotBlank()) Text(composer,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
+                                    Column(horizontalAlignment=Alignment.End) {Text(localizedPracticeTime(session.durationMillis),style=MaterialTheme.typography.bodySmall);Text(Instant.ofEpochMilli(session.completedAt).atZone(ZoneId.systemDefault()).format(java.time.format.DateTimeFormatter.ofPattern("d MMM").withLocale(L.locale)),style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
+                                }
+                            }
+                            is ManualHistoryEntry -> {
+                                Row(Modifier.fillMaxWidth().heightIn(min=60.dp).padding(vertical=8.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+                                    Surface(shape=MaterialTheme.shapes.small,color=MaterialTheme.colorScheme.primary.copy(alpha=.12f)) {Icon(Icons.Outlined.EditNote,null,Modifier.size(42.dp).padding(9.dp),tint=MaterialTheme.colorScheme.primary)}
+                                    Column(Modifier.weight(1f)) {Text(L.fixed("Manual activity"),style=MaterialTheme.typography.bodyMedium);Text(LocalDate.ofEpochDay(entry.epochDay).format(java.time.format.DateTimeFormatter.ofPattern("d MMM").withLocale(L.locale)),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)}
+                                    Text(localizedPracticeTime(entry.durationMillis),style=MaterialTheme.typography.bodySmall)
+                                }
+                            }
                         }
-                        if(index<recent.lastIndex) HorizontalDivider(color=MaterialTheme.colorScheme.outlineVariant.copy(alpha=.4f))
+                        if(index<recentHistory.lastIndex) HorizontalDivider(color=MaterialTheme.colorScheme.outlineVariant.copy(alpha=.4f))
                     }
                 }
             }

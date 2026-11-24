@@ -89,7 +89,7 @@ internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFi
         // Same ranking predicate as SQL, queried only for the final item.
         val lastRank=(0..3).first {value->queryEntities(SimpleSQLiteQuery(
             "SELECT e.* FROM entities e WHERE e.id=? AND ($rank)=?",
-            (listOf(last.id)+rankArgs+value).toTypedArray())).isNotEmpty()}
+            (listOf<Any>(last.id)+rankArgs+value).toTypedArray())).isNotEmpty()}
         SearchCursor(binding,generation,lastRank,last.id).encode()
     } else null
     val workIds=page.filter {it.kind=="work"}.map {it.id}

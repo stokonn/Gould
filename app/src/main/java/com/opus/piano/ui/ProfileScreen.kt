@@ -77,7 +77,14 @@ import java.time.*
                 }
             }
             val combined = cosmeticState.snapshot
-            val metrics=mapOf("time" to (localizedPracticeTime(combined?.allTimeDurationMillis ?: state.summary.totalMillis) to L.fixed("Total practice")),"pieces" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(state.pieces.size) to L.fixed("Repertoire pieces")),"sessions" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(combined?.allTimeWorkouts ?: state.sessions.count(AchievementEngine::valid)) to L.fixed("Practice sessions")),"streak" to (L.quantity(R.plurals.days_count,combined?.dailyStreak ?: currentPracticeStreak(state.sessions,LocalDate.now(),ZoneId.systemDefault(),cosmeticState.manualEntries)) to L.fixed("Current streak")))
+            val metrics=mapOf("time" to (localizedPracticeTime(combined?.allTimeDurationMillis ?: state.summary.totalMillis) to L.fixed("Total practice")),"pieces" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(state.pieces.size) to L.fixed("Repertoire pieces")),"sessions" to (java.text.NumberFormat.getIntegerInstance(L.locale).format(combined?.allTimeWorkouts ?: state.sessions.count(AchievementEngine::valid)) to L.fixed("Practice sessions")),"streak" to (L.quantity(R.plurals.activity_week_streak,combined?.currentWeeklyStreak ?: 0) to L.fixed("Weekly streak")),"daily_streak" to (L.quantity(R.plurals.days_count,combined?.dailyStreak ?: 0) to L.fixed("Daily streak")))
+            combined?.weekly?.let { weekly ->
+                JournalCard {
+                    Text(L.fixed("This week"), style = MaterialTheme.typography.titleSmall)
+                    Text(L.fixed("${weekly.sessions} sessions · ${weekly.minutes} min · ${weekly.activeDays} active days"), style = MaterialTheme.typography.bodyMedium)
+                    Text(L.fixed("Last week: ${weekly.previousSessions} sessions · ${weekly.previousMinutes} min · ${weekly.previousActiveDays} active days"), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
             BoxWithConstraints {
                 val columns=if(maxWidth<260.dp || fontScale>=1.8f) 1 else 2
                 Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {

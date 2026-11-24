@@ -2,9 +2,9 @@ package com.opus.piano.activity.domain
 
 /** Platform-free, common-compatible Activity rules. Dates are UTC epoch-day integers;
  * Android adapters convert LocalDate at the Room/UI boundary. Zone IDs are metadata only. */
-private const val DAYS_PER_WEEK = 7L
-private fun dayOfWeek(epochDay: Long): Int = (((epochDay + 3L) % DAYS_PER_WEEK + DAYS_PER_WEEK) % DAYS_PER_WEEK).toInt() + 1 // Monday=1
-private fun mondayOf(epochDay: Long): Long = epochDay - (dayOfWeek(epochDay) - 1)
+internal const val DAYS_PER_WEEK = 7L
+internal fun dayOfWeek(epochDay: Long): Int = (((epochDay + 3L) % DAYS_PER_WEEK + DAYS_PER_WEEK) % DAYS_PER_WEEK).toInt() + 1 // Monday=1
+internal fun mondayOf(epochDay: Long): Long = epochDay - (dayOfWeek(epochDay) - 1)
 
 enum class WorkoutSource { PRACTICE_SESSION, MANUAL_ENTRY }
 data class Workout(val epochDay: Long, val durationMillis: Long, val sourceId: String, val source: WorkoutSource) {
@@ -24,6 +24,14 @@ data class Week(val monday: Long, val zoneId: String, val beta: Boolean = false)
 enum class DayKind { TRAINING, DAY_OFF, MISS }
 data class DayActivity(val epochDay: Long, val workouts: Int, val minutes: Long, val kind: DayKind)
 data class WeekTotals(val sessions: Int, val minutes: Long)
+/** Platform-neutral result used by Android and iOS activity screens. */
+data class ActivityOverview(
+    val week: Week,
+    val goal: WeeklyGoal,
+    val days: List<DayActivity>,
+    val totals: WeekTotals,
+    val goalMet: Boolean,
+)
 data class FreezeState(val balance: Int = 1, val successfulWeeksTowardFreeze: Int = 0, val currentStreak: Int = 0, val longestStreak: Int = 0) {
     init { require(balance in 0..3); require(successfulWeeksTowardFreeze in 0..3); require(currentStreak >= 0 && longestStreak >= currentStreak) }
 }
@@ -42,9 +50,31 @@ fun weekFor(epochDay: Long, zoneId: String, firstUseEpochDay: Long? = null): Wee
     return Week(monday, zoneId, beta = betaMonday == monday)
 }
 
+/** True when a rendered week no longer matches today's Monday, so the UI must re-read it.
+ *  Pure rollover guard for the weekly view (Issue #55): independent of any platform timer,
+ *  process lifetime or timezone, because both sides are compared as Monday epoch days. */
+fun weekRolloverRequired(snapshotMonday: Long, today: Long): Boolean =
+    mondayOf(snapshotMonday) != mondayOf(today)
+
 fun aggregate(workouts: List<Workout>, week: Week): WeekTotals {
     val rows = workouts.filter { it.epochDay in week.monday..week.sunday }
     return WeekTotals(rows.size, rows.fold(0L) { total, row -> saturatingAdd(total, row.durationMillis) } / 60_000L)
+}
+
+/** Builds the current activity view from repository data without owning persistence or time. */
+fun activityOverview(
+    today: Long,
+    zoneId: String,
+    goals: List<WeeklyGoal>,
+    workouts: List<Workout>,
+    beta: Boolean = false,
+): ActivityOverview {
+    val week = weekFor(today, zoneId).copy(beta = beta)
+    val goal = activeGoal(goals, week.monday)
+    val weeklyWorkouts = workouts.filter { it.epochDay in week.monday..week.sunday }
+    val totals = aggregate(weeklyWorkouts, week)
+    return ActivityOverview(week, goal, classifyWeek(week, goal, weeklyWorkouts, today), totals,
+        !week.beta && goalMet(totals, goal))
 }
 
 /** One canonical weekly goal predicate for UI, streaks, freezes and rewards. */
@@ -109,7 +139,7 @@ fun evaluateWeeks(initial: FreezeState, weeks: List<Pair<Week, Boolean?>>): List
     var state = initial
     var priorMonday: Long? = null
     return weeks.sortedBy { it.first.monday }.map { (week, success) ->
-        require(priorMonday == null || week.monday > priorMonday!!) { "Duplicate weekly outcome" }
+        require(priorMonday == null || week.monday > requireNotNull(priorMonday)) { "Duplicate weekly outcome" }
         priorMonday = week.monday
         if (success == null || week.beta) WeekOutcome(week, null, state, false)
         else {

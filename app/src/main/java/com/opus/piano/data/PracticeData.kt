@@ -48,6 +48,7 @@ interface PracticeDao {
     @Insert suspend fun intervals(values: List<SessionInterval>)
     @Query("UPDATE sessions SET notes=:notes, reflection=:reflection WHERE id=:id") suspend fun notes(id: Long, notes: String, reflection: String)
     @Query("UPDATE session_parts SET notes=:notes WHERE id=:id AND sessionId=:sessionId") suspend fun partNote(sessionId: Long, id: Long, notes: String)
+    @Query("DELETE FROM session_intervals WHERE sessionId=:id") suspend fun deleteIntervals(id: Long): Int
     @Query("SELECT * FROM local_app_state WHERE id=1") fun local(): Flow<LocalAppState?>
     @Query("SELECT * FROM local_app_state WHERE id=1") suspend fun localNow(): LocalAppState?
     @Upsert suspend fun local(value: LocalAppState)

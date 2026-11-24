@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
@@ -39,8 +40,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.opus.piano.R
+import com.opus.piano.appContainer
 import com.opus.piano.activity.domain.DayActivity
 import com.opus.piano.activity.domain.DayKind
+import com.opus.piano.activity.domain.activityBoard
 import com.opus.piano.activity.domain.goalMet
 import com.opus.piano.activity.domain.manualActivityDates
 import com.opus.piano.data.*
@@ -58,13 +61,22 @@ import java.util.Locale
     val today by produceState(LocalDate.now(java.time.ZoneId.systemDefault())) {
         while (true) { value = LocalDate.now(java.time.ZoneId.systemDefault()); kotlinx.coroutines.delay(30_000) }
     }
+    // The rendered week only advances when refresh() succeeds, so re-check it as soon as the
+    // calendar day changes instead of trusting the background date watcher alone (Issue #55).
+    LaunchedEffect(today) { model.revalidate(today) }
     var selectedDay by remember { mutableStateOf<DayActivity?>(null) }
     var selectedStat by remember { mutableIntStateOf(-1) }
     var addEditor by remember { mutableStateOf(false) }
     var deleteEntry by remember { mutableStateOf<ManualActivityEntry?>(null) }
+    var editEntry by remember { mutableStateOf<ManualActivityEntry?>(null) }
     var goalEditor by remember { mutableStateOf(false) }
     var rewardToClaim by remember { mutableStateOf<ActivityRewardGrant?>(null) }
     var showAllManual by remember { mutableStateOf(false) }
+    val app = LocalContext.current.appContainer
+    val sessions by app.database.dao().observeSessions().collectAsStateWithLifecycle(initialValue = emptyList())
+    val unifiedHistory = remember(sessions, state.manualEntries, today) {
+        unifiedActivityHistory(sessions, state.manualEntries, today, java.time.ZoneId.systemDefault())
+    }
 
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
       Column(Modifier.fillMaxHeight().widthIn(max = 720.dp).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 18.dp, vertical = 14.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
@@ -158,6 +170,7 @@ import java.util.Locale
                 L.s(R.string.activity_total_minutes) to NumberFormatActivity.format(summary.allTimeMinutes),
                 L.s(R.string.activity_current_streak) to L.quantity(R.plurals.activity_week_streak, summary.currentWeeklyStreak),
                 L.s(R.string.activity_longest_streak) to L.quantity(R.plurals.activity_week_streak, summary.longestWeeklyStreak),
+                L.s(R.string.activity_daily_streak) to L.quantity(R.plurals.days_count, summary.dailyStreak),
             )
             TourAnchor("streaks") { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 metrics.chunked(2).forEachIndexed { rowIndex, row ->
@@ -197,20 +210,27 @@ import java.util.Locale
                     }
                 }
             }
-            if (state.manualEntries.isEmpty()) Text(L.s(R.string.activity_no_manual_entries), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            val sortedManualEntries = state.manualEntries.sortedByDescending { it.activityDay }
-            sortedManualEntries.take(if (showAllManual) sortedManualEntries.size else 12).forEach { entry ->
-                Surface(shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface, border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = .4f))) {
-                    Row(Modifier.fillMaxWidth().padding(start = 12.dp, end = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                        Column(Modifier.weight(1f).padding(vertical = 10.dp)) {
-                            Text(formatDate(LocalDate.parse(entry.activityDay)), style = MaterialTheme.typography.titleSmall)
-                            Text(L.s(R.string.activity_minutes_unset, entry.durationMillis / 60_000L), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            if (unifiedHistory.isEmpty()) Text(L.s(R.string.activity_no_manual_entries), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            unifiedHistory.take(if (showAllManual) unifiedHistory.size else 12).forEach { historyEntry ->
+                when (historyEntry) {
+                    is PracticeHistoryEntry -> SessionRow(historyEntry.session)
+                    is ManualHistoryEntry -> {
+                        val entry = historyEntry.entry
+                        Surface(shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface, border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = .4f))) {
+                            Row(Modifier.fillMaxWidth().padding(start = 12.dp, end = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+                                Icon(Icons.Outlined.EditNote, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(end = 8.dp))
+                                Column(Modifier.weight(1f).padding(vertical = 10.dp)) {
+                                    Text(formatDate(LocalDate.parse(entry.activityDay)), style = MaterialTheme.typography.titleSmall)
+                                    Text(L.s(R.string.activity_minutes_unset, entry.durationMillis / 60_000L), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                }
+                                IconButton(onClick = { editEntry = entry }) { Icon(Icons.Outlined.Edit, L.s(R.string.activity_edit)) }
+                                IconButton(onClick = { deleteEntry = entry }) { Icon(Icons.Outlined.DeleteOutline, L.s(R.string.activity_delete)) }
+                            }
                         }
-                        IconButton(onClick = { deleteEntry = entry }) { Icon(Icons.Outlined.DeleteOutline, L.s(R.string.activity_delete)) }
                     }
                 }
             }
-            if (sortedManualEntries.size > 12) TextButton(onClick = { showAllManual = !showAllManual }) {
+            if (unifiedHistory.size > 12) TextButton(onClick = { showAllManual = !showAllManual }) {
                 Text(L.s(if (showAllManual) R.string.activity_show_recent else R.string.activity_show_all))
             }
 
@@ -237,6 +257,7 @@ import java.util.Locale
                 L.s(R.string.activity_total_minutes) to NumberFormatActivity.format(summary.allTimeMinutes),
                 L.s(R.string.activity_current_streak) to L.quantity(R.plurals.activity_week_streak, summary.currentWeeklyStreak),
                 L.s(R.string.activity_longest_streak) to L.quantity(R.plurals.activity_week_streak, summary.longestWeeklyStreak),
+                L.s(R.string.activity_daily_streak) to L.quantity(R.plurals.days_count, summary.dailyStreak),
             )[selectedStat]
             AlertDialog(onDismissRequest = { selectedStat = -1 }, title = { Text(detail.first) }, text = { Text(detail.second, style = MaterialTheme.typography.headlineMedium) },
                 confirmButton = { JournalTextButton(onClick = { selectedStat = -1 }) { Text(L.s(R.string.activity_cancel)) } })
@@ -248,6 +269,9 @@ import java.util.Locale
         AlertDialog(onDismissRequest = { deleteEntry = null }, title = { Text(L.s(R.string.activity_delete_title)) }, text = { Text(L.s(R.string.activity_delete_message)) },
             confirmButton = { JournalPrimaryButton(onClick = { model.deleteManual(entry.id); deleteEntry = null }) { Text(L.s(R.string.activity_delete)) } },
             dismissButton = { JournalTextButton(onClick = { deleteEntry = null }) { Text(L.s(R.string.activity_cancel)) } })
+    }
+    editEntry?.let { entry ->
+        ManualActivityEditDialog(entry, today, state.error, onDismiss = { editEntry = null; model.clearError() }, onSave = { date, minutes -> model.updateManual(entry.id, date, minutes); editEntry = null })
     }
     rewardToClaim?.let { reward ->
         RewardClaimDialog(
@@ -279,49 +303,56 @@ import java.util.Locale
 }
 
 @Composable private fun YearHeatmap(year: Int, days: List<DayActivity>, today: LocalDate, accent: Color?, onDay: (DayActivity) -> Unit) {
-    val first = LocalDate.of(year, 1, 1)
-    val last = LocalDate.of(year, 12, 31)
-    val monday = first.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
-    val sunday = last.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY))
-    val weeks = ((sunday.toEpochDay() - monday.toEpochDay() + 1) / 7).toInt()
-    val map = days.associateBy { it.epochDay }
+    val board = remember(year, today, days) { activityBoard(year, today.toEpochDay(), days) }
     val scroll = rememberScrollState()
     val density = LocalDensity.current
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
-        Column(Modifier.width(18.dp).padding(top = 2.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-            repeat(7) { dayIndex ->
-                Text(monday.plusDays(dayIndex.toLong()).format(DateTimeFormatter.ofPattern("EEEEE", L.locale)),
-                    Modifier.height(48.dp).wrapContentHeight(Alignment.CenterVertically),
+        Column(Modifier.width(24.dp).padding(top = 18.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+            (0..6).forEach { dayIndex ->
+                val labelDate = LocalDate.ofEpochDay(board.first().monday + dayIndex.toLong())
+                Text(labelDate.format(DateTimeFormatter.ofPattern("EEEEE", L.locale)),
+                    Modifier.height(32.dp).wrapContentHeight(Alignment.CenterVertically),
                     style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
         BoxWithConstraints(Modifier.weight(1f)) {
-            LaunchedEffect(year, today, maxWidth) {
-                withFrameNanos { }
-                val visibleWeeks = (maxWidth / 50.dp).toInt().coerceAtLeast(1)
+            LaunchedEffect(year, today, maxWidth, board.size) {
+                val visibleWeeks = (maxWidth.value / 34f).toInt().coerceAtLeast(1)
                 val latestWeek = if (year == today.year) {
-                    (ChronoUnit.DAYS.between(monday, minOf(today, last)) / 7L).toInt().coerceIn(0, weeks - 1)
+                    board.indexOfLast { week -> week.cells.any { it.inYear && !it.future } }.coerceAtLeast(0)
                 } else 0
                 val leadingWeek = (latestWeek - visibleWeeks + 1).coerceAtLeast(0)
-                scroll.scrollTo(with(density) { (50.dp * leadingWeek.toFloat()).roundToPx() })
+                scroll.scrollTo(with(density) { (34.dp * leadingWeek.toFloat()).roundToPx() })
             }
             Row(Modifier.fillMaxWidth().horizontalScroll(scroll).semantics {
                 contentDescription = L.s(R.string.activity_heatmap_accessibility, year)
             }, horizontalArrangement = Arrangement.spacedBy(2.dp)) {
-                repeat(weeks) { weekIndex ->
+                board.forEach { week ->
                     Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                        repeat(7) { dayIndex ->
-                            val date = monday.plusDays(weekIndex * 7L + dayIndex)
-                            val inYear = date.year == year
-                            val future = date > today
-                            val activity = map[date.toEpochDay()]
-                            val visible = inYear && !future && activity != null
-                            Box(Modifier.size(48.dp).semantics(mergeDescendants = true) {
+                        Box(Modifier.height(16.dp).fillMaxWidth(), contentAlignment = Alignment.BottomStart) {
+                            week.monthLabel?.let { month ->
+                                Text(java.time.Month.of(month).getDisplayName(java.time.format.TextStyle.SHORT, L.locale),
+                                    style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
+                        }
+                        week.cells.forEach { cell ->
+                            val date = LocalDate.ofEpochDay(cell.epochDay)
+                            val activity = cell.activity
+                            val visible = cell.inYear && !cell.future && activity != null
+                            Box(Modifier.size(32.dp).semantics(mergeDescendants = true) {
                                 if (visible) contentDescription = "${formatDate(date)}, ${activity!!.kind.let(::kindLabel)}, ${L.quantity(R.plurals.activity_workout_count, activity.workouts)}, ${L.s(R.string.activity_minutes_unset, activity.minutes)}"
                             }.then(if (visible) Modifier.clickable(role = Role.Button) { onDay(activity!!) } else Modifier), contentAlignment = Alignment.Center) {
-                                if (inYear && !future) Box(Modifier.size(46.dp).clip(RoundedCornerShape(4.dp))
-                                    .background(if (activity == null) MaterialTheme.colorScheme.surfaceVariant.copy(alpha = .45f) else activityColor(activity.kind))
-                                    .then(if (activity != null && accent != null) Modifier.border(BorderStroke(1.dp, accent), RoundedCornerShape(3.dp)) else Modifier))
+                                if (cell.inYear) {
+                                    val background = if (cell.future) MaterialTheme.colorScheme.surfaceVariant.copy(alpha = .25f)
+                                        else if (activity == null) MaterialTheme.colorScheme.surfaceVariant.copy(alpha = .45f)
+                                        else activityColor(activity.kind)
+                                    Box(Modifier.size(30.dp).clip(RoundedCornerShape(4.dp)).background(background)
+                                        .then(if (activity != null && accent != null) Modifier.border(BorderStroke(1.dp, accent), RoundedCornerShape(3.dp)) else Modifier),
+                                        contentAlignment = Alignment.Center) {
+                                        if (!cell.future) Text(date.dayOfMonth.toString(), style = MaterialTheme.typography.labelSmall,
+                                            color = if (activity == null) MaterialTheme.colorScheme.onSurfaceVariant else Color.White)
+                                    }
+                                }
                             }
                         }
                     }
@@ -400,6 +431,49 @@ import java.util.Locale
         else if (date !in allowedDays) validation = L.s(R.string.activity_date_past_only)
         else onAdd(date, value)
     }) { Text(L.s(R.string.activity_add)) } }, dismissButton = { JournalTextButton(onClick = onDismiss) { Text(L.s(R.string.activity_cancel)) } })
+}
+
+@Composable internal fun ManualActivityEditDialog(entry: ManualActivityEntry, today: LocalDate, error: String?, onDismiss: () -> Unit, onSave: (LocalDate, Int) -> Unit) {
+    val originalDay = entry.activityDay
+    val allowedDays = remember(entry.id, today) {
+        (listOf(originalDay) + manualActivityDates(today.toEpochDay()).map { LocalDate.ofEpochDay(it).toString() })
+            .distinct()
+            .mapNotNull { runCatching { LocalDate.parse(it) }.getOrNull() }
+    }
+    var date by remember(entry.id, allowedDays) { mutableStateOf(runCatching { LocalDate.parse(originalDay) }.getOrNull() ?: today) }
+    var minutes by remember(entry.id) { mutableStateOf((entry.durationMillis / 60_000L).toString()) }
+    var validation by remember { mutableStateOf<String?>(null) }
+    AlertDialog(onDismissRequest = onDismiss, title = { Text(L.s(R.string.activity_add_manual)) }, text = {
+        Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text(L.s(R.string.activity_add_date), style = MaterialTheme.typography.labelLarge)
+            allowedDays.forEach { candidate ->
+                val label = when (candidate) {
+                    today -> R.string.activity_date_today
+                    today.minusDays(1) -> R.string.activity_date_yesterday
+                    today.minusDays(2) -> R.string.activity_date_two_days_ago
+                    else -> null
+                }
+                val description = formatDate(candidate)
+                Row(Modifier.fillMaxWidth().clickable(role = Role.RadioButton) { date = candidate }.semantics {
+                    contentDescription = description
+                }, verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(selected = date == candidate, onClick = { date = candidate })
+                    Column {
+                        Text(if (label == null) formatDate(candidate) else L.s(label), style = MaterialTheme.typography.bodyMedium)
+                        if (label != null) Text(formatDate(candidate), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                }
+            }
+            OutlinedTextField(minutes, { minutes = it.filter(Char::isDigit).take(4); validation = null }, label = { Text(L.s(R.string.activity_duration_minutes)) }, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), singleLine = true, modifier = Modifier.fillMaxWidth())
+            validation?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
+            error?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
+        }
+    }, confirmButton = { JournalPrimaryButton(onClick = {
+        val value = minutes.toIntOrNull()
+        if (value == null || value !in 1..1440) validation = L.s(R.string.activity_duration_invalid)
+        else if (!manualActivityEditDayAllowed(originalDay, date.toString(), today)) validation = L.s(R.string.activity_date_past_only)
+        else onSave(date, value)
+    }) { Text(L.s(R.string.activity_save_goals)) } }, dismissButton = { JournalTextButton(onClick = onDismiss) { Text(L.s(R.string.activity_cancel)) } })
 }
 
 @Composable private fun RewardClaimDialog(
@@ -554,7 +628,7 @@ private object NumberFormatActivity {
     fun format(value: Long) = java.text.NumberFormat.getIntegerInstance(L.locale).format(value)
 }
 
-private fun formatDate(date: LocalDate) = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(L.locale).format(date)
+internal fun formatDate(date: LocalDate) = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(L.locale).format(date)
 private fun cosmeticName(cosmetic: ActivityCosmetic) = if (L.locale.language == "cs") cosmetic.nameCs else cosmetic.nameEn
 private fun rarityLabel(rarity: CosmeticRarity) = L.s(when (rarity) {
     CosmeticRarity.COMMON -> R.string.activity_rarity_common
