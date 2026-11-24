@@ -36,6 +36,7 @@ data class FreezeState(val balance: Int = 1, val successfulWeeksTowardFreeze: In
     init { require(balance in 0..3); require(successfulWeeksTowardFreeze in 0..3); require(currentStreak >= 0 && longestStreak >= currentStreak) }
 }
 data class WeekOutcome(val week: Week, val success: Boolean?, val streak: FreezeState, val freezeConsumed: Boolean)
+data class WeeklyStreakSummary(val currentStreak: Int, val longestStreak: Int, val freezeBalance: Int, val successfulWeeksTowardFreeze: Int)
 
 /** A Monday change itself applies next Monday, so goal edits never affect the current week. */
 fun nextGoalMonday(changeEpochDay: Long): Long = mondayOf(changeEpochDay) + DAYS_PER_WEEK
@@ -148,6 +149,27 @@ fun evaluateWeeks(initial: FreezeState, weeks: List<Pair<Week, Boolean?>>): List
             WeekOutcome(week, success, state, consumed)
         }
     }
+}
+
+/** Android-equivalent streak summary without exposing Kotlin Pair construction to Swift. */
+fun weeklyStreakSummary(
+    historyWeeks: List<Week>,
+    currentWeek: Week,
+    goals: List<WeeklyGoal>,
+    workouts: List<Workout>,
+): WeeklyStreakSummary {
+    val outcomes = evaluateWeeks(FreezeState(), historyWeeks.filter { it.monday < currentWeek.monday }.map { week ->
+        week to weekSuccess(week, activeGoal(goals, week.monday), workouts, week.sunday)
+    })
+    val closed = outcomes.lastOrNull()?.streak ?: FreezeState()
+    val currentGoalMet = !currentWeek.beta && perfectWeek(currentWeek, activeGoal(goals, currentWeek.monday), workouts)
+    val visibleCurrent = closed.currentStreak + if (currentGoalMet) 1 else 0
+    return WeeklyStreakSummary(
+        visibleCurrent,
+        maxOf(closed.longestStreak, visibleCurrent),
+        closed.balance,
+        closed.successfulWeeksTowardFreeze,
+    )
 }
 
 fun saturatingAdd(left: Long, right: Long): Long =

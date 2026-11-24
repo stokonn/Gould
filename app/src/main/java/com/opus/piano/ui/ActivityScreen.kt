@@ -43,6 +43,10 @@ import com.opus.piano.R
 import com.opus.piano.appContainer
 import com.opus.piano.activity.domain.DayActivity
 import com.opus.piano.activity.domain.DayKind
+import com.opus.piano.activity.domain.ActivityCosmetic
+import com.opus.piano.activity.domain.ActivityCosmetics
+import com.opus.piano.activity.domain.CosmeticCategory
+import com.opus.piano.activity.domain.CosmeticRarity
 import com.opus.piano.activity.domain.activityBoard
 import com.opus.piano.activity.domain.goalMet
 import com.opus.piano.activity.domain.manualActivityDates

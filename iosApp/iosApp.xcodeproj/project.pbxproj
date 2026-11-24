@@ -8,6 +8,7 @@
 
 /* Begin PBXFileReference section */
 		A10000000000000000000004 /* Gould.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gould.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10000000000000000000016 /* GouldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GouldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +17,22 @@
 			path = iosApp;
 			sourceTree = "<group>";
 		};
+		A10000000000000000000011 /* iosAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = iosAppTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A10000000000000000000008 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A10000000000000000000014 /* GouldTests Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +46,7 @@
 			isa = PBXGroup;
 			children = (
 				A10000000000000000000005 /* iosApp */,
+				A10000000000000000000011 /* iosAppTests */,
 				A10000000000000000000003 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				A10000000000000000000004 /* Gould.app */,
+				A10000000000000000000016 /* GouldTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,6 +86,27 @@
 			productReference = A10000000000000000000004 /* Gould.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A10000000000000000000012 /* GouldTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A10000000000000000000019 /* Build configuration list for PBXNativeTarget "GouldTests" */;
+			buildPhases = (
+				A10000000000000000000013 /* Sources */,
+				A10000000000000000000014 /* Frameworks */,
+				A10000000000000000000015 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A10000000000000000000018 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A10000000000000000000011 /* iosAppTests */,
+			);
+			name = GouldTests;
+			productName = GouldTests;
+			productReference = A10000000000000000000016 /* GouldTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -83,6 +119,10 @@
 				TargetAttributes = {
 					A10000000000000000000006 = {
 						CreatedOnToolsVersion = 16.2;
+					};
+					A10000000000000000000012 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = A10000000000000000000006;
 					};
 				};
 			};
@@ -102,12 +142,20 @@
 			projectRoot = "";
 			targets = (
 				A10000000000000000000006 /* Gould */,
+				A10000000000000000000012 /* GouldTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A10000000000000000000009 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A10000000000000000000015 /* GouldTests Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -146,7 +194,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A10000000000000000000013 /* GouldTests Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXContainerItemProxy section */
+		A10000000000000000000017 /* GouldTests -> Gould */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A10000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A10000000000000000000006;
+			remoteInfo = Gould;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		A10000000000000000000018 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A10000000000000000000006 /* Gould */;
+			targetProxy = A10000000000000000000017 /* GouldTests -> Gould */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A1000000000000000000000D /* Debug */ = {
@@ -334,6 +407,60 @@
 			};
 			name = Release;
 		};
+		A1000000000000000000001A /* GouldTests Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(SRCROOT)/../activity-domain/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = ("$(inherited)", "-framework", ActivityDomain);
+				PRODUCT_BUNDLE_IDENTIFIER = com.opus.piano.tests;
+				PRODUCT_NAME = GouldTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gould.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Gould";
+				TEST_TARGET_NAME = Gould;
+			};
+			name = Debug;
+		};
+		A1000000000000000000001B /* GouldTests Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(SRCROOT)/../activity-domain/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = ("$(inherited)", "-framework", ActivityDomain);
+				PRODUCT_BUNDLE_IDENTIFIER = com.opus.piano.tests;
+				PRODUCT_NAME = GouldTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gould.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Gould";
+				TEST_TARGET_NAME = Gould;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -351,6 +478,15 @@
 			buildConfigurations = (
 				A1000000000000000000000F /* Debug */,
 				A10000000000000000000010 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A10000000000000000000019 /* Build configuration list for PBXNativeTarget "GouldTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1000000000000000000001A /* GouldTests Debug */,
+				A1000000000000000000001B /* GouldTests Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
