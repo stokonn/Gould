@@ -23,7 +23,7 @@ concurrency:
 jobs:
   build-ios:
     name: Build iOS app (unsigned)
-    runs-on: macos-15-arm64
+    runs-on: macos-15-xlarge
     timeout-minutes: 45
     steps:
       - name: Check out source
