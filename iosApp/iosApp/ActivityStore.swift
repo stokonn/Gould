@@ -483,7 +483,7 @@ final class ActivityStore: ObservableObject {
         let monday = mondayOf(EpochDay.of(now))
         let storedWeek = weeks.first { $0.monday == monday }
         let beta = storedWeek?.beta ?? (monday == mondayOf(firstUseDay) && EpochDay.mondayIndex(firstUseDay) != 1)
-        ActivityDomainKt.activityOverview(today: EpochDay.of(now),
+        return ActivityDomainKt.activityOverview(today: EpochDay.of(now),
                                           zoneId: storedWeek?.zoneId ?? zoneId,
                                           goals: kotlinGoals(),
                                           workouts: kotlinWorkouts(through: EpochDay.of(now)),
