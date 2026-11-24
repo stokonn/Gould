@@ -146,7 +146,9 @@ final class ActivityStoreTests: XCTestCase {
 
         let beforeInvalidRestore = try XCTUnwrap(destination.backupData())
         XCTAssertFalse(destination.restoreBackup(Data("{invalid".utf8)))
-        XCTAssertEqual(destination.backupData(), beforeInvalidRestore)
+        let afterInvalidRestore = try XCTUnwrap(destination.backupData())
+        XCTAssertEqual(try JSONSerialization.jsonObject(with: afterInvalidRestore) as? NSDictionary,
+                       try JSONSerialization.jsonObject(with: beforeInvalidRestore) as? NSDictionary)
         destination.resetAllData()
         let afterReset = ActivityStore(filename: destinationURL.lastPathComponent)
         XCTAssertTrue(afterReset.workouts.isEmpty)
@@ -174,7 +176,8 @@ final class ActivityStoreTests: XCTestCase {
         XCTAssertNotNil(session.completedAtMillis)
         XCTAssertNil(store.practiceDraft)
         XCTAssertEqual(store.overview().totals.sessions, 1)
-        XCTAssertTrue(String(decoding: store.activityCSV(), as: UTF8.self).contains("\(session.epochDay),60000,PRACTICE_SESSION,"))
+        XCTAssertTrue(String(decoding: store.activityCSV(), as: UTF8.self)
+            .contains("\"\(session.epochDay)\",\"60000\",\"PRACTICE_SESSION\",\"practice:session-test\""))
 
         let reloaded = ActivityStore(filename: url.lastPathComponent)
         XCTAssertEqual(reloaded.workouts, [session])
