@@ -29,7 +29,7 @@ final class ReminderSettings: ObservableObject {
                 let settings = await center.notificationSettings()
                 var granted = settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional
                 if settings.authorizationStatus == .notDetermined {
-                    granted = try await center.requestAuthorization(options: [.alert, .sound]).contains(.alert)
+                    granted = try await center.requestAuthorization(options: [.alert, .sound])
                 }
                 guard granted else {
                     error = tr("settings.notificationsDenied")

@@ -135,14 +135,14 @@ enum JournalFont {
     static let sans = "Inter"
 
     static func serif(_ size: CGFloat, weight: Font.Weight = .regular, relativeTo style: Font.TextStyle? = nil) -> Font {
-        var font = Font.custom(JournalFont.serif, size: size)
-        if let style { font = font.relativeTo(style) }
+        let font = style.map { Font.custom(JournalFont.serif, size: size, relativeTo: $0) }
+            ?? Font.custom(JournalFont.serif, size: size)
         return font.weight(weight)
     }
 
     static func sans(_ size: CGFloat, weight: Font.Weight = .regular, relativeTo style: Font.TextStyle? = nil) -> Font {
-        var font = Font.custom(JournalFont.sans, size: size)
-        if let style { font = font.relativeTo(style) }
+        let font = style.map { Font.custom(JournalFont.sans, size: size, relativeTo: $0) }
+            ?? Font.custom(JournalFont.sans, size: size)
         return font.weight(weight)
     }
 }
