@@ -1,0 +1,103 @@
+name: Gould iOS cloud build
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "iosApp/**"
+      - "activity-domain/**"
+      - "gradle/**"
+      - "gradlew"
+      - "settings.gradle.kts"
+      - "build.gradle.kts"
+      - ".github/workflows/ios-cloud-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-cloud-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-ios:
+    name: Build iOS app (unsigned)
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - name: Check out source
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Java for Kotlin Multiplatform
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+
+      - name: Show Xcode toolchain
+        run: |
+          xcodebuild -version
+          xcodebuild -list -project iosApp/iosApp.xcodeproj
+
+      - name: Build iOS Simulator app
+        run: |
+          set -o pipefail
+          xcodebuild \
+            -project iosApp/iosApp.xcodeproj \
+            -scheme Gould \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination "generic/platform=iOS Simulator" \
+            -derivedDataPath "$RUNNER_TEMP/Gould-Simulator-DerivedData" \
+            CODE_SIGNING_ALLOWED=NO \
+            build 2>&1 | tee "$RUNNER_TEMP/ios-simulator-build.log"
+
+      - name: Archive iOS device app without signing
+        run: |
+          set -o pipefail
+          xcodebuild \
+            -project iosApp/iosApp.xcodeproj \
+            -scheme Gould \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination "generic/platform=iOS" \
+            -archivePath "$RUNNER_TEMP/Gould.xcarchive" \
+            CODE_SIGNING_ALLOWED=NO \
+            archive 2>&1 | tee "$RUNNER_TEMP/ios-device-archive.log"
+
+      - name: Package unsigned IPA
+        run: |
+          set -euo pipefail
+          APP_PATH="$RUNNER_TEMP/Gould.xcarchive/Products/Applications/Gould.app"
+          test -d "$APP_PATH"
+          mkdir -p "$RUNNER_TEMP/ipa/Payload"
+          ditto "$APP_PATH" "$RUNNER_TEMP/ipa/Payload/Gould.app"
+          (
+            cd "$RUNNER_TEMP/ipa"
+            /usr/bin/zip -qry "$GITHUB_WORKSPACE/Gould-unsigned.ipa" Payload
+          )
+          shasum -a 256 "$GITHUB_WORKSPACE/Gould-unsigned.ipa"
+
+      - name: Upload unsigned IPA
+        if: success()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: Gould-unsigned-IPA
+          path: Gould-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload build logs on failure
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: Gould-iOS-build-logs
+          path: |
+            ${{ runner.temp }}/ios-simulator-build.log
+            ${{ runner.temp }}/ios-device-archive.log
+          if-no-files-found: warn
+          retention-days: 7
