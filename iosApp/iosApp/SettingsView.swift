@@ -64,7 +64,7 @@ struct SettingsView: View {
         settingsWithExporters
             .fileImporter(isPresented: $showBackupImporter, allowedContentTypes: [.json]) { result in
                 do {
-                    guard let url = try result.get().first else { return }
+                    let url = try result.get()
                     let accessed = url.startAccessingSecurityScopedResource()
                     defer { if accessed { url.stopAccessingSecurityScopedResource() } }
                     pendingBackup = try Data(contentsOf: url)
