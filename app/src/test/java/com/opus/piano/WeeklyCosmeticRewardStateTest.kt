@@ -2,6 +2,7 @@ package com.opus.piano
 
 import com.opus.piano.activity.domain.FreezeState
 import com.opus.piano.activity.domain.Week
+import com.opus.piano.activity.domain.WeeklyStatistics
 import com.opus.piano.activity.domain.WeekTotals
 import com.opus.piano.activity.domain.WeeklyGoal
 import com.opus.piano.data.ActivityRewardGrant
@@ -32,6 +33,7 @@ class WeeklyCosmeticRewardStateTest {
         dailyStreak = 0,
         recentDailyDurationMillis = List(7) { 0L },
         allTimeDurationMillis = 0,
+        weekly = WeeklyStatistics(0, 0, 0, 0, 0, 0),
     )
 
     @Test fun rewardStateWaitsForDatabaseObservationBeforeShowingLocked() {

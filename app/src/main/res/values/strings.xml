@@ -81,6 +81,7 @@
   <string name="label_repertoire_highlights">Repertoire highlights</string>
   <string name="label_repertoire_pieces">Repertoire pieces</string>
   <string name="label_review">Review</string>
+  <string name="label_last_week">Last week</string>
   <string name="label_rose">Rose</string>
   <string name="label_running">Running</string>
   <string name="label_session_ready_to_review">Session ready to review</string>
@@ -102,6 +103,7 @@
   <string name="label_total_practice">Total practice</string>
   <string name="label_unlocked">unlocked</string>
   <string name="label_week">Week</string>
+  <string name="label_sessions_this_week">Sessions this week</string>
   <string name="label_works">Works</string>
   <string name="label_wrapped">Wrapped</string>
   <string name="label_year">Year</string>
@@ -1146,6 +1148,7 @@
     <string name="studio_audio_missing">This device has no verified audio for this recording. Restore the journal and audio ZIP. Any retained original bytes can still be exported.</string>
     <string name="studio_audio_deletion_pending">Deletion did not finish. Retry Delete to complete it; the recording metadata is retained until then.</string>
     <string name="activity_title">Activity</string>
+    <string name="activity_history_title">Activity History</string>
     <string name="activity_subtitle">Your practice, week by week.</string>
     <string name="activity_previous_year">Previous year</string>
     <string name="activity_next_year">Next year</string>
@@ -1162,7 +1165,9 @@
     <string name="activity_statistics">Activity statistics</string>
     <string name="activity_total_workouts">Total workouts</string>
     <string name="activity_total_minutes">Total exercise minutes</string>
-    <string name="activity_current_streak">Current streak</string>
+    <string name="activity_current_streak">Weekly streak</string>
+    <string name="activity_daily_streak">Daily streak</string>
+    <string name="activity_daily_streak_value">Daily streak: %1$s</string>
     <string name="activity_longest_streak">Longest streak</string>
     <string name="activity_sessions_goal">Weekly session goal</string>
     <string name="activity_optional_minutes_goal">Optional weekly minutes goal</string>
@@ -1179,6 +1184,7 @@
     <string name="activity_delete_title">Delete activity?</string>
     <string name="activity_delete_message">This manual entry will be removed and weekly progress recalculated.</string>
     <string name="activity_delete">Delete</string>
+    <string name="activity_edit">Edit</string>
     <string name="activity_cancel">Cancel</string>
     <string name="activity_no_manual_entries">No manual activity entries.</string>
     <string name="activity_show_all">Show all manual activity</string>

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.opus.piano.data.*
 import com.opus.piano.activity.domain.DayActivity
+import com.opus.piano.activity.domain.weekRolloverRequired
 import com.opus.piano.R
 import com.opus.piano.i18n.L
 import kotlinx.coroutines.flow.collect
@@ -104,6 +105,15 @@ class ActivityViewModel(private val repository: ActivityRepository) : ViewModel(
         }
     }
 
+    /** Rollover guard for Issue #55. A snapshot is only re-read when its week is no longer
+     *  today's week, so foreground resume and the screen's date tick can cheaply guarantee that
+     *  a completed week is never still presented after Monday — without depending solely on the
+     *  background 30-second watcher or forcing a refresh on every resume. */
+    fun revalidate(today: LocalDate = LocalDate.now()) {
+        val snapshot = _state.value.snapshot ?: return
+        if (weekRolloverRequired(snapshot.week.monday, today.toEpochDay())) refresh()
+    }
+
     fun changeGoals(sessions: Int, minutes: Int?) = viewModelScope.launch {
         try { repository.changeGoals(sessions, minutes) }
         catch (cancelled: CancellationException) { throw cancelled }
@@ -123,6 +133,12 @@ class ActivityViewModel(private val repository: ActivityRepository) : ViewModel(
         try { repository.deleteManualActivity(id) }
         catch (cancelled: CancellationException) { throw cancelled }
         catch (error: Exception) { _state.value = _state.value.copy(error = userMessage(error, R.string.activity_delete_failed)) }
+    }
+
+    fun updateManual(id: String, day: LocalDate, minutes: Int) = viewModelScope.launch {
+        try { repository.updateManualActivity(id, day, minutes) }
+        catch (cancelled: CancellationException) { throw cancelled }
+        catch (error: Exception) { _state.value = _state.value.copy(error = userMessage(error, R.string.activity_add_failed)) }
     }
 
     fun equip(category: String, id: String?) = viewModelScope.launch {

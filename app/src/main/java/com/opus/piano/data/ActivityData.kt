@@ -66,7 +66,9 @@ interface ActivityDao {
 
     @Query("SELECT * FROM manual_activity_entries ORDER BY activityDay,id") fun manualEntries(): Flow<List<ManualActivityEntry>>
     @Query("SELECT * FROM manual_activity_entries ORDER BY activityDay,id") suspend fun allManualEntries(): List<ManualActivityEntry>
+    @Query("SELECT * FROM manual_activity_entries WHERE id=:id") suspend fun manualEntry(id: String): ManualActivityEntry?
     @Insert suspend fun addManualEntry(value: ManualActivityEntry)
+    @Query("UPDATE manual_activity_entries SET activityDay=:day, zoneId=:zone, durationMillis=:millis WHERE id=:id") suspend fun updateManualEntry(id: String, day: String, zone: String, millis: Long): Int
     @Query("DELETE FROM manual_activity_entries WHERE id=:id") suspend fun deleteManualEntry(id: String): Int
 
     @Query("SELECT * FROM cosmetic_ownership ORDER BY earnedAt,cosmeticId") fun ownedCosmetics(): Flow<List<CosmeticOwnership>>

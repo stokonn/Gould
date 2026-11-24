@@ -90,8 +90,8 @@ object PersonalCatalogueBridge {
             }
             val current=db.query("SELECT seq FROM sqlite_sequence WHERE name=?",arrayOf(table)).use{c->if(c.moveToFirst())c.getLong(0) else null}
             if(high>0 && (current==null || current<high)) {
-                if(current==null)db.execSQL("INSERT INTO sqlite_sequence(name,seq) VALUES(?,?)",arrayOf(table,high))
-                else db.execSQL("UPDATE sqlite_sequence SET seq=? WHERE name=?",arrayOf(high,table))
+                if(current==null)db.execSQL("INSERT INTO sqlite_sequence(name,seq) VALUES(?,?)",arrayOf<Any>(table,high))
+                else db.execSQL("UPDATE sqlite_sequence SET seq=? WHERE name=?",arrayOf<Any>(high,table))
             }
         }
     }

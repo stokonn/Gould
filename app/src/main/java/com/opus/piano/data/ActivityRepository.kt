@@ -29,6 +29,7 @@ data class ActivitySnapshot(
     val dailyStreak: Int,
     val recentDailyDurationMillis: List<Long>,
     val allTimeDurationMillis: Long,
+    val weekly: WeeklyStatistics,
 )
 
 /** Android/Room adapter for the platform-free weekly rules. */
@@ -92,6 +93,18 @@ class ActivityRepository(private val db: OpusDatabase) {
         require(db.activityDao().deleteManualEntry(id) == 1) { "Manual activity entry no longer exists." }
     }
 
+    /** Edits an existing manual entry in place: duration always, day only within the
+     *  usual three-day window or when it keeps its own stored day, so historical
+     *  entries stay editable without ever moving them outside their recorded week. */
+    suspend fun updateManualActivity(id: String, day: LocalDate, minutes: Int, today: LocalDate = LocalDate.now()): Boolean {
+        require(minutes in 1..1440) { "Enter a duration from 1 to 1,440 minutes." }
+        val existing = checkNotNull(db.activityDao().manualEntry(id)) { "Manual activity entry no longer exists." }
+        require(manualActivityEditDayAllowed(existing.activityDay, day.toString(), today)) {
+            "Activity can only be added today or up to two days ago."
+        }
+        return db.activityDao().updateManualEntry(id, day.toString(), existing.zoneId, minutes * 60_000L) == 1
+    }
+
     suspend fun snapshot(today: LocalDate = LocalDate.now(), zone: ZoneId = ZoneId.systemDefault(), now: Long = System.currentTimeMillis()): ActivitySnapshot = withContext(Dispatchers.Default) {
         val settings = checkNotNull(db.activityDao().settings()) { "Activity must be initialized before reading its snapshot." }
         val firstUse = LocalDate.parse(settings.firstUseDay)
@@ -99,14 +112,14 @@ class ActivityRepository(private val db: OpusDatabase) {
         val weekRecord = checkNotNull(db.activityDao().week(monday.toString()))
         val week = Week(monday.toEpochDay(), weekRecord.zoneId, weekRecord.beta)
         val goals = db.activityDao().allGoals().map { WeeklyGoal(LocalDate.parse(it.effectiveMonday).toEpochDay(), it.requiredSessions, it.minutesGoal) }
-        val goal = activeGoal(goals, week.monday)
         val workouts = workouts(today, weekRecord.zoneId)
-        val currentWorkouts = workouts.filter { it.epochDay in week.monday..week.sunday }
-        val totals = aggregate(currentWorkouts, week)
-        val daily = classifyWeek(week, goal, currentWorkouts, today.toEpochDay())
+        val overview = activityOverview(today.toEpochDay(), weekRecord.zoneId, goals, workouts, week.beta)
+        val goal = overview.goal
+        val totals = overview.totals
+        val daily = overview.days
         val closed = evaluateHistory(firstUse, monday, settings, goals, workouts)
         val state = closed.lastOrNull()?.streak ?: FreezeState()
-        val currentMet = !week.beta && goalMet(totals, goal)
+        val currentMet = overview.goalMet
         val visibleStreak = state.currentStreak + if (currentMet) 1 else 0
         val uniqueWorkouts = workouts.distinctBy { it.sourceId }
         ActivitySnapshot(firstUse, week, goal, daily, totals, uniqueWorkouts.size,
@@ -115,7 +128,8 @@ class ActivityRepository(private val db: OpusDatabase) {
             uniqueWorkouts.filter { it.epochDay == today.toEpochDay() }.fold(0L) { total, item -> saturatingAdd(total, item.durationMillis) },
             currentActivityStreak(uniqueWorkouts, today.toEpochDay()),
             (6 downTo 0).map { offset -> uniqueWorkouts.filter { it.epochDay == today.minusDays(offset.toLong()).toEpochDay() }.fold(0L) { total, item -> saturatingAdd(total, item.durationMillis) } },
-            uniqueWorkouts.fold(0L) { total, item -> saturatingAdd(total, item.durationMillis) })
+            uniqueWorkouts.fold(0L) { total, item -> saturatingAdd(total, item.durationMillis) },
+            weeklyStatistics(today.toEpochDay(), uniqueWorkouts))
     }
 
     suspend fun yearActivity(year: Int, today: LocalDate = LocalDate.now(), zone: ZoneId = ZoneId.systemDefault()): List<DayActivity> = withContext(Dispatchers.Default) {
@@ -222,21 +236,8 @@ class ActivityRepository(private val db: OpusDatabase) {
         check(dao.grant(ActivityRewardGrant(key, selected.id, "COSMETIC", now)) != -1L) { "Reward grant already exists." }
     }
 
-    private suspend fun workouts(today: LocalDate, currentZone: String): List<Workout> {
-        val sessions = db.dao().allSessions().filter(AchievementEngine::valid)
-        val manuals = db.activityDao().allManualEntries()
-        return buildList {
-            sessions.forEach { session ->
-                val fallback = runCatching { ZoneId.of(session.practiceZone ?: currentZone) }.getOrElse { ZoneId.of(currentZone) }
-                val day = AchievementEngine.recordedDay(session, fallback)
-                if (day <= today) add(Workout(day.toEpochDay(), session.durationMillis, "practice:${session.id}", WorkoutSource.PRACTICE_SESSION))
-            }
-            manuals.forEach { entry ->
-                val day = LocalDate.parse(entry.activityDay)
-                if (day <= today) add(Workout(day.toEpochDay(), entry.durationMillis, "manual:${entry.id}", WorkoutSource.MANUAL_ENTRY))
-            }
-        }
-    }
+    private suspend fun workouts(today: LocalDate, currentZone: String): List<Workout> =
+        activityWorkouts(db.dao().allSessions(), db.activityDao().allManualEntries(), today, currentZone)
 
     private suspend fun evaluateHistory(firstUse: LocalDate, currentMonday: LocalDate, settings: ActivitySettings, goals: List<WeeklyGoal>, workouts: List<Workout>): List<WeekOutcome> {
         var start = monday(firstUse)
