@@ -222,6 +222,26 @@ class ActivityRulesTest {
         assertEquals(false, failed)
     }
 
+    @Test fun weeklyStreakSummaryMatchesAndroidFreezeAndCurrentWeekProjection() {
+        val first = Week(monday, "UTC")
+        val failed = Week(monday + 7, "UTC")
+        val current = Week(monday + 14, "UTC")
+        val goal = WeeklyGoal(monday, 1, null)
+        val workouts = listOf(
+            Workout(monday, 60_000, "first", WorkoutSource.PRACTICE_SESSION),
+            Workout(current.monday, 60_000, "current", WorkoutSource.PRACTICE_SESSION),
+        )
+
+        assertEquals(
+            WeeklyStreakSummary(currentStreak = 2, longestStreak = 2, freezeBalance = 0, successfulWeeksTowardFreeze = 0),
+            weeklyStreakSummary(listOf(first, failed), current, listOf(goal), workouts),
+        )
+        assertEquals(
+            WeeklyStreakSummary(currentStreak = 1, longestStreak = 1, freezeBalance = 0, successfulWeeksTowardFreeze = 0),
+            weeklyStreakSummary(listOf(first, failed), current.copy(beta = true), listOf(goal), workouts),
+        )
+    }
+
     @Test fun weeklyStreakIsContinuousAcrossTheMondayBoundary() {
         val goal = WeeklyGoal(issueWeekStart, sessions = 5, minutes = 90)
         val priorWeek = Week(issueWeekStart - 7, prague)

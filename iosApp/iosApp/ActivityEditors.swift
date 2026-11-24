@@ -42,7 +42,7 @@ struct GoalEditorView: View {
                 }
                 Section {
                     Text(tr("goal.appliesNextMonday"))
-                        .font(.footnote)
+                        .journalFont(.bodySmall)
                         .foregroundStyle(.secondary)
                 }
             }
@@ -67,11 +67,22 @@ struct GoalEditorView: View {
 struct EntryEditorView: View {
     @Environment(\.dismiss) private var dismiss
     let allowedDays: [Int64]
+    let initialDay: Int64?
     let onSave: (Int, Int64) -> Void
 
-    @State private var minutes = 15
-    @State private var selectedDay: Int64 = 0
-    @State private var initialized = false
+    @State private var minutes: Int
+    @State private var selectedDay: Int64
+    @State private var initialized: Bool
+
+    init(allowedDays: [Int64], initialDay: Int64? = nil, initialMinutes: Int = 15,
+         onSave: @escaping (Int, Int64) -> Void) {
+        self.allowedDays = allowedDays
+        self.initialDay = initialDay
+        self.onSave = onSave
+        _minutes = State(initialValue: initialMinutes)
+        _selectedDay = State(initialValue: initialDay ?? 0)
+        _initialized = State(initialValue: initialDay != nil)
+    }
 
     private var sortedDays: [Int64] { allowedDays.sorted() }
 
@@ -87,18 +98,18 @@ struct EntryEditorView: View {
                     .pickerStyle(.segmented)
                 }
                 Section(tr("entry.durationSection")) {
-                    Stepper(value: $minutes, in: 1...480, step: 5) {
+                    Stepper(value: $minutes, in: 1...1_440, step: 5) {
                         Text("\(minutes) " + tr("activity.minutesUnit"))
                     }
                     .accessibilityLabel(tr("entry.durationSection"))
                 }
                 Section {
                     Text(tr("entry.manualOnlyNote"))
-                        .font(.footnote)
+                        .journalFont(.bodySmall)
                         .foregroundStyle(.secondary)
                 }
             }
-            .navigationTitle(tr("entry.title"))
+            .navigationTitle(tr(initialDay == nil ? "entry.title" : "entry.editTitle"))
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 if !initialized {
@@ -124,7 +135,7 @@ struct EntryEditorView: View {
         let date = EpochDay.date(day)
         let isToday = day == EpochDay.of(Date())
         if isToday { return tr("entry.today") }
-        return DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
+        return formattedDate(date)
     }
 }
 
@@ -139,8 +150,7 @@ struct DayDetailView: View {
             List {
                 Section {
                     LabeledContent(tr("entry.dateSection")) {
-                        Text(DateFormatter.localizedString(from: EpochDay.date(epochDay),
-                                                           dateStyle: .full, timeStyle: .none))
+                        Text(formattedDate(EpochDay.date(epochDay), dateStyle: .full))
                     }
                     if let day {
                         LabeledContent(tr("activity.sessionsUnit")) {

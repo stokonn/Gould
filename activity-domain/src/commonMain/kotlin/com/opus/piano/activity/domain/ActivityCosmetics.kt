@@ -1,4 +1,4 @@
-package com.opus.piano.data
+package com.opus.piano.activity.domain
 
 enum class CosmeticCategory { AVATAR, FRAME, BACKGROUND, HEATMAP, GRAPH }
 enum class CosmeticRarity(val weight: Int) { COMMON(60), RARE(25), EPIC(12), LEGENDARY(3) }
