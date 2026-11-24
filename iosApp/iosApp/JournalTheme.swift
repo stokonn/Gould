@@ -154,7 +154,7 @@ enum JournalType {
     static let displaySmall = JournalFont.sans(32, weight: .regular, relativeTo: .largeTitle)
 
     static let headlineLarge = JournalFont.serif(34, weight: .bold, relativeTo: .largeTitle)
-    static let headlineMedium = JournalFont.serif(28, weight: .semibold, relativeTo: .title1)
+    static let headlineMedium = JournalFont.serif(28, weight: .semibold, relativeTo: .title)
     static let headlineSmall = JournalFont.serif(24, weight: .regular, relativeTo: .title2)
 
     static let titleLarge = JournalFont.serif(22, weight: .semibold, relativeTo: .title2)
