@@ -17,16 +17,23 @@ struct SettingsView: View {
     @State private var exportDocument: ActivityFileDocument?
 
     var body: some View {
-        NavigationStack {
-            List {
-                appearanceSection
-                dataSection
-                privacySection
-                aboutSection
-            }
-            .scrollContentBackground(.hidden)
-            .background(colors.background)
-            .navigationTitle(tr("tab.settings"))
+        NavigationStack { settingsPresentation }
+    }
+
+    private var settingsBase: some View {
+        List {
+            appearanceSection
+            dataSection
+            privacySection
+            aboutSection
+        }
+        .scrollContentBackground(.hidden)
+        .background(colors.background)
+        .navigationTitle(tr("tab.settings"))
+    }
+
+    private var settingsWithResetDialogs: some View {
+        settingsBase
             .confirmationDialog(tr("settings.resetConfirm"), isPresented: $confirmReset, titleVisibility: .visible) {
                 Button(tr("settings.reset"), role: .destructive) { store.resetAllData() }
                 Button(tr("common.cancel"), role: .cancel) {}
@@ -37,6 +44,10 @@ struct SettingsView: View {
                 Button(tr("settings.resetAppearance"), role: .destructive) { appearance.reset() }
                 Button(tr("common.cancel"), role: .cancel) {}
             }
+    }
+
+    private var settingsWithExporters: some View {
+        settingsWithResetDialogs
             .fileExporter(isPresented: $showBackupExporter, document: exportDocument, contentType: .json,
                           defaultFilename: "Gould-activity-backup") { result in
                 if case .failure = result { store.lastError = tr("settings.exportFailed") }
@@ -47,6 +58,10 @@ struct SettingsView: View {
                 if case .failure = result { store.lastError = tr("settings.exportFailed") }
                 exportDocument = nil
             }
+    }
+
+    private var settingsWithImporter: some View {
+        settingsWithExporters
             .fileImporter(isPresented: $showBackupImporter, allowedContentTypes: [.json]) { result in
                 do {
                     guard let url = try result.get().first else { return }
@@ -55,6 +70,10 @@ struct SettingsView: View {
                     pendingBackup = try Data(contentsOf: url)
                 } catch { store.lastError = tr("settings.importFailed") }
             }
+    }
+
+    private var settingsWithImportAlert: some View {
+        settingsWithImporter
             .alert(tr("settings.importConfirm"), isPresented: Binding(
                 get: { pendingBackup != nil },
                 set: { if !$0 { pendingBackup = nil } }
@@ -67,6 +86,10 @@ struct SettingsView: View {
             } message: {
                 Text(tr("settings.importMessage"))
             }
+    }
+
+    private var settingsPresentation: some View {
+        settingsWithImportAlert
             .sheet(isPresented: $showFontLicenses) {
                 NavigationStack {
                     ScrollView { Text(fontLicenses).font(.system(.footnote, design: .monospaced)).textSelection(.enabled).padding() }
@@ -74,7 +97,6 @@ struct SettingsView: View {
                         .toolbar { ToolbarItem(placement: .confirmationAction) { Button(tr("common.close")) { showFontLicenses = false } } }
                 }
             }
-        }
     }
 
     private var appearanceSection: some View {
