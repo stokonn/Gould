@@ -141,4 +141,45 @@ class WidgetProjectionTest {
         assertEquals(23L, Duration.between(spring, widgetNextMidnight(spring)).toHours())
         assertEquals(25L, Duration.between(autumn, widgetNextMidnight(autumn)).toHours())
     }
+
+    // --- Issue #55: a week generated on Sunday must stop being presented on Monday. ---
+    @Test fun weeklySnapshotIsStaleTheMomentEuropePragueCrossesIntoMonday() {
+        val sundayNight = LocalDate.parse("2026-11-22").atTime(23, 59).atZone(prague)
+        val mondayMorning = LocalDate.parse("2026-11-23").atTime(0, 1).atZone(prague)
+        val generated = sundayNight.toInstant().toEpochMilli()
+        val now = mondayMorning.toInstant().toEpochMilli()
+        val storedMonday = widgetMonday(LocalDate.parse("2026-11-22"))
+        assertEquals(LocalDate.parse("2026-11-16"), storedMonday)
+
+        // Fresh two minutes before midnight: still the correct, verified week.
+        assertFalse(widgetSnapshotStale(generated, generated, storedMonday, LocalDate.parse("2026-11-22"), prague.id, prague))
+        // Two minutes after midnight: same age, but the stored week is no longer this week.
+        assertTrue(widgetSnapshotStale(generated, now, storedMonday, LocalDate.parse("2026-11-23"), prague.id, prague))
+        // The rollover work must target local midnight, not a fixed delay.
+        assertEquals(
+            LocalDate.parse("2026-11-23"),
+            widgetNextMidnight(sundayNight).toLocalDate(),
+        )
+    }
+
+    @Test fun practiceJustAfterMidnightBelongsToTheNewEuropePragueWeek() {
+        // 00:30 Europe/Prague on Monday is still Sunday 23:30 in UTC.
+        val instant = LocalDate.parse("2026-11-23").atTime(0, 30).atZone(prague).toInstant().toEpochMilli()
+        assertEquals(
+            LocalDate.parse("2026-11-22"),
+            Instant.ofEpochMilli(instant).atZone(ZoneId.of("UTC")).toLocalDate(),
+        )
+        val legacy = PracticeSession(
+            pieceId = null, pieceTitle = "Monday boundary", startedAt = instant - 60_000,
+            completedAt = instant, durationMillis = 60_000, practiceDay = null, elapsedMillis = 60_000,
+        )
+        val week = widgetWeek(listOf(legacy), LocalDate.parse("2026-11-23"), prague)
+        assertEquals(LocalDate.parse("2026-11-23"), week.monday)
+        assertEquals(listOf(60_000L, 0L, 0L, 0L, 0L, 0L, 0L), week.credited)
+        // Reading the same instant in UTC would wrongly credit the previous week.
+        assertEquals(
+            LocalDate.parse("2026-11-16"),
+            widgetMonday(Instant.ofEpochMilli(instant).atZone(ZoneId.of("UTC")).toLocalDate()),
+        )
+    }
 }

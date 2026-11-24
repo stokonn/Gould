@@ -2,12 +2,30 @@ package com.opus.piano.activity.domain
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 class ActivityRulesTest {
+    @Test fun sharedOverviewUsesCurrentWeekAndAllConfiguredGoalDimensions() {
+        val today = 20_003L // Monday
+        val goal = WeeklyGoal(today, sessions = 2, minutes = 30)
+        val workouts = listOf(
+            Workout(today, 15 * 60_000L, "a", WorkoutSource.PRACTICE_SESSION),
+            Workout(today + 1, 15 * 60_000L, "b", WorkoutSource.MANUAL_ENTRY),
+            Workout(today - 1, 90 * 60_000L, "outside", WorkoutSource.PRACTICE_SESSION),
+        )
+
+        val overview = activityOverview(today + 1, "UTC", listOf(goal), workouts)
+
+        assertEquals(goal, overview.goal)
+        assertEquals(WeekTotals(2, 30), overview.totals)
+        assertEquals(1, overview.days.first { it.epochDay == today }.workouts)
+        assertTrue(overview.goalMet)
+    }
+
     private val monday = 20_052L // 2024-11-25, a Monday
     private val week = Week(monday, "Europe/Prague")
 
@@ -147,5 +165,93 @@ class ActivityRulesTest {
         val input = listOf(later to false, earlier to true)
         assertEquals(evaluateWeeks(FreezeState(), input), evaluateWeeks(FreezeState(), input))
         assertFailsWith<IllegalArgumentException> { evaluateWeeks(FreezeState(), listOf(week to true, week to false)) }
+    }
+
+    // --- Issue #55: the weekly view must roll over exactly at the Monday boundary. ---
+    // 2026-11-16 Mon .. 2026-11-22 Sun .. 2026-11-23 Mon (epoch days 20773/20779/20780),
+    // the Europe/Prague week that Issue #55's screenshot shows as completed.
+    private val issueSunday = 20_779L
+    private val issueMonday = 20_780L
+    private val issueWeekStart = 20_773L
+    private val prague = "Europe/Prague"
+
+    @Test fun weekAdvancesAtMondayBoundaryAndResetsCurrentTotals() {
+        val goal = WeeklyGoal(issueWeekStart, sessions = 5, minutes = 90)
+        val completed = (issueWeekStart..issueSunday).map {
+            Workout(it, 30 * 60_000L, "practice:$it", WorkoutSource.PRACTICE_SESSION)
+        }
+
+        // Sunday: the open week still reports the whole completed week.
+        val sunday = activityOverview(issueSunday, prague, listOf(goal), completed)
+        assertEquals(issueWeekStart, sunday.week.monday)
+        assertEquals(WeekTotals(7, 210), sunday.totals)
+        assertTrue(sunday.goalMet)
+        assertEquals((issueWeekStart..issueSunday).toList(), sunday.days.map { it.epochDay })
+
+        // Monday: the very next day must show the NEW week, not the completed one.
+        val mondayView = activityOverview(issueMonday, prague, listOf(goal), completed)
+        assertEquals(issueMonday, mondayView.week.monday)
+        assertEquals(WeekTotals(0, 0), mondayView.totals)
+        assertFalse(mondayView.goalMet)
+        assertEquals(listOf(issueMonday), mondayView.days.map { it.epochDay })
+        assertEquals(goal, mondayView.goal)
+    }
+
+    @Test fun renderedWeekRequiresRereadExactlyAtMondayBoundary() {
+        // Sunday 22 Nov 2026: the displayed week (16 Nov) is still today's week.
+        assertFalse(weekRolloverRequired(issueWeekStart, issueSunday))
+        // Monday 23 Nov 2026: the same snapshot is one week behind and must be re-read.
+        assertTrue(weekRolloverRequired(issueWeekStart, issueMonday))
+        // Already-current snapshots never force needless refreshes.
+        assertFalse(weekRolloverRequired(issueMonday, issueMonday))
+        // Comparison is by Monday identity, not by calendar distance.
+        assertTrue(weekRolloverRequired(issueWeekStart, issueMonday + 30))
+    }
+
+    @Test fun closedWeekBecomesEvaluableOnlyAfterItsSunday() {
+        val goal = WeeklyGoal(issueWeekStart, sessions = 5, minutes = 90)
+        val completed = (issueWeekStart..issueSunday).map {
+            Workout(it, 30 * 60_000L, "practice:$it", WorkoutSource.PRACTICE_SESSION)
+        }
+        val open = Week(issueWeekStart, prague)
+        // Still open on Saturday: no outcome yet.
+        assertNull(weekSuccess(open, goal, completed, issueSunday - 1))
+        // Closes on Sunday and is judged on Monday.
+        assertEquals(true, weekSuccess(open, goal, completed, issueSunday))
+        val failed = weekSuccess(open, goal, completed.take(3), issueSunday)
+        assertEquals(false, failed)
+    }
+
+    @Test fun weeklyStreakIsContinuousAcrossTheMondayBoundary() {
+        val goal = WeeklyGoal(issueWeekStart, sessions = 5, minutes = 90)
+        val priorWeek = Week(issueWeekStart - 7, prague)
+        val currentWeek = Week(issueWeekStart, prague)
+        val currentWork = (currentWeek.monday..currentWeek.sunday).map {
+            Workout(it, 30 * 60_000L, "current:$it", WorkoutSource.PRACTICE_SESSION)
+        }
+        val idleWork = emptyList<Workout>()
+
+        // ActivityRepository.snapshot() renders
+        //   visibleStreak = closedWeeks.last().streak.currentStreak + (goalMet ? 1 : 0)
+        fun visible(closedInput: List<Pair<Week, Boolean?>>, openWeek: Week, openWork: List<Workout>): Int {
+            val closed = evaluateWeeks(FreezeState(), closedInput).lastOrNull()?.streak ?: FreezeState()
+            val met = !openWeek.beta && goalMet(aggregate(openWork, openWeek), goal)
+            return closed.currentStreak + if (met) 1 else 0
+        }
+
+        // Sunday: prior week closed and counted; the OPEN week (Nov 16) is counted once via goalMet.
+        val sunday = visible(listOf(priorWeek to true), currentWeek, currentWork)
+        // Monday: that same week is now CLOSED and counted exactly once, while the OPEN week
+        // is the brand-new Nov 23 week with no workouts yet, so goalMet contributes nothing.
+        val newWeek = Week(issueMonday, prague)
+        val monday = visible(listOf(priorWeek to true, currentWeek to true), newWeek, idleWork)
+        assertEquals(2, sunday)
+        assertEquals(sunday, monday)
+
+        // An unmet current week contributes nothing on either side of the boundary either.
+        assertEquals(
+            visible(listOf(priorWeek to true), currentWeek, idleWork),
+            visible(listOf(priorWeek to true, currentWeek to false), newWeek, idleWork),
+        )
     }
 }

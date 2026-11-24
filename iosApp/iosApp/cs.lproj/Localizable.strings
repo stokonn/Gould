@@ -1,0 +1,57 @@
+/* Gould iOS — čeština */
+"tab.activity" = "Aktivita";
+"tab.settings" = "Nastavení";
+
+"activity.title" = "Aktivita";
+"activity.editGoal" = "Upravit týdenní cíl";
+"activity.addEntry" = "Přidat záznam aktivity";
+"activity.weekGoal" = "Týdenní cíl";
+"activity.goalMet" = "Cíl splněn";
+"activity.goalPending" = "Probíhá";
+"activity.sessionsUnit" = "sezení";
+"activity.minutesUnit" = "min";
+"activity.noMinutesGoal" = "Cíl v minutách nenastaven";
+"activity.thisWeek" = "Tento týden";
+"activity.allTimeEntries" = "záznamů celkem";
+"activity.dailyStreak" = "Denní série";
+"activity.betaNote" = "Beta týden nikdy nezklame";
+"activity.weekEntries" = "Záznamy tento týden";
+"activity.noEntries" = "Tento týden zatím žádné záznamy.";
+
+"day.training" = "Trénink";
+"day.dayOff" = "Volný den";
+"day.miss" = "Vynecháno";
+"day.kind" = "Typ";
+"day.title" = "Detail dne";
+
+"common.save" = "Uložit";
+"common.cancel" = "Zrušit";
+"common.close" = "Zavřít";
+
+"goal.title" = "Týdenní cíl";
+"goal.sessionsSection" = "Sezení týdně";
+"goal.minutesSection" = "Minuty týdně";
+"goal.useMinutesGoal" = "Nastavit cíl v minutách";
+"goal.appliesNextMonday" = "Změny platí od příštího pondělí, aktuální týden se nikdy nemění.";
+"goal.invalidSessions" = "Sezení musí být mezi 1 a 7.";
+"goal.invalidMinutes" = "Minuty musí být kladné číslo.";
+
+"entry.title" = "Přidat záznam";
+"entry.dateSection" = "Datum";
+"entry.durationSection" = "Délka";
+"entry.today" = "Dnes";
+"entry.manualOnlyNote" = "Ruční záznamy jsou možné pouze pro dnešek a dva předchozí dny.";
+"entry.invalidDate" = "Ruční záznamy jsou možné pouze pro dnešek a dva předchozí dny.";
+"entry.invalidDuration" = "Délka musí být alespoň jedna minuta.";
+"entry.delete" = "Smazat záznam";
+
+"settings.appearance" = "Vzhled";
+"settings.systemThemeNote" = "Sleduje systémový režim světlý/tmavý (Ivory / Nocturne).";
+"settings.data" = "Data";
+"settings.localEntries" = "Uložené záznamy";
+"settings.localGoals" = "Uložené cíle";
+"settings.reset" = "Smazat data aktivity";
+"settings.resetConfirm" = "Smazat všechny místně uložené záznamy a cíle aktivity?";
+"settings.about" = "O aplikaci";
+"settings.version" = "Verze";
+"settings.sharedRulesNote" = "Týdenní cíle, série a pravidla týdnů jsou sdílená s Androidem přes modul ActivityDomain (Kotlin Multiplatform).";
