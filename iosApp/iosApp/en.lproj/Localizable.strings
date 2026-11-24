@@ -1,0 +1,57 @@
+/* Gould iOS — English */
+"tab.activity" = "Activity";
+"tab.settings" = "Settings";
+
+"activity.title" = "Activity";
+"activity.editGoal" = "Edit weekly goal";
+"activity.addEntry" = "Add activity entry";
+"activity.weekGoal" = "Weekly goal";
+"activity.goalMet" = "Goal met";
+"activity.goalPending" = "In progress";
+"activity.sessionsUnit" = "sessions";
+"activity.minutesUnit" = "min";
+"activity.noMinutesGoal" = "No minutes goal set";
+"activity.thisWeek" = "This week";
+"activity.allTimeEntries" = "all-time entries";
+"activity.dailyStreak" = "Daily streak";
+"activity.betaNote" = "Beta week never fails";
+"activity.weekEntries" = "Entries this week";
+"activity.noEntries" = "No entries this week yet.";
+
+"day.training" = "Training";
+"day.dayOff" = "Day off";
+"day.miss" = "Miss";
+"day.kind" = "Type";
+"day.title" = "Day detail";
+
+"common.save" = "Save";
+"common.cancel" = "Cancel";
+"common.close" = "Close";
+
+"goal.title" = "Weekly goal";
+"goal.sessionsSection" = "Sessions per week";
+"goal.minutesSection" = "Minutes per week";
+"goal.useMinutesGoal" = "Set a minutes goal";
+"goal.appliesNextMonday" = "Changes apply from next Monday, so the current week is never affected.";
+"goal.invalidSessions" = "Sessions must be between 1 and 7.";
+"goal.invalidMinutes" = "Minutes must be a positive number.";
+
+"entry.title" = "Add entry";
+"entry.dateSection" = "Date";
+"entry.durationSection" = "Duration";
+"entry.today" = "Today";
+"entry.manualOnlyNote" = "Manual entries are limited to today and the previous two days.";
+"entry.invalidDate" = "Manual entries are limited to today and the previous two days.";
+"entry.invalidDuration" = "Duration must be at least one minute.";
+"entry.delete" = "Delete entry";
+
+"settings.appearance" = "Appearance";
+"settings.systemThemeNote" = "Follows the system light/dark theme (Ivory / Nocturne).";
+"settings.data" = "Data";
+"settings.localEntries" = "Stored entries";
+"settings.localGoals" = "Stored goals";
+"settings.reset" = "Reset activity data";
+"settings.resetConfirm" = "Delete all locally stored activity entries and goals?";
+"settings.about" = "About";
+"settings.version" = "Version";
+"settings.sharedRulesNote" = "Weekly goals, streaks and week rules are shared with Android through the ActivityDomain Kotlin Multiplatform module.";

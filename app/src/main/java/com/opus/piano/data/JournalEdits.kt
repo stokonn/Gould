@@ -13,6 +13,7 @@ data class FavoriteComposer(@PrimaryKey val composerId:String,val addedAt:Long)
     @Query("SELECT * FROM session_piece_links WHERE sessionId=:id ORDER BY addedAt,pieceId") suspend fun links(id:Long):List<SessionPieceLink>
     @Insert(onConflict=OnConflictStrategy.IGNORE) suspend fun insertLink(link:SessionPieceLink)
     @Query("DELETE FROM session_piece_links WHERE sessionId=:sessionId AND pieceId=:pieceId") suspend fun removeLink(sessionId:Long,pieceId:Long)
+    @Query("DELETE FROM session_piece_links WHERE sessionId=:id") suspend fun removeLinks(id:Long)
     @Query("SELECT * FROM favorite_composers ORDER BY addedAt,composerId") fun favorites():Flow<List<FavoriteComposer>>
     @Query("SELECT * FROM favorite_composers ORDER BY addedAt,composerId") suspend fun allFavorites():List<FavoriteComposer>
     @Insert(onConflict=OnConflictStrategy.IGNORE) suspend fun insertFavorite(value:FavoriteComposer)

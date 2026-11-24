@@ -66,6 +66,9 @@ class PracticeRepository(private val db: OpusDatabase, private val journal: Opus
         db.practiceDao().notes(id, notes.take(10000), reflection.take(10000))
         parts.forEach { db.practiceDao().partNote(id, it.id, it.notes.take(10000)) }
     }
+    /** Deleting a completed session is user-confirmed and transactional; the journal
+     *  repository owns the child cleanup and achievement re-evaluation. */
+    suspend fun deleteSession(id: Long) = journal.deleteSession(id)
     companion object {
         fun encode(s: PracticeState): String = JSONObject().apply {
             put("execution", s.execution); put("version", 1); put("token", s.token); put("start", s.startedAt); put("credited", s.elapsed); put("elapsed", s.wallElapsed)
