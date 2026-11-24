@@ -522,7 +522,7 @@ final class ActivityStore: ObservableObject {
                 .filter { $0.epochDay >= firstUseDay && $0.epochDay >= yearStart && $0.epochDay <= last }
             monday += 7
         }
-        return ActivityDomainKt.activityBoard(year: Int32(year), today: today, activities: days)
+        return ActivityBoardKt.activityBoard(year: Int32(year), today: today, activities: days)
     }
 
     /// Creates missing week records and awards eligible cosmetics using only
