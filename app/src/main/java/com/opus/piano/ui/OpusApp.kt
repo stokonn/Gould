@@ -131,6 +131,17 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                 dismissButton = { JournalTextButton(onClick = { shownNotice = null; acknowledge(notice) }) { Text(L.s(R.string.msg_dismiss_11a3)) } })
         }
     }
+    // Issue #55: a completed week must never stay on screen after Monday. Re-read the weekly
+    // snapshot whenever the app returns to the foreground, so rollover does not depend solely on
+    // the in-process background watcher surviving process caching or Doze.
+    val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
+    DisposableEffect(lifecycleOwner, activity) {
+        val observer = androidx.lifecycle.LifecycleEventObserver { _, event ->
+            if (event == androidx.lifecycle.Lifecycle.Event.ON_RESUME) activity.revalidate()
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
     // Apply keyboard avoidance once, before measuring navigation and child screens.
     Scaffold(
         modifier = Modifier.imePadding(),
@@ -195,7 +206,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                     val title = if (key.startsWith("catalog:")) catalogData.works.firstOrNull { it.id == key.substringAfter(':') }?.title else library.pieces.firstOrNull { it.id.toString() == key.substringAfter(':') }?.title
                     RecordingsScreen(key, title ?: L.s(R.string.reference_shelf), experience) { nav.popBackStack() }
                 }
-                composable(Routes.HISTORY) { PracticeHistoryScreen({ nav.popBackStack() }) }
+                composable(Routes.HISTORY) { UnifiedActivityHistoryScreen({ nav.popBackStack() }, activity) }
                 composable(Routes.PREVIOUS) { PreviousScreen({ nav.popBackStack() }) }
                 composable(Routes.HISTORY_PIECE) { e -> PracticeHistoryScreen({ nav.popBackStack() }, e.arguments?.getString("id")?.toLongOrNull()) }
                 composable(Routes.HISTORY_CATALOG) { e -> PracticeHistoryScreen({ nav.popBackStack() }, catalogId=e.arguments?.getString("id")) }

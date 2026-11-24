@@ -261,7 +261,7 @@ class Stage3bBackupTest {
                 val sql=e.db.openHelper.writableDatabase
                 repeat(1000){i->
                     val id=10000L+i
-                    sql.execSQL("INSERT INTO sessions(id,pieceId,pieceTitle,startedAt,completedAt,durationMillis,notes) VALUES(?,7,'Measurement snapshot',1000,2000,1000,?)",arrayOf(id,"n".repeat(1024)))
+                    sql.execSQL("INSERT INTO sessions(id,pieceId,pieceTitle,startedAt,completedAt,durationMillis,notes) VALUES(?,7,'Measurement snapshot',1000,2000,1000,?)",arrayOf<Any>(id,"n".repeat(1024)))
                     sql.execSQL("INSERT INTO session_parts(sessionId,pieceId,title,composer,catalogWorkId,composerId,musicalEra,durationMillis,notes) VALUES(?,7,'Measurement snapshot','Synthetic',NULL,NULL,'',1000,'exact')",arrayOf(id))
                 }
             }

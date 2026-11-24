@@ -68,6 +68,7 @@ interface OpusDao {
     @Upsert suspend fun save(piece: Piece)
     @Delete suspend fun delete(piece: Piece)
     @Insert suspend fun insert(session: PracticeSession): Long
+    @Query("DELETE FROM sessions WHERE id=:id") suspend fun deleteSession(id: Long): Int
 }
 @Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class, RecoveryArchive::class, SessionPieceLink::class, FavoriteComposer::class, PersonalCatalogueIdentity::class, PersonalCatalogueAnchor::class, PersonalCatalogueState::class, BackupRestoreState::class, RecoveryEvidence::class, CompletionEvidence::class, LocalAudio::class, LocalAudioPart::class, AchievementEvent::class, BadgeNotice::class, ActivitySettings::class, ActivityWeeklyGoal::class, ActivityWeekRecord::class, ManualActivityEntry::class, CosmeticOwnership::class, ActivityRewardGrant::class, CosmeticLoadout::class], version = 13, exportSchema = true)
 @TypeConverters(Converters::class)
@@ -210,6 +211,19 @@ class OpusRepository(private val db: OpusDatabase, private val achievements: Ach
         achievements.evaluateInTransaction()
     }
     suspend fun delete(piece: Piece) = db.withTransaction { dao.delete(piece); achievements.evaluateInTransaction() }
+    /** Removes one practice session and every child row (parts, intervals, piece links)
+     *  in the same transaction. The delete is explicit instead of relying on FK pragma
+     *  state, so no orphan attribution or timing rows can survive. Recorded badges stay
+     *  unlocked (they are historical facts) while all statistics recompute from the
+     *  remaining sessions. Recordings are separate artifacts and are never touched. */
+    suspend fun deleteSession(id: Long) = db.withTransaction {
+        if (dao.deleteSession(id) == 1) {
+            db.personalDao().deleteParts(id)
+            db.practiceDao().deleteIntervals(id)
+            db.journalEditsDao().removeLinks(id)
+            achievements.evaluateInTransaction()
+        }
+    }
     suspend fun complete(session: PracticeSession, parts: List<SessionPart> = emptyList()) = db.withTransaction {
         require(session.durationMillis >= 0)
         require(parts.isEmpty() || parts.sumOf { it.durationMillis } == session.durationMillis)

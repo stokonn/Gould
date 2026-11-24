@@ -285,7 +285,7 @@ class ProfileViewModel(app: Application, private val savedState: SavedStateHandl
     }
     fun username(value: String) = edit { identity.manualName(); it.copy(username = value.trim().take(80).ifBlank { "Musician" }) }
     fun resetAppearance() = action {
-        db.withTransaction { val old=db.personalDao().getSettings() ?: ProfileSettings();db.personalDao().saveSettings(old.copy(theme="System",typography="Editorial",statistics="time,pieces,sessions,streak")) }
+        db.withTransaction { val old=db.personalDao().getSettings() ?: ProfileSettings();db.personalDao().saveSettings(old.copy(theme="System",typography="Editorial",statistics="time,pieces,sessions,streak,daily_streak")) }
         getApplication<Application>().appContainer.appearance.reset()
     }
     fun theme(value: String) = edit { require(value in listOf("System", "Light", "Dark")); it.copy(theme = value) }
