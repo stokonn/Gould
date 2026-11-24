@@ -303,7 +303,7 @@ struct ActivityView: View {
 
     private func goalCard(_ overview: ActivityOverview) -> some View {
         let goalMet = ActivityDomainKt.goalMet(totals: overview.totals, goal: overview.goal)
-        VStack(alignment: .leading, spacing: 6) {
+        return VStack(alignment: .leading, spacing: 6) {
             HStack {
                 Text(tr("activity.weekGoal"))
                     .journalFont(.titleLarge)
