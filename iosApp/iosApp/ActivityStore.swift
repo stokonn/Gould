@@ -664,7 +664,7 @@ final class ActivityStore: ObservableObject {
     // MARK: Mutations (validated before touching Kotlin `require` checks)
 
     func addManualEntry(minutes: Int, day: Int64, now: Date = Date()) {
-        guard minutes in 1...1_440 else {
+        guard (1...1_440).contains(minutes) else {
             lastError = tr("entry.invalidDuration")
             return
         }
@@ -687,7 +687,7 @@ final class ActivityStore: ObservableObject {
     }
 
     func updateManualEntry(id: String, minutes: Int, day: Int64, now: Date = Date()) {
-        guard minutes in 1...1_440 else { lastError = tr("entry.invalidDuration"); return }
+        guard (1...1_440).contains(minutes) else { lastError = tr("entry.invalidDuration"); return }
         guard let index = workouts.firstIndex(where: { $0.id == id && $0.sourceRaw == "MANUAL_ENTRY" }) else { return }
         let originalDay = workouts[index].epochDay
         guard day == originalDay || allowedManualDays(now: now).contains(day) else {
