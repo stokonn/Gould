@@ -111,7 +111,7 @@ final class ActivityStore: ObservableObject {
         goals.sorted { $0.effectiveMonday < $1.effectiveMonday }.map {
             WeeklyGoal(effectiveMonday: $0.effectiveMonday,
                        sessions: Int32($0.sessions),
-                       minutes: $0.minutes.map { NSNumber(value: $0) })
+                       minutes: $0.minutes.map { KotlinInt(int: Int32($0)) })
         }
     }
 
