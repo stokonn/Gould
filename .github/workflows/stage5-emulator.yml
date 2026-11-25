@@ -353,15 +353,6 @@ jobs:
     name: "5.11 acceptance subset — API 36 emulator"
     runs-on: ubuntu-24.04
     timeout-minutes: 120
-    env:
-      # The candidate (AGP 9.5) and the v0.10.1 baseline rebuild (AGP 9.1)
-      # resolve the default debug keystore independently: AGP 9.1 still prefers
-      # $XDG_CONFIG_HOME/.android while AGP 9.5 no longer does, so the two
-      # builds could silently generate two different runner debug keys and
-      # break in-place-upgrade signature compatibility. Pinning
-      # ANDROID_USER_HOME (honoured by both AGP versions) forces one shared
-      # debug keystore for the upgrade pair.
-      ANDROID_USER_HOME: ${{ runner.temp }}/android-user-home
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -442,9 +433,19 @@ jobs:
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
+      # The candidate (AGP 9.5) and the v0.10.1 baseline rebuild (AGP 9.1) resolve
+      # the default debug keystore independently: AGP 9.1 still prefers
+      # $XDG_CONFIG_HOME/.android while AGP 9.5 no longer does, so a runner that
+      # sets XDG_CONFIG_HOME lets the two builds generate different debug keys and
+      # breaks in-place-upgrade signature compatibility. ANDROID_USER_HOME is
+      # honoured by both AGP versions, so pinning it forces one shared debug key.
       - name: Build candidate APK
+        env:
+          ANDROID_USER_HOME: ${{ runner.temp }}/android-user-home
         run: ./gradlew --no-daemon --max-workers=1 assembleDebug
       - name: Build debug-signed v0.10.1 baseline (same runner debug keystore as candidate)
+        env:
+          ANDROID_USER_HOME: ${{ runner.temp }}/android-user-home
         run: (cd baseline-src && ./gradlew --no-daemon --max-workers=1 assembleDebug)
       - name: Fetch trusted 0.10.1 release APK (digest + signing-certificate verified)
         run: |
