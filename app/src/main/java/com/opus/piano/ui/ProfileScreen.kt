@@ -29,6 +29,7 @@ import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.opus.piano.activity.domain.ActivityCosmetics
 import com.opus.piano.data.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

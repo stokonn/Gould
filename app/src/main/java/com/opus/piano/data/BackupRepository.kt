@@ -5,6 +5,7 @@ import android.util.Base64
 import androidx.room.Room
 import androidx.room.withTransaction
 import com.opus.piano.OpusApplication
+import com.opus.piano.activity.domain.ActivityCosmetics
 import com.opus.piano.data.backup.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex

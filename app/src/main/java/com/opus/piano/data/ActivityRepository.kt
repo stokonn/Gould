@@ -12,7 +12,6 @@ import java.time.LocalDate
 import java.time.ZoneId
 import java.time.temporal.TemporalAdjusters
 import java.util.UUID
-import kotlin.random.Random
 
 data class ActivitySnapshot(
     val firstUseDay: LocalDate,
@@ -180,8 +179,8 @@ class ActivityRepository(private val db: OpusDatabase) {
     suspend fun claimReward(weekMonday: String, now: Long = System.currentTimeMillis()): Boolean = db.withTransaction {
         val dao = db.activityDao()
         val reward = dao.grant(weekMonday) ?: return@withTransaction false
-        val cosmeticId = reward.cosmeticId ?: return@withTransaction false
-        if (reward.result != "COSMETIC" || reward.acknowledgedAt != 0L) return@withTransaction false
+        if (!ActivityRewards.claimable(reward.cosmeticId, reward.result, reward.acknowledgedAt)) return@withTransaction false
+        val cosmeticId = checkNotNull(reward.cosmeticId) { "Claimable rewards always carry a cosmetic." }
 
         // Older 0.14 builds granted ownership automatically. Treat such rows as claimed
         // during upgrade instead of offering the same cosmetic a second time.
@@ -208,7 +207,7 @@ class ActivityRepository(private val db: OpusDatabase) {
             // still grant only after closing. Streak evaluation separately
             // treats Beta as neutral in weekSuccess/evaluateHistory.
             val closedWeek = monday < currentMonday
-            if ((closedWeek || week.beta) && perfectWeek(week, goal, workouts)) grantReward(monday, now)
+            if (ActivityRewards.eligible(closedWeek, week.beta, week, goal, workouts)) grantReward(monday, now)
             monday = monday.plusWeeks(1)
         }
     }
@@ -222,18 +221,12 @@ class ActivityRepository(private val db: OpusDatabase) {
             dao.grants().mapNotNullTo(this) { it.cosmeticId }
         }
         val available = ActivityCosmetics.all.filterNot { it.id in reserved }
-        if (available.isEmpty()) {
-            dao.grant(ActivityRewardGrant(key, null, "COLLECTION_COMPLETE", now, acknowledgedAt = now))
+        val selected = ActivityRewards.select(key, available)
+        if (selected == null) {
+            dao.grant(ActivityRewardGrant(key, null, REWARD_RESULT_COLLECTION_COMPLETE, now, acknowledgedAt = now))
             return@withTransaction
         }
-        val random = Random(key.hashCode())
-        val rarities = available.map { it.rarity }.distinct()
-        val totalWeight = rarities.sumOf { it.weight }
-        var choice = random.nextInt(totalWeight)
-        val selectedRarity = rarities.first { rarity -> choice -= rarity.weight; choice < 0 }
-        val sameRarity = available.filter { it.rarity == selectedRarity }
-        val selected = sameRarity[random.nextInt(sameRarity.size)]
-        check(dao.grant(ActivityRewardGrant(key, selected.id, "COSMETIC", now)) != -1L) { "Reward grant already exists." }
+        check(dao.grant(ActivityRewardGrant(key, selected.id, REWARD_RESULT_COSMETIC, now)) != -1L) { "Reward grant already exists." }
     }
 
     private suspend fun workouts(today: LocalDate, currentZone: String): List<Workout> =

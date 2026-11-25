@@ -3,6 +3,7 @@ package com.opus.piano
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.opus.piano.activity.domain.ActivityCosmetics
 import com.opus.piano.activity.domain.DayKind
 import com.opus.piano.data.*
 import com.opus.piano.ui.ActivityViewModel
