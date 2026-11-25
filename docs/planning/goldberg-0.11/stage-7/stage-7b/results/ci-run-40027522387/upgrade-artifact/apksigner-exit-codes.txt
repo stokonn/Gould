@@ -1,3 +1,0 @@
-release apksigner exit=0
-baseline apksigner exit=0
-candidate apksigner exit=0

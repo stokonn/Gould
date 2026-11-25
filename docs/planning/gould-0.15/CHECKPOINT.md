@@ -66,7 +66,7 @@ publication, database migration, clean task, app uninstall, or data wipe ran.
   modified by this verification pass.
 - Fresh command `JAVA_TOOL_OPTIONS="-Djava.io.tmpdir=$PWD/.gould-015-final-signed-build/tmp"
   GRADLE_USER_HOME=/home/stokonn/.gradle ./gradlew --offline --no-daemon
-  --max-workers=1 -I gradle/verification/gould-015-final-signed-verification.init.gradle
+  --max-workers=1 -I gould-015-final-signed-verification.init.gradle
   -I docs/releases/goldberg-0.11-stable-signing.init.gradle
   :app:testDebugUnitTest :app:assembleDebugAndroidTest :app:lintDebug
   :app:lintRelease :app:assembleRelease` passed. Android test sources compiled;

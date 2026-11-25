@@ -1,6 +1,0 @@
-{
-  "localTcp": "blocked",
-  "errno": 1,
-  "error": "Operation not permitted",
-  "databaseBodiesExecuted": 0
-}

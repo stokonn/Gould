@@ -1,2 +1,0 @@
-# Preserve raw compiler/JUnit output bytes, including their terminal blank lines.
-*.log whitespace=-blank-at-eof

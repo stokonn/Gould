@@ -1,7 +1,0 @@
-BEGIN
-SET
-SET
-
-DO
-ROLLBACK
-t

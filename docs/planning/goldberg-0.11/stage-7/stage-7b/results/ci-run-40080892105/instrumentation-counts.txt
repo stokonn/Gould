@@ -1,2 +1,0 @@
-Result files: 1
-Tests: 187  Failures: 0  Errors: 0  Skipped: 2

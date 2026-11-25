@@ -1,7 +1,0 @@
-{
-  "compileExit": 0,
-  "junitExit": 0,
-  "passed": 40,
-  "sourceUnchanged": true,
-  "venue": "direct cached Kotlin compiler/JUnit; not Gradle or Android runtime"
-}
