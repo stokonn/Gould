@@ -43,7 +43,7 @@ workspace build/schema/temp paths, and no clean task:
 JAVA_TOOL_OPTIONS="-Djava.io.tmpdir=$PWD/.gould-015-release-final-verification/tmp" \
 GRADLE_USER_HOME=/home/stokonn/.gradle ./gradlew --offline --no-daemon \
   --max-workers=1 --console=plain \
-  -I .gould-015-release-final-verification.init.gradle \
+  -I gradle/verification/gould-015-release-final-verification.init.gradle \
   -I docs/releases/goldberg-0.11-stable-signing.init.gradle \
   :app:testDebugUnitTest :activity-domain:jvmTest \
   :app:lintDebug :app:lintRelease :app:assembleDebugAndroidTest \
@@ -56,7 +56,7 @@ Gradle result: **BUILD SUCCESSFUL**. Fresh JVM test execution was forced:
 JAVA_TOOL_OPTIONS="-Djava.io.tmpdir=$PWD/.gould-015-release-final-verification/tmp" \
 GRADLE_USER_HOME=/home/stokonn/.gradle ./gradlew --offline --no-daemon \
   --max-workers=1 --console=plain \
-  -I .gould-015-release-final-verification.init.gradle \
+  -I gradle/verification/gould-015-release-final-verification.init.gradle \
   :app:testDebugUnitTest :activity-domain:jvmTest --rerun-tasks
 ```
 
