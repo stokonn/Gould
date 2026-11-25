@@ -1,9 +1,0 @@
-gradle.beforeProject { p ->
-    if (p.path == ':app') {
-        p.layout.buildDirectory.set(new File(p.rootProject.projectDir, '.gould-015-remediation-build/app'))
-        p.afterEvaluate {
-            def ksp = p.extensions.findByName('ksp')
-            if (ksp != null) ksp.arg('room.schemaLocation', new File(p.rootProject.projectDir, '.gould-015-remediation-build/schemas').absolutePath)
-        }
-    }
-}
