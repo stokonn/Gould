@@ -1,3 +1,0 @@
-opus.db
-opus.db-shm
-opus.db-wal

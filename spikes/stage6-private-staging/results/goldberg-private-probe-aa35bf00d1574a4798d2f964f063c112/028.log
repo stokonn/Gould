@@ -1,6 +1,0 @@
-BEGIN
-SET
-SET
-
-ERROR:  Existing probe role: preserve and review, do not overwrite
-CONTEXT:  PL/pgSQL function inline_code_block line 14 at RAISE
