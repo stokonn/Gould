@@ -18,7 +18,7 @@ Gould 0.16 planning is focused on catalogue/database loading and search performa
 
 ## Data and privacy
 
-Practice data and recordings remain local unless deliberately exported. The optional public catalogue API is read-only and currently has no approved published records. Online catalogue search requires explicit consent. Backend OAuth, community submissions and practice uploads remain disabled.
+Practice data and recordings remain local unless deliberately exported. The composer catalogue is bundled locally; optional online catalogue search talks to third-party providers such as MusicBrainz directly from your device and requires explicit consent. Gould operates no product community backend, BFF or cloud catalogue API. Google sign-in uses Android Credential Manager and stays on the device; there are no community submissions or practice uploads.
 
 See the [Gould 0.13 guide screenshots](images/gould-0.13/CAPTURE-EVIDENCE.md) for historical verified emulator captures. They are not physical-device evidence.
 
@@ -37,10 +37,12 @@ The candidate is a signed, non-debuggable release build, versionCode 12. Goldber
 Smart Cache and accepted Android UI work are included; the Stage 8 Settings focus,
 full navigation labels and test-scaffold contrast corrections are included.
 
-**Production community networking, cloud sign-in and real-user contribution
-collection remain disabled. No private Cloudflare Worker has been deployed.**
-The existing private Supabase schema is deployed, but it is not a live public
-community service. Personal practice data remains local.
+**At that time, production community networking, cloud sign-in and real-user
+contribution collection remained disabled, and no private Cloudflare Worker had
+been deployed. A private Supabase schema existed but was never a live public
+community service. The community/backend architecture has since been retired
+entirely (see [backend retirement](https://github.com/stokonn/Gould/blob/main/docs/architecture/BACKEND-RETIRED-2026-11-25.md));
+personal practice data remains local.**
 
 [Candidate CI](https://github.com/stokonn/Gould/actions/runs/40212684482):302 JVM
 cases passed;203 native cases,192 passed/11 existing fixture or probe-dependent

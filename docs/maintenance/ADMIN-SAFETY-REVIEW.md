@@ -2,6 +2,14 @@
 
 # Gould administration safety follow-up and independent re-review
 
+> **Historical record (superseded 2026-11-25).** The controller scripts
+> (`scripts/maintenance_admin_safety.py`, `scripts/finalize_github.py`,
+> `scripts/finish_maintenance_admin.py` and their tests) and
+> `.github/workflows/maintenance-admin.yml` were removed with the backend
+> retirement. The findings, receipts and commands below are retained as dated
+> evidence; those commands are no longer runnable and must not be recreated.
+> No administration operation is authorized by this document.
+
 Overall maintenance: **INCOMPLETE**. Corrections belong to `maintenance/admin-safety-review`, based on accepted main `aa34ca788bffbb77c30d39a6b7dbaeb4c9508cb3`. Do not merge without owner approval. No cleanup controller is to be run against real resources during this task.
 
 ## Third independent review — PASSED within defined scope
@@ -55,6 +63,8 @@ Also passed: migration DDL 1–9→10, three historical backup fixtures, 1,103 E
 Seven historical worktrees remain protected pending approved independent private-data custody. The standalone PMP repository, original owner files, private review/administration receipts, signing identity, com.opus.piano, database compatibility, release assets and tags remain protected. Independent re-review is pending; Codex's corrections/tests do not constitute independent approval.
 
 ## Preserved third-review command — completed, do not rerun merely for status
+
+Historical command retained for provenance. The `sha256sum` and `pmp` steps read controller files that were removed on 2026-11-25, so the block is not runnable and must not be reconstructed; its recorded outcome above stands as history.
 
 Use the final commit SHA reported with this follow-up. The following command captures the actual checkout identity and hashes before invoking the existing architect/PMP wrapper, uses a new receipt directory, and verifies unchanged source afterward. Do not run it on dirty tracked source or another branch. Do not run either administration helper.
 

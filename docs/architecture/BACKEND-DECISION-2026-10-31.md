@@ -1,5 +1,11 @@
 # Gould backend disposition — 2026-10-31
 
+> **SUPERSEDED (2026-11-25).** The owner has decided that Gould is an
+> Android-first, local-first application with **no** community backend, BFF,
+> admin API or custom cloud backend. This document's "keep the backend"
+> recommendation is retained as a dated historical record only and is not
+> current guidance. See [BACKEND-RETIRED-2026-11-25.md](BACKEND-RETIRED-2026-11-25.md).
+
 Status: **architecture recommendation / pending owner approval**, not a production activation or deletion authorization.
 
 ## Decision recommended

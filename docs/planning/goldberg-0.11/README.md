@@ -16,10 +16,20 @@ Approval of that direction is not evidence these features exist. Stage 2 require
 2. [Proposed catalogue model and identity mapping](DATA-MODEL.md).
 3. [Source/license matrix and API constraints](SOURCES-LICENSES.md).
 4. [Offline/cache/bundle design](OFFLINE-CACHE.md).
-5. [Community authorization, moderation and both Admin clients](COMMUNITY-ADMIN.md).
-6. [Managed free-tier comparison and operating limits](CLOUD.md).
+5. Community authorization, moderation and both Admin clients — former
+   `COMMUNITY-ADMIN.md`, removed on 2026-11-25 with the backend retirement
+   (retained in Git history only).
+6. Managed free-tier comparison and operating limits — former `CLOUD.md`,
+   removed on 2026-11-25 with the backend retirement (retained in Git history
+   only).
 7. [Stages, acceptance criteria and decision register](STAGES.md).
 8. [Executed checks, limitations and workflow evidence](VERIFICATION.md).
+
+> **Backend retirement note (2026-11-25).** The community backend, BFF, admin
+> contracts and admin clients described in this package were retired by the
+> owner and removed from the repository; local-first architecture is current
+> policy. Everything below is a dated planning record. See
+> [BACKEND-RETIRED-2026-11-25.md](../../architecture/BACKEND-RETIRED-2026-11-25.md).
 
 The [earlier roadmap](../../ROADMAP-0.11-DATABASE.md) remains historical planning input. Its data-preservation, provenance, bounded-search and measurement requirements remain binding. This package expands source/genre/community scope under the owner's newer instructions; it does not silently implement earlier proposals.
 

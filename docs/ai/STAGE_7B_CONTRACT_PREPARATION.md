@@ -1,5 +1,12 @@
 # Stage 7B API contract integration preparation — authorized scope
 
+> **SUPERSEDED (2026-11-25) — do not implement.** Stage 7B admin contract
+> work, `contracts/admin`, the canonical in-app admin client and both admin
+> workflows were retired by the owner's local-first decision. The authorized
+> scope below is a dated historical record only; recreating it is prohibited
+> and `scripts/check_admin_retirement.py` fails the build if it reappears. See
+> [BACKEND-RETIRED-2026-11-25.md](../architecture/BACKEND-RETIRED-2026-11-25.md).
+
 Owner instruction: “Goldberg 0.11 — Stage 7B: API Contract Integration Preparation”
 (2026-10-23). Recover current PMP context without restoring/overwriting files;
 audit the latest verified committed Stage 6 candidate through immutable Git

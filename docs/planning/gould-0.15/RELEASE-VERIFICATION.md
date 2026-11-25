@@ -161,6 +161,8 @@ post-release documentation commit on `main`):
 
 - PR: <https://github.com/stokonn/Gould/pull/53> (all three CI workflows
   passed on the PR: host-quality, synthetic-postgres, administration-safety).
+  `synthetic-postgres` and `administration-safety` belonged to the backend
+  workflows retired on 2026-11-25, so only `host-quality` still exists.
 - Merge: regular merge commit
   `06282c5aad4887b472373e925e6ead01e24c4cba` with exactly two parents
   (`a908c96` + `42eda13`) — no squash, no rebase; both feature commits

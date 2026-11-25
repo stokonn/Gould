@@ -1,5 +1,12 @@
 # API v1 owner design approval — current publication handoff
 
+> **SUPERSEDED (2026-11-25) — do not execute.** The owner retired the whole
+> community/backend architecture, including `contracts/admin` and
+> `contracts/admin/v1/decision-proposal/publish.py`. The commands and receipts
+> below refer to removed files and must not be run, recreated or republished.
+> Retained as a dated historical record only; see
+> [BACKEND-RETIRED-2026-11-25.md](../architecture/BACKEND-RETIRED-2026-11-25.md).
+
 The proposal baseline fefa6e83c2a7b9c4c12660ff1542ab086356de88 is now confirmed
 published through connected GitHub commit read and Issue31 checkpoint6371392069.
 Historical blocked attempts below remain accurate for their original sessions.

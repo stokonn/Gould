@@ -52,8 +52,11 @@
 - Integrate the verified catalogue, encyclopedia, offline/cache and Android work.
 - Share canonical catalogue data/details across Discover and Library; retain all
   personal data, legacy caches/metadata, provider IDs and backup compatibility.
-- Activate the existing read-only public catalogue API; keep its empty projection,
-  disabled backend OAuth/community writes and local practice boundary explicit.
+- Activate the then-existing read-only public catalogue API; keep its empty
+  projection, disabled backend OAuth/community writes and local practice
+  boundary explicit. (That catalogue API and the whole community/backend
+  architecture were retired on 2026-11-25; the catalogue is now bundled
+  locally and online search goes directly to third-party providers.)
 - Correct unknown-rights preservation and immutable-evidence verification; pass
   focused native, seeded upgrade, quality and trusted signed release gates.
 - [Release notes and verification](docs/releases/GOLDBERG-0.11.md).

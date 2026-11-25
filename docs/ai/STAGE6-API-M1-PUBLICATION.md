@@ -1,5 +1,11 @@
 ## Stage 6 API local M1 — verified source published (2026-10-23)
 
+> **SUPERSEDED (2026-11-25).** Stage 6 backend sources, contracts and
+> workflows were retired by the owner's local-first decision and no longer
+> exist in the repository. This milestone is a dated historical record, not
+> current architecture or an implementation instruction. See
+> [BACKEND-RETIRED-2026-11-25.md](../architecture/BACKEND-RETIRED-2026-11-25.md).
+
 **LOCAL MILESTONE 1 VERIFIED / SOURCE PUBLISHED; INTEGRATION NOT ACCEPTED.**
 Existing isolated worktree reused, clean at recovery HEAD `c84c4b99eb27034e3630ff18cf2c470410dbbea2`;
 implementation `337847770a579e1f6689c135805ad07a9b2bab19`, approved ancestor

@@ -1,5 +1,11 @@
 Goldberg 0.11 — Stage 7B Android Admin — IMPLEMENTATION AUTHORIZED
 
+SUPERSEDED (2026-11-25) — DO NOT IMPLEMENT. The owner retired the entire
+community/backend architecture: the Stage 7B admin contracts, canonical in-app
+admin client, BFF and admin workflows no longer exist and must not be recreated.
+This prompt is retained as a dated historical record only. See
+docs/architecture/BACKEND-RETIRED-2026-11-25.md and AGENTS.md.
+
 You are the coding agent for the Goldberg Android project. The owner has approved the complete Stage 7B implementation plan and has NOW expressly authorized implementation. The owner also supplied new visual references and explicitly rejected earlier decorative/ivory/serif mockups. Follow the NEW visual package in docs/design/stage-7b/ as the authoritative visual direction for Stage 7B.
 
 FIRST ACTIONS:

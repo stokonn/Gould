@@ -46,10 +46,13 @@ Android-test compilation, migration/backup/localization/policy checks, and
 Release-variant build/signature checks passed. Android instrumentation was
 compiled but not executed; no physical-device acceptance is claimed.
 
-The obsolete Android legacy admin implementation was removed. Canonical
-admin/client/repository and required BFF/contract remain, independent of the
-legacy package and disabled by default. The older preserve-both wording below
-is historical and superseded by the 2026-11-15 owner decision in `DECISIONS.md`.
+The obsolete Android legacy admin implementation was removed. The canonical
+admin/client/repository and BFF/contract components were removed in turn by the
+2026-11-25 owner decision: Gould is local-first with **no** product community
+backend, BFF, admin API or custom cloud backend (see
+`docs/architecture/BACKEND-RETIRED-2026-11-25.md`). The older preserve-both
+wording below is historical and superseded first by the 2026-11-15 and then by
+the 2026-11-25 owner decisions in `DECISIONS.md`.
 Weekly success uses both configured session and minutes goals; historical
 practice records and granted rewards were not rewritten or revoked.
 
@@ -86,9 +89,11 @@ catalogue generation/import remains necessary.
 
 Publication workflow source review found read-only workflows, no secret
 references and no release action/command. A static CI guard and nine tests are
-in place; no workflow can publish. Per the owner's closure decision, both admin
-systems and BFF artifacts remain intact. Operational usage/deployment is
-unverified; no further investigation is needed for this stage.
+in place; no workflow can publish. Per the owner's closure decision recorded on
+2026-11-14, both admin systems and BFF artifacts remained intact at that time;
+that state is historical — the 2026-11-25 owner decision retired them
+completely. Operational usage/deployment was unverified; no further
+investigation is needed for this stage.
 
 Final INTEGRATION PASS: `scripts/verify-integration.sh`, 6 s incremental,
 `2026-11-14T22:28:12Z`, 426 JVM tests / 0 failures, lint PASS,

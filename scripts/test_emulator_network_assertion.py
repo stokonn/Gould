@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class NetworkAssertionTest(unittest.TestCase):
     def check_dump(self, text, expected, succeeds):
-        shell = (ROOT / 'scripts/ci_stage6_acceptance.sh').read_text()
+        shell = (ROOT / 'scripts/ci_android_acceptance.sh').read_text()
         marker = "cat > stage5-ci-results/assert_default_network.py <<'PYEOF'\n"
         code = shell.split(marker, 1)[1].split('\nPYEOF', 1)[0]
         with tempfile.TemporaryDirectory() as work:
@@ -18,10 +18,10 @@ class NetworkAssertionTest(unittest.TestCase):
         self.assertEqual(result.returncode == 0, succeeds, result.stdout + result.stderr)
 
     def test_actual_api36_wifi_dump(self):
-        self.check_dump((ROOT / 'docs/planning/goldberg-0.11/stage-6/results/runtime-continuation-2026-10-25/network-active-wifi.txt').read_text(), 'WIFI', True)
+        self.check_dump((ROOT / 'scripts/fixtures/network-active-wifi.txt').read_text(), 'WIFI', True)
 
     def test_actual_wifi_is_not_mobile(self):
-        self.check_dump((ROOT / 'docs/planning/goldberg-0.11/stage-6/results/runtime-continuation-2026-10-25/network-active-wifi.txt').read_text(), 'MOBILE', False)
+        self.check_dump((ROOT / 'scripts/fixtures/network-active-wifi.txt').read_text(), 'MOBILE', False)
 
     def test_api36_mobile_capabilities(self):
         self.check_dump('Active default network: 101\n  NetworkAgentInfo{network{101} ni{MOBILE[LTE] CONNECTED extra: } nc{[ Transports: CELLULAR Capabilities: INTERNET]}\n', 'MOBILE', True)

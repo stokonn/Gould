@@ -20,7 +20,7 @@ This is Goldberg's living, version-independent maintenance record. Read it with 
 
 ### 2026-10-18 — after the published Goldberg 0.10.1 checkpoint
 
-Release first: v0.10.1 points to `b19b77b81e76feef6baf83e6c4bfa935e7c10bea`; implementation is `56851cb5da30d9e823f6374562f7773e96a35e46`. The normal GitHub Release, downloaded APK/changelog/checksums and remote CI were verified before any cleanup. See [release checkpoint](../RELEASE-CHECKPOINT-0.10.1.md). Maintenance is independently committed under `maintenance/legacy-cleanup-2026-10-18`; locate its commit by subject `chore: establish permanent Goldberg maintenance and remove verified legacy code`.
+Release first: v0.10.1 points to `b19b77b81e76feef6baf83e6c4bfa935e7c10bea`; implementation is `56851cb5da30d9e823f6374562f7773e96a35e46`. The normal GitHub Release, downloaded APK/changelog/checksums and remote CI were verified before any cleanup. See release checkpoint `RELEASE-CHECKPOINT-0.10.1.md` (removed in the 2026-11-25 obsolete-document cleanup; retained in Git history). Maintenance is independently committed under `maintenance/legacy-cleanup-2026-10-18`; locate its commit by subject `chore: establish permanent Goldberg maintenance and remove verified legacy code`.
 
 | Affected path | Change and evidence | Compatibility |
 |---|---|---|

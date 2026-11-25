@@ -59,12 +59,7 @@ The strictly scoped deletion candidate is `copilot/feature-xyz` at `3e7c25e1b624
 
 This session still cannot reach GitHub through `gh`/Git, and the available connected tools have no repository-rename or branch-delete operation. **The host build gate is cleared; GitHub administration access is the remaining separate blocker.** No sandbox bypass or test retry is appropriate.
 
-The reviewed host administration helper performs the authorized operations using normal `git` and authenticated `gh`, with no main merge, force push, release publication or local data deletion:
-
-```sh
-cd "$HOME/Projects/Opus"
-python3 scripts/finalize_github.py --apply
-```
+The reviewed host administration helper `scripts/finalize_github.py` performed the authorized operations using normal `git` and authenticated `gh`, with no main merge, force push, release publication or local data deletion. That helper was removed on 2026-11-25 with the backend retirement, so the former invocation is no longer runnable; this section is retained as a dated record of the completed administration.
 
 It validates the accepted host receipt and metadata-only change scope; ordinary-pushes this maintenance branch; requires exact-commit quality/backend CI success; rechecks the single branch candidate's exact head/protection/ancestry/PR/release/worktree/source-link dependencies; deletes it only if all guards pass; renames the existing repository to Gould; updates origin; verifies unchanged main/tags/release assets/repository ID; and tests a real independent remote clone. It refuses optimized Python execution and stops on failed prerequisites. Five deletion-guard regression tests cover changed/unresolved/protected/release/PR/worktree cases. No new application test/build run is requested from the owner.
 

@@ -1,5 +1,13 @@
 # Independent implementation stages and acceptance gates
 
+> **Backend retirement note (2026-11-25).** The owner retired the community
+> backend, BFF, admin contracts and admin clients. Stage 6, Stage 7B and the
+> `COMMUNITY-ADMIN.md` / `CLOUD.md` / `stage-6/` documents referenced below no
+> longer exist in the repository; they are retained in Git history only. The
+> stage gates below are a dated planning record, not current implementation
+> instructions. See
+> [BACKEND-RETIRED-2026-11-25.md](../../architecture/BACKEND-RETIRED-2026-11-25.md).
+
 **Stage 1 ends with documentation and a pushed planning branch. Do not start Stage 2 automatically.** Target product scope is approved; physical schemas, API contracts, cloud provider/processing and operational decisions below remain designs. Each later stage needs its own execution instruction, scoped branch and evidence. No merge to main or release is authorized by this planning stage.
 
 ## Decision register

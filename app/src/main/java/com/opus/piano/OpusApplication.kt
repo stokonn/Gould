@@ -119,27 +119,4 @@ class OpusApplication : Application(), ContainerOwner {
     val recordings get() = container.recordings
     val repository get() = container.repository
     val catalogRepository get() = container.catalogRepository
-
-    // Canonical admin service. Production networking remains disabled until separately approved.
-    private val canonicalAdminGuard = Any()
-    @Volatile private var canonicalAdminInstance: com.opus.piano.data.community.canonical.CanonicalAdminRepository? = null
-    suspend fun canonicalAdminRepository(): com.opus.piano.data.community.canonical.CanonicalAdminRepository {
-        synchronized(canonicalAdminGuard) { canonicalAdminInstance }?.let { return it }
-        val created = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
-        val contract = com.opus.piano.data.community.canonical.AdminContract(
-            assets.open("community/admin-canonical-schema.json").bufferedReader().use { it.readText() }
-        )
-        com.opus.piano.data.community.canonical.CanonicalAdminRepository(
-            com.opus.piano.data.community.canonical.CanonicalAdminClient(
-                contract,
-                container.testHooks.canonicalAdminTransport
-                    ?: com.opus.piano.data.community.canonical.CanonicalAdminTransport { _, _, _, _ -> error("Community networking disabled") },
-            )
-        )
-        }
-        return synchronized(canonicalAdminGuard) {
-            canonicalAdminInstance ?: created.also { canonicalAdminInstance = it }
-        }
-    }
-
 }

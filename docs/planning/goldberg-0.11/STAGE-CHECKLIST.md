@@ -1,3 +1,9 @@
+> **Backend retirement note (2026-11-25).** Links in this historical checklist
+> to `stage-6/`, `stage-7/stage-7b/`, `CLOUD.md` and `COMMUNITY-ADMIN.md` no
+> longer resolve: that one-off backend documentation was removed with the
+> owner-approved backend retirement and remains in Git history only. The
+> checklist text is preserved unchanged as the dated record of 0.11.
+
 ## Goldberg 0.11 Stable — published and remotely verified
 
 Purpose and scope: complete the approved read-only launch, integrate accepted
