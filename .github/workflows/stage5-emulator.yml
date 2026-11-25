@@ -353,6 +353,15 @@ jobs:
     name: "5.11 acceptance subset — API 36 emulator"
     runs-on: ubuntu-24.04
     timeout-minutes: 120
+    env:
+      # The candidate (AGP 9.5) and the v0.10.1 baseline rebuild (AGP 9.1)
+      # resolve the default debug keystore independently: AGP 9.1 still prefers
+      # $XDG_CONFIG_HOME/.android while AGP 9.5 no longer does, so the two
+      # builds could silently generate two different runner debug keys and
+      # break in-place-upgrade signature compatibility. Pinning
+      # ANDROID_USER_HOME (honoured by both AGP versions) forces one shared
+      # debug keystore for the upgrade pair.
+      ANDROID_USER_HOME: ${{ runner.temp }}/android-user-home
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -459,6 +468,10 @@ jobs:
             ls -la "$ANDROID_HOME/build-tools" || true
             echo "java: $(command -v java || true)"
             java -version 2>&1 | head -n1 || true
+            echo "ANDROID_USER_HOME: ${ANDROID_USER_HOME:-<unset>}"
+            echo "XDG_CONFIG_HOME: ${XDG_CONFIG_HOME:-<unset>}"
+            echo "debug keystores used by the two builds:"
+            find "$HOME" "${ANDROID_USER_HOME:-$HOME}" -maxdepth 3 -name 'debug.keystore' 2>/dev/null | sort -u || true
           } | tee stage5-ci-results/signing-environment.txt
           : > stage5-ci-results/apksigner-exit-codes.txt
           digest_of() {
