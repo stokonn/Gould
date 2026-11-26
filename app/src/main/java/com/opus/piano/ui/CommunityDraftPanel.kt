@@ -30,7 +30,7 @@ import java.util.UUID
     var retryAt by remember {mutableStateOf<Long?>(null)}
     var busy by remember {mutableStateOf(false)}
     var archiveMessage by remember {mutableStateOf<Int?>(null)}
-    var archiveRestoredCount by remember {mutableStateOf(0)}
+    var archiveRestoredCount by remember {mutableIntStateOf(0)}
     val selected=drafts.firstOrNull {it.id==selectedId}
     fun select(d: CommunityDraft) {selectedId=d.id;title=d.payload.fields.firstOrNull()?.newValue.orEmpty();evidence=d.payload.fields.firstOrNull()?.evidence?.firstOrNull()?.value.orEmpty();license=d.payload.intendedLicense;preview=null;problem=null}
     val exportArchive=rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument(CommunityDraftArchive.MIME_TYPE)) { uri ->

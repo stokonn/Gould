@@ -49,6 +49,9 @@ class DatabaseSimplifierUiTest {
         check(android.os.Build.HARDWARE in setOf("ranchu","goldfish"))
         val app=inst.targetContext.applicationContext as OpusApplication
         val external=UUID.randomUUID().toString();val title="Shared catalogue ${external.take(8)}"
+        // The bundled catalogue is installed lazily as a new generation; a direct local
+        // ingest must follow that install or the replacement generation will not carry it.
+        app.discover.landing()
         val id=(app.localCatalogue.access {it.ingest(ProviderResult(
             ProviderRequest("https://musicbrainz.org/ws/2/work/$external?fmt=json","musicbrainz","work"),SourceState.FRESH,
             listOf(ProviderRecord("work",external,"work",title,subtype="composition")),revision="synthetic-1",hash="e".repeat(64))).single()} as CatalogueAccess.Available).value

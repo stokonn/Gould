@@ -251,3 +251,142 @@ configurations.
 Full suite, launcher-host widget placement, signed build and upgrade gates remain
 tracked as pending in the Gould 0.14 checklist. No release, GitHub, or Git
 integration action occurred.
+
+## 2026-11-26 — toolchain modernization stabilization (in progress)
+
+Purpose: resume the existing `maintenance/toolchain-modernization` worktree
+without losing its uncommitted API-37, schema-13, catalogue, backup and upgrade
+acceptance fixes. No release, commit, push, merge, or `main` modification is
+authorized.
+
+### Checklist and current progress
+
+- [x] Verify branch `maintenance/toolchain-modernization`, expected HEAD
+  `53aca8b6456e22ac02ebc6f6666c84f9d6260650`, status, full existing diff,
+  untracked-file inventory, recent commits, remote, tags, GitHub releases/issues,
+  and milestones. The expected branch/HEAD match; 22 tracked files were already
+  modified and no untracked files were present at takeover.
+- [x] Inspect existing Actions at that exact committed HEAD without triggering
+  CI. Quality checks (run 45721973195) and iOS build (45725114680) passed;
+  optional Android emulator run 45721980526 failed API-36 acceptance because
+  the old upgrade verifier required exact row equality for `local_app_state`
+  across the schema-12→13 additive tour-column migration. The API-37 job was
+  skipped. The working-tree verifier change now compares common columns and
+  validates added columns against Room-declared defaults; local unit coverage
+  passes 20/20. These are historical HEAD results, not current dirty-tree CI.
+- [x] Inspect host Gradle/instrumentation processes, API-37 ADB/emulator state,
+  Gradle lock, old log, report path and per-test logs. No Gradle process or lock
+  holder remained; `emulator-5554` was booted, API 37, `ro.kernel.qemu=1`.
+- [x] Classify the old test run conservatively. Device logcat says `290 tests, 3
+  failed, 0 ignored`, but the Gradle log ends at
+  `:app:connectedDebugAndroidTest`, with no Gradle final status or report XML.
+  The old task is therefore **interrupted/incomplete**, not a pass. A residual
+  `com.opus.piano.test` package was stopped on the disposable emulator after its
+  captured test log showed no continuing execution.
+- [x] Attempt the fresh full API-37 run through `scripts/gradle-lock.sh`. The
+  first recovery attempt exceeded the shell tool's 120-second limit and was
+  terminated (exit 143); it is incomplete and is not test evidence. Partial
+  logcats/output and the timeout reason are preserved under
+  `stage5-ci-results/interrupted-at-shell-timeout-20261126T/`. The isolated
+  schema-preservation helper suite passed 20/20 via
+  `python3 scripts/test_upgrade_table_expectations.py`.
+- [x] Recheck that no Gradle lock holder remained, preserve the residual device
+  logs, and stop only the stale instrumentation and app packages on the
+  disposable emulator before retrying.
+- [x] Complete a full API-37 diagnostic run through the lock: **290 tests, 1
+  failure, 0 errors, 13 skipped**, 7m05s, Gradle exit 1. Its only failure was
+  `DiscoverEditorialAcceptanceTest.automaticSearchAndEditorialJourneysWithPreservedEvidence`
+  at `Missing primary action`; the semantics tree showed “Open existing repertoire
+  entry” instead of the expected Add action. All Stage8c UI tests passed in this
+  run. The app package was retained from the manually interrupted prior run, so
+  this action mismatch is stale test data, not evidence that the product action
+  is wrong. Gradle uninstalled the package at this diagnostic task's completion.
+- [x] Re-run the affected editorial test on the clean install: **1/1 passed,
+  0 failures/errors/skips**, exit 0. This supports stale app-data contamination as
+  the only failure in the 290-case diagnostic run.
+- [x] Make the editorial fixture robust to test ordering: after its catalogue
+  installation/landing step, explicitly call the idempotent
+  `LegacyCatalogueImport.synchronize()` so a legacy cache row seeded after a
+  prior app-scoped one-shot `prepareLocal` is still imported.
+- [x] Verify the explicit-import change on API 37: focused
+  `DiscoverEditorialAcceptanceTest` **1/1 passed, 0 failures/errors/skips**, exit
+  0 in 2m11s. Gradle uninstalled the package afterwards.
+- [x] Rerun the full API-37 suite from the clean package after the explicit
+  import fix: **290 tests across 66 classes, 0 failures, 0 errors, 13 skipped**,
+  Gradle exit 0 in 7m04s. Source identity is HEAD
+  `53aca8b6456e22ac02ebc6f6666c84f9d6260650` plus patch SHA-256
+  `10caa06e213eae2e290fa4be39f2ed0e7f67768b47a2e8a2147abef98010cb67`.
+  All 13 skips are explicit assumption-gated Samsung, external metadata/provider,
+  synthetic Stage 8 rehearsal, or real-launcher checks. XML SHA-256
+  `65a7b6047ed1cec0ccb2a61da6aa2a26e527fae0dda90fc12a1fa008d6409719`; full
+  output and per-test logcats are preserved in
+  `stage5-ci-results/api37-full-after-import-fix/`. XML class breakdown:
+  migration **13/13**, backup **31/31**, catalogue **26/26**, and local
+  community **5/5**; each had zero failures, errors, or skips.
+- [x] Run `scripts/ci_android_acceptance.sh` on the existing disposable
+  `stage5-api36` AVD: **PASS, exit 0**. The emulator was API 36 with
+  `ro.kernel.qemu=1`; its preexisting 0.14.0-dev package data was cleared only on
+  that disposable AVD to seed schema 8. The published v0.10.1 APK was verified
+  as debuggable (so `run-as` works), package `com.opus.piano`, code 11, SHA-256
+  `854bbfebf617ec920df60d181a12e0dcbd2fed10052f2479903a78a290cef312`, trusted
+  cert `53eface4978f03dd7f0d7f1eb97ab94eed97055fe04a2a0fab9a7f280141d59e`; no
+  signing key was used. The initial concern that the APK was non-debuggable was
+  incorrect; observed `application-debuggable` and the real script passed.
+  Upgrade v0.10.1/schema 8 → 0.15.0-dev/schema 13 retained original rows and
+  preferences, 37 sessions, recovery archive, unfinished draft and badges;
+  17 expected additive tables were present, foreign-key and integrity checks
+  passed. Offline state, Wi-Fi→mobile default-network change, Data Saver
+  enable/disable readbacks, and cold starts passed. Startup samples were small
+  emulator samples only (baseline median 1449 ms; candidate median 1490 ms), not
+  a device-performance claim. Full evidence is archived at
+  `stage5-ci-results/api36-acceptance-20261126T192405Z/`.
+- [x] Run `python3 scripts/check_admin_retirement.py`: PASS; retired admin,
+  contract, backend-workflow and Gradle integration surfaces remain absent.
+- [x] Run `scripts/verify-release.sh`: **PASS**, 137s, audit row appended to
+  `docs/planning/gould-0.15/verification-audit.jsonl` at `53aca8b-dirty`.
+  Clean `assembleDebug`, `testDebugUnitTest` (**320 tests, 0 failures/errors/
+  skips**), `assembleDebugAndroidTest` compilation, and `lintDebug` passed. Lint:
+  0 errors, 188 warnings, 1 hint. All seven policy checks passed, including
+  migration DDL v1–v13, backup fixtures formats 1–3, localization (1242 EN/CZ
+  resources), history paging, UI literals, curated catalogue, and agent policy.
+  Android-test assembly is compilation only; runtime evidence is the separate
+  API-37 full suite above. The debug APK used the existing default debug
+  keystore (certificate matches the trusted fingerprint); this was a debuggable
+  internal test build, not a release signing invocation.
+- [x] Run the separate `:activity-domain:jvmTest`: **31 tests, 0 failures,
+  0 errors, 0 skipped**, exit 0 in 17s.
+- [x] Run `:app:assembleRelease`: **PASS**, unsigned APK
+  `app/build/outputs/apk/release/app-release-unsigned.apk`, 98,025,132 bytes,
+  SHA-256 `9d16f8e725eeef3e106792d8cb8deba63a50a4e19d4b3cdafc8236d0b1573679`.
+  Package `com.opus.piano`, version `0.15.0-dev`, code 17, minSdk 30, targetSdk
+  37. ZIP integrity passed; `apksigner` correctly reports it unsigned. No
+  release signing configuration or production release-signing command was used.
+  `scripts/check_admin_retirement.py` passed separately.
+- [x] Append the verification results and review the complete diff; final
+  `git diff --check` passed, no nonignored untracked files remain, high-confidence
+  secret-pattern scan found no matches, no AI co-author metadata was added, Git
+  author remains `stokonn <stokonn@gmail.com>`, and `main`/`origin/main` are still
+  `850669df3dfe549238096806540595cc10081a87`.
+- [ ] Exact-working-tree GitHub Actions CI was not triggered (no commit/push or
+  workflow dispatch without approval). Physical Galaxy A55 acceptance remains
+  owner-only and pending; no physical-device testing was performed.
+
+Root causes: API-36 upgrade verification compared positional full rows for
+`local_app_state` and rejected legitimate additive schema 12→13 tour columns;
+the verifier now checks common-column data preservation and Room-declared
+migration defaults, with 20 passing Python regressions. The Discover test could
+miss a newly seeded legacy cache row because app-scoped `prepareLocal` is
+one-shot; it now explicitly runs idempotent `LegacyCatalogueImport.synchronize()`
+after catalogue installation. A separate diagnostic run's “Open existing”
+action was caused by the target app package surviving the earlier interrupted
+instrumentation run; after Gradle uninstalled it, the focused test and clean
+full suite passed. The two historical Stage8c accessibility failures did not
+recur in either completed full run; no source fix is claimed for them.
+
+The standard Gradle connected-test output directory is fixed, so the first fresh
+task replaced the old per-test logcat set. Its full Gradle log and captured
+device-error trace were preserved; the later interrupted-at-timeout output and
+complete diagnostic/final reports were also saved to distinct ignored evidence
+directories. The final API-37 run was complete and passed; the earlier interrupted
+runs remain incomplete and are not counted as passes. No physical-device testing,
+commit, push, CI dispatch, or publication occurred.

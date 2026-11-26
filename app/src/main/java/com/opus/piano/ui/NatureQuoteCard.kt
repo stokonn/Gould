@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.unit.dp
 import com.opus.piano.R
 import kotlinx.coroutines.Dispatchers
@@ -23,13 +24,14 @@ import kotlinx.coroutines.withContext
 /** Original authorized local artwork; decoding never blocks Home composition. */
 @Composable internal fun NatureQuoteCard(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
     val context = LocalContext.current
+    val resources = LocalResources.current
     val open = LocalAppearance.current.cards == "Open"
-    val landscape by produceState<ImageBitmap?>(null, context, open) {
+    val landscape by produceState<ImageBitmap?>(null, context, resources, open) {
         value = withContext(Dispatchers.IO) {
             val highContrast = Build.VERSION.SDK_INT >= 34 &&
                 (context.getSystemService(UiModeManager::class.java)?.contrast ?: 0f) > .5f
             if (open || highContrast) null else runCatching {
-                BitmapFactory.decodeResource(context.resources, R.drawable.quote_nature,
+                BitmapFactory.decodeResource(resources, R.drawable.quote_nature,
                     BitmapFactory.Options().apply { inSampleSize = 2; inScaled = false })?.asImageBitmap()
             }.getOrNull()
         }

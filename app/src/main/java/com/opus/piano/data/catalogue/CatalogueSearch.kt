@@ -45,10 +45,11 @@ internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFi
     val placeholders=filter.kinds.joinToString(","){"?"}
     // Rank computed in SQLite; bounded aliases/FTS never materialize the catalogue in memory.
     val escaped=normalized.replace("\\","\\\\").replace("%","\\%").replace("_","\\_")
-    // A verified composer's complete surname token outranks unrelated prefix names.
-    // Composer evidence is an explicit credit or OpenOpus period, never a title identity merge.
-    val composer="e.kind='artist' AND (EXISTS(SELECT 1 FROM relationships r WHERE r.toId=e.id AND r.type='credit' AND r.role='composer') OR EXISTS(SELECT 1 FROM assertions a JOIN sources s ON s.id=a.sourceId WHERE a.entityId=e.id AND a.field='epoch' AND s.provider='openopus'))"
-    val rank="CASE WHEN EXISTS(SELECT 1 FROM aliases ax WHERE ax.entityId=e.id AND ax.normalized=?) THEN 0 WHEN ($composer) AND EXISTS(SELECT 1 FROM aliases ax WHERE ax.entityId=e.id AND (' ' || ax.normalized || ' ') LIKE ? ESCAPE '\\') THEN 1 WHEN EXISTS(SELECT 1 FROM aliases ax WHERE ax.entityId=e.id AND ax.normalized LIKE ? ESCAPE '\\') THEN 2 ELSE 3 END"
+    // A person's complete surname token outranks unrelated prefix names such as
+    // "Chopin University Press". Person typing comes from the provider, an explicit
+    // composer credit or an OpenOpus period, never from a title identity merge.
+    val person="e.kind='artist' AND (EXISTS(SELECT 1 FROM artists ar WHERE ar.id=e.id AND ar.artistType='person') OR EXISTS(SELECT 1 FROM relationships r WHERE r.toId=e.id AND r.type='credit' AND r.role='composer') OR EXISTS(SELECT 1 FROM assertions a JOIN sources s ON s.id=a.sourceId WHERE a.entityId=e.id AND a.field='epoch' AND s.provider='openopus'))"
+    val rank="CASE WHEN EXISTS(SELECT 1 FROM aliases ax WHERE ax.entityId=e.id AND ax.normalized=?) THEN 0 WHEN ($person) AND EXISTS(SELECT 1 FROM aliases ax WHERE ax.entityId=e.id AND (' ' || ax.normalized || ' ') LIKE ? ESCAPE '\\') THEN 1 WHEN EXISTS(SELECT 1 FROM aliases ax WHERE ax.entityId=e.id AND ax.normalized LIKE ? ESCAPE '\\') THEN 2 ELSE 3 END"
     val rankArgs=listOf(normalized,"% $escaped %","$escaped%")
     args.addAll(rankArgs)
     var where="e.status='active' AND e.kind IN ($placeholders)"

@@ -721,7 +721,6 @@
 <string name="favorite_piece">Oblíbená skladba</string>
 <string name="favorite_era">Oblíbené období</string>
 <string name="musical_bio">Hudební medailonek</string>
-<string name="not_selected">Nevybráno</string>
 <string name="profile_favorites_hint">Klepnutím na jméno vyberete své hudební oblíbence.</string>
 <string name="save_personalization">Uložit oblíbence a medailonek</string>
 <string name="showcase_collection_hint">Ve sbírce odznaků vyberte až pět získaných odznaků.</string>
@@ -757,7 +756,6 @@
     <string name="google_no_credential">Není dostupný žádný účet Google. Přidejte účet nebo to zkuste znovu. Místní profil se nezměnil.</string>
     <string name="google_failed">Přihlášení Google není dostupné. Zkontrolujte připojení, účet Google a nastavení aplikace a zkuste to znovu. Deník se nezměnil.</string>
     <string name="google_signed_in">Účet Google přidán. Vlastní přezdívka zůstává zachována.</string>
-    <string name="google_web_client_id" translatable="false">355619842126-042mfov62elelsi87maol41oe8pva3el.apps.googleusercontent.com</string>
     <string name="home_layout_fixed">Domovská stránka ukazuje dnešní cvičení, aktuální sérii, týdenní aktivitu a denní citát. Cvičení začněte na kartě Cvičení.</string>
     <string name="profile_layout_edit_hint">Jméno, oblíbené položky a statistiky upravíte v profilu. Až pět zobrazených odznaků vyberete ve sbírce.</string>
     <string name="catalogue_mastered">Zvládnuto</string>
@@ -1097,6 +1095,7 @@
     <string name="widget_open_studio">Otevřít Studio</string>
     <string name="widget_quick_title">Rychlé cvičení</string>
     <string name="widget_weekly_title">Týdenní aktivita</string>
+    <string name="widget_no_value">—</string>
     <string name="widget_unavailable">Nedostupné · otevřete Gould a zkuste to znovu</string>
     <string name="widget_ready">Připraveno ke cvičení</string>
     <string name="widget_active">Zpět k probíhajícímu cvičení</string>
@@ -1163,9 +1162,18 @@
     <string name="activity_workouts">Cvičení</string>
     <string name="activity_minutes">Minuty cvičení</string>
     <string name="activity_week_overview">Přehled týdne</string>
-    <string name="activity_sessions_progress">%1$d/%2$d cvičení</string>
-    <string name="activity_minutes_progress">%1$d/%2$d minut</string>
-    <string name="activity_minutes_unset">%1$d minut</string>
+    <plurals name="activity_sessions_progress">
+        <item quantity="one">%1$d/%2$d cvičení</item>
+        <item quantity="few">%1$d/%2$d cvičení</item>
+        <item quantity="many">%1$d/%2$d cvičení</item>
+        <item quantity="other">%1$d/%2$d cvičení</item>
+    </plurals>
+    <plurals name="activity_minutes_progress">
+        <item quantity="one">%1$d/%2$d minuta</item>
+        <item quantity="few">%1$d/%2$d minuty</item>
+        <item quantity="many">%1$d/%2$d minut</item>
+        <item quantity="other">%1$d/%2$d minut</item>
+    </plurals>
     <string name="activity_statistics">Statistiky aktivity</string>
     <string name="activity_total_workouts">Celkem cvičení</string>
     <string name="activity_total_minutes">Celkem minut cvičení</string>
@@ -1218,12 +1226,22 @@
     <string name="activity_beta_week">Zkušební týden · série začne příští pondělí</string>
     <string name="activity_freezes">Zmrazení série: %1$d/3</string>
     <string name="activity_goal_met">Týdenní cíl cvičení splněn</string>
-    <string name="activity_goal_waiting">Pro pokračování série tento týden dokončete %1$d cvičení.</string>
+    <plurals name="activity_goal_waiting">
+        <item quantity="one">Pro pokračování série tento týden dokončete %1$d cvičení.</item>
+        <item quantity="few">Pro pokračování série tento týden dokončete %1$d cvičení.</item>
+        <item quantity="many">Pro pokračování série tento týden dokončete %1$d cvičení.</item>
+        <item quantity="other">Pro pokračování série tento týden dokončete %1$d cvičení.</item>
+    </plurals>
     <plurals name="activity_workout_count"><item quantity="one">%1$d cvičení</item><item quantity="few">%1$d cvičení</item><item quantity="many">%1$d cvičení</item><item quantity="other">%1$d cvičení</item></plurals>
     <plurals name="activity_week_streak"><item quantity="one">%1$d týden</item><item quantity="few">%1$d týdny</item><item quantity="many">%1$d týdnů</item><item quantity="other">%1$d týdnů</item></plurals>
     <string name="activity_heatmap_accessibility">Přehled aktivity za rok %1$d; vyberte den pro zobrazení cvičení a minut.</string>
     <string name="activity_goal_changes_next_monday">Změny začnou platit příští pondělí; tento týden zůstává současný cíl.</string>
-    <string name="activity_sessions_goal_value">%1$d cvičení týdně</string>
+    <plurals name="activity_sessions_goal_value">
+        <item quantity="one">%1$d cvičení týdně</item>
+        <item quantity="few">%1$d cvičení týdně</item>
+        <item quantity="many">%1$d cvičení týdně</item>
+        <item quantity="other">%1$d cvičení týdně</item>
+    </plurals>
     <string name="activity_duration_invalid">Zadejte délku od 1 do 1 440 minut.</string>
     <string name="activity_date_past_only">Vyberte dnešek, včerejšek nebo den před ním.</string>
     <string name="activity_date_before_start">Vyberte datum v historii Gould Activity.</string>

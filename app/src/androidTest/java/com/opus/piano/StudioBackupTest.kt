@@ -24,6 +24,18 @@ class StudioBackupTest {
     }
     private fun backup(db:OpusDatabase,root:File,phase:(String)->Unit={})=BackupRepository(context,db,
         storageDirectory=File(root,"backups"),phase=phase,audioDirectory=File(root,"audio"))
+    /** Re-signs a synthetic historical fixture after its sections were reshaped.
+     *  Editing a section without updating its sha256 would (correctly) be rejected
+     *  as corruption, so every rewritten section gets a fresh integrity hash and
+     *  the root hash is recomputed last. */
+    private fun resign(old:JSONObject,vararg changedSections:String) {
+        val sections=old.getJSONObject("sections")
+        changedSections.forEach {name->
+            val section=sections.getJSONObject(name)
+            section.put("sha256",BackupJson.hash(section.getJSONObject("data")))
+        }
+        old.remove("sha256");old.put("sha256",BackupJson.hash(old))
+    }
     private suspend fun take(db:OpusDatabase,root:File,sample:Short):LocalAudio {
         val repo=LocalRecordingRepository(db,File(root,"audio"))
         val (row,writer)=repo.prepare(16000,"Real saved take","",null)
@@ -82,7 +94,7 @@ class StudioBackupTest {
         source.personalDao().saveSettings(ProfileSettings(username="Historical Goldberg",favoriteEra="Baroque"))
         val old=JSONObject(backup(source,root).export());old.put("version",5);old.put("journalSchema",10)
         old.getJSONObject("sections").getJSONObject("preferences").getJSONObject("data").getJSONObject("local").apply { remove("tourVersion");remove("tourCompleted");remove("tourSkipped");remove("tourSeenSteps") }
-        old.getJSONObject("sections").remove("studio");old.getJSONObject("sections").remove("activity");old.remove("sha256");old.put("sha256",BackupJson.hash(old))
+        old.getJSONObject("sections").remove("studio");old.getJSONObject("sections").remove("activity");resign(old,"preferences")
         fixture { target,targetRoot ->
             val original=take(target,targetRoot,21);backup(target,targetRoot).restore(old.toString())
             assertEquals("Historical Goldberg",target.personalDao().getSettings()!!.username)
@@ -94,7 +106,7 @@ class StudioBackupTest {
         source.personalDao().saveSettings(ProfileSettings(username="Historical v6"))
         val old=JSONObject(backup(source,root).export());old.put("version",6);old.put("journalSchema",11)
         old.getJSONObject("sections").getJSONObject("preferences").getJSONObject("data").getJSONObject("local").apply { remove("tourVersion");remove("tourCompleted");remove("tourSkipped");remove("tourSeenSteps") }
-        old.getJSONObject("sections").remove("activity");old.remove("sha256");old.put("sha256",BackupJson.hash(old))
+        old.getJSONObject("sections").remove("activity");resign(old,"preferences")
         fixture { target,targetRoot ->
             backup(target,targetRoot).restore(old.toString())
             assertEquals("Historical v6",target.personalDao().getSettings()!!.username)

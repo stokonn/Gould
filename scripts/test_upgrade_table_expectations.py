@@ -19,8 +19,12 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 from upgrade_table_expectations import (  # noqa: E402
     SYSTEM_TABLES,
     app_table_sets,
+    assert_column_preservation,
     assert_table_transition,
+    column_transition,
+    declared_default,
     expected_added_tables,
+    project_rows,
     schema_entity_tables,
 )
 
@@ -126,6 +130,61 @@ class TableTransitionTest(unittest.TestCase):
                     ['pieces', 'android_metadata'],
                     1, 2, schema_dir=schema_dir,
                 )
+
+
+class ColumnPreservationTest(unittest.TestCase):
+    # Schema 12 local_app_state rows predate the four 0.15 tour columns.
+    BEFORE = ['id', 'onboardingDone', 'reminderEnabled', 'reminderHour', 'reminderMinute', 'generation', 'lastReminderDay']
+    AFTER = BEFORE + ['tourVersion', 'tourCompleted', 'tourSkipped', 'tourSeenSteps']
+
+    def seeded(self):
+        return [(1, 1, 0, 18, 0, 4, '2026-10-18')]
+
+    def upgraded(self, tour=(0, 0, 0, '')):
+        return [(1, 1, 0, 18, 0, 4, '2026-10-18', *tour)]
+
+    def test_declared_defaults_match_migration_12_13(self):
+        self.assertEqual(declared_default(13, 'local_app_state', 'tourVersion'), 0)
+        self.assertEqual(declared_default(13, 'local_app_state', 'tourSkipped'), 0)
+        self.assertEqual(declared_default(13, 'local_app_state', 'tourSeenSteps'), '')
+
+    def test_additive_columns_and_seeded_values_pass(self):
+        added = assert_column_preservation('local_app_state', self.BEFORE, self.seeded(),
+                                           self.AFTER, self.upgraded(), 13)
+        self.assertEqual(added, self.AFTER[len(self.BEFORE):])
+
+    def test_changed_user_value_fails(self):
+        after = [(1, 1, 0, 18, 0, 5, '2026-10-18', 0, 0, 0, '')]
+        with self.assertRaisesRegex(AssertionError, 'Persistent data changed'):
+            assert_column_preservation('local_app_state', self.BEFORE, self.seeded(),
+                                       self.AFTER, after, 13)
+
+    def test_lost_row_fails(self):
+        with self.assertRaisesRegex(AssertionError, 'Persistent data changed'):
+            assert_column_preservation('local_app_state', self.BEFORE, self.seeded(),
+                                       self.AFTER, [], 13)
+
+    def test_non_default_migration_value_fails(self):
+        after = self.upgraded(tour=(1, 0, 0, 'home'))
+        with self.assertRaisesRegex(AssertionError, 'declared default'):
+            assert_column_preservation('local_app_state', self.BEFORE, self.seeded(),
+                                       self.AFTER, after, 13)
+
+    def test_dropped_column_fails(self):
+        after = self.BEFORE[:-1] + ['generation2']
+        with self.assertRaisesRegex(AssertionError, 'Non-additive column transition'):
+            assert_column_preservation('local_app_state', self.BEFORE, self.seeded(),
+                                       after, self.seeded(), 13)
+
+    def test_reordered_columns_fail(self):
+        after = ['onboardingDone', 'id'] + self.BEFORE[2:]
+        with self.assertRaisesRegex(AssertionError, 'Non-additive column transition'):
+            column_transition('local_app_state', self.BEFORE, after)
+
+    def test_projection_keeps_row_count_and_order(self):
+        rows = self.seeded()
+        self.assertEqual(project_rows(rows, self.BEFORE, ['reminderHour', 'id']),
+                         [(18, 1)])
 
 
 if __name__ == '__main__':

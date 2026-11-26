@@ -97,7 +97,12 @@ class OpusApplication : Application(), ContainerOwner {
     val cataloguePortraits by lazy { com.opus.piano.data.catalogue.CataloguePortraits(java.io.File(cacheDir,"catalogue-stage4/portraits"),reserveBytes={catalogueStorage.requiredReserve()},intake=catalogueStorage.intake) { media.allowed() } }
     // Stage 5 offline bundles (D5.1 file store, D5.3 WorkManager, D7 budgets/consent).
     // Lazy on purpose: nothing in journal/recovery/startup paths ever touches these.
-    val bundleStore by lazy { com.opus.piano.data.offline.BundleStore(java.io.File(filesDir,"offline-bundles"),java.io.File(cacheDir,"offline-bundles/staging"),reserveBytes={catalogueStorage.requiredReserve()},otherUsedBytes={catalogueStorage.usage().let { it.databaseBytes + it.mediaBytes }}) }
+    // Downloaded bundles keep their own 256 MiB ceiling (D7). The pinned offline
+    // catalogue has a separate 8 GiB budget and is not evictable, so counting its
+    // database bytes against the bundle ceiling would permanently refuse every
+    // download once the bundled catalogue exceeds 256 MiB (as it does since 0.15).
+    // Only disposable catalogue media shares the bundle ceiling here.
+    val bundleStore by lazy { com.opus.piano.data.offline.BundleStore(java.io.File(filesDir,"offline-bundles"),java.io.File(cacheDir,"offline-bundles/staging"),reserveBytes={catalogueStorage.requiredReserve()},otherUsedBytes={catalogueStorage.usage().mediaBytes}) }
     val bundleJobs by lazy { com.opus.piano.data.offline.BundleJobStore(com.opus.piano.data.offline.AndroidBundleJobPreferences(this)) }
     private val androidBundleNetwork by lazy { com.opus.piano.data.offline.AndroidBundleNetwork(this) }
     val bundleNetwork by lazy { com.opus.piano.data.offline.BundleNetwork { (container.testHooks.bundleNetwork ?: androidBundleNetwork).facts() } }

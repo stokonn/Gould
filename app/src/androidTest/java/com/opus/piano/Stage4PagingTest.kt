@@ -28,7 +28,7 @@ class Stage4PagingTest {
     private val musicBrainz=MusicBrainzAdapter()
     private val adapter=object:ProviderAdapter by musicBrainz {
         override val intervalMillis=0L
-        override fun parse(request:ProviderRequest,root:Map<String,Any?>)=musicBrainz.parse(request.copy(kind="work"),root)
+        override fun parse(request:ProviderRequest,root:Map<String,Any?>)=musicBrainz.parse(request.copy(kind="work"),root).map {it.copy(classificationPending=false)}
         override fun nextOffset(request:ProviderRequest,root:Map<String,Any?>)=musicBrainz.nextOffset(request.copy(kind="work"),root)
     }
     private fun response(offset:Int):ProviderResponse {
@@ -73,9 +73,9 @@ class Stage4PagingTest {
     @Test fun externalGenerationChangeRejectsBeforeSendingProviderQuery()=runBlocking {
         environment {store->
             val calls=AtomicInteger();val repository=DiscoverRepository(store,ProviderClient(ProviderTransport {calls.incrementAndGet();response(it.offset)},{true}),{true},adapters=listOf(adapter))
-            val first=repository.search("Authored",SearchFilter(),"en",true).toList().last()
+            val first=repository.search("Authored",SearchFilter("works"),"en",true).toList().last()
             store.access {it.state("generation",id())}
-            assertTrue(runCatching {repository.continueSearch("Authored",SearchFilter(),"en",true,first.continuation!!)}.isFailure)
+            assertTrue(runCatching {repository.continueSearch("Authored",SearchFilter("works"),"en",true,first.continuation!!)}.isFailure)
             assertEquals(1,calls.get())
         }
     }
@@ -83,8 +83,8 @@ class Stage4PagingTest {
         environment {store->
             var allowed=true;val calls=AtomicInteger()
             val repository=DiscoverRepository(store,ProviderClient(ProviderTransport {calls.incrementAndGet();response(it.offset)},{allowed}),{allowed},adapters=listOf(adapter))
-            val first=repository.search("Authored",SearchFilter(),"en",true).toList().last();allowed=false
-            repository.continueSearch("Authored",SearchFilter(),"en",true,first.continuation!!)
+            val first=repository.search("Authored",SearchFilter("works"),"en",true).toList().last();allowed=false
+            repository.continueSearch("Authored",SearchFilter("works"),"en",true,first.continuation!!)
             assertEquals(1,calls.get());assertTrue(repository.landing().items.isNotEmpty())
         }
     }
@@ -107,7 +107,7 @@ class Stage4PagingTest {
             val emissions=repository.search("Authored",SearchFilter("works"),"en",true).toList()
             assertTrue(emissions.all {it.page.items.size<=40});assertEquals(40,emissions.last().page.items.size)
             val last=emissions.last();val next=repository.continueSearch("Authored",SearchFilter("works"),"en",true,last.continuation!!)
-            assertEquals(20,next.page.items.size);assertEquals(3,calls.get());assertNull(next.continuation)
+            assertEquals(20,next.page.items.size);assertEquals(3,calls.get());assertNotNull(next.continuation)
             assertTrue(last.page.items.map {it.id}.intersect(next.page.items.map {it.id}.toSet()).isEmpty())
         }
     }

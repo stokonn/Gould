@@ -97,7 +97,10 @@ class Stage4CatalogueTest {
         val discover=DiscoverRepository(store,ProviderClient(transport,{true}),{true},adapters=listOf(OpenOpusAdapter(),WikidataAdapter(),MusicBrainzAdapter()))
         try {
             val final=discover.search("Fixture",SearchFilter("works"),"en",true).toList().last()
-            assertTrue(final.page.items.any {it.title=="Fixture Work"});assertEquals(listOf("musicbrainz"),called)
+            // A work found by MusicBrainz search has no verified movement/part subtype yet, so it
+            // is surfaced through the candidate channel the UI labels "results to check", not as
+            // an accepted entity. It must still be visible and come only from MusicBrainz.
+            assertTrue(final.candidates.any {it.title=="Fixture Work"});assertEquals(listOf("musicbrainz"),called)
             assertNull(discover.resolveCandidate(CatalogueCandidate(id(),"wikidata","entity","Q123","work","Legacy candidate","test")))
             assertNull(discover.resolveCandidate(CatalogueCandidate(id(),"openopus","work","123","work","Legacy candidate","test")))
             assertEquals("Candidate resolution must not invoke another provider",listOf("musicbrainz"),called)

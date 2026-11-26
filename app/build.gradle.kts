@@ -53,8 +53,13 @@ dependencies {
     // Android mockable jar stubs org.json and throws "not mocked". Not shipped in the APK.
     testImplementation("org.json:json:20260814")
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
-    androidTestImplementation("androidx.test:runner:1.7.0")
+    androidTestImplementation("androidx.test:runner:1.8.0-alpha04")
     androidTestImplementation("androidx.work:work-testing:2.12.0")
     androidTestImplementation(platform("androidx.compose:compose-bom:2026.09.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    // Compose's ui-test bridges to Espresso.onIdle. Espresso 3.5.0/3.7.0 eagerly
+    // reflect android.hardware.input.InputManager.getInstance(), which Android 17
+    // (API 37) removed; 3.8 obtains the service through Context.getSystemService.
+    // Test-only dependency; no runtime or shipped code is affected.
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.8.0-alpha04")
 }
