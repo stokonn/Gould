@@ -54,7 +54,7 @@ APK SHA256: `290a15e7b15da701b8f0a40e98bf8b7c1f7cc00ce487504dcb6d4ab2e11b40d6`. 
 
 Nine actual final frames were inspected across both themes,EN/CZ,standard/small and1x/2x. Three sharedLibraryframes are component renders. Small2x primary action requires scrolling;latercreditsframes show it fully. Navigation labels retain existing wrapping. No physical-phone or newAPI26 execution is claimed.
 
-[Detailed evidence and limitations](https://github.com/stokonn/Gould/blob/main/docs/releases/GOLDBERG-0.11.md). Public catalogue API10/10security checks passed once;its projection remains empty. BackendOAuth/community writes/private-data uploads stay disabled.
+[Detailed evidence and limitations](https://github.com/stokonn/Gould/blob/main/docs/releases/GOLDBERG-0.11.md). At that time the now-retired public catalogue API passed its 10/10 security checks once and its projection remained empty. That service and the backend OAuth/community-write path have since been retired (2026-11-25); no first-party backend exists. Private-data uploads were and remain disabled.
 
 created by stokonn with love <3
 

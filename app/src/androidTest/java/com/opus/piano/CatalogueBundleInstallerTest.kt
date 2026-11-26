@@ -124,7 +124,13 @@ class CatalogueBundleInstallerTest {
 
             val fixtureProviderDb = File(tempRoot, "fixture-provider.db").apply { dbFile.copyTo(this) }
             android.database.sqlite.SQLiteDatabase.openDatabase(fixtureProviderDb.path, null,
-                android.database.sqlite.SQLiteDatabase.OPEN_READWRITE).use { db -> db.execSQL("UPDATE sources SET provider='fixture'") }
+                android.database.sqlite.SQLiteDatabase.OPEN_READWRITE).use { db ->
+                // The installed catalogue makes sources immutable. This copy is a hostile
+                // candidate artifact, not installed evidence, so drop its guard to reshape
+                // the fixture; the installer's provider allowlist assertion stays intact.
+                db.execSQL("DROP TRIGGER IF EXISTS immutable_sources_UPDATE")
+                db.execSQL("UPDATE sources SET provider='fixture'")
+            }
             val fixtureProviderManifest = manifest.copy(
                 bundleId = id(), entityId = id(), expectedBytes = fixtureProviderDb.length(),
                 files = listOf(manifest.files.single().copy(sha256 = sha256(fixtureProviderDb), bytes = fixtureProviderDb.length())),
@@ -139,6 +145,8 @@ class CatalogueBundleInstallerTest {
             val supplementaryDb = File(tempRoot, "supplementary.db").apply { dbFile.copyTo(this) }
             android.database.sqlite.SQLiteDatabase.openDatabase(supplementaryDb.path, null,
                 android.database.sqlite.SQLiteDatabase.OPEN_READWRITE).use { db ->
+                // See the fixture-provider copy above: reshape this hostile candidate freely.
+                db.execSQL("DROP TRIGGER IF EXISTS immutable_assertions_UPDATE")
                 db.execSQL("INSERT INTO assertions(id,entityId,field,valueJson,sourceId,rightsId,selected) SELECT ?,id,'tags','[\"synthetic\"]',(SELECT id FROM sources LIMIT 1),(SELECT id FROM rights LIMIT 1),0 FROM entities LIMIT 1", arrayOf(id()))
             }
             val supplementaryManifest = manifest.copy(

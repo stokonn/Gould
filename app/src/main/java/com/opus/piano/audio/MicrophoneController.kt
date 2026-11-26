@@ -3,7 +3,6 @@ package com.opus.piano.audio
 import com.opus.piano.i18n.L
 import com.opus.piano.R
 import android.media.*
-import android.os.Build
 import kotlinx.coroutines.*
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicReference
@@ -29,7 +28,7 @@ class MicrophoneController(private val context: android.content.Context) {
         val format = AudioFormat.Builder().setSampleRate(rate).setChannelMask(AudioFormat.CHANNEL_IN_MONO).setEncoding(AudioFormat.ENCODING_PCM_16BIT).build()
         val source = if (context.getSystemService(AudioManager::class.java).getProperty(AudioManager.PROPERTY_SUPPORT_AUDIO_SOURCE_UNPROCESSED) == "true") MediaRecorder.AudioSource.UNPROCESSED else MediaRecorder.AudioSource.VOICE_RECOGNITION
         val builder = AudioRecord.Builder().setAudioSource(source).setAudioFormat(format).setBufferSizeInBytes(maxOf(min, 8192))
-        if (Build.VERSION.SDK_INT >= 30) builder.setPrivacySensitive(true)
+        builder.setPrivacySensitive(true)
         val audio = builder.build()
         recorder = audio
         val samples = ShortArray(2048)
@@ -48,7 +47,7 @@ class MicrophoneController(private val context: android.content.Context) {
                 val consumer = recordingSink?.get()
                 val count = audio.read(samples,0,samples.size,AudioRecord.READ_BLOCKING)
                 check(count > 0) { L.s(R.string.msg_microphone_interrupted_b420) }
-                if (Build.VERSION.SDK_INT >= 29) check(audio.activeRecordingConfiguration?.isClientSilenced != true) { L.s(R.string.msg_microphone_is_unavailable_0f16) }
+                check(audio.activeRecordingConfiguration?.isClientSilenced != true) { L.s(R.string.msg_microphone_is_unavailable_0f16) }
                 if (warmed++ > 3) check(!route.getAndSet(false)) { L.s(R.string.msg_microphone_route_changed_5688) } else route.set(false)
                 // Fan out to recording sink first; detection is a separate consumer.
                 captureConsumer(consumer,recordingSink?.get())?.invoke(samples,count)

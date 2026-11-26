@@ -27,6 +27,15 @@ object L {
         return c.getString(id,*localized)
     }
     fun quantity(id:Int,count:Int):String = context()?.getQuantityString(id,count,count) ?: count.toString()
+    fun quantity(id:Int,count:Long):String {
+        val quantity=count.coerceIn(Int.MIN_VALUE.toLong(),Int.MAX_VALUE.toLong()).toInt()
+        return context()?.getQuantityString(id,quantity,count) ?: count.toString()
+    }
+    fun quantityFormat(id:Int,count:Int,vararg args:Any):String = context()?.getQuantityString(id,count,*args) ?: count.toString()
+    fun quantityFormat(id:Int,count:Long,vararg args:Any):String {
+        val quantity=count.coerceIn(Int.MIN_VALUE.toLong(),Int.MAX_VALUE.toLong()).toInt()
+        return context()?.getQuantityString(id,quantity,*args) ?: count.toString()
+    }
     fun fixed(label:String):String = when(label) {
         "Home" -> s(R.string.label_home)
         "Repertoire" -> s(R.string.label_repertoire)

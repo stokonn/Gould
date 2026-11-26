@@ -1,5 +1,16 @@
 # Gould 0.15 — administration systems evaluation
 
+## Backend retirement update — 2026-11-25
+
+The owner retired the whole community/backend architecture. The canonical
+Android client/repository and canonical BFF mentioned as "remaining" below have
+now been removed together with `contracts/admin`, the backend workflows and the
+one-off backend stage documentation. There is no product community backend, BFF,
+admin API or custom cloud backend. The evaluation below is retained as the dated
+record that motivated the earlier legacy-admin removal; its "canonical remains"
+conclusion is historical. See
+`docs/architecture/BACKEND-RETIRED-2026-11-25.md` and `DECISIONS.md` #2.
+
 ## Owner-directed retirement update — 2026-11-15
 
 The owner superseded the earlier preserve-both decision. The Android legacy

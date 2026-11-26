@@ -1,58 +1,3 @@
-# Preserve byte-exact failed Node TAP diagnostics and their recorded SHA-256.
-# Listed historical raw logs contain Node-generated blank-line spaces.
-spikes/stage6-api-v1-local/results/http-pg/pg-4klrg2um/http-postgres.tap -whitespace
-spikes/stage6-api-v1-local/results/http-pg/pg-c9rg4x5v/http-postgres.tap -whitespace
-
-# Retain the interrupted full-int8 operations failure byte-for-byte (lines29/31).
-spikes/stage6-api-v1-local/results/http-pg/pg-t9tcc9wr/operations-pg.tap -whitespace
-
-# Preserve the diagnosed initial shared-fixture failure byte-exact (Node blank lines).
-spikes/stage6-api-v1-local/results/http-pg/pg-d8h0hv95/shared-contract.tap -whitespace
-
-# Preserve byte-exact PostgreSQL dumps/psql tables and esbuild raw output/hashes.
-spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-0868dfcf4f744e20a9fe96afebf309de/synthetic-backup.sql -whitespace
-spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-36e27ec5fc4c4750b97cbdee6fb2d1ea/synthetic-backup.sql -whitespace
-spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f/synthetic-backup.sql -whitespace
-spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f/command-032.log -whitespace
-spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f/command-034.log -whitespace
-spikes/stage6-cloud-readiness/results/goldberg-cloud-readiness-332ae776bbb2415c8f3e6f7137c0395f/command-035.log -whitespace
-spikes/stage6-cloud-readiness/results/reverification-2026-10-25/build-04.log -whitespace
-
-# Preserve new private-probe esbuild raw output/hash,including generated trailing spaces.
-spikes/stage6-private-staging/results/component-verification/02.log -whitespace
-spikes/stage6-private-staging/results/component-final-8o7WsQ/02.log -whitespace
-
-# Retain byte-exact Gradle raw logs; narrow generated-space exceptions only.
-docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/goldberg-canonical-gradle-fourth.log -whitespace
-docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/goldberg-canonical-gradle-third.log -whitespace
-docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/goldberg-stage6-source-frozen-host.log -whitespace
-docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/historical-attempts/goldberg-canonical-gradle-first-host.log -whitespace
-docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/historical-attempts/goldberg-canonical-gradle-second.log -whitespace
-
-# Final Android-portable JSON hardening host log, preserved byte-exact.
-docs/planning/goldberg-0.11/stage-6/results/end-to-end-2026-10-25/android-json-final/host-gradle.log -whitespace
-
-# Preserve byte-exact BFF raw logs and TAP failure evidence.
-services/community-bff/results/*/*.log -whitespace
-services/community-bff/results/*/*.tap -whitespace
-
-# Preserve raw Stage 7B tool diagnostics byte-for-byte, including emitted whitespace.
-# Source, structured results and documentation retain normal whitespace checks.
-docs/planning/goldberg-0.11/stage-7/stage-7b/results/**/*.log -whitespace
-docs/planning/goldberg-0.11/stage-7/stage-7b/results/codex-2026-10-23/apk-signing.txt -whitespace
-docs/planning/goldberg-0.11/stage-7/stage-7b/results/**/emulator-version.txt -whitespace
-docs/planning/goldberg-0.11/stage-7/stage-7b/results/**/sdk-packages.txt -whitespace
-docs/planning/goldberg-0.11/stage-7/stage-7b/results/ci-run-*/artifact/stage5-ci-results/*.txt -whitespace
-# Android's raw instrumentation XML uses CRLF; retain all other whitespace checks.
-docs/planning/goldberg-0.11/stage-7/stage-7b/results/ci-run-*/instrumentation/*.xml -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-
-# Preserve original manual Android service/console diagnostics, including CRLF/spaces.
-docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/accessibility-after-allow.txt -whitespace
-docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/accessibility-enabled.txt -whitespace
-docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/console-EV_ABS.txt -whitespace
-docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/console-EV_KEY.txt -whitespace
-docs/planning/goldberg-0.11/stage-7/stage-7b/results/manual-acceptance-2026-10-24/console-mouse.txt -whitespace
-
 # Preserve exact Stage 8B read-only Git comparison evidence, including diff context.
 docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/main-ci.diff -whitespace
 docs/planning/goldberg-0.11/stage-8/results/first-technical-verification-2026-10-25/stage7a-unique-docs.diff -whitespace
@@ -254,4 +199,3 @@ docs/planning/goldberg-0.11/stage-5/results/** -whitespace
 docs/planning/goldberg-0.11/stage-7/stage-7a/results/** -whitespace
 docs/planning/goldberg-0.11/stage-8/discover-repair/ci-*/** -whitespace
 docs/planning/goldberg-0.11/stage-8/discover-repair/host-results/** -whitespace
-docs/planning/goldberg-0.11/stage-6/results/integrated-baseline-2026-10-27/host-gradle.log -whitespace

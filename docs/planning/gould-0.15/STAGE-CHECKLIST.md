@@ -700,3 +700,101 @@ is transparently documented and the owner explicitly authorized release
 despite it. Android instrumentation was compiled but not executed. Exact
 results, commands and the publication record are in `RELEASE-VERIFICATION.md`
 and `CHECKPOINT.md`.
+
+## Backend retirement work block — 2026-11-25 (owner decision, see DECISIONS.md #2 final superseding decision)
+
+- [x] Removed the in-app canonical admin client: `data/community/canonical/`,
+      `assets/community/admin-canonical-schema.json`,
+      `OpusApplication.canonicalAdminRepository()` and
+      `AppContainer.testHooks.canonicalAdminTransport`. Nothing in the UI called
+      them; no application behavior changed.
+- [x] Removed backend-only tests: `app/src/canonicalIntegration/` (BFF HTTP
+      integration), canonical admin unit and instrumentation tests, the
+      `contracts/admin` JVM test-resources line and the
+      `goldbergCanonicalIntegration` switch from `app/build.gradle.kts`.
+- [x] Repaired CI: deleted `maintenance-admin.yml`; `quality.yml` no longer
+      references `scripts/stage6` or the immutable Stage 6 checkout/evidence
+      steps and now also runs `test_emulator_network_assertion.py`;
+      `stage5-emulator.yml` runs the renamed `scripts/ci_android_acceptance.sh`
+      and no longer contains the Stage 6 identical-source acceptance step.
+- [x] Restored the non-backend gates deleted by the sweep:
+      `check_backup_fixtures.py` (required by `verify-fast.sh`,
+      `verify-release.sh` and `quality.yml`) and `check_admin_retirement.py`,
+      rewritten as a backend-retirement guard covering admin routes, canonical
+      admin code, contract resources, backend workflows, community-transport
+      URLs and public documentation claims.
+- [x] Renamed `scripts/ci_stage6_acceptance.sh` to
+      `scripts/ci_android_acceptance.sh` (checks unchanged; post-restart schema
+      expectation updated 12 → 13 to match Room schema 13) and relocated the
+      network-assertion fixture to `scripts/fixtures/network-active-wifi.txt`.
+- [x] Removed one-off backend documentation: `docs/planning/goldberg-0.11/stage-6/`,
+      `stage-7/stage-7b/`, `CLOUD.md`, `COMMUNITY-ADMIN.md`; added
+      `docs/architecture/BACKEND-RETIRED-2026-11-25.md` and marked
+      `BACKEND-DECISION-2026-10-31.md` superseded.
+- [x] Updated current guidance: `AGENTS.md`, `docs/PRIVACY.md`, `README.md`,
+      `docs/wiki/*` current sections, `docs/ai/GOULD-CURRENT-STATUS.md`,
+      `docs/ai/HANDOFF.md`.
+- [x] Verification: mandatory `./gradlew clean assembleDebug testDebugUnitTest
+      assembleDebugAndroidTest lintDebug --no-daemon --max-workers=1` passed
+      (BUILD SUCCESSFUL; 320 JVM tests / 0 failures; instrumentation compiled,
+      not executed); all Python policy checks and unit suites passed; schema
+      diff clean. Emulator acceptance and physical-device checks were not run.
+
+### G5 — documentation and navigation audit (2026-11-25, continuation)
+
+Purpose: finish the retirement sweep in documentation so no current-facing page
+claims or instructs a first-party backend, and no navigation entry sends a
+reader to removed files without explanation. Historical records stay in place.
+
+- [x] Current-guidance statements corrected in place, without deleting history:
+      `docs/wiki/Verification.md` (0.11 catalogue-API sentence marked as a
+      retired service), `docs/wiki/Credits-and-Licenses.md` ("public cloud
+      catalogue" clarified as former), `CHANGELOG.md` 0.11 bullet
+      ("then-existing" API plus retirement note),
+      `docs/planning/gould-0.15/RELEASE-VERIFICATION.md` (PR required checks
+      `synthetic-postgres`/`administration-safety` noted as deleted).
+- [x] `docs/maintenance/PORTABILITY.md` (the transfer record still shaped like
+      live instructions) now carries a backend-retirement banner; the
+      `services/community-bff` / `contracts/admin` / `spikes/stage6-*` /
+      `scripts/stage6` / `app/src/canonicalIntegration` rows are marked REMOVED
+      2026-11-25, the npm/Podman/local-runner block is replaced by a historical
+      note, and the backend credential sentence is corrected.
+- [x] One-off backend handoff/instruction docs in `docs/ai/` that still read as
+      live authorizations now carry explicit `SUPERSEDED (2026-11-25) — do not
+      execute/implement` banners: `API-V1-PROPOSAL-PUBLICATION.md`,
+      `STAGE6-API-M1-PUBLICATION.md`, `STAGE6-CLOUD-CHECKPOINT.md`,
+      `STAGE_7B_CONTRACT_PREPARATION.md`, `STAGE_7B_IMPLEMENTATION_PROMPT.txt`;
+      `INTEGRATION-READINESS-WIP.md`'s historical banner notes the removed
+      `stage-6/INTEGRATION-READINESS.md` and contract corpus.
+- [x] Navigation repaired where an index or checklist pointed at removed
+      one-off backend documentation: `docs/planning/goldberg-0.11/README.md`
+      (reading-order items 5–6), `STAGES.md` and `STAGE-CHECKLIST.md` (retirement
+      notes), each pointing to
+      `docs/architecture/BACKEND-RETIRED-2026-11-25.md`.
+- [x] Workflow reference audit: no `.github/workflows/*.yml` references a
+      missing script or document path; `scripts/check_admin_retirement.py`
+      still passes after the documentation edits.
+- [x] Verification re-run on the current tree (documentation-only changes; no
+      Gradle input invalidated): `git diff --check` clean;
+      `check_migrations` (v1–v13), `check_backup_fixtures` (formats 1–3),
+      `check_localization` (1242 resources), `check_history_paging`,
+      `check_ui_literals`, `check_agent_policy`, `check_admin_retirement`,
+      `check_publication_workflows`, `check_curated_catalogue` and
+      `stage-3b/check_fixtures.py` all PASS; unit suites
+      `test_publication_workflows` 9, `test_upgrade_table_expectations` 12,
+      `test_emulator_network_assertion` 8 — all OK; `bash -n` syntax clean for
+      `ci_android_acceptance.sh`, `ci_android_instrumentation.sh` and the three
+      tier scripts.
+- [x] Build-state confirmation: `:app:compileDebugKotlin`,
+      `:app:compileDebugAndroidTestKotlin`, `:app:compileDebugUnitTestKotlin`
+      and `:app:testDebugUnitTest` returned BUILD SUCCESSFUL and `UP-TO-DATE`
+      (no source input changed since the previous successful run); retained
+      result XMLs total **320 tests, 0 failures, 0 errors, 0 skipped**. The
+      suite and the clean AGP/lint gate were **not re-executed**.
+- [ ] Remaining, outside this audit's safe scope: deep historical ledgers
+      (`docs/ai/VERIFICATION.md`, `docs/ai/PMP-RECOVERY.md`,
+      `docs/planning/goldberg-0.11/stage-8/*`) still link to removed backend
+      evidence and are deliberately left as dated history; repository
+      required-check settings (`synthetic-postgres`, `administration-safety`)
+      still need owner action; Android instrumentation execution, emulator
+      acceptance and physical-device checks were not run.

@@ -1,5 +1,58 @@
 # Gould 0.15 Stage 2 — checkpoint, 2026-11-15
 
+## Backend retirement — 2026-11-25
+
+Owner decision (see `DECISIONS.md` #2 final superseding decision): Gould is
+local-first with **no** community backend, BFF, admin API or custom cloud
+backend. Implemented in the working tree: canonical in-app admin client/asset
+and its wiring removed; `contracts/admin`, `spikes/stage6-*`,
+`services/community-bff`, `community-bff.yml`, `maintenance-admin.yml`,
+backend-only scripts/tests and `docs/planning/goldberg-0.11/stage-6/` +
+`stage-7/stage-7b/` + `CLOUD.md` + `COMMUNITY-ADMIN.md` deleted;
+`quality.yml` and `stage5-emulator.yml` repaired; `check_backup_fixtures.py`
+restored; `check_admin_retirement.py` rewritten as a backend-retirement guard;
+`ci_stage6_acceptance.sh` restored as `ci_android_acceptance.sh` (schema 12 →
+13); current guidance updated (`AGENTS.md`, `docs/PRIVACY.md`, `README.md`,
+`docs/wiki/*`, `docs/ai/GOULD-CURRENT-STATUS.md`, `docs/ai/HANDOFF.md`,
+`docs/architecture/BACKEND-RETIRED-2026-11-25.md`). The mandatory Gradle gate
+and every Python policy check passed on this tree (320 JVM tests, 0 failures;
+instrumentation compiled, not executed). Nothing was committed or pushed; no
+remote resource was touched. The former `synthetic-postgres` and
+`administration-safety` required checks no longer exist — owner action needed
+on repository required-check settings.
+
+### Documentation and navigation audit (G5) — completed 2026-11-25
+
+Finished the retirement sweep in documentation; historical records were amended
+in place, never deleted. Current-facing statements corrected: the 0.11
+catalogue-API sentence in `docs/wiki/Verification.md`, the "public cloud
+catalogue" wording in `docs/wiki/Credits-and-Licenses.md`, the 0.11 API bullet
+in `CHANGELOG.md`, and the PR required-check note in
+`docs/planning/gould-0.15/RELEASE-VERIFICATION.md`. The transfer record
+`docs/maintenance/PORTABILITY.md` now carries a retirement banner, REMOVED rows
+for the backend components and a historical note in place of the
+npm/Podman/local-runner commands. One-off backend docs that still read as live
+instructions now say `SUPERSEDED (2026-11-25) — do not execute/implement`:
+`docs/ai/API-V1-PROPOSAL-PUBLICATION.md`, `STAGE6-API-M1-PUBLICATION.md`,
+`STAGE6-CLOUD-CHECKPOINT.md`, `STAGE_7B_CONTRACT_PREPARATION.md`,
+`STAGE_7B_IMPLEMENTATION_PROMPT.txt`; `INTEGRATION-READINESS-WIP.md` notes the
+removed contract corpus and `stage-6/INTEGRATION-READINESS.md`. Navigation notes
+were added to `docs/planning/goldberg-0.11/README.md` (reading-order items 5–6),
+`STAGES.md` and `STAGE-CHECKLIST.md`, all pointing at
+`docs/architecture/BACKEND-RETIRED-2026-11-25.md`.
+
+Verification on the current tree: `git diff --check` clean; all nine Python
+policy checks plus `stage-3b/check_fixtures.py` PASS; the three script unit
+suites OK (9/12/8 tests); `bash -n` clean for the acceptance, instrumentation
+and tier scripts. `:app:compileDebugKotlin`,
+`:app:compileDebugAndroidTestKotlin`, `:app:compileDebugUnitTestKotlin` and
+`:app:testDebugUnitTest` returned BUILD SUCCESSFUL and `UP-TO-DATE` (no source
+input changed since the previous successful run); retained result XMLs total
+**320 tests, 0 failures, 0 errors, 0 skipped**. The JVM suite, the clean
+AGP/lint gate, instrumentation and emulator acceptance were **not re-executed**.
+Deep historical ledgers still link to removed backend evidence by design.
+Nothing was committed or pushed.
+
 ## Catalogue category-switch cancellation fix — 2026-11-16
 
 On `feature/gould-0.15`, the category effect already keyed on query/category,

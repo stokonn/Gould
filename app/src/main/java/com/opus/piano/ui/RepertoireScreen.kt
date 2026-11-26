@@ -94,7 +94,7 @@ import com.opus.piano.data.catalogue.DiscoverRepository
                             }
                         }
                     }
-                    Text("${L.fixed(piece.status.label)}${practiceTotals[piece.id]?.let { " · ${L.quantity(R.plurals.minutes_count,(it/60000).toInt())}" }.orEmpty()}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text("${L.fixed(piece.status.label)}${practiceTotals[piece.id]?.let { " · ${L.quantity(R.plurals.minutes_count,it/60000)}" }.orEmpty()}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     LinearProgressIndicator(progress = { learningProgress(piece.status) }, modifier = Modifier.fillMaxWidth().height(2.dp), trackColor = MaterialTheme.colorScheme.primary.copy(alpha = .1f))
                 }
             }

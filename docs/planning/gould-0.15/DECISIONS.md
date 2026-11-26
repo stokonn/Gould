@@ -42,6 +42,23 @@ preserve-both decision is historical and superseded for legacy Android source;
 it does not authorize removal of the canonical BFF or unrelated backend
 infrastructure. See the current Stage 2 checkpoint for files and verification.
 
+**Final superseding owner decision (2026-11-25) — backend retirement:**
+Gould is an Android-first, local-first application. Remove the entire
+community/backend architecture: BFF sources and deployment, Stage 6 backend
+spikes, `contracts/admin`, the canonical in-app admin client/repository/asset,
+BFF and maintenance-admin workflows, backend-only scripts and tests, and
+one-off backend stage documentation, and repair every affected Gradle, CI,
+script, test and document reference. No product community backend, BFF,
+moderation system, admin API, community database or custom cloud backend
+exists or may be reintroduced; `scripts/check_admin_retirement.py` enforces
+this in `quality.yml`. Preserve all functional Android code, Room/local
+catalogue/MusicBrainz/Credential Manager/Google profile sync behavior, Android
+build, instrumentation, emulator verification, release signing and publication
+workflows, and historical records. Do not touch remote Cloudflare/Supabase or
+any other remote infrastructure. This supersedes the 2026-11-14
+preserve-both and 2026-11-15 keep-canonical decisions in full. See
+`docs/architecture/BACKEND-RETIRED-2026-11-25.md`.
+
 ### 3. License terms — binding planning decision (2026-11-14)
 
 - Application source code is planned under **GPL-3.0-or-later**.

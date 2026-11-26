@@ -8,9 +8,9 @@
         <TextView android:id="@+id/widget_title" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="@string/widget_weekly_title" android:textSize="13sp" android:fontFamily="@font/inter" android:maxLines="2" android:ellipsize="end" />
         <TextView android:id="@+id/widget_value" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="—" android:textSize="24sp" android:textStyle="bold" android:fontFamily="@font/inter" android:maxLines="1" android:ellipsize="end" />
+            android:text="@string/widget_no_value" android:textSize="24sp" android:textStyle="bold" android:fontFamily="@font/inter" android:maxLines="1" android:ellipsize="end" />
         <TextView android:id="@+id/widget_context" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="@string/widget_unavailable" android:textSize="10sp" android:fontFamily="@font/inter" android:maxLines="1" android:ellipsize="end" />
+            android:text="@string/widget_unavailable" android:textSize="11sp" android:fontFamily="@font/inter" android:maxLines="1" android:ellipsize="end" />
         <ImageView android:id="@+id/widget_heatmap" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:scaleType="fitXY" android:visibility="gone" android:importantForAccessibility="no" />
         <TextView android:id="@+id/widget_details" android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -18,5 +18,5 @@
     </LinearLayout>
     <TextView android:id="@+id/widget_status" android:layout_width="match_parent" android:layout_height="wrap_content"
         android:layout_gravity="bottom" android:layout_marginStart="10dp" android:layout_marginEnd="10dp" android:layout_marginBottom="8dp"
-        android:textSize="10sp" android:fontFamily="@font/inter" android:maxLines="1" android:ellipsize="end" android:importantForAccessibility="no" />
+        android:textSize="11sp" android:fontFamily="@font/inter" android:maxLines="1" android:ellipsize="end" android:importantForAccessibility="no" />
 </FrameLayout>

@@ -1,5 +1,12 @@
 ## Goldberg 0.11 Stable — published and remotely verified
 
+> **SUPERSEDED (2026-11-25).** The cloud catalogue service, BFF and Stage 6
+> backend sources were retired by the owner's local-first decision. The
+> references below (including `stage-6/FINAL-INTEGRATION-2026-10-25.md`) no
+> longer resolve because that one-off backend documentation was removed. This
+> is retained as a dated historical record only. See
+> [BACKEND-RETIRED-2026-11-25.md](../architecture/BACKEND-RETIRED-2026-11-25.md).
+
 Purpose and scope: complete the approved read-only launch, integrate accepted
 Android work and unify Discover/Library catalogue reads while preserving offline
 user data. Implementation, verification and publication are complete.

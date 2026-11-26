@@ -1,5 +1,25 @@
 # Gould current status
 
+## Backend retirement — November 25, 2026
+
+The owner decided that Gould is an **Android-first, local-first application**:
+the composer catalogue is bundled locally, music discovery uses MusicBrainz and
+other third-party providers directly from the device, Google sign-in uses
+Android Credential Manager with on-device Google profile name/avatar
+synchronization, and practical application data stays local. There is **no**
+product community backend, BFF, moderation system, admin API, community
+database or custom cloud backend. The retired surface (BFF sources, Stage 6
+backend spikes, admin contracts, canonical in-app admin client, backend
+workflows and one-off backend stage documentation) has been removed from the
+working tree; see [docs/architecture/BACKEND-RETIRED-2026-11-25.md](../architecture/BACKEND-RETIRED-2026-11-25.md).
+No remote Cloudflare/Supabase or other remote resource was accessed or changed.
+
+Consequently the former `synthetic-postgres` and `administration-safety`
+required checks (owned by the deleted `community-bff.yml` and
+`maintenance-admin.yml` workflows) no longer exist. Repository required-check
+settings must be updated by the owner; `host-quality` and the optional
+`stage5-emulator` workflow remain the Android CI surface.
+
 ## Current publication status — November 14, 2026
 
 Gould 0.14.0 is published as the latest GitHub pre-release (not Stable):
@@ -26,7 +46,7 @@ unrelated maintenance findings remain open where still applicable.
 
 - The latest verified `main` commit at this snapshot is `c8980539` (November 2, 2026), a documentation-only merge of [PR #48](https://github.com/stokonn/Gould/pull/48), updating the canonical Wiki sidebar source for Gould 0.13.
 - PR #48 is merged. At the maintenance inventory on November 11, there were no open pull requests and no open Issues.
-- Exact-commit CI at `c8980539` passed all three required checks: `host-quality` ([run 41500959420](https://github.com/stokonn/Gould/actions/runs/41500959420)), `synthetic-postgres` ([run 41500959252](https://github.com/stokonn/Gould/actions/runs/41500959252)) and `administration-safety` ([run 41500959177](https://github.com/stokonn/Gould/actions/runs/41500959177)).
+- Exact-commit CI at `c8980539` passed all three required checks at that time: `host-quality` ([run 41500959420](https://github.com/stokonn/Gould/actions/runs/41500959420)), `synthetic-postgres` ([run 41500959252](https://github.com/stokonn/Gould/actions/runs/41500959252)) and `administration-safety` ([run 41500959177](https://github.com/stokonn/Gould/actions/runs/41500959177)). The latter two checks belonged to backend workflows retired on 2026-11-25; their historical runs are preserved but the checks no longer exist.
 - The repository has GitHub Wiki enabled and `docs/wiki/` is the canonical maintained source. PR #48 explicitly requires a separate Wiki synchronization. The Wiki repository/API could not be read during this audit (the expected `Gould.wiki` API endpoint returned 404); **public Wiki synchronization is therefore unverified**, not claimed complete.
 - GitHub reports `main` as unprotected. This audit did not change repository settings; configure branch protection/rulesets separately and verify required checks before relying on them as an enforced merge gate.
 
@@ -34,7 +54,7 @@ unrelated maintenance findings remain open where still applicable.
 
 - At this snapshot, Gould 0.13 was the latest published pre-release; it was not Stable.
 - Gould remains local-first. Practice data, recordings, repertoire and backups remain on the device unless the user deliberately exports them.
-- Community submissions, backend OAuth and practice-data uploads remain disabled. The restricted read-only catalogue remains optional and has no approved published records.
+- The composer catalogue is bundled locally and online search goes directly to third-party providers under default-off consent. There is no community backend, BFF, admin API or custom cloud catalogue service; community submissions, backend OAuth and practice-data uploads do not exist.
 - Application ID/namespace `com.opus.piano`, database `opus.db`, signing compatibility, stored identifiers, migrations, backup formats, legal notices and historical release assets remain protected.
 
 ## Maintenance outcome and remaining blockers

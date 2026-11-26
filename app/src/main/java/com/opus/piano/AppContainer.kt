@@ -17,7 +17,6 @@ import com.opus.piano.preferences.MediaPreferences
 internal class AppTestHooks {
     var bundleNetwork: com.opus.piano.data.offline.BundleNetwork? = null
     var bundleConnect: ((java.net.URL) -> java.net.HttpURLConnection)? = null
-    var canonicalAdminTransport: com.opus.piano.data.community.canonical.CanonicalAdminTransport? = null
 }
 
 class AppContainer internal constructor(private val app: OpusApplication, internal val testHooks: AppTestHooks = AppTestHooks()) {

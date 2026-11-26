@@ -198,13 +198,17 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
                         if(usable(result.state))result.nextOffset?.let {positions[adapter.id+":"+request.kind]=ProviderPosition(adapter.id,request.kind,it)}
                         val page=if(usable(result.state) && result.records.isNotEmpty()) local(query,filter,sessionId=id) else currentPage
                         if(page!==currentPage){currentPage=page;items.clear();page.items.forEach {items[it.id]=it}}
+                        // Classification-pending records are stored as candidates, not entities, so
+                        // the list must be re-read after ingestion or the UI never shows them.
+                        val refreshedCandidates=if(usable(result.state) && result.records.isNotEmpty()) candidates(query,filter,sessionId=id) else currentCandidates
+                        currentCandidates=refreshedCandidates
                         CataloguePerformance.event("catalogue_provider_result","provider=${adapter.id} request_kind=${request.kind} outcome=${result.state.name.lowercase(java.util.Locale.ROOT)} result_count=${result.records.size}",CataloguePerformance.Context(id,"online",filter.category))
                         if(firstOnlineResult) {
                             firstOnlineResult=false
                             CataloguePerformance.finish("catalogue_first_online_result",onlineStartedAt,"outcome=${result.state.name.lowercase(java.util.Locale.ROOT)} result_count=${result.records.size}",CataloguePerformance.Context(id,"online",filter.category))
                         }
                         val merged=page.copy(items=items.values.toList())
-                        val unresolved=currentCandidates
+                        val unresolved=refreshedCandidates
                         CataloguePerformance.finish("catalogue_provider_result_refresh",mergeStartedAt,"outcome=ok result_count=${merged.items.size} candidate_count=${unresolved.size}",CataloguePerformance.Context(id,"local_online",filter.category))
                         send(DiscoverSearch(id,merged,orderedSources(states.values),unresolved,providerEntityIds=providerIds.toSet()))
                     }finally {emission.unlock()}

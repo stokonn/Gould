@@ -72,9 +72,9 @@ Gould 0.15.0 targets Android 11 (API 30) and compile/target API 37. Android 8–
 
 ## Privacy by design
 
-Your practice journal, repertoire, saved recordings, profile and backups are local to your device unless you deliberately export them. Optional online catalogue-provider searches require separate consent; Google profile sign-in does **not** synchronize your practice data. Microphone recording starts only when you explicitly request it.
+Your practice journal, repertoire, saved recordings, profile and backups are local to your device unless you deliberately export them. Optional online catalogue-provider searches require separate consent; Google sign-in through Android Credential Manager does **not** synchronize your practice data. Microphone recording starts only when you explicitly request it.
 
-The restricted first-party catalogue service exposes read-only catalogue endpoints and currently has no approved published catalogue records. Community submissions, backend OAuth and practice-data uploads remain disabled; this does not affect local practice. [Backend architecture and deployment boundaries](docs/architecture/BACKEND-DECISION-2026-10-31.md). Smart Practice sound detection is experimental, not a perfect measure of piano activity.
+Gould operates no product community backend, BFF or custom cloud service: the composer catalogue is bundled locally, music discovery talks to third-party providers such as MusicBrainz directly from your device, and Google profile name/avatar updates stay on the device. Community submissions, backend OAuth and practice-data uploads therefore do not exist; this does not affect local practice. [Local-first architecture and backend retirement](docs/architecture/BACKEND-RETIRED-2026-11-25.md). Smart Practice sound detection is experimental, not a perfect measure of piano activity.
 
 [Privacy information](docs/PRIVACY.md) · [Settings & data controls](docs/wiki/Settings-and-Customization.md)
 

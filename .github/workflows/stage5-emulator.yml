@@ -14,8 +14,9 @@ name: Gould Android emulator verification
 #   - Default full verification runs the complete registered
 #     `connectedDebugAndroidTest` suite; it applies no runner-argument filters,
 #     `@Ignore` overrides, or class exclusions.
-#     Acceptance-only execution requires an exact Android source inventory match
-#     to retained full native evidence; it never claims a new instrumentation run.
+#     Acceptance-only execution runs the Android acceptance subset (in-place
+#     upgrade, network transport assertions, Data Saver, process death and
+#     startup timing) without claiming instrumentation evidence.
 #   - Infrastructure-only retry (both jobs): retry instrumentation only when
 #     result XML has no test evidence AND the action failed before its explicit
 #     script-start marker, or the shared readiness gate recorded a service
@@ -77,7 +78,7 @@ on:
   workflow_dispatch:
     inputs:
       verification_scope:
-        description: 'all: full suite+upgrade; acceptance: identical-source upgrade; simplifier: focused follow-up to retained full run'
+        description: 'all: full suite+upgrade; acceptance: Android acceptance subset only; simplifier: focused follow-up run'
         type: choice
         default: all
         options:
@@ -99,7 +100,7 @@ jobs:
       CI_VERIFICATION_SCOPE: ${{ inputs.verification_scope }}
       CI_EXPECTED_API_LEVEL: '37'
     steps:
-      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - name: Record verified source commit
@@ -115,10 +116,13 @@ jobs:
             echo "ERROR: checked-out commit does not match the dispatched commit"; exit 1
           fi
           df -h / | tee stage5-ci-results/disk-usage.txt
-      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+      - uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
         with:
           distribution: temurin
           java-version: '17'
+          # Reuse the Gradle dependency/build cache already used by host-quality;
+          # this job previously downloaded every dependency on each dispatch.
+          cache: gradle
       - name: Set up required Android SDK packages
         uses: android-actions/setup-android@be39fa834029ff78f1a44aa3bb0819b8fc2bd8fd # v4.0.4
         with:
@@ -334,7 +338,7 @@ jobs:
           exit "$RC"
       - name: Upload instrumentation evidence
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: stage5-instrumentation-results
           path: |
@@ -350,7 +354,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 120
     steps:
-      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - name: Record verified source commit
@@ -370,29 +374,19 @@ jobs:
         run: |
           python3 scripts/test_emulator_network_assertion.py
           python3 scripts/test_upgrade_table_expectations.py
-      - name: Verify retained native source for acceptance-only execution
-        if: inputs.verification_scope == 'acceptance'
-        run: |
-          python3 - <<'PY'
-          import hashlib,json,subprocess
-          from pathlib import Path
-          record=json.loads(Path('docs/planning/goldberg-0.11/stage-6/results/runtime-continuation-2026-10-25/android-source-artifact.json').read_text())
-          actual=set(subprocess.check_output(['git','ls-files','app/src','app/build.gradle.kts','app/schemas','contracts/admin/v1/decision-proposal/dto.schema.json'],text=True).splitlines())
-          assert actual==set(record['files']), 'Native source inventory changed;run full instrumentation'
-          for name,digest in record['files'].items():
-              assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest, 'Native source changed:'+name
-          print('Android source matches retained full native run at',record['sourceCommit'])
-          PY
       - name: Check out trusted v0.10.1 tag for the baseline rebuild
-        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: v0.10.1
           path: baseline-src
           persist-credentials: false
-      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+      - uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
         with:
           distribution: temurin
           java-version: '17'
+          # Reuse the Gradle dependency/build cache already used by host-quality;
+          # this job previously downloaded every dependency on each dispatch.
+          cache: gradle
       - name: Set up required Android SDK packages
         uses: android-actions/setup-android@be39fa834029ff78f1a44aa3bb0819b8fc2bd8fd # v4.0.4
         with:
@@ -439,9 +433,19 @@ jobs:
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
+      # The candidate (AGP 9.5) and the v0.10.1 baseline rebuild (AGP 9.1) resolve
+      # the default debug keystore independently: AGP 9.1 still prefers
+      # $XDG_CONFIG_HOME/.android while AGP 9.5 no longer does, so a runner that
+      # sets XDG_CONFIG_HOME lets the two builds generate different debug keys and
+      # breaks in-place-upgrade signature compatibility. ANDROID_USER_HOME is
+      # honoured by both AGP versions, so pinning it forces one shared debug key.
       - name: Build candidate APK
+        env:
+          ANDROID_USER_HOME: ${{ runner.temp }}/android-user-home
         run: ./gradlew --no-daemon --max-workers=1 assembleDebug
       - name: Build debug-signed v0.10.1 baseline (same runner debug keystore as candidate)
+        env:
+          ANDROID_USER_HOME: ${{ runner.temp }}/android-user-home
         run: (cd baseline-src && ./gradlew --no-daemon --max-workers=1 assembleDebug)
       - name: Fetch trusted 0.10.1 release APK (digest + signing-certificate verified)
         run: |
@@ -465,6 +469,10 @@ jobs:
             ls -la "$ANDROID_HOME/build-tools" || true
             echo "java: $(command -v java || true)"
             java -version 2>&1 | head -n1 || true
+            echo "ANDROID_USER_HOME: ${ANDROID_USER_HOME:-<unset>}"
+            echo "XDG_CONFIG_HOME: ${XDG_CONFIG_HOME:-<unset>}"
+            echo "debug keystores used by the two builds:"
+            find "$HOME" "${ANDROID_USER_HOME:-$HOME}" -maxdepth 3 -name 'debug.keystore' 2>/dev/null | sort -u || true
           } | tee stage5-ci-results/signing-environment.txt
           : > stage5-ci-results/apksigner-exit-codes.txt
           digest_of() {
@@ -539,7 +547,7 @@ jobs:
           avd-name: stage5-ci
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
-          script: bash scripts/ci_stage6_acceptance.sh
+          script: bash scripts/ci_android_acceptance.sh
       - name: Decide whether an infrastructure retry is required
         id: acceptance-retry
         if: steps.acceptance-attempt1.outcome == 'failure'
@@ -570,7 +578,7 @@ jobs:
           avd-name: stage5-ci
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
-          script: bash scripts/ci_stage6_acceptance.sh
+          script: bash scripts/ci_android_acceptance.sh
       - name: Enforce acceptance outcome
         if: always()
         id: acceptance-summary
@@ -593,7 +601,7 @@ jobs:
           exit "$RC"
       - name: Upload acceptance evidence
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: stage5-acceptance-results
           path: |

@@ -1,6 +1,9 @@
 Historical intermediate checkpoint only. Final accepted state and exact next steps
-are in HANDOFF.md and stage-6/INTEGRATION-READINESS.md. This file preserves the
-chronological unfinished-work record, not current remaining work.
+are in HANDOFF.md. This file preserves the chronological unfinished-work record,
+not current remaining work. SUPERSEDED (2026-11-25): the referenced Stage 6
+backend sources, `contracts/admin` corpus and `stage-6/INTEGRATION-READINESS.md`
+were removed with the owner's backend retirement and are not to be recreated. See
+docs/architecture/BACKEND-RETIRED-2026-11-25.md.
 
 # Stage6/7B integration readiness — live implementation checkpoint
 

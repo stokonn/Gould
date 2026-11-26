@@ -38,4 +38,19 @@ class AppLanguageTest {
             } finally { instrumentation.runOnMainSync { AppCompatDelegate.setApplicationLocales(original) } }
         }
     }
+
+    @Test fun activityProgressPluralStringsRespectLocaleAndGoalQuantity() {
+        val base=InstrumentationRegistry.getInstrumentation().targetContext
+        fun resources(tag:String)=base.createConfigurationContext(
+            android.content.res.Configuration(base.resources.configuration).apply {
+                setLocales(android.os.LocaleList.forLanguageTags(tag))
+            }).resources
+        val en=resources("en")
+        val cs=resources("cs")
+        assertEquals("2/5 sessions",en.getQuantityString(R.plurals.activity_sessions_progress,5,2,5))
+        assertEquals("Complete 1 session this week to continue your streak.",
+            en.getQuantityString(R.plurals.activity_goal_waiting,1,1))
+        assertEquals("2/5 cvičení",cs.getQuantityString(R.plurals.activity_sessions_progress,5,2,5))
+        assertEquals("2/5 minut",cs.getQuantityString(R.plurals.activity_minutes_progress,5,2,5))
+    }
 }

@@ -14,7 +14,7 @@
             <TextView android:id="@+id/widget_context" android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:text="@string/widget_unavailable" android:textSize="12sp" android:fontFamily="@font/inter" android:maxLines="1" android:ellipsize="end" />
             <TextView android:id="@+id/widget_status" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:textSize="10sp" android:fontFamily="@font/inter" android:maxLines="1" android:ellipsize="end" />
+                android:textSize="11sp" android:fontFamily="@font/inter" android:maxLines="1" android:ellipsize="end" />
         </LinearLayout>
     </LinearLayout>
     <TextView android:id="@+id/widget_compact_status" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="20dp" android:minHeight="24dp" android:layout_gravity="bottom|end"

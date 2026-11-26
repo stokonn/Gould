@@ -13,7 +13,7 @@ cp=[jar('org.jetbrains.kotlin','kotlin-stdlib','2.2.10'),jar('org.jetbrains.kotl
 parent=root/'.gradle/community-jvm';parent.mkdir(parents=True,exist_ok=True)
 out=Path(tempfile.mkdtemp(prefix='classes-',dir=parent))
 sources=list((root/'app/src/main/java/com/opus/piano/data/community').glob('*.kt'))+list((root/'app/src/test/java/com/opus/piano/community').glob('*.kt'))
-results=root/'docs/planning/goldberg-0.11/stage-6/results/android-local';results.mkdir(parents=True,exist_ok=True)
+results=root/'.gradle/community-jvm/evidence';results.mkdir(parents=True,exist_ok=True)
 evidence=Path(tempfile.mkdtemp(prefix='jvm-',dir=results))
 source_hashes={str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(sources)}
 (evidence/'source-sha256.json').write_text(json.dumps(source_hashes,indent=2)+'\n')

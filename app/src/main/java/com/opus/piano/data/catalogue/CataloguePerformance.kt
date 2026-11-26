@@ -34,8 +34,8 @@ internal object CataloguePerformance {
     }
 
     fun <T> measure(phase: String, details: String = "", context: Context = Context(), block: () -> T): T {
-        Trace.beginSection("catalogue:$phase")
         val startedAt = start()
+        Trace.beginSection("catalogue:$phase")
         var outcome = "error"
         try {
             return block().also { outcome = "ok" }

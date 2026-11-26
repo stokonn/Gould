@@ -100,13 +100,14 @@ import java.util.Locale
             Panel(Modifier.testTag("activity-weekly-goal-section")) {
                 Text(L.s(R.string.activity_sessions_goal), style = MaterialTheme.typography.titleLarge)
                 state.snapshot?.let { summary ->
+                    val minutesTarget = summary.goal.minutes
                     Text(L.s(R.string.activity_goal_minimum), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    Text(L.s(R.string.activity_sessions_progress, summary.totals.sessions, summary.goal.sessions), style = MaterialTheme.typography.titleMedium)
+                    Text(L.quantityFormat(R.plurals.activity_sessions_progress, summary.goal.sessions, summary.totals.sessions, summary.goal.sessions), style = MaterialTheme.typography.titleMedium)
                     LinearProgressIndicator(progress = { (summary.totals.sessions.toFloat() / summary.goal.sessions).coerceIn(0f, 1f) }, Modifier.fillMaxWidth(), color = graphAccent ?: MaterialTheme.colorScheme.primary)
-                    Text(if (summary.goal.minutes == null) L.s(R.string.activity_minutes_unset, summary.totals.minutes) else L.s(R.string.activity_minutes_progress, summary.totals.minutes, summary.goal.minutes), style = MaterialTheme.typography.titleMedium)
-                    summary.goal.minutes?.let { target -> LinearProgressIndicator(progress = { (summary.totals.minutes.toFloat() / target).coerceIn(0f, 1f) }, Modifier.fillMaxWidth(), color = graphAccent ?: MaterialTheme.colorScheme.secondary) }
+                    Text(if (minutesTarget == null) L.quantity(R.plurals.minutes_count, summary.totals.minutes) else L.quantityFormat(R.plurals.activity_minutes_progress, minutesTarget, summary.totals.minutes, minutesTarget), style = MaterialTheme.typography.titleMedium)
+                    minutesTarget?.let { target -> LinearProgressIndicator(progress = { (summary.totals.minutes.toFloat() / target).coerceIn(0f, 1f) }, Modifier.fillMaxWidth(), color = graphAccent ?: MaterialTheme.colorScheme.secondary) }
                     if (goalMet(summary.totals, summary.goal)) Text(L.s(R.string.activity_goal_met), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
-                    else Text(L.s(R.string.activity_goal_waiting, summary.goal.sessions), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    else Text(L.quantityFormat(R.plurals.activity_goal_waiting, summary.goal.sessions, summary.goal.sessions), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
                 when (val reward = rewardUiState) {
                     WeeklyCosmeticRewardState.Loading -> Unit
@@ -225,7 +226,7 @@ import java.util.Locale
                                 Icon(Icons.Outlined.EditNote, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(end = 8.dp))
                                 Column(Modifier.weight(1f).padding(vertical = 10.dp)) {
                                     Text(formatDate(LocalDate.parse(entry.activityDay)), style = MaterialTheme.typography.titleSmall)
-                                    Text(L.s(R.string.activity_minutes_unset, entry.durationMillis / 60_000L), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                    Text(L.quantity(R.plurals.minutes_count, entry.durationMillis / 60_000L), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                                 }
                                 IconButton(onClick = { editEntry = entry }) { Icon(Icons.Outlined.Edit, L.s(R.string.activity_edit)) }
                                 IconButton(onClick = { deleteEntry = entry }) { Icon(Icons.Outlined.DeleteOutline, L.s(R.string.activity_delete)) }
@@ -249,7 +250,7 @@ import java.util.Locale
             text = { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(formatDate(date), style = MaterialTheme.typography.titleMedium)
                 Text(L.quantity(R.plurals.activity_workout_count, day.workouts))
-                Text(L.s(R.string.activity_minutes_unset, day.minutes))
+                Text(L.quantity(R.plurals.minutes_count, day.minutes))
             } },
             confirmButton = { JournalTextButton(onClick = { selectedDay = null }) { Text(L.s(R.string.activity_cancel)) } })
     }
@@ -344,7 +345,7 @@ import java.util.Locale
                             val activity = cell.activity
                             val visible = cell.inYear && !cell.future && activity != null
                             Box(Modifier.size(32.dp).semantics(mergeDescendants = true) {
-                                if (visible) contentDescription = "${formatDate(date)}, ${activity!!.kind.let(::kindLabel)}, ${L.quantity(R.plurals.activity_workout_count, activity.workouts)}, ${L.s(R.string.activity_minutes_unset, activity.minutes)}"
+                                if (visible) contentDescription = "${formatDate(date)}, ${activity!!.kind.let(::kindLabel)}, ${L.quantity(R.plurals.activity_workout_count, activity.workouts)}, ${L.quantity(R.plurals.minutes_count, activity.minutes)}"
                             }.then(if (visible) Modifier.clickable(role = Role.Button) { onDay(activity!!) } else Modifier), contentAlignment = Alignment.Center) {
                                 if (cell.inYear) {
                                     val background = if (cell.future) MaterialTheme.colorScheme.surfaceVariant.copy(alpha = .25f)
@@ -385,7 +386,7 @@ import java.util.Locale
             Text(L.s(R.string.activity_goal_minimum), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 IconButton(onClick = { sessions = (sessions - 1).coerceAtLeast(1) }, enabled = sessions > 1) { Icon(Icons.Outlined.Remove, null) }
-                Text(L.s(R.string.activity_sessions_goal_value, sessions), style = MaterialTheme.typography.titleMedium)
+                Text(L.quantityFormat(R.plurals.activity_sessions_goal_value, sessions, sessions), style = MaterialTheme.typography.titleMedium)
                 IconButton(onClick = { sessions = (sessions + 1).coerceAtMost(7) }, enabled = sessions < 7) { Icon(Icons.Outlined.Add, null) }
             }
             OutlinedTextField(minutes, { minutes = it.filter(Char::isDigit).take(10); invalidMinutes = false }, label = { Text(L.s(R.string.activity_optional_minutes_goal)) }, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), singleLine = true, isError = invalidMinutes, modifier = Modifier.fillMaxWidth())

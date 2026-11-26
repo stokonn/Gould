@@ -39,6 +39,79 @@ def expected_added_tables(baseline_schema, expected_schema, schema_dir=SCHEMA_DI
     return schema_entity_tables(expected_schema, schema_dir) - schema_entity_tables(baseline_schema, schema_dir)
 
 
+def column_transition(table, before_columns, after_columns):
+    """Validate an additive ALTER TABLE transition and return the added columns.
+
+    Existing columns must keep their order (ALTER TABLE ADD COLUMN appends), may
+    not disappear and may not change affinity/position: only then is a positional
+    row comparison on the common columns still meaningful.
+    """
+    if after_columns[:len(before_columns)] != list(before_columns):
+        lost = [c for c in before_columns if c not in after_columns]
+        raise AssertionError(
+            'Non-additive column transition in %s (lost %s; before %s after %s)'
+            % (table, sorted(lost), list(before_columns), list(after_columns))
+        )
+    return list(after_columns[len(before_columns):])
+
+
+def project_rows(rows, columns, projected_columns):
+    """Project positional rows onto named columns, preserving order and count."""
+    indexes = [list(columns).index(column) for column in projected_columns]
+    return [tuple(row[index] for index in indexes) for row in rows]
+
+
+def declared_default(version, table, column, schema_dir=SCHEMA_DIR):
+    """The Room-declared SQL default of one column (None when it has no default)."""
+    document = json.loads((Path(schema_dir) / (str(version) + '.json')).read_text())
+    entities = document['database']['entities']
+    entity = next((item for item in entities if item['tableName'] == table), None)
+    if entity is None:
+        raise AssertionError('Schema %s does not declare table %s' % (version, table))
+    field = next((item for item in entity['fields'] if item['columnName'] == column), None)
+    if field is None:
+        raise AssertionError('Schema %s does not declare %s.%s' % (version, table, column))
+    raw = field.get('defaultValue')
+    if raw is None:
+        return None
+    if len(raw) >= 2 and raw.startswith("'") and raw.endswith("'"):
+        return raw[1:-1].replace("''", "'")
+    if field.get('affinity') == 'INTEGER':
+        return int(raw)
+    return raw
+
+
+def assert_column_preservation(table, before_columns, before_rows, after_columns,
+                               after_rows, expected_schema, schema_dir=SCHEMA_DIR):
+    """Verify an additive schema change preserves every seeded value.
+
+    Common columns must compare equal row-for-row (count and order included), and
+    every added column must hold exactly its Room/ALTER TABLE DEFAULT for every
+    row. A changed user value, a vanished row, a reordered row or a non-default
+    migration value fails.
+    """
+    added = column_transition(table, before_columns, after_columns)
+    projected_before = project_rows(before_rows, before_columns, before_columns)
+    projected_after = project_rows(after_rows, after_columns, before_columns)
+    if projected_before != projected_after:
+        raise AssertionError(
+            'Persistent data changed in %s: %d seeded rows, %d upgraded rows, %d differing'
+            % (table, len(projected_before), len(projected_after),
+               sum(1 for a, b in zip(projected_before, projected_after) if a != b)
+               + abs(len(projected_before) - len(projected_after)))
+        )
+    for column in added:
+        expected = declared_default(expected_schema, table, column, schema_dir)
+        index = list(after_columns).index(column)
+        values = {row[index] for row in after_rows}
+        if values - {expected}:
+            raise AssertionError(
+                'Added column %s.%s is not its declared default %r: observed %r'
+                % (table, column, expected, sorted(values, key=repr))
+            )
+    return added
+
+
 def assert_table_transition(before_names, after_names, baseline_schema, expected_schema, schema_dir=SCHEMA_DIR):
     """Verify a seeded-baseline -> upgraded table-set transition; return added tables.
 

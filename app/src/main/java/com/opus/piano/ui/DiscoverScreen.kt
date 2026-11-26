@@ -453,7 +453,10 @@ private fun categoryIcon(key:String)=when(key){"works","work","arrangement"->Ico
             item {
                 Column(verticalArrangement=Arrangement.spacedBy(JournalSpace.tiny)) {
                     Text(shownTitle(data.entity.kind,presentation?.title ?: data.entity.title),style=MaterialTheme.typography.headlineMedium,modifier=Modifier.semantics {heading()})
-                    Text(if(data.identities.any {it.provider=="openopus" && it.providerKind=="composer" && it.reviewState=="reviewed"})L.s(R.string.discover_composer) else kindLabel(data.workType ?: data.entity.kind),style=MaterialTheme.typography.labelLarge,color=MaterialTheme.colorScheme.onSurfaceVariant)
+                    // A MusicBrainz artist credited as the composer of a work is a composer even
+                    // though the provider only types it as a person; the credit edge is evidence.
+                    val creditedComposer=data.entity.kind=="artist" && data.relationships.any {it.first.type=="credit" && it.first.role=="composer" && it.first.toId==data.entity.id}
+                    Text(if(creditedComposer || data.identities.any {it.provider=="openopus" && it.providerKind=="composer" && it.reviewState=="reviewed"})L.s(R.string.discover_composer) else kindLabel(data.workType ?: data.entity.kind),style=MaterialTheme.typography.labelLarge,color=MaterialTheme.colorScheme.onSurfaceVariant)
                     data.relationships.filter {it.first.type=="credit" && it.first.role=="composer" && it.first.fromId==data.entity.id}
                         .distinctBy {it.second.id}.forEach {(_,composer)->
                             JournalTextButton(onClick={open(composer.id)}) {Text(composer.title,style=MaterialTheme.typography.titleMedium,color=MaterialTheme.colorScheme.primary)}

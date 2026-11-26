@@ -19,9 +19,9 @@ Discover and the visible administration entry are hidden in the current release 
 **Where can I install the current release?** Download [Gould 0.15.0 Pre-release](https://github.com/stokonn/Gould/releases/tag/v0.15.0). Android 11+ is required.
 
 
-**Does my journal upload?** No. Practice, notes, drafts/recovery and backups remain local. Online provider queries process their necessary network metadata; the catalogue backend has no journal-upload endpoint.
+**Does my journal upload?** No. Practice, notes, drafts/recovery and backups remain local. Online provider queries process their necessary network metadata; Gould operates no backend service, so there is no journal-upload endpoint of any kind.
 
-**Why is the public Goldberg catalogue empty?** Its read-only routes are active, but no approved records have been imported. Optional provider search and existing saved catalogue records are separate. This is not a community contribution service.
+**Is there a Goldberg server or community service?** No. Gould is local-first: the catalogue is bundled on the device, online search goes directly to third-party providers such as MusicBrainz, and Google sign-in uses Android Credential Manager. The earlier community/BFF/admin backend work was retired and no longer exists in the application or repository.
 
 **Why are older metadata rights unknown?** A retained local snapshot is not new publication evidence. The original cache and personal records are preserved. Check Sources & credits or refresh through an approved provider when permitted.
 

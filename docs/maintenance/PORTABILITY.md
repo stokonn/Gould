@@ -1,5 +1,15 @@
 # Gould development transfer
 
+> **Backend retirement (2026-11-25).** This transfer record describes the
+> repository as it stood before the owner retired the community/backend
+> architecture. The `services/community-bff`, `spikes/stage6-*`,
+> `contracts/admin`, `scripts/stage6` and `app/src/canonicalIntegration`
+> components listed below, and the backend npm/Podman/local-runner commands,
+> no longer exist and must not be recreated. Treat those rows and commands as
+> history; the Android/local-first build and verification instructions remain
+> current. See
+> [BACKEND-RETIRED-2026-11-25.md](../architecture/BACKEND-RETIRED-2026-11-25.md).
+
 Current status: canonical development checkout `~/Projects/Opus` is on main in renamed repository `stokonn/Gould`. The integrated source passed 19 host checks/348 JVM tests and exact-source maintenance CI; remote clone verification passed. Full Actions registration review and the backed-up RC prerelease removal are verified; unresolved private-worktree data remain protected. Read [the main handoff](../ai/GOULD-MAIN-MAINTENANCE.md); no Gould 0.12 features have started.
 
 ## Development baseline and layout
@@ -9,11 +19,9 @@ The sole intended development checkout is `~/Projects/Opus`. Its canonical branc
 | Component | Classification | Treatment |
 | --- | --- | --- |
 | `app/src/main`, Android resources/assets, Gradle wrapper/configuration | REQUIRED FOR DEVELOPMENT | Current main, plus the previously prepared cosmetic Gould changes. |
-| `app/src/test`, `app/src/androidTest`, `app/src/canonicalIntegration` | REQUIRED FOR DEVELOPMENT | Retain regression and optional HTTP integration tests. |
+| `app/src/test`, `app/src/androidTest` | REQUIRED FOR DEVELOPMENT | Retain regression and instrumentation tests. (`app/src/canonicalIntegration` was removed with the backend retirement.) |
 | `app/schemas`, migration implementations, backup readers/fixtures | REQUIRED FOR COMPATIBILITY | Retain schema 1–10 compatibility and backup formats 1–5. |
-| `services/community-bff`, `contracts`, `scripts/stage6` | REQUIRED FOR DEVELOPMENT | Backend composition, wire contracts, operational tooling and tests. |
-| `spikes/stage6-{schema-pg,auth-local,handlers-local,public-admin-abuse,api-v1-local,security-local}` | REQUIRED FOR DEVELOPMENT | Despite their historical directory names, current backend imports/test runners use these modules. Keep their SQL migrations, source and lockfiles. |
-| `services/community-bff/deployment` | OPTIONAL DEVELOPMENT TOOLING | Preserve packaging configuration; do not deploy during transfer. |
+| `services/community-bff`, `contracts/admin`, `scripts/stage6`, `spikes/stage6-*` | REMOVED 2026-11-25 | Retired backend sources, contracts, spikes and tooling. Do not restore, rebuild or deploy them; no first-party backend exists. |
 | `docs/wiki`, `docs/planning`, `AGENTS.md`, current maintenance documents | REQUIRED FOR DEVELOPMENT | Preserve policy, architecture, verified limitations and the single-stage 0.12 plan. |
 | Existing Git branches/tags/stashes | HISTORICAL ONLY / development history | Keep refs and objects. Do not merge unfinished branches to consolidate directories. |
 | Signing key, account tokens, OAuth/backend secrets, private PMP | REQUIRED PRIVATE CONFIGURATION | Transfer securely and separately; never commit credentials. |
@@ -21,7 +29,7 @@ The sole intended development checkout is `~/Projects/Opus`. Its canonical branc
 | Historical logs/captures and APKs already tracked by Git | HISTORICAL ONLY | Retained to preserve existing source-bound evidence; no new worktree archives imported. |
 | Unique ignored/untracked files in external worktrees | UNRESOLVED | Preserve at their original locations until individually reviewed. Not required to build current main merely because they exist. |
 
-Current main already contains the integrated Android application and backend modules. No additional unfinished branch was identified as approved Gould 0.12 scope. No experimental code was merged. Historical worktree paths in evidence documents are provenance, not installation paths.
+Current main already contains the integrated Android application. (The backend modules named above were removed on 2026-11-25.) No additional unfinished branch was identified as approved Gould 0.12 scope. No experimental code was merged. Historical worktree paths in evidence documents are provenance, not installation paths.
 
 ## Toolchain
 
@@ -32,7 +40,7 @@ Versions below come from repository build files and the observed host, not a new
 - Gradle **9.3.1**, supplied by `./gradlew`; Android Gradle plugin **9.1.0**; Compose Kotlin plugin **2.2.10**; KSP **2.3.12**. Do not install a system Gradle in place of the wrapper.
 - Android SDK `platform-tools`, `platforms;android-36`, `build-tools;36.0.0`. Minimum app API 26; target/compile API 36. An emulator and its system image are optional, separate installations.
 - Node **22.23.1** and npm **10.9.8** were observed on the current host. Package lockfiles pin JS dependencies. PostgreSQL **17** is the synthetic backend test target; rootless Podman is used by the local runner.
-- Backend pins include `pg` 8.23.1, `jose` 6.2.13, `esbuild` 0.28.2 and `miniflare` 5.20261019.2-beta. Optional deployment pins `cf` 1.0.0-beta.21 and Wrangler 4.152.0.
+- Historical backend pins (`pg` 8.23.1, `jose` 6.2.13, `esbuild` 0.28.2, `miniflare` 5.20261019.2-beta, `cf` 1.0.0-beta.21, Wrangler 4.152.0) belonged to the retired backend and are no longer used by the build. Node/npm are not required for Android development.
 
 Install Git, JDK 17, Bash, Python, GnuPG, Node/npm and optional rootless Podman using the destination Linux distribution's supported packages or the tools' official installers. Install Android command-line tools separately and accept SDK licences interactively. With `sdkmanager` available:
 
@@ -48,25 +56,18 @@ printf 'sdk.dir=%s\n' "$ANDROID_HOME" > local.properties
 
 Set `JAVA_HOME` to the installed JDK 17 location. The first build needs network access to the Gradle distribution, Google Maven, Maven Central and plugin repositories. Do not add `--offline` until dependencies have actually resolved on the new computer. SDK paths belong in ignored `local.properties` or environment variables, never tracked machine paths.
 
-For backend development, all source imports resolve within Opus:
-
-```sh
-npm ci --prefix spikes/stage6-schema-pg --ignore-scripts --no-audit --no-fund
-npm ci --prefix spikes/stage6-auth-local --ignore-scripts --no-audit --no-fund
-npm ci --prefix services/community-bff --ignore-scripts --no-audit --no-fund
-npm test --prefix services/community-bff
-podman pull docker.io/library/postgres:17@sha256:3518071376d0b6156b02e1db2747a78511b5b9dc3763cc79c506ebe2dc2ee71c
-podman tag docker.io/library/postgres@sha256:3518071376d0b6156b02e1db2747a78511b5b9dc3763cc79c506ebe2dc2ee71c docker.io/library/postgres:17
-python3 services/community-bff/run-local.py
-python3 services/community-bff/run-local.py --client-worktree "$PWD" --client-only
-node services/community-bff/build-local.mjs
-```
-
-The local runner uses a disposable loopback-only synthetic PostgreSQL container and removes that container/its volumes. These commands do not configure or migrate a hosted database. Optional deployment dependencies can be installed with `npm ci --prefix services/community-bff/deployment`; building/deploying live services is outside this transfer task. `scripts/community-local/verify-jvm.py` is a historical direct-cache compiler helper; use Gradle tests for normal development instead.
+The historical backend setup commands (`npm ci` for `spikes/stage6-*` and
+`services/community-bff`, the disposable loopback PostgreSQL container,
+`services/community-bff/run-local.py` and `build-local.mjs`) were needed to run
+the synthetic backend suites. Those components were removed on 2026-11-25 with
+the backend retirement; do not recreate or run them. No backend service, hosted
+database or deployment is part of Gould. `scripts/community-local/verify-jvm.py`
+remains a historical direct-cache compiler helper; use Gradle tests for normal
+development.
 
 ## Private configuration and upgrade compatibility
 
-Android builds do not require backend production credentials. Google identity and community writes retain their existing disabled/configuration gates; do not invent substitute configuration. See `docs/GOOGLE-IDENTITY-SETUP.md`, `docs/SIGNING.md` and the latest Stage 6 runtime documents for existing external setup.
+Android builds do not require backend credentials, and no backend credential is expected to exist. Google identity remains the device-local Credential Manager profile; do not invent substitute configuration. See `docs/GOOGLE-IDENTITY-SETUP.md` and `docs/SIGNING.md` for existing external setup.
 
 Securely transfer the existing trusted Android signing keystore and its passwords, any required private signing init scripts, private PMP (`.pmp/`, `.pmp.yml`), necessary account configuration and server secrets separately in an encrypted container. Preserve owner-only permissions and restore credentials outside Git. Do not paste values into documentation, shell history or command output. Authenticate GitHub again on the destination computer; host credential stores are not part of the repository.
 

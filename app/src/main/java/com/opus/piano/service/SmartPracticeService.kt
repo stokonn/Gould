@@ -62,7 +62,7 @@ class SmartPracticeService : Service() {
         try {
             val manager = getSystemService(NotificationManager::class.java)
             manager.createNotificationChannel(NotificationChannel(CHANNEL,L.s(R.string.msg_smart_practice_1d73),NotificationManager.IMPORTANCE_LOW))
-            ServiceCompat.startForeground(this,ID,notification("Starting microphone"),if (Build.VERSION.SDK_INT >= 30) ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE else 0)
+            ServiceCompat.startForeground(this,ID,notification("Starting microphone"),ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE)
             capture = scope.launch {
                 try {
                     var startedToken = ""

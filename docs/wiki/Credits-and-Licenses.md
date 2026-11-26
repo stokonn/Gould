@@ -7,7 +7,7 @@ Project-owned application source is licensed under [GPL-3.0-or-later](https://gi
 
 Source facts, encyclopedic prose, portraits, scores and recordings have different rights. Catalogue details retain source/licence/attribution information; an entity identifier or deceased composer does not license media. Provider metadata ingestion retains the existing source policies. Metadata lacking its original response stays unknown/unreviewed, rather than receiving an invented licence.
 
-No new records were imported into the public cloud catalogue by this release. Draft source/licence proposals remain review drafts; they were not blindly merged or treated as ingest authorization. Existing project, font, artwork and source credits below remain preserved. See the [privacy notice](https://github.com/stokonn/Gould/blob/main/docs/PRIVACY.md) for processing information.
+No new records were imported into the former public cloud catalogue by this release, and that catalogue service has since been retired (2026-11-25). Draft source/licence proposals remain review drafts; they were not blindly merged or treated as ingest authorization. Existing project, font, artwork and source credits below remain preserved. See the [privacy notice](https://github.com/stokonn/Gould/blob/main/docs/PRIVACY.md) for processing information.
 
 The 0.12 Home quote card uses original AI-generated landscape artwork authorized for this project, not a third-party photograph or a copy of the private moodboard. Its production hash and provenance are recorded in `docs/design/gould-0.12/PRODUCTION-ASSETS.md`. The quotation source and translator credits remain unchanged. Private design references are excluded from the app and public repository.
 

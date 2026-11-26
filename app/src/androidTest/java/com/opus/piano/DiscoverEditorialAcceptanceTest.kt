@@ -55,6 +55,19 @@ class DiscoverEditorialAcceptanceTest {
         fail(message+"\n"+tree().joinToString("\n"){it.text?.toString().orEmpty()})
     }
     private fun has(label:String)=tree().filter {it.isVisibleToUser}.any {it.text?.toString()==label || it.contentDescription?.toString()==label}
+    /** Source-state messages follow the result rows, which can be many with the bundled
+     *  catalogue; scroll forward while waiting so a below-the-fold message is still seen. */
+    private fun awaitScrolled(message:String,label:String) {
+        val end=android.os.SystemClock.uptimeMillis()+15000
+        while(android.os.SystemClock.uptimeMillis()<end) {
+            inst.waitForIdleSync()
+            if(has(label))return
+            tree().firstOrNull {it.isScrollable}?.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
+            Thread.sleep(120)
+        }
+        if(has(label))return
+        fail(message+"\n"+tree().joinToString("\n"){it.text?.toString().orEmpty()})
+    }
     private fun click(label:String) {
         var node:AccessibilityNodeInfo?=null
         await("Missing action $label") {
@@ -72,7 +85,16 @@ class DiscoverEditorialAcceptanceTest {
         inst.waitForIdleSync()
     }
     private fun enter(value:String) {
-        await("Missing search field"){tree().any {it.isEditable}}
+        // Expanding the advanced tools scrolls the field offscreen; LazyColumn drops it from
+        // the semantics tree, so return to the top of the list before typing.
+        var field=tree().firstOrNull {it.isEditable}
+        var attempts=0
+        while(field==null && attempts++<25) {
+            tree().firstOrNull {it.isScrollable}?.performAction(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD)
+            inst.waitForIdleSync()
+            field=tree().firstOrNull {it.isEditable}
+        }
+        await("Missing search field"){field!=null}
         assertTrue(tree().first {it.isEditable}.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT,Bundle().apply {
             putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE,value)
         }))
@@ -192,6 +214,20 @@ class DiscoverEditorialAcceptanceTest {
         // the journey assertions below are API-independent.
         check(android.os.Build.VERSION.SDK_INT in 36..37)
         check(android.os.Build.HARDWARE in setOf("ranchu","goldfish"))
+        // The shared catalogue also preserves the pre-0.14 provider cache as unreviewed snapshots.
+        // Seed the recorded OpenOpus omnisearch response so the product's own legacy import
+        // (part of local preparation) has deterministic input instead of relying on device history.
+        val legacyGoldberg=legacyFixture("goldberg")
+        app.database.openHelper.writableDatabase.execSQL(
+            "INSERT OR REPLACE INTO catalog_cache(cacheKey,payload,fetchedAt) VALUES(?,?,?)",
+            arrayOf<Any>("omnisearch/Goldberg%20Variations/0.json",String(legacyGoldberg,Charsets.UTF_8),1_700_000_000_000L))
+        // Editorial detail/composition screens resolve through the application repository, which
+        // installs the bundled catalogue lazily as a new generation. Complete that install first.
+        // Another instrumentation test may already have prepared this app-scoped DiscoverRepository
+        // before this fixture row was seeded; its one-shot prepareLocal would not rescan newly added
+        // cache rows, so explicitly run the idempotent legacy importer after installation as well.
+        app.discover.landing()
+        app.legacyCatalogueImport.synchronize()
         val originalConsent=app.catalogOnline.enabled.value
         val oldLocales=AppCompatDelegate.getApplicationLocales()
         val oldFont=shell("settings get system font_scale").trim()
@@ -202,7 +238,9 @@ class DiscoverEditorialAcceptanceTest {
         val client=ProviderClient(ProviderTransport {request->
             check(app.catalogOnline.enabled.value && available.get())
             calls.incrementAndGet()
-            val query=URLDecoder.decode(request.url.substringAfter("query="),"UTF-8")
+            // The adapter appends fmt/limit/offset after the query, so decode only the
+            // query parameter value and drop MusicBrainz's quoted literal.
+            val query=URLDecoder.decode(request.url.substringAfter("query=").substringBefore('&'),"UTF-8").trim('"')
             if(query=="obsolete")try {obsoleteStarted.incrementAndGet();awaitCancellation()} finally {cancelled.incrementAndGet()}
             if(invalid.get())ProviderResponse(200,"{}".toByteArray())
             else ProviderResponse(200,"{\"works\":[]}".toByteArray(),mapOf("Cache-Control" to "max-age=0"))
@@ -261,7 +299,7 @@ class DiscoverEditorialAcceptanceTest {
                 capture("en-light-auto-goldberg")
                 assertFalse(has(L.s(R.string.stage7a_search_online)))
                 assertFalse(has(L.s(R.string.discover_clear_cache)))
-                click(L.s(R.string.discover_advanced))
+                scrollTo(L.s(R.string.discover_advanced));click(L.s(R.string.discover_advanced))
                 capture("en-light-search-advanced")
                 val beforeHistoryChange=calls.get()
                 scrollTo(L.s(R.string.discover_history))
@@ -269,7 +307,7 @@ class DiscoverEditorialAcceptanceTest {
                 click(L.s(R.string.discover_history));Thread.sleep(650)
                 assertEquals("History preferences must not refetch a query",beforeHistoryChange,calls.get())
                 repeat(3) {tree().firstOrNull {it.isScrollable}?.performAction(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD);Thread.sleep(150)}
-                click(L.s(R.string.discover_advanced))
+                scrollTo(L.s(R.string.discover_advanced));click(L.s(R.string.discover_advanced))
                 // Fast edits never dispatch the intermediate empty/one-character queries.
                 val before=calls.get()
                 enter("");Thread.sleep(100);enter("x");Thread.sleep(100);enter("Mozart")
@@ -280,7 +318,9 @@ class DiscoverEditorialAcceptanceTest {
                 click(L.s(R.string.discover_artists));Thread.sleep(100)
                 click(L.s(R.string.discover_all))
                 enter("Chopin");await("Obsolete request was not cancelled"){cancelled.get()>=1 && cancelled.get()==obsoleteStarted.get()}
-                await("Composer missing"){has("Frédéric Chopin")}
+                // The bundled catalogue also matches "Chopin"; the fixture composer can be
+                // below the fold, so scroll the results list to it like a user would.
+                scrollTo("Frédéric Chopin");await("Composer missing"){has("Frédéric Chopin")}
                 capture("en-light-auto-chopin")
                 // Every required public query runs through native parsing/intake/search.
                 for((name,query) in listOf("chopin" to "Frédéric Chopin","ballade" to "Ballade No. 1, Op. 23","goldberg" to "Goldberg Variations","bach" to "Johann Sebastian Bach","mozart" to "Mozart")) {
@@ -301,10 +341,10 @@ class DiscoverEditorialAcceptanceTest {
                 evidenceBefore=detail.assertions.map {it.assertion.toString()+it.source.toString()+it.rights.toString()}
                 // Provider failure preserves the already ingested catalogue and readable UI.
                 invalid.set(true);enter("Goldberg")
-                await("Provider error not shown"){has(L.s(R.string.discover_source_warning))}
+                awaitScrolled("Provider error not shown",L.s(R.string.discover_source_warning))
                 capture("en-light-provider-failure")
                 val networkCalls=calls.get();available.set(false);enter("Goldberg ")
-                await("Connection state missing"){has(L.s(R.string.discover_connection_unavailable))}
+                awaitScrolled("Connection state missing",L.s(R.string.discover_connection_unavailable))
                 assertEquals(networkCalls,calls.get());capture("en-light-offline")
                 available.set(true);invalid.set(false)
                 inst.runOnMainSync {nav.navigate("detail/${goldberg.id}")}
@@ -317,7 +357,9 @@ class DiscoverEditorialAcceptanceTest {
                 scrollTo(L.s(R.string.discover_sources));click(L.s(R.string.discover_sources))
                 capture("en-light-composer-credits")
                 val composerDetail=(repository.detail(composer.id) as CatalogueAccess.Available).value!!
-                val duplicate=CataloguePresentation.groups(composerDetail.assertions).first {it.evidence.size>1}
+                // MusicBrainz-only evidence can legitimately have a single source record;
+                // the disclosure still expands it, so use the group with the most evidence.
+                val duplicate=CataloguePresentation.groups(composerDetail.assertions).maxBy {it.evidence.size}
                 val countLabel=L.s(R.string.discover_evidence_count,duplicate.evidence.size)
                 scrollTo(countLabel);click(countLabel)
                 val dateLabel=CataloguePresentation.retrievedLabel(duplicate.evidence.first().source.retrievedAt,L.locale)
@@ -356,6 +398,10 @@ class DiscoverEditorialAcceptanceTest {
                 .first {it.optJSONObject("work")!=null}.getJSONObject("work").getString("id")
             val canonical=(app.localCatalogue.access {it.providerIdentity("openopus","work",external)} as CatalogueAccess.Available).value!!
             val work=(repository.detail(canonical.entityId) as CatalogueAccess.Available).value!!.entity
+            // The legacy work is expected to already be in the repertoire (its detail offers
+            // "Open existing"); create that link through the product path, not device history.
+            val legacyDetail=(repository.detail(work.id) as CatalogueAccess.Available).value!!
+            com.opus.piano.data.catalogue.CatalogueRepertoire(app.database).add(legacyDetail)
             for((size,pixels) in listOf("standard" to "824x1830","small" to "720x1280")) {
                 shell("wm size $pixels");shell("wm density 320")
                 for((locale,mode,font) in listOf(Triple("en","Light","1.0"),Triple("en","Dark","2.0"),Triple("cs","Light","2.0"),Triple("cs","Dark","1.0"))) {

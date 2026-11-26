@@ -90,7 +90,7 @@ import kotlinx.coroutines.CancellationException
                             Column(Modifier.weight(1f).padding(vertical = 10.dp)) {
                                 Text(L.fixed("Manual activity"), style = MaterialTheme.typography.titleSmall)
                                 Text(formatDate(LocalDate.ofEpochDay(entry.epochDay)), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                                Text(L.s(R.string.activity_minutes_unset, entry.durationMillis / 60_000L), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                Text(L.quantity(R.plurals.minutes_count, entry.durationMillis / 60_000L), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             }
                             IconButton(onClick = { editEntry = entry.entry }) { Icon(Icons.Outlined.Edit, L.s(R.string.activity_edit)) }
                             IconButton(onClick = { deleteEntry = entry.entry }) { Icon(Icons.Outlined.DeleteOutline, L.s(R.string.activity_delete)) }

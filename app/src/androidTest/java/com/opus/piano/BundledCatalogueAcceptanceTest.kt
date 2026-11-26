@@ -1,5 +1,6 @@
 package com.opus.piano
 
+import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.hasProgressBarRangeInfo
@@ -41,6 +42,13 @@ class BundledCatalogueAcceptanceTest {
     @get:Rule val compose = createAndroidComposeRule<MainActivity>()
     private val context get() = InstrumentationRegistry.getInstrumentation().targetContext
     private fun id() = UUID.randomUUID().toString()
+    /** MainActivity owns its production content, so test content is installed through the
+     *  activity (the established pattern for this suite) instead of the rule, which refuses
+     *  an activity that has already set content. */
+    private fun content(block:@androidx.compose.runtime.Composable () -> Unit) {
+        compose.runOnUiThread { compose.activity.setContent(content=block) }
+        compose.waitForIdle()
+    }
 
     @Test fun bundledComposersWorksLibraryAndDiscoverUsePublicRecordsOnly() = runBlocking {
         val personalName = "bundled-personal-${id()}.db"
@@ -114,7 +122,7 @@ class BundledCatalogueAcceptanceTest {
             val app = context.applicationContext as OpusApplication
             val model = OpusViewModel(app.container.repository, androidx.lifecycle.SavedStateHandle(), app.container.practice, app.container.recording, context)
             val personalPiece = requireNotNull(personal.dao().piece(privatePiece))
-            compose.setContent {
+            content {
                 MaterialTheme {
                     RepertoireScreen(LibraryState(pieces=listOf(personalPiece),loading=false),CatalogSnapshot(emptyList(),emptyList()),model,{}, {},catalogueRepository=discover)
                 }
@@ -154,7 +162,7 @@ class BundledCatalogueAcceptanceTest {
                 adapters=emptyList(),
                 prepareLocal={ initializationGate.await() }
             )
-            compose.setContent {
+            content {
                 MaterialTheme {
                     RepertoireScreen(LibraryState(pieces=listOf(personalPiece),loading=false),CatalogSnapshot(emptyList(),emptyList()),model,{}, {},catalogueRepository=loadingRepository)
                 }
@@ -175,7 +183,7 @@ class BundledCatalogueAcceptanceTest {
                 adapters=emptyList(),
                 prepareLocal={ error("fixture catalogue initialization failure") }
             )
-            compose.setContent {
+            content {
                 MaterialTheme {
                     RepertoireScreen(LibraryState(pieces=listOf(personalPiece),loading=false),CatalogSnapshot(emptyList(),emptyList()),model,{}, {},catalogueRepository=failedInitialization)
                 }
@@ -190,7 +198,7 @@ class BundledCatalogueAcceptanceTest {
                 compose.onAllNodes(hasText(context.getString(R.string.discover_error))).fetchSemanticsNodes().isNotEmpty()
             }
         } finally {
-            compose.setContent {}
+            content {}
             store.close(); personal.close()
             staged.delete(); temp.deleteRecursively()
             context.deleteDatabase(personalName)

@@ -13,7 +13,12 @@ import sqlite3
 import subprocess
 import time
 
-from upgrade_table_expectations import assert_table_transition
+from upgrade_table_expectations import (
+    assert_column_preservation,
+    assert_table_transition,
+    column_transition,
+    project_rows,
+)
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--serial', required=True)
@@ -173,10 +178,12 @@ def values(name):
     if a.expected_schema >= 11:
         excluded.update({'local_audio','local_audio_parts','achievement_events'})
     tables = sorted(r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'") if r[0] not in excluded)
+    columns = {t: [r[1] for r in conn.execute(f'PRAGMA table_info(`{t}`)')] for t in tables}
     data = {t: conn.execute(f'SELECT * FROM {t} ORDER BY rowid').fetchall() for t in tables}
     conn.close()
     (a.output / (name + '.json')).write_text(json.dumps(data, sort_keys=True))
-    return data
+    (a.output / (name + '-columns.json')).write_text(json.dumps(columns, sort_keys=True))
+    return data, columns
 prefs_path=a.output / 'goldberg-appearance.xml'
 prefs_path.write_text('<?xml version="1.0" encoding="utf-8"?><map><string name="accent">Slate</string><string name="cards">Outline</string><string name="density">Compact</string><string name="sort">Composer</string></map>')
 adb('push',str(prefs_path),'/data/local/tmp/goldberg-appearance.xml')
@@ -204,20 +211,30 @@ def preference_hashes():
 launch()
 baseline_startup=startup_samples()
 prefs_before=preference_hashes()
-before = values('before')
+before, before_columns = values('before')
 print(adb('install', '-r', str(a.candidate)).decode().strip(), flush=True)
 launch()
 candidate_startup=startup_samples()
-after = values('after')
+after, after_columns = values('after')
 assert prefs_before==preference_hashes(), 'Appearance/media/identity preferences changed'
 allowed_new_badges={'first_take','recording_artist','versatile_pianist','musical_journal','critical_listener','founding_pianist'} if a.expected_schema>=11 else set()
 for table,original in before.items():
     incoming=after.get(table)
+    assert incoming is not None, 'Persistent table disappeared: '+table
     if table=='badge_unlocks' and allowed_new_badges:
-        assert all(row in incoming for row in original), 'Historical badge identity/date changed'
-        assert all(row in original or row[0] in allowed_new_badges for row in incoming), 'Unexpected new badge'
+        # Badge rows may be appended by the newer app, but the seeded rows and
+        # their dates must survive unchanged and only allowlisted badges may appear.
+        added_badge_columns=column_transition(table,before_columns[table],after_columns[table])
+        assert not added_badge_columns, 'Unexpected badge column change: '+','.join(added_badge_columns)
+        seeded=project_rows(original,before_columns[table],before_columns[table])
+        upgraded=project_rows(incoming,after_columns[table],before_columns[table])
+        assert all(row in upgraded for row in seeded), 'Historical badge identity/date changed'
+        assert all(row in seeded or row[0] in allowed_new_badges for row in upgraded), 'Unexpected new badge'
     else:
-        assert original==incoming, 'Persistent data changed: '+table
+        # Additive migrations (for example schema 12 -> 13 on local_app_state) may
+        # append columns with a Room DEFAULT; every seeded value, row and row order
+        # must still be identical and each new column must hold its declared default.
+        assert_column_preservation(table,before_columns[table],original,after_columns[table],incoming,a.expected_schema)
 # Table-set verification derives expectations from the checked-in Room schema
 # JSONs (single source of truth) and compares RAW sqlite_master table sets, so
 # tables excluded from row comparison above (migration-generated

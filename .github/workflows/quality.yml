@@ -10,13 +10,13 @@ concurrency:
   cancel-in-progress: true
 jobs:
   host-quality:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+      - uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
         with:
           distribution: temurin
           java-version: '17'
@@ -24,7 +24,7 @@ jobs:
       - name: Set up required Android SDK packages
         uses: android-actions/setup-android@be39fa834029ff78f1a44aa3bb0819b8fc2bd8fd # v4.0.4
         with:
-          cmdline-tools-version: '12266719'
+          cmdline-tools-version: '16111833'
           packages: 'platform-tools platforms;android-37.0 build-tools;36.0.0'
           log-accepted-android-sdk-licenses: false
       - name: Build, JVM tests, instrumentation compilation and lint
@@ -43,19 +43,7 @@ jobs:
           python3 scripts/check_curated_catalogue.py
           python3 -m unittest discover -s scripts -p 'test_publication_workflows.py'
           python3 -m unittest discover -s scripts -p 'test_upgrade_table_expectations.py'
-          python3 -m unittest discover -s scripts/stage6 -p 'test_backup_store.py'
+          python3 -m unittest discover -s scripts -p 'test_emulator_network_assertion.py'
           git diff --exit-code -- app/schemas
-      # Historical Stage 6 acceptance is source-bound to its original immutable tree.
-      # Verify that tree, rather than falsely claiming a modernized workflow is byte-identical.
-      - name: Check out immutable Stage 6 acceptance source
-        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
-        with:
-          ref: 048f1ba582ccd87ed124f0d3fcd8e029790748ba
-          path: stage6-accepted-src
-          persist-credentials: false
-      - name: Verify retained Stage 6 evidence against accepted source
-        run: |
-          test "$(git -C stage6-accepted-src rev-parse HEAD)" = 048f1ba582ccd87ed124f0d3fcd8e029790748ba
-          python3 stage6-accepted-src/scripts/stage6/verify_evidence.py
 # This workflow never publishes APKs signed with a runner-generated key.
 # Owner physical-device UI/upgrade acceptance and release signing/publication follow AGENTS.md; emulator CI is optional.

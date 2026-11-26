@@ -38,7 +38,10 @@ class ActivityRepositoryTest {
 
     @Test fun snapshotIsReadOnlyAndRefreshOwnsRewardEvaluation() = runBlocking { withRepository { db, repo ->
         val today = day("2026-12-14")
-        repo.initialize(day("2026-11-09"), zone, now=1)
+        // Startup owns initialization (settings, first-use week and this week's row);
+        // snapshot itself must stay a read and must not grant rewards.
+        repo.refresh(day("2026-11-09"), zone, now=1)
+        repo.refresh(today, zone, now=2)
         addPerfectWeek(db, day("2026-12-07"), "read-only")
         assertTrue(db.activityDao().grants().isEmpty())
         repo.snapshot(today, zone, now=2)
