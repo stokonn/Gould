@@ -84,6 +84,32 @@ class DiscoverRepairTest {
         } finally {db.close();context.deleteDatabase(name)}
     }
 
+    @Test fun allLandingShowsTwentyFiveLocalComposersInNameOrder()=runBlocking {
+        val personal=Room.inMemoryDatabaseBuilder(context,OpusDatabase::class.java)
+            .addMigrations(*OpusDatabase.ALL_MIGRATIONS).addCallback(PersonalCatalogueBridge.callback).addCallback(BackupState.callback).build()
+        val name="discover-landing-${id()}.db"
+        val store=LocalCatalogueStore(context,personal,name)
+        try {
+            assertTrue(store.initialize() is CatalogueAccess.Available)
+            store.access {repo->
+                (0 until 30).forEach {index->
+                    val entityId=id();val title="Composer ${index.toString().padStart(2,'0')}"
+                    repo.add(CatalogueEntity(entityId,"artist",title),CatalogueArtist(entityId))
+                }
+            }
+            val discovery=DiscoverRepository(store,ProviderClient(ProviderTransport {error("Landing must stay offline")},{false}),{false})
+            val page=discovery.landing()
+            assertEquals(25,page.items.size)
+            assertTrue(page.items.all {it.kind=="artist"})
+            assertEquals(page.items.map {it.title}.sortedBy {it.lowercase()},page.items.map {it.title})
+        } finally {
+            store.close();personal.close()
+            context.getDatabasePath(name).parentFile?.listFiles()
+                ?.filter {it.name==name || it.name.startsWith("$name.") || it.name.startsWith("$name-")}
+                ?.forEach {it.delete()}
+        }
+    }
+
     @Test fun debounceConsentCancellationRankingAndProviderOriginsStayBounded()=runBlocking {
         val personalName="discover-personal-${id()}";val catalogueName="discover-catalogue-${id()}"
         val personal=Room.databaseBuilder(context,OpusDatabase::class.java,personalName)

@@ -162,7 +162,7 @@ internal class DiscoverSearchSession:androidx.lifecycle.ViewModel() {
         // Browsable categories rendered from the real supported search categories.
         item {EditorialSectionHeader(L.s(R.string.stage7a_browse_categories))}
         item {LazyRow(horizontalArrangement=Arrangement.spacedBy(JournalSpace.tiny),contentPadding=PaddingValues(horizontal=JournalSpace.small)) {
-            items(listOf("all","works","artists","albums","lists")) {key->CategoryTile(key,category==key){category=key;active=true;onlineRequested=false}}
+            items(listOf("all","works","artists","albums")) {key->CategoryTile(key,category==key){category=key;active=true;onlineRequested=false}}
         }}
         if(availableFilters.artists.isNotEmpty() || availableFilters.periods.isNotEmpty())item {
             TextButton({filtersExpanded=!filtersExpanded}){Text(L.s(R.string.discover_filters))}
@@ -279,7 +279,7 @@ private class OfflineRow(val title:String,val composer:String,val meta:String,va
         }
     }
 }
-private fun categoryIcon(key:String)=when(key){"works"->Icons.Outlined.MusicNote;"artists"->Icons.Outlined.Person;"albums"->Icons.Outlined.Album;"lists"->Icons.Outlined.List;else->Icons.Outlined.LibraryMusic}
+private fun categoryIcon(key:String)=when(key){"works"->Icons.Outlined.MusicNote;"artists"->Icons.Outlined.Person;"albums"->Icons.Outlined.Album;else->Icons.Outlined.LibraryMusic}
 @Composable private fun CatalogueRow(entity:CatalogueEntity,workType:String?=null,onClick:()->Unit) {
     Surface(onClick=onClick,shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surface) {
         Row(Modifier.fillMaxWidth().padding(horizontal=12.dp,vertical=12.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
@@ -419,7 +419,7 @@ private fun categoryIcon(key:String)=when(key){"works"->Icons.Outlined.MusicNote
         }
     }
 }
-private fun categoryLabel(key:String)=L.s(when(key){"works"->R.string.discover_works;"artists"->R.string.discover_artists;"albums"->R.string.discover_albums;"lists"->R.string.discover_lists;else->R.string.discover_all})
+private fun categoryLabel(key:String)=L.s(when(key){"works"->R.string.discover_works;"artists"->R.string.discover_artists;"albums"->R.string.discover_albums;else->R.string.discover_all})
 /** Legacy numeric/opaque fallbacks render as a localized unnamed label, never as an invented name. */
 private fun shownTitle(kind:String,title:String)=if(CataloguePresentation.unnamed(kind,title))L.s(if(kind=="artist")R.string.discover_unnamed_artist else R.string.discover_unnamed_entry) else title
 private fun fieldLabel(key:String)=L.s(when(key) {
@@ -439,4 +439,4 @@ private fun kindLabel(key:String)=L.s(when(key){"work","composition"->R.string.d
 private fun relationLabel(key:String)=L.s(when(key){"part"->R.string.discover_part_relation;"credit"->R.string.discover_credit_relation;"performance"->R.string.discover_performance_relation;else->R.string.discover_related})
 private fun sourceLabel(state:SourceState)=L.s(when(state){SourceState.FRESH->R.string.discover_fresh;SourceState.CACHED->R.string.discover_cached;SourceState.STALE->R.string.discover_stale;SourceState.RATE_LIMITED->R.string.discover_rate_limited;SourceState.BLOCKED_RIGHTS->R.string.discover_blocked;SourceState.MISSING->R.string.discover_missing;SourceState.INVALID->R.string.discover_invalid;else->R.string.discover_unavailable})
 
-private fun sourceKindLabel(kind:String)=when(kind){"search"->L.s(R.string.discover_all);"release-group"->L.s(R.string.discover_albums);"series"->L.s(R.string.discover_lists);else->kindLabel(kind)}
+private fun sourceKindLabel(kind:String)=when(kind){"search"->L.s(R.string.discover_all);"release-group"->L.s(R.string.discover_albums);else->kindLabel(kind)}

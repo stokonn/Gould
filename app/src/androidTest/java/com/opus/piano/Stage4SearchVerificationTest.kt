@@ -54,6 +54,10 @@ class Stage4SearchVerificationTest {
             assertEquals(first,repo.searchPage("Goldberg",SearchFilter("works",period="Baroque")).items.single().id)
             assertTrue(repo.searchPage("Goldberg",SearchFilter("works",period="Romantic")).items.isEmpty())
             assertTrue(repo.searchPage("Goldberg",SearchFilter("works",period="Bar%")).items.isEmpty())
+            val pending=ProviderRecord("artist","pending-composer","artist","Unclassified Composer")
+            repo.observeCandidate(ProviderResult(ProviderRequest("https://api.openopus.org/fixture","openopus","search"),SourceState.FRESH,listOf(pending),"1","9".repeat(64)),pending)
+            assertEquals(1,repo.candidates("Unclassified",SearchFilter("artists")).size)
+            assertTrue(repo.candidates("Unclassified",SearchFilter("artists",period="Baroque")).isEmpty())
             val paged=repo.searchPage("Goldberg",limit=1)
             assertTrue(runCatching {repo.searchPage("Goldberg",SearchFilter(period="Baroque"),paged.nextCursor)}.isFailure)
         } finally {db.close();context.deleteDatabase(name)}

@@ -18,7 +18,7 @@ import com.opus.piano.R
 import com.opus.piano.audio.MetronomeController
 import com.opus.piano.i18n.L
 
-@Composable internal fun StudioMetronome(controller: MetronomeController, expanded: Boolean, toggle: () -> Unit) {
+@Composable internal fun StudioMetronome(controller: MetronomeController, expanded: Boolean) {
     val state by controller.state.collectAsStateWithLifecycle()
     val owner = LocalLifecycleOwner.current
     DisposableEffect(owner, controller) {
@@ -26,7 +26,6 @@ import com.opus.piano.i18n.L
         owner.lifecycle.addObserver(observer)
         onDispose { owner.lifecycle.removeObserver(observer); controller.stop() }
     }
-    JournalTextButton(onClick = toggle) { Text(L.s(R.string.studio_metronome)) }
     if (expanded) JournalCard {
         Column(verticalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
             Text(L.s(R.string.studio_tempo,state.bpm))

@@ -187,8 +187,9 @@ private sealed interface DiscoverSearchUpdate {
             worksById[piece.catalogWorkId]?.catalogLabel.orEmpty(),piece.id,piece.catalogWorkId ?: "",composersById[worksById[piece.catalogWorkId]?.composerId])}+
             cached.map {work->OfflineRow(work.title,composersById[work.composerId]?.name.orEmpty(),work.catalogLabel,null,work.id,composersById[work.composerId])}
     }
-    LazyColumn(modifier.fillMaxSize(),contentPadding=PaddingValues(if(embedded)12.dp else 20.dp),verticalArrangement=Arrangement.spacedBy(if(embedded)8.dp else 12.dp)) {
-        if(!embedded)item {
+    Column(modifier.fillMaxSize()) {
+      Column(Modifier.fillMaxWidth().padding(horizontal=if(embedded)12.dp else 20.dp, vertical=if(embedded)8.dp else 12.dp),verticalArrangement=Arrangement.spacedBy(if(embedded)8.dp else 12.dp)) {
+        if(!embedded) {
             // Stage 7A round 3 (owner): header row with the privacy affordance in the
             // upper-right, browser site-information style. The persistent privacy card
             // below the search field is removed; the same truthful disclosure opens as a
@@ -209,16 +210,22 @@ private sealed interface DiscoverSearchUpdate {
                 }
             }
         }
-        item {EditorialSearchField(query,{searchEpoch=searchLifecycle.invalidate();session.query=it;active=true})}
-        if(active && !catalogOnline)item {
+        EditorialSearchField(query,{searchEpoch=searchLifecycle.invalidate();session.query=it;active=true})
+        if(active && !catalogOnline) {
             Text(L.s(R.string.stage7a_online_off_hint),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
         }
-        item {LazyRow(horizontalArrangement=Arrangement.spacedBy(JournalSpace.tiny),contentPadding=PaddingValues(horizontal=JournalSpace.small)) {
-            items(listOf("all","works","artists","albums","lists")) {key->CategoryTile(key,category==key){
+        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)) {
+            listOf("all","works","artists","albums").forEach {key->
+                CategoryTile(key,category==key,Modifier.weight(1f)){
                 if(category!=key)categorySwitchStartedAt=com.opus.piano.data.catalogue.CataloguePerformance.start()
-                searchEpoch=searchLifecycle.invalidate();category=key;active=true
-            }}
-        }}
+                searchEpoch=searchLifecycle.invalidate();category=key
+                if(key=="all" && query.isBlank()){artistId=null;period=null;active=false}
+                else active=true
+            }
+            }
+        }
+      }
+      LazyColumn(Modifier.weight(1f).fillMaxWidth(),contentPadding=PaddingValues(horizontal=if(embedded)12.dp else 20.dp,vertical=if(embedded)8.dp else 12.dp),verticalArrangement=Arrangement.spacedBy(if(embedded)8.dp else 12.dp)) {
         if(availableFilters.artists.isNotEmpty() || availableFilters.periods.isNotEmpty())item {
             TextButton({filtersExpanded=!filtersExpanded}){Text(L.s(R.string.discover_filters))}
             if(filtersExpanded) {
@@ -319,6 +326,7 @@ private sealed interface DiscoverSearchUpdate {
             item {TextButton({scope.launch {withContext(Dispatchers.IO){app.discoverHistory.clear()};recent=emptyList()}}){Text(L.s(R.string.discover_clear_history))}}
         }
 
+      }
     }
 }
 /** One row of the "Available offline" section; pieceId links personal repertoire, workId a cached catalogue work. */
@@ -337,12 +345,12 @@ private class OfflineRow(val title:String,val composer:String,val meta:String,va
         }
     }
 }
-@Composable private fun CategoryTile(key:String,selected:Boolean,onClick:()->Unit) {
+@Composable private fun CategoryTile(key:String,selected:Boolean,modifier:Modifier=Modifier,onClick:()->Unit) {
     val tint=MaterialTheme.colorScheme.primary
-    Surface(onClick=onClick,shape=MaterialTheme.shapes.medium,color=if(selected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface) {
-        Column(Modifier.width(92.dp).padding(horizontal=10.dp,vertical=12.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(8.dp)) {
-            Icon(categoryIcon(key),null,tint=tint,modifier=Modifier.size(24.dp))
-            Text(categoryLabel(key),style=MaterialTheme.typography.labelLarge,color=if(selected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface,maxLines=1,overflow=TextOverflow.Ellipsis)
+    Surface(modifier=modifier,onClick=onClick,shape=MaterialTheme.shapes.small,color=if(selected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface) {
+        Column(Modifier.fillMaxWidth().padding(horizontal=2.dp,vertical=8.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(4.dp)) {
+            Icon(categoryIcon(key),null,tint=tint,modifier=Modifier.size(20.dp))
+            Text(categoryLabel(key),style=MaterialTheme.typography.labelMedium,color=if(selected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface,maxLines=1,softWrap=false,overflow=TextOverflow.Clip)
         }
     }
 }
@@ -366,7 +374,7 @@ private class OfflineRow(val title:String,val composer:String,val meta:String,va
         }
     }
 }
-private fun categoryIcon(key:String)=when(key){"works","work","arrangement"->Icons.Outlined.MusicNote;"artists","artist"->Icons.Outlined.Person;"albums","album","release"->Icons.Outlined.Album;"lists","collection"->Icons.Outlined.List;else->Icons.Outlined.LibraryMusic}
+private fun categoryIcon(key:String)=when(key){"works","work","arrangement"->Icons.Outlined.MusicNote;"artists","artist"->Icons.Outlined.Person;"albums","album","release"->Icons.Outlined.Album;"collection"->Icons.Outlined.List;else->Icons.Outlined.LibraryMusic}
 @Composable internal fun CatalogueRow(entity:CatalogueEntity,workType:String?=null,info:CatalogueRowInfo?=null,onClick:()->Unit) {
     Surface(onClick=onClick,shape=MaterialTheme.shapes.medium,color=MaterialTheme.colorScheme.surface) {
         Row(Modifier.fillMaxWidth().padding(horizontal=12.dp,vertical=12.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
@@ -600,7 +608,7 @@ private fun categoryIcon(key:String)=when(key){"works","work","arrangement"->Ico
         }
     }
 }
-private fun categoryLabel(key:String)=L.s(when(key){"works"->R.string.discover_works;"artists"->R.string.discover_artists;"albums"->R.string.discover_albums;"lists"->R.string.discover_lists;else->R.string.discover_all})
+private fun categoryLabel(key:String)=L.s(when(key){"works"->R.string.discover_works;"artists"->R.string.discover_artists;"albums"->R.string.discover_albums;else->R.string.discover_all})
 /** Legacy numeric/opaque fallbacks render as a localized unnamed label, never as an invented name. */
 private fun shownTitle(kind:String,title:String)=if(CataloguePresentation.unnamed(kind,title))L.s(if(kind=="artist")R.string.discover_unnamed_artist else R.string.discover_unnamed_entry) else title
 private fun fieldLabel(key:String)=L.s(when(key) {
@@ -620,7 +628,7 @@ private fun kindLabel(key:String)=L.s(when(key){"work","composition"->R.string.d
 private fun relationLabel(key:String)=L.s(when(key){"part"->R.string.discover_part_relation;"credit"->R.string.discover_credit_relation;"performance"->R.string.discover_performance_relation;else->R.string.discover_related})
 private fun sourceLabel(state:SourceState)=L.s(when(state){SourceState.FRESH->R.string.discover_fresh;SourceState.CACHED->R.string.discover_cached;SourceState.STALE->R.string.discover_stale;SourceState.RATE_LIMITED->R.string.discover_rate_limited;SourceState.BLOCKED_RIGHTS->R.string.discover_blocked;SourceState.MISSING->R.string.discover_missing;SourceState.INVALID->R.string.discover_invalid;else->R.string.discover_unavailable})
 
-private fun sourceKindLabel(kind:String)=when(kind){"search"->L.s(R.string.discover_all);"release-group"->L.s(R.string.discover_albums);"series"->L.s(R.string.discover_lists);else->kindLabel(kind)}
+private fun sourceKindLabel(kind:String)=when(kind){"search"->L.s(R.string.discover_all);"release-group"->L.s(R.string.discover_albums);else->kindLabel(kind)}
 
 private fun providerLabel(provider:String)=when(provider){"openopus"->"Open Opus";"musicbrainz"->"MusicBrainz";"wikidata"->"Wikidata";"wikipedia"->"Wikipedia";"commons"->"Wikimedia Commons";else->provider}
 private fun licenseLabel(license:String)=when(license){"CC0-1.0"->L.s(R.string.discover_license_cc0);"CC-BY-SA-4.0"->L.s(R.string.discover_license_by_sa);"Public-domain-verified"->L.s(R.string.discover_license_public_domain);else->license}

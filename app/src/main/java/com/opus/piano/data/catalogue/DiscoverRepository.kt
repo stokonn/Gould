@@ -97,7 +97,7 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
             throw e
         }
     }
-    suspend fun landing(sessionId:String=UUID.randomUUID().toString()):CatalogueSearchPage = local("",SearchFilter(),sessionId=sessionId)
+    suspend fun landing(sessionId:String=UUID.randomUUID().toString()):CatalogueSearchPage = local("",SearchFilter("artists"),limit=25,sessionId=sessionId)
     /** Same local data, identity, pagination and detail path in both tabs. No network. */
     suspend fun library(query:String,category:String="all",cursor:String?=null,sessionId:String=UUID.randomUUID().toString()):CatalogueSearchPage {
         require(query.length<=256 && category in setOf("all","artists","works"))
@@ -141,7 +141,7 @@ class DiscoverRepository(private val store:LocalCatalogueStore,private val clien
     private suspend fun finish(query:String,filter:SearchFilter,frame:DiscoverFrame,page:CatalogueSearchPage,observations:List<CatalogueCandidate>):DiscoverSearch {
         val context=CataloguePerformance.Context(frame.queryId,"local",filter.category)
         val moreStartedAt=CataloguePerformance.start()
-        val more=frame.providers.isNotEmpty() || local(query,filter,excluded=frame.seen,limit=1,sessionId=frame.queryId).items.isNotEmpty() || candidates(query,filter,frame.seenCandidates,frame.queryId).isNotEmpty()
+        val more=frame.providers.isNotEmpty() || page.nextCursor!=null || candidates(query,filter,frame.seenCandidates,frame.queryId).isNotEmpty()
         val token=if(more)paging.issue(frame) else null
         CataloguePerformance.finish("catalogue_paging_availability",moreStartedAt,"outcome=ok result_count=${page.items.size} has_more=$more",context)
         return DiscoverSearch(frame.queryId,page,frame.sources,observations,token,more && token==null,frame.providerEntityIds)

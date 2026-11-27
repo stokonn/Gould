@@ -53,7 +53,8 @@ class PracticeRepository(private val db: OpusDatabase, private val journal: Opus
         journal.complete(PracticeSession(pieceId = null, pieceTitle = parts.filter { it.durationMillis > 0 || it.notes.isNotBlank() }.joinToString(" · ") { it.title }.ifBlank { "Practice notes" },
             startedAt = s.startedAt, completedAt = System.currentTimeMillis(), durationMillis = s.elapsed,
             elapsedMillis = s.wallElapsed, detectedActiveMillis = s.detectedActive.takeIf { s.mode != "Manual" },
-            practiceMode = s.mode, timingQuality = s.timingQuality, notes = s.notes, reflection = s.reflection, completionToken = s.token), parts)
+            practiceMode = s.mode, timingQuality = s.timingQuality, notes = s.notes, reflection = s.reflection, completionToken = s.token,
+            sessionTitle = s.sessionTitle), parts)
         val id = requireNotNull(db.practiceDao().completed(s.token)).id
         db.practiceDao().intervals(s.intervals.map { it.copy(id = 0, sessionId = id) })
         db.backupStateDao().completed(CompletionEvidence(s.token,s.elapsed))
@@ -78,7 +79,7 @@ class PracticeRepository(private val db: OpusDatabase, private val journal: Opus
             s.queueUndo?.let { u -> put("queueUndo", JSONObject().apply {
                 put("active", u.active); put("order", JSONArray(u.order)); put("removed", JSONArray(u.removed.toList()))
             }) }
-            put("status", s.status); put("quality", s.timingQuality); put("removed", JSONArray(s.removed.toList()))
+            put("status", s.status); put("quality", s.timingQuality); put("removed", JSONArray(s.removed.toList())); put("sessionTitle",s.sessionTitle)
             put("parts", JSONArray().apply { s.parts.forEach { p -> put(JSONObject().apply {
                 put("piece", p.pieceId ?: JSONObject.NULL); put("title", p.title); put("composer", p.composer)
                 put("catalog", p.catalogWorkId ?: JSONObject.NULL); put("era", p.musicalEra); put("duration", p.durationMillis); put("notes", p.notes)
@@ -98,6 +99,7 @@ class PracticeRepository(private val db: OpusDatabase, private val journal: Opus
                 }
             }
             typed(o,listOf("token","mode","notes","reflection","quality"),listOf("start","credited","elapsed","detected","active","sensitivity","pause"))
+            require(!o.has("sessionTitle") || (o.get("sessionTitle") is String && o.getString("sessionTitle").length <= 120))
             require(o.get("smart") is Boolean && o.getString("token").length<=256)
             o.getJSONArray("parts").objects().forEach {p->
                 typed(p,listOf("title","composer","era","notes"),listOf("duration"))
@@ -110,7 +112,7 @@ class PracticeRepository(private val db: OpusDatabase, private val journal: Opus
             require(parts.isNotEmpty() && parts.all { it.durationMillis >= 0 })
             val rows = o.getJSONArray("intervals").objects().map { r -> SessionInterval(partIndex = r.getInt("part"), startMillis = r.getLong("start"), endMillis = r.getLong("end"), creditedMillis = r.getLong("credit"), reason = r.getString("reason")) }
             val s = PracticeState(execution = o.optLong("execution",0), status = o.optString("status", "Interrupted"), token = o.getString("token"), startedAt = o.getLong("start"), elapsed = o.getLong("credited"), wallElapsed = o.getLong("elapsed"), detectedActive = o.getLong("detected"), mode = o.getString("mode"), smart = o.getBoolean("smart"), active = o.getInt("active"), notes = o.getString("notes"), reflection = o.getString("reflection"), sensitivity = o.getInt("sensitivity"), pauseSeconds = o.getInt("pause"), timingQuality = o.getString("quality"), parts = parts, intervals = rows,
-                removed = o.getJSONArray("removed").let { a -> (0 until a.length()).map { a.getLong(it) }.toSet() })
+                removed = o.getJSONArray("removed").let { a -> (0 until a.length()).map { a.getLong(it) }.toSet() }, sessionTitle = o.optString("sessionTitle", ""))
             require(s.active in parts.indices && parts.fold(0L) { sum, part -> Math.addExact(sum,part.durationMillis) } == s.elapsed)
             require(rows.isNotEmpty() || s.wallElapsed == 0L) {"Missing draft timing evidence; original retained"}
             validateTiming(s.elapsed, s.wallElapsed, s.detectedActive.takeIf { s.mode != "Manual" }, s.mode, rows, parts.size)

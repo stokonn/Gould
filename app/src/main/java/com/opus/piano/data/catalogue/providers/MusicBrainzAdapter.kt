@@ -8,7 +8,7 @@ class MusicBrainzAdapter : ProviderAdapter {
     override val intervalMillis=1100L
     override fun search(query:String,category:String,language:String,offset:Int):List<ProviderRequest> {
         require(offset in 0..10000)
-        val kinds=when(category){"works"->listOf("work");"artists"->listOf("artist");"albums"->listOf("release-group");"lists"->listOf("series");else->listOf("work","artist","release-group")}
+        val kinds=when(category){"works"->listOf("work");"artists"->listOf("artist");"albums"->listOf("release-group");else->listOf("work","artist","release-group")}
         val literal="\""+query.replace("\\","\\\\").replace("\"","\\\"")+"\""
         return kinds.map {ProviderRequest("https://musicbrainz.org/ws/2/$it/?query=${enc(literal)}&fmt=json&limit=20&offset=$offset",id,it,offset=offset)}
     }

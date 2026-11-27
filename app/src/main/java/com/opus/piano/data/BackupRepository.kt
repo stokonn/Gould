@@ -69,7 +69,7 @@ class BackupRepository(
         val budget=Budget()
         val local=db.practiceDao().localNow() ?: LocalAppState()
         fun section(data:JSONObject)=JSONObject().put("version",1).put("data",data).put("sha256",BackupJson.hash(data))
-        val root=JSONObject().put("format","goldberg-backup").put("version",8).put("journalSchema",13).put("createdAt",System.currentTimeMillis())
+        val root=JSONObject().put("format","goldberg-backup").put("version",9).put("journalSchema",14).put("createdAt",System.currentTimeMillis())
         val journal=JSONObject();journalTables.forEach {journal.put(it,rows(it,budget))}
         val identities=JSONObject();identityTables.forEach {identities.put(it,rows(it,budget))}
         val pending=db.backupStateDao().state()?.takeIf{it.status=="pending"}
@@ -92,7 +92,7 @@ class BackupRepository(
     suspend fun receive(input:java.io.InputStream):File=withContext(Dispatchers.IO){files.receive(File(directory,"input-${UUID.randomUUID()}.json"),input)}
     private fun sections(root:JSONObject):Map<String,JSONObject> {
         BackupJson.keys(root,setOf("format","version","journalSchema","createdAt","sections","sha256"))
-        require(root.getString("format")=="goldberg-backup" && ((root.integer("version")==5L && root.integer("journalSchema")==10L) || (root.integer("version")==6L && root.integer("journalSchema")==11L) || (root.integer("version")==7L && root.integer("journalSchema")==12L) || (root.integer("version")==8L && root.integer("journalSchema")==13L)) && root.integer("createdAt")>0)
+        require(root.getString("format")=="goldberg-backup" && ((root.integer("version")==5L && root.integer("journalSchema")==10L) || (root.integer("version")==6L && root.integer("journalSchema")==11L) || (root.integer("version")==7L && root.integer("journalSchema")==12L) || (root.integer("version")==8L && root.integer("journalSchema")==13L) || (root.integer("version")==9L && root.integer("journalSchema")==14L)) && root.integer("createdAt")>0)
         val expected=root.getString("sha256");root.remove("sha256")
         try {require(BackupJson.hash(root)==expected){"Backup integrity mismatch"}} finally {root.put("sha256",expected)}
         val sections=root.getJSONObject("sections");BackupJson.keys(sections,setOf("journal","identities","preferences","recovery") + (if(root.integer("version")>=6L)setOf("studio") else emptySet()) + (if(root.integer("version")>=7L)setOf("activity") else emptySet()))
@@ -100,6 +100,9 @@ class BackupRepository(
             val section=sections.getJSONObject(key);BackupJson.keys(section,setOf("version","sha256","data"));require(section.integer("version")==1L)
             section.getJSONObject("data").also {require(BackupJson.hash(it)==section.getString("sha256")){"Backup section integrity mismatch"}}
         }
+    }
+    private fun withSessionTitles(journal:JSONObject, addMissing:Boolean):JSONObject = JSONObject(journal.toString()).apply {
+        if(addMissing) getJSONArray("sessions").objects().forEach { if(!it.has("sessionTitle")) it.put("sessionTitle", "") }
     }
     private fun raw(row:JSONObject):ByteArray {
         val encoded=row.getString("rawBase64");require(encoded.length<=MAX_BYTES)
@@ -155,13 +158,13 @@ class BackupRepository(
         }
     }
     private suspend fun validate(root:JSONObject):String {
-        if(root.integer("version") !in setOf(5L,6L,7L,8L))return legacy.validate(root.toString())
+        if(root.integer("version") !in setOf(5L,6L,7L,8L,9L))return legacy.validate(root.toString())
         val s=sections(root);val settings=s.getValue("preferences")
         BackupJson.keys(settings,setOf("appearance","locale","previousMeteredConsent","local"))
         val portable=JSONObject(settings.toString()).apply{remove("local")};PortablePreferences.validate(portable)
-        val local=settings.getJSONObject("local");BackupJson.keys(local,setOf("onboardingDone","reminderEnabled","reminderHour","reminderMinute") + if(root.integer("version")==8L)setOf("tourVersion","tourCompleted","tourSkipped","tourSeenSteps") else emptySet())
+        val local=settings.getJSONObject("local");BackupJson.keys(local,setOf("onboardingDone","reminderEnabled","reminderHour","reminderMinute") + if(root.integer("version")>=8L)setOf("tourVersion","tourCompleted","tourSkipped","tourSeenSteps") else emptySet())
         require(local.get("onboardingDone") is Boolean && local.get("reminderEnabled") is Boolean && local.integer("reminderHour") in 0..23 && local.integer("reminderMinute") in 0..59)
-        if(root.integer("version")==8L) {
+        if(root.integer("version")>=8L) {
             val version=local.integer("tourVersion")
             val completed=local.get("tourCompleted") as? Boolean ?: error("Invalid tour completion state")
             val skipped=local.get("tourSkipped") as? Boolean ?: error("Invalid tour skip state")
@@ -172,7 +175,7 @@ class BackupRepository(
         }
         val journal=s.getValue("journal");BackupJson.keys(journal,journalTables.toSet())
         // Reuse all historical semantic checks, without passing raw recovery bytes through strings.
-        val legacyTables=JSONObject().apply{journal.keys().forEach{k->put(k,journal.get(k))}}.put("catalog_cache",JSONArray()).put("practice_recovery_archives",JSONArray())
+        val legacyTables=withSessionTitles(journal, root.integer("version") < 9L).put("catalog_cache",JSONArray()).put("practice_recovery_archives",JSONArray())
         val summary=legacy.validateTables(legacyTables)
         val identities=s.getValue("identities");BackupJson.keys(identities,identityTables.toSet())
         val recovery=s.getValue("recovery");BackupJson.keys(recovery,setOf("drafts","archives","evidence","completions"))
@@ -225,7 +228,7 @@ class BackupRepository(
         val previous=exportSnapshot();phase("destination_preserved")
         val source=files.publish(File(directory,"import-${BackupJson.hash(root)}.json"),root)
         val sourceHash=BackupJson.hash(root)
-        val isStructured=root.integer("version") in setOf(5L,6L,7L,8L)
+        val isStructured=root.integer("version") in setOf(5L,6L,7L,8L,9L)
         val sections=if(isStructured)sections(root) else emptyMap()
         db.withTransaction {
             val sql=db.openHelper.writableDatabase
@@ -241,7 +244,7 @@ class BackupRepository(
             sql.execSQL("DELETE FROM personal_catalogue_anchors");if(isStructured)sql.execSQL("DELETE FROM personal_catalogue_identities");sql.execSQL("DELETE FROM personal_catalogue_state")
             tables.asReversed().forEach {sql.execSQL("DELETE FROM `$it`")};sql.execSQL("DELETE FROM practice_drafts")
             if(isStructured) {
-                val journal=JSONObject(sections.getValue("journal").toString()).put("catalog_cache",JSONArray()).put("practice_recovery_archives",JSONArray())
+                val journal=withSessionTitles(sections.getValue("journal"), root.integer("version") < 9L).put("catalog_cache",JSONArray()).put("practice_recovery_archives",JSONArray())
                 legacy.insert(db,journal)
                 for(table in identityTables)insertRows(db,table,sections.getValue("identities").getJSONArray(table))
                 sections["activity"]?.let { activity ->
@@ -268,7 +271,7 @@ class BackupRepository(
                     db.backupStateDao().evidence(evidence)
                 }
                 val settings=sections.getValue("preferences");val local=settings.getJSONObject("local")
-                val tour=if(root.integer("version")==8L) oldLocal.copy(tourVersion=local.getInt("tourVersion"),tourCompleted=local.getBoolean("tourCompleted"),tourSkipped=local.getBoolean("tourSkipped"),tourSeenSteps=local.getString("tourSeenSteps")) else oldLocal
+                val tour=if(root.integer("version")>=8L) oldLocal.copy(tourVersion=local.getInt("tourVersion"),tourCompleted=local.getBoolean("tourCompleted"),tourSkipped=local.getBoolean("tourSkipped"),tourSeenSteps=local.getString("tourSeenSteps")) else oldLocal
                 db.practiceDao().local(tour.copy(onboardingDone=local.getBoolean("onboardingDone"),reminderEnabled=local.getBoolean("reminderEnabled"),reminderHour=local.getInt("reminderHour"),reminderMinute=local.getInt("reminderMinute"),generation=Math.addExact(oldLocal.generation,1),lastReminderDay=""))
                 val portable=JSONObject(settings.toString()).apply{remove("local")};val json=portable.toString()
                 db.backupStateDao().state(BackupRestoreState(generation=UUID.randomUUID().toString(),preferencesJson=json,preferencesSha256=BackupJson.hash(portable),status="pending",sourceSha256=sourceHash,previousSnapshot=previous.name))

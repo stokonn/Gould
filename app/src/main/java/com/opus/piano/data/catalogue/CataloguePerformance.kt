@@ -17,7 +17,7 @@ internal object CataloguePerformance {
         fun fields():String {
             val safeSession=if(sessionId=="startup" || runCatching {java.util.UUID.fromString(sessionId)}.isSuccess)sessionId else "invalid"
             val safeSource=source.takeIf {it in setOf("none","local","local_cache","online","local_online")} ?: "invalid"
-            val safeCategory=category.takeIf {it in setOf("none","all","works","artists","albums","lists")} ?: "invalid"
+            val safeCategory=category.takeIf {it in setOf("none","all","works","artists","albums")} ?: "invalid"
             return "session_id=$safeSession source=$safeSource category=$safeCategory"
         }
     }

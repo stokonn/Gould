@@ -47,7 +47,8 @@ data class PracticeSession(
     @ColumnInfo(defaultValue = "'Legacy'") val timingQuality: String = "Legacy",
     @ColumnInfo(defaultValue = "''") val notes: String = "",
     @ColumnInfo(defaultValue = "''") val reflection: String = "",
-    val completionToken: String? = null
+    val completionToken: String? = null,
+    @ColumnInfo(defaultValue = "''") val sessionTitle: String = ""
 )
 class Converters {
     @TypeConverter fun status(value: String) = LearningStatus.valueOf(value)
@@ -70,7 +71,7 @@ interface OpusDao {
     @Insert suspend fun insert(session: PracticeSession): Long
     @Query("DELETE FROM sessions WHERE id=:id") suspend fun deleteSession(id: Long): Int
 }
-@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class, RecoveryArchive::class, SessionPieceLink::class, FavoriteComposer::class, PersonalCatalogueIdentity::class, PersonalCatalogueAnchor::class, PersonalCatalogueState::class, BackupRestoreState::class, RecoveryEvidence::class, CompletionEvidence::class, LocalAudio::class, LocalAudioPart::class, AchievementEvent::class, BadgeNotice::class, ActivitySettings::class, ActivityWeeklyGoal::class, ActivityWeekRecord::class, ManualActivityEntry::class, CosmeticOwnership::class, ActivityRewardGrant::class, CosmeticLoadout::class], version = 13, exportSchema = true)
+@Database(entities = [Piece::class, PracticeSession::class, CatalogComposer::class, CatalogWork::class, CatalogCache::class, SavedRecording::class, BadgeUnlock::class, SessionPart::class, ProfileSettings::class, SessionInterval::class, PracticeDraft::class, LocalAppState::class, RecoveryArchive::class, SessionPieceLink::class, FavoriteComposer::class, PersonalCatalogueIdentity::class, PersonalCatalogueAnchor::class, PersonalCatalogueState::class, BackupRestoreState::class, RecoveryEvidence::class, CompletionEvidence::class, LocalAudio::class, LocalAudioPart::class, AchievementEvent::class, BadgeNotice::class, ActivitySettings::class, ActivityWeeklyGoal::class, ActivityWeekRecord::class, ManualActivityEntry::class, CosmeticOwnership::class, ActivityRewardGrant::class, CosmeticLoadout::class], version = 14, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class OpusDatabase : RoomDatabase() {
     abstract fun studioDao(): StudioDao
@@ -104,6 +105,9 @@ abstract class OpusDatabase : RoomDatabase() {
                 db.execSQL("ALTER TABLE local_app_state ADD COLUMN tourSkipped INTEGER NOT NULL DEFAULT 0")
                 db.execSQL("ALTER TABLE local_app_state ADD COLUMN tourSeenSteps TEXT NOT NULL DEFAULT ''")
             }
+        }
+        val MIGRATION_13_14 = object : Migration(13, 14) {
+            override fun migrate(db: SupportSQLiteDatabase) { db.execSQL("ALTER TABLE sessions ADD COLUMN sessionTitle TEXT NOT NULL DEFAULT ''") }
         }
         val MIGRATION_10_11 = object : Migration(10, 11) {
             override fun migrate(db: SupportSQLiteDatabase) = StudioSchema.migrate(db)
@@ -193,7 +197,7 @@ abstract class OpusDatabase : RoomDatabase() {
                 db.execSQL("CREATE TABLE IF NOT EXISTS catalog_cache (cacheKey TEXT NOT NULL PRIMARY KEY, payload TEXT NOT NULL, fetchedAt INTEGER NOT NULL)")
             }
         }
-        val ALL_MIGRATIONS = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10, MIGRATION_10_11, MIGRATION_11_12, MIGRATION_12_13)
+        val ALL_MIGRATIONS = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10, MIGRATION_10_11, MIGRATION_11_12, MIGRATION_12_13, MIGRATION_13_14)
     }
 }
 class OpusRepository(private val db: OpusDatabase, private val achievements: AchievementStore) {

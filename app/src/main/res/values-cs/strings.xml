@@ -181,7 +181,7 @@
   <string name="msg_clear_cache_5221">Vymazat mezipaměť</string>
   <string name="msg_clear_filters_4122">Zrušit filtry</string>
   <string name="msg_clear_search_6730">Vymazat hledání</string>
-  <string name="msg_clearing_removes_downloaded_images_and_respo_ebd8">Vymazání odstraní stažené obrázky a kopie odpovědí. Historie, repertoár, data odznaků, profil a uložený katalog zůstanou v zařízení.</string>
+  <string name="msg_clearing_removes_downloaded_images_and_respo_ebd8">Smaže stažené obrázky a kopie odpovědí.</string>
   <string name="msg_close_bbfa">Zavřít</string>
   <string name="msg_close_harpsichord_2db2">Zavřít cembalo</string>
   <string name="msg_collection_30c5">Sbírka</string>
@@ -266,7 +266,7 @@
   <string name="msg_five_day_totals_labels_show_the_ending_day_01e3">Součty za pět dní · popisek označuje poslední den</string>
   <string name="msg_follow_system_1b16">Podle systému</string>
   <string name="msg_for_now_make_music_your_practice_sessions_ar_474c">Teď je čas na hudbu. Vaše cvičení už se ukládají pro další cestu.</string>
-  <string name="msg_format_1_backups_from_0_6_and_0_7_remain_imp_8590">Zálohy formátů 1–5 lze nadále importovat. Nové zálohy deníku používají formát 6. Exporty nejsou šifrované.</string>
+  <string name="msg_format_1_backups_from_0_6_and_0_7_remain_imp_8590">Exportované zálohy nejsou šifrované.</string>
   <string name="msg_free_practice_524f">Volné cvičení</string>
   <string name="msg_from_your_repertoire_f345">Z vašeho repertoáru</string>
   <string name="msg_full_detail_is_unavailable_showing_saved_inf_b632">Úplné podrobnosti nejsou dostupné. Zobrazují se uložené údaje.</string>
@@ -309,7 +309,7 @@
   <string name="msg_invalid_unlock_date_c907">Neplatné datum získání odznaku.</string>
   <string name="msg_it_seconds_cde9">%1$s s</string>
   <string name="msg_keep_466f">Ponechat</string>
-  <string name="msg_keep_a_local_copy_of_your_journal_profile_an_8f6d">Uchovejte kopii deníku, profilu a vitríny. Obnova nahradí uložená data; nejprve exportujte zálohu.</string>
+  <string name="msg_keep_a_local_copy_of_your_journal_profile_an_8f6d">Obnovení nahradí uložená data. Nejdříve exportujte zálohu.</string>
   <string name="msg_keep_piece_c264">Ponechat skladbu</string>
   <string name="msg_language_89b8">Jazyk</string>
   <string name="msg_last_30_days_6b32">Posledních 30 dní</string>
@@ -464,7 +464,7 @@
   <string name="msg_select_a_backup_again_ca8b">Vyberte zálohu znovu.</string>
   <string name="msg_select_add_piece_3abf">Vybrat nebo přidat skladbu</string>
   <string name="msg_sensitivity_sensitivity_toint_cd78">Citlivost: %1$s</string>
-  <string name="msg_separate_utf_8_reports_prevent_repeated_sess_ce91">Oddělené UTF-8 přehledy zabrání opakování součtů. CSV není záloha. Poznámky se exportují v podobě bezpečné pro tabulky.</string>
+  <string name="msg_separate_utf_8_reports_prevent_repeated_sess_ce91">Exportujte časy cvičení a skladeb do CSV. CSV není záloha.</string>
   <string name="msg_session_has_too_many_timing_changes_finish_t_5101">Cvičení má příliš mnoho časových změn. Před pokračováním jej dokončete.</string>
   <string name="msg_session_history_d7e9">Historie cvičení</string>
   <string name="msg_session_notes_a84f">Poznámky ke cvičení</string>
@@ -715,7 +715,14 @@
 <string name="today_practice">Dnešní cvičení</string>
 <string name="daily_quote">Myšlenka na dnešek</string>
 <string name="quote_attribution">Robert Schumann · Rady mladým hudebníkům (1860), český překlad Goldberg podle H. H. Piersona</string>
-<string name="home_no_activity">První cvičení otevře váš deník. Až budete připraveni, přejděte na kartu Cvičení.</string>
+<string name="home_week_summary">Tento týden · %1$s · %2$d min · %3$s</string>
+<string name="home_last_week_summary">Minulý týden · %1$s · %2$d min · %3$s</string>
+<plurals name="home_active_days">
+  <item quantity="one">%d aktivní den</item>
+  <item quantity="few">%d aktivní dny</item>
+  <item quantity="other">%d aktivních dní</item>
+  <item quantity="many">%d aktivních dní</item>
+</plurals>
 <string name="select_in_practice">Vybrat ve Cvičení</string>
 <string name="favorite_artist">Oblíbený skladatel</string>
 <string name="favorite_piece">Oblíbená skladba</string>
@@ -730,8 +737,7 @@
 <string name="refresh_supplement">Aktualizovat stažený obsah</string>
 <string name="downloaded_content">Stažený obsah</string>
 <string name="mobile_media">Povolit média na placených datech</string>
-<string name="mobile_media_description">Zahrnuje mobilní data a placené Wi-Fi. Ve výchozím stavu vypnuto.</string>
-<string name="supplementary_hint">Malé portréty se stahují na neplacené Wi-Fi. Volitelné životopisy stáhněte na stránce skladatele. Stažený obsah můžete vymazat níže; deník zůstane zachován.</string>
+<string name="mobile_media_description">Povolit stahování přes mobilní data nebo měřenou Wi-Fi.</string>
 <string name="goldberg_logo">Logo Gould</string>
 <string name="version_092">Goldberg 0.9.2 · Finální redesign</string>
 <string name="tux_terminal">Obnovovací terminál Gould</string>
@@ -862,7 +868,6 @@
     <string name="discover_works">Díla</string>
     <string name="discover_artists">Umělci</string>
     <string name="discover_albums">Alba</string>
-    <string name="discover_lists">Seznamy</string>
     <string name="discover_work">Skladba</string>
     <string name="discover_arrangement">Úprava</string>
     <string name="discover_artist">Interpret</string>
@@ -953,7 +958,6 @@
     <string name="discover_field_sort_name">Název pro řazení</string>
     <string name="discover_field_disambiguation">Upřesnění</string>
     <string name="discover_field_evidence">Další údaje ze zdroje</string>
-    <string name="community_local_title">Místní návrhy příspěvků</string>
     <string name="community_disabled">Odesílání není dostupné. Komunitní server není povolen.</string>
     <string name="community_privacy">Návrhy zůstávají v tomto zařízení mimo přenosné zálohy. Přihlášení profilu Google neopravňuje k odesílání příspěvků.</string>
     <string name="community_new">Nový místní návrh</string>
@@ -1007,7 +1011,8 @@
     <string name="stage7a_search_online">Hledat online</string>
     <string name="stage7a_online_off_hint">Online výsledky katalogu jsou vypnuté. Pro automatické online hledání je zapněte v Nastavení → Data a úložiště.</string>
     <string name="stage7a_online_catalogue_setting">Zahrnout online výsledky katalogu</string>
-    <string name="stage7a_online_catalogue_setting_detail">Ve výchozím nastavení vypnuto. Po zapnutí Objevovat po krátké pauze automaticky odesílá dotazy s alespoň dvěma znaky povoleným poskytovatelům hudebních dat. Nejprve se zobrazí místní výsledky. Nastavení mobilních dat platí i nadále.</string>
+    <string name="stage7a_online_catalogue_setting_detail">Povolit automatické hledání v katalogu. Nejprve se zobrazí místní výsledky.</string>
+    <string name="settings_theme">Motiv</string>
     <string name="stage7a_from_catalogue">Z katalogu</string>
     <string name="stage7a_catalogue_not_saved">Veřejné záznamy katalogu k procházení — neukládají se do vaší knihovny.</string>
     <string name="stage7a_catalogue_artists">Umělci z katalogu</string>
@@ -1283,4 +1288,12 @@
     <string name="community_archive_import_failed">Archiv návrhů se nepodařilo obnovit. Stávající návrhy zůstaly beze změny.</string>
     <string name="community_archive_empty">Archiv neobsahuje žádné návrhy; nic se nezměnilo.</string>
     <plurals name="community_archive_imported"><item quantity="one">Obnoven %1$d návrh. Stávající návrhy zůstaly zachovány.</item><item quantity="few">Obnoveny %1$d návrhy. Stávající návrhy zůstaly zachovány.</item><item quantity="many">Obnoveno %1$d návrhů. Stávající návrhy zůstaly zachovány.</item><item quantity="other">Obnoveno %1$d návrhů. Stávající návrhy zůstaly zachovány.</item></plurals>
+  <string name="studio_rename_session">Přejmenovat cvičení</string>
+  <string name="studio_session_name">Název cvičení</string>
+  <string name="community_drafts_export">Exportovat návrhy</string>
+  <string name="studio_session_save">Uložit</string>
+  <string name="draft_archive_title">Archiv uložených návrhů</string>
+  <string name="draft_archive_description">Exportujte kopii uložených návrhů pro případ potřeby.</string>
+  <string name="draft_archive_export">Exportovat návrhy</string>
+  <string name="draft_archive_export_failed">Návrhy se nepodařilo exportovat. Uložené návrhy zůstaly beze změny.</string>
 </resources>

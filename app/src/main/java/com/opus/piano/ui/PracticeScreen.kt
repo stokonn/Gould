@@ -17,6 +17,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.History
 import androidx.compose.material.icons.outlined.ArrowUpward
 import androidx.compose.material.icons.outlined.ArrowDownward
+import androidx.compose.material.icons.outlined.DeleteOutline
+import androidx.compose.material.icons.outlined.EditNote
+import androidx.compose.material.icons.outlined.QueueMusic
+import androidx.compose.material.icons.outlined.ExpandMore
+import androidx.compose.material.icons.outlined.MusicNote
 import com.opus.piano.practice.visibleQueue
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -51,6 +56,8 @@ import com.opus.piano.service.SmartPracticeService
     var expanded by remember { mutableStateOf(false) }
     var recordConsent by remember { mutableStateOf(false) }
     var permissionForRecording by remember { mutableStateOf(false) }
+    var renameSession by remember { mutableStateOf(false) }
+    var sessionName by remember(timer.sessionTitle) { mutableStateOf(timer.sessionTitle.ifBlank { L.s(R.string.msg_free_practice_524f) }) }
     val failedRecovery by model.practice.recoveryFailed.collectAsStateWithLifecycle()
     val unsaved by model.practice.unsaved.collectAsStateWithLifecycle()
     val scope = rememberCoroutineScope()
@@ -126,10 +133,17 @@ import com.opus.piano.service.SmartPracticeService
             Text(L.s(R.string.practice_unsaved), color=MaterialTheme.colorScheme.error)
             JournalTextButton(onClick={model.practice.retryPersistence()}) { Text(L.s(R.string.practice_retry)) }
         }
-        EditorialHeader(L.fixed("Studio"), actions = { IconButton(onClick = previous) { Icon(Icons.Outlined.History, L.fixed("Previous")) } })
+        Box(Modifier.fillMaxWidth().heightIn(min=56.dp)) {
+            Text(L.s(R.string.label_studio),Modifier.align(androidx.compose.ui.Alignment.Center),style=MaterialTheme.typography.titleLarge)
+            IconButton(onClick={discard=true},enabled=timer.token.isNotEmpty() || timer.notes.isNotBlank() || timer.parts.any { it.notes.isNotBlank() } || timer.elapsed>0,modifier=Modifier.align(androidx.compose.ui.Alignment.CenterStart).semantics { contentDescription=L.s(R.string.msg_discard_session_38ed) }) { Icon(Icons.Outlined.DeleteOutline,null) }
+            IconButton(onClick=previous,modifier=Modifier.align(androidx.compose.ui.Alignment.CenterEnd)) { Icon(Icons.Outlined.History,L.fixed("Previous")) }
+        }
         JournalCard {
             Column(Modifier.fillMaxWidth().padding(vertical=16.dp),horizontalAlignment=androidx.compose.ui.Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(12.dp)) {
-        Text(timer.parts[timer.active].displayTitle,style=MaterialTheme.typography.headlineMedium)
+        JournalTextButton(onClick={sessionName=timer.sessionTitle.ifBlank { L.s(R.string.msg_free_practice_524f) };renameSession=true}) {
+            Text(timer.sessionTitle.ifBlank { L.s(R.string.msg_free_practice_524f) },style=MaterialTheme.typography.headlineMedium)
+            Icon(Icons.Outlined.ExpandMore,L.s(R.string.studio_rename_session))
+        }
         Text(duration(timer.elapsed),style=MaterialTheme.typography.displayLarge,fontFamily=MaterialTheme.typography.bodyLarge.fontFamily)
         Text(L.s(R.string.msg_credited_practice_elapsed_duration_timer_wal_0c94, (duration(timer.wallElapsed))),style=MaterialTheme.typography.bodyMedium)
         if(timer.mode!="Manual") Text(L.s(R.string.msg_detected_active_duration_timer_detectedactiv_764f, (duration(timer.detectedActive))))
@@ -147,22 +161,29 @@ import com.opus.piano.service.SmartPracticeService
         } else if (recordingState.phase == com.opus.piano.audio.RecordingController.Phase.Saved) {
             Text(L.s(R.string.msg_recording_saved),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.primary)
         }
-            }
-        }
         Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically) {
             Switch(smart,{ value -> if(!timer.running) { smart=value;profile.smartPreference(value) } },enabled=!timer.running,modifier=Modifier.semantics { contentDescription=L.fixed("Smart Practice") })
             Text(L.s(R.string.msg_smart_practice_experimental_34d8),Modifier.padding(start=12.dp))
         }
-        StudioMetronome(app.metronome, metronomeExpanded) { metronomeExpanded = !metronomeExpanded }
-        JournalTextButton(onClick = { notesExpanded = !notesExpanded }) { Text(L.s(R.string.msg_session_notes_a84f)) }
+            }
+        }
+        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceEvenly,verticalAlignment=androidx.compose.ui.Alignment.CenterVertically) {
+            @Composable fun Tool(icon: androidx.compose.ui.graphics.vector.ImageVector, label: String, selected: Boolean, click: () -> Unit) {
+                IconButton(onClick=click,modifier=Modifier.size(56.dp).semantics { contentDescription=label; this.selected=selected }) {
+                    Icon(icon,label,tint=if(selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
+            Tool(Icons.Outlined.MusicNote,L.s(R.string.studio_metronome),metronomeExpanded) { metronomeExpanded=!metronomeExpanded }
+            Tool(Icons.Outlined.EditNote,L.s(R.string.msg_session_notes_a84f),notesExpanded) { notesExpanded=!notesExpanded }
+            Tool(Icons.Outlined.QueueMusic,L.s(R.string.msg_pieces_in_this_session_6dbf),expanded) { expanded=!expanded }
+        }
+        StudioMetronome(app.metronome, metronomeExpanded)
         if (notesExpanded) {
             OutlinedTextField(value = timer.notes, onValueChange = model::sessionNotes,
                 label = { Text(L.s(R.string.msg_session_notes_a84f)) }, modifier = Modifier.fillMaxWidth(), minLines = 2, maxLines = 5)
             OutlinedTextField(value = timer.parts[timer.active].notes, onValueChange = { model.note(timer.active,it) },
                 label = { Text(L.s(R.string.msg_piece_notes_for_this_session_3a65)) }, modifier = Modifier.fillMaxWidth(), minLines = 2, maxLines = 5)
         }
-        if(timer.token.isNotEmpty()) JournalTextButton(onClick={discard=true}) { Text(L.s(R.string.msg_discard_session_38ed)) }
-        JournalTextButton(onClick={expanded=!expanded}) { Text(L.s(R.string.practice_expand)) }
         if (expanded) {
         Panel {
             Text(L.s(R.string.msg_pieces_in_this_session_6dbf),style = MaterialTheme.typography.labelSmall)
@@ -196,6 +217,7 @@ import com.opus.piano.service.SmartPracticeService
         Text(L.s(R.string.msg_repertoire_notes_are_separate_session_notes_97f9))
         }
     }
+    if(renameSession) AlertDialog(onDismissRequest={renameSession=false},title={Text(L.s(R.string.studio_rename_session))},text={OutlinedTextField(sessionName,{sessionName=it.take(120)},label={Text(L.s(R.string.studio_session_name))},singleLine=true)},confirmButton={JournalTextButton(onClick={model.renameSession(sessionName);renameSession=false}) {Text(L.s(R.string.studio_session_save))}},dismissButton={JournalTextButton(onClick={renameSession=false}) {Text(L.s(R.string.msg_cancel_77df))}})
     }
     if (privacy) AlertDialog(onDismissRequest = { privacy = false },title = { Text(L.s(R.string.msg_listen_during_practice_cc91)) },text = { Text(L.s(R.string.msg_goldberg_analyzes_ambient_microphone_sound_l_7f65),Modifier.heightIn(max=280.dp).verticalScroll(rememberScrollState())) },confirmButton = { JournalTextButton(onClick = {
         privacy = false

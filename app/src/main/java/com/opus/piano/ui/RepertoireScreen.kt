@@ -9,7 +9,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
-import androidx.compose.material.icons.outlined.History
 import androidx.compose.material3.*
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.*
@@ -23,11 +22,10 @@ import com.opus.piano.data.*
 import com.opus.piano.data.catalogue.DiscoverRepository
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable internal fun RepertoireScreen(state: LibraryState, catalog: CatalogSnapshot, model: OpusViewModel, detail: (Long) -> Unit, cataloguePage:(String)->Unit, previous: () -> Unit = {}, catalogueRepository: DiscoverRepository? = null) {
+@Composable internal fun RepertoireScreen(state: LibraryState, catalog: CatalogSnapshot, model: OpusViewModel, detail: (Long) -> Unit, cataloguePage:(String)->Unit, catalogueRepository: DiscoverRepository? = null) {
     var selectedTab by rememberSaveable { mutableIntStateOf(0) }
     val appearance=LocalAppearance.current
     val store=(androidx.compose.ui.platform.LocalContext.current.appContainer).appearance
-    var addMenu by remember { mutableStateOf(false) }
     var editingId by rememberSaveable { mutableStateOf<Long?>(null) }
     var editor by rememberSaveable { mutableStateOf(false) }
     var deleting by remember { mutableStateOf<Piece?>(null) }
@@ -37,8 +35,18 @@ import com.opus.piano.data.catalogue.DiscoverRepository
     val lastPractice = state.summary.lastPractice
     val practiceTotals = state.summary.practiceTotals
     val pieces = remember(state.pieces,sort,lastPractice) { PracticeInsights.sorted(state.pieces,sort,lastPractice) }
+    var sorting by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxSize()) {
-        LibraryHeader(previous)
+        LibraryHeader(showActions=selectedTab==0) {
+            Box {
+                JournalSecondaryButton(onClick={sorting=true}) { Icon(Icons.Outlined.Sort,null); Text(L.s(R.string.msg_sort_adc4)) }
+                DropdownMenu(sorting,{sorting=false}) {
+                    listOf("Alphabetical","Composer","Recently added","Recently practiced").forEach { option ->
+                        DropdownMenuItem(text={Text(L.fixed(option))},onClick={store.edit {it.copy(sort=option)};sorting=false},leadingIcon={if(sort==option) Icon(Icons.Outlined.Check,null)})
+                    }
+                }
+            }
+        }
         PrimaryTabRow(selectedTabIndex=selectedTab,modifier=Modifier.fillMaxWidth(),
             containerColor=MaterialTheme.colorScheme.background,contentColor=MaterialTheme.colorScheme.primary) {
             listOf(L.s(R.string.ui101_my_repertoire),L.s(R.string.msg_catalogue_5a24)).forEachIndexed { index,label ->
@@ -48,26 +56,6 @@ import com.opus.piano.data.catalogue.DiscoverRepository
         }
         if(selectedTab==1) DiscoverScreen({cataloguePage(it)},{detail(it)},{cataloguePage(it)},state,repository=catalogueRepository,embedded=true,modifier=Modifier.weight(1f))
         else LazyColumn(Modifier.weight(1f),contentPadding=PaddingValues(16.dp),verticalArrangement=Arrangement.spacedBy(8.dp)) {
-        item {
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
-                var sorting by remember { mutableStateOf(false) }
-                Box(Modifier.weight(1f)) {
-                    JournalSecondaryButton(onClick={sorting=true},modifier=Modifier.fillMaxWidth()) { Icon(Icons.Outlined.Sort,null); Text(L.s(R.string.msg_sort_adc4)) }
-                    DropdownMenu(sorting,{sorting=false}) {
-                        listOf("Alphabetical","Composer","Recently added","Recently practiced").forEach { option ->
-                            DropdownMenuItem(text={Text(L.fixed(option))},onClick={store.edit {it.copy(sort=option)};sorting=false},leadingIcon={if(sort==option) Icon(Icons.Outlined.Check,null)})
-                        }
-                    }
-                }
-                Box(Modifier.weight(1f)) {
-                    JournalSecondaryButton(onClick={addMenu=true},modifier=Modifier.fillMaxWidth()) {Icon(Icons.Outlined.Add,null);Text(L.s(R.string.msg_add_piece_2cfc))}
-                    DropdownMenu(addMenu,{addMenu=false}) {
-                        DropdownMenuItem(text={Text(L.s(R.string.msg_catalogue_5a24))},onClick={addMenu=false;selectedTab=1})
-                        DropdownMenuItem(text={Text(L.s(R.string.msg_add_manually_a1d9))},onClick={addMenu=false;editingId=null;editor=true})
-                    }
-                }
-            }
-        }
         if (state.loading) item { EditorialSkeleton() }
         if (!state.loading && pieces.isEmpty()) item {
             Panel {
@@ -105,23 +93,11 @@ import com.opus.piano.data.catalogue.DiscoverRepository
     deleting?.let { p -> AlertDialog(onDismissRequest = { deleting = null }, title = { Text(L.s(R.string.msg_delete_piece_1c9a)) }, text = { Text(L.s(R.string.msg_remove_p_title_your_completed_practice_histo_32b9, (p.title))) }, confirmButton = { JournalTextButton(onClick = { model.delete(p); deleting = null }) { Text(L.s(R.string.msg_delete_f6fd)) } }, dismissButton = { JournalTextButton(onClick = { deleting = null }) { Text(L.s(R.string.msg_keep_piece_c264)) } }) }
 }
 
-/** Keep the previous-history action beside the Library heading at narrow widths and large fonts. */
-@Composable internal fun LibraryHeader(previous: () -> Unit) {
-    BoxWithConstraints(Modifier.fillMaxWidth().padding(horizontal=20.dp).padding(top=12.dp,bottom=4.dp)) {
-        val compactAction = maxWidth < 400.dp && androidx.compose.ui.platform.LocalDensity.current.fontScale >= 1.5f
-        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(JournalSpace.small)) {
-                Text(L.s(R.string.stage7a_library_title), style = MaterialTheme.typography.headlineLarge,
-                    modifier = Modifier.weight(1f).semantics { heading() })
-                if (compactAction) {
-                    IconButton(onClick = previous) { Icon(Icons.Outlined.History, L.fixed("Previous")) }
-                } else {
-                    JournalTextButton(onClick = previous) {
-                        Icon(Icons.Outlined.History, null, Modifier.size(18.dp))
-                        Spacer(Modifier.width(4.dp))
-                        Text(L.fixed("Previous"))
-                    }
-                }
-        }
+@Composable internal fun LibraryHeader(showActions:Boolean,actions: @Composable RowScope.() -> Unit = {}) {
+    Row(Modifier.fillMaxWidth().padding(horizontal=20.dp).padding(top=12.dp,bottom=4.dp),
+        verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(JournalSpace.small)) {
+        Text(L.s(R.string.stage7a_library_title),style=MaterialTheme.typography.headlineLarge,
+            modifier=Modifier.weight(1f).semantics { heading() })
+        if(showActions) actions()
     }
 }

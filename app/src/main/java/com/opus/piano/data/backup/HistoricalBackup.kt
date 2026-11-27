@@ -26,9 +26,9 @@ internal class HistoricalBackup(private val context: Context, private val db: Op
                 put("tables", JSONObject().apply { tables.forEach { table ->
                     val rows = JSONArray()
                     db.openHelper.writableDatabase.query("SELECT * FROM `$table`").use { c ->
-                        while (c.moveToNext()) rows.put(JSONObject().apply { c.columnNames.forEachIndexed { i, name ->
+                        while (c.moveToNext()) rows.put(JSONObject().apply { c.columnNames.forEachIndexed { i, name -> if (name != "sessionTitle") {
                             put(name, if (c.isNull(i)) JSONObject.NULL else if (c.getType(i) == android.database.Cursor.FIELD_TYPE_INTEGER) c.getLong(i) else c.getString(i))
-                        } })
+                        } } })
                     }
                     put(table, rows)
                 } })
@@ -62,6 +62,7 @@ internal class HistoricalBackup(private val context: Context, private val db: Op
                 }
                 it.getJSONArray("profile_settings").objects().forEach { row -> row.put("smartEnabled", 0); row.put("sensitivity", 50); row.put("pauseSeconds", 5) }
             }
+            it.getJSONArray("sessions").objects().forEach { if(!it.has("sessionTitle")) it.put("sessionTitle", "") }
             if (root.getInt("schema") == 4) it.getJSONArray("profile_settings").objects().forEach { row ->
                 row.put("typography", "Editorial"); row.put("statistics", "time,pieces,sessions,streak")
             }
@@ -96,7 +97,7 @@ internal class HistoricalBackup(private val context: Context, private val db: Op
             val pieces = stage.dao().allPieces() // Also checks enum encodings.
             require(pieces.all { it.id > 0 && it.title.isNotBlank() && it.createdAt >= 0 }) { L.s(R.string.msg_invalid_repertoire_e71f) }
             val sessions = stage.dao().allSessions()
-            require(sessions.all { it.id > 0 && it.durationMillis >= 0 && it.completedAt > 0 && it.startedAt >= 0 }) { L.s(R.string.msg_invalid_sessions_8359) }
+            require(sessions.all { it.id > 0 && it.durationMillis >= 0 && it.completedAt > 0 && it.startedAt >= 0 && it.sessionTitle.length <= 120 }) { L.s(R.string.msg_invalid_sessions_8359) }
             sessions.fold(0L) { total, s -> Math.addExact(total, s.durationMillis) }
             sessions.forEach { s -> s.practiceDay?.let { java.time.LocalDate.parse(it) }; s.practiceZone?.let { java.time.ZoneId.of(it) } }
             val parts = stage.personalDao().allParts()

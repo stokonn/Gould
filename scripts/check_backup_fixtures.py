@@ -41,11 +41,12 @@ for path in sorted((root / 'app/src/androidTest/assets/backups').glob('*.json'))
     studio_source=(root/'app/src/main/java/com/opus/piano/data/StudioData.kt').read_text()
     for sql in re.findall(r'db\.execSQL\("([^"\n]+)"\)', studio_source):
         db.execute(sql)
-    # 11 -> 12 Activity schema (mirror of check_migrations.py)
-    for old in (11, 12):
+    # 11 -> 12 Activity, 12 -> 13 tour, and 13 -> 14 session-title migrations
+    for old in (11, 12, 13):
         migration = source.split(f"val MIGRATION_{old}_{old+1} =", 1)[1].split("\n        }", 1)[0]
         for sql in re.findall(r'db\.execSQL\("([^"]+)"\)', migration):
             db.execute(sql)
+    assert all(row[0] == "" for row in db.execute("SELECT sessionTitle FROM sessions"))
     assert db.execute('PRAGMA foreign_key_check').fetchall() == []
     # Validate the migrated fixture against the newest exported schema.
     latest = max(int(p.stem) for p in schemas.glob('*.json'))

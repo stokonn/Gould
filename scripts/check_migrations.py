@@ -87,7 +87,7 @@ for starting_version in range(1, latest_version):
         assert db.execute(f"PRAGMA foreign_key_list({table})").fetchall() == expected.execute(f"PRAGMA foreign_key_list({table})").fetchall(), table
     assert db.execute("PRAGMA foreign_key_check").fetchall() == []
     assert db.execute("SELECT onboardingDone, reminderEnabled, tourVersion, tourCompleted, tourSkipped, tourSeenSteps FROM local_app_state").fetchone() == (1, 0, 0, 0, 0, "")
-    assert db.execute("SELECT elapsedMillis, detectedActiveMillis, notes FROM sessions").fetchone() == (None, None, '')
+    assert db.execute("SELECT elapsedMillis, detectedActiveMillis, notes, sessionTitle FROM sessions").fetchone() == (None, None, '', '')
     db.execute("INSERT OR IGNORE INTO badge_unlocks VALUES('first_piece', 123)")
     db.execute("INSERT OR IGNORE INTO badge_unlocks VALUES('first_piece', 999)")
     assert db.execute("SELECT unlockedAt FROM badge_unlocks").fetchone() == (123,)

@@ -43,7 +43,7 @@ class ActivityMigrationTest {
             .addMigrations(*OpusDatabase.ALL_MIGRATIONS).build()
         try {
             val sql = db.openHelper.writableDatabase
-            assertEquals(13, sql.version)
+            assertEquals(14, sql.version)
             assertEquals("Keep this", db.dao().piece(7)!!.notes)
             val session = db.dao().allSessions().single()
             assertEquals(9L, session.id)

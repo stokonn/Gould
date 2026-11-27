@@ -43,7 +43,7 @@ class StudioBackupTest {
     }
     @Test fun journalOnlyDisclosesExcludedBytesAndRestoresMissingRatherThanFakePlayableAudio()=runBlocking { fixture { source,root ->
         val saved=take(source,root,17);val text=backup(source,root).export();val document=JSONObject(text)
-        assertEquals(8,document.getInt("version"));assertEquals(13,document.getInt("journalSchema"))
+        assertEquals(9,document.getInt("version"));assertEquals(14,document.getInt("journalSchema"))
         val studio=document.getJSONObject("sections").getJSONObject("studio").getJSONObject("data")
         assertFalse(studio.getBoolean("audioFilesIncluded"));assertFalse(text.contains("rawAudio"))
         fixture { target,targetRoot ->

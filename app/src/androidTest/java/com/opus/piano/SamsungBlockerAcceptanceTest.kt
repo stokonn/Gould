@@ -9,6 +9,7 @@ import android.view.accessibility.AccessibilityNodeInfo
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
@@ -84,7 +85,11 @@ class SamsungBlockerAcceptanceTest {
                                             Box(Modifier.width(case.width.dp).padding(20.dp)) {
                                                 // A real app-locale change recreates the composition; the
                                                 // isolated fixture must also discard cached text lambdas.
-                                                androidx.compose.runtime.key(case) { LibraryHeader { clicks.incrementAndGet() } }
+                                                androidx.compose.runtime.key(case) { LibraryHeader(showActions=true) {
+                                                    JournalSecondaryButton(onClick={clicks.incrementAndGet()}) {
+                                                        Text(L.s(R.string.msg_sort_adc4))
+                                                    }
+                                                } }
                                             }
                                         }
                                     }
@@ -102,12 +107,12 @@ class SamsungBlockerAcceptanceTest {
                     capture("library-${case.width}-${case.font}-${case.locale}-${case.theme}-observed")
                     val heading = requireNotNull(current.firstOrNull { it.text?.toString() == title }) { "Missing heading: $title for $case; observed=${current.map { it.text }}" }
                     assertFalse("Library subtitle should be absent", current.any { it.text?.toString() == L.s(R.string.stage7a_library_subtitle) })
-                    val actionLabel = L.fixed("Previous")
+                    val actionLabel = L.s(R.string.msg_sort_adc4)
                     val action = requireNotNull(current.firstOrNull { it.text?.toString() == actionLabel || it.contentDescription?.toString() == actionLabel }) { "Missing action: $actionLabel for $case; observed=${current.map { it.text to it.contentDescription }}" }
                     var button = action
                     while (!button.isClickable && button.parent != null) button = button.parent
                     val h = bounds(heading); val b = bounds(button)
-                    assertTrue("Previous stays beside heading", h.right <= b.left && h.top < b.bottom && b.top < h.bottom)
+                    assertTrue("Sort stays beside heading", h.right <= b.left && h.top < b.bottom && b.top < h.bottom)
                     assertTrue("Action touch target", b.width() >= 48 * context.resources.displayMetrics.density && b.height() >= 48 * context.resources.displayMetrics.density)
                     capture("library-${case.width}-${case.font}-${case.locale}-${case.theme}")
                     assertTrue(button.performAction(AccessibilityNodeInfo.ACTION_CLICK))

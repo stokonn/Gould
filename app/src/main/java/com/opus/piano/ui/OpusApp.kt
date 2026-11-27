@@ -177,7 +177,7 @@ private enum class Destination(val label: String, val icon: ImageVector) {
                     ProfileScreen(library, badges, profile, { nav.navigate(SETTINGS_ROUTE) }, { nav.navigate("BADGES") }, { nav.navigate("history") }, badgeDetail = { nav.navigate("badge/$it") }, customizeCosmetics = { nav.navigate("COSMETICS") }, activity = activity)
                 }
                 composable(Routes.REPERTOIRE) {
-                    RepertoireScreen(library,catalogData,model,{nav.navigate("piece/$it")},{nav.navigate("discover/entity/$it")},{nav.navigate("previous")})
+                    RepertoireScreen(library,catalogData,model,{nav.navigate("piece/$it")},{nav.navigate("discover/entity/$it")})
                 }
                 composable(Routes.ACTIVITY) { ActivityScreen(activity) { nav.navigate(Routes.COSMETICS) } }
                 composable(Routes.COSMETICS) { CosmeticCollectionScreen(activity) { nav.popBackStack() } }
@@ -265,9 +265,9 @@ private fun dayOf(timestamp: Long): LocalDate = Instant.ofEpochMilli(timestamp).
 @Composable internal fun SessionRow(session: PracticeSession, parts: List<SessionPart> = emptyList(), displayMillis: Long = session.durationMillis, untimed:Boolean=false) {
     var editNotes by remember { mutableStateOf(false) }
     if (editNotes) HistoricalReview(session, parts) { editNotes = false }
-    val title = if (parts.isNotEmpty()) parts.filter { it.durationMillis > 0 || it.notes.isNotBlank() }
+    val title = session.sessionTitle.ifBlank { if (parts.isNotEmpty()) parts.filter { it.durationMillis > 0 || it.notes.isNotBlank() }
         .joinToString(" · ") { it.displayTitle }.ifBlank { session.pieceTitle }
-        else if (session.pieceId == null && session.pieceTitle == "Free practice") L.fixed("Free practice") else session.pieceTitle
+        else if (session.pieceId == null && session.pieceTitle == "Free practice") L.fixed("Free practice") else session.pieceTitle }
     Surface(onClick = { editNotes = true }, modifier = Modifier.fillMaxWidth().semantics {
         contentDescription = L.s(R.string.msg_review_edit_session_notes_c195)
     }, shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {

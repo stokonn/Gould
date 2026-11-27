@@ -4,7 +4,7 @@ package com.opus.piano.data.catalogue.providers
 class WikidataAdapter : ProviderAdapter {
     override val id="wikidata"
     override val intervalMillis=1200L
-    override fun search(query:String,category:String,language:String,offset:Int)=if(category=="lists")emptyList() else listOf(candidates(query,language,offset))
+    override fun search(query:String,category:String,language:String,offset:Int)=listOf(candidates(query,language,offset))
     fun candidates(query:String,language:String,offset:Int=0):ProviderRequest {require(offset in 0..10000);return ProviderRequest("https://www.wikidata.org/w/api.php?action=wbsearchentities&format=json&maxlag=5&limit=3&language=${if(language=="cs")"cs" else "en"}&search=${enc(query)}&continue=$offset",id,"candidate",offset=offset)}
     override fun nextOffset(request:ProviderRequest,root:Map<String,Any?>):Int? =
         if(request.kind=="candidate")nextPage(root["search-continue"],request.offset) else null

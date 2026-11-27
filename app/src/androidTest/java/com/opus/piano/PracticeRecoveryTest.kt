@@ -12,6 +12,25 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class PracticeRecoveryTest {
+    @Test fun renamedSessionSurvivesDraftCompletionAndPortableBackup() = runBlocking {
+        val context=InstrumentationRegistry.getInstrumentation().targetContext
+        val db=Room.inMemoryDatabaseBuilder(context,OpusDatabase::class.java).build()
+        val restored=Room.inMemoryDatabaseBuilder(context,OpusDatabase::class.java).build()
+        try {
+            val repo=PracticeRepository(db,OpusRepository(db,AchievementStore(db)))
+            val engine=PracticeEngine();engine.begin(0,1000,"named-session",false)
+            engine.edit { it.copy(sessionTitle="Morning practice") };engine.review(3000)
+            repo.checkpoint(engine.state)
+            val draft=repo.recover()!!
+            assertEquals("Morning practice",draft.sessionTitle)
+            val id=repo.complete(draft)
+            assertEquals("Morning practice",db.dao().allSessions().single { it.id==id }.sessionTitle)
+            val raw=BackupRepository(context,db).export()
+            assertEquals("Morning practice",org.json.JSONObject(raw).getJSONObject("sections").getJSONObject("journal").getJSONObject("data").getJSONArray("sessions").getJSONObject(0).getString("sessionTitle"))
+            BackupRepository(context,restored).restore(raw)
+            assertEquals("Morning practice",restored.dao().allSessions().single().sessionTitle)
+        } finally { db.close();restored.close() }
+    }
     @Test fun durableDraftCompletesOnceAndRoundTripsNewBackup() = runBlocking {
         val context=InstrumentationRegistry.getInstrumentation().targetContext
         val name="draft08-${System.nanoTime()}.db"

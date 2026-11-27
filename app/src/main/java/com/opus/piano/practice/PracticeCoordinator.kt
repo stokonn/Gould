@@ -157,6 +157,7 @@ class PracticeCoordinator(
     suspend fun select(piece: Piece?) { if (state.value.status != "Review") { engine.queueSelect(now(), piece); selectionChanged?.invoke(engine.state.parts[engine.state.active]); publish(); checkpoint() } else notice.value = message(R.string.practice_request_unavailable) }
     suspend fun note(index: Int, text: String) { engine.edit { it.copy(parts = it.parts.mapIndexed { i, p -> if (i == index) p.copy(notes = text.take(10000)) else p }) }; notesDirty = true; if (dirtySince == null) dirtySince = now(); notesChangedAt = now(); unsaved.value = true; publish() }
     suspend fun sessionNotes(notes: String, reflection: String) { engine.edit { it.copy(notes = notes.take(10000), reflection = reflection.take(10000)) }; notesDirty = true; if (dirtySince == null) dirtySince = now(); notesChangedAt = now(); unsaved.value = true; publish() }
+    suspend fun renameSession(title: String) { require(title.trim().isNotEmpty() && title.length <= 120); engine.edit { it.copy(sessionTitle = title.trim()) }; publish(); checkpoint() }
     suspend fun configure(sensitivity: Int, pause: Int) { engine.edit { it.copy(sensitivity = sensitivity.coerceIn(0,100), pauseSeconds = pause.coerceIn(2,30)) }; publish(); checkpoint() }
     suspend fun remove(index: Int) {
         if (state.value.status == "Review") return

@@ -8,7 +8,7 @@ LEGACY = {
     "BalancedHome.kt": Counter({"— Robert Schumann": 1}),
     "CustomizePanel.kt": Counter({"♫": 1}),
     "DiscoverScreen.kt": Counter({"SHA-256: ": 1}),
-    "SettingsScreen.kt": Counter({"›": 2, "GitHub": 1, "created by stokonn with love <3": 1}),
+    "SettingsScreen.kt": Counter({"›": 1, "GitHub": 1, "created by stokonn with love <3": 1}),
 }
 pattern = re.compile(r'\bText\s*\(\s*"((?:\\.|[^"\\$])*)"')
 actual = Counter()

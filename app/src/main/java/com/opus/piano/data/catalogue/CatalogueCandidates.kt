@@ -19,6 +19,7 @@ internal suspend fun CatalogueRepository.observeCandidate(result:ProviderResult,
 }
 internal suspend fun CatalogueRepository.candidateId(provider:String,kind:String,id:String)=state(candidateKey(provider,kind,id))?.let {runCatching {candidateFromJson(it).id}.getOrNull()}
 internal suspend fun CatalogueRepository.candidates(query:String,filter:SearchFilter,excluded:Set<String> = emptySet()):List<CatalogueCandidate> {
+    if(filter.period!=null)return emptyList()
     val tokens=SearchText.normalize(query).split(' ').filter {it.isNotBlank()}
     return states("candidate:",200).mapNotNull {runCatching {candidateFromJson(it.value)}.getOrNull()}.filter {candidate->
         candidate.id !in excluded && (candidate.kindHint in filter.kinds || filter.category=="all" && candidate.kindHint=="unknown") && entity(candidate.id)==null && tokens.all {SearchText.normalize(candidate.title).contains(it)}

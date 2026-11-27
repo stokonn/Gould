@@ -73,6 +73,7 @@ class OpusViewModel(private val repository: OpusRepository, private val saved: S
     fun move(index: Int, delta: Int) = practice.command { move(index, delta) }
     fun undoQueue() = practice.command { undoQueue() }
     fun sessionNotes(text: String) = practice.command { sessionNotes(text, state.value.reflection) }
+    fun renameSession(title: String) = practice.command { renameSession(title) }
     fun note(index: Int, text: String) = practice.command { note(index, text) }
     fun focus(piece: Piece): Boolean { if (timer.value.saving || timer.value.status == "Review") return false; select(piece); return true }
     fun toggle() = practice.command { if (state.value.running) pause() else start(false) }

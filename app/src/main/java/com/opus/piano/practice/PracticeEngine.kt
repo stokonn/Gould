@@ -15,7 +15,7 @@ data class PracticeState(
     val removed: Set<Long> = emptySet(), val selected: Piece? = null,
     val notes: String = "", val reflection: String = "", val intervals: List<SessionInterval> = emptyList(),
     val sensitivity: Int = 50, val pauseSeconds: Int = 5, val timingQuality: String = "Measured",
-    val ready: Boolean = false
+    val ready: Boolean = false, val sessionTitle: String = ""
 )
 
 /** Stable part indexes are ledger identities; display order never renumbers them. */

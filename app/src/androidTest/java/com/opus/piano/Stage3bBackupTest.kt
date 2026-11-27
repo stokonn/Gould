@@ -52,7 +52,7 @@ class Stage3bBackupTest {
         try {
             val source=fixture();e.repo().validate(source);e.repo().restore(source)
             val actual=JSONObject(e.repo().export());val original=JSONObject(source)
-            assertEquals(8,actual.getInt("version"));assertEquals(13,actual.getInt("journalSchema"));assertFalse(actual.getJSONObject("sections").getJSONObject("studio").getJSONObject("data").getBoolean("audioFilesIncluded"))
+            assertEquals(9,actual.getInt("version"));assertEquals(14,actual.getInt("journalSchema"));assertFalse(actual.getJSONObject("sections").getJSONObject("studio").getJSONObject("data").getBoolean("audioFilesIncluded"))
             assertEquals(BackupJson.hash(sections(original,"journal")),BackupJson.hash(sections(actual,"journal")))
             assertEquals(BackupJson.hash(sections(original,"identities")),BackupJson.hash(sections(actual,"identities")))
             assertArrayEquals(bytes(sections(original,"recovery").getJSONArray("drafts").getJSONObject(0)),BackupState.rawDraft(e.db)!!.first)

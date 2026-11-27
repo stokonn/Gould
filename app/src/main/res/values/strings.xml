@@ -181,7 +181,7 @@
   <string name="msg_clear_cache_5221">Clear Cache</string>
   <string name="msg_clear_filters_4122">Clear filters</string>
   <string name="msg_clear_search_6730">Clear search</string>
-  <string name="msg_clearing_removes_downloaded_images_and_respo_ebd8">Clearing removes downloaded images and response copies. Practice history, repertoire, badge dates, profile settings and the saved catalogue remain on this device.</string>
+  <string name="msg_clearing_removes_downloaded_images_and_respo_ebd8">Clears downloaded images and response copies.</string>
   <string name="msg_close_bbfa">Close</string>
   <string name="msg_close_harpsichord_2db2">Close harpsichord</string>
   <string name="msg_collection_30c5">Collection</string>
@@ -266,7 +266,7 @@
   <string name="msg_five_day_totals_labels_show_the_ending_day_01e3">Five-day totals · labels show the ending day</string>
   <string name="msg_follow_system_1b16">Follow system</string>
   <string name="msg_for_now_make_music_your_practice_sessions_ar_474c">For now, make music. Your practice sessions are already being saved for the journey ahead.</string>
-  <string name="msg_format_1_backups_from_0_6_and_0_7_remain_imp_8590">Backup formats 1–5 remain importable. New journal backups use format 6. Exports are not encrypted.</string>
+  <string name="msg_format_1_backups_from_0_6_and_0_7_remain_imp_8590">Exports are not encrypted.</string>
   <string name="msg_free_practice_524f">Free practice</string>
   <string name="msg_from_your_repertoire_f345">From your repertoire</string>
   <string name="msg_full_detail_is_unavailable_showing_saved_inf_b632">Full detail is unavailable. Showing saved information.</string>
@@ -309,7 +309,7 @@
   <string name="msg_invalid_unlock_date_c907">Invalid unlock date.</string>
   <string name="msg_it_seconds_cde9">%1$s seconds</string>
   <string name="msg_keep_466f">Keep</string>
-  <string name="msg_keep_a_local_copy_of_your_journal_profile_an_8f6d">Keep a local copy of your journal, profile and showcase. Restoring replaces the current saved data; export a backup first.</string>
+  <string name="msg_keep_a_local_copy_of_your_journal_profile_an_8f6d">Restoring replaces saved data; export a backup first.</string>
   <string name="msg_keep_piece_c264">Keep piece</string>
   <string name="msg_language_89b8">Language</string>
   <string name="msg_last_30_days_6b32">Last 30 days</string>
@@ -464,7 +464,7 @@
   <string name="msg_select_a_backup_again_ca8b">Select a backup again.</string>
   <string name="msg_select_add_piece_3abf">Select / add piece</string>
   <string name="msg_sensitivity_sensitivity_toint_cd78">Sensitivity: %1$s</string>
-  <string name="msg_separate_utf_8_reports_prevent_repeated_sess_ce91">Separate UTF-8 reports prevent repeated session totals. CSV is not a backup. Notes are exported in spreadsheet-safe form.</string>
+  <string name="msg_separate_utf_8_reports_prevent_repeated_sess_ce91">Export session and piece times as CSV. CSV is not a backup.</string>
   <string name="msg_session_has_too_many_timing_changes_finish_t_5101">Session has too many timing changes. Finish this session before continuing.</string>
   <string name="msg_session_history_d7e9">Session history</string>
   <string name="msg_session_notes_a84f">Session notes</string>
@@ -711,7 +711,13 @@
 <string name="today_practice">Today\'s Practice</string>
 <string name="daily_quote">A thought for today</string>
 <string name="quote_attribution">Robert Schumann · Advice to Young Musicians (1860), trans. H. H. Pierson</string>
-<string name="home_no_activity">Your first session will begin this journal. Open the Practice tab when you are ready.</string>
+<string name="home_week_summary">This week · %1$s · %2$d min · %3$s</string>
+<string name="home_last_week_summary">Last week · %1$s · %2$d min · %3$s</string>
+<plurals name="home_active_days">
+  <item quantity="one">%d active day</item>
+  <item quantity="few">%d active days</item>
+  <item quantity="other">%d active days</item>
+</plurals>
 <string name="select_in_practice">Select in Practice</string>
 <string name="favorite_artist">Favorite Artist</string>
 <string name="favorite_piece">Favorite Piece</string>
@@ -726,8 +732,7 @@
 <string name="refresh_supplement">Refresh downloaded content</string>
 <string name="downloaded_content">Downloaded content</string>
 <string name="mobile_media">Allow media on metered data</string>
-<string name="mobile_media_description">Includes mobile data and metered Wi-Fi. Off by default.</string>
-<string name="supplementary_hint">Small portraits download on unmetered Wi-Fi. Download optional biographies on a composer page. Clear disposable downloads below; your journal is retained.</string>
+<string name="mobile_media_description">Allow downloads over mobile data or metered Wi-Fi.</string>
 <string name="goldberg_logo">Gould logo</string>
 <string name="version_092">Goldberg 0.9.2 · The Final Redesign</string>
 <string name="tux_terminal">Gould recovery terminal</string>
@@ -859,7 +864,6 @@
     <string name="discover_works">Works</string>
     <string name="discover_artists">Artists</string>
     <string name="discover_albums">Albums</string>
-    <string name="discover_lists">Lists</string>
     <string name="discover_work">Composition</string>
     <string name="discover_arrangement">Arrangement</string>
     <string name="discover_artist">Artist</string>
@@ -950,7 +954,6 @@
     <string name="discover_field_sort_name">Sorting name</string>
     <string name="discover_field_disambiguation">Disambiguation</string>
     <string name="discover_field_evidence">Additional source evidence</string>
-    <string name="community_local_title">Local contribution drafts</string>
     <string name="community_disabled">Remote submission is unavailable. No community endpoint is enabled.</string>
     <string name="community_privacy">Drafts stay on this device, outside portable backups. Google profile sign-in does not authorize community submissions.</string>
     <string name="community_new">New local draft</string>
@@ -1004,7 +1007,8 @@
     <string name="stage7a_search_online">Search online</string>
     <string name="stage7a_online_off_hint">Online catalogue results are off. Enable them in Settings → Data &amp; Storage for automatic online search.</string>
     <string name="stage7a_online_catalogue_setting">Include online catalogue results</string>
-    <string name="stage7a_online_catalogue_setting_detail">Off by default. When enabled, Discover automatically sends queries of at least two characters to permitted music-data providers after a short pause. Local results appear first. Mobile data preferences still apply.</string>
+    <string name="stage7a_online_catalogue_setting_detail">Allow automatic catalogue searches. Local results appear first.</string>
+    <string name="settings_theme">Theme</string>
     <string name="stage7a_from_catalogue">From the catalogue</string>
     <string name="stage7a_catalogue_not_saved">Public catalogue entries for browsing — not saved in your library.</string>
     <string name="stage7a_catalogue_artists">Catalogue artists</string>
@@ -1272,4 +1276,12 @@
     <string name="community_archive_import_failed">Draft archive could not be restored. Existing drafts were left unchanged.</string>
     <string name="community_archive_empty">This archive contains no drafts; nothing changed.</string>
     <plurals name="community_archive_imported"><item quantity="one">Restored %1$d draft. Existing drafts were kept.</item><item quantity="other">Restored %1$d drafts. Existing drafts were kept.</item></plurals>
+  <string name="studio_rename_session">Rename session</string>
+  <string name="studio_session_name">Session name</string>
+  <string name="community_drafts_export">Export drafts</string>
+  <string name="studio_session_save">Save</string>
+  <string name="draft_archive_title">Saved draft archive</string>
+  <string name="draft_archive_description">Export a copy of saved drafts for safekeeping.</string>
+  <string name="draft_archive_export">Export drafts</string>
+  <string name="draft_archive_export_failed">Could not export drafts. Your saved drafts are unchanged.</string>
 </resources>

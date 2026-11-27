@@ -39,6 +39,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
     var lastTap by remember { mutableLongStateOf(0) }
     val sessionCsv = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("text/csv")) { it?.let { uri -> profile.csv(uri,false) } }
     val partCsv = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("text/csv")) { it?.let { uri -> profile.csv(uri,true) } }
+    val draftExport = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument(com.opus.piano.data.community.CommunityDraftArchive.MIME_TYPE)) { uri ->
+        if(uri!=null) scope.launch { try { val bytes=app.community.exportDraftArchive(); kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { requireNotNull(context.contentResolver.openOutputStream(uri,"wt")).use { it.write(bytes) } } } catch (c: kotlinx.coroutines.CancellationException) { throw c } catch (_: Exception) { profile.notice.value=L.s(R.string.draft_archive_export_failed) } }
+    }
     val notifications = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
         if (granted) local?.let { profile.reminder(true,it.reminderHour,it.reminderMinute) }
         else profile.notice.value = L.s(R.string.msg_notifications_are_blocked_enable_them_in_and_a3dd)
@@ -54,7 +57,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
     replaceIdentity?.let {kind -> AlertDialog(onDismissRequest={replaceIdentity=null},title={Text(L.s(if(kind=="name") R.string.ui010_google_name else R.string.ui010_google_photo))},text={Text(L.s(R.string.ui010_identity_confirm))},confirmButton={JournalTextButton(onClick={if(kind=="name") profile.useGoogleName() else profile.replaceGooglePhoto();replaceIdentity=null}) {Text(L.s(R.string.ui010_apply))}},dismissButton={JournalTextButton(onClick={replaceIdentity=null}) {Text(L.s(R.string.ui010_keep_local))}})}
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         item { if(page.isEmpty()) TourAnchor("settings") { CatalogBack(L.s(R.string.msg_settings_c7f7)) { back() } }
-            else CatalogBack(if(page=="Community drafts") L.s(R.string.community_local_title) else page) { page="" } }
+            else CatalogBack(page) { page="" } }
         if(page.isEmpty()) {
             listOf(
                 R.string.google_account to listOf("Google"),
@@ -76,21 +79,23 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
         }
         when(page) {
             "Google" -> item {
-                Text(L.s(R.string.google_identity_only),style=MaterialTheme.typography.bodyMedium)
-                if(googleAccount == null) JournalPrimaryButton(enabled=!busy,onClick={profile.googleSignIn(context)}) {Text(L.s(R.string.google_sign_in))}
-                else {
-                    Text(googleAccount.orEmpty(),style=MaterialTheme.typography.bodyMedium)
-                    Text(L.s(R.string.ui010_identity_explanation),style=MaterialTheme.typography.bodySmall)
-                    JournalSecondaryButton(enabled=!busy,onClick={replaceIdentity="name"}) {Text(L.s(R.string.ui010_google_name))}
-                    JournalSecondaryButton(enabled=!busy,onClick={replaceIdentity="photo"}) {Text(L.s(R.string.ui010_google_photo))}
-                    Text(L.s(R.string.ui010_photo_consent),style=MaterialTheme.typography.bodySmall)
-                    JournalSecondaryButton(enabled=!busy,onClick=profile::googleSignOut) {Text(L.s(R.string.google_sign_out))}
+                Column(verticalArrangement=Arrangement.spacedBy(16.dp)) {
+                    Text(L.s(R.string.google_identity_only),style=MaterialTheme.typography.bodyMedium)
+                    if(googleAccount == null) JournalPrimaryButton(enabled=!busy,onClick={profile.googleSignIn(context)}) {Text(L.s(R.string.google_sign_in))}
+                    else {
+                        Text(googleAccount.orEmpty(),style=MaterialTheme.typography.bodyMedium)
+                        Text(L.s(R.string.ui010_identity_explanation),style=MaterialTheme.typography.bodySmall)
+                        JournalSecondaryButton(enabled=!busy,onClick={replaceIdentity="name"}) {Text(L.s(R.string.ui010_google_name))}
+                        JournalSecondaryButton(enabled=!busy,onClick={replaceIdentity="photo"}) {Text(L.s(R.string.ui010_google_photo))}
+                        Text(L.s(R.string.ui010_photo_consent),style=MaterialTheme.typography.bodySmall)
+                        JournalSecondaryButton(enabled=!busy,onClick=profile::googleSignOut) {Text(L.s(R.string.google_sign_out))}
+                    }
                 }
             }
 
             "Appearance & Customize" -> {
         item { Panel {
-            SectionTitle(L.s(R.string.msg_appearance_41de))
+            SectionTitle(L.s(R.string.settings_theme))
             listOf("System", "Light", "Dark").forEach { theme ->
                 Surface(modifier = Modifier.semantics { selected = settings.theme == theme; role = Role.RadioButton }, onClick = { if (!busy) profile.theme(theme) }, enabled = !busy) {
                     Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
@@ -98,7 +103,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
                     }
                 }
             }
-            AppearancePreview(settings.theme,settings.typography)
             Text(L.s(R.string.msg_text_size_and_motion_follow_android_accessib_8163), style = MaterialTheme.typography.bodySmall)
         } }
         item { Panel {
@@ -110,7 +114,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
                     }
                 }
             }
-            AppearancePreview(settings.theme,settings.typography)
             Text(L.s(R.string.msg_cormorant_garamond_headings_with_inter_text_21da), style = MaterialTheme.typography.bodySmall)
         } }
         item { CustomizePanel(profile) }
@@ -145,18 +148,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
             }
         } }
             }
-            "Community drafts" -> item { CommunityDraftPanel(app.community) }
             "Data & Storage" -> {
-        item { SettingsRow(L.s(R.string.community_local_title),action={page="Community drafts"},trailing={Text("›")}) }
         item {
-            // Stage 7A refinement: explicit JournalSpace grouping so the section header,
-            // toggle cards and the supplementary hint never touch (20-24 sections /
-            // 12-16 groups spacing audit). The online-catalogue preference and every
-            // warning are preserved unchanged.
-            Column(verticalArrangement=Arrangement.spacedBy(JournalSpace.medium)) {
+            Panel {
                 SectionTitle(L.s(R.string.downloaded_content))
                 SettingsRow(L.s(R.string.mobile_media),L.s(R.string.mobile_media_description),action={scope.launch(kotlinx.coroutines.Dispatchers.IO) {app.media.consent(!metered)}},trailing={Switch(metered,{value->scope.launch(kotlinx.coroutines.Dispatchers.IO) {app.media.consent(value)}},modifier=Modifier.semantics {contentDescription=L.s(R.string.mobile_media)})})
-                Text(L.s(R.string.supplementary_hint),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
                 // Stage 7A (owner): the "Include online catalogue results" preference moved here
                 // from Discover; persisted, default OFF. Online searches still only run when the
                 // user explicitly starts them in Discover.
@@ -170,6 +166,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
             Text(usage?.let { L.s(R.string.msg_disposable_downloads_1f_mib_0ce1).format(it / 1048576.0) } ?: L.s(R.string.msg_measuring_downloaded_cache_2599))
             Text(L.s(R.string.msg_clearing_removes_downloaded_images_and_respo_ebd8), style = MaterialTheme.typography.bodySmall)
             JournalSecondaryButton(onClick = profile::clearCache, enabled = !busy) { Text(L.s(R.string.msg_clear_cache_5221)) }
+        } }
+        item { Panel {
+            SectionTitle(L.s(R.string.draft_archive_title))
+            Text(L.s(R.string.draft_archive_description),style=MaterialTheme.typography.bodySmall)
+            JournalSecondaryButton(onClick={draftExport.launch("Gould-draft-archive.json")},enabled=!busy) { Text(L.s(R.string.draft_archive_export)) }
         } }
         item { Panel {
             SectionTitle(L.s(R.string.msg_backup_restore_3bdd))

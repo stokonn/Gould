@@ -16,8 +16,8 @@ object SearchText {
     fun hash(value:String)=MessageDigest.getInstance("SHA-256").digest(value.toByteArray()).joinToString(""){"%02x".format(it)}
 }
 data class SearchFilter(val category:String="all",val artistId:String?=null,val period:String?=null) {
-    init {require(category in setOf("all","works","artists","albums","lists"));artistId?.let {CatalogueValidation.uuid(it)};require(period==null || period.length<=80)}
-    val kinds get()=when(category){"works"->listOf("work","arrangement");"artists"->listOf("artist");"albums"->listOf("album");"lists"->listOf("collection");else->listOf("work","arrangement","artist","album","collection")}
+    init {require(category in setOf("all","works","artists","albums"));artistId?.let {CatalogueValidation.uuid(it)};require(period==null || period.length<=80)}
+    val kinds get()=when(category){"works"->listOf("work","arrangement");"artists"->listOf("artist");"albums"->listOf("album");else->listOf("work","arrangement","artist","album","collection")}
 }
 data class SearchCursor(val queryHash:String,val generation:String,val lastRank:Int,val lastId:String) {
     fun encode()=Base64.getUrlEncoder().withoutPadding().encodeToString(listOf("2",queryHash,generation,"relevance-id-v3",lastRank.toString(),lastId).joinToString("|").toByteArray())
@@ -82,7 +82,7 @@ internal suspend fun CatalogueRepository.searchPage(query:String,filter:SearchFi
     val index=if(normalized.isNotBlank())" INDEXED BY sqlite_autoindex_entities_1" else ""
     var sql="SELECT * FROM (SELECT e.*, $rank AS searchRank FROM entities e$index WHERE $where)"
     if(after!=null){sql+=" WHERE searchRank > ? OR (searchRank=? AND id>?)";args+=after.lastRank;args+=after.lastRank;args+=after.lastId}
-    sql+=" ORDER BY searchRank,id LIMIT ?";args+=limit+1
+    sql+=" ORDER BY searchRank,"+(if(normalized.isBlank())"title COLLATE NOCASE," else "")+"id LIMIT ?";args+=limit+1
     val rows=queryEntities(SimpleSQLiteQuery(sql,args.toTypedArray()))
     val page=rows.take(limit)
     val next=if(rows.size>limit) {
